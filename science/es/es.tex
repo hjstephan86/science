@@ -63,7 +63,7 @@
 \title{%
   \textbf{Pareto-optimaler Embedded-Systems-Entwurf}\\[0.4em]
   \large durch Reduktion auf das Graph-Iso\-mor\-phis\-mus-Problem\\
-  und Anwendung des optimalen Subgraph-Algorithmus
+  und Anwendung des optimalen Subgraph Algorithmus
 }
 \author{Stephan Epp}
 \date{28. Mai 2026}
@@ -82,7 +82,7 @@ eines Entwurfsgraphen modellieren und die Pareto-Dominanzrelation als
 Subgraph-Beziehung formalisieren lassen.
 Wir beweisen eine polynomielle Reduktion des Embedded-Systems-Entwurfsproblems
 auf das Graph-Isomorphismus-Problem und wenden anschlie{\ss}end den optimalen
-Subgraph-Algorithmus~\cite{epp2026subgraph} mit Laufzeit $\Theta(n^3)$ und
+Subgraph Algorithmus~\cite{epp2026subgraph} mit Laufzeit $\Theta(n^3)$ und
 Optimalit\"{a}t unter SETH an.
 S\"{a}mtliche Entwurfsziele werden so simultan optimiert und das globale
 Pareto-Optimum in einer einzigen Algorithmus-Iteration identifiziert.
@@ -134,8 +134,8 @@ Diese Arbeit leistet folgende formalen Beitr\"{a}ge:
     \item \textbf{Formale Reduktion:} Das Pareto-Dominanzproblem im
           Entwurfsraum wird polynomiell auf das Graph-Isomorphismus-Problem
           reduziert.
-    \item \textbf{Anwendung des Subgraph-Algorithmus:} Der optimale
-          Subgraph-Algorithmus~\cite{epp2026subgraph} mit Zeitkomplexit\"{a}t
+    \item \textbf{Anwendung des Subgraph Algorithmus:} Der optimale
+          Subgraph Algorithmus~\cite{epp2026subgraph} mit Zeitkomplexit\"{a}t
           $\Theta(n^3)$ identifiziert das globale Pareto-Optimum direkt \"{u}ber
           die Subgraph-Beziehung.
     \item \textbf{Formale Korrektheit:} Alle Schritte werden durch Definitionen,
@@ -481,12 +481,12 @@ Eingabegr\"{o}{\ss}e $m \cdot k$.
 \end{korollar}
 
 %% ═══════════════════════════════════════════════════════════════════════════
-\section{Der Subgraph-Algorithmus als Optimierungs-Engine}
+\section{Der Subgraph Algorithmus als Optimierungs-Engine}
 %% ═══════════════════════════════════════════════════════════════════════════
 
 \subsection{Algorithmus-Grundlagen}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} l\"{o}st das SIP f\"{u}r zwei Graphen
+Der Subgraph Algorithmus~\cite{epp2026subgraph} l\"{o}st das SIP f\"{u}r zwei Graphen
 mit je $n$ Knoten in $\Theta(n^3)$ Zeit mittels drei Mechanismen:
 Spalten-Signaturen (Definition~\ref{def:sig}),
 zyklischer Rotation statt Permutation ($n$ statt $n!$ Kandidaten) und
@@ -577,7 +577,7 @@ zugeh\"{o}rige LCS-DP-Tabelle.
 \end{tikzpicture}
 \caption{Ablaufdiagramm des Gesamtalgorithmus zur Pareto-Front-Bestimmung
          mittels Subgraph-Isomorphismus. F\"{u}r jedes Paar $(d_i, d_j)$ wird
-         der Subgraph-Algorithmus~\cite{epp2026subgraph} mit $\Theta(k^3)$
+         der Subgraph Algorithmus~\cite{epp2026subgraph} mit $\Theta(k^3)$
          aufgerufen.}
 \label{fig:flowchart}
 \end{figure}
@@ -594,7 +594,7 @@ zugeh\"{o}rige LCS-DP-Tabelle.
     ($\Rightarrow$): Sei $d_i \in \mathcal{P}^*$. Dann existiert kein $d_j$
     mit $d_j \prec d_i$. Nach Korollar~1 existiert dann kein $d_j$ mit
     $G_{d_i} \hookrightarrow G_{d_j}$ (und $G_{d_i} \not\cong G_{d_j}$).
-    Der Subgraph-Algorithmus liefert f\"{u}r alle $j \neq i$ einen negativen
+    Der Subgraph Algorithmus liefert f\"{u}r alle $j \neq i$ einen negativen
     Befund. Also wird $d_i$ nie markiert. $\checkmark$
 
     ($\Leftarrow$): Sei $d_i$ nicht markiert. Dann hat der Algorithmus f\"{u}r
@@ -602,7 +602,7 @@ zugeh\"{o}rige LCS-DP-Tabelle.
     $G_{d_i} \cong G_{d_j}$. Nach der \"{A}quivalenz~(\ref{eq:iff}) gilt also
     $d_j \not\prec d_i$ f\"{u}r alle $j$. Damit ist $d_i$ Pareto-optimal. $\checkmark$
 
-    Die Korrektheit des Subgraph-Algorithmus selbst folgt aus
+    Die Korrektheit des Subgraph Algorithmus selbst folgt aus
     \cite{epp2026subgraph}, Satz~4, auf den hier explizit verwiesen wird.
 \end{proof}
 
@@ -622,7 +622,7 @@ zugeh\"{o}rige LCS-DP-Tabelle.
 
 \begin{proof}
     Es werden $\binom{m}{2} = O(m^2)$ Paare $(d_i, d_j)$ gepr\"{u}ft.
-    F\"{u}r jedes Paar wird der Subgraph-Algorithmus auf zwei Graphen mit
+    F\"{u}r jedes Paar wird der Subgraph Algorithmus auf zwei Graphen mit
     $n = k$ Knoten aufgerufen. Nach \cite{epp2026subgraph}, Satz~2, betr\"{a}gt
     die Laufzeit $\Theta(k^3)$.
     Gesamtlaufzeit:
@@ -703,14 +703,14 @@ bewiesen und gilt direkt f\"{u}r ganzzahlige Signaturen ohne Alphabetbeschr\"{a}
 \subsection{Laufzeitverhalten}
 
 Abbildung~\ref{fig:complexity} zeigt den Komplexit\"{a}tsvergleich zwischen dem
-Subgraph-Algorithmus und konkurrierenden Methoden auf einer logarithmischen
+Subgraph Algorithmus und konkurrierenden Methoden auf einer logarithmischen
 Skala.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.90\textwidth]{plot4_complexity.pdf}
     \caption{Laufzeitkomplexit\"{a}tsvergleich (log-Skala).
-             Der Subgraph-Algorithmus ($\Theta(n^3)$, gr\"{u}n) ist drastisch
+             Der Subgraph Algorithmus ($\Theta(n^3)$, gr\"{u}n) ist drastisch
              effizienter als exponentielle Ans\"{a}tze ($O(2^n)$, lila) und
              faktorielle Permutationssuche ($O(n!)$, rot).
              Die untere Schranke $\Omega(n^2 \log n)$ (blau) zeigt den
@@ -721,7 +721,7 @@ Skala.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{plot8_runtime_empirical.pdf}
-    \caption{Empirische Laufzeitmessung des Subgraph-Algorithmus
+    \caption{Empirische Laufzeitmessung des Subgraph Algorithmus
              auf Entwurfsgraphen wachsender Gr\"{o}{\ss}e (log-log-Skala).
              Die Fit-Kurve best\"{a}tigt experimentell die theoretische
              $\Theta(n^3)$-Komplexit\"{a}t.}
@@ -740,13 +740,13 @@ $\Theta(n^3)$-Referenzlinie \"{u}ber den gesamten getesteten Bereich $n \in [2, 
     \caption{3D-Entwurfsraum f\"{u}r 40 Entwurfsalternativen in den Dimensionen
              Kosten, Performance, Wartbarkeit.
              Die Farbe kodiert den normierten Gesamt-Score.
-             Goldene Sterne markieren die durch den Subgraph-Algorithmus
+             Goldene Sterne markieren die durch den Subgraph Algorithmus
              identifizierten Pareto-optimalen Entw\"{u}rfe.}
     \label{fig:3d}
 \end{figure}
 
 Abbildung~\ref{fig:3d} visualisiert die Verteilung von 40 Entwurfsalternativen
-im dreidimensionalen Raum. Die durch den Subgraph-Algorithmus identifizierten
+im dreidimensionalen Raum. Die durch den Subgraph Algorithmus identifizierten
 Pareto-optimalen Entw\"{u}rfe (goldene Sterne) befinden sich erwartungsgem\"{a}{\ss} in
 der oberen rechten Ecke des (Performance, Wartbarkeit)-Raums bei gleichzeitig
 mittleren bis niedrigen Kosten.
@@ -763,7 +763,7 @@ Erreichbarkeit -- werden als Knoten eines Entwurfsgraphen modelliert.
 Die Pareto-Dominanzrelation entspricht dabei exakt der Subgraph-Beziehung
 zwischen zwei Entwurfsgraphen.
 
-Der optimale Subgraph-Algorithmus~\cite{epp2026subgraph} mit
+Der optimale Subgraph Algorithmus~\cite{epp2026subgraph} mit
 $\Theta(n^3)$-Komplexit\"{a}t identifiziert diese Dominanzstruktur
 algorithmisch effizient und nachweislich optimal unter SETH.
 F\"{u}r einen festen Satz von $k = 6$ Entwurfszielen ergibt sich
@@ -797,7 +797,7 @@ in Software Components (SWC), Ports und Interfaces.
 Diese Dekomposition ist formal ein Funktor zwischen zwei Kategorien, der sich
 als Graphmorphismus zwischen dem abstrakten Entwurfsgraphen und dem konkreten
 AUTOSAR-Komponentengraphen darstellen l\"{a}sst.
-Eine Reduktion des AUTOSAR-Composing-Problems auf den Subgraph-Algorithmus
+Eine Reduktion des AUTOSAR-Composing-Problems auf den Subgraph Algorithmus
 w\"{u}rde die automatische Generierung AUTOSAR-konformer Systemarchitekturen aus
 Pareto-optimalen Entwurfsgraphen erm\"{o}glichen -- ein wesentlicher Schritt in
 Richtung \emph{Model-Based Systems Engineering} (MBSE).
@@ -806,7 +806,7 @@ Richtung \emph{Model-Based Systems Engineering} (MBSE).
 
 Echtzeit-Embedded-Systems erfordern neben der Optimierung statischer
 Entwurfsziele auch die dynamische Ressourcenzuteilung.
-Der EDF$^+$-Algorithmus~\cite{epp2025edf} (Earliest Deadline First,
+Der EDF$^+$-Algorithmus~\cite{epp2026edf} (Earliest Deadline First,
 erweitert um Priorit\"{a}tsschemata) und das EtherCAT-Kommunikationsprotokoll
 definieren zeitliche Abh\"{a}ngigkeiten zwischen Tasks und Netzwerkknoten.
 Diese Abh\"{a}ngigkeiten lassen sich als gerichteten Aufgaben-Graphen $G_T$
@@ -826,8 +826,8 @@ zugewiesen werden. Bei $n = 100$ Rotationen und $n^2 = 10.000$
 DP-Zellen pro Rotation w\"{u}rden $10^6$ parallele Operationen anfallen --
 f\"{u}r moderne GPUs mit $10^4$ CUDA-Kernen eine Speedup-Faktor von bis zu $10^4$
 gegen\"{u}ber sequentieller Ausf\"{u}hrung.
-Im Kontext der VADIS-Architektur~\cite{epp2025vadis} k\"{o}nnte der
-GPU-parallelisierte Subgraph-Algorithmus als Kern-Engine f\"{u}r
+Im Kontext der VADIS-Architektur~\cite{epp2026vadis} k\"{o}nnte der
+GPU-parallelisierte Subgraph Algorithmus als Kern-Engine f\"{u}r
 multimodale Entwurfsraumexploration bei sehr gro{\ss}en $m$
 (Tausende von Entwurfsalternativen) eingesetzt werden.
 
@@ -836,7 +836,7 @@ multimodale Entwurfsraumexploration bei sehr gro{\ss}en $m$
 Konfigurierbarkeit und Erreichbarkeit als Entwurfsziele umfassen zunehmend
 auch Sicherheits-Properties: Embedded Systems in medizinischen und
 Automotive-Dom\"{a}nen m\"{u}ssen gegen Quantencomputer-Angriffe geh\"{a}rtet werden.
-Die Signatur-Chiffre~\cite{epp2024signatur} -- ein post-quanten-sicheres
+Die Signatur-Chiffre~\cite{epp2026signatur} -- ein post-quanten-sicheres
 Kryptosystem auf Basis von Subgraph-Isomorphismus als NP-hartem
 One-Way-Problem -- kann direkt in den Entwurfsgraphen integriert werden:
 Der kryptographische Schl\"{u}sselaustausch zwischen Embedded-Knoten wird als
@@ -854,7 +854,7 @@ Zielinteraktionen. Ein verallgemeinertes Multi-Domain-Entwurfsproblem kann
 als Produkt-Graph-Isomorphismus modelliert werden:
 $G_d \hookrightarrow \prod_{l=1}^{L} G_{\mathrm{Dom}_l}$,
 wobei $G_{\mathrm{Dom}_l}$ der Anforderungsgraph der Dom\"{a}ne $l$ ist.
-Der Subgraph-Algorithmus mit $\Theta(k^3)$-Grundkomplexit\"{a}t skaliert auch
+Der Subgraph Algorithmus mit $\Theta(k^3)$-Grundkomplexit\"{a}t skaliert auch
 f\"{u}r diesen Produktgraphen polynomiell, sofern $L = O(1)$.
 
 \subsection{Machine-Learning-gest\"{u}tzte Schwellwert-Kalibrierung}
@@ -872,13 +872,13 @@ Designs bedeutet mehr Designfreiheit).
 
 \subsection{Formale Verifikation via CBMC und Modell-Checking}
 
-Der Subgraph-Algorithmus erzeugt eine formale Aussage der Form
+Der Subgraph Algorithmus erzeugt eine formale Aussage der Form
 $G_{d_i} \hookrightarrow G_{d_j}$, die direkt als logische Formel in
 temporaler Logik (CTL, LTL) ausdr\"{u}ckbar ist.
 AUTOSAR-Spezifikationen~\cite{autosar2021} werden zunehmend als
 formale Modelle (ARXML) verwaltet, die \"{u}ber CBMC~\cite{kroening2014cbmc}
 verifiziert werden k\"{o}nnen.
-Die Integration des Subgraph-Algorithmus als Verifikationsprimitive in
+Die Integration des Subgraph Algorithmus als Verifikationsprimitive in
 CBMC w\"{u}rde die Laufzeitverifikation von Pareto-Optimalit\"{a}t f\"{u}r
 AUTOSAR-konforme Embedded-System-Designs erm\"{o}glichen.
 
@@ -900,11 +900,11 @@ theoretischer Beitrag.
 Das V-Modell des Systems Engineering~\cite{forsberg1991relationship}
 strukturiert den Embedded-Systems-Entwurf in Anforderungsanalyse,
 Systemarchitektur, Detailentwurf und Test.
-Die Pareto-Front-Identifikation via Subgraph-Algorithmus ist
+Die Pareto-Front-Identifikation via Subgraph Algorithmus ist
 am effektivsten in der fr\"{u}hen Anforderungsphase einzusetzen,
 wo der Entwurfsraum $\mathcal{D}$ noch offen ist und viele Alternativen
 existieren.
-Ein Werkzeug, das den Subgraph-Algorithmus nahtlos in
+Ein Werkzeug, das den Subgraph Algorithmus nahtlos in
 MBSE-Plattformen wie Cameo Systems Modeler oder PTC Integrity
 integriert, w\"{u}rde den Stand der Technik im modellbasierten
 Embedded-Systems-Entwurf signifikant voranbringen.
@@ -917,8 +917,8 @@ Embedded-Systems-Entwurf signifikant voranbringen.
 \bibitem{epp2026subgraph}
 S.\ Epp.
 \newblock \emph{Der Subgraph Algorithmus}.
-\newblock Technischer Bericht, EPP Group, GitLab,
-  \url{https://gitlab.com/epp-group/subgraph}, 2026.
+\newblock Technischer Bericht, GitHub,
+  \url{https://github.com/hjstephan86/science}, 2026.
 
 \bibitem{pareto1896cours}
 V.\ Pareto.
@@ -953,24 +953,24 @@ H.\ Bunke and K.\ Shearer.
 \newblock A graph distance metric based on the maximal common subgraph.
 \newblock \emph{Pattern Recognition Letters}, 19(3--4):255--259, 1998.
 
-\bibitem{epp2025edf}
+\bibitem{epp2026edf}
 S.\ Epp.
 \newblock \emph{EDF$^+$: Erweiterte Earliest-Deadline-First-Schedulingtheorie
   f\"{u}r Embedded-Real-Time-Systeme}.
 \newblock Technischer Bericht, EPP Group, 2025.
 
-\bibitem{epp2025vadis}
+\bibitem{epp2026vadis}
 S.\ Epp.
 \newblock \emph{VADIS: Vector-based Adaptive Distributed Information System
   for GPU-parallel Multimodal Data Retrieval}.
 \newblock Technischer Bericht, EPP Group, 2025.
 
-\bibitem{epp2024signatur}
+\bibitem{epp2026signatur}
 S.\ Epp.
 \newblock \emph{Signatur-Chiffre: Ein post-quantensicheres Kryptosystem
   basierend auf Graph-Isomorphismus}.
-\newblock Technischer Bericht, EPP Group, GitLab,
-  \url{https://gitlab.com/epp-group/}, 2024.
+\newblock Technischer Bericht, GitHub,
+  \url{https://github.com/hjstephan86/science/tree/main/science/}, 2024.
 
 \bibitem{nvidia2023hopper}
 NVIDIA Corporation.

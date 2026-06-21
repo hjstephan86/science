@@ -63,13 +63,13 @@ und $\varphi$-optimale Trajektorienplanung}
 
 \begin{abstract}
 Diese Arbeit entwickelt eine vollst\"andige formale Theorie der Roboter-Bewegungsplanung
-als Graphproblem und verbindet sie mit dem Subgraph-Algorithmus, dem Goldenen Schnitt
+als Graphproblem und verbindet sie mit dem Subgraph Algorithmus, dem Goldenen Schnitt
 $\varphi$ sowie Multiagenten-Spieltheorie.
 Das zentrale Ergebnis ist der \emph{Konfigurationsraum-Subgraph-Satz}
 (Satz~\ref{satz:cspace_subgraph}): Der optimale Roboterpfad im Konfigurationsraum
 $\Cfree$ ist der minimale Subgraph des Konfigurationsraum-Graphen
 $G_{\Cspace}$, entscheidbar in $O(n^3)$ durch den
-Subgraph-Algorithmus~\cite{epp2026subgraph}.
+Subgraph Algorithmus~\cite{epp2026subgraph}.
 Der \emph{$\varphi$-Pfad-Optimalit\"atssatz} (Satz~\ref{satz:phi_optimal})
 beweist, dass die Kantengewichtung $w_\varphi(d) = d/\varphi$ das optimale
 Energie-Distanz-Verh\"altnis realisiert.
@@ -99,7 +99,7 @@ sampling-basiert und konvergieren nur asymptotisch zum Optimum.
 
 Diese Arbeit schl\"agt einen neuen Ansatz vor: Die Kodierung des
 Konfigurationsraums als Graphen $G_{\Cspace}$ und die Anwendung des
-Subgraph-Algorithmus~\cite{epp2026subgraph} f\"ur polynomielle
+Subgraph Algorithmus~\cite{epp2026subgraph} f\"ur polynomielle
 Pfadsuche in $O(n^3)$.
 
 Zus\"atzlich wird der Goldene Schnitt $\varphi = (1+\sqrt{5})/2$
@@ -110,7 +110,7 @@ und Multiagenten-Kollaborationen als Nash-Gleichgewichte modelliert
 
 \subsection{Einordnung in das Forschungsportfolio}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} mit $O(n^3)$-Laufzeit ist
+Der Subgraph Algorithmus~\cite{epp2026subgraph} mit $O(n^3)$-Laufzeit ist
 das algorithmische Kernwerkzeug.
 Die $\varphi$-Optimierung~\cite{epp2026robophi,epp2026expl} liefert das
 Gewichtungsprinzip f\"ur Trajektorienenergien.
@@ -184,7 +184,7 @@ $G_{\Cspace}$. Dann gilt:
 \[
 G_{\pi^*} = \arg\min_{G_\pi \subseteq G_{\Cspace},\, q_s,q_g \in G_\pi} w(G_\pi),
 \]
-und $G_{\pi^*}$ ist mit dem Subgraph-Algorithmus~\cite{epp2026subgraph}
+und $G_{\pi^*}$ ist mit dem Subgraph Algorithmus~\cite{epp2026subgraph}
 in $O(n^3)$ identifizierbar.
 \end{satz}
 
@@ -352,7 +352,7 @@ Das optimale Coalition-Formation-Problem
 $\max_{\mathcal{C}} \sum_{T \in \mathcal{T}} v(C_T)$
 (\"uber alle Partitionen $\{\mathcal{C}_T\}$ von $\mathcal{R}$ auf $\mathcal{T}$)
 hat seine L\"osung im Nash-Gleichgewicht des Koalitions-Spielgraphen.
-Der Subgraph-Algorithmus identifiziert alle Nash-GGW-Koalitionsstrukturen
+Der Subgraph Algorithmus identifiziert alle Nash-GGW-Koalitionsstrukturen
 in $O(m^3)$, wobei $m = |\mathcal{R}|$.
 \end{satz}
 
@@ -374,7 +374,7 @@ kein Roboter wechselt die Koalition, wenn Shapley-Werte ausgezahlt werden.
 Der Koalitions-Spielgraph $G_{\mathrm{CF}}$ ist ein bipartiter Graph
 $G_{\mathrm{CF}} \subseteq K_{m,k}$ (vollst\"andiger bipartiter Graph).
 Die Signatur $\vec{\sigma}(A_{\mathrm{CF}})$ kodiert die Zuordnungsstruktur.
-Der Subgraph-Algorithmus pr\"uft alle Nash-GGW-Konfigurationen in $O(m^3)$.
+Der Subgraph Algorithmus pr\"uft alle Nash-GGW-Konfigurationen in $O(m^3)$.
 \end{proof}
 
 \begin{satz}[Shapley-Fairness-Satz f\"ur Roboterkoalitionen]
@@ -605,7 +605,7 @@ Konvergenz: F\"ur superadditive $v$ konvergiert der dezentralisierte
 Shapley-Algorithmus in $O(\log m)$ Runden (analog zum Gossip-Algorithmus).
 Verbindung zu~\cite{epp2026ecfta}: Das CFTA-Problem (Coalition Formation
 for Task Allocation) ist f\"ur $m$ Agenten und $k$ Aufgaben in
-$O(m^3 k^2)$ l\"osbar via Subgraph-Algorithmus.
+$O(m^3 k^2)$ l\"osbar via Subgraph Algorithmus.
 
 \subsection{DNA-Roboter und biologisch inspirierte Bewegungsplanung}
 
@@ -618,14 +618,14 @@ Biologisch inspirierte Bewegungsplanung: Kodiere Roboterpfade als
 DNA-Sequenzen, nutze DNA-Ligation als physikalische Implementierung des
 LCS-Matchings.
 Dies w\"urde die erste \emph{biomolekulare Implementierung} des
-Subgraph-Algorithmus erm\"oglichen.
+Subgraph Algorithmus erm\"oglichen.
 
 \subsection{Quantencomputer f\"ur exponentiell schnelle Pfadplanung}
 
 Das PSPACE-vollst\"andige allgemeine Pfadplanungsproblem l\"asst sich auf
 einem Quantencomputer durch Grover-Suche~\cite{grover1996} in
 $O(\sqrt{|\Cspace|})$ l\"osen (statt $O(|\Cspace|)$ klassisch).
-In Kombination mit dem Subgraph-Algorithmus~\cite{epp2026qsubgraph}:
+In Kombination mit dem Subgraph Algorithmus~\cite{epp2026qsubgraph}:
 Quantencomputer-Architektur f\"ur Pfadplanung mit
 $O(n^{1.5})$-Signatur-Matching (statt $O(n^2)$ klassisch).
 Forschungsrichtung: Implementierung auf aktuellen Quantenprozessoren
@@ -689,7 +689,7 @@ Die Verbindung zur formalen Verifikation~\cite{epp2026grammatik}:
 Ein Roboterprogramm als kontextfreie Grammatik $G_{\mathrm{Rob}}$
 erzeugt W\"orter (Befehlsfolgen); ein Ausf\"uhrungspfad im
 Konfigurationsraum entspricht einem Ableitungsbaum.
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} pr\"uft in $O(n^3)$,
+Der Subgraph Algorithmus~\cite{epp2026subgraph} pr\"uft in $O(n^3)$,
 ob ein Roboterprogramm eine Sicherheitsspezifikation erf\"ullt:
 $G_{\mathrm{Sicher}} \subseteq G_{\mathrm{Rob}}$ (Sicherheitsgraph ist
 Subgraph des Programm-Graphen).
@@ -785,7 +785,7 @@ Das IK-Problem ist die Suche nach dem Pfad, dessen Endknoten
 der Zielposition $\mathbf{p}_e$ am n\"achsten liegt.
 Die Signatur jedes Knotens kodiert seine Gelenkkonfiguration
 (via Universelle Signatur-Theorie~\cite{epp2026ust}).
-Der Subgraph-Algorithmus sucht in $O(N^3)$ nach dem
+Der Subgraph Algorithmus sucht in $O(N^3)$ nach dem
 \"ahnlichsten Signatur-Muster.
 Approximationsqualit\"at: F\"ur $\Delta\theta = 2\pi/n$
 liegt der Fehler bei $O(1/n)$ (erste-Ordnung-Approximation).
@@ -845,7 +845,7 @@ findet $\pi^*_{\mathrm{rob}}$ in $O(n^2)$ (oder $O(n \log n)$ mit Heap).
 \end{proof}
 
 \begin{korollar}[Subgraph-Suche f\"ur robuste Pfade]
-Die Robuste-Pfad-Suche via Subgraph-Algorithmus auf dem
+Die Robuste-Pfad-Suche via Subgraph Algorithmus auf dem
 stochastischen Graphen $G_{\Cspace}^{(\sigma)}$ l\"auft in $O(n^3)$
 (identische Signatur-Struktur wie im deterministischen Fall,
 da $p_e$ als zus\"atzliches Kantenattribut gespeichert wird, die
@@ -962,19 +962,19 @@ Springer.
 Epp, S. (2026).
 Der Subgraph Algorithmus --- L\"osung des Subgraph-Isomorphismus in $O(n^3)$.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026robophi}
 Epp, S. (2026).
 $\varphi$-basierte Optimierung in der Robotik.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/robophi}
+\url{https://github.com/hjstephan86/science/tree/main/science/robophi}
 
 \bibitem{epp2026robosim}
 Epp, S. (2026).
 Roboter-Simulation und physikalische Bewegungsmodelle.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/robosim}
+\url{https://github.com/hjstephan86/science/tree/main/science/robosim}
 
 \bibitem{epp2026ecfta}
 Epp, S. (2026).
@@ -992,7 +992,7 @@ Epp, S. (2026).
 Grenzen mathematischer Beschreibbarkeit ---
 Universalit\"at der Exponentialfunktion; $\varphi$ als optimaler Energieexponent.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/expl}
+\url{https://github.com/hjstephan86/science/tree/main/science/expl}
 
 \bibitem{epp2026spieltheorie}
 Epp, S. (2026).
@@ -1015,7 +1015,7 @@ Google Drive (epp-group).
 Epp, S. (2026).
 Polynomielle Reduktionen von Compiler-Problemen auf Subgraph-Isomorphismus.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/ccl}
+\url{https://github.com/hjstephan86/science/tree/main/science/ccl}
 
 \bibitem{epp2026grammatik}
 Epp, S. (2026).
@@ -1042,13 +1042,13 @@ Google Drive (epp-group).
 Epp, S. (2026).
 Graphenbasierte DNA-Sequenzierung mittels Subgraph Algorithmus.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/dna}
+\url{https://github.com/hjstephan86/science/tree/main/science/dna}
 
 \bibitem{epp2026cleanocn}
 Epp, S. (2026).
 Systematische Analyse von Ozean-Reinigungsstrategien.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/cleanocn}
+\url{https://github.com/hjstephan86/science/tree/main/science/cleanocn}
 
 \bibitem{epp2026nf6}
 Epp, S. (2026).

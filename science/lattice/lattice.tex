@@ -69,8 +69,7 @@
 
 \title{\textbf{Gitterbasierte Kryptographie und Quanten-Fehlerkorrektur:}\\
 \large Kürzeste-Vektor-Problem, GKP-Codes und Anonyme Reputationssysteme}
-\author{Stephan Epp\\
-\small Universität Bielefeld}
+\author{Stephan Epp}
 \date{3. Juni 2026}
 
 \begin{document}
@@ -83,7 +82,7 @@ modernen Gittertheorie und quantensicheren Kryptographie: das Shortest-Vector-Pr
 Gottesman-Kitaev-Preskill-Codes~(GKP) sowie gitterbasierte anonyme Reputationssysteme.
 Sämtliche zentralen Ergebnisse werden rigoros bewiesen, durch matplotlib-Abbildungen
 veranschaulicht und in den aktuellen Forschungsstand eingeordnet.
-Der Subgraph-Algorithmus~\cite{Epp2026Subgraph} liefert dabei die algorithmische Vergleichsgrundlage.
+Der Subgraph Algorithmus~\cite{Epp2026Subgraph} liefert dabei die algorithmische Vergleichsgrundlage.
 \end{abstract}
 
 \tableofcontents
@@ -708,7 +707,7 @@ der aktuell einen Quantenangreifer nicht vollständig simulieren kann.
 \end{proof}
 
 % ============================================================
-\section{Verbindung zum Subgraph-Algorithmus}
+\section{Verbindung zum Subgraph Algorithmus}
 % ============================================================
 
 \subsection{Gitterstrukturen als Graphen}
@@ -722,10 +721,10 @@ $G_\Lat = (V_\Lat, E_\Lat)$ definiert durch:
 \end{itemize}
 \end{definition}
 
-\begin{satz}[Subgraph-Algorithmus auf Gitter-Cayley-Graphen]
+\begin{satz}[Subgraph Algorithmus auf Gitter-Cayley-Graphen]
 \label{satz:subgraph_gitter}
 Sei $\Lat_1 \subseteq \Lat_2$ (Untergitter). Dann gilt $G_{\Lat_1} \subseteq G_{\Lat_2}$
-als Subgraph, und der Subgraph-Algorithmus~\cite{Epp2026Subgraph} erkennt diese
+als Subgraph, und der Subgraph Algorithmus~\cite{Epp2026Subgraph} erkennt diese
 Beziehung in Zeit $O(n^3)$.
 \end{satz}
 
@@ -734,7 +733,7 @@ Eine Untergitter-Beziehung $\Lat_1 \subseteq \Lat_2$ bedeutet, dass jede Basis v
 durch ganzzahlige Linearkombinationen aus der Basis von $\Lat_2$ darstellbar ist.
 Die Adjazenzmatrizen $A_1$ und $A_2$ der entsprechenden Cayley-Graphen erfüllen dann
 $A_1 \subseteq A_2$ (komponentenweise).
-Der Subgraph-Algorithmus berechnet für beide Matrizen Signatur-Arrays und vergleicht diese
+Der Subgraph Algorithmus berechnet für beide Matrizen Signatur-Arrays und vergleicht diese
 mittels LCS-basierter Rotation, was in $O(n^3)$ ausführbar ist.
 Die Korrektheit folgt aus Lemma~1 in~\cite{Epp2026Subgraph} (Injektivität der Signaturen).
 \end{proof}
@@ -747,7 +746,7 @@ entspricht dem Suchen eines isomorphen Subgraphen im Cayley-Graphen.
 \begin{bemerkung}
 Für den GKP-Code gilt: Die symplektische Dualgitter-Relation $\Lat \subseteq \Lat^\perp$
 ist direkt als Subgraph-Relation der entsprechenden Cayley-Graphen erkennbar.
-Der Subgraph-Algorithmus kann damit zur effizienten Überprüfung von GKP-Codebedingungen
+Der Subgraph Algorithmus kann damit zur effizienten Überprüfung von GKP-Codebedingungen
 eingesetzt werden.
 \end{bemerkung}
 
@@ -904,11 +903,11 @@ Besondere Herausforderungen sind:
     \item Effizienz auf ressourcenbeschränkten IoT-Knoten.
 \end{itemize}
 
-\subsection{Algorithmische Aspekte und der Subgraph-Algorithmus}
+\subsection{Algorithmische Aspekte und der Subgraph Algorithmus}
 
-\subsubsection{Parallelisierung des Subgraph-Algorithmus für Gitter}
+\subsubsection{Parallelisierung des Subgraph Algorithmus für Gitter}
 
-Der Subgraph-Algorithmus~\cite{Epp2026Subgraph} hat eine Laufzeit $O(n^3)$,
+Der Subgraph Algorithmus~\cite{Epp2026Subgraph} hat eine Laufzeit $O(n^3)$,
 die durch Parallelisierung auf $O(n^2)$ pro Prozessor reduziert werden kann
 (jede Rotation unabhängig berechnet).
 Für Gitter mit $n > 10\,000$ (typisch in post-quanten Kryptographie)
@@ -917,16 +916,16 @@ wären GPU-Implementierungen oder spezialisierte Hardware~(FPGA/ASIC) notwendig.
 \subsubsection{Approximative Subgraph-Suche in Gittern}
 
 Für SVP-Approximation ist es nicht notwendig, exakte Subgraph-Isomorphismen zu finden.
-Ein approximativer Subgraph-Algorithmus, der eine $\gamma$-Ähnlichkeit erkennt,
+Ein approximativer Subgraph Algorithmus, der eine $\gamma$-Ähnlichkeit erkennt,
 könnte als Basis für neuartige Approximationsalgorithmen für SVP dienen.
-Formale Verbindungen zwischen der LCS-Schranke des Subgraph-Algorithmus
+Formale Verbindungen zwischen der LCS-Schranke des Subgraph Algorithmus
 und dem Approximationsfaktor von Gitteralgorithmen sind zu untersuchen.
 
-\subsubsection{Subgraph-Algorithmus und Graph-Neuronale-Netze}
+\subsubsection{Subgraph Algorithmus und Graph-Neuronale-Netze}
 
-Die Signatur-Array-Darstellung von Graphen im Subgraph-Algorithmus
+Die Signatur-Array-Darstellung von Graphen im Subgraph Algorithmus
 lässt sich als Feature-Vektor für Graph-Neuronale-Netze (GNN) interpretieren~\cite{Xu2019}.
-Eine Verbindung zwischen der LCS-basierten Ähnlichkeit im Subgraph-Algorithmus
+Eine Verbindung zwischen der LCS-basierten Ähnlichkeit im Subgraph Algorithmus
 und Aggregationsfunktionen in GNNs könnte neue Perspektiven auf
 Gitter-Klassifikationsprobleme eröffnen.
 
@@ -1059,14 +1058,14 @@ J.~H.~Conway and N.~J.~A.~Sloane.
 \bibitem{Epp2026Subgraph}
 S.~Epp.
 \newblock Der Subgraph Algorithmus.
-\newblock Universität Bielefeld, Januar 2026.
-\newblock \url{https://gitlab.com/epp-group/subgraph}.
+\newblock, Januar 2026.
+\newblock \url{https://github.com/hjstephan86/science}.
 
 \bibitem{Epp2026Embedded}
 S.~Epp.
 \newblock Design Optimization in Embedded Systems via Subgraph Isomorphism
   and Pareto Optimization.
-\newblock Universität Bielefeld, 2026.
+\newblock, 2026.
 
 \bibitem{GKP2001}
 D.~Gottesman, A.~Kitaev, and J.~Preskill.

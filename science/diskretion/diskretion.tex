@@ -66,8 +66,7 @@
 \title{\textbf{Das Prinzip der Diskretion des Kontinuierlichen}\\[0.5em]
 \large Formale Analyse von neun fundamentalen Anwendungsbereichen der Diskretisierung\\
 kontinuierlicher Phänomene in der Natur und Wissenschaft}
-\author{Stephan Epp\\
-\small Universität Bielefeld}
+\author{Stephan Epp}
 \date{6. Juni 2026}
 
 \begin{document}
@@ -676,19 +675,19 @@ Markov & $\mathcal{P}(\mathbb{R})$ & TV & $O(K^{-1})$ & algebraisch\\
 \end{table}
 
 %============================================================
-\section{Verbindung zum Subgraph-Algorithmus: Graphen-Diskretisierung als universelles Prinzip}
+\section{Verbindung zum Subgraph Algorithmus: Graphen-Diskretisierung als universelles Prinzip}
 \label{sec:subgraph}
 %============================================================
 
 \subsection{Motivation und Einbettung in das Diskretisierungsparadigma}
 
-Der in~\cite{epp2026subgraph} entwickelte Subgraph-Algorithmus stellt eine bisher unbeachtete
+Der in~\cite{epp2026subgraph} entwickelte Subgraph Algorithmus stellt eine bisher unbeachtete
 Instanz des in dieser Arbeit formalisierten universellen Diskretisierungstheorems dar.
 Graphen sind naturgemäß diskrete Strukturen; dennoch liegt ihnen ein kontinuierliches Substrat
 zugrunde: der Raum aller möglichen Morphismen, Isomorphismen und strukturellen
 Äquivalenzklassen bildet einen metrischen Raum, der durch kontinuierliche Invarianten
 (Spektrum des Laplace-Operators, charakteristisches Polynom) charakterisiert wird.
-Der Subgraph-Algorithmus diskretisiert diesen kontinuierlichen Invariantenraum durch ein
+Der Subgraph Algorithmus diskretisiert diesen kontinuierlichen Invariantenraum durch ein
 algebraisch wohlbegründetes Signaturarray und macht ihn so für exakten diskreten Vergleich
 zugänglich.
 
@@ -729,12 +728,12 @@ diesem Kapitel vollständig ausgearbeitet:
     Der Raum $(\mathcal{G}_n/{\cong},\, d_{\mathrm{GED}})$ ist ein diskreter metrischer Raum
     mit $|\mathcal{G}_n/{\cong}|$ Punkten; dieser wächst super-exponentiell in $n$.
     Die Berechnung von $d_{\mathrm{GED}}$ ist NP-hart im Allgemeinen~\cite{zeng2009}.
-    Der Subgraph-Algorithmus umgeht diese Komplexität durch eine algebraische Diskretisierung.
+    Der Subgraph Algorithmus umgeht diese Komplexität durch eine algebraische Diskretisierung.
 \end{bemerkung}
 
 \subsection{Punkt 1: Der Signaturoperator als diskreter Messfunktional}
 
-\begin{definition}[Signaturoperator des Subgraph-Algorithmus]
+\begin{definition}[Signaturoperator des Subgraph Algorithmus]
 \label{def:sigop}
     Sei $G \in \mathcal{G}_n$ mit Adjazenzmatrix $A \in \{0,1\}^{n \times n}$.
     Der \emph{Signaturoperator} $\mathcal{S}_n : \mathcal{G}_n \to \mathbb{Z}^n$ ist definiert durch
@@ -807,7 +806,7 @@ diesem Kapitel vollständig ausgearbeitet:
 \end{proof}
 
 \begin{bemerkung}
-    Satz~\ref{satz:sigdisk} zeigt, dass der Subgraph-Algorithmus im Gegensatz zu allen anderen
+    Satz~\ref{satz:sigdisk} zeigt, dass der Subgraph Algorithmus im Gegensatz zu allen anderen
     in dieser Arbeit behandelten Diskretisierungen eine \emph{verlustfreie} (exakte)
     Diskretisierung darstellt -- analog zum Shannon-Nyquist-Theorem, bei dem unter der
     Bandlimitierungsbedingung ebenfalls eine exakte Rekonstruktion möglich ist.
@@ -908,17 +907,17 @@ diesem Kapitel vollständig ausgearbeitet:
     Die Umkehrung gilt im Allgemeinen nicht: ko-spektrale Graphen (gleiche Eigenwerte,
     nicht isomorph) zeigen, dass $d_\Lambda = 0$ nicht $G \cong G'$ impliziert.
     Die spektrale Signatur ist daher eine \emph{Relaxierung}, keine vollständige Invariante.
-    Der Subgraph-Algorithmus liefert durch die Signaturkodierung eine vollständige Invariante
+    Der Subgraph Algorithmus liefert durch die Signaturkodierung eine vollständige Invariante
     (Satz~\ref{satz:sigdisk}), während das Spektrum eine berechenbare untere Schranke darstellt.
 \end{bemerkung}
 
 \subsection{Punkt 3: Neue Familie von Graphmatching-Algorithmen mit Konvergenzgarantien}
 
-Wir entwickeln nun einen \emph{Spektral-Subgraph-Algorithmus} (SSA), der die Vorteile beider
+Wir entwickeln nun einen \emph{Spektral-Subgraph Algorithmus} (SSA), der die Vorteile beider
 Ansätze vereint: die vollständige Korrektheit des Signaturverfahrens und die Effizienz
 spektraler Vorfilterung.
 
-\begin{definition}[Spektral-Subgraph-Algorithmus (SSA)]
+\begin{definition}[Spektral-Subgraph Algorithmus (SSA)]
 \label{def:ssa}
     Gegeben: $G, G' \in \mathcal{G}_n$. Der SSA arbeitet in drei Phasen:
 
@@ -936,7 +935,7 @@ spektraler Vorfilterung.
 
 \begin{satz}[Korrektheit des SSA]
 \label{satz:ssa_korrekt}
-    Der Spektral-Subgraph-Algorithmus (Definition~\ref{def:ssa}) ist \emph{korrekt}:
+    Der Spektral-Subgraph Algorithmus (Definition~\ref{def:ssa}) ist \emph{korrekt}:
     Er gibt genau dann \texttt{Subgraph} aus, wenn eine Subgraph-Beziehung besteht,
     und genau dann \texttt{kein Subgraph}, wenn keine Subgraph-Beziehung besteht.
 \end{satz}
@@ -960,7 +959,7 @@ spektraler Vorfilterung.
 
     \textbf{Phase~2 ist exakt:}
     Nach Satz~\ref{satz:sigdisk} rekonstruiert $\mathcal{R}_n \circ \mathcal{S}_n$ den Graphen
-    verlustfrei. Der LCS-basierte Subgraph-Test des Subgraph-Algorithmus~\cite{epp2026subgraph}
+    verlustfrei. Der LCS-basierte Subgraph-Test des Subgraph Algorithmus~\cite{epp2026subgraph}
     ist korrekt (dort Satz~5). \qedhere
 \end{proof}
 
@@ -985,7 +984,7 @@ spektraler Vorfilterung.
     Lanczos liefert $k$ Eigenwerte in $O(kn^2)$; für $k = O(1)$ also $O(n^2)$.
 
     \textbf{Signatur-Phase (Phase~2):}
-    Nach~\cite{epp2026subgraph} (Satz~2 dort) läuft der Subgraph-Algorithmus in $\Theta(n^3)$.
+    Nach~\cite{epp2026subgraph} (Satz~2 dort) läuft der Subgraph Algorithmus in $\Theta(n^3)$.
 
     \textbf{Gesamtlaufzeit:}
     $O(n^2) + O(n^3) = O(n^3)$ im Worst-Case.
@@ -1021,7 +1020,7 @@ spektraler Vorfilterung.
 
 \subsection{Einbettung in das universelle Diskretisierungstheorem}
 
-\begin{proposition}[Subgraph-Algorithmus als Instanz des universellen Theorems]
+\begin{proposition}[Subgraph Algorithmus als Instanz des universellen Theorems]
 \label{prop:universal}
     Das universelle Diskretisierungstheorem (Abschnitt~11, Satz~22) mit
     $\mathcal{F} = (\mathcal{G}_n, d_{\mathrm{GED}})$,
@@ -1054,7 +1053,7 @@ spektraler Vorfilterung.
 \centering
 \begin{tabular}{lll}
 \toprule
-\textbf{Eigenschaft} & \textbf{Subgraph-Algorithmus} & \textbf{Spektrale Methode}\\
+\textbf{Eigenschaft} & \textbf{Subgraph Algorithmus} & \textbf{Spektrale Methode}\\
 \midrule
 Vollständigkeit & Vollständig (exakt) & Unvollständig (ko-spektrale Graphen)\\
 Laufzeit & $O(n^3)$ & $O(n^2)$ (Lanczos)\\
@@ -1064,13 +1063,13 @@ Konvergenzfehler & 0 & $O(d_{\mathrm{GED}})$\\
 Frühausstieg & Nein & Ja (Vorfilterung)\\
 \bottomrule
 \end{tabular}
-\caption{Vergleich Subgraph-Algorithmus vs.\ spektrale Graphenmethoden}
+\caption{Vergleich Subgraph Algorithmus vs.\ spektrale Graphenmethoden}
 \end{table}
 
 \begin{korollar}[Optimale Kombination]
 \label{kor:opt}
     Der SSA (Definition~\ref{def:ssa}) ist die optimale Kombination:
-    Er erreicht die Korrektheit des Subgraph-Algorithmus \emph{und} die Effizienz
+    Er erreicht die Korrektheit des Subgraph Algorithmus \emph{und} die Effizienz
     spektraler Vorfilterung. Im Erwartungswert über gleichverteilte Graphenpaare ist
     $T_{\mathrm{SSA}}^{\mathrm{avg}} = O(n^2)$, sofern der spektrale Abstand in einer Mehrheit
     der Fälle einen Frühausstieg erlaubt.
@@ -1095,8 +1094,8 @@ Die vorliegende Arbeit hat gezeigt, dass das Planck'sche Diskretisierungsprinzip
     \item Die Approximation konvergiert gegen das kontinuierliche Original: $\mathcal{R}_N \circ \mathcal{D}_N(f) \to f$ für $N \to \infty$.
     \item Die Konvergenzrate ist quantifizierbar und von der Auflösung $N$ abhängig (vgl.\ vergleichende Tabelle in Kapitel~12).
     \item Das Prinzip ist domänenunabhängig: Es gilt in Physik, Informationstechnik, Numerik, Neurophysiologie, Molekularbiologie, Stochastik und Graphentheorie gleichermaßen.
-    \item Der Subgraph-Algorithmus~\cite{epp2026subgraph} stellt -- wie in Kapitel~\ref{sec:subgraph} vollständig formalisiert -- eine exakte, verlustfreie Instanz des universellen Diskretisierungstheorems (Kapitel~12, Satz~22) dar.
-    \item Der in Kapitel~\ref{sec:subgraph} neu entwickelte Spektral-Subgraph-Algorithmus (SSA) vereint die vollständige Korrektheit des Signaturverfahrens mit der Effizienz spektraler Vorfilterung und erreicht im Erwartungswert eine Laufzeit von $O(n^2)$ (Korollar~\ref{kor:opt}).
+    \item Der Subgraph Algorithmus~\cite{epp2026subgraph} stellt -- wie in Kapitel~\ref{sec:subgraph} vollständig formalisiert -- eine exakte, verlustfreie Instanz des universellen Diskretisierungstheorems (Kapitel~12, Satz~22) dar.
+    \item Der in Kapitel~\ref{sec:subgraph} neu entwickelte Spektral-Subgraph Algorithmus (SSA) vereint die vollständige Korrektheit des Signaturverfahrens mit der Effizienz spektraler Vorfilterung und erreicht im Erwartungswert eine Laufzeit von $O(n^2)$ (Korollar~\ref{kor:opt}).
 \end{itemize}
 
 %============================================================
@@ -1106,7 +1105,7 @@ Die vorliegende Arbeit hat gezeigt, dass das Planck'sche Diskretisierungsprinzip
 
 Der folgende Ausblick skizziert sieben offene Forschungsrichtungen, die sich unmittelbar aus
 den Ergebnissen dieser Arbeit ergeben. Die in Kapitel~\ref{sec:subgraph} vollständig
-ausgearbeitete Verbindung zum Subgraph-Algorithmus ist dabei kein isolierter Sonderfall,
+ausgearbeitete Verbindung zum Subgraph Algorithmus ist dabei kein isolierter Sonderfall,
 sondern bildet -- zusammen mit den Ergebnissen der Kapitel~3 bis~12 -- die Grundlage für
 eine weitreichende, domänenübergreifende Diskretisierungstheorie.
 
@@ -1185,7 +1184,7 @@ tolerieren also aggressivere Diskretisierung -- eine Verbindung zur Generalisier
 
 Die Verbindung zur Graphendiskretisierung aus Kapitel~\ref{sec:subgraph} ergibt sich durch
 die Darstellung neuronaler Netze als gewichtete gerichtete Graphen: Der
-Spektral-Subgraph-Algorithmus (SSA) könnte zur Architektursuche (NAS) eingesetzt werden,
+Spektral-Subgraph Algorithmus (SSA) könnte zur Architektursuche (NAS) eingesetzt werden,
 indem strukturähnliche Teilnetzwerke effizient identifiziert und deren Gewichte geteilt
 werden (\emph{Weight Sharing}). Offene Forschungsfragen: Formale Schranken für die
 Quantisierungstoleranz in Abhängigkeit von Spektraleigenschaften des Netzwerkgraphen.
@@ -1209,7 +1208,7 @@ näherungsweise:
 d.\,h.\ benachbarte Codons (ein Basenaustausch) kodieren ähnliche Aminosäuren. Randomisierte
 Codes erzielen im Mittel deutlich höhere Werte von $\mathcal{E}$~\cite{freeland1998}.
 
-Verbindung zu Kapitel~\ref{sec:subgraph}: Der Subgraph-Algorithmus könnte zur
+Verbindung zu Kapitel~\ref{sec:subgraph}: Der Subgraph Algorithmus könnte zur
 Analyse evolutionärer Distanzen zwischen Genomen eingesetzt werden, indem
 Gennetzwerke (Protein-Interaktionsgraphen) durch den SSA auf strukturelle Ähnlichkeit
 geprüft werden. Dies verbindet die Graphendiskretisierung mit vergleichender Genomik.
@@ -1272,7 +1271,7 @@ Dimensionality), Monte-Carlo immer $O(N^{-1/2})$.
 (Halton, Sobol) wird die Konvergenzrate auf $O(N^{-1}(\log N)^d)$
 verbessert~\cite{niederreiter1992} -- exponentielle Verbesserung gegenüber klassischem MC.
 
-Die Verbindung zum Subgraph-Algorithmus aus Kapitel~\ref{sec:subgraph}: Der
+Die Verbindung zum Subgraph Algorithmus aus Kapitel~\ref{sec:subgraph}: Der
 Markov-Ketten-Monte-Carlo (MCMC)-Ansatz zur approximativen Berechnung von
 $d_{\mathrm{GED}}$ (Kapitel~\ref{sec:subgraph}, Definition~2) stellt eine stochastische
 Diskretisierung des NP-harten Optimierungsproblems dar. Die Konvergenzrate des
@@ -1378,7 +1377,7 @@ J.~R.~Norris, \textit{Markov Chains}. Cambridge: Cambridge University Press, 199
 A.~Abboud, A.~Backurs, und V.~V.~Williams, ``Tight Hardness Results for LCS and Other Sequence Similarity Measures,'' \textit{Proc. FOCS 2015}, S.~59--78, 2015.
 
 \bibitem{epp2026subgraph}
-S.~Epp, ``Der Subgraph Algorithmus,'' Universität Bielefeld, Januar 2026. \url{https://gitlab.com/epp-group/subgraph}
+S.~Epp, ``Der Subgraph Algorithmus,'', Januar 2026. \url{https://github.com/hjstephan86/subgraph}
 
 \bibitem{zeng2009}
 Z.~Zeng, A.~K.~H.~Tung, J.~Wang, J.~Feng, und L.~Zhou, ``Comparing Stars: On Approximating Graph Edit Distance,'' \textit{Proc. VLDB Endowment}, Bd.~2, Nr.~1, S.~25--36, 2009.

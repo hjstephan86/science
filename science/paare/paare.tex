@@ -58,9 +58,8 @@
 
 \title{\textbf{Paare als Harmoniestruktur der Natur}\\[0.4em]
 \large Eine formale Analyse komplementärer Paarbildung\\
-mittels des Subgraph-Algorithmus (Epp 2026)}
-\author{Stephan Epp\\
-\small Universität Bielefeld}
+mittels des Subgraph Algorithmus (Epp 2026)}
+\author{Stephan Epp}
 \date{13. Mai 2026}
 
 \begin{document}
@@ -74,7 +73,7 @@ neuem Leben und damit zur Erhaltung biologischer Information über Generationen 
 Wir entwickeln einen formalen Rahmen auf Basis von Paarungsgraphen, der ein
 \emph{Harmoniemaß} $H(G) \in [0,1]$ definiert und beweisen, dass $H(G) = 1$ genau dann
 gilt, wenn der Graph ein perfektes Matching enthält.
-Der Subgraph-Algorithmus (Epp~2026, $O(n^3)$) wird als Instrument zur automatischen
+Der Subgraph Algorithmus (Epp~2026, $O(n^3)$) wird als Instrument zur automatischen
 Paarungsdetektion eingesetzt und auf sechs natürliche Paarungsdomänen angewendet:
 (1)~biologische Reproduktion (Mann/Frau), (2)~DNA-Basenpaarung (Watson-Crick-Komplementarität),
 (3)~elektrische Ladungspaare (Coulomb-Attraktion), (4)~Magnetpole,
@@ -120,8 +119,8 @@ Die vorliegende Arbeit leistet folgende formale Beiträge:
 	\item \textbf{Formale Definition des Harmoniemaßes}: Wir definieren $H(G) \in [0,1]$
 	für Paarungsgraphen und beweisen seine Grundeigenschaften (Abschnitt~\ref{sec:grundlagen}).
 	
-	\item \textbf{Subgraph-Algorithmus als Paarungsdetektor}: Wir zeigen, dass der
-	Subgraph-Algorithmus (Epp~2026) Paarmuster in $O(n^3)$ Zeit erkennt
+	\item \textbf{Subgraph Algorithmus als Paarungsdetektor}: Wir zeigen, dass der
+	Subgraph Algorithmus (Epp~2026) Paarmuster in $O(n^3)$ Zeit erkennt
 	(Abschnitt~\ref{sec:subgraph}).
 	
 	\item \textbf{Formale Analyse von sechs Paardomänen}: Für jede Domäne beweisen wir
@@ -139,7 +138,7 @@ Watson und Crick~\cite{watson1953} entdeckten die molekulare Grundlage der DNA-P
 Die ökologische Paarungsdynamik wurde durch Lotka~\cite{lotka1925} und
 Volterra~\cite{volterra1926} mathematisch formalisiert. Der vorliegende Ansatz
 vereinigt diese Perspektiven unter dem einheitlichen graphen-theoretischen Rahmen des
-Subgraph-Algorithmus \cite{epp2026}.
+Subgraph Algorithmus \cite{epp2026}.
 
 % ===================================================================
 \section{Grundlagen und Definitionen}
@@ -265,7 +264,7 @@ Subgraph-Algorithmus \cite{epp2026}.
 
 \subsection{Signatur-Kodierung von Paaren}
 
-Für die Anwendung des Subgraph-Algorithmus kodieren wir jedes natürliche Paar
+Für die Anwendung des Subgraph Algorithmus kodieren wir jedes natürliche Paar
 als einen 2-Knoten-Graphen:
 
 \begin{definition}[Paar-Mustergraph]
@@ -274,7 +273,7 @@ als einen 2-Knoten-Graphen:
 	\[
 		\mathbf{P} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
 	\]
-	Seine Signaturen nach dem Subgraph-Algorithmus (Epp~2026) sind
+	Seine Signaturen nach dem Subgraph Algorithmus (Epp~2026) sind
 	$\sigma_0^P = 0\cdot2^0 + 1\cdot2^1 + 0\cdot2^2 = 2$ und
 	$\sigma_1^P = 1\cdot2^0 + 0\cdot2^1 + 1\cdot2^2 = 5$.
 \end{definition}
@@ -291,13 +290,13 @@ als einen 2-Knoten-Graphen:
 \end{beispiel}
 
 % ===================================================================
-\section{Anwendung des Subgraph-Algorithmus zur Paarungsdetektion}
+\section{Anwendung des Subgraph Algorithmus zur Paarungsdetektion}
 \label{sec:subgraph}
 % ===================================================================
 
 \subsection{Paarungserkennung als Subgraph-Problem}
 
-Die Erkennung natürlicher Paare lässt sich direkt auf das vom Subgraph-Algorithmus
+Die Erkennung natürlicher Paare lässt sich direkt auf das vom Subgraph Algorithmus
 (Epp~2026) gelöste Problem reduzieren:
 
 \begin{itemize}
@@ -317,7 +316,7 @@ Für den allgemeinen Fall eines Systems mit $n$ Entitäten:
 \begin{satz}[Paarungserkennungssatz]
 	\label{satz:erkennung}
 	Sei $G_S = (V, E_S)$ ein Systemgraph mit $n = |V|$ Knoten und
-	$P_2 = (\{u,v\}, \{\{u,v\}\})$ der Paar-Mustergraph. Der Subgraph-Algorithmus
+	$P_2 = (\{u,v\}, \{\{u,v\}\})$ der Paar-Mustergraph. Der Subgraph Algorithmus
 	(Epp~2026) bestimmt für alle $\binom{n}{2}$ Knotenpaare, ob eine Harmoniekante
 	vorliegt, in Gesamtlaufzeit
 	\[
@@ -1172,7 +1171,7 @@ Der Beweis folgt aus den Einzelbeweisen der nachfolgenden Abschnitte.
 
 \begin{satz}[Signatur-Eindeutigkeitssatz]
 	\label{satz:signatur}
-	Die Subgraph-Algorithmus-Signatur von $K_{1,1}$ (für $n = 2$) ist
+	Die Subgraph Algorithmus-Signatur von $K_{1,1}$ (für $n = 2$) ist
 	$(\sigma_0^{K_{1,1}}, \sigma_1^{K_{1,1}}) = (2, 5)$.
 	Diese Signatur charakterisiert $K_{1,1}$ eindeutig unter allen einfachen
 	Graphen auf 2~Knoten.
@@ -1388,9 +1387,9 @@ Der Beweis folgt aus den Einzelbeweisen der nachfolgenden Abschnitte.
 	Eine Eingabeleseschranke von $\Omega(n^2)$ folgt direkt.
 \end{proof}
 
-\begin{satz}[Optimalität des Subgraph-Algorithmus für Paarungsdetektion]
+\begin{satz}[Optimalität des Subgraph Algorithmus für Paarungsdetektion]
 	\label{satz:opt_paar}
-	Der Subgraph-Algorithmus (Epp~2026) mit Laufzeit $O(n^3)$ ist für die
+	Der Subgraph Algorithmus (Epp~2026) mit Laufzeit $O(n^3)$ ist für die
 	Paarungsdetektion optimal im Sinne der bedingten unteren Schranke unter SETH:
 	Kein Algorithmus kann alle paarweisen Komplementaritätsprüfungen eines
 	$n$-Entitäten-Systems in $O(n^{3-\varepsilon})$ Zeit für $\varepsilon > 0$
@@ -1398,7 +1397,7 @@ Der Beweis folgt aus den Einzelbeweisen der nachfolgenden Abschnitte.
 \end{satz}
 
 \begin{proof}
-	Folgt direkt aus dem Optimalitätssatz des Subgraph-Algorithmus (Epp~2026, Satz~4)
+	Folgt direkt aus dem Optimalitätssatz des Subgraph Algorithmus (Epp~2026, Satz~4)
 	durch Reduktion: Das Paarungserkennungsproblem enthält als Teilproblem
 	$\binom{n}{2}$ unabhängige LCS-Vergleiche. Die SETH-basierte
 	LCS-Schranke aus Abboud et al.~\cite{abboud2015} ergibt in Kombination
@@ -1407,7 +1406,7 @@ Der Beweis folgt aus den Einzelbeweisen der nachfolgenden Abschnitte.
 
 \begin{table}[h]
 	\centering
-	\caption{Laufzeitkomplexität des Subgraph-Algorithmus für die Paarungsdetektion.}
+	\caption{Laufzeitkomplexität des Subgraph Algorithmus für die Paarungsdetektion.}
 	\label{tab:komplexitaet}
 	\renewcommand{\arraystretch}{1.25}
 	\begin{tabular}{lll}
@@ -1447,7 +1446,7 @@ Naturdomänen angewendet. Die zentralen Ergebnisse sind:
 	das gepaarte System, und jede Paarung erzeugt ein emergentes Phänomen
 	(Satz~\ref{satz:universal}).
 	
-	\item \textbf{Algorithmus}: Der Subgraph-Algorithmus (Epp~2026) erkennt
+	\item \textbf{Algorithmus}: Der Subgraph Algorithmus (Epp~2026) erkennt
 	Paarmuster in $O(n^3)$ und ist unter SETH optimal (Satz~\ref{satz:opt_paar}).
 \end{itemize}
 
@@ -1479,7 +1478,7 @@ Für Bell-Zustände gilt $H_Q = 1$ --- maximale Quantenharmonie. Produktzuständ
 ($E = 0$) haben $H_Q = 0$.
 
 Die algorithmische Erkennung verschränkter Paare mittels verallgemeinerter
-Signatur-Arrays, analog zum Subgraph-Algorithmus auf Quantengraphen, ist eine
+Signatur-Arrays, analog zum Subgraph Algorithmus auf Quantengraphen, ist eine
 offene und vielversprechende Forschungsfrage. Quantenpaarungsgraphen könnten
 für die Quanteninformationsverarbeitung entscheidende strukturelle Einsichten
 liefern.
@@ -1497,7 +1496,7 @@ von Materie gegenüber Antimaterie im beobachtbaren Universum --- ist aus der
 Perspektive der Paarungsharmonie ein Disharmonieproblem: Das Universum hat
 $H_{\mathrm{kosmisch}} < 1$.
 
-\textbf{Offene Forschungsfrage}: Kann der Subgraph-Algorithmus auf kosmologische
+\textbf{Offene Forschungsfrage}: Kann der Subgraph Algorithmus auf kosmologische
 Datensätze (Teilchenzählungen aus CERN, ATLAS, CMS) angewendet werden, um
 Muster der Materie-Antimaterie-Paarung systematisch zu detektieren?
 Die Signaturkodierung von Teilchengruppen als Adjazenzmatrizen und die
@@ -1520,7 +1519,7 @@ der linken und rechten Hemisphäre. Das Harmoniekriterium
 misst die kognitive Paarungsharmonie. Maximale Harmonie ($h = 1$) entspricht
 vollständig synchronisierter hemisphärischer Aktivität.
 
-\textbf{Anwendung des Subgraph-Algorithmus}: Neuronale Konnektivitätsgraphen
+\textbf{Anwendung des Subgraph Algorithmus}: Neuronale Konnektivitätsgraphen
 (aus fMRT-Daten) können auf Paarungsmuster untersucht werden. Die Signatur-Arrays
 kodieren Aktivierungsmuster; der Algorithmus identifiziert komplementäre
 Hirnregionen in $O(n^3)$. Dies könnte neue Erkenntnisse über die Grundlagen
@@ -1538,7 +1537,7 @@ wahrgenommen wird. Die Quinte (3:2) ist ein unvollständiges Paar ($H < 1$).
 $\vec{v}(t) \in \mathbb{R}^{16}$ (16 Partialtöne nach Fourier-Zerlegung).
 Zwei Töne $t_1, t_2$ sind harmonisch komplementär, wenn
 $\|\vec{v}(t_1) \oplus \vec{v}(t_2)\|$ minimal ist.
-Der Subgraph-Algorithmus kann dann harmonische Intervalle in Akkordstrukturen
+Der Subgraph Algorithmus kann dann harmonische Intervalle in Akkordstrukturen
 automatisch erkennen und klassifizieren.
 
 \subsection{Soziale und ökonomische Paare: Angebot und Nachfrage}
@@ -1555,7 +1554,7 @@ lässt sich als Bedingung $H(\mathcal{M}) = 1$ für den Marktgraphen $\mathcal{M
 reformulieren, in dem Angebots- und Nachfrageknoten Harmoniekanten bilden.
 
 \textbf{Algorithmische Anwendung}: Große Markdaten (n = $10^6$ Güter-Agenten-Paare)
-könnten mit parallelisierten Subgraph-Algorithmus-Instanzen auf Marktharmonie
+könnten mit parallelisierten Subgraph Algorithmus-Instanzen auf Marktharmonie
 analysiert werden. Die Erkennung systematischer Disharmonie-Muster (Marktversagen)
 in $O(n^3)$ ist eine relevante Fragestellung für algorithmische Wirtschaftswissenschaften.
 
@@ -1582,12 +1581,12 @@ In der Algebra und Analysis gibt es zahlreiche fundamentale Komplementärpaare:
 	strukturelles Matching.
 \end{itemize}
 
-\textbf{Offene Frage}: Kann der Subgraph-Algorithmus auf algebraische Strukturen
+\textbf{Offene Frage}: Kann der Subgraph Algorithmus auf algebraische Strukturen
 verallgemeinert werden, die über die kombinatorische Graphstruktur hinausgehen?
 Eine algebraische Signaturkodierung (z.B.\ Charakteristische Polynome von Matrizen)
 könnte den Algorithmus auf Darstellungstheorie und homologische Algebra ausdehnen.
 
-\subsection{Algorithmische Erweiterungen des Subgraph-Algorithmus}
+\subsection{Algorithmische Erweiterungen des Subgraph Algorithmus}
 
 Die Ergebnisse dieser Arbeit motivieren mehrere algorithmische Erweiterungen:
 
@@ -1599,7 +1598,7 @@ Die Ergebnisse dieser Arbeit motivieren mehrere algorithmische Erweiterungen:
 	
 	\item \textbf{Dynamisches Harmoniemaß}: Zeitabhängige Paarungsgraphen
 	$G(t) = (V, E(t))$ für dynamische Systeme (Populationsdynamik, Finanzmärkte).
-	Der Subgraph-Algorithmus kann auf Zeitreihendaten mit Sliding-Window-Technik
+	Der Subgraph Algorithmus kann auf Zeitreihendaten mit Sliding-Window-Technik
 	angewendet werden.
 	
 	\item \textbf{Approximative Paarungsdetektion}: Für sehr große Systeme
@@ -1612,14 +1611,14 @@ Die Ergebnisse dieser Arbeit motivieren mehrere algorithmische Erweiterungen:
 	erlaubt die Berechnung eines Erwartungs-Harmoniemaßes
 	$\mathbb{E}[H(G)] = 2\mathbb{E}[\nu(G)]/|V|$.
 	
-	\item \textbf{Parallelisierung}: Die $n$ Rotationsvergleiche des Subgraph-Algorithmus
+	\item \textbf{Parallelisierung}: Die $n$ Rotationsvergleiche des Subgraph Algorithmus
 	sind inherent parallelisierbar (Lemma~5, Epp~2026). GPU-basierte Implementierungen
 	auf NVIDIA H100/H200-Architekturen könnten die Praxis-Laufzeit auf $O(n^2)$
 	reduzieren.
 	
 	\item \textbf{Hierarchische Paarungsstrukturen}: Natürliche Systeme haben oft
 	hierarchische Paarungen: Basenpaare $\subset$ DNA-Strangpaare $\subset$
-	Chromosomenpaare $\subset$ Genompaare. Der Subgraph-Algorithmus kann auf
+	Chromosomenpaare $\subset$ Genompaare. Der Subgraph Algorithmus kann auf
 	hierarchische Graphen verallgemeinert werden.
 \end{enumerate}
 
@@ -1627,7 +1626,7 @@ Die Ergebnisse dieser Arbeit motivieren mehrere algorithmische Erweiterungen:
 
 \textbf{Medizin und Pharmakologie}: Wirkstoff-Rezeptor-Paare sind molekulare
 Komplementärpaare. Das Harmoniemaß $H(\text{Wirkstoff}, \text{Rezeptor})$
-korreliert mit der Bindungsaffinität ($K_d$). Der Subgraph-Algorithmus könnte
+korreliert mit der Bindungsaffinität ($K_d$). Der Subgraph Algorithmus könnte
 für Virtual Screening in der Wirkstoffforschung eingesetzt werden: Identifikation
 komplementärer Paarungen in $O(n^3)$ über Bibliotheken von $n = 10^6$ Kandidaten.
 
@@ -1640,7 +1639,7 @@ elektrochemisches Komplementärpaar.
 \textbf{Linguistik und Semiotik}: Sprache ist strukturell paarbasiert:
 Frage/Antwort, Subjekt/Prädikat, Phonem/Bedeutung. Saussures Prinzip der
 sprachlichen \emph{Arbitrarität}~\cite{weyl1952} impliziert, dass Sprachzeichen
-konventionelle Komplementärpaare sind. Der Subgraph-Algorithmus könnte auf
+konventionelle Komplementärpaare sind. Der Subgraph Algorithmus könnte auf
 semantische Graphen (Knowledge Graphs) angewendet werden.
 
 \textbf{Theologie und Philosophie}: Viele religiöse und philosophische Traditionen
@@ -1672,7 +1671,7 @@ und formaler Mathematik eröffnet.
 	
 	\item \textbf{Topologische Paarungen}: Können Komplementaritätsrelationen auf
 	topologischen Räumen definiert werden, und gibt es ein Analogon des
-	Subgraph-Algorithmus für topologische Paarungsstrukturen (Poincaré-Dualität)?
+	Subgraph Algorithmus für topologische Paarungsstrukturen (Poincaré-Dualität)?
 \end{enumerate}
 
 % ===================================================================
@@ -1747,7 +1746,7 @@ Analogien in anderen Bereichen:
 	Strukturen verallgemeinern \cite{weyl1952}.
 \end{itemize}
 
-Der Subgraph-Algorithmus (Epp~2026) realisiert automatische Formalitätsprüfung:
+Der Subgraph Algorithmus (Epp~2026) realisiert automatische Formalitätsprüfung:
 Er verifiziert mittels der Signatur $(2, 5)$, ob eine gegebene Entität ein
 natürliches Paar ist --- in $O(n^3)$ Zeit.
 
@@ -1859,7 +1858,7 @@ Proceedings of the Royal Society of London A 126 (1930), S.~360--365.
 \bibitem{epp2026}
 Epp, S.:
 Der Subgraph Algorithmus.
-Unveröffentlichtes Manuskript, Universität Bielefeld, Januar 2026.
+Unveröffentlichtes Manuskript, Januar 2026.
 
 \bibitem{griffiths2017}
 Griffiths, D.J.:

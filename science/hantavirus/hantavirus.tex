@@ -63,7 +63,7 @@
 
 \title{%
     \textbf{Graphentheoretische Modellierung und Analyse des Hantavirus}\\
-    \large Anwendung des Subgraph-Algorithmus auf virale Protein-Interaktionsnetzwerke
+    \large Anwendung des Subgraph Algorithmus auf virale Protein-Interaktionsnetzwerke
     und epidemiologische Ausbreitungsgraphen
 }
 \author{Stephan Epp\\Universit\"at Bielefeld}
@@ -82,12 +82,12 @@ nach einer Mountainbike-Tour und dem Reinigen seiner Terrasse mit dem Puumala-Vi
 infiziert wurde und zwei Wochen auf einer Intensivstation behandelt wurde, motiviert
 diese Arbeit zu einer formalen graphentheoretischen Untersuchung des Virus.
 
-In der vorliegenden Arbeit wird der \emph{Subgraph-Algorithmus} (O$(n^3)$,
+In der vorliegenden Arbeit wird der \emph{Subgraph Algorithmus} (O$(n^3)$,
 SETH-optimal) von Stephan Epp auf die Analyse viraler Protein-Interaktionsnetzwerke,
 genomischer Segmentstrukturen und epidemiologischer Ausbreitungsgraphen des Hantavirus
 angewendet. Wir modellieren verschiedene Hantavirus-St\"amme als Graphen
 $G = (V, E)$, deren Knoten virale Proteinklassen und deren Kanten
-molekulare Interaktionen repr\"asentieren. Der Subgraph-Algorithmus erm\"oglicht
+molekulare Interaktionen repr\"asentieren. Der Subgraph Algorithmus erm\"oglicht
 durch seine effiziente Signaturberechnung und zyklische Rotation den systematischen
 Vergleich von St\"ammen, die Identifikation konservierter Proteindom\"anen sowie
 die Detektion stammspezifischer Zusatzknoten, die klinische Schwere erkl\"aren.
@@ -157,7 +157,7 @@ stamms bilden ein hochgradig strukturiertes Interaktionsnetzwerk, das
 sich formal als gerichteter Graph modellieren l\"asst. Ein Stammvergleich
 entspricht dann einem Subgraph-Isomorphismus-Problem.
 
-Der \emph{Subgraph-Algorithmus} \cite{Epp2026} bietet mit seiner
+Der \emph{Subgraph Algorithmus} \cite{Epp2026} bietet mit seiner
 $O(n^3)$-Laufzeit und SETH-Optimalit\"at eine effiziente Grundlage f\"ur:
 \begin{itemize}
     \item den Vergleich viraler Protein-Interaktionsnetzwerke verschiedener St\"amme,
@@ -170,7 +170,7 @@ $O(n^3)$-Laufzeit und SETH-Optimalit\"at eine effiziente Grundlage f\"ur:
 
 Abschnitt~\ref{sec:grundlagen} f\"uhrt die biologischen und algorithmischen
 Grundlagen ein. Abschnitt~\ref{sec:modellierung} formalisiert die Graphenmodelle.
-Abschnitt~\ref{sec:algorithmus} beschreibt den Subgraph-Algorithmus im Kontext
+Abschnitt~\ref{sec:algorithmus} beschreibt den Subgraph Algorithmus im Kontext
 der Hantavirus-Analyse. Abschnitt~\ref{sec:beweise} enth\"alt alle formalen
 Beweise. Abschnitt~\ref{sec:ergebnisse} pr\"asentiert die experimentellen
 Ergebnisse mit Visualisierungen. Abschnitt~\ref{sec:ausblick} schlie{\ss}t
@@ -375,13 +375,13 @@ Der Hasenhuttl-Infektionsweg entspricht dem Pfad:
 \]
 
 % =====================================================================
-\section{Der Subgraph-Algorithmus auf Hantavirus-Graphen}
+\section{Der Subgraph Algorithmus auf Hantavirus-Graphen}
 \label{sec:algorithmus}
 % =====================================================================
 
 \subsection{Signaturberechnung f\"ur virale Proteinnetzwerke}
 
-Der Subgraph-Algorithmus \cite{Epp2026} berechnet f\"ur jede Spalte $j$
+Der Subgraph Algorithmus \cite{Epp2026} berechnet f\"ur jede Spalte $j$
 der Adjazenzmatrix $A$ des PUUV-Graphen ($n = 6$) die eindeutige Signatur:
 
 \[
@@ -444,13 +444,13 @@ erkannt. Der Algorithmus gibt \texttt{keep\_B} zur\"uck: $G' \supseteq G$.
     \label{satz:korrektheit_hanta}
     Sei $G_s$ das VPIN eines Hantavirus-Stamms $s$ und $G_{s'}$ das
     VPIN eines anderen Stamms $s'$ mit zus\"atzlichen Wirtszellinteraktionen.
-    Dann erkennt der Subgraph-Algorithmus korrekt, ob $G_s \subseteq G_{s'}$,
+    Dann erkennt der Subgraph Algorithmus korrekt, ob $G_s \subseteq G_{s'}$,
     in Zeit $O(n^3)$, wobei $n = \max(|V_s|, |V_{s'}|)$.
 \end{satz}
 
 \begin{proof}
     Die Korrektheit folgt unmittelbar aus der Korrektheit des allgemeinen
-    Subgraph-Algorithmus (vgl.\ \cite{Epp2026}, Satz~4). Die spezifische
+    Subgraph Algorithmus (vgl.\ \cite{Epp2026}, Satz~4). Die spezifische
     Instanziierung auf VPIN-Graphen ist korrekt, da:
     \begin{enumerate}
         \item Die Adjazenzmatrizen $A$ und $B$ genau die biologischen
@@ -494,7 +494,7 @@ erkannt. Der Algorithmus gibt \texttt{keep\_B} zur\"uck: $G' \supseteq G$.
 \end{proof}
 
 \begin{korollar}[Fehlerkennungsfreiheit]
-    Der Subgraph-Algorithmus erkennt keine falsch-positiven Subgraph-Beziehungen
+    Der Subgraph Algorithmus erkennt keine falsch-positiven Subgraph-Beziehungen
     zwischen Hantavirus-St\"ammen, sofern die Adjazenzmatrizen korrekt konstruiert sind.
 \end{korollar}
 
@@ -549,13 +549,13 @@ erkannt. Der Algorithmus gibt \texttt{keep\_B} zur\"uck: $G' \supseteq G$.
 \end{proof}
 
 \begin{satz}[SETH-Optimalit\"at des VPIN-Vergleichs]
-    Der Subgraph-Algorithmus ist f\"ur den Vergleich viraler
+    Der Subgraph Algorithmus ist f\"ur den Vergleich viraler
     Protein-Interaktionsnetzwerke asymptotisch optimal unter SETH.
 \end{satz}
 
 \begin{proof}
     Aus Lemma~\ref{lem:seth_hanta} folgt die untere Schranke $\Omega(n^{3-\varepsilon})$.
-    Der Subgraph-Algorithmus erreicht $\Theta(n^3)$. Da $\Theta(n^3) = O(n^{3-0})$
+    Der Subgraph Algorithmus erreicht $\Theta(n^3)$. Da $\Theta(n^3) = O(n^{3-0})$
     die untere Schranke $\Omega(n^{3-\varepsilon})$ f\"ur jedes $\varepsilon \to 0$
     erreichbar ist, ist der Algorithmus optimal. \qedhere
 \end{proof}
@@ -644,7 +644,7 @@ ist visuell evident.
     \label{fig:ppin}
 \end{figure}
 
-\subsection{Subgraph-Algorithmus: Detailanalyse}
+\subsection{Subgraph Algorithmus: Detailanalyse}
 
 Abbildung~\ref{fig:subgraph} zeigt alle vier Schritte der
 Algorithmusanwendung:
@@ -723,7 +723,7 @@ untereinander ebenfalls hohe Korrelation.
 Abbildung~\ref{fig:uebert} illustriert das Hantavirus-\"Ubertragungsnetzwerk
 als gerichteten Graphen (links), wobei der Expositionsweg Hasenhuettls
 (Terrassenstaub $\to$ Mensch) in Rot hervorgehoben ist. Das rechte
-Teilbild vergleicht die asymptotische Laufzeit des Subgraph-Algorithmus
+Teilbild vergleicht die asymptotische Laufzeit des Subgraph Algorithmus
 mit naiven Permutationsans\"atzen und visualisiert die SETH-Schranke.
 
 \begin{figure}[htb]
@@ -764,7 +764,7 @@ Im Verlauf einer Hantavirus-Infektion \"andert sich das Protein-Interaktionsnetz
 dynamisch: Viren produzieren in der Sp\"atphase mehr NSs-Protein zur
 Immunevasion. Daher w\"are ein \emph{zeitdynamisches} Graphmodell
 $G_s(t) = (V_s, E_s(t))$ sinnvoll, bei dem Kanten mit Zeitstempeln versehen
-sind. Der Subgraph-Algorithmus k\"onnte durch eine zeitliche Abtastung
+sind. Der Subgraph Algorithmus k\"onnte durch eine zeitliche Abtastung
 $t_1, t_2, \ldots, t_k$ auf dieses Modell angewendet werden:
 \[
     \text{Matching}(G_s, G_{s'}) = \sum_{t=t_1}^{t_k} \mathbf{1}[G_s(t) \subseteq G_{s'}(t)]
@@ -777,11 +777,11 @@ Dies erm\"oglicht die Erkennung zeitlich verschobener aber strukturell
 Hantaviren infizieren sowohl Nagetiere als Reservoir als auch Menschen
 als Zufallswirte. Ein \emph{bichromater} Graph $(V_{\mathrm{Nagetier}} \cup V_{\mathrm{Mensch}},
 E_{\mathrm{intra}} \cup E_{\mathrm{inter}})$ k\"onnte die zoonotische
-Schnittstelle modellieren. Der Subgraph-Algorithmus w\"are auf
+Schnittstelle modellieren. Der Subgraph Algorithmus w\"are auf
 beiden Teilgraphen und dem \"Uberlappungsbereich anzuwenden, um
 artspezifische von artunspezifischen Interaktionen zu trennen.
 
-\subsection{Antivirale Wirkstoffsuche mittels Subgraph-Algorithmus}
+\subsection{Antivirale Wirkstoffsuche mittels Subgraph Algorithmus}
 
 \subsubsection{Pharmakologische Graphmodelle}
 
@@ -791,7 +791,7 @@ Graph-Matching-Problem formulieren: Ein Wirkstoff $w$ wird als Knoten
 modelliert, und seine bekannten Protein-Bindungsinteraktionen als Kanten
 zu den VPIN-Knoten. Ziel ist es, einen Subgraphen $G_w \subseteq G_s$
 zu identifizieren, bei dem die Kanten von $G_w$ kritische Interaktionen
-im VPIN unterbrechen. Der Subgraph-Algorithmus k\"onnte so systematisch
+im VPIN unterbrechen. Der Subgraph Algorithmus k\"onnte so systematisch
 Wirkstoff-Bibliotheken (z.B.\ ChEMBL) gegen VPIN-Graphen abgleichen.
 
 \subsubsection{Ribavirin und FAVIPIRAVIR: Graphbasierte Evaluierung}
@@ -802,7 +802,7 @@ Eine formale Analyse, wie sich diese Kantenentfernung auf den LCS-Score
 beim Stammvergleich auswirkt, k\"onnte die Wirksamkeit pr\"adiktiv bewerten.
 Favipiravir, ein Breitband-Polymerase-Hemmer, w\"urde \"ahnlich modelliert.
 Zuk\"unftige Arbeiten k\"onnten zeigen, dass eine Wirksamkeitsvorhersage
-durch den Subgraph-Algorithmus in $O(n^3)$ m\"oglich ist.
+durch den Subgraph Algorithmus in $O(n^3)$ m\"oglich ist.
 
 \subsection{Genomische Surveillance und Echtzeit-Ausbruchsmonitoring}
 
@@ -811,10 +811,10 @@ durch den Subgraph-Algorithmus in $O(n^3)$ m\"oglich ist.
 Die rapide Entwicklung von Hochdurchsatz-Sequenzierungstechnologien
 erm\"oglicht heutzutage die vollst\"andige Genomsequenzierung von
 Hantavirus-Isolaten innerhalb von 24 Stunden. Die dabei entstehenden
-Sequenzen k\"onnen als Signatur-Arrays des Subgraph-Algorithmus kodiert
+Sequenzen k\"onnen als Signatur-Arrays des Subgraph Algorithmus kodiert
 werden: Jeder Codon-Block entspricht einem Knoten, und konservierte
 Codon-Triplets bilden Kanten. Ein Ausbruchsmonitoring-System auf Basis
-des Subgraph-Algorithmus k\"onnte:
+des Subgraph Algorithmus k\"onnte:
 \begin{itemize}
     \item Neue Sequenzen in Echtzeit gegen eine Referenz-VPIN-Bibliothek
           abgleichen ($O(n^3)$ pro Sequenz, bei $n \approx 200$ Codons:
@@ -851,7 +851,7 @@ konserviert sind. Im Graphmodell entspricht dies dem Schnittgraph:
     G_{\mathrm{konserviert}} = \bigcap_{s \in \mathcal{S}} G_s =
     \left(\bigcap_s V_s,\; \bigcap_s E_s\right)
 \]
-Der Subgraph-Algorithmus kann iterativ eingesetzt werden, um diesen
+Der Subgraph Algorithmus kann iterativ eingesetzt werden, um diesen
 konservierten Kern effizient zu berechnen:
 \begin{enumerate}
     \item Starte mit $G_0 = G_{s_1}$.
@@ -867,12 +867,12 @@ Vorkandidaten f\"ur den konservierten Kern sind die NP-L-Interaktion
 
 Die Erfahrungen mit mRNA-Impfstoffen gegen SARS-CoV-2 haben gezeigt,
 dass Multi-Antigen-Ans\"atze hohe Breitbandwirksamkeit erreichen k\"onnen.
-Ein durch den Subgraph-Algorithmus identifizierter konservierter
+Ein durch den Subgraph Algorithmus identifizierter konservierter
 Proteininteraktions-Subgraph k\"onnte direkt in ein multi-valentes
 mRNA-Konstrukt \"ubersetzt werden, das alle relevanten Hantavirus-Epitope
 kodiert. Die Graphoptimierung sorgt daf\"ur, dass genau die Proteine
 exprimiert werden, deren Interaktionsmuster im konservierten Kern
-vertreten sind -- eine direkte Anwendung des Subgraph-Algorithmus
+vertreten sind -- eine direkte Anwendung des Subgraph Algorithmus
 in der Impfstoffdesign-Pipeline.
 
 \subsection{Klinische Entscheidungsunterst\"utzung durch Graphmodelle}
@@ -882,7 +882,7 @@ in der Impfstoffdesign-Pipeline.
 Die Diagnose einer Hantavirus-Infektion erfolgt derzeit \"uber
 Antik\"orper-Serologie oder RT-PCR, was eine Latenzzeit von
 24--72 Stunden impliziert. Ein VPIN-Fingerprinting-Ansatz auf
-Basis des Subgraph-Algorithmus k\"onnte die Diagnosebeschleunigung
+Basis des Subgraph Algorithmus k\"onnte die Diagnosebeschleunigung
 erm\"oglichen: Protein-Expressionsmuster aus Blutproben werden als
 partielle VPIN-Graphen kodiert und gegen die vollst\"andige
 Stamm-Bibliothek abgeglichen. Selbst partielle Matches (LCS $\geq 2$)
@@ -902,7 +902,7 @@ maschinelles Lernmodell einfliei{\ss}en, das auf Basis graphentheoretischer
 Merkmale fr\"uhzeitig den Intensivbedarf vorhersagt -- analog zum
 Hasenhuettl-Fall, wo eine Intensivbehandlung unvermeidlich war.
 
-\subsection{Technische Verbesserungen des Subgraph-Algorithmus}
+\subsection{Technische Verbesserungen des Subgraph Algorithmus}
 
 \subsubsection{Parallelisierung der LCS-Berechnungen}
 
@@ -936,7 +936,7 @@ approximative Ans\"atze eingesetzt werden:
 Protein-Komplexe (z.B.\ NP-vRNA-Ribonukleoproteinkomplex) sind keine
 paarweisen Interaktionen, sondern h\"oherstellige Beziehungen. Ein
 Hypergraph $H = (V, \mathcal{E})$ mit $\mathcal{E} \subseteq 2^V$
-modelliert diese nat\"urlicher. Der Subgraph-Algorithmus l\"asst sich
+modelliert diese nat\"urlicher. Der Subgraph Algorithmus l\"asst sich
 durch Clique-Expansion ($H \to G$) oder direkte Hypersignatur-Berechnungen
 anpassen. Die Laufzeit erh\"oht sich auf $O(n^4)$ f\"ur 3-uniformierte
 Hypergraphen, bleibt aber polynomiell.
@@ -945,7 +945,7 @@ Hypergraphen, bleibt aber polynomiell.
 
 \subsubsection{Anbindung an Protein-Datenbanken}
 
-Die virale Protein-Interaktionsdaten f\"ur den Subgraph-Algorithmus
+Die virale Protein-Interaktionsdaten f\"ur den Subgraph Algorithmus
 k\"onnten automatisiert aus etablierten Datenbanken bezogen werden:
 \begin{itemize}
     \item \textbf{UniProt/SwissProt:} Sequenz- und Funktionsdaten der
@@ -967,7 +967,7 @@ F\"ur die klinische Praxis w\"are eine REST-API w\"unschenswert, die:
 \begin{enumerate}
     \item Patientenserologiedaten als Eingabe akzeptiert,
     \item den zugeh\"origen VPIN-Teilgraphen rekonstruiert,
-    \item den Subgraph-Algorithmus gegen die Stamm-Bibliothek ausf\"uhrt,
+    \item den Subgraph Algorithmus gegen die Stamm-Bibliothek ausf\"uhrt,
     \item Diagnose und Schweregradvorhersage in JSON-Format zur\"uckgibt.
 \end{enumerate}
 Die API k\"onnte in das elektronische Patientendatenmanagementsystem
@@ -982,7 +982,7 @@ Der Klimawandel beeinflusst die Nagerpopulationsdynamik, die
 Mastjahr-Zyklik und damit die Hantavirus-Inzidenz erheblich.
 Ein graphentheoretisches Klimamodell k\"onnte Temperatur- und
 Niederschlagsdaten als Kantengewichte in den epidemiologischen
-Ausbreitungsgraph integrieren. Der Subgraph-Algorithmus k\"onnte
+Ausbreitungsgraph integrieren. Der Subgraph Algorithmus k\"onnte
 klimabedingte Ausbruchsmuster mit historischen Mustern abgleichen
 und Prognosen f\"ur Ausbruchsjahre ableiten -- erg\"anzt durch
 maschinelles Lernen auf dem Graphdatensatz.
@@ -996,7 +996,7 @@ einen Supergraphen:
     G_{\mathrm{OneHealth}} = G_{\mathrm{Nagertier}} \cup G_{\mathrm{Umwelt}} \cup
     G_{\mathrm{Mensch}}
 \]
-Der Subgraph-Algorithmus k\"onnte Teilgraphen von $G_{\mathrm{Mensch}}$
+Der Subgraph Algorithmus k\"onnte Teilgraphen von $G_{\mathrm{Mensch}}$
 in $G_{\mathrm{OneHealth}}$ suchen, um Zoonosepfade formal zu verifizieren.
 Dies w\"urde die WHO-\emph{Global Health Security}-Agenda
 auf algorithmisch fundierter Basis unterst\"utzen.
@@ -1032,7 +1032,7 @@ gegen die bekannten Stammgraphen k\"onnte:
 \label{sec:zusammenfassung}
 % =====================================================================
 
-Die vorliegende Arbeit hat gezeigt, dass der Subgraph-Algorithmus
+Die vorliegende Arbeit hat gezeigt, dass der Subgraph Algorithmus
 von Stephan Epp -- mit seiner $O(n^3)$-Laufzeit und SETH-Optimalit\"at --
 ein m\"achtiges Werkzeug zur formalen Analyse von Hantavirus-Protein-Interaktionsnetzwerken
 darstellt. Die wesentlichen Ergebnisse sind:
@@ -1042,7 +1042,7 @@ darstellt. Die wesentlichen Ergebnisse sind:
           ein Subgraph des Hantaan-VPINs $G'$, formell bewiesen und empirisch
           best\"atigt (LCS = 4 $\geq$ 2 bei Rotation $k=0$).
     \item \textbf{SETH-Optimalit\"at:} Kein Algorithmus kann den Stammvergleich
-          in $O(n^{3-\varepsilon})$ durchf\"uhren -- der Subgraph-Algorithmus
+          in $O(n^{3-\varepsilon})$ durchf\"uhren -- der Subgraph Algorithmus
           ist optimal.
     \item \textbf{Epidemiologische Modellierung:} Das SIR-Modell mit
           Hantavirus-spezifischen Parametern erkl\"art die beobachteten
@@ -1066,9 +1066,9 @@ darstellt. Die wesentlichen Ergebnisse sind:
 
     \bibitem{Epp2026}
     Epp, S. (2026).
-    \emph{Der Subgraph-Algorithmus: Ein effizienter Algorithmus zum Graphenvergleich
+    \emph{Der Subgraph Algorithmus: Ein effizienter Algorithmus zum Graphenvergleich
     mittels Signatur-Arrays und zyklischer Rotation}.
-    Universit\"at Bielefeld. Verf\"ugbar unter: \url{https://gitlab.com/epp-group/subgraph}
+    Universit\"at Bielefeld. Verf\"ugbar unter: \url{https://github.com/hjstephan86/science}
 
     \bibitem{Eurosport2026}
     Bien, N. (2026, 8. Mai).

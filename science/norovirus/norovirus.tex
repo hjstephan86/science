@@ -61,8 +61,7 @@
 durch Subgraph-Algorithmen-gesteuerte\\[4pt]
 Protein-Netzwerk-Analyse}\\[10pt]
 {\large Grundlegende Überarbeitung -- Claude Sonnet 4.6}}
-\author{Stephan Epp\\
-\small Universität Bielefeld}
+\author{Stephan Epp}
 \date{Mai 2026}
 % ---------------------------------------------------------------
 
@@ -74,7 +73,7 @@ Protein-Netzwerk-Analyse}\\[10pt]
 Das Norovirus (NoV) ist der häufigste Erreger nicht-bakterieller Gastroenteritis weltweit mit
 ca.~685~Millionen Infektionen und 200\,000 Todesfällen pro Jahr. Trotz intensiver Forschung
 existiert kein zugelassener Impfstoff. Die vorliegende Arbeit präsentiert einen neuartigen
-rechnergestützten Ansatz: Die Anwendung des \emph{Subgraph-Algorithmus} (Epp~2026) auf
+rechnergestützten Ansatz: Die Anwendung des \emph{Subgraph Algorithmus} (Epp~2026) auf
 VP1-Protein-Sequenz-Graphen und Struktur-Kontakt-Netzwerke, um konservierte, immunogene
 Epitop-Kandidaten zu identifizieren. Aus 150~Isolaten werden acht hochkonservierte Regionen
 ($>84\,\%$) der P-Domäne extrahiert. Die Validierung gegen 25~bekannte Epitope ergibt eine
@@ -113,7 +112,7 @@ Genogruppen. Ein \emph{universeller} Ansatz fehlt. Diese Arbeit schließt diese 
 drei Beiträge:
 
 \begin{enumerate}[label=(\roman*)]
-  \item Anpassung des Subgraph-Algorithmus \citep{epp2026subgraph} an multivariate
+  \item Anpassung des Subgraph Algorithmus \citep{epp2026subgraph} an multivariate
         virologische Protein-Netzwerke.
   \item Identifikation von acht hochkonservierten, oberflächenexponierten Epitopen als
         Grundlage eines pan-genogruppen-wirksamen VLP-Impfstoffes.
@@ -210,7 +209,7 @@ Bindungsprofilen.
 \end{definition}
 
 % ===============================================================
-\section{Der Subgraph-Algorithmus -- virologische Anpassung}
+\section{Der Subgraph Algorithmus -- virologische Anpassung}
 % ===============================================================
 
 \subsection{Signatur-Berechnung}
@@ -570,7 +569,7 @@ asiatischen Bevölkerung erreicht werden.
 Abbildung~\ref{fig:valid} umfasst zwei Panels:
 
 \textbf{Linkes Panel -- ROC-Kurve:} Die Receiver Operating Characteristic (ROC)-Kurve
-stellt die Trennleistung des Subgraph-Algorithmus über alle möglichen Schwellwerte $\theta$
+stellt die Trennleistung des Subgraph Algorithmus über alle möglichen Schwellwerte $\theta$
 dar. Die $x$-Achse zeigt die False Positive Rate (FPR = FP/(FP+TN)), die $y$-Achse
 die True Positive Rate (TPR = Sensitivität = TP/(TP+FN)). Die Kurve liegt deutlich über
 der Diagonalen (Zufalls-Klassifizierer, AUC=0{,}5) und erreicht einen AUC-Wert von
@@ -603,7 +602,7 @@ Daraus ergeben sich:
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_06_validation.pdf}
-  \caption{Validierung des Subgraph-Algorithmus. \textit{Links:} ROC-Kurve mit AUC\,=\,0{,}91
+  \caption{Validierung des Subgraph Algorithmus. \textit{Links:} ROC-Kurve mit AUC\,=\,0{,}91
            (blau) gegenüber Zufalls-Klassifizierer (gestrichelt). \textit{Rechts:} Confusion
            Matrix für den optimalen Schwellwert~$\theta^*=30$, Test gegen 25~literaturbekannte
            Epitope.}
@@ -697,7 +696,7 @@ Expressionssystem   & Baculovirus/Sf9 oder Nicotiana \\
 
 \subsubsection{Abbildungsbeschreibung: Laufzeit-Komplexität (Abbildung~\ref{fig:compl})}
 
-Abbildung~\ref{fig:compl} illustriert die asymptotische Laufzeit des Subgraph-Algorithmus
+Abbildung~\ref{fig:compl} illustriert die asymptotische Laufzeit des Subgraph Algorithmus
 auf einer doppelt-logarithmischen Skala. Die $x$-Achse zeigt die Graphgröße $n$ von
 $10$ bis $1000$ Knoten, die $y$-Achse die normierte Laufzeit (willkürliche Einheiten).
 
@@ -718,7 +717,7 @@ kritisch sind.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_08_complexity.pdf}
-  \caption{Laufzeit-Komplexität des Subgraph-Algorithmus (log-log-Skala). Grün: $O(n^2)$
+  \caption{Laufzeit-Komplexität des Subgraph Algorithmus (log-log-Skala). Grün: $O(n^2)$
            (Untergrenze). Rot: $O(n^{2{,}8})$ (optimierte Praxis). Gelb gestrichelt: $O(n^3)$
            (naive Implementierung). Knotenanzahl $n$ auf der $x$-Achse.}
   \label{fig:compl}
@@ -840,7 +839,7 @@ Moderna mRNA-1403 & 2 GG & mRNA & Phase~1/2 & -- \\
 \end{tabular}
 \end{center}
 
-Der Subgraph-Algorithmus erzielt mit AUC~0{,}91 die beste Vorhersageleistung in
+Der Subgraph Algorithmus erzielt mit AUC~0{,}91 die beste Vorhersageleistung in
 der Epitop-Identifikation, überzeugend gegenüber etablierten ML-Methoden wie
 BepiPred-2.0 (0{,}74) und NetMHCpan (0{,}82). Zudem adressiert er als einziger Ansatz
 vier Genogruppen rational (nicht empirisch).
@@ -969,11 +968,11 @@ Parallel zum Impfstoff wird der 3C-Protease-Inhibitor klinisch entwickelt:
         Symptom-Dauer (Stunden); sekundär: virale Last (RT-PCR), Hospitalverweildauer
 \end{itemize}
 
-\subsection{Technologische Weiterentwicklung des Subgraph-Algorithmus}
+\subsection{Technologische Weiterentwicklung des Subgraph Algorithmus}
 
 \subsubsection{Graph Neural Networks (GNNs) als Ergänzung}
 
-Die Integration des Subgraph-Algorithmus mit Graph Neural Networks (GNNs) bietet
+Die Integration des Subgraph Algorithmus mit Graph Neural Networks (GNNs) bietet
 transformatives Potenzial:
 
 \begin{enumerate}
@@ -984,7 +983,7 @@ transformatives Potenzial:
         Sapovirus).
   \item \textbf{Explainability via GNN-Attention:} Attention-Gewichte identifizieren,
         welche Netzwerkkanten kritisch für die Epitop-Erkennung sind -- dies validiert
-        und ergänzt den Subgraph-Algorithmus.
+        und ergänzt den Subgraph Algorithmus.
   \item \textbf{Generative Modelle (VAE/GAN auf Graphen):} Generiere \textit{de novo}
         künstliche Epitop-Sequenzen mit optimierten Immunogenitäts-Scores.
 \end{enumerate}
@@ -1051,11 +1050,11 @@ Das Norovirus müsste dann wie Poliovirus oder Masernvirus regional eliminiert w
 Realistischer Zeithorizont: 15--20 Jahre nach Marktzulassung, analog zur HPV-Impfung
 und der Reduktion von Gebärmutterhalskrebs in durchimpften Populationen.
 
-\subsection{Wissenschaftliche Perspektive: Subgraph-Algorithmus als Paradigma}
+\subsection{Wissenschaftliche Perspektive: Subgraph Algorithmus als Paradigma}
 
 Die vorliegende Arbeit demonstriert, dass formale Graph-Algorithmen aus der
 theoretischen Informatik direkt und mit hoher Effizienz in die angewandte Biologie
-übertragbar sind. Der Subgraph-Algorithmus bildet damit die Brücke zwischen:
+übertragbar sind. Der Subgraph Algorithmus bildet damit die Brücke zwischen:
 
 \begin{itemize}
   \item \textbf{Algorithmik:} Komplexitätstheorie, LCS, Signaturmethoden (Epp~2026)
@@ -1073,11 +1072,11 @@ oder \textit{PLOS Pathogens}.
 \section{Zusammenfassung}
 % ===============================================================
 
-Diese Arbeit hat erstmals den Subgraph-Algorithmus systematisch auf die
+Diese Arbeit hat erstmals den Subgraph Algorithmus systematisch auf die
 Norovirus-Impfstoff-Entwicklung angewendet. Die Kernbeiträge sind:
 
 \begin{enumerate}
-  \item \textbf{Algorithmus:} Erweiterung des Subgraph-Algorithmus (Epp~2026) auf
+  \item \textbf{Algorithmus:} Erweiterung des Subgraph Algorithmus (Epp~2026) auf
         multivariate biologische Graphen mit drei Schichten (Sequenz, Struktur, Immunogenität).
         Formaler Beweis der $O(n^3)$-Komplexität und SETH-Optimalität.
   \item \textbf{Bioinformatik:} Identifikation von acht hochkonservierten ($>84\,\%$),
@@ -1102,8 +1101,8 @@ Norovirus-Impfstoff innerhalb von 6--8 Jahren realisierbar.
 \begin{thebibliography}{99}
 
 \bibitem[Epp(2026)]{epp2026subgraph}
-Epp, S. (2026). \emph{Der Subgraph-Algorithmus}.
-Technischer Bericht, Universität Bielefeld.
+Epp, S. (2026). \emph{Der Subgraph Algorithmus}.
+Technischer Bericht.
 
 \bibitem[WHO(2021)]{who2021norovirus}
 World Health Organization (2021).

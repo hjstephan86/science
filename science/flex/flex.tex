@@ -64,9 +64,9 @@ Ein formaler Standard für lose Kopplung von\\
 Suchdiensten und Web-Service-Ketten\\
 in mobilen Applikationen\\[0.6em]
 {\large mit qualitätserhaltendem Wettbewerbsmodell\\[0.2em]
-und Schnittstellenkompatibilität via Subgraph-Algorithmus}}
+und Schnittstellenkompatibilität via Subgraph Algorithmus}}
 \author{Stephan Epp\\[0.3em]
-{\small Universität Bielefeld}}
+{}
 \date{Mai 2026}
 
 \begin{document}
@@ -75,7 +75,7 @@ und Schnittstellenkompatibilität via Subgraph-Algorithmus}}
 
 \begin{abstract}
 \noindent
-Mobile Applikationen greifen heute auf eine Vielzahl externer Dienste zurück: Suchmaschinen, Spracherkennung (Speech-to-Text, STT), Sprachsynthese (Text-to-Speech, TTS), Übersetzungsdienste und Natural Language Processing (NLP). Die feste Verdrahtung dieser Dienste führt zu Anbieterabhängigkeit, mangelnder Anpassungsfähigkeit an regionale Regulatorik und zu suboptimaler Dienstqualität. Diese Arbeit stellt den \textbf{FLEX-Standard} (Flexible Loose-coupled EXchangeable Services) vor: ein formales Framework für die lose Kopplung und den dynamischen Austausch von Suchdiensten und Web-Service-Ketten in mobilen Applikationen. FLEX definiert eine graphbasierte Schnittstellenspezifikation, deren Kompatibilität mit dem Subgraph-Algorithmus (Epp 2026) in $O(n^3)$ entschieden wird. Ein mehrdimensionales QoS-Modell bildet die Grundlage für ein vierteljährliches Wettbewerbsmodell, das Qualitätssicherung und Wettbewerbserhalt systematisch gewährleistet. Für die zentrale Routingfunktion werden formale Korrektheit, Eindeutigkeit und Komplexitätsoptimalität bewiesen. Matplotlib-Visualisierungen illustrieren QoS-Zeitverläufe, regionale Routing-Entscheidungen, Kettenlatenz und Wettbewerbsevolution.
+Mobile Applikationen greifen heute auf eine Vielzahl externer Dienste zurück: Suchmaschinen, Spracherkennung (Speech-to-Text, STT), Sprachsynthese (Text-to-Speech, TTS), Übersetzungsdienste und Natural Language Processing (NLP). Die feste Verdrahtung dieser Dienste führt zu Anbieterabhängigkeit, mangelnder Anpassungsfähigkeit an regionale Regulatorik und zu suboptimaler Dienstqualität. Diese Arbeit stellt den \textbf{FLEX-Standard} (Flexible Loose-coupled EXchangeable Services) vor: ein formales Framework für die lose Kopplung und den dynamischen Austausch von Suchdiensten und Web-Service-Ketten in mobilen Applikationen. FLEX definiert eine graphbasierte Schnittstellenspezifikation, deren Kompatibilität mit dem Subgraph Algorithmus (Epp 2026) in $O(n^3)$ entschieden wird. Ein mehrdimensionales QoS-Modell bildet die Grundlage für ein vierteljährliches Wettbewerbsmodell, das Qualitätssicherung und Wettbewerbserhalt systematisch gewährleistet. Für die zentrale Routingfunktion werden formale Korrektheit, Eindeutigkeit und Komplexitätsoptimalität bewiesen. Matplotlib-Visualisierungen illustrieren QoS-Zeitverläufe, regionale Routing-Entscheidungen, Kettenlatenz und Wettbewerbsevolution.
 \end{abstract}
 
 \tableofcontents
@@ -104,7 +104,7 @@ Diese fünf Probleme sind nicht isoliert. Sie greifen ineinander und erzeugen ei
 Der \textbf{FLEX-Standard} (Flexible Loose-coupled EXchangeable Services) adressiert dieses strukturelle Defizit durch drei koordinierte Mechanismen:
 
 \begin{enumerate}
-    \item \textbf{Graphbasierte Schnittstellenspezifikation:} Jede Dienstklasse (Suchmaschine, TTS, STT, Translate, NLP) wird als gerichteter Graph $G_I = (V_I, E_I)$ modelliert, wobei Knoten Datentypen und Kanten Transformationen repräsentieren. Die Kompatibilitätsprüfung zwischen einem Dienst und einer Schnittstelle wird als Subgraph-Problem formuliert und durch den Subgraph-Algorithmus (Epp 2026) in $O(n^3)$ entschieden.
+    \item \textbf{Graphbasierte Schnittstellenspezifikation:} Jede Dienstklasse (Suchmaschine, TTS, STT, Translate, NLP) wird als gerichteter Graph $G_I = (V_I, E_I)$ modelliert, wobei Knoten Datentypen und Kanten Transformationen repräsentieren. Die Kompatibilitätsprüfung zwischen einem Dienst und einer Schnittstelle wird als Subgraph-Problem formuliert und durch den Subgraph Algorithmus (Epp 2026) in $O(n^3)$ entschieden.
     \item \textbf{Dynamisches Routing:} Eine formale Routing-Funktion $R: \mathcal{T}_C \times \mathcal{G} \times \mathcal{B} \to 2^{\mathcal{S}}$ wählt aus dem Raum kompatibler Dienste denjenigen mit optimalem gewichtetem QoS-Score aus, abhängig von Inhaltstyp, geografischer Region und Bandbreitenklasse.
     \item \textbf{Quartalsweises Wettbewerbsmodell:} Alle 90 Tage werden alle registrierten Dienstanbieter anhand eines mehrdimensionalen QoS-Vektors bewertet und nach Score gerankt. Die mobile App nutzt automatisch den bestplatzierten Anbieter, ohne dass der Nutzer dies explizit steuert.
 \end{enumerate}
@@ -337,7 +337,7 @@ Für mehrstufige Anfragen (z.\,B.\ Sprachanfrage in Fremdsprache mit Sprachausga
 \begin{lstlisting}[caption={FLEX-CHAIN-COMPOSE: Greedy-Kettenkomposition},label={alg:kette},language=Python]
 def flex_chain_compose(requirements, g, b, w):
     """
-    requirements: Liste von Schnittstellentypen [I_1, ..., I_m]
+    requirements: Liste von Schnittstellentypen [I_1, .., I_m]
     g: geografische Region
     b: Bandbreitenklasse
     w: Gewichtsvektor
@@ -381,7 +381,7 @@ def flex_competition_rank(providers, r, w, q_min=0.80):
 Anbieter, deren $Q_\mathrm{comp}(S, r) < q_{\min}$ fällt, werden aus der Kandidatenmenge $\mathcal{C}$ für das nächste Quartal ausgeschlossen, bis sie die Schwelle wieder überschreiten.
 
 % =============================================================
-\section{Schnittstellenkompatibilität via Subgraph-Algorithmus}
+\section{Schnittstellenkompatibilität via Subgraph Algorithmus}
 \label{sec:subgraph}
 % =============================================================
 
@@ -389,7 +389,7 @@ Anbieter, deren $Q_\mathrm{comp}(S, r) < q_{\min}$ fällt, werden aus der Kandid
 
 Die zentrale Prüfung im FLEX-Standard ist, ob ein Dienst $S$ eine Schnittstelle $I$ implementiert, d.\,h.\ ob $G_I \subseteq G_S$ gilt (Definition~\ref{def:kompatibilitaet}). Diese Frage ist ein Sonderfall des allgemeinen Subgraph-Isomorphie-Problems, das NP-vollständig ist. Für die strukturierte Klasse der FLEX-Schnittstellen (DAGs mit typisierter Knotenidentifikation) ist das Problem jedoch in polynomieller Zeit lösbar.
 
-Der Subgraph-Algorithmus (Epp 2026) \cite{epp2026} entscheidet dieses Problem für Graphen mit $n$ Knoten in $O(n^3)$ durch:
+Der Subgraph Algorithmus (Epp 2026) \cite{epp2026} entscheidet dieses Problem für Graphen mit $n$ Knoten in $O(n^3)$ durch:
 
 \begin{enumerate}
     \item Berechnung eindeutiger Signaturen $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ für jede Spalte $j$ der Adjazenzmatrix,
@@ -405,13 +405,13 @@ Sei $I = (G_I, T_I, \tau_I)$ eine FLEX-Schnittstelle mit $n_I = |V_I|$ Knoten un
 \end{lemma}
 
 \begin{proof}
-Wir reduzieren die Kompatibilitätsprüfung auf das Subgraph-Problem und wenden den Subgraph-Algorithmus (Epp 2026, Satz~2) an.
+Wir reduzieren die Kompatibilitätsprüfung auf das Subgraph-Problem und wenden den Subgraph Algorithmus (Epp 2026, Satz~2) an.
 
 \textbf{Schritt 1: Knotenidentifikation via Typisierung.} Da FLEX-Schnittstellen typisiert sind, können Knoten von $G_I$ und $G_S$ über ihre Typen $T_I, T_S$ identifiziert werden. Definiere die Knotenabbildung $\varphi: V_I \to V_S$ mit $\varphi(v) = u$ falls $T_I(v) = T_S(u)$. Diese Abbildung ist eindeutig, da die Typen paarweise verschieden sind (Eindeutigkeitsannahme des FLEX-Standards).
 
 \textbf{Schritt 2: Reduktion auf Adjazenzmatrizen.} Repräsentiere $G_I$ durch Adjazenzmatrix $A \in \{0,1\}^{n_I \times n_I}$ und $G_S$ durch $B \in \{0,1\}^{n_S \times n_S}$. Die Knotenidentifikation via $\varphi$ induziert eine Einbettung von $A$ in $B$.
 
-\textbf{Schritt 3: Anwendung des Subgraph-Algorithmus.} Nach Epp (2026) entscheidet der Subgraph-Algorithmus durch Berechnung von Signaturvektoren und LCS-Vergleich über $n_S$ zyklische Rotationen, ob $G_I \subseteq G_S$. Die Gesamtkomplexität beträgt $O(n_S^3)$ (Signaturberechnung: $O(n_S^2)$; LCS pro Rotation: $O(n_S^2)$; $n_S$ Rotationen: Gesamt $O(n_S^3)$).
+\textbf{Schritt 3: Anwendung des Subgraph Algorithmus.} Nach Epp (2026) entscheidet der Subgraph Algorithmus durch Berechnung von Signaturvektoren und LCS-Vergleich über $n_S$ zyklische Rotationen, ob $G_I \subseteq G_S$. Die Gesamtkomplexität beträgt $O(n_S^3)$ (Signaturberechnung: $O(n_S^2)$; LCS pro Rotation: $O(n_S^2)$; $n_S$ Rotationen: Gesamt $O(n_S^3)$).
 
 \textbf{Korrektheit:} Die Injektivität der Signaturfunktion (Lemma~1 in Epp 2026) garantiert, dass gleiche Spaltenvektoren identisch signiert werden. Damit liefert der LCS-Vergleich genau dann eine Übereinstimmung, wenn $G_I$ als Subgraph in $G_S$ enthalten ist. $\qed$
 \end{proof}
@@ -600,7 +600,7 @@ Abbildung~\ref{fig:plot4} zeigt die Wettbewerbsscores $Q_\mathrm{comp}$ von vier
 
 \subsection{Subgraph-Kompatibilitätsprüfung}
 
-Abbildung~\ref{fig:plot5} visualisiert die Ergebnisse der Subgraph-Kompatibilitätsprüfung (Lemma~\ref{lem:kompatibilitaet}) für die fünf FLEX-Standardschnittstellen und sieben reale Dienstanbieter. Die rechte Heatmap zeigt die Laufzeiten des Subgraph-Algorithmus in Millisekunden: Alle Prüfungen liegen unter 2\,ms, was die praktische Echtzeitfähigkeit des Algorithmus bestätigt.
+Abbildung~\ref{fig:plot5} visualisiert die Ergebnisse der Subgraph-Kompatibilitätsprüfung (Lemma~\ref{lem:kompatibilitaet}) für die fünf FLEX-Standardschnittstellen und sieben reale Dienstanbieter. Die rechte Heatmap zeigt die Laufzeiten des Subgraph Algorithmus in Millisekunden: Alle Prüfungen liegen unter 2\,ms, was die praktische Echtzeitfähigkeit des Algorithmus bestätigt.
 
 \begin{figure}[h]
 \centering
@@ -619,7 +619,7 @@ Abbildung~\ref{fig:plot5} visualisiert die Ergebnisse der Subgraph-Kompatibilit�
 Diese Arbeit hat den \textbf{FLEX-Standard} als vollständiges formales Framework für die lose Kopplung von Suchdiensten und Web-Service-Ketten in mobilen Applikationen entwickelt und bewiesen. Die zentralen formalen Ergebnisse sind:
 
 \begin{itemize}
-    \item \textbf{Lemma~\ref{lem:kompatibilitaet}:} Schnittstellenkompatibilität ist in $O(n^3)$ entscheidbar durch Anwendung des Subgraph-Algorithmus (Epp 2026).
+    \item \textbf{Lemma~\ref{lem:kompatibilitaet}:} Schnittstellenkompatibilität ist in $O(n^3)$ entscheidbar durch Anwendung des Subgraph Algorithmus (Epp 2026).
     \item \textbf{Lemma~\ref{lem:kettenvalidierung}:} Kettenvalidierung für $m$ Stufen erfordert $O(m \cdot n^3)$.
     \item \textbf{Satz~\ref{satz:eindeutigkeit}:} Die FLEX-Routing-Funktion ist wohldefiniert und eindeutig für alle Kontexte.
     \item \textbf{Satz~\ref{satz:komplexitaet_routing}:} Dienstauswahl läuft in $O(N \cdot k + N \log N)$.
@@ -658,7 +658,7 @@ In Regionen mit strengen Datenschutzgesetzen (DSGVO, CCPA) ist es nicht ausreich
 Die aktuelle Routing-Funktion ist statisch: Sie wählt den Dienst mit maximalem aktuellen QoS-Score. Ein Reinforcement-Learning-Ansatz (z.\,B.\ Multi-Armed Bandit \cite{auer2002}) würde das Exploration-Exploitation-Dilemma adressieren: Gelegentlich werden neue oder weniger bekannte Anbieter getestet, um aktuelle Informationen über ihre Qualität zu gewinnen, anstatt immer den bekannten Marktführer zu wählen. Dies könnte Newcomern wie Brave Search früher Sichtbarkeit verschaffen und den Wettbewerb weiter fördern.
 
 \paragraph{Parallele Subgraph-Kompatibilitätsprüfung.}
-Für große Anbieterregistrierungen ($N > 10^3$ Dienste) kann die Kompatibilitätsprüfung parallelisiert werden. Die Kompatibilitätsprüfungen $S_i \models I$ für alle $S_i \in \mathcal{S}$ sind voneinander unabhängig (kein shared State) und können auf SIMD-Vektoroperationen oder GPU-Parallelisierung abgebildet werden. Der Subgraph-Algorithmus lässt sich auf dem NVIDIA H100 durch parallele LCS-Berechnungen um einen Faktor $p$ (Anzahl CUDA-Kerne) beschleunigen, was die amortisierte Prüfzeit pro Dienst auf $O(n^3 / p)$ reduziert.
+Für große Anbieterregistrierungen ($N > 10^3$ Dienste) kann die Kompatibilitätsprüfung parallelisiert werden. Die Kompatibilitätsprüfungen $S_i \models I$ für alle $S_i \in \mathcal{S}$ sind voneinander unabhängig (kein shared State) und können auf SIMD-Vektoroperationen oder GPU-Parallelisierung abgebildet werden. Der Subgraph Algorithmus lässt sich auf dem NVIDIA H100 durch parallele LCS-Berechnungen um einen Faktor $p$ (Anzahl CUDA-Kerne) beschleunigen, was die amortisierte Prüfzeit pro Dienst auf $O(n^3 / p)$ reduziert.
 
 \paragraph{Approximationsalgorithmen für Echtzeit-Routing.}
 In ultra-latenzempfindlichen Szenarien (IoT-Geräte, autonomes Fahren) kann die exakte Optimierung der Routing-Funktion zu zeitaufwändig sein. Ein $(1+\varepsilon)$-Approximationsalgorithmus würde einen Dienst $S^{\varepsilon}$ wählen mit $Q_\mathbf{w}(S^{\varepsilon}) \geq (1+\varepsilon)^{-1} \cdot Q_\mathbf{w}(S^*)$ in $O(\log N)$-Zeit (durch vorberechnete Prioritätswarteschlangen). Die Qualitätsgarantie von Satz~\ref{satz:qualitaet} würde entsprechend angepasst.
@@ -718,7 +718,7 @@ Die formalen Beweise dieser Arbeit sind mathematisch; für eine sicherheitskriti
 % =============================================================
 
 \bibitem{epp2026}
-Epp, S. (2026). \textit{Der Subgraph Algorithmus: Effiziente Graphvergleiche via Adjazenzmatrizen und zyklische Rotation.} Technischer Bericht, Universität Bielefeld. \url{https://gitlab.com/epp-group/subgraph}
+Epp, S. (2026). \textit{Der Subgraph Algorithmus: Effiziente Graphvergleiche via Adjazenzmatrizen und zyklische Rotation.} Technischer Bericht. \url{https://github.com/hjstephan86/subgraph}
 
 \bibitem{papazoglou2007}
 Papazoglou, M.\,P., Traverso, P., Dustdar, S., Leymann, F. (2007). Service-Oriented Computing: State of the Art and Research Challenges. \textit{IEEE Computer}, 40(11), 38--45.

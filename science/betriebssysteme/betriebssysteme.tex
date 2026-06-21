@@ -224,7 +224,7 @@ vorhersagbarer Scheduling-Algorithmen. Es verfolgt ein doppeltes Ziel:
 einerseits die präzise Darstellung der klassischen Theorie, die seit dem
 Grundlagenaufsatz von Liu und Layland \cite{Liu1973} im Jahr 1973 entstanden
 ist, andererseits die Integration neuerer Ergebnisse -- insbesondere des
-hier erstmals ausführlich präsentierten EDF$^+$-Algorithmus \cite{Epp2025} --
+hier erstmals ausführlich präsentierten EDF$^+$-Algorithmus \cite{Epp2026} --
 in einen einheitlichen theoretischen Rahmen.
 
 Die Hauptgrundlage ist das international maßgebliche Lehrbuch von Giorgio C.\
@@ -299,7 +299,7 @@ aktive Forschungsfelder.
 \section*{Über den EDF$^+$-Algorithmus}
 
 Eine wichtige Erweiterung der klassischen EDF-Theorie ist der EDF$^+$-Algorithmus
-\cite{Epp2025}, der in Kapitel~10 ausführlich behandelt wird. EDF$^+$ überträgt
+\cite{Epp2026}, der in Kapitel~10 ausführlich behandelt wird. EDF$^+$ überträgt
 die scharfe Optimalität von EDF auf Systeme mit stochastischen Blocking-Ereignissen:
 Wenn Tasks mit Wahrscheinlichkeit $p$ blockieren (etwa durch I/O-Warten oder
 Semaphore), erzeugt EDF$^+$ bei jedem Blocking-Ereignis sofort einen neuen
@@ -360,7 +360,7 @@ und Admission Control.
 
 \textbf{Kapitel~10 -- EDF$^+$-Algorithmus:} Vollständiger Optimalitätsbeweis,
 Laufzeitanalyse, Korollare (Dominanz über RM, Minimax-Eigenschaft) und
-Integration in AUTOSAR/ISO~26262 \cite{Epp2025}.
+Integration in AUTOSAR/ISO~26262 \cite{Epp2026}.
 
 \textbf{Kapitel~11 -- Kernel-Design:} Interrupt-Behandlung, Speicherverwaltung,
 Schedulingwarteschlangen und Kernel-Overhead in der Schedulierbarkeitsanalyse.
@@ -391,7 +391,7 @@ Cervin-Theorems (Kapitel~9) notwendig sind.
 Der Autor dankt den Begründern der Echtzeit-Scheduling-Theorie -- insbesondere
 C.\,L.\ Liu, J.\,W.\ Layland, Giorgio C.\ Buttazzo, Lui Sha und Sanjoy Baruah --
 für ihre grundlegenden Beiträge, ohne die dieses Buch nicht möglich wäre.
-Besonderer Dank gilt der Universität Bielefeld für die wissenschaftliche
+Besonderer Dank gilt der für die wissenschaftliche
 Infrastruktur und Unterstützung.
 
 \bigskip
@@ -3592,7 +3592,7 @@ eingesetzt, die Entscheidungen über Akzeptanz oder Ablehnung neuer Tasks treffe
 
 Dieses Kapitel präsentiert \textbf{EDF$^+$} (Earliest Deadline First Plus),
 einen neuartigen Echtzeit-Scheduling-Algorithmus, der die klassische EDF-Strategie
-um ein dynamisches Blocking-Penalty-Verfahren erweitert \cite{Epp2025}.
+um ein dynamisches Blocking-Penalty-Verfahren erweitert \cite{Epp2026}.
 
 Der fundamentale Kernsatz gilt auch für EDF$^+$:
 
@@ -4079,7 +4079,7 @@ Die kürzeste Ausführungszeit aller Tasks findet EDF sofort. EDF ist scharf opt
 
 \section{EDF$^+$ -- Erweiterung der Schärfe auf Blocking-Szenarien}
 
-EDF$^+$ \cite{Epp2025} überträgt die scharfe Optimalität von EDF auf Systeme
+EDF$^+$ \cite{Epp2026} überträgt die scharfe Optimalität von EDF auf Systeme
 mit stochastischen Blocking-Ereignissen. Bei jedem Blocking erzeugt EDF$^+$ eine
 Teilmenge nicht-blockierter Tasks, auf die das EDF-Optimalitätstheorem anwendbar ist.
 EDF$^+$ dominiert RM für alle $U > \ln 2$ und minimiert die erwartete Anzahl
@@ -4250,10 +4250,10 @@ Isabelle/HOL, Coq und Lean ermöglichen maschinengeprüfte Beweise:
 	      sicherheitskritische Systeme (ASIL-D-Zertifizierung).
 \end{itemize}
 
-\subsection{Der Subgraph-Algorithmus im verteilten Echtzeit-Kontext}
+\subsection{Der Subgraph Algorithmus im verteilten Echtzeit-Kontext}
 
-Der \textbf{Subgraph-Algorithmus} $\sigma_j = \sum A_{ij} \cdot 2^i + j \cdot 2^n$
-\cite{Epp2025} bietet mit seiner $O(n^3)$-Komplexität neue Möglichkeiten:
+Der \textbf{Subgraph Algorithmus} $\sigma_j = \sum A_{ij} \cdot 2^i + j \cdot 2^n$
+\cite{Epp2026} bietet mit seiner $O(n^3)$-Komplexität neue Möglichkeiten:
 
 \begin{itemize}
 	\item \textbf{Topologieanalyse von Task-Abhängigkeitsgraphen}: Effiziente
@@ -4287,7 +4287,7 @@ Für Systeme mit sehr vielen Tasks ($n > 10.000$) oder extrem kurzen Perioden
 \subsubsection{AUTOSAR Adaptive und EDF$^+$}
 
 ISO~26262 ASIL-D fordert Nachweis der Schedulierbarkeit, beschränkte
-Blockierzeiten und temporale Isolation. EDF$^+$ \cite{Epp2025} erfüllt diese
+Blockierzeiten und temporale Isolation. EDF$^+$ \cite{Epp2026} erfüllt diese
 Anforderungen durch analytisch beschränkten Neuplanungs-Overhead
 ($E[R] = np/(1-p)$). Dies macht EDF$^+$ zum aussichtsreichen Kandidaten
 für ASIL-D-Zertifizierung in AUTOSAR Adaptive Platform.
@@ -4577,7 +4577,7 @@ Ein Zähl-Semaphor mit Initialwert $k$ erlaubt bis zu $k$ simultane Zugriffe.
   \label{def:zs}
   Sei $k \geq 2$ und
   $Z_{\mathrm{ZS}} = \{c_0, c_1, \ldots, c_k, b, f\}$ mit $|Z_{\mathrm{ZS}}| = k+3$.
-  Dabei kodiert $c_i$ den Zustand,,Zähler hat Wert $i$``,
+  Dabei kodiert $c_i$ den Zustand,Zähler hat Wert $i$``,
   $b$ den Blockiert-Zustand und $f$ den Freigabe-Zustand.
   Die Übergänge bilden eine lineare Kette
   \[
@@ -5529,7 +5529,7 @@ Jeder Takt, in dem ein Dokument eintrifft, liefert ein Dokument und setzt den
 Timer zurück. Der Prozess endet im ersten Takt ohne Dokument. Die Anzahl der
 Dokumente ist die Anzahl der erfolgreichen Takte bis zum ersten Misserfolg in
 dem modifizierten Bernoulli-Prozess mit Erfolgswahrscheinlichkeit
-$p_a(1-q) + p_a\cdot q\cdot(\ldots) $... durch einfache Rekursion folgt die
+$p_a(1-q) + p_a\cdot q\cdot(\ldots) $.. durch einfache Rekursion folgt die
 angegebene Formel.
 \end{proof}
 
@@ -6251,7 +6251,7 @@ Algorithmus \ref{alg:adaptive} beschreibt die Arbeitsweise zur adaptiven stochas
 
 % ====================================================================
 \clearpage
-\chapter{DNA-basierte Datenspeicherung -- Subgraph-Algorithmus und Kodierungstheorie}
+\chapter{DNA-basierte Datenspeicherung -- Subgraph Algorithmus und Kodierungstheorie}
 \label{chap:dna}
 
 %=============================================================================
@@ -7274,7 +7274,7 @@ erm\"{o}glichen bereits heute das Auslesen einzelner DNA-Molek\"{u}le ohne
 Amplifikation, mit per-Read-Genauigkeiten von $> 99{,}5\,\%$ (R10.4-Pore).
 
 Aus algorithmischer Sicht er\"{o}ffnet dies eine fundamentale neue M\"{o}glichkeit:
-Das elektrische Rohsignal (,,Squiggle'') einer Nanopore kodiert die Basenfolge
+Das elektrische Rohsignal (,Squiggle'') einer Nanopore kodiert die Basenfolge
 implizit als Ionenstromzeitreihe der L\"{a}nge $T \approx 10k$ Zeitschritte.
 Mit einer neuronalen Vorverarbeitungsschicht (analog zu den Basecallern
 \emph{Bonito} oder \emph{Dorado} von Oxford Nanopore) lie\ss{}e sich die
@@ -7705,7 +7705,7 @@ Forschung benannt:
 \subsection{Implementierungshinweis}
 
 Die Implementierung des Subgraph Algorithmus ist verfügbar unter:
-\url{https://gitlab.com/epp-group/subgraph}.
+\url{https://github.com/hjstephan86/science}.
 
 
 
@@ -9263,7 +9263,7 @@ aufgeführt, die aus dieser Arbeit erwachsen:
 \begin{enumerate}
   \item \textbf{Unbedingte untere Schranke für Subgraph:}
         Kann $\Omega(n^3)$ für den zyklischen
-        Subgraph-Algorithmus ohne die SETH-Hypothese
+        Subgraph Algorithmus ohne die SETH-Hypothese
         bewiesen werden~\cite{abboud2015tight}?
         Dies würde eine der wichtigsten offenen Fragen
         der Sequenz-Komplexitätstheorie lösen.
@@ -12643,7 +12643,7 @@ Das Analog-Paradigma~\cite{epp2026analog}: Wasser als prim\"ar kontinuierliches
 Medium verkn\"upft sich mit der Diskretisierung~\cite{epp2026digi}.
 Die neuen Forschungsfelder NF-2 und NF-6~\cite{epp2026nf_all} werden
 durch diese Arbeit formal fundiert.
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} erm\"oglicht polynomielle
+Der Subgraph Algorithmus~\cite{epp2026subgraph} erm\"oglicht polynomielle
 Mustererkennung auf ionischen Bandinhalten.
 
 \subsection{Beitr\"age dieser Arbeit im \"Uberblick}
@@ -13576,7 +13576,7 @@ Verbindungen werden durch Gate-Kan\"ale realisiert (\"ahnlich CMOS-Pass-Transist
 Vorteil gegen\"uber SRAM-FPGAs: nicht-fl\"uchtige Konfigurationsspeicherung
 (ionische Kapazit\"at h\"alt Konfiguration auch ohne Versorgungsspannung),
 biokompatibel, l\"oslich.
-Verbindung zu~\cite{epp2026fpga}: Der Subgraph-Algorithmus~\cite{epp2026subgraph}
+Verbindung zu~\cite{epp2026fpga}: Der Subgraph Algorithmus~\cite{epp2026subgraph}
 optimiert die ionotronische FPGA-Topologie in $O(n^3)$.
 
 \subsection{Quantenionotronik}
@@ -13623,7 +13623,7 @@ dient direkt als Rechenmedium; Ionenkonzentrationen (Na$^+$, K$^+$, Ca$^2+$)
 werden gemessen und durch die ITM-Band-Kodierung sofort als Information
 verfügbar.
 Verbindung zu~\cite{epp2026norovirus}: Norovirus-Epitop-Bindung \"andert
-lokale $\zeta$-Potential und damit $\kappa$; Subgraph-Algorithmus
+lokale $\zeta$-Potential und damit $\kappa$; Subgraph Algorithmus
 erkennt Virussignatur in $O(n^3)$.
 
 \subsection{Ionotronische Simulation partieller Differentialgleichungen}
@@ -17669,7 +17669,7 @@ Systeme -- ein Bereich, der in zukünftigen Arbeiten weiterverfolgt wird.
 			&&TARGET_LOAD_FAST,
 			&&TARGET_STORE_FAST,
 			&&TARGET_BINARY_OP,
-			/* ... alle 175 CPython-Opcodes ... */
+			/* .. alle 175 CPython-Opcodes .. */
 		};
 		
 		#define DISPATCH() goto *dispatch_table[*pc++]
@@ -17972,7 +17972,7 @@ Systeme -- ein Bereich, der in zukünftigen Arbeiten weiterverfolgt wird.
 	
 	Ein weiteres Cache-Lokalitätsproblem: CPython speichert Objektfelder
 	in der Array-of-Structs (AoS)-Anordnung:\newline
-	\texttt{[refcnt|type|dict|...][refcnt|type|dict|...]...}. Für
+	\texttt{[refcnt|type|dict|..][refcnt|type|dict|..]..}. Für
 	GC-Scans, die nur \texttt{ob\_refcnt} benötigen, müssen 56 Byte
 	pro Objekt geladen werden, obwohl nur 8 Byte relevant sind.
 	
@@ -20395,7 +20395,7 @@ Die zentralen Beiträge sind:
   \item Formale Definition des \emph{RDF-Graphen} als Adjazenzmatrix und Übersetzung der
         SPARQL-Triplepattern in Subgraph-Bedingungen (Abschnitt~\ref{sec:grundlagen}).
   \item Nachweis der Isomorphie zwischen SPARQL-Auswertung via Einstein-Summation und dem
-        Subgraph-Algorithmus auf Tensor-Schnitten (Abschnitt~\ref{sec:verbindung}).
+        Subgraph Algorithmus auf Tensor-Schnitten (Abschnitt~\ref{sec:verbindung}).
   \item Formale Komplexitätsanalyse und Optimalitätsbeweis unter SETH
         (Abschnitt~\ref{sec:komplexitaet}).
   \item Sechs Matplotlib-Visualisierungen (Abschnitt~\ref{sec:plots}).
@@ -20725,7 +20725,7 @@ Die Berechnung der Signaturen dominiert nicht, da $O(n^2) \subset \Theta(n^3)$. 
 
 \begin{lemma}[Eingabeschranke]
 \label{lem:eingabe}
-Jeder korrekte Subgraph-Algorithmus muss alle $\Omega(n^2)$ Einträge beider
+Jeder korrekte Subgraph Algorithmus muss alle $\Omega(n^2)$ Einträge beider
 Adjazenzmatrizen lesen.
 \end{lemma}
 
@@ -21121,7 +21121,7 @@ Sei $L_{\max} = \lceil (n_{\max} + \lceil \log_2 n_{\max} \rceil) / 64 \rceil$
 die maximale Stack-Tiefe für Graphen bis zur Größe $n_{\max}$.
 Der \emph{LRH-Stack} ist die Struktur:
 \[
-  \mathtt{LRHStack} = \{\ \mathtt{ring}[0..L_{\max}-1] : \mathbb{Z}_{2^{64}},\quad
+  \mathtt{LRHStack} = \{\ \mathtt{ring}[0.L_{\max}-1] : \mathbb{Z}_{2^{64}},\quad
                           \mathtt{depth} : \{0,\ldots,L_{\max}\}\ \}
 \]
 mit der Invariante: $\mathtt{ring}[k] = 0$ für alle $k \geq \mathtt{depth}$.
@@ -23356,8 +23356,8 @@ Blocking-Ereignissen. Der vollständige Optimalitätsbeweis durch Induktion
 ($E[R_N] = Np$, Hoeffding-Schranke) und die Erweiterung auf dynamische
 Task-Mengen wurden formal hergeleitet.
 
-\paragraph{Subgraph-Algorithmus.}
-Der Subgraph-Algorithmus ($\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$,
+\paragraph{Subgraph Algorithmus.}
+Der Subgraph Algorithmus ($\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$,
 $O(n^3)$) wurde als universelles Analysewerkzeug auf acht verschiedene
 Domänen angewendet: Synchronisationsmechanismen, DNA-Kodierung, Wissensgraphen,
 ionotronische Netzwerke, Fairness-Analyse, stochastische Archive,
@@ -23384,7 +23384,7 @@ Zwei Ansätze stehen bereit:
 
 \emph{Partitioniertes EDF$^+$:} Jeder Task wird statisch einem Kern zugewiesen;
 EDF$^+$ läuft unabhängig pro Kern. Dies bewahrt Cache-Affinität, erzeugt aber
-ein NP-schweres Bin-Packing-Problem bei der Partitionierung. Der Subgraph-Algorithmus
+ein NP-schweres Bin-Packing-Problem bei der Partitionierung. Der Subgraph Algorithmus
 könnte Approximationslösungen in $O(n^3)$ liefern.
 
 \emph{Globales EDF$^+$:} Eine gemeinsame Warteschlange über alle $M$ Kerne.
@@ -23438,7 +23438,7 @@ Für $N \ge 1000$ Tasks:
     wenn Hoeffding-WCRT-Bound die Schranke unterschreitet
 \end{itemize}
 
-\subsection{Subgraph-Algorithmus: Parallelisierung und neue Domänen}
+\subsection{Subgraph Algorithmus: Parallelisierung und neue Domänen}
 
 \subsubsection{GPU-Parallelisierung}
 
@@ -23456,7 +23456,7 @@ Für sehr große Graphen ($n \ge 10^6$) liefert Locality-Sensitive Hashing (LSH)
 $\varepsilon$-nahe Signaturen in $O(n^{2+\varepsilon})$. Anwendungen:
 Soziale Netzwerke, genomische Interaktionsgraphen.
 
-\subsubsection{Neue Domänen des Subgraph-Algorithmus}
+\subsubsection{Neue Domänen des Subgraph Algorithmus}
 
 \begin{itemize}
   \item \emph{Quantenschaltkreise:} Modellierung als Graphen; Optimierung
@@ -23527,7 +23527,7 @@ DNA-Computer läuft. Herausforderungen:
   \item Fehlertolerante Ausführung bei biochemischen Fehlerraten
     ($\sim 10^{-3}$ Fehler pro Base)
   \item Adressierungsmodelle für 3D-DNA-Nanostrukturen
-  \item Subgraph-Algorithmus als Indexierungsverfahren für DNA-Bibliotheken
+  \item Subgraph Algorithmus als Indexierungsverfahren für DNA-Bibliotheken
     (vgl.\ Kapitel~\ref{chap:dna})
 \end{itemize}
 
@@ -23658,13 +23658,13 @@ Aufbauend auf Kapitel~\ref{chap:sync} ergeben sich:
 
 \begin{itemize}
   \item \emph{Automatische Deadlock-Erkennung via Subgraph:} Ein Echtzeit-Betriebssystem
-    könnte den Subgraph-Algorithmus kontinuierlich auf dem Ressourcenzuweisungsgraphen
+    könnte den Subgraph Algorithmus kontinuierlich auf dem Ressourcenzuweisungsgraphen
     ausführen und Zyklen (Deadlocks) in $O(n^3)$ erkennen.
   \item \emph{Formale Synthese von Synchronisationscode:} Aus der Subgraph-Darstellung
     von Synchronisationsmechanismen könnte automatisch korrekter
     POSIX-Synchronisationscode synthetisiert werden (Programmsynthese).
   \item \emph{Erweiterung auf verteilte Synchronisation:} Anwendung des
-    Subgraph-Algorithmus auf verteilte Konsensalgorithmen (Paxos, Raft)
+    Subgraph Algorithmus auf verteilte Konsensalgorithmen (Paxos, Raft)
     zur strukturellen Analyse ihrer Zustandsräume.
 \end{itemize}
 
@@ -23673,14 +23673,14 @@ Aufbauend auf Kapitel~\ref{chap:sync} ergeben sich:
 Die in diesem Buch vorgestellten Forschungsergebnisse zeigen, dass
 fundamentale Algorithmen aus der theoretischen Informatik weitreichende
 praktische Anwendungen in aktuellen und zukünftigen Technologien haben.
-Der Subgraph-Algorithmus als universelles graphentheoretisches Werkzeug
+Der Subgraph Algorithmus als universelles graphentheoretisches Werkzeug
 und EDF$^+$ als optimal-nachgewiesener Echtzeit-Scheduler bilden zusammen
 ein kohärentes Forschungsprogramm, das von eingebetteten Systemen
 über Bioinformatik bis hin zu ionotronischen und quantenbasierten
 Rechnersystemen reicht.
 
 Die formalen Beweise in diesem Buch -- insbesondere die Optimalitätsbeweise
-für EDF$^+$, die Korrektheitsbeweise für den Subgraph-Algorithmus und die
+für EDF$^+$, die Korrektheitsbeweise für den Subgraph Algorithmus und die
 mathematischen Analysen der stochastischen Modelle -- bieten ein solides
 Fundament für Implementierungen und Zertifizierungen nach ISO~26262,
 DO-178C und ähnlichen Sicherheitsstandards.
@@ -23840,11 +23840,10 @@ E.\,L.~Lawler,
 \textit{Management Science}, Bd.~19, Nr.~5, S.~544--546, 1973.
 
 % --- EDF+ (edfplus.tex) ---
-\bibitem{Epp2025}
+\bibitem{Epp2026}
 S.~Epp,
 ``EDF$^+$: Optimaler Scheduling-Algorithmus mit Prioritätsstrafe und
-stochastischer Analyse bei 40 Tasks,''
-Universität Bielefeld, Technischer Bericht, 2025.
+stochastischer Analyse bei 40 Tasks,'', Technischer Bericht, 2026.
 
 \bibitem{Hoeffding1963}
 W.~Hoeffding,
@@ -23869,8 +23868,7 @@ T.\,H.~Cormen, C.\,E.~Leiserson, R.\,L.~Rivest und C.~Stein,
 % --- Synchronisation (sync.tex) ---
 \bibitem{epp2026subgraph}
 S.~Epp,
-``Der Subgraph-Algorithmus: Graphentheoretische Analyse in $O(n^3)$,''
-Universität Bielefeld, Technischer Bericht, 2026.
+``Der Subgraph Algorithmus: Graphentheoretische Analyse in $O(n^3)$,'', Technischer Bericht, 2026.
 
 \bibitem{tanenbaum2014modern}
 A.\,S.~Tanenbaum und H.~Bos,
@@ -24057,8 +24055,7 @@ M.~Bienvenu, B.~Leclère und M.~Mugnier,
 \bibitem{eppe2026tentris}
 S.~Epp,
 ``Effiziente Subgraph-Erkennung in Wissensgraphen mit Tentris und dem
-Subgraph-Algorithmus,''
-Universität Bielefeld, Technischer Bericht, 2026.
+Subgraph Algorithmus,'', Technischer Bericht, 2026.
 
 % --- Allgemeine Betriebssysteme ---
 \bibitem{Brause2017}

@@ -83,13 +83,13 @@ via Subgraph-Isomorphie}
 
 \begin{abstract}
 Diese Arbeit entwickelt eine vollst\"andige mathematische Theorie der topologischen
-Quantenfehlerkorrektur (QEC) und verbindet sie mit dem Subgraph-Algorithmus.
+Quantenfehlerkorrektur (QEC) und verbindet sie mit dem Subgraph Algorithmus.
 Das zentrale neue Ergebnis ist der \emph{Syndrom-Subgraph-Satz}
 (Satz~\ref{satz:syndrom_subgraph}): Die Fehlersyndrom-Erkennung beim Surface Code
 reduziert sich auf ein Subgraph-Isomorphieproblem zwischen dem gemessenen
 Syndrom-Graphen $G_{\mathcal{S}}$ und einem Bibliotheks-Graphen bekannter
 Fehlertypen, entscheidbar in $O(n^3)$ durch den
-Subgraph-Algorithmus~\cite{epp2026subgraph}.
+Subgraph Algorithmus~\cite{epp2026subgraph}.
 Der \emph{Toric-Code-Gitter-Satz} (Satz~\ref{satz:toric_graph}) beweist,
 dass Toric-Code-Stabilisatoren genau die homologischen Zyklen des
 Torus-Gittergraphen sind. Der \emph{CSS-Konstruktionssatz}
@@ -124,21 +124,21 @@ lokale Stabilisatormessungen aufweisen.
 \subsection{Motivation und neue Beitr\"age}
 
 Diese Arbeit verkn\"upft erstmals topologische QEC mit dem
-Subgraph-Algorithmus~\cite{epp2026subgraph}:
+Subgraph Algorithmus~\cite{epp2026subgraph}:
 \begin{itemize}
     \item \textbf{Fehlersyndrom als Graph:} Das Muster ausgelöster
           Stabilisatoren wird als Graph $G_{\mathcal{S}}$ kodiert.
           Fehlertypen entsprechen bekannten Graphmustern in einer Bibliothek.
-    \item \textbf{Polynomielle Fehlererkennung:} Der Subgraph-Algorithmus
+    \item \textbf{Polynomielle Fehlererkennung:} Der Subgraph Algorithmus
           vergleicht $G_{\mathcal{S}}$ mit der Fehlerbibliothek in $O(n^3)$.
     \item \textbf{Homologische Interpretation:} Logische Fehler sind
-          nicht-triviale homologische Zyklen; der Subgraph-Algorithmus
+          nicht-triviale homologische Zyklen; der Subgraph Algorithmus
           klassifiziert Zyklen topologisch.
 \end{itemize}
 
 \subsection{Einordnung in das Forschungsportfolio}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} mit Signatur-Funktion
+Der Subgraph Algorithmus~\cite{epp2026subgraph} mit Signatur-Funktion
 $\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$ und $O(n^3)$-Laufzeit
 ist das algorithmische Kernwerkzeug.
 Die gitterbasierte Kryptographie~\cite{epp2026lattice} nutzt CSS-Codes
@@ -408,7 +408,7 @@ des resultierenden CSS-Codes betr\"agt $d$ (Blocklänge der Komponentencodes).
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fehlersyndrom-Graphen und Subgraph-Algorithmus}
+\section{Fehlersyndrom-Graphen und Subgraph Algorithmus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Der Syndrom-Graph}
@@ -535,12 +535,12 @@ Wahrscheinlichkeit mindestens $d/2$ Fehler: $\binom{d}{d/2}p^{d/2}(1-p)^{d/2}$.
 F\"ur $p < p_{th}$: $p^{d/2} \cdot (1/p_{th})^{d/2} < 1$, also exponentiell klein
 in $d$. \end{proof}
 
-\begin{satz}[Verbindung MWPM -- Subgraph-Algorithmus]
+\begin{satz}[Verbindung MWPM -- Subgraph Algorithmus]
 \label{satz:mwpm_subgraph}
 Das MWPM-Problem auf dem Syndrom-Graphen $G_{\mathcal{S}}$ l\"asst sich als
 Subgraph-Inklusion formulieren: Ein perfektes Matching $M$ ist genau dann
 ein MWPM, wenn der Matching-Graph $G_M \subseteq G_{\mathcal{S}}$ ein
-Subgraph minimalen Gewichts ist. Der Subgraph-Algorithmus~\cite{epp2026subgraph}
+Subgraph minimalen Gewichts ist. Der Subgraph Algorithmus~\cite{epp2026subgraph}
 verifiziert diese Eigenschaft in $O(n^3)$.
 \end{satz}
 
@@ -552,7 +552,7 @@ Zul\"assigkeitsbedingung des Matchings.
 Das Gewicht $w(G_M) = \sum_{e \in M} w(e)$ ist minimal genau dann,
 wenn kein Subgraph $G_M' \subseteq G_{\mathcal{S}}$ mit gleichem Knoten-Matching
 ein kleineres Gewicht hat.
-Der Subgraph-Algorithmus pr\"uft die Inklusion und vergleicht via LCS-Matching
+Der Subgraph Algorithmus pr\"uft die Inklusion und vergleicht via LCS-Matching
 (Satz~\ref{satz:syndrom_subgraph}) die Gewichte in $O(n^3)$.
 \end{proof}
 
@@ -562,7 +562,7 @@ Der Subgraph-Algorithmus pr\"uft die Inklusion und vergleicht via LCS-Matching
 \caption{Links: MWPM-Dekodierung mit 4 Syndromknoten; gr\"une Pfeile zeigen
 das optimale Matching (Gesamtgewicht minimal), graue gestrichelte Linien das
 suboptimale Matching. Rechts: Komplexit\"atsvergleich verschiedener
-Dekodier-Algorithmen (log-Skala); MWPM und Subgraph-Algorithmus teilen
+Dekodier-Algorithmen (log-Skala); MWPM und Subgraph Algorithmus teilen
 $O(n^3)$-Komplexit\"at.}
 \label{fig:mwpm}
 \end{figure}
@@ -639,7 +639,7 @@ gibt es genau $4 - 1 = 3$ nicht-triviale Fehlerklassen (entsprechend den
 \end{proof}
 
 \begin{korollar}[Subgraph-Inklusion klassifiziert Homologieklassen]
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} auf dem Syndrom-Graphen
+Der Subgraph Algorithmus~\cite{epp2026subgraph} auf dem Syndrom-Graphen
 $G_{\mathcal{S}}$ klassifiziert die Homologieklasse eines Fehlers in $O(n^3)$:
 Ein Fehler geh\"ort zu $H_1(G_T; \mathbb{Z}_2) \setminus \{0\}$ genau dann,
 wenn sein Syndrom-Graph $G_{\mathcal{S}}$ nicht als Subgraph in den
@@ -664,7 +664,7 @@ einen Subgraph der \"au{\ss}eren.}
 \begin{satz}[QEC-Pipeline-Korrektheit]
 \label{satz:pipeline}
 Die QEC-Pipeline (Stabilisatormessung $\to$ Syndrom-Graph-Konstruktion
-$\to$ Subgraph-Algorithmus $\to$ MWPM $\to$ Korrektur) ist korrekt und
+$\to$ Subgraph Algorithmus $\to$ MWPM $\to$ Korrektur) ist korrekt und
 vollst\"andig:
 \begin{itemize}
     \item \textbf{Korrektheit:} Jeder korrigierbare Fehler wird korrekt
@@ -679,7 +679,7 @@ vollst\"andig:
 \begin{proof}
 Korrektheit folgt aus Satz~\ref{satz:mwpm_korrekt} (MWPM-Genauigkeit).
 Vollst\"andigkeit: Jedes $\mathbf{s} \neq \mathbf{0}$ erzeugt einen nichtleeren
-Syndrom-Graphen $G_{\mathcal{S}} \neq \emptyset$; der Subgraph-Algorithmus
+Syndrom-Graphen $G_{\mathcal{S}} \neq \emptyset$; der Subgraph Algorithmus
 pr\"uft in endlicher Zeit gegen alle Bibliothekseintr\"age und gibt die
 wahrscheinlichste Fehlerklasse zur\"uck (oder UNBEKANNT, falls kein Match
 mit LCS $\geq 2$).
@@ -692,7 +692,7 @@ LCS-Matching $O(n^3)$ (dominierend).
 \includegraphics[width=0.95\textwidth]{plot5_fehlermodell.pdf}
 \caption{Links: Monte-Carlo-Fehlermuster auf Surface Code $d=7$ mit $p=5\%$;
 rot: $X$-Fehler, blau: $Z$-Fehler, lila: $Y$-Fehler; Sterne: ausge\-l\"oste
-Syndrome. Rechts: QEC-Pipeline-Flussdiagramm mit Subgraph-Algorithmus als
+Syndrome. Rechts: QEC-Pipeline-Flussdiagramm mit Subgraph Algorithmus als
 Kernberechnung ($O(n^3)$, lila Box) und Echtzeit-Feedback-Schleife.}
 \label{fig:fehlermodell}
 \end{figure}
@@ -702,7 +702,7 @@ Kernberechnung ($O(n^3)$, lila Box) und Echtzeit-Feedback-Schleife.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Diese Arbeit hat eine vollst\"andige Theorie topologischer Quantenfehlerkorrektur
-mit dem Subgraph-Algorithmus entwickelt. Die zentralen Ergebnisse:
+mit dem Subgraph Algorithmus entwickelt. Die zentralen Ergebnisse:
 
 \begin{itemize}
     \item \textbf{Satz~\ref{satz:pauli_basis}} (Pauli-Basis):
@@ -763,22 +763,22 @@ Suche nach dem minimalen Gewicht-Fehler im CSS-Code.
 NP-H\"arte des SVP impliziert, dass kein effizienter Angreifer (klassisch
 oder quantenmechanisch) den Fehlerkorrektur-Code brechen kann -- ein
 gemeinsames Sicherheitsfundament f\"ur QEC und PQC~\cite{epp2026pqc}.
-Der Subgraph-Algorithmus l\"ost das Matching-Problem in $O(n^3)$
+Der Subgraph Algorithmus l\"ost das Matching-Problem in $O(n^3)$
 (polynomiell), was f\"ur den legitimen Dekoder ausreicht, aber nicht
 f\"ur den Angreifer (der das SVP l\"osen m\"usste).
 
 \subsection{Neuronale Netz-Dekodierung via Graphen-Signaturen}
 
 Graph Neural Networks (GNNs) f\"ur QEC-Dekodierung k\"onnen durch den
-Subgraph-Algorithmus formal fundiert werden.
+Subgraph Algorithmus formal fundiert werden.
 Die Architektur eines \emph{QEC-GNN}: Jeder Syndrom-Knoten $s_j$ hat
 Feature-Vektor $\mathbf{f}_j = (\sigma_j, \text{Pos}_{x,y})$
 (Signatur + Position auf dem Gitter).
 GNN-Nachrichtenpassing: $\mathbf{f}_j^{(l+1)} = \sigma_{\mathrm{ReLU}}\!\left(W_l
 \sum_{i \sim j} A_{\mathcal{S},ij} \mathbf{f}_i^{(l)}\right)$.
-Die $L$ GNN-Schichten entsprechen $L$ Rotationsschritten des Subgraph-Algorithmus.
+Die $L$ GNN-Schichten entsprechen $L$ Rotationsschritten des Subgraph Algorithmus.
 Theoretische Grundlage: Das GNN \emph{approximiert} den MWPM-Dekoder;
-der Subgraph-Algorithmus ist das exakte Referenzverfahren.
+der Subgraph Algorithmus ist das exakte Referenzverfahren.
 
 \subsection{H\"oherdimensionale Topologische Codes}
 
@@ -791,7 +791,7 @@ Besonders interessant: $D = 4$ (Hyperwuerfel-Code~\cite{dennis2002}).
 Im 4D-Toric Code gibt es keine polynomiell gro{\ss}e logische Fehlerkette
 aus einzelnen Qubit-Fehlern -- die Fehlerkorrektur ist selbstdual und
 die logische Fehlerrate f\"allt \emph{exponentiell} in $d^2$ statt $d/2$.
-Der Subgraph-Algorithmus muss f\"ur 4D-Syndrome mit h\"oherdimensionalen
+Der Subgraph Algorithmus muss f\"ur 4D-Syndrome mit h\"oherdimensionalen
 Adjazenzmatrizen erweitert werden; die Laufzeit bleibt $O(n^3)$.
 
 \subsection{Quantenfehlerkorrektur f\"ur bosonische Systeme}
@@ -801,7 +801,7 @@ Bisher konzentrierten wir uns auf Qubit-Codes. Bosonische Codes
 Oszillatoren als physische Systeme. Der Stabilisatorformalismus bleibt
 anwendbar, aber die Stabilisatorgruppe liegt nun in der Weyl-Heisenberg-Gruppe.
 
-Verbindung zum Subgraph-Algorithmus: GKP-Fehler auf einem Torus im Phasenraum
+Verbindung zum Subgraph Algorithmus: GKP-Fehler auf einem Torus im Phasenraum
 sind strukturell isomorph zu topologischen Fehlern auf dem Gitter;
 der Syndrom-Graph $G_{\mathcal{S}}^{\mathrm{GKP}}$ hat dieselbe
 Signatur-Struktur. Die Laufzeit der Dekodierung bleibt $O(n^3)$.
@@ -815,7 +815,7 @@ Fehlerrate maximiert man die Sensitivit\"at~\cite{kaubruegger2021}.
 Im Spielgraph-Framework (vgl.~\cite{epp2026spieltheorie}): Sensor und
 Rauschen spielen ein Zwei-Spieler-Nullsummenspiel um die Messgenauigkeit.
 Das Nash-Gleichgewicht entspricht dem optimalen QEC-Code f\"ur den gegebenen
-Rauschkanal. Der Subgraph-Algorithmus findet optimale Codes als
+Rauschkanal. Der Subgraph Algorithmus findet optimale Codes als
 Senken-Knoten im Spielgraphen in $O(n^3)$.
 
 \subsection{Topologische Quantenfeldtheorie und Anyonen}
@@ -826,7 +826,7 @@ Korrekturen entsprechen dem Annihilieren von Anyonen durch Fusion.
 Die Homologieklassen (Satz~\ref{satz:homologie}) entsprechen den
 topologischen Ladungen der Anyonen.
 
-Forschungsrichtung: Kann der Subgraph-Algorithmus Anyonen-Fusionsregeln
+Forschungsrichtung: Kann der Subgraph Algorithmus Anyonen-Fusionsregeln
 effizient berechnen? Die Fusion $e \times m = \varepsilon$ (Elektron $\times$
 Magnetfluss $=$ Fermion) im Toric Code entspricht dem XOR zweier Zyklen
 in $H_1(G_T; \mathbb{Z}_2)$ -- eine Graphoperation, die in $O(n)$ berechenbar ist.
@@ -842,7 +842,7 @@ Verbindung zur Signal-theorie~\cite{epp2026signal}: Das Fehlersyndrom
 $\mathbf{s} \in \{0,1\}^{n-k}$ ist ein diskretes Signal; der Syndrom-Graph
 $G_{\mathcal{S}}$ ist seine graphentheoretische Repr\"asentation.
 Die Fourier-Analyse (\"uber $\mathbb{F}_2$) des Syndroms entspricht der
-Signatur-Berechnung im Subgraph-Algorithmus: $\sigma_j = \hat{\mathbf{s}}_j$
+Signatur-Berechnung im Subgraph Algorithmus: $\sigma_j = \hat{\mathbf{s}}_j$
 (diskrete Hadamard-Transformation des $j$-ten Syndroms).
 
 \subsection{Maschinelles Lernen f\"ur adaptive Fehlerschwellen}
@@ -854,7 +854,7 @@ Fehlermuster erh\"ohen.
 
 Verbindung zu~\cite{epp2026hetnet}: Ein Reinforcement-Learning-Agent lernt
 die optimale Fehlerdekodierungsstrategie in einer Umgebung, die dem
-depolarisierenden Kanal entspricht. Der Subgraph-Algorithmus ist der
+depolarisierenden Kanal entspricht. Der Subgraph Algorithmus ist der
 $O(n^3)$-Evaluator der Belohnungsfunktion.
 
 \subsection{Quantenfehlerkorrektur und atmosph\"arische Turbulenz}
@@ -864,7 +864,7 @@ unter atmosph\"arischer Turbulenz. Das Fehlermodell \"ahnelt dem depolarisierend
 Kanal mit korreliertem Rauschen (turbulente Eddies korrelieren Phasenfehler).
 Verbindung zur atmosph\"arischen Systemtheorie~\cite{epp2026klima}: Die
 Fehlersyndrome eines quantenoptischen Links sind strukturell isomorph zu den
-atmosph\"arischen Zirkulationsmustern; der Subgraph-Algorithmus erkennt
+atmosph\"arischen Zirkulationsmustern; der Subgraph Algorithmus erkennt
 bekannte Turbulenz-Fehlermuster in $O(n^3)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -940,7 +940,7 @@ Variational spin-squeezing algorithms on programmable quantum sensors.
 Epp, S. (2026).
 Der Subgraph Algorithmus -- L\"osung des Subgraph-Isomorphismus in $O(n^3)$.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026lattice}
 Epp, S. (2026).
@@ -959,7 +959,7 @@ Universit\"at Bielefeld.
 
 \bibitem{epp2026qsubgraph}
 Epp, S. (2026).
-QSubgraph -- Quantenalgorithmische Erweiterung des Subgraph-Algorithmus.
+QSubgraph -- Quantenalgorithmische Erweiterung des Subgraph Algorithmus.
 Universit\"at Bielefeld.
 
 \bibitem{epp2026fpga}

@@ -142,7 +142,7 @@ Trotz der zentralen Bedeutung formaler Grammatiken fehlt eine einheitliche
     \item Die algebraische Verbindung zwischen regul\"aren Grammatiken und
           boolescher Matrizenmultiplikation (\texttt{bool-mm}~\cite{epp2026boolmm})
           formal herstellen und praktisch ausnutzen
-    \item Den Subgraph-Algorithmus~\cite{epp2026subgraph} mit seiner
+    \item Den Subgraph Algorithmus~\cite{epp2026subgraph} mit seiner
           Laufzeit $O(n^3)$ direkt auf Grammatikstrukturen anwenden
 \end{itemize}
 
@@ -155,7 +155,7 @@ Optimierung von Compilern durch Erkennung \"aquivalenter Syntaxfragmente.
 \subsection{Einordnung in das Forschungsportfolio}
 
 Diese Arbeit schlie{\ss}t die Br\"ucke zwischen mehreren fr\"uheren Arbeiten.
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} liefert das algorithmische
+Der Subgraph Algorithmus~\cite{epp2026subgraph} liefert das algorithmische
 Kernwerkzeug mit Laufzeit $O(n^3)$ und der Signatur-Funktion
 $\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$.
 Die Compiler-Subgraph-Reduktion~\cite{epp2026ccl} zeigt, dass Abstract Syntax
@@ -476,7 +476,7 @@ Ein Graph-Isomorphismus $\varphi: Q_1 \to Q_2$ permutiert Knoten bijektiv.
 Die Signatur-Array-Eintr\"age kodieren die Spalten der Adjazenzmatrix;
 eine Permutation der Knoten entspricht einer Permutation der Spalten.
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} beschr\"ankt die Suche auf
+Der Subgraph Algorithmus~\cite{epp2026subgraph} beschr\"ankt die Suche auf
 \emph{zyklische} Rotationen $\mathrm{rot}_k$ statt aller $n!$ Permutationen.
 Dies ist korrekt: Zwei isomorphe Graphen, deren Adjazenzmatrizen durch eine
 zyklische Spaltenrotation ineinander \"ubergehen, haben unter der
@@ -587,7 +587,7 @@ $n_1 = n_2 = n$.
 \includegraphics[width=0.95\textwidth]{plot5_subgraph.pdf}
 \caption{Oben links: Zyklische Rotation von 5 Signatur-Arrays (5 Rotationsschritte);
 jede Farbe repr\"asentiert einen Zustand. Oben rechts: Komplexit\"atsvergleich --
-naiver Ansatz $O(n! \cdot n^2)$ w\"achst superexponentiell, Subgraph-Algorithmus
+naiver Ansatz $O(n! \cdot n^2)$ w\"achst superexponentiell, Subgraph Algorithmus
 $O(n^3)$ bleibt polynomiell. Unten links: LCS-DP-Tabelle f\"ur zwei Grammatikgraphen
 ($G_1$: 3 Zust\"ande, $G_2$: 4 Zust\"ande); $|\mathrm{LCS}| \geq 3$ best\"atigt
 $G_1 \subseteq G_2$. Unten rechts: Subgraph-Hierarchie dreier verschachtelter
@@ -971,14 +971,14 @@ Anwendungen in der Praxis: Zwei Compiler-Frontends f\"ur verschiedene
 Programmiersprachen, die dieselbe Grammatikstruktur (bis auf Zustandsumbenennung)
 implementieren, erhalten denselben kanonischen Signatur-Repr\"asentanten.
 Dies erm\"oglicht eine Grammatik-Datenbank mit polynomieller
-Duplikat-Erkennung. Verbindung zu~\cite{epp2026ccl}: Der Compiler-Subgraph-Algorithmus
+Duplikat-Erkennung. Verbindung zu~\cite{epp2026ccl}: Der Compiler-Subgraph Algorithmus
 kann auf kanonisierten Signatur-Arrays aufgebaut werden und damit redundante
 Grammatik-Spezifikationen in Compiler-Toolchains automatisch erkennen.
 
 \subsection{Parse-Baum-Signaturen f\"ur kontextfreie Sprachen}
 
 Kontextfreie Grammatiken erzeugen Ableitungsb\"aume (Parse Trees), die
-gerichtete azyklische Graphen (DAGs) sind. Der Subgraph-Algorithmus~\cite{epp2026subgraph}
+gerichtete azyklische Graphen (DAGs) sind. Der Subgraph Algorithmus~\cite{epp2026subgraph}
 ist direkt auf DAGs anwendbar. Eine \emph{Baum-Signatur} f\"ur einen Ableitungsbaum
 $T$ k\"onnte wie folgt definiert werden:
 
@@ -1001,7 +1001,7 @@ boolesche Matrizenmultiplikation l\"auft in $O(n^{2.37})$
 
 F\"ur gro{\ss}e Grammatiken mit $n > 1000$ Zust\"anden (typisch bei
 industriellen Sprachen wie COBOL oder SQL) kann die Gesamtkomplexit\"at des
-Grammatik-Subgraph-Algorithmus von $O(n^3)$ auf $O(n^{2.37})$ verbessert werden,
+Grammatik-Subgraph Algorithmus von $O(n^3)$ auf $O(n^{2.37})$ verbessert werden,
 indem die Signatur-Berechnung f\"ur den Kompositions-DFA direkt durch
 \texttt{bool-mm}~\cite{epp2026boolmm} ersetzt wird.
 Dies w\"urde bei einer Grammatik mit $n = 10\,000$ Zust\"anden die Rechenzeit
@@ -1033,12 +1033,12 @@ Beispiele $L^+$ und negative Beispiele $L^-$, finde die kleinste Grammatik
 $G$ mit $L^+ \subseteq L(G)$ und $L^- \cap L(G) = \emptyset$.
 Dieses Problem ist NP-schwer f\"ur allgemeine Grammatiken.
 
-F\"ur regul\"are Grammatiken erm\"oglicht der Grammatik-Subgraph-Algorithmus
+F\"ur regul\"are Grammatiken erm\"oglicht der Grammatik-Subgraph Algorithmus
 eine effiziente Pr\"ufung von Kandidaten-Grammatiken: Kodiere jeden Kandidaten-DFA
 als Signatur-Array und pr\"ufe in $O(n^3)$, ob alle Positiv-Beispiele
 (als Pfade im DFA-Graphen) enthalten sind und ob kein Negativ-Beispiel akzeptiert
 wird. Verbindung zu~\cite{epp2026hetnet}: Ein Reinforcement-Learning-Agent
-k\"onnte den Induktionsprozess steuern, wobei der Subgraph-Algorithmus als
+k\"onnte den Induktionsprozess steuern, wobei der Subgraph Algorithmus als
 schneller $O(n^3)$-Evaluator der Fitness-Funktion dient.
 Die SEA-Dynamik aus der atmosph\"arischen Theorie~\cite{epp2026klima}
 bietet ein Phasen\"ubergangsmodell f\"ur den Lernprozess.
@@ -1081,7 +1081,7 @@ dynamische Zustandsraumgrammatik.
 \subsection{Neuronale Grammatikerkennung via Subgraph-GNNs}
 
 Graph Neural Networks (GNNs) f\"ur syntaktische Analyse k\"onnen durch den
-Grammatik-Subgraph-Algorithmus theoretisch fundiert werden.
+Grammatik-Subgraph Algorithmus theoretisch fundiert werden.
 Die Architektur eines \emph{Grammatik-GNN} ist:
 \begin{itemize}
     \item Schicht $\ell$: Nachrichtenweitergabe entspricht einem Rotationsschritt
@@ -1191,7 +1191,7 @@ Lexicographically least circular substrings.
 Epp, S. (2026).
 Der Subgraph Algorithmus -- L\"osung des Subgraph-Isomorphismus in $O(n^3)$.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026boolmm}
 Epp, S. (2026).
@@ -1202,7 +1202,7 @@ Google Drive (epp-group).
 Epp, S. (2026).
 Polynomielle Reduktionen von Compiler-Problemen auf Subgraph-Isomorphismus.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/ccl}
+\url{https://github.com/hjstephan86/science/tree/main/science/ccl}
 
 \bibitem{epp2026umlp}
 Epp, S. (2026).

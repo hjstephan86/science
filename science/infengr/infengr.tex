@@ -94,7 +94,7 @@ Managementsicht,
 erlernbare Beschreibungssprache liegt in der vollen Verantwortung des Ingenieurs und
 (\emph{iii})~Code-Generierung aus graphischer Modellierung ist unnötig und führt zu
 Vollständigkeitslücken.
-Die Ergebnisse werden formal bewiesen, mit dem Subgraph-Algorithmus
+Die Ergebnisse werden formal bewiesen, mit dem Subgraph Algorithmus
 $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ verknüpft und durch vier
 Matplotlib-Plots veranschaulicht. Ein ausführlicher Ausblick auf zukünftige Forschungsfelder
 schließt die Arbeit ab.
@@ -331,7 +331,7 @@ unbeschränkt. $\square$
 \textbf{(4) Formale Verarbeitbarkeit.}
 Die Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ eines Anforderungsgraphen
 mit $n = |\mathcal{R}|$ kodiert alle strukturellen Informationen in einer für
-den Subgraph-Algorithmus unmittelbar verarbeitbaren Form
+den Subgraph Algorithmus unmittelbar verarbeitbaren Form
 (vgl.\ Abschnitt~\ref{sec:subgraph}). Jede Anforderungsbeziehung
 $(r_i, r_j) \in E$ entspricht $A_{ij} = 1$. $\square$
 
@@ -716,11 +716,11 @@ die direkte Beschreibungssprache auch bei großen Systemen eine nahezu vollstän
 Anforderungsabdeckung erzielt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Verbindung zum Subgraph-Algorithmus}
+\section{Verbindung zum Subgraph Algorithmus}
 \label{sec:subgraph}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Der Subgraph-Algorithmus als Verifikationswerkzeug}
+\subsection{Der Subgraph Algorithmus als Verifikationswerkzeug}
 
 \begin{definition}[Subgraph-Signatur]
 \label{def:sigsub}
@@ -757,13 +757,13 @@ Da $j \neq j'$, sind diese Intervalle disjunkt, also $\sigma_j(v) \neq \sigma_{j
 \begin{satz}[Subgraph-Verifikation von Informationssystemen]
 \label{satz:subgraphverif}
 Seien $G_\mathcal{R}$ der Anforderungsgraph und $G_\mathcal{I}$ der Implementierungsgraph
-eines Informationssystems. Der Subgraph-Algorithmus entscheidet in $O(n^3)$ Zeit, ob
+eines Informationssystems. Der Subgraph Algorithmus entscheidet in $O(n^3)$ Zeit, ob
 $G_\mathcal{I}$ alle in $G_\mathcal{R}$ kodierten strukturellen Anforderungen erfüllt,
 d.h.\ ob $G_\mathcal{R} \subseteq G_\mathcal{I}$ gilt.
 \end{satz}
 
 \begin{proof}
-Der Subgraph-Algorithmus berechnet für beide Graphen die Signatur-Arrays
+Der Subgraph Algorithmus berechnet für beide Graphen die Signatur-Arrays
 $\sigma^R = [\sigma_0^R, \ldots, \sigma_{n-1}^R]$ und
 $\sigma^I = [\sigma_0^I, \ldots, \sigma_{n-1}^I]$ in $O(n^2)$ Zeit.
 Anschließend werden alle $n$ zyklischen Rotationen von $\sigma^I$ betrachtet und
@@ -778,9 +778,9 @@ und dem Subgraph-Kriterium (LCS $\geq 2$). $\blacksquare$
 \includegraphics[width=\textwidth]{plot4_subgraph.pdf}
 \caption{%
   \textbf{Links:} Komplexitätsvergleich zwischen dem naiven Ansatz $O(n! \cdot n^2)$
-  (rot) und dem Subgraph-Algorithmus $O(n^3)$ (blau) in halblogarithmischer
+  (rot) und dem Subgraph Algorithmus $O(n^3)$ (blau) in halblogarithmischer
   Darstellung. Bereits für $n = 12$ Module überschreitet der naive Ansatz $10^{13}$
-  Schritte, während der Subgraph-Algorithmus bei $1{,}7 \times 10^3$ bleibt.
+  Schritte, während der Subgraph Algorithmus bei $1{,}7 \times 10^3$ bleibt.
   \textbf{Rechts:} Die eindeutigen Spalten-Signaturen $\sigma_j$ für einen
   zufälligen 6-Knoten-Graphen. Die Inset-Abbildung zeigt die zugrundeliegende
   Adjazenzmatrix. Die Injektivität (Satz~\ref{satz:injektiv}) ist unmittelbar
@@ -789,12 +789,12 @@ und dem Subgraph-Kriterium (LCS $\geq 2$). $\blacksquare$
 \label{fig:subgraph}
 \end{figure}
 
-Abbildung~\ref{fig:subgraph} verdeutlicht, warum der Subgraph-Algorithmus das
+Abbildung~\ref{fig:subgraph} verdeutlicht, warum der Subgraph Algorithmus das
 Werkzeug der Wahl für die strukturelle Verifikation von Informationssystemen ist:
 Er ist exponentiell schneller als naive Alternativen und liefert durch die
 Signatur-Injektivität garantiert korrekte Ergebnisse.
 
-\subsection{Gesamtbild: Informationsingenieur, Graphmodell und Subgraph-Algorithmus}
+\subsection{Gesamtbild: Informationsingenieur, Graphmodell und Subgraph Algorithmus}
 
 \begin{korollar}[Vollständiges Verifikationssystem]
 \label{kor:vollstaendig}
@@ -1081,7 +1081,7 @@ Der Informationsingenieur übernimmt aus dem Berufsbild des Informatikers:
         Theorie des Anforderungsgraphen $G_\mathcal{R}$ setzt direkte Kenntnisse
         über gerichtete Graphen, Adjazenzmatrizen, Hierarchien und Teilgraphen voraus.
         Ohne die formale Graphentheorie ist die Modellsicht nicht konstruierbar.
-  \item \textbf{Komplexitätstheorie:} Die Kenntnis der Komplexität des Subgraph-Algorithmus
+  \item \textbf{Komplexitätstheorie:} Die Kenntnis der Komplexität des Subgraph Algorithmus
         ($O(n^3)$, optimal unter SETH) ermöglicht dem Ingenieur, den Verifikationsaufwand
         für ein gegebenes System abzuschätzen und zu planen.
   \item \textbf{Formale Sprachen und Automatentheorie:}
@@ -1267,7 +1267,7 @@ Die zentralen Ergebnisse werden im Folgenden zusammengefasst.
         diese Lücke. Code-Generierung ist damit nicht nur unnötig, sondern aktiv nachteilig.
 
   \item \textbf{(Satz~\ref{satz:subgraphverif}: Subgraph-Verifikation)}
-        Der Subgraph-Algorithmus
+        Der Subgraph Algorithmus
         $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$
         entscheidet in $O(n^3)$ Zeit, ob ein Implementierungsgraph alle strukturellen
         Anforderungen des Anforderungsgraphen erfüllt. Diese Komplexität ist unter SETH
@@ -1435,11 +1435,11 @@ Vollständigkeitslücke wird dann zur Menge
 Zukünftige Forschung sollte diese Mengencharakterisierung für konkrete Systemklassen
 ausarbeiten und Werkzeuge entwickeln, die $\Delta_{LTL}$ automatisch berechnen.
 
-\subsection{Erweiterung des Subgraph-Algorithmus}
+\subsection{Erweiterung des Subgraph Algorithmus}
 
 \subsubsection{Gewichtete und semantisch angereicherte Graphen}
 
-Der in Abschnitt~\ref{sec:subgraph} eingesetzte Subgraph-Algorithmus operiert auf
+Der in Abschnitt~\ref{sec:subgraph} eingesetzte Subgraph Algorithmus operiert auf
 ungewichteten Graphen mit binärer Adjazenzmatrix $A \in \{0,1\}^{n \times n}$.
 Reale Anforderungsgraphen sind jedoch häufig gewichtet und semantisch angereichert:
 Kanten tragen Prioritäten, Kosten, Zeitbeschränkungen, Wahrscheinlichkeiten
@@ -1460,7 +1460,7 @@ Informationssysteme in der Realwelt werden von mehreren Stakeholdern mit
 unterschiedlichen, teils konkurrierenden Anforderungen geprägt. Diese Situation
 lässt sich durch Hypergraphen modellieren, bei denen eine Hyperkante
 $e \subseteq V$ eine Anforderung kodiert, die mehr als zwei Module betrifft.
-Die Erweiterung des Subgraph-Algorithmus auf Hypergraphen ist ein offenes
+Die Erweiterung des Subgraph Algorithmus auf Hypergraphen ist ein offenes
 Forschungsproblem; die Signaturkonstruktion muss auf Hyperkanten verallgemeinert
 werden:
 \[
@@ -1475,7 +1475,7 @@ Informationssysteme unterliegen über ihren Lebenszyklus Veränderungen: Anforde
 werden hinzugefügt, modifiziert oder entfernt. Entsprechend ist der Anforderungsgraph
 $G_\mathcal{R}$ kein statisches Objekt, sondern ein dynamischer Graph
 $G_\mathcal{R}(t)$, der sich über die Zeit verändert. Zukünftige Forschung sollte
-eine \emph{inkrementelle} Variante des Subgraph-Algorithmus entwickeln, die bei einer
+eine \emph{inkrementelle} Variante des Subgraph Algorithmus entwickeln, die bei einer
 lokalen Änderung $\delta G$ nur die betroffenen Signaturen neu berechnet, statt den
 gesamten Algorithmus neu auszuführen. Die Zielsetzung wäre:
 \[
@@ -1484,7 +1484,7 @@ gesamten Algorithmus neu auszuführen. Die Zielsetzung wäre:
 
 \subsubsection{Parallelisierung und GPU-Beschleunigung}
 
-Der Subgraph-Algorithmus hat eine Zeitkomplexität von $O(n^3)$, die für sehr große
+Der Subgraph Algorithmus hat eine Zeitkomplexität von $O(n^3)$, die für sehr große
 Informationssysteme ($n > 10^4$ Knoten) in der Praxis zu langen Laufzeiten führt.
 Die $n$ zyklischen Rotationen sind vollständig unabhängig voneinander
 (vgl.~\cite{subgraph2026}) und eignen sich daher hervorragend für Parallelisierung:
@@ -1522,7 +1522,7 @@ integrierten Constraint-Block.
 
 \subsubsection{Werkzeugintegration}
 
-Der Subgraph-Algorithmus sollte als automatisches Verifikationsplugin in führende
+Der Subgraph Algorithmus sollte als automatisches Verifikationsplugin in führende
 MBSE-Werkzeuge integriert werden: Sparx Enterprise Architect, Siemens Teamcenter,
 PTC Integrity Modeler, Capella (Thales). Das Plugin würde bei jeder Modellierung
 eines Implementierungsgraphen automatisch prüfen, ob $G_\mathcal{R} \subseteq G_\mathcal{I}$
@@ -1534,7 +1534,7 @@ Die Technologie des \emph{Digital Twin}~\cite{grieves2014} -- digitale Zwillinge
 physischer Systeme -- ist eine natürliche Anwendungsdomäne für das in dieser Arbeit
 entwickelte Rahmenwerk. Der Anforderungsgraph $G_\mathcal{R}$ des Digital Twin sollte
 kontinuierlich mit dem Implementierungsgraph $G_\mathcal{I}$ des realen Systems
-synchronisiert und durch den Subgraph-Algorithmus auf Konsistenz geprüft werden.
+synchronisiert und durch den Subgraph Algorithmus auf Konsistenz geprüft werden.
 Dies würde die Vollständigkeit des Digital Twin formal garantieren -- ein Forschungsziel
 von großer industrieller Relevanz.
 
@@ -1620,7 +1620,7 @@ natürliche Grundlage für normkonforme Entwicklungsprozesse:
   \item \textbf{ISO~26262~\cite{iso26262} (Automotive):}
         Der Anforderungsgraph $G_\mathcal{R}$ liefert die formale Basis für die
         Item Definition und die Hazard Analysis and Risk Assessment (HARA).
-        Der Subgraph-Algorithmus kann die vollständige Anforderungsüberdeckung
+        Der Subgraph Algorithmus kann die vollständige Anforderungsüberdeckung
         (Coverage Analysis) für jedes Safety Integrity Level (ASIL~A bis~D) nachweisen.
   \item \textbf{IEC~61508~\cite{iec61508} (allgemeine funktionale Sicherheit):}
         Die Vollständigkeitsgarantie $\Delta(\tau) = \emptyset$ entspricht der
@@ -1629,7 +1629,7 @@ natürliche Grundlage für normkonforme Entwicklungsprozesse:
   \item \textbf{DO-178C~\cite{do178c} (Avionik):}
         Die formale Beschreibungssprache $\mathcal{L}^*$ kann die in DO-178C
         geforderten Software Level A--E unterstützen, wenn die Verifikation durch
-        den Subgraph-Algorithmus als autorisiertes Verifikationswerkzeug anerkannt wird.
+        den Subgraph Algorithmus als autorisiertes Verifikationswerkzeug anerkannt wird.
   \item \textbf{IEC~62443~\cite{iec62443} (Industrial Cybersecurity):}
         Die Transformationsverantwortung des Informationsingenieurs (Satz~\ref{satz:ingverantwortung})
         umfasst die Sicherstellung der Security Requirements aus IEC~62443 in der
@@ -1654,7 +1654,7 @@ Aktuelle Entwicklungen in der KI -- insbesondere Large Language Models (LLMs) un
 neuronale Programmsynthese~\cite{chen2021} -- eröffnen neue Möglichkeiten in der
 Verifikationskette des Informationsingenieurs. LLMs können als Assistent bei der
 Konstruktion von $G_\mathcal{R}$ aus natürlichsprachlichen Anforderungen eingesetzt
-werden; die formale Verifikation durch den Subgraph-Algorithmus bleibt jedoch
+werden; die formale Verifikation durch den Subgraph Algorithmus bleibt jedoch
 unersetzlich, da LLMs keine formalen Vollständigkeitsgarantien liefern können.
 
 \subsubsection{Grenzen der KI-gestützten Code-Generierung}
@@ -1673,7 +1673,7 @@ KI in sicherheitskritischen Informationssystemen.
 Ein vielversprechender Forschungsansatz ist die neurosymbolische Integration~\cite{lamb2020}:
 die Verbindung von lernenden neuronalen Netzen (für die Extraktion von $G_\mathcal{R}$
 aus unstrukturierten Anforderungsdokumenten) mit symbolischen Verifikationsverfahren
-(dem Subgraph-Algorithmus für die formale Konsistenzprüfung). Diese Kombination
+(dem Subgraph Algorithmus für die formale Konsistenzprüfung). Diese Kombination
 würde die Stärken beider Paradigmen vereinen und könnte die Konstruktion von
 $G_\mathcal{R}$ aus großen Mengen natürlichsprachlicher Anforderungen erheblich
 beschleunigen.
@@ -1854,9 +1854,8 @@ Proceedings of the 56th Annual Symposium on Foundations of Computer Science
 \bibitem{subgraph2026}
 S.~Epp.
 \textit{Der Subgraph Algorithmus: Effiziente Graphverifikation mittels
-Signatur-Arrays und zyklischer Rotation}.
-Universität Bielefeld, 2026.
-\url{https://gitlab.com/epp-group/subgraph}
+Signatur-Arrays und zyklischer Rotation}., 2026.
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{shannon1948}
 C.~E.~Shannon.

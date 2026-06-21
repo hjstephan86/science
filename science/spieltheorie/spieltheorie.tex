@@ -81,7 +81,7 @@ Ein Nash-Gleichgewicht ist genau ein Knoten ohne ausgehende Best-Response-Kante,
 d.\,h.\ ein Absorptionsknoten im Spielgraphen. Die Berechnung aller Nash-Gleichgewichte
 eines Spiels mit $n$ Strategieprofilen reduziert sich auf die Suche nach
 Senken-Knoten im Spielgraphen in $O(n^2)$~Zeit.
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} wird auf Spielgraphen angewendet:
+Der Subgraph Algorithmus~\cite{epp2026subgraph} wird auf Spielgraphen angewendet:
 Zwei Spiele sind \emph{strategisch isomorph}, wenn ihre Spielgraphen
 subgraph-isomorph sind (Satz~\ref{satz:strat_iso}).
 Wirtschaftsnetzwerke werden als gekoppelte Spielgraphen modelliert
@@ -114,7 +114,7 @@ Trotz der zentralen Bedeutung der Spieltheorie fehlt eine einheitliche
 \begin{itemize}
     \item Strategische Spiele als Graphen kodieren, sodass Nash-Gleichgewichte
           als Absorptionsknoten (Senken) im Spielgraphen identifizierbar sind
-    \item Den Subgraph-Algorithmus~\cite{epp2026subgraph} direkt auf
+    \item Den Subgraph Algorithmus~\cite{epp2026subgraph} direkt auf
           Spielstrukturen anwenden, um strategische \"Aquivalenz in $O(n^3)$
           zu entscheiden
     \item Wirtschaftsnetzwerke als gekoppelte Spielgraphen modellieren,
@@ -136,11 +136,11 @@ Die Verbindung von Spieltheorie und Graphenstruktur wurde von
 Monderer und Shapley~\cite{monderer1996} durch \emph{Potentialspiele} und
 von Roughgarden~\cite{roughgarden2005} durch Routing-Spiele auf Graphen vertieft.
 Die vorliegende Arbeit schlie{\ss}t die Br\"ucke zur algorithmischen
-Graphentheorie durch Anwendung des Subgraph-Algorithmus~\cite{epp2026subgraph}.
+Graphentheorie durch Anwendung des Subgraph Algorithmus~\cite{epp2026subgraph}.
 
 \subsection{Einordnung in das Forschungsportfolio}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} liefert das algorithmische
+Der Subgraph Algorithmus~\cite{epp2026subgraph} liefert das algorithmische
 Kernwerkzeug mit Signatur-Funktion
 $\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$ und LCS-basiertem
 Matching in $O(n^3)$.
@@ -320,7 +320,7 @@ Zwei Spiele $\Gamma_1$ und $\Gamma_2$ mit gleicher Spieleranzahl $|N|$
 und gleich gro{\ss}em Strategieprofil-Raum $|S_1| = |S_2| = n$ hei{\ss}en
 \emph{strategisch isomorph}, wenn ihre Spielgraphen isomorph sind:
 $G_{\Gamma_1} \cong G_{\Gamma_2}$.
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} entscheidet strategische
+Der Subgraph Algorithmus~\cite{epp2026subgraph} entscheidet strategische
 Isomorphie in $O(n^3)$.
 \end{satz}
 
@@ -333,7 +333,7 @@ Dies ist genau die Definition von Graph-Isomorphismus.
 Nach Satz~2 aus~\cite{epp2026subgraph} (Isomorphie-Invarianz der
 Signatur-Sequenz) haben isomorphe Spielgraphen rotations\"aquivalente
 Signatur-Arrays.
-Der Subgraph-Algorithmus pr\"uft alle $n$ zyklischen Rotationen von
+Der Subgraph Algorithmus pr\"uft alle $n$ zyklischen Rotationen von
 $\vec{\sigma}_{\Gamma_2}$ gegen $\vec{\sigma}_{\Gamma_1}$ mit
 LCS in $O(n^2)$ je Rotation, Gesamtlaufzeit $O(n^3)$.
 \end{proof}
@@ -346,7 +346,7 @@ mit $S_i' \subseteq S_i$ f\"ur alle $i$. Dann gilt:
 G_{\Gamma'} \subseteq G_\Gamma.
 \]
 Die Subgraph-Inklusion entscheidet Teilspielschaft in $O(n^3)$ nach
-dem Subgraph-Algorithmus~\cite{epp2026subgraph}.
+dem Subgraph Algorithmus~\cite{epp2026subgraph}.
 \end{satz}
 
 \begin{proof}
@@ -683,7 +683,7 @@ Spieltheorie entwickelt. Die zentralen Ergebnisse:
     \item \textbf{Korollar~\ref{kor:linsuche}} (Lineare Suche):
           Alle Nash-GGW in $O(|S|^2 \cdot |N|)$.
     \item \textbf{Satz~\ref{satz:strat_iso}} (Strategische Isomorphie):
-          \"Aquivalenz via Subgraph-Algorithmus in $O(n^3)$.
+          \"Aquivalenz via Subgraph Algorithmus in $O(n^3)$.
     \item \textbf{Satz~\ref{satz:teilspiel}} (Teilspiel):
           Teilspiele als Subgraphen.
     \item \textbf{Satz~\ref{satz:walras_nash}} (Walras-Nash):
@@ -713,7 +713,7 @@ Wahrscheinlichkeitsverteilung $\mu$ \"uber $S$, sodass f\"ur alle $i$ und $s_i$:
 \sum_{s_{-i}} \mu(s_i, s_{-i}) [u_i(s_i', s_{-i}) - u_i(s_i, s_{-i})] \leq 0.
 \]
 Dies ist ein lineares Programm in $|S|$ Variablen.
-Forschungsfrage: Kann der Subgraph-Algorithmus~\cite{epp2026subgraph} die
+Forschungsfrage: Kann der Subgraph Algorithmus~\cite{epp2026subgraph} die
 LP-Struktur der korrelierten Gleichgewichte beschleunigen?
 Konkret: Die Signaturen des Spielgraphen liefern eine kompakte Repr\"asentation
 der LP-Koeffizientenmatrix, was die Pivotierung im Simplex-Algorithmus
@@ -727,7 +727,7 @@ Dies ist strukturell isomorph zum Spielgraphen $G_{\mathrm{sys}}$:
 Zust\"ande sind Knoten, \"Ubergangswahrscheinlichkeiten sind Kantengewichte,
 und der Gleichgewichtszustand ist der Absorptionsknoten.
 
-Der Subgraph-Algorithmus erm\"oglicht es, wiederkehrende makro\"okonomische
+Der Subgraph Algorithmus erm\"oglicht es, wiederkehrende makro\"okonomische
 Muster in historischen Zeitreihen als Subgraphen zu identifizieren:
 Ist die aktuelle Konjunkturphase ein Teilgraph der Gro{\ss}en Depression
 (1929--1933)? Ist sie ein Teilgraph der Dot-com-Blase (2000--2003)?
@@ -743,7 +743,7 @@ Das Nash-Gleichgewicht dieses Netzwerkspiels ist der optimale Betriebspunkt.
 
 Formale Verbindung: Das Netzwerkspiel $\Gamma_{\mathrm{Net}}$ hat als Spielgraphen
 $G_{\Gamma_{\mathrm{Net}}} \subseteq G_\Gamma$, wobei $G_\Gamma$ das vollst\"andige
-Strategieprofil-Graph ist. Der Subgraph-Algorithmus~\cite{epp2026subgraph}
+Strategieprofil-Graph ist. Der Subgraph Algorithmus~\cite{epp2026subgraph}
 identifiziert optimale Teilgraphen (optimale Konfigurationen) in $O(n^3)$.
 Verbindung zu RL: Der Reinforcement-Learning-Agent aus~\cite{epp2026hetnet}
 konvergiert zum Nash-GGW des Netzwerkspiels; der Spielgraph liefert die
@@ -762,7 +762,7 @@ Das \texttt{leco}-Modell beschreibt lokale Marktgleichgewichte als Fixpunkte
 lokaler Optimierungsprobleme. Durch Anpassung der Spielregeln (Steuern,
 Subventionen, Regulierungen) als Kantengewichte in $G_\Gamma$ kann das
 gew\"unschte Gleichgewicht gezielt konstruiert werden.
-Der Subgraph-Algorithmus pr\"uft in $O(n^3)$, ob die gew\"unschte
+Der Subgraph Algorithmus pr\"uft in $O(n^3)$, ob die gew\"unschte
 Senkenstruktur im modifizierten Spielgraphen realisiert wird.
 
 \subsection{Rentenmarkt-Spiele und das Abh\"angigkeitsmodell}
@@ -808,7 +808,7 @@ privaten Impfkosten und H\"{e}rdenimmunit\"at.
 Im Spielgraphen: $(I, \ldots, I)$ ist Nash-GGW nur wenn $R_0 > 1$
 und Impfung dominante Strategie ist; bei $R_0 < 1$ ist $(NI, \ldots, NI)$
 Nash-GGW (Trittbrettfahrerproblem).
-Der Subgraph-Algorithmus identifiziert \"ahnliche Gleichgewichtsmuster
+Der Subgraph Algorithmus identifiziert \"ahnliche Gleichgewichtsmuster
 in verschiedenen Epidemien (COVID-19, Ebola~\cite{epp2026ebola},
 Hantavirus~\cite{epp2026hantavirus}) durch Signatur-Vergleich der
 epidemiologischen Spielgraphen.
@@ -837,7 +837,7 @@ $(C,C)$ als Nash-GGW realisiert werden, das im klassischen Spiel nicht stabil is
 Im Spielgraph-Framework: Quantenstrategien erweitern den Strategieraum
 von $\Delta(S)$ auf die unit\"are Gruppe $U(2^k)$ (f\"ur $k$ Qubits).
 Der Spielgraph $G_{\Gamma_Q}$ hat exponentiell mehr Knoten;
-der Subgraph-Algorithmus~\cite{epp2026subgraph} auf dem quantenerweiterten
+der Subgraph Algorithmus~\cite{epp2026subgraph} auf dem quantenerweiterten
 Spielgraphen erm\"oglicht die Identifikation von Quantengleichgewichten als
 Subgraphen klassischer Equilibria.
 
@@ -846,7 +846,7 @@ Subgraphen klassischer Equilibria.
 In sozialen Netzwerken spielen Agenten Spiele auf Graphen (Braess-Paradoxon,
 Routing-Spiele~\cite{roughgarden2005}). Die Netzwerktopologie beeinflusst
 direkt die Nash-Gleichgewichte.
-Verbindung zum Subgraph-Algorithmus: Zwei soziale Netzwerke mit subgraphisomorphen
+Verbindung zum Subgraph Algorithmus: Zwei soziale Netzwerke mit subgraphisomorphen
 Spielgraphen haben strukturell identische Nash-Gleichgewichte.
 Dies erm\"oglicht die \"Ubertragung von Erkenntnissen zwischen verschiedenen
 sozialen Kontexten (z.\,B.\ Impfentscheidungen in verschiedenen
@@ -855,7 +855,7 @@ Bev\"olkerungsnetzwerken).
 \subsection{Formale Verifikation von Marktmechanismen}
 
 Spieltheoretische Mechanismen (Auktionen, M\"arkte, Wahlsysteme) k\"onnen
-durch den Subgraph-Algorithmus formal verifiziert werden:
+durch den Subgraph Algorithmus formal verifiziert werden:
 Ist der gew\"unschte Mechanismus (Vickrey-Auktion~\cite{vickrey1961}) subgraphisomorph
 zum implementierten Algorithmus?
 Das ist ein Korrektheitsproblem: Die Signaturen des theoretischen Modells
@@ -936,7 +936,7 @@ Counterspeculation, auctions, and competitive sealed tenders.
 Epp, S. (2026).
 Der Subgraph Algorithmus -- L\"osung des Subgraph-Isomorphismus in $O(n^3)$.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026sysstate}
 Epp, S. (2026).

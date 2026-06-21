@@ -1928,9 +1928,9 @@ Durch Reduktion von $\Sigma_2^p$-vollst{\"{a}}ndigen Problemen
 \subsection{Motivation: Zwei Welten, eine Struktur}
 
 Auf den ersten Blick scheinen Beschreibungslogiken und der
-Subgraph-Algorithmus~\cite{Epp2026} v{\"o}llig verschiedene Gebiete
+Subgraph Algorithmus~\cite{Epp2026} v{\"o}llig verschiedene Gebiete
 zu adressieren: DL ist eine formale Wissensrepresentationssprache,
-der Subgraph-Algorithmus ein effizienter Graph-Vergleichsalgorithmus.
+der Subgraph Algorithmus ein effizienter Graph-Vergleichsalgorithmus.
 Bei n{\"a}herer Betrachtung offenbaren sich jedoch vier tiefe,
 bisher nicht formal ausgearbeitete Verbindungen:
 
@@ -1938,7 +1938,7 @@ bisher nicht formal ausgearbeitete Verbindungen:
   \item Eine \emph{DL-Interpretation} ist strukturell ein
         gerichteter, beschrifteter Graph -- und Konzept-Instanzierung
         entspricht einer \emph{Subgraph-Einbettung}.
-  \item Die \emph{Signatur-Funktion} des Subgraph-Algorithmus
+  \item Die \emph{Signatur-Funktion} des Subgraph Algorithmus
         kodiert exakt die Rollennachbarschaft eines ABox-Individuums
         und liefert damit einen algorithmisch auswertbaren
         Fingerabdruck f{\"u}r MSC und LCS.
@@ -2107,7 +2107,7 @@ $A^{(k)} \in \{0,1\}^{n \times n}$ definiert durch
 $A^{(k)}_{ij} = 1$ gdw.\ $r_k(a_i, a_j) \in \Abox$.
 
 Der \emph{Signatur-Vektor} von Individuum $a_j$
-im Sinne des Subgraph-Algorithmus~\cite{Epp2026} ist:
+im Sinne des Subgraph Algorithmus~\cite{Epp2026} ist:
 \[
   \boldsymbol{\rho}(a_j) = \bigl(\rho_j^{(1)}, \ldots, \rho_j^{(m)}\bigr)
   \in \mathbb{N}^m,
@@ -2283,7 +2283,7 @@ Da jede Tableau-Erweiterung eine neue Existenzformel aufdeckt und
 damit den Signatur-Vektor ver{\"a}ndert, entspricht die Pfadl{\"a}nge
 vor Blocking genau der Anzahl verschiedener erreichbarer
 Signatur-Vektoren.
-Im Subgraph-Algorithmus~\cite{Epp2026} werden genau $n$ zyklische
+Im Subgraph Algorithmus~\cite{Epp2026} werden genau $n$ zyklische
 Rotationen gepr{\"u}ft (Lemma {\"u}ber Rotationsanzahl aus~\cite{Epp2026}),
 was die obige Schranke liefert.
 \end{proof}
@@ -2294,7 +2294,7 @@ was die obige Schranke liefert.
   \caption{Tableau-Ast f{\"u}r ein \textsf{ALC}-Konzept als gerichteter Graph.
            Der Blocking-Knoten $v_4$ (orange) hat denselben Signatur-Vektor
            wie der Vorfahre $v_3$ -- dies entspricht exakt der
-           Rotations{\"a}quivalenz im Subgraph-Algorithmus.}
+           Rotations{\"a}quivalenz im Subgraph Algorithmus.}
   \label{fig:tableau-blocking}
 \end{figure}
 
@@ -2303,7 +2303,7 @@ was die obige Schranke liefert.
 Die Blocking-Tiefenschranke $2^{|C_0|}$ des Tableau-Algorithmus
 (Satz~\ref{satz:terminierung}) entspricht der Anzahl verschiedener
 Signatur-Vektoren -- also der maximalen Orbitgr{\"o}{\ss}e
-$|\mathrm{Orb}(G)|$ im Sinne des Subgraph-Algorithmus.
+$|\mathrm{Orb}(G)|$ im Sinne des Subgraph Algorithmus.
 Beide Gr{\"o}{\ss}en sind durch $2^{|\mathrm{sub}^+(C_0, \Tbox)|}$
 beschr{\"a}nkt.
 \end{korollar}
@@ -2388,11 +2388,11 @@ Also $\Abox \models q(\vec{a})$ und damit $\vec{a} \in \mathrm{cert}(q, \KB)$.
   \label{fig:cq-subgraph}
 \end{figure}
 
-\begin{satz}[Subgraph-Algorithmus f{\"u}r CQ-Beantwortung ohne TBox]
+\begin{satz}[Subgraph Algorithmus f{\"u}r CQ-Beantwortung ohne TBox]
 \label{satz:subgraph-cq}
 F{\"u}r eine CQ $q$ und ABox $\Abox$ kann
 $\mathrm{cert}(q, (\emptyset, \Abox))$ durch eine Variante des
-Subgraph-Algorithmus~\cite{Epp2026} berechnet werden:
+Subgraph Algorithmus~\cite{Epp2026} berechnet werden:
 \begin{enumerate}[label=(\arabic*)]
   \item Berechne Signatur-Vektoren $\boldsymbol{\sigma}(G_q)$
         und $\boldsymbol{\sigma}(G_\Abox)$.
@@ -2406,9 +2406,9 @@ Die Laufzeit dieses Verfahrens betr{\"a}gt $O(|q|^2 \cdot |\Abox|^3)$.
 \begin{proof}
 \textbf{Korrektheit:}
 Nach Satz~\ref{satz:cq-subgraph} ist CQ-Beantwortung {\"a}quivalent zu
-Subgraph-Einbettung. Der Subgraph-Algorithmus entscheidet genau
+Subgraph-Einbettung. Der Subgraph Algorithmus entscheidet genau
 diese Frage -- korrekt nach dem Korrektheitssatz des
-Subgraph-Algorithmus~\cite{Epp2026}.
+Subgraph Algorithmus~\cite{Epp2026}.
 
 \textbf{Laufzeit:}
 Der Anfrage-Graph $G_q$ hat $|q|$ Knoten und Kanten.
@@ -2425,7 +2425,7 @@ und $|\Abox|$ Kandidaten ergeben $O(|q| \cdot |\Abox|^3)$.
 \label{kor:azyklisch}
 F{\"u}r \emph{azyklische} konjunktive Anfragen $q$ (azyklischer Anfrage-Graph)
 gilt: Der Signatur-Vektor von $G_q$ hat Beschreibungstiefe $1$,
-und der Subgraph-Algorithmus terminiert mit einer Rotation
+und der Subgraph Algorithmus terminiert mit einer Rotation
 in $O(|q| \cdot |\Abox|^2)$.
 \end{korollar}
 
@@ -2439,7 +2439,7 @@ Rotationsvergleich {\"u}berpr{\"u}ft, was den Faktor $|\Abox|$ spart.
 Satz~\ref{satz:cq-subgraph} ist das klassische Resultat,
 dass CQ-Auswertung {\"a}quivalent zu Homomorphismus-Existenz ist~\cite{Baader2007}.
 Die neue Erkenntnis liegt in der \emph{algorithmischen Verbindung}:
-Der Subgraph-Algorithmus~\cite{Epp2026} liefert f{\"u}r dieses Problem
+Der Subgraph Algorithmus~\cite{Epp2026} liefert f{\"u}r dieses Problem
 einen konkreten Algorithmus mit expliziter Laufzeitanalyse,
 der zudem unter SETH optimal ist.
 \end{bemerkung}
@@ -2529,9 +2529,9 @@ MSC und LCS sind die zentralen Bausteine induktiven Lernens in DL.
 Wir beweisen Existenz und Berechenbarkeit des MSC (Polynomialzeit-Konstruktion)
 sowie des LCS durch vollst{\"a}ndige Produktkonstruktion auf Beschreibungsb{\"a}umen.
 
-\textbf{Verbindung zum Subgraph-Algorithmus (Abschnitt~\ref{sec:dl-subgraph}).}
+\textbf{Verbindung zum Subgraph Algorithmus (Abschnitt~\ref{sec:dl-subgraph}).}
 Das neue Kapitel dieser Arbeit stellt vier formale Verbindungen
-zwischen Beschreibungslogik und dem Subgraph-Algorithmus~\cite{Epp2026} her:
+zwischen Beschreibungslogik und dem Subgraph Algorithmus~\cite{Epp2026} her:
 DL-Interpretationen sind Rollengraphen; Konzept-Instanzierung ist
 Subgraph-Einbettung; die Signatur-Funktion kodiert Rollennachbarschaften;
 Tableau-Blocking entspricht Signatur-{\"A}quivalenz;
@@ -2547,31 +2547,31 @@ auf DL-Reasoning.
 Beschreibungslogiken stehen an der Schnittstelle von formaler Logik,
 Wissensrepresentation, Algorithmentheorie und Datenbanktheorie.
 Die in dieser Arbeit entwickelten Resultate -- insbesondere die
-formalen Verbindungen zum Subgraph-Algorithmus -- er{\"o}ffnen
+formalen Verbindungen zum Subgraph Algorithmus -- er{\"o}ffnen
 eine Vielzahl neuer Forschungsrichtungen.
 
 \subsection{Subgraph-basiertes DL-Reasoning}
 
 Die in Abschnitt~\ref{sec:dl-subgraph} hergestellten Verbindungen
-zwischen DL und dem Subgraph-Algorithmus~\cite{Epp2026} deuten
+zwischen DL und dem Subgraph Algorithmus~\cite{Epp2026} deuten
 auf ein bisher unerschlossenes algorithmisches Paradigma hin.
 
 \begin{itemize}
-  \item \textbf{Subgraph-Algorithmus als Reasoning-Backend.}
+  \item \textbf{Subgraph Algorithmus als Reasoning-Backend.}
         Satz~\ref{satz:subgraph-cq} zeigt, dass CQ-Beantwortung
-        ohne TBox direkt durch den Subgraph-Algorithmus l{\"o}sbar ist.
-        \emph{Offene Frage:} L{\"a}sst sich der Subgraph-Algorithmus
+        ohne TBox direkt durch den Subgraph Algorithmus l{\"o}sbar ist.
+        \emph{Offene Frage:} L{\"a}sst sich der Subgraph Algorithmus
         auf CQs mit TBox erweitern, etwa durch Rewriting der
         TBox-Konsequenzen in zus{\"a}tzliche ABox-Kanten?
         F{\"u}r \textsf{EL}-TBoxen ist dies durch den
         Erreichbarkeitsmengen-Algorithmus (Satz~\ref{satz:el-poly})
         m{\"o}glich: Man expandiert die ABox um alle
         durch die TBox erzwungenen Rollenfakten und wendet
-        dann den Subgraph-Algorithmus an.
+        dann den Subgraph Algorithmus an.
 
   \item \textbf{Rotationssymmetrie als Ontologie-Eigenschaft.}
         Korollar~\ref{kor:kompl-konnex} zeigt, dass die Tiefe
-        des Tableau-Baums durch die Orbitgr{\"o}{\ss}e des Subgraph-Algorithmus
+        des Tableau-Baums durch die Orbitgr{\"o}{\ss}e des Subgraph Algorithmus
         beschr{\"a}nkt wird. Wenn eine Ontologie besonders viele
         rotationssymmetrische Konzepte enth{\"a}lt (gro{\ss}er Stabilisator),
         k{\"o}nnten wesentlich weniger Tableau-{\"A}ste exploriert werden.
@@ -2612,7 +2612,7 @@ an empirische Grenzen.
         Formal ist ein $\Sigma$-Modul $M \subseteq \Tbox$ definiert durch:
         alle $\Sigma$-Konsequenzen von $\Tbox$ sind bereits Konsequenzen von $M$.
         F{\"u}r \textsf{EL} ist Modulextraktion in Polynomialzeit m{\"o}glich.
-        Die Verbindung zum Subgraph-Algorithmus er{\"o}ffnet eine neue Perspektive:
+        Die Verbindung zum Subgraph Algorithmus er{\"o}ffnet eine neue Perspektive:
         Module entsprechen zusammenh{\"a}ngenden Subgraphen des Rollengraphen.
 
   \item \textbf{Inkrementelles Reasoning.}
@@ -2625,7 +2625,7 @@ an empirische Grenzen.
         Subgraph-Graphen der TBox.
 
   \item \textbf{Verteiltes und paralleles Reasoning.}
-        Die $n$ Rotationsvergleiche des Subgraph-Algorithmus sind daten-parallel.
+        Die $n$ Rotationsvergleiche des Subgraph Algorithmus sind daten-parallel.
         F{\"u}r DL-Reasoning: Die CQ-Beantwortung f{\"u}r verschiedene
         Anfragekandidaten ist ebenfalls unabh{\"a}ngig parallelisierbar.
         Mit $p$ Prozessoren ergibt sich eine parallele Laufzeit von
@@ -2637,7 +2637,7 @@ an empirische Grenzen.
         k{\"o}nnen in einer kompakten Datenstruktur gespeichert werden,
         die sequentiell zugreifbar und daher cache-freundlich ist.
         Dies ist eine direkte algorithmische Konsequenz der
-        Verbindung zum Subgraph-Algorithmus.
+        Verbindung zum Subgraph Algorithmus.
 \end{itemize}
 
 \subsection{Neuro-symbolische Integration}
@@ -2662,17 +2662,17 @@ an empirische Grenzen.
   \item \textbf{Graphneuronale Netzwerke und Weisfeiler-Leman-Test.}
         Moderne GNNs sind in ihrer Ausdrucksst{\"a}rke durch den
         Weisfeiler-Leman-1-Test beschr{\"a}nkt.
-        Die Signatur-Funktion des Subgraph-Algorithmus ist dem
+        Die Signatur-Funktion des Subgraph Algorithmus ist dem
         WL-1-Test {\"a}hnlich: Beide kodieren Nachbarschaftsstrukturen
         als Ganzzahlen. Damit entsteht die Frage, ob GNNs
-        den Subgraph-Algorithmus und damit die CQ-Beantwortung
+        den Subgraph Algorithmus und damit die CQ-Beantwortung
         (Satz~\ref{satz:cq-subgraph}) approximieren k{\"o}nnen.
 
   \item \textbf{Erkl{\"a}rbarkeit.}
         DL-Konzepte als Post-hoc-Erkl{\"a}rungen neuronaler Klassifikatoren
         k{\"o}nnen effizient {\"u}ber MSC und LCS berechnet werden
         (Abschnitt~\ref{sec:lernen}).
-        Die Verbindung zum Subgraph-Algorithmus erm{\"o}glicht hier
+        Die Verbindung zum Subgraph Algorithmus erm{\"o}glicht hier
         eine Skalierung auf sehr gro{\ss}e Wissensgraphen:
         Der Signatur-Vektor eines Individuums ist in $O(|\Abox|)$
         berechenbar und liefert sofort eine Aussage {\"u}ber
@@ -2682,7 +2682,7 @@ an empirische Grenzen.
 \subsection{Erweiterungen der Ausdrucksst{\"a}rke}
 
 \begin{itemize}
-  \item \textbf{Subgraph-Algorithmus f{\"u}r gewichtete Rollenbeziehungen.}
+  \item \textbf{Subgraph Algorithmus f{\"u}r gewichtete Rollenbeziehungen.}
         In \textsf{SHIQ} sind Zählrestriktionen $\geq n\,r.C$ erlaubt.
         Diese entsprechen gewichteten Kanten im Rollengraphen:
         Individuum $d$ hat $\geq n$ $r$-Nachfolger in $C^\interp{I}$.
@@ -2702,7 +2702,7 @@ an empirische Grenzen.
   \item \textbf{Fuzzy-DL und gewichtete Subgraph-Einbettungen.}
         In Fuzzy-DL~\cite{Straccia2001} sind Konzeptzugeh{\"o}rigkeiten
         Werte in $[0,1]$.
-        Der Subgraph-Algorithmus mit gewichteten Kanten
+        Der Subgraph Algorithmus mit gewichteten Kanten
         (rationale Gewichte) liefert nat{\"u}rlich eine
         graduelle Subgraph-Einbettung: $d$ geh{\"o}rt zu Grad
         $\min_{(v,r,v') \in G_C} w(h(v), h(v'))$ dem Konzept $C$ an.
@@ -2723,7 +2723,7 @@ an empirische Grenzen.
         PAC-Lernbarkeit~\cite{Valiant1984} erfordert polynomielle
         Stichprobenkomplexit{\"a}t. F{\"u}r \textsf{EL}-Konzepte der
         Rollentiefe $\leq k$ ist PAC-Lernbarkeit bekannt.
-        Die Verbindung zum Subgraph-Algorithmus liefert eine
+        Die Verbindung zum Subgraph Algorithmus liefert eine
         neue Charakterisierung: Ein \textsf{EL}-Konzept der Tiefe $k$
         entspricht einem Beschreibungsbaum der Tiefe $k$,
         der als Subgraph-Template mit $k$ Rotationsschritten verglichen wird.
@@ -2731,7 +2731,7 @@ an empirische Grenzen.
         desto schneller ist das Lernen.
 
   \item \textbf{Untere Schranken durch SETH.}
-        Unter SETH~\cite{Epp2026} ist der Subgraph-Algorithmus
+        Unter SETH~\cite{Epp2026} ist der Subgraph Algorithmus
         optimal in $\Theta(n^3)$. Dies {\"u}bertr{\"a}gt sich auf
         CQ-Beantwortung: F{\"u}r allgemeine CQs kann man unter SETH
         keine wesentlich schnellere Methode erwarten.
@@ -2740,7 +2740,7 @@ an empirische Grenzen.
 
   \item \textbf{Lernen unter Inkonsistenz.}
         Wenn die ABox Fehler enth{\"a}lt (inkonsistente Rollenfakten),
-        liefert der Subgraph-Algorithmus trotzdem eine maximale
+        liefert der Subgraph Algorithmus trotzdem eine maximale
         Subgraph-Einbettung -- analog zur Brave-Semantik der Repairs
         (Satz~\ref{satz:repair-korrektheit}).
         Dies verbindet repair-basiertes Reasoning mit
@@ -2758,12 +2758,12 @@ an empirische Grenzen.
 \subsection{Linked Data, SPARQL und Wissensgraphen}
 
 \begin{itemize}
-  \item \textbf{Subgraph-Algorithmus f{\"u}r SPARQL.}
+  \item \textbf{Subgraph Algorithmus f{\"u}r SPARQL.}
         SPARQL-Anfragen sind strukturell CQs (mit optionalen und
         Unionskonstrukten). F{\"u}r den konjunktiven Kern gilt
         Satz~\ref{satz:cq-subgraph}: SPARQL-Anfrageauswertung
         {\"u}ber einer ABox ist Subgraph-Matching.
-        Der Subgraph-Algorithmus liefert damit eine
+        Der Subgraph Algorithmus liefert damit eine
         konkurrenzf{\"a}hige Alternative zu Standard-SPARQL-Engines
         f{\"u}r strukturierte Anfragen.
 
@@ -2777,7 +2777,7 @@ an empirische Grenzen.
 
   \item \textbf{Ontology-Mediated Query Answering.}
         F{\"u}r OWL~2~QL ist Anfragebeantwortung in \textsc{AC}$^0$~\cite{Calvanese2007}.
-        Die algorithmische Br{\"u}cke zum Subgraph-Algorithmus er{\"o}ffnet
+        Die algorithmische Br{\"u}cke zum Subgraph Algorithmus er{\"o}ffnet
         die Frage, ob Subgraph-Techniken f{\"u}r OWL~2~EL
         (\textsc{P}-vollst{\"a}ndig in Datenkomplexit{\"a}t, Satz~\ref{satz:cq-data})
         praktisch effizientere Implementierungen erm{\"o}glichen.
@@ -2803,7 +2803,7 @@ an empirische Grenzen.
         Tableau {\"a}quivalent zu Signatur-{\"A}quivalenz ist.
         Die Frage, ob Bisimulation durch Rotations{\"a}quivalenz der
         Signatur-Vektoren charakterisiert werden kann, verbindet
-        DL-Semantik mit dem Subgraph-Algorithmus auf fundamentale Weise.
+        DL-Semantik mit dem Subgraph Algorithmus auf fundamentale Weise.
 
   \item \textbf{Fixpunktlogiken und iterativer Subgraph-Vergleich.}
         Der $\mu$-Kalk{\"u}l erm{\"o}glicht Transitivit{\"a}t.
@@ -2829,7 +2829,7 @@ an empirische Grenzen.
   \item \textbf{Biomedizin: SNOMED~CT und subgraph-basiertes Reasoning.}
         SNOMED~CT~\cite{SNOMED} modelliert {\"u}ber 350.000 klinische
         Konzepte in \textsf{EL} mit komplexer Rollenstruktur.
-        Die Verbindung zum Subgraph-Algorithmus er{\"o}ffnet die M{\"o}glichkeit,
+        Die Verbindung zum Subgraph Algorithmus er{\"o}ffnet die M{\"o}glichkeit,
         {\"a}hnliche Konzepte durch Subgraph-Distanz (metrische Eigenschaften)
         zu finden -- dies w{\"a}re f{\"u}r medizinische Suche n{\"u}tzlich.
 
@@ -2851,8 +2851,8 @@ an empirische Grenzen.
 \subsection{Offene Theoretische Fragen}
 
 \begin{enumerate}
-  \item \textbf{Subgraph-Algorithmus mit TBox-Konsequenzen.}
-        Kann der Subgraph-Algorithmus so erweitert werden,
+  \item \textbf{Subgraph Algorithmus mit TBox-Konsequenzen.}
+        Kann der Subgraph Algorithmus so erweitert werden,
         dass er bei der Signaturberechnung automatisch
         TBox-Ableitungen ber{\"u}cksichtigt?
         F{\"u}r \textsf{EL} ist dies durch Expandierung der ABox via
@@ -2880,9 +2880,9 @@ an empirische Grenzen.
 
   \item \textbf{Verbindung zur Graphenisomorphie.}
         Graphenisomorphie (GI) liegt in Quasipolynomialzeit~\cite{Babai2016}.
-        Der Subgraph-Algorithmus l{\"o}st eine eingeschr{\"a}nktere Frage
+        Der Subgraph Algorithmus l{\"o}st eine eingeschr{\"a}nktere Frage
         (zyklische Rotationen) in $O(n^3)$.
-        Kann man durch mehrfache Anwendung des Subgraph-Algorithmus
+        Kann man durch mehrfache Anwendung des Subgraph Algorithmus
         auf Teilgraphen einen GI-Algorithmus n{\"a}hern,
         und wie verh{\"a}lt sich dessen Komplexit{\"a}t zur Quasi\-polynomialzeit-Schranke?
 \end{enumerate}
@@ -2910,18 +2910,18 @@ sind nicht blo{\ss} Analogien, sondern formale {\"A}quivalenzen:
 \end{itemize}
 
 Diese Gleichsetzungen er{\"o}ffnen eine neue algorithmische Perspektive:
-Der Subgraph-Algorithmus~\cite{Epp2026} mit seiner optimalen
+Der Subgraph Algorithmus~\cite{Epp2026} mit seiner optimalen
 $O(n^3)$-Laufzeit (unter SETH) liefert ein konkretes Werkzeug,
 das direkt f{\"u}r DL-Reasoning eingesetzt werden kann.
 Umgekehrt liefert die reiche Theorie der Beschreibungslogiken --
 Halbordnungen, LCS, Repair-Semantik, Bisimulation --
-theoretische Fundierungen f{\"u}r den Subgraph-Algorithmus.
+theoretische Fundierungen f{\"u}r den Subgraph Algorithmus.
 
 Die vier gro{\ss}en Forschungsrichtungen der Zukunft
 an dieser Schnittstelle sind:
 \begin{enumerate}
   \item \textbf{Subgraph-basiertes Reasoning:}
-        Einsatz des Subgraph-Algorithmus als effizienter
+        Einsatz des Subgraph Algorithmus als effizienter
         Reasoning-Backend f{\"u}r CQ-Beantwortung in gro{\ss}en ABoxen.
   \item \textbf{Skalierung:}
         Nutzung der inkrementellen Signatur-Updates f{\"u}r
@@ -2939,7 +2939,7 @@ Der Kurs L.079.05832 ``Introduction to Description Logics''
 an der Universit{\"a}t Bielefeld, geleitet von
 Prof.\ Dr.\ Anni-Yasmin Turhan, vermittelt die in dieser Arbeit
 formalisierte Grundlage. Die hier hergestellten Verbindungen
-zum Subgraph-Algorithmus~\cite{Epp2026} er{\"o}ffnen ein neues,
+zum Subgraph Algorithmus~\cite{Epp2026} er{\"o}ffnen ein neues,
 vielversprechendes Forschungsfeld an der Schnittmenge von
 Beschreibungslogik, Graphentheorie und Algorithmentheorie.
 
@@ -2957,13 +2957,13 @@ In \textit{Proc.\ IEEE FOCS 2017}, Seiten 319--330, 2017.
 
 \bibitem{Epp2026}
 S.~Epp.
-\textit{Der Subgraph-Algorithmus}.
+\textit{Der Subgraph Algorithmus}.
 Technischer Bericht, Universit{\"{a}}t Bielefeld, 2026.
-\url{https://gitlab.com/epp-group}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{Epp2026ext}
 S.~Epp.
-\textit{Neue Erkenntnisse zum Subgraph-Algorithmus}.
+\textit{Neue Erkenntnisse zum Subgraph Algorithmus}.
 Technischer Bericht, Universit{\"{a}}t Bielefeld, 2026.
 
 

@@ -66,7 +66,7 @@ desselben abstrakten Graphmodells sind.
 Das zentrale Ergebnis ist der \emph{Biologische Netzwerk-Unifikationssatz}
 (Satz~\ref{satz:unifikation}): Alle f\"unf biologischen Netzwerkklassen sind
 Instanzen eines einzigen $G=(V,E,w)$-Formalismus und damit durch den
-Subgraph-Algorithmus~\cite{epp2026subgraph} mit Signatur
+Subgraph Algorithmus~\cite{epp2026subgraph} mit Signatur
 $\sigma_j = \sum_i A_{ij}\cdot 2^i + j\cdot 2^n$ in $O(n^3)$ analysierbar.
 
 Der \emph{Cancer-Subgraph-Satz} (Satz~\ref{satz:cancer_subgraph})
@@ -105,7 +105,7 @@ deren Subgraph-Struktur die biologische Funktion kodiert.
 
 \subsection{Das Subgraph-Paradigma in der Biologie}
 
-Das zentrale Werkzeug dieser Arbeit ist der Subgraph-Algorithmus~\cite{epp2026subgraph}:
+Das zentrale Werkzeug dieser Arbeit ist der Subgraph Algorithmus~\cite{epp2026subgraph}:
 F\"ur zwei biologische Netzwerke $G_1 \subseteq G_2$ (Subgraph-Inklusion)
 entspricht dies biologisch einer \emph{Einbettung} eines Teilsystems
 in ein Gesamtsystem. Beispiele:
@@ -120,7 +120,7 @@ in ein Gesamtsystem. Beispiele:
 
 \subsection{Einordnung ins Forschungsportfolio}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} mit $O(n^3)$ liefert das Kernwerkzeug.
+Der Subgraph Algorithmus~\cite{epp2026subgraph} mit $O(n^3)$ liefert das Kernwerkzeug.
 DNA-Analyse~\cite{epp2026dna}, Gen-Netzwerke~\cite{epp2026gen},
 Krebsmodellierung~\cite{epp2026krebs,epp2026bloodc},
 Epidemiologie~\cite{epp2026hantavirus,epp2026ebola,epp2026hiv,epp2026r0},
@@ -278,7 +278,7 @@ Injektivit\"at der Signatur: Aus dem Universellen Signatur-Satz~\cite{epp2026ust
 f\"ur alle $j$, also $A = A'$.
 
 \textbf{(ii) $O(n^3)$-Subgraph-Test:}
-Nach dem Subgraph-Algorithmus~\cite{epp2026subgraph}:
+Nach dem Subgraph Algorithmus~\cite{epp2026subgraph}:
 $G_1 \subseteq G_2 \Leftrightarrow \exists k: \mathrm{LCS}(\sigvec(A_1), \mathrm{rot}_k(\sigvec(A_2))) \geq n_1$.
 $n_2$ Rotationen je $O(n_1 n_2)$: Gesamtlaufzeit $O(n^3)$ f\"ur $n = \max(n_1,n_2)$.
 
@@ -369,7 +369,7 @@ Dann gilt:
 G_{\mathrm{Onk}} \subseteq_\sigma \Gkrebs,
 \]
 d.\,h.\ der Onkogen-Kern ist als Subgraph im vollst\"andigen Krebsnetzwerk
-identifizierbar und der Subgraph-Algorithmus~\cite{epp2026subgraph}
+identifizierbar und der Subgraph Algorithmus~\cite{epp2026subgraph}
 findet ihn in $O(n^3)$.
 \end{satz}
 
@@ -390,7 +390,7 @@ Da $G_{\mathrm{Onk}} \subseteq \Gkrebs$ per Konstruktion
 gilt nach Satz~\ref{satz:bio_subgraph} die LCS-Bedingung.
 
 \textbf{Schritt 3: Identifikation.}
-Der Subgraph-Algorithmus sucht alle Subgraphen der Gr\"o{\ss}e $k$
+Der Subgraph Algorithmus sucht alle Subgraphen der Gr\"o{\ss}e $k$
 in $\Gkrebs$: Es gibt $\binom{n}{k}$ Kandidaten. Mit Signatur-Vorfilterung
 (nur Subgraphen mit LCS $\geq k$) reduziert sich die Suche auf
 $O(n^3)$ im Worst-Case.
@@ -505,7 +505,7 @@ durch eine zusammenh\"angende Komponente des Kontaktnetzes aus;
 diese Komponente ist der gesuchte Subgraph.
 
 \textbf{Schritt 4: Subgraph-Identifikation.}
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} identifiziert alle
+Der Subgraph Algorithmus~\cite{epp2026subgraph} identifiziert alle
 zusammenh\"angenden Teilgraphen in $O(n^3)$; \"Uberpr\"ufung der
 Fiedler-Bedingung erfordert Eigenwertberechnung in $O(n^3)$.
 \end{proof}
@@ -654,7 +654,7 @@ Unten rechts: Zyklische Rotation der Bio-Netzwerk-Signaturen.}
           Bio-Signatur injektiv; vollst\"andiger Intervall-Beweis.
     \item \textbf{Satz~\ref{satz:unifikation}} (Unifikationssatz):
           5 biologische Netzwerkklassen = Instanzen von $G=(V,E,w)$;
-          alle durch Subgraph-Algorithmus in $O(n^3)$ analysierbar.
+          alle durch Subgraph Algorithmus in $O(n^3)$ analysierbar.
     \item \textbf{Satz~\ref{satz:bio_subgraph}} (Bio-Subgraph-Satz):
           LCS-\"Aquivalenz f\"ur biologische Subgraph-Inklusion; vollst. Beweis.
     \item \textbf{Satz~\ref{satz:cancer_subgraph}} (Cancer-Subgraph):
@@ -684,7 +684,7 @@ erzeugen Expressions-Profile f\"ur jede Zelle einzeln.
 F\"ur einen Tumor mit $N$ Zellen entstehen $N$ individuelle Genomnetzwerke
 $G_1, G_2, \ldots, G_N$; Tumor-Heterogenit\"at entspricht der Varianz
 im Signatur-Raum $\{\sigvec(G_i)\}_{i=1}^N$.
-Mittels des Subgraph-Algorithmus~\cite{epp2026subgraph}:
+Mittels des Subgraph Algorithmus~\cite{epp2026subgraph}:
 Alle Zell-Subtypen, die denselben Onkogen-Kern-Subgraph $G_{\mathrm{Onk}}$ enthalten
 ($G_{\mathrm{Onk}} \subseteq G_i$), bilden eine funktionale Tumorklasse.
 Dies erm\"oglicht die erste vollst\"andig formale Definition von
@@ -723,7 +723,7 @@ Genomik, Transkriptomik, Proteomik und Metabolomik erzeugen vier
 verschiedene Netzwerke f\"ur dasselbe biologische System.
 \emph{Multi-Omics-Graphen}: $G_{\mathrm{multi}} = G_{\mathrm{Gen}} \cup
 G_{\mathrm{RNA}} \cup G_{\mathrm{Protein}} \cup G_{\mathrm{Metabol}}$.
-Der Subgraph-Algorithmus pr\"uft konsistente Signalmuster \"uber alle Ebenen:
+Der Subgraph Algorithmus pr\"uft konsistente Signalmuster \"uber alle Ebenen:
 Ein Signalweg-Subgraph, der in \emph{allen vier} Omics-Netzwerken
 enthalten ist, ist biologisch besonders robust (kausaler Treiber statt
 statistisches Artefakt).
@@ -736,7 +736,7 @@ G_{\mathrm{Prot}} \cap G_{\mathrm{Metabol}}$.
 Ein Pharmakophor beschreibt die minimale 3D-Merkmalkombination eines
 Wirkstoffs, die f\"ur biologische Aktivit\"at n\"otig ist.
 Im Graphrahmen: Pharmakophor $= $ Subgraph $G_{\mathrm{Pharm}} \subseteq G_{\mathrm{Rezeptor}}$.
-Der Subgraph-Algorithmus findet alle Proteine, die $G_{\mathrm{Pharm}}$
+Der Subgraph Algorithmus findet alle Proteine, die $G_{\mathrm{Pharm}}$
 als Subgraph in ihrem Interaktionsnetz enthalten -- potenzielle Wirkstoffziele.
 Verbindung zu~\cite{epp2026gen,epp2026bloodc}: Drug-Discovery f\"ur
 Leukämie via Subgraph-Pharmakophor-Screening.
@@ -761,7 +761,7 @@ Auxotrophie: Organismus $A$ ist auxotroph f\"ur Metabolit $m$,
 wenn der biosynthetische Subgraph $G_{\mathrm{biosynth}}(m)$ in
 $G_{\mathrm{Metabol}}(A)$ \emph{nicht} enthalten ist.
 Formale Pr\"ufung: $G_{\mathrm{biosynth}}(m) \not\subseteq G_{\mathrm{Metabol}}(A)$
-in $O(n^3)$ via Subgraph-Algorithmus.
+in $O(n^3)$ via Subgraph Algorithmus.
 Anwendung: Schnelle Identifikation von Auxotrophien in neuen Organismen
 aus Genomdaten.
 
@@ -772,7 +772,7 @@ Netzwerk mit $\approx 10^{11}$ Neuronen und $\approx 10^{14}$ Synapsen.
 Subgraph-Analyse des Konnektoms~\cite{sporns2005}: Welche funktionalen
 Schaltkreise (z.\,B.\ visuelle Verarbeitung, Sprache) sind als Subgraphen
 im anatomischen Konnektom enthalten?
-Der Subgraph-Algorithmus findet sie in $O(n^3)$ auf dem
+Der Subgraph Algorithmus findet sie in $O(n^3)$ auf dem
 lokalisierten Konnektom ($n \approx 10^4$ f\"ur kortikale Regionen).
 
 \subsection{Stammbaum-Rekonstruktion und vergleichende Genomik}
@@ -793,7 +793,7 @@ DNA-Datenspeicherung~\cite{epp2026dnastor} kodiert digitale Daten als
 DNA-Sequenzen. Der De-Bruijn-Graph (Satz~\ref{satz:seq_subgraph})
 ist die nat\"urliche graphentheoretische Repr\"asentation.
 Fehlerkorrektur in DNA-Speicher: Mutationen (Substitutionen, Deletionen)
-\"andern Kanten im De-Bruijn-Graphen; der Subgraph-Algorithmus
+\"andern Kanten im De-Bruijn-Graphen; der Subgraph Algorithmus
 identifiziert den urspr\"unglichen Graphen in $O(n^3)$.
 Verbindung zur Ionotronik~\cite{epp2026ionotronik}: DNA-Computing und
 ionotronisches Rechnen teilen das Prinzip der wasserbasierten Informationsverarbeitung.
@@ -1010,7 +1010,7 @@ $O(n+|E|)$ f\"ur Tarjan, $O(n^3)$ f\"ur Signatur-Subgraph-Verifikation.
 
 \begin{proof}
 Tarjan liefert alle Artikulationspunkte in $O(n+|E|)$.
-F\"ur jeden Kandidaten $g$: Pr\"ufe per Subgraph-Algorithmus~\cite{epp2026subgraph},
+F\"ur jeden Kandidaten $g$: Pr\"ufe per Subgraph Algorithmus~\cite{epp2026subgraph},
 ob der Subgraph $\Gkrebs \setminus \{g\}$ in bekannten harmlosen
 Netzwerk-Mustern enthalten ist. Je $O(n^3)$; f\"ur $m$ Kandidaten
 $O(m n^3) \leq O(n^4)$ im Worst-Case, aber $O(n^3)$ f\"ur $m = O(1)$.
@@ -1067,7 +1067,7 @@ h\"ochstens $n!$ verschiedene Progressionspfade.
 F\"ur praktische Krebsgenome mit beschr\"ankter Treibermutationszahl $k \ll n$:
 Die Anzahl relevanter Pfade der L\"ange $\ell = k$ ist $\binom{n}{k} \cdot k!
 = n!/(n-k)!$. F\"ur $k = O(\log n)$: $O(n^{\log n})$.
-Der Subgraph-Algorithmus findet den wahrscheinlichsten in $O(n^3)$
+Der Subgraph Algorithmus findet den wahrscheinlichsten in $O(n^3)$
 (Satz~\ref{satz:progression}), ohne alle Pfade zu enumieren.
 \end{lemma}
 
@@ -1168,7 +1168,7 @@ gemeinsamen Subgraphen haben:
 \]
 wobei $\mathrm{GCS}$ der gr\"o{\ss}te gemeinsame Subgraph und
 $n_{\mathrm{core}}$ die Mindestgr\"o{\ss}e des strukturellen Kerns.
-Der Subgraph-Algorithmus findet $\mathrm{GCS}$ in $O(n^3)$.
+Der Subgraph Algorithmus findet $\mathrm{GCS}$ in $O(n^3)$.
 \end{satz}
 
 \begin{proof}
@@ -1424,7 +1424,7 @@ The neighbor-joining method: A new method for reconstructing phylogenetic trees.
 Epp, S. (2026).
 Der Subgraph Algorithmus --- $O(n^3)$.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026ust}
 Epp, S. (2026).
@@ -1435,19 +1435,19 @@ Google Drive (epp-group).
 Epp, S. (2026).
 Graphenbasierte DNA-Sequenzierung.
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/dna}
+\url{https://github.com/hjstephan86/science/tree/main/science/dna}
 
 \bibitem{epp2026dnastor}
 Epp, S. (2026).
 DNA-basierte Datenspeicherung (dnastor).
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/dnastor}
+\url{https://github.com/hjstephan86/science/tree/main/science/dnastor}
 
 \bibitem{epp2026gen}
 Epp, S. (2026).
 Subgraph Algorithmus zur Analyse biologischer Netzwerke (gen).
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/gen}
+\url{https://github.com/hjstephan86/science/tree/main/science/gen}
 
 \bibitem{epp2026krebs}
 Epp, S. (2026).
@@ -1520,7 +1520,7 @@ W.\,H. Freeman.
 Epp, S. (2026).
 Learning SAT in Boolean Circuits via Subgraph Algorithmus (lsat).
 Universit\"at Bielefeld.
-\url{https://gitlab.com/epp-group/lsat}
+\url{https://github.com/hjstephan86/science/tree/main/science/lsat}
 
 \bibitem{epp2026ionotronik}
 Epp, S. (2026).

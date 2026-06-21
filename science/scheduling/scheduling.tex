@@ -79,7 +79,7 @@
 	\large Vorhersagbare Scheduling-Algorithmen und Anwendungen
 }
 \author{Stephan Epp\\
-	\small Universität Bielefeld\\
+	\
 	\small Basierend auf Giorgio C. Buttazzo: \textit{Hard Real-Time Computing Systems}}
 \date{2026}
 
@@ -102,7 +102,7 @@ vorhersagbarer Scheduling-Algorithmen. Es verfolgt ein doppeltes Ziel:
 einerseits die präzise Darstellung der klassischen Theorie, die seit dem
 Grundlagenaufsatz von Liu und Layland \cite{Liu1973} im Jahr 1973 entstanden
 ist, andererseits die Integration neuerer Ergebnisse -- insbesondere des
-hier erstmals ausführlich präsentierten EDF$^+$-Algorithmus \cite{Epp2025} --
+hier erstmals ausführlich präsentierten EDF$^+$-Algorithmus \cite{Epp2026} --
 in einen einheitlichen theoretischen Rahmen.
 
 Die Hauptgrundlage ist das international maßgebliche Lehrbuch von Giorgio C.\
@@ -177,7 +177,7 @@ aktive Forschungsfelder.
 \section*{Über den EDF$^+$-Algorithmus}
 
 Eine wichtige Erweiterung der klassischen EDF-Theorie ist der EDF$^+$-Algorithmus
-\cite{Epp2025}, der in Kapitel~10 ausführlich behandelt wird. EDF$^+$ überträgt
+\cite{Epp2026}, der in Kapitel~10 ausführlich behandelt wird. EDF$^+$ überträgt
 die scharfe Optimalität von EDF auf Systeme mit stochastischen Blocking-Ereignissen:
 Wenn Tasks mit Wahrscheinlichkeit $p$ blockieren (etwa durch I/O-Warten oder
 Semaphore), erzeugt EDF$^+$ bei jedem Blocking-Ereignis sofort einen neuen
@@ -238,7 +238,7 @@ und Admission Control.
 
 \textbf{Kapitel~10 -- EDF$^+$-Algorithmus:} Vollständiger Optimalitätsbeweis,
 Laufzeitanalyse, Korollare (Dominanz über RM, Minimax-Eigenschaft) und
-Integration in AUTOSAR/ISO~26262 \cite{Epp2025}.
+Integration in AUTOSAR/ISO~26262 \cite{Epp2026}.
 
 \textbf{Kapitel~11 -- Kernel-Design:} Interrupt-Behandlung, Speicherverwaltung,
 Schedulingwarteschlangen und Kernel-Overhead in der Schedulierbarkeitsanalyse.
@@ -269,7 +269,7 @@ Cervin-Theorems (Kapitel~9) notwendig sind.
 Der Autor dankt den Begründern der Echtzeit-Scheduling-Theorie -- insbesondere
 C.\,L.\ Liu, J.\,W.\ Layland, Giorgio C.\ Buttazzo, Lui Sha und Sanjoy Baruah --
 für ihre grundlegenden Beiträge, ohne die dieses Buch nicht möglich wäre.
-Besonderer Dank gilt der Universität Bielefeld für die wissenschaftliche
+Besonderer Dank gilt der für die wissenschaftliche
 Infrastruktur und Unterstützung.
 
 \bigskip
@@ -3470,7 +3470,7 @@ eingesetzt, die Entscheidungen über Akzeptanz oder Ablehnung neuer Tasks treffe
 
 Dieses Kapitel präsentiert \textbf{EDF$^+$} (Earliest Deadline First Plus),
 einen neuartigen Echtzeit-Scheduling-Algorithmus, der die klassische EDF-Strategie
-um ein dynamisches Blocking-Penalty-Verfahren erweitert \cite{Epp2025}.
+um ein dynamisches Blocking-Penalty-Verfahren erweitert \cite{Epp2026}.
 
 Der fundamentale Kernsatz gilt auch für EDF$^+$:
 
@@ -3957,7 +3957,7 @@ Die kürzeste Ausführungszeit aller Tasks findet EDF sofort. EDF ist scharf opt
 
 \section{EDF$^+$ -- Erweiterung der Schärfe auf Blocking-Szenarien}
 
-EDF$^+$ \cite{Epp2025} überträgt die scharfe Optimalität von EDF auf Systeme
+EDF$^+$ \cite{Epp2026} überträgt die scharfe Optimalität von EDF auf Systeme
 mit stochastischen Blocking-Ereignissen. Bei jedem Blocking erzeugt EDF$^+$ eine
 Teilmenge nicht-blockierter Tasks, auf die das EDF-Optimalitätstheorem anwendbar ist.
 EDF$^+$ dominiert RM für alle $U > \ln 2$ und minimiert die erwartete Anzahl
@@ -4128,10 +4128,10 @@ Isabelle/HOL, Coq und Lean ermöglichen maschinengeprüfte Beweise:
 	      sicherheitskritische Systeme (ASIL-D-Zertifizierung).
 \end{itemize}
 
-\subsection{Der Subgraph-Algorithmus im verteilten Echtzeit-Kontext}
+\subsection{Der Subgraph Algorithmus im verteilten Echtzeit-Kontext}
 
-Der \textbf{Subgraph-Algorithmus} $\sigma_j = \sum A_{ij} \cdot 2^i + j \cdot 2^n$
-\cite{Epp2025} bietet mit seiner $O(n^3)$-Komplexität neue Möglichkeiten:
+Der \textbf{Subgraph Algorithmus} $\sigma_j = \sum A_{ij} \cdot 2^i + j \cdot 2^n$
+\cite{Epp2026} bietet mit seiner $O(n^3)$-Komplexität neue Möglichkeiten:
 
 \begin{itemize}
 	\item \textbf{Topologieanalyse von Task-Abhängigkeitsgraphen}: Effiziente
@@ -4165,7 +4165,7 @@ Für Systeme mit sehr vielen Tasks ($n > 10.000$) oder extrem kurzen Perioden
 \subsubsection{AUTOSAR Adaptive und EDF$^+$}
 
 ISO~26262 ASIL-D fordert Nachweis der Schedulierbarkeit, beschränkte
-Blockierzeiten und temporale Isolation. EDF$^+$ \cite{Epp2025} erfüllt diese
+Blockierzeiten und temporale Isolation. EDF$^+$ \cite{Epp2026} erfüllt diese
 Anforderungen durch analytisch beschränkten Neuplanungs-Overhead
 ($E[R] = np/(1-p)$). Dies macht EDF$^+$ zum aussichtsreichen Kandidaten
 für ASIL-D-Zertifizierung in AUTOSAR Adaptive Platform.
@@ -4463,11 +4463,10 @@ Critical Systems (FMICS)}, 2006.
 
 %--- Eigene Arbeiten ---
 
-\bibitem{Epp2025}
+\bibitem{Epp2026}
 S.\ Epp,
 ``Optimaler Scheduling-Algorithmus EDF$^+$: Prioritätsstrafe und
-stochastische Analyse bei 40 Tasks,''
-Universität Bielefeld, 2025.
+stochastische Analyse bei 40 Tasks,'', 2026.
 
 %--- Standards und Normen ---
 

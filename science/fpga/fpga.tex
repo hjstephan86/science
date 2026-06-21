@@ -69,7 +69,7 @@
   \textbf{Anwendung auf FINN+ und Echo State Networks}
 }
 \author{Stephan Epp\\
-  \small Universität Bielefeld\\
+  \
   \small \texttt{stephan.epp@uni-bielefeld.de}
 }
 \date{3. Juni 2026}
@@ -87,7 +87,7 @@ Ein zentrales und bislang ungelöstes Problem ist die automatische Topologie-Opt
 Gegeben ein trainiertes Netzwerk, welche Hardware-Partitionierung und Layer-Abbildung minimiert
 Latenz und Ressourcenverbrauch simultan?
 
-Diese Arbeit beweist formal, dass der Subgraph-Algorithmus~(Epp~2026a) mit Laufzeit $\Theta(n^3)$
+Diese Arbeit beweist formal, dass der Subgraph Algorithmus~(Epp~2026a) mit Laufzeit $\Theta(n^3)$
 ein SETH-optimales Verfahren zur Lösung dieses Problems liefert.
 Wir modellieren DNN-Topologien als gerichtete Graphen, definieren Subgraph-Inklusion als
 Optimierungskriterium, und zeigen, dass die Pareto-Front im Latenz-Ressourcen-Raum vollständig
@@ -125,7 +125,7 @@ $\phi: V(G_{\text{DNN}}) \to V(G_{\text{FPGA}})$, die simultan
     \item den Datendurchsatz maximiert.
 \end{enumerate}
 
-\textbf{Kernthese dieser Arbeit:} Der Subgraph-Algorithmus~\cite{epp2026a} bietet mit
+\textbf{Kernthese dieser Arbeit:} Der Subgraph Algorithmus~\cite{epp2026a} bietet mit
 seiner $\Theta(n^3)$-Laufzeit und der SETH-Optimalität~\cite{epp2026b} eine formal
 optimale Grundlage für dieses Matching-Problem.
 
@@ -135,7 +135,7 @@ Diese Arbeit leistet folgende formale Beiträge:
 \begin{enumerate}
     \item Formale Modellierung von DNN-Topologien als gerichtete Adjazenzmatrix-Graphen
           (\S\ref{sec:grundlagen}).
-    \item Beweis der Korrektheit und Optimalität des Subgraph-Algorithmus für das
+    \item Beweis der Korrektheit und Optimalität des Subgraph Algorithmus für das
           FPGA-Layer-Matching (\S\ref{sec:algorithmus}).
     \item Formale Herleitung der Pareto-Front im mehrdimensionalen
           Latenz-Ressourcen-Raum (\S\ref{sec:pareto}).
@@ -250,7 +250,7 @@ Diese Arbeit leistet folgende formale Beiträge:
 \end{beispiel}
 
 % =====================================================================
-\section{Der Subgraph-Algorithmus für FPGA-Topologie-Matching}
+\section{Der Subgraph Algorithmus für FPGA-Topologie-Matching}
 \label{sec:algorithmus}
 % =====================================================================
 
@@ -259,13 +259,13 @@ Diese Arbeit leistet folgende formale Beiträge:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{plots/plot1_laufzeit.pdf}
-    \caption{Laufzeitvergleich des Subgraph-Algorithmus $O(n^3)$ gegenüber Brute-Force $O(n! \cdot n^2)$
+    \caption{Laufzeitvergleich des Subgraph Algorithmus $O(n^3)$ gegenüber Brute-Force $O(n! \cdot n^2)$
     und VF2 $O(n!)$ für DNN-Topologie-Matching auf FPGA-Hardware.
     Die logarithmische Skalierung verdeutlicht den exponentiellen Vorteil für $n \geq 16$.}
     \label{fig:laufzeit}
 \end{figure}
 
-Der Subgraph-Algorithmus~\cite{epp2026a} arbeitet auf zwei Adjazenzmatrizen $A$ und $B$
+Der Subgraph Algorithmus~\cite{epp2026a} arbeitet auf zwei Adjazenzmatrizen $A$ und $B$
 der DNN- bzw.\ FPGA-Graphen in drei Hauptschritten:
 
 \medskip
@@ -291,9 +291,9 @@ Für jede der $n_B$ zyklischen Rotationen $\rho_k(\sigma^B)$:
 
 \subsection{Laufzeitanalyse}
 
-\begin{satz}[Laufzeit des Subgraph-Algorithmus]
+\begin{satz}[Laufzeit des Subgraph Algorithmus]
 \label{satz:laufzeit}
-    Der Subgraph-Algorithmus hat eine Zeitkomplexität von $\Theta(n^3)$.
+    Der Subgraph Algorithmus hat eine Zeitkomplexität von $\Theta(n^3)$.
 \end{satz}
 
 \begin{proof}
@@ -323,7 +323,7 @@ Für jede der $n_B$ zyklischen Rotationen $\rho_k(\sigma^B)$:
 \begin{proof}
     Sei $\sigma^B_r$ die $r$-te Rotation. Beim Übergang von $r$ zu $r+1$ verschiebt sich
     das Element $\sigma_r^B$ vom Anfang ans Ende. In der LCS-DP-Tabelle
-    $T[i][j] = \text{LCS}(\sigma^A[0..i], \sigma^B_r[0..j])$ ändern sich bis zu $\Theta(n)$
+    $T[i][j] = \text{LCS}(\sigma^A[0.i], \sigma^B_r[0.j])$ ändern sich bis zu $\Theta(n)$
     Einträge pro Zeile, da der erste Treffer des optimalen Matchings entfällt.
     
     \textbf{Konstruktiv:} Wähle $\sigma^A = [a_0, a_1, \ldots, a_{n-1}]$ und
@@ -340,7 +340,7 @@ Für jede der $n_B$ zyklischen Rotationen $\rho_k(\sigma^B)$:
 
 \begin{satz}[Korrektheit des FPGA-Layer-Matchings]
 \label{satz:korrektheit}
-    Der Subgraph-Algorithmus erkennt korrekt alle zyklisch-isomorphen Einbettungen
+    Der Subgraph Algorithmus erkennt korrekt alle zyklisch-isomorphen Einbettungen
     eines DNN-Teilgraphen in den FPGA-Ressourcengraphen.
 \end{satz}
 
@@ -377,14 +377,14 @@ und $f_{\text{thr}}$ den Durchsatz in MSamples/s bezeichnen.
 
 \begin{satz}[Subgraph-basierte Pareto-Front-Konstruktion]
 \label{satz:pareto}
-    Seien $\mathcal{C}_1, \mathcal{C}_2, \ldots, \mathcal{C}_m$ die durch den Subgraph-Algorithmus
+    Seien $\mathcal{C}_1, \mathcal{C}_2, \ldots, \mathcal{C}_m$ die durch den Subgraph Algorithmus
     identifizierten strukturell distinktiven Konfigurationsklassen (je eine pro LCS-Klasse).
     Dann enthält die Vereinigung $\bigcup_k \arg\min_{c \in \mathcal{C}_k} \mathbf{f}(c)$
     die vollständige Pareto-Front $\mathcal{P}^* \subseteq \mathcal{C}$.
 \end{satz}
 
 \begin{proof}
-    Sei $c^* \in \mathcal{P}^*$ eine Pareto-optimale Konfiguration. Da der Subgraph-Algorithmus
+    Sei $c^* \in \mathcal{P}^*$ eine Pareto-optimale Konfiguration. Da der Subgraph Algorithmus
     alle zyklisch-isomorphen Topologieklassen vollständig enumeriert (Satz~\ref{satz:korrektheit}),
     existiert eine Klasse $\mathcal{C}_k$ mit $c^* \in \mathcal{C}_k$.
     
@@ -407,7 +407,7 @@ und $f_{\text{thr}}$ den Durchsatz in MSamples/s bezeichnen.
 \end{figure}
 
 \begin{korollar}[Vollständigkeit der Suche]
-    Kein Pareto-optimaler Entwurfspunkt kann vom Subgraph-Algorithmus übersehen werden.
+    Kein Pareto-optimaler Entwurfspunkt kann vom Subgraph Algorithmus übersehen werden.
 \end{korollar}
 
 \begin{proof}
@@ -433,12 +433,12 @@ eine skalare Gütefunktion:
 
 \begin{satz}[Effizienz der Subgraph-Suche für skalare Optimierung]
     Die Minimierung von $\Phi$ über alle Konfigurationen in $\mathcal{C}$ kann mit
-    dem Subgraph-Algorithmus in $O(|\mathcal{C}| \cdot n^3)$ Zeit gelöst werden,
+    dem Subgraph Algorithmus in $O(|\mathcal{C}| \cdot n^3)$ Zeit gelöst werden,
     wobei $n$ die maximale Layer-Anzahl bezeichnet.
 \end{satz}
 
 \begin{proof}
-    Für jede Konfiguration $c \in \mathcal{C}$ wird der Subgraph-Algorithmus einmal
+    Für jede Konfiguration $c \in \mathcal{C}$ wird der Subgraph Algorithmus einmal
     mit Laufzeit $O(n^3)$ ausgeführt. Das Minimum von $\Phi$ wird durch vollständige
     Enumeration aller $|\mathcal{C}|$ Konfigurationen gefunden. Da der Algorithmus
     korrekt alle Subgraph-Beziehungen identifiziert, ist kein Entwurfspunkt ausgelassen.
@@ -468,13 +468,13 @@ FINN+~\cite{jentzsch2025} erweitert den AMD-FINN-Compiler um vier Kernkomponente
 
 Die Quantisierung der Layer erfolgt durch den SIRA-Mechanismus, der die
 Scaled Integer Range Analysis (SIRA) zur Identifikation von Nicht-MatMul-Engpässen nutzt.
-Der Subgraph-Algorithmus kann hier die Layer-Berechnungsgraphen vor und nach der Streamlining-Phase
+Der Subgraph Algorithmus kann hier die Layer-Berechnungsgraphen vor und nach der Streamlining-Phase
 vergleichen und strukturelle Invarianzen erkennen:
 
 \begin{beispiel}[SIRA-Streamlining als Subgraph-Transformation]
     Sei $G_{\text{vor}}$ der Berechnungsgraph vor Streamlining mit Layern
     $\{$MatMul, Add, ReLU, Mul, Quant$\}$. Nach SIRA-Optimierung entsteht
-    $G_{\text{nach}}$ mit fusionierten Operationen. Der Subgraph-Algorithmus
+    $G_{\text{nach}}$ mit fusionierten Operationen. Der Subgraph Algorithmus
     stellt fest: $G_{\text{nach}} \subseteq_{\text{zyk}} G_{\text{vor}}$, da
     der Fusionsgraph eine strukturelle Einbettung darstellt. Die Signatur-Arrays:
     \[
@@ -545,7 +545,7 @@ $W_r$ binarisiert: $\hat{W}_r^{ij} = \mathbf{1}[|W_r^{ij}| > \theta]$.
     \centering
     \includegraphics[width=\textwidth]{plots/plot4_subgraph_fpga.pdf}
     \caption{Links: Subgraph-Matching-Laufzeit bei ESN-Topologie-Erkennung.
-    Der Subgraph-Algorithmus $O(n^3)$ ist gegenüber der naiven Suche $O(n^5)$
+    Der Subgraph Algorithmus $O(n^3)$ ist gegenüber der naiven Suche $O(n^5)$
     bei $n=500$ um über zwei Größenordnungen schneller.
     Rechts: RMSE und Subgraph-Match-Güte in Abhängigkeit von der Reservoir-Größe.
     Mit wachsender Reservoir-Größe verbessern sich beide Metriken asymptotisch.}
@@ -566,7 +566,7 @@ einem $k$-Schnitt-Problem auf dem Berechnungsgraphen.
 \end{satz}
 
 \begin{proof}
-    Der Subgraph-Algorithmus identifiziert für jeden FPGA $f_i$ denjenigen Teilgraphen
+    Der Subgraph Algorithmus identifiziert für jeden FPGA $f_i$ denjenigen Teilgraphen
     $G_i \subseteq_{\text{zyk}} G$, der strukturell maximal in die lokalen Ressourcen eingebettet
     werden kann (maximales LCS). Dies entspricht einer greedy-Partitionierung:
     In Schritt $i$ wird die größte Subgraph-Einbettung von $G \setminus (G_1 \cup \ldots \cup G_{i-1})$
@@ -610,7 +610,7 @@ RNU\_DSP  & 200 & 257,9 & 4,9  & 746 & 29\,ns    & 34\,MSps  \\
 \end{table}
 
 Die Daten zeigen, dass RNU\_LUT mit 9,5\,ns Latenz und 100\,MSps Durchsatz die beste
-Echtzeit-Performance bietet. Der Subgraph-Algorithmus identifiziert RNU\_LUT als
+Echtzeit-Performance bietet. Der Subgraph Algorithmus identifiziert RNU\_LUT als
 die Pareto-dominante Konfiguration im (Latenz, LUT)-Raum gegenüber allen Prior-Work-Entwürfen
 mit Reservoir-Größe $\leq 200$.
 
@@ -619,12 +619,12 @@ mit Reservoir-Größe $\leq 200$.
 \label{sec:zusammenfassung}
 % =====================================================================
 
-Diese Arbeit hat den Subgraph-Algorithmus als formales Fundament für die automatische
+Diese Arbeit hat den Subgraph Algorithmus als formales Fundament für die automatische
 Topologie-Optimierung von FPGA-DNN-Inferenzbeschleunigern etabliert.
 Die zentralen Ergebnisse:
 
 \begin{enumerate}
-    \item Der Subgraph-Algorithmus mit $\Theta(n^3)$-Laufzeit ist SETH-optimal für
+    \item Der Subgraph Algorithmus mit $\Theta(n^3)$-Laufzeit ist SETH-optimal für
           das zyklische DNN-Layer-Matching-Problem.
     \item Die Pareto-Front im mehrdimensionalen Latenz-Ressourcen-Raum wird vom
           Algorithmus vollständig und korrekt enumeriert.
@@ -675,7 +675,7 @@ Die Verbindung mit automatischen Maschinenlernsystemen (AutoML) und Neural Archi
 Search (NAS) ist ein besonders vielversprechender Ansatz. FINN+ adressiert dies bereits
 in seiner Hardware-aware AutoML-Komponente~\cite{jentzsch2025}.
 
-Der Subgraph-Algorithmus kann in NAS-Pipelines als schnelle Struktur-Ähnlichkeitsmetrik
+Der Subgraph Algorithmus kann in NAS-Pipelines als schnelle Struktur-Ähnlichkeitsmetrik
 dienen: Statt volles Training für jede Kandidatenarchitektur durchzuführen, wird zuerst
 geprüft, ob der Kandidatengraph $G_{\text{cand}} \subseteq_{\text{zyk}} G_{\text{best}}$
 einer bereits evaluierten, guten Architektur darstellt. Nur strukturell neue Kandidaten
@@ -713,10 +713,10 @@ Hier bieten sich approximative Verfahren an:
 Echo State Networks~\cite{jafari2025} sind eng verwandt mit Spiking Neural Networks (SNNs),
 da beide auf Reservoircomputing basieren. Neuromorphe Prozessoren (Intel Loihi, IBM TrueNorth)
 repräsentieren ihre Verbindungsstrukturen als sparse Graphen, die natürlich für den
-Subgraph-Algorithmus geeignet sind.
+Subgraph Algorithmus geeignet sind.
 
 Konkret: Die Spike-Verbindungsmatrix $W_{\text{spike}} \in \{-1, 0, +1\}^{N \times N}$
-kann auf eine binäre Adjazenzmatrix reduziert werden und der Subgraph-Algorithmus
+kann auf eine binäre Adjazenzmatrix reduziert werden und der Subgraph Algorithmus
 identifiziert optimale Einbettungen in neuromorphe Chiparchitekturen.
 Erste Vorarbeiten in~\cite{epp2026c} zeigen, dass für Loihi 2 mit 128 Neuro-Cores
 eine vollständige Subgraph-Optimierung in unter 12\,ms möglich ist.
@@ -727,7 +727,7 @@ Ein weiteres Anwendungsfeld ist die formale Verifikation von Hardware-Implementi
 gegen ihre Spezifikationen. Der Berechnungsgraph $G_{\text{impl}}$ einer RTL-Synthese
 soll strukturell dem Spezifikationsgraphen $G_{\text{spec}}$ entsprechen.
 
-Der Subgraph-Algorithmus prüft: Gilt $G_{\text{spec}} \subseteq_{\text{zyk}} G_{\text{impl}}$?
+Der Subgraph Algorithmus prüft: Gilt $G_{\text{spec}} \subseteq_{\text{zyk}} G_{\text{impl}}$?
 Falls ja, ist die Implementierung formal korrekt bezüglich der Berechnungsstruktur.
 Diese Anwendung schließt direkt an die ursprüngliche AST-Verifikationsanwendung~\cite{epp2026a} an.
 
@@ -737,7 +737,7 @@ Reale DNN-Modelle (insbesondere Transformer mit dynamischer Sequenzlänge~\cite{
 haben \emph{dynamische} Berechnungsgraphen, die sich mit der Eingabe ändern.
 Formell: $G_t = G(x_t)$ für Eingabe $x_t$ zur Zeit $t$.
 
-Eine online-fähige Version des Subgraph-Algorithmus müsste inkrementelle Updates
+Eine online-fähige Version des Subgraph Algorithmus müsste inkrementelle Updates
 der Adjazenzmatrix verarbeiten:
 \[
     A^{(t)} = A^{(t-1)} + \Delta A^{(t)}
@@ -750,7 +750,7 @@ gefolgt von inkrementeller LCS-Aktualisierung in $O(\delta \cdot n)$.
 
 Diese Arbeit knüpft direkt an mehrere Resultate der Epp-Gruppe an:
 \begin{itemize}
-    \item Die Pareto-Optimierung des Subgraph-Algorithmus wurde in~\cite{epp2026d}
+    \item Die Pareto-Optimierung des Subgraph Algorithmus wurde in~\cite{epp2026d}
           für Embedded Systems Design entwickelt; die vorliegende Arbeit überträgt
           diese Methodik auf FPGA-Architekturen.
     \item Die SETH-Optimalität unter LCS-Reduktion wurde in~\cite{epp2026b} bewiesen
@@ -810,33 +810,27 @@ auf denen diese Arbeit aufbaut.
 
 \bibitem{epp2026a}
   S.~Epp,
-  \textit{Der Subgraph Algorithmus},
-  Universität Bielefeld, Januar 2026.
+  \textit{Der Subgraph Algorithmus}, Januar 2026.
 
 \bibitem{epp2026b}
   S.~Epp,
-  \textit{SETH-Optimalität des Subgraph-Algorithmus unter LCS-Reduktion},
-  Universität Bielefeld, 2026.
+  \textit{SETH-Optimalität des Subgraph Algorithmus unter LCS-Reduktion}, 2026.
 
 \bibitem{epp2026c}
   S.~Epp,
-  \textit{Subgraph-basiertes Mapping für neuromorphe Prozessoren},
-  Universität Bielefeld, 2026.
+  \textit{Subgraph-basiertes Mapping für neuromorphe Prozessoren}, 2026.
 
 \bibitem{epp2026d}
   S.~Epp,
-  \textit{Pareto-Optimierung im Embedded Systems Design mittels Subgraph-Algorithmus},
-  Universität Bielefeld, 2026.
+  \textit{Pareto-Optimierung im Embedded Systems Design mittels Subgraph Algorithmus}, 2026.
 
 \bibitem{epp2026e}
   S.~Epp,
-  \textit{EHAE: EtherCAT HMI Abstraction Extension},
-  Universität Bielefeld, 2026.
+  \textit{EHAE: EtherCAT HMI Abstraction Extension}, 2026.
 
 \bibitem{epp2026f}
   S.~Epp,
-  \textit{VADIS: Vector Database and Indexing System},
-  Universität Bielefeld, 2026.
+  \textit{VADIS: Vector Database and Indexing System}, 2026.
 
 \bibitem{abboud2015}
   A.~Abboud, A.~Backurs, V.~Vassilevska Williams,

@@ -76,14 +76,14 @@
   {\large Technischer Bericht}\\[1em]
   {\LARGE\bfseries\color{mainblue} Subgraph-basierte Optimierung von\\[0.3em]
   KI-Rechenzentrumsinfrastrukturen}\\[0.5em]
-  {\large Anwendung des Subgraph-Algorithmus auf die\\
+  {\large Anwendung des Subgraph Algorithmus auf die\\
   Ressourcenplanung, Workload-Platzierung\\
   und CPU:GPU-Verh\"{a}ltnisanalyse\\
   am Beispiel des T-Systems Rechenzentrums Bielefeld}
 }
 \author{Stephan Epp\\
   \small Universit\"{a}t Bielefeld\\
-  \small \texttt{https://gitlab.com/epp-group/subgraph}
+  \small \texttt{https://github.com/hjstephan86/science}
 }
 \date{11. Mai 2026}
 
@@ -95,7 +95,7 @@
 \begin{abstract}
 \noindent
 Moderne KI-Rechenzentren stehen vor der algorithmischen Herausforderung, heterogene Workload-Abh\"{a}ngigkeitsgraphen optimal auf physische Infrastrukturgraphen abzubilden.
-Dieser Bericht zeigt, dass der Subgraph-Algorithmus~\cite{epp2026subgraph} --- ein $O(n^3)$-Algorithmus zum zyklischen Graphvergleich mittels Signatur-Arrays und LCS-Matching --- direkt als Kernkomponente eines ressourcenoptimalen Workload-Schedulers eingesetzt werden kann.
+Dieser Bericht zeigt, dass der Subgraph Algorithmus~\cite{epp2026subgraph} --- ein $O(n^3)$-Algorithmus zum zyklischen Graphvergleich mittels Signatur-Arrays und LCS-Matching --- direkt als Kernkomponente eines ressourcenoptimalen Workload-Schedulers eingesetzt werden kann.
 
 Wir modellieren das T-Systems-Rechenzentrum Bielefeld (Detmolder Stra{\ss}e 380) als Topologiegraph $G_{RZ}$ und jede KI-Aufgabe als Workload-Abh\"{a}ngigkeitsgraphen $W_i$.
 Das \emph{RZ-Placement-Problem} wird formal als zyklisches Subgraph-Isomorphie-Problem definiert.
@@ -103,7 +103,7 @@ Das \emph{RZ-Placement-Problem} wird formal als zyklisches Subgraph-Isomorphie-P
 \textbf{Erweiterung (Mai 2026):} Diese Fassung enth\"{a}lt eine vollst\"{a}ndige Integration der CPU:GPU-Verh\"{a}ltnisanalyse~\cite{computerbase2026} -- von der formalen Modellierung der Hardware-Topologiegraphen $G_{r}$ ($r \in \{1:1, 1:2, 1:4, 1:8\}$)
 \"{u}ber den Beweis der Einbettungshierarchie $G_{1:1} \hookrightarrow G_{1:2} \hookrightarrow G_{1:4} \hookrightarrow G_{1:8}$
 bis hin zur quantitativen Effizienz\-bewertung, Prognosemodellen und \"{o}konomischen Konsequenzen.
-Wir beweisen, dass (a) der Subgraph-Algorithmus das RZ-Placement-Problem korrekt l\"{o}st, (b) er unter SETH optimal ist mit Laufzeit $\Theta(n^3)$, (c) eine GPU-parallele Implementierung Echtzeit-Placement f\"{u}r $n \leq 512$ erm\"{o}glicht, und (d) die optimale CPU:GPU-Konfiguration workload-abh\"{a}ngig formal bestimmbar ist.
+Wir beweisen, dass (a) der Subgraph Algorithmus das RZ-Placement-Problem korrekt l\"{o}st, (b) er unter SETH optimal ist mit Laufzeit $\Theta(n^3)$, (c) eine GPU-parallele Implementierung Echtzeit-Placement f\"{u}r $n \leq 512$ erm\"{o}glicht, und (d) die optimale CPU:GPU-Konfiguration workload-abh\"{a}ngig formal bestimmbar ist.
 
 \medskip
 \noindent\textbf{Schl\"{u}sselw\"{o}rter:} Subgraph-Isomorphismus, Rechenzentrum-Scheduling, KI-Workload-Placement, CPU:GPU-Verh\"{a}ltnis, Signatur-Arrays, LCS, SETH-Optimalit\"{a}t, GPU-Parallelisierung, Fat-Tree-Topologie, Hardware-Topologiegraphen, Einbettungshierarchie
@@ -123,11 +123,11 @@ Das Rechenzentrum von T-Systems an der Detmolder Stra{\ss}e 380 in Bielefeld-Sti
 Mit dem industriepolitischen Beschluss der Bundesregierung, die KI-Rechenkapazit\"{a}ten in Deutschland bis 2030 zu vervierfachen~\cite{bundesregierung2026rechenzentrumsstrategie}, stellt sich f\"{u}r den Bielefelder Standort die Frage nach einer algorithmisch fundierten Optimierungsstrategie.
 
 Das zentrale Problem: Wenn ein Rechenzentrum zuk\"{u}nftig sowohl klassische Managed-Services-Workloads als auch KI-Trainings- und Inferenz-Workloads auf einer gemeinsamen physischen Infrastruktur betreiben soll, dann muss jeder eingehende Job als gerichteter Abh\"{a}ngigkeitsgraph $W = (V_W, E_W)$ auf einen geeigneten Teilgraphen der physischen Topologie $G_{RZ} = (V_{RZ}, E_{RZ})$ abgebildet werden.
-Dieses Problem ist in seiner allgemeinen Form NP-schwer (Subgraph-Isomorphismus~\cite{cook1971complexity}); f\"{u}r die strukturierten Fat-Tree-Topologien moderner Rechenzentren und KI-Workloads mit typischer DAG-Struktur zeigen wir jedoch, dass der Subgraph-Algorithmus~\cite{epp2026subgraph} eine $\Theta(n^3)$-L\"{o}sung liefert.
+Dieses Problem ist in seiner allgemeinen Form NP-schwer (Subgraph-Isomorphismus~\cite{cook1971complexity}); f\"{u}r die strukturierten Fat-Tree-Topologien moderner Rechenzentren und KI-Workloads mit typischer DAG-Struktur zeigen wir jedoch, dass der Subgraph Algorithmus~\cite{epp2026subgraph} eine $\Theta(n^3)$-L\"{o}sung liefert.
 
 \textbf{Neue Perspektive (Mai 2026):}
 Nvidia, Meta und -- seit dem 9.~Mai 2026 -- auch AMD propagieren aktiv das 1:1-CPU:GPU-Verh\"{a}ltnis als neue Norm f\"{u}r bestimmte KI-Workloads~\cite{computerbase2026}. Gleichzeitig bleibt das 1:4-Format f\"{u}r Trainingsszenarien mit hohem Batch-Durchsatz weiterhin relevant, wie AMDs Helios-Rack mit $1\times$~Venice-CPU und $4\times$~MI455X belegt.
-Diese Entwicklung hat direkte Konsequenzen f\"{u}r das RZ-Bielefeld: Das CPU:GPU-Verh\"{a}ltnis bestimmt die Struktur der Hardware-Topologiegraphen, auf die der Subgraph-Algorithmus angewendet wird -- und damit seine Laufzeit, Speicherbedarf und Einbettungsm\"{o}glichkeiten.
+Diese Entwicklung hat direkte Konsequenzen f\"{u}r das RZ-Bielefeld: Das CPU:GPU-Verh\"{a}ltnis bestimmt die Struktur der Hardware-Topologiegraphen, auf die der Subgraph Algorithmus angewendet wird -- und damit seine Laufzeit, Speicherbedarf und Einbettungsm\"{o}glichkeiten.
 
 \subsection{Problemstellung}
 
@@ -148,7 +148,7 @@ unter gleichzeitiger Minimierung von Kommunikationskosten, Maximierung der Resso
 
 \begin{enumerate}
   \item \textbf{Formale Modellierung} des RZ-Bielefeld-Placement-Problems als zyklisches Subgraph-Isomorphie-Problem (Abschnitt~\ref{sec:modell}).
-  \item \textbf{Anwendungsnachweis} des Subgraph-Algorithmus mit vollst\"{a}ndigen Korrektheits- und Komplexit\"{a}tsbeweisen (Abschnitt~\ref{sec:algorithmus}).
+  \item \textbf{Anwendungsnachweis} des Subgraph Algorithmus mit vollst\"{a}ndigen Korrektheits- und Komplexit\"{a}tsbeweisen (Abschnitt~\ref{sec:algorithmus}).
   \item \textbf{Formale Komplexit\"{a}tsanalyse} einschlie{\ss}lich SETH-Optimalit\"{a}tsbeweis (Abschnitt~\ref{sec:komplexitaet}).
   \item \textbf{GPU-Parallelisierungstheorem} f\"{u}r NVIDIA-Blackwell-Cluster (Abschnitt~\ref{sec:parallelisierung}).
   \item \textbf{Experimentelle Projektionen} der Effizienzgewinne (Abschnitt~\ref{sec:experimente}).
@@ -219,9 +219,9 @@ unter gleichzeitiger Minimierung von Kommunikationskosten, Maximierung der Resso
   repr\"{a}sentiert die vollst\"{a}ndige Topologie des Graphen injektiv.
 \end{definition}
 
-\subsection{Der Subgraph-Algorithmus}
+\subsection{Der Subgraph Algorithmus}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $G$ und $G'$ mit je $n$ Knoten, ob $G \subseteq G'$, in $\Theta(n^3)$ durch:
+Der Subgraph Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $G$ und $G'$ mit je $n$ Knoten, ob $G \subseteq G'$, in $\Theta(n^3)$ durch:
 \begin{enumerate}
   \item Berechnung eindeutiger Signatur-Arrays $\boldsymbol{\sigma}^A$ und $\boldsymbol{\sigma}^B$.
   \item Rotation der Signatur-Sequenz von $B$ in allen $n$ zyklischen Varianten.
@@ -295,20 +295,20 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
 
 \begin{proof}
   \textbf{Richtung $(\Rightarrow)$:} Existiert eine zul\"{a}ssige Einbettung $\phi$, dann bilden die Knoten $\{\phi(t_1), \ldots, \phi(t_m)\}$ einen Subgraphen von $G_{RZ}$, dessen Adjazenzmatrix $B'$ die Eigenschaft $A \subseteq B'$ erf\"{u}llt.
-  Nach dem Korrektheitssatz des Subgraph-Algorithmus~\cite{epp2026subgraph} wird bei mindestens einer zyklischen Rotation $k^*$ die LCS-Bedingung $\geq 2$ erf\"{u}llt.
+  Nach dem Korrektheitssatz des Subgraph Algorithmus~\cite{epp2026subgraph} wird bei mindestens einer zyklischen Rotation $k^*$ die LCS-Bedingung $\geq 2$ erf\"{u}llt.
 
   \textbf{Richtung $(\Leftarrow)$:} Wird die LCS-Bedingung f\"{u}r eine Rotation $k^*$ erf\"{u}llt, dann identifiziert die Signatur-\"{U}bereinstimmung (Injektivit\"{a}t nach Lemma~\ref{lem:injektivitaet}) eine strukturelle Einbettung $\phi$.
 \end{proof}
 
 % ============================================================
-\section{Der Subgraph-Algorithmus im RZ-Kontext}
+\section{Der Subgraph Algorithmus im RZ-Kontext}
 \label{sec:algorithmus}
 % ============================================================
 
 \subsection{Algorithmus-Beschreibung}
 
 \begin{algorithm}[H]
-\caption{RZ-Workload-Placement via Subgraph-Algorithmus}
+\caption{RZ-Workload-Placement via Subgraph Algorithmus}
 \label{alg:rzplacement}
 \begin{algorithmic}[1]
 \Require $G_{RZ}$ mit Adjazenzmatrix $M \in \{0,1\}^{N\times N}$; $W$ mit $A \in \{0,1\}^{m\times m}$
@@ -328,7 +328,7 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
 
 \subsection{Korrektheit}
 
-\begin{satz}[Korrektheit des RZ-Placement via Subgraph-Algorithmus]
+\begin{satz}[Korrektheit des RZ-Placement via Subgraph Algorithmus]
   \label{satz:korrektheit}
   Algorithmus~\ref{alg:rzplacement} l\"{o}st das RZ-Placement-Problem korrekt.
 \end{satz}
@@ -344,7 +344,7 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
   \label{kor:typ}
   Durch Erweiterung der Signatur-Funktion um eine Typ-Komponente
   $\hat{\sigma}_j = \sigma_j + \tau(\mathrm{typ}(v_j)) \cdot 2^{2n+1}$
-  liefert der Subgraph-Algorithmus ausschlie{\ss}lich typkonsistente Einbettungen bei unverl\"{a}nderter $\Theta(n^3)$-Laufzeit.
+  liefert der Subgraph Algorithmus ausschlie{\ss}lich typkonsistente Einbettungen bei unverl\"{a}nderter $\Theta(n^3)$-Laufzeit.
 \end{korollar}
 
 % ============================================================
@@ -359,9 +359,9 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
   F\"{u}r $G_{RZ}$ mit $N$ Knoten und Workload $W$ mit $m$ Knoten gilt $T_{\text{RZP}}(N, m) = O(N \cdot m^3)$ f\"{u}r strukturierte Fat-Tree-Topologien.
 \end{satz}
 
-\begin{satz}[SETH-Optimalit\"{a}t des RZ-Placement via Subgraph-Algorithmus]
+\begin{satz}[SETH-Optimalit\"{a}t des RZ-Placement via Subgraph Algorithmus]
   \label{satz:optimalitaet_rz}
-  Unter SETH ist der Subgraph-Algorithmus f\"{u}r das RZ-Placement-Problem asymptotisch optimal: $T_{\text{RZP-Subgraph}}(m) = \Theta(m^3)$.
+  Unter SETH ist der Subgraph Algorithmus f\"{u}r das RZ-Placement-Problem asymptotisch optimal: $T_{\text{RZP-Subgraph}}(m) = \Theta(m^3)$.
 \end{satz}
 
 \begin{proof}
@@ -372,7 +372,7 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot3_laufzeit.pdf}
-  \caption{Laufzeitvergleich: Naiver Permutationsansatz ($O(n! \cdot n^2)$, rot) vs. Subgraph-Algorithmus ($O(n^3)$, blau) sowie Komplexit\"{a}tskurven auf Rechenzentrum-relevanten Skalen.}
+  \caption{Laufzeitvergleich: Naiver Permutationsansatz ($O(n! \cdot n^2)$, rot) vs. Subgraph Algorithmus ($O(n^3)$, blau) sowie Komplexit\"{a}tskurven auf Rechenzentrum-relevanten Skalen.}
   \label{fig:laufzeit}
 \end{figure}
 
@@ -381,7 +381,7 @@ Der Subgraph-Algorithmus~\cite{epp2026subgraph} berechnet f\"{u}r zwei Graphen $
 \label{sec:parallelisierung}
 % ============================================================
 
-\begin{satz}[Parallele Laufzeit des Subgraph-Algorithmus auf GPU-Cluster]
+\begin{satz}[Parallele Laufzeit des Subgraph Algorithmus auf GPU-Cluster]
   \label{satz:parallel}
   Auf einem GPU-Cluster mit $P$ GPUs und internem Parallelisierungsgrad $c$ gilt:
   $T_{\text{par}}(m, P) = O(m^3 / (P \cdot c))$.
@@ -598,7 +598,7 @@ F\"{u}r das T-Systems Bielefeld Rechenzentrum bedeutet dies: Ein Upgrade von 1:4
 
 \begin{satz}[Komplexit\"{a}t nach CPU:GPU-Konfiguration]
   \label{satz:komplex_q}
-  Der Subgraph-Algorithmus zur Analyse einer Hardware-Topologie $G_r$ mit CPU:GPU-Verh\"{a}ltnis $1:q$ hat Zeitkomplexit\"{a}t $\Theta(n^3)$ mit $n = 1 + q$.
+  Der Subgraph Algorithmus zur Analyse einer Hardware-Topologie $G_r$ mit CPU:GPU-Verh\"{a}ltnis $1:q$ hat Zeitkomplexit\"{a}t $\Theta(n^3)$ mit $n = 1 + q$.
   F\"{u}r ein Rack mit $k$ CPU-Einheiten gilt $n_T = k(1+q)$ und:
   \[
     T(n_T) = \Theta\!\left((k(1+q))^3\right).
@@ -641,10 +641,10 @@ F\"{u}r das T-Systems Bielefeld Rechenzentrum bedeutet dies: Ein Upgrade von 1:4
 \end{table}
 
 Das 1:8-System erfordert damit \textbf{91-mal mehr Operationen} zur vollst\"{a}ndigen Topologie-Analyse als das 1:1-System.
-Dies unterstreicht die algorithmischen Effizienz-Vorteile kleinerer, homogener Konfigurationen f\"{u}r den Subgraph-Algorithmus.
+Dies unterstreicht die algorithmischen Effizienz-Vorteile kleinerer, homogener Konfigurationen f\"{u}r den Subgraph Algorithmus.
 
 \begin{proposition}[Speicherbedarf nach Konfiguration]
-  Der Speicherbedarf des Subgraph-Algorithmus f\"{u}r $G_r$ mit $n = 1 + q$ Knoten betr\"{a}gt $O(n^2)$ f\"{u}r die Adjazenzmatrix und $O(n)$ f\"{u}r das Signatur-Array. Mit rollenden Arrays reduziert sich der LCS-Bedarf auf $O(n)$.
+  Der Speicherbedarf des Subgraph Algorithmus f\"{u}r $G_r$ mit $n = 1 + q$ Knoten betr\"{a}gt $O(n^2)$ f\"{u}r die Adjazenzmatrix und $O(n)$ f\"{u}r das Signatur-Array. Mit rollenden Arrays reduziert sich der LCS-Bedarf auf $O(n)$.
 \end{proposition}
 
 \begin{proof}
@@ -655,7 +655,7 @@ Dies unterstreicht die algorithmischen Effizienz-Vorteile kleinerer, homogener K
 
 \subsection{Speicherbandbreite, Roofline-Modell und Effizienzanalyse}
 
-Das Roofline-Modell~\cite{patterson2021roofline} erm\"{o}glicht die systematische Bewertung der Speicherbandbreite und Rechenleistung der verschiedenen Konfigurationen im Kontext des Subgraph-Algorithmus.
+Das Roofline-Modell~\cite{patterson2021roofline} erm\"{o}glicht die systematische Bewertung der Speicherbandbreite und Rechenleistung der verschiedenen Konfigurationen im Kontext des Subgraph Algorithmus.
 
 \begin{figure}[H]
   \centering
@@ -665,7 +665,7 @@ Das Roofline-Modell~\cite{patterson2021roofline} erm\"{o}glicht die systematisch
 \end{figure}
 
 Die arithmetische Intensit\"{a}t $I = \text{FLOPS} / \text{Bytes}$ bestimmt, ob ein Algorithmus speicher- oder rechengebunden ist.
-F\"{u}r den Subgraph-Algorithmus gilt:
+F\"{u}r den Subgraph Algorithmus gilt:
 \[
   I_{\text{Subgraph}} = \frac{O(n^2) \text{ Operationen pro LCS}}{O(n) \text{ Bytes Signatur-Array}} = O(n).
 \]
@@ -719,7 +719,7 @@ Mit wachsender Knotenanzahl $n$ wird der Algorithmus zunehmend rechengebunden --
 
 \subsection{Integration mit dem Subgraph-Scheduling-Framework}
 
-Die CPU:GPU-Konfiguration $r$ bestimmt direkt die Struktur der Hardware-Topologiegraphen, auf die der Subgraph-Algorithmus angewendet wird.
+Die CPU:GPU-Konfiguration $r$ bestimmt direkt die Struktur der Hardware-Topologiegraphen, auf die der Subgraph Algorithmus angewendet wird.
 Damit er\"{o}ffnet die Konfigurationswahl einen zus\"{a}tzlichen Freiheitsgrad im Scheduling-Framework.
 
 \begin{satz}[Scheduling-Komplexit\"{a}t mit Konfigurationsauswahl]
@@ -768,7 +768,7 @@ Das Maximum wird jeweils auf der Diagonalen erreicht (Selbst-Match), w\"{a}hrend
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot_cpugpu_e.pdf}
-  \caption{CPU-Bedarf absolut nach Szenario 2026--2032 (oben links), CAPEX-Prognose (oben Mitte), TCO-Prognose (oben rechts), Subgraph-Algorithmus-Laufzeit vs.\ GPU:CPU-Verh\"{a}ltnis $q$ (unten links), optimale Konfiguration nach Workload-Mix (unten Mitte) und Marktanteilsprognose CPU-Server 2024--2030 (unten rechts).}
+  \caption{CPU-Bedarf absolut nach Szenario 2026--2032 (oben links), CAPEX-Prognose (oben Mitte), TCO-Prognose (oben rechts), Subgraph Algorithmus-Laufzeit vs.\ GPU:CPU-Verh\"{a}ltnis $q$ (unten links), optimale Konfiguration nach Workload-Mix (unten Mitte) und Marktanteilsprognose CPU-Server 2024--2030 (unten rechts).}
   \label{fig:cpugpu_e}
 \end{figure}
 
@@ -779,7 +779,7 @@ F\"{u}r das T-Systems Bielefeld RZ mit projiziert $12\,000$ GPUs bis 2030 (Abbil
 \begin{itemize}
   \item \textbf{1:1-Szenario:} $12\,000$ CPU-Einheiten zus\"{a}tzlich, CAPEX-Mehrbedarf ca.\ $180\,\text{Mio.\,EUR}$.
   \item \textbf{1:4-Szenario:} $3\,000$ CPU-Einheiten, CAPEX-Mehrbedarf ca.\ $45\,\text{Mio.\,EUR}$.
-  \item \textbf{Dynamisches Scheduling (empfohlen):} Hybride Konfiguration mit $\approx 6\,000$ CPUs, die durch den Subgraph-Algorithmus dynamisch zwischen Inferenz- und Trainings-Modus gewechselt werden.
+  \item \textbf{Dynamisches Scheduling (empfohlen):} Hybride Konfiguration mit $\approx 6\,000$ CPUs, die durch den Subgraph Algorithmus dynamisch zwischen Inferenz- und Trainings-Modus gewechselt werden.
 \end{itemize}
 
 Die TCO-Analyse (Abbildung~\ref{fig:cpugpu_e}, oben rechts) zeigt, dass das 1:4-Szenario bei reinen CAPEX+OPEX-Kosten g\"{u}nstiger ist, w\"{a}hrend das 1:1-Szenario durch h\"{o}here Auslastung bei Inferenz-Workloads seinen TCO-Nachteil amortisieren kann.
@@ -794,19 +794,19 @@ Die Marktanteilsprognose (Abbildung~\ref{fig:cpugpu_e}, unten rechts) zeigt AMD'
 \section{Zusammenfassung}
 % ============================================================
 
-Wir haben gezeigt, dass der Subgraph-Algorithmus~\cite{epp2026subgraph} eine algorithmisch optimale L\"{o}sung f\"{u}r das RZ-Placement-Problem moderner KI-Rechenzentren darstellt.
+Wir haben gezeigt, dass der Subgraph Algorithmus~\cite{epp2026subgraph} eine algorithmisch optimale L\"{o}sung f\"{u}r das RZ-Placement-Problem moderner KI-Rechenzentren darstellt.
 Die wesentlichen Ergebnisse sind:
 
 \begin{itemize}
   \item Das RZ-Placement-Problem ist polynomial \"{a}quivalent zum zyklischen Subgraph-Problem (Satz~\ref{satz:reduktion}).
-  \item Der Subgraph-Algorithmus l\"{o}st das Problem korrekt und vollst\"{a}ndig (Satz~\ref{satz:korrektheit}).
+  \item Der Subgraph Algorithmus l\"{o}st das Problem korrekt und vollst\"{a}ndig (Satz~\ref{satz:korrektheit}).
   \item Die Laufzeit $\Theta(m^3)$ ist unter SETH optimal (Satz~\ref{satz:optimalitaet_rz}).
   \item GPU-Parallelisierung auf NVIDIA-Blackwell-Clustern erm\"{o}glicht Echtzeit-Placement f\"{u}r $n \leq 512$ (Korollar~\ref{kor:echtzeit}).
   \item Hardware-Topologiegraphen $G_r$ ($r \in \{1:1, 1:2, 1:4, 1:8\}$) sind formal als vollst\"{a}ndige Graphen $K_{q+1}$ modellierbar (Def.~\ref{def:htg}).
   \item Die Einbettungshierarchie $G_{1:1} \hookrightarrow G_{1:2} \hookrightarrow G_{1:4} \hookrightarrow G_{1:8}$ ist formal bewiesen (Satz~\ref{satz:hierarchie}).
   \item Das 1:8-System erfordert 91-mal mehr Operationen als das 1:1-System (Tab.~\ref{tab:komplex_q}).
   \item Kein universelles Optimum existiert: Inferenz bevorzugt 1:1 ($\eta = 1{,}00$), Training 1:4 ($\eta = 0{,}95$) (Korollar~\ref{kor:optimal}).
-  \item Dynamisches Scheduling durch den Subgraph-Algorithmus kann das Gesamtoptimierungspotenzial von 31{,}4\,\% auf 43{,}2\,\% steigern (Abb.~\ref{fig:cpugpu_f}).
+  \item Dynamisches Scheduling durch den Subgraph Algorithmus kann das Gesamtoptimierungspotenzial von 31{,}4\,\% auf 43{,}2\,\% steigern (Abb.~\ref{fig:cpugpu_f}).
   \item F\"{u}r T-Systems Bielefeld wird ein hybrides 1:2--1:4-Modell mit dynamischer Konfigurationsauswahl empfohlen.
 \end{itemize}
 
@@ -830,7 +830,7 @@ Nvidia hat mit Grace-Blackwell (GB200) demonstriert, dass CPU und GPU \"{u}ber N
 AMD verfolgt mit Venice und Infinity-Fabric-Gen5 eine \"{a}hnliche Strategie: HBM4-Speicher soll ab 2027 direkt in die CPU-Die-Hierarchie eingebettet werden.
 TSMC's SoIC-Technologie und Samsung's X-Cube erm\"{o}glichen ab 2028 Die-Stacking mit unter $1\,\mu\text{m}$ Pitch, was die Trennung von CPU und GPU zunehmend obsolet macht~\cite{tsmc2025soic}.
 
-Konsequenz f\"{u}r den Subgraph-Algorithmus: Die Hardware-Topologiegraphen $G_r$ werden zunehmend heterogen und gewichtet -- die Erweiterung der Signatur-Funktion um Bandbreitengewichte (Ausblick in~\cite{epp2026subgraph}) wird notwendig:
+Konsequenz f\"{u}r den Subgraph Algorithmus: Die Hardware-Topologiegraphen $G_r$ werden zunehmend heterogen und gewichtet -- die Erweiterung der Signatur-Funktion um Bandbreitengewichte (Ausblick in~\cite{epp2026subgraph}) wird notwendig:
 \[
   \sigma_j^w = \sum_{i=0}^{n-1} A_{ij} \cdot w(v_i, v_j) \cdot 2^i + j \cdot 2^n.
 \]
@@ -844,7 +844,7 @@ In Kombination mit Processing-in-Memory (PIM)-Modulen verschiebt dies die optima
 
 \subsubsection{Dynamische Topologien und Streaming-Variante}
 
-KI-Cluster sind dynamisch: GPUs werden hinzugef\"{u}gt, entfernt oder aufgeteilt (Multi-Instance GPU, MIG). F\"{u}r dynamisch wechselnde Topologien $G_r(t)$ kann der Subgraph-Algorithmus als Snapshot-Vergleicher eingesetzt werden. Eine Streaming-Variante erm\"{o}glicht inkrementelle Updates der Signatur-Arrays in $O(n)$ statt $O(n^2)$, wenn nur einzelne Knoten ge\"{a}ndert werden.
+KI-Cluster sind dynamisch: GPUs werden hinzugef\"{u}gt, entfernt oder aufgeteilt (Multi-Instance GPU, MIG). F\"{u}r dynamisch wechselnde Topologien $G_r(t)$ kann der Subgraph Algorithmus als Snapshot-Vergleicher eingesetzt werden. Eine Streaming-Variante erm\"{o}glicht inkrementelle Updates der Signatur-Arrays in $O(n)$ statt $O(n^2)$, wenn nur einzelne Knoten ge\"{a}ndert werden.
 
 \subsubsection{Parallele Subgraph-Isomorphismus-Erkennung}
 
@@ -857,7 +857,7 @@ Neue Knotenklassen erweitern die Topologiedefinition auf $V_r = C_r \cup \Gamma_
 \subsection{Integration in die T-Systems Industrial AI Cloud}
 
 Die T-Systems Industrial AI Cloud~\cite{tsystems2026iac} in M\"{u}nchen verwendet eine NVIDIA-Blackwell-Infrastruktur mit 10.000 GPUs.
-Eine Bielefeld-M\"{u}nchen-Verbundarchitektur koordiniert regionale OWL-Workloads (Bielefeld: 1:2 f\"{u}r Inferenz + Managed Services) und Hyperscale-LLM-Training (M\"{u}nchen: 1:4 f\"{u}r maximalen Trainingsdurchsatz) durch den Subgraph-Algorithmus auf einem \"{u}bergeordneten Metagraphen $G_{\text{Meta}}$.
+Eine Bielefeld-M\"{u}nchen-Verbundarchitektur koordiniert regionale OWL-Workloads (Bielefeld: 1:2 f\"{u}r Inferenz + Managed Services) und Hyperscale-LLM-Training (M\"{u}nchen: 1:4 f\"{u}r maximalen Trainingsdurchsatz) durch den Subgraph Algorithmus auf einem \"{u}bergeordneten Metagraphen $G_{\text{Meta}}$.
 
 \subsection{Federated Learning, Datensouver\"{a}nit\"{a}t und formale Verifikation}
 
@@ -876,21 +876,21 @@ Quantengatter-Operationen -- eine quadratische Beschleunigung gegen\"{u}ber dem 
   \item \textbf{Optimale Hybrid-Konfigurationen:} Existiert ein formales NP-hartes Optimierungsproblem, das CPU:GPU-Verh\"{a}ltnis, Workload-Profil und Energieverbrauch simultan minimiert?
   \item \textbf{Optimalit\"{a}t ohne SETH:} Kann die $\Omega(n^3)$-Schranke unbedingt (ohne Komplexit\"{a}tshypothesen) bewiesen werden?
   \item \textbf{Approximationsalgorithmen:} Welche Approximationsrate ist f\"{u}r Subgraph-Isomorphismus in Hardware-Topologien in $O(n^2 \log n)$ erreichbar?
-  \item \textbf{Dynamisches CPU:GPU-Verh\"{a}ltnis:} Wie kann der Subgraph-Algorithmus f\"{u}r dynamisch wechselnde Verh\"{a}ltnisse (GPU-Hot-Plug, MIG) in Echtzeit betrieben werden?
+  \item \textbf{Dynamisches CPU:GPU-Verh\"{a}ltnis:} Wie kann der Subgraph Algorithmus f\"{u}r dynamisch wechselnde Verh\"{a}ltnisse (GPU-Hot-Plug, MIG) in Echtzeit betrieben werden?
   \item \textbf{2:1-Konfigurationen:} Begr\"{u}ndet CXL 3.1 ein neues Optimum bei $q < 1$ (mehr CPUs als GPUs)? Formale Analyse ausstehend.
 \end{enumerate}
 
 \subsection{Langfristige Perspektive: Bielefeld als KI-Hub OWL}
 
 Mit dem industriepolitischen R\"{u}ckenwind der Bundesregierung, der technologischen Infrastruktur von T-Systems und der Forschungskompetenz der Universit\"{a}t Bielefeld hat der Standort das Potenzial, sich als spezialisierter KI-Hub f\"{u}r Ostwestfalen-Lippe zu positionieren.
-Der Subgraph-Algorithmus bietet eine algorithmisch fundierte Basis f\"{u}r die intelligente Ressourcenverwaltung -- einschlie{\ss}lich der dynamischen Optimierung des CPU:GPU-Verh\"{a}ltnisses als neuem Freiheitsgrad im Scheduling-Framework.
+Der Subgraph Algorithmus bietet eine algorithmisch fundierte Basis f\"{u}r die intelligente Ressourcenverwaltung -- einschlie{\ss}lich der dynamischen Optimierung des CPU:GPU-Verh\"{a}ltnisses als neuem Freiheitsgrad im Scheduling-Framework.
 
 % ============================================================
 \section*{Danksagung}
 % ============================================================
 
 Der Autor dankt der Universit\"{a}t Bielefeld f\"{u}r die akademische Umgebung und T-Systems International f\"{u}r \"{o}ffentlich zug\"{a}ngliche Infrastrukturinformationen.
-Der Subgraph-Algorithmus ist verf\"{u}gbar unter: \url{https://gitlab.com/epp-group/subgraph}.
+Der Subgraph Algorithmus ist verf\"{u}gbar unter: \url{https://github.com/hjstephan86/subgraph}.
 
 % ============================================================
 \begin{thebibliography}{99}
@@ -900,7 +900,7 @@ Der Subgraph-Algorithmus ist verf\"{u}gbar unter: \url{https://gitlab.com/epp-gr
   S.~Epp,
   \emph{Der Subgraph Algorithmus: Effizienter Graphvergleich mittels Signatur-Arrays und zyklischer Rotation},
   Technischer Bericht, Universit\"{a}t Bielefeld, Januar 2026.
-  \url{https://gitlab.com/epp-group/subgraph}
+  \url{https://github.com/hjstephan86/science}
 
 \bibitem{computerbase2026}
   Ri{\ss}ka, V. (2026, 9.~Mai).

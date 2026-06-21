@@ -60,12 +60,11 @@
 }
 
 \title{\textbf{Graphbasierte Optimierung der Elektrofahrzeugproduktion}\\[0.5em]
-\large Anwendung des Subgraph-Algorithmus auf das\\
+\large Anwendung des Subgraph Algorithmus auf das\\
 Gamechanger-Prinzip der Volkswagen AG\\[0.5em]
 \normalsize Maximale Effizienz und Flexibilität durch strukturelle\\
 Graphmuster in der industriellen Fertigungsplanung}
-\author{Stephan Epp\\
-Universität Bielefeld}
+\author{Stephan Epp\\}
 \date{6. Mai 2026}
 
 \begin{document}
@@ -75,13 +74,13 @@ Universität Bielefeld}
 
 \begin{abstract}
 Die vorliegende Arbeit entwickelt einen formalen Rahmen zur Optimierung der
-Elektrofahrzeugproduktion auf Basis des Subgraph-Algorithmus nach Epp~\cite{epp2026}.
+Elektrofahrzeugproduktion auf Basis des Subgraph Algorithmus nach Epp~\cite{epp2026}.
 Wir modellieren den vollständigen Fertigungsprozess eines modernen Elektrofahrzeuks --
 von der Megacasting-Strukturfertigung über die Batterie-Assembly bis zur
 Software-Integration -- als gerichteten Produktionsgraph $G_{\mathrm{EV}} = (V_P, E_P, \omega)$
 mit gewichteten Prozesskanten.
 
-Der Subgraph-Algorithmus mit seiner $O(n^3)$-Laufzeit und zyklischen Rotationsstrategie
+Der Subgraph Algorithmus mit seiner $O(n^3)$-Laufzeit und zyklischen Rotationsstrategie
 wird eingesetzt, um (i) gemeinsame Fertigungsmodule über Fahrzeugvarianten hinweg
 automatisch zu erkennen, (ii) Produktionspläne verschiedener Modellreihen strukturell
 zu vergleichen und (iii) optimale Maschinenbelegungspläne durch Signatur-basiertes
@@ -97,7 +96,7 @@ von bis zu 10 Modellvarianten ohne signifikante Effizienzverluste ermöglichen k
 Alle Ergebnisse werden durch 10 Matplotlib-Visualisierungen untermauert.
 
 \medskip
-\noindent\textbf{Schlüsselwörter:} Subgraph-Algorithmus, Elektrofahrzeugproduktion,
+\noindent\textbf{Schlüsselwörter:} Subgraph Algorithmus, Elektrofahrzeugproduktion,
 Megacasting, Produktionsgraph, Gamechanger, Signatur-Matching, LCS,
 Zyklische Rotation, Fertigungsoptimierung, VW.
 \end{abstract}
@@ -152,14 +151,14 @@ gemeinsamen Teilstrukturen (Subgraphen).
 
 \subsection{Beitrag dieser Arbeit}
 
-Wir zeigen, dass der Subgraph-Algorithmus nach Epp~\cite{epp2026} -- ursprünglich zur
+Wir zeigen, dass der Subgraph Algorithmus nach Epp~\cite{epp2026} -- ursprünglich zur
 Verifikation von Programmen durch Abstract Syntax Tree Analyse entwickelt -- direkt und
 ohne Modifikation auf die Produktionsplanungsdomäne übertragbar ist. Unsere Hauptbeiträge sind:
 
 \begin{enumerate}
 \item \textbf{Produktionsgraph-Formalisierung:} Wir definieren einen neuen Graphtyp
   $G_{\mathrm{EV}}$ mit gewichteten Prozesskantenattributen und Megacasting-Teilgraphen.
-\item \textbf{Anwendung des Subgraph-Algorithmus:} Wir zeigen, wie Signatur-Matching und
+\item \textbf{Anwendung des Subgraph Algorithmus:} Wir zeigen, wie Signatur-Matching und
   zyklische Rotationen optimale Produktionssequenzen berechnen.
 \item \textbf{Komplexitätsanalyse:} Wir beweisen die $\Theta(n^3)$-Optimalität unter SETH
   für den Fertigungsplanungskontext.
@@ -171,9 +170,9 @@ ohne Modifikation auf die Produktionsplanungsdomäne übertragbar ist. Unsere Ha
 \section{Grundlagen und Definitionen}
 % ============================================================
 
-\subsection{Der Subgraph-Algorithmus (Epp 2026)}
+\subsection{Der Subgraph Algorithmus (Epp 2026)}
 
-Wir rekapitulieren die zentralen Konzepte des Subgraph-Algorithmus \cite{epp2026}, auf dem
+Wir rekapitulieren die zentralen Konzepte des Subgraph Algorithmus \cite{epp2026}, auf dem
 die gesamte Optimierungsstrategie aufbaut.
 
 \begin{definition}[Produktionsgraph]
@@ -252,7 +251,7 @@ In beiden Fällen folgt $\sigma_j \neq \sigma_{j'}$, womit die Injektivität bew
 
 \subsection{Zyklische Rotation in der Produktionsplanung}
 
-Die Kernidee des Subgraph-Algorithmus -- zyklische Rotation statt vollständiger Permutation --
+Die Kernidee des Subgraph Algorithmus -- zyklische Rotation statt vollständiger Permutation --
 hat eine natürliche Interpretation in der Fertigungsplanung: Produktionsprozesse sind
 \emph{zyklisch}, d.h. nach dem Abschluss eines Fahrzeugs beginnt die Linie von vorne.
 Das ``Drehen'' des Graphen entspricht dem Verschieben des Startzeitpunkts einer Produktionsphase.
@@ -348,7 +347,7 @@ nach Definition \ref{def:subgraph}.
 \end{proof}
 
 % ============================================================
-\section{Anwendung des Subgraph-Algorithmus}
+\section{Anwendung des Subgraph Algorithmus}
 % ============================================================
 
 \subsection{Phase 1: Signaturberechnung für alle Fahrzeugvarianten}
@@ -381,7 +380,7 @@ Der Rotations-Match-Schritt identifiziert die optimale Ausrichtung zweier Produk
 
 \begin{satz}[Rotations-Korrektheit für Produktionsgraphen]
 \label{satz:rotations_korrektheit}
-Der Subgraph-Algorithmus bestimmt korrekt, ob eine Subgraph-Beziehung $G_A \subseteq G_B$
+Der Subgraph Algorithmus bestimmt korrekt, ob eine Subgraph-Beziehung $G_A \subseteq G_B$
 für zwei Produktionsgraphen existiert, indem er alle $n_B$ zyklischen Rotationen prüft.
 \end{satz}
 
@@ -438,7 +437,7 @@ Dann ist $G' \cup G''$ ebenfalls ein gemeinsamer Subgraph (da Vereinigungen von 
 wieder Teilmengen sind), also $G' \cup G'' \subseteq G_k$ für alle $k$.
 Wegen Maximalität von $G'$ und $G''$ folgt $G' = G'' = G' \cup G''$, d.h.\ $G' = G''$.
 
-\textbf{Berechnung:} Der Subgraph-Algorithmus berechnet $G_{\mathrm{core}}$ durch paarweise
+\textbf{Berechnung:} Der Subgraph Algorithmus berechnet $G_{\mathrm{core}}$ durch paarweise
 Schnitt-Operationen in $O(m \cdot n^3)$ Zeit.
 \end{proof}
 
@@ -450,7 +449,7 @@ Schnitt-Operationen in $O(m \cdot n^3)$ Zeit.
 
 \begin{satz}[Laufzeit des Gamechanger-Optimierungsalgorithmus]
 \label{satz:laufzeit}
-Der Subgraph-Algorithmus angewendet auf zwei Produktionsgraphen mit $n_A$ bzw.\ $n_B$
+Der Subgraph Algorithmus angewendet auf zwei Produktionsgraphen mit $n_A$ bzw.\ $n_B$
 Stationen ($n_A \leq n_B = n$) besitzt eine Gesamtlaufzeit von $\Theta(n^3)$.
 \end{satz}
 
@@ -491,8 +490,8 @@ Die untere Schranke $\Omega(n^3)$ folgt aus der Notwendigkeit aller Rotationspr�
 \centering
 \includegraphics[width=0.97\textwidth]{plot3_laufzeit_vergleich.pdf}
 \caption{Laufzeitkomplexität: Naiver Permutationsansatz $O(n! \cdot n^2)$ versus
-Subgraph-Algorithmus $\Theta(n^3)$. Links: Exponentieller Anstieg des naiven Ansatzes.
-Rechts: Polynomiale Skalierung des Subgraph-Algorithmus für realistische Werksgrößen.}
+Subgraph Algorithmus $\Theta(n^3)$. Links: Exponentieller Anstieg des naiven Ansatzes.
+Rechts: Polynomiale Skalierung des Subgraph Algorithmus für realistische Werksgrößen.}
 \label{fig:laufzeit}
 \end{figure}
 
@@ -520,7 +519,7 @@ Algorithmus unbekannt ist, muss er alle $n$ Rotationen prüfen.
 
 \begin{satz}[Asymptotische Optimalität für Produktionsgraph-Matching]
 \label{satz:optimalitaet}
-Unter der \emph{Strong Exponential Time Hypothesis} (SETH) ist der Subgraph-Algorithmus
+Unter der \emph{Strong Exponential Time Hypothesis} (SETH) ist der Subgraph Algorithmus
 asymptotisch optimal: Kein Algorithmus kann das Produktionsgraph-Matching in $O(n^{3-\varepsilon})$
 Zeit für beliebiges $\varepsilon > 0$ lösen.
 \end{satz}
@@ -550,7 +549,7 @@ sind (jede Rotation ändert die gesamte Trefferstruktur, vgl.\ Beweis in \cite{e
 T_{\text{ges}} \geq n \cdot \Omega(n^{2-\varepsilon}) = \Omega(n^{3-\varepsilon})
 \]
 
-Da der Subgraph-Algorithmus exakt $\Theta(n^3)$ benötigt, ist er asymptotisch optimal.
+Da der Subgraph Algorithmus exakt $\Theta(n^3)$ benötigt, ist er asymptotisch optimal.
 \end{proof}
 
 \begin{figure}[H]
@@ -583,7 +582,7 @@ Analyse der Stationsprofile im Produktionsgraph $G_{\mathrm{WOB}}$:
 
 \begin{itemize}
 \item Der Unterboden-vorn-Subgraph wird von 73 auf 2 Teile reduziert ($-97{,}3\%$).
-\item Der Subgraph-Algorithmus erkennt automatisch, dass die ID.3-Produktionskette
+\item Der Subgraph Algorithmus erkennt automatisch, dass die ID.3-Produktionskette
   8 von 12 Modulen mit dem Golf~EV teilt ($66{,}7\%$) -- ohne manuellen Aufwand.
 \item Maximale Kostenreduktion: $-24\%$ für ID.3 durch Wiederverwendung erkannter Subgraphen.
 \end{itemize}
@@ -605,7 +604,7 @@ der Kostenanteil der Einrichtung je Station ist.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.97\textwidth]{plot6_flexibilitaet_taktzeit.pdf}
-\caption{Links: Produktionsdurchsatz als Funktion der Modellanzahl -- der Subgraph-Algorithmus
+\caption{Links: Produktionsdurchsatz als Funktion der Modellanzahl -- der Subgraph Algorithmus
 begrenzt den Effizienzabfall auf $-2\%$ pro Modell statt $-7\%$ (konventionell).
 Rechts: Stationsweise Taktzeit-Reduktion durch Gamechanger-Implementierung.}
 \label{fig:flexibilitaet}
@@ -632,7 +631,7 @@ Rechts: Laufzeit-Heatmap $T(n_A, n_B)$ auf log$_{10}$-Skala.}
 \end{figure}
 
 Die Überlappungsmatrix in Abbildung~\ref{fig:overlap_heatmap} (links) quantifiziert
-die vom Subgraph-Algorithmus erkannten strukturellen Gemeinsamkeiten:
+die vom Subgraph Algorithmus erkannten strukturellen Gemeinsamkeiten:
 
 \begin{table}[H]
 \centering
@@ -704,7 +703,7 @@ Lemma~\ref{lem:injektivitaet} garantiert, dass keine Fehlerkennungen durch
 Signatur-Kollisionen auftreten.
 
 \textbf{Zu (ii):} Satz~\ref{satz:kern_eindeutigkeit} beweist Existenz und Eindeutigkeit.
-Die iterative Anwendung des Subgraph-Algorithmus auf alle Modellpaare $(G_i, G_j)$
+Die iterative Anwendung des Subgraph Algorithmus auf alle Modellpaare $(G_i, G_j)$
 berechnet alle paarweisen Überlappungen und damit den gemeinsamen Kern durch Schnittmengenbildung
 in $O(m^2 \cdot n^3)$ Zeit für $m$ Modelle.
 
@@ -718,7 +717,7 @@ Bijektivität der Signatur-Funktion (Lemma~\ref{lem:injektivitaet}).
 \section{Zusammenfassung}
 % ============================================================
 
-Diese Arbeit hat gezeigt, dass der Subgraph-Algorithmus nach Epp~\cite{epp2026} eine
+Diese Arbeit hat gezeigt, dass der Subgraph Algorithmus nach Epp~\cite{epp2026} eine
 mächtige formale Grundlage für die Optimierung moderner Elektrofahrzeugproduktion bildet.
 Die wesentlichen Ergebnisse sind:
 
@@ -727,7 +726,7 @@ Die wesentlichen Ergebnisse sind:
   kapselt alle Aspekte des Gamechanger-Programms (Megacasting, Batterie-Assembly, Software-Integration)
   in einem einheitlichen, formal behandelbaren Graphmodell.
 
-\item \textbf{Algorithmische Grundlage:} Die $O(n^3)$-Laufzeit des Subgraph-Algorithmus
+\item \textbf{Algorithmische Grundlage:} Die $O(n^3)$-Laufzeit des Subgraph Algorithmus
   skaliert für Wolfsburg-Werksgrößen ($n \leq 200$) auf unter 8~Sekunden bei
   Einzel-Thread-Ausführung, unter 1~Sekunde bei 16-Kern-Parallelisierung.
 
@@ -761,7 +760,7 @@ auf $O(n^2 \cdot \log W)$.
 \subsubsection{Echtzeit-Produktionsüberwachung}
 
 In der Gamechanger-Fabrik erzeugen Sensoren, MES-Systeme und IoT-Geräte einen
-kontinuierlichen Datenstrom. Ein \emph{inkrementeller Subgraph-Algorithmus} könnte
+kontinuierlichen Datenstrom. Ein \emph{inkrementeller Subgraph Algorithmus} könnte
 Produktionsgraph-Änderungen (Maschinenausfälle, Umrüstungen) in $O(n^2)$ statt $O(n^3)$
 erkennen, indem nur veränderte Spalten der Adjazenzmatrix neu signiert werden:
 \[
@@ -813,7 +812,7 @@ unter SETH brechen, falls QETH (Quantum SETH) schwächer als SETH ist.
 
 \subsubsection{Maschinelles Lernen zur Rotations-Vorauswahl}
 
-Statt alle $n$ Rotationen des Subgraph-Algorithmus zu prüfen, könnte ein neuronales Netzwerk
+Statt alle $n$ Rotationen des Subgraph Algorithmus zu prüfen, könnte ein neuronales Netzwerk
 (z.B.\ ein Graph Neural Network \cite{wu2020gnn}) aus historischen Produktionsdaten lernen,
 welche Rotationen $k$ mit hoher Wahrscheinlichkeit einen Match ergeben. Eine solche
 ``Rotation-Policy-Funktion'' $\pi: \Sigma_A \times \Sigma_B \to k^*$ würde die mittlere
@@ -824,11 +823,11 @@ Korrektheitsgrantie. Der Worst-Case bleibt $\Theta(n^3)$ -- die SETH-Schranke is
 
 \subsubsection{Autonome Fabrik-Rekonfiguration}
 
-Die ultimative Anwendung des Subgraph-Algorithmus in der Automobilindustrie ist die
+Die ultimative Anwendung des Subgraph Algorithmus in der Automobilindustrie ist die
 \emph{autonome Fabrik}: Ein KI-System, das kontinuierlich den aktuellen Produktionsgraph
 $G_{\mathrm{ist}}$ mit dem optimalen Soll-Graphen $G_{\mathrm{soll}}$ vergleicht,
 Abweichungen als fehlende Subgraphen identifiziert und Robotersysteme zur Reparatur dirigiert.
-Der Subgraph-Algorithmus bildet dabei den formalen Kern der Situationsbewertung:
+Der Subgraph Algorithmus bildet dabei den formalen Kern der Situationsbewertung:
 \[
 \Delta G = G_{\mathrm{soll}} \setminus G_{\mathrm{ist}}
 \]
@@ -852,14 +851,14 @@ Identische Graphmodelle sind anwendbar auf:
 \subsubsection{Verknüpfung mit Digitalen Zwillingen}
 
 Moderne Industrieanlagen betreiben \emph{Digitale Zwillinge} -- virtuelle Echtzeit-Repliken
-der physischen Fabrik \cite{grieves2014digital}. Der Subgraph-Algorithmus könnte als
+der physischen Fabrik \cite{grieves2014digital}. Der Subgraph Algorithmus könnte als
 formaler Verifikationskern dienen: Er prüft kontinuierlich, ob der digitale Produktionsgraph
 $G_{\mathrm{digital}}$ als Subgraph des realen Graphen $G_{\mathrm{real}}$ (aus Sensordaten
 rekonstruiert) enthalten ist -- oder ob Abweichungen aufgetreten sind, die Wartungsmaßnahmen
 erfordern.
 
 Für VW's Gamechanger-Werk in Wolfsburg könnte dies bedeuten: Ein vollständiger
-digitaler Zwilling des Werks, permanent überwacht durch den Subgraph-Algorithmus,
+digitaler Zwilling des Werks, permanent überwacht durch den Subgraph Algorithmus,
 der Abweichungen in Sekunden erkennt und Aktionen auslöst -- ohne menschliche Intervention.
 
 \subsubsection{Standardisierung und ISO-Zertifizierung}
@@ -885,8 +884,7 @@ Industrie-4.0-Interoperabilität eröffnet.
 \bibitem{epp2026}
 Epp, S. (2026).
 \textit{Der Subgraph Algorithmus}.
-Universität Bielefeld.
-Verfügbar unter: \url{https://gitlab.com/epp-group/subgraph}.
+Verfügbar unter: \url{https://github.com/hjstephan86/science}.
 
 \bibitem{automobilwoche2025}
 Automobilwoche (2025).

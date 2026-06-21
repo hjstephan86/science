@@ -56,7 +56,7 @@
 \title{Die Knotengleichung als universelles Naturgesetz\\[0.4em]
   \large Vom elektrischen Strom zum atmosphärischen Gleichgewicht der Wolkenmasse über der Erde}
 \author{Stephan Epp\\[0.3em]
-  \normalsize Universität Bielefeld}
+  
 \date{7. Mai 2026}
 
 \begin{document}
@@ -78,7 +78,7 @@ Stromgesetz in elektrischen Netzwerken (1845), anschließend das
 atmosphärisch-hydrologische Gleichgewicht der gesamten Wolkenmasse über der Erde,
 beschrieben durch die Kontinuitätsgleichung für Wasserdampf. Beide Phänomene
 werden in ein gemeinsames graphtheoretisches Rahmenwerk eingebettet, in dem der
-Subgraph-Algorithmus (Epp~2026) als Analyse\-instrument für Flussnetze eingesetzt
+Subgraph Algorithmus (Epp~2026) als Analyse\-instrument für Flussnetze eingesetzt
 wird. Fünf Matplotlib-Visualisierungen illustrieren die theoretischen Ergebnisse
 quantitativ.
 \end{abstract}
@@ -117,7 +117,7 @@ muss global exakt dem Gesamtniederschlag ($P \approx 577\,000\;\text{km}^3/\text
 entsprechen~\cite{trenberth2011}, weil sonst die Masse der Atmosphäre
 unbegrenzt wachsen oder schrumpfen würde -- was den Naturgesetzen widerspräche.
 
-Der Subgraph-Algorithmus (Epp~2026, $\Theta(n^3)$) \cite{epp2026} liefert
+Der Subgraph Algorithmus (Epp~2026, $\Theta(n^3)$) \cite{epp2026} liefert
 ein graphtheoretisches Modellierungs\-werkzeug, mit dem Flussnetze -- sowohl
 elektrische Schaltkreise als auch das globale Flussnetz des Wasser\-kreislaufs
 -- als gerichtete, gewichtete Graphen repräsentiert und analysiert werden können.
@@ -494,7 +494,7 @@ globalen Wasserkreislaufs zusammen, nach \cite{trenberth2011} und
 \end{figure}
 
 % ===========================================================================
-\section{Graphtheoretische Modellierung mit dem Subgraph-Algorithmus}
+\section{Graphtheoretische Modellierung mit dem Subgraph Algorithmus}
 % ===========================================================================
 
 \subsection{Flussnetze als gerichtete Graphen}
@@ -517,11 +517,11 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
   (vgl. Abbildung~\ref{fig:vergleich}).
 \end{beispiel}
 
-\subsection{Anwendung des Subgraph-Algorithmus}
+\subsection{Anwendung des Subgraph Algorithmus}
 
 \begin{satz}[Subgraph-Knotenprüfung]
   \label{satz:subgraph}
-  Der Subgraph-Algorithmus (Epp~2026, Laufzeit $\Theta(n^3)$) kann in
+  Der Subgraph Algorithmus (Epp~2026, Laufzeit $\Theta(n^3)$) kann in
   $O(n^3)$ Schritten feststellen, ob zwei Flussnetze $G$ und $G'$ eine
   Subgraph-Beziehung aufweisen, d.\,h., ob die Knotengleichungen eines
   Netzes als strukturell eingebettet in das andere angesehen werden können.
@@ -531,7 +531,7 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
   Jedes Flussnetz wird durch seine Adjazenzmatrix $A$ repräsentiert.
   Die Knotengleichung stellt eine Struktur\-bedingung an $A$ dar:
   $\sum_j A_{ij} = \sum_j A_{ji}$ für alle $i$ (für balancierte Knoten).
-  Der Subgraph-Algorithmus prüft via Signatur-Berechnung und zyklischer
+  Der Subgraph Algorithmus prüft via Signatur-Berechnung und zyklischer
   Rotation in $\Theta(n^3)$, ob die Signaturfolge von $A$ als Teilsequenz
   in der Signaturfolge von $A'$ enthalten ist -- womit strukturelle
   Einbettung erkannt wird. Die Korrektheit folgt aus der Injektivität
@@ -548,7 +548,7 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
     Niederschlags- und Transportflüssen
     ($E_\mathrm{global} = P_\mathrm{global}$).
     (c) Graphtheoretisches Modell des globalen Wasserkreislaufs
-    als gerichteter Graph, analysierbar mit dem Subgraph-Algorithmus
+    als gerichteter Graph, analysierbar mit dem Subgraph Algorithmus
     (Epp~2026). Eigene Darstellung.}
   \label{fig:vergleich}
 \end{figure}
@@ -609,7 +609,7 @@ an zwei fundamentalen physikalischen Phänomenen formal nachgewiesen wurde:
   \item \textbf{Strukturelle Isomorphie:} Beide Phänomene sind Instanzen
     desselben abstrakten Flussbilanz-Gesetzes auf gerichteten gewichteten
     Graphen (Lemma~\ref{lem:iso}).
-  \item \textbf{Graphtheoretische Analyse:} Der Subgraph-Algorithmus
+  \item \textbf{Graphtheoretische Analyse:} Der Subgraph Algorithmus
     (Epp~2026) bietet mit $\Theta(n^3)$ ein optimal effizientes Werkzeug
     zur strukturellen Analyse und zum Vergleich von Flussnetzen.
 \end{itemize}
@@ -637,7 +637,7 @@ erhalten bleibt \cite{adler2018}. Zukünftige Arbeiten sollten die
 \[
   \frac{\partial W}{\partial t} = E - P - \nabla_h \cdot \mathbf{Q}
 \]
-in die Graphmodellierung einbeziehen und mit dem Subgraph-Algorithmus
+in die Graphmodellierung einbeziehen und mit dem Subgraph Algorithmus
 zeitlich veränderliche Netzwerktopologien analysieren. Besonders interessant
 ist die Frage, ob zwei historische Klimazustände (z.\,B.\ Holozän-Optimum
 vs.\ Gegenwart) als Subgraph-Relationen erkannt werden können -- was
@@ -654,7 +654,7 @@ $P_\mathrm{global}$ seit 1980 mit einer Rate von
 $\approx 1\,800\;\text{km}^3/\text{a}^2$ zunehmen -- bei gleichzeitigem
 Erhalt der Knotengleichung $E = P$ (vgl.\ Abb.~\ref{fig:globalbilanz}\,(c)).
 Zukünftige Forschung sollte untersuchen, wie dieser Trend die
-Signaturmatrizen des Subgraph-Algorithmus verändert, und ob ein
+Signaturmatrizen des Subgraph Algorithmus verändert, und ob ein
 struktureller Phasenübergang -- d.\,h.\ ein abrupter Wechsel in der
 Subgraph-Topologie des Flussnetzes -- als Vorläufer von Klima-Kipppunkten
 detektiert werden kann \cite{lenton2008}.
@@ -666,7 +666,7 @@ strikt gilt, können auf regionaler Ebene erhebliche Ungleichgewichte
 auftreten (Korollar~\ref{kor:lokal}). Die Divergenz $\nabla_h \cdot \mathbf{Q}
 \neq 0$ an einem Ort ist direkt mit Dürren (positive Divergenz, $E > P$)
 und Überschwemmungen (negative Divergenz, $P > E$) verknüpft. Eine
-vielversprechende Forschungsrichtung ist der Einsatz des Subgraph-Algorithmus
+vielversprechende Forschungsrichtung ist der Einsatz des Subgraph Algorithmus
 zur Erkennung von anomalen Divergenzmustern in hochauflösenden
 Klimamodell-Ausgaben (z.\,B.\ CMIP6-Ensemble), die auf bevorstehende
 Extremereignisse hinweisen könnten. Die Graphstruktur des regionalen
@@ -677,7 +677,7 @@ historischen Extremereignis-Graphen verglichen werden.
 
 Mit dem Aufkommen leistungsfähiger Quantencomputer (z.\,B.\ IBM Quantum
 Eagle/Heron, Google Willow) bieten sich neue Möglichkeiten zur Simulation
-atmosphärischer Flussnetze. Der Subgraph-Algorithmus könnte auf einem
+atmosphärischer Flussnetze. Der Subgraph Algorithmus könnte auf einem
 Quanten\-computer mit der Grover-Suche beschleunigt werden: Anstatt $n$
 Rotationen klassisch in $O(n^3)$ zu prüfen, könnte eine Quantensuche
 in $O(\sqrt{n} \cdot n^2) = O(n^{2.5})$ eine Beschleunigung gegenüber
@@ -731,7 +731,7 @@ In der Input-Output-Analyse nach Leontief beschreibt die
 \emph{Knotengleichung der Volkswirtschaft}, dass für jede Branche gilt:
 Gesamtproduktion $=$ Intermediate Inputs $+$ Endnachfrage. Die Laplace-Matrix
 $L$ des Leontief-Modells ist formal identisch mit der Kirchhoff-Matrix eines
-elektrischen Netzwerks \cite{leontief1986}. Der Subgraph-Algorithmus könnte
+elektrischen Netzwerks \cite{leontief1986}. Der Subgraph Algorithmus könnte
 zur Erkennung von \emph{strukturellen Gemeinsamkeiten} zwischen verschiedenen
 nationalen Wirtschaftsnetzen eingesetzt werden -- mit Anwendungen in der
 komparativen Wirtschaftsanalyse und der Identifikation systemrelevanter
@@ -744,7 +744,7 @@ Gefäß\-netzwerken auf. Im menschlichen Blutkreislauf gilt an jeder
 Gefäß\-verzweigung: Die Summe der Blutflüsse in die Äste ist gleich dem
 Blutfluss im Stamm-Gefäß (Poiseuille-Gesetz). Eine Verletzung dieser
 Knotengleichung würde auf Gefäßstenosen oder arteriovenöse Fisteln
-hindeuten. Die Anwendung des Subgraph-Algorithmus auf angiographische
+hindeuten. Die Anwendung des Subgraph Algorithmus auf angiographische
 Bilddaten (z.\,B.\ aus der CTA-Bildgebung) könnte eine schnelle und
 sensitive Methode zur Detektion solcher Anomalien bereitstellen.
 Ähnlich lassen sich neuronale Aktivierungsmuster im Gehirn als Flussnetze
@@ -757,7 +757,7 @@ Moderne Energienetze mit einem hohen Anteil erneuerbarer Energien
 (Solar, Wind) unterliegen stochastischen Fluktuationen in der Einspeisung.
 Die Knotengleichung muss zu jedem Zeitpunkt an jedem Netzknoten erfüllt
 sein -- andernfalls kommt es zu Frequenzabweichungen (Stromnetze) oder
-Druckabfällen (Gasnetze). Der Subgraph-Algorithmus könnte in Echtzeit
+Druckabfällen (Gasnetze). Der Subgraph Algorithmus könnte in Echtzeit
 (On-line) die Netzwerktopologie eines gestörten Netzes mit der
 Normal-Topologie vergleichen und die betroffenen Teilnetze identifizieren.
 Dies wäre besonders relevant für die Netzplanung im Rahmen der
@@ -772,10 +772,10 @@ der Kettengruppen des Graphen entspricht genau der Inzidenzmatrix, und
 die Knotengleichung entspricht dem Kernelement $\ker(\partial_1^T)$.
 Zukünftige theoretische Arbeiten könnten untersuchen, wie topologische
 Invarianten (Betti-Zahlen, persistente Homologie) des Flussnetzes mit
-den Signatur-Arrays des Subgraph-Algorithmus zusammenhängen. Eine
+den Signatur-Arrays des Subgraph Algorithmus zusammenhängen. Eine
 Vermutung lautet: Der Rang der ersten Homologiegruppe $\beta_1 = |E| - |V| + 1$
 (Anzahl unabhängiger Maschen) ist invariant unter den zyklischen
-Rotationen des Subgraph-Algorithmus und könnte als topologische
+Rotationen des Subgraph Algorithmus und könnte als topologische
 Signatur für die Klassifikation von Flussnetzen dienen \cite{edelsbrunner2010}.
 
 \subsection{Verallgemeinerte Knotengleichung für Hypergraphen}
@@ -790,7 +790,7 @@ verallgemeinert:
   \sum_{e \in \mathcal{E}:\, v \in e} w(e,v) \cdot f(e) = 0 \quad \forall v \in V,
 \]
 wobei $w(e,v) \in \{-1, +1\}$ die Orientierung der Hyperkante $e$ an
-Knoten $v$ angibt. Eine Erweiterung des Subgraph-Algorithmus auf Hypergraph-
+Knoten $v$ angibt. Eine Erweiterung des Subgraph Algorithmus auf Hypergraph-
 Strukturen wäre ein bedeutsamer theoretischer Beitrag und könnte
 $O(n^3)$-Optimalität unter geeigneten Annahmen behalten.
 
@@ -802,7 +802,7 @@ Die Knotengleichung muss in jedem Zeitschritt ($\Delta t \approx 30\;\text{min}$
 an jedem der $\approx 260\,000$ Gitterpunkte numerisch erfüllt werden.
 Aktuell entstehen durch Diskretisierungsfehler (Massenimbalancen)
 systematische Abweichungen von bis zu $0.1\;\text{mm}/\text{a}$ in der
-globalen Flussbilanz \cite{hersbach2020}. Der Subgraph-Algorithmus könnte
+globalen Flussbilanz \cite{hersbach2020}. Der Subgraph Algorithmus könnte
 als \emph{Diagnose-Tool} eingesetzt werden, um solche Imbalancen als
 Graph-Anomalien zu identifizieren und gezielt zu korrigieren. Dies würde
 die Qualität von Klimaprojektionen für das 21.\ Jahrhundert signifikant
@@ -851,8 +851,8 @@ DOI: 10.3390/atmos9040138
 Epp, S. (2026).
 \textit{Der Subgraph Algorithmus: Effizienter Graphvergleich mittels
 Signatur-Arrays und zyklischer Rotation}.
-Technischer Bericht, Universität Bielefeld.
-\url{https://gitlab.com/epp-group/subgraph}
+Technischer Bericht.
+\url{https://github.com/hjstephan86/science}
 
 \bibitem{lenton2008}
 Lenton, T.~M., Held, H., Kriegler, E., \textit{et al.} (2008).

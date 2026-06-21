@@ -127,7 +127,7 @@ Diese Arbeit schließt diese Lücke durch:
 \subsection{Einordnung in das Forschungsportfolio}
 
 Diese Arbeit steht in direkter Beziehung zu früheren Arbeiten des Autors:
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} liefert das algorithmische Werkzeug
+Der Subgraph Algorithmus~\cite{epp2026subgraph} liefert das algorithmische Werkzeug
 zur Analyse harmonischer Graphhierarchien. Die Signaltheorie-Arbeit~\cite{epp2026signal}
 begründet die Fourierbasis. Die Exponentialfunktions-Analyse~\cite{epp2026expl} erklärt
 die fundamentale Rolle von $\varphi$ und $e$. Das Analog-Paradigma~\cite{epp2026analog}
@@ -438,7 +438,7 @@ G_{\mathrm{Cdur}} \subseteq G_C$ vollständig bewiesen.
 \end{proof}
 
 \begin{bemerkung}
-Satz~\ref{satz:subgraph} zeigt, dass der Subgraph-Algorithmus~\cite{epp2026subgraph}
+Satz~\ref{satz:subgraph} zeigt, dass der Subgraph Algorithmus~\cite{epp2026subgraph}
 direkt auf musikalische Strukturerkennung anwendbar ist: Die Frage, ob eine
 Akkordfolge in einer Tonleiter enthalten ist, reduziert sich auf ein
 Subgraph-Isomorphieproblem mit Laufzeit $O(n^3)$.
@@ -547,7 +547,7 @@ Die diatonische Durtonleiter (7 Töne) enthält Fibonacci-Zahlen auf mehreren Eb
 
 \begin{proof}
 \textbf{(i)} Zählung: In C-Dur sind die Ganztöne C--D, D--E, F--G, G--A, A--H
-($= 5 = F_5$) und die Halbtöne E--F, H--C ($= 2 = F_3$). Summe: $5+2=7=F_5+F_3=F_6-... $
+($= 5 = F_5$) und die Halbtöne E--F, H--C ($= 2 = F_3$). Summe: $5+2=7=F_5+F_3=F_6-.. $
 Korrektur: $5$ Ganztonschritte und $2$ Halbtonschritte, ergibt $12$ Halbtöne insgesamt
 (Oktavumfang). Die Summe $5+2=7$ (Töne) und $5\cdot 2 + 2\cdot 1 = 12$ Halbtöne bestätigt
 die Fibonacci-Struktur $F_5 = 5$, $F_4 = 3$, $F_6 = 8 \approx 7$. $\checkmark$
@@ -556,7 +556,7 @@ die Fibonacci-Struktur $F_5 = 5$, $F_4 = 3$, $F_6 = 8 \approx 7$. $\checkmark$
 die $F_5=5$ stärksten Konsonanzgrade der Tonleiter (keine leittonnahen Töne).
 $\checkmark$
 
-\textbf{(iii)} Numerisch: $7/12 = 0{,}5833...$; $1/\varphi = (\sqrt{5}-1)/2 = 0{,}6180...$;
+\textbf{(iii)} Numerisch: $7/12 = 0{,}5833..$; $1/\varphi = (\sqrt{5}-1)/2 = 0{,}6180..$;
 relative Abweichung $= |0{,}6180 - 0{,}5833|/0{,}6180 = 5{,}6\%$. Da die
 Fibonacci-Folge gegen $\varphi$ konvergiert und $7/12 = F_6/(F_7+F_6) \approx F_n/F_{n+1}$,
 ist diese Approximation strukturell und nicht zufällig. $\checkmark$
@@ -736,12 +736,12 @@ ausführlich beschrieben.
 
 \subsection{Polynomielle Analyse musikalischer Verwandtschaft}
 
-Der Subgraph-Algorithmus~\cite{epp2026subgraph} mit Laufzeit $O(n^3)$ ist direkt
+Der Subgraph Algorithmus~\cite{epp2026subgraph} mit Laufzeit $O(n^3)$ ist direkt
 auf harmonische Graphen anwendbar. \emph{Harmonische Verwandtschaft} lässt sich als
 Subgraph-Isomorphieproblem formulieren: Gegeben zwei Akkordfolgen $P_1$ und $P_2$,
 ist $P_1$ eine harmonische Transposition von $P_2$? In 12-töniger Musik entspricht
 eine Transposition einer zyklischen Rotation im chromatischen Graphen — exakt das
-Kernprinzip des Subgraph-Algorithmus.
+Kernprinzip des Subgraph Algorithmus.
 
 Konkret: Kodiere jeden Akkord als Knoten mit Signatur $\sigma_j = \sum_{i} A_{ij}
 \cdot 2^i + j \cdot 2^n$ (wie in~\cite{epp2026subgraph} definiert) und wende die
@@ -774,7 +774,7 @@ Die in~\cite{epp2026hetnet} entwickelten POMDP-Methoden für Netzwerkmanagement
 lassen sich auf harmonische Kompositionsaufgaben übertragen. Ein
 Reinforcement-Learning-Agent, der Akkordfolgen harmonisiert, operiert auf dem
 Zustandsraum $\mathcal{S} = V_C^k$ (alle $k$-Ton-Akkorde) mit Aktionsraum
-$\mathcal{A}$ = {Tonika, Subdominante, Dominante, ...}. Die Belohnungsfunktion
+$\mathcal{A}$ = {Tonika, Subdominante, Dominante, ..}. Die Belohnungsfunktion
 integriert Konsonanzmaß $\mathcal{K}(\Delta f)$ (Satz~\ref{satz:plomp}),
 Stimmführungsregeln (Minimierung der Stimmabstands-Summe) und stilistische
 Präferenzen. Der REINFORCE-Konvergenzbeweis aus~\cite{epp2026hetnet} gilt analog.
@@ -811,7 +811,7 @@ Raumimpulsantwort. Beziehung: $T_{60} = -60\ln(10) / \Re[\hat{h}(0)]$ im Laplace
 \subsection{Kryptographische Anwendungen der harmonischen Signatur}
 
 Die Signaturfunktion $\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n$ des
-Subgraph-Algorithmus~\cite{epp2026subgraph} ist struktur-isomorph zur
+Subgraph Algorithmus~\cite{epp2026subgraph} ist struktur-isomorph zur
 Fourier-Koeffizientenberechnung. Diese Analogie motiviert eine neue
 Klasse von \emph{akustischen Hashfunktionen}: Ordne jedem Musikstück
 eine kanonische Signatur $\vec{\sigma}_{\mathrm{music}} \in \mathbb{Z}^k$ zu, die
@@ -955,18 +955,15 @@ Birkhäuser.
 
 \bibitem{epp2026subgraph}
 Epp, S. (2026).
-Der Subgraph Algorithmus — Lösung des Subgraph-Isomorphismus in $O(n^3)$.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/subgraph}
+Der Subgraph Algorithmus — Lösung des Subgraph-Isomorphismus in $O(n^3)$. \url{https://github.com/hjstephan86/subgraph}
 
 \bibitem{epp2026signal}
 Epp, S. (2026).
-Signaltheorie — Das Wunder der e-Funktion: Kontinuierliche und diskrete Signale.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/signalth}
+Signaltheorie — Das Wunder der e-Funktion: Kontinuierliche und diskrete Signale. \url{https://github.com/hjstephan86/science/tree/main/science/signalth}
 
 \bibitem{epp2026expl}
 Epp, S. (2026).
-Grenzen mathematischer Beschreibbarkeit — Taxonomie in 5 Klassen.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/expl}
+Grenzen mathematischer Beschreibbarkeit — Taxonomie in 5 Klassen. \url{https://github.com/hjstephan86/science/tree/main/science/expl}
 
 \bibitem{epp2026analog}
 Epp, S. (2026).
@@ -980,8 +977,7 @@ Google Drive (epp-group).
 
 \bibitem{epp2026pqc}
 Epp, S. (2026).
-Post-Quanten-Kryptographie: CRYSTALS-Kyber, Lattice-Kryptographie und die Signatur-Chiffre.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/pqc}
+Post-Quanten-Kryptographie: CRYSTALS-Kyber, Lattice-Kryptographie und die Signatur-Chiffre. \url{https://github.com/hjstephan86/science/tree/main/science/pqc}
 
 \bibitem{epp2026lattice}
 Epp, S. (2026).
@@ -991,7 +987,6 @@ Google Drive (epp-group).
 \bibitem{epp2026quantum}
 Epp, S. (2026).
 Quantenzustände, Verschränkung und Kohärenz.
-Universität Bielefeld.
 
 \bibitem{epp2026hetnet}
 Epp, S. (2026).
@@ -1000,23 +995,19 @@ Google Drive (epp-group).
 
 \bibitem{epp2026pymca8}
 Epp, S. (2026).
-PYMCA-8: 8-Kern-Prozessor mit Python-Memory-Model-Bewusstsein.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/pymca8}
+PYMCA-8: 8-Kern-Prozessor mit Python-Memory-Model-Bewusstsein. \url{https://github.com/hjstephan86/science/tree/main/science/pymca8}
 
 \bibitem{epp2026brn}
 Epp, S. (2026).
-Epistemische Wolke und die Rechtsdrehung kortikaler Informationsverarbeitung.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/brn}
+Epistemische Wolke und die Rechtsdrehung kortikaler Informationsverarbeitung. \url{https://github.com/hjstephan86/science/tree/main/science/brn}
 
 \bibitem{epp2026ccl}
 Epp, S. (2026).
-Polynomielle Reduktionen von Compiler-Problemen auf Subgraph-Isomorphismus.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/ccl}
+Polynomielle Reduktionen von Compiler-Problemen auf Subgraph-Isomorphismus. \url{https://github.com/hjstephan86/science/tree/main/science/ccl}
 
 \bibitem{epp2026whale}
 Epp, S. (2026).
-Buckelwale und ihre Fähigkeit, menschliche Absichten zu erkennen.
-Universität Bielefeld. \url{https://gitlab.com/epp-group/whale}
+Buckelwale und ihre Fähigkeit, menschliche Absichten zu erkennen. \url{https://github.com/hjstephan86/science/tree/main/science/whale}
 
 \end{thebibliography}
 

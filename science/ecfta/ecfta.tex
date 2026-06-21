@@ -736,7 +736,7 @@ Die Simulation umfasst 80 zuf\"{a}llig generierte CFTA-Instanzen mit
 $n = m = 10$ Agenten und Aufgaben, $r = 5$ Ressourcendimensionen und $k = 3$.
 Jeder Agent erh\"{a}lt jede Ressource zuf\"{a}llig aus $\{0, 1, 2, 3\}$,
 jede Aufgabe aus $\{0, \ldots, 6\}$ -- identisch zu den Simulationsparametern
-der Bachelorarbeit \cite{epp2010}. F\"{u}r jede Instanz werden verglichen:
+der Bachelorarbeit \cite{epp2026}. F\"{u}r jede Instanz werden verglichen:
 \begin{itemize}
     \item Greedy-Algorithmus (Shehory-Kraus, $k = 3$, disjunkte Gruppen)
     \item Subset-DP (exakt, $k = 3$, alle m\"{o}glichen Koalitionen bis Gr\"{o}{\ss}e 3)
@@ -895,9 +895,9 @@ Boolean-Hypercube unabh\"{a}ngig berechnet werden k\"{o}nnen:
           $\mathcal{O}(2^{n-1} \cdot m)$ pro Agenten\"{a}nderung sind m\"{o}glich.
 \end{itemize}
 
-\subsection{Verbindung zur Graphentheorie und zum Subgraph-Algorithmus}
+\subsection{Verbindung zur Graphentheorie und zum Subgraph Algorithmus}
 
-Der Subgraph-Algorithmus \cite{epp2026subgraph} l\"{o}st das Subgraph-Isomorphieproblem
+Der Subgraph Algorithmus \cite{epp2026subgraph} l\"{o}st das Subgraph-Isomorphieproblem
 durch DP-Tabellierung auf Graphstrukturen. Eine Verbindung zum CFTA-Problem ergibt sich,
 wenn Koalitionen als Teilgraphen des Kommunikationsgraphen $G$ modelliert werden:
 
@@ -906,7 +906,7 @@ wenn Koalitionen als Teilgraphen des Kommunikationsgraphen $G$ modelliert werden
           Teilgraphen $G[C_\nu] = (C_\nu, E[C_\nu])$.
     \item Der Gruppen-Wert $V(C_\nu, t_j)$ kann als Kantengewichtsfunktion
           auf $G[C_\nu]$ interpretiert werden.
-    \item Der Subgraph-Algorithmus findet in $\mathcal{O}(n^3)$ optimale
+    \item Der Subgraph Algorithmus findet in $\mathcal{O}(n^3)$ optimale
           Teilgraphen -- eine Alternative zum Subset-DP f\"{u}r graphbasierte
           CFTA-Instanzen.
 \end{itemize}
@@ -938,7 +938,7 @@ wenn Koalitionen als Teilgraphen des Kommunikationsgraphen $G$ modelliert werden
 \subsection{Praktische Implementierungsempfehlungen}
 
 Auf Basis der formalen Analyse und der Simulationsergebnisse lassen sich
-konkrete Empfehlungen f\"{u}r die Implementierung in der Bachelorarbeit \cite{epp2010}
+konkrete Empfehlungen f\"{u}r die Implementierung in der Bachelorarbeit \cite{epp2026}
 ableiten:
 
 \begin{itemize}
@@ -1117,16 +1117,16 @@ I.\ Dinur and D.\ Steurer.
 \newblock In \textit{Proc.\ 46th Annual ACM Symposium on Theory of Computing},
          pages 624--633, 2014.
 
-\bibitem{epp2010}
+\bibitem{epp2026}
 S.\ Epp.
 \newblock Gruppenbildung f\"{u}r die Aufgabenverteilung in Multiagentensystemen.
-\newblock Bachelorarbeit, Universit\"{a}t Paderborn, 2010.
+\newblock Bachelorarbeit, Universit\"{a}t Paderborn, 2011.
 
 \bibitem{epp2026subgraph}
 S.\ Epp.
-\newblock Der Subgraph-Algorithmus.
+\newblock Der Subgraph Algorithmus.
 \newblock Universit\"{a}t Bielefeld, 2026.
-\newblock \url{https://gitlab.com/epp-group/subgraph}.
+\newblock \url{https://github.com/hjstephan86/science}.
 
 \bibitem{epp2026struktur}
 S.\ Epp.

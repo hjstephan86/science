@@ -135,7 +135,7 @@ positiv ist, und nennen diesen Mechanismus \textbf{positives Risikoexposure}.
 Eine zweite zentrale Frage dieser Arbeit lautet: \emph{Wie kann ein Wirtschaftsgraph, dessen
 Kopplungsstruktur durch endogene Dynamiken oder exogene Schocks aus einem resilienten
 Gleichgewicht herausgetrieben wurde, algorithmisch in dieses zurückgeführt werden?} Wir zeigen,
-dass der \textbf{Subgraph-Algorithmus} \citep{epp2026subgraph} als Stabilisierungsoperator
+dass der \textbf{Subgraph Algorithmus} \citep{epp2026subgraph} als Stabilisierungsoperator
 $\mathcal{S}$ auf dem Graphen eingesetzt werden kann, der global asymptotisch gegen den
 Pareto-optimalen Referenzgraphen $G^*$ konvergiert --- nachgewiesen durch eine strenge
 Lyapunov-Analyse.
@@ -676,7 +676,7 @@ Zielkonflikt zwischen Wachstum $g(c)$ und Resilienz $R(c)$.
 \end{figure}
 
 % ============================================================
-\section{Der Subgraph-Algorithmus als Stabilisierungsoperator}
+\section{Der Subgraph Algorithmus als Stabilisierungsoperator}
 \label{sec:stabop}
 % ============================================================
 
@@ -689,12 +689,12 @@ ein System, dessen Kopplungsmatrix $W(t)$ durch endogene Dynamiken und exogene S
 aus einem resilienten Gleichgewichtszustand herausgetrieben wird, \emph{algorithmisch}
 in diesen Zustand zurückgeführt werden?
 
-Wir zeigen in diesem Abschnitt, dass der \textbf{Subgraph-Algorithmus} \citep{epp2026subgraph}
+Wir zeigen in diesem Abschnitt, dass der \textbf{Subgraph Algorithmus} \citep{epp2026subgraph}
 als genau ein solcher \emph{Stabilisierungsoperator} $\mathcal{S}$ auf dem Wirtschaftsgraphen
 eingesetzt werden kann. Die zentrale Beobachtung ist:
 
 \begin{itemize}
-    \item Der Subgraph-Algorithmus vergleicht zwei Graphen $G$ und $G'$ und entscheidet,
+    \item Der Subgraph Algorithmus vergleicht zwei Graphen $G$ und $G'$ und entscheidet,
           welcher den anderen enthält --- er \emph{selektiert die informationsreichere Struktur}.
     \item Interpretiert man einen Referenzgraphen $G^* = (\mathcal{Z}, \mathcal{E}^*, w^*)$
           als \emph{Stabilitätsziel}, so kann der Algorithmus iterativ überschüssige Kanten
@@ -733,7 +733,7 @@ eingesetzt werden kann. Die zentrale Beobachtung ist:
 \end{definition}
 
 \begin{bemerkung}
-    Der Operator $\mathcal{S}$ wendet intern den Subgraph-Algorithmus an: Für jede
+    Der Operator $\mathcal{S}$ wendet intern den Subgraph Algorithmus an: Für jede
     Kante $(i,j)$ wird geprüft, ob der durch $(i,j)$ induzierte Teilgraph
     als Subgraph in $G^*$ enthalten ist (Laufzeit $O(n^3)$ pro Iteration).
     Nicht-enthaltene Kanten werden schrittweise mit Rate $\delta$ gedämpft.
@@ -984,7 +984,7 @@ unter $\mathcal{S}$ visualisiert werden kann.
     den 2-Knoten-Teilgraphen ist $n=2$, also $O(1)$. Die Gesamtlaufzeit für
     alle $N^2$ Kanten ist $O(N^2)$. Hinzu kommen die Signaturberechnungen
     für den vollständigen Referenzabgleich in $O(N^3)$ (gemäß Laufzeitsatz des
-    Subgraph-Algorithmus). Insgesamt ergibt sich $O(N^2) + O(N^3) = O(N^3)$. \qed
+    Subgraph Algorithmus). Insgesamt ergibt sich $O(N^2) + O(N^3) = O(N^3)$. \qed
 \end{proof}
 
 \begin{korollar}
@@ -1726,7 +1726,7 @@ ist statisch.
 
 Der optimale Kopplungsgrad $c^*$ --- und in seiner dynamischen Verallgemeinerung $c^*(t)$
 --- ist kein ideologisches Konzept, sondern eine berechenbare, zeitveränderliche Steuergröße,
-die empirisch geschätzt, durch den Subgraph-Algorithmus verfolgt und algorithmisch
+die empirisch geschätzt, durch den Subgraph Algorithmus verfolgt und algorithmisch
 durchgesetzt werden kann. Die Zukunft liegt nicht im Rückzug von internationaler
 Zusammenarbeit, sondern in ihrer \emph{intelligenten, adaptiven Modularisierung}:
 Kopplung dort, wo Synergien entstehen; Entkopplung dort, wo systemische Risiken akkumulieren;
@@ -1748,8 +1748,8 @@ vollständige spektraltheoretische Analyse stochastischer Monodromiematrizen.
 Epp, S. (2026).
 \newblock Der Subgraph Algorithmus: Optimaler Graphvergleich mittels zyklischer
           Rotation und Signatur-Arrays.
-\newblock \emph{Technischer Bericht}, Universität Bielefeld.
-\newblock \url{https://gitlab.com/epp-group/}
+\newblock \emph{Technischer Bericht}.
+\newblock \url{https://github.com/hjstephan86/science/tree/main/science/}
 
 \bibitem[Arnold(1998)]{arnold1998random}
 Arnold, L. (1998).
