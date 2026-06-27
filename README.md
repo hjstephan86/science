@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **232 wissenschaftliche Arbeiten** von Stephan Epp
+> **233 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -388,6 +388,7 @@
 
 | Repository | Beschreibung |
 |---|---|
+| macht | Jhwh, Jesus und Michael: schwarze und weiße Macht, Ende des Fluchens — formal bewiesen |
 | schoepfung | Wasser, festes Land und Gottes Geist — theologische Analyse des Schöpfungsberichts (Genesis 1–3) |
 | ntx | Die Sinnlosigkeit des rationalen Selbstbildes |
 | tischstuhl | Tisch und Stuhl — wissenschaftliche Analyse der folgenreichsten Erfindungen der menschlichen Zivilisation |
