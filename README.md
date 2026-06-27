@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **234 wissenschaftliche Arbeiten** von Stephan Epp
+> **235 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -213,6 +213,7 @@
 | porschhvb *(Drive)* | Hochvoltbatterien (Porsche Taycan) — optimales SOC-Fenster, Arrhenius-Degradation, Pareto-Optimalität; 6 Sätze |
 | gamechanger *(Drive)* | Subgraph Algorithmus auf VW Gamechanger — Megacasting als dominanter Subgraph; −29 % Kosten, −35 % Taktzeit |
 | ldrill *(Drive)* | Laser-basierte Orthogonalitätskontrolle für Bohrmaschinen — formale Modellierung, Messtechnik und Systemarchitektur eines optischen Winkelsensors |
+| cnc | CNC-Werkzeugbandbreite: Taylor, Kienzle, Verschleiß, 5-Achsen, Beschichtung und KI-Ausblick |
 
 ---
 
