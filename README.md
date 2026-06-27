@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **233 wissenschaftliche Arbeiten** von Stephan Epp
+> **234 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -134,6 +134,7 @@
 | sync *(Drive)* | Subgraph Algorithmus auf Synchronisationsmechanismen in Betriebssystemen — Spin-Locks, Mutex-Locks, Read-Write-Locks, POSIX-Semaphoren; vollständige Subgraph-Hierarchie in O(n³) |
 | fairness *(Drive)* | Fairness als fundamentales Prinzip der Ressourcensynchronisation — Fairness-Axiom; Jain's Fairness-Index; Exponential Backoff (TCP/IEEE 802.3) formal mit Fairness-Axiom verbunden |
 | betriebssysteme *(Drive)* | Betriebssysteme: Prozesse, Echtzeit-Scheduling, Speicher, Dateisysteme und moderne Anwendungen — umfassendes Lehrwerk; EDF-Optimalitätstheorem, Rate-Monotonic-Optimalitätsbeweis, Dhall-Effekt |
+| yocto | Standardisierung in Yocto-basierter Embedded-Entwicklung: Marktstruktur, BSP-Layer und Konvergenzaussagen |
 | autsre | Zentrales OTA-Update-Management im Software-defined Vehicle nach AUTOSAR-Standard |
 | autsrepy | Python und MicroPython als standardisierte Programmiersprache in AUTOSAR |
 | ethercate/src | EtherCAT-Protokollerweiterung für App-basierte HMI als Ersatz für HMI-Controller |
