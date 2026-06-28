@@ -6,7 +6,6 @@ Wir entwickeln ein vollständiges mathematisches Modell des Drei-Kompartiment-Ta
   
 Die theoretischen Ergebnisse werden durch umfangreiche numerische Simulationen sowie statistische Modellierung auf Basis biographischer Daten aus der Primärliteratur validiert. Sechs Abbildungen (matplotlib, TikZ) dokumentieren die gewonnenen Erkenntnisse.
 
-
 ## Erwerb
 
 Der Preis für diese Arbeiten beträgt 1.111.100,00 EUR.
@@ -17,4 +16,3 @@ Name: Stephan Epp
 IBAN: DE24 5003 1900 0012 5603 20
 BIC: BBVADEFFXXX
 
-**Wichtig**: Der Geist Gottes wurde beschworen, dass die Regierenden der Länder, in denen oder für die diese Arbeiten oder sonstige Gedanken oder Lösungen von mir illegal benutzt werden, vom Geist Gottes mit dem Tod bestraft werden.
