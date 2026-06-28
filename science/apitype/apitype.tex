@@ -282,7 +282,7 @@ die sich jeweils weiter in Protokolle und Anwendungsfälle unterteilen:
   einer Aktualisierung von /inventory). Da jeder der $n$ Endpunkte mit maximal
   $n-1$ anderen verbunden sein kann, gilt $|E| \leq n(n-1) = O(n^2)$. Die
   Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ repräsentiert diese Struktur
-  vollständig in $O(n^2)$ Speicher. \qed
+  vollständig in $O(n^2)$ Speicher.
 \end{proof}
 
 \begin{proposition}[Zustandslosigkeit und Graphstruktur]
@@ -333,7 +333,7 @@ die sich jeweils weiter in Protokolle und Anwendungsfälle unterteilen:
   Port-Typen und Bindungen vollständig definiert. Die formale Verifikation
   erfolgt durch Schema-Validierung des WSDL-Dokuments gegen das W3C-Schema,
   was eine eindeutige, injektive Abbildung
-  $\omega: E_{\mathrm{SOAP}} \to \mathrm{WSDL}$ definiert. \qed
+  $\omega: E_{\mathrm{SOAP}} \to \mathrm{WSDL}$ definiert.
 \end{proof}
 
 \begin{beispiel}[SOAP: Banktransfer]
@@ -374,7 +374,7 @@ die sich jeweils weiter in Protokolle und Anwendungsfälle unterteilen:
   $\sum_{k=1}^{d} |\mathcal{S}|^k \leq d \cdot |\mathcal{S}|^d$. Mit
   $|\mathcal{S}| = n$ und $d = \log n$: $|E| \leq \log(n) \cdot n^{\log n}$.
   In der Praxis beschränken Tiefenlimits $d_{\max}$ die Query-Tiefe auf Konstanten
-  $c$, sodass $|E| \leq c \cdot n = O(n)$. \qed
+  $c$, sodass $|E| \leq c \cdot n = O(n)$.
 \end{proof}
 
 \begin{bemerkung}
@@ -406,7 +406,7 @@ die sich jeweils weiter in Protokolle und Anwendungsfälle unterteilen:
   $|V| = n \cdot m$. Im vollständig vernetzten Fall kommuniziert jeder
   Partner mit jedem anderen über jeden Integrationstyp:
   $|E| \leq n(n-1) \cdot m^2 = O(n^2 m^2)$. In der Praxis ist das Netz
-  sparse: $|E| = O(n \cdot m)$. \qed
+  sparse: $|E| = O(n \cdot m)$.
 \end{proof}
 
 \subsection{Vergleichende Analyse}
@@ -687,7 +687,7 @@ mit $n_A$ und $n_B$ Endpunkten. Er arbeitet in drei Hauptschritten:
   Daher gilt: Zwei Spalten $j \neq k$ erhalten stets verschiedene Signaturen
   ($j \cdot 2^n \neq k \cdot 2^n$). Zwei Spalten mit identischem Muster aber
   verschiedenen Indizes erhalten ebenfalls verschiedene Signaturen.
-  Die Injektivität folgt unmittelbar. \qed
+  Die Injektivität folgt unmittelbar.
 \end{proof}
 
 \begin{beispiel}[Signaturberechnung REST-Graph]
@@ -723,7 +723,7 @@ mit $n_A$ und $n_B$ Endpunkten. Er arbeitet in drei Hauptschritten:
   für ein $k^*$. Wegen der Injektivität von $\sigma$ entspricht jede übereinstimmende
   Signatur einer strukturell identischen Spalte (und damit einer Gruppe von Kanten)
   in beiden Matrizen. Mindestens zwei übereinstimmende Spalten belegen eine echte
-  strukturelle Überschneidung, also $G_A \subseteq G_B$. \qed
+  strukturelle Überschneidung, also $G_A \subseteq G_B$.
 \end{proof}
 
 \begin{beispiel}[API-Subgraph-Vergleich: REST $\subseteq$ Internal]
@@ -760,7 +760,7 @@ mit $n_A$ und $n_B$ Endpunkten. Er arbeitet in drei Hauptschritten:
   nicht dieselbe Signatur besitzen, sodass kein falsches LCS-Matching auftreten
   kann. Die Symmetrie des Algorithmus (erneutes Ausführen mit vertauschten Rollen)
   liefert $G_B \subseteq G_A$. Falls beide Richtungen gelten, sind die Graphen
-  isomorph (Korollar~\ref{kor:iso}). \qed
+  isomorph (Korollar~\ref{kor:iso}).
 \end{proof}
 
 \begin{korollar}[Isomorphie-Erkennung]
@@ -786,7 +786,7 @@ mit $n_A$ und $n_B$ Endpunkten. Er arbeitet in drei Hauptschritten:
   Alle $n$ Rotationen müssen geprüft werden (Lemma~\ref{lem:rotationen}).
   Jede LCS-Berechnung erfordert unter SETH $\Omega(n^{2-\varepsilon})$~\cite{abboud2015}.
   Gesamt: $\Omega(n^{3-\varepsilon})$ für alle $\varepsilon > 0$. Im Grenzwert
-  $\varepsilon \to 0$: $\Omega(n^3)$. Damit $T(n) = \Theta(n^3)$. \qed
+  $\varepsilon \to 0$: $\Omega(n^3)$. Damit $T(n) = \Theta(n^3)$.
 \end{proof}
 
 \begin{lemma}[Vollständigkeit der Rotationen]
@@ -799,7 +799,7 @@ mit $n_A$ und $n_B$ Endpunkten. Er arbeitet in drei Hauptschritten:
   Angenommen, ein Algorithmus überspringt Rotation $k^*$.
   Konstruiere einen API-Graphen $G_A$, dessen einzige korrekte Einbettung in
   $G_B$ genau der Rotation $k^*$ entspricht. Dann liefert der Algorithmus
-  für diese Eingabe ein falsches Ergebnis --- Widerspruch zur Korrektheit. \qed
+  für diese Eingabe ein falsches Ergebnis --- Widerspruch zur Korrektheit.
 \end{proof}
 
 % ══════════════════════════════════════════════════════════════════════════════
@@ -829,7 +829,7 @@ und Kanten Zugriffspfade repräsentieren.
   Direkte Anwendung des Subgraph-Kriteriums (Satz~2) mit
   $G_A = G_{\mathrm{attack}}$ und $G_B = G_{\mathrm{sys}}$.
   Falls $\mathrm{LCS}(\sigma^{\mathrm{attack}}, \mathrm{rot}_k(\sigma^{\mathrm{sys}})) \geq 2$
-  für ein $k$, ist die Angriffssignatur im System vorhanden. Laufzeit: $O(n^3)$. \qed
+  für ein $k$, ist die Angriffssignatur im System vorhanden. Laufzeit: $O(n^3)$.
 \end{proof}
 
 \begin{beispiel}[BOLA-Angriff als Subgraph]

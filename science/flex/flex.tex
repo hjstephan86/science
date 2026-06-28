@@ -413,7 +413,8 @@ Wir reduzieren die Kompatibilitätsprüfung auf das Subgraph-Problem und wenden 
 
 \textbf{Schritt 3: Anwendung des Subgraph Algorithmus.} Nach Epp (2026) entscheidet der Subgraph Algorithmus durch Berechnung von Signaturvektoren und LCS-Vergleich über $n_S$ zyklische Rotationen, ob $G_I \subseteq G_S$. Die Gesamtkomplexität beträgt $O(n_S^3)$ (Signaturberechnung: $O(n_S^2)$; LCS pro Rotation: $O(n_S^2)$; $n_S$ Rotationen: Gesamt $O(n_S^3)$).
 
-\textbf{Korrektheit:} Die Injektivität der Signaturfunktion (Lemma~1 in Epp 2026) garantiert, dass gleiche Spaltenvektoren identisch signiert werden. Damit liefert der LCS-Vergleich genau dann eine Übereinstimmung, wenn $G_I$ als Subgraph in $G_S$ enthalten ist. $\qed$
+\textbf{Korrektheit:} Die Injektivität der Signaturfunktion (Lemma~1 in Epp 2026) garantiert, dass gleiche Spaltenvektoren identisch signiert werden. Damit liefert der LCS-Vergleich genau dann eine Übereinstimmung, wenn $G_I$ als Subgraph in $G_S$ enthalten ist. $
+$
 \end{proof}
 
 \begin{lemma}[Kettenvalidierung in $O(m \cdot n^3)$]
@@ -422,7 +423,8 @@ Sei $\mathcal{K} = (S_1, \ldots, S_m)$ eine Dienstkette. Die Validierung aller $
 \end{lemma}
 
 \begin{proof}
-Jede der $m-1$ Kompatibilitätsprüfungen entspricht einer Subgraph-Frage für die Ausgabe-Schnittstelle von $S_i$ in der Eingabe-Schnittstelle von $S_{i+1}$. Nach Lemma~\ref{lem:kompatibilitaet} kostet jede Prüfung $O(n^3)$. Gesamt: $(m-1) \cdot O(n^3) = O(m \cdot n^3)$. $\qed$
+Jede der $m-1$ Kompatibilitätsprüfungen entspricht einer Subgraph-Frage für die Ausgabe-Schnittstelle von $S_i$ in der Eingabe-Schnittstelle von $S_{i+1}$. Nach Lemma~\ref{lem:kompatibilitaet} kostet jede Prüfung $O(n^3)$. Gesamt: $(m-1) \cdot O(n^3) = O(m \cdot n^3)$. $
+$
 \end{proof}
 
 \begin{bemerkung}
@@ -444,7 +446,8 @@ Die FLEX-Routing-Funktion $R: \mathcal{T}_C \times \mathcal{G} \times \mathcal{B
 \begin{proof}
 \textbf{Existenz (Wohldefiniertheit):} Für jeden Kontext $(c, g, b)$ enthält die Kandidatenmenge $\mathcal{C}(c, g, b)$ mindestens den \emph{FLEX-Fallback-Dienst} $S_\mathrm{fb}^{(c)}$, der für alle Regionen, alle Bandbreitenklassen und jede FLEX-Standardschnittstelle kompatibel ist. Damit gilt $|\mathcal{C}(c,g,b)| \geq 1$ für alle $(c,g,b) \in \mathcal{T}_C \times \mathcal{G} \times \mathcal{B}$.
 
-\textbf{Eindeutigkeit:} Angenommen, zwei Dienste $S, S' \in \mathcal{C}(c,g,b)$ erfüllen $Q_{\mathbf{w}(c)}(S) = Q_{\mathbf{w}(c)}(S')$. In diesem Fall bricht der FLEX-Standard die Unentschieden-Situation durch lexikografischen Vergleich des Registrierungs-Timestamps auf: Der früher registrierte Anbieter wird bevorzugt. Dies ist eine deterministische totale Ordnung auf $\mathcal{S}$. Damit ist $\argmax$ eindeutig. $\qed$
+\textbf{Eindeutigkeit:} Angenommen, zwei Dienste $S, S' \in \mathcal{C}(c,g,b)$ erfüllen $Q_{\mathbf{w}(c)}(S) = Q_{\mathbf{w}(c)}(S')$. In diesem Fall bricht der FLEX-Standard die Unentschieden-Situation durch lexikografischen Vergleich des Registrierungs-Timestamps auf: Der früher registrierte Anbieter wird bevorzugt. Dies ist eine deterministische totale Ordnung auf $\mathcal{S}$. Damit ist $\argmax$ eindeutig. $
+$
 \end{proof}
 
 \subsection{Komplexität der Dienstauswahl}
@@ -455,7 +458,8 @@ Gegeben $|\mathcal{C}(c,g,b)| = N$ Kandidaten und $k$ QoS-Dimensionen, läuft di
 \end{satz}
 
 \begin{proof}
-Die Berechnung von $Q_{\mathbf{w}(c)}(S, t)$ für einen Dienst erfordert $k$ Multiplikationen und $k-1$ Additionen: $O(k)$. Für alle $N$ Kandidaten: $O(N \cdot k)$. Die Bestimmung des Maximums benötigt $O(N)$ (linearer Scan) oder $O(N \log N)$ (via Sortierung, wenn das vollständige Ranking benötigt wird). Kompatibilitätsprüfungen sind nach Lemma~\ref{lem:kompatibilitaet} amortisiert $O(1)$ (vorberechneter Cache). Gesamt: $O(N \cdot k + N \log N)$. $\qed$
+Die Berechnung von $Q_{\mathbf{w}(c)}(S, t)$ für einen Dienst erfordert $k$ Multiplikationen und $k-1$ Additionen: $O(k)$. Für alle $N$ Kandidaten: $O(N \cdot k)$. Die Bestimmung des Maximums benötigt $O(N)$ (linearer Scan) oder $O(N \log N)$ (via Sortierung, wenn das vollständige Ranking benötigt wird). Kompatibilitätsprüfungen sind nach Lemma~\ref{lem:kompatibilitaet} amortisiert $O(1)$ (vorberechneter Cache). Gesamt: $O(N \cdot k + N \log N)$. $
+$
 \end{proof}
 
 \begin{bemerkung}
@@ -482,7 +486,8 @@ wobei $\mathcal{C}_i = \{S \in \mathcal{S} \mid S \models I_i,\; g \in \mathcal{
 
 \textbf{Optimalität pro Stufe:} Der Greedy-Algorithmus wählt für jede Stufe $i$ das $S_i^* = \argmin_{S \in \mathcal{C}_i} L(S)$, also den latenzoptimalen Dienst. Da die Stufen unabhängig sind, ist die stufenweise Minimierung äquivalent zur globalen Minimierung. Der QoS-Score $Q_{\mathbf{w}}$ wird so gewählt, dass er bei Latenz-Optimierung $w_1 = 1, w_j = 0\; (j > 1)$ ist.
 
-\textbf{Austauschargument (Exchange Argument):} Sei $\mathcal{K}^*$ eine optimale Kette und $\mathcal{K}^G$ die Greedy-Kette. Angenommen $\mathcal{K}^G \neq \mathcal{K}^*$. Dann existiert eine Stufe $i$ mit $S_i^G \neq S_i^*$ und $L(S_i^G) > L(S_i^*)$. Da der Greedy-Algorithmus aber $S_i^G = \argmin_{S \in \mathcal{C}_i} L(S)$ gewählt hat, folgt $L(S_i^G) \leq L(S_i^*)$ --- Widerspruch. Also gilt $\mathcal{K}^G = \mathcal{K}^*$ und $L(\mathcal{K}^G) = L(\mathcal{K}^*)$. $\qed$
+\textbf{Austauschargument (Exchange Argument):} Sei $\mathcal{K}^*$ eine optimale Kette und $\mathcal{K}^G$ die Greedy-Kette. Angenommen $\mathcal{K}^G \neq \mathcal{K}^*$. Dann existiert eine Stufe $i$ mit $S_i^G \neq S_i^*$ und $L(S_i^G) > L(S_i^*)$. Da der Greedy-Algorithmus aber $S_i^G = \argmin_{S \in \mathcal{C}_i} L(S)$ gewählt hat, folgt $L(S_i^G) \leq L(S_i^*)$ --- Widerspruch. Also gilt $\mathcal{K}^G = \mathcal{K}^*$ und $L(\mathcal{K}^G) = L(\mathcal{K}^*)$. $
+$
 \end{proof}
 
 \begin{bemerkung}
@@ -505,7 +510,8 @@ Wir beweisen Konvergenz in drei Schritten.
 
 \textbf{Schritt 3: Absorbierende Endzustände.} Eine Anbietermenge $\mathcal{P}^*$ ist stabil (absorbierend), wenn für alle $S \in \mathcal{P}^*$ gilt $Q_\mathrm{comp}(S, r) \geq q_\mathrm{min}$ dauerhaft. Da der Wettbewerb Anbieter incentiviert, ihren Score zu verbessern (oder den Markt zu verlassen), und da die Score-Funktion auf $[0,1]$ beschränkt ist, konvergiert jeder Anbieter entweder zu einem stabilen Score oder scheidet aus. Nach endlich vielen Quartalen ist $\mathcal{P}^*$ erreicht.
 
-\textbf{Pareto-Optimalität:} In $\mathcal{P}^*$ kann kein Anbieter in allen QoS-Dimensionen von einem anderen dominiert werden (sonst würde er durch FLEX-Routing keine Anfragen erhalten und letztlich ausscheiden). Damit ist $\mathcal{P}^*$ Pareto-optimal bezüglich des Vektors $\mathbf{q}$. $\qed$
+\textbf{Pareto-Optimalität:} In $\mathcal{P}^*$ kann kein Anbieter in allen QoS-Dimensionen von einem anderen dominiert werden (sonst würde er durch FLEX-Routing keine Anfragen erhalten und letztlich ausscheiden). Damit ist $\mathcal{P}^*$ Pareto-optimal bezüglich des Vektors $\mathbf{q}$. $
+$
 \end{proof}
 
 \subsection{FLEX-Qualitätsgarantie für Dienstketten}
@@ -534,7 +540,8 @@ Da der FLEX-Wettbewerb $q_2(S_i) \geq q_\mathrm{min}$ für alle aktiven Dienste 
 \[
 L(\mathcal{K}) = \sum_{i=1}^m L(S_i) \leq \sum_{i=1}^m L_\mathrm{max} = m \cdot L_\mathrm{max}.
 \]
-Die Schranke ist erreichbar, wenn alle Dienste die maximale Latenz haben. $\qed$
+Die Schranke ist erreichbar, wenn alle Dienste die maximale Latenz haben. $
+$
 \end{proof}
 
 \begin{korollar}[Mindestgenauigkeit für STT-Translate-TTS]

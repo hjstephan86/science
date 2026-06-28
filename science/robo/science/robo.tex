@@ -31,7 +31,7 @@
 \usepackage{makecell}
 \usepackage{colortbl}
 \usepackage{pifont}
-\usepackage{microtype}
+\usepackage[expansion=false,protrusion=true]{microtype}
 \usepackage{rotating}
 
 \setlist[itemize,1]{label=--}
@@ -1216,7 +1216,7 @@ monoton fallend in der Temperatur~$T$:
 Für $p \geq 0$, $n = 0{,}12 > 0$ und $\alpha_T > 0$ sind $(K_0+p)^{n-1} > 0$
 und $e^{-\alpha_T(T-T_0)} > 0$, sodass~\eqref{eq:dKdp} positiv ist.
 Gleichung~\eqref{eq:dKdT} folgt aus der Kettenregel und der
-Positivität von $K_{\text{eff}}$ und $\alpha_T$.\qed
+Positivität von $K_{\text{eff}}$ und $\alpha_T$.
 \end{proof}
 
 \begin{korollar}[Optimales Betriebsfenster]
@@ -1384,7 +1384,7 @@ fallende Funktion von $K_{\text{eff}}$ und erfüllt:
 Aus der Formel $\epsilon_p = F_L \ell_{\text{Öl}}/(K_{\text{eff}} A_K)$
 folgt $\partial\epsilon_p/\partial K_{\text{eff}} = -F_L \ell_{\text{Öl}}/(K_{\text{eff}}^2 A_K) < 0$.
 Mit $F_L \leq F_{L,\max}$ und $K_{\text{eff}} \geq K_{\text{eff,min}}$
-erhält man~\eqref{eq:posfehlerbound}.\qed
+erhält man~\eqref{eq:posfehlerbound}.
 \end{proof}
 
 \subsection{C-Implementierung: Epp-Hydraulikmodul}
@@ -1540,7 +1540,7 @@ Im Zwei-Federn-Modell (Hydraulik und Mechanik in Serie) gilt:
 Auflösung nach $\delta_{\text{hyd}} = F_0/k_{\text{hyd}}$ und Division durch
 $P_0 = F_0/A_K$ liefert~\eqref{eq:xi}. Die Monotonie folgt aus
 $\partial \xi / \partial K_{\text{eff}} = -k_{\text{sys}} V_0 A_K^2 /
-(k_{\text{sys}} V_0 + K_{\text{eff}} A_K^2)^2 < 0$.\qed
+(k_{\text{sys}} V_0 + K_{\text{eff}} A_K^2)^2 < 0$.
 \end{proof}
 
 \begin{satz}[Kavitationsfreiheitsbedingung]
@@ -1558,7 +1558,7 @@ wachsendem $K_{\text{eff}}$ leichter erfüllbar.
 Aus Lemma~\ref{lem:druckpuls}: $P_{\min} = P_{\text{stat}} - \hat{P}$.
 Bedingung $P_{\min} > P_v$ liefert direkt~\eqref{eq:kavbedingung}.
 Die Vereinfachung mit steigendem $K_{\text{eff}}$ folgt aus
-Lemma~\ref{lem:druckpuls}.\qed
+Lemma~\ref{lem:druckpuls}.
 \end{proof}
 
 \begin{bemerkung}
@@ -1620,7 +1620,7 @@ folgen aus ISO~281:2007, Anhang~A, Tabelle~A.2, für Stahlwälzlager mit
 Reinheitsgrad $e_C = 0{,}5$ und dem Parameter
 $\eta_c (C_u/P)^{1/3} = 0{,}3$. Mit identischem Ausfallwahrscheinlichkeits-
 Faktor $a_1 = 1$ und $L_{10}$ erhält man durch Einsetzen
-in~\eqref{eq:l10m} direkt~\eqref{eq:lebensdauerfaktor}.\qed
+in~\eqref{eq:l10m} direkt~\eqref{eq:lebensdauerfaktor}.
 \end{proof}
 
 \begin{korollar}[Dreifache Lebensdauer]
@@ -1663,7 +1663,7 @@ so steigt die Stufenlebensdauer um:
 Einsetzen von $\Delta P_i' = r \Delta P_i$ in~\eqref{eq:woehler}:
 \begin{equation*}
 N_{f,i}' = N_0 \left(\frac{\Delta P_0}{r\,\Delta P_i}\right)^m
-         = N_{f,i} \cdot r^{-m}.\quad\qed
+         = N_{f,i} \cdot r^{-m}.\quad
 \end{equation*}
 \end{proof}
 
@@ -1698,7 +1698,7 @@ $a_{\text{ISO}}$ die Schmierbedingungen der Kontaktzone modelliert,
 während der Wöhler-Faktor Druckermüdung der Hydraulikkomponenten
 außerhalb der Kontaktzone (Pumpe, Ventile, Zylinder) beschreibt.
 Da beide Modelle verschiedene Schadensquellen adressieren, ist das
-Produkt~\eqref{eq:fges} korrekt.\qed
+Produkt~\eqref{eq:fges} korrekt.
 \end{proof}
 
 \begin{infobox}
@@ -2789,7 +2789,7 @@ folgt $t_{\min} \approx \SI{38}{\pico\second}$.
 \begin{proof}
 Die Ionenlaufzeit über eine Strecke $\lambda_D$ unter dem Eigenfeld des
 Systems beträgt $t = \lambda_D / v$, $v = \mu_{\text{ion}} E$,
-$E = V_T / \lambda_D$. Einsetzen ergibt $t = \lambda_D^2/(\mu_{\text{ion}} V_T)$.\qed
+$E = V_T / \lambda_D$. Einsetzen ergibt $t = \lambda_D^2/(\mu_{\text{ion}} V_T)$.
 \end{proof}
 
 \subsubsection{Hybride Quantencomputing-Schnittstelle}
@@ -2861,7 +2861,7 @@ vollständig.
 \begin{proof}
 $P_{\text{stat}} \geq \SI{5}{\bar} = \SI{5e5}{\pascal} \gg \SI{e-6}{\pascal} = P_v$.
 Da $P_{\min} = P_{\text{stat}} - \hat{P} > 0$ für jede realisierbare
-Druckamplitude gilt, ist die Bedingung stets erfüllt.\qed
+Druckamplitude gilt, ist die Bedingung stets erfüllt.
 \end{proof}
 
 \subsubsection{Selbstheilende Hydraulikfluide (Self-Healing Fluids)}
@@ -3071,7 +3071,7 @@ $\dot{P} = -\gamma P + f(t)$ mit $\gamma > 0$.
 Das Euler-Verfahren ist stabil für $|1 - h\gamma| < 1$,
 d.\,h. $h < 2/\gamma$.
 Mit $\gamma = K_{\text{eff}} (A_K v + Q)/(V_0 P)$ ergibt
-sich~\eqref{eq:eulerstab} für den ungünstigsten Fall $P \to P_{\max}$.\qed
+sich~\eqref{eq:eulerstab} für den ungünstigsten Fall $P \to P_{\max}$.
 \end{proof}
 
 \subsubsection{Physik-informierte neuronale Netze (PINNs)}
@@ -3164,7 +3164,7 @@ Dies entspricht SIL~3 ($< \SI{e-7}{\per\hour}$) mit Sicherheitsreserve.
 Standardformel für 2oo4-Abstimmung: $\lambda_{\text{sys}} =
 \binom{4}{2} \lambda^2 \tau / 2 =
 6 \lambda_{\text{kanal}}^2 \tau_{\text{test}}$.
-Einsetzen der Zahlen ergibt den angegebenen Wert.\qed
+Einsetzen der Zahlen ergibt den angegebenen Wert.
 \end{proof}
 
 %-----------------------------------------------------------------------

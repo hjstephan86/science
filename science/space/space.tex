@@ -201,7 +201,7 @@ Diese Arbeit liefert folgende formale Beiträge:
   mittels dynamischer Programmierung in $\Theta(n^2)$ durchgeführt.
   Da $n$ Rotationen anfallen, ergibt sich $n \cdot \Theta(n^2) = \Theta(n^3)$.
   Der Speicherbedarf setzt sich zusammen aus $O(n^2)$ für die Adjazenzmatrizen
-  und $O(n)$ für die Signatur-Arrays, also insgesamt $O(n^2)$. \qed
+  und $O(n)$ für die Signatur-Arrays, also insgesamt $O(n^2)$.
 \end{proof}
 
 \subsection{Polynomialzeithierarchie}
@@ -253,7 +253,7 @@ Diese Arbeit liefert folgende formale Beiträge:
   lange Zeugen. Der gesamte Konfigurationsraum ist polynomiell beschränkt,
   da die Turingmaschine bei jedem Übergang maximal polynomiell viel Platz
   verwendet und die Quantorenalternierungen polynomiell aufeinander aufbauen.
-  Eine einfache Induktion zeigt $\Sigma_k^P \subseteq \mathrm{PSPACE}$ für alle $k$. \qed
+  Eine einfache Induktion zeigt $\Sigma_k^P \subseteq \mathrm{PSPACE}$ für alle $k$.
 \end{proof}
 
 % ===========================================================
@@ -273,7 +273,7 @@ Diese Arbeit liefert folgende formale Beiträge:
   Nach Satz~\ref{satz:komplex} entscheidet der Subgraph Algorithmus das Problem
   in Zeit $O(n^3)$, was polynomiell in der Eingabegröße $|n^2|$ ist.
   Da $\mathrm{P} = \Sigma_0^P \subseteq \Sigma_k^P$ für alle $k \geq 0$,
-  gilt $\mathrm{Subgraph} \in \mathrm{PH}$. \qed
+  gilt $\mathrm{Subgraph} \in \mathrm{PH}$.
 \end{proof}
 
 \begin{korollar}
@@ -284,7 +284,7 @@ Diese Arbeit liefert folgende formale Beiträge:
 \begin{proof}
   Würde das Problem NP-vollständig sein, so existierte eine Polynomialzeit-Reduktion
   von SAT auf es. Da der Algorithmus das Problem in P löst, würde SAT $\in$ P folgen,
-  was P~$=$~NP implizieren würde --- eine weithin als falsch angesehene Aussage. \qed
+  was P~$=$~NP implizieren würde --- eine weithin als falsch angesehene Aussage.
 \end{proof}
 
 \subsection{Effizienzgewinn in der PH durch den Subgraph Algorithmus}
@@ -317,7 +317,7 @@ Diese Arbeit liefert folgende formale Beiträge:
     O\!\left(\sum_{i=1}^{\ell} n^{c_i} + n^{3c_\ell}\right) = O(n^{3\ell \cdot \max_i c_i}).
   \]
   Für konstante $c_i$ ergibt dies $O(n^{3\ell})$. Entscheidend: Es wird kein
-  nichtdeterministisches Orakel benötigt, da $\Pi_\ell$ deterministisch in P gelöst wird. \qed
+  nichtdeterministisches Orakel benötigt, da $\Pi_\ell$ deterministisch in P gelöst wird.
 \end{proof}
 
 \begin{bemerkung}
@@ -448,7 +448,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Die Konstruktion erzeugt einen Graphen mit $n = O(m \cdot d)$ Knoten und
   $O(m \cdot d)$ Kanten, da jede der $m$ Variablen auf $d$ Ebenen kodiert wird.
   Der Subgraph Algorithmus auf $G_\varphi$ entscheidet daher $\mathrm{TQBF}$
-  in Zeit $O(n^3) = O((m \cdot d)^3)$, was für konstantes $d$ polynomiell in $m$ ist. \qed
+  in Zeit $O(n^3) = O((m \cdot d)^3)$, was für konstantes $d$ polynomiell in $m$ ist.
 \end{proof}
 
 \begin{bemerkung}
@@ -480,7 +480,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Existenz eines Pfades (Subgraphs) vom Startzustand zu einem akzeptierenden Zustand.
   Der Subgraph Algorithmus entscheidet dies in $O(|G_M|^3) = O(2^{3s(n)})$.
 
-  Für $s(n) = O(\log n)$: $2^{3 \cdot O(\log n)} = n^{O(1)}$ --- polynomiell. \qed
+  Für $s(n) = O(\log n)$: $2^{3 \cdot O(\log n)} = n^{O(1)}$ --- polynomiell.
 \end{proof}
 
 \begin{korollar}[Subgraph für L und NL]
@@ -533,7 +533,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Alternativ: Wir konstruieren den Konfigurationsgraphen $G_N$ der nichtdeterministischen
   TM direkt mit $2^{O(s(n))}$ Knoten (jede nichtdeterministische Konfiguration ist ein Knoten)
   und suchen nach einem Pfad zu einem akzeptierenden Zustand mittels des Subgraph Algorithmus.
-  Die Laufzeit ist $O(2^{3s(n)})$ und für $s(n) = O(\log n)$ polynomiell. \qed
+  Die Laufzeit ist $O(2^{3s(n)})$ und für $s(n) = O(\log n)$ polynomiell.
 \end{proof}
 
 \begin{korollar}[Effizienzgewinn gegenüber Alternation]
@@ -548,7 +548,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Der Subgraph Algorithmus behandelt den Konfigurationsgraphen als Ganzes
   in $O(2^{3s(n)})$ --- \textit{scheinbar} mehr, aber: Der Konfigurationsgraph
   hat \emph{komprimierte} Darstellung durch Adjazenzmatrix in $O(2^{2s(n)})$ Bits,
-  und der Algorithmus nutzt die gesamte Struktur in einem einzigen Durchlauf. \qed
+  und der Algorithmus nutzt die gesamte Struktur in einem einzigen Durchlauf.
 \end{proof}
 
 % ===========================================================
@@ -567,7 +567,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Der Subgraph Algorithmus stellt keine Orakelabfragen; er ist ein rein
   deterministischer Polynomialzeitalgorithmus.
   Daher gilt $\mathrm{Subgraph} \in \mathrm{P} \subseteq \mathrm{P}^A$
-  für jedes Orakel $A$, trivialerweise. \qed
+  für jedes Orakel $A$, trivialerweise.
 \end{proof}
 
 \begin{lemma}[Baker-Gill-Solovay-Kompatibilität]
@@ -585,7 +585,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Da der Subgraph Algorithmus keine Orakelabfragen verwendet, sind seine
   Eigenschaften orakelunabhängig. Die Separationsresultate aus~\cite{baker1975relativizations}
   betreffen Probleme, die \emph{inhärent} auf Orakelzugriffe angewiesen sind;
-  das Subgraphproblem ist dies nicht. \qed
+  das Subgraphproblem ist dies nicht.
 \end{proof}
 
 \subsection{Visualisierung: Oracle-Separationen}
@@ -650,7 +650,7 @@ Wir fassen die zentralen Ergebnisse in einem Theorem zusammen.
   (3) folgt aus Satz~\ref{satz:effizienz}.
   (4) folgt aus Satz~\ref{satz:raum} und Korollar~\ref{kor:nl}.
   (5) folgt aus Satz~\ref{satz:npspace} und Theorem~\ref{thm:savitch}.
-  (6) folgt aus Satz~\ref{satz:oracle}. \qed
+  (6) folgt aus Satz~\ref{satz:oracle}.
 \end{proof}
 
 % ===========================================================
@@ -744,7 +744,7 @@ Konsequenzen für die gesamte Hierarchie.
   Dann ist $A \leq_m^p B \leq_m^p B_1 \leq_m^p \cdots \leq_m^p B_\ell$
   eine Zerlegungskette der Länge $\ell + 1$.
   Da $f$ polynomiell ist und alle Zwischengrößen polynomiell bleiben,
-  gilt $A \in \mathcal{SZ}(\ell+1) \subseteq \mathcal{K}_\mathrm{Sub}$. \qed
+  gilt $A \in \mathcal{SZ}(\ell+1) \subseteq \mathcal{K}_\mathrm{Sub}$.
 \end{proof}
 
 \subsection{Strukturcharakterisierung: Welche PH-Probleme kollabieren?}
@@ -787,7 +787,7 @@ Konsequenzen für die gesamte Hierarchie.
     \Pi \;\leq_m^p\; \mathrm{Subgraph}_{F_1} \times \cdots \times \mathrm{Subgraph}_{F_m},
   \]
   wobei jedes Teilproblem direkt durch den Subgraph Algorithmus lösbar ist.
-  Damit gilt $\Pi \in \mathcal{SZ}(1) \subseteq \mathcal{K}_\mathrm{Sub}$. \qed
+  Damit gilt $\Pi \in \mathcal{SZ}(1) \subseteq \mathcal{K}_\mathrm{Sub}$.
 \end{proof}
 
 \begin{korollar}[Planare Separatoren und Baumweite]
@@ -805,7 +805,7 @@ Konsequenzen für die gesamte Hierarchie.
   Gesamtlaufzeit $O(n \cdot k^3)$ --- polynomiell für jedes feste $k$.
   Die Zerlegung selbst konstituiert eine einzige Reduktionsstufe
   von $\Pi$ auf eine Folge von Subgraphproblemen auf Größe $k+1$,
-  also $\Pi \in \mathcal{SZ}(1)$. \qed
+  also $\Pi \in \mathcal{SZ}(1)$.
 \end{proof}
 
 \subsection{Partieller Kollaps-Satz}
@@ -847,7 +847,7 @@ Konsequenzen für die gesamte Hierarchie.
   \textbf{Schritt 3: $\Pi \in \mathrm{P}$.}
   Insbesondere gilt $\Pi = \Pi_0 \in \mathrm{P}$.
   Da $\Pi \in \Sigma_k^P$ für ein beliebiges $k$ war,
-  folgt $\Pi \in \mathrm{PH} \cap \mathrm{P} = \mathrm{P}$. \qed
+  folgt $\Pi \in \mathrm{PH} \cap \mathrm{P} = \mathrm{P}$.
 \end{proof}
 
 \begin{bemerkung}
@@ -873,7 +873,7 @@ Konsequenzen für die gesamte Hierarchie.
   = \mathrm{NP} \cap \mathrm{PH}^{\mathrm{Sub}} \subseteq \mathrm{P}$.
   Wäre $\Pi$ NP-vollständig und $\Pi \in \mathrm{P}$, so würde jedes NP-Problem
   über die vollständige Reduktion in P gelöst, also $\mathrm{NP} \subseteq \mathrm{P}$,
-  was $\mathrm{P} = \mathrm{NP}$ ergibt. \qed
+  was $\mathrm{P} = \mathrm{NP}$ ergibt.
 \end{proof}
 
 \begin{korollar}[$\Sigma_2^P$-Stufe]
@@ -889,7 +889,7 @@ Konsequenzen für die gesamte Hierarchie.
   Nach Satz~\ref{satz:kollaps} folgt $\Pi_{\Sigma_2} \in \mathrm{P}$.
   Da $\Pi_{\Sigma_2}$ $\Sigma_2^P$-vollständig ist, würde $\Sigma_2^P \subseteq \mathrm{P}$
   folgen, was einen PH-Kollaps auf Stufe 2 bedeuten würde.
-  Unter der Standardannahme $\mathrm{P} \neq \Sigma_2^P$ ist dies ein Widerspruch. \qed
+  Unter der Standardannahme $\mathrm{P} \neq \Sigma_2^P$ ist dies ein Widerspruch.
 \end{proof}
 
 \subsection{Formale Grenze: Was der Subgraph Algorithmus nicht kann}
@@ -907,7 +907,7 @@ Konsequenzen für die gesamte Hierarchie.
   Angenommen, alle $\Pi \in \mathrm{NP}$ wären subgraph-zerlegbar.
   Dann gälte $\mathrm{NP} \subseteq \mathcal{K}_\mathrm{Sub}$,
   und nach Satz~\ref{satz:kollaps} $\mathrm{NP} \subseteq \mathrm{P}$,
-  also $\mathrm{P} = \mathrm{NP}$ --- Widerspruch zur Annahme. \qed
+  also $\mathrm{P} = \mathrm{NP}$ --- Widerspruch zur Annahme.
 \end{proof}
 
 \begin{bemerkung}
@@ -943,7 +943,7 @@ Konsequenzen für die gesamte Hierarchie.
   und damit keine echten NP-intermediate-Probleme.
   Mögliche NP-intermediate-Kandidaten (Graphisomorphie~GI, Faktorisierung~FACT)
   sind daher entweder nicht in $\mathcal{K}_\mathrm{Sub}$ --- oder, falls doch,
-  in P, was diese Probleme aus der NP-intermediate-Klasse herausnehmen würde. \qed
+  in P, was diese Probleme aus der NP-intermediate-Klasse herausnehmen würde.
 \end{proof}
 
 \begin{bemerkung}
@@ -987,7 +987,7 @@ Konsequenzen für die gesamte Hierarchie.
   \]
   also ist $T_\mathrm{Sub}$ asymptotisch drastisch kleiner als $T_\mathrm{naive}$.
   Die Raumboundary folgt analog: Subgraph-Zerlegung benötigt $O(n^{2\ell})$ Speicher
-  statt $O(2^{n^\varepsilon})$ im Worst Case der $\Sigma_k^P$-Simulation. \qed
+  statt $O(2^{n^\varepsilon})$ im Worst Case der $\Sigma_k^P$-Simulation.
 \end{proof}
 
 \begin{table}[htbp]

@@ -294,7 +294,7 @@ Intervallen $[j_k \cdot 2^n,\, (j_k+1) \cdot 2^n)$ liegen, gilt:
     \leq j_2 \cdot 2^n \leq \sigma(c_2,j_2).
 \]
 In beiden Fällen gilt $\sigma(c_1,j_1) \neq \sigma(c_2,j_2)$, also ist
-$\sigma$ injektiv. \qed
+$\sigma$ injektiv.
 \end{proof}
 
 \subsection{Algorithmusablauf}
@@ -333,7 +333,7 @@ Sei umgekehrt $\mathrm{LCS}(\sigma^A, \sigma^B_r) \geq 2$ für ein $r$. Dann exi
 zwei übereinstimmende Signaturen $\sigma_{j_1}^A = \sigma_{j_2}^B$ (ohne Spaltengewichtung).
 Wegen der Injektivität (Lemma~\ref{lem:injektiv}) stimmen die entsprechenden
 Spalten-Vektoren überein. Da $\mathrm{LCS} \geq 2$ bedeutet, dass mindestens zwei
-Spalten von $A$ in $B$ enthalten sind, ist $G$ ein Subgraph von $G'$. \qed
+Spalten von $A$ in $B$ enthalten sind, ist $G$ ein Subgraph von $G'$.
 \end{proof}
 
 % ══════════════════════════════════════════════════════════════════
@@ -358,7 +358,7 @@ Die Bindung $\mu$ ist eine Lösung von $Q$, falls der durch $\mu$ induzierte Tei
 mit Knotenmenge $\mu(V_Q) \subseteq V_{\mathcal{K}}$ und Kantenmenge
 $\{(\mu(s), \mu(o), p) \mid (s,p,o) \in Q\} \subseteq E_{\mathcal{K}}$ ein Teilgraph
 von $G_{\mathcal{K}}$ ist. Dies entspricht genau der Definition eines
-Subgraph-Homomorphismus. \qed
+Subgraph-Homomorphismus.
 \end{proof}
 
 \subsection{Tensor-Schnitte als Adjacenzmatrizen}
@@ -376,7 +376,7 @@ Adjazenzmatrix überein.
 
 \begin{proof}
 Direkt aus den Definitionen: $T[s,p_0,o] = 1 \Leftrightarrow (s,p_0,o) \in \mathcal{K}
-\Leftrightarrow A^{(p_0)}_{s,o} = 1$. \qed
+\Leftrightarrow A^{(p_0)}_{s,o} = 1$.
 \end{proof}
 
 \begin{satz}[Einstein-Summation als Subgraph-Matching]
@@ -410,7 +410,7 @@ $s_1 \xrightarrow{p_1} f \xrightarrow{p_2} u \xrightarrow{p_3} o_3$) in
 $G_{\mathcal{K}}$ berechnet genau dieselbe Menge von Bindungen für $f$.
 Da der Subgraph Algorithmus auf den Adjazenzmatrizen dieser drei Teilgraphen
 operiert und durch Signaturvergleich die Spaltenübereinstimmungen prüft, ergibt
-die LCS-Auswertung der Signaturen dasselbe Ergebnis wie die Einstein-Summation. \qed
+die LCS-Auswertung der Signaturen dasselbe Ergebnis wie die Einstein-Summation.
 \end{proof}
 
 \subsection{Effizienzvorteil durch Hypertrie-Indexierung}
@@ -435,7 +435,7 @@ naive Matrixmultiplikation.
 Jede Hypertrie-Ebene $H(d)$ speichert im Mittel $M/N^{d-1}$ Knoten. Die Navigation
 durch den Baum erfordert pro Ebene $O(\log(M/N^{d-1}))$ Schritte durch binäre Suche
 in den geordneten Kindlisten. Über $d=3$ Ebenen und $k$ Muster ergibt sich die
-behauptete Schranke. \qed
+behauptete Schranke.
 \end{proof}
 
 % ══════════════════════════════════════════════════════════════════
@@ -466,7 +466,7 @@ erfordert mittels dynamischer Programmierung $\Theta(n^2)$ Schritte.
          \underbrace{n \cdot \Theta(n^2)}_{\text{LCS über alle Rotationen}}
        = \Theta(n^3).
 \]
-Die Berechnung der Signaturen dominiert nicht, da $O(n^2) \subset \Theta(n^3)$. \qed
+Die Berechnung der Signaturen dominiert nicht, da $O(n^2) \subset \Theta(n^3)$.
 \end{proof}
 
 \subsection{Untere Schranke unter SETH}
@@ -482,7 +482,7 @@ Sei ein Algorithmus gegeben, der nicht alle Einträge von $A$ liest. Dann existi
 ein Eintrag $A_{i_0,j_0}$, der ungelesen bleibt. Man kann $A_{i_0,j_0}$ von $0$ auf
 $1$ ändern (oder umgekehrt), ohne dass der Algorithmus es merkt. Diese Änderung kann
 die Signatur $\sigma_{j_0}^A$ verändern und damit die LCS-Berechnung beeinflussen.
-Der Algorithmus würde dann möglicherweise eine falsche Entscheidung treffen. \qed
+Der Algorithmus würde dann möglicherweise eine falsche Entscheidung treffen.
 \end{proof}
 
 \begin{lemma}[LCS-Schranke unter SETH]
@@ -495,7 +495,7 @@ nicht in $O(n^{2-\varepsilon})$ Zeit für beliebiges $\varepsilon > 0$ gelöst w
 Abboud, Backurs und Vassilevska Williams~\cite{abboud2015} bewiesen: Unter SETH gibt
 es kein $O(n^{2-\varepsilon})$-Algorithmus für LCS (für beliebiges $\varepsilon > 0$).
 Die Signaturwerte sind ganzzahlige Werte ohne Einschränkung an die Alphabetgröße, daher
-gilt das Resultat direkt. \qed
+gilt das Resultat direkt.
 \end{proof}
 
 \begin{lemma}[Unabhängigkeit der Rotationsvergleiche]
@@ -520,7 +520,7 @@ Da keine Rotation strukturell aus einer anderen ableitbar ist, erfordert die Ber
 aller $n$ LCS-Werte:
 \[
   T_{\text{Rotation}}(n) \geq n \cdot T_{\mathrm{LCS}}(n)
-  \geq n \cdot \Omega(n^{2-\varepsilon}) = \Omega(n^{3-\varepsilon}). \qed
+  \geq n \cdot \Omega(n^{2-\varepsilon}) = \Omega(n^{3-\varepsilon}).
 \]
 \end{proof}
 
@@ -541,7 +541,7 @@ Damit:
   \geq n \cdot \Omega(n^{2-\varepsilon}) = \Omega(n^{3-\varepsilon}).
 \]
 Da der Subgraph Algorithmus $\Theta(n^3)$ benötigt (Satz~\ref{satz:laufzeit}), ist er
-unter SETH optimal. \qed
+unter SETH optimal.
 \end{proof}
 
 \begin{bemerkung}
@@ -724,7 +724,6 @@ $\mathrm{LRH}_W(\sigma_1) \neq \mathrm{LRH}_W(\sigma_2)$.
 \textbf{Surjektivität:} Sei $(r_0, \ldots, r_{L-1}) \in \mathbb{Z}_M^L$ beliebig.
 Setze $\sigma = \sum_{k=0}^{L-1} r_k \cdot M^k \in \mathbb{N}_0$.
 Dann gilt $\mathrm{LRH}_W(\sigma) = (r_0, \ldots, r_{L-1})$ nach Definition.
-\qed
 \end{proof}
 
 \begin{korollar}[Kollisionsfreiheit des LRH für Signaturen]
@@ -738,7 +737,7 @@ unter der LRH-Kodierung vollständig erhalten.
 \begin{proof}
 Direktes Korollar aus Lemma~\ref{lem:lrh_bij}: Da $\mathrm{LRH}_W$ bijektiv ist,
 gilt $\sigma_{j_1} \neq \sigma_{j_2} \Rightarrow \mathrm{LRH}_W(\sigma_{j_1}) \neq
-\mathrm{LRH}_W(\sigma_{j_2})$. \qed
+\mathrm{LRH}_W(\sigma_{j_2})$.
 \end{proof}
 
 \subsection{Berechnung: Carry-Propagation}
@@ -793,7 +792,7 @@ schrumpft ($\mathtt{carry}' \leq \mathtt{carry} / 2^W$) und $\mathtt{carry}$ gan
 und nicht-negativ ist, erreicht es nach endlich vielen Schritten den Wert $0$.
 
 Bei $\mathtt{carry} = 0$ gilt $\sigma = \sum_{l=0}^{k-1} r_l \cdot 2^{Wl}$, was genau der
-LRH-Darstellung entspricht. \qed
+LRH-Darstellung entspricht.
 \end{proof}
 
 \begin{lemma}[Laufzeit der Carry-Propagation]
@@ -811,7 +810,7 @@ Nach $L$ Iterationen gilt $\mathtt{carry} \leq \sigma / 2^{WL}$.
 Für $L = \lceil \log_2(\sigma+1) / W \rceil$ ist $2^{WL} > \sigma$, also
 $\mathtt{carry} < 1$, d.\,h.\ $\mathtt{carry} = 0$. Da $\mathtt{carry}$ ganzzahlig ist,
 terminiert die Schleife. Jede Iteration führt $O(1)$ Operationen durch
-(ein Modulo und ein Shift), also ist die Gesamtlaufzeit $O(L(\sigma))$. \qed
+(ein Modulo und ein Shift), also ist die Gesamtlaufzeit $O(L(\sigma))$.
 \end{proof}
 
 \subsection{Stack-Tiefe in Abhängigkeit von $n$}
@@ -835,7 +834,7 @@ Die Bitlänge beträgt:
   \log_2(\sigma_j^{\max} + 1) \leq \log_2(n \cdot 2^n + 1)
   \approx n + \log_2 n \leq n + \lceil \log_2(n+1) \rceil.
 \]
-Einsetzen in die Formel aus Lemma~\ref{lem:carry_laufzeit} liefert die Behauptung. \qed
+Einsetzen in die Formel aus Lemma~\ref{lem:carry_laufzeit} liefert die Behauptung.
 \end{proof}
 
 \begin{beispiel}[Stack-Tiefen für typische Knotenanzahlen]
@@ -912,7 +911,7 @@ identisch, also stimmen Tiefe und alle Ring-Ebenen überein.
 
 ``$\Leftarrow$'': Gelte $\mathrm{LRH}_W(\sigma_1) \equiv \mathrm{LRH}_W(\sigma_2)$.
 Dann haben beide dieselbe Tiefe $L$ und $r_k(\sigma_1) = r_k(\sigma_2)$ für alle $k$.
-Aus der Bijektivität (Lemma~\ref{lem:lrh_bij}) folgt $\sigma_1 = \sigma_2$. \qed
+Aus der Bijektivität (Lemma~\ref{lem:lrh_bij}) folgt $\sigma_1 = \sigma_2$.
 \end{proof}
 
 \begin{lemma}[Laufzeit der LRH-Vergleichsoperation]
@@ -931,7 +930,7 @@ Werte in mindestens einem Bit. Da Signaturen durch die Adjazenzmatrix bestimmt s
 und für zufällige Graphen gleichmäßig über $[0, (n+1) \cdot 2^n)$ verteilt sind,
 ist die Wahrscheinlichkeit einer Übereinstimmung in allen Bits bis auf das MSW
 exponentiell klein. Die erwartete Anzahl verglichener Wörter bis zur ersten
-Differenz ist $O(1)$. \qed
+Differenz ist $O(1)$.
 \end{proof}
 
 \subsection{Integration in den Subgraph Algorithmus}
@@ -967,7 +966,7 @@ Vergleich zu $O(n^3)$ Bit-Operationen bei naiver Bignum-Darstellung.
 $T = O(n^2) + n \cdot O(n^2 \cdot L(n)) = O(n^3 \cdot L(n))$.
 Da $L(n) = O(n/64)$, gilt $T = O(n^4 / 64)$. In der Praxis dominiert jedoch
 $n \ll 64^2 = 4096$, sodass $L(n) \leq \lceil n/64 \rceil$ als kleine Konstante
-behandelt werden kann: $T \approx c \cdot n^3$ mit $c = L(n_{\max})$. \qed
+behandelt werden kann: $T \approx c \cdot n^3$ mit $c = L(n_{\max})$.
 \end{proof}
 
 \begin{bemerkung}
@@ -1001,7 +1000,7 @@ $M_L = \prod_{k=0}^{L-1} m_k$ das Produkt aller Ringgrößen ist.
 
 \begin{proof}
 Analoger Beweis wie Lemma~\ref{lem:lrh_bij} durch das gemischte Stellenwertsystem
-(``mixed-radix representation''). \qed
+(``mixed-radix representation'').
 \end{proof}
 
 Ein praktisch interessanter Spezialfall ist $m_0 = \ldots = m_{L-2} = 2^{64}$ und

@@ -238,7 +238,7 @@ Der Gesamtzustand des Systems ergibt sich als:
   multiplizieren sich die Zustandsr\"aume: $|\mathcal{S}| = \prod_{k=1}^{K} |\mathcal{S}_k|
   = (|\mathcal{B}| \cdot |\mathcal{P}| \cdot N_\theta \cdot 2)^K$.
   Da die Basis $c = |\mathcal{B}| \cdot |\mathcal{P}| \cdot N_\theta \cdot 2 > 1$,
-  w\"achst $|\mathcal{S}|$ exponentiell in $K$. \qed
+  w\"achst $|\mathcal{S}|$ exponentiell in $K$.
 \end{proof}
 
 \subsection{Beobachtungsraum}
@@ -318,7 +318,7 @@ Die multi-objektive Reward-Funktion von CellPilot balanciert Durchsatz und Lastb
   \[
     \nabla_\theta \log P(\tau \mid \theta) = \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t \mid s_t)
   \]
-  da die \"Ubergangswahrscheinlichkeiten $P(s_{t+1} \mid s_t, a_t)$ nicht von $\theta$ abh\"angen. \qed
+  da die \"Ubergangswahrscheinlichkeiten $P(s_{t+1} \mid s_t, a_t)$ nicht von $\theta$ abh\"angen.
 \end{proof}
 
 \subsection{Varianzreduktion durch Baselines}
@@ -347,7 +347,7 @@ Die multi-objektive Reward-Funktion von CellPilot balanciert Durchsatz und Lastb
        \underbrace{\sum_{a_t} \nabla_\theta \pi_\theta(a_t \mid s_t)}_{= \nabla_\theta 1 = 0}
     = 0
   \end{align*}
-  wobei $d^\pi(s_t)$ das station\"are Zustandsma\ss{} unter $\pi_\theta$ bezeichnet. \qed
+  wobei $d^\pi(s_t)$ das station\"are Zustandsma\ss{} unter $\pi_\theta$ bezeichnet.
 \end{proof}
 
 \subsection{Konvergenz des REINFORCE-Algorithmus}
@@ -385,7 +385,7 @@ Die multi-objektive Reward-Funktion von CellPilot balanciert Durchsatz und Lastb
   \textbf{Schritt 3 (ODE-Methode).} Nach Borkar und Meyn~\cite{borkar2000} konvergiert die
   stochastische Iterationsfolge $\theta_{t+1} = \theta_t + \eta_t \hat{g}_t$ unter den
   Robbins-Monro-Bedingungen (Bed.~1) mit Wahrscheinlichkeit~1 zum n\"achstgelegenen
-  station\"aren Punkt der ODE $\dot{\theta} = \nabla J(\theta)$, d.\,h.\ einem lokalen Maximum. \qed
+  station\"aren Punkt der ODE $\dot{\theta} = \nabla J(\theta)$, d.\,h.\ einem lokalen Maximum.
 \end{proof}
 
 \begin{bemerkung}
@@ -439,7 +439,7 @@ wechseln, um Energie zu sparen. Das Optimierungsproblem lautet:
   Es gen\"ugt die positive Semidefinitheit der Hesse-Matrix zu zeigen.
   Da $P_{k,b}$ skalar ist, ist $\nabla^2_\lambda P_{k,b}(\lambda) = 2\beta_b \geq 0$
   f\"ur alle $\beta_b \geq 0$ und $\lambda \in [0, \lambda_{\max}]$.
-  Damit ist $P_{k,b}$ konvex. \qed
+  Damit ist $P_{k,b}$ konvex.
 \end{proof}
 
 \subsection{MIQCP-Umformulierung}
@@ -470,7 +470,7 @@ die Nebenbedingungen bilinear in $(x, p)$ auftreten, handelt es sich um ein MIQC
   + \beta_b w_{k,b,t}^2)$.
   Der quadratische Term $\beta_b w_{k,b,t}^2$ ist konvex (Lemma~\ref{lem:power_convex}),
   womit $Q \succeq 0$ gilt. Die restlichen Terme sind linear. Damit ist das
-  \"aquivalente MIQCP vollst\"andig definiert. \qed
+  \"aquivalente MIQCP vollst\"andig definiert.
 \end{proof}
 
 \subsection{Optimalit\"atsbedingungen}
@@ -499,7 +499,7 @@ KKT-Bedingungen:
   \]
   folgt durch Ableitung nach $p_{k,b,t}$ und Nullsetzen direkt~(\ref{eq:kkt1}).
   Die Komplementarit\"atsbedingung~(\ref{eq:kkt2}) und Zul\"assigkeit~(\ref{eq:kkt3})
-  folgen aus den Standard-KKT-Bedingungen. \qed
+  folgen aus den Standard-KKT-Bedingungen.
 \end{proof}
 
 %==========================================================
@@ -553,7 +553,7 @@ f\"ur 5G SA (Standalone) und 5G NSA (Non-Standalone).
   \]
   Bei einem Messbereich von $100$--$320$ mA entspricht das einem relativen Fehler
   von ca.\ 3{,}3\,\% bzw.\ 4{,}0\,\%, was f\"ur praktische Netzwerkplanung als
-  ausreichend genau gilt. \qed
+  ausreichend genau gilt.
 \end{proof}
 
 %==========================================================

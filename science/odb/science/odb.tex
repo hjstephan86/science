@@ -7,7 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 %\usepackage{lmodern}
-\usepackage{microtype}
+\usepackage[expansion=false,protrusion=true]{microtype}
 \usepackage{geometry}
 \geometry{left=3cm, right=2.5cm, top=3cm, bottom=3cm}
 
@@ -453,7 +453,7 @@ genau einmal gespeichert (keine Redundanz). Ohne Redundanz:
 \end{itemize}
 Im Sternschema hingegen erzeugt die direkte Kodierung transitiver Attribute
 in $H$ Redundanz, da Attributwerte von Spoke-Entitäten wiederholt in $H$
-gespeichert sind -- dies ermöglicht alle drei Anomalietypen. \qed
+gespeichert sind -- dies ermöglicht alle drei Anomalietypen.
 \end{proof}
 
 \subsection{Quantitative Analyse der Redundanz}
@@ -538,7 +538,7 @@ $R_d$ ermöglicht $O(\log n_{R_d} + k')$ für $k'$ Ergebnistupel.
 Im Sternschema befinden sich diese Attribute in $H$ vermischt mit allen anderen
 Attributen; ohne Partial Index muss der gesamte Heap von $H$ gescannt werden
 ($O(n_H)$). Da eine 1:n-Beziehung $|E| \leq n_H$ impliziert, gilt
-$n_{R_d} \leq n_H$, und die Ungleichung ist bewiesen. \qed
+$n_{R_d} \leq n_H$, und die Ungleichung ist bewiesen.
 \end{proof}
 
 \subsection{Schreibkomplexität und Konsistenzerhaltung}
@@ -580,7 +580,7 @@ $R_{i-1} \to R_i$ sind betroffen -- diese beschränken sich auf eine
 einzige Kante im Referenzgraphen. Im Sternschema sind Attribute aus
 multiple Entitäten in $H$ gemischt; eine Änderung an $H$ betrifft
 alle darauf basierenden Abfragen, was zu einem kaskadierten
-Änderungsaufwand führt \cite{Ambler2003}. \qed
+Änderungsaufwand führt \cite{Ambler2003}.
 \end{proof}
 
 \subsection{Zugriffsrechteverwaltung}
@@ -672,7 +672,7 @@ sind Schemaänderungen im Tiefenpfad lokal beschränkt.
 Satz~\ref{thm:selektivitaet} gilt stets
 $\text{Kosten}_{\text{Tief}} \leq \text{Kosten}_{\text{Stern}}$.
 
-Da für (i)--(v) strikte Ungleichungen gelten, ist die Behauptung bewiesen. \qed
+Da für (i)--(v) strikte Ungleichungen gelten, ist die Behauptung bewiesen.
 \end{proof}
 
 % ==============================================================
@@ -783,7 +783,7 @@ $G$ wird genau ein Baum mit Wurzel $s$ erzeugt. Mehrere Wurzeln (Wald)
 entstehen nur durch Multi-Source-BFS, was der Standard-BFS-Definition
 widerspricht. Im Gegensatz dazu erzeugt DFS über einem unzusammenhängenden
 Graphen automatisch einen Wald, indem für jede noch unbesuchte Zusammenhangskomponente
-eine neue DFS-Traversierung gestartet wird. \qed
+eine neue DFS-Traversierung gestartet wird.
 \end{proof}
 
 \subsection{Die fundamentale Asymmetrie von DFS und BFS}

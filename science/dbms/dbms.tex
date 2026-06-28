@@ -216,7 +216,7 @@ In der monolithischen und kolokierten Topologie erfolgt der Zugriff auf $\mathca
 Die ausgelagerte Topologie erfordert explizite Entscheidungen über Netzwerkprotokoll, Authentifizierung, TLS-Verschlüsselung, Connection-Pool-Größe, Timeout-Parameter, Failover-Verhalten und Load-Balancing -- Konfigurationsdimensionen, die in der kolokierten Topologie nicht oder kaum relevant sind. Die Zahl der freien Konfigurationsparameter wächst von $O(1)$ auf $O(k)$ mit $k \geq 10$.
 
 \textbf{Dimension 3: Emergente Qualitätssteigerung.}
-Trotz -- und wegen -- dieser erhöhten Komplexität ermöglicht die ausgelagerte Topologie Eigenschaften, die in den anderen Topologien nicht oder nur eingeschränkt realisierbar sind: unabhängige Skalierung von $\mathcal{A}$ und $\mathcal{D}$, dedizierten Ressourcenpool für DBMS-Operationen, unabhängige Hochverfügbarkeitsstrategien, Sicherheitsnetzwerksegmentierung und parallele Versionszyklen beider Komponenten. Diese Eigenschaften sind es, die das Gesamtsystem $\mathcal{S}^+$ erst vollständig wirken lassen und die Benutzerzufriedenheit auf das Niveau heben, das der Benutzer erwartet. Die Zusammenführung über die Netzwerkschnittstelle ist kein Kompetenzverlust, sondern der Schlüssel zur maximalen Entfaltung beider Teilsysteme. \qed
+Trotz -- und wegen -- dieser erhöhten Komplexität ermöglicht die ausgelagerte Topologie Eigenschaften, die in den anderen Topologien nicht oder nur eingeschränkt realisierbar sind: unabhängige Skalierung von $\mathcal{A}$ und $\mathcal{D}$, dedizierten Ressourcenpool für DBMS-Operationen, unabhängige Hochverfügbarkeitsstrategien, Sicherheitsnetzwerksegmentierung und parallele Versionszyklen beider Komponenten. Diese Eigenschaften sind es, die das Gesamtsystem $\mathcal{S}^+$ erst vollständig wirken lassen und die Benutzerzufriedenheit auf das Niveau heben, das der Benutzer erwartet. Die Zusammenführung über die Netzwerkschnittstelle ist kein Kompetenzverlust, sondern der Schlüssel zur maximalen Entfaltung beider Teilsysteme.
 \end{proof}
 
 \begin{korollar}[Bewusstseinspflicht]
@@ -253,7 +253,7 @@ Die relationale Algebra $\mathcal{RA}$ ist vollständig im Sinne von Codd: Jede 
 \end{satz}
 
 \begin{proof}
-Codd~\cite{codd1970} bewies die Äquivalenz zwischen relationalem Kalkül und relationaler Algebra durch konstruktive Übersetzungsalgorithmen. Die Übersetzung erfolgt induktiv über den Aufbau der Kalkülelausdrücke: Atome werden durch Selektion und Projektion realisiert, logische Verknüpfungen durch Mengenoperatoren und Quantoren durch Projektion und Differenz. Da jeder Kalkülausdruck in endlich vielen Schritten durch diese Operatoren simulierbar ist, folgt die Vollständigkeit. \qed
+Codd~\cite{codd1970} bewies die Äquivalenz zwischen relationalem Kalkül und relationaler Algebra durch konstruktive Übersetzungsalgorithmen. Die Übersetzung erfolgt induktiv über den Aufbau der Kalkülelausdrücke: Atome werden durch Selektion und Projektion realisiert, logische Verknüpfungen durch Mengenoperatoren und Quantoren durch Projektion und Differenz. Da jeder Kalkülausdruck in endlich vielen Schritten durch diese Operatoren simulierbar ist, folgt die Vollständigkeit.
 \end{proof}
 
 \subsection{Schichtenarchitektur}
@@ -340,7 +340,7 @@ Das WAL-Protokoll schreibt jede Änderung zunächst in ein sequenziell geschrieb
 
 \textbf{Atomarität:} Falls eine Transaktion $T$ abbricht, existiert für jede ihrer Operationen ein Undo-Log-Eintrag. Der Recovery-Manager führt alle Undo-Operationen in umgekehrter Reihenfolge aus. Da das Log vollständig ist (WAL-Bedingung: Log-Eintrag vor Seitenänderung), werden alle Wirkungen von $T$ rückgängig gemacht. Es verbleibt kein Teilergebnis.
 
-\textbf{Dauerhaftigkeit:} Falls ein Systemausfall nach dem $\mathit{commit}$ von $T$ eintritt, enthält das Log den $\mathit{commit}$-Eintrag. Der Recovery-Manager führt beim Neustart alle Redo-Operationen aus, für die ein $\mathit{commit}$ im Log existiert. Die Wirkungen von $T$ sind daher nach der Wiederherstellung vollständig präsent. \qed
+\textbf{Dauerhaftigkeit:} Falls ein Systemausfall nach dem $\mathit{commit}$ von $T$ eintritt, enthält das Log den $\mathit{commit}$-Eintrag. Der Recovery-Manager führt beim Neustart alle Redo-Operationen aus, für die ein $\mathit{commit}$ im Log existiert. Die Wirkungen von $T$ sind daher nach der Wiederherstellung vollständig präsent.
 \end{proof}
 
 \begin{satz}[Serialisierbarkeit durch Sperrprotokolle]
@@ -351,7 +351,7 @@ Das Zwei-Phasen-Sperrprotokoll (2PL) garantiert Serialisierbarkeit aller konkurr
 \begin{proof}
 Beim 2PL-Protokoll erwirbt eine Transaktion $T_i$ alle benötigten Sperren in einer Wachstumsphase und gibt sie in einer Schrumpfungsphase frei, ohne nach dem ersten Freigeben noch weitere Sperren zu erwerben.
 
-Angenommen, die entstehende Ausführung $\mathit{sched}$ sei nicht serialisierbar. Dann existiert ein Zyklus im Serialisierbarkeitsgraphen: $T_{i_1} \to T_{i_2} \to \cdots \to T_{i_k} \to T_{i_1}$. Eine Kante $T_a \to T_b$ bedeutet, dass $T_b$ eine Sperre anfordert, die $T_a$ hält. Da $T_a$ nach 2PL keine neuen Sperren nach dem ersten Freigeben erwirbt, muss $T_b$ warten, bis $T_a$ committed und alle Sperren freigibt. Damit kann kein Zyklus entstehen -- Widerspruch. Folglich ist $\mathit{sched}$ serialisierbar. \qed
+Angenommen, die entstehende Ausführung $\mathit{sched}$ sei nicht serialisierbar. Dann existiert ein Zyklus im Serialisierbarkeitsgraphen: $T_{i_1} \to T_{i_2} \to \cdots \to T_{i_k} \to T_{i_1}$. Eine Kante $T_a \to T_b$ bedeutet, dass $T_b$ eine Sperre anfordert, die $T_a$ hält. Da $T_a$ nach 2PL keine neuen Sperren nach dem ersten Freigeben erwirbt, muss $T_b$ warten, bis $T_a$ committed und alle Sperren freigibt. Damit kann kein Zyklus entstehen -- Widerspruch. Folglich ist $\mathit{sched}$ serialisierbar.
 \end{proof}
 
 \subsection{Indexstrukturen: Mathematische Grundlagen}
@@ -382,7 +382,7 @@ n \geq 1 + 2 \sum_{i=1}^{h}(t-1) \cdot t^{i-1} = 2t^h - 1.
 \]
 Auflösen nach $h$ ergibt $h \leq \log_t\!\bigl(\frac{n+1}{2}\bigr)$.
 
-Da alle Operationen entlang eines Pfades von der Wurzel zum gesuchten Blatt arbeiten und die Länge dieses Pfades durch $h$ beschränkt ist, gilt die Laufzeitaussage. \qed
+Da alle Operationen entlang eines Pfades von der Wurzel zum gesuchten Blatt arbeiten und die Länge dieses Pfades durch $h$ beschränkt ist, gilt die Laufzeitaussage.
 \end{proof}
 
 \begin{korollar}[Praktische Effizienz]
@@ -411,7 +411,7 @@ Die Auswahl des optimalen Ausführungsplans für eine SQL-Anfrage mit $k$ Joins 
 \end{satz}
 
 \begin{proof}
-Eine Join-Reihenfolge für $k$ Relationen entspricht einem vollständigen Klammerungsbaum über $k$ Blättern, wovon es $\frac{1}{k} \binom{2(k-1)}{k-1} = C_{k-1}$ (Catalan-Zahl) viele gibt -- für $k = 15$ bereits über $4{,}2 \times 10^9$. Die Auswahl der kostengünstigsten Reihenfolge unter Berücksichtigung aller physischen Operatoren und Statistiken ist auf das Set-Cover-Problem reduzierbar, welches NP-vollständig ist~\cite{ibaraki1984}. Praktische DBMS verwenden daher Heuristiken (dynamische Programmierung bis $k \leq 12$, Greedy-Verfahren und genetische Algorithmen für größere $k$). \qed
+Eine Join-Reihenfolge für $k$ Relationen entspricht einem vollständigen Klammerungsbaum über $k$ Blättern, wovon es $\frac{1}{k} \binom{2(k-1)}{k-1} = C_{k-1}$ (Catalan-Zahl) viele gibt -- für $k = 15$ bereits über $4{,}2 \times 10^9$. Die Auswahl der kostengünstigsten Reihenfolge unter Berücksichtigung aller physischen Operatoren und Statistiken ist auf das Set-Cover-Problem reduzierbar, welches NP-vollständig ist~\cite{ibaraki1984}. Praktische DBMS verwenden daher Heuristiken (dynamische Programmierung bis $k \leq 12$, Greedy-Verfahren und genetische Algorithmen für größere $k$).
 \end{proof}
 
 \begin{bemerkung}
@@ -440,7 +440,7 @@ Sei $n$ die Anzahl der Datensätze. Ein Dateisystem mit linearem Scan hat Zugrif
 \end{lemma}
 
 \begin{proof}
-Der lineare Scan betrachtet im schlechtesten Fall alle $n$ Datensätze. Der B-Baum mit Ordnung $t \geq 2$ hat nach Satz~\ref{satz:bbaum} eine Höhe $h = O(\log_t n) = O(\log n)$; jede Suchanfrage traversiert einen Pfad der Länge höchstens $h$. Die asymptotische Aussage folgt unmittelbar. \qed
+Der lineare Scan betrachtet im schlechtesten Fall alle $n$ Datensätze. Der B-Baum mit Ordnung $t \geq 2$ hat nach Satz~\ref{satz:bbaum} eine Höhe $h = O(\log_t n) = O(\log n)$; jede Suchanfrage traversiert einen Pfad der Länge höchstens $h$. Die asymptotische Aussage folgt unmittelbar.
 \end{proof}
 
 \begin{korollar}
@@ -460,7 +460,7 @@ Das $\mathit{LRU}$-$k$-Ersetzungsverfahren (Least Recently Used mit Berücksicht
 \end{satz}
 
 \begin{proof}
-Der Bélády-Algorithmus $\mathit{OPT}$ ersetzt stets die Seite, auf die in der Zukunft am längsten nicht zugegriffen wird -- er ist optimal, aber erfordert Kenntnis zukünftiger Zugriffe. $\mathit{LRU}$-$k$ approximiert $\mathit{OPT}$ durch die Annahme, dass die Vergangenheit die Zukunft prognostiziert: Die Seite mit dem $k$-t-ältesten letzten Zugriff wird ersetzt. Für $k \to \infty$ nähert sich $\mathit{LRU}$-$k$ dem frequenzbasierten Verfahren an, das für sich wiederholende Zugriffsmuster optimal ist. Der Competitive Ratio $\frac{\mathit{cost}(\mathit{LRU}\text{-}k)}{\mathit{cost}(\mathit{OPT})}$ ist in der Literatur durch $(b/(b-k+1))$ nach oben beschränkt~\cite{o1993lru}, was für große $b$ gegen 1 konvergiert. \qed
+Der Bélády-Algorithmus $\mathit{OPT}$ ersetzt stets die Seite, auf die in der Zukunft am längsten nicht zugegriffen wird -- er ist optimal, aber erfordert Kenntnis zukünftiger Zugriffe. $\mathit{LRU}$-$k$ approximiert $\mathit{OPT}$ durch die Annahme, dass die Vergangenheit die Zukunft prognostiziert: Die Seite mit dem $k$-t-ältesten letzten Zugriff wird ersetzt. Für $k \to \infty$ nähert sich $\mathit{LRU}$-$k$ dem frequenzbasierten Verfahren an, das für sich wiederholende Zugriffsmuster optimal ist. Der Competitive Ratio $\frac{\mathit{cost}(\mathit{LRU}\text{-}k)}{\mathit{cost}(\mathit{OPT})}$ ist in der Literatur durch $(b/(b-k+1))$ nach oben beschränkt~\cite{o1993lru}, was für große $b$ gegen 1 konvergiert.
 \end{proof}
 
 \subsection{Skalierbarkeit}
@@ -496,7 +496,7 @@ Die Gesamtausführungszeit setzt sich zusammen aus dem unvermeidlich sequenziell
 \[
 T(p) = f \cdot T(1) + \frac{(1-f) \cdot T(1)}{p}.
 \]
-Der Speedup $S(p) = T(1)/T(p)$ ergibt die angegebene Formel. Für $p \to \infty$ konvergiert $S(p) \to 1/f$. \qed
+Der Speedup $S(p) = T(1)/T(p)$ ergibt die angegebene Formel. Für $p \to \infty$ konvergiert $S(p) \to 1/f$.
 \end{proof}
 
 % =============================================================================
@@ -527,7 +527,7 @@ Mit sinkender Kopplung steigen: (a) die Unabhängigkeit der Lebenszyklen von $\m
 \end{lemma}
 
 \begin{proof}
-Kopplung $\kappa$ sei definiert als die Anzahl der gemeinsamen Ressourcen, die $\mathcal{A}$ und $\mathcal{D}$ teilen (Prozessraum, Speicherpages, CPU-Zeitscheiben, Netzwerkports, Dateisystemzugriffe). Im Monolith teilen $\mathcal{A}$ und $\mathcal{D}$ Prozessraum und Speicher: $\kappa = \kappa_\text{max}$. In der Kolokation teilen sie nur noch den physischen Host (CPU, RAM, Netzwerk): $\kappa$ reduziert sich durch die Prozessisolation. In der ausgelagerten Topologie teilen $\mathcal{A}$ und $\mathcal{D}$ keine lokale Ressource mehr; die einzige Verbindung ist die Netzwerkschnittstelle $\mathcal{I}_{\mathcal{A} \leftrightarrow \mathcal{D}}$: $\kappa = \kappa_\text{min}$. Die Monotonie folgt unmittelbar. \qed
+Kopplung $\kappa$ sei definiert als die Anzahl der gemeinsamen Ressourcen, die $\mathcal{A}$ und $\mathcal{D}$ teilen (Prozessraum, Speicherpages, CPU-Zeitscheiben, Netzwerkports, Dateisystemzugriffe). Im Monolith teilen $\mathcal{A}$ und $\mathcal{D}$ Prozessraum und Speicher: $\kappa = \kappa_\text{max}$. In der Kolokation teilen sie nur noch den physischen Host (CPU, RAM, Netzwerk): $\kappa$ reduziert sich durch die Prozessisolation. In der ausgelagerten Topologie teilen $\mathcal{A}$ und $\mathcal{D}$ keine lokale Ressource mehr; die einzige Verbindung ist die Netzwerkschnittstelle $\mathcal{I}_{\mathcal{A} \leftrightarrow \mathcal{D}}$: $\kappa = \kappa_\text{min}$. Die Monotonie folgt unmittelbar.
 \end{proof}
 
 \begin{satz}[Benutzerzufriedenheit als Funktion der Topologie und Last]
@@ -540,7 +540,7 @@ Unterhalb einer Schwelle $u^* > 0$ ist die Ordnung nicht notwendig monoton; für
 \end{satz}
 
 \begin{proof}
-Für große $u$ tritt Ressourcenkonkurrenz auf. Im Monolith konkurrieren $\mathcal{A}$ und $\mathcal{D}$ um denselben Prozessor-Cache und denselben Hauptspeicher; DBMS-interne Operationen (Sortieren, Hash-Join, Buffer-Pool-Management) beeinflussen direkt die Antwortzeiten der Geschäftslogik in $\mathcal{A}$. In der Kolokation ist der Prozessraum getrennt, aber Host-Ressourcen werden weiterhin geteilt; intensive I/O-Last des DBMS belastet dieselben Festplattencontroller und Netzwerkkarten wie $\mathcal{A}$. In der ausgelagerten Topologie erhält $\mathcal{D}$ dedizierte Hardware: eigener Prozessor, eigener RAM für den Buffer Pool, eigene I/O-Subsysteme. Der DBMS-Kern kann seine gesamte Intelligenz -- Parallelisierung, spezialisiertes I/O-Scheduling, NUMA-bewusstes Speichermanagement -- ohne Interferenz durch $\mathcal{A}$ entfalten. Die Gesamtantwortzeit $T(u)$ ist damit für große $u$ in der ausgelagerten Topologie strikt kleiner, woraus die Ordnung der Benutzerzufriedenheit folgt. \qed
+Für große $u$ tritt Ressourcenkonkurrenz auf. Im Monolith konkurrieren $\mathcal{A}$ und $\mathcal{D}$ um denselben Prozessor-Cache und denselben Hauptspeicher; DBMS-interne Operationen (Sortieren, Hash-Join, Buffer-Pool-Management) beeinflussen direkt die Antwortzeiten der Geschäftslogik in $\mathcal{A}$. In der Kolokation ist der Prozessraum getrennt, aber Host-Ressourcen werden weiterhin geteilt; intensive I/O-Last des DBMS belastet dieselben Festplattencontroller und Netzwerkkarten wie $\mathcal{A}$. In der ausgelagerten Topologie erhält $\mathcal{D}$ dedizierte Hardware: eigener Prozessor, eigener RAM für den Buffer Pool, eigene I/O-Subsysteme. Der DBMS-Kern kann seine gesamte Intelligenz -- Parallelisierung, spezialisiertes I/O-Scheduling, NUMA-bewusstes Speichermanagement -- ohne Interferenz durch $\mathcal{A}$ entfalten. Die Gesamtantwortzeit $T(u)$ ist damit für große $u$ in der ausgelagerten Topologie strikt kleiner, woraus die Ordnung der Benutzerzufriedenheit folgt.
 \end{proof}
 
 \subsection{Latenz und Durchsatz: Quantitative Analyse}
@@ -564,7 +564,7 @@ ist endlich, beherrschbar und wird durch den Gewinn an Ressourcenisolation und S
 \end{lemma}
 
 \begin{proof}
-$\ell_\text{lok}$ beträgt bei Unix-Domain-Sockets typisch $0{,}001$--$0{,}1$\,ms (Kernel-Bypass bei Shared Memory noch geringer). $\ell_\text{net}$ beträgt in modernen Rechenzentrums-LANs $0{,}05$--$2$\,ms (10-Gbit/s-Ethernet, RDMA sub-$0{,}01$\,ms). $\Delta\ell$ ist somit beschränkt. Der Gewinn an DBMS-Performance durch dedizierte Ressourcen wächst mit $u$ und übersteigt $\Delta\ell$ ab der Schwelle $u^*$, jenseits derer Ressourcenkonkurrenz in kolokierten Topologien die Latenz um Faktoren $\gg \Delta\ell/\ell_\text{lok}$ erhöht. \qed
+$\ell_\text{lok}$ beträgt bei Unix-Domain-Sockets typisch $0{,}001$--$0{,}1$\,ms (Kernel-Bypass bei Shared Memory noch geringer). $\ell_\text{net}$ beträgt in modernen Rechenzentrums-LANs $0{,}05$--$2$\,ms (10-Gbit/s-Ethernet, RDMA sub-$0{,}01$\,ms). $\Delta\ell$ ist somit beschränkt. Der Gewinn an DBMS-Performance durch dedizierte Ressourcen wächst mit $u$ und übersteigt $\Delta\ell$ ab der Schwelle $u^*$, jenseits derer Ressourcenkonkurrenz in kolokierten Topologien die Latenz um Faktoren $\gg \Delta\ell/\ell_\text{lok}$ erhöht.
 \end{proof}
 
 \begin{definition}[Normaler vs. außergewöhnlicher Weg]
@@ -578,7 +578,7 @@ Jede Deployment-Topologie für $\mathcal{S}^+ = \mathcal{A} \oplus \mathcal{D}$,
 \end{satz}
 
 \begin{proof}
-Angenommen, die Topologieentscheidung erfolgt ohne Kenntnis der Eigenschaften von $\mathcal{D}$. Dann ist dem Entwickler insbesondere unbekannt: (a) der Ressourcenbedarf des Buffer Pools, (b) das Verhalten des Query-Optimierers bei hoher Parallelität, (c) die Netzwerklatenzsensitivität der gewählten Transaktionsisolationsstufe. Eine nicht-informierte Entscheidung für die Kolokation bei hoher erwarteter Last ignoriert die Ressourcenkonkurrenz und führt zu Latenzspitzen (vgl.\ Satz~\ref{satz:zufriedenheit}). Eine nicht-informierte Entscheidung für die Auslagerung ohne Connection Pooling und Timeout-Konfiguration erzeugt Verbindungsüberlastung und Kaskadenfehler. Da in beiden Fällen mindestens ein Fehlerpfad mit $p > 0$ eintritt, gilt die Aussage. \qed
+Angenommen, die Topologieentscheidung erfolgt ohne Kenntnis der Eigenschaften von $\mathcal{D}$. Dann ist dem Entwickler insbesondere unbekannt: (a) der Ressourcenbedarf des Buffer Pools, (b) das Verhalten des Query-Optimierers bei hoher Parallelität, (c) die Netzwerklatenzsensitivität der gewählten Transaktionsisolationsstufe. Eine nicht-informierte Entscheidung für die Kolokation bei hoher erwarteter Last ignoriert die Ressourcenkonkurrenz und führt zu Latenzspitzen (vgl.\ Satz~\ref{satz:zufriedenheit}). Eine nicht-informierte Entscheidung für die Auslagerung ohne Connection Pooling und Timeout-Konfiguration erzeugt Verbindungsüberlastung und Kaskadenfehler. Da in beiden Fällen mindestens ein Fehlerpfad mit $p > 0$ eintritt, gilt die Aussage.
 \end{proof}
 
 % =============================================================================
@@ -614,7 +614,7 @@ Die Benutzersicht $\mathcal{V}_U$ ist eine echte Projektion: Es gilt $\mathcal{V
 \end{satz}
 
 \begin{proof}
-Die Benutzersicht projiziert gemäß Definition~\ref{def:benutzersicht} auf externe Merkmale. Interne Eigenschaften von $\mathcal{D}$ -- Query-Plan, Index-Nutzung, Transaktionsisolationsstufe, Buffer-Hit-Rate -- sind in $\mathcal{V}_U$ nicht enthalten. Sie sind jedoch in $\mathcal{V}_T$ vorhanden (Definition~\ref{def:technischesicht}). Da diese Eigenschaften nicht leer sind (jedes DBMS besitzt sie), gilt $\mathcal{V}_U \subsetneq \mathcal{V}_T$. \qed
+Die Benutzersicht projiziert gemäß Definition~\ref{def:benutzersicht} auf externe Merkmale. Interne Eigenschaften von $\mathcal{D}$ -- Query-Plan, Index-Nutzung, Transaktionsisolationsstufe, Buffer-Hit-Rate -- sind in $\mathcal{V}_U$ nicht enthalten. Sie sind jedoch in $\mathcal{V}_T$ vorhanden (Definition~\ref{def:technischesicht}). Da diese Eigenschaften nicht leer sind (jedes DBMS besitzt sie), gilt $\mathcal{V}_U \subsetneq \mathcal{V}_T$.
 \end{proof}
 
 \begin{bemerkung}
@@ -644,7 +644,7 @@ schlechter ist als ein System, das die DBMS-Fähigkeiten optimal ausnutzt, wobei
 \end{lemma}
 
 \begin{proof}
-Sei $Q$ eine Aggregationsanfrage über $n$ Datensätze. Die naive Implementierung in $\mathcal{A}$ lädt alle $n$ Datensätze in den Anwendungsspeicher und aggregiert dort: Kosten $\Theta(n)$ I/O-Operationen. Das optimale Verhalten delegiert die Aggregation an den Query-Prozessor von $\mathcal{D}$, der durch Index-Nutzung und Push-down-Optimierung Kosten von $O(\log n)$ bis $O(n)$ je nach Index-Verfügbarkeit erzielt, zuzüglich vernachlässigbarer Netzwerkkommunikation. Für Join-Anfragen über $k$ Tabellen verschlechtert sich das Verhältnis auf $O(n^k)$ (naive Nested-Loop-Joins) versus $O(n \log n)$ (Hash-Join mit Optimierer). \qed
+Sei $Q$ eine Aggregationsanfrage über $n$ Datensätze. Die naive Implementierung in $\mathcal{A}$ lädt alle $n$ Datensätze in den Anwendungsspeicher und aggregiert dort: Kosten $\Theta(n)$ I/O-Operationen. Das optimale Verhalten delegiert die Aggregation an den Query-Prozessor von $\mathcal{D}$, der durch Index-Nutzung und Push-down-Optimierung Kosten von $O(\log n)$ bis $O(n)$ je nach Index-Verfügbarkeit erzielt, zuzüglich vernachlässigbarer Netzwerkkommunikation. Für Join-Anfragen über $k$ Tabellen verschlechtert sich das Verhältnis auf $O(n^k)$ (naive Nested-Loop-Joins) versus $O(n \log n)$ (Hash-Join mit Optimierer).
 \end{proof}
 
 \subsection{Der außergewöhnliche Weg als architektonisches Prinzip}
@@ -661,7 +661,7 @@ wobei $\mathcal{L}_\Delta$ der emergente Leistungsgewinn durch Ressourcenisolati
 \end{satz}
 
 \begin{proof}
-In der ausgelagerten Topologie erhält $\mathcal{D}$ dedizierte Hardwareressourcen. Infolgedessen kann der Buffer Pool des DBMS den gesamten verfügbaren RAM des DB-Servers belegen, ohne mit $\mathcal{A}$ zu konkurrieren. Der Query-Optimierer kann CPU-intensive Pläne (Hash-Joins, Parallelisierung) wählen, ohne die Antwortzeiten von $\mathcal{A}$ zu beeinflussen. $\mathcal{A}$ wiederum kann seinen eigenen Heap und seine eigenen Threads ohne DBMS-Interferenz verwalten. Sei $r_\mathcal{D}$ die DBMS-Leistung bei geteilten Ressourcen (Kolokation) und $r'_\mathcal{D}$ bei dedizierten Ressourcen (Auslagerung). Durch die fehlende Ressourcenkonkurrenz gilt $r'_\mathcal{D} > r_\mathcal{D}$ für $u > u^*$ (vgl.\ Satz~\ref{satz:zufriedenheit}). Analog gilt $r'_\mathcal{A} > r_\mathcal{A}$. Der emergente Gewinn $\mathcal{L}_\Delta = (r'_\mathcal{D} - r_\mathcal{D}) + (r'_\mathcal{A} - r_\mathcal{A}) > 0$ ist positiv. \qed
+In der ausgelagerten Topologie erhält $\mathcal{D}$ dedizierte Hardwareressourcen. Infolgedessen kann der Buffer Pool des DBMS den gesamten verfügbaren RAM des DB-Servers belegen, ohne mit $\mathcal{A}$ zu konkurrieren. Der Query-Optimierer kann CPU-intensive Pläne (Hash-Joins, Parallelisierung) wählen, ohne die Antwortzeiten von $\mathcal{A}$ zu beeinflussen. $\mathcal{A}$ wiederum kann seinen eigenen Heap und seine eigenen Threads ohne DBMS-Interferenz verwalten. Sei $r_\mathcal{D}$ die DBMS-Leistung bei geteilten Ressourcen (Kolokation) und $r'_\mathcal{D}$ bei dedizierten Ressourcen (Auslagerung). Durch die fehlende Ressourcenkonkurrenz gilt $r'_\mathcal{D} > r_\mathcal{D}$ für $u > u^*$ (vgl.\ Satz~\ref{satz:zufriedenheit}). Analog gilt $r'_\mathcal{A} > r_\mathcal{A}$. Der emergente Gewinn $\mathcal{L}_\Delta = (r'_\mathcal{D} - r_\mathcal{D}) + (r'_\mathcal{A} - r_\mathcal{A}) > 0$ ist positiv.
 \end{proof}
 
 \begin{bemerkung}

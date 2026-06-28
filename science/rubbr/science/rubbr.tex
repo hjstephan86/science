@@ -17,7 +17,7 @@
 \usepackage{fancyhdr}
 \usepackage{array}
 \usepackage{longtable}
-\usepackage{microtype}
+\usepackage[expansion=false,protrusion=true]{microtype}
 \usepackage{caption}
 \usepackage{float}
 \usepackage{xcolor}
@@ -359,7 +359,7 @@ Da $\dot{h}(p_i) \geq \dot{h}(\pref)$, gilt:
   \Ltire(p_i) = \frac{h_0 - h_{\min}}{\dot{h}(p_i)}
               \leq \frac{h_0 - h_{\min}}{\dot{h}(\pref)} = \Ltire(\pref)
 \end{equation}
-Also ist $\Ltire$ maximal bei $p_i = \pref$. \qed
+Also ist $\Ltire$ maximal bei $p_i = \pref$.
 \end{proof}
 
 \subsection{Lastabhängige Druckkorrektur}
@@ -423,7 +423,7 @@ Nach dem Hurwitz-Kriterium sind alle Koeffizienten positiv, wenn
 $K_P > -1/K_{str}$ (in der Praxis trivial erfüllt für $K_P > 0$) und $K_I > 0$.
 Damit sind beide Pole in der linken Halbebene. Für das diskrete System wird
 mit der Tustin-Transformation $s = \frac{2}{T_s}\frac{z-1}{z+1}$ die entsprechende
-Stabilitätsbedingung im Einheitskreis sichergestellt. \qed
+Stabilitätsbedingung im Einheitskreis sichergestellt.
 \end{proof}
 
 \subsection{Energiebetrachtung}
@@ -543,7 +543,7 @@ eine endliche Summe konvexer Funktionen ist konvex. Die Nebenbedingung
 $\kappa(x_k, \delta_k) = \kappa_{\mathrm{ref}}$ ist für das Einspurmodell eine
 Gleichungsnebenbedingung und linear in $\delta$ für kleine Winkel. Damit ist
 das Problem ein konvex beschränktes QP (quadratisches Programm) in einer
-Variablen -- die Lösung existiert und ist eindeutig. \qed
+Variablen -- die Lösung existiert und ist eindeutig.
 \end{proof}
 
 \subsubsection{Analytische Lösung für symmetrisches Fahrzeug}
@@ -617,7 +617,7 @@ ein konvexes QP. Für $N \to \infty$ nähert sich die MPC-Lösung der
 Das Gesamtlebensdauerintegral $\int_0^T J_w(t)\,\mathrm{d}t$ wird minimiert,
 da jedes endliche Zeitsegment durch die MPC-Lösung sub-optimal (für endliches $N$)
 bzw.\ optimal (für $N \to \infty$) behandelt wird. Damit ist die resultierende
-Trajektorie verschleißoptimal. \qed
+Trajektorie verschleißoptimal.
 \end{proof}
 
 \subsection{Reifenverschleiß-Ausgleich durch Spurwinkeldämpfung}
@@ -672,7 +672,7 @@ gilt:
 \end{equation}
 mit Gleichheit genau dann, wenn $F_{z,1} = F_{z,2} = F_{z,3} = F_{z,4} = F_{\mathrm{ges}}/4$.
 Damit ist $\Ltire^{\mathrm{set}} = K \cdot (4/F_{\mathrm{ges}})^n$ bei
-gleichmäßiger Verteilung maximal. \qed
+gleichmäßiger Verteilung maximal.
 \end{proof}
 
 \subsubsection{Konvexitätsargument für allgemeine Verschleißfunktionen}
@@ -693,7 +693,7 @@ mit Gleichheit genau bei $F_{z,1} = \cdots = F_{z,4}$.
 
 \begin{proof}
 Direkte Anwendung der Jensenschen Ungleichung~\cite{Jensen1906} für strikt
-konvexe Funktionen. \qed
+konvexe Funktionen.
 \end{proof}
 
 \subsection{Radlastmessung und Schätzung}
@@ -802,7 +802,7 @@ optimalen Reglers ist garantiert, wenn das System steuerbar und beobachtbar ist
 (erfüllt für Standardfahrwerksmodelle). Die Minimierung von $J_\Delta$ verringert
 $\mathbb{E}[F_{z,i}^n] = (F_{z,i}^{(0)})^n + \binom{n}{2}(F_{z,i}^{(0)})^{n-2}\mathbb{E}[(\Delta F_{z,i})^2]
 + \mathcal{O}(\mathbb{E}[(\Delta F_{z,i})^3])$ für $n \geq 2$, womit die mittlere
-Verschleißrate sinkt. \qed
+Verschleißrate sinkt.
 \end{proof}
 
 % ===========================================================
@@ -855,7 +855,7 @@ Das Optimum $\Phi_i^* = 1$ (für alle $i$) ist gleichzeitig erreichbar:
 CRDS setzt $p_i = \pref$ ($\Phi_P = 1$), SCS setzt $\alpha = 0$ ($\Phi_S = 1$),
 LCS setzt $\Fz = F_{\mathrm{ref}} = F_{\mathrm{ges}}/4$ ($\Phi_L = 1$).
 Damit ist $\Ltire^{\mathrm{combined}} = (h_0 - h_{\min}) / \dot{h}_{\mathrm{basis}}$
-maximal. \qed
+maximal.
 \end{proof}
 
 \subsection{Quantitative Abschätzung}
