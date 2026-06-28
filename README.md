@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **236 wissenschaftliche Arbeiten** von Stephan Epp
+> **237 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -44,6 +44,7 @@
 | digi/src | Von der Diskretion — Warum diskrete statt kontinuierliche Beschreibung der Realität entspricht |
 | graphdenk | Graphenstrukturelles Denken als universelles kognitives Paradigma; Isomorphie zu neuronalen Netzen und LLMs |
 | signalth | Signaltheorie — Das Wunder der e-Funktion: kontinuierliche und diskrete Signale, Transformationen |
+| kalman | Kalman-Filter: MMSE-optimale Zustandsschätzung, Riccati-Gleichung, Konvergenz, EKF und Ensembleerweiterungen |
 | expl | Grenzen mathematischer Beschreibbarkeit — Taxonomie in 5 Klassen; Universalität der Exponentialfunktion; φ als optimaler Energieexponent |
 | e | Strukturelle Asymmetrie der Eulerschen Zahl e — Beziehungen zu π, φ und dem goldenen Winkel α ≈ 137,5° (Phyllotaxis) |
 | zufall | Zufall in der Mathematik — epistemische vs. fundamentale Zufälligkeit; Markov-Prozesse; stochastisches PDDL-Planning |

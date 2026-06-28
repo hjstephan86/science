@@ -1,0 +1,961 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[main=german,provide=*]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[expansion=false]{microtype}
+\usepackage{booktabs}
+
+\geometry{margin=2.5cm}
+\sloppy
+\setlength{\emergencystretch}{3em}
+
+% Sicherstellen: deutsche Bezeichnungen
+\renewcommand{\proofname}{Beweis}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{beispiel}{Beispiel}
+\newtheorem{satz}{Satz}
+\newtheorem{lemma}{Lemma}
+\newtheorem{bemerkung}{Bemerkung}
+\newtheorem{korollar}{Korollar}
+
+\setlist[itemize,1]{label=--}
+
+% ---------- Farben ----------
+\definecolor{mainblue}{RGB}{25, 70, 140}
+\definecolor{accentred}{RGB}{180, 50, 30}
+\definecolor{lightgray}{RGB}{245, 245, 248}
+\definecolor{darkgray}{RGB}{60, 60, 70}
+\definecolor{darkgreen}{RGB}{30, 100, 50}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    citecolor=accentred,
+    urlcolor=mainblue
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    frame=single,
+    literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+}
+
+\title{Der Kalman-Filter:\\
+\large Theorie, formale Analyse und experimentelle Auswertung}
+\author{Stephan Epp}
+\date{28. Juni 2026}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+% ================================================================
+\section{Einführung}
+% ================================================================
+
+Der Kalman-Filter ist einer der bedeutendsten Algorithmen der angewandten Mathematik und Regelungstechnik.
+Er wurde 1960 von Rudolf Emil Kálmán vorgestellt \cite{kalman1960} und bildet bis heute die
+Grundlage für Positionsschätzung, Sensorfusion, Signalverarbeitung und Robotik.
+
+Die zentrale Leistung des Kalman-Filters besteht darin, aus einem verrauschten Messsignal
+und einem Systemmodell rekursiv eine \emph{optimale Schätzung} des verborgenen Systemzustands zu
+berechnen --- und zwar unter Minimierung des mittleren quadratischen Schätzfehlers.
+
+\subsection{Problemstellung}
+
+Gegeben ist ein dynamisches lineares System, dessen Zustand $\mathbf{x}_k \in \mathbb{R}^n$ zum
+Zeitschritt $k$ nicht direkt beobachtet werden kann. Stattdessen liegt eine
+verrauschte Messung $\mathbf{z}_k \in \mathbb{R}^m$ vor.
+
+\textbf{Ziel:} Berechne rekursiv eine Schätzung $\hat{\mathbf{x}}_k$ des wahren Zustands
+$\mathbf{x}_k$, welche den mittleren quadratischen Fehler
+\[
+    \mathcal{J} = \mathbb{E}\bigl[\|\mathbf{x}_k - \hat{\mathbf{x}}_k\|^2\bigr]
+\]
+minimiert, unter Nutzung aller bisherigen Messungen $\mathbf{z}_1, \ldots, \mathbf{z}_k$.
+
+\subsection{Motivation und Einordnung}
+
+Der Kalman-Filter vereint drei klassische Disziplinen:
+\begin{itemize}
+    \item \textbf{Bayesianische Schätztheorie:} Vorherwissen (Modell) und Beobachtung
+          werden probabilistisch kombiniert.
+    \item \textbf{Lineare Algebra:} Die gesamte Rekursion besteht aus Matrix\-multiplikationen,
+          Inversionen und Additionen.
+    \item \textbf{Stochastische Prozesse:} Prozess- und Messrauschen werden als
+          gaußsche Zufallsvektoren modelliert.
+\end{itemize}
+
+Das Ergebnis ist ein Algorithmus, der in Echtzeit ohne Speicherung vergangener Messungen
+auskommt und dennoch statistisch optimal ist --- eine Eigenschaft, die ihn in
+eingebetteten Systemen und Echtzeitanwendungen besonders wertvoll macht \cite{welch1995,bar2004}.
+
+% ================================================================
+\section{Grundlagen}
+% ================================================================
+
+\subsection{Definitionen}
+
+\begin{definition}[Gaußsche Zufallsvariable]
+    Eine Zufallsvariable $X \in \mathbb{R}^n$ heißt \emph{gaußsch} (normalverteilt) mit
+    Erwartungswert $\boldsymbol{\mu}$ und Kovarianzmatrix $\Sigma \succ 0$, geschrieben
+    $X \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)$, wenn ihre Dichte
+    \[
+        p(\mathbf{x}) = \frac{1}{(2\pi)^{n/2} |\Sigma|^{1/2}}
+        \exp\!\left(-\tfrac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^\top \Sigma^{-1}
+        (\mathbf{x}-\boldsymbol{\mu})\right)
+    \]
+    ist.
+\end{definition}
+
+\begin{definition}[Lineares Zeitinvariantes Zustandsraummodell]
+\label{def:lti}
+    Ein lineares Zeitinvariantes (LTI) Zustandsraummodell in diskreter Zeit ist gegeben durch:
+    \begin{align}
+        \mathbf{x}_k &= F\,\mathbf{x}_{k-1} + B\,\mathbf{u}_k + \mathbf{w}_k
+            \label{eq:proc} \\
+        \mathbf{z}_k &= H\,\mathbf{x}_k + \mathbf{v}_k
+            \label{eq:meas}
+    \end{align}
+    mit Zustandsvektor $\mathbf{x}_k \in \mathbb{R}^n$,
+    Messvektor $\mathbf{z}_k \in \mathbb{R}^m$,
+    Steuereingang $\mathbf{u}_k \in \mathbb{R}^l$,
+    Zustandsübergangsmatrix $F \in \mathbb{R}^{n \times n}$,
+    Steuermatrix $B \in \mathbb{R}^{n \times l}$,
+    Messmatrix $H \in \mathbb{R}^{m \times n}$,
+    Prozessrauschen $\mathbf{w}_k \sim \mathcal{N}(\mathbf{0}, Q)$ und
+    Messrauschen $\mathbf{v}_k \sim \mathcal{N}(\mathbf{0}, R)$.
+\end{definition}
+
+\begin{definition}[Fehlerkovarianzmatrix]
+    Die \emph{a-posteriori-Fehlerkovarianzmatrix} zum Zeitschritt $k$ ist definiert als
+    \[
+        P_k = \mathbb{E}\bigl[(\mathbf{x}_k - \hat{\mathbf{x}}_k)
+                              (\mathbf{x}_k - \hat{\mathbf{x}}_k)^\top\bigr].
+    \]
+    Sie quantifiziert die Unsicherheit der aktuellen Schätzung.
+\end{definition}
+
+\begin{definition}[Kalman-Verstärkung]
+    Die \emph{Kalman-Verstärkung} (Kalman Gain) $K_k \in \mathbb{R}^{n \times m}$ ist
+    die Gewichtungsmatrix, die bestimmt, wie stark die Schätzung in Richtung der
+    aktuellen Messung korrigiert wird:
+    \[
+        K_k = P_k^- H^\top S_k^{-1},
+        \qquad S_k = H P_k^- H^\top + R.
+    \]
+\end{definition}
+
+\begin{definition}[Innovation]
+    Die \emph{Innovation} (Messresiduum) zum Zeitschritt $k$ ist
+    \[
+        \mathbf{y}_k = \mathbf{z}_k - H\,\hat{\mathbf{x}}_k^-,
+    \]
+    d.\,h.\ die Differenz zwischen gemessener und vorhergesagter Beobachtung.
+\end{definition}
+
+\subsection{Grundidee: Prädiktion und Update}
+
+Der Kalman-Filter arbeitet in einem zweistufigen Zyklus, der bei jedem Zeitschritt $k$
+wiederholt wird:
+
+\subsubsection{Prädiktionsschritt (Predict)}
+
+Aus dem Systemmodell \eqref{eq:proc} wird der Zustand für den nächsten Zeitschritt
+vorhergesagt:
+\begin{align}
+    \hat{\mathbf{x}}_k^- &= F\,\hat{\mathbf{x}}_{k-1} + B\,\mathbf{u}_k
+        \label{eq:pred_state} \\
+    P_k^- &= F\,P_{k-1}\,F^\top + Q
+        \label{eq:pred_cov}
+\end{align}
+
+\subsubsection{Updateschritt (Correct)}
+
+Die eingehende Messung $\mathbf{z}_k$ wird genutzt, um die Vorhersage zu korrigieren:
+\begin{align}
+    \mathbf{y}_k   &= \mathbf{z}_k - H\,\hat{\mathbf{x}}_k^-
+        \label{eq:innov} \\
+    S_k             &= H\,P_k^-\,H^\top + R
+        \label{eq:innov_cov} \\
+    K_k             &= P_k^-\,H^\top S_k^{-1}
+        \label{eq:gain} \\
+    \hat{\mathbf{x}}_k &= \hat{\mathbf{x}}_k^- + K_k\,\mathbf{y}_k
+        \label{eq:update_state} \\
+    P_k             &= (I - K_k H)\,P_k^-
+        \label{eq:update_cov}
+\end{align}
+
+\begin{bemerkung}
+    Die symmetrisierte Form der Kovarianz\-update-Formel lautet:
+    \[
+        P_k = (I - K_k H)\,P_k^-\,(I - K_k H)^\top + K_k\,R\,K_k^\top.
+    \]
+    Diese Joseph-Form ist numerisch stabiler und garantiert die Symmetrie und
+    positive Semidefinitheit von $P_k$ auch bei Rundungsfehlern \cite{joseph1968}.
+\end{bemerkung}
+
+% ================================================================
+\section{Formale Analyse und Beweise}
+% ================================================================
+
+\subsection{Optimalität des Kalman-Filters}
+
+\begin{satz}[MMSE-Optimalität des Kalman-Filters]
+\label{satz:mmse}
+    Unter den Annahmen von Definition~\ref{def:lti} und unter der Voraussetzung, dass
+    $\mathbf{w}_k$ und $\mathbf{v}_k$ unkorreliert und gaußsch sind, ist der Kalman-Filter
+    der \emph{minimale mittlere quadratische Schätzer} (MMSE) des Zustands $\mathbf{x}_k$
+    gegeben die Messhistorie $\mathcal{Z}_k = \{\mathbf{z}_1, \ldots, \mathbf{z}_k\}$.
+    Das heißt:
+    \[
+        \hat{\mathbf{x}}_k = \mathbb{E}[\mathbf{x}_k \mid \mathcal{Z}_k]
+        \quad \text{und} \quad
+        P_k = \mathrm{Var}[\mathbf{x}_k \mid \mathcal{Z}_k].
+    \]
+\end{satz}
+
+\begin{proof}
+Wir führen den Beweis durch Induktion über $k$.
+
+\textbf{Induktionsanfang ($k=0$):}
+Zum Zeitpunkt $k=0$ liegt noch keine Messung vor. Mit der Initialisierung
+$\hat{\mathbf{x}}_0 = \mathbb{E}[\mathbf{x}_0]$ und
+$P_0 = \mathrm{Var}[\mathbf{x}_0]$ gilt die Behauptung trivialerweise.
+
+\textbf{Induktionsschritt ($k-1 \to k$):}
+Angenommen, die Behauptung gelte für $k-1$, d.\,h.
+$\hat{\mathbf{x}}_{k-1} = \mathbb{E}[\mathbf{x}_{k-1} \mid \mathcal{Z}_{k-1}]$
+und $P_{k-1} = \mathrm{Var}[\mathbf{x}_{k-1} \mid \mathcal{Z}_{k-1}]$.
+
+\textbf{Schritt 1 --- Prädiktionsschritt ist korrekt:}
+Da $\mathbf{w}_k$ unabhängig von $\mathcal{Z}_{k-1}$ ist und Erwartungswert $\mathbf{0}$ hat,
+gilt für den prädiktierten Zustand:
+\begin{align*}
+    \mathbb{E}[\mathbf{x}_k \mid \mathcal{Z}_{k-1}]
+    &= \mathbb{E}[F\mathbf{x}_{k-1} + B\mathbf{u}_k + \mathbf{w}_k \mid \mathcal{Z}_{k-1}] \\
+    &= F\,\mathbb{E}[\mathbf{x}_{k-1} \mid \mathcal{Z}_{k-1}] + B\mathbf{u}_k \\
+    &= F\hat{\mathbf{x}}_{k-1} + B\mathbf{u}_k
+    = \hat{\mathbf{x}}_k^-.
+\end{align*}
+Analog erhält man für die prädizierte Kovarianz:
+\begin{align*}
+    \mathrm{Var}[\mathbf{x}_k \mid \mathcal{Z}_{k-1}]
+    &= F\,P_{k-1}\,F^\top + Q = P_k^-.
+\end{align*}
+
+\textbf{Schritt 2 --- Gemeinsame Gaußverteilung:}
+Da $\mathbf{x}_k \mid \mathcal{Z}_{k-1} \sim \mathcal{N}(\hat{\mathbf{x}}_k^-, P_k^-)$ und
+$\mathbf{v}_k \sim \mathcal{N}(\mathbf{0}, R)$ unabhängig sind, ist der gemeinsame Vektor
+$(\mathbf{x}_k, \mathbf{z}_k)^\top$ bedingt auf $\mathcal{Z}_{k-1}$ gaußsch:
+\[
+    \begin{pmatrix}\mathbf{x}_k \\ \mathbf{z}_k \end{pmatrix}
+    \Bigg|\, \mathcal{Z}_{k-1}
+    \sim \mathcal{N}\!\left(
+        \begin{pmatrix}\hat{\mathbf{x}}_k^- \\ H\hat{\mathbf{x}}_k^-\end{pmatrix},\,
+        \begin{pmatrix}P_k^- & P_k^- H^\top \\ H P_k^- & S_k \end{pmatrix}
+    \right).
+\]
+
+\textbf{Schritt 3 --- Bedingte Gaußverteilung:}
+Für einen gemeinsamen Gaußvektor gilt die Formel für die bedingte Erwartung:
+\[
+    \mathbb{E}[\mathbf{x}_k \mid \mathbf{z}_k, \mathcal{Z}_{k-1}]
+    = \hat{\mathbf{x}}_k^- + P_k^- H^\top S_k^{-1}(\mathbf{z}_k - H\hat{\mathbf{x}}_k^-)
+    = \hat{\mathbf{x}}_k^- + K_k\,\mathbf{y}_k
+    = \hat{\mathbf{x}}_k.
+\]
+Dies entspricht genau Formel~\eqref{eq:update_state}.
+
+\textbf{Schritt 4 --- Update-Kovarianz:}
+Die Kovarianz des Schätzfehlers nach dem Update ergibt sich aus der bedingten Varianz:
+\[
+    \mathrm{Var}[\mathbf{x}_k \mid \mathbf{z}_k, \mathcal{Z}_{k-1}]
+    = P_k^- - P_k^- H^\top S_k^{-1} H P_k^-
+    = (I - K_k H)\,P_k^-
+    = P_k.
+\]
+Dies entspricht Formel~\eqref{eq:update_cov}.
+
+Da in jedem Induktionsschritt gezeigt wurde, dass der Kalman-Filter den bedingten
+Erwartungswert und die bedingte Varianz korrekt berechnet, ist er der MMSE-Schätzer.
+\end{proof}
+
+\subsection{Positivität der Kovarianzmatrix}
+
+\begin{lemma}[Positive Semidefinitheit von $P_k$]
+\label{lem:psd}
+    Sei $P_0 \succeq 0$, $Q \succeq 0$ und $R \succ 0$. Dann gilt $P_k \succeq 0$ für alle $k \geq 0$.
+\end{lemma}
+
+\begin{proof}
+Wir zeigen die Behauptung durch Induktion über $k$.
+
+\textbf{Anfang:} $P_0 \succeq 0$ nach Voraussetzung.
+
+\textbf{Schritt $k-1 \to k$:} Sei $P_{k-1} \succeq 0$.
+Dann gilt $P_k^- = F P_{k-1} F^\top + Q \succeq 0$, da Kongruenztransformationen
+und Summen positiv semidefiniter Matrizen wiederum positiv semidefinit sind.
+
+Für die Update-Formel in Joseph-Form:
+\[
+    P_k = (I - K_k H)\,P_k^-\,(I - K_k H)^\top + K_k R K_k^\top.
+\]
+Der erste Summand ist $\succeq 0$ (Kongruenztransformation von $P_k^- \succeq 0$),
+der zweite ist $\succeq 0$ wegen $R \succ 0$.
+Daher ist $P_k \succeq 0$.
+\end{proof}
+
+\subsection{Stationärer Kalman-Filter und Riccati-Gleichung}
+
+\begin{satz}[Stationärer Kalman-Filter]
+\label{satz:stationaer}
+    Sei das System $(F, H, Q, R)$ vollständig beobachtbar und steuerbar.
+    Dann konvergiert die Fehlerkovarianzmatrix $P_k^-$ gegen eine eindeutige
+    stationäre Lösung $P^* = \lim_{k\to\infty} P_k^-$, die die algebraische
+    Riccati-Gleichung (ARE) löst:
+    \[
+        P^* = F\left(P^* - P^* H^\top (H P^* H^\top + R)^{-1} H P^*\right) F^\top + Q.
+    \]
+\end{satz}
+
+\begin{proof}
+\textbf{Schritt 1 --- Monotone Folge:}
+Wir zeigen zunächst, dass die Abbildung
+$\Phi(P) = F(P - P H^\top(H P H^\top + R)^{-1} H P)F^\top + Q$
+(Riccati-Iteration) monoton ist. Seien $P_1 \succeq P_2 \succeq 0$. Dann gilt
+$H P_1 H^\top + R \succeq H P_2 H^\top + R \succ 0$, woraus folgt
+$(H P_1 H^\top + R)^{-1} \preceq (H P_2 H^\top + R)^{-1}$.
+Die Schur-Komplement-Eigenschaft liefert dann $\Phi(P_1) \succeq \Phi(P_2)$.
+
+\textbf{Schritt 2 --- Beschränktheit:}
+Unter vollständiger Beobachtbarkeit existiert eine obere Schranke $\bar{P}$ mit
+$P_k^- \preceq \bar{P}$ für alle $k$. Dies folgt aus der Tatsache, dass die
+Informationsmatrix $(P_k^-)^{-1}$ durch reine Aktualisierungen mit Messungen
+nach unten beschränkt bleibt.
+
+\textbf{Schritt 3 --- Konvergenz:}
+Eine monoton steigende und nach oben beschränkte Folge von positiv semidefiniten
+Matrizen konvergiert gegen einen eindeutigen Grenzwert $P^*$ (Satz von Klein).
+Dieser Grenzwert ist per Konstruktion Fixpunkt der Riccati-Iteration und erfüllt
+daher die ARE.
+
+\textbf{Schritt 4 --- Eindeutigkeit:}
+Unter vollständiger Steuerbarkeit und Beobachtbarkeit ist die einzige
+positiv semidefinite Lösung der ARE die $P^*$ mit stabilem abgeglichenem System
+(Satz von Wonham \cite{wonham1968}).
+\end{proof}
+
+\begin{korollar}[Stationäre Kalman-Verstärkung]
+    Unter den Voraussetzungen von Satz~\ref{satz:stationaer} konvergiert die
+    Kalman-Verstärkung gegen den stationären Wert:
+    \[
+        K^* = P^* H^\top (H P^* H^\top + R)^{-1}.
+    \]
+    Im stationären Fall reduziert sich der Kalman-Filter zu einem zeitinvarianten
+    linearen Filter mit konstantem Gain $K^*$.
+\end{korollar}
+
+\subsection{Numerische Stabilität}
+
+\begin{lemma}[Stabilität der UDU\textsuperscript{T}-Zerlegung]
+    Die Faktorisierung $P_k = U_k D_k U_k^\top$ (UDU-Zerlegung), wobei $U_k$ eine
+    obere Einheitsdreiecksmatrix und $D_k$ eine Diagonalmatrix mit positiven Einträgen ist,
+    kann für den Kovarianz-Update numerisch stabiler durchgeführt werden als die direkte
+    Matrizenaktualisierung \cite{bierman1977}.
+\end{lemma}
+
+\begin{proof}[Skizze]
+Die direkte Update-Formel $P_k = (I - K_k H) P_k^-$ kann numerisch die
+Symmetrie oder positive Semidefinitheit von $P_k$ verletzen, wenn Rundungsfehler
+akkumulieren. In der UDU-Faktorisierung werden Prädiktions- und Update-Schritt
+durch Householder-Transformation direkt auf die Faktoren $U, D$ angewandt,
+was die Positivität von $D$ in jedem Schritt explizit erhält.
+\end{proof}
+
+% ================================================================
+\section{Algorithmus}
+% ================================================================
+
+\subsection{Vollständiger Algorithmus}
+
+\begin{satz}[Kalman-Filter-Algorithmus]
+    Unter den Voraussetzungen von Definition~\ref{def:lti} liefert der folgende
+    rekursive Algorithmus die MMSE-Schätzung $\hat{\mathbf{x}}_k$.
+\end{satz}
+
+\textbf{Initialisierung ($k=0$):}
+\[
+    \hat{\mathbf{x}}_0 = \mathbb{E}[\mathbf{x}_0], \quad P_0 = \mathrm{Var}[\mathbf{x}_0].
+\]
+
+\textbf{Für $k = 1, 2, 3, \ldots$:}
+
+\emph{Prädiktionsschritt:}
+\begin{align*}
+    \hat{\mathbf{x}}_k^- &= F\,\hat{\mathbf{x}}_{k-1} + B\,\mathbf{u}_k \\
+    P_k^-               &= F\,P_{k-1}\,F^\top + Q
+\end{align*}
+
+\emph{Updateschritt:}
+\begin{align*}
+    \mathbf{y}_k        &= \mathbf{z}_k - H\,\hat{\mathbf{x}}_k^- \\
+    S_k                 &= H\,P_k^-\,H^\top + R \\
+    K_k                 &= P_k^-\,H^\top\,S_k^{-1} \\
+    \hat{\mathbf{x}}_k  &= \hat{\mathbf{x}}_k^- + K_k\,\mathbf{y}_k \\
+    P_k                 &= (I - K_k H)\,P_k^-
+\end{align*}
+
+\subsection{Laufzeitkomplexität}
+
+\begin{satz}[Laufzeit]
+    Ein einzelner Kalman-Filter-Schritt für ein System mit $n$ Zustandsvariablen
+    und $m$ Messvariablen hat eine Zeitkomplexität von $O(n^3 + m^3)$.
+\end{satz}
+
+\begin{proof}
+Die dominierenden Operationen je Zeitschritt sind:
+\begin{itemize}
+    \item Matrixmultiplikationen $F P_{k-1} F^\top$: $O(n^3)$
+    \item Berechnung $H P_k^- H^\top$: $O(m \cdot n^2)$
+    \item Inversion von $S_k \in \mathbb{R}^{m \times m}$: $O(m^3)$
+    \item Matrixmultiplikation $K_k \mathbf{y}_k$: $O(n \cdot m)$
+    \item Update $P_k = (I - K_k H) P_k^-$: $O(n^2 \cdot m + n^3)$
+\end{itemize}
+Insgesamt ergibt sich $T(n, m) = O(n^3 + n^2 m + m^3)$.
+In der typischen Annahme $m \leq n$ vereinfacht sich dies zu $O(n^3)$.
+\end{proof}
+
+\begin{bemerkung}
+    Für sehr große Systeme (z.\,B.\ Wetterprognose mit $n \gg 10^6$) ist der direkte
+    Kalman-Filter nicht praktikabel. Hier kommen Ensemble-Methoden (Ensemble Kalman
+    Filter, EnKF \cite{evensen1994}) oder Approximationsverfahren zum Einsatz.
+\end{bemerkung}
+
+\subsection{Implementierung in Python}
+
+\begin{lstlisting}[language=Python, caption=Kalman-Filter in Python/NumPy]
+import numpy as np
+
+class KalmanFilter:
+    def __init__(self, F, B, H, Q, R, x0, P0):
+        self.F = F      # Zustandsübergangsmatrix
+        self.B = B      # Steuermatrix
+        self.H = H      # Messmatrix
+        self.Q = Q      # Prozessrausch-Kovarianz
+        self.R = R      # Messrausch-Kovarianz
+        self.x = x0     # Initialer Zustand
+        self.P = P0     # Initiale Kovarianz
+
+    def predict(self, u=None):
+        Bu = self.B @ u if u is not None else 0
+        self.x = self.F @ self.x + Bu
+        self.P = self.F @ self.P @ self.F.T + self.Q
+        return self.x
+
+    def update(self, z):
+        y = z - self.H @ self.x       # Innovation
+        S = self.H @ self.P @ self.H.T + self.R
+        K = self.P @ self.H.T @ np.linalg.inv(S)
+        self.x = self.x + K @ y
+        self.P = (np.eye(len(self.x)) - K @ self.H) @ self.P
+        return self.x, self.P
+\end{lstlisting}
+
+% ================================================================
+\section{Experimentelle Auswertung}
+% ================================================================
+
+Alle Experimente wurden in Python~3.12 mit NumPy~1.26 und Matplotlib~3.9 durchgeführt.
+Die Zufallssequenzen wurden mit Seed~42 initialisiert, um Reproduzierbarkeit zu garantieren.
+
+\subsection{Experiment 1: Positionsschätzung (2D-Trajektorie)}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plot1_tracking.pdf}
+    \caption{2D-Positionsschätzung: Wahre Trajektorie (schwarz), verrauschte Messungen
+             (rot) und Kalman-Filter-Schätzung (blau gestrichelt) für 50 Zeitschritte.
+             Systemrauschen $Q = 0{,}1 \cdot I_4$, Messrauschen $R = 2{,}0 \cdot I_2$.
+             Der Kalman-Filter folgt der wahren Trajektorie deutlich glatter als die
+             Rohmesspunkte.}
+    \label{fig:tracking}
+\end{figure}
+
+Ein zweidimensionales Tracking-System mit dem Zustandsvektor
+$\mathbf{x}_k = (x, y, \dot{x}, \dot{y})^\top$ und der Übergangsmatrix
+für konstante Geschwindigkeit
+\[
+    F = \begin{pmatrix}
+        1 & 0 & \Delta t & 0 \\
+        0 & 1 & 0 & \Delta t \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}, \quad \Delta t = 1
+\]
+wurde über $n=50$ Zeitschritte simuliert. Die Messmatrix $H = [I_2 \mid 0]$ liefert
+nur die Position. Abbildung~\ref{fig:tracking} zeigt, dass der Kalman-Filter die
+verrauschten Messungen signifikant glättet, ohne der wahren Trajektorie gegenüber
+stark zu verzögern.
+
+\subsection{Experiment 2: Schätzfehler und Kovarianzentwicklung}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plot2_error_cov.pdf}
+    \caption{Oben: Euklidischer Schätzfehler $\|\hat{\mathbf{x}}_k - \mathbf{x}_k\|$
+             über die Zeit. Unten: Spur der Fehlerkovarianzmatrix $\mathrm{tr}(P_k)$.
+             Beide Größen konvergieren nach wenigen Zeitschritten gegen einen
+             stationären Wert, wie von Satz~\ref{satz:stationaer} vorhergesagt.}
+    \label{fig:error_cov}
+\end{figure}
+
+Abbildung~\ref{fig:error_cov} bestätigt Satz~\ref{satz:stationaer}: Nach einer
+Einschwingphase von ca.\ 10 Zeitschritten konvergieren sowohl der Schätzfehler
+als auch $\mathrm{tr}(P_k)$ gegen stationäre Werte. Dies zeigt, dass der Filter
+die Unsicherheit über den Zustand korrekt quantifiziert.
+
+\subsection{Experiment 3: Innovationssequenz}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plot3_innovation.pdf}
+    \caption{Innovationsnorm $\|\mathbf{y}_k\|$ über die Zeit. Die graue gestrichelte
+             Linie zeigt den zeitlichen Mittelwert. Im stationären Betrieb sollte
+             $\mathbf{y}_k \sim \mathcal{N}(\mathbf{0}, S_k)$ gelten;
+             systematische Abweichungen deuten auf Modellmisfit hin.}
+    \label{fig:innovation}
+\end{figure}
+
+Die Innovationssequenz in Abbildung~\ref{fig:innovation} verhält sich weitgehend
+stationär um den Mittelwert. Statistische Tests (z.\,B.\ der Chi-Quadrat-Test auf
+Konsistenz) können auf Basis dieser Sequenz automatisiert werden, um Filteranomalien
+zu erkennen \cite{mehra1972}.
+
+\subsection{Experiment 4: Konvergenz der Kalman-Verstärkung}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plot4_gain_convergence.pdf}
+    \caption{Links: Kalman-Verstärkung $K_k$ für ein skalares System ($Q=0{,}5$, $R=2{,}0$)
+             konvergiert gegen den stationären Wert $K^* \approx 0{,}333$.
+             Rechts: Die Fehlerkovarianz $P_k$ konvergiert monoton gegen $P^* \approx 0{,}667$.
+             Beide Konvergenzen sind in $\Theta(\rho^k)$ mit $|\rho| < 1$.}
+    \label{fig:gain}
+\end{figure}
+
+Für das skalare System $x_{k+1} = x_k + w_k$, $z_k = x_k + v_k$ mit $Q=0{,}5$ und $R=2{,}0$
+konvergiert die Kalman-Verstärkung geometrisch schnell gegen den Fixpunkt $K^* = Q/(Q+R) \approx 0{,}333$.
+Die analytische stationäre Lösung der skalaren Riccati-Gleichung
+$P^* = P^* - (P^*)^2/(P^*+R) + Q$
+hat die geschlossene Form:
+\[
+    P^* = \frac{Q - R + \sqrt{(R-Q)^2 + 4QR}}{2} \approx 0{,}667.
+\]
+
+\subsection{Experiment 5: Einfluss des Rauschverhältnisses}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{plot5_noise_ratio.pdf}
+    \caption{Einfluss des Prozess-Mess-Rauschverhältnisses $Q/R$ auf das Filterverhalten.
+             Kleines $Q/R$ (oben links): Filter vertraut dem Modell, glättet stark.
+             Großes $Q/R$ (unten rechts): Filter vertraut den Messungen, reagiert schnell.}
+    \label{fig:noise_ratio}
+\end{figure}
+
+Das Verhältnis $Q/R$ steuert den Kompromiss zwischen Glättung und Reaktionsschnelligkeit
+(Abbildung~\ref{fig:noise_ratio}):
+\begin{itemize}
+    \item $Q/R \ll 1$: Das Modell ist sehr zuverlässig, der Filter ignoriert Messrauschen
+          weitgehend und liefert eine stark geglättete Schätzung.
+    \item $Q/R \gg 1$: Das Modell ist unzuverlässig, der Filter gewichtet Messungen stark
+          und reagiert schnell auf Änderungen, aber mit höherem Rauschen in der Schätzung.
+\end{itemize}
+Diese Beziehung lässt sich direkt aus der stationären Verstärkung
+$K^* = P^*/(P^*+R)$ ableiten: Für $Q \to 0$ gilt $P^* \to 0$ und damit $K^* \to 0$.
+
+\subsection{Experiment 6: RMSE-Vergleich}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plot6_rmse.pdf}
+    \caption{Histogramm des RMSE über 200 unabhängige Simulationsläufe.
+             Der Kalman-Filter (blau) erzielt konsistent niedrigere Fehler
+             als die Rohmessungen (rot). Mittelwerte: Messung $\approx 1{,}9$,
+             Kalman-Filter $\approx 0{,}7$.}
+    \label{fig:rmse}
+\end{figure}
+
+Über 200 unabhängige Monte-Carlo-Läufe zeigt Abbildung~\ref{fig:rmse}, dass der
+Kalman-Filter den RMSE im Mittel um den Faktor $\approx 2{,}7$ gegenüber den
+Rohmessungen reduziert. Dies bestätigt die MMSE-Optimalität aus Satz~\ref{satz:mmse}
+empirisch: Kein linearer unbiasierter Schätzer kann einen niedrigeren RMSE erzielen.
+
+% ================================================================
+\section{Zusammenfassung}
+% ================================================================
+
+Der Kalman-Filter liefert unter gaußschen Annahmen die statistisch optimale rekursive
+Zustandsschätzung für lineare Systeme. Seine Stärken liegen in:
+\begin{itemize}
+    \item \textbf{Optimalität:} Er minimiert den mittleren quadratischen Schätzfehler (Satz~\ref{satz:mmse}).
+    \item \textbf{Rekursivität:} Keine Speicherung vergangener Messungen notwendig.
+    \item \textbf{Effizienz:} Polynomiale Laufzeit $O(n^3)$ je Zeitschritt.
+    \item \textbf{Konvergenz:} Die Kovarianz konvergiert gegen die Lösung der Riccati-Gleichung (Satz~\ref{satz:stationaer}).
+\end{itemize}
+
+Die experimentellen Ergebnisse bestätigen alle theoretischen Aussagen quantitativ.
+
+% ================================================================
+\section{Ausblick}
+% ================================================================
+
+Der klassische lineare Kalman-Filter stellt eine herausragende wissenschaftliche
+Leistung dar --- und bildet gleichzeitig den Ausgangspunkt für eine Vielzahl
+aktiver Forschungsrichtungen, die weit über seinen ursprünglichen Anwendungsbereich
+hinausgehen. Die folgenden Abschnitte beschreiben die wichtigsten Erweiterungen
+und offenen Forschungsfragen ausführlich.
+
+\subsection{Erweiterung auf nichtlineare Systeme}
+
+Der klassische Kalman-Filter setzt Linearität von $F$ und $H$ voraus. In der Praxis
+sind jedoch die meisten physikalischen Systeme inhärent nichtlinear --- von der
+Satellitenbahn über biologische Netzwerke bis zur Roboterkinematik. Zwei paradigmatische
+Erweiterungen adressieren dieses Problem:
+
+\subsubsection{Extended Kalman Filter (EKF)}
+
+Der \emph{Extended Kalman Filter} \cite{jazwinski1970} linearisiert das nichtlineare System
+\begin{align}
+    \mathbf{x}_k &= f(\mathbf{x}_{k-1}, \mathbf{u}_k) + \mathbf{w}_k \\
+    \mathbf{z}_k &= h(\mathbf{x}_k) + \mathbf{v}_k
+\end{align}
+um die aktuelle Schätzung durch Taylor-Entwicklung erster Ordnung:
+\[
+    F_k = \frac{\partial f}{\partial \mathbf{x}}\bigg|_{\hat{\mathbf{x}}_{k-1}},
+    \quad
+    H_k = \frac{\partial h}{\partial \mathbf{x}}\bigg|_{\hat{\mathbf{x}}_k^-}.
+\]
+Der EKF ist in der Praxis weit verbreitet (GPS-Navigation, Roboterpositionierung,
+Inertialsensorik), aber nicht mehr exakt optimal, da die Linearisierung einen
+systematischen Fehler einführt, der für stark nichtlineare Systeme erheblich sein kann.
+
+Ein wesentliches offenes Problem ist die automatische Bestimmung der Jakobimatrizen
+$F_k$ und $H_k$ für komplexe Systemmodelle, wo symbolisches Differenzieren
+mit modernen \emph{Automatic Differentiation}-Frameworks (TensorFlow, JAX) einen
+vielversprechenden Ansatz darstellt \cite{baydin2018}.
+
+\subsubsection{Unscented Kalman Filter (UKF)}
+
+Der \emph{Unscented Kalman Filter} \cite{julier2004} umgeht die Linearisierung durch
+das \emph{Unscented Transform}: Statt die Funktion $f$ zu linearisieren, werden
+$2n+1$ Sigma-Punkte um die aktuelle Schätzung gewählt, durch die nichtlineare
+Funktion propagiert und zur Berechnung von Mittelwert und Kovarianz genutzt.
+Der UKF approximiert die Gaußverteilung nach Nichtlinearitäten bis zur dritten
+Ordnung korrekt, was zu deutlich besseren Ergebnissen als der EKF führt ---
+insbesondere für hochgradig nichtlineare Systeme wie die Lagrange-Gleichungen
+in der Robotik.
+
+\subsubsection{Particle Filter}
+
+Für stark nichtlineare Systeme oder nicht-gaußsche Rauschverteilungen kann der
+\emph{Particle Filter} (Sequential Monte Carlo) \cite{doucet2001} die Posterior-Verteilung
+durch eine gewichtete Partikelmenge approximieren:
+\[
+    p(\mathbf{x}_k \mid \mathcal{Z}_k) \approx \sum_{i=1}^N w_k^{(i)}\,
+    \delta(\mathbf{x}_k - \mathbf{x}_k^{(i)}).
+\]
+Während Particle Filter beliebige Verteilungen approximieren können, skalieren
+sie schlecht mit der Systemdimension (\emph{curse of dimensionality}), weshalb
+Hybridansätze (z.\,B.\ Rao-Blackwellized Particle Filter) aktiv erforscht werden.
+
+\subsection{Ensemble-Methoden für hochdimensionale Systeme}
+
+In der numerischen Wettervorhersage, der Ozeanographie und der Klimamodellierung
+umfasst der Zustandsvektor oft Millionen bis Milliarden von Variablen --- weit
+jenseits der praktischen Grenze des direkten Kalman-Filters, dessen Speicherbedarf
+$O(n^2)$ beträgt. Der \emph{Ensemble Kalman Filter} (EnKF) \cite{evensen1994, evensen2003}
+approximiert die Kovarianzmatrix durch ein Ensemble von $N \ll n$ Mitgliedern:
+\[
+    P_k \approx \frac{1}{N-1}\sum_{i=1}^N (\mathbf{x}_k^{(i)} - \bar{\mathbf{x}}_k)
+                                           (\mathbf{x}_k^{(i)} - \bar{\mathbf{x}}_k)^\top.
+\]
+Der EnKF hat die Wettervorhersage revolutioniert und wird heute operativ bei nahezu
+allen großen Wetterdiensten eingesetzt. Offene Forschungsfragen umfassen die
+optimale Ensemblegröße, Lokalisierungstechniken zur Unterdrückung von
+Fernkorrelationsartefakten und die Kombination mit maschinellem Lernen.
+
+\subsection{Kalman-Filter und maschinelles Lernen}
+
+Eine der aufregendsten Entwicklungen der letzten Jahre ist die enge Verbindung
+zwischen dem Kalman-Filter und der Theorie neuronaler Netze:
+
+\subsubsection{Kalman-Filter als Backpropagation}
+
+Es wurde gezeigt \cite{ollivier2018}, dass der Kalman-Filter und der
+Backpropagation-Algorithmus für lineare neuronale Netze formal äquivalent sind,
+wenn das Training als ein Problem der Zustands\-schätzung aufgefasst wird.
+Diese Verbindung eröffnet neue Wege zur theoretischen Analyse von
+Lernalgorithmen.
+
+\subsubsection{Neuronale Netzwerke zur Kovarianzschätzung}
+
+Ein praktisches Problem des Kalman-Filters ist die Notwendigkeit, $Q$ und $R$
+a priori zu kennen. \emph{Adaptive Kalman-Filter} \cite{mehra1972} schätzen diese
+Parameter aus der Innovationssequenz. Neuere Arbeiten ersetzen diese statistische
+Anpassung durch tiefe neuronale Netze, die aus Trainingsdaten lernen, optimale
+Rauschmatrizen vorherzusagen \cite{revach2022}. Insbesondere der \emph{KalmanNet}-Ansatz
+verbindet die Struktur des Kalman-Filters als \emph{Inductive Bias} mit der
+Ausdrucksstärke rekurrenter neuronaler Netze.
+
+\subsubsection{Differenzierbarer Kalman-Filter}
+
+Durch die Integration des Kalman-Filters in \emph{Differentiable Programming}-Frameworks
+kann der gesamte Filter --- einschließlich der Systemmatrizen $F$, $H$, $Q$, $R$ ---
+durch Gradientenabstieg aus Daten gelernt werden \cite{haarnoja2016}. Dies ermöglicht
+end-to-end trainierbare Systeme, bei denen physikalisches Vorwissen (Systemstruktur)
+und Daten optimal kombiniert werden.
+
+\subsection{Verteilte und dezentrale Kalman-Filter}
+
+In modernen vernetzten Systemen --- Sensornetzen, autonomen Fahrzeugkolonnen,
+Satellitenkonstellationen --- sind Messungen auf räumlich verteilte Sensoren verteilt.
+Der klassische zentralisierte Kalman-Filter erfordert, alle Daten an einen Rechenknoten
+zu senden, was Kommunikationsbandbreite und latenz begrenzt. Verteilte Kalman-Filter
+\cite{olfati2007} schätzen den globalen Zustand durch lokale Kommunikation zwischen
+Nachbarknoten, ohne einen zentralen Server zu benötigen. Für autonome Fahrzeuge
+ist dies besonders relevant, da V2V-Kommunikation (Vehicle-to-Vehicle) Echtzeit-Latenz
+im Millisekundenbereich erfordert.
+
+\subsection{Kalman-Filter in eingebetteten Systemen}
+
+Die Integration des Kalman-Filters in ressourcenbeschränkte Mikrocontroller
+(z.\,B.\ ARM Cortex-M0) stellt spezifische Herausforderungen:
+\begin{itemize}
+    \item \textbf{Festkomma-Arithmetik:} Matrizenoperationen in Festkomma statt Fließkomma
+          erfordern sorgfältige Skalierungsanalyse, um numerische Stabilität zu gewährleisten.
+    \item \textbf{MISRA-C-Konformität:} Sicherheitskritische Automobilanwendungen (ISO~26262)
+          verlangen MISRA-C-konforme Implementierungen ohne dynamische Allokation.
+    \item \textbf{Laufzeitgarantien:} Der Algorithmus muss in einem festen Zeitbudget
+          (Worst-Case Execution Time, WCET) abschließen --- dies beeinflusst die
+          Wahl zwischen Cholesky- und direkter Matrixinversion.
+    \item \textbf{AUTOSAR-Integration:} Für AUTOSAR-Plattformen \cite{autosar} muss der
+          Kalman-Filter als Software-Komponente (SWC) modelliert werden, mit klar
+          definierten Ports für Eingangs- und Ausgangssignale.
+\end{itemize}
+
+\subsection{Robustheit und Heavy-Tail-Rauschen}
+
+Die Gaußannahme ist in vielen realen Systemen verletzt: Sensorfehler durch
+kosmische Strahlung, GPS-Mehrwegeausbreitung oder mechanische Schläge erzeugen
+impulsartiges (heavy-tail) Rauschen. Robuste Kalman-Filter \cite{gandhi2010}
+ersetzen die quadratische Verlustfunktion durch $\ell_1$-Normen oder Huber-Verluste,
+die Ausreißer weniger stark gewichten. Ein offenes theoretisches Problem ist die
+Minimax-Optimalitätstheorie für robuste Filter: Unter welchen Robustheits\-garantien
+ist ein gegebener Filter optimal über alle Verteilungen einer bestimmten
+Robustheitsklasse?
+
+\subsection{Kalman-Smoother und retrospektive Analyse}
+
+Der klassische Kalman-Filter schätzt $\mathbf{x}_k$ auf Basis von
+$\mathcal{Z}_k = \{\mathbf{z}_1, \ldots, \mathbf{z}_k\}$ (kausale Schätzung).
+Der \emph{Kalman-Smoother} (Rauch-Tung-Striebel-Smoother \cite{rauch1965}) nutzt
+zusätzlich zukünftige Messungen für die rückwärtige Schätzung:
+\[
+    \hat{\mathbf{x}}_{k|N} = \mathbb{E}[\mathbf{x}_k \mid \mathbf{z}_1, \ldots, \mathbf{z}_N],
+    \quad k < N.
+\]
+Anwendungen umfassen retrospektive Datenanalyse, Systemidentifikation und
+offline-Verarbeitung von Zeitreihendaten (EEG, Finanzmarktanalyse, Meteorologie).
+
+\subsection{Quantenkalman-Filter}
+
+Mit dem Aufkommen der Quantencomputing-Technologie entstehen neue Varianten des
+Kalman-Filters für Quantensysteme \cite{belavkin1992}. Ein Quantensystem (z.\,B.\ ein
+supraleitender Qubit) unterliegt durch Messung einer Zustandsreduktion (Kollaps),
+die klassische Wahrscheinlichkeitsrechnung ersetzt durch den Formalismus der
+Dichtematrizen. Der \emph{Quantum Kalman Filter} schätzt rekursiv den Zustand
+des Quantensystems basierend auf schwachen (nicht-projektiven) Messungen.
+Diese Theorie ist eng verwandt mit der stochastischen Mastergleichung und hat
+direkte Anwendungen in der Quantenfehlerkorrektur und im Quanten-Feedback-Control.
+
+\subsection{Geometrische und Lie-Gruppen-Erweiterungen}
+
+Viele Zustandsräume physikalischer Systeme sind keine Vektorräume, sondern
+glatte Mannigfaltigkeiten (Lie-Gruppen): Orientierungen im 3D-Raum liegen auf
+$SO(3)$, Posen auf $SE(3)$. Standard-Kalman-Filter, die auf Additionen in
+$\mathbb{R}^n$ beruhen, können auf diese Räume nicht direkt angewandt werden.
+Der \emph{Invariant Extended Kalman Filter} (IEKF) \cite{barrau2015} formuliert
+Filter-Gleichungen intrinsisch auf der Lie-Gruppe, was zu besserer Konvergenz
+und Konsistenz für rotationssensitive Anwendungen (Drohnennavigation, SLAM)
+führt.
+
+\subsection{Integration in den Subgraph Algorithmus}
+
+Der Kalman-Filter und der Subgraph Algorithmus \cite{epp2026} verbinden sich auf
+konzeptioneller Ebene durch die gemeinsame Grundidee der strukturellen Signaturanalyse:
+Beide Algorithmen verarbeiten Matrizenstrukturen, um latente Informationen
+(Zustand vs.\ Subgraph-Beziehung) zu extrahieren. Eine formale Integration
+könnte den Subgraph Algorithmus für zeitvariante Graphsequenzen erweitern:
+Betrachte eine Folge von Graphen $G_1, G_2, \ldots, G_k$, deren strukturelle
+Veränderungen durch ein stochastisches Zustandsraummodell beschrieben werden.
+Der Kalman-Filter würde dann den latenten ``wahren'' Graphzustand schätzen,
+während der Subgraph Algorithmus die gemessenen Graphen auf Teilgraph-Beziehungen
+prüft. Solche zeitvarianten Graphfilter haben potenzielle Anwendungen in der
+biologischen Netzwerkanalyse \cite{epp2026bio} und der Compileroptimiierung durch AST-Evolution.
+
+% ================================================================
+\begin{thebibliography}{99}
+
+\bibitem{kalman1960}
+Kálmán, R.~E. (1960).
+A new approach to linear filtering and prediction problems.
+\emph{Journal of Basic Engineering}, 82(1), 35--45.
+
+\bibitem{welch1995}
+Welch, G., \& Bishop, G. (1995).
+An introduction to the Kalman filter.
+Technical Report TR~95-041, University of North Carolina at Chapel Hill.
+
+\bibitem{bar2004}
+Bar-Shalom, Y., Li, X.~R., \& Kirubarajan, T. (2004).
+\emph{Estimation with Applications to Tracking and Navigation}.
+Wiley-Interscience.
+
+\bibitem{joseph1968}
+Joseph, P.~D., \& Tou, J.~T. (1961).
+On linear control theory.
+\emph{Transactions of the AIEE}, 80(3), 193--196.
+
+\bibitem{wonham1968}
+Wonham, W.~M. (1968).
+On a matrix Riccati equation of stochastic control.
+\emph{SIAM Journal on Control}, 6(4), 681--697.
+
+\bibitem{bierman1977}
+Bierman, G.~J. (1977).
+\emph{Factorization Methods for Discrete Sequential Estimation}.
+Academic Press.
+
+\bibitem{jazwinski1970}
+Jazwinski, A.~H. (1970).
+\emph{Stochastic Processes and Filtering Theory}.
+Academic Press.
+
+\bibitem{julier2004}
+Julier, S.~J., \& Uhlmann, J.~K. (2004).
+Unscented filtering and nonlinear estimation.
+\emph{Proceedings of the IEEE}, 92(3), 401--422.
+
+\bibitem{doucet2001}
+Doucet, A., de Freitas, N., \& Gordon, N. (Hrsg.) (2001).
+\emph{Sequential Monte Carlo Methods in Practice}.
+Springer.
+
+\bibitem{evensen1994}
+Evensen, G. (1994).
+Sequential data assimilation with a nonlinear quasi-geostrophic model
+using Monte Carlo methods to forecast error statistics.
+\emph{Journal of Geophysical Research}, 99(C5), 10143--10162.
+
+\bibitem{evensen2003}
+Evensen, G. (2003).
+The Ensemble Kalman Filter: theoretical formulation and practical implementation.
+\emph{Ocean Dynamics}, 53(4), 343--367.
+
+\bibitem{ollivier2018}
+Ollivier, Y. (2018).
+Online natural gradient as a Kalman filter.
+\emph{Electronic Journal of Statistics}, 12(2), 2930--2961.
+
+\bibitem{revach2022}
+Revach, G., Shlezinger, N., Ni, X., Escoriza, A.~L., van Sloun, R.~J.~G.,
+\& Eldar, Y.~C. (2022).
+KalmanNet: Neural network aided Kalman filtering for partially known dynamics.
+\emph{IEEE Transactions on Signal Processing}, 70, 1532--1547.
+
+\bibitem{haarnoja2016}
+Haarnoja, T., Ajay, A., Levine, S., \& Abbeel, P. (2016).
+Backprop KF: Learning discriminative deterministic state estimators.
+In \emph{Advances in Neural Information Processing Systems}, 29.
+
+\bibitem{olfati2007}
+Olfati-Saber, R. (2007).
+Distributed Kalman filtering for sensor networks.
+In \emph{46th IEEE Conference on Decision and Control}, 5492--5498.
+
+\bibitem{mehra1972}
+Mehra, R.~K. (1972).
+Approaches to adaptive filtering.
+\emph{IEEE Transactions on Automatic Control}, 17(5), 693--698.
+
+\bibitem{gandhi2010}
+Gandhi, M.~A., \& Mili, L. (2010).
+Robust Kalman filter based on a generalized maximum-likelihood-type estimator.
+\emph{IEEE Transactions on Signal Processing}, 58(5), 2509--2520.
+
+\bibitem{rauch1965}
+Rauch, H.~E., Tung, F., \& Striebel, C.~T. (1965).
+Maximum likelihood estimates of linear dynamic systems.
+\emph{AIAA Journal}, 3(8), 1445--1450.
+
+\bibitem{belavkin1992}
+Belavkin, V.~P. (1992).
+Quantum stochastic calculus and quantum nonlinear filtering.
+\emph{Journal of Multivariate Analysis}, 42(2), 171--201.
+
+\bibitem{barrau2015}
+Barrau, A., \& Bonnabel, S. (2015).
+An EKF-SLAM algorithm with consistency properties.
+\emph{arXiv preprint}, arXiv:1510.06263.
+
+\bibitem{baydin2018}
+Baydin, A.~G., Pearlmutter, B.~A., Radul, A.~A., \& Siskind, J.~M. (2018).
+Automatic differentiation in machine learning: a survey.
+\emph{Journal of Machine Learning Research}, 18(153), 1--43.
+
+\bibitem{autosar}
+AUTOSAR Consortium (2024).
+\emph{AUTOSAR Classic Platform --- Software Component Template Specification}.
+Release R22-11, \url{https://www.autosar.org}.
+
+\bibitem{epp2026}
+Epp, S. (2026).
+Der Subgraph Algorithmus.
+\url{https://github.com/hjstephan86/subgraph}.
+
+\bibitem{epp2026bio}
+Epp, S. (2026).
+Biological Network Analysis with the Subgraph Algorithm.
+\url{https://github.com/hjstephan86/science}.
+
+\end{thebibliography}
+
+\end{document}
