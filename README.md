@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **235 wissenschaftliche Arbeiten** von Stephan Epp
+> **236 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -445,6 +445,7 @@
 |---|---|
 | hjstephan86 | Persönliches GitHub-Profil von Stephan Epp — Senior Software Entwickler, M.Sc. Informatik, Bielefeld |
 | nawfeuk | Physikalische Modellierung und bautechnische Analyse von Feuchteschäden an Mauerwerk und Kellerkonstruktionen |
+| fugen | Optimale Fugenbreite und Fugenanordnung für maximale Lebensdauer von Fliesen- und Steinböden |
 | holzbett *(Drive)* | Holzbett 2 m × 2 m — Statiknachweis DIN EN 1995-1-1; Mittelträger ohne Bodenstütze, KVH-Fichte |
 | npw | Forschungspotenziale der wissenschaftlichen Arbeiten von Stephan Epp — übergreifende Synthese aller Domänen |
 | bares *(Drive)* | Bares für Digitales — Konversion von Bargeld zu Guthaben; G(N,q), Qualitätsindex q, Strafgebühr π(q); Betrugsanalyse |
