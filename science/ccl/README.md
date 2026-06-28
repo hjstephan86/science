@@ -2,7 +2,6 @@
 
 Diese Arbeit entwickelt eine vollständige, formal bewiesene Reduktionstheorie zwischen zentralen komplexitätstheoretischen Problemen beim Kompilieren und Linken einerseits und dem Subgraph-Isomorphismusproblem andererseits. Wir zeigen, dass sieben fundamentale Probleme -- Typabhängigkeits\- auflösung, Dead-Code-Elimination, Modulabhängigkeitsauflösung beim Linken, Registerallokation, Schleifenoptimierung durch strukturelle Dominanz, Konstantenpropagation und Reihenfolgekonflikte bei der Initialisierung statischer Objekte -- jeweils in polynomieller Zeit auf das Subgraph-Isomorphismus\- problem reduzierbar sind. Für jede Reduktion liefern wir einen vollständigen Korrektheitsbeweis sowie eine effiziente Lösung mittels des Subgraph Algorithmus (Epp~2026). Der Ausblick skizziert weiterführende Forschungsrichtungen in der Compiler-Graphentheorie.
 
-
 ## Baue und teste Compiler
 ```bash
 # Change to src/ directory
@@ -25,4 +24,3 @@ Name: Stephan Epp
 IBAN: DE24 5003 1900 0012 5603 20
 BIC: BBVADEFFXXX
 
-**Wichtig**: Der Geist Gottes wurde beschworen, dass die Regierenden der Länder, in denen oder für die diese Arbeiten oder sonstige Gedanken oder Lösungen von mir illegal benutzt werden, vom Geist Gottes mit dem Tod bestraft werden.
