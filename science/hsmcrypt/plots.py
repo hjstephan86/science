@@ -178,3 +178,40 @@ plt.tight_layout()
 plt.savefig("plot9_bootzeit_flash.pdf")
 plt.close()
 print("plot9 done")
+
+# ---------- Plot 10: Parallelisierungsgrad k vs. Verifikationszeit ----------
+fig, ax = plt.subplots()
+k = np.array([1,2,4,8,16,32,64])
+T_seq_ms = 7340.0
+T_k = T_seq_ms / k
+ax.plot(k, T_k, "o-", color="#19468c", lw=2)
+ax.axhline(500, color="#b4321e", ls="--", lw=1)
+ax.text(1.2, 560, "Radar-ECU-Zeitbudget (500 ms)", color="#b4321e", fontsize=8.5)
+ax.axvline(16, color="#1e6432", ls=":", lw=1)
+ax.text(16.5, 4500, "k = 16\n(vorgeschlagen)", color="#1e6432", fontsize=8.5)
+for x,y in zip(k, T_k):
+    ax.annotate(f"{y:.0f} ms", (x,y), textcoords="offset points", xytext=(0,8),
+                ha="center", fontsize=7.5)
+ax.set_xscale("log", base=2)
+ax.set_yscale("log")
+ax.set_xlabel("Parallelisierungsgrad k (Anzahl Sig-Engine-Instanzen)")
+ax.set_ylabel("Verifikationszeit $T_{verify}$ [ms], log-Skala")
+ax.set_title("Verifikationszeit der parallelisierten Sig-Engine-Architektur")
+ax.grid(alpha=0.3, which="both")
+plt.tight_layout()
+plt.savefig("plot10_parallel_speedup.pdf")
+plt.close()
+
+# ---------- Plot 11: Silizium-/Flächenkosten vs. k ----------
+fig, ax = plt.subplots()
+k2 = np.array([1,2,4,8,16,32,64])
+area_mm2 = 0.18 * k2 + 0.05*np.log2(np.maximum(k2,1))  # linear core area + small XOR-tree overhead
+ax.bar([str(x) for x in k2], area_mm2, color="#3c3c46")
+ax.set_xlabel("Parallelisierungsgrad k")
+ax.set_ylabel("Geschätzte zusätzliche Siliziumfläche [mm²]")
+ax.set_title("Geschätzter Flächenmehrbedarf der parallelen Sig-Engine-Kacheln")
+plt.tight_layout()
+plt.savefig("plot11_flaechenkosten.pdf")
+plt.close()
+
+print("plot10, plot11 done")
