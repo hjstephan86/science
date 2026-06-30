@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **239 wissenschaftliche Arbeiten** von Stephan Epp
+> **240 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -193,6 +193,7 @@
 
 | Repository | Beschreibung |
 |---|---|
+| udssig | UDS-Erweiterung: Subgraph-basiertes Signal-Matching wählt optimale Signalmenge für Werkstattgeräte und mobile Apps in Θ(n³) |
 | evtraction | PMSM-Traktionsmotoren: Drehmoment-Drehzahl-Kennlinien, Feldschwächung, Rekuperation und Wirkungsgradkarte formal hergeleitet. |
 | canenert | CAN/CAN-FD: Echtzeit-Garantien und minimaler Energieverbrauch durch adaptives Monitoring und Scheduling. |
 | maschinenbau | Technische Mechanik und Maschinenbau — Lehrwerk mit formalen Beweisen zu Statik, Kinematik, Festigkeitslehre, Thermodynamik, Werkstofftechnik und Regelungstechnik |
