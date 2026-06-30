@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **238 wissenschaftliche Arbeiten** von Stephan Epp
+> **239 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -259,6 +259,7 @@
 
 | Repository | Beschreibung |
 |---|---|
+| redsec | Redundanzsicherheit — formale Vereinheitlichung von Funktionaler Sicherheit und Cyber Security durch Redundanzmodelle |
 | hsmcrypt | HSM-Funktionskern für Infineon TC3x aus Signatur-Chiffre und Fenster-Chiffre: Schlüsselerzeugung, Signatur, Secure-Boot, Firmware-Attestierung |
 | pqc | Post-Quanten-Kryptographie: CRYSTALS-Kyber, CRYSTALS-Dilithium, Lattice-Kryptographie und die Signatur-Chiffre |
 | pgpi/src | Die Affine Chiffre — vollständige mathematische Analyse mit optimalen Parametern a = 15 und b = 29 |
