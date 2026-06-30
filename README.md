@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **237 wissenschaftliche Arbeiten** von Stephan Epp
+> **238 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -259,6 +259,7 @@
 
 | Repository | Beschreibung |
 |---|---|
+| hsmcrypt | HSM-Funktionskern für Infineon TC3x aus Signatur-Chiffre und Fenster-Chiffre: Schlüsselerzeugung, Signatur, Secure-Boot, Firmware-Attestierung |
 | pqc | Post-Quanten-Kryptographie: CRYSTALS-Kyber, CRYSTALS-Dilithium, Lattice-Kryptographie und die Signatur-Chiffre |
 | pgpi/src | Die Affine Chiffre — vollständige mathematische Analyse mit optimalen Parametern a = 15 und b = 29 |
 | sigchiffre/src *(Drive)* | Strukturbasierte Verschlüsselungsmethode auf Basis der injektiven Subgraph-Signaturfunktion |
