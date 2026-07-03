@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **240 wissenschaftliche Arbeiten** von Stephan Epp
+> **241 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -28,6 +28,7 @@
 | cscience | 709-seitiges Lehrbuch: Bool. Matrixmultiplikation, Graphenalgorithmen, Komplexitätstheorie, Subgraph Algorithmus, Model Checking, Signalverarbeitung, Lineare Algebra, Gen-Framework |
 | bool-mm/src | Effiziente Boolean-Matrixmultiplikation in O(n²) mittels Signatur-Methode |
 | subgraph/src | Der Subgraph Algorithmus — löst Subgraph-Isomorphismus in O(n³), impliziert P = NP |
+| paramred | Polynomielle Reduktion: Min-Ones-2-SAT, Multicolored Clique, Set-Cover auf Subgraph-Isomorphismus |
 | space *(Drive)* | Subgraph Algorithmus in der Polynomialzeithierarchie — PH-Kollaps-Satz, Savitch-Theorem, PSPACE/NPSPACE-Konsequenzen, Quantenkomplexität |
 | reziprok *(Drive)* | Paradoxer Gewinn im Reziproken — Exponent n in σⱼ; Bijektivität; Divergenz-Konvergenz-Dualität von 2ⁿ/2⁻ⁿ; IEEE-754 |
 | algebra | Schwerpunkt algebraischer Strukturen: Vektoren, Matrizen und effiziente Berechnungen |
