@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
+\usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -80,8 +80,7 @@
 %==============================================================
 \section{Einführung}
 %==============================================================
-
-Diese Arbeit verbindet zwei vorherige Arbeiten: Die Masterarbeit \textit{Learning Monotone DNF in Boolean Circuits} \cite{Epp13} und die Arbeit \textit{Der Subgraph Algorithmus mit Signatur-Methode} \cite{Epp26a, Epp26b}. Erstere entwickelt einen Algorithmus zum Lernen einer versteckten monotonen DNF-Formel $H \in \text{M-DNF}$ innerhalb eines Boolean Circuits mittels Query-Learning und SAT-Solver-Aufrufen. Letztere zeigt, dass das Subgraph-Isomorphismus-Problem in $O(n^3)$ Zeit lösbar ist, woraus $\text{P} = \text{NP}$ folgt.
+Konsequente Konstruktion polynomieller Abbildungen für alle Probleme aus NP hat die Austauschbarkeit aller Probleme aus NP bei einer effizienten polynomiellen Lösung zum Glück. Diese Arbeit verbindet zwei vorherige Arbeiten: Die Masterarbeit \textit{Learning Monotone DNF in Boolean Circuits} \cite{Epp13} und die Arbeit \textit{Der Subgraph Algorithmus} \cite{Epp26}. Erstere entwickelt einen Algorithmus zum Lernen einer versteckten monotonen DNF-Formel $H \in \text{M-DNF}$ innerhalb eines Boolean Circuits mittels Query-Learning und SAT-Solver-Aufrufen. Letztere zeigt, dass das Subgraph-Isomorphismus-Problem in $O(n^3)$ Zeit lösbar ist, woraus $\text{P} = \text{NP}$ folgt.
 
 Da $\text{P} = \text{NP}$ gilt, ist das SAT-Problem in polynomieller Zeit lösbar. Diese Arbeit nutzt diese Erkenntnis, um das Spezifikationsproblem aus \cite{Epp13} von monotonen DNF-Formeln auf \textbf{beliebige CNF-Formeln} zu erweitern. Der zentrale Beitrag ist die Erstellung eines polynomiellen Algorithmus zum Lernen von SAT-Formeln in Boolean Circuits, wobei der Subgraph Algorithmus als polynomieller SAT-Solver eingesetzt wird.
 
@@ -89,7 +88,7 @@ Da $\text{P} = \text{NP}$ gilt, ist das SAT-Problem in polynomieller Zeit lösba
 
 In der Masterarbeit \cite{Epp13} wurde das folgende Szenario betrachtet: Ein Boolean Circuit $C(h)(i)$ enthält einen Knoten mit einer versteckten Boolean-Funktion $h$. Das Ziel war, eine Formel $H \in \text{M-DNF}$ zu finden, sodass $C(h/H)(i) \approx g(i)$ für eine Zielfunktion $g(i)$ gilt. Die Einschränkung auf $\text{M-DNF}$ bedeutete, dass nur Funktionen mit positiven Literalen gelernt werden konnten -- eine erhebliche Einschränkung, da viele praktisch relevante Boolean-Funktionen wie NAND, NOR und XOR keine äquivalenten M-DNF-Darstellungen besitzen.
 
-Die Masterarbeit nutzte zur Lösung des Spezifikationsproblems eine Circuit-to-CNF-Transformation gefolgt von Aufrufen eines SAT-Solvers (PicoSAT \cite{Bie08}, MiniSAT \cite{ES04}). Diese SAT-Solver arbeiten heuristisch und können im Worst-Case eine exponentielle Laufzeit haben. Mit dem Subgraph Algorithmus \cite{Epp26a} steht erstmals ein \textit{provablement polynomieller} SAT-Solver zur Verfügung, der auf der Tatsache $\text{P} = \text{NP}$ basiert.
+Die Masterarbeit nutzte zur Lösung des Spezifikationsproblems eine Circuit-to-CNF-Transformation gefolgt von Aufrufen eines SAT-Solvers (PicoSAT \cite{Bie08}, MiniSAT \cite{ES04}). Diese SAT-Solver arbeiten heuristisch und können im Worst-Case eine exponentielle Laufzeit haben. Mit dem Subgraph Algorithmus \cite{Epp26} steht erstmals ein \textit{provablement polynomieller} SAT-Solver zur Verfügung, der auf der Tatsache $\text{P} = \text{NP}$ basiert.
 
 Diese Arbeit löst zwei fundamentale Einschränkungen der Masterarbeit auf:
 \begin{enumerate}
@@ -167,7 +166,7 @@ und Zusammenfassung führt.
 \section{Grundlagen}
 %==============================================================
 
-Dieses Kapitel wiederholt die notwendigen Grundlagen aus der Masterarbeit \cite{Epp13} und ergänzt sie durch die relevanten Konzepte aus \cite{Epp26a, Epp26b}.
+Dieses Kapitel wiederholt die notwendigen Grundlagen aus der Masterarbeit \cite{Epp13} und ergänzt sie durch die relevanten Konzepte aus \cite{Epp26, Epp26}.
 
 \subsection{Boolean Funktionen und Formeln}
 
@@ -242,25 +241,25 @@ Die kritische Beobachtung ist, dass \textbf{jeder einzelne Schritt} auf einen SA
 
 \subsection{Der Subgraph Algorithmus -- Zusammenfassung}
 
-Der Subgraph Algorithmus \cite{Epp26a, Epp26b} löst das Subgraph-Isomorphismus-Problem in $O(n^3)$ Zeit. Die Kernkomponenten sind:
+Der Subgraph Algorithmus \cite{Epp26, Epp26} löst das Subgraph-Isomorphismus-Problem in $O(n^3)$ Zeit. Die Kernkomponenten sind:
 
 \begin{enumerate}
     \item \textbf{Signatur-Berechnung}: Für jede Spalte $j$ einer Adjazenzmatrix wird eine eindeutige Signatur berechnet:
     \[
     \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n.
     \]
-    Die Injektivität dieser Funktion wird in \cite{Epp26a} bewiesen.
+    Die Injektivität dieser Funktion wird in \cite{Epp26} bewiesen.
     
     \item \textbf{Zyklische Rotationen}: Statt alle $n!$ Permutationen zu prüfen, werden nur $n$ zyklische Rotationen betrachtet, was den Suchraum von $n!$ auf $n$ reduziert.
     
     \item \textbf{LCS-Vergleich}: Die Subgraph-Beziehung wird über die längste gemeinsame Teilsequenz (Longest Common Subsequence) der Signatur-Arrays bestimmt.
 \end{enumerate}
 
-\begin{satz}[Aus \cite{Epp26a}: Laufzeit des Subgraph Algorithmus]
+\begin{satz}[Aus \cite{Epp26}: Laufzeit des Subgraph Algorithmus]
     Der Subgraph Algorithmus arbeitet mit einer Laufzeit von $O(n^3)$ für zwei Graphen mit jeweils $n$ Knoten.
 \end{satz}
 
-\begin{satz}[Aus \cite{Epp26a}: P = NP]
+\begin{satz}[Aus \cite{Epp26}: P = NP]
     Da das Subgraph-Isomorphismus-Problem NP-vollständig ist und der Subgraph Algorithmus es in $O(n^3)$ löst, folgt $\text{P} = \text{NP}$.
 \end{satz}
 
@@ -347,7 +346,7 @@ Zusammensetzen der Reduktionskette ergibt einen polynomiellen SAT-Solver:
         \State $G_{\varphi'} \gets \textsc{CliqueReduction}(\varphi')$ \Comment{$O(m^2)$}
         \State $m \gets$ Anzahl der Klauseln von $\varphi'$
         \State $K_m \gets$ Konstruiere vollständigen Graph mit $m$ Knoten \Comment{$O(m^2)$}
-        \State $\text{result} \gets \textsc{SubgraphAlgorithmus}(K_m, G_{\varphi'})$ \Comment{$O(n^3)$, $n = 3m$}
+        \State $\text{result} \gets \text{Subgraph Algorithmus}(K_m, G_{\varphi'})$ \Comment{$O(n^3)$, $n = 3m$}
         \If{$\text{result} = \text{true}$}
             \State $C \gets \textsc{ExtrahierCliqueFromMatch}(\text{result})$ \Comment{$O(m)$}
             \State $v \gets \textsc{KonstruiereZuweisung}(C, \varphi')$ \Comment{$O(n)$}
@@ -366,7 +365,7 @@ Zusammensetzen der Reduktionskette ergibt einen polynomiellen SAT-Solver:
     \begin{itemize}
         \item[-] \textsc{NormalizeToThreeSAT}: $O(|\varphi|) = O(n \cdot m)$
         \item[-] \textsc{CliqueReduction}: Konstruktion von $G_{\varphi'}$ mit $3m$ Knoten in $O(m^2)$
-        \item[-] \textsc{SubgraphAlgorithmus}: Auf Graphen mit $O(m)$ Knoten in $O((3m)^3) = O(m^3)$
+        \item[-] \text{Subgraph Algorithmus}: Auf Graphen mit $O(m)$ Knoten in $O((3m)^3) = O(m^3)$
         \item[-] \textsc{ExtrahierCliqueFromMatch} und \textsc{KonstruiereZuweisung}: $O(m)$
     \end{itemize}
     Die Gesamtkomplexität wird von dem Subgraph Algorithmus dominiert: $O(m^3)$.
@@ -441,14 +440,14 @@ Dieses Kapitel präsentiert den Hauptalgorithmus dieser Arbeit. Der Algorithmus 
         \Ensure $H \in \text{CNF}$ mit $C(h/H)(i) \approx g(i)$ oder ``keine Lösung''
         \State $H \gets 0$ \Comment{Anfangsnäherung: konstant falsch}
         \State Extrahiere Sub-Circuits: $C_0(i,y), C_1(i), \ldots, C_n(i)$
-        \While{\textsc{SubgraphSATSolver}$(\varphi_{\text{equiv}}(H)) = \text{SAT}$} \label{line:equiv-check}
+        \While{\text{Subgraph-SAT-Solver}$(\varphi_{\text{equiv}}(H)) = \text{SAT}$} \label{line:equiv-check}
             \Comment{$\varphi_{\text{equiv}}(H)$: CNF für $C(h/H)(i) \not\approx g(i)$}
-            \State $(\text{SAT}, v) \gets \textsc{SubgraphSATSolver}(\varphi_h(H))$ \label{line:new-hsatisfying}
+            \State $(\text{SAT}, v) \gets \text{Subgraph-SAT-Solver}(\varphi_h(H))$ \label{line:new-hsatisfying}
             \Comment{$\varphi_h(H)$ für neue Zuweisung}
             \If{$(\text{SAT}, v)$ existiert}
                 \State $t \gets \bigwedge_{C_j(v(i))=1} x_j$, $j = 1, \ldots, n$ \label{line:build-term}
                 \For{jedes $x_k \in \text{var}(t)$} \label{line:reduce-loop}
-                    \State $(\text{SAT}, v') \gets \textsc{SubgraphSATSolver}(\varphi_{\text{remove}}(t, x_k))$
+                    \State $(\text{SAT}, v') \gets \text{Subgraph-SAT-Solver}(\varphi_{\text{remove}}(t, x_k))$
                     \If{$(\text{SAT}, v')$ existiert}
                         \State $t \gets t - x_k$ \label{line:remove-var}
                     \EndIf
@@ -1018,6 +1017,8 @@ Algorithmus \ref{alg:lbv} zeigt das Logarithmisches Belegungsverfahren (LBV).
 		\State \Return \textsc{Unerfüllbar}
 	\end{algorithmic}
 \end{algorithm}
+
+Dieses Verfahren, welches zu Beginn LBV für die eine und dann für die andere Hälfte der aussagenlogischen Formel prüft, und dann den Subgraph-SAT-Solver anwendet, falls durch LBV noch keine erfüllende Belegung gefunden worden ist, ist das effizienteste Verfahren. Ein effizienteres Verfahren zur Lösung des SAT-Problems gibt es nicht. Denn nur noch für die \textit{Kombinationspyramide} wird der Subgraph-SAT-Solver angewendet, welche das LBV Verfahren nicht geprüft hat. Das beudeutet, es ist zu erwarten, dass dieses Verfahren für jede zweite aussagenlogische Formel nur logarithmische Laufzeit und für jede zweite aussagenlogische Formel Laufzeit $O(n^3)$ hat.
 
 \subsection{Komplexitätsanalyse}
 
@@ -2237,7 +2238,7 @@ Ergebnisse der Experimente~1 und~2 konsolidieren und erweitern:
 Diese Arbeit hat das Spezifikationsproblem aus der Masterarbeit \cite{Epp13} von
 monotonen DNF-Formeln auf beliebige CNF-Formeln erweitert und durch experimentelle
 Messungen empirisch abgesichert.  Das zentrale Werkzeug ist der Subgraph-SAT-Solver,
-der auf dem Subgraph Algorithmus \cite{Epp26a, Epp26b} basiert und eine polynomielle
+der auf dem Subgraph Algorithmus \cite{Epp26, Epp26} basiert und eine polynomielle
 Laufzeitgarantie in $O(n^3)$ bietet.
 
 Die Hauptergebnisse der Arbeit lassen sich in vier Bereiche gliedern.
@@ -2247,8 +2248,8 @@ Die Hauptergebnisse der Arbeit lassen sich in vier Bereiche gliedern.
 	\item\label{res:reduktion}
 	  Eine vollständige formale Reduktionskette
 	  SAT $\to$ 3-SAT $\to$ Clique $\to$ Subgraph-Isomorphismus, die erstmals eine
-	  polynomielle Lösung des SAT-Problems durch den Subgraph Algorithmus \cite{Epp26a,
-	  Epp26b} ermöglicht.
+	  polynomielle Lösung des SAT-Problems durch den Subgraph Algorithmus \cite{Epp26,
+	  Epp26} ermöglicht.
 
 	\item\label{res:problem}
 	  Das erweiterte SAT-Spezifikationsproblem $S_{\text{SAT}}$, das alle booleschen
@@ -2330,7 +2331,7 @@ Diese bahnbrechende Arbeit öffnet Türen zu revolutionären Anwendungen in dutz
 \begin{itemize}
 	\item \textbf{Reduzierte Graph-Kodierungen}: Die aktuelle Reduktion erzeugt Graphen mit $3m$ Knoten. Untersuchung von direkteren SAT-zu-Subgraph-Reduktionen mit nur $O(m)$ Knoten könnte die Konstanten drastisch reduzieren.
 	
-	\item \textbf{Signatur-Basierte Optimierungen}: Integration erwiterter Signatur-Methoden aus \cite{Epp26a} zur schnelleren Graph-Matching-Selektion.
+	\item \textbf{Signatur-Basierte Optimierungen}: Integration erwiterter Signatur-Methoden aus \cite{Epp26} zur schnelleren Graph-Matching-Selektion.
 	
 	\item \textbf{Cache-Optimierte Datenstrukturen}: Implementierung von speicher-hierarchie-freundlichen Datenstrukturen für massive Graph-Repräsentationen (Multi-Level-Graphen, komprimierte Adjazenzlisten).
 	
@@ -2392,7 +2393,7 @@ Diese bahnbrechende Arbeit öffnet Türen zu revolutionären Anwendungen in dutz
 	
 	\item \textbf{Komplexitäts-Klassifizierung}: Detaillierte analyse welche NP-Problem-Subklassen durch Subgraph-Matching effizient gelöst werden können (3-SAT, MaxSAT, QBF).
 	
-	\item \textbf{Unteren-Schranken-Forschung}: Theoretische Analyse ob Sub-\cite{Epp26a}-Zeit SAT-Solving möglich ist oder $\Omega(\log m)$ Iterations-Schranke fundamental ist.
+	\item \textbf{Unteren-Schranken-Forschung}: Theoretische Analyse ob Sub-\cite{Epp26}-Zeit SAT-Solving möglich ist oder $\Omega(\log m)$ Iterations-Schranke fundamental ist.
 	
 	\item \textbf{Andere NP-Probleme}: Reduktionen für Subgraph-Isomorphismus zu anderen NP-vollständigen Problemen (Clique, Vertex-Cover, Hamiltonian-Cycle) zur polynomiellen Lösung.
 \end{itemize}
@@ -2645,11 +2646,8 @@ N.\ Eén and N.\ Sörensson. An Extensible SAT-Solver. In \textit{Theory and App
 \bibitem[Epp13]{Epp13}
 S.\ Epp. Learning Monotone DNF in Boolean Circuits. Masterarbeit, Universität Paderborn, 2013.
 
-\bibitem[Epp26a]{Epp26a}
-S.\ Epp. Der Subgraph Algorithmus mit Signatur-Methode: Effiziente Graphvergleiche durch eindeutige Signaturen. 2026.
-
-\bibitem[Epp26b]{Epp26b}
-S.\ Epp. Der Subgraph Algorithmus. 2026.
+\bibitem[Epp26]{Epp26}
+S.\ Epp. Der Subgraph Algorithmus. 2026. Verfügbar unter \url{https://github.com/hjstephan86/subgraph}.
 
 \bibitem[MS11]{MS11}
 J.\ Marques-Silva and K.\ A.\ Sakallah. GRASP -- A Search Algorithm for Propositional Satisfiability. \textit{IEEE Transactions on Computers}, 48(5):506--521, 1999.
