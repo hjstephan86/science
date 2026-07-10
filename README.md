@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **241 wissenschaftliche Arbeiten** von Stephan Epp
+> **242 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -38,7 +38,8 @@
 | pascbin | Pascalsches Dreieck als Lookup-Tabelle für Binomialkoeffizienten — formale Komplexitätsanalyse |
 | graphs | Einführung in Graphen mit Knoten und Kanten als universelle Datenstruktur |
 | loggraphs | Formaler Beweis der Optimalität von Graphmodellierung; logarithmische Tiefenstruktur durch Divide-and-Conquer |
-| lsat/src | Learning SAT in Boolean Circuits — polynomielle Lösung via Subgraph Algorithmus (P = NP) |
+| lsat/src | Learning SAT in Boolean Circuits — polynomielle Lösung via Subgraph Algorithmus (P = NP), Subgraph-SAT-Solver |
+| satpr | Wahrscheinlichkeitsverteilung und Laufzeitanalyse des Subgraph-SAT-Solvers |
 | systemth | Asymmetrische Matrixmultiplikation für dynamische Systeme — Boolean-Algebra bis zur kontinuierlichen Systemtheorie |
 | sysstate | Zustandsklassen dynamischer Systeme — Endlichkeit des Zustandsvektors und wirtschaftliche Implikationen |
 | depension | Depension: neue Theorie der mathematischen Abhängigkeitsmodellierung (Ersatz für „Regression") |
