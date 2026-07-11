@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **242 wissenschaftliche Arbeiten** von Stephan Epp
+> **243 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -57,6 +57,7 @@
 | jacobi *(Drive)* | Die Jacobi-Matrix als universale Ersetzung des Gradienten — formale Untersuchung der Äquivalenz und Verallgemeinerung |
 | analog *(Drive)* | Analog als primärer Begriff — ontologische Priorität des Kontinuierlichen; Fourier, Maßtheorie, Shannon-Kapazität |
 | dirac *(Drive)* | Der Dirac-Impuls δ(t) — formale Theorie im Rahmen der Distributionentheorie (Schwartz): Siebungseigenschaft, Faltungsidentität, Fourier-/Laplace-Transformierte, Dirac-Kamm, LTI-Systeme, Quantenmechanik |
+| elevator | The Einstein-Elevator: Advanced Microgravity Research Infrastructure — Design, Analysis, and Optimization |
 
 ---
 
