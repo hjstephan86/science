@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **243 wissenschaftliche Arbeiten** von Stephan Epp
+> **244 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -9,7 +9,7 @@
 | # | Hauptkategorie | Unterkategorien |
 |---|---|---|
 | **I** | [Fundamentale Wissenschaften](#i-fundamentale-wissenschaften) | Algorithmen & Mathematik · Graphentheorie & Subgraph Algorithmus · Physik & Astrophysik |
-| **II** | [Technologie & Engineering](#ii-technologie--engineering) | Hardware & Echtzeit · Prozessor- & Rechnerarchitektur · Elektronik · Fahrzeugtechnik · Luft- & Raumfahrt |
+| **II** | [Technologie & Engineering](#ii-technologie--engineering) | Hardware & Echtzeit · Prozessor- & Rechnerarchitektur · Elektronik · Fahrzeugtechnik · Luft- & Raumfahrt · Strömungsdynamik |
 | **III** | [Sicherheit & Kryptographie](#iii-sicherheit--kryptographie) | Kryptographie & Sicherheit |
 | **IV** | [Software & Systeme](#iv-software--systeme) | Software · Computergrafik · KI & Machine Learning |
 | **V** | [Natur- & Lebenswissenschaften](#v-natur---lebenswissenschaften) | Biologie, Gehirn & Medizin · Meeresbiologie · Theologie & Gesellschaft |
@@ -252,6 +252,16 @@
 | ecfta *(Drive)* | Dynamische Programmierung für das Coalition Formation for Task Allocation Problem in Multiagentensystemen |
 | robophi | Phi-Navigation für Roboter - Lokale Wegplanung nach goldenem Schnitt |
 | mcxrobo | Model Checking X Roboternavigation - Formale Verifikation autonomer Phi-basierter Navigationssysteme |
+
+---
+
+### II.7 Strömungsdynamik & Fluid-Struktur-Interaktion
+
+*Deterministische Benchmarks, stochastische Erweiterungen und mathematische Grenzen natürlicher Strömungen*
+
+| Repository | Beschreibung |
+|---|---|
+| phoenixd | FSI von Benchmark zur Unbeschreibbarkeit: Deterministisches FSI-2 → Spektrale Methoden → RANS/LES → Willkür des Meeres; Monte-Carlo, Turbulenzmodellierung, epistemologische Grenzen. |
 
 ---
 
