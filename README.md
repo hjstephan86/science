@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **244 wissenschaftliche Arbeiten** von Stephan Epp
+> **245 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -219,6 +219,7 @@
 | gamechanger *(Drive)* | Subgraph Algorithmus auf VW Gamechanger — Megacasting als dominanter Subgraph; −29 % Kosten, −35 % Taktzeit |
 | ldrill *(Drive)* | Laser-basierte Orthogonalitätskontrolle für Bohrmaschinen — formale Modellierung, Messtechnik und Systemarchitektur eines optischen Winkelsensors |
 | cnc | CNC-Werkzeugbandbreite: Taylor, Kienzle, Verschleiß, 5-Achsen, Beschichtung und KI-Ausblick |
+| ikfz | Sensor- und Aktor-Architektur in Kraftfahrzeugen: Strukturelle Trennung für intelligente Fahrzeugelektronik |
 
 ---
 
