@@ -1,4 +1,4 @@
-"""
+﻿"""
 Plots fuer das neue Kapitel 7:
   Fehlertolerante Subgraph-Analyse (Abb. 17-23)
 Autor: Stephan Epp
@@ -384,7 +384,7 @@ def plot_20_fpr():
     ax2.set_xlim(-0.02, 1.02)
     ax2.set_ylim(-0.02, 1.02)
 
-    fig.suptitle('Abb. 20 – Falsch-Positiv-Rate und ROC-Kurve des $\\varepsilon$-Subgraph-Algorithmus',
+    fig.suptitle('Abb. 20 – Falsch-Positiv-Rate und ROC-Kurve des $\\varepsilon$-Subgraph Algorithmus',
                  fontweight='bold', fontsize=12)
     plt.savefig('figures/fig20_fpr.pdf')
     plt.close()
@@ -575,7 +575,7 @@ def plot_22_optimale_schwelle():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# PLOT 23 – Vollständiges Beispiel: epsilon-Subgraph-Algorithmus
+# PLOT 23 – Vollständiges Beispiel: epsilon-Subgraph Algorithmus
 # ─────────────────────────────────────────────────────────────────────────────
 def plot_23_fuzzy_beispiel():
     np.random.seed(12)
@@ -698,7 +698,7 @@ def plot_23_fuzzy_beispiel():
                    fontweight='bold')
     ax_D.legend(fontsize=9)
 
-    fig.suptitle('Abb. 23 – Vollständiges Beispiel: $\\varepsilon$-Subgraph-Algorithmus',
+    fig.suptitle('Abb. 23 – Vollständiges Beispiel: $\\varepsilon$-Subgraph Algorithmus',
                  fontweight='bold', fontsize=12)
     plt.savefig('figures/fig23_fuzzy_beispiel.pdf')
     plt.close()
@@ -720,3 +720,4 @@ if __name__ == '__main__':
     plot_22_optimale_schwelle()
     plot_23_fuzzy_beispiel()
     print("All figures generated successfully.")
+

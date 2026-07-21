@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -89,7 +89,7 @@ ax3.set_title('TCO-Prognose (CAPEX+OPEX)\nnach CPU:GPU-Szenario')
 ax3.legend(fontsize=8)
 ax3.tick_params(axis='x', rotation=30)
 
-# ── Plot 4: Subgraph-Algorithmus-Laufzeit nach q bei DC-Skala ─────────
+# ── Plot 4: Subgraph Algorithmus-Laufzeit nach q bei DC-Skala ─────────
 ax4 = fig.add_subplot(gs[1, 0])
 q_values = [1, 2, 4, 8, 16]
 n_dc = 512
@@ -159,3 +159,4 @@ ax6.set_ylim(0, 100); ax6.tick_params(axis='x', rotation=30)
 
 plt.savefig('/home/claude/rz_extended/plot_cpugpu_e.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_e.pdf saved")
+

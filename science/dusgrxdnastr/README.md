@@ -1,4 +1,4 @@
-# Anwendung des Subgraph-Algorithmus aus der strukturellen Dateisystem-Deduplizierung in der DNA-basierten Datenspeicherung
+﻿# Anwendung des Subgraph Algorithmus aus der strukturellen Dateisystem-Deduplizierung in der DNA-basierten Datenspeicherung
 
 ## Vollständige mathematische Grundlagen, Beweise, experimentelle Analyse und weiterführende Perspektiven
 
@@ -14,4 +14,5 @@ Der Preis für diese Arbeiten beträgt 1.111.000.000,00 EUR.
 Name: Stephan Epp  
 IBAN: DE24 5003 1900 0012 5603 20
 BIC: BBVADEFFXXX
+
 

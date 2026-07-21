@@ -1,4 +1,4 @@
-package de.hjstephan86.jcl.phases;
+﻿package de.hjstephan86.jcl.phases;
 
 import de.hjstephan86.jcl.core.SubgraphAlgorithm;
 import de.hjstephan86.jcl.ir.ASTNode;
@@ -6,7 +6,7 @@ import de.hjstephan86.jcl.ir.ASTNode;
 import java.util.*;
 
 /**
- * Typaufloesung und Vererbungshierarchie (TAP) via Subgraph-Algorithmus.
+ * Typaufloesung und Vererbungshierarchie (TAP) via Subgraph Algorithmus.
  * Laufzeit: O(|T|^3) mit |T| = Anzahl Typen.
  *
  * @author Stephan Epp
@@ -166,3 +166,4 @@ public class TypeResolver {
 
     public int typeCount() { return types.size(); }
 }
+

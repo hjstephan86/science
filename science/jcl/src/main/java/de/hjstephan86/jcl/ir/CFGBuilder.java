@@ -1,4 +1,4 @@
-package de.hjstephan86.jcl.ir;
+﻿package de.hjstephan86.jcl.ir;
 
 import de.hjstephan86.jcl.phases.DeadCodeEliminator.BasicBlock;
 
@@ -36,7 +36,7 @@ public class CFGBuilder {
             return new MethodCFG(methodName, newBlocks, entry, exit);
         }
 
-        /** Adjazenzmatrix des CFG (fuer Subgraph-Algorithmus). */
+        /** Adjazenzmatrix des CFG (fuer Subgraph Algorithmus). */
         public boolean[][] toAdjacencyMatrix() {
             int n = blocks.size();
             boolean[][] adj = new boolean[n][n];
@@ -221,3 +221,4 @@ public class CFGBuilder {
         return n.childCount() > 0 ? n.getChild(0).toString() : "?";
     }
 }
+

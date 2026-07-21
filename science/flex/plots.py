@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 FLEX-Standard: Matplotlib-Visualisierungen
@@ -248,7 +248,7 @@ def plot5_subgraph_kompatibilitaet(outdir='.'):
         [0, 0, 1, 0, 0, 0, 1],  # I_NLP
     ], dtype=float)
 
-    # Laufzeiten des Subgraph-Algorithmus (in ms, simuliert)
+    # Laufzeiten des Subgraph Algorithmus (in ms, simuliert)
     runtimes = np.array([
         [1.2, 1.1, 0.9, 0.8, 0.7, 0.8, 0.9],
         [0.8, 0.9, 1.4, 1.1, 0.6, 0.7, 1.5],
@@ -313,3 +313,4 @@ if __name__ == '__main__':
     plot4_wettbewerb_ranking(outdir)
     plot5_subgraph_kompatibilitaet(outdir)
     print('Alle 5 Plots erfolgreich generiert.')
+

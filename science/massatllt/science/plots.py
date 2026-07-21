@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Plots fuer die wissenschaftliche Arbeit:
@@ -164,7 +164,7 @@ def plot3_subgraph_reduction():
     euler_gamma = 0.5772
     rho_k = np.array([euler_gamma + np.log(k) for k in k_values])
 
-    # Subgraph-Algorithmus: verbesserter Bound
+    # Subgraph Algorithmus: verbesserter Bound
     rho_subgraph = np.array([euler_gamma + np.log(k) * 0.78 for k in k_values])
     rho_lsat     = np.array([euler_gamma + np.log(k) * 0.65 for k in k_values])
 
@@ -202,7 +202,7 @@ def plot3_subgraph_reduction():
     axes[1].legend(fontsize=9)
     axes[1].grid(True, alpha=0.3, which='both')
 
-    plt.suptitle('Abbildung 3: Subgraph-Algorithmus Reduktion und Laufzeit',
+    plt.suptitle('Abbildung 3: Subgraph Algorithmus Reduktion und Laufzeit',
                  fontsize=12, y=1.01)
     plt.tight_layout()
     plt.savefig('/home/claude/satellite_mas/plot3_subgraph_reduction.pdf', bbox_inches='tight')
@@ -540,3 +540,4 @@ if __name__ == '__main__':
     plot7_lsat()
     plot8_ai_learning()
     print("Alle Plots fertig.")
+

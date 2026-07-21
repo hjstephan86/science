@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
+\usepackage{lmodern}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
@@ -20,6 +21,8 @@
 \usepackage{tcolorbox}
 \usepackage{mdframed}
 \usepackage{amsmath}
+
+\setlist[itemize,1]{label=--}
 
 \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
 
@@ -118,7 +121,7 @@ zu generieren. Damit wird sichergestellt, dass \textit{die Wahrheit immer im Cod
 	steht} -- Dokumentation und Implementierung bleiben dauerhaft synchron.
 
 % ================================================
-\section{Grundkonzept: Vererbungshierarchie und Modulstruktur}
+\section{Vererbungshierarchie und Modulstruktur}
 % ================================================
 
 \subsection{Das UML-Klassendiagramm als Ausgangspunkt}
@@ -192,6 +195,9 @@ Ein Software-Engineer, der \texttt{intermediate\_classes.py} öffnet, weiß unmi
 	\item Sie werden ihrerseits von konkreten Klassen (Ebene 3) beerbt.
 \end{itemize}
 
+\subsection{Vorgehen zur Umgestaltung}
+Das Vorgehen zur Umgestaltung: Erstelle ein neues Python Modul für jede Ebene der Vererbungshierarchie. Dazu wird nur Code zum Softwaresystem hinzugefügt und kein Code gelöscht. Die neuen Python Module enthalten dann alle neuen Klassen, die es aber im Projekt schon geben muss. Sonst würden sie nicht erstellt werden. Jetzt gilt es nur noch, die alten Python Klassen der Vererbungshierarchie, für die neue erstellt worden sind, zu entfernen. Diese einfache Umgestaltung erhält das ganze Verhalten des Systems und bildet gleichzeitig die Vererbungshierarchie horizontal ab.
+
 % ================================================
 \section{Implementierungsbeispiel in Python}
 % ================================================
@@ -209,22 +215,22 @@ Ein Software-Engineer, der \texttt{intermediate\_classes.py} öffnet, weiß unmi
 	class BaseAnimal(ABC):
 	"""Abstrakte Basisklasse fuer alle Tiere."""
 	
-	def __init__(self, name: str, age: int) -> None:
-	self.name = name
-	self.age = age
+		def __init__(self, name: str, age: int) -> None:
+			self.name = name
+			self.age = age
 	
-	@abstractmethod
-	def make_sound(self) -> str:
-	"""Gibt den typischen Laut des Tieres zurueck."""
-	...
+		@abstractmethod
+		def make_sound(self) -> str:
+		"""Gibt den typischen Laut des Tieres zurueck."""
+		...
 	
-	@abstractmethod
-	def move(self) -> str:
-	"""Beschreibt die Fortbewegungsart."""
-	...
+		@abstractmethod
+		def move(self) -> str:
+		"""Beschreibt die Fortbewegungsart."""
+		...
 	
-	def describe(self) -> str:
-	return f"{self.name} ({type(self).__name__}), Alter: {self.age}"
+		def describe(self) -> str:
+			return f"{self.name} ({type(self).__name__}), Alter: {self.age}"
 \end{lstlisting}
 
 \subsection{Modul Ebene 2: Intermediäre Klassen}
@@ -240,29 +246,29 @@ Ein Software-Engineer, der \texttt{intermediate\_classes.py} öffnet, weiß unmi
 	class Mammal(BaseAnimal):
 	"""Saeugetier -- erbt von BaseAnimal (Ebene 1)."""
 	
-	def __init__(self, name: str, age: int, fur_color: str) -> None:
-	super().__init__(name, age)
-	self.fur_color = fur_color
-	
-	def move(self) -> str:
-	return "laeuft auf vier oder zwei Beinen"
-	
-	def make_sound(self) -> str:
-	return "generisches Saeugetiergeraeusch"
-	
-	
+		def __init__(self, name: str, age: int, fur_color: str) -> None:
+			super().__init__(name, age)
+			self.fur_color = fur_color
+		
+		def move(self) -> str:
+			return "laeuft auf vier oder zwei Beinen"
+		
+		def make_sound(self) -> str:
+			return "generisches Saeugetiergeraeusch"
+		
+		
 	class Bird(BaseAnimal):
-	"""Vogel -- erbt von BaseAnimal (Ebene 1)."""
-	
-	def __init__(self, name: str, age: int, wingspan_cm: float) -> None:
-	super().__init__(name, age)
-	self.wingspan_cm = wingspan_cm
-	
-	def move(self) -> str:
-	return "fliegt oder laeuft"
-	
-	def make_sound(self) -> str:
-	return "generisches Vogelgeraeusch"
+		"""Vogel -- erbt von BaseAnimal (Ebene 1)."""
+		
+		def __init__(self, name: str, age: int, wingspan_cm: float) -> None:
+			super().__init__(name, age)
+			self.wingspan_cm = wingspan_cm
+		
+		def move(self) -> str:
+			return "fliegt oder laeuft"
+		
+		def make_sound(self) -> str:
+			return "generisches Vogelgeraeusch"
 \end{lstlisting}
 
 \subsection{Modul Ebene 3: Konkrete Klassen (DU-Klassen)}
@@ -278,31 +284,31 @@ Ein Software-Engineer, der \texttt{intermediate\_classes.py} öffnet, weiß unmi
 	class Dog(Mammal):
 	"""Hund -- konkrete Implementierung (DU-Klasse)."""
 	
-	def make_sound(self) -> str:
-	return "Wuff!"
+		def make_sound(self) -> str:
+			return "Wuff!"
 	
-	def fetch(self, item: str) -> str:
-	return f"{self.name} bringt {item} zurueck."
+		def fetch(self, item: str) -> str:
+			return f"{self.name} bringt {item} zurueck."
 	
 	
 	class Cat(Mammal):
 	"""Katze -- konkrete Implementierung (DU-Klasse)."""
 	
-	def make_sound(self) -> str:
-	return "Miau!"
+		def make_sound(self) -> str:
+			return "Miau!"
 	
-	def purr(self) -> str:
-	return f"{self.name} schnurrt."
+		def purr(self) -> str:
+			return f"{self.name} schnurrt."
 	
 	
 	class Eagle(Bird):
 	"""Adler -- konkrete Implementierung (DU-Klasse)."""
 	
-	def make_sound(self) -> str:
-	return "Kriii!"
+		def make_sound(self) -> str:
+			return "Kriii!"
 	
-	def dive(self) -> str:
-	return f"{self.name} stuerzt im Sturzflug herab."
+		def dive(self) -> str:
+			return f"{self.name} stuerzt im Sturzflug herab."
 \end{lstlisting}
 
 % ================================================
@@ -537,13 +543,10 @@ eines Projekts erstellt und danach nie mehr aktualisiert werden, verleiten
 Entwickler zu falschen Annahmen und können schwerwiegende Designfehler
 verursachen~\cite{kruchten1995}.
 
-\begin{prinzip}[Leitprinzip: Code als Single Source of Truth]
-	Die Wahrheit steht immer im Code. UML-Diagramme sind keine eigenständigen
-	Artefakte, die gepflegt werden müssen -- sie sind \textbf{abgeleitete
-		Sichten auf den Code}. Jedes Diagramm, das nicht automatisch aus dem aktuellen
-	Quellcode erzeugt wird, ist ein potenzielles Sicherheitsrisiko für die
-	Architekturintegrität des Projekts.
-\end{prinzip}
+\textit{Die Wahrheit steht immer im Code. UML-Diagramme sind keine eigenständigen
+Artefakte, die gepflegt werden müssen -- sie sind \textbf{abgeleitete Sichten auf den Code}. Jedes Diagramm, das nicht automatisch aus dem aktuellen
+Quellcode erzeugt wird, ist ein potenzielles Sicherheitsrisiko für die
+Architekturintegrität des Projekts.}
 
 Dieses Prinzip lässt sich mit \textbf{Pyreverse} konsequent umsetzen. Pyreverse
 ist ein Werkzeug, das automatisch UML-Klassen- und Paketdiagramme aus
@@ -721,17 +724,15 @@ zwischen den Klassen aller Module. Zusammen ergeben beide Diagramme ein
 vollständiges, stets aktuelles Bild der Systemarchitektur -- ohne manuellen
 Dokumentationsaufwand.
 
-\begin{prinzip}[Release-Checkliste: UML-Dokumentation]
-	Zu jedem Release sind folgende UML-Artefakte verpflichtend aus dem aktuellen
-	Quellcode zu generieren und im Versionsverwaltungssystem zu committen:
-	\begin{enumerate}
-		\item \texttt{classes\_<Projektname>.png} -- Aktuelles UML-Klassendiagramm
-		\item \texttt{packages\_<Projektname>.png} -- Aktuelles UML-Paketdiagramm
-	\end{enumerate}
-	Diese Artefakte sind die einzige autoritative Darstellung der aktuellen
-	Architektur. Manuell erstellte Diagramme gelten als informativ, nicht als
-	verbindlich.
-\end{prinzip}
+Zu jedem Release sind folgende UML-Artefakte verpflichtend aus dem aktuellen
+Quellcode zu generieren und im Versionsverwaltungssystem zu committen:
+\begin{enumerate}
+	\item \texttt{classes\_<Projektname>.png} -- Aktuelles UML-Klassendiagramm
+	\item \texttt{packages\_<Projektname>.png} -- Aktuelles UML-Paketdiagramm
+\end{enumerate}
+Diese Artefakte sind die einzige autoritative Darstellung der aktuellen
+Architektur. Manuell erstellte Diagramme gelten als informativ, nicht als
+verbindlich.
 
 % ================================================
 \section{Abgrenzung zu verwandten Konzepten}

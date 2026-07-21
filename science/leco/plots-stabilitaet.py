@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Plots fuer Kapitel: Der Subgraph-Algorithmus als Stabilisierungsoperator
+Plots fuer Kapitel: Der Subgraph Algorithmus als Stabilisierungsoperator
 auf dem Wirtschaftsgraphen -- Konvergenz zur Systemstabilitaet
 Stephan Epp, 2026
 """
@@ -37,7 +37,7 @@ plt.rcParams.update({
 OUT = '/home/claude/stabilitaet/'
 
 # =========================================================
-# Hilfsfunktionen: Subgraph-Algorithmus (Kernlogik)
+# Hilfsfunktionen: Subgraph Algorithmus (Kernlogik)
 # =========================================================
 
 def compute_signatures(matrix):
@@ -445,3 +445,4 @@ plt.close()
 print("Plot S6 gespeichert.")
 
 print("\nAlle Stabilitaets-Plots gespeichert.")
+

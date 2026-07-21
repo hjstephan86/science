@@ -1,7 +1,7 @@
-"""
+﻿"""
 sigchiffre.signature
 ====================
-Injektive Signaturfunktion σ aus dem Subgraph-Algorithmus.
+Injektive Signaturfunktion σ aus dem Subgraph Algorithmus.
 
 Definition:
     σ(A, j) = ρ(A, j) + λ(j)
@@ -100,3 +100,4 @@ def blocks_to_bytes(blocks: list[np.ndarray], n: int, original_len: int) -> byte
             byte_bits += [0] * (8 - len(byte_bits))
         result.append(sum(b << (7 - i) for i, b in enumerate(byte_bits)))
     return bytes(result[:original_len])
+

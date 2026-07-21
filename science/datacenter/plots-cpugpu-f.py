@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -131,7 +131,7 @@ for yr, y_pos, label, col in milestones:
              bbox=dict(boxstyle='round,pad=0.3', facecolor=col+'22', edgecolor=col, lw=1))
 
 ax5.text(2028, 0.5,
-         'Subgraph-Algorithmus ermöglicht\ndynamische Config-Auswahl bei jeder Phase',
+         'Subgraph Algorithmus ermöglicht\ndynamische Config-Auswahl bei jeder Phase',
          ha='center', fontsize=9, style='italic', color='#555',
          bbox=dict(boxstyle='round,pad=0.4', facecolor='#f0f4ff', edgecolor='#19468C', lw=1))
 
@@ -165,3 +165,4 @@ ax6.set_xlim(0, 50)
 
 plt.savefig('/home/claude/rz_extended/plot_cpugpu_f.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_f.pdf saved")
+

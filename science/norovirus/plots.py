@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import matplotlib.pyplot as plt
@@ -75,7 +75,7 @@ def plot_1_conservation():
     plt.close()
 
 
-# ---------- PLOT 2: Subgraph-Algorithmus Matching-Scores ----------
+# ---------- PLOT 2: Subgraph Algorithmus Matching-Scores ----------
 
 def plot_2_subgraph_matching():
     """Plot 2: LCS-Matching Scores für verschiedene Graphen-Rotationen"""
@@ -370,7 +370,7 @@ def plot_7_antibody_kinetics():
 # ---------- PLOT 8: Laufzeit-Komplexität Analyse ----------
 
 def plot_8_complexity():
-    """Plot 8: Laufzeit-Komplexität des Subgraph-Algorithmus"""
+    """Plot 8: Laufzeit-Komplexität des Subgraph Algorithmus"""
     fig, ax = plt.subplots(figsize=(12, 7))
     
     n = np.logspace(1, 3, 50)  # Graph-Größe von 10 bis 1000 Knoten
@@ -388,7 +388,7 @@ def plot_8_complexity():
     
     ax.set_xlabel('Graph-Größe (Knoten)', fontsize=13, weight='bold')
     ax.set_ylabel('Laufzeit (log-Skala, willkürliche Einheiten)', fontsize=13, weight='bold')
-    ax.set_title('Laufzeit-Komplexität: Subgraph-Algorithmus für verschiedene Graphen-Größen', 
+    ax.set_title('Laufzeit-Komplexität: Subgraph Algorithmus für verschiedene Graphen-Größen', 
                  fontsize=14, weight='bold', pad=20)
     ax.legend(fontsize=11, loc='upper left')
     ax.grid(True, alpha=0.3, which='both')
@@ -516,7 +516,7 @@ def main():
     """Erstelle alle Plots"""
     print("\n" + "="*60)
     print(" GENERIERUNG WISSENSCHAFTLICHER PLOTS")
-    print(" Norovirus-Impfstoff Analyse mittels Subgraph-Algorithmus")
+    print(" Norovirus-Impfstoff Analyse mittels Subgraph Algorithmus")
     print("="*60 + "\n")
     
     try:
@@ -546,3 +546,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

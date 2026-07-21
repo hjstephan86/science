@@ -1,4 +1,4 @@
-package de.hjstephan86.jcl.phases;
+﻿package de.hjstephan86.jcl.phases;
 
 import de.hjstephan86.jcl.core.SubgraphAlgorithm;
 import de.hjstephan86.jcl.ir.ASTNode;
@@ -6,7 +6,7 @@ import de.hjstephan86.jcl.ir.ASTNode;
 import java.util.*;
 
 /**
- * Modulabhaengigkeitsaufloesung (LAP) via Subgraph-Algorithmus.
+ * Modulabhaengigkeitsaufloesung (LAP) via Subgraph Algorithmus.
  * Unterstuetzt das Java Platform Module System (JPMS, Java 9+).
  * Laufzeit: O(p^3) mit p = Anzahl Module.
  *
@@ -156,3 +156,4 @@ public class ModuleResolver {
         return order;
     }
 }
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Generates all matplotlib plots for the TENTRIS/Subgraph Algorithm paper.
 """
@@ -162,7 +162,7 @@ def plot3_sparql_tensor():
     print("Plot 3 gespeichert.")
 
 # ─────────────────────────────────────────────────────────────
-# Plot 4: Subgraph-Algorithmus auf Wissensgraphen – Signatur-Demo
+# Plot 4: Subgraph Algorithmus auf Wissensgraphen – Signatur-Demo
 # ─────────────────────────────────────────────────────────────
 def plot4_signatures():
     # Demonstriere Signatur-Werte für eine 5×5 Adjazenzmatrix
@@ -212,7 +212,7 @@ def plot4_signatures():
     axes[2].set_ylabel('Signaturwert')
     axes[2].grid(axis='y', alpha=0.3)
 
-    fig.suptitle('Signaturberechnung des Subgraph-Algorithmus auf RDF-Wissensgraphen', fontweight='bold')
+    fig.suptitle('Signaturberechnung des Subgraph Algorithmus auf RDF-Wissensgraphen', fontweight='bold')
     fig.tight_layout()
     fig.savefig('/home/claude/tentris_paper/plot4_signatures.pdf')
     fig.savefig('/home/claude/tentris_paper/plot4_signatures.png')
@@ -328,7 +328,7 @@ def plot6_memory():
     axes[1].grid(True, alpha=0.3)
     axes[1].set_yscale('log')
 
-    fig.suptitle('Speicher- und Skalierungsanalyse: TENTRIS und Subgraph-Algorithmus', fontweight='bold')
+    fig.suptitle('Speicher- und Skalierungsanalyse: TENTRIS und Subgraph Algorithmus', fontweight='bold')
     fig.tight_layout()
     fig.savefig('/home/claude/tentris_paper/plot6_memory.pdf')
     fig.savefig('/home/claude/tentris_paper/plot6_memory.png')
@@ -343,3 +343,4 @@ plot4_signatures()
 plot5_lcs_rotation()
 plot6_memory()
 print("Alle Plots erfolgreich generiert.")
+

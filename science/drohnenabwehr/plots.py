@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -27,7 +27,7 @@ LGRAY  = '#F5F5F8'
 ORANGE = '#D4700A'
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Plot 1: O(n³) Laufzeit des Subgraph-Algorithmus auf Netzwerkgraphen
+# Plot 1: O(n³) Laufzeit des Subgraph Algorithmus auf Netzwerkgraphen
 # Normierung: relativ zu n0=5, sodass alle Kurven bei 1 starten und
 # die Ordnung n^2 < n^3 < n^4 überall korrekt sichtbar ist (log-Skala).
 # ─────────────────────────────────────────────────────────────────────────────
@@ -39,7 +39,7 @@ T_n2       = (n_vals / n0)**2
 T_subgraph = (n_vals / n0)**3
 T_n4       = (n_vals / n0)**4
 
-ax.plot(n_vals, T_subgraph, color=BLUE,  lw=2.5, label=r'Subgraph-Algorithmus $\Theta(n^3)$')
+ax.plot(n_vals, T_subgraph, color=BLUE,  lw=2.5, label=r'Subgraph Algorithmus $\Theta(n^3)$')
 ax.plot(n_vals, T_n2,       color=GREEN, lw=2,   linestyle='--', label=r'Untere Schranke $\Omega(n^2)$')
 ax.plot(n_vals, T_n4,       color=RED,   lw=2,   linestyle=':',  label=r'Naiver Ansatz $O(n^4)$')
 ax.fill_between(n_vals, T_n2, T_subgraph, alpha=0.08, color=BLUE)
@@ -53,7 +53,7 @@ for T, label, color in [(T_n4[-1],       f'$n^4$: {T_n4[-1]:.0e}×', RED),
 
 ax.set_xlabel('Anzahl Basisstationen / Netzwerkknoten $n$')
 ax.set_ylabel(r'Normierte Laufzeit $(n/n_0)^k$,  $n_0 = 5$')
-ax.set_title('Laufzeitkomplexität des Subgraph-Algorithmus\nauf Mobilfunknetz-Graphen')
+ax.set_title('Laufzeitkomplexität des Subgraph Algorithmus\nauf Mobilfunknetz-Graphen')
 ax.legend(loc='upper left')
 ax.set_yscale('log')
 ax.grid(True, alpha=0.3, which='both')
@@ -72,7 +72,7 @@ fig, ax = plt.subplots(figsize=(7, 6))
 
 # Simulierte ROC-Kurven für verschiedene Algorithmen
 fpr = np.linspace(0, 1, 300)
-# Subgraph-Algorithmus (sehr gut)
+# Subgraph Algorithmus (sehr gut)
 tpr_sub  = 1 - norm.cdf(norm.ppf(1 - fpr) - 3.2)
 # Klassisches Matching
 tpr_class = 1 - norm.cdf(norm.ppf(1 - fpr) - 1.8)
@@ -83,7 +83,7 @@ auc_sub   = np.trapezoid(tpr_sub,   fpr)
 auc_class = np.trapezoid(tpr_class, fpr)
 
 ax.plot(fpr, tpr_sub,   color=BLUE,  lw=2.5,
-        label=f'Subgraph-Algorithmus (AUC = {auc_sub:.3f})')
+        label=f'Subgraph Algorithmus (AUC = {auc_sub:.3f})')
 ax.plot(fpr, tpr_class, color=ORANGE, lw=2,   linestyle='--',
         label=f'Klassisches Signatur-Matching (AUC = {auc_class:.3f})')
 ax.plot(fpr, tpr_rand,  color=GRAY,  lw=1.5, linestyle=':',
@@ -137,7 +137,7 @@ for data, color, lw in [(normal_sigs, BLUE, 2.5), (drone_sigs, RED, 2.5), (spoof
 ax.axvline(155, color=GREEN, lw=2, linestyle='--', label='Detektionsschwelle $\theta = 155$')
 ax.set_xlabel('Signatur-Wert $\sigma_j$ (normiert)')
 ax.set_ylabel('Wahrscheinlichkeitsdichte')
-ax.set_title('Signatur-Verteilung nach Verkehrsklasse\n(Subgraph-Algorithmus-Signaturen)')
+ax.set_title('Signatur-Verteilung nach Verkehrsklasse\n(Subgraph Algorithmus-Signaturen)')
 ax.legend()
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
@@ -291,3 +291,4 @@ plt.close()
 print("Plot 6 OK")
 
 print("Alle Plots erfolgreich generiert.")
+

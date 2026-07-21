@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Plots 7-11 fuer: Wesentliche Charakteristika natuerlicher Paare
 Einfachheit, Harmonie, Formalitaet, Verbindung
@@ -88,7 +88,7 @@ def axiom_scores(G, A):
     return np.array([a1, a2, a3, a4, a5], dtype=float) / np.array([2,2,3,1,2], dtype=float)
 
 def compute_sigma(A, j):
-    """Signatur sigma_j gemaess Subgraph-Algorithmus (Epp 2026)."""
+    """Signatur sigma_j gemaess Subgraph Algorithmus (Epp 2026)."""
     n = A.shape[0]
     val = sum(int(A[i, j]) * (2**i) for i in range(n)) + j * (2**n)
     return val
@@ -529,3 +529,4 @@ plt.close()
 print("Plot 11 gespeichert.")
 
 print("\nAlle 5 Plots (7-11) erfolgreich gespeichert.")
+

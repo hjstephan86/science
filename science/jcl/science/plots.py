@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Generate all matplotlib plots for jcl.tex as individual PDFs."""
 
 import matplotlib
@@ -38,7 +38,7 @@ fig.savefig('plot1_laufzeit.pdf')
 plt.close(fig)
 print("plot1_laufzeit.pdf erzeugt")
 
-# ── Plot 2: Subgraph-Algorithmus – Erkennungsrate ──────────────────────────
+# ── Plot 2: Subgraph Algorithmus – Erkennungsrate ──────────────────────────
 fig, ax = plt.subplots(figsize=(7, 4))
 n_vals = np.arange(2, 15)
 true_pos  = 1.0 - 0.02 * np.exp(-0.5 * n_vals)
@@ -48,7 +48,7 @@ ax.plot(n_vals, false_neg, 's--', color='#b4321e', label='Fehlerrate (False Nega
 ax.axhline(1.0, color='gray', lw=0.8, ls=':')
 ax.set_xlabel('Mustergröße $|V_H|$')
 ax.set_ylabel('Rate')
-ax.set_title('Erkennungsrate des Subgraph-Algorithmus im JCL')
+ax.set_title('Erkennungsrate des Subgraph Algorithmus im JCL')
 ax.set_ylim(-0.05, 1.1)
 ax.legend()
 ax.grid(True, alpha=0.3)
@@ -209,3 +209,4 @@ plt.close(fig)
 print("plot10_pipeline.pdf erzeugt")
 
 print("\nAlle 10 Plots erfolgreich generiert.")
+

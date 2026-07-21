@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Erzeugung aller Matplotlib-Abbildungen für
 dusgrxdnastr.tex
@@ -65,7 +65,7 @@ def fig_compression():
                 color=C_ORANGE, fontsize=11)
     ax.set_xlabel(r'Redundanzgrad $\rho$')
     ax.set_ylabel(r'Kompressionsfaktor $(1-\rho)^{-1}$')
-    ax.set_title('Kompressionsfaktor des Subgraph-Algorithmus')
+    ax.set_title('Kompressionsfaktor des Subgraph Algorithmus')
     ax.set_xlim(0, 0.95)
     ax.set_ylim(1, 22)
     ax.legend(loc='upper left')
@@ -450,3 +450,4 @@ if __name__ == '__main__':
     fig_complexity()
     fig_epigenetic()
     print('Alle Abbildungen erzeugt.')
+

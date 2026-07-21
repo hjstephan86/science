@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Alle matplotlib-Plots für die Arbeit pyast.tex als einzelne PDFs."""
 
 import matplotlib
@@ -75,7 +75,7 @@ fig.savefig('plot3_dichte.pdf')
 plt.close(fig)
 print("plot3_dichte.pdf")
 
-# ── Plot 4: Subgraph-Algorithmus Laufzeit – empirisch vs. theoretisch ─────
+# ── Plot 4: Subgraph Algorithmus Laufzeit – empirisch vs. theoretisch ─────
 fig, ax = plt.subplots(figsize=(7, 4))
 n = np.array([5, 10, 20, 30, 50, 75, 100])
 t_subgraph = n**3 * 1.2e-8
@@ -87,7 +87,7 @@ t_n2 = n**2 * 1.5e-7
 ax.plot(n, t_n2, '--', color=C3, label='$O(n^2)$ Signaturberechnung')
 ax.set_xlabel('Knotenanzahl $n$')
 ax.set_ylabel('Zeit (s)')
-ax.set_title('Laufzeit des Subgraph-Algorithmus auf Python-AST-Graphen')
+ax.set_title('Laufzeit des Subgraph Algorithmus auf Python-AST-Graphen')
 ax.legend()
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
@@ -204,7 +204,7 @@ ax.loglog(n3, mem_lcs, 's--', color=C2, label='LCS-DP-Tabelle $O(n^2)$')
 ax.loglog(n3, mem_sig, 'D:',  color=C3, label='Signatur-Array $O(n)$')
 ax.set_xlabel('Knotenanzahl $n$')
 ax.set_ylabel('Speicher (KB) [log-Skala]')
-ax.set_title('Speicherverbrauch des Subgraph-Algorithmus')
+ax.set_title('Speicherverbrauch des Subgraph Algorithmus')
 ax.legend()
 ax.grid(True, which='both', alpha=0.3)
 fig.tight_layout()
@@ -219,7 +219,7 @@ rate_sg   = 1.0 - 0.0*umbenennungen       # SI: robust gegen Umbenennung
 rate_text = np.maximum(0, 1.0 - 0.09*umbenennungen)  # Textvergl.
 rate_hash = np.maximum(0, 1.0 - 0.12*umbenennungen)  # Hash-Vergl.
 ax.plot(umbenennungen*10, rate_sg,   'o-',  color=C1,
-        label='Subgraph-Algorithmus (AST)')
+        label='Subgraph Algorithmus (AST)')
 ax.plot(umbenennungen*10, rate_text, 's--', color=C2,
         label='Textvergleich')
 ax.plot(umbenennungen*10, rate_hash, 'D:',  color=C4,
@@ -255,3 +255,4 @@ plt.close(fig)
 print("plot12_rotationen.pdf")
 
 print("\nAlle 12 Plots erfolgreich generiert.")
+

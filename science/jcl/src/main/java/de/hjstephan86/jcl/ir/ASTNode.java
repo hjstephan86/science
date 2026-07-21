@@ -1,4 +1,4 @@
-package de.hjstephan86.jcl.ir;
+﻿package de.hjstephan86.jcl.ir;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,7 +99,7 @@ public class ASTNode {
     public void setDeclaration(ASTNode d) { this.declaration  = d; }
 
     // ----------------------------------------------------------------
-    // Graphkonvertierung (fuer Subgraph-Algorithmus)
+    // Graphkonvertierung (fuer Subgraph Algorithmus)
     // ----------------------------------------------------------------
 
     /**
@@ -160,3 +160,4 @@ public class ASTNode {
         return kind + (value.isEmpty() ? "" : "(\"" + value + "\")");
     }
 }
+

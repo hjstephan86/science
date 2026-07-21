@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -100,7 +100,7 @@ for bar, op, nt in zip(bars, ops, n_t):
              ha='center', va='bottom', fontsize=8, fontweight='bold')
 ax3.set_xlabel('CPU:GPU-Konfiguration')
 ax3.set_ylabel('Operationen $\\Theta(n_T^3)$')
-ax3.set_title(f'Subgraph-Algorithmus Komplexität\n($k={k_cpus}$ CPU-Einheiten)')
+ax3.set_title(f'Subgraph Algorithmus Komplexität\n($k={k_cpus}$ CPU-Einheiten)')
 ax3.set_yscale('log')
 
 # ── Plot 4: Bandbreite-Anforderung nach Workload + Config ─────────────
@@ -146,3 +146,4 @@ ax5.legend(lines1+lines2, labels1+labels2, fontsize=8)
 
 plt.savefig('/home/claude/rz_extended/plot_cpugpu_c.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_c.pdf saved")
+

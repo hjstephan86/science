@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Matplotlib-Plots für die wissenschaftliche Arbeit:
 "Resilienz der Erde: Wiederherstellungsfähigkeit natürlicher Ökosysteme"
@@ -226,7 +226,7 @@ plt.close()
 print("Plot 7 gespeichert.")
 
 # ----------------------------------------------------------------
-# Plot 8: Subgraph-Algorithmus – Resilienznetzwerk der Biodiversität
+# Plot 8: Subgraph Algorithmus – Resilienznetzwerk der Biodiversität
 # ----------------------------------------------------------------
 np.random.seed(42)
 n = 8
@@ -250,7 +250,7 @@ pos = np.column_stack([np.cos(angles), np.sin(angles)])
 fig, ax = plt.subplots(figsize=(7, 7))
 ax.set_aspect('equal')
 ax.axis('off')
-ax.set_title('Plot 8 – Resilienz-Interaktionsnetz der Ökosystemkomponenten\n(Subgraph-Algorithmus Signaturkodierung)', pad=10)
+ax.set_title('Plot 8 – Resilienz-Interaktionsnetz der Ökosystemkomponenten\n(Subgraph Algorithmus Signaturkodierung)', pad=10)
 
 colors = ['#27ae60','#2980b9','#8b4513','#1abc9c','#f39c12','#e74c3c','#9b59b6','#7f8c8d']
 for i in range(n):
@@ -279,3 +279,4 @@ plt.close()
 print("Plot 8 gespeichert.")
 
 print("\nAlle Plots erfolgreich generiert!")
+

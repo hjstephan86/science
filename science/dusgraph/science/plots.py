@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -36,7 +36,7 @@ n = np.logspace(1, 4, 300)
 ax.loglog(n, n,          color=GREEN,  lw=2,   label=r'$O(n)$ – naiver Scan')
 ax.loglog(n, n*np.log(n),color=BLUE,   lw=2,   label=r'$O(n \log n)$ – Inode-Hash')
 ax.loglog(n, n**2,       color=ORANGE, lw=2,   label=r'$O(n^2)$ – Signaturberechnung')
-ax.loglog(n, n**3,       color=RED,    lw=2.5, label=r'$O(n^3)$ – Subgraph-Algorithmus (optimal)')
+ax.loglog(n, n**3,       color=RED,    lw=2.5, label=r'$O(n^3)$ – Subgraph Algorithmus (optimal)')
 ax.loglog(n, 120*n**2*(n/5), color=GRAY, lw=1.5, ls='--',
           label=r'$O(n! \cdot n^2)$ – naive Permutation')
 ax.set_xlabel('Anzahl Inodes $n$')
@@ -197,7 +197,7 @@ ax.fill_between(n_v, 2*mem_sig, 2*mem_sig+mem_adj, color=ORANGE, alpha=0.5, labe
 ax.fill_between(n_v, 2*mem_sig+mem_adj, mem_total, color=RED, alpha=0.5, label='LCS-Tabelle $O(n^2)$')
 ax.set_xlabel('Knotenzahl $n$')
 ax.set_ylabel('Speicher (relative Einheiten)')
-ax.set_title('Speicherverbrauch des Subgraph-Algorithmus nach Komponenten')
+ax.set_title('Speicherverbrauch des Subgraph Algorithmus nach Komponenten')
 ax.legend()
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
@@ -239,7 +239,7 @@ ax.axvline(20, color=GRAY, lw=1, ls=':', label='Empf. Sampling-Rate 20%')
 ax.set_xlabel('Sampling-Rate (%)')
 ax.set_ylabel('Erkennungsgenauigkeit (%)', color=BLUE)
 ax2.set_ylabel('Geschwindigkeitsfaktor', color=RED)
-ax.set_title('Approximativer Subgraph-Algorithmus: Güte vs. Geschwindigkeit')
+ax.set_title('Approximativer Subgraph Algorithmus: Güte vs. Geschwindigkeit')
 lines = [l1, l2]
 ax.legend(lines, [l.get_label() for l in lines], loc='center right')
 ax.grid(True, alpha=0.3)
@@ -249,3 +249,4 @@ plt.close()
 print("plot_approx_tradeoff.pdf done")
 
 print("\nAlle 10 Plots erfolgreich generiert.")
+

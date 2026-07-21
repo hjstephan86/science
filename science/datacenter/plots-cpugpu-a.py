@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -159,8 +159,9 @@ for label, n_mark, q_mark in [('ToR\n(8)', 8, 1), ('Rack\n(32)', 32, 4), ('DC\n(
 
 ax5.set_xlabel('Knotenanzahl $n$')
 ax5.set_ylabel('Operationen $\\Theta(n_T^3)$')
-ax5.set_title('Subgraph-Algorithmus Komplexität\nnach CPU:GPU-Konfiguration')
+ax5.set_title('Subgraph Algorithmus Komplexität\nnach CPU:GPU-Konfiguration')
 ax5.legend(fontsize=8)
 
 plt.savefig('/home/claude/rz_extended/plot_cpugpu_a.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_a.pdf saved")
+

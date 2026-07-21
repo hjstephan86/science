@@ -1,4 +1,4 @@
-package de.hjstephan86.jcl.phases;
+﻿package de.hjstephan86.jcl.phases;
 
 import de.hjstephan86.jcl.core.SubgraphAlgorithm;
 import de.hjstephan86.jcl.ir.ASTNode;
@@ -6,7 +6,7 @@ import de.hjstephan86.jcl.ir.ASTNode;
 import java.util.*;
 
 /**
- * Statische Initialisierungsreihenfolge (IRP) via Subgraph-Algorithmus.
+ * Statische Initialisierungsreihenfolge (IRP) via Subgraph Algorithmus.
  * Erkennt das Static Initialization Order Fiasco (SIOF) als Zykel im
  * Initialisierungsgraphen G_S.
  * Laufzeit: O(q^3) mit q = Anzahl statischer Initialisierer.
@@ -149,3 +149,4 @@ public class StaticInitResolver {
 
     public int initCount() { return inits.size(); }
 }
+

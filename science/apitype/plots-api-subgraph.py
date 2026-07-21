@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,8 +49,9 @@ ax.set_title('Signatur-Vergleich: G ⊆ G\'', fontsize=10, fontweight='bold')
 ax.legend()
 ax.grid(axis='y', alpha=0.3)
 
-fig.suptitle('Subgraph-Algorithmus auf API-Graphen', fontsize=13, fontweight='bold', y=1.01)
+fig.suptitle('Subgraph Algorithmus auf API-Graphen', fontsize=13, fontweight='bold', y=1.01)
 plt.tight_layout()
 plt.savefig('/home/claude/apitype/plot_api_subgraph.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 2 done")
+

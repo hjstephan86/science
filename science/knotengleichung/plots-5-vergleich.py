@@ -1,6 +1,6 @@
-"""
+﻿"""
 Plot 5: Vergleich elektrische und atmosphärische Knotengleichung
-        + Graphtheoretische Modellierung mit Subgraph-Algorithmus
+        + Graphtheoretische Modellierung mit Subgraph Algorithmus
 """
 import matplotlib
 matplotlib.use('Agg')
@@ -84,7 +84,7 @@ ax2.text(0, -2.4, r'$E_\mathrm{global} = P_\mathrm{global} = 577{.}000\,\mathrm{
 
 # ---- (c) Graphmodell mit nx ----
 ax3 = axes[2]
-ax3.set_title('(c) Graphmodell: Flussnetz\nSubgraph-Algorithmus (Epp 2026)', fontsize=10,
+ax3.set_title('(c) Graphmodell: Flussnetz\nSubgraph Algorithmus (Epp 2026)', fontsize=10,
               fontweight='bold', color='#19468C')
 
 G = nx.DiGraph()
@@ -135,3 +135,4 @@ plt.savefig('/home/claude/knotengleichung/plot5_vergleich.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 5 gespeichert.")
+

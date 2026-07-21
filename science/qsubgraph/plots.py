@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Matplotlib-Plots fuer: Der Subgraph Algorithmus in der Quantencomputer-Architektur
 Stephan Epp, Universitaet Bielefeld, 2026
@@ -196,7 +196,7 @@ def plot3_runtime():
 
     ax = axes[0]
     ax.semilogy(n_small, T_subgraph, color=MAINBLUE, lw=2.5,
-                label=r'Subgraph-Algorithmus $O(n^3)$')
+                label=r'Subgraph Algorithmus $O(n^3)$')
     ax.semilogy(n_small, T_brute, color=ACCENTRED, lw=2,
                 label=r'Naiver Ansatz $O(n^4)$', ls='--')
     ax.semilogy(n_small, T_VF2, color=DARKGREEN, lw=2,
@@ -231,7 +231,7 @@ def plot3_runtime():
 
     ax2.set_xlabel('Qubit-Anzahl $n$', fontsize=12)
     ax2.set_ylabel('Speedup-Faktor', fontsize=12)
-    ax2.set_title(r'Speedup des Subgraph-Algorithmus', fontsize=11)
+    ax2.set_title(r'Speedup des Subgraph Algorithmus', fontsize=11)
     ax2.legend(fontsize=9)
     ax2.set_xlim(2, 150); ax2.grid(True, alpha=0.3)
 
@@ -347,7 +347,7 @@ def plot4_quantum_scaling():
     ax4.plot(n_circuit, p_random * 100, color='#AAAAAA', lw=2, ls='--',
              label='Zufällige Zuweisung')
     ax4.plot(n_circuit, p_subgraph * 100, color=MAINBLUE, lw=2,
-             label='Subgraph-Algorithmus (O(n³))')
+             label='Subgraph Algorithmus (O(n³))')
     ax4.plot(n_circuit, np.minimum(100, p_subgraph_opt * 100), color=DARKGREEN, lw=2.5,
              label='Subgraph + Rotation-Heuristik')
     ax4.axvline(x=50, color=GOLD, lw=2, ls=':', label='$n_G=50$ Schaltkreis-Qubits')
@@ -522,3 +522,4 @@ if __name__ == '__main__':
     plot5_stochastic_resonance()
     plot6_roadmap()
     print("\nAlle 6 Plots erfolgreich generiert!")
+
