@@ -75,8 +75,7 @@
 | verilog | Subgraph Algorithmus im digitalen Schaltungsdesign: Synthese, Äquivalenzprüfung, Testmustergenerierung |
 | nfm | Polynomielle Lösbarkeit von Facility-Management-Problemen via Subgraph Algorithmus |
 | stars | Subgraph Algorithmus zur Analyse von Sternenclustern — Gravitationsstrukturen als gewichtete Graphen |
-| lsat | Learning SAT in Boolean Circuits via Subgraph Algorithmus |
-| P=NP | Formaler Beweis von P = NP mittels Subgraph Algorithmus — injektive Signaturfunktion σⱼ und zyklische LCS-Rotation |
+| P=NP | Formaler Beweis von P = NP |
 | paare *(Drive)* | Das Paar K₁,₁ als harmonische Grundstruktur — Harmoniemaß H(G), Axiomatisierung (5 Axiome), spektrale Symmetrie, Lotka-Volterra-Äquivalenz |
 | drohnenabwehr *(Drive)* | Formale Analyse eines Mobilfunknetz-basierten Drohnenabwehrsystems (Telekom/Rheinmetall) — 94 % Detektionsrate, AUC 0,987, SETH-optimal |
 | leco *(Drive)* | Dezentrale Wirtschaftszellen: Formale Analyse optimaler Entkopplung und systemischer Resilienz in modularen Wirtschaftsarchitekturen |
@@ -420,16 +419,7 @@
 
 ## VI. Synthesen & Transdisziplinarität
 
-### VI.1 Übergreifende Metaanalysen
-
-*Systematische Paaranalysen von 15 eigenständigen Forschungsdomänen mit 45+ Kombinationen*
-
-| Repository | Beschreibung |
-|---|---|
-
----
-
-### VI.2 Wissenschaftliche Synthesen & Neue Forschungsfelder
+### VI.1 Wissenschaftliche Synthesen & Neue Forschungsfelder
 
 *Transdisziplinäre Synthesearbeiten aus systematischer Kreuzanalyse aller 15 eigenständigen Forschungsdomänen*
 
@@ -441,23 +431,7 @@
 
 ---
 
-### VI.3 Interdisziplinäre Verbindungen
-
-*Systematische Verknüpfungen zwischen Forschungsdomänen mit Synergiepotenzialen und katalytischen Effekten*
-
-| Forschungsschwerpunkt | Kernprojekte | Interaktion | Neue Forschungsfelder |
-|---|---|---|---|
-| Universelle Signatur-Theorie | subgraph, bool-mm, lsat, sigchiffre, gen | Signatur-Isomorphismen über Domänen | NF-1, NF-3 |
-| Wasser & Licht als Funktionsmedien | iono, oqtum, ionoxoqtum, hydr, robo, solwindw, schrauben | Tri-funktionale Nanosysteme | NF-2, NF-5, NF-6, NF-7 |
-| Diskretisierung als Grundprinzip | digi, bool-mm, ana, desi, quantum, spring | Quantisierung kontinuierlicher Systeme | NF-3, NF-5 |
-| DNA & Graph-Strukturen | dna, dnastor, dusgrxdnastr, gen, pymca8, pymdna8 | Biologische Datenstrukturen | NF-4 |
-| Modellgetriebene Strukturierung | umlp, hinherit, ccl, pathsim | Automatische Code-Synthese | NF-8 |
-| φ-basierte Optimierung | EDF+-Echtzeitplanung | edfplus, bs, nniso26262, umlp, pathsim | Deterministische Echtzeitkontrakte | NF-4 |
-| Post-Quanten-Sicherheit | pqc, pgpi, sigchiffre, wchiffre, cdcsbgr | Lattice vs. Struktur-Paradigmen | NF-3 |
-
----
-
-### VI.4 Sonstiges
+### VI.2 Sonstiges
 
 | Repository | Beschreibung |
 |---|---|
