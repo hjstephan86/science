@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -84,6 +84,7 @@ for x,y,lbl,sx,sy in usecases:
 ax.set_title('API-Taxonomie: Typen und Anwendungsfälle', fontsize=13,
              fontweight='bold', pad=12)
 plt.tight_layout()
-plt.savefig('/home/claude/apitype/plot_api_taxonomy.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_api_taxonomy.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 1 done")
+

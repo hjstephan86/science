@@ -36,7 +36,7 @@ plt.rcParams.update({
     'axes.spines.right': False,
 })
 
-OUTPUT = '/home/claude/solar_fenster/plots/'
+OUTPUT = 'plots/'
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PLOT 1: AM1.5-Solarspektrum + Absorptionsbereiche

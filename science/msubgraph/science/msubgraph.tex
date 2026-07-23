@@ -1,6 +1,6 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
-%% ── Packages ────────────────────────────────────────────────────────────────
+%% â”€â”€ Packages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -39,7 +39,7 @@
 urlcolor=blue!60!black]{hyperref}
 \usepackage{cleveref}
 
-%% ── Theorem environments ────────────────────────────────────────────────────
+%% â”€â”€ Theorem environments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -53,31 +53,31 @@ urlcolor=blue!60!black]{hyperref}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-%% ── Algorithm style ─────────────────────────────────────────────────────────
+%% â”€â”€ Algorithm style â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \algrenewcommand\algorithmicrequire{\textbf{Input:}}
 \algrenewcommand\algorithmicensure{\textbf{Output:}}
 \algnewcommand{\LineComment}[1]{\State \(\triangleright\) \textit{#1}}
 
-%% ── Colour scheme ───────────────────────────────────────────────────────────
+%% â”€â”€ Colour scheme â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \definecolor{algoblue}{RGB}{30,90,160}
 \definecolor{algogray}{RGB}{245,245,245}
 \definecolor{commentgreen}{RGB}{0,120,50}
 \definecolor{keywordred}{RGB}{160,30,30}
 
-%% ── Metadata ────────────────────────────────────────────────────────────────
+%% â”€â”€ Metadata â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \title{\textbf{The Hierarchical Subgraph-DFS Algorithm}\\[6pt]
 	\large Formal Design, Complexity Analysis, and\\
 	Cross-Domain Application Study}
 \author{Stephan Epp}
 \date{\today}
 
-%% ════════════════════════════════════════════════════════════════════════════
+%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{document}
 	\maketitle
 	\tableofcontents
 	\newpage
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Introduction}
 	\label{sec:intro}
 	
@@ -132,7 +132,7 @@ urlcolor=blue!60!black]{hyperref}
 		logistics, industrial automation, software engineering, and beyond.
 	\end{enumerate}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Preliminaries and Formal Definitions}
 	\label{sec:prelim}
 	
@@ -194,7 +194,7 @@ urlcolor=blue!60!black]{hyperref}
 		\emph{cross edge} with respect to $\mathcal{F}$.
 	\end{definition}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{The Subgraph Algorithm}
 	\label{sec:subgraph}
 
@@ -481,7 +481,7 @@ urlcolor=blue!60!black]{hyperref}
 		informative graph.
 	\end{example}
 
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Algorithm Design}
 	\label{sec:algo}
 	
@@ -619,7 +619,7 @@ urlcolor=blue!60!black]{hyperref}
 		encode transitive containment shortcuts.
 	\end{corollary}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Formal Complexity Analysis}
 	\label{sec:complexity}
 	
@@ -745,7 +745,7 @@ urlcolor=blue!60!black]{hyperref}
 		reducing Phase~1 to $\mathcal{O}(n^5 / P)$.
 	\end{enumerate}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{DFS Forest Structure and its Semantics}
 	\label{sec:forest}
 	
@@ -774,7 +774,7 @@ urlcolor=blue!60!black]{hyperref}
 		representing a valid total order of containment depth.
 	\end{description}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Application Domains}
 	\label{sec:applications}
 	
@@ -783,7 +783,7 @@ urlcolor=blue!60!black]{hyperref}
 	unifying primitive.  We now provide an extensive analysis of its applicability
 	across nine major domains.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Neuroscience and Brain Research}
 	\label{sec:brain}
 	
@@ -1090,7 +1090,7 @@ urlcolor=blue!60!black]{hyperref}
 	corresponding to a gradual restoration of the meta-graph's edge density
 	and DFS tree depth.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Genomics and Systems Biology}
 	\label{sec:genomics}
 	
@@ -1136,7 +1136,7 @@ urlcolor=blue!60!black]{hyperref}
 	cellular machinery modules.  HS-DFS on the proteome-wide interaction graph
 	collection provides a \emph{proteome containment map}.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Logistics and Supply Chain Management}
 	\label{sec:logistics}
 	
@@ -1175,7 +1175,7 @@ urlcolor=blue!60!black]{hyperref}
 	facilities that share structural flow patterns, enabling the transfer of
 	optimisation policies between facilities with matching subgraph structure.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Industrial Automation and Cyber-Physical Systems}
 	\label{sec:automation}
 	
@@ -1223,7 +1223,7 @@ urlcolor=blue!60!black]{hyperref}
 		slice graph is subgraph-isomorphic to the physical network graph).
 	\end{itemize}
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Software Engineering and Program Analysis}
 	\label{sec:software}
 	
@@ -1255,7 +1255,7 @@ urlcolor=blue!60!black]{hyperref}
 	(the child's interaction graph is subgraph-isomorphic to the parent's),
 	the child is a valid structural substitute.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Cheminformatics and Drug Discovery}
 	\label{sec:chemo}
 	
@@ -1281,7 +1281,7 @@ urlcolor=blue!60!black]{hyperref}
 	reaction motifs, supporting the design of novel catalytic processes by
 	reusing known sub-network solutions.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Knowledge Graphs and Semantic Web}
 	\label{sec:kg}
 	
@@ -1299,7 +1299,7 @@ urlcolor=blue!60!black]{hyperref}
 	used SPARQL queries identifies which queries are subgraph-isomorphic to
 	others, enabling query result caching at the structural level.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Social Network Analysis}
 	\label{sec:social}
 	
@@ -1323,7 +1323,7 @@ urlcolor=blue!60!black]{hyperref}
 	which teams operate as structurally self-contained sub-graphs (isolated DFS
 	tree roots) versus those deeply embedded in larger communication patterns.
 	
-	%% ──────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Transportation Networks and Smart Cities}
 	\label{sec:transport}
 	
@@ -1346,7 +1346,7 @@ urlcolor=blue!60!black]{hyperref}
 	of sub-grid graphs detects structural vulnerabilities (single points of
 	containment whose loss would fragment the meta-graph).
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Visualisation of the Meta-Graph}
 	\label{sec:viz}
 	
@@ -1390,7 +1390,7 @@ urlcolor=blue!60!black]{hyperref}
 		\label{fig:metaforest}
 	\end{figure}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Correctness}
 	\label{sec:correctness}
 	
@@ -1417,7 +1417,7 @@ urlcolor=blue!60!black]{hyperref}
 		$\mathcal{M} = \mathcal{M}^*$ therefore produces a valid DFS forest.
 	\end{proof}
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Discussion and Future Work}
 	\label{sec:discussion}
 	
@@ -1454,7 +1454,7 @@ urlcolor=blue!60!black]{hyperref}
 	longest-path computation to find the \emph{most significant} containment
 	hierarchy.
 	
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\section{Conclusion}
 	\label{sec:conclusion}
 	
@@ -1483,7 +1483,7 @@ urlcolor=blue!60!black]{hyperref}
 	become increasingly central to both scientific discovery and engineering
 	practice.
 
-	%% ────────────────────────────────────────────────────────────────────────────
+	%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	\subsection{Outlook}
 	\label{sec:outlook}
 
@@ -1493,7 +1493,7 @@ urlcolor=blue!60!black]{hyperref}
 	opportunities.  The following subsections outline the most promising and
 	compelling directions for future investigation.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Reducing Oracle Complexity and Fine-Grained Hardness}
 
 	The $\mathcal{O}(n^3)$ oracle of the Subgraph Algorithm
@@ -1531,7 +1531,7 @@ urlcolor=blue!60!black]{hyperref}
 	such heuristics rigorously into the Subgraph Algorithm while maintaining
 	formal correctness guarantees is a valuable engineering task.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Parallelisation, GPU Acceleration, and Distributed Computation}
 
 	The Phase~1 oracle matrix -- the $N \times N$ Boolean table recording, for
@@ -1575,7 +1575,7 @@ urlcolor=blue!60!black]{hyperref}
 	homomorphic encryption or garbled circuits, are an important direction
 	at the intersection of privacy and algorithmic efficiency.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Approximate, Probabilistic, and Learned Oracles}
 
 	Exact subgraph containment is a hard combinatorial predicate.  In many
@@ -1617,7 +1617,7 @@ urlcolor=blue!60!black]{hyperref}
 	pairs to re-evaluate at higher cost, minimising the total computational
 	budget for a given accuracy target.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Dynamic and Streaming Graph Collections}
 
 	The current formulation of HS-DFS assumes a static collection
@@ -1658,7 +1658,7 @@ urlcolor=blue!60!black]{hyperref}
 	building a corresponding HS-DFS variant for temporal graph streams is an
 	open problem of both theoretical and practical significance.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Weighted, Attributed, and Multi-Relational Graphs}
 
 	The Subgraph Algorithm and HS-DFS as presented operate on unweighted,
@@ -1697,7 +1697,7 @@ urlcolor=blue!60!black]{hyperref}
 	and designing HS-DFS variants that propagate uncertainty through the
 	meta-graph constitute a rich open direction.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Hypergraphs, Simplicial Complexes, and Higher-Order Structures}
 
 	Biological and social networks frequently exhibit \emph{higher-order
@@ -1724,7 +1724,7 @@ urlcolor=blue!60!black]{hyperref}
 	Understanding when and how these two notions align would illuminate the
 	structural basis of many hierarchical phenomena in nature.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Integration with Graph Neural Networks and Deep Learning}
 
 	Graph Neural Networks (GNNs) have revolutionised machine learning on
@@ -1769,7 +1769,7 @@ urlcolor=blue!60!black]{hyperref}
 	``graph of graphs'' view enables a new class of second-order graph learning
 	problems that HS-DFS is uniquely positioned to support.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Quantum Algorithms for Subgraph Problems}
 
 	Quantum computing offers the prospect of qualitatively different complexity
@@ -1799,7 +1799,7 @@ urlcolor=blue!60!black]{hyperref}
 	advantage, this direction will become increasingly relevant as quantum
 	processors scale.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Parameterized Complexity and Structural Graph Theory}
 
 	The classical intractability of subgraph isomorphism is alleviated by
@@ -1831,7 +1831,7 @@ urlcolor=blue!60!black]{hyperref}
 	cubic oracle.  Integrating color-coding into HS-DFS for the regime of
 	small graphs is a concrete improvement opportunity.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Multi-Layer Networks and Interdependent Systems}
 
 	Modern infrastructure, social systems, and biological organisms are not
@@ -1862,7 +1862,7 @@ urlcolor=blue!60!black]{hyperref}
 	in others, enabling a partial order over risk scenarios and guiding
 	prioritised mitigation strategies.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Meta-Graph Visualisation and Interactive Exploration}
 
 	\Cref{sec:visualisation} introduced initial techniques for rendering the
@@ -1903,7 +1903,7 @@ urlcolor=blue!60!black]{hyperref}
 	spatial audio to encode edge density could exploit human depth perception
 	for rapid hierarchical exploration.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Benchmarking, Open Datasets, and Reproducibility}
 
 	The empirical evaluation of HS-DFS and competing approaches requires
@@ -1939,7 +1939,7 @@ urlcolor=blue!60!black]{hyperref}
 	Interoperable, Reusable) for research software is essential for meaningful
 	comparative evaluation.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Domain-Specific Optimisations and Deployment}
 
 	Beyond algorithmic generalisation, each of the application domains from
@@ -1981,7 +1981,7 @@ urlcolor=blue!60!black]{hyperref}
 	as a post-processing step to verify and structure proposed alignments is
 	a concrete short-term engineering goal.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Theoretical Foundations: Algebra, Order Theory, and Logic}
 
 	Beyond algorithmic questions, HS-DFS invites a range of deeper
@@ -2017,7 +2017,7 @@ urlcolor=blue!60!black]{hyperref}
 	connections to topos theory, sheaves over graph categories, and
 	compositional approaches to graph rewriting.
 
-	%% · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+	%% Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â· Â·
 	\subsubsection*{Summary of the Research Horizon}
 
 	Taken together, the directions outlined above span the full spectrum from
@@ -2033,7 +2033,7 @@ urlcolor=blue!60!black]{hyperref}
 	it represents, will stimulate sustained work across multiple communities
 	over the coming years.
 
-	%% ════════════════════════════════════════════════════════════════════════════
+	%% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 	\begin{thebibliography}{99}
 		
 		\bibitem{epp2026subgraph}
@@ -2128,3 +2128,4 @@ urlcolor=blue!60!black]{hyperref}
 	\end{thebibliography}
 	
 \end{document}
+

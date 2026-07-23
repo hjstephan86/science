@@ -21,14 +21,7 @@ plt.rcParams.update({
     'text.usetex': False,
 })
 
-OUT = "/home/claude/ebola_paper"
-
-# ─────────────────────────────────────────────────────────────
-# SEIR-Modell Differentialgleichungen
-# ─────────────────────────────────────────────────────────────
-def seir(t, y, beta, sigma, gamma, N):
-    S, E, I, R = y
-    dS = -beta * S * I / N
+OUT = ' N
     dE =  beta * S * I / N - sigma * E
     dI =  sigma * E - gamma * I
     dR =  gamma * I

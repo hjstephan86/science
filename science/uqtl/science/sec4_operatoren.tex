@@ -1,26 +1,26 @@
-% ═══════════════════════════════════════════════════════════════════════════════
-\section{Übersetzungsregeln und Operatoren}
+﻿% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+\section{Ãœbersetzungsregeln und Operatoren}
 \label{sec:operatoren}
-% ═══════════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-Dieses Kapitel definiert die vollständigen Übersetzungsregeln von den
+Dieses Kapitel definiert die vollstÃ¤ndigen Ãœbersetzungsregeln von den
 Quellsprachen Python, Java und C\# in den IQT sowie vom IQT nach ANSI SQL.
 Die Regeln werden als Transformationstabellen und formale Schreibweisen
 dargestellt.
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 1: Filterung (WHERE / HAVING)}
 \label{subsec:op_filter}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Filteroperatoren}
+\caption{Ãœbersetzungstabelle: Filteroperatoren}
 \label{tab:filter_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
 \toprule
-\textbf{IQT-Prädikat} & \textbf{Python} & \textbf{Java} & \textbf{C\#} \\
+\textbf{IQT-PrÃ¤dikat} & \textbf{Python} & \textbf{Java} & \textbf{C\#} \\
 \midrule
 $\mathtt{EQ}(a, v)$
   & \texttt{Model.col == v}
@@ -66,7 +66,7 @@ $\mathtt{OR}$
 \end{tabularx}
 \end{sidewaystable}
 
-\textbf{SQL-Generierungsregel für FILTER:}
+\textbf{SQL-Generierungsregel fÃ¼r FILTER:}
 \begin{align*}
 \mathrm{SQL}(\mathtt{FILTER}(S, p, \mathtt{WHERE}))
   &= \mathrm{SQL}(S) + \texttt{ WHERE } + \mathrm{SQL}(p) \\
@@ -74,14 +74,14 @@ $\mathtt{OR}$
   &= \mathrm{SQL}(S) + \texttt{ HAVING } + \mathrm{SQL}(p)
 \end{align*}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 2: Projektion (SELECT)}
 \label{subsec:op_project}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Projektionsoperatoren}
+\caption{Ãœbersetzungstabelle: Projektionsoperatoren}
 \label{tab:project_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -108,14 +108,14 @@ Distinct
 \end{tabularx}
 \end{sidewaystable}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 3: Sortierung (ORDER BY)}
 \label{subsec:op_sort}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Sortieroperatoren}
+\caption{Ãœbersetzungstabelle: Sortieroperatoren}
 \label{tab:sort_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -153,14 +153,14 @@ NULLS FIRST
   \mathrm{SQL}(e) + \texttt{ ASC}
 \]
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 4: Begrenzung (LIMIT / OFFSET)}
 \label{subsec:op_limit}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: LIMIT / OFFSET je Datenbankdialekt}
+\caption{Ãœbersetzungstabelle: LIMIT / OFFSET je Datenbankdialekt}
 \label{tab:limit_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXX}
@@ -188,14 +188,14 @@ Oracle $<$12c
 \end{tabularx}
 \end{sidewaystable}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 5: Aggregation (GROUP BY)}
 \label{subsec:op_agg}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Aggregationsfunktionen}
+\caption{Ãœbersetzungstabelle: Aggregationsfunktionen}
 \label{tab:agg_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -238,14 +238,14 @@ HAVING
 \end{tabularx}
 \end{sidewaystable}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 6: Joins}
 \label{subsec:op_join}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Join-Typen}
+\caption{Ãœbersetzungstabelle: Join-Typen}
 \label{tab:join_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -272,10 +272,10 @@ CROSS JOIN
 \end{tabularx}
 \end{sidewaystable}
 
-\begin{regel}[JOIN-Übersetzung]
+\begin{regel}[JOIN-Ãœbersetzung]
 \label{regel:join}
-Für einen \texttt{INNER JOIN} zwischen Relation $L$ (Alias $t_1$) und $R$ (Alias $t_2$)
-mit Prädikat $p$ ergibt sich:
+FÃ¼r einen \texttt{INNER JOIN} zwischen Relation $L$ (Alias $t_1$) und $R$ (Alias $t_2$)
+mit PrÃ¤dikat $p$ ergibt sich:
 \[
 \mathrm{SQL}(\mathtt{JOIN}(L, R, \mathtt{INNER}, p)) =
   \mathrm{SQL}(L) + \texttt{ INNER JOIN } + \mathrm{SQL}(R) +
@@ -283,17 +283,17 @@ mit Prädikat $p$ ergibt sich:
 \]
 \end{regel}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 7: Fensterfunktionen (OVER)}
 \label{subsec:op_window}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Fensterfunktionen (Window Functions, ANSI SQL:2003+) werden in UQTL ab
-Konformitätsstufe CL-3 unterstützt.
+KonformitÃ¤tsstufe CL-3 unterstÃ¼tzt.
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Fensterfunktionen}
+\caption{Ãœbersetzungstabelle: Fensterfunktionen}
 \label{tab:window_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -328,14 +328,14 @@ Konformitätsstufe CL-3 unterstützt.
 \end{tabularx}
 \end{sidewaystable}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 8: Unterabfragen und CTEs}
 \label{subsec:op_subquery}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{sidewaystable}
 \centering
-\caption{Übersetzungstabelle: Unterabfragen}
+\caption{Ãœbersetzungstabelle: Unterabfragen}
 \label{tab:subquery_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -362,14 +362,14 @@ CTE (WITH)
 \end{tabularx}
 \end{sidewaystable}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Operator 9: Mengenoperationen}
 \label{subsec:op_set}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \begin{table}[H]
 \centering
-\caption{Übersetzungstabelle: Mengenoperationen}
+\caption{Ãœbersetzungstabelle: Mengenoperationen}
 \label{tab:set_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -395,3 +395,4 @@ EXCEPT
 \bottomrule
 \end{tabularx}
 \end{table}
+

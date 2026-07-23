@@ -85,6 +85,5 @@ ax2.set_xlim(1985, 2042)
 ax2.grid(axis='x', alpha=0.3)
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig('/home/claude/plot6_r0_art.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot6_r0_art.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot6_r0_art.png', dpi=150, bbox_inches='tight')
 print("Plot 6 saved.")

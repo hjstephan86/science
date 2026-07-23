@@ -62,6 +62,5 @@ legend = ax.legend(loc='upper right', bbox_to_anchor=(1.35, 1.1), fontsize=9,
                    framealpha=0.9, edgecolor='#193c8c')
 
 plt.tight_layout()
-plt.savefig('/home/claude/plot1_radar_coverage.pdf', format='pdf', bbox_inches='tight', dpi=150)
-plt.savefig('/home/claude/plot1_radar_coverage.png', format='png', bbox_inches='tight', dpi=150)
+plt.savefig('home/claude/plot1_radar_coverage.png', format='png', bbox_inches='tight', dpi=150)
 print("Plot 1 saved")

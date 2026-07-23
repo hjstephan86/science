@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -54,6 +54,7 @@ ax2.legend(fontsize=9)
 ax2.grid(True,alpha=0.3,linestyle='--',axis='y')
 
 plt.tight_layout()
-plt.savefig('/home/claude/cpugpu_paper/plots/plot2_complexity_efficiency.pdf', bbox_inches='tight')
+plt.savefig('plots/plot2_complexity_efficiency.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 2 OK")
+

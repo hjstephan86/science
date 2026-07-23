@@ -103,7 +103,7 @@ for bar, rate in zip(bars, pathway_rates):
 ax4.set_xlim(0, 45)
 ax4.grid(axis='x', alpha=0.3)
 
-plt.savefig('/home/claude/mikroplastik_extension/plot_globale_mp_verteilung.pdf',
+plt.savefig('plot_globale_mp_verteilung.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot C gespeichert.")

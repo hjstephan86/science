@@ -36,7 +36,7 @@ plt.rcParams.update({
     'figure.dpi': 150,
 })
 
-OUTDIR = '/home/claude/dezentrale_wirtschaft/'
+OUTDIR = ''
 
 # =========================================================
 # Plot 1 – Kopplungsgrad vs. Systemresilienz (Phasendiagramm)

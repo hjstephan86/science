@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -49,17 +49,17 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ö}{{\"O}}1
-    {Ä}{{\"A}}1
-    {Ü}{{\"U}}1
-    {ß}{{\ss}}1
-    {ü}{{\"u}}1
-    {ä}{{\"a}}1
-    {ö}{{\"o}}1
+    {Ã–}{{\"O}}1
+    {Ã„}{{\"A}}1
+    {Ãœ}{{\"U}}1
+    {ÃŸ}{{\ss}}1
+    {Ã¼}{{\"u}}1
+    {Ã¤}{{\"a}}1
+    {Ã¶}{{\"o}}1
 }
 
 \title{\textbf{Laplacian-Filter in der digitalen Bildverarbeitung}\\
-\large Theorie, formale Herleitung und Anwendung zur Bildschärfung}
+\large Theorie, formale Herleitung und Anwendung zur BildschÃ¤rfung}
 \author{Stephan Epp\\}
 \date{3. Juni 2026}
 
@@ -70,32 +70,32 @@
 \newpage
 
 %=============================================================
-\section{Einführung und Motivation in der Bildverarbeitung}
+\section{EinfÃ¼hrung und Motivation in der Bildverarbeitung}
 %=============================================================
 
 Die digitale Bildverarbeitung ist ein zentrales Teilgebiet der angewandten Informatik und
 Signalverarbeitung. In zahlreichen Anwendungsfeldern -- medizinische Bildgebung, autonomes
-Fahren, industrielle Qualitätskontrolle, Satellitenbildanalyse und Videoüberwachung -- ist es
+Fahren, industrielle QualitÃ¤tskontrolle, Satellitenbildanalyse und VideoÃ¼berwachung -- ist es
 notwendig, relevante Strukturen in digitalen Bildern automatisch zu erkennen. Ein digitales
 Bild $I: \Omega \to \mathbb{R}$ ordnet jedem Pixel $(x, y) \in \Omega \subset \mathbb{Z}^2$
-einen Intensitätswert (Grauwert oder Farbwert) zu.
+einen IntensitÃ¤tswert (Grauwert oder Farbwert) zu.
 
 \textbf{Kernproblem der Kantendetektion in Bildern:} Kanten sind die visuell und semantisch
-wichtigsten Strukturen eines Bildes. Sie entstehen dort, wo sich Intensitätswerte abrupt ändern
--- also an Objektgrenzen, Texturen oder Helligkeitsübergängen. Die automatische Extraktion dieser
-Kanten bildet die Grundlage für:
+wichtigsten Strukturen eines Bildes. Sie entstehen dort, wo sich IntensitÃ¤tswerte abrupt Ã¤ndern
+-- also an Objektgrenzen, Texturen oder HelligkeitsÃ¼bergÃ¤ngen. Die automatische Extraktion dieser
+Kanten bildet die Grundlage fÃ¼r:
 \begin{itemize}
     \item \textbf{Segmentierung:} Zerlegung eines Bildes in bedeutungsreiche Regionen
     \item \textbf{Objekterkennung:} Identifikation und Klassifikation von Bildobjekten
-    \item \textbf{Bildschärfung:} Verbesserung der visuellen Qualität durch Verstärkung von Kanten
-    \item \textbf{Merkmalsextraktion:} Gewinnung invarianter Deskriptoren für maschinelles Lernen
+    \item \textbf{BildschÃ¤rfung:} Verbesserung der visuellen QualitÃ¤t durch VerstÃ¤rkung von Kanten
+    \item \textbf{Merkmalsextraktion:} Gewinnung invarianter Deskriptoren fÃ¼r maschinelles Lernen
     \item \textbf{Medizinische Diagnostik:} Hervorhebung von Tumorgrenzen in CT/MRT-Aufnahmen
 \end{itemize}
 
 Der \textbf{Laplacian-Filter} ist ein fundamentales Werkzeug zur Kantendetektion. Er approximiert
 den mathematischen Laplace-Operator $\nabla^2$ auf diskreten Pixelgittern und reagiert sensitiv
-auf alle Positionen im Bild, an denen sich die Intensität schnell ändert -- unabhängig von der
-Kantenorientierung. Gegenüber richtungsabhängigen Filtern (Sobel, Prewitt) bietet der Laplacian
+auf alle Positionen im Bild, an denen sich die IntensitÃ¤t schnell Ã¤ndert -- unabhÃ¤ngig von der
+Kantenorientierung. GegenÃ¼ber richtungsabhÃ¤ngigen Filtern (Sobel, Prewitt) bietet der Laplacian
 den entscheidenden Vorteil der \emph{Rotationsinvarianz}: Kanten in beliebigen Richtungen werden
 gleich stark detektiert.
 
@@ -106,17 +106,17 @@ mit einer Filtermaske $H$ (auch: Kernel, Konvolutionsmaske):
 \[
     (I * H)[x,y] = \sum_{s=-k}^{k} \sum_{t=-k}^{k} I[x+s,\, y+t] \cdot H[s,t]
 \]
-wobei $H$ eine $(2k{+}1) \times (2k{+}1)$-Matrix ist. Für $k=1$ ergibt sich eine $3\times3$-Maske.
+wobei $H$ eine $(2k{+}1) \times (2k{+}1)$-Matrix ist. FÃ¼r $k=1$ ergibt sich eine $3\times3$-Maske.
 Dieses Prinzip ist in Abbildung~\ref{fig:sharpening} visualisiert.
 
 \textbf{Klassen von Raumfiltern:}
 \begin{itemize}
-    \item \textbf{Tiefpassfilter} (z.\,B. Gaußfilter): Glätten das Bild, dämpfen Hochfrequenzen
-    \item \textbf{Hochpassfilter} (z.\,B. Laplacian): Verstärken Kanten und feine Details
-    \item \textbf{Bandpassfilter}: Selektive Frequenzverstärkung in einem Bereich
+    \item \textbf{Tiefpassfilter} (z.\,B. GauÃŸfilter): GlÃ¤tten das Bild, dÃ¤mpfen Hochfrequenzen
+    \item \textbf{Hochpassfilter} (z.\,B. Laplacian): VerstÃ¤rken Kanten und feine Details
+    \item \textbf{Bandpassfilter}: Selektive FrequenzverstÃ¤rkung in einem Bereich
 \end{itemize}
 Der Laplacian ist ein klassischer \textbf{Hochpassfilter zweiter Ordnung}, da er die zweite
-räumliche Ableitung des Bildes approximiert.
+rÃ¤umliche Ableitung des Bildes approximiert.
 
 %=============================================================
 \section{Mathematische Grundlagen}
@@ -135,7 +135,7 @@ räumliche Ableitung des Bildes approximiert.
 
 \begin{satz}[Rotationsinvarianz des Laplace-Operators]
 \label{satz:rotinv}
-    Der Laplace-Operator ist invariant unter Rotationen der Eingabefunktion. Für eine Drehung
+    Der Laplace-Operator ist invariant unter Rotationen der Eingabefunktion. FÃ¼r eine Drehung
     $R_\theta$ um den Winkel $\theta$ gilt:
     \[
         \nabla^2 (f \circ R_\theta) = (\nabla^2 f) \circ R_\theta
@@ -166,8 +166,8 @@ räumliche Ableitung des Bildes approximiert.
 
 \begin{bemerkung}
     Diese Eigenschaft ist in der Bildverarbeitung von zentraler Bedeutung: Ein Kantendetektor auf
-    Basis des Laplace-Operators spricht auf Kanten \emph{aller Orientierungen} gleich an. Richtungsabhängige
-    Filter wie der Sobel-Operator müssen für jede Kantenrichtung separat ausgewertet werden.
+    Basis des Laplace-Operators spricht auf Kanten \emph{aller Orientierungen} gleich an. RichtungsabhÃ¤ngige
+    Filter wie der Sobel-Operator mÃ¼ssen fÃ¼r jede Kantenrichtung separat ausgewertet werden.
 \end{bemerkung}
 
 \subsection{Diskretisierung: Vom Kontinuierlichen zum Digitalen Bild}
@@ -206,12 +206,12 @@ kontinuierlichen partiellen Ableitungen werden durch \emph{finite Differenzen} a
         \frac{\partial^2 I}{\partial x^2} \approx I[x+1,y] - 2\,I[x,y] + I[x-1,y] + \mathcal{O}(h^4)
     \]
     Der Approximationsfehler ist von der Ordnung $\mathcal{O}(h^2)$ (hier $h=1$, also $\mathcal{O}(1)$).
-    In der Praxis ist dieser Fehler für natürliche Bilder vernachlässigbar klein. \qedhere
+    In der Praxis ist dieser Fehler fÃ¼r natÃ¼rliche Bilder vernachlÃ¤ssigbar klein. \qedhere
 \end{proof}
 
 \subsection{Der diskrete Laplacian}
 
-Durch Addition beider Richtungsableitungen erhält man die diskrete Laplacian-Approximation:
+Durch Addition beider Richtungsableitungen erhÃ¤lt man die diskrete Laplacian-Approximation:
 
 \begin{satz}[Diskreter Laplacian]
 \label{satz:diskret}
@@ -237,7 +237,7 @@ Durch Addition beider Richtungsableitungen erhält man die diskrete Laplacian-Ap
     \end{align*}
     Die Maske $H_a$ kodiert genau diesen Ausdruck: Der Zentralkoeffizient $-4$ multipliziert den
     Mittelpunkt, die vier direkten Nachbarn erhalten den Koeffizienten $+1$, die Diagonalnachbarn
-    werden nicht berücksichtigt. \qedhere
+    werden nicht berÃ¼cksichtigt. \qedhere
 \end{proof}
 
 %=============================================================
@@ -259,8 +259,8 @@ Eigenschaft, die direkt aus der Physik des Operators folgt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{plots/plot05_koeff_sum.pdf}
-    \caption{Balkendiagramme und Heatmaps aller vier Masken. Die grüne Beschriftung
-    $\text{Summe}=0$ bestätigt die Nullsummeneigenschaft für alle Varianten.}
+    \caption{Balkendiagramme und Heatmaps aller vier Masken. Die grÃ¼ne Beschriftung
+    $\text{Summe}=0$ bestÃ¤tigt die Nullsummeneigenschaft fÃ¼r alle Varianten.}
     \label{fig:koeff}
 \end{figure}
 
@@ -270,34 +270,34 @@ Die Grundform entsteht direkt aus Gleichung~\eqref{eq:laplacian}:
 \[
     H_a = \begin{pmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{pmatrix}
 \]
-Diese Maske ist \emph{invariant unter 90\textdegree{}-Rotationen}: Eine Drehung um $k \cdot 90^\circ$ (für
+Diese Maske ist \emph{invariant unter 90\textdegree{}-Rotationen}: Eine Drehung um $k \cdot 90^\circ$ (fÃ¼r
 $k \in \{1,2,3\}$) liefert dieselbe Maske. Die Diagonalrichtungen $(45\textdegree{}, 135\textdegree{}, \ldots)$
-werden jedoch \emph{nicht} berücksichtigt, da nur die vier achsenparallelen Nachbarpixel
+werden jedoch \emph{nicht} berÃ¼cksichtigt, da nur die vier achsenparallelen Nachbarpixel
 eingehen.
 
 \begin{lemma}[Nullsummeneigenschaft]
 \label{lem:nullsumme}
-    Für jede der vier Laplacian-Masken gilt: Die Summe aller Koeffizienten ist Null.
+    FÃ¼r jede der vier Laplacian-Masken gilt: Die Summe aller Koeffizienten ist Null.
     \[
         \sum_{s,t} H[s,t] = 0
     \]
 \end{lemma}
 
 \begin{proof}
-    Für Maske $H_a$: $0+1+0+1+(-4)+1+0+1+0 = 4-4 = 0$.
+    FÃ¼r Maske $H_a$: $0+1+0+1+(-4)+1+0+1+0 = 4-4 = 0$.
 
-    \textbf{Physikalische Bedeutung:} Die Nullsummeneigenschaft ist äquivalent dazu, dass der
+    \textbf{Physikalische Bedeutung:} Die Nullsummeneigenschaft ist Ã¤quivalent dazu, dass der
     Filter auf konstante Grauwertteppiche ($I[x,y] = c = \text{const}$) mit der Antwort Null
     reagiert:
     \[
         (I * H)[x,y] = c \cdot \sum_{s,t} H[s,t] = c \cdot 0 = 0
     \]
     Das ist genau richtig: Homogene Bildbereiche ohne Kanten sollen keine Filterantwort erzeugen.
-    Für Maske $H_b$: $1+1+1+1+(-8)+1+1+1+1 = 8-8 = 0$. Für $H_c$ und $H_d$ gilt dasselbe
+    FÃ¼r Maske $H_b$: $1+1+1+1+(-8)+1+1+1+1 = 8-8 = 0$. FÃ¼r $H_c$ und $H_d$ gilt dasselbe
     durch Vorzeichenwechsel aller Koeffizienten. \qedhere
 \end{proof}
 
-\subsection{Maske (b): Verbesserte Rotationsinvarianz, 45°-invariant}
+\subsection{Maske (b): Verbesserte Rotationsinvarianz, 45Â°-invariant}
 
 Um auch Diagonalkanten zu erfassen, werden die vier Diagonalnachbarn einbezogen:
 \[
@@ -309,7 +309,7 @@ zu erhalten. Diese Maske ist invariant unter Rotationen in $45\textdegree{}$-Sch
 \begin{satz}[Isotopie von Maske (b)]
 \label{satz:isotrop}
     Maske $H_b$ approximiert den isotropen Laplacian besser als $H_a$ in dem Sinne, dass
-    sie für Kanten aller Orientierungen (in $45\textdegree{}$-Schritten) eine konstantere Antwort liefert.
+    sie fÃ¼r Kanten aller Orientierungen (in $45\textdegree{}$-Schritten) eine konstantere Antwort liefert.
 \end{satz}
 
 \begin{proof}
@@ -318,20 +318,20 @@ zu erhalten. Diese Maske ist invariant unter Rotationen in $45\textdegree{}$-Sch
     \begin{align*}
         (I_\theta * H_a)[0,0] &= I_\theta[-1,0] + I_\theta[1,0] + I_\theta[0,-1] + I_\theta[0,1] - 4 \cdot I_\theta[0,0]
     \end{align*}
-    Für $\theta = 0\textdegree{}$ (vertikale Kante): Genau zwei der vier achsenparallelen Nachbarn liegen auf
+    FÃ¼r $\theta = 0\textdegree{}$ (vertikale Kante): Genau zwei der vier achsenparallelen Nachbarn liegen auf
     der Kantenseite mit Wert 1, zwei auf der Seite mit Wert 0. Die Antwort ist maximal.
-    Für $\theta = 45\textdegree{}$ (diagonale Kante): Nur ein Nachbar liegt klar auf einer Seite. Die Antwort
-    von $H_a$ fällt ab. Maske $H_b$ schließt die Diagonalnachbarn ein und gleicht diesen Effekt aus.
-    Quantitativ: Der Variationskoeffizient der Maximalantwort über alle $\theta \in \{0\textdegree{}, 45\textdegree{}, 90\textdegree{}, 135\textdegree{}\}$
-    ist für $H_b$ deutlich kleiner als für $H_a$ (vgl. Abb.~\ref{fig:rotation}). \qedhere
+    FÃ¼r $\theta = 45\textdegree{}$ (diagonale Kante): Nur ein Nachbar liegt klar auf einer Seite. Die Antwort
+    von $H_a$ fÃ¤llt ab. Maske $H_b$ schlieÃŸt die Diagonalnachbarn ein und gleicht diesen Effekt aus.
+    Quantitativ: Der Variationskoeffizient der Maximalantwort Ã¼ber alle $\theta \in \{0\textdegree{}, 45\textdegree{}, 90\textdegree{}, 135\textdegree{}\}$
+    ist fÃ¼r $H_b$ deutlich kleiner als fÃ¼r $H_a$ (vgl. Abb.~\ref{fig:rotation}). \qedhere
 \end{proof}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.82\textwidth]{plots/plot03_rotation_invariance.pdf}
     \caption{Maximale Filterantwort von Maske (a) und (b) auf Kanten verschiedener Orientierungen.
-    Maske (b) zeigt deutlich konstantere Antworten über alle Winkel -- sie ist rotationsinvarianter.
-    In der Bildverarbeitung bedeutet dies: Kanten in allen Richtungen werden gleich zuverlässig detektiert.}
+    Maske (b) zeigt deutlich konstantere Antworten Ã¼ber alle Winkel -- sie ist rotationsinvarianter.
+    In der Bildverarbeitung bedeutet dies: Kanten in allen Richtungen werden gleich zuverlÃ¤ssig detektiert.}
     \label{fig:rotation}
 \end{figure}
 
@@ -344,9 +344,9 @@ Die Masken $H_c$ und $H_d$ entstehen durch Vorzeichenwechsel von $H_a$ bzw. $H_b
     H_d = -H_b = \begin{pmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{pmatrix}
 \]
 
-\begin{lemma}[Äquivalenz der Vorzeichenvarianten]
-    Für die Anwendung zur Bildschärfung gilt: Ob man $H_a$ oder $H_c$ verwendet, hängt
-    nur vom Vorzeichen der Subtraktion in der Schärfungsformel ab.
+\begin{lemma}[Ã„quivalenz der Vorzeichenvarianten]
+    FÃ¼r die Anwendung zur BildschÃ¤rfung gilt: Ob man $H_a$ oder $H_c$ verwendet, hÃ¤ngt
+    nur vom Vorzeichen der Subtraktion in der SchÃ¤rfungsformel ab.
     \[
         I_{\text{scharf}} = I - \nabla^2 I \quad \Leftrightarrow \quad
         I_{\text{scharf}} = I + (-\nabla^2 I) = I + (I * H_c)
@@ -365,15 +365,15 @@ Die Masken $H_c$ und $H_d$ entstehen durch Vorzeichenwechsel von $H_a$ bzw. $H_b
 \subsection{Verhalten im Eindimensionalen}
 
 Abbildung~\ref{fig:1d} zeigt den Laplacian auf einem 1D-Signal. An Stellen mit hoher
-Intensitätsänderung (Kanten) ist $|{f''}|$ groß; homogene Bereiche liefern $f'' \approx 0$.
+IntensitÃ¤tsÃ¤nderung (Kanten) ist $|{f''}|$ groÃŸ; homogene Bereiche liefern $f'' \approx 0$.
 Dieses Verhalten ist die Grundlage aller Kantendetektionsverfahren zweiter Ordnung.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{plots/plot02_laplacian_1d.pdf}
     \caption{Oben: Original-Signal $f(x)$. Unten: Zweite Ableitung $\nabla^2 f(x)$.
-    Positive Werte (rot) entstehen an Übergängen von dunkel zu hell (links), negative (blau)
-    an Übergängen von hell zu dunkel (rechts). Nulldurchgänge markieren Kantenmitten --
+    Positive Werte (rot) entstehen an ÃœbergÃ¤ngen von dunkel zu hell (links), negative (blau)
+    an ÃœbergÃ¤ngen von hell zu dunkel (rechts). NulldurchgÃ¤nge markieren Kantenmitten --
     das Prinzip des \emph{Zero-Crossing-Detektors} (Marr \& Hildreth, 1980).}
     \label{fig:1d}
 \end{figure}
@@ -382,8 +382,8 @@ Dieses Verhalten ist die Grundlage aller Kantendetektionsverfahren zweiter Ordnu
     \centering
     \includegraphics[width=0.88\textwidth]{plots/plot07_discrete_derivation.pdf}
     \caption{Diskrete Herleitung: Ursprungssignal, erste Differenz und diskrete Laplacian-Approximation
-    $\nabla^2 f[x] = f[x-1] - 2f[x] + f[x+1]$. Die Werte an Intensitätsmaxima und -minima
-    sind betragsmäßig am größten -- genau dort liegen Kanten im Bild.}
+    $\nabla^2 f[x] = f[x-1] - 2f[x] + f[x+1]$. Die Werte an IntensitÃ¤tsmaxima und -minima
+    sind betragsmÃ¤ÃŸig am grÃ¶ÃŸten -- genau dort liegen Kanten im Bild.}
     \label{fig:disc}
 \end{figure}
 
@@ -395,30 +395,30 @@ Dieses Verhalten ist die Grundlage aller Kantendetektionsverfahren zweiter Ordnu
     \caption{2D-Laplacian auf synthetischem Testbild (Kreis + Rechteck). Links: Original.
     Mitte links: Laplacian mit Maske (a) -- achsenparallele Kanten werden scharf dargestellt.
     Mitte rechts: Laplacian mit Maske (b) -- auch diagonale Kanten (z.\,B. am Kreis) sind
-    deutlicher sichtbar. Rechts: Differenz zeigt die zusätzliche Sensitivität von (b).
+    deutlicher sichtbar. Rechts: Differenz zeigt die zusÃ¤tzliche SensitivitÃ¤t von (b).
     \textbf{Bildverarbeitungspraxis:} In realen Anwendungen (z.\,B. medizinische CT-Bilder)
-    liefert Maske (b) deutlich vollständigere Kantenkarten.}
+    liefert Maske (b) deutlich vollstÃ¤ndigere Kantenkarten.}
     \label{fig:2d}
 \end{figure}
 
 %=============================================================
-\section{Anwendung: Spatial Sharpening (Bildschärfung)}
+\section{Anwendung: Spatial Sharpening (BildschÃ¤rfung)}
 %=============================================================
 
-\subsection{Grundprinzip der Laplacian-basierten Bildschärfung}
+\subsection{Grundprinzip der Laplacian-basierten BildschÃ¤rfung}
 
 Die wichtigste praktische Anwendung des Laplacian in der Bildverarbeitung ist die
-\textbf{Bildschärfung} (engl. \emph{spatial sharpening}). Das Ziel ist, ein unscharfes oder
-detailarmes Bild $I$ durch Verstärkung seiner hochfrequenten Anteile (Kanten, Texturen) zu
+\textbf{BildschÃ¤rfung} (engl. \emph{spatial sharpening}). Das Ziel ist, ein unscharfes oder
+detailarmes Bild $I$ durch VerstÃ¤rkung seiner hochfrequenten Anteile (Kanten, Texturen) zu
 verbessern.
 
-\begin{satz}[Laplacian-Schärfungsformel]
+\begin{satz}[Laplacian-SchÃ¤rfungsformel]
 \label{satz:schaerfung}
-    Das geschärfte Bild $I_s$ ergibt sich aus dem Original $I$ durch:
+    Das geschÃ¤rfte Bild $I_s$ ergibt sich aus dem Original $I$ durch:
     \[
         I_s[x,y] = I[x,y] - c \cdot \nabla^2 I[x,y]
     \]
-    wobei $c > 0$ ein Schärfungsparameter ist. Für $c=1$ und Maske $H_a$ gilt:
+    wobei $c > 0$ ein SchÃ¤rfungsparameter ist. FÃ¼r $c=1$ und Maske $H_a$ gilt:
     \[
         I_s[x,y] = I[x,y] - (I * H_a)[x,y]
     \]
@@ -446,36 +446,36 @@ verbessern.
 \end{proof}
 
 \begin{bemerkung}
-    Der Zentralkoeffizient $5$ (bzw. $9$ für Maske $H_b$) erklärt sich physikalisch: Der
+    Der Zentralkoeffizient $5$ (bzw. $9$ fÃ¼r Maske $H_b$) erklÃ¤rt sich physikalisch: Der
     aktuelle Pixel wird einmal als Original beibehalten ($+1$ vom Einheitsimpuls) plus die
-    $4$ (bzw. $8$) Nachbareinflüsse zurückaddiert, die der Laplacian abgezogen hatte.
+    $4$ (bzw. $8$) NachbareinflÃ¼sse zurÃ¼ckaddiert, die der Laplacian abgezogen hatte.
 \end{bemerkung}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{plots/plot04_sharpening.pdf}
     \caption{Spatial Sharpening in der Bildverarbeitung. Links: Unscharfes Originalbild.
-    Mitte: Laplacian-Ausgabe (normiert, Null = Mittelgrau) -- zeigt ausschließlich Kantenbereiche.
-    Rechts: Geschärftes Bild $I_s = I - \nabla^2 I / c$. Kanten und Objektgrenzen sind
-    deutlich verstärkt, homogene Bereiche bleiben unverändert.
+    Mitte: Laplacian-Ausgabe (normiert, Null = Mittelgrau) -- zeigt ausschlieÃŸlich Kantenbereiche.
+    Rechts: GeschÃ¤rftes Bild $I_s = I - \nabla^2 I / c$. Kanten und Objektgrenzen sind
+    deutlich verstÃ¤rkt, homogene Bereiche bleiben unverÃ¤ndert.
     \textbf{Praktischer Nutzen:} Diese Methode wird eingesetzt in Druckvorverarbeitung,
-    Kamerasoftware (Schärfe-Regler), medizinischer Bildgebung und Satellitenbildbearbeitung.}
+    Kamerasoftware (SchÃ¤rfe-Regler), medizinischer Bildgebung und Satellitenbildbearbeitung.}
     \label{fig:sharpening}
 \end{figure}
 
 \subsection{Nutzwert in realen Bildverarbeitungsanwendungen}
 
-Die Laplacian-basierte Schärfung findet direkten Einsatz in folgenden Bereichen:
+Die Laplacian-basierte SchÃ¤rfung findet direkten Einsatz in folgenden Bereichen:
 
 \begin{itemize}
     \item \textbf{Medizinische Bildgebung:} In CT- und MRT-Aufnahmen werden Laplacian-Filter
-          eingesetzt, um Gewebegrenzen und pathologische Strukturen (Tumoren, Gefäßwände) schärfer
+          eingesetzt, um Gewebegrenzen und pathologische Strukturen (Tumoren, GefÃ¤ÃŸwÃ¤nde) schÃ¤rfer
           darzustellen. Die Rotationsinvarianz ist hier entscheidend, da Strukturen in beliebigen
           Orientierungen vorliegen.
     \item \textbf{Satellitenbildverarbeitung:} Erdbeobachtungssatelliten (Sentinel, Landsat)
-          verwenden Laplacian-Filter zur Kanten- und Strukturdetektion in Geländekarten.
-    \item \textbf{Industrielle Qualitätskontrolle:} Defekterkennung auf Oberflächen (Kratzer,
-          Risse) durch Verstärkung feiner Kantenstrukturen mit Laplacian-Masken.
+          verwenden Laplacian-Filter zur Kanten- und Strukturdetektion in GelÃ¤ndekarten.
+    \item \textbf{Industrielle QualitÃ¤tskontrolle:} Defekterkennung auf OberflÃ¤chen (Kratzer,
+          Risse) durch VerstÃ¤rkung feiner Kantenstrukturen mit Laplacian-Masken.
     \item \textbf{Kamerasoftware:} Der \emph{Unsharp Masking}-Algorithmus, der in nahezu jeder
           digitalen Kamera und in Programmen wie Adobe Photoshop eingesetzt wird, basiert auf dem
           Prinzip $I_s = I - \nabla^2 I$.
@@ -484,7 +484,7 @@ Die Laplacian-basierte Schärfung findet direkten Einsatz in folgenden Bereichen
 \end{itemize}
 
 %=============================================================
-\section{Frequenzdomänen-Analyse}
+\section{FrequenzdomÃ¤nen-Analyse}
 %=============================================================
 
 \subsection{Hochpasscharakter des Laplacian}
@@ -499,7 +499,7 @@ Die Laplacian-basierte Schärfung findet direkten Einsatz in folgenden Bereichen
 \end{satz}
 
 \begin{proof}
-    Die 2D-DFT der Maske $H_a$ mit Stützstellen bei $(0,\pm1)$ und $(\pm1,0)$ lautet:
+    Die 2D-DFT der Maske $H_a$ mit StÃ¼tzstellen bei $(0,\pm1)$ und $(\pm1,0)$ lautet:
     \begin{align*}
         \hat{H}_a(u,v) &= \sum_{s,t} H_a[s,t] \cdot e^{-j2\pi(us + vt)} \\
         &= 1 \cdot e^{-j2\pi v} + 1 \cdot e^{j2\pi v}
@@ -508,14 +508,14 @@ Die Laplacian-basierte Schärfung findet direkten Einsatz in folgenden Bereichen
         &= 2\cos(2\pi v) + 2\cos(2\pi u) - 4
     \end{align*}
     Da $\cos(2\pi \cdot 0) = 1$ und der Ausdruck $2\cos(2\pi u) + 2\cos(2\pi v) - 4 \leq 0$
-    für alle $u,v$, bestätigt sich: Der Filter dämpft niedrige Frequenzen (Gleichanteile bei
-    $u=v=0$: $\hat{H}_a = 0$) und verstärkt hohe Frequenzen. Dies ist die Signatur eines
+    fÃ¼r alle $u,v$, bestÃ¤tigt sich: Der Filter dÃ¤mpft niedrige Frequenzen (Gleichanteile bei
+    $u=v=0$: $\hat{H}_a = 0$) und verstÃ¤rkt hohe Frequenzen. Dies ist die Signatur eines
     \textbf{Hochpassfilters}. \qedhere
 \end{proof}
 
-\begin{korollar}[Gleichanteil-Unterdrückung]
-    Für die Gleichkomponente ($u=v=0$) gilt $\hat{H}_a(0,0) = 2+2-4 = 0$. Dies entspricht
-    direkt der Nullsummeneigenschaft (Lemma~\ref{lem:nullsumme}) und erklärt, warum konstante
+\begin{korollar}[Gleichanteil-UnterdrÃ¼ckung]
+    FÃ¼r die Gleichkomponente ($u=v=0$) gilt $\hat{H}_a(0,0) = 2+2-4 = 0$. Dies entspricht
+    direkt der Nullsummeneigenschaft (Lemma~\ref{lem:nullsumme}) und erklÃ¤rt, warum konstante
     Grauwertteppiche keine Filterantwort erzeugen.
 \end{korollar}
 
@@ -523,23 +523,23 @@ Die Laplacian-basierte Schärfung findet direkten Einsatz in folgenden Bereichen
     \centering
     \includegraphics[width=0.88\textwidth]{plots/plot06_freq_response.pdf}
     \caption{2D-Frequenzantwort der Masken (a) und (b) (logarithmisch skaliert, hellere Bereiche
-    = stärkere Antwort). Beide Masken zeigen klares Hochpassverhalten: Die Energie konzentriert sich
+    = stÃ¤rkere Antwort). Beide Masken zeigen klares Hochpassverhalten: Die Energie konzentriert sich
     bei hohen Frequenzen (Randbereiche). Maske (b) zeigt eine rundere Hochpasscharakteristik --
     konsistent mit ihrer besseren Rotationsinvarianz.
     \textbf{Bildverarbeitungsbedeutung:} Kanten entsprechen hohen Ortsfrequenzen. Die Masken
-    verstärken genau diese Frequenzen und dämpfen Gleichanteile.}
+    verstÃ¤rken genau diese Frequenzen und dÃ¤mpfen Gleichanteile.}
     \label{fig:freq}
 \end{figure}
 
 %=============================================================
-\section{Eigenschaften: Formaler Überblick}
+\section{Eigenschaften: Formaler Ãœberblick}
 %=============================================================
 
-\begin{satz}[Schlüsseleigenschaften der Laplacian-Masken]
+\begin{satz}[SchlÃ¼sseleigenschaften der Laplacian-Masken]
 Die vier Laplacian-Masken teilen folgende formal nachweisbare Eigenschaften:
 \begin{enumerate}
     \item \textbf{Nullsumme:} $\sum_{s,t} H[s,t] = 0$ (Lemma~\ref{lem:nullsumme})
-    \item \textbf{Hochpassfilter:} $\hat{H}(0,0) = 0$, $|\hat{H}(u,v)|$ wächst mit Frequenz
+    \item \textbf{Hochpassfilter:} $\hat{H}(0,0) = 0$, $|\hat{H}(u,v)|$ wÃ¤chst mit Frequenz
     \item \textbf{Vorzeichenkonvention:} $H_c = -H_a$, $H_d = -H_b$
     \item \textbf{Negative Ausgabewerte:} $(I * H)[x,y] \in \mathbb{R}$ kann negativ sein
     \item \textbf{Keine Normierung:} Ableitunsfilter werden nicht auf Einheitsnorm normiert
@@ -548,13 +548,13 @@ Die vier Laplacian-Masken teilen folgende formal nachweisbare Eigenschaften:
 
 \begin{proof}
     Punkte 1 und 2 wurden in Lemma~\ref{lem:nullsumme} und Satz~\ref{satz:freq} bewiesen.
-    Punkt 3 folgt aus $H_c[s,t] = -H_a[s,t]$ für alle $(s,t)$ per Definition.
-    Punkt 4: Da $I * H_a$ eine Linearkombination von Intensitätswerten mit positiven und
-    negativen Koeffizienten ist, können negative Werte entstehen. Standardmäßig wird die
+    Punkt 3 folgt aus $H_c[s,t] = -H_a[s,t]$ fÃ¼r alle $(s,t)$ per Definition.
+    Punkt 4: Da $I * H_a$ eine Linearkombination von IntensitÃ¤tswerten mit positiven und
+    negativen Koeffizienten ist, kÃ¶nnen negative Werte entstehen. StandardmÃ¤ÃŸig wird die
     Ausgabe normiert: Null entspricht Mittelgrau ($128$ bei 8-Bit), positive Werte hellen auf,
     negative verdunkeln.
-    Punkt 5: Die Koeffizienten summen zu Null; eine Normierung auf $\sum|H| = 1$ würde die
-    Filterantwort skalieren, aber nicht die strukturelle Eigenschaft ändern. \qedhere
+    Punkt 5: Die Koeffizienten summen zu Null; eine Normierung auf $\sum|H| = 1$ wÃ¼rde die
+    Filterantwort skalieren, aber nicht die strukturelle Eigenschaft Ã¤ndern. \qedhere
 \end{proof}
 
 %=============================================================
@@ -566,15 +566,15 @@ vom kontinuierlichen Laplace-Operator $\nabla^2 = \partial^2/\partial x^2 + \par
 wurde gezeigt:
 
 \begin{itemize}
-    \item Der Operator ist \textbf{rotationsinvariant} (Satz~\ref{satz:rotinv}), was ihn für
-          richtungsunabhängige Kantendetektion prädestiniert
-    \item Die Diskretisierung über \textbf{finite Differenzen} liefert die $3\times3$-Maske $H_a$
+    \item Der Operator ist \textbf{rotationsinvariant} (Satz~\ref{satz:rotinv}), was ihn fÃ¼r
+          richtungsunabhÃ¤ngige Kantendetektion prÃ¤destiniert
+    \item Die Diskretisierung Ã¼ber \textbf{finite Differenzen} liefert die $3\times3$-Maske $H_a$
           (Satz~\ref{satz:diskret}) mit Approximationsfehler $\mathcal{O}(h^2)$
     \item Die \textbf{Nullsummeneigenschaft} (Lemma~\ref{lem:nullsumme}) sichert, dass homogene
           Bildbereiche keine Filterantwort erzeugen
     \item Maske $H_b$ erreicht \textbf{verbesserte Isotropie} durch Einschluss der
           Diagonalnachbarn (Satz~\ref{satz:isotrop})
-    \item Die \textbf{Schärfungsformel} $I_s = I - \nabla^2 I$ liefert geschärfte Bilder durch
+    \item Die \textbf{SchÃ¤rfungsformel} $I_s = I - \nabla^2 I$ liefert geschÃ¤rfte Bilder durch
           Addition hochfrequenter Kanteninformation (Satz~\ref{satz:schaerfung})
     \item Im Frequenzbereich ist der Laplacian ein \textbf{Hochpassfilter} mit
           $\hat{H}(0,0) = 0$ (Satz~\ref{satz:freq})
@@ -585,36 +585,36 @@ wurde gezeigt:
 %=============================================================
 
 Die hier vorgestellten klassischen Laplacian-Masken bilden die Basis eines breiten Spektrums
-aktueller und zukünftiger Forschungsrichtungen in der Bildverarbeitung. Im Folgenden werden
-die wichtigsten Erweiterungen, offene Probleme und zukunftsweisende Entwicklungen ausführlich
+aktueller und zukÃ¼nftiger Forschungsrichtungen in der Bildverarbeitung. Im Folgenden werden
+die wichtigsten Erweiterungen, offene Probleme und zukunftsweisende Entwicklungen ausfÃ¼hrlich
 dargelegt.
 
 \subsection{Laplacian of Gaussian (LoG) und Marr-Hildreth-Detektor}
 
-Der direkte Laplacian ist empfindlich gegenüber Bildrauschen, da die zweite Ableitung Rauschen
-verstärkt. Die wichtigste Erweiterung ist der \textbf{Laplacian of Gaussian} (LoG):
+Der direkte Laplacian ist empfindlich gegenÃ¼ber Bildrauschen, da die zweite Ableitung Rauschen
+verstÃ¤rkt. Die wichtigste Erweiterung ist der \textbf{Laplacian of Gaussian} (LoG):
 \[
     \text{LoG}(x,y) = \nabla^2 G_\sigma(x,y)
     = \frac{1}{\pi \sigma^4}\left(1 - \frac{x^2+y^2}{2\sigma^2}\right)
       \exp\!\left(-\frac{x^2+y^2}{2\sigma^2}\right)
 \]
 Marr und Hildreth \cite{marr1980} zeigten 1980, dass dieser Filter biologisch plausible Kantendetektoren
-modelliert und \emph{Zero Crossings} (Nulldurchgänge) exakt Kantenpositionen markieren. Der LoG
-löst das fundamentale Problem: Durch Vorglättung mit dem Gaußfilter $G_\sigma$ (Tiefpassfilter,
-Standardabweichung $\sigma$) wird Rauschen unterdrückt, bevor der Laplacian die Kanten hervorhebt.
-Zukünftige Arbeiten könnten adaptives $\sigma$ untersuchen, das lokal an die Bildeigenschaften
+modelliert und \emph{Zero Crossings} (NulldurchgÃ¤nge) exakt Kantenpositionen markieren. Der LoG
+lÃ¶st das fundamentale Problem: Durch VorglÃ¤ttung mit dem GauÃŸfilter $G_\sigma$ (Tiefpassfilter,
+Standardabweichung $\sigma$) wird Rauschen unterdrÃ¼ckt, bevor der Laplacian die Kanten hervorhebt.
+ZukÃ¼nftige Arbeiten kÃ¶nnten adaptives $\sigma$ untersuchen, das lokal an die Bildeigenschaften
 angepasst wird.
 
 \subsection{Difference of Gaussians (DoG) als LoG-Approximation}
 
-In der Praxis wird LoG häufig durch die \textbf{Difference of Gaussians} (DoG) approximiert:
+In der Praxis wird LoG hÃ¤ufig durch die \textbf{Difference of Gaussians} (DoG) approximiert:
 \[
     \text{DoG}(x,y;\sigma_1,\sigma_2) = G_{\sigma_1}(x,y) - G_{\sigma_2}(x,y), \quad \sigma_1 < \sigma_2
 \]
 Diese Approximation bildet die Basis des SIFT-Algorithmus (Scale-Invariant Feature Transform) von
-Lowe \cite{lowe2004}. SIFT-Merkmale sind robust gegenüber Skalierung, Rotation und partieller
-Beleuchtungsänderung und dominieren seit über zwei Jahrzehnten die Merkmalsdetektion in Computer Vision.
-Offene Forschungsfragen betreffen optimale $(\sigma_1, \sigma_2)$-Paare für spezifische Anwendungsdomänen
+Lowe \cite{lowe2004}. SIFT-Merkmale sind robust gegenÃ¼ber Skalierung, Rotation und partieller
+BeleuchtungsÃ¤nderung und dominieren seit Ã¼ber zwei Jahrzehnten die Merkmalsdetektion in Computer Vision.
+Offene Forschungsfragen betreffen optimale $(\sigma_1, \sigma_2)$-Paare fÃ¼r spezifische AnwendungsdomÃ¤nen
 wie Histopathologie oder Fernerkundung.
 
 \subsection{Anisotrope Diffusion und nichtlineare Verallgemeinerung}
@@ -625,22 +625,22 @@ Diffusion}:
     \frac{\partial I}{\partial t} = \mathrm{div}\bigl(c(\|\nabla I\|) \cdot \nabla I\bigr)
 \]
 wobei $c(\cdot)$ eine monoton fallende Diffusionsfunktion ist. Diese partielle Differentialgleichung
-glättet homogene Bereiche, erhält aber Kanten ($c \to 0$ bei großem $\|\nabla I\|$). Aktuelle
+glÃ¤ttet homogene Bereiche, erhÃ¤lt aber Kanten ($c \to 0$ bei groÃŸem $\|\nabla I\|$). Aktuelle
 Forschung kombiniert anisotrope Diffusion mit tiefen neuronalen Netzen, um die Diffusionskoeffizienten
 datengetrieben zu lernen.
 
 \subsection{Laplacian Pyramid und Multi-Skalen-Analyse}
 
-Burt und Adelson \cite{burt1983} führten die \textbf{Laplacian Pyramid} ein: eine hierarchische
-Darstellung, bei der jede Ebene die Differenz zwischen zwei aufeinanderfolgenden Gaußpyramidenstufen
-enthält -- also bandpassgefilterte Bilder auf verschiedenen Skalierungsstufen. Diese Darstellung
-ermöglicht:
+Burt und Adelson \cite{burt1983} fÃ¼hrten die \textbf{Laplacian Pyramid} ein: eine hierarchische
+Darstellung, bei der jede Ebene die Differenz zwischen zwei aufeinanderfolgenden GauÃŸpyramidenstufen
+enthÃ¤lt -- also bandpassgefilterte Bilder auf verschiedenen Skalierungsstufen. Diese Darstellung
+ermÃ¶glicht:
 \begin{itemize}
-    \item \textbf{Bildkompression:} Die Laplacian-Koeffizienten sind spärlich und lassen sich
+    \item \textbf{Bildkompression:} Die Laplacian-Koeffizienten sind spÃ¤rlich und lassen sich
           effizient kodieren (Grundlage von JPEG 2000 und Wavelet-Kompressionsverfahren)
     \item \textbf{Bildmischung (Image Blending):} Nahtlose Komposition von Bildbereichen ohne
-          sichtbare Übergänge durch frequenzbandspezifisches Blending
-    \item \textbf{Super-Resolution:} Hochauflösungsrekonstruktion durch Kombination mehrerer
+          sichtbare ÃœbergÃ¤nge durch frequenzbandspezifisches Blending
+    \item \textbf{Super-Resolution:} HochauflÃ¶sungsrekonstruktion durch Kombination mehrerer
           Laplacian-Pyramid-Ebenen
 \end{itemize}
 
@@ -651,20 +651,20 @@ und der Deep-Learning-Revolution nach AlexNet \cite{krizhevsky2012} stellt sich 
 Rolle klassische Laplacian-Filter in gelernten Architekturen spielen.
 
 Aktuelle Analysen zeigen \cite{zeiler2014}, dass die ersten Faltungsschichten tiefer Netze spontan
-Gabor-ähnliche und Laplacian-ähnliche Filter entwickeln -- ohne explizite Vorgabe. Dies deutet
-darauf hin, dass Laplacian-Strukturen \emph{fundamentale statistische Eigenschaften natürlicher
+Gabor-Ã¤hnliche und Laplacian-Ã¤hnliche Filter entwickeln -- ohne explizite Vorgabe. Dies deutet
+darauf hin, dass Laplacian-Strukturen \emph{fundamentale statistische Eigenschaften natÃ¼rlicher
 Bilder} widerspiegeln (``efficient coding''-Hypothese von Barlow \cite{barlow1961}).
 
-\textbf{Zukünftige Richtungen:}
+\textbf{ZukÃ¼nftige Richtungen:}
 \begin{itemize}
     \item \textbf{Laplacian-regularisierte Netzarchitekturen:} Integration von Laplacian-Constraints
-          als Regularisierungsterm in Verlustfunktionen für Bildrekonstruktionsaufgaben (Deblurring,
+          als Regularisierungsterm in Verlustfunktionen fÃ¼r Bildrekonstruktionsaufgaben (Deblurring,
           Inpainting, Super-Resolution)
     \item \textbf{Graph Laplacian in geometrischer Deep Learning:} Der Graph-Laplacian $L = D - A$
-          (Gradmatrix minus Adjazenzmatrix) verallgemeinert den Bildlaplacian auf irreguläre Graphen
+          (Gradmatrix minus Adjazenzmatrix) verallgemeinert den Bildlaplacian auf irregulÃ¤re Graphen
           und 3D-Punktwolken \cite{bronstein2017}
     \item \textbf{Spektrale Graph-Faltungsnetze (GCN):} Kipf und Welling \cite{kipf2017} nutzen den
-          normalisierten Graph-Laplacian für spektrale Faltungen auf Graphdaten
+          normalisierten Graph-Laplacian fÃ¼r spektrale Faltungen auf Graphdaten
 \end{itemize}
 
 \subsection{Anwendungen in der medizinischen Bildverarbeitung}
@@ -673,10 +673,10 @@ Laplacian-Filter spielen in der medizinischen Bildgebung eine zunehmend wichtige
 \begin{itemize}
     \item \textbf{CT/MRT-Segmentierung:} Laplacian-Zero-Crossing-Detektoren markieren Organgrenzen
           und Gewebeschichten in 3D-Volumendaten
-    \item \textbf{Histopathologie:} Erkennung von Zellkerngrenzen in H\&E-gefärbten Gewebeschnitten
-          für automatisierte Krebsdiagnose
-    \item \textbf{Ophthalmologie:} Detektion von Netzhautgefäßen in Fundusbildern (DRIVE-Datensatz)
-          zur Früherkennung von diabetischer Retinopathie
+    \item \textbf{Histopathologie:} Erkennung von Zellkerngrenzen in H\&E-gefÃ¤rbten Gewebeschnitten
+          fÃ¼r automatisierte Krebsdiagnose
+    \item \textbf{Ophthalmologie:} Detektion von NetzhautgefÃ¤ÃŸen in Fundusbildern (DRIVE-Datensatz)
+          zur FrÃ¼herkennung von diabetischer Retinopathie
     \item \textbf{Neuroimaging:} Kortikale Dickenmessung durch Laplacian-basierte Normalenvektoren
           auf MRT-basierten Kortex-Meshes \cite{jones2000}
 \end{itemize}
@@ -689,28 +689,28 @@ liefern eine optimale niedrigdimensionale Einbettung unter Erhaltung lokaler Geo
 wird in Bildklassifikation, Dokumentenclustering und Bioinformatik eingesetzt und ist direkt mit dem
 Diffusions-Map-Framework \cite{coifman2006} verwandt.
 
-\subsection{Robuste Laplacian-Filter und Ausreißertoleranz}
+\subsection{Robuste Laplacian-Filter und AusreiÃŸertoleranz}
 
-Klassische Laplacian-Filter reagieren sensitiv auf Impulsrauschen (Salt-and-Pepper-Rauschen). Zukünftige
+Klassische Laplacian-Filter reagieren sensitiv auf Impulsrauschen (Salt-and-Pepper-Rauschen). ZukÃ¼nftige
 Arbeiten sollten robuste Varianten untersuchen, die auf Rang-basierten Statistiken oder
-$M$-Schätzern beruhen:
+$M$-SchÃ¤tzern beruhen:
 \[
     \hat{\nabla}^2 I[x,y] = \text{Median}\bigl\{I[x+s,y+t] \cdot H[s,t] : (s,t) \in \mathcal{N}\bigr\}
 \]
-Solche robusten Operatoren wären besonders wertvoll für Ultraschall- und Elektronenmikroskopie-Bilder
-mit stark nicht-Gaußschem Rauschen.
+Solche robusten Operatoren wÃ¤ren besonders wertvoll fÃ¼r Ultraschall- und Elektronenmikroskopie-Bilder
+mit stark nicht-GauÃŸschem Rauschen.
 
 \subsection{Parallelisierung und Hardware-Implementierung}
 
-Für Echtzeitanwendungen (Videoverarbeitung, Kamerasysteme) ist die effiziente Implementierung
+FÃ¼r Echtzeitanwendungen (Videoverarbeitung, Kamerasysteme) ist die effiziente Implementierung
 entscheidend:
 \begin{itemize}
     \item \textbf{FPGA-Implementierung:} $3\times3$-Faltung als Shift-Register-Pipeline mit
           konstantem Durchsatz von einem Pixel pro Takt
-    \item \textbf{GPU-Parallelisierung (CUDA/OpenCL):} Massiv-parallele Berechnung über alle
-          Bildpixel simultan, Speedup $> 100\times$ gegenüber CPU für hochauflösende Bilder
+    \item \textbf{GPU-Parallelisierung (CUDA/OpenCL):} Massiv-parallele Berechnung Ã¼ber alle
+          Bildpixel simultan, Speedup $> 100\times$ gegenÃ¼ber CPU fÃ¼r hochauflÃ¶sende Bilder
     \item \textbf{Neuromorphic Computing:} Implementierung auf Spike-basierten Neuromorphic-Chips
-          (Intel Loihi, IBM TrueNorth) für energieeffiziente Kantendetektion in eingebetteten Systemen
+          (Intel Loihi, IBM TrueNorth) fÃ¼r energieeffiziente Kantendetektion in eingebetteten Systemen
 \end{itemize}
 
 \subsection{Verbindung zur theoretischen Informatik: Subgraph Algorithmus}
@@ -720,10 +720,10 @@ diskreter Pixelgraphen (4-Nachbarschaft, 8-Nachbarschaft) sind genau die algebra
 auf denen der diskrete Laplacian operiert. Der Subgraph Algorithmus (Epp 2026, \cite{epp2026})
 analysiert Graphen via Adjazenzmatrizen und Signatur-Vergleich -- methodisch verwandt mit der
 spektralen Graphentheorie, die den Graph-Laplacian $L = D - A$ als zentrales Objekt verwendet.
-Zukünftige Arbeiten könnten untersuchen, ob die Signatur-Invarianten des Subgraph Algorithmus
-zur effizienten Berechnung von Laplacian-Spektren eingesetzt werden können, oder ob isomorphe
-Pixelgraph-Strukturen (rotierte Bildausschnitte) über den Subgraph Algorithmus erkannt werden
-können -- was direkt zur Frage der Rotationsinvarianz von Bildmerkmalen führt.
+ZukÃ¼nftige Arbeiten kÃ¶nnten untersuchen, ob die Signatur-Invarianten des Subgraph Algorithmus
+zur effizienten Berechnung von Laplacian-Spektren eingesetzt werden kÃ¶nnen, oder ob isomorphe
+Pixelgraph-Strukturen (rotierte Bildausschnitte) Ã¼ber den Subgraph Algorithmus erkannt werden
+kÃ¶nnen -- was direkt zur Frage der Rotationsinvarianz von Bildmerkmalen fÃ¼hrt.
 
 %=============================================================
 \begin{thebibliography}{99}
@@ -823,3 +823,4 @@ S. Epp,
 \end{thebibliography}
 
 \end{document}
+

@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+﻿\documentclass[tikz,border=5pt]{standalone}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[german]{babel}
@@ -22,13 +22,14 @@
 	]
 		\addplot[color=red!80!black, very thick, domain=0:5, samples=400]
 			{1 - exp(-0.5*x)*cos(deg(4*x))};
-		\addlegendentry{$u_C(t)$ — Kondensator}
+		\addlegendentry{$u_C(t)$ â€” Kondensator}
 		\addplot[color=teal!80!black, thick, domain=0:5, samples=400]
 			{exp(-0.5*x)*( -0.5*sin(deg(4*x)) + 4*cos(deg(4*x)) )/(4.03)};
-		\addlegendentry{$u_L(t)$ — Spule}
+		\addlegendentry{$u_L(t)$ â€” Spule}
 		\addplot[color=violet!75!black, dashed, thick, domain=0:5, samples=400]
 			{0.5*exp(-0.5*x)*sin(deg(4*x))};
-		\addlegendentry{$u_R(t)$ — Widerstand}
+		\addlegendentry{$u_R(t)$ â€” Widerstand}
 	\end{axis}
 \end{tikzpicture}
 \end{document}
+

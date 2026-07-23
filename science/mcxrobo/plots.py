@@ -10,10 +10,7 @@ import matplotlib.gridspec as gridspec
 import numpy as np
 import os
 
-OUTPUT_DIR = "/home/claude/mcxrobo"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-PHI = (1 + np.sqrt(5)) / 2
+OUTPUT_DIR = ' 2
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 1. Architektur-Diagramm (arch.pdf)

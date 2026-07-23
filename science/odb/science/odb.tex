@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
 % -------------------------------------------------------
 % Pakete
@@ -103,7 +103,7 @@
   \rule{\textwidth}{0.4pt}\\[0.5em]
   \begin{tabular}{rl}
     \textbf{Themengebiet:} & Datenbanktheorie, Schemaentwurf, Normalisierung \\
-    \textbf{Schwerpunkt:}  & Tiefenpfade vs.\ sternförmige Relationsstruktur \\
+    \textbf{Schwerpunkt:}  & Tiefenpfade vs.\ sternfÃ¶rmige Relationsstruktur \\
     \textbf{Autor:}        & Stephan Epp \\
     \textbf{Datum:}        & \today \\
   \end{tabular}
@@ -115,15 +115,15 @@
   \small
   Der vorliegende Beitrag untersucht ein fundamentales, jedoch in der Literatur
   bislang nur implizit behandeltes Prinzip des relationalen Datenbankentwurfs:
-  die strukturelle Orientierung von Fremdschlüssel"|relationen in die
+  die strukturelle Orientierung von FremdschlÃ¼ssel"|relationen in die
   \emph{Tiefe} (lineare oder baumartige Ketten) im Gegensatz zur
-  \emph{Breite} (sternförmige Hub-Anordnungen). Es wird formal nachgewiesen,
+  \emph{Breite} (sternfÃ¶rmige Hub-Anordnungen). Es wird formal nachgewiesen,
   dass tiefe Relationenpfade in Bezug auf Normalisierungsgrad, funktionale
-  Abhängigkeitsstruktur, Anomalievermeidung, Abfragekomplexität und
-  Wartbarkeit gegenüber flachen Sternstrukturen überlegen sind. Die Argumentation
-  stützt sich auf die klassische relationale Algebra nach Codd~\cite{Codd1970},
+  AbhÃ¤ngigkeitsstruktur, Anomalievermeidung, AbfragekomplexitÃ¤t und
+  Wartbarkeit gegenÃ¼ber flachen Sternstrukturen Ã¼berlegen sind. Die Argumentation
+  stÃ¼tzt sich auf die klassische relationale Algebra nach Codd~\cite{Codd1970},
   die Normalformtheorie bis BCNF und 4NF~\cite{Codd1974, Fagin1977}, sowie
-  jüngere Erkenntnisse aus der Datenbankoptimierung und dem Schema-Refactoring~\cite{Ambler2003}.
+  jÃ¼ngere Erkenntnisse aus der Datenbankoptimierung und dem Schema-Refactoring~\cite{Ambler2003}.
   \end{minipage}
 \end{titlepage}
 
@@ -140,29 +140,29 @@ Softwareentwicklung und der angewandten Informatik. Obwohl die theoretischen
 Grundlagen -- insbesondere Codd's relationales Modell \cite{Codd1970} sowie die
 daraus abgeleiteten Normalformen \cite{Codd1974, Date2003} -- seit Jahrzehnten
 bekannt sind, zeigen praktische Systeme immer wieder charakteristische
-Entwurfsfehler. Einer der häufigsten und gleichzeitig folgenreichsten Fehler ist
-die sogenannte \emph{sternförmige Schemaanordnung}: Eine zentrale
-,,Hub\grqq{}-Relation referenziert direkt eine Vielzahl unabhängiger
-,,Spoke\grqq{}-Relationen über Fremdschlüssel, ohne dass die natürliche semantische
-Tiefe der Domäne abgebildet wird.
+Entwurfsfehler. Einer der hÃ¤ufigsten und gleichzeitig folgenreichsten Fehler ist
+die sogenannte \emph{sternfÃ¶rmige Schemaanordnung}: Eine zentrale
+,,Hub\grqq{}-Relation referenziert direkt eine Vielzahl unabhÃ¤ngiger
+,,Spoke\grqq{}-Relationen Ã¼ber FremdschlÃ¼ssel, ohne dass die natÃ¼rliche semantische
+Tiefe der DomÃ¤ne abgebildet wird.
 
 Dieser Beitrag stellt die These auf und belegt sie formal:
 \begin{quote}
 \emph{Ein tiefenorientierter Datenbankentwurf -- charakterisiert durch lineare
-oder baumartige Fremdschlüsselketten -- ist dem sternförmigen Entwurf in allen
-wesentlichen Gütekriterien der Datenbanktheorie überlegen.}
+oder baumartige FremdschlÃ¼sselketten -- ist dem sternfÃ¶rmigen Entwurf in allen
+wesentlichen GÃ¼tekriterien der Datenbanktheorie Ã¼berlegen.}
 \end{quote}
 
 Die Argumentation gliedert sich wie folgt: Abschnitt~\ref{sec:grundlagen}
 etabliert die formalen Grundlagen. Abschnitt~\ref{sec:topologien} definiert
-die Topologien ,,Tiefe\grqq{} und ,,Breite\grqq{} präzise.
+die Topologien ,,Tiefe\grqq{} und ,,Breite\grqq{} prÃ¤zise.
 Abschnitt~\ref{sec:normalformen} zeigt den Zusammenhang mit der
 Normalisierungstheorie. Abschnitt~\ref{sec:anomalien} behandelt
-Anomalievermeidung, Abschnitt~\ref{sec:abfragen} die Abfragekomplexität,
+Anomalievermeidung, Abschnitt~\ref{sec:abfragen} die AbfragekomplexitÃ¤t,
 Abschnitt~\ref{sec:wartbarkeit} Wartbarkeit und Erweiterbarkeit.
 Abschnitt~\ref{sec:beweis} liefert den konsolidierten formalen Nachweis.
-Abschnitt~\ref{sec:beispiel} illustriert die Theorie an einem durchgängigen
-Praxisbeispiel. Abschnitt~\ref{sec:fazit} schließt mit einem Fazit.
+Abschnitt~\ref{sec:beispiel} illustriert die Theorie an einem durchgÃ¤ngigen
+Praxisbeispiel. Abschnitt~\ref{sec:fazit} schlieÃŸt mit einem Fazit.
 
 % ==============================================================
 \section{Formale Grundlagen}
@@ -172,30 +172,30 @@ Praxisbeispiel. Abschnitt~\ref{sec:fazit} schließt mit einem Fazit.
 \subsection{Relationales Modell}
 
 \begin{definition}[Relation]
-Eine \emph{Relation} $R$ über einem Attributschema $\att(R) = \{A_1, A_2, \ldots, A_n\}$
+Eine \emph{Relation} $R$ Ã¼ber einem Attributschema $\att(R) = \{A_1, A_2, \ldots, A_n\}$
 ist eine endliche Menge von Tupeln $t: \att(R) \to \bigcup_{i} \mathrm{dom}(A_i)$,
-wobei $t(A_i) \in \mathrm{dom}(A_i)$ für alle $i$ \cite{Codd1970}.
+wobei $t(A_i) \in \mathrm{dom}(A_i)$ fÃ¼r alle $i$ \cite{Codd1970}.
 \end{definition}
 
 \begin{definition}[Datenbankschema]
 Ein \emph{Datenbankschema} $\mathcal{S} = (\mathcal{R}, \mathcal{F}, \mathcal{K})$
 besteht aus einer endlichen Menge von Relationenschemata $\mathcal{R} = \{R_1, \ldots, R_m\}$,
-einer Menge funktionaler Abhängigkeiten $\mathcal{F}$ sowie einer Menge von
-Integritätsbedingungen $\mathcal{K}$ (insbesondere Primär- und Fremdschlüsselbedingungen)
+einer Menge funktionaler AbhÃ¤ngigkeiten $\mathcal{F}$ sowie einer Menge von
+IntegritÃ¤tsbedingungen $\mathcal{K}$ (insbesondere PrimÃ¤r- und FremdschlÃ¼sselbedingungen)
 \cite{Ullman1988}.
 \end{definition}
 
-\begin{definition}[Funktionale Abhängigkeit]
+\begin{definition}[Funktionale AbhÃ¤ngigkeit]
 Sei $R$ ein Relationenschema und $X, Y \subseteq \att(R)$.
-Die \emph{funktionale Abhängigkeit} $X \to Y$ gilt in $R$, wenn für alle
+Die \emph{funktionale AbhÃ¤ngigkeit} $X \to Y$ gilt in $R$, wenn fÃ¼r alle
 Instanzen $r$ von $R$ und alle Tupel $t_1, t_2 \in r$ gilt:
 $t_1(X) = t_2(X) \implies t_1(Y) = t_2(Y)$ \cite{Armstrong1974}.
 \end{definition}
 
-\begin{definition}[Fremdschlüssel]
-Sei $R_i, R_j \in \mathcal{R}$ mit $K_j \subseteq \att(R_j)$ dem Primärschlüssel
-von $R_j$. Eine Attributmenge $F \subseteq \att(R_i)$ heißt
-\emph{Fremdschlüssel in $R_i$ referenzierend $R_j$}, wenn für alle Datenbankinstanzen
+\begin{definition}[FremdschlÃ¼ssel]
+Sei $R_i, R_j \in \mathcal{R}$ mit $K_j \subseteq \att(R_j)$ dem PrimÃ¤rschlÃ¼ssel
+von $R_j$. Eine Attributmenge $F \subseteq \att(R_i)$ heiÃŸt
+\emph{FremdschlÃ¼ssel in $R_i$ referenzierend $R_j$}, wenn fÃ¼r alle Datenbankinstanzen
 $d$ gilt: $\pi_F(r_i) \subseteq \pi_{K_j}(r_j)$ \cite{Date2003}.
 \end{definition}
 
@@ -212,23 +212,23 @@ F \text{ ist FK in } R_i \text{ referenzierend } R_j\}$.
 Der Referenzgraph ist das zentrale Werkzeug zur Unterscheidung von
 Tiefenstruktur und Breitenstruktur eines Schemas.
 
-\subsection{Komplexitätsmaße}
+\subsection{KomplexitÃ¤tsmaÃŸe}
 
-\begin{definition}[Schemakomplexitätsmaße]
+\begin{definition}[SchemakomplexitÃ¤tsmaÃŸe]
 \label{def:masse}
 Sei $G(\mathcal{S}) = (V, E)$ der Referenzgraph eines Schemas $\mathcal{S}$.
 \begin{enumerate}[label=(\roman*)]
   \item Der \emph{maximale Grad} $\Delta(G) = \max_{v \in V} \deg(v)$ misst
-        die maximale Anzahl von Fremdschlüsselreferenzen eines Knotens.
-  \item Die \emph{maximale Pfadlänge} $\lambda(G) = \max_{u,v \in V} d(u,v)$
-        (Diameter) misst die längste Referenzkette im Schema.
-  \item Das \emph{Tiefe-Breite-Verhältnis} $\tau(G) = \lambda(G) / \Delta(G)$
+        die maximale Anzahl von FremdschlÃ¼sselreferenzen eines Knotens.
+  \item Die \emph{maximale PfadlÃ¤nge} $\lambda(G) = \max_{u,v \in V} d(u,v)$
+        (Diameter) misst die lÃ¤ngste Referenzkette im Schema.
+  \item Das \emph{Tiefe-Breite-VerhÃ¤ltnis} $\tau(G) = \lambda(G) / \Delta(G)$
         charakterisiert die strukturelle Orientierung des Schemas.
 \end{enumerate}
 \end{definition}
 
-Ein Schema heißt \emph{tiefenorientiert}, wenn $\tau(G) \gg 1$, und
-\emph{breitenorientiert (sternförmig)}, wenn $\tau(G) \ll 1$.
+Ein Schema heiÃŸt \emph{tiefenorientiert}, wenn $\tau(G) \gg 1$, und
+\emph{breitenorientiert (sternfÃ¶rmig)}, wenn $\tau(G) \ll 1$.
 
 % ==============================================================
 \section{Topologien: Tiefe vs.\ Breite}
@@ -239,22 +239,22 @@ Ein Schema heißt \emph{tiefenorientiert}, wenn $\tau(G) \gg 1$, und
 
 \begin{definition}[Sternschema]
 \label{def:stern}
-Ein Schema $\mathcal{S}$ heißt \emph{$k$-Sternschema}, wenn es eine
+Ein Schema $\mathcal{S}$ heiÃŸt \emph{$k$-Sternschema}, wenn es eine
 ,,Hub\grqq{}-Relation $H \in \mathcal{R}$ gibt mit $\deg(H) = k$ und
 $\lambda(G(\mathcal{S})) \leq 2$. Die $k$ von $H$ referenzierten Relationen
-heißen \emph{Spoke}-Relationen.
+heiÃŸen \emph{Spoke}-Relationen.
 \end{definition}
 
 Das Sternschema ist insbesondere aus dem Data-Warehouse-Bereich bekannt
-(Kimball-Methodik, \cite{Kimball1996}), wo es für OLAP-Abfragen optimiert
-wird. Im OLTP-Kontext hingegen offenbart es gravierende Schwächen
+(Kimball-Methodik, \cite{Kimball1996}), wo es fÃ¼r OLAP-Abfragen optimiert
+wird. Im OLTP-Kontext hingegen offenbart es gravierende SchwÃ¤chen
 (vgl.\ Abschnitt~\ref{sec:anomalien}).
 
 \begin{definition}[Tiefenpfadschema]
 \label{def:tiefenpfad}
-Ein Schema $\mathcal{S}$ heißt \emph{Tiefenpfadschema der Länge $l$},
+Ein Schema $\mathcal{S}$ heiÃŸt \emph{Tiefenpfadschema der LÃ¤nge $l$},
 wenn $G(\mathcal{S})$ einen Pfad $R_1 \to R_2 \to \cdots \to R_l$
-enthält mit $\Delta(G) \leq c$ für eine kleine Konstante $c$ (typisch $c \leq 3$)
+enthÃ¤lt mit $\Delta(G) \leq c$ fÃ¼r eine kleine Konstante $c$ (typisch $c \leq 3$)
 und $\lambda(G(\mathcal{S})) = l - 1$.
 \end{definition}
 
@@ -302,7 +302,7 @@ und $\lambda(G(\mathcal{S})) = l - 1$.
 \end{scope}
 
 \end{tikzpicture}
-\caption{Gegenüberstellung von (a) Sternschema mit Hub-Relation $H$
+\caption{GegenÃ¼berstellung von (a) Sternschema mit Hub-Relation $H$
 und 6 Spoke-Relationen ($\Delta = 6$, $\lambda = 1$, $\tau = 0{,}17$) und
 (b) Tiefenpfadschema mit linearer Kette
 ($\Delta = 1$, $\lambda = 4$, $\tau = 4$).}
@@ -311,13 +311,13 @@ und 6 Spoke-Relationen ($\Delta = 6$, $\lambda = 1$, $\tau = 0{,}17$) und
 
 \subsection{Semantische Motivation}
 
-Die Wahl der Topologie ist kein rein ästhetisches, sondern ein
-\emph{semantisch erzwungenes} Entwurfsprinzip. Reale Domänen weisen
-fast immer hierarchische oder transitive Abhängigkeitsstrukturen auf:
-Eine \texttt{Bestellung} hängt von einem \texttt{Kunden} ab, der wiederum
-einer \texttt{Region} zugeordnet ist, die einem \texttt{Land} angehört.
-Diese natürliche Tiefe der Abhängigkeiten erzwingt eine tiefe Pfadstruktur
-und sollte nicht künstlich in eine flache Sternstruktur gezwungen werden
+Die Wahl der Topologie ist kein rein Ã¤sthetisches, sondern ein
+\emph{semantisch erzwungenes} Entwurfsprinzip. Reale DomÃ¤nen weisen
+fast immer hierarchische oder transitive AbhÃ¤ngigkeitsstrukturen auf:
+Eine \texttt{Bestellung} hÃ¤ngt von einem \texttt{Kunden} ab, der wiederum
+einer \texttt{Region} zugeordnet ist, die einem \texttt{Land} angehÃ¶rt.
+Diese natÃ¼rliche Tiefe der AbhÃ¤ngigkeiten erzwingt eine tiefe Pfadstruktur
+und sollte nicht kÃ¼nstlich in eine flache Sternstruktur gezwungen werden
 \cite{Date2003, Elmasri2015}.
 
 % ==============================================================
@@ -327,88 +327,88 @@ und sollte nicht künstlich in eine flache Sternstruktur gezwungen werden
 
 \subsection{Normalformen und ihre Anforderungen}
 
-Wir rekapitulieren die für den Nachweis relevanten Normalformen \cite{Codd1974, Fagin1977}:
+Wir rekapitulieren die fÃ¼r den Nachweis relevanten Normalformen \cite{Codd1974, Fagin1977}:
 
 \begin{definition}[Erste Normalform -- 1NF]
-Eine Relation $R$ befindet sich in \emph{1NF}, wenn alle Attributdomänen
+Eine Relation $R$ befindet sich in \emph{1NF}, wenn alle AttributdomÃ¤nen
 atomar sind, d.\,h.\ keine mengenwertigen oder strukturierten Attribute
-enthält \cite{Codd1970}.
+enthÃ¤lt \cite{Codd1970}.
 \end{definition}
 
 \begin{definition}[Zweite Normalform -- 2NF]
 Eine Relation $R$ in 1NF befindet sich in \emph{2NF}, wenn jedes
-Nichtschlüsselattribut voll funktional abhängig vom Primärschlüssel ist,
-d.\,h.\ keine partielle Abhängigkeit von einem echten Teilschlüssel existiert
+NichtschlÃ¼sselattribut voll funktional abhÃ¤ngig vom PrimÃ¤rschlÃ¼ssel ist,
+d.\,h.\ keine partielle AbhÃ¤ngigkeit von einem echten TeilschlÃ¼ssel existiert
 \cite{Codd1974}.
 \end{definition}
 
 \begin{definition}[Dritte Normalform -- 3NF]
 Eine Relation $R$ in 2NF befindet sich in \emph{3NF}, wenn kein
-Nichtschlüsselattribut transitiv vom Primärschlüssel abhängig ist
+NichtschlÃ¼sselattribut transitiv vom PrimÃ¤rschlÃ¼ssel abhÃ¤ngig ist
 \cite{Codd1974}.
 \end{definition}
 
 \begin{definition}[Boyce-Codd-Normalform -- BCNF]
-Eine Relation $R$ befindet sich in \emph{BCNF}, wenn für jede
-nicht-triviale funktionale Abhängigkeit $X \to A$ gilt: $X$ ist ein
-Superschlüssel von $R$ \cite{Boyce1974}.
+Eine Relation $R$ befindet sich in \emph{BCNF}, wenn fÃ¼r jede
+nicht-triviale funktionale AbhÃ¤ngigkeit $X \to A$ gilt: $X$ ist ein
+SuperschlÃ¼ssel von $R$ \cite{Boyce1974}.
 \end{definition}
 
 \begin{definition}[Vierte Normalform -- 4NF]
-Eine Relation $R$ in BCNF befindet sich in \emph{4NF}, wenn für jede
-nicht-triviale mehrwertige Abhängigkeit $X \twoheadrightarrow Y$ gilt:
-$X$ ist ein Superschlüssel von $R$ \cite{Fagin1977}.
+Eine Relation $R$ in BCNF befindet sich in \emph{4NF}, wenn fÃ¼r jede
+nicht-triviale mehrwertige AbhÃ¤ngigkeit $X \twoheadrightarrow Y$ gilt:
+$X$ ist ein SuperschlÃ¼ssel von $R$ \cite{Fagin1977}.
 \end{definition}
 
-\subsection{Transitivität und Schematopologie}
+\subsection{TransitivitÃ¤t und Schematopologie}
 
-\begin{theorem}[Transitivitätsverteilung]
+\begin{theorem}[TransitivitÃ¤tsverteilung]
 \label{thm:transitivitaet}
 Sei $R$ eine Relation mit $\att(R) = \{K, A_1, A_2, \ldots, A_n\}$ und
-funktionalen Abhängigkeiten $K \to A_1 \to A_2 \to \cdots \to A_n$.
-Dann verletzt $R$ die 3NF für alle $A_i$ mit $i \geq 2$.
-Die einzige verlustfreie, abhängigkeitserhaltende Zerlegung in 3NF ist
+funktionalen AbhÃ¤ngigkeiten $K \to A_1 \to A_2 \to \cdots \to A_n$.
+Dann verletzt $R$ die 3NF fÃ¼r alle $A_i$ mit $i \geq 2$.
+Die einzige verlustfreie, abhÃ¤ngigkeitserhaltende Zerlegung in 3NF ist
 die Kette $R_1(K, A_1),\; R_2(A_1, A_2),\; \ldots,\; R_{n-1}(A_{n-1}, A_n)$.
 \end{theorem}
 
 \begin{proof}
-Sei $K \to A_i \to A_{i+1}$ für ein $i \geq 1$ eine transitive Kette.
-Da $A_i$ kein Schlüssel ist, ist $A_{i+1}$ transitiv von $K$ abhängig und
+Sei $K \to A_i \to A_{i+1}$ fÃ¼r ein $i \geq 1$ eine transitive Kette.
+Da $A_i$ kein SchlÃ¼ssel ist, ist $A_{i+1}$ transitiv von $K$ abhÃ¤ngig und
 $R$ verletzt 3NF. Die Zerlegung $R' = R \setminus \{A_{i+1}\}$ und
 $R'' = (A_i, A_{i+1})$ ist verlustfrei nach dem Lossless-Join-Lemma
 (da $A_i \to A_{i+1}$ gilt und $A_i = R' \cap R''$ sowie $A_i \to R''$ gilt)
-\cite{Ullman1988}. Rekursive Anwendung für alle transitiven Abhängigkeiten
-liefert die vollständige Zerlegungskette. Die Abhängigkeitserhaltung folgt
+\cite{Ullman1988}. Rekursive Anwendung fÃ¼r alle transitiven AbhÃ¤ngigkeiten
+liefert die vollstÃ¤ndige Zerlegungskette. Die AbhÃ¤ngigkeitserhaltung folgt
 daraus, dass jede FD $A_i \to A_{i+1}$ in der entsprechenden Relation
-$R_i(A_{i-1}, A_i, A_{i+1})$ bzw.\ $R_i(A_i, A_{i+1})$ präsent bleibt.
+$R_i(A_{i-1}, A_i, A_{i+1})$ bzw.\ $R_i(A_i, A_{i+1})$ prÃ¤sent bleibt.
 \end{proof}
 
 \begin{corollary}[Tiefenpfad als 3NF-Normalform]
 \label{cor:tiefenpfad3NF}
-Ein Datenbankschema, das alle transitiven Abhängigkeiten einer Domäne
-korrekt repräsentiert, hat zwingend einen tiefenorientierten Referenzgraphen.
-Sternförmige Schemata, die dieselbe Domäne abbilden, verletzen die 3NF,
-sofern transitive Abhängigkeiten in der Domäne existieren.
+Ein Datenbankschema, das alle transitiven AbhÃ¤ngigkeiten einer DomÃ¤ne
+korrekt reprÃ¤sentiert, hat zwingend einen tiefenorientierten Referenzgraphen.
+SternfÃ¶rmige Schemata, die dieselbe DomÃ¤ne abbilden, verletzen die 3NF,
+sofern transitive AbhÃ¤ngigkeiten in der DomÃ¤ne existieren.
 \end{corollary}
 
 Korollar~\ref{cor:tiefenpfad3NF} ist das zentrale formale Ergebnis dieses
 Abschnitts. Es besagt, dass die Normalisierungstheorie \emph{tiefe Pfade}
-direkt erzwingt, wenn die Domäne transitive Abhängigkeiten aufweist --
-was in praktisch allen nicht-trivialen realen Domänen der Fall ist.
+direkt erzwingt, wenn die DomÃ¤ne transitive AbhÃ¤ngigkeiten aufweist --
+was in praktisch allen nicht-trivialen realen DomÃ¤nen der Fall ist.
 
-\subsection{Mehrwertige Abhängigkeiten und 4NF}
+\subsection{Mehrwertige AbhÃ¤ngigkeiten und 4NF}
 
-\begin{proposition}[Mehrwertige Abhängigkeiten im Sternschema]
+\begin{proposition}[Mehrwertige AbhÃ¤ngigkeiten im Sternschema]
 \label{prop:mvd_stern}
 In einem $k$-Sternschema mit Hub $H$ und Spokes $S_1, \ldots, S_k$ gilt:
 Falls zwei Spoke-Attribute $B_1 \in \att(S_1)$ und $B_2 \in \att(S_2)$
-inhaltlich unabhängig sind und beide durch $K_H$ identifiziert werden, so
-liegt in $H$ eine nicht-triviale mehrwertige Abhängigkeit $K_H \twoheadrightarrow B_1$
+inhaltlich unabhÃ¤ngig sind und beide durch $K_H$ identifiziert werden, so
+liegt in $H$ eine nicht-triviale mehrwertige AbhÃ¤ngigkeit $K_H \twoheadrightarrow B_1$
 vor, wenn beide Attribute direkt in $H$ gehalten werden. Dies verletzt 4NF.
 \end{proposition}
 
-Die korrekte Auflösung ist -- erneut -- die Extraktion in separate Relationen,
-was die Tiefenstruktur des Schemas weiter verstärkt.
+Die korrekte AuflÃ¶sung ist -- erneut -- die Extraktion in separate Relationen,
+was die Tiefenstruktur des Schemas weiter verstÃ¤rkt.
 
 % ==============================================================
 \section{Anomalievermeidung}
@@ -420,40 +420,40 @@ was die Tiefenstruktur des Schemas weiter verstärkt.
 Die Datenbanktheorie unterscheidet drei klassische Anomalietypen \cite{Date2003}:
 
 \begin{enumerate}[label=(\roman*)]
-  \item \textbf{Einfügeanomalie}: Daten können nicht eingetragen werden,
-        ohne gleichzeitig nicht vorhandene Daten erfinden zu müssen.
-  \item \textbf{Löschanomalie}: Das Löschen eines Tupels vernichtet
+  \item \textbf{EinfÃ¼geanomalie}: Daten kÃ¶nnen nicht eingetragen werden,
+        ohne gleichzeitig nicht vorhandene Daten erfinden zu mÃ¼ssen.
+  \item \textbf{LÃ¶schanomalie}: Das LÃ¶schen eines Tupels vernichtet
         unbeabsichtigt weitere Informationen.
-  \item \textbf{Änderungsanomalie}: Eine inhaltliche Änderung muss in
-        mehreren Tupeln durchgeführt werden, da die Information redundant gespeichert ist.
+  \item \textbf{Ã„nderungsanomalie}: Eine inhaltliche Ã„nderung muss in
+        mehreren Tupeln durchgefÃ¼hrt werden, da die Information redundant gespeichert ist.
 \end{enumerate}
 
 \begin{theorem}[Anomaliefreiheit durch Tiefenpfade]
 \label{thm:anomaliefrei}
 Sei $\mathcal{S}$ ein Datenbankschema in BCNF mit einem Tiefenpfadgraphen
-$G(\mathcal{S})$. Dann ist $\mathcal{S}$ frei von Einfüge-, Lösch- und
-Änderungsanomalien bzgl.\ der durch $G(\mathcal{S})$ modellierten
-transitiven Abhängigkeiten.
+$G(\mathcal{S})$. Dann ist $\mathcal{S}$ frei von EinfÃ¼ge-, LÃ¶sch- und
+Ã„nderungsanomalien bzgl.\ der durch $G(\mathcal{S})$ modellierten
+transitiven AbhÃ¤ngigkeiten.
 \end{theorem}
 
 \begin{proof}
 BCNF garantiert, dass in jeder Relation $R_i$ der Kette jede nicht-triviale
-FD $X \to A$ mit $X$ als Superschlüssel gilt. Somit ist jede Information
+FD $X \to A$ mit $X$ als SuperschlÃ¼ssel gilt. Somit ist jede Information
 genau einmal gespeichert (keine Redundanz). Ohne Redundanz:
 \begin{itemize}
-  \item \emph{Änderungsanomalie}: Entfällt, da jede Eigenschaft in genau einer
-        Relation steht. Eine Änderung betrifft genau ein Tupel.
-  \item \emph{Löschanomalie}: Da eine Entität $e_i$ in $R_i$ unabhängig von
-        ihrer Referenz durch $R_{i-1}$ existiert (referentielle Integrität
-        via FK), gehen beim Löschen eines $R_{i-1}$-Tupels keine $R_i$-Daten
+  \item \emph{Ã„nderungsanomalie}: EntfÃ¤llt, da jede Eigenschaft in genau einer
+        Relation steht. Eine Ã„nderung betrifft genau ein Tupel.
+  \item \emph{LÃ¶schanomalie}: Da eine EntitÃ¤t $e_i$ in $R_i$ unabhÃ¤ngig von
+        ihrer Referenz durch $R_{i-1}$ existiert (referentielle IntegritÃ¤t
+        via FK), gehen beim LÃ¶schen eines $R_{i-1}$-Tupels keine $R_i$-Daten
         verloren (ON DELETE SET NULL / RESTRICT).
-  \item \emph{Einfügeanomalie}: Eine neue Entität in $R_i$ kann unabhängig
-        von $R_{i-1}$ eingefügt werden, da FK-Referenz nur in der
+  \item \emph{EinfÃ¼geanomalie}: Eine neue EntitÃ¤t in $R_i$ kann unabhÃ¤ngig
+        von $R_{i-1}$ eingefÃ¼gt werden, da FK-Referenz nur in der
         referenzierenden Relation besteht.
 \end{itemize}
 Im Sternschema hingegen erzeugt die direkte Kodierung transitiver Attribute
-in $H$ Redundanz, da Attributwerte von Spoke-Entitäten wiederholt in $H$
-gespeichert sind -- dies ermöglicht alle drei Anomalietypen.
+in $H$ Redundanz, da Attributwerte von Spoke-EntitÃ¤ten wiederholt in $H$
+gespeichert sind -- dies ermÃ¶glicht alle drei Anomalietypen.
 \end{proof}
 
 \subsection{Quantitative Analyse der Redundanz}
@@ -462,11 +462,11 @@ gespeichert sind -- dies ermöglicht alle drei Anomalietypen.
 \label{prop:redundanz}
 Sei $H$ eine Hub-Relation mit $n_H$ Tupeln und Spoke-Relation $S_1$ mit
 $n_{S_1}$ Tupeln und $|A_{S_1}|$ Attributen. Werden die Attribute von $S_1$
-direkt in $H$ denormalisiert, so beträgt der Redundanzfaktor:
+direkt in $H$ denormalisiert, so betrÃ¤gt der Redundanzfaktor:
 \[
   \rho = \frac{n_H}{n_{S_1}} \cdot |A_{S_1}|
 \]
-Für $n_H \gg n_{S_1}$ (typisch bei 1:n-Beziehungen) gilt $\rho \gg 1$.
+FÃ¼r $n_H \gg n_{S_1}$ (typisch bei 1:n-Beziehungen) gilt $\rho \gg 1$.
 \end{proposition}
 
 In einer typischen Bestelldatenbank mit $n_H = 10^6$ Bestellungen und
@@ -475,49 +475,49 @@ Bei 10 Kundenattributen werden also 1\,000-fach mehr Daten gespeichert
 als notwendig -- ein massiver Speicher- und Konsistenzaufwand.
 
 % ==============================================================
-\section{Abfragekomplexität und Optimierbarkeit}
+\section{AbfragekomplexitÃ¤t und Optimierbarkeit}
 \label{sec:abfragen}
 % ==============================================================
 
-\subsection{Join-Komplexität}
+\subsection{Join-KomplexitÃ¤t}
 
-Ein häufiges Argument gegen tiefe Pfade ist der höhere Join-Aufwand.
+Ein hÃ¤ufiges Argument gegen tiefe Pfade ist der hÃ¶here Join-Aufwand.
 Wir zeigen, dass dieses Argument zwar formal korrekt, aber praktisch
-irrelevant ist, wenn moderne Datenbankoptimierung berücksichtigt wird.
+irrelevant ist, wenn moderne Datenbankoptimierung berÃ¼cksichtigt wird.
 
 \begin{definition}[Join-Tiefe]
-Die \emph{Join-Tiefe} $\delta(\mathcal{Q})$ einer Abfrage $\mathcal{Q}$ über
+Die \emph{Join-Tiefe} $\delta(\mathcal{Q})$ einer Abfrage $\mathcal{Q}$ Ã¼ber
 Schema $\mathcal{S}$ ist die Anzahl der JOIN-Operationen in der optimalen
-logischen Ausführung von $\mathcal{Q}$.
+logischen AusfÃ¼hrung von $\mathcal{Q}$.
 \end{definition}
 
-\begin{proposition}[Join-Tiefe und Pfadlänge]
+\begin{proposition}[Join-Tiefe und PfadlÃ¤nge]
 \label{prop:jointiefe}
-Für eine vollständige Traversal-Abfrage über einen Tiefenpfad
+FÃ¼r eine vollstÃ¤ndige Traversal-Abfrage Ã¼ber einen Tiefenpfad
 $R_1 \to R_2 \to \cdots \to R_l$ gilt $\delta = l - 1$.
-Für ein $k$-Sternschema gilt für dieselbe semantische Abfrage $\delta = k$.
-Da $l \ll k$ in tiefen Schemata (wenige, längere Ketten statt vieler
-direkter Abhängigkeiten), ist die Join-Tiefe im Tiefenpfad geringer
-für partielle Traversals \cite{Ramakrishnan2003}.
+FÃ¼r ein $k$-Sternschema gilt fÃ¼r dieselbe semantische Abfrage $\delta = k$.
+Da $l \ll k$ in tiefen Schemata (wenige, lÃ¤ngere Ketten statt vieler
+direkter AbhÃ¤ngigkeiten), ist die Join-Tiefe im Tiefenpfad geringer
+fÃ¼r partielle Traversals \cite{Ramakrishnan2003}.
 \end{proposition}
 
 \begin{remark}
-Selbst wenn $l > k$ für globale Traversals gilt, kompensiert dies der
+Selbst wenn $l > k$ fÃ¼r globale Traversals gilt, kompensiert dies der
 Abfrageoptimierer durch:
 \begin{itemize}
   \item \emph{Index-Only Scans} auf FK-Spalten (eliminiert Heap-Zugriffe),
-  \item \emph{Hash-Joins} mit amortisierter $O(n)$-Komplexität \cite{Graefe1993},
-  \item \emph{Materialized Views} für häufige tiefe Traversals,
+  \item \emph{Hash-Joins} mit amortisierter $O(n)$-KomplexitÃ¤t \cite{Graefe1993},
+  \item \emph{Materialized Views} fÃ¼r hÃ¤ufige tiefe Traversals,
   \item \emph{Predicate Pushdown} entlang des Pfades.
 \end{itemize}
 \end{remark}
 
-\subsection{Selektivität und Filtereffizienz}
+\subsection{SelektivitÃ¤t und Filtereffizienz}
 
-\begin{theorem}[Selektivitätsvorteil tiefer Pfade]
+\begin{theorem}[SelektivitÃ¤tsvorteil tiefer Pfade]
 \label{thm:selektivitaet}
-Sei $\mathcal{Q}$ eine Abfrage mit Filterprädikat $\sigma_P$ auf Attributen
-einer Entität $E$ der Tiefe $d$ im Pfad. Im Tiefenpfadschema kann $\sigma_P$
+Sei $\mathcal{Q}$ eine Abfrage mit FilterprÃ¤dikat $\sigma_P$ auf Attributen
+einer EntitÃ¤t $E$ der Tiefe $d$ im Pfad. Im Tiefenpfadschema kann $\sigma_P$
 direkt auf der Relation $R_d$ angewandt werden (Predicate Pushdown).
 Im Sternschema hingegen sind transitive Attribute von $E$ in der Hub-Relation
 $H$ de\-normalisiert, was bedeutet, dass der Filter auf der gesamten,
@@ -527,26 +527,26 @@ $n_H$-tupligen Hub-Relation angewandt werden muss.
   \qquad\text{vs.}\qquad
   \text{Kosten}_{\text{Tief}}(\sigma_P) = O(n_{R_d}) \cdot c_{\text{IO}}
 \]
-Da $n_H \geq n_{R_d}$ für alle $d$, ist der Tiefenpfad mindestens so
+Da $n_H \geq n_{R_d}$ fÃ¼r alle $d$, ist der Tiefenpfad mindestens so
 effizient wie das Sternschema, typisch deutlich effizienter.
 \end{theorem}
 
 \begin{proof}
-Im normalisierten Tiefenpfadschema liegen die Attribute von Entität $E$ in
-$R_d$ mit $|R_d| = n_{R_d}$ Tupeln. Ein Index auf dem Primärschlüssel von
-$R_d$ ermöglicht $O(\log n_{R_d} + k')$ für $k'$ Ergebnistupel.
+Im normalisierten Tiefenpfadschema liegen die Attribute von EntitÃ¤t $E$ in
+$R_d$ mit $|R_d| = n_{R_d}$ Tupeln. Ein Index auf dem PrimÃ¤rschlÃ¼ssel von
+$R_d$ ermÃ¶glicht $O(\log n_{R_d} + k')$ fÃ¼r $k'$ Ergebnistupel.
 Im Sternschema befinden sich diese Attribute in $H$ vermischt mit allen anderen
 Attributen; ohne Partial Index muss der gesamte Heap von $H$ gescannt werden
 ($O(n_H)$). Da eine 1:n-Beziehung $|E| \leq n_H$ impliziert, gilt
 $n_{R_d} \leq n_H$, und die Ungleichung ist bewiesen.
 \end{proof}
 
-\subsection{Schreibkomplexität und Konsistenzerhaltung}
+\subsection{SchreibkomplexitÃ¤t und Konsistenzerhaltung}
 
 \begin{proposition}[Schreibkostenvorteil]
-Im Tiefenpfadschema erfordert eine Änderung an Attributen der Entität $E$
+Im Tiefenpfadschema erfordert eine Ã„nderung an Attributen der EntitÃ¤t $E$
 genau \emph{eine} UPDATE-Operation auf $R_d$. Im denormalisierten
-Sternschema müssen alle Tupel in $H$, die auf diese Entität verweisen,
+Sternschema mÃ¼ssen alle Tupel in $H$, die auf diese EntitÃ¤t verweisen,
 aktualisiert werden: im Worst Case $O(n_H / n_{R_d})$ Operationen --
 proportional zum Redundanzfaktor $\rho$ aus Proposition~\ref{prop:redundanz}.
 \end{proposition}
@@ -558,54 +558,54 @@ proportional zum Redundanzfaktor $\rho$ aus Proposition~\ref{prop:redundanz}.
 
 \subsection{Schemaevolution}
 
-Ein zentrales Qualitätsmerkmal eines Datenbankschemas ist seine
-Fähigkeit, sich an veränderte Anforderungen anzupassen -- bekannt als
+Ein zentrales QualitÃ¤tsmerkmal eines Datenbankschemas ist seine
+FÃ¤higkeit, sich an verÃ¤nderte Anforderungen anzupassen -- bekannt als
 \emph{Schemaevolution} \cite{Roddick1995}.
 
-\begin{theorem}[Lokale Änderbarkeit im Tiefenpfad]
+\begin{theorem}[Lokale Ã„nderbarkeit im Tiefenpfad]
 \label{thm:schaemaevolution}
-Im Tiefenpfadschema $R_1 \to R_2 \to \cdots \to R_l$ ist das Hinzufügen,
-Entfernen oder Ändern von Attributen der Entität $R_i$ eine
-\emph{lokale Schemaoperation}, die ausschließlich $R_i$ betrifft.
+Im Tiefenpfadschema $R_1 \to R_2 \to \cdots \to R_l$ ist das HinzufÃ¼gen,
+Entfernen oder Ã„ndern von Attributen der EntitÃ¤t $R_i$ eine
+\emph{lokale Schemaoperation}, die ausschlieÃŸlich $R_i$ betrifft.
 Im $k$-Sternschema mit denormalisierten Attributen in $H$ ist dieselbe
 Operation \emph{global} und betrifft $H$ sowie potenziell alle
-abhängigen Abfragen, Views und Applikationsschichten.
+abhÃ¤ngigen Abfragen, Views und Applikationsschichten.
 \end{theorem}
 
 \begin{proof}
 Da im Tiefenpfadschema jedes Attribut in genau einer Relation vorkommt
-(BCNF-Eigenschaft), hat eine Schemaänderung an $R_i$ keinen direkten
+(BCNF-Eigenschaft), hat eine SchemaÃ¤nderung an $R_i$ keinen direkten
 Einfluss auf $R_j$ mit $j \neq i$. Nur FK-Referenzen
-$R_{i-1} \to R_i$ sind betroffen -- diese beschränken sich auf eine
+$R_{i-1} \to R_i$ sind betroffen -- diese beschrÃ¤nken sich auf eine
 einzige Kante im Referenzgraphen. Im Sternschema sind Attribute aus
-multiple Entitäten in $H$ gemischt; eine Änderung an $H$ betrifft
+multiple EntitÃ¤ten in $H$ gemischt; eine Ã„nderung an $H$ betrifft
 alle darauf basierenden Abfragen, was zu einem kaskadierten
-Änderungsaufwand führt \cite{Ambler2003}.
+Ã„nderungsaufwand fÃ¼hrt \cite{Ambler2003}.
 \end{proof}
 
 \subsection{Zugriffsrechteverwaltung}
 
-Ein weiterer Vorteil tiefer Pfade zeigt sich bei der Granularität der
+Ein weiterer Vorteil tiefer Pfade zeigt sich bei der GranularitÃ¤t der
 Zugriffsrechteverwaltung:
 
-\begin{proposition}[Berechtigungsgranularität]
-Im Tiefenpfadschema können Zugriffsrechte \emph{entitätspräzise} vergeben
-werden: Ein Nutzer erhält SELECT-Rechte auf $R_d$, ohne Zugriff auf andere
+\begin{proposition}[BerechtigungsgranularitÃ¤t]
+Im Tiefenpfadschema kÃ¶nnen Zugriffsrechte \emph{entitÃ¤tsprÃ¤zise} vergeben
+werden: Ein Nutzer erhÃ¤lt SELECT-Rechte auf $R_d$, ohne Zugriff auf andere
 Relationen zu erhalten. Im Sternschema mit Hub $H$ bedeutet Zugriff auf
-$H$ stets Zugriff auf alle in $H$ denormalisierten Entitätsdaten --
-eine grobe Granularität, die dem Prinzip der minimalen Rechtevergabe
+$H$ stets Zugriff auf alle in $H$ denormalisierten EntitÃ¤tsdaten --
+eine grobe GranularitÃ¤t, die dem Prinzip der minimalen Rechtevergabe
 (Principle of Least Privilege) widerspricht \cite{Saltzer1975}.
 \end{proposition}
 
-\subsection{Testbarkeit und Datenqualität}
+\subsection{Testbarkeit und DatenqualitÃ¤t}
 
-Tiefenpfadschemata sind inhärent leichter zu testen und zu validieren,
+Tiefenpfadschemata sind inhÃ¤rent leichter zu testen und zu validieren,
 da:
 \begin{itemize}
   \item Jede Relation eine \emph{klar umgrenzte semantische Einheit} darstellt
-        (Single Responsibility für Relationen),
-  \item Integritätsbedingungen pro Relation formuliert und geprüft werden,
-  \item Fremdschlüsselbedingungen entlang des Pfades eine implizite
+        (Single Responsibility fÃ¼r Relationen),
+  \item IntegritÃ¤tsbedingungen pro Relation formuliert und geprÃ¼ft werden,
+  \item FremdschlÃ¼sselbedingungen entlang des Pfades eine implizite
         Validierungskaskade bilden.
 \end{itemize}
 
@@ -614,13 +614,13 @@ da:
 \label{sec:beweis}
 % ==============================================================
 
-\subsection{Gütekriterien}
+\subsection{GÃ¼tekriterien}
 
 Wir formalisieren nun den umfassenden Vergleich anhand eines Vektors von
-Gütekriterien:
+GÃ¼tekriterien:
 
-\begin{definition}[Gütevektor]
-Sei $\mathcal{S}$ ein Datenbankschema. Der \emph{Gütevektor}
+\begin{definition}[GÃ¼tevektor]
+Sei $\mathcal{S}$ ein Datenbankschema. Der \emph{GÃ¼tevektor}
 $\mathbf{q}(\mathcal{S}) \in \mathbb{R}^6$ ist definiert als:
 \[
   \mathbf{q}(\mathcal{S}) = \bigl(
@@ -630,20 +630,20 @@ $\mathbf{q}(\mathcal{S}) \in \mathbb{R}^6$ ist definiert als:
 \]
 wobei die Komponenten Normalformgrad, Redundanzfreiheit,
 Anomaliefreiheit, Schreibkosteneffizienz, Wartbarkeit und
-Selektivitätseffizienz kodieren (alle normiert auf $[0,1]$,
-höher ist besser).
+SelektivitÃ¤tseffizienz kodieren (alle normiert auf $[0,1]$,
+hÃ¶her ist besser).
 \end{definition}
 
-\begin{theorem}[Überlegenheit des Tiefenpfadschemas]
+\begin{theorem}[Ãœberlegenheit des Tiefenpfadschemas]
 \label{thm:hauptsatz}
 Sei $\mathcal{S}_{\text{Tief}}$ ein Tiefenpfadschema in BCNF und
-$\mathcal{S}_{\text{Stern}}$ ein semantisch äquivalentes $k$-Sternschema
+$\mathcal{S}_{\text{Stern}}$ ein semantisch Ã¤quivalentes $k$-Sternschema
 ($k \geq 3$) mit denormalisierten transitiven Attributen. Dann gilt:
 \[
   \mathbf{q}(\mathcal{S}_{\text{Tief}}) \succ \mathbf{q}(\mathcal{S}_{\text{Stern}})
 \]
 komponentenweise, d.\,h.\ $q_j(\mathcal{S}_{\text{Tief}}) \geq q_j(\mathcal{S}_{\text{Stern}})$
-für alle $j$, mit strikter Ungleichung für mindestens vier Komponenten.
+fÃ¼r alle $j$, mit strikter Ungleichung fÃ¼r mindestens vier Komponenten.
 \end{theorem}
 
 \begin{proof}
@@ -651,28 +651,28 @@ Wir zeigen die strikten Ungleichungen komponentenweise:
 
 \medskip
 (i) \textbf{Normalformgrad} $q_{\NF}$: Nach Korollar~\ref{cor:tiefenpfad3NF}
-befindet sich $\mathcal{S}_{\text{Tief}}$ in BCNF, während
-$\mathcal{S}_{\text{Stern}}$ transitive Abhängigkeiten in $H$ enthält
+befindet sich $\mathcal{S}_{\text{Tief}}$ in BCNF, wÃ¤hrend
+$\mathcal{S}_{\text{Stern}}$ transitive AbhÃ¤ngigkeiten in $H$ enthÃ¤lt
 und damit 3NF verletzt. Somit $q_{\NF}(\mathcal{S}_{\text{Tief}}) > q_{\NF}(\mathcal{S}_{\text{Stern}})$.
 
 (ii) \textbf{Redundanzfreiheit} $q_{\text{Red}}$: Nach Proposition~\ref{prop:redundanz}
-ist $\rho(\mathcal{S}_{\text{Stern}}) \gg 1$, während
+ist $\rho(\mathcal{S}_{\text{Stern}}) \gg 1$, wÃ¤hrend
 $\rho(\mathcal{S}_{\text{Tief}}) = 1$ (jede Information einmalig gespeichert).
 
 (iii) \textbf{Anomaliefreiheit} $q_{\text{Anom}}$: Folgt direkt aus
 Satz~\ref{thm:anomaliefrei}.
 
 (iv) \textbf{Schreibkosteneffizienz} $q_{\text{Sch}}$: Aus der Redundanz
-$\rho > 1$ im Sternschema folgt ein entsprechend höherer Schreibaufwand.
+$\rho > 1$ im Sternschema folgt ein entsprechend hÃ¶herer Schreibaufwand.
 
 (v) \textbf{Wartbarkeit} $q_{\text{Wart}}$: Nach Satz~\ref{thm:schaemaevolution}
-sind Schemaänderungen im Tiefenpfad lokal beschränkt.
+sind SchemaÃ¤nderungen im Tiefenpfad lokal beschrÃ¤nkt.
 
-(vi) \textbf{Selektivitätseffizienz} $q_{\text{Sek}}$: Nach
+(vi) \textbf{SelektivitÃ¤tseffizienz} $q_{\text{Sek}}$: Nach
 Satz~\ref{thm:selektivitaet} gilt stets
 $\text{Kosten}_{\text{Tief}} \leq \text{Kosten}_{\text{Stern}}$.
 
-Da für (i)--(v) strikte Ungleichungen gelten, ist die Behauptung bewiesen.
+Da fÃ¼r (i)--(v) strikte Ungleichungen gelten, ist die Behauptung bewiesen.
 \end{proof}
 
 % ==============================================================
@@ -680,16 +680,16 @@ Da für (i)--(v) strikte Ungleichungen gelten, ist die Behauptung bewiesen.
 \label{sec:dfs_bfs}
 % ==============================================================
 
-Die bisherigen Argumente stützten sich auf die Normalformtheorie und die
-Anomalielehre. Es gibt jedoch eine tiefere, algorithmische Begründung für
-die Überlegenheit tiefer Strukturen, die in der Theorie der Graphentraversierung
+Die bisherigen Argumente stÃ¼tzten sich auf die Normalformtheorie und die
+Anomalielehre. Es gibt jedoch eine tiefere, algorithmische BegrÃ¼ndung fÃ¼r
+die Ãœberlegenheit tiefer Strukturen, die in der Theorie der Graphentraversierung
 verwurzelt ist. Die Beobachtung ist fundamental:
 
 \begin{quote}
-\emph{Tiefensuche (DFS) und Breitensuche (BFS) über den Referenzgraphen eines
+\emph{Tiefensuche (DFS) und Breitensuche (BFS) Ã¼ber den Referenzgraphen eines
 Datenbankschemas sind \textbf{nicht symmetrisch}. Ihre Ergebnisstrukturen --
 und damit die induzierten Schemastrukturen -- unterscheiden sich qualitativ
-und in ihrer Komplexität grundlegend.}
+und in ihrer KomplexitÃ¤t grundlegend.}
 \end{quote}
 
 \subsection{Tiefensuche und der DFS-Wald}
@@ -698,38 +698,38 @@ und in ihrer Komplexität grundlegend.}
 \label{def:dfswald}
 Sei $G = (V, E)$ ein gerichteter Graph. Die \emph{Tiefensuche} (Depth-First
 Search, DFS) traversiert $G$, indem sie von jedem besuchten Knoten $u$ aus
-rekursiv in die Nachfolger abtaucht, bevor sie zum Ausgangspunkt zurückkehrt.
+rekursiv in die Nachfolger abtaucht, bevor sie zum Ausgangspunkt zurÃ¼ckkehrt.
 Die dabei entstehenden Baumkanten bilden einen \emph{DFS-Wald}
 $T_{\mathrm{DFS}} = (V, E_{\mathrm{tree}})$ mit
 $E_{\mathrm{tree}} \subseteq E$. Jede Zusammenhangskomponente des DFS-Walds
 ist ein \emph{DFS-Baum}.
 \end{definition}
 
-Der DFS-Wald hat bemerkenswerte Eigenschaften, die ihn für den
+Der DFS-Wald hat bemerkenswerte Eigenschaften, die ihn fÃ¼r den
 Datenbankschemaentwurf auszeichnen:
 
 \begin{theorem}[Struktureigenschaften des DFS-Walds, \cite{Cormen2009, Tarjan1972}]
 \label{thm:dfswald}
-Sei $T_{\mathrm{DFS}}$ der DFS-Wald über dem Referenzgraphen
+Sei $T_{\mathrm{DFS}}$ der DFS-Wald Ã¼ber dem Referenzgraphen
 $G(\mathcal{S})$. Dann gilt:
 \begin{enumerate}[label=(\roman*)]
   \item $T_{\mathrm{DFS}}$ ist ein \emph{Wald} (azyklischer Graph, Menge
-        von Bäumen) -- also eine azyklische, hierarchische Struktur.
+        von BÃ¤umen) -- also eine azyklische, hierarchische Struktur.
   \item Die Tiefe $\depth(T_{\mathrm{DFS}})$ ist maximal unter allen
-        aufspannenden Wäldern von $G(\mathcal{S})$.
-  \item Rückwärtskanten (back edges) $e \notin E_{\mathrm{tree}}$ identifizieren
-        Zyklen und damit potenzielle \emph{zirkuläre Abhängigkeiten} im Schema.
-  \item Die \emph{topologische Sortierung} des Schemas -- notwendig für
-        eine anomaliefreie Einfüge- und Löschreihenfolge -- ist
+        aufspannenden WÃ¤ldern von $G(\mathcal{S})$.
+  \item RÃ¼ckwÃ¤rtskanten (back edges) $e \notin E_{\mathrm{tree}}$ identifizieren
+        Zyklen und damit potenzielle \emph{zirkulÃ¤re AbhÃ¤ngigkeiten} im Schema.
+  \item Die \emph{topologische Sortierung} des Schemas -- notwendig fÃ¼r
+        eine anomaliefreie EinfÃ¼ge- und LÃ¶schreihenfolge -- ist
         genau die DFS-Postorder-Reihenfolge.
 \end{enumerate}
 \end{theorem}
 
-\begin{corollary}[DFS-Wald als natürliches Schemaabbild]
-Der DFS-Wald $T_{\mathrm{DFS}}$ über $G(\mathcal{S})$ ist das
-\emph{natürliche strukturelle Abbild} eines korrekt normalisierten
-Tiefenpfadschemas. Die Baumkanten entsprechen Fremdschlüsselbeziehungen,
-die Baumtiefe der semantischen Abhängigkeitskette.
+\begin{corollary}[DFS-Wald als natÃ¼rliches Schemaabbild]
+Der DFS-Wald $T_{\mathrm{DFS}}$ Ã¼ber $G(\mathcal{S})$ ist das
+\emph{natÃ¼rliche strukturelle Abbild} eines korrekt normalisierten
+Tiefenpfadschemas. Die Baumkanten entsprechen FremdschlÃ¼sselbeziehungen,
+die Baumtiefe der semantischen AbhÃ¤ngigkeitskette.
 Jedes BCNF-Schema erzeugt -- wenn als Graph betrachtet -- einen azyklischen,
 tiefenorientierten Referenzgraphen, der einem DFS-Wald isomorph ist.
 \end{corollary}
@@ -737,34 +737,34 @@ tiefenorientierten Referenzgraphen, der einem DFS-Wald isomorph ist.
 \subsection{Breitensuche und das Fehlen eines BFS-Walds}
 
 Die Breitensuche (Breadth-First Search, BFS) traversiert den Graphen
-schichtweise: Alle Knoten der Distanz $d$ werden vollständig besucht, bevor
+schichtweise: Alle Knoten der Distanz $d$ werden vollstÃ¤ndig besucht, bevor
 Knoten der Distanz $d+1$ betreten werden.
 
 \begin{definition}[BFS-Baum, nach Cormen et al.~\cite{Cormen2009}]
 \label{def:bfsbaum}
-Die Breitensuche über $G = (V, E)$ ausgehend von einem Startknoten $s$
-erzeugt einen \emph{BFS-Baum} $T_{\mathrm{BFS}}$, der die kürzesten Pfade
-von $s$ zu allen erreichbaren Knoten enthält. Die Breite des BFS-Baums auf
+Die Breitensuche Ã¼ber $G = (V, E)$ ausgehend von einem Startknoten $s$
+erzeugt einen \emph{BFS-Baum} $T_{\mathrm{BFS}}$, der die kÃ¼rzesten Pfade
+von $s$ zu allen erreichbaren Knoten enthÃ¤lt. Die Breite des BFS-Baums auf
 Tiefe $d$ ist $b_d = |\{v \mid d_G(s,v) = d\}|$.
 \end{definition}
 
 \begin{theorem}[BFS erzeugt keinen Wald]
 \label{thm:bfskeinwald}
-Die Breitensuche über einem unzusammenhängenden Graphen $G$ mit $k$
+Die Breitensuche Ã¼ber einem unzusammenhÃ¤ngenden Graphen $G$ mit $k$
 Zusammenhangskomponenten $C_1, \ldots, C_k$ erzeugt im Allgemeinen
-\emph{keinen Wald}, sondern eine Menge von $k$ BFS-Bäumen
+\emph{keinen Wald}, sondern eine Menge von $k$ BFS-BÃ¤umen
 $T_{\mathrm{BFS}}^{(1)}, \ldots, T_{\mathrm{BFS}}^{(k)}$, die jeweils
-\emph{sternförmig} um ihren Startknoten $s_i \in C_i$ angeordnet sind.
+\emph{sternfÃ¶rmig} um ihren Startknoten $s_i \in C_i$ angeordnet sind.
 Insbesondere:
 \begin{enumerate}[label=(\roman*)]
-  \item Für einen $k$-Stern\-graph $G_\star$ mit Hub $H$ und Knoten
+  \item FÃ¼r einen $k$-Stern\-graph $G_\star$ mit Hub $H$ und Knoten
         $S_1, \ldots, S_k$ ist der BFS-Baum mit Start $H$ identisch
         mit $G_\star$ selbst: $T_{\mathrm{BFS}} = G_\star$.
-  \item Die BFS-Tiefe beträgt $\depth(T_{\mathrm{BFS}}) = 1$, unabhängig
+  \item Die BFS-Tiefe betrÃ¤gt $\depth(T_{\mathrm{BFS}}) = 1$, unabhÃ¤ngig
         von $k$.
-  \item Die BFS über einem zusammenhängenden Graphen mit $n$ Knoten
+  \item Die BFS Ã¼ber einem zusammenhÃ¤ngenden Graphen mit $n$ Knoten
         erzeugt genau \emph{einen} Baum, nicht einen Wald -- der Begriff
-        ,,BFS-Wald\grqq{} ist daher für zusammenhängende Graphen
+        ,,BFS-Wald\grqq{} ist daher fÃ¼r zusammenhÃ¤ngende Graphen
         nicht definiert.
 \end{enumerate}
 \end{theorem}
@@ -778,11 +778,11 @@ Stern entspricht.
 
 (ii) $\depth(T_{\mathrm{BFS}}) = \max_{v} d_{T}(s, v) = 1$.
 
-(iii) BFS ist eine \emph{Single-Source}-Traversierung; bei zusammenhängendem
+(iii) BFS ist eine \emph{Single-Source}-Traversierung; bei zusammenhÃ¤ngendem
 $G$ wird genau ein Baum mit Wurzel $s$ erzeugt. Mehrere Wurzeln (Wald)
 entstehen nur durch Multi-Source-BFS, was der Standard-BFS-Definition
-widerspricht. Im Gegensatz dazu erzeugt DFS über einem unzusammenhängenden
-Graphen automatisch einen Wald, indem für jede noch unbesuchte Zusammenhangskomponente
+widerspricht. Im Gegensatz dazu erzeugt DFS Ã¼ber einem unzusammenhÃ¤ngenden
+Graphen automatisch einen Wald, indem fÃ¼r jede noch unbesuchte Zusammenhangskomponente
 eine neue DFS-Traversierung gestartet wird.
 \end{proof}
 
@@ -793,24 +793,24 @@ eine neue DFS-Traversierung gestartet wird.
 DFS und BFS sind \emph{algorithmisch asymmetrisch} in folgenden Dimensionen:
 \begin{enumerate}[label=(\roman*)]
   \item \textbf{Ergebnisstruktur}: DFS erzeugt stets einen \emph{Wald}
-        (Menge von Bäumen mit maximaler Tiefe), BFS erzeugt einen oder
-        mehrere \emph{flache Bäume} (Tiefe $\leq$ Durchmesser der
+        (Menge von BÃ¤umen mit maximaler Tiefe), BFS erzeugt einen oder
+        mehrere \emph{flache BÃ¤ume} (Tiefe $\leq$ Durchmesser der
         Zusammenhangskomponente, typisch minimal).
-  \item \textbf{Komplexität der Ergebnisstruktur}: Der DFS-Wald über
+  \item \textbf{KomplexitÃ¤t der Ergebnisstruktur}: Der DFS-Wald Ã¼ber
         einem Graphen $G = (V, E)$ hat Tiefe $\Theta(|V|)$ im
         schlechtesten Fall (Pfadgraph), der BFS-Baum hat Tiefe
         $O(\log |V|)$ bei ausgeglichenen Graphen -- eine fundamentale
-        Größenordnungsdifferenz.
+        GrÃ¶ÃŸenordnungsdifferenz.
   \item \textbf{Kantenklassifikation}: DFS unterscheidet vier Kantentypen
-        (Baumkanten, Rückwärtskanten, Vorwärtskanten, Querkanten), was eine
+        (Baumkanten, RÃ¼ckwÃ¤rtskanten, VorwÃ¤rtskanten, Querkanten), was eine
         reichere Strukturanalyse erlaubt \cite{Cormen2009}. BFS unterscheidet
         nur Baumkanten und Querkanten.
   \item \textbf{Informationsgehalt}: Die DFS-Stempel (Entdeckungs- und
-        Abschlusszeiten) enkodieren die vollständige topologische Struktur
+        Abschlusszeiten) enkodieren die vollstÃ¤ndige topologische Struktur
         des Graphen. BFS-Distanzen enkodieren nur metrische, nicht aber
         hierarchische Information.
-  \item \textbf{Waldeigenschaft}: DFS erzeugt für beliebige Graphen
-        automatisch einen Wald -- dies ist eine inhärente Eigenschaft der
+  \item \textbf{Waldeigenschaft}: DFS erzeugt fÃ¼r beliebige Graphen
+        automatisch einen Wald -- dies ist eine inhÃ¤rente Eigenschaft der
         Rekursionsstruktur. BFS besitzt diese Eigenschaft nicht.
 \end{enumerate}
 \end{theorem}
@@ -861,11 +861,11 @@ DFS und BFS sind \emph{algorithmisch asymmetrisch} in folgenden Dimensionen:
 \end{scope}
 
 \end{tikzpicture}
-\caption{Gegenüberstellung der durch DFS induzierten Tiefenpfadstruktur
+\caption{GegenÃ¼berstellung der durch DFS induzierten Tiefenpfadstruktur
 (links, Tiefe $= 4$, $\Delta = 1$) und des durch BFS induzierten
 Sternschemas (rechts, Tiefe $= 1$, $\Delta = 6$).
 Die Asymmetrie ist offensichtlich: DFS erzeugt einen Wald mit maximaler
-Tiefe und minimaler Breite; BFS erzeugt eine flache, sternförmige Struktur.}
+Tiefe und minimaler Breite; BFS erzeugt eine flache, sternfÃ¶rmige Struktur.}
 \label{fig:dfs_bfs}
 \end{figure}
 
@@ -877,46 +877,46 @@ Die algorithmische Asymmetrie von DFS und BFS hat eine direkte
 datenbanktheoretische Entsprechung:
 
 \begin{enumerate}[label=(\roman*)]
-  \item Der \emph{DFS-Wald} über dem Referenzgraphen eines Schemas ist
+  \item Der \emph{DFS-Wald} Ã¼ber dem Referenzgraphen eines Schemas ist
         das strukturelle Abbild des \emph{normalisierten Tiefenpfadschemas}.
-        Er existiert für beliebige Graphen automatisch und ist azyklisch,
+        Er existiert fÃ¼r beliebige Graphen automatisch und ist azyklisch,
         hierarchisch und eindeutig (bis auf Reihenfolge).
-  \item Der \emph{BFS-Baum} über dem Referenzgraphen eines Schemas entspricht
-        dem \emph{sternförmigen, denormalisierten Schema}. Er existiert nur
-        für Single-Source-Traversierungen und kodiert keine hierarchische
+  \item Der \emph{BFS-Baum} Ã¼ber dem Referenzgraphen eines Schemas entspricht
+        dem \emph{sternfÃ¶rmigen, denormalisierten Schema}. Er existiert nur
+        fÃ¼r Single-Source-Traversierungen und kodiert keine hierarchische
         Tiefenstruktur.
   \item Da DFS automatisch einen \emph{Wald} erzeugt, BFS hingegen
-        \emph{keinen Wald}, ist die Überlegenheit des Tiefenpfadschemas
+        \emph{keinen Wald}, ist die Ãœberlegenheit des Tiefenpfadschemas
         nicht nur normalisierungstheoretisch, sondern auch algorithmisch
         fundamental: Der DFS-Wald ist die \emph{kanonische, strukturell
         reichere} Darstellung jedes Referenzgraphen.
-  \item Die Komplexitätsdifferenz ist qualitativ, nicht nur quantitativ:
+  \item Die KomplexitÃ¤tsdifferenz ist qualitativ, nicht nur quantitativ:
         DFS liefert topologische Sortierbarkeit, Zykeldetektierbarkeit
-        und vollständige hierarchische Information; BFS liefert keine
+        und vollstÃ¤ndige hierarchische Information; BFS liefert keine
         dieser Eigenschaften.
 \end{enumerate}
 \end{corollary}
 
 \begin{remark}[Praktische Implikation]
 Wenn ein Datenbankarchitekt ein Schema entwirft, vollzieht er -- bewusst
-oder unbewusst -- eine Traversierung des semantischen Abhängigkeitsgraphen
-der Domäne. Wählt er implizit eine DFS-Strategie (erst in die Tiefe einer
-Entitätshierarchie, dann zur nächsten), entsteht ein tiefes, normalisiertes
-Schema. Wählt er eine BFS-Strategie (alle direkten Attribute einer zentralen
-Entität sammeln, ohne in Hierarchien abzusteigen), entsteht ein flaches,
-fehleranfälliges Sternschema. Die Asymmetrie der Algorithmen \emph{spiegelt
-sich direkt in der Qualität des resultierenden Schemas wider}.
+oder unbewusst -- eine Traversierung des semantischen AbhÃ¤ngigkeitsgraphen
+der DomÃ¤ne. WÃ¤hlt er implizit eine DFS-Strategie (erst in die Tiefe einer
+EntitÃ¤tshierarchie, dann zur nÃ¤chsten), entsteht ein tiefes, normalisiertes
+Schema. WÃ¤hlt er eine BFS-Strategie (alle direkten Attribute einer zentralen
+EntitÃ¤t sammeln, ohne in Hierarchien abzusteigen), entsteht ein flaches,
+fehleranfÃ¤lliges Sternschema. Die Asymmetrie der Algorithmen \emph{spiegelt
+sich direkt in der QualitÃ¤t des resultierenden Schemas wider}.
 \end{remark}
 
 % ==============================================================
-\section{Durchgängiges Praxisbeispiel}
+\section{DurchgÃ¤ngiges Praxisbeispiel}
 \label{sec:beispiel}
 % ==============================================================
 
-\subsection{Domäne: Auftragsabwicklung}
+\subsection{DomÃ¤ne: Auftragsabwicklung}
 
-Wir betrachten eine klassische Auftragsabwicklungs-Domäne mit folgenden
-Entitäten und natürlichen transitiven Abhängigkeiten:
+Wir betrachten eine klassische Auftragsabwicklungs-DomÃ¤ne mit folgenden
+EntitÃ¤ten und natÃ¼rlichen transitiven AbhÃ¤ngigkeiten:
 
 \[
   \texttt{Bestellung} \xrightarrow{\text{FK}} \texttt{Kunde}
@@ -999,8 +999,8 @@ CREATE TABLE Bestellung (
 -- Jede Relation in BCNF. Keine Anomalien moeglich.
 \end{lstlisting}
 
-Der Referenzgraph dieses Schemas ist ein reiner Pfad der Länge 4 --
-exakt die durch den DFS-Wald induzierte Tiefenstruktur gemäß
+Der Referenzgraph dieses Schemas ist ein reiner Pfad der LÃ¤nge 4 --
+exakt die durch den DFS-Wald induzierte Tiefenstruktur gemÃ¤ÃŸ
 Satz~\ref{thm:dfswald}.
 
 \subsection{Vergleichstabelle}
@@ -1018,10 +1018,10 @@ Anomaliefreiheit          & nein      & ja \\
 Schreibaufwand (Update)   & $O(n_H)$  & $O(1)$ \\
 Suchkosteneffizienz       & $O(n_H)$  & $O(n_{R_d})$ \\
 Schemaevolution           & global    & lokal \\
-Berechtigungsgranularität & grob      & fein \\
+BerechtigungsgranularitÃ¤t & grob      & fein \\
 DFS-Wald-Isomorphismus    & nein      & ja \\
-Topolog.\ Sortierbarkeit  & begrenzt  & vollständig \\
-Zyklusfreiheit            & ungeprüft & inhärent \\
+Topolog.\ Sortierbarkeit  & begrenzt  & vollstÃ¤ndig \\
+Zyklusfreiheit            & ungeprÃ¼ft & inhÃ¤rent \\
 \bottomrule
 \end{tabular}
 \caption{Zusammenfassender Vergleich Sternschema vs.\ Tiefenpfadschema
@@ -1035,32 +1035,32 @@ nach den formalen Kriterien dieser Arbeit.}
 % ==============================================================
 
 Diese Arbeit hat formal nachgewiesen, dass der tiefenorientierte
-Datenbankentwurf dem sternförmigen Entwurf in allen wesentlichen
-Gütekriterien überlegen ist. Die Argumentation verlief auf drei
-komplementären Ebenen:
+Datenbankentwurf dem sternfÃ¶rmigen Entwurf in allen wesentlichen
+GÃ¼tekriterien Ã¼berlegen ist. Die Argumentation verlief auf drei
+komplementÃ¤ren Ebenen:
 
 \textbf{Normalisierungstheoretisch} (Abschnitte~\ref{sec:normalformen}
-und~\ref{sec:anomalien}): Transitive Abhängigkeiten erzwingen tiefe
-Pfade, da ihre korrekte Auflösung gemäß Satz~\ref{thm:transitivitaet}
-genau eine lineare Zerlegungskette liefert. Sternförmige Schemata
-verletzen zwingend die 3NF, sobald transitive Abhängigkeiten in der
-Domäne existieren.
+und~\ref{sec:anomalien}): Transitive AbhÃ¤ngigkeiten erzwingen tiefe
+Pfade, da ihre korrekte AuflÃ¶sung gemÃ¤ÃŸ Satz~\ref{thm:transitivitaet}
+genau eine lineare Zerlegungskette liefert. SternfÃ¶rmige Schemata
+verletzen zwingend die 3NF, sobald transitive AbhÃ¤ngigkeiten in der
+DomÃ¤ne existieren.
 
 \textbf{Algorithmisch} (Abschnitt~\ref{sec:dfs_bfs}): Die Tiefensuche
 (DFS) und die Breitensuche (BFS) sind \emph{fundamental asymmetrisch}.
 DFS erzeugt stets einen Wald -- eine hierarchische, azyklische,
 topologisch sortierbare Struktur mit maximaler Tiefe. BFS erzeugt
-keinen Wald, sondern flache, sternförmige Bäume ohne hierarchische
+keinen Wald, sondern flache, sternfÃ¶rmige BÃ¤ume ohne hierarchische
 Tiefenstruktur. Diese algorithmische Asymmetrie spiegelt sich direkt
-in der Schemaqualität wider: Der DFS-Wald ist die kanonische Darstellung
+in der SchemaqualitÃ¤t wider: Der DFS-Wald ist die kanonische Darstellung
 eines korrekt normalisierten Schemas, der BFS-Baum die Darstellung
 eines denormalisierten Sternschemas. Die Folge ist, dass Tiefe \emph{nicht}
 nur besser, sondern strukturell kategorial verschieden und
 in ihrer Informationsdichte deutlich reicher ist.
 
 \textbf{Praktisch} (Abschnitte~\ref{sec:abfragen},~\ref{sec:wartbarkeit}
-und~\ref{sec:beispiel}): Tiefenpfadschemata erzielen überlegene
-Selektivität, geringeren Schreibaufwand, feingranulare Zugriffsrechte
+und~\ref{sec:beispiel}): Tiefenpfadschemata erzielen Ã¼berlegene
+SelektivitÃ¤t, geringeren Schreibaufwand, feingranulare Zugriffsrechte
 und bessere Wartbarkeit.
 
 Das zentrale Prinzip, das aus allen drei Ebenen gleichlautend folgt, lautet:
@@ -1068,7 +1068,7 @@ Das zentrale Prinzip, das aus allen drei Ebenen gleichlautend folgt, lautet:
 \begin{quote}
 \large\bfseries
 Beim Entwurf relationaler Datenbankschemata ist stets die Tiefe der
-Breite vorzuziehen. Relationen müssen in die Tiefe gehen, nicht in
+Breite vorzuziehen. Relationen mÃ¼ssen in die Tiefe gehen, nicht in
 die Breite.
 \end{quote}
 

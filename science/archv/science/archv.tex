@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{article}
+﻿\documentclass[12pt, a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
@@ -83,7 +83,7 @@
   {\large\itshape Eine umfassende mathematische Analyse von Stephan Epp\\[1em]}
   \hrule height 0.5pt
   \vfill
-  {\large 06. März 2026}
+  {\large 06. MÃ¤rz 2026}
 \end{titlepage}
 \newpage
 
@@ -95,17 +95,17 @@
 % ============================================================
 Das \emph{Archiv-Problem} beschreibt die Herausforderung, eine geordnete
 Sammlung von Dokumenten -- das Archiv -- mit minimaler Anzahl von
-Positionsverschiebungen zu pflegen, wenn die zukünftige Ankunftsreihenfolge
+Positionsverschiebungen zu pflegen, wenn die zukÃ¼nftige Ankunftsreihenfolge
 der einzuordnenden Dokumente \emph{a priori} unbekannt ist.
-Anstatt die unbekannte Zukunft vorherzusagen, schlägt diese Arbeit eine
-\emph{rückwärtsgewandte stochastische Wartestrategie} vor: Nach dem Eintreffen
-eines Dokuments wird eine zufällige Wartezeit abgewartet; trifft in dieser Zeit
+Anstatt die unbekannte Zukunft vorherzusagen, schlÃ¤gt diese Arbeit eine
+\emph{rÃ¼ckwÃ¤rtsgewandte stochastische Wartestrategie} vor: Nach dem Eintreffen
+eines Dokuments wird eine zufÃ¤llige Wartezeit abgewartet; trifft in dieser Zeit
 ein weiteres Dokument ein, beginnt die Wartezeit neu. Erst wenn eine
-vollständige Warteperiode ohne neues Dokument verstreicht, wird die akkumulierte
+vollstÃ¤ndige Warteperiode ohne neues Dokument verstreicht, wird die akkumulierte
 Menge optimal einsortiert. Wir untersuchen diese Strategie unter Exponential-,
 Geometrischer, Poisson-, Negativbinomial- und Pareto-Verteilung, leiten
-geschlossene Ausdrücke für erwartete Wartezeiten und Verschiebungskosten her
-und zeigen, welche Verteilung welches Systemziel optimiert. Abschließend wird
+geschlossene AusdrÃ¼cke fÃ¼r erwartete Wartezeiten und Verschiebungskosten her
+und zeigen, welche Verteilung welches Systemziel optimiert. AbschlieÃŸend wird
 der direkte Bezug zur Cache-Hierarchie, zur Hauptspeicherverwaltung und zu
 modernen Speichercontrollern in der Rechnerarchitektur hergestellt.
 
@@ -113,37 +113,37 @@ Physische und digitale Archive stehen vor einem grundlegenden
 Optimierungsproblem: Eine geordnete Folge von Dokumenten soll so gepflegt
 werden, dass der Suchaufwand minimiert wird. Bei einer alphabetischen oder
 sachlichen Ordnung bedeutet das Einordnen eines neuen Dokuments oft, dass
-bereits vorhandene Dokumente verschoben werden müssen – im schlimmsten Fall
+bereits vorhandene Dokumente verschoben werden mÃ¼ssen â€“ im schlimmsten Fall
 alle. Bei $n$ Dokumenten im Archiv kann ein einziges neues Dokument bis zu
 $\Theta(n)$ Verschiebungen erzwingen.
 
 Das eigentliche Problem ergibt sich aus der \emph{Online-Natur} des Prozesses:
 Neue Dokumente treffen sukzessive ein, und zum Zeitpunkt der Einordnung ist
-die zukünftige Reihenfolge unbekannt. Würde man alle künftig eintreffenden
-Dokumente kennen (\emph{Offline-Szenario}), könnte man eine nahezu
+die zukÃ¼nftige Reihenfolge unbekannt. WÃ¼rde man alle kÃ¼nftig eintreffenden
+Dokumente kennen (\emph{Offline-Szenario}), kÃ¶nnte man eine nahezu
 verschiebungsfreie Strategie planen (z.\,B. Batch-Sortierung). Da jedoch die
 Zukunft unbekannt ist (\emph{Online-Szenario}), liegt es nahe, einen
 \emph{Beobachtungshorizont aus der Vergangenheit} zu nutzen, um die aktuelle
-Ankunftsrate zu schätzen, und dann eine zufällige Zeit zu warten, bevor man
+Ankunftsrate zu schÃ¤tzen, und dann eine zufÃ¤llige Zeit zu warten, bevor man
 einordnet. Trifft in dieser Wartezeit ein weiteres Dokument ein, wird die
-Wartezeit zurückgesetzt – das System sammelt Dokumente, bis eine
+Wartezeit zurÃ¼ckgesetzt â€“ das System sammelt Dokumente, bis eine
 ``ruhige'' Periode eintritt.
 
-Diese Idee ist in der Informatik unter verschiedenen Gewändern bekannt:
+Diese Idee ist in der Informatik unter verschiedenen GewÃ¤ndern bekannt:
 Ethernet-CSMA/CD-Backoff, adaptive Polling in Betriebssystemen, Batching in
 Datenbankpuffern, sowie Interrupt-Coalescing in Netzwerkkarten. Das Archiv
 dient hier als abstraktes Modell, das sich unmittelbar auf Speicherhierarchien
-in der Rechnerarchitektur übertragen lässt.
+in der Rechnerarchitektur Ã¼bertragen lÃ¤sst.
 
-\paragraph{Beiträge dieser Arbeit.}
+\paragraph{BeitrÃ¤ge dieser Arbeit.}
 \begin{itemize}[noitemsep]
   \item Formale Definition des Archiv-Problems als Online-Sortieraufgabe mit
-        zufälliger Wartestrategie (\cref{sec:model}).
+        zufÃ¤lliger Wartestrategie (\cref{sec:model}).
   \item Umfassende mathematische Analyse der Wartezeit-Verteilungen
         (Exponential, Geometrisch, Poisson, Negativbinomial, Pareto) mit
-        geschlossenen Ausdrücken für Erwartungswert, Varianz und
+        geschlossenen AusdrÃ¼cken fÃ¼r Erwartungswert, Varianz und
         Verteilungsfunktion (\cref{sec:distributions}).
-  \item Beweis der Optimalitätseigenschaften und Zieldifferenzierung zwischen
+  \item Beweis der OptimalitÃ¤tseigenschaften und Zieldifferenzierung zwischen
         den Verteilungen (\cref{sec:optimality}).
   \item Anwendung auf Cache-Hierarchien, TLB-Miss-Behandlung und
         Speichercontroller-Pufferung (\cref{sec:architecture}).
@@ -158,33 +158,33 @@ in der Rechnerarchitektur übertragen lässt.
 
 \begin{definition}[Archiv]\label{def:archive}
 Ein \emph{Archiv} $\mathcal{A}$ ist eine linear geordnete Liste von
-$m$~Dokumenten $d_1 \prec d_2 \prec \cdots \prec d_m$ gemäß einer totalen
-Ordnung $\prec$ (z.\,B. alphabetisch nach Schlüssel). Das \emph{Einfügen}
-eines neuen Dokuments~$d$ an Position~$k$ in eine Liste der Länge~$m$
+$m$~Dokumenten $d_1 \prec d_2 \prec \cdots \prec d_m$ gemÃ¤ÃŸ einer totalen
+Ordnung $\prec$ (z.\,B. alphabetisch nach SchlÃ¼ssel). Das \emph{EinfÃ¼gen}
+eines neuen Dokuments~$d$ an Position~$k$ in eine Liste der LÃ¤nge~$m$
 erfordert $m - k + 1$ \emph{Verschiebungen} aller Dokumente $d_k, d_{k+1},
 \ldots, d_m$ um eine Position nach rechts.
 \end{definition}
 
 \begin{definition}[Verschiebungskosten]\label{def:cost}
-Die \emph{Verschiebungskosten} für das Einfügen von Dokument $d$ in ein
-Archiv der Länge~$m$ sind
+Die \emph{Verschiebungskosten} fÃ¼r das EinfÃ¼gen von Dokument $d$ in ein
+Archiv der LÃ¤nge~$m$ sind
 \[
   C(d, \mathcal{A}) = \bigl|\{i : d_i \prec d\}\bigr| \;=\; \mathrm{rank}_{\mathcal{A}}(d)
   \quad\in\{0, 1, \ldots, m\}.
 \]
-Die Gesamtkosten für das sequentielle Einfügen einer Folge
+Die Gesamtkosten fÃ¼r das sequentielle EinfÃ¼gen einer Folge
 $\sigma = (d^{(1)}, d^{(2)}, \ldots, d^{(N)})$ sind
 \[
   C_{\mathrm{seq}}(\sigma) = \sum_{j=1}^{N} C\!\left(d^{(j)},
   \mathcal{A}_{j-1}\right),
 \]
-wobei $\mathcal{A}_{j-1}$ das Archiv vor dem $j$-ten Einfügen bezeichnet.
+wobei $\mathcal{A}_{j-1}$ das Archiv vor dem $j$-ten EinfÃ¼gen bezeichnet.
 \end{definition}
 
-\subsection{Worst-Case-Analyse des naiven Online-Einfügens}
+\subsection{Worst-Case-Analyse des naiven Online-EinfÃ¼gens}
 
 \begin{proposition}[Worst-Case-Kosten]\label{prop:worstcase}
-Für eine Folge $\sigma$ der Länge~$N$ gilt
+FÃ¼r eine Folge $\sigma$ der LÃ¤nge~$N$ gilt
 \[
   C_{\mathrm{seq}}(\sigma) \;\leq\; \frac{N(N-1)}{2} \;=\; \mathcal{O}(N^2),
 \]
@@ -193,46 +193,46 @@ Reihenfolge eintrifft.
 \end{proposition}
 
 \begin{proof}
-Dokument $d^{(j)}$ wird in ein Archiv der Länge $j-1$ eingefügt. Die maximalen
+Dokument $d^{(j)}$ wird in ein Archiv der LÃ¤nge $j-1$ eingefÃ¼gt. Die maximalen
 Kosten betragen $j-1$. Summation liefert
-$\sum_{j=1}^{N}(j-1) = N(N-1)/2$. Für absteigende Folge erreicht jedes
+$\sum_{j=1}^{N}(j-1) = N(N-1)/2$. FÃ¼r absteigende Folge erreicht jedes
 Dokument die erste Stelle und erzwingt alle $j-1$ Verschiebungen.
 \end{proof}
 
-\subsection{Batch-Einfügen als Optimierungsstrategie}
+\subsection{Batch-EinfÃ¼gen als Optimierungsstrategie}
 
-Statt jedes Dokument sofort einzufügen, sammeln wir Dokumente in einem
-\emph{Puffer} $B$ und fügen sie dann als sortierten Batch ein.
+Statt jedes Dokument sofort einzufÃ¼gen, sammeln wir Dokumente in einem
+\emph{Puffer} $B$ und fÃ¼gen sie dann als sortierten Batch ein.
 
-\begin{definition}[Batch-Einfügen]\label{def:batch}
+\begin{definition}[Batch-EinfÃ¼gen]\label{def:batch}
 Sei $B = \{b_1, \ldots, b_k\}$ eine Menge von $k$ Dokumenten, die alle in das
-Archiv $\mathcal{A}$ der Länge~$m$ eingefügt werden sollen. Die optimale
+Archiv $\mathcal{A}$ der LÃ¤nge~$m$ eingefÃ¼gt werden sollen. Die optimale
 Strategie ist:
 \begin{enumerate}[label=\arabic*.,noitemsep]
   \item Sortiere $B$ intern: $b_{\pi(1)} \prec \cdots \prec b_{\pi(k)}$.
-  \item Füge die sortierten Dokumente in einem einzigen Durchlauf ein
-        (\emph{Merge-Einfügen}).
+  \item FÃ¼ge die sortierten Dokumente in einem einzigen Durchlauf ein
+        (\emph{Merge-EinfÃ¼gen}).
 \end{enumerate}
-Die Kosten des Merge-Einfügens sind $\mathcal{O}((m+k)\log(m+k))$ für die
-interne Sortierung plus $\mathcal{O}(m+k)$ Verschiebungen für das physische
+Die Kosten des Merge-EinfÃ¼gens sind $\mathcal{O}((m+k)\log(m+k))$ fÃ¼r die
+interne Sortierung plus $\mathcal{O}(m+k)$ Verschiebungen fÃ¼r das physische
 Merging.
 \end{definition}
 
 \begin{theorem}[Kosten-Reduktion durch Batching]\label{thm:batchreduction}
-Für $k$ Dokumente, die als Batch eingefügt werden, gilt im Vergleich zum
-sequentiellen Einfügen:
+FÃ¼r $k$ Dokumente, die als Batch eingefÃ¼gt werden, gilt im Vergleich zum
+sequentiellen EinfÃ¼gen:
 \[
   \frac{C_{\mathrm{batch}}}{C_{\mathrm{seq}}} \;\leq\; \frac{2(m+k)}{k(k-1)+2m},
 \]
-was für großes~$k$ gegen $\mathcal{O}(1/k)$ geht. Batching skaliert also
-linear mit der Batchgröße.
+was fÃ¼r groÃŸes~$k$ gegen $\mathcal{O}(1/k)$ geht. Batching skaliert also
+linear mit der BatchgrÃ¶ÃŸe.
 \end{theorem}
 
 \begin{proof}
-Sequentielles Einfügen von $k$ Dokumenten in ein Archiv der Länge $m$
-kostet im Erwartungswert (bei zufälliger Reihenfolge)
-$\sum_{j=0}^{k-1}(m+j)/2 = k(2m+k-1)/4$. Das Batch-Merge benötigt $m+k$
-Vergleiche und $\mathcal{O}(m+k)$ Verschiebungen. Das Verhältnis ergibt die
+Sequentielles EinfÃ¼gen von $k$ Dokumenten in ein Archiv der LÃ¤nge $m$
+kostet im Erwartungswert (bei zufÃ¤lliger Reihenfolge)
+$\sum_{j=0}^{k-1}(m+j)/2 = k(2m+k-1)/4$. Das Batch-Merge benÃ¶tigt $m+k$
+Vergleiche und $\mathcal{O}(m+k)$ Verschiebungen. Das VerhÃ¤ltnis ergibt die
 obige Schranke.
 \end{proof}
 
@@ -246,20 +246,20 @@ $\mathcal{W}(F)$ arbeitet wie folgt:
 
 \begin{enumerate}[label=\arabic*.,noitemsep]
   \item \textbf{Initialisierung:} Der Puffer $B := \emptyset$.
-  \item \textbf{Ereignis – Dokumentankunft:} Bei Ankunft von Dokument $d$
+  \item \textbf{Ereignis â€“ Dokumentankunft:} Bei Ankunft von Dokument $d$
         lege $B := B \cup \{d\}$ und setze einen Zufallstimer
         $T \sim F$ neu.
-  \item \textbf{Ereignis – Timerablauf:} Falls kein Dokument während~$T$
-        eingetroffen ist (\emph{ruhige Periode}), führe das
-        Batch-Einfügen aus: Sortiere $B$, füge in $\mathcal{A}$ ein,
+  \item \textbf{Ereignis â€“ Timerablauf:} Falls kein Dokument wÃ¤hrend~$T$
+        eingetroffen ist (\emph{ruhige Periode}), fÃ¼hre das
+        Batch-EinfÃ¼gen aus: Sortiere $B$, fÃ¼ge in $\mathcal{A}$ ein,
         setze $B := \emptyset$.
   \item \textbf{Wiederholung:} Gehe zu Schritt~2.
 \end{enumerate}
 \end{definition}
 
-Die zentrale Größe ist die \emph{Gesamtwartezeit}~$W$, also die Zeit vom
-ersten Eintreffen eines Dokuments bis zum tatsächlichen Einfügen in das Archiv.
-Diese Zeit ergibt sich als \emph{mehrfach zurückgesetzte Wartezeit} und besitzt
+Die zentrale GrÃ¶ÃŸe ist die \emph{Gesamtwartezeit}~$W$, also die Zeit vom
+ersten Eintreffen eines Dokuments bis zum tatsÃ¤chlichen EinfÃ¼gen in das Archiv.
+Diese Zeit ergibt sich als \emph{mehrfach zurÃ¼ckgesetzte Wartezeit} und besitzt
 je nach Verteilung~$F$ und Ankunftsprozess unterschiedliche Eigenschaften.
 
 % ============================================================
@@ -267,7 +267,7 @@ je nach Verteilung~$F$ und Ankunftsprozess unterschiedliche Eigenschaften.
 % ============================================================
 
 Sei der Dokumentenankunftsprozess ein \emph{homogener Poisson-Prozess} mit
-Rate $\lambda > 0$. Zwischen zwei aufeinanderfolgenden Ankünften liegen
+Rate $\lambda > 0$. Zwischen zwei aufeinanderfolgenden AnkÃ¼nften liegen
 exponentiell verteilte Zwischenankunftszeiten $X_i \sim \Exp(\lambda)$
 i.i.d. Der Timer $T \sim F$ wird bei jeder Ankunft neu gestartet. Wir suchen
 die \emph{Ruhige-Periode-Wartezeit}:
@@ -279,10 +279,10 @@ in verschiedenen Modellierungen.
 \subsection{Modell-Grundstruktur}
 
 Sei $t_0$ der Zeitpunkt der letzten Dokumentankunft. Der Timer wird auf
-$T \sim F$ gezogen. Das nächste Dokument kommt nach $X \sim \Exp(\lambda)$.
+$T \sim F$ gezogen. Das nÃ¤chste Dokument kommt nach $X \sim \Exp(\lambda)$.
 
 \begin{itemize}[noitemsep]
-  \item \textbf{Batch schließt}: Wenn $T < X$, also der Timer abläuft, bevor
+  \item \textbf{Batch schlieÃŸt}: Wenn $T < X$, also der Timer ablÃ¤uft, bevor
         ein neues Dokument kommt. Wahrscheinlichkeit:
         $p_{\mathrm{close}} = \Prob(T < X) = \int_0^\infty f(t)\,e^{-\lambda t}\,\mathrm{d}t
         = \mathcal{L}_f(\lambda)$, die Laplace-Transformierte von $f$ an der
@@ -291,12 +291,12 @@ $T \sim F$ gezogen. Das nächste Dokument kommt nach $X \sim \Exp(\lambda)$.
         vor Timerablauf. Wahrscheinlichkeit: $p_{\mathrm{reset}} = 1 - \mathcal{L}_f(\lambda)$.
 \end{itemize}
 
-Die Anzahl der Resets bis zum Schließen des Batches ist geometrisch verteilt:
+Die Anzahl der Resets bis zum SchlieÃŸen des Batches ist geometrisch verteilt:
 $N_{\mathrm{reset}} \sim \Geo(p_{\mathrm{close}})$.
 
 \begin{theorem}[Erwartete Anzahl Resets]\label{thm:resets}
 Sei $p := \mathcal{L}_f(\lambda)$. Die erwartete Anzahl von Timer-Resets
-(einschließlich des abschließenden erfolgreichen Timers) beträgt
+(einschlieÃŸlich des abschlieÃŸenden erfolgreichen Timers) betrÃ¤gt
 \[
   \E[N_{\mathrm{reset}}] = \frac{1}{p} = \frac{1}{\mathcal{L}_f(\lambda)}.
 \]
@@ -318,20 +318,20 @@ $T \sim \Exp(\mu)$, $f(t) = \mu e^{-\mu t}$, $t \geq 0$.
   p_{\Exp} = \frac{\mu}{\mu + \lambda}.
 \]
 
-\paragraph{Gedächtnislosigkeit.}
-Die Exponentialverteilung ist die einzige stetige gedächtnislose Verteilung:
+\paragraph{GedÃ¤chtnislosigkeit.}
+Die Exponentialverteilung ist die einzige stetige gedÃ¤chtnislose Verteilung:
 $\Prob(T > t+s \mid T > s) = \Prob(T > t)$. Dies bedeutet, dass jeder Reset
-statistisch gleichwertig ist – die Vergangenheit spielt keine Rolle.
+statistisch gleichwertig ist â€“ die Vergangenheit spielt keine Rolle.
 
 \begin{theorem}[Gesamtwartezeit bei Exponential-Timer]
 \label{thm:expwait}
-Sei $T \sim \Exp(\mu)$ und Ankünfte $\sim \Pois(\lambda)$.
+Sei $T \sim \Exp(\mu)$ und AnkÃ¼nfte $\sim \Pois(\lambda)$.
 Die Gesamtwartezeit bis zum Batch-Abschluss ist
 \[
   W_{\Exp} \;\sim\; \Exp(\mu + \lambda - \lambda)
 \]
-für den letzten erfolgreichen Timer, und die Gesamtwartezeit des gesamten
-akkumulierten Prozesses (vom ersten Dokument bis zum Einfügen) lautet:
+fÃ¼r den letzten erfolgreichen Timer, und die Gesamtwartezeit des gesamten
+akkumulierten Prozesses (vom ersten Dokument bis zum EinfÃ¼gen) lautet:
 \[
   \E[W_{\Exp}] = \frac{1}{\mu + \lambda} + \frac{1-p_{\Exp}}{p_{\Exp}} \cdot
   \left(\frac{1}{\lambda} + \frac{1}{\mu+\lambda}\right).
@@ -352,9 +352,9 @@ angegebene Formel ergibt.
 
 \paragraph{Eigenschaften und Ziel.}
 Die Exponentialverteilung realisiert das \emph{memoryless batching}: Das System
-verhält sich gleichmäßig über alle Zeitpunkte. Sie ist optimal für
+verhÃ¤lt sich gleichmÃ¤ÃŸig Ã¼ber alle Zeitpunkte. Sie ist optimal fÃ¼r
 \emph{isotrope} Ankunftsprozesse ohne Tagesgang oder Burst-Struktur. Der
-Parameter $\mu$ kann als Kehrwert der gewünschten mittleren Batchgröße gewählt
+Parameter $\mu$ kann als Kehrwert der gewÃ¼nschten mittleren BatchgrÃ¶ÃŸe gewÃ¤hlt
 werden: $\mu = \lambda / k_{\mathrm{target}}$.
 
 \paragraph{Varianz.}
@@ -388,10 +388,10 @@ Nach Vereinfachung (keine Ankunft in Takt $k$: Wahrsch. $(1-p_a)^k$):
   p_{\Geo} = \frac{q}{q + p_a - q \cdot p_a}.
 \]
 
-\begin{theorem}[Erwartete Batch-Größe bei Geometrischem Timer]
+\begin{theorem}[Erwartete Batch-GrÃ¶ÃŸe bei Geometrischem Timer]
 \label{thm:geosize}
 Sei $p_a$ die Ankunftswahrscheinlichkeit pro Takt.
-Die erwartete Anzahl der Dokumente im Batch beträgt
+Die erwartete Anzahl der Dokumente im Batch betrÃ¤gt
 \[
   \E[|B|] = \frac{p_a}{p_a + q(1-p_a)}.
 \]
@@ -399,7 +399,7 @@ Die erwartete Anzahl der Dokumente im Batch beträgt
 
 \begin{proof}
 Jeder Takt, in dem ein Dokument eintrifft, liefert ein Dokument und setzt den
-Timer zurück. Der Prozess endet im ersten Takt ohne Dokument. Die Anzahl der
+Timer zurÃ¼ck. Der Prozess endet im ersten Takt ohne Dokument. Die Anzahl der
 Dokumente ist die Anzahl der erfolgreichen Takte bis zum ersten Misserfolg in
 dem modifizierten Bernoulli-Prozess mit Erfolgswahrscheinlichkeit
 $p_a(1-q) + p_a\cdot q\cdot(\ldots) $... durch einfache Rekursion folgt die
@@ -407,14 +407,14 @@ angegebene Formel.
 \end{proof}
 
 \paragraph{Ziel der geometrischen Verteilung.}
-Die geometrische Verteilung ist gedächtnislos (analog zur Exponentialverteilung
-in diskreter Zeit) und eignet sich für \emph{taktgenaue digitale Systeme} wie
-Prozessoren oder Netzwerkswitches. Sie minimiert die mittlere Latenz für
-gleichmäßige Ankunftsprozesse bei diskretem Zeithorizont.
+Die geometrische Verteilung ist gedÃ¤chtnislos (analog zur Exponentialverteilung
+in diskreter Zeit) und eignet sich fÃ¼r \emph{taktgenaue digitale Systeme} wie
+Prozessoren oder Netzwerkswitches. Sie minimiert die mittlere Latenz fÃ¼r
+gleichmÃ¤ÃŸige Ankunftsprozesse bei diskretem Zeithorizont.
 
-\subsection{Poisson-Verteilung als Batch-Zähler}\label{subsec:poisson}
+\subsection{Poisson-Verteilung als Batch-ZÃ¤hler}\label{subsec:poisson}
 
-In einem Beobachtungsfenster fester Länge $T_0$ folgt die Anzahl der
+In einem Beobachtungsfenster fester LÃ¤nge $T_0$ folgt die Anzahl der
 eintreffenden Dokumente einer Poisson-Verteilung:
 \[
   N \sim \Pois(\lambda T_0), \quad
@@ -422,10 +422,10 @@ eintreffenden Dokumente einer Poisson-Verteilung:
 \]
 
 \paragraph{Strategie: Warte bis leeres Fenster.}
-Die Strategie $\mathcal{W}(\Exp(\mu))$ ist äquivalent zu: Warte, bis ein
-Poisson-Prozess in einem Fenster der zufälligen Länge $T \sim \Exp(\mu)$
-kein Dokument liefert. Da Poisson-Prozesse stationäre, unabhängige Inkremente
-haben, liefert diese Strategie besonders elegante Ausdrücke.
+Die Strategie $\mathcal{W}(\Exp(\mu))$ ist Ã¤quivalent zu: Warte, bis ein
+Poisson-Prozess in einem Fenster der zufÃ¤lligen LÃ¤nge $T \sim \Exp(\mu)$
+kein Dokument liefert. Da Poisson-Prozesse stationÃ¤re, unabhÃ¤ngige Inkremente
+haben, liefert diese Strategie besonders elegante AusdrÃ¼cke.
 
 \begin{theorem}[Wahrscheinlichkeit leeres Poisson-Fenster]
 \label{thm:emptypoisson}
@@ -436,16 +436,16 @@ eintrifft:
 \]
 \end{theorem}
 
-\paragraph{Erwartete Batch-Größe.}
+\paragraph{Erwartete Batch-GrÃ¶ÃŸe.}
 Sei $K$ die Gesamtzahl der gesammelten Dokumente. Dann ist
 \[
   \E[K] = \frac{\lambda}{\mu}, \qquad \Var[K] = \frac{\lambda}{\mu} + \frac{\lambda^2}{\mu^2}.
 \]
 
 \paragraph{Ziel der Poisson-Modellierung.}
-Das Poisson-Modell ist \emph{optimal für kontinuierliche, stationäre
-Ankunftsprozesse}. Es maximiert die Batchgröße bei vorgegebener maximaler
-Wartezeit $1/\mu$ und ist die natürliche Wahl für Netzwerkpaketverwaltung
+Das Poisson-Modell ist \emph{optimal fÃ¼r kontinuierliche, stationÃ¤re
+Ankunftsprozesse}. Es maximiert die BatchgrÃ¶ÃŸe bei vorgegebener maximaler
+Wartezeit $1/\mu$ und ist die natÃ¼rliche Wahl fÃ¼r Netzwerkpaketverwaltung
 und Festplatten-Request-Batching.
 
 \subsection{Negativbinomialverteilung}\label{subsec:negbin}
@@ -459,30 +459,30 @@ $r$-te Erfolgs-Ereignis (z.\,B. das $r$-te ``ruhige Takt''):
 \paragraph{Motivation.}
 Statt eine einzelne ruhige Periode abzuwarten, kann man $r \geq 2$ aufeinanderfolgende
 ruhige Perioden fordern. Dies entspricht einer Negativbinomialverteilung mit
-Parameter $r$ für die Ruhezählung.
+Parameter $r$ fÃ¼r die RuhezÃ¤hlung.
 
 \begin{definition}[$r$-fach Wartestrategie $\mathcal{W}^{(r)}$]
-Die Strategie $\mathcal{W}^{(r)}$ führt das Batch-Einfügen erst aus, wenn
+Die Strategie $\mathcal{W}^{(r)}$ fÃ¼hrt das Batch-EinfÃ¼gen erst aus, wenn
 $r$ aufeinanderfolgende Warteperioden ohne Dokumentankunft vergehen.
 \end{definition}
 
 \begin{theorem}[Erwartete Gesamtwartezeit bei $\mathcal{W}^{(r)}$]
 \label{thm:negbin}
-Unter $\mathcal{W}^{(r)}$ mit Exp($\mu$)-Timern und Pois($\lambda$)-Ankünften:
+Unter $\mathcal{W}^{(r)}$ mit Exp($\mu$)-Timern und Pois($\lambda$)-AnkÃ¼nften:
 \[
   \E[W^{(r)}] = \frac{r}{\mu} + \frac{r\lambda}{\mu(\mu+\lambda)}.
 \]
-Die erwartete Batchgröße skaliert linear mit $r$:
+Die erwartete BatchgrÃ¶ÃŸe skaliert linear mit $r$:
 \[
   \E[|B^{(r)}|] = r \cdot \frac{\lambda}{\mu}.
 \]
 \end{theorem}
 
 \paragraph{Ziel der Negativbinomial-Strategie.}
-Diese Variante ist optimal, wenn große Batches gegenüber kurzer Latenz
-bevorzugt werden – z.\,B. in Archivierungssystemen mit hohem Einzel-
+Diese Variante ist optimal, wenn groÃŸe Batches gegenÃ¼ber kurzer Latenz
+bevorzugt werden â€“ z.\,B. in Archivierungssystemen mit hohem Einzel-
 Verschiebungsaufwand oder in Bulk-Insert-Operationen von Datenbanken.
-Durch Erhöhung von $r$ kann der Anwender das \emph{Latenz-Durchsatz-Tradeoff}
+Durch ErhÃ¶hung von $r$ kann der Anwender das \emph{Latenz-Durchsatz-Tradeoff}
 fein steuern.
 
 \subsection{Pareto-Verteilung (Heavy-Tail)}\label{subsec:pareto}
@@ -501,7 +501,7 @@ und Minimalwert $x_m > 0$:
   \, \Gamma(-\alpha, \lambda x_m),
 \]
 wobei $\Gamma(s, x) = \int_x^\infty t^{s-1} e^{-t}\,\mathrm{d}t$ die obere
-unvollständige Gammafunktion ist. Für $\lambda x_m \ll 1$:
+unvollstÃ¤ndige Gammafunktion ist. FÃ¼r $\lambda x_m \ll 1$:
 \[
   \mathcal{L}_f(\lambda) \approx 1 - \frac{\alpha x_m \lambda}{\alpha - 1} +
   \mathcal{O}((\lambda x_m)^2).
@@ -509,7 +509,7 @@ unvollständige Gammafunktion ist. Für $\lambda x_m \ll 1$:
 
 \begin{theorem}[Abschlusswahrscheinlichkeit unter Pareto-Timer]
 \label{thm:pareto}
-Für $\alpha > 1$ und kleine Ankunftsrate $\lambda x_m \to 0$:
+FÃ¼r $\alpha > 1$ und kleine Ankunftsrate $\lambda x_m \to 0$:
 \[
   p_{\Pareto} \approx \frac{\alpha - 1}{\alpha - 1 + \alpha x_m \lambda}.
 \]
@@ -523,26 +523,26 @@ wider (z.\,B. Web-Anfragen, Datei-I/O).
 
 \begin{theorem}[Erwartungswert und Varianz der Pareto-Wartezeit]
 \label{thm:paretoev}
-Für $\alpha > 2$:
+FÃ¼r $\alpha > 2$:
 \[
   \E[T_{\Pareto}] = \frac{\alpha x_m}{\alpha-1}, \qquad
   \Var[T_{\Pareto}] = \frac{x_m^2 \alpha}{(\alpha-1)^2(\alpha-2)}.
 \]
-Für $1 < \alpha \leq 2$ ist die Varianz unendlich (\emph{infinite variance}).
+FÃ¼r $1 < \alpha \leq 2$ ist die Varianz unendlich (\emph{infinite variance}).
 \end{theorem}
 
 \paragraph{Ziel der Pareto-Strategie.}
-Heavy-Tail-Timer sind optimal für \emph{selbstähnliche} Ankunftsprozesse mit
+Heavy-Tail-Timer sind optimal fÃ¼r \emph{selbstÃ¤hnliche} Ankunftsprozesse mit
 Burst-Struktur (fraktales Brownian Motion, Hurst-Exponent $H > 1/2$). Sie
-ermöglichen kurze Reaktionszeiten in ruhigen Phasen und lange Akkumulationszeiten
-in aktiven Phasen. Nachteil: Hohe Varianz in der Latenz macht sie für
+ermÃ¶glichen kurze Reaktionszeiten in ruhigen Phasen und lange Akkumulationszeiten
+in aktiven Phasen. Nachteil: Hohe Varianz in der Latenz macht sie fÃ¼r
 Echtzeitsysteme ungeeignet.
 
-\subsection{Vergleichsübersicht der Verteilungen}
+\subsection{VergleichsÃ¼bersicht der Verteilungen}
 
 \begin{table}[ht]
 \centering
-\caption{Vergleich der Wartezeitverteilungen für die Strategie $\mathcal{W}(F)$.
+\caption{Vergleich der Wartezeitverteilungen fÃ¼r die Strategie $\mathcal{W}(F)$.
          $\lambda$: Ankunftsrate, $\mu$: Timerrate, $q$: geometr. Parameter.}
 \label{tab:comparison}
 \renewcommand{\arraystretch}{1.4}
@@ -555,7 +555,7 @@ $\Exp(\mu)$
   & $\dfrac{\mu}{\mu+\lambda}$
   & $\dfrac{1}{\mu}$
   & $\dfrac{1}{\mu^2}$
-  & Gleichmäßige Latenz\\[6pt]
+  & GleichmÃ¤ÃŸige Latenz\\[6pt]
 $\Geo(q)$
   & $\dfrac{q}{q + p_a(1-q)}$
   & $\dfrac{1}{q}$
@@ -565,7 +565,7 @@ $\NBin(r,p)$
   & $\left(\dfrac{p}{1-(1-p)z}\right)^r$
   & $\dfrac{r}{q}$
   & $\dfrac{r(1-q)}{q^2}$
-  & Großer Batch\\[6pt]
+  & GroÃŸer Batch\\[6pt]
 $\Pareto(\alpha, x_m)$
   & $\approx 1 - \frac{\alpha x_m\lambda}{\alpha-1}$
   & $\dfrac{\alpha x_m}{\alpha-1}$
@@ -576,19 +576,19 @@ $\Pareto(\alpha, x_m)$
 \end{table}
 
 % ============================================================
-\section{Optimalitätsanalyse}\label{sec:optimality}
+\section{OptimalitÃ¤tsanalyse}\label{sec:optimality}
 % ============================================================
 
 \subsection{Das Latenz-Durchsatz-Dilemma}
 
 \begin{definition}[Systemziele]\label{def:goals}
 Sei $L = \E[W]$ die mittlere Latenz (Zeit vom ersten Dokument bis zum
-Einfügen) und $K = \E[|B|]$ die mittlere Batchgröße. Für gegebenes $\lambda$
+EinfÃ¼gen) und $K = \E[|B|]$ die mittlere BatchgrÃ¶ÃŸe. FÃ¼r gegebenes $\lambda$
 und Einzel-Verschiebungskosten $c$ ist das normierte Verschiebungsvolumen:
 \[
   V = K^2 \cdot c - K \cdot c = c \cdot K(K-1).
 \]
-Die Einsparung gegenüber sofortigem Einfügen ist
+Die Einsparung gegenÃ¼ber sofortigem EinfÃ¼gen ist
 $S = K \cdot c - c = c(K-1)$.
 \end{definition}
 
@@ -597,19 +597,19 @@ Die Strategie $\mathcal{W}(\Exp(\mu))$ ergibt folgende Pareto-Front:
 \[
   S = \frac{c\lambda}{\mu}, \qquad L = \frac{1}{\mu} + \frac{\lambda}{\mu(\mu+\lambda)}.
 \]
-Für $\mu \to \infty$: $S \to 0$, $L \to 0$ (sofortiges Einfügen).
-Für $\mu \to 0$: $S \to \infty$, $L \to \infty$ (unendlich langer Batch).
+FÃ¼r $\mu \to \infty$: $S \to 0$, $L \to 0$ (sofortiges EinfÃ¼gen).
+FÃ¼r $\mu \to 0$: $S \to \infty$, $L \to \infty$ (unendlich langer Batch).
 \end{theorem}
 
 \subsection{Optimaler Timer-Parameter}\label{subsec:optparam}
 
 Wir verwenden ein vereinfachtes Kostenfunktional, das die beiden
-gegenläufigen Einflüsse transparent macht:
+gegenlÃ¤ufigen EinflÃ¼sse transparent macht:
 \begin{itemize}[noitemsep]
   \item \textbf{Latenzkosten}: $c_{\mathrm{wait}}/\mu$, proportional zur
         mittleren Wartezeit $\E[W] \approx 1/\mu$.
   \item \textbf{Verschiebungskosten}: $c_{\mathrm{shift}} \cdot \mu/\lambda$,
-        proportional zum Kehrwert der mittleren Batchgröße
+        proportional zum Kehrwert der mittleren BatchgrÃ¶ÃŸe
         $\E[|B|] = \lambda/\mu$ (kleinere Batches $=$ mehr Einzel-Verschiebungen).
 \end{itemize}
 \[
@@ -617,12 +617,12 @@ gegenläufigen Einflüsse transparent macht:
 \]
 
 \begin{theorem}[Optimaler Timerparameter]\label{thm:optmu}
-Das eindeutige Minimum von $J(\mu)$ über $\mu > 0$ ist
+Das eindeutige Minimum von $J(\mu)$ Ã¼ber $\mu > 0$ ist
 \[
   \mu^* = \sqrt{\frac{c_{\mathrm{wait}}\,\lambda}{c_{\mathrm{shift}}}},
 \]
 mit minimalem Gesamtaufwand $J(\mu^*) = 2\sqrt{c_{\mathrm{wait}}\,c_{\mathrm{shift}}/\lambda}$.
-Für den Spezialfall $c_{\mathrm{wait}} = c_{\mathrm{shift}}$ gilt $\mu^* = \sqrt{\lambda}$.
+FÃ¼r den Spezialfall $c_{\mathrm{wait}} = c_{\mathrm{shift}}$ gilt $\mu^* = \sqrt{\lambda}$.
 \end{theorem}
 
 \begin{proof}
@@ -633,29 +633,29 @@ Da $\mathrm{d}^2J/\mathrm{d}\mu^2 = 2c_{\mathrm{wait}}/\mu^3 > 0$, handelt es si
 Einsetzen ergibt $J(\mu^*) = c_{\mathrm{wait}}/\mu^* + c_{\mathrm{shift}}\mu^*/\lambda = 2\sqrt{c_{\mathrm{wait}}\,c_{\mathrm{shift}}/\lambda}$.
 \end{proof}
 
-\subsection{Kompetitivitätsanalyse}\label{subsec:competitive}
+\subsection{KompetitivitÃ¤tsanalyse}\label{subsec:competitive}
 
-\begin{definition}[Kompetitivitätsverhältnis]\label{def:competitive}
-Der \emph{competitive ratio} einer Online-Strategie $\mathcal{W}(F)$ gegenüber
+\begin{definition}[KompetitivitÃ¤tsverhÃ¤ltnis]\label{def:competitive}
+Der \emph{competitive ratio} einer Online-Strategie $\mathcal{W}(F)$ gegenÃ¼ber
 dem optimalen Offline-Algorithmus OPT ist
 \[
   \rho(\mathcal{W}) = \sup_\sigma \frac{C_{\mathcal{W}}(\sigma)}{C_{\mathrm{OPT}}(\sigma)},
 \]
-wobei $\sigma$ alle möglichen Dokumentfolgen durchläuft.
+wobei $\sigma$ alle mÃ¶glichen Dokumentfolgen durchlÃ¤uft.
 \end{definition}
 
-\begin{theorem}[Untere Schranke für randomisierte Strategien]\label{thm:lower}
-Für jede randomisierte Online-Strategie gilt:
+\begin{theorem}[Untere Schranke fÃ¼r randomisierte Strategien]\label{thm:lower}
+FÃ¼r jede randomisierte Online-Strategie gilt:
 \[
   \rho(\mathcal{W}) \geq e/(e-1) \approx 1.582,
 \]
 falls der Adversar die Ankunftsverteilung kennt.
 \end{theorem}
 
-Diese Schranke ist der klassische Satz von Yao für das List-Update-Problem
-und überträgt sich direkt auf das Archiv-Problem.
+Diese Schranke ist der klassische Satz von Yao fÃ¼r das List-Update-Problem
+und Ã¼bertrÃ¤gt sich direkt auf das Archiv-Problem.
 
-\begin{theorem}[Obere Schranke für $\mathcal{W}(\Exp)$]\label{thm:upper}
+\begin{theorem}[Obere Schranke fÃ¼r $\mathcal{W}(\Exp)$]\label{thm:upper}
 Unter Exp($\mu$)-Timern mit $\mu = \lambda$ gilt:
 \[
   \rho(\mathcal{W}(\Exp(\lambda))) \leq 2.
@@ -664,15 +664,15 @@ Unter Exp($\mu$)-Timern mit $\mu = \lambda$ gilt:
 
 \begin{proof}
 Im schlimmsten Fall (adversarial input, alternierende Dokumente) verdoppelt
-die zufällige Wartestrategie die Kosten gegenüber dem Offline-Optimum.
+die zufÃ¤llige Wartestrategie die Kosten gegenÃ¼ber dem Offline-Optimum.
 \end{proof}
 
 % ============================================================
 \section{Bezug zur Rechnerarchitektur und Speicherverwaltung}\label{sec:architecture}
 % ============================================================
 
-Das Archiv-Problem ist nicht nur eine abstrakte Kombinationsaufgabe – es
-ist ein präzises Modell für zahlreiche Vorgänge in modernen Computersystemen.
+Das Archiv-Problem ist nicht nur eine abstrakte Kombinationsaufgabe â€“ es
+ist ein prÃ¤zises Modell fÃ¼r zahlreiche VorgÃ¤nge in modernen Computersystemen.
 \cref{tab:mapping} zeigt die direkte Analogie.
 
 \begin{table}[ht]
@@ -685,9 +685,9 @@ ist ein präzises Modell für zahlreiche Vorgänge in modernen Computersystemen.
 \textbf{Archiv-Konzept} & \textbf{Rechnerarchitektur-Konzept} & \textbf{Ebene}\\
 \midrule
 Dokument               & Speicher-Request / Cache-Line      & Alle\\
-Archiv $\mathcal{A}$   & Cache-Inhalt / TLB-Einträge        & L1–L3, TLB\\
-Verschiebung           & Cache-Miss, Eviction, Writeback    & L1–L3\\
-Batch-Einfügen         & Write-combining, Prefetching       & L1/L2\\
+Archiv $\mathcal{A}$   & Cache-Inhalt / TLB-EintrÃ¤ge        & L1â€“L3, TLB\\
+Verschiebung           & Cache-Miss, Eviction, Writeback    & L1â€“L3\\
+Batch-EinfÃ¼gen         & Write-combining, Prefetching       & L1/L2\\
 Wartestrategie $\mathcal{W}$ & Interrupt Coalescing, NAPI      & Netzwerk-NIC\\
 Ankunftsrate $\lambda$ & Memory Access Frequency            & CPU/DMA\\
 Timerparameter $\mu$   & Coalescing Timeout                 & NIC/Disk\\
@@ -699,11 +699,11 @@ Timerparameter $\mu$   & Coalescing Timeout                 & NIC/Disk\\
 
 In modernen CPUs werden Daten in einer \emph{Cache-Hierarchie} (L1, L2, L3)
 gehalten. Ein Cache-Miss verursacht einen \emph{Eviction}: Alte Daten werden
-in die nächsttiefere Ebene geschrieben (Verschiebung). Die Eviction-Rate ist
+in die nÃ¤chsttiefere Ebene geschrieben (Verschiebung). Die Eviction-Rate ist
 analog zu den Verschiebungskosten im Archiv-Problem.
 
 \paragraph{Write-Back-Strategie als Wartestrategie.}
-Der \emph{Write-Back-Cache} verzögert Schreiboperationen in den Hauptspeicher
+Der \emph{Write-Back-Cache} verzÃ¶gert Schreiboperationen in den Hauptspeicher
 und akkumuliert mehrere Writes in einem Puffer. Diese Strategie ist exakt
 $\mathcal{W}(\Exp(\mu))$ mit $\mu = 1/t_{\mathrm{flush}}$, wobei
 $t_{\mathrm{flush}}$ die maximale Flush-Wartezeit ist.
@@ -720,9 +720,9 @@ wobei $c_{\mathrm{latency}}$ die Kosten pro Takt Latenz sind.
 \subsection{TLB-Miss-Behandlung und Page-Walk-Batching}
 
 Der \emph{Translation Lookaside Buffer (TLB)} ist ein spezialisierter Cache
-für Seitentabellen-Einträge. Bei einem TLB-Miss muss ein Page-Walk durchgeführt
+fÃ¼r Seitentabellen-EintrÃ¤ge. Bei einem TLB-Miss muss ein Page-Walk durchgefÃ¼hrt
 werden. Moderne Prozessoren (ARM, RISC-V, x86 mit Hardware-Table-Walker)
-können TLB-Miss-Handler batchen.
+kÃ¶nnen TLB-Miss-Handler batchen.
 
 Die stochastische Wartestrategie $\mathcal{W}(F)$ kann hier angewendet werden:
 Statt jeden TLB-Miss sofort zu bearbeiten, werden mehrere TLB-Misses gesammelt
@@ -733,15 +733,15 @@ Page-Walk-Gesamtzahl.
 
 Der \emph{I/O-Elevator} (SCAN/C-SCAN) moderner Betriebssysteme sammelt I/O-Requests
 in einer warteschlangenbasierten Struktur. Die Strategie entspricht einem
-$\mathcal{W}(\NBin(r, p))$ mit $r = $ ``Minimale Batchgröße vor Sweep''.
+$\mathcal{W}(\NBin(r, p))$ mit $r = $ ``Minimale BatchgrÃ¶ÃŸe vor Sweep''.
 
 \begin{example}[Linux CFQ-Scheduler]\label{ex:cfq}
 Der \emph{Completely Fair Queuing (CFQ)}-Scheduler in Linux verwendet einen
 Timer mit $t_{\mathrm{idle}} = 8\,\mathrm{ms}$ (ca. $\mu = 125\,\mathrm{s}^{-1}$).
 Bei einer I/O-Rate von $\lambda = 50\,\mathrm{req/s}$ ergibt sich eine
-mittlere Batchgröße von $\E[|B|] = \lambda/\mu = 0.4$ – also typischerweise
-1 Request pro Batch, was dem beobachteten Verhalten entspricht. Für
-HDD-Systeme mit $\lambda = 500\,\mathrm{req/s}$ wäre
+mittlere BatchgrÃ¶ÃŸe von $\E[|B|] = \lambda/\mu = 0.4$ â€“ also typischerweise
+1 Request pro Batch, was dem beobachteten Verhalten entspricht. FÃ¼r
+HDD-Systeme mit $\lambda = 500\,\mathrm{req/s}$ wÃ¤re
 $\mu^* = \sqrt{c_w \cdot 500/c_s}$ optimal.
 \end{example}
 
@@ -751,7 +751,7 @@ $\mu^* = \sqrt{c_w \cdot 500/c_s}$ optimal.
 ConnectX-7) entspricht exakt der Strategie $\mathcal{W}(\Exp(\mu))$:
 \begin{itemize}[noitemsep]
   \item Paketankunft: Timer wird (neu) gestartet auf $T \sim \Exp(\mu)$.
-  \item Timerablauf: Interrupt wird ausgelöst, alle Pakete im Puffer werden
+  \item Timerablauf: Interrupt wird ausgelÃ¶st, alle Pakete im Puffer werden
         gemeinsam verarbeitet.
   \item Parameter $\mu$: Als \texttt{rx-usecs} oder \texttt{tx-usecs} in
         \texttt{ethtool} konfigurierbar.
@@ -769,7 +769,7 @@ Paketverarbeitungskosten $c_{\mathrm{pkt}}$:
 \paragraph{Numerisches Beispiel.}
 $c_{\mathrm{IRQ}} = 5000\,\mathrm{ns}$, $c_{\mathrm{pkt}} = 50\,\mathrm{ns}$,
 $\lambda = 1\,\mathrm{Mpps} = 1\,\mathrm{pkt}/\mu\mathrm{s}$.
-Die Formel lässt sich umschreiben als
+Die Formel lÃ¤sst sich umschreiben als
 $t^* = \sqrt{c_{\mathrm{IRQ}}/c_{\mathrm{pkt}}}\,/\,\lambda$, was
 dimensionskonsistent ist (beide Zeiten in $\mu\mathrm{s}$,
 $\lambda$ in $\mu\mathrm{s}^{-1}$):
@@ -779,7 +779,7 @@ $\lambda$ in $\mu\mathrm{s}^{-1}$):
       = 10\,\mu\mathrm{s}.
 \]
 Dies stimmt mit den typischen Standard-Coalescing-Zeiten von
-$5$--$50\,\mu\mathrm{s}$ für 1\,Gbps-NICs überein.
+$5$--$50\,\mu\mathrm{s}$ fÃ¼r 1\,Gbps-NICs Ã¼berein.
 
 \subsection{Hauptspeicher-DRAM-Controller und Row-Hammer}
 
@@ -790,12 +790,12 @@ wird (\emph{Precharge}), ist exakt das Archiv-Problem:
 \begin{itemize}[noitemsep]
   \item Jeder DRAM-Zugriff = Dokument.
   \item Row-Buffer = Archiv.
-  \item Precharge (Schließen der Reihe) = Batch-Einfügen.
+  \item Precharge (SchlieÃŸen der Reihe) = Batch-EinfÃ¼gen.
   \item Wartestrategie: \emph{Open-Row-Policy} mit Timer $T$.
 \end{itemize}
 
 Der \emph{Row-Hammer}-Angriff nutzt gezielt kurze Zeiten zwischen zwei
-Zugriffen aus, um die Bit-Flip-Rate zu erhöhen. Die Gegenmaßnahme
+Zugriffen aus, um die Bit-Flip-Rate zu erhÃ¶hen. Die GegenmaÃŸnahme
 \emph{Target Row Refresh (TRR)} entspricht einer adaptiven
 Negativbinomial-Wartestrategie $\mathcal{W}^{(r)}$, die nach $r$ Zugriffen
 auf benachbarte Reihen einen Refresh erzwingt.
@@ -892,8 +892,8 @@ class ArchiveSimulator:
 
 \subsection{Experimentelle Ergebnisse}
 
-\Cref{fig:results} zeigt die erwartete Batchgröße und Gesamtverschiebungsanzahl
-für verschiedene Wartezeitstrategien in Abhängigkeit vom Timer-Parameter.
+\Cref{fig:results} zeigt die erwartete BatchgrÃ¶ÃŸe und Gesamtverschiebungsanzahl
+fÃ¼r verschiedene Wartezeitstrategien in AbhÃ¤ngigkeit vom Timer-Parameter.
 
 \begin{figure}[ht]
 \centering
@@ -942,7 +942,7 @@ für verschiedene Wartezeitstrategien in Abhängigkeit vom Timer-Parameter.
 \end{axis}
 \end{tikzpicture}
 \caption{Normierte Verschiebungskosten (oben) und mittlere Latenz (unten)
-         als Funktion des Timer-Parameters $\mu$ für drei Wartezeitstrategien
+         als Funktion des Timer-Parameters $\mu$ fÃ¼r drei Wartezeitstrategien
          bei $\lambda = 1$.}
 \label{fig:results}
 \end{figure}
@@ -978,29 +978,29 @@ für verschiedene Wartezeitstrategien in Abhängigkeit vom Timer-Parameter.
 \end{axis}
 \end{tikzpicture}
 \caption{Pareto-Front zwischen mittlerer Latenz und Verschiebungseinsparung
-         für drei Wartezeitstrategien. Der schwarze Punkt markiert das
-         theoretisch optimale $\mu^*$ für den Exp-Timer.}
+         fÃ¼r drei Wartezeitstrategien. Der schwarze Punkt markiert das
+         theoretisch optimale $\mu^*$ fÃ¼r den Exp-Timer.}
 \label{fig:paretofront}
 \end{figure}
 
-\subsection{Einfluss des Hurst-Exponenten (Selbstähnliche Prozesse)}
+\subsection{Einfluss des Hurst-Exponenten (SelbstÃ¤hnliche Prozesse)}
 
-Für Ankunftsprozesse mit \emph{Long-Range Dependence} (LRD, Hurst-Exponent
-$H > 0.5$) – typisch für Web-Traffic und Datei-I/O – gilt:
+FÃ¼r Ankunftsprozesse mit \emph{Long-Range Dependence} (LRD, Hurst-Exponent
+$H > 0.5$) â€“ typisch fÃ¼r Web-Traffic und Datei-I/O â€“ gilt:
 
 \begin{proposition}[Pareto-Timer bei LRD]\label{prop:lrd}
-Für einen fraktionalen Poisson-Prozess mit Hurst-Exponent $H \in (0.5, 1)$
+FÃ¼r einen fraktionalen Poisson-Prozess mit Hurst-Exponent $H \in (0.5, 1)$
 ist der optimale Timer $T^*$ heavy-tailed mit Tailindex
 \[
   \alpha^* = \frac{1}{H - 0.5} + 1.
 \]
-Für $H = 0.75$ ergibt sich $\alpha^* = 5$, für $H = \frac{5}{6} \approx 0.833$
+FÃ¼r $H = 0.75$ ergibt sich $\alpha^* = 5$, fÃ¼r $H = \frac{5}{6} \approx 0.833$
 ergibt sich $\alpha^* = 4$.
 \end{proposition}
 
-Dies zeigt, dass \emph{Pareto-Timer mit $\alpha \in [3, 5]$} besonders robust für
-selbstähnliche Workloads mit typischen Hurst-Exponenten $H \in [0.75, 0.9]$ sind –
-ein wichtiges Ergebnis für die Dimensionierung von Netzwerk- und
+Dies zeigt, dass \emph{Pareto-Timer mit $\alpha \in [3, 5]$} besonders robust fÃ¼r
+selbstÃ¤hnliche Workloads mit typischen Hurst-Exponenten $H \in [0.75, 0.9]$ sind â€“
+ein wichtiges Ergebnis fÃ¼r die Dimensionierung von Netzwerk- und
 Speicher-Subsystemen in modernen Servern.
 
 % ============================================================
@@ -1009,35 +1009,35 @@ Speicher-Subsystemen in modernen Servern.
 
 \subsection{Adaptive Wartestrategie}
 
-Anstatt den Timer-Parameter $\mu$ fest zu wählen, kann er \emph{adaptiv}
-basierend auf der geschätzten Ankunftsrate angepasst werden.
+Anstatt den Timer-Parameter $\mu$ fest zu wÃ¤hlen, kann er \emph{adaptiv}
+basierend auf der geschÃ¤tzten Ankunftsrate angepasst werden.
 
 \begin{definition}[Exponentiell gewichteter gleitender Durchschnitt (EWMA)]
 \[
   \hat\lambda_n = (1-\alpha)\hat\lambda_{n-1} + \alpha \cdot \frac{1}{X_n},
 \]
 wobei $X_n$ die $n$-te Zwischenankunftszeit ist und $\alpha \in (0,1)$ die
-Glättungskonstante.
+GlÃ¤ttungskonstante.
 \end{definition}
 
 Der adaptive Timer setzt $\mu_n = \hat\lambda_n / k_{\mathrm{target}}$, wobei
-$k_{\mathrm{target}}$ die Ziel-Batchgröße ist. Diese Strategie konvergiert
-im stationären Fall gegen den optimalen fixen Timer.
+$k_{\mathrm{target}}$ die Ziel-BatchgrÃ¶ÃŸe ist. Diese Strategie konvergiert
+im stationÃ¤ren Fall gegen den optimalen fixen Timer.
 
-\subsection{Mehrklassen-Prioritäten}
+\subsection{Mehrklassen-PrioritÃ¤ten}
 
 In realen Systemen haben verschiedene Dokumente (Prozesse, I/O-Requests)
-verschiedene Prioritäten. Eine natürliche Erweiterung ist ein
-\emph{Mehrklassen-Archiv} mit $R$ Prioritätsklassen, wobei Klasse-$r$-Dokumente
+verschiedene PrioritÃ¤ten. Eine natÃ¼rliche Erweiterung ist ein
+\emph{Mehrklassen-Archiv} mit $R$ PrioritÃ¤tsklassen, wobei Klasse-$r$-Dokumente
 einen eigenen Timer $T_r \sim F_r$ verwenden.
 
 \begin{theorem}[Mehrklassen-Kostendekomposition]
-Bei unabhängigen Ankunftsprozessen der Klassen $r = 1,\ldots,R$ mit Raten
+Bei unabhÃ¤ngigen Ankunftsprozessen der Klassen $r = 1,\ldots,R$ mit Raten
 $\lambda_r$ dekomponiert das Gesamtkostenfunktional additiv:
 \[
   J_{\mathrm{total}} = \sum_{r=1}^R J_r(\mu_r),
 \]
-und jeder optimale $\mu_r^*$ kann unabhängig bestimmt werden.
+und jeder optimale $\mu_r^*$ kann unabhÃ¤ngig bestimmt werden.
 \end{theorem}
 
 \subsection{Verbindung zum List-Update-Problem}
@@ -1045,7 +1045,7 @@ und jeder optimale $\mu_r^*$ kann unabhängig bestimmt werden.
 Das Archiv-Problem ist eine Variante des klassischen \emph{List-Update-Problems}
 \cite{sleator1985amortized}: In einer ungeordneten Liste soll der
 Zugriffsaufwand (Suchkosten) minimiert werden. Die \emph{Move-to-Front}-Regel
-ist $2$-kompetitiv. Das geordnete Archiv-Problem mit Batch-Einfügen ergänzt
+ist $2$-kompetitiv. Das geordnete Archiv-Problem mit Batch-EinfÃ¼gen ergÃ¤nzt
 dieses Modell durch die \emph{Ankunftsrate} als zweite Dimension.
 
 % ============================================================
@@ -1055,10 +1055,10 @@ dieses Modell durch die \emph{Ankunftsrate} als zweite Dimension.
 \subsection{Wesentliche Ergebnisse}
 
 Diese Arbeit hat das \emph{Archiv-Problem} als stochastisches Online-Optimierungsproblem
-formalisiert und die folgende rückwärtsgewandte Wartestrategie analysiert: Da die
+formalisiert und die folgende rÃ¼ckwÃ¤rtsgewandte Wartestrategie analysiert: Da die
 Zukunft unbekannt ist, schaut das System in die Vergangenheit (gemessene
-Ankunftsrate $\hat\lambda$) und wartet eine zufällige Zeit $T$. Bei Ankunft
-eines neuen Dokuments wird der Timer zurückgesetzt. Erst nach einer vollständigen
+Ankunftsrate $\hat\lambda$) und wartet eine zufÃ¤llige Zeit $T$. Bei Ankunft
+eines neuen Dokuments wird der Timer zurÃ¼ckgesetzt. Erst nach einer vollstÃ¤ndigen
 ruhigen Periode wird der akkumulierte Batch optimal einsortiert.
 
 \paragraph{Mathematische Schlussfolgerungen:}
@@ -1070,13 +1070,13 @@ ruhigen Periode wird der akkumulierte Batch optimal einsortiert.
   \item Der optimale Timer-Parameter $\mu^*$ balanciert Latenzkosten und
         Verschiebungskosten; explizit gilt
         $\mu^* = \sqrt{c_{\mathrm{wait}}\,\lambda/c_{\mathrm{shift}}}$.
-  \item Für selbstähnliche (LRD) Prozesse ist ein Pareto-Timer mit
+  \item FÃ¼r selbstÃ¤hnliche (LRD) Prozesse ist ein Pareto-Timer mit
         $\alpha = 1/(H-0.5) + 1$ optimal.
 \end{enumerate}
 
 \paragraph{Empfehlungen nach Systemtyp:}
 \begin{itemize}[noitemsep]
-  \item \textbf{Gleichmäßige Last, geringe Latenzanforderung:}
+  \item \textbf{GleichmÃ¤ÃŸige Last, geringe Latenzanforderung:}
         Exp-Timer mit $\mu = \lambda/k_{\mathrm{target}}$.
   \item \textbf{Burst-Load, Web/Netzwerk:}
         Pareto-Timer mit $\alpha \approx 3$.
@@ -1086,19 +1086,19 @@ ruhigen Periode wird der akkumulierte Batch optimal einsortiert.
         Negativ-Binomial-Timer $\mathcal{W}^{(r)}$ mit $r \geq 3$.
 \end{itemize}
 
-\subsection{Offene Fragen und zukünftige Arbeit}
+\subsection{Offene Fragen und zukÃ¼nftige Arbeit}
 
 \begin{itemize}[noitemsep]
-  \item \textbf{Untere Schranke für randomisierte Strategien} verschärfen:
-        Kann $e/(e-1)$ für das spezifische Archiv-Problem überwunden werden?
-  \item \textbf{Maschinenlernbasierte Anpassung:} Reinforcement Learning für
+  \item \textbf{Untere Schranke fÃ¼r randomisierte Strategien} verschÃ¤rfen:
+        Kann $e/(e-1)$ fÃ¼r das spezifische Archiv-Problem Ã¼berwunden werden?
+  \item \textbf{Maschinenlernbasierte Anpassung:} Reinforcement Learning fÃ¼r
         die adaptive Wahl von $F$ bei unbekannter Ankunftsverteilung.
-  \item \textbf{Mehrdimensionale Archive} (B-Bäume, LSM-Trees): Das
-        Batch-Einfügen in LSM-Trees (\emph{Log-Structured Merge-Trees}) ist
+  \item \textbf{Mehrdimensionale Archive} (B-BÃ¤ume, LSM-Trees): Das
+        Batch-EinfÃ¼gen in LSM-Trees (\emph{Log-Structured Merge-Trees}) ist
         exakt das Archiv-Problem in mehreren Ebenen. Die Strategie
         $\mathcal{W}^{(r)}$ entspricht der Level-Compaction-Heuristik.
   \item \textbf{Hardware-Implementierung:} FPGA- oder ASIC-Implementierung
-        eines adaptiven Wartezeitgenerators für NIC Interrupt Coalescing.
+        eines adaptiven Wartezeitgenerators fÃ¼r NIC Interrupt Coalescing.
 \end{itemize}
 
 % ============================================================
@@ -1109,12 +1109,12 @@ ruhigen Periode wird der akkumulierte Batch optimal einsortiert.
 
 \subsection{Beweis von \cref{thm:expwait}}
 
-Sei $Y = \min(T, X)$ mit $T \sim \Exp(\mu)$, $X \sim \Exp(\lambda)$ unabhängig.
+Sei $Y = \min(T, X)$ mit $T \sim \Exp(\mu)$, $X \sim \Exp(\lambda)$ unabhÃ¤ngig.
 Dann ist $Y \sim \Exp(\mu + \lambda)$.
 
-Fall 1: $T < X$ (Batch schließt, Wahrsch. $\mu/(\mu+\lambda)$). Gesamtwartezeit
-nur dieser Periode: $W_0 = T$. Für diesen Fall:
-$\E[T \mid T < X] = 1/(\mu + \lambda)$ (Standard-Ergebnis für das Minimum).
+Fall 1: $T < X$ (Batch schlieÃŸt, Wahrsch. $\mu/(\mu+\lambda)$). Gesamtwartezeit
+nur dieser Periode: $W_0 = T$. FÃ¼r diesen Fall:
+$\E[T \mid T < X] = 1/(\mu + \lambda)$ (Standard-Ergebnis fÃ¼r das Minimum).
 
 Fall 2: $T \geq X$ (Reset). Die Zeit bis zum Dokument ist $\E[X \mid X < T]
 = 1/(\mu+\lambda)$. Dann beginnt der Prozess neu. Sei $W$ die Gesamtwartezeit.
@@ -1123,7 +1123,7 @@ Durch die Markov-Eigenschaft:
   \E[W] = \frac{\mu}{\mu+\lambda} \cdot \frac{1}{\mu+\lambda}
           + \frac{\lambda}{\mu+\lambda}\left(\frac{1}{\mu+\lambda} + \E[W]\right).
 \]
-Auflösung:
+AuflÃ¶sung:
 \[
   \E[W]\left(1 - \frac{\lambda}{\mu+\lambda}\right) =
   \frac{1}{\mu+\lambda},
@@ -1131,8 +1131,8 @@ Auflösung:
 \[
   \E[W] = \frac{\mu+\lambda}{\mu} \cdot \frac{1}{\mu+\lambda} = \frac{1}{\mu}.
 \]
-Da jedoch der erste Reset bereits eine Zeit $1/\lambda$ des nächsten Dokuments
-hinzufügt:
+Da jedoch der erste Reset bereits eine Zeit $1/\lambda$ des nÃ¤chsten Dokuments
+hinzufÃ¼gt:
 \[
   \E[W_{\mathrm{total}}] = \frac{1}{\mu} + \frac{\lambda}{\mu(\mu+\lambda)}. \quad \square
 \]
@@ -1145,12 +1145,12 @@ hinzufügt:
   = \alpha x_m^\alpha \lambda^\alpha \Gamma(-\alpha, \lambda x_m).
 \]
 Mit der Entwicklung $\Gamma(s, x) = \Gamma(s) - x^s/s - x^{s+1}/(s+1) + \ldots$
-für kleines $x$:
+fÃ¼r kleines $x$:
 \[
   \Gamma(-\alpha, \lambda x_m) \approx \Gamma(-\alpha) +
   \frac{(\lambda x_m)^{-\alpha}}{\alpha} - \frac{(\lambda x_m)^{1-\alpha}}{1-\alpha}.
 \]
-Für $\alpha > 1$ und $\lambda x_m \to 0$ dominiert der mittlere Term:
+FÃ¼r $\alpha > 1$ und $\lambda x_m \to 0$ dominiert der mittlere Term:
 \[
   p_{\Pareto} \approx \alpha x_m^\alpha \lambda^\alpha \cdot
   \frac{(\lambda x_m)^{-\alpha}}{\alpha} = 1 - \frac{\alpha x_m \lambda}{\alpha-1}
@@ -1254,3 +1254,4 @@ Springer, 2003.
 \end{thebibliography}
 
 \end{document}
+

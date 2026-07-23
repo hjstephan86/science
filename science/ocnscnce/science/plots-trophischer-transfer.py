@@ -91,7 +91,7 @@ ax.set_xlim(-1, 102)
 ax.set_ylim(-2, 105)
 
 plt.tight_layout()
-plt.savefig('/home/claude/mikroplastik_extension/plot_trophischer_transfer.pdf',
+plt.savefig('plot_trophischer_transfer.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot E gespeichert.")

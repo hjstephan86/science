@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -57,8 +57,8 @@
     frame=single,
 }
 
-\title{\textbf{Sternfarben und Schwarzkörperstrahlung}\\[0.5em]
-\large Eine vollständige formale Herleitung der spektralen Klassifikation,\\
+\title{\textbf{Sternfarben und SchwarzkÃ¶rperstrahlung}\\[0.5em]
+\large Eine vollstÃ¤ndige formale Herleitung der spektralen Klassifikation,\\
 stellaren Physik und kosmologischen Implikationen}
 \author{Stephan Epp}
 \date{21. Juni 2026}
@@ -72,16 +72,16 @@ Diese Arbeit behandelt die physikalischen Grundlagen der Sternfarben im elektrom
 Spektrum in umfassender Tiefe. Ausgehend von der statistischen Mechanik des Photonenfeldes
 im thermodynamischen Gleichgewicht werden die Plancksche Strahlungsformel, das Wiensche
 Verschiebungsgesetz, das Stefan"=Boltzmann"=Gesetz sowie die bolometrische Leuchtkraft
-vollständig formal hergeleitet und bewiesen. Es wird gezeigt, dass die Farbe eines Sterns
-eine direkte, eindeutig determinierte Konsequenz seiner Oberflächentemperatur ist,
-beschreibbar durch das Modell des idealen Schwarzkörperstrahlers. Darüber hinaus werden
-die klassischen Näherungsgesetze (Rayleigh"=Jeans, Wien"=Näherung), die Ultraviolettkatastrophe
-und deren quantenmechanische Auflösung diskutiert. Die Harvard"=Spektralklassifikation,
+vollstÃ¤ndig formal hergeleitet und bewiesen. Es wird gezeigt, dass die Farbe eines Sterns
+eine direkte, eindeutig determinierte Konsequenz seiner OberflÃ¤chentemperatur ist,
+beschreibbar durch das Modell des idealen SchwarzkÃ¶rperstrahlers. DarÃ¼ber hinaus werden
+die klassischen NÃ¤herungsgesetze (Rayleigh"=Jeans, Wien"=NÃ¤herung), die Ultraviolettkatastrophe
+und deren quantenmechanische AuflÃ¶sung diskutiert. Die Harvard"=Spektralklassifikation,
 das Hertzsprung"=Russell"=Diagramm, stellare Entwicklungswege, bolometrische Korrekturen
-und astrophysikalische Photometrie werden als empirische Bestätigung und Anwendung der
-Theorie ausführlich behandelt. Abschnitte zur numerischen Implementierung,
-zur Farbwahrnehmung sowie zu kosmologischen, technologischen und zukünftigen
-Forschungsrichtungen runden die Arbeit ab. Alle Ergebnisse werden durch ausführliche
+und astrophysikalische Photometrie werden als empirische BestÃ¤tigung und Anwendung der
+Theorie ausfÃ¼hrlich behandelt. Abschnitte zur numerischen Implementierung,
+zur Farbwahrnehmung sowie zu kosmologischen, technologischen und zukÃ¼nftigen
+Forschungsrichtungen runden die Arbeit ab. Alle Ergebnisse werden durch ausfÃ¼hrliche
 mathematische Beweise und acht Matplotlib"=Visualisierungen belegt. Das Literaturverzeichnis
 umfasst 35 Quellen von 1893 bis 2026.
 \end{abstract}
@@ -90,40 +90,40 @@ umfasst 35 Quellen von 1893 bis 2026.
 \newpage
 
 %===========================================================================
-\section{Einführung}
+\section{EinfÃ¼hrung}
 %===========================================================================
 
 Der Sternenhimmel bietet dem Beobachter ein faszinierendes Farbenspiel: Sterne leuchten in
-Schattierungen von Tiefrot über Orange und Gelb bis hin zu reinem Weiß und kräftigem Blau.
-Diese Farbvielfalt ist keine Zufälligkeit, sondern Ausdruck eines fundamentalen physikalischen
-Gesetzes~-- der thermischen Strahlung elektromagnetischer Energie durch heiße Körper.
-Jeder Stern verhält sich in erster Näherung wie ein idealer \emph{Schwarzkörperstrahler},
-dessen emittiertes Spektrum ausschließlich von der Oberflächentemperatur $T$ abhängt.
+Schattierungen von Tiefrot Ã¼ber Orange und Gelb bis hin zu reinem WeiÃŸ und krÃ¤ftigem Blau.
+Diese Farbvielfalt ist keine ZufÃ¤lligkeit, sondern Ausdruck eines fundamentalen physikalischen
+Gesetzes~-- der thermischen Strahlung elektromagnetischer Energie durch heiÃŸe KÃ¶rper.
+Jeder Stern verhÃ¤lt sich in erster NÃ¤herung wie ein idealer \emph{SchwarzkÃ¶rperstrahler},
+dessen emittiertes Spektrum ausschlieÃŸlich von der OberflÃ¤chentemperatur $T$ abhÃ¤ngt.
 
-Die quantitative Beschreibung dieser Zusammenhänge ist eines der Glanzstücke der
+Die quantitative Beschreibung dieser ZusammenhÃ¤nge ist eines der GlanzstÃ¼cke der
 modernen theoretischen Physik. Die Plancksche Strahlungsformel~\cite{planck1900},
-die 1900 durch die Postulierung des Energiequantums $E = h\nu$ hergeleitet wurde, löste
+die 1900 durch die Postulierung des Energiequantums $E = h\nu$ hergeleitet wurde, lÃ¶ste
 nicht nur die damals unverstandene Ultraviolettkatastrophe der klassischen Physik,
-sondern legte den Grundstein für die gesamte Quantenmechanik. Sie ermöglicht gleichzeitig
-die präzise Vorhersage von Sternfarben, Sternleuchtkräften und der thermischen Geschichte
+sondern legte den Grundstein fÃ¼r die gesamte Quantenmechanik. Sie ermÃ¶glicht gleichzeitig
+die prÃ¤zise Vorhersage von Sternfarben, SternleuchtkrÃ¤ften und der thermischen Geschichte
 des gesamten Universums.
 
 \subsection{Problemstellung und Zielsetzung}
 
-Gegeben sei ein Stern mit Oberflächentemperatur $T$ (in Kelvin). Gesucht sind:
+Gegeben sei ein Stern mit OberflÃ¤chentemperatur $T$ (in Kelvin). Gesucht sind:
 \begin{enumerate}
-    \item Die spektrale Strahldichte $B_\lambda(\lambda, T)$ als Funktion der Wellenlänge $\lambda$
+    \item Die spektrale Strahldichte $B_\lambda(\lambda, T)$ als Funktion der WellenlÃ¤nge $\lambda$
           (Plancksche Strahlungsformel),
-    \item die dominante Wellenlänge $\lambda_{\max}(T)$, welche die wahrgenommene Farbe bestimmt
+    \item die dominante WellenlÃ¤nge $\lambda_{\max}(T)$, welche die wahrgenommene Farbe bestimmt
           (Wien'sches Verschiebungsgesetz),
-    \item die gesamte abgestrahlte Leistung pro Flächeneinheit $j^*(T)$
+    \item die gesamte abgestrahlte Leistung pro FlÃ¤cheneinheit $j^*(T)$
           (Stefan"=Boltzmann"=Gesetz),
-    \item die bolometrische Leuchtkraft $L$ in Abhängigkeit von Radius und Temperatur,
+    \item die bolometrische Leuchtkraft $L$ in AbhÃ¤ngigkeit von Radius und Temperatur,
     \item die Zuordnung von Temperatur zu Spektralklasse, Farbe und stellaren Parametern.
 \end{enumerate}
 
-\textbf{Zentrales Ergebnis:} Die Farbe eines Sterns ist vollständig und eindeutig
-durch seine Oberflächentemperatur determiniert. Es gilt:
+\textbf{Zentrales Ergebnis:} Die Farbe eines Sterns ist vollstÃ¤ndig und eindeutig
+durch seine OberflÃ¤chentemperatur determiniert. Es gilt:
 \[
     T \;\xrightarrow{\;\text{Planck}\;}\; B_\lambda(\lambda,T)
     \;\xrightarrow{\;\text{Wien}\;}\; \lambda_{\max}
@@ -136,31 +136,31 @@ Die quantitative Beschreibung von Sternfarben hat weitreichende wissenschaftlich
 und technologische Bedeutung:
 
 \textbf{Astrophysik:} Aus der Messung der Sternfarbe (Photometrie in mehreren
-Farbbändern) kann direkt auf die Effektivtemperatur $T_{\text{eff}}$ geschlossen
-werden~\cite{allen2000}. Damit ist die Farbe ein Fernthermometer für Objekte,
-die auch mit dem größten Teleskop nicht direkt messbar sind.
+FarbbÃ¤ndern) kann direkt auf die Effektivtemperatur $T_{\text{eff}}$ geschlossen
+werden~\cite{allen2000}. Damit ist die Farbe ein Fernthermometer fÃ¼r Objekte,
+die auch mit dem grÃ¶ÃŸten Teleskop nicht direkt messbar sind.
 
-\textbf{Stellare Physik:} Die Kombination von Temperatur und Leuchtkraft ermöglicht
+\textbf{Stellare Physik:} Die Kombination von Temperatur und Leuchtkraft ermÃ¶glicht
 die Einordnung jedes Sterns in das Hertzsprung"=Russell"=Diagramm (HRD) und damit
 die Bestimmung von Alter, Masse und Entwicklungsstadium~\cite{salaris2005}.
 
 \textbf{Kosmologie:} Die Kosmische Mikrowellenhintergrundstrahlung (CMB) ist das
-perfekteste Schwarzkörperspektrum der Natur und verbindet die Plancksche Physik
+perfekteste SchwarzkÃ¶rperspektrum der Natur und verbindet die Plancksche Physik
 mit der Urknallkosmologie~\cite{fixsen2009}.
 
 \textbf{Technologie:} Farbtemperaturen von Lichtquellen, Solarzellen"=Design und
-Infrarot"=Pyrometrie basieren direkt auf der Schwarzkörperphysik.
+Infrarot"=Pyrometrie basieren direkt auf der SchwarzkÃ¶rperphysik.
 
 \subsection{Aufbau der Arbeit}
 
 Abschnitt~2 legt die Definitionen und den historischen Rahmen fest. Abschnitt~3
 leitet die Plancksche Strahlungsformel formal her. Abschnitt~4 beweist das
 Wien'sche Verschiebungsgesetz. Abschnitt~5 behandelt das Stefan"=Boltzmann"=Gesetz.
-Abschnitt~6 diskutiert klassische Näherungen und die Ultraviolettkatastrophe.
+Abschnitt~6 diskutiert klassische NÃ¤herungen und die Ultraviolettkatastrophe.
 Abschnitt~7 behandelt Farbwahrnehmung und Spektralklassifikation. Abschnitt~8
 widmet sich dem Hertzsprung"=Russell"=Diagramm und stellarer Evolution.
-Abschnitt~9 präsentiert die numerische Implementierung. Abschnitt~10 fasst
-die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausführlichen Ausblick.
+Abschnitt~9 prÃ¤sentiert die numerische Implementierung. Abschnitt~10 fasst
+die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausfÃ¼hrlichen Ausblick.
 
 %===========================================================================
 \section{Grundlagen und Definitionen}
@@ -168,33 +168,33 @@ die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausführlichen Ausblick.
 
 \subsection{Fundamentale Definitionen}
 
-\begin{definition}[Schwarzkörper]
-    Ein idealer Schwarzkörper (Planckscher Strahler) ist ein Körper, der einfallende
-    elektromagnetische Strahlung jeder Wellenlänge und aus jeder Richtung vollständig
+\begin{definition}[SchwarzkÃ¶rper]
+    Ein idealer SchwarzkÃ¶rper (Planckscher Strahler) ist ein KÃ¶rper, der einfallende
+    elektromagnetische Strahlung jeder WellenlÃ¤nge und aus jeder Richtung vollstÃ¤ndig
     absorbiert ($\alpha = 1$, Absorptionsgrad) und im thermodynamischen Gleichgewicht
-    gemäß dem Kirchhoffschen Strahlungsgesetz wieder emittiert. Das Emissionsspektrum
-    hängt ausschließlich von der absoluten Temperatur $T$ ab und ist unabhängig von
-    Material, Form oder Oberflächenbeschaffenheit.
+    gemÃ¤ÃŸ dem Kirchhoffschen Strahlungsgesetz wieder emittiert. Das Emissionsspektrum
+    hÃ¤ngt ausschlieÃŸlich von der absoluten Temperatur $T$ ab und ist unabhÃ¤ngig von
+    Material, Form oder OberflÃ¤chenbeschaffenheit.
 \end{definition}
 
 \begin{definition}[Kirchhoffsches Strahlungsgesetz]
-    Im thermodynamischen Gleichgewicht gilt für jeden Körper:
+    Im thermodynamischen Gleichgewicht gilt fÃ¼r jeden KÃ¶rper:
     \[
         \varepsilon(\lambda, T) = \alpha(\lambda, T)
     \]
     wobei $\varepsilon$ der spektrale Emissionsgrad und $\alpha$ der spektrale
-    Absorptionsgrad ist. Für den Schwarzkörper gilt $\alpha = \varepsilon = 1$
-    für alle $\lambda$ und $T$.
+    Absorptionsgrad ist. FÃ¼r den SchwarzkÃ¶rper gilt $\alpha = \varepsilon = 1$
+    fÃ¼r alle $\lambda$ und $T$.
 \end{definition}
 
 \begin{definition}[Spektrale Strahldichte]
     Die spektrale Strahldichte (Planck"=Funktion) $B_\lambda(\lambda, T)$ beschreibt
-    die emittierte Strahlungsleistung $dP$ eines Flächenelements $dA$ eines
-    Schwarzkörpers in den Raumwinkel $d\Omega$ im Wellenlängenintervall $d\lambda$:
+    die emittierte Strahlungsleistung $dP$ eines FlÃ¤chenelements $dA$ eines
+    SchwarzkÃ¶rpers in den Raumwinkel $d\Omega$ im WellenlÃ¤ngenintervall $d\lambda$:
     \[
         dP = B_\lambda(\lambda, T) \cos\theta \, dA \, d\Omega \, d\lambda
     \]
-    Die Einheit ist $[\si{\watt\per\metre\cubed\per\steradian}]$. Die vollständige
+    Die Einheit ist $[\si{\watt\per\metre\cubed\per\steradian}]$. Die vollstÃ¤ndige
     Plancksche Formel lautet:
     \[
         B_\lambda(\lambda, T) = \frac{2hc^2}{\lambda^5} \cdot
@@ -204,9 +204,9 @@ die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausführlichen Ausblick.
     $c = \SI{2.998e8}{\metre\per\second}$, $k_B = \SI{1.381e-23}{\joule\per\kelvin}$.
 \end{definition}
 
-\begin{definition}[Wien'sche Wellenlänge]
-    Die Wien'sche Wellenlänge $\lambda_{\max}(T)$ ist diejenige Wellenlänge,
-    bei der $B_\lambda(\lambda,T)$ für gegebenes $T$ ihr Maximum annimmt:
+\begin{definition}[Wien'sche WellenlÃ¤nge]
+    Die Wien'sche WellenlÃ¤nge $\lambda_{\max}(T)$ ist diejenige WellenlÃ¤nge,
+    bei der $B_\lambda(\lambda,T)$ fÃ¼r gegebenes $T$ ihr Maximum annimmt:
     \[
         \lambda_{\max}(T) = \frac{b}{T}, \quad
         b = \SI{2.8977719e-3}{\metre\kelvin}
@@ -215,9 +215,9 @@ die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausführlichen Ausblick.
 \end{definition}
 
 \begin{definition}[Bolometrische Strahlungsflussdichte]
-    Die bolometrische (=\ wellenlängenintegrierte) Strahlungsflussdichte $j^*(T)$
-    ist die über alle Wellenlängen und den gesamten Halbraum integrierte emittierte
-    Leistung pro Flächeneinheit der Oberfläche:
+    Die bolometrische (=\ wellenlÃ¤ngenintegrierte) Strahlungsflussdichte $j^*(T)$
+    ist die Ã¼ber alle WellenlÃ¤ngen und den gesamten Halbraum integrierte emittierte
+    Leistung pro FlÃ¤cheneinheit der OberflÃ¤che:
     \[
         j^*(T) = \int_0^\infty \pi B_\lambda(\lambda, T) \, d\lambda = \sigma T^4
     \]
@@ -227,30 +227,30 @@ die Ergebnisse zusammen. Abschnitt~11 gibt einen sehr ausführlichen Ausblick.
 
 \begin{definition}[Effektivtemperatur]
     Die Effektivtemperatur $T_{\text{eff}}$ eines realen Sterns ist diejenige Temperatur,
-    die ein idealer Schwarzkörper mit gleicher Gesamtleuchtkraft und gleichem Radius
-    haben müsste:
+    die ein idealer SchwarzkÃ¶rper mit gleicher Gesamtleuchtkraft und gleichem Radius
+    haben mÃ¼sste:
     \[
         L = 4\pi R^2 \sigma T_{\text{eff}}^4
     \]
-    Sie ist das zentrale Maß für die Sternfarbe und definiert die Spektralklasse.
+    Sie ist das zentrale MaÃŸ fÃ¼r die Sternfarbe und definiert die Spektralklasse.
 \end{definition}
 
 \begin{definition}[Spektralklasse]
     Die Harvard"=Spektralklassifikation ordnet Sternen anhand ihrer Effektivtemperatur
     und ihres Absorptionsspektrums eine Klasse aus der Sequenz
-    $\{O, B, A, F, G, K, M\}$ zu (von heiß nach kalt). Innerhalb jeder Klasse
+    $\{O, B, A, F, G, K, M\}$ zu (von heiÃŸ nach kalt). Innerhalb jeder Klasse
     gibt es 10 Unterklassen (0--9). Die Sonne ist G2.
 \end{definition}
 
 \subsection{Historischer Hintergrund}
 
-Die Erforschung der Schwarzkörperstrahlung hat eine reiche Wissenschaftsgeschichte,
-die direkt zur Quantenmechanik führte.
+Die Erforschung der SchwarzkÃ¶rperstrahlung hat eine reiche Wissenschaftsgeschichte,
+die direkt zur Quantenmechanik fÃ¼hrte.
 
-\textbf{1859~-- Kirchhoff:} Gustav Kirchhoff definierte den Begriff des Schwarzkörpers
+\textbf{1859~-- Kirchhoff:} Gustav Kirchhoff definierte den Begriff des SchwarzkÃ¶rpers
 und bewies das nach ihm benannte Strahlungsgesetz $\varepsilon = \alpha$~\cite{kirchhoff1860}.
 Er zeigte, dass die Strahlungsfunktion $B(\lambda,T)$ eine universelle Funktion
-sein muss~-- unabhängig vom Material.
+sein muss~-- unabhÃ¤ngig vom Material.
 
 \textbf{1879/1884~-- Stefan und Boltzmann:} Josef Stefan fand empirisch~\cite{stefan1879},
 dass die Gesamtstrahlungsleistung proportional zu $T^4$ ist. Ludwig Boltzmann
@@ -258,36 +258,36 @@ leitete 1884 dieses Ergebnis thermodynamisch aus den Maxwellschen Gleichungen
 und dem zweiten Hauptsatz her~\cite{boltzmann1884}.
 
 \textbf{1893~-- Wien:} Wilhelm Wien leitete das Verschiebungsgesetz
-$\lambda_{\max} \propto T^{-1}$ aus thermodynamischen Überlegungen her~\cite{wien1893}
-und stellte eine Näherungsformel für das Spektrum auf (Wien"=Näherung).
+$\lambda_{\max} \propto T^{-1}$ aus thermodynamischen Ãœberlegungen her~\cite{wien1893}
+und stellte eine NÃ¤herungsformel fÃ¼r das Spektrum auf (Wien"=NÃ¤herung).
 
 \textbf{1900~-- Rayleigh und Jeans:} Lord Rayleigh und James Jeans leiteten aus der
 klassischen Elektrodynamik die Formel $B_\lambda \propto T/\lambda^4$ her~\cite{rayleigh1900},
 die im Langwellenbereich gut, im Kurzwellenbereich aber katastrophal falsch ist
 (Ultraviolettkatastrophe).
 
-\textbf{1900~-- Planck:} Max Planck löste das Problem durch Postulierung
+\textbf{1900~-- Planck:} Max Planck lÃ¶ste das Problem durch Postulierung
 des Energiequantums $E = h\nu$~\cite{planck1900}. Er selbst bezeichnete dies
-zunächst als ``glücklichen Griff''; tatsächlich legte er damit den Grundstein
+zunÃ¤chst als ``glÃ¼cklichen Griff''; tatsÃ¤chlich legte er damit den Grundstein
 der Quantenmechanik.
 
 \textbf{1901~-- Cannon:} Annie Jump Cannon systematisierte die Spektralklassifikation
-am Harvard College Observatory und klassifizierte über 350\,000 Sterne~\cite{cannon1901}.
+am Harvard College Observatory und klassifizierte Ã¼ber 350\,000 Sterne~\cite{cannon1901}.
 
 %===========================================================================
 \section{Formale Herleitung der Planckschen Strahlungsformel}
 %===========================================================================
 
-\subsection{Modenabzählung im elektromagnetischen Hohlraum}
+\subsection{ModenabzÃ¤hlung im elektromagnetischen Hohlraum}
 
 Die Plancksche Formel wird aus der statistischen Mechanik des elektromagnetischen
 Feldes im thermodynamischen Gleichgewicht hergeleitet. Wir betrachten einen
-kubischen Hohlraum der Kantenlänge $L$ mit ideal reflektierenden Wänden.
+kubischen Hohlraum der KantenlÃ¤nge $L$ mit ideal reflektierenden WÃ¤nden.
 
 \begin{lemma}[Modenanzahl im Hohlraum]
 \label{lem:moden}
     Die Anzahl der Eigenschwingungsmoden (stehenden Wellen) im Frequenzintervall
-    $[\nu, \nu + d\nu]$ in einem kubischen Hohlraum der Kantenlänge $L$ beträgt:
+    $[\nu, \nu + d\nu]$ in einem kubischen Hohlraum der KantenlÃ¤nge $L$ betrÃ¤gt:
     \[
         dN = \frac{8\pi \nu^2}{c^3} \cdot V \, d\nu, \quad V = L^3
     \]
@@ -296,9 +296,9 @@ kubischen Hohlraum der Kantenlänge $L$ mit ideal reflektierenden Wänden.
 \end{lemma}
 
 \begin{proof}
-    Stehende elektromagnetische Wellen im Würfel mit Kantenlänge $L$ und
-    ideal reflektierenden Wänden (Randbedingungen: $E_{\text{tan}} = 0$ an
-    den Wänden) haben Wellenvektoren:
+    Stehende elektromagnetische Wellen im WÃ¼rfel mit KantenlÃ¤nge $L$ und
+    ideal reflektierenden WÃ¤nden (Randbedingungen: $E_{\text{tan}} = 0$ an
+    den WÃ¤nden) haben Wellenvektoren:
     \[
         k_x = \frac{\pi n_x}{L},\quad k_y = \frac{\pi n_y}{L},\quad
         k_z = \frac{\pi n_z}{L}, \quad n_x, n_y, n_z \in \mathbb{N}^+
@@ -312,8 +312,8 @@ kubischen Hohlraum der Kantenlänge $L$ mit ideal reflektierenden Wänden.
         \frac{\tfrac{4}{3}\pi k^3}{\left(\tfrac{\pi}{L}\right)^3}
         = \frac{k^3 L^3}{3\pi^2}
     \]
-    Der Faktor $2$ berücksichtigt, dass elektromagnetische Wellen zwei
-    unabhängige Polarisationsrichtungen senkrecht zum Wellenvektor haben.
+    Der Faktor $2$ berÃ¼cksichtigt, dass elektromagnetische Wellen zwei
+    unabhÃ¤ngige Polarisationsrichtungen senkrecht zum Wellenvektor haben.
     Mit der Dispersionsrelation $k = 2\pi\nu/c$ folgt:
     \[
         N(\nu) = \frac{(2\pi\nu/c)^3 L^3}{3\pi^2} = \frac{8\pi\nu^3 L^3}{3c^3}
@@ -327,11 +327,11 @@ kubischen Hohlraum der Kantenlänge $L$ mit ideal reflektierenden Wänden.
 \end{proof}
 
 \begin{bemerkung}
-    Die Zustandsdichte $g(\nu) = 8\pi\nu^2/c^3$ ist die fundamentale Größe,
-    die die Anzahl der verfügbaren elektromagnetischen Moden pro Einheitsvolumen
-    und pro Frequenzintervall beschreibt. Sie wächst mit $\nu^2$, was physikalisch
+    Die Zustandsdichte $g(\nu) = 8\pi\nu^2/c^3$ ist die fundamentale GrÃ¶ÃŸe,
+    die die Anzahl der verfÃ¼gbaren elektromagnetischen Moden pro Einheitsvolumen
+    und pro Frequenzintervall beschreibt. Sie wÃ¤chst mit $\nu^2$, was physikalisch
     bedeutet, dass es bei hohen Frequenzen sehr viele Moden gibt~-- der Grund
-    für die Ultraviolettkatastrophe in der klassischen Physik (Abschnitt~6).
+    fÃ¼r die Ultraviolettkatastrophe in der klassischen Physik (Abschnitt~6).
 \end{bemerkung}
 
 \subsection{Mittlere Energie pro Mode: Die Quantisierung}
@@ -342,8 +342,8 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{lemma}[Plancksche mittlere Energie]
 \label{lem:energie}
-    Im thermischen Gleichgewicht bei Temperatur $T$ beträgt die mittlere
-    Energie einer elektromagnetischen Mode der Frequenz $\nu$ gemäß der
+    Im thermischen Gleichgewicht bei Temperatur $T$ betrÃ¤gt die mittlere
+    Energie einer elektromagnetischen Mode der Frequenz $\nu$ gemÃ¤ÃŸ der
     kanonischen Ensemble-Statistik:
     \[
         \langle E(\nu, T) \rangle
@@ -360,7 +360,7 @@ ganzzahlige Vielfache von $h\nu$.
         = \sum_{n=0}^\infty \left(e^{-\beta h\nu}\right)^n
         = \frac{1}{1 - e^{-\beta h\nu}}
     \]
-    Die geometrische Reihe konvergiert für alle $T > 0$, da
+    Die geometrische Reihe konvergiert fÃ¼r alle $T > 0$, da
     $e^{-\beta h\nu} = e^{-h\nu/(k_BT)} < 1$.
 
     Der logarithmische Gradient der Zustandssumme liefert die mittlere Energie:
@@ -377,25 +377,25 @@ ganzzahlige Vielfache von $h\nu$.
     \]
 \end{proof}
 
-\begin{bemerkung}[Grenzfälle]
-    Zwei wichtige Grenzfälle lassen sich direkt ablesen:
+\begin{bemerkung}[GrenzfÃ¤lle]
+    Zwei wichtige GrenzfÃ¤lle lassen sich direkt ablesen:
     \begin{itemize}
         \item \emph{Klassischer Grenzfall} ($h\nu \ll k_B T$, hohe $T$ oder kleine $\nu$):
-              $e^x - 1 \approx x$ für $x \to 0$, daher
+              $e^x - 1 \approx x$ fÃ¼r $x \to 0$, daher
               $\langle E \rangle \approx k_B T$ (Gleichverteilungssatz).
-        \item \emph{Quantengrenzfall} ($h\nu \gg k_B T$, tiefe $T$ oder große $\nu$):
+        \item \emph{Quantengrenzfall} ($h\nu \gg k_B T$, tiefe $T$ oder groÃŸe $\nu$):
               $\langle E \rangle \approx h\nu \cdot e^{-h\nu/(k_BT)} \to 0$
-              (exponentielle Unterdrückung hoher Frequenzen).
+              (exponentielle UnterdrÃ¼ckung hoher Frequenzen).
     \end{itemize}
     Genau dieser zweite Grenzfall verhindert die Ultraviolettkatastrophe.
 \end{bemerkung}
 
-\subsection{Die vollständige Plancksche Strahlungsformel}
+\subsection{Die vollstÃ¤ndige Plancksche Strahlungsformel}
 
 \begin{satz}[Plancksche Strahlungsformel]
 \label{satz:planck}
     Die spektrale Energiedichte $u(\nu, T)$ im Hohlraum und die spektrale
-    Strahldichte $B_\lambda(\lambda, T)$ des Schwarzkörperstrahlers sind:
+    Strahldichte $B_\lambda(\lambda, T)$ des SchwarzkÃ¶rperstrahlers sind:
     \begin{align}
         u(\nu, T) &= \frac{8\pi h \nu^3}{c^3} \cdot \frac{1}{e^{h\nu/(k_B T)} - 1}
         \label{eq:planck_nu} \\[6pt]
@@ -413,13 +413,13 @@ ganzzahlige Vielfache von $h\nu$.
         = \frac{8\pi\nu^2}{c^3} \cdot \frac{h\nu}{e^{h\nu/(k_BT)}-1}
         = \frac{8\pi h\nu^3}{c^3(e^{h\nu/(k_BT)}-1)}
     \]
-    Die Strahldichte $B_\nu$ hängt mit $u(\nu,T)$ über die Beziehung
-    für isotrope Strahlung zusammen:
+    Die Strahldichte $B_\nu$ hÃ¤ngt mit $u(\nu,T)$ Ã¼ber die Beziehung
+    fÃ¼r isotrope Strahlung zusammen:
     \[
         B_\nu = \frac{c}{4\pi} \cdot u(\nu, T)
         = \frac{2h\nu^3}{c^2(e^{h\nu/(k_BT)}-1)}
     \]
-    Für die Umrechnung auf Wellenlängendarstellung verwendet man
+    FÃ¼r die Umrechnung auf WellenlÃ¤ngendarstellung verwendet man
     $\nu = c/\lambda$ und die Forderung $B_\lambda |d\lambda| = B_\nu |d\nu|$:
     \[
         B_\lambda = B_\nu \left|\frac{d\nu}{d\lambda}\right|
@@ -435,7 +435,7 @@ ganzzahlige Vielfache von $h\nu$.
 \end{proof}
 
 \begin{beispiel}[Numerisches Spektrum der Sonne]
-    Für $T_\odot = \SI{5778}{\kelvin}$ und $\lambda = \SI{500}{\nano\metre}$:
+    FÃ¼r $T_\odot = \SI{5778}{\kelvin}$ und $\lambda = \SI{500}{\nano\metre}$:
     \begin{align*}
         x &= \frac{hc}{\lambda k_B T}
           = \frac{6.626\cdot10^{-34} \cdot 2.998\cdot10^8}
@@ -447,15 +447,15 @@ ganzzahlige Vielfache von $h\nu$.
           \approx \SI{2.64e13}{\watt\per\metre\cubed\per\steradian}
     \end{align*}
     Das Maximum liegt bei $\lambda_{\max} = 2898/5778 \approx \SI{501.5}{\nano\metre}$,
-    also im grün"=gelben Bereich.
+    also im grÃ¼n"=gelben Bereich.
 \end{beispiel}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.94\textwidth]{plot1_planck.pdf}
-    \caption{Normierte Plancksche Strahlungsspektren für sechs repräsentative
+    \caption{Normierte Plancksche Strahlungsspektren fÃ¼r sechs reprÃ¤sentative
     Sterntypen. Die Harvard"=Klassen O, B, A, G, K, M sind farblich nach ihrer
-    tatsächlich wahrgenommenen Farbe dargestellt. Der cyan"=schattierte Bereich
+    tatsÃ¤chlich wahrgenommenen Farbe dargestellt. Der cyan"=schattierte Bereich
     (380--700\,nm) markiert das sichtbare Spektrum. Bei niedrigen Temperaturen
     (M"=Zwerg, 3000\,K, rot) liegt das Maximum tief im nahen Infrarot;
     bei hohen Temperaturen (O"=Stern, 30\,000\,K, blau) weit im Ultraviolett.
@@ -472,13 +472,13 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{satz}[Wien'sches Verschiebungsgesetz]
 \label{satz:wien}
-    Das Strahlungsmaximum $\lambda_{\max}$ eines Schwarzkörpers bei Temperatur $T$
-    erfüllt:
+    Das Strahlungsmaximum $\lambda_{\max}$ eines SchwarzkÃ¶rpers bei Temperatur $T$
+    erfÃ¼llt:
     \[
         \lambda_{\max} \cdot T = b, \quad
         b = \frac{hc}{x_0 k_B} \approx \SI{2.8977719e-3}{\metre\kelvin}
     \]
-    wobei $x_0 \approx 4.965114$ die eindeutige positive Lösung der
+    wobei $x_0 \approx 4.965114$ die eindeutige positive LÃ¶sung der
     transzendenten Gleichung $x\,e^x/(e^x - 1) = 5$ ist.
 \end{satz}
 
@@ -510,7 +510,7 @@ ganzzahlige Vielfache von $h\nu$.
     \]
 
     \textbf{Eindeutigkeit:} Sei $f(x) = (5-x)e^x - 5$.
-    Es gilt $f(0) = 0$ (triviale Lösung, entspricht $\lambda \to \infty$).
+    Es gilt $f(0) = 0$ (triviale LÃ¶sung, entspricht $\lambda \to \infty$).
     Die Ableitung $f'(x) = (4-x)e^x$ wechselt ihr Vorzeichen bei $x = 4$:
     $f$ ist streng monoton wachsend auf $(0,4)$ und streng monoton fallend
     auf $(4,\infty)$. Da $f(4) = e^4 - 5 \approx 49.6 > 0$ und
@@ -535,40 +535,40 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{korollar}[Farbzuordnung durch das Wien'sche Gesetz]
 \label{kor:farbe}
-    Die charakteristischen Grenztemperaturen für die Farbgrenzen des
+    Die charakteristischen Grenztemperaturen fÃ¼r die Farbgrenzen des
     sichtbaren Spektrums folgen direkt aus $T = b/\lambda_{\max}$:
     \begin{itemize}
         \item Infrarot"=Grenze ($\lambda = \SI{700}{\nano\metre}$):
               $T_{\min}^{\text{sicht}} = b/700\,\text{nm} \approx \SI{4140}{\kelvin}$
-        \item Grün"=Maximum ($\lambda = \SI{555}{\nano\metre}$):
-              $T_{\text{grün}} \approx \SI{5220}{\kelvin}$
+        \item GrÃ¼n"=Maximum ($\lambda = \SI{555}{\nano\metre}$):
+              $T_{\text{grÃ¼n}} \approx \SI{5220}{\kelvin}$
         \item UV"=Grenze ($\lambda = \SI{380}{\nano\metre}$):
               $T_{\max}^{\text{sicht}} = b/380\,\text{nm} \approx \SI{7626}{\kelvin}$
-        \item Für $T < \SI{4140}{\kelvin}$: Maximum im Infraroten
+        \item FÃ¼r $T < \SI{4140}{\kelvin}$: Maximum im Infraroten
               $\Rightarrow$ Stern erscheint rot
-        \item Für $T > \SI{7626}{\kelvin}$: Maximum im UV
-              $\Rightarrow$ Stern erscheint blau"=weiß
+        \item FÃ¼r $T > \SI{7626}{\kelvin}$: Maximum im UV
+              $\Rightarrow$ Stern erscheint blau"=weiÃŸ
     \end{itemize}
 \end{korollar}
 
 \begin{proof}
-    Direktes Einsetzen der Grenzwellenlängen in $T = b/\lambda$:
+    Direktes Einsetzen der GrenzwellenlÃ¤ngen in $T = b/\lambda$:
     $T = 2.8977\cdot10^{-3}\,\text{m}\cdot\text{K} / \lambda$.
-    Für $\lambda = 700\,\text{nm} = 7.0\cdot10^{-7}\,\text{m}$:
+    FÃ¼r $\lambda = 700\,\text{nm} = 7.0\cdot10^{-7}\,\text{m}$:
     $T = 2.8977\cdot10^{-3}/7.0\cdot10^{-7} = 4139.6\,\text{K}$.
-    Analog für die übrigen Wellenlängen. \qedhere
+    Analog fÃ¼r die Ã¼brigen WellenlÃ¤ngen. \qedhere
 \end{proof}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.88\textwidth]{plot2_wien.pdf}
     \caption{Das Wien'sche Verschiebungsgesetz $\lambda_{\max} = b/T$ als
-    Hyperbel in der Temperatur"=Wellenlängen"=Ebene. Der grün schattierte
+    Hyperbel in der Temperatur"=WellenlÃ¤ngen"=Ebene. Der grÃ¼n schattierte
     Bereich markiert das sichtbare Spektrum (380--700\,nm). Die vier farbigen
     Messpunkte entsprechen den Harvard"=Klassen M, G, A und O. Die gestrichelten
     Horizontallinien bei 380\,nm und 700\,nm zeigen die Temperaturgrenzen
     $T \approx 4140\,\text{K}$ und $T \approx 7630\,\text{K}$, bei denen das
-    Schwarzkörpermaximum in den Rand des sichtbaren Spektrums fällt
+    SchwarzkÃ¶rpermaximum in den Rand des sichtbaren Spektrums fÃ¤llt
     (Korollar~\ref{kor:farbe}).}
     \label{fig:wien}
 \end{figure}
@@ -581,8 +581,8 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{satz}[Stefan-Boltzmann-Gesetz]
 \label{satz:stefan}
-    Die über alle Wellenlängen integrierte Strahlungsleistung pro Flächeneinheit
-    eines Schwarzkörpers ist proportional zur vierten Potenz der Temperatur:
+    Die Ã¼ber alle WellenlÃ¤ngen integrierte Strahlungsleistung pro FlÃ¤cheneinheit
+    eines SchwarzkÃ¶rpers ist proportional zur vierten Potenz der Temperatur:
     \[
         j^*(T) = \pi \int_0^\infty B_\lambda(\lambda,T)\,d\lambda = \sigma T^4
     \]
@@ -595,7 +595,7 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{proof}
     Integration der Planckschen Strahldichte (Gleichung~\eqref{eq:planck_lam})
-    über alle Wellenlängen, multipliziert mit $\pi$ für Lambertsche Strahler:
+    Ã¼ber alle WellenlÃ¤ngen, multipliziert mit $\pi$ fÃ¼r Lambertsche Strahler:
     \[
         j^* = \pi \int_0^\infty B_\lambda\,d\lambda
         = \pi \int_0^\infty \frac{2hc^2}{\lambda^5(e^{hc/(\lambda k_BT)}-1)}\,d\lambda
@@ -620,7 +620,7 @@ ganzzahlige Vielfache von $h\nu$.
         I = \int_0^\infty \frac{u^3}{e^u-1}\,du
     \]
     Partialbruchentwicklung: $\frac{1}{e^u-1} = \sum_{n=1}^\infty e^{-nu}$
-    (geometrische Reihe für $e^{-u} < 1$):
+    (geometrische Reihe fÃ¼r $e^{-u} < 1$):
     \[
         I = \sum_{n=1}^\infty \int_0^\infty u^3 e^{-nu}\,du
         = \sum_{n=1}^\infty \frac{\Gamma(4)}{n^4}
@@ -651,12 +651,12 @@ ganzzahlige Vielfache von $h\nu$.
     Direktes Einsetzen in die Formel aus Satz~\ref{satz:stefan}. \qedhere
 \end{proof}
 
-\begin{beispiel}[Vergleich von Sternleuchtkräften]
+\begin{beispiel}[Vergleich von SternleuchtkrÃ¤ften]
     Die Leuchtkraft eines Sterns mit Radius $R$ und Effektivtemperatur $T_{\text{eff}}$:
     \[
         L = 4\pi R^2 \sigma T_{\text{eff}}^4
     \]
-    Für die Sonne: $L_\odot = 4\pi (6.957\cdot10^8)^2 \cdot 5.670\cdot10^{-8}
+    FÃ¼r die Sonne: $L_\odot = 4\pi (6.957\cdot10^8)^2 \cdot 5.670\cdot10^{-8}
     \cdot 5778^4 \approx \SI{3.828e26}{\watt}$.
 
     Ein blauer O"=Stern mit $T = \SI{40000}{\kelvin}$ und $R = 15\,R_\odot$:
@@ -666,7 +666,7 @@ ganzzahlige Vielfache von $h\nu$.
         = 15^2 \cdot \left(\frac{40000}{5778}\right)^4
         \approx 225 \cdot 2279 \approx 512\,775
     \]
-    Ein O"=Stern überstrahlt also etwa 500\,000 Sonnen.
+    Ein O"=Stern Ã¼berstrahlt also etwa 500\,000 Sonnen.
 
     Ein roter M"=Zwerg mit $T = \SI{3000}{\kelvin}$ und $R = 0.3\,R_\odot$:
     \[
@@ -679,18 +679,18 @@ ganzzahlige Vielfache von $h\nu$.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.85\textwidth]{plot5_stefan_boltzmann.pdf}
-    \caption{Stefan"=Boltzmann"=Gesetz: Strahlungsleistung pro Flächeneinheit
+    \caption{Stefan"=Boltzmann"=Gesetz: Strahlungsleistung pro FlÃ¤cheneinheit
     $j^* = \sigma T^4$ als Funktion der Temperatur (logarithmische Skala).
-    Die $T^4$"=Abhängigkeit bedeutet, dass eine Verdopplung der Temperatur
-    die Strahlungsleistung um den Faktor 16 erhöht. Ein O"=Stern ($30\,000\,\text{K}$)
-    strahlt je Flächeneinheit etwa $\left(\tfrac{30000}{5778}\right)^4 \approx 722$"=mal
-    mehr als die Sonne. Die vier Messpunkte repräsentieren typische Vertreter
+    Die $T^4$"=AbhÃ¤ngigkeit bedeutet, dass eine Verdopplung der Temperatur
+    die Strahlungsleistung um den Faktor 16 erhÃ¶ht. Ein O"=Stern ($30\,000\,\text{K}$)
+    strahlt je FlÃ¤cheneinheit etwa $\left(\tfrac{30000}{5778}\right)^4 \approx 722$"=mal
+    mehr als die Sonne. Die vier Messpunkte reprÃ¤sentieren typische Vertreter
     der Spektralklassen M, G, B und O.}
     \label{fig:stefan}
 \end{figure}
 
 %===========================================================================
-\section{Klassische Näherungen und die Ultraviolettkatastrophe}
+\section{Klassische NÃ¤herungen und die Ultraviolettkatastrophe}
 %===========================================================================
 
 \subsection{Die Rayleigh-Jeans-Formel}
@@ -717,7 +717,7 @@ ganzzahlige Vielfache von $h\nu$.
 
 \begin{satz}[Ultraviolettkatastrophe]
 \label{satz:uv}
-    Das Rayleigh-Jeans"=Gesetz führt zu einer physikalisch unmöglichen Divergenz
+    Das Rayleigh-Jeans"=Gesetz fÃ¼hrt zu einer physikalisch unmÃ¶glichen Divergenz
     der Gesamtstrahlungsleistung:
     \[
         j^*_{\text{RJ}} = \pi \int_0^\infty B_\lambda^{\text{RJ}}\,d\lambda
@@ -731,17 +731,17 @@ ganzzahlige Vielfache von $h\nu$.
     Das Integral $\int_0^\infty \lambda^{-4}\,d\lambda$ divergiert sowohl bei
     $\lambda \to 0$ (UV"=Seite) als auch ist durch den Beitrag
     $\int_0^1 \lambda^{-4}\,d\lambda = [-\lambda^{-3}/3]_0^1 = +\infty$
-    bestimmt. Die Plancksche Quantisierung behebt dies: Für $\lambda \to 0$
+    bestimmt. Die Plancksche Quantisierung behebt dies: FÃ¼r $\lambda \to 0$
     gilt $x = hc/(\lambda k_BT) \to \infty$, und damit
     $B_\lambda \propto \lambda^{-5} e^{-hc/(\lambda k_BT)} \to 0$
     (exponentiell schnell), sodass das Integral konvergiert. \qedhere
 \end{proof}
 
-\subsection{Die Wien-Näherung}
+\subsection{Die Wien-NÃ¤herung}
 
-\begin{satz}[Wien-Näherungsgesetz]
+\begin{satz}[Wien-NÃ¤herungsgesetz]
     Im Kurzwellenbereich ($h\nu \gg k_BT$, d.\,h.\ $\lambda \ll hc/(k_BT)$)
-    vereinfacht sich die Plancksche Formel zur \emph{Wien-Näherung}:
+    vereinfacht sich die Plancksche Formel zur \emph{Wien-NÃ¤herung}:
     \[
         B_\lambda^{\text{Wien}}(\lambda, T)
         = \frac{2hc^2}{\lambda^5} \cdot e^{-hc/(\lambda k_BT)}
@@ -749,7 +749,7 @@ ganzzahlige Vielfache von $h\nu$.
 \end{satz}
 
 \begin{proof}
-    Für $x = hc/(\lambda k_BT) \gg 1$ gilt $e^x \gg 1$, daher
+    FÃ¼r $x = hc/(\lambda k_BT) \gg 1$ gilt $e^x \gg 1$, daher
     $e^x - 1 \approx e^x$. Einsetzen:
     \[
         B_\lambda^{\text{Wien}} = \frac{2hc^2}{\lambda^5 e^{hc/(\lambda k_BT)}}
@@ -758,13 +758,13 @@ ganzzahlige Vielfache von $h\nu$.
 \end{proof}
 
 \begin{bemerkung}
-    Die Wien"=Näherung überschätzt $B_\lambda$ für kleine $\nu$ (große $\lambda$)
-    und unterschätzt sie für große $\lambda$. Sie wurde von Wien 1896 als erste
-    brauchbare Näherungsformel vorgestellt und stimmt im kurzwelligen Bereich
-    (Sichtbares Licht für heiße Sterne) sehr gut mit der Messung überein.
+    Die Wien"=NÃ¤herung Ã¼berschÃ¤tzt $B_\lambda$ fÃ¼r kleine $\nu$ (groÃŸe $\lambda$)
+    und unterschÃ¤tzt sie fÃ¼r groÃŸe $\lambda$. Sie wurde von Wien 1896 als erste
+    brauchbare NÃ¤herungsformel vorgestellt und stimmt im kurzwelligen Bereich
+    (Sichtbares Licht fÃ¼r heiÃŸe Sterne) sehr gut mit der Messung Ã¼berein.
     Die Rayleigh"=Jeans"=Formel stimmt im langwelligen Bereich
     (Mikrowellen, Radio) hervorragend, divergiert aber im UV.
-    Erst Planck vereinte beide Grenzfälle korrekt.
+    Erst Planck vereinte beide GrenzfÃ¤lle korrekt.
 \end{bemerkung}
 
 \begin{figure}[ht]
@@ -772,10 +772,10 @@ ganzzahlige Vielfache von $h\nu$.
     \includegraphics[width=0.94\textwidth]{plot6_vergleich_naeherungen.pdf}
     \caption{Vergleich der drei Strahlungsformeln bei $T = 5778\,\text{K}$
     (Sonnentemperatur). Die schwarze Kurve (Planck) ist exakt.
-    Die rote gestrichelte Kurve (Rayleigh"=Jeans) stimmt für große $\lambda$
-    gut überein, divergiert aber für $\lambda < 500\,\text{nm}$ catastrophisch
+    Die rote gestrichelte Kurve (Rayleigh"=Jeans) stimmt fÃ¼r groÃŸe $\lambda$
+    gut Ã¼berein, divergiert aber fÃ¼r $\lambda < 500\,\text{nm}$ catastrophisch
     nach oben (Ultraviolettkatastrophe). Die blau"=strich"=punktierte Kurve
-    (Wien"=Näherung) stimmt für kurze Wellenlängen gut, unterschätzt aber
+    (Wien"=NÃ¤herung) stimmt fÃ¼r kurze WellenlÃ¤ngen gut, unterschÃ¤tzt aber
     den langwelligen Bereich. Nur Plancks Quantenformel beschreibt das
     gesamte Spektrum korrekt.}
     \label{fig:naeherungen}
@@ -787,9 +787,9 @@ ganzzahlige Vielfache von $h\nu$.
 
 \subsection{Von der Physik zur menschlichen Wahrnehmung}
 
-\begin{satz}[CIE-Tristimulus-Farbwerte eines Schwarzkörpers]
+\begin{satz}[CIE-Tristimulus-Farbwerte eines SchwarzkÃ¶rpers]
 \label{satz:cie}
-    Die Farbe eines Schwarzkörperstrahlers der Temperatur $T$ wird im
+    Die Farbe eines SchwarzkÃ¶rperstrahlers der Temperatur $T$ wird im
     CIE"=1931"=Farbsystem durch die Tristimulus"=Werte beschrieben:
     \begin{align*}
         X(T) &= \int_{380}^{780} B_\lambda(\lambda, T)\,\bar{x}(\lambda)\,d\lambda, \\
@@ -797,10 +797,10 @@ ganzzahlige Vielfache von $h\nu$.
         Z(T) &= \int_{380}^{780} B_\lambda(\lambda, T)\,\bar{z}(\lambda)\,d\lambda
     \end{align*}
     mit den CIE"=Farbabgleichfunktionen $\bar{x}$, $\bar{y}$, $\bar{z}$.
-    Die Normchromatizitätskoordinaten $x = X/(X+Y+Z)$,
-    $y = Y/(X+Y+Z)$ beschreiben den Farbeindruck unabhängig von der Helligkeit.
-    Für wachsendes $T$ bewegen sich die Koordinaten $(x,y)$ entlang der
-    \emph{Planckschen Kurve} im CIE"=Farbraum von Rot"=Orange über Weiß nach Blau.
+    Die NormchromatizitÃ¤tskoordinaten $x = X/(X+Y+Z)$,
+    $y = Y/(X+Y+Z)$ beschreiben den Farbeindruck unabhÃ¤ngig von der Helligkeit.
+    FÃ¼r wachsendes $T$ bewegen sich die Koordinaten $(x,y)$ entlang der
+    \emph{Planckschen Kurve} im CIE"=Farbraum von Rot"=Orange Ã¼ber WeiÃŸ nach Blau.
 \end{satz}
 
 \begin{proof}
@@ -810,9 +810,9 @@ ganzzahlige Vielfache von $h\nu$.
     (L"=, M"=, S"=Zapfen, mit Maxima bei ca. 564, 534 und 420\,nm) in einen
     linearen Farbraum transformieren~\cite{wyszecki1982}. Das Integral
     $Y(T) = \int B_\lambda \bar{y}\,d\lambda$ entspricht der photopischen
-    Helligkeit. Da $B_\lambda(\lambda,T)$ für kleine $T$ stark im Roten
-    dominiert und für große $T$ im UV, folgt die beschriebene Wanderung
-    der Chromatizitätskoordinaten qualitativ direkt aus dem Wien'schen
+    Helligkeit. Da $B_\lambda(\lambda,T)$ fÃ¼r kleine $T$ stark im Roten
+    dominiert und fÃ¼r groÃŸe $T$ im UV, folgt die beschriebene Wanderung
+    der ChromatizitÃ¤tskoordinaten qualitativ direkt aus dem Wien'schen
     Verschiebungsgesetz (Satz~\ref{satz:wien}). \qedhere
 \end{proof}
 
@@ -820,12 +820,12 @@ ganzzahlige Vielfache von $h\nu$.
     \centering
     \includegraphics[width=0.97\textwidth]{plot4_farbtemperatur.pdf}
     \caption{Kontinuierlicher Farbverlauf der Sternfarben im Bereich
-    2000--40\,000\,K, berechnet nach der RGB"=Schwarzkörper"=Approximation
-    von Wyszecki und Stiles~\cite{wyszecki1982}. Der Übergang von Rot über
-    Orange, Gelb, Weißgelb, Reinweiß bis zu Blau ist vollständig stetig.
+    2000--40\,000\,K, berechnet nach der RGB"=SchwarzkÃ¶rper"=Approximation
+    von Wyszecki und Stiles~\cite{wyszecki1982}. Der Ãœbergang von Rot Ã¼ber
+    Orange, Gelb, WeiÃŸgelb, ReinweiÃŸ bis zu Blau ist vollstÃ¤ndig stetig.
     Die sechs Spektralklassen sind durch vertikale Linien und Beschriftungen
     markiert. Der Eindruck von ``Lila'' oder ``Violett'' bei realen
-    Sternfotos entsteht häufig durch Bildverarbeitung oder spezielle
+    Sternfotos entsteht hÃ¤ufig durch Bildverarbeitung oder spezielle
     Schmalbandfilter (z.\,B. H$\alpha$, OIII).}
     \label{fig:farbtemp}
 \end{figure}
@@ -848,9 +848,9 @@ Beispielsterne~\cite{allen2000}}
 \textbf{$\lambda_{\max}$ (nm)} & \textbf{Spektrum} & \textbf{Beispiel} \\
 \midrule
 O & Blau & $>30\,000$ & $< 100$ & He~II"=Linien & Zeta~Puppis, 10~Lac \\
-B & Blau"=Weiß & $10$--$30\,000$ & 100--290 & He~I, H"=Balmer & Rigel, Spica \\
-A & Weiß & $7\,500$--$10\,000$ & 290--390 & H"=Balmer"=Max. & Sirius, Wega \\
-F & Gelb"=Weiß & $6\,000$--$7\,500$ & 390--480 & Ca~II, H & Prokyon, Canopus \\
+B & Blau"=WeiÃŸ & $10$--$30\,000$ & 100--290 & He~I, H"=Balmer & Rigel, Spica \\
+A & WeiÃŸ & $7\,500$--$10\,000$ & 290--390 & H"=Balmer"=Max. & Sirius, Wega \\
+F & Gelb"=WeiÃŸ & $6\,000$--$7\,500$ & 390--480 & Ca~II, H & Prokyon, Canopus \\
 G & Gelb & $5\,200$--$6\,000$ & 480--560 & Ca~II"=Linien & Sonne (G2) \\
 K & Orange & $3\,700$--$5\,200$ & 560--780 & TiO"=Banden & Arktur \\
 M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
@@ -859,13 +859,13 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 \end{table}
 
 \begin{bemerkung}
-    Jede Klasse ist in Unterklassen 0--9 unterteilt (von heiß nach kalt).
+    Jede Klasse ist in Unterklassen 0--9 unterteilt (von heiÃŸ nach kalt).
     Die Sonne ist G2V (Hauptreihenstern der Klasse G2). Beteigeuze
-    (Orion) ist ein M1"=Iab"=Überriese mit $T \approx 3500\,\text{K}$.
+    (Orion) ist ein M1"=Iab"=Ãœberriese mit $T \approx 3500\,\text{K}$.
     Sirius A ist A1V mit $T \approx 9940\,\text{K}$.
-    Neuere Erweiterungen umfassen die Klassen L, T und Y für sehr kühle
+    Neuere Erweiterungen umfassen die Klassen L, T und Y fÃ¼r sehr kÃ¼hle
     Braune Zwerge ($T < 2400\,\text{K}$ bis hinunter zu Raumtemperatur)
-    sowie die Klasse W (Wolf-Rayet) für extrem heiße, massereiche Sterne.
+    sowie die Klasse W (Wolf-Rayet) fÃ¼r extrem heiÃŸe, massereiche Sterne.
 \end{bemerkung}
 
 \subsection{Bolometrische Korrekturen}
@@ -873,29 +873,29 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 \begin{definition}[Visuelle und bolometrische Magnitude]
     Die visuelle Magnitude $m_V$ eines Sterns gibt seine scheinbare Helligkeit
     im $V$"=Band (Zentrum $\approx 550\,\text{nm}$, Breite $\approx 90\,\text{nm}$)
-    an. Die bolometrische Magnitude $m_{\text{bol}}$ berücksichtigt die
-    Gesamtstrahlung über alle Wellenlängen. Die Differenz:
+    an. Die bolometrische Magnitude $m_{\text{bol}}$ berÃ¼cksichtigt die
+    Gesamtstrahlung Ã¼ber alle WellenlÃ¤ngen. Die Differenz:
     \[
         \mathrm{BC} = m_{\text{bol}} - m_V = M_{\text{bol}} - M_V
     \]
-    heißt \emph{bolometrische Korrektur} (BC). Sie ist für Sterne, deren
-    Maximum weit außerhalb des $V$"=Bandes liegt, betragsmäßig groß.
+    heiÃŸt \emph{bolometrische Korrektur} (BC). Sie ist fÃ¼r Sterne, deren
+    Maximum weit auÃŸerhalb des $V$"=Bandes liegt, betragsmÃ¤ÃŸig groÃŸ.
 \end{definition}
 
 \begin{proposition}[Bolometrische Korrektur und Temperatur]
-    Die bolometrische Korrektur BC ist für alle Spektralklassen negativ oder null
+    Die bolometrische Korrektur BC ist fÃ¼r alle Spektralklassen negativ oder null
     (Konvention: $\mathrm{BC} \leq 0$, mit Maximum $\mathrm{BC} \approx 0$
-    bei $T \approx 6700\,\text{K}$). Für sehr heiße (O) und sehr kühle (M)
-    Sterne wird $|\mathrm{BC}|$ groß, da der Schwarzkörperschwerpunkt weit
+    bei $T \approx 6700\,\text{K}$). FÃ¼r sehr heiÃŸe (O) und sehr kÃ¼hle (M)
+    Sterne wird $|\mathrm{BC}|$ groÃŸ, da der SchwarzkÃ¶rperschwerpunkt weit
     vom $V$"=Band entfernt liegt.
 \end{proposition}
 
 \begin{proof}
     Per Definition des photometrischen Systems (Johnson~\cite{johnson1966})
-    wird $\mathrm{BC} = 0$ für ein Spektrum festgelegt, das sein Maximum im
-    $V$"=Band hat. Für $T > 7000\,\text{K}$ liegt $\lambda_{\max} < 420\,\text{nm}$
-    (Wien): viel Energie geht ins UV, das $V$"=Band unterschätzt die Gesamtleistung,
-    daher $m_{\text{bol}} < m_V$, also $\mathrm{BC} < 0$. Für $T < 4000\,\text{K}$
+    wird $\mathrm{BC} = 0$ fÃ¼r ein Spektrum festgelegt, das sein Maximum im
+    $V$"=Band hat. FÃ¼r $T > 7000\,\text{K}$ liegt $\lambda_{\max} < 420\,\text{nm}$
+    (Wien): viel Energie geht ins UV, das $V$"=Band unterschÃ¤tzt die Gesamtleistung,
+    daher $m_{\text{bol}} < m_V$, also $\mathrm{BC} < 0$. FÃ¼r $T < 4000\,\text{K}$
     liegt $\lambda_{\max} > 725\,\text{nm}$: viel Energie geht ins IR,
     ebenfalls $\mathrm{BC} < 0$. \qedhere
 \end{proof}
@@ -904,12 +904,12 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
     \centering
     \includegraphics[width=0.88\textwidth]{plot8_bolometrisch.pdf}
     \caption{Bolometrische Korrekturfaktoren BC als Funktion der
-    Effektivtemperatur, nach der Näherungsformel von Flower~\cite{flower1996}.
+    Effektivtemperatur, nach der NÃ¤herungsformel von Flower~\cite{flower1996}.
     Das Minimum von $\mathrm{BC} \approx 0$ liegt bei $T \approx 6700\,\text{K}$
-    (F"=Stern), wo das Schwarzkörpermaximum nahe dem $V$"=Band liegt.
-    Für sehr heiße (O) und sehr kühle (M) Sterne werden die Korrekturen
-    betragsmäßig groß (mehrere Magnituden), da ein großer Teil der
-    Strahlung außerhalb des sichtbaren Bereichs emittiert wird.}
+    (F"=Stern), wo das SchwarzkÃ¶rpermaximum nahe dem $V$"=Band liegt.
+    FÃ¼r sehr heiÃŸe (O) und sehr kÃ¼hle (M) Sterne werden die Korrekturen
+    betragsmÃ¤ÃŸig groÃŸ (mehrere Magnituden), da ein groÃŸer Teil der
+    Strahlung auÃŸerhalb des sichtbaren Bereichs emittiert wird.}
     \label{fig:bc}
 \end{figure}
 
@@ -929,7 +929,7 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 
 \begin{satz}[Leuchtkraft"=Temperatur"=Skalierung auf der Hauptreihe]
 \label{satz:hr}
-    Für Hauptreihensterne gilt eine empirische Masse"=Leuchtkraft"=Relation,
+    FÃ¼r Hauptreihensterne gilt eine empirische Masse"=Leuchtkraft"=Relation,
     aus der eine Temperatur"=Leuchtkraft"=Skalierung folgt:
     \[
         L \propto M^\alpha, \quad \alpha \approx \begin{cases} 2.5 & M < 0.5\,M_\odot \\ 4.0 & 0.5 < M/M_\odot < 20 \\ 1.5 & M > 20\,M_\odot \end{cases}
@@ -939,52 +939,52 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 \begin{proof}
     Aus den Sternenstrukturgleichungen (Hydrostatisches Gleichgewicht,
     Energietransport, Energieerzeugung durch pp"=Kette bzw. CNO"=Zyklus)
-    erhält man durch Homologietransformation~\cite{salaris2005}:
+    erhÃ¤lt man durch Homologietransformation~\cite{salaris2005}:
     \[
         L \propto \frac{M^3}{\kappa \mu^4}
     \]
-    wobei $\kappa$ die mittlere Opazität und $\mu$ das mittlere
-    Molekulargewicht sind. Mit Kramerscher Opazität $\kappa \propto \rho T^{-3.5}$
+    wobei $\kappa$ die mittlere OpazitÃ¤t und $\mu$ das mittlere
+    Molekulargewicht sind. Mit Kramerscher OpazitÃ¤t $\kappa \propto \rho T^{-3.5}$
     und hydrostatischem Gleichgewicht $P_c \propto M^2/R^4 \propto \rho^{4/3} M^{2/3}$
-    folgt für sonnenähnliche Sterne $L \propto M^4$.
+    folgt fÃ¼r sonnenÃ¤hnliche Sterne $L \propto M^4$.
     Kombination mit der empirischen Beziehung $T_{\text{eff}} \propto M^{0.6}$
-    für die Hauptreihe liefert schließlich:
+    fÃ¼r die Hauptreihe liefert schlieÃŸlich:
     \[
         L \propto T_{\text{eff}}^{4/0.6} \approx T_{\text{eff}}^{6.7}
     \]
-    Die genauen Exponenten hängen vom Massenbereich und den dominanten
-    Opazitätsmechanismen ab. \qedhere
+    Die genauen Exponenten hÃ¤ngen vom Massenbereich und den dominanten
+    OpazitÃ¤tsmechanismen ab. \qedhere
 \end{proof}
 
-\subsection{Stellare Entwicklung und Farbänderung}
+\subsection{Stellare Entwicklung und FarbÃ¤nderung}
 
 \begin{proposition}[Farbe und Entwicklungsstadium]
-    Im Verlauf seiner Entwicklung durchläuft ein sonnenähnlicher Stern folgende
+    Im Verlauf seiner Entwicklung durchlÃ¤uft ein sonnenÃ¤hnlicher Stern folgende
     Farbstadien (grob in zeitlicher Reihenfolge):
     \begin{enumerate}
-        \item \emph{ZAMS} (Zero Age Main Sequence): gelb"=weiß ($T \approx 5800\,\text{K}$)
-        \item \emph{Hauptreihe}: kaum Farbänderung über Milliarden von Jahren
-        \item \emph{Subriese/Roter Riese}: Abkühlung auf $T \approx 3500\,\text{K}$,
+        \item \emph{ZAMS} (Zero Age Main Sequence): gelb"=weiÃŸ ($T \approx 5800\,\text{K}$)
+        \item \emph{Hauptreihe}: kaum FarbÃ¤nderung Ã¼ber Milliarden von Jahren
+        \item \emph{Subriese/Roter Riese}: AbkÃ¼hlung auf $T \approx 3500\,\text{K}$,
               Farbe wird tief orangerot
         \item \emph{Horizontalast}: kurze Aufheizung, $T \approx 5000\,\text{K}$ (orange)
-        \item \emph{Asymptotischer Riesenast (AGB)}: erneute Abkühlung, $T \approx 3000\,\text{K}$
-        \item \emph{Planetarischer Nebel"=Kern/Weißer Zwerg}: extreme Aufheizung,
-              $T > 50\,000\,\text{K}$ (blau"=weiß), dann langsame Abkühlung über
+        \item \emph{Asymptotischer Riesenast (AGB)}: erneute AbkÃ¼hlung, $T \approx 3000\,\text{K}$
+        \item \emph{Planetarischer Nebel"=Kern/WeiÃŸer Zwerg}: extreme Aufheizung,
+              $T > 50\,000\,\text{K}$ (blau"=weiÃŸ), dann langsame AbkÃ¼hlung Ã¼ber
               Milliarden von Jahren
     \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    Jeder Schritt folgt aus den Sternenstrukturgleichungen. Beim Übergang
-    vom Hauptreihenstadium zum Roten Riesen erschöpft der Stern den
+    Jeder Schritt folgt aus den Sternenstrukturgleichungen. Beim Ãœbergang
+    vom Hauptreihenstadium zum Roten Riesen erschÃ¶pft der Stern den
     Wasserstoff im Kern; der Kern kontrahiert (Virial"=Theorem:
     $T_{\text{kern}} \propto 1/R_{\text{kern}}$) und heizt sich auf,
-    die äußere Hülle expandiert und kühlt ab. Nach
+    die Ã¤uÃŸere HÃ¼lle expandiert und kÃ¼hlt ab. Nach
     $R_{\text{Riese}} \approx 100\,R_\odot$ und $T \approx 3500\,\text{K}$
-    setzt Heliumzündung im Kern ein. Der Weiße Zwerg nach Abstoßung
-    der Hülle ist ein nackter Kern aus Kohlenstoff"=Sauerstoff,
-    der mit $T > 100\,000\,\text{K}$ beginnt und über $10^{10}$ Jahre
-    abkühlt -- von blau über weiß nach orange bis rot
+    setzt HeliumzÃ¼ndung im Kern ein. Der WeiÃŸe Zwerg nach AbstoÃŸung
+    der HÃ¼lle ist ein nackter Kern aus Kohlenstoff"=Sauerstoff,
+    der mit $T > 100\,000\,\text{K}$ beginnt und Ã¼ber $10^{10}$ Jahre
+    abkÃ¼hlt -- von blau Ã¼ber weiÃŸ nach orange bis rot
     (``schwarzer Zwerg'' als Endstufe, noch theoretisch)~\cite{salaris2005}. \qedhere
 \end{proof}
 
@@ -993,12 +993,12 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
     \includegraphics[width=0.85\textwidth]{plot3_hr_diagramm.pdf}
     \caption{Schematisches Hertzsprung"=Russell"=Diagramm (Leuchtkraft
     vs. Effektivtemperatur, logarithmische Achsen).
-    Die Hauptreihe (gestrichelte Linie) verläuft von
+    Die Hauptreihe (gestrichelte Linie) verlÃ¤uft von
     roten M"=Zwergen (unten rechts) bis zu blauen O"=Sternen (oben links).
     Die Farbkodierung der Hauptreihenpunkte entspricht der jeweils
     wahrgenommenen Sternfarbe. Die Sonne (gelber Kreis) ist G2V.
-    Rote Riesen und Überriesen (Sternmarkierungen, oben rechts) und
-    Weiße Zwerge (weiß, unten links) bilden die weiteren Bevölkerungen.
+    Rote Riesen und Ãœberriesen (Sternmarkierungen, oben rechts) und
+    WeiÃŸe Zwerge (weiÃŸ, unten links) bilden die weiteren BevÃ¶lkerungen.
     Die Vertikalen markieren die Spektralklassen O, B, A, F, G, K, M.}
     \label{fig:hr}
 \end{figure}
@@ -1006,17 +1006,17 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.85\textwidth]{plot7_evolution.pdf}
-    \caption{Evolutionsweg eines sonnenähnlichen Sterns im
+    \caption{Evolutionsweg eines sonnenÃ¤hnlichen Sterns im
     Hertzsprung"=Russell"=Diagramm. Die Pfeile geben die zeitliche
     Richtung der Entwicklung an. Der Stern beginnt auf der ZAMS
-    (Null"=Alters"=Hauptreihe) als gelb"=weißer Stern,
-    entwickelt sich über Milliarden Jahre zum Roten Riesen
+    (Null"=Alters"=Hauptreihe) als gelb"=weiÃŸer Stern,
+    entwickelt sich Ã¼ber Milliarden Jahre zum Roten Riesen
     ($T \approx 3200\,\text{K}$, $L \approx 500\,L_\odot$),
-    durchläuft den Horizontalast und den AGB, und endet als
-    Weißer Zwerg mit anfänglich $T > 100\,000\,\text{K}$ (blau),
-    der sich über Milliarden Jahre abkühlt.
-    Die Farbänderung~-- von Gelb über Tiefrot zurück zu Weiß~--
-    ist direkte Konsequenz der sich ändernden Effektivtemperatur.}
+    durchlÃ¤uft den Horizontalast und den AGB, und endet als
+    WeiÃŸer Zwerg mit anfÃ¤nglich $T > 100\,000\,\text{K}$ (blau),
+    der sich Ã¼ber Milliarden Jahre abkÃ¼hlt.
+    Die FarbÃ¤nderung~-- von Gelb Ã¼ber Tiefrot zurÃ¼ck zu WeiÃŸ~--
+    ist direkte Konsequenz der sich Ã¤ndernden Effektivtemperatur.}
     \label{fig:evolution}
 \end{figure}
 
@@ -1026,11 +1026,11 @@ M & Rot & $< 3\,700$ & $> 780$ & TiO, VO"=Banden & Beteigeuze \\
 
 \subsection{Implementierung in Python}
 
-Die folgende vollständige Python"=Implementierung berechnet alle in dieser
-Arbeit behandelten Größen:
+Die folgende vollstÃ¤ndige Python"=Implementierung berechnet alle in dieser
+Arbeit behandelten GrÃ¶ÃŸen:
 
 \begin{lstlisting}[language=Python,
-    caption={Vollständige Implementierung der Schwarzkörperphysik},
+    caption={VollstÃ¤ndige Implementierung der SchwarzkÃ¶rperphysik},
     label={lst:planck}]
 import numpy as np
 from scipy.optimize import brentq
@@ -1085,41 +1085,41 @@ for name, T, R in [('Sonne', 5778, 1.0),
           f"  lam_max={lm:6.1f} nm  L/L_sun={L/L_sun:.2e}")
 \end{lstlisting}
 
-\subsection{Komplexitätsanalyse}
+\subsection{KomplexitÃ¤tsanalyse}
 
-\begin{lemma}[Zeitkomplexität der Spektrumberechnung]
+\begin{lemma}[ZeitkomplexitÃ¤t der Spektrumberechnung]
 \label{lem:komplex}
-    Die Berechnung des Planck"=Spektrums für $N$ Wellenlängen und $K$
-    Temperaturen hat Zeitkomplexität $\Theta(NK)$ und Speicherkomplexität
+    Die Berechnung des Planck"=Spektrums fÃ¼r $N$ WellenlÃ¤ngen und $K$
+    Temperaturen hat ZeitkomplexitÃ¤t $\Theta(NK)$ und SpeicherkomplexitÃ¤t
     $\Theta(N + K)$ bei sequentiellem Zugriff.
 \end{lemma}
 
 \begin{proof}
-    Für jede der $N$ Wellenlängen und jede der $K$ Temperaturen werden
-    exakt $c_0 = O(1)$ arithmetische Operationen ausgeführt:
+    FÃ¼r jede der $N$ WellenlÃ¤ngen und jede der $K$ Temperaturen werden
+    exakt $c_0 = O(1)$ arithmetische Operationen ausgefÃ¼hrt:
     eine Multiplikation ($h\nu = hc/\lambda$), eine Division, eine
     Exponentialfunktion, eine Subtraktion, zwei Divisionen.
     Gesamtaufwand: $T(N,K) = c_0 \cdot N \cdot K = \Theta(NK)$.
-    Speicher: $O(N)$ für das Spektrum, $O(K)$ für die Temperaturen,
-    keine Hilfsdatenstrukturen nötig. \qedhere
+    Speicher: $O(N)$ fÃ¼r das Spektrum, $O(K)$ fÃ¼r die Temperaturen,
+    keine Hilfsdatenstrukturen nÃ¶tig. \qedhere
 \end{proof}
 
-\begin{lemma}[Numerische Stabilität bei kleinen Wellenlängen]
-    Die direkte Auswertung von $e^x - 1$ für große $x = hc/(\lambda k_BT)$
-    führt zu keinen numerischen Problemen, da der Nenner für $x > 1$
-    von der gleichen Ordnung wie $e^x$ ist. Für $x < 10^{-4}$
+\begin{lemma}[Numerische StabilitÃ¤t bei kleinen WellenlÃ¤ngen]
+    Die direkte Auswertung von $e^x - 1$ fÃ¼r groÃŸe $x = hc/(\lambda k_BT)$
+    fÃ¼hrt zu keinen numerischen Problemen, da der Nenner fÃ¼r $x > 1$
+    von der gleichen Ordnung wie $e^x$ ist. FÃ¼r $x < 10^{-4}$
     ist die Taylor"=Approximation $e^x - 1 \approx x$ numerisch stabiler.
 \end{lemma}
 
 \begin{proof}
-    Für $x \to 0$ gilt $e^x = 1 + x + x^2/2 + \ldots$, sodass
+    FÃ¼r $x \to 0$ gilt $e^x = 1 + x + x^2/2 + \ldots$, sodass
     die Differenz $e^x - 1 = x + O(x^2)$ als Summe kleiner Zahlen
-    berechnet wird und Auslöschung auftreten kann.
-    Für $x > 0.01$ liegt $e^x - 1 > 0.01$, was bei doppelter
+    berechnet wird und AuslÃ¶schung auftreten kann.
+    FÃ¼r $x > 0.01$ liegt $e^x - 1 > 0.01$, was bei doppelter
     Gleitkommagenauigkeit ($\approx 10^{-16}$ relativer Fehler) zu
-    vernachlässigbaren Fehlern führt. Die numpy"=Funktion
+    vernachlÃ¤ssigbaren Fehlern fÃ¼hrt. Die numpy"=Funktion
     \texttt{np.expm1(x)} berechnet $e^x - 1$ numerisch stabil
-    auch für kleine $x$. \qedhere
+    auch fÃ¼r kleine $x$. \qedhere
 \end{proof}
 
 %===========================================================================
@@ -1139,14 +1139,14 @@ Anfangsmassenfunktion. Die zentrale Frage lautet:
     effizient zu klassifizieren und strukturell miteinander zu vergleichen?}
 \end{center}
 
-Die Schlüsselidee besteht darin, einen Sternhaufen als \emph{Graphen} zu
+Die SchlÃ¼sselidee besteht darin, einen Sternhaufen als \emph{Graphen} zu
 modellieren, dessen Knoten die Spektralklassen $\{O, B, A, F, G, K, M\}$
-repräsentieren und dessen Kanten den spektralen Kontrast (d.\,h.\ die
-Häufigkeitsrelationen) zwischen den Klassen kodieren. Der Subgraph Algorithmus
-identifiziert dann, ob ein Haufen strukturell einem anderen \emph{enthält}
-oder \emph{ähnelt}.
+reprÃ¤sentieren und dessen Kanten den spektralen Kontrast (d.\,h.\ die
+HÃ¤ufigkeitsrelationen) zwischen den Klassen kodieren. Der Subgraph Algorithmus
+identifiziert dann, ob ein Haufen strukturell einem anderen \emph{enthÃ¤lt}
+oder \emph{Ã¤hnelt}.
 
-\subsection{Graphen-Modell für Sternhaufen}
+\subsection{Graphen-Modell fÃ¼r Sternhaufen}
 
 \begin{definition}[Spektralklassen-Graph eines Sternhaufens]
 \label{def:clustergraph}
@@ -1164,21 +1164,21 @@ oder \emph{ähnelt}.
     Die Adjazenzmatrix $A^{\mathcal{C}} \in \{0,1\}^{7\times7}$ kodiert die Kantenmenge.
 \end{definition}
 
-\begin{definition}[Spektraler Häufigkeitsvektor]
+\begin{definition}[Spektraler HÃ¤ufigkeitsvektor]
 \label{def:sigvek}
-    Der \emph{spektrale Häufigkeitsvektor} eines Sternhaufens $\mathcal{C}$ ist:
+    Der \emph{spektrale HÃ¤ufigkeitsvektor} eines Sternhaufens $\mathcal{C}$ ist:
     \[
         \mathbf{f}^{\mathcal{C}} = (f_O, f_B, f_A, f_F, f_G, f_K, f_M)^\top
         \in [0,1]^7, \quad \sum_{k} f_k = 1
     \]
     Er beschreibt die normierte Verteilung der Spektralklassen im Cluster und
-    dient als Eingabe für die Signatur-Berechnung des Subgraph Algorithmus.
+    dient als Eingabe fÃ¼r die Signatur-Berechnung des Subgraph Algorithmus.
 \end{definition}
 
 \begin{definition}[Spalten-Signatur des Cluster-Graphen]
 \label{def:clustersig}
     Analog zur allgemeinen Subgraph"=Signatur~\cite{subgraph2026}
-    wird für jede Spalte $j \in \{0,\ldots,6\}$ der Adjazenzmatrix
+    wird fÃ¼r jede Spalte $j \in \{0,\ldots,6\}$ der Adjazenzmatrix
     $A^{\mathcal{C}}$ die injektive Signatur berechnet:
     \[
         \sigma_j^{\mathcal{C}} = \sum_{i=0}^{6} A^{\mathcal{C}}_{ij} \cdot 2^i
@@ -1186,10 +1186,10 @@ oder \emph{ähnelt}.
     \]
     Der Signatur"=Vektor $\boldsymbol{\sigma}^{\mathcal{C}} =
     (\sigma_0^{\mathcal{C}}, \ldots, \sigma_6^{\mathcal{C}})$
-    repräsentiert die Struktur des Haufens in kompakter, vergleichbarer Form.
+    reprÃ¤sentiert die Struktur des Haufens in kompakter, vergleichbarer Form.
 \end{definition}
 
-\subsection{Anfangsmassenfunktion und Spektralklassen-Häufigkeit}
+\subsection{Anfangsmassenfunktion und Spektralklassen-HÃ¤ufigkeit}
 
 \begin{satz}[Kroupa-IMF und Spektralklassen-Dominanz]
 \label{satz:imf}
@@ -1201,9 +1201,9 @@ oder \emph{ähnelt}.
             M^{-2.3} & M/M_\odot \geq 0.5
         \end{cases}
     \]
-    Dann dominieren in jedem Haufen unabhängig vom Alter die Spektralklassen
-    K und M zahlenmäßig, während O"= und B"=Sterne stets eine kleine Minderheit
-    bilden. Der Anteil der Klasse M beträgt:
+    Dann dominieren in jedem Haufen unabhÃ¤ngig vom Alter die Spektralklassen
+    K und M zahlenmÃ¤ÃŸig, wÃ¤hrend O"= und B"=Sterne stets eine kleine Minderheit
+    bilden. Der Anteil der Klasse M betrÃ¤gt:
     \[
         f_M = \frac{\int_{0.08}^{0.5} \xi(M)\,dM}{\int_{0.08}^{150} \xi(M)\,dM}
         \approx 0.76
@@ -1223,7 +1223,7 @@ oder \emph{ähnelt}.
     Numerisch: $0.08^{-0.3} \approx 2.093$, $0.5^{-0.3} \approx 1.231$,
     also $I_1 \approx (2.093 - 1.231)/0.3 \approx 2.873$.
 
-    Am Übergangspunkt $M = 0.5\,M_\odot$ muss Kontinuität gewährleistet sein;
+    Am Ãœbergangspunkt $M = 0.5\,M_\odot$ muss KontinuitÃ¤t gewÃ¤hrleistet sein;
     die Normierungskonstante des zweiten Segments ergibt sich aus
     $\xi_1(0.5) = C_1 \cdot 0.5^{-1.3}$ und
     $\xi_2(0.5) = C_2 \cdot 0.5^{-2.3}$, woraus $C_2 = C_1 \cdot 0.5$:
@@ -1237,58 +1237,58 @@ oder \emph{ähnelt}.
     also den Anteil $I_1 / (I_1 + I_2) \approx 2.873 / (2.873+0.920) \approx 0.76$.
 
     Dies bedeutet: Drei von vier Sternen im Universum sind M"=Zwerge --
-    zahlenmäßig die mit Abstand häufigste Klasse. \qedhere
+    zahlenmÃ¤ÃŸig die mit Abstand hÃ¤ufigste Klasse. \qedhere
 \end{proof}
 
-\begin{korollar}[Farb-Häufigkeits-Antikorrelation]
+\begin{korollar}[Farb-HÃ¤ufigkeits-Antikorrelation]
 \label{kor:antikorr}
     Unter der Kroupa"=IMF gilt eine strenge \emph{Antikorrelation} zwischen
-    Leuchtkraft (und damit Sternfarbe, blauer = leuchtkräftiger) und
-    zahlenmäßiger Häufigkeit:
+    Leuchtkraft (und damit Sternfarbe, blauer = leuchtkrÃ¤ftiger) und
+    zahlenmÃ¤ÃŸiger HÃ¤ufigkeit:
     \[
         f_k \propto T_k^{-\gamma}, \quad \gamma > 0
     \]
-    Blaue Sterne sind selten, rote Sterne sind häufig. Konkret:
-    $f_O / f_M \approx 3 \times 10^{-4}$ für einen jungen Haufen.
+    Blaue Sterne sind selten, rote Sterne sind hÃ¤ufig. Konkret:
+    $f_O / f_M \approx 3 \times 10^{-4}$ fÃ¼r einen jungen Haufen.
 \end{korollar}
 
 \begin{proof}
     Aus Satz~\ref{satz:imf} folgt, dass die Massenfunktion steil mit
-    $M^{-2.3}$ abfällt. Da Temperatur und Masse durch $T \propto M^{0.55}$
-    verknüpft sind (Hauptreihe), gilt $M \propto T^{1/0.55} \approx T^{1.82}$.
+    $M^{-2.3}$ abfÃ¤llt. Da Temperatur und Masse durch $T \propto M^{0.55}$
+    verknÃ¼pft sind (Hauptreihe), gilt $M \propto T^{1/0.55} \approx T^{1.82}$.
     Damit:
     \[
         \xi(T) = \xi(M(T)) \cdot \left|\frac{dM}{dT}\right|
         \propto T^{-2.3 \cdot 1.82} \cdot T^{0.82}
         = T^{-4.19 + 0.82} = T^{-3.37}
     \]
-    Der Häufigkeitsanteil $f_k \propto T_k^{-3.37}$. Für
+    Der HÃ¤ufigkeitsanteil $f_k \propto T_k^{-3.37}$. FÃ¼r
     $T_O = 40\,000\,\text{K}$ und $T_M = 3\,000\,\text{K}$:
     \[
         \frac{f_O}{f_M} \approx \left(\frac{40000}{3000}\right)^{-3.37}
         = 13.33^{-3.37} \approx 1.5 \times 10^{-4}
     \]
-    in guter Übereinstimmung mit dem beobachteten Wert. \qedhere
+    in guter Ãœbereinstimmung mit dem beobachteten Wert. \qedhere
 \end{proof}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.97\textwidth]{plot9_imf_spektralklassen.pdf}
     \caption{\textbf{Links:} Simulierte Anfangsmassenfunktion (Kroupa"=IMF)
-    für einen Haufen mit 2000 Sternen im doppelt-logarithmischen Maßstab.
+    fÃ¼r einen Haufen mit 2000 Sternen im doppelt-logarithmischen MaÃŸstab.
     Die gestrichelten Linien zeigen die theoretischen Steigungen
-    $\alpha = 1.3$ (für $M < 0.5\,M_\odot$) und $\alpha = 2.3$
-    (für $M > 0.5\,M_\odot$). \textbf{Rechts:} Resultierende
-    Spektralklassen"=Häufigkeit. Die klare Dominanz der K"= und M"=Klassen
-    bestätigt Korollar~\ref{kor:antikorr}: Rote Sterne sind zahlenmäßig
-    bei weitem am häufigsten, blaue O"= und B"=Sterne bilden eine
+    $\alpha = 1.3$ (fÃ¼r $M < 0.5\,M_\odot$) und $\alpha = 2.3$
+    (fÃ¼r $M > 0.5\,M_\odot$). \textbf{Rechts:} Resultierende
+    Spektralklassen"=HÃ¤ufigkeit. Die klare Dominanz der K"= und M"=Klassen
+    bestÃ¤tigt Korollar~\ref{kor:antikorr}: Rote Sterne sind zahlenmÃ¤ÃŸig
+    bei weitem am hÃ¤ufigsten, blaue O"= und B"=Sterne bilden eine
     winzige Minderheit.}
     \label{fig:imf}
 \end{figure}
 
 \subsection{Der Subgraph Algorithmus auf Cluster-Graphen}
 
-\begin{satz}[Korrektheit des Subgraph Algorithmus für Cluster-Klassifikation]
+\begin{satz}[Korrektheit des Subgraph Algorithmus fÃ¼r Cluster-Klassifikation]
 \label{satz:subgraph_cluster}
     Seien $G_{\mathcal{C}_1}$ und $G_{\mathcal{C}_2}$ die Spektralklassen"=Graphen
     zweier Sternhaufen mit Adjazenzmatrizen $A^{(1)}$ und $A^{(2)}$ sowie
@@ -1299,17 +1299,17 @@ oder \emph{ähnelt}.
 \end{satz}
 
 \begin{proof}
-    Der Algorithmus berechnet für jede der $n = 7$ Spalten der Adjazenzmatrix
-    die injektive Signatur gemäß Definition~\ref{def:clustersig}.
+    Der Algorithmus berechnet fÃ¼r jede der $n = 7$ Spalten der Adjazenzmatrix
+    die injektive Signatur gemÃ¤ÃŸ Definition~\ref{def:clustersig}.
 
-    \textbf{Schritt~1: Injektivität der Signaturen.}
-    Für festes $n = 7$ sind alle möglichen Spaltenvektoren
+    \textbf{Schritt~1: InjektivitÃ¤t der Signaturen.}
+    FÃ¼r festes $n = 7$ sind alle mÃ¶glichen Spaltenvektoren
     $\mathbf{a}_j \in \{0,1\}^7$ mit der Signaturformel
     $\sigma_j = \sum_i A_{ij} \cdot 2^i + j \cdot 2^7$ injektiv kodiert:
     Der erste Term nimmt Werte in $[0, 2^7-1] = [0,127]$,
-    der zweite Term $j \cdot 128$ nimmt für $j \in \{0,\ldots,6\}$
+    der zweite Term $j \cdot 128$ nimmt fÃ¼r $j \in \{0,\ldots,6\}$
     paarweise disjunkte Werte $\{0, 128, 256, \ldots, 768\}$ an.
-    Da $j \cdot 128 > 127$ für alle $j \geq 1$, überlappen die Intervalle
+    Da $j \cdot 128 > 127$ fÃ¼r alle $j \geq 1$, Ã¼berlappen die Intervalle
     $[j \cdot 128, j \cdot 128 + 127]$ nicht. Die Signatur ist also injektiv.
 
     \textbf{Schritt~2: Subgraph"=Test via LCS.}
@@ -1317,7 +1317,7 @@ oder \emph{ähnelt}.
     jede Kante von $G_{\mathcal{C}_1}$ auch in $G_{\mathcal{C}_2}$ vorkommt,
     d.\,h.\ wenn die Signatur"=Sequenz $\boldsymbol{\sigma}^{(1)}$ eine
     Teilsequenz von $\boldsymbol{\sigma}^{(2)}$ unter allen zyklischen
-    Rotationen ist. Die LCS"=Berechnung auf Sequenzen der Länge $n = 7$
+    Rotationen ist. Die LCS"=Berechnung auf Sequenzen der LÃ¤nge $n = 7$
     kostet $O(n^2) = O(49)$ pro Rotation, bei $n = 7$ Rotationen:
     $T = 7 \cdot O(49) = O(n^3) = O(343)$.
 
@@ -1327,24 +1327,24 @@ oder \emph{ähnelt}.
     also exakt dem Vorliegen einer Subgraph"=Beziehung. \qedhere
 \end{proof}
 
-\begin{lemma}[Komplexität des Cluster-Vergleichs]
+\begin{lemma}[KomplexitÃ¤t des Cluster-Vergleichs]
 \label{lem:cluster_komplex}
     Der Vergleich von $K$ Sternhaufen-Graphen mit je $n = 7$ Knoten
-    mittels des Subgraph"=Algorithmus hat Gesamtkomplexität:
+    mittels des Subgraph"=Algorithmus hat GesamtkomplexitÃ¤t:
     \[
         T_{\text{gesamt}} = O(K^2 \cdot n^3) = O(343\,K^2)
     \]
-    Für Kataloge mit $K = 1000$ Haufen ergibt sich
+    FÃ¼r Kataloge mit $K = 1000$ Haufen ergibt sich
     $T \approx 3.43 \times 10^8$ Elementaroperationen~-- auf moderner
     Hardware in unter einer Sekunde berechenbar.
 \end{lemma}
 
 \begin{proof}
-    Für jedes Paar $(\mathcal{C}_i, \mathcal{C}_j)$ mit
+    FÃ¼r jedes Paar $(\mathcal{C}_i, \mathcal{C}_j)$ mit
     $i < j$ (es gibt $\binom{K}{2} = K(K-1)/2$ Paare) wird der
-    Subgraph"=Test in $O(n^3)$ ausgeführt.
+    Subgraph"=Test in $O(n^3)$ ausgefÃ¼hrt.
     Gesamtaufwand: $\binom{K}{2} \cdot O(n^3) = O(K^2 n^3 / 2) = O(K^2 n^3)$.
-    Mit $n = 7$: $O(343 K^2)$. Für $K=1000$:
+    Mit $n = 7$: $O(343 K^2)$. FÃ¼r $K=1000$:
     $343 \cdot 10^6 / 2 \approx 1.7 \times 10^8$ Operationen. \qedhere
 \end{proof}
 
@@ -1352,19 +1352,19 @@ oder \emph{ähnelt}.
     \centering
     \includegraphics[width=0.97\textwidth]{plot10_subgraph_cluster.pdf}
     \caption{\textbf{Links/Mitte:} Graphendarstellung zweier Sternhaufen.
-    Knoten repräsentieren Spektralklassen O--M, Knotengrößen sind
-    proportional zum Häufigkeitsanteil, Kanten verbinden Klassen
+    Knoten reprÃ¤sentieren Spektralklassen O--M, KnotengrÃ¶ÃŸen sind
+    proportional zum HÃ¤ufigkeitsanteil, Kanten verbinden Klassen
     mit signifikantem spektralen Kontrast. Im jungen Haufen (Plejaden-Typ)
-    sind die Kanten auf die blau"=weißen Klassen konzentriert;
+    sind die Kanten auf die blau"=weiÃŸen Klassen konzentriert;
     im alten Kugelsternhaufen dominieren K und M die Struktur.
-    \textbf{Rechts:} Die zugehörigen Signaturvektoren $\sigma_j$
+    \textbf{Rechts:} Die zugehÃ¶rigen Signaturvektoren $\sigma_j$
     (Gleichung in Def.~\ref{def:clustersig}) kodieren die Graphstruktur
-    als Integer"=Sequenzen -- der direkte Input für den LCS"=Kern
+    als Integer"=Sequenzen -- der direkte Input fÃ¼r den LCS"=Kern
     des Subgraph"=Algorithmus.}
     \label{fig:subgraph_cluster}
 \end{figure}
 
-\subsection{Farbverteilung und Auftrittshäufigkeit in Sternhaufen}
+\subsection{Farbverteilung und AuftrittshÃ¤ufigkeit in Sternhaufen}
 
 \subsubsection{Der Farb-Index als Clusteralters-Indikator}
 
@@ -1384,17 +1384,17 @@ oder \emph{ähnelt}.
 \label{satz:bv_alter}
     Der integrierte Farb"=Index $(B-V)_{\text{int}}$ eines Sternhaufens
     ist eine streng monoton wachsende Funktion des Clusteralters $\tau$
-    für $\tau \gtrsim 10^7$ Jahre:
+    fÃ¼r $\tau \gtrsim 10^7$ Jahre:
     \[
         \frac{d(B-V)_{\text{int}}}{d\tau} > 0
-        \quad \text{für } \tau > \SI{10}{\mega yr}
+        \quad \text{fÃ¼r } \tau > \SI{10}{\mega yr}
     \]
-    Das heißt: Mit zunehmendem Alter werden Sternhaufen röter.
+    Das heiÃŸt: Mit zunehmendem Alter werden Sternhaufen rÃ¶ter.
 \end{satz}
 
 \begin{proof}
     Der integrierte Farb"=Index ergibt sich als flussgewichteter Mittelwert
-    über alle Clustersterne:
+    Ã¼ber alle Clustersterne:
     \[
         (B-V)_{\text{int}} = -2.5\log_{10}\!\left(
         \frac{\sum_k N_k(\tau) \cdot F_{B,k}}{\sum_k N_k(\tau) \cdot F_{V,k}}
@@ -1405,24 +1405,24 @@ oder \emph{ähnelt}.
     \[
         \tau_{\text{MS}}(M) \approx 10\,\text{Gyr} \cdot \left(\frac{M}{M_\odot}\right)^{-2.5}
     \]
-    Für $\tau_{\text{MS}}(M) < \tau$ hat der Stern die Hauptreihe verlassen
-    und ist (bei sonnenähnlichen Massen) zum Roten Riesen geworden
-    oder (bei sehr großen Massen) als Supernova explodiert.
+    FÃ¼r $\tau_{\text{MS}}(M) < \tau$ hat der Stern die Hauptreihe verlassen
+    und ist (bei sonnenÃ¤hnlichen Massen) zum Roten Riesen geworden
+    oder (bei sehr groÃŸen Massen) als Supernova explodiert.
     Die \emph{Turn"=Off"=Masse} $M_{\text{TO}}(\tau)$ mit
-    $\tau_{\text{MS}}(M_{\text{TO}}) = \tau$ erfüllt:
+    $\tau_{\text{MS}}(M_{\text{TO}}) = \tau$ erfÃ¼llt:
     \[
         M_{\text{TO}}(\tau) = M_\odot \cdot \left(\frac{10\,\text{Gyr}}{\tau}\right)^{0.4}
     \]
-    Der zugehörige Turn"=Off"=Punkt hat Effektivtemperatur:
+    Der zugehÃ¶rige Turn"=Off"=Punkt hat Effektivtemperatur:
     \[
         T_{\text{TO}}(\tau) = 5778\,\text{K} \cdot M_{\text{TO}}(\tau)^{0.55}
         = 5778 \cdot \left(\frac{10\,\text{Gyr}}{\tau}\right)^{0.22}
     \]
     Mit zunehmendem $\tau$ sinkt $T_{\text{TO}}$, der Turn"=Off"=Punkt
-    wandert zu rötlicheren Spektralklassen. Da der integrierte Farbindex
-    im Wesentlichen von den massereichsten (leuchtkräftigsten) noch
+    wandert zu rÃ¶tlicheren Spektralklassen. Da der integrierte Farbindex
+    im Wesentlichen von den massereichsten (leuchtkrÃ¤ftigsten) noch
     vorhandenen Sternen bestimmt wird und diese mit wachsendem $\tau$
-    kühler werden, folgt $d(B-V)_{\text{int}}/d\tau > 0$. \qedhere
+    kÃ¼hler werden, folgt $d(B-V)_{\text{int}}/d\tau > 0$. \qedhere
 \end{proof}
 
 \begin{korollar}[Altersbestimmung aus Farbindex]
@@ -1445,20 +1445,20 @@ oder \emph{ähnelt}.
     Wien'sches Gesetz aus der Farbe quantifiziert. \qedhere
 \end{proof}
 
-\subsubsection{Formale Analyse der Spektralklassen-Häufigkeiten}
+\subsubsection{Formale Analyse der Spektralklassen-HÃ¤ufigkeiten}
 
-\begin{lemma}[Zeitliche Entwicklung der Häufigkeitsanteile]
+\begin{lemma}[Zeitliche Entwicklung der HÃ¤ufigkeitsanteile]
 \label{lem:frakevol}
     Sei $f_k(\tau)$ der Anteil der Spektralklasse $k$ zum Zeitpunkt $\tau$.
-    Dann gilt für die Ableitung nach der Zeit:
+    Dann gilt fÃ¼r die Ableitung nach der Zeit:
     \[
         \frac{df_M}{d\tau} > 0, \quad
         \frac{df_O}{d\tau} < 0, \quad
         \frac{df_B}{d\tau} \leq 0
-        \quad \text{für alle } \tau > \SI{3}{\mega yr}
+        \quad \text{fÃ¼r alle } \tau > \SI{3}{\mega yr}
     \]
-    Der Anteil roter M"=Sterne wächst monoton mit dem Clusteralter,
-    während blaue O"= und B"=Sterne verschwinden.
+    Der Anteil roter M"=Sterne wÃ¤chst monoton mit dem Clusteralter,
+    wÃ¤hrend blaue O"= und B"=Sterne verschwinden.
 \end{lemma}
 
 \begin{proof}
@@ -1467,15 +1467,15 @@ oder \emph{ähnelt}.
     Nach $\tau > 10\,\text{Myr}$ sind alle O"=Sterne als Supernovae
     explodiert, also $N_O(\tau > 10\,\text{Myr}) = 0$, woraus
     $f_O(\tau > 10\,\text{Myr}) = 0$ und $df_O/d\tau < 0$
-    für $\tau < 10\,\text{Myr}$.
+    fÃ¼r $\tau < 10\,\text{Myr}$.
 
     B"=Sterne ($2\,M_\odot < M < 16\,M_\odot$) haben Lebensdauern
     zwischen $\approx 10\,\text{Myr}$ und $\approx 1\,\text{Gyr}$;
     ihr Anteil sinkt zwischen diesen Zeitskalen.
 
     M"=Sterne ($M < 0.5\,M_\odot$) haben $\tau_{\text{MS}} > 50\,\text{Gyr}$
-    (länger als das Universum) und verlassen die Hauptreihe praktisch nicht.
-    Da der Gesamtzähler $N(\tau)$ mit der Zeit sinkt (Sterne verlassen
+    (lÃ¤nger als das Universum) und verlassen die Hauptreihe praktisch nicht.
+    Da der GesamtzÃ¤hler $N(\tau)$ mit der Zeit sinkt (Sterne verlassen
     die Sequenz), aber $N_M(\tau) \approx \text{const}$, gilt:
     \[
         f_M(\tau) = \frac{N_M}{N(\tau)} \quad \nearrow \quad
@@ -1491,48 +1491,48 @@ oder \emph{ähnelt}.
     \[
         G_{\mathcal{C}}(\tau_2) \subsetneq G_{\mathcal{C}}(\tau_1)
     \]
-    Der ältere Graph ist ein echter Subgraph des jüngeren, da mit dem
+    Der Ã¤ltere Graph ist ein echter Subgraph des jÃ¼ngeren, da mit dem
     Verschwinden der O"= und B"=Sterne Kanten aus dem Graphen entfernt werden.
 \end{proposition}
 
 \begin{proof}
-    Aus Lemma~\ref{lem:frakevol} folgt, dass für $\tau_2 > \tau_1 > 3\,\text{Myr}$
-    die Knoten $v_O$ und $v_B$ progressiv an Häufigkeit verlieren.
+    Aus Lemma~\ref{lem:frakevol} folgt, dass fÃ¼r $\tau_2 > \tau_1 > 3\,\text{Myr}$
+    die Knoten $v_O$ und $v_B$ progressiv an HÃ¤ufigkeit verlieren.
     Unterschreitet $f_O$ den Schwellwert $\theta$, so werden alle Kanten
     zu $v_O$ aus $E$ entfernt (Definition~\ref{def:clustergraph}).
-    Damit verliert $G_{\mathcal{C}}(\tau_2)$ Kanten gegenüber $G_{\mathcal{C}}(\tau_1)$,
+    Damit verliert $G_{\mathcal{C}}(\tau_2)$ Kanten gegenÃ¼ber $G_{\mathcal{C}}(\tau_1)$,
     ohne dass neue hinzukommen. Daher
     $E(\tau_2) \subsetneq E(\tau_1)$ und somit
     $G_{\mathcal{C}}(\tau_2) \subsetneq G_{\mathcal{C}}(\tau_1)$. \qedhere
 \end{proof}
 
 \begin{bemerkung}
-    Proposition~\ref{prop:inklusion} hat eine schöne physikalische Interpretation:
+    Proposition~\ref{prop:inklusion} hat eine schÃ¶ne physikalische Interpretation:
     Ein alter Sternhaufen ist stets ein ``struktureller Subgraph'' eines jungen,
-    weil er weniger Spektralklassen"=Verbindungen enthält. Der Subgraph"=Algorithmus
+    weil er weniger Spektralklassen"=Verbindungen enthÃ¤lt. Der Subgraph"=Algorithmus
     kann diese Inklusionsrelation in $O(n^3) = O(343)$ Operationen verifizieren.
 \end{bemerkung}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.97\textwidth]{plot11_farbe_haeufigkeit_alter.pdf}
-    \caption{\textbf{Links:} Gestapeltes Flächendiagramm der relativen
-    Häufigkeit jeder Spektralklasse als Funktion des Clusteralters
+    \caption{\textbf{Links:} Gestapeltes FlÃ¤chendiagramm der relativen
+    HÃ¤ufigkeit jeder Spektralklasse als Funktion des Clusteralters
     (logarithmische Zeitachse). Der kontinuierliche Verlust blauer
     Sterne (O, B: oben) und das gleichzeitige relative Anwachsen
-    röterer Klassen (K, M: unten) illustriert Lemma~\ref{lem:frakevol}.
+    rÃ¶terer Klassen (K, M: unten) illustriert Lemma~\ref{lem:frakevol}.
     \textbf{Rechts:} Integrierter Farb"=Index $B-V$ als Funktion des
-    Clusteralters für repräsentative offene und Kugelsternhaufen.
-    Der monotone Anstieg bestätigt Satz~\ref{satz:bv_alter};
+    Clusteralters fÃ¼r reprÃ¤sentative offene und Kugelsternhaufen.
+    Der monotone Anstieg bestÃ¤tigt Satz~\ref{satz:bv_alter};
     die Sonne ($B-V = 0.65$, gestrichelt) dient als Referenz.}
     \label{fig:alter_farbe}
 \end{figure}
 
-\subsection{Ähnlichkeitsmaße und Subgraph-Inklusion}
+\subsection{Ã„hnlichkeitsmaÃŸe und Subgraph-Inklusion}
 
-\begin{definition}[Spektrale Kosinus-Ähnlichkeit]
+\begin{definition}[Spektrale Kosinus-Ã„hnlichkeit]
 \label{def:aehn}
-    Die \emph{spektrale Ähnlichkeit} zweier Sternhaufen
+    Die \emph{spektrale Ã„hnlichkeit} zweier Sternhaufen
     $\mathcal{C}_1$ und $\mathcal{C}_2$ ist definiert als:
     \[
         \text{sim}_{\cos}(\mathcal{C}_1, \mathcal{C}_2)
@@ -1540,7 +1540,7 @@ oder \emph{ähnelt}.
                {\|\mathbf{f}^{(1)}\| \cdot \|\mathbf{f}^{(2)}\|}
         \in [0, 1]
     \]
-    Zusätzlich definieren wir die \emph{LCS-Ähnlichkeit} auf den
+    ZusÃ¤tzlich definieren wir die \emph{LCS-Ã„hnlichkeit} auf den
     Signaturvektoren:
     \[
         \text{sim}_{\text{LCS}}(\mathcal{C}_1, \mathcal{C}_2)
@@ -1550,7 +1550,7 @@ oder \emph{ähnelt}.
     \]
 \end{definition}
 
-\begin{satz}[Monotonie der LCS-Ähnlichkeit mit Clusteralter]
+\begin{satz}[Monotonie der LCS-Ã„hnlichkeit mit Clusteralter]
 \label{satz:lcs_monoton}
     Seien $\mathcal{C}_{\text{jung}}$ und $\mathcal{C}_{\text{alt}}$ zwei
     Sternhaufen mit $\tau_{\text{jung}} \ll \tau_{\text{alt}}$.
@@ -1559,43 +1559,43 @@ oder \emph{ähnelt}.
         \text{sim}_{\text{LCS}}(\mathcal{C}_{\text{alt}}, \mathcal{C}_{\text{alt}'})
         > \text{sim}_{\text{LCS}}(\mathcal{C}_{\text{jung}}, \mathcal{C}_{\text{alt}})
     \]
-    für zwei verschiedene alte Haufen $\mathcal{C}_{\text{alt}}$ und
-    $\mathcal{C}_{\text{alt}'}$, sofern sie ähnliche Metallizitäten
-    und IMFs aufweisen. Alte Haufen sind einander ähnlicher als
+    fÃ¼r zwei verschiedene alte Haufen $\mathcal{C}_{\text{alt}}$ und
+    $\mathcal{C}_{\text{alt}'}$, sofern sie Ã¤hnliche MetallizitÃ¤ten
+    und IMFs aufweisen. Alte Haufen sind einander Ã¤hnlicher als
     junge und alte Haufen.
 \end{satz}
 
 \begin{proof}
     Aus Proposition~\ref{prop:inklusion} wissen wir, dass alte Haufen
     weniger Kanten (nur K-M-Dominanz, kaum O-B) besitzen.
-    Ihre Graphen sind einfach und ähneln sich daher:
+    Ihre Graphen sind einfach und Ã¤hneln sich daher:
     Der Signaturvektor eines alten Haufens hat die Form
     $\boldsymbol{\sigma}^{\text{alt}} \approx (0, 0, \epsilon, \epsilon', \sigma_G, \sigma_K, \sigma_M)$
-    mit kleinen Werten für O, B, A.
+    mit kleinen Werten fÃ¼r O, B, A.
     Zwei verschiedene alte Haufen haben also fast identische
     Signaturvektoren (beide dominiert von K und M),
     woraus eine hohe LCS folgt. Ein junger Haufen hingegen besitzt
-    viele nichtNull"=Einträge für O, B, A, die im alten Haufen fehlen~--
+    viele nichtNull"=EintrÃ¤ge fÃ¼r O, B, A, die im alten Haufen fehlen~--
     dadurch sinkt das LCS zwischen jung und alt. \qedhere
 \end{proof}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.97\textwidth]{plot12_lcs_aehnlichkeit.pdf}
-    \caption{\textbf{Links:} LCS"=Ähnlichkeitsmatrix für sechs Clustertypen
+    \caption{\textbf{Links:} LCS"=Ã„hnlichkeitsmatrix fÃ¼r sechs Clustertypen
     von OB"=Assoziationen (1 Myr) bis zu alten Kugelsternhaufen (13 Gyr).
-    Die hohen Werte in der unteren rechten Ecke (alte Haufen) bestätigen
+    Die hohen Werte in der unteren rechten Ecke (alte Haufen) bestÃ¤tigen
     Satz~\ref{satz:lcs_monoton}: Alte Haufen sind strukturell einander
-    ähnlich (LCS nahe 7), während jung"=alt"=Paare geringe Ähnlichkeit
-    zeigen. \textbf{Rechts:} Kosinus"=Ähnlichkeit der spektralen
-    Häufigkeitsvektoren: Das gleiche Muster zeigt sich~-- alte Haufen
-    (K/M"=dominiert) bilden einen ähnlichen Cluster, junge Haufen
+    Ã¤hnlich (LCS nahe 7), wÃ¤hrend jung"=alt"=Paare geringe Ã„hnlichkeit
+    zeigen. \textbf{Rechts:} Kosinus"=Ã„hnlichkeit der spektralen
+    HÃ¤ufigkeitsvektoren: Das gleiche Muster zeigt sich~-- alte Haufen
+    (K/M"=dominiert) bilden einen Ã¤hnlichen Cluster, junge Haufen
     (O/B"=reich) einen anderen. Der Subgraph"=Algorithmus quantifiziert
-    diese Strukturähnlichkeit formal und algorithmisch.}
+    diese StrukturÃ¤hnlichkeit formal und algorithmisch.}
     \label{fig:aehnlichkeit}
 \end{figure}
 
-\subsection{Spektralklassen-Häufigkeit in verschiedenen Clustertypen}
+\subsection{Spektralklassen-HÃ¤ufigkeit in verschiedenen Clustertypen}
 
 \begin{proposition}[Charakteristische Farb-Signaturen von Clustertypen]
 \label{prop:typen}
@@ -1603,10 +1603,10 @@ oder \emph{ähnelt}.
     unterschiedliche Farb-Dominanzen:
     \begin{enumerate}
         \item \textbf{OB"=Assoziationen} ($\tau < 50\,\text{Myr}$):
-              Blau"=weiß dominiert. $f_{O+B} > 0.15$,
+              Blau"=weiÃŸ dominiert. $f_{O+B} > 0.15$,
               $(B-V)_{\text{int}} < 0$.
         \item \textbf{Offene Haufen} ($\tau = 0.1$--$5\,\text{Gyr}$):
-              Gelb"=weiß bis orange. $f_{F+G+K} > 0.5$,
+              Gelb"=weiÃŸ bis orange. $f_{F+G+K} > 0.5$,
               $(B-V)_{\text{int}} = 0.3$--$0.8$.
         \item \textbf{Kugelsternhaufen} ($\tau = 10$--$13\,\text{Gyr}$):
               Orange"=rot dominiert. $f_{K+M} > 0.7$,
@@ -1615,10 +1615,10 @@ oder \emph{ähnelt}.
 \end{proposition}
 
 \begin{proof}
-    OB"=Assoziationen: Für $\tau = 10\,\text{Myr}$ ist
+    OB"=Assoziationen: FÃ¼r $\tau = 10\,\text{Myr}$ ist
     $M_{\text{TO}} = 10\cdot(10/0.01)^{0.4} \approx 16\,M_\odot$ (B"=Stern),
     d.\,h.\ alle Massen oberhalb $16\,M_\odot$ sind noch vorhanden.
-    Der B"=V"=Index eines B0"=Sterns beträgt $\approx -0.30$.
+    Der B"=V"=Index eines B0"=Sterns betrÃ¤gt $\approx -0.30$.
 
     Offene Haufen ($\tau = 1\,\text{Gyr}$):
     $M_{\text{TO}} = 10\cdot(10/1)^{0.4} \approx 2.0\,M_\odot$ (A/F"=Stern),
@@ -1632,14 +1632,14 @@ oder \emph{ähnelt}.
 \begin{beispiel}[Bekannte Sternhaufen und ihre Subgraph-Signaturen]
     Tabelle~\ref{tab:haufen} zeigt reale Sternhaufen mit typischen
     Parametern. Die Subgraph"=Inklusion $M\,13 \subsetneq \text{Plejaden}$
-    lässt sich direkt am Signaturvektor ablesen: M\,13 enthält nur
+    lÃ¤sst sich direkt am Signaturvektor ablesen: M\,13 enthÃ¤lt nur
     Signaturen der Klassen G, K, M, die auch im Plejaden"=Graphen
-    vorhanden sind (dort aber ergänzt um O, B, A).
+    vorhanden sind (dort aber ergÃ¤nzt um O, B, A).
 \end{beispiel}
 
 \begin{table}[ht]
 \centering
-\caption{Repräsentative Sternhaufen mit spektralen Parametern}
+\caption{ReprÃ¤sentative Sternhaufen mit spektralen Parametern}
 \label{tab:haufen}
 \small
 \begin{tabular}{llrrrl}
@@ -1661,10 +1661,10 @@ M~13       & Kugelstern     & 11.6  & 300000 & $+0.71$ & K, M \\
 
 \subsection{Anwendung: Effiziente Katalogklassifikation}
 
-\begin{satz}[Optimalität des Subgraph Algorithmus für Clustervergleiche]
+\begin{satz}[OptimalitÃ¤t des Subgraph Algorithmus fÃ¼r Clustervergleiche]
 \label{satz:opt_cluster}
-    Unter der Annahme, dass jeder Clustervergleich die vollständige
-    Adjazenzmatrix ($n^2$ Einträge) einlesen muss, benötigt jeder
+    Unter der Annahme, dass jeder Clustervergleich die vollstÃ¤ndige
+    Adjazenzmatrix ($n^2$ EintrÃ¤ge) einlesen muss, benÃ¶tigt jeder
     korrekte Vergleichsalgorithmus mindestens $\Omega(n^2)$ Zeit.
     Der Subgraph"=Algorithmus ist mit $O(n^3)$ asymptotisch optimal
     bis auf einen Faktor $n$.
@@ -1672,15 +1672,15 @@ M~13       & Kugelstern     & 11.6  & 300000 & $+0.71$ & K, M \\
 
 \begin{proof}
     \textbf{Untere Schranke:} Jeder korrekte Algorithmus muss alle $n^2$
-    Einträge der Adjazenzmatrix lesen (Informationstheorie: ein einzelner
-    ungelesener Eintrag kann die Subgraph"=Eigenschaft ändern).
+    EintrÃ¤ge der Adjazenzmatrix lesen (Informationstheorie: ein einzelner
+    ungelesener Eintrag kann die Subgraph"=Eigenschaft Ã¤ndern).
     Also gilt $T \geq \Omega(n^2)$.
 
-    \textbf{Obere Schranke:} Der Subgraph"=Algorithmus benötigt
-    $O(n^2)$ für die Signaturberechnung und $O(n \cdot n^2) = O(n^3)$
-    für die $n$ LCS"=Vergleiche (Lemma~\ref{lem:komplex}).
+    \textbf{Obere Schranke:} Der Subgraph"=Algorithmus benÃ¶tigt
+    $O(n^2)$ fÃ¼r die Signaturberechnung und $O(n \cdot n^2) = O(n^3)$
+    fÃ¼r die $n$ LCS"=Vergleiche (Lemma~\ref{lem:komplex}).
 
-    \textbf{Lücke:} Die Lücke zwischen $\Omega(n^2)$ und $O(n^3)$
+    \textbf{LÃ¼cke:} Die LÃ¼cke zwischen $\Omega(n^2)$ und $O(n^3)$
     entspricht dem Faktor $n = 7$ (Anzahl der Rotationen).
     Unter SETH kann der LCS"=Anteil nicht auf $O(n^{2-\varepsilon})$
     verbessert werden, sodass $O(n^3)$ bedingt optimal ist. \qedhere
@@ -1690,10 +1690,10 @@ M~13       & Kugelstern     & 11.6  & 300000 & $+0.71$ & K, M \\
 \section{Zusammenfassung}
 %===========================================================================
 
-\subsection{Überblick der Hauptergebnisse}
+\subsection{Ãœberblick der Hauptergebnisse}
 
-Diese Arbeit hat gezeigt, dass die Farbe eines Sterns eine vollständig
-deterministisch aus seiner Oberflächentemperatur ableitbare Größe ist.
+Diese Arbeit hat gezeigt, dass die Farbe eines Sterns eine vollstÃ¤ndig
+deterministisch aus seiner OberflÃ¤chentemperatur ableitbare GrÃ¶ÃŸe ist.
 Das theoretische Fundament bilden drei miteinander verbundene Gesetze,
 die aus den ersten Prinzipien der Quantenmechanik und der statistischen
 Mechanik formal hergeleitet wurden:
@@ -1703,20 +1703,20 @@ Mechanik formal hergeleitet wurden:
     B_\lambda(\lambda, T) = \frac{2hc^2}{\lambda^5} \cdot
     \frac{1}{e^{hc/(\lambda k_B T)} - 1}
 \]
-Diese Formel beschreibt das vollständige Emissionsspektrum eines Schwarzkörpers.
+Diese Formel beschreibt das vollstÃ¤ndige Emissionsspektrum eines SchwarzkÃ¶rpers.
 Sie wurde aus der Quantisierung der elektromagnetischen Feldmoden
 (Lemma~\ref{lem:moden}) und der Planckschen mittleren Energie
-(Lemma~\ref{lem:energie}) hergeleitet und löst die Ultraviolettkatastrophe
+(Lemma~\ref{lem:energie}) hergeleitet und lÃ¶st die Ultraviolettkatastrophe
 der klassischen Rayleigh"=Jeans"=Formel (Satz~\ref{satz:uv}).
 
 \textbf{Satz~\ref{satz:wien}~-- Wien'sches Verschiebungsgesetz:}
 \[
     \lambda_{\max} \cdot T = b = \SI{2.8978e-3}{\metre\kelvin}
 \]
-Die dominierende Wellenlänge~-- und damit die wahrgenommene Farbe~-- ist
-umgekehrt proportional zur Temperatur. Ein 10"=mal heißerer Stern hat sein
-Strahlungsmaximum bei einem Zehntel der Wellenlänge.
-Die Eindeutigkeit der Lösung wurde formal mit dem Zwischenwertsatz und
+Die dominierende WellenlÃ¤nge~-- und damit die wahrgenommene Farbe~-- ist
+umgekehrt proportional zur Temperatur. Ein 10"=mal heiÃŸerer Stern hat sein
+Strahlungsmaximum bei einem Zehntel der WellenlÃ¤nge.
+Die Eindeutigkeit der LÃ¶sung wurde formal mit dem Zwischenwertsatz und
 der Analyse von $f(x) = (5-x)e^x - 5$ bewiesen.
 
 \textbf{Satz~\ref{satz:stefan}~-- Stefan"=Boltzmann"=Gesetz:}
@@ -1724,20 +1724,20 @@ der Analyse von $f(x) = (5-x)e^x - 5$ bewiesen.
     j^* = \sigma T^4, \quad
     \sigma = \frac{2\pi^5 k_B^4}{15 h^3 c^2}
 \]
-Die Gesamtstrahlungsleistung wächst mit der vierten Potenz der Temperatur,
+Die Gesamtstrahlungsleistung wÃ¤chst mit der vierten Potenz der Temperatur,
 hergeleitet durch Integration der Planck"=Funktion unter Verwendung
 des Bose"=Einstein"=Integrals $\int_0^\infty u^3/(e^u-1)\,du = \pi^4/15$.
 
-\subsection{Spektralklassen-Häufigkeit und Farbverteilung in Sternhaufen}
+\subsection{Spektralklassen-HÃ¤ufigkeit und Farbverteilung in Sternhaufen}
 
 Das neue Kapitel~9 dieser Arbeit hat den Subgraph"=Algorithmus als
-präzises Werkzeug zur Klassifikation und zum Vergleich von Sternhaufen
+prÃ¤zises Werkzeug zur Klassifikation und zum Vergleich von Sternhaufen
 formal entwickelt. Die zentralen Ergebnisse lassen sich wie folgt
 zusammenfassen:
 
 \textbf{Satz~\ref{satz:imf}~-- Kroupa"=IMF und Farbdominanz:}
 Unter der universellen Anfangsmassenfunktion dominieren M"=Sterne
-(rot, $T < 3700\,\text{K}$) stets zahlenmäßig:
+(rot, $T < 3700\,\text{K}$) stets zahlenmÃ¤ÃŸig:
 \[
     f_M \approx 0.76, \quad f_O \approx 2 \times 10^{-4}
 \]
@@ -1752,53 +1752,53 @@ aus einer einzigen photometrischen Messung -- eine direkte Anwendung
 des Wien'schen Verschiebungsgesetzes (Satz~\ref{satz:wien}).
 
 \textbf{Satz~\ref{satz:subgraph_cluster}~-- Korrektheit des Subgraph Algorithmus:}
-Der Subgraph"=Algorithmus entscheidet in $O(n^3) = O(343)$ für $n = 7$
+Der Subgraph"=Algorithmus entscheidet in $O(n^3) = O(343)$ fÃ¼r $n = 7$
 Spektralklassen korrekt, ob ein Haufen strukturell in einem anderen
-enthalten ist. Die Injektivität der Signatur"=Funktion (bewiesen via
+enthalten ist. Die InjektivitÃ¤t der Signatur"=Funktion (bewiesen via
 disjunkte Intervalle der Spaltengewichtung $j \cdot 2^7$) garantiert
 dabei fehlerfreie Erkennung.
 
 \textbf{Proposition~\ref{prop:inklusion}~-- Zeitliche Subgraph"=Inklusion:}
 Mit zunehmendem Alter wird der Spektralklassen"=Graph eines Haufens
-ein echter Subgraph des früheren Graphen, da blaue Klassen (O, B)
+ein echter Subgraph des frÃ¼heren Graphen, da blaue Klassen (O, B)
 durch Hauptreihenabbrennen verschwinden. Der Subgraph"=Algorithmus
 kodiert damit direkt die stellare Evolution.
 
-\textbf{Verbindung zur Schwarzkörperstrahlung:}
-Die Farbe eines Sterns bestimmt über das Wien'sche Gesetz die
-Temperatur und damit~-- über die IMF~-- die statistische Häufigkeit.
+\textbf{Verbindung zur SchwarzkÃ¶rperstrahlung:}
+Die Farbe eines Sterns bestimmt Ã¼ber das Wien'sche Gesetz die
+Temperatur und damit~-- Ã¼ber die IMF~-- die statistische HÃ¤ufigkeit.
 Hohe Temperatur (blaue Farbe) korreliert mit:
 \begin{itemize}
-    \item Großer Masse,
+    \item GroÃŸer Masse,
     \item kurzer Lebensdauer,
-    \item geringer zahlenmäßiger Häufigkeit im Haufen,
-    \item frühem Verschwinden aus dem Cluster"=Graphen.
+    \item geringer zahlenmÃ¤ÃŸiger HÃ¤ufigkeit im Haufen,
+    \item frÃ¼hem Verschwinden aus dem Cluster"=Graphen.
 \end{itemize}
 Die gesamte Kette ``Farbe $\to$ Temperatur $\to$ Masse $\to$ Lebensdauer
-$\to$ Häufigkeit'' ist quantitativ durch die in dieser Arbeit bewiesenen
-Sätze lückenlos beschrieben.
+$\to$ HÃ¤ufigkeit'' ist quantitativ durch die in dieser Arbeit bewiesenen
+SÃ¤tze lÃ¼ckenlos beschrieben.
 
 
 
 Die Harvard"=Spektralklassifikation (Tabelle~\ref{tab:spektral}) liefert
-die direkte empirische Bestätigung aller theoretischen Vorhersagen für
+die direkte empirische BestÃ¤tigung aller theoretischen Vorhersagen fÃ¼r
 hunderttausende realer Sterne. Das Hertzsprung"=Russell"=Diagramm
 verbindet Temperatur, Leuchtkraft, Radius und Entwicklungsstadium
-zu einem kohärenten Bild stellarer Physik.
+zu einem kohÃ¤renten Bild stellarer Physik.
 
-\subsection{Grenzen des Schwarzkörpermodells}
+\subsection{Grenzen des SchwarzkÃ¶rpermodells}
 
-Das ideale Schwarzkörpermodell ist eine Näherung, die in der Praxis
+Das ideale SchwarzkÃ¶rpermodell ist eine NÃ¤herung, die in der Praxis
 modifiziert werden muss:
 \begin{itemize}
     \item \emph{Absorptionslinien:} Reale Sternspektren zeigen Fraunhofer"=Absorptionslinien,
-          verursacht durch kühle Gasatome in der Atmosphäre.
-    \item \emph{Nicht"=LTE:} In den äußeren Atmosphärenschichten ist das
-          thermische Gleichgewicht nicht erfüllt.
-    \item \emph{Magnetische Strukturen:} Sonnenflecken, Chromosphäre und
-          Korona weichen lokal stark vom Schwarzkörpermodell ab.
+          verursacht durch kÃ¼hle Gasatome in der AtmosphÃ¤re.
+    \item \emph{Nicht"=LTE:} In den Ã¤uÃŸeren AtmosphÃ¤renschichten ist das
+          thermische Gleichgewicht nicht erfÃ¼llt.
+    \item \emph{Magnetische Strukturen:} Sonnenflecken, ChromosphÃ¤re und
+          Korona weichen lokal stark vom SchwarzkÃ¶rpermodell ab.
     \item \emph{Interstellare Extinktion:} Staub und Gas zwischen Stern und
-          Beobachter röten und schwächen das Spektrum.
+          Beobachter rÃ¶ten und schwÃ¤chen das Spektrum.
 \end{itemize}
 
 \subsection{Zentrale Schlussfolgerung}
@@ -1812,142 +1812,142 @@ der elegantesten Anwendungen der Quantenphysik auf kosmologische Skalen.
 \section{Ausblick}
 %===========================================================================
 
-\subsection{Erweiterungen des Schwarzkörpermodells für reale Sterne}
+\subsection{Erweiterungen des SchwarzkÃ¶rpermodells fÃ¼r reale Sterne}
 
-Das in dieser Arbeit formell entwickelte Schwarzkörpermodell stellt die
+Das in dieser Arbeit formell entwickelte SchwarzkÃ¶rpermodell stellt die
 fundamentale Basis dar, von der aus moderne Sternphysik und Spektroskopie
 entwickelt werden. Reale Sterne weichen in mehrfacher Hinsicht von diesem
 idealisierten Bild ab, was ein breites Feld aktiver Forschung definiert.
 
-\textbf{Dreidimensionale Atmosphärenmodelle:}
-Fortgeschrittene Atmosphärencodes wie \texttt{ATLAS12}~\cite{kurucz1993},
+\textbf{Dreidimensionale AtmosphÃ¤renmodelle:}
+Fortgeschrittene AtmosphÃ¤rencodes wie \texttt{ATLAS12}~\cite{kurucz1993},
 \texttt{MARCS}~\cite{gustafsson2008} und \texttt{PHOENIX}~\cite{hauschildt1999}
-lösen die vollständigen Strahlungstransfergleichungen unter Berücksichtigung
-von Millionen atomarer und molekularer Spektrallinien. Die nächste Generation
+lÃ¶sen die vollstÃ¤ndigen Strahlungstransfergleichungen unter BerÃ¼cksichtigung
+von Millionen atomarer und molekularer Spektrallinien. Die nÃ¤chste Generation
 dieser Modelle verbindet dreidimensionale magnetohydrodynamische (MHD) Simulationen
-der Konvektionszone mit dem Strahlungstransport in der Photosphäre.
+der Konvektionszone mit dem Strahlungstransport in der PhotosphÃ¤re.
 Projekte wie \texttt{CO5BOLD}~\cite{freytag2012} und \texttt{Stagger}~\cite{magic2013}
-berechnen granulationsaufgelöste 3D"=Atmosphären; deren Spektren weichen von
-1D"=Schwarzkörpern in der Linienbildung um bis zu 0.1--0.3\,dex ab.
+berechnen granulationsaufgelÃ¶ste 3D"=AtmosphÃ¤ren; deren Spektren weichen von
+1D"=SchwarzkÃ¶rpern in der Linienbildung um bis zu 0.1--0.3\,dex ab.
 
 \textbf{Nicht"=LTE"=Strahlungstransfer:}
-In den äußeren Schichten aller Sterne ist das lokale thermodynamische
-Gleichgewicht (LTE) nicht mehr erfüllt, da die Photonen mittlere freie
-Weglängen haben, die mit der Atmosphärenskalenhöhe vergleichbar sind.
+In den Ã¤uÃŸeren Schichten aller Sterne ist das lokale thermodynamische
+Gleichgewicht (LTE) nicht mehr erfÃ¼llt, da die Photonen mittlere freie
+WeglÃ¤ngen haben, die mit der AtmosphÃ¤renskalenhÃ¶he vergleichbar sind.
 Non"=LTE"=Rechnungen (Codes: \texttt{NLTE3D}~\cite{bergemann2012},
 \texttt{MULTI}~\cite{carlsson1986}) zeigen, dass die Besetzungszahlen
 atomarer Niveaus systematisch von der Boltzmann"=Verteilung abweichen.
-Dies hat direkte Auswirkungen auf die Bestimmung von Elementhäufigkeiten
-aus Absorptionslinien, insbesondere für Eisen, Sauerstoff und Lithium.
+Dies hat direkte Auswirkungen auf die Bestimmung von ElementhÃ¤ufigkeiten
+aus Absorptionslinien, insbesondere fÃ¼r Eisen, Sauerstoff und Lithium.
 
-\textbf{Magnetische Sternflecken und Aktivitätszyklen:}
+\textbf{Magnetische Sternflecken und AktivitÃ¤tszyklen:}
 Sonnenflecken ($T_{\text{Fleck}} \approx 3700\,\text{K}$) sind Regionen,
 in denen starke Magnetfelder ($B \approx 0.3\,\text{T}$) die Konvektion
-unterdrücken und die lokale Abkühlung verursachen. Ihr Einfluss auf das
+unterdrÃ¼cken und die lokale AbkÃ¼hlung verursachen. Ihr Einfluss auf das
 integrale Spektrum der Sonne ist klein ($< 0.1\,\%$), bei aktiven Sternen
-jedoch erheblich. Hochpräzisionsphotometrie mit TESS~\cite{ricker2015}
+jedoch erheblich. HochprÃ¤zisionsphotometrie mit TESS~\cite{ricker2015}
 und Kepler~\cite{borucki2010} hat Starspot"=Bedeckungsgrade von bis zu
 40\,\% bei jungen, aktiven M"=Zwergen gemessen, was die Spektralklasse
 um eine halbe Unterklasse verschieben kann.
 
 \textbf{Chemisch peculiare Sterne (Ap, Am, HgMn):}
 Eine Klasse von A"= und B"=Sternen zeigt dramatische
-Elementhäufigkeitsanomalien: Quecksilber kann gegenüber der Sonnenabundanz
+ElementhÃ¤ufigkeitsanomalien: Quecksilber kann gegenÃ¼ber der Sonnenabundanz
 um den Faktor $10^6$ angereichert sein, Mangan um $10^5$.
 Diese Anomalien entstehen durch \emph{Diffusion} und \emph{Radiationsdruck}:
 Bestimmte Elemente werden durch Strahlungsdruck nach oben getrieben,
-andere gravitativ nach unten abgesenkt. Das Schwarzkörpermodell ist
-für diese Sterne schlechter als üblich; ihre Spektren zeigen markante,
+andere gravitativ nach unten abgesenkt. Das SchwarzkÃ¶rpermodell ist
+fÃ¼r diese Sterne schlechter als Ã¼blich; ihre Spektren zeigen markante,
 atypische Linien. PLATO~\cite{rauer2014} und Gaia~\cite{prusti2016}
-liefern gegenwärtig große Kataloge solcher Objekte.
+liefern gegenwÃ¤rtig groÃŸe Kataloge solcher Objekte.
 
-\subsection{Hochpräzisionsteleskopie und neue Beobachtungsfenster}
+\subsection{HochprÃ¤zisionsteleskopie und neue Beobachtungsfenster}
 
 \textbf{James Webb Space Telescope (JWST):}
 Seit seiner Inbetriebnahme im Jahr 2022 revolutioniert das
 JWST~\cite{gardner2006} die Infrarotspektroskopie im Bereich 0.6--28\,$\mu$m.
-Für M"=Sterne ($T < 3700\,\text{K}$), deren Schwarzkörpermaximum
-bei $> 780\,\text{nm}$ liegt, liefert JWST erstmals hochaufgelöste
-Spektren, die vollständig das Strahlungsmaximum abdecken.
-Gleichzeitig erlaubt JWST die direkte Charakterisierung von Atmosphären
-erdähnlicher Exoplaneten in den habitablen Zonen kühler M"=Zwerge
+FÃ¼r M"=Sterne ($T < 3700\,\text{K}$), deren SchwarzkÃ¶rpermaximum
+bei $> 780\,\text{nm}$ liegt, liefert JWST erstmals hochaufgelÃ¶ste
+Spektren, die vollstÃ¤ndig das Strahlungsmaximum abdecken.
+Gleichzeitig erlaubt JWST die direkte Charakterisierung von AtmosphÃ¤ren
+erdÃ¤hnlicher Exoplaneten in den habitablen Zonen kÃ¼hler M"=Zwerge
 durch Transmissionsspektroskopie~\cite{lustigyaeger2022}.
-Die Analyse von Licht, das durch diese Atmosphären hindurchgefiltert wird,
-erfordert ein präzises Modell des Sternspektrums (Satz~\ref{satz:planck}),
+Die Analyse von Licht, das durch diese AtmosphÃ¤ren hindurchgefiltert wird,
+erfordert ein prÃ¤zises Modell des Sternspektrums (Satz~\ref{satz:planck}),
 das als ``Hintergrundspektrum'' abgezogen werden muss.
 
 \textbf{European Extremely Large Telescope (ELT):}
 Das ELT~\cite{gilmozzi2007} mit seinem 39"=Meter"=Hauptspiegel, dessen
-Erstlicht 2028 erwartet wird, wird in der adaptiven Optik Winkelauflösungen
-von $\approx 3\,\text{mas}$ im nahen Infrarot erreichen. Dies ermöglicht:
+Erstlicht 2028 erwartet wird, wird in der adaptiven Optik WinkelauflÃ¶sungen
+von $\approx 3\,\text{mas}$ im nahen Infrarot erreichen. Dies ermÃ¶glicht:
 \begin{itemize}
-    \item Direkte Abbildung großer Exoplaneten in Sonnennähe mit Messung
+    \item Direkte Abbildung groÃŸer Exoplaneten in SonnennÃ¤he mit Messung
           ihres Reflexionsspektrums und Albedo,
-    \item hochaufgelöste Spektroskopie einzelner Sterne in anderen Galaxien
+    \item hochaufgelÃ¶ste Spektroskopie einzelner Sterne in anderen Galaxien
           (Andromedagalaxie, Magellansche Wolken),
     \item Temperatur"= und Leuchtkraftmessungen in dichten Sternhaufen.
 \end{itemize}
 
 \textbf{Rubin Observatory Legacy Survey of Space and Time (LSST):}
 Das Rubin Observatory~\cite{ivezic2019} wird ab ca. 2026 den gesamten
-südlichen Himmel in sechs Farbbändern ($ugrizy$, 320--1060\,nm) alle
-drei Tage neu aufnehmen. Der Surveykatalog wird über 20 Milliarden Objekte
-mit präzisen Farbindizes umfassen. Da Farbindizes direkte Observablen
-des Schwarzkörperspektrums sind (Wien'sches Gesetz $\Rightarrow$
-Temperatur $\Rightarrow$ Spektralklasse), ermöglicht LSST die automatische
+sÃ¼dlichen Himmel in sechs FarbbÃ¤ndern ($ugrizy$, 320--1060\,nm) alle
+drei Tage neu aufnehmen. Der Surveykatalog wird Ã¼ber 20 Milliarden Objekte
+mit prÃ¤zisen Farbindizes umfassen. Da Farbindizes direkte Observablen
+des SchwarzkÃ¶rperspektrums sind (Wien'sches Gesetz $\Rightarrow$
+Temperatur $\Rightarrow$ Spektralklasse), ermÃ¶glicht LSST die automatische
 photometrische Klassifikation aller Sterne in einem Drittel der Galaxis.
 
 \textbf{PLATO-Mission:}
-Die ESA"=Mission PLATO~\cite{rauer2014} (geplant für 2026/27) wird
+Die ESA"=Mission PLATO~\cite{rauer2014} (geplant fÃ¼r 2026/27) wird
 seismische Schwingungen von Sternen ($p$"=Moden) messen.
-Asteroseismologie ermöglicht~-- kombiniert mit der Spektraldaten~-- die
+Asteroseismologie ermÃ¶glicht~-- kombiniert mit der Spektraldaten~-- die
 gleichzeitige Bestimmung von Sternmasse, Radius, Alter und Temperatur
 mit Genauigkeiten von $1\,\%$ (Radius), $3\,\%$ (Masse) und
-$10\,\%$ (Alter). Die Präzisionstemperaturen aus der Asteroseismologie
-können die Wien'sche Temperaturbestimmung auf $\pm 30\,\text{K}$
+$10\,\%$ (Alter). Die PrÃ¤zisionstemperaturen aus der Asteroseismologie
+kÃ¶nnen die Wien'sche Temperaturbestimmung auf $\pm 30\,\text{K}$
 kalibrieren~\cite{chaplin2013}.
 
 \subsection{Kompakte Objekte und extreme Strahlungsregime}
 
-\textbf{Weiße Zwerge als Thermometer:}
-Weiße Zwerge sind Überreste von Sternen bis $\approx 8\,M_\odot$,
+\textbf{WeiÃŸe Zwerge als Thermometer:}
+WeiÃŸe Zwerge sind Ãœberreste von Sternen bis $\approx 8\,M_\odot$,
 bestehend aus entartetem Kohlenstoff"=Sauerstoff mit Massen
 $0.5$--$1.4\,M_\odot$ und Radien vergleichbar der Erde.
-Frisch gebildete Weiße Zwerge haben $T > 100\,000\,\text{K}$
+Frisch gebildete WeiÃŸe Zwerge haben $T > 100\,000\,\text{K}$
 und emittieren als blaue UV"=Strahler; nach $10^{10}$\,Jahren
-kühlen sie auf $T \approx 4000\,\text{K}$ ab (orangerot).
-Die Kühlsequenz weißer Zwerge ist ein kosmischer Altersindikator
-(``Weiße"=Zwerg"=Uhr'')~\cite{fontaine2001}. Gaia hat tausende neuer
-Weißer Zwerge entdeckt und ihre Temperaturen via Schwarzkörperfit
+kÃ¼hlen sie auf $T \approx 4000\,\text{K}$ ab (orangerot).
+Die KÃ¼hlsequenz weiÃŸer Zwerge ist ein kosmischer Altersindikator
+(``WeiÃŸe"=Zwerg"=Uhr'')~\cite{fontaine2001}. Gaia hat tausende neuer
+WeiÃŸer Zwerge entdeckt und ihre Temperaturen via SchwarzkÃ¶rperfit
 bestimmt.
 
-\textbf{Neutronensterne und Röntgenstrahlung:}
+\textbf{Neutronensterne und RÃ¶ntgenstrahlung:}
 Neutronensterne mit Radien $R \approx 12\,\text{km}$ und Massen
-$\approx 1.4\,M_\odot$ besitzen Oberflächentemperaturen
+$\approx 1.4\,M_\odot$ besitzen OberflÃ¤chentemperaturen
 $T \approx 10^6\,\text{K}$ kurz nach ihrer Geburt in einer Supernova.
 Das Wien"=Maximum liegt bei:
 \[
     \lambda_{\max} = \frac{b}{10^6\,\text{K}} \approx 2.9\,\text{nm}
-    \quad \text{(weiche Röntgenstrahlung)}
+    \quad \text{(weiche RÃ¶ntgenstrahlung)}
 \]
 Die beobachteten Spektren werden durch die Gravitationsrotverschiebung
 $\lambda_{\text{obs}} = \lambda_{\text{em}} \cdot (1 + GM/(Rc^2))$
 verschoben~\cite{lattimer2012}, was eine direkte Messung des
-Kompaktheitsverhältnisses $GM/(Rc^2)$ aus dem Spektrum erlaubt.
-Zukünftige Röntgenteleskope (ATHENA"=ESA, geplant 2037) werden
-Neutronensternspektren mit bisher unerreichter Auflösung messen.
+KompaktheitsverhÃ¤ltnisses $GM/(Rc^2)$ aus dem Spektrum erlaubt.
+ZukÃ¼nftige RÃ¶ntgenteleskope (ATHENA"=ESA, geplant 2037) werden
+Neutronensternspektren mit bisher unerreichter AuflÃ¶sung messen.
 
-\textbf{Schwarze Löcher und Hawking"=Strahlung:}
-Quantenfeldtheoretisch strahlen Schwarze Löcher mit einer
+\textbf{Schwarze LÃ¶cher und Hawking"=Strahlung:}
+Quantenfeldtheoretisch strahlen Schwarze LÃ¶cher mit einer
 Temperatur~\cite{hawking1975}:
 \[
     T_H = \frac{\hbar c^3}{8\pi G M k_B}
     \approx \frac{6.17 \cdot 10^{-8}\,\text{K}}{M/M_\odot}
 \]
-Für stellare Schwarze Löcher ($M \sim 10\,M_\odot$) ist $T_H \sim 10^{-9}\,\text{K}$~--
-völlig unbeobachtbar. Das Wien"=Spektrum der Hawking"=Strahlung ist das
-langwelligste denkbare Schwarzkörperspektrum. Nur für Primordiale
-Schwarze Löcher mit $M \sim 10^{12}\,\text{kg}$ wäre $T_H \sim 10^{11}\,\text{K}$,
+FÃ¼r stellare Schwarze LÃ¶cher ($M \sim 10\,M_\odot$) ist $T_H \sim 10^{-9}\,\text{K}$~--
+vÃ¶llig unbeobachtbar. Das Wien"=Spektrum der Hawking"=Strahlung ist das
+langwelligste denkbare SchwarzkÃ¶rperspektrum. Nur fÃ¼r Primordiale
+Schwarze LÃ¶cher mit $M \sim 10^{12}\,\text{kg}$ wÃ¤re $T_H \sim 10^{11}\,\text{K}$,
 im Gammastrahlungsbereich~-- ein aktives Suchziel moderner Gammastrahlungsteleskope.
 
 \subsection{Multimessenger-Astronomie und variable Sternfarben}
@@ -1955,30 +1955,30 @@ im Gammastrahlungsbereich~-- ein aktives Suchziel moderner Gammastrahlungstelesk
 \textbf{Kilonovae als thermische Transiente:}
 Die erste beobachtete Kilonova (GW170817~\cite{abbott2017}, 2017)~-- das
 Ergebnis der Verschmelzung zweier Neutronensterne~-- produzierte einen
-optischen Ausbruch, der einem thermischen Schwarzkörperspektrum mit
-anfänglich $T \approx 5000\,\text{K}$ (gelb) ähnelte und innerhalb von
-Tagen auf $T \approx 2500\,\text{K}$ (tiefrot) abkühlte. Diese rasante
-Farbänderung ist eine direkte Konsequenz der Wien'schen Physik, kombiniert
-mit der schnellen Expansion und Abkühlung des $r$"=Prozess"=Materials.
+optischen Ausbruch, der einem thermischen SchwarzkÃ¶rperspektrum mit
+anfÃ¤nglich $T \approx 5000\,\text{K}$ (gelb) Ã¤hnelte und innerhalb von
+Tagen auf $T \approx 2500\,\text{K}$ (tiefrot) abkÃ¼hlte. Diese rasante
+FarbÃ¤nderung ist eine direkte Konsequenz der Wien'schen Physik, kombiniert
+mit der schnellen Expansion und AbkÃ¼hlung des $r$"=Prozess"=Materials.
 LIGO/Virgo/KAGRA~\cite{abbott2017} und der Einstein"=Telescope (geplant 2035)
-werden Dutzende solcher Ereignisse pro Jahr entdecken und ermöglichen
-Schwarzkörper"=Analysen unter extremsten astrophysikalischen Bedingungen.
+werden Dutzende solcher Ereignisse pro Jahr entdecken und ermÃ¶glichen
+SchwarzkÃ¶rper"=Analysen unter extremsten astrophysikalischen Bedingungen.
 
 \textbf{Supernovae Typ Ia als Standardkerzen:}
-Supernovae Typ Ia (thermonukleare Explosionen weißer Zwerge) expandieren
-von $T > 10\,000\,\text{K}$ (blau"=weiß, Maximum der Lichtkurve)
+Supernovae Typ Ia (thermonukleare Explosionen weiÃŸer Zwerge) expandieren
+von $T > 10\,000\,\text{K}$ (blau"=weiÃŸ, Maximum der Lichtkurve)
 auf $T \approx 4000\,\text{K}$ (orange, mehrere Wochen danach).
 Die Analyse ihrer Spektralsequenz, modelliert als zeitlich variierender
-Schwarzkörperstrahler mit Linienabsorption, erlaubt die Bestimmung
+SchwarzkÃ¶rperstrahler mit Linienabsorption, erlaubt die Bestimmung
 von Entfernungen bis zu Rotverschiebungen $z > 2$~\cite{perlmutter1999}.
 Die Entdeckung der beschleunigten Expansion des Universums (Nobelpreis 2011)
 basiert entscheidend auf dieser Methode.
 
-\subsection{Kosmologische Implikationen der Schwarzkörperstrahlung}
+\subsection{Kosmologische Implikationen der SchwarzkÃ¶rperstrahlung}
 
 \textbf{Kosmische Mikrowellenhintergrundstrahlung (CMB):}
-Die CMB ist das vollkommenste Schwarzkörperspektrum, das jemals gemessen
-wurde. COBE~(1992) maß das Spektrum und bestätigte die Plancksche Formel
+Die CMB ist das vollkommenste SchwarzkÃ¶rperspektrum, das jemals gemessen
+wurde. COBE~(1992) maÃŸ das Spektrum und bestÃ¤tigte die Plancksche Formel
 mit einer Genauigkeit von $0.03\,\%$. Die aktuelle Temperatur:
 \[
     T_{\text{CMB}} = \SI{2.72548 \pm 0.00057}{\kelvin}
@@ -1994,10 +1994,10 @@ werden die Polarisation der CMB auf $10^{-3}$"=Niveau messen, um
 Gravitationswellen aus der Inflation nachzuweisen. Das Tensorspektrum
 der primordiales Gravitationswellen~-- falls vorhanden~-- erzeugt
 eine spezifische $B$"=Mode"=Polarisation, die eine Feinstruktur auf
-dem ansonsten perfekten Schwarzkörperhintergrund darstellt.
+dem ansonsten perfekten SchwarzkÃ¶rperhintergrund darstellt.
 
 \textbf{Thermische Geschichte des Universums:}
-Da das Universum nahezu adiabatisch expandiert, kühlt die CMB mit:
+Da das Universum nahezu adiabatisch expandiert, kÃ¼hlt die CMB mit:
 \[
     T(z) = T_0 \cdot (1 + z)
 \]
@@ -2005,22 +2005,22 @@ wobei $z$ die kosmologische Rotverschiebung ist. Bei $z \approx 1100$
 (Rekombinationsepoche, $t \approx 380\,000$ Jahre nach dem Urknall)
 betrug $T \approx 3000\,\text{K}$~-- ein K"=artiger Stern, dessen rotes
 Licht (heute rotgereift zu Mikrowellen) die CMB bildet. Bei $z \approx 20$
-(Reionisierungsepoche) $T \approx 55\,\text{K}$. Die Schwarzkörperphysik
+(Reionisierungsepoche) $T \approx 55\,\text{K}$. Die SchwarzkÃ¶rperphysik
 verbindet somit den Urknall mit den Farben heutiger Sterne.
 
 \textbf{Photonendiffusion und Baryonakustische Oszillationen (BAO):}
-Die Druckwellen in der Frühzeit des Universums frieren bei der
-Rekombination als charakteristischer Längenmaßstab ($\approx 150\,\text{Mpc}$)
+Die Druckwellen in der FrÃ¼hzeit des Universums frieren bei der
+Rekombination als charakteristischer LÃ¤ngenmaÃŸstab ($\approx 150\,\text{Mpc}$)
 ein. Das JWST und der Euclid"=Satellit (ESA, seit 2023) messen diese
 Baryonakustischen Oszillationen bis $z \approx 2$, um das dunkle
-Energiegleichgewicht zu bestimmen. Die Photonen in der Frühzeit hatten
-ein Schwarzkörperspektrum; ihre thermische Wechselwirkung mit der
+Energiegleichgewicht zu bestimmen. Die Photonen in der FrÃ¼hzeit hatten
+ein SchwarzkÃ¶rperspektrum; ihre thermische Wechselwirkung mit der
 Baryonischen Materie ist der Mechanismus, der die BAO erzeugt.
 
 \subsection{Technologische Anwendungen und Metrologie}
 
-\textbf{Primäres Strahlungsthermometer:}
-Die Planckschen Strahlungsformel ist Basis der primären Thermometrie
+\textbf{PrimÃ¤res Strahlungsthermometer:}
+Die Planckschen Strahlungsformel ist Basis der primÃ¤ren Thermometrie
 bei hohen Temperaturen ($T > 1235\,\text{K}$, oberhalb des
 Silber"=Fixpunkts). Nach der Neudefinition des SI"=Systems (2019),
 in der die Boltzmann"=Konstante exakt festgelegt wurde
@@ -2032,14 +2032,14 @@ ohne freie Parameter~\cite{nist2019}.
 Konzentrierende Solarsysteme (CSP) fokussieren das Sonnenlicht auf Receiver,
 die Temperaturen bis $T \approx 1000\,\text{K}$ erreichen. Die
 erreichbare Carnot"=Effizienz wird direkt durch das Strahlungsgleichgewicht
-zwischen dem fokussierten Sonnenspektrum (effektiv ein $5778\,\text{K}$"=Schwarzkörper
-mit geometrischer Verdünnung) und der Receivertemperatur bestimmt.
+zwischen dem fokussierten Sonnenspektrum (effektiv ein $5778\,\text{K}$"=SchwarzkÃ¶rper
+mit geometrischer VerdÃ¼nnung) und der Receivertemperatur bestimmt.
 Multijunction"=Solarzellen mit GaAs/GaInP/Ge"=Schichten erzielen
 in der Konzentratorphotovoltaik Wirkungsgrade bis $47\,\%$~\cite{green2023},
-indem sie das Sonnenspektrum in drei Wellenlängenbereiche aufteilen.
+indem sie das Sonnenspektrum in drei WellenlÃ¤ngenbereiche aufteilen.
 
 \textbf{Infrarote Erdbeobachtung und Klimatologie:}
-Die Erdoberfläche emittiert bei $T \approx 288\,\text{K}$ thermische
+Die ErdoberflÃ¤che emittiert bei $T \approx 288\,\text{K}$ thermische
 Infrarotstrahlung mit Wien"=Maximum bei:
 \[
     \lambda_{\max} = b/288\,\text{K} \approx 10\,\mu\text{m}
@@ -2048,37 +2048,37 @@ Treibhausgase (CO$_2$, H$_2$O, CH$_4$) absorbieren in genau diesem
 Bereich und reduzieren die thermische Abstrahlung der Erde ins All~--
 der physikalische Mechanismus des Treibhauseffekts. Satelliten wie
 IASI (Infrared Atmospheric Sounding Interferometer) messen das Emissionsspektrum
-der Erde und ermöglichen die Quantifizierung des Strahlungsantriebs
+der Erde und ermÃ¶glichen die Quantifizierung des Strahlungsantriebs
 verschiedener Treibhausgase auf Basis der Planckschen Physik.
 
 \textbf{Medizinische Thermografie:}
-Der menschliche Körper emittiert bei $T \approx 310\,\text{K}$ nach Wien:
+Der menschliche KÃ¶rper emittiert bei $T \approx 310\,\text{K}$ nach Wien:
 \[
     \lambda_{\max} \approx 9.3\,\mu\text{m}
 \]
 Moderne Infrarotkameras mit $\text{InGaAs}$"= oder $\text{HgCdTe}$"=Detektoren
-messen diese Strahlung und liefern Temperaturkarten der Körperoberfläche
+messen diese Strahlung und liefern Temperaturkarten der KÃ¶rperoberflÃ¤che
 mit Genauigkeiten von $\pm 0.03\,\text{K}$. Anwendungen reichen von
-der Fieberdetektion über die Frühdiagnose von Brusttumoren bis zur
-Überwachung von Herzoperationen.
+der Fieberdetektion Ã¼ber die FrÃ¼hdiagnose von Brusttumoren bis zur
+Ãœberwachung von Herzoperationen.
 
 \subsection{Offene wissenschaftliche Fragen}
 
-Trotz der vollständig entwickelten theoretischen Grundlage bleiben
+Trotz der vollstÃ¤ndig entwickelten theoretischen Grundlage bleiben
 mehrere wissenschaftliche Fragen offen:
 
-\textbf{Präzise Radienmessung:} Die direkte Messung von Sternradien
-für eine große Stichprobe aller Spektralklassen bleibt herausfordernd.
+\textbf{PrÃ¤zise Radienmessung:} Die direkte Messung von Sternradien
+fÃ¼r eine groÃŸe Stichprobe aller Spektralklassen bleibt herausfordernd.
 Interferometrie (CHARA"=Array~\cite{ten_brummelaar2005}) erreicht
-$\mu$as"=Winkelauflösung und hat Radien für $\approx 100$ Sterne direkt
+$\mu$as"=WinkelauflÃ¶sung und hat Radien fÃ¼r $\approx 100$ Sterne direkt
 gemessen, aber statistisch bedeutsame Kalibrierungen erfordern noch
-größere Stichproben.
+grÃ¶ÃŸere Stichproben.
 
-\textbf{Temperaturgrenzen für Braune Zwerge:} Die Spektralklassen L, T, Y
+\textbf{Temperaturgrenzen fÃ¼r Braune Zwerge:} Die Spektralklassen L, T, Y
 umfassen Braune Zwerge mit $T < 2400\,\text{K}$ bis hinunter zu
 $T \approx 250\,\text{K}$ (Klasse Y2). In diesen Objekten sind Wolken
-aus flüssigem Eisen oder Silikatstaub optisch wichtig~-- ein Effekt,
-der weit über das ideale Schwarzkörpermodell hinausgeht~\cite{cushing2011}.
+aus flÃ¼ssigem Eisen oder Silikatstaub optisch wichtig~-- ein Effekt,
+der weit Ã¼ber das ideale SchwarzkÃ¶rpermodell hinausgeht~\cite{cushing2011}.
 
 \textbf{Pop"=III"=Sterne (erste Sterne des Universums):} Die ersten Sterne
 (Population~III) bildeten sich aus reinem Wasserstoff"=Helium"=Gas ohne
@@ -2091,123 +2091,123 @@ aber eine direkte Spektralkonfirmation steht noch aus.
 \textbf{Quantengravitationskorrekturen:} Bei Temperaturen nahe der
 Planck"=Temperatur ($T_P = \sqrt{\hbar c^5 / (G k_B^2)} \approx 1.4 \times 10^{32}\,\text{K}$)
 versagen sowohl die Quantenfeldtheorie als auch die allgemeine
-Relativitätstheorie. Die Schwarzkörperphysik in diesem Regime~--
-relevant für den frühen Urknall und für Hawking"=Strahlung kleiner
-Primordial"=Schwarzer Löcher~-- erfordert eine noch ausstehende Theorie
+RelativitÃ¤tstheorie. Die SchwarzkÃ¶rperphysik in diesem Regime~--
+relevant fÃ¼r den frÃ¼hen Urknall und fÃ¼r Hawking"=Strahlung kleiner
+Primordial"=Schwarzer LÃ¶cher~-- erfordert eine noch ausstehende Theorie
 der Quantengravitation (Loop"=Quantengravitation, Stringtheorie).
 
 \subsection{Subgraph Algorithmus und Sternhaufen-Klassifikation: Ausblick}
 
-Das in Kapitel~9 entwickelte Rahmenwerk eröffnet eine Reihe von
+Das in Kapitel~9 entwickelte Rahmenwerk erÃ¶ffnet eine Reihe von
 wissenschaftlich bedeutsamen Forschungsrichtungen, die Graphentheorie,
 Astrophysik und algorithmische Informatik verbinden.
 
 \textbf{Erweiterung auf gewichtete Cluster-Graphen:}
-Die in Definition~\ref{def:clustergraph} vorgestellte binäre
+Die in Definition~\ref{def:clustergraph} vorgestellte binÃ¤re
 Adjazenzmatrix ist eine Vereinfachung. Reale Sternhaufen besitzen
-kontinuierliche Häufigkeitsgradienten. Eine natürliche Erweiterung
+kontinuierliche HÃ¤ufigkeitsgradienten. Eine natÃ¼rliche Erweiterung
 verwendet die gewichtete Adjazenzmatrix
 $A^w_{ij} = |f_i - f_j| \cdot \mathbb{1}[|f_i - f_j| > \theta]$
-mit reellen Einträgen. Der Subgraph"=Algorithmus müsste dann auf
+mit reellen EintrÃ¤gen. Der Subgraph"=Algorithmus mÃ¼sste dann auf
 \emph{gewichteten} Graphen operieren, wobei die Signaturberechnung
-durch eine Gleitkomma"=Kodierung ersetzt wird. Dies erhöht die
-Ausdruckskraft, erfordert aber einen angepassten LCS"=Ähnlichkeitsbegriff
+durch eine Gleitkomma"=Kodierung ersetzt wird. Dies erhÃ¶ht die
+Ausdruckskraft, erfordert aber einen angepassten LCS"=Ã„hnlichkeitsbegriff
 (z.\,B. durch Quantisierung der Gewichte in $B$ Bits).
 
-\textbf{Integration der Metallizität als dritte Dimension:}
+\textbf{Integration der MetallizitÃ¤t als dritte Dimension:}
 Sternhaufen unterscheiden sich nicht nur durch Alter (Spektralklassen"=Verteilung)
-und Masse (Leuchtkraft), sondern auch durch Metallizität $[\text{Fe/H}]$.
-Die Metallizität beeinflusst die Sternfarbe systematisch:
+und Masse (Leuchtkraft), sondern auch durch MetallizitÃ¤t $[\text{Fe/H}]$.
+Die MetallizitÃ¤t beeinflusst die Sternfarbe systematisch:
 Metallreiche Sterne (Population~I) sind bei gleicher Temperatur
-röter als metallarme Sterne (Population~II), da Metallatome die
-Opazität der Atmosphäre erhöhen und das Spektrum in die Absorptionslinien
+rÃ¶ter als metallarme Sterne (Population~II), da Metallatome die
+OpazitÃ¤t der AtmosphÃ¤re erhÃ¶hen und das Spektrum in die Absorptionslinien
 umverteilen. Eine Erweiterung des Subgraph"=Algorithmus auf
 dreidimensionale Cluster"=Signaturen $\sigma_j = f(\text{Spektralklasse}, \text{Alter}, [\text{Fe/H}])$
-würde vollständigere Clusterportraits liefern und eine Unterscheidung
-von Haufen ähnlichen Alters aber unterschiedlicher chemischer Zusammensetzung
-ermöglichen.
+wÃ¼rde vollstÃ¤ndigere Clusterportraits liefern und eine Unterscheidung
+von Haufen Ã¤hnlichen Alters aber unterschiedlicher chemischer Zusammensetzung
+ermÃ¶glichen.
 
 \textbf{Gaia"=Katalog und Subgraph"=Clustering:}
-Der Gaia"=Katalog~\cite{prusti2016} enthält Präzisionspositionen,
-Eigenbewegungen, Parallaxen und Photometrie für über 1,8 Milliarden Sterne.
-Aus diesen Daten wurden bereits über 3\,000 offene Sternhaufen identifiziert
-(Hunt \& Ryu 2023). Für jeden Haufen kann automatisch der
+Der Gaia"=Katalog~\cite{prusti2016} enthÃ¤lt PrÃ¤zisionspositionen,
+Eigenbewegungen, Parallaxen und Photometrie fÃ¼r Ã¼ber 1,8 Milliarden Sterne.
+Aus diesen Daten wurden bereits Ã¼ber 3\,000 offene Sternhaufen identifiziert
+(Hunt \& Ryu 2023). FÃ¼r jeden Haufen kann automatisch der
 Spektralklassen"=Graph $G_{\mathcal{C}}$ konstruiert werden, indem die
 $(B-V)$"=Farbindizes der Mitgliedssterne in Temperaturklassen binned werden.
 Ein paarweiser Subgraph"=Vergleich aller $K = 3000$ Haufen
-würde nach Lemma~\ref{lem:cluster_komplex} nur
+wÃ¼rde nach Lemma~\ref{lem:cluster_komplex} nur
 $O(343 \cdot 3000^2) \approx 3 \times 10^9$ Operationen erfordern~--
 in wenigen Stunden auf einem modernen Cluster"=Rechner berechenbar.
-Das Ergebnis wäre eine vollständige Ähnlichkeitshierarchie aller Haufen,
+Das Ergebnis wÃ¤re eine vollstÃ¤ndige Ã„hnlichkeitshierarchie aller Haufen,
 die als Dendrogram oder Heatmap (wie in Plot~12 ansatzweise gezeigt)
-dargestellt werden könnte.
+dargestellt werden kÃ¶nnte.
 
 \textbf{Maschinelles Lernen und Subgraph"=Features:}
 Die Signaturvektoren $\boldsymbol{\sigma}^{\mathcal{C}} \in \mathbb{Z}^7$
-und die LCS"=Ähnlichkeitsmatrizen (wie in Abbildung~\ref{fig:aehnlichkeit})
-können direkt als Feature"=Vektoren für maschinelles Lernen genutzt werden.
-Neuronale Netzwerke (Graph Neural Networks, GNN)~\cite{kipf2017} könnten
+und die LCS"=Ã„hnlichkeitsmatrizen (wie in Abbildung~\ref{fig:aehnlichkeit})
+kÃ¶nnen direkt als Feature"=Vektoren fÃ¼r maschinelles Lernen genutzt werden.
+Neuronale Netzwerke (Graph Neural Networks, GNN)~\cite{kipf2017} kÃ¶nnten
 trainiert werden, aus Subgraph"=Signaturen direkt:
 \begin{itemize}
     \item Clusteralter ($\pm 0.5\,\text{Gyr}$),
-    \item Metallizität ($[\text{Fe/H}] \pm 0.1\,\text{dex}$),
+    \item MetallizitÃ¤t ($[\text{Fe/H}] \pm 0.1\,\text{dex}$),
     \item Gesamtmasse ($\log M \pm 0.2$)
 \end{itemize}
 vorherzusagen. Die Spektralklassen"=Struktur des Graphen kodiert
-astrophysikalische Information in einer für GNN"=Verarbeitung
+astrophysikalische Information in einer fÃ¼r GNN"=Verarbeitung
 ideal geeigneten Form.
 
 \textbf{Parallelisierung des Subgraph"=Algorithmus:}
-Für sehr große Kataloge ($K > 10^4$ Haufen) ist eine Parallelisierung
-des paarweisen Vergleichs natürlich: Jede LCS"=Berechnung für ein Paar
-$(\mathcal{C}_i, \mathcal{C}_j)$ ist vollständig unabhängig von allen
+FÃ¼r sehr groÃŸe Kataloge ($K > 10^4$ Haufen) ist eine Parallelisierung
+des paarweisen Vergleichs natÃ¼rlich: Jede LCS"=Berechnung fÃ¼r ein Paar
+$(\mathcal{C}_i, \mathcal{C}_j)$ ist vollstÃ¤ndig unabhÃ¤ngig von allen
 anderen Paaren. Mit $P$ Prozessoren sinkt die Gesamtlaufzeit auf:
 \[
     T_{\text{parallel}} = O\!\left(\frac{K^2 n^3}{P}\right)
 \]
-Auf einem Cluster mit $P = 1000$ Kernen können $K = 10^5$ Haufen
+Auf einem Cluster mit $P = 1000$ Kernen kÃ¶nnen $K = 10^5$ Haufen
 ($\approx 10^{10}$ Vergleiche) in $\approx 10^7 / 10^9 = 10^{-2}$ Sekunden
-verglichen werden -- Real"=Zeit"=Verarbeitung für zukünftige Survey"=Daten.
+verglichen werden -- Real"=Zeit"=Verarbeitung fÃ¼r zukÃ¼nftige Survey"=Daten.
 
 \textbf{Rubin/LSST und photometrische Clusterklassifikation:}
-Das Rubin"=Observatory~\cite{ivezic2019} wird täglich ca. 10 Millionen
-neue Objekte in sechs Photometriebändern aufnehmen. Automatisierte
+Das Rubin"=Observatory~\cite{ivezic2019} wird tÃ¤glich ca. 10 Millionen
+neue Objekte in sechs PhotometriebÃ¤ndern aufnehmen. Automatisierte
 Clustererkennungsalgorithmen (DBSCAN, HDBSCAN auf Positions"=$\times$"=Farbdaten)
-werden tausende neuer Haufen pro Jahr entdecken. Für jeden neu entdeckten Haufen
+werden tausende neuer Haufen pro Jahr entdecken. FÃ¼r jeden neu entdeckten Haufen
 kann der Subgraph"=Algorithmus in $O(n^3) = O(343)$ Schritten seinen
-Platz in der Ähnlichkeitshierarchie bestimmen~-- eine Echtzeit"=Klassifikation
-ohne aufwändige Spektroskopie.
+Platz in der Ã„hnlichkeitshierarchie bestimmen~-- eine Echtzeit"=Klassifikation
+ohne aufwÃ¤ndige Spektroskopie.
 
-\textbf{Verbindung zur stellaren Archäologie:}
-Sternhaufen zerfallen mit der Zeit durch Gezeitenkräfte und
-galaktische Störungen in \emph{Ströme} von Einzelsternen
-(sogenannte Tidal Tails). Mit dem Subgraph"=Algorithmus könnten
-solche Ströme identifiziert werden: Ein disperser Strom aus einem
-aufgelösten Haufen hat dieselbe Spektralklassen"=Signatur wie der
-ursprüngliche Haufen (gleiches Alter, gleiche Metallizität).
-Der Algorithmus würde den Strom als ``Subgraph'' des bekannten
+\textbf{Verbindung zur stellaren ArchÃ¤ologie:}
+Sternhaufen zerfallen mit der Zeit durch GezeitenkrÃ¤fte und
+galaktische StÃ¶rungen in \emph{StrÃ¶me} von Einzelsternen
+(sogenannte Tidal Tails). Mit dem Subgraph"=Algorithmus kÃ¶nnten
+solche StrÃ¶me identifiziert werden: Ein disperser Strom aus einem
+aufgelÃ¶sten Haufen hat dieselbe Spektralklassen"=Signatur wie der
+ursprÃ¼ngliche Haufen (gleiches Alter, gleiche MetallizitÃ¤t).
+Der Algorithmus wÃ¼rde den Strom als ``Subgraph'' des bekannten
 Ursprungshaufens erkennen. Gaia hat bereits zahlreiche Streams
-identifiziert~\cite{ibata2021}; die Subgraph"=Analyse könnte ihre
-Herkunft systematisch klären.
+identifiziert~\cite{ibata2021}; die Subgraph"=Analyse kÃ¶nnte ihre
+Herkunft systematisch klÃ¤ren.
 
 \textbf{Extrapolation auf externe Galaxien:}
-Mit dem JWST können Sternhaufen in anderen Galaxien bis zu
+Mit dem JWST kÃ¶nnen Sternhaufen in anderen Galaxien bis zu
 $z \approx 0.5$ (Lookback-Zeit $\approx 5\,\text{Gyr}$) spektral
 charakterisiert werden. Galaxienpopulationen aus jungen, blauen
 Sternhaufen (Starburst"=Galaxien) vs.\ alten, roten Populationen
 (elliptische Galaxien) unterscheiden sich systematisch in ihrer
 Subgraph"=Struktur. Ein Subgraph"=Vergleich auf galaktischer Ebene
-könnte ``Galaxien-Fingerabdrücke'' generieren, die Rückschlüsse auf
+kÃ¶nnte ``Galaxien-FingerabdrÃ¼cke'' generieren, die RÃ¼ckschlÃ¼sse auf
 Galaxiengeschichte und Sternentstehungsgeschichte erlauben.
 
-\textbf{Theoretische Weiterentwicklung: IMF-Variabilität und Subgraph-Struktur:}
+\textbf{Theoretische Weiterentwicklung: IMF-VariabilitÃ¤t und Subgraph-Struktur:}
 Die Kroupa"=IMF (Satz~\ref{satz:imf}) gilt als universell, es gibt jedoch
 Hinweise auf Variationen in extremen Umgebungen~\cite{kroupa2001}.
 In massereichen Galaxien wurde eine Top"=Heavy"=IMF (mehr O"= und B"=Sterne)
 diskutiert, in Zwerggalaxien eine Bottom"=Heavy"=IMF (mehr M"=Sterne).
 Verschiedene IMFs produzieren charakteristisch verschiedene Subgraph"=Signaturen.
-Ein statistischer Test auf der Basis des Subgraph"=Algorithmus könnte die
-IMF"=Universalitätshypothese durch Vergleich der Signatur"=Statistik über
+Ein statistischer Test auf der Basis des Subgraph"=Algorithmus kÃ¶nnte die
+IMF"=UniversalitÃ¤tshypothese durch Vergleich der Signatur"=Statistik Ã¼ber
 Galaxientypen hinweg testen.
 
 %===========================================================================
@@ -2240,14 +2240,14 @@ Verhandlungen der Deutschen Physikalischen Gesellschaft \textbf{2} (1900) 237--2
 
 \bibitem{wien1893}
 W.~Wien,
-\textit{Eine neue Beziehung der Strahlung schwarzer Körper zum zweiten
-Hauptsatz der Wärmetheorie},
-Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften,
+\textit{Eine neue Beziehung der Strahlung schwarzer KÃ¶rper zum zweiten
+Hauptsatz der WÃ¤rmetheorie},
+Sitzungsberichte der KÃ¶niglich PreuÃŸischen Akademie der Wissenschaften,
 Berlin, 1893, S.~55--62.
 
 \bibitem{stefan1879}
 J.~Stefan,
-\textit{Über die Beziehung zwischen der Wärmestrahlung und der Temperatur},
+\textit{Ãœber die Beziehung zwischen der WÃ¤rmestrahlung und der Temperatur},
 Sitzungsberichte der Akademie der Wissenschaften Wien~\textbf{79} (1879) 391--428.
 
 \bibitem{boltzmann1884}
@@ -2258,8 +2258,8 @@ Annalen der Physik und Chemie \textbf{22} (1884) 291--294.
 
 \bibitem{kirchhoff1860}
 G.~Kirchhoff,
-\textit{Über das Verhältnis zwischen dem Emissionsvermögen und dem
-Absorptionsvermögen der Körper für Wärme und Licht},
+\textit{Ãœber das VerhÃ¤ltnis zwischen dem EmissionsvermÃ¶gen und dem
+AbsorptionsvermÃ¶gen der KÃ¶rper fÃ¼r WÃ¤rme und Licht},
 Annalen der Physik und Chemie \textbf{109} (1860) 275--301.
 
 \bibitem{rayleigh1900}
@@ -2450,3 +2450,4 @@ The Astrophysical Journal Letters \textbf{938} (2022) L15.
 \end{thebibliography}
 
 \end{document}
+

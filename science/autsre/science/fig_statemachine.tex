@@ -1,4 +1,4 @@
-%% fig_statemachine.tex
+﻿%% fig_statemachine.tex
 %% Zustandsautomat des OTA-Update-Managers (ZSG)
 \begin{tikzpicture}[
   ->, >=Stealth, shorten >=1pt,
@@ -29,7 +29,7 @@
   bend angle=25
 ]
 
-%% Zustände
+%% ZustÃ¤nde
 \node[stateINIT]    (init)    at (0,  0)   {};
 \node[state]        (idle)    at (2.5, 0)  {IDLE};
 \node[state]        (notify)  at (5.5, 0)  {NOTIFIED};
@@ -65,8 +65,9 @@
 \draw (rbdone) edge[bend right=15] (idle)
                node[pos=0.5, below, trans] {};
 
-%% Zurück zu idle bei Benutzerabbruch
+%% ZurÃ¼ck zu idle bei Benutzerabbruch
 \draw (notify) edge[bend left=40] (idle)
                node[pos=0.5, above, trans] {};
 
 \end{tikzpicture}
+

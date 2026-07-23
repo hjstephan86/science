@@ -163,6 +163,7 @@ ax6.set_title('Erweitertes Optimierungspotenzial\ninkl. CPU:GPU-Ratio-Optimierun
 ax6.legend(fontsize=8, loc='lower right')
 ax6.set_xlim(0, 50)
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_f.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_f.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_f.pdf saved")
+
 

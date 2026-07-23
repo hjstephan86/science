@@ -24,7 +24,7 @@ plt.rcParams.update({
     'figure.dpi': 150,
 })
 
-OUTDIR = '/home/stephan/Git/cnyn/science/'
+OUTDIR = ''
 
 
 # ── PLOT 1: Schematischer Vergleich Tiefenquelle vs. Schwarzes Loch ──────────

@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
@@ -38,8 +38,8 @@
 \Crefname{subsection}{Abschnitt}{Abschnitte}
 \crefname{equation}{Gl.}{Gl.}
 \Crefname{equation}{Gleichung}{Gleichungen}
-\crefname{theorem}{Satz}{Sätze}
-\Crefname{theorem}{Satz}{Sätze}
+\crefname{theorem}{Satz}{SÃ¤tze}
+\Crefname{theorem}{Satz}{SÃ¤tze}
 \crefname{definition}{Definition}{Definitionen}
 \Crefname{definition}{Definition}{Definitionen}
 \crefname{algorithm}{Algorithmus}{Algorithmen}
@@ -79,10 +79,10 @@
 \newtheorem{hauptlemma}{Hauptlemma}[section]
 
 
-\title{\textbf{Bioinspiriertes Sturzangriffssystem}\\Der Wanderfalke als aerodynamisches Vorbild für autonom navigierende Tauch-Drohnen}
+\title{\textbf{Bioinspiriertes Sturzangriffssystem}\\Der Wanderfalke als aerodynamisches Vorbild fÃ¼r autonom navigierende Tauch-Drohnen}
 
 \author{Stephan Epp}
-\date{11. März 2026}
+\date{11. MÃ¤rz 2026}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \setcounter{MaxMatrixCols}{15}
@@ -96,37 +96,37 @@
 
 	\section{Einleitung}
 	
-	Diese Abhandlung präsentiert eine vollständige wissenschaftliche Analyse des bioinspirierten Sturzangriffssystems (BioSAS), das auf dem aerodynamischen Verhalten des Wanderfalken (\textit{Falco peregrinus}) basiert. Der Wanderfalke erreicht im Sturzflug nachgewiesene Geschwindigkeiten von bis zu 389 km/h und gilt als das schnellste Tier der Erde. Die vorliegende Arbeit entwickelt ein formales mathematisches Modell des Falken-Sturzfluges, leitet daraus ein regelungstechnisches Optimierungsframework ab und überträgt die biologischen Prinzipien auf ein autonomes Drohnensystem. 
+	Diese Abhandlung prÃ¤sentiert eine vollstÃ¤ndige wissenschaftliche Analyse des bioinspirierten Sturzangriffssystems (BioSAS), das auf dem aerodynamischen Verhalten des Wanderfalken (\textit{Falco peregrinus}) basiert. Der Wanderfalke erreicht im Sturzflug nachgewiesene Geschwindigkeiten von bis zu 389 km/h und gilt als das schnellste Tier der Erde. Die vorliegende Arbeit entwickelt ein formales mathematisches Modell des Falken-Sturzfluges, leitet daraus ein regelungstechnisches Optimierungsframework ab und Ã¼bertrÃ¤gt die biologischen Prinzipien auf ein autonomes Drohnensystem. 
 	
-	Kernbeiträge dieser Arbeit umfassen: (i) ein vollständiges 6-DOF-Bewegungsmodell des Sturzfluges, (ii) formale Beweise zur Optimalität der Körperhaltungssequenz, (iii) ein bioinspiriertes Gleitflächen-Steuergesetz (BGSG), (iv) experimentelle Validierung mit Matlab/Python-Simulationen sowie (v) eine Stabilitätsanalyse des autonomen Zielverfolgungsreglers. Die Ergebnisse zeigen, dass bioinspirierte Regelstrategien die konventionellen Drohnen-Sturzalgorithmen in Geschwindigkeit, Zielgenauigkeit und Energieeffizienz um bis zu \SI{34}{\percent} übertreffen.
+	KernbeitrÃ¤ge dieser Arbeit umfassen: (i) ein vollstÃ¤ndiges 6-DOF-Bewegungsmodell des Sturzfluges, (ii) formale Beweise zur OptimalitÃ¤t der KÃ¶rperhaltungssequenz, (iii) ein bioinspiriertes GleitflÃ¤chen-Steuergesetz (BGSG), (iv) experimentelle Validierung mit Matlab/Python-Simulationen sowie (v) eine StabilitÃ¤tsanalyse des autonomen Zielverfolgungsreglers. Die Ergebnisse zeigen, dass bioinspirierte Regelstrategien die konventionellen Drohnen-Sturzalgorithmen in Geschwindigkeit, Zielgenauigkeit und Energieeffizienz um bis zu \SI{34}{\percent} Ã¼bertreffen.
 	
 	\subsection{Motivation und Problemstellung}
 	
-	Der Wanderfalke hat im Laufe von vielen tausend Jahren evolutionärer Optimierung ein aerodynamisches System entwickelt, das in seiner Leistungsfähigkeit bisher von keiner technischen Konstruktion erreicht wurde. Im charakteristischen Sturzflug --- dem sogenannten ``Stoß'' --- komprimiert der Falke seinen Körper zu einer nahezu perfekten Spindelform, faltet die Flügel in einer präzise gesteuerten Sequenz und beschleunigt im freien Fall auf Geschwindigkeiten, die alle bekannten Flugobjekte gleicher Größenordnung bei weitem übertreffen.
+	Der Wanderfalke hat im Laufe von vielen tausend Jahren evolutionÃ¤rer Optimierung ein aerodynamisches System entwickelt, das in seiner LeistungsfÃ¤higkeit bisher von keiner technischen Konstruktion erreicht wurde. Im charakteristischen Sturzflug --- dem sogenannten ``StoÃŸ'' --- komprimiert der Falke seinen KÃ¶rper zu einer nahezu perfekten Spindelform, faltet die FlÃ¼gel in einer prÃ¤zise gesteuerten Sequenz und beschleunigt im freien Fall auf Geschwindigkeiten, die alle bekannten Flugobjekte gleicher GrÃ¶ÃŸenordnung bei weitem Ã¼bertreffen.
 	
-	Die technische Relevanz dieses biologischen Vorbilds ergibt sich aus mehreren Anwendungsfeldern: präzise Munitionsleitsysteme, autonome Aufklärungsdrohnen mit hoher Eindringgeschwindigkeit, Abfangdrohnen gegen unbemannte Luftfahrzeuge sowie Rettungsdrohnen mit schneller Zielerfassung. Die zentrale Herausforderung liegt darin, die biologischen Prinzipien in formale Steuergesetze zu überführen, die auf realen Drohnensystemen implementierbar sind.
+	Die technische Relevanz dieses biologischen Vorbilds ergibt sich aus mehreren Anwendungsfeldern: prÃ¤zise Munitionsleitsysteme, autonome AufklÃ¤rungsdrohnen mit hoher Eindringgeschwindigkeit, Abfangdrohnen gegen unbemannte Luftfahrzeuge sowie Rettungsdrohnen mit schneller Zielerfassung. Die zentrale Herausforderung liegt darin, die biologischen Prinzipien in formale Steuergesetze zu Ã¼berfÃ¼hren, die auf realen Drohnensystemen implementierbar sind.
 	
 	\subsection{Stand der Technik}
 	
-	Bisherige Arbeiten zu bioinspirierten Flugsystemen konzentrierten sich vorwiegend auf das Schlagflugprinzip \cite{bio1} oder stationäre aerodynamische Optimierungen \cite{aero1}. Der Sturzflug als dynamischer, hochgradig nichtlinearer Prozess wurde bisher nicht vollständig formal modelliert. Insbesondere fehlen:
+	Bisherige Arbeiten zu bioinspirierten Flugsystemen konzentrierten sich vorwiegend auf das Schlagflugprinzip \cite{bio1} oder stationÃ¤re aerodynamische Optimierungen \cite{aero1}. Der Sturzflug als dynamischer, hochgradig nichtlinearer Prozess wurde bisher nicht vollstÃ¤ndig formal modelliert. Insbesondere fehlen:
 	
 	\begin{itemize}
-		\item Formale Beweise zur Phasenoptimalität der Körperhaltungssequenz
-		\item Geschlossene Regelgesetze für den Übergang zwischen Gleiten, Sturzeinleitung und Fangmanöver
-		\item Experimentell validierte aerodynamische Koeffizientenmodelle für die Falkenkörpergeometrie
-		\item Stabilitätsnachweise für den autonomen Zielverfolgungsregler unter Windstörungen
+		\item Formale Beweise zur PhasenoptimalitÃ¤t der KÃ¶rperhaltungssequenz
+		\item Geschlossene Regelgesetze fÃ¼r den Ãœbergang zwischen Gleiten, Sturzeinleitung und FangmanÃ¶ver
+		\item Experimentell validierte aerodynamische Koeffizientenmodelle fÃ¼r die FalkenkÃ¶rpergeometrie
+		\item StabilitÃ¤tsnachweise fÃ¼r den autonomen Zielverfolgungsregler unter WindstÃ¶rungen
 	\end{itemize}
 	
-	\subsection{Wissenschaftliche Beiträge}
+	\subsection{Wissenschaftliche BeitrÃ¤ge}
 	
-	Diese Arbeit leistet folgende originäre wissenschaftliche Beiträge:
+	Diese Arbeit leistet folgende originÃ¤re wissenschaftliche BeitrÃ¤ge:
 	
 	\begin{enumerate}
-		\item \textbf{Formales 6-DOF-Modell:} Vollständige Differentialgleichungsformulierung des Wanderfalken-Sturzfluges mit zeitvarianten aerodynamischen Koeffizienten.
-		\item \textbf{Optimalitätsbeweis:} Formaler Beweis, dass die biologisch beobachtete Flügelanlege-Sequenz das Verhältnis von Endgeschwindigkeit zu Querschnittsfläche maximiert.
-		\item \textbf{BGSG-Regler:} Bioinspiriertes Gleitflächen-Steuergesetz mit formalen Stabilitätsgarantien (Lyapunov-Beweis).
+		\item \textbf{Formales 6-DOF-Modell:} VollstÃ¤ndige Differentialgleichungsformulierung des Wanderfalken-Sturzfluges mit zeitvarianten aerodynamischen Koeffizienten.
+		\item \textbf{OptimalitÃ¤tsbeweis:} Formaler Beweis, dass die biologisch beobachtete FlÃ¼gelanlege-Sequenz das VerhÃ¤ltnis von Endgeschwindigkeit zu QuerschnittsflÃ¤che maximiert.
+		\item \textbf{BGSG-Regler:} Bioinspiriertes GleitflÃ¤chen-Steuergesetz mit formalen StabilitÃ¤tsgarantien (Lyapunov-Beweis).
 		\item \textbf{Experimentelle Analyse:} Python/Matplotlib-Simulationen mit 50.000 Monte-Carlo-Runs zur statistischen Validierung.
-		\item \textbf{Hardware-Übertragung:} Systemarchitektur für eine reale Drohnenplattform mit eingebetteter Echtzeit-Regelung.
+		\item \textbf{Hardware-Ãœbertragung:} Systemarchitektur fÃ¼r eine reale Drohnenplattform mit eingebetteter Echtzeit-Regelung.
 	\end{enumerate}
 	
 	%=============================================================================
@@ -137,60 +137,60 @@
 	
 	\subsection{Taxonomie und Verbreitung}
 	
-	Der Wanderfalke (\textit{Falco peregrinus}, Tunstall 1771) ist ein Greifvogel aus der Familie der Falconidae. Mit einer Körperlänge von \SIrange{34}{58}{\cm}, einer Spannweite von \SIrange{74}{120}{\cm} und einem Körpergewicht von \SIrange{440}{1500}{\g} (ausgeprägt geschlechtsdimorphisch) ist er weltweit auf allen Kontinenten außer der Antarktis verbreitet. Die Nominatform \textit{F.~p.~peregrinus} ist in Europa heimisch.
+	Der Wanderfalke (\textit{Falco peregrinus}, Tunstall 1771) ist ein Greifvogel aus der Familie der Falconidae. Mit einer KÃ¶rperlÃ¤nge von \SIrange{34}{58}{\cm}, einer Spannweite von \SIrange{74}{120}{\cm} und einem KÃ¶rpergewicht von \SIrange{440}{1500}{\g} (ausgeprÃ¤gt geschlechtsdimorphisch) ist er weltweit auf allen Kontinenten auÃŸer der Antarktis verbreitet. Die Nominatform \textit{F.~p.~peregrinus} ist in Europa heimisch.
 	
 	\subsection{Morphologische Parameter}
 	
 	\begin{table}[H]
 		\centering
-		\caption{Morphologische Parameter des Wanderfalken (\textit{Falco peregrinus}) für das Sturzflugmodell}
+		\caption{Morphologische Parameter des Wanderfalken (\textit{Falco peregrinus}) fÃ¼r das Sturzflugmodell}
 		\label{tab:morphologie}
 		\begin{tabular}{llll}
 			\toprule
 			\textbf{Parameter} & \textbf{Symbol} & \textbf{Wert} & \textbf{Einheit} \\
 			\midrule
-			Körpermasse (Männchen) & $m$ & $0{,}60$--$0{,}75$ & \si{\kg} \\
-			Körpermasse (Weibchen) & $m$ & $0{,}90$--$1{,}50$ & \si{\kg} \\
-			Körperlänge & $L_b$ & $0{,}38$--$0{,}50$ & \si{\m} \\
+			KÃ¶rpermasse (MÃ¤nnchen) & $m$ & $0{,}60$--$0{,}75$ & \si{\kg} \\
+			KÃ¶rpermasse (Weibchen) & $m$ & $0{,}90$--$1{,}50$ & \si{\kg} \\
+			KÃ¶rperlÃ¤nge & $L_b$ & $0{,}38$--$0{,}50$ & \si{\m} \\
 			Spannweite (offen) & $b$ & $0{,}84$--$1{,}10$ & \si{\m} \\
 			Spannweite (gefaltet) & $b_f$ & $0{,}15$--$0{,}22$ & \si{\m} \\
-			Flügelfläche (offen) & $S_w$ & $0{,}10$--$0{,}14$ & \si{\m^2} \\
-			Querschnittsfläche (Sturzflug) & $A_{cs}$ & $0{,}003$--$0{,}006$ & \si{\m^2} \\
+			FlÃ¼gelflÃ¤che (offen) & $S_w$ & $0{,}10$--$0{,}14$ & \si{\m^2} \\
+			QuerschnittsflÃ¤che (Sturzflug) & $A_{cs}$ & $0{,}003$--$0{,}006$ & \si{\m^2} \\
 			Aspect Ratio (offen) & $AR$ & $7{,}5$--$9{,}0$ & -- \\
 			Schwerpunkt-Position & $x_{cg}$ & $0{,}38$--$0{,}42 \cdot L_b$ & -- \\
-			Trägheitsmoment (Nick) & $I_y$ & $1{,}8 \times 10^{-3}$ & \si{\kg \cdot \m^2} \\
-			Trägheitsmoment (Roll) & $I_x$ & $4{,}2 \times 10^{-4}$ & \si{\kg \cdot \m^2} \\
+			TrÃ¤gheitsmoment (Nick) & $I_y$ & $1{,}8 \times 10^{-3}$ & \si{\kg \cdot \m^2} \\
+			TrÃ¤gheitsmoment (Roll) & $I_x$ & $4{,}2 \times 10^{-4}$ & \si{\kg \cdot \m^2} \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
 	\subsection{Phasen des Sturzfluges}
 	
-	Der Wanderfalken-Sturzflug lässt sich in fünf biomechanisch distinkte Phasen unterteilen:
+	Der Wanderfalken-Sturzflug lÃ¤sst sich in fÃ¼nf biomechanisch distinkte Phasen unterteilen:
 	
 	\begin{definition}[Sturzflugphasenmodell]
 		\label{def:phasen}
-		Sei $t_0$ der Zeitpunkt der Sturzeinleitung. Die fünf Phasen $\mathcal{P}_i$, $i \in \{1,\ldots,5\}$ sind definiert durch:
+		Sei $t_0$ der Zeitpunkt der Sturzeinleitung. Die fÃ¼nf Phasen $\mathcal{P}_i$, $i \in \{1,\ldots,5\}$ sind definiert durch:
 		\begin{align}
-			\mathcal{P}_1 &: t \in [t_0,\; t_0 + \Delta t_1] \quad \text{(Aufwärtspositionierung)} \\
+			\mathcal{P}_1 &: t \in [t_0,\; t_0 + \Delta t_1] \quad \text{(AufwÃ¤rtspositionierung)} \\
 			\mathcal{P}_2 &: t \in [t_0 + \Delta t_1,\; t_0 + \Delta t_2] \quad \text{(Sturzeinleitung)} \\
 			\mathcal{P}_3 &: t \in [t_0 + \Delta t_2,\; t_0 + \Delta t_3] \quad \text{(Freier Sturzflug)} \\
-			\mathcal{P}_4 &: t \in [t_0 + \Delta t_3,\; t_0 + \Delta t_4] \quad \text{(Pullout-Manöver)} \\
+			\mathcal{P}_4 &: t \in [t_0 + \Delta t_3,\; t_0 + \Delta t_4] \quad \text{(Pullout-ManÃ¶ver)} \\
 			\mathcal{P}_5 &: t \in [t_0 + \Delta t_4,\; t_{impact}] \quad \text{(Fangschlag)}
 		\end{align}
 	\end{definition}
 	
 	Die charakteristischen Zeitdauern betragen empirisch: $\Delta t_1 \approx \SI{2.1}{\s}$, $\Delta t_2 \approx \SI{0.4}{\s}$, $\Delta t_3 \approx \SI{4.8}{\s}$, $\Delta t_4 \approx \SI{1.2}{\s}$.
 	
-	\subsection{Anatomische Anpassungen für den Sturzflug}
+	\subsection{Anatomische Anpassungen fÃ¼r den Sturzflug}
 	
-	Der Wanderfalke verfügt über mehrere anatomische Spezialisierungen, die seinen Sturzflug ermöglichen:
+	Der Wanderfalke verfÃ¼gt Ã¼ber mehrere anatomische Spezialisierungen, die seinen Sturzflug ermÃ¶glichen:
 	
-	\paragraph{Nasenhöckerchen (Tubercula nasalia)} Die konischen Vorsprünge in den Nasenlöchern fungieren als aerodynamische Störkörper, die den Luftstrom in die Lunge trotz des hohen Staudrucks aufrechterhalten --- ein Prinzip, das analog bei Triebwerkseinlässen von Überschallflugzeugen (z.B. Concorde) angewendet wird.
+	\paragraph{NasenhÃ¶ckerchen (Tubercula nasalia)} Die konischen VorsprÃ¼nge in den NasenlÃ¶chern fungieren als aerodynamische StÃ¶rkÃ¶rper, die den Luftstrom in die Lunge trotz des hohen Staudrucks aufrechterhalten --- ein Prinzip, das analog bei TriebwerkseinlÃ¤ssen von Ãœberschallflugzeugen (z.B. Concorde) angewendet wird.
 	
-	\paragraph{Nictitating Membrane} Die dritte Augenlid schützt das Auge vor Austrocknung und Partikeln bei Höchstgeschwindigkeit und fungiert gleichzeitig als Bild-Stabilisator durch selektive Transparenz.
+	\paragraph{Nictitating Membrane} Die dritte Augenlid schÃ¼tzt das Auge vor Austrocknung und Partikeln bei HÃ¶chstgeschwindigkeit und fungiert gleichzeitig als Bild-Stabilisator durch selektive Transparenz.
 	
-	\paragraph{Brustmuskulatur} Mit einem Anteil von ca. \SI{22}{\percent} der Körpermasse verfügt der Wanderfalke über die relativ stärkste Brustmuskulatur unter den Falconidae, die sowohl für den aktiven Schlagflug als auch für die präzise Flügelpositionierung im Sturzflug verantwortlich ist.
+	\paragraph{Brustmuskulatur} Mit einem Anteil von ca. \SI{22}{\percent} der KÃ¶rpermasse verfÃ¼gt der Wanderfalke Ã¼ber die relativ stÃ¤rkste Brustmuskulatur unter den Falconidae, die sowohl fÃ¼r den aktiven Schlagflug als auch fÃ¼r die prÃ¤zise FlÃ¼gelpositionierung im Sturzflug verantwortlich ist.
 	
 	%=============================================================================
 	% 3. AERODYNAMISCHES GRUNDLAGENMODELL
@@ -204,12 +204,12 @@
 		Wir definieren drei Koordinatensysteme:
 		\begin{align}
 			\mathcal{F}_E &: \text{Erdfestes Koordinatensystem } (x_E, y_E, z_E) \\
-			\mathcal{F}_B &: \text{Körperfestes Koordinatensystem } (x_B, y_B, z_B) \\
+			\mathcal{F}_B &: \text{KÃ¶rperfestes Koordinatensystem } (x_B, y_B, z_B) \\
 			\mathcal{F}_W &: \text{Windkoordinatensystem } (x_W, y_W, z_W)
 		\end{align}
 	\end{definition}
 	
-	Die Transformation zwischen Körper- und Erdkoordinatensystem erfolgt durch die Euler-Rotationsmatrix:
+	Die Transformation zwischen KÃ¶rper- und Erdkoordinatensystem erfolgt durch die Euler-Rotationsmatrix:
 	\begin{equation}
 		\mathbf{R}(\phi, \theta, \psi) = \mathbf{R}_z(\psi) \cdot \mathbf{R}_y(\theta) \cdot \mathbf{R}_x(\phi)
 		\label{eq:rotation}
@@ -223,16 +223,16 @@
 	
 	\subsection{6-DOF Bewegungsgleichungen}
 	
-	Das vollständige 6-DOF-Modell des Wanderfalken-Sturzfluges umfasst sechs gekoppelte Differentialgleichungen.
+	Das vollstÃ¤ndige 6-DOF-Modell des Wanderfalken-Sturzfluges umfasst sechs gekoppelte Differentialgleichungen.
 	
 	\subsubsection{Translatorische Dynamik}
 	
-	Im körperfesten System gilt nach Newton:
+	Im kÃ¶rperfesten System gilt nach Newton:
 	\begin{equation}
 		m \dot{\mathbf{v}}_B + m \boldsymbol{\omega} \times \mathbf{v}_B = \mathbf{F}_{aero} + \mathbf{F}_{grav}
 		\label{eq:newton_trans}
 	\end{equation}
-	mit $\mathbf{v}_B = (u, v, w)^T$ (Körpergeschwindigkeit) und $\boldsymbol{\omega} = (p, q, r)^T$ (Winkelgeschwindigkeit). Komponentenweise:
+	mit $\mathbf{v}_B = (u, v, w)^T$ (KÃ¶rpergeschwindigkeit) und $\boldsymbol{\omega} = (p, q, r)^T$ (Winkelgeschwindigkeit). Komponentenweise:
 	\begin{align}
 		m(\dot{u} + qw - rv) &= F_{x} \\
 		m(\dot{v} + ru - pw) &= F_{y} \\
@@ -241,23 +241,23 @@
 	
 	\subsubsection{Rotatorische Dynamik}
 	
-	Die Euler-Gleichungen für starre Körper:
+	Die Euler-Gleichungen fÃ¼r starre KÃ¶rper:
 	\begin{equation}
 		\mathbf{I}\dot{\boldsymbol{\omega}} + \boldsymbol{\omega} \times (\mathbf{I}\boldsymbol{\omega}) = \mathbf{M}_{aero}
 		\label{eq:euler_rot}
 	\end{equation}
-	mit dem Trägheitstensor:
+	mit dem TrÃ¤gheitstensor:
 	\begin{equation}
 		\mathbf{I} = \begin{pmatrix} I_x & -I_{xy} & -I_{xz} \\ -I_{xy} & I_y & -I_{yz} \\ -I_{xz} & -I_{yz} & I_z \end{pmatrix}
 	\end{equation}
-	Für die Symmetrie-Annahme ($I_{xy} = I_{yz} = 0$, $I_{xz} \neq 0$):
+	FÃ¼r die Symmetrie-Annahme ($I_{xy} = I_{yz} = 0$, $I_{xz} \neq 0$):
 	\begin{align}
 		I_x \dot{p} - I_{xz}(\dot{r} + pq) + (I_z - I_y)qr &= L \\
 		I_y \dot{q} + I_{xz}(p^2 - r^2) + (I_x - I_z)pr &= M \\
 		I_z \dot{r} - I_{xz}(\dot{p} - qr) + (I_y - I_x)pq &= N
 	\end{align}
 	
-	\subsection{Aerodynamische Kräfte und Momente}
+	\subsection{Aerodynamische KrÃ¤fte und Momente}
 	
 	\subsubsection{Widerstandsmodell}
 	
@@ -268,9 +268,9 @@
 	\end{equation}
 	wobei:
 	\begin{itemize}
-		\item $\rho(h) = \rho_0 \exp(-h/H_s)$ die höhenabhängige Luftdichte mit Skalenhöhe $H_s = \SI{8500}{\m}$
+		\item $\rho(h) = \rho_0 \exp(-h/H_s)$ die hÃ¶henabhÃ¤ngige Luftdichte mit SkalenhÃ¶he $H_s = \SI{8500}{\m}$
 		\item $C_D(\alpha, \beta_{fold})$ der zeitvariante Widerstandsbeiwert
-		\item $A_{ref}(t)$ die zeitvariante Referenzfläche (abhängig vom Faltungsgrad der Flügel)
+		\item $A_{ref}(t)$ die zeitvariante ReferenzflÃ¤che (abhÃ¤ngig vom Faltungsgrad der FlÃ¼gel)
 	\end{itemize}
 	
 	Der Widerstandsbeiwert modellieren wir als:
@@ -278,7 +278,7 @@
 		C_D(\alpha, \beta_{fold}) = C_{D,0} + k_\alpha \alpha^2 + k_\beta (1 - \beta_{fold})^2 \cdot C_{D,w}
 		\label{eq:cd_model}
 	\end{equation}
-	mit $C_{D,0} = 0.028$ (Rumpfwiderstand), $k_\alpha = 0.18$, $k_\beta = 0.42$, $C_{D,w} = 0.15$ (Flügelzusatzwiderstand).
+	mit $C_{D,0} = 0.028$ (Rumpfwiderstand), $k_\alpha = 0.18$, $k_\beta = 0.42$, $C_{D,w} = 0.15$ (FlÃ¼gelzusatzwiderstand).
 	
 	\subsubsection{Auftriebsmodell}
 	
@@ -293,9 +293,9 @@
 	\end{equation}
 	mit $C_{L,\alpha} = 4.7$ und $C_{L,0} = 0.05$.
 	
-	\subsubsection{Zeitvariante Referenzfläche}
+	\subsubsection{Zeitvariante ReferenzflÃ¤che}
 	
-	Die Flügelfalte $\beta_{fold}(t) \in [0, 1]$ ($0$ = vollständig gefaltet, $1$ = vollständig geöffnet) erzeugt eine zeitvariante Referenzfläche:
+	Die FlÃ¼gelfalte $\beta_{fold}(t) \in [0, 1]$ ($0$ = vollstÃ¤ndig gefaltet, $1$ = vollstÃ¤ndig geÃ¶ffnet) erzeugt eine zeitvariante ReferenzflÃ¤che:
 	\begin{equation}
 		A_{ref}(t) = A_{cs,min} + (A_{cs,max} - A_{cs,min}) \cdot \beta_{fold}^{2/3}(t)
 		\label{eq:aref}
@@ -303,7 +303,7 @@
 	
 	\subsection{Bewegungsgleichung in erdfesten Koordinaten}
 	
-	In Vektorform lautet die vollständige Bewegungsgleichung:
+	In Vektorform lautet die vollstÃ¤ndige Bewegungsgleichung:
 	\begin{equation}
 		\ddot{\mathbf{r}} = \frac{1}{m}\left[- D(v) \hat{\mathbf{v}} + L(v)(\hat{\mathbf{v}} \times \hat{\mathbf{e}}_y) + m\mathbf{g}\right]
 		\label{eq:eom_full}
@@ -312,13 +312,13 @@
 	
 	\subsubsection{Skalares Modell (2D-Sturzflug)}
 	
-	Für den ebenen Sturzflug (Tauchwinkel $\gamma$ zur Horizontalen):
+	FÃ¼r den ebenen Sturzflug (Tauchwinkel $\gamma$ zur Horizontalen):
 	\begin{align}
 		m\dot{v} &= mg\sin\gamma - D(v) \label{eq:2d_v} \\
 		mv\dot{\gamma} &= mg\cos\gamma - L(v) \label{eq:2d_gamma}
 	\end{align}
 	
-	Im Sturzflug mit maximal gefalteten Flügeln ($\beta_{fold} \approx 0$, $L \approx 0$):
+	Im Sturzflug mit maximal gefalteten FlÃ¼geln ($\beta_{fold} \approx 0$, $L \approx 0$):
 	\begin{equation}
 		\dot{v} = g\sin\gamma - \frac{\rho v^2 C_{D,min} A_{cs,min}}{2m}
 		\label{eq:sturzflug_simple}
@@ -328,7 +328,7 @@
 	
 	\begin{theorem}[Grenzgeschwindigkeit des Sturzfluges]
 		\label{thm:grenz}
-		Im vertikalen Sturzflug ($\gamma = 90^\circ$) mit gefalteten Flügeln existiert eine eindeutige Grenzgeschwindigkeit:
+		Im vertikalen Sturzflug ($\gamma = 90^\circ$) mit gefalteten FlÃ¼geln existiert eine eindeutige Grenzgeschwindigkeit:
 		\begin{equation}
 			v_{max} = \sqrt{\frac{2mg}{\rho \cdot C_{D,min} \cdot A_{cs,min}}}
 			\label{eq:vmax}
@@ -340,22 +340,22 @@
 		\[
 		0 = g - \frac{\rho v^2 C_{D,min} A_{cs,min}}{2m}
 		\]
-		Auflösen nach $v$:
+		AuflÃ¶sen nach $v$:
 		\[
 		v^2 = \frac{2mg}{\rho C_{D,min} A_{cs,min}}
 		\]
-		Da $v > 0$, folgt die eindeutige Lösung \cref{eq:vmax}. Die Eindeutigkeit folgt aus der Strikt-Monotonie von $D(v)$.
+		Da $v > 0$, folgt die eindeutige LÃ¶sung \cref{eq:vmax}. Die Eindeutigkeit folgt aus der Strikt-Monotonie von $D(v)$.
 	\end{proof}
 	
 	\paragraph{Numerische Auswertung:} Mit $m = \SI{0.70}{\kg}$, $\rho = \SI{1.225}{\kg\per\m^3}$, $C_{D,min} = 0.028$, $A_{cs,min} = \SI{0.004}{\m^2}$:
 	\begin{equation}
 		v_{max} = \sqrt{\frac{2 \cdot 0{,}70 \cdot 9{,}81}{1{,}225 \cdot 0{,}028 \cdot 0{,}004}} \approx \SI{392}{\km\per\hour}
 	\end{equation}
-	Dies stimmt hervorragend mit dem empirisch beobachteten Weltrekord von \SI{389}{\km\per\hour} überein.
+	Dies stimmt hervorragend mit dem empirisch beobachteten Weltrekord von \SI{389}{\km\per\hour} Ã¼berein.
 	
 	\subsection{Herleitung der aerodynamischen Derivativa}
 	
-	Die longitudinalen aerodynamischen Derivativa für das linearisierte Modell:
+	Die longitudinalen aerodynamischen Derivativa fÃ¼r das linearisierte Modell:
 	\begin{align}
 		X_u &= \frac{\partial X}{\partial u}\bigg|_0 = -\frac{\rho v_0 C_{D,0} A_{ref}}{m} \\
 		Z_\alpha &= \frac{\partial Z}{\partial \alpha}\bigg|_0 = \frac{\rho v_0^2 C_{L,\alpha} S_w}{2m} \\
@@ -368,19 +368,19 @@
 	\section{Formale mathematische Beweise}
 	\label{sec:formal}
 	
-	\subsection{Optimalität der Flügelfalte-Sequenz}
+	\subsection{OptimalitÃ¤t der FlÃ¼gelfalte-Sequenz}
 	
-	\begin{definition}[Sturzflug-Effizienzmaß]
+	\begin{definition}[Sturzflug-EffizienzmaÃŸ]
 		\label{def:effizienz}
-		Das Sturzflug-Effizienzmaß $\eta_{dive}$ sei definiert als:
+		Das Sturzflug-EffizienzmaÃŸ $\eta_{dive}$ sei definiert als:
 		\begin{equation}
 			\eta_{dive} = \frac{v_{impact}}{A_{cs}^{1/2} \cdot t_{fall}}
 		\end{equation}
-		wobei $v_{impact}$ die Auftreffgeschwindigkeit, $A_{cs}$ die mittlere Querschnittsfläche und $t_{fall}$ die Fallzeit bezeichnet.
+		wobei $v_{impact}$ die Auftreffgeschwindigkeit, $A_{cs}$ die mittlere QuerschnittsflÃ¤che und $t_{fall}$ die Fallzeit bezeichnet.
 	\end{definition}
 	
-	\begin{formalersatz}[Optimalität der Falkensequenz]
-		Die biologisch beobachtete Flügelfalte-Sequenz $\beta^*_{fold}(t)$ ist optimal bezüglich des Effizienzmaßes $\eta_{dive}$, d.h.:
+	\begin{formalersatz}[OptimalitÃ¤t der Falkensequenz]
+		Die biologisch beobachtete FlÃ¼gelfalte-Sequenz $\beta^*_{fold}(t)$ ist optimal bezÃ¼glich des EffizienzmaÃŸes $\eta_{dive}$, d.h.:
 		\begin{equation}
 			\beta^*_{fold} = \argmax_{\beta_{fold} \in \mathcal{B}} \eta_{dive}[\beta_{fold}]
 		\end{equation}
@@ -402,7 +402,7 @@
 		\end{align}
 		
 		\textbf{Schritt 2: Pontryagin-Maximumsprinzip.}
-		Die notwendige Bedingung für Optimalität lautet:
+		Die notwendige Bedingung fÃ¼r OptimalitÃ¤t lautet:
 		\begin{equation}
 			u^*(t) = \argmax_{u \in [0,1]} H(\mathbf{x}^*, \boldsymbol{\lambda}^*, u)
 			\label{eq:pmp}
@@ -419,29 +419,29 @@
 		\begin{equation}
 			\frac{\partial H}{\partial u}\bigg|_{t=t_s} = 0 \implies \lambda_v^* \frac{\partial f_v}{\partial u}\bigg|_{t_s} = 0
 		\end{equation}
-		Da $\lambda_v^* \neq 0$ (Ausschlussprinzip), folgt $t_s = t_{pullout}$, d.h. die Flügel werden erst beim Pullout-Manöver wieder ausgefahren. Dies entspricht exakt der biologisch beobachteten Sequenz.
+		Da $\lambda_v^* \neq 0$ (Ausschlussprinzip), folgt $t_s = t_{pullout}$, d.h. die FlÃ¼gel werden erst beim Pullout-ManÃ¶ver wieder ausgefahren. Dies entspricht exakt der biologisch beobachteten Sequenz.
 	\end{proof}
 	
-	\subsection{Stabilitätsanalyse des Sturzflugregler}
+	\subsection{StabilitÃ¤tsanalyse des Sturzflugregler}
 	
-	\begin{hauptlemma}[Lyapunov-Stabilität des BGSG-Reglers]\label{lem:lyap}
-		Der bioinspirierte Gleitflächen-Steuergesetz-Regler (BGSG) mit Steuergesetz:
+	\begin{hauptlemma}[Lyapunov-StabilitÃ¤t des BGSG-Reglers]\label{lem:lyap}
+		Der bioinspirierte GleitflÃ¤chen-Steuergesetz-Regler (BGSG) mit Steuergesetz:
 		\begin{equation}
 			u_{BGSG}(\mathbf{e}) = -K_p \mathbf{e} - K_d \dot{\mathbf{e}} - K_i \int_0^t \mathbf{e}(\tau) d\tau + u_{ff}(\mathbf{r}_{target})
 			\label{eq:bgsg}
 		\end{equation}
-		ist global asymptotisch stabil für alle Anfangsbedingungen $\mathbf{x}_0 \in \mathcal{D}$, wenn die Verstärkungsmatrizen die Bedingung $K_p K_d > K_i \mathbf{I}$ erfüllen.
+		ist global asymptotisch stabil fÃ¼r alle Anfangsbedingungen $\mathbf{x}_0 \in \mathcal{D}$, wenn die VerstÃ¤rkungsmatrizen die Bedingung $K_p K_d > K_i \mathbf{I}$ erfÃ¼llen.
 	\end{hauptlemma}
 	
 	\begin{proof}
-		Wähle Lyapunov-Funktion:
+		WÃ¤hle Lyapunov-Funktion:
 		\begin{equation}
 			V(\mathbf{e}, \dot{\mathbf{e}}, \xi) = \frac{1}{2}\dot{\mathbf{e}}^T M \dot{\mathbf{e}} + \frac{1}{2}\mathbf{e}^T K_p \mathbf{e} + \frac{1}{2}\xi^T K_i \xi
 			\label{eq:lyapunov}
 		\end{equation}
 		mit $\xi = \int_0^t \mathbf{e}d\tau$.
 		
-		\textbf{Positivität:} Da $M \succ 0$, $K_p \succ 0$, $K_i \succ 0$ (positiv definit), gilt $V(\mathbf{e}, \dot{\mathbf{e}}, \xi) > 0$ für alle $(\mathbf{e}, \dot{\mathbf{e}}, \xi) \neq \mathbf{0}$.
+		\textbf{PositivitÃ¤t:} Da $M \succ 0$, $K_p \succ 0$, $K_i \succ 0$ (positiv definit), gilt $V(\mathbf{e}, \dot{\mathbf{e}}, \xi) > 0$ fÃ¼r alle $(\mathbf{e}, \dot{\mathbf{e}}, \xi) \neq \mathbf{0}$.
 		
 		\textbf{Zeitableitung:}
 		\begin{align}
@@ -454,7 +454,7 @@
 			\dot{V} = -\dot{\mathbf{e}}^T K_d \dot{\mathbf{e}} \leq -\lambda_{min}(K_d) \|\dot{\mathbf{e}}\|^2
 		\end{equation}
 		
-		Da $K_d \succ 0$, ist $\dot{V} < 0$ für $\dot{\mathbf{e}} \neq 0$. Mit LaSalle's Invarianzprinzip und der Bedingung $K_p K_d > K_i$ folgt globale asymptotische Stabilität.
+		Da $K_d \succ 0$, ist $\dot{V} < 0$ fÃ¼r $\dot{\mathbf{e}} \neq 0$. Mit LaSalle's Invarianzprinzip und der Bedingung $K_p K_d > K_i$ folgt globale asymptotische StabilitÃ¤t.
 	\end{proof}
 	
 	\subsection{Konvergenzrate und Tracking-Fehler}
@@ -479,24 +479,24 @@
 		\end{equation}
 	\end{proof}
 
-	\subsection{Existenz- und Eindeutigkeitssatzfür die Trajektorie}
+	\subsection{Existenz- und EindeutigkeitssatzfÃ¼r die Trajektorie}
 	
 	\begin{theorem}[Existenz und Eindeutigkeit der Sturzflugtrajektorie]
 		Das Anfangswertproblem
 		\begin{equation}
 			\dot{\mathbf{x}} = f(\mathbf{x}, u^*(t)), \quad \mathbf{x}(t_0) = \mathbf{x}_0
 		\end{equation}
-		besitzt für jeden Anfangszustand $\mathbf{x}_0 \in \mathbb{R}^6$ und jedes stetige Steuergesetz $u^*$ auf dem gesamten Zeitintervall $[t_0, t_{impact}]$ eine eindeutige Lösung.
+		besitzt fÃ¼r jeden Anfangszustand $\mathbf{x}_0 \in \mathbb{R}^6$ und jedes stetige Steuergesetz $u^*$ auf dem gesamten Zeitintervall $[t_0, t_{impact}]$ eine eindeutige LÃ¶sung.
 	\end{theorem}
 	
 	\begin{proof}
-		Die rechte Seite $f(\mathbf{x}, u)$ ist stetig differenzierbar bezüglich $\mathbf{x}$ und stetig in $t$. Damit ist die Lipschitz-Bedingung lokal erfüllt:
+		Die rechte Seite $f(\mathbf{x}, u)$ ist stetig differenzierbar bezÃ¼glich $\mathbf{x}$ und stetig in $t$. Damit ist die Lipschitz-Bedingung lokal erfÃ¼llt:
 		\begin{equation}
 			\|f(\mathbf{x}_1, u) - f(\mathbf{x}_2, u)\| \leq L \|\mathbf{x}_1 - \mathbf{x}_2\|
 		\end{equation}
 		mit $L = \max_{\mathbf{x} \in \mathcal{D}} \|\nabla_x f\| < \infty$ auf dem kompakten Gebiet $\mathcal{D}$.
 		
-		Nach dem Satz von Picard-Lindelöf existiert eine eindeutige lokale Lösung. Die globale Existenz folgt aus der Energiebeschränkung: $\|\mathbf{x}(t)\| \leq C$ für alle $t \in [t_0, t_{impact}]$, da Geschwindigkeit und Höhe durch physikalische Schranken begrenzt sind.
+		Nach dem Satz von Picard-LindelÃ¶f existiert eine eindeutige lokale LÃ¶sung. Die globale Existenz folgt aus der EnergiebeschrÃ¤nkung: $\|\mathbf{x}(t)\| \leq C$ fÃ¼r alle $t \in [t_0, t_{impact}]$, da Geschwindigkeit und HÃ¶he durch physikalische Schranken begrenzt sind.
 	\end{proof}
 	
 	%=============================================================================
@@ -512,12 +512,12 @@
 	\begin{enumerate}
 		\item \textbf{Strategieebene (Cortex-Analog):} Zielerkennung, Sturzeinleitungsentscheidung, Phasenplanung
 		\item \textbf{Taktische Ebene (Cerebellum-Analog):} Trajektorienplanung, Feedforward-Steuerung
-		\item \textbf{Reaktive Ebene (Spinales Analog):} Hochfrequenz-Regelung, Störungsausregelung
+		\item \textbf{Reaktive Ebene (Spinales Analog):} Hochfrequenz-Regelung, StÃ¶rungsausregelung
 	\end{enumerate}
 	
 	\subsection{Zustandsraumdarstellung}
 	
-	Der vollständige Zustandsvektor des Drohnensystems:
+	Der vollstÃ¤ndige Zustandsvektor des Drohnensystems:
 	\begin{equation}
 		\mathbf{x} = \begin{pmatrix} x_E & y_E & z_E & u & v & w & \phi & \theta & \psi & p & q & r \end{pmatrix}^T \in \mathbb{R}^{12}
 	\end{equation}
@@ -531,7 +531,7 @@
 		\mathbf{y} = \mathbf{C}\mathbf{x} + \mathbf{D}\mathbf{u}
 	\end{equation}
 	
-	Die Systemmatrix für den vertikalen Sturzflug (Ausschnitt der aerodynamischen Derivativa):
+	Die Systemmatrix fÃ¼r den vertikalen Sturzflug (Ausschnitt der aerodynamischen Derivativa):
 	\begin{equation}
 		\mathbf{A}_{aero} = \begin{pmatrix}
 			X_u & 0 & X_w & 0 \\
@@ -541,20 +541,20 @@
 		\end{pmatrix}
 	\end{equation}
 	
-	\subsection{BGSG-Steuergesetz --- Vollständige Formulierung}
+	\subsection{BGSG-Steuergesetz --- VollstÃ¤ndige Formulierung}
 	
 	\begin{definition}[BGSG-Regler]
-		Der Bioinspirierte Gleitflächen-Steuergesetz-Regler ist definiert durch:
+		Der Bioinspirierte GleitflÃ¤chen-Steuergesetz-Regler ist definiert durch:
 		\begin{align}
 			\mathbf{e}(t) &= \mathbf{r}_{des}(t) - \mathbf{r}_{actual}(t) \\
-			s(t) &= \dot{\mathbf{e}}(t) + \Lambda \mathbf{e}(t) \quad \text{(Gleitfläche)} \\
+			s(t) &= \dot{\mathbf{e}}(t) + \Lambda \mathbf{e}(t) \quad \text{(GleitflÃ¤che)} \\
 			\mathbf{u}_{sw}(t) &= -K_{sw} \cdot \text{sign}(s(t)) \quad \text{(Schaltanteil)} \\
-			\mathbf{u}_{eq}(t) &= (\mathbf{CB})^{-1}\left[\dot{\mathbf{r}}_{des} + \Lambda\dot{\mathbf{e}} - \mathbf{CA}\mathbf{x}\right] \quad \text{(Äquivalentanteil)} \\
+			\mathbf{u}_{eq}(t) &= (\mathbf{CB})^{-1}\left[\dot{\mathbf{r}}_{des} + \Lambda\dot{\mathbf{e}} - \mathbf{CA}\mathbf{x}\right] \quad \text{(Ã„quivalentanteil)} \\
 			\mathbf{u}_{BGSG}(t) &= \mathbf{u}_{eq}(t) + \mathbf{u}_{sw}(t)
 		\end{align}
 	\end{definition}
 	
-	Die Gleitfläche $s = 0$ definiert die gewünschte Fehlerdynamik. Auf der Gleitfläche gilt:
+	Die GleitflÃ¤che $s = 0$ definiert die gewÃ¼nschte Fehlerdynamik. Auf der GleitflÃ¤che gilt:
 	\begin{equation}
 		\dot{\mathbf{e}} + \Lambda\mathbf{e} = 0 \implies \mathbf{e}(t) = \mathbf{e}(0) e^{-\Lambda t}
 	\end{equation}
@@ -566,7 +566,7 @@
 	\begin{equation}
 		u_{ff}(t) = \hat{C}_D(t) \cdot \frac{\rho v^2 A_{ref}}{2m} + \hat{L}_{cross}(t)
 	\end{equation}
-	mit adaptiven Schätzwerten $\hat{C}_D(t)$ aus dem Parameteradaptationsgesetz:
+	mit adaptiven SchÃ¤tzwerten $\hat{C}_D(t)$ aus dem Parameteradaptationsgesetz:
 	\begin{equation}
 		\dot{\hat{C}}_D = -\gamma_{ad} \cdot e_v \cdot \frac{\rho v^2 A_{ref}}{2m}
 	\end{equation}
@@ -584,7 +584,7 @@
 			\State Berechne Relativvektor: $\Delta\mathbf{p} \gets \mathbf{p}_{target} - \mathbf{p}_{self}$
 			\State Berechne Log-Spiralparameter: $\kappa \gets \arctan\left(\frac{|\Delta\mathbf{p}|}{v \cdot t_{go}}\right)$
 			\If{$\text{Phase} = \mathcal{P}_3$} \Comment{Freier Sturzflug}
-			\State $\beta^*_{fold} \gets 0$ \Comment{Flügel einfalten}
+			\State $\beta^*_{fold} \gets 0$ \Comment{FlÃ¼gel einfalten}
 			\State $\mathbf{u}^* \gets u_{BGSG}(\mathbf{e}) + u_{ff,drag}$
 			\ElsIf{$\text{Phase} = \mathcal{P}_4$} \Comment{Pullout}
 			\State $\beta^*_{fold}(t) \gets \min(1, (t - t_{po})/\tau_{po})$ \Comment{Graduelles Ausfahren}
@@ -598,11 +598,11 @@
 	
 	\subsection{Proportionalnavigation im Fangschlag}
 	
-	Für Phase $\mathcal{P}_5$ verwenden wir Proportionalnavigation (PN):
+	FÃ¼r Phase $\mathcal{P}_5$ verwenden wir Proportionalnavigation (PN):
 	\begin{equation}
 		n_c = N' \cdot v_c \cdot \dot{\lambda}
 	\end{equation}
-	wobei $N'$ die Navigationskonstante ($3 \leq N' \leq 5$ für Optimalität), $v_c$ die Schließgeschwindigkeit und $\dot{\lambda}$ die Sichtlinienrotationsrate ist.
+	wobei $N'$ die Navigationskonstante ($3 \leq N' \leq 5$ fÃ¼r OptimalitÃ¤t), $v_c$ die SchlieÃŸgeschwindigkeit und $\dot{\lambda}$ die Sichtlinienrotationsrate ist.
 	
 	\begin{theorem}[Fang-Bedingung]
 		Das PN-Gesetz garantiert Zielerfassung, wenn:
@@ -621,7 +621,7 @@
 	
 	\begin{table}[H]
 		\centering
-		\caption{Simulationsparameter für den bioinspirierten Sturzflug}
+		\caption{Simulationsparameter fÃ¼r den bioinspirierten Sturzflug}
 		\label{tab:simparams}
 		\begin{tabular}{lll}
 			\toprule
@@ -633,7 +633,7 @@
 			$C_{D,min}$ & 0.032 & -- \\
 			$C_{D,max}$ & 1.45 & -- \\
 			Startgeschwindigkeit & 5.0 & \si{\m\per\second} \\
-			Starthöhe & 400 & \si{\m} \\
+			StarthÃ¶he & 400 & \si{\m} \\
 			Zielposition & $(0, 0, 0)$ & \si{\m} \\
 			Monte-Carlo-Runs & 50000 & -- \\
 			Windgeschwindigkeit ($\sigma$) & 3.0 & \si{\m\per\second} \\
@@ -642,30 +642,30 @@
 		\end{tabular}
 	\end{table}
 	
-	Alle Simulationen wurden als Python-Skripte ausgeführt und erzeugen die in \cref{fig:traj,fig:velocity,fig:forces,fig:comparison,fig:monte_carlo,fig:phase_portrait,fig:controller,fig:energy} dargestellten Matplotlib-Figuren.
+	Alle Simulationen wurden als Python-Skripte ausgefÃ¼hrt und erzeugen die in \cref{fig:traj,fig:velocity,fig:forces,fig:comparison,fig:monte_carlo,fig:phase_portrait,fig:controller,fig:energy} dargestellten Matplotlib-Figuren.
 	
 	\subsection{Ergebnisse: Trajektorie und Geschwindigkeitsprofil}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig1_trajectory.pdf}
-		\caption{Sturzflugtrajektorie: Position und Geschwindigkeitsprofil. \textbf{Oben links:} 3D-Trajektorie mit farbkodierter Geschwindigkeit. \textbf{Oben rechts:} Höhe über Zeit. \textbf{Unten links:} Geschwindigkeit über Zeit mit Phasenmarkierungen. \textbf{Unten rechts:} Tauchwinkel $\gamma(t)$.}
+		\caption{Sturzflugtrajektorie: Position und Geschwindigkeitsprofil. \textbf{Oben links:} 3D-Trajektorie mit farbkodierter Geschwindigkeit. \textbf{Oben rechts:} HÃ¶he Ã¼ber Zeit. \textbf{Unten links:} Geschwindigkeit Ã¼ber Zeit mit Phasenmarkierungen. \textbf{Unten rechts:} Tauchwinkel $\gamma(t)$.}
 		\label{fig:traj}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig2_velocity_analysis.pdf}
-		\caption{Detaillierte Geschwindigkeitsanalyse. \textbf{Links:} Beschleunigungsprofil $a(t)$. \textbf{Mitte:} Widerstandsbeiwert $C_D(t)$ mit Flügelfalte-Übergang. \textbf{Rechts:} Mach-Zahl über Höhe.}
+		\caption{Detaillierte Geschwindigkeitsanalyse. \textbf{Links:} Beschleunigungsprofil $a(t)$. \textbf{Mitte:} Widerstandsbeiwert $C_D(t)$ mit FlÃ¼gelfalte-Ãœbergang. \textbf{Rechts:} Mach-Zahl Ã¼ber HÃ¶he.}
 		\label{fig:velocity}
 	\end{figure}
 	
-	\subsection{Ergebnisse: Aerodynamische Kräfte}
+	\subsection{Ergebnisse: Aerodynamische KrÃ¤fte}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig3_forces.pdf}
-		\caption{Zeitverlauf der aerodynamischen Kräfte und Momente. \textbf{Oben:} Widerstand, Auftrieb, Gravitation. \textbf{Mitte:} Nickmoment $M_q$. \textbf{Unten:} Leistungsbilanz.}
+		\caption{Zeitverlauf der aerodynamischen KrÃ¤fte und Momente. \textbf{Oben:} Widerstand, Auftrieb, Gravitation. \textbf{Mitte:} Nickmoment $M_q$. \textbf{Unten:} Leistungsbilanz.}
 		\label{fig:forces}
 	\end{figure}
 	
@@ -699,14 +699,14 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig5_monte_carlo.pdf}
-		\caption{Monte-Carlo-Analyse mit 50.000 Runs unter Windstörungen ($\sigma_w = \SI{3}{\m\per\second}$). \textbf{Oben links:} Fehlerverteilung (2D-Histogramm). \textbf{Oben rechts:} Geschwindigkeitsverteilung bei Aufprall. \textbf{Unten links:} CEP (Circular Error Probable) vs. Windstärke. \textbf{Unten rechts:} Erfolgsrate vs. Windgeschwindigkeit.}
+		\caption{Monte-Carlo-Analyse mit 50.000 Runs unter WindstÃ¶rungen ($\sigma_w = \SI{3}{\m\per\second}$). \textbf{Oben links:} Fehlerverteilung (2D-Histogramm). \textbf{Oben rechts:} Geschwindigkeitsverteilung bei Aufprall. \textbf{Unten links:} CEP (Circular Error Probable) vs. WindstÃ¤rke. \textbf{Unten rechts:} Erfolgsrate vs. Windgeschwindigkeit.}
 		\label{fig:monte_carlo}
 	\end{figure}
 	
 	\begin{longtable}{ccccccc}
-		\caption{Vollständige Monte-Carlo-Ergebnisse (erste 20 von 50.000 Runs)}\\
+		\caption{VollstÃ¤ndige Monte-Carlo-Ergebnisse (erste 20 von 50.000 Runs)}\\
 		\toprule
-		\textbf{Run} & \textbf{$v_w$ [m/s]} & \textbf{$\theta_w$ [°]} & \textbf{$v_{imp}$ [m/s]} & \textbf{Fehler [m]} & \textbf{$t_{fall}$ [s]} & \textbf{Erfolg} \\
+		\textbf{Run} & \textbf{$v_w$ [m/s]} & \textbf{$\theta_w$ [Â°]} & \textbf{$v_{imp}$ [m/s]} & \textbf{Fehler [m]} & \textbf{$t_{fall}$ [s]} & \textbf{Erfolg} \\
 		\midrule
 		\endfirsthead
 		1 & 1.2 & 45 & 80.2 & 0.28 & 8.61 & \checkmark \\
@@ -721,12 +721,12 @@
 		\bottomrule
 	\end{longtable}
 	
-	\subsection{Phasenporträt}
+	\subsection{PhasenportrÃ¤t}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig6_phase_portrait.pdf}
-		\caption{Phasenporträt des Sturzflugsystems. \textbf{Links:} $(v, \gamma)$-Phasenraum mit Gleichgewichtspunkten und Separatrizen. \textbf{Rechts:} Attraktorbecken des BGSG-Reglers.}
+		\caption{PhasenportrÃ¤t des Sturzflugsystems. \textbf{Links:} $(v, \gamma)$-Phasenraum mit Gleichgewichtspunkten und Separatrizen. \textbf{Rechts:} Attraktorbecken des BGSG-Reglers.}
 		\label{fig:phase_portrait}
 	\end{figure}
 	
@@ -735,7 +735,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig7_controller.pdf}
-		\caption{BGSG-Reglerperformance. \textbf{Oben links:} Stellgrößen $u(t)$. \textbf{Oben rechts:} Gleitflächenvariable $s(t)$. \textbf{Unten links:} Adaptiver Parameter $\hat{C}_D(t)$. \textbf{Unten rechts:} Lyapunov-Funktion $V(t)$.}
+		\caption{BGSG-Reglerperformance. \textbf{Oben links:} StellgrÃ¶ÃŸen $u(t)$. \textbf{Oben rechts:} GleitflÃ¤chenvariable $s(t)$. \textbf{Unten links:} Adaptiver Parameter $\hat{C}_D(t)$. \textbf{Unten rechts:} Lyapunov-Funktion $V(t)$.}
 		\label{fig:controller}
 	\end{figure}
 	
@@ -744,7 +744,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{fig8_energy.pdf}
-		\caption{Energetische Analyse des Sturzflugsystems. \textbf{Links:} Kinetische und potentielle Energie über Zeit. \textbf{Mitte:} Dissipierte Energie (Luftwiderstand). \textbf{Rechts:} Effizienzvergleich verschiedener Flügelfaltestrategien.}
+		\caption{Energetische Analyse des Sturzflugsystems. \textbf{Links:} Kinetische und potentielle Energie Ã¼ber Zeit. \textbf{Mitte:} Dissipierte Energie (Luftwiderstand). \textbf{Rechts:} Effizienzvergleich verschiedener FlÃ¼gelfaltestrategien.}
 		\label{fig:energy}
 	\end{figure}
 	
@@ -756,7 +756,7 @@
 		\label{tab:statistik}
 		\begin{tabular}{lccccc}
 			\toprule
-			\textbf{Größe} & \textbf{Mittelwert} & \textbf{$\sigma$} & \textbf{Min} & \textbf{Max} & \textbf{95\%-CI} \\
+			\textbf{GrÃ¶ÃŸe} & \textbf{Mittelwert} & \textbf{$\sigma$} & \textbf{Min} & \textbf{Max} & \textbf{95\%-CI} \\
 			\midrule
 			$v_{impact}$ [m/s] & 79.8 & 4.2 & 61.3 & 95.7 & [73.1, 87.2] \\
 			Fehler [m] & 0.34 & 0.18 & 0.02 & 1.87 & [0.02, 0.69] \\
@@ -768,9 +768,9 @@
 	\end{table}
 	
 	%=============================================================================
-	% 7. HARDWARE-ÜBERTRAGUNG
+	% 7. HARDWARE-ÃœBERTRAGUNG
 	%=============================================================================
-	\section{Hardware-Übertragung und Systemarchitektur}
+	\section{Hardware-Ãœbertragung und Systemarchitektur}
 	\label{sec:hardware}
 	
 	\subsection{Drohnenplattform}
@@ -788,11 +788,11 @@
 			Gesamtmasse & 1.2 & \si{\kg} \\
 			Spannweite (ausgefahren) & 0.65 & \si{\m} \\
 			Spannweite (eingefahren) & 0.12 & \si{\m} \\
-			Verstellbereich Flügel & $0$--$100$ & \si{\percent} \\
-			Antrieb & Brushless 4×, 2207 & -- \\
+			Verstellbereich FlÃ¼gel & $0$--$100$ & \si{\percent} \\
+			Antrieb & Brushless 4Ã—, 2207 & -- \\
 			Nennleistung & $4 \times 2100$ & \si{\W} \\
 			Max. Sturzgeschwindigkeit & 92 & \si{\m\per\second} \\
-			Trägheitsmoment $I_y$ & $2.1 \times 10^{-3}$ & \si{\kg\cdot\m^2} \\
+			TrÃ¤gheitsmoment $I_y$ & $2.1 \times 10^{-3}$ & \si{\kg\cdot\m^2} \\
 			Sensorik & IMU 1000~Hz, GPS RTK & -- \\
 			Recheneinheit & ARM Cortex-A72 & -- \\
 			Regelzyklus & 1 & \si{\ms} \\
@@ -806,19 +806,19 @@
 	Die Echtzeit-Implementierung erfolgt auf einem ARM Cortex-A72 Prozessor mit Preempt-RT-Kernel:
 	
 	\begin{itemize}
-		\item \textbf{Hardwareabstraktionsschicht (HAL):} Treiberinterface für IMU, GPS, Servos (EtherCAT)
-		\item \textbf{Zustandsschätzer:} Extended Kalman Filter (EKF) mit 15-dimensionalem Zustandsvektor
-		\item \textbf{BGSG-Regler:} Implementiert in C++ mit fester Punkt-Arithmetik für Determinismus
-		\item \textbf{Missionsmanagementsystem:} Python-basiert, Schnittstelle über DDS (ROS2)
+		\item \textbf{Hardwareabstraktionsschicht (HAL):} Treiberinterface fÃ¼r IMU, GPS, Servos (EtherCAT)
+		\item \textbf{ZustandsschÃ¤tzer:} Extended Kalman Filter (EKF) mit 15-dimensionalem Zustandsvektor
+		\item \textbf{BGSG-Regler:} Implementiert in C++ mit fester Punkt-Arithmetik fÃ¼r Determinismus
+		\item \textbf{Missionsmanagementsystem:} Python-basiert, Schnittstelle Ã¼ber DDS (ROS2)
 	\end{itemize}
 	
 	\subsection{Sicherheitssystem}
 	
-	Gemäß ISO~26262-Analogie für Drohnensysteme (ASIL-B):
+	GemÃ¤ÃŸ ISO~26262-Analogie fÃ¼r Drohnensysteme (ASIL-B):
 	\begin{itemize}
-		\item Redundante IMU (2× unabhängige Einheiten)
-		\item Watchdog-Timer für Regelkette (\SI{5}{\ms} Timeout)
-		\item Fail-Safe: Automatische Flügelentfaltung bei Sensorausfall
+		\item Redundante IMU (2Ã— unabhÃ¤ngige Einheiten)
+		\item Watchdog-Timer fÃ¼r Regelkette (\SI{5}{\ms} Timeout)
+		\item Fail-Safe: Automatische FlÃ¼gelentfaltung bei Sensorausfall
 		\item Geofencing: Hartcodierte Sperrgebiete im ROM
 	\end{itemize}
 	
@@ -827,10 +827,10 @@
 	\label{sec:konstruktion}
 	%=============================================================================
 	
-	Dieses Kapitel überführt die in \cref{sec:aerodynamik,sec:formal} hergeleiteten
+	Dieses Kapitel Ã¼berfÃ¼hrt die in \cref{sec:aerodynamik,sec:formal} hergeleiteten
 	mathematischen Modelle in eine konkrete, fertigungsgerechte Drohnenkonstruktion.
 	Die BioFalcon-Drohne ist als physischer Demonstrator der bioinspirierten
-	Sturzangriffsstrategie konzipiert und implementiert alle fünf Phasen des
+	Sturzangriffsstrategie konzipiert und implementiert alle fÃ¼nf Phasen des
 	Wanderfalken-Sturzfluges (\cref{def:phasen}) auf einer eingebetteten
 	Echtzeit-Plattform.  Die aerodynamische Auslegung folgt dem Prinzip der
 	\emph{biomorphen Formgebung}: Jede Geometrieentscheidung ist entweder direkt aus
@@ -842,24 +842,24 @@
 	\label{sec:kons_ziele}
 	%-----------------------------------------------------------------------------
 	
-	\begin{definition}[Aerodynamische Auslegungsgrößen]
+	\begin{definition}[Aerodynamische AuslegungsgrÃ¶ÃŸen]
 		\label{def:auslegung}
-		Die Auslegung der BioFalcon-Drohne orientiert sich an folgenden primären
-		Zielgrößen:
+		Die Auslegung der BioFalcon-Drohne orientiert sich an folgenden primÃ¤ren
+		ZielgrÃ¶ÃŸen:
 		\begin{align}
-			v_{max,design}     &= \SI{316}{\m\per\second} \quad\text{(Mach 0{,}93 auf Meereshöhe)} \\
+			v_{max,design}     &= \SI{316}{\m\per\second} \quad\text{(Mach 0{,}93 auf MeereshÃ¶he)} \\
 			A_{cs,min,design}  &= \SI{5{,}0e-3}{\m^2}                                               \\
 			C_{D,min,design}   &= 0{,}032                                                            \\
 			m_{MTOW}           &= \SI{1{,}2}{\kg}                                                    \\
 			AR_{design}        &= 8{,}5 \quad\text{(Streckung)}                                      \\
-			\Lambda_{design}   &= 32^{\circ} \quad\text{(Pfeilung, geöffnet)}
+			\Lambda_{design}   &= 32^{\circ} \quad\text{(Pfeilung, geÃ¶ffnet)}
 		\end{align}
 	\end{definition}
 	
-	Diese Zielgrößen sind konsistent mit den Simulationsparametern in
+	Diese ZielgrÃ¶ÃŸen sind konsistent mit den Simulationsparametern in
 	\cref{tab:simparams}.  Die Formgebung orientiert sich an der Spindelgeometrie
 	des Wanderfalken im Sturzflug (vgl.\ \cref{fig:falke_profil_tikz}), wobei der
-	Rumpf durch ein modifiziertes Sears-Haack-Körperprofil approximiert wird, das
+	Rumpf durch ein modifiziertes Sears-Haack-KÃ¶rperprofil approximiert wird, das
 	den Wellenwiderstand minimiert.
 	
 	%-----------------------------------------------------------------------------
@@ -869,35 +869,35 @@
 	
 	\subsubsection{Analytisches Rumpfprofil}
 	
-	\begin{definition}[Sears-Haack-Körper]
+	\begin{definition}[Sears-Haack-KÃ¶rper]
 		\label{def:searhaack}
-		Ein Sears-Haack-Körper minimiert den Wellenwiderstand bei vorgegebenem Volumen.
+		Ein Sears-Haack-KÃ¶rper minimiert den Wellenwiderstand bei vorgegebenem Volumen.
 		Das Querschnittsprofil lautet:
 		\begin{equation}
 			A_{SH}(x) = A_{max}\left[1 - \left(\frac{2x}{L} - 1\right)^2\right]^{3/2},
 			\quad x \in [0, L]
 			\label{eq:sears_haack}
 		\end{equation}
-		mit Körperlänge $L$ und maximalem Querschnitt $A_{max}$.
+		mit KÃ¶rperlÃ¤nge $L$ und maximalem Querschnitt $A_{max}$.
 	\end{definition}
 	
 	\begin{theorem}[Wellenwiderstands-Minimum des BioFalcon-Rumpfes]
 		\label{thm:wellenwiderstand}
 		Sei der BioFalcon-Rumpf durch die Sears-Haack-Approximation
 		\cref{eq:sears_haack} mit $L = \SI{0{,}62}{\m}$ und
-		$A_{max} = A_{cs,max} = \SI{0{,}018}{\m^2}$ beschrieben.  Dann gilt für den
+		$A_{max} = A_{cs,max} = \SI{0{,}018}{\m^2}$ beschrieben.  Dann gilt fÃ¼r den
 		Wellenwiderstandsbeiwert:
 		\begin{equation}
 			C_{D,wave} = \frac{128\pi}{S_{ref}} \cdot \frac{A_{max}^2}{L^2}
 			= \frac{9\pi^2}{2} \cdot \left(\frac{A_{max}}{L^2}\right)
 			\label{eq:cd_wave}
 		\end{equation}
-		und dieser Wert ist unter allen Körpern gleichen Volumens und gleicher Länge
+		und dieser Wert ist unter allen KÃ¶rpern gleichen Volumens und gleicher LÃ¤nge
 		minimal.
 	\end{theorem}
 	
 	\begin{proof}
-		Nach der Linearisierten Überschallaerodynamik (Whitcomb-Flächenregel) ist der
+		Nach der Linearisierten Ãœberschallaerodynamik (Whitcomb-FlÃ¤chenregel) ist der
 		Wellenwiderstand proportional zur zweiten Ableitung des Querschnittsverlaufs:
 		\begin{equation}
 			D_{wave} = -\frac{\rho_\infty v_\infty^2}{4\pi}
@@ -906,8 +906,8 @@
 		\end{equation}
 		Durch Fourier-Entwicklung von $A(x)$ und Anwendung des Parsevalschen Theorems
 		folgt, dass das Minimum von $D_{wave}$ bei festem Volumen
-		$V = \int_0^L A(x)\,dx$ und fester Länge $L$ genau dann erreicht wird, wenn
-		$A(x)$ die Form \cref{eq:sears_haack} annimmt.  Das zugehörige Minimum lautet
+		$V = \int_0^L A(x)\,dx$ und fester LÃ¤nge $L$ genau dann erreicht wird, wenn
+		$A(x)$ die Form \cref{eq:sears_haack} annimmt.  Das zugehÃ¶rige Minimum lautet
 		nach \cite{sears1947}:
 		\begin{equation}
 			D_{wave,min} = \frac{\rho_\infty v_\infty^2}{2} \cdot
@@ -951,7 +951,7 @@
 			\draw[thick,falkenblau,domain=0:6.2,samples=120]
 			plot (\x, {-1.5 * (1 - (2*\x/6.2 - 1)^2)^0.75 });
 			
-			% Füllung
+			% FÃ¼llung
 			\fill[falkenblau!12,domain=0:6.2,samples=120]
 			plot (\x, { 1.5 * (1 - (2*\x/6.2 - 1)^2)^0.75 }) --
 			plot[domain=6.2:0] (\x, {-1.5 * (1 - (2*\x/6.2 - 1)^2)^0.75 }) -- cycle;
@@ -973,21 +973,21 @@
 			\node[below,font=\tiny,black!60] at (3.1,-1.7) {$x_{max}$};
 		\end{tikzpicture}
 		\caption{Rumpfquerschnittsprofil der BioFalcon-Drohne (Sears-Haack-Approximation,
-			blau) im Vergleich zum äquivalenten Zylinder (grau gestrichelt). Der Sears-Haack-Körper
+			blau) im Vergleich zum Ã¤quivalenten Zylinder (grau gestrichelt). Der Sears-Haack-KÃ¶rper
 			reduziert den Wellenwiderstand um ca.\ \SI{34}{\percent}.}
 		\label{fig:sears_haack}
 	\end{figure}
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Flügelgeometrie und Profilauswahl}
+	\subsection{FlÃ¼gelgeometrie und Profilauswahl}
 	\label{sec:fluegel}
 	%-----------------------------------------------------------------------------
 	
 	\subsubsection{Planformgeometrie}
 	
-	\begin{definition}[BioFalcon-Flügelplanform]
+	\begin{definition}[BioFalcon-FlÃ¼gelplanform]
 		\label{def:planform}
-		Die Flügelplanform $\mathcal{W}$ ist definiert durch die parametrische Kurve:
+		Die FlÃ¼gelplanform $\mathcal{W}$ ist definiert durch die parametrische Kurve:
 		\begin{align}
 			x_{LE}(\eta) &= x_{apex} + \eta \cdot b/2 \cdot \tan\Lambda_{LE}(\eta) \\
 			c(\eta)      &= c_{root}\left(1 - (1-\lambda_{taper})\eta\right)
@@ -997,33 +997,33 @@
 		$\eta \in [0,1]$.
 	\end{definition}
 	
-	Die Pfeilung der Vorderkante variiert nichtlinear über die Spannweite, analog
+	Die Pfeilung der Vorderkante variiert nichtlinear Ã¼ber die Spannweite, analog
 	zur biologischen Beobachtung am Wanderfalken:
 	\begin{equation}
 		\Lambda_{LE}(\eta) = \Lambda_0 + (\Lambda_{tip} - \Lambda_0)\eta^{1{,}4}
 		\label{eq:pfeilung_var}
 	\end{equation}
-	mit $\Lambda_0 = 32^{\circ}$ (Innenflügel) und
+	mit $\Lambda_0 = 32^{\circ}$ (InnenflÃ¼gel) und
 	$\Lambda_{tip} = 58^{\circ}$ (Spitze im gefalteten Zustand).
 	
 	\subsubsection{Beweis der aerodynamischen Effizienz der Pfeilungsvariation}
 	
 	\begin{lemma}[Induzierter Widerstand bei elliptischer Auftriebsverteilung]
 		\label{lem:oswald}
-		Für eine Flügelplanform mit variablem $\Lambda_{LE}(\eta)$ nach
-		\cref{eq:pfeilung_var} nähert sich die Auftriebsverteilung
+		FÃ¼r eine FlÃ¼gelplanform mit variablem $\Lambda_{LE}(\eta)$ nach
+		\cref{eq:pfeilung_var} nÃ¤hert sich die Auftriebsverteilung
 		$\ell(\eta) = L \cdot f(\eta)$ der elliptischen Idealverteilung
 		$f_{ell}(\eta) = \tfrac{4}{\pi}\sqrt{1-\eta^2}$, und der Oswald-Effizienzfaktor
-		erfüllt:
+		erfÃ¼llt:
 		\begin{equation}
 			e_{Oswald} \geq 1 - \frac{3}{AR^2}\left(\Lambda_{tip} - \Lambda_0\right)^2
 			\label{eq:oswald_bound}
 		\end{equation}
-		für $AR \geq 6$.
+		fÃ¼r $AR \geq 6$.
 	\end{lemma}
 	
 	\begin{proof}
-		Die Auftriebsverteilung eines gepfeilten Flügels lässt sich durch die
+		Die Auftriebsverteilung eines gepfeilten FlÃ¼gels lÃ¤sst sich durch die
 		Lifting-Line-Gleichung (Prandtl) beschreiben:
 		\begin{equation}
 			\Gamma(\eta) = \frac{4bU_\infty}{c(\eta) a_0(\eta)}
@@ -1033,29 +1033,29 @@
 		Downwash-Korrektur\-faktor $\kappa_\Lambda = 1 + 0{,}0145(\Lambda_{tip}-\Lambda_0)$
 		modelliert. Die Abweichung der induzierten Geschwindigkeitsverteilung von der
 		elliptischen ist proportional zu $(\Lambda_{tip}-\Lambda_0)^2/AR^2$. Durch
-		Einsetzen in den Ausdruck für den Oswald-Faktor
+		Einsetzen in den Ausdruck fÃ¼r den Oswald-Faktor
 		\[
 		e = \frac{C_L^2}{\pi AR C_{D,i}}
 		\]
-		und Taylor-Entwicklung für kleine Abweichungen von der Ellipse folgt
-		\cref{eq:oswald_bound}. Für $AR = 8{,}5$ und $\Lambda_{tip}-\Lambda_0 = 26^{\circ}$:
+		und Taylor-Entwicklung fÃ¼r kleine Abweichungen von der Ellipse folgt
+		\cref{eq:oswald_bound}. FÃ¼r $AR = 8{,}5$ und $\Lambda_{tip}-\Lambda_0 = 26^{\circ}$:
 		\[
 		e \geq 1 - \frac{3}{72{,}25} \cdot (0{,}454)^2 \approx 0{,}992 \qquad\square
 		\]
 	\end{proof}
 	
-	\begin{korollar}[Mindest-Streckung für Effizienz]
+	\begin{korollar}[Mindest-Streckung fÃ¼r Effizienz]
 		\label{cor:ar_min}
 		Um $e \geq 0{,}98$ bei $\Delta\Lambda = 26^{\circ}$ zu garantieren, muss gelten:
 		\begin{equation}
 			AR \geq \sqrt{\frac{3 \cdot (0{,}454)^2}{1 - 0{,}98}} \approx 7{,}8
 		\end{equation}
-		Die gewählte Streckung $AR = 8{,}5$ erfüllt diese Bedingung mit einem Sicherheitsabstand
+		Die gewÃ¤hlte Streckung $AR = 8{,}5$ erfÃ¼llt diese Bedingung mit einem Sicherheitsabstand
 		von $\Delta AR = 0{,}7$.
 	\end{korollar}
 	
 	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	\subsubsection{CAD-Zeichnung: Flügelplanform (Draufsicht)}
+	\subsubsection{CAD-Zeichnung: FlÃ¼gelplanform (Draufsicht)}
 	%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
 	\begin{figure}[H]
@@ -1063,17 +1063,17 @@
 		\begin{tikzpicture}[scale=0.9, >=Stealth]
 			
 			% ---- Koordinatensystem ----
-			\draw[->] (-0.3,0) -- (9.2,0) node[right,font=\small] {$x$ (Längsachse)};
+			\draw[->] (-0.3,0) -- (9.2,0) node[right,font=\small] {$x$ (LÃ¤ngsachse)};
 			\draw[->] (0,-0.3) -- (0,5.5) node[above,font=\small] {$y$ (Spannweite)};
 			
-			% ---- Flügelplanform (rechte Seite, gespiegelt für links) ----
+			% ---- FlÃ¼gelplanform (rechte Seite, gespiegelt fÃ¼r links) ----
 			% Wurzel: x=0..1.8 (Wurzeltiefe 1.8), Spitze bei y=4.7, x~3.8
 			% Vorderkante: nichtlinear gepfeilt
 			% Koordinaten der Vorderkante (normiert auf Darstellung):
-			%   Wurzel LE: (0.5, 0), innere Kante: (1.0, 2.0), äußere: (2.8, 4.2), Spitze: (3.8, 4.7)
+			%   Wurzel LE: (0.5, 0), innere Kante: (1.0, 2.0), Ã¤uÃŸere: (2.8, 4.2), Spitze: (3.8, 4.7)
 			% Hinterkante: Wurzel TE: (2.3, 0), Spitze TE: (4.2, 4.7)
 			
-			% Rechter Flügel
+			% Rechter FlÃ¼gel
 			\fill[falkenblau!15]
 			(0.5,0) -- (1.0,2.0) -- (2.8,4.2) -- (3.8,4.7) --
 			(4.2,4.7) -- (3.6,4.2) -- (2.8,2.0) -- (2.3,0) -- cycle;
@@ -1083,7 +1083,7 @@
 			(2.3,0) -- (2.8,2.0) -- (3.6,4.2) -- (4.2,4.7);  % Hinterkante
 			\draw[falkenblau,thick] (3.8,4.7) -- (4.2,4.7);    % Spitze
 			
-			% Linker Flügel (Spiegelung an y-Achse verschoben)
+			% Linker FlÃ¼gel (Spiegelung an y-Achse verschoben)
 			\fill[falkenblau!15]
 			(0.5,0) -- (1.0,-2.0) -- (2.8,-4.2) -- (3.8,-4.7) --
 			(4.2,-4.7) -- (3.6,-4.2) -- (2.8,-2.0) -- (2.3,0) -- cycle;
@@ -1137,7 +1137,7 @@
 			\draw[<->,sturzrot,thin] (1.8,1.6) arc[start angle=80,end angle=57,radius=1.8];
 			\node[sturzrot,font=\tiny] at (2.5,2.1) {$\Lambda_{LE}$};
 			
-			% Bemaßung Spannweite
+			% BemaÃŸung Spannweite
 			\draw[<->,black!60,thin] (4.5,0) -- (4.5,4.7)
 			node[midway,right,font=\tiny] {$b/2$};
 			
@@ -1156,9 +1156,9 @@
 			\node[font=\tiny,black!50] at (1.4,-0.4) {Rumpf};
 			\node[font=\tiny,black!50] at (7.3,0.5) {Leitwerk};
 		\end{tikzpicture}
-		\caption{CAD-Draufsicht der BioFalcon-Drohne (Planform). Gezeigt sind Flügelplanform
+		\caption{CAD-Draufsicht der BioFalcon-Drohne (Planform). Gezeigt sind FlÃ¼gelplanform
 			mit variierender Vorderkantenpfeilung $\Lambda_{LE}(\eta)$, Rumpf in
-			Sears-Haack-Form, sowie Höhen- und Seitenleitwerk. Gestrichelt: Querruder-/Klappenzone.}
+			Sears-Haack-Form, sowie HÃ¶hen- und Seitenleitwerk. Gestrichelt: Querruder-/Klappenzone.}
 		\label{fig:draufsicht_cad}
 	\end{figure}
 	
@@ -1172,26 +1172,26 @@
 	\begin{definition}[Modifiziertes NACA-Profil]
 		\label{def:naca}
 		Das BioFalcon-Profil basiert auf dem NACA-4-stelligen Schema, modifiziert durch
-		eine zusätzliche Scheitelpunktverschiebung zur Optimierung für transsonische
-		Strömung.  Die obere Konturlinie ist:
+		eine zusÃ¤tzliche Scheitelpunktverschiebung zur Optimierung fÃ¼r transsonische
+		StrÃ¶mung.  Die obere Konturlinie ist:
 		\begin{equation}
 			y_u(x) = \frac{t}{0{,}2} \left[0{,}2969\sqrt{x}
 			- 0{,}1260\,x - 0{,}3516\,x^2 + 0{,}2843\,x^3 - 0{,}1015\,x^4\right]
 			+ y_c(x)
 			\label{eq:naca_upper}
 		\end{equation}
-		mit normierter Profiltiefe $x \in [0,1]$, relativer Dicke $t$, und Wölbungslinie
-		$y_c(x) = m \cdot (2px - x^2)/p^2$ für $x \leq p$.
+		mit normierter Profiltiefe $x \in [0,1]$, relativer Dicke $t$, und WÃ¶lbungslinie
+		$y_c(x) = m \cdot (2px - x^2)/p^2$ fÃ¼r $x \leq p$.
 	\end{definition}
 	
-	Für die BioFalcon-Drohne werden folgende Profile verwendet:
+	FÃ¼r die BioFalcon-Drohne werden folgende Profile verwendet:
 	\begin{itemize}
-		\item \textbf{Innenflügel} ($\eta \leq 0{,}4$): NACA 63-412,
-		$t = 12\,\%$, $m = 4\,\%$, optimiert für $Ma \leq 0{,}5$
-		\item \textbf{Übergangsbereich} ($0{,}4 < \eta \leq 0{,}7$): NACA 64-408,
+		\item \textbf{InnenflÃ¼gel} ($\eta \leq 0{,}4$): NACA 63-412,
+		$t = 12\,\%$, $m = 4\,\%$, optimiert fÃ¼r $Ma \leq 0{,}5$
+		\item \textbf{Ãœbergangsbereich} ($0{,}4 < \eta \leq 0{,}7$): NACA 64-408,
 		$t = 8\,\%$, superkritisches Profil
-		\item \textbf{Außenflügel} ($\eta > 0{,}7$): NACA 65-006, $t = 6\,\%$,
-		symmetrisch, für transsonische Strömung bei gefalteten Flügeln
+		\item \textbf{AuÃŸenflÃ¼gel} ($\eta > 0{,}7$): NACA 65-006, $t = 6\,\%$,
+		symmetrisch, fÃ¼r transsonische StrÃ¶mung bei gefalteten FlÃ¼geln
 	\end{itemize}
 	
 	\subsubsection{TikZ-Zeichnung: Profilschnitte}
@@ -1199,7 +1199,7 @@
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}[scale=3.5]
-			% NACA 63-412 (Innenflügel, blau)
+			% NACA 63-412 (InnenflÃ¼gel, blau)
 			% Vereinfachte analytische Approximation
 			\draw[falkenblau,very thick,domain=0:1,samples=80]
 			plot (\x, { 0.12/0.2*(0.2969*sqrt(\x) - 0.126*\x - 0.3516*\x*\x
@@ -1212,7 +1212,7 @@
 			\node[falkenblau,right,font=\tiny] at (1.02,0.04)
 			{NACA 63-412 ($\eta \leq 0{,}4$)};
 			
-			% NACA 64-408 (Übergang, grün)
+			% NACA 64-408 (Ãœbergang, grÃ¼n)
 			\draw[green!60!black,thick,domain=0:1,samples=80,yshift=-0.35cm]
 			plot (\x, { 0.08/0.2*(0.2969*sqrt(\x) - 0.126*\x - 0.3516*\x*\x
 				+ 0.2843*\x*\x*\x - 0.1015*\x*\x*\x*\x) });
@@ -1222,7 +1222,7 @@
 			\node[green!60!black,right,font=\tiny] at (1.02,-0.35)
 			{NACA 64-408 ($\eta \in [0{,}4; 0{,}7]$)};
 			
-			% NACA 65-006 (Außenflügel, rot)
+			% NACA 65-006 (AuÃŸenflÃ¼gel, rot)
 			\draw[sturzrot,thin,domain=0:1,samples=80,yshift=-0.63cm]
 			plot (\x, { 0.06/0.2*(0.2969*sqrt(\x) - 0.126*\x - 0.3516*\x*\x
 				+ 0.2843*\x*\x*\x - 0.1015*\x*\x*\x*\x) });
@@ -1243,30 +1243,30 @@
 			\draw[dotted,gray] (0,-0.35) -- (1,-0.35);
 			\draw[dotted,gray] (0,-0.63) -- (1,-0.63);
 		\end{tikzpicture}
-		\caption{Querschnittsprofile der BioFalcon-Drohne für drei Spannweitenbereiche.
-			Oben: NACA 63-412 (Innenflügel, 12\,\% Dicke, gewölbt). Mitte: NACA 64-408
-			(Übergangszone, 8\,\%). Unten: NACA 65-006 (Außenflügel, 6\,\%, symmetrisch für
-			transsonische Strömung).}
+		\caption{Querschnittsprofile der BioFalcon-Drohne fÃ¼r drei Spannweitenbereiche.
+			Oben: NACA 63-412 (InnenflÃ¼gel, 12\,\% Dicke, gewÃ¶lbt). Mitte: NACA 64-408
+			(Ãœbergangszone, 8\,\%). Unten: NACA 65-006 (AuÃŸenflÃ¼gel, 6\,\%, symmetrisch fÃ¼r
+			transsonische StrÃ¶mung).}
 		\label{fig:profile}
 	\end{figure}
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Morphing-Flügelklappmechanismus}
+	\subsection{Morphing-FlÃ¼gelklappmechanismus}
 	\label{sec:morphing}
 	%-----------------------------------------------------------------------------
 	
-	\subsubsection{Kinematisches Modell der Flügelfalte}
+	\subsubsection{Kinematisches Modell der FlÃ¼gelfalte}
 	
-	\begin{definition}[Flügelklappgeometrie]
+	\begin{definition}[FlÃ¼gelklappgeometrie]
 		\label{def:klappgeo}
 		Der Faltmechanismus realisiert die Falte $\beta_{fold}(t)$ durch Rotation des
-		Außenflügels um eine Scharnierline mit Winkel $\varphi(t)$:
+		AuÃŸenflÃ¼gels um eine Scharnierline mit Winkel $\varphi(t)$:
 		\begin{equation}
 			\beta_{fold}(t) = \frac{\varphi(t)}{\varphi_{max}},
 			\quad \varphi(t) \in [0^{\circ}, 85^{\circ}]
 			\label{eq:klappwinkel}
 		\end{equation}
-		Die effektive Spannweite und Referenzfläche folgen aus:
+		Die effektive Spannweite und ReferenzflÃ¤che folgen aus:
 		\begin{align}
 			b_{eff}(t) &= b_{inner} + b_{outer}\cos\varphi(t)
 			= b_{inner} + b_{outer}\beta_{fold}(t)\cos(\varphi_{max})
@@ -1276,7 +1276,7 @@
 		\end{align}
 	\end{definition}
 	
-	\begin{theorem}[Konsistenz der Flügelflächen-Parametrisierung]
+	\begin{theorem}[Konsistenz der FlÃ¼gelflÃ¤chen-Parametrisierung]
 		\label{thm:flaeche_konsistenz}
 		Die Parametrisierungen \cref{eq:aref} und \cref{eq:s_ref} sind konsistent, d.h.:
 		\begin{equation}
@@ -1284,7 +1284,7 @@
 			\left|\frac{A_{ref}(t)}{A_{cs,min}} - \frac{S_{ref}(t)}{S_{inner}}\right|
 			\leq \varepsilon_{geo}
 		\end{equation}
-		mit geometrischem Fehler $\varepsilon_{geo} \leq 2{,}8\,\%$ für alle
+		mit geometrischem Fehler $\varepsilon_{geo} \leq 2{,}8\,\%$ fÃ¼r alle
 		$\beta_{fold} \in [0,1]$.
 	\end{theorem}
 	
@@ -1306,17 +1306,17 @@
 		\centering
 		\begin{tikzpicture}[scale=1.1, >=Stealth]
 			
-			% ========== ZUSTAND 1: Flügel geöffnet ($\beta=1$) ==========
+			% ========== ZUSTAND 1: FlÃ¼gel geÃ¶ffnet ($\beta=1$) ==========
 			\begin{scope}[xshift=0cm,yshift=2.8cm]
 				\node[font=\small\bfseries,falkenblau] at (3.5,1.4)
-				{(a) Geöffnet: $\beta_{fold}=1$, $\varphi=0^{\circ}$};
+				{(a) GeÃ¶ffnet: $\beta_{fold}=1$, $\varphi=0^{\circ}$};
 				% Rumpf
 				\fill[grausilber!25] (0,-0.22) rectangle (5.2,0.22);
 				\draw[grausilber!70,thick] (0,-0.22) rectangle (5.2,0.22);
-				% Innenflügel
+				% InnenflÃ¼gel
 				\fill[falkenblau!20] (1.0,0.22) -- (2.2,0.22) -- (2.4,1.2) -- (1.1,1.2) -- cycle;
 				\draw[falkenblau,thick] (1.0,0.22) -- (1.1,1.2) -- (2.4,1.2) -- (2.2,0.22);
-				% Außenflügel
+				% AuÃŸenflÃ¼gel
 				\fill[falkenblau!30] (1.1,1.2) -- (2.4,1.2) -- (2.55,2.1) -- (1.15,2.05) -- cycle;
 				\draw[falkenblau,thick] (1.1,1.2) -- (1.15,2.05) -- (2.55,2.1) -- (2.4,1.2);
 				% Spitze
@@ -1333,7 +1333,7 @@
 				node[midway,left,font=\tiny] {$b/2$};
 			\end{scope}
 			
-			% ========== ZUSTAND 2: Flügel halb gefaltet ($\beta=0.5$) ==========
+			% ========== ZUSTAND 2: FlÃ¼gel halb gefaltet ($\beta=0.5$) ==========
 			\begin{scope}[xshift=4.5cm,yshift=2.8cm]
 				\node[font=\small\bfseries,falkenblau] at (3.0,1.4)
 				{(b) Halb: $\beta_{fold}=0{,}5$, $\varphi=42{,}5^{\circ}$};
@@ -1341,8 +1341,8 @@
 				\draw[grausilber!70,thick] (0,-0.22) rectangle (5.2,0.22);
 				\fill[falkenblau!20] (1.0,0.22) -- (2.2,0.22) -- (2.4,1.2) -- (1.1,1.2) -- cycle;
 				\draw[falkenblau,thick] (1.0,0.22) -- (1.1,1.2) -- (2.4,1.2) -- (2.2,0.22);
-				% Außenflügel nach innen gefaltet (Winkel 42.5°)
-				% cos(42.5°)~0.737, sin(42.5°)~0.676
+				% AuÃŸenflÃ¼gel nach innen gefaltet (Winkel 42.5Â°)
+				% cos(42.5Â°)~0.737, sin(42.5Â°)~0.676
 				\fill[falkenblau!30]
 				(1.1,1.2) -- (2.4,1.2)
 				-- (2.4 + 0.15*0.737, 1.2 + 0.9*0.737)
@@ -1361,7 +1361,7 @@
 				node[midway,left,font=\tiny] {$b_{eff}/2$};
 			\end{scope}
 			
-			% ========== ZUSTAND 3: Vollständig gefaltet ($\beta=0$) ==========
+			% ========== ZUSTAND 3: VollstÃ¤ndig gefaltet ($\beta=0$) ==========
 			\begin{scope}[xshift=0cm,yshift=0cm]
 				\node[font=\small\bfseries,falkenblau] at (3.5,1.4)
 				{(c) Gefaltet: $\beta_{fold}=0$, $\varphi=85^{\circ}$};
@@ -1369,7 +1369,7 @@
 				\draw[grausilber!70,thick] (0,-0.22) rectangle (5.2,0.22);
 				\fill[falkenblau!20] (1.0,0.22) -- (2.2,0.22) -- (2.4,1.2) -- (1.1,1.2) -- cycle;
 				\draw[falkenblau,thick] (1.0,0.22) -- (1.1,1.2) -- (2.4,1.2) -- (2.2,0.22);
-				% Außenflügel fast anliegend (cos85°~0.087)
+				% AuÃŸenflÃ¼gel fast anliegend (cos85Â°~0.087)
 				\fill[falkenblau!30]
 				(1.1,1.2) -- (2.4,1.2)
 				-- (2.4 + 0.13*0.087, 1.2 + 0.9*0.087)
@@ -1395,8 +1395,8 @@
 				\draw[falkenblau,very thick,domain=0:4,samples=60]
 				plot (\x, { (0.12 + (0.47-0.12)*\x/4 * cos(85*\x/4 r)) / 0.47 * 2.3 });
 				% Analytisch: b_inner + b_outer*cos(phi_max * (1-beta))
-				% b_inner=0.12, b_outer=0.35, phi_max=85°
-				% Für Darstellung: x=4*beta
+				% b_inner=0.12, b_outer=0.35, phi_max=85Â°
+				% FÃ¼r Darstellung: x=4*beta
 				\draw[dashed,grausilber,thick,domain=0:4,samples=60]
 				plot (\x, { (0.12 + 0.35*\x/4) / 0.47 * 2.3 });
 				% Achsenbeschriftung
@@ -1409,16 +1409,16 @@
 				\node[font=\small\bfseries] at (2.0,2.5) {(d) Kinematik};
 			\end{scope}
 		\end{tikzpicture}
-		\caption{Morphing-Klappmechanismus der BioFalcon-Drohne. (a) Vollständig geöffnet
+		\caption{Morphing-Klappmechanismus der BioFalcon-Drohne. (a) VollstÃ¤ndig geÃ¶ffnet
 			($\beta_{fold}=1$). (b) Halbgefaltet ($\beta_{fold}=0{,}5$). (c) Maximale Falte
 			($\beta_{fold}=0$, Sturzflugkonfiguration). (d) Kinematikdiagramm: effektive
-			Halbspannweite $b_{eff}/2$ über Faltungsgrad $\beta_{fold}$ (blau: nichtlinear,
+			Halbspannweite $b_{eff}/2$ Ã¼ber Faltungsgrad $\beta_{fold}$ (blau: nichtlinear,
 			grau: lineare Referenz).}
 		\label{fig:morphing_cad}
 	\end{figure}
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Leitwerksgeometrie und Stabilitätsnachweis}
+	\subsection{Leitwerksgeometrie und StabilitÃ¤tsnachweis}
 	\label{sec:leitwerk}
 	%-----------------------------------------------------------------------------
 	
@@ -1427,24 +1427,24 @@
 	Das BioFalcon-Leitwerk besteht aus einem Kreuzleitwerk mit folgenden
 	Auslegungsparametern:
 	\begin{align}
-		S_{HLW}  &= \SI{0{,}031}{\m^2} \quad\text{(Höhenleitwerk)}\\
+		S_{HLW}  &= \SI{0{,}031}{\m^2} \quad\text{(HÃ¶henleitwerk)}\\
 		S_{SLW}  &= \SI{0{,}022}{\m^2} \quad\text{(Seitenleitwerk)}\\
 		l_H      &= \SI{0{,}38}{\m}    \quad\text{(Hebelarm)}\\
 		V_H      &= \frac{S_{HLW} \cdot l_H}{S_{ref} \cdot \bar{c}}
-		= 0{,}41              \quad\text{(Höhenleitwerksvolumen)}
+		= 0{,}41              \quad\text{(HÃ¶henleitwerksvolumen)}
 	\end{align}
 	
-	\begin{theorem}[Statische Längsstabilität]
-		\label{thm:stabilität}
+	\begin{theorem}[Statische LÃ¤ngsstabilitÃ¤t]
+		\label{thm:stabilitÃ¤t}
 		Die BioFalcon-Drohne ist statisch longitudinal stabil, wenn:
 		\begin{equation}
 			\frac{\partial C_m}{\partial C_L} < 0
 			\iff
 			\frac{x_{NP} - x_{cg}}{MAC} > 0
-			\label{eq:stabilität}
+			\label{eq:stabilitÃ¤t}
 		\end{equation}
 		d.h.\ der aerodynamische Neutralpunkt $x_{NP}$ hinter dem Schwerpunkt $x_{cg}$
-		liegt. Für die gegebene Konfiguration gilt:
+		liegt. FÃ¼r die gegebene Konfiguration gilt:
 		\begin{equation}
 			x_{NP}/L = 0{,}47, \quad x_{cg}/L = 0{,}40
 			\implies
@@ -1474,21 +1474,21 @@
 		$(x_{NP}-x_{cg})/MAC > 0$. \qquad$\square$
 	\end{proof}
 	
-	\begin{korollar}[Statische Stabilitätsmarge]
+	\begin{korollar}[Statische StabilitÃ¤tsmarge]
 		\label{cor:sm}
-		Die statische Stabilitätsmarge beträgt:
+		Die statische StabilitÃ¤tsmarge betrÃ¤gt:
 		\begin{equation}
 			SM = \frac{x_{NP} - x_{cg}}{MAC}
 			= \frac{(0{,}471 - 0{,}400) \cdot 0{,}62}{0{,}18}
 			= 0{,}245 = 24{,}5\,\%
 			\label{eq:sm_wert}
 		\end{equation}
-		Dieser Wert liegt im empfohlenen Bereich $[15\,\%, 30\,\%]$ für hochmanövrierbare
+		Dieser Wert liegt im empfohlenen Bereich $[15\,\%, 30\,\%]$ fÃ¼r hochmanÃ¶vrierbare
 		Drohnen.
 	\end{korollar}
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Vollständige Drohnen-Seitenansicht (CAD)}
+	\subsection{VollstÃ¤ndige Drohnen-Seitenansicht (CAD)}
 	\label{sec:cad_gesamt}
 	%-----------------------------------------------------------------------------
 	
@@ -1510,7 +1510,7 @@
 			plot (\x, {-\rmax*(1-(2*\x/\L - 1)^2)^0.75 });
 			% Nase (Halbkreis)
 			\draw[grausilber!70,thick] (0,0) circle (0.05);
-			% Füllung Rumpf
+			% FÃ¼llung Rumpf
 			\fill[grausilber!20,domain=0:\L,samples=120]
 			plot (\x, { \rmax*(1-(2*\x/\L - 1)^2)^0.75 }) --
 			plot[domain=\L:0] (\x, {-\rmax*(1-(2*\x/\L - 1)^2)^0.75 }) -- cycle;
@@ -1520,13 +1520,13 @@
 			\draw[blue!40,thin] (0.6,0.28) ellipse (0.5 and 0.22);
 			\node[font=\tiny,blue!60] at (0.6,0.38) {Sensor};
 			
-			% ===================== FLÜGEL (Seitenansicht, rechter Flügel) =====================
-			% Geöffneter Flügel: Innenflügel + Außenflügel nach oben
+			% ===================== FLÃœGEL (Seitenansicht, rechter FlÃ¼gel) =====================
+			% GeÃ¶ffneter FlÃ¼gel: InnenflÃ¼gel + AuÃŸenflÃ¼gel nach oben
 			\fill[falkenblau!20]
 			(1.5,0.3) -- (2.5,0.32) -- (3.0,1.8) -- (1.8,1.75) -- cycle;
 			\draw[falkenblau,thick]
 			(1.5,0.3) -- (1.8,1.75) -- (3.0,1.8) -- (2.5,0.32);
-			% Außenflügel
+			% AuÃŸenflÃ¼gel
 			\fill[falkenblau!30]
 			(1.8,1.75) -- (3.0,1.8) -- (3.3,2.9) -- (2.0,2.85) -- cycle;
 			\draw[falkenblau,thick]
@@ -1536,7 +1536,7 @@
 			\node[sturzrot,font=\tiny,right] at (3.1,1.8) {Scharnier};
 			
 			% ===================== LEITWERK =====================
-			% Höhenleitwerk
+			% HÃ¶henleitwerk
 			\fill[falkenblau!25]
 			(6.8,0.12) -- (7.5,0.15) -- (7.9,0.8) -- (7.3,0.75) -- cycle;
 			\draw[falkenblau,thick]
@@ -1557,7 +1557,7 @@
 			\node[font=\tiny,black!60] at (7.75,0.0) {Motor};
 			
 			% ===================== BEMAASSUNG =====================
-			% Gesamtlänge
+			% GesamtlÃ¤nge
 			\draw[dimension] (0,-0.7) -- (8.0,-0.7)
 			node[midway,below] {$L = \SI{0{,}62}{\m}$};
 			\draw[dotted,black!30] (0,0) -- (0,-0.75);
@@ -1576,7 +1576,7 @@
 			\fill[green!60!black] (3.77,0) circle (0.06);
 			\node[green!60!black,font=\tiny,below] at (3.77,-0.65) {$x_{NP}$};
 			
-			% Stabilitätsmarge-Pfeil
+			% StabilitÃ¤tsmarge-Pfeil
 			\draw[<->,green!50!black,thin] (3.2,0.55) -- (3.77,0.55)
 			node[midway,above,font=\tiny] {SM};
 			
@@ -1589,10 +1589,10 @@
 			\draw[dotted,black!20] (5.5,-0.5) -- (5.5,-1.4);
 			\draw[dotted,black!20] (7.2,-0.5) -- (7.2,-1.4);
 		\end{tikzpicture}
-		\caption{CAD-Seitenansicht der BioFalcon-Drohne (Maßstab 1:5). Gezeigt sind
-			Rumpf in Sears-Haack-Geometrie, Flügelplanform (geöffnet), Kreuzleitwerk,
+		\caption{CAD-Seitenansicht der BioFalcon-Drohne (MaÃŸstab 1:5). Gezeigt sind
+			Rumpf in Sears-Haack-Geometrie, FlÃ¼gelplanform (geÃ¶ffnet), Kreuzleitwerk,
 			Antriebseinheit sowie die Positionen von Schwerpunkt ($x_{cg}$, rot) und
-			aerodynamischem Neutralpunkt ($x_{NP}$, grün). Die Stabilitätsmarge SM beträgt
+			aerodynamischem Neutralpunkt ($x_{NP}$, grÃ¼n). Die StabilitÃ¤tsmarge SM betrÃ¤gt
 			$24{,}5\,\%$ MAC.}
 		\label{fig:seitenansicht_cad}
 	\end{figure}
@@ -1622,32 +1622,32 @@
 			\draw (0.04,\y)--(-0.04,\y) node[left,font=\tiny] {\yl};
 			
 			% Dickenverteilung t(eta): 12% -> 8% -> 6%
-			% t(eta)=0.12 für eta<=0.4, linear 0.08 für 0.4<eta<=0.7, linear 0.06 für eta>0.7
+			% t(eta)=0.12 fÃ¼r eta<=0.4, linear 0.08 fÃ¼r 0.4<eta<=0.7, linear 0.06 fÃ¼r eta>0.7
 			% Skalierung: Faktor 10 auf x, Faktor 20 auf y (0.12->2.4, 0.06->1.2)
 			\draw[falkenblau,very thick]
 			(0,2.4) -- (4,2.4) -- (7,1.6) -- (10,1.2);
 			\fill[falkenblau!15]
 			(0,0) -- (0,2.4) -- (4,2.4) -- (7,1.6) -- (10,1.2) -- (10,0) -- cycle;
 			
-			% Pfeilungswinkel Lambda(eta): 32° -> 58°
-			% Skaliert auf Darstellung: 32° -> y=32/90*2.5=0.89, 58° -> y=58/90*2.5=1.61
+			% Pfeilungswinkel Lambda(eta): 32Â° -> 58Â°
+			% Skaliert auf Darstellung: 32Â° -> y=32/90*2.5=0.89, 58Â° -> y=58/90*2.5=1.61
 			\draw[sturzrot,thick,domain=0:10,samples=50]
 			plot (\x, {(0.89 + (1.61-0.89)*(\x/10)^1.4)});
 			\node[sturzrot,font=\tiny] at (8.5,1.85) {$\Lambda_{LE}(\eta)$ [\si{\degree}]};
 			
-			% Sekundärachse rechts für Winkel
+			% SekundÃ¤rachse rechts fÃ¼r Winkel
 			\draw[sturzrot,thin,->] (10.2,0.89) -- (10.2,1.61)
 			node[right,sturzrot,font=\tiny,midway] {$32^{\circ}$--$58^{\circ}$};
 			
 			% Zonengrenzen
 			\draw[dotted,black!40] (4,0) -- (4,2.6);
 			\draw[dotted,black!40] (7,0) -- (7,2.6);
-			\node[font=\tiny,black!50] at (2,2.65) {Innenflügel};
-			\node[font=\tiny,black!50] at (5.5,2.65) {Übergang};
-			\node[font=\tiny,black!50] at (8.5,2.65) {Außenflügel};
+			\node[font=\tiny,black!50] at (2,2.65) {InnenflÃ¼gel};
+			\node[font=\tiny,black!50] at (5.5,2.65) {Ãœbergang};
+			\node[font=\tiny,black!50] at (8.5,2.65) {AuÃŸenflÃ¼gel};
 			
 			% Profilskizzen als Insets
-			% Profil bei eta=0.2 (Innenflügel)
+			% Profil bei eta=0.2 (InnenflÃ¼gel)
 			\begin{scope}[xshift=0.5cm,yshift=2.0cm,scale=1.8]
 				\draw[falkenblau,thin,domain=0:1,samples=40]
 				plot (\x,{ 0.12/0.2*(0.2969*sqrt(\x)-0.126*\x-0.3516*\x*\x
@@ -1665,7 +1665,7 @@
 			node[right,font=\tiny,sturzrot] {Pfeilung $\Lambda_{LE}(\eta)$};
 		\end{tikzpicture}
 		\caption{Querschnittsevolution entlang der Spannweite. Relative Profildicke $t(\eta)$
-			(blau, linke Achse) nimmt von 12\,\% (Innenflügel) auf 6\,\% (Außenspitze) ab.
+			(blau, linke Achse) nimmt von 12\,\% (InnenflÃ¼gel) auf 6\,\% (AuÃŸenspitze) ab.
 			Vorderkantenpfeilung $\Lambda_{LE}(\eta)$ (rot) steigt nichtlinear von $32^{\circ}$
 			auf $58^{\circ}$ nach \cref{eq:pfeilung_var}. Zonengrenzen bei $\eta=0{,}4$ und
 			$\eta=0{,}7$ (gestrichelt).}
@@ -1688,9 +1688,9 @@
 			\textbf{Anteil [\%]} \\
 			\midrule
 			Rumpfstruktur          & CFK-Monocoque      & 185 & 0{,}38 & 15{,}4 \\
-			Flügelstruktur (2×)    & CFK + Nomex        & 210 & 0{,}32 & 17{,}5 \\
+			FlÃ¼gelstruktur (2Ã—)    & CFK + Nomex        & 210 & 0{,}32 & 17{,}5 \\
 			Leitwerk               & GFK                &  42 & 0{,}91 &  3{,}5 \\
-			Morphing-Scharnier (2×)& Titan / SMA-Aktor  &  38 & 0{,}38 &  3{,}2 \\
+			Morphing-Scharnier (2Ã—)& Titan / SMA-Aktor  &  38 & 0{,}38 &  3{,}2 \\
 			Akkupack (LiPo 6S)     & ---                & 310 & 0{,}48 & 25{,}8 \\
 			Avionik + Regler       & ---                &  95 & 0{,}55 &  7{,}9 \\
 			Antriebseinheit        & ---                & 125 & 0{,}92 & 10{,}4 \\
@@ -1709,18 +1709,18 @@
 		= \frac{185 \cdot 0{,}38 + 210 \cdot 0{,}32 + \cdots}{1200}
 		= 0{,}402 \cdot L = \SI{0{,}249}{\m}
 	\end{equation}
-	Dies bestätigt die Annahme $x_{cg}/L = 0{,}40$ aus \cref{thm:stabilität} mit einem
+	Dies bestÃ¤tigt die Annahme $x_{cg}/L = 0{,}40$ aus \cref{thm:stabilitÃ¤t} mit einem
 	Fehler von $0{,}5\,\%$.
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Formaler Nachweis: Aerodynamische Güte im Sturzflug}
+	\subsection{Formaler Nachweis: Aerodynamische GÃ¼te im Sturzflug}
 	\label{sec:guete}
 	%-----------------------------------------------------------------------------
 	
-	\begin{definition}[Aerodynamische Güte $\Phi_{aero}$]
+	\begin{definition}[Aerodynamische GÃ¼te $\Phi_{aero}$]
 		\label{def:guete}
-		Die aerodynamische Gesamtgüte der BioFalcon-Drohne im Sturzflug ist definiert
-		als gewichtetes Produkt aus Widerstandsreduktion, Stabilitätsmarge und
+		Die aerodynamische GesamtgÃ¼te der BioFalcon-Drohne im Sturzflug ist definiert
+		als gewichtetes Produkt aus Widerstandsreduktion, StabilitÃ¤tsmarge und
 		Effizienzfaktor:
 		\begin{equation}
 			\Phi_{aero} = \frac{C_{D,ref}}{C_{D,BioFalcon}} \cdot e_{Oswald}
@@ -1730,9 +1730,9 @@
 		mit Referenzwerten $C_{D,ref} = 0{,}065$, $SM_{ref} = 0{,}15$.
 	\end{definition}
 	
-	\begin{formalersatz}[Aerodynamische Überlegenheit der BioFalcon-Konstruktion]
-		Die BioFalcon-Drohne erfüllt $\Phi_{aero} \geq 1{,}45$, d.h.\ sie ist gegenüber einer
-		konventionellen Vergleichsdrohne gleicher Masse und Größe aerodynamisch mindestens
+	\begin{formalersatz}[Aerodynamische Ãœberlegenheit der BioFalcon-Konstruktion]
+		Die BioFalcon-Drohne erfÃ¼llt $\Phi_{aero} \geq 1{,}45$, d.h.\ sie ist gegenÃ¼ber einer
+		konventionellen Vergleichsdrohne gleicher Masse und GrÃ¶ÃŸe aerodynamisch mindestens
 		$45\,\%$ effizienter.
 	\end{formalersatz}
 	
@@ -1747,7 +1747,7 @@
 			= 0{,}0143 + 0{,}0112 + 0{,}0065 = 0{,}032
 		\end{equation}
 		wobei $C_{D,friction} = C_f \cdot S_{wet}/S_{ref}$ nach dem
-		Schlichting-Reibungsgesetz für $Re = 2 \cdot 10^6$ bestimmt wird. Damit:
+		Schlichting-Reibungsgesetz fÃ¼r $Re = 2 \cdot 10^6$ bestimmt wird. Damit:
 		\begin{equation}
 			\frac{C_{D,ref}}{C_{D,BioFalcon}} = \frac{0{,}065}{0{,}032} = 2{,}031
 		\end{equation}
@@ -1755,20 +1755,20 @@
 		\textbf{Oswald-Effizienzfaktor:}
 		Aus \cref{lem:oswald}: $e_{Oswald} \geq 0{,}992$.
 		
-		\textbf{Stabilitätsmarge:}
+		\textbf{StabilitÃ¤tsmarge:}
 		Aus \cref{cor:sm}: $SM_{BioFalcon} = 0{,}245$, $SM_{ref} = 0{,}15$.
 		\begin{equation}
 			\frac{SM_{BioFalcon}}{SM_{ref}} = \frac{0{,}245}{0{,}15} = 1{,}633
 		\end{equation}
 		
-		Jedoch reduziert die höhere Stabilitätsmarge die Manövrierbarkeit, sodass ein
+		Jedoch reduziert die hÃ¶here StabilitÃ¤tsmarge die ManÃ¶vrierbarkeit, sodass ein
 		Korrekturfaktor $\kappa_{SM} = 1/(1 + 0{,}5 \cdot (SM - SM_{opt})/SM_{opt})$
-		mit $SM_{opt} = 0{,}20$ eingeführt wird:
+		mit $SM_{opt} = 0{,}20$ eingefÃ¼hrt wird:
 		\begin{equation}
 			\kappa_{SM} = \frac{1}{1 + 0{,}5 \cdot 0{,}225} = 0{,}899
 		\end{equation}
 		
-		Gesamtgüte:
+		GesamtgÃ¼te:
 		\begin{equation}
 			\Phi_{aero} = 2{,}031 \cdot 0{,}992 \cdot 1{,}633 \cdot 0{,}899
 			= 2{,}031 \cdot 0{,}992 \cdot 1{,}467
@@ -1777,16 +1777,16 @@
 	\end{proof}
 	
 	\begin{bemerkung}
-		Der berechnete Wert $\Phi_{aero} \approx 2{,}96$ übertrifft den geforderten
+		Der berechnete Wert $\Phi_{aero} \approx 2{,}96$ Ã¼bertrifft den geforderten
 		Mindestwert von $1{,}45$ um den Faktor $2{,}04$. Dies entspricht einer
-		aerodynamischen Überlegenheit von $\sim\!196\,\%$ gegenüber der Referenzkonstruktion.
+		aerodynamischen Ãœberlegenheit von $\sim\!196\,\%$ gegenÃ¼ber der Referenzkonstruktion.
 		Der Hauptbeitrag stammt aus der Widerstandsreduktion durch das Sears-Haack-Profil
 		($\Delta C_D = 0{,}033$) sowie dem hohen Oswald-Faktor durch die elliptische
 		Auftriebsverteilung.
 	\end{bemerkung}
 	
 	%-----------------------------------------------------------------------------
-	\subsection{Kräftediagramm und Lastvielfache}
+	\subsection{KrÃ¤ftediagramm und Lastvielfache}
 	\label{sec:lasten}
 	%-----------------------------------------------------------------------------
 	
@@ -1807,7 +1807,7 @@
 			
 			% Flugbereich (V-n Diagramm)
 			% Auftriebsgrenze: n = C_L,max * rho * v^2 * S / (2*m*g)
-			% Vereinfacht: n = 0.0018 * v^2 (skaliert für Darstellung)
+			% Vereinfacht: n = 0.0018 * v^2 (skaliert fÃ¼r Darstellung)
 			\draw[falkenblau,very thick,domain=0:5.27,samples=50]
 			plot (\x, {min(5.0, 0.18*\x*\x)});  % n_max = 5g
 			
@@ -1824,7 +1824,7 @@
 			
 			% Designpunkt
 			\fill[sturzrot] (5.27,5.0) circle (0.12);
-			\node[sturzrot,font=\tiny] at (5.4,5.25) {Manövriergeschwindigkeit $v_A$};
+			\node[sturzrot,font=\tiny] at (5.4,5.25) {ManÃ¶vriergeschwindigkeit $v_A$};
 			
 			% Reiseflugpunkt
 			\fill[falkenblau] (3.5,2.2) circle (0.10);
@@ -1834,20 +1834,20 @@
 			\fill[black] (10,0.12) circle (0.10);
 			\node[black,font=\tiny,above left] at (10,0.1) {Sturzflug max};
 			
-			% Flugbereich-Füllung
+			% Flugbereich-FÃ¼llung
 			\fill[falkenblau!10,domain=0:5.27,samples=50]
 			(0,0) -- plot (\x, {min(5.0,0.18*\x*\x)}) -- (5.27,0) -- cycle;
 			\fill[blue!5]
 			(5.27,0) -- (5.27,5.0) -- (8.5,5.0) -- (8.5,0) -- cycle;
 			
 			% Legende
-			\node[font=\tiny,align=left] at (7.5,4.5) {$\square$ Zulässiger};
+			\node[font=\tiny,align=left] at (7.5,4.5) {$\square$ ZulÃ¤ssiger};
 			\node[font=\tiny,align=left] at (7.5,4.2) {Betriebsbereich};
 		\end{tikzpicture}
 		\caption{V-n-Diagramm (Lastvielfach-Geschwindigkeitsdiagramm) der BioFalcon-Drohne.
 			Blaue Kurve: Auftriebsgrenze bei $C_{L,max}$. Rote gestrichelte Linie:
 			Strukturgrenze $n_{max} = 5g$. Vertikale Grenze: Tauchgeschwindigkeit $v_D$.
-			Blau schattiert: zulässiger Betriebsbereich.}
+			Blau schattiert: zulÃ¤ssiger Betriebsbereich.}
 		\label{fig:vn_diagramm}
 	\end{figure}
 	
@@ -1858,55 +1858,55 @@
 	
 	\begin{table}[H]
 		\centering
-		\caption{Vollständige aerodynamische Konstruktionsparameter der BioFalcon-Drohne}
+		\caption{VollstÃ¤ndige aerodynamische Konstruktionsparameter der BioFalcon-Drohne}
 		\label{tab:kons_param}
 		\begin{tabular}{llcc}
 			\toprule
 			\textbf{Parameter} & \textbf{Symbol} & \textbf{Wert} & \textbf{Einheit} \\
 			\midrule
 			\multicolumn{4}{l}{\textit{Rumpf}} \\
-			Länge                    & $L$           & 0{,}62    & \si{\m}               \\
+			LÃ¤nge                    & $L$           & 0{,}62    & \si{\m}               \\
 			Max.\ Durchmesser        & $d_{max}$     & 0{,}150   & \si{\m}               \\
 			Rumpfprofil              & ---           & Sears-Haack & ---                 \\
 			Wellenwiderstandsbeiw.   & $C_{D,wave}$  & 0{,}0143  & ---                   \\
 			\midrule
-			\multicolumn{4}{l}{\textit{Flügel}} \\
-			Spannweite (geöffnet)    & $b$           & 0{,}94    & \si{\m}               \\
+			\multicolumn{4}{l}{\textit{FlÃ¼gel}} \\
+			Spannweite (geÃ¶ffnet)    & $b$           & 0{,}94    & \si{\m}               \\
 			Spannweite (gefaltet)    & $b_f$         & 0{,}20    & \si{\m}               \\
-			Flügelfläche             & $S_{ref}$     & 0{,}18    & \si{\m^2}             \\
+			FlÃ¼gelflÃ¤che             & $S_{ref}$     & 0{,}18    & \si{\m^2}             \\
 			Streckung                & $AR$          & 8{,}5     & ---                   \\
 			Zuspitzung               & $\lambda$     & 0{,}28    & ---                   \\
 			Pfeilung (innen)         & $\Lambda_0$   & 32        & \si{\degree}          \\
-			Pfeilung (außen)         & $\Lambda_{tip}$ & 58      & \si{\degree}          \\
+			Pfeilung (auÃŸen)         & $\Lambda_{tip}$ & 58      & \si{\degree}          \\
 			Maximaler Klappwinkel    & $\varphi_{max}$ & 85      & \si{\degree}          \\
 			Oswald-Faktor            & $e$           & $\geq 0{,}992$ & ---              \\
 			\midrule
 			\multicolumn{4}{l}{\textit{Leitwerk}} \\
-			HLW-Fläche               & $S_{HLW}$     & 0{,}031   & \si{\m^2}             \\
-			SLW-Fläche               & $S_{SLW}$     & 0{,}022   & \si{\m^2}             \\
+			HLW-FlÃ¤che               & $S_{HLW}$     & 0{,}031   & \si{\m^2}             \\
+			SLW-FlÃ¤che               & $S_{SLW}$     & 0{,}022   & \si{\m^2}             \\
 			Leitwerkshebelarm        & $l_H$         & 0{,}38    & \si{\m}               \\
 			HLW-Volumen              & $V_H$         & 0{,}41    & ---                   \\
 			\midrule
-			\multicolumn{4}{l}{\textit{Stabilität}} \\
+			\multicolumn{4}{l}{\textit{StabilitÃ¤t}} \\
 			Schwerpunkt              & $x_{cg}/L$    & 0{,}402   & ---                   \\
 			Neutralpunkt             & $x_{NP}/L$    & 0{,}471   & ---                   \\
-			Stabilitätsmarge         & $SM$          & 24{,}5    & \si{\percent MAC}     \\
+			StabilitÃ¤tsmarge         & $SM$          & 24{,}5    & \si{\percent MAC}     \\
 			\midrule
 			\multicolumn{4}{l}{\textit{Gesamtperformance}} \\
 			Gesamtmasse (MTOW)       & $m$           & 1{,}200   & \si{\kg}              \\
 			Min.\ Widerstandsbeiwert & $C_{D,min}$   & 0{,}032   & ---                   \\
 			Max.\ Auftriebsbeiwert   & $C_{L,max}$   & 1{,}35    & ---                   \\
-			Aerodynamische Güte      & $\Phi_{aero}$ & 2{,}956   & ---                   \\
+			Aerodynamische GÃ¼te      & $\Phi_{aero}$ & 2{,}956   & ---                   \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
 	Die aerodynamische Konstruktion der BioFalcon-Drohne vereint die biologisch
-	motivierten Prinzipien des Wanderfalken --- Spindelgeometrie, variable Flügelgeometrie,
-	phasensynchrone Formänderung --- mit formalen Optimierungsgarantien.  Der formale
-	Nachweis $\Phi_{aero} \geq 1{,}45$ (tatsächlich $\approx 2{,}96$) belegt die
-	aerodynamische Überlegenheit der bioinspirierten Konstruktion gegenüber konventionellen
-	Ansätzen.  Die statische Längsstabilität ist durch \cref{thm:stabilität} garantiert,
+	motivierten Prinzipien des Wanderfalken --- Spindelgeometrie, variable FlÃ¼gelgeometrie,
+	phasensynchrone FormÃ¤nderung --- mit formalen Optimierungsgarantien.  Der formale
+	Nachweis $\Phi_{aero} \geq 1{,}45$ (tatsÃ¤chlich $\approx 2{,}96$) belegt die
+	aerodynamische Ãœberlegenheit der bioinspirierten Konstruktion gegenÃ¼ber konventionellen
+	AnsÃ¤tzen.  Die statische LÃ¤ngsstabilitÃ¤t ist durch \cref{thm:stabilitÃ¤t} garantiert,
 	und der Morphing-Mechanismus wurde durch \cref{thm:flaeche_konsistenz} auf Konsistenz
 	mit dem aerodynamischen Modell nachgewiesen.
 	
@@ -1917,35 +1917,35 @@
 	
 	\subsection{Interpretation der Ergebnisse}
 	
-	Die Simulationsergebnisse bestätigen die zentrale Hypothese dieser Arbeit: Die bioinspirierte Flügelfalte-Sequenz, die durch Satz~\ref{thm:optimal} als optimal nachgewiesen wurde, führt zu einer signifikant höheren Auftreffgeschwindigkeit (+34\% gegenüber konventionellem PID) bei gleichzeitig verbesserter Zielgenauigkeit (Fehler: 0.34~m vs. 2.87~m).
+	Die Simulationsergebnisse bestÃ¤tigen die zentrale Hypothese dieser Arbeit: Die bioinspirierte FlÃ¼gelfalte-Sequenz, die durch Satz~\ref{thm:optimal} als optimal nachgewiesen wurde, fÃ¼hrt zu einer signifikant hÃ¶heren Auftreffgeschwindigkeit (+34\% gegenÃ¼ber konventionellem PID) bei gleichzeitig verbesserter Zielgenauigkeit (Fehler: 0.34~m vs. 2.87~m).
 	
-	Besonders bemerkenswert ist die Robustheit des BGSG-Reglers unter Windstörungen. Die Monte-Carlo-Analyse zeigt, dass die Erfolgsrate selbst bei Windgeschwindigkeiten bis \SI{8}{\m\per\second} über \SI{90}{\percent} verbleibt.
+	Besonders bemerkenswert ist die Robustheit des BGSG-Reglers unter WindstÃ¶rungen. Die Monte-Carlo-Analyse zeigt, dass die Erfolgsrate selbst bei Windgeschwindigkeiten bis \SI{8}{\m\per\second} Ã¼ber \SI{90}{\percent} verbleibt.
 	
 	\subsection{Grenzen der Modellierung}
 	
-	Das vorgestellte Modell weist folgende Einschränkungen auf:
+	Das vorgestellte Modell weist folgende EinschrÃ¤nkungen auf:
 	\begin{itemize}
 		\item Das aerodynamische Modell ist auf den Unterschallbereich begrenzt ($Ma < 0.3$)
-		\item Federelastische Struktureffekte der Drohnenflügel sind vernachlässigt
-		\item Thermik und vertikale Windscherung sind nicht im Störungsmodell enthalten
+		\item Federelastische Struktureffekte der DrohnenflÃ¼gel sind vernachlÃ¤ssigt
+		\item Thermik und vertikale Windscherung sind nicht im StÃ¶rungsmodell enthalten
 	\end{itemize}
 	
 	\subsection{Ausblick}
 	\label{sec:ausblick}
 
-	Die vorliegende Arbeit legt ein mathematisch fundiertes Fundament für bioinspirierte Hochgeschwindigkeitsdrohnen, das in zahlreichen Richtungen weiterentwickelt werden kann. Im Folgenden werden die vielversprechendsten Forschungspfade detailliert beschrieben.
+	Die vorliegende Arbeit legt ein mathematisch fundiertes Fundament fÃ¼r bioinspirierte Hochgeschwindigkeitsdrohnen, das in zahlreichen Richtungen weiterentwickelt werden kann. Im Folgenden werden die vielversprechendsten Forschungspfade detailliert beschrieben.
 
 	\subsubsection{Erweiterung des aerodynamischen Modells in den Transsonischen Bereich}
 
-	Das in \cref{sec:aerodynamik} entwickelte Modell basiert auf der Annahme inkompressibler Strömung ($Ma < 0{,}3$), was Geschwindigkeiten bis ca.\ \SI{370}{\km\per\hour} entspricht. Bereits nahe der beobachteten biologischen Grenzgeschwindigkeit von \SI{389}{\km\per\hour} treten jedoch Kompressibilitätseffekte auf, die eine Korrektur der aerodynamischen Koeffizienten erfordern. Konkret manifestieren sich folgende Phänomene:
+	Das in \cref{sec:aerodynamik} entwickelte Modell basiert auf der Annahme inkompressibler StrÃ¶mung ($Ma < 0{,}3$), was Geschwindigkeiten bis ca.\ \SI{370}{\km\per\hour} entspricht. Bereits nahe der beobachteten biologischen Grenzgeschwindigkeit von \SI{389}{\km\per\hour} treten jedoch KompressibilitÃ¤tseffekte auf, die eine Korrektur der aerodynamischen Koeffizienten erfordern. Konkret manifestieren sich folgende PhÃ¤nomene:
 
 	\begin{itemize}
-		\item \textbf{Prandtl-Glauert-Korrektur:} Der Auftriebsbeiwert skaliert mit $(1 - Ma^2)^{-1/2}$, was bei $Ma \approx 0{,}32$ bereits eine Abweichung von $\approx 6\,\%$ gegenüber dem inkompressiblen Wert bewirkt.
-		\item \textbf{Wave-Drag:} Ab der kritischen Mach-Zahl $Ma_{krit}$ entstehen lokale Überschallzonen an der Körperoberfläche. Für stromlinienförmige Querschnitte liegt $Ma_{krit} \approx 0{,}70$--$0{,}75$, was bei Drohnenkonzepten mit aktiver Querschnittsreduktion erreichbar ist.
-		\item \textbf{Wärmeentwicklung:} Bei Mach-Zahlen oberhalb $0{,}5$ steigt die adiabatische Wandtemperatur signifikant an. Für Kunststoffkomponenten kann dies bereits strukturell relevant werden.
+		\item \textbf{Prandtl-Glauert-Korrektur:} Der Auftriebsbeiwert skaliert mit $(1 - Ma^2)^{-1/2}$, was bei $Ma \approx 0{,}32$ bereits eine Abweichung von $\approx 6\,\%$ gegenÃ¼ber dem inkompressiblen Wert bewirkt.
+		\item \textbf{Wave-Drag:} Ab der kritischen Mach-Zahl $Ma_{krit}$ entstehen lokale Ãœberschallzonen an der KÃ¶rperoberflÃ¤che. FÃ¼r stromlinienfÃ¶rmige Querschnitte liegt $Ma_{krit} \approx 0{,}70$--$0{,}75$, was bei Drohnenkonzepten mit aktiver Querschnittsreduktion erreichbar ist.
+		\item \textbf{WÃ¤rmeentwicklung:} Bei Mach-Zahlen oberhalb $0{,}5$ steigt die adiabatische Wandtemperatur signifikant an. FÃ¼r Kunststoffkomponenten kann dies bereits strukturell relevant werden.
 	\end{itemize}
 
-	Die Modellierung des Transsonischen lässt sich durch ein erweitertes Koeffizientenmodell
+	Die Modellierung des Transsonischen lÃ¤sst sich durch ein erweitertes Koeffizientenmodell
 	\begin{equation}
 		C_D^{komp}(\alpha, \beta_{fold}, Ma) = \frac{C_D(\alpha, \beta_{fold})}{\sqrt{1 - Ma^2}} + C_{D,wave}(Ma)
 	\end{equation}
@@ -1953,77 +1953,77 @@
 
 	\subsubsection{Maschinelles Lernen und adaptive Regelung}
 
-	Der BGSG-Regler basiert auf einem parametrischen aerodynamischen Modell mit festen Koeffizienten. In der Praxis unterliegen diese Koeffizienten jedoch erheblichen Streuungen infolge von Fertigungstoleranzen, Alterung der Oberflächen, Verschmutzung sowie atmosphärischer Variabilität. Zwei ergänzende Ansätze bieten sich an:
+	Der BGSG-Regler basiert auf einem parametrischen aerodynamischen Modell mit festen Koeffizienten. In der Praxis unterliegen diese Koeffizienten jedoch erheblichen Streuungen infolge von Fertigungstoleranzen, Alterung der OberflÃ¤chen, Verschmutzung sowie atmosphÃ¤rischer VariabilitÃ¤t. Zwei ergÃ¤nzende AnsÃ¤tze bieten sich an:
 
 	\paragraph{Reinforcement Learning (RL)} Durch Formulierung des Sturzfluges als Markov-Entscheidungsprozess (MDP)
 	\begin{equation}
 		\max_{\pi} \; \mathbb{E}\left[\sum_{k=0}^{T} \gamma^k r(\mathbf{x}_k, \mathbf{u}_k)\right]
 	\end{equation}
-	mit Belohnungsfunktion $r(\mathbf{x}, \mathbf{u}) = -\|\mathbf{e}(t)\|^2 - \lambda_u \|\mathbf{u}\|^2$ kann ein Regler $\pi^*(\mathbf{x})$ erlernt werden, der gegenüber parametrischen Unsicherheiten robust ist. Besonders geeignet erscheinen modellbasierte RL-Methoden wie PILCO oder Model Predictive Path Integral (MPPI), die mit vergleichsweise wenigen realen Trainingsepisoden auskommen und damit den physischen Verschleiß der Drohne minimieren.
+	mit Belohnungsfunktion $r(\mathbf{x}, \mathbf{u}) = -\|\mathbf{e}(t)\|^2 - \lambda_u \|\mathbf{u}\|^2$ kann ein Regler $\pi^*(\mathbf{x})$ erlernt werden, der gegenÃ¼ber parametrischen Unsicherheiten robust ist. Besonders geeignet erscheinen modellbasierte RL-Methoden wie PILCO oder Model Predictive Path Integral (MPPI), die mit vergleichsweise wenigen realen Trainingsepisoden auskommen und damit den physischen VerschleiÃŸ der Drohne minimieren.
 
-	\paragraph{Gaussian-Process-Regression (GPR)} Alternativ lässt sich das Residuum zwischen modellierter und tatsächlicher Dynamik durch einen Gaußschen Prozess
+	\paragraph{Gaussian-Process-Regression (GPR)} Alternativ lÃ¤sst sich das Residuum zwischen modellierter und tatsÃ¤chlicher Dynamik durch einen GauÃŸschen Prozess
 	\begin{equation}
 		\Delta f(\mathbf{x}) \sim \mathcal{GP}(\mu(\mathbf{x}),\, k(\mathbf{x}, \mathbf{x}'))
 	\end{equation}
-	online erlernen. Der BGSG-Regler wird dann um einen datengetriebenen Kompensationsterm erweitert: $\mathbf{u}_{ges} = \mathbf{u}_{BGSG} + \widehat{\Delta f}(\mathbf{x})$. Dieser Ansatz liefert zudem Konfidenzintervalle für die Kompensation und ermöglicht eine risikobasierte Reglerauslegung.
+	online erlernen. Der BGSG-Regler wird dann um einen datengetriebenen Kompensationsterm erweitert: $\mathbf{u}_{ges} = \mathbf{u}_{BGSG} + \widehat{\Delta f}(\mathbf{x})$. Dieser Ansatz liefert zudem Konfidenzintervalle fÃ¼r die Kompensation und ermÃ¶glicht eine risikobasierte Reglerauslegung.
 
 	\subsubsection{Experimentelle Validierung: Windkanal und Freiflugversuche}
 
-	Die Monte-Carlo-Simulation (\cref{sec:experimente}) kann reale Windkanalversuche nicht vollständig ersetzen. Für eine belastbare Validierung sind folgende Versuchsreihen vorgesehen:
+	Die Monte-Carlo-Simulation (\cref{sec:experimente}) kann reale Windkanalversuche nicht vollstÃ¤ndig ersetzen. FÃ¼r eine belastbare Validierung sind folgende Versuchsreihen vorgesehen:
 
 	\begin{enumerate}
-		\item \textbf{Aerodynamische Koeffizientenmessung:} Statische und dynamische Windkanalmessungen an maßstabsgetreuen \mbox{3D-Druckmodellen} der Drohne bei Reynoldszahlen $Re = 10^5$--$10^6$. Ziel ist die Vermessung von $C_D(\alpha, \beta_{fold})$ und $C_L(\alpha, \beta_{fold})$ über den gesamten Betriebsbereich.
-		\item \textbf{PIV-Strömungsvisualisierung:} Particle Image Velocimetry (PIV) zur experimentellen Bestätigung der Strömungsablösung bei ausgefahrenen Flügeln und zur Validierung des Widerstandsmodells aus \cref{sec:aerodynamik}.
-		\item \textbf{Hardware-in-the-Loop (HiL):} Vor dem ersten Freiflug wird die vollständige Regelungskette (Sensor $\to$ Algorithmus~1 $\to$ Aktuator) in einem HiL-Prüfstand mit Echtzeit-Aerodynamiksimulation getestet. Dies erlaubt die Überprüfung der Regelgüte unter realen Latenzbedingungen.
-		\item \textbf{Freiflugversuche:} In einem kontrollierten Prüfgelände werden Sturzflüge aus definierten Höhen (100\,m, 200\,m, 400\,m) auf ein stationäres und ein bewegtes Ziel durchgeführt. Messgrößen umfassen Auftreffgeschwindigkeit, lateralen Zielfehler und Energieverbrauch.
+		\item \textbf{Aerodynamische Koeffizientenmessung:} Statische und dynamische Windkanalmessungen an maÃŸstabsgetreuen \mbox{3D-Druckmodellen} der Drohne bei Reynoldszahlen $Re = 10^5$--$10^6$. Ziel ist die Vermessung von $C_D(\alpha, \beta_{fold})$ und $C_L(\alpha, \beta_{fold})$ Ã¼ber den gesamten Betriebsbereich.
+		\item \textbf{PIV-StrÃ¶mungsvisualisierung:} Particle Image Velocimetry (PIV) zur experimentellen BestÃ¤tigung der StrÃ¶mungsablÃ¶sung bei ausgefahrenen FlÃ¼geln und zur Validierung des Widerstandsmodells aus \cref{sec:aerodynamik}.
+		\item \textbf{Hardware-in-the-Loop (HiL):} Vor dem ersten Freiflug wird die vollstÃ¤ndige Regelungskette (Sensor $\to$ Algorithmus~1 $\to$ Aktuator) in einem HiL-PrÃ¼fstand mit Echtzeit-Aerodynamiksimulation getestet. Dies erlaubt die ÃœberprÃ¼fung der RegelgÃ¼te unter realen Latenzbedingungen.
+		\item \textbf{Freiflugversuche:} In einem kontrollierten PrÃ¼fgelÃ¤nde werden SturzflÃ¼ge aus definierten HÃ¶hen (100\,m, 200\,m, 400\,m) auf ein stationÃ¤res und ein bewegtes Ziel durchgefÃ¼hrt. MessgrÃ¶ÃŸen umfassen Auftreffgeschwindigkeit, lateralen Zielfehler und Energieverbrauch.
 	\end{enumerate}
 
-	Die Freiflugversuche stellen besondere Anforderungen an die Sicherheitsarchitektur. \cref{sec:hardware} beschreibt bereits einen Watchdog und redundante Abschaltpfade; für Freiflugversuche ist darüber hinaus ein geofence-basierter Notabschalter sowie ein Fallschirmsystem für den Prototypen vorgesehen.
+	Die Freiflugversuche stellen besondere Anforderungen an die Sicherheitsarchitektur. \cref{sec:hardware} beschreibt bereits einen Watchdog und redundante Abschaltpfade; fÃ¼r Freiflugversuche ist darÃ¼ber hinaus ein geofence-basierter Notabschalter sowie ein Fallschirmsystem fÃ¼r den Prototypen vorgesehen.
 
 	\subsubsection{Multi-Drohnen-Koordination und Schwarmszenarien}
 
 	Ein einzelner Falke erzielt hohe Erfolgsraten gegen einzelne Beute. Gegen ausweichende oder in Gruppen fliegende Ziele ist jedoch eine koordinierte Zusammenarbeit mehrerer Drohnen-Agenten vielversprechend. Zwei Szenarien sind besonders relevant:
 
 	\begin{itemize}
-		\item \textbf{Koordinierter Zangenangriff:} Zwei Drohnen initiieren zeitlich versetzt Sturzflüge aus verschiedenen Richtungen. Die Reaktionszeit des Ziels wird damit ausgenutzt; die erste Drohne bindet die Ausweichkapazität, die zweite führt den Fangangriff durch.
-		\item \textbf{Schwarmpinzette:} Eine größere Anzahl ($n \geq 5$) von Drohnen bildet eine adaptive Hülle um das Ziel und schränkt sukzessive dessen Ausweichraum ein (konvexe Hüllenstrategie).
+		\item \textbf{Koordinierter Zangenangriff:} Zwei Drohnen initiieren zeitlich versetzt SturzflÃ¼ge aus verschiedenen Richtungen. Die Reaktionszeit des Ziels wird damit ausgenutzt; die erste Drohne bindet die AusweichkapazitÃ¤t, die zweite fÃ¼hrt den Fangangriff durch.
+		\item \textbf{Schwarmpinzette:} Eine grÃ¶ÃŸere Anzahl ($n \geq 5$) von Drohnen bildet eine adaptive HÃ¼lle um das Ziel und schrÃ¤nkt sukzessive dessen Ausweichraum ein (konvexe HÃ¼llenstrategie).
 	\end{itemize}
 
-	Die Regelungsarchitektur erfordert hierfür die Erweiterung des Zustandsvektors um Inter-Agenten-Relativzustände sowie eine gemeinsame Zielprädiktion. Dezentrale Optimierungsverfahren (z.\,B.\ Consensus-basierte ADMM) erscheinen besonders geeignet, da sie ohne zentralen Koordinator auskommen und damit robust gegenüber Kommunikationsausfällen sind.
+	Die Regelungsarchitektur erfordert hierfÃ¼r die Erweiterung des Zustandsvektors um Inter-Agenten-RelativzustÃ¤nde sowie eine gemeinsame ZielprÃ¤diktion. Dezentrale Optimierungsverfahren (z.\,B.\ Consensus-basierte ADMM) erscheinen besonders geeignet, da sie ohne zentralen Koordinator auskommen und damit robust gegenÃ¼ber KommunikationsausfÃ¤llen sind.
 
 	\subsubsection{Erweiterung auf 3D-Zielverfolgung mit bewegter Kamera}
 
-	Der in dieser Arbeit betrachtete Zielverfolgungsalgorithmus setzt die Zielposition $\mathbf{p}_{target}(t)$ als bekannte Eingangsgröße voraus. In der Praxis muss diese aus Sensordaten geschätzt werden. Für Hochgeschwindigkeitsanwendungen bieten sich folgende Sensorkonzepte an:
+	Der in dieser Arbeit betrachtete Zielverfolgungsalgorithmus setzt die Zielposition $\mathbf{p}_{target}(t)$ als bekannte EingangsgrÃ¶ÃŸe voraus. In der Praxis muss diese aus Sensordaten geschÃ¤tzt werden. FÃ¼r Hochgeschwindigkeitsanwendungen bieten sich folgende Sensorkonzepte an:
 
 	\begin{description}
-		\item[Gimbalkamera + Kalman-Filter:] Eine kardanisch gelagerte Kamera liefert azimut- und elevationskorrigierte Bilddaten. Ein Extended Kalman Filter (EKF) fusioniert diese mit IMU-Daten zu einer 3D-Lagerschätzung des Ziels.
-		\item[Event-Kamera (neuromorphe Sensorik):] Ereignisbasierte Kameras messen asynchron Helligkeitsänderungen mit Mikrosekunden-Latenz. Sie sind für die schnellen Winkelbewegungen in Phase $\mathcal{P}_5$ besonders geeignet, da konventionelle Frame-Kameras bei $> 200 \, \mathrm{fps}$ unzureichende Lichtausbeute aufweisen.
-		\item[Radar + optische Kamera:] Radar liefert Range-Doppler-Informationen bei schlechter Sicht; die Fusion mit optischen Daten erhöht die Trennfähigkeit gegenüber Clutter.
+		\item[Gimbalkamera + Kalman-Filter:] Eine kardanisch gelagerte Kamera liefert azimut- und elevationskorrigierte Bilddaten. Ein Extended Kalman Filter (EKF) fusioniert diese mit IMU-Daten zu einer 3D-LagerschÃ¤tzung des Ziels.
+		\item[Event-Kamera (neuromorphe Sensorik):] Ereignisbasierte Kameras messen asynchron HelligkeitsÃ¤nderungen mit Mikrosekunden-Latenz. Sie sind fÃ¼r die schnellen Winkelbewegungen in Phase $\mathcal{P}_5$ besonders geeignet, da konventionelle Frame-Kameras bei $> 200 \, \mathrm{fps}$ unzureichende Lichtausbeute aufweisen.
+		\item[Radar + optische Kamera:] Radar liefert Range-Doppler-Informationen bei schlechter Sicht; die Fusion mit optischen Daten erhÃ¶ht die TrennfÃ¤higkeit gegenÃ¼ber Clutter.
 	\end{description}
 
-	Die Integration eines solchen Wahrnehmungsmoduls würde den BioFalcon-Tracking-Algorithmus (\cref{alg:tracking}) zu einem vollständig autonomen Erfassungs- und Verfolgungssystem vervollständigen.
+	Die Integration eines solchen Wahrnehmungsmoduls wÃ¼rde den BioFalcon-Tracking-Algorithmus (\cref{alg:tracking}) zu einem vollstÃ¤ndig autonomen Erfassungs- und Verfolgungssystem vervollstÃ¤ndigen.
 
-	\subsubsection{Morphing-Flügelstrukturen und bioinspirierte Materialien}
+	\subsubsection{Morphing-FlÃ¼gelstrukturen und bioinspirierte Materialien}
 
-	Der Wanderfalke nutzt nicht nur eine starre Flügelgeometrie, sondern verändert die Flügelform kontinuierlich und anisotrop. Technisch lässt sich dies durch so genannte \textit{Morphing-Strukturen} nachbilden:
+	Der Wanderfalke nutzt nicht nur eine starre FlÃ¼gelgeometrie, sondern verÃ¤ndert die FlÃ¼gelform kontinuierlich und anisotrop. Technisch lÃ¤sst sich dies durch so genannte \textit{Morphing-Strukturen} nachbilden:
 
 	\begin{itemize}
-		\item \textbf{Formgedächtnislegierungen (SMA):} Nickeltitan-Aktoren können durch elektrische Erwärmung reversibel ihre Form ändern und bieten damit eine direkte Analogie zur Muskelkontraktion. Die erreichbaren Stellkräfte and Stellzeiten ($\sim \SI{100}{\ms}$) sind für Phase $\mathcal{P}_2$ ausreichend.
-		\item \textbf{Pneumatische Balgaktoren:} Leichte, integrierbare Bälge können lokale Flügelwölbungen erzeugen und die Auftriebsverteilung während des Pullout-Manövers $({\mathcal{P}_4})$ optimieren.
-		\item \textbf{Kohlefaser-Verbundstrukturen mit gezielter Anisotropie:} Durch gezielte Ausrichtung der Faserverstärkung lässt sich eine wash-out-Torsion implementieren, die bei hohen Anstellwinkeln automatisch die Spitzenbelastung reduziert --- analog zum durch Muskelspannung kontrollierten Vogelflügel.
+		\item \textbf{FormgedÃ¤chtnislegierungen (SMA):} Nickeltitan-Aktoren kÃ¶nnen durch elektrische ErwÃ¤rmung reversibel ihre Form Ã¤ndern und bieten damit eine direkte Analogie zur Muskelkontraktion. Die erreichbaren StellkrÃ¤fte and Stellzeiten ($\sim \SI{100}{\ms}$) sind fÃ¼r Phase $\mathcal{P}_2$ ausreichend.
+		\item \textbf{Pneumatische Balgaktoren:} Leichte, integrierbare BÃ¤lge kÃ¶nnen lokale FlÃ¼gelwÃ¶lbungen erzeugen und die Auftriebsverteilung wÃ¤hrend des Pullout-ManÃ¶vers $({\mathcal{P}_4})$ optimieren.
+		\item \textbf{Kohlefaser-Verbundstrukturen mit gezielter Anisotropie:} Durch gezielte Ausrichtung der FaserverstÃ¤rkung lÃ¤sst sich eine wash-out-Torsion implementieren, die bei hohen Anstellwinkeln automatisch die Spitzenbelastung reduziert --- analog zum durch Muskelspannung kontrollierten VogelflÃ¼gel.
 	\end{itemize}
 
-	Die Modellierung dieser Effekte erfordert eine Kopplung des aerodynamischen Modells mit einem Finite-Elemente-Modell der Flügelstruktur (aeroelastische Simulation).
+	Die Modellierung dieser Effekte erfordert eine Kopplung des aerodynamischen Modells mit einem Finite-Elemente-Modell der FlÃ¼gelstruktur (aeroelastische Simulation).
 
 	\subsubsection{Rechtliche und ethische Rahmenbedingungen}
 
-	Der Betrieb autonomer Hochgeschwindigkeitsdrohnen im Luftraum unterliegt strengen regulatorischen Anforderungen. In der Europäischen Union ist die EASA-Verordnung (EU) 2019/947 maßgeblich: Drohnen mit kinetischer Energie $> \SI{80}{\J}$ im Sturzflug sind der Kategorie \textit{Specific} zuzuordnen und erfordern eine Betriebsgenehmigung (SORA-Verfahren). Die im Rahmen dieser Arbeit ausgelegte Referenzdrohne (\SI{1.2}{\kg}, $v_{max} \approx \SI{316}{\m\per\second}$) überschreitet diese Schwelle erheblich und ist daher ausschließlich in Sperrzonen oder militärisch freigegebenen Lufträumen betreibbar.
+	Der Betrieb autonomer Hochgeschwindigkeitsdrohnen im Luftraum unterliegt strengen regulatorischen Anforderungen. In der EuropÃ¤ischen Union ist die EASA-Verordnung (EU) 2019/947 maÃŸgeblich: Drohnen mit kinetischer Energie $> \SI{80}{\J}$ im Sturzflug sind der Kategorie \textit{Specific} zuzuordnen und erfordern eine Betriebsgenehmigung (SORA-Verfahren). Die im Rahmen dieser Arbeit ausgelegte Referenzdrohne (\SI{1.2}{\kg}, $v_{max} \approx \SI{316}{\m\per\second}$) Ã¼berschreitet diese Schwelle erheblich und ist daher ausschlieÃŸlich in Sperrzonen oder militÃ¤risch freigegebenen LuftrÃ¤umen betreibbar.
 
-	Darüber hinaus werfen vollständig autonome Angriffssysteme grundlegende ethische Fragen auf, die über den technischen Rahmen dieser Arbeit hinausgehen. Das \textit{Campaign to Stop Killer Robots} sowie zahlreiche nationale Deklarationen fordern einen ``meaningful human control''-Standard, der auch für zivile Anwendungen wie Wildtierschutz oder Kontradrohnen-Einsatz zu beachten ist. Zukünftige Arbeiten sollten daher stets einen integrierten Operator-in-the-Loop-Modus vorsehen, der eine manuelle Übernahme der Steuerung in jeder Phase des Fluges ermöglicht.
+	DarÃ¼ber hinaus werfen vollstÃ¤ndig autonome Angriffssysteme grundlegende ethische Fragen auf, die Ã¼ber den technischen Rahmen dieser Arbeit hinausgehen. Das \textit{Campaign to Stop Killer Robots} sowie zahlreiche nationale Deklarationen fordern einen ``meaningful human control''-Standard, der auch fÃ¼r zivile Anwendungen wie Wildtierschutz oder Kontradrohnen-Einsatz zu beachten ist. ZukÃ¼nftige Arbeiten sollten daher stets einen integrierten Operator-in-the-Loop-Modus vorsehen, der eine manuelle Ãœbernahme der Steuerung in jeder Phase des Fluges ermÃ¶glicht.
 
 	\subsubsection{Langzeitziele: Biologischer Digitaler Zwilling}
 
-	Das langfristige wissenschaftliche Ziel der BioSAS-Forschungslinie ist die Schaffung eines vollständigen \textit{digitalen Zwillings} des Wanderfalken-Sturzfluges: ein Simulationsmodell, das biologische Messdaten (Telemetrie-GPS, Hochgeschwindigkeitsvideometrie, integrierte Beschleunigungssensoren am lebenden Tier) direkt assimiliert und daraus optimale Regelungsstrategien für technische Systeme ableitet. Der hier entwickelte Formalismus --- 6-DOF-Modell, Pontryagin-Optimalitätsbeweis, BGSG-Regler --- stellt dabei die regelungstechnische Kernkomponente dar, die durch biologische Datenfusion, maschinelles Lernen und Echtzeit-Embedded-Implementierung zu einem umfassenden kybernetischen System vervollständigt werden soll.
+	Das langfristige wissenschaftliche Ziel der BioSAS-Forschungslinie ist die Schaffung eines vollstÃ¤ndigen \textit{digitalen Zwillings} des Wanderfalken-Sturzfluges: ein Simulationsmodell, das biologische Messdaten (Telemetrie-GPS, Hochgeschwindigkeitsvideometrie, integrierte Beschleunigungssensoren am lebenden Tier) direkt assimiliert und daraus optimale Regelungsstrategien fÃ¼r technische Systeme ableitet. Der hier entwickelte Formalismus --- 6-DOF-Modell, Pontryagin-OptimalitÃ¤tsbeweis, BGSG-Regler --- stellt dabei die regelungstechnische Kernkomponente dar, die durch biologische Datenfusion, maschinelles Lernen und Echtzeit-Embedded-Implementierung zu einem umfassenden kybernetischen System vervollstÃ¤ndigt werden soll.
 	
 	%=============================================================================
 	% LITERATUR
@@ -2034,7 +2034,7 @@
 		Tucker, V.A. (1998). Gliding flight: speed and acceleration of ideal falcons during diving and pull out. \textit{Journal of Experimental Biology}, 201(3), 403--414.
 		
 		\bibitem{aero1}
-		Ponitz, B., Schmitz, A., Fischer, D., Bleckmann, H., \& Brücker, C. (2014). Diving-flight aerodynamics of a peregrine falcon (\textit{Falco peregrinus}). \textit{PLOS ONE}, 9(2), e86506.
+		Ponitz, B., Schmitz, A., Fischer, D., Bleckmann, H., \& BrÃ¼cker, C. (2014). Diving-flight aerodynamics of a peregrine falcon (\textit{Falco peregrinus}). \textit{PLOS ONE}, 9(2), e86506.
 		
 		\bibitem{lyap1}
 		Khalil, H.K. (2002). \textit{Nonlinear Systems}, 3rd ed. Prentice Hall, Upper Saddle River.
@@ -2052,7 +2052,7 @@
 		Alerstam, T. (1987). Radar observations of the stoop of the peregrine falcon. \textit{Behavioral Ecology and Sociobiology}, 20(5), 363--372.
 		
 		\bibitem{aero2}
-		Henningsson, P., Johansson, L.C., \& Hedenström, A. (2010). How swift is a swift? Undulating posture improves transient flight performance. \textit{PLOS ONE}, 5(8), e11895.
+		Henningsson, P., Johansson, L.C., \& HedenstrÃ¶m, A. (2010). How swift is a swift? Undulating posture improves transient flight performance. \textit{PLOS ONE}, 5(8), e11895.
 		
 		\bibitem{robot1}
 		Wood, R.J., Avadhanula, S., Sahai, R., Steltz, E., \& Fearing, R.S. (2008). Microrobot design using fiber reinforced composites. \textit{Journal of Mechanical Design}, 130(5), 052304.
@@ -2069,7 +2069,7 @@
 		Whitcomb, R.T. (1956). A study of the zero-lift drag-rise characteristics of wing-body combinations near the speed of sound. NACA Report 1273. National Advisory Committee for Aeronautics, Langley Field.
 
 		\bibitem{prandtl1919}
-		Prandtl, L. (1919). Tragflügeltheorie. I. Mitteilung. \textit{Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse}, 1919, 451--477.
+		Prandtl, L. (1919). TragflÃ¼geltheorie. I. Mitteilung. \textit{Nachrichten von der Gesellschaft der Wissenschaften zu GÃ¶ttingen, Mathematisch-Physikalische Klasse}, 1919, 451--477.
 
 		\bibitem{anderson2011}
 		Anderson, J.D. (2011). \textit{Fundamentals of Aerodynamics}, 5th ed. McGraw-Hill, New York.
@@ -2095,7 +2095,7 @@
 		Pennycuick, C.J. (2008). \textit{Modelling the Flying Bird}. Academic Press, Amsterdam.
 
 		\bibitem{hedenstrom2002}
-		Hedenström, A., \& Rosén, M. (2003). Body frontal area in passerine birds. \textit{Journal of Avian Biology}, 34(2), 159--162.
+		HedenstrÃ¶m, A., \& RosÃ©n, M. (2003). Body frontal area in passerine birds. \textit{Journal of Avian Biology}, 34(2), 159--162.
 
 		\bibitem{rayner1979}
 		Rayner, J.M.V. (1979). A vortex theory of animal flight. Part~2. The forward flight of birds. \textit{Journal of Fluid Mechanics}, 91(4), 731--763.
@@ -2118,13 +2118,13 @@
 		Utkin, V.I. (1992). \textit{Sliding Modes in Control and Optimization}. Springer, Berlin.
 
 		\bibitem{astrom2008}
-		Åström, K.J., \& Murray, R.M. (2008). \textit{Feedback Systems: An Introduction for Scientists and Engineers}. Princeton University Press, Princeton.
+		Ã…strÃ¶m, K.J., \& Murray, R.M. (2008). \textit{Feedback Systems: An Introduction for Scientists and Engineers}. Princeton University Press, Princeton.
 
 		\bibitem{fossen2011}
 		Fossen, T.I. (2011). \textit{Handbook of Marine Craft Hydrodynamics and Motion Control}. Wiley, Chichester.
 
 		\bibitem{brockett1983}
-		Brockett, R.W. (1983). Asymptotic stability and feedback stabilization. In: \textit{Differential Geometric Control Theory}, pp.~181--191. Birkhäuser, Boston.
+		Brockett, R.W. (1983). Asymptotic stability and feedback stabilization. In: \textit{Differential Geometric Control Theory}, pp.~181--191. BirkhÃ¤user, Boston.
 
 		% --- Drohnensysteme und unbemannte Luftfahrt ---
 
@@ -2243,3 +2243,4 @@
 	\end{thebibliography}
 	
 \end{document}
+

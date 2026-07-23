@@ -36,7 +36,7 @@ ax.set_title('ASIL-Risikomatrix (Controllability C3)')
 patches = [mpatches.Patch(color=v, label=k) for k, v in colors.items()]
 ax.legend(handles=patches, loc='upper left', fontsize=9, title='ASIL-Stufe')
 plt.tight_layout()
-plt.savefig('/home/claude/iso26262/plot_asil_matrix.pdf')
+plt.savefig('plot_asil_matrix.pdf')
 plt.close()
 print("Plot 1 done")
 
@@ -79,7 +79,7 @@ ax.annotate('Integration & Verifikation', xy=(3.5, n_right+1), xytext=(3.5, n_ri
             ha='center', fontsize=9, color='#c03010',
             arrowprops=dict(arrowstyle='->', color='#c03010'))
 plt.tight_layout()
-plt.savefig('/home/claude/iso26262/plot_v_model.pdf')
+plt.savefig('plot_v_model.pdf')
 plt.close()
 print("Plot 2 done")
 
@@ -101,7 +101,7 @@ for bar, val in zip(bars, fit_vals):
 ax.set_ylim(0.1, 1e5)
 ax.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig('/home/claude/iso26262/plot_failure_rate.pdf')
+plt.savefig('plot_failure_rate.pdf')
 plt.close()
 print("Plot 3 done")
 
@@ -123,7 +123,7 @@ ax.axvline(90, color='red', linestyle='--', label='Min. ASIL C/D (90%)')
 ax.legend(fontsize=9)
 ax.grid(axis='x', linestyle='--', alpha=0.4)
 plt.tight_layout()
-plt.savefig('/home/claude/iso26262/plot_dc_coverage.pdf')
+plt.savefig('plot_dc_coverage.pdf')
 plt.close()
 print("Plot 4 done")
 
@@ -145,7 +145,7 @@ for x, y in zip(asil_x, rel_cost):
 ax.grid(linestyle='--', alpha=0.5)
 ax.set_ylim(0, 12)
 plt.tight_layout()
-plt.savefig('/home/claude/iso26262/plot_cost_asil.pdf')
+plt.savefig('plot_cost_asil.pdf')
 plt.close()
 print("Plot 5 done")
 

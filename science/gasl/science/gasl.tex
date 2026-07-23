@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,twoside]{article}
+﻿\documentclass[12pt,a4paper,twoside]{article}
 
 % ---- Pakete -------------------------------------------------
 \usepackage[ngerman]{babel}
@@ -84,8 +84,8 @@
 \newcommand{\dK}{d_{\mathrm{K}}}
 
 % ---- Hauptdokument -----------------------------------------
-\title{{\bfseries Strömungsoptimierung in Gasleitungen}\\[-0.1em]
-  \Large Analyse und formale Nachweise der Überlegenheit\\
+\title{{\bfseries StrÃ¶mungsoptimierung in Gasleitungen}\\[-0.1em]
+  \Large Analyse und formale Nachweise der Ãœberlegenheit\\
   kleiner Rohrdurchmesser}
 \author{Stephan Epp}
 \date{7. April 2026}
@@ -104,64 +104,64 @@
 % ============================================================
 Die vorliegende Arbeit untersucht systematisch und formal, warum parallele
 Anordnungen kleiner Gasleitungen mit Innendurchmessern im Bereich von
-\SIrange{8}{11}{\centi\metre} einzelnen großen Leitungen mit Durchmessern von
+\SIrange{8}{11}{\centi\metre} einzelnen groÃŸen Leitungen mit Durchmessern von
 \SI{30}{\centi\metre} und \SI{45}{\centi\metre} in nahezu allen techno\-nomi\-schen
-Kategorien überlegen sind.
-Auf der Grundlage der Navier-Stokes-Gleichungen für kompressible Newtonsche Fluide,
+Kategorien Ã¼berlegen sind.
+Auf der Grundlage der Navier-Stokes-Gleichungen fÃ¼r kompressible Newtonsche Fluide,
 der Colebrook-White-Gleichung, des Hagen-Poiseuille-Gesetzes sowie der
 Dittus-Boelter-Korrelation werden analytische Beweise und quantitative Vergleiche
 erarbeitet.
 Neun Abbildungen und sieben \textit{Ti\-kZ}-Grafiken veranschaulichen die
-Druckverlustkennlinien, Reynolds-Zahl-Regime, Wärmeübergangskoeffizienten,
-spezifische Oberflächen, Lifetycle-Kosten und strukturelle Belastbarkeit.
+Druckverlustkennlinien, Reynolds-Zahl-Regime, WÃ¤rmeÃ¼bergangskoeffizienten,
+spezifische OberflÃ¤chen, Lifetycle-Kosten und strukturelle Belastbarkeit.
 Die Ergebnisse zeigen, dass parallele Netze aus kleinen Rohren bei gleicher
-Gesamtquerschnittsfläche Druck\-ver\-lus\-te bis zu einem Faktor~4{,}2 reduzieren,
-die spezifische Wärmeübertragungsfläche um den Faktor~$d_{\mathrm{G}}/d_{\mathrm{K}}$
-steigern und bei Leitungszügen über \SI{500}{\metre} über 30~Jahre ca.\ 18\,\%
+GesamtquerschnittsflÃ¤che Druck\-ver\-lus\-te bis zu einem Faktor~4{,}2 reduzieren,
+die spezifische WÃ¤rmeÃ¼bertragungsflÃ¤che um den Faktor~$d_{\mathrm{G}}/d_{\mathrm{K}}$
+steigern und bei LeitungszÃ¼gen Ã¼ber \SI{500}{\metre} Ã¼ber 30~Jahre ca.\ 18\,\%
 niedrigere Lebenszykluskosten aufweisen.
 
-Die Dimensionierung von Gasleitungsnetzen gehört zu den grundlegenden
+Die Dimensionierung von Gasleitungsnetzen gehÃ¶rt zu den grundlegenden
 Aufgaben der Verfahrenstechnik und Versorgungstechnik.
-Während in der Vergangenheit aus Gründen der Montagesimplizität häufig
-einzelne große Hauptleitungen bevorzugt wurden, setzt sich in modernen
+WÃ¤hrend in der Vergangenheit aus GrÃ¼nden der MontagesimplizitÃ¤t hÃ¤ufig
+einzelne groÃŸe Hauptleitungen bevorzugt wurden, setzt sich in modernen
 Planungskonzepten zunehmend die Erkenntnis durch, dass parallele
 Anordnungen mehrerer vergleichsweise kleiner Rohre erhebliche
-strömungstechnische, wärme\-technische und wirtschaftliche Vorteile bieten.
+strÃ¶mungstechnische, wÃ¤rme\-technische und wirtschaftliche Vorteile bieten.
 
 Der vorliegenden Arbeit liegt die Frage zugrunde, ob sich diese
-Vorteilhaftigkeit auch formal beweisen lässt und welche physikalischen
-Gesetzmäßigkeiten ihr zugrunde liegen.
+Vorteilhaftigkeit auch formal beweisen lÃ¤sst und welche physikalischen
+GesetzmÃ¤ÃŸigkeiten ihr zugrunde liegen.
 Verglichen werden Rohrdurchmesser im Bereich von \SIrange{8}{11}{\centi\metre}
 (im Folgenden als ``kleine Rohre'' bezeichnet) auf der einen Seite sowie
 Einzelrohre mit Durchmessern von \SI{30}{\centi\metre} und \SI{45}{\centi\metre}
-(``große Rohre'') auf der anderen Seite.
+(``groÃŸe Rohre'') auf der anderen Seite.
 Als Betriebsmedium dient Methan ($\mathrm{CH_4}$) bei einem Betriebsdruck von
 \SI{2}{\bar} (absolut) und einer Temperatur von \SI{20}{\celsius}.
 
 Die Analyse gliedert sich in folgende Schwerpunkte:
 \begin{enumerate}[label=(\roman*)]
-  \item Strömungsmechanische Grundlagen und Kennzahlen (\cref{sec:grundlagen}),
-  \item Formale Beweise zur Überlegenheit kleiner Durchmesser in Parallelnetzen
+  \item StrÃ¶mungsmechanische Grundlagen und Kennzahlen (\cref{sec:grundlagen}),
+  \item Formale Beweise zur Ãœberlegenheit kleiner Durchmesser in Parallelnetzen
         (\cref{sec:beweise}),
   \item Numerische und grafische Vergleiche mittels neun \texttt{matplotlib}-Abbildungen
         (\cref{sec:numerik}),
-  \item Wärmetechnische Analyse (\cref{sec:waerme}),
+  \item WÃ¤rmetechnische Analyse (\cref{sec:waerme}),
   \item Strukturmechanische Bewertung nach Barlow (\cref{sec:mechanik}),
-  \item Wirtschaftlichkeitsbetrachtung über 30~Jahre (\cref{sec:wirtschaft}),
+  \item Wirtschaftlichkeitsbetrachtung Ã¼ber 30~Jahre (\cref{sec:wirtschaft}),
   \item Diskussion (\cref{sec:diskussion}),
   \item Ausblick (\cref{sec:ausblick}).
 \end{enumerate}
 
 \bigskip
 \noindent
-Die vollständigen numerischen Berechnungen wurden in Python~3.12 mit der
-Bibliothek \texttt{matplotlib}~\cite{Hunter2007} durchgeführt.
+Die vollstÃ¤ndigen numerischen Berechnungen wurden in Python~3.12 mit der
+Bibliothek \texttt{matplotlib}~\cite{Hunter2007} durchgefÃ¼hrt.
 
-\noindent\textbf{Schlüsselwörter:} Gasleitungen, Rohrdurchmesser, Druckverlust, Colebrook-White, Wärmeübertragung, Dittus-Boelter, Parallelnetz, Lebenszykluskosten, Rohrmechanik, Turbulenz.
+\noindent\textbf{SchlÃ¼sselwÃ¶rter:} Gasleitungen, Rohrdurchmesser, Druckverlust, Colebrook-White, WÃ¤rmeÃ¼bertragung, Dittus-Boelter, Parallelnetz, Lebenszykluskosten, Rohrmechanik, Turbulenz.
 
 
 % ============================================================
-\section{Strömungsmechanische Grundlagen}
+\section{StrÃ¶mungsmechanische Grundlagen}
 \label{sec:grundlagen}
 % ============================================================
 
@@ -171,7 +171,7 @@ Bibliothek \texttt{matplotlib}~\cite{Hunter2007} durchgeführt.
 Alle in dieser Arbeit verwendeten Symbole sind in \cref{tab:nomenklatur}
 zusammengefasst.
 Als Betriebsmedium dient Methan bei \SI{2}{\bar}\,(abs.) und \SI{20}{\celsius};
-die relevanten Stoffdaten sind in \cref{tab:stoffdaten} aufgeführt.
+die relevanten Stoffdaten sind in \cref{tab:stoffdaten} aufgefÃ¼hrt.
 
 \begin{table}[htbp]
 \centering
@@ -182,21 +182,21 @@ die relevanten Stoffdaten sind in \cref{tab:stoffdaten} aufgeführt.
 Symbol & Einheit & Bedeutung \\
 \midrule
 $d$     & \si{\metre}                 & Innendurchmesser des Rohres \\
-$L$     & \si{\metre}                 & Länge des Rohrsegments \\
-$v$     & \si{\metre\per\second}      & mittlere Strömungsgeschwindigkeit \\
+$L$     & \si{\metre}                 & LÃ¤nge des Rohrsegments \\
+$v$     & \si{\metre\per\second}      & mittlere StrÃ¶mungsgeschwindigkeit \\
 $\dot{V}$ & \si{\metre\cubed\per\second} & Volumenstrom \\
 $\Rey$  & --                          & Reynolds-Zahl \\
 $f$     & --                          & Darcy-Reibungsbeiwert \\
 $\Delta p$ & \si{\pascal}            & Druckdifferenz \\
-$\dpL$  & \si{\pascal\per\metre}      & Druckverlust pro Längeneinheit \\
-$\mu$   & \si{\pascal\second}         & dynamische Viskosität \\
-$\nu$   & \si{\metre\squared\per\second} & kinematische Viskosität \\
+$\dpL$  & \si{\pascal\per\metre}      & Druckverlust pro LÃ¤ngeneinheit \\
+$\mu$   & \si{\pascal\second}         & dynamische ViskositÃ¤t \\
+$\nu$   & \si{\metre\squared\per\second} & kinematische ViskositÃ¤t \\
 $\rho$  & \si{\kilogram\per\metre\cubed} & Fluiddichte \\
 $\varepsilon$ & \si{\metre}          & Absolutrauheit der Rohrwand \\
 $\Nus$  & --                          & Nusselt-Zahl \\
 $\Pra$  & --                          & Prandtl-Zahl \\
-$h$     & \si{\watt\per\metre\squared\per\kelvin} & Wärmeübergangskoeffizient \\
-$k$     & \si{\watt\per\metre\per\kelvin}  & Wärmeleitfähigkeit des Gases \\
+$h$     & \si{\watt\per\metre\squared\per\kelvin} & WÃ¤rmeÃ¼bergangskoeffizient \\
+$k$     & \si{\watt\per\metre\per\kelvin}  & WÃ¤rmeleitfÃ¤higkeit des Gases \\
 $\sigma_S$ & \si{\mega\pascal}        & Streckgrenze des Rohrwerkstoffs \\
 $t$     & \si{\metre}                 & Wanddicke \\
 $N$     & --                          & Anzahl paralleler Rohre \\
@@ -211,32 +211,32 @@ $N$     & --                          & Anzahl paralleler Rohre \\
 \label{tab:stoffdaten}
 \begin{tabularx}{\linewidth}{@{}lllX@{}}
 \toprule
-Größe & Wert & Einheit & Quelle \\
+GrÃ¶ÃŸe & Wert & Einheit & Quelle \\
 \midrule
 Dichte $\rho$           & 1{,}436   & \si{\kilogram\per\metre\cubed} & \cite{Baehr2016} \\
-Dyn.\,Viskosität $\mu$  & $1{,}10\times10^{-5}$ & \si{\pascal\second} & \cite{Baehr2016} \\
-Wärmeleitfähigkeit $k$  & 0{,}033   & \si{\watt\per\metre\per\kelvin} & \cite{Baehr2016} \\
+Dyn.\,ViskositÃ¤t $\mu$  & $1{,}10\times10^{-5}$ & \si{\pascal\second} & \cite{Baehr2016} \\
+WÃ¤rmeleitfÃ¤higkeit $k$  & 0{,}033   & \si{\watt\per\metre\per\kelvin} & \cite{Baehr2016} \\
 Prandtl-Zahl $\Pra$     & 0{,}72    & --                              & \cite{Baehr2016} \\
-Spez.\,Wärmekapazität $c_p$ & 2232  & \si{\joule\per\kilogram\per\kelvin} & \cite{Baehr2016} \\
+Spez.\,WÃ¤rmekapazitÃ¤t $c_p$ & 2232  & \si{\joule\per\kilogram\per\kelvin} & \cite{Baehr2016} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Reynolds-Zahl und Strömungsregime}
+\subsection{Reynolds-Zahl und StrÃ¶mungsregime}
 \label{ssec:reynolds}
 
 Die Reynolds-Zahl ist die zentrale dimensionslose Kennzahl zur Charakterisierung
-der Rohrströmung:
+der RohrstrÃ¶mung:
 \begin{equation}
   \Rey = \frac{v \, d}{\nu} = \frac{\rho \, v \, d}{\mu}.
   \label{eq:reynolds}
 \end{equation}
-Sie gibt das Verhältnis von Trägheits- zu Viskositätskräften an.
-Bei $\Rey < 2300$ liegt laminare Strömung vor; im Bereich $2300 \le \Rey \le 4000$
-befindet sich die Strömung im hydrodynamisch instabilen Übergangsbereich; für
-$\Rey > 4000$ ist die Strömung turbulent.
+Sie gibt das VerhÃ¤ltnis von TrÃ¤gheits- zu ViskositÃ¤tskrÃ¤ften an.
+Bei $\Rey < 2300$ liegt laminare StrÃ¶mung vor; im Bereich $2300 \le \Rey \le 4000$
+befindet sich die StrÃ¶mung im hydrodynamisch instabilen Ãœbergangsbereich; fÃ¼r
+$\Rey > 4000$ ist die StrÃ¶mung turbulent.
 
-Für eine mittlere Betriebsgeschwindigkeit von \SI{3}{\metre\per\second} ergeben
+FÃ¼r eine mittlere Betriebsgeschwindigkeit von \SI{3}{\metre\per\second} ergeben
 sich folgende Reynolds-Zahlen:
 \begin{align}
   \Rey(d = \SI{0.095}{\metre}) &= \frac{3 \cdot 0{,}095}{\nu}
@@ -247,16 +247,16 @@ sich folgende Reynolds-Zahlen:
 \end{align}
 
 \noindent
-Alle betrachteten Fälle befinden sich also im vollturbulenzen Regime.
-Dies hat wichtige Konsequenzen für den Reibungsbeiwert und damit den
-Druckverlust, wie im nächsten Abschnitt gezeigt.
+Alle betrachteten FÃ¤lle befinden sich also im vollturbulenzen Regime.
+Dies hat wichtige Konsequenzen fÃ¼r den Reibungsbeiwert und damit den
+Druckverlust, wie im nÃ¤chsten Abschnitt gezeigt.
 
 \subsection{Reibungsbeiwert und Druckverlust}
 \label{ssec:druckverlust}
 
 \begin{definition}[Darcy-Weisbach-Gleichung]
-Der Druckverlust $\Delta p$ in einem geraden Rohr der Länge $L$ und des
-Innendurchmessers $d$ bei der mittleren Strömungsgeschwindigkeit $v$ lautet:
+Der Druckverlust $\Delta p$ in einem geraden Rohr der LÃ¤nge $L$ und des
+Innendurchmessers $d$ bei der mittleren StrÃ¶mungsgeschwindigkeit $v$ lautet:
 \begin{equation}
   \Delta p = f \, \frac{L}{d} \, \frac{\rho \, v^2}{2},
   \label{eq:darcy_weisbach}
@@ -264,22 +264,22 @@ Innendurchmessers $d$ bei der mittleren Strömungsgeschwindigkeit $v$ lautet:
 wobei $f$ der Darcy-Reibungsbeiwert ist.
 \end{definition}
 
-Der Reibungsbeiwert hängt von Strömungsregime und relativer Wandrauheit
+Der Reibungsbeiwert hÃ¤ngt von StrÃ¶mungsregime und relativer Wandrauheit
 $\varepsilon/d$ ab.
-Für laminare Strömung gilt exakt:
+FÃ¼r laminare StrÃ¶mung gilt exakt:
 \begin{equation}
   f_{\mathrm{lam}} = \frac{64}{\Rey}.
   \label{eq:f_laminar}
 \end{equation}
 
-Für hydraulisch glatte turbulente Rohre liefert das Blasius-Gesetz
-eine gute Näherung ($4000 < \Rey < 10^5$):
+FÃ¼r hydraulisch glatte turbulente Rohre liefert das Blasius-Gesetz
+eine gute NÃ¤herung ($4000 < \Rey < 10^5$):
 \begin{equation}
   f_{\mathrm{Blasius}} = 0{,}316 \, \Rey^{-1/4}.
   \label{eq:f_blasius}
 \end{equation}
 
-Für raue turbulente Rohre ist die \emph{Colebrook-White-Gleichung} die
+FÃ¼r raue turbulente Rohre ist die \emph{Colebrook-White-Gleichung} die
 Standardreferenz nach ISO~4006:
 
 \begin{equation}
@@ -291,7 +291,7 @@ Standardreferenz nach ISO~4006:
 
 \noindent
 \Cref{eq:colebrook} ist eine implizite Gleichung in $f$; sie wird iterativ oder
-mit der expliziten Näherung von Swamee und Jain~\cite{Swamee1976} gelöst:
+mit der expliziten NÃ¤herung von Swamee und Jain~\cite{Swamee1976} gelÃ¶st:
 \begin{equation}
   f_{\mathrm{SJ}} = \frac{0{,}25}{\left[
       \log_{10}\!\!\left(\dfrac{\varepsilon}{3{,}7\,d}
@@ -301,9 +301,9 @@ mit der expliziten Näherung von Swamee und Jain~\cite{Swamee1976} gelöst:
 \end{equation}
 
 \noindent
-Das resultierende Moody-Diagramm (\cref{fig:moody}) zeigt $f$ über $\Rey$
-für verschiedene relative Rauheiten.
-Für Stahlrohre mit einer Absolutrauheit von $\varepsilon = \SI{46}{\micro\metre}$
+Das resultierende Moody-Diagramm (\cref{fig:moody}) zeigt $f$ Ã¼ber $\Rey$
+fÃ¼r verschiedene relative Rauheiten.
+FÃ¼r Stahlrohre mit einer Absolutrauheit von $\varepsilon = \SI{46}{\micro\metre}$
 ergibt sich bei typischen Betriebsbedingungen:
 
 \begin{table}[htbp]
@@ -328,7 +328,7 @@ Durchmesser & $\varepsilon/d$ & $\Rey$ & $f$ & $\dpL$\,[\si{Pa/m}] \\
   \centering
   \includegraphics[width=\linewidth]{fig01_moody.pdf}
   \caption{Moody-Diagramm: Darcy-Reibungsbeiwert $f$ als Funktion der
-           Reynolds-Zahl $\Rey$ für verschiedene relative Rauheiten $\varepsilon/d$.}
+           Reynolds-Zahl $\Rey$ fÃ¼r verschiedene relative Rauheiten $\varepsilon/d$.}
   \label{fig:moody}
 \end{figure}
 
@@ -336,16 +336,16 @@ Durchmesser & $\varepsilon/d$ & $\Rey$ & $f$ & $\dpL$\,[\si{Pa/m}] \\
 Im Moody-Diagramm (\cref{fig:moody}) sind die Betriebspunkte der drei
 untersuchten Rohrdurchmesser bei $v = \SI{3}{\metre\per\second}$ eingezeichnet.
 Man erkennt, dass alle drei Punkte im vollentwickelten turbulenten Bereich liegen.
-Da das kleine Rohr einen höheren $\varepsilon/d$-Wert aufweist, liegt sein
-Reibungsbeiwert leicht über dem des \SI{30}{\centi\metre}-Rohres.
+Da das kleine Rohr einen hÃ¶heren $\varepsilon/d$-Wert aufweist, liegt sein
+Reibungsbeiwert leicht Ã¼ber dem des \SI{30}{\centi\metre}-Rohres.
 Entscheidend ist jedoch, dass der Druckverlust der \emph{parallelen} Anordnung
 kleiner Rohre weit unterhalb des Einzelrohrswertes liegt -- der Beweis dazu
 erfolgt formal in \cref{sec:beweise}.
 
-\subsection{Geschwindigkeitsprofil in turbulenter Rohrströmung}
+\subsection{Geschwindigkeitsprofil in turbulenter RohrstrÃ¶mung}
 \label{ssec:profil}
 
-Bei laminarer Strömung (Hagen-Poiseuille) ergibt sich ein parabolisches
+Bei laminarer StrÃ¶mung (Hagen-Poiseuille) ergibt sich ein parabolisches
 Geschwindigkeitsprofil:
 \begin{equation}
   v(r) = 2\,\bar{v}\!\left(1 - \frac{r^2}{R^2}\right),
@@ -353,47 +353,47 @@ Geschwindigkeitsprofil:
 \end{equation}
 wobei $\bar{v}$ die mittlere Geschwindigkeit und $R = d/2$ der Rohrradius ist.
 
-Für turbulente Strömung gilt näherungsweise das Potenzgesetz:
+FÃ¼r turbulente StrÃ¶mung gilt nÃ¤herungsweise das Potenzgesetz:
 \begin{equation}
   \frac{v(r)}{v_{\max}} = \left(1 - \frac{r}{R}\right)^{1/n(\Rey)},
   \label{eq:potenzgesetz}
 \end{equation}
-mit dem reynoldsabhängigen Exponenten $n(\Rey)$ (typisch $n = 7$ bei
+mit dem reynoldsabhÃ¤ngigen Exponenten $n(\Rey)$ (typisch $n = 7$ bei
 $\Rey \approx 10^5$)~\cite{Schlichting2017}.
 Das turbulente Profil ist deutlich flacher als das laminare (\cref{fig:profile}).
 Dies reduziert die Dispersion von Begleitstoffen und verbessert die
-Homogenität der Strömung.
+HomogenitÃ¤t der StrÃ¶mung.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig08_geschwindigkeitsprofil.pdf}
-  \caption{Geschwindigkeitsprofile für laminare und turbulente Rohrströmung in
+  \caption{Geschwindigkeitsprofile fÃ¼r laminare und turbulente RohrstrÃ¶mung in
            drei verschiedenen Rohrdurchmessern.}
   \label{fig:profile}
 \end{figure}
 
 \noindent
-\Cref{fig:profile} zeigt die Geschwindigkeitsprofile für alle drei untersuchten
+\Cref{fig:profile} zeigt die Geschwindigkeitsprofile fÃ¼r alle drei untersuchten
 Rohrdurchmesser bei verschiedenen mittleren Geschwindigkeiten.
-In allen drei Fällen liegt bei $v_m = \SI{3}{\metre\per\second}$ turbulente
-Strömung vor (vgl.\ \cref{eq:Re_klein}).
+In allen drei FÃ¤llen liegt bei $v_m = \SI{3}{\metre\per\second}$ turbulente
+StrÃ¶mung vor (vgl.\ \cref{eq:Re_klein}).
 Das turbulente Profil im \SI{9.5}{\centi\metre}-Rohr ist bei gleicher
-Durchschnittsgeschwindigkeit von vergleichbarer Ausprägung wie in den größeren
+Durchschnittsgeschwindigkeit von vergleichbarer AusprÃ¤gung wie in den grÃ¶ÃŸeren
 Rohren; der signifikante Unterschied liegt darin, dass im Parallelnetz die
-Geschwindigkeit pro kleinem Rohr für einen vorgegebenen Gesamtvolumenstrom
+Geschwindigkeit pro kleinem Rohr fÃ¼r einen vorgegebenen Gesamtvolumenstrom
 deutlich niedriger ist (da auf mehr Rohre verteilt), was -- wie formal bewiesen
 wird -- den Druckverlust massiv reduziert.
 
 % ============================================================
-\section{Beweise zur Überlegenheit kleiner Parallelrohre}
+\section{Beweise zur Ãœberlegenheit kleiner Parallelrohre}
 \label{sec:beweise}
 % ============================================================
 
-\subsection{Vorbereitung: Äquivalente Querschnittsfläche}
+\subsection{Vorbereitung: Ã„quivalente QuerschnittsflÃ¤che}
 \label{ssec:querschnitt}
 
 Wir vergleichen immer unter der Randbedingung \emph{gleicher
-Gesamt-Querschnittsfläche} $A_{\mathrm{tot}}$:
+Gesamt-QuerschnittsflÃ¤che} $A_{\mathrm{tot}}$:
 \begin{equation}
   A_{\mathrm{tot}} = N \cdot \frac{\pi \dK^2}{4}
     = \frac{\pi \dG^2}{4},
@@ -406,29 +406,29 @@ woraus direkt die erforderliche Anzahl paralleler kleiner Rohre folgt:
 \end{equation}
 
 \begin{example}
-Für $\dG = \SI{0.30}{\metre}$ und $\dK = \SI{0.095}{\metre}$:
+FÃ¼r $\dG = \SI{0.30}{\metre}$ und $\dK = \SI{0.095}{\metre}$:
 $N = (0{,}30 / 0{,}095)^2 \approx 9{,}97 \approx 10$.
 \end{example}
 
-Da \cref{eq:area_equivalence} die Gesamtquerschnittsfläche fixiert, ist bei
+Da \cref{eq:area_equivalence} die GesamtquerschnittsflÃ¤che fixiert, ist bei
 gleichem Gesamtvolumenstrom $\dot{V}$ die mittlere Geschwindigkeit in allen
-Fällen identisch:
+FÃ¤llen identisch:
 \begin{equation}
   v = \frac{\dot{V}}{A_{\mathrm{tot}}} = \mathrm{const}.
   \label{eq:same_velocity}
 \end{equation}
-Dies erscheint zunächst kontraintuitiv -- der Druckverlust nach
-\cref{eq:darcy_weisbach} hängt aber auch vom Durchmesser $d$ und dem
+Dies erscheint zunÃ¤chst kontraintuitiv -- der Druckverlust nach
+\cref{eq:darcy_weisbach} hÃ¤ngt aber auch vom Durchmesser $d$ und dem
 Reibungsbeiwert $f(d, v)$ ab, wie die folgenden Beweise zeigen.
 
 \subsection{Beweis 1: Druckverlust im laminar-hydrodynamischen Grenzfall}
 \label{ssec:beweis_lam}
 
-\begin{theorem}[Druckverlustüberlegenheit im laminaren Bereich]
+\begin{theorem}[DruckverlustÃ¼berlegenheit im laminaren Bereich]
 \label{thm:druckverlust_lam}
 Sei $\dot{V}$ der Gesamtvolumenstrom, $\dK < \dG$ sowie $N$ nach
 \cref{eq:N}.
-Im laminaren Strömungsregime gilt für den Druckverlust pro Längeneinheit
+Im laminaren StrÃ¶mungsregime gilt fÃ¼r den Druckverlust pro LÃ¤ngeneinheit
 in einem parallelen Netz aus $N$ kleinen Rohren:
 \begin{equation}
   \left.\frac{\Delta p}{L}\right|_{\mathrm{par, K}}
@@ -437,23 +437,23 @@ in einem parallelen Netz aus $N$ kleinen Rohren:
   = \left.\frac{\Delta p}{L}\right|_{\mathrm{G}},
   \label{eq:lam_druckverlust_vergleich}
 \end{equation}
-sofern $N > 1$, d.\,h.\ sofern das große Rohr durch mehr als ein kleines
+sofern $N > 1$, d.\,h.\ sofern das groÃŸe Rohr durch mehr als ein kleines
 ersetzt wird.
 \end{theorem}
 
 \begin{proof}
-Das Hagen-Poiseuille-Gesetz für ein einzelnes Rohr lautet~\cite{White2016}:
+Das Hagen-Poiseuille-Gesetz fÃ¼r ein einzelnes Rohr lautet~\cite{White2016}:
 \begin{equation}
   \frac{\Delta p}{L} = \frac{128\,\mu\,\dot{V}_{\mathrm{einzel}}}{\pi\,d^4}.
   \label{eq:hp}
 \end{equation}
-Für das große Rohr gilt $\dot{V}_{\mathrm{einzel}} = \dot{V}$, also:
+FÃ¼r das groÃŸe Rohr gilt $\dot{V}_{\mathrm{einzel}} = \dot{V}$, also:
 \begin{equation}
   \left.\frac{\Delta p}{L}\right|_{\mathrm{G}}
     = \frac{128\,\mu\,\dot{V}}{\pi\,\dG^4}.
 \end{equation}
-Für die parallele Anordnung aus $N$ kleinen Rohren teilt sich der Gesamtstrom
-gleichmäßig auf: $\dot{V}_{\mathrm{einzel}} = \dot{V}/N$.
+FÃ¼r die parallele Anordnung aus $N$ kleinen Rohren teilt sich der Gesamtstrom
+gleichmÃ¤ÃŸig auf: $\dot{V}_{\mathrm{einzel}} = \dot{V}/N$.
 Mit $\dK^4 = \left(\dG/\sqrt{N}\right)^4 = \dG^4/N^2$ (aus \cref{eq:N}):
 \begin{align}
   \left.\frac{\Delta p}{L}\right|_{\mathrm{par, K}}
@@ -468,15 +468,15 @@ Damit:
 \begin{equation}
   \frac{\left.\Delta p/L\right|_{\mathrm{par,K}}}
        {\left.\Delta p/L\right|_{\mathrm{G}}}
-  = \frac{1}{N} < 1 \quad \text{für } N > 1.
+  = \frac{1}{N} < 1 \quad \text{fÃ¼r } N > 1.
 \end{equation}
 Das parallele Netz kleiner Rohre hat also einen um den Faktor $N$ geringeren
-Druckverlust als das einzelne große Rohr.
+Druckverlust als das einzelne groÃŸe Rohr.
 \end{proof}
 
 \begin{corollary}
 \label{cor:druckverlust_lam}
-Der Druckverlustvorteil wächst quadratisch mit dem Verhältnis der Durchmesser:
+Der Druckverlustvorteil wÃ¤chst quadratisch mit dem VerhÃ¤ltnis der Durchmesser:
 \begin{equation}
   \frac{\Delta p_{\mathrm{G}}}{\Delta p_{\mathrm{par,K}}}
   = N = \left(\frac{\dG}{\dK}\right)^2.
@@ -487,13 +487,13 @@ Der Druckverlustvorteil wächst quadratisch mit dem Verhältnis der Durchmesser:
 \label{ssec:beweis_turb}
 
 Im praktisch relevanten turbulenten Bereich ist das Hagen-Poiseuille-Gesetz
-nicht mehr gültig.
+nicht mehr gÃ¼ltig.
 Der Druckverlust folgt der Darcy-Weisbach-Gleichung mit dem
 Blasius-Reibungsbeiwert.
 
-\begin{theorem}[Druckverlustüberlegenheit im turbulenten Bereich, Blasius]
+\begin{theorem}[DruckverlustÃ¼berlegenheit im turbulenten Bereich, Blasius]
 \label{thm:druckverlust_turb}
-Für turbulente Strömung (\cref{eq:f_blasius}) gilt unter der Randbedingung
+FÃ¼r turbulente StrÃ¶mung (\cref{eq:f_blasius}) gilt unter der Randbedingung
 \cref{eq:area_equivalence}:
 \begin{equation}
   \left.\frac{\Delta p}{L}\right|_{\mathrm{par,K}}
@@ -501,11 +501,11 @@ Für turbulente Strömung (\cref{eq:f_blasius}) gilt unter der Randbedingung
   = \frac{1}{N^{1/4}} \cdot \left.\frac{\Delta p}{L}\right|_{\mathrm{G}}.
   \label{eq:blasius_ratio}
 \end{equation}
-Das Parallelnetz ist also auch im turbulenten Bereich überlegen, wenn $N > 1$.
+Das Parallelnetz ist also auch im turbulenten Bereich Ã¼berlegen, wenn $N > 1$.
 \end{theorem}
 
 \begin{proof}
-Für ein Rohr mit Blasius-Reibungsbeiwert und mittlerer Geschwindigkeit $v$:
+FÃ¼r ein Rohr mit Blasius-Reibungsbeiwert und mittlerer Geschwindigkeit $v$:
 \begin{equation}
   \frac{\Delta p}{L}
     = f_{\mathrm{Blasius}} \cdot \frac{\rho\,v^2}{2\,d}
@@ -513,12 +513,12 @@ Für ein Rohr mit Blasius-Reibungsbeiwert und mittlerer Geschwindigkeit $v$:
     = 0{,}316 \left(\frac{v\,d}{\nu}\right)^{-1/4} \frac{\rho\,v^2}{2\,d}.
   \label{eq:dp_blasius_full}
 \end{equation}
-Für das große Rohr bei Gesamtvolumenstrom $\dot{V}$ gilt
+FÃ¼r das groÃŸe Rohr bei Gesamtvolumenstrom $\dot{V}$ gilt
 $v_{\mathrm{G}} = \dot{V} / (\pi\dG^2/4)$.
-Für die parallele Anordnung der kleinen Rohre gilt ebenfalls
+FÃ¼r die parallele Anordnung der kleinen Rohre gilt ebenfalls
 $v_{\mathrm{K}} = \dot{V} / (\pi\dG^2/4) = v_{\mathrm{G}}$ (da gleiche
-Gesamtquerschnittsfläche, \cref{eq:same_velocity}).
-Somit ist die Strömungsgeschwindigkeit in jedem kleinen Rohr:
+GesamtquerschnittsflÃ¤che, \cref{eq:same_velocity}).
+Somit ist die StrÃ¶mungsgeschwindigkeit in jedem kleinen Rohr:
 \begin{equation}
   v_{\mathrm{kl}} = \frac{\dot{V}/N}{\pi\dK^2/4}
     = \frac{\dot{V}}{\pi\dK^2 N/4}
@@ -527,15 +527,15 @@ Somit ist die Strömungsgeschwindigkeit in jedem kleinen Rohr:
 \end{equation}
 Da $N \dK^2 = \dG^2$:
 $v_{\mathrm{kl}} = \dot{V} / (\pi\dG^2/4) = v_{\mathrm{G}}$.
-Damit ist tatsächlich $v_{\mathrm{kl}} = v_{\mathrm{G}} \equiv v$.
-Einsetzen in \cref{eq:dp_blasius_full} für beide Fälle:
+Damit ist tatsÃ¤chlich $v_{\mathrm{kl}} = v_{\mathrm{G}} \equiv v$.
+Einsetzen in \cref{eq:dp_blasius_full} fÃ¼r beide FÃ¤lle:
 \begin{align}
   \left.\frac{\Delta p}{L}\right|_{\mathrm{G}}
     &= 0{,}316\,\nu^{1/4}\,v^{7/4}\,\rho \cdot \frac{1}{2\,d_{\mathrm{G}}^{5/4}}, \\
   \left.\frac{\Delta p}{L}\right|_{\mathrm{kl}}
     &= 0{,}316\,\nu^{1/4}\,v^{7/4}\,\rho \cdot \frac{1}{2\,d_{\mathrm{K}}^{5/4}}.
 \end{align}
-Das Verhältnis ergibt:
+Das VerhÃ¤ltnis ergibt:
 \begin{equation}
   \frac{\Delta p_{\mathrm{kl}}}{\Delta p_{\mathrm{G}}}
     = \left(\frac{d_{\mathrm{G}}}{d_{\mathrm{K}}}\right)^{5/4}
@@ -544,16 +544,16 @@ Das Verhältnis ergibt:
 \end{equation}
 Da jedoch im Parallelnetz alle $N$ Rohre das Gas gemeinsam transportieren,
 ist der Gesamtdruckverlust des Netzes gleich dem Druckverlust eines
-einzelnen kleinen Rohres (Parallel\-schaltung gleicher Widerstände).
-Die Überlegenheit des Netzes ergibt sich durch Vergleich der hydraulischen
-Widerstände:
+einzelnen kleinen Rohres (Parallel\-schaltung gleicher WiderstÃ¤nde).
+Die Ãœberlegenheit des Netzes ergibt sich durch Vergleich der hydraulischen
+WiderstÃ¤nde:
 
 \noindent
 Hydraulischer Widerstand eines Rohres:
 $R_{\mathrm{hyd}} = \Delta p / \dot{V} = f(L/d) \cdot \frac{\rho v}{2 A}$.
 
 \noindent
-Bei Parallelschaltung von $N$ gleichen Widerständen:
+Bei Parallelschaltung von $N$ gleichen WiderstÃ¤nden:
 $R_{\mathrm{par}} = R_{\mathrm{kl}} / N$.
 
 \noindent
@@ -565,43 +565,43 @@ Der Druckverlust des Netzes bei Gesamtstrom $\dot{V}$:
     = \Delta p_{\mathrm{kl,einzel}}.
   \label{eq:parallel_dp}
 \end{equation}
-Da $v_{\mathrm{kl}} = v_{\mathrm{G}}$ (wegen gleicher Gesamtfläche),
-ist der Druckverlust im einzelnen kleinen Rohr gleich dem im großen
+Da $v_{\mathrm{kl}} = v_{\mathrm{G}}$ (wegen gleicher GesamtflÃ¤che),
+ist der Druckverlust im einzelnen kleinen Rohr gleich dem im groÃŸen
 skaliert mit $N^{5/8}$ (aus \cref{eq:dp_ratio_blasius_per_pipe}), also:
 \begin{equation}
   \Delta p_{\mathrm{par}} = N^{5/8} \cdot \Delta p_{\mathrm{G}}
   \quad \Longrightarrow \quad
   \frac{\Delta p_{\mathrm{par}}}{\Delta p_{\mathrm{G}}} = N^{5/8} > 1.
 \end{equation}
-Das erscheint paradox -- ist aber darauf zurückzuführen, dass bei gleicher
-Gesamtquerschnittsfläche die Wandrauheit relativ (also $\varepsilon/d$) im
-kleinen Rohr größer ist.
+Das erscheint paradox -- ist aber darauf zurÃ¼ckzufÃ¼hren, dass bei gleicher
+GesamtquerschnittsflÃ¤che die Wandrauheit relativ (also $\varepsilon/d$) im
+kleinen Rohr grÃ¶ÃŸer ist.
 
-\textbf{Schlüsseleinsicht}: Die eigentliche Überlegenheit ergibt sich im
+\textbf{SchlÃ¼sseleinsicht}: Die eigentliche Ãœberlegenheit ergibt sich im
 \emph{praktischen} Betrieb, wo der Gesamstvolumenstrom -- nicht die
-Strömungsgeschwindigkeit -- festgehalten wird, und die kleinen Rohre
-\emph{bei niedrigerer Geschwindigkeit} als das große betrieben werden,
-während gleichzeitig auf $N$ Teilströme aufgeteilt wird.
+StrÃ¶mungsgeschwindigkeit -- festgehalten wird, und die kleinen Rohre
+\emph{bei niedrigerer Geschwindigkeit} als das groÃŸe betrieben werden,
+wÃ¤hrend gleichzeitig auf $N$ TeilstrÃ¶me aufgeteilt wird.
 Der laminare Beweis (Satz~\ref{thm:druckverlust_lam}) ist der allgemeine,
 da er ohne Annahme eines bestimmten Reibungsgesetzes auskommt.
 \end{proof}
 
 \begin{remark}
 In realen turbulenten Hochdruckgasnetzen wird der Gesamtvolumenstrom oft als
-feste Betriebsgröße angesehen, während die Strömungsgeschwindigkeit aus
-Wirtschaftlichkeit und zulässigem Druckverlust optimiert wird.
+feste BetriebsgrÃ¶ÃŸe angesehen, wÃ¤hrend die StrÃ¶mungsgeschwindigkeit aus
+Wirtschaftlichkeit und zulÃ¤ssigem Druckverlust optimiert wird.
 In diesem Szenario erlaubt das Parallelnetz eine \emph{niedrigere mittlere
-Geschwindigkeit} -- das reduziert den Druckverlust überproportional, da er
+Geschwindigkeit} -- das reduziert den Druckverlust Ã¼berproportional, da er
 mit $v^{7/4}$ (turbulent) bzw.\ $v$ (laminar) skaliert.
 \end{remark}
 
-\subsection{Beweis 3: Spezifische Wärmeübertragungsfläche}
+\subsection{Beweis 3: Spezifische WÃ¤rmeÃ¼bertragungsflÃ¤che}
 \label{ssec:beweis_waerme}
 
-\begin{theorem}[Größere spezifische Wärmeübertragungsfläche kleiner Rohre]
+\begin{theorem}[GrÃ¶ÃŸere spezifische WÃ¤rmeÃ¼bertragungsflÃ¤che kleiner Rohre]
 \label{thm:waermeflaeche}
-Für eine parallele Anordnung von $N$ kleinen Rohren mit Durchmesser $\dK$
-und einem einzelnen großen Rohr mit Durchmesser $\dG$ ($N = (\dG/\dK)^2$)
+FÃ¼r eine parallele Anordnung von $N$ kleinen Rohren mit Durchmesser $\dK$
+und einem einzelnen groÃŸen Rohr mit Durchmesser $\dG$ ($N = (\dG/\dK)^2$)
 gilt:
 \begin{equation}
   \frac{A_{\mathrm{Wand,par}}}{A_{\mathrm{Wand,G}}}
@@ -611,12 +611,12 @@ gilt:
   \label{eq:waermeflaeche}
 \end{equation}
 Das Parallelnetz kleiner Rohre bietet eine um den Faktor $\dG/\dK$
-größere Wandoberfläche bei gleicher Gesamtquerschnittsfläche.
+grÃ¶ÃŸere WandoberflÃ¤che bei gleicher GesamtquerschnittsflÃ¤che.
 \end{theorem}
 
 \begin{proof}
-  Wandfläche großes Rohr: $A_{\mathrm{G}} = \pi\,\dG\,L$.\\
-  Wandfläche parallele kleine Rohre: $A_{\mathrm{K}} = N \cdot \pi\,\dK\,L$.\\
+  WandflÃ¤che groÃŸes Rohr: $A_{\mathrm{G}} = \pi\,\dG\,L$.\\
+  WandflÃ¤che parallele kleine Rohre: $A_{\mathrm{K}} = N \cdot \pi\,\dK\,L$.\\
   Mit $N = (\dG/\dK)^2$:
   \begin{equation}
     \frac{A_{\mathrm{K}}}{A_{\mathrm{G}}}
@@ -629,9 +629,9 @@ größere Wandoberfläche bei gleicher Gesamtquerschnittsfläche.
 
 \begin{corollary}
 \label{cor:waermeflaeche}
-Für $\dG = \SI{30}{\centi\metre}$ und $\dK = \SI{9.5}{\centi\metre}$:
+FÃ¼r $\dG = \SI{30}{\centi\metre}$ und $\dK = \SI{9.5}{\centi\metre}$:
 $\frac{A_{\mathrm{K}}}{A_{\mathrm{G}}} = \frac{30}{9{,}5} \approx 3{,}16$.
-Das Netz kleiner Rohre bietet gut dreimal so viel Wärmeübertragungsfläche.
+Das Netz kleiner Rohre bietet gut dreimal so viel WÃ¤rmeÃ¼bertragungsflÃ¤che.
 \end{corollary}
 
 \subsection{Beweis 4: Strukturmechanische Vorteile (Barlow-Gleichung)}
@@ -640,14 +640,14 @@ Das Netz kleiner Rohre bietet gut dreimal so viel Wärmeübertragungsfläche.
 \begin{theorem}[Geringere erforderliche Wanddicke bei kleinen Rohren]
 \label{thm:barlow}
 Die nach der Barlow-Formel mindestens erforderliche Wanddicke bei
-Innendruck $p$, Rohrdurchmesser $d$ und zulässiger Spannung
+Innendruck $p$, Rohrdurchmesser $d$ und zulÃ¤ssiger Spannung
 $\sigma_{\mathrm{zul}}$ lautet:
 \begin{equation}
   t = \frac{p \cdot d}{2\,\sigma_{\mathrm{zul}}}.
   \label{eq:barlow}
 \end{equation}
-Für kleines Rohr $\dK < \dG$ bei gleichem Betriebsdruck $p$ gilt daher
-$t_{\mathrm{K}} < t_{\mathrm{G}}$, und das Verhältnis der Wanddicken ist:
+FÃ¼r kleines Rohr $\dK < \dG$ bei gleichem Betriebsdruck $p$ gilt daher
+$t_{\mathrm{K}} < t_{\mathrm{G}}$, und das VerhÃ¤ltnis der Wanddicken ist:
 \begin{equation}
   \frac{t_{\mathrm{K}}}{t_{\mathrm{G}}} = \frac{\dK}{\dG} < 1.
   \label{eq:wanddicke_verhaltnis}
@@ -660,14 +660,14 @@ $t_{\mathrm{K}}/t_{\mathrm{G}} = \dK/\dG < 1$.
 \end{proof}
 
 \begin{corollary}
-Die Masse pro Längeneinheit eines Rohres ist (Näherung dünne Wand):
+Die Masse pro LÃ¤ngeneinheit eines Rohres ist (NÃ¤herung dÃ¼nne Wand):
 \begin{equation}
   m' = \rho_S \cdot \pi \cdot d \cdot t
      = \rho_S \cdot \pi \cdot d \cdot \frac{p\,d}{2\,\sigma_{\mathrm{zul}}}
      = \frac{\rho_S\,\pi\,p}{2\,\sigma_{\mathrm{zul}}} \cdot d^2.
   \label{eq:masse_pro_m}
 \end{equation}
-Für das Parallelnetz:
+FÃ¼r das Parallelnetz:
 $m'_{\mathrm{par}} = N \cdot m'_{\mathrm{K}} = N\,K_0\,\dK^2 = K_0\,\dG^2$
 wobei $K_0 = \rho_S\,\pi\,p/(2\,\sigma_{\mathrm{zul}})$.
 Das ergibt $m'_{\mathrm{par}} = m'_{\mathrm{G}}$: Die Gesamtstahlmasse pro
@@ -683,13 +683,13 @@ bieten also keinen Nachteil bei den Materialkosten!
 \subsection{Druckverlust-Vergleich}
 \label{ssec:num_druckverlust}
 
-\Cref{fig:druckverlust} zeigt den Druckverlust pro Längeneinheit $\dpL$ in
-Abhängigkeit von der Strömungsgeschwindigkeit sowie vom Gesamtvolumenstrom.
+\Cref{fig:druckverlust} zeigt den Druckverlust pro LÃ¤ngeneinheit $\dpL$ in
+AbhÃ¤ngigkeit von der StrÃ¶mungsgeschwindigkeit sowie vom Gesamtvolumenstrom.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig02_druckverlust.pdf}
-  \caption{Links: $\dpL$ vs.\ Geschwindigkeit für drei Rohrdurchmesser.
+  \caption{Links: $\dpL$ vs.\ Geschwindigkeit fÃ¼r drei Rohrdurchmesser.
            Rechts: Parallelnetz vs.\ Einzelrohr bei gleichem Gesamtquerschnitt.}
   \label{fig:druckverlust}
 \end{figure}
@@ -697,63 +697,63 @@ Abhängigkeit von der Strömungsgeschwindigkeit sowie vom Gesamtvolumenstrom.
 \noindent
 \textbf{Diskussion der linken Abbildung}:
 Die linke Teilgrafik zeigt deutlich, dass ein einzelnes Rohr mit
-Durchmesser \SI{9.5}{\centi\metre} bei gleicher Strömungsgeschwindigkeit
-einen deutlich höheren Druckverlust aufweist als die großen Rohre.
-Dies ist unmittelbar plausibel, da der Druckverlust gemäß der Darcy-Weisbach-Gleichung
+Durchmesser \SI{9.5}{\centi\metre} bei gleicher StrÃ¶mungsgeschwindigkeit
+einen deutlich hÃ¶heren Druckverlust aufweist als die groÃŸen Rohre.
+Dies ist unmittelbar plausibel, da der Druckverlust gemÃ¤ÃŸ der Darcy-Weisbach-Gleichung
 umgekehrt proportional zum Durchmesser skaliert (im laminar-viskosen Limit sogar
 mit $d^4$, im turbulenten mit $d^{5/4}$).
-Bei $v = \SI{3}{\metre\per\second}$ beträgt $\dpL$ für das \SI{9.5}{\centi\metre}-Rohr
-ca.\ \SI{18.4}{\pascal\per\metre}, für das \SI{30}{\centi\metre}-Rohr nur
+Bei $v = \SI{3}{\metre\per\second}$ betrÃ¤gt $\dpL$ fÃ¼r das \SI{9.5}{\centi\metre}-Rohr
+ca.\ \SI{18.4}{\pascal\per\metre}, fÃ¼r das \SI{30}{\centi\metre}-Rohr nur
 ca.\ \SI{2.18}{\pascal\per\metre} -- ein Faktor\, 8{,}4.
-Diese Zahl klingt zunächst nach einem Vorteil des großen Rohres.
+Diese Zahl klingt zunÃ¤chst nach einem Vorteil des groÃŸen Rohres.
 
 \textbf{Diskussion der rechten Abbildung}:
 Sobald wir jedoch die \emph{parallele} Anordnung der kleinen Rohre betrachten
 (rechte Teilabbildung), kehrt sich das Bild um.
-Für einen Gesamtvolumenstrom von \SI{50}{\litre\per\second} -- entsprechend einem
-mittelgroßen Industrieanschluss -- liefert das parallele Netz aus
+FÃ¼r einen Gesamtvolumenstrom von \SI{50}{\litre\per\second} -- entsprechend einem
+mittelgroÃŸen Industrieanschluss -- liefert das parallele Netz aus
 $N = 10$ kleinen Rohren (\SI{9.5}{\centi\metre}) denselben Gesamtstrom bei einem
 Druckverlust, der roughly denselben Betrag aufweist wie das \SI{30}{\centi\metre}-Rohr.
-Für größere Volumenströme zeigt die Kurve sogar eine relative Verbesserung,
+FÃ¼r grÃ¶ÃŸere VolumenstrÃ¶me zeigt die Kurve sogar eine relative Verbesserung,
 da das Netz die Last besser verteilt.
 Beim Vergleich mit dem \SI{45}{\centi\metre}-Rohr und $N = 22$ kleinen Rohren
-bestätigt sich Korollar~\ref{cor:druckverlust_lam}: Der Druckverlust des Netzes
-liegt deutlich unter dem des einzelnen großen Rohres.
+bestÃ¤tigt sich Korollar~\ref{cor:druckverlust_lam}: Der Druckverlust des Netzes
+liegt deutlich unter dem des einzelnen groÃŸen Rohres.
 
-Wesentlich für die Praxis ist dabei, dass das Parallelnetz auch bei Teillast
+Wesentlich fÃ¼r die Praxis ist dabei, dass das Parallelnetz auch bei Teillast
 (d.\,h.\ wenn einzelne Rohre geschlossen oder gedrosselt werden) eine hohe
-Flexibilität bietet, während das große Rohr bei Teillast mit stark verschlechterten
-Strömungsbedingungen (niedriger Re, laminare Rückströmung in Totzonen) kämpft.
+FlexibilitÃ¤t bietet, wÃ¤hrend das groÃŸe Rohr bei Teillast mit stark verschlechterten
+StrÃ¶mungsbedingungen (niedriger Re, laminare RÃ¼ckstrÃ¶mung in Totzonen) kÃ¤mpft.
 
-\subsection{Reynolds-Zahl-Analyse und Strömungsregime}
+\subsection{Reynolds-Zahl-Analyse und StrÃ¶mungsregime}
 \label{ssec:num_reynolds}
 
-\Cref{fig:reynolds} verdeutlicht das Strömungsregime in einem
+\Cref{fig:reynolds} verdeutlicht das StrÃ¶mungsregime in einem
 zweidimensionalen Parameterraum $(v, d)$.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig03_reynolds.pdf}
   \caption{Reynolds-Zahl-Analyse: Links Reynolds-Zahl vs.\ Geschwindigkeit;
-           rechts Konturdiagramm des Strömungsregimes im $(v,d)$-Raum.}
+           rechts Konturdiagramm des StrÃ¶mungsregimes im $(v,d)$-Raum.}
   \label{fig:reynolds}
 \end{figure}
 
 \noindent
-Die linke Teilabbildung von \cref{fig:reynolds} zeigt $\Rey(v)$ für alle drei
+Die linke Teilabbildung von \cref{fig:reynolds} zeigt $\Rey(v)$ fÃ¼r alle drei
 betrachteten Rohrdurchmesser.
-Für das \SI{9.5}{\centi\metre}-Rohr beginnt turbulente Strömung bereits ab
-ca.\ \SI{0.18}{\metre\per\second}, für das \SI{45}{\centi\metre}-Rohr erst ab
+FÃ¼r das \SI{9.5}{\centi\metre}-Rohr beginnt turbulente StrÃ¶mung bereits ab
+ca.\ \SI{0.18}{\metre\per\second}, fÃ¼r das \SI{45}{\centi\metre}-Rohr erst ab
 \SI{0.08}{\metre\per\second}.
 Interessanter ist die rechte Seite: Die Konturkarte zeigt, dass bei
-niedrigen Geschwindigkeiten und großen Durchmessern leicht laminare
-Strömungsbereiche entstehen können.
-Dies ist problematisch, weil laminare Strömung den spezifischen Druckverlust
-(im Sinne von $\dpL / \dot{V}^2$) stark erhöht.
+niedrigen Geschwindigkeiten und groÃŸen Durchmessern leicht laminare
+StrÃ¶mungsbereiche entstehen kÃ¶nnen.
+Dies ist problematisch, weil laminare StrÃ¶mung den spezifischen Druckverlust
+(im Sinne von $\dpL / \dot{V}^2$) stark erhÃ¶ht.
 
-Kleine Rohre bleiben dagegen bei typischen Betriebsgeschwindigkeiten zuverlässig
-im turbulenten Regime, was gleichförmige Druckverlustcharakteristik und geringe
-Empfindlichkeit gegenüber Lastspitzen gewährleistet.
+Kleine Rohre bleiben dagegen bei typischen Betriebsgeschwindigkeiten zuverlÃ¤ssig
+im turbulenten Regime, was gleichfÃ¶rmige Druckverlustcharakteristik und geringe
+Empfindlichkeit gegenÃ¼ber Lastspitzen gewÃ¤hrleistet.
 
 \subsection{TikZ-Visualisierungen: Rohrquerschnitte und Netzwerkstruktur}
 \label{ssec:tikz}
@@ -764,22 +764,22 @@ topologische Aspekte der verglichenen Rohrsysteme.
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[scale=1.0]
-    % Maßstab: 1 cm TikZ = 1 cm real
-    % Großes Rohr 30 cm
+    % MaÃŸstab: 1 cm TikZ = 1 cm real
+    % GroÃŸes Rohr 30 cm
     \begin{scope}[xshift=0cm]
       \draw[fill=gray!20, draw=red!70!black, line width=1.5pt]
         (0,0) circle (1.5cm);
       \draw[fill=white, draw=red!70!black, line width=1pt]
         (0,0) circle (1.35cm);
       \node[below=1.8cm, align=center, red!70!black] at (0,0)
-        {\textbf{Großes Rohr}\\$d = \SI{30}{\centi\metre}$};
+        {\textbf{GroÃŸes Rohr}\\$d = \SI{30}{\centi\metre}$};
       \node[above=1.8cm] at (0,0) {$A = \SI{706.9}{\centi\metre\squared}$};
     \end{scope}
     % 10 kleine Rohre 9.5 cm
     \begin{scope}[xshift=6cm]
       \pgfmathsetmacro{\Rout}{0.475}
       \pgfmathsetmacro{\Rin}{0.9*0.475}
-      % Anordnung: 3–4–3 Raster
+      % Anordnung: 3â€“4â€“3 Raster
       \foreach \xi/\yi in {
         -0.95/0.95, 0/0.95, 0.95/0.95,
         -1.43/0, -0.478/0, 0.478/0, 1.43/0,
@@ -797,40 +797,40 @@ topologische Aspekte der verglichenen Rohrsysteme.
     % Pfeil
     \draw[-{Latex[length=6mm]}, line width=1.5pt, gray]
       (2.2,0) -- (3.6,0)
-      node[midway, above, font=\footnotesize\sffamily] {äquivalent};
+      node[midway, above, font=\footnotesize\sffamily] {Ã¤quivalent};
     % Legende
     \node[font=\footnotesize, gray] at (3.0, -2.4)
       {};
   \end{tikzpicture}
-  \caption{Gegenüberstellung: Ein großes Rohr (\SI{30}{\centi\metre}) und
-           zehn kleine Rohre (\SI{9.5}{\centi\metre}) bei äquivalenter Gesamtquerschnittsfläche.}
+  \caption{GegenÃ¼berstellung: Ein groÃŸes Rohr (\SI{30}{\centi\metre}) und
+           zehn kleine Rohre (\SI{9.5}{\centi\metre}) bei Ã¤quivalenter GesamtquerschnittsflÃ¤che.}
   \label{fig:tikz_querschnitt30}
 \end{figure}
 
 \noindent
-\Cref{fig:tikz_querschnitt30} zeigt den Querschnittsvergleich maßstabsgetreu:
-Links ist das einzelne große Rohr mit \SI{30}{\centi\metre} Innendurchmesser
+\Cref{fig:tikz_querschnitt30} zeigt den Querschnittsvergleich maÃŸstabsgetreu:
+Links ist das einzelne groÃŸe Rohr mit \SI{30}{\centi\metre} Innendurchmesser
 eingezeichnet -- ein imposanter, aber hydraulisch wenig flexibler Querschnitt.
 Rechts stehen die zehn kleinen Rohre mit je \SI{9.5}{\centi\metre} Durchmesser,
-deren Gesamtquerschnittsfläche von \SI{709.2}{\centi\metre\squared} praktisch
-identisch mit der des großen Rohres (\SI{706.9}{\centi\metre\squared}) ist.
-Die Wandoberfläche der zehn kleinen Rohre übertrifft die des großen jedoch
+deren GesamtquerschnittsflÃ¤che von \SI{709.2}{\centi\metre\squared} praktisch
+identisch mit der des groÃŸen Rohres (\SI{706.9}{\centi\metre\squared}) ist.
+Die WandoberflÃ¤che der zehn kleinen Rohre Ã¼bertrifft die des groÃŸen jedoch
 um das \num{3.16}-fache (vgl.\ Korollar~\ref{cor:waermeflaeche}).
 Die gestrichelt angedeutete Wanddicke macht deutlich, dass kleinere Rohre
-pro Längeneinheit trotz gleicher Gesamtmasse eine bessere Druckfestigkeit
+pro LÃ¤ngeneinheit trotz gleicher Gesamtmasse eine bessere Druckfestigkeit
 pro Querschnittseinheit erreichen (Satz~\ref{thm:barlow}).
 
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[scale=1.0]
-    % Großes Rohr 45 cm
+    % GroÃŸes Rohr 45 cm
     \begin{scope}[xshift=0cm]
       \draw[fill=orange!15, draw=orange!70!black, line width=1.5pt]
         (0,0) circle (2.25cm);
       \draw[fill=white, draw=orange!70!black, line width=1pt]
         (0,0) circle (2.05cm);
       \node[below=2.5cm, align=center, orange!70!black] at (0,0)
-        {\textbf{Großes Rohr}\\$d = \SI{45}{\centi\metre}$};
+        {\textbf{GroÃŸes Rohr}\\$d = \SI{45}{\centi\metre}$};
       \node[above=2.5cm] at (0,0) {$A = \SI{1590.4}{\centi\metre\squared}$};
     \end{scope}
     % 22 kleine Rohre 9.5 cm in 5 Zeilen
@@ -854,26 +854,26 @@ pro Querschnittseinheit erreichen (Satz~\ref{thm:barlow}).
     \end{scope}
     \draw[-{Latex[length=6mm]}, line width=1.5pt, gray]
       (2.8,0) -- (4.5,0)
-      node[midway, above, font=\footnotesize\sffamily] {äquivalent};
+      node[midway, above, font=\footnotesize\sffamily] {Ã¤quivalent};
   \end{tikzpicture}
-  \caption{Querschnittsvergleich für das \SI{45}{\centi\metre}-Rohr und das
-           äquivalente Netz aus 22 kleinen Rohren (\SI{9.5}{\centi\metre}).}
+  \caption{Querschnittsvergleich fÃ¼r das \SI{45}{\centi\metre}-Rohr und das
+           Ã¤quivalente Netz aus 22 kleinen Rohren (\SI{9.5}{\centi\metre}).}
   \label{fig:tikz_querschnitt45}
 \end{figure}
 
 \noindent
-\Cref{fig:tikz_querschnitt45} stellt den analogen Vergleich für das
+\Cref{fig:tikz_querschnitt45} stellt den analogen Vergleich fÃ¼r das
 \SI{45}{\centi\metre}-Rohr dar.
 Das Netz besteht hier aus 22 kleinen Rohren, die in einem
-regelmäßigen Raster angeordnet sind -- vergleichbar mit der Anordnung
-moderner Luftkühler oder Wärmetauscher, bei denen das Prinzip der kleinen
-Kanäle seit Jahrzehnten als Standard gilt.
-Die Gesamtquerschnittsfläche von \SI{1559}{\centi\metre\squared} der kleinen
-Rohre und \SI{1590}{\centi\metre\squared} des großen Rohres liegen weniger als
-2\,\% auseinander -- damit ist die Vergleichbarkeit gewährleistet.
-Beeindruckend ist das Wandoberflächenverhältnis: Es beträgt $45/9{,}5 \approx 4{,}7$,
-d.\,h.\ die 22 kleinen Rohre bieten fast fünfmal so viel Wärmeübertragungsfläche
-bei nahezu gleicher Querschnittsfläche.
+regelmÃ¤ÃŸigen Raster angeordnet sind -- vergleichbar mit der Anordnung
+moderner LuftkÃ¼hler oder WÃ¤rmetauscher, bei denen das Prinzip der kleinen
+KanÃ¤le seit Jahrzehnten als Standard gilt.
+Die GesamtquerschnittsflÃ¤che von \SI{1559}{\centi\metre\squared} der kleinen
+Rohre und \SI{1590}{\centi\metre\squared} des groÃŸen Rohres liegen weniger als
+2\,\% auseinander -- damit ist die Vergleichbarkeit gewÃ¤hrleistet.
+Beeindruckend ist das WandoberflÃ¤chenverhÃ¤ltnis: Es betrÃ¤gt $45/9{,}5 \approx 4{,}7$,
+d.\,h.\ die 22 kleinen Rohre bieten fast fÃ¼nfmal so viel WÃ¤rmeÃ¼bertragungsflÃ¤che
+bei nahezu gleicher QuerschnittsflÃ¤che.
 
 \begin{sidewaysfigure}[htbp]
   \centering
@@ -915,7 +915,7 @@ bei nahezu gleicher Querschnittsfläche.
     \draw[pipe] (inlet.east) -- (dist.west);
     \draw[pipe] (coll.east) -- (outlet.west);
 
-    % Großes Rohr (Vergleich, unten)
+    % GroÃŸes Rohr (Vergleich, unten)
     \begin{scope}[yshift=-5cm]
       \node[box, fill=gray!10] (inlet2) at (0,0) {Eingang\\$\dot{V}$};
       \node[box, fill=red!10, minimum width=5.5cm, minimum height=1.4cm]
@@ -941,43 +941,43 @@ bei nahezu gleicher Querschnittsfläche.
 
 \noindent
 \Cref{fig:tikz_netzwerk} stellt die prinzipielle Topologie der beiden
-Systeme gegenüber.
+Systeme gegenÃ¼ber.
 Das Parallelnetz (oben) besteht aus einem Eingangsverteiler (``Header''),
-$N$ parallelen Rohrsträngen und einem Ausgangssammler.
-Der Gesamtvolumenstrom $\dot{V}$ teilt sich am Verteiler gleichmäßig auf
-$N$ Teilströme $\dot{V}/N$ auf, durchströmt die kleinen Rohre und wird am
-Sammler wieder zusammengeführt.
+$N$ parallelen RohrstrÃ¤ngen und einem Ausgangssammler.
+Der Gesamtvolumenstrom $\dot{V}$ teilt sich am Verteiler gleichmÃ¤ÃŸig auf
+$N$ TeilstrÃ¶me $\dot{V}/N$ auf, durchstrÃ¶mt die kleinen Rohre und wird am
+Sammler wieder zusammengefÃ¼hrt.
 Da die kleinen Rohre bei niedrigerem Teilvolumenstrom $\dot{V}/N$ betrieben
-werden, operieren sie in einem günstigeren Betriebspunkt auf der
+werden, operieren sie in einem gÃ¼nstigeren Betriebspunkt auf der
 Druckverlust-Kennlinie.
-Das einzelne große Rohr (unten) muss dagegen den gesamten Volumenstrom
+Das einzelne groÃŸe Rohr (unten) muss dagegen den gesamten Volumenstrom
 bei hoher Wandschubspannung transportieren -- besonders bei Teillast
 (wenn $\dot{V}$ auf 20-30\,\% des Nennwerts sinkt) entstehen dabei
-kritische Betriebszustände, wie rezirkulierende Strömungen und
-Ablagerungen schwerer Kohlenwasserstoffe an der unteren Rohrwandhälfte.
+kritische BetriebszustÃ¤nde, wie rezirkulierende StrÃ¶mungen und
+Ablagerungen schwerer Kohlenwasserstoffe an der unteren RohrwandhÃ¤lfte.
 
 % ============================================================
-\section{Wärmetechnische Analyse}
+\section{WÃ¤rmetechnische Analyse}
 \label{sec:waerme}
 % ============================================================
 
 \subsection{Nusselt-Zahl-Korrelation}
 \label{ssec:nusselt}
 
-Die Wärmeübertragung zwischen dem strömenden Gas und der Rohrwand wird durch
-den Wärmeübergangskoeffizienten $h$ beschrieben.
-Dieser ist über die Nusselt-Zahl mit der Fluiddaten verknüpft:
+Die WÃ¤rmeÃ¼bertragung zwischen dem strÃ¶menden Gas und der Rohrwand wird durch
+den WÃ¤rmeÃ¼bergangskoeffizienten $h$ beschrieben.
+Dieser ist Ã¼ber die Nusselt-Zahl mit der Fluiddaten verknÃ¼pft:
 \begin{equation}
   \Nus = \frac{h \cdot d}{k},
   \qquad h = \frac{\Nus \cdot k}{d}.
   \label{eq:nusselt_def}
 \end{equation}
 
-Für vollentwickelte turbulente Rohrströmung ($\Rey > 10^4$) ist die
+FÃ¼r vollentwickelte turbulente RohrstrÃ¶mung ($\Rey > 10^4$) ist die
 Dittus-Boelter-Korrelation~\cite{Dittus1930} die meistverwendete:
 \begin{equation}
   \Nus = 0{,}023 \, \Rey^{0{,}8} \, \Pra^n,
-  \quad n = 0{,}4 \text{ (Heizung)}, \quad n = 0{,}3 \text{ (Kühlung)}.
+  \quad n = 0{,}4 \text{ (Heizung)}, \quad n = 0{,}3 \text{ (KÃ¼hlung)}.
   \label{eq:dittus_boelter}
 \end{equation}
 
@@ -989,8 +989,8 @@ Setzt man \cref{eq:nusselt_def} und \cref{eq:dittus_boelter} zusammen:
 \end{equation}
 
 \noindent
-Der Wärmeübergangskoeffizient skaliert also mit $d^{-0{,}2}$: kleinere Rohre
-haben (bei gleicher Geschwindigkeit) einen \emph{höheren} $h$-Wert.
+Der WÃ¤rmeÃ¼bergangskoeffizient skaliert also mit $d^{-0{,}2}$: kleinere Rohre
+haben (bei gleicher Geschwindigkeit) einen \emph{hÃ¶heren} $h$-Wert.
 Konkret:
 \begin{equation}
   \frac{h_{\mathrm{K}}}{h_{\mathrm{G}}}
@@ -998,49 +998,49 @@ Konkret:
   \label{eq:h_ratio}
 \end{equation}
 
-Für $\dG = \SI{30}{\centi\metre}$, $\dK = \SI{9.5}{\centi\metre}$:
+FÃ¼r $\dG = \SI{30}{\centi\metre}$, $\dK = \SI{9.5}{\centi\metre}$:
 $h_{\mathrm{K}} / h_{\mathrm{G}} = (30/9{,}5)^{0{,}2} \approx 1{,}26$.
-Das kleine Rohr hat also pro Wandflächeneinheit einen um 26\,\% höheren
-Wärmeübergangskoeffizienten.
-Kombiniert mit dem Wandoberflächenvorteil (Satz~\ref{thm:waermeflaeche}),
-ergibt sich ein gesamter Wärmeübertragungsvorteil von ca.\ $3{,}16 \times 1{,}26 =
-\num{3.98}$ für das Parallelnetz (Faktor~4!).
+Das kleine Rohr hat also pro WandflÃ¤cheneinheit einen um 26\,\% hÃ¶heren
+WÃ¤rmeÃ¼bergangskoeffizienten.
+Kombiniert mit dem WandoberflÃ¤chenvorteil (Satz~\ref{thm:waermeflaeche}),
+ergibt sich ein gesamter WÃ¤rmeÃ¼bertragungsvorteil von ca.\ $3{,}16 \times 1{,}26 =
+\num{3.98}$ fÃ¼r das Parallelnetz (Faktor~4!).
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig04_waermeuebertragung.pdf}
-  \caption{Links: $h$ vs.\ Geschwindigkeit für Einzelrohre.
-           Rechts: Gesamtwärmestrom bei $\Delta T = \SI{1}{\kelvin}$ und $L = \SI{1}{\metre}$
-           für Parallelnetz vs.\ Einzelrohr.}
+  \caption{Links: $h$ vs.\ Geschwindigkeit fÃ¼r Einzelrohre.
+           Rechts: GesamtwÃ¤rmestrom bei $\Delta T = \SI{1}{\kelvin}$ und $L = \SI{1}{\metre}$
+           fÃ¼r Parallelnetz vs.\ Einzelrohr.}
   \label{fig:waerme}
 \end{figure}
 
 \noindent
-\Cref{fig:waerme} bestätigt diese analytische Überlegung numerisch.
-Die linke Teilabbildung zeigt $h$ in Abhängigkeit von der Strömungsgeschwindigkeit
-für die drei Rohrdurchmesser.
+\Cref{fig:waerme} bestÃ¤tigt diese analytische Ãœberlegung numerisch.
+Die linke Teilabbildung zeigt $h$ in AbhÃ¤ngigkeit von der StrÃ¶mungsgeschwindigkeit
+fÃ¼r die drei Rohrdurchmesser.
 Alle Kurven steigen kontinuierlich mit $v^{0{,}8}$ an.
-Das \SI{9.5}{\centi\metre}-Rohr (blau) liegt dabei stets leicht über den großen
+Das \SI{9.5}{\centi\metre}-Rohr (blau) liegt dabei stets leicht Ã¼ber den groÃŸen
 Rohren, was dem $(d^{-0.2})$-Skalierungsgesetz entspricht.
-Auffällig ist die starke Abhängigkeit von $v$: Eine Verdopplung der
+AuffÃ¤llig ist die starke AbhÃ¤ngigkeit von $v$: Eine Verdopplung der
 Geschwindigkeit steigert $h$ um den Faktor~$2^{0{,}8} \approx 1{,}74$.
 Da das Parallelnetz bei gleichem Gesamtdurchsatz mit jeweils $\dot{V}/N$ pro
-kleinem Rohr arbeitet, und da die Strömungsgeschwindigkeit wegen gleicher
-Gesamtfläche identisch ist, ergibt sich rechts ein klarer Vorteil der
-Parallelnetze: Der gesamte Wärmestrom bei $\Delta T = 1\,\text{K}$ ist im
-Parallelnetz stets höher als im Einzelrohr, und zwar proportional zum
-Oberflächenverhältnis~$\dG/\dK$.
+kleinem Rohr arbeitet, und da die StrÃ¶mungsgeschwindigkeit wegen gleicher
+GesamtflÃ¤che identisch ist, ergibt sich rechts ein klarer Vorteil der
+Parallelnetze: Der gesamte WÃ¤rmestrom bei $\Delta T = 1\,\text{K}$ ist im
+Parallelnetz stets hÃ¶her als im Einzelrohr, und zwar proportional zum
+OberflÃ¤chenverhÃ¤ltnis~$\dG/\dK$.
 
-\subsection{TikZ: Wärmeübertragung an der Rohrwand}
+\subsection{TikZ: WÃ¤rmeÃ¼bertragung an der Rohrwand}
 \label{ssec:tikz_waerme}
 
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[scale=1.3]
-    % Rohrquerschnitt (halbe Ansicht, Längsschnitt)
-    \def\R{2.0}    % äußerer Radius
-    \def\ri{1.75}  % innerer Radius (dünne Wand)
-    \def\len{6.0}  % Länge
+    % Rohrquerschnitt (halbe Ansicht, LÃ¤ngsschnitt)
+    \def\R{2.0}    % Ã¤uÃŸerer Radius
+    \def\ri{1.75}  % innerer Radius (dÃ¼nne Wand)
+    \def\len{6.0}  % LÃ¤nge
 
     % Wand
     \fill[gray!30] (0,-\R) rectangle (\len,-\ri);
@@ -1048,7 +1048,7 @@ Oberflächenverhältnis~$\dG/\dK$.
     \draw[line width=1.5pt] (0,-\R) rectangle (\len,\R);
     \draw[line width=1.0pt, dashed] (0,-\ri) rectangle (\len,\ri);
 
-    % Strömungspfeile (turbulentes Profil angedeutet)
+    % StrÃ¶mungspfeile (turbulentes Profil angedeutet)
     \foreach \y/\vscale in {0/1.0, 0.6/0.96, 1.0/0.88, 1.4/0.65, 1.65/0.30}{
       \draw[-{Latex[length=4pt]}, NavyBlue, line width=1.2pt]
         (0.4,\y) -- +(\vscale*2.5,0);
@@ -1057,7 +1057,7 @@ Oberflächenverhältnis~$\dG/\dK$.
     }
     \node[NavyBlue, font=\footnotesize] at (1.8,-2.0) {turbulentes Profil};
 
-    % Wärmefluss (rote Pfeile von Wand nach innen)
+    % WÃ¤rmefluss (rote Pfeile von Wand nach innen)
     \foreach \x in {1.0, 2.0, 3.0, 4.0, 5.0}{
       \draw[-{Latex[length=3.5pt]}, red, line width=1.2pt]
         (\x, \R-0.03) -- (\x, \ri+0.1);
@@ -1079,58 +1079,58 @@ Oberflächenverhältnis~$\dG/\dK$.
           text width=3.5cm, align=center] at (3.0, -2.8)
       {$h \propto d^{-0{,}2}$\\(D.-B.-Korrelation)};
   \end{tikzpicture}
-  \caption{Längsschnitts-Schemazeichnung: turbulentes Geschwindigkeitsprofil
-           und Wärmefluss an der Rohrwand.}
+  \caption{LÃ¤ngsschnitts-Schemazeichnung: turbulentes Geschwindigkeitsprofil
+           und WÃ¤rmefluss an der Rohrwand.}
   \label{fig:tikz_waerme}
 \end{figure}
 
 \noindent
-\Cref{fig:tikz_waerme} illustriert schematisch den Wärmeübergang in einem
+\Cref{fig:tikz_waerme} illustriert schematisch den WÃ¤rmeÃ¼bergang in einem
 zylindrischen Rohr.
-Die graue Rohrwand hat die Temperatur~$T_W$; das strömende Fluid
+Die graue Rohrwand hat die Temperatur~$T_W$; das strÃ¶mende Fluid
 hat eine niedrigere Temperatur~$T_f$.
-Die roten Pfeile repräsentieren den lokalen Wärmefluss $\dot{q} = h \cdot \Delta T$,
-der proportional zum Wärmeübergangskoeffizienten $h$ und zur Temperaturdifferenz
+Die roten Pfeile reprÃ¤sentieren den lokalen WÃ¤rmefluss $\dot{q} = h \cdot \Delta T$,
+der proportional zum WÃ¤rmeÃ¼bergangskoeffizienten $h$ und zur Temperaturdifferenz
 $\Delta T = T_W - T_f$ ist.
 Die blauen Pfeile zeigen das charakteristische flache turbulente
 Geschwindigkeitsprofil.
 Entscheidend ist der eingerahmte Ausdruck: $h \propto d^{-0{,}2}$.
-Kleinere Rohre haben also -- selbst pro Flächeneinheit Rohrwand -- eine
-intensivere Wärmeübertragung. In Kombination mit dem Oberflächenvorteil
+Kleinere Rohre haben also -- selbst pro FlÃ¤cheneinheit Rohrwand -- eine
+intensivere WÃ¤rmeÃ¼bertragung. In Kombination mit dem OberflÃ¤chenvorteil
 (Satz~\ref{thm:waermeflaeche}) ergibt sich der nahezu vierfache
-Gesamtwärmestrom der kleinen Rohre.
+GesamtwÃ¤rmestrom der kleinen Rohre.
 
-\subsection{Spezifische Oberfläche}
+\subsection{Spezifische OberflÃ¤che}
 \label{ssec:oberflaeche}
 
-\Cref{fig:oberflaeche} fasst die spezifische Oberfläche quantitativ zusammen.
+\Cref{fig:oberflaeche} fasst die spezifische OberflÃ¤che quantitativ zusammen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig05_oberflaeche.pdf}
-  \caption{Links: Spezifische Wandoberfläche $4/d$ vs.\ Rohrdurchmesser.
-           Rechts: Oberflächenverhältnis Parallelnetz zu Einzelrohr.}
+  \caption{Links: Spezifische WandoberflÃ¤che $4/d$ vs.\ Rohrdurchmesser.
+           Rechts: OberflÃ¤chenverhÃ¤ltnis Parallelnetz zu Einzelrohr.}
   \label{fig:oberflaeche}
 \end{figure}
 
 \noindent
 Die linke Teilabbildung von \cref{fig:oberflaeche} zeigt die spezifische
-Wandoberfläche $A_{\mathrm{spez}} = 4/d$ (in \si{\per\metre}) als Funktion
+WandoberflÃ¤che $A_{\mathrm{spez}} = 4/d$ (in \si{\per\metre}) als Funktion
 des Rohrdurchmessers.
-Dieses Verhältnis gibt an, wieviel Quadratmeter Wandfläche pro Kubikmeter
+Dieses VerhÃ¤ltnis gibt an, wieviel Quadratmeter WandflÃ¤che pro Kubikmeter
 Gasvolumen vorhanden sind.
-Die Kurve fällt hyperbolisch ab: Beim \SI{9.5}{\centi\metre}-Rohr ergibt
+Die Kurve fÃ¤llt hyperbolisch ab: Beim \SI{9.5}{\centi\metre}-Rohr ergibt
 sich $A_{\mathrm{spez}} = 42{,}1\,\si{\per\metre}$, beim \SI{30}{\centi\metre}-Rohr
 nur $13{,}3\,\si{\per\metre}$ und beim \SI{45}{\centi\metre}-Rohr sogar nur
 $8{,}9\,\si{\per\metre}$.
-Das bedeutet: Ein Kubikmeter Gas hat im kleinen Rohr über fünfmal so viel
-Kontakt zur Rohrwand wie im großen \SI{45}{\centi\metre}-Rohr!
+Das bedeutet: Ein Kubikmeter Gas hat im kleinen Rohr Ã¼ber fÃ¼nfmal so viel
+Kontakt zur Rohrwand wie im groÃŸen \SI{45}{\centi\metre}-Rohr!
 
-Die rechte Teilabbildung bestätigt Satz~\ref{thm:waermeflaeche}:
-Das Verhältnis der Gesamtwandflächenden Parallelnetzes zum Einzelrohr steigt
-linear mit dem Verhältnis $\dG/\dK$.
-Für $\dG = \SI{30}{\centi\metre}$ ergibt sich der bereits gerechnete
-Faktor~3{,}16; für $\dG = \SI{45}{\centi\metre}$ sogar Faktor~4{,}7.
+Die rechte Teilabbildung bestÃ¤tigt Satz~\ref{thm:waermeflaeche}:
+Das VerhÃ¤ltnis der GesamtwandflÃ¤chenden Parallelnetzes zum Einzelrohr steigt
+linear mit dem VerhÃ¤ltnis $\dG/\dK$.
+FÃ¼r $\dG = \SI{30}{\centi\metre}$ ergibt sich der bereits gerechnete
+Faktor~3{,}16; fÃ¼r $\dG = \SI{45}{\centi\metre}$ sogar Faktor~4{,}7.
 
 % ============================================================
 \section{Strukturmechanische Bewertung}
@@ -1141,34 +1141,34 @@ Faktor~3{,}16; für $\dG = \SI{45}{\centi\metre}$ sogar Faktor~4{,}7.
 \label{ssec:barlow_detail}
 
 \Cref{fig:effizienz_barlow} zeigt auf der rechten Seite die Barlow-Kurven
-für verschiedene Wanddicken.
+fÃ¼r verschiedene Wanddicken.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig07_effizienz_barlow.pdf}
-  \caption{Links: Verhältnis Druckverlust und Wärmeübertragung (Netz/Einzel) vs.\
-           großem Rohrdurchmesser.
-           Rechts: Barlow-Kurven für verschiedene Wanddicken.}
+  \caption{Links: VerhÃ¤ltnis Druckverlust und WÃ¤rmeÃ¼bertragung (Netz/Einzel) vs.\
+           groÃŸem Rohrdurchmesser.
+           Rechts: Barlow-Kurven fÃ¼r verschiedene Wanddicken.}
   \label{fig:effizienz_barlow}
 \end{figure}
 
 \noindent
 Die rechte Teilabbildung von \cref{fig:effizienz_barlow} zeigt sehr anschaulich,
-dass kleine Rohre bei gleicher Wanddicke erheblich höhere zulässige
-Betriebsdrücke ertragen.
+dass kleine Rohre bei gleicher Wanddicke erheblich hÃ¶here zulÃ¤ssige
+BetriebsdrÃ¼cke ertragen.
 Ein \SI{9.5}{\centi\metre}-Rohr mit $t = \SI{5}{\milli\metre}$ Wanddicke ist bei
 einem Betriebsdruck von ca.\ \SI{2.5}{\mega\pascal} betreibbar (ohne Sicherheitsfaktor).
 Das \SI{30}{\centi\metre}-Rohr mit der gleichen Wanddicke kann nur bis ca.\
 \SI{0.8}{\mega\pascal} betrieben werden.
-Für Gasverteilnetze mit typischen Betriebsdrücken von \SI{0.1}{\mega\pascal}
+FÃ¼r Gasverteilnetze mit typischen BetriebsdrÃ¼cken von \SI{0.1}{\mega\pascal}
 bis \SI{1.0}{\mega\pascal} (DIN EN 12007) sind kleine Rohre also deutlich im Vorteil.
 
-Die linke Teilabbildung stellt das Verhältnis von Druckverlust-Verbesserung und
-Wärme\-übertragungs-Verbesserung eines Parallelnetzes kleiner Rohre gegenüber einem
-einzelnen großen Rohr als Funktion des großen Durchmessers dar.
-Das Druckverlust-Verhältnis $\Delta p_{\mathrm{kl}} / \Delta p_{\mathrm{gr}}$
-bleibt nahezu konstant nahe 1 (da beide bei gleicher Strömungsgeschwindigkeit
-betrieben werden), während das Wärmeübertragungsverhältnis linear mit $\dG/\dK$
+Die linke Teilabbildung stellt das VerhÃ¤ltnis von Druckverlust-Verbesserung und
+WÃ¤rme\-Ã¼bertragungs-Verbesserung eines Parallelnetzes kleiner Rohre gegenÃ¼ber einem
+einzelnen groÃŸen Rohr als Funktion des groÃŸen Durchmessers dar.
+Das Druckverlust-VerhÃ¤ltnis $\Delta p_{\mathrm{kl}} / \Delta p_{\mathrm{gr}}$
+bleibt nahezu konstant nahe 1 (da beide bei gleicher StrÃ¶mungsgeschwindigkeit
+betrieben werden), wÃ¤hrend das WÃ¤rmeÃ¼bertragungsverhÃ¤ltnis linear mit $\dG/\dK$
 ansteigt -- eine unmittelbare Folge von Satz~\ref{thm:waermeflaeche}.
 
 \subsection{TikZ: Mechanische Spannungsverteilung}
@@ -1199,7 +1199,7 @@ ansteigt -- eine unmittelbare Folge von Satz~\ref{thm:waermeflaeche}.
       \node[blue, font=\scriptsize] at (0,0) {$p$};
     \end{scope}
 
-    % Großes Rohr
+    % GroÃŸes Rohr
     \begin{scope}[xshift=6cm]
       \def\ri{1.8}
       \def\t{0.27}   % = 0.15 * (30/9.5) skaliert auf dargestellten Radius
@@ -1215,7 +1215,7 @@ ansteigt -- eine unmittelbare Folge von Satz~\ref{thm:waermeflaeche}.
           ({(\ri+0.25)*cos(\angle)},{(\ri+0.25)*sin(\angle)});
       }
       \node[below=2.3cm, font=\footnotesize, align=center] at (0,0)
-        {\textbf{Großes Rohr}\\$d_G, \; t_G = p\,d_G / (2\sigma) > t_K$};
+        {\textbf{GroÃŸes Rohr}\\$d_G, \; t_G = p\,d_G / (2\sigma) > t_K$};
       \node[red, font=\scriptsize] at (0,0) {$p$};
     \end{scope}
 
@@ -1225,21 +1225,21 @@ ansteigt -- eine unmittelbare Folge von Satz~\ref{thm:waermeflaeche}.
       node[midway, above, font=\footnotesize] {$t_K/t_G = d_K/d_G$};
   \end{tikzpicture}
   \caption{Schemazeichnung: Innendruck $p$ und erforderliche Wanddicke nach
-           der Barlow-Gleichung (Satz~\ref{thm:barlow}) für kleines und großes Rohr.}
+           der Barlow-Gleichung (Satz~\ref{thm:barlow}) fÃ¼r kleines und groÃŸes Rohr.}
   \label{fig:tikz_barlow}
 \end{figure}
 
 \noindent
 \Cref{fig:tikz_barlow} visualisiert die Kernaussage von Satz~\ref{thm:barlow}:
-Links das kleine Rohr, rechts das große Rohr -- beide bei gleichem Innendruck~$p$.
-Die Wanddicke des großen Rohres ist in direkter Proportion zum Durchmesser
-größer ($t_G/t_K = d_G/d_K$).
-Obwohl die absolute Wanddicke größer ist, ist die relative Wanddicke ($t/d$)
+Links das kleine Rohr, rechts das groÃŸe Rohr -- beide bei gleichem Innendruck~$p$.
+Die Wanddicke des groÃŸen Rohres ist in direkter Proportion zum Durchmesser
+grÃ¶ÃŸer ($t_G/t_K = d_G/d_K$).
+Obwohl die absolute Wanddicke grÃ¶ÃŸer ist, ist die relative Wanddicke ($t/d$)
 identisch -- was bedeutet, dass beide Rohre die gleiche Materialeffizienz
-bezüglich Druckfestigkeit aufweisen.
-In der Praxis kommen jedoch Formgebungsprozesse und Schweiß\-technik ins Spiel:
-Kleinstdurchmesser lassen sich mit geringerem Energieeinsatz und höherer
-Genauigkeit walzen und schweißen als große Rohre, und Defekte in der Schweißnaht
+bezÃ¼glich Druckfestigkeit aufweisen.
+In der Praxis kommen jedoch Formgebungsprozesse und SchweiÃŸ\-technik ins Spiel:
+Kleinstdurchmesser lassen sich mit geringerem Energieeinsatz und hÃ¶herer
+Genauigkeit walzen und schweiÃŸen als groÃŸe Rohre, und Defekte in der SchweiÃŸnaht
 sind bei kleinen Querschnitten leichter detektierbar.
 
 % ============================================================
@@ -1250,17 +1250,17 @@ sind bei kleinen Querschnitten leichter detektierbar.
 \subsection{Investitionskosten}
 \label{ssec:capex}
 
-Bei einer Leitungslänge von \SI{500}{\metre} und einem Betriebsdruck von
+Bei einer LeitungslÃ¤nge von \SI{500}{\metre} und einem Betriebsdruck von
 \SI{2}{\bar} umfassen die Investitionskosten (CAPEX) die folgenden Positionen:
 
 \begin{table}[htbp]
 \centering
-\caption{CAPEX-Abschätzung für \SI{500}{\metre} Gasleitungsstrecke
+\caption{CAPEX-AbschÃ¤tzung fÃ¼r \SI{500}{\metre} Gasleitungsstrecke
          (Methan, $p = \SI{2}{\bar}$, $\dot{V} = \SI{120}{\litre\per\second}$)}
 \label{tab:capex}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Szenario & Material & Schweißung & Tiefbau & Gesamt \\
+Szenario & Material & SchweiÃŸung & Tiefbau & Gesamt \\
 \midrule
 $1 \times \SI{30}{\centi\metre}$         & 28 TEUR & 12 TEUR & 118 TEUR & 158 TEUR \\
 $1 \times \SI{45}{\centi\metre}$         & 63 TEUR & 15 TEUR & 137 TEUR & 215 TEUR \\
@@ -1271,48 +1271,48 @@ $22 \times \SI{9.5}{\centi\metre}$       & 62 TEUR & 264 TEUR & 118 TEUR & 444 T
 \end{table}
 
 \noindent
-Das parallele Netz kleiner Rohre hat höhere CAPEX durch die aufwändigere
-Schweißarbeit (mehr Verbindungen).
-Moderne Fertigungsverfahren -- insbesondere industrielles Orbitalschweißen --
-können diese Kosten jedoch erheblich reduzieren (bis zu 40\,\% gegenüber
-manuellem TIG-Schweißen).
+Das parallele Netz kleiner Rohre hat hÃ¶here CAPEX durch die aufwÃ¤ndigere
+SchweiÃŸarbeit (mehr Verbindungen).
+Moderne Fertigungsverfahren -- insbesondere industrielles OrbitalschweiÃŸen --
+kÃ¶nnen diese Kosten jedoch erheblich reduzieren (bis zu 40\,\% gegenÃ¼ber
+manuellem TIG-SchweiÃŸen).
 
 \subsection{Betriebskosten (OPEX)}
 \label{ssec:opex}
 
-Die größten OPEX-Positionen sind Energiekosten (Pumpenantrieb) und Wartung.
+Die grÃ¶ÃŸten OPEX-Positionen sind Energiekosten (Pumpenantrieb) und Wartung.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig06_wirtschaftlichkeit.pdf}
-  \caption{Links: Lebenszykluskosten über 30 Jahre.
-           Rechts: Jährliche Pumpenkosten vs.\ Strömungsgeschwindigkeit.}
+  \caption{Links: Lebenszykluskosten Ã¼ber 30 Jahre.
+           Rechts: JÃ¤hrliche Pumpenkosten vs.\ StrÃ¶mungsgeschwindigkeit.}
   \label{fig:wirtschaft}
 \end{figure}
 
 \noindent
 \Cref{fig:wirtschaft} analysiert die Wirtschaftlichkeit.
-Die linke Teilabbildung zeigt die kumulierten Lebenszykluskosten über 30~Jahre
-für alle vier Szenarien.
-Die höheren Anfangsinvestitionen (CAPEX) der kleinen-Rohr-Netze werden durch
-die signifikant niedrigeren jährlichen Energiekosten sukzessive kompensiert.
+Die linke Teilabbildung zeigt die kumulierten Lebenszykluskosten Ã¼ber 30~Jahre
+fÃ¼r alle vier Szenarien.
+Die hÃ¶heren Anfangsinvestitionen (CAPEX) der kleinen-Rohr-Netze werden durch
+die signifikant niedrigeren jÃ¤hrlichen Energiekosten sukzessive kompensiert.
 Im Vergleich ``$10 \times \SI{9.5}{\centi\metre}$'' vs.\ ``$1 \times \SI{30}{\centi\metre}$''
 crosst die Kostenkurve des Parallelnetzes die des einzelnen Rohres nach ca.\
-12~Jahren; danach liegt das Parallelnetz dauerhaft günstiger.
+12~Jahren; danach liegt das Parallelnetz dauerhaft gÃ¼nstiger.
 
-Die Ursache ist auf der rechten Seite zu sehen: Die jährlichen Pumpenkosten
-steigen stark mit der Strömungsgeschwindigkeit an (etwa $\propto v^{7/4}$).
+Die Ursache ist auf der rechten Seite zu sehen: Die jÃ¤hrlichen Pumpenkosten
+steigen stark mit der StrÃ¶mungsgeschwindigkeit an (etwa $\propto v^{7/4}$).
 Das Parallelnetz aus 10 kleinen Rohren verteilt den Gesamtstrom auf viele
-Teilströme und ermöglicht dadurch bei gegebenem Gesamtdurchsatz eine
+TeilstrÃ¶me und ermÃ¶glicht dadurch bei gegebenem Gesamtdurchsatz eine
 signifikante Reduzierung der Pumpenergie.
 In der Praxis bedeutet dies: Bei einer Betriebsbeschleunigung von
-\SI{3}{\metre\per\second} im großen Rohr sind die jährlichen Pumpenkosten
-für das \SI{9.5}{\centi\metre}-Rohr (einzel) zwar höher als im großen Rohr,
+\SI{3}{\metre\per\second} im groÃŸen Rohr sind die jÃ¤hrlichen Pumpenkosten
+fÃ¼r das \SI{9.5}{\centi\metre}-Rohr (einzel) zwar hÃ¶her als im groÃŸen Rohr,
 \emph{aber} das Netz aus parallelen kleinen Rohren arbeitet bei
 $v = \SI{3}{\metre\per\second} / \sqrt{N} \approx \SI{0.95}{\metre\per\second}$
 pro Rohr (wenn wir eine gleiche Betriebsgeschwindigkeit voraussetzen) --
-tatsächlich ist die Druckabsenkung den Faktor $N \propto 10$, was einer
-jährlichen Energieeinsparung von ca.\ 12\,000 EUR entspricht.
+tatsÃ¤chlich ist die Druckabsenkung den Faktor $N \propto 10$, was einer
+jÃ¤hrlichen Energieeinsparung von ca.\ 12\,000 EUR entspricht.
 
 \subsection{TikZ: Lebenszyklus-Kosten-Zeitstrahl}
 \label{ssec:tikz_lifecycle}
@@ -1363,42 +1363,42 @@ jährlichen Energieeinsparung von ca.\ 12\,000 EUR entspricht.
 
 \noindent
 \Cref{fig:tikz_lifecycle} zeigt schematisch den Verlauf der kumulierten Kosten.
-Deutlich zu erkennen ist die Steigung der einzelnen Kurven, die den jährlichen
+Deutlich zu erkennen ist die Steigung der einzelnen Kurven, die den jÃ¤hrlichen
 Betriebskosten (OPEX) entspricht.
-Das \SI{30}{\centi\metre}-Rohr hat zwar geringe CAPEX, wächst aber durch hohe
-Betriebskosten über die Laufzeit.
-Das \SI{45}{\centi\metre}-Rohr beginnt teurer und wächst langsamer, da es
-wegen des großen Querschnitts bei niedrigeren Strömungsgeschwindigkeiten
+Das \SI{30}{\centi\metre}-Rohr hat zwar geringe CAPEX, wÃ¤chst aber durch hohe
+Betriebskosten Ã¼ber die Laufzeit.
+Das \SI{45}{\centi\metre}-Rohr beginnt teurer und wÃ¤chst langsamer, da es
+wegen des groÃŸen Querschnitts bei niedrigeren StrÃ¶mungsgeschwindigkeiten
 betrieben werden kann.
-Das Parallelnetz kleiner Rohre startet mit den höchsten Anfangskosten, hat
+Das Parallelnetz kleiner Rohre startet mit den hÃ¶chsten Anfangskosten, hat
 aber langfristig das langsamste Kostenwachstum -- und erreicht den Break-even
-gegenüber dem \SI{30}{\centi\metre}-Rohr nach ca.\ 12-15~Jahren.
-Bei einer geplanten Nutzungsdauer von 30-50~Jahren (typisch für Gasleitungen)
-ist das Parallelnetz damit wirtschaftlich klar überlegen.
+gegenÃ¼ber dem \SI{30}{\centi\metre}-Rohr nach ca.\ 12-15~Jahren.
+Bei einer geplanten Nutzungsdauer von 30-50~Jahren (typisch fÃ¼r Gasleitungen)
+ist das Parallelnetz damit wirtschaftlich klar Ã¼berlegen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig09_balkenvergleich.pdf}
-  \caption{Normierter Vergleich: Druckverlust und Wärmeübertragung
+  \caption{Normierter Vergleich: Druckverlust und WÃ¤rmeÃ¼bertragung
            (Referenz: Einzelrohr \SI{30}{\centi\metre}).}
   \label{fig:balken}
 \end{figure}
 
 \noindent
 Das Balkendiagramm \cref{fig:balken} fasst den Kernvergleich in einer
-kompakten Übersicht zusammen.
+kompakten Ãœbersicht zusammen.
 Der blaue Balken (Druckverlust) zeigt beim \SI{30}{\centi\metre}-Einzelrohr
 den Referenzwert~1.
-Das \SI{45}{\centi\metre}-Rohr hat wegen des größeren Querschnitts einen
-deutlich niedrigeren normierten Druckverlust ($<0.5$), zahlt dafür aber in
+Das \SI{45}{\centi\metre}-Rohr hat wegen des grÃ¶ÃŸeren Querschnitts einen
+deutlich niedrigeren normierten Druckverlust ($<0.5$), zahlt dafÃ¼r aber in
 Materialmenge und Tiefbauaufwand.
 Die Parallelnetze kleiner Rohre haben --- im Sinne des Gesamtnetzwerks
 bei konstantem Gesamtvolumenstrom --- Druckverluste die mit dem Einzelrohr
 vergleichbar oder sogar darunter liegen, bieten aber gleichzeitig signifikant
-höhere normierte Wärmeübertragung (schraffierte Balken).
-Diese Kombination aus wettbewerbsfähigen Druckverlusten und überlegener
-Wärmeübertragung sowie höherer strukturmechanischer Belastbarkeit und
-Flexibilität ist der zentrale Vorteil des Parallelnetzes kleiner Rohre.
+hÃ¶here normierte WÃ¤rmeÃ¼bertragung (schraffierte Balken).
+Diese Kombination aus wettbewerbsfÃ¤higen Druckverlusten und Ã¼berlegener
+WÃ¤rmeÃ¼bertragung sowie hÃ¶herer strukturmechanischer Belastbarkeit und
+FlexibilitÃ¤t ist der zentrale Vorteil des Parallelnetzes kleiner Rohre.
 
 % ============================================================
 \section{Diskussion}
@@ -1407,53 +1407,53 @@ Flexibilität ist der zentrale Vorteil des Parallelnetzes kleiner Rohre.
 
 Die formalen Beweise in \cref{sec:beweise} und die numerischen Vergleiche
 in den Abschnitten~\ref{sec:numerik}--\ref{sec:wirtschaft} zeigen
-übereinstimmend und aus unterschiedlichen Blickwinkeln, dass parallele Netze
+Ã¼bereinstimmend und aus unterschiedlichen Blickwinkeln, dass parallele Netze
 kleiner Rohre mit Durchmessern im Bereich \SIrange{8}{11}{\centi\metre}
-gegenüber einzelnen großen Gasleitungen mit \SI{30}{\centi\metre} oder
+gegenÃ¼ber einzelnen groÃŸen Gasleitungen mit \SI{30}{\centi\metre} oder
 \SI{45}{\centi\metre} Durchmesser in folgenden Kategorien besser abschneiden:
 
 \begin{enumerate}[label=\textbf{(\arabic*)}, leftmargin=2.5em]
-  \item \textbf{Wärmeübertragungseffizienz:}
-        Das Parallelnetz bietet bei gleicher Gesamtquerschnittsfläche einen
-        um den Faktor $\dG/\dK$ größere Wandoberfläche (Satz~\ref{thm:waermeflaeche}),
-        verbunden mit einem um $(d_G/d_K)^{0.2}$ höheren spezifischen
-        Wärmeübergangskoeffizienten (\cref{eq:h_ratio}).
-        Für den Vergleich \SI{30}{\centi\metre} vs.\ \SI{9.5}{\centi\metre}
+  \item \textbf{WÃ¤rmeÃ¼bertragungseffizienz:}
+        Das Parallelnetz bietet bei gleicher GesamtquerschnittsflÃ¤che einen
+        um den Faktor $\dG/\dK$ grÃ¶ÃŸere WandoberflÃ¤che (Satz~\ref{thm:waermeflaeche}),
+        verbunden mit einem um $(d_G/d_K)^{0.2}$ hÃ¶heren spezifischen
+        WÃ¤rmeÃ¼bergangskoeffizienten (\cref{eq:h_ratio}).
+        FÃ¼r den Vergleich \SI{30}{\centi\metre} vs.\ \SI{9.5}{\centi\metre}
         entspricht das einem Faktor~$\approx 4$.
 
   \item \textbf{Druckverlust im laminaren Regime:}
         Satz~\ref{thm:druckverlust_lam} beweist formal, dass der
         Druckverlust des Parallelnetzes um den Faktor $N = (d_G/d_K)^2$ niedriger
-        ist. Im turbulenten Bereich (Praxis) skaliert der Vorteil schwächer, aber
+        ist. Im turbulenten Bereich (Praxis) skaliert der Vorteil schwÃ¤cher, aber
         bei gleichem Betriebsdurchsatz und optimierter Geschwindigkeitsverteilung
         zeigt \cref{fig:druckverlust} eine signifikante Verbesserung.
 
   \item \textbf{Strukturmechanische Sicherheit:}
-        Kleine Rohre benötigen bei gleichem Betriebsdruck geringere Wanddicken
+        Kleine Rohre benÃ¶tigen bei gleichem Betriebsdruck geringere Wanddicken
         (Satz~\ref{thm:barlow}), was bei gleicher oder geringerer Gesamtmasse
-        höhere zulässige Betriebsdrücke erlaubt.
+        hÃ¶here zulÃ¤ssige BetriebsdrÃ¼cke erlaubt.
 
-  \item \textbf{Flexibilität und Redundanz:}
+  \item \textbf{FlexibilitÃ¤t und Redundanz:}
         Beim Ausfall eines Teilstranges im Parallelnetz wird der
         Gesamtvolumenstrom auf die verbleibenden Rohre umverteilt -- das System
-        ist inhärent redundant.
-        Das große Einzelrohr hat keine vergleichbare Ausfalltoleranz.
+        ist inhÃ¤rent redundant.
+        Das groÃŸe Einzelrohr hat keine vergleichbare Ausfalltoleranz.
 
-  \item \textbf{Wirtschaftlichkeit über den Lebenszyklus:}
-        Höhere CAPEX werden durch niedrigere OPEX kompensiert; der Break-even
+  \item \textbf{Wirtschaftlichkeit Ã¼ber den Lebenszyklus:}
+        HÃ¶here CAPEX werden durch niedrigere OPEX kompensiert; der Break-even
         liegt typischerweise bei 12--15~Jahren (\cref{fig:wirtschaft}).
         Bei einer Planungshorizont von 30~Jahren und mehr ist das Parallelnetz
-        wirtschaftlich überlegen.
+        wirtschaftlich Ã¼berlegen.
 \end{enumerate}
 
 \noindent
-\textbf{Einschränkungen und Gegenargumente}: Die vorliegende Analyse
-setzt homogene Gasqualität, gleichmäßige Lastverteilung und ideale
+\textbf{EinschrÃ¤nkungen und Gegenargumente}: Die vorliegende Analyse
+setzt homogene GasqualitÃ¤t, gleichmÃ¤ÃŸige Lastverteilung und ideale
 Parallelschaltung voraus.
-In der Praxis können Fouling (Ablagerungen), Gas\-gemisch-Entmischung und
-hydraulischer Ungleichgewicht zwischen den Teilsträngen zu Abweichungen führen.
-Außerdem erfordern $N > 1$ Rohrstränge mehr Armaturen, Verbindungsstücke und
-Regelorgane -- was die tatsächliche Komplexität erhöht.
+In der Praxis kÃ¶nnen Fouling (Ablagerungen), Gas\-gemisch-Entmischung und
+hydraulischer Ungleichgewicht zwischen den TeilstrÃ¤ngen zu Abweichungen fÃ¼hren.
+AuÃŸerdem erfordern $N > 1$ RohrstrÃ¤nge mehr Armaturen, VerbindungsstÃ¼cke und
+Regelorgane -- was die tatsÃ¤chliche KomplexitÃ¤t erhÃ¶ht.
 Diese Faktoren wurden im vorliegenden Vergleich nicht quantifiziert und
 sollten in einer detaillierteren Studie untersucht werden.
 
@@ -1462,70 +1462,70 @@ sollten in einer detaillierteren Studie untersucht werden.
 \label{sec:ausblick}
 % ============================================================
 
-Die Ergebnisse dieser Arbeit eröffnen eine Reihe von weiterführenden
+Die Ergebnisse dieser Arbeit erÃ¶ffnen eine Reihe von weiterfÃ¼hrenden
 Forschungsrichtungen und technischen Entwicklungspfaden, die im Folgenden
-ausführlich diskutiert werden.
+ausfÃ¼hrlich diskutiert werden.
 
 \subsection{Optimierte Netzstrukturen und Topologieoptimierung}
 \label{ssec:ausblick_topologie}
 
 Die vorliegende Arbeit vergleicht einfache parallele Anordnungen aus $N$
-identischen kleinen Rohren mit einem einzelnen großen Rohr.
+identischen kleinen Rohren mit einem einzelnen groÃŸen Rohr.
 In der realen Versorgungstechnik treten jedoch deutlich komplexere Netzstrukturen
-auf: verzweigte Verteilernetze, ringförmige Maschennetze, Stichleitungen und
+auf: verzweigte Verteilernetze, ringfÃ¶rmige Maschennetze, Stichleitungen und
 hybride Topologien~\cite{Helbing2015}.
 
-Zukünftige Arbeiten sollten eine \emph{formale Topologieoptimierung}
-durchführen, bei der die Netzstruktur -- also Anzahl der Rohrstränge, deren
-Verbindungsstruktur und die Durchmesserwahl -- simultan bezüglich der
-Zielfunktionen Druckverlust, Wärmeübertragung und Kosten optimiert wird.
+ZukÃ¼nftige Arbeiten sollten eine \emph{formale Topologieoptimierung}
+durchfÃ¼hren, bei der die Netzstruktur -- also Anzahl der RohrstrÃ¤nge, deren
+Verbindungsstruktur und die Durchmesserwahl -- simultan bezÃ¼glich der
+Zielfunktionen Druckverlust, WÃ¤rmeÃ¼bertragung und Kosten optimiert wird.
 Methoden der ganzzahligen Optimierung~\cite{Floudas1995} sowie der
-genetischen Algorithmen~\cite{Goldberg1989} haben sich für topologische
+genetischen Algorithmen~\cite{Goldberg1989} haben sich fÃ¼r topologische
 Netzoptimiierungen als besonders geeignet erwiesen.
 Insbesondere die Verwendung von \emph{gemischt-ganzzahligen linearen
 Programmen} (MILP) in Kombination mit nichtlinearen Druckverlustmodellen
-eröffnet die Möglichkeit, Pareto-optimale Lösungen zu finden, die
-verschiedene Zielgrößen gleichzeitig berücksichtigen.
+erÃ¶ffnet die MÃ¶glichkeit, Pareto-optimale LÃ¶sungen zu finden, die
+verschiedene ZielgrÃ¶ÃŸen gleichzeitig berÃ¼cksichtigen.
 
 \subsection{Experimentelle Validierung und CFD-Simulationen}
 \label{ssec:ausblick_exp}
 
 Die in dieser Arbeit verwendeten Korrelationen -- Colebrook-White, Dittus-Boelter
--- sind in der Literatur gut etabliert, aber für den spezifischen Fall von
-Hochdruck-Gasgemischen in kleinen Rohren noch nicht vollständig validiert.
+-- sind in der Literatur gut etabliert, aber fÃ¼r den spezifischen Fall von
+Hochdruck-Gasgemischen in kleinen Rohren noch nicht vollstÃ¤ndig validiert.
 Insbesondere sind folgende Effekte in experimentellen Studien zu untersuchen:
 
 \begin{itemize}
   \item \textbf{Thermische Ausdehnung beim Einschalten und Abschalten}:
         Kleine Rohre reagieren auf Temperaturtransienten schneller;
-        thermische Spannungen und Dehnungsausgleich müssen
-        für das Parallelnetz neu dimensioniert werden~\cite{TimoshenkoWoinowsky2009}.
+        thermische Spannungen und Dehnungsausgleich mÃ¼ssen
+        fÃ¼r das Parallelnetz neu dimensioniert werden~\cite{TimoshenkoWoinowsky2009}.
 
-  \item \textbf{Gasdynamische Effekte bei Druckstößen}:
-        Bei schnellen Ventilbetätigungen entstehen Druckwellen (``Wasserhammer''-
+  \item \textbf{Gasdynamische Effekte bei DruckstÃ¶ÃŸen}:
+        Bei schnellen VentilbetÃ¤tigungen entstehen Druckwellen (``Wasserhammer''-
         Analogon in Gasleitungen).
-        Die akustische Laufzeit und Dämpfungscharakteristik unterscheidet sich
-        zwischen kleinen und großen Rohren~\cite{Wylie1993}.
+        Die akustische Laufzeit und DÃ¤mpfungscharakteristik unterscheidet sich
+        zwischen kleinen und groÃŸen Rohren~\cite{Wylie1993}.
 
   \item \textbf{Fouling und Partikelmigration}:
-        In Erdgasnetzen enthält das Medium typischerweise Kohlenwasserstoff-Kondensat,
+        In Erdgasnetzen enthÃ¤lt das Medium typischerweise Kohlenwasserstoff-Kondensat,
         Wasserdampf und Feinstpartikel~\cite{Mokhatab2019}.
-        In kleinen Rohren mit hoher spezifischer Oberfläche kann Fouling
-        einen überproportional großen Einfluss auf Druckverlust und
-        Strömungsregime haben.
-        Gegenmaßnahmen (Wedeln, chemische Inhibitoren, Wedge-Wire-Filter am
-        Eingang) müssen spezifisch für Parallelnetze kleiner Rohre entwickelt
+        In kleinen Rohren mit hoher spezifischer OberflÃ¤che kann Fouling
+        einen Ã¼berproportional groÃŸen Einfluss auf Druckverlust und
+        StrÃ¶mungsregime haben.
+        GegenmaÃŸnahmen (Wedeln, chemische Inhibitoren, Wedge-Wire-Filter am
+        Eingang) mÃ¼ssen spezifisch fÃ¼r Parallelnetze kleiner Rohre entwickelt
         werden.
 
   \item \textbf{CFD-Analyse der Einlaufzone}:
-        Die Dittus-Boelter-Gleichung gilt für vollentwickelte Strömung
+        Die Dittus-Boelter-Gleichung gilt fÃ¼r vollentwickelte StrÃ¶mung
         ($x/d > 60$).
-        In kleinen Rohren mit typischen Längen von \SIrange{20}{100}{\metre}
-        können Einlaufeffekte ($Nu_{\text{einlauf}} > Nu_{\text{vollentw.}}$)
+        In kleinen Rohren mit typischen LÃ¤ngen von \SIrange{20}{100}{\metre}
+        kÃ¶nnen Einlaufeffekte ($Nu_{\text{einlauf}} > Nu_{\text{vollentw.}}$)
         erheblich sein~\cite{Shah1978}.
         Eine detaillierte CFD-Studie mit Large-Eddy-Simulation (LES) oder
-        direkter numerischer Simulation (DNS) wäre für einen Durchmesserbereich
-        $d = $ \SIrange{80}{110}{\milli\metre} wünschenswert.
+        direkter numerischer Simulation (DNS) wÃ¤re fÃ¼r einen Durchmesserbereich
+        $d = $ \SIrange{80}{110}{\milli\metre} wÃ¼nschenswert.
 \end{itemize}
 
 \subsection{Regelungstechnik und intelligente Netze}
@@ -1534,126 +1534,126 @@ Insbesondere sind folgende Effekte in experimentellen Studien zu untersuchen:
 Ein wesentliches, noch nicht adressiertes Thema ist die Regelung von
 Parallelnetzen bei variablem Lastbedarf.
 Im Vergleich zu einem einzelnen Rohr mit einfachem Eingangs- / Ausgangsventil
-erfordert ein Parallelnetz aus $N$ Strängen eine koordinierte Regelungsstrategie,
+erfordert ein Parallelnetz aus $N$ StrÃ¤ngen eine koordinierte Regelungsstrategie,
 die sicherstellt, dass:
 \begin{enumerate}
-  \item die hydraulische Symmetrie zwischen den Strängen erhalten bleibt
-        (kein ``Kurzschluss''-Phänomen, bei dem ein Strang bevorzugt wird),
-  \item bei Teillast gezielt einzelne Stränge abgesperrt werden können, um
-        die Strömungsgeschwindigkeit -- und damit die Wärmeübertragung und das
-        Strömungsregime -- in den aktiven Strängen im optimalen Bereich zu halten,
-  \item Überwachungssysteme (Durchflussmesser, Drucksensoren) für jeden Strang
-        vorgehalten werden, um Lecks oder Verstopfungen frühzeitig zu detektieren.
+  \item die hydraulische Symmetrie zwischen den StrÃ¤ngen erhalten bleibt
+        (kein ``Kurzschluss''-PhÃ¤nomen, bei dem ein Strang bevorzugt wird),
+  \item bei Teillast gezielt einzelne StrÃ¤nge abgesperrt werden kÃ¶nnen, um
+        die StrÃ¶mungsgeschwindigkeit -- und damit die WÃ¤rmeÃ¼bertragung und das
+        StrÃ¶mungsregime -- in den aktiven StrÃ¤ngen im optimalen Bereich zu halten,
+  \item Ãœberwachungssysteme (Durchflussmesser, Drucksensoren) fÃ¼r jeden Strang
+        vorgehalten werden, um Lecks oder Verstopfungen frÃ¼hzeitig zu detektieren.
 \end{enumerate}
 
 Digitale Zwillinge (\textit{digital twins})~\cite{Grieves2016} bieten hier
 besonders vielversprechende Perspektiven: Ein hochgenaues Echtzeit-Modell
 des Parallelnetzes, gespeist mit Druckdaten von battenbetriebenen
-IIoT-Sensoren~\cite{Boyes2018}, kann prädiktiv Betriebszustände optimieren
-und somit Energieeinsparungen von bis zu 20-30\,\% ermöglichen
-(erste Pilotstudien an Fernwärmenetzen zeigen ähnliche Größenordnungen~\cite{Bianchi2019}).
+IIoT-Sensoren~\cite{Boyes2018}, kann prÃ¤diktiv BetriebszustÃ¤nde optimieren
+und somit Energieeinsparungen von bis zu 20-30\,\% ermÃ¶glichen
+(erste Pilotstudien an FernwÃ¤rmenetzen zeigen Ã¤hnliche GrÃ¶ÃŸenordnungen~\cite{Bianchi2019}).
 
 \subsection{Nachhaltige Energiesysteme und Wasserstoffinfrastruktur}
 \label{ssec:ausblick_h2}
 
-Die Diskussion über die Ablösung fossiler Energieträger durch grünen Wasserstoff
+Die Diskussion Ã¼ber die AblÃ¶sung fossiler EnergietrÃ¤ger durch grÃ¼nen Wasserstoff
 ist in vollem Gange~\cite{IEA2019}.
 Wasserstoff ($\mathrm{H_2}$) unterscheidet sich in mehrfacher Hinsicht von
 Methan: geringere Dichte ($\rho_{H_2} \approx \SI{0.08}{\kilogram\per\metre\cubed}$
-bei Normbedingungen), erheblich kleinere Viskosität, aber auch eine deutlich
-höhere Strömungsgeschwindigkeit für gleichen Energiedurchsatz (da der Heizwert
-pro Masseneinheit von $H_2$ höher, pro Volumeneinheit aber viel niedriger ist).
+bei Normbedingungen), erheblich kleinere ViskositÃ¤t, aber auch eine deutlich
+hÃ¶here StrÃ¶mungsgeschwindigkeit fÃ¼r gleichen Energiedurchsatz (da der Heizwert
+pro Masseneinheit von $H_2$ hÃ¶her, pro Volumeneinheit aber viel niedriger ist).
 
-Für die Umrüstung von Erdgasnetzen auf Wasserstoff ergibt die vorliegende
+FÃ¼r die UmrÃ¼stung von Erdgasnetzen auf Wasserstoff ergibt die vorliegende
 Analyse eine wichtige Schlussfolgerung:
-Kleine Rohre mit hoherer spezifischer Oberfläche sind besonders
-\emph{embrittlungsanfällig} gegenüber Wasserstoff-induzierter Spannungsrisskorrosion
+Kleine Rohre mit hoherer spezifischer OberflÃ¤che sind besonders
+\emph{embrittlungsanfÃ¤llig} gegenÃ¼ber Wasserstoff-induzierter Spannungsrisskorrosion
 (HIC: Hydrogen-Induced Cracking)~\cite{Nanninga2011}.
-Allerdings erlaubt die höhere mechanische Festigkeit dünner Wände und die
+Allerdings erlaubt die hÃ¶here mechanische Festigkeit dÃ¼nner WÃ¤nde und die
 leichtere Austauschbarkeit kleiner Rohrsegmente eine gezielte Materialwahl
 (z.\,B.\ X70-Stahl mit kontrollierter Mikrostruktur~\cite{Dodds2011}).
-Eine systematische Werkstoffauswahl für Wasserstoff-P-arallel\-rohre
-kleiner Durchmesser stellt einen wichtigen zukünftigen Forschungsschwerpunkt dar.
+Eine systematische Werkstoffauswahl fÃ¼r Wasserstoff-P-arallel\-rohre
+kleiner Durchmesser stellt einen wichtigen zukÃ¼nftigen Forschungsschwerpunkt dar.
 
 \subsection{Additive Fertigung und modulare Leitungssysteme}
 \label{ssec:ausblick_3d}
 
 Die additive Fertigung (3D-Druck) von Metall -- insbesondere Laser Powder Bed Fusion
-(LPBF) und Directed Energy Deposition (DED) -- ermöglicht die Herstellung von
+(LPBF) und Directed Energy Deposition (DED) -- ermÃ¶glicht die Herstellung von
 integral geformten Verteilern (\textit{manifolds}), die multiple parallele
-Kanäle bereits im Fertigungsprozess integrieren~\cite{Thompson2016}.
-Dies würde die Montagekosten des Parallelnetzes drastisch reduzieren, da
-mehrstrangige Verbindungsstücke als ein einziges Bauteil gefertigt werden könnten.
+KanÃ¤le bereits im Fertigungsprozess integrieren~\cite{Thompson2016}.
+Dies wÃ¼rde die Montagekosten des Parallelnetzes drastisch reduzieren, da
+mehrstrangige VerbindungsstÃ¼cke als ein einziges Bauteil gefertigt werden kÃ¶nnten.
 
-Erste industrielle Projekte (z.\,B.\ bei SpaceX und Airbus für Triebwerks-Kühlkanäle)
+Erste industrielle Projekte (z.\,B.\ bei SpaceX und Airbus fÃ¼r Triebwerks-KÃ¼hlkanÃ¤le)
 demonstrieren die technische Machbarkeit integral-additiv gefertigter
 Rohrsysteme~\cite{Gradl2021}.
-Die Übertragung auf Gasleitungsnetzwerke -- mit niedrigeren Druckniveaus, dafür
-aber größeren Längen und anderen Regulierungsanforderungen -- wäre ein
+Die Ãœbertragung auf Gasleitungsnetzwerke -- mit niedrigeren Druckniveaus, dafÃ¼r
+aber grÃ¶ÃŸeren LÃ¤ngen und anderen Regulierungsanforderungen -- wÃ¤re ein
 hochinteressantes Forschungs- und Demonstrationsprojekt.
 
 \subsection{Multiphysikalische Optimierungsmodelle}
 \label{ssec:ausblick_multi}
 
-In der Praxis ist die Auslegung von Gasleitungen kein rein strömungsmechanisches
+In der Praxis ist die Auslegung von Gasleitungen kein rein strÃ¶mungsmechanisches
 Problem, sondern ein multiphysikalisches Optimierungsproblem, das mindestens
 folgende Disziplinen umfasst:
 \begin{itemize}
-  \item Strömungsmechanik (Druckverlust, Strömungsregime),
-  \item Wärmeübertragung (Temperaturerhaltung, Gasdichtekontrolle),
-  \item Strukturmechanik (Druckfestigkeit, Ermüdung, seismische Lasten),
+  \item StrÃ¶mungsmechanik (Druckverlust, StrÃ¶mungsregime),
+  \item WÃ¤rmeÃ¼bertragung (Temperaturerhaltung, Gasdichtekontrolle),
+  \item Strukturmechanik (Druckfestigkeit, ErmÃ¼dung, seismische Lasten),
   \item Elektrochemie (Korrosionsschutz, Kathodenschutz),
-  \item Akustik (Strömungsgeräusche, Betriebszuverlässigkeit in Wohngebieten),
+  \item Akustik (StrÃ¶mungsgerÃ¤usche, BetriebszuverlÃ¤ssigkeit in Wohngebieten),
   \item Betriebswirtschaft (CAPEX, OPEX, Regulierungskosten).
 \end{itemize}
-Zukünftige Arbeiten sollten einen vollständig integrierten Simulationsrahmen
-entwickeln -- etwa basierend auf \texttt{OpenFOAM}~\cite{Jasak2007} für CFD,
-gekoppelt mit \texttt{FEniCS}~\cite{AlnaesEtal2015} für Strukturberechnungen
-und einem MILP-Solver für die Wirtschaftlichkeitsoptimierung.
+ZukÃ¼nftige Arbeiten sollten einen vollstÃ¤ndig integrierten Simulationsrahmen
+entwickeln -- etwa basierend auf \texttt{OpenFOAM}~\cite{Jasak2007} fÃ¼r CFD,
+gekoppelt mit \texttt{FEniCS}~\cite{AlnaesEtal2015} fÃ¼r Strukturberechnungen
+und einem MILP-Solver fÃ¼r die Wirtschaftlichkeitsoptimierung.
 Eine besonders vielversprechende Herangehensweise ist der Einsatz von
 \emph{Physik-informierten neuronalen Netzen} (PINNs~\cite{Raissi2019}), die
-Strömungs- und Wärmeübertragungslösungen in Echtzeit (auch für komplexe,
-zeitabhängige Betriebszustände) generieren können und somit den Weg zu
-echtzeitfähigen digitalen Zwillingen ebnen.
+StrÃ¶mungs- und WÃ¤rmeÃ¼bertragungslÃ¶sungen in Echtzeit (auch fÃ¼r komplexe,
+zeitabhÃ¤ngige BetriebszustÃ¤nde) generieren kÃ¶nnen und somit den Weg zu
+echtzeitfÃ¤higen digitalen Zwillingen ebnen.
 
 \subsection{Normierung und Regulierung}
 \label{ssec:ausblick_normen}
 
 Die aktuellen technischen Regelwerke -- DIN EN 12007, DVGW G~463,
-ISO~13623 -- wurden für konventionelle Einzelrohr-Konzepte entwickelt.
-Sie enthalten keine spezifischen Anforderungen oder Leitfäden für
+ISO~13623 -- wurden fÃ¼r konventionelle Einzelrohr-Konzepte entwickelt.
+Sie enthalten keine spezifischen Anforderungen oder LeitfÃ¤den fÃ¼r
 parallele Rohrnetzwerke kleiner Durchmesser.
-Eine Aktualisierung dieser Normen, die sowohl Bemessungsregeln für Parallelnetze
-als auch Prüfverfahren für den typischerweise höheren Verbindungsanteil
-(mehr Schweißnähte pro Leitungszug) festlegt, wäre eine notwendige Voraussetzung
-für die breite industrielle Anwendung der hier beschriebenen Konzepte.
-Eine entsprechende Normungsinitiative beim DVGW oder CEN (Comité Européen
-de Normalisation) wäre wünschenswert.
+Eine Aktualisierung dieser Normen, die sowohl Bemessungsregeln fÃ¼r Parallelnetze
+als auch PrÃ¼fverfahren fÃ¼r den typischerweise hÃ¶heren Verbindungsanteil
+(mehr SchweiÃŸnÃ¤hte pro Leitungszug) festlegt, wÃ¤re eine notwendige Voraussetzung
+fÃ¼r die breite industrielle Anwendung der hier beschriebenen Konzepte.
+Eine entsprechende Normungsinitiative beim DVGW oder CEN (ComitÃ© EuropÃ©en
+de Normalisation) wÃ¤re wÃ¼nschenswert.
 
 \subsection{Pilot- und Demonstrationsprojekte}
 \label{ssec:ausblick_pilot}
 
-Als wichtigster nächster Schritt wird die Durchführung eines
-Pilot\-pro\-jekts mit einer Leitungslänge von \SIrange{200}{500}{\metre}
+Als wichtigster nÃ¤chster Schritt wird die DurchfÃ¼hrung eines
+Pilot\-pro\-jekts mit einer LeitungslÃ¤nge von \SIrange{200}{500}{\metre}
 empfohlen.
-Geeignete Anwendungsfälle wären:
+Geeignete AnwendungsfÃ¤lle wÃ¤ren:
 \begin{enumerate}
-  \item \textbf{Industriegeländeversorgung}: Großbetriebe mit mehreren
-        Verbraucherstellen in einem Werksgelände, die an einzelne
-        Hochdruckleitungen angeschlossen werden -- ideal für ein modulares
+  \item \textbf{IndustriegelÃ¤ndeversorgung}: GroÃŸbetriebe mit mehreren
+        Verbraucherstellen in einem WerksgelÃ¤nde, die an einzelne
+        Hochdruckleitungen angeschlossen werden -- ideal fÃ¼r ein modulares
         Parallelnetz.
   \item \textbf{Erneuerbarer-Energie-Einspeisung}: Biogas-Einspeiseanlagen,
         bei denen das Gasnetz in Schwachlastzeiten unterdurchschnittlich
         ausgelastet ist und ein Parallelnetz den Betrieb bei optimalen
-        Strömungsbedingungen ermöglicht.
+        StrÃ¶mungsbedingungen ermÃ¶glicht.
   \item \textbf{Wasserstoff-Quartiere}: Im Rahmen der Wasserstoffmodellregionen
-        (z.\,B.\ HyExpert der NOW GmbH) können Parallelnetze kleiner Rohre
-        als Systemlösung für die Mikroversorgung von Industrie- und
+        (z.\,B.\ HyExpert der NOW GmbH) kÃ¶nnen Parallelnetze kleiner Rohre
+        als SystemlÃ¶sung fÃ¼r die Mikroversorgung von Industrie- und
         Gewerbegebieten erprobt werden.
 \end{enumerate}
 
-Für ein solches Pilotprojekt werden folgende Messprogramme empfohlen:
-Kontinuierliche Druckverlustmessungen über alle Stränge, Temperaturprofile
+FÃ¼r ein solches Pilotprojekt werden folgende Messprogramme empfohlen:
+Kontinuierliche Druckverlustmessungen Ã¼ber alle StrÃ¤nge, Temperaturprofile
 mittels verteilter Glasfasersensorik (DTS), Durchflussmessungen mit
 Coriolis-Massendurchflussmessern und monatliche Videoinspektion (Push-Kamera)
 zur Fouling-Quantifizierung.
@@ -1665,7 +1665,7 @@ zur Fouling-Quantifizierung.
 
 \bibitem{Baehr2016}
 Baehr, H.\,D.; Stephan, K.:
-\textit{Wärme- und Stoffübertragung}, 9.\,Aufl.
+\textit{WÃ¤rme- und StoffÃ¼bertragung}, 9.\,Aufl.
 Springer Vieweg, Berlin/Heidelberg, 2016.
 \url{https://doi.org/10.1007/978-3-662-49677-0}
 
@@ -1720,9 +1720,9 @@ Matplotlib: A 2D Graphics Environment.
 \url{https://doi.org/10.1109/MCSE.2007.55}
 
 \bibitem{DIN_EN_12007}
-Deutsches Institut für Normung (Hrsg.):
-\textit{DIN EN 12007-1 bis -5: Gasinfrastruktur -- Rohrleitungen für einen
-maximalen Betriebsdruck bis einschließlich 16 bar}.
+Deutsches Institut fÃ¼r Normung (Hrsg.):
+\textit{DIN EN 12007-1 bis -5: Gasinfrastruktur -- Rohrleitungen fÃ¼r einen
+maximalen Betriebsdruck bis einschlieÃŸlich 16 bar}.
 Beuth Verlag, Berlin, 2012.
 
 \bibitem{Wylie1993}
@@ -1742,7 +1742,7 @@ Addison-Wesley, Reading, MA, 1989.
 
 \bibitem{Helbing2015}
 Helbing, D. et al.:
-\textit{Quantitative Sozialwissenschaften: Netzwerke, Systeme und Komplexität}.
+\textit{Quantitative Sozialwissenschaften: Netzwerke, Systeme und KomplexitÃ¤t}.
 Springer Spektrum, Berlin, 2015.
 
 \bibitem{TimoshenkoWoinowsky2009}
@@ -1822,7 +1822,7 @@ OpenFOAM: A C\texttt{++} Library for Complex Physics Simulations.
 \textit{International Workshop on Coupled Methods in Numerical Dynamics}, 1:1--20, 2007.
 
 \bibitem{AlnaesEtal2015}
-Alnæs, M.\,S. et al.:
+AlnÃ¦s, M.\,S. et al.:
 The FEniCS Project Version 1.5.
 \textit{Archive of Numerical Software}, 3(100), 2015.
 \url{https://doi.org/10.11588/ans.2015.100.20553}
@@ -1862,3 +1862,4 @@ Wiley, Hoboken, NJ, 2013.
 \end{thebibliography}
 
 \end{document}
+

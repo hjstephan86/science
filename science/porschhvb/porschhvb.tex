@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -56,13 +56,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}1
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
+	{Ã–}{{\"O}}1
+	{Ã„}{{\"A}}1
+	{Ãœ}{{\"U}}1
+	{ÃŸ}{{\ss}}1
+	{Ã¼}{{\"u}}1
+	{Ã¤}{{\"a}}1
+	{Ã¶}{{\"o}}1
 }
 
 \title{\textbf{Maximierung von Reichweite und Lebensdauer\\
@@ -91,7 +91,7 @@ Wir beweisen sechs S\"atze und vier Lemmata, die den theoretisch optimalen
 Betriebsraum der Batterie charakterisieren: das optimale SOC-Fenster
 $[\mathrm{SOC}_{\min}^*, \mathrm{SOC}_{\max}^*]$, die optimale Betriebstemperatur,
 die bestm\"ogliche Ladestrategie und das Rekuperationsoptimum.
-Alle Ergebnisse werden durch zwölf Matplotlib-Grafiken veranschaulicht
+Alle Ergebnisse werden durch zwÃ¶lf Matplotlib-Grafiken veranschaulicht
 und quantitativ ausgewertet.
 
 \medskip
@@ -114,7 +114,7 @@ Der weltweite Markt f\"ur Elektrofahrzeuge w\"achst mit j\"ahrlichen Raten von
 \"uber 30\,\% und hat im Jahr 2025 einen globalen Anteil von rund 18\,\%
 aller Neuzulassungen erreicht \cite{IEA2025}. Im Premiumsegment hat Porsche
 mit dem Taycan einen Elektroantrieb etabliert, der performance-orientierte
-Kundenwünsche erf\"ullt und h\"ochste Anforderungen an Reichweite, Ladezeit
+KundenwÃ¼nsche erf\"ullt und h\"ochste Anforderungen an Reichweite, Ladezeit
 und Langzeitstabilit\"at stellt.
 
 Die \textbf{Hochvoltbatterie} (HV-Batterie) ist dabei das Herzst\"uck des
@@ -150,7 +150,7 @@ $Q_0$ (in kWh) und der Anfangsreichweite $R_0$ (in km). Gesucht sind:
 
 Es besteht ein grunds\"atzlicher Zielkonflikt: Schnelles Laden erh\"oht die
 Verf\"ugbarkeit (mehr Reichweite pro Zeiteinheit), schadigt aber die Batterie.
-Tiefes Entladen maximiert die genutzte Energie, verkürzt aber die Standzeit.
+Tiefes Entladen maximiert die genutzte Energie, verkÃ¼rzt aber die Standzeit.
 Hohe Temperaturen verbessern den Ionentransport, beschleunigen jedoch die
 parasit\"aren Nebenreaktionen. Diesen Zielkonflikt formalisieren und l\"osen
 wir in dieser Arbeit.
@@ -165,7 +165,7 @@ wir in dieser Arbeit.
     Aerodynamik, Rekuperation)
   \item \textbf{Sechs formal bewiesene S\"atze} \"uber Optimalit\"at von
     SOC-Fenster, Temperatur, Ladestrategie und Rekuperation
-  \item \textbf{Zwölf quantitative Auswertungen} mit Matplotlib-Grafiken
+  \item \textbf{ZwÃ¶lf quantitative Auswertungen} mit Matplotlib-Grafiken
   \item Nachweis der Erf\"ullbarkeit der Porsche-HV-Garantieparameter
     unter optimaler Nutzung
 \end{enumerate}
@@ -191,7 +191,7 @@ Bauform. Eine Zelle besteht aus~\cite{Vetter2005}:
 \begin{itemize}
   \item \textbf{Kathode:} Lithium-Nickel-Mangan-Kobalt-Oxid (NMC 811)
     mit hoher Energiedichte ($\approx 200$\,Wh/kg)
-  \item \textbf{Anode:} Graphit (mit Silizium-Beimischung für h\"ohere Kapazit\"at)
+  \item \textbf{Anode:} Graphit (mit Silizium-Beimischung fÃ¼r h\"ohere Kapazit\"at)
   \item \textbf{Elektrolyt:} Organisches L\"osungsmittel (z.\,B. EC/DMC)
     mit Lithiumsalz (LiPF$_6$)
   \item \textbf{Separator:} Polyolefin-Membran (15--25\,\(\mu\)m)
@@ -345,7 +345,7 @@ das schnelle SEI-Wachstum, sp\"ater verlangsamen sich die Nebenreaktionen.
   \]
   mit Batteriemasse $m_{\mathrm{bat}}$ (kg), spezifischer W\"armekapazit\"at
   $c_p \approx 900$\,J/(kg\,K), W\"arme\"ubergangskoeffizient $\lambda$
-  (W/K) und Kühlleistung $\dot{Q}_{\mathrm{cool}}$ des Thermomanagementsystems.
+  (W/K) und KÃ¼hlleistung $\dot{Q}_{\mathrm{cool}}$ des Thermomanagementsystems.
 \end{definition}
 
 \subsection{Physikalisches Reichweitenmodell}
@@ -646,7 +646,7 @@ das schnelle SEI-Wachstum, sp\"ater verlangsamen sich die Nebenreaktionen.
 
 \subsection{Rekuperationsoptimum}
 
-\begin{lemma}[Optimale Rekuperationsverzögerung]
+\begin{lemma}[Optimale RekuperationsverzÃ¶gerung]
 \label{lem:rekup}
   Die rekuperierte Energie bei Verz\"ogerung von $v_0$ auf $0$ mit
   Verz\"ogerung $a$ und Rekuperationswirkungsgrad $\eta_r(a)$ betr\"agt:
@@ -750,12 +750,12 @@ Das Thermomanagementsystem (TMS) des Taycan nutzt einen direkten
 
 \begin{itemize}
   \item \textbf{K\"uhlung:} Direktexpansion mit K\"altemittel R1234yf;
-    Kühlleistung bis 10\,kW
+    KÃ¼hlleistung bis 10\,kW
   \item \textbf{Heizung:} W\"armepumpe statt PTC-Widerstand;
     COP $\approx 2{,}0$--$3{,}5$ je nach Au\ss{}entemperatur
   \item \textbf{Vorkonditionierung:} Vor dem Laden optimiert das TMS
     die Batterietemperatur auf $T^* = 25$--$30\,^{\circ}\mathrm{C}$
-  \item \textbf{Temperaturhomogenit\"at:} Flüssigk\"uhlung sorgt für
+  \item \textbf{Temperaturhomogenit\"at:} FlÃ¼ssigk\"uhlung sorgt fÃ¼r
     $\Delta T < 5\,^{\circ}\mathrm{C}$ zwischen Zellen (Zell-Balancing)
 \end{itemize}
 
@@ -848,7 +848,7 @@ optimalen Region.
   \centering
   \includegraphics[width=0.95\textwidth]{fig03_cc_cv_ladekurve.pdf}
   \caption{CC-CV-Ladekurve: Spannung (rot, linke Achse), Strom (blau,
-    rechte Achse) und SOC (gr\"un, rechte Achse) über die Ladezeit.
+    rechte Achse) und SOC (gr\"un, rechte Achse) Ã¼ber die Ladezeit.
     In der CC-Phase (0--30\,min) steigt der SOC linear von 0 auf 80\,\%.
     In der CV-Phase (30--75\,min) f\"allt der Strom exponentiell, w\"ahrend
     SOC sich asymptotisch 100\,\% n\"ahert.}
@@ -858,7 +858,7 @@ optimalen Region.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig10_ladestrategien_vergleich.pdf}
-  \caption{Oben: SOC-Verläufe der drei Ladestrategien (A: Schnell 0--100\,\%,
+  \caption{Oben: SOC-VerlÃ¤ufe der drei Ladestrategien (A: Schnell 0--100\,\%,
     B: Standard 20--80\,\%, C: Optimiert + vorkonditioniert).
     Unten: Kapazit\"atsverlust pro 1\,000 Zyklen. Strategie A verliert
     4{,}9\,\%, Strategie C nur 1{,}3\,\% -- eine Reduktion um Faktor 3{,}8.}
@@ -891,7 +891,7 @@ von 3{,}6 Prozentpunkten Kapazit\"atsverlust -- bei 2\,000 Zyklen
     Schnellladung im Sommer ($T_{\mathrm{amb}} = 35\,^{\circ}\mathrm{C}$). Ohne TMS
     \"uberschreitet die Batterietemperatur nach 35\,min die kritische
     Schwelle von 45\,\degC{}. Mit Aktivk\"uhlung verbleibt $T_{\mathrm{bat}}$
-    im grünen Bereich. Vorkonditionierung (gr\"un gestrichelt) erzielt
+    im grÃ¼nen Bereich. Vorkonditionierung (gr\"un gestrichelt) erzielt
     das Optimum.}
   \label{fig:thermo}
 \end{figure}
@@ -927,7 +927,7 @@ von 3{,}6 Prozentpunkten Kapazit\"atsverlust -- bei 2\,000 Zyklen
   \includegraphics[width=0.95\textwidth]{fig07_garantie_prognose.pdf}
   \caption{Modellprognose (SOH vs. Laufleistung) vs. Porsche HV-Garantiekurve
     (orange Treppenkurve). Bei optimaler Nutzung liegt die Prognose
-    deutlich \"uber den Garantieschwellen. Selbst bei ungünstiger Nutzung
+    deutlich \"uber den Garantieschwellen. Selbst bei ungÃ¼nstiger Nutzung
     wird die 70-\%-Schwelle bei 160\,000\,km eingehalten.}
   \label{fig:garantie}
 \end{figure}
@@ -990,7 +990,7 @@ Elektrofahrzeugen entwickelt. Die wichtigsten Ergebnisse sind:
 
   \item \textbf{Optimales SOC-Fenster:} Das theoretisch optimale Fenster
     $[22\,\%, 78\,\%]$ und die praktische Empfehlung $[10\,\%, 80\,\%]$ wurden
-    formal begründet (Satz~\ref{satz:soc}). Die Lebensdauerverl\"angerung
+    formal begrÃ¼ndet (Satz~\ref{satz:soc}). Die Lebensdauerverl\"angerung
     gegen\"uber Vollzyklen betr\"agt Faktor 3--4.
 
   \item \textbf{Optimale Betriebstemperatur:} $T^* \in [20\,^{\circ}\mathrm{C}, 30\,^{\circ}\mathrm{C}]$
@@ -998,7 +998,7 @@ Elektrofahrzeugen entwickelt. Die wichtigsten Ergebnisse sind:
     (Satz~\ref{satz:tempopt}).
 
   \item \textbf{Reichweitenmaximierung:} Die optimale Reisegeschwindigkeit
-    $v^*$ h\"angt von der verfügbaren Reisezeit ab; das aerodynamische Limit
+    $v^*$ h\"angt von der verfÃ¼gbaren Reisezeit ab; das aerodynamische Limit
     liegt bei ca.\ 72\,km/h (Lemma~\ref{lem:aero}, Satz~\ref{satz:range}).
 
   \item \textbf{Ladestrategie:} Die optimierte Ladestrategie (CC/3, SOC 20--80\,\%)
@@ -1058,7 +1058,7 @@ wie CATL und BYD haben bereits Serienproduktion angek\"undigt.
 
 \paragraph{Lithium-Schwefel-Batterien (LiS).}
 Die theoretische Energiedichte von LiS (2\,600\,Wh/kg) \"ubersteigt Li-Ion
-um den Faktor 5. Haupthürde ist der \emph{Polysulfid-Shuttle-Effekt},
+um den Faktor 5. HaupthÃ¼rde ist der \emph{Polysulfid-Shuttle-Effekt},
 der zu schnellem Kapazit\"atsverlust f\"uhrt. Graphen-Komposit-Kathoden
 und ionische Fl\"ussigkeiten versprechen Abhilfe.
 
@@ -1127,7 +1127,7 @@ eine bei $-20\,^{\circ}\mathrm{C}$ gelagerte Batterie in $<5$\,min Ladetemperatu
 externe Heizenergie zu ben\"otigen \cite{Wang2019}.
 
 \paragraph{Bipolare Zellarchitektur.}
-Bipolare Elektroden ermöglichen kompaktere Bauweise mit niedrigerem
+Bipolare Elektroden ermÃ¶glichen kompaktere Bauweise mit niedrigerem
 Innenwiderstand und damit h\"oherer Schnellladef\"ahigkeit.
 
 \subsection{N\"achste Generation des Thermomanagements}
@@ -1139,7 +1139,7 @@ zehnmal besser als Luftk\"uhlung. Startups wie Xing Mobility und
 Aspencore demonstrieren Ladesysteme mit 10C ($>$1\,MW).
 
 \paragraph{Phasenwechselmaterialien (PCM).}
-Parafinbasierte PCM speichern Latentwärme bei konstantem Temperaturniveau
+Parafinbasierte PCM speichern LatentwÃ¤rme bei konstantem Temperaturniveau
 und d\"ampfen Temperaturspitzen ohne aktive K\"uhlung.
 
 \paragraph{Zellulare W\"arme\"ubertrager.}
@@ -1245,7 +1245,7 @@ HV-Batterie:
     Batterielebensdauer und Ladezeiten -- eine Echtzeit-Anwendung
     der Pareto-Front aus Satz~\ref{satz:pareto}.
   \item \textbf{Flottenmanagementsysteme:} In Robotaxi-Flotten k\"onnen
-    Fahrzeuge koordiniert laden und entladen, um die Netzlast zu glätten
+    Fahrzeuge koordiniert laden und entladen, um die Netzlast zu glÃ¤tten
     und Lebensdauer zu maximieren.
 \end{itemize}
 
@@ -1262,7 +1262,7 @@ Aus den identifizierten L\"ucken ergibt sich folgende Forschungsagenda:
   \item Erweiterung des Degradationsmodells auf \textbf{kalendarische
     und zyklische} Alterung simultan (gemischtes Modell)
   \item Entwicklung eines \textbf{stochastischen Optimierungsrahmens}
-    f\"ur V2G unter Marktpreisvolatilität
+    f\"ur V2G unter MarktpreisvolatilitÃ¤t
   \item Experimentelle Validierung der Arrhenius-Parameter an
     realen Taycan-Zellen (Kooperation Porsche AG / Universit\"at)
   \item Integration des hier entwickelten Rahmenwerks in einen
@@ -1284,7 +1284,7 @@ Aus den identifizierten L\"ucken ergibt sich folgende Forschungsagenda:
 
 \bibitem{Porsche2024}
   Porsche AG:
-  \emph{HV-Batterie-Garantiebedingungen für vollelektrische Fahrzeuge}.
+  \emph{HV-Batterie-Garantiebedingungen fÃ¼r vollelektrische Fahrzeuge}.
   Technische Information, Stuttgart, 2024.
 
 \bibitem{Vetter2005}
@@ -1457,3 +1457,4 @@ Aus den identifizierten L\"ucken ergibt sich folgende Forschungsagenda:
 \end{thebibliography}
 
 \end{document}
+

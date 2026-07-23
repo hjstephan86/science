@@ -10,7 +10,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import warnings
 warnings.filterwarnings('ignore')
 
-FIGDIR = "/home/claude/duft_paper/figures"
+FIGDIR = 'figures"
 plt.rcParams.update({
     'font.family': 'DejaVu Sans',
     'font.size': 11,

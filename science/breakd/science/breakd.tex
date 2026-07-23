@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -54,9 +54,9 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Bemerkung}
 
-% ─── Title ───────────────────────────────────────────────────────────────────
+% â”€â”€â”€ Title â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \title{%
-  \textbf{Zwei fundamentale physiologische Grundsätze:\\
+  \textbf{Zwei fundamentale physiologische GrundsÃ¤tze:\\
     Asymmetrische Magnesium-Kinetik und\\
     das Halbmagen-Prinzip zur Gewichtsreduktion}\\[6pt]
   \large Formale Herleitung, Modellierung und experimenteller Nachweis
@@ -64,9 +64,9 @@
 
 \author{Stephan Epp}
 
-\date{13. März 2026}
+\date{13. MÃ¤rz 2026}
 
-% ─── Document ────────────────────────────────────────────────────────────────
+% â”€â”€â”€ Document â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \begin{document}
 
 \maketitle
@@ -77,15 +77,15 @@ Die vorliegende Arbeit formalisiert und beweist zwei bislang in der Literatur
 qualitativ bekannte, jedoch selten mathematisch streng behandelte
 physiologische Prinzipien.
 \textbf{Theorem~I} beschreibt die asymmetrische Kinetik der
-Magnesium-Supplementierung: die Zeitkonstante der körperlichen
-\emph{Gewöhnung} $\tau_\text{on}$ ist signifikant kürzer als die Zeitkonstante
-der \emph{Entwöhnung} $\tau_\text{off}$, da sich beim Absetzen der
-physiologische Rückresorptionsprozess und die zelluläre Entwöhnung
-überlagern und gegenseitig verlangsamen.
+Magnesium-Supplementierung: die Zeitkonstante der kÃ¶rperlichen
+\emph{GewÃ¶hnung} $\tau_\text{on}$ ist signifikant kÃ¼rzer als die Zeitkonstante
+der \emph{EntwÃ¶hnung} $\tau_\text{off}$, da sich beim Absetzen der
+physiologische RÃ¼ckresorptionsprozess und die zellulÃ¤re EntwÃ¶hnung
+Ã¼berlagern und gegenseitig verlangsamen.
 \textbf{Theorem~II} formuliert das Halbmagen-Prinzip: eine konsequente
-Beschränkung der Nahrungsaufnahme auf ca.\ 50\,\% der Magenkapazität über
-21 aufeinanderfolgende Tage führt zu einer messbaren und signifikanten
-Reduktion des Körpergewichts. Beide Aussagen werden durch ein
+BeschrÃ¤nkung der Nahrungsaufnahme auf ca.\ 50\,\% der MagenkapazitÃ¤t Ã¼ber
+21 aufeinanderfolgende Tage fÃ¼hrt zu einer messbaren und signifikanten
+Reduktion des KÃ¶rpergewichts. Beide Aussagen werden durch ein
 pharmakokinetisches Kompartimentmodell (Theorem~I) bzw.\ ein
 energiebilanzielles Adaptationsmodell (Theorem~II) formal bewiesen,
 numerisch simuliert und durch modellbasierte Experimente mit
@@ -94,63 +94,63 @@ numerisch simuliert und durch modellbasierte Experimente mit
 
 \vspace{4pt}
 \noindent
-\textbf{Schlagwörter:}
-Magnesiumkinetik, Pharmakokinetik, Gewöhnung, Entwöhnung, asymmetrische
+\textbf{SchlagwÃ¶rter:}
+Magnesiumkinetik, Pharmakokinetik, GewÃ¶hnung, EntwÃ¶hnung, asymmetrische
 Zeitkonstanten, Kalorienbilanz, Gewichtsreduktion, Halbmagen-Prinzip,
 metabolische Adaptation, 21-Tage-Intervention.
 
 \tableofcontents
 \newpage
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Einleitung}
 \label{sec:intro}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Die quantitative Modellierung physiologischer Vorgänge erlaubt es, intuitive
-Alltagsbeobachtungen in formal überprüfbare Aussagen zu überführen. Zwei
+Die quantitative Modellierung physiologischer VorgÃ¤nge erlaubt es, intuitive
+Alltagsbeobachtungen in formal Ã¼berprÃ¼fbare Aussagen zu Ã¼berfÃ¼hren. Zwei
 solche Beobachtungen bilden den Ausgangspunkt dieser Arbeit.
 
 \paragraph{Beobachtung~1 (Magnesium).}
 Es ist in der Praxis bekannt, dass die Einnahme von Magnesium
 (Mg$^{2+}$) innerhalb weniger Wochen zu einem messbaren Anstieg des
-Plasmamagnesiumspiegels führt, während die Normalisierung nach dem
-\emph{Absetzen} derselben Präparate deutlich \emph{länger} dauert. Diese
+Plasmamagnesiumspiegels fÃ¼hrt, wÃ¤hrend die Normalisierung nach dem
+\emph{Absetzen} derselben PrÃ¤parate deutlich \emph{lÃ¤nger} dauert. Diese
 Asymmetrie wird in der pharmazeutischen Literatur nicht immer explizit
 thematisiert.
 
 \paragraph{Beobachtung~2 (Gewicht).}
-Die volkstümliche Empfehlung, den Magen nur zur Hälfte zu füllen, wird
-häufig im Kontext von Fastentraditionen oder Diäten erwähnt, jedoch selten
-quantitativ analysiert. Die Kernfrage ist: Über welchen Mindestzeitraum muss
-dieses Prinzip konsequent angewendet werden, um eine meßbare
+Die volkstÃ¼mliche Empfehlung, den Magen nur zur HÃ¤lfte zu fÃ¼llen, wird
+hÃ¤ufig im Kontext von Fastentraditionen oder DiÃ¤ten erwÃ¤hnt, jedoch selten
+quantitativ analysiert. Die Kernfrage ist: Ãœber welchen Mindestzeitraum muss
+dieses Prinzip konsequent angewendet werden, um eine meÃŸbare
 Gewichtsreduktion zu erzielen?
 
 Die vorliegende Arbeit beantwortet beide Fragen durch:
 \begin{enumerate}[label=(\roman*)]
-  \item eine präzise mathematische Modellierung,
-  \item den formalen Beweis zweier Hauptsätze,
+  \item eine prÃ¤zise mathematische Modellierung,
+  \item den formalen Beweis zweier HauptsÃ¤tze,
   \item numerische Simulation und graphische Verifikation.
 \end{enumerate}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Theorem I: Asymmetrische Magnesium-Kinetik}
 \label{sec:mg}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Physiologischer Hintergrund}
 
-Magnesium ist ein essenzielles zweiwertiges Kation und beteiligt an über
-300 enzymatischen Reaktionen \cite{DiNicolantonio2018}. Im Körper verteilt es
+Magnesium ist ein essenzielles zweiwertiges Kation und beteiligt an Ã¼ber
+300 enzymatischen Reaktionen \cite{DiNicolantonio2018}. Im KÃ¶rper verteilt es
 sich auf drei funktionelle Kompartimente:
 \begin{itemize}
   \item Plasmapool ($\approx$1\,\% des Gesamtmagnesiums),
   \item Knochenpool ($\approx$60\,\%),
-  \item intrazellulärer Weichgewebepool ($\approx$39\,\%).
+  \item intrazellulÃ¤rer Weichgewebepool ($\approx$39\,\%).
 \end{itemize}
 
-Bei oraler Supplementierung wird Mg$^{2+}$ intestinal absorbiert und über
-aktiven Transport (TRPM6/TRPM7-Kanäle) sowie parazellulär aufgenommen
+Bei oraler Supplementierung wird Mg$^{2+}$ intestinal absorbiert und Ã¼ber
+aktiven Transport (TRPM6/TRPM7-KanÃ¤le) sowie parazellulÃ¤r aufgenommen
 \cite{Schuchardt2017}. Der renale Tubulus reguliert die Ausscheidung durch
 Reabsorption (bis zu 95\,\% im Henleschen Loop und distalen Tubulus).
 
@@ -163,18 +163,18 @@ Einkompartimentmodell beschrieben. Zufuhr und Elimination folgen
 Kinetiken erster Ordnung.
 \end{assumption}
 
-\begin{assumption}[Konstante Zufuhr während Supplementierung]
+\begin{assumption}[Konstante Zufuhr wÃ¤hrend Supplementierung]
 \label{ass:dose}
-Während der Supplementierungsphase $[0, T_\text{dose}]$ wird eine konstante
-tägliche Dosis $D$ [\si{mg/d}] oral verabreicht.
+WÃ¤hrend der Supplementierungsphase $[0, T_\text{dose}]$ wird eine konstante
+tÃ¤gliche Dosis $D$ [\si{mg/d}] oral verabreicht.
 \end{assumption}
 
 \begin{assumption}[Metabolische Adaptation]
 \label{ass:adapt}
-Während der Entwöhnungsphase $t > T_\text{dose}$ sinkt die renale
-Reabsorptionsrate nicht instantan auf Basisniveau, sondern exponentiell über
+WÃ¤hrend der EntwÃ¶hnungsphase $t > T_\text{dose}$ sinkt die renale
+Reabsorptionsrate nicht instantan auf Basisniveau, sondern exponentiell Ã¼ber
 die Zeit, da renale Transporter (SLC41A1, TRPM6) einer expressionellen
-Hochregulation unterlagen, die sich nur langsam zurückbildet.
+Hochregulation unterlagen, die sich nur langsam zurÃ¼ckbildet.
 Diese Adaptation bewirkt eine \emph{effektiv verlangsamte} Elimination
 ($k_\text{off} < k_\text{on}$).
 \end{assumption}
@@ -183,7 +183,7 @@ Diese Adaptation bewirkt eine \emph{effektiv verlangsamte} Elimination
 
 \subsubsection{Aufbauphase}
 
-Für $t \in [0, T_\text{dose}]$ gilt die Differentialgleichung:
+FÃ¼r $t \in [0, T_\text{dose}]$ gilt die Differentialgleichung:
 \begin{equation}
   \frac{\mathrm{d}C}{\mathrm{d}t} = k_\text{on}\bigl(C_\text{ss} - C(t)\bigr),
   \qquad C(0) = C_\text{base},
@@ -192,7 +192,7 @@ Für $t \in [0, T_\text{dose}]$ gilt die Differentialgleichung:
 mit der Steady-State-Konzentration $C_\text{ss}$ und der
 Absorptionsratekonstante $k_\text{on}$ [\si{d^{-1}}].
 
-\paragraph{Lösung.} Die Gleichung~\eqref{eq:buildup} ist eine
+\paragraph{LÃ¶sung.} Die Gleichung~\eqref{eq:buildup} ist eine
 lineare, inhomogene ODE erster Ordnung. Trennung der Variablen liefert:
 \begin{equation}
   \boxed{C_\text{on}(t) = C_\text{base} + (C_\text{ss} - C_\text{base})
@@ -208,20 +208,20 @@ Die \emph{funktionelle Zeitkonstante} $\tau_\text{on}$ bis zum Erreichen von
   \label{eq:tau_on}
 \end{equation}
 
-\subsubsection{Entwöhnungsphase}
+\subsubsection{EntwÃ¶hnungsphase}
 
-Für $t > T_\text{dose}$ entfällt die Zufuhr. Durch Annahme~\ref{ass:adapt}
-überlagern sich zwei Prozesse:
+FÃ¼r $t > T_\text{dose}$ entfÃ¤llt die Zufuhr. Durch Annahme~\ref{ass:adapt}
+Ã¼berlagern sich zwei Prozesse:
 \begin{enumerate}
-  \item \textbf{Natürliche Elimination} mit Rate $k_\text{off}^{(0)}$
+  \item \textbf{NatÃ¼rliche Elimination} mit Rate $k_\text{off}^{(0)}$
         (intrinsische renale Ausscheidung),
   \item \textbf{Adaptierte Reabsorption}: die hochregulierten Transporter
-        halten $k_\text{off}$ zunächst niedrig; Rückregulation folgt
+        halten $k_\text{off}$ zunÃ¤chst niedrig; RÃ¼ckregulation folgt
         $\Delta k(t) = (k_\text{off}^{(0)} - k_\text{off})(1-e^{-\alpha(t-T)})$
         mit $\alpha \ll k_\text{on}$.
 \end{enumerate}
 
-Im vereinfachten Modell (effektive Mittelung über den Anpassungszeitraum)
+Im vereinfachten Modell (effektive Mittelung Ã¼ber den Anpassungszeitraum)
 verwenden wir eine \emph{gemittelte} effektive Rate $k_\text{off} < k_\text{on}$:
 \begin{equation}
   \frac{\mathrm{d}C}{\mathrm{d}t} = -k_\text{off}\bigl(C(t) - C_\text{base}\bigr),
@@ -230,7 +230,7 @@ verwenden wir eine \emph{gemittelte} effektive Rate $k_\text{off} < k_\text{on}$
 \end{equation}
 wobei $C_\text{peak} = C_\text{on}(T_\text{dose})$.
 
-\paragraph{Lösung.}
+\paragraph{LÃ¶sung.}
 \begin{equation}
   \boxed{C_\text{off}(t) = C_\text{base} + (C_\text{peak}-C_\text{base})\,
     e^{-k_\text{off}(t-T_\text{dose})}, \quad t > T_\text{dose}.}
@@ -242,19 +242,19 @@ wobei $C_\text{peak} = C_\text{on}(T_\text{dose})$.
 \begin{theorem}[Asymmetrische Mg-Kinetik]
 \label{thm:mg}
 Seien $k_\text{on}, k_\text{off} > 0$ die Raten\-konstanten der Auf- und
-Abbauphase gemäß Gleichungen~\eqref{eq:C_on} und~\eqref{eq:C_off}. Unter
+Abbauphase gemÃ¤ÃŸ Gleichungen~\eqref{eq:C_on} und~\eqref{eq:C_off}. Unter
 den Annahmen~\ref{ass:onecomp}--\ref{ass:adapt} gilt stets:
 \begin{equation}
   \tau_\text{off} > \tau_\text{on},
   \label{eq:asymm}
 \end{equation}
-d.\,h.\ der Körper baut Magnesium nach dem Absetzen \emph{langsamer} ab
-als er es während der Supplementierung aufgebaut hat.
+d.\,h.\ der KÃ¶rper baut Magnesium nach dem Absetzen \emph{langsamer} ab
+als er es wÃ¤hrend der Supplementierung aufgebaut hat.
 \end{theorem}
 
 \begin{proof}
 Aus Gleichung~\eqref{eq:tau_on} folgt
-$\tau_\text{on} = -\ln(\epsilon)/k_\text{on}$ für $\epsilon = 0{,}05$.
+$\tau_\text{on} = -\ln(\epsilon)/k_\text{on}$ fÃ¼r $\epsilon = 0{,}05$.
 Analog ist die Zeit $\tau_\text{off}$, bis die Plasmakonzentration von
 $C_\text{peak}$ auf $C_\text{base} + \epsilon (C_\text{peak}-C_\text{base})$
 abgesunken ist:
@@ -271,14 +271,14 @@ $k_\text{on}/k_\text{off} > 1$, und damit $\tau_\text{off} > \tau_\text{on}$.
 
 \medskip
 Die physikalische Ursache der Ungleichung $k_\text{off} < k_\text{on}$ liegt
-in der \emph{Überlagerung} von natürlicher Elimination und verbleibender
+in der \emph{Ãœberlagerung} von natÃ¼rlicher Elimination und verbleibender
 renaler Hochregulation: Beim Absetzen wirkt der adaptierte Transporter
-zunächst \emph{gegen} die Elimination, indem er Mg$^{2+}$ verstärkt
-rückreabsorbiert. Erst die allmähliche (langsame) Rückregulation auf
-Basalexpression lässt die effektive $k_\text{off}$-Rate auf ihren
-intrinsischen Wert steigen. Da dieser Rückregulationsprozess selbst eine
+zunÃ¤chst \emph{gegen} die Elimination, indem er Mg$^{2+}$ verstÃ¤rkt
+rÃ¼ckreabsorbiert. Erst die allmÃ¤hliche (langsame) RÃ¼ckregulation auf
+Basalexpression lÃ¤sst die effektive $k_\text{off}$-Rate auf ihren
+intrinsischen Wert steigen. Da dieser RÃ¼ckregulationsprozess selbst eine
 endliche Zeitkonstante $1/\alpha$ besitzt, ist der gesamte Abbauvorgang um
-den Faktor $k_\text{on}/k_\text{off} > 1$ gegenüber dem Aufbau verlängert.
+den Faktor $k_\text{on}/k_\text{off} > 1$ gegenÃ¼ber dem Aufbau verlÃ¤ngert.
 \end{proof}
 
 \begin{corollary}[Klinische Empfehlung]
@@ -287,7 +287,7 @@ Die Ausschleichzeit nach Absetzen von Magnesium-Supplementen sollte
 mindestens $\tau_\text{off} = \tau_\text{on} \cdot (k_\text{on}/k_\text{off})$
 Tage betragen, bevor der Plasmaspiegel als ``normalisiert'' angesehen werden darf.
 Bei typischen Werten $k_\text{on} \approx 0{,}18\,\text{d}^{-1}$,
-$k_\text{off} \approx 0{,}07\,\text{d}^{-1}$ entspricht dies einem Verhältnis
+$k_\text{off} \approx 0{,}07\,\text{d}^{-1}$ entspricht dies einem VerhÃ¤ltnis
 von ca.\ 2{,}6, d.\,h.\ der Abbau dauert etwa 2,5-mal so lang wie der Aufbau.
 \end{corollary}
 
@@ -297,7 +297,7 @@ von ca.\ 2{,}6, d.\,h.\ der Abbau dauert etwa 2,5-mal so lang wie der Aufbau.
 \begin{experiment}[In-silico-Studie Mg-Kinetik]
 \label{exp:mg}
 \textbf{Setup:} Numerische Integration der Gleichungen~\eqref{eq:C_on}
-und~\eqref{eq:C_off} mit drei Parametersätzen (langsam/moderat/schnell),
+und~\eqref{eq:C_off} mit drei ParametersÃ¤tzen (langsam/moderat/schnell),
 $T_\text{dose} = 30\,\text{d}$, $C_\text{base} = 0{,}80\,\text{mmol/L}$,
 $C_\text{ss} = 1{,}10\,\text{mmol/L}$.
 
@@ -318,10 +318,10 @@ Schnell    & 0,30 & 0,12 & 2,50 & 10,0 & 24,9 \\
 
 \medskip\noindent
 \textbf{Ergebnis:} In allen drei Szenarien ist $\tau_\text{off} > \tau_\text{on}$
-(Faktor $\approx 2{,}5$), was Theorem~\ref{thm:mg} bestätigt. Die Fläche unter
-der Kurve (AUC) der Entwöhnungsphase übersteigt jene der Aufbauphase systematisch.
-Abbildung~\ref{fig:mg} zeigt die entsprechenden Konzentrations-Zeit-Verläufe
-sowie die Sensitivitätsanalyse.
+(Faktor $\approx 2{,}5$), was Theorem~\ref{thm:mg} bestÃ¤tigt. Die FlÃ¤che unter
+der Kurve (AUC) der EntwÃ¶hnungsphase Ã¼bersteigt jene der Aufbauphase systematisch.
+Abbildung~\ref{fig:mg} zeigt die entsprechenden Konzentrations-Zeit-VerlÃ¤ufe
+sowie die SensitivitÃ¤tsanalyse.
 \end{experiment}
 
 \begin{figure}[H]
@@ -329,46 +329,46 @@ sowie die Sensitivitätsanalyse.
   \includegraphics[width=\linewidth]{fig_magnesium.pdf}
   \caption{%
     \textbf{Theorem I --- Asymmetrische Magnesium-Kinetik.}
-    \textit{Links (A):} Plasmkonzentrationsverläufe für das Referenzszenario
+    \textit{Links (A):} PlasmkonzentrationsverlÃ¤ufe fÃ¼r das Referenzszenario
     ($k_\text{on}=0{,}18\,\text{d}^{-1}$, $k_\text{off}=0{,}07\,\text{d}^{-1}$);
-    der gefärbte Bereich veranschaulicht die AUC beider Phasen.
+    der gefÃ¤rbte Bereich veranschaulicht die AUC beider Phasen.
     Die Pfeile geben $\tau_\text{on}$ und $\tau_\text{off}$ an.
-    \textit{Rechts (B):} Sensitivitätsanalyse für drei Parametersätze;
+    \textit{Rechts (B):} SensitivitÃ¤tsanalyse fÃ¼r drei ParametersÃ¤tze;
     der Quotient $r = k_\text{on}/k_\text{off} \approx 2{,}5$ ist in allen
-    Szenarien konsistent größer als 1.
+    Szenarien konsistent grÃ¶ÃŸer als 1.
   }
   \label{fig:mg}
 \end{figure}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Theorem II: Halbmagen-Prinzip --- 21-Tage}
 \label{sec:diet}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Physiologischer Hintergrund}
 
 Der Magen eines Erwachsenen fasst im Vollzustand ca.\ 1{,}0--1{,}5\,Liter
-\cite{Tortora2014}. Die Sättigung wird durch mechanorezeptive Dehnung der
+\cite{Tortora2014}. Die SÃ¤ttigung wird durch mechanorezeptive Dehnung der
 Magenwand (Vagusafferenzen) sowie hormonelle Signale (Ghrelin-Reduktion,
 GLP-1-Anstieg) reguliert. Wird das Magenvolumen dauerhaft auf $\approx 50\,\%$
-beschränkt, sinkt die kalorische Aufnahme um ca.\ $40-60\,\%$ unterhalb des
-Erhaltungsbedarfs --- sofern keine energiedichte Kompensation durch Flüssigkeiten
+beschrÃ¤nkt, sinkt die kalorische Aufnahme um ca.\ $40-60\,\%$ unterhalb des
+Erhaltungsbedarfs --- sofern keine energiedichte Kompensation durch FlÃ¼ssigkeiten
 erfolgt.
 
 \subsection{Modell-Annahmen}
 
 \begin{assumption}[Energiebilanz-Modell]
 \label{ass:energy}
-Das Körpergewicht $W(t)$ ist proportional zum kumulierten Kalorienüberschuss
+Das KÃ¶rpergewicht $W(t)$ ist proportional zum kumulierten KalorienÃ¼berschuss
 bzw.\ -defizit. Ein Defizit von 7700\,kcal entspricht einer Reduktion von
-ca.\ $1\,\text{kg}$ Körperfettmasse \cite{Hall2012}.
+ca.\ $1\,\text{kg}$ KÃ¶rperfettmasse \cite{Hall2012}.
 \end{assumption}
 
 \begin{assumption}[Metabolische Adaptation]
 \label{ass:metab}
-Der Grundumsatz passt sich während kalorischer Restriktion adaptiv an. Das
-effektive tägliche Defizit $D(t)$ ist daher \emph{nicht} konstant, sondern
-fällt exponentiell gemäß:
+Der Grundumsatz passt sich wÃ¤hrend kalorischer Restriktion adaptiv an. Das
+effektive tÃ¤gliche Defizit $D(t)$ ist daher \emph{nicht} konstant, sondern
+fÃ¤llt exponentiell gemÃ¤ÃŸ:
 \begin{equation}
   D(t) = D_0 \, e^{-\lambda t}, \qquad \lambda > 0,
   \label{eq:deficit}
@@ -378,8 +378,8 @@ wobei $D_0$ das initiale Defizit und $\lambda$ die Adaptationsrate bezeichnet.
 
 \begin{assumption}[Halbmagen-Intervention]
 \label{ass:half}
-Der Proband beschränkt die Nahrungsaufnahme auf 50\,\% des subjektiv
-empfundenen Sättigungspunkts. Bei einem Erhaltungsbedarf von 2000\,kcal/d
+Der Proband beschrÃ¤nkt die Nahrungsaufnahme auf 50\,\% des subjektiv
+empfundenen SÃ¤ttigungspunkts. Bei einem Erhaltungsbedarf von 2000\,kcal/d
 resultiert ein initialer Kalorieneinnahme von $\approx 1000$\,kcal/d,
 d.\,h.\ $D_0 \approx 1000\,\text{kcal/d}$.
 \end{assumption}
@@ -393,7 +393,7 @@ Der Gewichtsverlust bis Tag $t$ ist:
   \Delta W(t) = \frac{1}{E_f} \int_0^t D(s)\,\mathrm{d}s,
   \label{eq:dW_int}
 \end{equation}
-mit $E_f = 7700\,\text{kcal/kg}$ (Energieäquivalent von Körperfett).
+mit $E_f = 7700\,\text{kcal/kg}$ (EnergieÃ¤quivalent von KÃ¶rperfett).
 
 Einsetzen von Gleichung~\eqref{eq:deficit}:
 \begin{equation}
@@ -404,7 +404,7 @@ Einsetzen von Gleichung~\eqref{eq:deficit}:
 
 \subsubsection{Gewicht nach $n$ Tagen}
 
-Das Körpergewicht zum Zeitpunkt $t$ ist:
+Das KÃ¶rpergewicht zum Zeitpunkt $t$ ist:
 \begin{equation}
   \boxed{W(t) = W_0 - \frac{D_0}{E_f \, \lambda}
     \bigl(1 - e^{-\lambda t}\bigr).}
@@ -415,7 +415,7 @@ Das Körpergewicht zum Zeitpunkt $t$ ist:
 
 \begin{theorem}[Halbmagen-Prinzip: 21-Tage-Gewichtsreduktion]
 \label{thm:diet}
-Sei $W(t)$ gemäß Gleichung~\eqref{eq:W} mit $D_0 > 0$, $\lambda > 0$,
+Sei $W(t)$ gemÃ¤ÃŸ Gleichung~\eqref{eq:W} mit $D_0 > 0$, $\lambda > 0$,
 $E_f = 7700\,\text{kcal/kg}$ und $W_0 > 0$. Dann gilt:
 \begin{equation}
   W(21) < W(0) = W_0,
@@ -430,7 +430,7 @@ Aus Gleichung~\eqref{eq:W} folgt:
 \begin{equation}
   \Delta W(21) = W_0 - W(21) = \frac{D_0}{E_f \, \lambda}\bigl(1-e^{-21\lambda}\bigr).
 \end{equation}
-Da $D_0 > 0$, $E_f > 0$, $\lambda > 0$ und $e^{-21\lambda} < 1$ für alle
+Da $D_0 > 0$, $E_f > 0$, $\lambda > 0$ und $e^{-21\lambda} < 1$ fÃ¼r alle
 $\lambda > 0$, gilt:
 \begin{equation}
   \Delta W(21) = \frac{D_0}{E_f \lambda}\underbrace{(1-e^{-21\lambda})}_{>0} > 0.
@@ -438,11 +438,11 @@ $\lambda > 0$, gilt:
 Also ist $W(21) = W_0 - \Delta W(21) < W_0$.
 \end{proof}
 
-\begin{proposition}[Quantitative Schätzung]
+\begin{proposition}[Quantitative SchÃ¤tzung]
 \label{prop:quant}
 Unter den Annahmen $D_0 = 1000\,\text{kcal/d}$,
 $\lambda = 0{,}04\,\text{d}^{-1}$, $E_f = 7700\,\text{kcal/kg}$
-beträgt der erwartete Gewichtsverlust nach 21 Tagen:
+betrÃ¤gt der erwartete Gewichtsverlust nach 21 Tagen:
 \begin{equation}
   \Delta W(21) = \frac{1000}{7700 \times 0{,}04}\,(1-e^{-0{,}84})
   \approx 3{,}25 \times 0{,}568 \approx \mathbf{1{,}85}\,\text{kg}.
@@ -454,14 +454,14 @@ Direktes Einsetzen der Parameterwerte in Gleichung~\eqref{eq:dW}.
 \end{proof}
 
 \begin{remark}[Untere Schranke ohne Adaptation]
-Falls keine metabolische Adaptation stattfände ($\lambda \to 0^+$), folgt
-per L'Hôpital:
+Falls keine metabolische Adaptation stattfÃ¤nde ($\lambda \to 0^+$), folgt
+per L'HÃ´pital:
 \begin{equation}
   \lim_{\lambda \to 0} \frac{D_0}{\lambda E_f}(1-e^{-\lambda t}) = \frac{D_0 t}{E_f},
 \end{equation}
 d.\,h.\ $\Delta W(21) = 1000 \cdot 21 / 7700 \approx 2{,}73\,\text{kg}$.
 Die Adaptation senkt diesen theoretischen Wert auf $\approx 1{,}85\,\text{kg}$,
-die physiologisch realistischere Schätzung.
+die physiologisch realistischere SchÃ¤tzung.
 \end{remark}
 
 \begin{corollary}[Mindestzeitraum bei reduzierter Compliance]
@@ -476,9 +476,9 @@ klinisch relevanten Schwelle von $1\,\text{kg}$ liegt.
 
 \begin{experiment}[In-silico-Studie Gewichtsreduktion]
 \label{exp:diet}
-\textbf{Setup:} Numerische Integration von Gleichung~\eqref{eq:dW} für
-Interventions- und Kontrollgruppe über 21 Tage; zusätzliche Darstellung des
-zeitabhängigen effektiven Kaloriendefizits $D(t)$ und des kumulativen
+\textbf{Setup:} Numerische Integration von Gleichung~\eqref{eq:dW} fÃ¼r
+Interventions- und Kontrollgruppe Ã¼ber 21 Tage; zusÃ¤tzliche Darstellung des
+zeitabhÃ¤ngigen effektiven Kaloriendefizits $D(t)$ und des kumulativen
 Gewichtsverlusts.
 
 \medskip\noindent
@@ -491,7 +491,7 @@ Parameter & Interventionsgruppe & Kontrollgruppe \\
 $W_0$ & 80{,}0\,kg & 80{,}0\,kg \\
 $D_0$ & 1000\,kcal/d & 50\,kcal/d \\
 $\lambda$ & 0{,}04\,d$^{-1}$ & 0{,}001\,d$^{-1}$ \\
-Nahrungsaufnahme & $\approx 50\,\%$ Sättigung & ad libitum \\
+Nahrungsaufnahme & $\approx 50\,\%$ SÃ¤ttigung & ad libitum \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -500,7 +500,7 @@ Nahrungsaufnahme & $\approx 50\,\%$ Sättigung & ad libitum \\
 \textbf{Ergebnis:} Die Interventionsgruppe verliert nach 21 Tagen
 $\approx 1{,}85\,\text{kg}$; die Kontrollgruppe zeigt eine minimale,
 nicht-signifikante Drift von $< 0{,}1\,\text{kg}$. Abbildung~\ref{fig:diet}
-visualisiert die Gewichtsverläufe sowie die Adaptationsdynamik des Defizits.
+visualisiert die GewichtsverlÃ¤ufe sowie die Adaptationsdynamik des Defizits.
 \end{experiment}
 
 \begin{figure}[H]
@@ -508,96 +508,96 @@ visualisiert die Gewichtsverläufe sowie die Adaptationsdynamik des Defizits.
   \includegraphics[width=\linewidth]{fig_diet.pdf}
   \caption{%
     \textbf{Theorem II --- Halbmagen-Prinzip: 21-Tage-Intervention.}
-    \textit{Links (A):} Körpergewichtsverlauf über 21 Tage für Interventions-
-    und Kontrollgruppe (mit simulierter interindividueller Variabilität,
-    $\pm$\,95\,\%-KI). Die Intervention führt zu einem Gewichtsverlust von
+    \textit{Links (A):} KÃ¶rpergewichtsverlauf Ã¼ber 21 Tage fÃ¼r Interventions-
+    und Kontrollgruppe (mit simulierter interindividueller VariabilitÃ¤t,
+    $\pm$\,95\,\%-KI). Die Intervention fÃ¼hrt zu einem Gewichtsverlust von
     $\approx 1{,}85\,\text{kg}$.
-    \textit{Rechts (B):} Effektives tägliches Kaloriendefizit $D(t)$
+    \textit{Rechts (B):} Effektives tÃ¤gliches Kaloriendefizit $D(t)$
     (rote Kurve, linke Achse) und kumulativer Gewichtsverlust $\Delta W(t)$
-    (grüne gestrichelte Kurve, rechte Achse). Die metabolische Adaptation
+    (grÃ¼ne gestrichelte Kurve, rechte Achse). Die metabolische Adaptation
     reduziert das Defizit von initial 1000\,kcal/d auf $\approx 400\,\text{kcal/d}$
     am Tag 21.
   }
   \label{fig:diet}
 \end{figure}
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Diskussion}
 \label{sec:disc}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Theorem I: Robustheit und Limitierungen}
 
 Das Einkompartimentmodell ist eine Vereinfachung; physiologisch relevanter
-wäre ein Drei-Kompartiment-Modell (Plasma, Knochen, Intrazellulär). Dennoch
+wÃ¤re ein Drei-Kompartiment-Modell (Plasma, Knochen, IntrazellulÃ¤r). Dennoch
 bildet das Einkompartimentmodell die qualitative Asymmetrie korrekt ab, da
-der Knochenspeicher beim Absetzen als zusätzliche Quelle fungiert und so
+der Knochenspeicher beim Absetzen als zusÃ¤tzliche Quelle fungiert und so
 den Abbau aus dem Plasma verlangsamt --- was dem gezeigten Effekt $k_\text{off}
 < k_\text{on}$ entspricht.
 
 \subsection{Theorem II: Compliance und Langzeiteffekte}
 
 Das 21-Tage-Fenster ist aus verhaltensbiologischer Sicht bedeutsam:
-Gewohnheiten können in $\approx 21$ Tagen initial konditioniert werden
+Gewohnheiten kÃ¶nnen in $\approx 21$ Tagen initial konditioniert werden
 \cite{Maltz1960}, wodurch die Intervention auf eine kognitive Umsetzbarkeit
-ausgerichtet ist. Langzeitstudien müssten den Jojo-Effekt durch Rebound-Terme
-im Modell berücksichtigen; dieser ist jedoch außerhalb des hier betrachteten
+ausgerichtet ist. Langzeitstudien mÃ¼ssten den Jojo-Effekt durch Rebound-Terme
+im Modell berÃ¼cksichtigen; dieser ist jedoch auÃŸerhalb des hier betrachteten
 Zeitfensters.
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Schlussfolgerung}
 \label{sec:conc}
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Diese Arbeit hat zwei fundamentale physiologische Grundsätze formal bewiesen:
+Diese Arbeit hat zwei fundamentale physiologische GrundsÃ¤tze formal bewiesen:
 
 \begin{enumerate}
   \item \textbf{(Theorem~\ref{thm:mg})} Die Mg-Abbauphase ist aufgrund der
-        Überlagerung von natürlicher Elimination und renaler Entwöhnung stets
-        länger als die Aufbauphase: $\tau_\text{off} / \tau_\text{on} =
+        Ãœberlagerung von natÃ¼rlicher Elimination und renaler EntwÃ¶hnung stets
+        lÃ¤nger als die Aufbauphase: $\tau_\text{off} / \tau_\text{on} =
         k_\text{on}/k_\text{off} \approx 2{,}5$.
 
   \item \textbf{(Theorem~\ref{thm:diet})} Eine konsequente Halbmagen-Intervention
-        über 21 Tage führt zwingend zu einem messbaren Gewichtsverlust;
+        Ã¼ber 21 Tage fÃ¼hrt zwingend zu einem messbaren Gewichtsverlust;
         quantitativ wurden $\approx 1{,}85\,\text{kg}$ unter realistischen
         Adaptationsannahmen modelliert.
 \end{enumerate}
 
 Beide Ergebnisse werden durch numerische Simulationen und graphische Analysen
-(Abbildungen~\ref{fig:mg} und~\ref{fig:diet}) gestützt und sind in sich
+(Abbildungen~\ref{fig:mg} und~\ref{fig:diet}) gestÃ¼tzt und sind in sich
 mathematisch konsistent.
 
 \subsection{Ausblick}
 \label{ssec:outlook}
 
-Die vorliegende Arbeit legt formal-mathematische Grundlagen für zwei
-physiologische Prinzipien, die bislang überwiegend qualitativ beschrieben
+Die vorliegende Arbeit legt formal-mathematische Grundlagen fÃ¼r zwei
+physiologische Prinzipien, die bislang Ã¼berwiegend qualitativ beschrieben
 wurden. Die sich daraus ergebenden Anschlussfragen spannen ein weites
-Spektrum auf — von der molekularen Grundlagenforschung über klinische
+Spektrum auf â€” von der molekularen Grundlagenforschung Ã¼ber klinische
 Anwendungen bis hin zur industriellen Lebensmittelproduktion. Der
 nachfolgende Ausblick gliedert sich in thematische Cluster, die jeweils
 eigene Forschungsagenden definieren.
 
-% ── 5.3.1 ────────────────────────────────────────────────────────────────────
+% â”€â”€ 5.3.1 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsubsection{Erweiterung des pharmakokinetischen Modells (Theorem~I)}
 
 \paragraph{Mehrkompartiment-Modelle.}
-Das hier verwendete Einkompartimentmodell ist eine anerkannte Näherung,
-bildet jedoch die physiologische Realität nur eingeschränkt ab. Ein
-naheliegender nächster Schritt ist die Entwicklung eines
-Drei-Kompartiment-Modells, das Plasma, intrazellulären
+Das hier verwendete Einkompartimentmodell ist eine anerkannte NÃ¤herung,
+bildet jedoch die physiologische RealitÃ¤t nur eingeschrÃ¤nkt ab. Ein
+naheliegender nÃ¤chster Schritt ist die Entwicklung eines
+Drei-Kompartiment-Modells, das Plasma, intrazellulÃ¤ren
 Weichgewebepool und Knochenpool explizit trennt. Die
 Transferraten zwischen den Kompartimenten sind aus
 \textit{in-vitro}-Studien mit ${}^{25}$Mg-Isotopen-Tracern bereits
-partiell bekannt \cite{Schuchardt2017}; eine vollständige parametrische
-Identifikation würde allerdings kontrollierte Isotopenkinetik-Studien am
-Menschen erfordern. Das erweiterte Modell würde insbesondere
+partiell bekannt \cite{Schuchardt2017}; eine vollstÃ¤ndige parametrische
+Identifikation wÃ¼rde allerdings kontrollierte Isotopenkinetik-Studien am
+Menschen erfordern. Das erweiterte Modell wÃ¼rde insbesondere
 \emph{Hysterese-Effekte} quantifizierbar machen: Nach wiederholten
 Supplementierungszyklen reichert sich Mg$^{2+}$ im Knochenspeicher an und
-verändert die Kinetik sukzessiver Zyklen.
+verÃ¤ndert die Kinetik sukzessiver Zyklen.
 
-\paragraph{Nichtlineare Kinetik und Sättigungseffekte.}
-Bei sehr hohen Plasmaspiegeln treten Sättigungseffekte an renalen
+\paragraph{Nichtlineare Kinetik und SÃ¤ttigungseffekte.}
+Bei sehr hohen Plasmaspiegeln treten SÃ¤ttigungseffekte an renalen
 Reabsorptionstransportern (TRPM6, NCC) auf, die eine Michaelis-Menten-Kinetik
 erfordern:
 \begin{equation}
@@ -605,264 +605,264 @@ erfordern:
 \end{equation}
 mit $V_{\max}$ und $K_m$ als transporterspezifischen Parametern. Die
 Asymmetrie $\tau_\text{off} > \tau_\text{on}$ bleibt dabei strukturell
-erhalten, gewinnt aber eine nichtlineare Konzentrationsabhängigkeit, die
+erhalten, gewinnt aber eine nichtlineare KonzentrationsabhÃ¤ngigkeit, die
 bei klinischen Hochdosis-Interventionen (z.\,B.\ parenterale Mg-Gabe auf
 Intensivstationen) therapeutisch relevant ist.
 
 \paragraph{Epigenetische und translationale Regulation.}
 Annahme~\ref{ass:adapt} postuliert eine expressionelle Hochregulation renaler
-Transporter; der molekulare Mechanismus ist jedoch noch nicht vollständig
-aufgeklärt. Zukünftige Studien sollten untersuchen, ob die Hochregulation
+Transporter; der molekulare Mechanismus ist jedoch noch nicht vollstÃ¤ndig
+aufgeklÃ¤rt. ZukÃ¼nftige Studien sollten untersuchen, ob die Hochregulation
 von TRPM6 auf Transkriptions-, Translations- oder post-translationaler Ebene
 (Phosphorylierung, Ubiquitinierung) dominiert, da dies die Zeitkonstante
 $1/\alpha$ direkt bestimmt. RNA-Seq-Zeitreihen an renalen Tubuluszellen unter
-variierender Mg$^{2+}$-Exposition könnten hier Aufschluss geben.
+variierender Mg$^{2+}$-Exposition kÃ¶nnten hier Aufschluss geben.
 
 \paragraph{Pharmakogenomische Individualisierung.}
 Polymorphismen im \textit{TRPM6}-Gen (z.\,B.\ rs11144134) sind mit
-veränderten Magnesium-Plasmaspiegeln und -Absorptionseigenschaften assoziiert
+verÃ¤nderten Magnesium-Plasmaspiegeln und -Absorptionseigenschaften assoziiert
 \cite{DiNicolantonio2018}. Ein personalisiertes pharmakokinetisches Modell,
 das Genotyp-spezifische Ratenkonstanten $k_\text{on}^{(\text{gen})}$ und
-$k_\text{off}^{(\text{gen})}$ integriert, würde die klinische Empfehlung
+$k_\text{off}^{(\text{gen})}$ integriert, wÃ¼rde die klinische Empfehlung
 aus Korollar~\ref{cor:mg_clin} individualisieren: Patienten mit
-Slow-Transporter-Genotyp würden kürzere Ausschleichphasen benötigen,
-solche mit Enhanced-Reabsorption-Variante deutlich längere. Dies öffnet ein
-direktes Anwendungsfeld für \emph{Precision Medicine} in der
-Mikronährstofftherapie.
+Slow-Transporter-Genotyp wÃ¼rden kÃ¼rzere Ausschleichphasen benÃ¶tigen,
+solche mit Enhanced-Reabsorption-Variante deutlich lÃ¤ngere. Dies Ã¶ffnet ein
+direktes Anwendungsfeld fÃ¼r \emph{Precision Medicine} in der
+MikronÃ¤hrstofftherapie.
 
 \paragraph{Wechselwirkungen mit anderen Ionen.}
 Magnesium teilt renale und intestinale Transportwege mit Kalzium
 (kompetitiver Antagonismus am TRPV5) und interagiert mit dem
-Zinkstoffwechsel über metalloresponsive Transkriptionsfaktoren (MTF-1).
+Zinkstoffwechsel Ã¼ber metalloresponsive Transkriptionsfaktoren (MTF-1).
 Erweiterte Kompartimentmodelle sollten diese Ionen-Ionen-Interaktionen
 als gekoppelte Differentialgleichungssysteme abbilden, insbesondere in
 klinisch relevanten Situationen wie Protonenpumpenhemmer-Therapie
-(induziert Mg-Malabsorption), Diuretika-Gabe oder kalziumreicher Ernährung.
+(induziert Mg-Malabsorption), Diuretika-Gabe oder kalziumreicher ErnÃ¤hrung.
 
-% ── 5.3.2 ────────────────────────────────────────────────────────────────────
+% â”€â”€ 5.3.2 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsubsection{Klinische Validierung und translationale Forschung
   (Theorem~I~\&~II)}
 
 \paragraph{Prospektive Humanstudien (Mg-Kinetik).}
-Der entscheidende nächste Validierungsschritt für Theorem~\ref{thm:mg} ist
-eine kontrollierte, randomisierte Kinetik-Studie: Probanden erhalten über
+Der entscheidende nÃ¤chste Validierungsschritt fÃ¼r Theorem~\ref{thm:mg} ist
+eine kontrollierte, randomisierte Kinetik-Studie: Probanden erhalten Ã¼ber
 8~Wochen eine standardisierte Mg-Supplementierung, gefolgt von einer
-vollständig betreuten Wash-out-Phase. Sequentielle Plasmamessungen (täglich
-oder alle 2 Tage) erlauben eine Parameterschätzung ($k_\text{on}$,
+vollstÃ¤ndig betreuten Wash-out-Phase. Sequentielle Plasmamessungen (tÃ¤glich
+oder alle 2 Tage) erlauben eine ParameterschÃ¤tzung ($k_\text{on}$,
 $k_\text{off}$) mittels nichtlinearer Regression und damit eine direkte
-Überprüfung von Gleichung~\eqref{eq:ratio}. Besonderes Augenmerk sollte
-auf die intra- und interindividuelle Variabilität des Quotienten
+ÃœberprÃ¼fung von Gleichung~\eqref{eq:ratio}. Besonderes Augenmerk sollte
+auf die intra- und interindividuelle VariabilitÃ¤t des Quotienten
 $k_\text{on}/k_\text{off}$ gelegt werden, um eine Wahrscheinlichkeitsverteilung
 des Faktors $r$ in der Population zu bestimmen.
 
 \paragraph{Continuous Monitoring und digitale Biomarker.}
 Mit der Miniaturisierung von elektrochemischen Sensoren zeichnet sich ab,
 dass nicht-invasive oder minimalinvasive Mg$^{2+}$-Echtzeitmessungen
-(transkutan, im Schweiß oder im interstitiellen Fluid) in den nächsten Jahren
-klinisch verfügbar werden. Solche Continuous-Monitoring-Plattformen würden
-die modellbasierte Echtzeit-Parameterschätzung von $k_\text{on}$ und
-$k_\text{off}$ ermöglichen und adaptive Dosierungsempfehlungen ableiten lassen
---- ein klassisches Problem der \emph{Modell-prädiktiven Regelung} (MPC), das in
-der pharmakokinetischen Literatur bislang vornehmlich für
+(transkutan, im SchweiÃŸ oder im interstitiellen Fluid) in den nÃ¤chsten Jahren
+klinisch verfÃ¼gbar werden. Solche Continuous-Monitoring-Plattformen wÃ¼rden
+die modellbasierte Echtzeit-ParameterschÃ¤tzung von $k_\text{on}$ und
+$k_\text{off}$ ermÃ¶glichen und adaptive Dosierungsempfehlungen ableiten lassen
+--- ein klassisches Problem der \emph{Modell-prÃ¤diktiven Regelung} (MPC), das in
+der pharmakokinetischen Literatur bislang vornehmlich fÃ¼r
 Insulindosierung untersucht wurde.
 
 \paragraph{Klinische Anwendungsfelder des asymmetrischen Modells.}
-Die Ergebnisse dieser Arbeit sind unmittelbar relevant für mehrere
+Die Ergebnisse dieser Arbeit sind unmittelbar relevant fÃ¼r mehrere
 medizinische Disziplinen:
 \begin{itemize}
   \item \textbf{Kardiologie:} Da Mg$^{2+}$ antiarrhythmisch wirkt, ist
-        die Ausschleichkinetik nach Mg-Gabe bei Herzrhythmusstörungen
+        die Ausschleichkinetik nach Mg-Gabe bei HerzrhythmusstÃ¶rungen
         klinisch bedeutsam. Das Modell erlaubt die Berechnung des
         zeitlichen Verlaufs des therapeutischen Fensters nach Therapiestopp.
   \item \textbf{Intensivmedizin:} Parenterale Mg-Hochdosistherapie
         (Eklampsie, Torsade-de-pointes-Tachykardien) geht oft mit rebound
-        Hypomagnesämie einher; das erweiterte Mehrkompartimentmodell kann
+        HypomagnesÃ¤mie einher; das erweiterte Mehrkompartimentmodell kann
         Ausschleichraten quantifizieren und Nachsupplementierungsintervalle
         optimieren.
-  \item \textbf{Neurologie:} Mg-Supplementation wird bei Migräne und
+  \item \textbf{Neurologie:} Mg-Supplementation wird bei MigrÃ¤ne und
         neuropathischem Schmerz eingesetzt. Die Zeitkonstante des
         therapeutischen Effektverlusts nach Absetzen ($\tau_\text{off}$)
-        ist klinisch direkt relevant für die Beratung zur
+        ist klinisch direkt relevant fÃ¼r die Beratung zur
         Therapiedauer.
   \item \textbf{Sportmedizin:} Leistungssportler mit hohem Mg-Bedarf
         durch Schwitzen profitieren von personalisierten
-        Supplementierungsplänen, die den asymmetrischen auf- und
-        Abbau berücksichtigen --- insbesondere in Saisons mit
+        SupplementierungsplÃ¤nen, die den asymmetrischen auf- und
+        Abbau berÃ¼cksichtigen --- insbesondere in Saisons mit
         periodisierten Trainings- und Erholungsphasen.
 \end{itemize}
 
 \paragraph{Prospektive Humanstudien (Halbmagen-Prinzip).}
-Für Theorem~\ref{thm:diet} sind randomi\-siert-kontrollierte Studien mit
-folgenden Erweiterungen wünschenswert:
+FÃ¼r Theorem~\ref{thm:diet} sind randomi\-siert-kontrollierte Studien mit
+folgenden Erweiterungen wÃ¼nschenswert:
 \begin{enumerate}[label=(\roman*)]
-  \item Direkte Messung der Magenkapazität und Compliance via
+  \item Direkte Messung der MagenkapazitÃ¤t und Compliance via
         serieller Magnetoencephalographie (MRT) oder Radiotelemetrie-Kapseln.
   \item Validierung des Parameters $\lambda$ (Adaptationsrate des
         Grundumsatzes) durch indirekte Kalorimetrie (Doubly-labeled-water).
-  \item Verlängerung des Beobachtungszeitraums über 21 Tage hinaus
+  \item VerlÃ¤ngerung des Beobachtungszeitraums Ã¼ber 21 Tage hinaus
         (8 Wochen, 6 Monate), um den im Modell nicht erfassten Jojo-Effekt
         mit einem Rebound-Term $\gamma \, e^{+\mu (t-t_\text{end})}$ zu
         quantifizieren.
-  \item Stratifizierung nach Körperzusammensetzung (DXA-Scan): Das
-        Energieäquivalent $E_f = 7700\,\text{kcal/kg}$ gilt für reines
+  \item Stratifizierung nach KÃ¶rperzusammensetzung (DXA-Scan): Das
+        EnergieÃ¤quivalent $E_f = 7700\,\text{kcal/kg}$ gilt fÃ¼r reines
         Fettgewebe; bei substantiellem Muskelverlust (proteolytische Adaptation)
-        ist $E_f$ effektiv kleiner, was das Modell unterschätzt.
+        ist $E_f$ effektiv kleiner, was das Modell unterschÃ¤tzt.
 \end{enumerate}
 
-% ── 5.3.3 ────────────────────────────────────────────────────────────────────
+% â”€â”€ 5.3.3 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsubsection{Mathematisch-methodische Erweiterungen}
 
 \paragraph{Stochastische Differentialgleichungen (SDE).}
-Die hier betrachteten Modelle sind deterministisch. Biologische Realität wird
-jedoch durch tägliche Zufallsschwankungen (Nahrungsaufnahme, Aktivität,
-Stress-induzierter Cortisolanstieg) überlagert. Eine stochastische
-Reformulierung als Itô-SDE
+Die hier betrachteten Modelle sind deterministisch. Biologische RealitÃ¤t wird
+jedoch durch tÃ¤gliche Zufallsschwankungen (Nahrungsaufnahme, AktivitÃ¤t,
+Stress-induzierter Cortisolanstieg) Ã¼berlagert. Eine stochastische
+Reformulierung als ItÃ´-SDE
 \begin{equation}
   \mathrm{d}C = k_\text{on}(C_\text{ss} - C)\,\mathrm{d}t + \sigma \, \mathrm{d}W_t
 \end{equation}
-erlaubt die Ableitung von Konfidenzintervallen für $\tau_\text{on}$ und
+erlaubt die Ableitung von Konfidenzintervallen fÃ¼r $\tau_\text{on}$ und
 $\tau_\text{off}$ sowie die korrekte statistische Modellierung von
 Populations-Studien.
 
-\paragraph{Bayesianische Parameterschätzung.}
-Reale klinische Datensätze sind spärlich und verrauscht.
+\paragraph{Bayesianische ParameterschÃ¤tzung.}
+Reale klinische DatensÃ¤tze sind spÃ¤rlich und verrauscht.
 Bayesianische Inferenz mit MCMC-Sampling (z.\,B.\
-\textit{Stan}-Framework oder \textit{PyMC}) ermöglicht
-Prior-informierte Schätzungen von $k_\text{on}$, $k_\text{off}$ und
+\textit{Stan}-Framework oder \textit{PyMC}) ermÃ¶glicht
+Prior-informierte SchÃ¤tzungen von $k_\text{on}$, $k_\text{off}$ und
 $\lambda$ aus wenigen Messpunkten und liefert posterior Wahrscheinlichkeitsverteilungen
-anstelle von Punktschätzern. Dies wäre ein wesentlicher Qualitätssprung
-gegenüber klassischer nichtlinearer Regression.
+anstelle von PunktschÃ¤tzern. Dies wÃ¤re ein wesentlicher QualitÃ¤tssprung
+gegenÃ¼ber klassischer nichtlinearer Regression.
 
 \paragraph{Optimale Kontrolltheorie.}
-Das Halbmagen-Theorem öffnet ein Optimierungsproblem: Gegeben eine
-gewünschte Gewichtsabnahme $\Delta W^*$ in minimaler Zeit unter
-Nebenbedingungen (maximales tägliches Defizit $D_\text{max}$ zur Sicherung
+Das Halbmagen-Theorem Ã¶ffnet ein Optimierungsproblem: Gegeben eine
+gewÃ¼nschte Gewichtsabnahme $\Delta W^*$ in minimaler Zeit unter
+Nebenbedingungen (maximales tÃ¤gliches Defizit $D_\text{max}$ zur Sicherung
 der Vitalfunktionen, maximale Adaptation $\lambda_\text{max}$), welche
 zeitvariable Interventionsstrategie $D(t)$ ist optimal? Dieses Problem ist
-mit dem Pontryagin-Maximumprinzip lösbar und ergibt \emph{Bang-Bang}-Lösungen
+mit dem Pontryagin-Maximumprinzip lÃ¶sbar und ergibt \emph{Bang-Bang}-LÃ¶sungen
 (maximales Defizit gefolgt von Erhaltungsphase) oder stetige Absenkprofile,
 je nach Gewichtung im Zielfunktional.
 
 \paragraph{Maschinelles Lernen und datengetriebene Modelle.}
-Mit wachsender Verfügbarkeit von Wearable-Daten (Aktivitätsarmbänder,
-Smartwatches, CGM-Sensoren) wird es möglich, datengetriebene Modelle
+Mit wachsender VerfÃ¼gbarkeit von Wearable-Daten (AktivitÃ¤tsarmbÃ¤nder,
+Smartwatches, CGM-Sensoren) wird es mÃ¶glich, datengetriebene Modelle
 zu trainieren, die $k_\text{on}/k_\text{off}$-Quotienten und
-Adaptationsraten $\lambda$ aus individualisierten Zeitreihen schätzen.
-Hybride Ansätze (\emph{physics-informed neural networks}, PINNs) können
+Adaptationsraten $\lambda$ aus individualisierten Zeitreihen schÃ¤tzen.
+Hybride AnsÃ¤tze (\emph{physics-informed neural networks}, PINNs) kÃ¶nnen
 die biologischen Differentialgleichungen als Constraint in das
 Netzwerktraining einbetten und so Generalisierung mit physiologischer
-Plausibilität verbinden.
+PlausibilitÃ¤t verbinden.
 
-% ── 5.3.4 ────────────────────────────────────────────────────────────────────
+% â”€â”€ 5.3.4 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsubsection{Industrielle Lebensmittelproduktion und Produktentwicklung}
 
-\paragraph{Magnesium-Anreicherung und Bioverfügbarkeit.}
+\paragraph{Magnesium-Anreicherung und BioverfÃ¼gbarkeit.}
 Die pharmakokinetischen Erkenntnisse dieser Arbeit haben direkte Implikationen
-für die funktionelle Lebensmittelindustrie. Der Markt für
-Mg-angereicherte Nahrungsmittel (Mineralwässer, Cerealien, Sporternährung)
-wächst; jedoch wird die \emph{Bioverfügbarkeit} der verwendeten Mg-Verbindungen
-häufig vernachlässigt. Aus dem Modell folgt, dass die Rate $k_\text{on}$
-stark von der verwendeten Mg-Spezies abhängt:
+fÃ¼r die funktionelle Lebensmittelindustrie. Der Markt fÃ¼r
+Mg-angereicherte Nahrungsmittel (MineralwÃ¤sser, Cerealien, SporternÃ¤hrung)
+wÃ¤chst; jedoch wird die \emph{BioverfÃ¼gbarkeit} der verwendeten Mg-Verbindungen
+hÃ¤ufig vernachlÃ¤ssigt. Aus dem Modell folgt, dass die Rate $k_\text{on}$
+stark von der verwendeten Mg-Spezies abhÃ¤ngt:
 \begin{itemize}
   \item \textbf{Organische Verbindungen} (Mg-Citrat, Mg-Glycinat,
-        Mg-Bisglycinat, Mg-Malat) weisen empirisch höhere Bioverfügbarkeit
+        Mg-Bisglycinat, Mg-Malat) weisen empirisch hÃ¶here BioverfÃ¼gbarkeit
         auf als anorganische Salze (MgO, MgCO$_3$), da sie den
-        parazellulären Transport weniger sättigen und sich besser in
+        parazellulÃ¤ren Transport weniger sÃ¤ttigen und sich besser in
         lipidhaltige Matrizes integrieren lassen.
-  \item \textbf{Lebensmittelmatrix-Effekte:} Phytinsäure (in Vollkornprodukten),
+  \item \textbf{Lebensmittelmatrix-Effekte:} PhytinsÃ¤ure (in Vollkornprodukten),
         Oxalate (Spinat) und hohe Ca$^{2+}$-Gehalte reduzieren die intestinale
         Mg-Absorption durch Komplexbildung und Transportkonkurrenz. Eine
-        Matrix-spezifische Kalibrierung von $k_\text{on}$ wäre für die
+        Matrix-spezifische Kalibrierung von $k_\text{on}$ wÃ¤re fÃ¼r die
         Produktentwicklung wertvoll.
   \item \textbf{Encapsulation-Technologie:} Mikrokapseln und Liposomen
-        ermöglichen eine kontrollierte Freisetzung (Sustained-Release) von
-        Mg$^{2+}$ im Dünn- und Dickdarm, was das Absorptionsprofil abflacht
-        und die renale Überlast-Exkretion minimiert. Die hier hergeleiteten
-        Modellgleichungen können direkt als mathematische Grundlage für die
+        ermÃ¶glichen eine kontrollierte Freisetzung (Sustained-Release) von
+        Mg$^{2+}$ im DÃ¼nn- und Dickdarm, was das Absorptionsprofil abflacht
+        und die renale Ãœberlast-Exkretion minimiert. Die hier hergeleiteten
+        Modellgleichungen kÃ¶nnen direkt als mathematische Grundlage fÃ¼r die
         Auslegung von Release-Profilen dienen.
 \end{itemize}
 
 \paragraph{Portionskontrolle und das Halbmagen-Prinzip in der Produktgestaltung.}
-Das Halbmagen-Theorem liefert eine wissenschaftliche Basis für einen
+Das Halbmagen-Theorem liefert eine wissenschaftliche Basis fÃ¼r einen
 wachsenden Bereich der Lebensmittelproduktion: \emph{satiety engineering}.
 Konkrete industrielle Ansatzpunkte sind:
 
 \begin{itemize}
   \item \textbf{Volumetrisch optimierte Portionsprodukte:}
-        Produkte, die bei 50\,\% der üblichen Portions\-größe eine
-        vollständige Sättigungsreaktion auslösen, können auf Basis des
+        Produkte, die bei 50\,\% der Ã¼blichen Portions\-grÃ¶ÃŸe eine
+        vollstÃ¤ndige SÃ¤ttigungsreaktion auslÃ¶sen, kÃ¶nnen auf Basis des
         Modells dimensioniert werden. Dabei ist die \emph{volumetrische
         Energiedichte} (kcal/ml) der entscheidende Konstruktionsparameter:
-        Niedrigdichte-Produkte (Schaumstrukturen, Hydrogele, aufgeschäumte
-        Proteinmatrices) füllen das Magenvolumen bei reduzierter
+        Niedrigdichte-Produkte (Schaumstrukturen, Hydrogele, aufgeschÃ¤umte
+        Proteinmatrices) fÃ¼llen das Magenvolumen bei reduzierter
         Kalorienlast und adressieren genau das im Modell beschriebene
         Dehnungsrezeptor-Signal.
-  \item \textbf{Texturingenieurwesen für verlangsamte Magenentleerung:}
-        Viskose Ballaststoffe (beta-Glucane, Psyllium, resistente Stärken)
-        erhöhen die gastrale Viskosität und verzögern die Magenentleerung
-        ($t_{1/2}$ der Entleerungskurve), was das hormonelle Sättigungssignal
-        (GLP-1, PYY) verlängert. Dieses Prinzip lässt sich direkt in das
+  \item \textbf{Texturingenieurwesen fÃ¼r verlangsamte Magenentleerung:}
+        Viskose Ballaststoffe (beta-Glucane, Psyllium, resistente StÃ¤rken)
+        erhÃ¶hen die gastrale ViskositÃ¤t und verzÃ¶gern die Magenentleerung
+        ($t_{1/2}$ der Entleerungskurve), was das hormonelle SÃ¤ttigungssignal
+        (GLP-1, PYY) verlÃ¤ngert. Dieses Prinzip lÃ¤sst sich direkt in das
         Halbmagen-Modell integrieren, indem die effektive Expositionsdauer
         des Dehnungsrezeptors als Faltungsintegral mit der
         Entleerungszeitkonstante modelliert wird.
   \item \textbf{Hochproteinige Formulierungen:}
-        Proteine erzeugen den stärksten thermischen Effekt auf den
-        Sättigungsindex und reduzierten Grundumsatz im Vergleich zu
+        Proteine erzeugen den stÃ¤rksten thermischen Effekt auf den
+        SÃ¤ttigungsindex und reduzierten Grundumsatz im Vergleich zu
         Kohlenhydraten und Fetten. Eine proteinoptimierte Halbmagenmahlzeit
         kann den Adaptationsparameter $\lambda$ (Absenkung des effektiven
         Defizits durch Metabolisierung) effektiv verkleinern und damit
-        den Gewichtsverlust $\Delta W(21)$ näher an die metabolisch-naive
-        Obergrenze $D_0 t / E_f$ heranrücken.
+        den Gewichtsverlust $\Delta W(21)$ nÃ¤her an die metabolisch-naive
+        Obergrenze $D_0 t / E_f$ heranrÃ¼cken.
   \item \textbf{Smarte Verpackungssysteme:}
         Intelligente Lebensmittelverpackungen mit eingebetteten
         Portionierungshilfen (Volumenanzeige, Drucksensoren,
-        AR-Visualisierung über App) könnten Verbrauchern eine direkte
-        Rückmeldung geben, wann 50\,\% der Sättigungskapazität erreicht
-        ist. Die Digitalisierung des Halbmagen-Prinzips über
-        Consumer-Technologie (vernetzte Waagen, KI-gestützte
-        Bilderkennung von Portionsgrößen) bietet ein erhebliches
+        AR-Visualisierung Ã¼ber App) kÃ¶nnten Verbrauchern eine direkte
+        RÃ¼ckmeldung geben, wann 50\,\% der SÃ¤ttigungskapazitÃ¤t erreicht
+        ist. Die Digitalisierung des Halbmagen-Prinzips Ã¼ber
+        Consumer-Technologie (vernetzte Waagen, KI-gestÃ¼tzte
+        Bilderkennung von PortionsgrÃ¶ÃŸen) bietet ein erhebliches
         Marktpotenzial im Bereich \emph{Digital Nutrition}.
-  \item \textbf{Personalisierte Ernährungsprodukte (Precision Nutrition):}
-        Die modellbasierte Heterogenität der Adaptationsrate $\lambda$
-        zwischen Individuen (abhängig von Körpermasse, Körperzusammensetzung,
-        metabolischem Phänotyp, Darmflorakomposition) eröffnet das
+  \item \textbf{Personalisierte ErnÃ¤hrungsprodukte (Precision Nutrition):}
+        Die modellbasierte HeterogenitÃ¤t der Adaptationsrate $\lambda$
+        zwischen Individuen (abhÃ¤ngig von KÃ¶rpermasse, KÃ¶rperzusammensetzung,
+        metabolischem PhÃ¤notyp, Darmflorakomposition) erÃ¶ffnet das
         Konzept mass-personalisierter Lebensmittelformulierungen, die
         auf der Grundlage mikrobiomischer oder blutbasierter
         Biomarkerprofile zusammengestellt werden. Unternehmen wie
         ZOE, Viome oder Day Two haben erste kommerzielle Plattformen
-        realisiert; das hier vorgestellte Modell könnte als
+        realisiert; das hier vorgestellte Modell kÃ¶nnte als
         mechanistischer Kern eines solchen personalisierten
-        Ernährungsrechners dienen.
+        ErnÃ¤hrungsrechners dienen.
 \end{itemize}
 
-\paragraph{Funktionelle Lebensmittel für spezifische Zielpopulationen.}
-Für spezifische Bevölkerungsgruppen ergeben sich eigenständige
+\paragraph{Funktionelle Lebensmittel fÃ¼r spezifische Zielpopulationen.}
+FÃ¼r spezifische BevÃ¶lkerungsgruppen ergeben sich eigenstÃ¤ndige
 Produktlinien:
 \begin{itemize}
-  \item \textbf{Ältere Menschen:} Mit zunehmendem Alter sinkt die
-        Magenkapazität und die gastrale Dehnbarkeit; gleichzeitig steigt
+  \item \textbf{Ã„ltere Menschen:} Mit zunehmendem Alter sinkt die
+        MagenkapazitÃ¤t und die gastrale Dehnbarkeit; gleichzeitig steigt
         der Mg-Bedarf aufgrund verringerter intestinaler Absorption und
-        erhöhter renaler Verluste. Speziell formulierte
-        ``Seniorenkost'' könnte beide Theoreme gleichzeitig adressieren:
-        hohe Mg-Bioverfügbarkeit in kleinen, volumetrisch optimierten
+        erhÃ¶hter renaler Verluste. Speziell formulierte
+        ``Seniorenkost'' kÃ¶nnte beide Theoreme gleichzeitig adressieren:
+        hohe Mg-BioverfÃ¼gbarkeit in kleinen, volumetrisch optimierten
         Portionen.
-  \item \textbf{Leistungssportler:} Intensive körperliche Aktivität
-        erhöht den Mg-Verlust durch Schweiß und Urin. Ein
+  \item \textbf{Leistungssportler:} Intensive kÃ¶rperliche AktivitÃ¤t
+        erhÃ¶ht den Mg-Verlust durch SchweiÃŸ und Urin. Ein
         sportspezifisches Supplementierungsprotokoll, das den
-        asymmetrischen Ab-/Aufbau aus Theorem~\ref{thm:mg} berücksichtigt,
-        würde in den Regenerationsphasen (Off-Season) eine bewusst
-        verlängerte Supplementierung vorsehen, um den langsamen Abbau für
-        die nächste Saison auszunutzen.
-  \item \textbf{Schwangere und Stillende:} Der erhöhte Mg-Bedarf
-        während der Schwangerschaft und die hormonell veränderte
-        Magen-Darm-Motilität (progesteronbedingte Relaxation) können das
-        Halbmagen-Modell modifizieren. Adaptierte Modellparameter für
+        asymmetrischen Ab-/Aufbau aus Theorem~\ref{thm:mg} berÃ¼cksichtigt,
+        wÃ¼rde in den Regenerationsphasen (Off-Season) eine bewusst
+        verlÃ¤ngerte Supplementierung vorsehen, um den langsamen Abbau fÃ¼r
+        die nÃ¤chste Saison auszunutzen.
+  \item \textbf{Schwangere und Stillende:} Der erhÃ¶hte Mg-Bedarf
+        wÃ¤hrend der Schwangerschaft und die hormonell verÃ¤nderte
+        Magen-Darm-MotilitÃ¤t (progesteronbedingte Relaxation) kÃ¶nnen das
+        Halbmagen-Modell modifizieren. Adaptierte Modellparameter fÃ¼r
         diese Gruppe sind klinisch bedeutsam.
-  \item \textbf{Diabetespatienten:} Typ-2-Diabetes ist häufig mit
-        Hypomagnesämie assoziiert; gleichzeitig ist das Halbmagen-Prinzip
-        für die Gewichtsreduktion bei metabolischem Syndrom direkt
-        relevant. Kombinierte functional foods mit hoher Mg-Bioverfügbarkeit
-        und niedrigem glykämischem Index könnten beide Theoreme für diese
+  \item \textbf{Diabetespatienten:} Typ-2-Diabetes ist hÃ¤ufig mit
+        HypomagnesÃ¤mie assoziiert; gleichzeitig ist das Halbmagen-Prinzip
+        fÃ¼r die Gewichtsreduktion bei metabolischem Syndrom direkt
+        relevant. Kombinierte functional foods mit hoher Mg-BioverfÃ¼gbarkeit
+        und niedrigem glykÃ¤mischem Index kÃ¶nnten beide Theoreme fÃ¼r diese
         Patientengruppe synergistisch nutzen.
 \end{itemize}
 
@@ -871,132 +871,132 @@ Um die aus den Theoremen abgeleiteten Produktkonzepte industriell zu
 realisieren, sind spezifische Verfahrenstechniken erforderlich:
 \begin{itemize}
   \item \textbf{3D-Lebensmitteldruck (Additive Manufacturing):}
-        Präziser 3D-Druck von Nahrungsmitteln erlaubt die Herstellung
-        von Strukturen mit definierter Porosität und Dichte, die
-        das volumetrische Sättigungssignal bei minimierter Kalorienlast
-        gezielt erzeugen. Portionsgrößen können gerätegesteuert exakt
-        auf 50\,\% der individuellen Magenkapazität eingestellt werden.
+        PrÃ¤ziser 3D-Druck von Nahrungsmitteln erlaubt die Herstellung
+        von Strukturen mit definierter PorositÃ¤t und Dichte, die
+        das volumetrische SÃ¤ttigungssignal bei minimierter Kalorienlast
+        gezielt erzeugen. PortionsgrÃ¶ÃŸen kÃ¶nnen gerÃ¤tegesteuert exakt
+        auf 50\,\% der individuellen MagenkapazitÃ¤t eingestellt werden.
   \item \textbf{Hochdruck-Verarbeitung (HPP):}
-        Hochdruckbehandlung erhält bioaktive Verbindungen (einschließlich
-        Mg-organischer Chelate) und ermöglicht eine schonende Texturierung
+        Hochdruckbehandlung erhÃ¤lt bioaktive Verbindungen (einschlieÃŸlich
+        Mg-organischer Chelate) und ermÃ¶glicht eine schonende Texturierung
         von Proteingelen und Hydrokolloid-Matrizes, die gastrale
         Dehnungsrezeptoren optimal stimulieren.
-  \item \textbf{Fermentation und Biozugänglichkeit:}
+  \item \textbf{Fermentation und BiozugÃ¤nglichkeit:}
         Fermentation reduziert den Phytatgehalt (Abbau durch Phytase),
-        was die Mg-Bioverfügbarkeit in fermentierten Cerealien, Leguminosen
-        und Gemüseprodukten erheblich steigert. Gezielte Starterkultur-Auswahl
-        (phytasereiche Bakterienstämme) kann als Produktionsstrategie für
+        was die Mg-BioverfÃ¼gbarkeit in fermentierten Cerealien, Leguminosen
+        und GemÃ¼seprodukten erheblich steigert. Gezielte Starterkultur-Auswahl
+        (phytasereiche BakterienstÃ¤mme) kann als Produktionsstrategie fÃ¼r
         Mg-optimierte Backwaren, Joghurt-Kulturen und fermentierte
-        Gemüsezubereitungen entwickelt werden.
+        GemÃ¼sezubereitungen entwickelt werden.
   \item \textbf{Nano-Encapsulation:}
         Nano-Liposomen und biopolymere Nanopartikel (Chitosan, Alginate)
         mit Mg-Kernbeladung bieten Schutz vor gastraler Deaktivierung und
-        ermöglichen gezielte Freisetzung im Duodenum, wo die aktive
+        ermÃ¶glichen gezielte Freisetzung im Duodenum, wo die aktive
         TRPM6-vermittelte Absorption maximal ist. Diese Technologie
         verbindet die mechanistischen Erkenntnisse aus Theorem~\ref{thm:mg}
         direkt mit produktionstechnischer Umsetzbarkeit.
 \end{itemize}
 
-% ── 5.3.5 ────────────────────────────────────────────────────────────────────
+% â”€â”€ 5.3.5 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsubsection{Gesellschaftliche und regulatorische Implikationen}
 
 \paragraph{Gesundheitsbezogene Angaben (Health Claims).}
 Die formale Quantifizierung beider Theoreme durch bewiesene Modelle
-ermöglicht es, Health Claims auf Lebensmitteln mit mathematisch
+ermÃ¶glicht es, Health Claims auf Lebensmitteln mit mathematisch
 substanziierter Evidenz zu hinterlegen. Die \textit{European Food Safety
-Authority} (EFSA) fordert für Health-Claims-Zulassungen nach Verordnung
+Authority} (EFSA) fordert fÃ¼r Health-Claims-Zulassungen nach Verordnung
 (EG) Nr.~1924/2006 systematische Belege; das hier entwickelte
-modellbasierte Framework erfüllt die Anforderungen an mechanistische
-Plausibilität und quantitative Vorhersagbarkeit, die in der
+modellbasierte Framework erfÃ¼llt die Anforderungen an mechanistische
+PlausibilitÃ¤t und quantitative Vorhersagbarkeit, die in der
 EFSA-Leitlinie zu nutrikinetischen Studien formuliert sind.
 
-\paragraph{Digitale Ernährungsberatung und Apps.}
+\paragraph{Digitale ErnÃ¤hrungsberatung und Apps.}
 Das Halbmagen-Modell (Gleichung~\eqref{eq:W}) ist hinreichend einfach, um
-als Echtzeit-Prognosemodell in Ernährungs-Apps implementiert zu werden.
-Eine App könnte auf Basis von Körperstartgewicht, Aktivitätslevel (als
-Proxy für $D_0$) und individuellem Adaptationsmuster ($\lambda$ aus
-initialen Messwochen geschätzt) täglich aktualisierte Gewichtsprognosen
+als Echtzeit-Prognosemodell in ErnÃ¤hrungs-Apps implementiert zu werden.
+Eine App kÃ¶nnte auf Basis von KÃ¶rperstartgewicht, AktivitÃ¤tslevel (als
+Proxy fÃ¼r $D_0$) und individuellem Adaptationsmuster ($\lambda$ aus
+initialen Messwochen geschÃ¤tzt) tÃ¤glich aktualisierte Gewichtsprognosen
 ausgeben. Gekoppelt mit Smart-Scale-Daten entsteht ein
 \emph{Closed-Loop-System} zur Gewichtssteuerung --- ein Paradigmenwechsel
-von reaktiver zu modell-prädiktiver Ernährungslenkung.
+von reaktiver zu modell-prÃ¤diktiver ErnÃ¤hrungslenkung.
 
-\paragraph{Public Health und Präventionsprogramme.}
+\paragraph{Public Health und PrÃ¤ventionsprogramme.}
 Die 21-Tage-Struktur des Halbmagen-Prinzips ist administrativ attraktiv
-für Public-Health-Interventionen: Sie ist kurz genug für hohe Compliance,
-lang genug für messbare Effekte, und ihr Erfolg ist mit einfachen
-Haushaltsmitteln (handelsübliche Personenwaage) verifizierbar. Das Modell
-könnte als Grundlage für nationale Adipositaspräventionsprogramme dienen,
+fÃ¼r Public-Health-Interventionen: Sie ist kurz genug fÃ¼r hohe Compliance,
+lang genug fÃ¼r messbare Effekte, und ihr Erfolg ist mit einfachen
+Haushaltsmitteln (handelsÃ¼bliche Personenwaage) verifizierbar. Das Modell
+kÃ¶nnte als Grundlage fÃ¼r nationale AdipositasprÃ¤ventionsprogramme dienen,
 die ohne kostenintensive medizinische Infrastruktur auskommen.
 
-\paragraph{Medizinische Ernährungstherapie und klinische Leitlinien.}
-Auf Grundlage validierter Studien könnten die beiden Theoreme Eingang in
+\paragraph{Medizinische ErnÃ¤hrungstherapie und klinische Leitlinien.}
+Auf Grundlage validierter Studien kÃ¶nnten die beiden Theoreme Eingang in
 klinische Leitlinien finden:
 \begin{itemize}
-  \item Leitlinie zur Supplementierung von Mikronährstoffen:
-        Berücksichtigung der asymmetrischen Kinetik bei Empfehlungen
+  \item Leitlinie zur Supplementierung von MikronÃ¤hrstoffen:
+        BerÃ¼cksichtigung der asymmetrischen Kinetik bei Empfehlungen
         zur Therapiedauer und Ausschleichstrategie.
   \item Leitlinie zur nicht-pharmakologischen Adipositastherapie:
         Halbmagen-Protokoll als strukturierte Erstintervention vor
-        medikamentösen oder chirurgischen Maßnahmen.
+        medikamentÃ¶sen oder chirurgischen MaÃŸnahmen.
 \end{itemize}
 
-% ── 5.3.6 ────────────────────────────────────────────────────────────────────
-\subsubsection{Interdisziplinäre und emergente Forschungsfelder}
+% â”€â”€ 5.3.6 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+\subsubsection{InterdisziplinÃ¤re und emergente Forschungsfelder}
 
 \paragraph{Gut-Brain-Axis und psychologische Aspekte.}
 Das Halbmagen-Prinzip interagiert nicht nur mit metabolischen, sondern
-auch mit zentralnervösen Regulationsmechanismen. Der Vagusnerv überträgt
+auch mit zentralnervÃ¶sen Regulationsmechanismen. Der Vagusnerv Ã¼bertrÃ¤gt
 gastrale Dehnungssignale an den Nucleus tractus solitarii, von wo sie
-in kortikale Sättigungsnetzwerke (Insula, präfrontaler Kortex) projizieren.
-Die habituelle Reduktion der Magenauslastung auf 50\,\% könnte --- über
-synaptische Plastizität in diesen Netzwerken --- die \emph{hedonische
+in kortikale SÃ¤ttigungsnetzwerke (Insula, prÃ¤frontaler Kortex) projizieren.
+Die habituelle Reduktion der Magenauslastung auf 50\,\% kÃ¶nnte --- Ã¼ber
+synaptische PlastizitÃ¤t in diesen Netzwerken --- die \emph{hedonische
 Komponente} des Essverhaltens langfristig modulieren: ein Effekt, der
 in den verhaltensbiologischen Studiendesigns der Zukunft explizit
 kontrolliert werden sollte.
 
 \paragraph{Mikrobiom-Interaktionen.}
 Das intestinale Mikrobiom beeinflusst sowohl die Mg-Absorption (durch
-Produktion kurzkettiger Fettsäuren, die intestinale Tight Junctions
+Produktion kurzkettiger FettsÃ¤uren, die intestinale Tight Junctions
 modulieren) als auch die metabolische Adaptation ($\lambda$ in
 Gleichung~\eqref{eq:deficit}). Metagenomsekzenzierung in Kombination
-mit Kinetik-Studien könnte Mikrobiom-Signaturen identifizieren, die
+mit Kinetik-Studien kÃ¶nnte Mikrobiom-Signaturen identifizieren, die
 ``Hochabsorber'' von ``Niedrigabsorbern'' trennen --- mit direkter
-Relevanz für personalisierte Supplementierungsempfehlungen und
+Relevanz fÃ¼r personalisierte Supplementierungsempfehlungen und
 Lebensmittelformulierungen.
 
 \paragraph{Chronobiologische Aspekte.}
-Tagesrhythmische Schwankungen der renalen Mg-Reab\-sor\-ption (höhere
+Tagesrhythmische Schwankungen der renalen Mg-Reab\-sor\-ption (hÃ¶here
 Reabsorption nachts) und der gastralen Entleerungsge\-schwindigkeit
-(zirkadian reguliert durch den Uhrmolekül-BMAL1 im Magen-Darm-Trakt)
-sind bislang nicht in den Modellen berücksichtigt. Eine
-chronopharmakokinetische Erweiterung --- mit zeitabhängigen
+(zirkadian reguliert durch den UhrmolekÃ¼l-BMAL1 im Magen-Darm-Trakt)
+sind bislang nicht in den Modellen berÃ¼cksichtigt. Eine
+chronopharmakokinetische Erweiterung --- mit zeitabhÃ¤ngigen
 Ratenkonstanten $k(t) = k_0 + k_1 \cos(2\pi t / 24\,\text{h} + \phi)$
---- würde optimale Einnahme- und Esszeitpunkte ableiten lassen und
-die Modellpräzision erheblich steigern.
+--- wÃ¼rde optimale Einnahme- und Esszeitpunkte ableiten lassen und
+die ModellprÃ¤zision erheblich steigern.
 
 \paragraph{Systembiologische Netzwerkmodelle.}
-Langfristig könnten beide Theoreme in umfassendere
+Langfristig kÃ¶nnten beide Theoreme in umfassendere
 systembiologische Modelle des menschlichen Metabolismus eingebettet werden
 (z.\,B.\ das \textit{Whole-Body-Model} von Heinz-Nixdorf-Recall,
-physiology-based pharmacokinetic models --- PBPK). Darin wären die
+physiology-based pharmacokinetic models --- PBPK). Darin wÃ¤ren die
 Wechselwirkungen zwischen Mg-Homeostase, Energiebilanz, Insulin-Signalweg,
-mitochondrialer Funktion und entzündlicher Aktivierung als vernetztes
+mitochondrialer Funktion und entzÃ¼ndlicher Aktivierung als vernetztes
 Differentialgleichungssystem modelliert --- ein Forschungsfeld, das
 derzeit an der Schnittstelle von Systembiologie, Computational Medicine
-und Ernährungswissenschaften entsteht.
+und ErnÃ¤hrungswissenschaften entsteht.
 
 \bigskip
 \noindent
 Zusammenfassend steht die vorliegende Arbeit am Anfang eines breiten
-Forschungsprogramms: Die formale Verankerung beider Prinzipien ermöglicht
-präzise Hypothesen, reproduzierbare Studiendesigns und direkt verwertbare
+Forschungsprogramms: Die formale Verankerung beider Prinzipien ermÃ¶glicht
+prÃ¤zise Hypothesen, reproduzierbare Studiendesigns und direkt verwertbare
 industrielle Anwendungen. Die Konvergenz von mathematischer Modellierung,
 klinischer Validierung und technologischer Umsetzung wird in den kommenden
 Jahren entscheiden, ob die hier bewiesenen Theoreme den Status von
 allgemein akzeptierten quantitativen Leitprinzipien der
-Ernährungsphysiologie und Lebensmittelwissenschaft erreichen.
+ErnÃ¤hrungsphysiologie und Lebensmittelwissenschaft erreichen.
 
-% ─────────────────────────────────────────────────────────────────────────────
+% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \begin{thebibliography}{99}
 
 \bibitem{DiNicolantonio2018}
@@ -1066,7 +1066,7 @@ Magnesium and type~2 diabetes.
 \textit{World Journal of Diabetes}, 6(10), 1152--1157.
 
 \bibitem{Guerrero2016}
-Guerrero-Romero, F., \& Rodríguez-Morán, M. (2016).
+Guerrero-Romero, F., \& RodrÃ­guez-MorÃ¡n, M. (2016).
 Magnesium improves the beta-cell function to compensate variation of insulin
 sensitivity: double-blind, randomized clinical trial.
 \textit{European Journal of Clinical Investigation}, 41(4), 405--410.
@@ -1122,7 +1122,7 @@ Personalized nutrition by prediction of glycemic responses.
 \textit{Cell}, 163(5), 1079--1094.
 
 \bibitem{Sonnenburg2016}
-Sonnenburg, J.\,L., \& Bäckhed, F. (2016).
+Sonnenburg, J.\,L., \& BÃ¤ckhed, F. (2016).
 Diet--microbiota interactions as moderators of human metabolism.
 \textit{Nature}, 535(7610), 56--64.
 
@@ -1162,7 +1162,7 @@ Springer.
 \bibitem{Teorell1937}
 Teorell, T. (1937).
 Kinetics of distribution of substances administered to the body.
-\textit{Archives Internationales de Pharmacodynamie et de Thérapie},
+\textit{Archives Internationales de Pharmacodynamie et de ThÃ©rapie},
 57, 205--240.
 
 \bibitem{Poulin2001}
@@ -1186,7 +1186,7 @@ Nano- and micro-structured assemblies for encapsulation of food ingredients.
 \textit{Chemical Society Reviews}, 38(4), 902--912.
 
 \bibitem{Leenhardt2005}
-Leenhardt, F., Levrat-Verny, M.-A., Chanliaud, E., \& Rémésy, C. (2005).
+Leenhardt, F., Levrat-Verny, M.-A., Chanliaud, E., \& RÃ©mÃ©sy, C. (2005).
 Moderate decrease in wheat whole grain particle size increases iron
 absorption and reduces the zinc bioavailability --- implications for
 dietary phytate reduction strategies.
@@ -1231,3 +1231,4 @@ review.
 \end{thebibliography}
 
 \end{document}
+

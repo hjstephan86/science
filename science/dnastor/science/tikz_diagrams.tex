@@ -1,4 +1,4 @@
-\documentclass[tikz,border=8pt]{standalone}
+﻿\documentclass[tikz,border=8pt]{standalone}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,decorations.pathmorphing}
 \usepackage{amsmath,amssymb}
@@ -14,7 +14,7 @@
 \definecolor{lightgreen}{RGB}{220,245,220}
 \definecolor{lightred}{RGB}{255,230,225}
 
-% ─── Tikz-Stile ────────────────────────────────────────────────────────────
+% â”€â”€â”€ Tikz-Stile â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \tikzset{
   sysbox/.style={rectangle, rounded corners=4pt, draw=gray!70, fill=gray!8,
     minimum width=3.2cm, minimum height=1.1cm, align=center,
@@ -29,15 +29,15 @@
     font=\bfseries\small, text=black},
 }
 
-% ═══════════════════════════════════════════════════════════════════════════
-% TIKZ 1  –  DSS Schichtenmodell
-% ═══════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+% TIKZ 1  â€“  DSS Schichtenmodell
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{document}
 
 \begin{tikzpicture}[node distance=0.55cm]
   \node[layer=darkgray] (os)   {Betriebssystem / Dateisystem-Interface};
   \node[layer=mainblue, below=of os]  (cod)
-        {Quaternärer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
+        {QuaternÃ¤rer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
   \node[layer=darkgreen, below=of cod] (idx)
         {Subgraph-Signatur-Index $\mathcal{I}$ \quad|\quad Rotations-Match-Cache \quad|\quad
          Redundanz-Pool $\mathcal{M}$};
@@ -60,9 +60,9 @@
 
 \newpage
 
-% ═══════════════════════════════════════════════════════════════════════════
-% TIKZ 2  –  Quaternäres Kodierungsschema (Bijektion)
-% ═══════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+% TIKZ 2  â€“  QuaternÃ¤res Kodierungsschema (Bijektion)
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{tikzpicture}[node distance=1.2cm and 2.5cm]
   % Bit-Paare
   \foreach \bits/\y in {00/3, 01/2, 10/1, 11/0}{
@@ -82,7 +82,7 @@
   \draw[arrow, darkgreen] (b10.east) -- (G.west);
   \draw[arrow, gold]      (b11.east) -- (C.west);
 
-  % Rückwärtspfeile (Dekodierung)
+  % RÃ¼ckwÃ¤rtspfeile (Dekodierung)
   \draw[arrow, mainblue!60,  dashed] (A.east) to[bend right=20]
         node[right,font=\tiny]{$\psi$} ++(1.2,0)
         node[right,font=\footnotesize,mainblue]{\texttt{00}};
@@ -99,7 +99,7 @@
   \node[above=0.5cm of A -| {(6.2,3)}, font=\small\itshape, darkgray]
         {Dekodierung~$\psi$};
 
-  % Bijektivitätsannotation
+  % BijektivitÃ¤tsannotation
   \node[draw=darkgreen, fill=lightgreen, rounded corners=3pt,
         font=\small, align=center, below=1.0cm of b11]
         {$\phi: \mathcal{B}^2 \to \Sigma$ ist bijektiv\\
@@ -108,9 +108,9 @@
 
 \newpage
 
-% ═══════════════════════════════════════════════════════════════════════════
-% TIKZ 3  –  Subgraph-Signatur-Index (Retrieval-Struktur)
-% ═══════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+% TIKZ 3  â€“  Subgraph-Signatur-Index (Retrieval-Struktur)
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{tikzpicture}[node distance=0.9cm and 1.8cm]
   % Query
   \node[sysbox=mainblue, minimum width=2.5cm] (query) at (0,0)
@@ -139,7 +139,7 @@
   \node[sysbox=darkgray, below=0.85cm of ecc, minimum width=3.0cm]
         (verify) {Subgraph-\\Verifikation $\checkmark$};
   \node[sysbox=darkgreen, below=0.85cm of verify, minimum width=3.0cm]
-        (decode) {Quaternäre\\Dekodierung $\psi$};
+        (decode) {QuaternÃ¤re\\Dekodierung $\psi$};
   \node[sysbox=mainblue, below=0.85cm of decode, minimum width=2.5cm]
         (out) {Datenblock $D_i$};
 
@@ -157,11 +157,11 @@
 
 \newpage
 
-% ═══════════════════════════════════════════════════════════════════════════
-% TIKZ 4  –  DNA-Datengraph eines Datenblockes
-% ═══════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+% TIKZ 4  â€“  DNA-Datengraph eines Datenblockes
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{tikzpicture}[node distance=1.8cm]
-  % Beispielsequenz  D = 01 10 00 11  →  S = T G A C
+  % Beispielsequenz  D = 01 10 00 11  â†’  S = T G A C
   \node[dnabase=accentred] (T) at (0,0)   {T};
   \node[dnabase=darkgreen] (G) at (2.2,0) {G};
   \node[dnabase=mainblue]  (A) at (4.4,0) {A};
@@ -178,7 +178,7 @@
   \draw[arrow, darkgray, very thick] (G) -- node[above,font=\tiny]{back} (A);
   \draw[arrow, darkgray, very thick] (A) -- node[above,font=\tiny]{back} (C);
 
-  % Watson-Crick-Kanten (komplementär: T–A und G–C)
+  % Watson-Crick-Kanten (komplementÃ¤r: Tâ€“A und Gâ€“C)
   \draw[-{Stealth}, teal, thick, dashed, bend right=40]
         (T) to node[below,font=\tiny,teal]{$T\!-\!A$} (A);
   \draw[-{Stealth}, teal, thick, dashed, bend right=40]
@@ -209,9 +209,9 @@
 
 \newpage
 
-% ═══════════════════════════════════════════════════════════════════════════
-% TIKZ 5  –  Subgraph-Komprimierung: Inklusionsbaum
-% ═══════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+% TIKZ 5  â€“  Subgraph-Komprimierung: Inklusionsbaum
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{tikzpicture}[node distance=1.1cm and 2.5cm,
   maxnode/.style={sysbox=darkgreen, minimum width=3.0cm},
   rednode/.style={sysbox=accentred, minimum width=3.0cm}]
@@ -229,7 +229,7 @@
   \node[rednode] (R5) at (9.5, -2.5) {$D_7$: \texttt{TGCAT}};
   \node[rednode] (R6) at (11.5,-2.5) {$D_8$: \texttt{TGC}};
 
-  % Subgraph-Inklusionspfeile (rot → max)
+  % Subgraph-Inklusionspfeile (rot â†’ max)
   \foreach \r/\m in {R1/M1, R2/M1, R3/M2, R4/M2, R5/M3, R6/M3}
     \draw[{Stealth}-,thick,darkgray!70,dashed] (\r.north) --
           node[midway,font=\tiny,darkgray]{$\preceq_\text{rot}$} (\m.south);
@@ -248,3 +248,4 @@
 \end{tikzpicture}
 
 \end{document}
+

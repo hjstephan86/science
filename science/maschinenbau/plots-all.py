@@ -59,7 +59,7 @@ ax2.grid(True, alpha=0.3)
 ax2.text(0.2, 0.2, 'Knoten', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_statik.pdf', bbox_inches='tight')
+plt.savefig('plot_statik.pdf', bbox_inches='tight')
 plt.close()
 print("plot_statik.pdf OK")
 
@@ -89,7 +89,7 @@ axes[2].set_xlabel(r'Zeit $t$ [s]', fontsize=12)
 axes[2].set_ylim(0, 3); axes[2].legend(fontsize=11); axes[2].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_kinematik.pdf', bbox_inches='tight')
+plt.savefig('plot_kinematik.pdf', bbox_inches='tight')
 plt.close()
 print("plot_kinematik.pdf OK")
 
@@ -137,7 +137,7 @@ ax.legend(fontsize=11); ax.grid(True, alpha=0.3)
 ax.set_xlim(-0.002*100, 0.26*100); ax.set_ylim(-5, 420)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_festigkeit.pdf', bbox_inches='tight')
+plt.savefig('plot_festigkeit.pdf', bbox_inches='tight')
 plt.close()
 print("plot_festigkeit.pdf OK")
 
@@ -182,7 +182,7 @@ ax2.set_title(r'Biegemomentenverlauf $M(x) = \frac{q}{2}(L-x)^2$', fontsize=12)
 ax2.legend(fontsize=11); ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_biegung.pdf', bbox_inches='tight')
+plt.savefig('plot_biegung.pdf', bbox_inches='tight')
 plt.close()
 print("plot_biegung.pdf OK")
 
@@ -242,7 +242,7 @@ ax2.set_title(r'$\eta_C = 1 - T_C/T_H$', fontsize=12)
 ax2.legend(fontsize=11); ax2.grid(True, alpha=0.3); ax2.set_ylim(0, 80)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_thermodynamik.pdf', bbox_inches='tight')
+plt.savefig('plot_thermodynamik.pdf', bbox_inches='tight')
 plt.close()
 print("plot_thermodynamik.pdf OK")
 
@@ -311,7 +311,7 @@ ax.set_xlim(0, 6.7); ax.set_ylim(300, 1600)
 ax.legend(fontsize=9, loc='upper right'); ax.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_eisen_kohlenstoff.pdf', bbox_inches='tight')
+plt.savefig('plot_eisen_kohlenstoff.pdf', bbox_inches='tight')
 plt.close()
 print("plot_eisen_kohlenstoff.pdf OK")
 
@@ -355,7 +355,7 @@ ax2.set_title(r'Passfederverbindung ($p_{zul} = 100$ MPa)', fontsize=11)
 ax2.legend(fontsize=11); ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_maschinenelemente.pdf', bbox_inches='tight')
+plt.savefig('plot_maschinenelemente.pdf', bbox_inches='tight')
 plt.close()
 print("plot_maschinenelemente.pdf OK")
 
@@ -407,7 +407,7 @@ ax2.set_title(r'Druckverlauf (Bernoulli: $p + \frac{\rho v^2}{2} = \mathrm{const
 ax2.legend(fontsize=11); ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_stroemung.pdf', bbox_inches='tight')
+plt.savefig('plot_stroemung.pdf', bbox_inches='tight')
 plt.close()
 print("plot_stroemung.pdf OK")
 
@@ -453,7 +453,7 @@ ax2.set_title('Sprungantwort PT2-Glied (verschiedene Dämpfungen $D$)', fontsize
 ax2.legend(fontsize=10); ax2.grid(True, alpha=0.3); ax2.set_ylim(-0.1, 1.8)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_regelung.pdf', bbox_inches='tight')
+plt.savefig('plot_regelung.pdf', bbox_inches='tight')
 plt.close()
 print("plot_regelung.pdf OK")
 
@@ -500,7 +500,7 @@ ax2.set_title(r'Erzwungene Schwingung ($D=0{,}1$, $\eta=0{,}95$)', fontsize=12)
 ax2.legend(fontsize=9); ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/maschinenbau/plot_schwingung.pdf', bbox_inches='tight')
+plt.savefig('plot_schwingung.pdf', bbox_inches='tight')
 plt.close()
 print("plot_schwingung.pdf OK")
 

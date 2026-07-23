@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -28,14 +28,14 @@
 
 \definecolor{spiceRed}{RGB}{180,40,20}
 \definecolor{spiceGold}{RGB}{200,150,30}
-\definecolor{deepBlü}{RGB}{20,60,120}
+\definecolor{deepBlÃ¼}{RGB}{20,60,120}
 \definecolor{lightGray}{RGB}{240,240,245}
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=deepBlü,
+  linkcolor=deepBlÃ¼,
   citecolor=spiceRed,
-  urlcolor=deepBlü
+  urlcolor=deepBlÃ¼
 }
 
 \theoremstyle{definition}
@@ -59,7 +59,7 @@
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\MHI}{\overline{H}}
 
-\title{\textbf{Inhomogene Würzverteilung\\ bei gekochten Nudeln}\\[-0.1em] \Large Sensorische Stimulationsdynamik durch\\ stochastische Gewürzgradienten}
+\title{\textbf{Inhomogene WÃ¼rzverteilung\\ bei gekochten Nudeln}\\[-0.1em] \Large Sensorische Stimulationsdynamik durch\\ stochastische GewÃ¼rzgradienten}
 \author{Stephan Epp}
 \date{20. April 2026}
 
@@ -74,37 +74,37 @@
 %% =============================================================
 Die vorliegende Arbeit untersucht aus formal-mathematischer und
 neurowissenschaftlicher Perspektive, wie eine inhomogene Verteilung von
-Gewürzkonzentrationen auf und in gekochten Nudeln das sensorische Erlebnis
-beim Essen beeinflusst. Wir modellieren die Würzverteilung als
-Wahrscheinlichkeitsmass auf dem Intensitätsraum $[0, I_{\max}]$ und
+GewÃ¼rzkonzentrationen auf und in gekochten Nudeln das sensorische Erlebnis
+beim Essen beeinflusst. Wir modellieren die WÃ¼rzverteilung als
+Wahrscheinlichkeitsmass auf dem IntensitÃ¤tsraum $[0, I_{\max}]$ und
 zeigen, dass Verteilungen mit hoher Entropie (breites Spektrum wechselnder
-Geschmacksintensitäten) systematisch grössere mittlere hedonische
+GeschmacksintensitÃ¤ten) systematisch grÃ¶ssere mittlere hedonische
 Bewertungen erzeugen als eng konzentrierte, homogene Verteilungen. Die
 zentralen Werkzeuge sind die Wundt-Theorie der hedonischen Reaktionskurve,
 sensorische Adaptationsmodelle, informationstheoretische Analysen der
 Stimulusvielfalt sowie ein Markov-Modell der Geschmackszustandsfolge.
 Alle Ergebnisse werden durch formale Beweise sowie achtstufige
-\texttt{matplotlib}-Visualisierungen untermaürt. Der Ausblick skizziert
-Erweiterungen auf multimodale Sensorik, aktives Würzdesign, maschinelles
+\texttt{matplotlib}-Visualisierungen untermaÃ¼rt. Der Ausblick skizziert
+Erweiterungen auf multimodale Sensorik, aktives WÃ¼rzdesign, maschinelles
 Lernen und gastronomische Anwendungen.
 
 Essen ist ein multisensorisches Erlebnis, das chemische, mechanische und
-thermische Reize in einer zeitlich strukturierten Seqünz von Bissen
-integriert. Während die Lebensmitteltechnologie traditionell nach
-\emph{Gleichmässigkeit} strebt --- gleichmässige Textur, gleichmässiger
-Geschmack, reproduzierbare Portionierung --- vernachlässigt dieser Ansatz
+thermische Reize in einer zeitlich strukturierten SeqÃ¼nz von Bissen
+integriert. WÃ¤hrend die Lebensmitteltechnologie traditionell nach
+\emph{GleichmÃ¤ssigkeit} strebt --- gleichmÃ¤ssige Textur, gleichmÃ¤ssiger
+Geschmack, reproduzierbare Portionierung --- vernachlÃ¤ssigt dieser Ansatz
 eine grundlegende Eigenschaft sensorischer Verarbeitung: die \emph{Adaptation}.
 Konstante Stimuli werden vom Nervensystem mit der Zeit unterbewertet; Varianz
 im Signal ist notwendig, um anhaltende Aufmerksamkeit und hedonisches Erleben
-aufrechtzürhalten \cite{rolls2007,kringelbach2015}.
+aufrechtzÃ¼rhalten \cite{rolls2007,kringelbach2015}.
 
-Eine triviale Beobachtung aus der Alltagsküche lässt sich wie folgt
-formalisieren: Werden gekochte Nudeln inhomogen gewürzt --- etwa durch
-ungleichmässiges Unterheben von Sauce, durch Klumpen von Gewürzen oder
-durch räumliche Gradienten der Würzkonzentration ---, so empfindet der
-Essende eine grössere \emph{Geschmacksvielfalt} innerhalb derselben Portion.
-Manche Bissen sind intensiv gewürzt, andere weniger; dieses Wechselspiel
-erzeugt eine Art interner Kontrastverstärkung, die das Gesamterlebnis
+Eine triviale Beobachtung aus der AlltagskÃ¼che lÃ¤sst sich wie folgt
+formalisieren: Werden gekochte Nudeln inhomogen gewÃ¼rzt --- etwa durch
+ungleichmÃ¤ssiges Unterheben von Sauce, durch Klumpen von GewÃ¼rzen oder
+durch rÃ¤umliche Gradienten der WÃ¼rzkonzentration ---, so empfindet der
+Essende eine grÃ¶ssere \emph{Geschmacksvielfalt} innerhalb derselben Portion.
+Manche Bissen sind intensiv gewÃ¼rzt, andere weniger; dieses Wechselspiel
+erzeugt eine Art interner KontrastverstÃ¤rkung, die das Gesamterlebnis
 angenehm belebt.
 
 \subsection{Ziel und Beitrag der Arbeit}
@@ -112,18 +112,18 @@ angenehm belebt.
 Die vorliegende Arbeit verfolgt drei Hauptziele:
 \begin{enumerate}[label=(\roman*)]
   \item \textbf{Formalisierung:} Wir entwickeln ein mathematisches
-  Rahmenwerk zur Beschreibung von Würzverteilungen als
+  Rahmenwerk zur Beschreibung von WÃ¼rzverteilungen als
   Wahrscheinlichkeitsmasse, definieren hedonische Bewertungsfunktionen
   und beweisen formal, dass inhomogene Verteilungen unter geeigneten
-  Bedingungen höheren Genuss erzeugen.
+  Bedingungen hÃ¶heren Genuss erzeugen.
 
   \item \textbf{Dynamische Modellierung:} Wir modellieren sensorische
-  Adaptation als gewöhnliche Differentialgleichung und zeigen, dass
-  inhomogene Stimulusfolgen die Erregungsamplitude länger aufrechterhalten
+  Adaptation als gewÃ¶hnliche Differentialgleichung und zeigen, dass
+  inhomogene Stimulusfolgen die Erregungsamplitude lÃ¤nger aufrechterhalten
   als konstante Stimuli.
 
   \item \textbf{Informationstheorie:} Wir quantifizieren den
-  Informationsgehalt einer Würzseqünz via Shannon-Entropie und zeigen,
+  Informationsgehalt einer WÃ¼rzseqÃ¼nz via Shannon-Entropie und zeigen,
   dass Entropie und mittlerer hedonischer Index eng korrelieren.
 \end{enumerate}
 
@@ -132,79 +132,79 @@ Die vorliegende Arbeit verfolgt drei Hauptziele:
 Abschnitt~\ref{sec:grundlagen} legt die mathematischen Grundlagen fest.
 Abschnitt~\ref{sec:hedonik} entwickelt das hedonische Modell.
 Abschnitt~\ref{sec:adaptation} behandelt Adaptationsdynamik.
-Abschnitt~\ref{sec:informationstheorie} führt die informationstheoretische
-Analyse durch. Abschnitt~\ref{sec:markov} präsentiert das Markov-Modell.
-Abschnitt~\ref{sec:statistik} fasst statistische Kenngrössen zusammen.
+Abschnitt~\ref{sec:informationstheorie} fÃ¼hrt die informationstheoretische
+Analyse durch. Abschnitt~\ref{sec:markov} prÃ¤sentiert das Markov-Modell.
+Abschnitt~\ref{sec:statistik} fasst statistische KenngrÃ¶ssen zusammen.
 Abschnitt~\ref{sec:simulation} beschreibt Simulationsergebnisse.
 Abschnitt~\ref{sec:diskussion} diskutiert die Ergebnisse.
-Abschnitt~\ref{sec:ausblick} gibt einen sehr ausführlichen Ausblick.
+Abschnitt~\ref{sec:ausblick} gibt einen sehr ausfÃ¼hrlichen Ausblick.
 
 %% =============================================================
 \section{Mathematische Grundlagen}\label{sec:grundlagen}
 %% =============================================================
 
-\subsection{Würzintensität als Zufallsvariable}
+\subsection{WÃ¼rzintensitÃ¤t als Zufallsvariable}
 
-\begin{definition}[Würzintensität]\label{def:würz}
+\begin{definition}[WÃ¼rzintensitÃ¤t]\label{def:wÃ¼rz}
 Sei $(\Omega, \mathcal{F}, P)$ ein Wahrscheinlichkeitsraum. Eine
-\emph{Würzintensitätsvariable} ist eine messbare Abbildung
+\emph{WÃ¼rzintensitÃ¤tsvariable} ist eine messbare Abbildung
 \[
   I: \Omega \longrightarrow [0, I_{\max}] \subset \R_{\geq 0},
 \]
-wobei $I_{\max} > 0$ die maximal ertragbare Gewürzintensität bezeichnet.
-Ohne Einschränkung der Allgemeinheit setzen wir $I_{\max} = 10$ (Skala
-analoger Wahrnehmungsintensität).
+wobei $I_{\max} > 0$ die maximal ertragbare GewÃ¼rzintensitÃ¤t bezeichnet.
+Ohne EinschrÃ¤nkung der Allgemeinheit setzen wir $I_{\max} = 10$ (Skala
+analoger WahrnehmungsintensitÃ¤t).
 \end{definition}
 
-\begin{definition}[Homogene und inhomogene Würzung]\label{def:hominhom}
-Eine Würzung heisst
+\begin{definition}[Homogene und inhomogene WÃ¼rzung]\label{def:hominhom}
+Eine WÃ¼rzung heisst
 \begin{itemize}
-  \item \emph{homogen}, falls $I = c$ fast sicher für eine Konstante $c \in (0, I_{\max})$;
+  \item \emph{homogen}, falls $I = c$ fast sicher fÃ¼r eine Konstante $c \in (0, I_{\max})$;
   in der Praxis modellieren wir dies als $I \sim \mathcal{N}(\mu_0, \sigma_0^2)$
   mit kleinem $\sigma_0 \ll 1$.
-  \item \emph{inhomogen}, falls $\Var[I] > \epsilon$ für ein
+  \item \emph{inhomogen}, falls $\Var[I] > \epsilon$ fÃ¼r ein
   Schwellwert $\epsilon > 0$; wir modellieren dies typischerweise durch
   $I \sim \mathrm{Beta}(\alpha, \beta) \cdot I_{\max}$ oder
   $I \sim \mathcal{N}(\mu_1, \sigma_1^2)$ mit $\sigma_1 \gg \sigma_0$.
 \end{itemize}
 \end{definition}
 
-\begin{definition}[Würzprofil einer Nudelportion]
+\begin{definition}[WÃ¼rzprofil einer Nudelportion]
 Sei $\Pi = \{B_1, B_2, \ldots, B_N\}$ eine Portion bestehend aus $N$
-Bissen (engl.\ \emph{bites}). Das \emph{Würzprofil} ist eine Folge
-$(I_1, I_2, \ldots, I_N)$, wobei $I_k$ die Würzintensität des $k$-ten
-Bissens bezeichnet. Wir nehmen an, dass $(I_k)_{k=1}^N$ eine stationäre
+Bissen (engl.\ \emph{bites}). Das \emph{WÃ¼rzprofil} ist eine Folge
+$(I_1, I_2, \ldots, I_N)$, wobei $I_k$ die WÃ¼rzintensitÃ¤t des $k$-ten
+Bissens bezeichnet. Wir nehmen an, dass $(I_k)_{k=1}^N$ eine stationÃ¤re
 stochastische Folge ist.
 \end{definition}
 
-\subsection{Räumliche Würzverteilung}
+\subsection{RÃ¤umliche WÃ¼rzverteilung}
 
-Eine realistischere Beschreibung ergibt sich durch ein räumliches Modell:
+Eine realistischere Beschreibung ergibt sich durch ein rÃ¤umliches Modell:
 
-\begin{definition}[Würzfeld]
+\begin{definition}[WÃ¼rzfeld]
 Sei $\mathcal{D} \subset \R^3$ die Raumregion, die eine Nudelportion
-einnimmt. Ein \emph{Würzfeld} ist eine messbare Funktion
+einnimmt. Ein \emph{WÃ¼rzfeld} ist eine messbare Funktion
 \[
   \phi: \mathcal{D} \longrightarrow [0, I_{\max}],
   \quad \bx \mapsto \phi(\bx),
 \]
-wobei $\phi(\bx)$ die lokale Gewürzkonzentration am Ort $\bx$
+wobei $\phi(\bx)$ die lokale GewÃ¼rzkonzentration am Ort $\bx$
 bezeichnet.
 \end{definition}
 
-Die effektive Würzintensität eines Bissens $B \subset \mathcal{D}$ ist
+Die effektive WÃ¼rzintensitÃ¤t eines Bissens $B \subset \mathcal{D}$ ist
 dann
 \[
   I_B = \frac{1}{|B|} \int_B \phi(\bx)\, d\bx,
 \]
-wobei $|B|$ das Volumen des Bissens bezeichnet. Eine inhomogene Würzung
-entspricht demnach einem räumlich variablen Feld $\phi$, während eine
-homogene Würzung $\phi \equiv c$ konstant ist.
+wobei $|B|$ das Volumen des Bissens bezeichnet. Eine inhomogene WÃ¼rzung
+entspricht demnach einem rÃ¤umlich variablen Feld $\phi$, wÃ¤hrend eine
+homogene WÃ¼rzung $\phi \equiv c$ konstant ist.
 
-\subsection{Statistische Kenngrössen}
+\subsection{Statistische KenngrÃ¶ssen}
 
 \begin{definition}
-Für eine Zufallsvariable $I$ mit Dichte $p_I$ auf $[0, I_{\max}]$
+FÃ¼r eine Zufallsvariable $I$ mit Dichte $p_I$ auf $[0, I_{\max}]$
 definieren wir:
 \begin{align}
   \mu_I &:= \E[I] = \int_0^{I_{\max}} I\, p_I(I)\, dI, \\
@@ -216,12 +216,12 @@ definieren wir:
 \end{align}
 \end{definition}
 
-Für die Normalverteilung $\N(\mu, \sigma^2)$ gilt
-$\gamma_1 = 0$, $\gamma_2 = 0$. Für $\mathrm{Beta}(\alpha, \beta)$ mit
+FÃ¼r die Normalverteilung $\N(\mu, \sigma^2)$ gilt
+$\gamma_1 = 0$, $\gamma_2 = 0$. FÃ¼r $\mathrm{Beta}(\alpha, \beta)$ mit
 $\alpha = \beta$ gilt ebenfalls $\gamma_1 = 0$, jedoch
 $\gamma_2 = -\tfrac{6}{2\alpha + 5} < 0$ (platykurtisch), d.h.\ die
 Verteilung ist flacher als die Normalverteilung --- sie weist somit eine
-grössere Wahrscheinlichkeit für extreme Werte auf.
+grÃ¶ssere Wahrscheinlichkeit fÃ¼r extreme Werte auf.
 
 %% =============================================================
 \section{Hedonisches Modell}\label{sec:hedonik}
@@ -231,7 +231,7 @@ grössere Wahrscheinlichkeit für extreme Werte auf.
 
 Die psychologische Wundt-Theorie (auch: \emph{Inverted-U-Hypothesis})
 postuliert, dass die hedonische (Lust-) Reaktion auf einen Stimulus
-einer umgekehrten U-förmigen Funktion der Stimulusintensität folgt
+einer umgekehrten U-fÃ¶rmigen Funktion der StimulusintensitÃ¤t folgt
 \cite{berlyne1970,wundt1874}.
 
 \begin{definition}[Hedonische Reaktionsfunktion]
@@ -241,23 +241,23 @@ gegeben durch
   H(I) := -\frac{a}{2}(I - I^*)^2 + H_{\max} + b\sin(c\, I),
   \label{eq:wundt}
 \end{equation}
-mit Parametern $a > 0$ (Krrümmung), $I^* \in (0, I_{\max})$ (optimale
-Intensität), $H_{\max}$ (maximaler hedonischer Wert), sowie einem
+mit Parametern $a > 0$ (KrrÃ¼mmung), $I^* \in (0, I_{\max})$ (optimale
+IntensitÃ¤t), $H_{\max}$ (maximaler hedonischer Wert), sowie einem
 schwachen Oszillationsterm $b\sin(c\, I)$, der feinkornige
 Geschmacksvariationen modelliert.
 \end{definition}
 
 \begin{remark}
-Der Oszillationsterm in \eqref{eq:wundt} trägt der empirischen
-Beobachtung Rechnung, dass selbst innerhalb einer Würzintensitätsstufe
-geringfügige Variationen als angenehm wahrgenommen werden. Für
+Der Oszillationsterm in \eqref{eq:wundt} trÃ¤gt der empirischen
+Beobachtung Rechnung, dass selbst innerhalb einer WÃ¼rzintensitÃ¤tsstufe
+geringfÃ¼gige Variationen als angenehm wahrgenommen werden. FÃ¼r
 $b = 0$ ergibt sich die klassische Parabel.
 \end{remark}
 
 \subsection{Mittlerer hedonischer Index}
 
 \begin{definition}[Mittlerer hedonischer Index (MHI)]
-Für eine Würzung mit Dichte $p_I$ ist der \emph{mittlere hedonische
+FÃ¼r eine WÃ¼rzung mit Dichte $p_I$ ist der \emph{mittlere hedonische
 Index} (MHI) definiert als
 \begin{equation}
   \MHI := \E_{I \sim p_I}[H(I)] = \int_0^{I_{\max}} H(I)\, p_I(I)\, dI.
@@ -265,19 +265,19 @@ Index} (MHI) definiert als
 \end{equation}
 \end{definition}
 
-\begin{theorem}[MHI-Vorteil inhomogener Würzung]\label{thm:mhivorteil}
+\begin{theorem}[MHI-Vorteil inhomogener WÃ¼rzung]\label{thm:mhivorteil}
 Sei $H$ eine nicht-lineare, konkav-konvex gemischte Funktion der
 Gestalt \eqref{eq:wundt} mit $a > 0$ und $b \geq 0$.
 Sei $p_{\mathrm{hom}} = \mathcal{N}(\mu_0, \sigma_0^2)$ mit kleinem
 $\sigma_0$ und $p_{\mathrm{inh}}$ eine Verteilung mit gleichen
 Erwartungswert $\mu_0$ aber $\sigma_{\mathrm{inh}} \gg \sigma_0$.
-Dann gilt unter milden Regularitätsbedingungen:
+Dann gilt unter milden RegularitÃ¤tsbedingungen:
 \[
   \MHI(p_{\mathrm{inh}}) > \MHI(p_{\mathrm{hom}}),
 \]
 sofern der Anteile der Verteilung $p_{\mathrm{inh}}$ in dem Bereich, in dem
-$H$ konvex ist (niedriger Intensitätsbereich mit positiver Steigung), den
-konkaven Verlust überwiegt.
+$H$ konvex ist (niedriger IntensitÃ¤tsbereich mit positiver Steigung), den
+konkaven Verlust Ã¼berwiegt.
 \end{theorem}
 
 \begin{proof}
@@ -294,35 +294,35 @@ Da $\E_{p}[I - \mu_0] = 0$:
 \end{align}
 wobei $\kappa_3(p)$ das dritte Kumulant von $p$ bezeichnet.
 
-Für $I$ nahe $I^*/2$ (linker, konvexer Flänke) gilt $H''(\mu_0) > 0$
-(Jensen-Konvexität), sodass $\MHI$ mit $\Var[I]$ wächst.
-Für $I$ nahe $I^*$ gilt $H''(\mu_0) < 0$ (konkav), sodass der zweite
-Term negativ ist; für $\sigma_0 \ll 1$ dominiert dieser Term nicht.
+FÃ¼r $I$ nahe $I^*/2$ (linker, konvexer FlÃ¤nke) gilt $H''(\mu_0) > 0$
+(Jensen-KonvexitÃ¤t), sodass $\MHI$ mit $\Var[I]$ wÃ¤chst.
+FÃ¼r $I$ nahe $I^*$ gilt $H''(\mu_0) < 0$ (konkav), sodass der zweite
+Term negativ ist; fÃ¼r $\sigma_0 \ll 1$ dominiert dieser Term nicht.
 
-Bei $p_{\mathrm{inh}}$ mit breiter Verteilung über $[0.5, 9.5]$ wird
-die gesamte Wundt-Kurve gleichmässig abgetastet. Das Integral
+Bei $p_{\mathrm{inh}}$ mit breiter Verteilung Ã¼ber $[0.5, 9.5]$ wird
+die gesamte Wundt-Kurve gleichmÃ¤ssig abgetastet. Das Integral
 \[
   \MHI(p_{\mathrm{inh}}) = \int_0^{I_{\max}} H(I) p_{\mathrm{inh}}(I)\, dI
 \]
-ist eine gewichtete Mittlung über alle Kurvenabschnitte, einschliesslich
+ist eine gewichtete Mittlung Ã¼ber alle Kurvenabschnitte, einschliesslich
 der hedonisch positiven Bereiche nahe $I^*$. Da $p_{\mathrm{hom}}$
 auf eine enge Umgebung von $\mu_0$ konzentriert ist und $H(\mu_0)$ einen
 nicht-maximalen Wert annimmt (sofern $\mu_0 \neq I^*$), liefert die
 breite Verteilung durch den Einschluss der Region $I \approx I^*$ einen
-höherem Beitrag. Sei $\Delta I := |I^* - \mu_0| > 0$ der Abstand des
+hÃ¶herem Beitrag. Sei $\Delta I := |I^* - \mu_0| > 0$ der Abstand des
 Erwartungswerts vom Optimum. Dann gilt $H(\mu_0) < H(I^*) = H_{\max}$.
-Für $p_{\mathrm{inh}}$ mit hinreichend grossem Träger ist
+FÃ¼r $p_{\mathrm{inh}}$ mit hinreichend grossem TrÃ¤ger ist
 $p_{\mathrm{inh}}(I^*) > 0$, sodass das Integral einen positiven Beitrag
-aus der Umgebung von $I^*$ erhält:
+aus der Umgebung von $I^*$ erhÃ¤lt:
 \begin{align*}
   \MHI(p_{\mathrm{inh}}) - \MHI(p_{\mathrm{hom}})
   &\approx \int_{I^* - \delta}^{I^* + \delta}
       H(I)\bigl[p_{\mathrm{inh}}(I) - p_{\mathrm{hom}}(I)\bigr]\, dI
   + (\text{Rest}).
 \end{align*}
-Da $p_{\mathrm{inh}}(I) > p_{\mathrm{hom}}(I)$ für $|I - \mu_0| > 2\sigma_0$
-und $H$ in der Nähe von $I^*$ maximal ist, überwiegt der positive Term
-für hinreichend grosses $\sigma_{\mathrm{inh}}$. Damit ist
+Da $p_{\mathrm{inh}}(I) > p_{\mathrm{hom}}(I)$ fÃ¼r $|I - \mu_0| > 2\sigma_0$
+und $H$ in der NÃ¤he von $I^*$ maximal ist, Ã¼berwiegt der positive Term
+fÃ¼r hinreichend grosses $\sigma_{\mathrm{inh}}$. Damit ist
 $\MHI(p_{\mathrm{inh}}) > \MHI(p_{\mathrm{hom}})$ bewiesen.
 \end{proof}
 
@@ -330,11 +330,11 @@ $\MHI(p_{\mathrm{inh}}) > \MHI(p_{\mathrm{hom}})$ bewiesen.
   \centering
   \includegraphics[width=0.95\linewidth]{plot2_wundt.pdf}
   \caption{Wundt-Kurve der hedonischen Reaktionsfunktion $H(I)$.
-    Blau markiert der enge Stimulationsbereich homogener Würzung
-    ($\sigma = 0.3$); rot der weite Bereich inhomogener Würzung
-    ($I \in [0.5, 9.5]$). Die farbigen Flächen entsprechen den
-    jeweiligen MHI-Integralen. Die inhomogene Würzung erfasst sowohl
-    Bereiche positiver Krrümmung (konvex, linke Flanke) als auch den
+    Blau markiert der enge Stimulationsbereich homogener WÃ¼rzung
+    ($\sigma = 0.3$); rot der weite Bereich inhomogener WÃ¼rzung
+    ($I \in [0.5, 9.5]$). Die farbigen FlÃ¤chen entsprechen den
+    jeweiligen MHI-Integralen. Die inhomogene WÃ¼rzung erfasst sowohl
+    Bereiche positiver KrrÃ¼mmung (konvex, linke Flanke) als auch den
     Maximalbereich der Kurve.}
   \label{fig:wundt}
 \end{figure}
@@ -344,11 +344,11 @@ $\MHI(p_{\mathrm{inh}}) > \MHI(p_{\mathrm{hom}})$ bewiesen.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{plot1_verteilung.pdf}
-  \caption{Empirische Häufigkeitsverteilungen der Würzintensität für
-    (a) homogene Würzung ($\N(5,0.35^2)$, Gauss-Fit) und
-    (b) inhomogene Würzung ($\mathrm{Beta}(2,2) \cdot 9 + 0.5$, Beta-Fit).
-    Die inhomogene Verteilung weist eine deutlich breitere Streuung über
-    den gesamten Intensitätsraum auf.}
+  \caption{Empirische HÃ¤ufigkeitsverteilungen der WÃ¼rzintensitÃ¤t fÃ¼r
+    (a) homogene WÃ¼rzung ($\N(5,0.35^2)$, Gauss-Fit) und
+    (b) inhomogene WÃ¼rzung ($\mathrm{Beta}(2,2) \cdot 9 + 0.5$, Beta-Fit).
+    Die inhomogene Verteilung weist eine deutlich breitere Streuung Ã¼ber
+    den gesamten IntensitÃ¤tsraum auf.}
   \label{fig:verteilung}
 \end{figure}
 
@@ -358,9 +358,9 @@ $\MHI(p_{\mathrm{inh}}) > \MHI(p_{\mathrm{hom}})$ bewiesen.
 
 \subsection{Adaptationsmodell}
 
-Das Nervensystem passt seine Sensitivität kontinuierlich an den
+Das Nervensystem passt seine SensitivitÃ¤t kontinuierlich an den
 mittleren Stimuluslevel an. Dieser Prozess der \emph{sensorischen
-Adaptation} lässt sich durch ein lineares Erstordnungssystem beschreiben.
+Adaptation} lÃ¤sst sich durch ein lineares Erstordnungssystem beschreiben.
 
 \begin{definition}[Adaptationszustand]
 Sei $A(t)$ der interne Adaptationszustand (gleitender Durchschnitt der
@@ -370,57 +370,57 @@ modellieren:
   \dot{A}(t) &= \frac{I(t) - A(t)}{\tau_A}, \label{eq:adapt} \\
   E(t) &= I(t) - \alpha A(t), \label{eq:erregg}
 \end{align}
-mit Adaptationszeitkonstante $\tau_A > 0$ und Adaptationsstärke
+mit Adaptationszeitkonstante $\tau_A > 0$ und AdaptationsstÃ¤rke
 $\alpha \in (0,1]$.
 \end{definition}
 
-\begin{theorem}[Stationäre Erregung bei konstantem Stimulus]
+\begin{theorem}[StationÃ¤re Erregung bei konstantem Stimulus]
 Sei $I(t) \equiv I_0$ ein konstanter Stimulus. Dann konvergiert der
-Adaptationszustand $A(t) \to I_0$ für $t \to \infty$ und die
-stationäre Erregung beträgt
+Adaptationszustand $A(t) \to I_0$ fÃ¼r $t \to \infty$ und die
+stationÃ¤re Erregung betrÃ¤gt
 \[
   E_\infty = (1 - \alpha) I_0.
 \]
 \end{theorem}
 
 \begin{proof}
-Gleichung \eqref{eq:adapt} hat bei $I(t) = I_0$ die Lösung
+Gleichung \eqref{eq:adapt} hat bei $I(t) = I_0$ die LÃ¶sung
 $A(t) = I_0 + (A(0) - I_0)e^{-t/\tau_A}$, also $A(t) \to I_0$.
 Einsetzen in \eqref{eq:erregg} liefert $E(t) \to I_0 - \alpha I_0 = (1-\alpha) I_0$.
 \end{proof}
 
 \begin{corollary}
-Für $\alpha \to 1$ (vollständige Adaptation) gilt $E_\infty \to 0$:
-der Stimulus wird nach vollständiger Adaptation nicht mehr wahrgenommen.
+FÃ¼r $\alpha \to 1$ (vollstÃ¤ndige Adaptation) gilt $E_\infty \to 0$:
+der Stimulus wird nach vollstÃ¤ndiger Adaptation nicht mehr wahrgenommen.
 \end{corollary}
 
 \begin{theorem}[Erregungserhalt bei variablem Stimulus]\label{thm:erregungserhalt}
-Sei $I(t)$ ein stationärer stochastischer Prozess mit $\E[I] = \mu_I$
-und $\Var[I] = \sigma_I^2 > 0$. Dann gilt im stationären Zustand:
+Sei $I(t)$ ein stationÃ¤rer stochastischer Prozess mit $\E[I] = \mu_I$
+und $\Var[I] = \sigma_I^2 > 0$. Dann gilt im stationÃ¤ren Zustand:
 \begin{align}
   \E[E] &= (1 - \alpha)\mu_I, \\
   \Var[E] &= \Var[I - \alpha A]
            = \sigma_I^2\left(1 + \alpha^2 S_{AA}(\omega) / S_{II}(\omega)\right),
 \end{align}
 wobei $S_{AA}$ und $S_{II}$ die Leistungsdichtespektren von $A$ bzw.\ $I$
-bezeichnen. Für $\sigma_I^2 > 0$ ist $\Var[E] > 0$, d.h.\
-die Erregung fluktuiert daürhaft und kollabiert nicht auf null.
+bezeichnen. FÃ¼r $\sigma_I^2 > 0$ ist $\Var[E] > 0$, d.h.\
+die Erregung fluktuiert daÃ¼rhaft und kollabiert nicht auf null.
 \end{theorem}
 
 \begin{proof}
-Im stationären Zustand ist $A$ der Tiefpassgefilterte Wert von $I$:
-$A(\omega) = \frac{1}{1 + i\omega\tau_A} I(\omega)$ im Freqünzbereich.
+Im stationÃ¤ren Zustand ist $A$ der Tiefpassgefilterte Wert von $I$:
+$A(\omega) = \frac{1}{1 + i\omega\tau_A} I(\omega)$ im FreqÃ¼nzbereich.
 Daher gilt:
 \[
   E(\omega) = I(\omega) - \alpha A(\omega)
   = I(\omega)\left(1 - \frac{\alpha}{1 + i\omega\tau_A}\right)
   = \frac{1 + i\omega\tau_A - \alpha}{1 + i\omega\tau_A} I(\omega).
 \]
-Die übertragungsfunktion $G(\omega) = (1 - \alpha + i\omega\tau_A)/(1 + i\omega\tau_A)$
-hat für $\omega \to 0$ den Grenzwert $1 - \alpha$ und für
-$\omega \to \infty$ den Grenzwert $1$. Für einen Stimulus mit
+Die Ã¼bertragungsfunktion $G(\omega) = (1 - \alpha + i\omega\tau_A)/(1 + i\omega\tau_A)$
+hat fÃ¼r $\omega \to 0$ den Grenzwert $1 - \alpha$ und fÃ¼r
+$\omega \to \infty$ den Grenzwert $1$. FÃ¼r einen Stimulus mit
 breitem Spektrum (grosse Varianz, hohe Entropie) ist $S_{II}(\omega)$
-über einen grossen Freqünzbereich positiv, was eine daürhafte Erregung
+Ã¼ber einen grossen FreqÃ¼nzbereich positiv, was eine daÃ¼rhafte Erregung
 sicherstellt.
 \end{proof}
 
@@ -428,17 +428,17 @@ sicherstellt.
   \centering
   \includegraphics[width=0.95\linewidth]{plot3_adaptation.pdf}
   \caption{Neuronale Erregung $E(t)$ als Funktion des Bissens $n$.
-    (a) Homogene Würzung: exponentielle Adaptation führt zu stark
-    abnehmender Erregung. (b) Inhomogene Würzung: die Variabilität
-    des Stimulus hält die Erregung auf mittlerem Niveau aufrecht.
-    Glättung durch Savitzky-Golay-Filter ($w=31$, Grad 3).}
+    (a) Homogene WÃ¼rzung: exponentielle Adaptation fÃ¼hrt zu stark
+    abnehmender Erregung. (b) Inhomogene WÃ¼rzung: die VariabilitÃ¤t
+    des Stimulus hÃ¤lt die Erregung auf mittlerem Niveau aufrecht.
+    GlÃ¤ttung durch Savitzky-Golay-Filter ($w=31$, Grad 3).}
   \label{fig:adaptation}
 \end{figure}
 
 \subsection{Energiemass der Erregungsfolge}
 
 \begin{definition}[Totale sensorische Stimulation]
-Für eine Essenseinheit der Daür $N$ Bissen definieren wir die
+FÃ¼r eine Essenseinheit der DaÃ¼r $N$ Bissen definieren wir die
 \emph{totale sensorische Stimulation}:
 \begin{equation}
   \mathcal{E}_N := \sum_{k=1}^N E_k,
@@ -448,25 +448,25 @@ wobei $E_k$ die effektive Erregung beim $k$-ten Bissen bezeichnet.
 
 \begin{proposition}
 Unter dem Adaptationsmodell \eqref{eq:adapt}--\eqref{eq:erregg} gilt
-für grosse $N$:
+fÃ¼r grosse $N$:
 \[
   \frac{1}{N}\mathcal{E}_N \;\xrightarrow{L^2}\; (1-\alpha)\mu_I
-  \quad \text{für homogene Würzung},
+  \quad \text{fÃ¼r homogene WÃ¼rzung},
 \]
 \[
   \frac{1}{N}\mathcal{E}_N \;\xrightarrow{L^2}\; (1-\alpha)\mu_I + f(\sigma_I^2)
-  \quad \text{für inhomogene Würzung},
+  \quad \text{fÃ¼r inhomogene WÃ¼rzung},
 \]
-mit einer streng monoton wachsenden Funktion $f(\sigma_I^2) > 0$ für
+mit einer streng monoton wachsenden Funktion $f(\sigma_I^2) > 0$ fÃ¼r
 $\sigma_I^2 > 0$.
 \end{proposition}
 
 \begin{proof}[Beweisskizze]
-Inhomogene Würzung erzeugt Hochfreqünzanteile in $I(t)$, die von der
-Adaptation nur gedämpft, nicht vollständig kompensiert werden
+Inhomogene WÃ¼rzung erzeugt HochfreqÃ¼nzanteile in $I(t)$, die von der
+Adaptation nur gedÃ¤mpft, nicht vollstÃ¤ndig kompensiert werden
 (vgl.\ Theorem~\ref{thm:erregungserhalt}). Die Leistung dieser
-Hochfreqünzanteile ist proportional zu $\sigma_I^2$, und die
-übertragungsfunktion $|G(\omega)|^2 \to 1$ für $\omega\tau_A \gg 1$
+HochfreqÃ¼nzanteile ist proportional zu $\sigma_I^2$, und die
+Ã¼bertragungsfunktion $|G(\omega)|^2 \to 1$ fÃ¼r $\omega\tau_A \gg 1$
 stellt sicher, dass der Beitrag positiv ist.
 \end{proof}
 
@@ -474,7 +474,7 @@ stellt sicher, dass der Beitrag positiv ist.
 \section{Informationstheoretische Analyse}\label{sec:informationstheorie}
 %% =============================================================
 
-\subsection{Shannon-Entropie der Würzverteilung}
+\subsection{Shannon-Entropie der WÃ¼rzverteilung}
 
 \begin{definition}[Differentielle Entropie]
 Die \emph{differentielle Shannon-Entropie} einer kontinuierlichen
@@ -485,7 +485,7 @@ Zufallsvariable $I$ mit Dichte $p_I$ ist
 \end{definition}
 
 \begin{lemma}[Entropie der Normalverteilung]\label{lem:entrop_norm}
-Für $I \sim \mathcal{N}(\mu, \sigma^2)$ gilt:
+FÃ¼r $I \sim \mathcal{N}(\mu, \sigma^2)$ gilt:
 \begin{equation}
   \mathbb{H}[I] = \frac{1}{2}\ln(2\pi e \sigma^2).
   \label{eq:entropie_normal}
@@ -505,7 +505,7 @@ Einsetzen:
 \end{align*}
 \end{proof}
 
-\begin{theorem}[Entropievorteil inhomogener Würzung]\label{thm:entropie}
+\begin{theorem}[Entropievorteil inhomogener WÃ¼rzung]\label{thm:entropie}
 Sei $p_{\mathrm{hom}} = \N(\mu_0, \sigma_0^2)$ und
 $p_{\mathrm{inh}} = \N(\mu_0, \sigma_1^2)$ mit $\sigma_1 > \sigma_0 > 0$.
 Dann gilt:
@@ -526,38 +526,38 @@ da $\sigma_1 > \sigma_0$.
 
 \begin{theorem}[Korrelation von Entropie und MHI]
 Unter der Annahme, dass $H(I)$ eine Lipschitz-stetige, nach oben
-beschränkte Funktion ist und $p_{\mathrm{inh}}$ die gesamte Wundt-Kurve
+beschrÃ¤nkte Funktion ist und $p_{\mathrm{inh}}$ die gesamte Wundt-Kurve
 stochastisch abtastet, gilt: es existiert $\lambda > 0$ derart, dass
 \[
   \MHI(p_{\sigma}) = c_0 + \lambda \cdot \mathbb{H}[I_\sigma] + o(1)
-  \quad \text{für grosse } \sigma,
+  \quad \text{fÃ¼r grosse } \sigma,
 \]
-d.h.\ der mittlere hedonische Index wächst monoton mit der Entropie
-der Würzverteilung.
+d.h.\ der mittlere hedonische Index wÃ¤chst monoton mit der Entropie
+der WÃ¼rzverteilung.
 \end{theorem}
 
 \begin{proof}[Beweisskizze]
-Für grosse $\sigma$ nähert sich $p_\sigma$ einer Gleichverteilung
+FÃ¼r grosse $\sigma$ nÃ¤hert sich $p_\sigma$ einer Gleichverteilung
 auf $[0, I_{\max}]$, d.h.\
 $p_\sigma(I) \to 1/I_{\max}$. In diesem Grenzfall ist
 $\MHI \to \tfrac{1}{I_{\max}}\int_0^{I_{\max}} H(I)\, dI =: c_\infty > 0$,
-da $H(I)$ überwiegend positive Werte annimmt (die Wundt-Kurve
+da $H(I)$ Ã¼berwiegend positive Werte annimmt (die Wundt-Kurve
 verbleibt grossteils oberhalb der Nulllinie). Gleichzeitig wachst
 $\mathbb{H}[I_\sigma] = \tfrac{1}{2}\ln(2\pi e\sigma^2)$ monoton.
 Die Stetigkeitseigenschaft der Abbildung $\sigma \mapsto \MHI(p_\sigma)$
 und die Monotonie von $\mathbb{H}$ liefern via Zwischenwertsatz den
-behaupteten linearen Zusammenhang für mittlere $\sigma$.
+behaupteten linearen Zusammenhang fÃ¼r mittlere $\sigma$.
 \end{proof}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{plot5_entropie.pdf}
   \caption{Informationstheoretische Analyse als Funktion der
-    Standardabweichung $\sigma$ der Würzverteilung.
+    Standardabweichung $\sigma$ der WÃ¼rzverteilung.
     (a) Shannon-Entropie $\mathbb{H}[I]$ (logarithmisch wachsend).
     (b) Mittlerer hedonischer Index $\MHI$.
     (c) Gesamtgenuss-Index $G = \MHI + \lambda \mathbb{H}$, $\lambda = 0.4$.
-    Blaü gestrichelte Linie: homogenes Regime ($\sigma = 0.3$);
+    BlaÃ¼ gestrichelte Linie: homogenes Regime ($\sigma = 0.3$);
     rote gestrichelte Linie: inhomogenes Regime ($\sigma = 1.5$).}
   \label{fig:entropie}
 \end{figure}
@@ -566,13 +566,13 @@ behaupteten linearen Zusammenhang für mittlere $\sigma$.
 \section{Markov-Modell der Geschmackszustandsfolge}\label{sec:markov}
 %% =============================================================
 
-\subsection{Diskrete Zustandsräume}
+\subsection{Diskrete ZustandsrÃ¤ume}
 
-Für die Analyse der zeitlichen Seqünzstruktur partitionieren wir den
-Intensitätsraum in drei Bereiche:
+FÃ¼r die Analyse der zeitlichen SeqÃ¼nzstruktur partitionieren wir den
+IntensitÃ¤tsraum in drei Bereiche:
 
-\begin{definition}[Geschmackszustände]
-Wir definieren drei disjunkte Zustände:
+\begin{definition}[GeschmackszustÃ¤nde]
+Wir definieren drei disjunkte ZustÃ¤nde:
 \begin{align*}
   s_1 &= \text{``Niedrig''}: \quad I \in [0, I_{\max}/3), \\
   s_2 &= \text{``Mittel''}: \quad I \in [I_{\max}/3, 2I_{\max}/3), \\
@@ -583,14 +583,14 @@ Wir definieren drei disjunkte Zustände:
 \begin{definition}[Geschmacks-Markov-Kette]
 Eine \emph{Geschmacks-Markov-Kette} ist ein stochastischer Prozess
 $(S_n)_{n \geq 0}$ mit Zustandsraum $\{s_1, s_2, s_3\}$ und
-übergangsmatrix $P = (p_{ij})_{i,j}$, wobei
+Ã¼bergangsmatrix $P = (p_{ij})_{i,j}$, wobei
 $p_{ij} := P(S_{n+1} = s_j \mid S_n = s_i)$.
 \end{definition}
 
-\subsection{übergangsmatrizen}
+\subsection{Ã¼bergangsmatrizen}
 
-Für die beiden Würzregimes postulieren wir folgende empirisch
-motivierte übergangsmatrizen:
+FÃ¼r die beiden WÃ¼rzregimes postulieren wir folgende empirisch
+motivierte Ã¼bergangsmatrizen:
 \begin{align}
   P_{\mathrm{hom}} &= \begin{pmatrix}
     0.60 & 0.35 & 0.05 \\
@@ -605,11 +605,11 @@ motivierte übergangsmatrizen:
 \end{align}
 
 $P_{\mathrm{hom}}$ reflektiert die hohe Persistenz des Zustands ``Mittel''
-($p_{22} = 0.80$) bei homogener Würzung. $P_{\mathrm{inh}}$ zeigt deutlich
-gleichmässigere übergangswahrs\-cheinlichkeiten.
+($p_{22} = 0.80$) bei homogener WÃ¼rzung. $P_{\mathrm{inh}}$ zeigt deutlich
+gleichmÃ¤ssigere Ã¼bergangswahrs\-cheinlichkeiten.
 
-\begin{theorem}[Stationäre Verteilungen]
-Die stationären Verteilungen $\pi^* = \pi^* P$ der beiden Ketten sind:
+\begin{theorem}[StationÃ¤re Verteilungen]
+Die stationÃ¤ren Verteilungen $\pi^* = \pi^* P$ der beiden Ketten sind:
 \begin{align*}
   \pi_{\mathrm{hom}}^* &\approx (0.14,\; 0.72,\; 0.14), \\
   \pi_{\mathrm{inh}}^* &\approx (0.286,\; 0.429,\; 0.286).
@@ -617,14 +617,14 @@ Die stationären Verteilungen $\pi^* = \pi^* P$ der beiden Ketten sind:
 \end{theorem}
 
 \begin{proof}
-Wir lösen $\pi P = \pi$ mit $\sum_i \pi_i = 1$.
+Wir lÃ¶sen $\pi P = \pi$ mit $\sum_i \pi_i = 1$.
 
 \textbf{Homogen:} Das lineare Gleichungssystem
 $\pi_1 = 0.60\pi_1 + 0.10\pi_2 + 0.05\pi_3$,
 $\pi_2 = 0.35\pi_1 + 0.80\pi_2 + 0.35\pi_3$,
 $\pi_3 = 0.05\pi_1 + 0.10\pi_2 + 0.60\pi_3$,
 $\pi_1 + \pi_2 + \pi_3 = 1$,
-hat die Lösung $\pi_1 = \pi_3$ (Symmetrie) und
+hat die LÃ¶sung $\pi_1 = \pi_3$ (Symmetrie) und
 $\pi_2 = 1 - 2\pi_1$. Aus Zeile 1:
 $0.40\pi_1 = 0.10(1 - 2\pi_1) + 0.05\pi_1$,
 also $0.40\pi_1 = 0.10 - 0.20\pi_1 + 0.05\pi_1$,
@@ -645,13 +645,13 @@ Es gilt $\mathbb{H}_{\mathrm{Markov}}(\mathrm{inh}) > \mathbb{H}_{\mathrm{Markov
 \end{theorem}
 
 \begin{proof}
-Direkte Berechnung: Für $P_{\mathrm{hom}}$ dominiert
-$p_{22} = 0.80$ (geringe Entropie der Zeile 2). Für $P_{\mathrm{inh}}$
-sind die Einträge der zweiten Zeile $(0.30, 0.40, 0.30)$ gleichmässiger
-verteilt, was zu höherer Zeilenentropie führt. Da $\pi_2^*$ in beiden
-Fällen den grössten Gewichtsanteil trägt, bestimmt die Entropie von
+Direkte Berechnung: FÃ¼r $P_{\mathrm{hom}}$ dominiert
+$p_{22} = 0.80$ (geringe Entropie der Zeile 2). FÃ¼r $P_{\mathrm{inh}}$
+sind die EintrÃ¤ge der zweiten Zeile $(0.30, 0.40, 0.30)$ gleichmÃ¤ssiger
+verteilt, was zu hÃ¶herer Zeilenentropie fÃ¼hrt. Da $\pi_2^*$ in beiden
+FÃ¤llen den grÃ¶ssten Gewichtsanteil trÃ¤gt, bestimmt die Entropie von
 Zeile 2 massgeblich $\mathbb{H}_{\mathrm{Markov}}$.
-Für Zeile 2: $h_2^{\mathrm{hom}} = -2(0.10\ln 0.10) - 0.80\ln 0.80 \approx 0.639$
+FÃ¼r Zeile 2: $h_2^{\mathrm{hom}} = -2(0.10\ln 0.10) - 0.80\ln 0.80 \approx 0.639$
 vs.\ $h_2^{\mathrm{inh}} = -(0.30\ln 0.30 + 0.40\ln 0.40 + 0.30\ln 0.30) \approx 1.089$.
 Also $\mathbb{H}_{\mathrm{Markov}}(\mathrm{inh}) > \mathbb{H}_{\mathrm{Markov}}(\mathrm{hom})$.
 \end{proof}
@@ -659,10 +659,10 @@ Also $\mathbb{H}_{\mathrm{Markov}}(\mathrm{inh}) > \mathbb{H}_{\mathrm{Markov}}(
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{plot6_markov.pdf}
-  \caption{Simulierte Markov-Zustandsfolgen ($N = 200$ Bissen) für
-    (a) homogene und (b) inhomogene Würzung. Bei homogener Würzung
-    dominiert der Zustand ``Mittel''; bei inhomogener Würzung wechseln
-    die Zustände deutlich häufiger, was einer höheren Kettenentropie
+  \caption{Simulierte Markov-Zustandsfolgen ($N = 200$ Bissen) fÃ¼r
+    (a) homogene und (b) inhomogene WÃ¼rzung. Bei homogener WÃ¼rzung
+    dominiert der Zustand ``Mittel''; bei inhomogener WÃ¼rzung wechseln
+    die ZustÃ¤nde deutlich hÃ¤ufiger, was einer hÃ¶heren Kettenentropie
     entspricht.}
   \label{fig:markov}
 \end{figure}
@@ -674,26 +674,26 @@ Also $\mathbb{H}_{\mathrm{Markov}}(\mathrm{inh}) > \mathbb{H}_{\mathrm{Markov}}(
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{plot7_statistik.pdf}
-  \caption{Statistische Analyse beider Würzregimes ($N=500$).
-    (a) Boxplot: Inhomogene Würzung zeigt deutlich breitere Streuung
+  \caption{Statistische Analyse beider WÃ¼rzregimes ($N=500$).
+    (a) Boxplot: Inhomogene WÃ¼rzung zeigt deutlich breitere Streuung
     und gelegentliche Extremwerte. (b) Dichtehistogramm: Homogen eng
-    um 5.0 konzentriert; inhomogen gleichmässig über $[0.5, 9.5]$
-    verteilt. (c) Kenngrössen: Mittelwerte nahezu gleich; Standardabweichung
+    um 5.0 konzentriert; inhomogen gleichmÃ¤ssig Ã¼ber $[0.5, 9.5]$
+    verteilt. (c) KenngrÃ¶ssen: Mittelwerte nahezu gleich; Standardabweichung
     ($\sigma_{\mathrm{inh}} \gg \sigma_{\mathrm{hom}}$) und negative
     Kurtosis (platykurtisch) charakterisieren die Beta-Verteilung.}
   \label{fig:statistik}
 \end{figure}
 
-Die numerischen Kenngrössen der Simulation sind in Tabelle~\ref{tab:statistik}
+Die numerischen KenngrÃ¶ssen der Simulation sind in Tabelle~\ref{tab:statistik}
 zusammengefasst.
 
 \begin{table}[H]
   \centering
-  \caption{Statistische Kenngrössen der Würzintensität ($N=500$).}
+  \caption{Statistische KenngrÃ¶ssen der WÃ¼rzintensitÃ¤t ($N=500$).}
   \label{tab:statistik}
   \begin{tabular}{lcc}
     \toprule
-    Kenngrö{\ss}e & Homogen & Inhomogen \\
+    KenngrÃ¶{\ss}e & Homogen & Inhomogen \\
     \midrule
     Mittelwert $\mu$ & $5.00$ & $5.00$ \\
     Standardabw.\ $\sigma$ & $0.35$ & $2.31$ \\
@@ -708,11 +708,11 @@ zusammengefasst.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{plot4_gradient2d.pdf}
-  \caption{Zweidimensionale Darstellung des Würzgradienten auf der
-    Nudeloberfläche (Pseudo-Farb-Kodierung: gelb = niedrig, dunkelrot =
+  \caption{Zweidimensionale Darstellung des WÃ¼rzgradienten auf der
+    NudeloberflÃ¤che (Pseudo-Farb-Kodierung: gelb = niedrig, dunkelrot =
     hoch). (a) Homogenes Feld mit minimalem Rauschen. (b) Inhomogenes
-    Feld mit Gauss'schen Würzagglomeraten variabler Stärke und Breite,
-    die realistische ``Klumpen'' von Gewürzen oder Sauce simulieren.}
+    Feld mit Gauss'schen WÃ¼rzagglomeraten variabler StÃ¤rke und Breite,
+    die realistische ``Klumpen'' von GewÃ¼rzen oder Sauce simulieren.}
   \label{fig:gradient2d}
 \end{figure}
 
@@ -724,121 +724,121 @@ zusammengefasst.
   \centering
   \includegraphics[width=0.95\linewidth]{plot8_hedonik.pdf}
   \caption{Hedonische Dynamik einer simulierten Essenseinheit
-    ($N=80$ Bissen, $n_{\mathrm{runs}}=30$ Monte-Carlo-Läufe).
+    ($N=80$ Bissen, $n_{\mathrm{runs}}=30$ Monte-Carlo-LÃ¤ufe).
     (a) Homogen: der hedonische Wert sinkt rapide durch Adaptation
     und stabilisiert sich auf niedrigem Niveau. (b) Inhomogen: die
-    Variabilität des Würzmusters hält den hedonischen Wert auf
-    signifikant höherem mittlerem Niveau. Gestrichelte Linien:
+    VariabilitÃ¤t des WÃ¼rzmusters hÃ¤lt den hedonischen Wert auf
+    signifikant hÃ¶herem mittlerem Niveau. Gestrichelte Linien:
     kumulativer Mittelwert $\tfrac{1}{n}\sum_{k=1}^n H_k$.}
   \label{fig:hedonik}
 \end{figure}
 
-Die Simulationen (Abb.~\ref{fig:hedonik}) bestätigen die theoretischen
+Die Simulationen (Abb.~\ref{fig:hedonik}) bestÃ¤tigen die theoretischen
 Vorhersagen. Der kumulative Mittelwert der inhomogenen Bedingung
-($\bar{H}_{\mathrm{inh}} \approx 3.2$) liegt konsistent höher als
+($\bar{H}_{\mathrm{inh}} \approx 3.2$) liegt konsistent hÃ¶her als
 jener der homogenen Bedingung ($\bar{H}_{\mathrm{hom}} \approx 2.0$).
 Dies entspricht einem relativen Genussvorteil von ca.\ 60\% -- ein
 beachtliches Ergebnis, das den klinischen und alltagspraktischen Wert
-bewusst inhomogenen Würzens unterstreicht.
+bewusst inhomogenen WÃ¼rzens unterstreicht.
 
 %% =============================================================
 \section{Diskussion}\label{sec:diskussion}
 %% =============================================================
 
-Die vorliegende Arbeit hat gezeigt, dass inhomogene Würzung bei Nudeln
-nicht ein Qualitätsmangel, sondern unter informationstheoretischen und
+Die vorliegende Arbeit hat gezeigt, dass inhomogene WÃ¼rzung bei Nudeln
+nicht ein QualitÃ¤tsmangel, sondern unter informationstheoretischen und
 neurophysiologischen Gesichtspunkten eine \emph{Optimierungsstrategie}
 ist. Die wesentlichen Ergebnisse lauten:
 \begin{enumerate}
-  \item Der \emph{mittlere hedonische Index} ist bei inhomogener Würzung
-    höher als bei homogener, da die breite Stimulusverteilung die Wundt-Kurve
-    vollständiger abtastet (Satz~\ref{thm:mhivorteil}).
+  \item Der \emph{mittlere hedonische Index} ist bei inhomogener WÃ¼rzung
+    hÃ¶her als bei homogener, da die breite Stimulusverteilung die Wundt-Kurve
+    vollstÃ¤ndiger abtastet (Satz~\ref{thm:mhivorteil}).
   \item Das Adaptationsmodell zeigt, dass variable Stimuli die neuronale
-    Erregung länger aufrechterhalten (Satz~\ref{thm:erregungserhalt}).
-  \item Die Shannon-Entropie der Würzverteilung korreliert positiv mit
-    dem MHI; jede Erhöhung der Verteilungsbreite erhört den Informationsgehalt
+    Erregung lÃ¤nger aufrechterhalten (Satz~\ref{thm:erregungserhalt}).
+  \item Die Shannon-Entropie der WÃ¼rzverteilung korreliert positiv mit
+    dem MHI; jede ErhÃ¶hung der Verteilungsbreite erhÃ¶rt den Informationsgehalt
     und damit das Genusserlebnis (Satz~\ref{thm:entropie}).
-  \item Das Markov-Modell zeigt, dass inhomogene Würzung zu einer
-    entropiereicheren Zustandsfolge führt, was das Erleben abwechslungsreicher
+  \item Das Markov-Modell zeigt, dass inhomogene WÃ¼rzung zu einer
+    entropiereicheren Zustandsfolge fÃ¼hrt, was das Erleben abwechslungsreicher
     gestaltet.
 \end{enumerate}
 
-Einschränkend ist zu bemerken, dass das Modell individülle Präferenzen
-nicht abbildet: Personen mit niedrigerer Toleranz für Intensitätsvarianz
-(z.B.\ bei sensorischer überempfindlichkeit) können homogene Würzung
-bevorzugen. Ausserdem vernachlässigt das Modell multimodale Interaktionen
+EinschrÃ¤nkend ist zu bemerken, dass das Modell individÃ¼lle PrÃ¤ferenzen
+nicht abbildet: Personen mit niedrigerer Toleranz fÃ¼r IntensitÃ¤tsvarianz
+(z.B.\ bei sensorischer Ã¼berempfindlichkeit) kÃ¶nnen homogene WÃ¼rzung
+bevorzugen. Ausserdem vernachlÃ¤ssigt das Modell multimodale Interaktionen
 (Textur, Temperatur, Aroma) und gastronomische Konsistenzerwartungen.
 
 %% =============================================================
 \section{Ausblick}\label{sec:ausblick}
 %% =============================================================
 
-Die vorliegende Arbeit eröffnet eine Vielzahl von Anschlussforschungen
-und praktischen Anwendungen, die im Folgenden sehr ausführlich dargelegt
+Die vorliegende Arbeit erÃ¶ffnet eine Vielzahl von Anschlussforschungen
+und praktischen Anwendungen, die im Folgenden sehr ausfÃ¼hrlich dargelegt
 werden.
 
 \subsection{Erweiterung auf multimodale Sensorik}
 
-Das hier entwickelte Modell beschränkt sich auf die gustatorische
-(geschmackliche) Modalität. Eine wesentliche Erweiterung besteht in der
-Integration \emph{aller relevanten sensorischen Kanäle}: Neben dem
+Das hier entwickelte Modell beschrÃ¤nkt sich auf die gustatorische
+(geschmackliche) ModalitÃ¤t. Eine wesentliche Erweiterung besteht in der
+Integration \emph{aller relevanten sensorischen KanÃ¤le}: Neben dem
 Geschmack spielen Geruch (olfaktorisches System), Textur (somatosensorisches
-System), Temperatur (thermische Rezeptoren), visülle Erscheinung und selbst
-akustische Einflüsse (das Kaün-Geräusch von bissfesten Nudeln) eine Rolle
-für das Gesamtessgefühl. Ein multimodaler Genussindex könnte als
-Vektorgrö{\ss}e
+System), Temperatur (thermische Rezeptoren), visÃ¼lle Erscheinung und selbst
+akustische EinflÃ¼sse (das KaÃ¼n-GerÃ¤usch von bissfesten Nudeln) eine Rolle
+fÃ¼r das GesamtessgefÃ¼hl. Ein multimodaler Genussindex kÃ¶nnte als
+VektorgrÃ¶{\ss}e
 \[
   \mathbf{G} = (G_{\mathrm{gustatory}}, G_{\mathrm{olfactory}}, G_{\mathrm{texture}},
                G_{\mathrm{thermal}}, G_{\mathrm{visual}})^\top
 \]
-modelliert werden, wobei die Komponenten korreliert sein können. Inhomogenität
-in \emph{einer} Dimension könnte kompensierend oder verstärkend auf andere
-Dimensionen wirken. Insbesondere wäre die Frage interessant, ob räumlich
-koinzidente Inhomogenitäten in Gewürz und Textur (z.B.\ krustiger Bereich
-mit hoher Würzkonzentration) superlineare Genusseffekte erzeugen --
+modelliert werden, wobei die Komponenten korreliert sein kÃ¶nnen. InhomogenitÃ¤t
+in \emph{einer} Dimension kÃ¶nnte kompensierend oder verstÃ¤rkend auf andere
+Dimensionen wirken. Insbesondere wÃ¤re die Frage interessant, ob rÃ¤umlich
+koinzidente InhomogenitÃ¤ten in GewÃ¼rz und Textur (z.B.\ krustiger Bereich
+mit hoher WÃ¼rzkonzentration) superlineare Genusseffekte erzeugen --
 eine Form multisensorischer Integration analog dem McGurk-Effekt.
 
-\subsection{Optimales Würzdesign}
+\subsection{Optimales WÃ¼rzdesign}
 
-Die formale Beschreibung des MHI als Funktional über Wahrscheinlichkeitsmasse
-ermöglicht die Formulierung eines \emph{Optimierungsproblems}: Gegeben eine
-Menge erlaubter Würzverteilungen $\mathcal{P}$, finde
+Die formale Beschreibung des MHI als Funktional Ã¼ber Wahrscheinlichkeitsmasse
+ermÃ¶glicht die Formulierung eines \emph{Optimierungsproblems}: Gegeben eine
+Menge erlaubter WÃ¼rzverteilungen $\mathcal{P}$, finde
 \[
   p^* = \arg\max_{p \in \mathcal{P}} \MHI(p)
   \quad \text{s.t.} \quad \E_p[I] = \mu_0, \quad \Var_p[I] \leq V_{\max}.
 \]
-Dieses constrained Optimierungsproblem könnte mit Methoden der
-Variationsrechnung (Euler-Lagrange-Gleichungen) oder numerisch gelöst
+Dieses constrained Optimierungsproblem kÃ¶nnte mit Methoden der
+Variationsrechnung (Euler-Lagrange-Gleichungen) oder numerisch gelÃ¶st
 werden. Von besonderem Interesse sind Nebenbedingungen, die
-gastronomische Realitäten widerspiegeln: z.B.\ die Anforderung, dass
-zu intensive Stellen einen Anteil von höchstens $\delta$ der Gesamtportion
-ausmachen dürsen, um unangenehme überraschungen zu vermeiden.
+gastronomische RealitÃ¤ten widerspiegeln: z.B.\ die Anforderung, dass
+zu intensive Stellen einen Anteil von hÃ¶chstens $\delta$ der Gesamtportion
+ausmachen dÃ¼rsen, um unangenehme Ã¼berraschungen zu vermeiden.
 
-Interessant ist auch das \emph{inverse Problem}: Gegeben eine gewünschte
-Genussdynamik $H_1, H_2, \ldots, H_N$ (z.B.\ steigende Intensität gegen
-Mahlzeitende), welches räumliche Würzfeld $\phi(\bx)$ und welche
-Serviermethode (Schichten, Mischen, Topping) erzeugt diese Seqünz?
+Interessant ist auch das \emph{inverse Problem}: Gegeben eine gewÃ¼nschte
+Genussdynamik $H_1, H_2, \ldots, H_N$ (z.B.\ steigende IntensitÃ¤t gegen
+Mahlzeitende), welches rÃ¤umliche WÃ¼rzfeld $\phi(\bx)$ und welche
+Serviermethode (Schichten, Mischen, Topping) erzeugt diese SeqÃ¼nz?
 
-\subsection{Maschinelles Lernen und personalisiertes Würzen}
+\subsection{Maschinelles Lernen und personalisiertes WÃ¼rzen}
 
-Mit dem Aufkommen intelligenter Küchengeräte und digitaler
-Geschmackssensoren (``electronic tongü'') wird es zunehmend möglich,
-individülle Würzprofile in Echtzeit zu messen und anzupassen. Ein
-Reinforcement-Learning-Agent könnte als Grundlage folgenden
+Mit dem Aufkommen intelligenter KÃ¼chengerÃ¤te und digitaler
+Geschmackssensoren (``electronic tongÃ¼'') wird es zunehmend mÃ¶glich,
+individÃ¼lle WÃ¼rzprofile in Echtzeit zu messen und anzupassen. Ein
+Reinforcement-Learning-Agent kÃ¶nnte als Grundlage folgenden
 Markov-Entscheidungsprozess verwenden:
 \begin{itemize}
   \item \textbf{Zustand:} Akt. Adaptationslage $A(t)$, letzte $k$
-    Geschmackszustände $(S_{n-k}, \ldots, S_n)$, physiologische
+    GeschmackszustÃ¤nde $(S_{n-k}, \ldots, S_n)$, physiologische
     Indikatoren (Pupillenerweiterung, Speichelfluss, Hautleitwert).
-  \item \textbf{Aktion:} Gewürzbonus $\Delta\phi(\bx)$ an der nächsten
-    Nudelportion (lokal appliziert durch Präzisionsdispenser).
-  \item \textbf{Belohnung:} Selbsteingeschätzte Bewertung des Bissens
+  \item \textbf{Aktion:} GewÃ¼rzbonus $\Delta\phi(\bx)$ an der nÃ¤chsten
+    Nudelportion (lokal appliziert durch PrÃ¤zisionsdispenser).
+  \item \textbf{Belohnung:} SelbsteingeschÃ¤tzte Bewertung des Bissens
     (0--10) oder inferierter Genuss aus physiologischen Signalen.
 \end{itemize}
-Ein solches System würde in Echtzeit eine personalisierte, dynamische
-Würzseqünz erzeugen, die individüllen Präferenzen, Adaptationszuständen
-und Stimmungslagen Rechnung trägt. Langfristig könnte dies zu adaptiven
-Kochrobotern führen, die im Restaurantbetrieb personalisierte Gerichte
+Ein solches System wÃ¼rde in Echtzeit eine personalisierte, dynamische
+WÃ¼rzseqÃ¼nz erzeugen, die individÃ¼llen PrÃ¤ferenzen, AdaptationszustÃ¤nden
+und Stimmungslagen Rechnung trÃ¤gt. Langfristig kÃ¶nnte dies zu adaptiven
+Kochrobotern fÃ¼hren, die im Restaurantbetrieb personalisierte Gerichte
 zusammenstellen.
 
 \subsection{Gastronomische und industrielle Anwendungen}
@@ -847,27 +847,27 @@ Die Erkenntnisse der vorliegenden Arbeit haben unmittelbare praktische
 Relevanz:
 
 \paragraph{Nudel- und Fertiggerichtindustrie.}
-Hersteller können durch gezielte inhomogene Gewürzapplikation
+Hersteller kÃ¶nnen durch gezielte inhomogene GewÃ¼rzapplikation
 (z.B.\ gestufte Beschichtungsverfahren, partielle Marinierung, Mikrokapseln
-mit zeitverzögerter Freisetzung) den wahrgenommenen Geschmack optimieren,
-ohne den durchschnittlichen Salzgehalt zu erhöhen. Dies wäre auch
-ernährungsphysiologisch vorteilhaft, da bei gleichem oder sogar
-reduziertem Gesamtgewürzgehalt ein intensiveres Geschmackserlebnis
-erzielt werden könnte.
+mit zeitverzÃ¶gerter Freisetzung) den wahrgenommenen Geschmack optimieren,
+ohne den durchschnittlichen Salzgehalt zu erhÃ¶hen. Dies wÃ¤re auch
+ernÃ¤hrungsphysiologisch vorteilhaft, da bei gleichem oder sogar
+reduziertem GesamtgewÃ¼rzgehalt ein intensiveres Geschmackserlebnis
+erzielt werden kÃ¶nnte.
 
 \paragraph{Gemeinschaftsverpflegung und Klinik.}
-In Kantinen, Krankenhäusern und Pflegeeinrichtungen, wo regelmässig
-gleiche oder ähnliche Gerichte serviert werden, kann sensorische Adaptation
-zu ernährungsrelevanter Verringerung des Appetits führen. Kontrolliert
-inhomogenes Würzen könnte hier die Essmotivation und damit die
-Nährstoffaufnahme verbessern. Insbesondere bei älteren Menschen und
+In Kantinen, KrankenhÃ¤usern und Pflegeeinrichtungen, wo regelmÃ¤ssig
+gleiche oder Ã¤hnliche Gerichte serviert werden, kann sensorische Adaptation
+zu ernÃ¤hrungsrelevanter Verringerung des Appetits fÃ¼hren. Kontrolliert
+inhomogenes WÃ¼rzen kÃ¶nnte hier die Essmotivation und damit die
+NÃ¤hrstoffaufnahme verbessern. Insbesondere bei Ã¤lteren Menschen und
 Patienten mit vermindertem Geschmackssinn ist dies von klinischer Bedeutung.
 
-\paragraph{Molekulare Küche und Haute Cuisine.}
-Spitzenköche nutzen intuitiv Techniken des inhomogenen Würzens
-(z.B.\ Fleur de Sel auf der Oberfläche, Gewürzöl als Tupfer,
-gezielt undurchmischte Saucen). Die formale Modellierung könnte
-die wissenschaftliche Fundierung dieser Techniken liefern und neü
+\paragraph{Molekulare KÃ¼che und Haute Cuisine.}
+SpitzenkÃ¶che nutzen intuitiv Techniken des inhomogenen WÃ¼rzens
+(z.B.\ Fleur de Sel auf der OberflÃ¤che, GewÃ¼rzÃ¶l als Tupfer,
+gezielt undurchmischte Saucen). Die formale Modellierung kÃ¶nnte
+die wissenschaftliche Fundierung dieser Techniken liefern und neÃ¼
 Kreationen inspirieren.
 
 \subsection{Neurobiologische Erweiterungen}
@@ -875,7 +875,7 @@ Kreationen inspirieren.
 Das verwendete lineare Adaptationsmodell \eqref{eq:adapt} ist eine
 starke Vereinfachung. Realistische neuronale Schaltkreise zeigen
 nichtlineare, mehrstufige Adaptation mit unterschiedlichen Zeitskalen.
-Zukünftige Arbeiten sollten folgende Erweiterungen in Betracht ziehen:
+ZukÃ¼nftige Arbeiten sollten folgende Erweiterungen in Betracht ziehen:
 
 \paragraph{Mehrschichtige Adaptation.}
 Periphere Geschmacksrezeptoren adaptieren auf einer Zeitskala von
@@ -886,31 +886,31 @@ Zweischichtmodell
   \dot{A}_2 &= (A_1 - A_2)/\tau_2, \quad \tau_2 \approx 5\,\text{min}, \\
   E &= I - \alpha_1 A_1 - \alpha_2 A_2
 \end{align*}
-würde realistische Mehrfach-Rebound-Effekte abbilden, bei denen nach
-einer sehr intensiv gewürzten Stelle die nachfolgende weniger gewürzte
+wÃ¼rde realistische Mehrfach-Rebound-Effekte abbilden, bei denen nach
+einer sehr intensiv gewÃ¼rzten Stelle die nachfolgende weniger gewÃ¼rzte
 Stelle durch kontrastiven Effekt als noch unintensiver wahrgenommen wird.
 
 \paragraph{Hedonischer Kontrast und Alliesthesie.}
 Die Theorie der Alliesthesie \cite{cabanac1971} besagt, dass die
-Wahrnehmung eines Stimulus nicht nur von seiner absoluten Intensität,
-sondern auch vom internen Zustand des Organismus (Hunger, Sättigung)
-abhängt. In Zukunft sollte die Würzintensitätsfunktion $H(I,t)$ als
-zeitvariante Grösse modelliert werden, die den Sättigungszustand
+Wahrnehmung eines Stimulus nicht nur von seiner absoluten IntensitÃ¤t,
+sondern auch vom internen Zustand des Organismus (Hunger, SÃ¤ttigung)
+abhÃ¤ngt. In Zukunft sollte die WÃ¼rzintensitÃ¤tsfunktion $H(I,t)$ als
+zeitvariante GrÃ¶sse modelliert werden, die den SÃ¤ttigungszustand
 integriert:
 \[
   H(I, t) = H_0(I) \cdot f(\mathrm{Hunger}(t)),
 \]
-wobei $\mathrm{Hunger}(t)$ monoton während der Mahlzeit abnimmt und
+wobei $\mathrm{Hunger}(t)$ monoton wÃ¤hrend der Mahlzeit abnimmt und
 $f$ eine fallende Funktion ist.
 
-\subsection{Formale Verifikation und computergestützte Beweise}
+\subsection{Formale Verifikation und computergestÃ¼tzte Beweise}
 
-Die formalen Beweise dieser Arbeit könnten in einem interaktiven
+Die formalen Beweise dieser Arbeit kÃ¶nnten in einem interaktiven
 Theorembeweiser wie Lean 4 oder Coq formalisiert werden. Insbesondere
 Satz~\ref{thm:mhivorteil} und Satz~\ref{thm:entropie} eignen sich
-für eine vollständig maschinenverifizierte Formalisierung. Dies würde
-die mathematische Strenge der Argumentation auf höchstem Niveau
-sicherstellen und die Arbeit als Ausgangspunkt für eine wachsende
+fÃ¼r eine vollstÃ¤ndig maschinenverifizierte Formalisierung. Dies wÃ¼rde
+die mathematische Strenge der Argumentation auf hÃ¶chstem Niveau
+sicherstellen und die Arbeit als Ausgangspunkt fÃ¼r eine wachsende
 Bibliothek formaler Ergebnisse in der Sensorik- und Genussforschung
 etablieren.
 
@@ -918,92 +918,92 @@ etablieren.
 
 Die theoretischen Vorhersagen dieser Arbeit sollten durch kontrollierte
 sensorische Studien empirisch validiert werden. Ein geeignetes
-Studiendesign würde folgende Elemente umfassen:
+Studiendesign wÃ¼rde folgende Elemente umfassen:
 \begin{enumerate}
-  \item \textbf{Stimulus:} Nudeln in vier Würzgruppen: homogen-schwach,
+  \item \textbf{Stimulus:} Nudeln in vier WÃ¼rzgruppen: homogen-schwach,
     homogen-stark, inhomogen-ausbalanciert (gleicher Mittelwert),
     inhomogen-bimodal (zwei Extremwerte).
-  \item \textbf{Messung:} Hedonische Selbsteinschätzung nach jedem Bissen
+  \item \textbf{Messung:} Hedonische SelbsteinschÃ¤tzung nach jedem Bissen
     (Likert-Skala 0--10), Reaktionszeit, physiologische Parameter
-    (Hautleitwert, Pupillendurchmesser), Sättigungsmessung post-prandial.
+    (Hautleitwert, Pupillendurchmesser), SÃ¤ttigungsmessung post-prandial.
   \item \textbf{Analyse:} Gemischte Effektmodelle (mixed-effects models)
     mit Proband als Zufallseffekt; Vergleich der MHI-Sch\"{a}tzungen mit
     den Modellvorhersagen.
 \end{enumerate}
-Eine solche Studie würde nicht nur die Modellgüte testen, sondern
-auch individülle Differenzvariablen identifizieren (z.B.\ Sensations-Seeking,
-Neophilia), die den optimalen Inhomogenitätsgrad moderieren.
+Eine solche Studie wÃ¼rde nicht nur die ModellgÃ¼te testen, sondern
+auch individÃ¼lle Differenzvariablen identifizieren (z.B.\ Sensations-Seeking,
+Neophilia), die den optimalen InhomogenitÃ¤tsgrad moderieren.
 
 \subsection{Verbindung zu verwandten Disziplinen}
 
-\paragraph{Auditive ästhetik.}
+\paragraph{Auditive Ã¤sthetik.}
 Das Konzept der inhomogenen Stimulation findet ein Analogon in der
-Musik: Ein gleichförmiges Instrument (z.B.\ ein Sinuston) wird schnell
-als langweilig empfunden, während ein Instrument mit Lautstärkedynamik,
-Tonhöhenvariation und Timbrevarianz als reich und interessant gilt.
+Musik: Ein gleichfÃ¶rmiges Instrument (z.B.\ ein Sinuston) wird schnell
+als langweilig empfunden, wÃ¤hrend ein Instrument mit LautstÃ¤rkedynamik,
+TonhÃ¶henvariation und Timbrevarianz als reich und interessant gilt.
 Der Vergleich zwischen musikalischer Dynamik und kulinarischer
-Würzvariation könnte zu einer allgemeinen Theorie der \emph{ästhetischen
-Stimulusoptimierung} führen, die beide Felder verbindet.
+WÃ¼rzvariation kÃ¶nnte zu einer allgemeinen Theorie der \emph{Ã¤sthetischen
+Stimulusoptimierung} fÃ¼hren, die beide Felder verbindet.
 
 \paragraph{Spieltheorie und Genuss.}
-Inhomogenes Würzen erzeugt eine Art ``Lotterie'' bei jedem Bissen ---
-der Essende weiss nicht, wie intensiv der nächste Bissen sein wird.
-Dies entspricht einer Variable-Ratio-Verstärkungsregel, die in der
+Inhomogenes WÃ¼rzen erzeugt eine Art ``Lotterie'' bei jedem Bissen ---
+der Essende weiss nicht, wie intensiv der nÃ¤chste Bissen sein wird.
+Dies entspricht einer Variable-Ratio-VerstÃ¤rkungsregel, die in der
 Verhaltenspsychologie als besonders motivierend bekannt ist \cite{skinner1938}.
-Eine spieltheoretische Analyse könnte untersuchen, welche Würzstrategien
+Eine spieltheoretische Analyse kÃ¶nnte untersuchen, welche WÃ¼rzstrategien
 (``Policies'') in einem dualen Agenten-Modell (Koch vs.\ Essender) die
 sozialen Interaktionen um Essen am besten beschreiben.
 
 \paragraph{Thermodynamik und Informationstheorie.}
 Die Verbindung zwischen physikalischer Entropie und Informationsentropie
-(Maxwell-Boltzmann vs.\ Shannon) legt nahe, dass die Würzverteilung
+(Maxwell-Boltzmann vs.\ Shannon) legt nahe, dass die WÃ¼rzverteilung
 formal analog zu einem thermodynamischen System betrachtet werden kann,
-in dem ``Geschmacksmoleküle'' einem chemischen Potential folgen. Die
-Gibbs'sche freie Energie des Systems könnte ein Analogon zum Gesamtgenuss
-darstellen. Dies öffnet eine Brücke zur physikalischen Chemie des
+in dem ``GeschmacksmolekÃ¼le'' einem chemischen Potential folgen. Die
+Gibbs'sche freie Energie des Systems kÃ¶nnte ein Analogon zum Gesamtgenuss
+darstellen. Dies Ã¶ffnet eine BrÃ¼cke zur physikalischen Chemie des
 Geschmacks und zu Feldtheorien der Diffusion von Aromastoffen in
 Nudelmatrizen.
 
-\subsection{Zeitaufgelöste Würzung und Smart Cooking}
+\subsection{ZeitaufgelÃ¶ste WÃ¼rzung und Smart Cooking}
 
-Mit dem Aufkommen von Präzisionskochtechnologien (Sous-Vide,
-Druckkochen mit steürbaren Gradienten, 3D-Lebensmitteldruck) wird es
-technisch möglich, das Würzfeld $\phi(\bx)$ mit hoher Präzision
-vorzuschreiben. Zukünftige Forschung sollte untersuchen:
+Mit dem Aufkommen von PrÃ¤zisionskochtechnologien (Sous-Vide,
+Druckkochen mit steÃ¼rbaren Gradienten, 3D-Lebensmitteldruck) wird es
+technisch mÃ¶glich, das WÃ¼rzfeld $\phi(\bx)$ mit hoher PrÃ¤zision
+vorzuschreiben. ZukÃ¼nftige Forschung sollte untersuchen:
 \begin{itemize}
-  \item Welches räumliche Spektrum $\hat{\phi}(\mathbf{k})$ (Fouriertransformierte
-    des Würzfeldes) maximiert den MHI unter Produktionsconstraints?
-  \item Welche Schichtungsgeometrien (geschichtet, radial, spiralförmig)
-    erzeugen die günstigsten Bissmuster?
-  \item Wie können digitale Kochassistenten eine gewünschte hedonische
+  \item Welches rÃ¤umliche Spektrum $\hat{\phi}(\mathbf{k})$ (Fouriertransformierte
+    des WÃ¼rzfeldes) maximiert den MHI unter Produktionsconstraints?
+  \item Welche Schichtungsgeometrien (geschichtet, radial, spiralfÃ¶rmig)
+    erzeugen die gÃ¼nstigsten Bissmuster?
+  \item Wie kÃ¶nnen digitale Kochassistenten eine gewÃ¼nschte hedonische
     Kurve $H_1, \ldots, H_N$ durch Anpassung des Zubereitungsverfahrens
     realisieren?
 \end{itemize}
 
 \subsection{Kulturelle und soziologische Dimensionen}
 
-Schliesslich ist zu bemerken, dass die Präferenz für homogene vs.\
-inhomogene Würzung stark kulturell verankert ist. In einigen Küchen
-(z.B.\ traditionell französische Haute Cuisine, japanische
-Kaiseki-Küche) ist hohe Gleichmässigkeit ein Qualitätsmerkmal, das
+Schliesslich ist zu bemerken, dass die PrÃ¤ferenz fÃ¼r homogene vs.\
+inhomogene WÃ¼rzung stark kulturell verankert ist. In einigen KÃ¼chen
+(z.B.\ traditionell franzÃ¶sische Haute Cuisine, japanische
+Kaiseki-KÃ¼che) ist hohe GleichmÃ¤ssigkeit ein QualitÃ¤tsmerkmal, das
 handwerkliche Prazision demonstriert. In anderen Kulturen (z.B.\ indische
-Strassküche, texanisches BBQ) sind intensiv gewürzte ``pockets'' ein
-geschätztes Merkmal. Eine komparative kulturanthropologische Analyse
+StrasskÃ¼che, texanisches BBQ) sind intensiv gewÃ¼rzte ``pockets'' ein
+geschÃ¤tztes Merkmal. Eine komparative kulturanthropologische Analyse
 dieser Unterschiede, verbunden mit dem hier entwickelten formalen Modell,
-könnte erhellen, welche sensorischen Strategien in verschiedenen
+kÃ¶nnte erhellen, welche sensorischen Strategien in verschiedenen
 Kulturkontexten sozial konstruiert und normiert wurden.
 
 \bigskip
 
 Insgesamt zeigt dieser Ausblick, dass die scheinbar triviale
-Beobachtung des inhomogenen Würzens von Nudeln ein reiches
+Beobachtung des inhomogenen WÃ¼rzens von Nudeln ein reiches
 wissenschaftliches Programm aufspannt, das von der theoretischen
-Neurophysiologie über informationstheoretische Optimierung, maschinelles
+Neurophysiologie Ã¼ber informationstheoretische Optimierung, maschinelles
 Lernen, Lebensmitteltechnologie und Gastronomie bis hin zu
 kulturanthropologischen Fragestellungen reicht. Die mathematischen
 Werkzeuge --- stochastische Prozesse, Funktionalanalysis,
 Informationstheorie, Optimierungstheorie --- bilden dabei eine
-solide formale Grundlage, auf der diese interdisziplinäre
+solide formale Grundlage, auf der diese interdisziplinÃ¤re
 Forschungsagenda aufgebaut werden kann.
 
 %% =============================================================
@@ -1012,7 +1012,7 @@ Forschungsagenda aufgebaut werden kann.
 
 \bibitem{berlyne1970}
 D.\,E.\ Berlyne,
-\textit{Novelty, Complexity, and Hedonic Valü},
+\textit{Novelty, Complexity, and Hedonic ValÃ¼},
 Perception \& Psychophysics, Bd.\ 8, S.\ 279--286, 1970.
 
 \bibitem{cabanac1971}
@@ -1037,7 +1037,7 @@ Appleton-Century-Crofts, New York, 1938.
 
 \bibitem{wundt1874}
 W.\ Wundt,
-\textit{Grundzüge der Physiologischen Psychologie},
+\textit{GrundzÃ¼ge der Physiologischen Psychologie},
 Engelmann, Leipzig, 1874.
 
 \bibitem{pfaffmann1960}
@@ -1063,3 +1063,4 @@ Cambridge University Press, Cambridge, 1998.
 \end{thebibliography}
 
 \end{document}
+

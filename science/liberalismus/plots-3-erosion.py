@@ -67,6 +67,6 @@ fig.suptitle('Erosion liberaler Grundwerte von 1990 bis 2024\n(absolut und relat
              fontsize=13, fontweight='bold', color=mainblue, y=1.01)
 
 plt.tight_layout()
-plt.savefig('/home/claude/liberalismus/plot3_erosion.pdf', format='pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot3_erosion.pdf', format='pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 3 gespeichert.")

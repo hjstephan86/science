@@ -107,6 +107,5 @@ ax2.grid(True, alpha=0.3, linestyle=':')
 fig.suptitle('Abbildung 2: Notbremsassistent (AEB) – Kinematische Analyse',
              fontsize=12, fontweight='bold', y=1.01)
 plt.tight_layout()
-plt.savefig('/home/claude/plot2_aeb_braking.pdf', format='pdf', bbox_inches='tight', dpi=150)
-plt.savefig('/home/claude/plot2_aeb_braking.png', format='png', bbox_inches='tight', dpi=150)
+plt.savefig('home/claude/plot2_aeb_braking.png', format='png', bbox_inches='tight', dpi=150)
 print("Plot 2 saved")

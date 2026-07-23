@@ -91,7 +91,7 @@ ax3.set_facecolor('#F5F5F8')
 fig.suptitle('Abbildung 3: Formale Modellierung der Todesangst $\\Phi$ als Funktion des Inkonsequenzmaßes $\\kappa$',
              fontsize=12, fontweight='bold', y=1.01)
 
-plt.savefig('/home/claude/naturgesetze/plot3_todesangst.pdf', bbox_inches='tight', dpi=200)
-plt.savefig('/home/claude/naturgesetze/plot3_todesangst.png', bbox_inches='tight', dpi=150)
+plt.savefig('plot3_todesangst.pdf', bbox_inches='tight', dpi=200)
+plt.savefig('plot3_todesangst.png', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 3 gespeichert.")

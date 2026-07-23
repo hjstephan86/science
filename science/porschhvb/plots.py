@@ -44,7 +44,7 @@ LBLUE  = '#4A7EC8'
 LRED   = '#E07060'
 LGREEN = '#3CB864'
 
-SAVE_DIR = '/home/claude/batterie/'
+SAVE_DIR = ''
 
 
 def save_plot(name, fig=None):

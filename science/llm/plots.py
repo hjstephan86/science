@@ -60,7 +60,7 @@ legend_elements = [
 ]
 ax.legend(handles=legend_elements, loc='lower left', fontsize=9)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot1_transformer_graph.pdf', bbox_inches='tight')
+plt.savefig('plot1_transformer_graph.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 1 erstellt")
 
@@ -96,7 +96,7 @@ axes[1].text(3, 0.2, r'$G_S \subseteq G_T$ via Subgraph Algorithmus', ha='center
 
 fig.suptitle('Plot 2: Subgraph-Isomorphismus zwischen Transformer und Pattern', fontsize=12, y=1.01)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot2_subgraph_isomorphismus.pdf', bbox_inches='tight')
+plt.savefig('plot2_subgraph_isomorphismus.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 2 erstellt")
 
@@ -132,7 +132,7 @@ for i, v in enumerate(sigmas):
 
 fig.suptitle('Plot 3: Signaturberechnung für Transformer-Attention-Matrix', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot3_signaturen_attention.pdf', bbox_inches='tight')
+plt.savefig('plot3_signaturen_attention.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 3 erstellt")
 
@@ -159,7 +159,7 @@ axes[1][2].text(0.5, 0.5, f'Nur $n={n}$ Rotationen\nstatt $n! = {120}$\nPermutat
 
 fig.suptitle('Plot 4: Zyklische Rotation der Transformer-Signatursequenz', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot4_rotation_signaturen.pdf', bbox_inches='tight')
+plt.savefig('plot4_rotation_signaturen.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 4 erstellt")
 
@@ -206,7 +206,7 @@ axes[1].grid(True, alpha=0.3)
 
 fig.suptitle('Plot 5: LCS-Berechnung für Transformer-Attention-Pattern-Matching', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot5_lcs_dp_tabelle.pdf', bbox_inches='tight')
+plt.savefig('plot5_lcs_dp_tabelle.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 5 erstellt")
 
@@ -241,7 +241,7 @@ ax2.legend(fontsize=9); ax2.grid(True, alpha=0.3)
 
 fig.suptitle('Plot 6: Komplexitätsanalyse des Subgraph Algorithmus für Transformer', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot6_komplexitaet.pdf', bbox_inches='tight')
+plt.savefig('plot6_komplexitaet.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 6 erstellt")
 
@@ -277,7 +277,7 @@ legend_e = [
 ax.legend(handles=legend_e, loc='upper left', fontsize=9)
 ax.set_title('Plot 7: Hierarchische Subgraph-Zerlegung eines LLM', pad=12)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot7_hierarchie_llm.pdf', bbox_inches='tight')
+plt.savefig('plot7_hierarchie_llm.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 7 erstellt")
 
@@ -333,7 +333,7 @@ axes[1].legend(fontsize=9); axes[1].grid(True, alpha=0.3, which='both')
 
 fig.suptitle('Plot 8: Empirische Laufzeitmessung des Subgraph Algorithmus auf Transformer-Graphen', fontsize=11)
 plt.tight_layout()
-plt.savefig('/home/claude/llm/plot8_laufzeit_empirisch.pdf', bbox_inches='tight')
+plt.savefig('plot8_laufzeit_empirisch.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 8 erstellt")
 print("\nAlle 8 Plots erfolgreich erstellt!")

@@ -38,15 +38,7 @@ ax.axis('off')
 ax.set_title('Abbildung 1: Sieben Fellfarb-Stufen S1–S7 (Braunbär → Eisbär)',
              fontsize=11, pad=8)
 plt.tight_layout()
-plt.savefig('/home/claude/fig1_farben.pdf', bbox_inches='tight')
-plt.close()
-print("fig1 done")
-
-# ── Figure 2: Pigment-Index p(t) über die Zeit ────────────────────────────────
-fig, ax = plt.subplots(figsize=(10, 4))
-t = np.linspace(0, 480000, 1000)
-# Logistische Abnahme des Pigmentindex
-p = 1.0 / (1.0 + np.exp((t - 240000) / 60000))
+plt.savefig(' (1.0 + np.exp((t - 240000) / 60000))
 ax.plot(t/1000, p, color='#5C3A1E', linewidth=2.5, label=r'$p(t)$ — Pigmentindex')
 # Markierungen für S1–S7
 stage_t = [0, 60000, 150000, 240000, 330000, 420000, 470000]
@@ -62,24 +54,7 @@ ax.set_title('Abbildung 2: Logistischer Rückgang des Melanin-Pigmentindex', fon
 ax.legend(fontsize=9)
 ax.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('/home/claude/fig2_pigment.pdf', bbox_inches='tight')
-plt.close()
-print("fig2 done")
-
-# ── Figure 3: Selektionsdruck W(p) ────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(9, 4))
-p_vals = np.linspace(0.01, 0.99, 500)
-# Fitness: in Arktis steigt Fitness mit sinkendem Pigment
-W = 1.0 - 0.85 * p_vals + 0.1 * np.sin(2*np.pi*p_vals)
-ax.plot(p_vals, W, color='steelblue', linewidth=2.5, label=r'$W(p)$ — Fitness in Arktis')
-ax.fill_between(p_vals, W, alpha=0.15, color='steelblue')
-ax.set_xlabel('Pigmentindex $p$', fontsize=10)
-ax.set_ylabel('Relative Fitness $W(p)$', fontsize=10)
-ax.set_title('Abbildung 3: Selektionslandschaft — Fitness als Funktion des Pigmentindex', fontsize=11)
-ax.legend(fontsize=9)
-ax.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.savefig('/home/claude/fig3_fitness.pdf', bbox_inches='tight')
+plt.savefig('home/claude/fig3_fitness.pdf', bbox_inches='tight')
 plt.close()
 print("fig3 done")
 

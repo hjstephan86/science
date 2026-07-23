@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -150,5 +150,6 @@ ax6.text(-0.9, 0, 'CPU', ha='right', fontsize=8, color='#19468C', fontweight='bo
 ax6.text(0, -0.9, 'CPU', ha='center', fontsize=8, color='#19468C', fontweight='bold')
 plt.colorbar(im, ax=ax6, label='Adjazenz')
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_b.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_b.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_b.pdf saved")
+

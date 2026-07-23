@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -68,6 +68,7 @@ ax2.legend(fontsize=9)
 ax2.grid(True,alpha=0.3,linestyle='--')
 
 plt.tight_layout()
-plt.savefig('/home/claude/cpugpu_paper/plots/plot4_topology_lcs.pdf', bbox_inches='tight')
+plt.savefig('plots/plot4_topology_lcs.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 4 OK")
+

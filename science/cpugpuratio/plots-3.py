@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -49,6 +49,7 @@ ax.set_title('Abbildung 3: Speicherbandbreite vs. Rechenleistung\nnach Plattform
 ax.legend(fontsize=8, loc='upper left', ncol=2)
 ax.grid(True, alpha=0.3, linestyle='--')
 plt.tight_layout()
-plt.savefig('/home/claude/cpugpu_paper/plots/plot3_memory_compute.pdf', bbox_inches='tight')
+plt.savefig('plots/plot3_memory_compute.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 3 OK")
+

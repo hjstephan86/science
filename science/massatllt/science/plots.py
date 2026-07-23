@@ -92,8 +92,8 @@ def plot1_drosophila_orbit():
     ax.set_box_aspect([1, 1, 0.4])
 
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot1_drosophila_orbit.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot1_drosophila_orbit.png', bbox_inches='tight')
+    plt.savefig('plot1_drosophila_orbit.pdf', bbox_inches='tight')
+    plt.savefig('plot1_drosophila_orbit.png', bbox_inches='tight')
     plt.close()
     print("Plot 1 fertig.")
 
@@ -146,8 +146,8 @@ def plot2_bandwidth_energy():
     plt.suptitle('Abbildung 2: Bandbreite und Energie in Abhaengigkeit der Koalitionsgroesse',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot2_bandwidth_energy.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot2_bandwidth_energy.png', bbox_inches='tight')
+    plt.savefig('plot2_bandwidth_energy.pdf', bbox_inches='tight')
+    plt.savefig('plot2_bandwidth_energy.png', bbox_inches='tight')
     plt.close()
     print("Plot 2 fertig.")
 
@@ -205,8 +205,8 @@ def plot3_subgraph_reduction():
     plt.suptitle('Abbildung 3: Subgraph Algorithmus Reduktion und Laufzeit',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot3_subgraph_reduction.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot3_subgraph_reduction.png', bbox_inches='tight')
+    plt.savefig('plot3_subgraph_reduction.pdf', bbox_inches='tight')
+    plt.savefig('plot3_subgraph_reduction.png', bbox_inches='tight')
     plt.close()
     print("Plot 3 fertig.")
 
@@ -286,8 +286,8 @@ def plot4_induction_springs():
     plt.suptitle('Abbildung 4: Energiegewinnung durch Fahrtwind-Induktionsfedern',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot4_induction_springs.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot4_induction_springs.png', bbox_inches='tight')
+    plt.savefig('plot4_induction_springs.pdf', bbox_inches='tight')
+    plt.savefig('plot4_induction_springs.png', bbox_inches='tight')
     plt.close()
     print("Plot 4 fertig.")
 
@@ -346,8 +346,8 @@ def plot5_mas_performance():
     plt.suptitle('Abbildung 5: MAS-Gesamterfolg und Laufzeit (n=12, m=12)',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot5_mas_performance.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot5_mas_performance.png', bbox_inches='tight')
+    plt.savefig('plot5_mas_performance.pdf', bbox_inches='tight')
+    plt.savefig('plot5_mas_performance.png', bbox_inches='tight')
     plt.close()
     print("Plot 5 fertig.")
 
@@ -395,8 +395,8 @@ def plot6_coverage():
     plt.suptitle('Abbildung 6: Vergleich der Erdoberflaechenabdeckung',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot6_coverage.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot6_coverage.png', bbox_inches='tight')
+    plt.savefig('plot6_coverage.pdf', bbox_inches='tight')
+    plt.savefig('plot6_coverage.png', bbox_inches='tight')
     plt.close()
     print("Plot 6 fertig.")
 
@@ -458,8 +458,8 @@ def plot7_lsat():
     plt.suptitle('Abbildung 7: LSAT-Entscheidungsverfahren im Satellitenkontext',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot7_lsat.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot7_lsat.png', bbox_inches='tight')
+    plt.savefig('plot7_lsat.pdf', bbox_inches='tight')
+    plt.savefig('plot7_lsat.png', bbox_inches='tight')
     plt.close()
     print("Plot 7 fertig.")
 
@@ -523,8 +523,8 @@ def plot8_ai_learning():
     plt.suptitle('Abbildung 8: KI-Lernverhalten der Satellitenagenten',
                  fontsize=12, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/satellite_mas/plot8_ai_learning.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/satellite_mas/plot8_ai_learning.png', bbox_inches='tight')
+    plt.savefig('plot8_ai_learning.pdf', bbox_inches='tight')
+    plt.savefig('plot8_ai_learning.png', bbox_inches='tight')
     plt.close()
     print("Plot 8 fertig.")
 

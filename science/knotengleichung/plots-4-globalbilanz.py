@@ -120,7 +120,7 @@ ax4.set_title('(d) Verteilung nach Ozean / Land', fontsize=10,
               fontweight='bold', color='#19468C')
 
 plt.tight_layout(pad=2.5)
-plt.savefig('/home/claude/knotengleichung/plot4_globalbilanz.pdf',
+plt.savefig('plot4_globalbilanz.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 4 gespeichert.")

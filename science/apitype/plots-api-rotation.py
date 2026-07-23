@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -74,6 +74,7 @@ for i, (sigs, col, t) in enumerate(zip(sig_vals, colors_rot, titles)):
 fig.suptitle('Zyklische Rotation des Open-API-Graphen und Signaturberechnung',
              fontsize=12, fontweight='bold', y=1.01)
 plt.tight_layout()
-plt.savefig('/home/claude/apitype/plot_api_rotation.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_api_rotation.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 4 done")
+

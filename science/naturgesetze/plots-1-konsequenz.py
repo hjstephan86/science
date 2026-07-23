@@ -78,7 +78,7 @@ ax4.set_facecolor('#F5F5F8')
 fig.suptitle('Abbildung 1: Formaler Konsequenzvergleich — Naturgesetze vs. Menschliches Verhalten',
              fontsize=13, fontweight='bold', y=0.98)
 
-plt.savefig('/home/claude/naturgesetze/plot1_konsequenz.pdf', bbox_inches='tight', dpi=200)
-plt.savefig('/home/claude/naturgesetze/plot1_konsequenz.png', bbox_inches='tight', dpi=150)
+plt.savefig('plot1_konsequenz.pdf', bbox_inches='tight', dpi=200)
+plt.savefig('plot1_konsequenz.png', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 1 gespeichert.")

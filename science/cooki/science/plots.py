@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Plots fuer: Inhomogene Wuerzverteilung bei gekochten Nudeln
@@ -61,8 +61,8 @@ ax.set_xlim(0, 10)
 
 fig.suptitle('Abb. 1: Vergleich der Wuerzintensitaetsverteilungen', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot1_verteilung.pdf')
-plt.savefig('/home/claude/nudeln/plot1_verteilung.png')
+plt.savefig('plot1_verteilung.pdf')
+plt.savefig('plot1_verteilung.png')
 plt.close()
 print("Plot 1 erstellt.")
 
@@ -101,8 +101,8 @@ ax.set_title('Abb. 2: Wundt-Kurve der Geschmacksreaktion mit Stimulationsbereich
 ax.legend(loc='upper left', fontsize=10)
 ax.set_xlim(0, 10)
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot2_wundt.pdf')
-plt.savefig('/home/claude/nudeln/plot2_wundt.png')
+plt.savefig('plot2_wundt.pdf')
+plt.savefig('plot2_wundt.png')
 plt.close()
 print("Plot 2 erstellt.")
 
@@ -152,8 +152,8 @@ ax2.set_ylim(0, 8)
 
 fig.suptitle('Abb. 3: Sensorische Adaptation im Zeitverlauf', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot3_adaptation.pdf')
-plt.savefig('/home/claude/nudeln/plot3_adaptation.png')
+plt.savefig('plot3_adaptation.pdf')
+plt.savefig('plot3_adaptation.png')
 plt.close()
 print("Plot 3 erstellt.")
 
@@ -198,8 +198,8 @@ plt.colorbar(im1, ax=ax, label='Wuerzintensitaet $I$')
 
 fig.suptitle('Abb. 4: Zweidimensionale Wuerzgradienten auf der Nudeloberflaeche', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot4_gradient2d.pdf')
-plt.savefig('/home/claude/nudeln/plot4_gradient2d.png')
+plt.savefig('plot4_gradient2d.pdf')
+plt.savefig('plot4_gradient2d.png')
 plt.close()
 print("Plot 4 erstellt.")
 
@@ -255,8 +255,8 @@ ax.legend(fontsize=9)
 
 fig.suptitle('Abb. 5: Informationstheoretische Analyse der Wuerzverteilung', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot5_entropie.pdf')
-plt.savefig('/home/claude/nudeln/plot5_entropie.png')
+plt.savefig('plot5_entropie.pdf')
+plt.savefig('plot5_entropie.png')
 plt.close()
 print("Plot 5 erstellt.")
 
@@ -308,8 +308,8 @@ ax.legend(markerscale=3, fontsize=9)
 
 fig.suptitle('Abb. 6: Markov-Modell der sensorischen Zustandsfolge', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot6_markov.pdf')
-plt.savefig('/home/claude/nudeln/plot6_markov.png')
+plt.savefig('plot6_markov.pdf')
+plt.savefig('plot6_markov.png')
 plt.close()
 print("Plot 6 erstellt.")
 
@@ -323,7 +323,7 @@ hom_data = np.random.normal(5.0, 0.35, n_sim)
 inh_data = np.random.beta(2.2, 2.2, n_sim) * 9.0 + 0.5
 
 ax = axes[0]
-bp = ax.boxplot([hom_data, inh_data], labels=['Homogen', 'Inhomogen'],
+bp = ax.boxplot([hom_data, inh_data], tick_labels=['Homogen', 'Inhomogen'],
                 patch_artist=True, notch=True,
                 boxprops=dict(facecolor='lightblue'),
                 medianprops=dict(color='navy', lw=2))
@@ -356,8 +356,8 @@ ax.axhline(0, color='k', lw=0.5)
 
 fig.suptitle('Abb. 7: Statistische Analyse beider Wuerzregimes', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot7_statistik.pdf')
-plt.savefig('/home/claude/nudeln/plot7_statistik.png')
+plt.savefig('plot7_statistik.pdf')
+plt.savefig('plot7_statistik.png')
 plt.close()
 print("Plot 7 erstellt.")
 
@@ -413,9 +413,11 @@ ax.set_title('(b) Inhomogen'); ax.legend(fontsize=9)
 
 fig.suptitle('Abb. 8: Hedonische Dynamik einer Essenseinheit ($N=30$ Simulationen)', fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/nudeln/plot8_hedonik.pdf')
-plt.savefig('/home/claude/nudeln/plot8_hedonik.png')
+plt.savefig('plot8_hedonik.pdf')
+plt.savefig('plot8_hedonik.png')
 plt.close()
 print("Plot 8 erstellt.")
 
 print("\nAlle 8 Plots erfolgreich erstellt.")
+
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Erzeugung aller Abbildungen fuer die wissenschaftliche Arbeit:
@@ -199,9 +199,9 @@ def plot1_levenshtein_table():
     fig.suptitle('Abbildung 1: Dynamische Programmierung – Levenshtein-Distanz',
                  fontsize=14, fontweight='bold', color=DARKGRAY, y=1.01)
     plt.tight_layout()
-    plt.savefig('/home/claude/dp_mergesort/plots/plot1_levenshtein_table.pdf',
+    plt.savefig('plots/plot1_levenshtein_table.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot1_levenshtein_table.png',
+    plt.savefig('plots/plot1_levenshtein_table.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 1 gespeichert.")
@@ -266,9 +266,9 @@ def plot2_dp_complexity():
         fontsize=13, fontweight='bold', color=DARKGRAY, y=1.01
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/dp_mergesort/plots/plot2_dp_complexity.pdf',
+    plt.savefig('plots/plot2_dp_complexity.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot2_dp_complexity.png',
+    plt.savefig('plots/plot2_dp_complexity.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 2 gespeichert.")
@@ -428,9 +428,9 @@ def plot3_mergesort_tree():
         fontsize=12, fontweight='bold', color=DARKGRAY, y=1.01
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/dp_mergesort/plots/plot3_mergesort_tree.pdf',
+    plt.savefig('plots/plot3_mergesort_tree.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot3_mergesort_tree.png',
+    plt.savefig('plots/plot3_mergesort_tree.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 3 gespeichert.")
@@ -532,9 +532,9 @@ def plot4_mergesort_complexity():
         fontsize=13, fontweight='bold', color=DARKGRAY, y=1.01
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/dp_mergesort/plots/plot4_mergesort_complexity.pdf',
+    plt.savefig('plots/plot4_mergesort_complexity.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot4_mergesort_complexity.png',
+    plt.savefig('plots/plot4_mergesort_complexity.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 4 gespeichert.")
@@ -653,9 +653,9 @@ def plot5_comparison():
         'Abbildung 5: Vollständiger Vergleich – Dynamische Programmierung vs. Teile-und-Herrsche',
         fontsize=13, fontweight='bold', color=DARKGRAY, y=1.01
     )
-    plt.savefig('/home/claude/dp_mergesort/plots/plot5_comparison.pdf',
+    plt.savefig('plots/plot5_comparison.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot5_comparison.png',
+    plt.savefig('plots/plot5_comparison.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 5 gespeichert.")
@@ -745,9 +745,9 @@ def plot6_mergesort_steps():
         fontsize=13, fontweight='bold', color=DARKGRAY, y=1.01
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/dp_mergesort/plots/plot6_mergesort_steps.pdf',
+    plt.savefig('plots/plot6_mergesort_steps.pdf',
                 format='pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/dp_mergesort/plots/plot6_mergesort_steps.png',
+    plt.savefig('plots/plot6_mergesort_steps.png',
                 format='png', bbox_inches='tight')
     plt.close()
     print("Plot 6 gespeichert.")
@@ -765,3 +765,4 @@ if __name__ == '__main__':
     plot5_comparison()
     plot6_mergesort_steps()
     print("\nAlle 6 Plots erfolgreich gespeichert.")
+

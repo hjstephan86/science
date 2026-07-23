@@ -87,7 +87,7 @@ ax2.text(0.98, 0.97,
          bbox=dict(boxstyle='round,pad=0.4', fc='#F0EBF8', ec='#5B2D8E'))
 
 plt.tight_layout(pad=2.0)
-plt.savefig('/home/claude/knotengleichung/plot3_kontinuitaet.pdf',
+plt.savefig('plot3_kontinuitaet.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 3 gespeichert.")

@@ -51,7 +51,8 @@ ax.grid(axis='y', alpha=0.3)
 
 fig.suptitle('Subgraph Algorithmus auf API-Graphen', fontsize=13, fontweight='bold', y=1.01)
 plt.tight_layout()
-plt.savefig('/home/claude/apitype/plot_api_subgraph.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_api_subgraph.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 2 done")
+
 

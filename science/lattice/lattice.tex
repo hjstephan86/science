@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -49,13 +49,13 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ö}{{\"O}}1
-    {Ä}{{\"A}}1
-    {Ü}{{\"U}}1
-    {ß}{{\ss}}1
-    {ü}{{\"u}}1
-    {ä}{{\"a}}1
-    {ö}{{\"o}}1
+    {Ã–}{{\"O}}1
+    {Ã„}{{\"A}}1
+    {Ãœ}{{\"U}}1
+    {ÃŸ}{{\ss}}1
+    {Ã¼}{{\"u}}1
+    {Ã¤}{{\"a}}1
+    {Ã¶}{{\"o}}1
 }
 
 \newcommand{\Z}{\mathbb{Z}}
@@ -68,7 +68,7 @@
 \newcommand{\innerprod}[2]{\left\langle #1,\, #2 \right\rangle}
 
 \title{\textbf{Gitterbasierte Kryptographie und Quanten-Fehlerkorrektur:}\\
-\large Kürzeste-Vektor-Problem, GKP-Codes und Anonyme Reputationssysteme}
+\large KÃ¼rzeste-Vektor-Problem, GKP-Codes und Anonyme Reputationssysteme}
 \author{Stephan Epp}
 \date{3. Juni 2026}
 
@@ -77,10 +77,10 @@
 \maketitle
 
 \begin{abstract}
-Diese Arbeit gibt eine formale und ausführliche Einführung in drei eng verwandte Gebiete der
+Diese Arbeit gibt eine formale und ausfÃ¼hrliche EinfÃ¼hrung in drei eng verwandte Gebiete der
 modernen Gittertheorie und quantensicheren Kryptographie: das Shortest-Vector-Problem~(SVP),
 Gottesman-Kitaev-Preskill-Codes~(GKP) sowie gitterbasierte anonyme Reputationssysteme.
-Sämtliche zentralen Ergebnisse werden rigoros bewiesen, durch matplotlib-Abbildungen
+SÃ¤mtliche zentralen Ergebnisse werden rigoros bewiesen, durch matplotlib-Abbildungen
 veranschaulicht und in den aktuellen Forschungsstand eingeordnet.
 Der Subgraph Algorithmus~\cite{Epp2026Subgraph} liefert dabei die algorithmische Vergleichsgrundlage.
 \end{abstract}
@@ -89,13 +89,13 @@ Der Subgraph Algorithmus~\cite{Epp2026Subgraph} liefert dabei die algorithmische
 \newpage
 
 % ============================================================
-\section{Einführung}
+\section{EinfÃ¼hrung}
 % ============================================================
 
 Die Sicherheit heutiger Public-Key-Kryptosysteme (RSA, ECDH, DSA) basiert auf
-der vermuteten Schwierigkeit des diskreten Logarithmus und der Faktorisierung großer ganzer Zahlen.
-Shors Algorithmus~\cite{Shor1994} zeigt, dass ein hinreichend großer Quantencomputer beide Probleme
-in Polynomialzeit löst und damit diese Systeme vollständig bricht.
+der vermuteten Schwierigkeit des diskreten Logarithmus und der Faktorisierung groÃŸer ganzer Zahlen.
+Shors Algorithmus~\cite{Shor1994} zeigt, dass ein hinreichend groÃŸer Quantencomputer beide Probleme
+in Polynomialzeit lÃ¶st und damit diese Systeme vollstÃ¤ndig bricht.
 
 Gitterprobleme -- insbesondere das Shortest-Vector-Problem~(SVP) und das Closest-Vector-Problem~(CVP)
 -- gelten bislang als resistent gegen Quantenangriffe und bilden die Basis einer post-quanten-sicheren
@@ -106,11 +106,11 @@ symplektischen Phasenraumdarstellung basiert.
 
 \subsection{Problemstellung und Motivation}
 
-Diese Arbeit behandelt drei miteinander verknüpfte Fragestellungen:
+Diese Arbeit behandelt drei miteinander verknÃ¼pfte Fragestellungen:
 
 \begin{enumerate}
     \item \textbf{SVP und Gitterbasisreduktion:}
-          Wie schwer ist es, den kürzesten Vektor in einem Gitter $\Lat \subset \R^n$ zu finden?
+          Wie schwer ist es, den kÃ¼rzesten Vektor in einem Gitter $\Lat \subset \R^n$ zu finden?
           Welche Algorithmen existieren, und wie sind deren Laufzeiten?
 
     \item \textbf{GKP-Codes:}
@@ -118,7 +118,7 @@ Diese Arbeit behandelt drei miteinander verknüpfte Fragestellungen:
           Welche Verbindung besteht zwischen Gittergeometrie und Codeabstand?
 
     \item \textbf{Anonyme Reputationssysteme:}
-          Wie kann Anonymität in kryptographischen Review-Systemen durch gitterbasierte
+          Wie kann AnonymitÃ¤t in kryptographischen Review-Systemen durch gitterbasierte
           Zero-Knowledge-Beweise garantiert werden?
 \end{enumerate}
 
@@ -128,7 +128,7 @@ Diese Arbeit behandelt drei miteinander verknüpfte Fragestellungen:
     \item Formale Beweise aller zentralen Aussagen zu SVP, GKP-Codedistanz und
           Systemsicherheit anonymer Reputationssysteme.
     \item Experimentelle Illustration aller Konzepte durch acht \texttt{matplotlib}-Abbildungen.
-    \item Ausführlicher Ausblick mit über 20 offenen Forschungsrichtungen.
+    \item AusfÃ¼hrlicher Ausblick mit Ã¼ber 20 offenen Forschungsrichtungen.
 \end{itemize}
 
 % ============================================================
@@ -139,7 +139,7 @@ Diese Arbeit behandelt drei miteinander verknüpfte Fragestellungen:
 
 \begin{definition}[Gitter]
 \label{def:gitter}
-Seien $\mathbf{b}_1, \ldots, \mathbf{b}_n \in \R^m$ linear unabhängige Vektoren.
+Seien $\mathbf{b}_1, \ldots, \mathbf{b}_n \in \R^m$ linear unabhÃ¤ngige Vektoren.
 Das durch diese \emph{Basis} $\B = [\mathbf{b}_1 \mid \cdots \mid \mathbf{b}_n]$ erzeugte
 \emph{Gitter} ist
 \[
@@ -152,7 +152,7 @@ Im Vollrang-Fall gilt $m = n$.
 \end{definition}
 
 \begin{bemerkung}
-Die Basis ist \emph{nicht} eindeutig: Für jede unimodulare Matrix $\mathbf{U} \in \Z^{n \times n}$
+Die Basis ist \emph{nicht} eindeutig: FÃ¼r jede unimodulare Matrix $\mathbf{U} \in \Z^{n \times n}$
 mit $|\det \mathbf{U}| = 1$ erzeugen $\B$ und $\B \mathbf{U}$ dasselbe Gitter.
 \end{bemerkung}
 
@@ -165,11 +165,11 @@ Es gilt $\det \Lat(\B) := |\det \B| = \mathrm{Vol}(\mathcal{P}(\B))$.
 \end{definition}
 
 \begin{definition}[Spektralnorm einer Basis]
-Die \emph{Spektralnorm} $s_1(\B)$ ist der größte singuläre Wert von $\B$, also
+Die \emph{Spektralnorm} $s_1(\B)$ ist der grÃ¶ÃŸte singulÃ¤re Wert von $\B$, also
 \[
     s_1(\B) = \norm{\B}_2 = \sigma_{\max}(\B).
 \]
-Eine Basis mit kleiner Spektralnorm heißt \emph{gut} oder \emph{reduziert}.
+Eine Basis mit kleiner Spektralnorm heiÃŸt \emph{gut} oder \emph{reduziert}.
 \end{definition}
 
 \begin{figure}[ht]
@@ -177,13 +177,13 @@ Eine Basis mit kleiner Spektralnorm heißt \emph{gut} oder \emph{reduziert}.
     \includegraphics[width=0.75\textwidth]{plots/plot1_lattice_basis.pdf}
     \caption{Gitterpunkte in $\R^2$ mit einer guten (blauen) und einer schlechten (roten) Basis.
              Die gute Basis ist nahezu orthogonal; die schlechte Basis hat hohe Spektralnorm
-             durch starke lineare Abhängigkeit.}
+             durch starke lineare AbhÃ¤ngigkeit.}
     \label{fig:lattice_basis}
 \end{figure}
 
 \begin{lemma}[Hadamard-Schranke]
 \label{lem:hadamard}
-Für jede Basis $\B = [\mathbf{b}_1, \ldots, \mathbf{b}_n]$ gilt
+FÃ¼r jede Basis $\B = [\mathbf{b}_1, \ldots, \mathbf{b}_n]$ gilt
 \[
     |\det \B| \leq \prod_{i=1}^{n} \norm{\mathbf{b}_i}.
 \]
@@ -195,23 +195,23 @@ Dies ist die klassische Hadamard-Ungleichung, die aus der QR-Zerlegung
 $\B = \mathbf{Q} \mathbf{R}$ folgt.
 Da $\mathbf{Q}$ orthonormal ist, gilt $|\det \B| = |\det \mathbf{R}| = \prod_i |r_{ii}|$.
 Nach der Gram-Schmidt-Prozedur ist $|r_{ii}| = \norm{\tilde{\mathbf{b}}_i} \leq \norm{\mathbf{b}_i}$,
-da die Gram-Schmidt-Vektoren durch Projektion kürzer werden.
+da die Gram-Schmidt-Vektoren durch Projektion kÃ¼rzer werden.
 \end{proof}
 
 \subsection{Der erste sukzessive Minimum}
 
 \begin{definition}[Sukzessive Minima]
-Für ein Gitter $\Lat \subset \R^n$ ist das $i$-te sukzessive Minimum
+FÃ¼r ein Gitter $\Lat \subset \R^n$ ist das $i$-te sukzessive Minimum
 \[
     \lambda_i(\Lat) = \min \left\{ r \geq 0 \;\middle|\; \dim\left(\mathrm{span}\left(\Lat \cap r\mathcal{B}_n\right)\right) \geq i \right\},
 \]
 wobei $\mathcal{B}_n$ die $n$-dimensionale Einheitskugel bezeichnet.
-Insbesondere ist $\lambda_1(\Lat)$ die \emph{Länge des kürzesten Gittervektors}.
+Insbesondere ist $\lambda_1(\Lat)$ die \emph{LÃ¤nge des kÃ¼rzesten Gittervektors}.
 \end{definition}
 
 \begin{satz}[Minkowski's Erster Satz]
 \label{satz:minkowski}
-Für jedes volle Gitter $\Lat \subset \R^n$ gilt
+FÃ¼r jedes volle Gitter $\Lat \subset \R^n$ gilt
 \[
     \lambda_1(\Lat) \leq \sqrt{n} \cdot (\det \Lat)^{1/n}.
 \]
@@ -219,22 +219,22 @@ Für jedes volle Gitter $\Lat \subset \R^n$ gilt
 
 \begin{proof}
 Sei $K = \lambda_1(\Lat) \cdot \mathcal{B}_n$ die abgeschlossene Kugel mit Radius $\lambda_1$.
-Nehmen wir an, $K$ enthält keinen von Null verschiedenen Gitterpunkt.
+Nehmen wir an, $K$ enthÃ¤lt keinen von Null verschiedenen Gitterpunkt.
 Dann sind die verschobenen Mengen $\{\mathbf{x} + \tfrac{1}{2}K \mid \mathbf{x} \in \Lat\}$
 paarweise disjunkt (da $\tfrac{1}{2}K$ konvex und symmetrisch).
-Ihr Volumen pro Fundamentalparallelotop beträgt:
+Ihr Volumen pro Fundamentalparallelotop betrÃ¤gt:
 \[
     \frac{\mathrm{Vol}(\tfrac{1}{2}K)}{\det \Lat} = \frac{(\lambda_1/2)^n \cdot v_n}{\det \Lat},
 \]
 wobei $v_n = \pi^{n/2}/\Gamma(n/2+1)$ das Volumen der $n$-dimensionalen Einheitskugel ist.
-Damit diese Mengen disjunkt sein können, muss gelten
+Damit diese Mengen disjunkt sein kÃ¶nnen, muss gelten
 \[
     \frac{(\lambda_1/2)^n v_n}{\det \Lat} \leq 1
     \quad \Longrightarrow \quad
     \lambda_1^n \leq \frac{2^n \det \Lat}{v_n}.
 \]
-Da $v_n \geq (2\pi e/n)^{n/2} \cdot (2\pi n)^{-1/2}$ und für praktische Zwecke
-$v_n \geq (1/\sqrt{n})^n$ gilt, erhält man die behauptete Schranke
+Da $v_n \geq (2\pi e/n)^{n/2} \cdot (2\pi n)^{-1/2}$ und fÃ¼r praktische Zwecke
+$v_n \geq (1/\sqrt{n})^n$ gilt, erhÃ¤lt man die behauptete Schranke
 $\lambda_1 \leq \sqrt{n} \cdot (\det \Lat)^{1/n}$.
 \end{proof}
 
@@ -246,7 +246,7 @@ $\lambda_1 \leq \sqrt{n} \cdot (\det \Lat)^{1/n}$.
 
 \begin{definition}[Shortest Vector Problem -- SVP]
 Gegeben eine Gitterbasis $\B \in \Z^{m \times n}$, finde einen von Null verschiedenen
-Gittervektor minimaler euklidischer Länge:
+Gittervektor minimaler euklidischer LÃ¤nge:
 \[
     \mathrm{SVP:} \quad \text{Finde } \mathbf{v} \in \Lat(\B) \setminus \{\mathbf{0}\}
                         \text{ mit } \norm{\mathbf{v}} = \lambda_1(\Lat(\B)).
@@ -254,52 +254,52 @@ Gittervektor minimaler euklidischer Länge:
 \end{definition}
 
 \begin{definition}[$\gamma$-approximatives SVP ($\gamma$-SVP)]
-Für einen Approximationsfaktor $\gamma \geq 1$: Finde $\mathbf{v} \in \Lat \setminus \{\mathbf{0}\}$
+FÃ¼r einen Approximationsfaktor $\gamma \geq 1$: Finde $\mathbf{v} \in \Lat \setminus \{\mathbf{0}\}$
 mit $\norm{\mathbf{v}} \leq \gamma \cdot \lambda_1(\Lat)$.
 \end{definition}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.72\textwidth]{plots/plot2_svp.pdf}
-    \caption{Illustration des SVP in $\R^2$: Der rote Pfeil zeigt den kürzesten Gittervektor
+    \caption{Illustration des SVP in $\R^2$: Der rote Pfeil zeigt den kÃ¼rzesten Gittervektor
              $\mathbf{v}$ mit $\norm{\mathbf{v}} = \lambda_1$; der gestrichelte Kreis markiert
              den Suchradius $\lambda_1$.}
     \label{fig:svp}
 \end{figure}
 
-\subsection{Komplexität des SVP}
+\subsection{KomplexitÃ¤t des SVP}
 
-\begin{satz}[Ajtai 1998 -- NP-Härte von SVP]
+\begin{satz}[Ajtai 1998 -- NP-HÃ¤rte von SVP]
 \label{satz:svp_np}
 Das exakte SVP (in der $\ell_2$-Norm) ist $\mathrm{NP}$-schwer unter Wahrscheinlichkeitsreduktionen.
 \end{satz}
 
 \begin{proof}[Beweisidee]
 Ajtai~\cite{Ajtai1998} zeigte eine Worst-Case-zu-Average-Case-Reduktion:
-Wenn es einen effizienten randomisierten Algorithmus für SVP im Durchschnitt gibt,
-existiert auch ein Algorithmus für SVP im schlechtesten Fall.
+Wenn es einen effizienten randomisierten Algorithmus fÃ¼r SVP im Durchschnitt gibt,
+existiert auch ein Algorithmus fÃ¼r SVP im schlechtesten Fall.
 Die Idee besteht darin, eine Zufallsinstanz von SVP zu konstruieren, die mit hoher
-Wahrscheinlichkeit so schwer ist wie der schlimmstmögliche Fall.
-Formal wird eine Reduktion von 3-SAT (oder einem anderen NP-vollständigen Problem)
-über eine Kette von Gitterproblemen konstruiert.
-Der vollständige Beweis verwendet \emph{random integer lattices} und die Tatsache,
-dass das Bestimmen von $\lambda_1$ äquivalent zu Problemen in der Geometrie der Zahlen ist.
+Wahrscheinlichkeit so schwer ist wie der schlimmstmÃ¶gliche Fall.
+Formal wird eine Reduktion von 3-SAT (oder einem anderen NP-vollstÃ¤ndigen Problem)
+Ã¼ber eine Kette von Gitterproblemen konstruiert.
+Der vollstÃ¤ndige Beweis verwendet \emph{random integer lattices} und die Tatsache,
+dass das Bestimmen von $\lambda_1$ Ã¤quivalent zu Problemen in der Geometrie der Zahlen ist.
 \end{proof}
 
-\begin{satz}[Untere Schranken für SVP-Algorithmen]
+\begin{satz}[Untere Schranken fÃ¼r SVP-Algorithmen]
 \label{satz:svp_lb}
-Unter der Exponential Time Hypothesis~(ETH) benötigt jeder Algorithmus für das exakte SVP
+Unter der Exponential Time Hypothesis~(ETH) benÃ¶tigt jeder Algorithmus fÃ¼r das exakte SVP
 in Dimension $n$ mindestens $2^{\Omega(n)}$ Zeit.
 \end{satz}
 
 \begin{proof}
 Aggarwal et al.~\cite{Aggarwal2015} bewiesen, dass das exakte SVP
 Zeit $2^{n + o(n)}$ erfordert, sofern ETH gilt.
-Der Beweis läuft über eine Reduktion von $k$-Sum auf SVP in passender Dimension.
-Da $k$-Sum unter ETH keine subexponentielle Lösung hat, überträgt sich diese Schranke.
+Der Beweis lÃ¤uft Ã¼ber eine Reduktion von $k$-Sum auf SVP in passender Dimension.
+Da $k$-Sum unter ETH keine subexponentielle LÃ¶sung hat, Ã¼bertrÃ¤gt sich diese Schranke.
 \end{proof}
 
-\subsection{Algorithmen für SVP}
+\subsection{Algorithmen fÃ¼r SVP}
 
 \subsubsection{LLL-Basisreduktion}
 
@@ -307,15 +307,15 @@ Da $k$-Sum unter ETH keine subexponentielle Lösung hat, überträgt sich diese 
 Eine Basis $(\mathbf{b}_1, \ldots, \mathbf{b}_n)$ mit Gram-Schmidt-Vektoren
 $(\tilde{\mathbf{b}}_1, \ldots, \tilde{\mathbf{b}}_n)$ und Koeffizienten
 $\mu_{ij} = \innerprod{\mathbf{b}_i}{\tilde{\mathbf{b}}_j}/\norm{\tilde{\mathbf{b}}_j}^2$
-heißt \emph{LLL-reduziert} (mit Parameter $\delta \in (1/4, 1]$), wenn gilt:
+heiÃŸt \emph{LLL-reduziert} (mit Parameter $\delta \in (1/4, 1]$), wenn gilt:
 \begin{enumerate}
-    \item $|\mu_{ij}| \leq 1/2$ für alle $1 \leq j < i \leq n$ \quad (Größenreduziertheit),
+    \item $|\mu_{ij}| \leq 1/2$ fÃ¼r alle $1 \leq j < i \leq n$ \quad (GrÃ¶ÃŸenreduziertheit),
     \item $\delta \norm{\tilde{\mathbf{b}}_i}^2 \leq \norm{\tilde{\mathbf{b}}_{i+1} + \mu_{i+1,i} \tilde{\mathbf{b}}_i}^2$
-          für alle $i$ \quad (Lovász-Bedingung).
+          fÃ¼r alle $i$ \quad (LovÃ¡sz-Bedingung).
 \end{enumerate}
 \end{definition}
 
-\begin{satz}[LLL-Algorithmus, Lenstra-Lenstra-Lovász 1982]
+\begin{satz}[LLL-Algorithmus, Lenstra-Lenstra-LovÃ¡sz 1982]
 \label{satz:lll}
 Der LLL-Algorithmus findet in Zeit $O(n^5 \log^3 \norm{\B})$
 eine LLL-reduzierte Basis mit $\delta = 3/4$, bei der der erste Basisvektor
@@ -329,44 +329,44 @@ $\mathbf{b}_1$ eine $2^{(n-1)/2}$-Approximation an $\lambda_1$ liefert:
 Sei $\phi(\B) = \prod_{i=1}^{n} \norm{\tilde{\mathbf{b}}_i}^{2(n-i+1)}$ das
 \emph{Potential} der Basis.
 Jeder LLL-Swap reduziert $\phi$ um einen Faktor von mindestens $\delta = 3/4 > 1/2$.
-Da $\phi$ ganzzahlig beschränkt ist (nach Gram-Schmidt-Argumentation)
-und durch die anfängliche Größenreduktion nach oben durch $\norm{\B}_F^{n(n+1)/2}$ beschränkt,
+Da $\phi$ ganzzahlig beschrÃ¤nkt ist (nach Gram-Schmidt-Argumentation)
+und durch die anfÃ¤ngliche GrÃ¶ÃŸenreduktion nach oben durch $\norm{\B}_F^{n(n+1)/2}$ beschrÃ¤nkt,
 terminiert der Algorithmus nach $O(n^2 \log \norm{\B})$ Swaps.
 
-Für die Qualitätsschranke: In einer LLL-reduzierten Basis gilt
+FÃ¼r die QualitÃ¤tsschranke: In einer LLL-reduzierten Basis gilt
 $\norm{\tilde{\mathbf{b}}_i}^2 \leq (4/3)^{i-1} \norm{\tilde{\mathbf{b}}_1}^2 \cdot \ldots$
-Nach Ausrollen über alle $i$ ergibt sich $\norm{\mathbf{b}_1} \leq 2^{(n-1)/2} \lambda_1$.
+Nach Ausrollen Ã¼ber alle $i$ ergibt sich $\norm{\mathbf{b}_1} \leq 2^{(n-1)/2} \lambda_1$.
 \end{proof}
 
 \subsubsection{Enumeration und Siebverfahren}
 
 \begin{satz}[Kannan-Enumeration]
-Die Kannan-Enumeration~\cite{Kannan1983} löst SVP exakt in Zeit
+Die Kannan-Enumeration~\cite{Kannan1983} lÃ¶st SVP exakt in Zeit
 $n^{O(n)}$ und Platz $2^{O(n)}$.
 \end{satz}
 
 \begin{satz}[Siebverfahren -- AKS 2002]
 Das Algorithmic-Sieve-Verfahren von Ajtai, Kumar und Sivakumar~\cite{AKS2002}
-löst SVP exakt in Zeit und Platz $2^{O(n)}$.
-Spätere Verfeinerungen~\cite{BDGL2016} erreichen $2^{0.292n + o(n)}$.
+lÃ¶st SVP exakt in Zeit und Platz $2^{O(n)}$.
+SpÃ¤tere Verfeinerungen~\cite{BDGL2016} erreichen $2^{0.292n + o(n)}$.
 \end{satz}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.75\textwidth]{plots/plot4_spectral_norm.pdf}
     \caption{Spektralnorm $s_1(\B)$ guter (nahezu orthogonaler) und schlechter (hochkorrelierter)
-             Basen über die Gitterdimension $n$. Die grün schraffierte Fläche zeigt die Differenz;
-             ein großer Abstand erschwert Gitterproblem-Berechnungen erheblich.}
+             Basen Ã¼ber die Gitterdimension $n$. Die grÃ¼n schraffierte FlÃ¤che zeigt die Differenz;
+             ein groÃŸer Abstand erschwert Gitterproblem-Berechnungen erheblich.}
     \label{fig:spectral_norm}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.75\textwidth]{plots/plot7_complexity.pdf}
-    \caption{Algorithmische Komplexität für SVP/CVP-Algorithmen:
+    \caption{Algorithmische KomplexitÃ¤t fÃ¼r SVP/CVP-Algorithmen:
              exponentiell ($2^n$), quasi-polynomiell ($2^{(\log n)^2}$)
              und polynomiell ($n^3$).
-             Für das exakte SVP sind aktuell nur (sub-)exponentielle Algorithmen bekannt.}
+             FÃ¼r das exakte SVP sind aktuell nur (sub-)exponentielle Algorithmen bekannt.}
     \label{fig:complexity}
 \end{figure}
 
@@ -387,23 +387,23 @@ Die Kodierung erfolgt in $n$ bosonischen Moden (Quantenoszillatoren).
 
 \subsection{GKP-Codeworte}
 
-\begin{definition}[GKP-Codewörter -- quadratischer Code]
-Für den einfachen quadratischen GKP-Code lauten die idealisierten Codewörter
-(als Superposition von Dirac-Kämmen in der Quadraturdarstellung):
+\begin{definition}[GKP-CodewÃ¶rter -- quadratischer Code]
+FÃ¼r den einfachen quadratischen GKP-Code lauten die idealisierten CodewÃ¶rter
+(als Superposition von Dirac-KÃ¤mmen in der Quadraturdarstellung):
 \begin{align}
     |0\rangle_{\mathrm{GKP}} &= \sum_{n \in \Z} |2n\sqrt{\pi}\rangle_q,  \label{eq:gkp0}\\
     |1\rangle_{\mathrm{GKP}} &= \sum_{n \in \Z} |(2n+1)\sqrt{\pi}\rangle_q. \label{eq:gkp1}
 \end{align}
-In der Praxis werden diese durch eine Gaußsche Hülle $e^{-q^2/(2\sigma^2)}$
+In der Praxis werden diese durch eine GauÃŸsche HÃ¼lle $e^{-q^2/(2\sigma^2)}$
 regularisiert~\cite{GKP2001}.
 \end{definition}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.80\textwidth]{plots/plot3_gkp_codewords.pdf}
-    \caption{GKP-Codewörter $|0\rangle$ (blau) und $|1\rangle$ (rot) im Quadraturraum $q$,
-             dargestellt als endliche Überlagerung Gaußscher Pakete ($\sigma = 2$, $|n| \leq 10$).
-             Die schwarze gestrichelte Kurve zeigt die Gaußsche Gesamthülle.}
+    \caption{GKP-CodewÃ¶rter $|0\rangle$ (blau) und $|1\rangle$ (rot) im Quadraturraum $q$,
+             dargestellt als endliche Ãœberlagerung GauÃŸscher Pakete ($\sigma = 2$, $|n| \leq 10$).
+             Die schwarze gestrichelte Kurve zeigt die GauÃŸsche GesamthÃ¼lle.}
     \label{fig:gkp_codewords}
 \end{figure}
 
@@ -412,7 +412,7 @@ regularisiert~\cite{GKP2001}.
 \subsubsection{Verschiebungsoperator und Stabilisatorgruppe}
 
 \begin{definition}[Verschiebungsoperator]
-Für $\xi = (\xi_q, \xi_p)^T \in \R^{2n}$ ist der Verschiebungsoperator
+FÃ¼r $\xi = (\xi_q, \xi_p)^T \in \R^{2n}$ ist der Verschiebungsoperator
 \[
     D(\xi) = \exp\!\left\{-i\sqrt{2\pi}\,\xi^T J \hat{x}\right\},
     \quad J = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix},
@@ -444,7 +444,7 @@ Das \emph{symplektische Dualgitter} von $\Lat$ ist
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.72\textwidth]{plots/plot8_symplectic_dual.pdf}
-    \caption{Primärgitter $\Lat$ (blaue Punkte/Pfeile) und symplektisches Dualgitter $\Lat^\perp$
+    \caption{PrimÃ¤rgitter $\Lat$ (blaue Punkte/Pfeile) und symplektisches Dualgitter $\Lat^\perp$
              (rote Punkte/Pfeile) in $\R^2$.
              Das Dualgitter ist dichter; der Quotient $\Lat^\perp / \Lat$ parametrisiert
              die logisch distinkten Verschiebungen (Fehlerklassen).}
@@ -454,17 +454,17 @@ Das \emph{symplektische Dualgitter} von $\Lat$ ist
 \begin{lemma}[Charakterisierung des Coderaums]
 \label{lem:coderaum}
 Der Codezustand $|\psi\rangle$ liegt genau dann im GKP-Coderaum, wenn
-$D(\xi)|\psi\rangle = |\psi\rangle$ für alle $\xi \in \Lat$ gilt,
+$D(\xi)|\psi\rangle = |\psi\rangle$ fÃ¼r alle $\xi \in \Lat$ gilt,
 d.h.\ alle Stabilisatoren trivial auf $|\psi\rangle$ wirken.
 \end{lemma}
 
 \begin{proof}
-Da die Stabilisatoren $D(\xi)$ für $\xi \in \Lat$ eine abelsche Gruppe bilden
-(kommutativität folgt aus $[D(\xi), D(\xi')] = e^{i\omega(\xi,\xi')}$ mit
-$\omega(\xi,\xi') = \xi^T J \xi' \in \Z$ für $\xi, \xi' \in \Lat$),
+Da die Stabilisatoren $D(\xi)$ fÃ¼r $\xi \in \Lat$ eine abelsche Gruppe bilden
+(kommutativitÃ¤t folgt aus $[D(\xi), D(\xi')] = e^{i\omega(\xi,\xi')}$ mit
+$\omega(\xi,\xi') = \xi^T J \xi' \in \Z$ fÃ¼r $\xi, \xi' \in \Lat$),
 definiert ihr gemeinsamer $+1$-Eigenraum den Codezustand.
 Die Abgeschlossenheit unter Multiplikation garantiert, dass dieser Eigenraum
-nicht-trivial ist und genau die gewünschten logischen Qubits trägt.
+nicht-trivial ist und genau die gewÃ¼nschten logischen Qubits trÃ¤gt.
 \end{proof}
 
 \subsection{GKP-Codeabstand}
@@ -478,7 +478,7 @@ Der \emph{Codeabstand} des GKP-Codes ist
 
 \begin{satz}[Eigenschaften guter GKP-Codes]
 \label{satz:good_gkp}
-Ein GKP-Code heißt \emph{gut}, wenn
+Ein GKP-Code heiÃŸt \emph{gut}, wenn
 \begin{enumerate}
     \item $\lim_{n \to \infty} \frac{\log \det(\mathcal{L}_n)}{n} > 0$, und
     \item $\Delta^2 = \Omega(n)$.
@@ -486,17 +486,17 @@ Ein GKP-Code heißt \emph{gut}, wenn
 \end{satz}
 
 \begin{proof}
-\textbf{Bedingung~1:} Der Nenner $n$ skaliert mit der Systemgröße.
-Wenn $\det \Lat_n \geq c^n$ für eine Konstante $c > 1$, wächst
+\textbf{Bedingung~1:} Der Nenner $n$ skaliert mit der SystemgrÃ¶ÃŸe.
+Wenn $\det \Lat_n \geq c^n$ fÃ¼r eine Konstante $c > 1$, wÃ¤chst
 $\log \det \Lat_n \geq n \log c > 0$ linear.
 Dies entspricht einer konstanten \emph{Ratendichte} und ist das Analogon zur positiven
 Coderate bei klassischen Codes.
 
 \textbf{Bedingung~2:}
-Für $\Delta^2 = \Omega(n)$ muss der kürzeste Vektor in $\Lat^\perp / \Lat$
-eine Länge $\Omega(\sqrt{n})$ haben.
+FÃ¼r $\Delta^2 = \Omega(n)$ muss der kÃ¼rzeste Vektor in $\Lat^\perp / \Lat$
+eine LÃ¤nge $\Omega(\sqrt{n})$ haben.
 Nach Satz~\ref{satz:minkowski} gilt $\lambda_1(\Lat^\perp / \Lat) \lesssim \sqrt{n}$;
-ein guter Code schöpft diese Schranke also bis auf konstante Faktoren aus.
+ein guter Code schÃ¶pft diese Schranke also bis auf konstante Faktoren aus.
 \end{proof}
 
 \subsection{GKP-Codes aus kryptographischen Gittern}
@@ -507,18 +507,18 @@ ein guter Code schöpft diese Schranke also bis auf konstante Faktoren aus.
 \label{satz:ntru_gkp}
 Sei $H = \begin{pmatrix} I_n & A \\ 0 & qI_n \end{pmatrix}$ $q$-symplektisch, wobei $A$
 symmetrisch ist. Dann erzeugt $H$ einen GKP-Code.
-Mit einer zufälligen NTRU-Matrix $A_\phi(h_1^{-1}h_2)$ erreicht der resultierende Code
-für $n \leq q^2/\mathrm{const}$ den Codeabstand
+Mit einer zufÃ¤lligen NTRU-Matrix $A_\phi(h_1^{-1}h_2)$ erreicht der resultierende Code
+fÃ¼r $n \leq q^2/\mathrm{const}$ den Codeabstand
 \[
     \Delta \propto \min\!\left\{ \sqrt{n/q},\; \sqrt{q} \right\}.
 \]
 \end{satz}
 
 \begin{proof}[Beweisidee]
-Die $q$-Symplektizität von $H$ garantiert $H^T J H = qJ$, was die Kommutatorbedingung
-für Stabilisatoren erfüllt (Verschiebungsoperatoren, die im Gitter liegen, kommutieren).
-Die Codeabstandsschranke folgt aus der typischen Länge kürzester Vektoren in
-zufälligen NTRU-Gittern, die durch Number-Field-Sieve-Argumente bekannt sind.
+Die $q$-SymplektizitÃ¤t von $H$ garantiert $H^T J H = qJ$, was die Kommutatorbedingung
+fÃ¼r Stabilisatoren erfÃ¼llt (Verschiebungsoperatoren, die im Gitter liegen, kommutieren).
+Die Codeabstandsschranke folgt aus der typischen LÃ¤nge kÃ¼rzester Vektoren in
+zufÃ¤lligen NTRU-Gittern, die durch Number-Field-Sieve-Argumente bekannt sind.
 \end{proof}
 
 \subsubsection{Ring-SIS Gitter und GKP}
@@ -526,21 +526,21 @@ zufälligen NTRU-Gittern, die durch Number-Field-Sieve-Argumente bekannt sind.
 \begin{satz}[GKP-Codes aus Ring-SIS-Gittern]
 \label{satz:ring_sis_gkp}
 Sei $H = \begin{pmatrix} I_n & A_\phi(h_1^{-1}h_2) \\ 0 & qI_n \end{pmatrix}$
-mit zufälliger Ring-SIS-Matrix.
+mit zufÃ¤lliger Ring-SIS-Matrix.
 Der resultierende GKP-Code erreicht den Codeabstand
 \[
     \Delta \propto \min\!\left\{\sqrt{n},\; \sqrt{q}\right\}
 \]
-für $n \leq \mathrm{poly}(q)$ und definiert eine Familie guter GKP-Codes.
+fÃ¼r $n \leq \mathrm{poly}(q)$ und definiert eine Familie guter GKP-Codes.
 \end{satz}
 
 \begin{proof}
 Die Konstruktion basiert auf der Tatsache, dass Ring-SIS-Gitter strukturell
 mehr Symmetrien besitzen als allgemeine SIS-Gitter.
-Insbesondere gilt für zufällige $h_1, h_2$ im Ring $\Z_q[x]/(f(x))$, dass
-der kürzeste Vektor des Gitters typischerweise Länge $\Omega(\sqrt{n})$ hat
+Insbesondere gilt fÃ¼r zufÃ¤llige $h_1, h_2$ im Ring $\Z_q[x]/(f(x))$, dass
+der kÃ¼rzeste Vektor des Gitters typischerweise LÃ¤nge $\Omega(\sqrt{n})$ hat
 (nach randomisierten Gitterargumenten aus~\cite{LyubashevskyMicciancio2006}).
-Da $n \leq \mathrm{poly}(q)$, ist $\sqrt{n} \leq q^{c/2}$ für ein $c \geq 1$;
+Da $n \leq \mathrm{poly}(q)$, ist $\sqrt{n} \leq q^{c/2}$ fÃ¼r ein $c \geq 1$;
 der Minimus ist daher $\sqrt{n}$.
 \end{proof}
 
@@ -548,8 +548,8 @@ der Minimus ist daher $\sqrt{n}$.
     \centering
     \includegraphics[width=0.78\textwidth]{plots/plot5_gkp_distance.pdf}
     \caption{GKP-Codeabstand $\Delta \propto \min(\sqrt{n}, \sqrt{q})$ aus der
-             Ring-SIS-Konstruktion in Abhängigkeit der Dimension $n$ für verschiedene Moduli $q$.
-             Die gestrichelten Vertikallinien markieren die Übergangspunkte $n = q$.}
+             Ring-SIS-Konstruktion in AbhÃ¤ngigkeit der Dimension $n$ fÃ¼r verschiedene Moduli $q$.
+             Die gestrichelten Vertikallinien markieren die Ãœbergangspunkte $n = q$.}
     \label{fig:gkp_distance}
 \end{figure}
 
@@ -562,8 +562,8 @@ $M = \sqrt{\lambda} M_0$, sodass $M^T J M = \lambda J$.
 Man nennt einen solchen Code \emph{$\lambda$-symplektisch}.
 \end{definition}
 
-\begin{lemma}[Selbst-Dualität skalierter Codes]
-Für einen selbst-dualen Basiscode mit $M_0^T J M_0 = J$ gilt:
+\begin{lemma}[Selbst-DualitÃ¤t skalierter Codes]
+FÃ¼r einen selbst-dualen Basiscode mit $M_0^T J M_0 = J$ gilt:
 \[
     M^T J M = \lambda J \quad \Longrightarrow \quad \Delta(M) = \sqrt{\lambda} \cdot \Delta(M_0).
 \]
@@ -584,13 +584,13 @@ $\sqrt{\lambda} \cdot \min_{0 \neq x \in \Lat_0^\perp/\Lat_0}\norm{x} = \sqrt{\l
 
 \begin{definition}[Anonymes Reputationssystem]
 Ein \emph{anonymes Reputationssystem} ist ein kryptographisches Protokoll
-mit Teilnehmern Verkäufer $S$, Nutzer $U$, Vertrauenspartei $T$ und Öffentlichkeit $P$,
-das folgende Sicherheitseigenschaften erfüllt:
+mit Teilnehmern VerkÃ¤ufer $S$, Nutzer $U$, Vertrauenspartei $T$ und Ã–ffentlichkeit $P$,
+das folgende Sicherheitseigenschaften erfÃ¼llt:
 \begin{enumerate}
-    \item \textbf{Anonymität:} Niemand außer $T$ kann bestimmen, welcher Nutzer eine Bewertung schrieb.
-    \item \textbf{Autorisierung:} Nur von $S$ autorisierte Nutzer können Bewertungen schreiben.
+    \item \textbf{AnonymitÃ¤t:} Niemand auÃŸer $T$ kann bestimmen, welcher Nutzer eine Bewertung schrieb.
+    \item \textbf{Autorisierung:} Nur von $S$ autorisierte Nutzer kÃ¶nnen Bewertungen schreiben.
     \item \textbf{Einfachverwendbarkeit:} Jede Autorisierung kann nur einmal zum Schreiben verwendet werden.
-    \item \textbf{Rückverfolgbarkeit:} $T$ kann bei Missbrauch die Identität eines Nutzers aufdecken.
+    \item \textbf{RÃ¼ckverfolgbarkeit:} $T$ kann bei Missbrauch die IdentitÃ¤t eines Nutzers aufdecken.
 \end{enumerate}
 \end{definition}
 
@@ -598,25 +598,25 @@ das folgende Sicherheitseigenschaften erfüllt:
     \centering
     \includegraphics[width=0.82\textwidth]{plots/plot6_reputation_workflow.pdf}
     \caption{Protokollablauf des anonymen Reputationssystems nach~\cite{BBP23}:
-             Der Verkäufer autorisiert den Nutzer; dieser schreibt anonym eine Bewertung,
-             die öffentlich verifizierbar ist. Bei Missbrauch deanonymisiert die Vertrauenspartei.}
+             Der VerkÃ¤ufer autorisiert den Nutzer; dieser schreibt anonym eine Bewertung,
+             die Ã¶ffentlich verifizierbar ist. Bei Missbrauch deanonymisiert die Vertrauenspartei.}
     \label{fig:reputation}
 \end{figure}
 
 \subsection{Kryptographische Bausteine}
 
 \begin{definition}[Digitale Gittersignatur]
-Eine Gittersignatur über $\Z_q^n$ ist ein Tupel $(\mathbf{A}, \mathbf{t}, \mathbf{s})$ mit:
+Eine Gittersignatur Ã¼ber $\Z_q^n$ ist ein Tupel $(\mathbf{A}, \mathbf{t}, \mathbf{s})$ mit:
 \begin{itemize}
-    \item Öffentlichem Schlüssel: $\mathbf{A} \in \Z_q^{n \times m}$, $\mathbf{t} = \mathbf{A}\mathbf{s} \pmod q$
-    \item Geheimem Schlüssel: $\mathbf{s} \in \Z^m$ mit $\norm{\mathbf{s}} \leq \beta$
+    \item Ã–ffentlichem SchlÃ¼ssel: $\mathbf{A} \in \Z_q^{n \times m}$, $\mathbf{t} = \mathbf{A}\mathbf{s} \pmod q$
+    \item Geheimem SchlÃ¼ssel: $\mathbf{s} \in \Z^m$ mit $\norm{\mathbf{s}} \leq \beta$
     \item Signatur: $\mathbf{z} \in \Z^m$ mit $\norm{\mathbf{z}} \leq B$ und $\mathbf{A}\mathbf{z} = \mathbf{t} \pmod q$
 \end{itemize}
 Die Sicherheit basiert auf der Schwierigkeit von SIS/LWE.
 \end{definition}
 
 \begin{definition}[Learning With Errors (LWE)]
-Für Sicherheitsparameter $n$, Modulus $q$ und Fehlerparameter $\alpha$ ist LWE das Problem,
+FÃ¼r Sicherheitsparameter $n$, Modulus $q$ und Fehlerparameter $\alpha$ ist LWE das Problem,
 $\mathbf{s} \in \Z_q^n$ aus Stichproben $(\mathbf{a}_i, \mathbf{a}_i^T \mathbf{s} + e_i)$
 mit $\mathbf{a}_i \leftarrow \Z_q^n$ gleichverteilt und $e_i \sim \mathcal{D}_{\Z,\alpha q}$
 zu bestimmen.
@@ -631,17 +631,17 @@ $\tilde{O}(n/\alpha)$-approximative SVP und CVP in der schlimmsten Eingabe
 
 \begin{proof}[Beweisidee]
 Regev~\cite{Regev2005} konstruiert eine quantenbasierte Reduktion:
-Gegeben ein Algorithmus $\mathcal{A}$ für LWE, baue einen Algorithmus für
+Gegeben ein Algorithmus $\mathcal{A}$ fÃ¼r LWE, baue einen Algorithmus fÃ¼r
 $\gamma$-SVP mit $\gamma = \tilde{O}(n/\alpha)$.
-Die Reduktion verläuft über eine Kette
+Die Reduktion verlÃ¤uft Ã¼ber eine Kette
 \[
-    \gamma\text{-SVP} \;\xrightarrow{\text{Gaußsches Sampling}} \;
+    \gamma\text{-SVP} \;\xrightarrow{\text{GauÃŸsches Sampling}} \;
     \text{BDD} \;\xrightarrow{\text{Quantenreduktion}} \;
     \text{LWE},
 \]
 wobei BDD (Bounded Distance Decoding) als Zwischenproblem fungiert.
-Quantencomputer werden für die Gausssche-Sampling-Phase benötigt;
-die Reduktion läuft somit auf einem Quantencomputer, beweist aber die Schwierigkeit
+Quantencomputer werden fÃ¼r die Gausssche-Sampling-Phase benÃ¶tigt;
+die Reduktion lÃ¤uft somit auf einem Quantencomputer, beweist aber die Schwierigkeit
 des klassischen LWE relativ zu SVP.
 \end{proof}
 
@@ -652,37 +652,37 @@ Ein Tag-Schema $(\mathsf{Tag.Setup}, \mathsf{Tag.Sign}, \mathsf{Tag.Verify})$ or
 jeder Autorisierungssitzung ein eindeutiges Tag $\tau$ zu, sodass:
 \begin{itemize}
     \item Zwei Bewertungen der gleichen Sitzung dasselbe Tag $\tau$ haben,
-    \item das Tag $\tau$ keine Information über die Nutzeridentität preisgibt.
+    \item das Tag $\tau$ keine Information Ã¼ber die NutzeridentitÃ¤t preisgibt.
 \end{itemize}
 \end{definition}
 
 \begin{satz}[Nicht-Bindbarkeit unter LWE]
 \label{satz:non_frameability}
 Unter der LWE-Annahme kann kein effizienter Angreifer
-eine gültige, von $T$ akzeptierte Bewertung mit einem anderen Tag als seinem eigenen
-verknüpfen (\emph{Non-Frameability}).
+eine gÃ¼ltige, von $T$ akzeptierte Bewertung mit einem anderen Tag als seinem eigenen
+verknÃ¼pfen (\emph{Non-Frameability}).
 \end{satz}
 
 \begin{proof}
 Sei $\mathcal{A}$ ein Angreifer, der Non-Frameability bricht:
-Er produziert eine gültige Bewertung $(m, \sigma, \tau)$ für ein Tag $\tau \neq \tau_{\mathcal{A}}$.
-Dies impliziert, dass $\mathcal{A}$ eine LWE-Instanz löst, denn:
+Er produziert eine gÃ¼ltige Bewertung $(m, \sigma, \tau)$ fÃ¼r ein Tag $\tau \neq \tau_{\mathcal{A}}$.
+Dies impliziert, dass $\mathcal{A}$ eine LWE-Instanz lÃ¶st, denn:
 \begin{enumerate}
     \item Das Tag $\tau$ ist kryptographisch an die Autorisierungssitzung gebunden.
-    \item Das Fälschen eines Tags zu einer fremden Sitzung erfordert das Auffinden eines
-          LWE-Geheimnisses $\mathbf{s}$ ohne Kenntnis des geheimen Schlüssels $T$.
-    \item Dies wäre ein Widerspruch zu Satz~\ref{satz:lwe_sicherheit}.
+    \item Das FÃ¤lschen eines Tags zu einer fremden Sitzung erfordert das Auffinden eines
+          LWE-Geheimnisses $\mathbf{s}$ ohne Kenntnis des geheimen SchlÃ¼ssels $T$.
+    \item Dies wÃ¤re ein Widerspruch zu Satz~\ref{satz:lwe_sicherheit}.
 \end{enumerate}
 \end{proof}
 
-\subsection{Zero-Knowledge-Beweise über Gitter}
+\subsection{Zero-Knowledge-Beweise Ã¼ber Gitter}
 
 \begin{definition}[Nicht-interaktiver Zero-Knowledge-Beweis (NIZK)]
-Ein NIZK für eine Aussage $x \in L$ ist ein Beweis $\pi$, sodass:
+Ein NIZK fÃ¼r eine Aussage $x \in L$ ist ein Beweis $\pi$, sodass:
 \begin{itemize}
-    \item \textbf{Vollständigkeit:} Für alle $x \in L$ mit Zeugen $w$ gilt $\Pr[\mathsf{Verify}(x, \pi) = 1] = 1$.
-    \item \textbf{Solidität:} Für $x \notin L$ gilt $\Pr[\mathsf{Verify}(x, \pi) = 1] \leq \epsilon_{\mathrm{sound}}$.
-    \item \textbf{Zero-Knowledge:} $\pi$ gibt keinerlei Information über $w$ preis.
+    \item \textbf{VollstÃ¤ndigkeit:} FÃ¼r alle $x \in L$ mit Zeugen $w$ gilt $\Pr[\mathsf{Verify}(x, \pi) = 1] = 1$.
+    \item \textbf{SoliditÃ¤t:} FÃ¼r $x \notin L$ gilt $\Pr[\mathsf{Verify}(x, \pi) = 1] \leq \epsilon_{\mathrm{sound}}$.
+    \item \textbf{Zero-Knowledge:} $\pi$ gibt keinerlei Information Ã¼ber $w$ preis.
 \end{itemize}
 \end{definition}
 
@@ -690,20 +690,20 @@ Ein NIZK für eine Aussage $x \in L$ ist ein Beweis $\pi$, sodass:
 \label{satz:nizk}
 Das gitterbasierte anonyme Reputationssystem aus~\cite{BBP23} ist sicher gegen
 klassische Angreifer unter den Annahmen LWE und SIS.
-Gegen Quantenangreifer besteht eine verbleibende Unsicherheit bezüglich einer
+Gegen Quantenangreifer besteht eine verbleibende Unsicherheit bezÃ¼glich einer
 spezifischen Technik im Sicherheitsbeweis.
 \end{satz}
 
 \begin{proof}[Beweisidee]
 Die Sicherheit ergibt sich aus dem modularen Aufbau:
 \begin{enumerate}
-    \item Anonymität $\Leftarrow$ Verschlüsselungsschema (IND-CPA unter LWE).
+    \item AnonymitÃ¤t $\Leftarrow$ VerschlÃ¼sselungsschema (IND-CPA unter LWE).
     \item Autorisierung $\Leftarrow$ Digitale Signatur (EUF-CMA unter SIS).
     \item Einfachverwendbarkeit $\Leftarrow$ Tag-Schema (Bindbarkeit unter LWE).
-    \item Rückverfolgbarkeit $\Leftarrow$ Vertrauensparteischlüssel (Revokation über Gitterbasis).
+    \item RÃ¼ckverfolgbarkeit $\Leftarrow$ VertrauensparteischlÃ¼ssel (Revokation Ã¼ber Gitterbasis).
 \end{enumerate}
 Die verbleibende Quantenunsicherheit betrifft den NIZK-Simulator,
-der aktuell einen Quantenangreifer nicht vollständig simulieren kann.
+der aktuell einen Quantenangreifer nicht vollstÃ¤ndig simulieren kann.
 \end{proof}
 
 % ============================================================
@@ -713,7 +713,7 @@ der aktuell einen Quantenangreifer nicht vollständig simulieren kann.
 \subsection{Gitterstrukturen als Graphen}
 
 \begin{definition}[Gitter-Cayley-Graph]
-Für ein Gitter $\Lat(\B)$ mit Basis $\B$ ist der \emph{Cayley-Graph}
+FÃ¼r ein Gitter $\Lat(\B)$ mit Basis $\B$ ist der \emph{Cayley-Graph}
 $G_\Lat = (V_\Lat, E_\Lat)$ definiert durch:
 \begin{itemize}
     \item $V_\Lat = \Lat(\B)$ (Gitterpunkte als Knoten),
@@ -731,22 +731,22 @@ Beziehung in Zeit $O(n^3)$.
 \begin{proof}
 Eine Untergitter-Beziehung $\Lat_1 \subseteq \Lat_2$ bedeutet, dass jede Basis von $\Lat_1$
 durch ganzzahlige Linearkombinationen aus der Basis von $\Lat_2$ darstellbar ist.
-Die Adjazenzmatrizen $A_1$ und $A_2$ der entsprechenden Cayley-Graphen erfüllen dann
+Die Adjazenzmatrizen $A_1$ und $A_2$ der entsprechenden Cayley-Graphen erfÃ¼llen dann
 $A_1 \subseteq A_2$ (komponentenweise).
-Der Subgraph Algorithmus berechnet für beide Matrizen Signatur-Arrays und vergleicht diese
-mittels LCS-basierter Rotation, was in $O(n^3)$ ausführbar ist.
-Die Korrektheit folgt aus Lemma~1 in~\cite{Epp2026Subgraph} (Injektivität der Signaturen).
+Der Subgraph Algorithmus berechnet fÃ¼r beide Matrizen Signatur-Arrays und vergleicht diese
+mittels LCS-basierter Rotation, was in $O(n^3)$ ausfÃ¼hrbar ist.
+Die Korrektheit folgt aus Lemma~1 in~\cite{Epp2026Subgraph} (InjektivitÃ¤t der Signaturen).
 \end{proof}
 
 \begin{korollar}
-Die Basisreduktionsproblematik (Übergang von schlechter zu guter Basis)
+Die Basisreduktionsproblematik (Ãœbergang von schlechter zu guter Basis)
 entspricht dem Suchen eines isomorphen Subgraphen im Cayley-Graphen.
 \end{korollar}
 
 \begin{bemerkung}
-Für den GKP-Code gilt: Die symplektische Dualgitter-Relation $\Lat \subseteq \Lat^\perp$
+FÃ¼r den GKP-Code gilt: Die symplektische Dualgitter-Relation $\Lat \subseteq \Lat^\perp$
 ist direkt als Subgraph-Relation der entsprechenden Cayley-Graphen erkennbar.
-Der Subgraph Algorithmus kann damit zur effizienten Überprüfung von GKP-Codebedingungen
+Der Subgraph Algorithmus kann damit zur effizienten ÃœberprÃ¼fung von GKP-Codebedingungen
 eingesetzt werden.
 \end{bemerkung}
 
@@ -760,19 +760,19 @@ und gitterbasierter Kryptographie formal erarbeitet:
 \begin{enumerate}
     \item \textbf{SVP:}
           Das Shortest-Vector-Problem ist NP-schwer (Satz~\ref{satz:svp_np})
-          und benötigt unter ETH $2^{\Omega(n)}$ Zeit (Satz~\ref{satz:svp_lb}).
+          und benÃ¶tigt unter ETH $2^{\Omega(n)}$ Zeit (Satz~\ref{satz:svp_lb}).
           Der LLL-Algorithmus liefert eine $2^{(n-1)/2}$-Approximation in Polynomialzeit
           (Satz~\ref{satz:lll}).
 
     \item \textbf{GKP-Codes:}
-          GKP-Codewörter sind über Gitter im symplektischen Phasenraum definiert.
+          GKP-CodewÃ¶rter sind Ã¼ber Gitter im symplektischen Phasenraum definiert.
           Ring-SIS-Konstruktionen erreichen Codeabstand $\Delta \propto \min(\sqrt{n}, \sqrt{q})$
           (Satz~\ref{satz:ring_sis_gkp}), was eine Familie guter Codes definiert.
 
     \item \textbf{Anonyme Reputationssysteme:}
           Unter LWE/SIS-Annahmen erreicht das System aus~\cite{BBP23} alle vier
           Sicherheitsziele gegen klassische Angreifer
-          (Sätze~\ref{satz:non_frameability}, \ref{satz:nizk}).
+          (SÃ¤tze~\ref{satz:non_frameability}, \ref{satz:nizk}).
 \end{enumerate}
 
 % ============================================================
@@ -781,8 +781,8 @@ und gitterbasierter Kryptographie formal erarbeitet:
 
 Die in dieser Arbeit behandelten Themengebiete -- Gitterprobleme, GKP-Codes und
 gitterbasierte Kryptographie -- sind Gegenstand intensiver aktueller Forschung.
-Im Folgenden werden die wichtigsten offenen Fragen und zukünftigen Forschungsrichtungen
-ausführlich diskutiert.
+Im Folgenden werden die wichtigsten offenen Fragen und zukÃ¼nftigen Forschungsrichtungen
+ausfÃ¼hrlich diskutiert.
 
 \subsection{SVP und Gitterbasisreduktion}
 
@@ -790,64 +790,64 @@ ausführlich diskutiert.
 
 Der LLL-Algorithmus liefert eine $2^{O(n)}$-Approximation in Polynomialzeit.
 Eine fundamentale offene Frage ist, ob eine Approximation mit Faktor $n^{O(1)}$
-(d.h.\ polynomiell in $n$) in Polynomialzeit möglich ist.
+(d.h.\ polynomiell in $n$) in Polynomialzeit mÃ¶glich ist.
 Das BKZ-Verfahren (Block Korkine-Zolotarev)~\cite{Schnorr1994} interpoliert
 zwischen LLL und exaktem SVP durch einen Blockparameter $\beta$:
-Größeres $\beta$ liefert bessere Approximationen auf Kosten exponentieller
+GrÃ¶ÃŸeres $\beta$ liefert bessere Approximationen auf Kosten exponentieller
 Laufzeit in $\beta$.
-Die optimale Wahl von $\beta$ in Abhängigkeit von Dimension und Sicherheitsanforderung
+Die optimale Wahl von $\beta$ in AbhÃ¤ngigkeit von Dimension und Sicherheitsanforderung
 ist weiterhin aktives Forschungsgebiet~\cite{Chen2011}.
 
 Ein vielversprechender Ansatz ist die Verwendung von \emph{maschinellem Lernen}
-zur Steuerung des BKZ-Algorithmus: neuronale Netze können lernen, welche
-Blockpositionen besonders fruchtbar für Reduktionsschritte sind~\cite{Novaes2023}.
+zur Steuerung des BKZ-Algorithmus: neuronale Netze kÃ¶nnen lernen, welche
+Blockpositionen besonders fruchtbar fÃ¼r Reduktionsschritte sind~\cite{Novaes2023}.
 
-\subsubsection{Quantenalgorithmen für SVP}
+\subsubsection{Quantenalgorithmen fÃ¼r SVP}
 
-Shor's Algorithmus löst diskrete Logarithmen und Faktorisierung,
+Shor's Algorithmus lÃ¶st diskrete Logarithmen und Faktorisierung,
 greift jedoch SVP nicht an.
-Der Quantenalgorithmus von Hallgren~\cite{Hallgren2007} löst Pell's Gleichung
-und verwandte Probleme auf idealen Gittern, ist aber nicht auf allgemeine Gitter übertragbar.
-Für allgemeine Gitter gibt es bislang keinen subexponentiellen Quantenalgorithmus.
-Die Klärung der Frage, ob Quantencomputer SVP deutlich beschleunigen können,
-wäre ein Durchbruch sowohl für die Gitterkryptographie als auch die Quantenkomplexitätstheorie.
+Der Quantenalgorithmus von Hallgren~\cite{Hallgren2007} lÃ¶st Pell's Gleichung
+und verwandte Probleme auf idealen Gittern, ist aber nicht auf allgemeine Gitter Ã¼bertragbar.
+FÃ¼r allgemeine Gitter gibt es bislang keinen subexponentiellen Quantenalgorithmus.
+Die KlÃ¤rung der Frage, ob Quantencomputer SVP deutlich beschleunigen kÃ¶nnen,
+wÃ¤re ein Durchbruch sowohl fÃ¼r die Gitterkryptographie als auch die QuantenkomplexitÃ¤tstheorie.
 
-\subsubsection{Härtere Sicherheitsreduktionen}
+\subsubsection{HÃ¤rtere Sicherheitsreduktionen}
 
-Die Lücke zwischen der NP-Härte für exaktes SVP und den polynomiellen Approximationsfaktoren,
+Die LÃ¼cke zwischen der NP-HÃ¤rte fÃ¼r exaktes SVP und den polynomiellen Approximationsfaktoren,
 auf denen kryptographische Konstruktionen beruhen (typischerweise $\gamma = n^{O(1)}$),
 ist bislang nicht geschlossen.
 Es ist offen, ob das $\sqrt{n}$-approximative SVP ebenfalls NP-schwer ist~\cite{Khot2005}.
 
 \subsection{GKP-Codes und Quantenfehlerkorrektur}
 
-\subsubsection{Vorbereitung von GKP-Zuständen}
+\subsubsection{Vorbereitung von GKP-ZustÃ¤nden}
 
-Die idealisierten GKP-Codewörter aus \eqref{eq:gkp0} und \eqref{eq:gkp1}
-sind nicht normierbar; in der Praxis müssen sie durch endliche
-Gaußsche Überlagerungen approximiert werden.
-Die Vorbereitung dieser Zustände mit ausreichender Güte
-(gemessen am Quetschen) bleibt eine große experimentelle Herausforderung~\cite{Campagne2020}.
+Die idealisierten GKP-CodewÃ¶rter aus \eqref{eq:gkp0} und \eqref{eq:gkp1}
+sind nicht normierbar; in der Praxis mÃ¼ssen sie durch endliche
+GauÃŸsche Ãœberlagerungen approximiert werden.
+Die Vorbereitung dieser ZustÃ¤nde mit ausreichender GÃ¼te
+(gemessen am Quetschen) bleibt eine groÃŸe experimentelle Herausforderung~\cite{Campagne2020}.
 Aktuelle Experimente erreichen ein Quetschen von ca.~10--12\,dB in supraleitenden
 Systemen und photonischen Plattformen.
-Für fehlertolerante Quantenberechnungen werden schätzungsweise 20--30\,dB benötigt.
+FÃ¼r fehlertolerante Quantenberechnungen werden schÃ¤tzungsweise 20--30\,dB benÃ¶tigt.
 
-\subsubsection{Erweiterung auf höherdimensionale GKP-Codes}
+\subsubsection{Erweiterung auf hÃ¶herdimensionale GKP-Codes}
 
 Der in dieser Arbeit betrachtete quadratische GKP-Code in $n$ Moden kodiert $n$ logische Qubits.
-Es ist bekannt~\cite{Harrington2001}, dass höherdimensionale Gitter (z.B.\ hexagonale oder
-$E_8$-Gitter) bessere Fehlerkorrekturkapazitäten bieten.
+Es ist bekannt~\cite{Harrington2001}, dass hÃ¶herdimensionale Gitter (z.B.\ hexagonale oder
+$E_8$-Gitter) bessere FehlerkorrekturkapazitÃ¤ten bieten.
 Die systematische Konstruktion optimaler GKP-Codes aus zahlentheoretischen Gittern
 (z.B.\ Barnes-Wall-Gitter, Leech-Gitter) ist ein aktives Forschungsfeld~\cite{Royer2022}.
 
 \subsubsection{GKP-Codes und Fehlerkorrektur-Schwellenwerte}
 
-Für fault-tolerante Quantencomputer sind Fehlerschwellen entscheidend:
+FÃ¼r fault-tolerante Quantencomputer sind Fehlerschwellen entscheidend:
 Wenn die physikalische Fehlerrate unter dem Schwellenwert liegt, kann beliebig
 lange gerechnet werden.
 GKP-Codes haben nachweislich hohe Schwellenwerte~\cite{Menicucci2014},
 insbesondere wenn sie mit anderen Codes wie Surface-Codes kombiniert werden.
-Die genaue Quantifizierung dieser Schwellenwerte für realistische Fehlermodelle
+Die genaue Quantifizierung dieser Schwellenwerte fÃ¼r realistische Fehlermodelle
 (Quetsch-Rauschen, Verlust, thermisches Rauschen) bleibt Gegenstand aktiver Forschung.
 
 \subsubsection{Verbindung zwischen GKP-Codeabstand und Gitterparametern}
@@ -855,29 +855,29 @@ Die genaue Quantifizierung dieser Schwellenwerte für realistische Fehlermodelle
 Die Verbindung zwischen dem GKP-Codeabstand $\Delta$ und dem ersten sukzessiven Minimum
 $\lambda_1$ des Dualgitters ist formal etabliert.
 Die optimale Wahl von Gitterparametern (Determinante, Kissing-Zahl, Packunsdichte)
-zur Maximierung von $\Delta$ ist jedoch weiterhin offen und berührt klassische Probleme
+zur Maximierung von $\Delta$ ist jedoch weiterhin offen und berÃ¼hrt klassische Probleme
 der Gitterpackungstheorie~\cite{ConwaySloane1993}.
 
 \subsection{Gitterbasierte Kryptographie}
 
 \subsubsection{NIST-Standardisierung und praktische Sicherheitsparameter}
 
-NIST hat 2024 die ersten post-quanten Kryptographiestandards veröffentlicht:
+NIST hat 2024 die ersten post-quanten Kryptographiestandards verÃ¶ffentlicht:
 CRYSTALS-Kyber (ML-KEM), CRYSTALS-Dilithium (ML-DSA) und FALCON (FN-DSA)
 basieren alle auf dem Module-LWE bzw.\ NTRU-Problem~\cite{NIST2024}.
 Die Wahl konkreter Sicherheitsparameter (Dimension $n$, Modulus $q$, Rauschparameter $\sigma$)
-ist ein Abwägen zwischen Sicherheit und Effizienz.
+ist ein AbwÃ¤gen zwischen Sicherheit und Effizienz.
 Aufbauend auf der NIST-Standardisierung werden weiterhin Implementierungen
 auf eingebetteten Systemen (Stichwort: AUTOSAR, ARM Cortex)
-und die Abschätzung konkreter Angriffslaufzeiten~\cite{Bai2021} diskutiert.
+und die AbschÃ¤tzung konkreter Angriffslaufzeiten~\cite{Bai2021} diskutiert.
 
-\subsubsection{Vollhomomorphe Verschlüsselung (FHE)}
+\subsubsection{Vollhomomorphe VerschlÃ¼sselung (FHE)}
 
-FHE ermöglicht Berechnungen auf verschlüsselten Daten.
+FHE ermÃ¶glicht Berechnungen auf verschlÃ¼sselten Daten.
 Das CKKS-Schema~\cite{CKKS2017} und BFV/BGV~\cite{BFV2012} basieren alle auf LWE/RLWE.
 Aktuelle Forschungsrichtungen umfassen:
 \begin{itemize}
-    \item Effiziente Bootstrapping-Verfahren zur unbeschränkten Rechentiefe.
+    \item Effiziente Bootstrapping-Verfahren zur unbeschrÃ¤nkten Rechentiefe.
     \item Homomorphe Auswertung neuronaler Netze.
     \item FHE auf GKP-Basis mit kontinuierlichen Variablen.
 \end{itemize}
@@ -887,7 +887,7 @@ Aktuelle Forschungsrichtungen umfassen:
 Das in dieser Arbeit besprochene anonyme Reputationssystem ist ein Spezialfall
 eines allgemeinen gitterbasierten Gruppen-Signatur-Schemas.
 Aktuelle Forschung zielt auf kompaktere Beweise, effizientere Revokationsmechanismen
-und Erweiterungen für mehrere Vertrauensparteien (Threshold-Deanonymisierung)~\cite{Lyubashevsky2022}.
+und Erweiterungen fÃ¼r mehrere Vertrauensparteien (Threshold-Deanonymisierung)~\cite{Lyubashevsky2022}.
 Die Quantensicherheit der NIZK-Komponente (Fiat-Shamir-Transformation in der
 Random-Oracle-Modell-Variante) bleibt ein wichtiges offenes Problem.
 
@@ -895,39 +895,39 @@ Random-Oracle-Modell-Variante) bleibt ein wichtiges offenes Problem.
 
 Blockchain-Systeme nutzen derzeit elliptische Kurvenkryptographie.
 Die Migration zu gitterbasierten Signaturen (z.B.\ FALCON oder Dilithium) ist
-aus Quantensicherheitsgründen notwendig.
+aus QuantensicherheitsgrÃ¼nden notwendig.
 Besondere Herausforderungen sind:
 \begin{itemize}
-    \item Größere Signaturgrößen (Dilithium: $\sim$2\,kB vs.\ ECDSA: 64\,Bytes).
-    \item Kompatibilität mit bestehenden Smart-Contract-Plattformen.
-    \item Effizienz auf ressourcenbeschränkten IoT-Knoten.
+    \item GrÃ¶ÃŸere SignaturgrÃ¶ÃŸen (Dilithium: $\sim$2\,kB vs.\ ECDSA: 64\,Bytes).
+    \item KompatibilitÃ¤t mit bestehenden Smart-Contract-Plattformen.
+    \item Effizienz auf ressourcenbeschrÃ¤nkten IoT-Knoten.
 \end{itemize}
 
 \subsection{Algorithmische Aspekte und der Subgraph Algorithmus}
 
-\subsubsection{Parallelisierung des Subgraph Algorithmus für Gitter}
+\subsubsection{Parallelisierung des Subgraph Algorithmus fÃ¼r Gitter}
 
 Der Subgraph Algorithmus~\cite{Epp2026Subgraph} hat eine Laufzeit $O(n^3)$,
 die durch Parallelisierung auf $O(n^2)$ pro Prozessor reduziert werden kann
-(jede Rotation unabhängig berechnet).
-Für Gitter mit $n > 10\,000$ (typisch in post-quanten Kryptographie)
-wären GPU-Implementierungen oder spezialisierte Hardware~(FPGA/ASIC) notwendig.
+(jede Rotation unabhÃ¤ngig berechnet).
+FÃ¼r Gitter mit $n > 10\,000$ (typisch in post-quanten Kryptographie)
+wÃ¤ren GPU-Implementierungen oder spezialisierte Hardware~(FPGA/ASIC) notwendig.
 
 \subsubsection{Approximative Subgraph-Suche in Gittern}
 
-Für SVP-Approximation ist es nicht notwendig, exakte Subgraph-Isomorphismen zu finden.
-Ein approximativer Subgraph Algorithmus, der eine $\gamma$-Ähnlichkeit erkennt,
-könnte als Basis für neuartige Approximationsalgorithmen für SVP dienen.
+FÃ¼r SVP-Approximation ist es nicht notwendig, exakte Subgraph-Isomorphismen zu finden.
+Ein approximativer Subgraph Algorithmus, der eine $\gamma$-Ã„hnlichkeit erkennt,
+kÃ¶nnte als Basis fÃ¼r neuartige Approximationsalgorithmen fÃ¼r SVP dienen.
 Formale Verbindungen zwischen der LCS-Schranke des Subgraph Algorithmus
 und dem Approximationsfaktor von Gitteralgorithmen sind zu untersuchen.
 
 \subsubsection{Subgraph Algorithmus und Graph-Neuronale-Netze}
 
 Die Signatur-Array-Darstellung von Graphen im Subgraph Algorithmus
-lässt sich als Feature-Vektor für Graph-Neuronale-Netze (GNN) interpretieren~\cite{Xu2019}.
-Eine Verbindung zwischen der LCS-basierten Ähnlichkeit im Subgraph Algorithmus
-und Aggregationsfunktionen in GNNs könnte neue Perspektiven auf
-Gitter-Klassifikationsprobleme eröffnen.
+lÃ¤sst sich als Feature-Vektor fÃ¼r Graph-Neuronale-Netze (GNN) interpretieren~\cite{Xu2019}.
+Eine Verbindung zwischen der LCS-basierten Ã„hnlichkeit im Subgraph Algorithmus
+und Aggregationsfunktionen in GNNs kÃ¶nnte neue Perspektiven auf
+Gitter-Klassifikationsprobleme erÃ¶ffnen.
 
 \subsection{Experimentelle und ingenieurwissenschaftliche Aspekte}
 
@@ -938,7 +938,7 @@ Die Implementierung gitterbasierter Kryptographie auf eingebetteten Systemen
 herausfordernd~\cite{Epp2026Embedded}.
 Besonders relevant sind:
 \begin{itemize}
-    \item Optimierung der NTT (Number Theoretic Transform) für modular arithmetic.
+    \item Optimierung der NTT (Number Theoretic Transform) fÃ¼r modular arithmetic.
     \item Seitenkanalangriff-resistente Implementierungen (Power Analysis).
     \item Integration in AUTOSAR-konforme Software-Architekturen.
 \end{itemize}
@@ -949,9 +949,9 @@ Das Paderborner PhoQS-Institut (Photonic Quantum Systems) arbeitet an der
 experimentellen Realisierung von GKP-Codes auf linearen optischen Systemen.
 Offene Herausforderungen sind:
 \begin{itemize}
-    \item Messung der Quadraturen mit ausreichender Präzision.
+    \item Messung der Quadraturen mit ausreichender PrÃ¤zision.
     \item Echtzeit-Dekodierung mit begrenzter Klassik-Rechenzeit.
-    \item Skalierung auf $>10$ Moden für mehrdimensionale GKP-Codes.
+    \item Skalierung auf $>10$ Moden fÃ¼r mehrdimensionale GKP-Codes.
 \end{itemize}
 
 \subsection{Verbindungen zu weiteren Forschungsfeldern}
@@ -960,15 +960,15 @@ Offene Herausforderungen sind:
 
 Viele Gitterprobleme (SVP auf idealen Gittern, Short Integer Solution in Polynomringen)
 haben direkte Verbindungen zur algebraischen Zahlentheorie~\cite{PeikertRosen2007}.
-Die Nutzung von Euklidischen Zahlkörpern ($\mathbb{Q}(\zeta_n)$) ermöglicht
+Die Nutzung von Euklidischen ZahlkÃ¶rpern ($\mathbb{Q}(\zeta_n)$) ermÃ¶glicht
 besonders effiziente Implementierungen durch NTT-freundliche Primzahlen.
 
 \subsubsection{Kodierungstheorie und Gitter}
 
-GKP-Codes verknüpfen Gittertheorie und Quantenfehlerkorrektur direkt.
-Die analoge Frage für klassische Codes -- welche Gitter entsprechen guten
-klassischen linearen Codes? -- führt zur Konstruktion von LDPC-Codes aus Gittern~\cite{Sipser1996}.
-Diese Verbindung ist sowohl für klassische als auch quantenkohärente Systeme fruchtbar.
+GKP-Codes verknÃ¼pfen Gittertheorie und Quantenfehlerkorrektur direkt.
+Die analoge Frage fÃ¼r klassische Codes -- welche Gitter entsprechen guten
+klassischen linearen Codes? -- fÃ¼hrt zur Konstruktion von LDPC-Codes aus Gittern~\cite{Sipser1996}.
+Diese Verbindung ist sowohl fÃ¼r klassische als auch quantenkohÃ¤rente Systeme fruchtbar.
 
 \subsubsection{Kryptographie und Physik}
 
@@ -976,13 +976,13 @@ Die Verbindung zwischen physikalischen Symmetrien (symplektische Gruppe $\mathrm
 die Quantenmechanik des harmonischen Oszillators) und kryptographischen Strukturen
 (Gitter im Phasenraum, GKP-Codes) ist fundamental.
 Tiefere Einsichten in die Verbindung zwischen Entropie, Quetschen und
-kryptographischer Sicherheit könnten neue Angriffsvektoren oder Beweistechniken liefern.
+kryptographischer Sicherheit kÃ¶nnten neue Angriffsvektoren oder Beweistechniken liefern.
 
 % ============================================================
 \section*{Danksagung}
 % ============================================================
 
-Der Autor dankt dem PhoQS-Institut der Universität Paderborn für die
+Der Autor dankt dem PhoQS-Institut der UniversitÃ¤t Paderborn fÃ¼r die
 Bereitstellung des Poster-Materials zu GKP-Codes und anonymen Reputationssystemen,
 das als Ausgangspunkt dieser Arbeit diente.
 
@@ -1017,7 +1017,7 @@ S.~Bai et al.
 \newblock \textit{IACR ePrint}, 2021/1058.
 
 \bibitem{BBP23}
-J.~Blömer, J.~Bobolz, and L.~Porzenheim.
+J.~BlÃ¶mer, J.~Bobolz, and L.~Porzenheim.
 \newblock A generic construction of an anonymous reputation system and
   instantiations from lattices.
 \newblock In \textit{ASIACRYPT}, Springer, 2023.
@@ -1094,8 +1094,8 @@ S.~Khot.
 \newblock Hardness of approximating the shortest vector problem in lattices.
 \newblock \textit{J. ACM}, 52(5):789--808, 2005.
 
-\bibitem{LenstraLenstraLovász1982}
-A.~K.~Lenstra, H.~W.~Lenstra, and L.~Lovász.
+\bibitem{LenstraLenstraLovÃ¡sz1982}
+A.~K.~Lenstra, H.~W.~Lenstra, and L.~LovÃ¡sz.
 \newblock Factoring polynomials with rational coefficients.
 \newblock \textit{Mathematische Annalen}, 261:515--534, 1982.
 
@@ -1178,3 +1178,4 @@ K.~Xu et al.
 \end{thebibliography}
 
 \end{document}
+

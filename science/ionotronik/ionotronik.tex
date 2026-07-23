@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -39,8 +39,8 @@
 \lstset{basicstyle=\ttfamily\small,keywordstyle=\color{blue},
   commentstyle=\color{gray},numbers=left,numberstyle=\tiny,
   breaklines=true,frame=single,
-  literate={Ö}{{\"O}}1{Ä}{{\"A}}1{Ü}{{\"U}}1
-           {ß}{{\ss}}1{ü}{{\"u}}1{ä}{{\"a}}1{ö}{{\"o}}1}
+  literate={Ã–}{{\"O}}1{Ã„}{{\"A}}1{Ãœ}{{\"U}}1
+           {ÃŸ}{{\ss}}1{Ã¼}{{\"u}}1{Ã¤}{{\"a}}1{Ã¶}{{\"o}}1}
 
 \newcommand{\ITM}{\mathcal{T}_{\mathrm{ion}}}
 \newcommand{\IRF}{\mathcal{F}_{\mathrm{ion}}}
@@ -203,7 +203,7 @@ Mustererkennung auf ionischen Bandinhalten.
 \begin{definition}[Elektrolytl\"osung]
 \label{def:elektrolyt}
 Eine \emph{Elektrolytl\"osung} der Konzentration $c$ [mol/L] ist eine
-wässrige L\"osung vollst\"andig dissoziierten Salzes.
+wÃ¤ssrige L\"osung vollst\"andig dissoziierten Salzes.
 F\"ur ein 1:1-Elektrolyt (z.~B.\ NaCl) gilt:
 \[
 [\mathrm{Na}^+] = [\mathrm{Cl}^-] = c,
@@ -268,7 +268,7 @@ ist $c^*$ ein globales Maximum.
 F\"ur NaCl: $c^* = (2\cdot 126{,}4/(3\cdot 60{,}2))^2 \approx (0{,}1402)^2 \cdot 10^0
 \approx 1{,}96 \cdot 10^{-2}\,\mathrm{mol/L}\cdot (10^0)^2$.
 Numerisch: $c^* \approx 1{,}96\,\mathrm{mol/L}$.
-Im ionotronischen Betrieb wählen wir $c_{\mathrm{logic}} = 0{,}1\,\mathrm{mol/L}
+Im ionotronischen Betrieb wÃ¤hlen wir $c_{\mathrm{logic}} = 0{,}1\,\mathrm{mol/L}
 \ll c^*$, sodass Monotonie gew\"ahrleistet ist.
 \end{bemerkung}
 
@@ -762,7 +762,7 @@ $c = 0{,}1\,\text{mol/L}$:
 \]
 
 \textbf{Schritt 2: Informationskapazit\"at.}
-Modelliere den ionischen Kanal als Gauß'schen Kanal mit Signal $c \in [0, c_{\max}]$
+Modelliere den ionischen Kanal als GauÃŸ'schen Kanal mit Signal $c \in [0, c_{\max}]$
 und Rauschen $\varepsilon \sim \mathcal{N}(0, \sigma_c^2)$.
 Nach Shannon~\cite{shannon1948}: Kanalkapazit\"at
 $C = \frac{1}{2}\log_2(1 + c_{\max}^2/\sigma_c^2)$.
@@ -1105,7 +1105,7 @@ liefert die physikalische Fundierung.
 \subsection{Ionotronische FPGA-Architektur}
 
 Eine \emph{ionotronische FPGA-Architektur} nutzt rekonfigurierbare
-Mikrokanal-Logikblöcke:
+Mikrokanal-LogikblÃ¶cke:
 Jeder Block enth\"alt eine $2 \times 2$ Mikrokanalmatrix, die durch Konzentrations\"anderung
 zwischen AND, OR, NOT, XOR konfigurierbar ist.
 Verbindungen werden durch Gate-Kan\"ale realisiert (\"ahnlich CMOS-Pass-Transistoren).
@@ -1129,7 +1129,7 @@ Verbindung zu~\cite{epp2026qecc}: Surface-Code-Fehlerkorrektur f\"ur QITM.
 
 Biologische Synapsen sind ionotronische Schnittstellen.
 Ein ionotronisches Synapse-Modell:
-Synapsenstärke $w_{ij}$ $\leftrightarrow$ Kanal-Leitfähigkeit $\kappa_{ij}$.
+SynapsenstÃ¤rke $w_{ij}$ $\leftrightarrow$ Kanal-LeitfÃ¤higkeit $\kappa_{ij}$.
 Hebbian Learning: $\Delta w_{ij} = \eta\,x_i\,x_j$
 $\leftrightarrow$ $\Delta\kappa_{ij} = \eta\,c_i\,c_j$.
 Spike-Timing-Dependent Plasticity (STDP):
@@ -1141,7 +1141,7 @@ ionotronisches neuronales Netz.
 \subsection{Ionotronische Kryptographie: Diffusionsbasierte Verschl\"usselung}
 
 Fick'sche Diffusion ist physikalisch irreversibel (Entropieproduktion).
-Ionotronische Verschl\"usselung: Schlüssel $K$ ist das Konzentrationsprofil
+Ionotronische Verschl\"usselung: SchlÃ¼ssel $K$ ist das Konzentrationsprofil
 $\{c_i(0)\}_{i=1}^n$ zum Zeitpunkt $t=0$.
 Ciphertext: $\{c_i(\Delta t)\}_{i=1}^n$ nach Diffusionszeit $\Delta t$
 gem\"a{\ss} $\partial c/\partial t = D\nabla^2 c$.
@@ -1157,7 +1157,7 @@ Informationsverarbeitung auf einem Chip-Format.
 Ionotronische Integration: Das Patientenblut oder Wasser der Probe
 dient direkt als Rechenmedium; Ionenkonzentrationen (Na$^+$, K$^+$, Ca$^2+$)
 werden gemessen und durch die ITM-Band-Kodierung sofort als Information
-verfügbar.
+verfÃ¼gbar.
 Verbindung zu~\cite{epp2026norovirus}: Norovirus-Epitop-Bindung \"andert
 lokale $\zeta$-Potential und damit $\kappa$; Subgraph Algorithmus
 erkennt Virussignatur in $O(n^3)$.
@@ -1178,7 +1178,7 @@ PDE-Simulation ist die physikalische Instantiierung des Analog-Rechners.
 
 \paragraph{Nano-ITM ($d < 10\,\text{nm}$).}
 Im Angstrom-Regime zeigen Ionenkan\"ale Quanteneffekte~\cite{bocquet2020}:
-Einzel-Ionen-Tunneln, diskrete Leitf\"ahigkeitssprünge.
+Einzel-Ionen-Tunneln, diskrete Leitf\"ahigkeitssprÃ¼nge.
 Eine Nano-ITM mit Kohlenstoffnanor\"ohren ($d \approx 1\,\text{nm}$) h\"atte
 $V_{\mathrm{cell}} \approx 10^{-24}\,$L und $\sigma_c \approx 0{,}01\,$mol/L
 (extrem klein, aber diskrete Quantenfluktuationen dominant).
@@ -1401,3 +1401,4 @@ Universit\"at Bielefeld.
 \end{thebibliography}
 
 \end{document}
+

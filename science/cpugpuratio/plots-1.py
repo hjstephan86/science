@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -43,6 +43,7 @@ ax.set_xlim(2018.3,2027.5)
 ax.grid(True,alpha=0.3,linestyle='--')
 ax.legend(fontsize=9,loc='upper right')
 plt.tight_layout()
-plt.savefig('/home/claude/cpugpu_paper/plots/plot1_ratio_evolution.pdf', bbox_inches='tight')
+plt.savefig('plots/plot1_ratio_evolution.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 1 OK")
+

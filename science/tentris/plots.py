@@ -55,8 +55,8 @@ def plot1_complexity():
     ax.grid(True, which='both', alpha=0.3)
     ax.fill_between(n, n**3, n**3*np.log(n+1), alpha=0.08, color=BLUE)
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot1_complexity.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot1_complexity.png')
+    fig.savefig('plot1_complexity.pdf')
+    fig.savefig('plot1_complexity.png')
     plt.close(fig)
     print("Plot 1 gespeichert.")
 
@@ -109,8 +109,8 @@ def plot2_hypertrie():
 
     fig.suptitle('Hypertrie-Struktur: Statistik der Beispieldaten (TENTRIS)', fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot2_hypertrie.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot2_hypertrie.png')
+    fig.savefig('plot2_hypertrie.pdf')
+    fig.savefig('plot2_hypertrie.png')
     plt.close(fig)
     print("Plot 2 gespeichert.")
 
@@ -156,8 +156,8 @@ def plot3_sparql_tensor():
 
     fig.suptitle('SPARQL-zu-Einstein-Summation: Tensoroperanden und Auswertungseffizienz', fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot3_sparql_tensor.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot3_sparql_tensor.png')
+    fig.savefig('plot3_sparql_tensor.pdf')
+    fig.savefig('plot3_sparql_tensor.png')
     plt.close(fig)
     print("Plot 3 gespeichert.")
 
@@ -214,8 +214,8 @@ def plot4_signatures():
 
     fig.suptitle('Signaturberechnung des Subgraph Algorithmus auf RDF-Wissensgraphen', fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot4_signatures.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot4_signatures.png')
+    fig.savefig('plot4_signatures.pdf')
+    fig.savefig('plot4_signatures.png')
     plt.close(fig)
     print("Plot 4 gespeichert.")
 
@@ -284,8 +284,8 @@ def plot5_lcs_rotation():
 
     fig.suptitle('LCS-Analyse über alle zyklischen Rotationen', fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot5_lcs_rotation.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot5_lcs_rotation.png')
+    fig.savefig('plot5_lcs_rotation.pdf')
+    fig.savefig('plot5_lcs_rotation.png')
     plt.close(fig)
     print("Plot 5 gespeichert.")
 
@@ -330,8 +330,8 @@ def plot6_memory():
 
     fig.suptitle('Speicher- und Skalierungsanalyse: TENTRIS und Subgraph Algorithmus', fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/tentris_paper/plot6_memory.pdf')
-    fig.savefig('/home/claude/tentris_paper/plot6_memory.png')
+    fig.savefig('plot6_memory.pdf')
+    fig.savefig('plot6_memory.png')
     plt.close(fig)
     print("Plot 6 gespeichert.")
 

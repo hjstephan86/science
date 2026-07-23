@@ -80,7 +80,7 @@ ax3.set_facecolor('#F5F5F8')
 fig.suptitle('Abbildung 2: Die konsequente Sonne — Strahlungsphysik als Zeugin der Ordnung',
              fontsize=13, fontweight='bold', y=0.99)
 
-plt.savefig('/home/claude/naturgesetze/plot2_sonne.pdf', bbox_inches='tight', dpi=200)
-plt.savefig('/home/claude/naturgesetze/plot2_sonne.png', bbox_inches='tight', dpi=150)
+plt.savefig('plot2_sonne.pdf', bbox_inches='tight', dpi=200)
+plt.savefig('plot2_sonne.png', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 2 gespeichert.")

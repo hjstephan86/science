@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -55,7 +55,7 @@
 \large Formale Analyse des SEIR-Modells, der Basisreproduktionszahl $\mathcal{R}_0$\\
 und der Impfstoffwirksamkeit\\[8pt]
 \normalsize Mathematische Nachweise, Within-Host-Kinetik und\\
-umfassende Analyse historischer Ausbrüche}
+umfassende Analyse historischer AusbrÃ¼che}
 \author{Stephan Epp\\[4pt]
 \
 \small \texttt{github.com/hjstephan86/science/tree/main/science/}}
@@ -64,40 +64,40 @@ umfassende Analyse historischer Ausbrüche}
 
 %------------------------------------------------------------------
 \begin{abstract}
-Das Ebolavirus (EBOV) gehört zu den gefährlichsten bekannten Pathogenen des Menschen:
+Das Ebolavirus (EBOV) gehÃ¶rt zu den gefÃ¤hrlichsten bekannten Pathogenen des Menschen:
 Mit einer Fallsterblichkeitsrate (CFR) von bis zu 90\,\% beim Zaire-Stamm und
 einer Basisreproduktionszahl $\mathcal{R}_0 \approx 2{,}2$ stellt es eine extreme
-Herausforderung für die öffentliche Gesundheit dar. In dieser Arbeit werden die
-Infektionsdynamik des Ebolaviruses vollständig mathematisch formalisiert und alle
-zentralen epidemiologischen Kenngrößen durch exakte Definitionen, Sätze, Lemmata
-und vollständige Beweise nachgewiesen. Das SEIR-Modell (Susceptible--Exposed--Infectious--Removed)
-wird als System nichtlinearer gewöhnlicher Differentialgleichungen eingeführt; die
-Existenz und Eindeutigkeit von Lösungen wird durch den Satz von Picard--Lindelöf
-gesichert. Die Basisreproduktionszahl $\mathcal{R}_0$ wird über die Next-Generation-Matrix
-(NGM) formal hergeleitet. Ein Within-Host-Kinetikmodell beschreibt die intrazelluläre
+Herausforderung fÃ¼r die Ã¶ffentliche Gesundheit dar. In dieser Arbeit werden die
+Infektionsdynamik des Ebolaviruses vollstÃ¤ndig mathematisch formalisiert und alle
+zentralen epidemiologischen KenngrÃ¶ÃŸen durch exakte Definitionen, SÃ¤tze, Lemmata
+und vollstÃ¤ndige Beweise nachgewiesen. Das SEIR-Modell (Susceptible--Exposed--Infectious--Removed)
+wird als System nichtlinearer gewÃ¶hnlicher Differentialgleichungen eingefÃ¼hrt; die
+Existenz und Eindeutigkeit von LÃ¶sungen wird durch den Satz von Picard--LindelÃ¶f
+gesichert. Die Basisreproduktionszahl $\mathcal{R}_0$ wird Ã¼ber die Next-Generation-Matrix
+(NGM) formal hergeleitet. Ein Within-Host-Kinetikmodell beschreibt die intrazellulÃ¤re
 Replikationsdynamik. Alle theoretischen Ergebnisse werden durch sechs matplotlib-Visualisierungen
-ergänzt. Ein ausführlicher Ausblick behandelt Erweiterungen und offene Forschungsfragen.
+ergÃ¤nzt. Ein ausfÃ¼hrlicher Ausblick behandelt Erweiterungen und offene Forschungsfragen.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 %==================================================================
-\section{Einführung}
+\section{EinfÃ¼hrung}
 
 \subsection{Ebolavirus: Geschichte und Bedeutung}
 
 Die Entdeckung des Ebolaviruses im Jahr 1976, simultan in Nzara (Sudan) und
 Yambuku (Zaire, heute Demokratische Republik Kongo), markierte den Beginn einer
-bis heute andauernden Konfrontation der Menschheit mit einem der tödlichsten
+bis heute andauernden Konfrontation der Menschheit mit einem der tÃ¶dlichsten
 bekannten Erreger \cite{johnson1977,bowen1977}. Benannt nach dem Fluss Ebola
-in der DR Kongo, gehört das Virus zur Familie der \textit{Filoviridae} und ist
-durch sein charakteristisches fadenförmiges Erscheinungsbild unter dem
+in der DR Kongo, gehÃ¶rt das Virus zur Familie der \textit{Filoviridae} und ist
+durch sein charakteristisches fadenfÃ¶rmiges Erscheinungsbild unter dem
 Elektronenmikroskop unverwechselbar \cite{murphy1978}.
 
-Zwischen 1976 und 2026 wurden mehr als 40 Ausbrüche dokumentiert, darunter
-die verheerende Westafrikanische Epidemie 2013--2016 mit über 28\,000 Fällen
-und mehr als 11\,000 Todesfällen \cite{who2016report}. Der laufende Ausbruch
+Zwischen 1976 und 2026 wurden mehr als 40 AusbrÃ¼che dokumentiert, darunter
+die verheerende Westafrikanische Epidemie 2013--2016 mit Ã¼ber 28\,000 FÃ¤llen
+und mehr als 11\,000 TodesfÃ¤llen \cite{who2016report}. Der laufende Ausbruch
 in der DR Kongo (Mai 2026, Bundibugyo-Stamm) unterstreicht die fortbestehende
 globale Relevanz des Erregers \cite{who2026drc}.
 
@@ -108,9 +108,9 @@ Werkzeug der theoretischen Epidemiologie. Das Fundament legen die Kompartimentmo
 insbesondere:
 \begin{itemize}
   \item \textbf{SIR-Modell} (Kermack \& McKendrick, 1927 \cite{kermack1927}):
-    Einteilung der Population in Suszeptible ($S$), Infektiöse ($I$), Genesene ($R$).
+    Einteilung der Population in Suszeptible ($S$), InfektiÃ¶se ($I$), Genesene ($R$).
   \item \textbf{SEIR-Modell}: Erweiterung um Exponierte ($E$) -- in der Inkubationszeit,
-    aber noch nicht infektiös. Besonders relevant für Ebola mit typischer
+    aber noch nicht infektiÃ¶s. Besonders relevant fÃ¼r Ebola mit typischer
     Inkubation von 2--21 Tagen \cite{WHO2014incubation}.
 \end{itemize}
 
@@ -120,11 +120,11 @@ Die vorliegende Arbeit verfolgt folgende Ziele:
 \begin{enumerate}
   \item Formale Definition des SEIR-Systems und Existenz-Eindeutigkeitsbeweis
   \item Herleitung von $\mathcal{R}_0$ via Next-Generation-Matrix
-  \item Beweis der Herdenimmunitätsschwelle $q^* = 1 - 1/\mathcal{R}_0$
-  \item Within-Host-Kinetikmodell für Viruslastdynamik
-  \item Modellierung monoklonaler Antikörper-Therapien
-  \item Sechs matplotlib-Visualisierungen mit vollständiger Beschreibung
-  \item Ausführlicher Ausblick auf Forschungsfelder und Gesundheitspolitik
+  \item Beweis der HerdenimmunitÃ¤tsschwelle $q^* = 1 - 1/\mathcal{R}_0$
+  \item Within-Host-Kinetikmodell fÃ¼r Viruslastdynamik
+  \item Modellierung monoklonaler AntikÃ¶rper-Therapien
+  \item Sechs matplotlib-Visualisierungen mit vollstÃ¤ndiger Beschreibung
+  \item AusfÃ¼hrlicher Ausblick auf Forschungsfelder und Gesundheitspolitik
 \end{enumerate}
 
 %==================================================================
@@ -133,22 +133,22 @@ Die vorliegende Arbeit verfolgt folgende Ziele:
 \subsection{Populationsdynamik und Kompartimentmodelle}
 
 \begin{definition}[Homogen gemischte Population]
-Eine Population der Größe $N \in \NN$ heißt \emph{homogen gemischt}, wenn jedes
+Eine Population der GrÃ¶ÃŸe $N \in \NN$ heiÃŸt \emph{homogen gemischt}, wenn jedes
 Individuum mit gleicher Rate Kontakt zu jedem anderen Individuum hat.
-Die Kontaktrate $\beta$ zwischen Suszeptiblen und Infektiösen ist proportional zu $S \cdot I$.
+Die Kontaktrate $\beta$ zwischen Suszeptiblen und InfektiÃ¶sen ist proportional zu $S \cdot I$.
 \end{definition}
 
 \begin{definition}[Kompartimentmodell]
-Ein Kompartimentmodell ist ein System gewöhnlicher Differentialgleichungen
+Ein Kompartimentmodell ist ein System gewÃ¶hnlicher Differentialgleichungen
 $\dot{x} = f(t, x)$ mit $x(t) \in \RRR^k_{\geq 0}$, das die zeitliche Entwicklung
-der Anteile von $k$ Bevölkerungsgruppen beschreibt.
+der Anteile von $k$ BevÃ¶lkerungsgruppen beschreibt.
 Die Gesamtpopulation $N = \sum_{i=1}^k x_i$ ist zeitlich konstant, sofern keine
 Geburten/Tode modelliert werden.
 \end{definition}
 
 \subsection{Grundlegende Existenz- und Eindeutigkeitstheorie}
 
-\begin{satz}[Picard--Lindelöf, \cite{coddington1955}]
+\begin{satz}[Picard--LindelÃ¶f, \cite{coddington1955}]
 \label{satz:picard}
 Sei $f : [t_0, T] \times \RRR^k \to \RRR^k$ stetig und Lipschitz-stetig in $x$,
 d.\,h.\ es existiert $L > 0$ mit
@@ -156,49 +156,49 @@ d.\,h.\ es existiert $L > 0$ mit
   \|f(t, x) - f(t, y)\| \leq L \|x - y\| \quad \forall\, t \in [t_0, T],\; x,y \in \RRR^k.
 \]
 Dann besitzt das Anfangswertproblem $\dot{x} = f(t,x)$, $x(t_0) = x_0$
-genau eine Lösung auf $[t_0, T]$.
+genau eine LÃ¶sung auf $[t_0, T]$.
 \end{satz}
 
 \begin{lemma}[Invarianz des positiven Orthanten]
 \label{lemma:positiv}
-Das SEIR-System erhält den positiven Orthanten: Sind $S(0), E(0), I(0), R(0) \geq 0$,
-so gilt $S(t), E(t), I(t), R(t) \geq 0$ für alle $t \geq 0$.
+Das SEIR-System erhÃ¤lt den positiven Orthanten: Sind $S(0), E(0), I(0), R(0) \geq 0$,
+so gilt $S(t), E(t), I(t), R(t) \geq 0$ fÃ¼r alle $t \geq 0$.
 \end{lemma}
 
 \begin{proof}
 Angenommen, $S(t)$ wird negativ. Sei $t^* = \inf\{t > 0 : S(t) = 0\}$.
 Da $\dot{S}(t^*) = -\beta S(t^*) I(t^*)/N = 0$, kann $S$ nicht unter null fallen.
-Analoges gilt für $E$, $I$, $R$ durch das gleiche Randargument.
+Analoges gilt fÃ¼r $E$, $I$, $R$ durch das gleiche Randargument.
 \end{proof}
 
 \subsection{Landau-Notation in der Epidemiologie}
 
 \begin{definition}[$\mathcal{O}$-Notation (asymptotische Schranke)]
 Eine Folge $a_N = \mathcal{O}(b_N)$, wenn $\limsup_{N\to\infty} |a_N/b_N| < \infty$.
-In probabilistischen Grenzwertsätzen: $X_N = \mathcal{O}_p(b_N)$, wenn für jedes
+In probabilistischen GrenzwertsÃ¤tzen: $X_N = \mathcal{O}_p(b_N)$, wenn fÃ¼r jedes
 $\varepsilon > 0$ ein $M > 0$ existiert mit $\Pr(|X_N/b_N| > M) < \varepsilon$.
 \end{definition}
 
 %==================================================================
-\section{Das SEIR-Modell für Ebolavirus}
+\section{Das SEIR-Modell fÃ¼r Ebolavirus}
 
 \subsection{Modellstruktur und Parameterraum}
 
-\begin{definition}[SEIR-Kompartimente für Ebola]
+\begin{definition}[SEIR-Kompartimente fÃ¼r Ebola]
 Sei $N$ die Gesamtpopulation. Die vier Kompartimente sind:
 \begin{align*}
   S(t) &:= \text{Suszeptible (nicht immun, nicht exponiert)} \\
-  E(t) &:= \text{Exponierte (infiziert, in Inkubation, nicht infektiös)} \\
-  I(t) &:= \text{Infektiöse (infiziert, symptomatisch, übertragend)} \\
+  E(t) &:= \text{Exponierte (infiziert, in Inkubation, nicht infektiÃ¶s)} \\
+  I(t) &:= \text{InfektiÃ¶se (infiziert, symptomatisch, Ã¼bertragend)} \\
   R(t) &:= \text{Entfernte (genesen oder verstorben)}
 \end{align*}
-mit der Erhaltungsbedingung $S(t) + E(t) + I(t) + R(t) = N$ für alle $t \geq 0$.
+mit der Erhaltungsbedingung $S(t) + E(t) + I(t) + R(t) = N$ fÃ¼r alle $t \geq 0$.
 \end{definition}
 
 \begin{bemerkung}
-Im SEIR-Modell für Ebola werden Genesene und Verstorbene im Kompartiment $R$
+Im SEIR-Modell fÃ¼r Ebola werden Genesene und Verstorbene im Kompartiment $R$
 zusammengefasst (``Removed''), da beide Gruppen nicht mehr zur Transmission beitragen.
-Eine separate Modellierung von Todesfällen $D(t)$ erfolgt über die Fallsterblichkeitsrate:
+Eine separate Modellierung von TodesfÃ¤llen $D(t)$ erfolgt Ã¼ber die Fallsterblichkeitsrate:
 $\dot{D} = \text{CFR} \cdot \gamma I$.
 \end{bemerkung}
 
@@ -206,7 +206,7 @@ $\dot{D} = \text{CFR} \cdot \gamma I$.
 
 \begin{definition}[SEIR-System]
 \label{def:seir}
-Das SEIR-System für Ebola ist definiert durch:
+Das SEIR-System fÃ¼r Ebola ist definiert durch:
 \begin{align}
   \dot{S} &= -\frac{\beta S I}{N} \label{eq:S} \\
   \dot{E} &= \frac{\beta S I}{N} - \sigma E \label{eq:E} \\
@@ -215,9 +215,9 @@ Das SEIR-System für Ebola ist definiert durch:
 \end{align}
 mit Parametern:
 \begin{itemize}
-  \item $\beta > 0$: Übertragungsrate (Kontaktrate $\times$ Transmissionswahrscheinlichkeit)
-  \item $\sigma > 0$: Übergangsrate aus der Inkubation ($\sigma = 1/T_E$)
-  \item $\gamma > 0$: Erholungsrate ($\gamma = 1/T_I$, $T_I$ mittlere infektiöse Periode)
+  \item $\beta > 0$: Ãœbertragungsrate (Kontaktrate $\times$ Transmissionswahrscheinlichkeit)
+  \item $\sigma > 0$: Ãœbergangsrate aus der Inkubation ($\sigma = 1/T_E$)
+  \item $\gamma > 0$: Erholungsrate ($\gamma = 1/T_I$, $T_I$ mittlere infektiÃ¶se Periode)
   \item $N$: Gesamtpopulation (konstant)
 \end{itemize}
 \end{definition}
@@ -226,7 +226,7 @@ mit Parametern:
 \label{satz:existenz}
 Das SEIR-System (Def.~\ref{def:seir}) mit nicht-negativen Anfangsbedingungen
 $S(0)+E(0)+I(0)+R(0) = N$
-besitzt genau eine globale Lösung $(S,E,I,R) \in C^1([0,\infty), \RRR^4_{\geq 0})$.
+besitzt genau eine globale LÃ¶sung $(S,E,I,R) \in C^1([0,\infty), \RRR^4_{\geq 0})$.
 \end{satz}
 
 \begin{proof}
@@ -235,30 +235,30 @@ glatt, da alle Komponenten rationale Funktionen der Variablen ohne Pole bei $N >
 Daher ist $f$ lokal Lipschitz-stetig.
 
 \textbf{Lokale Existenz:} Nach Satz~\ref{satz:picard} existiert eine eindeutige
-lokale Lösung auf $[0, T_{\max})$.
+lokale LÃ¶sung auf $[0, T_{\max})$.
 
 \textbf{Globale Ausdehnung:} Aus Lemma~\ref{lemma:positiv} sind alle
 Komponenten nicht-negativ. Da $S(t) + E(t) + I(t) + R(t) = N$ konstant ist
 (Summe der Gleichungen ergibt $\frac{\dd}{\dd t}(S+E+I+R) = 0$), sind alle
-Komponenten durch $N$ beschränkt. Es kann kein Blow-up eintreten: $T_{\max} = \infty$.
+Komponenten durch $N$ beschrÃ¤nkt. Es kann kein Blow-up eintreten: $T_{\max} = \infty$.
 \end{proof}
 
 \subsection{Ebola-spezifische Parameterwerte}
 
 \begin{table}[H]
 \centering
-\caption{SEIR-Parameterwerte für Ebolavirus (Zaire-Stamm), basierend auf
+\caption{SEIR-Parameterwerte fÃ¼r Ebolavirus (Zaire-Stamm), basierend auf
 Althaus 2014 \cite{althaus2014} und Chowell \& Nishiura 2014 \cite{chowell2014}}
 \label{tab:params}
 \begin{tabularx}{\textwidth}{lXll}
 \toprule
 Parameter & Bedeutung & Wert & Einheit \\
 \midrule
-$\beta$ & Übertragungsrate & $0{,}27$ & Tag$^{-1}$ \\
+$\beta$ & Ãœbertragungsrate & $0{,}27$ & Tag$^{-1}$ \\
 $\sigma$ & Inkubationsrate & $1/9{,}4 \approx 0{,}106$ & Tag$^{-1}$ \\
 $\gamma$ & Genesungsrate & $1/8{,}0 = 0{,}125$ & Tag$^{-1}$ \\
 $T_E = 1/\sigma$ & Mittlere Inkubationsdauer & $9{,}4$ & Tage \\
-$T_I = 1/\gamma$ & Mittlere infektiöse Periode & $8{,}0$ & Tage \\
+$T_I = 1/\gamma$ & Mittlere infektiÃ¶se Periode & $8{,}0$ & Tage \\
 $\mathcal{R}_0 = \beta/\gamma$ & Basisreproduktionszahl & $2{,}16$ & dimensionslos \\
 CFR & Fallsterblichkeitsrate (Zaire) & $0{,}55$--$0{,}88$ & dimensionslos \\
 \bottomrule
@@ -266,7 +266,7 @@ CFR & Fallsterblichkeitsrate (Zaire) & $0{,}55$--$0{,}88$ & dimensionslos \\
 \end{table}
 
 \begin{satz}[Populationserhaltung]
-Für alle Lösungen des SEIR-Systems gilt $S(t) + E(t) + I(t) + R(t) = N$ für alle $t \geq 0$.
+FÃ¼r alle LÃ¶sungen des SEIR-Systems gilt $S(t) + E(t) + I(t) + R(t) = N$ fÃ¼r alle $t \geq 0$.
 \end{satz}
 
 \begin{proof}
@@ -278,21 +278,21 @@ Sei $\mathcal{N}(t) := S(t) + E(t) + I(t) + R(t)$. Dann:
      + \left(\sigma E - \gamma I\right)
      + \gamma I \;=\; 0.
 \end{align*}
-Da $\mathcal{N}(0) = N$, folgt $\mathcal{N}(t) = N$ für alle $t \geq 0$.
+Da $\mathcal{N}(0) = N$, folgt $\mathcal{N}(t) = N$ fÃ¼r alle $t \geq 0$.
 \end{proof}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot1_seir.pdf}
-\caption{\textbf{SEIR-Infektionsdynamik für Ebolavirus.}
+\caption{\textbf{SEIR-Infektionsdynamik fÃ¼r Ebolavirus.}
 \textit{Links:} Zeitverlauf der vier SEIR-Kompartimente als Anteil der Population (\%)
-für $N = 10^6$, $\mathcal{R}_0 = 2{,}16$, Startbedingungen $I(0) = 10$, $E(0) = 30$.
+fÃ¼r $N = 10^6$, $\mathcal{R}_0 = 2{,}16$, Startbedingungen $I(0) = 10$, $E(0) = 30$.
 $S(t)$ sinkt monoton; $E(t)$ und $I(t)$ zeigen charakteristische epidemische Peaks
-(exponierter Peak vor infektiösem Peak, da Inkubationszeit eingebaut).
-$R(t)$ wächst monoton und sättigt bei der Gesamtangriffsrate $< 100\,\%$.
-\textit{Rechts:} Absolute Anzahl infektiöser Personen $I(t)$ (rot, linke Achse) und
-kumulierte Todesfälle $D(t)$ bei CFR~$= 55\,\%$ (schwarz gepunktet, rechte Achse).
-Der Peak bei Tag $\approx 90$ zeigt die Ausbruchsintensität.}
+(exponierter Peak vor infektiÃ¶sem Peak, da Inkubationszeit eingebaut).
+$R(t)$ wÃ¤chst monoton und sÃ¤ttigt bei der Gesamtangriffsrate $< 100\,\%$.
+\textit{Rechts:} Absolute Anzahl infektiÃ¶ser Personen $I(t)$ (rot, linke Achse) und
+kumulierte TodesfÃ¤lle $D(t)$ bei CFR~$= 55\,\%$ (schwarz gepunktet, rechte Achse).
+Der Peak bei Tag $\approx 90$ zeigt die AusbruchsintensitÃ¤t.}
 \label{fig:seir}
 \end{figure}
 
@@ -303,14 +303,14 @@ Der Peak bei Tag $\approx 90$ zeigt die Ausbruchsintensität.}
 
 \begin{definition}[Basisreproduktionszahl $\mathcal{R}_0$]
 \label{def:r0}
-Die Basisreproduktionszahl $\mathcal{R}_0$ ist die mittlere Anzahl von Sekundärinfektionen,
-die ein einzelnes infektiöses Individuum in einer vollständig suszeptiblen Population
-($S(0) = N$) über seine gesamte infektiöse Periode erzeugt.
+Die Basisreproduktionszahl $\mathcal{R}_0$ ist die mittlere Anzahl von SekundÃ¤rinfektionen,
+die ein einzelnes infektiÃ¶ses Individuum in einer vollstÃ¤ndig suszeptiblen Population
+($S(0) = N$) Ã¼ber seine gesamte infektiÃ¶se Periode erzeugt.
 \end{definition}
 
-\begin{lemma}[$\mathcal{R}_0$ für das SEIR-Modell via Next-Generation-Matrix]
+\begin{lemma}[$\mathcal{R}_0$ fÃ¼r das SEIR-Modell via Next-Generation-Matrix]
 \label{lemma:r0seir}
-Für das SEIR-System (Def.~\ref{def:seir}) gilt:
+FÃ¼r das SEIR-System (Def.~\ref{def:seir}) gilt:
 \[
   \mathcal{R}_0 = \frac{\beta}{\gamma}.
 \]
@@ -341,15 +341,15 @@ Infektive Kompartimente: $x = (E, I)^T$.
 
 Der Spektralradius: $\mathcal{R}_0 = \rho(K) = \beta/\gamma$.
 
-\textit{Interpretation:} $\sigma$ kürzt sich heraus -- die Inkubationsdauer beeinflusst
-die Ausbruchsgeschwindigkeit, nicht die Gesamtausbruchsgröße.
+\textit{Interpretation:} $\sigma$ kÃ¼rzt sich heraus -- die Inkubationsdauer beeinflusst
+die Ausbruchsgeschwindigkeit, nicht die GesamtausbruchsgrÃ¶ÃŸe.
 \end{proof}
 
 \subsection{Schwellenwerttheorem}
 
 \begin{satz}[Ausbruchsschwellenwert]
 \label{satz:schwelle}
-Für das SEIR-System mit $S(0)/N \approx 1$ gilt:
+FÃ¼r das SEIR-System mit $S(0)/N \approx 1$ gilt:
 \begin{enumerate}
   \item $\mathcal{R}_0 \leq 1$: Der Ausbruch stirbt aus; $\lim_{t\to\infty} I(t) = 0$.
   \item $\mathcal{R}_0 > 1$: Ausbruch mit positivem Peak $\max_t I(t) > 0$.
@@ -366,13 +366,13 @@ $\text{tr}(J) = -(\sigma+\gamma) < 0$ gdw.\ $\mathcal{R}_0 \leq 1$.
 Beide Eigenwerte haben negativen Realteil $\Rightarrow$ DFE ist asymptotisch stabil $\Rightarrow I(t)\to 0$.
 
 \textbf{Fall 2 ($\mathcal{R}_0 > 1$):} $\det(J) < 0$, ein Eigenwert ist positiv;
-$I(t)$ wächst anfangs exponentiell. Durch Erschöpfung der Suszeptiblen fällt $I(t)$:
+$I(t)$ wÃ¤chst anfangs exponentiell. Durch ErschÃ¶pfung der Suszeptiblen fÃ¤llt $I(t)$:
 eindeutiger Peak existiert.
 \end{proof}
 
 \begin{definition}[Effektive Reproduktionszahl]
 $\mathcal{R}_e(t) = \mathcal{R}_0 \cdot S(t)/N$ beschreibt die mittlere Anzahl von
-Sekundärinfektionen zum Zeitpunkt $t$ unter Berücksichtigung der aktuellen Immunität.
+SekundÃ¤rinfektionen zum Zeitpunkt $t$ unter BerÃ¼cksichtigung der aktuellen ImmunitÃ¤t.
 \end{definition}
 
 \begin{korollar}[Epidemischer Peak]
@@ -388,22 +388,22 @@ $\frac{\beta S}{N} I = \sigma E = \gamma I \Rightarrow S = N\gamma/\beta = N/\ma
 \centering
 \includegraphics[width=\textwidth]{plot2_r0.pdf}
 \caption{\textbf{Basisreproduktionszahl $\mathcal{R}_0$ im Krankheitsvergleich.}
-\textit{Links:} Balkendiagramm der $\mathcal{R}_0$-Werte für 14 Infektionskrankheiten.
+\textit{Links:} Balkendiagramm der $\mathcal{R}_0$-Werte fÃ¼r 14 Infektionskrankheiten.
 Die rote gestrichelte Linie bei $\mathcal{R}_0 = 1$ markiert den epidemischen Schwellenwert.
 Masern (12,0) sind die ansteckendste bekannte Krankheit; Ebola Zaire (2,2) liegt im
-mittleren Bereich -- seine Gefährlichkeit wird durch die extreme CFR begründet.
-\textit{Rechts:} Herdenimmunitätsschwelle $q^* = 1 - 1/\mathcal{R}_0$ als Funktion von
-$\mathcal{R}_0$ (formal bewiesen in Satz~\ref{satz:herd}). Für Ebola Zaire muss
-mindestens 54\,\% der Population immun sein; für Masern 92\,\%.}
+mittleren Bereich -- seine GefÃ¤hrlichkeit wird durch die extreme CFR begrÃ¼ndet.
+\textit{Rechts:} HerdenimmunitÃ¤tsschwelle $q^* = 1 - 1/\mathcal{R}_0$ als Funktion von
+$\mathcal{R}_0$ (formal bewiesen in Satz~\ref{satz:herd}). FÃ¼r Ebola Zaire muss
+mindestens 54\,\% der Population immun sein; fÃ¼r Masern 92\,\%.}
 \label{fig:r0}
 \end{figure}
 
 %==================================================================
-\section{Herdenimmunität und Impfstrategie}
+\section{HerdenimmunitÃ¤t und Impfstrategie}
 
-\subsection{Herdenimmunitätsschwelle}
+\subsection{HerdenimmunitÃ¤tsschwelle}
 
-\begin{satz}[Herdenimmunitätsschwelle]
+\begin{satz}[HerdenimmunitÃ¤tsschwelle]
 \label{satz:herd}
 Sei $p \in [0,1]$ der Anteil der Population, der zu Beginn eines Ausbruchs immun ist.
 Ein Ausbruch kann nicht stattfinden, wenn und nur wenn:
@@ -422,7 +422,7 @@ Kein Ausbruch gdw.\ $p \geq q^*$.
 \end{proof}
 
 \begin{korollar}[Ebola-spezifische Schwelle]
-Für Ebola Zaire mit $\mathcal{R}_0 = 2{,}16$:
+FÃ¼r Ebola Zaire mit $\mathcal{R}_0 = 2{,}16$:
 $q^*_{\text{Ebola}} = 1 - 1/2{,}16 \approx 53{,}7\,\%$.
 \end{korollar}
 
@@ -430,11 +430,11 @@ $q^*_{\text{Ebola}} = 1 - 1/2{,}16 \approx 53{,}7\,\%$.
 
 \begin{definition}[Impfstoffwirksamkeit VE]
 $\text{VE} = 1 - \text{AR(Geimpfte)}/\text{AR(Ungeimpfte)}$.
-Für rVSV-ZEBOV wurde VE $= 97{,}6\,\%$ nachgewiesen \cite{henao2017}.
+FÃ¼r rVSV-ZEBOV wurde VE $= 97{,}6\,\%$ nachgewiesen \cite{henao2017}.
 \end{definition}
 
 \begin{lemma}[Kritische Impfquote mit VE $< 1$]
-Mit Wirksamkeit VE muss die Impfquote $p$ erfüllen:
+Mit Wirksamkeit VE muss die Impfquote $p$ erfÃ¼llen:
 \[
   p \geq \frac{q^*}{\text{VE}} = \frac{1}{\text{VE}}\!\left(1 - \frac{1}{\mathcal{R}_0}\right).
 \]
@@ -447,7 +447,7 @@ Kein Ausbruch gdw.\ $\mathcal{R}_0(1 - p \cdot \text{VE}) \leq 1
 \Leftrightarrow p \geq q^*/\text{VE}$.
 \end{proof}
 
-\begin{beispiel}[Kritische Impfquote für Ebola mit rVSV-ZEBOV]
+\begin{beispiel}[Kritische Impfquote fÃ¼r Ebola mit rVSV-ZEBOV]
 Mit $\mathcal{R}_0 = 2{,}16$, VE $= 97{,}6\,\%$:
 $p^* = 0{,}537/0{,}976 \approx 55{,}0\,\%$.
 \end{beispiel}
@@ -455,14 +455,14 @@ $p^* = 0{,}537/0{,}976 \approx 55{,}0\,\%$.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot3_sensitivity.pdf}
-\caption{\textbf{Sensitivitätsanalyse der SEIR-Parameter.}
-\textit{Links:} Peakprävalenz $I_{\text{peak}}/N$ (rot) und Angriffsrate AR (blau)
+\caption{\textbf{SensitivitÃ¤tsanalyse der SEIR-Parameter.}
+\textit{Links:} PeakprÃ¤valenz $I_{\text{peak}}/N$ (rot) und Angriffsrate AR (blau)
 als Funktion der Basisreproduktionszahl $\mathcal{R}_0 = \beta/\gamma$.
-Für Ebola Zaire ($\mathcal{R}_0 = 2{,}16$, orange) ergibt sich AR $\approx 80\,\%$
-in einer vollständig suszeptiblen Population.
+FÃ¼r Ebola Zaire ($\mathcal{R}_0 = 2{,}16$, orange) ergibt sich AR $\approx 80\,\%$
+in einer vollstÃ¤ndig suszeptiblen Population.
 \textit{Rechts:} Heatmap der Angriffsrate AR$(\beta, 1/\gamma)$. Die blaue Konturlinie
 markiert $\mathcal{R}_0 = 1$; die orange $\mathcal{R}_0 = 2{,}2$. Der Stern markiert
-die Ebola-Zaire-Parameter. Grüne Bereiche unterhalb der blauen Linie zeigen
+die Ebola-Zaire-Parameter. GrÃ¼ne Bereiche unterhalb der blauen Linie zeigen
 Parameterbereiche ohne Ausbruch.}
 \label{fig:sensitivity}
 \end{figure}
@@ -471,12 +471,12 @@ Parameterbereiche ohne Ausbruch.}
 \centering
 \includegraphics[width=\textwidth]{plot4_vaccine.pdf}
 \caption{\textbf{Impfstoffwirksamkeit und epidemiologische Szenarien.}
-\textit{Links:} Infektiöse Prävalenz $I(t)/N$ unter verschiedenen Impfquoten mit
+\textit{Links:} InfektiÃ¶se PrÃ¤valenz $I(t)/N$ unter verschiedenen Impfquoten mit
 rVSV-ZEBOV (VE $= 97{,}6\,\%$). Ohne Impfung (rot) erreicht der Peak $\approx 18\,\%$;
 mit 90\,\% Impfquote (blau) verschwindet der Ausbruch nahezu.
 \textit{Rechts:} Effektive Reproduktionszahl $\mathcal{R}_e(p) = \mathcal{R}_0(1 - p \cdot \text{VE})$
-für verschiedene Wirksamkeiten. Das grün schraffierte Gebiet ($\mathcal{R}_e < 1$)
-repräsentiert den Kontrollbereich. Mit rVSV-ZEBOV reicht $p \approx 55\,\%$ zur
+fÃ¼r verschiedene Wirksamkeiten. Das grÃ¼n schraffierte Gebiet ($\mathcal{R}_e < 1$)
+reprÃ¤sentiert den Kontrollbereich. Mit rVSV-ZEBOV reicht $p \approx 55\,\%$ zur
 Ausbruchskontrolle.}
 \label{fig:vaccine}
 \end{figure}
@@ -495,14 +495,14 @@ Das Within-Host-Kinetikmodell ist:
   \dot{V} &= p I_w - c V \label{eq:V}
 \end{align}
 mit $T(t)$: Zielzellen, $I_w(t)$: infizierte Zellen, $V(t)$: Viruslast (Kopien/ml),
-$\beta_v$: zelluläre Infektionsrate, $\delta$: Abbaurate infizierter Zellen,
+$\beta_v$: zellulÃ¤re Infektionsrate, $\delta$: Abbaurate infizierter Zellen,
 $p$: Virusproduktionsrate, $c$: Virusclearance-Rate.
 \end{definition}
 
-\subsection{Intrazelluläre Reproduktionszahl}
+\subsection{IntrazellulÃ¤re Reproduktionszahl}
 
-\begin{lemma}[Intrazelluläre Reproduktionszahl $R_0^{(w)}$]
-Die intrazelluläre Basisreproduktionszahl des TVD-Modells ist:
+\begin{lemma}[IntrazellulÃ¤re Reproduktionszahl $R_0^{(w)}$]
+Die intrazellulÃ¤re Basisreproduktionszahl des TVD-Modells ist:
 \[
   R_0^{(w)} = \frac{\beta_v p T_0}{c \delta},
 \]
@@ -519,8 +519,8 @@ Am Virus-freien Gleichgewicht $(T_0, 0, 0)$ linearisieren wir \eqref{eq:Iw} und 
 Die NGM-Methode liefert $R_0^{(w)} = \beta_v p T_0 / (c\delta)$.
 \end{proof}
 
-\begin{satz}[Viruslastwachstum in der frühen Phase]
-In der frühen Infektionsphase ($T(t) \approx T_0$) wächst $V(t)$ exponentiell:
+\begin{satz}[Viruslastwachstum in der frÃ¼hen Phase]
+In der frÃ¼hen Infektionsphase ($T(t) \approx T_0$) wÃ¤chst $V(t)$ exponentiell:
 $V(t) \approx V_0 e^{\lambda_+ t}$, mit
 \[
   \lambda_+ = \tfrac{1}{2}\!\left(-(\delta+c) + \sqrt{(\delta-c)^2 + 4\beta_v p T_0}\right) > 0.
@@ -529,43 +529,43 @@ $V(t) \approx V_0 e^{\lambda_+ t}$, mit
 
 \begin{proof}
 Die Eigenwerte der Systemmatrix $A = \begin{pmatrix}-\delta & \beta_v T_0 \\ p & -c\end{pmatrix}$
-lösen $\lambda^2 + (\delta+c)\lambda + (c\delta - \beta_v p T_0) = 0$.
+lÃ¶sen $\lambda^2 + (\delta+c)\lambda + (c\delta - \beta_v p T_0) = 0$.
 Bei $R_0^{(w)} > 1$: $c\delta < \beta_v p T_0$, sodass $\lambda_+ > 0$.
 \end{proof}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot5_kinetics.pdf}
-\caption{\textbf{Intrazelluläre Virale Kinetik (Within-Host-Modell).}
+\caption{\textbf{IntrazellulÃ¤re Virale Kinetik (Within-Host-Modell).}
 \textit{Links:} Viruslast $V(t)$ (rot, log-Skala) und Zellpopulationen $T(t)/T_0$
-(blau) und $I_w(t)/T_0$ (orange) über 21 Tage. Die exponentielle Wachstumsphase
-der Viruslast (Tage 0--8) entspricht der klinischen Präsymptomphase.
+(blau) und $I_w(t)/T_0$ (orange) Ã¼ber 21 Tage. Die exponentielle Wachstumsphase
+der Viruslast (Tage 0--8) entspricht der klinischen PrÃ¤symptomphase.
 \textit{Rechts:} Viruslast unter verschiedenen Behandlungsszenarien. Monoklonale
-Antikörper ab Tag 5 supprimieren die Viruslast deutlich; späte Gabe ab Tag 8
-zeigt verzögertes Ansprechen -- dies belegt quantitativ, warum frühe Therapie
-entscheidend für das Überleben ist.}
+AntikÃ¶rper ab Tag 5 supprimieren die Viruslast deutlich; spÃ¤te Gabe ab Tag 8
+zeigt verzÃ¶gertes Ansprechen -- dies belegt quantitativ, warum frÃ¼he Therapie
+entscheidend fÃ¼r das Ãœberleben ist.}
 \label{fig:kinetics}
 \end{figure}
 
 %==================================================================
-\section{Vergleichende Analyse: Ebolavirus-Stämme}
+\section{Vergleichende Analyse: Ebolavirus-StÃ¤mme}
 
 \subsection{Taxonomie und Stammvergleich}
 
 \begin{definition}[Ebolavirus-Spezies]
 Die Gattung \textit{Orthoebolavirus} umfasst sechs anerkannte Spezies:
 \begin{enumerate}
-  \item \textit{Orthoebolavirus zairense} (EBOV, Zaire): höchste Pathogenität, CFR bis 88\,\%
+  \item \textit{Orthoebolavirus zairense} (EBOV, Zaire): hÃ¶chste PathogenitÃ¤t, CFR bis 88\,\%
   \item \textit{Orthoebolavirus sudanense} (SUDV): CFR 41--65\,\%
   \item \textit{Orthoebolavirus bundibugyoense} (BDBV): CFR 25--36\,\%
-  \item \textit{Orthoebolavirus taiense} (TAFV): ein Humanfall, nicht tödlich
+  \item \textit{Orthoebolavirus taiense} (TAFV): ein Humanfall, nicht tÃ¶dlich
   \item \textit{Orthoebolavirus restonense} (RESTV): nicht humanpathogen
 \end{enumerate}
 \end{definition}
 
 \begin{table}[H]
 \centering
-\caption{Vergleich epidemiologischer Parameter der Ebolavirus-Stämme}
+\caption{Vergleich epidemiologischer Parameter der Ebolavirus-StÃ¤mme}
 \label{tab:strains}
 \begin{tabular}{lccccc}
 \toprule
@@ -580,68 +580,68 @@ Reston (RESTV)    & 1,05 & 0\,\%      & 9 & 1989 & kein                    \\
 \end{tabular}
 \end{table}
 
-\begin{satz}[Monotone Abhängigkeit CFR von $\mathcal{R}_0$]
+\begin{satz}[Monotone AbhÃ¤ngigkeit CFR von $\mathcal{R}_0$]
 \label{satz:cfr_mono}
-Innerhalb der Ebolavirus-Stämme besteht eine positive monotone Korrelation zwischen
+Innerhalb der Ebolavirus-StÃ¤mme besteht eine positive monotone Korrelation zwischen
 $\mathcal{R}_0$ und CFR (Spearmanscher Rangkorrelationskoeffizient $r_s = 1{,}0$).
 \end{satz}
 
 \begin{proof}
-Aus Tab.~\ref{tab:strains}: Die Ordnung der Stämme nach $\mathcal{R}_0$ und nach CFR
+Aus Tab.~\ref{tab:strains}: Die Ordnung der StÃ¤mme nach $\mathcal{R}_0$ und nach CFR
 ist identisch (RESTV $<$ TAFV $<$ BDBV $<$ SUDV $<$ EBOV). Damit ist Kendall-$\tau = 1{,}0$
-und $r_s = 1{,}0$ (perfekte Übereinstimmung der Ränge).
+und $r_s = 1{,}0$ (perfekte Ãœbereinstimmung der RÃ¤nge).
 \end{proof}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot6_outbreaks.pdf}
-\caption{\textbf{Ebolavirus-Stämme und historische Ausbrüche.}
+\caption{\textbf{Ebolavirus-StÃ¤mme und historische AusbrÃ¼che.}
 \textit{Links:} Paralleles Balkendiagramm von $\mathcal{R}_0$ (massiv) und
-CFR\,\% (schraffiert) für alle fünf Stämme. Die monotone Ko-Varianz von $\mathcal{R}_0$
+CFR\,\% (schraffiert) fÃ¼r alle fÃ¼nf StÃ¤mme. Die monotone Ko-Varianz von $\mathcal{R}_0$
 und CFR (Satz~\ref{satz:cfr_mono}) ist visuell eindeutig erkennbar.
-\textit{Rechts:} Historische Ausbrüche 1976--2024 auf logarithmischer Skala.
-Der Westafrika-Ausbruch 2013--2016 übersteigt alle anderen um zwei Größenordnungen.}
+\textit{Rechts:} Historische AusbrÃ¼che 1976--2024 auf logarithmischer Skala.
+Der Westafrika-Ausbruch 2013--2016 Ã¼bersteigt alle anderen um zwei GrÃ¶ÃŸenordnungen.}
 \label{fig:outbreaks}
 \end{figure}
 
 %==================================================================
-\section{Das Epidemiologische Vollständigkeitsprinzip}
+\section{Das Epidemiologische VollstÃ¤ndigkeitsprinzip}
 
 \subsection{Kernthese}
 
-Analog zum Strukturminimalitätsprinzip \cite{epp2026struct} gilt in der Epidemiologie:
+Analog zum StrukturminimalitÃ¤tsprinzip \cite{epp2026struct} gilt in der Epidemiologie:
 
 \begin{quote}
 \textit{Ein epidemiologisches Modell ist genau dann strukturell minimal korrekt,
-wenn es alle biologisch relevanten Kompartimente enthält: Jede Reduktion zerstört
-die Vorhersagekorrektheit für mindestens eine kritische Kenngröße. SEIR ist für Ebola
-das minimal vollständige Modell; SIR ist untervollständig, da es die Inkubationszeit
+wenn es alle biologisch relevanten Kompartimente enthÃ¤lt: Jede Reduktion zerstÃ¶rt
+die Vorhersagekorrektheit fÃ¼r mindestens eine kritische KenngrÃ¶ÃŸe. SEIR ist fÃ¼r Ebola
+das minimal vollstÃ¤ndige Modell; SIR ist untervollstÃ¤ndig, da es die Inkubationszeit
 ignoriert und den Ausbruchsbeginn falsch datiert.}
 \end{quote}
 
 \subsection{Formalisierung}
 
 \begin{definition}[Epidemiologische Modellkorrektheit]
-Ein Kompartimentmodell $\mathcal{M}$ heißt \emph{vollständig korrekt} für ein
-Szenario $\Omega$, wenn für alle Zielgrößen $Q_j$ die vorhergesagte Größe $\hat{Q}_j$
+Ein Kompartimentmodell $\mathcal{M}$ heiÃŸt \emph{vollstÃ¤ndig korrekt} fÃ¼r ein
+Szenario $\Omega$, wenn fÃ¼r alle ZielgrÃ¶ÃŸen $Q_j$ die vorhergesagte GrÃ¶ÃŸe $\hat{Q}_j$
 innerhalb der Toleranz liegt: $|\hat{Q}_j - Q_j| \leq \varepsilon_j$.
 \end{definition}
 
-\begin{satz}[Notwendigkeit des $E$-Kompartiments für Ebola]
+\begin{satz}[Notwendigkeit des $E$-Kompartiments fÃ¼r Ebola]
 \label{satz:e_notwendig}
-Das SIR-Modell ist für Ebola nicht vollständig korrekt: Es unterschätzt den
+Das SIR-Modell ist fÃ¼r Ebola nicht vollstÃ¤ndig korrekt: Es unterschÃ¤tzt den
 Zeitpunkt des Infektionspeaks um
 $\Delta T_{\text{peak}} \approx T_E \cdot \ln(\mathcal{R}_0) \approx 7{,}2$ Tage.
 \end{satz}
 
 \begin{proof}
-Im SIR-Modell wächst $I(t)$ mit Rate $r_{\text{SIR}} = \gamma(\mathcal{R}_0-1)$ an.
-Im SEIR muss erst das $E$-Kompartiment aufgebaut werden; die Verzögerung beträgt
-näherungsweise $\Delta T \approx T_E \ln(\mathcal{R}_0) = 9{,}4 \cdot \ln(2{,}16) \approx 7{,}2$ Tage.
+Im SIR-Modell wÃ¤chst $I(t)$ mit Rate $r_{\text{SIR}} = \gamma(\mathcal{R}_0-1)$ an.
+Im SEIR muss erst das $E$-Kompartiment aufgebaut werden; die VerzÃ¶gerung betrÃ¤gt
+nÃ¤herungsweise $\Delta T \approx T_E \ln(\mathcal{R}_0) = 9{,}4 \cdot \ln(2{,}16) \approx 7{,}2$ Tage.
 \end{proof}
 
-\begin{korollar}[Minimalitätsprinzip]
-SEIR ist das minimal vollständige Kompartimentmodell für Ebola: vollständig
+\begin{korollar}[MinimalitÃ¤tsprinzip]
+SEIR ist das minimal vollstÃ¤ndige Kompartimentmodell fÃ¼r Ebola: vollstÃ¤ndig
 (alle biologischen Phasen erfasst) und minimal (kein Kompartiment entfernbar ohne Genauigkeitsverlust).
 \end{korollar}
 
@@ -651,61 +651,61 @@ SEIR ist das minimal vollständige Kompartimentmodell für Ebola: vollständig
 
 \subsection{Erweiterungen des SEIR-Modells}
 
-\subsubsection{SEIHFR-Modell: Hospitalisierung und Bestattungsübertragung}
+\subsubsection{SEIHFR-Modell: Hospitalisierung und BestattungsÃ¼bertragung}
 
 Die Westafrika-Epidemie 2013--2016 zeigte eine spezifische Transmissionsroute:
-Übertragung bei traditionellen Beerdigungsritualen (Leichen bleiben mehrere Tage
-infektiös) \cite{faye2015}. Das SEIHFR-Modell (Susceptible--Exposed--Infectious--Hospitalized--Funerals--Removed)
+Ãœbertragung bei traditionellen Beerdigungsritualen (Leichen bleiben mehrere Tage
+infektiÃ¶s) \cite{faye2015}. Das SEIHFR-Modell (Susceptible--Exposed--Infectious--Hospitalized--Funerals--Removed)
 von Legrand et al. \cite{legrand2007} modelliert drei Reproduktionszahlen:
 \[
   \mathcal{R}_0 = \mathcal{R}_c + \mathcal{R}_h + \mathcal{R}_f.
 \]
 $\mathcal{R}_f$ (Funeral-Beitrag) kann in Gemeinden ohne sichere Bestattungspraktiken
-bis zu 1,0 betragen -- Beerdigungen allein können den Ausbruch aufrechterhalten.
+bis zu 1,0 betragen -- Beerdigungen allein kÃ¶nnen den Ausbruch aufrechterhalten.
 
 \subsubsection{Stochastische SEIR-Modelle}
 
-Deterministische Modelle vernachlässigen stochastische Fluktuationen, die bei
+Deterministische Modelle vernachlÃ¤ssigen stochastische Fluktuationen, die bei
 kleinen Populationen entscheidend sind \cite{allen2017}. Im stochastischen Modell
 stirbt ein Ausbruch mit Wahrscheinlichkeit
 \[
   P(\text{Ausbruch stirbt aus}) = \left(\frac{1}{\mathcal{R}_0}\right)^{I_0}
 \]
-aus. Für Ebola ($\mathcal{R}_0 = 2{,}16$, $I_0 = 1$): ca. 46\,\% aller potenziellen
-Einträge in eine suszeptible Gemeinde führen von allein aus -- wichtig für die Risikobewertung.
+aus. FÃ¼r Ebola ($\mathcal{R}_0 = 2{,}16$, $I_0 = 1$): ca. 46\,\% aller potenziellen
+EintrÃ¤ge in eine suszeptible Gemeinde fÃ¼hren von allein aus -- wichtig fÃ¼r die Risikobewertung.
 
-\subsubsection{Räumliche Modelle und Metapopulationsansätze}
+\subsubsection{RÃ¤umliche Modelle und MetapopulationsansÃ¤tze}
 
-Räumlich explizite Modelle unterscheiden zwischen Patch-Modellen (Migration zwischen
+RÃ¤umlich explizite Modelle unterscheiden zwischen Patch-Modellen (Migration zwischen
 Subpopulationen), netzwerkbasierten Modellen (individuelle Kontaktstrukturen) und
-Reaktions-Diffusions-Gleichungen. Für Ebola wurde gezeigt \cite{gomes2014}, dass
-internationale Flüge die effektive $\mathcal{R}_0$ um bis zu 15\,\% erhöhen können.
+Reaktions-Diffusions-Gleichungen. FÃ¼r Ebola wurde gezeigt \cite{gomes2014}, dass
+internationale FlÃ¼ge die effektive $\mathcal{R}_0$ um bis zu 15\,\% erhÃ¶hen kÃ¶nnen.
 Ein stratifiziertes Modell mit $n$ Risikogruppen und Kontaktmatrix $C = (\beta_{ij})$
 hat die NGM mit $\mathcal{R}_0 = \rho(C/\gamma)$.
 
-\subsubsection{SEIRD-Modell und direkte Mortalitätsmodellierung}
+\subsubsection{SEIRD-Modell und direkte MortalitÃ¤tsmodellierung}
 
-Für Planungszwecke ist die explizite Modellierung von Todesfällen $D(t)$ wesentlich:
+FÃ¼r Planungszwecke ist die explizite Modellierung von TodesfÃ¤llen $D(t)$ wesentlich:
 \[
   \dot{D} = \mu \gamma I, \quad \dot{R} = (1-\mu)\gamma I,
 \end{equation*}
 wobei $\mu = \text{CFR}$ die Sterblichkeitsrate ist. Die Fallsterblichkeitsrate ist
-zeitabhängig (sie sinkt mit verbesserten Behandlungskapazitäten), was nichtlineare
+zeitabhÃ¤ngig (sie sinkt mit verbesserten BehandlungskapazitÃ¤ten), was nichtlineare
 Erweiterungen erfordert.
 
-\subsection{Therapeutika: Monoklonale Antikörper und antivirale Mittel}
+\subsection{Therapeutika: Monoklonale AntikÃ¶rper und antivirale Mittel}
 
-\subsubsection{Monoklonale Antikörper-Therapien}
+\subsubsection{Monoklonale AntikÃ¶rper-Therapien}
 
 Der Durchbruch kam mit der PALM-Studie (2019) \cite{mulangu2019}, in der randomisiert
 Atoltivimab/Maftivimab/Odesivimab (Inmazeb) und Ansuvimab (mAb114) verglichen wurden:
 
 \begin{table}[H]
 \centering
-\caption{Therapeutische Wirksamkeit monoklonaler Antikörper (PALM-Studie, DR Kongo 2019)}
+\caption{Therapeutische Wirksamkeit monoklonaler AntikÃ¶rper (PALM-Studie, DR Kongo 2019)}
 \begin{tabular}{lccc}
 \toprule
-Präparat & Mortalität (behandelt) & Mortalität (Kontrolle) & Risikoreduktion \\
+PrÃ¤parat & MortalitÃ¤t (behandelt) & MortalitÃ¤t (Kontrolle) & Risikoreduktion \\
 \midrule
 Atoltivimab/Maftivimab/Odesivimab & 33,5\,\% & 51,3\,\% & 35\,\% \\
 Ansuvimab (mAb114)                 & 35,1\,\% & 51,3\,\% & 32\,\% \\
@@ -713,15 +713,15 @@ Ansuvimab (mAb114)                 & 35,1\,\% & 51,3\,\% & 32\,\% \\
 \end{tabular}
 \end{table}
 
-Das TVD-Modell erklärt den Wirkmechanismus: mAk erhöhen die Virusclearance $c \to c + c_{\text{mAk}}$,
-was die Viruslast exponentiell schneller supprimiert. Der Überlebensvorteil ist am
-größten bei früher Gabe.
+Das TVD-Modell erklÃ¤rt den Wirkmechanismus: mAk erhÃ¶hen die Virusclearance $c \to c + c_{\text{mAk}}$,
+was die Viruslast exponentiell schneller supprimiert. Der Ãœberlebensvorteil ist am
+grÃ¶ÃŸten bei frÃ¼her Gabe.
 
 \subsubsection{Antivirale Wirkstoffe}
 
-Remdesivir (Nukleosidanalogon) wurde ursprünglich gegen Ebola entwickelt. Im TVD-Modell
+Remdesivir (Nukleosidanalogon) wurde ursprÃ¼nglich gegen Ebola entwickelt. Im TVD-Modell
 hemmt es die RNA-Polymerase und reduziert die Virusproduktionsrate $p$.
-Favipiravir und Brincidofovir wurden ebenfalls getestet, ohne klaren Überlebensvorteil.
+Favipiravir und Brincidofovir wurden ebenfalls getestet, ohne klaren Ãœberlebensvorteil.
 
 \subsection{Impfstrategie und optimale Kontrolle}
 
@@ -732,7 +732,7 @@ Die Ringimpfung wurde in der DR Kongo 2018--2020 mit rVSV-ZEBOV erfolgreich eing
 \[
   \mathcal{R}_c = \mathcal{R}_0(1-\eta_c)(1 - \text{VE} \cdot p_r)
 \]
-mit $\eta_c$ (Isolation-Effektivität), $p_r$ (Ringimpfquote). Bei $\text{VE} = 97{,}6\,\%$
+mit $\eta_c$ (Isolation-EffektivitÃ¤t), $p_r$ (Ringimpfquote). Bei $\text{VE} = 97{,}6\,\%$
 und $p_r = 80\,\%$: $\mathcal{R}_c \approx 0{,}33 < 1$ -- Ausbruch kontrollierbar.
 
 \subsubsection{Optimale Kontrolltheorie}
@@ -741,7 +741,7 @@ Das Ausbruchsmanagement als Optimalsteuerungsproblem \cite{okosun2013}:
 \[
   \min_{u} J(u) = \int_0^{T_f}\!\left[A_1 I(t) + A_2 u_1^2(t) + A_3 u_2^2(t)\right]\dd t
 \]
-über Impfrate $u_1(t)$ und Behandlungsintensität $u_2(t)$. Das Pontryaginsche
+Ã¼ber Impfrate $u_1(t)$ und BehandlungsintensitÃ¤t $u_2(t)$. Das Pontryaginsche
 Maximumprinzip liefert notwendige Bedingungen via Adjunktvariablen.
 
 \subsection{Virologie und molekulare Pathogenese}
@@ -749,97 +749,97 @@ Maximumprinzip liefert notwendige Bedingungen via Adjunktvariablen.
 \subsubsection{Replikationsmechanismus}
 
 Das Ebolavirus-Genom (18.959 Nukleotide) kodiert sieben Proteine \cite{bray2005}.
-VP24 und VP35 sind Interferon-Antagonisten und entscheidend für die Immunevasion.
-Das Glykoprotein GP ist das Ziel neutralisierender Antikörper und dominiert die
+VP24 und VP35 sind Interferon-Antagonisten und entscheidend fÃ¼r die Immunevasion.
+Das Glykoprotein GP ist das Ziel neutralisierender AntikÃ¶rper und dominiert die
 Impfstoffentwicklung. Der Replikationszyklus dauert $\sim$12--24 Stunden,
-was die im TVD-Modell verwendeten Parameter begründet.
+was die im TVD-Modell verwendeten Parameter begrÃ¼ndet.
 
 \subsubsection{Animal Reservoir und Spillover}
 
-Fruchtfledermäuse (\textit{Rousettus aegyptiacus}) sind die primären
+FruchtfledermÃ¤use (\textit{Rousettus aegyptiacus}) sind die primÃ¤ren
 Reservoir-Kandidaten \cite{leroy2005}. Spillover als Poisson-Prozess mit Rate $\lambda_s$:
 \[
   I(t) \xrightarrow{+1} I(t)+1 \quad \text{mit Rate } \lambda_s.
 \]
-Die meisten Spillovers führen zu keinen Ausbrüchen (stochastisches Aussterben, s.o.).
+Die meisten Spillovers fÃ¼hren zu keinen AusbrÃ¼chen (stochastisches Aussterben, s.o.).
 
 \subsubsection{Virale Evolution}
 
-Während 2013--2016 akkumulierte EBOV Mutationen mit Rate $\approx 1{,}2 \times 10^{-3}$
+WÃ¤hrend 2013--2016 akkumulierte EBOV Mutationen mit Rate $\approx 1{,}2 \times 10^{-3}$
 Substitutionen/Position/Jahr \cite{gire2014}. Die A82V-Mutation im GP-Protein wurde
-mit erhöhter Virulenz assoziiert \cite{diehl2016}.
+mit erhÃ¶hter Virulenz assoziiert \cite{diehl2016}.
 
 \subsection{Globale Gesundheitspolitik}
 
 \subsubsection{IHR 2005 und Ausbruchsreaktion}
 
-Die Westafrika-Epidemie offenbarte gravierende Mängel: Die WHO-PHEIC-Erklärung
+Die Westafrika-Epidemie offenbarte gravierende MÃ¤ngel: Die WHO-PHEIC-ErklÃ¤rung
 kam erst im August 2014, als die Ausbreitung bereits exponentiell war \cite{coltart2017}.
 Die Reformen des WHO-Notfallprogramms und die Schaffung von CEPI (Coalition for
 Epidemic Preparedness Innovations) sind direkte Konsequenzen.
 
 \subsubsection{Kosten-Nutzen-Analyse}
 
-Direkte Kosten der Westafrika-Epidemie: über 53 Milliarden US-Dollar \cite{worldbank2014}.
+Direkte Kosten der Westafrika-Epidemie: Ã¼ber 53 Milliarden US-Dollar \cite{worldbank2014}.
 Entwicklungskosten von rVSV-ZEBOV: $\approx$ 450 Millionen US-Dollar.
-Kosten-Nutzen-Verhältnis präventiver Impfstoffentwicklung: $> 100:1$.
+Kosten-Nutzen-VerhÃ¤ltnis prÃ¤ventiver Impfstoffentwicklung: $> 100:1$.
 
 \subsubsection{One-Health-Ansatz}
 
-Da Ebola-Ausbrüche durch Tier-Mensch-Übertragung entstehen, erfordert nachhaltige
+Da Ebola-AusbrÃ¼che durch Tier-Mensch-Ãœbertragung entstehen, erfordert nachhaltige
 Kontrolle einen One-Health-Ansatz \cite{gibbs2014}:
 \begin{itemize}
   \item Surveillance von Fledermaus-Populationen auf Ebola-Marker
   \item Monitoring von Wildtier-Jagd und Buschfleisch-Handel
-  \item Entwaldungsmonitoring: reduzierter Lebensraum erhöht Mensch-Tier-Kontakte
+  \item Entwaldungsmonitoring: reduzierter Lebensraum erhÃ¶ht Mensch-Tier-Kontakte
 \end{itemize}
 
 \subsection{Quantitative Epidemiologie: Offene Forschungsfragen}
 
-\subsubsection{NP-Vollständigkeit im Kontakt-Tracing}
+\subsubsection{NP-VollstÃ¤ndigkeit im Kontakt-Tracing}
 
 Das Problem ``Optimal Contact Tracing'' -- minimale Menge zu isolierender Individuen,
-um einen Ausbruch mit Wahrscheinlichkeit $p$ auszulöschen -- ist NP-vollständig im
+um einen Ausbruch mit Wahrscheinlichkeit $p$ auszulÃ¶schen -- ist NP-vollstÃ¤ndig im
 Allgemeinen \cite{ogura2017}. Polynomielle Approximationsalgorithmen mit
-Gütegarantie sind Gegenstand aktueller Forschung, analog zu NP-Approximationsproblemen
+GÃ¼tegarantie sind Gegenstand aktueller Forschung, analog zu NP-Approximationsproblemen
 in der Algorithmik \cite{epp2026algorithms}.
 
 \subsubsection{Maschinelles Lernen und Neural ODEs}
 
-Hybrid-Modelle, die SEIR-Struktur mit neuronalen Gleichungsschätzern verbinden
+Hybrid-Modelle, die SEIR-Struktur mit neuronalen GleichungsschÃ¤tzern verbinden
 (Neural ODE \cite{chen2018}), lernen unbekannte Parameterfunktionen $\beta(t)$
-direkt aus Ausbruchsdaten. Dies ermöglicht Echtzeit-Parameterschätzung während
+direkt aus Ausbruchsdaten. Dies ermÃ¶glicht Echtzeit-ParameterschÃ¤tzung wÃ¤hrend
 eines laufenden Ausbruchs.
 
 \subsubsection{Verbindung zum Subgraph Algorithmus}
 
-Der Subgraph Algorithmus \cite{epp2026subgraph} findet natürliche Anwendungen
+Der Subgraph Algorithmus \cite{epp2026subgraph} findet natÃ¼rliche Anwendungen
 in der Kontaktnetzwerk-Analyse:
 \begin{itemize}
-  \item Subgraphen mit hoher interner Konnektivität entsprechen Ausbruchs-Clustern
-  \item Isomorphie-Tests identifizieren wiederkehrende Übertragungsmuster
-  \item Die $O(n^3)$-Komplexität ist für Kontaktnetzwerke mittelgroßer Ausbrüche praktikabel
+  \item Subgraphen mit hoher interner KonnektivitÃ¤t entsprechen Ausbruchs-Clustern
+  \item Isomorphie-Tests identifizieren wiederkehrende Ãœbertragungsmuster
+  \item Die $O(n^3)$-KomplexitÃ¤t ist fÃ¼r Kontaktnetzwerke mittelgroÃŸer AusbrÃ¼che praktikabel
 \end{itemize}
 Formal: Ein Ausbruchs-Cluster im Kontaktnetzwerk $G = (V, E)$ ist ein Subgraph
-$G' \subseteq G$ mit maximaler interner Konnektivität -- ein Subgraph-Isomorphie-Problem.
+$G' \subseteq G$ mit maximaler interner KonnektivitÃ¤t -- ein Subgraph-Isomorphie-Problem.
 
 \subsection{Zukunft der Ebola-Forschung und -Kontrolle}
 
 \subsubsection{mRNA-Impfstoffe gegen Ebola}
 
-mRNA-Kandidaten gegen SUDV und BDBV befinden sich in präklinischen Tests \cite{messerschmidt2023}.
-Vorteile: Produktionszeit Wochen statt Monate; einfache Anpassung an neue Stämme;
+mRNA-Kandidaten gegen SUDV und BDBV befinden sich in prÃ¤klinischen Tests \cite{messerschmidt2023}.
+Vorteile: Produktionszeit Wochen statt Monate; einfache Anpassung an neue StÃ¤mme;
 keine ultra-cold chain ($-60\,^\circ$C) wie bei rVSV-ZEBOV.
 
 \subsubsection{Pan-Ebolavirus-Impfstoff}
 
-Ziel: ein Impfstoff gegen alle pathogenen Stämme, basierend auf konservierten
+Ziel: ein Impfstoff gegen alle pathogenen StÃ¤mme, basierend auf konservierten
 GP-Epitopen \cite{ilinykh2021}. Cryo-EM-Strukturanalysen haben vielversprechende
 Kandidaten identifiziert.
 
-\subsubsection{KI-gestützte Ausbruchsdetektion}
+\subsubsection{KI-gestÃ¼tzte Ausbruchsdetektion}
 
-Frühwarnsysteme kombinieren Social-Media-Monitoring, syndromische Surveillance und
+FrÃ¼hwarnsysteme kombinieren Social-Media-Monitoring, syndromische Surveillance und
 Satellitendaten, um Spillover-Ereignisse in Echtzeit zu detektieren \cite{kahn2021}.
 Moderne Systeme erreichen Detektionslatenzen unter 24 Stunden nach Symptombeginn.
 
@@ -848,19 +848,20 @@ Moderne Systeme erreichen Detektionslatenzen unter 24 Stunden nach Symptombeginn
 Ebola ist kein isoliertes tropisches Problem -- es ist ein globales Risiko an der
 Schnittstelle von Virologie, mathematischer Epidemiologie, Kontrolltheorie und
 internationaler Gesundheitspolitik. Die formalen Modelle dieser Arbeit bilden das
-analytische Fundament für evidenzbasierte Interventionen. Die Basisreproduktionszahl
-$\mathcal{R}_0 = \beta/\gamma$, der Herdenimmunität-Schwellenwert $q^* = 1 - 1/\mathcal{R}_0$
+analytische Fundament fÃ¼r evidenzbasierte Interventionen. Die Basisreproduktionszahl
+$\mathcal{R}_0 = \beta/\gamma$, der HerdenimmunitÃ¤t-Schwellenwert $q^* = 1 - 1/\mathcal{R}_0$
 und die kritische Impfquote $p^* = q^*/\text{VE}$ sind keine abstrakten Formeln:
-Sie haben während der DR-Kongo-Epidemie 2018--2020 real Leben gerettet.
+Sie haben wÃ¤hrend der DR-Kongo-Epidemie 2018--2020 real Leben gerettet.
 
-Die Entwicklung von rVSV-ZEBOV und Inmazeb stellt den größten Fortschritt in der
+Die Entwicklung von rVSV-ZEBOV und Inmazeb stellt den grÃ¶ÃŸten Fortschritt in der
 Ebola-Geschichte seit 1976 dar. Dennoch bleiben Herausforderungen: Pan-Ebolavirus-Impfstoffe,
-Therapien gegen Sudan- und Bundibugyo-Stämme, stochastische Prognose und One-Health-Integration.
+Therapien gegen Sudan- und Bundibugyo-StÃ¤mme, stochastische Prognose und One-Health-Integration.
 Mathematische Modellierung wie in dieser Arbeit ist das unentbehrliche Werkzeug,
-um aus Daten Handlungsanweisungen zu gewinnen -- eine Brücke zwischen Wissenschaft und Praxis.
+um aus Daten Handlungsanweisungen zu gewinnen -- eine BrÃ¼cke zwischen Wissenschaft und Praxis.
 
 %==================================================================
 \bibliographystyle{unsrt}
 \bibliography{ebola}
 
 \end{document}
+

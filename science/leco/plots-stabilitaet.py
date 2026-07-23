@@ -34,7 +34,7 @@ plt.rcParams.update({
     'figure.dpi': 150,
 })
 
-OUT = '/home/claude/stabilitaet/'
+OUT = ''
 
 # =========================================================
 # Hilfsfunktionen: Subgraph Algorithmus (Kernlogik)

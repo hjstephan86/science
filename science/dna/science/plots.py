@@ -142,8 +142,8 @@ def plot_01_dna_als_graph():
     fig.suptitle('Abbildung 1: DNA als gerichteter Graph',
                  fontsize=14, fontweight='bold', y=1.01)
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig01_dna_graph.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig01_dna_graph.png')
+    fig.savefig('figures/fig01_dna_graph.pdf')
+    fig.savefig('figures/fig01_dna_graph.png')
     plt.close(fig)
     print("Plot 1 gespeichert.")
 
@@ -243,8 +243,8 @@ def plot_02_adjazenzmatrix():
     fig.suptitle('Abbildung 2: Adjazenzmatrix und Signatur-Analyse',
                  fontsize=14, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig02_adjazenz.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig02_adjazenz.png')
+    fig.savefig('figures/fig02_adjazenz.pdf')
+    fig.savefig('figures/fig02_adjazenz.png')
     plt.close(fig)
     print("Plot 2 gespeichert.")
 
@@ -316,8 +316,8 @@ def plot_03_rotation():
                  'Alle $n=4$ Rotationen statt $4!=24$ Permutationen',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig03_rotation.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig03_rotation.png')
+    fig.savefig('figures/fig03_rotation.pdf')
+    fig.savefig('figures/fig03_rotation.png')
     plt.close(fig)
     print("Plot 3 gespeichert.")
 
@@ -435,8 +435,8 @@ def plot_04_lcs_dp():
     fig.suptitle('Abbildung 4: Longest Common Subsequence (LCS) auf DNA-Signaturen',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig04_lcs_dp.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig04_lcs_dp.png')
+    fig.savefig('figures/fig04_lcs_dp.pdf')
+    fig.savefig('figures/fig04_lcs_dp.png')
     plt.close(fig)
     print("Plot 4 gespeichert.")
 
@@ -498,8 +498,8 @@ def plot_05_komplexitaet():
     fig.suptitle('Abbildung 5: Algorithmen-Komplexität für DNA-Sequenzabgleich',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig05_komplexitaet.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig05_komplexitaet.png')
+    fig.savefig('figures/fig05_komplexitaet.pdf')
+    fig.savefig('figures/fig05_komplexitaet.png')
     plt.close(fig)
     print("Plot 5 gespeichert.")
 
@@ -666,8 +666,8 @@ def plot_06_subgraph_dna():
     fig.suptitle('Abbildung 6: Vollständiges Subgraph-DNA-Beispiel',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig06_subgraph_dna.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig06_subgraph_dna.png')
+    fig.savefig('figures/fig06_subgraph_dna.pdf')
+    fig.savefig('figures/fig06_subgraph_dna.png')
     plt.close(fig)
     print("Plot 6 gespeichert.")
 
@@ -752,8 +752,8 @@ def plot_07_kosten():
     fig.suptitle('Abbildung 7: Sequenzierungskosten und Laufzeitanalyse',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig07_kosten.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig07_kosten.png')
+    fig.savefig('figures/fig07_kosten.pdf')
+    fig.savefig('figures/fig07_kosten.png')
     plt.close(fig)
     print("Plot 7 gespeichert.")
 
@@ -867,8 +867,8 @@ def plot_08_statistik():
     fig.suptitle('Abbildung 8: Statistische Eigenschaften von DNA als Graph',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig08_statistik.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig08_statistik.png')
+    fig.savefig('figures/fig08_statistik.pdf')
+    fig.savefig('figures/fig08_statistik.png')
     plt.close(fig)
     print("Plot 8 gespeichert.")
 
@@ -955,8 +955,8 @@ def plot_09_mutation():
                  '(rot umrandet = Abweichung vom Wildtyp)',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig09_mutation.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig09_mutation.png')
+    fig.savefig('figures/fig09_mutation.pdf')
+    fig.savefig('figures/fig09_mutation.png')
     plt.close(fig)
     print("Plot 9 gespeichert.")
 
@@ -1028,8 +1028,8 @@ def plot_10_pipeline():
     ax.set_title('Abbildung 10: Pipeline des Subgraph-DNA-Algorithmus',
                  fontsize=14, fontweight='bold', pad=15)
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig10_pipeline.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig10_pipeline.png')
+    fig.savefig('figures/fig10_pipeline.pdf')
+    fig.savefig('figures/fig10_pipeline.png')
     plt.close(fig)
     print("Plot 10 gespeichert.")
 

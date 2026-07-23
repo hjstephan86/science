@@ -87,6 +87,5 @@ for bar, val in zip(bars4, vs):
              f'{val}%', ha='center', va='bottom', fontsize=8, fontweight='bold')
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig('/home/claude/plot5_geographic.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot5_geographic.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot5_geographic.png', dpi=150, bbox_inches='tight')
 print("Plot 5 saved.")

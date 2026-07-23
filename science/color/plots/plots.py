@@ -1,4 +1,4 @@
-import numpy as np
+﻿import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -8,7 +8,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import warnings
 warnings.filterwarnings('ignore')
 
-OUTDIR = "/home/claude/farbe_paper/plots"
+OUTDIR = 'plots"
 
 plt.rcParams.update({
     'font.family': 'DejaVu Sans',
@@ -557,3 +557,4 @@ plot_homo_lumo_gap()
 plot_tristimulus_xyz()
 
 print("\nAlle Plots erfolgreich generiert.")
+

@@ -82,7 +82,7 @@ for bar, v in zip(bars, vals):
              color='#333333')
 
 plt.tight_layout(pad=2.0)
-plt.savefig('/home/claude/knotengleichung/plot1_kirchhoff.pdf',
+plt.savefig('plot1_kirchhoff.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 1 gespeichert.")

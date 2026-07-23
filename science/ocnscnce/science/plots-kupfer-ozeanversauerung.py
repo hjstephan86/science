@@ -112,7 +112,7 @@ for i, (v1, v2) in enumerate(zip(ph788_vals, ph759_vals)):
     ax.text(i, max(v1, v2) + 30, f'{sign}{delta:.1f}%', ha='center', fontsize=7, color='gray')
 
 plt.tight_layout()
-plt.savefig('/home/claude/mikroplastik_extension/plot_kupfer_ozeanversauerung.pdf',
+plt.savefig('plot_kupfer_ozeanversauerung.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot B gespeichert.")

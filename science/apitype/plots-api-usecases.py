@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -61,6 +61,7 @@ ax.grid(alpha=0.3)
 
 fig.suptitle('API-Anwendungsfälle und Eigenschaftsprofile', fontsize=12, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/apitype/plot_api_usecases.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_api_usecases.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 5 done")
+

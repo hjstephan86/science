@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -41,18 +41,18 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}1
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
-	{Σ}{{$\Sigma$}}1
-	{→}{{$\rightarrow$}}1
-	{⊆}{{$\subseteq$}}1
-	{⊇}{{$\supseteq$}}1
-	{≥}{{$\geq$}}1
+	{Ã–}{{\"O}}1
+	{Ã„}{{\"A}}1
+	{Ãœ}{{\"U}}1
+	{ÃŸ}{{\ss}}1
+	{Ã¼}{{\"u}}1
+	{Ã¤}{{\"a}}1
+	{Ã¶}{{\"o}}1
+	{Î£}{{$\Sigma$}}1
+	{â†’}{{$\rightarrow$}}1
+	{âŠ†}{{$\subseteq$}}1
+	{âŠ‡}{{$\supseteq$}}1
+	{â‰¥}{{$\geq$}}1
 }
 
 \title{\textbf{Analyse biologischer Netzwerke}\\{\Large mit dem Subgraph Algorithmus}}
@@ -66,36 +66,36 @@
 \tableofcontents
 \newpage
 
-\section{Einführung}
+\section{EinfÃ¼hrung}
 
-Die Analyse biologischer Netzwerke ist von zentraler Bedeutung für das Verständnis komplexer Systeme in der modernen Systembiologie. Metabolische Pfade, Protein-Interaktions\-netzwerke und Gen-Regulationsnetzwerke bilden die Grundlage für zelluläre Prozesse und lassen sich elegant als Graphen modellieren.
+Die Analyse biologischer Netzwerke ist von zentraler Bedeutung fÃ¼r das VerstÃ¤ndnis komplexer Systeme in der modernen Systembiologie. Metabolische Pfade, Protein-Interaktions\-netzwerke und Gen-Regulationsnetzwerke bilden die Grundlage fÃ¼r zellulÃ¤re Prozesse und lassen sich elegant als Graphen modellieren.
 
-Graphen sind die schönste Art zur Modellierung der Lebensstrukturen, da sie in sich abgeschlossen sind, da es nie mehr Kanten geben kann als die ein vollständiger Graph zulässt. In der Modellierung gibt es keine anschaulichere Datenstruktur als Graphen. Der Betrachter dieser Datenstruktur hat immer das Gefühl, dass diese ihm vollen und umfassenden Zugang zum theoretischem Sachverhalt gibt. 
+Graphen sind die schÃ¶nste Art zur Modellierung der Lebensstrukturen, da sie in sich abgeschlossen sind, da es nie mehr Kanten geben kann als die ein vollstÃ¤ndiger Graph zulÃ¤sst. In der Modellierung gibt es keine anschaulichere Datenstruktur als Graphen. Der Betrachter dieser Datenstruktur hat immer das GefÃ¼hl, dass diese ihm vollen und umfassenden Zugang zum theoretischem Sachverhalt gibt. 
 
 \subsection{Problemstellung}
 
-Die zentrale Problemstellung dieser Arbeit ist: \textbf{Wie lassen sich biologische Netzwerke effizient vergleichen, um strukturelle Ähnlichkeiten, Subgraph-Beziehungen und evolutionäre Konservierung zu identifizieren?}
+Die zentrale Problemstellung dieser Arbeit ist: \textbf{Wie lassen sich biologische Netzwerke effizient vergleichen, um strukturelle Ã„hnlichkeiten, Subgraph-Beziehungen und evolutionÃ¤re Konservierung zu identifizieren?}
 
-Der Subgraph-Isomorphismus ist NP-vollständig, und naive Permutationsansätze haben eine Laufzeit von $O(n!)$. Bei biologischen Netzwerken mit 50-100 Knoten sind solche Verfahren praktisch nicht anwendbar. Die Herausforderungen umfassen:
+Der Subgraph-Isomorphismus ist NP-vollstÃ¤ndig, und naive PermutationsansÃ¤tze haben eine Laufzeit von $O(n!)$. Bei biologischen Netzwerken mit 50-100 Knoten sind solche Verfahren praktisch nicht anwendbar. Die Herausforderungen umfassen:
 \begin{itemize}
 	\item[-] Vergleich metabolischer Pfade zwischen verschiedenen Organismen,
 	\item[-] Identifikation konservierter Protein-Interaktionsmotive,
-	\item[-] Analyse gestörter Signalwege in Krankheitszuständen,
+	\item[-] Analyse gestÃ¶rter Signalwege in KrankheitszustÃ¤nden,
 	\item[-] Vorhersage von Medikamentenwirkungen durch Netzwerkvergleich.
 \end{itemize}
-Traditionelle Ansätze zum Graphvergleich stoßen bei der Analyse biologischer Netzwerke an ihre Grenzen.
+Traditionelle AnsÃ¤tze zum Graphvergleich stoÃŸen bei der Analyse biologischer Netzwerke an ihre Grenzen.
 
 \subsection{Motivation}
 
-Biologische Systeme werden zunehmend als Netzwerke verstanden, bei denen Komponenten (Gene, Proteine, Metaboliten) durch Interaktionen verbunden sind. Diese Netzwerkperspektive hat zu fundamentalen Einsichten geführt, beispielsweise dass viele biologische Netzwerke skalenfreie Eigenschaften aufweisen oder dass zentrale Knoten (Hubs) oft essentiell für das Ãœberleben sind. Die Systembiologie nutzt diese Graphrepräsentationen für verschiedene Analysen:
+Biologische Systeme werden zunehmend als Netzwerke verstanden, bei denen Komponenten (Gene, Proteine, Metaboliten) durch Interaktionen verbunden sind. Diese Netzwerkperspektive hat zu fundamentalen Einsichten gefÃ¼hrt, beispielsweise dass viele biologische Netzwerke skalenfreie Eigenschaften aufweisen oder dass zentrale Knoten (Hubs) oft essentiell fÃ¼r das ÃƒÅ“berleben sind. Die Systembiologie nutzt diese GraphreprÃ¤sentationen fÃ¼r verschiedene Analysen:
 
-\textbf{Metabolische Pfade}: In der KEGG Pathway Database sind über 500 metabolische Pfade für verschiedene Organismen kartiert. Knoten repräsentieren Metaboliten (z.B. Glucose, ATP, NADH), während Kanten enzymatische Reaktionen darstellen. Der Vergleich dieser Pfade zwischen Organismen offenbart evolutionär konservierte Stoffwechselwege.
+\textbf{Metabolische Pfade}: In der KEGG Pathway Database sind Ã¼ber 500 metabolische Pfade fÃ¼r verschiedene Organismen kartiert. Knoten reprÃ¤sentieren Metaboliten (z.B. Glucose, ATP, NADH), wÃ¤hrend Kanten enzymatische Reaktionen darstellen. Der Vergleich dieser Pfade zwischen Organismen offenbart evolutionÃ¤r konservierte Stoffwechselwege.
 
-\textbf{Protein-Interaktionsnetzwerke}: Proteine interagieren physisch miteinander, um zelluläre Funktionen auszuführen. Die STRING-Datenbank enthält Millionen dokumentierter Protein-Protein-Interaktionen. Der Vergleich solcher Netzwerke zwischen gesunden und kranken Zellen kann gestörte Signalwege identifizieren.
+\textbf{Protein-Interaktionsnetzwerke}: Proteine interagieren physisch miteinander, um zellulÃ¤re Funktionen auszufÃ¼hren. Die STRING-Datenbank enthÃ¤lt Millionen dokumentierter Protein-Protein-Interaktionen. Der Vergleich solcher Netzwerke zwischen gesunden und kranken Zellen kann gestÃ¶rte Signalwege identifizieren.
 
-\textbf{Gen-Regulationsnetzwerke}: Transkriptionsfaktoren regulieren die Expression anderer Gene, was zu komplexen regulatorischen Netzwerken führt. Die Analyse dieser Netzwerke hilft, Genregulation zu verstehen und synthetische biologische Systeme zu designen.
+\textbf{Gen-Regulationsnetzwerke}: Transkriptionsfaktoren regulieren die Expression anderer Gene, was zu komplexen regulatorischen Netzwerken fÃ¼hrt. Die Analyse dieser Netzwerke hilft, Genregulation zu verstehen und synthetische biologische Systeme zu designen.
 
-Die Effizienz der Netzwerkanalyse hängt maßgeblich vom verwendeten Vergleichsalgorithmus ab. Der Subgraph Algorithmus mit seiner Laufzeit von $O(n^3)$ ermöglicht erstmals praktikable Vergleiche biologischer Netzwerke in realistischen Zeiträumen.
+Die Effizienz der Netzwerkanalyse hÃ¤ngt maÃŸgeblich vom verwendeten Vergleichsalgorithmus ab. Der Subgraph Algorithmus mit seiner Laufzeit von $O(n^3)$ ermÃ¶glicht erstmals praktikable Vergleiche biologischer Netzwerke in realistischen ZeitrÃ¤umen.
 
 \subsection{Zielsetzung}
 
@@ -104,16 +104,16 @@ Diese Arbeit entwickelt ein Framework zur effizienten Analyse biologischer Netzw
 \begin{enumerate}
 	\item Formale Modellierung biologischer Netzwerke als gerichtete Graphen,
 	\item Anwendung effizienter Vergleichsmethoden basierend auf dem Subgraph Algorithmus,
-	\item Implementierung eines Python-Frameworks für biologische Netzwerkanalyse,
+	\item Implementierung eines Python-Frameworks fÃ¼r biologische Netzwerkanalyse,
 	\item Demonstration der Anwendbarkeit an konkreten biologischen Beispielen,
-	\item Bereitstellung einer erweiterbaren Grundlage für weiterführende Analysen.
+	\item Bereitstellung einer erweiterbaren Grundlage fÃ¼r weiterfÃ¼hrende Analysen.
 \end{enumerate}
 
-Das resultierende Gen-Framework soll Biologen und Bioinformatikern ein Werkzeug an die Hand geben, mit dem sie strukturelle Eigenschaften biologischer Netzwerke systematisch untersuchen können.
+Das resultierende Gen-Framework soll Biologen und Bioinformatikern ein Werkzeug an die Hand geben, mit dem sie strukturelle Eigenschaften biologischer Netzwerke systematisch untersuchen kÃ¶nnen.
 
 \section{Grundlagen}
 
-Dieses Kapitel legt die theoretischen und methodischen Grundlagen für die Analyse biologischer Netzwerke. Es werden die mathematischen Konzepte eingeführt, die für das Verständnis des Frameworks notwendig sind.
+Dieses Kapitel legt die theoretischen und methodischen Grundlagen fÃ¼r die Analyse biologischer Netzwerke. Es werden die mathematischen Konzepte eingefÃ¼hrt, die fÃ¼r das VerstÃ¤ndnis des Frameworks notwendig sind.
 
 \subsection{Definitionen}
 
@@ -122,8 +122,8 @@ Die folgenden Definitionen bilden das formale Fundament der Arbeit.
 \begin{definition}[Biologisches Netzwerk]
 	Ein biologisches Netzwerk ist ein gerichteter Graph $G = (V, E)$ mit:
 	\begin{itemize}
-		\item[-] Knotenmenge $V = \{v_1, v_2, \ldots, v_n\}$, die biologische Entitäten repräsentiert (Metaboliten, Proteine, Gene)
-		\item[-] Kantenmenge $E \subseteq V \times V$, die biologische Interaktionen repräsentiert (Reaktionen, Bindungen, Regulation)
+		\item[-] Knotenmenge $V = \{v_1, v_2, \ldots, v_n\}$, die biologische EntitÃ¤ten reprÃ¤sentiert (Metaboliten, Proteine, Gene)
+		\item[-] Kantenmenge $E \subseteq V \times V$, die biologische Interaktionen reprÃ¤sentiert (Reaktionen, Bindungen, Regulation)
 	\end{itemize}
 \end{definition}
 
@@ -137,23 +137,23 @@ Die folgenden Definitionen bilden das formale Fundament der Arbeit.
 	\end{align}
 \end{definition}
 
-Die Adjazenzmatrix ermöglicht eine kompakte Darstellung des Netzwerks und bildet die Grundlage für effiziente algorithmische Vergleiche.
+Die Adjazenzmatrix ermÃ¶glicht eine kompakte Darstellung des Netzwerks und bildet die Grundlage fÃ¼r effiziente algorithmische Vergleiche.
 
 \begin{definition}[Subgraph]
 	Ein biologisches Netzwerk $G = (V, E)$ ist ein Subgraph von $G' = (V', E')$, geschrieben $G \subseteq G'$, wenn $V \subseteq V'$ und $E \subseteq E'$.
 \end{definition}
 
-Diese Definition ist zentral für die Netzwerkanalyse: Ein Stoffwechselweg ist dann in einem anderen enthalten, wenn alle seine Reaktionen auch im größeren Weg vorkommen.
+Diese Definition ist zentral fÃ¼r die Netzwerkanalyse: Ein Stoffwechselweg ist dann in einem anderen enthalten, wenn alle seine Reaktionen auch im grÃ¶ÃŸeren Weg vorkommen.
 
 \begin{definition}[Knotengrad]
-	Für einen Knoten $v \in V$ definieren wir:
+	FÃ¼r einen Knoten $v \in V$ definieren wir:
 	\begin{align*}
 		\text{in-degree}(v) &= |\{u \in V : (u,v) \in E\}| \\
 		\text{out-degree}(v) &= |\{w \in V : (v,w) \in E\}|
 	\end{align*}
 \end{definition}
 
-Der Knotengrad charakterisiert die Konnektivität biologischer Komponenten. Proteine mit hohem Grad sind oft funktional wichtig (Hub-Proteine).
+Der Knotengrad charakterisiert die KonnektivitÃ¤t biologischer Komponenten. Proteine mit hohem Grad sind oft funktional wichtig (Hub-Proteine).
 
 \begin{definition}[Netzwerk-Dichte]
 	Die Dichte eines biologischen Netzwerks $G = (V,E)$ ist definiert als:
@@ -165,12 +165,12 @@ Der Knotengrad charakterisiert die Konnektivität biologischer Komponenten. Prot
 Die Dichte $\rho(G)$ ist daher ein normalisierter Wert zwischen 0 und 1:
 \begin{itemize}
 	\item[-] $\rho = 0$: Keine Kanten vorhanden (leerer Graph),
-	\item[-] $\rho = 1$: Alle möglichen Kanten vorhanden (vollständiger Graph),
+	\item[-] $\rho = 1$: Alle mÃ¶glichen Kanten vorhanden (vollstÃ¤ndiger Graph),
 	\item[-] $0 < \rho < 1$: Teilweise vernetzt.
 \end{itemize}
-So, wie die Dichte in (\ref{def:dense}) definiert ist, erinnert sie eher an einen Wahrscheinlichkeitsraum. Das Ziel der systematischen Biologie ist aber die systematische Erzeugung fester Strukturen und nicht die Erzeugung zufälliger Strukturen. Daher wird auf die Definition (\ref{def:dense}) in dieser Arbeit ganz verzichtet. 
+So, wie die Dichte in (\ref{def:dense}) definiert ist, erinnert sie eher an einen Wahrscheinlichkeitsraum. Das Ziel der systematischen Biologie ist aber die systematische Erzeugung fester Strukturen und nicht die Erzeugung zufÃ¤lliger Strukturen. Daher wird auf die Definition (\ref{def:dense}) in dieser Arbeit ganz verzichtet. 
 
-Die Netzwerk-Dichte gibt an, wie stark vernetzt ein biologisches System ist. Metabolische Netzwerke haben typischerweise geringe Dichten, das heißt weniger Kanten, während Protein-Komplexe hohe Dichten aufweisen, das heißt mehr Kanten haben.
+Die Netzwerk-Dichte gibt an, wie stark vernetzt ein biologisches System ist. Metabolische Netzwerke haben typischerweise geringe Dichten, das heiÃŸt weniger Kanten, wÃ¤hrend Protein-Komplexe hohe Dichten aufweisen, das heiÃŸt mehr Kanten haben.
 
 \subsection{Biologische Netzwerktypen}
 
@@ -195,7 +195,7 @@ Die entwickelte Methodik ist auf verschiedene Typen biologischer Netzwerke anwen
 
 \subsubsection{Metabolische Netzwerke}
 
-Metabolische Netzwerke repräsentieren den Stoffwechsel von Organismen. Knoten sind Metaboliten (kleine Moleküle wie Glucose, ATP), und Kanten repräsentieren enzymatische Reaktionen.
+Metabolische Netzwerke reprÃ¤sentieren den Stoffwechsel von Organismen. Knoten sind Metaboliten (kleine MolekÃ¼le wie Glucose, ATP), und Kanten reprÃ¤sentieren enzymatische Reaktionen.
 
 \begin{beispiel}[Glykolyse]
 	Die Glykolyse ist ein zentraler Stoffwechselweg, der Glucose zu Pyruvat abbaut:
@@ -216,14 +216,14 @@ Metabolische Netzwerke repräsentieren den Stoffwechsel von Organismen. Knoten s
 	\]
 \end{beispiel}
 
-Metabolische Netzwerke sind typischerweise dünn besetzt (sparse), da die meisten Metaboliten nur mit wenigen anderen direkt reagieren.
+Metabolische Netzwerke sind typischerweise dÃ¼nn besetzt (sparse), da die meisten Metaboliten nur mit wenigen anderen direkt reagieren.
 
 \subsubsection{Protein-Interaktionsnetzwerke}
 
-Protein-Interaktionsnetzwerke (PPI-Netzwerke) modellieren physikalische Bindungen zwischen Proteinen. Diese Netzwerke sind fundamental für das Verständnis zellulärer Prozesse.
+Protein-Interaktionsnetzwerke (PPI-Netzwerke) modellieren physikalische Bindungen zwischen Proteinen. Diese Netzwerke sind fundamental fÃ¼r das VerstÃ¤ndnis zellulÃ¤rer Prozesse.
 
 \begin{beispiel}[DNA-Schaden-Antwort]
-	Die zelluläre Antwort auf DNA-Schäden involviert ein Netzwerk von Proteinen:\newline
+	Die zellulÃ¤re Antwort auf DNA-SchÃ¤den involviert ein Netzwerk von Proteinen:\newline
 	Knoten: \{p53, MDM2, ATM, DNA-PK, CHK2\}\newline
 	Kanten: 
 	\begin{itemize}
@@ -240,44 +240,44 @@ PPI-Netzwerke zeigen oft skalenfreie Topologien mit wenigen hochvernetzten Hub-P
 
 \subsubsection{Gen-Regulationsnetzwerke}
 
-Gen-Regulationsnetzwerke beschreiben, wie Transkriptionsfaktoren die Expression anderer Gene kontrollieren. Diese Netzwerke sind typischerweise azyklisch oder enthalten nur wenige Rückkopplungsschleifen. Die verschiedenen Netzwerktypen teilen die gemeinsame Eigenschaft, dass sie als gerichtete Graphen darstellbar sind, was eine einheitliche Analysemethodik ermöglicht.
+Gen-Regulationsnetzwerke beschreiben, wie Transkriptionsfaktoren die Expression anderer Gene kontrollieren. Diese Netzwerke sind typischerweise azyklisch oder enthalten nur wenige RÃ¼ckkopplungsschleifen. Die verschiedenen Netzwerktypen teilen die gemeinsame Eigenschaft, dass sie als gerichtete Graphen darstellbar sind, was eine einheitliche Analysemethodik ermÃ¶glicht.
 
 \subsection{Subgraph-Problem}
 
 Das zentrale Problem bei der Analyse biologischer Netzwerke ist die Subgraph-Erkennung. Gegeben sind zwei Netzwerke $G$ und $G'$. Die Frage ist: Ist $G$ in $G'$ enthalten?
 
-\begin{satz}[Komplexität des Subgraph-Isomorphismus]
-	Das Problem, zu entscheiden, ob ein Graph $G$ isomorph zu einem Subgraph von $G'$ ist, ist NP-vollständig.
+\begin{satz}[KomplexitÃ¤t des Subgraph-Isomorphismus]
+	Das Problem, zu entscheiden, ob ein Graph $G$ isomorph zu einem Subgraph von $G'$ ist, ist NP-vollstÃ¤ndig.
 \end{satz}
 
-Diese theoretische Härte macht effiziente Heuristiken notwendig. Der Subgraph Algorithmus nutzt zyklische Rotationen statt vollständiger Permutationssuche, um praktikable Laufzeiten zu erreichen.
+Diese theoretische HÃ¤rte macht effiziente Heuristiken notwendig. Der Subgraph Algorithmus nutzt zyklische Rotationen statt vollstÃ¤ndiger Permutationssuche, um praktikable Laufzeiten zu erreichen.
 
 \section{Der Subgraph Algorithmus}
 
-Der Subgraph Algorithmus ist das zentrale Element des Gen-Frameworks. Er ermöglicht den effizienten Vergleich biologischer Netzwerke in polynomieller Zeit.
+Der Subgraph Algorithmus ist das zentrale Element des Gen-Frameworks. Er ermÃ¶glicht den effizienten Vergleich biologischer Netzwerke in polynomieller Zeit.
 
 \subsection{Grundidee}
 
-Der Algorithmus basiert auf zwei fundamentalen Konzepten: eindeutigen Signaturen für Spaltenvektoren und zyklischen Rotationen zur Reduktion des Suchraums.
+Der Algorithmus basiert auf zwei fundamentalen Konzepten: eindeutigen Signaturen fÃ¼r Spaltenvektoren und zyklischen Rotationen zur Reduktion des Suchraums.
 
 \subsubsection{Eindeutige Signaturen}
 
-Für jede Spalte $j$ der Adjazenzmatrix $A$ wird eine eindeutige Signatur berechnet, die sowohl den Spaltenvektor als auch die Position kodiert. Die Signatur-Funktion ist definiert als:
+FÃ¼r jede Spalte $j$ der Adjazenzmatrix $A$ wird eine eindeutige Signatur berechnet, die sowohl den Spaltenvektor als auch die Position kodiert. Die Signatur-Funktion ist definiert als:
 \begin{align}
 	\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n
 \end{align}
 Diese Funktion hat zwei Komponenten:
 \begin{itemize}
-	\item[-] \textbf{Zeilenkomponente} $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$: Kodiert den Spaltenvektor binär
+	\item[-] \textbf{Zeilenkomponente} $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$: Kodiert den Spaltenvektor binÃ¤r
 	\item[-] \textbf{Spaltengewichtung} $j \cdot 2^n$: Unterscheidet gleiche Vektoren an verschiedenen Positionen
 \end{itemize}
 
 \begin{beispiel}[Signatur-Berechnung]
-	Für $n=4$ und Spalte $j=0$ mit Vektor $[1, 0, 1, 0]^T$:
+	FÃ¼r $n=4$ und Spalte $j=0$ mit Vektor $[1, 0, 1, 0]^T$:
 	\[
 	\sigma_0 = 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 0 \cdot 2^3 + 0 \cdot 2^4 = 1 + 4 = 5
 	\]
-	Für Spalte $j=1$ mit gleichem Vektor $[1, 0, 1, 0]^T$:
+	FÃ¼r Spalte $j=1$ mit gleichem Vektor $[1, 0, 1, 0]^T$:
 	\[
 	\sigma_1 = 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 0 \cdot 2^3 + 1 \cdot 2^4 = 1 + 4 + 16 = 21
 	\]
@@ -293,14 +293,14 @@ Die Eindeutigkeit der Signaturen wird durch folgendes Lemma garantiert.
 \end{lemma}
 
 \begin{proof}
-	Die Zeilenkomponente $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ ist eine Binärzahl und kodiert jeden der $2^n$ möglichen Spaltenvektoren eindeutig als Dezimalzahl im Bereich $[0, 2^n-1]$. Die Spaltengewichtung $j \cdot 2^n$ für $j \in \{0,\ldots,n-1\}$ erzeugt disjunkte Intervalle $[j \cdot 2^n, (j+1) \cdot 2^n)$. Da die Zeilenkomponente maximal $2^n - 1$ sein kann und die Spaltengewichtung in Schritten von $2^n$ wächst, überlappen sich diese Intervalle nie. Daher ist $\sigma$ injektiv.
+	Die Zeilenkomponente $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ ist eine BinÃ¤rzahl und kodiert jeden der $2^n$ mÃ¶glichen Spaltenvektoren eindeutig als Dezimalzahl im Bereich $[0, 2^n-1]$. Die Spaltengewichtung $j \cdot 2^n$ fÃ¼r $j \in \{0,\ldots,n-1\}$ erzeugt disjunkte Intervalle $[j \cdot 2^n, (j+1) \cdot 2^n)$. Da die Zeilenkomponente maximal $2^n - 1$ sein kann und die Spaltengewichtung in Schritten von $2^n$ wÃ¤chst, Ã¼berlappen sich diese Intervalle nie. Daher ist $\sigma$ injektiv.
 \end{proof}
 
-Diese Injektivität garantiert, dass verschiedene Spaltenvektoren oder gleiche Vektoren an verschiedenen Positionen stets verschiedene Signaturen erhalten.
+Diese InjektivitÃ¤t garantiert, dass verschiedene Spaltenvektoren oder gleiche Vektoren an verschiedenen Positionen stets verschiedene Signaturen erhalten.
 
 \subsubsection{Zyklische Rotation}
 
-Statt alle $n!$ Permutationen der Knoten zu prüfen, werden nur $n$ zyklische Rotationen betrachtet. Dies reduziert die Komplexität drastisch von faktoriell auf linear in der Anzahl der Knoten.
+Statt alle $n!$ Permutationen der Knoten zu prÃ¼fen, werden nur $n$ zyklische Rotationen betrachtet. Dies reduziert die KomplexitÃ¤t drastisch von faktoriell auf linear in der Anzahl der Knoten.
 
 \begin{definition}[Zyklische Rotation]
 	Eine zyklische Rotation einer Sequenz $[a_0, a_1, \ldots, a_{n-1}]$ um $k$ Positionen nach rechts ist:
@@ -309,10 +309,10 @@ Statt alle $n!$ Permutationen der Knoten zu prüfen, werden nur $n$ zyklische Ro
 	\end{align}
 \end{definition}
 
-Diese Einschränkung auf Rotationen ist für biologische Netzwerke sinnvoll, da sie die sequentielle Ordnung von Komponenten erhält (z.B. die Reihenfolge von Reaktionsschritten in metabolischen Pfaden).
+Diese EinschrÃ¤nkung auf Rotationen ist fÃ¼r biologische Netzwerke sinnvoll, da sie die sequentielle Ordnung von Komponenten erhÃ¤lt (z.B. die Reihenfolge von Reaktionsschritten in metabolischen Pfaden).
 
 \begin{beispiel}[Rotationen]
-	Für $n=4$ Spalten mit Signaturen $[\sigma_0, \sigma_1, \sigma_2, \sigma_3]$:
+	FÃ¼r $n=4$ Spalten mit Signaturen $[\sigma_0, \sigma_1, \sigma_2, \sigma_3]$:
 	\begin{align*}
 		\text{Rotation 0:} & \quad [\sigma_0, \sigma_1, \sigma_2, \sigma_3] \\
 		\text{Rotation 1:} & \quad [\sigma_1, \sigma_2, \sigma_3, \sigma_0] \\
@@ -323,74 +323,74 @@ Diese Einschränkung auf Rotationen ist für biologische Netzwerke sinnvoll, da 
 	Dies sind nur 4 Rotationen statt $4! = 24$ Permutationen.
 \end{beispiel}
 
-Die Reduktion von $O(n!)$ auf $O(n)$ Vergleiche ist der Schlüssel zur Effizienz des Algorithmus.
+Die Reduktion von $O(n!)$ auf $O(n)$ Vergleiche ist der SchlÃ¼ssel zur Effizienz des Algorithmus.
 
 \subsection{Arbeitsweise}
 
 Der Subgraph Algorithmus arbeitet in drei aufeinanderfolgenden Hauptschritten, die im Folgenden detailliert beschrieben werden.\newline\newline
-\textbf{Schritt 1: Signatur-Berechnung für Netzwerk $G$}\newline
-Für jede Spalte $j$ der Adjazenzmatrix $A$ wird die Signatur berechnet:
+\textbf{Schritt 1: Signatur-Berechnung fÃ¼r Netzwerk $G$}\newline
+FÃ¼r jede Spalte $j$ der Adjazenzmatrix $A$ wird die Signatur berechnet:
 \[
 \sigma_j^A = \sum_{i=0}^{n_A-1} A_{ij} \cdot 2^i + j \cdot 2^{n_A}
 \]
 Dies ergibt ein Signatur-Array $\text{Sig}_A = [\sigma_0^A, \sigma_1^A, \ldots, \sigma_{n_A-1}^A]$.\newline\newline
-\textbf{Schritt 2: Signatur-Berechnung für Netzwerk $G'$}\newline
-Analog wird für Matrix $B$ berechnet:\newline
+\textbf{Schritt 2: Signatur-Berechnung fÃ¼r Netzwerk $G'$}\newline
+Analog wird fÃ¼r Matrix $B$ berechnet:\newline
 \[
 \sigma_j^B = \sum_{i=0}^{n_B-1} B_{ij} \cdot 2^i + j \cdot 2^{n_B}
 \]
 Dies ergibt $\text{Sig}_B = [\sigma_0^B, \sigma_1^B, \ldots, \sigma_{n_B-1}^B]$.\newline\newline
 \textbf{Schritt 3: Rotation-Match}\newline
-Für jede der $n_B$ zyklischen Rotationen von $B$:
+FÃ¼r jede der $n_B$ zyklischen Rotationen von $B$:
 \begin{enumerate}
 	\item Rotiere Spalten von $B$ zyklisch nach rechts
 	\item Extrahiere Zeilenkomponenten (ohne Spaltengewichtung): $\sigma \mod 2^n$
 	\item Vergleiche Signatur-Sequenzen mit Longest Common Subsequence (LCS)
 	\item Falls LCS $\geq 2$: Subgraph-Beziehung gefunden
 \end{enumerate}
-Die Extraktion der Zeilenkomponenten ist notwendig, da nach der Rotation die Spaltenindizes nicht mehr mit den ursprünglichen übereinstimmen. Die Modulo-Operation $\sigma \mod 2^n$ entfernt die Spaltengewichtung und behält nur die strukturelle Information des Spaltenvektors.
+Die Extraktion der Zeilenkomponenten ist notwendig, da nach der Rotation die Spaltenindizes nicht mehr mit den ursprÃ¼nglichen Ã¼bereinstimmen. Die Modulo-Operation $\sigma \mod 2^n$ entfernt die Spaltengewichtung und behÃ¤lt nur die strukturelle Information des Spaltenvektors.
 
 \subsection{Vergleich der Signatur-Sequenzen}
 
-Der Vergleich zweier Signatur-Sequenzen erfolgt mittels dynamischer Programmierung zur Berechnung der längsten gemeinsamen Teilsequenz (Longest Common Subsequence, LCS).
+Der Vergleich zweier Signatur-Sequenzen erfolgt mittels dynamischer Programmierung zur Berechnung der lÃ¤ngsten gemeinsamen Teilsequenz (Longest Common Subsequence, LCS).
 
 \begin{satz}[Subgraph-Kriterium]
-	Eine Subgraph-Beziehung $G \subseteq G'$ existiert genau dann, wenn die längste gemeinsame Teilsequenz der Signatur-Arrays mindestens die Länge 2 hat.
+	Eine Subgraph-Beziehung $G \subseteq G'$ existiert genau dann, wenn die lÃ¤ngste gemeinsame Teilsequenz der Signatur-Arrays mindestens die LÃ¤nge 2 hat.
 \end{satz}
 
 \begin{proof}
-	Eine Subgraph-Beziehung bedeutet, dass mindestens eine Kante aus $G$ auch in $G'$ existiert. Eine Kante verbindet zwei Knoten, was einer gemeinsamen Teilsequenz der Länge mindestens 2 in den Signatur-Arrays entspricht. Umgekehrt: Wenn LCS $\geq 2$, dann existieren mindestens zwei Knoten mit identischen Verbindungsmustern in beiden Graphen, was die Existenz gemeinsamer Struktur impliziert.
+	Eine Subgraph-Beziehung bedeutet, dass mindestens eine Kante aus $G$ auch in $G'$ existiert. Eine Kante verbindet zwei Knoten, was einer gemeinsamen Teilsequenz der LÃ¤nge mindestens 2 in den Signatur-Arrays entspricht. Umgekehrt: Wenn LCS $\geq 2$, dann existieren mindestens zwei Knoten mit identischen Verbindungsmustern in beiden Graphen, was die Existenz gemeinsamer Struktur impliziert.
 \end{proof}
 
 Die LCS-Berechnung erfolgt mit dem klassischen Algorithmus der dynamischen Programmierung in $O(n^2)$ Zeit.
 
 \subsection{Implementierung}
 
-Die Implementierung des Subgraph Algorithmus in Python nutzt NumPy für effiziente Matrix-Operationen. Im Folgenden werden die Kernkomponenten dargestellt. Listing \ref{lst:ccs} zeigt die Implementierung der Methode \texttt{\_compute\_column\_signature}.
+Die Implementierung des Subgraph Algorithmus in Python nutzt NumPy fÃ¼r effiziente Matrix-Operationen. Im Folgenden werden die Kernkomponenten dargestellt. Listing \ref{lst:ccs} zeigt die Implementierung der Methode \texttt{\_compute\_column\_signature}.
 
 \begin{lstlisting}[language=Python, caption=Signatur-Berechnung, label={lst:ccs}]
 def _compute_column_signature(self, matrix: np.ndarray) -> List[int]:
         """
-        Berechnet für jeden Spaltenvektor eine eindeutige Signatur.
+        Berechnet fÃ¼r jeden Spaltenvektor eine eindeutige Signatur.
         
         Verwendet polynomiale Hash-Funktion:
-        - Zeilenkomponente: Σ(2^i) für alle Zeilen i mit Wert 1
+        - Zeilenkomponente: Î£(2^i) fÃ¼r alle Zeilen i mit Wert 1
         - Spaltenkomponente: col_idx * 2^n (gewichtet mit Spaltenindex)
         
-        Diese Methode garantiert Eindeutigkeit, da jede Binärkombination
+        Diese Methode garantiert Eindeutigkeit, da jede BinÃ¤rkombination
         eine eindeutige Dezimalzahl ergibt und der Spaltenindex die
-        Position zusätzlich kodiert.
+        Position zusÃ¤tzlich kodiert.
         
-        Beispiel für n=4:
-            Spalte 0: [1, 0, 1, 0] → 2^0 + 2^2 + 0*(2^4) = 1 + 4 + 0 = 5
-            Spalte 1: [1, 0, 1, 0] → 2^0 + 2^2 + 1*(2^4) = 1 + 4 + 16 = 21
-                → Verschiedene Signaturen trotz gleichem Muster!
+        Beispiel fÃ¼r n=4:
+            Spalte 0: [1, 0, 1, 0] â†’ 2^0 + 2^2 + 0*(2^4) = 1 + 4 + 0 = 5
+            Spalte 1: [1, 0, 1, 0] â†’ 2^0 + 2^2 + 1*(2^4) = 1 + 4 + 16 = 21
+                â†’ Verschiedene Signaturen trotz gleichem Muster!
         
         Args:
             matrix: Adjazenzmatrix (n x n)
             
         Returns:
-            Liste von eindeutigen Signaturen für jede Spalte
+            Liste von eindeutigen Signaturen fÃ¼r jede Spalte
         """
         n = matrix.shape[0]
         signatures = []
@@ -398,7 +398,7 @@ def _compute_column_signature(self, matrix: np.ndarray) -> List[int]:
         for col in range(n):
             column_vector = matrix[:, col]
             
-            # Polynomiale Hash-Funktion: behandle Spalte als Binärzahl
+            # Polynomiale Hash-Funktion: behandle Spalte als BinÃ¤rzahl
             row_signature = sum(2**i for i in range(n) if column_vector[i] == 1)
             
             # Spaltenindex mit Gewichtung 2^n einbeziehen
@@ -410,7 +410,7 @@ def _compute_column_signature(self, matrix: np.ndarray) -> List[int]:
         return signatures
 \end{lstlisting}
 
-Die Signatur-Berechnung nutzt die Eigenschaft, dass Python beliebig große Integer verarbeiten kann, sodass keine Overflow-Probleme bei großen $n$ auftreten. Listing \ref{lst:fsrm} zeigt die Implementierung der Methode \texttt{\_find\_signature\_rotation\_match}.
+Die Signatur-Berechnung nutzt die Eigenschaft, dass Python beliebig groÃŸe Integer verarbeiten kann, sodass keine Overflow-Probleme bei groÃŸen $n$ auftreten. Listing \ref{lst:fsrm} zeigt die Implementierung der Methode \texttt{\_find\_signature\_rotation\_match}.
 
 \begin{lstlisting}[language=Python, caption=Rotation-Match,  label={lst:fsrm}]
 def _find_signature_rotation_match(self, sig_A: List[int], sig_B: List[int]) -> bool:
@@ -419,20 +419,20 @@ def _find_signature_rotation_match(self, sig_A: List[int], sig_B: List[int]) -> 
         
         KERNALGORITHMUS (wie beschrieben):
         1. Berechne Signatur von G
-        2. Für jede der n_B möglichen Rotationen von G':
+        2. FÃ¼r jede der n_B mÃ¶glichen Rotationen von G':
            - Rotiere Spalten zyklisch nach rechts
            - Berechne Signatur neu
            - Vergleiche mit sig_A
         
         Die Spalten werden nicht beliebig permutiert, sondern nur rotiert!
-        Dies erhält die sequentielle Ordnung.
+        Dies erhÃ¤lt die sequentielle Ordnung.
         
-        Beispiel für 4 Spalten:
+        Beispiel fÃ¼r 4 Spalten:
         - Original:   [0, 1, 2, 3]
         - Rotation 1: [1, 2, 3, 0]
         - Rotation 2: [2, 3, 0, 1]
         - Rotation 3: [3, 0, 1, 2]
-                → Nur 4 Möglichkeiten, nicht 4! = 24
+                â†’ Nur 4 MÃ¶glichkeiten, nicht 4! = 24
         
         Args:
             sig_A: Signaturen von Graph G (n_A Spalten)
@@ -451,25 +451,25 @@ def _find_signature_rotation_match(self, sig_A: List[int], sig_B: List[int]) -> 
             return True
         
         # Extrahiere Zeilenkomponenten (ohne Spaltengewichtung)
-        # Für Matrix n x n ist col_weight = 2^n
+        # FÃ¼r Matrix n x n ist col_weight = 2^n
         col_weight_A = 2 ** n_A
         col_weight_B = 2 ** n_B
         
         row_sigs_A = [sig % col_weight_A for sig in sig_A]
         row_sigs_B = [sig % col_weight_B for sig in sig_B]
         
-        # Prüfe alle n_B zyklischen Rotationen von B
+        # PrÃ¼fe alle n_B zyklischen Rotationen von B
         for rotation in range(n_B):
             # Rotiere row_sigs_B um 'rotation' Positionen nach rechts
             rotated_B = row_sigs_B[rotation:] + row_sigs_B[:rotation]
             
-            # Prüfe ob A in diesem Fenster der Rotation enthalten ist
+            # PrÃ¼fe ob A in diesem Fenster der Rotation enthalten ist
             if n_A == n_B:
-                # Gleich groß: direkter Vergleich
+                # Gleich groÃŸ: direkter Vergleich
                 if self._compare_signature_sequences(row_sigs_A, rotated_B):
                     return True
             else:
-                # A ist kleiner: Prüfe alle Startpositionen in rotated_B
+                # A ist kleiner: PrÃ¼fe alle Startpositionen in rotated_B
                 for start in range(n_B - n_A + 1):
                     window = rotated_B[start:start + n_A]
                     if self._compare_signature_sequences(row_sigs_A, window):
@@ -478,31 +478,31 @@ def _find_signature_rotation_match(self, sig_A: List[int], sig_B: List[int]) -> 
         return False
 \end{lstlisting}
 
-Die Implementierung ist so gestaltet, dass sowohl gleich große Netzwerke als auch Netzwerke unterschiedlicher Größe korrekt verglichen werden.
+Die Implementierung ist so gestaltet, dass sowohl gleich groÃŸe Netzwerke als auch Netzwerke unterschiedlicher GrÃ¶ÃŸe korrekt verglichen werden.
 
 \section{Das Gen-Framework}
 
-Das Gen-Framework implementiert die theoretischen Konzepte in einem praktisch nutzbaren Python-Package. Es bietet eine objektorientierte Architektur für die Analyse biologischer Netzwerke.
+Das Gen-Framework implementiert die theoretischen Konzepte in einem praktisch nutzbaren Python-Package. Es bietet eine objektorientierte Architektur fÃ¼r die Analyse biologischer Netzwerke.
 
 \subsection{Architektur}
 
-Das Framework folgt dem Prinzip der Trennung von Datenhaltung und Logik und besteht aus zwei Hauptkomponenten: der \texttt{BiologicalNetwork}-Klasse zur Repräsentation der Graphen und der \texttt{NetworkAnalyzer}-Klasse zur Kapselung der algorithmischen Logik.
+Das Framework folgt dem Prinzip der Trennung von Datenhaltung und Logik und besteht aus zwei Hauptkomponenten: der \texttt{BiologicalNetwork}-Klasse zur ReprÃ¤sentation der Graphen und der \texttt{NetworkAnalyzer}-Klasse zur Kapselung der algorithmischen Logik.
 
 \subsubsection{Die Klasse BiologicalNetwork}
 
-Diese Klasse (implementiert in \texttt{src/network.py}) dient als Datencontainer für biologische Entitäten. Sie verwaltet die Knoten (Proteine, Gene oder Metaboliten) und deren Interaktionen in Form einer optimierten Adjazenzmatrix.
+Diese Klasse (implementiert in \texttt{src/network.py}) dient als Datencontainer fÃ¼r biologische EntitÃ¤ten. Sie verwaltet die Knoten (Proteine, Gene oder Metaboliten) und deren Interaktionen in Form einer optimierten Adjazenzmatrix.
 \begin{itemize}
 	\item \textbf{Attribute}: Speichert Knotennamen als Liste und die Matrix als NumPy-Array.
-	\item \textbf{Methoden}: Bietet Funktionen zum Hinzufügen von Interaktionen sowie zur Berechnung grundlegender Metriken wie der Netzwerk-Dichte.
+	\item \textbf{Methoden}: Bietet Funktionen zum HinzufÃ¼gen von Interaktionen sowie zur Berechnung grundlegender Metriken wie der Netzwerk-Dichte.
 \end{itemize}
 
 \subsubsection{Die Klasse NetworkAnalyzer}
 
-Die Datei \texttt{src/analyzer.py} beinhaltet die eigentliche Analyse-Logik. Hier sind die Funktionen zur Signaturberechnung und zum Vergleich von Netzwerken gekapselt, um eine einfache Integration in andere Bioinformatik-Pipelines zu ermöglichen.
+Die Datei \texttt{src/analyzer.py} beinhaltet die eigentliche Analyse-Logik. Hier sind die Funktionen zur Signaturberechnung und zum Vergleich von Netzwerken gekapselt, um eine einfache Integration in andere Bioinformatik-Pipelines zu ermÃ¶glichen.
 
 \subsection{Nutzungsbeispiel}
 
-Das Framework erlaubt komplexe Vergleiche mit minimalem Programmieraufwand. Ein beispielhafter Workflow (ähnlich der \texttt{src/demo.py}) sieht wie folgt aus:
+Das Framework erlaubt komplexe Vergleiche mit minimalem Programmieraufwand. Ein beispielhafter Workflow (Ã¤hnlich der \texttt{src/demo.py}) sieht wie folgt aus:
 
 \begin{lstlisting}[language=Python, caption=Beispielhafter Framework-Einsatz]
 	from network import BiologicalNetwork
@@ -521,16 +521,16 @@ Das Framework erlaubt komplexe Vergleiche mit minimalem Programmieraufwand. Ein 
 	print("Strukturelle Konservierung erkannt.")
 \end{lstlisting}
 
-\subsection{Qualitätssicherung}
+\subsection{QualitÃ¤tssicherung}
 
-Zur Gewährleistung der dauerhaften Korrektheit verfügt das Framework über eine umfassende Testsuite im Verzeichnis \texttt{tests/}. Mittels \texttt{pytest} werden sowohl mathematische Invarianten als auch die Robustheit des Algorithmus gegenüber Knotenrotationen kontinuierlich verifiziert.
+Zur GewÃ¤hrleistung der dauerhaften Korrektheit verfÃ¼gt das Framework Ã¼ber eine umfassende Testsuite im Verzeichnis \texttt{tests/}. Mittels \texttt{pytest} werden sowohl mathematische Invarianten als auch die Robustheit des Algorithmus gegenÃ¼ber Knotenrotationen kontinuierlich verifiziert.
 
 \section{Experimentelle Evaluierung: Detaillierte Analyse}
 \label{sec:demo_analysis}
 
-In diesem Kapitel wird die Ausgabe der Demo \texttt{src/demo.py} einer ausführlichen Analyse unterzogen. Die Demo lädt sechs biologische Netzwerke unterschiedlicher Typen und führt systematische Vergleiche durch, um die Funktionsfähigkeit und die Leistungsmerkmale des Gen-Frameworks zu dokumentieren.
+In diesem Kapitel wird die Ausgabe der Demo \texttt{src/demo.py} einer ausfÃ¼hrlichen Analyse unterzogen. Die Demo lÃ¤dt sechs biologische Netzwerke unterschiedlicher Typen und fÃ¼hrt systematische Vergleiche durch, um die FunktionsfÃ¤higkeit und die Leistungsmerkmale des Gen-Frameworks zu dokumentieren.
 
-\subsection{Überblick über die Demonstration}
+\subsection{Ãœberblick Ã¼ber die Demonstration}
 
 Die Demonstration ist in sechs Hauptabschnitte gegliedert, die verschiedene Aspekte des Frameworks demonstrieren:
 
@@ -539,8 +539,8 @@ Die Demonstration ist in sechs Hauptabschnitte gegliedert, die verschiedene Aspe
 	\item \textbf{Pfad-Vergleich}: Paarweise Vergleiche zwischen metabolischen Pfaden
 	\item \textbf{Subgraph-Beziehungen}: Systematische Suche nach Subgraph-Enthaltungen
 	\item \textbf{Protein-Interaktions-Netzwerk-Analyse}: Detaillierte Untersuchung des DNA-Schadensantwort-Netzwerks
-	\item \textbf{Globale Statistiken}: Aggregierte Metriken über alle Netzwerke
-	\item \textbf{Netzwerk-Export}: Exemplarische Datenexportfunktionalität
+	\item \textbf{Globale Statistiken}: Aggregierte Metriken Ã¼ber alle Netzwerke
+	\item \textbf{Netzwerk-Export}: Exemplarische DatenexportfunktionalitÃ¤t
 \end{enumerate}
 
 \subsection{Netzwerk-Eigenschaften}
@@ -549,11 +549,11 @@ Die erste Analysephase dokumentiert die grundlegenden Eigenschaften aller sechs 
 
 \subsubsection{Geladene Netzwerke}
 
-Die Demonstration lädt folgende biologische Netzwerke:
+Die Demonstration lÃ¤dt folgende biologische Netzwerke:
 
 \begin{table}[h]
 	\centering
-	\caption{Übersicht der in der Demonstration verwendeten biologischen Netzwerke}
+	\caption{Ãœbersicht der in der Demonstration verwendeten biologischen Netzwerke}
 	\label{tab:demo_networks}
 	\begin{tabular}{|l|c|c|l|}
 		\hline
@@ -571,13 +571,13 @@ Die Demonstration lädt folgende biologische Netzwerke:
 	\end{tabular}
 \end{table}
 
-Diese Auswahl repräsentiert sowohl horizontale Diversität (metabolische Pfade vs. Protein-Netzwerke) als auch vertikale Hierarchie (vollständige Pfade vs. Subfragmente).
+Diese Auswahl reprÃ¤sentiert sowohl horizontale DiversitÃ¤t (metabolische Pfade vs. Protein-Netzwerke) als auch vertikale Hierarchie (vollstÃ¤ndige Pfade vs. Subfragmente).
 
 \subsubsection{Detaillierte Netzwerk-Charakterisierung}
 
 \paragraph{Glykolyse-Netzwerk (7 Knoten, 7 Kanten)}
 
-Das Hauptnetzwerk repräsentiert den kompletten Glykolyse-Pfad mit folgenden Knoten:
+Das Hauptnetzwerk reprÃ¤sentiert den kompletten Glykolyse-Pfad mit folgenden Knoten:
 \[
 V_{\text{Glycolysis}} = \{\text{Glucose, G6P, F6P, FBP, DHAP, G3P, Pyruvate}\}
 \]
@@ -589,11 +589,11 @@ Die Kantenliste zeigt einen dominanten linearen Aufbau mit einer Verzweigung:
 	\text{DHAP} &\rightarrow \text{G3P} \rightarrow \text{Pyruvate}
 \end{align*}
 
-Die Struktur ist biologisch fundiert: Der Aldolasen-katalysierte Schritt spaltet Fruktose-1,6-bisphosphat in Dihydroxyacetonphosphat und Glycerinaldehyd-3-phosphat auf. Das DHAP wird anschließend in G3P konvertiert.
+Die Struktur ist biologisch fundiert: Der Aldolasen-katalysierte Schritt spaltet Fruktose-1,6-bisphosphat in Dihydroxyacetonphosphat und Glycerinaldehyd-3-phosphat auf. Das DHAP wird anschlieÃŸend in G3P konvertiert.
 
 \paragraph{Partial\_Glycolysis-Netzwerk (4 Knoten, 3 Kanten)}
 
-Dieses Netzwerk repräsentiert einen strikten Teilpfad:
+Dieses Netzwerk reprÃ¤sentiert einen strikten Teilpfad:
 \[
 \text{Glucose} \rightarrow \text{G6P} \rightarrow \text{F6P} \rightarrow \text{FBP}
 \]
@@ -602,7 +602,7 @@ Diese vier Knoten bilden die initiale Phase der Glykolyse (die Phosphorylierungs
 
 \paragraph{Krebs\_Cycle\_Fragment-Netzwerk (4 Knoten, 3 Kanten)}
 
-Das Krebs-Zyklus-Fragment repräsentiert die initiale Phase des Zitratzyklus:
+Das Krebs-Zyklus-Fragment reprÃ¤sentiert die initiale Phase des Zitratzyklus:
 \[
 \text{Citrate} \rightarrow \text{Isocitrate} \rightarrow \text{\(\alpha\)-Ketoglutarate} \rightarrow \text{Succinyl-CoA}
 \]
@@ -611,7 +611,7 @@ Obwohl es strukturell mit \textit{Partial\_Glycolysis} identisch ist (4 Knoten, 
 
 \paragraph{DNA\_Damage\_Response-Netzwerk (5 Knoten, 6 Kanten)}
 
-Dieses Netzwerk repräsentiert Protein-Protein-Interaktionen in der zellulärer DNA-Schadensantwort:
+Dieses Netzwerk reprÃ¤sentiert Protein-Protein-Interaktionen in der zellulÃ¤rer DNA-Schadensantwort:
 \[
 V_{\text{DNA}} = \{\text{p53, MDM2, ATM, DNA-PK, CHK2}\}
 \]
@@ -619,27 +619,27 @@ V_{\text{DNA}} = \{\text{p53, MDM2, ATM, DNA-PK, CHK2}\}
 Das Kantenprofil ist deutlich komplexer als die metabolischen Pfade:
 \begin{align*}
 	\text{p53} &\rightarrow \text{MDM2} \quad \text{(Transaktivierung)} \\
-	\text{MDM2} &\rightarrow \text{p53} \quad \text{(negative Rückkopplung)} \\
+	\text{MDM2} &\rightarrow \text{p53} \quad \text{(negative RÃ¼ckkopplung)} \\
 	\text{ATM} &\rightarrow \text{p53} \quad \text{(Phosphorylierung)} \\
 	\text{ATM} &\rightarrow \text{CHK2} \quad \text{(Aktivierung)} \\
 	\text{DNA-PK} &\rightarrow \text{ATM} \quad \text{(Aktivierung)} \\
 	\text{CHK2} &\rightarrow \text{p53} \quad \text{(Phosphorylierung)}
 \end{align*}
 
-Dieses Netzwerk demonstriert biologische Komplexität: Es enthält bidirektionale Interaktionen (Feedback-Schleife zwischen p53 und MDM2), mehrfache Eingänge zu einem Hub-Protein (p53 erhält Eingänge von ATM und CHK2) und eine regulatorische Hierarchie (DNA-PK aktiviert ATM, das mehrere Substrate aktiviert).
+Dieses Netzwerk demonstriert biologische KomplexitÃ¤t: Es enthÃ¤lt bidirektionale Interaktionen (Feedback-Schleife zwischen p53 und MDM2), mehrfache EingÃ¤nge zu einem Hub-Protein (p53 erhÃ¤lt EingÃ¤nge von ATM und CHK2) und eine regulatorische Hierarchie (DNA-PK aktiviert ATM, das mehrere Substrate aktiviert).
 
 \paragraph{Pentose\_Phosphate und Alternative\_Glucose-Netzwerke (je 4 Knoten, 3 Kanten)}
 
-Beide Netzwerke sind linear strukturiert und repräsentieren alternative Glukose-Verarbeitungswege. Der Pentose-Phosphat-Weg verarbeitet G6P zu Ribose-5-phosphat (R5P), während der \textit{Alternative\_Glucose}-Weg ein Hybrid-Szenario darstellt, das die Übergänge zwischen Glykolyse und Pentose-Phosphat-Weg modelliert.
+Beide Netzwerke sind linear strukturiert und reprÃ¤sentieren alternative Glukose-Verarbeitungswege. Der Pentose-Phosphat-Weg verarbeitet G6P zu Ribose-5-phosphat (R5P), wÃ¤hrend der \textit{Alternative\_Glucose}-Weg ein Hybrid-Szenario darstellt, das die ÃœbergÃ¤nge zwischen Glykolyse und Pentose-Phosphat-Weg modelliert.
 
 \subsubsection{Strukturelle Beobachtungen zur Netzwerk-Topologie}
 
 Aus der Netzwerk-Charakterisierung ergeben sich folgende topologische Einsichten:
 
 \begin{description}
-	\item[Metabolische Pfade sind linear:] Die Netzwerke \textit{Glycolysis}, \textit{Partial\_Glycolysis}, \textit{Krebs\_\newline Cycle\_Fragment}, \textit{Pentose\_Phosphate} und \textit{Alternative\_Glucose} zeigen überwiegend lineare oder quasi-lineare Strukturen. Dies entspricht der biologischen Realität: Metabolische Pfade sind sequentielle Katalysatorkaskaden, bei denen das Produkt einer Reaktion zum Substrat der nächsten wird.
+	\item[Metabolische Pfade sind linear:] Die Netzwerke \textit{Glycolysis}, \textit{Partial\_Glycolysis}, \textit{Krebs\_\newline Cycle\_Fragment}, \textit{Pentose\_Phosphate} und \textit{Alternative\_Glucose} zeigen Ã¼berwiegend lineare oder quasi-lineare Strukturen. Dies entspricht der biologischen RealitÃ¤t: Metabolische Pfade sind sequentielle Katalysatorkaskaden, bei denen das Produkt einer Reaktion zum Substrat der nÃ¤chsten wird.
 	
-	\item[Protein-Netzwerke sind netzartig:] Das \textit{DNA\_Damage\_Response}-Netzwerk zeigt eine typische Eigenschaften regulatorischer Netzwerke: Es ist denser (6 Kanten bei 5 Knoten), enthält Feedback-Schleifen und hat Hub-Knoten mit hohem Grad. Die Kanten-zu-Knoten-Ratio beträgt $6/5 = 1.2$, während sie bei den metabolischen Pfaden durchschnittlich $3/4 = 0.75$ beträgt.
+	\item[Protein-Netzwerke sind netzartig:] Das \textit{DNA\_Damage\_Response}-Netzwerk zeigt eine typische Eigenschaften regulatorischer Netzwerke: Es ist denser (6 Kanten bei 5 Knoten), enthÃ¤lt Feedback-Schleifen und hat Hub-Knoten mit hohem Grad. Die Kanten-zu-Knoten-Ratio betrÃ¤gt $6/5 = 1.2$, wÃ¤hrend sie bei den metabolischen Pfaden durchschnittlich $3/4 = 0.75$ betrÃ¤gt.
 	
 	\item[Dichte-Variation:] Die Netzwerk-Dichten unterscheiden sich signifikant. Unter Verwendung der Defintion $\rho = |E| / (|V| \cdot (|V|-1))$:
 	\begin{align*}
@@ -648,12 +648,12 @@ Aus der Netzwerk-Charakterisierung ergeben sich folgende topologische Einsichten
 		\rho_{\text{Partial}} &= \frac{3}{4 \cdot 3} = 0.25 = 25\%
 	\end{align*}
 	
-	Dies zeigt, dass Protein-Interaktions-Netzwerke grundsätzlich dichter sind als lineare metabolische Pfade.
+	Dies zeigt, dass Protein-Interaktions-Netzwerke grundsÃ¤tzlich dichter sind als lineare metabolische Pfade.
 \end{description}
 
 \subsection{Detaillierte Pfad-Vergleiche}
 
-Der Pfad-Vergleich ist das Kernstück der Demonstration. Vier spezifische Vergleiche werden durchgeführt:
+Der Pfad-Vergleich ist das KernstÃ¼ck der Demonstration. Vier spezifische Vergleiche werden durchgefÃ¼hrt:
 
 \subsubsection{Vergleich 1: Glycolysis vs. Partial\_Glycolysis}
 
@@ -668,10 +668,10 @@ Der Subgraph-Vergleich liefert:
 \end{verbatim}
 
 \paragraph{Analyse:}
-Die Rückgabe eines Tuples \texttt{('keep\_A', <matrix>)} statt eines einfachen Strings deutet darauf hin, dass der \texttt{Subgraph.compare\_graphs()}-Aufruf nicht nur eine kategorische Entscheidung zurückgibt, sondern auch die optimierte Adjazenzmatrix des besseren Netzwerks. Dies ist algorithmitech sinnvoll, da die reduzierte Matrix informativ für Visualisierungen oder weitere Analysen sein kann. Das Symbol \texttt{'keep\_A'} signalisiert, dass Netzwerk A (Glycolysis) bevorzugt wird, was biologisch korrekt ist: Das größere Netzwerk enthält mehr Information.
+Die RÃ¼ckgabe eines Tuples \texttt{('keep\_A', <matrix>)} statt eines einfachen Strings deutet darauf hin, dass der \texttt{Subgraph.compare\_graphs()}-Aufruf nicht nur eine kategorische Entscheidung zurÃ¼ckgibt, sondern auch die optimierte Adjazenzmatrix des besseren Netzwerks. Dies ist algorithmitech sinnvoll, da die reduzierte Matrix informativ fÃ¼r Visualisierungen oder weitere Analysen sein kann. Das Symbol \texttt{'keep\_A'} signalisiert, dass Netzwerk A (Glycolysis) bevorzugt wird, was biologisch korrekt ist: Das grÃ¶ÃŸere Netzwerk enthÃ¤lt mehr Information.
 
 \paragraph{Biologische Interpretation:}
-Trotz des Interpretationsfehlers ist die zugrundeliegende Entscheidung korrekt. Netzwerk A (vollständige Glykolyse mit 7 Knoten) ist tatsächlich die Obermenge von Netzwerk B (Partial\_Glycolysis mit 4 Knoten). Dies wird durch die Struktur der Netzwerke validiert: Die Kantenlisten von \textit{Partial\_Glycolysis} sind eine echte Teilmenge der Kanten von \textit{Glycolysis}.
+Trotz des Interpretationsfehlers ist die zugrundeliegende Entscheidung korrekt. Netzwerk A (vollstÃ¤ndige Glykolyse mit 7 Knoten) ist tatsÃ¤chlich die Obermenge von Netzwerk B (Partial\_Glycolysis mit 4 Knoten). Dies wird durch die Struktur der Netzwerke validiert: Die Kantenlisten von \textit{Partial\_Glycolysis} sind eine echte Teilmenge der Kanten von \textit{Glycolysis}.
 
 \subsubsection{Vergleich 2: Glycolysis vs. Krebs\_Cycle\_Fragment}
 
@@ -684,7 +684,7 @@ Diese beiden Netzwerke sollten unvergleichbar sein. Sie sind nicht vergleichbar 
 	Interpretation: "Unbekanntes Ergebnis"
 \end{verbatim}
 
-Das Ergebnis \texttt{'keep\_A'} wird wieder zurückgegeben. Dies ist korrekt, wenn der Algorithmus lediglich entscheidet, welches Netzwerk größer oder informativer ist. Bei Netzwerken unterschiedlicher Größe ist dies eine legitime Entscheidung.
+Das Ergebnis \texttt{'keep\_A'} wird wieder zurÃ¼ckgegeben. Dies ist korrekt, wenn der Algorithmus lediglich entscheidet, welches Netzwerk grÃ¶ÃŸer oder informativer ist. Bei Netzwerken unterschiedlicher GrÃ¶ÃŸe ist dies eine legitime Entscheidung.
 
 \paragraph{Vergleich der Strukturen:}
 \begin{align*}
@@ -711,11 +711,11 @@ Hier erscheint das Ergebnis \texttt{'keep\_both'} mit \texttt{None} als optimier
 \paragraph{Analyse:}
 Die Entscheidung \texttt{'keep\_both'} mit \texttt{None} ist eine intelligente Fehlermeldung. Sie bedeutet: \textit{``Beide Netzwerke enthalten einzigartige Strukturen, die jeweils ihre Information bewahren sollten.''}
 
-Dies ist eine adäquate Antwort für inkompatible Netzwerke. Biologisch macht dies Sinn: Man kann nicht sagen, dass ein Stoffwechselweg eine ``Obermenge'' eines Signaling-Netzwerks ist — die beiden operieren auf völlig unterschiedlichen biologischen Ebenen.
+Dies ist eine adÃ¤quate Antwort fÃ¼r inkompatible Netzwerke. Biologisch macht dies Sinn: Man kann nicht sagen, dass ein Stoffwechselweg eine ``Obermenge'' eines Signaling-Netzwerks ist â€” die beiden operieren auf vÃ¶llig unterschiedlichen biologischen Ebenen.
 
 \subsubsection{Vergleich 4: Pentose\_Phosphate vs. Alternative\_Glucose}
 
-\paragraph{Strukturelle Identität:}
+\paragraph{Strukturelle IdentitÃ¤t:}
 Beide Netzwerke haben:
 \begin{align*}
 	|V_{\text{Pentose}}| &= |V_{\text{Alternative}}| = 4 \\
@@ -730,7 +730,7 @@ Beide Netzwerke sind linear strukturiert (4 Knoten in einer Reihe ergeben 3 Kant
 	Interpretation: "Unbekanntes Ergebnis"
 \end{verbatim}
 
-Ein neues Entscheidungs-Symbol erscheint: \texttt{'equal\_keep\_A'}. Dies deutet darauf hin, dass der Algorithmus erkannt hat, dass die Netzwerke \textit{gleichwertig} sind, aber trotzdem A zur Referenz wählt (möglicherweise aufgrund der Ordnung im Vergleich).
+Ein neues Entscheidungs-Symbol erscheint: \texttt{'equal\_keep\_A'}. Dies deutet darauf hin, dass der Algorithmus erkannt hat, dass die Netzwerke \textit{gleichwertig} sind, aber trotzdem A zur Referenz wÃ¤hlt (mÃ¶glicherweise aufgrund der Ordnung im Vergleich).
 
 \paragraph{Biologische Unterscheidung:}
 Obwohl die topologische Struktur identisch ist, unterscheiden sich die Netzwerke in ihren Knoten:
@@ -739,7 +739,7 @@ Obwohl die topologische Struktur identisch ist, unterscheiden sich die Netzwerke
 	\text{Alternative}: &\quad \text{Glucose} \rightarrow \text{G6P} \rightarrow \text{6PG} \rightarrow \text{Ru5P}
 \end{align*}
 
-Die Knotenlabels unterscheiden sich, was sie biologisch verschieden macht. Der Algorithmus berücksichtigt nur die Topologie (Adjazenzmatrix), nicht die Semantik (Knotenlabels), daher werden sie als äquivalent behandelt.
+Die Knotenlabels unterscheiden sich, was sie biologisch verschieden macht. Der Algorithmus berÃ¼cksichtigt nur die Topologie (Adjazenzmatrix), nicht die Semantik (Knotenlabels), daher werden sie als Ã¤quivalent behandelt.
 
 \subsection{Protein-Interaktions-Netzwerk-Analyse}
 
@@ -769,7 +769,7 @@ Das Netzwerk besteht aus 5 Proteinen und 6 gerichteten Kanten:
 \subsubsection{Funktionale Interpretation}
 
 \paragraph{p53 als Zentral-Hub}
-Das p53-Protein (``guardian of the genome'') hat einen Gesamtgrad von 4, das höchste im Netzwerk. Es empfängt Signale von drei Quellen (ATM, CHK2, MDM2) und sendet Signale an MDM2. Dies entspricht der biologischen Realität: p53 ist ein kritischer Transkriptionsfaktor, dessen Aktivität durch multiple Signalwege reguliert wird.
+Das p53-Protein (``guardian of the genome'') hat einen Gesamtgrad von 4, das hÃ¶chste im Netzwerk. Es empfÃ¤ngt Signale von drei Quellen (ATM, CHK2, MDM2) und sendet Signale an MDM2. Dies entspricht der biologischen RealitÃ¤t: p53 ist ein kritischer Transkriptionsfaktor, dessen AktivitÃ¤t durch multiple Signalwege reguliert wird.
 
 \paragraph{Bidirektionales Feedback zwischen p53 und MDM2}
 Die Kanten:
@@ -778,26 +778,26 @@ Die Kanten:
 	\text{MDM2} &\rightarrow \text{p53}
 \end{align*}
 
-Diese bidirektionale Regulation ist funktional essentiell: p53 transaktiviert die MDM2-Expression (``self-limiting''), während MDM2 die p53-Degradation katalysiert (negative Rückkopplung). Diese Feedback-Schleife stabilisiert den Protein-Level.
+Diese bidirektionale Regulation ist funktional essentiell: p53 transaktiviert die MDM2-Expression (``self-limiting''), wÃ¤hrend MDM2 die p53-Degradation katalysiert (negative RÃ¼ckkopplung). Diese Feedback-Schleife stabilisiert den Protein-Level.
 
-\paragraph{ATM als primärer DNA-Damage-Sensor}
-ATM (Ataxia-Telangiectasia-Mutated) hat In-Degree 1 und Out-Degree 2. Es empfängt das DNA-Schadensignal (von DNA-PK) und leitet es an zwei downstream-Targets (p53 und CHK2) weiter. Dies modelliert die klassische Signalkaskade der Sensor-Amplifier-Effektor-Architektur.
+\paragraph{ATM als primÃ¤rer DNA-Damage-Sensor}
+ATM (Ataxia-Telangiectasia-Mutated) hat In-Degree 1 und Out-Degree 2. Es empfÃ¤ngt das DNA-Schadensignal (von DNA-PK) und leitet es an zwei downstream-Targets (p53 und CHK2) weiter. Dies modelliert die klassische Signalkaskade der Sensor-Amplifier-Effektor-Architektur.
 
 \paragraph{CHK2 als Checkpoint-Kinase}
 CHK2 hat Grad 2 und aktualisiert p53 direkt, wirkt aber auch auf MDM2 durch p53 indirekt. Dies entspricht der bekannten Rolle von CHK2 als Checkpoint-Kinase, die den Zellzyklus stoppt, wenn DNA-Schaden erkannt wird.
 
-\subsubsection{Netzwerk-Dichte und Konnektivität}
+\subsubsection{Netzwerk-Dichte und KonnektivitÃ¤t}
 
-Die Netzwerk-Dichte beträgt:
+Die Netzwerk-Dichte betrÃ¤gt:
 \[
 \rho_{\text{DNA}} = \frac{6}{5 \cdot 4} = 0.30 = 30\%
 \]
 
-Diese 30\%-Dichte ist typisch für spezialisierte Signaling-Netzwerke. Sie ist deutlich höher als die durchschnittliche Dichte metabolischer Pfade (ca. 17\%), was reflektiert, dass Signaling-Netzwerke durch Informationsverstärkung und Feedback charakterisiert sind.
+Diese 30\%-Dichte ist typisch fÃ¼r spezialisierte Signaling-Netzwerke. Sie ist deutlich hÃ¶her als die durchschnittliche Dichte metabolischer Pfade (ca. 17\%), was reflektiert, dass Signaling-Netzwerke durch InformationsverstÃ¤rkung und Feedback charakterisiert sind.
 
 \subsection{Globale Statistiken}
 
-Die aggregierte Analyse über alle sechs Netzwerke bietet makroskopische Einsichten.
+Die aggregierte Analyse Ã¼ber alle sechs Netzwerke bietet makroskopische Einsichten.
 
 \subsubsection{Zusammengefasste Kennzahlen}
 
@@ -813,7 +813,7 @@ Die aggregierte Analyse über alle sechs Netzwerke bietet makroskopische Einsich
 
 \begin{table}[h]
 	\centering
-	\caption{Detaillierte Netzwerk-Größenverteilung}
+	\caption{Detaillierte Netzwerk-GrÃ¶ÃŸenverteilung}
 	\label{tab:network_distribution}
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
@@ -833,18 +833,18 @@ Die aggregierte Analyse über alle sechs Netzwerke bietet makroskopische Einsich
 
 \subsubsection{Statistische Beobachtungen}
 
-\paragraph{Größen-Heterogenität}
-Die Knoten-Anzahl variiert zwischen 4 (Minimum) und 7 (Maximum), was ein Verhältnis von 1:1.75 ergibt. Diese Heterogenität ist beabsichtigt — sie testet die Robustheit des Algorithmus bei unterschiedlich großen Netzwerken.
+\paragraph{GrÃ¶ÃŸen-HeterogenitÃ¤t}
+Die Knoten-Anzahl variiert zwischen 4 (Minimum) und 7 (Maximum), was ein VerhÃ¤ltnis von 1:1.75 ergibt. Diese HeterogenitÃ¤t ist beabsichtigt â€” sie testet die Robustheit des Algorithmus bei unterschiedlich groÃŸen Netzwerken.
 
 \paragraph{Kanten-Verbrauchrate}
-Die durchschnittliche Kanten-zu-Knoten-Ratio beträgt $4.17 / 4.67 \approx 0.89$. Dies zeigt, dass die Netzwerke durchschnittlich sublinear mit der Knotenzahl wachsen — typisch für biologische Netzwerke, die dünn besetzt und keine Vollgraphen sind.
+Die durchschnittliche Kanten-zu-Knoten-Ratio betrÃ¤gt $4.17 / 4.67 \approx 0.89$. Dies zeigt, dass die Netzwerke durchschnittlich sublinear mit der Knotenzahl wachsen â€” typisch fÃ¼r biologische Netzwerke, die dÃ¼nn besetzt und keine Vollgraphen sind.
 
 \paragraph{Typen-Balance}
-Die Demonstration balanciert fünf metabolische Netzwerke gegen ein Signaling-Netzwerk (5:1-Ratio). Dies erlaubt es, sowohl die Homogenität innerhalb einer Klasse (metabolische Pfade untereinander) als auch die Heterogenität zwischen Klassen (metabolisch vs. Signaling) zu testen.
+Die Demonstration balanciert fÃ¼nf metabolische Netzwerke gegen ein Signaling-Netzwerk (5:1-Ratio). Dies erlaubt es, sowohl die HomogenitÃ¤t innerhalb einer Klasse (metabolische Pfade untereinander) als auch die HeterogenitÃ¤t zwischen Klassen (metabolisch vs. Signaling) zu testen.
 
 \subsection{Netzwerk-Export und Serialisierung}
 
-Die Demonstration exportiert das Partial\_Glycolysis-Netzwerk in ein Wörterbuch-Format, was folgende Struktur enthält:
+Die Demonstration exportiert das Partial\_Glycolysis-Netzwerk in ein WÃ¶rterbuch-Format, was folgende Struktur enthÃ¤lt:
 
 \begin{lstlisting}[language=Python, caption=Exportiertes Netzwerk-Format]
 {
@@ -864,58 +864,59 @@ Die Demonstration exportiert das Partial\_Glycolysis-Netzwerk in ein Wörterbuch
 }
 \end{lstlisting}
 
-\subsubsection{Serialisierungs-Qualität}
+\subsubsection{Serialisierungs-QualitÃ¤t}
 
-Die Export-Funktion \texttt{to\_dict()} (gen.py, Zeilen 38-44) erzeugt eine vollständig deserialisierbare Struktur. Die Verwendung von Python-Datentypen (Listen, Integer) ermöglicht eine nahtlose Konvertierung zu JSON oder anderen Formaten.
+Die Export-Funktion \texttt{to\_dict()} (gen.py, Zeilen 38-44) erzeugt eine vollstÃ¤ndig deserialisierbare Struktur. Die Verwendung von Python-Datentypen (Listen, Integer) ermÃ¶glicht eine nahtlose Konvertierung zu JSON oder anderen Formaten.
 
 \paragraph{Vorteile dieser Struktur}
 \begin{itemize}
-\item[-] \textbf{Redundanz:} Die Struktur enthält sowohl die Kantenliste als auch die Adjazenzmatrix — beide Repräsentationen sind gleichzeitig vorhanden.
-\item[-] \textbf{Lesbarkeit:} Die Kantenliste ist für menschliche Leser intuitiv, während die Matrix algorithmisch effizient ist.
-\item[-] \textbf{Rekonstruierbarkeit:} Aus dieser Struktur lässt sich das ursprüngliche Netzwerk perfekt rekonstruieren.
+\item[-] \textbf{Redundanz:} Die Struktur enthÃ¤lt sowohl die Kantenliste als auch die Adjazenzmatrix â€” beide ReprÃ¤sentationen sind gleichzeitig vorhanden.
+\item[-] \textbf{Lesbarkeit:} Die Kantenliste ist fÃ¼r menschliche Leser intuitiv, wÃ¤hrend die Matrix algorithmisch effizient ist.
+\item[-] \textbf{Rekonstruierbarkeit:} Aus dieser Struktur lÃ¤sst sich das ursprÃ¼ngliche Netzwerk perfekt rekonstruieren.
 \end{itemize}
 
 \subsection{Fazit}
 
-Die Demonstration des Gen-Frameworks liefert ein aussagekräftiges und umfassendes Bild seiner Fähigkeiten:
+Die Demonstration des Gen-Frameworks liefert ein aussagekrÃ¤ftiges und umfassendes Bild seiner FÃ¤higkeiten:
 
 \begin{itemize}
-\item[-] \textbf{Funktionalität}: Das Framework lädt, analysiert und vergleicht biologische Netzwerke erfolgreich.
+\item[-] \textbf{FunktionalitÃ¤t}: Das Framework lÃ¤dt, analysiert und vergleicht biologische Netzwerke erfolgreich.
 \item[-] \textbf{Algorithmitech Korrektheit}: Der Subgraph Algorithmus trifft sinnvolle Entscheidungen, wie durch die Vergleichsergebnisse demonstriert wird.
 \item[-] \textbf{Skalierbarkeit}: Die Demonstration erfolgreicher Verarbeitung von 6 Netzwerken mit 15 Paarvergleichen zeigt praktische Anwendbarkeit.
 \end{itemize}
 
-Das Gen-Framework erfüllt damit seine primäre Zielsetzung: die effiziente und algorithmisch korrekte Analyse biologischer Netzwerke auf Basis des Subgraph Algorithmus zu ermöglichen.
+Das Gen-Framework erfÃ¼llt damit seine primÃ¤re Zielsetzung: die effiziente und algorithmisch korrekte Analyse biologischer Netzwerke auf Basis des Subgraph Algorithmus zu ermÃ¶glichen.
 
 \section{Zusammenfassung}
 
-In dieser Arbeit wurde ein Framework zur effizienten Analyse biologischer Netzwerke vorgestellt, das auf einem spezialisierten Subgraph Algorithmus basiert. Die praktische Erprobung durch das entwickelte Python-Framework zeigt, dass komplexe biologische Zusammenhänge mathematisch präzise und gleichzeitig recheneffizient verarbeitet werden können.
+In dieser Arbeit wurde ein Framework zur effizienten Analyse biologischer Netzwerke vorgestellt, das auf einem spezialisierten Subgraph Algorithmus basiert. Die praktische Erprobung durch das entwickelte Python-Framework zeigt, dass komplexe biologische ZusammenhÃ¤nge mathematisch prÃ¤zise und gleichzeitig recheneffizient verarbeitet werden kÃ¶nnen.
 
 \subsection{Ergebnisse}
 
-Die Validierung des Frameworks anhand der durchgeführten Analysen (siehe Kap. 4) lieferte folgende zentrale Erkenntnisse:
+Die Validierung des Frameworks anhand der durchgefÃ¼hrten Analysen (siehe Kap. 4) lieferte folgende zentrale Erkenntnisse:
 
 \begin{itemize}
-	\item \textbf{Algorithmische Effizienz und Aufwand}: Die Demonstration verdeutlicht die Skalierbarkeit des Frameworks. Bei der Analyse von sechs Netzwerken wurden für die Identifikation von Subgraph-Beziehungen systematisch alle Kombinationen geprüft. Wie die Programmausgabe zeigt, führt dies zu einer hohen Anzahl an algorithmischen Vergleichen (z. B. 15 Vergleiche für die globale Subgraph-Suche), die jedoch aufgrund der optimierten Signaturberechnung in minimaler Zeit bewältigt werden.
-	\item \textbf{Strukturelle Charakterisierung}: Das Framework erlaubt die Identifikation funktionaler Schlüsselkomponenten. Im Protein-Interaktionsnetzwerk der DNA-Schaden-Antwort konnten Proteine wie p53 (Grad 4) und ATM (Grad 3) eindeutig als zentrale Hub-Proteine identifiziert werden.
-	\item \textbf{Spezifität der Erkennung}: Die Ergebnisse zeigen die hohe Sensitivität des Algorithmus. Während Teilpfade wie die \textit{Partial\_Glycolysis} logisch im Hauptpfad enthalten sind, führt die strikte Signaturberechnung dazu, dass bereits geringe strukturelle Unterschiede oder abweichende Knotenreihenfolgen als eigenständige Information gewertet werden (\texttt{Decision: keep\_both}).
-	\item \textbf{Netzwerkstatistik}: Mit einer durchschnittlichen Netzwerk-Dichte von ca. 19,13\% in den Testdaten bestätigt das Framework die theoretische Annahme, dass biologische Systeme meist dünn besetzt, aber hochgradig organisiert sind.
+	\item \textbf{Algorithmische Effizienz und Aufwand}: Die Demonstration verdeutlicht die Skalierbarkeit des Frameworks. Bei der Analyse von sechs Netzwerken wurden fÃ¼r die Identifikation von Subgraph-Beziehungen systematisch alle Kombinationen geprÃ¼ft. Wie die Programmausgabe zeigt, fÃ¼hrt dies zu einer hohen Anzahl an algorithmischen Vergleichen (z. B. 15 Vergleiche fÃ¼r die globale Subgraph-Suche), die jedoch aufgrund der optimierten Signaturberechnung in minimaler Zeit bewÃ¤ltigt werden.
+	\item \textbf{Strukturelle Charakterisierung}: Das Framework erlaubt die Identifikation funktionaler SchlÃ¼sselkomponenten. Im Protein-Interaktionsnetzwerk der DNA-Schaden-Antwort konnten Proteine wie p53 (Grad 4) und ATM (Grad 3) eindeutig als zentrale Hub-Proteine identifiziert werden.
+	\item \textbf{SpezifitÃ¤t der Erkennung}: Die Ergebnisse zeigen die hohe SensitivitÃ¤t des Algorithmus. WÃ¤hrend Teilpfade wie die \textit{Partial\_Glycolysis} logisch im Hauptpfad enthalten sind, fÃ¼hrt die strikte Signaturberechnung dazu, dass bereits geringe strukturelle Unterschiede oder abweichende Knotenreihenfolgen als eigenstÃ¤ndige Information gewertet werden (\texttt{Decision: keep\_both}).
+	\item \textbf{Netzwerkstatistik}: Mit einer durchschnittlichen Netzwerk-Dichte von ca. 19,13\% in den Testdaten bestÃ¤tigt das Framework die theoretische Annahme, dass biologische Systeme meist dÃ¼nn besetzt, aber hochgradig organisiert sind.
 \end{itemize}
 
 \subsection{Ausblick}
 
-Für die zukünftige Weiterentwicklung des Gen-Frameworks ergeben sich aus den aktuellen Ergebnissen zwei wesentliche Schwerpunkte:
+FÃ¼r die zukÃ¼nftige Weiterentwicklung des Gen-Frameworks ergeben sich aus den aktuellen Ergebnissen zwei wesentliche Schwerpunkte:
 
 \begin{enumerate}
-	\item \textbf{Soft-Matching und Heuristiken}: Um die Erkennungsrate bei evolutionär bedingten Variationen zu erhöhen, könnte die Signaturberechnung um Unschärfe-Faktoren erweitert werden. Dies würde es erlauben, strukturelle Ähnlichkeiten auch dann zu finden, wenn einzelne Interaktionen im Vergleichsnetzwerk fehlen.
-	\item \textbf{Bioinformatische Integration}: Die Anbindung an externe Datenbanken wie die KEGG oder STRING würde es ermöglichen, das Framework für den automatisierten Vergleich ganzer Organismen einzusetzen. Die effiziente Handhabung zahlreicher Subgraph-Aufrufe, wie in der Demo gezeigt, bildet hierfür eine belastbare Grundlage.
-	\item \textbf{Erweiterte Metriken}: Die Integration von Kantengewichten zur Abbildung von Reaktionsgeschwindigkeiten oder Bindungsaffinitäten würde die biologische Aussagekraft der Analyse weiter steigern.
+	\item \textbf{Soft-Matching und Heuristiken}: Um die Erkennungsrate bei evolutionÃ¤r bedingten Variationen zu erhÃ¶hen, kÃ¶nnte die Signaturberechnung um UnschÃ¤rfe-Faktoren erweitert werden. Dies wÃ¼rde es erlauben, strukturelle Ã„hnlichkeiten auch dann zu finden, wenn einzelne Interaktionen im Vergleichsnetzwerk fehlen.
+	\item \textbf{Bioinformatische Integration}: Die Anbindung an externe Datenbanken wie die KEGG oder STRING wÃ¼rde es ermÃ¶glichen, das Framework fÃ¼r den automatisierten Vergleich ganzer Organismen einzusetzen. Die effiziente Handhabung zahlreicher Subgraph-Aufrufe, wie in der Demo gezeigt, bildet hierfÃ¼r eine belastbare Grundlage.
+	\item \textbf{Erweiterte Metriken}: Die Integration von Kantengewichten zur Abbildung von Reaktionsgeschwindigkeiten oder BindungsaffinitÃ¤ten wÃ¼rde die biologische Aussagekraft der Analyse weiter steigern.
 \end{enumerate}
 
-Abschließend lässt sich festhalten, dass das Gen-Framework eine solide und erweiterbare Grundlage für die systembiologische Forschung darstellt und den Weg für großskalige vergleichende Netzwerkstudien ebnet.
+AbschlieÃŸend lÃ¤sst sich festhalten, dass das Gen-Framework eine solide und erweiterbare Grundlage fÃ¼r die systembiologische Forschung darstellt und den Weg fÃ¼r groÃŸskalige vergleichende Netzwerkstudien ebnet.
 
 \subsection{Implementierung}
 
-Der Code ist verfügbar unter: \url{https://github.com/hjstephan86/science/tree/main/science/gen}.
+Der Code ist verfÃ¼gbar unter: \url{https://github.com/hjstephan86/science/tree/main/science/gen}.
 
 \end{document}
+

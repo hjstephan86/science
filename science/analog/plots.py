@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 plt.rcParams.update({'font.family': 'serif', 'font.size': 11,
                      'axes.titlesize': 13, 'axes.labelsize': 11,
                      'legend.fontsize': 10, 'figure.dpi': 150})
-OUT = '/home/claude/analog_paper/'
+OUT = ''
 
 # ===== Plot 1: Kontinuierlich vs. diskret =====
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -176,3 +176,4 @@ plt.savefig(OUT + 'plot8_shannon.pdf', bbox_inches='tight'); plt.close()
 print("Plot 8 OK")
 
 print("\nAlle Plots fertig.")
+

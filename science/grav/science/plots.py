@@ -15,7 +15,7 @@ from scipy.integrate import solve_ivp, quad
 from scipy.optimize import fsolve
 import os
 
-OUT = "/home/stephan/Git/grav/science/plots"
+OUT = 'grav/science/plots"
 os.makedirs(OUT, exist_ok=True)
 
 STYLE = {

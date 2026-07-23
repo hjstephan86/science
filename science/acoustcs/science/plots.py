@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Harmonische Ausbreitung akustischer Signale in symmetrischen Hörsälen
@@ -28,24 +28,7 @@ plt.rcParams.update({
     'text.usetex': False,
 })
 
-FIGDIR = '/home/claude/akustik'
-
-# ============================================================
-# PLOT 1: Wellenausbreitung - 2D Schalldruckfeld im Hörsaal
-# ============================================================
-def plot1_wellenfeld():
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    fig.suptitle('Abbildung 1: Zweidimensionales Schalldruckfeld im symmetrischen Hörsaal',
-                 fontsize=12, fontweight='bold', y=1.01)
-
-    Lx, Ly = 20.0, 12.0
-    x = np.linspace(0, Lx, 400)
-    y = np.linspace(0, Ly, 400)
-    X, Y = np.meshgrid(x, y)
-
-    # Mode (m,n) superposition for rectangular room
-    def room_mode(X, Y, Lx, Ly, m, n, A=1.0):
-        return A * np.cos(m * np.pi * X / Lx) * np.cos(n * np.pi * Y / Ly)
+FIGDIR = ' Lx) * np.cos(n * np.pi * Y / Ly)
 
     # Fundamental and first harmonics
     p = (room_mode(X, Y, Lx, Ly, 1, 0, 1.0) +
@@ -706,3 +689,4 @@ if __name__ == '__main__':
     plot7_strahlen()
     plot8_kennzahlen()
     print("\nAlle 8 Plots erfolgreich gespeichert.")
+

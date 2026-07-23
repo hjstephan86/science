@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -66,7 +66,7 @@
 	frame=single,
 }
 
-\title{\textbf{Außergewöhnliche Flug der Schmetterlinge}\\[-0.4em]
+\title{\textbf{AuÃŸergewÃ¶hnliche Flug der Schmetterlinge}\\[-0.4em]
 	{\large Aerodynamische Grundlagen, Kinematik und Migrationsstrategien}}
 \author{Stephan Epp}
 \date{7. April 2026}
@@ -79,103 +79,103 @@
 	\newpage
 	
 	% ============================================================
-	\section{Einführung}
+	\section{EinfÃ¼hrung}
 	% ============================================================
-	Schmetterlinge (Ordnung \textit{Lepidoptera}) zeigen ein außergewöhnlich komplexes und
-	energieeffizientes Flugverhalten, das sich grundlegend von dem starrer Fluggeräte und
+	Schmetterlinge (Ordnung \textit{Lepidoptera}) zeigen ein auÃŸergewÃ¶hnlich komplexes und
+	energieeffizientes Flugverhalten, das sich grundlegend von dem starrer FluggerÃ¤te und
 	anderer Insektengruppen unterscheidet. Diese Arbeit untersucht systematisch die
-	aerodynamischen Grundlagen, die Flügelmorphologie, die Kinematik des Schlagfluges, die
-	Rolle von Thermikströmungen sowie die Mechanismen der Langstreckenmigration.
-	Wir leiten zentrale aerodynamische Kenngrößen formal her, darunter den
+	aerodynamischen Grundlagen, die FlÃ¼gelmorphologie, die Kinematik des Schlagfluges, die
+	Rolle von ThermikstrÃ¶mungen sowie die Mechanismen der Langstreckenmigration.
+	Wir leiten zentrale aerodynamische KenngrÃ¶ÃŸen formal her, darunter den
 	Auftriebskoeffizienten $C_L$, das Leistungsgleichgewicht und die Gleitkurve,
 	und verankern alle Aussagen in einem konsistenten mathematischen Rahmen.
-	Vierzehn Abbildungen sowie neun TikZ-Diagramme stützen die Analyse quantitativ.
+	Vierzehn Abbildungen sowie neun TikZ-Diagramme stÃ¼tzen die Analyse quantitativ.
 	Besondere Aufmerksamkeit gilt dem Leading-Edge Vortex (LEV), dem clap-and-fling-Mechanismus
 	und der magnetisch-polarimetrischen Navigation des Monarch-Falters (\textit{Danaus plexippus}).
 	
-	Schmetterlinge sind seit dem Devon (vor ca.\ \SI{300}{Ma}) auf der Erde präsent;
+	Schmetterlinge sind seit dem Devon (vor ca.\ \SI{300}{Ma}) auf der Erde prÃ¤sent;
 	die Gruppe der Lepidoptera umfasst heute mehr als 180\,000 beschriebene Arten
 	\cite{grimaldi2005evolution}.
 	Ihr Flug ist eines der elegantesten Bewegungsmuster im Tierreich:
-	Während konventionelle Ingenieurslösungen auf starre Profile mit wohldefinierten
-	Grenzschichten angewiesen sind, nutzen Schmetterlinge flexible, anisotrope Flügelstrukturen,
-	instationäre Wirbelphänomene und eine hochentwickelte neuromuskuläre Steuerung.
+	WÃ¤hrend konventionelle IngenieurslÃ¶sungen auf starre Profile mit wohldefinierten
+	Grenzschichten angewiesen sind, nutzen Schmetterlinge flexible, anisotrope FlÃ¼gelstrukturen,
+	instationÃ¤re WirbelphÃ¤nomene und eine hochentwickelte neuromuskulÃ¤re Steuerung.
 	
-	\begin{definition}[Instationäre Aerodynamik]
-		Ein Strömungsproblem heißt instationär, wenn die relevanten Strömungsgrößen
+	\begin{definition}[InstationÃ¤re Aerodynamik]
+		Ein StrÃ¶mungsproblem heiÃŸt instationÃ¤r, wenn die relevanten StrÃ¶mungsgrÃ¶ÃŸen
 		(Druck $p$, Geschwindigkeit $\boldsymbol{v}$, Zirkulation $\Gamma$) explizit von
-		der Zeit $t$ abhängen:
+		der Zeit $t$ abhÃ¤ngen:
 		\[
 		\frac{\partial \boldsymbol{v}}{\partial t} \neq \boldsymbol{0}.
 		\]
-		Für periodisch schlagende Flügel mit Frequenz $f$ und Flügeltiefe $c$ beschreibt
+		FÃ¼r periodisch schlagende FlÃ¼gel mit Frequenz $f$ und FlÃ¼geltiefe $c$ beschreibt
 		die Strouhal-Zahl
 		\[
 		\mathrm{St} = \frac{f \cdot A}{v_\infty}
 		\]
-		den Grad der Instationarität, wobei $A$ die Schlagamplitude und $v_\infty$ die
-		Anströmgeschwin\-digkeit bezeichnen.
+		den Grad der InstationaritÃ¤t, wobei $A$ die Schlagamplitude und $v_\infty$ die
+		AnstrÃ¶mgeschwin\-digkeit bezeichnen.
 	\end{definition}
 	
 	Typische Strouhal-Zahlen von Schmetterlingen liegen im Bereich
 	$\mathrm{St} \approx 0{,}2\ldots0{,}4$ \cite{ellington1996leading},
-	einem Bereich, der auch von Vögeln und anderen effizienten biologischen Fliegern bevorzugt
+	einem Bereich, der auch von VÃ¶geln und anderen effizienten biologischen Fliegern bevorzugt
 	wird.
 	Die vorliegende Arbeit gliedert sich wie folgt:
-	Abschnitt~\ref{sec:morphologie} behandelt die Flügelmorphologie und -geometrie.
+	Abschnitt~\ref{sec:morphologie} behandelt die FlÃ¼gelmorphologie und -geometrie.
 	Abschnitt~\ref{sec:aerodynamik} leitet die aerodynamischen Grundgleichungen her.
-	Abschnitt~\ref{sec:kinematik} analysiert die Flügelkinematik.
-	Abschnitt~\ref{sec:instationaer} diskutiert instationäre Mechanismen (LEV, clap-and-fling).
+	Abschnitt~\ref{sec:kinematik} analysiert die FlÃ¼gelkinematik.
+	Abschnitt~\ref{sec:instationaer} diskutiert instationÃ¤re Mechanismen (LEV, clap-and-fling).
 	Abschnitt~\ref{sec:energie} widmet sich dem Energiehaushalt.
 	Abschnitt~\ref{sec:migration} beschreibt die Langstreckenmigration.
 	Abschnitt~\ref{sec:navigation} behandelt die Navigationsmechanismen.
-	Abschnitt~\ref{sec:ausblick} schließt mit einem ausführlichen Ausblick.
+	Abschnitt~\ref{sec:ausblick} schlieÃŸt mit einem ausfÃ¼hrlichen Ausblick.
 	
 	% ============================================================
-	\section{Flügelmorphologie und Geometrie}
+	\section{FlÃ¼gelmorphologie und Geometrie}
 	\label{sec:morphologie}
 	% ============================================================
 	
-	\subsection{Struktureller Aufbau des Schmetterlingsflügels}
+	\subsection{Struktureller Aufbau des SchmetterlingsflÃ¼gels}
 	
-	Der Schmetterlingsflügel ist ein komplexes Verbundbauteil.
+	Der SchmetterlingsflÃ¼gel ist ein komplexes Verbundbauteil.
 	Er besteht aus einem Netz aus hohlen Adern (\textit{venae}, Singular \textit{vena}),
-	die ein flächiges Membrangewebe (\textit{membrana alaris}) spannen.
+	die ein flÃ¤chiges Membrangewebe (\textit{membrana alaris}) spannen.
 	Die Adern dienen gleichzeitig als Tragestruktur, Hydraulikleitung
-	(Hämolymphe) und sensorisches Netz mit Mechano- und Chemorezeptoren
+	(HÃ¤molymphe) und sensorisches Netz mit Mechano- und Chemorezeptoren
 	\cite{wootton1981support}.
 	
-	\begin{definition}[Aspektverhältnis]
-		Das Aspektverhältnis (AR) eines Flügels mit Spannweite $b$ und Flügelfläche $S$ ist
+	\begin{definition}[AspektverhÃ¤ltnis]
+		Das AspektverhÃ¤ltnis (AR) eines FlÃ¼gels mit Spannweite $b$ und FlÃ¼gelflÃ¤che $S$ ist
 		\[
 		AR = \frac{b^2}{S}.
 		\]
-		Hohe AR-Werte (schmale, lange Flügel) begünstigen den Gleitflug;
-		niedrige AR-Werte (breite, kurze Flügel) erlauben hohe Manövrierbarkeit.
+		Hohe AR-Werte (schmale, lange FlÃ¼gel) begÃ¼nstigen den Gleitflug;
+		niedrige AR-Werte (breite, kurze FlÃ¼gel) erlauben hohe ManÃ¶vrierbarkeit.
 	\end{definition}
 	
-	Die Schuppen (\textit{lepis} = Schuppe; \textit{pteron} = Flügel) sind modifizierte
-	Setae und bedecken beide Flügeloberflächen in einer Dachziegelanordnung.
-	Sie erfüllen mehrere aerodynamische Funktionen:
+	Die Schuppen (\textit{lepis} = Schuppe; \textit{pteron} = FlÃ¼gel) sind modifizierte
+	Setae und bedecken beide FlÃ¼geloberflÃ¤chen in einer Dachziegelanordnung.
+	Sie erfÃ¼llen mehrere aerodynamische Funktionen:
 	
 	\begin{itemize}
-		\item \textbf{Grenzschichtkontrolle:} Nano-Rillen auf der Schuppenoberfläche
-		verzögern den laminar-turbulenten Übergang und reduzieren den Reibungswiderstand
+		\item \textbf{Grenzschichtkontrolle:} Nano-Rillen auf der SchuppenoberflÃ¤che
+		verzÃ¶gern den laminar-turbulenten Ãœbergang und reduzieren den Reibungswiderstand
 		um bis zu 3\,\% \cite{chen2018butterfly}.
-		\item \textbf{Strukturfärbung:} Photonische Kristallstrukturen erzeugen Irisieren
+		\item \textbf{StrukturfÃ¤rbung:} Photonische Kristallstrukturen erzeugen Irisieren
 		(Morpho-Effekt) ohne Pigmente \cite{vigneron2010morpho}.
-		\item \textbf{Wärmeabsorption:} Dunkle Schuppen steigern die Körpertemperatur
+		\item \textbf{WÃ¤rmeabsorption:} Dunkle Schuppen steigern die KÃ¶rpertemperatur
 		bei solarer Einstrahlung um bis zu \SI{5}{\kelvin} \cite{clench1966flight}.
 	\end{itemize}
 	
-	\subsection{Geometrische Kenngrößen}
+	\subsection{Geometrische KenngrÃ¶ÃŸen}
 	
-	Tabelle~\ref{tab:geometrie} fasst die wichtigsten geometrischen Kenngrößen
+	Tabelle~\ref{tab:geometrie} fasst die wichtigsten geometrischen KenngrÃ¶ÃŸen
 	mehrerer Schmetterlingsarten zusammen.
 	
 	\begin{table}[H]
 		\centering
-		\caption{Morphometrische Kenngrößen ausgewählter Schmetterlingsarten.
+		\caption{Morphometrische KenngrÃ¶ÃŸen ausgewÃ¤hlter Schmetterlingsarten.
 			Quellen: \cite{betts1988wing}, \cite{jantzen2008wing}.}
 		\label{tab:geometrie}
 		\begin{tabular}{llccccc}
@@ -184,7 +184,7 @@
 			\midrule
 			Admiral      & \textit{Vanessa atalanta}    & 62 & 1410 & 2{,}73 & 0{,}35 & 10{,}2\\
 			Schwalbenschwanz & \textit{Papilio machaon}  & 72 & 1830 & 2{,}84 & 0{,}62 &  7{,}8\\
-			Kohlweißling & \textit{Pieris brassicae}    & 58 & 1280 & 2{,}63 & 0{,}29 & 11{,}4\\
+			KohlweiÃŸling & \textit{Pieris brassicae}    & 58 & 1280 & 2{,}63 & 0{,}29 & 11{,}4\\
 			Zitronenfalter & \textit{Gonepteryx rhamni} & 55 & 1015 & 2{,}98 & 0{,}28 & 12{,}1\\
 			Tagpfauenauge & \textit{Aglais io}          & 60 & 1360 & 2{,}65 & 0{,}38 &  9{,}6\\
 			Monarch      & \textit{Danaus plexippus}    & 94 & 2830 & 3{,}12 & 0{,}53 &  8{,}4\\
@@ -196,38 +196,38 @@
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig01_frequenz_masse.pdf}
-		\caption{Flügelschlagfrequenz $f$ in Abhängigkeit der Körpermasse $m$ für zehn
+		\caption{FlÃ¼gelschlagfrequenz $f$ in AbhÃ¤ngigkeit der KÃ¶rpermasse $m$ fÃ¼r zehn
 			Schmetterlingsarten. Die Regressionsgerade (gestrichelt) zeigt eine negative
-			Korrelation $r = -0{,}94$: schwerere Arten schlagen seltener, da die größeren
-			Flügel mehr Auftrieb pro Schlag erzeugen. Die Fehlerbalken repräsentieren die
-			Standardabweichung über mindestens fünf Messflüge. Der lineare Fit lautet
+			Korrelation $r = -0{,}94$: schwerere Arten schlagen seltener, da die grÃ¶ÃŸeren
+			FlÃ¼gel mehr Auftrieb pro Schlag erzeugen. Die Fehlerbalken reprÃ¤sentieren die
+			Standardabweichung Ã¼ber mindestens fÃ¼nf MessflÃ¼ge. Der lineare Fit lautet
 			$f = -21{,}3 \cdot m + 17{,}9$ (in SI-Einheiten).}
 		\label{fig:frequenz_masse}
 	\end{figure}
 	
 	Abbildung~\ref{fig:frequenz_masse} belegt quantitativ die Skalierung zwischen
-	Körpermasse und Flügelschlag\-frequenz. Dieser Zusammenhang lässt sich über die
+	KÃ¶rpermasse und FlÃ¼gelschlag\-frequenz. Dieser Zusammenhang lÃ¤sst sich Ã¼ber die
 	Dimensionsanalyse verstehen: Der Auftrieb $L$ muss dem Gewicht $mg$ das Gleichgewicht
 	halten. Mit $L \propto f^2 \cdot S \cdot c$ folgt $f \propto \sqrt{mg/S}$,
-	was bei näherungsweise konstantem Flächenbelastungsverhältnis $m/S$ eine schwache
+	was bei nÃ¤herungsweise konstantem FlÃ¤chenbelastungsverhÃ¤ltnis $m/S$ eine schwache
 	Massenskalierung $f \propto m^{1/2}$ ergibt \cite{norberg1990vertebrate}.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/fig03_aspektverhaeltnis.pdf}
-		\caption{Aspektverhältnis $AR = b^2/S$ von zehn Schmetterlingsarten im Vergleich
+		\caption{AspektverhÃ¤ltnis $AR = b^2/S$ von zehn Schmetterlingsarten im Vergleich
 			(horizontale Balken). Der Morpho-Falter (\textit{Morpho peleides}, $AR = 3{,}41$)
-			erzielt das höchste Aspektverhältnis und damit die günstigste Gleiteigenschaft
+			erzielt das hÃ¶chste AspektverhÃ¤ltnis und damit die gÃ¼nstigste Gleiteigenschaft
 			unter den hier untersuchten Arten. Die gestrichelte Linie markiert den Mittelwert
 			$\overline{AR} = 2{,}81$. Niedrige $AR$-Werte (z.\,B.\ \textit{Aglais urticae},
-			$AR = 2{,}28$) sind mit hoher Manövrierfähigkeit korreliert.}
+			$AR = 2{,}28$) sind mit hoher ManÃ¶vrierfÃ¤higkeit korreliert.}
 		\label{fig:aspektverhaeltnis}
 	\end{figure}
 	
-	\subsection{TikZ-Darstellung: Flügelanatomie}
+	\subsection{TikZ-Darstellung: FlÃ¼gelanatomie}
 	
 	Abbildung~\ref{fig:anatomie_tikz} zeigt schematisch die Venation eines
-	Schmetterlingsflügels.
+	SchmetterlingsflÃ¼gels.
 	
 	\begin{figure}[H]
 		\centering
@@ -236,21 +236,21 @@
 			membran/.style={fill=butterorange!15, draw=butterorange!60, line width=0.6pt},
 			label/.style={font=\footnotesize, align=center}
 			]
-			% Umriss Vorderflügel
+			% Umriss VorderflÃ¼gel
 			\fill[membran]
 			(0,0) .. controls (1.5,0.2) and (3.2,0.8) .. (4.0,0.5)
 			.. controls (4.5,0.2) and (4.8,-0.5) .. (4.2,-1.8)
 			.. controls (3.5,-2.8) and (1.2,-2.5) .. (0.4,-1.8)
 			.. controls (0.1,-1.2) and (-0.2,-0.6) .. (0,0);
 			
-			% Umriss Hinterflügel
+			% Umriss HinterflÃ¼gel
 			\fill[fill=wingsblue!12, draw=wingsblue!50, line width=0.6pt]
 			(0.3,-1.5) .. controls (0.5,-2.0) and (1.0,-3.2) .. (1.8,-3.6)
 			.. controls (3.0,-4.0) and (3.8,-3.5) .. (4.0,-2.5)
 			.. controls (4.1,-2.0) and (3.8,-1.5) .. (3.2,-1.4)
 			.. controls (2.0,-1.2) and (0.8,-1.2) .. (0.3,-1.5);
 			
-			% Hauptadern Vorderflügel
+			% Hauptadern VorderflÃ¼gel
 			\draw[vene] (0,0) -- (4.0,0.5);          % Costa
 			\draw[vene] (0,0) -- (4.2,-1.8);         % Subcosta
 			\draw[vene] (0,0) -- (3.5,-2.3);         % Radius 1
@@ -260,12 +260,12 @@
 			\draw[vene] (1.0,-0.6) -- (4.0, 0.4);   % R3
 			\draw[vene, dashed, gray!60] (1.5,-0.1) -- (3.8, 0.3); % Querader
 			
-			% Hauptadern Hinterflügel
+			% Hauptadern HinterflÃ¼gel
 			\draw[wingsblue, thick] (0.3,-1.5) -- (3.8,-2.3);
 			\draw[wingsblue, thick] (0.3,-1.5) to[bend right=15] (3.2,-3.8);
 			\draw[wingsblue, thick] (1.0,-1.4) -- (3.6,-3.5);
 			
-			% Körperachse
+			% KÃ¶rperachse
 			\draw[darkgray, very thick, line cap=round] (0,-0.2) -- (0,-4.5);
 			\fill[darkgray!80] (0,-0.1) ellipse (0.14 and 0.28);
 			\fill[darkgray!60] (0,-4.4) ellipse (0.10 and 0.20);
@@ -274,24 +274,24 @@
 			\node[label, right] at (0.2,-3.8) {Abdomen};
 			
 			% Beschriftungen
-			\node[label, butterorange, above] at (2.5,0.6) {Vorderflügel};
-			\node[label, wingsblue, below] at (2.2,-3.9) {Hinterflügel};
+			\node[label, butterorange, above] at (2.5,0.6) {VorderflÃ¼gel};
+			\node[label, wingsblue, below] at (2.2,-3.9) {HinterflÃ¼gel};
 			\node[label, above right] at (4.0,0.5) {\small Costa};
 			\node[label, right] at (4.3,-1.8) {\small Subcosta/\\Radius};
 			\node[label, below right] at (3.5,-2.3) {\small Media};
 			\node[label, below] at (1.8,-2.9) {\small Cubitus};
 			
-			% Maßpfeil Spannweite
+			% MaÃŸpfeil Spannweite
 			\draw[<->, >=Stealth, thin, gray] (-0.3, 0.1) -- (-0.3, -4.4);
 			\node[label, left] at (-0.5,-2.1) {$b/2$};
 		\end{tikzpicture}
-		\caption{Schematische Darstellung der Flügelanatomie eines Tagfalters.
-			Vorderflügel (orange) und Hinterflügel (blau) sind durch Koppelhaken
+		\caption{Schematische Darstellung der FlÃ¼gelanatomie eines Tagfalters.
+			VorderflÃ¼gel (orange) und HinterflÃ¼gel (blau) sind durch Koppelhaken
 			(\textit{frenulum} bzw.\ Humeral-Lappen) verbunden und arbeiten aerodynamisch
 			als integrierte Einheit. Die eingezeichneten Venen folgen der Standardnomenklatur
-			nach Comstock-Needham: Costa, Subcosta, Radius (R1–R5), Media (M1–M3),
-			Cubitus (Cu1–Cu2) und Analader (A). Gestrichelt: eine transversale Querader,
-			die das Flügelfeld in Zellen unterteilt.}
+			nach Comstock-Needham: Costa, Subcosta, Radius (R1â€“R5), Media (M1â€“M3),
+			Cubitus (Cu1â€“Cu2) und Analader (A). Gestrichelt: eine transversale Querader,
+			die das FlÃ¼gelfeld in Zellen unterteilt.}
 		\label{fig:anatomie_tikz}
 	\end{figure}
 	
@@ -300,11 +300,11 @@
 	\label{sec:aerodynamik}
 	% ============================================================
 	
-	\subsection{Stationäre Auftriebstheorie}
+	\subsection{StationÃ¤re Auftriebstheorie}
 	
 	\begin{definition}[Auftriebskoeffizient]
-		Der dimensionslose Auftriebskoeffizient $C_L$ eines Flügels der Fläche $S$ bei
-		Anströmgeschwindigkeit $v_\infty$ und Fluiddichte $\rho$ ist definiert als
+		Der dimensionslose Auftriebskoeffizient $C_L$ eines FlÃ¼gels der FlÃ¤che $S$ bei
+		AnstrÃ¶mgeschwindigkeit $v_\infty$ und Fluiddichte $\rho$ ist definiert als
 		\[
 		C_L = \frac{L}{\frac{1}{2}\rho v_\infty^2 S},
 		\]
@@ -312,65 +312,65 @@
 	\end{definition}
 	
 	\begin{definition}[Widerstandskoeffizient]
-		Analog gilt für die Widerstandskraft $D$:
+		Analog gilt fÃ¼r die Widerstandskraft $D$:
 		\[
 		C_D = \frac{D}{\frac{1}{2}\rho v_\infty^2 S}.
 		\]
 	\end{definition}
 	
 	\begin{definition}[Gleitzahl]
-		Die aerodynamische Güte (Gleitzahl) ist
+		Die aerodynamische GÃ¼te (Gleitzahl) ist
 		\[
 		E = \frac{C_L}{C_D} = \frac{L}{D}.
 		\]
 	\end{definition}
 	
-	\begin{satz}[Auftriebstheorie für dünne Profile nach Joukowski]
+	\begin{satz}[Auftriebstheorie fÃ¼r dÃ¼nne Profile nach Joukowski]
 		\label{satz:joukowski}
-		Für ein dünnes Profil unter kleinem Anstellwinkel $\alpha$ gilt im linearisierten Regime:
+		FÃ¼r ein dÃ¼nnes Profil unter kleinem Anstellwinkel $\alpha$ gilt im linearisierten Regime:
 		\[
 		C_L = 2\pi (\alpha - \alpha_0),
 		\]
-		wobei $\alpha_0$ der Nullauftriebswinkel ist, der von der Wölbung abhängt.
+		wobei $\alpha_0$ der Nullauftriebswinkel ist, der von der WÃ¶lbung abhÃ¤ngt.
 	\end{satz}
 	
 	\begin{proof}
-		Die Potential-Strömung um ein Joukowski-Profil ergibt sich durch konforme Abbildung
+		Die Potential-StrÃ¶mung um ein Joukowski-Profil ergibt sich durch konforme Abbildung
 		des Einheitskreises mittels $z = \zeta + a^2/\zeta$ ($a \in \mathbb{R}$, $a \leq 1$).
 		Die Zirkulation $\Gamma$ auf dem Einheitskreis mit Radius $r$ bei Anstellwinkel $\alpha$
 		ist nach dem Kutta-Joukowski-Theorem
 		\[
 		L = \rho v_\infty \Gamma.
 		\]
-		Für den Einheitskreis mit aufgeprägter Zirkulation $\Gamma = 4\pi v_\infty r \sin\alpha$
-		(Kutta-Bedingung an der Hinterkante) erhält man
+		FÃ¼r den Einheitskreis mit aufgeprÃ¤gter Zirkulation $\Gamma = 4\pi v_\infty r \sin\alpha$
+		(Kutta-Bedingung an der Hinterkante) erhÃ¤lt man
 		\[
 		C_L = \frac{\rho v_\infty \cdot 4\pi v_\infty r \sin\alpha}{\frac{1}{2}\rho v_\infty^2 \cdot 2\pi r}
 		= 4 \sin\alpha \approx 4\alpha \quad (\alpha \ll 1).
 		\]
-		Für unendlich kleine Wölbung und infinitesimal dünne Platte liefert die
-		klassische Thin-Airfoil-Theorie (Munk 1922, von Kármán und Burgers 1935)
+		FÃ¼r unendlich kleine WÃ¶lbung und infinitesimal dÃ¼nne Platte liefert die
+		klassische Thin-Airfoil-Theorie (Munk 1922, von KÃ¡rmÃ¡n und Burgers 1935)
 		den Grenzwert $C_L = 2\pi\alpha$ bei $\alpha_0 = 0$, was den behaupteten Ausdruck ergibt.
 	\end{proof}
 	
 	\begin{bemerkung}
-		Die Joukowski-Formel $C_L = 2\pi\alpha$ gilt für starre Profile im stationären Fall.
-		Schmetterlingsflügel überschreiten häufig Anstellwinkel von $\alpha > 25^\circ$,
-		bei denen stationäre Theorie durch den LEV-Beitrag ergänzt werden muss
+		Die Joukowski-Formel $C_L = 2\pi\alpha$ gilt fÃ¼r starre Profile im stationÃ¤ren Fall.
+		SchmetterlingsflÃ¼gel Ã¼berschreiten hÃ¤ufig Anstellwinkel von $\alpha > 25^\circ$,
+		bei denen stationÃ¤re Theorie durch den LEV-Beitrag ergÃ¤nzt werden muss
 		(siehe Abschnitt~\ref{sec:instationaer}).
 	\end{bemerkung}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/fig04_auftrieb_anstellwinkel.pdf}
-		\caption{Auftriebskoeffizient $C_L$ als Funktion des Anstellwinkels $\alpha$ für
-			einen flexiblen Schmetterlingsflügel (orange) im Vergleich zu einem starren
+		\caption{Auftriebskoeffizient $C_L$ als Funktion des Anstellwinkels $\alpha$ fÃ¼r
+			einen flexiblen SchmetterlingsflÃ¼gel (orange) im Vergleich zu einem starren
 			konventionellen Profil (blau, gestrichelt).
-			Der Schmetterlingsflügel verzögert den Strömungsabriss auf $\alpha \approx 26^\circ$
-			(gegenüber $\approx 16^\circ$ beim starre Profil), da die elastische Verformung
-			die effektive Wölbung adaptiv erhöht und den LEV stabilisiert (orange Fläche).
-			Die lineare Näherung $C_L = 2\pi\alpha$ (Joukowski) ist im Bereich
-			$\alpha < 8^\circ$ gültig.}
+			Der SchmetterlingsflÃ¼gel verzÃ¶gert den StrÃ¶mungsabriss auf $\alpha \approx 26^\circ$
+			(gegenÃ¼ber $\approx 16^\circ$ beim starre Profil), da die elastische Verformung
+			die effektive WÃ¶lbung adaptiv erhÃ¶ht und den LEV stabilisiert (orange FlÃ¤che).
+			Die lineare NÃ¤herung $C_L = 2\pi\alpha$ (Joukowski) ist im Bereich
+			$\alpha < 8^\circ$ gÃ¼ltig.}
 		\label{fig:cl_alpha}
 	\end{figure}
 	
@@ -392,7 +392,7 @@
 	\end{satz}
 	
 	\begin{proof}
-		Die Gesamtleistung im Gleitflug setzt sich aus parasitiärem Widerstand
+		Die Gesamtleistung im Gleitflug setzt sich aus parasitiÃ¤rem Widerstand
 		$P_0 = \frac{1}{2}\rho v^3 S C_{D,0}$ und induziertem Widerstand
 		$P_i = \frac{k\,(mg)^2}{\frac{1}{2}\rho v S}$ zusammen.
 		Das Minimum von $w = P/(mg) = P_0/(mg) + P_i/(mg)$ ergibt sich durch
@@ -400,20 +400,20 @@
 		\[
 		\frac{3}{2}\rho v^2 S C_{D,0} = \frac{k (mg)^2}{\frac{1}{2}\rho v^2 S},
 		\]
-		Auflösen nach $v$ liefert die behauptete Formel.
+		AuflÃ¶sen nach $v$ liefert die behauptete Formel.
 	\end{proof}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/fig08_flugpolare.pdf}
-		\caption{Flugpolare des Schmetterlingsflügels (invertierte $v_z$-Achse).
-			Der Berührpunkt der vom Ursprung gefällten Tangente (gestrichelt) markiert
+		\caption{Flugpolare des SchmetterlingsflÃ¼gels (invertierte $v_z$-Achse).
+			Der BerÃ¼hrpunkt der vom Ursprung gefÃ¤llten Tangente (gestrichelt) markiert
 			die Geschwindigkeit besten Gleitens $v_\mathrm{BG} \approx 4{,}5$\,m/s
 			mit Gleitzahl $E \approx 5{,}8$.
 			Der Tiefpunkt der Kurve kennzeichnet die Geschwindigkeit minimaler Sinkrate
 			($v_{w,\min} \approx 2{,}8$\,m/s) entsprechend Satz~\ref{satz:minsink}.
 			Im Vergleich zu Segelflugzeugen ($E > 50$) ist der Wert von Schmetterlingen
-			niedrig, da sie stark auf Manövrierbarkeit und Flugflexibilität optimiert sind.}
+			niedrig, da sie stark auf ManÃ¶vrierbarkeit und FlugflexibilitÃ¤t optimiert sind.}
 		\label{fig:flugpolare}
 	\end{figure}
 	
@@ -421,17 +421,17 @@
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig12_CL_CD_vergleich.pdf}
 		\caption{\textbf{Links:} Auftriebskoeffizient $C_L$ (Balken nach oben) und
-			Widerstandskoeffizient $C_D$ (Balken nach unten, grau) für acht Arten im Vergleich.
-			\textit{Morpho peleides} erzielt mit $C_L = 1{,}71$ den höchsten Auftrieb,
-			bedingt durch seine großen, stark gewölbten Flügel.
+			Widerstandskoeffizient $C_D$ (Balken nach unten, grau) fÃ¼r acht Arten im Vergleich.
+			\textit{Morpho peleides} erzielt mit $C_L = 1{,}71$ den hÃ¶chsten Auftrieb,
+			bedingt durch seine groÃŸen, stark gewÃ¶lbten FlÃ¼gel.
 			\textbf{Rechts:} Daraus resultierende Gleitzahl $E = C_L/C_D$.
 			Auch hier dominiert \textit{Morpho peleides} mit $E = 10{,}7$,
 			gefolgt von \textit{Danaus plexippus} ($E = 8{,}8$).
-			Die Gleitzahl korreliert eng mit dem Aspektverhältnis (Spearman-$\rho = 0{,}87$).}
+			Die Gleitzahl korreliert eng mit dem AspektverhÃ¤ltnis (Spearman-$\rho = 0{,}87$).}
 		\label{fig:cl_cd}
 	\end{figure}
 	
-	\subsection{TikZ-Darstellung: Kräftegleichgewicht im Horizontalflug}
+	\subsection{TikZ-Darstellung: KrÃ¤ftegleichgewicht im Horizontalflug}
 	
 	\begin{figure}[H]
 		\centering
@@ -474,52 +474,52 @@
 			\draw[thin, ->] (3.5,-0.5) -- (4.3,-0.5) node[right]{\tiny $x$};
 			\draw[thin, ->] (3.5,-0.5) -- (3.5, 0.3) node[above]{\tiny $z$};
 		\end{tikzpicture}
-		\caption{Kräftegleichgewicht eines Schmetterlings im stationären Horizontalflug.
+		\caption{KrÃ¤ftegleichgewicht eines Schmetterlings im stationÃ¤ren Horizontalflug.
 			Auftrieb $L$ kompensiert das Gewicht $G = mg$; der aerodynamische Schub $T$
-			(Horizontalkomponente der Flügelschlagkraft) gleicht den Gesamtwiderstand $D$ aus.
+			(Horizontalkomponente der FlÃ¼gelschlagkraft) gleicht den Gesamtwiderstand $D$ aus.
 			Im Horizontalflug gilt $L = G$ und $T = D$ simultan, woraus die Gleichgewichtsgeschwindigkeit
 			$v_\mathrm{eq} = \sqrt{2mg / (\rho S C_L)}$ folgt.}
 		\label{fig:kraefte_tikz}
 	\end{figure}
 	
 	% ============================================================
-	\section{Flügelkinematik}
+	\section{FlÃ¼gelkinematik}
 	\label{sec:kinematik}
 	% ============================================================
 	
 	\subsection{Grundbewegungen des Schlagzyklus}
 	
-	Ein vollständiger Schlagzyklus besteht aus vier Phasen:
+	Ein vollstÃ¤ndiger Schlagzyklus besteht aus vier Phasen:
 	Niederschlag (\textit{downstroke}), Umkehrung unten (\textit{ventral flip}),
 	Aufschlag (\textit{upstroke}) und Umkehrung oben (\textit{dorsal rotation}).
 	
 	\begin{definition}[Schlagwinkel]
-		Der Schlagwinkel $\phi(t)$ beschreibt die Auslenkung des Flügelwurzel-Referenzpunktes
-		aus der Flügelruhelage. Er wird in der Regel durch eine Fourierreihe modelliert:
+		Der Schlagwinkel $\phi(t)$ beschreibt die Auslenkung des FlÃ¼gelwurzel-Referenzpunktes
+		aus der FlÃ¼gelruhelage. Er wird in der Regel durch eine Fourierreihe modelliert:
 		\[
 		\phi(t) = \sum_{k=1}^{N} \left[a_k \cos(k\omega t) + b_k \sin(k\omega t)\right],
 		\quad \omega = 2\pi f.
 		\]
 	\end{definition}
 	
-	Für die meisten Tagfalter dominieren die ersten beiden Harmonischen ($N = 2$):
+	FÃ¼r die meisten Tagfalter dominieren die ersten beiden Harmonischen ($N = 2$):
 	\[
 	\phi(t) \approx A_1 \sin(\omega t) + A_2 \sin(2\omega t + \psi),
 	\]
 	wobei $\psi$ die Phasendifferenz zwischen Grundschwingung und erster Oberwelle ist
-	und typisch $\psi \approx -0{,}3\,\mathrm{rad}$ beträgt \cite{fry2003wakes}.
+	und typisch $\psi \approx -0{,}3\,\mathrm{rad}$ betrÃ¤gt \cite{fry2003wakes}.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig06_fluegel_kinematik.pdf}
-		\caption{\textbf{Oben:} Auslenkungswinkel der Flügelvorderkante (orange) und
-			Hinterkante (blau) über einen vollständigen Schlagzyklus ($T = 100$\,ms,
+		\caption{\textbf{Oben:} Auslenkungswinkel der FlÃ¼gelvorderkante (orange) und
+			Hinterkante (blau) Ã¼ber einen vollstÃ¤ndigen Schlagzyklus ($T = 100$\,ms,
 			entsprechend $f = 10$\,Hz).
 			Die Hinterkante eilt der Vorderkante um $\approx 23^\circ$ nach (Phasenverzug),
-			was aerodynamisch eine dynamische Wölbungsänderung bewirkt.
+			was aerodynamisch eine dynamische WÃ¶lbungsÃ¤nderung bewirkt.
 			Der violett schraffierte Bereich visualisiert die daraus resultierende instantane
-			Torsion des Flügelprofils.
-			\textbf{Unten:} Flügelverdrillung (Torsionswinkel $\theta_T$).
+			Torsion des FlÃ¼gelprofils.
+			\textbf{Unten:} FlÃ¼gelverdrillung (Torsionswinkel $\theta_T$).
 			Die Amplitude $\theta_T \approx \pm 8^\circ$ entspricht den Messungen von
 			\cite{weis1973quick} mittels Hochgeschwindigkeitsvideometrie.}
 		\label{fig:kinematik}
@@ -528,14 +528,14 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig11_auslenkung_heatmap.pdf}
-		\caption{Auslenkungsfeld $w(y/b, t/T)$ des gesamten Flügels über den Schlagzyklus
-			als Heatmap (Rot = Aufwärtsauslenkung, Blau = Abwärtsauslenkung).
-			Die spannweitige Achse (vertikal) zeigt, dass die Flügelspitze
-			($y/b \rightarrow 1$) eine signifikant höhere Auslenkungsamplitude aufweist als
-			die Flügelwurzel ($y/b = 0$), was auf ein Biegeeigenmode-dominiertes Verhalten
-			schließen lässt. Die Konturen (schwarz) kennzeichnen Isoauslenkungslinien.
-			Dieses Verhalten verstärkt die effektive Flügelgeschwindigkeit an der Spitze
-			und erhöht den lokalen dynamischen Druck $q = \frac{1}{2}\rho (v_\infty + v_\mathrm{Schlag})^2$.}
+		\caption{Auslenkungsfeld $w(y/b, t/T)$ des gesamten FlÃ¼gels Ã¼ber den Schlagzyklus
+			als Heatmap (Rot = AufwÃ¤rtsauslenkung, Blau = AbwÃ¤rtsauslenkung).
+			Die spannweitige Achse (vertikal) zeigt, dass die FlÃ¼gelspitze
+			($y/b \rightarrow 1$) eine signifikant hÃ¶here Auslenkungsamplitude aufweist als
+			die FlÃ¼gelwurzel ($y/b = 0$), was auf ein Biegeeigenmode-dominiertes Verhalten
+			schlieÃŸen lÃ¤sst. Die Konturen (schwarz) kennzeichnen Isoauslenkungslinien.
+			Dieses Verhalten verstÃ¤rkt die effektive FlÃ¼gelgeschwindigkeit an der Spitze
+			und erhÃ¶ht den lokalen dynamischen Druck $q = \frac{1}{2}\rho (v_\infty + v_\mathrm{Schlag})^2$.}
 		\label{fig:heatmap}
 	\end{figure}
 	
@@ -548,7 +548,7 @@
 			pfeil/.style={->, thick, mainblue},
 			phasebox/.style={rounded corners, fill=lightgray, draw=mainblue!40, inner sep=5pt}
 			]
-			% Phase 1: Niedersch­lag (oben)
+			% Phase 1: NiederschÂ­lag (oben)
 			\node[phasebox] at (0, 3.5) {\small \textbf{Phase 1: Niederschlag}};
 			\fill[flugel] (-1.5, 1.5) -- (0, 2.5) -- (1.5, 1.5) -- (0, 2.0) -- cycle;
 			\draw[pfeil] (-1.5,1.5) -- (-1.5,0.6) node[left]{\small Schlag $\downarrow$};
@@ -573,7 +573,7 @@
 			\fill[butterorange!20, draw=butterorange, dashed, thick]
 			(13.5, 2.1) -- (15, 2.3) -- (16.5, 2.1) -- (15, 2.0) -- cycle;
 			\draw[thick, ->, orange] (16.3, 2.1) arc[start angle=0, end angle=180, x radius=1.3, y radius=0.4];
-			\node[font=\tiny] at (15, 1.3) {Rückstellung};
+			\node[font=\tiny] at (15, 1.3) {RÃ¼ckstellung};
 			
 			% Pfeile zwischen Phasen
 			\foreach \x in {2.3, 7.3, 12.3}
@@ -587,41 +587,41 @@
 			\draw[thin] (13.5,-0.4) -- (13.5,-0.2) node[below]{\tiny $3T/4$};
 			\draw[thin] (16,-0.4) -- (16,-0.2) node[below]{\tiny $T$};
 		\end{tikzpicture}
-		\caption{Die vier Phasen eines vollständigen Flügelschlagzyklus mit Zeitachse.
+		\caption{Die vier Phasen eines vollstÃ¤ndigen FlÃ¼gelschlagzyklus mit Zeitachse.
 			Phase~1 (Niederschlag) erzeugt den Hauptauftrieb durch hohen Anstellwinkel.
 			In Phase~2 (Ventral-Flip) rotiert das Profil bei minimaler Kraft.
 			Phase~3 (Aufschlag) liefert Vortriebskraft durch Wagnereffekt.
-			Phase~4 (Dorsale Rotation) stellt das Profil für den nächsten Zyklus ein.}
+			Phase~4 (Dorsale Rotation) stellt das Profil fÃ¼r den nÃ¤chsten Zyklus ein.}
 		\label{fig:schlagzyklus_tikz}
 	\end{sidewaysfigure}
 	
 	% ============================================================
-	\section{Instationäre Aerodynamische Mechanismen}
+	\section{InstationÃ¤re Aerodynamische Mechanismen}
 	\label{sec:instationaer}
 	% ============================================================
 	
 	\subsection{Der Leading-Edge Vortex (LEV)}
 	
-	Der führungskantenseitige Wirbel (LEV) ist der wichtigste instationäre Auftriebsmechanismus
-	bei Insekten. Er entsteht, wenn der Anstellwinkel $\alpha$ so groß ist, dass die Strömung
-	an der Vorderkante ablöst und einen stabilen Wirbel bildet,
-	anstatt komplett abzureißen \cite{ellington1996leading}.
+	Der fÃ¼hrungskantenseitige Wirbel (LEV) ist der wichtigste instationÃ¤re Auftriebsmechanismus
+	bei Insekten. Er entsteht, wenn der Anstellwinkel $\alpha$ so groÃŸ ist, dass die StrÃ¶mung
+	an der Vorderkante ablÃ¶st und einen stabilen Wirbel bildet,
+	anstatt komplett abzureiÃŸen \cite{ellington1996leading}.
 	
-	\begin{satz}[LEV-Auftriebserhöhung]
+	\begin{satz}[LEV-AuftriebserhÃ¶hung]
 		\label{satz:lev}
-		Der LEV erhöht den effektiven Auftriebskoeffizienten um einen Betrag
+		Der LEV erhÃ¶ht den effektiven Auftriebskoeffizienten um einen Betrag
 		\[
 		\Delta C_L^{\mathrm{LEV}} = \frac{2\Gamma_{\mathrm{LEV}}}{v_\infty c},
 		\]
 		wobei $\Gamma_{\mathrm{LEV}}$ die Zirkulation des Leitwirbels und $c$ die lokale
-		Flügeltiefe sind.
+		FlÃ¼geltiefe sind.
 	\end{satz}
 	
 	\begin{proof}
-		Nach dem Kutta-Joukowski-Theorem gilt für den Auftrieb pro Längeneinheit:
+		Nach dem Kutta-Joukowski-Theorem gilt fÃ¼r den Auftrieb pro LÃ¤ngeneinheit:
 		$\ell = \rho v_\infty \Gamma_\mathrm{ges}$, mit der Gesamtzirkulation
 		$\Gamma_\mathrm{ges} = \Gamma_\mathrm{Profil} + \Gamma_{\mathrm{LEV}}$.
-		Der stationäre Anteil liefert $C_L^{(0)} = 2\pi\alpha$, der LEV-Anteil damit:
+		Der stationÃ¤re Anteil liefert $C_L^{(0)} = 2\pi\alpha$, der LEV-Anteil damit:
 		\[
 		\Delta C_L^{\mathrm{LEV}}
 		= \frac{\rho v_\infty \Gamma_{\mathrm{LEV}}}{\frac{1}{2}\rho v_\infty^2 c}
@@ -631,47 +631,47 @@
 	
 	Messungen mit digitaler Partikelbildgeschwindigkeit (DPIV) zeigen, dass
 	$\Gamma_\mathrm{LEV}$ bei Schmetterlingen Werte von \SI{0.01}{m^2/s} bis
-	\SI{0.05}{m^2/s} annimmt, was einer LEV-Auftriebser\-höhung von
+	\SI{0.05}{m^2/s} annimmt, was einer LEV-Auftriebser\-hÃ¶hung von
 	$\Delta C_L^{\mathrm{LEV}} \approx 0{,}3 \ldots 0{,}8$ entspricht
 	\cite{srygley2002unconventional}.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig09_lev_stroemung.pdf}
-		\caption{Numerisch rekonstruiertes Stromlinienfeld am Schmetterlingsflügel
+		\caption{Numerisch rekonstruiertes Stromlinienfeld am SchmetterlingsflÃ¼gel
 			(vereinfachtes Wirbelmodell, Plasmafarb\-skala).
 			Zwei LEV-Kerne (oben links: Aufwind-Kern; unten rechts: Abwind-Kern) dominieren
-			das Strömungsfeld.
-			Die hohe Strömungsgeschwindigkeit (hell) an der Vorderkante und um die Wirbelkerne
+			das StrÃ¶mungsfeld.
+			Die hohe StrÃ¶mungsgeschwindigkeit (hell) an der Vorderkante und um die Wirbelkerne
 			erzeugt einen Unterdruckbereich, der den Auftrieb um
-			$\Delta C_L^{\mathrm{LEV}} \approx 0{,}5$ erhöht (vgl.\ Satz~\ref{satz:lev}).
-			Ein dritter, schwächerer Wirbelkern in der Flügelmitte
-			stabilisiert die Gesamtströmung durch gegenseitige Induktion.}
+			$\Delta C_L^{\mathrm{LEV}} \approx 0{,}5$ erhÃ¶ht (vgl.\ Satz~\ref{satz:lev}).
+			Ein dritter, schwÃ¤cherer Wirbelkern in der FlÃ¼gelmitte
+			stabilisiert die GesamtstrÃ¶mung durch gegenseitige Induktion.}
 		\label{fig:lev}
 	\end{figure}
 	
 	\subsection{Der clap-and-fling-Mechanismus}
 	
 	\begin{definition}[Clap-and-fling]
-		Beim \textit{clap-and-fling}-Mechanismus (Weis-Fogh 1973) treffen die Flügel am
+		Beim \textit{clap-and-fling}-Mechanismus (Weis-Fogh 1973) treffen die FlÃ¼gel am
 		oberen Umkehrpunkt zusammen (\textit{clap}) und spreizen sich danach schnell auseinander
-		(\textit{fling}), was einen Impulsjet nach hinten und einen verstärkten Anlaufwirbel
+		(\textit{fling}), was einen Impulsjet nach hinten und einen verstÃ¤rkten Anlaufwirbel
 		an jeder Vorderkante erzeugt.
 	\end{definition}
 	
 	\begin{satz}[Impulsgewinn durch clap-and-fling]
 		\label{satz:clap}
 		Der durch den \textit{fling}-Anteil erzeugte Zusatzauftrieb $\Delta L_{\mathrm{cf}}$
-		pro Flügelpaar beträgt näherungsweise
+		pro FlÃ¼gelpaar betrÃ¤gt nÃ¤herungsweise
 		\[
 		\Delta L_{\mathrm{cf}} = \rho \pi c^2 \dot{\alpha}_{\mathrm{fling}} v_\infty,
 		\]
-		wobei $\dot{\alpha}_{\mathrm{fling}}$ die Öffnungswinkelrate beim Fling ist.
+		wobei $\dot{\alpha}_{\mathrm{fling}}$ die Ã–ffnungswinkelrate beim Fling ist.
 	\end{satz}
 	
 	\begin{proof}
-		Beim Öffnen zweier enger Platten mit Öffnungsrate $\dot{\alpha}$ erzeugt die
-		Vorderkante jeder Platte einen Anlaufwirbel der Stärke
+		Beim Ã–ffnen zweier enger Platten mit Ã–ffnungsrate $\dot{\alpha}$ erzeugt die
+		Vorderkante jeder Platte einen Anlaufwirbel der StÃ¤rke
 		$\Gamma_0 \approx \frac{1}{2}\pi c \dot{\alpha} c = \frac{\pi c^2 \dot{\alpha}}{2}$.
 		Nach Kutta-Joukowski: $\Delta L_{\mathrm{cf}} = \rho v_\infty \cdot 2\Gamma_0
 		= \rho \pi c^2 \dot{\alpha}_{\mathrm{fling}} v_\infty$.
@@ -685,36 +685,36 @@
 			]
 			% Clap-Phase
 			\node[font=\small\bfseries] at (1.5, 3.5) {Clap ($t_1$)};
-			\draw[wing] (0,0) -- (3,2);   % Linker Flügel
+			\draw[wing] (0,0) -- (3,2);   % Linker FlÃ¼gel
 			\draw[wing] (3,2) -- (3,0);   % Axe
-			\draw[wing] (6,0) -- (3,2);   % Rechter Flügel
+			\draw[wing] (6,0) -- (3,2);   % Rechter FlÃ¼gel
 			\fill[butterorange!30] (0,0) -- (3,2) -- (6,0) -- (3,0.5) -- cycle;
 			\draw[->, thick, darkgreen] (3,2.2) -- (3,3.2) node[above]{\small Impulsjet $\uparrow$};
-			\node[font=\footnotesize, darkgray] at (3, -0.4) {$\alpha \to 0$: Flügel geschlossen};
+			\node[font=\footnotesize, darkgray] at (3, -0.4) {$\alpha \to 0$: FlÃ¼gel geschlossen};
 			
 			% Fling-Phase
 			\node[font=\small\bfseries] at (10.5, 3.5) {Fling ($t_2 > t_1$)};
-			\draw[wing] (8,2.5) -- (9.5, 0);   % Linker Flügel
-			\draw[wing] (12.0, 0) -- (13.0, 2.5); % Rechter Flügel
+			\draw[wing] (8,2.5) -- (9.5, 0);   % Linker FlÃ¼gel
+			\draw[wing] (12.0, 0) -- (13.0, 2.5); % Rechter FlÃ¼gel
 			\draw[thin, dashed, gray] (9.5,0) -- (12.0,0);  % Symmetrieachse
 			\draw[wirbel] (9.3,2.0) arc[start angle=150, end angle=30, radius=0.7];
 			\draw[wirbel] (13.0,2.0) arc[start angle=30, end angle=150, radius=-0.7];
 			\node[font=\footnotesize] at (11,2.8) {\small LEV};
-			\node[font=\footnotesize, darkgray] at (10.8, -0.4) {$\dot\alpha > 0$: Öffnungsrate};
+			\node[font=\footnotesize, darkgray] at (10.8, -0.4) {$\dot\alpha > 0$: Ã–ffnungsrate};
 			\draw[->, thick, mainblue] (8.5,0.5) -- (7.5, 0.5) node[left]{\tiny Jet};
 			\draw[->, thick, mainblue] (13.0,0.5) -- (14.0, 0.5) node[right]{\tiny Jet};
 			
-			% Pfeil Übergang
+			% Pfeil Ãœbergang
 			\draw[->, very thick, darkgray] (6.8, 1.5) -- (7.6, 1.5);
 		\end{tikzpicture}
 		\caption{Schematische Darstellung des \textit{clap-and-fling}-Mechanismus.
-			Links (\textit{clap}): Die Flügel treffen nahe zusammen und pressen einen
+			Links (\textit{clap}): Die FlÃ¼gel treffen nahe zusammen und pressen einen
 			Impulsjet nach oben/hinten.
-			Rechts (\textit{fling}): Beim Öffnen bilden sich an beiden Vorderkanten simultan
+			Rechts (\textit{fling}): Beim Ã–ffnen bilden sich an beiden Vorderkanten simultan
 			starke LEV-Wirbel, die den Anlaufwirbel beschleunigen und den Initialauftrieb
 			nahezu verdoppeln (vgl.\ Satz~\ref{satz:clap}).
-			Dieser Mechanismus wurde erstmals von Weis-Fogh \cite{weis1973quick} für
-			\textit{Encarsia formosa} beschrieben und später für Schmetterlinge
+			Dieser Mechanismus wurde erstmals von Weis-Fogh \cite{weis1973quick} fÃ¼r
+			\textit{Encarsia formosa} beschrieben und spÃ¤ter fÃ¼r Schmetterlinge
 			\cite{sunada1993performance} nachgewiesen.}
 		\label{fig:clap_fling_tikz}
 	\end{figure}
@@ -727,7 +727,7 @@
 	\subsection{Leistungsgleichgewicht}
 	
 	\begin{definition}[Induzierte Leistung]
-		Die zur Erzeugung des Auftriebs $L$ benötigte induzierte Leistung ist
+		Die zur Erzeugung des Auftriebs $L$ benÃ¶tigte induzierte Leistung ist
 		\[
 		P_i = \frac{(mg)^2}{\frac{1}{2}\rho v S \pi AR \cdot e},
 		\]
@@ -735,7 +735,7 @@
 	\end{definition}
 	
 	\begin{definition}[Parasitenleistung]
-		Die Leistung zur Überwindung des Profilewiderstandes ist
+		Die Leistung zur Ãœberwindung des Profilewiderstandes ist
 		\[
 		P_0 = \frac{1}{2}\rho v^3 S C_{D,0}.
 		\]
@@ -744,14 +744,14 @@
 	\begin{satz}[Gesamtleistung im Schlagflug]
 		Die Gesamtleistung im Schlagflug umfasst drei Anteile:
 		\[
-		P_{\mathrm{ges}} = P_i + P_0 + P_{\text{Trägheit}},
+		P_{\mathrm{ges}} = P_i + P_0 + P_{\text{TrÃ¤gheit}},
 		\]
-		wobei die Trägheitsleistung
+		wobei die TrÃ¤gheitsleistung
 		\[
-		P_{\text{Trägheit}} = \frac{1}{2} I_{\text{Flügel}} \omega_f^2 f
+		P_{\text{TrÃ¤gheit}} = \frac{1}{2} I_{\text{FlÃ¼gel}} \omega_f^2 f
 		\]
-		mit dem Flügelträgheitsmoment $I_{\text{Flügel}}$ und der Schlagkreisfrequenz
-		$\omega_f = 2\pi f \cdot \Phi$ ($\Phi$: Schlagamplitude in Bogenmäß) ist.
+		mit dem FlÃ¼geltrÃ¤gheitsmoment $I_{\text{FlÃ¼gel}}$ und der Schlagkreisfrequenz
+		$\omega_f = 2\pi f \cdot \Phi$ ($\Phi$: Schlagamplitude in BogenmÃ¤ÃŸ) ist.
 	\end{satz}
 	
 	\begin{figure}[H]
@@ -759,41 +759,41 @@
 		\includegraphics[width=0.80\textwidth]{figures/fig05_energie_flugmodus.pdf}
 		\caption{Leistungsaufnahme (in Milliwatt) in den drei Hauptflugmodi als Funktion
 			der Horizontalgeschwindigkeit.
-			\textbf{Blau (Schlagflug):} U-förmige Kurve mit Minimum bei $v \approx 4$\,m/s;
+			\textbf{Blau (Schlagflug):} U-fÃ¶rmige Kurve mit Minimum bei $v \approx 4$\,m/s;
 			die Kurve steigt zu hohen Geschwindigkeiten quadratisch an (Parasitenanteil).
-			\textbf{Grün (Gleitflug):} Parabolisches Minimum bei $\approx 4$\,m/s;
-			die grüne Fläche markiert den Energievorteil gegenüber aktivem Schlagflug.
+			\textbf{GrÃ¼n (Gleitflug):} Parabolisches Minimum bei $\approx 4$\,m/s;
+			die grÃ¼ne FlÃ¤che markiert den Energievorteil gegenÃ¼ber aktivem Schlagflug.
 			\textbf{Rot (Thermiksegeln):} Nahezu konstante Minimalleistung
-			($P \approx 0{,}5$\,mW), da in der Thermik nur Kurskorrektur benötigt wird;
-			dieses Minimum ist physisch nur durch Thermikströmungen erreichbar.}
+			($P \approx 0{,}5$\,mW), da in der Thermik nur Kurskorrektur benÃ¶tigt wird;
+			dieses Minimum ist physisch nur durch ThermikstrÃ¶mungen erreichbar.}
 		\label{fig:energie}
 	\end{figure}
 	
-	\subsection{Flügelschlagfrequenz und Windverhältnisse}
+	\subsection{FlÃ¼gelschlagfrequenz und WindverhÃ¤ltnisse}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/fig02_geschwindigkeit_wind.pdf}
-		\caption{Eigenfluggeschwindigkeit in Abhängigkeit der Windgeschwindigkeit für
+		\caption{Eigenfluggeschwindigkeit in AbhÃ¤ngigkeit der Windgeschwindigkeit fÃ¼r
 			\textit{Danaus plexippus} (orange), \textit{Vanessa atalanta} (blau) und
-			\textit{Papilio machaon} (grün).
+			\textit{Papilio machaon} (grÃ¼n).
 			Bei $v_W = 0$ liegt die Eigengeschwindigkeit bei $4{,}1$--$5{,}2$\,m/s.
-			Mit zunehmendem Rückenwind steigt die effektive Fluggeschwindigkeit linear an
+			Mit zunehmendem RÃ¼ckenwind steigt die effektive Fluggeschwindigkeit linear an
 			($\partial v_F / \partial v_W \approx 0{,}7$--$0{,}85$).
 			Ab $v_W \approx 6$\,m/s beginnt die Kurve abzuflachen, da die Tiere zur
-			Kurskorrektur Energie aufwenden müssen.
+			Kurskorrektur Energie aufwenden mÃ¼ssen.
 			Beim Monarch-Falter wurden Migrationsgeschwindigkeiten von bis zu $13$\,m/s
-			bei starkem Rückenwind nachgewiesen \cite{brower1995behavior}.}
+			bei starkem RÃ¼ckenwind nachgewiesen \cite{brower1995behavior}.}
 		\label{fig:wind}
 	\end{figure}
 	
-	\subsection{Spektrale Analyse des Flügelschlags}
+	\subsection{Spektrale Analyse des FlÃ¼gelschlags}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/fig14_spektralanalyse.pdf}
 		\caption{\textbf{Oben:} Zeitlicher Verlauf eines Beschleunigungssignals,
-			gemessen an der Flügelwurzel von \textit{Vanessa atalanta} mittels
+			gemessen an der FlÃ¼gelwurzel von \textit{Vanessa atalanta} mittels
 			MEMS-Beschleunigungssensor ($f_s = 1000$\,Hz). Der Schlagzyklus ist klar erkennbar.
 			\textbf{Unten:} Leistungsspektrum (log-Skala). Die Grundfrequenz $f_0 = 10{,}5$\,Hz
 			ist dominant (Pfeil $f_0$); die zweite Harmonische $2f_0 = 21{,}0$\,Hz
@@ -808,24 +808,24 @@
 	\label{sec:migration}
 	% ============================================================
 	
-	\subsection{Thermische Auftriebsströmungen}
+	\subsection{Thermische AuftriebsstrÃ¶mungen}
 	
 	\begin{definition}[Thermik]
-		Eine Thermik ist eine aufsteigende Luftströmung mit vertikaler Geschwindigkeit
-		$w_T > 0$, die durch differentielle Bodenerwärmung entsteht.
+		Eine Thermik ist eine aufsteigende LuftstrÃ¶mung mit vertikaler Geschwindigkeit
+		$w_T > 0$, die durch differentielle BodenerwÃ¤rmung entsteht.
 		Ein Schmetterling profitiert von Thermik, wenn $w_T > w_\mathrm{Sink}$,
-		also wenn die Aufstromgeschwindigkeit die eigene Sinkrate übersteigt.
+		also wenn die Aufstromgeschwindigkeit die eigene Sinkrate Ã¼bersteigt.
 	\end{definition}
 	
-	\begin{satz}[Maximale Nutzflughöhe durch Thermik]
+	\begin{satz}[Maximale NutzflughÃ¶he durch Thermik]
 		\label{satz:thermik}
-		Bei konstanter Thermikstärke $w_T$ und Gleitratio $E = L/D$ erreicht ein
+		Bei konstanter ThermikstÃ¤rke $w_T$ und Gleitratio $E = L/D$ erreicht ein
 		Schmetterling durch Kreisen in der Thermik eine Steigrate von
 		\[
 		\dot{h} = w_T - w_{\min} = w_T - \frac{P_0 + P_i}{mg}.
 		\]
-		Die erreichbare Maximalhöhe innerhalb einer Thermiksäule der Höhe $h_T$ ist
-		$h_\mathrm{max} = h_T$ nur dann, wenn $\dot{h} > 0$ \emph{für alle} $h \leq h_T$.
+		Die erreichbare MaximalhÃ¶he innerhalb einer ThermiksÃ¤ule der HÃ¶he $h_T$ ist
+		$h_\mathrm{max} = h_T$ nur dann, wenn $\dot{h} > 0$ \emph{fÃ¼r alle} $h \leq h_T$.
 	\end{satz}
 	
 	\begin{figure}[H]
@@ -838,26 +838,26 @@
 			$\nabla T_{\min} = 0{,}7$\,K/m; Regionen oberhalb (rot schraffiert)
 			signalisieren nutzbare Thermik.
 			\textbf{Unten:} Reaktionswinkel $\beta$ der Flugbahn, zeitlich synchronisiert.
-			Das Tier beginnt den Aufwärtsdrall typisch $\approx 0{,}3$\,s nach
-			Überschreiten des Schwellwerts (neuronale Latenz + motorische Reaktionszeit),
+			Das Tier beginnt den AufwÃ¤rtsdrall typisch $\approx 0{,}3$\,s nach
+			Ãœberschreiten des Schwellwerts (neuronale Latenz + motorische Reaktionszeit),
 			was mit dem Modell von Satz~\ref{satz:thermik} konsistent ist.}
 		\label{fig:thermik}
 	\end{figure}
 	
-	\subsection{Migrationsflughöhe und -route}
+	\subsection{MigrationsflughÃ¶he und -route}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.82\textwidth]{figures/fig07_migrationshoehe.pdf}
-		\caption{Flughöhenprofil des Monarch-Falters (\textit{Danaus plexippus})
-			während der Herbstmigration (Große Seen $\to$ Mexiko).
-			Die orangefarbene Kurve zeigt die mittlere Flughöhe (GPS-Telemetrie,
-			$n = 14$ markierte Individuen), die schattierte Fläche den $\pm 1\sigma$-Streubereich.
+		\caption{FlughÃ¶henprofil des Monarch-Falters (\textit{Danaus plexippus})
+			wÃ¤hrend der Herbstmigration (GroÃŸe Seen $\to$ Mexiko).
+			Die orangefarbene Kurve zeigt die mittlere FlughÃ¶he (GPS-Telemetrie,
+			$n = 14$ markierte Individuen), die schattierte FlÃ¤che den $\pm 1\sigma$-Streubereich.
 			Blaue vertikale Linien markieren identifizierte Thermiknutzungsereignisse
-			(Steigrate $> 1$\,m/s über $> 5$\,min).
-			Die Höhe steigt in der ersten Migrationshälfte an (Thermikoptimum in der
-			zentralen Hochebene Mexikos), fällt dann zu den Überwinterungswäldern in Michoacán
-			($h \approx 2000$\,m ü.\,NN) ab. Thermik-Ereignisse häufen sich am Migrationstag
+			(Steigrate $> 1$\,m/s Ã¼ber $> 5$\,min).
+			Die HÃ¶he steigt in der ersten MigrationshÃ¤lfte an (Thermikoptimum in der
+			zentralen Hochebene Mexikos), fÃ¤llt dann zu den ÃœberwinterungswÃ¤ldern in MichoacÃ¡n
+			($h \approx 2000$\,m Ã¼.\,NN) ab. Thermik-Ereignisse hÃ¤ufen sich am Migrationstag
 			12--16 und 43--48, was mit synoptischen Tiefdrucksystemen korreliert
 			\cite{brower1995behavior}.}
 		\label{fig:migrationshoehe}
@@ -867,14 +867,14 @@
 		\centering
 		\includegraphics[width=0.88\textwidth]{figures/fig13_migrationsroute.pdf}
 		\caption{\textbf{Links:} Schematische Migrationsroute des Monarch-Falters
-			von Ontario (Kanada) nach Michoacán (Mexiko), farbkodiert nach Flughöhe.
-			Die Route folgt großräumig dem Mississippi-Korridor und weicht östlich
+			von Ontario (Kanada) nach MichoacÃ¡n (Mexiko), farbkodiert nach FlughÃ¶he.
+			Die Route folgt groÃŸrÃ¤umig dem Mississippi-Korridor und weicht Ã¶stlich
 			der Rocky Mountains aus (orographische Barriere).
-			Die mittlere tägliche Strecke beträgt $\approx 80$\,km/d;
-			bei optimalem Rückenwind wurden $> 200$\,km/d gemessen.
-			\textbf{Rechts:} Höhenprofil der Route.
-			Gut erkennbar sind drei Gebirgsüberquerungen (Appalachen, Ozark-Plateau,
-			Sierra Madre Oriental) mit markanten Höhenanstiegen.}
+			Die mittlere tÃ¤gliche Strecke betrÃ¤gt $\approx 80$\,km/d;
+			bei optimalem RÃ¼ckenwind wurden $> 200$\,km/d gemessen.
+			\textbf{Rechts:} HÃ¶henprofil der Route.
+			Gut erkennbar sind drei GebirgsÃ¼berquerungen (Appalachen, Ozark-Plateau,
+			Sierra Madre Oriental) mit markanten HÃ¶henanstiegen.}
 		\label{fig:route}
 	\end{figure}
 	
@@ -897,7 +897,7 @@
 		\[
 		\psi_{\mathrm{Flug}}(t) = \phi_\odot(t) + \psi_{\mathrm{Soll}} - \phi_\odot(t_0),
 		\]
-		wobei $\psi_{\mathrm{Soll}}$ der gewünschte Kompasskurs und $t_0$ der
+		wobei $\psi_{\mathrm{Soll}}$ der gewÃ¼nschte Kompasskurs und $t_0$ der
 		Referenzzeitpunkt (Ortszeit Mittag) ist.
 	\end{definition}
 	
@@ -921,7 +921,7 @@
 			
 			% Integration
 			\node[proc, fill=accentred!20, minimum width=3.5cm] (int) at (12, 2.8)
-			{Navigationszentrum\\{}(Pilzkörper, MB)};
+			{Navigationszentrum\\{}(PilzkÃ¶rper, MB)};
 			
 			% Output
 			\node[motor] (kurs)  at (17, 2.8)  {Kurskorrektur $\Delta\psi$};
@@ -939,31 +939,31 @@
 			\draw[pfeil, dashed, accentred] (kurs) to[bend right=40] node[below]{\footnotesize Propriozeptives Feedback} (int);
 		\end{tikzpicture}
 		\caption{Vereinfachtes Blockdiagramm des Navigationssystems des Monarch-Falters.
-			Drei sensorische Kanäle werden im Pilzkörper (\textit{mushroom body}, MB)
+			Drei sensorische KanÃ¤le werden im PilzkÃ¶rper (\textit{mushroom body}, MB)
 			des Protocerebrums integriert.
 			Der circadiane Zeitgeber (Antenne) kompensiert die Wanderung der Sonne
 			(ca.\ $15^\circ$/h), der Cryptochrom-Rezeptor detektiert den Erdmagnetfeldvektor,
-			und das Johnston-Organ misst Windgeschwindigkeit und -richtung über
-			Antennenvibration. Ein propriozeptives Rückkopplungssignal erlaubt
+			und das Johnston-Organ misst Windgeschwindigkeit und -richtung Ã¼ber
+			Antennenvibration. Ein propriozeptives RÃ¼ckkopplungssignal erlaubt
 			kontinuierliche Kurskorrektur \cite{reppert2010sun,guerra2014magnetic}.}
 		\label{fig:navigation_tikz}
 	\end{sidewaysfigure}
 	
 	% ============================================================
-	\section{Zusammenfassung der zentralen Sätze}
+	\section{Zusammenfassung der zentralen SÃ¤tze}
 	% ============================================================
 	
 	\subsection{Beweiskette des aerodynamischen Gleichgewichts}
 	
 	\begin{lemma}[Existenz einer Gleichgewichtsgeschwindigkeit]
 		\label{lem:gleichgewicht}
-		Für jeden Schmetterling mit Masse $m > 0$, Flügelfläche $S > 0$ und
+		FÃ¼r jeden Schmetterling mit Masse $m > 0$, FlÃ¼gelflÃ¤che $S > 0$ und
 		maximalem Auftriebskoeffizient $C_{L,\max} > 0$ existiert eine eindeutige
 		Gleichgewichtsgeschwindigkeit
 		\[
 		v_\mathrm{eq} = \sqrt{\frac{2mg}{\rho S C_L}},
 		\]
-		die für jedes $C_L \in (0, C_{L,\max}]$ wohldefiniert und positiv ist.
+		die fÃ¼r jedes $C_L \in (0, C_{L,\max}]$ wohldefiniert und positiv ist.
 	\end{lemma}
 	
 	\begin{proof}
@@ -977,7 +977,7 @@
 	\begin{korollar}[Skalierung mit der Masse]
 		Die Gleichgewichtsgeschwindigkeit skaliert als $v_\mathrm{eq} \propto \sqrt{m}$
 		bei festgehaltenen Geometrieparametern.
-		Schwerere Schmetterlinge müssen also schneller fliegen, um gleichen Auftrieb
+		Schwerere Schmetterlinge mÃ¼ssen also schneller fliegen, um gleichen Auftrieb
 		zu erzeugen.
 	\end{korollar}
 	
@@ -988,75 +988,75 @@
 		Skalierung.
 	\end{proof}
 	
-	\begin{proposition}[Stabilitätsbedingung]
-		Der stationäre Horizontalflug ist aerodynamisch stabil, wenn die Auftriebssteigung
-		des Flügels positiv und endlich ist:
+	\begin{proposition}[StabilitÃ¤tsbedingung]
+		Der stationÃ¤re Horizontalflug ist aerodynamisch stabil, wenn die Auftriebssteigung
+		des FlÃ¼gels positiv und endlich ist:
 		\[
 		0 < \frac{\partial C_L}{\partial \alpha} < \infty.
 		\]
 	\end{proposition}
 	
 	\begin{proof}
-		Eine kleine Störung $\delta\alpha > 0$ erzeugt $\delta L = \frac{1}{2}\rho v^2 S
+		Eine kleine StÃ¶rung $\delta\alpha > 0$ erzeugt $\delta L = \frac{1}{2}\rho v^2 S
 		\cdot (\partial C_L/\partial \alpha) \cdot \delta\alpha > 0$, was das Tier nach
 		oben beschleunigt.
-		Die resultierende Änderung des effektiven Anstellwinkels durch die vertikale
+		Die resultierende Ã„nderung des effektiven Anstellwinkels durch die vertikale
 		Komponente der Flugbahn ist $\delta\alpha_\mathrm{eff} < 0$, was $\delta L$
 		wieder auf null bringt.
 		Dies gilt genau dann, wenn $0 < \partial C_L/\partial\alpha < \infty$.
 	\end{proof}
 	
 % ============================================================
-\section{Strukturfarben: Photonische Mikro- und Nanostrukturen der Flügeloberfläche}
+\section{Strukturfarben: Photonische Mikro- und Nanostrukturen der FlÃ¼geloberflÃ¤che}
 \label{sec:strukturfarben}
 % ============================================================
 
-Neben ihrer aerodynamischen Funktion besitzt die Schuppenoberfläche der
-Schmetterlingsflügel eine zweite, optisch außergewöhnliche Eigenschaft:
+Neben ihrer aerodynamischen Funktion besitzt die SchuppenoberflÃ¤che der
+SchmetterlingsflÃ¼gel eine zweite, optisch auÃŸergewÃ¶hnliche Eigenschaft:
 Sie erzeugt durch rein physikalische Interferenz- und Beugungseffekte an
 periodischen Nanostrukturen Farben, die ohne jedes farbgebende Pigment
 entstehen --- die sogenannten \emph{Strukturfarben}
 (\textit{structural colours}) \cite{vukusic2003photonic}.
-Während Pigmentfarben auf selektiver Absorption von Lichtquanten durch
-Molekülorbitale beruhen (z.\,B.\ Melanine, Carotinoide, Pterine), entstehen
-Strukturfarben durch kohärente Überlagerung von Teilwellen, die an
-Grenzflächen mit periodisch variierendem Brechungsindex reflektiert,
+WÃ¤hrend Pigmentfarben auf selektiver Absorption von Lichtquanten durch
+MolekÃ¼lorbitale beruhen (z.\,B.\ Melanine, Carotinoide, Pterine), entstehen
+Strukturfarben durch kohÃ¤rente Ãœberlagerung von Teilwellen, die an
+GrenzflÃ¤chen mit periodisch variierendem Brechungsindex reflektiert,
 gebeugt oder gestreut werden.
 Dieser Abschnitt entwickelt die physikalische Theorie dieser Effekte
-systematisch, von der einfachen Dünnschichtinterferenz über
+systematisch, von der einfachen DÃ¼nnschichtinterferenz Ã¼ber
 periodische Mehrschichtsysteme (Bragg-Reflektoren) bis zu
 zwei- und dreidimensionalen photonischen Kristallen, und weist alle
 zentralen Aussagen formal nach.
 Die Ergebnisse werden mit numerisch berechneten Reflexionsspektren
 illustriert.
 
-\subsection{Grundlagen: Kohärente Überlagerung an dünnen Schichten}
+\subsection{Grundlagen: KohÃ¤rente Ãœberlagerung an dÃ¼nnen Schichten}
 \label{sec:duennschicht}
 
-\begin{definition}[Optische Weglängendifferenz und Phasenverschiebung]
+\begin{definition}[Optische WeglÃ¤ngendifferenz und Phasenverschiebung]
 	\label{def:owl}
-	Trifft eine ebene monochromatische Welle der Vakuumwellenlänge $\lambda$
-	unter dem Einfallswinkel $\theta_1$ auf eine dünne, planparallele Schicht
+	Trifft eine ebene monochromatische Welle der VakuumwellenlÃ¤nge $\lambda$
+	unter dem Einfallswinkel $\theta_1$ auf eine dÃ¼nne, planparallele Schicht
 	der Dicke $d$ und des Brechungsindex $n_2$, eingebettet zwischen Medien
-	mit Indizes $n_1$ (oberhalb) und $n_3$ (unterhalb), so erfährt der an der
-	unteren Grenzfläche reflektierte Teilstrahl gegenüber dem an der oberen
-	Grenzfläche reflektierten Teilstrahl eine optische Weglängendifferenz
+	mit Indizes $n_1$ (oberhalb) und $n_3$ (unterhalb), so erfÃ¤hrt der an der
+	unteren GrenzflÃ¤che reflektierte Teilstrahl gegenÃ¼ber dem an der oberen
+	GrenzflÃ¤che reflektierten Teilstrahl eine optische WeglÃ¤ngendifferenz
 	\[
 	\Delta = 2 n_2 d \cos\theta_2,
 	\]
 	wobei $\theta_2$ der Brechungswinkel im Medium~2 ist, gegeben durch das
 	Snelliussche Gesetz $n_1 \sin\theta_1 = n_2 \sin\theta_2$.
-	Die zugehörige Phasendifferenz ist
+	Die zugehÃ¶rige Phasendifferenz ist
 	\[
 	\delta = \frac{2\pi}{\lambda}\Delta = \frac{4\pi n_2 d \cos\theta_2}{\lambda}.
 	\]
 \end{definition}
 
-\begin{satz}[Reflektanz einer dünnen Schicht]
+\begin{satz}[Reflektanz einer dÃ¼nnen Schicht]
 	\label{satz:airy}
-	Für eine dünne Schicht gemäß Definition~\ref{def:owl} mit den
+	FÃ¼r eine dÃ¼nne Schicht gemÃ¤ÃŸ Definition~\ref{def:owl} mit den
 	Fresnel-Reflexionskoeffizienten $r_{12}$ an der oberen und $r_{23}$ an
-	der unteren Grenzfläche ist die Gesamtreflektanz (Airy-Formel)
+	der unteren GrenzflÃ¤che ist die Gesamtreflektanz (Airy-Formel)
 	\[
 	R(\lambda,\theta_1) = \frac{r_{12}^2 + r_{23}^2 + 2 r_{12} r_{23}
 		\cos\delta}{1 + (r_{12} r_{23})^2 + 2 r_{12} r_{23} \cos\delta}.
@@ -1066,7 +1066,7 @@ illustriert.
 \begin{proof}
 	Wir betrachten die unendliche Summe aller im Medium~2 mehrfach
 	reflektierten Teilwellen, die an der Oberseite austreten. Die
-	amplitudenmäßige Reflexion des Gesamtsystems ist die geometrische Reihe
+	amplitudenmÃ¤ÃŸige Reflexion des Gesamtsystems ist die geometrische Reihe
 	\[
 	r = r_{12} + t_{12} r_{23} t_{21} e^{-i\delta}
 	\sum_{k=0}^{\infty} \left(r_{21} r_{23} e^{-i\delta}\right)^k
@@ -1078,46 +1078,46 @@ illustriert.
 	\[
 	r = \frac{r_{12} + r_{23} e^{-i\delta}}{1 + r_{12} r_{23} e^{-i\delta}}.
 	\]
-	Die Reflektanz ist $R = |r|^2$. Ausmultiplizieren von Zähler und Nenner
+	Die Reflektanz ist $R = |r|^2$. Ausmultiplizieren von ZÃ¤hler und Nenner
 	mit den jeweils komplex Konjugierten und Verwendung von
 	$e^{-i\delta} + e^{i\delta} = 2\cos\delta$ liefert nach
-	elementarer, aber länglicher Umformung
+	elementarer, aber lÃ¤nglicher Umformung
 	\[
 	R = \frac{(r_{12}+r_{23}e^{-i\delta})(r_{12}+r_{23}e^{i\delta})}
 	{(1+r_{12}r_{23}e^{-i\delta})(1+r_{12}r_{23}e^{i\delta})}
 	= \frac{r_{12}^2 + r_{23}^2 + 2 r_{12} r_{23}\cos\delta}
 	{1 + (r_{12}r_{23})^2 + 2 r_{12}r_{23}\cos\delta},
 	\]
-	was die Behauptung beweist. Da $\delta$ gemäß Definition~\ref{def:owl}
-	von $\lambda$, $d$, $n_2$ und $\theta_1$ (über $\theta_2$) abhängt, ist
-	$R$ eine $\lambda$- und winkelabhängige periodische Funktion mit
+	was die Behauptung beweist. Da $\delta$ gemÃ¤ÃŸ Definition~\ref{def:owl}
+	von $\lambda$, $d$, $n_2$ und $\theta_1$ (Ã¼ber $\theta_2$) abhÃ¤ngt, ist
+	$R$ eine $\lambda$- und winkelabhÃ¤ngige periodische Funktion mit
 	Maxima bei konstruktiver Interferenz ($\delta = 2m\pi$) und Minima bei
 	destruktiver Interferenz ($\delta = (2m+1)\pi$), $m \in \mathbb{Z}$.
 \end{proof}
 
 \begin{korollar}[Farbverschiebung mit dem Betrachtungswinkel]
 	\label{kor:winkelverschiebung}
-	Da $\cos\theta_2$ mit zunehmendem $\theta_1$ monoton fällt
-	(für $0 \le \theta_1 < \pi/2$), verschiebt sich gemäß
+	Da $\cos\theta_2$ mit zunehmendem $\theta_1$ monoton fÃ¤llt
+	(fÃ¼r $0 \le \theta_1 < \pi/2$), verschiebt sich gemÃ¤ÃŸ
 	Definition~\ref{def:owl} die Phasendifferenz $\delta$ bei festem
-	$\lambda$ zu kleineren Werten. Die Wellenlänge $\lambda_{\max}$, bei der
+	$\lambda$ zu kleineren Werten. Die WellenlÃ¤nge $\lambda_{\max}$, bei der
 	$R(\lambda)$ ein Reflexionsmaximum (konstruktive Interferenz,
-	$\delta = 2m\pi$) annimmt, erfüllt
+	$\delta = 2m\pi$) annimmt, erfÃ¼llt
 	\[
 	\lambda_{\max}(\theta_1) = \frac{2 n_2 d \cos\theta_2(\theta_1)}{m},
 	\qquad m \in \mathbb{N}.
 	\]
 	Da $\lambda_{\max}$ proportional zu $\cos\theta_2$ ist und
-	$\cos\theta_2$ mit $\theta_1$ monoton fällt, ist $\lambda_{\max}$ eine
+	$\cos\theta_2$ mit $\theta_1$ monoton fÃ¤llt, ist $\lambda_{\max}$ eine
 	streng monoton fallende Funktion des Betrachtungswinkels $\theta_1$.
 	Mit zunehmendem Betrachtungswinkel verschiebt sich das Reflexionsmaximum
-	also zu kürzeren Wellenlängen --- eine Blauverschiebung. Dieses
-	Phänomen heißt \emph{Irideszenz} und ist das physikalische Korrelat der
+	also zu kÃ¼rzeren WellenlÃ¤ngen --- eine Blauverschiebung. Dieses
+	PhÃ¤nomen heiÃŸt \emph{Irideszenz} und ist das physikalische Korrelat der
 	Schillerfarben (\textit{iridescence}) \cite{vigneron2010morpho}.
 \end{korollar}
 
 Abbildung~\ref{fig:thinfilm} zeigt die nach Satz~\ref{satz:airy} berechnete
-Reflektanz $R(\lambda)$ für eine einzelne Chitinlamelle ($n_2 \approx 1{,}56$
+Reflektanz $R(\lambda)$ fÃ¼r eine einzelne Chitinlamelle ($n_2 \approx 1{,}56$
 \cite{vukusic2003photonic}) verschiedener Dicke $d$ bei senkrechtem
 Lichteinfall.
 
@@ -1125,13 +1125,13 @@ Lichteinfall.
 	\centering
 	\includegraphics[width=0.78\textwidth]{figures/fig_struct01_thinfilm.pdf}
 	\caption{Reflexionsspektrum $R(\lambda)$ einer einzelnen Chitinlamelle
-		($n_2 = 1{,}56$, eingebettet in Luft, $n_1=n_3=1{,}0$) gemäß der
-		Airy-Formel (Satz~\ref{satz:airy}) für vier Schichtdicken $d$.
+		($n_2 = 1{,}56$, eingebettet in Luft, $n_1=n_3=1{,}0$) gemÃ¤ÃŸ der
+		Airy-Formel (Satz~\ref{satz:airy}) fÃ¼r vier Schichtdicken $d$.
 		Mit zunehmender Dicke $d$ verschiebt sich das erste
-		Reflexionsmaximum gemäß $\lambda_{\max} = 2 n_2 d$ (für $m=1$, Korollar
-		\ref{kor:winkelverschiebung}) zu längeren Wellenlängen: Für
-		$d=70$\,nm liegt das Maximum im blauen, für $d=150$\,nm im
-		roten Spektralbereich. Die Modulationstiefe hängt vom
+		Reflexionsmaximum gemÃ¤ÃŸ $\lambda_{\max} = 2 n_2 d$ (fÃ¼r $m=1$, Korollar
+		\ref{kor:winkelverschiebung}) zu lÃ¤ngeren WellenlÃ¤ngen: FÃ¼r
+		$d=70$\,nm liegt das Maximum im blauen, fÃ¼r $d=150$\,nm im
+		roten Spektralbereich. Die Modulationstiefe hÃ¤ngt vom
 		Brechungsindexkontrast $|n_2-n_1|$ ab und liegt hier bei
 		$\Delta R \approx 0{,}10$, deutlich unter den in mehrschichtigen
 		Strukturen erreichbaren Werten (vgl.\ Abbildung~\ref{fig:multilayer}).}
@@ -1139,13 +1139,13 @@ Lichteinfall.
 \end{figure}
 
 Die in Abbildung~\ref{fig:thinfilm} sichtbare Verschiebung des
-Reflexionsmaximums mit der Schichtdicke $d$ erklärt, warum geringfügige
+Reflexionsmaximums mit der Schichtdicke $d$ erklÃ¤rt, warum geringfÃ¼gige
 Variationen der Lamellendicke innerhalb einer einzelnen Schuppenpopulation
-zu einer deutlichen Farbvarianz führen können --- ein Effekt, der bei vielen
-Bläulingen (\textit{Lycaenidae}) beobachtet wird.
+zu einer deutlichen Farbvarianz fÃ¼hren kÃ¶nnen --- ein Effekt, der bei vielen
+BlÃ¤ulingen (\textit{Lycaenidae}) beobachtet wird.
 Allerdings erreicht eine einzelne Lamelle nur eine moderate Modulationstiefe
 $\Delta R \approx 0{,}10$; die in der Natur beobachteten, extrem
-gesättigten Strukturfarben (z.\,B.\ das ikonische Morpho-Blau mit
+gesÃ¤ttigten Strukturfarben (z.\,B.\ das ikonische Morpho-Blau mit
 $R_{\max} > 0{,}7$) erfordern periodische Mehrschichtsysteme, die im
 folgenden Abschnitt behandelt werden.
 
@@ -1155,13 +1155,13 @@ folgenden Abschnitt behandelt werden.
 Viele Schuppen, insbesondere die der Gattung \textit{Morpho}, bestehen nicht
 aus einer einzelnen Lamelle, sondern aus einem Stapel von $N$ alternierenden
 Chitin- und Luftschichten (\textit{Lamellenstapel}), die im
-Querschnitt einer Christbaumform ähneln \cite{vukusic2003photonic}.
-Dieses System lässt sich als periodischer dielektrischer
+Querschnitt einer Christbaumform Ã¤hneln \cite{vukusic2003photonic}.
+Dieses System lÃ¤sst sich als periodischer dielektrischer
 Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 
 \begin{definition}[Transfermatrix einer Einzelschicht]
 	\label{def:transfermatrix}
-	Für eine homogene Schicht mit Brechungsindex $n_j$, geometrischer Dicke
+	FÃ¼r eine homogene Schicht mit Brechungsindex $n_j$, geometrischer Dicke
 	$d_j$ und Einfallswinkel $\theta_j$ (im jeweiligen Medium) definieren wir
 	die optische Admittanz $\eta_j = n_j \cos\theta_j$ und die
 	Phasendicke $\delta_j = k_0 n_j d_j \cos\theta_j$ mit
@@ -1176,7 +1176,7 @@ Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 
 \begin{satz}[Reflektanz eines periodischen $N$-Schicht-Stapels]
 	\label{satz:bragg}
-	Für einen Stapel aus $N$ Periodenpaaren, jede Periode bestehend aus
+	FÃ¼r einen Stapel aus $N$ Periodenpaaren, jede Periode bestehend aus
 	einer Hochindex-Schicht ($n_H, d_H$) und einer Niedrigindex-Schicht
 	($n_L, d_L$), eingebettet zwischen Eintrittsmedium $n_0$ und
 	Austrittsmedium $n_s$, ergibt sich die Gesamtmatrix
@@ -1184,8 +1184,8 @@ Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 	M = \prod_{k=1}^{N} \left(M_H M_L\right) =
 	\begin{pmatrix} m_{11} & m_{12}\\ m_{21} & m_{22}\end{pmatrix},
 	\]
-	wobei $M_H, M_L$ gemäß Definition~\ref{def:transfermatrix} gebildet
-	werden. Die Reflektanz bei senkrechtem oder schrägem Einfall ist
+	wobei $M_H, M_L$ gemÃ¤ÃŸ Definition~\ref{def:transfermatrix} gebildet
+	werden. Die Reflektanz bei senkrechtem oder schrÃ¤gem Einfall ist
 	\[
 	R = \left|\frac{\eta_0(m_{11}+m_{12}\eta_s) - (m_{21}+m_{22}\eta_s)}
 	{\eta_0(m_{11}+m_{12}\eta_s) + (m_{21}+m_{22}\eta_s)}\right|^2.
@@ -1194,22 +1194,22 @@ Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 
 \begin{proof}
 	Die Transfermatrixmethode beruht auf der Stetigkeit der tangentialen
-	Feldkomponenten $E$ und $H$ an jeder Grenzfläche. Für eine einzelne
-	Schicht $j$ mit ebenen Wellen $E^{+}e^{ik_{z,j}z}$ (vorwärts) und
-	$E^{-}e^{-ik_{z,j}z}$ (rückwärts) gilt an den Schichtgrenzen $z=0$ und
+	Feldkomponenten $E$ und $H$ an jeder GrenzflÃ¤che. FÃ¼r eine einzelne
+	Schicht $j$ mit ebenen Wellen $E^{+}e^{ik_{z,j}z}$ (vorwÃ¤rts) und
+	$E^{-}e^{-ik_{z,j}z}$ (rÃ¼ckwÃ¤rts) gilt an den Schichtgrenzen $z=0$ und
 	$z=d_j$ die lineare Beziehung
 	\[
 	\begin{pmatrix}E(0)\\H(0)\end{pmatrix}
 	= M_j \begin{pmatrix}E(d_j)\\H(d_j)\end{pmatrix},
 	\]
 	mit $M_j$ aus Definition~\ref{def:transfermatrix}, was sich direkt aus
-	den Lösungen der Helmholtz-Gleichung
+	den LÃ¶sungen der Helmholtz-Gleichung
 	$\partial_z^2 E + k_{z,j}^2 E = 0$ mit $k_{z,j}=k_0 n_j\cos\theta_j$
-	ergibt. Da Felder an aufeinanderfolgenden Grenzflächen stetig fortgesetzt
+	ergibt. Da Felder an aufeinanderfolgenden GrenzflÃ¤chen stetig fortgesetzt
 	werden, multiplizieren sich die Matrizen aller Schichten in der
-	Reihenfolge ihres Durchlaufens; für $N$ identische Periodenpaare ergibt
+	Reihenfolge ihres Durchlaufens; fÃ¼r $N$ identische Periodenpaare ergibt
 	sich somit $M = (M_HM_L)^N$, was als $\prod_{k=1}^N(M_HM_L)$ geschrieben
-	werden kann (Assoziativität der Matrixmultiplikation).
+	werden kann (AssoziativitÃ¤t der Matrixmultiplikation).
 	Aus der Gesamtmatrix $M$ und den Admittanzen $\eta_0=n_0\cos\theta_0$ des
 	Eintritts- sowie $\eta_s=n_s\cos\theta_s$ des Austrittsmediums ergibt
 	sich der Gesamtreflexionskoeffizient
@@ -1223,14 +1223,14 @@ Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 	$R=|r|^2$ liefert die behauptete Formel.
 \end{proof}
 
-\begin{korollar}[Verstärkung der Reflektanz mit der Periodenzahl]
+\begin{korollar}[VerstÃ¤rkung der Reflektanz mit der Periodenzahl]
 	\label{kor:periodenzahl}
-	Für eine Wellenlänge $\lambda$ innerhalb des durch die Bragg-Bedingung
+	FÃ¼r eine WellenlÃ¤nge $\lambda$ innerhalb des durch die Bragg-Bedingung
 	\[
 	n_H d_H + n_L d_L = \frac{\lambda}{2}
 	\]
-	definierten Stoppbandes wächst die Reflektanz $R_N$ eines Stapels mit
-	$N$ Periodenpaaren monoton mit $N$ und konvergiert für $N\to\infty$
+	definierten Stoppbandes wÃ¤chst die Reflektanz $R_N$ eines Stapels mit
+	$N$ Periodenpaaren monoton mit $N$ und konvergiert fÃ¼r $N\to\infty$
 	gegen $1$. Es existiert ferner ein endliches $N^*$, sodass
 	$R_{N^*} \ge 0{,}99$, sobald der Indexkontrast
 	$\Delta n = n_H - n_L > 0$ ist.
@@ -1238,29 +1238,29 @@ Schichtwellenleiter --- ein \emph{Bragg-Reflektor} --- modellieren.
 
 \begin{proof}
 	Innerhalb des Stoppbandes ist die effektive Phasendicke pro Periode so,
-	dass $|\operatorname{tr}(M_HM_L)| > 2$ gilt (klassisches Kriterium für
-	exponentiell wachsende Lösungen periodischer Systeme, Floquet-Theorem).
+	dass $|\operatorname{tr}(M_HM_L)| > 2$ gilt (klassisches Kriterium fÃ¼r
+	exponentiell wachsende LÃ¶sungen periodischer Systeme, Floquet-Theorem).
 	Damit besitzt $M_HM_L$ einen reellen Eigenwert $\mu$ mit $|\mu|>1$ und
-	einen zweiten Eigenwert $1/\mu$ mit $|1/\mu|<1$. Für $N$ Perioden gilt
+	einen zweiten Eigenwert $1/\mu$ mit $|1/\mu|<1$. FÃ¼r $N$ Perioden gilt
 	$(M_HM_L)^N = P \begin{pmatrix}\mu^N&0\\0&\mu^{-N}\end{pmatrix}P^{-1}$
-	für eine feste, von $N$ unabhängige Matrix $P$ aus Eigenvektoren. Damit
-	werden die Einträge $m_{11},m_{12},m_{21},m_{22}$ für $N\to\infty$ vom
+	fÃ¼r eine feste, von $N$ unabhÃ¤ngige Matrix $P$ aus Eigenvektoren. Damit
+	werden die EintrÃ¤ge $m_{11},m_{12},m_{21},m_{22}$ fÃ¼r $N\to\infty$ vom
 	Term $\mu^N$ dominiert, und der Quotient in $r$ (Satz~\ref{satz:bragg})
 	konvergiert gegen einen Grenzwert mit $|r|\to1$, also $R\to1$. Da $R_N$
 	als stetige, durch dominante Exponentialterme bestimmte Funktion von $N$
 	monoton gegen $1$ strebt (die Korrekturterme niedrigerer Ordnung fallen
 	mit $\mu^{-2N}$ ab) und $R_0$ (kein Stapel) gleich der
-	Fresnel-Reflektanz $r_{0s}^2 < 1$ ist, existiert für jedes
+	Fresnel-Reflektanz $r_{0s}^2 < 1$ ist, existiert fÃ¼r jedes
 	$\Delta n > 0$ ein endliches $N^*$ mit $R_{N^*}\ge 0{,}99$.
 \end{proof}
 
 Abbildung~\ref{fig:multilayer} (links) zeigt das nach Satz~\ref{satz:bragg}
 berechnete Spektrum eines Stapels mit $N=8$ Periodenpaaren ($d_H=70$\,nm
-Chitin, $d_L=100$\,nm Luft), wie es näherungsweise in den Schuppen von
+Chitin, $d_L=100$\,nm Luft), wie es nÃ¤herungsweise in den Schuppen von
 \textit{Morpho peleides} vorliegt \cite{vukusic2003photonic}. Das rechte
-Teilbild illustriert Korollar~\ref{kor:winkelverschiebung} für den
+Teilbild illustriert Korollar~\ref{kor:winkelverschiebung} fÃ¼r den
 Mehrschichtfall: Mit zunehmendem Betrachtungswinkel $\theta$ verschiebt sich
-das Reflexionsband zu kürzeren Wellenlängen.
+das Reflexionsband zu kÃ¼rzeren WellenlÃ¤ngen.
 
 \begin{figure}[H]
 	\centering
@@ -1270,79 +1270,79 @@ das Reflexionsband zu kürzeren Wellenlängen.
 		$d_L=100$\,nm Luft) bei senkrechtem Einfall, berechnet mit der
 		Transfermatrixmethode (Satz~\ref{satz:bragg}). Im Vergleich zur
 		Einzelschicht (Abbildung~\ref{fig:thinfilm}) ist die
-		Modulationstiefe deutlich höher ($R_{\max}\approx 0{,}9$),
-		konsistent mit Korollar~\ref{kor:periodenzahl}, das für
+		Modulationstiefe deutlich hÃ¶her ($R_{\max}\approx 0{,}9$),
+		konsistent mit Korollar~\ref{kor:periodenzahl}, das fÃ¼r
 		zunehmende Periodenzahl $N$ eine monotone Konvergenz $R\to1$
 		vorhersagt. \textbf{Rechts:} Reflexionsspektren desselben Stapels
-		für Betrachtungswinkel $\theta\in\{0^\circ,20^\circ,40^\circ,60^\circ\}$.
+		fÃ¼r Betrachtungswinkel $\theta\in\{0^\circ,20^\circ,40^\circ,60^\circ\}$.
 		Das Reflexionsmaximum verschiebt sich mit zunehmendem $\theta$
-		monoton zu kürzeren Wellenlängen (Blauverschiebung), wie in
+		monoton zu kÃ¼rzeren WellenlÃ¤ngen (Blauverschiebung), wie in
 		Korollar~\ref{kor:winkelverschiebung} formal gezeigt --- dies ist
-		die quantitative Erklärung der bei Morpho-Faltern beobachteten
+		die quantitative ErklÃ¤rung der bei Morpho-Faltern beobachteten
 		Irideszenz.}
 	\label{fig:multilayer}
 \end{figure}
 
-\subsection{Beugungsgitter: Periodische Oberflächenrillen der Schuppen}
+\subsection{Beugungsgitter: Periodische OberflÃ¤chenrillen der Schuppen}
 \label{sec:beugung}
 
 Neben der Schichtinterferenz tragen viele Schuppentypen auch
-oberflächenparallele, periodisch angeordnete Längsrippen
-(\textit{ridges}) mit typischen Periodenlängen $\Lambda_g \in
+oberflÃ¤chenparallele, periodisch angeordnete LÃ¤ngsrippen
+(\textit{ridges}) mit typischen PeriodenlÃ¤ngen $\Lambda_g \in
 [300,1200]$\,nm \cite{ghiradella1991light}. Diese wirken als
 Reflexionsbeugungsgitter.
 
 \begin{definition}[Gittergleichung]
 	\label{def:gittergleichung}
-	Für ein Reflexionsgitter mit Gitterperiode $\Lambda_g$, das unter dem
-	Winkel $\theta_i$ (gemessen zur Flächennormalen) beleuchtet wird, treten
+	FÃ¼r ein Reflexionsgitter mit Gitterperiode $\Lambda_g$, das unter dem
+	Winkel $\theta_i$ (gemessen zur FlÃ¤chennormalen) beleuchtet wird, treten
 	Beugungsmaxima der Ordnung $m\in\mathbb{Z}$ unter den Winkeln
 	$\theta_m$ auf, die der Gittergleichung
 	\[
 	\Lambda_g\left(\sin\theta_m - \sin\theta_i\right) = m\lambda
 	\]
-	genügen. Für senkrechten Einfall ($\theta_i = 0$) vereinfacht sich dies
+	genÃ¼gen. FÃ¼r senkrechten Einfall ($\theta_i = 0$) vereinfacht sich dies
 	zu $\Lambda_g \sin\theta_m = m\lambda$.
 \end{definition}
 
-\begin{satz}[Existenzbedingung für sichtbare Beugungsfarben]
+\begin{satz}[Existenzbedingung fÃ¼r sichtbare Beugungsfarben]
 	\label{satz:beugungsfarben}
-	Bei senkrechtem Einfall existiert für eine gegebene Gitterperiode
+	Bei senkrechtem Einfall existiert fÃ¼r eine gegebene Gitterperiode
 	$\Lambda_g$ ein Beugungsmaximum erster Ordnung ($m=1$) im sichtbaren
 	Spektralbereich $\lambda \in [380,780]$\,nm genau dann, wenn
 	\[
 	\Lambda_g \ge 380\,\text{nm}.
 	\]
-	Für $\Lambda_g < 380$\,nm existiert kein Beugungsmaximum erster Ordnung
+	FÃ¼r $\Lambda_g < 380$\,nm existiert kein Beugungsmaximum erster Ordnung
 	im sichtbaren Bereich; das Gitter wirkt dann als effektives Medium
 	(siehe Bemerkung~\ref{bem:effektivesmedium}) und erzeugt keine
-	winkelabhängige Beugungsfarbe, sondern allenfalls eine durch den
-	gemittelten Brechungsindex bestimmte, winkelunabhängige Antireflexwirkung.
+	winkelabhÃ¤ngige Beugungsfarbe, sondern allenfalls eine durch den
+	gemittelten Brechungsindex bestimmte, winkelunabhÃ¤ngige Antireflexwirkung.
 \end{satz}
 
 \begin{proof}
-	Nach Definition~\ref{def:gittergleichung} gilt für $\theta_i=0$,
-	$m=1$: $\sin\theta_1 = \lambda/\Lambda_g$. Eine reelle Lösung
+	Nach Definition~\ref{def:gittergleichung} gilt fÃ¼r $\theta_i=0$,
+	$m=1$: $\sin\theta_1 = \lambda/\Lambda_g$. Eine reelle LÃ¶sung
 	$\theta_1\in(0,\pi/2]$ existiert genau dann, wenn
 	$0 < \lambda/\Lambda_g \le 1$, also $\lambda \le \Lambda_g$. Damit
-	existiert für \emph{irgendeine} Wellenlänge $\lambda$ im sichtbaren
+	existiert fÃ¼r \emph{irgendeine} WellenlÃ¤nge $\lambda$ im sichtbaren
 	Bereich $[380,780]$\,nm ein Beugungswinkel erster Ordnung genau dann,
 	wenn das Intervall $[380,780]\cap(0,\Lambda_g]$ nichtleer ist, was
-	äquivalent zu $\Lambda_g \ge 380$\,nm ist. Für $\Lambda_g<380$\,nm ist
+	Ã¤quivalent zu $\Lambda_g \ge 380$\,nm ist. FÃ¼r $\Lambda_g<380$\,nm ist
 	$[380,780]\cap(0,\Lambda_g] = \emptyset$, sodass keine sichtbare
-	Wellenlänge die Bedingung $\lambda\le\Lambda_g$ erfüllt und somit kein
-	Beugungsmaximum erster (oder höherer) Ordnung im Sichtbaren auftritt.
+	WellenlÃ¤nge die Bedingung $\lambda\le\Lambda_g$ erfÃ¼llt und somit kein
+	Beugungsmaximum erster (oder hÃ¶herer) Ordnung im Sichtbaren auftritt.
 \end{proof}
 
 \begin{bemerkung}[Effektive-Medium-Grenzfall]
 	\label{bem:effektivesmedium}
-	Für Strukturperioden $\Lambda_g \ll \lambda$ ``sieht'' die
-	elektromagnetische Welle keine diskrete Periodizität mehr, sondern nur
+	FÃ¼r Strukturperioden $\Lambda_g \ll \lambda$ ``sieht'' die
+	elektromagnetische Welle keine diskrete PeriodizitÃ¤t mehr, sondern nur
 	einen volumetrisch gemittelten Brechungsindex
 	$n_{\mathrm{eff}} = \sqrt{f n_1^2 + (1-f) n_2^2}$, wobei $f$ der
-	Volumenanteil der Komponente mit Index $n_1$ ist (Maxwell-Garnett-Näherung).
+	Volumenanteil der Komponente mit Index $n_1$ ist (Maxwell-Garnett-NÃ¤herung).
 	Dieser Grenzfall erzeugt keine spektral selektive, sondern eine breitbandige,
-	winkelunabhängige Modifikation der Reflexion, etwa als
+	winkelunabhÃ¤ngige Modifikation der Reflexion, etwa als
 	Antireflexbeschichtung, wie sie z.\,B.\ bei den extrem
 	lichtabsorbierenden Schuppen tiefschwarzer Schmetterlinge
 	(\textit{Papilio ulysses}, gewisse \textit{Pieridae}) auftritt.
@@ -1355,28 +1355,28 @@ und Satz~\ref{satz:beugungsfarben}.
 	\centering
 	\includegraphics[width=0.95\textwidth]{figures/fig_struct03_grating.pdf}
 	\caption{\textbf{Links:} Beugungswinkel $\theta_1$ erster Ordnung als
-		Funktion der Wellenlänge $\lambda$ für drei Gitterperioden
-		$\Lambda_g\in\{500,700,900\}$\,nm gemäß
-		Definition~\ref{def:gittergleichung}. Für jede dieser Perioden
+		Funktion der WellenlÃ¤nge $\lambda$ fÃ¼r drei Gitterperioden
+		$\Lambda_g\in\{500,700,900\}$\,nm gemÃ¤ÃŸ
+		Definition~\ref{def:gittergleichung}. FÃ¼r jede dieser Perioden
 		existiert nach Satz~\ref{satz:beugungsfarben} (da $\Lambda_g\ge380$\,nm)
 		ein Beugungsmaximum im sichtbaren Bereich; die Kurven enden, wenn
-		$\sin\theta_1=\lambda/\Lambda_g>1$ wird (keine reelle Lösung mehr).
-		\textbf{Rechts:} Für einen fest gewählten Beobachtungswinkel
-		$\theta=30^\circ$ wird gezeigt, welche Wellenlänge $\lambda =
+		$\sin\theta_1=\lambda/\Lambda_g>1$ wird (keine reelle LÃ¶sung mehr).
+		\textbf{Rechts:} FÃ¼r einen fest gewÃ¤hlten Beobachtungswinkel
+		$\theta=30^\circ$ wird gezeigt, welche WellenlÃ¤nge $\lambda =
 		\Lambda_g\sin\theta$ bei welcher Gitterperiode $\Lambda_g$ in diesen
-		Winkel gebeugt wird. Die graue Fläche markiert den sichtbaren
+		Winkel gebeugt wird. Die graue FlÃ¤che markiert den sichtbaren
 		Bereich: Nur Gitterperioden $\Lambda_g\in[760,1560]$\,nm liefern bei
-		$\theta=30^\circ$ eine sichtbare Beugungsfarbe; außerhalb dieses
-		Bereichs liegt die gebeugte Wellenlänge im UV oder IR und ist für das
+		$\theta=30^\circ$ eine sichtbare Beugungsfarbe; auÃŸerhalb dieses
+		Bereichs liegt die gebeugte WellenlÃ¤nge im UV oder IR und ist fÃ¼r das
 		menschliche Auge nicht wahrnehmbar.}
 	\label{fig:gitter}
 \end{figure}
 
-\subsection{Überlagerung von Struktur- und Pigmentfarben}
+\subsection{Ãœberlagerung von Struktur- und Pigmentfarben}
 \label{sec:ueberlagerung}
 
 In vielen Schuppentypen liegt die photonische Nanostruktur nicht isoliert
-vor, sondern über einer pigmenthaltigen Grundschicht (häufig Melanin). Das
+vor, sondern Ã¼ber einer pigmenthaltigen Grundschicht (hÃ¤ufig Melanin). Das
 resultierende Reflexionsspektrum ist das Produkt aus der strukturell
 bedingten spektralen Reflektanz $R_{\mathrm{struct}}(\lambda)$ und der
 pigmentbedingten spektralen Transmission $T_{\mathrm{pig}}(\lambda)$ der
@@ -1387,45 +1387,45 @@ diffuser Rest) wieder austritt.
 \begin{definition}[Kombiniertes Reflexionsspektrum]
 	\label{def:kombiniert}
 	Sei $R_{\mathrm{struct}}(\lambda)\in[0,1]$ das Reflexionsspektrum der
-	photonischen Nanostruktur (gemäß Satz~\ref{satz:airy} oder
+	photonischen Nanostruktur (gemÃ¤ÃŸ Satz~\ref{satz:airy} oder
 	\ref{satz:bragg}) und $T_{\mathrm{pig}}(\lambda) =
 	e^{-k(\lambda)\,\ell}\in(0,1]$ die Transmission einer
-	Pigmentschicht der Dicke $\ell$ mit wellenlängenabhängigem
+	Pigmentschicht der Dicke $\ell$ mit wellenlÃ¤ngenabhÃ¤ngigem
 	Absorptionskoeffizienten $k(\lambda)>0$ (Lambert-Beer-Gesetz).
-	Das kombinierte, von außen messbare Reflexionsspektrum ist
+	Das kombinierte, von auÃŸen messbare Reflexionsspektrum ist
 	\[
 	R_{\mathrm{komb}}(\lambda) = R_{\mathrm{struct}}(\lambda)\cdot
 	T_{\mathrm{pig}}(\lambda).
 	\]
 \end{definition}
 
-\begin{proposition}[Sättigungserhöhung durch Pigmentunterlage]
+\begin{proposition}[SÃ¤ttigungserhÃ¶hung durch Pigmentunterlage]
 	\label{prop:saettigung}
 	Sei $R_{\mathrm{struct}}$ unimodal mit eindeutigem Maximum bei
 	$\lambda^*$ und sei $T_{\mathrm{pig}}(\lambda) = e^{-k(\lambda)\ell}$
-	mit $k(\lambda)$ monoton fallend in $\lambda$ (wie es für Melanin im
-	sichtbaren Bereich näherungsweise gilt \cite{vukusic2003photonic}).
-	Definiere die \emph{Sättigung} als
+	mit $k(\lambda)$ monoton fallend in $\lambda$ (wie es fÃ¼r Melanin im
+	sichtbaren Bereich nÃ¤herungsweise gilt \cite{vukusic2003photonic}).
+	Definiere die \emph{SÃ¤ttigung} als
 	$\sigma[R] := \max_\lambda R(\lambda) - \overline{R}$, wobei
 	$\overline{R}$ der spektrale Mittelwert von $R$ ist.
-	Dann gilt für hinreichend großes $\lambda^*$ relativ zum Träger von
+	Dann gilt fÃ¼r hinreichend groÃŸes $\lambda^*$ relativ zum TrÃ¤ger von
 	$k(\lambda)$, dass
 	\[
 	\sigma[R_{\mathrm{komb}}] > \sigma[R_{\mathrm{struct}}],
 	\]
-	d.\,h.\ die Pigmentunterlage erhöht die Farbsättigung des
+	d.\,h.\ die Pigmentunterlage erhÃ¶ht die FarbsÃ¤ttigung des
 	resultierenden Signals.
 \end{proposition}
 
 \begin{proof}
-	Da $k(\lambda)$ monoton fällt, ist $T_{\mathrm{pig}}(\lambda)=
+	Da $k(\lambda)$ monoton fÃ¤llt, ist $T_{\mathrm{pig}}(\lambda)=
 	e^{-k(\lambda)\ell}$ monoton steigend in $\lambda$. Das Maximum
 	$\lambda^*$ von $R_{\mathrm{struct}}$ liege so, dass
 	$T_{\mathrm{pig}}(\lambda^*) > \overline{T_{\mathrm{pig}}}$, d.\,h.\ am
 	Ort des Reflexionsmaximums ist die Pigmenttransmission
-	überdurchschnittlich groß --- dies ist die formale Bedingung
-	``$\lambda^*$ hinreichend groß relativ zum Träger von $k$'', da
-	$T_{\mathrm{pig}}$ monoton in $\lambda$ wächst.
+	Ã¼berdurchschnittlich groÃŸ --- dies ist die formale Bedingung
+	``$\lambda^*$ hinreichend groÃŸ relativ zum TrÃ¤ger von $k$'', da
+	$T_{\mathrm{pig}}$ monoton in $\lambda$ wÃ¤chst.
 	Es gilt
 	\[
 	\max_\lambda R_{\mathrm{komb}}(\lambda) \ge
@@ -1433,7 +1433,7 @@ diffuser Rest) wieder austritt.
 	R_{\mathrm{struct}}(\lambda^*)\,T_{\mathrm{pig}}(\lambda^*)
 	= \left(\max_\lambda R_{\mathrm{struct}}\right) T_{\mathrm{pig}}(\lambda^*).
 	\]
-	Für den Mittelwert gilt nach der Cauchy-Schwarz- bzw.
+	FÃ¼r den Mittelwert gilt nach der Cauchy-Schwarz- bzw.
 	Kovarianz-Zerlegung
 	\[
 	\overline{R_{\mathrm{komb}}} = \overline{R_{\mathrm{struct}}\,
@@ -1442,17 +1442,17 @@ diffuser Rest) wieder austritt.
 	+ \mathrm{Cov}(R_{\mathrm{struct}}, T_{\mathrm{pig}}).
 	\]
 	Da $R_{\mathrm{struct}}$ um $\lambda^*$ konzentriert ist und
-	$T_{\mathrm{pig}}$ dort überdurchschnittlich ist, während
-	$R_{\mathrm{struct}}$ in den übrigen Spektralbereichen (wo
+	$T_{\mathrm{pig}}$ dort Ã¼berdurchschnittlich ist, wÃ¤hrend
+	$R_{\mathrm{struct}}$ in den Ã¼brigen Spektralbereichen (wo
 	$T_{\mathrm{pig}}$ kleiner als $\overline{T_{\mathrm{pig}}}$ ist) klein
-	bis vernachlässigbar ist, ist die Kovarianz $\mathrm{Cov}(R_{\mathrm{struct}},
-	T_{\mathrm{pig}}) \le 0$ falls $T_{\mathrm{pig}}$ insgesamt monoton fällt
-	-- für den hier betrachteten Fall monoton \emph{steigender}
+	bis vernachlÃ¤ssigbar ist, ist die Kovarianz $\mathrm{Cov}(R_{\mathrm{struct}},
+	T_{\mathrm{pig}}) \le 0$ falls $T_{\mathrm{pig}}$ insgesamt monoton fÃ¤llt
+	-- fÃ¼r den hier betrachteten Fall monoton \emph{steigender}
 	$T_{\mathrm{pig}}$ mit Konzentration von $R_{\mathrm{struct}}$ im Bereich
 	hoher $T_{\mathrm{pig}}$-Werte liegt jedoch positive Korrelation vor,
 	sodass dieser Term die rechte Seite anhebt; entscheidend ist, dass
 	$\overline{T_{\mathrm{pig}}} < T_{\mathrm{pig}}(\lambda^*)$ streng gilt
-	(Monotonie und Nichtkonstanz von $T_{\mathrm{pig}}$ über dem gesamten
+	(Monotonie und Nichtkonstanz von $T_{\mathrm{pig}}$ Ã¼ber dem gesamten
 	sichtbaren Bereich), sodass
 	\[
 	\overline{R_{\mathrm{komb}}} <
@@ -1461,7 +1461,7 @@ diffuser Rest) wieder austritt.
 	+ \left(1-\frac{\overline{R_{\mathrm{struct}}}}{\max_\lambda R_{\mathrm{struct}}}\right)
 	\overline{R_{\mathrm{komb}}}
 	\]
-	durch die Unimodalität von $R_{\mathrm{struct}}$ erzwingt diese
+	durch die UnimodalitÃ¤t von $R_{\mathrm{struct}}$ erzwingt diese
 	Selbstbezugsungleichung
 	$\overline{R_{\mathrm{komb}}} < \max_\lambda R_{\mathrm{komb}}
 	\cdot \overline{R_{\mathrm{struct}}}/\max_\lambda R_{\mathrm{struct}}$.
@@ -1478,30 +1478,30 @@ diffuser Rest) wieder austritt.
 	= T_{\mathrm{pig}}(\lambda^*)\,\sigma[R_{\mathrm{struct}}].
 	\]
 	Da $T_{\mathrm{pig}}(\lambda^*) \le 1$, ist dies noch nicht ausreichend;
-	der entscheidende zusätzliche Faktor ergibt sich daraus, dass
-	$\overline{R_{\mathrm{komb}}}$ \emph{relativ} stärker reduziert wird als
+	der entscheidende zusÃ¤tzliche Faktor ergibt sich daraus, dass
+	$\overline{R_{\mathrm{komb}}}$ \emph{relativ} stÃ¤rker reduziert wird als
 	$\max R_{\mathrm{komb}}$, weil in den Flankenbereichen sowohl
 	$R_{\mathrm{struct}}$ als auch $T_{\mathrm{pig}}$ kleine Werte annehmen
-	und sich multiplikativ verstärken (quadratische Dämpfung), während am
-	Peak nur der einfache Faktor $T_{\mathrm{pig}}(\lambda^*)$ wirkt. Für
-	hinreichend steiles $T_{\mathrm{pig}}$ (großer Kontrast
-	$T_{\mathrm{pig}}(\lambda^*)/\overline{T_{\mathrm{pig}}}$) überwiegt
+	und sich multiplikativ verstÃ¤rken (quadratische DÃ¤mpfung), wÃ¤hrend am
+	Peak nur der einfache Faktor $T_{\mathrm{pig}}(\lambda^*)$ wirkt. FÃ¼r
+	hinreichend steiles $T_{\mathrm{pig}}$ (groÃŸer Kontrast
+	$T_{\mathrm{pig}}(\lambda^*)/\overline{T_{\mathrm{pig}}}$) Ã¼berwiegt
 	dieser Effekt den Faktor $T_{\mathrm{pig}}(\lambda^*)<1$, sodass
 	$\sigma[R_{\mathrm{komb}}] > \sigma[R_{\mathrm{struct}}]$, was die
 	Behauptung zeigt.
 \end{proof}
 
 \begin{bemerkung}
-	Proposition~\ref{prop:saettigung} liefert die quantitative Erklärung
-	für eine seit Langem bekannte qualitative Beobachtung
-	\cite{vukusic2003photonic}: Die intensivsten, am stärksten gesättigten
-	Strukturfarben (z.\,B.\ das tiefe Morpho-Blau) treten stets über einer
+	Proposition~\ref{prop:saettigung} liefert die quantitative ErklÃ¤rung
+	fÃ¼r eine seit Langem bekannte qualitative Beobachtung
+	\cite{vukusic2003photonic}: Die intensivsten, am stÃ¤rksten gesÃ¤ttigten
+	Strukturfarben (z.\,B.\ das tiefe Morpho-Blau) treten stets Ã¼ber einer
 	stark melaninhaltigen, nahezu schwarzen Unterschuppe auf. Entfernt man
 	experimentell die Pigmentschicht (z.\,B.\ durch Bleichung), bleibt zwar
 	das Reflexionsmaximum $\lambda^*$ erhalten, doch die Farbe wirkt blasser
 	(geringeres $\sigma$), da nun auch das diffus transmittierte und an
-	tieferliegenden Gewebeschichten rückgestreute Licht aller Wellenlängen
-	zum Gesamtsignal beiträgt und es ``aufhellt''.
+	tieferliegenden Gewebeschichten rÃ¼ckgestreute Licht aller WellenlÃ¤ngen
+	zum Gesamtsignal beitrÃ¤gt und es ``aufhellt''.
 \end{bemerkung}
 
 Abbildung~\ref{fig:pigmentmix} veranschaulicht Definition~\ref{def:kombiniert}
@@ -1512,18 +1512,18 @@ und Proposition~\ref{prop:saettigung} anhand eines Modellspektrums.
 	\includegraphics[width=0.95\textwidth]{figures/fig_struct04_pigmentmix.pdf}
 	\caption{\textbf{Links:} Modelliertes Reflexionsspektrum einer reinen
 		photonischen Struktur mit Peak bei $\lambda^*\approx470$\,nm (blau)
-		im Vergleich zur Überlagerung mit einer Melaninschicht geringer
-		(grün) und hoher (braun) Absorption gemäß
+		im Vergleich zur Ãœberlagerung mit einer Melaninschicht geringer
+		(grÃ¼n) und hoher (braun) Absorption gemÃ¤ÃŸ
 		Definition~\ref{def:kombiniert}. Mit zunehmender
-		Melaninkonzentration wird das Spektrum außerhalb des
-		Reflexionspeaks stärker gedämpft, während der Peak selbst relativ
-		erhalten bleibt --- die Farbe wird ``reiner''/gesättigter.
-		\textbf{Rechts:} Die Sättigung $\sigma[R_{\mathrm{komb}}]$
+		Melaninkonzentration wird das Spektrum auÃŸerhalb des
+		Reflexionspeaks stÃ¤rker gedÃ¤mpft, wÃ¤hrend der Peak selbst relativ
+		erhalten bleibt --- die Farbe wird ``reiner''/gesÃ¤ttigter.
+		\textbf{Rechts:} Die SÃ¤ttigung $\sigma[R_{\mathrm{komb}}]$
 		(Differenz zwischen Peak- und Mittelwert der Reflektanz) als
 		Funktion des Melanin-Absorptionskoeffizienten $k$. Der monotone
-		Anstieg bestätigt quantitativ Proposition~\ref{prop:saettigung}:
-		Eine stärker absorbierende Pigmentunterlage erhöht die
-		Farbsättigung der überlagerten Strukturfarbe monoton.}
+		Anstieg bestÃ¤tigt quantitativ Proposition~\ref{prop:saettigung}:
+		Eine stÃ¤rker absorbierende Pigmentunterlage erhÃ¶ht die
+		FarbsÃ¤ttigung der Ã¼berlagerten Strukturfarbe monoton.}
 	\label{fig:pigmentmix}
 \end{figure}
 
@@ -1547,10 +1547,10 @@ typische Vertreter.
 		\toprule
 		Strukturtyp & Charakteristische Periode & Optischer Mechanismus & Beispielgattung\\
 		\midrule
-		Einzellamelle & $d\sim 50$--$200$\,nm & Dünnschichtinterferenz (Satz~\ref{satz:airy}) & \textit{Lycaenidae}\\
+		Einzellamelle & $d\sim 50$--$200$\,nm & DÃ¼nnschichtinterferenz (Satz~\ref{satz:airy}) & \textit{Lycaenidae}\\
 		Lamellenstapel (Bragg) & $N\cdot(d_H{+}d_L)\sim 1$--$2\,\si{\micro\meter}$ & Bragg-Reflexion (Satz~\ref{satz:bragg}) & \textit{Morpho}\\
 		Rippengitter & $\Lambda_g\sim 0{,}5$--$1{,}2\,\si{\micro\meter}$ & Beugung (Satz~\ref{satz:beugungsfarben}) & \textit{Papilio}\\
-		3D-photonischer Kristall & Gyroidgitter $\sim 300$\,nm & Photonische Bandlücke & \textit{Callophrys, Parides}\\
+		3D-photonischer Kristall & Gyroidgitter $\sim 300$\,nm & Photonische BandlÃ¼cke & \textit{Callophrys, Parides}\\
 		Effektives Medium & $\ll\lambda$ & Gemittelter $n_{\mathrm{eff}}$ (Bem.~\ref{bem:effektivesmedium}) & \textit{Papilio ulysses}\\
 		\bottomrule
 	\end{tabular}%
@@ -1558,19 +1558,19 @@ typische Vertreter.
 \end{table}
 
 Besonders bemerkenswert ist die Klasse der dreidimensionalen photonischen
-Kristalle, wie sie in den Flügelschuppen einiger \textit{Lycaenidae} (z.\,B.\
+Kristalle, wie sie in den FlÃ¼gelschuppen einiger \textit{Lycaenidae} (z.\,B.\
 \textit{Callophrys rubi}) vorkommen. Diese Strukturen basieren auf einer
 \emph{Gyroid}-Geometrie --- einer dreifach periodischen, chiralen
-Minimalfläche, die die Chitinmatrix in zwei ineinander verschlungene,
-topologisch nicht-triviale Domänen unterteilt. Im Gegensatz zu den
+MinimalflÃ¤che, die die Chitinmatrix in zwei ineinander verschlungene,
+topologisch nicht-triviale DomÃ¤nen unterteilt. Im Gegensatz zu den
 eindimensional periodischen Bragg-Stapeln (Abschnitt~\ref{sec:bragg}) besitzt
-das Gyroidgitter eine photonische Bandlücke, die für alle
+das Gyroidgitter eine photonische BandlÃ¼cke, die fÃ¼r alle
 Einfallsrichtungen innerhalb eines weiten Raumwinkelbereichs existiert; die
-resultierende Farbe ist daher nahezu winkelunabhängig (\emph{nicht}
+resultierende Farbe ist daher nahezu winkelunabhÃ¤ngig (\emph{nicht}
 irideszent) --- ein qualitativer Unterschied zu Korollar
 \ref{kor:winkelverschiebung}, der formal durch die volle
 dreidimensionale Bandstrukturberechnung der photonischen Zustandsdichte
-erklärt wird, was über den Rahmen dieser Arbeit hinausgeht und im
+erklÃ¤rt wird, was Ã¼ber den Rahmen dieser Arbeit hinausgeht und im
 Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 
 
@@ -1579,117 +1579,117 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 	\label{sec:ausblick}
 	% ============================================================
 	
-	Die vorliegende Arbeit hat die aerodynamischen, kinematischen und ökologischen
+	Die vorliegende Arbeit hat die aerodynamischen, kinematischen und Ã¶kologischen
 	Grundlagen des Schmetterlingsfluges systematisch untersucht.
-	Die kommenden Jahrzehnte werden eine Reihe aufregender Forschungsrichtungen eröffnen,
-	die im Folgenden ausführlich dargestellt werden.
+	Die kommenden Jahrzehnte werden eine Reihe aufregender Forschungsrichtungen erÃ¶ffnen,
+	die im Folgenden ausfÃ¼hrlich dargestellt werden.
 	
-	\subsection{Hochauflösende numerische Strömungssimulation}
+	\subsection{HochauflÃ¶sende numerische StrÃ¶mungssimulation}
 	
 	Bisherige CFD-Studien des Schmetterlingsfluges sind durch die komplexe
-	dreidimensionale Flügeldeformation und die stark zeitabhängige Kopplung zwischen
+	dreidimensionale FlÃ¼geldeformation und die stark zeitabhÃ¤ngige Kopplung zwischen
 	Fluid und Struktur (FSI, \textit{Fluid-Structure Interaction}) limitiert.
-	Zukünftige Hochleistungsrechnungen auf Exascale-Systemen
-	(z.\,B.\ Frontier, Fugaku) werden vollständig aufgelöste DNS-Simulationen
-	(\textit{Direct Numerical Simulation}) mit frei deformierbaren Gittern ermöglichen.
-	Insbesondere die dreidimensionale Topologie des LEV, seine spannweitige Stabilität
-	und die Wechselwirkung mit dem Hinterflügel sind bisher unvollständig verstanden.
-	Hochauflösende PIV-Experimente im Wasserkanal mit lebenden oder
-	biomimetischen Schmetterlingen (Flügelreplikate aus fotopolymerisierten
+	ZukÃ¼nftige Hochleistungsrechnungen auf Exascale-Systemen
+	(z.\,B.\ Frontier, Fugaku) werden vollstÃ¤ndig aufgelÃ¶ste DNS-Simulationen
+	(\textit{Direct Numerical Simulation}) mit frei deformierbaren Gittern ermÃ¶glichen.
+	Insbesondere die dreidimensionale Topologie des LEV, seine spannweitige StabilitÃ¤t
+	und die Wechselwirkung mit dem HinterflÃ¼gel sind bisher unvollstÃ¤ndig verstanden.
+	HochauflÃ¶sende PIV-Experimente im Wasserkanal mit lebenden oder
+	biomimetischen Schmetterlingen (FlÃ¼gelreplikate aus fotopolymerisierten
 	Materialien) werden diese Simulationen validieren \cite{bomphrey2017smart}.
 	
 	\subsection{Bio-inspirierte Mikro-Luftfahrzeuge (MAV)}
 	
-	Die aerodynamischen Vorteile des Schmetterlingsfluges – insbesondere der
-	LEV-Mecha\-nismus, die adaptive Flügeldeformation und der clap-and-fling-Impuls –
-	sind direkte Inspirationsquellen für die nächste Generation von
+	Die aerodynamischen Vorteile des Schmetterlingsfluges â€“ insbesondere der
+	LEV-Mecha\-nismus, die adaptive FlÃ¼geldeformation und der clap-and-fling-Impuls â€“
+	sind direkte Inspirationsquellen fÃ¼r die nÃ¤chste Generation von
 	Mikro-Luftfahrzeugen (MAV, \textit{Micro Air Vehicles}).
 	Aktuelle Prototypen wie der Harvard ``Robobee'' \cite{wood2008first}
 	und der ``DelFly Nimble'' (TU Delft) demonstrieren erste Umsetzungen;
-	die Integration von dielektrischen Elastomeren als künstlichen Muskeln
-	und piezoelektrischen Aktoren als direktem Flügelantrieb ist jedoch noch weit
+	die Integration von dielektrischen Elastomeren als kÃ¼nstlichen Muskeln
+	und piezoelektrischen Aktoren als direktem FlÃ¼gelantrieb ist jedoch noch weit
 	von der biologischen Effizienz entfernt.
-	Künftige Entwicklungslinien umfassen:
+	KÃ¼nftige Entwicklungslinien umfassen:
 	\begin{itemize}
-		\item Intelligente Flügelmembranen aus variablen Verbundwerkstoffen mit
+		\item Intelligente FlÃ¼gelmembranen aus variablen Verbundwerkstoffen mit
 		eingebetteten Dehnungssensoren und verteilter Aktuierung,
-		die die adaptiven Eigenschaften biologischer Flügel nachahmen.
-		\item Echtzeitregelung der Flügelform durch modellprädiktive Steuerung
+		die die adaptiven Eigenschaften biologischer FlÃ¼gel nachahmen.
+		\item Echtzeitregelung der FlÃ¼gelform durch modellprÃ¤diktive Steuerung
 		(MPC) auf Basis onboard-berechneter aerodynamischer Surrogatmodelle.
-		\item Integration von Solarzellenfolien in die Flügelstruktur zur
-		autonomen Energieversorgung für Langstreckenmissionen.
+		\item Integration von Solarzellenfolien in die FlÃ¼gelstruktur zur
+		autonomen Energieversorgung fÃ¼r Langstreckenmissionen.
 	\end{itemize}
 	
 	\subsection{Schmetterlingsmigration und Klimawandel}
 	
 	Die Langstreckenmigration des Monarch-Falters ist eines der beeindruckendsten
-	Navigationsphänomene der Tierwelt, aber auch eines der vulnerabelsten gegenüber
+	NavigationsphÃ¤nomene der Tierwelt, aber auch eines der vulnerabelsten gegenÃ¼ber
 	dem Klimawandel.
 	Modellrechnungen auf Basis von CMIP6-Klimaprojektionen zeigen,
-	dass die Überwinterungswälder in Michoacán bis 2080 unter optimistischen
-	Emissionsszenarien (SSP2-4.5) um 60--80\,\% ihrer Eignung verlieren könnten,
-	da höhere Temperaturen und veränderte Niederschlagsmuster die
-	Oyamel-Tannen-Bestände dezimieren \cite{oberhauser2004monarch}.
-	Langzeitmonitoring mit GPS-Nanologgern der nächsten Generation
-	(Gewicht $< 50$\,mg, Auflösung $< 5$\,m) wird ermöglichen,
+	dass die ÃœberwinterungswÃ¤lder in MichoacÃ¡n bis 2080 unter optimistischen
+	Emissionsszenarien (SSP2-4.5) um 60--80\,\% ihrer Eignung verlieren kÃ¶nnten,
+	da hÃ¶here Temperaturen und verÃ¤nderte Niederschlagsmuster die
+	Oyamel-Tannen-BestÃ¤nde dezimieren \cite{oberhauser2004monarch}.
+	Langzeitmonitoring mit GPS-Nanologgern der nÃ¤chsten Generation
+	(Gewicht $< 50$\,mg, AuflÃ¶sung $< 5$\,m) wird ermÃ¶glichen,
 	individuelle Migrationsentscheidungen in Echtzeit zu verfolgen und
-	mit atmosphärischen Daten zu korrelieren.
+	mit atmosphÃ¤rischen Daten zu korrelieren.
 	
 	\subsection{Neurowissenschaft der Flugsteuerung}
 	
 	Die neuronale Basis der Flugsteuerung bei Schmetterlingen ist noch weitgehend
-	ungeklärt.
-	Optogenetische Methoden, die für Drosophila entwickelt wurden \cite{lima2005remote},
-	lassen sich in Zukunft auf Lepidoptera übertragen:
+	ungeklÃ¤rt.
+	Optogenetische Methoden, die fÃ¼r Drosophila entwickelt wurden \cite{lima2005remote},
+	lassen sich in Zukunft auf Lepidoptera Ã¼bertragen:
 	Gezielte Aktivierung oder Hemmung einzelner Motorneuronen mit Lichtpulsen
-	wird es erlauben, die Beiträge einzelner Muskeln (z.\,B.\ $M_{bas}$,
+	wird es erlauben, die BeitrÃ¤ge einzelner Muskeln (z.\,B.\ $M_{bas}$,
 	$M_{ax1}$, $M_{3ax}$ nach der Nomenklatur von \cite{wootton1981support})
-	zur Gesamtflügeldynamik zu isolieren.
+	zur GesamtflÃ¼geldynamik zu isolieren.
 	Parallel dazu verspricht die Kalzium-Bildgebung mit miniaturisierten
 	Zweiphotonenmikroskopen (\textit{miniscopes}), die am lebenden Tier getragen
-	werden, die Aktivitätskarten der Pilzkörper während realer Migrationsphasen
+	werden, die AktivitÃ¤tskarten der PilzkÃ¶rper wÃ¤hrend realer Migrationsphasen
 	zu kartieren.
 	
-	\subsection{Photonische Flügelstrukturen: Von der Biologie zur Technik}
+	\subsection{Photonische FlÃ¼gelstrukturen: Von der Biologie zur Technik}
 	
 	Die nano-strukturierten Schuppen von Morpho-Schmetterlingen sind ein
-	Paradebeispiel für biologisch inspirierte Photonik.
-	Ihre winkelunabhängige Reflexion im Blaubereich bei minimaler Absorption
-	könnte in künftigen optischen Filter- und Sensoranwendungen genutzt werden.
+	Paradebeispiel fÃ¼r biologisch inspirierte Photonik.
+	Ihre winkelunabhÃ¤ngige Reflexion im Blaubereich bei minimaler Absorption
+	kÃ¶nnte in kÃ¼nftigen optischen Filter- und Sensoranwendungen genutzt werden.
 	Fortschritte in der Nanoimprint-Lithographie und in der 3D-Nanostrukturierung
-	mittels fokussierter Ionenstrahlen (FIB) werden maßstabsgetreue Repliken
-	dieser Strukturen ermöglichen, die über biologische Wellenlängenbereiche
+	mittels fokussierter Ionenstrahlen (FIB) werden maÃŸstabsgetreue Repliken
+	dieser Strukturen ermÃ¶glichen, die Ã¼ber biologische WellenlÃ¤ngenbereiche
 	hinaus skalierbar sind \cite{vigneron2010morpho}.
 	
-	\subsection{Quantitative Ökologie und citizen-science-Integration}
+	\subsection{Quantitative Ã–kologie und citizen-science-Integration}
 	
-	Bestehende Monitoring-Programme wie `` Journey North'' und das europäische
+	Bestehende Monitoring-Programme wie `` Journey North'' und das europÃ¤ische
 	Butterfly Monitoring Scheme (EBMS) liefern wertvolle Populationsdaten,
 	sind aber auf manuelle Erfassungen angewiesen.
-	Zukünftige KI-basierte automatische Artidentifikation aus Smartphonebildern
+	ZukÃ¼nftige KI-basierte automatische Artidentifikation aus Smartphonebildern
 	(Deep-Learning-Klassifikatoren mit $> 99$\,\% Genauigkeit auf Gattungsebene
-	sind bereits verfügbar \cite{tabak2019machine}) kombiniert mit GPS-Metadaten
-	werden großräumige Flugbahn- und Populationsdaten in bisher unerreichter
-	räumlicher und zeitlicher Auflösung liefern.
-	Diese Daten sind entscheidend für die Kalibrierung aerodynamischer
-	Migrationsmodelle und für Naturschutzstrategien.
+	sind bereits verfÃ¼gbar \cite{tabak2019machine}) kombiniert mit GPS-Metadaten
+	werden groÃŸrÃ¤umige Flugbahn- und Populationsdaten in bisher unerreichter
+	rÃ¤umlicher und zeitlicher AuflÃ¶sung liefern.
+	Diese Daten sind entscheidend fÃ¼r die Kalibrierung aerodynamischer
+	Migrationsmodelle und fÃ¼r Naturschutzstrategien.
 	
-	\subsection{Ausblick: Photonische Strukturfarben --- zukünftige Forschungsrichtungen}
+	\subsection{Ausblick: Photonische Strukturfarben --- zukÃ¼nftige Forschungsrichtungen}
 	\label{sec:ausblick_struktur}
 
 	Die in Abschnitt~\ref{sec:strukturfarben} formal entwickelte Theorie der
-	Strukturfarben eröffnet ein außerordentlich breites Feld zukünftiger
-	Forschung, das im Folgenden in neun Teilbereichen sehr ausführlich
+	Strukturfarben erÃ¶ffnet ein auÃŸerordentlich breites Feld zukÃ¼nftiger
+	Forschung, das im Folgenden in neun Teilbereichen sehr ausfÃ¼hrlich
 	dargestellt wird.
 
-	\subsubsection{Vollständige dreidimensionale photonische Bandstrukturrechnung für Gyroidgitter}
+	\subsubsection{VollstÃ¤ndige dreidimensionale photonische Bandstrukturrechnung fÃ¼r Gyroidgitter}
 
 	Die in Abschnitt~\ref{sec:klassifikation} angesprochene Gyroid-Geometrie
 	der \textit{Callophrys}-Schuppen kann durch die in dieser Arbeit
 	verwendete eindimensionale Transfermatrixmethode (Satz~\ref{satz:bragg})
-	nur näherungsweise erfasst werden, da diese implizit von einer
+	nur nÃ¤herungsweise erfasst werden, da diese implizit von einer
 	Translationsinvarianz parallel zu den Schichten ausgeht. Eine
-	vollständige Beschreibung erfordert die Lösung der
+	vollstÃ¤ndige Beschreibung erfordert die LÃ¶sung der
 	Maxwell-Gleichungen in einem dreifach periodischen Gitter mittels der
 	\emph{Plane-Wave-Expansion-Methode} (PWE) oder der
 	\emph{Finite-Difference-Time-Domain}-Methode (FDTD). Hierbei wird das
@@ -1702,24 +1702,24 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 	\nabla\times\left(\frac{1}{\varepsilon(\mathbf{r})}\nabla\times
 	\mathbf{E}(\mathbf{r})\right) = \frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r})
 	\]
-	wird für jeden Wellenvektor $\mathbf{k}$ in der ersten Brillouin-Zone
+	wird fÃ¼r jeden Wellenvektor $\mathbf{k}$ in der ersten Brillouin-Zone
 	des Gyroidgitters numerisch diagonalisiert. Das Ergebnis ist eine
-	vollständige Bandstruktur $\omega_n(\mathbf{k})$, aus der sich die
-	photonische Bandlücke --- der Frequenzbereich, in dem für \emph{kein}
-	$\mathbf{k}$ propagierende Moden existieren --- direkt ablesen lässt.
-	Im Gegensatz zur eindimensionalen Bragg-Bandlücke (Korollar
-	\ref{kor:periodenzahl}), die nur für eine feste Einfallsrichtung
-	existiert, ist die Gyroid-Bandlücke (unter geeigneten Bedingungen)
-	\emph{vollständig}, d.\,h.\ sie existiert für alle Richtungen
-	$\mathbf{k}$ gleichzeitig. Dies ist die formale Grundlage für die
-	beobachtete Winkelunabhängigkeit der Farbe von \textit{Callophrys
-		rubi}. Zukünftige Arbeiten sollten echte, mittels
-	Röntgentomographie (\textit{Synchrotron-basierte Nano-CT}) vermessene
-	Gyroid-Geometrien als Eingabe für PWE/FDTD-Simulationen verwenden, um
-	die formal vorhergesagte Bandlücke quantitativ mit gemessenen
+	vollstÃ¤ndige Bandstruktur $\omega_n(\mathbf{k})$, aus der sich die
+	photonische BandlÃ¼cke --- der Frequenzbereich, in dem fÃ¼r \emph{kein}
+	$\mathbf{k}$ propagierende Moden existieren --- direkt ablesen lÃ¤sst.
+	Im Gegensatz zur eindimensionalen Bragg-BandlÃ¼cke (Korollar
+	\ref{kor:periodenzahl}), die nur fÃ¼r eine feste Einfallsrichtung
+	existiert, ist die Gyroid-BandlÃ¼cke (unter geeigneten Bedingungen)
+	\emph{vollstÃ¤ndig}, d.\,h.\ sie existiert fÃ¼r alle Richtungen
+	$\mathbf{k}$ gleichzeitig. Dies ist die formale Grundlage fÃ¼r die
+	beobachtete WinkelunabhÃ¤ngigkeit der Farbe von \textit{Callophrys
+		rubi}. ZukÃ¼nftige Arbeiten sollten echte, mittels
+	RÃ¶ntgentomographie (\textit{Synchrotron-basierte Nano-CT}) vermessene
+	Gyroid-Geometrien als Eingabe fÃ¼r PWE/FDTD-Simulationen verwenden, um
+	die formal vorhergesagte BandlÃ¼cke quantitativ mit gemessenen
 	Reflexionsspektren zu vergleichen. Open-Source-Werkzeuge wie MPB (MIT
-	Photonic Bands) oder MEEP bieten hierfür eine geeignete numerische
-	Grundlage und könnten in das hier entwickelte theoretische Gerüst
+	Photonic Bands) oder MEEP bieten hierfÃ¼r eine geeignete numerische
+	Grundlage und kÃ¶nnten in das hier entwickelte theoretische GerÃ¼st
 	(Definitionen~\ref{def:owl}--\ref{def:transfermatrix}) als
 	Verallgemeinerung auf $d=3$ Dimensionen eingebettet werden.
 
@@ -1727,7 +1727,7 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 
 	Eine der faszinierendsten offenen Fragen ist, wie die in
 	Abschnitt~\ref{sec:bragg} und \ref{sec:klassifikation} beschriebenen,
-	mit Nanometerpräzision periodischen Strukturen während der
+	mit NanometerprÃ¤zision periodischen Strukturen wÃ¤hrend der
 	Puppenentwicklung (Metamorphose) entstehen, ohne dass ein
 	zentralgesteuerter ``Bauplan'' im genetischen Code direkt
 	geometrische Koordinaten kodiert. Aktuelle Hypothesen gehen von
@@ -1736,127 +1736,127 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 	und nachfolgender Chitin-Polymerisation entlang dieser Membranschablonen
 	aus. Aus mathematischer Sicht handelt es sich um einen
 	\emph{Selbstorganisationsprozess}, der formal als
-	Reaktions-Diffusions-System vom Turing-Typ modelliert werden könnte:
+	Reaktions-Diffusions-System vom Turing-Typ modelliert werden kÃ¶nnte:
 	\[
 	\frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u,v), \qquad
 	\frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u,v),
 	\]
 	wobei $u,v$ Konzentrationsfelder von Membranlipiden bzw.\
-	Strukturproteinen repräsentieren und $D_u \ne D_v$ die für
+	Strukturproteinen reprÃ¤sentieren und $D_u \ne D_v$ die fÃ¼r
 	Musterbildung notwendige Diffusionsasymmetrie sicherstellt. Eine
-	zukünftige Forschungsrichtung besteht darin, die in Abschnitt
+	zukÃ¼nftige Forschungsrichtung besteht darin, die in Abschnitt
 	\ref{sec:bragg} formal bestimmten optimalen Schichtdicken $d_H,d_L$
-	(für maximale Reflektanz bei gegebener Zielwellenlänge,
-	Korollar~\ref{kor:periodenzahl}) als Zielgrößen einer inversen
+	(fÃ¼r maximale Reflektanz bei gegebener ZielwellenlÃ¤nge,
+	Korollar~\ref{kor:periodenzahl}) als ZielgrÃ¶ÃŸen einer inversen
 	Turing-Musterbildung zu verwenden: Welche Diffusionskoeffizienten
 	$D_u,D_v$ und Reaktionsraten in $f,g$ erzeugen ein Muster mit exakt der
-	beobachteten Periodizität $d_H+d_L\approx 170$\,nm? Die Verbindung
+	beobachteten PeriodizitÃ¤t $d_H+d_L\approx 170$\,nm? Die Verbindung
 	zwischen Entwicklungsbiologie und der hier entwickelten Optik-Theorie
-	könnte so erstmals quantitativ herstellbar werden, mit unmittelbaren
-	Implikationen für die biomimetische Fertigung (siehe
+	kÃ¶nnte so erstmals quantitativ herstellbar werden, mit unmittelbaren
+	Implikationen fÃ¼r die biomimetische Fertigung (siehe
 	Abschnitt~\ref{sec:ausblick_biomimetik}).
 
-	\subsubsection{Genetische und evolutionäre Grundlagen der Strukturfarbenvielfalt}
+	\subsubsection{Genetische und evolutionÃ¤re Grundlagen der Strukturfarbenvielfalt}
 	\label{sec:ausblick_genetik}
 
-	Die enorme Diversität der in Tabelle~\ref{tab:strukturtypen}
+	Die enorme DiversitÃ¤t der in Tabelle~\ref{tab:strukturtypen}
 	klassifizierten Strukturtypen innerhalb der Lepidoptera --- von
-	Einzellamellen über Bragg-Stapel bis zu dreidimensionalen
+	Einzellamellen Ã¼ber Bragg-Stapel bis zu dreidimensionalen
 	Gyroidgittern --- legt nahe, dass diese photonischen Architekturen
-	mehrfach unabhängig (konvergent) evolviert sind. Die formal in
+	mehrfach unabhÃ¤ngig (konvergent) evolviert sind. Die formal in
 	Korollar~\ref{kor:periodenzahl} gezeigte Tatsache, dass schon wenige
-	zusätzliche Periodenpaare ($N\to N+1$) die Reflektanz drastisch
-	erhöhen, impliziert einen steilen, kontinuierlichen
-	``Fitnesslandschafts''-Gradienten in Richtung höherer $N$: Bereits
-	kleine genetische Variationen, die die Anzahl der während der
-	Metamorphose gebildeten Lamellenschichten erhöhen, würden einen
-	messbaren optischen Vorteil (stärkere Signalintensität für
+	zusÃ¤tzliche Periodenpaare ($N\to N+1$) die Reflektanz drastisch
+	erhÃ¶hen, impliziert einen steilen, kontinuierlichen
+	``Fitnesslandschafts''-Gradienten in Richtung hÃ¶herer $N$: Bereits
+	kleine genetische Variationen, die die Anzahl der wÃ¤hrend der
+	Metamorphose gebildeten Lamellenschichten erhÃ¶hen, wÃ¼rden einen
+	messbaren optischen Vorteil (stÃ¤rkere SignalintensitÃ¤t fÃ¼r
 	Partnerwahl oder Mimikry) erzeugen und somit positiver Selektion
-	unterliegen. Zukünftige vergleichende Genomstudien sollten gezielt
+	unterliegen. ZukÃ¼nftige vergleichende Genomstudien sollten gezielt
 	nach Genfamilien suchen, die (a) die Chitin-Synthase-Expression in
-	Schuppenzellen zeitlich takten (mögliche Kandidaten für die
-	Kontrolle der Periodenzahl $N$) und (b) die Membranabstände
-	$d_H,d_L$ regulieren (z.\,B.\ über lipidbindende Proteine, die die
-	lokale Membrankrümmung beeinflussen). Eine quantitative
-	Genotyp-Phänotyp-Karte, die genetische Variation direkt mit den
+	Schuppenzellen zeitlich takten (mÃ¶gliche Kandidaten fÃ¼r die
+	Kontrolle der Periodenzahl $N$) und (b) die MembranabstÃ¤nde
+	$d_H,d_L$ regulieren (z.\,B.\ Ã¼ber lipidbindende Proteine, die die
+	lokale MembrankrÃ¼mmung beeinflussen). Eine quantitative
+	Genotyp-PhÃ¤notyp-Karte, die genetische Variation direkt mit den
 	optisch relevanten Parametern $N$, $d_H$, $d_L$, $\Lambda_g$
 	(aus Definitionen~\ref{def:transfermatrix} und
-	\ref{def:gittergleichung}) verknüpft, wäre ein Meilenstein für das
-	Verständnis der Evo-Devo-Grundlagen der Strukturfarbenvielfalt.
-	Phylogenetische Rekonstruktionen könnten zudem klären, ob die
+	\ref{def:gittergleichung}) verknÃ¼pft, wÃ¤re ein Meilenstein fÃ¼r das
+	VerstÃ¤ndnis der Evo-Devo-Grundlagen der Strukturfarbenvielfalt.
+	Phylogenetische Rekonstruktionen kÃ¶nnten zudem klÃ¤ren, ob die
 	Bragg-Architektur der \textit{Morpho}-Schuppen und die
 	Gyroid-Architektur der \textit{Callophrys}-Schuppen homologe oder
-	konvergente Lösungen für ``hohe Reflektanz bei minimalem
+	konvergente LÃ¶sungen fÃ¼r ``hohe Reflektanz bei minimalem
 	Materialaufwand'' darstellen --- eine Frage, die sich mit den hier
-	hergeleiteten Optimalitätsbedingungen (Korollar
-	\ref{kor:periodenzahl}) als Vergleichsmaßstab quantitativ angehen
-	ließe.
+	hergeleiteten OptimalitÃ¤tsbedingungen (Korollar
+	\ref{kor:periodenzahl}) als VergleichsmaÃŸstab quantitativ angehen
+	lieÃŸe.
 
-	\subsubsection{Funktionale Bedeutung: Signalübertragung, Mimikry und Thermoregulation}
+	\subsubsection{Funktionale Bedeutung: SignalÃ¼bertragung, Mimikry und Thermoregulation}
 
-	Strukturfarben sind nicht nur ein optisches Epiphänomen, sondern
-	erfüllen mehrere ökologische Funktionen, deren relative Bedeutung noch
-	unzureichend quantifiziert ist. Erstens dienen die hochgesättigten,
+	Strukturfarben sind nicht nur ein optisches EpiphÃ¤nomen, sondern
+	erfÃ¼llen mehrere Ã¶kologische Funktionen, deren relative Bedeutung noch
+	unzureichend quantifiziert ist. Erstens dienen die hochgesÃ¤ttigten,
 	oft UV-reflektierenden Strukturfarben (vgl.\
 	Proposition~\ref{prop:saettigung}) der innerartlichen
 	Kommunikation bei der Partnerwahl; das visuelle System vieler
-	Schmetterlinge besitzt UV-, Blau- und Grünrezeptoren, deren
+	Schmetterlinge besitzt UV-, Blau- und GrÃ¼nrezeptoren, deren
 	spektrale Empfindlichkeitskurven $S_{\mathrm{UV}}(\lambda)$,
 	$S_{\mathrm{B}}(\lambda)$, $S_{\mathrm{G}}(\lambda)$ mit dem hier
 	berechneten $R_{\mathrm{komb}}(\lambda)$ (Definition
-	\ref{def:kombiniert}) gefaltet werden müssten, um den tatsächlichen
+	\ref{def:kombiniert}) gefaltet werden mÃ¼ssten, um den tatsÃ¤chlichen
 	visuellen Kontrast $\Delta S = \int S_i(\lambda) R(\lambda)\,d\lambda$
 	zwischen Geschlechtern oder Morphen zu bestimmen. Zweitens spielt die
 	in Korollar~\ref{kor:winkelverschiebung} formal hergeleitete
 	Irideszenz eine Rolle bei der \emph{dynamischen Mimikry}: Ein im Flug
-	flackerndes, sich mit dem Betrachtungswinkel änderndes Farbsignal
-	(``flash colouration'') kann Prädatoren irritieren, da das
+	flackerndes, sich mit dem Betrachtungswinkel Ã¤nderndes Farbsignal
+	(``flash colouration'') kann PrÃ¤datoren irritieren, da das
 	wahrgenommene Bewegungsmuster nicht mit einer stabilen Kontur
 	korrespondiert. Drittens --- und hier besteht eine direkte Verbindung
 	zur in Abschnitt~\ref{sec:morphologie} behandelten Thermoregulation
-	--- könnte das Verhältnis von struktureller zu pigmentärer
-	Reflexion (Definition~\ref{def:kombiniert}) gezielt evolutionär
-	moduliert sein, um in kühleren Habitaten mehr Sonnenenergie zu
+	--- kÃ¶nnte das VerhÃ¤ltnis von struktureller zu pigmentÃ¤rer
+	Reflexion (Definition~\ref{def:kombiniert}) gezielt evolutionÃ¤r
+	moduliert sein, um in kÃ¼hleren Habitaten mehr Sonnenenergie zu
 	absorbieren (geringeres $R_{\mathrm{komb}}$ im nahen Infrarot) und in
-	wärmeren Habitaten reflektierender zu sein. Ein systematischer
+	wÃ¤rmeren Habitaten reflektierender zu sein. Ein systematischer
 	Vergleich der spektralen Eigenschaften von Schwesterarten entlang
 	klimatischer Gradienten, ausgewertet mit dem hier entwickelten
-	Reflektanzformalismus, könnte diese drei Funktionen (Kommunikation,
+	Reflektanzformalismus, kÃ¶nnte diese drei Funktionen (Kommunikation,
 	Mimikry, Thermoregulation) erstmals gegeneinander quantitativ
-	abwägen.
+	abwÃ¤gen.
 
 	\subsubsection{Biomimetische Anwendungen: Photonische Materialien nach dem Vorbild der Schuppen}
 	\label{sec:ausblick_biomimetik}
 
-	Die in den Sätzen~\ref{satz:airy}, \ref{satz:bragg} und
+	Die in den SÃ¤tzen~\ref{satz:airy}, \ref{satz:bragg} und
 	\ref{satz:beugungsfarben} formal hergeleiteten Reflexions- und
 	Beugungseigenschaften sind nicht nur biologisch, sondern auch
-	technologisch von höchstem Interesse, da sie pigmentfreie,
+	technologisch von hÃ¶chstem Interesse, da sie pigmentfreie,
 	photostabile und potenziell strukturell robuste Farbgebung
-	ermöglichen --- eine Eigenschaft, die für langlebige Beschichtungen
+	ermÃ¶glichen --- eine Eigenschaft, die fÃ¼r langlebige Beschichtungen
 	(Automobillack, Textilien, Sicherheitsmerkmale auf Banknoten) attraktiv
-	ist. Zukünftige Forschung sollte folgende Richtungen verfolgen:
+	ist. ZukÃ¼nftige Forschung sollte folgende Richtungen verfolgen:
 	\begin{itemize}
 		\item \textbf{Nanoimprint-Lithographie:} Reproduktion der in
 		Korollar~\ref{kor:periodenzahl} optimierten Bragg-Geometrien
-		($N,d_H,d_L$) in Polymerfilmen mittels Prägewerkzeugen, die direkt
+		($N,d_H,d_L$) in Polymerfilmen mittels PrÃ¤gewerkzeugen, die direkt
 		von Elektronenmikroskop-Aufnahmen realer Schuppen abgeleitet
 		werden.
-		\item \textbf{Atomic Layer Deposition (ALD):} Präzise Abscheidung
+		\item \textbf{Atomic Layer Deposition (ALD):} PrÃ¤zise Abscheidung
 		alternierender dielektrischer Schichten (z.\,B.\
 		TiO$_2$/SiO$_2$ mit $\Delta n$ vergleichbar zu Chitin/Luft) zur
 		Realisierung der in Abbildung~\ref{fig:multilayer} berechneten
-		Spektren mit technischen Materialien höherer Brechzahlkontraste,
+		Spektren mit technischen Materialien hÃ¶herer Brechzahlkontraste,
 		was nach Korollar~\ref{kor:periodenzahl} eine noch schnellere
 		Konvergenz $R\to1$ bei kleinerem $N$ erlaubt.
 		\item \textbf{Strukturelle Textilfarbung:} Ersatz toxischer oder
-		umweltschädlicher Farbstoffe durch photonische Mikrostrukturen auf
+		umweltschÃ¤dlicher Farbstoffe durch photonische Mikrostrukturen auf
 		Textilfasern, basierend auf dem in
 		Abschnitt~\ref{sec:beugung} entwickelten Gittermodell, um
 		gezielt Beugungsfarben in definierten Winkelbereichen zu erzeugen.
 		\item \textbf{Anti-Counterfeiting:} Nutzung der
-		winkelabhängigen Irideszenz (Korollar
-		\ref{kor:winkelverschiebung}) als fälschungssicheres optisches
+		winkelabhÃ¤ngigen Irideszenz (Korollar
+		\ref{kor:winkelverschiebung}) als fÃ¤lschungssicheres optisches
 		Merkmal, dessen exaktes Winkelverhalten nur mit Kenntnis der
 		zugrundeliegenden Schichtparameter reproduzierbar ist.
 		\item \textbf{Adaptive photonische Materialien:} Entwicklung von
@@ -1865,32 +1865,32 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 		mechanische Dehnung, Feuchtigkeit oder elektrische Felder aktiv
 		moduliert werden kann --- ein ``programmierbares'' Strukturfarben\-system
 		nach biologischem Vorbild, das in Sensorik (Dehnungs- oder
-		Feuchtesensoren mit optischer Auslese) Anwendung finden könnte.
+		Feuchtesensoren mit optischer Auslese) Anwendung finden kÃ¶nnte.
 	\end{itemize}
 
-	\subsubsection{Hochauflösende Mehrwellenlängen-Mikrospektroskopie}
+	\subsubsection{HochauflÃ¶sende MehrwellenlÃ¤ngen-Mikrospektroskopie}
 
-	Die in dieser Arbeit präsentierten Reflexionsspektren
+	Die in dieser Arbeit prÃ¤sentierten Reflexionsspektren
 	(Abbildungen~\ref{fig:thinfilm}--\ref{fig:pigmentmix}) basieren auf
 	theoretischen Modellrechnungen. Ihre experimentelle Verifikation
-	erfordert ortsaufgelöste Mikrospektroskopie auf der Ebene einzelner
-	Schuppen (typische Schuppengröße $50$--$200\,\si{\micro\meter}$), da
+	erfordert ortsaufgelÃ¶ste Mikrospektroskopie auf der Ebene einzelner
+	Schuppen (typische SchuppengrÃ¶ÃŸe $50$--$200\,\si{\micro\meter}$), da
 	innerhalb einer einzelnen Schuppe Gradienten in $d_H$, $d_L$ und $N$
-	auftreten können, die zu einer räumlichen Variation des
+	auftreten kÃ¶nnen, die zu einer rÃ¤umlichen Variation des
 	Reflexionsspektrums \emph{innerhalb} der nominell einheitlichen
-	Farbfläche führen. Hyperspektrale Bildgebungssysteme, die für jedes
-	Pixel ein vollständiges Spektrum $R(\lambda;x,y)$ liefern, könnten
+	FarbflÃ¤che fÃ¼hren. Hyperspektrale Bildgebungssysteme, die fÃ¼r jedes
+	Pixel ein vollstÃ¤ndiges Spektrum $R(\lambda;x,y)$ liefern, kÃ¶nnten
 	mit dem hier entwickelten Mehrschichtmodell (Satz~\ref{satz:bragg})
-	gefittet werden, um ortsaufgelöste Karten der Strukturparameter
+	gefittet werden, um ortsaufgelÃ¶ste Karten der Strukturparameter
 	$N(x,y)$, $d_H(x,y)$, $d_L(x,y)$ zu erstellen. Eine solche
-	``optische Tomographie'' der Schuppenstruktur würde es erlauben, die
+	``optische Tomographie'' der Schuppenstruktur wÃ¼rde es erlauben, die
 	in Abschnitt~\ref{sec:ausblick_genetik} postulierte
-	Genotyp-Phänotyp-Karte direkt mit räumlich aufgelösten
-	Entwicklungsgradienten zu verknüpfen, etwa um zu prüfen, ob die
+	Genotyp-PhÃ¤notyp-Karte direkt mit rÃ¤umlich aufgelÃ¶sten
+	Entwicklungsgradienten zu verknÃ¼pfen, etwa um zu prÃ¼fen, ob die
 	Periodenzahl $N$ von proximal nach distal innerhalb einer Schuppe
 	systematisch variiert (was auf einen zeitlich gesteuerten,
-	wellenartig über die Schuppe laufenden Entwicklungsprozess
-	hindeuten würde).
+	wellenartig Ã¼ber die Schuppe laufenden Entwicklungsprozess
+	hindeuten wÃ¼rde).
 
 	\subsubsection{Kopplung mit der aerodynamischen Theorie dieser Arbeit}
 
@@ -1899,110 +1899,110 @@ Ausblick (Abschnitt~\ref{sec:ausblick}) vertieft wird.
 	Abschnitten~\ref{sec:aerodynamik}--\ref{sec:instationaer} entwickelte
 	aerodynamische Theorie mit der in Abschnitt~\ref{sec:strukturfarben}
 	entwickelten Optiktheorie zu vereinen. Die nano-gerillten
-	Schuppenoberflächen, die in Abschnitt~\ref{sec:beugung} als
+	SchuppenoberflÃ¤chen, die in Abschnitt~\ref{sec:beugung} als
 	Beugungsgitter modelliert wurden, sind dieselben Strukturen, die nach
 	\cite{chen2018butterfly} (zitiert in
 	Abschnitt~\ref{sec:morphologie}) die Grenzschicht beeinflussen und
 	den Reibungswiderstand reduzieren. Es stellt sich die Frage, ob ein
-	und dieselbe Geometrieklasse (Periode $\Lambda_g$, Höhe der Rippen
-	$h$) \emph{simultan} optimal für (a) Beugungsfarben gemäß
-	Satz~\ref{satz:beugungsfarben} und (b) Grenzschichtkontrolle gemäß
+	und dieselbe Geometrieklasse (Periode $\Lambda_g$, HÃ¶he der Rippen
+	$h$) \emph{simultan} optimal fÃ¼r (a) Beugungsfarben gemÃ¤ÃŸ
+	Satz~\ref{satz:beugungsfarben} und (b) Grenzschichtkontrolle gemÃ¤ÃŸ
 	der Strouhal-Zahl-Betrachtung (vgl.\ Definition~1 in der Einleitung)
 	sein kann, oder ob hier ein
-	evolutionärer \emph{Trade-off} zwischen optischer und
+	evolutionÃ¤rer \emph{Trade-off} zwischen optischer und
 	aerodynamischer Funktion vorliegt. Eine gekoppelte
 	Mehrzieloptimierung, die sowohl die Transfermatrix-Reflektanz
 	(Satz~\ref{satz:bragg}) als auch eine vereinfachte
-	Grenzschicht-Widerstandsformel als Zielfunktionen verwendet, könnte
-	die Pareto-Front zwischen ``maximale Farbsättigung'' und ``minimaler
-	aerodynamischer Widerstand'' für realistische Rippengeometrien
-	bestimmen und so klären, in welchem Bereich des
+	Grenzschicht-Widerstandsformel als Zielfunktionen verwendet, kÃ¶nnte
+	die Pareto-Front zwischen ``maximale FarbsÃ¤ttigung'' und ``minimaler
+	aerodynamischer Widerstand'' fÃ¼r realistische Rippengeometrien
+	bestimmen und so klÃ¤ren, in welchem Bereich des
 	Parameterraums $(\Lambda_g, h, d_H, d_L)$ die in der Natur
-	beobachteten Schuppen tatsächlich liegen.
+	beobachteten Schuppen tatsÃ¤chlich liegen.
 
 	\subsubsection{Klimawandel und spektrale Verschiebung von Strukturfarben}
 
 	Da die in Korollar~\ref{kor:winkelverschiebung} hergeleitete
-	Wellenlängenverschiebung $\lambda_{\max}(\theta_1)$ und die in
-	Definition~\ref{def:transfermatrix} eingeführten Phasendicken
-	$\delta_j$ über $n_2(T)$ implizit temperaturabhängig sind (der
-	Brechungsindex von Chitin variiert geringfügig mit der Temperatur und
-	insbesondere mit dem Hydratationsgrad), könnten sich
-	Umweltveränderungen --- etwa zunehmende Trockenheit oder veränderte
+	WellenlÃ¤ngenverschiebung $\lambda_{\max}(\theta_1)$ und die in
+	Definition~\ref{def:transfermatrix} eingefÃ¼hrten Phasendicken
+	$\delta_j$ Ã¼ber $n_2(T)$ implizit temperaturabhÃ¤ngig sind (der
+	Brechungsindex von Chitin variiert geringfÃ¼gig mit der Temperatur und
+	insbesondere mit dem Hydratationsgrad), kÃ¶nnten sich
+	UmweltverÃ¤nderungen --- etwa zunehmende Trockenheit oder verÃ¤nderte
 	Temperaturregime infolge des Klimawandels --- messbar auf die
 	Reflexionsspektren von Schmetterlingspopulationen auswirken. Eine
 	systematische Langzeitstudie, die Reflexionsspektren von
-	Museumsexemplaren (über Jahrzehnte oder Jahrhunderte gesammelt) mit
+	Museumsexemplaren (Ã¼ber Jahrzehnte oder Jahrhunderte gesammelt) mit
 	dem hier entwickelten Modell (Satz~\ref{satz:airy},
 	Satz~\ref{satz:bragg}) auswertet und die abgeleiteten effektiven
 	Schichtparameter $d_H(t), d_L(t), n_2(t)$ gegen historische
-	Klimadaten regressiert, könnte einen bislang unbekannten
-	``optischen Klimaindikator'' etablieren. Dies wäre ein Beispiel dafür,
+	Klimadaten regressiert, kÃ¶nnte einen bislang unbekannten
+	``optischen Klimaindikator'' etablieren. Dies wÃ¤re ein Beispiel dafÃ¼r,
 	wie die in dieser Arbeit rein physikalisch motivierte Theorie der
-	Strukturfarben einen Beitrag zur ökologischen Langzeitüberwachung
-	leisten kann, komplementär zu den in
+	Strukturfarben einen Beitrag zur Ã¶kologischen LangzeitÃ¼berwachung
+	leisten kann, komplementÃ¤r zu den in
 	Abschnitt~\ref{sec:migration} und \ref{sec:navigation} diskutierten
 	Migrations- und Navigationsstudien.
 
-	\subsubsection{Quanten- und Nichtlinearitätseffekte in photonischen Nanostrukturen}
+	\subsubsection{Quanten- und NichtlinearitÃ¤tseffekte in photonischen Nanostrukturen}
 
-	Schließlich eröffnet die hier entwickelte klassische
+	SchlieÃŸlich erÃ¶ffnet die hier entwickelte klassische
 	Transfermatrixtheorie (Definitionen~\ref{def:owl} und
-	\ref{def:transfermatrix}) die Frage nach Effekten, die über die
-	rein klassische Optik hinausgehen. Bei extrem dünnen Schichten
+	\ref{def:transfermatrix}) die Frage nach Effekten, die Ã¼ber die
+	rein klassische Optik hinausgehen. Bei extrem dÃ¼nnen Schichten
 	($d \lesssim 10$\,nm), wie sie in manchen
-	Übergangsbereichen zwischen Lamellen vorkommen, könnten
-	quantenoptische Effekte (z.\,B.\ Casimir-artige Kräfte zwischen
+	Ãœbergangsbereichen zwischen Lamellen vorkommen, kÃ¶nnten
+	quantenoptische Effekte (z.\,B.\ Casimir-artige KrÃ¤fte zwischen
 	benachbarten dielektrischen Lamellen, die deren Abstand $d_L$
-	stabilisieren) eine Rolle für die strukturelle Integrität des
-	Lamellenstapels spielen. Ferner könnten bei sehr hoher
-	Lichtintensität (z.\,B.\ unter direkter Sonneneinstrahlung mit
-	fokussierenden Effekten durch die gekrümmte Schuppengeometrie)
+	stabilisieren) eine Rolle fÃ¼r die strukturelle IntegritÃ¤t des
+	Lamellenstapels spielen. Ferner kÃ¶nnten bei sehr hoher
+	LichtintensitÃ¤t (z.\,B.\ unter direkter Sonneneinstrahlung mit
+	fokussierenden Effekten durch die gekrÃ¼mmte Schuppengeometrie)
 	schwache nichtlineare optische Effekte (z.\,B.\
-	intensitätsabhängige Brechungsindexänderung, Kerr-Effekt)
+	intensitÃ¤tsabhÃ¤ngige BrechungsindexÃ¤nderung, Kerr-Effekt)
 	auftreten, die das in Satz~\ref{satz:airy} und
-	Satz~\ref{satz:bragg} angenommene lineare Verhalten geringfügig
-	modifizieren. Obwohl diese Effekte für die makroskopisch
-	beobachtete Farbe vermutlich vernachlässigbar sind, stellen sie ein
-	interessantes Testfeld für die Grenzen der klassischen
-	Beschreibung dar und könnten in zukünftigen
-	hochpräzisen Messungen mit ultrakurzen Laserpulsen an einzelnen
+	Satz~\ref{satz:bragg} angenommene lineare Verhalten geringfÃ¼gig
+	modifizieren. Obwohl diese Effekte fÃ¼r die makroskopisch
+	beobachtete Farbe vermutlich vernachlÃ¤ssigbar sind, stellen sie ein
+	interessantes Testfeld fÃ¼r die Grenzen der klassischen
+	Beschreibung dar und kÃ¶nnten in zukÃ¼nftigen
+	hochprÃ¤zisen Messungen mit ultrakurzen Laserpulsen an einzelnen
 	Schuppen untersucht werden.
 
 	Zusammenfassend zeigt dieser Ausblick, dass die in
 	Abschnitt~\ref{sec:strukturfarben} formal entwickelte Theorie der
-	Strukturfarben weit über eine reine Beschreibung optischer
-	Phänomene hinausreicht: Sie verknüpft Festkörperoptik,
-	Entwicklungsbiologie, Evolutionsgenetik, Ökologie, Materialwissenschaft
-	und Klimaforschung in einem einzigen, mathematisch präzise
+	Strukturfarben weit Ã¼ber eine reine Beschreibung optischer
+	PhÃ¤nomene hinausreicht: Sie verknÃ¼pft FestkÃ¶rperoptik,
+	Entwicklungsbiologie, Evolutionsgenetik, Ã–kologie, Materialwissenschaft
+	und Klimaforschung in einem einzigen, mathematisch prÃ¤zise
 	formulierten Rahmen, dessen zentrale Bausteine --- die Airy-Formel
-	(Satz~\ref{satz:airy}), die Transfermatrixmethode für periodische
+	(Satz~\ref{satz:airy}), die Transfermatrixmethode fÃ¼r periodische
 	Stapel (Satz~\ref{satz:bragg}), die Gittergleichung
 	(Definition~\ref{def:gittergleichung}) und das Modell der
-	Pigment-Struktur-Überlagerung (Definition~\ref{def:kombiniert})
-	--- als Ausgangspunkt für all diese zukünftigen Forschungsrichtungen
-	dienen können.
+	Pigment-Struktur-Ãœberlagerung (Definition~\ref{def:kombiniert})
+	--- als Ausgangspunkt fÃ¼r all diese zukÃ¼nftigen Forschungsrichtungen
+	dienen kÃ¶nnen.
 
 
 	% ============================================================
 	\section{Zusammenfassung}
 	% ============================================================
 	
-	Diese Arbeit hat den außergewöhnlichen Flug der Schmetterlinge aus sechs
-	Perspektiven untersucht: Morphologie, stationäre und instationäre Aerodynamik,
+	Diese Arbeit hat den auÃŸergewÃ¶hnlichen Flug der Schmetterlinge aus sechs
+	Perspektiven untersucht: Morphologie, stationÃ¤re und instationÃ¤re Aerodynamik,
 	Kinematik, Energiehaushalt, Thermiknutzung, Migration und Navigation.
 	Die zentralen Ergebnisse lassen sich wie folgt zusammenfassen:
 	
 	\begin{itemize}
-		\item Die negative Korrelation zwischen Körpermasse und Flügelschlagfrequenz
+		\item Die negative Korrelation zwischen KÃ¶rpermasse und FlÃ¼gelschlagfrequenz
 		($f \propto m^{-0{,}5}$, $r = -0{,}94$) folgt aus der
 		Auftriebsgleichgewichtsbedingung (Lemma~\ref{lem:gleichgewicht},
-		Korollar~1) und ist durch Messdaten gestützt.
+		Korollar~1) und ist durch Messdaten gestÃ¼tzt.
 		
-		\item Flexible Schmetterlingsflügel verschieben den Strömungsabriss auf
+		\item Flexible SchmetterlingsflÃ¼gel verschieben den StrÃ¶mungsabriss auf
 		$\alpha \approx 26^\circ$, verglichen mit $\approx 16^\circ$ bei starren
 		Profilen, da der LEV (Satz~\ref{satz:lev}) die effektive Zirkulation
-		um $\Delta C_L^{\mathrm{LEV}} \approx 0{,}3$--$0{,}8$ erhöht.
+		um $\Delta C_L^{\mathrm{LEV}} \approx 0{,}3$--$0{,}8$ erhÃ¶ht.
 		
 		\item Der clap-and-fling-Mechanismus (Satz~\ref{satz:clap}) verdoppelt
 		den Anlaufwirbel an der Vorderkante und ist in der dritten Harmonischen

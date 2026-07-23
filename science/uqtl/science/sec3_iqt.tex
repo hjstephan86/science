@@ -1,15 +1,15 @@
-% ═══════════════════════════════════════════════════════════════════════════════
+﻿% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \section{Der Intermediate Query Tree (IQT)}
 \label{sec:iqt}
-% ═══════════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-\subsection{Überblick und Architektur}
+\subsection{Ãœberblick und Architektur}
 \label{subsec:iqt_uebersicht}
 
-Das Herzstück des UQTL-Standards ist der \textbf{Intermediate Query Tree
-(IQT)}: eine sprachunabhängige Baumstruktur, die jeden Query-Ausdruck aus
-Python, Java und C\# einheitlich repräsentiert. Der IQT fungiert als
-\emph{Pivot-Sprache} in der Übersetzungspipeline.
+Das HerzstÃ¼ck des UQTL-Standards ist der \textbf{Intermediate Query Tree
+(IQT)}: eine sprachunabhÃ¤ngige Baumstruktur, die jeden Query-Ausdruck aus
+Python, Java und C\# einheitlich reprÃ¤sentiert. Der IQT fungiert als
+\emph{Pivot-Sprache} in der Ãœbersetzungspipeline.
 
 \begin{sidewaysfigure}
 \centering
@@ -66,7 +66,7 @@ Python, Java und C\# einheitlich repräsentiert. Der IQT fungiert als
   \node[font=\tiny, text=gray] at (8.7,2.3)  {Normalisierung};
   \node[font=\tiny, text=gray] at (12.2,3)   {Codegen};
 \end{tikzpicture}
-\caption{UQTL-Übersetzungspipeline: von Quellsprachen über IQT zum SQL-Zieldialekt}
+\caption{UQTL-Ãœbersetzungspipeline: von Quellsprachen Ã¼ber IQT zum SQL-Zieldialekt}
 \label{fig:pipeline}
 \end{sidewaysfigure}
 
@@ -78,7 +78,7 @@ Jeder Knoten entspricht einem relationalen oder logischen Operator.
 
 \begin{definition}[IQT-Knotentypen]
 \label{def:iqt_knoten}
-Die Menge der zulässigen IQT-Knotentypen $\mathcal{N}$ ist definiert als:
+Die Menge der zulÃ¤ssigen IQT-Knotentypen $\mathcal{N}$ ist definiert als:
 \begin{align*}
 \mathcal{N} = \{
   &\mathtt{SCAN},\; \mathtt{FILTER},\; \mathtt{PROJECT},\; \\
@@ -91,7 +91,7 @@ Die Menge der zulässigen IQT-Knotentypen $\mathcal{N}$ ist definiert als:
 \subsubsection{Knoten-Spezifikation im Detail}
 
 \textbf{SCAN-Knoten}
-Der \texttt{SCAN}-Knoten repräsentiert den Basistabellenzugriff:
+Der \texttt{SCAN}-Knoten reprÃ¤sentiert den Basistabellenzugriff:
 
 \begin{lstlisting}[style=sqlstyle, caption={IQT-Pseudonotation: SCAN},
   label=lst:iqt_scan]
@@ -228,12 +228,12 @@ FrameBound ::=
 \subsection{Normalisierungsregeln des IQT}
 \label{subsec:iqt_norm}
 
-Um die eindeutige SQL-Ausgabe zu garantieren, werden IQT-Bäume vor der
+Um die eindeutige SQL-Ausgabe zu garantieren, werden IQT-BÃ¤ume vor der
 SQL-Generierung normalisiert. Die Normalisierung umfasst folgende Schritte:
 
-\begin{regel}[Prädikat-Normalisierung]
+\begin{regel}[PrÃ¤dikat-Normalisierung]
 \label{regel:pred_norm}
-Zusammengesetzte \texttt{AND}-Prädikate werden in einer kanonischen
+Zusammengesetzte \texttt{AND}-PrÃ¤dikate werden in einer kanonischen
 Reihenfolge sortiert (lexikografisch nach Spaltenname, dann Operator):
 \[
   p_1 \wedge p_2 \wedge \ldots \wedge p_n \;\rightarrow\;
@@ -250,7 +250,7 @@ der Reihenfolge des Auftretens im Baum (Pre-Order-Traversal).
 
 \begin{regel}[Boolean-Vereinfachung]
 \label{regel:bool_simp}
-Redundante boolesche Ausdrücke werden eliminiert:
+Redundante boolesche AusdrÃ¼cke werden eliminiert:
 \begin{align*}
   p \wedge \mathtt{TRUE} &\;\rightarrow\; p \\
   p \vee \mathtt{FALSE}  &\;\rightarrow\; p \\
@@ -270,6 +270,7 @@ verwendet; implizite Stern-Projektionen werden beibehalten.
 \label{regel:join_canon}
 Mehrfach-Joins werden left-assoziativ normiert.
 \texttt{CROSS JOIN} ohne \texttt{ON}-Klausel wird nur verwendet, wenn
-explizit kein Prädikat vorliegt; sonst wird \texttt{INNER JOIN ... ON}
+explizit kein PrÃ¤dikat vorliegt; sonst wird \texttt{INNER JOIN ... ON}
 bevorzugt.
 \end{regel}
+

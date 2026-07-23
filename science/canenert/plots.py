@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Matplotlib plots for CAN/CAN-FD energy-efficient real-time paper."""
 import numpy as np
 import matplotlib
@@ -38,7 +38,7 @@ ax.grid(True, alpha=0.3)
 ax.set_xlim(0, 100)
 ax.set_ylim(0)
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot1_energy_vs_load.pdf')
+plt.savefig('plot1_energy_vs_load.pdf')
 plt.close()
 print("Plot 1 gespeichert.")
 
@@ -66,7 +66,7 @@ ax.grid(True, alpha=0.3)
 ax.set_xlim(1, 32)
 ax.set_ylim(0, 10)
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot2_latency.pdf')
+plt.savefig('plot2_latency.pdf')
 plt.close()
 print("Plot 2 gespeichert.")
 
@@ -94,7 +94,7 @@ ax2.grid(True, alpha=0.3, which='both')
 ax2.set_ylim(0, 45)
 
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot3_monitoring.pdf')
+plt.savefig('plot3_monitoring.pdf')
 plt.close()
 print("Plot 3 gespeichert.")
 
@@ -118,7 +118,7 @@ ax.grid(True, alpha=0.3)
 ax.set_xlim(1, 64)
 ax.set_ylim(0, 100)
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot4_frame_efficiency.pdf')
+plt.savefig('plot4_frame_efficiency.pdf')
 plt.close()
 print("Plot 4 gespeichert.")
 
@@ -151,7 +151,7 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax.legend(lines1 + lines2, labels1 + labels2, loc='upper right', fontsize=9)
 ax.grid(True, alpha=0.2)
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot5_adaptive_scheduling.pdf')
+plt.savefig('plot5_adaptive_scheduling.pdf')
 plt.close()
 print("Plot 5 gespeichert.")
 
@@ -170,8 +170,9 @@ ax.set_title('Leistungsaufnahme: Verschiedene Betriebsmodi')
 ax.set_ylim(0, 140)
 ax.grid(True, axis='y', alpha=0.3)
 plt.tight_layout()
-plt.savefig('/home/claude/can_paper/plot6_power_modes.pdf')
+plt.savefig('plot6_power_modes.pdf')
 plt.close()
 print("Plot 6 gespeichert.")
 
 print("Alle Plots erfolgreich erstellt.")
+

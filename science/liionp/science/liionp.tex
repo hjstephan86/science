@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
@@ -78,17 +78,17 @@
 		\vspace*{1.5cm}
 		\vspace{0.5cm}
 		{\Huge\bfseries
-			KI-Power-Management-Modul für Lithium-Ionen-Akkumulatoren
+			KI-Power-Management-Modul fÃ¼r Lithium-Ionen-Akkumulatoren
 			\par}
 		{\large\itshape
-			Formaler Nachweis der Überlegenheit eines lernenden,\\
+			Formaler Nachweis der Ãœberlegenheit eines lernenden,\\
 			verhaltensadaptiven Power-Management-Systems
 			\par}
 		\vspace{1.5cm}
 		{\large
 			\begin{tabular}{rl}
 				\textbf{Autor:}      & Stephan Epp \\[4pt]
-				\textbf{Datum:}      & 7. März 2026 \\[4pt]
+				\textbf{Datum:}      & 7. MÃ¤rz 2026 \\[4pt]
 			\end{tabular}
 		}
 	\end{titlepage}
@@ -97,28 +97,28 @@
 	\begin{abstract}
 		\noindent
 		Lithium-Ionen-Akkumulatoren (LIB) sind die dominierende Energiespeichertechnologie
-		in mobilen Geräten, Elektrofahrzeugen und stationären Speichersystemen.
-		Ihre Lebensdauer wird maßgeblich durch zwei physikalische Hauptmechanismen
-		begrenzt: (1) temperaturinduziertes Kapazitätsdriften und (2) elektrochemische
+		in mobilen GerÃ¤ten, Elektrofahrzeugen und stationÃ¤ren Speichersystemen.
+		Ihre Lebensdauer wird maÃŸgeblich durch zwei physikalische Hauptmechanismen
+		begrenzt: (1) temperaturinduziertes KapazitÃ¤tsdriften und (2) elektrochemische
 		Degradation durch unkontrollierte Zellspannungen. Konventionelle Power-Management-Systeme
 		(PMS) adressieren diese Mechanismen reaktiv anhand statischer Schwellwerte.
 		
-		Diese Arbeit präsentiert ein formal nachgewiesenes, KI-getriebenes Power-Manage\-ment-Modul
+		Diese Arbeit prÃ¤sentiert ein formal nachgewiesenes, KI-getriebenes Power-Manage\-ment-Modul
 		(AI-PMM), das Nutzungsverhalten und Umgebungsparameter kontinuierlich erlernt
-		und prädiktiv in Regelstrategien umsetzt. Mithilfe eines Reinforcement-Learning-Agenten
+		und prÃ¤diktiv in Regelstrategien umsetzt. Mithilfe eines Reinforcement-Learning-Agenten
 		sowie adaptiver Regler werden Temperatur und Zellspannung dynamisch optimiert.
 		
-		Es wird mathematisch hergeleitet, dass das AI-PMM gegenüber einem statischen
+		Es wird mathematisch hergeleitet, dass das AI-PMM gegenÃ¼ber einem statischen
 		Referenz-PMS die Gesamtlebensdauer um den Faktor $\Phi \geq 1{,}47$ steigert.
-		Formale Stabilitätsanalysen (Lyapunov) und Degradationsmodelle (Arrhenius,
+		Formale StabilitÃ¤tsanalysen (Lyapunov) und Degradationsmodelle (Arrhenius,
 		SEI-Wachstum) belegen die theoretische Fundierung. Simulationsergebnisse mit
-		synthetischen Lastprofilen bestätigen die analytischen Resultate.
+		synthetischen Lastprofilen bestÃ¤tigen die analytischen Resultate.
 	\end{abstract}
 	
 	\vspace{1cm}
-	\noindent\textbf{Schlüsselwörter:} Lithium-Ionen-Akkumulator, Power Management,
-	Künstliche Intelligenz, Reinforcement Learning, Lebensdauermaximierung,
-	Temperaturregelung, Spannungsregelung, SEI-Schicht, Arrhenius-Modell, Lyapunov-Stabilität.
+	\noindent\textbf{SchlÃ¼sselwÃ¶rter:} Lithium-Ionen-Akkumulator, Power Management,
+	KÃ¼nstliche Intelligenz, Reinforcement Learning, Lebensdauermaximierung,
+	Temperaturregelung, Spannungsregelung, SEI-Schicht, Arrhenius-Modell, Lyapunov-StabilitÃ¤t.
 	
 	\newpage
 	\tableofcontents
@@ -130,26 +130,26 @@
 	
 	\subsection{Motivation und Problemstellung}
 	
-	Lithium-Ionen-Akkumulatoren haben sich seit ihrer kommerziellen Einführung Anfang
-	der 1990er Jahre als Schlüsseltechnologie für mobile Energiespeicherung etabliert.
+	Lithium-Ionen-Akkumulatoren haben sich seit ihrer kommerziellen EinfÃ¼hrung Anfang
+	der 1990er Jahre als SchlÃ¼sseltechnologie fÃ¼r mobile Energiespeicherung etabliert.
 	Mit einer gravimetrischen Energiedichte von typischerweise
 	$150\text{--}300\,\mathrm{Wh\,kg^{-1}}$ und einer volumetrischen Energiedichte
-	von $250\text{--}700\,\mathrm{Wh\,L^{-1}}$ übertreffen sie konkurrierende
-	Technologien wie Nickel-Metallhydrid- oder Blei-Säure-Akkumulatoren deutlich
+	von $250\text{--}700\,\mathrm{Wh\,L^{-1}}$ Ã¼bertreffen sie konkurrierende
+	Technologien wie Nickel-Metallhydrid- oder Blei-SÃ¤ure-Akkumulatoren deutlich
 	\cite{Tarascon2001}.
 	
 	Gleichwohl unterliegen LIB einem unvermeidlichen Alterungsprozess, der durch
 	zwei dominierende Mechanismen gesteuert wird:
 	
 	\begin{enumerate}[leftmargin=*, label=(\arabic*)]
-		\item \textbf{Thermisch induzierte Alterung:} Erhöhte Temperaturen beschleunigen
-		die Bildung der Solid-Electrolyte-Interphase (SEI) an der Anodenoberfläche,
-		fördern Lithium-Plating, und führen zu mechanischen Spannungen durch
-		anisotropes Gitterausdehnen. Das resultierende Kapazitätsdriften ist
-		in erster Näherung arrheniusförmig \cite{Wang2011}.
+		\item \textbf{Thermisch induzierte Alterung:} ErhÃ¶hte Temperaturen beschleunigen
+		die Bildung der Solid-Electrolyte-Interphase (SEI) an der AnodenoberflÃ¤che,
+		fÃ¶rdern Lithium-Plating, und fÃ¼hren zu mechanischen Spannungen durch
+		anisotropes Gitterausdehnen. Das resultierende KapazitÃ¤tsdriften ist
+		in erster NÃ¤herung arrheniusfÃ¶rmig \cite{Wang2011}.
 		
-		\item \textbf{Elektrochemisch induzierte Alterung:} Über- und Unterspannungen
-		jenseits des zulässigen Betriebsbereichs initiieren irreversible Phasenumwandlungen
+		\item \textbf{Elektrochemisch induzierte Alterung:} Ãœber- und Unterspannungen
+		jenseits des zulÃ¤ssigen Betriebsbereichs initiieren irreversible Phasenumwandlungen
 		in Kathoden- und Anodenmaterialien, Elektrolytoxidation sowie Lithium-Dendritenbildung
 		\cite{Aurbach2002}.
 	\end{enumerate}
@@ -157,13 +157,13 @@
 	Konventionelle Power-Management-Systeme begegnen diesen Mechanismen durch statische
 	Grenzwerte (z.\,B.\ $2{,}5\,\mathrm{V} \leq V_\mathrm{cell} \leq 4{,}2\,\mathrm{V}$,
 	$-20\,^\circ\mathrm{C} \leq T \leq 45\,^\circ\mathrm{C}$). Diese Grenzwerte sind
-	jedoch konservativ und ignorieren den kontextabhängigen Betriebszustand sowie
+	jedoch konservativ und ignorieren den kontextabhÃ¤ngigen Betriebszustand sowie
 	das individuelle Nutzerverhalten. Ein lernendes System kann diese Grenzen
-	adaptiv und prädiktiv nutzen, um die Gesamtlebensdauer zu maximieren.
+	adaptiv und prÃ¤diktiv nutzen, um die Gesamtlebensdauer zu maximieren.
 	
 	\subsection{Zielsetzung und Beitrag}
 	
-	Diese Arbeit leistet folgende wissenschaftliche Beiträge:
+	Diese Arbeit leistet folgende wissenschaftliche BeitrÃ¤ge:
 	
 	\begin{itemize}[leftmargin=*]
 		\item Formale Modellierung der temperatur- und spannungsbedingten Degradation
@@ -171,7 +171,7 @@
 		\item Entwurf eines KI-gesteuerten Power-Management-Moduls (AI-PMM) basierend
 		auf Deep Reinforcement Learning (DRL) mit expliziter Modellierung von Nutzungsverhalten
 		und Umgebungsparametern.
-		\item Mathematischer Nachweis der Lebensdauerüberlegenheit des AI-PMM gegenüber
+		\item Mathematischer Nachweis der LebensdauerÃ¼berlegenheit des AI-PMM gegenÃ¼ber
 		einem statischen Referenzsystem mittels Degradationsintegral und Lyapunov-Analyse.
 		\item Simulation und Validierung an realistischen Lastprofilen.
 	\end{itemize}
@@ -183,7 +183,7 @@
 	
 	\subsection{Elektrochemische Grundprinzipien}
 	
-	Eine Lithium-Ionen-Zelle besteht aus Anode (üblicherweise Graphit $\mathrm{LiC_6}$),
+	Eine Lithium-Ionen-Zelle besteht aus Anode (Ã¼blicherweise Graphit $\mathrm{LiC_6}$),
 	Kathode (z.\,B.\ $\mathrm{LiCoO_2}$, $\mathrm{LiFePO_4}$, NMC), Elektrolyt
 	und Separator. Die Gleichgewichtsspannung einer NMC/Graphit-Zelle berechnet sich
 	zu:
@@ -195,8 +195,8 @@
 	\end{equation}
 	
 	wobei $R = 8{,}314\,\mathrm{J\,mol^{-1}\,K^{-1}}$ die universelle Gaskonstante,
-	$T$ die absolute Temperatur, $n$ die Anzahl übertragener Elektronen, $F =
-	96485\,\mathrm{C\,mol^{-1}}$ die Faraday-Konstante und $a_i$ die Aktivitäten
+	$T$ die absolute Temperatur, $n$ die Anzahl Ã¼bertragener Elektronen, $F =
+	96485\,\mathrm{C\,mol^{-1}}$ die Faraday-Konstante und $a_i$ die AktivitÃ¤ten
 	der Reaktanden sind.
 	
 	\subsection{Thermische Degradationsmechanismen}
@@ -205,8 +205,8 @@
 	\subsubsection{SEI-Wachstum}
 	
 	Die Solid-Electrolyte-Interphase (SEI) bildet sich irreversibel an der
-	Grenzfläche Anode/Elektrolyt durch Elektrolytreduktion. Die SEI-Dicke
-	$\delta_\mathrm{SEI}(t)$ wächst nach einem wurzelförmigen Gesetz:
+	GrenzflÃ¤che Anode/Elektrolyt durch Elektrolytreduktion. Die SEI-Dicke
+	$\delta_\mathrm{SEI}(t)$ wÃ¤chst nach einem wurzelfÃ¶rmigen Gesetz:
 	
 	\begin{equation}
 		\frac{d\delta_\mathrm{SEI}}{dt} = \frac{k_\mathrm{SEI}}{2\delta_\mathrm{SEI}}
@@ -232,7 +232,7 @@
 	
 	\subsubsection{Arrhenius-Beschleunigung}
 	
-	Die Temperaturabhängigkeit aller relevanten Degradationsraten folgt dem
+	Die TemperaturabhÃ¤ngigkeit aller relevanten Degradationsraten folgt dem
 	Arrhenius-Gesetz:
 	
 	\begin{equation}
@@ -240,15 +240,15 @@
 		\label{eq:arrhenius}
 	\end{equation}
 	
-	Die relative Beschleunigung der Degradationsrate bei Temperaturerhöhung von
-	$T_0$ auf $T$ beträgt:
+	Die relative Beschleunigung der Degradationsrate bei TemperaturerhÃ¶hung von
+	$T_0$ auf $T$ betrÃ¤gt:
 	
 	\begin{equation}
 		\frac{k(T)}{k(T_0)} = \exp\!\left[\frac{E_a}{R}\left(\frac{1}{T_0}-\frac{1}{T}\right)\right]
 		\label{eq:arrhenius_ratio}
 	\end{equation}
 	
-	Für $E_a = 50\,\mathrm{kJ\,mol^{-1}}$ (typisch für SEI-Wachstum \cite{Wang2011}),
+	FÃ¼r $E_a = 50\,\mathrm{kJ\,mol^{-1}}$ (typisch fÃ¼r SEI-Wachstum \cite{Wang2011}),
 	$T_0 = 298\,\mathrm{K}$ und $T = 318\,\mathrm{K}$ ($+20\,\mathrm{K}$) ergibt sich:
 	
 	\begin{equation}
@@ -256,38 +256,38 @@
 		\left(\frac{1}{298}-\frac{1}{318}\right)\right] \approx 2{,}77
 	\end{equation}
 	
-	\textbf{Schlussfolgerung:} Eine Temperaturerhöhung um $20\,\mathrm{K}$ nahezu
-	verdreifacht die SEI-Wachstumsrate und damit die Kapazitätsverlustrate.
+	\textbf{Schlussfolgerung:} Eine TemperaturerhÃ¶hung um $20\,\mathrm{K}$ nahezu
+	verdreifacht die SEI-Wachstumsrate und damit die KapazitÃ¤tsverlustrate.
 	
-	\subsubsection{Kapazitätsdriften -- formale Definition}
+	\subsubsection{KapazitÃ¤tsdriften -- formale Definition}
 	
-	\begin{definition}[Kapazitätsdriften]
-		Das Kapazitätsdriften $\mathcal{D}(t)$ einer LIB-Zelle ist definiert als
-		die normierte zeitliche Abnahme der nutzbaren Kapazität:
+	\begin{definition}[KapazitÃ¤tsdriften]
+		Das KapazitÃ¤tsdriften $\mathcal{D}(t)$ einer LIB-Zelle ist definiert als
+		die normierte zeitliche Abnahme der nutzbaren KapazitÃ¤t:
 		\begin{equation}
 			\mathcal{D}(t) \coloneqq 1 - \frac{Q(t)}{Q_0}
 		\end{equation}
-		wobei $Q_0$ die Nominalkapazität und $Q(t)$ die aktuelle Kapazität bezeichnet.
-		\textit{End-of-Life} (EoL) wird üblicherweise bei $\mathcal{D}(t_\mathrm{EoL}) = 0{,}20$
-		(80\,\% der Nominalkapazität) definiert.
+		wobei $Q_0$ die NominalkapazitÃ¤t und $Q(t)$ die aktuelle KapazitÃ¤t bezeichnet.
+		\textit{End-of-Life} (EoL) wird Ã¼blicherweise bei $\mathcal{D}(t_\mathrm{EoL}) = 0{,}20$
+		(80\,\% der NominalkapazitÃ¤t) definiert.
 	\end{definition}
 	
 	\subsection{Spannungsbedingte Degradationsmechanismen}
 	\label{subsec:volt_deg}
 	
-	\subsubsection{Überspannungsdegradation}
+	\subsubsection{Ãœberspannungsdegradation}
 	
-	Bei Überschreiten der oberen Grenzspannung $V_\mathrm{max}$ (typisch
-	$4{,}2\,\mathrm{V}$ für NMC) treten auf:
+	Bei Ãœberschreiten der oberen Grenzspannung $V_\mathrm{max}$ (typisch
+	$4{,}2\,\mathrm{V}$ fÃ¼r NMC) treten auf:
 	
 	\begin{itemize}
 		\item Elektrolytoxidation: $\mathrm{EC} \rightarrow \text{Oxidationsprodukte}$ bei
 		$V > 4{,}3\,\mathrm{V}$
 		\item Strukturelle Phasenumwandlungen der Kathode (z.\,B.\ layered $\to$ spinel $\to$ rock salt)
-		\item Sauerstofffreisetzung bei extremer Überladung (Sicherheitsrisiko)
+		\item Sauerstofffreisetzung bei extremer Ãœberladung (Sicherheitsrisiko)
 	\end{itemize}
 	
-	Die Degradationsrate durch Überspannung wird modelliert als:
+	Die Degradationsrate durch Ãœberspannung wird modelliert als:
 	
 	\begin{equation}
 		r_\mathrm{OV}(V) = \begin{cases}
@@ -303,7 +303,7 @@
 	Bei tiefer Entladung ($V < V_\mathrm{min}$, typisch $2{,}5\,\mathrm{V}$) und
 	bei Schnellladung bei niedrigen Temperaturen besteht die Gefahr des Lithium-Platings:
 	metallisches Lithium scheidet sich statt in die Graphitstruktur intercaliert zu werden
-	an der Anodenoberfläche ab. Dies führt zu:
+	an der AnodenoberflÃ¤che ab. Dies fÃ¼hrt zu:
 	
 	\begin{itemize}
 		\item Irreversiblem Lithiumverlust (``dead Lithium'')
@@ -311,7 +311,7 @@
 		\item Beschleunigter SEI-Reformation
 	\end{itemize}
 	
-	Der kritische Stromdichte-Schwellwert für Lithium-Plating ist:
+	Der kritische Stromdichte-Schwellwert fÃ¼r Lithium-Plating ist:
 	
 	\begin{equation}
 		j_\mathrm{plating}(T) = j_0 \exp\!\left(\frac{-E_{a,\mathrm{plating}}}{RT}\right) \cdot
@@ -330,7 +330,7 @@
 		\label{eq:voltage_window_opt}
 	\end{equation}
 	
-	unter der Nebenbedingung, dass die nutzbare Energiemenge für den Betrieb
+	unter der Nebenbedingung, dass die nutzbare Energiemenge fÃ¼r den Betrieb
 	ausreicht:
 	
 	\begin{equation}
@@ -365,7 +365,7 @@
 	\subsection{Gesamtdegradationsrate}
 	
 	Die Gesamtdegradationsrate setzt sich additiv aus kalendarischen und zyklischen
-	Beiträgen zusammen:
+	BeitrÃ¤gen zusammen:
 	
 	\begin{equation}
 		\dot{\mathcal{D}}(t) = \underbrace{\gamma_T \cdot k_\mathrm{SEI}(T(t))}_{\text{thermisch}}
@@ -398,14 +398,14 @@
 	
 	\subsection{Thermisches Netzwerkmodell}
 	
-	Die Zelltemperatur wird durch ein vereinfachtes Wärmenetzwerk modelliert:
+	Die Zelltemperatur wird durch ein vereinfachtes WÃ¤rmenetzwerk modelliert:
 	
 	\begin{equation}
 		m_\mathrm{cell} c_p \dot{T}(t) = \dot{Q}_\mathrm{gen}(t) - \frac{T(t) - T_\mathrm{amb}(t)}{R_\mathrm{th}}
 		\label{eq:thermal_model}
 	\end{equation}
 	
-	mit Wärmeerzeugungsrate:
+	mit WÃ¤rmeerzeugungsrate:
 	
 	\begin{equation}
 		\dot{Q}_\mathrm{gen}(t) = I(t)^2 R_\mathrm{int}(t) +
@@ -414,7 +414,7 @@
 	\end{equation}
 	
 	Der erste Term entspricht der Joule'schen Verlustleistung, der zweite Term
-	der reversiblen Wärme (entropischer Beitrag).
+	der reversiblen WÃ¤rme (entropischer Beitrag).
 	
 	% ============================================================
 	\section{KI-gesteuertes Power-Management-Modul (AI-PMM)}
@@ -467,7 +467,7 @@
 			
 		\end{tikzpicture}
 		\caption{Systemarchitektur des AI-PMM. Der Regelkreis umfasst Sensorik,
-			kognitiven Kern und Aktionsschicht mit Rückkopplung über Erfahrungsspeicher.}
+			kognitiven Kern und Aktionsschicht mit RÃ¼ckkopplung Ã¼ber Erfahrungsspeicher.}
 		\label{fig:architecture}
 	\end{sidewaysfigure}
 	
@@ -509,7 +509,7 @@
 	\end{equation}
 	
 	wobei $\mathbf{c}(t)$ Kontextinformationen (Tageszeit, Wochentag, Standort,
-	Aktivitätsmuster) enthält. Dieses Modell wird durch ein rekurrentes neuronales
+	AktivitÃ¤tsmuster) enthÃ¤lt. Dieses Modell wird durch ein rekurrentes neuronales
 	Netz (LSTM) mit $H = 128$ versteckten Einheiten approximiert:
 	
 	\begin{equation}
@@ -518,7 +518,7 @@
 		\label{eq:lstm_prediction}
 	\end{equation}
 	
-	Die prädiktive Last $K$ Schritte voraus ermöglicht präemptives Kühlmanagement.
+	Die prÃ¤diktive Last $K$ Schritte voraus ermÃ¶glicht prÃ¤emptives KÃ¼hlmanagement.
 	
 	\subsection{Adaptiver Temperaturregler}
 	
@@ -533,7 +533,7 @@
 	wobei $e_T(t) = T_\mathrm{set}(t) - T(t)$ und der Feedforward-Term auf Basis
 	der Lastprognose und Umgebungstemperaturprognose berechnet wird.
 	
-	\subsection{Modell-Prädiktiver Spannungsregler (MPC)}
+	\subsection{Modell-PrÃ¤diktiver Spannungsregler (MPC)}
 	
 	Die Spannungsregelung erfolgt durch MPC mit Horizont $N_p = 10$:
 	
@@ -552,7 +552,7 @@
 		\dot{T}(t+k) &\leq \dot{T}_\mathrm{max}
 	\end{align}
 	
-	Der optimale Sollspannungsverlauf $V^*(t)$ wird unter Berücksichtigung der
+	Der optimale Sollspannungsverlauf $V^*(t)$ wird unter BerÃ¼cksichtigung der
 	Lastprognose dynamisch angepasst.
 	
 	\subsection{Lernen aus Nutzererfahrung}
@@ -593,8 +593,8 @@
 	$V_\mathrm{max,ref} = \mathrm{const}$.
 	
 	\begin{definition}[Statisches PMS]
-		Ein Power-Management-System $\Pi_\mathrm{static}$ heißt statisch, wenn
-		die Steuerung $\mathbf{u}(t)$ ausschließlich auf dem aktuellen Messwert
+		Ein Power-Management-System $\Pi_\mathrm{static}$ heiÃŸt statisch, wenn
+		die Steuerung $\mathbf{u}(t)$ ausschlieÃŸlich auf dem aktuellen Messwert
 		$\mathbf{x}(t)$ und festen Schwellwerten basiert:
 		\begin{equation}
 			\mathbf{u}(t) = g_\mathrm{static}\bigl(\mathbf{x}(t)\bigr)
@@ -602,8 +602,8 @@
 	\end{definition}
 	
 	\begin{definition}[KI-gesteuertes PMS]
-		Ein Power-Management-System $\Pi_\mathrm{AI}$ heißt KI-gesteuert, wenn
-		die Steuerung auf dem vollständigen Informationszustand basiert:
+		Ein Power-Management-System $\Pi_\mathrm{AI}$ heiÃŸt KI-gesteuert, wenn
+		die Steuerung auf dem vollstÃ¤ndigen Informationszustand basiert:
 		\begin{equation}
 			\mathbf{u}(t) = g_\mathrm{AI}\bigl(\mathbf{s}(t)\bigr) = 
 			g_\mathrm{AI}\bigl(\mathbf{x}(t), \hat{\mathbf{u}}_{t+1:t+K},
@@ -611,9 +611,9 @@
 		\end{equation}
 	\end{definition}
 	
-	\subsection{Hauptsatz: Lebensdauerüberlegenheit des AI-PMM}
+	\subsection{Hauptsatz: LebensdauerÃ¼berlegenheit des AI-PMM}
 	
-	\begin{theorem}[Lebensdauerüberlegenheit]
+	\begin{theorem}[LebensdauerÃ¼berlegenheit]
 		\label{thm:lifetime_superiority}
 		Sei $L_\mathrm{static}$ die Lebensdauer unter $\Pi_\mathrm{static}$ und
 		$L_\mathrm{AI}$ die Lebensdauer unter $\Pi_\mathrm{AI}$. Unter den Annahmen:
@@ -622,7 +622,7 @@
 			\item Das Degradationsmodell \eqref{eq:total_degradation} ist korrekt.
 			\item Der RL-Agent konvergiert zur $\varepsilon$-optimalen Politik
 			$\pi^*_\varepsilon$ mit $\varepsilon \to 0$.
-			\item Die Lastprognose hat beschränkten Fehler:
+			\item Die Lastprognose hat beschrÃ¤nkten Fehler:
 			$\|\hat{\mathbf{u}} - \mathbf{u}\|_2 \leq \delta_u < \infty$.
 		\end{enumerate}
 		
@@ -647,13 +647,13 @@
 	\begin{proof}
 		Wir konstruieren den Beweis in drei Schritten.
 		
-		\textbf{Schritt 1: Informationstheoretische Überlegenheit.}
+		\textbf{Schritt 1: Informationstheoretische Ãœberlegenheit.}
 		
-		Das AI-PMM verfügt über den Informationszustand
+		Das AI-PMM verfÃ¼gt Ã¼ber den Informationszustand
 		$\mathbf{I}^\mathrm{AI}(t) \supseteq \mathbf{I}^\mathrm{static}(t)$,
-		da es zusätzlich $\hat{\mathbf{u}}_{t+1:t+K}$ und $\hat{T}_\mathrm{amb}$
-		berücksichtigt. Nach dem Informationsverarbeitungs-Lemma
-		(vgl.\ \cite{Bertsekas2005}) gilt für jeden MDP mit vollständigerem
+		da es zusÃ¤tzlich $\hat{\mathbf{u}}_{t+1:t+K}$ und $\hat{T}_\mathrm{amb}$
+		berÃ¼cksichtigt. Nach dem Informationsverarbeitungs-Lemma
+		(vgl.\ \cite{Bertsekas2005}) gilt fÃ¼r jeden MDP mit vollstÃ¤ndigerem
 		Informationszustand:
 		
 		\begin{equation}
@@ -661,19 +661,19 @@
 			\quad \forall \mathbf{s} \in \mathcal{S}
 		\end{equation}
 		
-		d.\,h.\ die optimal erreichbare kumulative Belohnung ist für das AI-PMM
+		d.\,h.\ die optimal erreichbare kumulative Belohnung ist fÃ¼r das AI-PMM
 		nie schlechter.
 		
-		\textbf{Schritt 2: Thermische Lebensdauerverlängerung.}
+		\textbf{Schritt 2: Thermische LebensdauerverlÃ¤ngerung.}
 		
 		Sei $T_\mathrm{AI}(t)$ die Temperaturhistorie unter AI-PMM und
-		$T_\mathrm{static}(t)$ die unter statischem PMS. Durch prädiktives
-		Vorkühl-Manöver ``antizipiert'' das AI-PMM Lastzunahmen und senkt
-		die Temperatur präventiv ab.
+		$T_\mathrm{static}(t)$ die unter statischem PMS. Durch prÃ¤diktives
+		VorkÃ¼hl-ManÃ¶ver ``antizipiert'' das AI-PMM Lastzunahmen und senkt
+		die Temperatur prÃ¤ventiv ab.
 		
 		Formal: Sei $\Delta T(t) = T_\mathrm{static}(t) - T_\mathrm{AI}(t) \geq 0$
-		die Temperaturdifferenz (das AI-PMM hält die Temperatur nie höher). Dann gilt
-		für die thermische Komponente der Degradationsrate:
+		die Temperaturdifferenz (das AI-PMM hÃ¤lt die Temperatur nie hÃ¶her). Dann gilt
+		fÃ¼r die thermische Komponente der Degradationsrate:
 		
 		\begin{align}
 			r_{T,\mathrm{static}}(t) - r_{T,\mathrm{AI}}(t)
@@ -685,7 +685,7 @@
 			\label{eq:temp_proof}
 		\end{align}
 		
-		für $\Delta T > 0$. Integration über $[0, L_\mathrm{static}]$ ergibt:
+		fÃ¼r $\Delta T > 0$. Integration Ã¼ber $[0, L_\mathrm{static}]$ ergibt:
 		
 		\begin{equation}
 			\int_0^{L_\mathrm{static}} r_{T,\mathrm{static}}(\tau)\,d\tau >
@@ -693,10 +693,10 @@
 			\label{eq:temp_integral_ineq}
 		\end{equation}
 		
-		\textbf{Schritt 3: Spannungsbedingte Lebensdauerverlängerung.}
+		\textbf{Schritt 3: Spannungsbedingte LebensdauerverlÃ¤ngerung.}
 		
 		Der MPC-Regler des AI-PMM minimiert das Integral der spannungsbedingten
-		Degradationsrate, während das statische PMS nur bei Grenzwertverletzung
+		Degradationsrate, wÃ¤hrend das statische PMS nur bei Grenzwertverletzung
 		eingreift. Per Definition des MPC-Optimierungsproblems \eqref{eq:mpc_cost}
 		gilt:
 		
@@ -708,7 +708,7 @@
 		\end{equation}
 		
 		wobei $\mathcal{O}(\delta_u)$ der Fehlerterm aus der Prognoseungenauigkeit ist
-		und unter Annahme (A3) beschränkt bleibt.
+		und unter Annahme (A3) beschrÃ¤nkt bleibt.
 		
 		\textbf{Kombination:} Aus \eqref{eq:temp_integral_ineq} und \eqref{eq:volt_proof}:
 		
@@ -718,22 +718,22 @@
 			= \mathcal{D}_\mathrm{EoL}
 		\end{align}
 		
-		Da $\Psi(t)$ streng monoton wächst und $\Psi_\mathrm{AI}(L_\mathrm{static}) <
-		\mathcal{D}_\mathrm{EoL}$, muss das EoL-Kriterium für das AI-PMM erst zu einem
-		späteren Zeitpunkt $L_\mathrm{AI} > L_\mathrm{static}$ erreicht werden, womit
+		Da $\Psi(t)$ streng monoton wÃ¤chst und $\Psi_\mathrm{AI}(L_\mathrm{static}) <
+		\mathcal{D}_\mathrm{EoL}$, muss das EoL-Kriterium fÃ¼r das AI-PMM erst zu einem
+		spÃ¤teren Zeitpunkt $L_\mathrm{AI} > L_\mathrm{static}$ erreicht werden, womit
 		Theorem~\ref{thm:lifetime_superiority} bewiesen ist. \hfill$\square$
 	\end{proof}
 	
-	\subsection{Lyapunov-Stabilitätsanalyse des Temperaturreglers}
+	\subsection{Lyapunov-StabilitÃ¤tsanalyse des Temperaturreglers}
 	
-	\begin{theorem}[Asymptotische Stabilität des Temperaturreglers]
+	\begin{theorem}[Asymptotische StabilitÃ¤t des Temperaturreglers]
 		\label{thm:lyapunov}
 		Das geschlossene Regelsystem mit Regler \eqref{eq:pid_controller} und Strecke
 		\eqref{eq:thermal_model} ist asymptotisch stabil im Sinne von Lyapunov.
 	\end{theorem}
 	
 	\begin{proof}
-		Wähle die Lyapunov-Funktion:
+		WÃ¤hle die Lyapunov-Funktion:
 		\begin{equation}
 			V_L(e_T, \xi) = \frac{1}{2}e_T^2 + \frac{K_i}{2K_p}\xi^2
 		\end{equation}
@@ -746,19 +746,19 @@
 			- K_p e_T - K_i \xi - K_d \dot{e}_T + d(t)\right) + \frac{K_i}{K_p}\xi e_T
 		\end{align}
 		
-		Für $K_p > 0$, $K_i > 0$, $K_d > 0$ und beschränkte Störung $|d(t)| \leq D$
+		FÃ¼r $K_p > 0$, $K_i > 0$, $K_d > 0$ und beschrÃ¤nkte StÃ¶rung $|d(t)| \leq D$
 		gilt mit geeigneter Wahl der Regelparameter:
 		
 		\begin{equation}
 			\dot{V}_L \leq -\alpha_L \|[e_T, \xi]^\top\|^2 + \beta_L D < 0
-			\quad \text{für } \|[e_T, \xi]\| > \sqrt{\frac{\beta_L D}{\alpha_L}}
+			\quad \text{fÃ¼r } \|[e_T, \xi]\| > \sqrt{\frac{\beta_L D}{\alpha_L}}
 		\end{equation}
 		
-		womit ultimativ beschränkte Stabilität (UBS) und bei $D = 0$ asymptotische
-		Stabilität nachgewiesen sind. \hfill$\square$
+		womit ultimativ beschrÃ¤nkte StabilitÃ¤t (UBS) und bei $D = 0$ asymptotische
+		StabilitÃ¤t nachgewiesen sind. \hfill$\square$
 	\end{proof}
 	
-	\subsection{Quantitative Abschätzung des Verbesserungsfaktors $\Phi$}
+	\subsection{Quantitative AbschÃ¤tzung des Verbesserungsfaktors $\Phi$}
 	
 	\begin{proposition}
 		\label{prop:phi_bound}
@@ -789,7 +789,7 @@
 			= \frac{1}{1 - 0{,}35 \cdot 0{,}30} \approx 1{,}118
 		\end{align}
 		
-		Kombiniert (multiplikatives Degradationsmodell für unabhängige Mechanismen):
+		Kombiniert (multiplikatives Degradationsmodell fÃ¼r unabhÃ¤ngige Mechanismen):
 		
 		\begin{equation}
 			\Phi = \Phi_T^{\gamma_T/(\gamma_T+\gamma_V)} \cdot \Phi_V^{\gamma_V/(\gamma_T+\gamma_V)}
@@ -814,13 +814,13 @@
 			\toprule
 			\textbf{Parameter} & \textbf{Symbol} & \textbf{Wert} & \textbf{Einheit} \\
 			\midrule
-			Nominalkapazität & $Q_0$ & 3{,}0 & Ah \\
+			NominalkapazitÃ¤t & $Q_0$ & 3{,}0 & Ah \\
 			Nominalspannung & $V_\mathrm{nom}$ & 3{,}7 & V \\
 			Obere Grenzspannung & $V_\mathrm{max}$ & 4{,}2 & V \\
 			Untere Grenzspannung & $V_\mathrm{min}$ & 2{,}5 & V \\
 			Innenwiderstand & $R_\mathrm{int,0}$ & 50 & m$\Omega$ \\
 			Aktivierungsenergie (SEI) & $E_{a,\mathrm{SEI}}$ & 50 & kJ/mol \\
-			Wärmekapazität & $m_\mathrm{cell}c_p$ & 45 & J/K \\
+			WÃ¤rmekapazitÃ¤t & $m_\mathrm{cell}c_p$ & 45 & J/K \\
 			Thermischer Widerstand & $R_\mathrm{th}$ & 3{,}5 & K/W \\
 			EoL-Schwelle & $\mathcal{D}_\mathrm{EoL}$ & 0{,}20 & -- \\
 			\bottomrule
@@ -831,12 +831,12 @@
 	\begin{itemize}
 		\item \textbf{LP1:} Smartphone-Nutzungsprofil (variabel, typisch 1--3\,C)
 		\item \textbf{LP2:} Elektrofahrrad (intensive Nutzung, 2--5\,C)
-		\item \textbf{LP3:} Stationärer Speicher (moderate Entladung, 0{,}5--1\,C)
+		\item \textbf{LP3:} StationÃ¤rer Speicher (moderate Entladung, 0{,}5--1\,C)
 	\end{itemize}
 	
 	\subsection{Simulationsergebnisse}
 	
-	\subsubsection{Kapazitätsentwicklung}
+	\subsubsection{KapazitÃ¤tsentwicklung}
 	
 	\begin{figure}[H]
 		\centering
@@ -844,7 +844,7 @@
 			\begin{axis}[
 				width=12cm, height=7cm,
 				xlabel={Zyklen},
-				ylabel={Normierte Kapazität $Q(t)/Q_0$},
+				ylabel={Normierte KapazitÃ¤t $Q(t)/Q_0$},
 				xmin=0, xmax=1600,
 				ymin=0.70, ymax=1.02,
 				legend pos=south west,
@@ -867,7 +867,7 @@
 				\legend{AI-PMM ($L_\mathrm{AI} = 1560$), Statisches PMS ($L_\mathrm{static} = 1060$), EoL-Schwelle}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Normierte Kapazitätsentwicklung für Lastprofil LP1 (Smartphone).
+		\caption{Normierte KapazitÃ¤tsentwicklung fÃ¼r Lastprofil LP1 (Smartphone).
 			Das AI-PMM erzielt $\Phi = 1060/1560^{-1} \approx 1{,}47$ mehr Zyklen bis EoL.}
 		\label{fig:capacity}
 	\end{figure}
@@ -898,12 +898,12 @@
 					(90,44)(100,41)(110,38)(120,35)
 				};
 				\addplot[orange, dotted] coordinates {(0,45)(120,45)};
-				\legend{AI-PMM, Statisches PMS, Warntemperatur 45°C}
+				\legend{AI-PMM, Statisches PMS, Warntemperatur 45Â°C}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Temperaturverläufe bei Schnellladung (3\,C). Das AI-PMM antizipiert
-			die Wärmeerzeugung und kühlt präventiv, das statische PMS reagiert erst
-			bei Grenzwertüberschreitung.}
+		\caption{TemperaturverlÃ¤ufe bei Schnellladung (3\,C). Das AI-PMM antizipiert
+			die WÃ¤rmeerzeugung und kÃ¼hlt prÃ¤ventiv, das statische PMS reagiert erst
+			bei GrenzwertÃ¼berschreitung.}
 		\label{fig:temperature}
 	\end{figure}
 	
@@ -937,9 +937,9 @@
 				\legend{AI-PMM (adaptiv), Statisches PMS}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Spannungsverläufe beim Ladevorgang. Das AI-PMM hält die Spannung
+		\caption{SpannungsverlÃ¤ufe beim Ladevorgang. Das AI-PMM hÃ¤lt die Spannung
 			durch adaptives Strommanagement unterhalb $V_\mathrm{max}$ mit geringerem
-			Überschwingverhalten.}
+			Ãœberschwingverhalten.}
 		\label{fig:voltage}
 	\end{figure}
 	
@@ -947,7 +947,7 @@
 	
 	\begin{table}[H]
 		\centering
-		\caption{Lebensdauervergleich (Zyklen bis EoL) über alle Lastprofile}
+		\caption{Lebensdauervergleich (Zyklen bis EoL) Ã¼ber alle Lastprofile}
 		\label{tab:lifetime_comparison}
 		\begin{tabular}{lcccc}
 			\toprule
@@ -955,7 +955,7 @@
 			\midrule
 			LP1 (Smartphone) & 1060 & 1559 & 1{,}47 & $+47\,\%$ \\
 			LP2 (E-Bike) & 820 & 1246 & 1{,}52 & $+52\,\%$ \\
-			LP3 (Stationär) & 2410 & 3397 & 1{,}41 & $+41\,\%$ \\
+			LP3 (StationÃ¤r) & 2410 & 3397 & 1{,}41 & $+41\,\%$ \\
 			\midrule
 			\textbf{Mittel} & \textbf{1430} & \textbf{2067} & \textbf{1{,}47} & $\mathbf{+47\,\%}$ \\
 			\bottomrule
@@ -974,12 +974,12 @@
 	\label{sec:ev}
 	% ============================================================
 	
-	\subsection{Relevanz für Elektrofahrzeuge}
+	\subsection{Relevanz fÃ¼r Elektrofahrzeuge}
 	
-	Elektrofahrzeuge (EV) stellen die anspruchsvollste Anwendungsklasse für
+	Elektrofahrzeuge (EV) stellen die anspruchsvollste Anwendungsklasse fÃ¼r
 	Lithium-Ionen-Batteriesysteme dar. Das Traktionsbatterie-Pack eines typischen
 	Mittelklasse-EV umfasst $N_\mathrm{cells} = 4000\text{--}8000$ Zellen mit
-	einer Gesamtkapazität von $Q_\mathrm{pack} = 60\text{--}100\,\mathrm{kWh}$
+	einer GesamtkapazitÃ¤t von $Q_\mathrm{pack} = 60\text{--}100\,\mathrm{kWh}$
 	und einem Systemgewicht von $400\text{--}700\,\mathrm{kg}$ \cite{EV_Tesla2023}.
 	Die Pack-Spannung liegt typischerweise bei $400\,\mathrm{V}$ oder $800\,\mathrm{V}$.
 	
@@ -987,10 +987,10 @@
 	
 	\begin{itemize}[leftmargin=*]
 		\item Schnellladung (DC Fast Charging, $\geq 100\,\mathrm{kW}$) extreme
-		Ströme von $C \geq 3$ erzeugt und die Zelltemperatur in Minuten um
+		StrÃ¶me von $C \geq 3$ erzeugt und die Zelltemperatur in Minuten um
 		$15\text{--}25\,\mathrm{K}$ anhebt.
 		\item Regeneratives Bremsen und Vollastbeschleunigung hochdynamische
-		Stromprofile erzeugen, die statische PMS-Schwellwerte systematisch überfordern.
+		Stromprofile erzeugen, die statische PMS-Schwellwerte systematisch Ã¼berfordern.
 		\item Die Umgebungstemperatur zwischen $-30\,^\circ\mathrm{C}$ und
 		$+50\,^\circ\mathrm{C}$ variiert -- ein Bereich von $80\,\mathrm{K}$.
 		\item Der wirtschaftliche Schaden einer vorzeitigen Batteriesubstitution
@@ -1026,8 +1026,8 @@
 	
 	\subsubsection{Reichweiten-Degradationsmodell}
 	
-	Die nutzbare Reichweite $R(t)$ ist direkt mit der Kapazitätsdegradation
-	verknüpft:
+	Die nutzbare Reichweite $R(t)$ ist direkt mit der KapazitÃ¤tsdegradation
+	verknÃ¼pft:
 	
 	\begin{equation}
 		R(t) = \frac{Q(t) \cdot V_\mathrm{nom} \cdot \eta_\mathrm{drive}}{E_\mathrm{spez}}
@@ -1035,7 +1035,7 @@
 		\label{eq:range_model}
 	\end{equation}
 	
-	\subsection{Quantitative Lebensdaueranalyse für EV-Anwendungen}
+	\subsection{Quantitative Lebensdaueranalyse fÃ¼r EV-Anwendungen}
 	
 	\subsubsection{Referenzfahrzeuge und Betriebsparameter}
 	
@@ -1080,12 +1080,12 @@
 		\end{tabular}
 	\end{table}
 	
-	Das AI-PMM verlängert die Batterielebensdauer von durchschnittlich
-	\textbf{7{,}5 auf 11{,}0 Jahre} -- eine Verlängerung von \textbf{3{,}5 Jahren}.
+	Das AI-PMM verlÃ¤ngert die Batterielebensdauer von durchschnittlich
+	\textbf{7{,}5 auf 11{,}0 Jahre} -- eine VerlÃ¤ngerung von \textbf{3{,}5 Jahren}.
 	Die kumulierte Gesamtfahrstrecke steigt von $\varnothing\,170\,200\,\mathrm{km}$
 	auf $\varnothing\,250\,200\,\mathrm{km}$, d.\,h.\ um \textbf{+80\,000\,km (+47\,\%)}.
 	
-	\subsection{Reichweitenanalyse über die Fahrzeuglebensdauer}
+	\subsection{Reichweitenanalyse Ã¼ber die Fahrzeuglebensdauer}
 	
 	\subsubsection{Analytische Herleitung des Reichweitenverlaufs}
 	
@@ -1109,7 +1109,7 @@
 	\textbf{Das AI-PMM reduziert den Reichweitenverlust bei gleicher Zyklenzahl
 		um ca.\ 32\,\%.}
 	
-	\subsubsection{Grafische Darstellung des Reichweitenverlaufs über Zyklen}
+	\subsubsection{Grafische Darstellung des Reichweitenverlaufs Ã¼ber Zyklen}
 	
 	\begin{figure}[H]
 		\centering
@@ -1150,13 +1150,13 @@
 				\legend{AI-PMM, Statisches PMS, EoL-Schwelle}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Reichweitenverlauf des EV-B über die Zyklenanzahl.
-			Das AI-PMM verzögert den Reichweitenabbau systematisch. Bei 2000 Zyklen
+		\caption{Reichweitenverlauf des EV-B Ã¼ber die Zyklenanzahl.
+			Das AI-PMM verzÃ¶gert den Reichweitenabbau systematisch. Bei 2000 Zyklen
 			besteht ein Reichweitenvorteil von $\approx 22\,\mathrm{km}$.}
 		\label{fig:ev_range_cycles}
 	\end{figure}
 	
-	\subsubsection{Reichweitenverlauf über Betriebsjahre -- alle Klassen}
+	\subsubsection{Reichweitenverlauf Ã¼ber Betriebsjahre -- alle Klassen}
 	
 	\begin{figure}[H]
 		\centering
@@ -1194,9 +1194,9 @@
 					EV-B Statisch, EV-C AI-PMM, EV-C Statisch}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Reichweitenverlauf aller drei Fahrzeugklassen über die Betriebsjahre.
+		\caption{Reichweitenverlauf aller drei Fahrzeugklassen Ã¼ber die Betriebsjahre.
 			Durchgezogene Linien: AI-PMM; gestrichelt: statisches PMS. Das AI-PMM
-			verlängert den Betrieb vor Erreichen des EoL-Kriteriums um 3--4 Jahre.}
+			verlÃ¤ngert den Betrieb vor Erreichen des EoL-Kriteriums um 3--4 Jahre.}
 		\label{fig:ev_range_years}
 	\end{figure}
 	
@@ -1234,16 +1234,16 @@
 			\end{axis}
 		\end{tikzpicture}
 		\caption{Kumulierte Gesamtkilometer des EV-B bis zum Batterieende.
-			Das AI-PMM ermöglicht $+73\,400$ zusätzliche Kilometer, bevor ein Packwechsel
+			Das AI-PMM ermÃ¶glicht $+73\,400$ zusÃ¤tzliche Kilometer, bevor ein Packwechsel
 			notwendig wird.}
 		\label{fig:ev_cumulative_range}
 	\end{figure}
 	
 	\subsection{Reichweitengewinn durch Temperaturmanagement im Winterbetrieb}
 	
-	\subsubsection{Kältebetrieb: Kapazitätsverlust}
+	\subsubsection{KÃ¤ltebetrieb: KapazitÃ¤tsverlust}
 	
-	Der temperaturbedingte Kapazitätsverlust bei Kälte:
+	Der temperaturbedingte KapazitÃ¤tsverlust bei KÃ¤lte:
 	
 	\begin{equation}
 		Q(T_\mathrm{amb}) = Q_0 \bigl[1 - \kappa_T \cdot \max(0,\, T_\mathrm{ref}
@@ -1254,10 +1254,10 @@
 	Bei $T_\mathrm{amb} = -10\,^\circ\mathrm{C}$: Reichweitenverlust von $\approx 24{,}5\,\%$
 	ohne Batterievorheizung.
 	
-	\subsubsection{Prädiktives Vorheizmanagement}
+	\subsubsection{PrÃ¤diktives Vorheizmanagement}
 	
 	Das AI-PMM erkennt geplante Fahrten durch das LSTM-Verhaltensmodell und heizt
-	präventiv vor. Der Energiebedarf:
+	prÃ¤ventiv vor. Der Energiebedarf:
 	
 	\begin{equation}
 		E_\mathrm{heat} = m_\mathrm{pack} c_p (T_\mathrm{opt} - T_\mathrm{amb})
@@ -1301,14 +1301,14 @@
 				\legend{Statisches PMS, AI-PMM (mit Vorheizen)}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Effektive Reichweite als Funktion der Umgebungstemperatur für EV-B.
-			Das AI-PMM kompensiert den Kälteverlust durch prädiktives Vorheizmanagement.
-			Bei $-15\,^\circ\mathrm{C}$ beträgt der Reichweitengewinn $+121\,\mathrm{km}$
+		\caption{Effektive Reichweite als Funktion der Umgebungstemperatur fÃ¼r EV-B.
+			Das AI-PMM kompensiert den KÃ¤lteverlust durch prÃ¤diktives Vorheizmanagement.
+			Bei $-15\,^\circ\mathrm{C}$ betrÃ¤gt der Reichweitengewinn $+121\,\mathrm{km}$
 			($+38\,\%$).}
 		\label{fig:ev_range_temperature}
 	\end{figure}
 	
-	\subsection{Wirtschaftliche und ökologische Analyse}
+	\subsection{Wirtschaftliche und Ã¶kologische Analyse}
 	
 	\subsubsection{Total Cost of Ownership (TCO)}
 	
@@ -1326,7 +1326,7 @@
 	
 	\subsubsection{CO$_2$-Einsparung}
 	
-	Das AI-PMM reduziert den produktionsbedingten CO$_2$-Fußabdruck der Batterie
+	Das AI-PMM reduziert den produktionsbedingten CO$_2$-FuÃŸabdruck der Batterie
 	von $21\,\mathrm{g\,km^{-1}}$ auf $14{,}3\,\mathrm{g\,km^{-1}}$ -- eine
 	\textbf{Reduktion um 32\,\% pro Fahrtkilometer}.
 	
@@ -1340,8 +1340,8 @@
 			\toprule
 			\textbf{Kennzahl} & \textbf{Wert} & \textbf{Einheit} \\
 			\midrule
-			Zusätzliche Gesamtkilometer & $8{,}0 \times 10^9$ & km \\
-			Vermiedene Pack-Austausche & $\approx 47\,000$ & Stück \\
+			ZusÃ¤tzliche Gesamtkilometer & $8{,}0 \times 10^9$ & km \\
+			Vermiedene Pack-Austausche & $\approx 47\,000$ & StÃ¼ck \\
 			Vermiedene Produktionsenergie & $3{,}85 \times 10^9$ & kWh \\
 			CO$_2$-Einsparung (Produktion) & $1{,}54 \times 10^6$ & t CO$_2$ \\
 			Gesamter TCO-Vorteil & $\approx 1{,}7 \times 10^9$ & EUR \\
@@ -1359,33 +1359,33 @@
 Neben der Temperatur- und Spannungsregelung besitzt das AI-PMM einen dritten,
 bislang in der Literatur weitgehend ungenutzten Regelungskanal: die \textit{dynamische
 Anpassung des mechanischen Elektrodenabstands} $d_\mathrm{sep}(t)$ innerhalb
-der Zelleinheit. Dieser Ansatz ist insbesondere für Pouch-Zellen und prismatische
+der Zelleinheit. Dieser Ansatz ist insbesondere fÃ¼r Pouch-Zellen und prismatische
 Zellen relevant, bei denen der Anpressdruck -- und damit der effektive Plattenabstand
--- durch externe Mechanismen (pneumatische Aktuatoren, Formgedächtnislegierungen,
+-- durch externe Mechanismen (pneumatische Aktuatoren, FormgedÃ¤chtnislegierungen,
 piezoelektrische Stapelaktuatoren) im Bereich von typischerweise
 $\Delta d \in [-50, +200]\,\mu\mathrm{m}$ variiert werden kann.
 
 Die physikalische Wirkungskette ist wie folgt:
 
 \begin{enumerate}[leftmargin=*, label=(\arabic*)]
-	\item \textbf{Druckabhängiger Ionentransport:} Der Ionentransportwiderstand $R_\mathrm{ion}$
-	durch den Separator hängt nichtlinear vom Kompressionszustand ab. Eine erhöhte
+	\item \textbf{DruckabhÃ¤ngiger Ionentransport:} Der Ionentransportwiderstand $R_\mathrm{ion}$
+	durch den Separator hÃ¤ngt nichtlinear vom Kompressionszustand ab. Eine erhÃ¶hte
 	Kompression (reduzierter $d_\mathrm{sep}$) verringert den Porendurchmesser im
-	Separator und erhöht den tortuositätsbedingten Transportwiderstand $\tau$
+	Separator und erhÃ¶ht den tortuositÃ¤tsbedingten Transportwiderstand $\tau$
 	nach der Bruggeman-Relation:
 	\begin{equation}
 		D_\mathrm{eff} = D_0 \cdot \varepsilon^{\beta_\mathrm{Br}} \cdot \tau^{-1}(d_\mathrm{sep})
 		\label{eq:bruggeman}
 	\end{equation}
 	wobei $D_0$ der Diffusionskoeffizient im freien Elektrolyten, $\varepsilon$ die
-	Porosität und $\beta_\mathrm{Br} \approx 1{,}5$ der Bruggeman-Exponent ist.
+	PorositÃ¤t und $\beta_\mathrm{Br} \approx 1{,}5$ der Bruggeman-Exponent ist.
 
-	\item \textbf{Mechanische Spannungsreduktion:} Während des Lade-/Entladezyklus
-	expandieren und kontrahieren Anode und Kathode durch Volumenänderungen bei der
+	\item \textbf{Mechanische Spannungsreduktion:} WÃ¤hrend des Lade-/Entladezyklus
+	expandieren und kontrahieren Anode und Kathode durch VolumenÃ¤nderungen bei der
 	Lithium-Interkalation. Graphit ($\mathrm{LiC_6}$) dehnt sich um bis zu $10\,\%$
 	aus, NMC-Kathoden um $3\text{--}5\,\%$. Ohne Kompensation entstehen mechanische
 	Spannungsgradienten $\sigma_\mathrm{mech}$, die Partikelrisse und damit
-	Kapazitätsverlust verursachen. Durch adaptiven Ausgleich des Anpressdrucks
+	KapazitÃ¤tsverlust verursachen. Durch adaptiven Ausgleich des Anpressdrucks
 	$p_\mathrm{stack}(t)$ werden diese Spannungen minimiert:
 	\begin{equation}
 		\sigma_\mathrm{mech}(t) \propto \left|\frac{\partial d_\mathrm{sep}}{\partial t}
@@ -1396,10 +1396,10 @@ Die physikalische Wirkungskette ist wie folgt:
 	bezeichnet.
 
 	\item \textbf{Thermische Kopplung:} Der Anpressdruck beeinflusst den
-	Wärmedurchgangswiderstand $R_\mathrm{th,contact}$ an den Elektroden-Kollektor-Grenzflächen.
-	Eine Druckerhöhung verbessert den thermischen Kontakt und reduziert
-	$R_\mathrm{th,contact}$ um bis zu $40\,\%$, was die Wärmeabfuhr bei hohen
-	Strömen deutlich verbessert.
+	WÃ¤rmedurchgangswiderstand $R_\mathrm{th,contact}$ an den Elektroden-Kollektor-GrenzflÃ¤chen.
+	Eine DruckerhÃ¶hung verbessert den thermischen Kontakt und reduziert
+	$R_\mathrm{th,contact}$ um bis zu $40\,\%$, was die WÃ¤rmeabfuhr bei hohen
+	StrÃ¶men deutlich verbessert.
 \end{enumerate}
 
 \subsection{Physikalisches Modell des Plattenabstands}
@@ -1415,10 +1415,10 @@ beschrieben:
 	\label{eq:mech_ode}
 \end{equation}
 
-mit der effektiven Stapelmasse $m_\mathrm{stack}$, dem Dämpfungskoeffizienten
+mit der effektiven Stapelmasse $m_\mathrm{stack}$, dem DÃ¤mpfungskoeffizienten
 $b_\mathrm{damp}$, der Stapelsteifigkeit $k_\mathrm{stack}$ sowie der
 Aktuatorkraft $F_\mathrm{act}(t)$ und der internen Schwellungskraft
-$F_\mathrm{swelling}(t)$. Letztere ist proportional zur Volumenänderungsrate
+$F_\mathrm{swelling}(t)$. Letztere ist proportional zur VolumenÃ¤nderungsrate
 der Elektroden:
 
 \begin{equation}
@@ -1427,7 +1427,7 @@ der Elektroden:
 	\label{eq:swelling_force}
 \end{equation}
 
-Die SoC-abhängige volumetrische Dehnung der Graphitanode lässt sich
+Die SoC-abhÃ¤ngige volumetrische Dehnung der Graphitanode lÃ¤sst sich
 polynomiell approximieren:
 
 \begin{equation}
@@ -1437,11 +1437,11 @@ polynomiell approximieren:
 \end{equation}
 
 mit typischen Koeffizienten $\varepsilon_0 = 0$, $a_1 = 0{,}062$, $a_2 = 0{,}015$,
-$a_3 = 0{,}003$ für NMC/Graphit-Zellen.
+$a_3 = 0{,}003$ fÃ¼r NMC/Graphit-Zellen.
 
 \subsubsection{Ionentransport als Funktion des Abstands}
 
-Aus \eqref{eq:bruggeman} und dem Porenstrukturmodell des Separators folgt für
+Aus \eqref{eq:bruggeman} und dem Porenstrukturmodell des Separators folgt fÃ¼r
 den ionischen Widerstand als Funktion des Separatorabstands:
 
 \begin{equation}
@@ -1450,7 +1450,7 @@ den ionischen Widerstand als Funktion des Separatorabstands:
 	\label{eq:r_ion_d}
 \end{equation}
 
-Die Tortuosität $\tau$ steigt bei Kompression des Separators nichtlinear an:
+Die TortuositÃ¤t $\tau$ steigt bei Kompression des Separators nichtlinear an:
 
 \begin{equation}
 	\tau(d_\mathrm{sep}) = \tau_0 \cdot \left(\frac{d_\mathrm{sep,0}}{d_\mathrm{sep}}\right)^{\!\gamma_\tau}
@@ -1488,7 +1488,7 @@ mit $\gamma_M > 0$ als mechanischem Gewichtungskoeffizient.
 
 \subsubsection{Erweiterter Zustandsraum und Aktionsraum}
 
-Der Zustandsvektor \eqref{eq:state_vector} wird um die mechanischen Größen
+Der Zustandsvektor \eqref{eq:state_vector} wird um die mechanischen GrÃ¶ÃŸen
 erweitert:
 
 \begin{equation}
@@ -1512,7 +1512,7 @@ sodass $|\mathcal{A}_\mathrm{ext}| = 4000$.
 
 \subsubsection{Erweitertes MDP und Belohnungsfunktion}
 
-Die Belohnungsfunktion wird um den mechanischen Degradationsterm ergänzt:
+Die Belohnungsfunktion wird um den mechanischen Degradationsterm ergÃ¤nzt:
 
 \begin{equation}
 	r(s_t, a_t) = \underbrace{w_U \cdot U(s_t)}_{\text{Nutzbarkeit}}
@@ -1524,12 +1524,12 @@ Die Belohnungsfunktion wird um den mechanischen Degradationsterm ergänzt:
 \end{equation}
 
 Der Term $w_E \cdot P_\mathrm{act}(a_t)$ bestraft den Energieverbrauch des
-Aktuatorsystems und stellt sicher, dass der Nettoenergiegewinn durch verlängerte
-Lebensdauer die Aktuatorkosten übersteigt.
+Aktuatorsystems und stellt sicher, dass der Nettoenergiegewinn durch verlÃ¤ngerte
+Lebensdauer die Aktuatorkosten Ã¼bersteigt.
 
-\subsubsection{Kaskadenregler: MPC für den Plattenabstand}
+\subsubsection{Kaskadenregler: MPC fÃ¼r den Plattenabstand}
 
-Analog zum Spannungsregler \eqref{eq:mpc_cost} wird ein MPC-Regler für
+Analog zum Spannungsregler \eqref{eq:mpc_cost} wird ein MPC-Regler fÃ¼r
 den Plattenabstand entworfen. Das Optimierungsproblem lautet:
 
 \begin{equation}
@@ -1591,7 +1591,7 @@ Regelungskanal erweitert:
 		\draw[arr] (bat.south) -- ++(0,-1.8) -| (sens.south);
 		
 	\end{tikzpicture}
-	\caption{Erweiterte Systemarchitektur des AI-PMM mit drei Regelungskanälen:
+	\caption{Erweiterte Systemarchitektur des AI-PMM mit drei RegelungskanÃ¤len:
 		Temperatur, Spannung und Plattenabstand. Der mechanische Aktuatorkanal
 		wird durch einen dedizierten MPC-Regler angesteuert.}
 	\label{fig:architecture_ext}
@@ -1602,9 +1602,9 @@ Regelungskanal erweitert:
 \subsubsection{Mechanischer Degradationsbeitrag ohne Regelung}
 
 Ohne adaptive Plattenabstandsregelung oszilliert der mechanische Stress
-$\sigma_\mathrm{mech}(t)$ mit jedem Lade-/Entladezyklus. Im stationären
+$\sigma_\mathrm{mech}(t)$ mit jedem Lade-/Entladezyklus. Im stationÃ¤ren
 Fall (periodisches SoC-Profil mit Zyklusperiode $T_\mathrm{cyc}$) ergibt sich
-für den zyklisch gemittelten mechanischen Degradationsbeitrag:
+fÃ¼r den zyklisch gemittelten mechanischen Degradationsbeitrag:
 
 \begin{equation}
 	\bar{r}_\mathrm{mech}^\mathrm{stat} = \frac{1}{T_\mathrm{cyc}}
@@ -1618,14 +1618,14 @@ für den zyklisch gemittelten mechanischen Degradationsbeitrag:
 \begin{proposition}[Mechanische Degradationsreduktion durch Plattenabstandsregelung]
 	\label{prop:plate_deg}
 	Sei $d_\mathrm{sep}^*(t)$ die optimale Plattenabstandstrajektorie aus
-	\eqref{eq:mpc_plate_cost}. Dann gilt für den geregelten mechanischen Stress:
+	\eqref{eq:mpc_plate_cost}. Dann gilt fÃ¼r den geregelten mechanischen Stress:
 	\begin{equation}
 		\sigma_\mathrm{mech}^*(t) \leq \sigma_\mathrm{yield} + \varepsilon_\sigma,
 		\quad \varepsilon_\sigma \geq 0
 	\end{equation}
 	d.\,h.\ der mechanische Stress wird auf einen Wert nahe der Streckgrenze
 	$\sigma_\mathrm{yield}$ begrenzt, und der gemittelte mechanische
-	Degradationsbeitrag erfüllt:
+	Degradationsbeitrag erfÃ¼llt:
 	\begin{equation}
 		\bar{r}_\mathrm{mech}^* \leq \frac{\varepsilon_\sigma^{m_\mathrm{mech}}}
 		{(\sigma_\mathrm{amp}^0)^{m_\mathrm{mech}}} \cdot \bar{r}_\mathrm{mech}^\mathrm{stat}
@@ -1635,7 +1635,7 @@ für den zyklisch gemittelten mechanischen Degradationsbeitrag:
 	mit mechanischem Reduktionsfaktor $\eta_M < 1$.
 \end{proposition}
 
-Für typische NMC/Graphit-Zellen mit $\sigma_\mathrm{amp}^0 \approx 1{,}8\,\sigma_\mathrm{yield}$
+FÃ¼r typische NMC/Graphit-Zellen mit $\sigma_\mathrm{amp}^0 \approx 1{,}8\,\sigma_\mathrm{yield}$
 und $m_\mathrm{mech} = 2{,}5$ ergibt sich:
 
 \begin{equation}
@@ -1648,13 +1648,13 @@ um \textbf{73\,\%}.
 
 \subsubsection{Gesamtlebensdauerbeweis mit mechanischem Kanal}
 
-\begin{theorem}[Erweiterter Lebensdauer-Überlegenheitsbeweis]
+\begin{theorem}[Erweiterter Lebensdauer-Ãœberlegenheitsbeweis]
 	\label{thm:lifetime_mech}
 	Sei $\gamma_M \bar{r}_\mathrm{mech}^\mathrm{stat}$ der mechanische Anteil
 	an der Gesamtdegradationsrate im statischen System, mit
 	$\rho_M \coloneqq \frac{\gamma_M \bar{r}_\mathrm{mech}^\mathrm{stat}}
 	{\dot{\mathcal{D}}_\mathrm{ref}} \in [0,1]$ dem relativen mechanischen
-	Degradationsanteil. Dann gilt für den erweiterten Gesamtverbesserungsfaktor:
+	Degradationsanteil. Dann gilt fÃ¼r den erweiterten Gesamtverbesserungsfaktor:
 	\begin{equation}
 		\Phi_\mathrm{ges} = \frac{L_\mathrm{AI,ext}}{L_\mathrm{ref}}
 		= \frac{1}{(1-\rho_M) \cdot \Phi^{-1} + \rho_M \cdot \eta_M}
@@ -1677,8 +1677,8 @@ um \textbf{73\,\%}.
 
 \subsubsection{Numerische Auswertung}
 
-Für typische Parameterwerte $\Phi = 1{,}47$ (aus Theorem~\ref{thm:lifetime_superiority}),
-$\rho_M = 0{,}15$ (mechanische Degradation trägt 15\,\% zur Gesamtalterung bei)
+FÃ¼r typische Parameterwerte $\Phi = 1{,}47$ (aus Theorem~\ref{thm:lifetime_superiority}),
+$\rho_M = 0{,}15$ (mechanische Degradation trÃ¤gt 15\,\% zur Gesamtalterung bei)
 und $\eta_M = 0{,}27$ ergibt sich:
 
 \begin{align}
@@ -1689,7 +1689,7 @@ und $\eta_M = 0{,}27$ ergibt sich:
 
 \textbf{Ergebnis:} Die Erweiterung des AI-PMM um den Plattenabstandsregelkanal
 steigert den Gesamtverbesserungsfaktor von $\Phi = 1{,}47$ auf
-$\Phi_\mathrm{ges} \approx 1{,}62$ -- eine zusätzliche Lebensdauersteigerung
+$\Phi_\mathrm{ges} \approx 1{,}62$ -- eine zusÃ¤tzliche Lebensdauersteigerung
 von \textbf{10\,\%}.
 
 \subsection{Simulationsergebnisse: Plattenabstandsregelung}
@@ -1710,7 +1710,7 @@ von \textbf{10\,\%}.
 			tick label style={font=\small},
 			label style={font=\small},
 			legend style={font=\small},
-			title={Plattenabstandstrajektorie über einen Lade-/Entladezyklus (EV-B)},
+			title={Plattenabstandstrajektorie Ã¼ber einen Lade-/Entladezyklus (EV-B)},
 			title style={font=\small\bfseries},
 			y axis line style={draw=none},
 			axis x line=bottom,
@@ -1733,8 +1733,8 @@ von \textbf{10\,\%}.
 	\end{tikzpicture}
 	\caption{Plattenabstandstrajektorie unter adaptiver Regelung (blau) im
 		Vergleich zum statischen Fall (rot gestrichelt). Das AI-PMM kompensiert
-		die Elektrodenschwellung während des Ladevorgangs durch proaktive
-		Abstandsvergrößerung und reduziert damit mechanische Spannungsgradienten.}
+		die Elektrodenschwellung wÃ¤hrend des Ladevorgangs durch proaktive
+		AbstandsvergrÃ¶ÃŸerung und reduziert damit mechanische Spannungsgradienten.}
 	\label{fig:plate_trajectory}
 \end{figure}
 
@@ -1754,7 +1754,7 @@ von \textbf{10\,\%}.
 			tick label style={font=\small},
 			label style={font=\small},
 			legend style={font=\small},
-			title={Vergleich mechanischer Degradationsraten über Lebensdauer},
+			title={Vergleich mechanischer Degradationsraten Ã¼ber Lebensdauer},
 			title style={font=\small\bfseries},
 			]
 			\addplot[red, dashed, very thick, domain=0:2205, samples=50]
@@ -1776,27 +1776,27 @@ von \textbf{10\,\%}.
 
 \subsubsection{Geeignete Aktuatorsysteme}
 
-Für die praktische Implementierung des Plattenabstandsreglers in EV-Batteriepacks
+FÃ¼r die praktische Implementierung des Plattenabstandsreglers in EV-Batteriepacks
 kommen drei Aktuatortechnologien in Betracht:
 
 \begin{table}[H]
 	\centering
-	\caption{Vergleich geeigneter Aktuatorsysteme für die Plattenabstandsregelung}
+	\caption{Vergleich geeigneter Aktuatorsysteme fÃ¼r die Plattenabstandsregelung}
 	\label{tab:actuators}
 	\begin{tabular}{lcccl}
 		\toprule
 		\textbf{Technologie} & \textbf{Hub} ($\mu$m) & \textbf{Kraft} (N) & \textbf{Energie} (mJ/Zyklus) & \textbf{Eignung} \\
 		\midrule
 		Piezo-Stack & $50\text{--}150$ & $1000\text{--}5000$ & $5\text{--}20$ & Hoch \\
-		Formgedächtnisleg.\ & $100\text{--}500$ & $200\text{--}1000$ & $50\text{--}200$ & Mittel \\
+		FormgedÃ¤chtnisleg.\ & $100\text{--}500$ & $200\text{--}1000$ & $50\text{--}200$ & Mittel \\
 		Pneum.\ Kissen & $200\text{--}2000$ & $100\text{--}500$ & $10\text{--}50$ & Mittel \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 Piezoelektrische Stapelaktuatoren sind aufgrund ihrer Reaktionszeit
-($< 1\,\mathrm{ms}$), ihrer Präzision ($< 1\,\mu\mathrm{m}$) und ihres
-geringen Energieverbrauchs ($< 20\,\mathrm{mJ}$ pro Kompressionshub) für
+($< 1\,\mathrm{ms}$), ihrer PrÃ¤zision ($< 1\,\mu\mathrm{m}$) und ihres
+geringen Energieverbrauchs ($< 20\,\mathrm{mJ}$ pro Kompressionshub) fÃ¼r
 EV-Batteriepacks am besten geeignet. Bei einem typischen EV-Pack mit
 $N_\mathrm{cells} = 400$ Zellen und einem Aktuator pro Zellgruppe
 ($N_\mathrm{act} = 40$) ergibt sich ein Systemleistungsbedarf von:
@@ -1807,7 +1807,7 @@ $N_\mathrm{cells} = 400$ Zellen und einem Aktuator pro Zellgruppe
 	\label{eq:actuator_power}
 \end{equation}
 
-Dies entspricht einem vernachlässigbaren Anteil ($< 0{,}001\,\%$) der
+Dies entspricht einem vernachlÃ¤ssigbaren Anteil ($< 0{,}001\,\%$) der
 Batterieleistung eines typischen EVs.
 
 \subsubsection{Wirtschaftliche Analyse: Kosten-Nutzen der Aktuatoren}
@@ -1821,22 +1821,22 @@ Batterieleistung eines typischen EVs.
 		\textbf{Kennzahl} & \textbf{Wert} & \textbf{Bemerkung} \\
 		\midrule
 		Systemkosten Aktuatoren & ca.\ 380\,EUR & 40 Piezo-Aktuatoren inkl.\ Steuerung \\
-		Zusätzliche Lebensdauerverl. & $+0{,}6$ Jahre & von 11{,}0 auf 11{,}6 Jahre \\
+		ZusÃ¤tzliche Lebensdauerverl. & $+0{,}6$ Jahre & von 11{,}0 auf 11{,}6 Jahre \\
 		Vermiedene Akkukosten & ca.\ 1\,900\,EUR & bei 82\,kWh-Pack, 23\,EUR/kWh Rest \\
 		ROI Aktuatorsystem & $\approx 5$-fach & inkl.\ Einbaukosten \\
-		CO$_2$-Einsparung zusätzlich & $\approx 420\,\mathrm{kg}$ & pro Fahrzeug \\
+		CO$_2$-Einsparung zusÃ¤tzlich & $\approx 420\,\mathrm{kg}$ & pro Fahrzeug \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 \subsubsection{Integration in den EU-Batteriepass}
 
-Die Plattenabstandsregelung erzeugt kontinuierlich Messdaten über den
+Die Plattenabstandsregelung erzeugt kontinuierlich Messdaten Ã¼ber den
 mechanischen Zustand des Batteriepacks (Druckverlauf, Schwellungshistorie,
-akkumulierten mechanischen Stress). Diese Daten sind für den ab 2027
+akkumulierten mechanischen Stress). Diese Daten sind fÃ¼r den ab 2027
 verpflichtenden EU-Batteriepass (Regulation (EU) 2023/1542) hochrelevant,
 da sie erstmals eine direkte Quantifizierung der mechanischen Degradation
-ermöglichen -- ergänzend zu den elektrochemischen SoH-Indikatoren.
+ermÃ¶glichen -- ergÃ¤nzend zu den elektrochemischen SoH-Indikatoren.
 
 \subsection{Zusammenfassung: Wirkung des dritten Regelungskanals}
 
@@ -1847,14 +1847,14 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\item die mechanische Elektrodendegradation durch Partikelrisse um
 	\textbf{73\,\%} reduziert,
 	\item den thermischen Kontaktwiderstand im Zellstapel um bis zu
-	\textbf{40\,\%} verbessert und damit den thermischen Regelkanal unterstützt,
+	\textbf{40\,\%} verbessert und damit den thermischen Regelkanal unterstÃ¼tzt,
 	\item den Gesamtverbesserungsfaktor von $\Phi = 1{,}47$ auf
 	$\Phi_\mathrm{ges} \approx 1{,}62$ steigert (formal bewiesen in
 	Theorem~\ref{thm:lifetime_mech}),
 	\item bei einem ROI von $\approx 5$-fach eine klare wirtschaftliche
 	Rechtfertigung besitzt,
 	\item und mit Systemkosten von $< 0{,}001\,\%$ der Batterieleistung
-	einen vernachlässigbaren Energieeigenverbrauch aufweist.
+	einen vernachlÃ¤ssigbaren Energieeigenverbrauch aufweist.
 \end{itemize}
 
 % ============================================================
@@ -1862,76 +1862,76 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\label{sec:validierung}
 	% ============================================================
 
-	Zur Validierung sämtlicher Modellkomponenten des \texttt{liionp}-Pakets wurden
-	15 numerische Simulationsexperimente durchgeführt. Jedes Experiment beleuchtet
+	Zur Validierung sÃ¤mtlicher Modellkomponenten des \texttt{liionp}-Pakets wurden
+	15 numerische Simulationsexperimente durchgefÃ¼hrt. Jedes Experiment beleuchtet
 	einen spezifischen physikalischen Mechanismus oder Systemaspekt und erzeugt
-	zwei komplementäre Darstellungen. Die Experimente wurden mit dem Python-Modul
-	\texttt{src/experiments.py} ausgeführt, das auf allen Klassen und Funktionen
-	des Pakets aufbaut. Tabelle~\ref{tab:exp_overview} gibt eine Übersicht.
+	zwei komplementÃ¤re Darstellungen. Die Experimente wurden mit dem Python-Modul
+	\texttt{src/experiments.py} ausgefÃ¼hrt, das auf allen Klassen und Funktionen
+	des Pakets aufbaut. Tabelle~\ref{tab:exp_overview} gibt eine Ãœbersicht.
 
 	\begin{sidewaystable}
 		\centering
-		\caption{Übersicht der 15 Validierungsexperimente}
+		\caption{Ãœbersicht der 15 Validierungsexperimente}
 		\label{tab:exp_overview}
 		\small
 		\begin{tabular}{clll}
 			\toprule
 			\textbf{Nr.} & \textbf{Bezeichnung} & \textbf{Mechanismus} & \textbf{Kernaussage} \\
 			\midrule
-			01 & Arrhenius \& SEI-Wachstum & Thermische Alterung & Exp.\ Temp.-Abhängigkeit bestätigt \\
-			02 & Spannungsdegradationsraten & Elektrochemische Alterung & $\beta$-Nichtlinearität quantifiziert \\
-			03 & Thermisches Zellmodell & Wärmegeneration & $Q_\mathrm{gen} \propto I^2 R$ validiert \\
+			01 & Arrhenius \& SEI-Wachstum & Thermische Alterung & Exp.\ Temp.-AbhÃ¤ngigkeit bestÃ¤tigt \\
+			02 & Spannungsdegradationsraten & Elektrochemische Alterung & $\beta$-NichtlinearitÃ¤t quantifiziert \\
+			03 & Thermisches Zellmodell & WÃ¤rmegeneration & $Q_\mathrm{gen} \propto I^2 R$ validiert \\
 			04 & Thermischer Verbess.-Faktor $\Phi_T$ & Temp.-Management & $\Phi_T \geq 1{,}31$ ab $\Delta T=8\,\mathrm{K}$ \\
 			05 & Spannungs- \& komb.\ Verbess.-Faktor & Spannungsregelung & $\Phi \geq 1{,}47$ nachgewiesen \\
-			06 & Reichweite \& Kältekapazität & Betriebsbereich & EV-Reichweitenmodell validiert \\
-			07 & Quellung, Tortuosität \& Mechanik & Mech.\ Alterung & Plattenabstandsmodell verifiziert \\
-			08 & Erweiterter Faktor $\Phi_\mathrm{ges}$ & Dritter Regelkanal & $\Phi_\mathrm{ges} \approx 1{,}62$ bestätigt \\
+			06 & Reichweite \& KÃ¤ltekapazitÃ¤t & Betriebsbereich & EV-Reichweitenmodell validiert \\
+			07 & Quellung, TortuositÃ¤t \& Mechanik & Mech.\ Alterung & Plattenabstandsmodell verifiziert \\
+			08 & Erweiterter Faktor $\Phi_\mathrm{ges}$ & Dritter Regelkanal & $\Phi_\mathrm{ges} \approx 1{,}62$ bestÃ¤tigt \\
 			09 & Simulation LP1 (Smartphone) & Systemvergleich & AI-PMM vs.\ stat.\ PMS (LP1) \\
 			10 & Simulation LP2 (E-Bike) & Systemvergleich & AI-PMM vs.\ stat.\ PMS (LP2) \\
-			11 & Simulation LP3 (Stationär) & Systemvergleich & AI-PMM vs.\ stat.\ PMS (LP3) \\
+			11 & Simulation LP3 (StationÃ¤r) & Systemvergleich & AI-PMM vs.\ stat.\ PMS (LP3) \\
 			12 & Lastprofilvergleich LP1/2/3 & Robustheit & $\Phi \in [1{,}41,\, 1{,}52]$ \\
-			13 & SEI-Verlust \& Kapazitätsdrift & Langzeitverhalten & $\Delta Q_\mathrm{SEI}$ modellkonform \\
-			14 & Sensitivität \& Vorheizeffizienz & Robustheit & Parametereinfluss quantifiziert \\
+			13 & SEI-Verlust \& KapazitÃ¤tsdrift & Langzeitverhalten & $\Delta Q_\mathrm{SEI}$ modellkonform \\
+			14 & SensitivitÃ¤t \& Vorheizeffizienz & Robustheit & Parametereinfluss quantifiziert \\
 			15 & EV-Lebenszyklus \& MPC-Referenz & Gesamtbeweis & $> 80\,000\,\mathrm{km}$ Mehrleistung \\
 			\bottomrule
 		\end{tabular}
 	\end{sidewaystable}
 
 	% -----------------------------------------------------------
-	\subsection{Arrhenius-Ratenverhältnis und SEI-Schichtdickenwachstum}
+	\subsection{Arrhenius-RatenverhÃ¤ltnis und SEI-Schichtdickenwachstum}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp01_arrhenius_sei}
-		\caption{Experiment~01: \textbf{Links} – Arrhenius-Ratenverhältnis $k(T)/k(T_0)$ für vier
+		\caption{Experiment~01: \textbf{Links} â€“ Arrhenius-RatenverhÃ¤ltnis $k(T)/k(T_0)$ fÃ¼r vier
 			Aktivierungsenergien ($E_a \in \{30, 50, 70, 90\}\,\mathrm{kJ\,mol^{-1}}$) im
 			Temperaturbereich $-10\ldots+75\,^\circ\mathrm{C}$ (halblogarithmische Skala).
-			\textbf{Rechts} – SEI-Schichtdickenwachstum $\delta(t)$ in Nanometer über ein Jahr
-			bei fünf Betriebstemperaturen ($5\ldots45\,^\circ\mathrm{C}$).}
+			\textbf{Rechts} â€“ SEI-Schichtdickenwachstum $\delta(t)$ in Nanometer Ã¼ber ein Jahr
+			bei fÃ¼nf Betriebstemperaturen ($5\ldots45\,^\circ\mathrm{C}$).}
 		\label{fig:exp01}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
 	Experiment~01 validiert die Arrheniuskinetik als fundamentalen Baustein des
-	Temperatur-Degradationsmodells. Das Ratenverhältnis $k(T)/k(T_0)$ beschreibt,
+	Temperatur-Degradationsmodells. Das RatenverhÃ¤ltnis $k(T)/k(T_0)$ beschreibt,
 	um welchen Faktor die SEI-Wachstumsrate bei einer gegebenen Temperatur $T$
-	gegenüber der Referenztemperatur $T_0 = 25\,^\circ\mathrm{C}$ verändert ist.
+	gegenÃ¼ber der Referenztemperatur $T_0 = 25\,^\circ\mathrm{C}$ verÃ¤ndert ist.
 
 	\paragraph{Methodik.}
-	Der linke Subplot zeigt $k(T)/k(T_0)$ in halblogarithmischer Darstellung für
-	vier Aktivierungsenergien. Für die Referenzzelle (NMC/Graphit) gilt
+	Der linke Subplot zeigt $k(T)/k(T_0)$ in halblogarithmischer Darstellung fÃ¼r
+	vier Aktivierungsenergien. FÃ¼r die Referenzzelle (NMC/Graphit) gilt
 	$E_a = 50\,\mathrm{kJ\,mol^{-1}}$. Der rechte Subplot nutzt die Funktion
 	\texttt{sei\_thickness()} zur Integration des zeitlichen SEI-Wachstums
-	$\delta(t) = \alpha_\mathrm{SEI}\sqrt{t}$ (wurzelförmiges Diffusionsgesetz)
-	für Temperaturen von $5\,^\circ\mathrm{C}$ bis $45\,^\circ\mathrm{C}$.
+	$\delta(t) = \alpha_\mathrm{SEI}\sqrt{t}$ (wurzelfÃ¶rmiges Diffusionsgesetz)
+	fÃ¼r Temperaturen von $5\,^\circ\mathrm{C}$ bis $45\,^\circ\mathrm{C}$.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Der linke Subplot bestätigt die exponentielle Temperaturabhängigkeit: Bei
-	$E_a = 50\,\mathrm{kJ\,mol^{-1}}$ steigt das Ratenverhältnis von ca.\ 0{,}25
-	bei $-10\,^\circ\mathrm{C}$ auf über 7 bei $+75\,^\circ\mathrm{C}$, entsprechend
-	einer 28-fachen Spanne. Die prädiktive Temperaturabsenkung des AI-PMM um
-	$\overline{\Delta T} = 8\,\mathrm{K}$ reduziert das Ratenverhältnis bei Referenztemperatur
+	Der linke Subplot bestÃ¤tigt die exponentielle TemperaturabhÃ¤ngigkeit: Bei
+	$E_a = 50\,\mathrm{kJ\,mol^{-1}}$ steigt das RatenverhÃ¤ltnis von ca.\ 0{,}25
+	bei $-10\,^\circ\mathrm{C}$ auf Ã¼ber 7 bei $+75\,^\circ\mathrm{C}$, entsprechend
+	einer 28-fachen Spanne. Die prÃ¤diktive Temperaturabsenkung des AI-PMM um
+	$\overline{\Delta T} = 8\,\mathrm{K}$ reduziert das RatenverhÃ¤ltnis bei Referenztemperatur
 	von 1{,}00 auf $e^{-E_a \Delta T/(RT_0^2)} \approx 0{,}77$, d.\,h.\ eine SEI-Wachstumsrate
 	von nur 77\,\%. Der rechte Subplot zeigt, dass bei $45\,^\circ\mathrm{C}$ nach
 	einem Jahr die SEI-Schicht ca.\ dreimal dicker ist als bei $5\,^\circ\mathrm{C}$,
@@ -1945,35 +1945,35 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp02_voltage_degradation}
-		\caption{Experiment~02: Spannungsbedingte Degradationsraten. \textbf{Links} –
-			Überspannungs-Degradationsrate $r_\mathrm{over}(\eta)$ als Funktion des
-			Potenzgesetz-Exponenten $\beta$ für verschiedene Überspannungsamplituden.
-			\textbf{Rechts} – Unterspannungs-Degradationsrate $r_\mathrm{under}(\eta)$:
-			Sensitivität auf den Nichtlinearitätsparameter $\beta$ bei verschiedenen
+		\caption{Experiment~02: Spannungsbedingte Degradationsraten. \textbf{Links} â€“
+			Ãœberspannungs-Degradationsrate $r_\mathrm{over}(\eta)$ als Funktion des
+			Potenzgesetz-Exponenten $\beta$ fÃ¼r verschiedene Ãœberspannungsamplituden.
+			\textbf{Rechts} â€“ Unterspannungs-Degradationsrate $r_\mathrm{under}(\eta)$:
+			SensitivitÃ¤t auf den NichtlinearitÃ¤tsparameter $\beta$ bei verschiedenen
 			Unterspannungstiefen.}
 		\label{fig:exp02}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~02 untersucht die nichtlineare Abhängigkeit der spannungsbedingten
+	Experiment~02 untersucht die nichtlineare AbhÃ¤ngigkeit der spannungsbedingten
 	Degradationsraten vom Formparameter $\beta$. Dieses Modell bildet die Grundlage
-	für die Belohnungsfunktion des MPC-Spannungsreglers.
+	fÃ¼r die Belohnungsfunktion des MPC-Spannungsreglers.
 
 	\paragraph{Methodik.}
 	Die Funktionen \texttt{overvoltage\_degradation\_rate()} und
-	\texttt{undervoltage\_de\newline gradation\_rate()} werden über den Parameterraum
+	\texttt{undervoltage\_de\newline gradation\_rate()} werden Ã¼ber den Parameterraum
 	$\beta \in [1{,}0,\, 3{,}0]$ ausgewertet. Jede Kurve entspricht einem festen
-	Spannungsoffset gegenüber den Grenzwerten $V_\mathrm{max} = 4{,}2\,\mathrm{V}$
+	Spannungsoffset gegenÃ¼ber den Grenzwerten $V_\mathrm{max} = 4{,}2\,\mathrm{V}$
 	resp.\ $V_\mathrm{min} = 2{,}5\,\mathrm{V}$.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Beide Subplots belegen die ausgeprägte Nichtlinearität: Im Potenzgesetz-Modell
-	$r \propto \eta^\beta$ steigt für $\beta = 2$ die Degradationsrate quadratisch
+	Beide Subplots belegen die ausgeprÃ¤gte NichtlinearitÃ¤t: Im Potenzgesetz-Modell
+	$r \propto \eta^\beta$ steigt fÃ¼r $\beta = 2$ die Degradationsrate quadratisch
 	mit der Spannungsauslenkung. Der MPC-Regler nutzt diesen Sachverhalt, indem er
 	den zeitlich integrierten Degradationsbeitrag minimiert -- was im Vergleich zu
 	statischen Grenzwertreglern einen systematisch niedrigeren Mittelwert der Rate
-	ergibt. Die Übereinstimmung der simulierten Kurven mit erwarteten analytischen
-	Formen (Potenzgesetz) bestätigt die korrekte Implementierung des Modells in der
+	ergibt. Die Ãœbereinstimmung der simulierten Kurven mit erwarteten analytischen
+	Formen (Potenzgesetz) bestÃ¤tigt die korrekte Implementierung des Modells in der
 	\texttt{degradation}-Bibliothek.
 
 	% -----------------------------------------------------------
@@ -1983,35 +1983,35 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp03_thermal}
-		\caption{Experiment~03: Thermisches Zellmodell. \textbf{Links} – Temperaturverlauf
-			$T(t)$ bei Schnellladevorgängen mit verschiedenen Stromraten ($1\,C$ bis $4\,C$).
-			\textbf{Rechts} – Wärmegenerationsrate $\dot{Q}(I)$ als Funktion der Stromstärke
-			für verschiedene Innenwiderstandswerte $R_\mathrm{int}$.}
+		\caption{Experiment~03: Thermisches Zellmodell. \textbf{Links} â€“ Temperaturverlauf
+			$T(t)$ bei SchnellladevorgÃ¤ngen mit verschiedenen Stromraten ($1\,C$ bis $4\,C$).
+			\textbf{Rechts} â€“ WÃ¤rmegenerationsrate $\dot{Q}(I)$ als Funktion der StromstÃ¤rke
+			fÃ¼r verschiedene Innenwiderstandswerte $R_\mathrm{int}$.}
 		\label{fig:exp03}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Das thermische Einzelzellmodell ist der zentrale Baustein für die Temperaturregelung
+	Das thermische Einzelzellmodell ist der zentrale Baustein fÃ¼r die Temperaturregelung
 	des AI-PMM. Experiment~03 validiert die Gleichgewichte zwischen ohmscher
-	Wärmeerzeugung $\dot{Q} = I^2 R_\mathrm{int}$ und konvektiver Wärmeabgabe.
+	WÃ¤rmeerzeugung $\dot{Q} = I^2 R_\mathrm{int}$ und konvektiver WÃ¤rmeabgabe.
 
 	\paragraph{Methodik.}
-	Das \texttt{ThermalModel}-Objekt simuliert die Temperaturentwicklung für einen
-	60-minütigen Ladevorgang bei $T_\mathrm{amb} = 25\,^\circ\mathrm{C}$ mit
-	thermischem Widerstand $R_\mathrm{th} = 3{,}5\,\mathrm{K/W}$ und Wärmekapazität
+	Das \texttt{ThermalModel}-Objekt simuliert die Temperaturentwicklung fÃ¼r einen
+	60-minÃ¼tigen Ladevorgang bei $T_\mathrm{amb} = 25\,^\circ\mathrm{C}$ mit
+	thermischem Widerstand $R_\mathrm{th} = 3{,}5\,\mathrm{K/W}$ und WÃ¤rmekapazitÃ¤t
 	$m_\mathrm{cell}c_p = 45\,\mathrm{J/K}$. Im rechten Subplot werden analytisch
-	$\dot{Q}(I) = I^2 R_\mathrm{int}$ für drei Innenwiderstandswerte ausgewertet.
+	$\dot{Q}(I) = I^2 R_\mathrm{int}$ fÃ¼r drei Innenwiderstandswerte ausgewertet.
 
 	\paragraph{Ergebnisse und Interpretation.}
 	Bei $4\,C$-Ladung erreicht die Zelltemperatur nach 60 Minuten ca.\ $47\,^\circ\mathrm{C}$
-	-- knapp über der Warngrenze von $45\,^\circ\mathrm{C}$. Das statische PMS würde
-	erst bei Grenzwertüberschreitung eingreifen; das AI-PMM initiiert den Kühlvorgang
-	bereits $5\text{--}10\,\mathrm{min}$ früher. Der rechte Subplot zeigt die
-	quadratische $I^2$-Abhängigkeit: Ein gealterter Innenwiderstand von
+	-- knapp Ã¼ber der Warngrenze von $45\,^\circ\mathrm{C}$. Das statische PMS wÃ¼rde
+	erst bei GrenzwertÃ¼berschreitung eingreifen; das AI-PMM initiiert den KÃ¼hlvorgang
+	bereits $5\text{--}10\,\mathrm{min}$ frÃ¼her. Der rechte Subplot zeigt die
+	quadratische $I^2$-AbhÃ¤ngigkeit: Ein gealterter Innenwiderstand von
 	$R_\mathrm{int} = 100\,\mathrm{m\Omega}$ erzeugt bei $3\,C$ doppelt so viel
-	Wärme wie bei $50\,\mathrm{m\Omega}$, was den Temperaturfühler als kritischen
-	Rückkopplungskanal unterstreicht. Die Simulationsergebnisse stimmen mit dem
-	analytischen Modell aus Abschnitt~\ref{sec:grundlagen} überein.
+	WÃ¤rme wie bei $50\,\mathrm{m\Omega}$, was den TemperaturfÃ¼hler als kritischen
+	RÃ¼ckkopplungskanal unterstreicht. Die Simulationsergebnisse stimmen mit dem
+	analytischen Modell aus Abschnitt~\ref{sec:grundlagen} Ã¼berein.
 
 	% -----------------------------------------------------------
 	\subsection{Thermischer Verbesserungsfaktor $\Phi_T$}
@@ -2020,10 +2020,10 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp04_phi_thermal}
-		\caption{Experiment~04: Thermischer Verbesserungsfaktor $\Phi_T$. \textbf{Links} –
+		\caption{Experiment~04: Thermischer Verbesserungsfaktor $\Phi_T$. \textbf{Links} â€“
 			$\Phi_T$ als Funktion der vom AI-PMM erzielten Temperaturabsenkung $\Delta T$
-			(bei $T_0 = 35\,^\circ\mathrm{C}$) für drei Aktivierungsenergien.
-			\textbf{Rechts} – $\Phi_T$ als Funktion der AI-PMM-Betriebstemperatur
+			(bei $T_0 = 35\,^\circ\mathrm{C}$) fÃ¼r drei Aktivierungsenergien.
+			\textbf{Rechts} â€“ $\Phi_T$ als Funktion der AI-PMM-Betriebstemperatur
 			$T_\mathrm{AI}$ bei festem $\Delta T = 8\,\mathrm{K}$.}
 		\label{fig:exp04}
 	\end{figure}
@@ -2031,13 +2031,13 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\paragraph{Zielsetzung.}
 	Experiment~04 quantifiziert den thermischen Beitrag zum Lebensdauer-Verbesserungsfaktor.
 	Es verdeutlicht, wie stark der Gewinn des AI-PMM von der Temperaturdifferenz
-	$\Delta T$ und vom Absolutniveau der Betriebstemperatur abhängt.
+	$\Delta T$ und vom Absolutniveau der Betriebstemperatur abhÃ¤ngt.
 
 	\paragraph{Methodik.}
 	Die Funktion \texttt{improvement\_factor\_thermal()} berechnet
 	$\Phi_T = \exp\bigl[E_a/(R) \cdot (1/T_\mathrm{AI} - 1/T_\mathrm{static})\bigr]$
-	für $\Delta T \in [0, 20]\,\mathrm{K}$ und drei Aktivierungsenergien
-	(30, 50, 70 kJ/mol). Der rechte Subplot hält $\Delta T = 8\,\mathrm{K}$ fest
+	fÃ¼r $\Delta T \in [0, 20]\,\mathrm{K}$ und drei Aktivierungsenergien
+	(30, 50, 70 kJ/mol). Der rechte Subplot hÃ¤lt $\Delta T = 8\,\mathrm{K}$ fest
 	und variiert die absolute Betriebstemperatur zwischen $15\,^\circ\mathrm{C}$
 	und $55\,^\circ\mathrm{C}$.
 
@@ -2046,8 +2046,8 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	$E_a = 50\,\mathrm{kJ\,mol^{-1}}$ ein Faktor $\Phi_T \approx 1{,}15$ erzielt
 	wird. Bei der Design-Temperaturdifferenz $\Delta T = 8\,\mathrm{K}$ ergibt sich
 	$\Phi_T \approx 1{,}31$, konsistent mit Proposition~\ref{prop:phi_bound}.
-	Der rechte Subplot belegt, dass der Gewinn bei höheren Betriebstemperaturen
-	überproportional steigt: Während bei $T = 25\,^\circ\mathrm{C}$ und
+	Der rechte Subplot belegt, dass der Gewinn bei hÃ¶heren Betriebstemperaturen
+	Ã¼berproportional steigt: WÃ¤hrend bei $T = 25\,^\circ\mathrm{C}$ und
 	$\Delta T = 8\,\mathrm{K}$ gilt $\Phi_T \approx 1{,}23$, erreicht er bei
 	$T = 45\,^\circ\mathrm{C}$ bereits $\Phi_T \approx 1{,}45$. Dies unterstreicht
 	den besonderen Wert des AI-PMM in Hochtemperatur-Anwendungen wie Elektrofahrzeugen
@@ -2060,62 +2060,62 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp05_phi_combined}
-		\caption{Experiment~05: Kombinierter Verbesserungsfaktor. \textbf{Links} –
+		\caption{Experiment~05: Kombinierter Verbesserungsfaktor. \textbf{Links} â€“
 			Spannungsbedingter Verbesserungsfaktor $\Phi_V$ als Funktion der relativen
 			Degradationsreduktion $\eta_V$ und des spannungsbedingten Degradationsanteils
-			$\gamma_V^*$. \textbf{Rechts} – Gesamtfaktor $\Phi$ in Abhängigkeit des
+			$\gamma_V^*$. \textbf{Rechts} â€“ Gesamtfaktor $\Phi$ in AbhÃ¤ngigkeit des
 			thermischen Gewichtskoeffizienten $\gamma_T$ bei verschiedenen $\Phi_T$.}
 		\label{fig:exp05}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~05 validiert die Formel für den kombinierten Verbesserungsfaktor aus
+	Experiment~05 validiert die Formel fÃ¼r den kombinierten Verbesserungsfaktor aus
 	Proposition~\ref{prop:phi_bound} und zeigt, wie $\Phi_T$ und $\Phi_V$ zu einem
 	Gesamt-$\Phi$ zusammenwirken.
 
 	\paragraph{Methodik.}
-	Linker Subplot: Die Funktion \texttt{improvement\_factor\_voltage()} wird über
+	Linker Subplot: Die Funktion \texttt{improvement\_factor\_voltage()} wird Ã¼ber
 	das Gitter $(\eta_V, \gamma_V^*)$ ausgewertet, wobei $\eta_V \in [0{,}1, 0{,}6]$
 	die relative Degradationsreduktion durch den MPC-Spannungsregler ist und
 	$\gamma_V^* \in [0{,}1, 0{,}5]$ den spannungsbedingten Degradationsanteil darstellt.
 	Rechter Subplot: Die Mischformel
-	$\Phi = \Phi_T^{\gamma_T} \cdot \Phi_V^{(1-\gamma_T)}$ wird für
+	$\Phi = \Phi_T^{\gamma_T} \cdot \Phi_V^{(1-\gamma_T)}$ wird fÃ¼r
 	$\gamma_T \in [0{,}2,\, 0{,}8]$ und drei Werte von $\Phi_T$ dargestellt.
 
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot zeigt: Bei der Design-Einstellung $\eta_V = 0{,}30$ und
 	$\gamma_V^* = 0{,}35$ ergibt sich $\Phi_V = 1/(1 - 0{,}35 \cdot 0{,}30)
-	\approx 1{,}118$, exakt gemäß analytischem Wert. Der rechte Subplot demonstriert,
-	dass der kombinierte Faktor am stärksten ist, wenn thermische und
-	spannungsbedingte Degradation ähnlich gewichtet sind ($\gamma_T \approx 0{,}5$--0{,}7).
+	\approx 1{,}118$, exakt gemÃ¤ÃŸ analytischem Wert. Der rechte Subplot demonstriert,
+	dass der kombinierte Faktor am stÃ¤rksten ist, wenn thermische und
+	spannungsbedingte Degradation Ã¤hnlich gewichtet sind ($\gamma_T \approx 0{,}5$--0{,}7).
 	Im Optimum ($\gamma_T = 0{,}65$, $\Phi_T = 1{,}31$, $\Phi_V = 1{,}118$)
 	ergibt sich $\Phi \approx 1{,}47$, was den in Theorem~\ref{thm:lifetime_superiority}
-	bewiesenen Wert numerisch bestätigt.
+	bewiesenen Wert numerisch bestÃ¤tigt.
 
 	% -----------------------------------------------------------
-	\subsection{Reichweiteverlauf und kältebedingte Kapazitätsreduktion}
+	\subsection{Reichweiteverlauf und kÃ¤ltebedingte KapazitÃ¤tsreduktion}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp06_range_cold}
-		\caption{Experiment~06: Reichweite und Kälteverhalten. \textbf{Links} –
-			Normierter Reichweiteverlauf $R(n)/R_0$ als Funktion der Zyklenanzahl für
-			AI-PMM und statisches PMS (EV-B). \textbf{Rechts} – Kältebedingte Kapazitätsreduktion
-			$Q(T_\mathrm{amb})/Q_0$ in Abhängigkeit der Umgebungstemperatur, mit und ohne
-			prädiktives Vorheizmanagement.}
+		\caption{Experiment~06: Reichweite und KÃ¤lteverhalten. \textbf{Links} â€“
+			Normierter Reichweiteverlauf $R(n)/R_0$ als Funktion der Zyklenanzahl fÃ¼r
+			AI-PMM und statisches PMS (EV-B). \textbf{Rechts} â€“ KÃ¤ltebedingte KapazitÃ¤tsreduktion
+			$Q(T_\mathrm{amb})/Q_0$ in AbhÃ¤ngigkeit der Umgebungstemperatur, mit und ohne
+			prÃ¤diktives Vorheizmanagement.}
 		\label{fig:exp06}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~06 verbindet den Degradationsfortschritt mit der für den Endnutzer
-	direkt spürbaren Reichweite. Gleichzeitig wird das prädiktive Kaltstart-Management
+	Experiment~06 verbindet den Degradationsfortschritt mit der fÃ¼r den Endnutzer
+	direkt spÃ¼rbaren Reichweite. Gleichzeitig wird das prÃ¤diktive Kaltstart-Management
 	des AI-PMM quantifiziert.
 
 	\paragraph{Methodik.}
 	Linker Subplot: Die Funktion \texttt{range\_vs\_cycles()} implementiert
 	$R(n) = R_0 (1 - \mathcal{D}_\mathrm{EoL}\sqrt{n/n_\mathrm{EoL}})$
-	für $n_\mathrm{EoL,AI} = 3241$ und $n_\mathrm{EoL,static} = 2205$ (EV-B, 82\,kWh).
+	fÃ¼r $n_\mathrm{EoL,AI} = 3241$ und $n_\mathrm{EoL,static} = 2205$ (EV-B, 82\,kWh).
 	Rechter Subplot: Die Funktion \texttt{cold\_capacity()} wertet
 	$Q(T) = Q_0[1 - \kappa_T \max(0, T_\mathrm{ref} - T)]$ aus und vergleicht
 	den unkompensierten Fall mit dem vorgeheizten Zustand.
@@ -2124,31 +2124,31 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	Der linke Subplot illustriert den systematischen Reichweitevorteil des AI-PMM:
 	Nach 2000 Zyklen besteht ein Vorsprung von ca.\ $\Delta R \approx 22\,\mathrm{km}$,
 	konsistent mit den Angaben in Tabelle~\ref{tab:ev_lifetime}. Der rechte Subplot
-	belegt: Ohne Vorheizung sinkt die nutzbare Kapazität bei $-15\,^\circ\mathrm{C}$
-	auf nur noch $\approx 76\,\%$; das AI-PMM kompensiert durch prädiktives Vorheizen
-	auf nahezu Nominalkapazität. Bei $-15\,^\circ\mathrm{C}$ beträgt der Reichweitegewinn
+	belegt: Ohne Vorheizung sinkt die nutzbare KapazitÃ¤t bei $-15\,^\circ\mathrm{C}$
+	auf nur noch $\approx 76\,\%$; das AI-PMM kompensiert durch prÃ¤diktives Vorheizen
+	auf nahezu NominalkapazitÃ¤t. Bei $-15\,^\circ\mathrm{C}$ betrÃ¤gt der Reichweitegewinn
 	durch Vorheizung $+121\,\mathrm{km}$ ($+38\,\%$), wie in Abschnitt~\ref{sec:ev}
 	analytisch hergeleitet.
 
 	% -----------------------------------------------------------
-	\subsection{Quellung, Tortuosität und mechanische Degradationsrate}
+	\subsection{Quellung, TortuositÃ¤t und mechanische Degradationsrate}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp07_mechanics}
-		\caption{Experiment~07: Mechanische Modelle. \textbf{Links} – Volumetrische Quellung
-			der Graphitanode $\varepsilon_\mathrm{vol}(\mathrm{SoC})$ und Tortuosität
+		\caption{Experiment~07: Mechanische Modelle. \textbf{Links} â€“ Volumetrische Quellung
+			der Graphitanode $\varepsilon_\mathrm{vol}(\mathrm{SoC})$ und TortuositÃ¤t
 			$\tau(d_\mathrm{sep})$ als Funktion des Plattenabstands.
-			\textbf{Rechts} – Mechanische Degradationsrate $r_\mathrm{mech}(\sigma)$ als Funktion
-			des mechanischen Stresses für verschiedene Materialexponenten $m_\mathrm{mech}$.}
+			\textbf{Rechts} â€“ Mechanische Degradationsrate $r_\mathrm{mech}(\sigma)$ als Funktion
+			des mechanischen Stresses fÃ¼r verschiedene Materialexponenten $m_\mathrm{mech}$.}
 		\label{fig:exp07}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~07 validiert die in Abschnitt~\ref{sec:plattenabstand} eingeführten
-	mechanischen Modellkomponenten: das SoC-abhängige Quellungsmodell und das
-	Tortuositäts-Plattenabstand-Modell, die gemeinsam die Grundlage des dritten
+	Experiment~07 validiert die in Abschnitt~\ref{sec:plattenabstand} eingefÃ¼hrten
+	mechanischen Modellkomponenten: das SoC-abhÃ¤ngige Quellungsmodell und das
+	TortuositÃ¤ts-Plattenabstand-Modell, die gemeinsam die Grundlage des dritten
 	Regelungskanals bilden.
 
 	\paragraph{Methodik.}
@@ -2158,18 +2158,18 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	wird $\tau(d) = \tau_0 (d_0/d)^{\gamma_\tau}$ als Funktion des Plattenabstands
 	dargestellt. Rechter Subplot: Die Funktion \texttt{mechanical\_degradation\_rate()}
 	berechnet $r_\mathrm{mech}(\sigma) = k_\mathrm{mech} \max(0, \sigma - \sigma_\mathrm{yield})^{m_\mathrm{mech}}$
-	für $m_\mathrm{mech} \in \{1{,}5, 2{,}5, 3{,}5\}$.
+	fÃ¼r $m_\mathrm{mech} \in \{1{,}5, 2{,}5, 3{,}5\}$.
 
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot zeigt, dass die Quellung der Graphitanode bei SoC\,=\,100\,\%
-	etwa 8\,\% des Nominalvolumens beträgt und nichtlinear mit dem SoC ansteigt.
-	Gleichzeitig wächst die Tortuosität bei Kompression des Separators von
+	etwa 8\,\% des Nominalvolumens betrÃ¤gt und nichtlinear mit dem SoC ansteigt.
+	Gleichzeitig wÃ¤chst die TortuositÃ¤t bei Kompression des Separators von
 	$d_\mathrm{sep} = 35\,\mu\mathrm{m}$ auf $20\,\mu\mathrm{m}$ von $\tau_0 = 2{,}5$
-	auf über 5 -- ein Faktor, der den ionischen Transportwiderstand verdoppelt.
+	auf Ã¼ber 5 -- ein Faktor, der den ionischen Transportwiderstand verdoppelt.
 	Der rechte Subplot belegt die Empfindlichkeit der mechanischen Degradationsrate
-	auf den Exponenten: Für $m_\mathrm{mech} = 2{,}5$ ist die Rate bei Stresses
+	auf den Exponenten: FÃ¼r $m_\mathrm{mech} = 2{,}5$ ist die Rate bei Stresses
 	oberhalb der Streckgrenze stark nichtlinear -- was die formale Reduktion auf
-	$\eta_M = 0{,}27$ in Proposition~\ref{prop:plate_deg} begründet.
+	$\eta_M = 0{,}27$ in Proposition~\ref{prop:plate_deg} begrÃ¼ndet.
 
 	% -----------------------------------------------------------
 	\subsection{Erweiterter Gesamtverbesserungsfaktor $\Phi_\mathrm{ges}$}
@@ -2179,10 +2179,10 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\centering
 		\includegraphics[width=\textwidth]{exp08_phi_total}
 		\caption{Experiment~08: Erweiterter Gesamtverbesserungsfaktor $\Phi_\mathrm{ges}$.
-			\textbf{Links} – $\Phi_\mathrm{ges}$ als Funktion des relativen mechanischen
-			Degradationsanteils $\rho_M$ für drei Werte von $\eta_M$.
-			\textbf{Rechts} – $\Phi_\mathrm{ges}$ als Funktion des Basisverbesserungsfaktors
-			$\Phi$ für verschiedene $\rho_M$-Werte (bei $\eta_M = 0{,}27$).}
+			\textbf{Links} â€“ $\Phi_\mathrm{ges}$ als Funktion des relativen mechanischen
+			Degradationsanteils $\rho_M$ fÃ¼r drei Werte von $\eta_M$.
+			\textbf{Rechts} â€“ $\Phi_\mathrm{ges}$ als Funktion des Basisverbesserungsfaktors
+			$\Phi$ fÃ¼r verschiedene $\rho_M$-Werte (bei $\eta_M = 0{,}27$).}
 		\label{fig:exp08}
 	\end{figure}
 
@@ -2193,16 +2193,16 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 
 	\paragraph{Methodik.}
 	Die Funktion \texttt{improvement\_factor\_total()} implementiert
-	Gleichung~\eqref{eq:phi_total} und wird für den zweidimensionalen Parameterraum
-	ausgewertet: Linker Subplot: $\rho_M \in [0, 0{,}4]$ für $\eta_M \in \{0{,}15, 0{,}27, 0{,}40\}$
-	bei festem $\Phi = 1{,}47$. Rechter Subplot: $\Phi \in [1{,}2, 2{,}0]$ für
+	Gleichung~\eqref{eq:phi_total} und wird fÃ¼r den zweidimensionalen Parameterraum
+	ausgewertet: Linker Subplot: $\rho_M \in [0, 0{,}4]$ fÃ¼r $\eta_M \in \{0{,}15, 0{,}27, 0{,}40\}$
+	bei festem $\Phi = 1{,}47$. Rechter Subplot: $\Phi \in [1{,}2, 2{,}0]$ fÃ¼r
 	$\rho_M \in \{0{,}05, 0{,}15, 0{,}30\}$ bei $\eta_M = 0{,}27$.
 
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot zeigt, dass $\Phi_\mathrm{ges}$ monoton mit $\rho_M$ steigt:
-	Je größer der mechanische Anteil, desto stärker profitiert das System vom dritten
+	Je grÃ¶ÃŸer der mechanische Anteil, desto stÃ¤rker profitiert das System vom dritten
 	Regelungskanal. Bei den Design-Werten $\rho_M = 0{,}15$ und $\eta_M = 0{,}27$
-	ergibt sich $\Phi_\mathrm{ges} \approx 1{,}62$, exakt gemäß der numerischen
+	ergibt sich $\Phi_\mathrm{ges} \approx 1{,}62$, exakt gemÃ¤ÃŸ der numerischen
 	Auswertung in Gleichung~\eqref{eq:phi_total_numerical}. Der rechte Subplot
 	demonstriert, dass der mechanische Kanal besonders wertvoll ist, wenn $\Phi$
 	(Basis-Verbesserung ohne Mechanik) moderat ist: Bei $\Phi = 1{,}3$ und
@@ -2216,21 +2216,21 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp09_simulation_lp1}
-		\caption{Experiment~09: Simulation LP1 (Smartphone-Nutzungsprofil). \textbf{Links} –
-			Zelltemperatur $T(t)$ über 24 Stunden für AI-PMM und statisches PMS.
-			\textbf{Rechts} – Kumulierte Degradation $\mathcal{D}(t)$ für beide Systeme
-			über denselben Zeitraum.}
+		\caption{Experiment~09: Simulation LP1 (Smartphone-Nutzungsprofil). \textbf{Links} â€“
+			Zelltemperatur $T(t)$ Ã¼ber 24 Stunden fÃ¼r AI-PMM und statisches PMS.
+			\textbf{Rechts} â€“ Kumulierte Degradation $\mathcal{D}(t)$ fÃ¼r beide Systeme
+			Ã¼ber denselben Zeitraum.}
 		\label{fig:exp09}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~09 führt eine vollständige 24-Stunden-Zeitseriensimulation des
+	Experiment~09 fÃ¼hrt eine vollstÃ¤ndige 24-Stunden-Zeitseriensimulation des
 	Smartphone-Nutzungsprofils LP1 durch und vergleicht AI-PMM direkt mit dem
 	statischen PMS anhand von Temperaturverlauf und kumulativer Degradation.
 
 	\paragraph{Methodik.}
 	Das Lastprofil LP1 modelliert typische Smartphone-Nutzung: Nacht-Ruhe
-	($I \approx 0{,}1\,C$), Morgen-Schnelladung ($3\,C$ für 30 min), tagsüber
+	($I \approx 0{,}1\,C$), Morgen-Schnelladung ($3\,C$ fÃ¼r 30 min), tagsÃ¼ber
 	wechselnde Entladung ($1\text{--}3\,C$). Die Funktion \texttt{compare\_systems()}
 	simuliert beide Regelstrategien mit identischen Randbedingungen;
 	$T_\mathrm{amb} = 25\,^\circ\mathrm{C}$, $R_\mathrm{th} = 3{,}5\,\mathrm{K/W}$.
@@ -2238,12 +2238,12 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot zeigt, dass das AI-PMM die Temperaturspitzen beim Morgenladen
 	von $\approx 48\,^\circ\mathrm{C}$ (statisches PMS) auf $\approx 37\,^\circ\mathrm{C}$
-	reduziert -- eine Differenz von $11\,\mathrm{K}$, deutlich über dem Design-$\Delta T$,
-	was auf den Wert des prädiktiven Vorkühlens bei extremen Lastrampen hinweist.
+	reduziert -- eine Differenz von $11\,\mathrm{K}$, deutlich Ã¼ber dem Design-$\Delta T$,
+	was auf den Wert des prÃ¤diktiven VorkÃ¼hlens bei extremen Lastrampen hinweist.
 	Der rechte Subplot quantifiziert die daraus resultierende Degradationseinsparung:
-	Am Tagesende beträgt $\mathcal{D}_\mathrm{AI} \approx 0{,}68 \cdot \mathcal{D}_\mathrm{static}$,
+	Am Tagesende betrÃ¤gt $\mathcal{D}_\mathrm{AI} \approx 0{,}68 \cdot \mathcal{D}_\mathrm{static}$,
 	entsprechend einer 32\,\%-Reduktion der Tages-Degradation -- was auf ein Jahr
-	hochgerechnet einer Lebensdauerverlängerung um den Faktor 1{,}47 entspricht.
+	hochgerechnet einer LebensdauerverlÃ¤ngerung um den Faktor 1{,}47 entspricht.
 
 	% -----------------------------------------------------------
 	\subsection{Zeitseriensimulation Lastprofil LP2 (E-Bike)}
@@ -2252,54 +2252,54 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp10_simulation_lp2}
-		\caption{Experiment~10: Simulation LP2 (E-Bike-Nutzungsprofil). \textbf{Links} –
-			Verlauf des Ladezustands $\mathrm{SoC}(t)$ über eine typische Fahrtage für AI-PMM
-			und statisches PMS. \textbf{Rechts} – Instantane Degradationsrate $\dot{\mathcal{D}}(t)$
-			für beide Systeme.}
+		\caption{Experiment~10: Simulation LP2 (E-Bike-Nutzungsprofil). \textbf{Links} â€“
+			Verlauf des Ladezustands $\mathrm{SoC}(t)$ Ã¼ber eine typische Fahrtage fÃ¼r AI-PMM
+			und statisches PMS. \textbf{Rechts} â€“ Instantane Degradationsrate $\dot{\mathcal{D}}(t)$
+			fÃ¼r beide Systeme.}
 		\label{fig:exp10}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
 	Das E-Bike-Profil LP2 ist das anspruchsvollste Lastprofil unter den drei
-	getesteten Szenarien: Spitzenströme von $5\,C$ und häufige
-	Regenerationsphasen erzeugen die höchsten Degradationsraten und gleichzeitig
-	den größten Gewinn durch adaptives Management.
+	getesteten Szenarien: SpitzenstrÃ¶me von $5\,C$ und hÃ¤ufige
+	Regenerationsphasen erzeugen die hÃ¶chsten Degradationsraten und gleichzeitig
+	den grÃ¶ÃŸten Gewinn durch adaptives Management.
 
 	\paragraph{Methodik.}
 	LP2 modelliert drei Bergauffahrten ($5\,C$ Entladung, je 15 min), Bergabphasen
 	mit Rekuperation ($-1\,C$, je 10 min), und Ladepausen ($3\,C$ Ladung, 20 min).
-	Der SoC-Verlauf wird durch Integration der Stromverläufe berechnet.
+	Der SoC-Verlauf wird durch Integration der StromverlÃ¤ufe berechnet.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Der linke Subplot zeigt, dass das AI-PMM den SoC-Verlauf glättet: Es antizipiert
-	die Bergaufphasen und hält einen höheren Anfangs-SoC vor, was bei Spitzenlast
-	die Überspannungsneigung reduziert. Die Degradationsrate (rechter Subplot) ist
+	Der linke Subplot zeigt, dass das AI-PMM den SoC-Verlauf glÃ¤ttet: Es antizipiert
+	die Bergaufphasen und hÃ¤lt einen hÃ¶heren Anfangs-SoC vor, was bei Spitzenlast
+	die Ãœberspannungsneigung reduziert. Die Degradationsrate (rechter Subplot) ist
 	beim statischen PMS stark gepulst mit Spitzen von bis zu 3-facher mittlerer Rate;
-	das AI-PMM glättet diese auf $\leq 1{,}5$-fache. Integriert über den Fahrtag
-	ergibt sich $\Phi = L_\mathrm{AI}/L_\mathrm{static} \approx 1{,}52$ für LP2 --
-	der höchste Wert aller drei Lastprofile, konsistent mit Tabelle~\ref{tab:lifetime_comparison}.
+	das AI-PMM glÃ¤ttet diese auf $\leq 1{,}5$-fache. Integriert Ã¼ber den Fahrtag
+	ergibt sich $\Phi = L_\mathrm{AI}/L_\mathrm{static} \approx 1{,}52$ fÃ¼r LP2 --
+	der hÃ¶chste Wert aller drei Lastprofile, konsistent mit Tabelle~\ref{tab:lifetime_comparison}.
 
 	% -----------------------------------------------------------
-	\subsection{Zeitseriensimulation Lastprofil LP3 (Stationärspeicher)}
+	\subsection{Zeitseriensimulation Lastprofil LP3 (StationÃ¤rspeicher)}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp11_simulation_lp3}
-		\caption{Experiment~11: Simulation LP3 (Stationärer Speicher). \textbf{Links} –
-			Zellspannung $V(t)$ über 24 Stunden für AI-PMM und statisches PMS bei Netzein-
-			speisung und -bezug. \textbf{Rechts} – Zelltemperatur $T(t)$ über denselben Zeitraum.}
+		\caption{Experiment~11: Simulation LP3 (StationÃ¤rer Speicher). \textbf{Links} â€“
+			Zellspannung $V(t)$ Ã¼ber 24 Stunden fÃ¼r AI-PMM und statisches PMS bei Netzein-
+			speisung und -bezug. \textbf{Rechts} â€“ Zelltemperatur $T(t)$ Ã¼ber denselben Zeitraum.}
 		\label{fig:exp11}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
 	Experiment~11 untersucht das ruhigste Lastprofil unter den drei Szenarien.
-	Stationäre Speicher (Heimspeicher, Netzstabilisierung) operieren mit moderaten
-	C-Raten, profitieren jedoch bei Vollzyklen von präziser Spannungsfensteranpassung.
+	StationÃ¤re Speicher (Heimspeicher, Netzstabilisierung) operieren mit moderaten
+	C-Raten, profitieren jedoch bei Vollzyklen von prÃ¤ziser Spannungsfensteranpassung.
 
 	\paragraph{Methodik.}
-	LP3 modelliert einen tageszeitlichen Zyklus: Nachtladung aus PV-Überschuss
-	($0{,}5\,C$), tagsüber Netzeinspeisebetrieb ($1\,C$), Abend-Schnelladung
+	LP3 modelliert einen tageszeitlichen Zyklus: Nachtladung aus PV-Ãœberschuss
+	($0{,}5\,C$), tagsÃ¼ber Netzeinspeisebetrieb ($1\,C$), Abend-Schnelladung
 	($1{,}5\,C$). Die Simulation umfasst $T = 24\,\mathrm{h}$ und betrachtet
 	explizit das Spannungsprofil, da bei LP3 die Spannungsregelung der dominierende
 	Vorteilsmechanismus ist.
@@ -2307,7 +2307,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot zeigt, dass das AI-PMM das Spannungsfenster dynamisch engt:
 	Bei niedrigen Temperaturen (Nacht) wird $V_\mathrm{max}$ leicht reduziert,
-	bei moderater Last ist das Fenster voll ausgenutzt. Das statische PMS überschwingt
+	bei moderater Last ist das Fenster voll ausgenutzt. Das statische PMS Ã¼berschwingt
 	$V_\mathrm{max}$ bei der Abend-Schnelladung um bis zu $80\,\mathrm{mV}$, was
 	die Elektrolytoxidation beschleunigt. Der rechte Subplot zeigt, dass LP3 die
 	niedrigsten Temperaturspitzen aller drei Profile aufweist ($< 35\,^\circ\mathrm{C}$);
@@ -2321,17 +2321,17 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp12_profile_comparison}
-		\caption{Experiment~12: Systemvergleich über alle drei Lastprofile. \textbf{Links} –
+		\caption{Experiment~12: Systemvergleich Ã¼ber alle drei Lastprofile. \textbf{Links} â€“
 			Mittlere Temperatur $\bar{T}$ und mittlere Degradationsrate $\bar{\dot{\mathcal{D}}}$
-			für AI-PMM und statisches PMS, aufgeschlüsselt nach Lastprofil (Balkendiagramm).
-			\textbf{Rechts} – Simulierter Verbesserungsfaktor $\Phi_\mathrm{sim}$ pro Lastprofil
+			fÃ¼r AI-PMM und statisches PMS, aufgeschlÃ¼sselt nach Lastprofil (Balkendiagramm).
+			\textbf{Rechts} â€“ Simulierter Verbesserungsfaktor $\Phi_\mathrm{sim}$ pro Lastprofil
 			im Vergleich zur analytischen Untergrenze.}
 		\label{fig:exp12}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
 	Experiment~12 fasst alle drei Lastprofile in einem direkten Quervergleich zusammen
-	und belegt die Robustheit des AI-PMM gegenüber sehr unterschiedlichen
+	und belegt die Robustheit des AI-PMM gegenÃ¼ber sehr unterschiedlichen
 	Nutzungsszenarien.
 
 	\paragraph{Methodik.}
@@ -2341,88 +2341,88 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	Subplot vergleicht diese mit der analytischen Untergrenze $\Phi \geq 1{,}47$.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Der linke Subplot belegt: LP2 (E-Bike) hat die höchste mittlere Temperatur
-	($\bar{T}_\mathrm{static} \approx 38\,^\circ\mathrm{C}$) und die höchste mittlere
-	Degradationsrate; das AI-PMM reduziert beide Werte am stärksten. LP3 (Stationär)
+	Der linke Subplot belegt: LP2 (E-Bike) hat die hÃ¶chste mittlere Temperatur
+	($\bar{T}_\mathrm{static} \approx 38\,^\circ\mathrm{C}$) und die hÃ¶chste mittlere
+	Degradationsrate; das AI-PMM reduziert beide Werte am stÃ¤rksten. LP3 (StationÃ¤r)
 	zeigt die geringsten Absolutwerte, aber dennoch einen signifikanten Gewinn.
 	Der rechte Subplot zeigt, dass alle drei $\Phi_\mathrm{sim}$-Werte die analytische
-	Untergrenze überschreiten: LP2 erreicht $\Phi_\mathrm{sim} = 1{,}52$,
+	Untergrenze Ã¼berschreiten: LP2 erreicht $\Phi_\mathrm{sim} = 1{,}52$,
 	LP1 liefert $\Phi_\mathrm{sim} = 1{,}47$, LP3 ergibt $\Phi_\mathrm{sim} = 1{,}41$.
-	Der Mittelwert $\bar{\Phi} = 1{,}47$ bestätigt exakt den Wert aus
+	Der Mittelwert $\bar{\Phi} = 1{,}47$ bestÃ¤tigt exakt den Wert aus
 	Proposition~\ref{prop:phi_bound}.
 
 	% -----------------------------------------------------------
-	\subsection{SEI-Kapazitätsverlust und Kapazitätsdrift}
+	\subsection{SEI-KapazitÃ¤tsverlust und KapazitÃ¤tsdrift}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp13_sei_capacity}
-		\caption{Experiment~13: Langzeitdegradation durch SEI-Wachstum. \textbf{Links} –
-			SEI-bedingter kumulierter Kapazitätsverlust $\Delta Q_\mathrm{SEI}(t)$ über
-			fünf Jahre bei drei Betriebstemperaturen. \textbf{Rechts} – Kapazitätsdrift
-			$\mathcal{D}(t)$ über die Zyklenanzahl für AI-PMM und statisches PMS bei LP1.}
+		\caption{Experiment~13: Langzeitdegradation durch SEI-Wachstum. \textbf{Links} â€“
+			SEI-bedingter kumulierter KapazitÃ¤tsverlust $\Delta Q_\mathrm{SEI}(t)$ Ã¼ber
+			fÃ¼nf Jahre bei drei Betriebstemperaturen. \textbf{Rechts} â€“ KapazitÃ¤tsdrift
+			$\mathcal{D}(t)$ Ã¼ber die Zyklenanzahl fÃ¼r AI-PMM und statisches PMS bei LP1.}
 		\label{fig:exp13}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~13 betrachtet das Langzeitverhalten: Wie entwickelt sich der Kapazitätsverlust
-	durch SEI-Wachstum über mehrere Jahre, und wie unterscheidet sich die Kapazitätsdrift
-	zwischen AI-PMM und statischem System über Tausende von Zyklen?
+	Experiment~13 betrachtet das Langzeitverhalten: Wie entwickelt sich der KapazitÃ¤tsverlust
+	durch SEI-Wachstum Ã¼ber mehrere Jahre, und wie unterscheidet sich die KapazitÃ¤tsdrift
+	zwischen AI-PMM und statischem System Ã¼ber Tausende von Zyklen?
 
 	\paragraph{Methodik.}
 	Linker Subplot: Die Funktion \texttt{capacity\_loss\_sei()} berechnet
-	$\Delta Q_\mathrm{SEI}(t) = 2 k_\mathrm{SEI} \delta(t) Q_0$ für $t \in [0, 5\,\text{Jahre}]$
+	$\Delta Q_\mathrm{SEI}(t) = 2 k_\mathrm{SEI} \delta(t) Q_0$ fÃ¼r $t \in [0, 5\,\text{Jahre}]$
 	bei $T \in \{20, 30, 40\}\,^\circ\mathrm{C}$. Rechter Subplot: Die Funktion
 	\texttt{capacity\_drift()} implementiert das kombinierte Degradationsintegral
 	$\mathcal{D}(n) = \int_0^n \dot{\mathcal{D}}(\tau)\,d\tau$ und vergleicht beide Systeme.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Der linke Subplot zeigt die quadratwurzelförmige Zeitabhängigkeit des SEI-Wachstums
-	deutlich: Bei $40\,^\circ\mathrm{C}$ beträgt der Kapazitätsverlust nach 5 Jahren
+	Der linke Subplot zeigt die quadratwurzelfÃ¶rmige ZeitabhÃ¤ngigkeit des SEI-Wachstums
+	deutlich: Bei $40\,^\circ\mathrm{C}$ betrÃ¤gt der KapazitÃ¤tsverlust nach 5 Jahren
 	bereits $\approx 12\,\%$, was das EoL-Kriterium von 20\,\% in ca.\ 11 Jahren
-	erreichen würde -- konsistent mit Tabelle~\ref{tab:ev_lifetime}. Der rechte Subplot
-	zeigt, dass die Kapazitätsdrift des AI-PMM nach 1560 Zyklen das EoL-Niveau von
-	$\mathcal{D} = 0{,}20$ erreicht, während das statische PMS dies bereits bei
+	erreichen wÃ¼rde -- konsistent mit Tabelle~\ref{tab:ev_lifetime}. Der rechte Subplot
+	zeigt, dass die KapazitÃ¤tsdrift des AI-PMM nach 1560 Zyklen das EoL-Niveau von
+	$\mathcal{D} = 0{,}20$ erreicht, wÃ¤hrend das statische PMS dies bereits bei
 	1060 Zyklen tut -- genau der in Abbildung~\ref{fig:capacity} dargestellte Sachverhalt,
-	der die Validität der numerischen Umsetzung des analytischen Modells bestätigt.
+	der die ValiditÃ¤t der numerischen Umsetzung des analytischen Modells bestÃ¤tigt.
 
 	% -----------------------------------------------------------
-	\subsection{Lebensdauer-Sensitivität und Vorheizeffizienz}
+	\subsection{Lebensdauer-SensitivitÃ¤t und Vorheizeffizienz}
 	% -----------------------------------------------------------
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp14_sensitivity}
-		\caption{Experiment~14: Parametersensitivität und Vorheizmanagement. \textbf{Links} –
-			Sensitivität der Lebensdauer $L$ gegenüber der Aktivierungsenergie $E_a$:
-			$L(E_a)$ für AI-PMM und statisches PMS, normiert auf $L(E_{a,\mathrm{nom}})$.
-			\textbf{Rechts} – Vorheizeffizienz $\eta_\mathrm{heat}$ (km\,kWh$^{-1}$) als
-			Funktion der Ziel-Vorheiztemperatur bei verschiedenen Außentemperaturen.}
+		\caption{Experiment~14: ParametersensitivitÃ¤t und Vorheizmanagement. \textbf{Links} â€“
+			SensitivitÃ¤t der Lebensdauer $L$ gegenÃ¼ber der Aktivierungsenergie $E_a$:
+			$L(E_a)$ fÃ¼r AI-PMM und statisches PMS, normiert auf $L(E_{a,\mathrm{nom}})$.
+			\textbf{Rechts} â€“ Vorheizeffizienz $\eta_\mathrm{heat}$ (km\,kWh$^{-1}$) als
+			Funktion der Ziel-Vorheiztemperatur bei verschiedenen AuÃŸentemperaturen.}
 		\label{fig:exp14}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~14 analysiert die Robustheit der Lebensdauerverbesserung gegenüber
-	Modellparameterunsicherheiten und quantifiziert die Effizienz des prädiktiven
+	Experiment~14 analysiert die Robustheit der Lebensdauerverbesserung gegenÃ¼ber
+	Modellparameterunsicherheiten und quantifiziert die Effizienz des prÃ¤diktiven
 	Vorheizens in verschiedenen Winterszenarien.
 
 	\paragraph{Methodik.}
 	Linker Subplot: Die Funktion \texttt{lifetime\_from\_rate()} berechnet $L = \mathcal{D}_\mathrm{EoL}/\bar{r}$
-	für $E_a \in [30, 80]\,\mathrm{kJ\,mol^{-1}}$, wobei $\bar{r}$ das jeweilige mittlere
+	fÃ¼r $E_a \in [30, 80]\,\mathrm{kJ\,mol^{-1}}$, wobei $\bar{r}$ das jeweilige mittlere
 	Ratenniveau unter AI-PMM bzw.\ statischem PMS ist. Rechter Subplot: Die Funktion
 	\texttt{preheating\_efficiency()} berechnet
-	$\eta_\mathrm{heat} = \Delta R / E_\mathrm{heat}$ für $T_\mathrm{amb} \in \{-20, -10, 0\}\,^\circ\mathrm{C}$.
+	$\eta_\mathrm{heat} = \Delta R / E_\mathrm{heat}$ fÃ¼r $T_\mathrm{amb} \in \{-20, -10, 0\}\,^\circ\mathrm{C}$.
 
 	\paragraph{Ergebnisse und Interpretation.}
-	Der linke Subplot demonstriert, dass das Verhältnis $L_\mathrm{AI}/L_\mathrm{static}$
-	über den gesamten $E_a$-Bereich relativ stabil bei $\Phi \approx 1{,}47 \pm 0{,}05$
-	bleibt -- das AI-PMM ist also robust gegenüber Modellparameterunsicherheiten.
-	Bei niedrigen $E_a$-Werten ($< 40\,\mathrm{kJ\,mol^{-1}}$) fällt der thermische
-	Gewinn erwartungsgemäß etwas geringer aus. Der rechte Subplot zeigt, dass die
-	Vorheizeffizienz bei $-20\,^\circ\mathrm{C}$ am höchsten ist
+	Der linke Subplot demonstriert, dass das VerhÃ¤ltnis $L_\mathrm{AI}/L_\mathrm{static}$
+	Ã¼ber den gesamten $E_a$-Bereich relativ stabil bei $\Phi \approx 1{,}47 \pm 0{,}05$
+	bleibt -- das AI-PMM ist also robust gegenÃ¼ber Modellparameterunsicherheiten.
+	Bei niedrigen $E_a$-Werten ($< 40\,\mathrm{kJ\,mol^{-1}}$) fÃ¤llt der thermische
+	Gewinn erwartungsgemÃ¤ÃŸ etwas geringer aus. Der rechte Subplot zeigt, dass die
+	Vorheizeffizienz bei $-20\,^\circ\mathrm{C}$ am hÃ¶chsten ist
 	($\eta_\mathrm{heat} \approx 9{,}2\,\mathrm{km\,kWh^{-1}}$) und mit steigender
-	Außentemperatur abnimmt, da das Reichweitengewinn-Potenzial kleiner wird.
+	AuÃŸentemperatur abnimmt, da das Reichweitengewinn-Potenzial kleiner wird.
 	Bei $T_\mathrm{amb} = -15\,^\circ\mathrm{C}$ und Zieltemperatur $20\,^\circ\mathrm{C}$
 	ergibt sich $\eta_\mathrm{heat} \approx 8{,}1\,\mathrm{km\,kWh^{-1}}$, konsistent
 	mit dem in Abschnitt~\ref{sec:ev} angegebenen Wert.
@@ -2434,39 +2434,39 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=\textwidth]{exp15_ev_lifecycle}
-		\caption{Experiment~15: EV-Gesamtbeweis und MPC-Referenz. \textbf{Links} –
-			Kumulierte Gesamtfahrleistung über die Betriebsjahre für alle drei EV-Klassen
+		\caption{Experiment~15: EV-Gesamtbeweis und MPC-Referenz. \textbf{Links} â€“
+			Kumulierte Gesamtfahrleistung Ã¼ber die Betriebsjahre fÃ¼r alle drei EV-Klassen
 			(AI-PMM vs.\ statisches PMS), mit markierten EoL-Zeitpunkten und
-			Mehrkilometer-Gewinn. \textbf{Rechts} – MPC-Referenztrajektorie $d_\mathrm{ref}(\mathrm{SoC})$
+			Mehrkilometer-Gewinn. \textbf{Rechts} â€“ MPC-Referenztrajektorie $d_\mathrm{ref}(\mathrm{SoC})$
 			des Plattenabstandsreglers: optimaler Plattenabstand als Funktion des Ladezustands.}
 		\label{fig:exp15}
 	\end{figure}
 
 	\paragraph{Zielsetzung.}
-	Experiment~15 ist das abschließende Gesamtexperiment: Es verbindet die EV-Lebenszyklusanalyse
+	Experiment~15 ist das abschlieÃŸende Gesamtexperiment: Es verbindet die EV-Lebenszyklusanalyse
 	aus Kapitel~\ref{sec:ev} mit dem mechanischen Regelungskanal aus Kapitel~\ref{sec:plattenabstand}
 	und demonstriert simulativ die volle Wirkungskette des AI-PMM.
 
 	\paragraph{Methodik.}
 	Linker Subplot: Die Funktion \texttt{ev\_cumulative\_km()} berechnet die kumulierten
 	Kilometer $\kappa(t) = t \cdot \mathrm{km/Jahr}$ bis zum jeweiligen EoL-Zeitpunkt
-	für alle drei Fahrzeugklassen. Rechter Subplot: Der \texttt{PlateDistanceMPCController}
+	fÃ¼r alle drei Fahrzeugklassen. Rechter Subplot: Der \texttt{PlateDistanceMPCController}
 	generiert die optimale Referenztrajektorie $d_\mathrm{ref}(\mathrm{SoC})$, die
-	die SoC-abhängige Elektrodenschwellung durch angepassten Plattenabstand kompensiert.
+	die SoC-abhÃ¤ngige Elektrodenschwellung durch angepassten Plattenabstand kompensiert.
 
 	\paragraph{Ergebnisse und Interpretation.}
 	Der linke Subplot liefert den visuellen Gesamtbeweis der EV-Analyse: Alle drei
-	Fahrzeugklassen zeigen deutlich längere EoL-Zeitpunkte unter AI-PMM (durchgezogene
-	Linien) gegenüber dem statischen PMS (gestrichelt). Der mittlere Mehrkilometerwert
-	beträgt $+80\,000\,\mathrm{km}$ pro Fahrzeug -- ein Ergebnis, das direkt aus dem
+	Fahrzeugklassen zeigen deutlich lÃ¤ngere EoL-Zeitpunkte unter AI-PMM (durchgezogene
+	Linien) gegenÃ¼ber dem statischen PMS (gestrichelt). Der mittlere Mehrkilometerwert
+	betrÃ¤gt $+80\,000\,\mathrm{km}$ pro Fahrzeug -- ein Ergebnis, das direkt aus dem
 	formalen Lebensdauerbeweis (Theorem~\ref{thm:lifetime_superiority}) und der
-	quantitativen Abschätzung (Proposition~\ref{prop:phi_bound}) folgt.
+	quantitativen AbschÃ¤tzung (Proposition~\ref{prop:phi_bound}) folgt.
 	Der rechte Subplot zeigt die charakteristische Kurvenform der MPC-Referenztrajektorie:
-	Der Plattenabstand $d_\mathrm{ref}$ folgt näherungsweise der volumetrischen Dehnung
+	Der Plattenabstand $d_\mathrm{ref}$ folgt nÃ¤herungsweise der volumetrischen Dehnung
 	der Graphitanode und erreicht sein Maximum bei SoC\,=\,100\,\% ($d \approx 29\,\mu\mathrm{m}$),
 	das Minimum bei SoC\,=\,0\,\% ($d \approx 25\,\mu\mathrm{m}$). Diese Trajektorie
 	minimiert zu jedem Zeitpunkt den mechanischen Stress $\sigma_\mathrm{mech}(t)$
-	gemäß Gleichung~\eqref{eq:mpc_plate_cost} und senkt damit die mechanische
+	gemÃ¤ÃŸ Gleichung~\eqref{eq:mpc_plate_cost} und senkt damit die mechanische
 	Degradationsrate auf den in Proposition~\ref{prop:plate_deg} bewiesenen
 	Wert $\eta_M \approx 0{,}27$.
 
@@ -2474,7 +2474,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\subsection{Zusammenfassung der Validierungsergebnisse}
 	% -----------------------------------------------------------
 
-	Die 15 Experimente belegen gemeinsam die Vollständigkeit und Konsistenz der
+	Die 15 Experimente belegen gemeinsam die VollstÃ¤ndigkeit und Konsistenz der
 	theoretischen Modelle mit den numerischen Simulationsergebnissen. Tabelle~\ref{tab:validation_summary}
 	fasst die wichtigsten Kennzahlen zusammen.
 
@@ -2500,14 +2500,14 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\end{tabular}
 	\end{table}
 
-	Die Übereinstimmung zwischen analytischen Werten und Simulationsergebnissen ist
-	in allen Fällen innerhalb von $\pm 1\,\%$ oder besser. Dies bestätigt die korrekte
+	Die Ãœbereinstimmung zwischen analytischen Werten und Simulationsergebnissen ist
+	in allen FÃ¤llen innerhalb von $\pm 1\,\%$ oder besser. Dies bestÃ¤tigt die korrekte
 	Implementierung aller physikalischen Modelle im \texttt{liionp}-Paket und die
-	Validität der formalen Beweise in den Abschnitten~\ref{sec:beweis}
+	ValiditÃ¤t der formalen Beweise in den Abschnitten~\ref{sec:beweis}
 	und~\ref{sec:plattenabstand}. Die Experimente zeigen zudem die erwarteten
 	qualitativen Verhaltensmuster in allen Randbereichen des Parameterraums
-	(Grenzfall-Überprüfungen, Sensitivitätsanalysen), was auf eine robuste und
-	fehlerhfreie numerische Umsetzung schließen lässt.
+	(Grenzfall-ÃœberprÃ¼fungen, SensitivitÃ¤tsanalysen), was auf eine robuste und
+	fehlerhfreie numerische Umsetzung schlieÃŸen lÃ¤sst.
 
 	% ============================================================
 	\label{sec:diskussion}
@@ -2515,16 +2515,16 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	
 	\subsection{Interpretation der Ergebnisse}
 	
-	Die Simulation bestätigt die analytischen Ergebnisse aus Theorem~\ref{thm:lifetime_superiority}
+	Die Simulation bestÃ¤tigt die analytischen Ergebnisse aus Theorem~\ref{thm:lifetime_superiority}
 	und Proposition~\ref{prop:phi_bound}. Der Verbesserungsfaktor $\Phi \approx 1{,}47$
-	stimmt mit der analytischen Abschätzung überein und übertrifft typische
-	Werte aus der Literatur (1{,}2--1{,}4) aufgrund der zusätzlichen prädiktiven
+	stimmt mit der analytischen AbschÃ¤tzung Ã¼berein und Ã¼bertrifft typische
+	Werte aus der Literatur (1{,}2--1{,}4) aufgrund der zusÃ¤tzlichen prÃ¤diktiven
 	Komponente des AI-PMM.
 	
 	Besonders hervorzuheben ist:
 	
 	\begin{itemize}
-		\item \textbf{Präventives Kühlmanagement:} Das AI-PMM initiiert Kühlmaßnahmen
+		\item \textbf{PrÃ¤ventives KÃ¼hlmanagement:} Das AI-PMM initiiert KÃ¼hlmaÃŸnahmen
 		$\Delta t_\mathrm{prev} \approx 5\text{--}15\,\mathrm{min}$ vor
 		Hochlastphasen, was die Spitzentemperatur um durchschnittlich $8{,}3\,\mathrm{K}$
 		reduziert.
@@ -2545,8 +2545,8 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\item Das Degradationsmodell ist additiv und ignoriert Synergieeffekte
 		zwischen thermischer und elektrochemischer Alterung.
 		\item Die LSTM-Prognose versagt bei ungewohntem Nutzerverhalten
-		(Urlaub, Gerätewechsel).
-		\item Die Rechenkosten des MPC ($\mathcal{O}(N_p^3)$) können für
+		(Urlaub, GerÃ¤tewechsel).
+		\item Die Rechenkosten des MPC ($\mathcal{O}(N_p^3)$) kÃ¶nnen fÃ¼r
 		Mikrocontroller mit $< 1\,\mathrm{MHz}$ Taktrate problematisch sein.
 	\end{enumerate}
 	
@@ -2558,13 +2558,13 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\label{tab:comparison}
 		\begin{tabular}{lcccl}
 			\toprule
-			\textbf{Methode} & \textbf{Prädiktiv} & \textbf{Lernend} & $\Phi$ & \textbf{Referenz} \\
+			\textbf{Methode} & \textbf{PrÃ¤diktiv} & \textbf{Lernend} & $\Phi$ & \textbf{Referenz} \\
 			\midrule
 			Statisches PMS & Nein & Nein & 1{,}00 & Baseline \\
 			Fuzzy-PMS & Bedingt & Nein & 1{,}15 & \cite{Fuzzy2019} \\
 			MPC-PMS & Ja & Nein & 1{,}28 & \cite{MPC2021} \\
 			RL-PMS (ohne Verhalten) & Ja & Partiell & 1{,}35 & \cite{RL2022} \\
-			\textbf{AI-PMM (diese Arbeit)} & \textbf{Ja} & \textbf{Vollständig} & \textbf{1{,}47} & -- \\
+			\textbf{AI-PMM (diese Arbeit)} & \textbf{Ja} & \textbf{VollstÃ¤ndig} & \textbf{1{,}47} & -- \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -2579,10 +2579,10 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	Die vorangegangenen Kapitel dieser Arbeit haben gezeigt, dass das
 	KI-gesteuerte Power-Management-Modul (AI-PMM) die Lebensdauer und
 	Reichweite von Lithium-Ionen-Akkumulatoren signifikant steigert.
-	Eine natürliche Erweiterung dieser Analyse ist die Frage, welche
+	Eine natÃ¼rliche Erweiterung dieser Analyse ist die Frage, welche
 	Batteriechemie im direkten Technologievergleich das optimale
-	Verhältnis aus maximaler Reichweite bei minimaler Aufladedauer
-	erzielt. Diese Fragestellung ist für die Auslegung zukünftiger
+	VerhÃ¤ltnis aus maximaler Reichweite bei minimaler Aufladedauer
+	erzielt. Diese Fragestellung ist fÃ¼r die Auslegung zukÃ¼nftiger
 	AI-PMM-Systeme von zentraler Bedeutung: Die Wahl der Batteriechemie
 	bestimmt die Randbedingungen des Regelungsproblems, die erreichbaren
 	C-Raten und damit die physikalischen Grenzen des Lademanagements.
@@ -2595,7 +2595,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\item \textbf{NMC-622} -- Lithium-Nickel-Mangan-Kobalt-Oxid (60:20:20)
 		\item \textbf{NMC-811} -- Lithium-Nickel-Mangan-Kobalt-Oxid (80:10:10)
 		\item \textbf{NCA} -- Lithium-Nickel-Kobalt-Aluminium-Oxid
-		\item \textbf{Solid-State (SSB)} -- Festkörperbatterie mit sulfidischem
+		\item \textbf{Solid-State (SSB)} -- FestkÃ¶rperbatterie mit sulfidischem
 		      oder oxidischem Festelektrolyt
 		\item \textbf{Li-S} -- Lithium-Schwefel
 		\item \textbf{Na-Ion} -- Natrium-Ionen-Batterie
@@ -2606,7 +2606,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\subsubsection{Energiedichte und Reichweitenmodell}
 
 	Die gravimetrische Energiedichte $\varepsilon$ [Wh/kg] ist die
-	primäre Kenngröße für die erreichbare Reichweite. Bei einem festen
+	primÃ¤re KenngrÃ¶ÃŸe fÃ¼r die erreichbare Reichweite. Bei einem festen
 	Energieinhalt $E_{\mathrm{pack}} = 100\,\mathrm{kWh}$ ergibt sich
 	die Packmasse zu:
 	\begin{equation}
@@ -2615,21 +2615,21 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\end{equation}
 
 	Die effektive Fahrzeuggesamtmasse mit einem Basisfahrzeug der Masse
-	$m_{\mathrm{base}} = 1700\,\mathrm{kg}$ (Mittelklasse-Sedan) beträgt:
+	$m_{\mathrm{base}} = 1700\,\mathrm{kg}$ (Mittelklasse-Sedan) betrÃ¤gt:
 	\begin{equation}
 		m_{\mathrm{ges}} = m_{\mathrm{base}} + m_{\mathrm{pack}}
 		\label{eq:total_mass}
 	\end{equation}
 
 	Der spezifische Energieverbrauch steigt mit der Fahrzeuggesamtmasse
-	gemäß einem empirisch validierten Potenzgesetz \cite{EV_Tesla2023}:
+	gemÃ¤ÃŸ einem empirisch validierten Potenzgesetz \cite{EV_Tesla2023}:
 	\begin{equation}
 		\eta(m_{\mathrm{ges}}) = \eta_0 \cdot
 		\left(\frac{m_{\mathrm{ges}}}{m_0}\right)^{0{,}35}
 		\label{eq:efficiency_mass}
 	\end{equation}
 	mit $\eta_0 = 15\,\mathrm{kWh}/100\,\mathrm{km}$ (Referenzverbrauch bei
-	$m_0 = 1700\,\mathrm{kg}$). Der Exponent $0{,}35$ berücksichtigt den
+	$m_0 = 1700\,\mathrm{kg}$). Der Exponent $0{,}35$ berÃ¼cksichtigt den
 	nichtlinearen Anstieg durch Roll- und Beschleunigungswiderstand.
 	Die theoretische Reichweite ergibt sich zu:
 	\begin{equation}
@@ -2640,14 +2640,14 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\subsubsection{Ladezeit-Modell}
 
 	Die Ladezeit von 20 auf 80\,\% SOC (State of Charge) bei konstanter
-	C-Rate $C_R$ beträgt:
+	C-Rate $C_R$ betrÃ¤gt:
 	\begin{equation}
 		\boxed{t_{\mathrm{charge}} = \frac{0{,}6}{C_R} \cdot 60\,\mathrm{min}}
 		\label{eq:charge_time}
 	\end{equation}
 	wobei der Faktor $0{,}6$ dem aufzuladenden SOC-Hub $\Delta\mathrm{SOC} = 60\,\%$
 	entspricht. Die maximal erreichbare C-Rate ist durch die elektrochemischen
-	Grenzen der Kathode, den Innenwiderstand und die Wärmeentwicklung
+	Grenzen der Kathode, den Innenwiderstand und die WÃ¤rmeentwicklung
 	limitiert. Tabelle~\ref{tab:tech_params} fasst die Basisparameter
 	aller betrachteten Technologien zusammen.
 
@@ -2659,7 +2659,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\begin{tabular}{lccccc}
 			\toprule
 			\textbf{Technologie} & $\varepsilon$ [Wh/kg] & $C_R$ [C] &
-			$N_{\mathrm{Zyklen}}$ & Kosten [€/kWh] & TRL \\
+			$N_{\mathrm{Zyklen}}$ & Kosten [â‚¬/kWh] & TRL \\
 			\midrule
 			LFP         & $165 \pm 10$ & 3{,}0 & 4\,000 & 90  & 9 \\
 			NMC-622     & $230 \pm 15$ & 2{,}5 & 2\,500 & 140 & 9 \\
@@ -2686,11 +2686,11 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\end{figure}
 
 	Abbildung~\ref{fig:energy_range} zeigt, dass Li-S mit
-	$\varepsilon = 450\,\mathrm{Wh/kg}$ die höchste Energiedichte
+	$\varepsilon = 450\,\mathrm{Wh/kg}$ die hÃ¶chste Energiedichte
 	besitzt, gefolgt von Solid-State ($400\,\mathrm{Wh/kg}$). Die
 	nach Gleichung~\eqref{eq:range} berechneten Reichweiten ergeben
-	für Li-S ca.\ $639\,\mathrm{km}$ und für Solid-State ca.\
-	$635\,\mathrm{km}$ -- beide deutlich über den heute dominierenden
+	fÃ¼r Li-S ca.\ $639\,\mathrm{km}$ und fÃ¼r Solid-State ca.\
+	$635\,\mathrm{km}$ -- beide deutlich Ã¼ber den heute dominierenden
 	NMC-Varianten ($615$--$624\,\mathrm{km}$) und LFP
 	($599\,\mathrm{km}$).
 
@@ -2699,9 +2699,9 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		den ersten Blick gering ($\approx 40\,\mathrm{km}$ zwischen LFP
 		und Li-S). Dies ist eine direkte Konsequenz von
 		Gleichung~\eqref{eq:efficiency_mass}: Ein leichteres Pack
-		senkt den Energieverbrauch, und der Vorteil der höheren
+		senkt den Energieverbrauch, und der Vorteil der hÃ¶heren
 		Energiedichte wird durch den Masseneffekt teilweise
-		kompensiert. Die vollständige Wirkung der Energiedichte
+		kompensiert. Die vollstÃ¤ndige Wirkung der Energiedichte
 		zeigt sich erst bei Langstrecken oder in der kumulierten
 		Lebensdauerreichweite.
 	\end{remark}
@@ -2713,24 +2713,24 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\includegraphics[width=\textwidth]{plot2_charge_cycles.pdf}
 		\caption{Links: Ladezeit $t_{\mathrm{charge}}$ (20$\to$80\,\% SOC)
 		         nach Gleichung~\eqref{eq:charge_time}. Rechts: Zyklenlebensdauer
-		         bis 80\,\% Restkapazität. Fehlerbalken: $\pm 1\sigma$.}
+		         bis 80\,\% RestkapazitÃ¤t. Fehlerbalken: $\pm 1\sigma$.}
 		\label{fig:charge_cycles}
 	\end{figure}
 
 	Abbildung~\ref{fig:charge_cycles} offenbart das zentrale Dilemma:
-	Li-S, die Technologie mit der höchsten Energiedichte, besitzt die
-	mit Abstand längste Ladezeit ($72\,\mathrm{min}$, C-Rate $0{,}5\,\mathrm{C}$)
-	sowie die kürzeste Zyklenlebensdauer ($500$ Zyklen). Im Gegensatz
-	dazu vereint \textbf{Solid-State} die kürzeste Ladezeit
+	Li-S, die Technologie mit der hÃ¶chsten Energiedichte, besitzt die
+	mit Abstand lÃ¤ngste Ladezeit ($72\,\mathrm{min}$, C-Rate $0{,}5\,\mathrm{C}$)
+	sowie die kÃ¼rzeste Zyklenlebensdauer ($500$ Zyklen). Im Gegensatz
+	dazu vereint \textbf{Solid-State} die kÃ¼rzeste Ladezeit
 	($7{,}2\,\mathrm{min}$ bei $5\,\mathrm{C}$) mit einer hohen
-	Zyklenlebensdauer ($3\,000$ Zyklen) und der zweithöchsten
+	Zyklenlebensdauer ($3\,000$ Zyklen) und der zweithÃ¶chsten
 	Reichweite.
 
 	\subsection{Formaler Beweis: Dominanz der Solid-State-Batterie}
 
 	\begin{definition}[Schnelllade-Reichweiten-Index]
 		Der \emph{Schnelllade-Reichweiten-Index} $R_L$ einer Batterietechnologie
-		ist definiert als das Verhältnis aus maximaler Reichweite und
+		ist definiert als das VerhÃ¤ltnis aus maximaler Reichweite und
 		Ladezeit:
 		\begin{equation}
 			R_L := \frac{d_{\mathrm{max}}}{t_{\mathrm{charge}}}
@@ -2749,13 +2749,13 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 			\label{eq:total_score}
 		\end{equation}
 		wobei $\hat{d}, \hat{t}, \hat{N}, \hat{K} \in [0,1]$ die
-		min-max-normierten Werte für Reichweite, Ladezeit, Zyklenlebensdauer
+		min-max-normierten Werte fÃ¼r Reichweite, Ladezeit, Zyklenlebensdauer
 		und Kosten bezeichnen, und die Gewichte
 		$w_1=0{,}40$, $w_2=0{,}30$, $w_3=0{,}20$, $w_4=0{,}10$
-		(Summe $= 1$) nach Fahrzeugpraxis gewählt sind.
+		(Summe $= 1$) nach Fahrzeugpraxis gewÃ¤hlt sind.
 	\end{definition}
 
-	\begin{proposition}[Überlegenheit der Solid-State-Batterie im Index $R_L$]
+	\begin{proposition}[Ãœberlegenheit der Solid-State-Batterie im Index $R_L$]
 		\label{prop:ssbrl}
 		Unter den sieben betrachteten Technologien erzielt die
 		Solid-State-Batterie den maximalen Schnelllade-Reichweiten-Index:
@@ -2797,8 +2797,8 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 
 	\begin{proof}
 		Der erste Teil folgt direkt aus Proposition~\ref{prop:ssbrl}.
-		Für den zweiten Teil werden die normierten Teilwerte
-		$\hat{d}, \hat{t}, \hat{N}, \hat{K}$ für alle Technologien
+		FÃ¼r den zweiten Teil werden die normierten Teilwerte
+		$\hat{d}, \hat{t}, \hat{N}, \hat{K}$ fÃ¼r alle Technologien
 		berechnet und in Gleichung~\eqref{eq:total_score} eingesetzt.
 		Die resultierenden Gesamtscores (vgl.\ Abbildung~\ref{fig:combined_score})
 		ergeben:
@@ -2811,27 +2811,27 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 			S^{\mathrm{Na-Ion}}&= 56{,}3\,\% \\
 			S^{\mathrm{Li-S}}  &= 45{,}7\,\%
 		\end{align*}
-		Da $S^{\mathrm{SSB}} = 81{,}7\,\% > S^{(i)}$ für alle übrigen
-		$i$, ist \eqref{eq:ssb_score_max} bewiesen. Die Überlegenheit ist
+		Da $S^{\mathrm{SSB}} = 81{,}7\,\% > S^{(i)}$ fÃ¼r alle Ã¼brigen
+		$i$, ist \eqref{eq:ssb_score_max} bewiesen. Die Ãœberlegenheit ist
 		mit einem Abstand von $+13{,}2$ Prozentpunkten zum zweitplatzierten
 		NMC-811 signifikant.
 	\end{proof}
 
-	\begin{corollary}[Einschränkung durch Technologiereifegrad]
+	\begin{corollary}[EinschrÃ¤nkung durch Technologiereifegrad]
 		\label{cor:trl}
 		Die Dominanz der Solid-State-Batterie gilt unter Annahme der in
 		Tabelle~\ref{tab:tech_params} spezifizierten Zielparameter (TRL 5,
-		angestrebte Serienreife ca.\ 2028--2030). Für den heutigen
+		angestrebte Serienreife ca.\ 2028--2030). FÃ¼r den heutigen
 		Serieneinsatz (TRL 9) ist die \textbf{LFP-Technologie} aufgrund
-		ihres überlegenen $R_L^{\mathrm{Na-Ion}} > R_L^{\mathrm{LFP}} >
-		R_L^{\mathrm{NCA}}$ mit dem besten Kosten-Nutzen-Verhältnis
+		ihres Ã¼berlegenen $R_L^{\mathrm{Na-Ion}} > R_L^{\mathrm{LFP}} >
+		R_L^{\mathrm{NCA}}$ mit dem besten Kosten-Nutzen-VerhÃ¤ltnis
 		zu empfehlen, wenn der Gesamtscore um den TRL-Faktor
 		$\tau = \mathrm{TRL}/9$ gewichtet wird.
 	\end{corollary}
 
-	\subsection{Kapazitätsdegradationsmodell}
+	\subsection{KapazitÃ¤tsdegradationsmodell}
 
-	Das Kapazitätsdegradationsverhalten aller Technologien wird durch
+	Das KapazitÃ¤tsdegradationsverhalten aller Technologien wird durch
 	ein exponentielles Modell approximiert:
 	\begin{equation}
 		C(n) = C_0 \cdot e^{-\alpha n}, \quad
@@ -2839,26 +2839,26 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\label{eq:degradation_exp}
 	\end{equation}
 	wobei $N_{\mathrm{Zyklen}}$ die Zyklenlebensdauer bis $80\,\%$
-	Restkapazität gemäß Tabelle~\ref{tab:tech_params} ist. Das Modell
+	RestkapazitÃ¤t gemÃ¤ÃŸ Tabelle~\ref{tab:tech_params} ist. Das Modell
 	ist konsistent mit dem in dieser Arbeit verwendeten SEI-Degradationsmodell
 	(vgl.\ Abschnitt~\ref{sec:degradation}).
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\textwidth]{plot3_degradation.pdf}
-		\caption{Kapazitätsdegradation aller sieben Batterietechnologien
-		         gemäß Modell \eqref{eq:degradation_exp}. Die rote
+		\caption{KapazitÃ¤tsdegradation aller sieben Batterietechnologien
+		         gemÃ¤ÃŸ Modell \eqref{eq:degradation_exp}. Die rote
 		         gestrichelte Linie markiert die EOL-Schwelle bei
-		         80\,\% Restkapazität.}
+		         80\,\% RestkapazitÃ¤t.}
 		\label{fig:degradation}
 	\end{figure}
 
 	Abbildung~\ref{fig:degradation} zeigt die stark divergierende
 	Lebensdauer: Li-S erreicht die EOL-Schwelle bereits nach ca.\ $500$
-	Zyklen, während LFP mit $4\,000$ Zyklen die höchste Lebensdauer
+	Zyklen, wÃ¤hrend LFP mit $4\,000$ Zyklen die hÃ¶chste Lebensdauer
 	aller serienreifen Technologien besitzt. Solid-State liegt mit
 	$3\,000$ Zyklen im oberen Mittelfeld -- ein wesentlicher Vorteil
-	gegenüber NCA ($1\,500$ Zyklen).
+	gegenÃ¼ber NCA ($1\,500$ Zyklen).
 
 	\subsection{Kombinierter Leistungsindex und Pareto-Analyse}
 
@@ -2868,7 +2868,7 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\caption{Links: Schnelllade-Reichweiten-Index $R_L$ nach
 		         Gleichung~\eqref{eq:rl_index}. Rechts: Gewichteter
 		         Gesamtleistungsindex $S$ nach Gleichung~\eqref{eq:total_score}.
-		         Solid-State ist in beiden Metriken führend.}
+		         Solid-State ist in beiden Metriken fÃ¼hrend.}
 		\label{fig:combined_score}
 	\end{figure}
 
@@ -2876,50 +2876,50 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\centering
 		\includegraphics[width=0.85\textwidth]{plot5_radar.pdf}
 		\caption{Multidimensionaler Technologievergleich (Radardiagramm).
-		         Die einbeschriebene Fläche visualisiert das Gesamtprofil
+		         Die einbeschriebene FlÃ¤che visualisiert das Gesamtprofil
 		         jeder Technologie. Solid-State (violett) dominiert im
 		         Bereich Schnellladen und Energiedichte.}
 		\label{fig:radar}
 	\end{figure}
 
 	Das Radardiagramm (Abbildung~\ref{fig:radar}) zeigt das
-	multidimensionale Technologieprofil. Während Li-S eine extreme
+	multidimensionale Technologieprofil. WÃ¤hrend Li-S eine extreme
 	Energiedichte aufweist, kollabiert sein Profil im Schnelllade- und
 	Lebensdauerbereich. LFP zeigt ein ausgewogenes, robustes Profil mit
-	besonderer Stärke bei Kosteneffizienz und Lebensdauer. Solid-State
-	dominiert in den für den praktischen Einsatz wichtigsten Dimensionen
+	besonderer StÃ¤rke bei Kosteneffizienz und Lebensdauer. Solid-State
+	dominiert in den fÃ¼r den praktischen Einsatz wichtigsten Dimensionen
 	Energiedichte und Schnellladen gleichzeitig.
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.88\textwidth]{plot6_pareto.pdf}
 		\caption{Pareto-Analyse: Reichweite vs.\ Ladezeit. Die Pareto-Front
-		         markiert die nicht-dominierten Technologien. Der grüne
+		         markiert die nicht-dominierten Technologien. Der grÃ¼ne
 		         Stern markiert den theoretischen Ideal-Punkt. TRL-gewichtete
-		         Markergröße.}
+		         MarkergrÃ¶ÃŸe.}
 		\label{fig:pareto}
 	\end{figure}
 
-	Die Pareto-Analyse (Abbildung~\ref{fig:pareto}) bestätigt die
+	Die Pareto-Analyse (Abbildung~\ref{fig:pareto}) bestÃ¤tigt die
 	Ergebnisse formal: Solid-State liegt nahe dem Ideal-Punkt (maximale
 	Reichweite, minimale Ladezeit) und befindet sich auf der Pareto-Front.
-	Li-S ist trotz höchster Reichweite wegen seiner extremen Ladezeit
+	Li-S ist trotz hÃ¶chster Reichweite wegen seiner extremen Ladezeit
 	\emph{nicht Pareto-optimal} im Sinne des hier definierten
 	zweidimensionalen Raums -- es wird von Solid-State dominiert.
 
-	\begin{lemma}[Pareto-Dominanz von Solid-State über Li-S]
+	\begin{lemma}[Pareto-Dominanz von Solid-State Ã¼ber Li-S]
 		\label{lem:pareto}
-		Solid-State dominiert Li-S im Pareto-Sinne bezüglich der
-		Zielgrößen $(d_{\mathrm{max}}, -t_{\mathrm{charge}})$, d.\,h.:
+		Solid-State dominiert Li-S im Pareto-Sinne bezÃ¼glich der
+		ZielgrÃ¶ÃŸen $(d_{\mathrm{max}}, -t_{\mathrm{charge}})$, d.\,h.:
 		\begin{align}
 			d_{\mathrm{max}}^{\mathrm{SSB}} &= 635{,}4 < 638{,}6 =
 			d_{\mathrm{max}}^{\mathrm{Li-S}} \quad \text{(knappe Reichweite Li-S)} \\
 			t_{\mathrm{charge}}^{\mathrm{SSB}} &= 7{,}2 \ll 72{,}0 =
-			t_{\mathrm{charge}}^{\mathrm{Li-S}} \quad \text{(10$\times$ kürzere Ladezeit)}
+			t_{\mathrm{charge}}^{\mathrm{Li-S}} \quad \text{(10$\times$ kÃ¼rzere Ladezeit)}
 		\end{align}
 		Der marginale Reichweitenvorteil von Li-S ($+3{,}2\,\mathrm{km}$,
-		$+0{,}5\,\%$) wird durch eine zehnfach längere Ladezeit
-		vollständig kompensiert. Im $R_L$-Index gilt daher
+		$+0{,}5\,\%$) wird durch eine zehnfach lÃ¤ngere Ladezeit
+		vollstÃ¤ndig kompensiert. Im $R_L$-Index gilt daher
 		$R_L^{\mathrm{SSB}} = 88{,}3 \gg 8{,}9 = R_L^{\mathrm{Li-S}}$.
 	\end{lemma}
 
@@ -2929,47 +2929,47 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\centering
 		\includegraphics[width=0.88\textwidth]{plot7_cost_range.pdf}
 		\caption{Kosten-Nutzen-Analyse: Reichweite vs.\ Batteriekosten
-		         [€/kWh]. Fehlerbalken: $\pm 1\sigma$. Die günstigsten
+		         [â‚¬/kWh]. Fehlerbalken: $\pm 1\sigma$. Die gÃ¼nstigsten
 		         Technologien mit hoher Reichweite befinden sich oben-links.}
 		\label{fig:cost_range}
 	\end{figure}
 
 	Abbildung~\ref{fig:cost_range} zeigt, dass Na-Ion mit
-	$85\,\text{€/kWh}$ die kostengünstigste Technologie ist, gefolgt
-	von LFP ($90\,\text{€/kWh}$). Solid-State weist mit
-	$350\,\text{€/kWh}$ die höchsten Kosten auf, was zum aktuellen
-	Entwicklungsstand auf Fertigungsaufwand und geringe Stückzahlen
-	zurückzuführen ist. Bei Massenproduktion werden Kosten von
-	$120$--$150\,\text{€/kWh}$ erwartet \cite{Winter2018}, was Solid-State
-	auch kostenseitig konkurrenzfähig machen würde.
+	$85\,\text{â‚¬/kWh}$ die kostengÃ¼nstigste Technologie ist, gefolgt
+	von LFP ($90\,\text{â‚¬/kWh}$). Solid-State weist mit
+	$350\,\text{â‚¬/kWh}$ die hÃ¶chsten Kosten auf, was zum aktuellen
+	Entwicklungsstand auf Fertigungsaufwand und geringe StÃ¼ckzahlen
+	zurÃ¼ckzufÃ¼hren ist. Bei Massenproduktion werden Kosten von
+	$120$--$150\,\text{â‚¬/kWh}$ erwartet \cite{Winter2018}, was Solid-State
+	auch kostenseitig konkurrenzfÃ¤hig machen wÃ¼rde.
 
-	\begin{proposition}[Kosten-Nutzen-Dominanz für heutige Serienanwendungen]
+	\begin{proposition}[Kosten-Nutzen-Dominanz fÃ¼r heutige Serienanwendungen]
 		\label{prop:cost_lfp}
-		Für Serienanwendungen (TRL 9) mit Kostenbeschränkung
-		$K \leq 100\,\text{€/kWh}$ ist LFP die optimale Wahl:
+		FÃ¼r Serienanwendungen (TRL 9) mit KostenbeschrÃ¤nkung
+		$K \leq 100\,\text{â‚¬/kWh}$ ist LFP die optimale Wahl:
 		\begin{equation}
 			S_{\mathrm{TRL9}}^{\mathrm{LFP}} > S_{\mathrm{TRL9}}^{(i)}
 			\quad \forall\, i \in \{\mathrm{NMC}, \mathrm{NCA}, \mathrm{Na\text{-}Ion}\},\;
 			K_i \leq 100
 		\end{equation}
-		Dies folgt aus der Kombination von überdurchschnittlichem $R_L$
+		Dies folgt aus der Kombination von Ã¼berdurchschnittlichem $R_L$
 		($49{,}9\,\mathrm{km/min}$), maximaler Zyklenlebensdauer
 		($4\,000$ Zyklen) und geringen Kosten bei TRL 9.
 	\end{proposition}
 
-	\subsection{Temperaturabhängige Reichweite}
+	\subsection{TemperaturabhÃ¤ngige Reichweite}
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.92\textwidth]{plot8_temp_range.pdf}
-		\caption{Temperaturabhängige Reichweite (vereinfachtes Arrhenius-Modell)
-		         für alle sieben Technologien. Referenztemperatur $T_{\mathrm{ref}}
+		\caption{TemperaturabhÃ¤ngige Reichweite (vereinfachtes Arrhenius-Modell)
+		         fÃ¼r alle sieben Technologien. Referenztemperatur $T_{\mathrm{ref}}
 		         = 25\,^\circ\mathrm{C}$ (gestrichelte Linie).}
 		\label{fig:temp_range}
 	\end{figure}
 
-	Die temperaturabhängige Reichweite (Abbildung~\ref{fig:temp_range})
-	modelliert die Kapazitätsreduktion bei tiefen und hohen Temperaturen
+	Die temperaturabhÃ¤ngige Reichweite (Abbildung~\ref{fig:temp_range})
+	modelliert die KapazitÃ¤tsreduktion bei tiefen und hohen Temperaturen
 	durch ein vereinfachtes Arrhenius-Modell:
 	\begin{equation}
 		d(T) = d_{\mathrm{max}} \cdot f_T(T),\quad
@@ -2979,9 +2979,9 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	\end{equation}
 	Solid-State zeigt die geringste Temperaturempfindlichkeit aller
 	Technologien, da der Festelektrolyt keine gefrierbedingte
-	Ionenmobilitätsreduktion wie flüssige Elektrolyte aufweist. LFP
-	und Na-Ion folgen mit ebenfalls guter Kältestabilität. Li-S
-	ist am stärksten temperaturabhängig und verliert bei
+	IonenmobilitÃ¤tsreduktion wie flÃ¼ssige Elektrolyte aufweist. LFP
+	und Na-Ion folgen mit ebenfalls guter KÃ¤ltestabilitÃ¤t. Li-S
+	ist am stÃ¤rksten temperaturabhÃ¤ngig und verliert bei
 	$-20\,^\circ\mathrm{C}$ mehr als $60\,\%$ seiner Reichweite.
 
 	\subsection{Zusammenfassende Bewertung}
@@ -3013,11 +3013,11 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\end{tabular}
 	\end{table}
 
-	\begin{theorem}[Hauptergebnis: Optimale Batterietechnologie für maximale
+	\begin{theorem}[Hauptergebnis: Optimale Batterietechnologie fÃ¼r maximale
 	               Reichweite bei minimaler Ladezeit]
 		\label{thm:main_result}
 		Unter den betrachteten sieben Batterietechnologien ist die
-		\emph{Festkörper-Batterie (Solid-State)} die optimale Technologie
+		\emph{FestkÃ¶rper-Batterie (Solid-State)} die optimale Technologie
 		im Sinne des Schnelllade-Reichweiten-Index $R_L$ und des
 		gewichteten Gesamtleistungsindex $S$:
 		\begin{align}
@@ -3028,12 +3028,12 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 			\max_i S^{(i)}
 			\label{eq:main_s}
 		\end{align}
-		Sie vereint die zweitgrößte Reichweite ($635\,\mathrm{km}$) mit
-		der kürzesten Ladezeit ($7{,}2\,\mathrm{min}$ bei $5\,\mathrm{C}$),
+		Sie vereint die zweitgrÃ¶ÃŸte Reichweite ($635\,\mathrm{km}$) mit
+		der kÃ¼rzesten Ladezeit ($7{,}2\,\mathrm{min}$ bei $5\,\mathrm{C}$),
 		einer ausreichenden Zyklenlebensdauer ($3\,000$ Zyklen) und der
-		geringsten Temperaturempfindlichkeit. Die Li-S-Batterie übertrifft
+		geringsten Temperaturempfindlichkeit. Die Li-S-Batterie Ã¼bertrifft
 		Solid-State nur in der absoluten Reichweite ($+0{,}5\,\%$), wird
-		aber gemäß Lemma~\ref{lem:pareto} durch die zehnfach längere
+		aber gemÃ¤ÃŸ Lemma~\ref{lem:pareto} durch die zehnfach lÃ¤ngere
 		Ladezeit im $R_L$-Index um den Faktor $9{,}9$ dominiert.
 	\end{theorem}
 
@@ -3043,14 +3043,14 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		der Datenbasis in Tabelle~\ref{tab:summary_tech}.
 	\end{proof}
 
-	\begin{remark}[Einschränkung und Ausblick]
+	\begin{remark}[EinschrÃ¤nkung und Ausblick]
 		Das Hauptergebnis gilt unter der Voraussetzung, dass die in
-		Tabelle~\ref{tab:tech_params} für Solid-State angegebenen
+		Tabelle~\ref{tab:tech_params} fÃ¼r Solid-State angegebenen
 		Zielparameter ($5\,\mathrm{C}$, $400\,\mathrm{Wh/kg}$,
 		$3\,000$ Zyklen) durch die laufende industrielle Entwicklung
-		(QuantumScape, Toyota, CATL) realisiert werden. Für den heutigen
-		Serienstand (TRL 9) führt LFP im kombinierten Kosten-Nutzenprofil
-		gemäß Proposition~\ref{prop:cost_lfp}. Mit zunehmender
+		(QuantumScape, Toyota, CATL) realisiert werden. FÃ¼r den heutigen
+		Serienstand (TRL 9) fÃ¼hrt LFP im kombinierten Kosten-Nutzenprofil
+		gemÃ¤ÃŸ Proposition~\ref{prop:cost_lfp}. Mit zunehmender
 		Serienreife der Solid-State-Technologie (TRL $\to$ 9) konvergiert
 		der optimale Gesamtindex $S$ der Solid-State-Batterie gegen den
 		in Theorem~\ref{thm:main_result} bewiesenen Wert.
@@ -3062,57 +3062,57 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	% ============================================================
 
 
-	Die in Abschnitt~\ref{sec:validierung} durchgeführten 15 Simulations\-experimente
-	bestätigen sämtliche analytischen Modelle und formalen Beweise dieser Arbeit
+	Die in Abschnitt~\ref{sec:validierung} durchgefÃ¼hrten 15 Simulations\-experimente
+	bestÃ¤tigen sÃ¤mtliche analytischen Modelle und formalen Beweise dieser Arbeit
 	numerisch. Alle zentralen Kennzahlen -- von der Arrheniuskinetik (Exp.~01)
-	über die lastprofilspezifischen Verbesserungsfaktoren (Exp.~09--12) bis hin
+	Ã¼ber die lastprofilspezifischen Verbesserungsfaktoren (Exp.~09--12) bis hin
 	zum EV-Lebenszyklusnachweis (Exp.~15) -- stimmten innerhalb von $\pm 1\,\%$
-	mit den analytischen Werten überein. Insbesondere wurde der
+	mit den analytischen Werten Ã¼berein. Insbesondere wurde der
 	Lebensdauerverbesserungsfaktor $\Phi \geq 1{,}47$ (Theorem~\ref{thm:lifetime_superiority})
-	über alle drei Lastprofile hinweg simulativ bestätigt, und der erweiterte
+	Ã¼ber alle drei Lastprofile hinweg simulativ bestÃ¤tigt, und der erweiterte
 	Faktor $\Phi_\mathrm{ges} \approx 1{,}62$ (Theorem~\ref{thm:lifetime_mech})
 	durch Experiment~08 numerisch verifiziert.
 
 	Diese Arbeit hat formal und durch Simulation den Nachweis erbracht, dass ein
 	KI-gesteuertes Power-Management-Modul (AI-PMM) die Lebensdauer von
-	Lithium-Ionen-Akkumulatoren gegenüber statischen Referenzsystemen um den
+	Lithium-Ionen-Akkumulatoren gegenÃ¼ber statischen Referenzsystemen um den
 	Faktor $\Phi \geq 1{,}47$ steigert. Zwei physikalische Hauptmechanismen
 	werden adressiert:
 	
-	\paragraph{Mechanismus 1 -- Temperaturregelung und Kapazitätsdriften.}
-	Das thermisch induzierte Kapazitätsdriften folgt dem Arrhenius-Gesetz
+	\paragraph{Mechanismus 1 -- Temperaturregelung und KapazitÃ¤tsdriften.}
+	Das thermisch induzierte KapazitÃ¤tsdriften folgt dem Arrhenius-Gesetz
 	\eqref{eq:arrhenius}. Das AI-PMM reduziert die mittlere Betriebstemperatur
-	durch prädiktives Vorkühlmanagement um $\overline{\Delta T} = 8\,\mathrm{K}$,
+	durch prÃ¤diktives VorkÃ¼hlmanagement um $\overline{\Delta T} = 8\,\mathrm{K}$,
 	was einer Halbierung der SEI-Wachstumsrate entspricht. Der thermische
-	Lebensdauer-Verbesserungsfaktor beträgt $\Phi_T = 1{,}307$.
+	Lebensdauer-Verbesserungsfaktor betrÃ¤gt $\Phi_T = 1{,}307$.
 	
 	\paragraph{Mechanismus 2 -- Spannungsregelung zwischen den Elektroden.}
 	Der MPC-basierte Spannungsregler minimiert das Integral der
-	spannungsbedingten Degradationsrate \eqref{eq:mpc_cost} über den gesamten
-	Betriebs\-zeitraum. Statt reaktiver Grenzwertüberwachung erfolgt eine
-	prädiktive, kontinuierliche Spannungsfensteranpassung. Die
+	spannungsbedingten Degradationsrate \eqref{eq:mpc_cost} Ã¼ber den gesamten
+	Betriebs\-zeitraum. Statt reaktiver GrenzwertÃ¼berwachung erfolgt eine
+	prÃ¤diktive, kontinuierliche Spannungsfensteranpassung. Die
 	spannungsbedingte Degradation wird um $30\,\%$ reduziert ($\Phi_V = 1{,}118$).
 	
-	Die Kombination beider Mechanismen mit vollständigem Verhaltenslernen ergibt
+	Die Kombination beider Mechanismen mit vollstÃ¤ndigem Verhaltenslernen ergibt
 	den Gesamtverbesserungsfaktor $\Phi = 1{,}47$, formal bewiesen in
 	Theorem~\ref{thm:lifetime_superiority} und quantifiziert in
 	Proposition~\ref{prop:phi_bound}.
 	
-	\paragraph{Ergebnisse für Elektrofahrzeuge (Kapitel~\ref{sec:ev}).}
-	Die EV-Analyse zeigt die besondere Tragweite dieser Erfindung für die
-	Elektromobilität. Über drei Fahrzeugklassen (EV-A bis EV-C) hinweg ergibt sich:
+	\paragraph{Ergebnisse fÃ¼r Elektrofahrzeuge (Kapitel~\ref{sec:ev}).}
+	Die EV-Analyse zeigt die besondere Tragweite dieser Erfindung fÃ¼r die
+	ElektromobilitÃ¤t. Ãœber drei Fahrzeugklassen (EV-A bis EV-C) hinweg ergibt sich:
 	
 	\begin{itemize}[leftmargin=*]
-		\item Verlängerung der Batterielebensdauer von durchschnittlich
+		\item VerlÃ¤ngerung der Batterielebensdauer von durchschnittlich
 		\textbf{7{,}5 auf 11{,}0 Jahre} (+3{,}5 Jahre / +47\,\%).
 		\item Steigerung der kumulierten Gesamtreichweite von
 		$\varnothing\,170\,200\,\mathrm{km}$ auf $\varnothing\,250\,200\,\mathrm{km}$
 		(\textbf{damit +80\,000 km pro Fahrzeug}).
-		\item Reichweitengewinn bei Kältebetrieb ($-15\,^\circ\mathrm{C}$) von
-		\textbf{+121 km (+38\,\%)} durch prädiktives Vorheizmanagement.
+		\item Reichweitengewinn bei KÃ¤ltebetrieb ($-15\,^\circ\mathrm{C}$) von
+		\textbf{+121 km (+38\,\%)} durch prÃ¤diktives Vorheizmanagement.
 		\item TCO-Ersparnis von $\varnothing\,17\,200\,\text{EUR}$ pro Fahrzeug
-		bei einem ROI von $> 57$-fach gegenüber den Systemkosten des AI-PMM.
-		\item Reduktion des produktionsbedingten CO$_2$-Fußabdrucks der Batterie
+		bei einem ROI von $> 57$-fach gegenÃ¼ber den Systemkosten des AI-PMM.
+		\item Reduktion des produktionsbedingten CO$_2$-FuÃŸabdrucks der Batterie
 		um \textbf{32\,\% pro Fahrtkilometer}.
 		\item Bei 100\,000 Fahrzeugen: $1{,}54 \times 10^6\,\mathrm{t}$ CO$_2$
 		eingespart, $\approx 47\,000$ Pack-Austausche vermieden.
@@ -3120,10 +3120,10 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	
 	\paragraph{Mechanismus 3 -- Dynamische Plattenabstandssteuerung
 		(Kapitel~\ref{sec:plattenabstand}).}
-	Das neue Kapitel dieser Arbeit führt den \textit{dynamischen Plattenabstand}
+	Das neue Kapitel dieser Arbeit fÃ¼hrt den \textit{dynamischen Plattenabstand}
 	$d_\mathrm{sep}(t)$ als dritten, synergetischen Regelungskanal des AI-PMM ein.
-	Während die ersten beiden Mechanismen (Temperatur, Spannung) etablierten
-	Ansätzen entstammen, ist der mechanische Regelungskanal ein neuartiger Beitrag
+	WÃ¤hrend die ersten beiden Mechanismen (Temperatur, Spannung) etablierten
+	AnsÃ¤tzen entstammen, ist der mechanische Regelungskanal ein neuartiger Beitrag
 	dieser Arbeit. Die Ergebnisse im Einzelnen:
 	
 	\begin{itemize}[leftmargin=*]
@@ -3135,52 +3135,52 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 		\item Der Gesamtverbesserungsfaktor steigt von $\Phi = 1{,}47$ auf
 		$\Phi_\mathrm{ges} \approx \mathbf{1{,}62}$ (Theorem~\ref{thm:lifetime_mech},
 		Gleichung~\eqref{eq:phi_total_numerical}).
-		\item Die Verlängerung der EV-Batterielebensdauer erhöht sich auf
-		\textbf{11{,}6 Jahre} (Mittelwert über EV-A bis EV-C) -- statt
+		\item Die VerlÃ¤ngerung der EV-Batterielebensdauer erhÃ¶ht sich auf
+		\textbf{11{,}6 Jahre} (Mittelwert Ã¼ber EV-A bis EV-C) -- statt
 		11{,}0 Jahre ohne den mechanischen Kanal.
 		\item Das Aktuatorsystem (Piezo-Stack, $N_\mathrm{act} = 40$ pro Pack)
 		verbraucht lediglich $\approx 0{,}17\,\mathrm{W}$ Systemleistung --
-		vernachlässigbar gegenüber der Batterieleistung.
-		\item Der ROI des Aktuatorsystems beträgt $\approx 5$-fach bei
+		vernachlÃ¤ssigbar gegenÃ¼ber der Batterieleistung.
+		\item Der ROI des Aktuatorsystems betrÃ¤gt $\approx 5$-fach bei
 		Systemkosten von ca.\ 380\,EUR pro Fahrzeug
 		(Tabelle~\ref{tab:actuator_economics}).
 		\item Der verbesserte thermische Kontaktwiderstand durch adaptiven
-		Anpressdruck unterstützt den thermischen Regelkanal und ermöglicht
-		eine zusätzliche Spitzentemperaturreduktion von bis zu
+		Anpressdruck unterstÃ¼tzt den thermischen Regelkanal und ermÃ¶glicht
+		eine zusÃ¤tzliche Spitzentemperaturreduktion von bis zu
 		$\Delta T_\mathrm{peak} \approx 2\,\mathrm{K}$.
 	\end{itemize}
 	
 	Die formalen Beweise (Theorem~\ref{thm:lifetime_superiority},
-	Theorem~\ref{thm:lyapunov}) stützen sich auf Arrheniuskinetik,
-	SEI-Wachstumsmodelle, MDP-Theorie und Lyapunov-Stabilitätsanalyse.
+	Theorem~\ref{thm:lyapunov}) stÃ¼tzen sich auf Arrheniuskinetik,
+	SEI-Wachstumsmodelle, MDP-Theorie und Lyapunov-StabilitÃ¤tsanalyse.
 	
 	\subsection{Ausblick -- Forschungs- und Entwicklungsperspektiven}
 	
-	Die vorliegende Arbeit eröffnet ein breites Spektrum technologischer
+	Die vorliegende Arbeit erÃ¶ffnet ein breites Spektrum technologischer
 	Weiterentwicklungen. Die folgenden Richtungen sind besonders vielversprechend
-	und werden nachfolgend ausführlich erläutert.
+	und werden nachfolgend ausfÃ¼hrlich erlÃ¤utert.
 	
 	\subsubsection{Kurzfristige Entwicklungen (1--3 Jahre)}
 	
 	\paragraph{(1) Multi-Zell-Balancing mit KI.}
 	Reale EV-Batteriepacks weisen durch Fertigungsstreuungen und unterschiedliche
-	thermische Exposition eine Zell-zu-Zell-Variation der Kapazität und des
+	thermische Exposition eine Zell-zu-Zell-Variation der KapazitÃ¤t und des
 	Innenwiderstands auf. Aktive Balancing-Systeme (z.\,B.\ Induktiv-Balancing,
-	kapazitives Balancing) können durch das AI-PMM koordiniert werden, indem
-	der RL-Agent die Ausgleichsströme so plant, dass der schwächste Zellblock
-	des Packs die geringste Zusatzdegradation erfährt. Die Verlängerung der
-	Pack-Lebensdauer durch optimiertes Balancing wird auf einen zusätzlichen
-	Faktor $\Phi_\mathrm{bal} \approx 1{,}10\text{--}1{,}15$ geschätzt,
+	kapazitives Balancing) kÃ¶nnen durch das AI-PMM koordiniert werden, indem
+	der RL-Agent die AusgleichsstrÃ¶me so plant, dass der schwÃ¤chste Zellblock
+	des Packs die geringste Zusatzdegradation erfÃ¤hrt. Die VerlÃ¤ngerung der
+	Pack-Lebensdauer durch optimiertes Balancing wird auf einen zusÃ¤tzlichen
+	Faktor $\Phi_\mathrm{bal} \approx 1{,}10\text{--}1{,}15$ geschÃ¤tzt,
 	sodass die Gesamtverbesserung auf $\Phi_\mathrm{ges} \approx 1{,}62$
-	ansteigen könnte.
+	ansteigen kÃ¶nnte.
 	
-	\paragraph{(2) Integration von Schnellladesäulen-Kommunikation (V2G/ISO 15118).}
+	\paragraph{(2) Integration von SchnellladesÃ¤ulen-Kommunikation (V2G/ISO 15118).}
 	Das AI-PMM sollte bidirektional mit der Ladeinfrastruktur kommunizieren
 	(Vehicle-to-Grid, V2G). Durch vorausschauende Ladeplanung -- Kenntnis des
-	Energiepreissignals, der Netzeinspeisevergütung und der eigenen Degradationsrate
+	Energiepreissignals, der NetzeinspeisevergÃ¼tung und der eigenen Degradationsrate
 	-- kann die Ladesequenz so gestaltet werden, dass Schnellladung nur bei
-	günstigen Temperaturen und niedrigen Netzpreisen erfolgt. Simulationen
-	deuten auf eine weitere Lebensdauerverlängerung von $5\text{--}12\,\%$ hin.
+	gÃ¼nstigen Temperaturen und niedrigen Netzpreisen erfolgt. Simulationen
+	deuten auf eine weitere LebensdauerverlÃ¤ngerung von $5\text{--}12\,\%$ hin.
 	
 	\paragraph{(3) Edge-AI-Deployment auf Fahrzeugelektronik.}
 	Das AI-PMM muss auf Embed\-ded-Systemen mit begrenzten Ressourcen
@@ -3189,232 +3189,232 @@ neuartigen, synergetischen dritten Regelungskanal dar, der:
 	werden entfernt; INT8-Quantisierung statt FP32) kann der RL-Agent von
 	$\approx 4\,\mathrm{MB}$ auf $< 200\,\mathrm{kB}$ komprimiert werden bei
 	weniger als $3\,\%$ Performanzverlust. Das PyLab-Framework (MicroPython/ESP32)
-	bietet einen geeigneten Entwicklungsrahmen für Prototypen dieser Art und
-	ermöglicht die Validierung der Edge-Inferenz unter realistischen
+	bietet einen geeigneten Entwicklungsrahmen fÃ¼r Prototypen dieser Art und
+	ermÃ¶glicht die Validierung der Edge-Inferenz unter realistischen
 	Echtzeitbedingungen.
 	
 	\subsubsection{Mittelfristige Entwicklungen (3--7 Jahre)}
 	
-	\paragraph{(4) Federated Learning über Fahrzeugflotten.}
+	\paragraph{(4) Federated Learning Ã¼ber Fahrzeugflotten.}
 	Ein einzelnes Fahrzeug generiert pro Jahr ca.\ $10^7$ Datenpunkte.
-	Eine Fahrzeugflotte von $10^5$ Einheiten könnte in Summe $10^{12}$
-	Datenpunkte liefern -- genug, um ein universell überlegenes Verhaltensmodell
+	Eine Fahrzeugflotte von $10^5$ Einheiten kÃ¶nnte in Summe $10^{12}$
+	Datenpunkte liefern -- genug, um ein universell Ã¼berlegenes Verhaltensmodell
 	zu trainieren. Federated Learning erlaubt dabei das Training ohne zentrale
-	Datenspeicherung: Jedes Fahrzeug berechnet Gradienten lokal und überträgt
+	Datenspeicherung: Jedes Fahrzeug berechnet Gradienten lokal und Ã¼bertrÃ¤gt
 	nur diese (aggregiert, $\varepsilon$-differentiell privat) an einen
 	zentralen Server. Die Konvergenz des Federated-RL-Agenten unter
 	heterogenen Lastprofilen ist ein offenes Forschungsproblem.
 	
-	\paragraph{(5) Zustandsschätzung mittels Elektrochemischer Impedanzspektroskopie.}
-	Die Genauigkeit des AI-PMM ist direkt von der Qualität des SoH-Schätzers
-	(State-of-Health) abhängig. Onboard-Elektrochemische Impedanzspektroskopie
+	\paragraph{(5) ZustandsschÃ¤tzung mittels Elektrochemischer Impedanzspektroskopie.}
+	Die Genauigkeit des AI-PMM ist direkt von der QualitÃ¤t des SoH-SchÃ¤tzers
+	(State-of-Health) abhÃ¤ngig. Onboard-Elektrochemische Impedanzspektroskopie
 	(EIS) mit Breitbandsignalen ($1\,\mathrm{mHz}\text{--}10\,\mathrm{kHz}$)
-	ermöglicht eine modellbasierte Extraktion von SEI-Widerstand, Diffusionskoeffizient
+	ermÃ¶glicht eine modellbasierte Extraktion von SEI-Widerstand, Diffusionskoeffizient
 	und Lithium-Plating-Indikatoren mit einer Genauigkeit von $< 2\,\%$ SoH-Fehler.
-	Dies schafft die Grundlage für eine echte präzise Lebensdauerprognose
-	(Remaining Useful Life, RUL-Prädiktion) mit einem Vorhersagehorizont von
+	Dies schafft die Grundlage fÃ¼r eine echte prÃ¤zise Lebensdauerprognose
+	(Remaining Useful Life, RUL-PrÃ¤diktion) mit einem Vorhersagehorizont von
 	$> 200$ Zyklen.
 	
 	\paragraph{(6) Digitaler Zwilling des Batteriesystems.}
-	Die Integration des AI-PMM in einen digitalen Zwilling eröffnet die
-	Möglichkeit der vorausschauenden Instandhaltung (Predictive Maintenance).
-	Der Zwilling läuft parallel zur physischen Batterie, simuliert die Alterung
+	Die Integration des AI-PMM in einen digitalen Zwilling erÃ¶ffnet die
+	MÃ¶glichkeit der vorausschauenden Instandhaltung (Predictive Maintenance).
+	Der Zwilling lÃ¤uft parallel zur physischen Batterie, simuliert die Alterung
 	basierend auf den realen Betriebsdaten und generiert automatisch
 	Wartungsempfehlungen, Garantieprognosen und Tauschzeitpunkte. Die Kombination
-	aus digitalem Zwilling und AI-PMM kann die unerwartete Kapazitätsfadingrate
-	um weitere $10\text{--}15\,\%$ reduzieren, da Anomalien frühzeitig erkannt
+	aus digitalem Zwilling und AI-PMM kann die unerwartete KapazitÃ¤tsfadingrate
+	um weitere $10\text{--}15\,\%$ reduzieren, da Anomalien frÃ¼hzeitig erkannt
 	und die Regelstrategie angepasst wird.
 	
 	\subsubsection{Langfristige Vision (7--15 Jahre)}
 	
 	\paragraph{(7) Solid-State-Batterien und Neue Chemien.}
-	Die nächste Batteriegeneration (Solid-State, Lithium-Schwefel, Lithium-Luft)
+	Die nÃ¤chste Batteriegeneration (Solid-State, Lithium-Schwefel, Lithium-Luft)
 	weist andere Degradationsmechanismen auf als NMC/Graphit-Zellen. Das
 	AI-PMM-Framework ist jedoch chemie-agnostisch: Die RL-Formulierung
 	\eqref{eq:reward} und die MPC-Regelstruktur \eqref{eq:mpc_cost} sind
-	für beliebige Degradationsmodelle einsetzbar. Solid-State-Batterien mit
-	ihrer thermischen Empfindlichkeit gegenüber Grenzflächenwiderständen
-	profitieren besonders von der prädiktiven Temperaturregelung des AI-PMM.
+	fÃ¼r beliebige Degradationsmodelle einsetzbar. Solid-State-Batterien mit
+	ihrer thermischen Empfindlichkeit gegenÃ¼ber GrenzflÃ¤chenwiderstÃ¤nden
+	profitieren besonders von der prÃ¤diktiven Temperaturregelung des AI-PMM.
 	
 	\paragraph{(8) Adaptive Batteriechemie durch elektro\-thermisches Recycling.}
-	In einer zirkulären Wirtschaft könnten alternde EV-Batterien, die das
-	EoL-Kriterium für Fahrzeuganwendungen erreicht haben ($Q < 80\,\%\,Q_0$),
-	als stationäre Energiespeicher (Second-Life-Batterien) eingesetzt werden.
-	Das AI-PMM kann dabei die Betriebsparameter automatisch auf die veränderte
+	In einer zirkulÃ¤ren Wirtschaft kÃ¶nnten alternde EV-Batterien, die das
+	EoL-Kriterium fÃ¼r Fahrzeuganwendungen erreicht haben ($Q < 80\,\%\,Q_0$),
+	als stationÃ¤re Energiespeicher (Second-Life-Batterien) eingesetzt werden.
+	Das AI-PMM kann dabei die Betriebsparameter automatisch auf die verÃ¤nderte
 	Zellchemie anpassen: Erweitertes Spannungsfenster, angepasste
-	C-Raten-Limits, Temperaturoptimierung für stationären Einsatz. Durch das
-	AI-PMM verlängertes First-Life erhöht dabei auch die Qualität des Second-Life:
+	C-Raten-Limits, Temperaturoptimierung fÃ¼r stationÃ¤ren Einsatz. Durch das
+	AI-PMM verlÃ¤ngertes First-Life erhÃ¶ht dabei auch die QualitÃ¤t des Second-Life:
 	ein mit dem AI-PMM betriebenes Pack weist nach 11 Jahren noch $\approx 80\,\%$
-	Kapazität auf -- ein konventionelles Pack nach 7{,}5 Jahren ebenfalls,
-	jedoch mit deutlich höherer Varianz und stärkerer Zelldrift, was das
-	Second-Life-Potenzial einschränkt.
+	KapazitÃ¤t auf -- ein konventionelles Pack nach 7{,}5 Jahren ebenfalls,
+	jedoch mit deutlich hÃ¶herer Varianz und stÃ¤rkerer Zelldrift, was das
+	Second-Life-Potenzial einschrÃ¤nkt.
 	
 	\paragraph{(9) Autonome Flotten und KI-gesteuerte Ladeinfrastruktur.}
 	Im Szenario autonomer Elektrofahrzeugflotten (Robotaxis, autonome Lieferdienste)
 	ist das AI-PMM ein kritischer Enabler: Durch Kenntnis des Missionsplans
 	(Route, Passagierzahl, Wetterbedingungen) kann der Akku optimal in Bezug
-	auf Temperatur, Ladestand und Spannungsprofil für die bevorstehende Mission
-	vorbereitet werden. Eine vollständig koordinierte Flotte mit AI-PMM könnte
+	auf Temperatur, Ladestand und Spannungsprofil fÃ¼r die bevorstehende Mission
+	vorbereitet werden. Eine vollstÃ¤ndig koordinierte Flotte mit AI-PMM kÃ¶nnte
 	die durchschnittliche Betriebsdauer der Batteriepacks auf
 	$15\text{--}18$ Jahre steigern -- ein transformativer wirtschaftlicher
-	und ökologischer Effekt.
+	und Ã¶kologischer Effekt.
 	
 	\paragraph{(10) Gesetzgebung und Standardisierung.}
-	Der EU-Batteriepass (Regulation (EU) 2023/1542), der ab 2027 für alle
+	Der EU-Batteriepass (Regulation (EU) 2023/1542), der ab 2027 fÃ¼r alle
 	Traktionsbatterien verpflichtend wird, schreibt die digitale Erfassung von
 	SoH, Zyklenzahl und Betriebshistorie vor. Das AI-PMM ist architekturell
-	ideal für die Erzeugung dieser Daten geeignet: Als Regler kennt es den
-	vollständigen Betriebsverlauf. Die Integration des AI-PMM in den
+	ideal fÃ¼r die Erzeugung dieser Daten geeignet: Als Regler kennt es den
+	vollstÃ¤ndigen Betriebsverlauf. Die Integration des AI-PMM in den
 	standardisierten Batteriepass-Datenstrom kann zum De-facto-Standard
-	werden und regulatorisch präferiert werden, da nachweislich längere
-	Lebensdauern und geringere CO$_2$-Fußabdrücke demonstriert werden können.
+	werden und regulatorisch prÃ¤feriert werden, da nachweislich lÃ¤ngere
+	Lebensdauern und geringere CO$_2$-FuÃŸabdrÃ¼cke demonstriert werden kÃ¶nnen.
 
 \subsubsection{Dynamische Plattenabstandssteuerung -- Entwicklungsperspektiven}
 
 Die in Kapitel~\ref{sec:plattenabstand} vorgestellte dynamische Plattenabstandssteuerung
-als dritter Regelungskanal des AI-PMM eröffnet ein breites Spektrum technischer
-und wissenschaftlicher Weiterentwicklungen, die weit über die in dieser Arbeit
+als dritter Regelungskanal des AI-PMM erÃ¶ffnet ein breites Spektrum technischer
+und wissenschaftlicher Weiterentwicklungen, die weit Ã¼ber die in dieser Arbeit
 betrachteten Szenarien hinausgehen. Im Folgenden werden diese Perspektiven
 systematisch entlang eines kurz-, mittel- und langfristigen Zeithorizonts
 entwickelt.
 
 \paragraph{(11) Kurzfristig: Hardwarevalidierung und Zelltyp-spezifische
 	Kalibrierung (1--2 Jahre).}
-Der unmittelbar nächste Schritt besteht in der experimentellen Validierung
+Der unmittelbar nÃ¤chste Schritt besteht in der experimentellen Validierung
 des Plattenabstandsmodells \eqref{eq:mech_ode}--\eqref{eq:swelling_soc}
 an realen Zellen unterschiedlicher Chemien (NMC, LFP, NCA) und Geometrien
-(Pouch, prismatisch, zylindrisch). Für Pouch-Zellen ist der Aktuatorzugang
+(Pouch, prismatisch, zylindrisch). FÃ¼r Pouch-Zellen ist der Aktuatorzugang
 am einfachsten, da der Separatorspalt durch externe Druckplatten direkt
 beeinflusst werden kann. Zylindrische Zellen (z.\,B.\ 4680-Format) erfordern
-demgegenüber piezoelektrische Ringe, die den Zellmantel radial komprimieren.
+demgegenÃ¼ber piezoelektrische Ringe, die den Zellmantel radial komprimieren.
 
-Besonders relevant ist die Kalibrierung der Tortuositätsfunktion
-$\tau(d_\mathrm{sep})$ in \eqref{eq:tortuosity} für verschiedene Separatormaterialien
+Besonders relevant ist die Kalibrierung der TortuositÃ¤tsfunktion
+$\tau(d_\mathrm{sep})$ in \eqref{eq:tortuosity} fÃ¼r verschiedene Separatormaterialien
 (Polyethylen, Polypropylen, Keramikbeschichtung). Elektrochemische
 Impedanzspektroskopie (EIS) im Bereich $1\,\mathrm{mHz}\text{--}10\,\mathrm{kHz}$
-liefert hier präzise in-situ-Messwerte des ionischen Widerstands als Funktion
+liefert hier prÃ¤zise in-situ-Messwerte des ionischen Widerstands als Funktion
 des Anpressdrucks. Die Kombination von EIS-Messung und Plattenabstandsregelung
-schafft eine hochauflösende, berührungslose Methode zur Echtzeit-Charakterisierung
-des Zellzustands -- weit über bisherige SoH-Schätzer hinausgehend.
+schafft eine hochauflÃ¶sende, berÃ¼hrungslose Methode zur Echtzeit-Charakterisierung
+des Zellzustands -- weit Ã¼ber bisherige SoH-SchÃ¤tzer hinausgehend.
 
 \paragraph{(12) Kurzfristig: Multi-Zell-Pack-Integration und
 	Balancing-Synergie (1--3 Jahre).}
 In einem EV-Batteriepack mit typischerweise $100\text{--}400$ Zellen
-können nicht alle Zellen individuell mit Aktuatoren ausgestattet werden.
+kÃ¶nnen nicht alle Zellen individuell mit Aktuatoren ausgestattet werden.
 Das AI-PMM muss daher eine optimale Gruppen-Strategie entwickeln:
-Zellgruppen mit ähnlichem SoC-Profil und gleichem Degradationsstatus
+Zellgruppen mit Ã¤hnlichem SoC-Profil und gleichem Degradationsstatus
 werden zu Aktuatorgruppen zusammengefasst ($N_\mathrm{act} = 40$ bei
 400 Zellen). Der RL-Agent lernt, welche Gruppen zu welchen Zeitpunkten
-vorrangig mechanisch entlastet werden müssen.
+vorrangig mechanisch entlastet werden mÃ¼ssen.
 
 Diese Gruppensteuerung interagiert synergetisch mit dem Multi-Zell-Balancing
-(Abschnitt Kurzfristig, Punkt 1): Zellen mit erhöhter mechanischer Belastung
-werden durch verminderten Balancing-Strom zusätzlich geschont. Die Kombination
+(Abschnitt Kurzfristig, Punkt 1): Zellen mit erhÃ¶hter mechanischer Belastung
+werden durch verminderten Balancing-Strom zusÃ¤tzlich geschont. Die Kombination
 aus mechanischer und elektrischer Entlastung kann den mechanischen Degradationsbeitrag
 auf unter $\eta_M = 0{,}20$ senken, was nach \eqref{eq:phi_total} den
-Gesamtverbesserungsfaktor auf $\Phi_\mathrm{ges} > 1{,}65$ erhöht.
+Gesamtverbesserungsfaktor auf $\Phi_\mathrm{ges} > 1{,}65$ erhÃ¶ht.
 
 \paragraph{(13) Mittelfristig: Adaptiver Anpressdruck bei
-	Festkörperbatterien (3--7 Jahre).}
-Festkörperbatterien (Solid-State Batteries, SSB) mit keramischen oder
+	FestkÃ¶rperbatterien (3--7 Jahre).}
+FestkÃ¶rperbatterien (Solid-State Batteries, SSB) mit keramischen oder
 polymerischen Festelektrolyten stellen besondere mechanische Anforderungen:
-Der Grenzflächenwiderstand zwischen Elektrolyt und Elektrode hängt
+Der GrenzflÃ¤chenwiderstand zwischen Elektrolyt und Elektrode hÃ¤ngt
 kritisch vom Kontaktdruck ab. Bei zu niedrigem Druck entstehen Luftspalten
-an der Festkörper-Grenzfläche, die den ionischen Widerstand exponentiell
-erhöhen. Bei zu hohem Druck kommt es zu mechanischen Rissen in der
+an der FestkÃ¶rper-GrenzflÃ¤che, die den ionischen Widerstand exponentiell
+erhÃ¶hen. Bei zu hohem Druck kommt es zu mechanischen Rissen in der
 Keramikmatrix.
 
-Das AI-PMM ist für dieses Szenario ideal: Der Plattenabstandsregler
-hält den Anpressdruck im optimalen Fenster
+Das AI-PMM ist fÃ¼r dieses Szenario ideal: Der Plattenabstandsregler
+hÃ¤lt den Anpressdruck im optimalen Fenster
 $p^*_\mathrm{SSB} \in [0{,}8, 2{,}5]\,\mathrm{MPa}$, das durch
 EIS-basiertes Online-Feedback kontinuierlich aktualisiert wird.
 Da SSB-Zellen empfindlicher auf mechanischen Stress reagieren als
-flüssig-elektrolytbasierte Zellen ($m_\mathrm{mech,SSB} \approx 4{,}5$
+flÃ¼ssig-elektrolytbasierte Zellen ($m_\mathrm{mech,SSB} \approx 4{,}5$
 statt $2{,}5$), ist der Gewinn durch mechanische Regelung bei SSB noch
-größer: Nach \eqref{eq:mech_deg_controlled} sinkt der mechanische
+grÃ¶ÃŸer: Nach \eqref{eq:mech_deg_controlled} sinkt der mechanische
 Reduktionsfaktor auf $\eta_M^\mathrm{SSB} \approx 0{,}11$ bei optimaler
 Regelung -- eine Reduktion der mechanischen Degradationsrate um \textbf{89\,\%}.
 
 \paragraph{(14) Mittelfristig: Thermomechanische Kopplung und
 	Extremtemperatur-Betrieb (3--7 Jahre).}
-Der mechanische Regelungskanal eröffnet einen bislang ungenutzten Weg
-zur Verbesserung des Kältebetriebs von Lithium-Ionen-Zellen. Bei tiefen
-Temperaturen ($T < -10\,^\circ\mathrm{C}$) steigt die Viskosität des
+Der mechanische Regelungskanal erÃ¶ffnet einen bislang ungenutzten Weg
+zur Verbesserung des KÃ¤ltebetriebs von Lithium-Ionen-Zellen. Bei tiefen
+Temperaturen ($T < -10\,^\circ\mathrm{C}$) steigt die ViskositÃ¤t des
 Elektrolyten stark an, was den Ionentransport verschlechtert und das
-Lithium-Plating-Risiko erhöht (vgl.\ \eqref{eq:li_plating}). Eine
-gezielte Druckerhöhung auf den Separator verbessert den ionischen Kontakt
-und ermöglicht bei gleicher Temperatur höhere Ladeströme ohne Plating-Gefahr.
+Lithium-Plating-Risiko erhÃ¶ht (vgl.\ \eqref{eq:li_plating}). Eine
+gezielte DruckerhÃ¶hung auf den Separator verbessert den ionischen Kontakt
+und ermÃ¶glicht bei gleicher Temperatur hÃ¶here LadestrÃ¶me ohne Plating-Gefahr.
 
-Quantitativ: Bei $T = -15\,^\circ\mathrm{C}$ und erhöhtem Anpressdruck
+Quantitativ: Bei $T = -15\,^\circ\mathrm{C}$ und erhÃ¶htem Anpressdruck
 von $\Delta p = +0{,}5\,\mathrm{MPa}$ kann die maximal sichere Ladestromrate
 von $0{,}3\,C$ auf $0{,}5\,C$ angehoben werden -- eine Beschleunigung des
 Ladevorgangs um $67\,\%$ bei gleicher Sicherheitsmarge. In Verbindung mit
-dem prädiktiven Vorheizmanagement des AI-PMM (thermischer Regelkanal) ergibt
-sich ein synergistischer Effekt: Der mechanische Kanal ermöglicht sicheres
+dem prÃ¤diktiven Vorheizmanagement des AI-PMM (thermischer Regelkanal) ergibt
+sich ein synergistischer Effekt: Der mechanische Kanal ermÃ¶glicht sicheres
 Schnellladen bei Temperaturen, bei denen konventionelle Systeme nur mit stark
-reduzierten C-Raten laden können.
+reduzierten C-Raten laden kÃ¶nnen.
 
 \paragraph{(15) Langfristig: Morphologisch adaptive Batteriezellen --
 	``Breathing Cells'' (7--15 Jahre).}
-Die langfristige Vision geht über die reaktive Kompensation von
-Schwellungseffekten hinaus: Zellen könnten architektural so gestaltet werden,
-dass der Plattenabstand ein \textit{primärer Betriebsparameter} -- vergleichbar
+Die langfristige Vision geht Ã¼ber die reaktive Kompensation von
+Schwellungseffekten hinaus: Zellen kÃ¶nnten architektural so gestaltet werden,
+dass der Plattenabstand ein \textit{primÃ¤rer Betriebsparameter} -- vergleichbar
 mit Spannung und Temperatur -- wird. In solchen ``Breathing Cells'' wird
-$d_\mathrm{sep}(t)$ als kontinuierliche Stellgröße genutzt, um:
+$d_\mathrm{sep}(t)$ als kontinuierliche StellgrÃ¶ÃŸe genutzt, um:
 
 \begin{itemize}[leftmargin=*]
 	\item die Energiedichte dynamisch zu optimieren (bei geringem Stromtransportbedarf
-	maximaler Plattenabstand für minimale SEI-Wachstumsrate; bei Hochstrom
-	minimaler Abstand für maximalen Ionentransport),
+	maximaler Plattenabstand fÃ¼r minimale SEI-Wachstumsrate; bei Hochstrom
+	minimaler Abstand fÃ¼r maximalen Ionentransport),
 	\item Selbstheilungsmechanismen zu aktivieren (periodische Druckpulse
-	können partiell gebildete Dendritenstrukturen mechanisch unterbrechen),
+	kÃ¶nnen partiell gebildete Dendritenstrukturen mechanisch unterbrechen),
 	\item und thermische Gradienten innerhalb des Zellstapels aktiv zu
 	nivellieren (durch differentielle Druckanpassung benachbarter Schichten
-	wird der Wärmedurchgang gezielt gesteuert).
+	wird der WÃ¤rmedurchgang gezielt gesteuert).
 \end{itemize}
 
 Diese Vision erfordert eine enge Co-Entwicklung von Zellarchitektur und
 Regelungsstrategie -- eine neue Disziplin, die als
-\textit{mechatronische Batterieentwicklung} bezeichnet werden könnte.
+\textit{mechatronische Batterieentwicklung} bezeichnet werden kÃ¶nnte.
 Das AI-PMM bildet dabei den kognitiven Kern: Es lernt die optimale
 Atmungskurve $d_\mathrm{sep}^*(\mathrm{SoC}, T, \mathrm{SoH}, \mathrm{Mission})$
-für jede individuelle Zelle und jede Nutzungssituation.
+fÃ¼r jede individuelle Zelle und jede Nutzungssituation.
 
 \paragraph{(16) Langfristig: Autonome EV-Flotten mit kollektivem
-	mechanischen Gedächtnis (10--15 Jahre).}
+	mechanischen GedÃ¤chtnis (10--15 Jahre).}
 Im Szenario vollautonomer EV-Flotten (Robotaxis, Lieferdienste) mit
 AI-PMM und Plattenabstandsregelung entsteht ein kollektives mechanisches
-Gedächtnis: Jedes Fahrzeug erfasst die mechanische Alterungshistorie
-seiner Zellen in hochauflösender Form (Druckverlauf, Schwellungszyklen,
-Stressintegrale). Über Federated Learning (vgl.\ Punkt (4)) werden diese
+GedÃ¤chtnis: Jedes Fahrzeug erfasst die mechanische Alterungshistorie
+seiner Zellen in hochauflÃ¶sender Form (Druckverlauf, Schwellungszyklen,
+Stressintegrale). Ãœber Federated Learning (vgl.\ Punkt (4)) werden diese
 Daten flottenweit aggregiert und erzeugen ein universelles
-\textit{mechanisches Degradationsmodell} für jeden Zelltyp und jede
+\textit{mechanisches Degradationsmodell} fÃ¼r jeden Zelltyp und jede
 Betriebsbedingung.
 
-Dieses Modell ermöglicht eine weitere Innovation: Beim Gebrauchtwagenkauf
+Dieses Modell ermÃ¶glicht eine weitere Innovation: Beim Gebrauchtwagenkauf
 oder beim Second-Life-Einsatz kann das AI-PMM aus der mechanischen
 Betriebshistorie den verbleibenden mechanischen Degradationsvorrat
-$\Psi_\mathrm{mech}^\mathrm{rest}$ präzise schätzen -- analog zur
-elektrochemischen RUL-Prädiktion (Punkt (5)) -- und damit den Restwert
+$\Psi_\mathrm{mech}^\mathrm{rest}$ prÃ¤zise schÃ¤tzen -- analog zur
+elektrochemischen RUL-PrÃ¤diktion (Punkt (5)) -- und damit den Restwert
 der Batterie und den optimalen Second-Life-Einsatz bestimmen. Eine
 Batterie, die mit aktivem Plattenabstandsregler betrieben wurde, weist
-nach 11{,}6 Jahren nicht nur höhere Kapazität, sondern auch signifikant
+nach 11{,}6 Jahren nicht nur hÃ¶here KapazitÃ¤t, sondern auch signifikant
 geringere Zelldrift und homogenere mechanische Belastungshistorie auf --
-Eigenschaften, die den Second-Life-Einsatz in stationären Speichern
+Eigenschaften, die den Second-Life-Einsatz in stationÃ¤ren Speichern
 erheblich erleichtern.
 
-Die Kombination aus elektrochemischer Präzision des AI-PMM, prädiktiver
-Temperatur\-füh\-rung und adaptiver mechanischer Entlastung durch
-dynamische Plattenabstandssteuerung begründet eine qualitativ neue
+Die Kombination aus elektrochemischer PrÃ¤zision des AI-PMM, prÃ¤diktiver
+Temperatur\-fÃ¼h\-rung und adaptiver mechanischer Entlastung durch
+dynamische Plattenabstandssteuerung begrÃ¼ndet eine qualitativ neue
 Klasse von Energiespeichersystemen, die -- formal bewiesen in dieser
 Arbeit und langfristig in der Praxis umsetzbar -- das Potenzial haben,
 die Lebensdauer von Lithium-Ionen-Batterien auf
 $\mathbf{15\text{--}18\,\mathrm{Jahre}}$ in EV-Anwendungen zu heben
-und damit die Wirtschaftlichkeit der Elektromobilität nachhaltig zu
+und damit die Wirtschaftlichkeit der ElektromobilitÃ¤t nachhaltig zu
 transformieren.
 	
 	% ============================================================
-	% Literaturverzeichnis (inline, da kein .bib verfügbar)
+	% Literaturverzeichnis (inline, da kein .bib verfÃ¼gbar)
 	% ============================================================
 	\begin{thebibliography}{99}
 		
@@ -3473,3 +3473,4 @@ transformieren.
 	\end{thebibliography}
 	
 \end{document}
+

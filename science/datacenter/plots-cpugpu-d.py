@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -149,5 +149,6 @@ ax4.set_ylabel('Benötigte CPUs (log)')
 ax4.set_title('CPU-Bedarf nach GPU-Anzahl\nund Konfiguration (T-Systems BIE)')
 ax4.legend(fontsize=8, ncol=2)
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_d.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_d.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_d.pdf saved")
+

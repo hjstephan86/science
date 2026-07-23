@@ -106,7 +106,7 @@ ax2.set_ylim(25, 110)
 ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/claude/mikroplastik_extension/plot_korallen_mp_wirkung.pdf',
+plt.savefig('plot_korallen_mp_wirkung.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot A gespeichert.")

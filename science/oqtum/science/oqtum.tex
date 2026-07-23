@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -84,7 +84,7 @@
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\matr}[1]{\mathbf{#1}}
 
-\title{\textbf{Aktive Nanooptik: Programmierbare\\ photonische Oberflächen} \\ [0.8ex]
+\title{\textbf{Aktive Nanooptik: Programmierbare\\ photonische OberflÃ¤chen} \\ [0.8ex]
 	\large Dynamische Textur- und Farbkontrolle durch weiche Polymersysteme ---\\
 	Von Cephalopoden-Haut zu adaptiven Nanostrukturen}
 \author{Stephan Epp}
@@ -98,54 +98,54 @@
 	\newpage
 	
 	%%=============================================================
-	\section{Einführung}
+	\section{EinfÃ¼hrung}
 	\label{sec:einfuehrung}
 	%%=============================================================
 	Die aktive Nanooptik vereint Quantenmechanik, Nanofabrikation und Soft\-matter-Physik,
-	um Oberflächen mit programmierbarem optischen Erscheinungsbild zu realisieren.
+	um OberflÃ¤chen mit programmierbarem optischen Erscheinungsbild zu realisieren.
 	Inspiriert von der dynamischen Farbkontrolle in Cephalopoden-Haut entwickelt diese
-	Arbeit einen vollständigen theoretischen Rahmen für weiche photonische Systeme,
-	in denen Strukturfarbe und Oberflächentextur unabhängig und reversibel gesteuert
-	werden können.
-	Wir zeigen, dass die Modulation von Fabry-Pérot-Resonatoren durch mikrofluidische
-	Quellungsprozesse eine kontinuierliche Durchstimmbarkeit der Resonanzwellenlänge
-	über das gesamte sichtbare Spektrum von \SI{420}{nm} bis \SI{700}{nm} ermöglicht.
-	Durch Elektronenstrahlbestrahlung lassen sich räumlich kodierte Quellungsgradienten
-	in Polymerfilmen erzeugen, die bei Kontakt mit verschiedenen Lösungsmitteln
+	Arbeit einen vollstÃ¤ndigen theoretischen Rahmen fÃ¼r weiche photonische Systeme,
+	in denen Strukturfarbe und OberflÃ¤chentextur unabhÃ¤ngig und reversibel gesteuert
+	werden kÃ¶nnen.
+	Wir zeigen, dass die Modulation von Fabry-PÃ©rot-Resonatoren durch mikrofluidische
+	Quellungsprozesse eine kontinuierliche Durchstimmbarkeit der ResonanzwellenlÃ¤nge
+	Ã¼ber das gesamte sichtbare Spektrum von \SI{420}{nm} bis \SI{700}{nm} ermÃ¶glicht.
+	Durch Elektronenstrahlbestrahlung lassen sich rÃ¤umlich kodierte Quellungsgradienten
+	in Polymerfilmen erzeugen, die bei Kontakt mit verschiedenen LÃ¶sungsmitteln
 	vordefinierte Topographien offenbaren oder verbergen.
-	Das zentrale theoretische Werkzeug ist die Transfermatrix-Methode (TMM) für
+	Das zentrale theoretische Werkzeug ist die Transfermatrix-Methode (TMM) fÃ¼r
 	geschichtete optische Medien in Verbindung mit einem modifizierten Flory-Rehner-Modell
-	für die Quellung vernetzter Polymernetzwerke.
+	fÃ¼r die Quellung vernetzter Polymernetzwerke.
 	Algorithmisch wird die optimale Resonatorgeometrie als inverses Problem formuliert
 	und durch einen deterministischen adjungierten Gradientenabstieg mit
-	Laufzeit $\ordre{I \cdot K\Lambda}$ gelöst.
+	Laufzeit $\ordre{I \cdot K\Lambda}$ gelÃ¶st.
 	Proximity-Effekte des Elektronenstrahls werden durch einen FFT-beschleunigten
 	iterativen Korrekturalgorithmus in $\ordre{M^2 \log M}$ behoben.
-	Die vorgestellte Methodik ermöglicht adaptive Tarnfarben-Anwendungen,
+	Die vorgestellte Methodik ermÃ¶glicht adaptive Tarnfarben-Anwendungen,
 	biomedizinische Sensor-Displays, holographische Datenspeicherung und dynamisch
-	programmierbare Metamaterialoberflächen.
+	programmierbare MetamaterialoberflÃ¤chen.
 	Formal wird die enge Verwandtschaft zwischen der photonischen Transfermatrix und
 	dem quantenmechanischen Zeitentwicklungsoperator herausgearbeitet, was den
-	Methodentransfer zwischen Quantenmechanik und Nanooptik begründet.
+	Methodentransfer zwischen Quantenmechanik und Nanooptik begrÃ¼ndet.
 	
 	\subsection{Motivation und Zielsetzung}
 	
-	Das visuelle Erscheinungsbild einer Oberfläche ist eine emergente Eigenschaft
+	Das visuelle Erscheinungsbild einer OberflÃ¤che ist eine emergente Eigenschaft
 	der Wechselwirkung elektromagnetischer Strahlung mit Materie auf der Nano- bis
 	Mikroskala. Zwei fundamentale Parameter bestimmen diesen visuellen Eindruck:
-	die \textbf{Farbe}, entstanden durch wellenlängenselektive Reflexion oder
-	Transmission, und die \textbf{Textur}, definiert durch die räumliche Modulation
-	von Höhe, Neigung und Rauigkeit der Oberfläche. Während passive Oberflächen
-	diese Parameter unveränderlich eingebaut haben, eröffnet die aktive Nanooptik
-	die Möglichkeit, beide Parameter dynamisch, reversibel und --- das ist der
-	entscheidende Fortschritt --- \emph{unabhängig voneinander} zu kontrollieren.
+	die \textbf{Farbe}, entstanden durch wellenlÃ¤ngenselektive Reflexion oder
+	Transmission, und die \textbf{Textur}, definiert durch die rÃ¤umliche Modulation
+	von HÃ¶he, Neigung und Rauigkeit der OberflÃ¤che. WÃ¤hrend passive OberflÃ¤chen
+	diese Parameter unverÃ¤nderlich eingebaut haben, erÃ¶ffnet die aktive Nanooptik
+	die MÃ¶glichkeit, beide Parameter dynamisch, reversibel und --- das ist der
+	entscheidende Fortschritt --- \emph{unabhÃ¤ngig voneinander} zu kontrollieren.
 	
 	Die wissenschaftliche Herausforderung ist gewaltig: Farbe entsteht auf der
 	Skala von Nanometern (Schichtdicken $d \sim \lambda/(2n) \approx \SI{100}{nm}$),
-	während Textur auf der Skala von Mikrometern wahrnehmbar ist. Beide Skalen
-	müssen in einem einzigen Material integriert und unabhängig adressierbar sein.
+	wÃ¤hrend Textur auf der Skala von Mikrometern wahrnehmbar ist. Beide Skalen
+	mÃ¼ssen in einem einzigen Material integriert und unabhÃ¤ngig adressierbar sein.
 	Dieses Ziel --- erstmals in einem Laborexperiment realisiert von Doshi,
-	Güsken und Brongersma in \emph{Nature} (2026) --- bildet den Ausgangspunkt
+	GÃ¼sken und Brongersma in \emph{Nature} (2026) --- bildet den Ausgangspunkt
 	der vorliegenden theoretischen und algorithmischen Studie.
 	
 	\subsection{Biologische Inspiration: Cephalopoden-Haut}
@@ -153,7 +153,7 @@
 	
 	Die Natur zeigt in Tintenfischen, Oktopussen und Sepien (Klasse
 	\textit{Cephalopoda}) das bislang ausgereifteste bekannte System zur dynamischen
-	optischen Tarnung. Diese Tiere können ihre Hauterscheinung in weniger als
+	optischen Tarnung. Diese Tiere kÃ¶nnen ihre Hauterscheinung in weniger als
 	\SI{200}{ms} anpassen und dabei sowohl Farbe als auch Textur ihrer Umgebung
 	millimetergenau nachahmen.
 	
@@ -198,41 +198,41 @@
 			% Doppelpfeil Kontrolle
 			\draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, thick, purple]
 			(7.3,2.1) -- (7.3,4.2) node[midway, right, font=\scriptsize, align=left]
-			{unabhängige\\Kontrolle};
+			{unabhÃ¤ngige\\Kontrolle};
 			
 		\end{tikzpicture}
 		\caption{Schematischer Aufbau der Cephalopoden-Haut. Drei funktionale Schichten
-			ermöglichen unabhängige Kontrolle über Textur (Papillen), Pigmentfarbe
+			ermÃ¶glichen unabhÃ¤ngige Kontrolle Ã¼ber Textur (Papillen), Pigmentfarbe
 			(Chromatophoren) und Strukturfarbe (Iridophoren). Die technologische Analogie
 			wird in Abschnitt~\ref{sec:mehrschicht} formalisiert.}
 		\label{fig:cephalopoden}
 	\end{figure}
 	
 	Das biologische System (Abbildung~\ref{fig:cephalopoden}) besteht aus drei
-	übereinanderliegenden Schichten spezialisierter Zellen:
+	Ã¼bereinanderliegenden Schichten spezialisierter Zellen:
 	
 	\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
 		\item \textbf{Chromatophoren}: Pigmentzellen, die durch Muskelkontraktion auf
-		das 500-Fache ihrer Ruhe\-fläche expandiert werden können. Die Pigmentdichte
-		und damit die spektrale Absorption variiert dabei über drei Größenordnungen.
+		das 500-Fache ihrer Ruhe\-flÃ¤che expandiert werden kÃ¶nnen. Die Pigmentdichte
+		und damit die spektrale Absorption variiert dabei Ã¼ber drei GrÃ¶ÃŸenordnungen.
 		Zeitkonstante: $\tau_\mathrm{chrom} \approx \SI{50}{ms}$.
 		
-		\item \textbf{Iridophoren}: Zellen mit nanostrukturierten Protein-Plättchen
+		\item \textbf{Iridophoren}: Zellen mit nanostrukturierten Protein-PlÃ¤ttchen
 		(Reflektinen) im Abstand von $\SI{90}{nm}$ bis $\SI{180}{nm}$. Durch
-		reversible Phosphorylierung ändern die Reflektin-Proteine ihren Brechungsindex
+		reversible Phosphorylierung Ã¤ndern die Reflektin-Proteine ihren Brechungsindex
 		von $n \approx 1{,}33$ (dehydriert) auf $n \approx 1{,}56$ (phosphoryliert),
 		was die Interferenzfarbe von Rot nach Blau verschiebt.
 		Zeitkonstante: $\tau_\mathrm{irid} \approx \SI{1}{s}$.
 		
-		\item \textbf{Papillen}: Muskuläre Hauterhebungen mit variabler Höhe zwischen
-		$\SI{0}{mm}$ und $\SI{9}{mm}$. Ihre räumliche Dichte von bis zu
-		$\SI{100}{cm^{-2}}$ erlaubt die Nachbildung feiner Oberflächentexturen.
+		\item \textbf{Papillen}: MuskulÃ¤re Hauterhebungen mit variabler HÃ¶he zwischen
+		$\SI{0}{mm}$ und $\SI{9}{mm}$. Ihre rÃ¤umliche Dichte von bis zu
+		$\SI{100}{cm^{-2}}$ erlaubt die Nachbildung feiner OberflÃ¤chentexturen.
 		Zeitkonstante: $\tau_\mathrm{pap} \approx \SI{200}{ms}$.
 	\end{enumerate}
 	
 	Die zentrale physikalische Einsicht ist, dass biologische Systeme
 	\emph{mechanisch gesteuerte Nanostrukturen} verwenden, um das Erscheinungsbild
-	zu modulieren. Die mechanische Verformung ändert die optisch relevanten
+	zu modulieren. Die mechanische Verformung Ã¤ndert die optisch relevanten
 	Parameter (Schichtdicke, Brechungsindex, Topographie), ohne chemische
 	Reaktionen zu erfordern --- und ist damit schnell, reversibel und energieeffizient.
 	
@@ -240,31 +240,31 @@
 	\label{ssec:strukturfarbe}
 	
 	Pigmentfarben entstehen durch selektive molekulare Absorption einzelner
-	Wellenlängen. Sie verblassen durch Photobleaching ($\tau_\mathrm{Bleach} \sim$
-	Jahre bis Jahrzehnte). Strukturfarben entstehen durch kohärente
+	WellenlÃ¤ngen. Sie verblassen durch Photobleaching ($\tau_\mathrm{Bleach} \sim$
+	Jahre bis Jahrzehnte). Strukturfarben entstehen durch kohÃ¤rente
 	Licht-Materie-Wechselwirkung auf der Nanoskala und sind
 	prinzipiell unbegrenzt haltbar. Die wichtigsten Mechanismen sind:
 	
 	\begin{itemize}[leftmargin=*]
-		\item \textbf{Dünnschichtinterferenz (Fabry-Pérot)}: Zwei parallele
-		halbdurchlässige Spiegel im Abstand $d$ erzeugen konstruktive Interferenz
-		für Wellenlängen $\lambda_m = 2nd/m$. Dieser Mechanismus ist das
-		Herzstück der vorliegenden Arbeit (Kapitel~\ref{sec:fabry-perot}).
+		\item \textbf{DÃ¼nnschichtinterferenz (Fabry-PÃ©rot)}: Zwei parallele
+		halbdurchlÃ¤ssige Spiegel im Abstand $d$ erzeugen konstruktive Interferenz
+		fÃ¼r WellenlÃ¤ngen $\lambda_m = 2nd/m$. Dieser Mechanismus ist das
+		HerzstÃ¼ck der vorliegenden Arbeit (Kapitel~\ref{sec:fabry-perot}).
 		
 		\item \textbf{Photonische Kristalle}: Periodische Brechungsindexmodulation
 		mit Periode $\Lambda \sim \lambda/2$ erzeugt Bragg-Reflexion und
-		photonische Bandlücken. Die Stoppband-Wellenlänge ist
+		photonische BandlÃ¼cken. Die Stoppband-WellenlÃ¤nge ist
 		$\lambda_\mathrm{stop} = 2\Lambda(n_1 t_1 + n_2 t_2)/\Lambda$.
 		
 		\item \textbf{Plasmonische Resonanz}: Kollektive Elektronenoszillationen
-		(Plasmonen) an Metall-Dielektrikum-Grenzflächen absorbieren bei der
+		(Plasmonen) an Metall-Dielektrikum-GrenzflÃ¤chen absorbieren bei der
 		Resonanzfrequenz $\omega_p/\sqrt{1 + \varepsilon_d}$.
-		Für Gold-Nanopartikel liegt diese im Grün bei $\approx \SI{520}{nm}$.
+		FÃ¼r Gold-Nanopartikel liegt diese im GrÃ¼n bei $\approx \SI{520}{nm}$.
 		
 		\item \textbf{Mie-Streuung}: Dielektrische Nanopartikel mit Radius $r$ und
 		Brechungsindex $n_p$ im Medium $n_m$ streuen Licht mit
 		Wirkungsquerschnitt $\sigma \propto r^6$ (Rayleigh, $r \ll \lambda$)
-		bzw. wellenformenabhängig (Mie, $r \sim \lambda/(2\pi n_p)$).
+		bzw. wellenformenabhÃ¤ngig (Mie, $r \sim \lambda/(2\pi n_p)$).
 	\end{itemize}
 	
 	\subsection{Stand der Technik und offene Fragen}
@@ -275,50 +275,50 @@
 	d.\,h. reversibel durchstimmbar --- wurden ab 2010 durch elektrochrome,
 	thermochrome und hydrochrome Systeme demonstriert. Jedoch kontrollieren all
 	diese Systeme entweder \emph{nur} die Farbe \emph{oder} \emph{nur} die Textur,
-	niemals beides simultan und unabhängig.
+	niemals beides simultan und unabhÃ¤ngig.
 	
-	Dieser fundamentale Engpass wurde erstmals von Doshi, Güsken und Brongersma
-	(Nature 649, 345--352, 2026) überwunden durch den Einsatz von
+	Dieser fundamentale Engpass wurde erstmals von Doshi, GÃ¼sken und Brongersma
+	(Nature 649, 345--352, 2026) Ã¼berwunden durch den Einsatz von
 	Elektronenstrahl-bestrahlten Polymerfilmen als kombiniertes Textur/Farb-Medium.
-	Die vorliegende Arbeit entwickelt den vollständigen mathematischen Rahmen für
+	Die vorliegende Arbeit entwickelt den vollstÃ¤ndigen mathematischen Rahmen fÃ¼r
 	diese Technologie:
 	
 	\begin{frage}[Optik--Quellung-Kopplung]
-		Wie lässt sich die Quellungskinetik eines Polymerfilms quantitativ mit der
-		optischen Resonatortheorie verbinden, um vorhersagbar eine gewünschte Farbe
+		Wie lÃ¤sst sich die Quellungskinetik eines Polymerfilms quantitativ mit der
+		optischen Resonatortheorie verbinden, um vorhersagbar eine gewÃ¼nschte Farbe
 		einzustellen?
 	\end{frage}
 	
 	\begin{frage}[Texturkodierung]
-		Welche algorithmische Strategie ermöglicht die optimale Kodierung einer
-		beliebigen räumlichen Texturinformation in ein Quellungsprofil, unter
-		Berücksichtigung der Proximity-Effekte des Elektronenstrahls?
+		Welche algorithmische Strategie ermÃ¶glicht die optimale Kodierung einer
+		beliebigen rÃ¤umlichen Texturinformation in ein Quellungsprofil, unter
+		BerÃ¼cksichtigung der Proximity-Effekte des Elektronenstrahls?
 	\end{frage}
 	
 	\begin{frage}[Quantenmechanischer Ursprung]
-		Wie lässt sich die Verbindung zwischen dem quantenmechanischen
-		Zeitentwicklungsoperator und der photonischen Transfermatrix präzise
-		formulieren, und welche Berechnungsmethoden ermöglicht diese Analogie?
+		Wie lÃ¤sst sich die Verbindung zwischen dem quantenmechanischen
+		Zeitentwicklungsoperator und der photonischen Transfermatrix prÃ¤zise
+		formulieren, und welche Berechnungsmethoden ermÃ¶glicht diese Analogie?
 	\end{frage}
 	
 	\subsection{Aufbau der Arbeit}
 	
-	\textbf{Kapitel~\ref{sec:grundlagen}} führt die Grundlagen der Elektromagnetik
-	an Grenzflächen ein.
-	\textbf{Kapitel~\ref{sec:fabry-perot}} behandelt den Fabry-Pérot-Resonator
+	\textbf{Kapitel~\ref{sec:grundlagen}} fÃ¼hrt die Grundlagen der Elektromagnetik
+	an GrenzflÃ¤chen ein.
+	\textbf{Kapitel~\ref{sec:fabry-perot}} behandelt den Fabry-PÃ©rot-Resonator
 	als zentrales optisches Element.
-	\textbf{Kapitel~\ref{sec:tmm}} entwickelt die Transfermatrix-Methode für
+	\textbf{Kapitel~\ref{sec:tmm}} entwickelt die Transfermatrix-Methode fÃ¼r
 	homogene und inhomogene Schichtsysteme.
 	\textbf{Kapitel~\ref{sec:polymer}} formuliert das Flory-Rehner-Quellungsmodell
 	und seine Kopplung an die Optik.
 	\textbf{Kapitel~\ref{sec:textur}} beschreibt die Elektronenstrahl-Texturprogrammierung.
 	\textbf{Kapitel~\ref{sec:invers}} formuliert das inverse Optimierungsproblem.
-	\textbf{Kapitel~\ref{sec:algorithmen}} gibt die vollständigen Algorithmen
-	mit Komplexitätsanalyse.
+	\textbf{Kapitel~\ref{sec:algorithmen}} gibt die vollstÃ¤ndigen Algorithmen
+	mit KomplexitÃ¤tsanalyse.
 	\textbf{Kapitel~\ref{sec:mehrschicht}} behandelt Mehrschichtsysteme und die
 	Quantenmechanik-Analogie.
-	\textbf{Kapitel~\ref{sec:experimente}} präsentiert Simulationsergebnisse.
-	\textbf{Kapitel~\ref{sec:validierung}} präsentiert die experimentelle Validierung.
+	\textbf{Kapitel~\ref{sec:experimente}} prÃ¤sentiert Simulationsergebnisse.
+	\textbf{Kapitel~\ref{sec:validierung}} prÃ¤sentiert die experimentelle Validierung.
 	\textbf{Kapitel~\ref{sec:anwendungen}} zeigt Anwendungen.
 	\textbf{Kapitel~\ref{sec:implikationen}} diskutiert theoretische Konsequenzen.
 	\textbf{Kapitel~\ref{sec:zusammenfassung}} fasst zusammen.
@@ -348,9 +348,9 @@
 		\[
 		\tilde{n} = n + i\kappa,
 		\]
-		wobei $n > 0$ den Phasenindex (Verhältnis Vakuumlichtgeschwindigkeit zu
+		wobei $n > 0$ den Phasenindex (VerhÃ¤ltnis Vakuumlichtgeschwindigkeit zu
 		Phasengeschwindigkeit) und $\kappa \geq 0$ den Extinktionskoeffizienten
-		(Maß für Absorption) bezeichnet. Die Beziehung zur komplexen dielektrischen
+		(MaÃŸ fÃ¼r Absorption) bezeichnet. Die Beziehung zur komplexen dielektrischen
 		Funktion $\varepsilon = \varepsilon_1 + i\varepsilon_2$ lautet:
 		\begin{align}
 			n &= \sqrt{\frac{|\varepsilon| + \varepsilon_1}{2}}, \qquad
@@ -360,8 +360,8 @@
 		\end{align}
 	\end{definition}
 	
-	An einer ebenen Grenzfläche $z = 0$ zwischen zwei Medien
-	müssen die Tangentialkomponenten von $\vect{E}$ und $\vect{H}$ stetig sein:
+	An einer ebenen GrenzflÃ¤che $z = 0$ zwischen zwei Medien
+	mÃ¼ssen die Tangentialkomponenten von $\vect{E}$ und $\vect{H}$ stetig sein:
 	\begin{equation}
 		\vect{E}_{t,1}\big|_{z=0} = \vect{E}_{t,2}\big|_{z=0}, \qquad
 		\vect{H}_{t,1}\big|_{z=0} = \vect{H}_{t,2}\big|_{z=0}.
@@ -372,7 +372,7 @@
 	
 	\begin{definition}[Fresnel-Reflexions- und Transmissionskoeffizienten]
 		\label{def:fresnel}
-		An einer ebenen Grenzfläche zwischen Medium 1 ($\tilde{n}_1$) und
+		An einer ebenen GrenzflÃ¤che zwischen Medium 1 ($\tilde{n}_1$) und
 		Medium 2 ($\tilde{n}_2$) bei Einfallswinkel $\theta_i$ sind die
 		Fresnel-Amplitudenkoeffizienten:
 		\begin{align}
@@ -389,26 +389,26 @@
 		\end{align}
 		wobei $\theta_t$ durch das verallgemeinerte Snellius-Gesetz
 		$\tilde{n}_1 \sin\theta_i = \tilde{n}_2 \sin\theta_t$ bestimmt wird.
-		Die Intensitätskoeffizienten sind $R = |r|^2$ (Reflexion) und
+		Die IntensitÃ¤tskoeffizienten sind $R = |r|^2$ (Reflexion) und
 		$T = (\tilde{n}_2 \cos\theta_t)/(\tilde{n}_1 \cos\theta_i)|t|^2$ (Transmission).
 	\end{definition}
 	
-	\begin{lemma}[Energieerhaltung an verlustfreien Grenzflächen]
+	\begin{lemma}[Energieerhaltung an verlustfreien GrenzflÃ¤chen]
 		\label{lem:energie}
-		Für reelle $n_1, n_2$ (absorptionsfreie Medien) gilt:
+		FÃ¼r reelle $n_1, n_2$ (absorptionsfreie Medien) gilt:
 		\begin{equation}
 			R_s + T_s = 1, \qquad R_p + T_p = 1.
 		\end{equation}
 	\end{lemma}
 	
 	\begin{proof}
-		Aus den Fresnel-Gleichungen folgt für $r_s$ und $t_s$:
+		Aus den Fresnel-Gleichungen folgt fÃ¼r $r_s$ und $t_s$:
 		\[
 		|r_s|^2 + \frac{n_2 \cos\theta_t}{n_1 \cos\theta_i}|t_s|^2
 		= \frac{(n_1 c_i - n_2 c_t)^2 + 4 n_1 n_2 c_i c_t}{(n_1 c_i + n_2 c_t)^2} = 1,
 		\]
 		wobei $c_i = \cos\theta_i$, $c_t = \cos\theta_t$.
-		Der Zähler expandiert zu $(n_1 c_i + n_2 c_t)^2$. Analog für p-Polarisation.
+		Der ZÃ¤hler expandiert zu $(n_1 c_i + n_2 c_t)^2$. Analog fÃ¼r p-Polarisation.
 	\end{proof}
 	
 	\subsection{Quantenmechanischer Ursprung des Brechungsindex}
@@ -419,22 +419,22 @@
 	
 	\begin{definition}[Dielektrische Funktion im Lorentz-Oszillator-Modell]
 		\label{def:lorentz}
-		Für ein Medium mit $N$ Resonatoren pro Volumeneinheit, Resonanzfrequenz
-		$\omega_j$, Dämpfungsrate $\gamma_j$ und Oszillatorstärke $f_j$ gilt:
+		FÃ¼r ein Medium mit $N$ Resonatoren pro Volumeneinheit, Resonanzfrequenz
+		$\omega_j$, DÃ¤mpfungsrate $\gamma_j$ und OszillatorstÃ¤rke $f_j$ gilt:
 		\begin{equation}
 			\varepsilon(\omega) = 1 + \frac{N e^2}{\varepsilon_0 m_e}
 			\sum_j \frac{f_j}{\omega_j^2 - \omega^2 - i\gamma_j \omega},
 			\label{eq:lorentz}
 		\end{equation}
 		wobei $e$ die Elementarladung, $m_e$ die Elektronmasse und
-		$\varepsilon_0$ die Vakuumpermittivität sind.
+		$\varepsilon_0$ die VakuumpermittivitÃ¤t sind.
 		Die Summenregel fordert $\sum_j f_j = Z$ (Gesamtanzahl Elektronen pro Atom).
 	\end{definition}
 	
 	\begin{bemerkung}[Kramers-Kronig-Relationen]
-		Aus der Kausalität (Response kann Ursache nicht vorauseilen) folgen die
-		Kramers-Kronig-Relationen, die Real- und Imaginärteil der dielektrischen
-		Funktion verknüpfen:
+		Aus der KausalitÃ¤t (Response kann Ursache nicht vorauseilen) folgen die
+		Kramers-Kronig-Relationen, die Real- und ImaginÃ¤rteil der dielektrischen
+		Funktion verknÃ¼pfen:
 		\begin{align}
 			\varepsilon_1(\omega) - 1 &= \frac{2}{\pi} \mathcal{P}
 			\int_0^\infty \frac{\omega' \varepsilon_2(\omega')}{\omega'^2 - \omega^2}\, d\omega',\\
@@ -442,59 +442,59 @@
 			\int_0^\infty \frac{\varepsilon_1(\omega') - 1}{\omega'^2 - \omega^2}\, d\omega'.
 		\end{align}
 		Diese Relationen sind fundamental: Jedes kausale optische Medium muss
-		sie erfüllen. Sie ermöglichen die Berechnung des Absorptionsspektrums
+		sie erfÃ¼llen. Sie ermÃ¶glichen die Berechnung des Absorptionsspektrums
 		aus dem Brechungsindexspektrum und umgekehrt.
 	\end{bemerkung}
 	
-	Für das gequollene Polymernetzwerk ändert sich die Resonatordichte $N$ mit
+	FÃ¼r das gequollene Polymernetzwerk Ã¤ndert sich die Resonatordichte $N$ mit
 	dem Quellungsgrad $Q = V_\text{gequollen}/V_\text{trocken}$:
 	\begin{equation}
 		N(Q) = \frac{N_0}{Q},
 		\label{eq:dichte-quellung}
 	\end{equation}
-	da die Monomere auf ein größeres Volumen verteilt werden.
-	Für eine einzelne Lorentz-Linie führt dies auf:
+	da die Monomere auf ein grÃ¶ÃŸeres Volumen verteilt werden.
+	FÃ¼r eine einzelne Lorentz-Linie fÃ¼hrt dies auf:
 	\begin{equation}
 		n(Q) \approx 1 + \frac{n_0 - 1}{Q},
 		\label{eq:n-quellung}
 	\end{equation}
-	eine lineare Näherung, die für $Q \lesssim 5$ auf besser als $1\%$ genau ist.
+	eine lineare NÃ¤herung, die fÃ¼r $Q \lesssim 5$ auf besser als $1\%$ genau ist.
 	
 	%%=============================================================
-	\section{Der Fabry-Pérot-Resonator als Farbfilter}
+	\section{Der Fabry-PÃ©rot-Resonator als Farbfilter}
 	\label{sec:fabry-perot}
 	%%=============================================================
 	
 	\subsection{Grundprinzip und Resonanzbedingung}
 	
-	\begin{definition}[Fabry-Pérot-Resonator]
+	\begin{definition}[Fabry-PÃ©rot-Resonator]
 		\label{def:fp-resonator}
-		Ein Fabry-Pérot-Resonator besteht aus einer transparenten Schicht
-		(Kavität) der Dicke $d$ und Brechungsindex $n$ ($\kappa \approx 0$),
-		die von zwei halbdurchlässigen Spiegeln mit Amplitudenreflexionskoeffizienten
+		Ein Fabry-PÃ©rot-Resonator besteht aus einer transparenten Schicht
+		(KavitÃ¤t) der Dicke $d$ und Brechungsindex $n$ ($\kappa \approx 0$),
+		die von zwei halbdurchlÃ¤ssigen Spiegeln mit Amplitudenreflexionskoeffizienten
 		$r_1$ und $r_2$ begrenzt wird. Die Gesamt-Reflexionsamplitude ist:
 		\begin{equation}
 			r_\mathrm{FP} = \frac{r_1 + r_2 e^{2i\delta}}{1 + r_1 r_2 e^{2i\delta}},
 			\qquad \delta = \frac{2\pi n d \cos\theta}{\lambda},
 			\label{eq:fp-reflexion}
 		\end{equation}
-		wobei $\delta$ die einfache Phasendicke der Kavität ist.
+		wobei $\delta$ die einfache Phasendicke der KavitÃ¤t ist.
 	\end{definition}
 	
-	\begin{satz}[Fabry-Pérot-Reflexionsspektrum]
+	\begin{satz}[Fabry-PÃ©rot-Reflexionsspektrum]
 		\label{satz:fp-spektrum}
-		Die Reflexionsintensität eines Fabry-Pérot-Resonators ist:
+		Die ReflexionsintensitÃ¤t eines Fabry-PÃ©rot-Resonators ist:
 		\begin{equation}
 			R_\mathrm{FP}(\lambda) = \frac{R_1 + R_2 + 2\sqrt{R_1 R_2}\cos(2\delta)}
 			{1 + R_1 R_2 + 2\sqrt{R_1 R_2}\cos(2\delta)},
 			\label{eq:fp-intensitaet}
 		\end{equation}
-		mit $R_j = |r_j|^2$. Die Reflexion ist minimal (Transmission maximal) für
+		mit $R_j = |r_j|^2$. Die Reflexion ist minimal (Transmission maximal) fÃ¼r
 		\begin{equation}
 			2 n d \cos\theta = m\lambda, \qquad m \in \mathbb{N},
 			\label{eq:fp-resonanz}
 		\end{equation}
-		und maximal für $2nd\cos\theta = (m + \tfrac{1}{2})\lambda$.
+		und maximal fÃ¼r $2nd\cos\theta = (m + \tfrac{1}{2})\lambda$.
 	\end{satz}
 	
 	\begin{proof}
@@ -506,23 +506,23 @@
 		{1 + R_1 R_2 + 2\sqrt{R_1 R_2}\cos(2\delta + \phi)},
 		\]
 		wobei $\phi = \phi_1 + \phi_2$ eine Phasenkonstante ist, die von den
-		Spiegelmaterialien abhängt. Für Metallspiegel gilt typischerweise
+		Spiegelmaterialien abhÃ¤ngt. FÃ¼r Metallspiegel gilt typischerweise
 		$\phi_1 = \phi_2 = \pi$, was das Vorzeichen des Kosinus umkehrt und
 		Reflexion und Transmission vertauscht.
 	\end{proof}
 	
 	\begin{satz}[Farbdurchstimmbarkeit durch Quellung]
 		\label{satz:durchstimmbar}
-		Ein Fabry-Pérot-Resonator aus einem Hydrogel mit trockener Dicke $d_0$,
+		Ein Fabry-PÃ©rot-Resonator aus einem Hydrogel mit trockener Dicke $d_0$,
 		das bei Quellung auf $d(Q) = Qd_0$ anschwillt (einseitig verankert,
 		laterale Ausdehnung gehemmt), und Brechungsindex $\neff(Q) \approx 1 + (n_0-1)/Q$,
-		hat eine Resonanzwellenlänge (erste Ordnung, $m=1$):
+		hat eine ResonanzwellenlÃ¤nge (erste Ordnung, $m=1$):
 		\begin{equation}
 			\lambda_\mathrm{res}(Q) = 2\,\neff(Q)\,d(Q) = 2d_0\bigl[(n_0-1)Q^0 + Q\bigr]
 			\approx 2d_0 Q \quad (n_0 \approx 1{,}4).
 			\label{eq:lambda-quellung}
 		\end{equation}
-		Für $Q \in [Q_\mathrm{min}, Q_\mathrm{max}]$ ist die Farbe kontinuierlich
+		FÃ¼r $Q \in [Q_\mathrm{min}, Q_\mathrm{max}]$ ist die Farbe kontinuierlich
 		durchstimmbar im Bereich mit $\lambda$ und $\lambda \in [2d_0 Q_\mathrm{min},\, 2d_0 Q_\mathrm{max}]$.
 	\end{satz}
 	
@@ -531,7 +531,7 @@
 		\begin{tikzpicture}
 			\begin{axis}[
 				width=11cm, height=6cm,
-				xlabel={Wellenlänge $\lambda$ (nm)},
+				xlabel={WellenlÃ¤nge $\lambda$ (nm)},
 				ylabel={Reflexion $R$},
 				xmin=380, xmax=780,
 				ymin=0, ymax=1,
@@ -546,7 +546,7 @@
 				\addplot[thick, red!80, domain=380:780, samples=200]
 				{0.04 * (1 + cos(2*pi*1.40*250/x * 2 * 180/pi)) / (1 + 0.04 * (1 + cos(2*pi*1.40*250/x * 2 * 180/pi)/2))};
 				
-				% Fake curves für Legende -- analytische Näherung als Gauss
+				% Fake curves fÃ¼r Legende -- analytische NÃ¤herung als Gauss
 				\addplot[thick, red, domain=380:780, samples=200]
 				{0.7*exp(-((x-700)^2)/(2*40^2))};
 				\addplot[thick, orange, domain=380:780, samples=200]
@@ -562,9 +562,9 @@
 					$Q=3{,}0$ (Wasser), $Q=3{,}8$ (Methanol)}
 			\end{axis}
 		\end{tikzpicture}
-		\caption{Berechnete Fabry-Pérot-Reflexionsspektren für ein PDMS-Hydrogel-System
+		\caption{Berechnete Fabry-PÃ©rot-Reflexionsspektren fÃ¼r ein PDMS-Hydrogel-System
 			($d_0 = \SI{250}{nm}$, $n_0 = 1{,}40$) bei verschiedenen Quellungsgraden.
-			Die Resonanzwellenlänge verschiebt sich mit zunehmendem Quellungsgrad
+			Die ResonanzwellenlÃ¤nge verschiebt sich mit zunehmendem Quellungsgrad
 			von Rot ($Q=1{,}0$, $\lambda = \SI{700}{nm}$) nach Blau ($Q=3{,}8$,
 			$\lambda \approx \SI{450}{nm}$).}
 		\label{fig:fp-spektren}
@@ -572,9 +572,9 @@
 	
 	\subsection{Finesse und Halbwertsbreite}
 	
-	\begin{definition}[Finesse eines Fabry-Pérot-Resonators]
+	\begin{definition}[Finesse eines Fabry-PÃ©rot-Resonators]
 		\label{def:finesse}
-		Die Finesse $\mathcal{F}$ ist das Verhältnis von freiem Spektralbereich (FSR)
+		Die Finesse $\mathcal{F}$ ist das VerhÃ¤ltnis von freiem Spektralbereich (FSR)
 		zu Halbwertsbreite (FWHM) des Reflexionsminimums:
 		\begin{equation}
 			\mathcal{F} = \frac{\mathrm{FSR}}{\mathrm{FWHM}} = \frac{\pi (R_1 R_2)^{1/4}}{1 - \sqrt{R_1 R_2}}.
@@ -582,13 +582,13 @@
 		\end{equation}
 	\end{definition}
 	
-	Für metallische Spiegel (z.\,B. \SI{10}{nm} Au) ist typischerweise
+	FÃ¼r metallische Spiegel (z.\,B. \SI{10}{nm} Au) ist typischerweise
 	$R \approx 0{,}5$, was $\mathcal{F} \approx 4{,}4$ ergibt.
-	Die spektrale Selektivität ist daher moderat, aber für Farbfilteranwendungen
+	Die spektrale SelektivitÃ¤t ist daher moderat, aber fÃ¼r Farbfilteranwendungen
 	mit $\Delta\lambda \approx \SI{100}{nm}$ ausreichend.
 	
 	%%=============================================================
-	\section{Transfermatrix-Methode für geschichtete Medien}
+	\section{Transfermatrix-Methode fÃ¼r geschichtete Medien}
 	\label{sec:tmm}
 	%%=============================================================
 	
@@ -596,10 +596,10 @@
 	
 	Die Transfermatrix-Methode (TMM) ist das systematischste und effizienteste
 	Verfahren zur Berechnung der optischen Eigenschaften beliebiger Schichtsysteme.
-	Sie basiert auf der Verknüpfung der Feldkomponenten an den Schichtgrenzen.
+	Sie basiert auf der VerknÃ¼pfung der Feldkomponenten an den Schichtgrenzen.
 	
-	Für eine ebene Welle mit Ausbreitungsrichtung in der $xz$-Ebene gilt
-	für s-Polarisation ($\vect{E} \parallel \hat{y}$) in Schicht $j$:
+	FÃ¼r eine ebene Welle mit Ausbreitungsrichtung in der $xz$-Ebene gilt
+	fÃ¼r s-Polarisation ($\vect{E} \parallel \hat{y}$) in Schicht $j$:
 	\begin{equation}
 		E_y(z) = A_j e^{ik_{z,j}(z-z_{j-1})} + B_j e^{-ik_{z,j}(z-z_{j-1})},
 		\quad k_{z,j} = \frac{2\pi \tilde{n}_j \cos\theta_j}{\lambda}.
@@ -608,7 +608,7 @@
 	
 	\begin{definition}[Charakteristische Matrix einer Schicht]
 		\label{def:char-matrix}
-		Für eine homogene Schicht $j$ mit Brechungsindex $\tilde{n}_j$,
+		FÃ¼r eine homogene Schicht $j$ mit Brechungsindex $\tilde{n}_j$,
 		Dicke $d_j$ und Phasedicke $\delta_j = 2\pi\tilde{n}_j d_j \cos\theta_j/\lambda$
 		ist die charakteristische Matrix ($2\times 2$):
 		\begin{equation}
@@ -618,20 +618,20 @@
 			\end{pmatrix},
 			\label{eq:char-matrix}
 		\end{equation}
-		wobei $\eta_j = \tilde{n}_j \cos\theta_j / Z_0$ für s-Polarisation
-		und $\eta_j = \tilde{n}_j / (\cos\theta_j Z_0)$ für p-Polarisation,
+		wobei $\eta_j = \tilde{n}_j \cos\theta_j / Z_0$ fÃ¼r s-Polarisation
+		und $\eta_j = \tilde{n}_j / (\cos\theta_j Z_0)$ fÃ¼r p-Polarisation,
 		mit $Z_0 = \SI{376{,}7}{\ohm}$ (Freiraum-Wellenwiderstand).
 	\end{definition}
 	
 	\begin{bemerkung}
-		$\matr{M}_j$ ist eine unitäre Matrix mit $\det\matr{M}_j = 1$ für
-		verlustfreie Medien ($\kappa_j = 0$). Für absorptive Medien ist
+		$\matr{M}_j$ ist eine unitÃ¤re Matrix mit $\det\matr{M}_j = 1$ fÃ¼r
+		verlustfreie Medien ($\kappa_j = 0$). FÃ¼r absorptive Medien ist
 		$\det\matr{M}_j = e^{-2\kappa_j \cdot 2\pi d_j/\lambda}$.
 	\end{bemerkung}
 	
 	\begin{definition}[Systemtransfermatrix]
 		\label{def:system-matrix}
-		Für ein System aus $N$ Schichten zwischen Eingangsmedium (Index 0)
+		FÃ¼r ein System aus $N$ Schichten zwischen Eingangsmedium (Index 0)
 		und Substrat (Index $s$) ist die Gesamttransfermatrix:
 		\begin{equation}
 			\matr{M}_\mathrm{ges} = \prod_{j=1}^{N} \matr{M}_j
@@ -640,7 +640,7 @@
 		\end{equation}
 	\end{definition}
 	
-	\begin{satz}[Reflexions- und Transmissionskoeffizient über TMM]
+	\begin{satz}[Reflexions- und Transmissionskoeffizient Ã¼ber TMM]
 		\label{satz:tmm-rt}
 		Mit den Admittanzen $\eta_0$ (Eingangsmedium) und $\eta_s$ (Substrat) sind:
 		\begin{align}
@@ -651,17 +651,17 @@
 			{m_{11}\eta_0 + m_{12}\eta_0\eta_s + m_{21} + m_{22}\eta_s}.
 			\label{eq:tmm-t}
 		\end{align}
-		Intensitäten: $R = |r|^2$, $T = \frac{\eta_s}{\eta_0}|t|^2$,
+		IntensitÃ¤ten: $R = |r|^2$, $T = \frac{\eta_s}{\eta_0}|t|^2$,
 		$A = 1 - R - T$ (Absorption).
 	\end{satz}
 	
 	\begin{proof}
-		Die Stetigkeit der Tangentialfeldkomponenten an den $N+1$ Grenzflächen liefert
+		Die Stetigkeit der Tangentialfeldkomponenten an den $N+1$ GrenzflÃ¤chen liefert
 		$2(N+1)$ skalare Gleichungen. Das Matrizenprodukt fasst alle inneren
-		Grenzflächen zusammen und liefert an der Gesamtstruktur:
+		GrenzflÃ¤chen zusammen und liefert an der Gesamtstruktur:
 		$\begin{pmatrix}1 + r\\ \eta_0(1-r)\end{pmatrix}
 		= \matr{M}_\mathrm{ges}\begin{pmatrix}t\\ \eta_s t\end{pmatrix}$.
-		Auflösen nach $r$ und $t$ ergibt Gleichungen~\eqref{eq:tmm-r}
+		AuflÃ¶sen nach $r$ und $t$ ergibt Gleichungen~\eqref{eq:tmm-r}
 		und~\eqref{eq:tmm-t}.
 	\end{proof}
 	
@@ -671,9 +671,9 @@
 	Reale gequollene Polymerfilme haben ein kontinuierliches Brechungsindexprofil
 	$n(z)$, das durch einen Quellungsgradienten $Q(z)$ entsteht.
 	
-	\begin{definition}[Wellenpropagator für inhomogenes Medium]
+	\begin{definition}[Wellenpropagator fÃ¼r inhomogenes Medium]
 		\label{def:wellenpropagator}
-		Der exakte Wellenpropagator für ein Medium mit kontinuierlichem Profil $n(z)$
+		Der exakte Wellenpropagator fÃ¼r ein Medium mit kontinuierlichem Profil $n(z)$
 		ist der geordnete Exponentialoperator:
 		\begin{equation}
 			\matr{U}(z_1, z_2) = \overleftarrow{\mathcal{T}} \exp\!\left(
@@ -683,10 +683,10 @@
 			\label{eq:wellenpropagator}
 		\end{equation}
 		mit $k(z) = 2\pi n(z)/\lambda$. Das Pfeilsymbol $\overleftarrow{\mathcal{T}}$
-		bezeichnet die geordnete Exponentiierung (größere $z$ links).
+		bezeichnet die geordnete Exponentiierung (grÃ¶ÃŸere $z$ links).
 	\end{definition}
 	
-	\begin{satz}[Trotter-Produktformel für den Wellenpropagator]
+	\begin{satz}[Trotter-Produktformel fÃ¼r den Wellenpropagator]
 		\label{satz:trotter}
 		Die Diskretisierung von $[z_1, z_2]$ in $K$ gleiche Teilintervalle
 		$\Delta z = (z_2-z_1)/K$ mit Mittelpunkten $z_k = z_1 + (k-\tfrac{1}{2})\Delta z$
@@ -701,18 +701,18 @@
 	\end{satz}
 	
 	\begin{proof}
-		Für hinreichend kleines $\Delta z$ gilt $e^{i\matr{H}(z_k)\Delta z}
+		FÃ¼r hinreichend kleines $\Delta z$ gilt $e^{i\matr{H}(z_k)\Delta z}
 		= \matr{M}(z_k, \Delta z) + \ordre{(\Delta z)^3}$.
-		Das Produkt über $K$ Terme konvergiert nach der Baker-Campbell-Hausdorff-Formel
+		Das Produkt Ã¼ber $K$ Terme konvergiert nach der Baker-Campbell-Hausdorff-Formel
 		gegen den geordneten Exponentialoperator mit globalem Fehler $\ordre{(\Delta z)^2}$
 		(zweite Ordnung durch Mittelpunktsregel).
 	\end{proof}
 	
 	\begin{algorithm}[htb]
-		\caption{TMM für inhomogene Schicht mit kontinuierlichem $n(z)$-Profil}
+		\caption{TMM fÃ¼r inhomogene Schicht mit kontinuierlichem $n(z)$-Profil}
 		\label{alg:tmm-inhomogen}
 		\textbf{Eingabe:} Brechungsindexprofil $n(z)$, $z \in [0, d]$,
-		Wellenlänge $\lambda$, Sublayer-Anzahl $K$, Polarisation\\
+		WellenlÃ¤nge $\lambda$, Sublayer-Anzahl $K$, Polarisation\\
 		\textbf{Ausgabe:} Charakteristische Matrix $\matr{M}$, Reflexion $R$, Transmission $T$
 		\begin{algorithmic}[1]
 			\State $\matr{M} \gets \matr{I}_2$ \Comment{Einheitsmatrix $2\times 2$}
@@ -736,8 +736,8 @@
 	
 	\begin{satz}[Laufzeit von Algorithmus~\ref{alg:tmm-inhomogen}]
 		\label{satz:tmm-laufzeit}
-		Die Berechnung des Reflexionsspektrums über $\Lambda$ Wellenlängen
-		für ein System mit $K$ Sublayern hat Laufzeit $\ordre{K\Lambda}$.
+		Die Berechnung des Reflexionsspektrums Ã¼ber $\Lambda$ WellenlÃ¤ngen
+		fÃ¼r ein System mit $K$ Sublayern hat Laufzeit $\ordre{K\Lambda}$.
 		Jede $2\times 2$-Matrixmultiplikation erfordert $8$ Multiplikationen
 		und $4$ Additionen komplexer Zahlen und ist somit $\ordre{1}$.
 	\end{satz}
@@ -752,7 +752,7 @@
 	Das Quellungsverhalten eines vernetzten Polymernetzwerks (Hydrogel) wird durch
 	Minimierung der freien Energie $F = F_\mathrm{mix} + F_\mathrm{el}$
 	beschrieben, die aus einem Mischungsanteil (Flory-Huggins) und einem elastischen
-	Rückstellanteil (Gummi-Elastizitätstheorie) besteht.
+	RÃ¼ckstellanteil (Gummi-ElastizitÃ¤tstheorie) besteht.
 	
 	\begin{definition}[Flory-Huggins-Mischungsfreie Energie]
 		\label{def:flory-huggins}
@@ -762,15 +762,15 @@
 			+ \chi \phi_s \phi_p,
 			\label{eq:flory-huggins}
 		\end{equation}
-		wobei $\phi_s = 1 - \phi_p$ der Lösungsmittelvolumenanteil, $\phi_p = 1/Q$
+		wobei $\phi_s = 1 - \phi_p$ der LÃ¶sungsmittelvolumenanteil, $\phi_p = 1/Q$
 		der Polymervolumenanteil, $N_p$ der Polymerisationsgrad und $\chi$ der
 		Flory-Huggins-Wechselwirkungsparameter sind.
-		Für vernetztes Polymer ($N_p \to \infty$) entfällt der zweite Term.
+		FÃ¼r vernetztes Polymer ($N_p \to \infty$) entfÃ¤llt der zweite Term.
 	\end{definition}
 	
-	\begin{definition}[Elastische Freie Energie (Gummi-Elastizität)]
+	\begin{definition}[Elastische Freie Energie (Gummi-ElastizitÃ¤t)]
 		\label{def:elastizitaet}
-		Für ein affin deformiertes Netzwerk aus $\nu_e$ Vernetzungspunkten
+		FÃ¼r ein affin deformiertes Netzwerk aus $\nu_e$ Vernetzungspunkten
 		pro Volumeneinheit gilt die neohooke'sche freie Energie:
 		\begin{equation}
 			\frac{F_\mathrm{el}}{Vk_\mathrm{B}T} = \frac{\nu_e}{2}\left(
@@ -779,38 +779,38 @@
 			\label{eq:elastizitaet}
 		\end{equation}
 		wobei $\lambda_i$ die Streckungsgrade in Raumrichtung $i$ sind.
-		Für isotrope Quellung gilt $\lambda_i = Q^{1/3}$, für substrat-verankerte
-		Filme (lateral eingeschränkt) $\lambda_x = \lambda_y = 1$, $\lambda_z = Q$.
+		FÃ¼r isotrope Quellung gilt $\lambda_i = Q^{1/3}$, fÃ¼r substrat-verankerte
+		Filme (lateral eingeschrÃ¤nkt) $\lambda_x = \lambda_y = 1$, $\lambda_z = Q$.
 	\end{definition}
 	
 	\begin{satz}[Flory-Rehner-Gleichgewichtsbedingung]
 		\label{satz:flory-rehner}
-		Im Quellungsgleichgewicht minimiert sich $F$ über $\phi_p$:
-		Das chemische Potential des Lösungsmittels im Netzwerk muss gleich dem
-		des reinen Lösungsmittels sein ($\Delta\mu = 0$). Für ein substrat-verankertes
+		Im Quellungsgleichgewicht minimiert sich $F$ Ã¼ber $\phi_p$:
+		Das chemische Potential des LÃ¶sungsmittels im Netzwerk muss gleich dem
+		des reinen LÃ¶sungsmittels sein ($\Delta\mu = 0$). FÃ¼r ein substrat-verankertes
 		Netzwerk folgt:
 		\begin{equation}
 			\ln(1-\phi) + \phi + \chi\phi^2 + V_1 \nu_e \left(\phi - \frac{\phi^2}{2}\right) = 0,
 			\label{eq:flory-rehner}
 		\end{equation}
-		wobei $\phi = \phi_p = 1/Q$, $V_1$ das molare Lösungsmittelvolumen und
+		wobei $\phi = \phi_p = 1/Q$, $V_1$ das molare LÃ¶sungsmittelvolumen und
 		$\nu_e$ die effektive Vernetzungsdichte (mol/m$^3$) sind.
 	\end{satz}
 	
 	\begin{proof}
 		Differentiation von $F = F_\mathrm{mix} + F_\mathrm{el}$ nach $n_s$
-		(Anzahl Lösungsmittelmoleküle), Nutzung der Kette $\phi = \phi(\nu_e)$,
+		(Anzahl LÃ¶sungsmittelmolekÃ¼le), Nutzung der Kette $\phi = \phi(\nu_e)$,
 		und Gleichsetzen mit $\mu_s^\mathrm{rein} = 0$ liefert direkt
 		Gleichung~\eqref{eq:flory-rehner}.
 		Der Term $V_1\nu_e(\phi - \phi^2/2)$ stammt aus der Differentiation
-		von $F_\mathrm{el}$ für substrat-verankerte Quellung ($\lambda_z = Q$).
+		von $F_\mathrm{el}$ fÃ¼r substrat-verankerte Quellung ($\lambda_z = Q$).
 	\end{proof}
 	
 	\begin{bemerkung}
 		Gleichung~\eqref{eq:flory-rehner} ist eine nichtlineare transzendente
 		Gleichung in $\phi$, die numerisch (z.\,B. Newton-Raphson) oder
-		durch Bisektion gelöst werden muss. Für $\chi < \chi_c \approx 0{,}5$
-		existiert genau eine Lösung $\phi^* \in (0,1)$.
+		durch Bisektion gelÃ¶st werden muss. FÃ¼r $\chi < \chi_c \approx 0{,}5$
+		existiert genau eine LÃ¶sung $\phi^* \in (0,1)$.
 	\end{bemerkung}
 	
 	\subsection{Vernetzungsdichte und Elektronenstrahlmodifikation}
@@ -818,7 +818,7 @@
 	\begin{definition}[Elektronenstrahl-induzierte Vernetzung]
 		\label{def:ebeam-vernetzung}
 		Ein Elektronenstrahl der Beschleunigungsspannung $U_b$ und lokaler Dosis
-		$D(\vect{r})$ [\si{mC/cm^2}] erhöht die Vernetzungsdichte gemäß:
+		$D(\vect{r})$ [\si{mC/cm^2}] erhÃ¶ht die Vernetzungsdichte gemÃ¤ÃŸ:
 		\begin{equation}
 			\nu_e(\vect{r}) = \nu_{e,0} + \alpha \int_0^d D(\vect{r})\,\Phi(U_b, z)\, dz,
 			\label{eq:ebeam-vernetzung}
@@ -826,8 +826,8 @@
 		wobei $\nu_{e,0}$ die Grundvernetzungsdichte des unbestrahlten Polymers,
 		$\alpha$ ein materialspezifischer Empfindlichkeitskoeffizient
 		[\si{mol\per m^3\per (mC/cm^2)}] und $\Phi(U_b, z)$ das normierte
-		tiefenaufgelöste Energiedepositionsprofil (Bethe-Stopping-Power-Verteilung,
-		gaussförmig auf den Bereich $z \in [0, R_e]$ beschränkt) sind.
+		tiefenaufgelÃ¶ste Energiedepositionsprofil (Bethe-Stopping-Power-Verteilung,
+		gaussfÃ¶rmig auf den Bereich $z \in [0, R_e]$ beschrÃ¤nkt) sind.
 	\end{definition}
 	
 	Die Bethe-Reichweite des Elektronenstrahls bestimmt die Tiefe, bis zu der
@@ -838,16 +838,16 @@
 	\end{equation}
 	wobei $A$ die Molmasse, $\rho$ die Dichte, $Z$ die Ordnungszahl des Materials
 	und $U_b$ die Beschleunigungsspannung in kV sind.
-	Für PDMS bei $U_b = \SI{30}{keV}$: $R_e \approx \SI{8}{\micro m}$ ---
-	der Strahl durchdringt typische Filmdicken vollständig.
+	FÃ¼r PDMS bei $U_b = \SI{30}{keV}$: $R_e \approx \SI{8}{\micro m}$ ---
+	der Strahl durchdringt typische Filmdicken vollstÃ¤ndig.
 	
 	\subsection{Kopplung Quellung--Optik: Effektiver Brechungsindex}
 	\label{ssec:kopplungsgleichung}
 	
 	\begin{definition}[Lorentz-Lorenz-Mischungsregel]
 		\label{def:lorentz-lorenz}
-		Für ein Zwei-Komponenten-System aus Polymer ($n_p$, Volumenanteil $\phi_p$)
-		und Lösungsmittel ($n_s$, Volumenanteil $1-\phi_p$) gilt die
+		FÃ¼r ein Zwei-Komponenten-System aus Polymer ($n_p$, Volumenanteil $\phi_p$)
+		und LÃ¶sungsmittel ($n_s$, Volumenanteil $1-\phi_p$) gilt die
 		Lorentz-Lorenz-Mischungsregel:
 		\begin{equation}
 			\frac{\neff^2 - 1}{\neff^2 + 2} = \phi_p \frac{n_p^2-1}{n_p^2+2}
@@ -857,13 +857,13 @@
 	\end{definition}
 	
 	Gleichung~\eqref{eq:lorentz-lorenz} liefert den effektiven Brechungsindex
-	als Funktion des Quellungsgrades $Q = 1/\phi_p$. Für PDMS/Wasser
+	als Funktion des Quellungsgrades $Q = 1/\phi_p$. FÃ¼r PDMS/Wasser
 	($n_p = 1{,}50$, $n_s = 1{,}333$) ergibt sich:
 	
 	\begin{table}[htb]
 		\centering
 		\caption{Effektiver Brechungsindex $\neff$ als Funktion des Quellungsgrades
-			$Q$ für ein PDMS/Wasser-System, berechnet aus Gleichung~\eqref{eq:lorentz-lorenz}.}
+			$Q$ fÃ¼r ein PDMS/Wasser-System, berechnet aus Gleichung~\eqref{eq:lorentz-lorenz}.}
 		\label{tab:neff}
 		\begin{tabular}{cccccc}
 			\toprule
@@ -877,7 +877,7 @@
 	
 	Die Kombination aus Gleichung~\eqref{eq:flory-rehner} (Gleichgewichts-$Q$
 	aus $\chi$ und $\nu_e$) und~\eqref{eq:lorentz-lorenz} ($\neff$ aus $Q$)
-	liefert die vollständige Kopplung:
+	liefert die vollstÃ¤ndige Kopplung:
 	\begin{equation}
 		\boxed{\lambda_\mathrm{res} = f(\chi, \nu_e, d_0) = 2\,\neff(Q(\chi,\nu_e))\,d_0\,Q(\chi,\nu_e).}
 		\label{eq:kopplungsgleichung}
@@ -889,43 +889,43 @@
 	\label{sec:textur}
 	%%=============================================================
 	
-	\subsection{Das Vorwärtsproblem: Dosismuster $\to$ Topographie}
+	\subsection{Das VorwÃ¤rtsproblem: Dosismuster $\to$ Topographie}
 	
 	\begin{definition}[Topographie-Operator]
 		\label{def:topo-operator}
 		Sei $D(\vect{r})$ die lokale Elektronenstrahldosis an Position $\vect{r}$
 		in der Substratebene. Der Topographie-Operator $\mathcal{T}$ bildet das
-		Dosismuster auf die Höhenkarte $h(\vect{r})$ der Oberfläche nach Quellung
-		in einem Lösungsmittel mit Parameter $\chi$ ab:
+		Dosismuster auf die HÃ¶henkarte $h(\vect{r})$ der OberflÃ¤che nach Quellung
+		in einem LÃ¶sungsmittel mit Parameter $\chi$ ab:
 		\begin{equation}
 			\mathcal{T}[D](\vect{r}) = h(\vect{r})
 			= d_0 \cdot Q\bigl[\nu_e(D(\vect{r})),\, \chi\bigr] - d_0,
 			\label{eq:topo-operator}
 		\end{equation}
-		wobei $Q[\nu_e, \chi]$ die implizite Lösung der Flory-Rehner-Gleichung
+		wobei $Q[\nu_e, \chi]$ die implizite LÃ¶sung der Flory-Rehner-Gleichung
 		\eqref{eq:flory-rehner} ist (Gleichgewichtsquellung).
 	\end{definition}
 	
 	\begin{satz}[Invertierbarkeit des Topographie-Operators]
 		\label{satz:invertierbarkeit}
-		$\mathcal{T}$ ist punktweise streng monoton fallend in $D$: Höhere Dosis
-		erhöht $\nu_e$, verstärkt die elastische Rückstellkraft, vermindert $Q$
+		$\mathcal{T}$ ist punktweise streng monoton fallend in $D$: HÃ¶here Dosis
+		erhÃ¶ht $\nu_e$, verstÃ¤rkt die elastische RÃ¼ckstellkraft, vermindert $Q$
 		und damit $h$. $\mathcal{T}$ ist daher bijektiv auf seinem Bildbereich
 		und das Inverse $\mathcal{T}^{-1}$ existiert.
 	\end{satz}
 	
 	\begin{proof}
 		Aus $\partial Q/\partial\nu_e < 0$ (aus dem Flory-Rehner-Modell:
-		stärkere Vernetzung $\Rightarrow$ weniger Quellung) und
+		stÃ¤rkere Vernetzung $\Rightarrow$ weniger Quellung) und
 		$\partial\nu_e/\partial D > 0$ (Gleichung~\eqref{eq:ebeam-vernetzung})
 		folgt $\partial Q/\partial D < 0$ und damit $\partial h/\partial D < 0$.
-		Strenge Monotonie impliziert Bijektivität.
+		Strenge Monotonie impliziert BijektivitÃ¤t.
 	\end{proof}
 	
 	\subsection{Proximity-Effekte und Korrekturproblem}
 	
 	Der reale Elektronenstrahl ist kein idealer Punkt, sondern hat eine
-	räumliche Ausdehnung durch Vorwärts- und Rückwärtsstreuung im Material.
+	rÃ¤umliche Ausdehnung durch VorwÃ¤rts- und RÃ¼ckwÃ¤rtsstreuung im Material.
 	
 	\begin{definition}[Proximity-Funktion]
 		\label{def:proximity}
@@ -939,11 +939,11 @@
 			\right),
 			\label{eq:proximity}
 		\end{equation}
-		mit Vorwärtsstreuradius $\alpha$, Rückstreuradius $\beta$ und
-		Rückstreukoeffizient $\eta_\mathrm{back}$.
+		mit VorwÃ¤rtsstreuradius $\alpha$, RÃ¼ckstreuradius $\beta$ und
+		RÃ¼ckstreukoeffizient $\eta_\mathrm{back}$.
 	\end{definition}
 	
-	Typische Werte für PMMA bei \SI{100}{keV} E-Beam:
+	Typische Werte fÃ¼r PMMA bei \SI{100}{keV} E-Beam:
 	$\alpha = \SI{50}{nm}$, $\beta = \SI{5}{\micro m}$, $\eta_\mathrm{back} = 0{,}75$.
 	Die effektive Dosisverteilung ist die Faltung:
 	\begin{equation}
@@ -954,7 +954,7 @@
 	
 	\begin{definition}[Proximity-Korrekturproblem]
 		\label{def:proximity-korrektur}
-		Gegeben sei eine gewünschte Dosisverteilung $D_\mathrm{soll}(\vect{r})$.
+		Gegeben sei eine gewÃ¼nschte Dosisverteilung $D_\mathrm{soll}(\vect{r})$.
 		Gesucht ist die nominale Dosis $D_\mathrm{nom}(\vect{r}) \geq 0$, sodass:
 		\begin{equation}
 			f * D_\mathrm{nom} = D_\mathrm{soll}.
@@ -963,11 +963,11 @@
 		Dies ist ein lineares Inverseproblem (Entfaltung).
 	\end{definition}
 	
-	Da $f$ eine Gauß-Überlagerung und daher im Fourierraum einfach darstellbar
-	ist ($\hat{f}(\vect{k}) > 0$ für alle $\vect{k}$), kann formal
+	Da $f$ eine GauÃŸ-Ãœberlagerung und daher im Fourierraum einfach darstellbar
+	ist ($\hat{f}(\vect{k}) > 0$ fÃ¼r alle $\vect{k}$), kann formal
 	$\hat{D}_\mathrm{nom} = \hat{D}_\mathrm{soll}/\hat{f}$ berechnet werden.
 	In der Praxis ist die direkte Fourier-Entfaltung numerisch instabil
-	(Rauschverstärkung), weshalb iterative Verfahren bevorzugt werden.
+	(RauschverstÃ¤rkung), weshalb iterative Verfahren bevorzugt werden.
 	
 	\begin{algorithm}[htb]
 		\caption{Iterative Proximity-Effekt-Korrektur (IPEC)}
@@ -977,7 +977,7 @@
 		Toleranz $\varepsilon > 0$\\
 		\textbf{Ausgabe:} Korrigierte nominale Dosis $D_\mathrm{nom}(\vect{r})$
 		\begin{algorithmic}[1]
-			\State $D_\mathrm{nom}^{(0)} \gets D_\mathrm{soll}$ \Comment{Initialschätzung}
+			\State $D_\mathrm{nom}^{(0)} \gets D_\mathrm{soll}$ \Comment{InitialschÃ¤tzung}
 			\State Berechne $\hat{f}$ via 2D-FFT auf Gitter $2M\times 2M$ (zero-padded)
 			\Repeat
 			\State $D_\mathrm{eff}^{(k)} \gets \mathrm{IFFT}\bigl(\hat{f} \cdot
@@ -995,21 +995,21 @@
 	\begin{satz}[Konvergenz von Algorithmus~\ref{alg:proximity}]
 		\label{satz:ipec-konvergenz}
 		Ohne Projektion (kein $\max(0,\cdot)$) konvergiert Algorithmus~\ref{alg:proximity}
-		für $\omega \in (0,\, 2/\|\hat{f}\|_\infty)$ geometrisch:
+		fÃ¼r $\omega \in (0,\, 2/\|\hat{f}\|_\infty)$ geometrisch:
 		\begin{equation}
 			\|\mathrm{err}^{(k)}\|_2 \leq \rho^k \|\mathrm{err}^{(0)}\|_2,
 			\qquad \rho = \max_{|\vect{k}| \leq k_\mathrm{max}} |1 - \omega\hat{f}(\vect{k})| < 1.
 			\label{eq:ipec-konvergenz}
 		\end{equation}
-		Mit Projektion konvergiert der Algorithmus gegen die nichtnegative Least-Squares-Lösung.
+		Mit Projektion konvergiert der Algorithmus gegen die nichtnegative Least-Squares-LÃ¶sung.
 	\end{satz}
 	
 	\begin{proof}
 		Ohne Projektion ist der Algorithmus ein Richardson-Iterationsverfahren
-		für das lineare System $f * D_\mathrm{nom} = D_\mathrm{soll}$.
+		fÃ¼r das lineare System $f * D_\mathrm{nom} = D_\mathrm{soll}$.
 		Im Fourierraum entkoppeln die Gleichungen: $\hat{f}(\vect{k})\hat{D}_\mathrm{nom}(\vect{k}) = \hat{D}_\mathrm{soll}(\vect{k})$.
 		Der Fehler wird in jeder Iteration mit dem Faktor $|1-\omega\hat{f}(\vect{k})| < 1$
-		multipliziert. Maximierung über alle Wellenvektoren liefert die Konvergenzrate $\rho$.
+		multipliziert. Maximierung Ã¼ber alle Wellenvektoren liefert die Konvergenzrate $\rho$.
 	\end{proof}
 	
 	%%=============================================================
@@ -1022,7 +1022,7 @@
 	\begin{definition}[Spektrales Verlustfunktional]
 		\label{def:verlustfunktional}
 		Gegeben ein Zielspektrum $R_\mathrm{soll}(\lambda): [\lambda_\mathrm{min}, \lambda_\mathrm{max}] \to [0,1]$.
-		Das spektrale Verlustfunktional für den Resonatorparametersatz
+		Das spektrale Verlustfunktional fÃ¼r den Resonatorparametersatz
 		$\vect{\theta} = (d_0, Q)$ ist:
 		\begin{equation}
 			\mathcal{L}(\vect{\theta}) = \int_{\lambda_\mathrm{min}}^{\lambda_\mathrm{max}}
@@ -1033,10 +1033,10 @@
 	\end{definition}
 	
 	\begin{bemerkung}[Wahl des Gewichtsfaktors]
-		Für visuelle Anwendungen wählt man $w(\lambda) = V(\lambda)$
+		FÃ¼r visuelle Anwendungen wÃ¤hlt man $w(\lambda) = V(\lambda)$
 		(photopische Empfindlichkeitskurve des CIE-Normalbeobachters,
-		Maximum bei $\lambda = \SI{555}{nm}$). Für technische Filtranwendungen
-		kann $w(\lambda)$ als Stufenfunktion gewählt werden, die bestimmte
+		Maximum bei $\lambda = \SI{555}{nm}$). FÃ¼r technische Filtranwendungen
+		kann $w(\lambda)$ als Stufenfunktion gewÃ¤hlt werden, die bestimmte
 		Spektralbereiche bevorzugt. Im ungewichteten Fall ist $w \equiv 1$.
 	\end{bemerkung}
 	
@@ -1048,7 +1048,7 @@
 			\Delta E = \sqrt{(\Delta L^*)^2 + (\Delta a^*)^2 + (\Delta b^*)^2}.
 			\label{eq:deltaE}
 		\end{equation}
-		Ein $\Delta E < 2$ gilt als für das menschliche Auge nicht unterscheidbar
+		Ein $\Delta E < 2$ gilt als fÃ¼r das menschliche Auge nicht unterscheidbar
 		(JND, \textit{just noticeable difference}).
 	\end{definition}
 	
@@ -1058,7 +1058,7 @@
 	
 	\begin{satz}[Analytischer Gradient des Reflexionsspektrums]
 		\label{satz:gradient}
-		Der Gradient $\partial R/\partial d_0$ für einen Einzel-Fabry-Pérot-Resonator ist:
+		Der Gradient $\partial R/\partial d_0$ fÃ¼r einen Einzel-Fabry-PÃ©rot-Resonator ist:
 		\begin{align}
 			\frac{\partial R}{\partial d_0}
 			&= 2\,\Realteil\!\left(r^* \frac{\partial r}{\partial d_0}\right),
@@ -1078,9 +1078,9 @@
 		\end{equation}
 	\end{satz}
 	
-	Für ein allgemeines Mehrschichtsystem aus $N$ Schichten berechnet die
-	adjungierte Methode alle $N$ Gradienten mit \emph{einem} Vorwärtsdurchlauf
-	und \emph{einem} Rückwärtsdurchlauf (adjungierter Durchlauf):
+	FÃ¼r ein allgemeines Mehrschichtsystem aus $N$ Schichten berechnet die
+	adjungierte Methode alle $N$ Gradienten mit \emph{einem} VorwÃ¤rtsdurchlauf
+	und \emph{einem} RÃ¼ckwÃ¤rtsdurchlauf (adjungierter Durchlauf):
 	
 	\begin{equation}
 		\frac{\partial \mathcal{L}}{\partial \theta_j} = \Realteil\!\left(
@@ -1088,14 +1088,14 @@
 		\right), \quad j = 1,\ldots,N,
 		\label{eq:adjoint}
 	\end{equation}
-	wobei $\vect{v}_\mathrm{fwd}$ der Vorwärtszustandsvektor und
+	wobei $\vect{v}_\mathrm{fwd}$ der VorwÃ¤rtszustandsvektor und
 	$\vect{\lambda}_\mathrm{adj}$ der adjungierte Zustandsvektor sind.
 	
-	\begin{satz}[Komplexität der adjungierten Methode]
+	\begin{satz}[KomplexitÃ¤t der adjungierten Methode]
 		\label{satz:adjoint-komplex}
 		Die adjungierte Methode berechnet den gesamten Parametergradienten
 		$\nabla_{\vect{\theta}}\mathcal{L}$ mit Laufzeit $\ordre{N\Lambda}$ ---
-		unabhängig von der Anzahl $N$ der Parameter. Im Vergleich dazu erfordert
+		unabhÃ¤ngig von der Anzahl $N$ der Parameter. Im Vergleich dazu erfordert
 		die finite-Differenzen-Methode $\ordre{N^2\Lambda}$.
 	\end{satz}
 	
@@ -1110,21 +1110,21 @@
 		\caption{Optimale Resonatorgestaltung durch adjungierten Gradientenabstieg}
 		\label{alg:hauptalgorithmus}
 		\textbf{Eingabe:} Zielspektrum $R_\mathrm{soll}(\lambda)$, diskretisiert
-		auf $\Lambda$ Wellenlängen; Startparameter $\vect{\theta}^{(0)} = (d_0^{(0)}, Q^{(0)})$;
+		auf $\Lambda$ WellenlÃ¤ngen; Startparameter $\vect{\theta}^{(0)} = (d_0^{(0)}, Q^{(0)})$;
 		Lernrate $\eta > 0$; Iterationen $I_\mathrm{max}$; Toleranz $\varepsilon_\mathrm{tol}$\\
 		\textbf{Ausgabe:} Optimale Parameter $\vect{\theta}^*$, Verlauf $\mathcal{L}^{(i)}$
 		\begin{algorithmic}[1]
 			\State Normiere $R_\mathrm{soll}$ und konvertiere in CIE-XYZ-Farbraum
 			\For{$i = 1$ \textbf{to} $I_\mathrm{max}$}
-			\For{$\ell = 1$ \textbf{to} $\Lambda$} \Comment{Vorwärtsdurchlauf}
+			\For{$\ell = 1$ \textbf{to} $\Lambda$} \Comment{VorwÃ¤rtsdurchlauf}
 			\State $R^{(i)}(\lambda_\ell) \gets \mathrm{TMM}(\vect{\theta}^{(i)}, \lambda_\ell)$
 			\Comment{Alg.~\ref{alg:tmm-inhomogen} mit $K=100$ Sublayern}
 			\EndFor
 			\State $\mathcal{L}^{(i)} \gets \sum_\ell w_\ell |R^{(i)}_\ell - R_{\mathrm{soll},\ell}|^2$
 			\If{$\mathcal{L}^{(i)} < \varepsilon_\mathrm{tol}$}
-			\State \textbf{break} \Comment{Konvergenzkritierium erfüllt}
+			\State \textbf{break} \Comment{Konvergenzkritierium erfÃ¼llt}
 			\EndIf
-			\For{$\ell = 1$ \textbf{to} $\Lambda$} \Comment{Adjungierter Rückwärtsdurchlauf}
+			\For{$\ell = 1$ \textbf{to} $\Lambda$} \Comment{Adjungierter RÃ¼ckwÃ¤rtsdurchlauf}
 			\State $g_d^{(\ell)} \gets 2w_\ell(R^{(i)}_\ell - R_{\mathrm{soll},\ell})
 			\cdot \partial R/\partial d_0|_{\vect{\theta}^{(i)}}$
 			\Comment{Glg.~\eqref{eq:gradient-R}}
@@ -1143,7 +1143,7 @@
 	\begin{satz}[Konvergenz von Algorithmus~\ref{alg:hauptalgorithmus}]
 		\label{satz:hauptkonvergenz}
 		Sei $\mathcal{L}$ in der Umgebung des Optimums $\vect{\theta}^*$ streng konvex
-		mit Konvexitätskonstante $\mu > 0$ und Lipschitz-stetigem Gradienten
+		mit KonvexitÃ¤tskonstante $\mu > 0$ und Lipschitz-stetigem Gradienten
 		(Lipschitz-Konstante $L > 0$). Dann konvergiert Algorithmus~\ref{alg:hauptalgorithmus}
 		mit $\eta = 1/L$ linear:
 		\begin{equation}
@@ -1157,36 +1157,36 @@
 	
 	\begin{proof}
 		Der projizierte Gradientenabstieg auf einer konvexen Menge mit $\eta = 1/L$
-		erfüllt die Abstiegsbedingung
+		erfÃ¼llt die Abstiegsbedingung
 		$\mathcal{L}(\vect{\theta}^{(i+1)}) \leq \mathcal{L}(\vect{\theta}^{(i)})
 		- \frac{1}{2L}\|\nabla\mathcal{L}(\vect{\theta}^{(i)})\|^2$.
 		Kombination mit der Polyak-\L{}ojasiewicz-Bedingung (folgt aus $\mu$-strenger
-		Konvexität) liefert~\eqref{eq:konvergenz}.
+		KonvexitÃ¤t) liefert~\eqref{eq:konvergenz}.
 	\end{proof}
 	
 	\subsection{Gesamtalgorithmus: Von Zielbild zu Dosismuster}
 	
 	\begin{algorithm}[htb]
-		\caption{Vollständiger Pipeline-Algorithmus: Zielbild $\to$ Dosismuster}
+		\caption{VollstÃ¤ndiger Pipeline-Algorithmus: Zielbild $\to$ Dosismuster}
 		\label{alg:pipeline}
-		\textbf{Eingabe:} Zielbild (Farb- + Höhenkarte) auf Gitter $M\times M$,
+		\textbf{Eingabe:} Zielbild (Farb- + HÃ¶henkarte) auf Gitter $M\times M$,
 		Materialparameter $\{n_p, n_s, \chi_\mathrm{fluid}, \nu_{e,0}, \alpha, d_0\}$\\
 		\textbf{Ausgabe:} Elektronenstrahl-Dosismuster $D_\mathrm{nom}(\vect{r})$
 		\begin{algorithmic}[1]
 			\State \textbf{Phase 1: Farboptimierung}
 			\For{jedes Bildpixel $\vect{r}_i$}
 			\State Extrahiere Zielfarbe $c_i$ $\Rightarrow$ Zielspektrum $R_\mathrm{soll}^{(i)}(\lambda)$
-			\State Löse Alg.~\ref{alg:hauptalgorithmus}: $(d_{0,i}^*, Q_i^*) \gets
+			\State LÃ¶se Alg.~\ref{alg:hauptalgorithmus}: $(d_{0,i}^*, Q_i^*) \gets
 			\arg\min \mathcal{L}_i(d_0, Q)$
 			\State $\nu_{e,i}^* \gets \mathrm{FR}^{-1}(Q_i^*, \chi_\mathrm{fluid})$
 			\Comment{Inverse Flory-Rehner-Gleichung}
 			\EndFor
 			\State \textbf{Phase 2: Texturkodierung}
 			\For{jedes Pixel $\vect{r}_i$}
-			\State Extrahiere Zielhöhe $h_i^\mathrm{soll}$ aus der Höhenkarte
+			\State Extrahiere ZielhÃ¶he $h_i^\mathrm{soll}$ aus der HÃ¶henkarte
 			\State $Q_i^\mathrm{tex} \gets h_i^\mathrm{soll}/d_0 + 1$
 			\State $\nu_{e,i}^\mathrm{tex} \gets \mathrm{FR}^{-1}(Q_i^\mathrm{tex}, \chi_\mathrm{tex})$
-			\Comment{Anderes Lösungsmittel für Textur}
+			\Comment{Anderes LÃ¶sungsmittel fÃ¼r Textur}
 			\EndFor
 			\State \textbf{Phase 3: Dosisberechnung und Proximity-Korrektur}
 			\State $D_\mathrm{soll}(\vect{r}) \gets \alpha^{-1}(\nu_e^*(\vect{r}) - \nu_{e,0})$
@@ -1197,12 +1197,12 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\subsection{Komplexitätsübersicht}
+	\subsection{KomplexitÃ¤tsÃ¼bersicht}
 	
 	\begin{table}[htb]
 		\centering
-		\caption{Laufzeitkomplexität der Kernalgorithmen.
-			$\Lambda$: Anzahl Wellenlängen, $K$: TMM-Sublayer, $M$: Bildgittergröße,
+		\caption{LaufzeitkomplexitÃ¤t der Kernalgorithmen.
+			$\Lambda$: Anzahl WellenlÃ¤ngen, $K$: TMM-Sublayer, $M$: BildgittergrÃ¶ÃŸe,
 			$I$: Gradientenabstieg-Iterationen, $N$: TMM-Schichten.}
 		\label{tab:komplexitaet}
 		\begin{tabular}{llll}
@@ -1221,14 +1221,14 @@
 	\end{table}
 	
 	%%=============================================================
-	\section{Mehrschichtige Geräte und Quantenmechanik}
+	\section{Mehrschichtige GerÃ¤te und Quantenmechanik}
 	\label{sec:mehrschicht}
 	%%=============================================================
 	
-	\subsection{Systemarchitektur des Drei-Schicht-Geräts}
+	\subsection{Systemarchitektur des Drei-Schicht-GerÃ¤ts}
 	
-	Das vollständige weiche photonische Hautsystem realisiert unabhängige
-	Textur- und Farbkontrolle durch räumliche Trennung der Funktionen auf
+	Das vollstÃ¤ndige weiche photonische Hautsystem realisiert unabhÃ¤ngige
+	Textur- und Farbkontrolle durch rÃ¤umliche Trennung der Funktionen auf
 	drei Schichten, analog zur biologischen Vorlage (Abschnitt~\ref{ssec:bio}):
 	
 	\begin{figure}[htb]
@@ -1242,12 +1242,12 @@
 			\foreach \x in {1,2,3,4,5,6,7,8} {
 				\draw[pfeil, blue!80] (\x,7.0) -- (\x,6.4);
 			}
-			\node[blue!80] at (4.5,7.3) {\small einfallendes Weißlicht};
+			\node[blue!80] at (4.5,7.3) {\small einfallendes WeiÃŸlicht};
 			
 			% Schicht 1: Textur
 			\node[schicht, fill=green!15, text width=8.5cm, align=center] at (4.5,5.9)
 			{\textbf{Texturschicht}: E-Beam-kodiertes Hydrogel\\
-				$\nu_e(\vect{r})$, $d = \SI{1}{--}\SI{10}{\micro m}$, Lösungsmittel A ($\chi_A$)};
+				$\nu_e(\vect{r})$, $d = \SI{1}{--}\SI{10}{\micro m}$, LÃ¶sungsmittel A ($\chi_A$)};
 			
 			% Papillen-Silhouette
 			\begin{scope}
@@ -1264,8 +1264,8 @@
 			
 			% Schicht 2: Farbresonator
 			\node[schicht, fill=cyan!15, text width=8.5cm, align=center] at (4.5,4.65)
-			{\textbf{Farbresonatorschicht}: Fabry-Pérot-Kavität\\
-				$d_0 = \SI{200}{--}\SI{400}{nm}$, Mikrofluidik, Lösungsmittel B ($\chi_B$)};
+			{\textbf{Farbresonatorschicht}: Fabry-PÃ©rot-KavitÃ¤t\\
+				$d_0 = \SI{200}{--}\SI{400}{nm}$, Mikrofluidik, LÃ¶sungsmittel B ($\chi_B$)};
 			
 			% Spiegel 2
 			\fill[gray!60] (0,4.2) rectangle (9,4.35);
@@ -1274,7 +1274,7 @@
 			% Schicht 3: Mikrofluidik
 			\node[schicht, fill=blue!10, text width=8.5cm, align=center] at (4.5,3.75)
 			{\textbf{Mikrofluidikschicht}: Kanalstruktur\\
-				Lösungsmittelzufuhr/-abfuhr, Druckregelung};
+				LÃ¶sungsmittelzufuhr/-abfuhr, Druckregelung};
 			
 			% Substrat
 			\node[schicht, fill=gray!20, text width=8.5cm, align=center] at (4.5,2.85)
@@ -1289,27 +1289,27 @@
 			% Kontrolle
 			\draw[pfeil, orange, dashed] (10.2,5.9) -- (11.0,5.9);
 			\draw[pfeil, red, dashed] (10.2,4.65) -- (11.0,4.65);
-			\node[right] at (11.0,5.3) {\scriptsize\begin{tabular}{l}unabhängige\\Steuerung\end{tabular}};
+			\node[right] at (11.0,5.3) {\scriptsize\begin{tabular}{l}unabhÃ¤ngige\\Steuerung\end{tabular}};
 			
 		\end{tikzpicture}
-		\caption{Schematischer Aufbau des Drei-Schicht-Geräts zur unabhängigen
-			Textur- und Farbkontrolle. Texturschicht (grün) und Farbresonatorschicht
-			(blau) verwenden verschiedene Lösungsmittel ($\chi_A \neq \chi_B$),
-			die über separate Mikrofluidikkanäle zugeführt werden.}
+		\caption{Schematischer Aufbau des Drei-Schicht-GerÃ¤ts zur unabhÃ¤ngigen
+			Textur- und Farbkontrolle. Texturschicht (grÃ¼n) und Farbresonatorschicht
+			(blau) verwenden verschiedene LÃ¶sungsmittel ($\chi_A \neq \chi_B$),
+			die Ã¼ber separate MikrofluidikkanÃ¤le zugefÃ¼hrt werden.}
 		\label{fig:drei-schicht}
 	\end{figure}
 	
-	\begin{satz}[Unabhängigkeit von Textur und Farbe im Drei-Schicht-Gerät]
+	\begin{satz}[UnabhÃ¤ngigkeit von Textur und Farbe im Drei-Schicht-GerÃ¤t]
 		\label{satz:unabhaengigkeit}
-		Seien $\chi_A$ (Lösungsmittel für Texturschicht) und $\chi_B$
-		(Lösungsmittel für Farbresonatorschicht) so gewählt, dass:
+		Seien $\chi_A$ (LÃ¶sungsmittel fÃ¼r Texturschicht) und $\chi_B$
+		(LÃ¶sungsmittel fÃ¼r Farbresonatorschicht) so gewÃ¤hlt, dass:
 		\begin{enumerate}[label=(\roman*)]
-			\item Lösungsmittel A das Hydrogel der Farbresonatorschicht nicht quillt
-			(d.\,h. $\chi_A > 0{,}5$ für das Farbschichtmaterial), und
-			\item Lösungsmittel B die Texturschicht nicht beeinflusst
-			(d.\,h. $\chi_B > 0{,}5$ für das Texturschichtmaterial).
+			\item LÃ¶sungsmittel A das Hydrogel der Farbresonatorschicht nicht quillt
+			(d.\,h. $\chi_A > 0{,}5$ fÃ¼r das Farbschichtmaterial), und
+			\item LÃ¶sungsmittel B die Texturschicht nicht beeinflusst
+			(d.\,h. $\chi_B > 0{,}5$ fÃ¼r das Texturschichtmaterial).
 		\end{enumerate}
-		Dann sind Textur und Farbe vollständig entkoppelt:
+		Dann sind Textur und Farbe vollstÃ¤ndig entkoppelt:
 		$\partial h/\partial\chi_B = 0$ und $\partial\lambda_\mathrm{res}/\partial\chi_A = 0$.
 	\end{satz}
 	
@@ -1318,22 +1318,22 @@
 		also $\partial\lambda_\mathrm{res}/\partial\chi_A = 0$.
 		Aus Bedingung (ii) folgt $Q_\mathrm{Tex}(\chi_B) = 1$,
 		also $\partial h/\partial\chi_B = 0$.
-		Die Entkopplung ist damit für geeignete Materialkombinationen exakt.
+		Die Entkopplung ist damit fÃ¼r geeignete Materialkombinationen exakt.
 	\end{proof}
 	
 	\subsection{Formale Analogie: Transfermatrix und Quantenmechanik}
 	\label{ssec:qm-analogie}
 	
-	Die tiefste theoretische Einsicht dieser Arbeit ist die präzise Analogie
+	Die tiefste theoretische Einsicht dieser Arbeit ist die prÃ¤zise Analogie
 	zwischen der photonischen Transfermatrix und dem quantenmechanischen
 	Zeitentwicklungsoperator.
 	
-	\begin{satz}[Photon-Quanten-Dualität der Transfermatrix]
+	\begin{satz}[Photon-Quanten-DualitÃ¤t der Transfermatrix]
 		\label{satz:qm-analogie}
-		Der Wellenpropagator~\eqref{eq:wellenpropagator} für ein eindimensionales
+		Der Wellenpropagator~\eqref{eq:wellenpropagator} fÃ¼r ein eindimensionales
 		photonisches Medium ist formal identisch mit dem Zeitentwicklungsoperator
 		$\hat{U}(t_1, t_2) = \mathcal{T}e^{-i\int_{t_1}^{t_2} \hat{H}(t) dt/\hbar}$
-		eines quantenmechanischen Systems unter dem zeitabhängigen Hamiltonian
+		eines quantenmechanischen Systems unter dem zeitabhÃ¤ngigen Hamiltonian
 		\begin{equation}
 			\hat{H}(z) = \hbar c \begin{pmatrix} 0 & k(z) \\ k(z) & 0 \end{pmatrix},
 			\qquad k(z) = \frac{2\pi n(z)}{\lambda},
@@ -1343,11 +1343,11 @@
 		und $k(z) \leftrightarrow H(t)/(\hbar c)$ hergestellt wird.
 	\end{satz}
 	
-	Diese Analogie ermöglicht den direkten Methodentransfer:
+	Diese Analogie ermÃ¶glicht den direkten Methodentransfer:
 	
 	\begin{table}[htb]
 		\centering
-		\caption{Wörterbuch der Analogie zwischen photonischer Transfermatrix
+		\caption{WÃ¶rterbuch der Analogie zwischen photonischer Transfermatrix
 			und Quantenmechanik.}
 		\label{tab:analogie}
 		\begin{tabular}{lll}
@@ -1358,25 +1358,25 @@
 			& Propag. v. Feld/Zustand\\
 			Brechungsindex $n(z)$ & Potential $V(t)$ & Lok. Propagationsgeschw.\\
 			Phasedicke $\delta = 2\pi nd/\lambda$ & Phase $-Et/\hbar$ & Akkumulierte Phase\\
-			Reflexion $R$ & Tunnelwahrscheinlichkeit & Rückstr./Quantentunneln\\
+			Reflexion $R$ & Tunnelwahrscheinlichkeit & RÃ¼ckstr./Quantentunneln\\
 			FP-Resonanz & Energieeigenwert & Welle im Potentialtopf\\
-			Schichtdicke $d$ & Systemgröße $L$ & Räumliche Ausdehnung\\
-			Wellenlänge $\lambda$ & Energie $E = hc/\lambda$ & Energieskala\\
+			Schichtdicke $d$ & SystemgrÃ¶ÃŸe $L$ & RÃ¤umliche Ausdehnung\\
+			WellenlÃ¤nge $\lambda$ & Energie $E = hc/\lambda$ & Energieskala\\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
-	\begin{korollar}[WKB-Näherung für adiabatische Schichten]
+	\begin{korollar}[WKB-NÃ¤herung fÃ¼r adiabatische Schichten]
 		\label{kor:wkb}
-		Für langsam variierendes $n(z)$ (Variationsskala $\gg \lambda$) gilt
-		die WKB-Näherung analog zur quantenmechanischen semiklassischen Approximation:
+		FÃ¼r langsam variierendes $n(z)$ (Variationsskala $\gg \lambda$) gilt
+		die WKB-NÃ¤herung analog zur quantenmechanischen semiklassischen Approximation:
 		\begin{equation}
 			\matr{U}_\mathrm{WKB}(0, d) \approx
 			\exp\!\left(i\int_0^d k(z)\, dz\right) \cdot \matr{I}_2,
 			\label{eq:wkb}
 		\end{equation}
 		d.\,h. die Wellenamplitude bleibt erhalten und nur die Phase akkumuliert.
-		Die Reflexion ist exponentiell unterdrückt:
+		Die Reflexion ist exponentiell unterdrÃ¼ckt:
 		\begin{equation}
 			R_\mathrm{WKB} \propto \exp\!\left(-4\int_0^d k(z)\, dz\right)
 			= e^{-4\pi\bar{n}d/\lambda},
@@ -1385,14 +1385,14 @@
 		wobei $\bar{n} = d^{-1}\int_0^d n(z)\, dz$ der mittlere Brechungsindex ist.
 	\end{korollar}
 	
-	\begin{bemerkung}[Topologische Photonische Zustände]
+	\begin{bemerkung}[Topologische Photonische ZustÃ¤nde]
 		Wenn $n(z)$ periodisch in einer Raumrichtung ist (photonischer Kristall
 		mit Periode $\Lambda_c$), entsteht eine Bandstruktur analoger zum
-		Bloch-Theorem in der Festkörperphysik. Die Bloch-Wellenvektoren $q$
-		parametrisieren die photonischen Bänder, und topologische Invarianten
+		Bloch-Theorem in der FestkÃ¶rperphysik. Die Bloch-Wellenvektoren $q$
+		parametrisieren die photonischen BÃ¤nder, und topologische Invarianten
 		(Zak-Phase, Chern-Zahl) klassifizieren die Bandtopologie.
-		Topologische Randzustände entsprechen robust-geführten Randmoden im
-		photonischen Kristall, die gegenüber Störungen in $n(z)$ immun sind.
+		Topologische RandzustÃ¤nde entsprechen robust-gefÃ¼hrten Randmoden im
+		photonischen Kristall, die gegenÃ¼ber StÃ¶rungen in $n(z)$ immun sind.
 	\end{bemerkung}
 	
 	%%=============================================================
@@ -1404,7 +1404,7 @@
 	
 	Alle Simulationen wurden mit dem in dieser Arbeit entwickelten
 	Python-Algorithmus (Algorithmen~\ref{alg:tmm-inhomogen}--\ref{alg:pipeline})
-	für folgendes Referenzsystem durchgeführt:
+	fÃ¼r folgendes Referenzsystem durchgefÃ¼hrt:
 	
 	\begin{table}[htb]
 		\centering
@@ -1418,11 +1418,11 @@
 			Wasser-Brechungsindex $n_w$ & $1{,}333$ & Standardwert bei \SI{25}{\celsius}\\
 			Au-Brechungsindex ($\lambda = \SI{600}{nm}$) & $0{,}17 + 3{,}0i$ & Palik-Daten\\
 			Trockene Filmdicke $d_0$ & \SI{250}{nm} & Designparameter\\
-			Vernetzungsdichte $\nu_{e,0}$ & \SI{100}{mol/m^3} & Typisch für PDMS-Gel\\
+			Vernetzungsdichte $\nu_{e,0}$ & \SI{100}{mol/m^3} & Typisch fÃ¼r PDMS-Gel\\
 			Flory-Huggins $\chi$ (Ethanol) & $0{,}25$ & Literatur\\
 			Au-Spiegeldicke $d_\mathrm{Au}$ & \SI{10}{nm} & Designparameter\\
 			Sublayer-Anzahl $K$ & $200$ & Konvergenztest\\
-			Wellenlängenpunkte $\Lambda$ & $400$ & $\lambda \in [380, 780]\,\si{nm}$\\
+			WellenlÃ¤ngenpunkte $\Lambda$ & $400$ & $\lambda \in [380, 780]\,\si{nm}$\\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -1431,23 +1431,23 @@
 	
 	Tabelle~\ref{tab:farbtuning} und Abbildung~\ref{fig:fp-spektren} zeigen
 	die berechnete Resonanzverschiebung. Die experimentell von Doshi et al.
-	berichteten Farben (Rot $\to$ Grün $\to$ Blau bei zunehmender Quellung)
+	berichteten Farben (Rot $\to$ GrÃ¼n $\to$ Blau bei zunehmender Quellung)
 	werden quantitativ reproduziert.
 	
 	\begin{table}[htb]
 		\centering
-		\caption{Berechnete Resonanzwellenlängen, Quellungsgrad und
-			Resonatorparameter für verschiedene Lösungsmittel ($d_0 = \SI{250}{nm}$,
+		\caption{Berechnete ResonanzwellenlÃ¤ngen, Quellungsgrad und
+			Resonatorparameter fÃ¼r verschiedene LÃ¶sungsmittel ($d_0 = \SI{250}{nm}$,
 			$n_p = 1{,}50$).}
 		\label{tab:farbtuning}
 		\begin{tabular}{lcccccl}
 			\toprule
-			\textbf{Lösungsmittel} & $\chi$ & $Q_\mathrm{gl}$ & $d_\mathrm{qu}$ (nm)
+			\textbf{LÃ¶sungsmittel} & $\chi$ & $Q_\mathrm{gl}$ & $d_\mathrm{qu}$ (nm)
 			& $\neff$ & $\lambda_\mathrm{res}$ (nm) & \textbf{Farbe}\\
 			\midrule
 			trocken & --- & $1{,}00$ & 250 & $1{,}500$ & 750 & Rot\\
 			Isopropanol & $0{,}22$ & $1{,}75$ & 438 & $1{,}377$ & 606 & Orange-Gelb\\
-			Ethanol & $0{,}25$ & $2{,}15$ & 538 & $1{,}364$ & 543 & Grün\\
+			Ethanol & $0{,}25$ & $2{,}15$ & 538 & $1{,}364$ & 543 & GrÃ¼n\\
 			n-Butanol & $0{,}30$ & $2{,}75$ & 688 & $1{,}351$ & 486 & Cyan-Blau\\
 			Wasser & $0{,}43$ & $3{,}60$ & 900 & $1{,}339$ & 424 & Violett\\
 			\bottomrule
@@ -1457,7 +1457,7 @@
 	\subsection{Texturprogrammierung: Schachbrettmuster}
 	
 	Als Demonstrationsbeispiel wurde ein Schachbrettmuster mit
-	Feldbreite $a = \SI{5}{\micro m}$ und Zielhöhenmodulation
+	Feldbreite $a = \SI{5}{\micro m}$ und ZielhÃ¶henmodulation
 	$\Delta h = \SI{500}{nm}$ kodiert (Abbildung~\ref{fig:schachbrett}).
 	
 	\begin{figure}[htb]
@@ -1486,7 +1486,7 @@
 			
 			% Topographie nach Quellung (rechts)
 			\begin{scope}[xshift=6.5cm]
-				% \node[above] at (2.5, 4.3) {\small Topographie $h(\vect{r})$ (in Lösungsmittel A)};
+				% \node[above] at (2.5, 4.3) {\small Topographie $h(\vect{r})$ (in LÃ¶sungsmittel A)};
 				\foreach \row in {0,...,4} {
 					\foreach \col in {0,...,4} {
 						\pgfmathtruncatemacro{\checksum}{mod(\row+\col,2)}
@@ -1511,26 +1511,26 @@
 			
 		\end{tikzpicture}
 		\caption{Simulation der Texturprogrammierung. Links: Elektronenstrahl-Dosismuster
-			für ein Schachbrettmuster (Feldbreite \SI{5}{\micro m}).
+			fÃ¼r ein Schachbrettmuster (Feldbreite \SI{5}{\micro m}).
 			Dunkle Felder werden mit hoher Dosis $D_\mathrm{hoch}$ bestrahlt
-			(stärkere Vernetzung, geringere Quellung, niedrige Oberflächenhöhe).
-			Rechts: Resultierende Oberflächentopographie nach Quellung in Lösungsmittel A.
-			Die Höhenmodulation beträgt $\Delta h = \SI{500}{nm}$.}
+			(stÃ¤rkere Vernetzung, geringere Quellung, niedrige OberflÃ¤chenhÃ¶he).
+			Rechts: Resultierende OberflÃ¤chentopographie nach Quellung in LÃ¶sungsmittel A.
+			Die HÃ¶henmodulation betrÃ¤gt $\Delta h = \SI{500}{nm}$.}
 		\label{fig:schachbrett}
 	\end{figure}
 	
 	\subsection{Tarnfarben-Optimierung: Anpassung an Hintergrund}
 	
-	Für den Nachweis der Tarnfähigkeit wurde als Zielspektrum das gemessene
-	Reflexionsspektrum eines grünen Laubblatts verwendet
+	FÃ¼r den Nachweis der TarnfÃ¤higkeit wurde als Zielspektrum das gemessene
+	Reflexionsspektrum eines grÃ¼nen Laubblatts verwendet
 	(typisch: Reflexionsmaximum bei $\lambda \approx \SI{550}{nm}$,
-	breite Reflexion im Grün-Gelb-Bereich, niedrige Reflexion im Blau und Rot).
+	breite Reflexion im GrÃ¼n-Gelb-Bereich, niedrige Reflexion im Blau und Rot).
 	
 	Algorithmus~\ref{alg:hauptalgorithmus} konvergierte nach $I = 87$ Iterationen
 	auf $\mathcal{L} = 3{,}1 \times 10^{-3}$ mit optimalen Parametern
 	$d_0^* = \SI{248}{nm}$, $Q^* = 2{,}18$ (entspricht Ethanol-Quellung).
-	Der CIE-$\Delta E$-Wert zwischen Ziel und erreichter Farbe beträgt $\Delta E = 1{,}8 < 2$
-	(nicht unterscheidbar für das menschliche Auge).
+	Der CIE-$\Delta E$-Wert zwischen Ziel und erreichter Farbe betrÃ¤gt $\Delta E = 1{,}8 < 2$
+	(nicht unterscheidbar fÃ¼r das menschliche Auge).
 	
 	\begin{figure}[htb]
 		\centering
@@ -1559,8 +1559,8 @@
 			\end{axis}
 		\end{tikzpicture}
 		\caption{Konvergenzverlauf von Algorithmus~\ref{alg:hauptalgorithmus}
-			für die Tarnfarben-Optimierung (logarithmische Skala). Das Verlustfunktional
-			fällt exponentiell (lineare Konvergenz auf log-Skala) und unterschreitet
+			fÃ¼r die Tarnfarben-Optimierung (logarithmische Skala). Das Verlustfunktional
+			fÃ¤llt exponentiell (lineare Konvergenz auf log-Skala) und unterschreitet
 			nach $I^* = 87$ Iterationen die Wahrnehmbarkeitsschwelle ($\Delta E < 2$).}
 		\label{fig:konvergenz}
 	\end{figure}
@@ -1570,9 +1570,9 @@
 	
 	Dieses Kapitel dokumentiert die numerische Validierung aller theoretischen
 	Bausteine des \textsc{oqtum}-Frameworks anhand von 19 systematischen
-	Experimenten. Jedes Experiment überprüft einen abgeschlossenen Teilaspekt
-	des Modells, beginnend mit der elektromagnetischen Grundtheorie über die
-	Polymerphysik und E-Beam-Lithographie bis hin zur vollständigen
+	Experimenten. Jedes Experiment Ã¼berprÃ¼ft einen abgeschlossenen Teilaspekt
+	des Modells, beginnend mit der elektromagnetischen Grundtheorie Ã¼ber die
+	Polymerphysik und E-Beam-Lithographie bis hin zur vollstÃ¤ndigen
 	Optimierungspipeline. Die Abbildungen wurden mit dem Modul
 	\texttt{src/experiments.py} automatisch erzeugt; alle 19 Experimente
 	liefen fehlerfrei durch.
@@ -1582,7 +1582,7 @@
 	\label{sec:exp_optik}
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 1 – Energetische Fresnel-Koeffizienten}
+	\subsubsection*{Experiment 1 â€“ Energetische Fresnel-Koeffizienten}
 	\label{exp:fresnel}
 	
 	\begin{figure}[h!]
@@ -1590,12 +1590,12 @@
 		\includegraphics[width=\linewidth]{exp01_fresnel_coefficients}
 		\caption{%
 			\textbf{Energetische Fresnel-Koeffizienten (Def.~2.2, Gl.~2--5).}
-			\emph{Links:} Reflexions- und Transmissionsintensitäten $R_s$, $R_p$,
-			$T_s$, $T_p$ für den Übergang Luft\,\textrightarrow\,Glas ($n_1{=}1{,}0$,
-			$n_2{=}1{,}5$) in Abhängigkeit vom Einfallswinkel $\theta$.
+			\emph{Links:} Reflexions- und TransmissionsintensitÃ¤ten $R_s$, $R_p$,
+			$T_s$, $T_p$ fÃ¼r den Ãœbergang Luft\,\textrightarrow\,Glas ($n_1{=}1{,}0$,
+			$n_2{=}1{,}5$) in AbhÃ¤ngigkeit vom Einfallswinkel $\theta$.
 			$T$ ist korrekt als energetischer Koeffizient
 			$T = \tfrac{n_2\cos\theta_t}{n_1\cos\theta_i}\,|t|^2$ berechnet;
-			die Kontrollkurve $R_s+T_s=1$ bestätigt die Energieerhaltung auf
+			die Kontrollkurve $R_s+T_s=1$ bestÃ¤tigt die Energieerhaltung auf
 			der gesamten Achse.  Der Brewster-Winkel bei $\theta_B = 56{,}3^\circ$
 			ist markiert.
 			\emph{Rechts:} Totale Innenreflexion (Glas\,\textrightarrow\,Luft,
@@ -1606,18 +1606,18 @@
 	\end{figure}
 	
 	Abbildung~\ref{fig:exp01} belegt die korrekte Implementierung der
-	Fresnel-Gleichungen für beide Polarisationen.  Die linke Seite zeigt
-	das charakteristische Auslöschen von $R_p$ am Brewster-Winkel; die
+	Fresnel-Gleichungen fÃ¼r beide Polarisationen.  Die linke Seite zeigt
+	das charakteristische AuslÃ¶schen von $R_p$ am Brewster-Winkel; die
 	explizite Berechnung der energetischen Transmissionskoeffizienten
-	stellt sicher, dass $R+T=1$ auch bei schrägem Einfall exakt gilt
-	(im Gegensatz zur oft verwendeten Näherung $T\approx 1-R$, die nur
+	stellt sicher, dass $R+T=1$ auch bei schrÃ¤gem Einfall exakt gilt
+	(im Gegensatz zur oft verwendeten NÃ¤herung $T\approx 1-R$, die nur
 	bei senkrechtem Einfall stimmt).  Die rechte Seite demonstriert den
-	Sprung auf $R=1$ bei der totalen Innenreflexion, der für die
+	Sprung auf $R=1$ bei der totalen Innenreflexion, der fÃ¼r die
 	FP-Hohlraumsimulation mit metallischen Spiegelschichten relevant ist.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 2 – TMM-Energieerhaltung}
+	\subsubsection*{Experiment 2 â€“ TMM-Energieerhaltung}
 	\label{exp:tmm_energie}
 	
 	\begin{figure}[h!]
@@ -1627,97 +1627,97 @@
 			\textbf{Transfermatrix-Methode: Energieerhaltung $R+T+A=1$
 				(Satz~3.1).}
 			\emph{Links:} MgF${}_2$-Antireflexschicht ($d=100$\,nm, $n=1{,}38$)
-			auf Glas; die gestapelten Flächen für $R$, $T$, $A$ belegen
-			$R+T+A=1$ über das gesamte sichtbare Spektrum.
-			\emph{Rechts:} PDMS-Film (200\,nm) auf einer dünnen Au-Schicht
-			(30\,nm, absorbierend) auf SiO${}_2$; die Absorption überwiegt
+			auf Glas; die gestapelten FlÃ¤chen fÃ¼r $R$, $T$, $A$ belegen
+			$R+T+A=1$ Ã¼ber das gesamte sichtbare Spektrum.
+			\emph{Rechts:} PDMS-Film (200\,nm) auf einer dÃ¼nnen Au-Schicht
+			(30\,nm, absorbierend) auf SiO${}_2$; die Absorption Ã¼berwiegt
 			im blauen Bereich durch die Plasmon-Resonanz des Goldes.
 		}
 		\label{fig:exp02}
 	\end{figure}
 	
-	Satz~3.1 fordert globale Energieerhaltung für beliebige Schichtstapel.
-	Abbildung~\ref{fig:exp02} verifiziert dies für zwei physikalisch sehr
+	Satz~3.1 fordert globale Energieerhaltung fÃ¼r beliebige Schichtstapel.
+	Abbildung~\ref{fig:exp02} verifiziert dies fÃ¼r zwei physikalisch sehr
 	verschiedene Systeme: ein rein dielektrisches Antireflexsystem und ein
-	absorbierendes Metall-Dielektrikum-System.  In beiden Fällen weicht
+	absorbierendes Metall-Dielektrikum-System.  In beiden FÃ¤llen weicht
 	die Summe $R(\lambda)+T(\lambda)+A(\lambda)$ numerisch nicht von 1 ab,
-	was die Konsistenz der TMM-Implementierung bestätigt.
+	was die Konsistenz der TMM-Implementierung bestÃ¤tigt.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 3 – Fabry-Pérot-Reflexionsspektrum}
+	\subsubsection*{Experiment 3 â€“ Fabry-PÃ©rot-Reflexionsspektrum}
 	\label{exp:fp_spektrum}
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\linewidth]{exp03_fabry_perot_spectrum}
 		\caption{%
-			\textbf{Fabry-Pérot-Resonator: Reflexionsspektrum (Gl.~8).}
-			\emph{Links:} Variation der Spiegelreflexivität $R_1{=}R_2$ bei
-			fester Kavitätsdicke $d=200$\,nm und $n=1{,}41$ (PDMS).  Mit
+			\textbf{Fabry-PÃ©rot-Resonator: Reflexionsspektrum (Gl.~8).}
+			\emph{Links:} Variation der SpiegelreflexivitÃ¤t $R_1{=}R_2$ bei
+			fester KavitÃ¤tsdicke $d=200$\,nm und $n=1{,}41$ (PDMS).  Mit
 			steigendem $R$ werden die Resonanzminima tiefer und schmaler
-			(höhere Finesse).
-			\emph{Rechts:} Variation der Kavitätsdicke $d = 100\text{--}300$\,nm
-			bei $R=0{,}5$; die Resonanzwellenlänge verschiebt sich linear mit
-			$d$ und die zugehörigen $\lambda_\mathrm{res}$-Werte stimmen mit
-			der analytischen Formel $\lambda = 2nd/m$ überein.
+			(hÃ¶here Finesse).
+			\emph{Rechts:} Variation der KavitÃ¤tsdicke $d = 100\text{--}300$\,nm
+			bei $R=0{,}5$; die ResonanzwellenlÃ¤nge verschiebt sich linear mit
+			$d$ und die zugehÃ¶rigen $\lambda_\mathrm{res}$-Werte stimmen mit
+			der analytischen Formel $\lambda = 2nd/m$ Ã¼berein.
 		}
 		\label{fig:exp03}
 	\end{figure}
 	
 	Die FP-Resonanzformel (Gl.~8) ist die Kerngleichung des aktiven
 	Farbsystems.  Abbildung~\ref{fig:exp03} zeigt, dass sowohl die
-	Finesse- als auch die Wellenlängenabhängigkeit korrekt implementiert
+	Finesse- als auch die WellenlÃ¤ngenabhÃ¤ngigkeit korrekt implementiert
 	sind.  Die Resonanzminima in der rechten Grafik verschieben sich
-	erwartungsgemäß monoton mit der Kavitätsdicke, was die spätere
+	erwartungsgemÃ¤ÃŸ monoton mit der KavitÃ¤tsdicke, was die spÃ¤tere
 	Farbstimmung durch Quellungskontrolle untermauert.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 4 – FP-Finesse und höhere Ordnungen}
+	\subsubsection*{Experiment 4 â€“ FP-Finesse und hÃ¶here Ordnungen}
 	\label{exp:fp_finesse}
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\linewidth]{exp04_fp_finesse_orders}
 		\caption{%
-			\textbf{Fabry-Pérot-Finesse (Gl.~13) und höhere Resonanzordnungen.}
+			\textbf{Fabry-PÃ©rot-Finesse (Gl.~13) und hÃ¶here Resonanzordnungen.}
 			\emph{Links:} Finesse $\mathcal{F}$ als Funktion der
-			Spiegelreflexivität (logarithmische Ordinate); die divergente
-			Steigung für $R\to 1$ ist physikalisch korrekt.
+			SpiegelreflexivitÃ¤t (logarithmische Ordinate); die divergente
+			Steigung fÃ¼r $R\to 1$ ist physikalisch korrekt.
 			\emph{Rechts:} FP-Spektrum mit eingetragenen Resonanzordnungen
-			$m=1\ldots 4$ für $d=250$\,nm, $n=1{,}41$; die Positionen der
-			analytischen Resonanzwellenlängen treffen die numerischen
+			$m=1\ldots 4$ fÃ¼r $d=250$\,nm, $n=1{,}41$; die Positionen der
+			analytischen ResonanzwellenlÃ¤ngen treffen die numerischen
 			Reflexionsminima exakt.
 		}
 		\label{fig:exp04}
 	\end{figure}
 	
 	Die Finesse $\mathcal{F} = \pi(R_1 R_2)^{1/4}/(1-\sqrt{R_1 R_2})$
-	ist ein Maß für die spektrale Selektivität des Resonators.
+	ist ein MaÃŸ fÃ¼r die spektrale SelektivitÃ¤t des Resonators.
 	Abbildung~\ref{fig:exp04} (links) zeigt den erwarteten exponentiellen
-	Anstieg für $R\to 1$.  Die rechte Grafik belegt, dass mehrere
-	Resonanzordnungen korrekt berechnet werden — für das Farbdesign
-	ist dies relevant, da höhere Ordnungen im sichtbaren Bereich
-	parasitäre Peaks erzeugen können.
+	Anstieg fÃ¼r $R\to 1$.  Die rechte Grafik belegt, dass mehrere
+	Resonanzordnungen korrekt berechnet werden â€” fÃ¼r das Farbdesign
+	ist dies relevant, da hÃ¶here Ordnungen im sichtbaren Bereich
+	parasitÃ¤re Peaks erzeugen kÃ¶nnen.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 5 – TMM inhomogener Schichten}
+	\subsubsection*{Experiment 5 â€“ TMM inhomogener Schichten}
 	\label{exp:tmm_inhomogen}
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\linewidth]{exp05_tmm_inhomogeneous}
 		\caption{%
-			\textbf{TMM für inhomogene Schichten: Konvergenz $O(1/K^2)$
+			\textbf{TMM fÃ¼r inhomogene Schichten: Konvergenz $O(1/K^2)$
 				(Alg.~3.1).}
-			\emph{Links:} Numerischer Fehler $|\Delta R|$ gegenüber einer
+			\emph{Links:} Numerischer Fehler $|\Delta R|$ gegenÃ¼ber einer
 			$K=1024$-Referenz als Funktion der Sublayer-Anzahl $K$ (doppelt
-			logarithmisch) für ein lineares Gradientenprofil
+			logarithmisch) fÃ¼r ein lineares Gradientenprofil
 			$n(z) = 1{,}0 + 0{,}5\,z/d$.  Die Konvergenzrate folgt
 			exakt der theoretischen $O(1/K^2)$-Kurve.
-			\emph{Rechts:} Vergleich der Reflexionsspektren für homogene,
+			\emph{Rechts:} Vergleich der Reflexionsspektren fÃ¼r homogene,
 			Gradient- und Stufenprofile zeigt qualitativ verschiedene
 			Spektralformen.
 		}
@@ -1726,13 +1726,13 @@
 	
 	Algorithmus~3.1 approximiert inhomogene Schichten durch $K$ homogene
 	Sublayer (Trotter-Produktformel).  Die $O(1/K^2)$-Konvergenzrate in
-	Abbildung~\ref{fig:exp05} bestätigt, dass das Verfahren zweiter Ordnung
-	ist, wie theoretisch gefordert.  Für praktische Rechnungen ist $K=64$
+	Abbildung~\ref{fig:exp05} bestÃ¤tigt, dass das Verfahren zweiter Ordnung
+	ist, wie theoretisch gefordert.  FÃ¼r praktische Rechnungen ist $K=64$
 	ausreichend (Fehler $<10^{-6}$).
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 6 – Lorentz-Oszillator-Modell}
+	\subsubsection*{Experiment 6 â€“ Lorentz-Oszillator-Modell}
 	\label{exp:lorentz}
 	
 	\begin{figure}[h!]
@@ -1740,21 +1740,21 @@
 		\includegraphics[width=\linewidth]{exp06_lorentz_refractive_index}
 		\caption{%
 			\textbf{Lorentz-Oszillator-Modell des Brechungsindex (Def.~2.3).}
-			\emph{Links:} Realteil $n(\lambda)$ für drei Teilchendichten
+			\emph{Links:} Realteil $n(\lambda)$ fÃ¼r drei Teilchendichten
 			$N$ bei UV-Resonanz $\lambda_0=280$\,nm; die anomale Dispersion
-			in Resonanznähe ist klar erkennbar.
-			\emph{Rechts:} Vollständige Darstellung von Realteil $n$ und
-			Extinktionskoeffizient $\kappa$ mit zugehörigem
+			in ResonanznÃ¤he ist klar erkennbar.
+			\emph{Rechts:} VollstÃ¤ndige Darstellung von Realteil $n$ und
+			Extinktionskoeffizient $\kappa$ mit zugehÃ¶rigem
 			Absorptionskoeffizienten $\alpha$ (rechte Ordinate).
 		}
 		\label{fig:exp06}
 	\end{figure}
 	
-	Das Lorentz-Modell liefert die mikroskopische Grundlage für die
+	Das Lorentz-Modell liefert die mikroskopische Grundlage fÃ¼r die
 	Brechungsindexdispersion von PDMS und seinen gequollenen Varianten.
 	Abbildung~\ref{fig:exp06} reproduziert die charakteristischen
 	Dispersions- und Absorptionskurven des Drude-Lorentz-Modells,
-	einschließlich des Kramers-Kronig-konformen Zusammenhangs zwischen
+	einschlieÃŸlich des Kramers-Kronig-konformen Zusammenhangs zwischen
 	$n$ und $\kappa$.
 	
 	% ------------------------------------------------------------------
@@ -1762,7 +1762,7 @@
 	\label{sec:exp_polymer}
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 7 – Lorentz-Lorenz-Mischungsregel}
+	\subsubsection*{Experiment 7 â€“ Lorentz-Lorenz-Mischungsregel}
 	\label{exp:lorentz_lorenz}
 	
 	\begin{figure}[h!]
@@ -1771,26 +1771,26 @@
 		\caption{%
 			\textbf{Lorentz-Lorenz-Mischungsregel (Def.~5.4, Gl.~20).}
 			\emph{Links:} Effektiver Brechungsindex $n_\mathrm{eff}(\phi_p)$
-			für PDMS/Wasser nach Lorentz-Lorenz (nichtlinear) und linearer
-			Mischungsregel; die Abweichung beträgt bis zu $\Delta n\approx
+			fÃ¼r PDMS/Wasser nach Lorentz-Lorenz (nichtlinear) und linearer
+			Mischungsregel; die Abweichung betrÃ¤gt bis zu $\Delta n\approx
 			0{,}008$ bei $\phi_p=0{,}5$.
-			\emph{Rechts:} $n_\mathrm{eff}(Q)$ für vier Lösungsmittel
+			\emph{Rechts:} $n_\mathrm{eff}(Q)$ fÃ¼r vier LÃ¶sungsmittel
 			(Wasser, Ethanol, Isopropanol, $n$-Butanol) zeigt die
-			Sensitivität der Farbe gegenüber der Lösungsmittelwahl.
+			SensitivitÃ¤t der Farbe gegenÃ¼ber der LÃ¶sungsmittelwahl.
 		}
 		\label{fig:exp07}
 	\end{figure}
 	
-	Die Lorentz-Lorenz-Gleichung (Gl.~20) ist gegenüber der linearen
-	Näherung genauer, weil sie lokale Feldkorrekturen enthält.
+	Die Lorentz-Lorenz-Gleichung (Gl.~20) ist gegenÃ¼ber der linearen
+	NÃ¤herung genauer, weil sie lokale Feldkorrekturen enthÃ¤lt.
 	Abbildung~\ref{fig:exp07} zeigt, dass der Unterschied zwar klein,
-	aber für eine quantitativ korrekte Farbvorhersage relevant ist:
-	Ein Fehler $\Delta n = 0{,}008$ verschiebt die Resonanzwellenlänge
+	aber fÃ¼r eine quantitativ korrekte Farbvorhersage relevant ist:
+	Ein Fehler $\Delta n = 0{,}008$ verschiebt die ResonanzwellenlÃ¤nge
 	bei $d=200$\,nm um ca.\ $\Delta\lambda \approx 3$\,nm.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 8 – Flory-Rehner-Gleichgewicht}
+	\subsubsection*{Experiment 8 â€“ Flory-Rehner-Gleichgewicht}
 	\label{exp:flory_rehner}
 	
 	\begin{figure}[h!]
@@ -1799,24 +1799,24 @@
 		\caption{%
 			\textbf{Flory-Rehner-Gleichgewicht (Satz~5.1, Gl.~16).}
 			\emph{Links:} Residuum $f(\phi_p)$ der Flory-Rehner-Gleichung
-			für verschiedene $\chi$-Parameter ($\nu_e = 100$\,mol\,m$^{-3}$);
+			fÃ¼r verschiedene $\chi$-Parameter ($\nu_e = 100$\,mol\,m$^{-3}$);
 			die Nullstelle definiert den Gleichgewichtspolymervolumenanteil.
-			\emph{Rechts:} Gleichgewichtsquellungsgrad $Q^*(\chi)$ für vier
-			Vernetzungsdichten; höhere $\nu_e$ dämpfen die Quellung stark.
+			\emph{Rechts:} Gleichgewichtsquellungsgrad $Q^*(\chi)$ fÃ¼r vier
+			Vernetzungsdichten; hÃ¶here $\nu_e$ dÃ¤mpfen die Quellung stark.
 		}
 		\label{fig:exp08}
 	\end{figure}
 	
-	Satz~5.1 garantiert die Existenz und Eindeutigkeit einer Lösung für
-	$0<\chi<0{,}5$.  Abbildung~\ref{fig:exp08} bestätigt, dass der
-	Brentq-Solver in allen Fällen konvergiert und physikalisch sinnvolle
+	Satz~5.1 garantiert die Existenz und Eindeutigkeit einer LÃ¶sung fÃ¼r
+	$0<\chi<0{,}5$.  Abbildung~\ref{fig:exp08} bestÃ¤tigt, dass der
+	Brentq-Solver in allen FÃ¤llen konvergiert und physikalisch sinnvolle
 	Werte $Q^* \in [1,\,30]$ liefert.  Der starke Anstieg von $Q^*$
-	für kleine $\chi$ (gutes Lösungsmittel) unterstreicht die Bedeutung
-	des Flory-Huggins-Parameters für das Farbdesign.
+	fÃ¼r kleine $\chi$ (gutes LÃ¶sungsmittel) unterstreicht die Bedeutung
+	des Flory-Huggins-Parameters fÃ¼r das Farbdesign.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 9 – Phasendiagramm $\chi$--$\nu_e$}
+	\subsubsection*{Experiment 9 â€“ Phasendiagramm $\chi$--$\nu_e$}
 	\label{exp:phasediagramm}
 	
 	\begin{figure}[h!]
@@ -1825,7 +1825,7 @@
 		\caption{%
 			\textbf{Flory-Rehner-Phasendiagramm $Q^*(\chi,\,\nu_e)$.}
 			\emph{Links:} 2D-Karte des Gleichgewichtsquellungsgrads mit
-			Isolinien; die starke Abhängigkeit von $\chi$ und $\nu_e$
+			Isolinien; die starke AbhÃ¤ngigkeit von $\chi$ und $\nu_e$
 			definiert den erreichbaren Farbbereich.
 			\emph{Rechts:} Schnitte bei $\chi=0{,}15$ und $\chi=0{,}25$
 			zeigen die monotone Abnahme von $Q^*$ mit steigender
@@ -1835,15 +1835,15 @@
 	\end{figure}
 	
 	Das Phasendiagramm in Abbildung~\ref{fig:exp09} ist das zentrale
-	Designwerkzeug für die E-Beam-Parameteroptimierung:  Ein gewünschtes
-	Ziel-$Q^*$ lässt sich durch geeignete Kombination von $\chi$
-	(Lösungsmittelwahl) und $\nu_e$ (Elektronenstrahldosis) einstellen.
-	Die Isolinien helfen bei der Abschätzung, welche Dosisunterschiede
-	für eine vorgegebene Farbdifferenz erforderlich sind.
+	Designwerkzeug fÃ¼r die E-Beam-Parameteroptimierung:  Ein gewÃ¼nschtes
+	Ziel-$Q^*$ lÃ¤sst sich durch geeignete Kombination von $\chi$
+	(LÃ¶sungsmittelwahl) und $\nu_e$ (Elektronenstrahldosis) einstellen.
+	Die Isolinien helfen bei der AbschÃ¤tzung, welche Dosisunterschiede
+	fÃ¼r eine vorgegebene Farbdifferenz erforderlich sind.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 10 – Schichtdicke nach Quellung}
+	\subsubsection*{Experiment 10 â€“ Schichtdicke nach Quellung}
 	\label{exp:quellungsdicke}
 	
 	\begin{figure}[h!]
@@ -1851,28 +1851,28 @@
 		\includegraphics[width=\linewidth]{exp10_swelling_thickness}
 		\caption{%
 			\textbf{Schichtdicke nach Quellung: verankert vs.\ frei.}
-			\emph{Links:} Vergleich der Dicken-Quellung für ein
+			\emph{Links:} Vergleich der Dicken-Quellung fÃ¼r ein
 			substratverankertes Polymer ($d = Q\cdot d_0$, rein senkrecht)
 			und ein frei schwimmendes Gel ($d = Q^{1/3}\cdot d_0$,
 			isotrope Ausdehnung) als Funktion des Quellungsgrads $Q$.
-			\emph{Rechts:} Resonanzwellenlänge $\lambda_\mathrm{res}(d_0,\chi)$
-			für drei $\chi$-Werte; der sichtbare Bereich (grün) ist für
+			\emph{Rechts:} ResonanzwellenlÃ¤nge $\lambda_\mathrm{res}(d_0,\chi)$
+			fÃ¼r drei $\chi$-Werte; der sichtbare Bereich (grÃ¼n) ist fÃ¼r
 			$d_0 \approx 40\text{--}100$\,nm erreichbar.
 		}
 		\label{fig:exp10}
 	\end{figure}
 	
-	Für das betrachtete PDMS-System ist die Schicht einseitig auf dem
-	Substrat verankert, sodass die Quellung ausschließlich senkrecht
+	FÃ¼r das betrachtete PDMS-System ist die Schicht einseitig auf dem
+	Substrat verankert, sodass die Quellung ausschlieÃŸlich senkrecht
 	erfolgt: $d_\mathrm{sw} = Q\cdot d_0$.  Abbildung~\ref{fig:exp10}
-	zeigt den großen Unterschied gegenüber isotroper Quellung und
-	verdeutlicht, warum das verankerte Modell für die Kavitätsdickenkontrolle
-	verwendet wird.  Die rechte Grafik bildet die vollständige
+	zeigt den groÃŸen Unterschied gegenÃ¼ber isotroper Quellung und
+	verdeutlicht, warum das verankerte Modell fÃ¼r die KavitÃ¤tsdickenkontrolle
+	verwendet wird.  Die rechte Grafik bildet die vollstÃ¤ndige
 	Kopplungsgleichung auf einen einfachen Designraum ab.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 11 – Zentrale Kopplungsgleichung}
+	\subsubsection*{Experiment 11 â€“ Zentrale Kopplungsgleichung}
 	\label{exp:kopplung}
 	
 	\begin{figure}[h!]
@@ -1881,9 +1881,9 @@
 		\caption{%
 			\textbf{Zentrale Kopplungsgleichung $\lambda_\mathrm{res} =
 				f(\chi,\,\nu_e,\,d_0)$ (Gl.~21).}
-			\emph{Links:} $\lambda_\mathrm{res}(\chi)$ für vier Lösungsmittel
+			\emph{Links:} $\lambda_\mathrm{res}(\chi)$ fÃ¼r vier LÃ¶sungsmittel
 			($d_0 = 150$\,nm, $\nu_e = 100$\,mol\,m$^{-3}$); der sichtbare
-			Bereich wird für Wasser bei $\chi \approx 0{,}3\text{--}0{,}45$
+			Bereich wird fÃ¼r Wasser bei $\chi \approx 0{,}3\text{--}0{,}45$
 			durchfahren.
 			\emph{Rechts:} 2D-Designkarte $\lambda_\mathrm{res}(\chi,\,d_0)$
 			mit Isolinien bei 380, 450, 550, 650 und 780\,nm.
@@ -1893,9 +1893,9 @@
 	
 	Gl.~21 koppelt Polymerphysik und FP-Optik in einer einzigen
 	impliziten Gleichung.  Abbildung~\ref{fig:exp11} zeigt, dass der
-	vollständige sichtbare Bereich (380--780\,nm) durch Variation von
+	vollstÃ¤ndige sichtbare Bereich (380--780\,nm) durch Variation von
 	$\chi$ und $d_0$ erreichbar ist.  Die 2D-Designkarte (rechts) kann
-	direkt als Nachschlagetabelle für die Parameterauswahl bei gegebener
+	direkt als Nachschlagetabelle fÃ¼r die Parameterauswahl bei gegebener
 	Zielfarbe verwendet werden.
 	
 	% ------------------------------------------------------------------
@@ -1903,7 +1903,7 @@
 	\label{sec:exp_ebeam}
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 12 – Bethe-Reichweite}
+	\subsubsection*{Experiment 12 â€“ Bethe-Reichweite}
 	\label{exp:bethe}
 	
 	\begin{figure}[h!]
@@ -1911,40 +1911,40 @@
 		\includegraphics[width=\linewidth]{exp12_bethe_range}
 		\caption{%
 			\textbf{Bethe-Reichweite (Gl.~17) und Vernetzungsdichte.}
-			\emph{Links:} Bethe-Reichweite $R_e \propto U^{1{,}67}$ für PDMS,
-			PMMA, SiO${}_2$ und Si in Abhängigkeit von der
-			Beschleunigungsspannung $U$; bei 30\,kV reicht der Strahl 5--20\,µm
+			\emph{Links:} Bethe-Reichweite $R_e \propto U^{1{,}67}$ fÃ¼r PDMS,
+			PMMA, SiO${}_2$ und Si in AbhÃ¤ngigkeit von der
+			Beschleunigungsspannung $U$; bei 30\,kV reicht der Strahl 5--20\,Âµm
 			ins Material.
 			\emph{Rechts:} Lineare Vernetzungsdichte-Dosis-Relation
-			$\nu_e(D) = \nu_{e,0} + \alpha D$ für verschiedene
+			$\nu_e(D) = \nu_{e,0} + \alpha D$ fÃ¼r verschiedene
 			Vernetzungseffizienzparameter $\alpha$.
 		}
 		\label{fig:exp12}
 	\end{figure}
 	
-	Die Bethe-Reichweite bestimmt, ob der Elektronenstrahl vollständig
+	Die Bethe-Reichweite bestimmt, ob der Elektronenstrahl vollstÃ¤ndig
 	in der PDMS-Schicht absorbiert wird oder das Substrat erreicht.
-	Abbildung~\ref{fig:exp12} zeigt, dass bei 30\,kV für typische
+	Abbildung~\ref{fig:exp12} zeigt, dass bei 30\,kV fÃ¼r typische
 	PDMS-Schichten ($d\approx 100\text{--}300$\,nm) der Strahl das
-	Substrat weitmöglichst durchdringt, was die Rückstreuung und damit
-	die Proximitätskorrektur relevant macht.  Die rechte Grafik
+	Substrat weitmÃ¶glichst durchdringt, was die RÃ¼ckstreuung und damit
+	die ProximitÃ¤tskorrektur relevant macht.  Die rechte Grafik
 	validiert die lineare Vernetzungs-Dosis-Modellierung.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 13 – Proximitätsfunktion}
+	\subsubsection*{Experiment 13 â€“ ProximitÃ¤tsfunktion}
 	\label{exp:proximitaet}
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\linewidth]{exp13_proximity_function}
 		\caption{%
-			\textbf{Proximitätsfunktion: Doppel-Gauß-Modell (Def.~6.2,
+			\textbf{ProximitÃ¤tsfunktion: Doppel-GauÃŸ-Modell (Def.~6.2,
 				Gl.~22).}
-			\emph{Links:} $f(r)$ für drei Parametersätze (PDMS, Si,
+			\emph{Links:} $f(r)$ fÃ¼r drei ParametersÃ¤tze (PDMS, Si,
 			High-$Z$-Substrat) auf logarithmischer Skala; der schmale
-			Vorwärtsstreuterm ($\alpha \approx 50$\,nm) und der breite
-			Rückstreuterm ($\beta \approx 3000\text{--}7000$\,nm) sind
+			VorwÃ¤rtsstreuterm ($\alpha \approx 50$\,nm) und der breite
+			RÃ¼ckstreuterm ($\beta \approx 3000\text{--}7000$\,nm) sind
 			deutlich zu unterscheiden.
 			\emph{Rechts:} Horizontalschnitt durch den 2D-Proximity-Kernel
 			und Miniatur-Heatmap des Kernels im Inset.
@@ -1952,17 +1952,17 @@
 		\label{fig:exp13}
 	\end{figure}
 	
-	Die Proximitätsfunktion $f(r) = \tfrac{1}{\pi(1+\eta_b)}
+	Die ProximitÃ¤tsfunktion $f(r) = \tfrac{1}{\pi(1+\eta_b)}
 	\bigl[\tfrac{1}{\alpha^2}\exp(-r^2/\alpha^2) +
 	\tfrac{\eta_b}{\beta^2}\exp(-r^2/\beta^2)\bigr]$
-	beschreibt die räumliche Dosisverteilung im Material.
+	beschreibt die rÃ¤umliche Dosisverteilung im Material.
 	Abbildung~\ref{fig:exp13} zeigt die Trennung der Skalen:  Der
-	Vorwärtsstreuterm bestimmt die Auflösungsgrenze ($\sim 2\alpha$),
-	der Rückstreuterm die Proximitätsreichweite ($\sim 2\beta$).
+	VorwÃ¤rtsstreuterm bestimmt die AuflÃ¶sungsgrenze ($\sim 2\alpha$),
+	der RÃ¼ckstreuterm die ProximitÃ¤tsreichweite ($\sim 2\beta$).
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 14 – Proximity-Correction}
+	\subsubsection*{Experiment 14 â€“ Proximity-Correction}
 	\label{exp:proximity_korrektur}
 	
 	\begin{figure}[h!]
@@ -1972,23 +1972,23 @@
 			\textbf{Proximity-Effekt: Dosisverschmierung und Korrektur
 				(Alg.~6.1).}
 			\emph{Links:} Horizontalschnitt durch nominale und effektive Dosis
-			für ein Drei-Rechteck-Muster; die Faltung mit dem Proximity-Kernel
-			führt zu Dosisüberhöhung in den Zwischenräumen.
-			\emph{Rechts:} 2D-Gegenüberstellung von nominaler (links) und
+			fÃ¼r ein Drei-Rechteck-Muster; die Faltung mit dem Proximity-Kernel
+			fÃ¼hrt zu DosisÃ¼berhÃ¶hung in den ZwischenrÃ¤umen.
+			\emph{Rechts:} 2D-GegenÃ¼berstellung von nominaler (links) und
 			effektiver (rechts) Dosiskarte.
 		}
 		\label{fig:exp14}
 	\end{figure}
 	
-	Abbildung~\ref{fig:exp14} veranschaulicht das Proximitätsproblem:
-	Ohne Korrektur erhält der Spalt zwischen zwei belichteten Rechtecken
-	eine signifikante Restdosis, die zu unerwünschter Quervernetzung
-	und damit zu Farbfehlern führt.  Die Dosisverschmierung beträgt
+	Abbildung~\ref{fig:exp14} veranschaulicht das ProximitÃ¤tsproblem:
+	Ohne Korrektur erhÃ¤lt der Spalt zwischen zwei belichteten Rechtecken
+	eine signifikante Restdosis, die zu unerwÃ¼nschter Quervernetzung
+	und damit zu Farbfehlern fÃ¼hrt.  Die Dosisverschmierung betrÃ¤gt
 	hier ca.\ 30\,\% des Nominalwerts im Zwischenspalt.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 15 – IPEC-Konvergenz}
+	\subsubsection*{Experiment 15 â€“ IPEC-Konvergenz}
 	\label{exp:ipec}
 	
 	\begin{figure}[h!]
@@ -1998,19 +1998,19 @@
 			\textbf{Iterative Proximity-Korrektur IPEC (Alg.~6.1,
 				Satz~6.2).}
 			\emph{Links:} Konvergenzgeschichte $\|D_\mathrm{eff}-D_\mathrm{soll}\|$
-			für Relaxationsparameter $\omega \in \{0{,}3;\,0{,}5;\,0{,}7\}$;
+			fÃ¼r Relaxationsparameter $\omega \in \{0{,}3;\,0{,}5;\,0{,}7\}$;
 			$\omega=0{,}5$ bietet die beste Balance aus Konvergenzgeschwindigkeit
-			und Stabilität.
+			und StabilitÃ¤t.
 			\emph{Rechts:} Zieldosis, korrigierte nominale Dosis und
 			resultierende effektive Dosis nach IPEC-Konvergenz.
 		}
 		\label{fig:exp15}
 	\end{figure}
 	
-	Satz~6.2 garantiert Konvergenz des IPEC-Verfahrens für
-	$0 < \omega < 2$.  Abbildung~\ref{fig:exp15} bestätigt dies für
-	alle drei $\omega$-Werte.  Das korrigierte Dosisnomial übersteigt
-	die Zieldosis an den Rändern (Pre-emphasis), sodass nach der
+	Satz~6.2 garantiert Konvergenz des IPEC-Verfahrens fÃ¼r
+	$0 < \omega < 2$.  Abbildung~\ref{fig:exp15} bestÃ¤tigt dies fÃ¼r
+	alle drei $\omega$-Werte.  Das korrigierte Dosisnomial Ã¼bersteigt
+	die Zieldosis an den RÃ¤ndern (Pre-emphasis), sodass nach der
 	Faltung mit dem Proximity-Kernel die effektive Dosis dem Zielwert
 	entspricht.  Bei $\omega=0{,}7$ konvergiert das Verfahren am
 	schnellsten, zeigt aber gelegentliche Oszillationen.
@@ -2020,7 +2020,7 @@
 	\label{sec:exp_optim}
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 16 – CIE-Kolorimetrie}
+	\subsubsection*{Experiment 16 â€“ CIE-Kolorimetrie}
 	\label{exp:kolorimetrie}
 	
 	\begin{figure}[h!]
@@ -2030,25 +2030,25 @@
 			\textbf{CIE-Kolorimetrie: Tristimulus-Integration und
 				$L^*a^*b^*$-Diagramm.}
 			\emph{Links:} Photopische Empfindlichkeitskurve $V(\lambda)$
-			mit überlagerter Reflexion dreier FP-Resonatoren (blau, grün,
+			mit Ã¼berlagerter Reflexion dreier FP-Resonatoren (blau, grÃ¼n,
 			rot).
-			\emph{Rechts:} Farbpunkte im $a^*$-$b^*$-Diagramm für
+			\emph{Rechts:} Farbpunkte im $a^*$-$b^*$-Diagramm fÃ¼r
 			FP-Resonatoren mit $d = 70\text{--}280$\,nm; die Punkte
-			durchlaufen näherungsweise den sichtbaren Farbraum.
+			durchlaufen nÃ¤herungsweise den sichtbaren Farbraum.
 		}
 		\label{fig:exp16}
 	\end{figure}
 	
 	Die CIE-$L^*a^*b^*$-Darstellung in Abbildung~\ref{fig:exp16} zeigt,
-	dass durch Variation der Kavitätsdicke ein weiter Farbbereich
+	dass durch Variation der KavitÃ¤tsdicke ein weiter Farbbereich
 	im sichtbaren Spektrum abgedeckt wird.  Die Farborte folgen
-	einer gekrümmten Trajektorie im $a^*$-$b^*$-Raum, die von Blau
-	über Grün nach Rot und wieder zurück führt — ein direktes Abbild
+	einer gekrÃ¼mmten Trajektorie im $a^*$-$b^*$-Raum, die von Blau
+	Ã¼ber GrÃ¼n nach Rot und wieder zurÃ¼ck fÃ¼hrt â€” ein direktes Abbild
 	der FP-Resonanzordnung in der menschlichen Farbwahrnehmung.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 17 – Farbdifferenz und Tarnindex}
+	\subsubsection*{Experiment 17 â€“ Farbdifferenz und Tarnindex}
 	\label{exp:delta_e}
 	
 	\begin{figure}[h!]
@@ -2057,28 +2057,28 @@
 		\caption{%
 			\textbf{Farbdifferenz $\Delta E$ (Def.~7.2) und
 				Tarnindex $C$ (Def.~9.1).}
-			\emph{Links:} $\Delta E_{ab}^*$ gegenüber einem
+			\emph{Links:} $\Delta E_{ab}^*$ gegenÃ¼ber einem
 			Referenzresonator bei $d_\mathrm{ref}=160$\,nm als Funktion der
-			Kavitätsdicke; Schwellenwerte $\Delta E=2$ (JND) und
+			KavitÃ¤tsdicke; Schwellenwerte $\Delta E=2$ (JND) und
 			$\Delta E=5$ sind eingezeichnet.
-			\emph{Rechts:} Tarnindex $C$ gegenüber einem Blatt-Hintergrund
+			\emph{Rechts:} Tarnindex $C$ gegenÃ¼ber einem Blatt-Hintergrund
 			als Funktion der Dicke.
 		}
 		\label{fig:exp17}
 	\end{figure}
 	
 	Die Farbdifferenz $\Delta E_{ab}^*$ quantifiziert, ab welcher
-	Dickenänderung ein Farbunterschied wahrnehmbar wird (JND $= 2$).
+	DickenÃ¤nderung ein Farbunterschied wahrnehmbar wird (JND $= 2$).
 	Abbildung~\ref{fig:exp17} zeigt, dass bereits eine Dickenvariation
 	von $\pm 10$\,nm ausreicht, um $\Delta E > 2$ zu erzeugen, was
 	die Anforderungen an die Dosisgenauigkeit des E-Beam-Prozesses
 	definiert.  Der Tarnindex $C$ erreicht sein Maximum nahe derjenigen
-	Dicke, bei der die Resonanzwellenlänge mit dem Grün-Peak des
-	Blattes übereinstimmt.
+	Dicke, bei der die ResonanzwellenlÃ¤nge mit dem GrÃ¼n-Peak des
+	Blattes Ã¼bereinstimmt.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 18 – Verlustfunktional und Gradienten}
+	\subsubsection*{Experiment 18 â€“ Verlustfunktional und Gradienten}
 	\label{exp:verlust}
 	
 	\begin{figure}[h!]
@@ -2087,30 +2087,30 @@
 		\caption{%
 			\textbf{Verlustfunktional (Gl.~25) und Adjoint-Gradienten
 				(Satz~7.2).}
-			\emph{Links:} Gleichmäßiger Verlust $L_\mathrm{unif}$ und
+			\emph{Links:} GleichmÃ¤ÃŸiger Verlust $L_\mathrm{unif}$ und
 			photopisch gewichteter Verlust $L_\mathrm{perc}$ als Funktion
-			der geschwollenen Kavitätsdicke $d$ bei festem $Q=2{,}5$;
+			der geschwollenen KavitÃ¤tsdicke $d$ bei festem $Q=2{,}5$;
 			das Minimum liegt bei der analytischen Resonanzdicke
 			$d^* = \lambda/(2n) \approx 200$\,nm.
 			\emph{Rechts:} Finite-Differenz-Gradienten $\partial L/\partial d_0$
 			und $\partial L/\partial Q$; der Vorzeichenwechsel bei $d_\mathrm{min}$
-			bestätigt die notwendige Optimalitätsbedingung.
+			bestÃ¤tigt die notwendige OptimalitÃ¤tsbedingung.
 		}
 		\label{fig:exp18}
 	\end{figure}
 	
-	Das Verlustminimum in Abbildung~\ref{fig:exp18} (links) fällt mit der
+	Das Verlustminimum in Abbildung~\ref{fig:exp18} (links) fÃ¤llt mit der
 	analytischen Resonanzdicke zusammen, was die interne Konsistenz der
 	Verlustfunktion und des FP-Modells beweist.  Die rechte Grafik zeigt,
 	dass $\partial L/\partial d_0$ bei $d^*$ einen Vorzeichenwechsel hat
-	(notwendige Bedingung für ein lokales Minimum) und dass
+	(notwendige Bedingung fÃ¼r ein lokales Minimum) und dass
 	$\partial L/\partial Q$ wegen des Einfluss von $Q$ auf $n_\mathrm{eff}$
-	und $d_\mathrm{sw}$ gleichzeitig kleiner wird — der Optimierer muss
+	und $d_\mathrm{sw}$ gleichzeitig kleiner wird â€” der Optimierer muss
 	beide Parameter konjugiert anpassen.
 	
 	% ------------------------------------------------------------------
 	
-	\subsubsection*{Experiment 19 – Optimierer-Konvergenz}
+	\subsubsection*{Experiment 19 â€“ Optimierer-Konvergenz}
 	\label{exp:optimierer}
 	
 	\begin{figure}[h!]
@@ -2118,22 +2118,22 @@
 		\includegraphics[width=\linewidth]{exp19_optimizer_convergence}
 		\caption{%
 			\textbf{Gradientenabstieg-Optimierer (Alg.~8.1, Satz~8.1).}
-			\emph{Links:} Konvergenzverläufe $L(\theta)$ für vier Zielspektren
-			(Grün, Rot, Blau, Blatt) auf logarithmischer Ordinate; alle
-			Läufe konvergieren innerhalb von 80 Iterationen.
-			\emph{Rechts:} Optimiertes Reflexionsspektrum für das Grün-Ziel
-			($\lambda=550$\,nm) im Vergleich zum Gauß-Zielspektrum.
+			\emph{Links:} KonvergenzverlÃ¤ufe $L(\theta)$ fÃ¼r vier Zielspektren
+			(GrÃ¼n, Rot, Blau, Blatt) auf logarithmischer Ordinate; alle
+			LÃ¤ufe konvergieren innerhalb von 80 Iterationen.
+			\emph{Rechts:} Optimiertes Reflexionsspektrum fÃ¼r das GrÃ¼n-Ziel
+			($\lambda=550$\,nm) im Vergleich zum GauÃŸ-Zielspektrum.
 		}
 		\label{fig:exp19}
 	\end{figure}
 	
 	Abbildung~\ref{fig:exp19} demonstriert die Konvergenz des
-	Gradientenabstiegs für alle vier Zielfarben.  Das Blau-Ziel
+	Gradientenabstiegs fÃ¼r alle vier Zielfarben.  Das Blau-Ziel
 	($\lambda=450$\,nm) konvergiert langsamer, da die FP-Resonanz
 	erster Ordnung im Blauen eine flachere Verlustlandschaft erzeugt.
-	Das erreichte Spektrum für Grün (rechts) stimmt gut mit dem
-	Ziel-Gauß überein; die verbleibende Differenz $\Delta E$ ist
-	im $L^*a^*b^*$-Raum bewertet und gibt die tatsächliche
+	Das erreichte Spektrum fÃ¼r GrÃ¼n (rechts) stimmt gut mit dem
+	Ziel-GauÃŸ Ã¼berein; die verbleibende Differenz $\Delta E$ ist
+	im $L^*a^*b^*$-Raum bewertet und gibt die tatsÃ¤chliche
 	Wahrnehmungsrelevanz an.
 	
 	% ------------------------------------------------------------------
@@ -2147,7 +2147,7 @@
 	\begin{table}[htbp]
 		\centering
 		\caption{%
-			Übersicht der 19 Validierungsexperimente.
+			Ãœbersicht der 19 Validierungsexperimente.
 			\emph{Modul}: Quellcode-Modul; \emph{Eigenschaft}: validierte
 			theoretische Aussage; \emph{Status}: alle Experimente liefen
 			fehlerfrei.
@@ -2158,9 +2158,9 @@
 			\toprule
 			\textbf{Nr.} & \textbf{Titel} & \textbf{Modul} & \textbf{Validierte Eigenschaft} \\
 			\midrule
-			1  & Fresnel-Koeffizienten    & \texttt{optics}     & $R+T=1$ für beide Polarisationen \\
-			2  & TMM Energieerhaltung     & \texttt{optics}     & $R+T+A=1$ für Schichtstapel \\
-			3  & FP-Spektrum              & \texttt{optics}     & Resonanzwellenlänge $\lambda=2nd/m$ \\
+			1  & Fresnel-Koeffizienten    & \texttt{optics}     & $R+T=1$ fÃ¼r beide Polarisationen \\
+			2  & TMM Energieerhaltung     & \texttt{optics}     & $R+T+A=1$ fÃ¼r Schichtstapel \\
+			3  & FP-Spektrum              & \texttt{optics}     & ResonanzwellenlÃ¤nge $\lambda=2nd/m$ \\
 			4  & FP-Finesse               & \texttt{optics}     & Finesse-Formel, Ordnungen \\
 			5  & TMM inhomogen            & \texttt{optics}     & Konvergenz $O(1/K^2)$ \\
 			6  & Lorentz-Modell           & \texttt{optics}     & Kramers-Kronig, Dispersion \\
@@ -2170,13 +2170,13 @@
 			10 & Quellungsdicke           & \texttt{polymer}    & Verankert vs.\ frei, Kopplungsgl. \\
 			11 & Kopplungsgleichung       & \texttt{polymer}    & $\lambda_\mathrm{res}(\chi,\nu_e,d_0)$ \\
 			12 & Bethe-Reichweite         & \texttt{polymer}    & $R_e \propto U^{1{,}67}$, Vernetzung \\
-			13 & Proximitätsfunktion      & \texttt{ebeam}      & Doppel-Gauß-Kernel \\
+			13 & ProximitÃ¤tsfunktion      & \texttt{ebeam}      & Doppel-GauÃŸ-Kernel \\
 			14 & Proximity-Correction     & \texttt{ebeam}      & Faltungsmodell \\
-			15 & IPEC-Konvergenz          & \texttt{ebeam}      & Konvergenz für $0<\omega<2$ \\
+			15 & IPEC-Konvergenz          & \texttt{ebeam}      & Konvergenz fÃ¼r $0<\omega<2$ \\
 			16 & CIE-Kolorimetrie         & \texttt{colorimetry}& Tristimulus, $L^*a^*b^*$ \\
 			17 & $\Delta E$, Tarnindex    & \texttt{colorimetry}& JND, Tarnnindex $C$ \\
-			18 & Verlust und Gradienten   & \texttt{optimizer}  & Optimalitätsbedingung $\nabla L=0$ \\
-			19 & Optimierer-Konvergenz    & \texttt{optimizer}  & Konvergenz für 4 Zielfarben \\
+			18 & Verlust und Gradienten   & \texttt{optimizer}  & OptimalitÃ¤tsbedingung $\nabla L=0$ \\
+			19 & Optimierer-Konvergenz    & \texttt{optimizer}  & Konvergenz fÃ¼r 4 Zielfarben \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -2185,10 +2185,10 @@
 	alle sieben Quellcode-Module (\texttt{optics}, \texttt{polymer},
 	\texttt{ebeam}, \texttt{colorimetry}, \texttt{optimizer},
 	\texttt{pipeline}, \texttt{materials}) und deckt sowohl analytische
-	Referenzlösungen (Fresnel, FP, Bethe) als auch numerische
-	Konsistenzprüfungen (Energieerhaltung, Konvergenzraten, Gradienten)
-	ab.  Das Framework ist damit bereit für die in Abschnitt~\ref{sec:exp_optim}
-	beschriebene vollständige Design-Pipeline.
+	ReferenzlÃ¶sungen (Fresnel, FP, Bethe) als auch numerische
+	KonsistenzprÃ¼fungen (Energieerhaltung, Konvergenzraten, Gradienten)
+	ab.  Das Framework ist damit bereit fÃ¼r die in Abschnitt~\ref{sec:exp_optim}
+	beschriebene vollstÃ¤ndige Design-Pipeline.
 	
 	
 	%%=============================================================
@@ -2199,8 +2199,8 @@
 	\subsection{Adaptive Tarnmaterialien}
 	
 	Die unmittelbarste Anwendung ist adaptives Tarnmaterial. Im Gegensatz zu
-	biologischen Systemen, die komplexe neuronale Steuerung benötigen, kann ein
-	technisches System durch Lösungsmittelfluss in Mikrokanälen mit
+	biologischen Systemen, die komplexe neuronale Steuerung benÃ¶tigen, kann ein
+	technisches System durch LÃ¶sungsmittelfluss in MikrokanÃ¤len mit
 	$\Delta t_\mathrm{Schalt} \sim \SI{1}{s}$ (begrenzt durch
 	Diffusionszeit $t_D \sim d^2/D_\mathrm{Lm}$ mit Diffusionskoeffizient
 	$D_\mathrm{Lm} \sim \SI{e-10}{m^2/s}$ in Hydrogelen) gesteuert werden.
@@ -2208,7 +2208,7 @@
 	\begin{definition}[Tarnindex]
 		\label{def:tarnindex}
 		Der Tarnindex $\mathcal{C} \in [0,1]$ quantifiziert die Tarnwirksamkeit
-		eines adaptiven Oberflächensystems gegenüber einem gegebenen Hintergrund:
+		eines adaptiven OberflÃ¤chensystems gegenÃ¼ber einem gegebenen Hintergrund:
 		\begin{equation}
 			\mathcal{C} = 1 - \frac{\Delta E_\mathrm{System}}{\Delta E_\mathrm{Referenz}},
 			\label{eq:tarnindex}
@@ -2222,23 +2222,23 @@
 	
 	\subsection{Biomedizinische Sensoren mit visuellem Ausgang}
 	
-	Weiche photonische Häute können als markierungsfreie Biosensoren
-	(label-free biosensors) fungieren. Das Messprinzip: Ein Zielmolekül
+	Weiche photonische HÃ¤ute kÃ¶nnen als markierungsfreie Biosensoren
+	(label-free biosensors) fungieren. Das Messprinzip: Ein ZielmolekÃ¼l
 	(Analyt) bindet an Rezeptoren, die in das Hydrogel-Netzwerk eingebaut sind.
-	Die Bindung verändert die effektive Vernetzungsdichte $\nu_e^\mathrm{eff}$
+	Die Bindung verÃ¤ndert die effektive Vernetzungsdichte $\nu_e^\mathrm{eff}$
 	und damit den Quellungsgrad:
 	
 	\begin{definition}[Biosensor-Transduktionsfunktion]
 		\label{def:biosensor}
-		Für ein mit Rezeptoren der Dissoziationskonstante $K_D$ funktionalisiertes
+		FÃ¼r ein mit Rezeptoren der Dissoziationskonstante $K_D$ funktionalisiertes
 		Hydrogel gilt die Hill-Adsorptionsisotherme:
 		\begin{equation}
 			\nu_e^\mathrm{eff}(c) = \nu_{e,0} + \Delta\nu_e \cdot \frac{c^n}{K_D^n + c^n},
 			\label{eq:hill}
 		\end{equation}
 		wobei $c$ die Analytkonzentration, $n$ der Hill-Koeffizient und
-		$\Delta\nu_e$ die maximale vernetzungsbedingte Änderung sind.
-		Die daraus folgende Wellenlängenverschiebung ist:
+		$\Delta\nu_e$ die maximale vernetzungsbedingte Ã„nderung sind.
+		Die daraus folgende WellenlÃ¤ngenverschiebung ist:
 		\begin{equation}
 			\Delta\lambda_\mathrm{res}(c) = \lambda_\mathrm{res}(c) - \lambda_\mathrm{res}(0),
 			\label{eq:wellenlaengenverschiebung}
@@ -2247,20 +2247,20 @@
 	\end{definition}
 	
 	\begin{beispiel}[Glucose-Sensor]
-		Für einen Glucose-Sensor mit Boronsäure-funktionalisiertem PDMS-Gel
+		FÃ¼r einen Glucose-Sensor mit BoronsÃ¤ure-funktionalisiertem PDMS-Gel
 		($K_D = \SI{10}{mM}$, $n = 1$, $\Delta\nu_e = \SI{50}{mol/m^3}$)
-		ergibt sich für klinisch relevante Glucosekonzentrationen
-		$c \in [\SI{2}{mM}, \SI{20}{mM}]$ eine Wellenlängenverschiebung von
-		$\Delta\lambda \approx \SI{60}{nm}$ --- gut erkennbar mit bloßem Auge.
+		ergibt sich fÃ¼r klinisch relevante Glucosekonzentrationen
+		$c \in [\SI{2}{mM}, \SI{20}{mM}]$ eine WellenlÃ¤ngenverschiebung von
+		$\Delta\lambda \approx \SI{60}{nm}$ --- gut erkennbar mit bloÃŸem Auge.
 	\end{beispiel}
 	
 	\subsection{Holographische Datenspeicherung in Polymerfilmen}
 	
-	Durch phasengenaue Elektronenstrahlbelichtung können komplexe
+	Durch phasengenaue Elektronenstrahlbelichtung kÃ¶nnen komplexe
 	Brechungsindexmuster $\Delta n(\vect{r})$ in den Polymerfilm kodiert werden,
 	die als Volumenhologramme fungieren.
 	
-	\begin{satz}[Holographische Speicherkapazität]
+	\begin{satz}[Holographische SpeicherkapazitÃ¤t]
 		\label{satz:holographie}
 		Die maximale Speicherdichte (Bits pro Volumen) eines Hologramm-Speichers
 		im Polymerfilm ist durch die Shannon-Grenze begrenzt:
@@ -2268,8 +2268,8 @@
 			\rho_\mathrm{holo} \leq \frac{1}{\lambda^3} \log_2(1 + \mathrm{SNR}),
 			\label{eq:holo-kapazitaet}
 		\end{equation}
-		wobei $\mathrm{SNR}$ das Signal-Rausch-Verhältnis der Brechungsindexmodulation ist.
-		Für $\lambda = \SI{500}{nm}$ und $\mathrm{SNR} = 100$ ergibt sich
+		wobei $\mathrm{SNR}$ das Signal-Rausch-VerhÃ¤ltnis der Brechungsindexmodulation ist.
+		FÃ¼r $\lambda = \SI{500}{nm}$ und $\mathrm{SNR} = 100$ ergibt sich
 		$\rho_\mathrm{holo} \leq \SI{5.3}{Tbit/cm^3}$.
 	\end{satz}
 	
@@ -2277,22 +2277,22 @@
 	
 	In der weichen Robotik werden hydrogelbasierte Aktuatoren eingesetzt,
 	die durch Quellung mechanische Arbeit verrichten. Die Integration einer
-	photonischen Funktionsschicht ermöglicht gleichzeitig:
+	photonischen Funktionsschicht ermÃ¶glicht gleichzeitig:
 	(i) mechanische Aktuierung durch Quellung und
 	(ii) optische Signalisierung des Aktuierungszustands durch Farbwechsel.
 	
 	\begin{proposition}[Mechanische Arbeit und optischer Zustand]
 		\label{prop:aktuator}
-		Für einen substrat-verankerten PDMS-Hydrogel-Aktuator der Grundfläche $A$
-		und Dicke $d_0$ ist die bei vollständiger Quellung ($Q_0 \to Q_\mathrm{gl}$)
-		verrichtete mechanische Arbeit gegen eine äußere Last $\sigma$ (Druck):
+		FÃ¼r einen substrat-verankerten PDMS-Hydrogel-Aktuator der GrundflÃ¤che $A$
+		und Dicke $d_0$ ist die bei vollstÃ¤ndiger Quellung ($Q_0 \to Q_\mathrm{gl}$)
+		verrichtete mechanische Arbeit gegen eine Ã¤uÃŸere Last $\sigma$ (Druck):
 		\begin{equation}
 			W = A \sigma d_0 (Q_\mathrm{gl} - Q_0),
 			\label{eq:arbeit}
 		\end{equation}
-		während die Farbe von $\lambda_0 = 2\neff(Q_0)d_0$ auf
+		wÃ¤hrend die Farbe von $\lambda_0 = 2\neff(Q_0)d_0$ auf
 		$\lambda_\mathrm{gl} = 2\neff(Q_\mathrm{gl})d_0 Q_\mathrm{gl}$
-		wechselt. Ausdehnung und Farbwechsel sind kausal verknüpft.
+		wechselt. Ausdehnung und Farbwechsel sind kausal verknÃ¼pft.
 	\end{proposition}
 	
 	%%=============================================================
@@ -2302,17 +2302,17 @@
 	
 	\subsection{Photonische Informationsverarbeitung im Material}
 	
-	Die Fähigkeit, in einem Polymerfilm arbiträre Brechungsindexmuster zu
-	kodieren und reversibel zu aktivieren, eröffnet die Perspektive des
-	\textbf{materiellen analogen Computers}: Das Material selbst führt optische
+	Die FÃ¤higkeit, in einem Polymerfilm arbitrÃ¤re Brechungsindexmuster zu
+	kodieren und reversibel zu aktivieren, erÃ¶ffnet die Perspektive des
+	\textbf{materiellen analogen Computers}: Das Material selbst fÃ¼hrt optische
 	Berechnungen durch, ohne externe Elektronik.
 	
-	\begin{satz}[Informationstheoretische Vollständigkeit]
+	\begin{satz}[Informationstheoretische VollstÃ¤ndigkeit]
 		\label{satz:vollstaendigkeit}
-		Jedes räumlich begrenzte Brechungsindexprofil $n(\vect{r}) \in [n_w, n_p]$
+		Jedes rÃ¤umlich begrenzte Brechungsindexprofil $n(\vect{r}) \in [n_w, n_p]$
 		kann durch eine geeignete Dosis $D(\vect{r}) \in [0, D_\mathrm{max}]$
 		mit Genauigkeit $\varepsilon > 0$ approximiert werden. Das weiche photonische
-		System ist damit Turing-vollständig für analoge optische Berechnungen.
+		System ist damit Turing-vollstÃ¤ndig fÃ¼r analoge optische Berechnungen.
 	\end{satz}
 	
 	\begin{proof}
@@ -2321,61 +2321,61 @@
 		und $D \mapsto \nu_e$ ebenfalls stetig und surjektiv auf
 		$[\nu_{e,0}, \nu_{e,\max}]$ ist (Gleichung~\eqref{eq:ebeam-vernetzung}),
 		kann jeder Wert $n_\mathrm{eff} \in [n_w, n_p]$ durch geeignetes $D$ erreicht werden.
-		Die räumliche Kodierung beliebiger Profile folgt aus der Dichtheit
+		Die rÃ¤umliche Kodierung beliebiger Profile folgt aus der Dichtheit
 		stetiger Funktionen in $L^2$.
 	\end{proof}
 	
 	\subsection{Determinismus als Grundprinzip}
 	
-	\begin{satz}[Überlegenheit deterministischer Methoden]
+	\begin{satz}[Ãœberlegenheit deterministischer Methoden]
 		\label{satz:determinismus}
 		Der adjungierte Gradientenabstieg (Algorithmus~\ref{alg:hauptalgorithmus})
 		ist stochastischen Suchverfahren (Monte-Carlo-Optimierung, genetische
-		Algorithmen) strukturell überlegen, weil:
+		Algorithmen) strukturell Ã¼berlegen, weil:
 		\begin{enumerate}[label=(\roman*)]
-			\item seine Laufzeitkomplexität $\ordre{I \cdot K\Lambda}$ polynomiell ist,
-			während stochastische Verfahren typischerweise exponentiell viele
-			Funktionsauswertungen benötigen;
-			\item seine Konvergenzgarantie für \emph{jede} Probleminstanz gilt
+			\item seine LaufzeitkomplexitÃ¤t $\ordre{I \cdot K\Lambda}$ polynomiell ist,
+			wÃ¤hrend stochastische Verfahren typischerweise exponentiell viele
+			Funktionsauswertungen benÃ¶tigen;
+			\item seine Konvergenzgarantie fÃ¼r \emph{jede} Probleminstanz gilt
 			(Satz~\ref{satz:hauptkonvergenz}), nicht nur im Erwartungswert;
-			\item das Ergebnis deterministisch reproduzierbar ist --- unabhängig von
+			\item das Ergebnis deterministisch reproduzierbar ist --- unabhÃ¤ngig von
 			Zufallssaat oder Startbedingungen (bei festem Startpunkt).
 		\end{enumerate}
 	\end{satz}
 	
-	\subsection{Komplexitätstheoretische Einordnung}
+	\subsection{KomplexitÃ¤tstheoretische Einordnung}
 	
-	\begin{proposition}[Komplexitätsklasse des inversen Resonator-Problems]
+	\begin{proposition}[KomplexitÃ¤tsklasse des inversen Resonator-Problems]
 		\label{prop:komplexitaet}
 		Das inverse Resonatorgestaltungsproblem --- gegeben $R_\mathrm{soll}$,
 		finde $\vect{\theta}$ mit $\mathcal{L}(\vect{\theta}) < \varepsilon$ ---
-		liegt in der Komplexitätsklasse $\mathbf{FP}$ (Funktions-Polynomialzeit),
-		wenn $\varepsilon$ polynomiell in der Eingabegröße ist.
+		liegt in der KomplexitÃ¤tsklasse $\mathbf{FP}$ (Funktions-Polynomialzeit),
+		wenn $\varepsilon$ polynomiell in der EingabegrÃ¶ÃŸe ist.
 	\end{proposition}
 	
 	\begin{proof}
-		Algorithmus~\ref{alg:hauptalgorithmus} löst das Problem in polynomiell
-		vielen Schritten (für festes $K$, $\Lambda$, $I$ linear in der Eingabegröße).
+		Algorithmus~\ref{alg:hauptalgorithmus} lÃ¶st das Problem in polynomiell
+		vielen Schritten (fÃ¼r festes $K$, $\Lambda$, $I$ linear in der EingabegrÃ¶ÃŸe).
 		Die Konvergenz in $\ordre{\log(1/\varepsilon)}$ Schritten folgt aus
 		Satz~\ref{satz:hauptkonvergenz}.
 	\end{proof}
 	
 	\subsection{Fundamentale Grenzen: Quantenfluktuationen in Nanoresonatoren}
 	
-	Für Resonatoren mit Schichtdicken $d < \SI{50}{nm}$ werden
+	FÃ¼r Resonatoren mit Schichtdicken $d < \SI{50}{nm}$ werden
 	quantenoptische Effekte relevant:
 	
-	\begin{bemerkung}[Casimir-Kraft in dünnen Fabry-Pérot-Resonatoren]
+	\begin{bemerkung}[Casimir-Kraft in dÃ¼nnen Fabry-PÃ©rot-Resonatoren]
 		Die Casimir-Kraft zwischen zwei metallischen Spiegeln im Abstand $d$ ist:
 		\begin{equation}
 			F_\mathrm{Cas} = -\frac{\hbar c \pi^2}{240\, d^4} A,
 			\label{eq:casimir}
 		\end{equation}
-		wobei $A$ die Spiegelfläche ist. Für $d = \SI{20}{nm}$ und
+		wobei $A$ die SpiegelflÃ¤che ist. FÃ¼r $d = \SI{20}{nm}$ und
 		$A = (\SI{100}{nm})^2$ ergibt sich $F_\mathrm{Cas} \approx \SI{0.5}{nN}$ ---
-		vergleichbar mit der elastischen Rückstellkraft des Hydrogels.
+		vergleichbar mit der elastischen RÃ¼ckstellkraft des Hydrogels.
 		Unterhalb von $d_c \approx \SI{30}{nm}$ muss die Casimir-Kraft in der
-		Flory-Rehner-Gleichung berücksichtigt werden.
+		Flory-Rehner-Gleichung berÃ¼cksichtigt werden.
 	\end{bemerkung}
 	
 	%%=============================================================
@@ -2383,90 +2383,90 @@
 	\label{sec:zusammenfassung}
 	%%=============================================================
 	
-	\subsection{Zusammenfassung der Kernbeiträge}
+	\subsection{Zusammenfassung der KernbeitrÃ¤ge}
 	
-	Diese Arbeit hat einen vollständigen, mathematisch fundierten Rahmen für
+	Diese Arbeit hat einen vollstÃ¤ndigen, mathematisch fundierten Rahmen fÃ¼r
 	aktive nanooptische Systeme auf der Basis weicher Polymere entwickelt.
-	Die wesentlichen Beiträge sind:
+	Die wesentlichen BeitrÃ¤ge sind:
 	
 	\textbf{1. Kopplungstheorie (Kapitel~\ref{sec:fabry-perot}--\ref{sec:polymer})}:
-	Das Flory-Rehner-Quellungsmodell wurde über die Lorentz-Lorenz-Mischungsregel
-	quantitativ mit der Fabry-Pérot-Resonatortheorie verbunden. Die zentrale
+	Das Flory-Rehner-Quellungsmodell wurde Ã¼ber die Lorentz-Lorenz-Mischungsregel
+	quantitativ mit der Fabry-PÃ©rot-Resonatortheorie verbunden. Die zentrale
 	Gleichung~\eqref{eq:kopplungsgleichung} $\lambda_\mathrm{res} = f(\chi, \nu_e, d_0)$
-	macht die Farbe als Funktion von Lösungsmittel, Vernetzungsdichte und
+	macht die Farbe als Funktion von LÃ¶sungsmittel, Vernetzungsdichte und
 	Filmdicke berechenbar.
 	
 	\textbf{2. Texturkodierungs-Algorithmus (Kapitel~\ref{sec:textur})}:
 	Die iterative Proximity-Effekt-Korrektur (Algorithmus~\ref{alg:proximity})
-	löst das Entfaltungsproblem in $\ordre{M^2\log M}$ mit Konvergenzgarantie.
+	lÃ¶st das Entfaltungsproblem in $\ordre{M^2\log M}$ mit Konvergenzgarantie.
 	Die Invertierbarkeit des Topographie-Operators (Satz~\ref{satz:invertierbarkeit})
-	garantiert die eindeutige Lösbarkeit des Kodierungsproblems.
+	garantiert die eindeutige LÃ¶sbarkeit des Kodierungsproblems.
 	
 	\textbf{3. Inverses Optimierungsproblem (Kapitel~\ref{sec:invers}--\ref{sec:algorithmen})}:
 	Das perceptuelle Verlustfunktional (Definition~\ref{def:verlustfunktional})
 	kombiniert mit der adjungierten Methode (Satz~\ref{satz:adjoint-komplex})
-	ermöglicht die effiziente, deterministische Berechnung optimaler Resonatorparameter.
+	ermÃ¶glicht die effiziente, deterministische Berechnung optimaler Resonatorparameter.
 	Die Konvergenz in $\ordre{\log(1/\varepsilon)}$ Iterationen ist durch
 	Satz~\ref{satz:hauptkonvergenz} garantiert.
 	
 	\textbf{4. Quantenmechanik-Analogie (Kapitel~\ref{sec:mehrschicht})}:
-	Die präzise formale Identität zwischen Transfermatrix-Methode und
+	Die prÃ¤zise formale IdentitÃ¤t zwischen Transfermatrix-Methode und
 	quantenmechanischem Zeitentwicklungsoperator (Satz~\ref{satz:qm-analogie})
-	begründet den Methodentransfer zwischen Quantenmechanik und Nanooptik.
-	Die WKB-Näherung, das adiabatische Theorem und topologische Konzepte
+	begrÃ¼ndet den Methodentransfer zwischen Quantenmechanik und Nanooptik.
+	Die WKB-NÃ¤herung, das adiabatische Theorem und topologische Konzepte
 	aus der Quantenmechanik finden direkte Entsprechungen in der photonischen
 	Schichtoptimierung.
 	
 	\subsection{Offene Forschungsfragen}
 	
 	\begin{frage}[Echtzeit-Regelkreis]
-		Können neuronale Netze als Surrogatmodelle für die TMM
+		KÃ¶nnen neuronale Netze als Surrogatmodelle fÃ¼r die TMM
 		(Lernzeit $\sim \SI{1}{h}$, Inferenz $< \SI{1}{ms}$)
 		die Optimierungsgeschwindigkeit auf Echtzeit-Regelkreisniveau
 		($< \SI{10}{ms}$) bringen?
 	\end{frage}
 	
-	\begin{frage}[Thermische Stabilitätsgrenze]
-		Wie beeinflusst thermisches Rauschen die Stabilität des
+	\begin{frage}[Thermische StabilitÃ¤tsgrenze]
+		Wie beeinflusst thermisches Rauschen die StabilitÃ¤t des
 		Quellungsgleichgewichts auf Sub-Mikron-Skala?
-		Existiert eine fundamentale untere Grenze der Texturauflösung
+		Existiert eine fundamentale untere Grenze der TexturauflÃ¶sung
 		durch thermische Fluktuationen der Polymerketten
-		(Persistenzlänge $l_p \sim \SI{1}{nm}$)?
+		(PersistenzlÃ¤nge $l_p \sim \SI{1}{nm}$)?
 	\end{frage}
 	
 	\begin{frage}[Quanteneffekte in Nanoresonatoren]
-		Können Casimir-Kräfte (Gleichung~\eqref{eq:casimir}) in
-		Ultra-Dünnschicht-Resonatoren ($d < \SI{30}{nm}$) zur
+		KÃ¶nnen Casimir-KrÃ¤fte (Gleichung~\eqref{eq:casimir}) in
+		Ultra-DÃ¼nnschicht-Resonatoren ($d < \SI{30}{nm}$) zur
 		Verstimmung genutzt werden, und wie beeinflusst die
 		quantisierte Natur des Lichtfeldes das Schaltverhalten?
 	\end{frage}
 	
-	\begin{frage}[Topologische Photonische Zustände in weichen Materialien]
-		Können weiche photonische Kristalle mit programmierbarer
+	\begin{frage}[Topologische Photonische ZustÃ¤nde in weichen Materialien]
+		KÃ¶nnen weiche photonische Kristalle mit programmierbarer
 		Topologie (Zak-Phase schaltbar durch Quellung) realisiert werden,
-		die robuste Randmoden für optische Wellenleitung aufweisen?
+		die robuste Randmoden fÃ¼r optische Wellenleitung aufweisen?
 	\end{frage}
 	
-	\subsection{Ausblick: Zukünftige Entwicklungen}
+	\subsection{Ausblick: ZukÃ¼nftige Entwicklungen}
 	
-	In den nächsten fünf Jahren sind folgende Durchbrüche zu erwarten:
+	In den nÃ¤chsten fÃ¼nf Jahren sind folgende DurchbrÃ¼che zu erwarten:
 	
 	\textbf{Nanoimprint-Lithographie als skalierbare Alternative}:
 	Elektronenstrahlschreiben ist seriell und langsam ($\sim \SI{1}{cm^2/h}$).
-	Nanoimprint kann kodierte Muster parallel auf großen Flächen
-	($\mathrm{m}^2$-Maßstab) übertragen.
+	Nanoimprint kann kodierte Muster parallel auf groÃŸen FlÃ¤chen
+	($\mathrm{m}^2$-MaÃŸstab) Ã¼bertragen.
 	
 	\textbf{Quantenpunkt-Integration}:
-	Einbau von CdSe/ZnS-Quantenpunkten in die Polymermatrix für
-	aktive Lumineszenz als zusätzlichen Freiheitsgrad neben Reflexionsfarbe.
+	Einbau von CdSe/ZnS-Quantenpunkten in die Polymermatrix fÃ¼r
+	aktive Lumineszenz als zusÃ¤tzlichen Freiheitsgrad neben Reflexionsfarbe.
 	
 	\textbf{Biologisch-technische Hybrid-Systeme}:
 	Direkte Integration von Cephalopoden-Chromatophor-Proteinen
 	(Reflektine) in synthetische Polymermatrizen als bioinspirierte
 	Brechungsindex-Modulatoren.
 	
-	\textbf{KI-gestützte inverse Gestaltung}:
-	Generative neuronale Netze (diffusion models) für die direkte
+	\textbf{KI-gestÃ¼tzte inverse Gestaltung}:
+	Generative neuronale Netze (diffusion models) fÃ¼r die direkte
 	Vorhersage von Materialparametern aus Zielerscheinungsbildern,
 	ohne explizite Optimierungsschleife.
 	
@@ -2475,8 +2475,8 @@
 	\label{sec:fazit}
 	%%=============================================================
 	
-	Diese Arbeit hat gezeigt, dass weiche photonische Häute mit dynamischer,
-	simultaner und unabhängiger Textur- und Farbkontrolle auf einer kohärenten
+	Diese Arbeit hat gezeigt, dass weiche photonische HÃ¤ute mit dynamischer,
+	simultaner und unabhÃ¤ngiger Textur- und Farbkontrolle auf einer kohÃ¤renten
 	theoretischen Grundlage beruhen, die drei Disziplinen verbindet:
 	Quantenmechanik (Ursprung des Brechungsindex, Photon-Transfer-Analogie),
 	Polymerphysik (Flory-Rehner-Gleichgewicht, Elektronenstrahl-Modifikation)
@@ -2485,36 +2485,36 @@
 	
 	Die zentrale algorithmische Botschaft ist: \emph{Alle Kernprobleme
 		--- Spektrumsberechnung, Texturkodierung, inverse Resonatorgestaltung ---
-		sind deterministisch und effizient lösbar.} Dies steht im Kontrast zu
-	stochastischen Suchmethoden und ist essentiell für die reproduzierbare
+		sind deterministisch und effizient lÃ¶sbar.} Dies steht im Kontrast zu
+	stochastischen Suchmethoden und ist essentiell fÃ¼r die reproduzierbare
 	Herstellung technischer Systeme.
 	
-	Die tiefste theoretische Einsicht ist die Photon-Quanten-Dualität der
-	Transfermatrix: Die formale Identität zwischen $\matr{U}(z_1,z_2)$
+	Die tiefste theoretische Einsicht ist die Photon-Quanten-DualitÃ¤t der
+	Transfermatrix: Die formale IdentitÃ¤t zwischen $\matr{U}(z_1,z_2)$
 	(Wellenpropagator) und $\hat{U}(t_1,t_2)$ (Zeitentwicklungsoperator)
-	öffnet einen bidirektionalen Methodentransfer zwischen Quantenmechanik
+	Ã¶ffnet einen bidirektionalen Methodentransfer zwischen Quantenmechanik
 	und Nanooptik. Quantenmechanische Konzepte wie das adiabatische Theorem,
-	WKB-Näherung und topologische Bandtheorie werden zu Werkzeugen der
+	WKB-NÃ¤herung und topologische Bandtheorie werden zu Werkzeugen der
 	photonischen Schichtoptimierung.
 	
 	In einer Zeit zunehmender Quantentechnologien und weicher intelligenter
 	Materialien bietet die hier entwickelte Theorie weicher photonischer
-	Häute ein fundamentales Paradigma: intelligente Materie, die ihre eigene
+	HÃ¤ute ein fundamentales Paradigma: intelligente Materie, die ihre eigene
 	Erscheinung berechnet und realisiert.
 	
 	\begin{thebibliography}{99}
 		
-		%% ── PRIMÄRQUELLE ─────────────────────────────────────────────
+		%% â”€â”€ PRIMÃ„RQUELLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Doshi2026}
-		S.~Doshi, N.\,A.~Güsken, G.~Dijk, J.~Carlström, J.\,E.~Ortiz-Cárdenas,
+		S.~Doshi, N.\,A.~GÃ¼sken, G.~Dijk, J.~CarlstrÃ¶m, J.\,E.~Ortiz-CÃ¡rdenas,
 		P.~Suzuki, B.~Li, P.\,M.~Fordyce, A.~Salleo, N.\,A.~Melosh und
 		M.\,L.~Brongersma,
 		\newblock Soft photonic skins with dynamic texture and colour control,
 		\newblock \emph{Nature}, \textbf{649}:345--352, 2026.
 		\newblock \url{https://doi.org/10.1038/s41586-025-09948-2}
 		
-		%% ── VERWANDTE ARBEITEN DERSELBEN GRUPPE ─────────────────────
+		%% â”€â”€ VERWANDTE ARBEITEN DERSELBEN GRUPPE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Doshi2025soft}
 		S.~Doshi et~al.,
@@ -2536,10 +2536,10 @@
 		\newblock \emph{Advanced Materials}, \textbf{37}:2415827, 2025.
 		\newblock \url{https://doi.org/10.1002/adma.202415827}
 		
-		%% ── CEPHALOPODEN-BIOLOGIE ────────────────────────────────────
+		%% â”€â”€ CEPHALOPODEN-BIOLOGIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Allen2009}
-		J.\,J.~Allen, L.\,M.~Mäthger, A.~Barbosa und R.\,T.~Hanlon,
+		J.\,J.~Allen, L.\,M.~MÃ¤thger, A.~Barbosa und R.\,T.~Hanlon,
 		\newblock Cuttlefish use visual cues to control three-dimensional skin papillae
 		for camouflage,
 		\newblock \emph{Journal of Comparative Physiology A}, \textbf{195}:547--555,
@@ -2568,7 +2568,7 @@
 		\newblock \emph{Vision Research}, \textbf{48}:1242--1253, 2008.
 		\newblock \url{https://doi.org/10.1016/j.visres.2008.02.011}
 		
-		%% ── STRUKTURFARBEN UND PHOTONISCHE METAMATERIALIEN ──────────
+		%% â”€â”€ STRUKTURFARBEN UND PHOTONISCHE METAMATERIALIEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Kristensen2016}
 		A.~Kristensen et~al.,
@@ -2636,7 +2636,7 @@
 		\newblock \emph{Science Advances}, \textbf{8}:eabm8598, 2022.
 		\newblock \url{https://doi.org/10.1126/sciadv.abm8598}
 		
-		%% ── DYNAMISCHE TEXTUR UND WEICHE AKTUATOREN ─────────────────
+		%% â”€â”€ DYNAMISCHE TEXTUR UND WEICHE AKTUATOREN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Pikul2017}
 		J.\,H.~Pikul et~al.,
@@ -2685,7 +2685,7 @@
 		\newblock \emph{Soft Matter}, \textbf{6}:2044--2049, 2010.
 		\newblock \url{https://doi.org/10.1039/b927374c}
 		
-		%% ── POLYMERPHYSIK ────────────────────────────────────────────
+		%% â”€â”€ POLYMERPHYSIK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Flory1953}
 		P.\,J.~Flory,
@@ -2704,7 +2704,7 @@
 		\newblock \emph{Polymer Physics},
 		\newblock Oxford University Press, Oxford, 2003.
 		
-		%% ── OPTIK: STANDARDWERKE ─────────────────────────────────────
+		%% â”€â”€ OPTIK: STANDARDWERKE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{BornWolf1999}
 		M.~Born und E.~Wolf,
@@ -2739,7 +2739,7 @@
 		\newblock \emph{Introduction to Electrodynamics},
 		\newblock Prentice Hall, Upper Saddle River, NJ, 3.~Auflage, 1999.
 		
-		%% ── KOLORIMETRIE ─────────────────────────────────────────────
+		%% â”€â”€ KOLORIMETRIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Wyszecki1982}
 		G.~Wyszecki und W.\,S.~Stiles,
@@ -2753,7 +2753,7 @@
 		Psychometric Color Terms,
 		\newblock CIE Publication 15.2, Vienna, 1978.
 		
-		%% ── ELEKTRONENSTRAHL-LITHOGRAPHIE ────────────────────────────
+		%% â”€â”€ ELEKTRONENSTRAHL-LITHOGRAPHIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Chang1975}
 		T.\,H.\,P.~Chang,
@@ -2777,7 +2777,7 @@
 		\newblock \emph{Vacuum}, \textbf{152}:243--247, 2018.
 		\newblock \url{https://doi.org/10.1016/j.vacuum.2018.03.025}
 		
-		%% ── BETHE-REICHWEITE ─────────────────────────────────────────
+		%% â”€â”€ BETHE-REICHWEITE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Kanaya1972}
 		K.~Kanaya und S.~Okayama,
@@ -2793,7 +2793,7 @@
 		\newblock \emph{Annalen der Physik}, \textbf{397}:325--400, 1930.
 		\newblock \url{https://doi.org/10.1002/andp.19303970303}
 		
-		%% ── QUANTENMECHANIK ──────────────────────────────────────────
+		%% â”€â”€ QUANTENMECHANIK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Sakurai2020}
 		J.\,J.~Sakurai und J.~Napolitano,
@@ -2813,7 +2813,7 @@
 		\textbf{392}:45--57, 1984.
 		\newblock \url{https://doi.org/10.1098/rspa.1984.0023}
 		
-		%% ── OPTIMIERUNG ──────────────────────────────────────────────
+		%% â”€â”€ OPTIMIERUNG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Nocedal2006}
 		J.~Nocedal und S.\,J.~Wright,
@@ -2827,7 +2827,7 @@
 		\newblock Cambridge University Press, Cambridge, 2004.
 		\newblock \url{https://doi.org/10.1017/CBO9780511804441}
 		
-		%% ── MATERIALPARAMETER ────────────────────────────────────────
+		%% â”€â”€ MATERIALPARAMETER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Mata2005}
 		A.~Mata, A.\,J.~Fleischman und S.~Roy,
@@ -2855,22 +2855,22 @@
 		\newblock \emph{Macromolecules}, \textbf{55}:1600--1608, 2022.
 		\newblock \url{https://doi.org/10.1021/acs.macromol.1c02515}
 		
-		%% ── LORENTZ-LORENZ ───────────────────────────────────────────
+		%% â”€â”€ LORENTZ-LORENZ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Lorentz1880}
 		H.\,A.~Lorentz,
-		\newblock Über die Beziehung zwischen der Fortpflanzungsgeschwindigkeit des
-		Lichtes und der Körperdichte,
+		\newblock Ãœber die Beziehung zwischen der Fortpflanzungsgeschwindigkeit des
+		Lichtes und der KÃ¶rperdichte,
 		\newblock \emph{Annalen der Physik}, \textbf{9}:641--665, 1880.
 		\newblock \url{https://doi.org/10.1002/andp.18802450406}
 		
 		\bibitem{Lorenz1880}
 		L.~Lorenz,
-		\newblock Über die Refractionsconstante,
+		\newblock Ãœber die Refractionsconstante,
 		\newblock \emph{Annalen der Physik}, \textbf{11}:70--103, 1880.
 		\newblock \url{https://doi.org/10.1002/andp.18802470905}
 		
-		%% ── MIKROFLUIDIK ─────────────────────────────────────────────
+		%% â”€â”€ MIKROFLUIDIK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Li2022}
 		Q.~Li et~al.,
@@ -2884,7 +2884,7 @@
 		\newblock \emph{Nature}, \textbf{622}:735--741, 2023.
 		\newblock \url{https://doi.org/10.1038/s41586-023-06517-3}
 		
-		%% ── CASIMIR-KRAFT ────────────────────────────────────────────
+		%% â”€â”€ CASIMIR-KRAFT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Casimir1948}
 		H.\,B.\,G.~Casimir,
@@ -2892,7 +2892,7 @@
 		\newblock \emph{Proceedings of the Koninklijke Nederlandse Akademie van
 			Wetenschappen}, \textbf{51}:793--795, 1948.
 		
-		%% ── PYTHON / NUMERIK ─────────────────────────────────────────
+		%% â”€â”€ PYTHON / NUMERIK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 		
 		\bibitem{Virtanen2020}
 		P.~Virtanen et~al.,
@@ -2909,3 +2909,4 @@
 		
 	\end{thebibliography}	
 \end{document}
+

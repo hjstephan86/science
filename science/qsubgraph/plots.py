@@ -100,8 +100,8 @@ def plot1_qubit_topology():
     ax.axis('off')
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot1_qubit_topology.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot1_qubit_topology.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot1_qubit_topology.pdf', bbox_inches='tight')
+    plt.savefig('plot1_qubit_topology.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 1 gespeichert.")
 
@@ -172,8 +172,8 @@ def plot2_decoherence():
              fontsize=8, color=DARKGREEN)
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot2_decoherence.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot2_decoherence.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot2_decoherence.pdf', bbox_inches='tight')
+    plt.savefig('plot2_decoherence.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 2 gespeichert.")
 
@@ -236,8 +236,8 @@ def plot3_runtime():
     ax2.set_xlim(2, 150); ax2.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot3_runtime.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot3_runtime.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot3_runtime.pdf', bbox_inches='tight')
+    plt.savefig('plot3_runtime.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 3 gespeichert.")
 
@@ -359,8 +359,8 @@ def plot4_quantum_scaling():
     ax4.set_xlim(2, 80); ax4.set_ylim(0, 105)
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot4_quantum_scaling.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot4_quantum_scaling.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot4_quantum_scaling.pdf', bbox_inches='tight')
+    plt.savefig('plot4_quantum_scaling.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 4 gespeichert.")
 
@@ -437,8 +437,8 @@ def plot5_stochastic_resonance():
                  arrowprops=dict(arrowstyle='->', color=MAINBLUE))
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot5_stochastic.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot5_stochastic.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot5_stochastic.pdf', bbox_inches='tight')
+    plt.savefig('plot5_stochastic.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 5 gespeichert.")
 
@@ -507,8 +507,8 @@ def plot6_roadmap():
     ax2.legend(fontsize=9); ax2.grid(True, alpha=0.3, axis='y')
 
     plt.tight_layout()
-    plt.savefig('/home/claude/quantum_subgraph/plot6_roadmap.pdf', bbox_inches='tight')
-    plt.savefig('/home/claude/quantum_subgraph/plot6_roadmap.png', bbox_inches='tight', dpi=150)
+    plt.savefig('plot6_roadmap.pdf', bbox_inches='tight')
+    plt.savefig('plot6_roadmap.png', bbox_inches='tight', dpi=150)
     plt.close()
     print("Plot 6 gespeichert.")
 

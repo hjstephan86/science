@@ -131,7 +131,7 @@ ax3.text(0.5, 0.02, r'Knotengleichung: $\sum_k f_k = 0\;\forall$ Knoten',
 ax3.axis('off')
 
 plt.tight_layout(pad=2.0)
-plt.savefig('/home/claude/knotengleichung/plot5_vergleich.pdf',
+plt.savefig('plot5_vergleich.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 5 gespeichert.")

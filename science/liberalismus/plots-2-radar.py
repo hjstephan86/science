@@ -47,6 +47,6 @@ ax.legend(loc='upper right', bbox_to_anchor=(1.28, 1.15), fontsize=10.5, frameal
 ax.grid(True, linestyle='--', alpha=0.45)
 
 plt.tight_layout()
-plt.savefig('/home/claude/liberalismus/plot2_radar.pdf', format='pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot2_radar.pdf', format='pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 2 gespeichert.")

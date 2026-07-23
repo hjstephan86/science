@@ -157,6 +157,7 @@ ax6.set_title('Prognose Marktanteile\nCPU-Server im KI-RZ-Segment')
 ax6.legend(loc='lower left', fontsize=8, framealpha=0.95)
 ax6.set_ylim(0, 100); ax6.tick_params(axis='x', rotation=30)
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_e.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_e.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_e.pdf saved")
+
 

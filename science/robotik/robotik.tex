@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -42,8 +42,8 @@
 \lstset{basicstyle=\ttfamily\small, keywordstyle=\color{blue},
     commentstyle=\color{gray}, numbers=left, numberstyle=\tiny,
     breaklines=true, frame=single,
-    literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
-             {ß}{{\ss}}1 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1}
+    literate={Ã–}{{\"O}}1 {Ã„}{{\"A}}1 {Ãœ}{{\"U}}1
+             {ÃŸ}{{\ss}}1 {Ã¼}{{\"u}}1 {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1}
 
 \newcommand{\Cspace}{\mathcal{C}}
 \newcommand{\Cfree}{\mathcal{C}_{\mathrm{free}}}
@@ -295,7 +295,7 @@ Faktor $1/\varphi$ gegen\"uber einer ungewichteten Planung, also
 $\mathbb{E}[\ell_k^2] \leq \mathbb{E}[\ell_k^2]_{\mathrm{ungewichtet}} / \varphi^2$.
 \end{proof}
 
-\begin{lemma}[$\varphi$-Fibonacci-Pfadlängen]
+\begin{lemma}[$\varphi$-Fibonacci-PfadlÃ¤ngen]
 \label{lem:fib_path}
 Sei $\ell_k$ die L\"ange des $k$-ten optimalen Teilpfades in einem
 rekursiven Pfadplanungsschema. Dann konvergiert $\ell_{k+1}/\ell_k \to \varphi$
@@ -597,7 +597,7 @@ eine Signatur-Bibliothek aufzubauen. Dies ist ein neues Lernparadigma:
 \subsection{Schwarm-Robotik und dezentralisierte Koalitionen}
 
 Satz~\ref{satz:coalition_nash} gilt f\"ur zentralisierte Koalitionsbildung.
-F\"ur gro{\ss}e Roboterschwärme ($m > 100$) ist Zentralisierung nicht
+F\"ur gro{\ss}e RoboterschwÃ¤rme ($m > 100$) ist Zentralisierung nicht
 praktikabel.
 Dezentralisierte Koalitionsbildung: Jeder Roboter berechnet lokal seinen
 Shapley-Wert auf Basis seiner unmittelbaren Nachbarn im Koalitions-Spielgraphen.
@@ -631,7 +631,7 @@ $O(n^{1.5})$-Signatur-Matching (statt $O(n^2)$ klassisch).
 Forschungsrichtung: Implementierung auf aktuellen Quantenprozessoren
 (Google Sycamore, IBM Eagle) f\"ur Benchmark-Pfadplanungsinstanzen.
 
-\subsection{Verbindung zur atmosphärischen Systemtheorie}
+\subsection{Verbindung zur atmosphÃ¤rischen Systemtheorie}
 
 \"Uberraschenderweise hat die Roboter-Bewegungsplanung eine formale Analogie
 zur atmosph\"arischen Systemtheorie~\cite{epp2026klima}:
@@ -645,7 +645,7 @@ hat ein Pendant in der Roboterplanung: freier Pfad, gest\"ort, blockiert.
 
 \subsection{Spieltheoretische Analyse von Swarm Intelligence}
 
-Gro{\ss}e Roboterschwärme zeigen emergente kollektive Intelligenz
+Gro{\ss}e RoboterschwÃ¤rme zeigen emergente kollektive Intelligenz
 (Schwarmintelligenz), die formell als Spiel modelliert werden kann.
 Jeder Roboter spielt ein Spiel mit seinen Nachbarn; das Nash-GGW des
 Gesamtspiels ist die kollektive Schwarm-Policy.
@@ -656,11 +656,11 @@ F\"ur $m \to \infty$ Roboter konvergiert das Nash-GGW zur Mean-Field-L\"osung,
 die als partielle Differentialgleichung (Hamilton-Jacobi-Bellman)
 darstellbar ist.
 
-\subsection{Phi-optimale Extremität-Koordination in der Biomechanik}
+\subsection{Phi-optimale ExtremitÃ¤t-Koordination in der Biomechanik}
 
 Die $\varphi$-Fibonacci-Winkelverteilung (Lemma~\ref{lem:fib_path})
 tritt biologisch auf: Bl\"atter an Pflanzenstielen folgen dem
-Fibonacci-Winkel $\theta = 2\pi/\varphi^2 \approx 137{,}5°$ (Phyllotaxis~\cite{epp2026expl}).
+Fibonacci-Winkel $\theta = 2\pi/\varphi^2 \approx 137{,}5Â°$ (Phyllotaxis~\cite{epp2026expl}).
 \"Ubertragung auf Robotik: Gelenk-Konfigurationen, die dem Fibonacci-Winkel
 folgen, maximieren den Arbeitsraum bei minimaler mechanischer Interferenz.
 Formale Hypothese: F\"ur $d$-Freiheitsgrad-Roboter mit Fibonacci-Winkelverteilung
@@ -758,7 +758,7 @@ Die Endeffektorposition ergibt sich durch sukzessive Matrixmultiplikation:
 \]
 F\"ur Drehgelenke (revolute joints) mit $\theta_k^{(\varphi)} = k \cdot 2\pi/\varphi^2$:
 Jede Rotation $T_k^{k+1}$ dreht um den $\varphi$-Winkel.
-Aufeinander folgende Drehungen um $2\pi/\varphi^2 \approx 137{,}5°$
+Aufeinander folgende Drehungen um $2\pi/\varphi^2 \approx 137{,}5Â°$
 (Fibonacci-Winkel) erzeugen eine Spirale mit Wachstumsfaktor $\varphi$,
 da $\varphi^2 = \varphi + 1$ (charakteristische Eigenschaft von $\varphi$).
 Dies ist genau eine log-arithmische Spirale mit Basis $\varphi$,
@@ -804,7 +804,7 @@ Knoten mit Signatur kodiert und in $O(n^3)$ verglichen.
 
 \subsection{Stochastisches Konfigurationsraum-Modell}
 
-In der Praxis sind Roboter-Konfigurationsräume unsicher:
+In der Praxis sind Roboter-KonfigurationsrÃ¤ume unsicher:
 Hindernisse sind nicht exakt bekannt (Sensorrauschen), Roboter-Geometrie
 hat Fertigungstoleranzen, und Aktuatoren haben Stellfehler.
 
@@ -1058,3 +1058,4 @@ Google Drive (epp-group).
 \end{thebibliography}
 
 \end{document}
+

@@ -132,7 +132,7 @@ ax.grid(alpha=0.3)
 ax.set_xlim(2023, 2102)
 
 plt.tight_layout()
-plt.savefig('/home/claude/mikroplastik_extension/plot_reinigung_erweiterung.pdf',
+plt.savefig('plot_reinigung_erweiterung.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot D gespeichert.")

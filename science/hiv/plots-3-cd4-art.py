@@ -92,6 +92,5 @@ ax2.axvline(x=90/365, color='#1e6432', linestyle=':', alpha=0.5)
 
 ax2.set_xlim(-0.1, 10.1)
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig('/home/claude/plot3_cd4_art.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot3_cd4_art.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot3_cd4_art.png', dpi=150, bbox_inches='tight')
 print("Plot 3 saved.")

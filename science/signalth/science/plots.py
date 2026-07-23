@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from scipy import signal
 
-OUT = "/home/stephan/Git/signalth/science"
+OUT = 'signalth/science"
 
 # --------------------------------------------------------------------------
 # Figure 1: rl_circuit.pdf

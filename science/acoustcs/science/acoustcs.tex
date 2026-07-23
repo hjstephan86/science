@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{article}
+﻿\documentclass[12pt, a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -31,7 +31,7 @@
   linkcolor=blue!70!black,
   citecolor=green!60!black,
   urlcolor=blue!80!black,
-  pdftitle={Harmonische Ausbreitung akustischer Signale in symmetrischen Hörräumen}
+  pdftitle={Harmonische Ausbreitung akustischer Signale in symmetrischen HÃ¶rrÃ¤umen}
 }
 
 % ============================================================
@@ -65,7 +65,7 @@
 \newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}
 \DeclareMathOperator{\sgn}{sgn}
 
-\title{\textbf{Harmonische Ausbreitung akustischer Signale in symmetrischen Hörräumen}\\
+\title{\textbf{Harmonische Ausbreitung akustischer Signale in symmetrischen HÃ¶rrÃ¤umen}\\
 Theoretische Grundlagen, formale Nachweise und raumakustische Konsequenzen}
 \date{13. April 2026}
 \author{Stephan Epp}
@@ -80,28 +80,28 @@ Theoretische Grundlagen, formale Nachweise und raumakustische Konsequenzen}
 \section{Einleitung und Motivation}
 % ============================================================
   Diese Arbeit untersucht die harmonische Ausbreitung akustischer Signale in geometrisch
-symmetrischen Hörräumen, insbesondere in rechteckigen Quaderräumen wie universitären
-Hörsälen. Ausgehend von der Wellengleichung werden die Randbedingungen des
+symmetrischen HÃ¶rrÃ¤umen, insbesondere in rechteckigen QuaderrÃ¤umen wie universitÃ¤ren
+HÃ¶rsÃ¤len. Ausgehend von der Wellengleichung werden die Randbedingungen des
 symmetrischen Raumes formal hergeleitet, die Eigenmoden klassifiziert und
 ihre harmonischen Frequenzrelationen rigoros bewiesen. Es wird gezeigt, dass
 die geometrische Symmetrie des Raumes eine fundamentale Symmetrie im Eigenmodenspektrum
 induziert: die harmonische Reihe $\{n\,f_0\}_{n\in\N}$ erscheint als
-natürliche Folge der Randbedingungen. Die Greensche Funktion des symmetrischen
+natÃ¼rliche Folge der Randbedingungen. Die Greensche Funktion des symmetrischen
 Raumes wird explizit konstruiert und ihre Spiegeleigenschaften werden formal
-nachgewiesen. Raumakustische Gütekriterien wie die Nachhallzeit nach Sabine und
-Eyring sowie die Klarheitsmaße C50 und D50 werden für symmetrische Konfigurationen
+nachgewiesen. Raumakustische GÃ¼tekriterien wie die Nachhallzeit nach Sabine und
+Eyring sowie die KlarheitsmaÃŸe C50 und D50 werden fÃ¼r symmetrische Konfigurationen
 analysiert. Alle theoretischen Ergebnisse werden durch numerische Simulationen
 mit \texttt{matplotlib} illustriert und diskutiert. Der Ausblick skizziert
-weitreichende Forschungsrichtungen von adaptiver Raumakustik über
-quantenakustische Analogien bis hin zu KI-gestützter Raumoptimierung.
+weitreichende Forschungsrichtungen von adaptiver Raumakustik Ã¼ber
+quantenakustische Analogien bis hin zu KI-gestÃ¼tzter Raumoptimierung.
 
-Die Akustik geschlossener Räume zählt zu den ältesten und zugleich aktuellsten
-Forschungsgebieten der Physik. Von den griechischen Amphitheatern über
-die gotischen Kathedralen bis hin zu modernen Konzertsälen und universitären
-Hörsälen stellte und stellt die Frage nach der optimalen Schallverteilung
+Die Akustik geschlossener RÃ¤ume zÃ¤hlt zu den Ã¤ltesten und zugleich aktuellsten
+Forschungsgebieten der Physik. Von den griechischen Amphitheatern Ã¼ber
+die gotischen Kathedralen bis hin zu modernen KonzertsÃ¤len und universitÃ¤ren
+HÃ¶rsÃ¤len stellte und stellt die Frage nach der optimalen Schallverteilung
 eine zentrale ingenieurtechnische und wissenschaftliche Herausforderung dar.
 
-Symmetrische Hörräume --- also Räume, die eine oder mehrere geometrische
+Symmetrische HÃ¶rrÃ¤ume --- also RÃ¤ume, die eine oder mehrere geometrische
 Symmetrieachsen oder -ebenen aufweisen --- nehmen in dieser Betrachtung
 eine besondere Stellung ein. Die geometrische Symmetrie pflanzt sich
 unmittelbar in die Physik der Schallausbreitung fort: Randbedingungen,
@@ -109,30 +109,30 @@ Eigenmoden und Greenssche Funktion erben die Symmetrieeigenschaften des
 umgebenden Gebiets. Die zentrale These dieser Arbeit lautet:
 
 \begin{center}
-\textit{In einem geometrisch symmetrischen Hörsaal breitet sich Schall
-harmonisch aus --- das heißt, die Eigenfrequenzen bilden rationale
+\textit{In einem geometrisch symmetrischen HÃ¶rsaal breitet sich Schall
+harmonisch aus --- das heiÃŸt, die Eigenfrequenzen bilden rationale
 Vielfache einer Grundfrequenz, und die Schalldruckverteilung besitzt
 die gleiche Symmetriegruppe wie der Raum selbst.}
 \end{center}
 
-Diese These wird in den folgenden Kapiteln mathematisch präzisiert, formal
+Diese These wird in den folgenden Kapiteln mathematisch prÃ¤zisiert, formal
 bewiesen und durch Simulationen illustriert. Dabei werden folgende Aspekte
 systematisch behandelt:
 
 \begin{enumerate}
 \item Die Wellengleichung als Ausgangspunkt und ihre Randbedingungen
   im Quaderraum (Abschnitt~\ref{sec:wellengleichung});
-\item Die vollständige Herleitung und Klassifikation der Eigenmoden
-  des symmetrischen Hörsaals (Abschnitt~\ref{sec:eigenmoden});
+\item Die vollstÃ¤ndige Herleitung und Klassifikation der Eigenmoden
+  des symmetrischen HÃ¶rsaals (Abschnitt~\ref{sec:eigenmoden});
 \item Der formale Nachweis der harmonischen Struktur des Eigenfrequenz\-spektrums
   (Abschnitt~\ref{sec:harmonik});
 \item Die Konstruktion der Greenschen Funktion und ihre Symmetrieeigenschaften
   (Abschnitt~\ref{sec:greens});
-\item Raumakustische Gütekriterien und ihre Abhängigkeit von der Symmetrie
+\item Raumakustische GÃ¼tekriterien und ihre AbhÃ¤ngigkeit von der Symmetrie
   (Abschnitt~\ref{sec:raumakustik});
 \item Numerische Illustrationen aller theoretischen Ergebnisse
   (Abschnitt~\ref{sec:simulation});
-\item Ein umfangreicher Ausblick auf weiterführende Forschungsrichtungen
+\item Ein umfangreicher Ausblick auf weiterfÃ¼hrende Forschungsrichtungen
   (Abschnitt~\ref{sec:ausblick}).
 \end{enumerate}
 
@@ -142,10 +142,10 @@ Vektoren werden fett gedruckt: $\mathbf{x} = (x,y,z)^\top \in \R^3$.
 Der Schallwellenoperator lautet $\Box = \Delta - \frac{1}{c^2}\partial_{tt}$,
 wobei $c \approx 343\,\mathrm{m/s}$ die Schallgeschwindigkeit in Luft bei
 $20\,^\circ\mathrm{C}$ bezeichnet. Komplexe Amplituden folgen der Zeitkonvention
-$e^{+i\omega t}$, und es gilt $k = \omega/c$ für die Wellenzahl.
+$e^{+i\omega t}$, und es gilt $k = \omega/c$ fÃ¼r die Wellenzahl.
 
-\textit{\textbf{Schlüsselwörter}}: Raumakustik, Wellengleichung, Eigenmoden,
-harmonische Reihen, symmetrische Räume, Greensche Funktion, Nachhallzeit,
+\textit{\textbf{SchlÃ¼sselwÃ¶rter}}: Raumakustik, Wellengleichung, Eigenmoden,
+harmonische Reihen, symmetrische RÃ¤ume, Greensche Funktion, Nachhallzeit,
 Fourier-Analyse, Geometrische Akustik
 
 % ============================================================
@@ -159,10 +159,10 @@ Die lineare Akustik eines idealen, kompressiblen Fluids wird durch drei
 Grundgleichungen beschrieben. Sei $\rho_0$ die Ruhedichte und $\kappa$
 der isentrope Kompressionsmodul der Luft.
 
-\begin{definition}[Akustische Zustandsgrößen]
+\begin{definition}[Akustische ZustandsgrÃ¶ÃŸen]
 Der Schalldruck $p(\mathbf{x},t) \in \R$, die Schallschnelle
 $\mathbf{v}(\mathbf{x},t) \in \R^3$ und die Dichteschwankung
-$\rho'(\mathbf{x},t) \in \R$ sind die linearisierten Schwankungsgrößen
+$\rho'(\mathbf{x},t) \in \R$ sind die linearisierten SchwankungsgrÃ¶ÃŸen
 um den Ruhezustand $(\rho_0, \mathbf{0}, p_0)$.
 \end{definition}
 
@@ -182,7 +182,7 @@ Durch Elimination von $\mathbf{v}$ und $\rho'$ ergibt sich unmittelbar:
 
 \begin{satz}[Inhomogene Wellengleichung]
 \label{satz:welle}
-Unter den obigen Annahmen genügt der Schalldruck $p$ der inhomogenen
+Unter den obigen Annahmen genÃ¼gt der Schalldruck $p$ der inhomogenen
 Wellengleichung
 \begin{equation}
   \Box\, p(\mathbf{x},t) \;:=\;
@@ -197,7 +197,7 @@ Wir differenzieren Gleichung~\eqref{eq:euler} nach der Zeit:
 $\rho_0 \partial_{tt} \mathbf{v} = -\nabla\,\partial_t p.$
 Die Divergenz von~\eqref{eq:euler} ergibt
 $\rho_0 \partial_t (\nabla \cdot \mathbf{v}) = -\Delta p.$
-Aus der Kontinuitätsgleichung~\eqref{eq:kontinuitaet} folgt
+Aus der KontinuitÃ¤tsgleichung~\eqref{eq:kontinuitaet} folgt
 $\partial_t \rho' = \rho_0 Q - \rho_0 \nabla\cdot\mathbf{v}$,
 also $\partial_{tt}\rho' = -\rho_0(\partial_t Q - \partial_t\nabla\cdot\mathbf{v}).$
 Mit~\eqref{eq:zustand} und der Elimination von $\nabla\cdot\mathbf{v}$ folgt
@@ -209,36 +209,36 @@ was~\eqref{eq:wellengl} entspricht.
 
 \subsection{Harmonischer Ansatz und Helmholtz-Gleichung}
 
-Für periodische Anregung mit Kreisfrequenz $\omega$ setzen wir den Produktansatz
+FÃ¼r periodische Anregung mit Kreisfrequenz $\omega$ setzen wir den Produktansatz
 \[
   p(\mathbf{x},t) = \Re\!\left[\hat{p}(\mathbf{x})\,e^{+i\omega t}\right]
 \]
 ein und erhalten:
 
 \begin{satz}[Helmholtz-Gleichung]
-Die komplexe Druckamplitude $\hat{p}(\mathbf{x})$ genügt der
+Die komplexe Druckamplitude $\hat{p}(\mathbf{x})$ genÃ¼gt der
 Helmholtz-Gleichung
 \begin{equation}
   (\Delta + k^2)\,\hat{p}(\mathbf{x}) = -\hat{Q}(\mathbf{x}),
   \qquad k = \frac{\omega}{c},
   \label{eq:helmholtz}
 \end{equation}
-wobei $\hat{Q}$ die komplexe Quellstärke bezeichnet.
+wobei $\hat{Q}$ die komplexe QuellstÃ¤rke bezeichnet.
 \end{satz}
 
 \subsection{Randbedingungen am symmetrischen Quaderraum}
 
 Sei $\Omega = (0,\Lx) \times (0,\Ly) \times (0,\Lz) \subset \R^3$
-der Hörsaal mit schallharten Wänden. Die Neumann-Randbedingung
+der HÃ¶rsaal mit schallharten WÃ¤nden. Die Neumann-Randbedingung
 \begin{equation}
   \left.\pfrac{\hat{p}}{\mathbf{n}}\right|_{\partial\Omega} = 0
   \label{eq:rbc}
 \end{equation}
-modelliert vollständige Reflexion ($\mathbf{n}$: äußere Einheitsnormale).
+modelliert vollstÃ¤ndige Reflexion ($\mathbf{n}$: Ã¤uÃŸere Einheitsnormale).
 
-\begin{definition}[Symmetrischer Hörsaal]
+\begin{definition}[Symmetrischer HÃ¶rsaal]
 \label{def:sym_hoersaal}
-Ein Quaderraum $\Omega = (0,\Lx)\times(0,\Ly)\times(0,\Lz)$ heißt
+Ein Quaderraum $\Omega = (0,\Lx)\times(0,\Ly)\times(0,\Lz)$ heiÃŸt
 \emph{geometrisch symmetrisch}, wenn mindestens eine der folgenden
 Spiegelsymmetrien gilt:
 \begin{enumerate}[label=(\roman*)]
@@ -248,23 +248,23 @@ Spiegelsymmetrien gilt:
 \end{enumerate}
 \end{definition}
 
-Der typische universitäre Hörsaal erfüllt alle drei Symmetrien. Im Folgenden
-betrachten wir den vollständig symmetrischen Fall.
+Der typische universitÃ¤re HÃ¶rsaal erfÃ¼llt alle drei Symmetrien. Im Folgenden
+betrachten wir den vollstÃ¤ndig symmetrischen Fall.
 
 % ============================================================
-\section{Eigenmoden des symmetrischen Hörsaals}
+\section{Eigenmoden des symmetrischen HÃ¶rsaals}
 \label{sec:eigenmoden}
 % ============================================================
 
 \subsection{Herleitung durch Separation der Variablen}
 
-Mit dem Produktansatz $\hat{p}(\mathbf{x}) = X(x)\,Y(y)\,Z(z)$ zerfällt
+Mit dem Produktansatz $\hat{p}(\mathbf{x}) = X(x)\,Y(y)\,Z(z)$ zerfÃ¤llt
 die Helmholtz-Gleichung~\eqref{eq:helmholtz} im quellfreien Fall in drei
-gewöhnliche Differentialgleichungen.
+gewÃ¶hnliche Differentialgleichungen.
 
 \begin{satz}[Separation]
 \label{satz:separation}
-Die Lösungen von $(\Delta + k^2)\hat{p} = 0$ in $\Omega$ mit
+Die LÃ¶sungen von $(\Delta + k^2)\hat{p} = 0$ in $\Omega$ mit
 Randbedingung~\eqref{eq:rbc} sind von der Form
 \begin{equation}
   \hat{p}_{mnl}(\mathbf{x}) = A_{mnl}\,
@@ -284,19 +284,19 @@ Mit dem Ansatz $\hat{p} = X(x)Y(y)Z(z)$ ergibt sich nach Division durch $XYZ$:
   + \underbrace{\frac{Z''}{Z}}_{=:-k_z^2}
   = -k^2.
 \]
-Für jede Koordinate gilt z.\,B. $X'' + k_x^2 X = 0$ mit allgemeiner Lösung
+FÃ¼r jede Koordinate gilt z.\,B. $X'' + k_x^2 X = 0$ mit allgemeiner LÃ¶sung
 $X(x) = C_1\cos(k_x x) + C_2\sin(k_x x)$.
 Die Randbedingung $X'(0) = 0$ liefert $C_2 = 0$.
 Die Randbedingung $X'(\Lx) = 0$ ergibt $k_x \sin(k_x \Lx) = 0$,
-also $k_x = m\pi/\Lx$ für $m \in \N_0$. Analog für $Y$ und $Z$.
-Die Gesamtlösung lautet daher~\eqref{eq:moden}. 
+also $k_x = m\pi/\Lx$ fÃ¼r $m \in \N_0$. Analog fÃ¼r $Y$ und $Z$.
+Die GesamtlÃ¶sung lautet daher~\eqref{eq:moden}. 
 \end{proof}
 
-\subsection{Vollständigkeit und Orthogonalität}
+\subsection{VollstÃ¤ndigkeit und OrthogonalitÃ¤t}
 
-\begin{satz}[Orthogonalität der Eigenmoden]
+\begin{satz}[OrthogonalitÃ¤t der Eigenmoden]
 \label{satz:orth}
-Die Eigenmoden~\eqref{eq:moden} bilden ein vollständiges Orthogonalsystem
+Die Eigenmoden~\eqref{eq:moden} bilden ein vollstÃ¤ndiges Orthogonalsystem
 in $L^2(\Omega)$:
 \begin{equation}
   \int_\Omega \hat{p}_{mnl}(\mathbf{x})\,\overline{\hat{p}_{m'n'l'}(\mathbf{x})}\,d\mathbf{x}
@@ -308,7 +308,7 @@ mit $\epsilon_j = 1$ falls $j=0$, $\epsilon_j = 2$ sonst, und $V = \Lx\Ly\Lz$.
 \end{satz}
 
 \begin{proof}
-Das Produkt zweier Eigenmoden zerfällt in ein Produkt eindimensionaler
+Das Produkt zweier Eigenmoden zerfÃ¤llt in ein Produkt eindimensionaler
 Integrale. Es gilt
 \[
   \int_0^{L_j} \cos\!\left(\frac{m\pi x_j}{L_j}\right)
@@ -325,13 +325,13 @@ folgt. Das Dreifachprodukt liefert~\eqref{eq:ortho}.
 \begin{satz}[Symmetrieeigenschaften]
 \label{satz:sym}
 Sei $\sigma_x: x \mapsto \Lx - x$ die Spiegelung an $x = \Lx/2$.
-Dann gilt für alle $m \in \N_0$:
+Dann gilt fÃ¼r alle $m \in \N_0$:
 \begin{equation}
   (\hat{p}_{mnl} \circ \sigma_x)(\mathbf{x}) = (-1)^m\,\hat{p}_{mnl}(\mathbf{x}).
   \label{eq:sym_mode}
 \end{equation}
 Die Eigenmoden sind somit entweder \emph{symmetrisch} (gerades $m$, $+1$-Eigenwert)
-oder \emph{antisymmetrisch} (ungerades $m$, $-1$-Eigenwert) bezüglich $\sigma_x$.
+oder \emph{antisymmetrisch} (ungerades $m$, $-1$-Eigenwert) bezÃ¼glich $\sigma_x$.
 \end{satz}
 
 \begin{proof}
@@ -342,7 +342,7 @@ Direkte Rechnung:
   = \cos(m\pi)\cos\!\left(\frac{m\pi x}{\Lx}\right)
   = (-1)^m \cos\!\left(\frac{m\pi x}{\Lx}\right).
 \]
-Da die $Y$- und $Z$-Faktoren unverändert bleiben, folgt~\eqref{eq:sym_mode}. 
+Da die $Y$- und $Z$-Faktoren unverÃ¤ndert bleiben, folgt~\eqref{eq:sym_mode}. 
 \end{proof}
 
 % ============================================================
@@ -373,14 +373,14 @@ Mit $k_j = j\pi/L_j$ und $\omega = 2\pi f$ ergibt sich~\eqref{eq:eigenfreq}.
 \subsection{Harmonische Koinzidenz im eindimensionalen Grenzfall}
 
 Der besonders anschauliche Grenzfall eines \emph{eindimensionalen} Rohres
-der Länge $L$ liefert das klassische harmonische Spektrum.
+der LÃ¤nge $L$ liefert das klassische harmonische Spektrum.
 
-\begin{theorem}[Harmonische Vollständigkeit des 1D-Rohres]
+\begin{theorem}[Harmonische VollstÃ¤ndigkeit des 1D-Rohres]
 \label{thm:harmonie_1d}
-Für einen eindimensionalen Quader mit $\Ly \to 0$, $\Lz \to 0$ (Rohr
-der Länge $L = \Lx$) bilden die Eigenfrequenzen
+FÃ¼r einen eindimensionalen Quader mit $\Ly \to 0$, $\Lz \to 0$ (Rohr
+der LÃ¤nge $L = \Lx$) bilden die Eigenfrequenzen
 $f_m = m\,c/(2L)$, $m \in \N$, eine exakt harmonische Reihe mit
-Grundfrequenz $f_0 = c/(2L)$. Es gilt $f_m = m\,f_0$ für alle $m \in \N$.
+Grundfrequenz $f_0 = c/(2L)$. Es gilt $f_m = m\,f_0$ fÃ¼r alle $m \in \N$.
 \end{theorem}
 
 \begin{proof}
@@ -390,18 +390,18 @@ $f_{m00} = (c/2)(m/L) = m \cdot (c/(2L)) = m\,f_0$.
 
 \subsection{Quasi-harmonische Koinzidenz im symmetrischen Quaderraum}
 
-Für den allgemeinen Quaderraum definieren wir:
+FÃ¼r den allgemeinen Quaderraum definieren wir:
 
-\begin{definition}[Harmonizitätsgrad]
+\begin{definition}[HarmonizitÃ¤tsgrad]
 \label{def:harm_grad}
-Zwei Eigenfrequenzen $f_{mnl}$ und $f_{m'n'l'}$ heißen \emph{harmonisch
-kompatibel}, wenn ihr Verhältnis rational ist:
+Zwei Eigenfrequenzen $f_{mnl}$ und $f_{m'n'l'}$ heiÃŸen \emph{harmonisch
+kompatibel}, wenn ihr VerhÃ¤ltnis rational ist:
 \[
   \frac{f_{mnl}}{f_{m'n'l'}} = \frac{p}{q} \in \mathbb{Q}, \quad p,q \in \N.
 \]
 \end{definition}
 
-\begin{theorem}[Rationale Harmonizität bei kommensurablen Dimensionen]
+\begin{theorem}[Rationale HarmonizitÃ¤t bei kommensurablen Dimensionen]
 \label{thm:harmonie_3d}
 Wenn die Raumdimensionen kommensurabel sind, d.\,h.
 \begin{equation}
@@ -420,20 +420,20 @@ Es gilt:
   f_{mnl} = \frac{c}{2\Lz}\sqrt{\left(\frac{m}{a}\right)^2
   + \left(\frac{n}{b}\right)^2 + l^2}.
 \]
-Das Verhältnis zweier Eigenfrequenzen lautet:
+Das VerhÃ¤ltnis zweier Eigenfrequenzen lautet:
 \[
   \frac{f_{mnl}}{f_{m'n'l'}}
   = \sqrt{\frac{(m/a)^2 + (n/b)^2 + l^2}{(m'/a)^2 + (n'/b)^2 + l'^2}}.
 \]
 Da $a, b \in \mathbb{Q}$ und $m,n,l,m',n',l' \in \N_0$, ist der Ausdruck
-unter der Wurzel stets rational. Ob das Verhältnis der Eigenfrequenzen
-selbst rational ist, hängt davon ab, ob die Wurzel eines rationalen
+unter der Wurzel stets rational. Ob das VerhÃ¤ltnis der Eigenfrequenzen
+selbst rational ist, hÃ¤ngt davon ab, ob die Wurzel eines rationalen
 Ausdrucks rational ist; dies ist im Allgemeinen nicht garantiert, jedoch
-für ganzzahlige $a, b$ (d.\,h. kommensurable Dimensionen mit ganzzahligem
-Verhältnis) stets bei passender Wahl der Indizes erfüllt.
+fÃ¼r ganzzahlige $a, b$ (d.\,h. kommensurable Dimensionen mit ganzzahligem
+VerhÃ¤ltnis) stets bei passender Wahl der Indizes erfÃ¼llt.
 
-Speziell für $a = b = 1$ (kub. Raum) ist $f_{mnl}/f_{m'n'l'} =
-\sqrt{(m^2+n^2+l^2)/(m'^2+n'^2+l'^2)}$, was z.\,B. für $f_{100}/f_{200} = 1/2$
+Speziell fÃ¼r $a = b = 1$ (kub. Raum) ist $f_{mnl}/f_{m'n'l'} =
+\sqrt{(m^2+n^2+l^2)/(m'^2+n'^2+l'^2)}$, was z.\,B. fÃ¼r $f_{100}/f_{200} = 1/2$
 rational wird, d.\,h. $f_{200} = 2f_{100}$ ist die erste Harmonische
 zur Achsenmode. 
 \end{proof}
@@ -457,28 +457,28 @@ Direkte Folge aus~\eqref{eq:eigenfreq} mit jeweils zwei Nullindizes.
 
 \begin{satz}[Weyl'sche Asymptotik]
 \label{satz:weyl}
-Die kumulative Anzahl $N(f)$ der Eigenmoden mit $f_{mnl} \leq f$ erfüllt
-für $f \to \infty$ die asymptotische Formel
+Die kumulative Anzahl $N(f)$ der Eigenmoden mit $f_{mnl} \leq f$ erfÃ¼llt
+fÃ¼r $f \to \infty$ die asymptotische Formel
 \begin{equation}
   N(f) = \frac{4\pi V}{3c^3}\,f^3 + \frac{\pi S}{4c^2}\,f^2 + \frac{L_{\rm tot}}{8c}\,f + O(1),
   \label{eq:weyl}
 \end{equation}
 wobei $V = \Lx\Ly\Lz$ das Volumen, $S = 2(\Lx\Ly + \Ly\Lz + \Lx\Lz)$
-die Gesamtoberfläche und $L_{\rm tot} = 4(\Lx+\Ly+\Lz)$ die Gesamtkantenlänge bezeichnet.
+die GesamtoberflÃ¤che und $L_{\rm tot} = 4(\Lx+\Ly+\Lz)$ die GesamtkantenlÃ¤nge bezeichnet.
 \end{satz}
 
 \begin{proof}
 Das Gitter der Wellenzahlvektoren $\mathbf{k}_{mnl} = \pi(m/\Lx, n/\Ly, l/\Lz)$
 liegt im ersten Oktanten $\R^3_+$. Jeder Gitterpunkt belegt ein Volumen
 $\Delta k_x \Delta k_y \Delta k_z = \pi^3/V$.
-Die Anzahl der Punkte mit $|\mathbf{k}_{mnl}| \leq k = 2\pi f/c$ beträgt
+Die Anzahl der Punkte mit $|\mathbf{k}_{mnl}| \leq k = 2\pi f/c$ betrÃ¤gt
 das Volumen des Achtelkugelausschnitts geteilt durch das Gittervolumen:
 \[
   N(f) \approx \frac{1}{8} \cdot \frac{4\pi k^3/3}{\pi^3/V}
   = \frac{4\pi V}{3} \cdot \frac{f^3}{c^3}.
 \]
-Die Korrekturterme $\sim f^2$ und $\sim f$ entstehen durch sorgfältige
-Behandlung der Ränder (Wände, Kanten) des Oktanten, was die bekannte
+Die Korrekturterme $\sim f^2$ und $\sim f$ entstehen durch sorgfÃ¤ltige
+Behandlung der RÃ¤nder (WÃ¤nde, Kanten) des Oktanten, was die bekannte
 Weyl-Formel~\eqref{eq:weyl} ergibt (vgl. Weyl 1912, Courant--Hilbert 1953). 
 \end{proof}
 
@@ -491,7 +491,7 @@ Weyl-Formel~\eqref{eq:weyl} ergibt (vgl. Weyl 1912, Courant--Hilbert 1953).
 
 \begin{definition}[Greensche Funktion]
 Die Greensche Funktion $G(\mathbf{x}, \mathbf{x}_0, k)$ des Quaderraums
-$\Omega$ zur Wellenzahl $k$ ist die Lösung von
+$\Omega$ zur Wellenzahl $k$ ist die LÃ¶sung von
 \begin{equation}
   (\Delta + k^2)\,G(\mathbf{x},\mathbf{x}_0,k) = -\delta(\mathbf{x}-\mathbf{x}_0)
   \quad \text{in } \Omega
@@ -502,7 +502,7 @@ mit Neumann-Randbedingung~\eqref{eq:rbc} an $\partial\Omega$.
 
 \begin{theorem}[Modendarstellung der Greenschen Funktion]
 \label{thm:greens_modal}
-Für $k \neq k_{mnl}$ gilt für $k_{mnl} := \pi\sqrt{(m/\Lx)^2 + (n/\Ly)^2 + (l/\Lz)^2}$ gilt:
+FÃ¼r $k \neq k_{mnl}$ gilt fÃ¼r $k_{mnl} := \pi\sqrt{(m/\Lx)^2 + (n/\Ly)^2 + (l/\Lz)^2}$ gilt:
 \begin{equation}
   G(\mathbf{x},\mathbf{x}_0,k) = \sum_{m,n,l=0}^{\infty}
   \frac{\hat{p}_{mnl}(\mathbf{x})\,\hat{p}_{mnl}(\mathbf{x}_0)}
@@ -517,8 +517,8 @@ Wir entwickeln $G$ nach den Eigenmoden:
 $G(\mathbf{x},\mathbf{x}_0,k) = \sum_{mnl} G_{mnl}(\mathbf{x}_0)\,\hat{p}_{mnl}(\mathbf{x}).$
 Einsetzen in~\eqref{eq:greens_dgl} ergibt
 $\sum_{mnl}(k^2 - k_{mnl}^2)\,G_{mnl}\,\hat{p}_{mnl} = -\delta(\mathbf{x}-\mathbf{x}_0)$.
-Multiplikation mit $\overline{\hat{p}_{m'n'l'}}$ und Integration über $\Omega$ liefert
-mit der Orthogonalität~\eqref{eq:ortho}:
+Multiplikation mit $\overline{\hat{p}_{m'n'l'}}$ und Integration Ã¼ber $\Omega$ liefert
+mit der OrthogonalitÃ¤t~\eqref{eq:ortho}:
 $(k^2 - k_{m'n'l'}^2)\,G_{m'n'l'}\,\Lambda_{m'n'l'} = -\hat{p}_{m'n'l'}(\mathbf{x}_0)$,
 woraus~\eqref{eq:greens_modal} folgt. 
 \end{proof}
@@ -529,12 +529,12 @@ woraus~\eqref{eq:greens_modal} folgt.
 \label{thm:sym_green}
 Sei die Quelle auf der Symmetrieachse des Raumes positioniert:
 $\mathbf{x}_0 = (\Lx/2,\, y_0,\, z_0)$.
-Dann gilt für alle $\mathbf{x} \in \Omega$:
+Dann gilt fÃ¼r alle $\mathbf{x} \in \Omega$:
 \begin{equation}
   G(\mathbf{x},\mathbf{x}_0,k) = G(\sigma_x(\mathbf{x}),\mathbf{x}_0,k),
   \label{eq:sym_green}
 \end{equation}
-d.\,h. das Schalldruckfeld ist symmetrisch bezüglich $x = \Lx/2$.
+d.\,h. das Schalldruckfeld ist symmetrisch bezÃ¼glich $x = \Lx/2$.
 \end{theorem}
 
 \begin{proof}
@@ -549,9 +549,9 @@ Mit $\mathbf{x}_0 = (\Lx/2, y_0, z_0)$ und $\sigma_x(\mathbf{x}) = (\Lx-x, y, z)
 \end{align*}
 Nun wertet man den $x$-Faktor von $\hat{p}_{mnl}$ an der Quelle aus:
 $\cos(m\pi \cdot \frac{1}{2}) = \cos(m\pi/2)$.
-Für gerades $m$ gilt $\cos(m\pi/2) \in \{-1, 0, 1\}$, und der Faktor
+FÃ¼r gerades $m$ gilt $\cos(m\pi/2) \in \{-1, 0, 1\}$, und der Faktor
 $(-1)^m = +1$ hebt sich mit der Symmetrie heraus.
-Für ungerades $m$ gilt $\cos(m\pi/2) = 0$, da die Quelle exakt auf einem
+FÃ¼r ungerades $m$ gilt $\cos(m\pi/2) = 0$, da die Quelle exakt auf einem
 Druckknoten der antisymmetrischen Moden liegt!
 Damit verschwinden alle antisymmetrischen Terme, und
 \[
@@ -565,9 +565,9 @@ womit~\eqref{eq:sym_green} bewiesen ist.
 
 \begin{bemerkung}
 Theorem~\ref{thm:sym_green} hat eine fundamentale raumakustische Konsequenz:
-Sitzt die Schallquelle (Redner, Lautsprecher) auf der Symmetrieachse des Hörsaals,
-so erhalten symmetrisch zur Mittellängsachse angeordnete Zuhörerplätze exakt
-identischen Schalldruck. Dies ist die mathematische Begründung für die
+Sitzt die Schallquelle (Redner, Lautsprecher) auf der Symmetrieachse des HÃ¶rsaals,
+so erhalten symmetrisch zur MittellÃ¤ngsachse angeordnete ZuhÃ¶rerplÃ¤tze exakt
+identischen Schalldruck. Dies ist die mathematische BegrÃ¼ndung fÃ¼r die
 intuitive Empfehlung, Rednerpulte mittig zu platzieren.
 \end{bemerkung}
 
@@ -575,8 +575,8 @@ intuitive Empfehlung, Rednerpulte mittig zu platzieren.
 
 \begin{satz}[Spiegelquellendarstellung]
 \label{satz:spiegelquellen}
-Die Greensche Funktion des Quaderraums lässt sich als unendliche Summe
-über Spiegelquellen darstellen:
+Die Greensche Funktion des Quaderraums lÃ¤sst sich als unendliche Summe
+Ã¼ber Spiegelquellen darstellen:
 \begin{equation}
   G(\mathbf{x},\mathbf{x}_0,k)
   = \sum_{i,j,l \in \mathbb{Z}^3}
@@ -592,14 +592,14 @@ Jede Spiegelung an einer Wand entspricht einer Fortsetzung des Feldes auf
 $\R^3$ mittels gerader/ungerader Erweiterung (method of images).
 Die Summe~\eqref{eq:spiegelquellen} ist die Freiraumgreensche Funktion
 $G_\infty = e^{ikr}/(4\pi r)$, ausgewertet an allen Bildquellen.
-Konvergenz folgt für $\Im(k) > 0$ aus dem exponentiellen Abfall $e^{-\Im(k)r}$.
-Für reelles $k$ (verlustfreier Fall) ist die Reihe im Distributionssinn
-zu verstehen. Die Äquivalenz zur Modaldarstellung~\eqref{eq:greens_modal}
+Konvergenz folgt fÃ¼r $\Im(k) > 0$ aus dem exponentiellen Abfall $e^{-\Im(k)r}$.
+FÃ¼r reelles $k$ (verlustfreier Fall) ist die Reihe im Distributionssinn
+zu verstehen. Die Ã„quivalenz zur Modaldarstellung~\eqref{eq:greens_modal}
 folgt durch gliedweisen Vergleich der Laurent-Entwicklungen. 
 \end{proof}
 
 % ============================================================
-\section{Raumakustische Gütekriterien}
+\section{Raumakustische GÃ¼tekriterien}
 \label{sec:raumakustik}
 % ============================================================
 
@@ -612,30 +612,30 @@ um 60\,dB abgefallen ist.
 
 \begin{satz}[Sabine-Formel]
 \label{satz:sabine}
-Für statistisch homogen verteilte Schallenergie gilt
+FÃ¼r statistisch homogen verteilte Schallenergie gilt
 \begin{equation}
   T_{60}^{\rm Sab} = \frac{0{,}161\,V}{A},
   \qquad A = \bar{\alpha}\,S,
   \label{eq:sabine}
 \end{equation}
 wobei $\bar{\alpha} \in [0,1]$ der mittlere Absorptionsgrad
-und $S$ die Gesamtoberfläche ist.
+und $S$ die GesamtoberflÃ¤che ist.
 \end{satz}
 
 \begin{proof}
 Sei $W(t)$ die Schallenergie im Raum. In einem Zeitintervall $dt$ absorbiert
 die Wand den Anteil $\bar{\alpha} \cdot c \cdot \frac{S}{4V} \cdot W\,dt$
-(mittlere freie Weglänge: $\bar{\ell} = 4V/S$). Die
+(mittlere freie WeglÃ¤nge: $\bar{\ell} = 4V/S$). Die
 Differentialgleichung $\dot{W} = -\frac{c\bar{\alpha}S}{4V}W$
 liefert den exponentiellen Abfall $W(t) = W_0\exp(-c\bar{\alpha}St/(4V))$.
-Der Pegel fällt um 60\,dB, wenn $W/W_0 = 10^{-6}$, also wenn
+Der Pegel fÃ¤llt um 60\,dB, wenn $W/W_0 = 10^{-6}$, also wenn
 $\frac{c\bar{\alpha}S}{4V}T_{60} = 6\ln 10$,
 woraus $T_{60} = \frac{24V\ln 10}{c\bar{\alpha}S} \approx \frac{0{,}161\,V}{\bar{\alpha}S}$ folgt. 
 \end{proof}
 
 \begin{satz}[Eyring-Formel]
 \label{satz:eyring}
-Für mittelgroße bis hohe Absorption gilt die genauere Eyring-Formel:
+FÃ¼r mittelgroÃŸe bis hohe Absorption gilt die genauere Eyring-Formel:
 \begin{equation}
   T_{60}^{\rm Eyr} = \frac{-0{,}161\,V}{S\ln(1-\bar{\alpha})}.
   \label{eq:eyring}
@@ -643,10 +643,10 @@ Für mittelgroße bis hohe Absorption gilt die genauere Eyring-Formel:
 \end{satz}
 
 \begin{proof}
-Eyring berücksichtigt, dass bei einer Reflexion der Anteil $(1-\bar{\alpha})$
+Eyring berÃ¼cksichtigt, dass bei einer Reflexion der Anteil $(1-\bar{\alpha})$
 der Energie erhalten bleibt. Nach $n$ Reflexionen ist der verbleibende
 Energieanteil $(1-\bar{\alpha})^n$. Die Anzahl der Reflexionen pro Zeit
-beträgt $c/(4V/S) = cS/(4V)$. Der Abfall um 60\,dB erfordert:
+betrÃ¤gt $c/(4V/S) = cS/(4V)$. Der Abfall um 60\,dB erfordert:
 \[
   n\ln(1-\bar{\alpha}) = -6\ln 10 \implies
   T_{60} = \frac{n}{cS/(4V)} = \frac{24V\ln 10}{-cS\ln(1-\bar{\alpha})},
@@ -655,15 +655,15 @@ woraus~\eqref{eq:eyring} folgt.
 \end{proof}
 
 \begin{bemerkung}
-Für $\bar{\alpha} \ll 1$ gilt $-\ln(1-\bar{\alpha}) \approx \bar{\alpha}$,
-sodass die Eyring-Formel in die Sabine-Formel übergeht. Für $\bar{\alpha} \to 1$
-(vollständige Absorption) liefert Eyring $T_{60} \to 0$, während Sabine
+FÃ¼r $\bar{\alpha} \ll 1$ gilt $-\ln(1-\bar{\alpha}) \approx \bar{\alpha}$,
+sodass die Eyring-Formel in die Sabine-Formel Ã¼bergeht. FÃ¼r $\bar{\alpha} \to 1$
+(vollstÃ¤ndige Absorption) liefert Eyring $T_{60} \to 0$, wÃ¤hrend Sabine
 den physikalisch sinnvollen Grenzfall korrekt beschreibt.
 \end{bemerkung}
 
-\subsection{Klarheitsmaße C50 und D50}
+\subsection{KlarheitsmaÃŸe C50 und D50}
 
-\begin{definition}[Klarheitsmaß C50 und Deutlichkeit D50]
+\begin{definition}[KlarheitsmaÃŸ C50 und Deutlichkeit D50]
 Sei $h(t)$ die Impulsantwort des Raumes. Dann gelten:
 \begin{align}
   C_{50} &= 10\log_{10}\frac{\int_0^{50\,\text{ms}} h^2(t)\,dt}
@@ -686,12 +686,12 @@ Es gilt:
 \end{satz}
 
 \begin{proof}
-Sei $E_{\rm früh} = \int_0^{50} h^2\,dt$ und $E_{\rm gesamt} = \int_0^\infty h^2\,dt$.
-Dann ist $D_{50} = E_{\rm früh}/E_{\rm gesamt}$, also
-$E_{\rm spät} = E_{\rm gesamt} - E_{\rm früh} = E_{\rm gesamt}(1-D_{50})$.
+Sei $E_{\rm frÃ¼h} = \int_0^{50} h^2\,dt$ und $E_{\rm gesamt} = \int_0^\infty h^2\,dt$.
+Dann ist $D_{50} = E_{\rm frÃ¼h}/E_{\rm gesamt}$, also
+$E_{\rm spÃ¤t} = E_{\rm gesamt} - E_{\rm frÃ¼h} = E_{\rm gesamt}(1-D_{50})$.
 Es folgt
 \[
-  C_{50} = 10\log_{10}\frac{E_{\rm früh}}{E_{\rm spät}}
+  C_{50} = 10\log_{10}\frac{E_{\rm frÃ¼h}}{E_{\rm spÃ¤t}}
   = 10\log_{10}\frac{D_{50}}{1-D_{50}}. \qquad 
 \]
 \end{proof}
@@ -700,9 +700,9 @@ Es folgt
 
 \begin{theorem}[Symmetrische C50-Gleichheit]
 \label{thm:c50_sym}
-In einem symmetrischen Hörsaal mit Quelle auf der Symmetrieachse gilt:
-Symmetrisch zur Mittellängsachse angeordnete Zuhörerpaare
-$(x_R, y_R) $ und $(\Lx - x_R, y_R)$ erhalten identische Klarheitsmaße:
+In einem symmetrischen HÃ¶rsaal mit Quelle auf der Symmetrieachse gilt:
+Symmetrisch zur MittellÃ¤ngsachse angeordnete ZuhÃ¶rerpaare
+$(x_R, y_R) $ und $(\Lx - x_R, y_R)$ erhalten identische KlarheitsmaÃŸe:
 \[
   C_{50}(x_R, y_R) = C_{50}(\Lx - x_R, y_R).
 \]
@@ -712,10 +712,10 @@ $(x_R, y_R) $ und $(\Lx - x_R, y_R)$ erhalten identische Klarheitsmaße:
 Die Impulsantwort am Punkt $\mathbf{x}_R = (x_R, y_R, z_R)$ lautet
 $h(\mathbf{x}_R, t) = \mathcal{F}^{-1}[G(\mathbf{x}_R, \mathbf{x}_0, k)]$.
 Aus Theorem~\ref{thm:sym_green} folgt $|G(\mathbf{x}_R, \mathbf{x}_0,k)|
-= |G(\sigma_x(\mathbf{x}_R), \mathbf{x}_0, k)|$ für alle $k$, also auch
-$|h(\mathbf{x}_R, t)| = |h(\sigma_x(\mathbf{x}_R), t)|$ für alle $t$.
+= |G(\sigma_x(\mathbf{x}_R), \mathbf{x}_0, k)|$ fÃ¼r alle $k$, also auch
+$|h(\mathbf{x}_R, t)| = |h(\sigma_x(\mathbf{x}_R), t)|$ fÃ¼r alle $t$.
 Damit sind alle Energie-Integrale in~\eqref{eq:c50} und~\eqref{eq:d50}
-identisch, und die Gleichheit der Klarheitsmaße folgt. 
+identisch, und die Gleichheit der KlarheitsmaÃŸe folgt. 
 \end{proof}
 
 % ============================================================
@@ -723,28 +723,28 @@ identisch, und die Gleichheit der Klarheitsmaße folgt.
 \label{sec:simulation}
 % ============================================================
 
-\subsection{Übersicht der Berechnungsparameter}
+\subsection{Ãœbersicht der Berechnungsparameter}
 
-Alle numerischen Simulationen verwenden einen Referenz-Hörsaal mit den
+Alle numerischen Simulationen verwenden einen Referenz-HÃ¶rsaal mit den
 Abmessungen $L_x \times L_y \times L_z = 20{,}0 \times 12{,}0 \times 5{,}0\,\mathrm{m}$,
 was einem Raumvolumen von $V = 1200\,\mathrm{m}^3$ entspricht. Die
-Schallgeschwindigkeit beträgt $c = 343\,\mathrm{m/s}$ (Luft, $20\,^\circ\mathrm{C}$).
+Schallgeschwindigkeit betrÃ¤gt $c = 343\,\mathrm{m/s}$ (Luft, $20\,^\circ\mathrm{C}$).
 Die Berechnungen wurden mit Python\,3 und dem \texttt{numpy}/\texttt{scipy}/\texttt{matplotlib}-Stack
-durchgeführt.
+durchgefÃ¼hrt.
 
 \begin{table}[H]
 \centering
-\caption{Raumparameter des simulierten Hörsaals}
+\caption{Raumparameter des simulierten HÃ¶rsaals}
 \label{tab:raumparameter}
 \begin{tabular}{lll}
 \toprule
 Parameter & Symbol & Wert \\
 \midrule
-Länge & $\Lx$ & 20{,}0\,m \\
+LÃ¤nge & $\Lx$ & 20{,}0\,m \\
 Breite & $\Ly$ & 12{,}0\,m \\
-Höhe & $\Lz$ & 5{,}0\,m \\
+HÃ¶he & $\Lz$ & 5{,}0\,m \\
 Volumen & $V$ & 1200\,m$^3$ \\
-Gesamtoberfläche & $S$ & 1000\,m$^2$ \\
+GesamtoberflÃ¤che & $S$ & 1000\,m$^2$ \\
 Grundfrequenz $x$-Achse & $f_x = c/(2\Lx)$ & 8{,}58\,Hz \\
 Grundfrequenz $y$-Achse & $f_y = c/(2\Ly)$ & 14{,}29\,Hz \\
 Grundfrequenz $z$-Achse & $f_z = c/(2\Lz)$ & 34{,}30\,Hz \\
@@ -757,32 +757,32 @@ Grundfrequenz $z$-Achse & $f_z = c/(2\Lz)$ & 34{,}30\,Hz \\
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot1_wellenfeld.pdf}
-  \caption{Schalldruckfeld im symmetrischen Hörsaal (Draufsicht $z = 0$).
+  \caption{Schalldruckfeld im symmetrischen HÃ¶rsaal (Draufsicht $z = 0$).
   \textbf{Links}: Superposition der Eigenmoden $(1,0)$, $(0,1)$, $(1,1)$ und
-  $(2,1)$ mit abnehmenden Amplituden. Die goldene und grüne gestrichelte Linie
+  $(2,1)$ mit abnehmenden Amplituden. Die goldene und grÃ¼ne gestrichelte Linie
   markieren die beiden Symmetrieachsen. Der rote Stern kennzeichnet die Schallquelle.
-  \textbf{Rechts}: Reine Eigenmode $(2,2)$, die die Spiegelsymmetrie bezüglich
+  \textbf{Rechts}: Reine Eigenmode $(2,2)$, die die Spiegelsymmetrie bezÃ¼glich
   beider Achsen explizit sichtbar macht. Die Konturen zeigen deutlich die
-  Druckknoten (Nulldurchgänge) und Druckbäuche (Extrema) der Mode.}
+  Druckknoten (NulldurchgÃ¤nge) und DruckbÃ¤uche (Extrema) der Mode.}
   \label{fig:wellenfeld}
 \end{figure}
 
 Abbildung~\ref{fig:wellenfeld} illustriert die in Satz~\ref{satz:separation}
-hergeleiteten Moden. Die Symmetrie der Mode $(2,2)$ bezüglich beider
-Achsen bestätigt Satz~\ref{satz:sym}: da $m = n = 2$ gerade sind,
-gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
+hergeleiteten Moden. Die Symmetrie der Mode $(2,2)$ bezÃ¼glich beider
+Achsen bestÃ¤tigt Satz~\ref{satz:sym}: da $m = n = 2$ gerade sind,
+gehÃ¶ren beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
 
 \subsection{Eigenfrequenzen und Weylsche Modendichte}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot2_eigenfrequenzen.pdf}
-  \caption{Eigenfrequenzstruktur des Hörsaals.
+  \caption{Eigenfrequenzstruktur des HÃ¶rsaals.
   \textbf{Links}: Die ersten 80 Eigenfrequenzen $f_{mnl}$ nach Formel~\eqref{eq:eigenfreq},
   farblich nach Modenindex kodiert.
-  \textbf{Rechts}: Weylsche Modendichte $dN/df$ (blaue Fläche) und kumulative
+  \textbf{Rechts}: Weylsche Modendichte $dN/df$ (blaue FlÃ¤che) und kumulative
   Modenzahl $N(f)$ (rote gestrichelte Kurve) nach Formel~\eqref{eq:weyl}.
-  Die starke Zunahme der Modendichte mit $f^2$ erklärt, warum bei tiefen
+  Die starke Zunahme der Modendichte mit $f^2$ erklÃ¤rt, warum bei tiefen
   Frequenzen einzelne Moden klar trennbar sind, bei hohen Frequenzen jedoch
   die statistische Raumakustik dominiert.}
   \label{fig:eigenfreq}
@@ -794,13 +794,13 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
   \centering
   \includegraphics[width=\textwidth]{plot3_greens.pdf}
   \caption{Greensche Funktion bei 200\,Hz mit Quelle im Raumzentrum.
-  \textbf{Links}: Realteil $\Re[G(\mathbf{x}, \mathbf{x}_0, k)]$ gemäß
+  \textbf{Links}: Realteil $\Re[G(\mathbf{x}, \mathbf{x}_0, k)]$ gemÃ¤ÃŸ
   Spiegelquellendarstellung~\eqref{eq:spiegelquellen}. Die Symmetrieachsen
   (gold) teilen das Feld exakt in vier spiegelsymmetrische Quadranten.
   \textbf{Rechts}: Schalldruckpegel SPL$(\mathbf{x})$ [dB rel. Max.].
-  Das Maximum liegt an der Quelle; die Pegelverteilung ist vollständig
-  symmetrisch, was Theorem~\ref{thm:sym_green} für den Fall
-  $\mathbf{x}_0 = (\Lx/2, \Ly/2)$ bestätigt.}
+  Das Maximum liegt an der Quelle; die Pegelverteilung ist vollstÃ¤ndig
+  symmetrisch, was Theorem~\ref{thm:sym_green} fÃ¼r den Fall
+  $\mathbf{x}_0 = (\Lx/2, \Ly/2)$ bestÃ¤tigt.}
   \label{fig:greens}
 \end{figure}
 
@@ -809,16 +809,16 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot4_nachhall.pdf}
-  \caption{Nachhallzeitanalyse des symmetrischen Hörsaals.
+  \caption{Nachhallzeitanalyse des symmetrischen HÃ¶rsaals.
   \textbf{Links}: Vergleich von Sabine~\eqref{eq:sabine} und Eyring~\eqref{eq:eyring}
-  über den Frequenzbereich 125--4000\,Hz. Grüne und orange gestrichelte
-  Linien markieren die optimalen Nachhallzeiten für Sprachverständlichkeit
-  (0{,}8\,s) bzw. Musik (1{,}5\,s). Das grüne Band kennzeichnet den
-  raumakustisch akzeptablen Bereich für Sprachverständlichkeit.
+  Ã¼ber den Frequenzbereich 125--4000\,Hz. GrÃ¼ne und orange gestrichelte
+  Linien markieren die optimalen Nachhallzeiten fÃ¼r SprachverstÃ¤ndlichkeit
+  (0{,}8\,s) bzw. Musik (1{,}5\,s). Das grÃ¼ne Band kennzeichnet den
+  raumakustisch akzeptablen Bereich fÃ¼r SprachverstÃ¤ndlichkeit.
   \textbf{Rechts}: Schroeder-Abklingkurve bei 500\,Hz aus der simulierten
-  Impulsantwort. Die rote gestrichelte Linie markiert die frühzeitige
-  Abklingzeit (EDT, Early Decay Time), die für die subjektive Nachhallwahrnehmung
-  maßgeblicher ist als $T_{60}$.}
+  Impulsantwort. Die rote gestrichelte Linie markiert die frÃ¼hzeitige
+  Abklingzeit (EDT, Early Decay Time), die fÃ¼r die subjektive Nachhallwahrnehmung
+  maÃŸgeblicher ist als $T_{60}$.}
   \label{fig:nachhall}
 \end{figure}
 
@@ -828,16 +828,16 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
   \centering
   \includegraphics[width=\textwidth]{plot5_symmetrie.pdf}
   \caption{Quantitative Symmetrieanalyse der Schallpegelverteilung.
-  \textbf{Oben links}: Längsschnitt SPL$(x)$ entlang $y = \Ly/2$ für vier
-  Oktavbandmittenfrequenzen. Die Symmetrie um die Mittellängsachse
+  \textbf{Oben links}: LÃ¤ngsschnitt SPL$(x)$ entlang $y = \Ly/2$ fÃ¼r vier
+  Oktavbandmittenfrequenzen. Die Symmetrie um die MittellÃ¤ngsachse
   $x = \Lx/2$ (gold) ist bei allen Frequenzen erkennbar.
   \textbf{Oben rechts}: Querschnitt SPL$(y)$ bei $x = \Lx/2$.
   \textbf{Unten links}: Symmetriedeviation $|\Delta\mathrm{SPL}|$ (die
   maximale Abweichung zwischen symmetrischen Punkten) in dB.
   Unterhalb der 3\,dB-Toleranzlinie (rot) gilt der Raum als akustisch
   symmetrisch.
-  \textbf{Unten rechts}: Mittlerer SPL-Abfall über die Sitzreihen
-  (500\,Hz), mit Fehlerbalken der Standardabweichung über die
+  \textbf{Unten rechts}: Mittlerer SPL-Abfall Ã¼ber die Sitzreihen
+  (500\,Hz), mit Fehlerbalken der Standardabweichung Ã¼ber die
   Querrichtung, verglichen mit dem Freifeldgesetz $-20\log_{10}(r/r_0)$.}
   \label{fig:symmetrie}
 \end{figure}
@@ -851,12 +851,12 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
   \textbf{Oben links}: Zeitbereichssignal aus der Superposition der harmonischen
   Reihe $\{nf_0\}_{n=1}^8$ mit Grundfrequenz $f_0 = 50\,\mathrm{Hz}$
   (entsprechend der dritten Achsenmode der $x$-Richtung).
-  \textbf{Oben rechts}: Spektrum der harmonischen Reihe. Die Säulen
+  \textbf{Oben rechts}: Spektrum der harmonischen Reihe. Die SÃ¤ulen
   zeigen die Amplituden der einzelnen Harmonischen.
   \textbf{Unten links}: Energieverteilung nach dem Parseval-Theorem:
-  die ersten 3 Harmonischen enthalten über 90\,\% der Gesamtenergie.
-  \textbf{Unten rechts}: Raumübertragungsfunktion $H(f)$ mit Polen
-  an den axialen Eigenfrequenzen (grüne gestrichelte Linien).}
+  die ersten 3 Harmonischen enthalten Ã¼ber 90\,\% der Gesamtenergie.
+  \textbf{Unten rechts}: RaumÃ¼bertragungsfunktion $H(f)$ mit Polen
+  an den axialen Eigenfrequenzen (grÃ¼ne gestrichelte Linien).}
   \label{fig:harmonische}
 \end{figure}
 
@@ -865,31 +865,31 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot7_strahlen.pdf}
-  \caption{Geometrische Akustik des symmetrischen Hörsaals.
-  \textbf{Links}: Strahlendiagramm mit 18 gleichmäßig über den Winkelbereich
-  $[10°, 170°]$ verteilten Strahlen von der Quelle (roter Stern) auf der
-  Symmetrieachse. Jeder Strahl wird mehrfach an den Wänden reflektiert.
-  Die Symmetrie des Strahlenmusters bezüglich der Mittellängsachse
+  \caption{Geometrische Akustik des symmetrischen HÃ¶rsaals.
+  \textbf{Links}: Strahlendiagramm mit 18 gleichmÃ¤ÃŸig Ã¼ber den Winkelbereich
+  $[10Â°, 170Â°]$ verteilten Strahlen von der Quelle (roter Stern) auf der
+  Symmetrieachse. Jeder Strahl wird mehrfach an den WÃ¤nden reflektiert.
+  Die Symmetrie des Strahlenmusters bezÃ¼glich der MittellÃ¤ngsachse
   (gold) ist deutlich sichtbar.
   \textbf{Rechts}: Echodiagramm mit den Ankunftszeiten der Spiegelquellen
-  (aus Satz~\ref{satz:spiegelquellen}) am Empfängerpunkt $(15,\,6)$\,m.
-  Grünes Fenster: frühe Reflexionen ($< 50$\,ms, für C50/D50 relevant);
+  (aus Satz~\ref{satz:spiegelquellen}) am EmpfÃ¤ngerpunkt $(15,\,6)$\,m.
+  GrÃ¼nes Fenster: frÃ¼he Reflexionen ($< 50$\,ms, fÃ¼r C50/D50 relevant);
   oranges Fenster: Nachhallfeld.}
   \label{fig:strahlen}
 \end{figure}
 
-\subsection{Raumakustische Gütekriterien}
+\subsection{Raumakustische GÃ¼tekriterien}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot8_kennzahlen.pdf}
-  \caption{Klarheitsmaße C50 und D50 nach den Definitionen~\eqref{eq:c50} und~\eqref{eq:d50}.
-  \textbf{Links}: Impulsantwort-Energieverteilung. Die blaue Fläche
-  zeigt die frühe Energie ($< 50$\,ms), die rote den Nachhallanteil.
+  \caption{KlarheitsmaÃŸe C50 und D50 nach den Definitionen~\eqref{eq:c50} und~\eqref{eq:d50}.
+  \textbf{Links}: Impulsantwort-Energieverteilung. Die blaue FlÃ¤che
+  zeigt die frÃ¼he Energie ($< 50$\,ms), die rote den Nachhallanteil.
   Die beiden gestrichelten Linien markieren die Grenzen $t_{50}$ und $t_{80}$.
   \textbf{Rechts}: C50 (blau) und D50 (rot) als Funktion des Sitzabstands
-  von der Quelle. Für Abstände $r \lesssim 5$\,m liegt C50 im positiven
-  Bereich (günstige Sprachverständlichkeit). Die Übereinstimmung mit
+  von der Quelle. FÃ¼r AbstÃ¤nde $r \lesssim 5$\,m liegt C50 im positiven
+  Bereich (gÃ¼nstige SprachverstÃ¤ndlichkeit). Die Ãœbereinstimmung mit
   Theorem~\ref{thm:c50_sym} wird durch die identischen Werte an
   symmetrischen Positionen belegt.}
   \label{fig:kennzahlen}
@@ -901,7 +901,7 @@ gehören beide Achsmoden zum $+1$-Eigenraum der jeweiligen Spiegelungen.
 
 \label{sec:zusammenfassung}
 Die vorliegende Arbeit hat die harmonische Ausbreitung akustischer Signale
-in symmetrischen Hörräumen systematisch untersucht. Die zentralen Ergebnisse
+in symmetrischen HÃ¶rrÃ¤umen systematisch untersucht. Die zentralen Ergebnisse
 lassen sich wie folgt zusammenfassen:
 
 \begin{enumerate}
@@ -909,7 +909,7 @@ lassen sich wie folgt zusammenfassen:
   die Eigenmoden exakt harmonische Reihen $f_m = m\,c/(2L_j)$
   (Korollar~\ref{kor:achsen_harm}).
 
-\item \textbf{Rationale Harmonizität}: Bei kommensurablen Raumdimensionen
+\item \textbf{Rationale HarmonizitÃ¤t}: Bei kommensurablen Raumdimensionen
   sind alle Eigenfrequenzpaare harmonisch kompatibel
   (Theorem~\ref{thm:harmonie_3d}).
 
@@ -917,13 +917,13 @@ lassen sich wie folgt zusammenfassen:
   Symmetriegruppe des Raumes, sofern die Quelle auf einer Symmetrieachse liegt
   (Theorem~\ref{thm:sym_green}).
 
-\item \textbf{Gleiche Gütekriterien}: Symmetrisch angeordnete Zuhörer
-  erhalten identische Schalldruckpegel und Klarheitsmaße
+\item \textbf{Gleiche GÃ¼tekriterien}: Symmetrisch angeordnete ZuhÃ¶rer
+  erhalten identische Schalldruckpegel und KlarheitsmaÃŸe
   (Theorem~\ref{thm:c50_sym}).
 
-\item \textbf{Weylsche Modendichte}: Die statistische Modendichte wächst
-  als $f^3$ an, was den Übergang von modaler zu statistischer Raumakustik
-  bei hohen Frequenzen erklärt (Satz~\ref{satz:weyl}).
+\item \textbf{Weylsche Modendichte}: Die statistische Modendichte wÃ¤chst
+  als $f^3$ an, was den Ãœbergang von modaler zu statistischer Raumakustik
+  bei hohen Frequenzen erklÃ¤rt (Satz~\ref{satz:weyl}).
 \end{enumerate}
 
 Numerische Simulationen mit \texttt{matplotlib} veranschaulichen alle
@@ -935,75 +935,75 @@ theoretischen Befunde konsistent und quantitativ.
 % ============================================================
 
 Die in dieser Arbeit entwickelten theoretischen Grundlagen und numerischen
-Methoden eröffnen ein breites Spektrum an weiterführenden Forschungsrichtungen.
+Methoden erÃ¶ffnen ein breites Spektrum an weiterfÃ¼hrenden Forschungsrichtungen.
 Der folgende Ausblick skizziert die wichtigsten Perspektiven in thematischen
-Blöcken, von kurzfristig durchführbaren Erweiterungen bis hin zu
+BlÃ¶cken, von kurzfristig durchfÃ¼hrbaren Erweiterungen bis hin zu
 spekulativen Langzeitvisionen.
 
 \subsection{Erweiterungen auf nicht-rechteckige und allgemeine Geometrien}
 
 Der in dieser Arbeit betrachtete Quaderraum ist mathematisch besonders
-bequem, da er eine vollständige analytische Lösung durch Separation der
-Variablen zulässt. Reale Hörsäle besitzen jedoch häufig abgeschrägte Decken,
-Einbuchtungen für Balkone, Bühnenabschrägungen und andere Abweichungen
+bequem, da er eine vollstÃ¤ndige analytische LÃ¶sung durch Separation der
+Variablen zulÃ¤sst. Reale HÃ¶rsÃ¤le besitzen jedoch hÃ¤ufig abgeschrÃ¤gte Decken,
+Einbuchtungen fÃ¼r Balkone, BÃ¼hnenabschrÃ¤gungen und andere Abweichungen
 von der Quadergeometrie. Eine unmittelbare Erweiterung dieser Arbeit
-betrifft daher die Übertragung der harmonischen Symmetrietheorie auf
+betrifft daher die Ãœbertragung der harmonischen Symmetrietheorie auf
 allgemeinere Geometrien.
 
-Für konvexe Polygonalräume lassen sich die Eigenmoden durch die Methode
+FÃ¼r konvexe PolygonalrÃ¤ume lassen sich die Eigenmoden durch die Methode
 der Boundary Element Method (BEM) numerisch berechnen, und die Symmetriegruppe
 des Raumes induziert nach dem Lemma von Burnside eine Klassifikation der Moden
-in irreduzible Darstellungen der diskreten Symmetriegruppe. Für einen Hörsaal
-mit vollständiger Dihedral-Symmetriegruppe $D_2$ (zwei Spiegelachsen) wie in
-dieser Arbeit zerfällt der Eigenraum in vier irreduzible Darstellungen
+in irreduzible Darstellungen der diskreten Symmetriegruppe. FÃ¼r einen HÃ¶rsaal
+mit vollstÃ¤ndiger Dihedral-Symmetriegruppe $D_2$ (zwei Spiegelachsen) wie in
+dieser Arbeit zerfÃ¤llt der Eigenraum in vier irreduzible Darstellungen
 (geradzahlig/ungeradzahlig in $x$ und $y$), was eine systematische Analyse
-der Modeninterferenzen ermöglicht.
+der Modeninterferenzen ermÃ¶glicht.
 
-Besonders interessant ist die Frage der harmonischen Struktur für
-nicht-rechteckige Räume. Während bei Quadern die harmonischen Reihen
-entlang der Achsen exakt sind, wurde für allgemeine konvexe Körper
+Besonders interessant ist die Frage der harmonischen Struktur fÃ¼r
+nicht-rechteckige RÃ¤ume. WÃ¤hrend bei Quadern die harmonischen Reihen
+entlang der Achsen exakt sind, wurde fÃ¼r allgemeine konvexe KÃ¶rper
 numerisch beobachtet, dass quasi-harmonische Koinzidenzen --- also
-nahezu rationale Frequenzverhältnisse --- auftreten können, wenn die
-Geometrie einer kommensurablen Proportion genähert wird.
-Eine rigorose Theorie dieser quasi-harmonischen Koinzidenzen, möglicherweise
-basierend auf einer Störungstheorie der Eigenwerte des Laplace-Operators
+nahezu rationale FrequenzverhÃ¤ltnisse --- auftreten kÃ¶nnen, wenn die
+Geometrie einer kommensurablen Proportion genÃ¤hert wird.
+Eine rigorose Theorie dieser quasi-harmonischen Koinzidenzen, mÃ¶glicherweise
+basierend auf einer StÃ¶rungstheorie der Eigenwerte des Laplace-Operators
 unter Geometrievariationen, stellt eine offene mathematisch-physikalische
 Fragestellung von hohem Interesse dar.
 
-\subsection{Frequenzabhängige Wandimpedanz und verlustbehaftete Räume}
+\subsection{FrequenzabhÃ¤ngige Wandimpedanz und verlustbehaftete RÃ¤ume}
 
 In der vorliegenden Arbeit wurden schallharte Randbedingungen
 (Neumann-RB, $\partial_n p = 0$) angenommen. Reale Wandmaterialien
-weisen eine komplexe, frequenzabhängige Impedanz
+weisen eine komplexe, frequenzabhÃ¤ngige Impedanz
 $Z(\omega) = p/(\mathbf{v}\cdot\mathbf{n})$ auf, die zu
-gemischten Randbedingungen (Robin-RB) führt:
+gemischten Randbedingungen (Robin-RB) fÃ¼hrt:
 \[
   \pfrac{p}{\mathbf{n}} = -ik\zeta\,p, \qquad
   \zeta = \frac{\rho_0 c}{Z(\omega)} \in \mathbb{C}.
 \]
-Die Eigenwerte des Problems werden dann komplex, ihre Imaginärteile
-beschreiben die modale Dämpfung. Die symmetrischen Eigenschaften
+Die Eigenwerte des Problems werden dann komplex, ihre ImaginÃ¤rteile
+beschreiben die modale DÃ¤mpfung. Die symmetrischen Eigenschaften
 der Eigenmoden bleiben nach dem Symmetrielema erhalten, sofern die
-Wandimpedanz die Raumsymmetrie respektiert (d.\,h. gegenüberliegende
-Wände identische Impedanzen aufweisen). Die harmonische Struktur
-der reellen Teile der Eigenfrequenzen wird durch die Dämpfung
+Wandimpedanz die Raumsymmetrie respektiert (d.\,h. gegenÃ¼berliegende
+WÃ¤nde identische Impedanzen aufweisen). Die harmonische Struktur
+der reellen Teile der Eigenfrequenzen wird durch die DÃ¤mpfung
 perturbativ verschoben; die Quantifizierung dieser Verschiebung
-in Abhängigkeit von $\Im(\zeta)$ ist Gegenstand aktueller Forschung.
+in AbhÃ¤ngigkeit von $\Im(\zeta)$ ist Gegenstand aktueller Forschung.
 
 Eine wichtige praktische Anwendung betrifft absorbierende Verkleidungen
 (Mineralfaserpaneele, Akustikstoffe, Helmholtz-Resonatoren), die
-gezielt eingesetzt werden, um bestimmte Moden zu dämpfen und die
-modale Gleichmäßigkeit des Feldes zu verbessern. Die Optimierung
+gezielt eingesetzt werden, um bestimmte Moden zu dÃ¤mpfen und die
+modale GleichmÃ¤ÃŸigkeit des Feldes zu verbessern. Die Optimierung
 der Platzierung solcher Absorber unter Symmetrieerhalt des Raumes
 --- d.\,h. absorbierende Elemente werden stets in spiegelbildlichen
 Paaren angebracht --- sichert die in Theorem~\ref{thm:c50_sym}
-bewiesene Gleichheit der Gütekriterien auch im verlustbehafteten Fall.
+bewiesene Gleichheit der GÃ¼tekriterien auch im verlustbehafteten Fall.
 
 \subsection{Adaptive und aktive Raumakustik}
 
 Die passive Gestaltung des Schallfeldes durch feste Absorber
 und Reflektoren ist in ihrer Wirkung auf das Frequenzband
-beschränkt, über das das verwendete Material wirksam ist.
+beschrÃ¤nkt, Ã¼ber das das verwendete Material wirksam ist.
 Moderne adaptive Raumakustiksysteme setzen auf aktive Regelung:
 durch eine Anordnung von Mikrofonen (Sensoren) und Lautsprechern (Aktuatoren)
 wird das Schallfeld in Echtzeit erfasst und durch gezielte
@@ -1011,146 +1011,146 @@ Zusatzanregung modifiziert.
 
 Vor dem Hintergrund der Symmetrietheorie ergibt sich ein reizvolles
 Optimierungsproblem: ein adaptives System, das die Symmetrie des Raumes
-ausnutzt, benötigt prinzipiell nur halb so viele Aktuatoren wie ein
+ausnutzt, benÃ¶tigt prinzipiell nur halb so viele Aktuatoren wie ein
 symmetrienahives System, da die symmetrischen Moden und antisymmetrischen
-Moden entkoppelt angesteuert werden können.
-Formal lässt sich dies als eine Blockdiagonalisierung des Strecken-
-übertragungsmatrix unter Ausnutzung der Symmetriegruppe formulieren.
+Moden entkoppelt angesteuert werden kÃ¶nnen.
+Formal lÃ¤sst sich dies als eine Blockdiagonalisierung des Strecken-
+Ã¼bertragungsmatrix unter Ausnutzung der Symmetriegruppe formulieren.
 
-Konkret für den universitären Hörsaal bedeutet dies: statt eines
-vollständig verteilten Lautsprechergitters genügt es, Lautsprecher
-auf der Symmetrieachse zu platzieren, um ausschließlich symmetrische
-Moden anzuregen, während antisymmetrische Moden --- die für
-Schallverteilungsungleichmäßigkeiten verantwortlich sind --- durch
-differenzielle Ansteuerung von Lautsprecherpaaren gezielt gedämpft
-werden können. Ein Regelentwurf auf der Basis modaler
+Konkret fÃ¼r den universitÃ¤ren HÃ¶rsaal bedeutet dies: statt eines
+vollstÃ¤ndig verteilten Lautsprechergitters genÃ¼gt es, Lautsprecher
+auf der Symmetrieachse zu platzieren, um ausschlieÃŸlich symmetrische
+Moden anzuregen, wÃ¤hrend antisymmetrische Moden --- die fÃ¼r
+SchallverteilungsungleichmÃ¤ÃŸigkeiten verantwortlich sind --- durch
+differenzielle Ansteuerung von Lautsprecherpaaren gezielt gedÃ¤mpft
+werden kÃ¶nnen. Ein Regelentwurf auf der Basis modaler
 Zustandsraummodelle (Modal Residualization), kombiniert mit
-modellprädiktiver Regelung (MPC) unter Berücksichtigung der
+modellprÃ¤diktiver Regelung (MPC) unter BerÃ¼cksichtigung der
 Symmetriestruktur, verspricht erhebliche Verbesserungen der
-Sprachverständlichkeit bei minimalem Hardwareaufwand.
+SprachverstÃ¤ndlichkeit bei minimalem Hardwareaufwand.
 
 \subsection{Kopplung an Raumklima und Temperaturgradienten}
 
-Die Schallgeschwindigkeit $c = \sqrt{\gamma R T / M}$ hängt von der
+Die Schallgeschwindigkeit $c = \sqrt{\gamma R T / M}$ hÃ¤ngt von der
 absoluten Temperatur $T$ ab ($\gamma = 1{,}4$, $R$ = universelle Gaskonstante,
-$M$ = molare Masse). In realen Hörsälen entstehen Temperaturgradienten
-durch Belüftungsanlagen, Sonneneinstrahlung und Körperwärme der Zuhörer.
+$M$ = molare Masse). In realen HÃ¶rsÃ¤len entstehen Temperaturgradienten
+durch BelÃ¼ftungsanlagen, Sonneneinstrahlung und KÃ¶rperwÃ¤rme der ZuhÃ¶rer.
 Selbst moderate Temperaturunterschiede von $\Delta T = 5\,\mathrm{K}$
-führen zu einer Schallgeschwindigkeitsvarianz von $\Delta c / c \approx 0{,}9\,\%$,
-was für Eigenfrequenzen im kHz-Bereich Verschiebungen von mehreren Hz
+fÃ¼hren zu einer Schallgeschwindigkeitsvarianz von $\Delta c / c \approx 0{,}9\,\%$,
+was fÃ¼r Eigenfrequenzen im kHz-Bereich Verschiebungen von mehreren Hz
 bewirkt.
 
-Für die harmonische Symmetrietheorie folgt daraus: bei inhomogener
+FÃ¼r die harmonische Symmetrietheorie folgt daraus: bei inhomogener
 Temperaturverteilung bricht die exakte Raumsymmetrie der Greenschen
 Funktion, und die harmonischen Eigenfrequenzreihen erfahren eine
 differentielle Verstimmung. Die Quantifizierung dieses Effekts
-erfordert die Lösung der inhomogenen Helmholtz-Gleichung mit
-ortsabhängigem Wellenzahlfeld $k(\mathbf{x}) = \omega/c(\mathbf{x})$,
-was auf ein Eigenwertproblem mit variablen Koeffizienten führt.
-Störungstheoretische Behandlungen liefern erste Korrekturen, während
-für starke Temperaturgradienten (Klimaanlagen nahe der Wände)
+erfordert die LÃ¶sung der inhomogenen Helmholtz-Gleichung mit
+ortsabhÃ¤ngigem Wellenzahlfeld $k(\mathbf{x}) = \omega/c(\mathbf{x})$,
+was auf ein Eigenwertproblem mit variablen Koeffizienten fÃ¼hrt.
+StÃ¶rungstheoretische Behandlungen liefern erste Korrekturen, wÃ¤hrend
+fÃ¼r starke Temperaturgradienten (Klimaanlagen nahe der WÃ¤nde)
 volle numerische Simulationen (FDTD, FEM) erforderlich sind.
 
-Ein offenes Forschungsproblem ist die Frage, ob und in welchem Maße
-die subjektiv wahrgenommene Klangqualität in Hörsälen mit den
+Ein offenes Forschungsproblem ist die Frage, ob und in welchem MaÃŸe
+die subjektiv wahrgenommene KlangqualitÃ¤t in HÃ¶rsÃ¤len mit den
 Temperaturgradienten korreliert --- ein Effekt, der bisher kaum
 systematisch untersucht wurde.
 
-\subsection{Psychoakustische Modellierung und Sprachverständlichkeit}
+\subsection{Psychoakustische Modellierung und SprachverstÃ¤ndlichkeit}
 
-Die in dieser Arbeit verwendeten Gütekriterien (C50, D50, STI-Näherung)
-sind messtechnische Surrogate für die tatsächlich relevante Zielgröße:
-die \emph{Sprachverständlichkeit}, also die Fähigkeit eines Zuhörers,
-gesprochene Sprache korrekt zu dekodieren. Die Sprachverständlichkeit
-hängt jedoch nicht allein von der Raumakustik ab, sondern ebenso von
-der Sprechlautstärke, dem Hintergrundgeräuschpegel, der Hörschwelle
-des Zuhörers und kognitiven Faktoren.
+Die in dieser Arbeit verwendeten GÃ¼tekriterien (C50, D50, STI-NÃ¤herung)
+sind messtechnische Surrogate fÃ¼r die tatsÃ¤chlich relevante ZielgrÃ¶ÃŸe:
+die \emph{SprachverstÃ¤ndlichkeit}, also die FÃ¤higkeit eines ZuhÃ¶rers,
+gesprochene Sprache korrekt zu dekodieren. Die SprachverstÃ¤ndlichkeit
+hÃ¤ngt jedoch nicht allein von der Raumakustik ab, sondern ebenso von
+der SprechlautstÃ¤rke, dem HintergrundgerÃ¤uschpegel, der HÃ¶rschwelle
+des ZuhÃ¶rers und kognitiven Faktoren.
 
-Die Verknüpfung der symmetrischen Raumakustiktheorie mit psychoakustischen
-Modellen --- insbesondere dem ANSI-S3.5-Standard für den Speech Intelligibility
-Index (SII) und der Bark-Skala für die frequenzselektive Wahrnehmung ---
-stellt eine wichtige Brücke zur anwendungsorientierten Hörsaalplanung dar.
+Die VerknÃ¼pfung der symmetrischen Raumakustiktheorie mit psychoakustischen
+Modellen --- insbesondere dem ANSI-S3.5-Standard fÃ¼r den Speech Intelligibility
+Index (SII) und der Bark-Skala fÃ¼r die frequenzselektive Wahrnehmung ---
+stellt eine wichtige BrÃ¼cke zur anwendungsorientierten HÃ¶rsaalplanung dar.
 Eine formale Erweiterung von Theorem~\ref{thm:c50_sym} auf den
-SII-Wert würde zeigen, dass auch die subjektiv wahrgenommene Sprachverständlichkeit
-für symmetrisch angeordnete Zuhörer identisch ist, sofern die Raumsymmetrie
-gewahrt bleibt. Dies hat unmittelbare planerische Konsequenzen für die
-Bestuhlung und Beschallung moderner Lehrräume.
+SII-Wert wÃ¼rde zeigen, dass auch die subjektiv wahrgenommene SprachverstÃ¤ndlichkeit
+fÃ¼r symmetrisch angeordnete ZuhÃ¶rer identisch ist, sofern die Raumsymmetrie
+gewahrt bleibt. Dies hat unmittelbare planerische Konsequenzen fÃ¼r die
+Bestuhlung und Beschallung moderner LehrrÃ¤ume.
 
-\subsection{Statistische Raumakustik und Energiedichte-Homogenität}
+\subsection{Statistische Raumakustik und Energiedichte-HomogenitÃ¤t}
 
 Jenseits der modalen Raumakustik (bei tiefen Frequenzen) beschreibt die
 statistische Raumakustik das diffuse Schallfeld bei hohen Frequenzen durch
-die Energiedichte $w(\mathbf{x},t)$ und die Schallintensität $\mathbf{I}$.
-In einem vollständig symmetrischen, diffusen Schallfeld ergibt sich eine
+die Energiedichte $w(\mathbf{x},t)$ und die SchallintensitÃ¤t $\mathbf{I}$.
+In einem vollstÃ¤ndig symmetrischen, diffusen Schallfeld ergibt sich eine
 homogene Energiedichte $w(\mathbf{x}) = \mathrm{const.}$
 
 Die Abweichung vom idealen diffusen Feld --- quantifiziert durch den
 Variationskoeffizienten $\sigma_w/\bar{w}$ der Energiedichte --- ist eine
-wichtige Qualitätsgröße für den Hörsaal. Eine Forschungsfrage von
+wichtige QualitÃ¤tsgrÃ¶ÃŸe fÃ¼r den HÃ¶rsaal. Eine Forschungsfrage von
 praktischer Relevanz lautet: Wie viel Asymmetrie in der Geometrie
-(Schrägwände, ungleichmäßige Absorberverteilung) ist tolerierbar,
+(SchrÃ¤gwÃ¤nde, ungleichmÃ¤ÃŸige Absorberverteilung) ist tolerierbar,
 ohne dass die relative Standardabweichung der Energiedichte einen
-Schwellenwert von typischerweise 3\,dB überschreitet?
+Schwellenwert von typischerweise 3\,dB Ã¼berschreitet?
 
 Verallgemeinert betrachtet handelt es sich um eine Frage der
-Strukturellen Stabilität des diffusen Schallfeldes unter geometrischen
+Strukturellen StabilitÃ¤t des diffusen Schallfeldes unter geometrischen
 Perturbationen, die mit Methoden der Stochastischen Differentialgleichungen
-(Langevin-Gleichung für das Energiedichtefeld) behandelt werden kann.
+(Langevin-Gleichung fÃ¼r das Energiedichtefeld) behandelt werden kann.
 
 \subsection{Finite-Differenzen-Zeitbereich-Simulationen (FDTD)}
 
 Die in dieser Arbeit verwendeten analytischen und halbanalytischen
-Methoden (Modalkentwicklung, Spiegelquellen) stoßen bei großen
+Methoden (Modalkentwicklung, Spiegelquellen) stoÃŸen bei groÃŸen
 Frequenzen und komplexen Absorbergeometrien an ihre Grenzen.
 Das Finite-Differenzen-Zeitbereichsverfahren (FDTD, auch als
 Yee-Algorithmus bekannt) diskretisiert die Wellengleichung~\eqref{eq:wellengl}
 direkt auf einem kartesischen Gitter und simuliert die zeitliche Ausbreitung
-des Schallfeldes ohne Näherungen bezüglich der Geometrie oder Frequenz.
+des Schallfeldes ohne NÃ¤herungen bezÃ¼glich der Geometrie oder Frequenz.
 
-Eine vollständige FDTD-Simulation des Referenz-Hörsaals mit einer räumlichen
-Auflösung von $\Delta x = 0{,}05\,\mathrm{m}$ und einem Frequenzband bis
-4\,kHz würde ein Gitter von $400 \times 240 \times 100 = 9{,}6 \times 10^6$
+Eine vollstÃ¤ndige FDTD-Simulation des Referenz-HÃ¶rsaals mit einer rÃ¤umlichen
+AuflÃ¶sung von $\Delta x = 0{,}05\,\mathrm{m}$ und einem Frequenzband bis
+4\,kHz wÃ¼rde ein Gitter von $400 \times 240 \times 100 = 9{,}6 \times 10^6$
 Gitterpunkten erfordern, was mit modernen GPUs (z.\,B. NVIDIA A100)
 in wenigen Minuten simulierbar ist.
 
-Die Ergebnisse solcher Simulationen könnten unmittelbar mit den
+Die Ergebnisse solcher Simulationen kÃ¶nnten unmittelbar mit den
 analytischen Vorhersagen dieser Arbeit --- insbesondere der harmonischen
 Eigenfrequenzstruktur und der symmetrischen Greenschen Funktion ---
 verglichen und bei Abweichungen zur Verfeinerung des analytischen
 Modells genutzt werden.
 
-\subsection{Maschinelles Lernen und KI-gestützte Raumoptimierung}
+\subsection{Maschinelles Lernen und KI-gestÃ¼tzte Raumoptimierung}
 
-Die jüngsten Fortschritte in der Entwicklung großer KI-Modelle eröffnen
-neue Möglichkeiten für die automatisierte Optimierung raumakustischer
-Eigenschaften. Dabei lassen sich zwei Ansätze unterscheiden:
+Die jÃ¼ngsten Fortschritte in der Entwicklung groÃŸer KI-Modelle erÃ¶ffnen
+neue MÃ¶glichkeiten fÃ¼r die automatisierte Optimierung raumakustischer
+Eigenschaften. Dabei lassen sich zwei AnsÃ¤tze unterscheiden:
 
 \textbf{Surrogat-Modelle}: Durch Training eines neuronalen Netzes auf
-einem großen Datensatz von FDTD-Simulationen verschiedener Raumgeometrien
+einem groÃŸen Datensatz von FDTD-Simulationen verschiedener Raumgeometrien
 und Absorberanordnungen kann ein schnelles Surrogat-Modell erzeugt werden,
 das den Zeit-Frequenz-Frequenzgang eines Raumes aus seinen geometrischen
-Parametern in Echtzeit vorhersagt. Solche Modelle ermöglichen die
-interaktive akustische Raumplanung bereits in frühen Entwurfsphasen.
+Parametern in Echtzeit vorhersagt. Solche Modelle ermÃ¶glichen die
+interaktive akustische Raumplanung bereits in frÃ¼hen Entwurfsphasen.
 
 \textbf{Inverse Optimierung}: Gegeben eine Ziel-Schalldruckverteilung
-(z.\,B. möglichst gleichmäßige Energiedichte mit $T_{60} = 0{,}8\,\mathrm{s}$
-und C50 $\geq 0$\,dB überall) kann ein Optimierungsalgorithmus
+(z.\,B. mÃ¶glichst gleichmÃ¤ÃŸige Energiedichte mit $T_{60} = 0{,}8\,\mathrm{s}$
+und C50 $\geq 0$\,dB Ã¼berall) kann ein Optimierungsalgorithmus
 die optimale Geometrie, Absorberplatzierung und Lautsprecherpositionierung
 bestimmen. Unter Ausnutzung der Symmetrietheorie dieser Arbeit kann der
-Suchraum auf symmetrieerhaltendsle Konfigurationen eingeschränkt werden,
-was die Optimierungskomplexität drastisch reduziert.
+Suchraum auf symmetrieerhaltendsle Konfigurationen eingeschrÃ¤nkt werden,
+was die OptimierungskomplexitÃ¤t drastisch reduziert.
 
 Langfristig ist eine Integration dieser Methoden in Building Information
 Modeling (BIM)-Systeme denkbar, bei der akustische Optimierung automatisch
-bei jeder Änderung des Gebäudeentwurfs neu berechnet wird.
+bei jeder Ã„nderung des GebÃ¤udeentwurfs neu berechnet wird.
 
 \subsection{Quantenakustische Analogien und Wellenstatistik}
 
 Auf einem mehr spekulativen Niveau ist die formale Analogie zwischen
-der Schallwellenausbreitung in Räumen und der Quantenmechanik in
-Potentialräumen (Teilchen im Kasten) faszinierend und theoretisch
+der Schallwellenausbreitung in RÃ¤umen und der Quantenmechanik in
+PotentialrÃ¤umen (Teilchen im Kasten) faszinierend und theoretisch
 fruchtbar. Die Helmholtz-Gleichung~\eqref{eq:helmholtz} ist formal
-identisch mit der stationären Schrödinger-Gleichung:
+identisch mit der stationÃ¤ren SchrÃ¶dinger-Gleichung:
 \[
   (\Delta + k^2)\hat{p} = 0 \;\longleftrightarrow\;
   \left(-\frac{\hbar^2}{2m}\Delta + V\right)\psi = E\psi.
@@ -1158,75 +1158,75 @@ identisch mit der stationären Schrödinger-Gleichung:
 Die raumakustische Greensche Funktion entspricht dem Quantenpropagator;
 die Modendichte entspricht der quantenmechanischen Zustandsdichte.
 Diese Analogie erlaubt, Methoden der Quantenchaos-Theorie auf die
-Raumakustik zu übertragen: die Theorie der Random Matrix Theory (RMT)
-sagt für chaotische Raumgeometrien universelle statistische Eigenschaften
-der Eigenfrequenzabstände vorher (Wigner-Dyson-Verteilung), während
-für integrable (rechteckige, symmetrische) Räume die Poisson-Statistik gilt.
+Raumakustik zu Ã¼bertragen: die Theorie der Random Matrix Theory (RMT)
+sagt fÃ¼r chaotische Raumgeometrien universelle statistische Eigenschaften
+der EigenfrequenzabstÃ¤nde vorher (Wigner-Dyson-Verteilung), wÃ¤hrend
+fÃ¼r integrable (rechteckige, symmetrische) RÃ¤ume die Poisson-Statistik gilt.
 
-Für universitäre Hörsäle ist diese theoretische Fragestellung nicht nur
+FÃ¼r universitÃ¤re HÃ¶rsÃ¤le ist diese theoretische Fragestellung nicht nur
 akademisch: ein Raum mit Poisson-statistischem Eigenfrequenzspektrum
-weist häufiger Eigenfrequenzcluster auf (mehrere Moden bei nahezu
-gleichen Frequenzen), was zu ausgeprägten Färbungen des Klangbildes
-führt. Die Kenntnis der statistischen Eigenschaft des Spektrums ermöglicht
-es, durch gezielte geometrische Modifikationen (z.\,B. leichte Anschrägung
-einer Wand) auf eine Wigner-Dyson-artige Verteilung überzugehen und
+weist hÃ¤ufiger Eigenfrequenzcluster auf (mehrere Moden bei nahezu
+gleichen Frequenzen), was zu ausgeprÃ¤gten FÃ¤rbungen des Klangbildes
+fÃ¼hrt. Die Kenntnis der statistischen Eigenschaft des Spektrums ermÃ¶glicht
+es, durch gezielte geometrische Modifikationen (z.\,B. leichte AnschrÃ¤gung
+einer Wand) auf eine Wigner-Dyson-artige Verteilung Ã¼berzugehen und
 damit Frequenzcluster zu vermeiden.
 
 \subsection{Mehrskalige Modellierung: Von der Mikrophysik zur Makroakustik}
 
 Die in dieser Arbeit verwendete lineare Akustik setzt voraus, dass
-die Schalldruckamplituden klein gegenüber dem Umgebungsdruck sind
-($p' \ll p_0$). Bei sehr hohen Lautstärkepegeln (laute Konzerte,
+die Schalldruckamplituden klein gegenÃ¼ber dem Umgebungsdruck sind
+($p' \ll p_0$). Bei sehr hohen LautstÃ¤rkepegeln (laute Konzerte,
 industrielle Umgebungen) treten nichtlineare Effekte auf: Wellenform-
 verzerrungen, Schockwellenbildung und Selbstdemodulation von
-Ultraschallwellen. Die Berücksichtigung dieser Effekte erfordert die
-Einbeziehung der Burgers-Gleichung oder der vollständigen Navier-Stokes-
+Ultraschallwellen. Die BerÃ¼cksichtigung dieser Effekte erfordert die
+Einbeziehung der Burgers-Gleichung oder der vollstÃ¤ndigen Navier-Stokes-
 Gleichungen.
 
 Auf der anderen Seite der Skala liegen molekulare Relaxationseffekte:
 bei sehr hohen Frequenzen ($f > 10\,\mathrm{kHz}$ in Luft) koppeln
-Schallwellen an die internen Freiheitsgrade der Gasmoleküle
-(Rotations- und Schwingungsanregung), was zu einer frequenzabhängigen
-Dämpfung führt, die über den klassischen Viskositätsterm hinausgeht.
+Schallwellen an die internen Freiheitsgrade der GasmolekÃ¼le
+(Rotations- und Schwingungsanregung), was zu einer frequenzabhÃ¤ngigen
+DÃ¤mpfung fÃ¼hrt, die Ã¼ber den klassischen ViskositÃ¤tsterm hinausgeht.
 Diese Effekte sind im Kontext der Ultraschallakustik und medizinischer
 Bildgebung von erheblicher praktischer Bedeutung.
 
 \subsection{Internationale Normen und Planungsstandards}
 
-Das theoretische Fundament dieser Arbeit legt die Grundlage für eine
-rigorose Ableitung und Begründung internationaler raumakustischer
-Planungsstandards. Die DIN 18041 (Hörsamkeit in Räumen) und
+Das theoretische Fundament dieser Arbeit legt die Grundlage fÃ¼r eine
+rigorose Ableitung und BegrÃ¼ndung internationaler raumakustischer
+Planungsstandards. Die DIN 18041 (HÃ¶rsamkeit in RÃ¤umen) und
 die ISO 3382 (Messung raumakustischer Parameter) definieren
-Mindestanforderungen an Nachhallzeiten, Klarheitsmaße und
-Schallpegelverteilungen für verschiedene Raumtypen.
+Mindestanforderungen an Nachhallzeiten, KlarheitsmaÃŸe und
+Schallpegelverteilungen fÃ¼r verschiedene Raumtypen.
 
 Eine auf den Ergebnissen dieser Arbeit aufbauende Forschungsrichtung
-wäre die formale Ableitung optimaler Bauvorschriften für
-Hörsäle aus ersten Prinzipien --- unter Verwendung der
+wÃ¤re die formale Ableitung optimaler Bauvorschriften fÃ¼r
+HÃ¶rsÃ¤le aus ersten Prinzipien --- unter Verwendung der
 Symmetrietheorie, der Weylschen Modendichte und der
-psychoakustischen Sprachverständlichkeitsmodelle. Dies entspräche
+psychoakustischen SprachverstÃ¤ndlichkeitsmodelle. Dies entsprÃ¤che
 einer Mathematisierung der Raumakustik-Planung, die von der
 Ebene der empirischen Erfahrungsregeln auf die Ebene mathematisch
-bewiesener Optimaliätsbedingungen angehoben würde.
+bewiesener OptimaliÃ¤tsbedingungen angehoben wÃ¼rde.
 
 \subsection{Bioinspirierte Akustik und Bionik}
 
-Ein ungewöhnlicher, aber wissenschaftlich reizvoller Forschungsansatz
+Ein ungewÃ¶hnlicher, aber wissenschaftlich reizvoller Forschungsansatz
 betrifft die Bioinspiration in der Raumakustik. Viele biologische
 Organismen haben im Laufe der Evolution hocheffiziente schalloptimierte
-Strukturen entwickelt: das Außenohr (Pinna) des Säugetiers sorgt durch
-seine asymmetrische Form für eine frequenzabhängige Richtwirkung;
+Strukturen entwickelt: das AuÃŸenohr (Pinna) des SÃ¤ugetiers sorgt durch
+seine asymmetrische Form fÃ¼r eine frequenzabhÃ¤ngige Richtwirkung;
 das Mittelohr ist ein hochoptimiertes mechanisches Impedanzanpassungsnetzwerk;
-das Innenohr (Cochlea) führt eine biologische Fourier-Analyse des Schalls durch.
+das Innenohr (Cochlea) fÃ¼hrt eine biologische Fourier-Analyse des Schalls durch.
 
-Für die Raumakustik von Hörsälen könnte die Bionik in Form von
+FÃ¼r die Raumakustik von HÃ¶rsÃ¤len kÃ¶nnte die Bionik in Form von
 biomorphen Deckenformen, die optimal reflektierende Schallverteiler
 darstellen, oder in Form von Absorberstrukturen, die die
 Mikroarchitektur biologischer Schaumstrukturen (Pilze, Korallen)
 imitieren und dadurch optimale breitbandige Absorption bei geringer
-Materialstärke erzielen. Die Integration von Bionik, Topologieoptimierung
+MaterialstÃ¤rke erzielen. Die Integration von Bionik, Topologieoptimierung
 und raumakustischer Theorie zu einer neuen Disziplin der
-\emph{bioinspirierten Raumakustik} stellt ein langfristiges, interdisziplinäres
+\emph{bioinspirierten Raumakustik} stellt ein langfristiges, interdisziplinÃ¤res
 Forschungsprogramm von erheblichem ingenieurtechnischem und
 wissenschaftlichem Potential dar.
 
@@ -1234,18 +1234,18 @@ wissenschaftlichem Potential dar.
 
 Die vorangegangenen Abschnitte haben gezeigt, dass die in dieser Arbeit
 entwickelte Theorie der harmonischen Ausbreitung akustischer Signale
-in symmetrischen Hörräumen weit über die unmittelbaren Resultate hinaus
+in symmetrischen HÃ¶rrÃ¤umen weit Ã¼ber die unmittelbaren Resultate hinaus
 weist. Die wichtigsten Forschungsrichtungen lassen sich drei Ebenen zuordnen:
 
 \begin{enumerate}
 \item \textbf{Theoretische Vertiefungen}: Erweiterung auf allgemeine
   Geometrien und nicht-schallharte Randbedingungen; Verbindung zur
-  Random Matrix Theory; störungstheoretische Behandlung von
+  Random Matrix Theory; stÃ¶rungstheoretische Behandlung von
   Symmetriebrechungen durch Temperaturgradienten.
 
-\item \textbf{Numerisch-methodische Entwicklungen}: Hochauflösende
-  FDTD-Simulationen; maschinelles Lernen für Surrogat-Modelle;
-  KI-gestützte inverse Optimierung.
+\item \textbf{Numerisch-methodische Entwicklungen}: HochauflÃ¶sende
+  FDTD-Simulationen; maschinelles Lernen fÃ¼r Surrogat-Modelle;
+  KI-gestÃ¼tzte inverse Optimierung.
 
 \item \textbf{Angewandt-technische Umsetzungen}: Adaptive aktive
   Raumakustiksysteme; Bionik-inspirierte Absorber; Integration
@@ -1255,8 +1255,8 @@ weist. Die wichtigsten Forschungsrichtungen lassen sich drei Ebenen zuordnen:
 
 Die Verbindung dieser Ebenen in einem integrierten Forschungsprogramm
 ---verankert in der mathematisch-physikalischen Theorie dieser Arbeit,
-ausgeführt mit modernen numerischen Methoden und validiert an realen
-Hörsälen --- bietet eine inspirierende Perspektive für die Akustikforschung
+ausgefÃ¼hrt mit modernen numerischen Methoden und validiert an realen
+HÃ¶rsÃ¤len --- bietet eine inspirierende Perspektive fÃ¼r die Akustikforschung
 der kommenden Jahre und Jahrzehnte.
 
 % ============================================================
@@ -1314,9 +1314,9 @@ der kommenden Jahre und Jahrzehnte.
 
 \bibitem{din18041}
   DIN 18041:2016-03:
-  \textit{Hörsamkeit in Räumen --- Anforderungen, Empfehlungen und Hinweise
-  für die Planung}.
-  Deutsches Institut für Normung, 2016.
+  \textit{HÃ¶rsamkeit in RÃ¤umen --- Anforderungen, Empfehlungen und Hinweise
+  fÃ¼r die Planung}.
+  Deutsches Institut fÃ¼r Normung, 2016.
 
 \bibitem{schroeder65}
   M. R. Schroeder:
@@ -1348,3 +1348,4 @@ der kommenden Jahre und Jahrzehnte.
 \end{thebibliography}
 
 \end{document}
+

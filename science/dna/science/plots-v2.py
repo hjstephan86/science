@@ -1,4 +1,4 @@
-"""
+﻿"""
 Neue Plots fuer das erweiterte Kapitel:
   - Metagenomik (Abb. 11-15)
   - Erweiterter Ausblick (Abb. 16)
@@ -136,8 +136,8 @@ def plot_11_meta_ueberblick():
     fig.suptitle('Abbildung 11: Metagenomische Probe – Reads aus mehreren Organismen',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig11_meta_ueberblick.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig11_meta_ueberblick.png')
+    fig.savefig('figures/fig11_meta_ueberblick.pdf')
+    fig.savefig('figures/fig11_meta_ueberblick.png')
     plt.close(fig)
     print("Plot 11 gespeichert.")
 
@@ -186,8 +186,8 @@ def plot_12_meta_graph():
     fig.suptitle('Abbildung 12: Adjazenzmatrizen dreier metagenomischer Reads',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig12_meta_graph.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig12_meta_graph.png')
+    fig.savefig('figures/fig12_meta_graph.pdf')
+    fig.savefig('figures/fig12_meta_graph.png')
     plt.close(fig)
     print("Plot 12 gespeichert.")
 
@@ -325,8 +325,8 @@ def plot_13_dedup():
     fig.suptitle('Abbildung 13: Subgraph-basierte Read-Deduplizierung im Metagenom',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig13_dedup.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig13_dedup.png')
+    fig.savefig('figures/fig13_dedup.pdf')
+    fig.savefig('figures/fig13_dedup.png')
     plt.close(fig)
     print("Plot 13 gespeichert.")
 
@@ -403,8 +403,8 @@ def plot_14_meta_komplex():
     fig.suptitle('Abbildung 14: Komplexitätsanalyse der metagenomischen Assemblierung',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig14_meta_komplex.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig14_meta_komplex.png')
+    fig.savefig('figures/fig14_meta_komplex.pdf')
+    fig.savefig('figures/fig14_meta_komplex.png')
     plt.close(fig)
     print("Plot 14 gespeichert.")
 
@@ -518,8 +518,8 @@ def plot_15_taxonomie():
     fig.suptitle('Abbildung 15: Taxonomische Klassifikation via Subgraph-LCS-Ähnlichkeiten',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig15_taxonomie.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig15_taxonomie.png')
+    fig.savefig('figures/fig15_taxonomie.pdf')
+    fig.savefig('figures/fig15_taxonomie.png')
     plt.close(fig)
     print("Plot 15 gespeichert.")
 
@@ -578,8 +578,8 @@ def plot_16_roadmap():
             ha='center', va='center', fontsize=12, fontweight='bold', color=DARKGRAY)
 
     fig.tight_layout()
-    fig.savefig('/home/claude/dna_paper/figures/fig16_roadmap.pdf')
-    fig.savefig('/home/claude/dna_paper/figures/fig16_roadmap.png')
+    fig.savefig('figures/fig16_roadmap.pdf')
+    fig.savefig('figures/fig16_roadmap.png')
     plt.close(fig)
     print("Plot 16 gespeichert.")
 
@@ -593,3 +593,4 @@ if __name__ == '__main__':
     plot_15_taxonomie()
     plot_16_roadmap()
     print("Alle neuen Plots gespeichert.")
+

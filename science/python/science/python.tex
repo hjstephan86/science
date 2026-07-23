@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -54,16 +54,16 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}1
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
-	{→}{{$\rightarrow$}}1
-	{≥}{{$\geq$}}1
-	{≤}{{$\leq$}}1
+	{Ã–}{{\"O}}1
+	{Ã„}{{\"A}}1
+	{Ãœ}{{\"U}}1
+	{ÃŸ}{{\ss}}1
+	{Ã¼}{{\"u}}1
+	{Ã¤}{{\"a}}1
+	{Ã¶}{{\"o}}1
+	{â†’}{{$\rightarrow$}}1
+	{â‰¥}{{$\geq$}}1
+	{â‰¤}{{$\leq$}}1
 }
 
 \title{\textbf{py2: Eine Syntaxerweiterung f\"ur Python}\\
@@ -136,7 +136,7 @@ Die Motivation f\"ur \texttt{py2} ist prim\"ar \emph{psychologischer} Natur. Wen
 Mathematiker oder Ingenieur einen Algorithmus aus einem Lehrbuch implementiert, muss
 er nicht nur den Algorithmus verstehen, sondern gleichzeitig eine Notations\"ubersetzung
 durchf\"uhren. Diese Doppelbelastung erh\"oht die Fehlerrate, verlangsamt die Implementierung
-und erschwert die spätere Verifikation am Original-Pseudocode. Der \texttt{py2}-Pr\"aprozessor
+und erschwert die spÃ¤tere Verifikation am Original-Pseudocode. Der \texttt{py2}-Pr\"aprozessor
 beseitigt diesen zus\"atzlichen kognitiven Aufwand vollst\"andig.
 
 % =============================================================
@@ -217,7 +217,7 @@ Der Pr\"aprozessor wandelt vier syntaktische Muster um:
 \texttt{a(i,j) = expr} & \texttt{a.\_\_setcall\_\_(i,j,expr)} & Schreibzugriff \\
 \texttt{a(i,j) OP= expr} & \texttt{a.\_\_setcall\_\_(i,j,a(i,j) OP expr)} & Verbundzuweisung \\
 \texttt{a(i,j)} (lesen) & \texttt{a.\_\_getcall\_\_(i,j)} & Lesezugriff \\
-\texttt{(a,b,c)} & \texttt{[a,b,c]} & Tupel → Liste \\
+\texttt{(a,b,c)} & \texttt{[a,b,c]} & Tupel â†’ Liste \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -394,7 +394,7 @@ Das Projekt besteht aus f\"unf Dateien:
 \textbf{Datei} & \textbf{Beschreibung} \\
 \midrule
 \texttt{array2d\_core.py} & \texttt{Array2D}- und \texttt{Array1D}-Klassen \\
-\texttt{py2\_preprocessor.py} & Pr\"aprozessor: wandelt \texttt{.py2} → Python~3 \\
+\texttt{py2\_preprocessor.py} & Pr\"aprozessor: wandelt \texttt{.py2} â†’ Python~3 \\
 \texttt{crout.py2} & Beispiel: Crout-LU-Zerlegung (Quelltext) \\
 \texttt{crout.py} & Manuell generiertes Python (ohne \texttt{Array1D}) \\
 \texttt{crout\_generated.py} & Automatisch generiertes Python (vollst\"andig) \\
@@ -587,7 +587,7 @@ python3 py2_preprocessor.py skript.py2 --out skript.py
 
 Die Crout-LU-Zerlegung faktorisiert eine Matrix $A$ in ein Produkt $A = LU$, wobei
 $L$ eine untere und $U$ eine obere Dreiecksmatrix ist. F\"ur ein tridiagonales System
-der Dimension $n$ lautet die Speicherung in \emph{Bandform} für $A_{\text{band}} \in \mathbb{R}^{n \times 3}$:
+der Dimension $n$ lautet die Speicherung in \emph{Bandform} fÃ¼r $A_{\text{band}} \in \mathbb{R}^{n \times 3}$:
 
 \[
 	\text{wobei } a_{j,0} = \text{untere Nebendiagonale},\;
@@ -718,7 +718,7 @@ def lu_decomposition(a, n):
 	schreibe Ergebnis zur\"uck. Semantik ist identisch.
 
 	\textbf{Tupel-Konversion:} \texttt{(a, b)} $\to$ \texttt{[a, b]}.
-	Da in \texttt{py2} keine Tupel-Semantik genutzt wird (unveränderlichkeit nicht
+	Da in \texttt{py2} keine Tupel-Semantik genutzt wird (unverÃ¤nderlichkeit nicht
 	gefordert), ist die Konversion zu ver\"anderbaren Listen ohne Informationsverlust.
 \end{proof}
 
@@ -834,7 +834,7 @@ Begr\"undung ist mehrschichtig:
 
 Die Entscheidung, alle Tupel-Literale automatisch in Listen umzuwandeln, ist kognitiv
 begr\"undet: In numerischen Algorithmen werden Sequenzen fast ausnahmslos als
-ver\"anderbare Vektoren ben\"otigt. Die Unveränderlichkeit von Tupeln ist ein
+ver\"anderbare Vektoren ben\"otigt. Die UnverÃ¤nderlichkeit von Tupeln ist ein
 Python-spezifisches Konzept ohne Entsprechung in der mathematischen Notation.
 Indem \texttt{py2} Tupel eliminiert, wird eine Quelle f\"ur kognitive Dissonanz
 beseitigt: Der Programmierer muss nicht \"uberlegen, wann er Tupel und wann er
@@ -847,7 +847,7 @@ Eine alternative Implementierung h\"atte Pythons \texttt{\_\_setitem\_\_} und
 (NumPy-Stil). Warum hat das Projekt sich f\"ur den Pr\"aprozessor entschieden?
 
 \begin{itemize}
-	\item \textbf{Syntaktische Treue:} \texttt{a(i,j)} ist näher an $a(i,j)$ in
+	\item \textbf{Syntaktische Treue:} \texttt{a(i,j)} ist nÃ¤her an $a(i,j)$ in
 	      mathematischen Texten als \texttt{a[i,j]}.
 	\item \textbf{Zuk\"unftige Erweiterbarkeit:} Ein Pr\"aprozessor kann beliebig
 	      weitere Syntaxmuster unterst\"utzen, die in Python nicht durch
@@ -1053,3 +1053,4 @@ E.~W. Dijkstra.
 \end{thebibliography}
 
 \end{document}
+

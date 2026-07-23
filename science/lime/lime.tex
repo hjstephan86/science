@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 %\usepackage[english]{babel}
 \usepackage{amsmath}
@@ -34,7 +34,7 @@
 \renewcommand{\abstractname}{Zusammenfassung}
 \renewcommand{\appendixname}{Anhang}
 \renewcommand{\proofname}{Beweis}
-% Verhindere Zeilenüberlauf
+% Verhindere ZeilenÃ¼berlauf
 \sloppy
 \emergencystretch=2em
 
@@ -73,13 +73,13 @@
   breaklines=true,
   frame=single,
   literate=%
-    {Ö}{{\"O}}1
-    {Ä}{{\"A}}1
-    {Ü}{{\"U}}1
-    {ß}{{\ss}}1
-    {ü}{{\"u}}1
-    {ä}{{\"a}}1
-    {ö}{{\"o}}1
+    {Ã–}{{\"O}}1
+    {Ã„}{{\"A}}1
+    {Ãœ}{{\"U}}1
+    {ÃŸ}{{\ss}}1
+    {Ã¼}{{\"u}}1
+    {Ã¤}{{\"a}}1
+    {Ã¶}{{\"o}}1
 }
 
 \title{\textbf{Der Subgraph Algorithmus als strukturelle Erweiterung\\
@@ -95,19 +95,19 @@ auf Graphen}}
 \newpage
 
 % ===========================================================
-\section{Einführung}
+\section{EinfÃ¼hrung}
 % ===========================================================
 
-Die Erklärbarkeit maschineller Lernmodelle (\emph{Explainable AI}, XAI) hat sich in den
+Die ErklÃ¤rbarkeit maschineller Lernmodelle (\emph{Explainable AI}, XAI) hat sich in den
 letzten Jahren zu einem zentralen Forschungsgebiet entwickelt.
 Hochkomplexe Black-Box-Modelle wie Gradient-Boosted Trees oder tiefe neuronale Netze
 erzielen zwar herausragende Vorhersageleistungen, liefern jedoch keine unmittelbar
-interpretierbaren Begründungen für ihre Ausgaben.
-Dies ist insbesondere in sicherheitskritischen Domänen wie Medizin, Recht oder autonomen
+interpretierbaren BegrÃ¼ndungen fÃ¼r ihre Ausgaben.
+Dies ist insbesondere in sicherheitskritischen DomÃ¤nen wie Medizin, Recht oder autonomen
 Systemen problematisch.
 
 \emph{LIME} (Local Interpretable Model-Agnostic Explanations) \citep{Ribeiro2016} begegnet
-diesem Problem durch einen eleganten lokalen Ansatz: Für jede zu erklärende Instanz~$\mathbf{x}$
+diesem Problem durch einen eleganten lokalen Ansatz: FÃ¼r jede zu erklÃ¤rende Instanz~$\mathbf{x}$
 wird ein einfaches, interpretierbares Surrogatmodell~$g$ in der Nachbarschaft von~$\mathbf{x}$
 trainiert, das die Vorhersagen des komplexen Modells~$\hat{f}$ lokal approximiert.
 LIME ist modell-agnostisch, d.\,h.\ es kann auf beliebige Modelle~$\hat{f}$ angewendet werden.
@@ -115,7 +115,7 @@ LIME ist modell-agnostisch, d.\,h.\ es kann auf beliebige Modelle~$\hat{f}$ ange
 Parallel dazu wurde mit dem \emph{Subgraph Algorithmus} \citep{Epp2026} ein effizienter
 Algorithmus zur strukturellen Graphanalyse entwickelt.
 Der Algorithmus bestimmt durch zyklische Rotation und Signatur-basierte Kodierung, ob ein
-Graph als Subgraph in einem anderen enthalten ist, und erreicht dabei eine Zeitkomplexität
+Graph als Subgraph in einem anderen enthalten ist, und erreicht dabei eine ZeitkomplexitÃ¤t
 von $O(n^3)$, die unter der \emph{Strong Exponential Time Hypothesis} (SETH) optimal ist.
 
 Die vorliegende Arbeit untersucht, wie der Subgraph Algorithmus LIME in drei zentralen
@@ -123,8 +123,8 @@ Dimensionen erweitern und verbessern kann:
 \begin{enumerate}
   \item \textbf{Graphbasierte Perturbation:} Erzeugung strukturell sinnvoller
         Nachbarinstanzen durch zyklische Rotationen.
-  \item \textbf{Strukturbasiertes Proximity-Maß:} Ersetzen des euklidischen
-        L2-Kerns durch ein LCS-basiertes Ähnlichkeitsmaß.
+  \item \textbf{Strukturbasiertes Proximity-MaÃŸ:} Ersetzen des euklidischen
+        L2-Kerns durch ein LCS-basiertes Ã„hnlichkeitsmaÃŸ.
   \item \textbf{Subgraph-Inklusion als Feature-Selektion:} Ersatz der
         LASSO-Regularisierung durch strukturelle Teilmengenbeziehungen.
 \end{enumerate}
@@ -138,10 +138,10 @@ Alle Ergebnisse werden formal bewiesen und durch experimentelle Abbildungen illu
 \subsection{Motivation und Grundidee}
 
 Gegeben sei ein Black-Box-Modell $\hat{f}: \mathbb{R}^p \to \mathbb{R}$,
-das für eine Eingabe $\mathbf{x} \in \mathbb{R}^p$ eine Vorhersage $\hat{f}(\mathbf{x})$
+das fÃ¼r eine Eingabe $\mathbf{x} \in \mathbb{R}^p$ eine Vorhersage $\hat{f}(\mathbf{x})$
 liefert.
 Das Modell $\hat{f}$ kann beliebig komplex sein; seine interne Struktur ist unbekannt oder
-zu komplex für direkte Interpretation.
+zu komplex fÃ¼r direkte Interpretation.
 
 Die zentrale Idee von LIME ist die \emph{lokale Linearisierung}:
 Auch wenn $\hat{f}$ global nichtlinear ist, kann es in einer hinreichend kleinen
@@ -152,22 +152,22 @@ Abbildung~\ref{fig:plot1} illustriert dieses Grundprinzip.
   \centering
   \includegraphics[width=\linewidth]{plot1_lime_grundprinzip.pdf}
   \caption{LIME-Grundprinzip: (a)~Komplexe nichtlineare Entscheidungsgrenze des
-           Black-Box-Modells~$\hat{f}$. Die rote Markierung zeigt die zu erklärende
+           Black-Box-Modells~$\hat{f}$. Die rote Markierung zeigt die zu erklÃ¤rende
            Instanz~$\mathbf{x}$.
            (b)~Lokale Approximation durch ein lineares Modell~$g$ (rote Linie).
-           Die Gewichtung der gesampleten Nachbarpunkte gemäß~$\pi_x(z)$ ist durch
-           Farbe und Punktgröße kodiert: nähere Punkte erhalten höhere Gewichte.}
+           Die Gewichtung der gesampleten Nachbarpunkte gemÃ¤ÃŸ~$\pi_x(z)$ ist durch
+           Farbe und PunktgrÃ¶ÃŸe kodiert: nÃ¤here Punkte erhalten hÃ¶here Gewichte.}
   \label{fig:plot1}
 \end{figure}
 
 \subsection{Das allgemeine LIME-Framework}
 
-\begin{definition}[LIME-Erklärung, \citealt{Ribeiro2016}]
+\begin{definition}[LIME-ErklÃ¤rung, \citealt{Ribeiro2016}]
   Sei $G$ eine Familie interpretierbarer Modelle (z.\,B.\ lineare Regression),
   $L(\hat{f}, g, \pi_\mathbf{x})$ eine Verlustfunktion, die misst, wie gut~$g$ das
   Modell~$\hat{f}$ in der Nachbarschaft von~$\mathbf{x}$ approximiert, und
-  $\Omega(g)$ ein Komplexitätsmaß von~$g$.
-  Die LIME-Erklärung von~$\mathbf{x}$ ist definiert als:
+  $\Omega(g)$ ein KomplexitÃ¤tsmaÃŸ von~$g$.
+  Die LIME-ErklÃ¤rung von~$\mathbf{x}$ ist definiert als:
   \begin{equation}
     \mathrm{explanation}(\mathbf{x})
     \;=\;
@@ -183,17 +183,17 @@ Die Komponenten von \eqref{eq:lime_objective} sind:
   \toprule
   Symbol & Bedeutung \\
   \midrule
-  $G$ & Familie interpretierbarer Modelle (z.\,B.\ lineare Modelle, Entscheidungsbäume) \\
+  $G$ & Familie interpretierbarer Modelle (z.\,B.\ lineare Modelle, EntscheidungsbÃ¤ume) \\
   $L$ & Verlustfunktion (z.\,B.\ gewichteter MSE) \\
-  $g: \mathbb{R}^M \to \mathbb{R}$ & Interpretierbares Erklärungsmodell \\
+  $g: \mathbb{R}^M \to \mathbb{R}$ & Interpretierbares ErklÃ¤rungsmodell \\
   $\hat{f}: \mathbb{R}^p \to \mathbb{R}$ & Originales Black-Box-Modell \\
-  $\pi_\mathbf{x}(z)$ & Proximity-Maß: Gewichtsfunktion für die Nähe zwischen $\mathbf{x}$ und $z$ \\
-  $\Omega(g)$ & Modellkomplexität (z.\,B.\ Anzahl der Features) \\
+  $\pi_\mathbf{x}(z)$ & Proximity-MaÃŸ: Gewichtsfunktion fÃ¼r die NÃ¤he zwischen $\mathbf{x}$ und $z$ \\
+  $\Omega(g)$ & ModellkomplexitÃ¤t (z.\,B.\ Anzahl der Features) \\
   \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection{LIME für sparse lineare Erklärungen}
+\subsection{LIME fÃ¼r sparse lineare ErklÃ¤rungen}
 
 Sei $G$ die Klasse der linearen Modelle:
 \begin{equation}
@@ -207,14 +207,14 @@ Die lokal gewichtete Verlustfunktion lautet:
     \pi_\mathbf{x}(\mathbf{z})\,\bigl(\hat{f}(\mathbf{z}) - g(\mathbf{z}')\bigr)^2,
   \label{eq:lime_loss}
 \end{equation}
-wobei die Gewichtsfunktion als Gaußscher Kern definiert ist:
+wobei die Gewichtsfunktion als GauÃŸscher Kern definiert ist:
 \begin{equation}
   \pi_\mathbf{x}(\mathbf{z})
   = \exp\!\left(-\frac{D(\mathbf{x}, \mathbf{z})^2}{\sigma^2}\right).
   \label{eq:lime_kernel}
 \end{equation}
 Hierbei ist $D$ eine Distanzfunktion (typischerweise L2) und $\sigma > 0$ eine
-Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
+Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ fÃ¼r $p$ Features).
 
 \subsection{Der LIME-Algorithmus}
 
@@ -233,7 +233,7 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
 
 \textbf{Perturbation je nach Datentyp:}
 \begin{itemize}
-  \item \emph{Text:} Einzelne Wörter werden an- oder abgeschaltet.
+  \item \emph{Text:} Einzelne WÃ¶rter werden an- oder abgeschaltet.
   \item \emph{Bild:} Einzelne Superpixel werden maskiert.
   \item \emph{Tabulardaten:} Sampling aus einer Normalverteilung mit
         Mean und Standardabweichung der jeweiligen Feature-Spalte.
@@ -241,7 +241,7 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
 
 \subsection{Konkretes Rechenbeispiel}
 
-\begin{beispiel}[LIME für tabulare Daten]
+\begin{beispiel}[LIME fÃ¼r tabulare Daten]
   \label{bsp:lime_tabular}
   Gegeben sei das lineare Modell $\hat{f}(\mathbf{x}) = 3000 x_1 + 1000 x_2$ mit den
   Trainingsdaten:
@@ -256,7 +256,7 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
   \end{tabular}
   \end{center}
 
-  \textbf{Aufgabe:} Erkläre die Vorhersage für die Instanz $\mathbf{x} = (3, 2)$ mit
+  \textbf{Aufgabe:} ErklÃ¤re die Vorhersage fÃ¼r die Instanz $\mathbf{x} = (3, 2)$ mit
   L2-Distanz und Kernelbreite $\sigma = 0{,}75\sqrt{2} \approx 1{,}06$.
 
   \textbf{Schritt~1: Normierung der Features.}
@@ -303,8 +303,8 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
     \pi_\mathbf{x}(z^{(2)}) = e^{-0{,}50/1{,}125} = e^{-0{,}444} \approx 0{,}641.
   \]
 
-  Der Datenpunkt $(2, 2)$ liegt strukturell näher an $\mathbf{x} = (3, 2)$ (gleicher
-  $x_2$-Wert nach Normierung) und erhält damit ein höheres Gewicht im lokalen Training.
+  Der Datenpunkt $(2, 2)$ liegt strukturell nÃ¤her an $\mathbf{x} = (3, 2)$ (gleicher
+  $x_2$-Wert nach Normierung) und erhÃ¤lt damit ein hÃ¶heres Gewicht im lokalen Training.
 
   \textbf{Schritt~4: Lokales Modell.}
 
@@ -321,7 +321,7 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
 
 \begin{definition}[Graph und Adjazenzmatrix]
   Ein Graph $G = (V, E)$ mit $n = |V|$ Knoten wird durch seine Adjazenzmatrix
-  $A \in \{0,1\}^{n \times n}$ repräsentiert:
+  $A \in \{0,1\}^{n \times n}$ reprÃ¤sentiert:
   \[
     A_{ij} = \begin{cases}
       1 & \text{falls } (v_i, v_j) \in E, \\
@@ -331,7 +331,7 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
 \end{definition}
 
 \begin{definition}[Signaturabbildung, \citealt{Epp2026}]
-  Für eine Adjazenzmatrix~$A$ und Spaltenindex $j \in \{0,\ldots,n-1\}$ ist die
+  FÃ¼r eine Adjazenzmatrix~$A$ und Spaltenindex $j \in \{0,\ldots,n-1\}$ ist die
   Signatur definiert als:
   \begin{equation}
     \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n.
@@ -349,23 +349,23 @@ Kernelbreite (LIME-Standard: $\sigma = 0{,}75\sqrt{p}$ für $p$ Features).
 \end{definition}
 
 Abbildung~\ref{fig:plot2} veranschaulicht die Signaturberechnung und die zyklischen
-Rotationen für einen Beispielgraphen.
+Rotationen fÃ¼r einen Beispielgraphen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot2_subgraph_signaturen.pdf}
   \caption{(a)~Adjazenzmatrix des Beispielgraphen~$G$.
            (b)~Berechnete Signaturwerte $\sigma_j$ nach Gleichung~\eqref{eq:signature}:
-           Die Spaltengewichtung $j \cdot 2^n$ sorgt für Eindeutigkeit auch bei
+           Die Spaltengewichtung $j \cdot 2^n$ sorgt fÃ¼r Eindeutigkeit auch bei
            gleichen Spaltenvektoren.
            (c)~Die vier zyklischen Rotationen der Signatursequenz; statt $n! = 24$
-           Permutationen genügen $n = 4$ Rotationen.}
+           Permutationen genÃ¼gen $n = 4$ Rotationen.}
   \label{fig:plot2}
 \end{figure}
 
 \subsection{Eigenschaften der Signaturabbildung}
 
-\begin{lemma}[Injektivität der Signaturabbildung, \citealt{Epp2026}]
+\begin{lemma}[InjektivitÃ¤t der Signaturabbildung, \citealt{Epp2026}]
   \label{lem:injectivity}
   Die Signaturabbildung $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\} \to \mathbb{N}$
   aus Gleichung~\eqref{eq:signature} ist injektiv.
@@ -373,7 +373,7 @@ Rotationen für einen Beispielgraphen.
 
 \begin{proof}
   Seien $(A_{*j}, j) \neq (A_{*k}, k)$ zwei verschiedene Spalten-Index-Paare.
-  Wir unterscheiden zwei Fälle.
+  Wir unterscheiden zwei FÃ¤lle.
 
   \emph{Fall~1:} $j \neq k$.
   Dann gilt $j \cdot 2^n \neq k \cdot 2^n$, da $j \mapsto j \cdot 2^n$ injektiv ist.
@@ -382,16 +382,16 @@ Rotationen für einen Beispielgraphen.
   Folglich $\sigma_j \neq \sigma_k$.
 
   \emph{Fall~2:} $j = k$, aber $A_{*j} \neq A_{*k}$.
-  Die Abbildung $v \mapsto \sum_i v_i \cdot 2^i$ ist die binäre Darstellung des
+  Die Abbildung $v \mapsto \sum_i v_i \cdot 2^i$ ist die binÃ¤re Darstellung des
   Vektors~$v \in \{0,1\}^n$ und daher injektiv auf $\{0,1\}^n$.
-  Somit liefern verschiedene Binärvektoren verschiedene Werte.
+  Somit liefern verschiedene BinÃ¤rvektoren verschiedene Werte.
 
-  In beiden Fällen folgt $\sigma(A_{*j}, j) \neq \sigma(A_{*k}, k)$. \hfill$\blacksquare$
+  In beiden FÃ¤llen folgt $\sigma(A_{*j}, j) \neq \sigma(A_{*k}, k)$. \hfill$\blacksquare$
 \end{proof}
 
-\subsection{Algorithmus und Komplexität}
+\subsection{Algorithmus und KomplexitÃ¤t}
 
-\begin{satz}[Komplexität des Subgraph Algorithmus, \citealt{Epp2026}]
+\begin{satz}[KomplexitÃ¤t des Subgraph Algorithmus, \citealt{Epp2026}]
   \label{satz:complexity}
   Der Subgraph Algorithmus bestimmt in Zeit $\Theta(n^3)$ und Raum $O(n^2)$, ob
   ein Graph~$G$ mit $n$ Knoten als Subgraph in einem zweiten Graphen~$G'$ mit $n$
@@ -401,30 +401,30 @@ Rotationen für einen Beispielgraphen.
 \begin{proof}
   Der Algorithmus besteht aus drei Phasen:
   \begin{enumerate}
-    \item \emph{Signaturberechnung}: Für jeden der $n$ Spalten beider Adjazenzmatrizen
-          ($O(n^2)$ Einträge) wird ein Signaturwert nach \eqref{eq:signature} berechnet.
+    \item \emph{Signaturberechnung}: FÃ¼r jeden der $n$ Spalten beider Adjazenzmatrizen
+          ($O(n^2)$ EintrÃ¤ge) wird ein Signaturwert nach \eqref{eq:signature} berechnet.
           Laufzeit: $O(n^2)$.
     \item \emph{Rotationsschleife}: Es werden $n$ zyklische Rotationen der
           Signatursequenz~$\sigma^B$ erzeugt.
-          Jede Rotation benötigt $O(n)$ Zeit.
+          Jede Rotation benÃ¶tigt $O(n)$ Zeit.
           Gesamtlaufzeit der Rotationserzeugung: $O(n^2)$.
-    \item \emph{LCS-Berechnung}: Für jede der $n$ Rotationen wird die Länge der
-          längsten gemeinsamen Teilsequenz (LCS) zweier Arrays der Länge~$n$ mittels
+    \item \emph{LCS-Berechnung}: FÃ¼r jede der $n$ Rotationen wird die LÃ¤nge der
+          lÃ¤ngsten gemeinsamen Teilsequenz (LCS) zweier Arrays der LÃ¤nge~$n$ mittels
           dynamischer Programmierung berechnet.
-          Jede LCS-Berechnung benötigt $\Theta(n^2)$ Zeit.
+          Jede LCS-Berechnung benÃ¶tigt $\Theta(n^2)$ Zeit.
           Gesamtlaufzeit: $n \cdot \Theta(n^2) = \Theta(n^3)$.
   \end{enumerate}
 
   Die Phasen~1 und~2 sind von kleinerer Ordnung als Phase~3, sodass die
-  Gesamtkomplexität $\Theta(n^3)$ beträgt.
-  Der Speicherbedarf ist $O(n^2)$ für die Adjazenzmatrizen und $O(n)$ für
+  GesamtkomplexitÃ¤t $\Theta(n^3)$ betrÃ¤gt.
+  Der Speicherbedarf ist $O(n^2)$ fÃ¼r die Adjazenzmatrizen und $O(n)$ fÃ¼r
   die Signatur-Arrays. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[Optimalität unter SETH, \citealt{Epp2026}]
+\begin{satz}[OptimalitÃ¤t unter SETH, \citealt{Epp2026}]
   Unter der Strong Exponential Time Hypothesis (SETH) kann kein Algorithmus das
-  zyklische Subgraph-Problem für Graphen mit $n$ Knoten in
-  $O(n^{3-\varepsilon})$ Zeit für beliebiges $\varepsilon > 0$ lösen.
+  zyklische Subgraph-Problem fÃ¼r Graphen mit $n$ Knoten in
+  $O(n^{3-\varepsilon})$ Zeit fÃ¼r beliebiges $\varepsilon > 0$ lÃ¶sen.
 \end{satz}
 
 % ===========================================================
@@ -432,7 +432,7 @@ Rotationen für einen Beispielgraphen.
 % ===========================================================
 
 Die folgenden drei Abschnitte zeigen, wie der Subgraph Algorithmus jeden der drei
-Kernbestandteile von LIME für graphstrukturierte Daten verbessern kann.
+Kernbestandteile von LIME fÃ¼r graphstrukturierte Daten verbessern kann.
 Wir bezeichnen die resultierende Methode als \emph{Graph-LIME}.
 
 % -----------------------------------------------------------
@@ -441,16 +441,16 @@ Wir bezeichnen die resultierende Methode als \emph{Graph-LIME}.
 
 \subsubsection{Problem der Standard-Perturbation}
 
-Im Standard-LIME für tabulare Daten werden neue Datenpunkte durch Sampling aus einer
+Im Standard-LIME fÃ¼r tabulare Daten werden neue Datenpunkte durch Sampling aus einer
 Normalverteilung erzeugt:
 \[
   z'_j \sim \mathcal{N}(\mu_j,\, s_j^2), \quad j = 1, \ldots, p.
 \]
-Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
+FÃ¼r graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
 \begin{itemize}
-  \item Zufällig perturbierte Adjazenzmatrizen ergeben in der Regel keine
-        gültigen oder strukturell sinnvollen Graphen.
-  \item Kleine numerische Änderungen an Matrixeinträgen verändern die topologische
+  \item ZufÃ¤llig perturbierte Adjazenzmatrizen ergeben in der Regel keine
+        gÃ¼ltigen oder strukturell sinnvollen Graphen.
+  \item Kleine numerische Ã„nderungen an MatrixeintrÃ¤gen verÃ¤ndern die topologische
         Struktur des Graphen auf schwer kontrollierbare Weise.
   \item Die Nachbarschaft im euklidischen Feature-Raum entspricht nicht der
         Nachbarschaft im Graphstruktur-Raum.
@@ -459,7 +459,7 @@ Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
 \subsubsection{Zyklische Rotation als strukturerhaltende Perturbation}
 
 \begin{definition}[Rotationsperturbation]
-  Sei $\mathbf{x}$ eine Instanz mit Graphrepräsentation $(V, E, A)$.
+  Sei $\mathbf{x}$ eine Instanz mit GraphreprÃ¤sentation $(V, E, A)$.
   Die Menge der Rotationsperturbationen ist definiert als:
   \[
     \mathcal{P}_{\mathrm{rot}}(\mathbf{x})
@@ -472,9 +472,9 @@ Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
 \begin{lemma}[Strukturerhaltung durch Rotation]
   \label{lem:rotation_preserves}
   Jede zyklische Rotation $\mathrm{rotate}_k(A)$ einer Adjazenzmatrix~$A$
-  repräsentiert einen Graphen $G^{(k)}$, der zu $G$ isomorph bezüglich der
+  reprÃ¤sentiert einen Graphen $G^{(k)}$, der zu $G$ isomorph bezÃ¼glich der
   zyklischen Knotenpermutation ist.
-  Insbesondere gilt $|E^{(k)}| = |E|$ für alle $k$.
+  Insbesondere gilt $|E^{(k)}| = |E|$ fÃ¼r alle $k$.
 \end{lemma}
 
 \begin{proof}
@@ -486,22 +486,22 @@ Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
   $\pi_k: i \mapsto (i+k) \bmod n$. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[Vollständigkeit der Rotationsperturbation]
+\begin{satz}[VollstÃ¤ndigkeit der Rotationsperturbation]
   \label{satz:rotation_complete}
-  Für jeden möglichen zyklischen Isomorphismus zwischen~$G$ und einem Graphen~$G'$
+  FÃ¼r jeden mÃ¶glichen zyklischen Isomorphismus zwischen~$G$ und einem Graphen~$G'$
   existiert eine Rotation $k \in \{0, \ldots, n-1\}$, sodass
   $\mathrm{LCS}(\sigma^A, \mathrm{rotate}_k(\sigma^B)) \geq 2$.
 \end{satz}
 
 \begin{proof}
   Sei $\pi: V \to V'$ ein zyklischer Isomorphismus, d.\,h.\ $\pi(v_i) = v'_{(i+k) \bmod n}$
-  für ein festes $k$.
-  Dann stimmt die $j$-te Spalte von $A$ mit der $\pi(j)$-ten Spalte von $B$ überein,
+  fÃ¼r ein festes $k$.
+  Dann stimmt die $j$-te Spalte von $A$ mit der $\pi(j)$-ten Spalte von $B$ Ã¼berein,
   bis auf die Spaltengewichtung in der Signatur.
-  Die Zeilenkomponente $\sum_i A_{ij} \cdot 2^i$ ist für korrespondierende Spalten
+  Die Zeilenkomponente $\sum_i A_{ij} \cdot 2^i$ ist fÃ¼r korrespondierende Spalten
   identisch.
-  Da $n \geq 2$ vorausgesetzt wird, liefert die LCS-Berechnung über die
-  Zeilenkomponenten eine Länge von mindestens~2. \hfill$\blacksquare$
+  Da $n \geq 2$ vorausgesetzt wird, liefert die LCS-Berechnung Ã¼ber die
+  Zeilenkomponenten eine LÃ¤nge von mindestens~2. \hfill$\blacksquare$
 \end{proof}
 
 \subsubsection{Angepasster LIME-Algorithmus mit Rotationsperturbation}
@@ -513,7 +513,7 @@ Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
     \mathbf{z}'_i \leftarrow \mathrm{rotate}_{k_i}(A_\mathbf{x}),
     \quad k_i \in \{0, \ldots, n-1\},
   \]
-  wobei $k_i$ gleichmäßig aus $\{0, \ldots, n-1\}$ gezogen wird.
+  wobei $k_i$ gleichmÃ¤ÃŸig aus $\{0, \ldots, n-1\}$ gezogen wird.
 \end{definition}
 
 \begin{korollar}
@@ -524,49 +524,49 @@ Für graphstrukturierte Daten hat diese Vorgehensweise fundamentale Nachteile:
 
 \begin{proof}
   Direkte Folge aus Lemma~\ref{lem:rotation_preserves} und der Tatsache, dass
-  $\mathrm{rotate}_k$ für $k = 0, \ldots, n-1$ genau $n$ verschiedene Signatursquenzen
+  $\mathrm{rotate}_k$ fÃ¼r $k = 0, \ldots, n-1$ genau $n$ verschiedene Signatursquenzen
   erzeugt (nach Lemma~\ref{lem:injectivity}). \hfill$\blacksquare$
 \end{proof}
 
 % -----------------------------------------------------------
-\subsection{Punkt~2: Strukturbasiertes Proximity-Maß über LCS-Signaturen}
+\subsection{Punkt~2: Strukturbasiertes Proximity-MaÃŸ Ã¼ber LCS-Signaturen}
 % -----------------------------------------------------------
 
-\subsubsection{Unzulänglichkeit des euklidischen Kerns}
+\subsubsection{UnzulÃ¤nglichkeit des euklidischen Kerns}
 
 Der Standard-LIME-Kern $\pi_\mathbf{x}(\mathbf{z}) = \exp(-D(\mathbf{x},\mathbf{z})^2/\sigma^2)$
-mit euklidischer Distanz $D$ hat für Graphen mehrere Schwächen:
+mit euklidischer Distanz $D$ hat fÃ¼r Graphen mehrere SchwÃ¤chen:
 \begin{itemize}
-  \item Zwei Graphen können strukturell äquivalent sein (isomorph), aber
-        verschiedene Adjazenzmatrizen besitzen, was zu einer großen euklidischen
-        Distanz führt.
-  \item Die euklidische Distanz auf Adjazenzmatrizen ist invariant gegenüber
-        Knotenidentitäten, nicht aber gegenüber Knotenordnungen.
-  \item Für sparse Graphen kann die euklidische Distanz irreführend klein sein,
-        obwohl die topologische Struktur völlig verschieden ist.
+  \item Zwei Graphen kÃ¶nnen strukturell Ã¤quivalent sein (isomorph), aber
+        verschiedene Adjazenzmatrizen besitzen, was zu einer groÃŸen euklidischen
+        Distanz fÃ¼hrt.
+  \item Die euklidische Distanz auf Adjazenzmatrizen ist invariant gegenÃ¼ber
+        KnotenidentitÃ¤ten, nicht aber gegenÃ¼ber Knotenordnungen.
+  \item FÃ¼r sparse Graphen kann die euklidische Distanz irrefÃ¼hrend klein sein,
+        obwohl die topologische Struktur vÃ¶llig verschieden ist.
 \end{itemize}
 
-\subsubsection{Das LCS-basierte Ähnlichkeitsmaß}
+\subsubsection{Das LCS-basierte Ã„hnlichkeitsmaÃŸ}
 
-\begin{definition}[LCS-Ähnlichkeit]
+\begin{definition}[LCS-Ã„hnlichkeit]
   Seien $\sigma^A = [\sigma_0^A, \ldots, \sigma_{n-1}^A]$ und
   $\sigma^B = [\sigma_0^B, \ldots, \sigma_{n-1}^B]$ die Signatursequenzen zweier
   Graphen $G$ und $G'$.
-  Die \emph{normierte LCS-Ähnlichkeit} ist definiert als:
+  Die \emph{normierte LCS-Ã„hnlichkeit} ist definiert als:
   \begin{equation}
     \mathrm{sim}_{\mathrm{LCS}}(G, G')
     = \frac{\mathrm{LCS}(\sigma^A, \sigma^B)}{n},
     \label{eq:lcs_sim}
   \end{equation}
-  wobei $\mathrm{LCS}(\sigma^A, \sigma^B)$ die Länge der längsten gemeinsamen
+  wobei $\mathrm{LCS}(\sigma^A, \sigma^B)$ die LÃ¤nge der lÃ¤ngsten gemeinsamen
   Teilsequenz der beiden Signatursequenzen bezeichnet.
 \end{definition}
 
-\begin{lemma}[Eigenschaften der LCS-Ähnlichkeit]
-  Die normierte LCS-Ähnlichkeit $\mathrm{sim}_{\mathrm{LCS}}$ erfüllt:
+\begin{lemma}[Eigenschaften der LCS-Ã„hnlichkeit]
+  Die normierte LCS-Ã„hnlichkeit $\mathrm{sim}_{\mathrm{LCS}}$ erfÃ¼llt:
   \begin{enumerate}
     \item $0 \leq \mathrm{sim}_{\mathrm{LCS}}(G, G') \leq 1$.
-    \item $\mathrm{sim}_{\mathrm{LCS}}(G, G) = 1$ (Reflexivität).
+    \item $\mathrm{sim}_{\mathrm{LCS}}(G, G) = 1$ (ReflexivitÃ¤t).
     \item $\mathrm{sim}_{\mathrm{LCS}}(G, G') = \mathrm{sim}_{\mathrm{LCS}}(G', G)$ (Symmetrie).
     \item $\mathrm{sim}_{\mathrm{LCS}}(G, G') = 1 \Leftrightarrow \sigma^A = \sigma^B$
           (identische Signatursequenz).
@@ -574,37 +574,37 @@ mit euklidischer Distanz $D$ hat für Graphen mehrere Schwächen:
 \end{lemma}
 
 \begin{proof}
-  (i) LCS-Länge liegt in $[0, n]$, Division durch $n$ normiert auf $[0, 1]$.
-  (ii) $\mathrm{LCS}(\sigma^A, \sigma^A) = n$ für jede Sequenz der Länge~$n$.
+  (i) LCS-LÃ¤nge liegt in $[0, n]$, Division durch $n$ normiert auf $[0, 1]$.
+  (ii) $\mathrm{LCS}(\sigma^A, \sigma^A) = n$ fÃ¼r jede Sequenz der LÃ¤nge~$n$.
   (iii) LCS ist symmetrisch: $\mathrm{LCS}(A, B) = \mathrm{LCS}(B, A)$.
   (iv) $\mathrm{LCS}(\sigma^A, \sigma^B) = n$ genau dann, wenn $\sigma^A = \sigma^B$
        als Sequenzen, da die Signaturen nach Lemma~\ref{lem:injectivity} injektiv
        sind. \hfill$\blacksquare$
 \end{proof}
 
-\subsubsection{Das strukturbasierte Proximity-Maß}
+\subsubsection{Das strukturbasierte Proximity-MaÃŸ}
 
-\begin{definition}[Graph-Kernel für LIME]
-  Das strukturbasierte Proximity-Maß für Graph-LIME ist:
+\begin{definition}[Graph-Kernel fÃ¼r LIME]
+  Das strukturbasierte Proximity-MaÃŸ fÃ¼r Graph-LIME ist:
   \begin{equation}
     \pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{z})
     = \exp\!\left(-\frac{\bigl(1 - \mathrm{sim}_{\mathrm{LCS}}(G_\mathbf{x}, G_\mathbf{z})\bigr)^2}{\sigma^2}\right),
     \label{eq:graph_kernel}
   \end{equation}
   wobei $G_\mathbf{x}$ und $G_\mathbf{z}$ die zu $\mathbf{x}$ bzw.\ $\mathbf{z}$
-  gehörigen Graphen sind.
+  gehÃ¶rigen Graphen sind.
 \end{definition}
 
 \begin{satz}[Korrektheit des Graph-Kernels]
   \label{satz:graph_kernel}
   Der Graph-Kernel $\pi_\mathbf{x}^{\mathrm{Graph}}$ aus \eqref{eq:graph_kernel}
-  ist eine wohldeffinierte Gewichtsfunktion, die folgende Eigenschaften erfüllt:
+  ist eine wohldeffinierte Gewichtsfunktion, die folgende Eigenschaften erfÃ¼llt:
   \begin{enumerate}
-    \item $0 < \pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{z}) \leq 1$ für alle $\mathbf{z}$.
-    \item $\pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{x}) = 1$ (maximales Gewicht für die
+    \item $0 < \pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{z}) \leq 1$ fÃ¼r alle $\mathbf{z}$.
+    \item $\pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{x}) = 1$ (maximales Gewicht fÃ¼r die
           Instanz selbst).
-    \item Isomorphe Graphen erhalten dasselbe Gewicht bezüglich ihrer
-          Signaturübereinstimmung.
+    \item Isomorphe Graphen erhalten dasselbe Gewicht bezÃ¼glich ihrer
+          SignaturÃ¼bereinstimmung.
     \item $\pi_\mathbf{x}^{\mathrm{Graph}}(\mathbf{z})$ ist monoton fallend in der
           strukturellen Distanz $1 - \mathrm{sim}_{\mathrm{LCS}}$.
   \end{enumerate}
@@ -617,28 +617,28 @@ mit euklidischer Distanz $D$ hat für Graphen mehrere Schwächen:
   (ii) $G_\mathbf{x} = G_\mathbf{x}$ impliziert $\mathrm{sim}_{\mathrm{LCS}} = 1$,
   also $(1-1)^2/\sigma^2 = 0$ und $\exp(0) = 1$.
 
-  (iii) Für zwei isomorphe Graphen $G \cong G'$ unter einer zyklischen Permutation
+  (iii) FÃ¼r zwei isomorphe Graphen $G \cong G'$ unter einer zyklischen Permutation
   findet die Rotation im Algorithmus die optimale Ausrichtung, sodass die
-  LCS-Berechnung maximale Übereinstimmung liefert.
+  LCS-Berechnung maximale Ãœbereinstimmung liefert.
 
-  (iv) Die Funktion $t \mapsto \exp(-t^2/\sigma^2)$ ist streng monoton fallend für
+  (iv) Die Funktion $t \mapsto \exp(-t^2/\sigma^2)$ ist streng monoton fallend fÃ¼r
   $t > 0$; da $1 - \mathrm{sim}_{\mathrm{LCS}} \geq 0$, ist die Monotonieeigenschaft
-  erfüllt. \hfill$\blacksquare$
+  erfÃ¼llt. \hfill$\blacksquare$
 \end{proof}
 
 Abbildung~\ref{fig:plot3} vergleicht den Standard-L2-Kernel mit dem neuen
-Graph-Kernel und zeigt die Gewichte für fünf Graphpaare unterschiedlicher
-struktureller Ähnlichkeit.
+Graph-Kernel und zeigt die Gewichte fÃ¼r fÃ¼nf Graphpaare unterschiedlicher
+struktureller Ã„hnlichkeit.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot3_proximity.pdf}
   \caption{(a)~Vergleich der Kernelfunktionen: Der LCS-basierte Graph-Kernel (rot)
            und der Standard-L2-Kernel (blau) als Funktion der strukturellen Distanz.
-           Beide Kurven haben dieselbe Gaußsche Form, aber unterschiedliche
-           Eingabegrößen.
-           (b)~Gewichte $\pi_x(z)$ für fünf Graphpaare mit LCS-Werten von 0 bis 4.
-           Der Graph-Kernel (rot) unterscheidet strukturelle Ähnlichkeit feiner als
+           Beide Kurven haben dieselbe GauÃŸsche Form, aber unterschiedliche
+           EingabegrÃ¶ÃŸen.
+           (b)~Gewichte $\pi_x(z)$ fÃ¼r fÃ¼nf Graphpaare mit LCS-Werten von 0 bis 4.
+           Der Graph-Kernel (rot) unterscheidet strukturelle Ã„hnlichkeit feiner als
            ein rein euklidischer Vergleich (blau).}
   \label{fig:plot3}
 \end{figure}
@@ -647,20 +647,20 @@ struktureller Ähnlichkeit.
 \subsection{Punkt~3: Subgraph-Inklusion als strukturelle Feature-Selektion}
 % -----------------------------------------------------------
 
-\subsubsection{Motivation: Strukturelle vs.\ statistische Komplexität}
+\subsubsection{Motivation: Strukturelle vs.\ statistische KomplexitÃ¤t}
 
-Im Standard-LIME wird die Modellkomplexität $\Omega(g)$ durch die Anzahl der
+Im Standard-LIME wird die ModellkomplexitÃ¤t $\Omega(g)$ durch die Anzahl der
 nicht-null Koeffizienten gemessen, typischerweise durch LASSO-Regularisierung:
 \[
   \Omega_{\mathrm{LASSO}}(g) = \lambda \|\boldsymbol{\beta}\|_1.
 \]
-Dies ist für tabulare Daten geeignet, erfasst aber für graphstrukturierte Modelle
-keine strukturellen Abhängigkeiten zwischen Features.
+Dies ist fÃ¼r tabulare Daten geeignet, erfasst aber fÃ¼r graphstrukturierte Modelle
+keine strukturellen AbhÃ¤ngigkeiten zwischen Features.
 
-\subsubsection{Subgraph-Komplexität}
+\subsubsection{Subgraph-KomplexitÃ¤t}
 
-\begin{definition}[Subgraph-Komplexität]
-  Für ein interpretierbares Graphmodell~$g$ mit Graphdarstellung~$G_g$ und ein
+\begin{definition}[Subgraph-KomplexitÃ¤t]
+  FÃ¼r ein interpretierbares Graphmodell~$g$ mit Graphdarstellung~$G_g$ und ein
   Black-Box-Modell~$\hat{f}$ mit Graphdarstellung~$G_{\hat{f}}$ definieren wir:
   \begin{equation}
     \Omega_{\mathrm{Sub}}(g) = \begin{cases}
@@ -672,33 +672,33 @@ keine strukturellen Abhängigkeiten zwischen Features.
   wobei $|E_g|$ die Kantenanzahl von $G_g$ ist.
 \end{definition}
 
-\begin{lemma}[Eigenschaften der Subgraph-Komplexität]
-  $\Omega_{\mathrm{Sub}}$ erfüllt:
+\begin{lemma}[Eigenschaften der Subgraph-KomplexitÃ¤t]
+  $\Omega_{\mathrm{Sub}}$ erfÃ¼llt:
   \begin{enumerate}
-    \item $\Omega_{\mathrm{Sub}}(g) \in (0, 1]$ für $G_g \subseteq G_{\hat{f}}$.
-    \item $\Omega_{\mathrm{Sub}}(g) = \epsilon$ für $|E_g| \to 0$, d.\,h.\ der
-          kleinstmögliche Subgraph erhält minimale Strafe.
+    \item $\Omega_{\mathrm{Sub}}(g) \in (0, 1]$ fÃ¼r $G_g \subseteq G_{\hat{f}}$.
+    \item $\Omega_{\mathrm{Sub}}(g) = \epsilon$ fÃ¼r $|E_g| \to 0$, d.\,h.\ der
+          kleinstmÃ¶gliche Subgraph erhÃ¤lt minimale Strafe.
     \item $G_g \not\subseteq G_{\hat{f}}$ impliziert $\Omega_{\mathrm{Sub}}(g) > 1$,
-          d.\,h.\ Modelle außerhalb des Subgraphs werden stark bestraft.
+          d.\,h.\ Modelle auÃŸerhalb des Subgraphs werden stark bestraft.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  (i) Für $G_g \subseteq G_{\hat{f}}$ gilt $|E_g| \leq |E_{\hat{f}}|$, also
-  $|E_g|/|E_{\hat{f}}| \in (0, 1]$ (für $|E_g| \geq 1$).
+  (i) FÃ¼r $G_g \subseteq G_{\hat{f}}$ gilt $|E_g| \leq |E_{\hat{f}}|$, also
+  $|E_g|/|E_{\hat{f}}| \in (0, 1]$ (fÃ¼r $|E_g| \geq 1$).
 
-  (ii) $|E_g| / |E_{\hat{f}}| \to 0$ für $|E_g| \to 0$.
+  (ii) $|E_g| / |E_{\hat{f}}| \to 0$ fÃ¼r $|E_g| \to 0$.
 
   (iii) Falls $G_g \not\subseteq G_{\hat{f}}$, gibt es mindestens eine Kante
   $e \in E_g \setminus E_{\hat{f}}$, sodass $|E_g \setminus E_{\hat{f}}| \geq 1$
   und damit $\Omega_{\mathrm{Sub}}(g) \geq 1 + 1/|E_{\hat{f}}| > 1$. \hfill$\blacksquare$
 \end{proof}
 
-\subsubsection{Minimaler erklärender Subgraph}
+\subsubsection{Minimaler erklÃ¤render Subgraph}
 
-\begin{definition}[Minimaler erklärender Subgraph]
+\begin{definition}[Minimaler erklÃ¤render Subgraph]
   \label{def:min_subgraph}
-  Der minimale erklärende Subgraph für eine Instanz~$\mathbf{x}$ und ein
+  Der minimale erklÃ¤rende Subgraph fÃ¼r eine Instanz~$\mathbf{x}$ und ein
   Modell~$\hat{f}$ ist:
   \begin{equation}
     G^*_g = \arg\min_{\substack{G_g \subseteq G_{\hat{f}}}}
@@ -709,10 +709,10 @@ keine strukturellen Abhängigkeiten zwischen Features.
   \end{equation}
 \end{definition}
 
-\begin{satz}[Existenz des minimalen erklärenden Subgraphen]
-  Für jedes endliche Modell~$\hat{f}$ mit Graphdarstellung $G_{\hat{f}}$ und
-  jede Instanz~$\mathbf{x}$ existiert ein minimaler erklärender Subgraph~$G^*_g$
-  gemäß Definition~\ref{def:min_subgraph}.
+\begin{satz}[Existenz des minimalen erklÃ¤renden Subgraphen]
+  FÃ¼r jedes endliche Modell~$\hat{f}$ mit Graphdarstellung $G_{\hat{f}}$ und
+  jede Instanz~$\mathbf{x}$ existiert ein minimaler erklÃ¤render Subgraph~$G^*_g$
+  gemÃ¤ÃŸ Definition~\ref{def:min_subgraph}.
 \end{satz}
 
 \begin{proof}
@@ -720,23 +720,23 @@ keine strukturellen Abhängigkeiten zwischen Features.
   $\{G_g \mid G_g \subseteq G_{\hat{f}}\}$ endlich.
   Die Zielfunktion $L + \Omega_{\mathrm{Sub}}$ ist auf dieser endlichen Menge
   wohldeffiniert und nimmt daher ein Minimum an.
-  Da wenigstens der leere Graph $G_g = (\emptyset, \emptyset)$ ein zulässiger
+  Da wenigstens der leere Graph $G_g = (\emptyset, \emptyset)$ ein zulÃ¤ssiger
   Subgraph ist (als Grenzfall), ist die Menge nicht leer. \hfill$\blacksquare$
 \end{proof}
 
 Abbildung~\ref{fig:plot4} zeigt den Vergleich zwischen LASSO- und Subgraph-basierter
-Feature-Selektion sowie eine Visualisierung des minimalen erklärenden Subgraphen.
+Feature-Selektion sowie eine Visualisierung des minimalen erklÃ¤renden Subgraphen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot4_feature_selection.pdf}
-  \caption{(a)~Zielfunktionswerte als Funktion der Modellgröße~$K$:
-           Die Subgraph-Zielfunktion (rot) wählt ein kleineres, strukturell
+  \caption{(a)~Zielfunktionswerte als Funktion der ModellgrÃ¶ÃŸe~$K$:
+           Die Subgraph-Zielfunktion (rot) wÃ¤hlt ein kleineres, strukturell
            konsistenteres Modell ($K=3$) als LASSO ($K=4$), da sie
-           Kanten außerhalb des Subgraphs stark bestraft.
-           (b)~Minimaler erklärender Subgraph (rote Kanten) für eine Vorhersage:
-           Nur die für die Entscheidung relevanten Kanten werden behalten,
-           während nicht-erklärende Verbindungen (grau) ausgeblendet werden.}
+           Kanten auÃŸerhalb des Subgraphs stark bestraft.
+           (b)~Minimaler erklÃ¤render Subgraph (rote Kanten) fÃ¼r eine Vorhersage:
+           Nur die fÃ¼r die Entscheidung relevanten Kanten werden behalten,
+           wÃ¤hrend nicht-erklÃ¤rende Verbindungen (grau) ausgeblendet werden.}
   \label{fig:plot4}
 \end{figure}
 
@@ -746,11 +746,11 @@ Feature-Selektion sowie eine Visualisierung des minimalen erklärenden Subgraphe
 
 \subsection{Integration aller drei Komponenten}
 
-Die drei Erweiterungen können zu einem vollständigen \emph{Graph-LIME}-Algorithmus
+Die drei Erweiterungen kÃ¶nnen zu einem vollstÃ¤ndigen \emph{Graph-LIME}-Algorithmus
 kombiniert werden.
 
 \begin{definition}[Graph-LIME Zielfunktion]
-  Die vollständige Graph-LIME-Zielfunktion lautet:
+  Die vollstÃ¤ndige Graph-LIME-Zielfunktion lautet:
   \begin{equation}
     \mathrm{explanation}_{\mathrm{Graph}}(\mathbf{x})
     = \arg\min_{G_g \subseteq G_{\hat{f}}}
@@ -764,7 +764,7 @@ kombiniert werden.
 
 \begin{satz}[Korrektheit von Graph-LIME]
   Algorithmus Graph-LIME mit den Komponenten aus den Abschnitten 4.1--4.3
-  liefert eine wohldeffinierte, lokal treue Erklärung~$G^*_g$ für jede
+  liefert eine wohldeffinierte, lokal treue ErklÃ¤rung~$G^*_g$ fÃ¼r jede
   graphstrukturierte Instanz~$\mathbf{x}$.
 \end{satz}
 
@@ -774,48 +774,48 @@ kombiniert werden.
   Nach dem Existenzsatz existiert das Minimum in \eqref{eq:graph_lime}.
 
   \emph{Lokale Treue:} Die Perturbationsmenge $\mathcal{P}_{\mathrm{rot}}(\mathbf{x})$
-  enthält nach Satz~\ref{satz:rotation_complete} alle zyklischen Isomorphismen
+  enthÃ¤lt nach Satz~\ref{satz:rotation_complete} alle zyklischen Isomorphismen
   von~$\mathbf{x}$.
-  Die Gewichtsfunktion $\pi_\mathbf{x}^{\mathrm{Graph}}$ maximiert das Gewicht für
-  strukturell ähnliche Graphen.
-  Damit misst $L$ nach \eqref{eq:lime_loss} tatsächlich die Abweichung in der
+  Die Gewichtsfunktion $\pi_\mathbf{x}^{\mathrm{Graph}}$ maximiert das Gewicht fÃ¼r
+  strukturell Ã¤hnliche Graphen.
+  Damit misst $L$ nach \eqref{eq:lime_loss} tatsÃ¤chlich die Abweichung in der
   lokalen Umgebung von~$\mathbf{x}$ im Graphstruktur-Raum. \hfill$\blacksquare$
 \end{proof}
 
-\subsection{Komplexitätsanalyse von Graph-LIME}
+\subsection{KomplexitÃ¤tsanalyse von Graph-LIME}
 
-\begin{satz}[Gesamtkomplexität von Graph-LIME]
-  Graph-LIME hat eine Zeitkomplexität von $O(n^3 + n^2 \cdot p)$, wobei $n$ die
-  Graphgröße und $p$ die Dimension des Merkmalsvektors ist.
+\begin{satz}[GesamtkomplexitÃ¤t von Graph-LIME]
+  Graph-LIME hat eine ZeitkomplexitÃ¤t von $O(n^3 + n^2 \cdot p)$, wobei $n$ die
+  GraphgrÃ¶ÃŸe und $p$ die Dimension des Merkmalsvektors ist.
 \end{satz}
 
 \begin{proof}
   \begin{itemize}
-    \item \emph{Perturbation:} $n$ Rotationen à $O(n)$: $O(n^2)$.
-    \item \emph{Graph-Kernel:} Für jede Rotation eine LCS-Berechnung in $O(n^2)$:
+    \item \emph{Perturbation:} $n$ Rotationen Ã  $O(n)$: $O(n^2)$.
+    \item \emph{Graph-Kernel:} FÃ¼r jede Rotation eine LCS-Berechnung in $O(n^2)$:
           $n \cdot O(n^2) = O(n^3)$.
     \item \emph{Lokales Training:} Gewichtete lineare Regression auf $n$ Punkten
           mit $p$ Features: $O(n \cdot p + p^2)$.
     \item \emph{Gesamtlaufzeit:} $O(n^3 + n^2 \cdot p)$.
   \end{itemize}
-  Dominanter Term: $O(n^3)$ für großes $n$ bzw.\ $O(n^2 p)$ für großes $p$.
+  Dominanter Term: $O(n^3)$ fÃ¼r groÃŸes $n$ bzw.\ $O(n^2 p)$ fÃ¼r groÃŸes $p$.
   \hfill$\blacksquare$
 \end{proof}
 
-Abbildung~\ref{fig:plot5} zeigt den Komplexitätsvergleich zwischen naiver
+Abbildung~\ref{fig:plot5} zeigt den KomplexitÃ¤tsvergleich zwischen naiver
 Subgraph-Suche, dem Subgraph Algorithmus und Standard-LIME-Sampling sowie die
 Gesamtarchitektur von Graph-LIME.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot5_komplexitaet.pdf}
-  \caption{(a)~Zeitkomplexität im Vergleich: Die naive Subgraph-Suche ($O(n! \cdot n^2)$,
-           grau) ist für $n > 12$ praktisch nicht mehr handhabbar.
-           Der Subgraph Algorithmus ($O(n^3)$, blau) wächst polynomial.
-           Standard-LIME-Sampling ($O(N \cdot p)$, rot) wächst nur linear in~$n$.
+  \caption{(a)~ZeitkomplexitÃ¤t im Vergleich: Die naive Subgraph-Suche ($O(n! \cdot n^2)$,
+           grau) ist fÃ¼r $n > 12$ praktisch nicht mehr handhabbar.
+           Der Subgraph Algorithmus ($O(n^3)$, blau) wÃ¤chst polynomial.
+           Standard-LIME-Sampling ($O(N \cdot p)$, rot) wÃ¤chst nur linear in~$n$.
            (b)~Integrationsarchitektur von Graph-LIME: Die drei Komponenten des
            Subgraph Algorithmus (Rotationsperturbation, LCS-Proximity, Subgraph-Inklusion)
-           ersetzen die entsprechenden Standard-LIME-Komponenten für graphstrukturierte Daten.}
+           ersetzen die entsprechenden Standard-LIME-Komponenten fÃ¼r graphstrukturierte Daten.}
   \label{fig:plot5}
 \end{figure}
 
@@ -832,10 +832,10 @@ LIME \citep{Ribeiro2016} in drei fundamentalen Dimensionen erweitert:
   Komponente & Standard-LIME & Graph-LIME \\
   \midrule
   Perturbation & $\mathcal{N}(\mu, \sigma^2)$ Sampling & Zyklische Rotationen \\
-  Proximity-Maß & L2-Gaußkern & LCS-Signaturkern \\
-  Komplexität $\Omega$ & LASSO ($\ell_1$-Norm) & Subgraph-Inklusion \\
-  Erklärungsmodell & $\boldsymbol{\beta}$-Koeffizienten & Minimaler Subgraph \\
-  Zeitkomplexität & $O(N \cdot p)$ & $O(n^3 + n^2 p)$ \\
+  Proximity-MaÃŸ & L2-GauÃŸkern & LCS-Signaturkern \\
+  KomplexitÃ¤t $\Omega$ & LASSO ($\ell_1$-Norm) & Subgraph-Inklusion \\
+  ErklÃ¤rungsmodell & $\boldsymbol{\beta}$-Koeffizienten & Minimaler Subgraph \\
+  ZeitkomplexitÃ¤t & $O(N \cdot p)$ & $O(n^3 + n^2 p)$ \\
   Datentypen & Beliebig & Graphstrukturiert \\
   \bottomrule
 \end{tabular}
@@ -846,133 +846,133 @@ LIME \citep{Ribeiro2016} in drei fundamentalen Dimensionen erweitert:
 % ===========================================================
 
 Die in dieser Arbeit vorgestellte Integration des Subgraph Algorithmus in LIME
-eröffnet eine Vielzahl von Forschungsrichtungen, die im Folgenden ausführlich
+erÃ¶ffnet eine Vielzahl von Forschungsrichtungen, die im Folgenden ausfÃ¼hrlich
 diskutiert werden.
 
 \subsection{Erweiterung auf gerichtete und gewichtete Graphen}
 
-Die aktuelle Signaturformel~\eqref{eq:signature} ist für ungewichtete Graphen
-definiert. Eine natürliche Erweiterung auf gewichtete Graphen der Form
-$G = (V, E, w)$ mit Gewichtsfunktion $w: E \to \mathbb{R}_{>0}$ könnte
+Die aktuelle Signaturformel~\eqref{eq:signature} ist fÃ¼r ungewichtete Graphen
+definiert. Eine natÃ¼rliche Erweiterung auf gewichtete Graphen der Form
+$G = (V, E, w)$ mit Gewichtsfunktion $w: E \to \mathbb{R}_{>0}$ kÃ¶nnte
 die Signatur wie folgt modifizieren:
 \[
   \sigma_j^w = \sum_{i=0}^{n-1} w(v_i, v_j) \cdot r^i + j \cdot r^n,
 \]
 wobei $r > \max_{e \in E} w(e)$ eine geeignete Basis ist, die Eindeutigkeit
 sicherstellt.
-Dies würde direkte Anwendungen in gewichteten sozialen Netzwerken,
-Transportnetzwerken und biochemischen Reaktionsgraphen ermöglichen.
+Dies wÃ¼rde direkte Anwendungen in gewichteten sozialen Netzwerken,
+Transportnetzwerken und biochemischen Reaktionsgraphen ermÃ¶glichen.
 
-Für gerichtete Graphen ist eine separate Behandlung von Eingangs- und Ausgangsgrad
+FÃ¼r gerichtete Graphen ist eine separate Behandlung von Eingangs- und Ausgangsgrad
 erforderlich:
 \[
   \sigma_j^{\mathrm{dir}} = \sigma_j^{\mathrm{out}} + j^2 \cdot 2^{2n},
   \quad \sigma_j^{\mathrm{in}} = \sum_{i=0}^{n-1} A_{ji} \cdot 2^i + j \cdot 2^n.
 \]
-Die LCS-Berechnung müsste dann auf beiden Signaturkomponenten gleichzeitig operieren.
+Die LCS-Berechnung mÃ¼sste dann auf beiden Signaturkomponenten gleichzeitig operieren.
 
-\subsection{Approximative LCS-Algorithmen für Echtzeit-XAI}
+\subsection{Approximative LCS-Algorithmen fÃ¼r Echtzeit-XAI}
 
 Die LCS-Berechnung hat unter SETH eine untere Laufzeitschranke von
 $\Omega(n^{2-\varepsilon})$ \citep{Abboud2015}.
-Für Echtzeit-Anwendungen wie interaktive Erklärungssysteme oder eingebettete
-Systeme (z.\,B.\ AUTOSAR-basierte Steuergeräte) ist $O(n^3)$ möglicherweise
+FÃ¼r Echtzeit-Anwendungen wie interaktive ErklÃ¤rungssysteme oder eingebettete
+Systeme (z.\,B.\ AUTOSAR-basierte SteuergerÃ¤te) ist $O(n^3)$ mÃ¶glicherweise
 zu langsam.
 
-Vielversprechende Ansätze umfassen:
+Vielversprechende AnsÃ¤tze umfassen:
 \begin{itemize}
-  \item \emph{Banded LCS} \citep{Allison1986}: Einschränkung der DP-Tabelle auf
+  \item \emph{Banded LCS} \citep{Allison1986}: EinschrÃ¤nkung der DP-Tabelle auf
         ein Band der Breite~$b$, was $O(n \cdot b)$ ergibt.
         Dies ist sinnvoll, wenn Rotationen nahezu ausgerichteter Graphen erwartet werden.
-  \item \emph{Locality-Sensitive Hashing (LSH) für LCS} \citep{Indyk1998}:
-        Approximative Ähnlichkeitssuche in subquadratischer Zeit.
+  \item \emph{Locality-Sensitive Hashing (LSH) fÃ¼r LCS} \citep{Indyk1998}:
+        Approximative Ã„hnlichkeitssuche in subquadratischer Zeit.
   \item \emph{Sketch-basierte Methoden}: Komprimierung der Signatursequenzen
-        auf Vektoren fester Länge, auf denen dann euklidische Distanzen berechnet
+        auf Vektoren fester LÃ¤nge, auf denen dann euklidische Distanzen berechnet
         werden.
-        Dieser Ansatz überbrückt die Lücke zwischen dem neuen Graph-Kernel und
+        Dieser Ansatz Ã¼berbrÃ¼ckt die LÃ¼cke zwischen dem neuen Graph-Kernel und
         dem Standard-L2-Kernel.
 \end{itemize}
 
 \subsection{Graph Neural Networks als Black-Box-Modell $\hat{f}$}
 
-Die wichtigste Anwendungsdomäne von Graph-LIME sind Erklärungen für
+Die wichtigste AnwendungsdomÃ¤ne von Graph-LIME sind ErklÃ¤rungen fÃ¼r
 \emph{Graph Neural Networks} (GNNs) \citep{Scarselli2009, Kipf2017}.
-GNNs lernen Repräsentationen auf Graphen und werden zunehmend für
-Moleküldesign, Wissensgraphen und soziale Netzwerkanalyse eingesetzt.
+GNNs lernen ReprÃ¤sentationen auf Graphen und werden zunehmend fÃ¼r
+MolekÃ¼ldesign, Wissensgraphen und soziale Netzwerkanalyse eingesetzt.
 
 \begin{itemize}
   \item \emph{GNNExplainer} \citep{Ying2019} ist ein verwandtes Verfahren, das
-        erklärende Subgraphen durch Maskierung lernt.
+        erklÃ¤rende Subgraphen durch Maskierung lernt.
         Graph-LIME unterscheidet sich durch die kombinatorisch exakte
-        Subgraph-Suche über Rotationen statt gradientenbasierter Maskierung.
+        Subgraph-Suche Ã¼ber Rotationen statt gradientenbasierter Maskierung.
   \item Eine direkte Integration mit \emph{PyTorch Geometric} \citep{Fey2019}
-        und \emph{Deep Graph Library} \citep{Wang2019} wäre ein natürlicher
-        nächster Schritt.
-  \item Für molekulare GNNs (z.\,B.\ Vorhersage von Medikamentenwirksamkeit)
-        könnte der minimale erklärende Subgraph direkt als erklärende
-        Teilstruktur des Moleküls interpretiert werden.
+        und \emph{Deep Graph Library} \citep{Wang2019} wÃ¤re ein natÃ¼rlicher
+        nÃ¤chster Schritt.
+  \item FÃ¼r molekulare GNNs (z.\,B.\ Vorhersage von Medikamentenwirksamkeit)
+        kÃ¶nnte der minimale erklÃ¤rende Subgraph direkt als erklÃ¤rende
+        Teilstruktur des MolekÃ¼ls interpretiert werden.
 \end{itemize}
 
-\subsection{Formalere Gütekriterien und Evaluationsmetriken}
+\subsection{Formalere GÃ¼tekriterien und Evaluationsmetriken}
 
 Die Evaluierung von XAI-Methoden ist ein offenes Forschungsproblem \citep{Doshi2017}.
-Für Graph-LIME müssen neue Metriken entwickelt werden:
+FÃ¼r Graph-LIME mÃ¼ssen neue Metriken entwickelt werden:
 
 \begin{itemize}
-  \item \emph{Strukturelle Fidelität:} Wie gut approximiert der erklärende Subgraph
+  \item \emph{Strukturelle FidelitÃ¤t:} Wie gut approximiert der erklÃ¤rende Subgraph
         $G^*_g$ die Vorhersage des GNN in der lokalen Umgebung?
-        Eine formale Definition könnte sein:
+        Eine formale Definition kÃ¶nnte sein:
         \[
           \mathrm{Fidelity}(G^*_g, \hat{f}, \mathbf{x})
           = 1 - \frac{|\hat{f}(\mathbf{x}) - g^*(G^*_g(\mathbf{x}))|}
                      {|\hat{f}(\mathbf{x})|}.
         \]
-  \item \emph{Minimality:} Wie viele Kanten enthält der erklärende Subgraph
-        im Vergleich zum vollständigen Modellgraphen?
+  \item \emph{Minimality:} Wie viele Kanten enthÃ¤lt der erklÃ¤rende Subgraph
+        im Vergleich zum vollstÃ¤ndigen Modellgraphen?
         $\mathrm{Minimality}(G^*_g) = 1 - |E_{G^*_g}| / |E_{G_{\hat{f}}}|$.
-  \item \emph{Konsistenz:} Erhalten strukturell ähnliche Instanzen ähnliche
-        erklärende Subgraphen?
+  \item \emph{Konsistenz:} Erhalten strukturell Ã¤hnliche Instanzen Ã¤hnliche
+        erklÃ¤rende Subgraphen?
         $\mathrm{Consistency}(\mathbf{x}, \mathbf{x}')
          = \mathrm{sim}_{\mathrm{LCS}}(G^*_g(\mathbf{x}), G^*_g(\mathbf{x}'))$.
 \end{itemize}
 
 \subsection{Parallelisierung der Rotationsberechnungen}
 
-Der dominante Term $O(n^3)$ der Graph-LIME-Komplexität entsteht durch $n$
-unabhängige LCS-Berechnungen.
-Nach Lemma~5.1 aus \citet{Epp2026} sind diese im Allgemeinen unabhängig voneinander.
-Dies eröffnet direkte Parallelisierungsmöglichkeiten:
+Der dominante Term $O(n^3)$ der Graph-LIME-KomplexitÃ¤t entsteht durch $n$
+unabhÃ¤ngige LCS-Berechnungen.
+Nach Lemma~5.1 aus \citet{Epp2026} sind diese im Allgemeinen unabhÃ¤ngig voneinander.
+Dies erÃ¶ffnet direkte ParallelisierungsmÃ¶glichkeiten:
 
 \begin{itemize}
   \item \emph{SIMD-Parallelisierung:} Auf modernen CPUs mit AVX-512-Instruktionen
-        können mehrere LCS-DP-Tabellen gleichzeitig berechnet werden.
-  \item \emph{GPU-Parallelisierung:} Die $n$ LCS-Berechnungen können auf $n$
+        kÃ¶nnen mehrere LCS-DP-Tabellen gleichzeitig berechnet werden.
+  \item \emph{GPU-Parallelisierung:} Die $n$ LCS-Berechnungen kÃ¶nnen auf $n$
         CUDA-Kerne verteilt werden, was die Laufzeit auf
         $O(n^2)$ amortisiert.
-        Dies würde die Integration in AUTOSAR-Plattformen mit GPU-Co-Prozessoren
-        (z.\,B.\ NVIDIA Drive) ermöglichen.
-  \item \emph{Verteilte Berechnung:} Für sehr große Graphen ($n > 10^4$) bietet
+        Dies wÃ¼rde die Integration in AUTOSAR-Plattformen mit GPU-Co-Prozessoren
+        (z.\,B.\ NVIDIA Drive) ermÃ¶glichen.
+  \item \emph{Verteilte Berechnung:} FÃ¼r sehr groÃŸe Graphen ($n > 10^4$) bietet
         sich eine Map-Reduce-Architektur an.
 \end{itemize}
 
 \subsection{Integration in den AUTOSAR-Standard}
 
-Der Subgraph Algorithmus wurde ursprünglich für die Verifikation von
+Der Subgraph Algorithmus wurde ursprÃ¼nglich fÃ¼r die Verifikation von
 Programmen durch Abstract Syntax Tree (AST)-Analyse entwickelt \citep{Epp2026}.
-Die natürliche Erweiterung auf AUTOSAR \citep{AUTOSAR2023} als
-Softwarearchitekturstandard für automobile Steuergeräte bietet
+Die natÃ¼rliche Erweiterung auf AUTOSAR \citep{AUTOSAR2023} als
+Softwarearchitekturstandard fÃ¼r automobile SteuergerÃ¤te bietet
 folgende Anwendungen:
 
 \begin{itemize}
-  \item \emph{Erklärung von Sicherheitsentscheidungen:} Steuergeräte treffen
+  \item \emph{ErklÃ¤rung von Sicherheitsentscheidungen:} SteuergerÃ¤te treffen
         sicherheitskritische Entscheidungen (Notbremsung, Lenkkorrektur).
-        Graph-LIME könnte diese Entscheidungen durch minimale erklärende
-        Subgraphen der Softwarekomponenten-Abhängigkeiten erklären.
-  \item \emph{Software-Äquivalenzprüfung:} Der Subgraph Algorithmus kann
-        prüfen, ob zwei AUTOSAR-Softwarekomponenten strukturell äquivalent sind,
-        was für Zertifizierungszwecke (ISO 26262) relevant ist.
-  \item \emph{Echtzeitfähigkeit:} Mit den in Abschnitt~7.2 genannten
-        Approximationen könnte Graph-LIME auf AUTOSAR Adaptive Platform mit
+        Graph-LIME kÃ¶nnte diese Entscheidungen durch minimale erklÃ¤rende
+        Subgraphen der Softwarekomponenten-AbhÃ¤ngigkeiten erklÃ¤ren.
+  \item \emph{Software-Ã„quivalenzprÃ¼fung:} Der Subgraph Algorithmus kann
+        prÃ¼fen, ob zwei AUTOSAR-Softwarekomponenten strukturell Ã¤quivalent sind,
+        was fÃ¼r Zertifizierungszwecke (ISO 26262) relevant ist.
+  \item \emph{EchtzeitfÃ¤higkeit:} Mit den in Abschnitt~7.2 genannten
+        Approximationen kÃ¶nnte Graph-LIME auf AUTOSAR Adaptive Platform mit
         QNX-Echtzeitbetriebssystem implementiert werden.
 \end{itemize}
 
@@ -980,7 +980,7 @@ folgende Anwendungen:
 
 SHAP (SHapley Additive exPlanations) \citep{Lundberg2017} ist eine weitere
 wichtige XAI-Methode, die auf Shapley-Werten aus der kooperativen Spieltheorie
-basiert. Für Graphen definiert man:
+basiert. FÃ¼r Graphen definiert man:
 \[
   \phi_j = \sum_{S \subseteq V \setminus \{j\}}
   \frac{|S|!\,(|V|-|S|-1)!}{|V|!}
@@ -988,35 +988,35 @@ basiert. Für Graphen definiert man:
 \]
 wobei $v(S)$ der Wert der Koalition~$S$ ist.
 
-Eine interessante Forschungsfrage ist: Stimmt der minimale erklärende Subgraph
-$G^*_g$ aus Graph-LIME mit dem Subgraphen der Knoten mit höchsten Shapley-Werten
-überein?
-Eine positive Antwort würde die theoretische Fundierung von Graph-LIME
-erheblich stärken.
+Eine interessante Forschungsfrage ist: Stimmt der minimale erklÃ¤rende Subgraph
+$G^*_g$ aus Graph-LIME mit dem Subgraphen der Knoten mit hÃ¶chsten Shapley-Werten
+Ã¼berein?
+Eine positive Antwort wÃ¼rde die theoretische Fundierung von Graph-LIME
+erheblich stÃ¤rken.
 
 \subsection{Erweiterung auf dynamische Graphen}
 
-In vielen realen Anwendungen sind Graphen zeitlich veränderlich:
-Soziale Netzwerke, Verkehrsnetzwerke und biologische Signalwege ändern ihre
-Struktur über die Zeit.
-Eine Erweiterung auf dynamische Graphen $G(t) = (V, E(t))$ könnte
+In vielen realen Anwendungen sind Graphen zeitlich verÃ¤nderlich:
+Soziale Netzwerke, Verkehrsnetzwerke und biologische Signalwege Ã¤ndern ihre
+Struktur Ã¼ber die Zeit.
+Eine Erweiterung auf dynamische Graphen $G(t) = (V, E(t))$ kÃ¶nnte
 die Signaturformel~\eqref{eq:signature} um eine Zeitkomponente erweitern:
 \[
   \sigma_j(t) = \sum_{i=0}^{n-1} A_{ij}(t) \cdot 2^i + j \cdot 2^n
                 + \lfloor t \rfloor \cdot 2^{2n}.
 \]
-Graph-LIME würde dann nicht nur die räumliche, sondern auch die zeitliche
-Nachbarschaft einer Instanz berücksichtigen.
+Graph-LIME wÃ¼rde dann nicht nur die rÃ¤umliche, sondern auch die zeitliche
+Nachbarschaft einer Instanz berÃ¼cksichtigen.
 
 \subsection{Anwendung auf bioinformatische Graphen}
 
-Proteininteraktionsnetzwerke, Metabolitenflüsse und Genregulationsnetzwerke
-sind natürliche Anwendungsfelder.
-Der minimale erklärende Subgraph für eine Krankheitsvorhersage könnte direkt
+Proteininteraktionsnetzwerke, MetabolitenflÃ¼sse und Genregulationsnetzwerke
+sind natÃ¼rliche Anwendungsfelder.
+Der minimale erklÃ¤rende Subgraph fÃ¼r eine Krankheitsvorhersage kÃ¶nnte direkt
 als biologisch relevanter Pathway interpretiert werden:
 \begin{itemize}
   \item \emph{Drogenresistenz:} Welcher minimale Teilpfad eines Metabolitnetzwerks
-        erklärt die vorhergesagte Resistenz?
+        erklÃ¤rt die vorhergesagte Resistenz?
   \item \emph{Krebsdiagnose:} Welche minimale Knotenmenge im Proteininteraktionsnetz
         unterscheidet Tumorzellen von Normalzellen?
 \end{itemize}
@@ -1100,3 +1100,4 @@ GNNExplainer: Generating explanations for graph neural networks.
 \end{thebibliography}
 
 \end{document}
+

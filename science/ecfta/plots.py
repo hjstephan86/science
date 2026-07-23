@@ -41,7 +41,7 @@ plt.rcParams.update({
     'axes.spines.right': False,
 })
 
-OUT = '/home/claude/cfta_dp/plots/'
+OUT = 'plots/'
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Plot 1: Laufzeitwachstum 3^n vs n^k (Greedy vs Subset-DP)

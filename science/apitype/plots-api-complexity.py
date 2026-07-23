@@ -1,4 +1,4 @@
-import matplotlib
+﻿import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -50,6 +50,7 @@ plt.colorbar(im, ax=ax2, label='LCS-Länge')
 
 fig.suptitle('Komplexitätsanalyse und LCS-Matching für API-Graphen', fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/apitype/plot_api_complexity.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_api_complexity.pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 3 done")
+

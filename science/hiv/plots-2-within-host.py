@@ -92,6 +92,5 @@ axes[0].text(500, 3, 'Chronische Phase', fontsize=8, color='#1946a0',
 
 ax3.set_xlim(-20, 3700)
 plt.tight_layout(rect=[0, 0, 1, 0.96])
-plt.savefig('/home/claude/plot2_within_host.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot2_within_host.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot2_within_host.png', dpi=150, bbox_inches='tight')
 print("Plot 2 saved.")

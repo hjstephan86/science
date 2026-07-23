@@ -51,6 +51,6 @@ ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('/home/claude/liberalismus/plot1_wertindex.pdf', format='pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot1_wertindex.pdf', format='pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 1 gespeichert.")

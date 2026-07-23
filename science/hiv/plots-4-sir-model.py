@@ -94,6 +94,5 @@ ax_flat[1].text(30, 4, f'$R_0$ (kein ART) = {r0_no_art:.2f}\n'
                 bbox=dict(boxstyle='round', facecolor='#f0f0f0', edgecolor='gray', alpha=0.8))
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig('/home/claude/plot4_sir_model.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot4_sir_model.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot4_sir_model.png', dpi=150, bbox_inches='tight')
 print("Plot 4 saved.")

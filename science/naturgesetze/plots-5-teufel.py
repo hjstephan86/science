@@ -127,7 +127,7 @@ ax5.set_facecolor('#F5F5F8')
 fig.suptitle('Abbildung 5: Der Teufel als maximal widersprüchliche Kraft — Formale Analyse der Konsequenz (Hölle) inkonsequenten Handelns',
              fontsize=12, fontweight='bold', y=0.99)
 
-plt.savefig('/home/claude/naturgesetze/plot5_teufel.pdf', bbox_inches='tight', dpi=200)
-plt.savefig('/home/claude/naturgesetze/plot5_teufel.png', bbox_inches='tight', dpi=150)
+plt.savefig('plot5_teufel.pdf', bbox_inches='tight', dpi=200)
+plt.savefig('plot5_teufel.png', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 5 gespeichert.")

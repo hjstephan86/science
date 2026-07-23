@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -17,7 +17,7 @@
 
 \geometry{margin=2.5cm}
 
-% Verhindert, dass Text über den rechten Rand hinausragt
+% Verhindert, dass Text Ã¼ber den rechten Rand hinausragt
 \setlength{\emergencystretch}{3em}
 \tolerance=1500
 \hbadness=1500
@@ -70,9 +70,9 @@ und Softwareentwicklern folgt. Wir f\"uhren ein formales Modell der \emph{Vertra
 $B(t, u, r)$ ein, definieren Klassen von Softwarevertr\"agen nach Unsicherheits- und
 Komplexit\"atsgrad und beweisen formal, dass die Belastbarkeit mit wachsender Projektlaufzeit,
 steigender Benutzerzahl und zunehmenden Anforderungen monoton abnimmt. Ein zentrales Ergebnis
-dieser Arbeit ist die formale Begr\"undung des Satzes \emph{„Software hei\ss{}t Risiko"}:
+dieser Arbeit ist die formale Begr\"undung des Satzes \emph{â€žSoftware hei\ss{}t Risiko"}:
 Kein noch so umfangreiches Testen vor der Inbetriebnahme kann absolute Sicherheit f\"ur den
-Produktionseinsatz garantieren. Dieses inhärente Restrisiko muss von allen Beteiligten
+Produktionseinsatz garantieren. Dieses inhÃ¤rente Restrisiko muss von allen Beteiligten
 bewusst eingeplant werden. Dar\"uber hinaus wird die Frage gestellt, welche
 Berufsqualifikationen f\"ur die Beurteilung von Softwarevertr\"agen ben\"otigt werden, und
 es wird ein multidisziplin\"ares Kompetenzmodell vorgeschlagen. Alle Ergebnisse werden
@@ -138,8 +138,8 @@ Diese Arbeit verfolgt vier Ziele:
           dessen Eigenschaften zu beweisen.
     \item Eine Klassifikation von Softwarevertr\"agen nach Unsicherheits- und
           Komplexit\"atsgrad vorzustellen.
-    \item Den Satz \emph{„Software hei\ss{}t Risiko"} formal zu begr\"unden und das
-          inhärente Restrisiko nach Testabschluss zu quantifizieren.
+    \item Den Satz \emph{â€žSoftware hei\ss{}t Risiko"} formal zu begr\"unden und das
+          inhÃ¤rente Restrisiko nach Testabschluss zu quantifizieren.
     \item Die notwendigen Qualifikationsprofile f\"ur die Bewertung von Softwarevertr\"agen
           multidisziplin\"ar zu modellieren.
 \end{enumerate}
@@ -184,7 +184,7 @@ Diese Arbeit verfolgt vier Ziele:
 
 \begin{beweis}
     Der Beweis folgt aus dem Halteproblem \cite{turing1936}. Sei $\mathcal{S}$ ein Turing-vollst\"andiges
-    Softwaresystem. Die Spezifikation $\Phi_{\mathrm{halt}}$: \emph{„Das System terminiert
+    Softwaresystem. Die Spezifikation $\Phi_{\mathrm{halt}}$: \emph{â€žDas System terminiert
     auf allen Eingaben"} ist \"aquivalent zum Halteproblem f\"ur Turingmaschinen, das von
     Alan Turing 1936 als unentscheidbar nachgewiesen wurde \cite{turing1936}. Da jedes
     Turing-vollst\"andige System eine Turingmaschine simulieren kann, folgt: Kein Algorithmus
@@ -330,7 +330,7 @@ was dem S\"attigungsverhalten realer Projekte entspricht (vgl.\ Abbildung~1).
 \end{beweis}
 
 % ===========================================================================
-\section{Das inhärente Restrisiko: Software heißt Risiko}
+\section{Das inhÃ¤rente Restrisiko: Software heiÃŸt Risiko}
 % ===========================================================================
 
 Dieser Abschnitt formalisiert einen der zentralen Bef\"unde dieser Arbeit: Selbst nach
@@ -373,7 +373,7 @@ eingeschrieben.
 \end{beweis}
 
 \begin{bemerkung}
-    Dijkstra formulierte diesen Sachverhalt treffend: \emph{„Program testing can be used
+    Dijkstra formulierte diesen Sachverhalt treffend: \emph{â€žProgram testing can be used
     to show the presence of bugs, but never to show their absence."} \cite{dijkstra1972}
     Satz~\ref{satz:tests} liefert die formale Begr\"undung dieser Aussage.
 \end{bemerkung}
@@ -402,7 +402,7 @@ eingeschrieben.
     endliche Testmenge, gilt $\rho = 1 - \tau > 0$. $\qedhere$
 \end{beweis}
 
-\subsection{Formaler Satz: Software heißt Risiko}
+\subsection{Formaler Satz: Software heiÃŸt Risiko}
 
 \begin{satz}[Software hei\ss{}t Risiko]
 \label{satz:risiko}
@@ -620,7 +620,7 @@ PDF-Dateien vor.
     \caption{Wachstum der technischen Unsicherheit $U_{\mathrm{tech}}(t)$,
     der Anforderungsunsicherheit $U_{\mathrm{req}}(t)$ und der Gesamtunsicherheit
     $U_{\mathrm{ges}}(t)$ \"uber die normierte Projektlaufzeit $t$. Alle Kurven folgen
-    einem S\"attigungsmodell $U_k(t) = 1 - e^{-\alpha_k t}$ mit domänenspezifischen
+    einem S\"attigungsmodell $U_k(t) = 1 - e^{-\alpha_k t}$ mit domÃ¤nenspezifischen
     Zerfallsraten $\alpha_k$. Die Gesamtunsicherheit \"uberschreitet bereits bei
     $t \approx 7$ den Wert $0.9$, was einer praktisch nicht mehr kontrollierbaren
     Vertragssituation entspricht. Dies visualisiert formal die Aussage von
@@ -704,7 +704,7 @@ PDF-Dateien vor.
 \label{sec:uml}
 % ===========================================================================
 
-Die bisherigen Ergebnisse haben gezeigt, dass Softwarevertr\"age inhärent unsicher sind
+Die bisherigen Ergebnisse haben gezeigt, dass Softwarevertr\"age inhÃ¤rent unsicher sind
 und dass das Restrisiko $\rho > 0$ strukturell nicht eliminierbar ist. Diese Erkenntnis
 hat unmittelbare Konsequenzen f\"ur die \emph{Modellierung} von Softwaresystemen: Wenn
 Risiko dem System strukturell innewohnt, m\"ussen auch die Modelle, mit denen das System
@@ -1046,7 +1046,7 @@ hier in der Abh\"angigkeitspropagation zwischen Komponenten.
 \end{satz}
 
 \begin{beweis}
-    Das Ereignis „Ausfall von $c_\ell$" tritt ein entweder durch:
+    Das Ereignis â€žAusfall von $c_\ell$" tritt ein entweder durch:
     \begin{enumerate}[label=(\roman*)]
         \item Eigenversagen von $c_\ell$ mit Wahrscheinlichkeit $\rho_{c_\ell}$, oder
         \item Versagen durch Propagation aus $c_0$: Wahrscheinlichkeit
@@ -1155,7 +1155,7 @@ ergibt sich aus der Komplexit\"at der Verzweigungslogik.
 
 \begin{bemerkung}[Anwendungsfalldiagramme]
     Anwendungsfalldiagramme (\emph{Use Case Diagrams}) geben prim\"ar eine
-    Außenperspektive auf das System. Im \textsf{RiskProfile} werden Use Cases mit
+    AuÃŸenperspektive auf das System. Im \textsf{RiskProfile} werden Use Cases mit
     \texttt{\guillemotleft{}riskElement\guillemotright{}} annotiert, wobei
     \texttt{uncertainty} die Unklarheit der Anforderungsdefinition und
     \texttt{criticality} die gesch\"aftliche Kritikalit\"at repr\"asentiert. Ein
@@ -1313,7 +1313,7 @@ ergibt sich aus der Komplexit\"at der Verzweigungslogik.
 % ===========================================================================
 
 Die bisher entwickelten Ergebnisse dieser Arbeit --- das Belastbarkeitsmodell
-$B(t,u,r)$, der Satz „Software hei\ss{}t Risiko" (Satz~\ref{satz:risiko}) und das
+$B(t,u,r)$, der Satz â€žSoftware hei\ss{}t Risiko" (Satz~\ref{satz:risiko}) und das
 UML-Risikoprofil \textsf{RiskProfile} (Abschnitt~\ref{sec:uml}) --- f\"uhren zu einer
 zentralen rechtlichen Konsequenz, die in diesem Kapitel formal ausgearbeitet wird:
 
@@ -1406,7 +1406,7 @@ formal begr\"undet und in den rechtlichen Kontext eingebettet.
     Risiken akzeptiert --- seine Willenserkl\"arung ist informationsdefizit\"ar.
 
     \textbf{Schritt~3: Logische \"Aquivalenz.}
-    Sei $I(P)$ die Aussage „Partei $P$ hat informierte Kenntnis der
+    Sei $I(P)$ die Aussage â€žPartei $P$ hat informierte Kenntnis der
     Vertragsverpflichtung". Ohne $\mathcal{N}$ gilt:
     $\neg I(\text{Auftraggeber})$, denn $\rho^{\mathrm{sys}}$ ist unbekannt.
     Da ein g\"ultiger Vertrag $I(\text{Auftraggeber}) \wedge
@@ -1564,12 +1564,12 @@ Risikomodellierungstiefe und Rechtskraft strukturiert:
     ohne Risikonachweis, da Erwartungen und Risiken ex ante klar kommuniziert sind.
 \end{hypothese}
 
-\begin{bemerkung}[Verhältnis zu bestehenden Normen]
+\begin{bemerkung}[VerhÃ¤ltnis zu bestehenden Normen]
     Das hier entwickelte Stufenmodell ist kompatibel mit und baut auf bestehenden
     Normen auf. ISO/IEC~25010 definiert Qualit\"atsmerkmale, die in die Tagged Values
     des \textsf{RiskProfile} einflie\ss{}en. ISO/IEC~12207 beschreibt den
     Softwarelebenszyklusprozess, in den der Risikonachweis als eigene Phase
-    „Risikomodellierung und -nachweis" integriert werden kann --- idealerweise zwischen
+    â€žRisikomodellierung und -nachweis" integriert werden kann --- idealerweise zwischen
     Anforderungsanalyse und Vertragsschluss. IEC~61508 fordert f\"ur sicherheitskritische
     Systeme bereits eine systematische Risikoanalyse; das vorliegende Stufenmodell
     verallgemeinert diesen Gedanken auf \emph{alle} Softwarevertr\"age, unabh\"angig
@@ -1882,7 +1882,7 @@ annotiert und dem Auftraggeber zur Verf\"ugung stellt, sendet ein glaubw\"urdige
 \cite{harsanyi1967} vertrauensbildend und vertragsst\"arkend wirkt.
 
 % ---------------------------------------------------------------------------
-\subsection{Formale Methoden und Vertragsprüfung}
+\subsection{Formale Methoden und VertragsprÃ¼fung}
 % ---------------------------------------------------------------------------
 
 Die Ergebnisse dieser Arbeit legen nahe, dass formale Methoden --- wie Model Checking
@@ -2112,3 +2112,4 @@ etabliert ist.
 \end{thebibliography}
 
 \end{document}
+

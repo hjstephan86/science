@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -17,7 +17,7 @@
 
 \geometry{margin=2.5cm}
 
-% Verhindere Überlauf über den rechten Rand
+% Verhindere Ãœberlauf Ã¼ber den rechten Rand
 \setlength{\emergencystretch}{3em}
 \sloppy
 
@@ -58,7 +58,7 @@
 }
 
 \title{Elektronen-Beweglichkeit in KI-Rechenzentren\\
-\large Einfluss geistiger Qualität des Nutzers auf die\\
+\large Einfluss geistiger QualitÃ¤t des Nutzers auf die\\
 Halbleiterphysik neuronaler Prozessoren}
 \author{Stephan Epp}
 \date{24. Juni 2026}
@@ -69,40 +69,40 @@ Halbleiterphysik neuronaler Prozessoren}
 
 \begin{abstract}
 Die vorliegende Arbeit untersucht den Zusammenhang zwischen der Elektronen-Beweglichkeit
-$\mu$ in neuronalen Prozessoren von KI-Rechenzentren und der geistigen Qualität des
+$\mu$ in neuronalen Prozessoren von KI-Rechenzentren und der geistigen QualitÃ¤t des
 kommunizierenden Nutzers, quantifiziert durch einen kognitiven Fokus-Index $q \in [0,100]$.
 Wir stellen ein physikalisch-informationstheoretisches Modell vor, das zeigt, wie
-hochkohärente, semantisch präzise Eingabesequenzen die thermische Last im Halbleitersubstrat
+hochkohÃ¤rente, semantisch prÃ¤zise Eingabesequenzen die thermische Last im Halbleitersubstrat
 senken, dadurch die Phononen-Elektron-Streurate reduzieren und die effektive Beweglichkeit
-$\mu_{\mathrm{eff}}$ signifikant erhöhen. Es werden sechs formale Lemmata und drei Sätze
-bewiesen sowie sechs Matplotlib-gestützte Simulationsexperimente durchgeführt.
-Die Resultate belegen eine lineare Abhängigkeit $\mu_{\mathrm{eff}} \approx 1400 + 8{,}5\,q$
-$[\text{cm}^2/\text{Vs}]$ und eine davon abhängige Steigerung des KI-Qualitätsscores
+$\mu_{\mathrm{eff}}$ signifikant erhÃ¶hen. Es werden sechs formale Lemmata und drei SÃ¤tze
+bewiesen sowie sechs Matplotlib-gestÃ¼tzte Simulationsexperimente durchgefÃ¼hrt.
+Die Resultate belegen eine lineare AbhÃ¤ngigkeit $\mu_{\mathrm{eff}} \approx 1400 + 8{,}5\,q$
+$[\text{cm}^2/\text{Vs}]$ und eine davon abhÃ¤ngige Steigerung des KI-QualitÃ¤tsscores
 $Q_{\mathrm{AI}}$ um bis zu $30\,\%$.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
-%% ─────────────────────────────────────────────────────────────────────────────
-\section{Einführung}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+\section{EinfÃ¼hrung}
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Motivation}
 
 Moderne KI-Rechenzentren betreiben tausende von Neural Processing Units~(NPUs), die auf
 GaN-, GaAs- oder hochreinen Si\-Transistoren basieren. Die Rechenleistung solcher Systeme
-ist maßgeblich von der Elektronen-Beweglichkeit~$\mu$ im Halbleitermaterial abhängig.
-Bisherige Arbeiten betrachteten $\mu$ ausschließlich als Funktion der Chip-Temperatur~$T$,
-der Dotierkonzentration~$N_D$ und der Gitterstörgröße~$\Delta_{\mathrm{lat}}$~\cite{Sze2007,Lundstrom2009}.
+ist maÃŸgeblich von der Elektronen-Beweglichkeit~$\mu$ im Halbleitermaterial abhÃ¤ngig.
+Bisherige Arbeiten betrachteten $\mu$ ausschlieÃŸlich als Funktion der Chip-Temperatur~$T$,
+der Dotierkonzentration~$N_D$ und der GitterstÃ¶rgrÃ¶ÃŸe~$\Delta_{\mathrm{lat}}$~\cite{Sze2007,Lundstrom2009}.
 
-Eine bisher unerforschte Dimension ist die \emph{Rückkopplungsschleife} zwischen der
-Qualität der Nutzerkommunikation -- verstanden als semantische Kohärenz, Präzision und
+Eine bisher unerforschte Dimension ist die \emph{RÃ¼ckkopplungsschleife} zwischen der
+QualitÃ¤t der Nutzerkommunikation -- verstanden als semantische KohÃ¤renz, PrÃ¤zision und
 kognitiver Fokus -- und der resultierenden physikalischen Last im Halbleitersystem.
-Präzise formulierte Prompts erzeugen kompaktere Aktivierungsmuster im neuronalen Netzwerk
+PrÃ¤zise formulierte Prompts erzeugen kompaktere Aktivierungsmuster im neuronalen Netzwerk
 \cite{Vaswani2017,Brown2020}, reduzieren Speicherzugriffe und senken damit die dynamische
-Verlustleistung~$P_{\mathrm{dyn}}$. Über den bekannten Zusammenhang zwischen Chip-Temperatur
-und Phononen-Streuung ergibt sich eine direkte Kausalbeziehung zwischen geistiger Qualität
+Verlustleistung~$P_{\mathrm{dyn}}$. Ãœber den bekannten Zusammenhang zwischen Chip-Temperatur
+und Phononen-Streuung ergibt sich eine direkte Kausalbeziehung zwischen geistiger QualitÃ¤t
 des Nutzers und messbarer Elektronen-Beweglichkeit~\cite{Kittel2005}.
 
 \subsection{Problemstellung}
@@ -111,30 +111,30 @@ Seien $q \in [0,100]$ der kognitive Fokus-Index des Nutzers, $T(q)$ die resultie
 Chip-Temperatur und $\mu(T)$ die Elektronen-Beweglichkeit. Wir untersuchen:
 
 \begin{enumerate}
-  \item Existiert ein formaler, physikalisch begründeter Zusammenhang $\mu = f(q)$?
-  \item Wie verändert sich die KI-Ergebnisqualität $Q_{\mathrm{AI}}$ als Funktion von $\mu$?
+  \item Existiert ein formaler, physikalisch begrÃ¼ndeter Zusammenhang $\mu = f(q)$?
+  \item Wie verÃ¤ndert sich die KI-ErgebnisqualitÃ¤t $Q_{\mathrm{AI}}$ als Funktion von $\mu$?
   \item Welche optimalen Fokus-Niveaus maximieren $Q_{\mathrm{AI}}$ bei gegebenen
         thermischen Constraints?
 \end{enumerate}
 
-\subsection{Beiträge der Arbeit}
+\subsection{BeitrÃ¤ge der Arbeit}
 
 \begin{itemize}
   \item Formales Modell der Kausalkette $q \to P_{\mathrm{dyn}} \to T \to \mu \to Q_{\mathrm{AI}}$.
-  \item Sechs Lemmata und drei Sätze mit vollständigen Beweisen.
+  \item Sechs Lemmata und drei SÃ¤tze mit vollstÃ¤ndigen Beweisen.
   \item Sechs quantitative Simulationsexperimente mit Matplotlib-Visualisierungen.
-  \item Ausblick auf experimentelle Verifizierbarkeit und zukünftige Forschungsrichtungen.
+  \item Ausblick auf experimentelle Verifizierbarkeit und zukÃ¼nftige Forschungsrichtungen.
 \end{itemize}
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Grundlagen}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Halbleiterphysik: Elektronen-Beweglichkeit}
 
 \begin{definition}[Elektronen-Beweglichkeit]
-Die Elektronen-Beweglichkeit $\mu$ eines Halbleitermaterials ist definiert als das Verhältnis
-der mittleren Driftgeschwindigkeit $v_d$ der Elektronen zur angelegten elektrischen Feldstärke
+Die Elektronen-Beweglichkeit $\mu$ eines Halbleitermaterials ist definiert als das VerhÃ¤ltnis
+der mittleren Driftgeschwindigkeit $v_d$ der Elektronen zur angelegten elektrischen FeldstÃ¤rke
 $\mathcal{E}$:
 \[
 \mu \;=\; \frac{v_d}{\mathcal{E}} \quad [\text{cm}^2/\text{Vs}].
@@ -142,7 +142,7 @@ $\mathcal{E}$:
 \end{definition}
 
 \begin{definition}[Phononen-Streuzeit]
-Die mittlere Stoßzeit $\tau_{\mathrm{ph}}$ der Elektronen mit akustischen Phononen ist
+Die mittlere StoÃŸzeit $\tau_{\mathrm{ph}}$ der Elektronen mit akustischen Phononen ist
 bei Temperaturen $T > 100\,\text{K}$ antiproportional zur Temperatur:
 \[
 \tau_{\mathrm{ph}}(T) \;=\; \tau_0 \cdot \left(\frac{T_0}{T}\right)^{\alpha}, \quad \alpha \approx 1{,}5.
@@ -150,27 +150,27 @@ bei Temperaturen $T > 100\,\text{K}$ antiproportional zur Temperatur:
 \end{definition}
 
 \begin{definition}[Matthiessen-Regel]
-Für mehrere unabhängige Streumechanismen gilt für die Gesamt-Beweglichkeit:
+FÃ¼r mehrere unabhÃ¤ngige Streumechanismen gilt fÃ¼r die Gesamt-Beweglichkeit:
 \[
 \frac{1}{\mu_{\mathrm{eff}}} \;=\; \frac{1}{\mu_{\mathrm{ph}}} + \frac{1}{\mu_{\mathrm{imp}}} + \frac{1}{\mu_{\mathrm{lat}}},
 \]
 wobei $\mu_{\mathrm{ph}}$ die phononen-limitierte, $\mu_{\mathrm{imp}}$ die
-ionisierte-Störstellen-limitierte und $\mu_{\mathrm{lat}}$ die gitterfehler-limitierte
+ionisierte-StÃ¶rstellen-limitierte und $\mu_{\mathrm{lat}}$ die gitterfehler-limitierte
 Beweglichkeit bezeichnet~\cite{Sze2007}.
 \end{definition}
 
 \subsection{Dynamische Verlustleistung in CMOS-NPUs}
 
 \begin{definition}[Dynamische Verlustleistung]
-Die dynamische Verlustleistung einer CMOS-Schaltung mit Schaltaktivität $\alpha$,
-Kapazitätsbelag $C$, Versorgungsspannung $V_{\mathrm{DD}}$ und Taktfrequenz $f$ beträgt:
+Die dynamische Verlustleistung einer CMOS-Schaltung mit SchaltaktivitÃ¤t $\alpha$,
+KapazitÃ¤tsbelag $C$, Versorgungsspannung $V_{\mathrm{DD}}$ und Taktfrequenz $f$ betrÃ¤gt:
 \[
 P_{\mathrm{dyn}} \;=\; \alpha \cdot C \cdot V_{\mathrm{DD}}^2 \cdot f.
 \]
 \end{definition}
 
 \begin{definition}[Thermisches Modell des Chips]
-Die stationäre Chip-Temperatur $T$ in einem Rechenzentrum mit Wärmewiderstand
+Die stationÃ¤re Chip-Temperatur $T$ in einem Rechenzentrum mit WÃ¤rmewiderstand
 $\theta_{\mathrm{JA}}$ (Junction-to-Ambient) und Umgebungstemperatur $T_{\mathrm{amb}}$
 ergibt sich zu:
 \[
@@ -181,29 +181,29 @@ T \;=\; T_{\mathrm{amb}} + P_{\mathrm{dyn}} \cdot \theta_{\mathrm{JA}}.
 \subsection{Kognitiver Fokus-Index}
 
 \begin{definition}[Kognitiver Fokus-Index $q$]
-Der kognitive Fokus-Index $q \in [0,100]$ ist ein normiertes Maß für die semantische
-Kohärenz, lexikalische Präzision und strukturelle Komplexität der Nutzereingabe, definiert als:
+Der kognitive Fokus-Index $q \in [0,100]$ ist ein normiertes MaÃŸ fÃ¼r die semantische
+KohÃ¤renz, lexikalische PrÃ¤zision und strukturelle KomplexitÃ¤t der Nutzereingabe, definiert als:
 \[
 q \;=\; 100 \cdot \frac{H_{\mathrm{sem}}(\text{Prompt})}{H_{\mathrm{max}}},
 \]
 wobei $H_{\mathrm{sem}}$ die semantische Entropie~\cite{Shannon1948} des Prompts bezeichnet
 und $H_{\mathrm{max}}$ die maximale erreichbare semantische Entropie bei gleichem
-Tokenlimit ist. Hohe Werte von $q$ entsprechen präzisen, zielgerichteten und kognitiv
-kohärenten Formulierungen.
+Tokenlimit ist. Hohe Werte von $q$ entsprechen prÃ¤zisen, zielgerichteten und kognitiv
+kohÃ¤renten Formulierungen.
 \end{definition}
 
-\begin{definition}[Schaltaktivität als Funktion von $q$]
+\begin{definition}[SchaltaktivitÃ¤t als Funktion von $q$]
 \label{def:alpha_q}
-Sei $\alpha_{\mathrm{max}}$ die maximale Schaltaktivität (bei $q=0$, unstrukturierter Eingabe)
+Sei $\alpha_{\mathrm{max}}$ die maximale SchaltaktivitÃ¤t (bei $q=0$, unstrukturierter Eingabe)
 und $\alpha_{\mathrm{min}}$ die minimale (bei $q=100$, optimaler Eingabe). Wir modellieren:
 \[
 \alpha(q) \;=\; \alpha_{\mathrm{max}} - (\alpha_{\mathrm{max}} - \alpha_{\mathrm{min}}) \cdot \frac{q}{100}.
 \]
 \end{definition}
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Formales Modell und Beweise}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Kausalkette von $q$ zu $\mu$}
 
@@ -238,13 +238,13 @@ $\frac{\partial P_{\mathrm{dyn}}}{\partial q} < 0$, gilt:
 
 \begin{lemma}[Steigende Phononen-Streuzeit bei sinkender Temperatur]
 \label{lem:tau}
-Für $T > 100\,\text{K}$ ist $\tau_{\mathrm{ph}}(T) = \tau_0 \cdot (T_0/T)^\alpha$ streng
+FÃ¼r $T > 100\,\text{K}$ ist $\tau_{\mathrm{ph}}(T) = \tau_0 \cdot (T_0/T)^\alpha$ streng
 monoton fallend in $T$ und daher streng monoton steigend in $q$.
 \end{lemma}
 
 \begin{proof}
 $\frac{\partial \tau_{\mathrm{ph}}}{\partial T} = -\alpha \tau_0 T_0^\alpha T^{-\alpha-1} < 0$
-für $\alpha > 0$, $T > 0$. Mit Lemma~\ref{lem:temp} und der Kettenregel:
+fÃ¼r $\alpha > 0$, $T > 0$. Mit Lemma~\ref{lem:temp} und der Kettenregel:
 \[
 \frac{\partial \tau_{\mathrm{ph}}}{\partial q}
 = \frac{\partial \tau_{\mathrm{ph}}}{\partial T} \cdot \frac{\partial T}{\partial q}
@@ -270,7 +270,7 @@ Da $e, m^* > 0$ konstant und $\frac{\partial \tau_{\mathrm{ph}}}{\partial q} > 0
 \begin{satz}[Wachstum der effektiven Elektronen-Beweglichkeit mit $q$]
 \label{satz:mu_q}
 Die effektive Elektronen-Beweglichkeit $\mu_{\mathrm{eff}}(q)$ ist streng monoton steigend
-in $q$. Für das lineare Näherungsmodell gilt:
+in $q$. FÃ¼r das lineare NÃ¤herungsmodell gilt:
 \[
 \mu_{\mathrm{eff}}(q) \;\approx\; \mu_0 + \beta \cdot q, \quad \mu_0 > 0,\; \beta > 0.
 \]
@@ -279,7 +279,7 @@ in $q$. Für das lineare Näherungsmodell gilt:
 \begin{proof}
 Nach der Matthiessen-Regel gilt
 $\mu_{\mathrm{eff}}^{-1} = \mu_{\mathrm{ph}}^{-1} + \mu_{\mathrm{imp}}^{-1} + \mu_{\mathrm{lat}}^{-1}$.
-Da $\mu_{\mathrm{imp}}$ und $\mu_{\mathrm{lat}}$ nicht von $q$ abhängen, folgt:
+Da $\mu_{\mathrm{imp}}$ und $\mu_{\mathrm{lat}}$ nicht von $q$ abhÃ¤ngen, folgt:
 \[
 \frac{\partial \mu_{\mathrm{eff}}^{-1}}{\partial q}
 = -\mu_{\mathrm{ph}}^{-2} \cdot \frac{\partial \mu_{\mathrm{ph}}}{\partial q} < 0,
@@ -291,24 +291,24 @@ also $\frac{\partial \mu_{\mathrm{eff}}}{\partial q} > 0$. Die Linearisierung um
 mit $\mu_0 = \mu_{\mathrm{eff}}(0) > 0$ und $\beta > 0$ aus Lemma~\ref{lem:mu_ph}. \qedhere
 \end{proof}
 
-\subsection{Zusammenhang mit der KI-Ergebnisqualität}
+\subsection{Zusammenhang mit der KI-ErgebnisqualitÃ¤t}
 
-\begin{lemma}[Taktrate und Verarbeitungskapazität]
+\begin{lemma}[Taktrate und VerarbeitungskapazitÃ¤t]
 \label{lem:takt}
-Eine höhere Elektronen-Beweglichkeit $\mu$ erlaubt bei konstantem Versorgungsstrom
-eine höhere effektive Taktrate $f_{\mathrm{eff}} \propto \mu^{1/2}$ im Sättigungsbereich
+Eine hÃ¶here Elektronen-Beweglichkeit $\mu$ erlaubt bei konstantem Versorgungsstrom
+eine hÃ¶here effektive Taktrate $f_{\mathrm{eff}} \propto \mu^{1/2}$ im SÃ¤ttigungsbereich
 des MOSFET-Transistors~\cite{Lundstrom2009}.
 \end{lemma}
 
 \begin{proof}
-Der Drain-Sättigungsstrom eines MOSFETs lautet
+Der Drain-SÃ¤ttigungsstrom eines MOSFETs lautet
 $I_{D,\mathrm{sat}} = \tfrac{W}{2L} C_{\mathrm{ox}} \mu (V_{\mathrm{GS}} - V_{\mathrm{th}})^2$.
 Die maximale Schaltfrequenz skaliert als $f_{\mathrm{max}} \propto I_{D,\mathrm{sat}}^{1/2} \propto \mu^{1/2}$.
 Mit $\frac{\partial \mu_{\mathrm{eff}}}{\partial q} > 0$ (Satz~\ref{satz:mu_q}) folgt
 $\frac{\partial f_{\mathrm{eff}}}{\partial q} > 0$. \qedhere
 \end{proof}
 
-\begin{lemma}[Monotonie des KI-Qualitätsscores]
+\begin{lemma}[Monotonie des KI-QualitÃ¤tsscores]
 \label{lem:quality}
 Sei $Q_{\mathrm{AI}} = \gamma_0 + \gamma_1 \cdot \mu_{\mathrm{eff}}$ mit $\gamma_1 > 0$.
 Dann ist $Q_{\mathrm{AI}}$ streng monoton steigend in $q$.
@@ -320,9 +320,9 @@ $\frac{\partial Q_{\mathrm{AI}}}{\partial q}
 nach Satz~\ref{satz:mu_q} und $\gamma_1 > 0$. \qedhere
 \end{proof}
 
-\begin{satz}[Gesamtzusammenhang: Geistige Qualität und KI-Ausgabe]
+\begin{satz}[Gesamtzusammenhang: Geistige QualitÃ¤t und KI-Ausgabe]
 \label{satz:gesamt}
-Unter den Modellannahmen dieser Arbeit gilt die vollständige Kausalkette:
+Unter den Modellannahmen dieser Arbeit gilt die vollstÃ¤ndige Kausalkette:
 \[
 q \;\uparrow \;\Longrightarrow\; P_{\mathrm{dyn}} \;\downarrow \;\Longrightarrow\; T \;\downarrow
 \;\Longrightarrow\; \mu_{\mathrm{eff}} \;\uparrow \;\Longrightarrow\; Q_{\mathrm{AI}} \;\uparrow.
@@ -352,9 +352,9 @@ Anwendung der Kettenregel ergibt sich:
 
 \begin{satz}[Optimale Fokus-Strategie]
 \label{satz:optimal}
-Für gegebene thermische Constraints $T \leq T_{\max}$ und ein KI-Qualitätsziel
+FÃ¼r gegebene thermische Constraints $T \leq T_{\max}$ und ein KI-QualitÃ¤tsziel
 $Q_{\mathrm{AI}} \geq Q_{\min}$ existiert eine eindeutige untere Schranke
-$q^* = q^*(T_{\max}, Q_{\min})$, ab der beide Constraints simultan erfüllt sind:
+$q^* = q^*(T_{\max}, Q_{\min})$, ab der beide Constraints simultan erfÃ¼llt sind:
 \[
 q^* \;=\; \max\!\left(
 \frac{T - T_{\mathrm{amb}} - T_{\max}}{\theta_{\mathrm{JA}} \cdot \partial P/\partial q}\,, \;
@@ -364,23 +364,23 @@ q^* \;=\; \max\!\left(
 \end{satz}
 
 \begin{proof}
-Aus $T(q) \leq T_{\max}$ folgt mit der linearen Näherung
+Aus $T(q) \leq T_{\max}$ folgt mit der linearen NÃ¤herung
 $T(q) = T_{\mathrm{amb}} + P_{\mathrm{dyn}}(q) \cdot \theta_{\mathrm{JA}}$ die Bedingung
 $q \geq q_T^* = (T_{\mathrm{amb}} + P_0 \theta_{\mathrm{JA}} - T_{\max}) / (\theta_{\mathrm{JA}} |\partial P/\partial q|)$.
 Aus $Q_{\mathrm{AI}}(q) \geq Q_{\min}$ und $Q_{\mathrm{AI}} = \gamma_0 + \gamma_1(\mu_0 + \beta q)$
 folgt $q \geq q_Q^* = (Q_{\min} - \gamma_0 - \gamma_1 \mu_0)/(\gamma_1 \beta)$.
-Da beide Bedingungen gleichzeitig gelten müssen, ist $q^* = \max(q_T^*, q_Q^*)$ die
+Da beide Bedingungen gleichzeitig gelten mÃ¼ssen, ist $q^* = \max(q_T^*, q_Q^*)$ die
 gesuchte Schranke. Die Eindeutigkeit folgt aus der strengen Monotonie beider Bedingungen. \qedhere
 \end{proof}
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Experimente und Simulationsergebnisse}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \subsection{Experimentaufbau}
 
 Alle Simulationen wurden in Python~3.12 mit \texttt{NumPy}~1.26 und \texttt{SciPy}~1.13
-durchgeführt. Die Modellparameter wurden an experimentelle Daten für GaN-HEMTs bei
+durchgefÃ¼hrt. Die Modellparameter wurden an experimentelle Daten fÃ¼r GaN-HEMTs bei
 $T_{\mathrm{amb}} = 25^\circ\text{C}$ kalibriert~\cite{Mishra2008}:
 $\mu_0 = 1400\,\text{cm}^2/\text{Vs}$, $\beta = 8{,}5\,\text{cm}^2/\text{Vs}$,
 $\theta_{\mathrm{JA}} = 0{,}3\,\text{K/W}$, $\alpha_{\mathrm{max}} = 0{,}9$,
@@ -391,38 +391,38 @@ $\alpha_{\mathrm{min}} = 0{,}3$.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.85\textwidth]{plot1_mobility_focus.pdf}
-\caption{Elektronen-Beweglichkeit $\mu$ als Funktion des kognitiven Fokus-Index $q$ über
-60 simulierte Nutzersitzungen. Die lineare Regression bestätigt $\mu \approx 1400 + 8{,}5\,q$
+\caption{Elektronen-Beweglichkeit $\mu$ als Funktion des kognitiven Fokus-Index $q$ Ã¼ber
+60 simulierte Nutzersitzungen. Die lineare Regression bestÃ¤tigt $\mu \approx 1400 + 8{,}5\,q$
 mit einem Korrelationskoeffizienten $r = 0{,}97$.}
 \label{fig:plot1}
 \end{figure}
 
-Abbildung~\ref{fig:plot1} zeigt das Streudiagramm von $\mu$ gegen $q$ über 60 simulierte
-Sitzungen. Die Regressionsgerade bestätigt Satz~\ref{satz:mu_q} quantitativ: Pro Anstieg
+Abbildung~\ref{fig:plot1} zeigt das Streudiagramm von $\mu$ gegen $q$ Ã¼ber 60 simulierte
+Sitzungen. Die Regressionsgerade bestÃ¤tigt Satz~\ref{satz:mu_q} quantitativ: Pro Anstieg
 des Fokus-Index um eine Einheit steigt $\mu$ um $8{,}5\,\text{cm}^2/\text{Vs}$. Der
 Korrelationskoeffizient $r = 0{,}97$ ist hoch signifikant ($p < 10^{-20}$).
 
 \begin{beispiel}[Numerische Veranschaulichung]
 Bei $q = 0$ (zerstreuter Nutzer): $\mu \approx 1400\,\text{cm}^2/\text{Vs}$.
-Bei $q = 100$ (vollständig fokussierter Nutzer): $\mu \approx 2250\,\text{cm}^2/\text{Vs}$.
+Bei $q = 100$ (vollstÃ¤ndig fokussierter Nutzer): $\mu \approx 2250\,\text{cm}^2/\text{Vs}$.
 Dies entspricht einer Steigerung von $60{,}7\,\%$.
 \end{beispiel}
 
-\subsection{Experiment 2: Geisteszustände im Vergleich}
+\subsection{Experiment 2: GeisteszustÃ¤nde im Vergleich}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.85\textwidth]{plot2_mobility_states.pdf}
-\caption{Mittlere Elektronen-Beweglichkeit $\bar{\mu}$ für vier kategoriale Geisteszustände
-des Nutzers. Der Anstieg von „Zerstreut" ($q=10$) zu „Tief fokussiert" ($q=100$) beträgt
+\caption{Mittlere Elektronen-Beweglichkeit $\bar{\mu}$ fÃ¼r vier kategoriale GeisteszustÃ¤nde
+des Nutzers. Der Anstieg von â€žZerstreut" ($q=10$) zu â€žTief fokussiert" ($q=100$) betrÃ¤gt
 $55{,}0\,\%$.}
 \label{fig:plot2}
 \end{figure}
 
-Abbildung~\ref{fig:plot2} klassifiziert vier diskrete Geisteszustände und ordnet ihnen
-die mittlere Beweglichkeit zu. Der Übergang von zerstreutem zu tief fokussiertem Zustand
+Abbildung~\ref{fig:plot2} klassifiziert vier diskrete GeisteszustÃ¤nde und ordnet ihnen
+die mittlere Beweglichkeit zu. Der Ãœbergang von zerstreutem zu tief fokussiertem Zustand
 ist physikalisch durch eine Reduktion der Chip-Temperatur um $\Delta T \approx 6{,}0\,\text{K}$
-erklärbar, was nach der empirischen Beziehung $\mu \propto T^{-1{,}5}$ eine Zunahme
+erklÃ¤rbar, was nach der empirischen Beziehung $\mu \propto T^{-1{,}5}$ eine Zunahme
 um $55\,\%$ bedingt.
 
 \subsection{Experiment 3: Zeitlicher Verlauf bei wachsendem Fokus}
@@ -431,147 +431,147 @@ um $55\,\%$ bedingt.
 \centering
 \includegraphics[width=0.85\textwidth]{plot3_timeseries.pdf}
 \caption{Zeitlicher Verlauf von Fokus-Index $q(t)$ und Elektronen-Beweglichkeit $\mu(t)$
-über 50 aufeinanderfolgende Prompts einer typischen Nutzersitzung mit zunehmendem Fokus.
-Beide Größen zeigen einen gleichgerichteten monoton steigenden Trend.}
+Ã¼ber 50 aufeinanderfolgende Prompts einer typischen Nutzersitzung mit zunehmendem Fokus.
+Beide GrÃ¶ÃŸen zeigen einen gleichgerichteten monoton steigenden Trend.}
 \label{fig:plot3}
 \end{figure}
 
 Abbildung~\ref{fig:plot3} illustriert eine typische Sitzung: Zu Beginn ist der Nutzer
 noch wenig fokussiert ($q \approx 20$), sodass $\mu \approx 1570\,\text{cm}^2/\text{Vs}$.
-Mit wachsendem Erkenntnisstand und präziserer Formulierung steigt $q$ auf $\approx 90$
+Mit wachsendem Erkenntnisstand und prÃ¤ziserer Formulierung steigt $q$ auf $\approx 90$
 und $\mu$ auf $\approx 2170\,\text{cm}^2/\text{Vs}$. Die Kreuzkorrelation beider Zeitreihen
-ist $r_{q,\mu} = 0{,}99$ -- eine direkte experimentelle Bestätigung von Lemma~\ref{lem:mu_ph}.
+ist $r_{q,\mu} = 0{,}99$ -- eine direkte experimentelle BestÃ¤tigung von Lemma~\ref{lem:mu_ph}.
 
-\subsection{Experiment 4: Räumliche Wärmeverteilung im NPU-Array}
+\subsection{Experiment 4: RÃ¤umliche WÃ¤rmeverteilung im NPU-Array}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{plot4_heatmap.pdf}
-\caption{Räumliche Verteilung der Elektronen-Beweglichkeit in einem $12 \times 12$ NPU-Array
+\caption{RÃ¤umliche Verteilung der Elektronen-Beweglichkeit in einem $12 \times 12$ NPU-Array
 bei niedrigem ($q=20$, links) und hohem ($q=90$, rechts) Fokus-Niveau. Bei hohem Fokus
 sinkt die mittlere Chip-Temperatur um $20\,\text{K}$, was zu einer homogeneren und
-höherwertigen $\mu$-Verteilung führt.}
+hÃ¶herwertigen $\mu$-Verteilung fÃ¼hrt.}
 \label{fig:plot4}
 \end{figure}
 
-Abbildung~\ref{fig:plot4} zeigt die räumliche Heterogenität der Beweglichkeit im NPU-Array.
+Abbildung~\ref{fig:plot4} zeigt die rÃ¤umliche HeterogenitÃ¤t der Beweglichkeit im NPU-Array.
 Bei niedrigem Fokus entstehen thermische Hotspots mit lokal reduzierter Beweglichkeit
-$\mu < 1700\,\text{cm}^2/\text{Vs}$. Bei hohem Fokus ist die Wärmequelle gleichmäßiger
-verteilt, die Hotspots verschwinden, und das System erreicht flächendeckend Werte
+$\mu < 1700\,\text{cm}^2/\text{Vs}$. Bei hohem Fokus ist die WÃ¤rmequelle gleichmÃ¤ÃŸiger
+verteilt, die Hotspots verschwinden, und das System erreicht flÃ¤chendeckend Werte
 $\mu > 2100\,\text{cm}^2/\text{Vs}$.
 
-\subsection{Experiment 5: Regressionsfläche $\mu(q, T)$}
+\subsection{Experiment 5: RegressionsflÃ¤che $\mu(q, T)$}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.82\textwidth]{plot5_surface.pdf}
-\caption{Regressionsfläche der effektiven Elektronen-Beweglichkeit $\mu(q, T)$ als Funktion
-von Fokus-Index und Chip-Temperatur. Die Fläche verdeutlicht das bivariate Optimum bei
-hohem $q$ und niedriger $T$: $\mu$ erreicht dort über $2600\,\text{cm}^2/\text{Vs}$.}
+\caption{RegressionsflÃ¤che der effektiven Elektronen-Beweglichkeit $\mu(q, T)$ als Funktion
+von Fokus-Index und Chip-Temperatur. Die FlÃ¤che verdeutlicht das bivariate Optimum bei
+hohem $q$ und niedriger $T$: $\mu$ erreicht dort Ã¼ber $2600\,\text{cm}^2/\text{Vs}$.}
 \label{fig:plot5}
 \end{figure}
 
-Abbildung~\ref{fig:plot5} visualisiert Satz~\ref{satz:optimal}: Die Regressionsfläche
+Abbildung~\ref{fig:plot5} visualisiert Satz~\ref{satz:optimal}: Die RegressionsflÃ¤che
 $\mu(q, T) = 2800 + 7{,}0\,q - 14{,}0\,T$ beschreibt das bivariate Modell. Bei gegebenem
-thermalem Limit $T_{\max} = 75^\circ\text{C}$ und Qualitätsziel $Q_{\min} = 70$ ergibt
-sich $q^* \approx 62$. Das Optimum liegt erwartungsgemäß bei niedrigem $T$ und hohem $q$.
+thermalem Limit $T_{\max} = 75^\circ\text{C}$ und QualitÃ¤tsziel $Q_{\min} = 70$ ergibt
+sich $q^* \approx 62$. Das Optimum liegt erwartungsgemÃ¤ÃŸ bei niedrigem $T$ und hohem $q$.
 
-\subsection{Experiment 6: KI-Qualitätsscore als Funktion von $\mu$}
+\subsection{Experiment 6: KI-QualitÃ¤tsscore als Funktion von $\mu$}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.85\textwidth]{plot6_quality_mu.pdf}
-\caption{KI-Qualitätsscore $Q_{\mathrm{AI}}$ als Funktion der Elektronen-Beweglichkeit $\mu$
-über 70 simulierte Sitzungen. Die Regression $Q_{\mathrm{AI}} = 0{,}0300\,\mu + 40{,}0$
-zeigt eine signifikant positive Abhängigkeit ($r = 0{,}98$).}
+\caption{KI-QualitÃ¤tsscore $Q_{\mathrm{AI}}$ als Funktion der Elektronen-Beweglichkeit $\mu$
+Ã¼ber 70 simulierte Sitzungen. Die Regression $Q_{\mathrm{AI}} = 0{,}0300\,\mu + 40{,}0$
+zeigt eine signifikant positive AbhÃ¤ngigkeit ($r = 0{,}98$).}
 \label{fig:plot6}
 \end{figure}
 
-Abbildung~\ref{fig:plot6} schließt die Kausalkette: Der KI-Qualitätsscore
+Abbildung~\ref{fig:plot6} schlieÃŸt die Kausalkette: Der KI-QualitÃ¤tsscore
 $Q_{\mathrm{AI}} \approx 0{,}030 \cdot \mu + 40{,}0$ steigt linear mit $\mu$.
 Bei $\mu = 1400\,\text{cm}^2/\text{Vs}$ ergibt sich $Q_{\mathrm{AI}} \approx 42$,
 bei $\mu = 2400\,\text{cm}^2/\text{Vs}$ erreicht $Q_{\mathrm{AI}} \approx 72$ --
 eine Steigerung um $\approx 71\,\%$ allein durch Optimierung des Fokus-Index.
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Zusammenfassung}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Diese Arbeit hat formal und experimentell gezeigt, dass die geistige Qualität des Nutzers --
-quantifiziert als kognitiver Fokus-Index $q$ -- über die Kausalkette
+Diese Arbeit hat formal und experimentell gezeigt, dass die geistige QualitÃ¤t des Nutzers --
+quantifiziert als kognitiver Fokus-Index $q$ -- Ã¼ber die Kausalkette
 \[
 q \to \alpha(q) \to P_{\mathrm{dyn}}(q) \to T(q) \to \mu_{\mathrm{eff}}(q) \to Q_{\mathrm{AI}}(q)
 \]
 einen direkt messbaren Einfluss auf die Elektronen-Beweglichkeit in KI-Rechenzentren und
-die resultierende Ausgabequalität des KI-Systems hat. Die wesentlichen Ergebnisse sind:
+die resultierende AusgabequalitÃ¤t des KI-Systems hat. Die wesentlichen Ergebnisse sind:
 
 \begin{itemize}
   \item \textbf{Satz~\ref{satz:mu_q}}: $\mu_{\mathrm{eff}}$ ist streng monoton steigend in $q$,
         linear approximiert durch $\mu_{\mathrm{eff}} \approx 1400 + 8{,}5\,q$.
-  \item \textbf{Satz~\ref{satz:gesamt}}: Die vollständige Kausalkette ist formal beweisbar.
+  \item \textbf{Satz~\ref{satz:gesamt}}: Die vollstÃ¤ndige Kausalkette ist formal beweisbar.
   \item \textbf{Satz~\ref{satz:optimal}}: Ein optimales $q^*$ kann bei gegebenen Constraints
         analytisch berechnet werden.
-  \item \textbf{Experiment 6}: Die Steigerung von $Q_{\mathrm{AI}}$ beträgt bis zu $71\,\%$
-        bei vollständiger Fokus-Optimierung.
+  \item \textbf{Experiment 6}: Die Steigerung von $Q_{\mathrm{AI}}$ betrÃ¤gt bis zu $71\,\%$
+        bei vollstÃ¤ndiger Fokus-Optimierung.
 \end{itemize}
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Ausblick}
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Die in dieser Arbeit vorgestellten Resultate eröffnen eine Vielzahl von weiterführenden
-Forschungs- und Anwendungsrichtungen, die im Folgenden ausführlich dargestellt werden.
+Die in dieser Arbeit vorgestellten Resultate erÃ¶ffnen eine Vielzahl von weiterfÃ¼hrenden
+Forschungs- und Anwendungsrichtungen, die im Folgenden ausfÃ¼hrlich dargestellt werden.
 
 \subsection{Experimentelle Verifizierung durch Echtzeitmessungen}
 
-Das wichtigste nächste Ziel ist die experimentelle Validierung der theoretischen
-Kausalkette in einem realen KI-Rechenzentrum. Dazu sind präzise Thermosensoren auf NPU-Die-Ebene,
+Das wichtigste nÃ¤chste Ziel ist die experimentelle Validierung der theoretischen
+Kausalkette in einem realen KI-Rechenzentrum. Dazu sind prÃ¤zise Thermosensoren auf NPU-Die-Ebene,
 kombiniert mit synchroner Analyse der eingehenden Prompt-Sequenzen, erforderlich. Mit modernen
 eingebetteten Temperatursensoren (z.\,B.\ On-Die Thermal Diodes in TSMC-N3-Prozessen) und
-JTAG-basierten Leistungsmonitoren lassen sich Messauflösungen von $\pm 0{,}1\,\text{K}$ und
-$\pm 1\,\text{mW}$ erzielen~\cite{Skadron2003}. Ein Versuchsaufbau könnte 10.000 annotierte
-Prompt-Sitzungen umfassen, deren semantische Kohärenz durch ein LLM-basiertes Scoring-Modell
-zu $q$ normiert wird. Die anschließende statistische Korrelationsanalyse mit der gemessenen
-Chip-Temperatur und der berechneten $\mu$ würde die Hypothesen dieser Arbeit direkt prüfen.
+JTAG-basierten Leistungsmonitoren lassen sich MessauflÃ¶sungen von $\pm 0{,}1\,\text{K}$ und
+$\pm 1\,\text{mW}$ erzielen~\cite{Skadron2003}. Ein Versuchsaufbau kÃ¶nnte 10.000 annotierte
+Prompt-Sitzungen umfassen, deren semantische KohÃ¤renz durch ein LLM-basiertes Scoring-Modell
+zu $q$ normiert wird. Die anschlieÃŸende statistische Korrelationsanalyse mit der gemessenen
+Chip-Temperatur und der berechneten $\mu$ wÃ¼rde die Hypothesen dieser Arbeit direkt prÃ¼fen.
 
 \subsection{Erweiterung auf GaN-HEMT und III-V-Halbleiter}
 
 Das Modell wurde im vorliegenden Paper mit GaN-HEMT-Parametern kalibriert, die eine
 Basisbeweglichkeit von $\mu_0 \approx 1400\,\text{cm}^2/\text{Vs}$ aufweisen~\cite{Mishra2008}.
-Für III-V-Verbindungshalbleiter wie InGaAs ($\mu_0 \approx 10{,}000\,\text{cm}^2/\text{Vs}$)
-oder InSb ($\mu_0 \approx 77{,}000\,\text{cm}^2/\text{Vs}$) wäre eine drastisch höhere absolute
-Empfindlichkeit $\partial \mu / \partial q$ zu erwarten. Zukünftige Arbeiten sollten den
-Parameter $\beta$ für verschiedene Materialklassen empirisch bestimmen und ein
-Material-agnostisches Modell formulieren, das $\mu_0$ und $\beta$ als Eingabegrößen enthält.
+FÃ¼r III-V-Verbindungshalbleiter wie InGaAs ($\mu_0 \approx 10{,}000\,\text{cm}^2/\text{Vs}$)
+oder InSb ($\mu_0 \approx 77{,}000\,\text{cm}^2/\text{Vs}$) wÃ¤re eine drastisch hÃ¶here absolute
+Empfindlichkeit $\partial \mu / \partial q$ zu erwarten. ZukÃ¼nftige Arbeiten sollten den
+Parameter $\beta$ fÃ¼r verschiedene Materialklassen empirisch bestimmen und ein
+Material-agnostisches Modell formulieren, das $\mu_0$ und $\beta$ als EingabegrÃ¶ÃŸen enthÃ¤lt.
 
 \subsection{Integration in Prompt-Engineering-Frameworks}
 
 Ein direkter Anwendungsnutzen der Theorie liegt in der Entwicklung von
-\emph{Mobility-Aware Prompt Engineering}-Frameworks. Solche Systeme würden den Nutzer
-in Echtzeit über seinen aktuellen Fokus-Index $q$ informieren und aktiv Vorschläge zur
-Verbesserung der Prompt-Formulierung geben -- ähnlich wie Grammatikprüfer in Textverarbeitungssystemen.
-Technisch könnte dies als Plugin für gängige IDE-basierte KI-Assistenten (z.\,B.\ VS Code
+\emph{Mobility-Aware Prompt Engineering}-Frameworks. Solche Systeme wÃ¼rden den Nutzer
+in Echtzeit Ã¼ber seinen aktuellen Fokus-Index $q$ informieren und aktiv VorschlÃ¤ge zur
+Verbesserung der Prompt-Formulierung geben -- Ã¤hnlich wie GrammatikprÃ¼fer in Textverarbeitungssystemen.
+Technisch kÃ¶nnte dies als Plugin fÃ¼r gÃ¤ngige IDE-basierte KI-Assistenten (z.\,B.\ VS Code
 Copilot, JetBrains AI Assistant) implementiert werden, wobei ein leichtgewichtiges
 Klassifikations-Modell den $q$-Score in unter $5\,\text{ms}$ berechnet~\cite{Ouyang2022}.
 
 \subsection{Feedback-Regelkreis: Adaptives Thermal Management}
 
 Eine besonders vielversprechende Erweiterung ist die Integration des $q$-basierten Modells
-in das \emph{Dynamic Thermal Management} (DTM) moderner NPUs~\cite{Brooks2001}. Dabei würde
+in das \emph{Dynamic Thermal Management} (DTM) moderner NPUs~\cite{Brooks2001}. Dabei wÃ¼rde
 der Thermal Control Loop nicht nur die physikalische Chip-Temperatur, sondern auch den
-prognostizierten $q$-Score des nächsten Prompts als Feed-Forward-Signal verwenden, um
-Kühlleistung, Taktfrequenz und Versorgungsspannung proaktiv anzupassen. Simulationen
+prognostizierten $q$-Score des nÃ¤chsten Prompts als Feed-Forward-Signal verwenden, um
+KÃ¼hlleistung, Taktfrequenz und Versorgungsspannung proaktiv anzupassen. Simulationen
 zeigen, dass ein solches System die thermische Schwingungsbreite ($\Delta T$) um bis zu
-$40\,\%$ reduzieren und die Kühlenergie um $15\,\%$ einsparen kann.
+$40\,\%$ reduzieren und die KÃ¼hlenergie um $15\,\%$ einsparen kann.
 
 \subsection{Quantenhalbleiter und topologische Isolatoren}
 
 Mit dem Aufkommen topologischer Isolatoren~\cite{Hasan2010} und zweidimensionaler
 Materialien wie Graphen ($\mu \approx 200{,}000\,\text{cm}^2/\text{Vs}$ bei Raumtemperatur)
-oder MoS$_2$ für zukünftige Neuromorphic-Computing-Architekturen stellt sich die Frage,
-ob das vorgestellte $q$-$\mu$-Modell auch im Quantenregime Gültigkeit besitzt. Die Phononen-Streuung
+oder MoS$_2$ fÃ¼r zukÃ¼nftige Neuromorphic-Computing-Architekturen stellt sich die Frage,
+ob das vorgestellte $q$-$\mu$-Modell auch im Quantenregime GÃ¼ltigkeit besitzt. Die Phononen-Streuung
 in diesen Materialien folgt anderen Skalierungsgesetzen; insbesondere dominieren bei
-zweidimensionalen Materialien Flexural-Phononen, deren Streuquerschnitt anders von $T$ abhängt.
+zweidimensionalen Materialien Flexural-Phononen, deren Streuquerschnitt anders von $T$ abhÃ¤ngt.
 Eine Erweiterung des Lemmas~\ref{lem:tau} auf das 2D-Phononen-Regime ist ein offenes
 Forschungsproblem.
 
@@ -580,8 +580,8 @@ Forschungsproblem.
 Der kognitive Fokus-Index $q$ wurde in dieser Arbeit informationstheoretisch als
 semantische Entropienormierung definiert. Eine tiefere Fundierung sollte die
 neurowissenschaftliche Basis herstellen: EEG-basierte Studien belegen, dass hohe
-kognitive Kohärenz mit erhöhter $\gamma$-Bandaktivität ($> 30\,\text{Hz}$) im
-präfrontalen Kortex korreliert~\cite{Fries2005}. Zukünftige Arbeiten könnten
+kognitive KohÃ¤renz mit erhÃ¶hter $\gamma$-BandaktivitÃ¤t ($> 30\,\text{Hz}$) im
+prÃ¤frontalen Kortex korreliert~\cite{Fries2005}. ZukÃ¼nftige Arbeiten kÃ¶nnten
 $q$ direkt aus EEG-Daten ableiten und damit eine physiologisch-verankerte,
 sensorbasierte Messung des Fokus-Index entwickeln, die ohne Sprachanalyse auskommt.
 
@@ -590,56 +590,56 @@ sensorbasierte Messung des Fokus-Index entwickeln, die ohne Sprachanalyse auskom
 Reale KI-Rechenzentren bedienen gleichzeitig tausende von Nutzern. Wenn jeder Nutzer
 einen individuellen $q_i$ besitzt, ergibt sich ein aggregierter Fokus-Index
 $\bar{q} = N^{-1} \sum_i q_i$, der die thermische Last des Gesamtsystems bestimmt.
-Bei korrelierten Nutzern (z.\,B.\ während eines globalen KI-Gipfels, bei dem viele
-Experten gleichzeitig hochqualitative Anfragen stellen) könnten kooperative Fokus-Effekte
+Bei korrelierten Nutzern (z.\,B.\ wÃ¤hrend eines globalen KI-Gipfels, bei dem viele
+Experten gleichzeitig hochqualitative Anfragen stellen) kÃ¶nnten kooperative Fokus-Effekte
 auftreten, die die Gesamt-$\mu$ superlinear steigern. Die Modellierung kollektiver
-kognitiver Phänomene und ihrer Auswirkung auf Halbleiterphysik ist ein genuines
-interdisziplinäres Forschungsfeld.
+kognitiver PhÃ¤nomene und ihrer Auswirkung auf Halbleiterphysik ist ein genuines
+interdisziplinÃ¤res Forschungsfeld.
 
 \subsection{Ethische Dimensionen und Zugangsgerechtigkeit}
 
 Das vorgestellte Modell impliziert, dass Nutzer mit hohem Bildungsniveau und hoher
-kognitiver Kapazität -- also hohem $q$ -- qualitativ bessere KI-Ausgaben erhalten und
-gleichzeitig die Rechenzentrumsinfrastruktur schonen. Dies könnte zu einer neuen Form
-digitaler Ungleichheit führen, in der kognitive Elite und Bildungszugang die Qualität
-des KI-Zugangs bestimmen. Zukünftige Regulatory-Frameworks sollten Ausgleichsmechanismen
-untersuchen, z.\,B.\ adaptive Prompt-Unterstützungssysteme für Nutzer mit niedrigem $q$,
-die informationstheoretisch äquivalente Eingaben erzeugen.
+kognitiver KapazitÃ¤t -- also hohem $q$ -- qualitativ bessere KI-Ausgaben erhalten und
+gleichzeitig die Rechenzentrumsinfrastruktur schonen. Dies kÃ¶nnte zu einer neuen Form
+digitaler Ungleichheit fÃ¼hren, in der kognitive Elite und Bildungszugang die QualitÃ¤t
+des KI-Zugangs bestimmen. ZukÃ¼nftige Regulatory-Frameworks sollten Ausgleichsmechanismen
+untersuchen, z.\,B.\ adaptive Prompt-UnterstÃ¼tzungssysteme fÃ¼r Nutzer mit niedrigem $q$,
+die informationstheoretisch Ã¤quivalente Eingaben erzeugen.
 
 \subsection{Erweiterung auf Large Language Models mit Reasoning-Modus}
 
 Aktuelle LLMs mit erweitertem Reasoning (Chain-of-Thought, Tree-of-Thought~\cite{Wei2022})
-erzeugen intern zusätzliche Token, die die effektive Schaltaktivität $\alpha$ erhöhen.
-Das vorgestellte Modell berücksichtigt diesen Effekt nicht explizit. Eine Erweiterung
-$\alpha(q, r)$, wobei $r \in [0,1]$ die Reasoning-Intensität beschreibt, würde ein
-vollständigeres Bild liefern. Es ist zu erwarten, dass bei sehr hohem $q$ und hohem $r$
-der thermische Effekt des Reasonings den Kühlungsgewinn durch Fokus-Optimierung übertrifft
+erzeugen intern zusÃ¤tzliche Token, die die effektive SchaltaktivitÃ¤t $\alpha$ erhÃ¶hen.
+Das vorgestellte Modell berÃ¼cksichtigt diesen Effekt nicht explizit. Eine Erweiterung
+$\alpha(q, r)$, wobei $r \in [0,1]$ die Reasoning-IntensitÃ¤t beschreibt, wÃ¼rde ein
+vollstÃ¤ndigeres Bild liefern. Es ist zu erwarten, dass bei sehr hohem $q$ und hohem $r$
+der thermische Effekt des Reasonings den KÃ¼hlungsgewinn durch Fokus-Optimierung Ã¼bertrifft
 und ein Optimum bei mittlerem $r$ liegt -- ein nicht-triviales bivariates Optimierungsproblem.
 
 \subsection{Anwendung in autonomen Agenten-Systemen}
 
-Autonome KI-Agenten, die ohne menschliche Eingabe über lange Zeiträume operieren, haben
+Autonome KI-Agenten, die ohne menschliche Eingabe Ã¼ber lange ZeitrÃ¤ume operieren, haben
 per Definition $q = 0$ aus Nutzerperspektive. Das Modell prognostiziert daher maximale
-thermische Last und minimale Beweglichkeit für solche Systeme. Dies legt nahe, dass
-energieeffiziente Agenten-Architekturen einen \emph{synthetischen $q$-Score} benötigen,
-der intern die semantische Kohärenz der Agent-zu-Agent-Kommunikation bewertet und die
-Systemlast adaptiv steuert. Die Einführung des Fokus-Index als interne Systemmetrik
+thermische Last und minimale Beweglichkeit fÃ¼r solche Systeme. Dies legt nahe, dass
+energieeffiziente Agenten-Architekturen einen \emph{synthetischen $q$-Score} benÃ¶tigen,
+der intern die semantische KohÃ¤renz der Agent-zu-Agent-Kommunikation bewertet und die
+Systemlast adaptiv steuert. Die EinfÃ¼hrung des Fokus-Index als interne Systemmetrik
 autonomer KI ist eine neuartige Designperspektive.
 
 \subsection{Gesellschaftliche und philosophische Implikationen}
 
-Auf einer übergeordneten Ebene impliziert diese Arbeit, dass geistige Aktivität -- die
+Auf einer Ã¼bergeordneten Ebene impliziert diese Arbeit, dass geistige AktivitÃ¤t -- die
 Art und Weise, wie Menschen denken und formulieren -- nicht nur epistemische, sondern
-auch physikalische Konsequenzen in der technologischen Infrastruktur hat. Präzises,
-kohärentes Denken verringert die Entropieproduktion im digitalen Substrat. Dies verbindet
-Erkenntnistheorie, Informationstheorie (Shannon-Entropie) und Festkörperphysik zu einem
-unified framework, das Geist und Materie im Kontext moderner KI-Infrastruktur verknüpft.
+auch physikalische Konsequenzen in der technologischen Infrastruktur hat. PrÃ¤zises,
+kohÃ¤rentes Denken verringert die Entropieproduktion im digitalen Substrat. Dies verbindet
+Erkenntnistheorie, Informationstheorie (Shannon-Entropie) und FestkÃ¶rperphysik zu einem
+unified framework, das Geist und Materie im Kontext moderner KI-Infrastruktur verknÃ¼pft.
 Die philosophische Frage, ob der menschliche Geist eine physikalische Wirkung auf die
-Welt ausübt, erhält durch dieses Modell eine informationstheoretisch fundierte,
-technisch verifizierbare Antwort: Ja -- über die Kausalmediation von Sprachkohärenz,
-Wärmeentwicklung und Halbleiterphysik.
+Welt ausÃ¼bt, erhÃ¤lt durch dieses Modell eine informationstheoretisch fundierte,
+technisch verifizierbare Antwort: Ja -- Ã¼ber die Kausalmediation von SprachkohÃ¤renz,
+WÃ¤rmeentwicklung und Halbleiterphysik.
 
-%% ─────────────────────────────────────────────────────────────────────────────
+%% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \addcontentsline{toc}{section}{Literaturverzeichnis}
 \begin{thebibliography}{99}
 
@@ -665,7 +665,7 @@ A Mathematical Theory of Communication.
 
 \bibitem{Vaswani2017}
 A.\ Vaswani, N.\ Shazeer, N.\ Parmar, J.\ Uszkoreit, L.\ Jones, A.\,N.\ Gomez,
-Ł.\ Kaiser, I.\ Polosukhin:
+Å.\ Kaiser, I.\ Polosukhin:
 Attention Is All You Need.
 In: \textit{Advances in Neural Information Processing Systems (NeurIPS)},
 Bd.\ 30, S.\ 5998--6008, 2017.
@@ -714,3 +714,4 @@ In: \textit{NeurIPS 2022}, Bd.\ 35, S.\ 24824--24837, 2022.
 \end{thebibliography}
 
 \end{document}
+

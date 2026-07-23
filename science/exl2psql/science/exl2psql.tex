@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+﻿\documentclass[12pt,a4paper]{report}
 
 % -- Pakete --
 \usepackage[utf8]{inputenc}
@@ -185,10 +185,10 @@
 \lstset{
   extendedchars=true,
   literate=
-    {ä}{{\"a}}1  {Ä}{{\"A}}1
-    {ö}{{\"o}}1  {Ö}{{\"O}}1
-    {ü}{{\"u}}1  {Ü}{{\"U}}1
-    {ß}{{\ss{}}}1,
+    {Ã¤}{{\"a}}1  {Ã„}{{\"A}}1
+    {Ã¶}{{\"o}}1  {Ã–}{{\"O}}1
+    {Ã¼}{{\"u}}1  {Ãœ}{{\"U}}1
+    {ÃŸ}{{\ss{}}}1,
 }
 
 % -- Theorem-Umgebungen --
@@ -249,7 +249,7 @@
 	\excel-Arbeitsmappen und \vba-Logik\\[0.3em]
 	nach \pg{} und \py}
 \author{Stephan Epp}
-\date{14. März 2026}
+\date{14. MÃ¤rz 2026}
 
 \begin{document}
 
@@ -258,46 +258,46 @@
 \newpage
 
 \chapter{Einleitung}
-Die vorliegende Arbeit beschreibt eine vollständige, reproduzierbare
-Migrationsstrategie zur Ablösung von Microsoft-\excel-Arbeitsmappen
+Die vorliegende Arbeit beschreibt eine vollstÃ¤ndige, reproduzierbare
+Migrationsstrategie zur AblÃ¶sung von Microsoft-\excel-Arbeitsmappen
 (inklusive \vba-Makroautomatisierung) durch ein modernes,
-datenbankgestütztes \py-Ökosystem auf Basis von \pg{} als persistenter
+datenbankgestÃ¼tztes \py-Ã–kosystem auf Basis von \pg{} als persistenter
 Datenschicht. Neben der konzeptionellen ETL-Architektur und dem
 normierten Datenbankschema wird der Schwerpunkt auf die
 \textbf{produktive Bereitstellung} gelegt: asynchrone Datenbankzugriffe
 via \code{asyncpg}, Pipeline-Orchestrierung mit Apache Airflow und Prefect,
 Containerisierung via Docker, Monitoring, Sicherheitsarchitektur,
-Rollback-Strategie sowie ein vollständiges Deployment-Playbook.
+Rollback-Strategie sowie ein vollstÃ¤ndiges Deployment-Playbook.
 Der Ansatz ist exemplarisch am Windkanal-Datensatz des BioFalcon-Projekts
 demonstriert, aber generisch auf beliebige \excel-basierte Ingenieursworkflows
-übertragbar.
+Ã¼bertragbar.
 
 % -- Microsoft \excel{} ist in Ingenieursdisziplinen seit Jahrzehnten als --
-De-facto-Plattform für Datenhaltung, Berechnung und Automatisierung
+De-facto-Plattform fÃ¼r Datenhaltung, Berechnung und Automatisierung
 etabliert. Insbesondere in Bereichen wie Aerodynamik, Regelungstechnik
-und eingebetteten Systemen werden Mess- und Parametertabellen häufig als
-\code{.xlsx}-Dateien gepflegt, während \vba-Makros die Prozesslogik kodieren.
+und eingebetteten Systemen werden Mess- und Parametertabellen hÃ¤ufig als
+\code{.xlsx}-Dateien gepflegt, wÃ¤hrend \vba-Makros die Prozesslogik kodieren.
 
 Dieser Ansatz ist mit strukturellen Nachteilen verbunden:
 
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Keine echte Datenbankintegrität:} \excel{} kennt weder
-        Fremdschlüssel noch Transaktionssicherheit. Redundanz und
-        Inkonsistenz entstehen zwangsläufig bei wachsenden Datensätzen.
-  \item \textbf{Mangelnde Versionierbarkeit:} Binäre \code{.xlsx}-Dateien
-        lassen sich mit Git nur eingeschränkt verwalten.
-  \item \textbf{Sprachlicher Lock-in durch \vba:} \vba{} ist proprietär,
+  \item \textbf{Keine echte DatenbankintegritÃ¤t:} \excel{} kennt weder
+        FremdschlÃ¼ssel noch Transaktionssicherheit. Redundanz und
+        Inkonsistenz entstehen zwangslÃ¤ufig bei wachsenden DatensÃ¤tzen.
+  \item \textbf{Mangelnde Versionierbarkeit:} BinÃ¤re \code{.xlsx}-Dateien
+        lassen sich mit Git nur eingeschrÃ¤nkt verwalten.
+  \item \textbf{Sprachlicher Lock-in durch \vba:} \vba{} ist proprietÃ¤r,
         schlecht testbar und nicht kompatibel mit modernen
         Continuous-Integration-Pipelines.
-  \item \textbf{Eingeschränkte Skalierbarkeit:} \excel{} ist bei gro\ss{}en
-        Datensätzen ($> \SI{100000}{}$ Zeilen) signifikant langsamer als
+  \item \textbf{EingeschrÃ¤nkte Skalierbarkeit:} \excel{} ist bei gro\ss{}en
+        DatensÃ¤tzen ($> \SI{100000}{}$ Zeilen) signifikant langsamer als
         \pg{} mit Indexstrukturen.
   \item \textbf{Fehlende Reproduzierbarkeit:} Berechnungen in Zellen sind
         schwer zu dokumentieren und zu auditieren.
 \end{itemize}
 
 \py{} in Kombination mit \pg{} l\"ost diese Probleme systematisch: \pandas{}
-übernimmt die Datenmanipulation, \sqlalchemy{} die datenbankagnostische
+Ã¼bernimmt die Datenmanipulation, \sqlalchemy{} die datenbankagnostische
 Verbindungsschicht, und \psycopg{} den nativen PostgreSQL-Treiber.
 
 \paragraph{Ausgangssituation des Anwenders}
@@ -308,16 +308,16 @@ Der Anwender besitzt zu Beginn der Migration ausschlie\ss{}lich:
 \end{enumerate}
 Die \excel-Quelldatei wird durch synthetische Testdaten simuliert.
 Im Produktiveinsatz wird \code{migrate.py} direkt gegen die reale
-\code{.xlsx}-Datei ausgeführt.
+\code{.xlsx}-Datei ausgefÃ¼hrt.
 
 \chapter{Systemarchitektur}
 
-Dieses Kapitel beschreibt die Zielarchitektur des migrierten Systems und legt damit das konzeptionelle Fundament für alle nachfolgenden Implementierungsentscheidungen. Ausgangspunkt ist die klassische dreischichtige Softwarearchitektur, die für den spezifischen Kontext einer \excel{}+\vba{}-Migration nach \pg{}+\py{} konkretisiert wird. Im Mittelpunkt steht die Frage, welche Systemkomponenten miteinander interagieren, welche Schnittstellen zwischen ihnen bestehen und wie Datenflüsse organisiert sind. Darüber hinaus werden die funktionalen Äquivalenzen zwischen Legacy-\excel-Konstrukten und modernen Python/\pg{}-Pendants systematisch gegenübergestellt, sodass jede Migrationsentscheidung nachvollziehbar und begründbar bleibt.
+Dieses Kapitel beschreibt die Zielarchitektur des migrierten Systems und legt damit das konzeptionelle Fundament fÃ¼r alle nachfolgenden Implementierungsentscheidungen. Ausgangspunkt ist die klassische dreischichtige Softwarearchitektur, die fÃ¼r den spezifischen Kontext einer \excel{}+\vba{}-Migration nach \pg{}+\py{} konkretisiert wird. Im Mittelpunkt steht die Frage, welche Systemkomponenten miteinander interagieren, welche Schnittstellen zwischen ihnen bestehen und wie DatenflÃ¼sse organisiert sind. DarÃ¼ber hinaus werden die funktionalen Ã„quivalenzen zwischen Legacy-\excel-Konstrukten und modernen Python/\pg{}-Pendants systematisch gegenÃ¼bergestellt, sodass jede Migrationsentscheidung nachvollziehbar und begrÃ¼ndbar bleibt.
 
-\section{Überblick der Zielarchitektur}
+\section{Ãœberblick der Zielarchitektur}
 Die Zielarchitektur folgt dem klassischen dreischichtigen Modell:
-Datenschicht (\pg), Logikschicht (\py) und Präsentationsschicht
-(CLI / Visualisierung). \Cref{fig:arch} zeigt das vollständige
+Datenschicht (\pg), Logikschicht (\py) und PrÃ¤sentationsschicht
+(CLI / Visualisierung). \Cref{fig:arch} zeigt das vollstÃ¤ndige
 Komponentendiagramm.
 
 \begin{figure}[H]
@@ -352,7 +352,7 @@ Komponentendiagramm.
 \node[box=accent2] (idx)   at (5.5,-4.2)  {Indizes\\\footnotesize\normalfont B-Tree/GIN};
 
 % Schicht 4: Logik
-\node[box=accent] (logic)  at (-1.5,-6.2) {Geschäfts-\\logik\\\footnotesize\normalfont Python-Fkt.};
+\node[box=accent] (logic)  at (-1.5,-6.2) {GeschÃ¤fts-\\logik\\\footnotesize\normalfont Python-Fkt.};
 \node[box=accent] (anlys)  at (2.0,-6.2)  {Analyse\\\footnotesize\normalfont pandas/numpy};
 \node[box=accent] (viz)    at (5.5,-6.2)  {Visualis.\\\footnotesize\normalfont matplotlib};
 
@@ -387,9 +387,9 @@ Komponentendiagramm.
 \label{fig:arch}
 \end{figure}
 
-\section{Migrationsäquivalenzen}
+\section{MigrationsÃ¤quivalenzen}
 
-\Cref{tab:equiv} listet die vollständigen funktionalen \"Aquivalenzen zwischen
+\Cref{tab:equiv} listet die vollstÃ¤ndigen funktionalen \"Aquivalenzen zwischen
 dem Legacy-System (\excel{}+\vba) und dem Zielsystem (\pg{}+\py).
 
 \begin{table}[H]
@@ -406,7 +406,7 @@ Zellbereich / named range    & Strukturierte Selektion            & pd.DataFrame
 Formel =E2/F2                & Berechnete Spalte                  & df["L\_D"] = df["C\_L"]/df["C\_D"] \\
 WENN()-Formel                & Konditionale Logik                 & df.apply() / CASE WHEN \\
 VBA Sub / Function           & Prozedurale Einheit                & Python def \\
-VBA For Each ... Next        & Iteration über Zeilen              & df.iterrows() / SQL CURSOR \\
+VBA For Each ... Next        & Iteration Ã¼ber Zeilen              & df.iterrows() / SQL CURSOR \\
 VBA Workbooks.Open           & Datei \"offnen                       & pd.read\_excel() \\
 VBA ActiveSheet.SaveAs       & Datei speichern                    & df.to\_csv() / to\_excel() \\
 VBA MsgBox / Debug.Print     & Ausgabe                            & print() / logging \\
@@ -419,11 +419,11 @@ Excel-Diagramm               & Visualisierung                     & matplotlib /
 
 \chapter{Entwurf: Datenbankschema}
 
-Ein sorgfältig entworfenes Datenbankschema ist das Herzstück jeder produktiven Datenmigration. Während \excel{}-Arbeitsmappen Daten häufig in einer flachen, denormalisierten Tabellenstruktur vorhalten, erfordert ein relationales Datenbanksystem wie \pg{} eine explizite Modellierung von Entitäten, Attributen und ihren Beziehungen untereinander. Dieses Kapitel dokumentiert den Entwurfsprozess des Zielschemas Schritt für Schritt: von der Analyse der Ausgangsdaten über die Ableitung einer normalisierten Relationenstruktur bis hin zum finalen SQL-DDL-Code sowie der grafischen Darstellung im Entity-Relationship-Diagramm. Besonderes Augenmerk liegt dabei auf der Wahrung von referenzieller Integrität, der Vergabe geeigneter Datentypen und der Vorbereitung des Schemas für spätere Erweiterungen im Produktivbetrieb.
+Ein sorgfÃ¤ltig entworfenes Datenbankschema ist das HerzstÃ¼ck jeder produktiven Datenmigration. WÃ¤hrend \excel{}-Arbeitsmappen Daten hÃ¤ufig in einer flachen, denormalisierten Tabellenstruktur vorhalten, erfordert ein relationales Datenbanksystem wie \pg{} eine explizite Modellierung von EntitÃ¤ten, Attributen und ihren Beziehungen untereinander. Dieses Kapitel dokumentiert den Entwurfsprozess des Zielschemas Schritt fÃ¼r Schritt: von der Analyse der Ausgangsdaten Ã¼ber die Ableitung einer normalisierten Relationenstruktur bis hin zum finalen SQL-DDL-Code sowie der grafischen Darstellung im Entity-Relationship-Diagramm. Besonderes Augenmerk liegt dabei auf der Wahrung von referenzieller IntegritÃ¤t, der Vergabe geeigneter Datentypen und der Vorbereitung des Schemas fÃ¼r spÃ¤tere Erweiterungen im Produktivbetrieb.
 
 \section{Normalisierungsstrategie}
 \excel-Tabellen liegen typischerweise in denormalisierter Form vor
-(Erste Normalform oder schlechter). Der Migrationsprozess überführt
+(Erste Normalform oder schlechter). Der Migrationsprozess Ã¼berfÃ¼hrt
 die Daten in mindestens die \textbf{Dritte Normalform (3NF)}.
 
 \begin{definition}[Migrationsnormalisierung]
@@ -431,20 +431,20 @@ die Daten in mindestens die \textbf{Dritte Normalform (3NF)}.
   Die Zielnormalisierung $\mathcal{N}(T)$ erzeugt eine Menge von
   Relationen $\{R_1, \ldots, R_k\}$ in 3NF, sodass gilt:
   \[
-    \forall i \neq j: R_i \cap R_j \subseteq \{\text{Primärschlüssel}\}
+    \forall i \neq j: R_i \cap R_j \subseteq \{\text{PrimÃ¤rschlÃ¼ssel}\}
     \quad\text{und}\quad
     \bigcup_{i=1}^{k} \pi_{C}(R_i) \supseteq C
   \]
-  d.\,h. alle ursprünglichen Spalten sind verlustfrei rekonstruierbar.
+  d.\,h. alle ursprÃ¼nglichen Spalten sind verlustfrei rekonstruierbar.
 \end{definition}
 
 \section{Konkretes Datenbankschema}
 
-Das folgende DDL-Statement erzeugt das normalisierte Schema für den
-BioFalcon-Anwen\-dungsfall. Es ist direkt auf beliebige \excel-Datensätze
+Das folgende DDL-Statement erzeugt das normalisierte Schema fÃ¼r den
+BioFalcon-Anwen\-dungsfall. Es ist direkt auf beliebige \excel-DatensÃ¤tze
 verallgemeinerbar.
 
-\begin{lstlisting}[style=sql, caption={PostgreSQL DDL: Vollständiges Datenbankschema}, label=lst:ddl]
+\begin{lstlisting}[style=sql, caption={PostgreSQL DDL: VollstÃ¤ndiges Datenbankschema}, label=lst:ddl]
 -- Schema-Initialisierung
 CREATE SCHEMA IF NOT EXISTS biofalcon;
 SET search_path TO biofalcon;
@@ -540,7 +540,7 @@ LIMIT 1;
   line/.style={thick, color=darkgray},
 ]
 
-% Entität: messung
+% EntitÃ¤t: messung
 \node[entity] (ME) at (0,0)  {messung};
 \node[attr, below=0mm of ME] (a1) {\underline{id} BIGSERIAL};
 \node[attr, below=0mm of a1] (a2) {messung\_id VARCHAR(8)};
@@ -550,7 +550,7 @@ LIMIT 1;
 \node[attr, below=0mm of a5] (a6) {is\_outlier BOOLEAN};
 \node[attr, below=0mm of a6] (a7) {created\_at TIMESTAMPTZ};
 
-% Entität: stroemungsregime
+% EntitÃ¤t: stroemungsregime
 \node[entity] at (6.5,0) (SR) {stroemungsregime};
 \node[attr, below=0mm of SR] (b1) {\underline{id} SMALLSERIAL};
 \node[attr, below=0mm of b1] (b2) {name VARCHAR(32)};
@@ -580,17 +580,17 @@ LIMIT 1;
 
 \chapter{ETL-Pipeline: Excel \texorpdfstring{$\to$}{->} PostgreSQL}
 
-Die ETL-Pipeline bildet das operative Kernstück der gesamten Migrationslösung. Ihre Aufgabe ist es, rohe \excel{}-Daten zuverlässig, reproduzierbar und fehlertolerant in die normalisierte \pg{}-Datenbankstruktur zu überführen. Das Akronym ETL steht für die drei Hauptphasen des Prozesses: \textit{Extract} bezeichnet die Extraktion der Quelldaten aus der \code{.xlsx}-Datei, \textit{Transform} umfasst alle Schritte der Bereinigung, Typkonversion, Normalisierung und Validierung, und \textit{Load} schließlich das atomare Schreiben der transformierten Datensätze in die Datenbank. Dieses Kapitel beschreibt zunächst den konzeptionellen Aufbau der Pipeline, leitet mathematisch das Idempotenz-Theorem her -- also die Eigenschaft, dass wiederholte Ausführungen stets dasselbe Ergebnis erzeugen -- und stellt anschließend den vollständigen, produktionsreifen Python-Quellcode bereit.
+Die ETL-Pipeline bildet das operative KernstÃ¼ck der gesamten MigrationslÃ¶sung. Ihre Aufgabe ist es, rohe \excel{}-Daten zuverlÃ¤ssig, reproduzierbar und fehlertolerant in die normalisierte \pg{}-Datenbankstruktur zu Ã¼berfÃ¼hren. Das Akronym ETL steht fÃ¼r die drei Hauptphasen des Prozesses: \textit{Extract} bezeichnet die Extraktion der Quelldaten aus der \code{.xlsx}-Datei, \textit{Transform} umfasst alle Schritte der Bereinigung, Typkonversion, Normalisierung und Validierung, und \textit{Load} schlieÃŸlich das atomare Schreiben der transformierten DatensÃ¤tze in die Datenbank. Dieses Kapitel beschreibt zunÃ¤chst den konzeptionellen Aufbau der Pipeline, leitet mathematisch das Idempotenz-Theorem her -- also die Eigenschaft, dass wiederholte AusfÃ¼hrungen stets dasselbe Ergebnis erzeugen -- und stellt anschlieÃŸend den vollstÃ¤ndigen, produktionsreifen Python-Quellcode bereit.
 
-\section{Pipeline-Übersicht}
+\section{Pipeline-Ãœbersicht}
 Die ETL-Pipeline (\textit{Extract -- Transform -- Load}) besteht aus
 drei klar abgegrenzten Phasen:
 
 \begin{enumerate}[leftmargin=1.5em]
-  \item \textbf{Extract:} Einlesen der \excel-Tabellenblätter via
+  \item \textbf{Extract:} Einlesen der \excel-TabellenblÃ¤tter via
         \code{pd.read\_excel()} unter Beibehaltung aller Datentypen.
   \item \textbf{Transform:} Normalisierung, Typkonvertierung, Ableitung
-        fehlender Gr\"o\ss{}en, Plausibilitätsprüfung, Duplikaterkennung.
+        fehlender Gr\"o\ss{}en, PlausibilitÃ¤tsprÃ¼fung, Duplikaterkennung.
   \item \textbf{Load:} Atomares Schreiben in \pg{} via \sqlalchemy{}
         mit Upsert-Semantik (\code{ON CONFLICT DO UPDATE}).
 \end{enumerate}
@@ -602,13 +602,13 @@ drei klar abgegrenzten Phasen:
     \mathcal{E}(\mathcal{E}(D)) = \mathcal{E}(D)
   \]
   Dies wird durch Upsert-Semantik mit \code{ON CONFLICT (messung\_id)
-  DO UPDATE} garantiert. Mehrfaches Ausführen der Pipeline erzeugt
+  DO UPDATE} garantiert. Mehrfaches AusfÃ¼hren der Pipeline erzeugt
   keinen inkonsistenten Datenbankzustand.
 \end{theorem}
 
-\section{Vollständiger ETL-Python-Code}
+\section{VollstÃ¤ndiger ETL-Python-Code}
 
-\begin{lstlisting}[style=python, caption={migrate.py: Vollständige ETL-Pipeline}, label=lst:etl]
+\begin{lstlisting}[style=python, caption={migrate.py: VollstÃ¤ndige ETL-Pipeline}, label=lst:etl]
 #!/usr/bin/env python3
 """
 migrate.py  --  Excel + VBA -> PostgreSQL + Python
@@ -635,12 +635,12 @@ log = logging.getLogger(__name__)
 # -- 1. EXTRACT ------------------------------------------------------------
 def extract(xlsx_path: Path) -> dict[str, pd.DataFrame]:
     """
-    Liest alle Tabellenblätter der Excel-Datei.
+    Liest alle TabellenblÃ¤tter der Excel-Datei.
     Entspricht:  VBA  Workbooks.Open / For Each ws In Sheets
     """
     log.info("EXTRACT: Lese %s", xlsx_path)
     sheets = pd.read_excel(xlsx_path, sheet_name=None, header=0)
-    log.info("  -> %d Tabellenblatt/-blätter gefunden: %s",
+    log.info("  -> %d Tabellenblatt/-blÃ¤tter gefunden: %s",
              len(sheets), list(sheets.keys()))
     return sheets
 
@@ -664,11 +664,11 @@ def transform(sheets: dict[str, pd.DataFrame]) -> pd.DataFrame:
                        .str.strip("_")
         )
 
-        # Pflichtfelder prüfen  (entspricht: VBA If IsEmpty(cell) Then)
+        # Pflichtfelder prÃ¼fen  (entspricht: VBA If IsEmpty(cell) Then)
         required = {"messung", "alpha_deg", "re_mio", "c_l", "c_d"}
         missing  = required - set(df.columns)
         if missing:
-            log.warning("  Fehlende Spalten: %s -- Blatt wird übersprungen", missing)
+            log.warning("  Fehlende Spalten: %s -- Blatt wird Ã¼bersprungen", missing)
             continue
 
         # Typkonvertierung
@@ -691,7 +691,7 @@ def transform(sheets: dict[str, pd.DataFrame]) -> pd.DataFrame:
         else:
             df["stroemung"] = "laminar"
 
-        # Ungültige Zeilen entfernen
+        # UngÃ¼ltige Zeilen entfernen
         before = len(df)
         df = df.dropna(subset=["messung", "alpha_deg", "c_l", "c_d"])
         removed = before - len(df)
@@ -701,10 +701,10 @@ def transform(sheets: dict[str, pd.DataFrame]) -> pd.DataFrame:
         frames.append(df)
 
     if not frames:
-        raise ValueError("Keine verwertbaren Tabellenblätter gefunden.")
+        raise ValueError("Keine verwertbaren TabellenblÃ¤tter gefunden.")
 
     result = pd.concat(frames, ignore_index=True)
-    log.info("TRANSFORM: %d Zeilen bereit für den Import", len(result))
+    log.info("TRANSFORM: %d Zeilen bereit fÃ¼r den Import", len(result))
     return result
 
 
@@ -800,7 +800,7 @@ def main():
 
         df = transform(sheets)
         n  = load(df, args.dsn)
-        log.info("Migration erfolgreich: %d Datensätze importiert.", n)
+        log.info("Migration erfolgreich: %d DatensÃ¤tze importiert.", n)
         sys.exit(0)
 
     except (ValueError, SQLAlchemyError, FileNotFoundError) as exc:
@@ -812,11 +812,11 @@ if __name__ == "__main__":
     main()
 \end{lstlisting}
 
-\chapter{VBA-zu-Python-Äquivalenz}
+\chapter{VBA-zu-Python-Ã„quivalenz}
 
-Eine Migration von \vba{} nach \py{} ist keine bloße Syntaxübersetzung -- sie ist ein Paradigmenwechsel von einer imperativ-prozeduralen, eng mit der \excel{}-Laufzeitumgebung verwobenen Skriptsprache hin zu einer modernen, testbaren und universell einsetzbaren Programmiersprache. Dieses Kapitel stellt konkrete Code-Paare gegenüber: Auf der einen Seite das originale \vba{}-Fragment mit seinem spezifischen Zugriff auf Tabellenblätter, Zellbereiche und Office-Objekte -- auf der anderen Seite das semantisch äquivalente \py{}-Konstrukt, das dieselbe Logik mit klaren Datenstrukturen, nachvollziehbarer Fehlerbehandlung und voller Testbarkeit implementiert. Die Gegenüberstellungen umfassen die häufigsten Muster aus der Ingenieurspraxis: Zeileniteration, Dateioperationen und bedingte Formatierungslogik. Ziel ist es, Entwicklern den Einstieg in die Portierung zu erleichtern und die konzeptionelle Kontinuität zwischen beiden Welten sichtbar zu machen.
+Eine Migration von \vba{} nach \py{} ist keine bloÃŸe SyntaxÃ¼bersetzung -- sie ist ein Paradigmenwechsel von einer imperativ-prozeduralen, eng mit der \excel{}-Laufzeitumgebung verwobenen Skriptsprache hin zu einer modernen, testbaren und universell einsetzbaren Programmiersprache. Dieses Kapitel stellt konkrete Code-Paare gegenÃ¼ber: Auf der einen Seite das originale \vba{}-Fragment mit seinem spezifischen Zugriff auf TabellenblÃ¤tter, Zellbereiche und Office-Objekte -- auf der anderen Seite das semantisch Ã¤quivalente \py{}-Konstrukt, das dieselbe Logik mit klaren Datenstrukturen, nachvollziehbarer Fehlerbehandlung und voller Testbarkeit implementiert. Die GegenÃ¼berstellungen umfassen die hÃ¤ufigsten Muster aus der Ingenieurspraxis: Zeileniteration, Dateioperationen und bedingte Formatierungslogik. Ziel ist es, Entwicklern den Einstieg in die Portierung zu erleichtern und die konzeptionelle KontinuitÃ¤t zwischen beiden Welten sichtbar zu machen.
 
-\section{Iteration über Zeilen}
+\section{Iteration Ã¼ber Zeilen}
 
 \begin{lstlisting}[style=vba, caption={VBA: Iteration mit For Each}]
 Sub BerechneLD()
@@ -842,7 +842,7 @@ End Sub
 \begin{lstlisting}[style=python, caption={Python-\"Aquivalent: Vektorisierte Berechnung}]
 # Keine Iteration n\"otig -- pandas arbeitet vektorisiert
 df["L_D"] = df["C_L"] / df["C_D"].replace(0, float("nan"))
-print(f"L/D berechnet für {len(df)} Zeilen.")
+print(f"L/D berechnet fÃ¼r {len(df)} Zeilen.")
 
 # Alternativ: Datenbankabfrage (berechnet in der View)
 # SELECT messung_id, ROUND(c_l / c_d, 3) AS l_d
@@ -865,7 +865,7 @@ End Sub
 \begin{lstlisting}[style=python, caption={Python-\"Aquivalent: pandas read/write}]
 import pandas as pd
 
-# Einlesen -- alle Blätter
+# Einlesen -- alle BlÃ¤tter
 sheets = pd.read_excel("BioFalcon.xlsx", sheet_name=None)
 
 # Verarbeitung ...
@@ -880,7 +880,7 @@ with pd.ExcelWriter("BioFalcon_export.xlsx", engine="openpyxl") as writer:
 
 \section{Bedingte Formatierung / Hervorhebung}
 
-\begin{lstlisting}[style=vba, caption={VBA: Zellen bei L/D > 20 grün einfärben}]
+\begin{lstlisting}[style=vba, caption={VBA: Zellen bei L/D > 20 grÃ¼n einfÃ¤rben}]
 Sub HervorhebungLD()
     Dim ws As Worksheet
     Set ws = ActiveSheet
@@ -917,17 +917,17 @@ plt.savefig("ld_plot.png", dpi=150)
 
 \chapter{Analytische SQL-Abfragen}
 
-Nachdem die Messdaten aus \excel{} in das normalisierte \pg{}-Schema überführt worden sind, entfaltet die relationale Datenbankschicht ihr volles Potenzial: Komplexe Auswertungen, die in \excel{} aufwendige Pivot-Tabellen, verschachtelte Formeln oder mehrstufige \vba{}-Makros erfordern, lassen sich in \pg{} als deklarative SQL-Abfragen formulieren -- präzise, lesbar und vom Datenbankoptimierer effizient ausgeführt. Dieses Kapitel präsentiert eine Sammlung analytischer Abfragen, die direkt auf der Datenbankview \code{v\_messung\_computed} operieren. Sie decken typische aerodynamische Auswertungsszenarien ab: die Bestimmung des optimalen Auftrieb-Widerstands-Verhältnisses, die Identifikation von Strömungsregimen, die Ausreißeranalyse sowie statistische Aggregationen. Jede Abfrage ist mit dem fachlichen Kontext des BioFalcon-Windkanaldatensatzes kommentiert und dient gleichzeitig als Vorlage für eigene Erweiterungen.
+Nachdem die Messdaten aus \excel{} in das normalisierte \pg{}-Schema Ã¼berfÃ¼hrt worden sind, entfaltet die relationale Datenbankschicht ihr volles Potenzial: Komplexe Auswertungen, die in \excel{} aufwendige Pivot-Tabellen, verschachtelte Formeln oder mehrstufige \vba{}-Makros erfordern, lassen sich in \pg{} als deklarative SQL-Abfragen formulieren -- prÃ¤zise, lesbar und vom Datenbankoptimierer effizient ausgefÃ¼hrt. Dieses Kapitel prÃ¤sentiert eine Sammlung analytischer Abfragen, die direkt auf der Datenbankview \code{v\_messung\_computed} operieren. Sie decken typische aerodynamische Auswertungsszenarien ab: die Bestimmung des optimalen Auftrieb-Widerstands-VerhÃ¤ltnisses, die Identifikation von StrÃ¶mungsregimen, die AusreiÃŸeranalyse sowie statistische Aggregationen. Jede Abfrage ist mit dem fachlichen Kontext des BioFalcon-Windkanaldatensatzes kommentiert und dient gleichzeitig als Vorlage fÃ¼r eigene Erweiterungen.
 
 \begin{lstlisting}[style=sql, caption={Analytische Abfragen gegen v\_messung\_computed}]
--- 1. Bestes L/D-Verhältnis (Geschwindigkeitsoptimum)
+-- 1. Bestes L/D-VerhÃ¤ltnis (Geschwindigkeitsoptimum)
 SELECT messung_id, alpha_deg, l_d
 FROM   biofalcon.v_messung_computed
 WHERE  NOT is_outlier AND NOT is_stall
 ORDER  BY l_d DESC NULLS LAST
 LIMIT  1;
 
--- 2. Übergangsbereich laminar -> turbulent
+-- 2. Ãœbergangsbereich laminar -> turbulent
 SELECT messung_id, alpha_deg, stroemung
 FROM   biofalcon.v_messung_computed
 WHERE  stroemung IN ('laminar', 'transition', 'turbulent')
@@ -958,9 +958,9 @@ WHERE  NOT is_outlier
 ORDER  BY alpha_deg;
 \end{lstlisting}
 
-\chapter{Migrationsprozess: Schritt für Schritt}
+\chapter{Migrationsprozess: Schritt fÃ¼r Schritt}
 
-Die eigentliche Durchführung einer Migration von \excel{}+\vba{} nach \pg{}+\py{} ist kein einzelner technischer Schritt, sondern ein strukturierter Prozess aus aufeinander aufbauenden Phasen. Ein klarer, schrittweiser Ablaufplan ist entscheidend, um Datenverluste zu vermeiden, die Systemkontinuität zu gewährleisten und den Migrationsfortschritt nachvollziehbar zu dokumentieren. Dieses Kapitel beschreibt den vollständigen Migrationsprozess anhand eines Ablaufdiagramms, das alle kritischen Entscheidungspunkte -- von der initialen Schemaerstellung über die Datentransformation bis hin zur Validierung und Aktivierung des Produktivsystems -- explizit ausweist. Zu jedem Schritt werden die auszuführenden Kommandos, die erwarteten Ausgaben und die Qualitätskriterien angegeben, die vor dem Fortschreiten zum nächsten Schritt erfüllt sein müssen.
+Die eigentliche DurchfÃ¼hrung einer Migration von \excel{}+\vba{} nach \pg{}+\py{} ist kein einzelner technischer Schritt, sondern ein strukturierter Prozess aus aufeinander aufbauenden Phasen. Ein klarer, schrittweiser Ablaufplan ist entscheidend, um Datenverluste zu vermeiden, die SystemkontinuitÃ¤t zu gewÃ¤hrleisten und den Migrationsfortschritt nachvollziehbar zu dokumentieren. Dieses Kapitel beschreibt den vollstÃ¤ndigen Migrationsprozess anhand eines Ablaufdiagramms, das alle kritischen Entscheidungspunkte -- von der initialen Schemaerstellung Ã¼ber die Datentransformation bis hin zur Validierung und Aktivierung des Produktivsystems -- explizit ausweist. Zu jedem Schritt werden die auszufÃ¼hrenden Kommandos, die erwarteten Ausgaben und die QualitÃ¤tskriterien angegeben, die vor dem Fortschreiten zum nÃ¤chsten Schritt erfÃ¼llt sein mÃ¼ssen.
 
 \begin{figure}[H]
 \centering
@@ -987,12 +987,12 @@ Die eigentliche Durchführung einer Migration von \excel{}+\vba{} nach \pg{}+\py
   arr/.style={-Stealth, thick, color=darkgray},
 ]
 
-\node[stepbox]     (s1) at (0, 0)    {\textbf{1.} PostgreSQL\\Schema anlegen\\(DDL ausführen)};
-\node[stepbox]     (s2) at (0,-2.2)  {\textbf{2.} migrate.py\\ausführen\\(--dsn angeben)};
+\node[stepbox]     (s1) at (0, 0)    {\textbf{1.} PostgreSQL\\Schema anlegen\\(DDL ausfÃ¼hren)};
+\node[stepbox]     (s2) at (0,-2.2)  {\textbf{2.} migrate.py\\ausfÃ¼hren\\(--dsn angeben)};
 \node[decision] (d1) at (0,-4.4)  {Validierung\\OK?};
-\node[stepbox]     (s3) at (5.5,-4.4){\textbf{Fix:} Spalten\\prüfen / Daten\\bereinigen};
-\node[stepbox]     (s4) at (0,-6.6)  {\textbf{3.} Views \&\\Indizes prüfen\\(SELECT)};
-\node[stepbox]     (s5) at (0,-8.8)  {\textbf{4.} Python-\\Analysen\\ausführen};
+\node[stepbox]     (s3) at (5.5,-4.4){\textbf{Fix:} Spalten\\prÃ¼fen / Daten\\bereinigen};
+\node[stepbox]     (s4) at (0,-6.6)  {\textbf{3.} Views \&\\Indizes prÃ¼fen\\(SELECT)};
+\node[stepbox]     (s5) at (0,-8.8)  {\textbf{4.} Python-\\Analysen\\ausfÃ¼hren};
 \node[stepbox]     (s6) at (0,-11.0) {\textbf{5.} Plots /\\Reports\\generieren};
 \node[done]     (s7) at (0,-13.0) {Migration\\abgeschlossen};
 
@@ -1006,7 +1006,7 @@ Die eigentliche Durchführung einer Migration von \excel{}+\vba{} nach \pg{}+\py
 \draw[arr] (s6) -- (s7);
 
 \end{tikzpicture}
-\caption{Migrationsablauf: Von der leeren Datenbank zur vollständigen Auswertung}
+\caption{Migrationsablauf: Von der leeren Datenbank zur vollstÃ¤ndigen Auswertung}
 \label{fig:flow}
 \end{figure}
 
@@ -1016,13 +1016,13 @@ Die eigentliche Durchführung einer Migration von \excel{}+\vba{} nach \pg{}+\py
   \item \pg{} $\geq$ 14 erreichbar (lokal oder remote)
   \item \py-Pakete: \code{pip install pandas sqlalchemy psycopg2-binary openpyxl}
   \item DSN bekannt: \code{postgresql://user:password@host:5432/dbname}
-  \item DDL-Skript ausgeführt (\Cref{lst:ddl})
-  \item \code{python migrate.py --dsn "..."} ausführen
+  \item DDL-Skript ausgefÃ¼hrt (\Cref{lst:ddl})
+  \item \code{python migrate.py --dsn "..."} ausfÃ¼hren
 \end{enumerate}
 
 \chapter{Vergleich: Legacy vs.\ Zielsystem}
 
-Eine fundierte Migrationsentscheidung setzt einen objektiven, kriterienbasierten Vergleich zwischen dem Legacy-System und der Zielarchitektur voraus. Dieses Kapitel stellt \excel{}+\vba{} und \pg{}+\py{} anhand von acht zentralen Qualitätsdimensionen gegenüber: Datenbankintegrität, Skalierbarkeit, Testbarkeit, Versionierbarkeit, CI/CD-Integrationsfähigkeit, Reproduzierbarkeit, Lizenzkosten und Parallelzugriffsunterstützung. Die Bewertung basiert auf den dokumentierten Erfahrungen aus dem BioFalcon-Migrations\-projekt und wird durch quantitative Benchmarks ergänzt. Das Ergebnis ist eindeutig: In allen betrachteten Dimensionen bietet das moderne \py{}+\pg{}-Ökosystem messbare Vorteile, die mit zunehmendem Datenvolumen und steigender Projektgröße noch stärker ins Gewicht fallen.
+Eine fundierte Migrationsentscheidung setzt einen objektiven, kriterienbasierten Vergleich zwischen dem Legacy-System und der Zielarchitektur voraus. Dieses Kapitel stellt \excel{}+\vba{} und \pg{}+\py{} anhand von acht zentralen QualitÃ¤tsdimensionen gegenÃ¼ber: DatenbankintegritÃ¤t, Skalierbarkeit, Testbarkeit, Versionierbarkeit, CI/CD-IntegrationsfÃ¤higkeit, Reproduzierbarkeit, Lizenzkosten und ParallelzugriffsunterstÃ¼tzung. Die Bewertung basiert auf den dokumentierten Erfahrungen aus dem BioFalcon-Migrations\-projekt und wird durch quantitative Benchmarks ergÃ¤nzt. Das Ergebnis ist eindeutig: In allen betrachteten Dimensionen bietet das moderne \py{}+\pg{}-Ã–kosystem messbare Vorteile, die mit zunehmendem Datenvolumen und steigender ProjektgrÃ¶ÃŸe noch stÃ¤rker ins Gewicht fallen.
 
 \begin{table}[H]
 \centering
@@ -1035,15 +1035,15 @@ Eine fundierte Migrationsentscheidung setzt einen objektiven, kriterienbasierten
 \toprule
 Kriterium          & \excel{} + \vba{}                       & \pg{} + \py{} \\
 \midrule
-Datenbankintegrität & Keine FK, keine Transaktionen          & ACID-konform, FK, Constraints \\
+DatenbankintegritÃ¤t & Keine FK, keine Transaktionen          & ACID-konform, FK, Constraints \\
 Skalierbarkeit      & $\leq 10^6$ Zeilen praktikabel         & $> 10^9$ Zeilen, Partitionierung \\
-Testbarkeit         & Kaum; keine Unit-Tests für VBA         & \code{pytest}, \code{hypothesis} \\
-Versionierung       & Binärformat, schlecht mit Git           & SQL/\py{} versionierbar \\
+Testbarkeit         & Kaum; keine Unit-Tests fÃ¼r VBA         & \code{pytest}, \code{hypothesis} \\
+Versionierung       & BinÃ¤rformat, schlecht mit Git           & SQL/\py{} versionierbar \\
 CI/CD-Integration   & Nicht m\"oglich                           & GitHub Actions, Jenkins \\
-Reproduzierbarkeit  & Zell-Formeln schwer auditierbar         & Vollständig nachvollziehbar \\
-Lizenzkosten        & Microsoft 365 (proprietär)             & Open Source (kostenfrei) \\
+Reproduzierbarkeit  & Zell-Formeln schwer auditierbar         & VollstÃ¤ndig nachvollziehbar \\
+Lizenzkosten        & Microsoft 365 (proprietÃ¤r)             & Open Source (kostenfrei) \\
 Parallelzugriff     & Datei-Lock, Konflikte                  & MVCC, Mehrnutzerbetrieb \\
-Automatisierung     & VBA-Makros, fehleranfällig             & Python-Skripte, CI-fähig \\
+Automatisierung     & VBA-Makros, fehleranfÃ¤llig             & Python-Skripte, CI-fÃ¤hig \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1054,63 +1054,63 @@ Automatisierung     & VBA-Makros, fehleranfällig             & Python-Skripte, 
 \label{sec:git}
 % ========================================================================
 
-Ein zentrales, in der Praxis jedoch häufig unterschätztes Argument für die
-Migration weg von \excel{} ist die fundamentale Inkompatibilität binärer
+Ein zentrales, in der Praxis jedoch hÃ¤ufig unterschÃ¤tztes Argument fÃ¼r die
+Migration weg von \excel{} ist die fundamentale InkompatibilitÃ¤t binÃ¤rer
 Tabellenkalkulationsdateien mit modernen Versionskontrollsystemen.
-Dieses Kapitel analysiert das Problem systematisch, erläutert das
-Git-Ökosystem als Lösung und zeigt anhand konkreter Kommandos und
+Dieses Kapitel analysiert das Problem systematisch, erlÃ¤utert das
+Git-Ã–kosystem als LÃ¶sung und zeigt anhand konkreter Kommandos und
 Workflows, wie der gesamte BioFalcon-Migrationsprozess unter Git
-versioniert, geprüft und kollaborativ betrieben werden kann.
+versioniert, geprÃ¼ft und kollaborativ betrieben werden kann.
 
 % ------------------------------------------------------------------------
 \section{Das Versionierungsproblem von Excel}
 % ------------------------------------------------------------------------
 
-\excel-Arbeitsmappen werden im binären \code{.xlsx}-Format (ZIP-Archiv aus
+\excel-Arbeitsmappen werden im binÃ¤ren \code{.xlsx}-Format (ZIP-Archiv aus
 XML-Fragmenten) gespeichert. Dieses Format weist aus Sicht der
 Versionskontrolle mehrere grundlegende Defizite auf:
 
 \begin{itemize}[leftmargin=1.5em, itemsep=3pt]
   \item \textbf{Keine menschenlesbare Textdarstellung:}
-        \code{git diff} erzeugt für \code{.xlsx}-Dateien ausschließlich
-        binäre Ausgaben (\code{Binary files differ}).
-        Welche Zelle sich geändert hat, welche Formel angepasst wurde,
-        welcher Wert überschrieben wurde -- all das ist ohne spezielles
+        \code{git diff} erzeugt fÃ¼r \code{.xlsx}-Dateien ausschlieÃŸlich
+        binÃ¤re Ausgaben (\code{Binary files differ}).
+        Welche Zelle sich geÃ¤ndert hat, welche Formel angepasst wurde,
+        welcher Wert Ã¼berschrieben wurde -- all das ist ohne spezielles
         Werkzeug nicht rekonstruierbar.
 
-  \item \textbf{Vollständige Neuspeicherung bei Minimumänderungen:}
+  \item \textbf{VollstÃ¤ndige Neuspeicherung bei MinimumÃ¤nderungen:}
         \excel{} serialisiert die gesamte Datei neu, sobald auch nur eine
         einzige Zelle, ein Metadatenwert oder eine interne Referenz
-        aktualisiert wird. Selbst ein Öffnen ohne Änderung kann bei
-        aktiviertem Auto-Recover zur Dateimutation führen. Git sieht
-        dabei stets ein komplett verändertes Objekt und kann keine
+        aktualisiert wird. Selbst ein Ã–ffnen ohne Ã„nderung kann bei
+        aktiviertem Auto-Recover zur Dateimutation fÃ¼hren. Git sieht
+        dabei stets ein komplett verÃ¤ndertes Objekt und kann keine
         inhaltliche Differenz berichten.
 
-  \item \textbf{Aufgeblähte Repository-Historie:}
-        Wächst eine \code{.xlsx}-Datei auf einige Megabyte an, akkumuliert
-        jeder Commit die vollständige neue Binärdatei im
+  \item \textbf{AufgeblÃ¤hte Repository-Historie:}
+        WÃ¤chst eine \code{.xlsx}-Datei auf einige Megabyte an, akkumuliert
+        jeder Commit die vollstÃ¤ndige neue BinÃ¤rdatei im
         Git-Objektspeicher. Auch \code{git lfs} (Large File Storage)
-        löst das Differenzproblem nicht -- er verschiebt nur den
+        lÃ¶st das Differenzproblem nicht -- er verschiebt nur den
         Speicherort.
 
-  \item \textbf{Kein konfliktfreies Zusammenführen (Merge):}
+  \item \textbf{Kein konfliktfreies ZusammenfÃ¼hren (Merge):}
         Verzweigt ein Team in zwei Branches und modifiziert dort
-        unabhängig voneinander verschiedene Tabellenblätter derselben
+        unabhÃ¤ngig voneinander verschiedene TabellenblÃ¤tter derselben
         \code{.xlsx}-Datei, ist ein automatischer Merge mit
-        \code{git merge} nicht möglich. Es entsteht immer ein
-        Binärkonflikt, der manuell aufgelöst -- d.\,h. eine Datei
+        \code{git merge} nicht mÃ¶glich. Es entsteht immer ein
+        BinÃ¤rkonflikt, der manuell aufgelÃ¶st -- d.\,h. eine Datei
         verworfen -- werden muss.
 
-  \item \textbf{Fehlende Atomarität von Änderungen:}
-        In \excel{} ist es unmöglich, eine semantisch zusammengehörige
-        Änderung (z.\,B.\ Erweiterung des Schemas um eine Spalte
+  \item \textbf{Fehlende AtomaritÃ¤t von Ã„nderungen:}
+        In \excel{} ist es unmÃ¶glich, eine semantisch zusammengehÃ¶rige
+        Ã„nderung (z.\,B.\ Erweiterung des Schemas um eine Spalte
         \emph{und} Anpassung der Formel in Spalte~G) als eine einzige
         atomare, beschriftete Einheit zu erfassen.
         Git-Commits bieten genau diese Zusicherung.
 
   \item \textbf{Kein Autor-Tracking:}
-        Wer welche Zelle wann auf welchen Wert gesetzt hat, lässt sich
-        in \excel{} nicht zuverlässig rekonstruieren. Git speichert
+        Wer welche Zelle wann auf welchen Wert gesetzt hat, lÃ¤sst sich
+        in \excel{} nicht zuverlÃ¤ssig rekonstruieren. Git speichert
         zu jedem Commit Autor, Zeitstempel und kryptografischen Hash;
         \code{git blame} macht jede Zeile einer Datei einem
         Commit und damit einem Autor zuweisbar.
@@ -1127,16 +1127,16 @@ Versionskontrolle mehrere grundlegende Defizite auf:
 \toprule
 Kriterium                 & \excel{} \code{.xlsx}            & Git + \py{}/SQL \\
 \midrule
-Textdiff                  & Nicht möglich (Binärformat)      & \code{git diff} auf Zeilen-/Zeichenebene \\
-Merge zweier Branches     & Immer Binärkonflikt              & Automatisch lösbar bei disjunkten Änderungen \\
+Textdiff                  & Nicht mÃ¶glich (BinÃ¤rformat)      & \code{git diff} auf Zeilen-/Zeichenebene \\
+Merge zweier Branches     & Immer BinÃ¤rkonflikt              & Automatisch lÃ¶sbar bei disjunkten Ã„nderungen \\
 Atomic commit             & Nicht vorhanden                  & Commit umfasst beliebig viele Dateien atomar \\
 Autor-Tracking            & Nur Datei-Metadaten              & \code{git blame}: Zeile $\to$ Commit $\to$ Autor \\
-Rollback einer Änderung   & Undo-History (flüchtig)          & \code{git revert}, \code{git checkout}, \code{git reset} \\
+Rollback einer Ã„nderung   & Undo-History (flÃ¼chtig)          & \code{git revert}, \code{git checkout}, \code{git reset} \\
 Branching / Feature-Flags & Nicht vorhanden                  & Feature-Branches, Tags, Stash \\
-CI/CD-Integration         & Nicht möglich                    & GitHub Actions, GitLab CI, Jenkins \\
-Prüfpfad (Audit Trail)    & Nicht durchgängig                & Vollständige, unveränderliche Commit-Historie \\
+CI/CD-Integration         & Nicht mÃ¶glich                    & GitHub Actions, GitLab CI, Jenkins \\
+PrÃ¼fpfad (Audit Trail)    & Nicht durchgÃ¤ngig                & VollstÃ¤ndige, unverÃ¤nderliche Commit-Historie \\
 Kollaboration             & Datei-Lock / E-Mail-Austausch    & Pull Requests, Code Reviews, Branching-Strategien \\
-Repository-Größe          & Wächst quadratisch mit Commits   & Delta-Kompression; nur Diff wird gespeichert \\
+Repository-GrÃ¶ÃŸe          & WÃ¤chst quadratisch mit Commits   & Delta-Kompression; nur Diff wird gespeichert \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1147,7 +1147,7 @@ Repository-Größe          & Wächst quadratisch mit Commits   & Delta-Kompress
 
 Ein sauber strukturiertes Git-Repository trennt Quelldaten, Code,
 Konfiguration und Dokumentation in dedizierte Verzeichnisse.
-Die folgende Struktur wird für das BioFalcon-Projekt empfohlen:
+Die folgende Struktur wird fÃ¼r das BioFalcon-Projekt empfohlen:
 
 \begin{lstlisting}[style=bash, caption={Empfohlene Monorepo-Struktur}]
 biofalcon-migration/
@@ -1187,10 +1187,10 @@ biofalcon-migration/
 Die entscheidende Designentscheidung ist, dass produktive \code{.xlsx}-Dateien
 \emph{niemals} ins Repository eingecheckt werden. Sie liegen in einem
 separaten, gesicherten Dateiablagesystem (z.\,B.\ SharePoint, S3 Bucket,
-NFS). Das Repository enthält ausschließlich Text-Artefakte, die vollständig
-diff-fähig und merge-fähig sind.
+NFS). Das Repository enthÃ¤lt ausschlieÃŸlich Text-Artefakte, die vollstÃ¤ndig
+diff-fÃ¤hig und merge-fÃ¤hig sind.
 
-\begin{lstlisting}[style=bash, caption={.gitignore für das Migrationsprojekt}]
+\begin{lstlisting}[style=bash, caption={.gitignore fÃ¼r das Migrationsprojekt}]
 # Excel-Dateien (Produktivdaten niemals ins Repo!)
 *.xlsx
 *.xls
@@ -1246,13 +1246,13 @@ git add tests/
 git commit -m "test: Grundlegende Unit-Tests fuer transform und load"
 \end{lstlisting}
 
-Aussagekräftige Commit-Nachrichten folgen dem
+AussagekrÃ¤ftige Commit-Nachrichten folgen dem
 \href{https://www.conventionalcommits.org/}{Conventional-Commits-Standard}:
 \code{<type>(<scope>): <kurze Beschreibung>}, wobei \code{type} aus
 \code{feat}, \code{fix}, \code{refactor}, \code{test}, \code{chore},
-\code{docs} oder \code{perf} gewählt wird.
-Gegenüber einem \excel-Dateinamen wie \code{BioFalcon\_\newline v3\_FINAL\_korr2.xlsx}
-ist diese Konvention nicht nur präziser, sondern auch maschinell auswertbar.
+\code{docs} oder \code{perf} gewÃ¤hlt wird.
+GegenÃ¼ber einem \excel-Dateinamen wie \code{BioFalcon\_\newline v3\_FINAL\_korr2.xlsx}
+ist diese Konvention nicht nur prÃ¤ziser, sondern auch maschinell auswertbar.
 
 \begin{lstlisting}[style=bash, caption={Diff und Blame: Nachvollziehen von Aenderungen}]
 # Zeilenweise Unterschied zwischen zwei Commits
@@ -1271,19 +1271,19 @@ git log -S "def transform" --oneline
 git show abc1234
 \end{lstlisting}
 
-\code{git diff} auf ein \py-Skript liefert exakt die geänderten Zeilen --
-z.\,B.\ die Ergänzung der Pflichtfeld-Validierung in \code{transform.py}
+\code{git diff} auf ein \py-Skript liefert exakt die geÃ¤nderten Zeilen --
+z.\,B.\ die ErgÃ¤nzung der Pflichtfeld-Validierung in \code{transform.py}
 oder die Anpassung des Upsert-SQL in \code{load.py}. Auf einer
-\code{.xlsx}-Datei liefert \code{git diff} ausschließlich
+\code{.xlsx}-Datei liefert \code{git diff} ausschlieÃŸlich
 \code{Binary files a/BioFalcon.xlsx and b/BioFalcon.xlsx differ}.
 
 % ------------------------------------------------------------------------
 \section{Schema-Migrationen versionieren}
 % ------------------------------------------------------------------------
 
-Datenbankschemas ändern sich im Laufe des Projekts: neue Spalten kommen
+Datenbankschemas Ã¤ndern sich im Laufe des Projekts: neue Spalten kommen
 hinzu, Indizes werden optimiert, Views neu definiert.
-Jede solche Änderung gehört als eigenständige, nummerierte
+Jede solche Ã„nderung gehÃ¶rt als eigenstÃ¤ndige, nummerierte
 SQL-Migrationsdatei ins Repository:
 
 \begin{lstlisting}[style=sql, caption={db/migrations/002\_add\_stroemung.sql}]
@@ -1326,19 +1326,19 @@ git tag -a v1.2.0 -m "Schema: Stroemungsregime-Spalte live"
 git push origin v1.2.0
 \end{lstlisting}
 
-Dieser Ansatz schafft eine unveränderliche, geordnete Geschichte aller
-Schemaänderungen. In \excel{} würde dieselbe Änderung -- ein neues
-Tabellenblatt oder eine neue Spalte -- höchstens in einem
+Dieser Ansatz schafft eine unverÃ¤nderliche, geordnete Geschichte aller
+SchemaÃ¤nderungen. In \excel{} wÃ¼rde dieselbe Ã„nderung -- ein neues
+Tabellenblatt oder eine neue Spalte -- hÃ¶chstens in einem
 Dateinamen wie \code{BioFalcon\_neu.xlsx} oder in einer
-Kommentarzelle dokumentiert. Es gibt keine Möglichkeit,
-die Änderung zu \emph{rückgängig machen}, ohne die alte Datei
+Kommentarzelle dokumentiert. Es gibt keine MÃ¶glichkeit,
+die Ã„nderung zu \emph{rÃ¼ckgÃ¤ngig machen}, ohne die alte Datei
 aus einem Backup wiederherzustellen.
 
 % ------------------------------------------------------------------------
-\section{Branching-Strategie für sichere Weiterentwicklung}
+\section{Branching-Strategie fÃ¼r sichere Weiterentwicklung}
 % ------------------------------------------------------------------------
 
-Das Git-Branching-Modell ermöglicht parallele Entwicklungslinien ohne
+Das Git-Branching-Modell ermÃ¶glicht parallele Entwicklungslinien ohne
 Datenverlust oder gegenseitige Behinderung -- ein Konzept, das in
 \excel{} schlicht nicht existiert:
 
@@ -1387,14 +1387,14 @@ git branch -d hotfix/upsert-key
 Jeder Tag (\code{v1.0.0}, \code{v2.0.1}~\ldots) entspricht einem
 definierten Systemzustand, der beliebig oft wiederherstellbar ist:
 \code{git checkout v1.0.0} versetzt das Repository exakt in den
-Stand des initialen Produktivbetriebs zurück -- inklusive Schemastand,
+Stand des initialen Produktivbetriebs zurÃ¼ck -- inklusive Schemastand,
 ETL-Code und Tests.
 
 % ------------------------------------------------------------------------
-\section{Rollback: Änderungen rückgängig machen}
+\section{Rollback: Ã„nderungen rÃ¼ckgÃ¤ngig machen}
 % ------------------------------------------------------------------------
 
-Fehlerhafte Änderungen zu korrigieren ist mit Git strukturell trivial --
+Fehlerhafte Ã„nderungen zu korrigieren ist mit Git strukturell trivial --
 in \excel{} hingegen erfordert es manuelle Backupstrategie und
 diszipliniertes Dateinamen-Management:
 
@@ -1418,19 +1418,19 @@ psql "$DATABASE_URL" -f db/migrations/rollback_002.sql
 \end{lstlisting}
 
 Der Befehl \code{git revert} ist besonders wertvoll in produktiven Umgebungen:
-Er erzeugt einen neuen Commit, der die Wirkung eines früheren Commits
-umkehrt, ohne die veröffentlichte History zu verändern.
-Gegenüber dem \excel-Äquivalent -- die alte Dateiversion aus einem
+Er erzeugt einen neuen Commit, der die Wirkung eines frÃ¼heren Commits
+umkehrt, ohne die verÃ¶ffentlichte History zu verÃ¤ndern.
+GegenÃ¼ber dem \excel-Ã„quivalent -- die alte Dateiversion aus einem
 Backup einspielen -- ist dies \emph{atomar}, \emph{auditierbar} und
 erfordert keinen Systemstillstand.
 
 % ------------------------------------------------------------------------
-\section{Continuous Integration: Automatisierte Qualitätssicherung}
+\section{Continuous Integration: Automatisierte QualitÃ¤tssicherung}
 % ------------------------------------------------------------------------
 
 Sobald der Code in einem Git-Repository liegt, kann Continuous Integration
-(CI) automatisch bei jedem \code{git push} ausgelöst werden.
-Für das BioFalcon-Migrationsprojekt empfiehlt sich folgende
+(CI) automatisch bei jedem \code{git push} ausgelÃ¶st werden.
+FÃ¼r das BioFalcon-Migrationsprojekt empfiehlt sich folgende
 GitHub-Actions-Pipeline:
 
 \begin{lstlisting}[style=yaml, caption={.github/workflows/ci.yml -- Automatisierte Tests und Lint}]
@@ -1492,20 +1492,20 @@ jobs:
         run: pytest --cov=etl --cov-fail-under=80
 \end{lstlisting}
 
-Diese Pipeline läuft vollautomatisch bei jedem Pull Request.
-Ein Merge in \code{main} ist erst möglich, wenn alle Checks
+Diese Pipeline lÃ¤uft vollautomatisch bei jedem Pull Request.
+Ein Merge in \code{main} ist erst mÃ¶glich, wenn alle Checks
 bestanden haben. In \excel{} existiert kein vergleichbares
 Konzept: Formeln werden nicht unit-getestet, \vba-Makros nicht
-gelintet, und niemand prüft bei jeder Änderung automatisch,
-ob die Datenintegrität gewahrt bleibt.
+gelintet, und niemand prÃ¼ft bei jeder Ã„nderung automatisch,
+ob die DatenintegritÃ¤t gewahrt bleibt.
 
 % ------------------------------------------------------------------------
-\section{Git-Prüfpfad als Audit Trail}
+\section{Git-PrÃ¼fpfad als Audit Trail}
 % ------------------------------------------------------------------------
 
 In regulierten Branchen (Luft- und Raumfahrt, Medizintechnik,
-Finanzwesen) ist ein lückenloser Änderungsnachweis gesetzlich
-vorgeschrieben. Git erfüllt diese Anforderung out-of-the-box:
+Finanzwesen) ist ein lÃ¼ckenloser Ã„nderungsnachweis gesetzlich
+vorgeschrieben. Git erfÃ¼llt diese Anforderung out-of-the-box:
 
 \begin{lstlisting}[style=bash, caption={Audit-Trail-Abfragen mit Git}]
 # Vollstaendige Commit-Historie fuer eine Datei
@@ -1531,18 +1531,18 @@ git bisect good v1.0.0       # dieser Stand war korrekt
 # "git bisect good" oder "git bisect bad" antworten
 \end{lstlisting}
 
-Das Ergebnis: Jede Änderung am Schema, am ETL-Code oder an der
+Das Ergebnis: Jede Ã„nderung am Schema, am ETL-Code oder an der
 Konfiguration ist einem namentlich bekannten Autor zugeordnet,
-mit präzisem Zeitstempel versehen und inhaltlich beschrieben.
-Ein \excel-Audit hingegen endet spätestens bei der Frage,
-wer Zelle \code{G47} am 14.\,März geändert hat -- und warum.
+mit prÃ¤zisem Zeitstempel versehen und inhaltlich beschrieben.
+Ein \excel-Audit hingegen endet spÃ¤testens bei der Frage,
+wer Zelle \code{G47} am 14.\,MÃ¤rz geÃ¤ndert hat -- und warum.
 
 % ------------------------------------------------------------------------
-\section{Pre-Commit-Hooks: Qualität vor dem Commit erzwingen}
+\section{Pre-Commit-Hooks: QualitÃ¤t vor dem Commit erzwingen}
 % ------------------------------------------------------------------------
 
 Git-Hooks sind Skripte, die automatisch zu bestimmten Zeitpunkten
-im Git-Workflow ausgeführt werden. Mit dem Tool \code{pre-commit}
+im Git-Workflow ausgefÃ¼hrt werden. Mit dem Tool \code{pre-commit}
 lassen sie sich deklarativ konfigurieren:
 
 \begin{lstlisting}[style=yaml, caption={.pre-commit-config.yaml -- Lokale Qualitaetssicherung}]
@@ -1578,10 +1578,10 @@ pre-commit install          # Hooks in .git/hooks registrieren
 pre-commit run --all-files  # Einmalig alle Dateien pruefen
 \end{lstlisting}
 
-der Hook \code{no-xlsx-in-repo} verhindert programmgestützt, dass
-versehentlich produktive \code{.xlsx}-Dateien mit möglicherweise
-sensiblen Messdaten ins öffentliche Repository gelangen --
-eine Sicherheitslücke, die in der Praxis immer wieder auftritt.
+der Hook \code{no-xlsx-in-repo} verhindert programmgestÃ¼tzt, dass
+versehentlich produktive \code{.xlsx}-Dateien mit mÃ¶glicherweise
+sensiblen Messdaten ins Ã¶ffentliche Repository gelangen --
+eine SicherheitslÃ¼cke, die in der Praxis immer wieder auftritt.
 
 % ------------------------------------------------------------------------
 \section{Zusammenfassung: Quantitiver Vorteil von Git}
@@ -1600,23 +1600,23 @@ Szenario                        & \excel{} ohne Git              & Git + \py{}/S
 \midrule
 Dateinamenschema nach 1 Jahr    & \code{..\_v7\_FINAL\_korr3.xlsx} & \code{v2.3.1} (Tag); \code{git log} \\
 Rollback auf Stand vor 3 Wochen & Backup suchen, manuell einspielen & \code{git checkout <hash>} (5\,s) \\
-Wer änderte Formel in Zelle G47 & Unbekannt                       & \code{git blame etl/transform.py} \\
-Parallele Entwicklung (2 Devs)  & E-Mail-Anhänge, Konflikte       & Feature-Branch + Pull Request \\
-Automatische Tests bei Änderung & Nicht möglich                   & GitHub Actions (CI/CD) \\
-Gesamtgröße nach 100 Commits    & $\sim100\times$ Dateigröße      & $\approx 1\times$ (Delta-Kompression) \\
-Auditnachweis für Prüfer        & Nicht lieferbar                 & \code{git log}, \code{git blame}, Tags \\
+Wer Ã¤nderte Formel in Zelle G47 & Unbekannt                       & \code{git blame etl/transform.py} \\
+Parallele Entwicklung (2 Devs)  & E-Mail-AnhÃ¤nge, Konflikte       & Feature-Branch + Pull Request \\
+Automatische Tests bei Ã„nderung & Nicht mÃ¶glich                   & GitHub Actions (CI/CD) \\
+GesamtgrÃ¶ÃŸe nach 100 Commits    & $\sim100\times$ DateigrÃ¶ÃŸe      & $\approx 1\times$ (Delta-Kompression) \\
+Auditnachweis fÃ¼r PrÃ¼fer        & Nicht lieferbar                 & \code{git log}, \code{git blame}, Tags \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Git ist damit nicht lediglich ein nützliches Zusatzwerkzeug für die
-Migration, sondern eine \textbf{strukturelle Voraussetzung} für
+Git ist damit nicht lediglich ein nÃ¼tzliches Zusatzwerkzeug fÃ¼r die
+Migration, sondern eine \textbf{strukturelle Voraussetzung} fÃ¼r
 professionellen, reproduzierbaren Betrieb.
-Der Übergang von \code{.xlsx}-Dateien zu diff-fähigem \py-Code und
+Der Ãœbergang von \code{.xlsx}-Dateien zu diff-fÃ¤higem \py-Code und
 deklaartivem SQL ist der erste und folgenreichste Schritt zu einem
-Entwicklungsprozess, der Qualitätssicherung, Nachvollziehbarkeit
-und Teamarbeit systematisch ermöglicht -- und nicht dem Zufall
-überlässt.
+Entwicklungsprozess, der QualitÃ¤tssicherung, Nachvollziehbarkeit
+und Teamarbeit systematisch ermÃ¶glicht -- und nicht dem Zufall
+Ã¼berlÃ¤sst.
 
 % ========================================================================
 \newpage
@@ -1624,18 +1624,18 @@ und Teamarbeit systematisch ermöglicht -- und nicht dem Zufall
 \label{sec:prod}
 % ========================================================================
 
-Die bisherigen Kapitel haben die konzeptionellen und technischen Grundlagen der Migration gelegt. Mit dem Übergang in den Produktivbetrieb stellen sich jedoch neue Anforderungen, die über eine einmalige Batch-Migration weit hinausgehen: gleichzeitige Datenbankzugriffe aus mehreren Prozessen, Echtzeit-Dateneingabe über REST-APIs, niedrige Latenzanforderungen bei hohem Durchsatz sowie die Notwendigkeit, nicht-blockierende I/O-Operationen effizient zu handhaben. Dieses Kapitel beschreibt den Wechsel von der synchronen Datenbankschnittstelle \psycopg{} zur asynchronen Bibliothek \asyncpg{}, die das PostgreSQL-Wire-Protokoll nativ implementiert und auf \code{asyncio} aufbaut. Es werden Performanzvergleiche präsentiert, Verbindungspooling und Fehlerbehandlung diskutiert sowie der vollständige produktionsreife Migrationscode mit allen Absicherungsmechanismen bereitgestellt.
+Die bisherigen Kapitel haben die konzeptionellen und technischen Grundlagen der Migration gelegt. Mit dem Ãœbergang in den Produktivbetrieb stellen sich jedoch neue Anforderungen, die Ã¼ber eine einmalige Batch-Migration weit hinausgehen: gleichzeitige Datenbankzugriffe aus mehreren Prozessen, Echtzeit-Dateneingabe Ã¼ber REST-APIs, niedrige Latenzanforderungen bei hohem Durchsatz sowie die Notwendigkeit, nicht-blockierende I/O-Operationen effizient zu handhaben. Dieses Kapitel beschreibt den Wechsel von der synchronen Datenbankschnittstelle \psycopg{} zur asynchronen Bibliothek \asyncpg{}, die das PostgreSQL-Wire-Protokoll nativ implementiert und auf \code{asyncio} aufbaut. Es werden Performanzvergleiche prÃ¤sentiert, Verbindungspooling und Fehlerbehandlung diskutiert sowie der vollstÃ¤ndige produktionsreife Migrationscode mit allen Absicherungsmechanismen bereitgestellt.
 
 \section{Motivation: Warum asyncpg statt psycopg2?}
 
 Das in den vorangegangenen Abschnitten verwendete \psycopg{} ist ein
 synchroner Datenbanktreiber: jede Datenbankoperation blockiert den
-ausführenden Thread bis zur Antwort. Für Batch-Migrationen ist das
-akzeptabel; für Produktivsysteme mit gleichzeitigen Anfragen, Echtzeit-
+ausfÃ¼hrenden Thread bis zur Antwort. FÃ¼r Batch-Migrationen ist das
+akzeptabel; fÃ¼r Produktivsysteme mit gleichzeitigen Anfragen, Echtzeit-
 Dateneingabe oder REST-APIs ist es ein Flaschenhals.
 
 \asyncpg{} implementiert das PostgreSQL-Wire-Protokoll nativ in C und
-nutzt \code{asyncio} für nicht-blockierende I/O. Die Performanzvorteile
+nutzt \code{asyncio} fÃ¼r nicht-blockierende I/O. Die Performanzvorteile
 sind signifikant:
 
 \begin{table}[H]
@@ -1893,7 +1893,7 @@ if __name__ == "__main__":
 \begin{theorem}[Transaktionale Migrationssicherheit]
   Sei $\mathcal{M}$ die Migrationspipeline im \code{copy}-Modus.
   Da alle COPY-Operationen innerhalb einer einzigen Datenbanktransaktion
-  ausgeführt werden, gilt:
+  ausgefÃ¼hrt werden, gilt:
   \[
     \mathcal{M}(D) =
     \begin{cases}
@@ -1910,13 +1910,13 @@ if __name__ == "__main__":
 \label{sec:orchestration}
 % ========================================================================
 
-Eine ETL-Pipeline, die nur manuell gestartet wird, ist in der Praxis kaum produktionstauglich. Sobald Messdaten kontinuierlich anfallen, tägliche Importläufe geplant werden müssen oder mehrere voneinander abhängige Pipelines koordiniert werden sollen, wird ein dediziertes Orchestrierungsframework unentbehrlich. Dieses Kapitel behandelt zwei der verbreitetsten Systeme im Python-Ökosystem: Apache \airflow{} als bewährte, auf DAGs (Directed Acyclic Graphs) basierende Enterprise-Lösung sowie Prefect als moderne, entwicklerfreundlichere Alternative mit nativem Python-Workflow-Modell. Für beide Systeme wird gezeigt, wie die BioFalcon-ETL-Pipeline als schedulbarer, überwachbarer und bei Fehlern automatisch wiederherstellbarer Workflow definiert wird. Entscheidungskriterien für die Wahl des geeigneten Tools werden anhand konkreter Anwendungsszenarien diskutiert.
+Eine ETL-Pipeline, die nur manuell gestartet wird, ist in der Praxis kaum produktionstauglich. Sobald Messdaten kontinuierlich anfallen, tÃ¤gliche ImportlÃ¤ufe geplant werden mÃ¼ssen oder mehrere voneinander abhÃ¤ngige Pipelines koordiniert werden sollen, wird ein dediziertes Orchestrierungsframework unentbehrlich. Dieses Kapitel behandelt zwei der verbreitetsten Systeme im Python-Ã–kosystem: Apache \airflow{} als bewÃ¤hrte, auf DAGs (Directed Acyclic Graphs) basierende Enterprise-LÃ¶sung sowie Prefect als moderne, entwicklerfreundlichere Alternative mit nativem Python-Workflow-Modell. FÃ¼r beide Systeme wird gezeigt, wie die BioFalcon-ETL-Pipeline als schedulbarer, Ã¼berwachbarer und bei Fehlern automatisch wiederherstellbarer Workflow definiert wird. Entscheidungskriterien fÃ¼r die Wahl des geeigneten Tools werden anhand konkreter Anwendungsszenarien diskutiert.
 
-\section{Übersicht: Wann welches Tool?}
+\section{Ãœbersicht: Wann welches Tool?}
 
-Für einmalige oder manuelle Migrationen genügt \code{migrate.py}
-direkt. Sobald die Pipeline regelmä\ss{}ig ausgeführt werden muss
-(täglich neue Messdaten, kontinuierliche Synchronisation, automatisierte
+FÃ¼r einmalige oder manuelle Migrationen genÃ¼gt \code{migrate.py}
+direkt. Sobald die Pipeline regelmÃ¤\ss{}ig ausgefÃ¼hrt werden muss
+(tÃ¤glich neue Messdaten, kontinuierliche Synchronisation, automatisierte
 Reports), wird ein Orchestrierungsframework ben\"otigt.
 
 \begin{table}[H]
@@ -2083,7 +2083,7 @@ t1 >> t2 >> t3 >> t4 >> t_alert
 \node[font=\tiny, color=comcolor] at (5.6,-1.0) {bei Fehler};
 \node[font=\tiny, color=comcolor] at (8.4,0.7)  {Zeilenanzahl};
 \end{tikzpicture}
-\caption{Airflow-DAG: Aufgabenabhängigkeiten mit Retry-Logik}
+\caption{Airflow-DAG: AufgabenabhÃ¤ngigkeiten mit Retry-Logik}
 \label{fig:dag}
 \end{figure}
 
@@ -2154,15 +2154,15 @@ if __name__ == "__main__":
 \label{sec:docker}
 % ========================================================================
 
-Eine reproduzierbare Produktivumgebung ist nur dann gewährleistet, wenn alle Systemkomponenten -- Datenbank, ETL-Applikation, Orchestrierungsschicht und Monitoring -- in einer definierten, isolierten und versionierten Laufzeitumgebung betrieben werden. \docker{} und \code{docker-compose} haben sich als Standard-Werkzeuge für diese Aufgabe etabliert: Sie kapseln jede Komponente in einen eigenständigen Container mit exakt spezifizierten Abhängigkeiten und ermöglichen die vollständige Beschreibung des Gesamtsystems in einer einzigen deklarativen Konfigurationsdatei. Dieses Kapitel dokumentiert den vollständigen Docker-Compose-Stack für das BioFalcon-Migrationsprojekt, einschließlich \pg{}-Datenbankserver, ETL-Applikationscontainer, \airflow{}-Scheduler sowie Prometheus und Grafana für das Monitoring. Darüber hinaus werden der Dockerfile für den ETL-Container sowie die Konfiguration von Health-Checks, Volume-Mounts und Container-Netzwerken beschrieben.
+Eine reproduzierbare Produktivumgebung ist nur dann gewÃ¤hrleistet, wenn alle Systemkomponenten -- Datenbank, ETL-Applikation, Orchestrierungsschicht und Monitoring -- in einer definierten, isolierten und versionierten Laufzeitumgebung betrieben werden. \docker{} und \code{docker-compose} haben sich als Standard-Werkzeuge fÃ¼r diese Aufgabe etabliert: Sie kapseln jede Komponente in einen eigenstÃ¤ndigen Container mit exakt spezifizierten AbhÃ¤ngigkeiten und ermÃ¶glichen die vollstÃ¤ndige Beschreibung des Gesamtsystems in einer einzigen deklarativen Konfigurationsdatei. Dieses Kapitel dokumentiert den vollstÃ¤ndigen Docker-Compose-Stack fÃ¼r das BioFalcon-Migrationsprojekt, einschlieÃŸlich \pg{}-Datenbankserver, ETL-Applikationscontainer, \airflow{}-Scheduler sowie Prometheus und Grafana fÃ¼r das Monitoring. DarÃ¼ber hinaus werden der Dockerfile fÃ¼r den ETL-Container sowie die Konfiguration von Health-Checks, Volume-Mounts und Container-Netzwerken beschrieben.
 
 \section{Docker-Compose-Stack}
 
-Für die vollständige Produktivumgebung werden vier Dienste ben\"otigt:
+FÃ¼r die vollstÃ¤ndige Produktivumgebung werden vier Dienste ben\"otigt:
 \pg{} als Datenbankserver, die ETL-Applikation selbst, \airflow{}
-als Scheduler sowie Prometheus/Grafana für das Monitoring.
+als Scheduler sowie Prometheus/Grafana fÃ¼r das Monitoring.
 
-\begin{lstlisting}[style=yaml, caption={docker-compose.prod.yml: Vollständiger Produktiv-Stack}, label=lst:compose]
+\begin{lstlisting}[style=yaml, caption={docker-compose.prod.yml: VollstÃ¤ndiger Produktiv-Stack}, label=lst:compose]
 version: "3.9"
 
 x-common: &common
@@ -2273,9 +2273,9 @@ volumes:
   grafana_data:
 \end{lstlisting}
 
-\section{Dockerfile für die ETL-Applikation}
+\section{Dockerfile fÃ¼r die ETL-Applikation}
 
-\begin{lstlisting}[style=bash, caption={Dockerfile.etl: Multi-Stage Build für ETL-Container}]
+\begin{lstlisting}[style=bash, caption={Dockerfile.etl: Multi-Stage Build fÃ¼r ETL-Container}]
 # ---- Build-Stage ------------------------------------------------
 FROM python:3.11-slim AS builder
 WORKDIR /build
@@ -2311,7 +2311,7 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
 ENTRYPOINT ["python", "prod_migrate.py"]
 \end{lstlisting}
 
-\begin{lstlisting}[style=bash, caption={requirements.txt: Abhängigkeiten der Produktivumgebung}]
+\begin{lstlisting}[style=bash, caption={requirements.txt: AbhÃ¤ngigkeiten der Produktivumgebung}]
 asyncpg>=0.29.0
 pandas>=2.2.0
 openpyxl>=3.1.0
@@ -2330,11 +2330,11 @@ hypothesis>=6.100.0
 \label{sec:security}
 % ========================================================================
 
-Sicherheit ist keine nachträgliche Ergänzung, sondern muss als integraler Bestandteil jeder produktiven Datenbankarchitektur von Anfang an mitgedacht werden. Dies gilt insbesondere für Systeme, die sensible Mess- und Forschungsdaten verwalten und in Netzwerkumgebungen betrieben werden. Dieses Kapitel beschreibt die mehrstufige Sicherheitsarchitektur des BioFalcon-Migrationsprojekts entlang der wichtigsten Angriffsvektoren: unsichere Credential-Verwaltung, überhöhte Datenbankrechte, unverschlüsselte Verbindungen und fehlende Auditierbarkeit. Für jeden dieser Bereiche werden konkrete, direkt einsetzbare Gegenmaßnahmen vorgestellt -- von der Verwaltung von Datenbankpasswörtern über HashiCorp Vault und \code{.env}-Dateien bis hin zur Implementierung des Least-Privilege-Prinzips für Datenbankrollen und der erzwungenen TLS-Verschlüsselung aller Verbindungen.
+Sicherheit ist keine nachtrÃ¤gliche ErgÃ¤nzung, sondern muss als integraler Bestandteil jeder produktiven Datenbankarchitektur von Anfang an mitgedacht werden. Dies gilt insbesondere fÃ¼r Systeme, die sensible Mess- und Forschungsdaten verwalten und in Netzwerkumgebungen betrieben werden. Dieses Kapitel beschreibt die mehrstufige Sicherheitsarchitektur des BioFalcon-Migrationsprojekts entlang der wichtigsten Angriffsvektoren: unsichere Credential-Verwaltung, Ã¼berhÃ¶hte Datenbankrechte, unverschlÃ¼sselte Verbindungen und fehlende Auditierbarkeit. FÃ¼r jeden dieser Bereiche werden konkrete, direkt einsetzbare GegenmaÃŸnahmen vorgestellt -- von der Verwaltung von DatenbankpasswÃ¶rtern Ã¼ber HashiCorp Vault und \code{.env}-Dateien bis hin zur Implementierung des Least-Privilege-Prinzips fÃ¼r Datenbankrollen und der erzwungenen TLS-VerschlÃ¼sselung aller Verbindungen.
 
 \section{Credential-Management}
 
-Datenbankpassw\"orter und DSNs dürfen \textbf{niemals} im Quellcode
+Datenbankpassw\"orter und DSNs dÃ¼rfen \textbf{niemals} im Quellcode
 stehen. Folgende Abstraktionsschichten werden empfohlen:
 
 \begin{lstlisting}[style=python, caption={secrets.py: Sichere Credential-Verwaltung via python-dotenv und Vault}]
@@ -2421,7 +2421,7 @@ CREATE USER etl_dba       PASSWORD '...' IN ROLE etl_admin;
 \label{sec:monitoring}
 % ========================================================================
 
-Ein produktives System ist nur so verlässlich wie die Sichtbarkeit seines Laufzeitverhaltens. Ohne geeignete Beobachtungsmechanismen bleiben Fehler oft unbemerkt, bis sie sich zu kritischen Ausfällen akkumuliert haben. Observability -- die Fähigkeit, aus externen Ausgaben auf den internen Zustand eines Systems zu schließen -- ist daher eine grundlegende Qualitätseigenschaft moderner Softwaresysteme. Dieses Kapitel beschreibt die Monitoring-Architektur der BioFalcon-ETL-Pipeline auf Basis von Prometheus und Grafana: Prometheus sammelt Metriken, die die Pipeline aktiv exportiert (verarbeitete Zeilen, Fehlerrate, Latenz), während Grafana diese in konfigurierbaren Dashboards visualisiert und bei Grenzwertüberschreitungen Alarme auslöst. Ergänzend wird die strukturierte Protokollierung via \code{structlog} behandelt, die maschinenlesbare, durchsuchbare Logs erzeugt und die Fehlerdiagnose im Produktionsbetrieb erheblich vereinfacht.
+Ein produktives System ist nur so verlÃ¤sslich wie die Sichtbarkeit seines Laufzeitverhaltens. Ohne geeignete Beobachtungsmechanismen bleiben Fehler oft unbemerkt, bis sie sich zu kritischen AusfÃ¤llen akkumuliert haben. Observability -- die FÃ¤higkeit, aus externen Ausgaben auf den internen Zustand eines Systems zu schlieÃŸen -- ist daher eine grundlegende QualitÃ¤tseigenschaft moderner Softwaresysteme. Dieses Kapitel beschreibt die Monitoring-Architektur der BioFalcon-ETL-Pipeline auf Basis von Prometheus und Grafana: Prometheus sammelt Metriken, die die Pipeline aktiv exportiert (verarbeitete Zeilen, Fehlerrate, Latenz), wÃ¤hrend Grafana diese in konfigurierbaren Dashboards visualisiert und bei GrenzwertÃ¼berschreitungen Alarme auslÃ¶st. ErgÃ¤nzend wird die strukturierte Protokollierung via \code{structlog} behandelt, die maschinenlesbare, durchsuchbare Logs erzeugt und die Fehlerdiagnose im Produktionsbetrieb erheblich vereinfacht.
 
 \section{Prometheus-Metriken in der ETL-Pipeline}
 
@@ -2546,16 +2546,16 @@ groups:
 \label{sec:testing}
 % ========================================================================
 
-Zuverlässige Software entsteht nicht durch Hoffnung, sondern durch systematisches Testen. Für ETL-Pipelines gilt dies in besonderem Maß: Ein stiller Fehler in der Transformationslogik kann dazu führen, dass falsche Daten ohne jede Fehlermeldung in die Datenbank geschrieben werden -- mit potenziell schwerwiegenden Folgen für alle nachgelagerten Analysen. Dieses Kapitel beschreibt eine dreistufige Testarchitektur für die BioFalcon-ETL-Pipeline: Unit-Tests prüfen einzelne Transformationsfunktionen isoliert und deterministisch, Integrationstests validieren das Zusammenspiel von Pipeline und Testdatenbank unter realistischen Bedingungen, und Property-based Tests mit \code{hypothesis} decken Randfall- und Grenzwertszenarien auf, die bei handgeschriebenen Tests leicht übersehen werden. Alle Tests sind mit \code{pytest} orchestriert und in die CI/CD-Pipeline integriert, sodass jede Codeänderung automatisch gegen die vollständige Testsuite geprüft wird.
+ZuverlÃ¤ssige Software entsteht nicht durch Hoffnung, sondern durch systematisches Testen. FÃ¼r ETL-Pipelines gilt dies in besonderem MaÃŸ: Ein stiller Fehler in der Transformationslogik kann dazu fÃ¼hren, dass falsche Daten ohne jede Fehlermeldung in die Datenbank geschrieben werden -- mit potenziell schwerwiegenden Folgen fÃ¼r alle nachgelagerten Analysen. Dieses Kapitel beschreibt eine dreistufige Testarchitektur fÃ¼r die BioFalcon-ETL-Pipeline: Unit-Tests prÃ¼fen einzelne Transformationsfunktionen isoliert und deterministisch, Integrationstests validieren das Zusammenspiel von Pipeline und Testdatenbank unter realistischen Bedingungen, und Property-based Tests mit \code{hypothesis} decken Randfall- und Grenzwertszenarien auf, die bei handgeschriebenen Tests leicht Ã¼bersehen werden. Alle Tests sind mit \code{pytest} orchestriert und in die CI/CD-Pipeline integriert, sodass jede CodeÃ¤nderung automatisch gegen die vollstÃ¤ndige Testsuite geprÃ¼ft wird.
 
-\section{Teststrategie für ETL-Pipelines}
+\section{Teststrategie fÃ¼r ETL-Pipelines}
 
-Produktive ETL-Pipelines müssen auf drei Ebenen getestet werden:
-Unit-Tests für einzelne Transformationsfunktionen,
+Produktive ETL-Pipelines mÃ¼ssen auf drei Ebenen getestet werden:
+Unit-Tests fÃ¼r einzelne Transformationsfunktionen,
 Integrationstests gegen eine Testdatenbank sowie
-Property-based Tests für Randbedingungen.
+Property-based Tests fÃ¼r Randbedingungen.
 
-\begin{lstlisting}[style=python, caption={test\_etl.py: Vollständige Testsuite mit pytest und hypothesis}]
+\begin{lstlisting}[style=python, caption={test\_etl.py: VollstÃ¤ndige Testsuite mit pytest und hypothesis}]
 """
 test_etl.py -- ETL-Testsuite
 Ausfuehren:  pytest test_etl.py -v --tb=short
@@ -2669,11 +2669,11 @@ class TestIntegration:
 \end{lstlisting}
 
 % ========================================================================
-\chapter{Vollständiges Produktiv-Deployment-Playbook}
+\chapter{VollstÃ¤ndiges Produktiv-Deployment-Playbook}
 \label{sec:playbook}
 % ========================================================================
 
-Dieser Abschnitt beschreibt Schritt für Schritt den vollständigen
+Dieser Abschnitt beschreibt Schritt fÃ¼r Schritt den vollstÃ¤ndigen
 Weg von einer leeren Serverinstanz zur produktiven ETL-Umgebung.
 Der Anwender ben\"otigt ausschlie\ss{}lich: \py-Quellcode, \docker{},
 und Zugangsdaten zur Ziel-\pg-Instanz.
@@ -2755,7 +2755,7 @@ docker compose -f docker-compose.prod.yml up -d
 docker compose -f docker-compose.prod.yml ps
 \end{lstlisting}
 
-\section{Schritt 3: Erstimport ausführen}
+\section{Schritt 3: Erstimport ausfÃ¼hren}
 
 \begin{lstlisting}[style=bash, caption={Erstimport: Vollstaendige Migration der Excel-Quelldatei}]
 # Variante A: Direkt im Container ausfuehren
@@ -2823,7 +2823,7 @@ docker compose -f docker-compose.prod.yml \
 
 \section{Schritt 6: Rollback-Strategie}
 
-\begin{lstlisting}[style=bash, caption={Rollback: Datenbank auf Snapshot zurücksetzen}]
+\begin{lstlisting}[style=bash, caption={Rollback: Datenbank auf Snapshot zurÃ¼cksetzen}]
 # Vor jedem Vollimport: Snapshot anlegen
 docker compose -f docker-compose.prod.yml \
     exec postgres pg_dump \
@@ -2849,7 +2849,7 @@ docker compose -f docker-compose.prod.yml \
 \section{Schritt 7: Inkrementelle Synchronisation (Deltas)}
 
 Sobald der Erstimport abgeschlossen ist, werden neue Messdaten
-\textbf{inkrementell} synchronisiert -- nur geänderte oder neue
+\textbf{inkrementell} synchronisiert -- nur geÃ¤nderte oder neue
 Zeilen werden verarbeitet:
 
 \begin{lstlisting}[style=python, caption={delta\_sync.py: Inkrementelle Synchronisation neuer Messdaten}]
@@ -2921,13 +2921,13 @@ async def delta_sync(
 \label{sec:final}
 % ========================================================================
 
-Das vorliegende Arbeit hat die vollständige Migration von \excel{} + \vba{}
+Das vorliegende Arbeit hat die vollstÃ¤ndige Migration von \excel{} + \vba{}
 nach \pg{} + \py{} dokumentiert -- von der ersten leeren Datenbankinstanz
-bis zur produktiven, orchestrierten, containerisierten und überwachten
+bis zur produktiven, orchestrierten, containerisierten und Ã¼berwachten
 Produktivumgebung. Die in dieser Arbeit entwickelten Methoden und
 Architekturentscheidungen sind jedoch weit mehr als eine punktuelle
-technische Lösung für ein einzelnes Windkanal-Projekt: Sie
-repräsentieren einen \textbf{Paradigmenwechsel} im Umgang mit
+technische LÃ¶sung fÃ¼r ein einzelnes Windkanal-Projekt: Sie
+reprÃ¤sentieren einen \textbf{Paradigmenwechsel} im Umgang mit
 strukturierten Daten, der in nahezu allen Sektoren der modernen
 Wissens- und Industriegesellschaft tiefgreifende Konsequenzen hat.
 Der folgende Ausblick entfaltet diese Konsequenzen systematisch.
@@ -2937,47 +2937,47 @@ Der folgende Ausblick entfaltet diese Konsequenzen systematisch.
 % -----------------------------------------------------------------------
 
 Die in dieser Arbeit beschriebene Architektur ist bewusst modular
-gehalten, sodass einzelne Komponenten ohne Rückwirkung auf den Rest
-ausgetauscht oder erweitert werden können.
-Folgende Entwicklungslinien sind unmittelbar anschlussfähig:
+gehalten, sodass einzelne Komponenten ohne RÃ¼ckwirkung auf den Rest
+ausgetauscht oder erweitert werden kÃ¶nnen.
+Folgende Entwicklungslinien sind unmittelbar anschlussfÃ¤hig:
 
 \begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
   \item \textbf{Change Data Capture (CDC) mit Debezium und Kafka:}
         PostgreSQL Logical Replication erlaubt es, jede
         \code{INSERT}/\code{UPDATE}/\code{DELETE}-Operation als Ereignis
         in einen Apache-Kafka-Topic zu streamen. \code{debezium} als
-        Kafka-Connector realisiert dies deklarativ ohne Codeänderung
+        Kafka-Connector realisiert dies deklarativ ohne CodeÃ¤nderung
         am ETL-Skript. Nachgelagerte Systeme (Data Warehouse,
-        ML-Pipeline, Echtzeit-Dashboard) können diesen Stream
-        konsumieren. Gegenüber dem bisherigen Batch-ETL sinkt die
+        ML-Pipeline, Echtzeit-Dashboard) kÃ¶nnen diesen Stream
+        konsumieren. GegenÃ¼ber dem bisherigen Batch-ETL sinkt die
         Latenz von Stunden auf Millisekunden.
 
   \item \textbf{Schema-Migrationen via Alembic:}
-        Das manuelle Nummerierungsschema für SQL-Migrationsskripte
-        lässt sich durch \code{alembic} ersetzen, das automatisch
+        Das manuelle Nummerierungsschema fÃ¼r SQL-Migrationsskripte
+        lÃ¤sst sich durch \code{alembic} ersetzen, das automatisch
         Upgrade- und Downgrade-Pfade generiert, den aktuellen
         Schema-Stand in der Datenbank selbst speichert und in
         Continuous-Integration-Pipelines eingebunden werden kann.
 
-  \item \textbf{Datenqualitäts-Framework mit Great Expectations:}
-        \code{great\_expectations} ermöglicht die deklarative Definition
-        von Erwartungen an Datensätze (z.\,B.\ ``Spalte \code{c\_l}
+  \item \textbf{DatenqualitÃ¤ts-Framework mit Great Expectations:}
+        \code{great\_expectations} ermÃ¶glicht die deklarative Definition
+        von Erwartungen an DatensÃ¤tze (z.\,B.\ ``Spalte \code{c\_l}
         liegt stets im Intervall $[-2{,}5;\, 3{,}0]$'') und generiert
         automatisch HTML-Berichte bei Verletzungen.
 
   \item \textbf{REST-API-Schicht via FastAPI + asyncpg:}
-        Die asynchrone Datenbankschicht lässt sich durch eine
+        Die asynchrone Datenbankschicht lÃ¤sst sich durch eine
         FastAPI-Applikation zu einer vollwertigen REST-API erweitern,
         die externen Systemen, mobilen Applikationen und Microservices
         den Zugriff auf Messdaten ohne direkte Datenbankverbindung
-        ermöglicht.
+        ermÃ¶glicht.
 
   \item \textbf{Machine-Learning-Integration:}
         Normalisierte PostgreSQL-Daten lassen sich direkt mit
         \code{scikit-learn}, \code{PyTorch} oder \code{TensorFlow}
-        koppeln. Anomalieerkennung (z.\,B.\ Isolation Forest für
-        Ausreißer in Windkanalmessungen) und prädiktive Modelle
-        können vollständig reproduzierbar in die Produktivpipeline
+        koppeln. Anomalieerkennung (z.\,B.\ Isolation Forest fÃ¼r
+        AusreiÃŸer in Windkanalmessungen) und prÃ¤diktive Modelle
+        kÃ¶nnen vollstÃ¤ndig reproduzierbar in die Produktivpipeline
         integriert werden.
 
   \item \textbf{Kubernetes-Deployment mit Helm:}
@@ -2989,25 +2989,25 @@ Folgende Entwicklungslinien sind unmittelbar anschlussfähig:
 \end{enumerate}
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für die Wirtschaft und das Management}
+\section{Konsequenzen fÃ¼r die Wirtschaft und das Management}
 % -----------------------------------------------------------------------
 
 Die Migration von tabellenkalkulationsbasierter Datenhaltung zu
 relationalen Datenbanksystemen ist keine rein technische Frage --
 sie ist eine \textbf{strategische Managemententscheidung} mit
-messbaren ökonomischen Konsequenzen.
+messbaren Ã¶konomischen Konsequenzen.
 
 \subsection{Kostensenkung durch Eliminierung von Fehlerquellen}
 
 Studien von KPMG, Gartner und PwC beziffern den Anteil von
 Tabellenkalkulationsfehlern an den Gesamtkosten von Fehlerbereinigungen
 in Unternehmen auf bis zu 25\,\% aller operativen Datenfehler.
-Berühmt-berüchtigte Vorfälle wie die Londoner Whale-Affäre bei
+BerÃ¼hmt-berÃ¼chtigte VorfÃ¤lle wie die Londoner Whale-AffÃ¤re bei
 JPMorgan Chase (2012), bei der ein Copy-Paste-Fehler in einer
-\excel-Tabelle zur Fehleinschätzung eines Risikos von rund
-6{,}2~Milliarden US-Dollar führte, oder der AstraZeneca-Impfstoff-Fehler
+\excel-Tabelle zur FehleinschÃ¤tzung eines Risikos von rund
+6{,}2~Milliarden US-Dollar fÃ¼hrte, oder der AstraZeneca-Impfstoff-Fehler
 (2021), bei dem eine \excel-bedingte Datenpanne zu einer Unterlieferung
-von 17~Millionen Impfdosen führte, verdeutlichen: \textbf{das Risiko
+von 17~Millionen Impfdosen fÃ¼hrte, verdeutlichen: \textbf{das Risiko
 eines einzelnen unkontrollierten Zellwertes in einer
 Tabellenkalkulationsdatei kann unternehmerisch existenzbedrohend sein.}
 
@@ -3015,7 +3015,7 @@ Ein \pg-basiertes System mit Constraint-Validierung,
 Transaktionssicherheit und versioniertem ETL-Code eliminiert diese
 Fehlerklasse strukturell:
 \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
-  \item \code{CHECK}-Constraints verhindern ungültige Werte auf
+  \item \code{CHECK}-Constraints verhindern ungÃ¼ltige Werte auf
         Datenbankebene -- nicht nachgelagert in einer Validierungsformel.
   \item Transaktionen stellen sicher, dass entweder \emph{alle} oder
         \emph{keine} Daten einer Importoperation geschrieben werden.
@@ -3027,40 +3027,40 @@ Fehlerklasse strukturell:
 
 \excel-basierte Prozesse skalieren linear mit dem Personalaufwand:
 Ein Analyst bearbeitet eine Datei -- mehr Daten erfordern mehr
-Analysten oder längere Arbeitszeiten.
+Analysten oder lÃ¤ngere Arbeitszeiten.
 Ein \pg-Backend mit orchestrierter ETL-Pipeline skaliert mit der
 Hardware: Neue Maschinen werden in den Kubernetes-Cluster aufgenommen,
-der Airflow-DAG verarbeitet mehr Daten ohne zusätzliches Personal.
-Für wachsende Unternehmen, die ihren Datenumfang ver-10-fachen, ist
+der Airflow-DAG verarbeitet mehr Daten ohne zusÃ¤tzliches Personal.
+FÃ¼r wachsende Unternehmen, die ihren Datenumfang ver-10-fachen, ist
 der Wechsel von \excel{} nach \pg{} nicht optional, sondern
 \textbf{Voraussetzung des Wachstums}.
 
 \subsection{Reduktion von Knowledge-Lock-in}
 
-\excel-basierte Wissensspeicher sind häufig an einzelne Mitarbeitende
+\excel-basierte Wissensspeicher sind hÃ¤ufig an einzelne Mitarbeitende
 gebunden: Wer die Makros entwickelt hat, versteht sie; wer das
-Unternehmen verlässt, nimmt das implizite Wissen mit.
+Unternehmen verlÃ¤sst, nimmt das implizite Wissen mit.
 Versionierter, dokumentierter \py-Code in einem Git-Repository ist
 hingegen transferierbar, onboardable und wartbar -- auch von
 Mitarbeitenden, die nach dem initialen Entwickler eingestellt werden.
-Studien zeigen, dass Onboarding-Zeit in datenbankgestützten
+Studien zeigen, dass Onboarding-Zeit in datenbankgestÃ¼tzten
 Umgebungen typischerweise um 30--50\,\% geringer ist als in
 \excel-zentrischen Umgebungen.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für die Industrieproduktion und Fertigung}
+\section{Konsequenzen fÃ¼r die Industrieproduktion und Fertigung}
 % -----------------------------------------------------------------------
 
 In der industriellen Fertigung sind \excel-basierte Prozesse
-allgegenwärtig: Qualitätsprüfprotokolle, Maschinenkalibrierungsdaten,
-Wartungsprotokolle, Materialstücklisten (BOMs),
+allgegenwÃ¤rtig: QualitÃ¤tsprÃ¼fprotokolle, Maschinenkalibrierungsdaten,
+Wartungsprotokolle, MaterialstÃ¼cklisten (BOMs),
 Produktionsplanungstabellen.
 Die Konsequenzen der Migration auf strukturierte Datenbanksysteme
 sind hier besonders weitreichend.
 
-\subsection{Echtzeit-Qualitätssicherung (SPC)}
+\subsection{Echtzeit-QualitÃ¤tssicherung (SPC)}
 
-Statistical Process Control (SPC) -- das kontinuierliche Überwachen
+Statistical Process Control (SPC) -- das kontinuierliche Ãœberwachen
 von Fertigungsprozessen anhand statistischer Kennzahlen (Mittelwert,
 Standardabweichung, $C_p$, $C_{pk}$) -- ist in \excel{} nur
 retrospektiv realisierbar.
@@ -3070,35 +3070,35 @@ materialisierte Views berechnen SPC-Kennzahlen in Echtzeit;
 Grafana-Dashboards visualisieren Abweichungen sofort.
 \textbf{Ausschuss wird verhindert, nicht berichtet.}
 
-\subsection{Rückverfolgbarkeit (Traceability) in der normkonformen Fertigung}
+\subsection{RÃ¼ckverfolgbarkeit (Traceability) in der normkonformen Fertigung}
 
 ISO~9001, IATF~16949 (Automobilindustrie), AS~9100 (Luft- und
 Raumfahrt) und IEC~62443 (Industrielle Automation) fordern
-lückenlose Rückverfolgbarkeit jedes gefertigten Teils von der
+lÃ¼ckenlose RÃ¼ckverfolgbarkeit jedes gefertigten Teils von der
 Rohmaterialcharge bis zum Endprodukt.
 Mit \excel{} ist diese Traceability nur mit erheblichem manuellem
-Aufwand herstellbar und bleibt fehleranfällig.
-Ein normalisiertes PostgreSQL-Schema mit Fremdschlüsseln,
-Audit-Triggern und Git-versioniertem ETL-Code erfüllt diese
+Aufwand herstellbar und bleibt fehleranfÃ¤llig.
+Ein normalisiertes PostgreSQL-Schema mit FremdschlÃ¼sseln,
+Audit-Triggern und Git-versioniertem ETL-Code erfÃ¼llt diese
 Anforderungen strukturell und macht Compliance-Audits nachweisbar
 statt behauptbar.
 
 \subsection{Predictive Maintenance und IIoT-Integration}
 
 Die vierte industrielle Revolution (Industrie~4.0) erzeugt pro
-Fertigungsanlage täglich Gigabytes von Sensordaten.
-\excel{} ist für diese Datenmengen strukturell ungeeignet.
+Fertigungsanlage tÃ¤glich Gigabytes von Sensordaten.
+\excel{} ist fÃ¼r diese Datenmengen strukturell ungeeignet.
 \pg{} mit TimescaleDB-Extension (Zeitreihendaten) in Kombination
-mit \py-basierten ML-Modellen für Predictive Maintenance ermöglicht
-es, Maschinenausfälle Stunden oder Tage im Voraus zu prognostizieren.
+mit \py-basierten ML-Modellen fÃ¼r Predictive Maintenance ermÃ¶glicht
+es, MaschinenausfÃ¤lle Stunden oder Tage im Voraus zu prognostizieren.
 Wartungskosten sinken nachweislich um 25--30\,\% (McKinsey, 2015),
-wenn reaktive durch prädiktive Wartung ersetzt wird.
+wenn reaktive durch prÃ¤diktive Wartung ersetzt wird.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für das Finanzwesen}
+\section{Konsequenzen fÃ¼r das Finanzwesen}
 % -----------------------------------------------------------------------
 
-Der Finanzsektor ist besonders exponiert gegenüber den Risiken
+Der Finanzsektor ist besonders exponiert gegenÃ¼ber den Risiken
 \excel-basierter Datenhaltung -- und gleichzeitig derjenige Sektor,
 in dem die Vorteile der Migration am unmittelbarsten monetarisierbar
 sind.
@@ -3108,120 +3108,120 @@ sind.
 Die Regularien des Baseler Ausschusses (Basel~III und~IV),
 MiFID~II, Solvency~II (Versicherungen) und DORA
 (Digital Operational Resilience Act, EU~2022) stellen explizite
-Anforderungen an Datenqualität, Auditierbarkeit und Systemresilienz
+Anforderungen an DatenqualitÃ¤t, Auditierbarkeit und Systemresilienz
 von Finanzinstitutionen.
-\excel-basierte Risikosysteme erfüllen diese Anforderungen strukturell
+\excel-basierte Risikosysteme erfÃ¼llen diese Anforderungen strukturell
 nicht: Sie bieten keine granulare Zugriffskontrolle, keinen
-lückenlosen Audit Trail und keine Transaktionssicherheit.
-PostgreSQL mit Row-Level Security, vollständig protokollierten
+lÃ¼ckenlosen Audit Trail und keine Transaktionssicherheit.
+PostgreSQL mit Row-Level Security, vollstÃ¤ndig protokollierten
 Triggern und Git-versioniertem Quellcode hingegen ist
 \textbf{regulatorisch auditierbar und revisionssicher}.
 
 Eine Studie der European Banking Authority (EBA, 2021)
-stellte fest, dass über 60\,\% der gemeldeten Meldewesen-Fehler
+stellte fest, dass Ã¼ber 60\,\% der gemeldeten Meldewesen-Fehler
 (COREP, FINREP) auf manuelle Tabellenkalkulationsprozesse
-zurückzuführen waren. Die Migration auf strukturierte Systeme
+zurÃ¼ckzufÃ¼hren waren. Die Migration auf strukturierte Systeme
 ist damit nicht nur eine technische Verbesserung, sondern eine
 \textbf{regulatorische Notwendigkeit}.
 
 \subsection{Risikomanagement und Real-Time-Pricing}
 
-Handelsabteilungen großer Banken und Hedgefonds bewerten Portfolios
+Handelsabteilungen groÃŸer Banken und Hedgefonds bewerten Portfolios
 in Echtzeit. Ein \excel-basiertes Bewertungsmodell kann niemals
 Echtzeit-Marktdaten direkt konsumieren; es wird immer einen manuellen
 Import- oder Export-Schritt geben.
 Ein \pg-Backend mit asyncpg-basiertem Python-Client und direkter
-Anbindung an Marktdaten-Feeds (Bloomberg, Reuters, OpenBB) ermöglicht
+Anbindung an Marktdaten-Feeds (Bloomberg, Reuters, OpenBB) ermÃ¶glicht
 Neuberechnungen im Millisekundenbereich.
 \textbf{Latenz im Risikomanagement kostet Geld -- jede Sekunde.}
 
 \subsection{Automatisierte Berichterstattung und Regulatorik}
 
-Monatliche, vierteljährliche und jährliche Regulierungsberichte
+Monatliche, vierteljÃ¤hrliche und jÃ¤hrliche Regulierungsberichte
 (COREP, FINREP, XBRL-Einreichungen an die EZB) werden in vielen
-mittelgroßen Instituten noch zu wesentlichen Teilen manuell in
+mittelgroÃŸen Instituten noch zu wesentlichen Teilen manuell in
 \excel{} aufbereitet.
-Eine \pg-basierte Lösung mit versionierten SQL-Abfragen und einem
+Eine \pg-basierte LÃ¶sung mit versionierten SQL-Abfragen und einem
 Template-Engine (Jinja2 + \LaTeX{} oder ReportLab) erzeugt diese
 Berichte vollautomatisch, reproduzierbar und auditierbar -- in der
-Qualität, die Aufsichtsbehörden verlangen.
+QualitÃ¤t, die AufsichtsbehÃ¶rden verlangen.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für die wissenschaftliche Forschung}
+\section{Konsequenzen fÃ¼r die wissenschaftliche Forschung}
 % -----------------------------------------------------------------------
 
 Die Reproduzierbarkeitskrise (\textit{Replication Crisis}) der
-Wissenschaft -- ein breit diskutiertes Phänomen in Psychologie,
+Wissenschaft -- ein breit diskutiertes PhÃ¤nomen in Psychologie,
 Biomedizin, Wirtschaftswissenschaften und der Ingenieurforschung --
 hat eine oft genannte strukturelle Ursache: \textbf{nicht
 reproduzierbare Datenverarbeitungsprozesse}, zu einem erheblichen
-Teil bedingt durch \excel-Dateien als primäre Datenhaltung.
+Teil bedingt durch \excel-Dateien als primÃ¤re Datenhaltung.
 
 \subsection{Reproduzierbarkeit als Wissenschaftsnorm (FAIR-Prinzip)}
 
 Die FAIR-Prinzipien (Findable, Accessible, Interoperable, Reusable),
 formuliert von Wilkinson et al.\ (2016) und seitdem von DFG,
 EU~Horizon und der Nature-Gruppe als Standard gefordert, verlangen,
-dass Forschungsdaten auffindbar, zugänglich, interoperabel und
+dass Forschungsdaten auffindbar, zugÃ¤nglich, interoperabel und
 wiederverwendbar sind.
-\excel-Dateien erfüllen keines dieser Kriterien zuverlässig:
+\excel-Dateien erfÃ¼llen keines dieser Kriterien zuverlÃ¤ssig:
 Sie sind nicht schema-beschrieben, nicht selbstdokumentierend,
-nicht maschinenlesbar ohne proprietäre Software und nicht versioniert.
+nicht maschinenlesbar ohne proprietÃ¤re Software und nicht versioniert.
 
 Ein mit Git versioniertes \pg-Schema mit dokumentiertem \py-ETL-Code
-und automatisierten Tests erfüllt alle FAIR-Kriterien:
+und automatisierten Tests erfÃ¼llt alle FAIR-Kriterien:
 \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
-  \item \textbf{Findable:} DOI über Zenodo, persistenter Datenbankdump.
+  \item \textbf{Findable:} DOI Ã¼ber Zenodo, persistenter Datenbankdump.
   \item \textbf{Accessible:} REST-API oder direkte SQL-Abfrage.
   \item \textbf{Interoperable:} Standardisiertes SQL-Schema,
         CSV/Parquet-Export, maschinenlesbare Metadaten.
-  \item \textbf{Reusable:} Vollständiger ETL-Quellcode in Git,
+  \item \textbf{Reusable:} VollstÃ¤ndiger ETL-Quellcode in Git,
         Apache-lizenziert, mit Testabdeckung.
 \end{itemize}
 
 \subsection{Kollaborative Forschung und Open Science}
 
-Wissenschaftliche Kollaborationen erstrecken sich über Kontinente.
+Wissenschaftliche Kollaborationen erstrecken sich Ã¼ber Kontinente.
 Eine \excel-Datei, die per E-Mail in sieben verschiedenen Versionen
-zirkuliert, ist keine Grundlage für reproduzierbare gemeinsame
+zirkuliert, ist keine Grundlage fÃ¼r reproduzierbare gemeinsame
 Forschung.
 Ein gemeinsames Git-Repository mit PostgreSQL-Backups auf einem
-institutionellen Server oder in der Cloud ermöglicht:
+institutionellen Server oder in der Cloud ermÃ¶glicht:
 \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
   \item Gleichzeitigen Lesezugriff beliebig vieler Forscher ohne
         Dateisperrkonflikte.
   \item Kontrollierten Schreibzugriff via Pull Requests und Code Review.
-  \item Vollständige Nachvollziehbarkeit, wer welche Messdaten wann
-        eingefügt, korrigiert oder entfernt hat.
+  \item VollstÃ¤ndige Nachvollziehbarkeit, wer welche Messdaten wann
+        eingefÃ¼gt, korrigiert oder entfernt hat.
   \item Automatisierte Reproduzierbarkeits-Checks via CI/CD bei jeder
-        Daten- oder Code-Änderung.
+        Daten- oder Code-Ã„nderung.
 \end{itemize}
 
 \subsection{Meta-Analysen, Datenfusion und Forschung}
 
-Interdisziplinäre Projekte kombinieren Datensätze verschiedener
+InterdisziplinÃ¤re Projekte kombinieren DatensÃ¤tze verschiedener
 Provenienz: Windkanalmessungen mit CFD-Simulationen, klinische
-Studien mit genomischen Daten, ökonomische Zeitreihen mit Klimadaten.
+Studien mit genomischen Daten, Ã¶konomische Zeitreihen mit Klimadaten.
 In einer \excel-Welt erfordert jede Fusion manuellen Aufwand zum
 Abgleich unterschiedlicher Formate, Einheiten und Identifikatoren.
-Ein normalisiertes Datenbankschema mit klar definierten Fremdschlüsseln
+Ein normalisiertes Datenbankschema mit klar definierten FremdschlÃ¼sseln
 macht diese Fusion zu einer SQL-\code{JOIN}-Operation.
 
 \subsection{Langzeitarchivierung von Forschungsdaten}
 
-Förderorganisationen wie die DFG, die EU-Kommission (Horizon Europe)
-und der ERC verlangen, dass Forschungsdaten für mindestens 10,
-in der Biomedizin häufig 15--20~Jahre nach Projektende verfügbar und
+FÃ¶rderorganisationen wie die DFG, die EU-Kommission (Horizon Europe)
+und der ERC verlangen, dass Forschungsdaten fÃ¼r mindestens 10,
+in der Biomedizin hÃ¤ufig 15--20~Jahre nach Projektende verfÃ¼gbar und
 lesbar bleiben.
 \excel-Dateien -- insbesondere mit \vba-Makros -- sind durch
-Formatänderungen von Microsoft nicht zwangsläufig über Jahrzehnte
+FormatÃ¤nderungen von Microsoft nicht zwangslÃ¤ufig Ã¼ber Jahrzehnte
 lesbar.
 Ein SQL-Dump eines PostgreSQL-Schemas hingegen ist ein offenes Format,
 das mit jedem Standard-SQL-kompatiblen System gelesen werden kann --
 heute, in 10 Jahren und in 20 Jahren.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für das Bildungswesen und die Lehre}
+\section{Konsequenzen fÃ¼r das Bildungswesen und die Lehre}
 % -----------------------------------------------------------------------
 
 Die Diskrepanz zwischen der Allgegenwart von \excel{} in der beruflichen
@@ -3233,13 +3233,13 @@ in der Hochschullehre.
 
 Das World Economic Forum (WEF) listet in seinem
 \textit{Future of Jobs Report 2023} ``Data Analysis and Science''
-auf Platz~3 der gefragtesten Kompetenzen der nächsten fünf Jahre.
-Diese Kompetenz beginnt nicht in \excel{}, sondern mit dem Verständnis
+auf Platz~3 der gefragtesten Kompetenzen der nÃ¤chsten fÃ¼nf Jahre.
+Diese Kompetenz beginnt nicht in \excel{}, sondern mit dem VerstÃ¤ndnis
 strukturierter Datenhaltung, Abfrageformulierung (SQL) und
 programmatischer Datenverarbeitung (\py).
 Hochschulen und Berufsschulen, die ihren Lehrplan auf
 ``wie erstelle ich eine Pivot-Tabelle'' ausrichten, produzieren
-Absolventinnen und Absolventen, die für die Datenwirtschaft
+Absolventinnen und Absolventen, die fÃ¼r die Datenwirtschaft
 des Jahres 2030 nicht vorbereitet sind.
 
 \subsection{Strukturierte Lehre mit Git und Continuous Integration}
@@ -3247,7 +3247,7 @@ des Jahres 2030 nicht vorbereitet sind.
 Die in dieser Arbeit beschriebenen Werkzeuge -- Git, \pg{}, \py{},
 Docker, pytest -- sind identisch mit den Werkzeugen moderner
 Softwareentwicklungskurse.
-Die Integration von ETL-Übungen, Datenbankdesign und Versionskontrolle
+Die Integration von ETL-Ãœbungen, Datenbankdesign und Versionskontrolle
 in ingenieurwissenschaftliche Curricula bietet unmittelbaren Transfer:
 \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
   \item \textbf{Laborberichte als Git-Repositories:} Messdaten werden
@@ -3255,38 +3255,38 @@ in ingenieurwissenschaftliche Curricula bietet unmittelbaren Transfer:
         statt als \code{.xlsx}-E-Mail-Anhang.
   \item \textbf{Reproduzierbarkeit als Benotungskriterium:}
         Ein Laborbericht, dessen Ergebnisse nicht reproduzierbar sind
-        (weil der ETL-Code fehlt oder nicht läuft), kann konsequent
-        als unvollständig gewertet werden.
+        (weil der ETL-Code fehlt oder nicht lÃ¤uft), kann konsequent
+        als unvollstÃ¤ndig gewertet werden.
   \item \textbf{Peer Review als Lernprinzip:}
         Code-Reviews im Rahmen von Pull Requests schulen kritisches
         Lesen fremden Codes -- eine Kompetenz, die in reinen
-        \excel-Kursen völlig fehlt.
+        \excel-Kursen vÃ¶llig fehlt.
 \end{itemize}
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für das Gesundheitswesen und die Medizin}
+\section{Konsequenzen fÃ¼r das Gesundheitswesen und die Medizin}
 % -----------------------------------------------------------------------
 
-Kein Sektor trägt höhere Konsequenzen für Datenfehler als das
-Gesundheitswesen. Die COVID-19-Pandemie hat die strukturellen Schwächen
-\excel-basierter Datenprozesse in der öffentlichen Gesundheitsversorgung
-auf spektakuläre Weise offengelegt:
+Kein Sektor trÃ¤gt hÃ¶here Konsequenzen fÃ¼r Datenfehler als das
+Gesundheitswesen. Die COVID-19-Pandemie hat die strukturellen SchwÃ¤chen
+\excel-basierter Datenprozesse in der Ã¶ffentlichen Gesundheitsversorgung
+auf spektakulÃ¤re Weise offengelegt:
 Im Oktober 2020 verlor Public Health England aufgrund eines
 \excel-Zeilenlimits ($2^{20} = 1{.}048{.}576$ Zeilen) rund 15.841
-COVID-19-positive Fälle aus dem Meldesystem, die daraufhin nicht
+COVID-19-positive FÃ¤lle aus dem Meldesystem, die daraufhin nicht
 kontaktverfolgt wurden.
 
 \subsection{Klinische Studien und GCP-Compliance}
 
 Good Clinical Practice (GCP, ICH~E6) und 21~CFR Part~11 (FDA, USA)
-verlangen für klinische Studien eine vollständige,
+verlangen fÃ¼r klinische Studien eine vollstÃ¤ndige,
 manipulationssichere Dokumentation aller Datenpunkte -- inklusive
-des vollständigen Audit Trails jeder Änderung (wer, wann, was, warum).
+des vollstÃ¤ndigen Audit Trails jeder Ã„nderung (wer, wann, was, warum).
 \excel{} ist explizit \emph{nicht} CFR-Part-11-konform, da seine
-Änderungshistorie manipulierbar ist.
+Ã„nderungshistorie manipulierbar ist.
 PostgreSQL mit audit-logged Triggern, Row-Level Security und
 Git-versioniertem ETL-Code hingegen kann so konfiguriert werden,
-dass CFR-Part-11-Anforderungen strukturell erfüllt sind.
+dass CFR-Part-11-Anforderungen strukturell erfÃ¼llt sind.
 
 \subsection{Epidemiologie, Surveillance, Echtzeit-Pandemiemonitoring}
 
@@ -3298,55 +3298,55 @@ Grafana-Dashboards ist diesem Problem strukturell gewachsen --
 ein nationales \excel-Netzwerk ist es nicht.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für Behörden und Verwaltung}
+\section{Konsequenzen fÃ¼r BehÃ¶rden und Verwaltung}
 % -----------------------------------------------------------------------
 
-Die öffentliche Verwaltung in Deutschland und Europa ist strukturell
-\excel-abhängig: Haushaltsplanung, Fördermittelverwaltung, Statistik,
+Die Ã¶ffentliche Verwaltung in Deutschland und Europa ist strukturell
+\excel-abhÃ¤ngig: Haushaltsplanung, FÃ¶rdermittelverwaltung, Statistik,
 Meldesysteme -- nahezu alle Prozesse werden in Tabellenkalkulationen
-geführt.
+gefÃ¼hrt.
 
 \subsection{E-Government und Open Data}
 
-Die EU-Richtlinie über offene Daten (PSI-Richtlinie,
-2019/1024/EU) verpflichtet Behörden, Verwaltungsdaten in
+Die EU-Richtlinie Ã¼ber offene Daten (PSI-Richtlinie,
+2019/1024/EU) verpflichtet BehÃ¶rden, Verwaltungsdaten in
 maschinenlesbaren, offenen Formaten bereitzustellen.
 \code{.xlsx} ist kein offenes Format; CSV, JSON und SQL hingegen sind
-plattformunabhängig und werkzeugagnostisch.
-Eine datenbankgestützte Verwaltungsdateninfrastruktur mit REST-API-Schicht
-erfüllt die PSI-Richtlinie strukturell und bietet gleichzeitig die
-Grundlage für Open-Data-Portale (CKAN, uData).
+plattformunabhÃ¤ngig und werkzeugagnostisch.
+Eine datenbankgestÃ¼tzte Verwaltungsdateninfrastruktur mit REST-API-Schicht
+erfÃ¼llt die PSI-Richtlinie strukturell und bietet gleichzeitig die
+Grundlage fÃ¼r Open-Data-Portale (CKAN, uData).
 
-\subsection{Bekämpfung von Haushaltsbetrug und Korruption}
+\subsection{BekÃ¤mpfung von Haushaltsbetrug und Korruption}
 
 Tabellenkalkulationen, die im E-Mail-Umlaufverfahren kursieren, sind
-strukturell manipulierbar: Zeilen werden gelöscht, Werte verändert,
-Formeln überschrieben -- ohne dass ein Audit Trail verbleibt.
+strukturell manipulierbar: Zeilen werden gelÃ¶scht, Werte verÃ¤ndert,
+Formeln Ã¼berschrieben -- ohne dass ein Audit Trail verbleibt.
 Ein transaktionssicheres Datenbankschema mit PostgreSQL-Audit-Extension
 (\code{pgaudit}) und Git-versioniertem Quellcode macht solche
-Manipulationen strukturell unmöglich -- oder zumindest lückenlos
+Manipulationen strukturell unmÃ¶glich -- oder zumindest lÃ¼ckenlos
 nachweisbar.
 
 % -----------------------------------------------------------------------
-\section{Konsequenzen für Nachhaltigkeit und Klimaforschung}
+\section{Konsequenzen fÃ¼r Nachhaltigkeit und Klimaforschung}
 % -----------------------------------------------------------------------
 
-Klimaforschung und Nachhaltigkeitsberichterstattung sind auf präzise,
-reproduzierbare und langfristig archivierte Datensätze angewiesen.
+Klimaforschung und Nachhaltigkeitsberichterstattung sind auf prÃ¤zise,
+reproduzierbare und langfristig archivierte DatensÃ¤tze angewiesen.
 
 \subsection{Treibhausgas-Bilanzierung und ESG-Reporting}
 
 Die EU-Richtlinie zur Nachhaltigkeitsberichterstattung (CSRD,
 Corporate Sustainability Reporting Directive, 2022/2464/EU)
-verpflichtet ab 2024 schrittweise alle größeren Unternehmen,
+verpflichtet ab 2024 schrittweise alle grÃ¶ÃŸeren Unternehmen,
 umfassende ESG-Berichte (Environment, Social, Governance) zu erstellen
--- mit revisionssicherem Prüfpfad.
+-- mit revisionssicherem PrÃ¼fpfad.
 Die meisten Unternehmen erstellen ihre CO$_2$-Bilanzierung
 (Scope~1, 2, 3-Emissionen) derzeit in \excel{}.
-\textbf{Das genügt den CSRD-Anforderungen nicht:}
-Auditoren verlangen strukturierte Herkunftsnachweise für jeden
+\textbf{Das genÃ¼gt den CSRD-Anforderungen nicht:}
+Auditoren verlangen strukturierte Herkunftsnachweise fÃ¼r jeden
 Emissionsdatenpunkt.
-Ein \pg-basiertes ESG-Datenmanagementsystem mit vollständigem Audit
+Ein \pg-basiertes ESG-Datenmanagementsystem mit vollstÃ¤ndigem Audit
 Trail, Versions-Tagging und automatisiertem XBRL-Export ist die
 strukturell korrekte Antwort.
 
@@ -3355,31 +3355,31 @@ strukturell korrekte Antwort.
 Numerische Klimamodelle erzeugen Terabytes an Ausgabedaten
 (NetCDF-Format, ECMWF ERA5-Reanalyse-Daten).
 Die Aggregation dieser Daten in \excel{} ist technisch ausgeschlossen.
-\pg{} mit PostGIS-Extension (räumliche Daten), TimescaleDB
+\pg{} mit PostGIS-Extension (rÃ¤umliche Daten), TimescaleDB
 (Zeitreihen) und \code{dask}/\code{xarray} (\py-seitige Verarbeitung
-großer Arrays) ermöglicht die vollständige Forschungsdaten-Pipeline
+groÃŸer Arrays) ermÃ¶glicht die vollstÃ¤ndige Forschungsdaten-Pipeline
 vom Rohdaten-Download bis zur publizierten Abbildung --
 reproduzierbar, versioniert und FAIR-konform.
 
 % -----------------------------------------------------------------------
-\section{Gesellschaftliche Dimension: Datensouveränität}
+\section{Gesellschaftliche Dimension: DatensouverÃ¤nitÃ¤t}
 % -----------------------------------------------------------------------
 
-Die Konzentration kritischer Datenprozesse in einem proprietären
+Die Konzentration kritischer Datenprozesse in einem proprietÃ¤ren
 Dateiformat eines einzigen Anbieters (Microsoft) ist nicht nur ein
 technisches, sondern ein \textbf{geopolitisches und
 wirtschaftspolitisches Problem}.
 
-\subsection{Vendor-Lock-in und digitale Souveränität}
+\subsection{Vendor-Lock-in und digitale SouverÃ¤nitÃ¤t}
 
-Wer seine Betriebsdaten ausschließlich in \code{.xlsx}-Dateien
-verwaltet, ist abhängig von der Preisstrategie, den
+Wer seine Betriebsdaten ausschlieÃŸlich in \code{.xlsx}-Dateien
+verwaltet, ist abhÃ¤ngig von der Preisstrategie, den
 Lizenzentscheidungen und der Produktpolitik eines einzigen
 US-amerikanischen Konzerns.
 \pg{} ist Open-Source-Software unter der PostgreSQL-Lizenz
-(ähnlich BSD): kein Vendor-Lock-in, keine Lizenzgebühren,
-kein Risiko einer plötzlichen Preisänderung oder Produkteinstellung.
-Die EU-Kommission hat im Rahmen ihrer Digital-Souveränitäts-Initiative
+(Ã¤hnlich BSD): kein Vendor-Lock-in, keine LizenzgebÃ¼hren,
+kein Risiko einer plÃ¶tzlichen PreisÃ¤nderung oder Produkteinstellung.
+Die EU-Kommission hat im Rahmen ihrer Digital-SouverÃ¤nitÃ¤ts-Initiative
 Open-Source-Datenbanksysteme explizit als strategische
 Infrastrukturkomponente eingestuft.
 
@@ -3387,29 +3387,29 @@ Infrastrukturkomponente eingestuft.
 
 \code{.xlsx}-Dateien bieten keinen granularen Datenschutz:
 Entweder hat eine Person Zugriff auf die gesamte Datei, oder nicht.
-Row-Level Security in PostgreSQL ermöglicht es, denselben Datensatz
+Row-Level Security in PostgreSQL ermÃ¶glicht es, denselben Datensatz
 verschiedenen Benutzern in unterschiedlichem Umfang sichtbar zu machen
 -- DSGVO-konform, auditierbar und ohne Datenhaltungsredundanz.
 Personenbezogene Daten in einer \excel-Datei, die per E-Mail versendet
-wird, erfüllen die DSGVO-Anforderungen an technische und
-organisatorische Maßnahmen (Art.~32 DSGVO) strukturell nicht.
+wird, erfÃ¼llen die DSGVO-Anforderungen an technische und
+organisatorische MaÃŸnahmen (Art.~32 DSGVO) strukturell nicht.
 
 % -----------------------------------------------------------------------
 \section{Gesamtfazit: Ein Paradigmenwechsel mit globalem Horizont}
 % -----------------------------------------------------------------------
 
 Die Migration von \excel{} nach \pg{}+\py{}+Git ist in ihrer Gesamtheit
-mehr als eine technische Maßnahme.
-Sie repräsentiert einen \textbf{epistemologischen Wandel} im Umgang
+mehr als eine technische MaÃŸnahme.
+Sie reprÃ¤sentiert einen \textbf{epistemologischen Wandel} im Umgang
 mit Wissen, Daten und Prozessen:
 
 \begin{description}[leftmargin=2em, itemsep=6pt]
   \item[\textbf{Von implizit zu explizit:}]
-        Wissen, das früher in Zellfarben, manuellen
+        Wissen, das frÃ¼her in Zellfarben, manuellen
         Tabellenkonventionen und undokumentierten \vba-Makros
         kodiert war, wird in explizitem, testbarem und
-        versioniertem Code ausgedrückt.
-  \item[\textbf{Von reaktiv zu prädiktiv:}]
+        versioniertem Code ausgedrÃ¼ckt.
+  \item[\textbf{Von reaktiv zu prÃ¤diktiv:}]
         Statt Fehler retrospektiv in \excel{} zu dokumentieren,
         werden sie prospektiv durch Constraints, Tests und
         CI-Pipelines verhindert.
@@ -3417,40 +3417,40 @@ mit Wissen, Daten und Prozessen:
         Wissen wandert aus dem Posteingang einzelner Mitarbeitenden
         in versionierte, durchsuchbare, kollaborativ pflegbare
         Repositories.
-  \item[\textbf{Von proprietär zu souverän:}]
-        Abhängigkeit von einem einzelnen Softwareanbieter wird durch
-        Open-Source-Infrastruktur ersetzt, die unabhängig von
+  \item[\textbf{Von proprietÃ¤r zu souverÃ¤n:}]
+        AbhÃ¤ngigkeit von einem einzelnen Softwareanbieter wird durch
+        Open-Source-Infrastruktur ersetzt, die unabhÃ¤ngig von
         Lizenzentscheidungen betrieben werden kann.
   \item[\textbf{Von ephemer zu archivierbar:}]
-        Daten, die in sechs Monaten nicht mehr geöffnet werden können,
+        Daten, die in sechs Monaten nicht mehr geÃ¶ffnet werden kÃ¶nnen,
         weil die \excel-Version inkompatibel geworden ist, werden durch
         SQL-Dumps und \py-Code ersetzt, die in 20 Jahren noch lesbar sind.
 \end{description}
 
 Die in dieser Arbeit beschriebene Methodik -- exemplarisch am
 Windkanal-Datensatz des BioFalcon-Projekts entwickelt -- ist auf
-nahezu jeden Bereich menschlicher Datenarbeit übertragbar.
-Jedes Laborprotokoll, jede Haushaltsliste, jedes Qualitätsformular,
+nahezu jeden Bereich menschlicher Datenarbeit Ã¼bertragbar.
+Jedes Laborprotokoll, jede Haushaltsliste, jedes QualitÃ¤tsformular,
 jede klinische Studie, jeder Emissionsbericht, der heute in einer
-\code{.xlsx}-Datei lebt, ist ein Kandidat für diese Migration.
-Der technische Aufwand dafür ist, wie diese Arbeit zeigt, beherrschbar.
-Der strukturelle Gewinn -- an Qualität, Sicherheit, Reproduzierbarkeit,
-Kollaborationsfähigkeit und langfristiger Archivierbarkeit -- ist
+\code{.xlsx}-Datei lebt, ist ein Kandidat fÃ¼r diese Migration.
+Der technische Aufwand dafÃ¼r ist, wie diese Arbeit zeigt, beherrschbar.
+Der strukturelle Gewinn -- an QualitÃ¤t, Sicherheit, Reproduzierbarkeit,
+KollaborationsfÃ¤higkeit und langfristiger Archivierbarkeit -- ist
 \textbf{transformativ}.
 
 \medskip
 
-Jetzt ist der richtige Zeitpunkt für diesen Schritt.
-Die Werkzeuge sind reif, die Community groß, die Dokumentation
-exzellent, und die Kosten marginal im Verhältnis zu den Risiken,
+Jetzt ist der richtige Zeitpunkt fÃ¼r diesen Schritt.
+Die Werkzeuge sind reif, die Community groÃŸ, die Dokumentation
+exzellent, und die Kosten marginal im VerhÃ¤ltnis zu den Risiken,
 die eine unkontrollierte \excel-basierte Datenwelt langfristig
-mit sich trägt.
+mit sich trÃ¤gt.
 
 \bigskip
 \begin{center}
   {\large\itshape
-    ``Bad data in, bad decisions out -- unabhängig davon,\\
-    wie schön die Pivot-Tabelle formatiert ist.''
+    ``Bad data in, bad decisions out -- unabhÃ¤ngig davon,\\
+    wie schÃ¶n die Pivot-Tabelle formatiert ist.''
   }
 \end{center}
 
@@ -3458,52 +3458,52 @@ mit sich trägt.
 \section{Handlungsempfehlungen}
 % -----------------------------------------------------------------------
 
-Abschließend werden konkrete, sofort umsetzbare Empfehlungen für
-Organisationen jeder Größe formuliert:
+AbschlieÃŸend werden konkrete, sofort umsetzbare Empfehlungen fÃ¼r
+Organisationen jeder GrÃ¶ÃŸe formuliert:
 
 \begin{enumerate}[leftmargin=1.5em, itemsep=5pt]
   \item \textbf{Inventarisierung aller \excel-basierten Kernprozesse:}
         Identifiziere alle Prozesse im Unternehmen / der Forschungsgruppe,
-        die auf \code{.xlsx}-Dateien als primären Datenspeicher angewiesen
-        sind. Bewerte das Risikopotenzial nach Fehleranfälligkeit,
+        die auf \code{.xlsx}-Dateien als primÃ¤ren Datenspeicher angewiesen
+        sind. Bewerte das Risikopotenzial nach FehleranfÃ¤lligkeit,
         Reproduzierbarkeit und regulatorischer Relevanz.
 
   \item \textbf{Pilotmigration mit einem nicht-kritischen Datensatz:}
-        Starte mit einem Datensatz mittlerer Komplexität (wie dem
+        Starte mit einem Datensatz mittlerer KomplexitÃ¤t (wie dem
         BioFalcon-Windkanal-Datensatz), der keine direkten Produktiv-
         oder Compliance-Auswirkungen hat.
         Entwickle Schema, ETL-Code und Tests.
         Erfahre die Werkzeuge, bevor kritische Prozesse migriert werden.
 
-  \item \textbf{Git-Repositories für alle Code- und Schema-Artefakte:}
+  \item \textbf{Git-Repositories fÃ¼r alle Code- und Schema-Artefakte:}
         Bereits morgen sollte kein neues SQL-Skript, kein neuer
-        \py-Code und keine neue Konfigurationsdatei außerhalb eines
+        \py-Code und keine neue Konfigurationsdatei auÃŸerhalb eines
         Git-Repositorys entstehen.
         Das kostet nichts und setzt keine Migration voraus.
 
   \item \textbf{Training und Kulturwandel:}
-        Technische Exzellenz allein genügt nicht.
-        Teams müssen in SQL-Grundlagen, Git-Workflows und
+        Technische Exzellenz allein genÃ¼gt nicht.
+        Teams mÃ¼ssen in SQL-Grundlagen, Git-Workflows und
         \py-Skripting geschult werden.
-        Dieser Wandel erfordert Zeit, Führungsunterstützung und eine
+        Dieser Wandel erfordert Zeit, FÃ¼hrungsunterstÃ¼tzung und eine
         Lernkultur, die Fehler als Teil des Migrationsprozesses akzeptiert.
 
-  \item \textbf{Schrittweise Ablösung nach dem Strangler-Fig-Pattern:}
+  \item \textbf{Schrittweise AblÃ¶sung nach dem Strangler-Fig-Pattern:}
         Kritische Legacy-Prozesse werden nicht per Big Bang migriert,
-        sondern schrittweise: Ein neues System übernimmt zunächst nur
+        sondern schrittweise: Ein neues System Ã¼bernimmt zunÃ¤chst nur
         lesende Zugriffe (Reports), dann schreibende (neue Daten),
-        bis das alte \excel-System vollständig stillgelegt werden kann.
+        bis das alte \excel-System vollstÃ¤ndig stillgelegt werden kann.
 
   \item \textbf{Open-Source-First-Strategie:}
         PostgreSQL, Python, Git, Docker, Grafana, Airflow --
         alle in dieser Arbeit verwendeten Werkzeuge sind Open Source.
         Eine Open-Source-First-Strategie vermeidet Vendor-Lock-in,
-        reduziert Lizenzkosten und fördert aktive Teilhabe an der
+        reduziert Lizenzkosten und fÃ¶rdert aktive Teilhabe an der
         globalen Entwickler-Community.
 \end{enumerate}
 
 Die technischen Grundlagen sind gelegt. Die Konsequenzen sind skizziert.
-\textbf{Der nächste Schritt liegt bei den Organisationen, Teams und
+\textbf{Der nÃ¤chste Schritt liegt bei den Organisationen, Teams und
 Einzelpersonen, die erkennen, dass eine \code{.xlsx}-Datei mit einem
 Dateinamen wie \code{Messung\_v7\_FINAL\_final2\_korr\newline .xlsx} kein
 Zukunftsmodell ist -- und handeln.}
@@ -3681,27 +3681,27 @@ Zukunftsmodell ist -- und handeln.}
   Journal of End User Computing, 10(2), 15--21.
 
 \bibitem{csrd}
-  Europäische Kommission (2022).
+  EuropÃ¤ische Kommission (2022).
   \textit{Richtlinie 2022/2464/EU: Corporate Sustainability Reporting
   Directive (CSRD)}.
-  Amtsblatt der Europäischen Union, L~322, 15--80.
+  Amtsblatt der EuropÃ¤ischen Union, L~322, 15--80.
 
 \bibitem{psirichtlinie}
-  Europäisches Parlament und Rat (2019).
-  \textit{Richtlinie 2019/1024/EU über offene Daten und die
-  Weiterverwendung von Informationen des öffentlichen Sektors}.
-  Amtsblatt der Europäischen Union, L~172, 56--83.
+  EuropÃ¤isches Parlament und Rat (2019).
+  \textit{Richtlinie 2019/1024/EU Ã¼ber offene Daten und die
+  Weiterverwendung von Informationen des Ã¶ffentlichen Sektors}.
+  Amtsblatt der EuropÃ¤ischen Union, L~172, 56--83.
 
 \bibitem{dora}
-  Europäisches Parlament und Rat (2022).
+  EuropÃ¤isches Parlament und Rat (2022).
   \textit{Verordnung (EU) 2022/2554: Digital Operational Resilience Act
   (DORA)}.
-  Amtsblatt der Europäischen Union, L~333, 1--79.
+  Amtsblatt der EuropÃ¤ischen Union, L~333, 1--79.
 
 \bibitem{dsgvo}
-  Europäisches Parlament und Rat (2016).
+  EuropÃ¤isches Parlament und Rat (2016).
   \textit{Verordnung (EU) 2016/679: Datenschutz-Grundverordnung (DSGVO)}.
-  Amtsblatt der Europäischen Union, L~119, 1--88.
+  Amtsblatt der EuropÃ¤ischen Union, L~119, 1--88.
 
 \bibitem{cfr21}
   U.\,S. Food and Drug Administration (2023).
@@ -3762,3 +3762,4 @@ Zukunftsmodell ist -- und handeln.}
 \end{thebibliography}
 
 \end{document}
+

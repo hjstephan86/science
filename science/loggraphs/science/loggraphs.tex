@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,twoside]{article}
+﻿\documentclass[12pt,a4paper,twoside]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -45,11 +45,11 @@
 }
 
 %------------------------------------------------------------
-% Cleveref – vollständig deutsche Bezeichnungen
+% Cleveref â€“ vollstÃ¤ndig deutsche Bezeichnungen
 %------------------------------------------------------------
 % Benutzerdefinierte Theorem-Umgebungen
-\crefname{theorem}{Satz}{Sätze}
-\Crefname{theorem}{Satz}{Sätze}
+\crefname{theorem}{Satz}{SÃ¤tze}
+\Crefname{theorem}{Satz}{SÃ¤tze}
 \crefname{lemma}{Lemma}{Lemmata}
 \Crefname{lemma}{Lemma}{Lemmata}
 \crefname{korollar}{Korollar}{Korollare}
@@ -84,7 +84,7 @@
 %\usepackage{natbib}
 
 %------------------------------------------------------------
-% Seitenränder
+% SeitenrÃ¤nder
 %------------------------------------------------------------
 \geometry{margin=2.5cm}
 
@@ -138,7 +138,7 @@
 
 \title{\textbf{Die Notwendigkeit der \\Modellierung in Graphen}}
 \author{Stephan Epp}
-\date{19. März 2026}
+\date{19. MÃ¤rz 2026}
 
 %============================================================
 \begin{document}
@@ -153,57 +153,57 @@
 \section{Einleitung}
 \label{sec:einleitung}
 %============================================================
-Graphen gehören zu den mächtigsten und vielseitigsten Abstraktionen,
+Graphen gehÃ¶ren zu den mÃ¤chtigsten und vielseitigsten Abstraktionen,
 die Mathematik und Informatik hervorgebracht haben.  Diese Arbeit
-stellt die These auf – und beweist sie –, dass die Modellierung
-mittels Graphen nicht nur eine nützliche Methode ist, sondern die
-\emph{mathematisch optimale} Modellierungsform für alle Strukturen
+stellt die These auf â€“ und beweist sie â€“, dass die Modellierung
+mittels Graphen nicht nur eine nÃ¼tzliche Methode ist, sondern die
+\emph{mathematisch optimale} Modellierungsform fÃ¼r alle Strukturen
 ist, die als Graph darstellbar sind.  Kernelement des Beweises ist
-die fundamentale Atomizität des Graphen: Jede Graphstruktur besteht
-aus der kleinsten denkbaren diskreten Einheit, nämlich
-\emph{zwei Knoten und einer Kante}.  Diese Binärteilung erzeugt
-eine natürliche logarithmische Tiefenstruktur: Divide-and-Conquer
-halbiert bei jedem Schritt den Problemraum und führt so zu
+die fundamentale AtomizitÃ¤t des Graphen: Jede Graphstruktur besteht
+aus der kleinsten denkbaren diskreten Einheit, nÃ¤mlich
+\emph{zwei Knoten und einer Kante}.  Diese BinÃ¤rteilung erzeugt
+eine natÃ¼rliche logarithmische Tiefenstruktur: Divide-and-Conquer
+halbiert bei jedem Schritt den Problemraum und fÃ¼hrt so zu
 $\mathcal{O}(\log n)$-Verhalten in Tiefe, Suche und Optimierung.
-Wir entwickeln diesen Universalitätsbeweis formal und illustrieren
-ihn anhand ausführlicher Beispiele aus sechs wissenschaftlichen
+Wir entwickeln diesen UniversalitÃ¤tsbeweis formal und illustrieren
+ihn anhand ausfÃ¼hrlicher Beispiele aus sechs wissenschaftlichen
 Disziplinen: Mathematik, Genetik, Neurowissenschaft, Regelungs\-technik,
-Finanzwesen und Informatik.  Als krönenden Abschluss wird der
-\emph{Optimale Subgraph Algorithmus} vollständig hergeleitet,
-der diese logarithmische Struktur ausnutzt, um in beliebig großen
+Finanzwesen und Informatik.  Als krÃ¶nenden Abschluss wird der
+\emph{Optimale Subgraph Algorithmus} vollstÃ¤ndig hergeleitet,
+der diese logarithmische Struktur ausnutzt, um in beliebig groÃŸen
 Graphen optimale Teilstrukturen effizient zu identifizieren.
 
-\textbf{Schlüsselwörter}: Graphentheorie, logarithmische Modellierung, optimaler Subgraph,
+\textbf{SchlÃ¼sselwÃ¶rter}: Graphentheorie, logarithmische Modellierung, optimaler Subgraph,
 Divide-and-Conquer, universelle Strukturabstraktion,
-Komplexitätstheorie, interdisziplinäre Modellierung.
+KomplexitÃ¤tstheorie, interdisziplinÃ¤re Modellierung.
 
 \subsection{Motivation und Problemstellung}
 
-Seit den Anfängen der Mathematik steht die Menschheit vor der
+Seit den AnfÃ¤ngen der Mathematik steht die Menschheit vor der
 Herausforderung, komplexe reale Systeme in formalen Strukturen
-zu erfassen.  Vom babylonischen Straßennetz über das Neuronengefüge
+zu erfassen.  Vom babylonischen StraÃŸennetz Ã¼ber das NeuronengefÃ¼ge
 des menschlichen Gehirns bis hin zu Proteinfaltungsnetzwerken und
-globalen Finanzmärkten – stets treten dieselben strukturellen
+globalen FinanzmÃ¤rkten â€“ stets treten dieselben strukturellen
 Grundmuster auf: diskrete \emph{Einheiten} (Knoten) und
 \emph{Beziehungen} zwischen ihnen (Kanten).
 
-Leonhard Euler legte 1736 mit der Lösung des Königsberger
-Brückenproblems den Grundstein der Graphentheorie.  Was Euler
-als spielerische Übung begann, hat sich zur vielleicht
+Leonhard Euler legte 1736 mit der LÃ¶sung des KÃ¶nigsberger
+BrÃ¼ckenproblems den Grundstein der Graphentheorie.  Was Euler
+als spielerische Ãœbung begann, hat sich zur vielleicht
 universellsten Modellierungssprache der Wissenschaften entwickelt.
-Dennoch fehlt bislang eine kohärente, disziplinübergreifende
-Begründung, weshalb die Graphenmodellierung nicht nur
+Dennoch fehlt bislang eine kohÃ¤rente, disziplinÃ¼bergreifende
+BegrÃ¼ndung, weshalb die Graphenmodellierung nicht nur
 \emph{brauchbar}, sondern \emph{optimal} ist.
 
 \subsection{Zentrale Aussage}
 
 Jede Struktur, die als Graph modelliert werden
-kann, wird durch die Graphenmodellierung \emph{optimal} repräsentiert,
-weil die Elementareinheit des Graphen – \emph{zwei Knoten und eine
-Kante} – eine inhärente logarithmische Tiefenstruktur erzeugt.
+kann, wird durch die Graphenmodellierung \emph{optimal} reprÃ¤sentiert,
+weil die Elementareinheit des Graphen â€“ \emph{zwei Knoten und eine
+Kante} â€“ eine inhÃ¤rente logarithmische Tiefenstruktur erzeugt.
 Diese logarithmische Struktur garantiert die informationstheoretisch
-minimale Beschreibungskomplexität und die algorithmisch optimale
-Laufzeit für alle wesentlichen Operationen: Suche, Optimierung,
+minimale BeschreibungskomplexitÃ¤t und die algorithmisch optimale
+Laufzeit fÃ¼r alle wesentlichen Operationen: Suche, Optimierung,
 Partitionierung und Kommunikation.
 
 %============================================================
@@ -213,7 +213,7 @@ Partitionierung und Kommunikation.
 
 \begin{definition}[Graph]
 Ein \emph{Graph} $G = (V, E)$ besteht aus einer endlichen oder
-abzählbar unendlichen Menge $V$ von \emph{Knoten} (Vertices) und
+abzÃ¤hlbar unendlichen Menge $V$ von \emph{Knoten} (Vertices) und
 einer Menge $E \subseteq \binom{V}{2}$ von \emph{Kanten} (Edges),
 wobei jede Kante einem ungeordneten Paar $\{u,v\}$ von Knoten
 entspricht.  Im Fall gerichteter Graphen (\emph{Digraphen}) ist
@@ -227,16 +227,16 @@ zusammen mit einer Gewichtsfunktion $w: E \to \mathbb{R}$.
 
 \begin{definition}[Grad, Weg, Zusammenhang]
 Der \emph{Grad} $\deg(v)$ eines Knotens $v \in V$ ist die Anzahl
-seiner Nachbarn.  Ein \emph{Weg} der Länge $k$ ist eine Folge
+seiner Nachbarn.  Ein \emph{Weg} der LÃ¤nge $k$ ist eine Folge
 $v_0, e_1, v_1, \ldots, e_k, v_k$ von paarweise verschiedenen
-Knoten.  $G$ heißt \emph{zusammenhängend}, wenn zwischen je zwei
+Knoten.  $G$ heiÃŸt \emph{zusammenhÃ¤ngend}, wenn zwischen je zwei
 Knoten ein Weg existiert.
 \end{definition}
 
 \begin{definition}[Baum und Spannbaum]
-Ein zusammenhängender, kreisfreier Graph heißt \emph{Baum}.
+Ein zusammenhÃ¤ngender, kreisfreier Graph heiÃŸt \emph{Baum}.
 Ein \emph{Spannbaum} von $G$ ist ein Teilgraph von $G$, der alle
-Knoten enthält und selbst ein Baum ist.
+Knoten enthÃ¤lt und selbst ein Baum ist.
 \end{definition}
 
 \subsection{Die Elementareinheit: Zwei Knoten, eine Kante}
@@ -247,7 +247,7 @@ Graph}:
   G_{\text{atom}} = \bigl(\{u, v\},\; \{(u,v)\}\bigr).
 \]
 Er besteht aus exakt zwei Knoten und einer Kante.  Diese Einheit
-kodiert eine binäre Beziehung – das kleinste mögliche Stück
+kodiert eine binÃ¤re Beziehung â€“ das kleinste mÃ¶gliche StÃ¼ck
 struktureller Information.  Jeder beliebig komplexe Graph entsteht
 durch Komposition solcher Atome.
 
@@ -268,11 +268,11 @@ durch Komposition solcher Atome.
 
 \subsection{Sukzessive Komposition und Baumstruktur}
 
-Wenn wir die Elementareinheit rekursiv verdoppeln – d.h. jeden
-Knoten durch ein weiteres Atom ersetzen – entsteht ein binärer
+Wenn wir die Elementareinheit rekursiv verdoppeln â€“ d.h. jeden
+Knoten durch ein weiteres Atom ersetzen â€“ entsteht ein binÃ¤rer
 Baum.  Bei $k$ Verdoppelungsschritten ergibt sich ein Baum mit
-$2^k$ Blättern und Höhe~$k$.  Umgekehrt:  Um $n$ Elemente in
-einem binären Baum zu organisieren, genügen
+$2^k$ BlÃ¤ttern und HÃ¶he~$k$.  Umgekehrt:  Um $n$ Elemente in
+einem binÃ¤ren Baum zu organisieren, genÃ¼gen
 \[
   k = \lceil \log_2 n \rceil
 \]
@@ -296,8 +296,8 @@ Ebenen.  Darin liegt der Kern der logarithmischen Modellierung.
       child { node {$f$} }
     };
   \end{tikzpicture}
-  \caption{Binärer Baum als sukzessive Komposition der
-           Elementareinheit.  Tiefe $k=2$ kodiert $2^2=4$ Blätter.
+  \caption{BinÃ¤rer Baum als sukzessive Komposition der
+           Elementareinheit.  Tiefe $k=2$ kodiert $2^2=4$ BlÃ¤tter.
            Jede Ebene halbiert den Problemraum.}
   \label{fig:binaer}
 \end{figure}
@@ -312,44 +312,44 @@ Ebenen.  Darin liegt der Kern der logarithmischen Modellierung.
 \begin{theorem}[Logarithmische Beschreibungstiefe]
 \label{thm:log}
 Sei $\mathcal{S}$ eine Menge von $n$ diskreten Elementen mit
-einer beliebigen binären Beziehungsstruktur.  Dann ist die
-minimale Anzahl von Bits, die benötigt wird, um ein beliebiges
+einer beliebigen binÃ¤ren Beziehungsstruktur.  Dann ist die
+minimale Anzahl von Bits, die benÃ¶tigt wird, um ein beliebiges
 Element eindeutig zu identifizieren, gleich
 \[
   H_{\min} = \lceil \log_2 n \rceil.
 \]
 Diese untere Schranke wird genau dann erreicht, wenn die Struktur
-als vollständiger Binärbaum – und damit als spezieller Graph –
+als vollstÃ¤ndiger BinÃ¤rbaum â€“ und damit als spezieller Graph â€“
 organisiert ist.
 \end{theorem}
 
 \begin{proof}
-Nach Shannons Quellencodierungstheorem~\cite{Shannon1948} benötigt
+Nach Shannons Quellencodierungstheorem~\cite{Shannon1948} benÃ¶tigt
 jede verlustfreie Kodierung von $n$ gleichwahrscheinlichen Symbolen
-mindestens $\log_2 n$ Bits pro Symbol.  Eine Binärbaumstruktur
+mindestens $\log_2 n$ Bits pro Symbol.  Eine BinÃ¤rbaumstruktur
 der Tiefe $\lceil \log_2 n \rceil$ stellt genau diese Schranke
 bereit: Jeder Pfad von der Wurzel zu einem Blatt kodiert eine
-Bitfolge der Länge $\lceil \log_2 n \rceil$.  Kein anderes
+Bitfolge der LÃ¤nge $\lceil \log_2 n \rceil$.  Kein anderes
 Kodierungsschema kann diese Schranke unterschreiten.
-Da jeder Binärbaum ein spezieller Graph ist, ist die
+Da jeder BinÃ¤rbaum ein spezieller Graph ist, ist die
 Graphstruktur informationstheoretisch optimal.
 \end{proof}
 
-\subsection{Algorithmische Optimalität: Divide-and-Conquer}
+\subsection{Algorithmische OptimalitÃ¤t: Divide-and-Conquer}
 
 Die Grundstrategie des Divide-and-Conquer ist strukturell identisch
-mit dem Durchlaufen eines Binärbaums:
+mit dem Durchlaufen eines BinÃ¤rbaums:
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-  \item \textbf{Divide:} Teile das Problem $P$ der Größe $n$ in
-        zwei Teilprobleme $P_L$ und $P_R$ der Größe $n/2$.
-  \item \textbf{Conquer:} Löse $P_L$ und $P_R$ rekursiv.
-  \item \textbf{Combine:} Füge die Teillösungen zur Gesamtlösung
+  \item \textbf{Divide:} Teile das Problem $P$ der GrÃ¶ÃŸe $n$ in
+        zwei Teilprobleme $P_L$ und $P_R$ der GrÃ¶ÃŸe $n/2$.
+  \item \textbf{Conquer:} LÃ¶se $P_L$ und $P_R$ rekursiv.
+  \item \textbf{Combine:} FÃ¼ge die TeillÃ¶sungen zur GesamtlÃ¶sung
         zusammen.
 \end{enumerate}
 
 \noindent
-Die zugehörige Rekurrenz lautet:
+Die zugehÃ¶rige Rekurrenz lautet:
 \[
   T(n) = 2\,T\!\left(\tfrac{n}{2}\right) + \mathcal{O}(n).
 \]
@@ -357,37 +357,37 @@ Nach dem Master-Theorem~\cite{Cormen2009} ergibt sich
 $T(n) = \mathcal{O}(n \log n)$.  Bei reiner Suche (ohne
 Combine-Overhead) folgt $T(n)=\mathcal{O}(\log n)$.
 
-\begin{theorem}[Divide-and-Conquer-Optimalität]
+\begin{theorem}[Divide-and-Conquer-OptimalitÃ¤t]
 \label{thm:dc}
-Jeder Suchalgorithmus über $n$ unstrukturierten Elementen
-benötigt im schlechtesten Fall $\Omega(\log n)$ Vergleiche.
-Eine binäre Suchstruktur (Binärsuchbaum, AVL-Baum, B-Baum)
+Jeder Suchalgorithmus Ã¼ber $n$ unstrukturierten Elementen
+benÃ¶tigt im schlechtesten Fall $\Omega(\log n)$ Vergleiche.
+Eine binÃ¤re Suchstruktur (BinÃ¤rsuchbaum, AVL-Baum, B-Baum)
 erreicht diese Schranke.  Da alle diese Strukturen spezielle
 Graphen sind, ist die Graphmodellierung algorithmisch optimal.
 \end{theorem}
 
 \begin{proof}
 Jeder Vergleich teilt die Menge verbleibender Kandidaten maximal
-in zwei gleich große Hälften.  Nach $k$ Vergleichen verbleiben
-höchstens $n/2^k$ Kandidaten.  Für $n/2^k \leq 1$ folgt
+in zwei gleich groÃŸe HÃ¤lften.  Nach $k$ Vergleichen verbleiben
+hÃ¶chstens $n/2^k$ Kandidaten.  FÃ¼r $n/2^k \leq 1$ folgt
 $k \geq \log_2 n$.  Dies ist eine informationstheoretische
-untere Schranke, die unabhängig vom Algorithmus gilt.
-Binäre Suchbäume erreichen genau $\mathcal{O}(\log n)$ pro
+untere Schranke, die unabhÃ¤ngig vom Algorithmus gilt.
+BinÃ¤re SuchbÃ¤ume erreichen genau $\mathcal{O}(\log n)$ pro
 Operation.
 \end{proof}
 
-\subsection{Strukturelle Überlegenheit über lineare und
+\subsection{Strukturelle Ãœberlegenheit Ã¼ber lineare und
             polynomielle Modellierungen}
 
-\begin{theorem}[Überlegenheit der logarithmischen Modellierung]
+\begin{theorem}[Ãœberlegenheit der logarithmischen Modellierung]
 \label{thm:superior}
-Für jede Strukturgröße $n \geq 3$ gilt:
+FÃ¼r jede StrukturgrÃ¶ÃŸe $n \geq 3$ gilt:
 \[
   \log_2 n \;<\; \sqrt{n} \;<\; n \;<\; n^2 \;<\; 2^n.
 \]
 Eine logarithmische Suchtiefe (realisiert durch Graphstrukturen)
 ist daher asymptotisch und praktisch jeder linearen oder
-polynomiellen Alternative überlegen.
+polynomiellen Alternative Ã¼berlegen.
 \end{theorem}
 
 \noindent
@@ -398,7 +398,7 @@ polynomiellen Alternative überlegen.
   \begin{tikzpicture}
     \begin{axis}[
       width=10cm, height=7cm,
-      xlabel={Problemgröße $n$},
+      xlabel={ProblemgrÃ¶ÃŸe $n$},
       ylabel={Operationen},
       xmin=1, xmax=64,
       ymin=0, ymax=70,
@@ -419,29 +419,29 @@ polynomiellen Alternative überlegen.
   \end{tikzpicture}
   \caption{Vergleich der Wachstumsraten.  Die logarithmische Kurve
            (blau) bleibt bei wachsendem $n$ weit unter allen anderen
-           Komplexitätsklassen.}
+           KomplexitÃ¤tsklassen.}
   \label{fig:komplexitaet}
 \end{figure}
 
-\subsection{Universalitätssatz}
+\subsection{UniversalitÃ¤tssatz}
 
-\begin{theorem}[Universalität der Graphmodellierung]
+\begin{theorem}[UniversalitÃ¤t der Graphmodellierung]
 \label{thm:universal}
 Jede endliche Relationenstruktur $\mathcal{R} = (D, R_1, \ldots, R_k)$
-über einer Domäne $D$ mit binären Relationen $R_i \subseteq D \times D$
+Ã¼ber einer DomÃ¤ne $D$ mit binÃ¤ren Relationen $R_i \subseteq D \times D$
 ist isomorph zu einem gewichteten Digraphen $G=(V,E,w)$ mit
 $|V|=|D|$ und $|E|=\sum_i |R_i|$.
 \end{theorem}
 
 \begin{proof}
-Setze $V := D$, $E := \bigcup_i R_i$ und $w(u,v) := i$ für
+Setze $V := D$, $E := \bigcup_i R_i$ und $w(u,v) := i$ fÃ¼r
 $(u,v) \in R_i$.  Die Abbildung $\phi: d \mapsto d$ ist ein
 Isomorphismus zwischen $\mathcal{R}$ und $(G,w)$.
 \end{proof}
 
 \noindent
-Dieser Satz zeigt: Jede binäre Relation – und damit jede
-strukturelle Abhängigkeit in Wissenschaft und Technik – ist
+Dieser Satz zeigt: Jede binÃ¤re Relation â€“ und damit jede
+strukturelle AbhÃ¤ngigkeit in Wissenschaft und Technik â€“ ist
 exakt durch einen Graphen modellierbar.  Die Frage ist nicht
 \emph{ob}, sondern nur \emph{welcher} Graph.
 
@@ -449,8 +449,8 @@ exakt durch einen Graphen modellierbar.  Die Frage ist nicht
 
 \textbf{Das logarithmische Prinzip der Graphenmodellierung:}
 \begin{enumerate}
-  \item Die Atomeinheit des Graphen ($u \to v$) ist eine binäre
-        Relation – das informationstheoretische Minimum.
+  \item Die Atomeinheit des Graphen ($u \to v$) ist eine binÃ¤re
+        Relation â€“ das informationstheoretische Minimum.
   \item Durch Komposition dieser Atome entstehen Baumstrukturen,
         die automatisch logarithmische Tiefe haben.
   \item Divide-and-Conquer auf Graphen halbiert den Problemraum
@@ -470,19 +470,19 @@ exakt durch einen Graphen modellierbar.  Die Frage ist nicht
 
 \subsection{Zahlentheorie und Primzahlgraphen}
 
-Zahlentheoretische Strukturen zeigen auf natürliche Weise
+Zahlentheoretische Strukturen zeigen auf natÃ¼rliche Weise
 Graphcharakter. Sei $V = \{2, 3, \ldots, n\}$ die Menge der
-natürlichen Zahlen.  Wir definieren den \emph{Teilbarkeitsgraphen}:
+natÃ¼rlichen Zahlen.  Wir definieren den \emph{Teilbarkeitsgraphen}:
 \[
   E = \{(a,b) \mid a \text{ teilt } b,\; a \neq b\}.
 \]
 
 \begin{beispiel}[Teilbarkeitsgraph]
-Für $n=12$ entsteht ein DAG, dessen Wurzeln die Primzahlen sind.
+FÃ¼r $n=12$ entsteht ein DAG, dessen Wurzeln die Primzahlen sind.
 Die Primzahlzerlegung $12 = 2^2 \cdot 3$ entspricht einem Pfad
 $2 \to 4 \to 12$ und $3 \to 12$ im Graphen.  Die
 Fundamentalsatz-Eigenschaft der eindeutigen Primfaktorzerlegung
-ist äquivalent zur Existenz eines eindeutigen minimalen
+ist Ã¤quivalent zur Existenz eines eindeutigen minimalen
 aufspannenden Waldes.
 \end{beispiel}
 
@@ -511,7 +511,7 @@ aufspannenden Waldes.
   \caption{Teilbarkeitsgraph der Zahlen $\{2,3,4,5,6,7,9,12\}$.
            Primzahlen sind Quellen (kein eingehender Pfeil).
            Die Graphstruktur kodiert die Primfaktorzerlegung
-           vollständig.}
+           vollstÃ¤ndig.}
   \label{fig:divisibility}
 \end{figure}
 
@@ -519,22 +519,22 @@ aufspannenden Waldes.
 
 Jede endliche Gruppe $(G, \cdot)$ mit Erzeugendenmenge $S$ besitzt
 einen \emph{Cayley-Graphen} $\text{Cay}(G,S)$, der die algebraische
-Struktur vollständig kodiert.
+Struktur vollstÃ¤ndig kodiert.
 
 \begin{theorem}[Cayley, 1878]
-Der Cayley-Graph $\text{Cay}(G,S)$ ist regulär vom Grad $|S|$.  Er
-ist zusammenhängend genau dann, wenn $S$ die Gruppe $G$ erzeugt.
-Der Durchmesser des Cayley-Graphen misst die maximale Wortlänge
-in den Erzeugenden – ein direktes Maß für
+Der Cayley-Graph $\text{Cay}(G,S)$ ist regulÃ¤r vom Grad $|S|$.  Er
+ist zusammenhÃ¤ngend genau dann, wenn $S$ die Gruppe $G$ erzeugt.
+Der Durchmesser des Cayley-Graphen misst die maximale WortlÃ¤nge
+in den Erzeugenden â€“ ein direktes MaÃŸ fÃ¼r
 Kommunikationseffizienz in der Gruppe.
 \end{theorem}
 
 \begin{beispiel}[Cayley-Graph von $\mathbb{Z}_8$]
-Für $G = \mathbb{Z}_8$ mit $S=\{1\}$ entsteht ein 8-Kreis.
-Mit $S=\{1,4\}$ entsteht ein Hyperwürfel, dessen Durchmesser
-nur $\lceil\log_2 8\rceil = 3$ beträgt – logarithmisch in $|G|$.
-Dies ist kein Zufall: Hyperwürfelgraphen haben stets logarithmischen
-Durchmesser und sind damit für parallele Kommunikation optimal.
+FÃ¼r $G = \mathbb{Z}_8$ mit $S=\{1\}$ entsteht ein 8-Kreis.
+Mit $S=\{1,4\}$ entsteht ein HyperwÃ¼rfel, dessen Durchmesser
+nur $\lceil\log_2 8\rceil = 3$ betrÃ¤gt â€“ logarithmisch in $|G|$.
+Dies ist kein Zufall: HyperwÃ¼rfelgraphen haben stets logarithmischen
+Durchmesser und sind damit fÃ¼r parallele Kommunikation optimal.
 \end{beispiel}
 
 \subsection{Lineare Algebra: Laplace-Operator und Spektrum}
@@ -546,24 +546,24 @@ Die \emph{Laplace-Matrix} eines Graphen $G=(V,E)$ lautet:
 wobei $D = \operatorname{diag}(\deg(v_1), \ldots, \deg(v_n))$
 die Gradmatrix und $A$ die Adjazenzmatrix ist.  Das
 Spektrum $0 = \lambda_1 \leq \lambda_2 \leq \cdots \leq \lambda_n$
-von $L$ trägt tiefe strukturelle Information:
+von $L$ trÃ¤gt tiefe strukturelle Information:
 
 \begin{itemize}
   \item $\lambda_1 = 0$: jeder Graph hat mindestens einen Nulleigenwert.
-  \item Die Multiplizität von $\lambda_1 = 0$ gibt die Anzahl
-        zusammenhängender Komponenten an.
-  \item $\lambda_2 > 0$ (Algebraische Konnektivität / Fiedler-Wert)
-        ist ein Maß für die Robustheit des Graphen.
+  \item Die MultiplizitÃ¤t von $\lambda_1 = 0$ gibt die Anzahl
+        zusammenhÃ¤ngender Komponenten an.
+  \item $\lambda_2 > 0$ (Algebraische KonnektivitÃ¤t / Fiedler-Wert)
+        ist ein MaÃŸ fÃ¼r die Robustheit des Graphen.
   \item $\lambda_2$ bestimmt die Mischzeit einer Irrfahrt:
-        $\tau_{\text{mix}} = \mathcal{O}(\lambda_2^{-1} \log n)$ –
+        $\tau_{\text{mix}} = \mathcal{O}(\lambda_2^{-1} \log n)$ â€“
         erneut logarithmisch.
 \end{itemize}
 
 \begin{beispiel}[Spektrum eines Pfadgraphen]
 Der Pfadgraph $P_n$ auf $n$ Knoten hat Eigenwerte
 $\lambda_k = 2 - 2\cos\!\left(\tfrac{(k-1)\pi}{n}\right)$.
-Für große $n$ ergibt sich $\lambda_2 \approx \pi^2/n^2$,
-was einer Mischzeit von $\mathcal{O}(n^2 \log n)$ entspricht –
+FÃ¼r groÃŸe $n$ ergibt sich $\lambda_2 \approx \pi^2/n^2$,
+was einer Mischzeit von $\mathcal{O}(n^2 \log n)$ entspricht â€“
 ein Hinweis, dass Pfadgraphen schlecht strukturiert (lang und
 linear) sind.  Expandergraphen mit $\lambda_2 = \Omega(1/\log n)$
 erreichen hingegen $\mathcal{O}(\log^2 n)$ Mischzeit.
@@ -572,29 +572,29 @@ erreichen hingegen $\mathcal{O}(\log^2 n)$ Mischzeit.
 \subsection{Topologie: Simplizialkomplexe und Graphhomologie}
 
 Graphen bilden die $1$-Skelette simplizialer Komplexe.  Die
-\emph{Betti-Zahlen} $\beta_0, \beta_1$ eines Graphen zählen
-Zusammenhangskomponenten ($\beta_0$) und unabhängige Zyklen
+\emph{Betti-Zahlen} $\beta_0, \beta_1$ eines Graphen zÃ¤hlen
+Zusammenhangskomponenten ($\beta_0$) und unabhÃ¤ngige Zyklen
 ($\beta_1 = |E| - |V| + \beta_0$, der Zyklomatische Rang).
 Dies verbindet Graphenstruktur unmittelbar mit topologischen
 Invarianten und erlaubt die Analyse globaler Formen komplexer
-Netzwerke (Löcher, Tunnel) durch rein lokale Kanteninformation.
+Netzwerke (LÃ¶cher, Tunnel) durch rein lokale Kanteninformation.
 
 \subsection{Kombinatorik: Matchings und Heiratstheoreme}
 
 \begin{theorem}[Heiratssatz, Hall 1935]
 Ein bipartiter Graph $G = (A \cup B, E)$ besitzt genau dann
-ein perfektes Matching, wenn für jede Teilmenge $S \subseteq A$
+ein perfektes Matching, wenn fÃ¼r jede Teilmenge $S \subseteq A$
 gilt: $|N(S)| \geq |S|$, wobei $N(S)$ die Nachbarschaft
 von $S$ in $B$ bezeichnet.
 \end{theorem}
 
-Dieser Satz ist die Grundlage für Zuordnungsprobleme aller Art:
+Dieser Satz ist die Grundlage fÃ¼r Zuordnungsprobleme aller Art:
 Stellenvermittlung, Aufgabenzuweisung, Ressourcenplanung.  Der
 optimale Matching-Algorithmus (Ungarische Methode) arbeitet in
 $\mathcal{O}(n^3)$, das Hopcroft-Karp-Verfahren auf bipartiten
 Graphen sogar in $\mathcal{O}(|E| \sqrt{|V|})$.  Die logarithmische
 Schichtung (BFS in $\mathcal{O}(\log n)$ Phasen) ist dabei der
-Schlüssel zum Effizienzgewinn.
+SchlÃ¼ssel zum Effizienzgewinn.
 
 %============================================================
 \section{Anwendungen in der Genetik}
@@ -615,17 +615,17 @@ untereinander ein dichtes Netz von Wechselwirkungen bilden
 \begin{beobachtung}
 PPI-Netzwerke sind skalenfreie Graphen~\cite{Barabasi1999} mit
 Gradverteilung $P(\deg = k) \propto k^{-\gamma}$, $\gamma \approx 2.5$.
-Die Hubs (hochgradige Knoten) sind essentielle Proteine – ihr
-Knockout ist häufig letal.  Diese Erkenntnis ist nur durch
-Graphmodellierung möglich, nicht durch isolierte Proteinanalyse.
+Die Hubs (hochgradige Knoten) sind essentielle Proteine â€“ ihr
+Knockout ist hÃ¤ufig letal.  Diese Erkenntnis ist nur durch
+Graphmodellierung mÃ¶glich, nicht durch isolierte Proteinanalyse.
 \end{beobachtung}
 
 \begin{beispiel}[Hub-Protein p53]
-Das Tumorsuppressorprotein p53 interagiert mit über 1.400
+Das Tumorsuppressorprotein p53 interagiert mit Ã¼ber 1.400
 Proteinen und ist in mehr als 50\% aller Krebsarten mutiert.
 Im PPI-Graphen ist p53 ein Super-Hub: Seine Entfernung zu
-fast jedem anderen Protein beträgt $\leq \lceil\log_2 20000\rceil = 15$
-Schritte – ein direktes Resultat der logarithmischen
+fast jedem anderen Protein betrÃ¤gt $\leq \lceil\log_2 20000\rceil = 15$
+Schritte â€“ ein direktes Resultat der logarithmischen
 Small-World-Eigenschaft skalenfreier Netzwerke.
 \end{beispiel}
 
@@ -650,8 +650,8 @@ die sich gegenseitig hemmen:
 \[
   G_{\text{toggle}} = \bigl(\{A,B\},\; \{(A,B),(B,A)\}\bigr).
 \]
-Dies ist exakt die Elementareinheit des Graphen – aber mit zwei
-gerichteten Kanten.  Der Toggle-Switch kodiert binäre
+Dies ist exakt die Elementareinheit des Graphen â€“ aber mit zwei
+gerichteten Kanten.  Der Toggle-Switch kodiert binÃ¤re
 Zellentscheidungen: entweder $A$ ist hoch und $B$ niedrig,
 oder umgekehrt.  Die Graphstruktur macht die bistabile Logik
 sofort sichtbar.
@@ -672,40 +672,40 @@ sofort sichtbar.
     \node[draw=none] at (2,-1.5) {\footnotesize Bistabiler Toggle-Switch};
   \end{tikzpicture}
   \caption{Genregulatorischer Toggle-Switch:  Die einfachste
-           Feedback-Schleife aus zwei Knoten erzeugt binäre
+           Feedback-Schleife aus zwei Knoten erzeugt binÃ¤re
            Zellentscheidungen.}
   \label{fig:toggle}
 \end{figure}
 
-\subsection{Phylogenetische Bäume: Evolution als Graph}
+\subsection{Phylogenetische BÃ¤ume: Evolution als Graph}
 
-Das stammesgeschichtliche Verwandtschaftsverhältnis aller
-Lebewesen lässt sich als gewurzelter Baum (Phylogenie) darstellen.
+Das stammesgeschichtliche VerwandtschaftsverhÃ¤ltnis aller
+Lebewesen lÃ¤sst sich als gewurzelter Baum (Phylogenie) darstellen.
 
 \begin{definition}[Phylogenetischer Baum]
 Ein phylogenetischer Baum $T=(V,E,r)$ ist ein gewurzelter Baum
-mit Wurzel $r \in V$.  Die Blätter entsprechen rezenten Arten,
+mit Wurzel $r \in V$.  Die BlÃ¤tter entsprechen rezenten Arten,
 innere Knoten gemeinsamen Vorfahren.  Kantengewichte kodieren
-evolutionäre Distanzen (Mutationsrate $\times$ Zeit).
+evolutionÃ¤re Distanzen (Mutationsrate $\times$ Zeit).
 \end{definition}
 
 \begin{beispiel}[SARS-CoV-2-Phylogenie]
-Während der COVID-19-Pandemie wurden phylogenetische Graphen
-aufgebaut, die über 5 Millionen Genomsequenzen von SARS-CoV-2
+WÃ¤hrend der COVID-19-Pandemie wurden phylogenetische Graphen
+aufgebaut, die Ã¼ber 5 Millionen Genomsequenzen von SARS-CoV-2
 umfassten.  Die Baumtiefe von etwa 30 Ebenen kodiert die
-evolutionäre Geschichte über $2^{30} \approx 10^9$ mögliche
-Mutationspfade – logarithmisch in der Anzahl sequenzierter
-Genome.  Ohne Graphmodellierung wäre diese Analyse rechnerisch
-unmöglich.
+evolutionÃ¤re Geschichte Ã¼ber $2^{30} \approx 10^9$ mÃ¶gliche
+Mutationspfade â€“ logarithmisch in der Anzahl sequenzierter
+Genome.  Ohne Graphmodellierung wÃ¤re diese Analyse rechnerisch
+unmÃ¶glich.
 \end{beispiel}
 
 \subsection{Metagenomik und Assemblierungsgraphen}
 
 Die De-Bruijn-Graph-Methode zur Genomassemblierung
-ist ein Paradebeispiel für die Kraft der Graphmodellierung:
+ist ein Paradebeispiel fÃ¼r die Kraft der Graphmodellierung:
 
 \begin{definition}[De-Bruijn-Graph]
-Für Lesefragmente der Länge $k$ (k-mers) ist der
+FÃ¼r Lesefragmente der LÃ¤nge $k$ (k-mers) ist der
 \emph{De-Bruijn-Graph} $G_{DB}=(V,E)$ definiert durch:
 $V = $ Menge aller $(k{-}1)$-mers, $E = $ k-mers
 (Kante $(u,v)$, falls $u[2..k{-}1] = v[1..k{-}2]$).
@@ -713,20 +713,20 @@ Ein \emph{Euler-Pfad} in $G_{DB}$ liefert die assemblierte
 Genomsequenz.
 \end{definition}
 
-\textbf{Warum ist die Graphmodellierung hier optimal?} Das menschliche Genom hat $\sim 3 \times 10^9$ Basenpaare. Ohne Graphstruktur wäre das Ensemble aller k-mer-Überlappungen
-eine Matrix der Größe $\mathcal{O}(n^2)$ – für $n = 3 \cdot 10^9$
-völlig unpraktikabel.  Der De-Bruijn-Graph reduziert dies auf
+\textbf{Warum ist die Graphmodellierung hier optimal?} Das menschliche Genom hat $\sim 3 \times 10^9$ Basenpaare. Ohne Graphstruktur wÃ¤re das Ensemble aller k-mer-Ãœberlappungen
+eine Matrix der GrÃ¶ÃŸe $\mathcal{O}(n^2)$ â€“ fÃ¼r $n = 3 \cdot 10^9$
+vÃ¶llig unpraktikabel.  Der De-Bruijn-Graph reduziert dies auf
 $\mathcal{O}(n)$ Knoten und Kanten.  Der Euler-Pfad-Algorithmus
-läuft in $\mathcal{O}(|E|)$ – linear!  Der Graph macht das
-Unmögliche möglich.
+lÃ¤uft in $\mathcal{O}(|E|)$ â€“ linear!  Der Graph macht das
+UnmÃ¶gliche mÃ¶glich.
 
 \subsection{CRISPR-Editing als Graphproblem}
 
 In der Geneditierung mit CRISPR-Cas9 wird das Zielgenom als
 Graph modelliert, um Off-Target-Effekte zu minimieren.
-Jede mögliche Schnittposition ist ein Knoten, die Ähnlichkeit
+Jede mÃ¶gliche Schnittposition ist ein Knoten, die Ã„hnlichkeit
 zur Zielsequenz definiert eine gewichtete Kante.  Der
-\emph{kürzeste-Wege-Algorithmus} findet optimale Leitsequenzen
+\emph{kÃ¼rzeste-Wege-Algorithmus} findet optimale Leitsequenzen
 (guide RNAs) mit minimalem Off-Target-Risiko.  Dies entspricht
 dem Optimalen Subgraph-Problem (siehe \Cref{sec:algorithmus}).
 
@@ -737,9 +737,9 @@ dem Optimalen Subgraph-Problem (siehe \Cref{sec:algorithmus}).
 
 \subsection{Das Konnektom als Megagraph}
 
-Das menschliche Gehirn enthält etwa $86 \times 10^9$ Neuronen,
-die durch $\sim 10^{14}$ synaptische Verbindungen verknüpft
-sind.  Das \emph{Konnektom} ist der vollständige Graph dieser
+Das menschliche Gehirn enthÃ¤lt etwa $86 \times 10^9$ Neuronen,
+die durch $\sim 10^{14}$ synaptische Verbindungen verknÃ¼pft
+sind.  Das \emph{Konnektom} ist der vollstÃ¤ndige Graph dieser
 Verbindungen:
 \[
   G_{\text{Konnektom}} = (V_N, E_S), \quad
@@ -749,10 +749,10 @@ Verbindungen:
 
 \begin{beobachtung}
 Trotz der gigantischen Schiere dieses Graphen gilt:  Das Gehirn
-zeigt eine ausgeprägte \emph{Small-World-Eigenschaft}
-(hohe Clusterung, kurze mittlere Pfadlänge)~\cite{Watts1998}.
-Die mittlere geodätische Distanz zweier Neuronen beträgt
-schätzungsweise $\sim \log_{10}(8.6 \times 10^{10}) \approx 10{-}12$
+zeigt eine ausgeprÃ¤gte \emph{Small-World-Eigenschaft}
+(hohe Clusterung, kurze mittlere PfadlÃ¤nge)~\cite{Watts1998}.
+Die mittlere geodÃ¤tische Distanz zweier Neuronen betrÃ¤gt
+schÃ¤tzungsweise $\sim \log_{10}(8.6 \times 10^{10}) \approx 10{-}12$
 synaptische Schritte.  Das Gehirn ist ein optimierter
 logarithmischer Kommunikationsgraph.
 \end{beobachtung}
@@ -766,16 +766,16 @@ proportional zur \emph{graphentheoretischen Distanz}:
   t_{\text{Reaktion}} \propto d_{G}(\text{Sensorknoten},
                                     \text{Motorknoten}),
 \]
-wobei $d_G$ die kürzeste-Pfad-Distanz ist.  Myelinisierung
-erhöht die \emph{Kantengewichte} (Leitungsgeschwindigkeit)
+wobei $d_G$ die kÃ¼rzeste-Pfad-Distanz ist.  Myelinisierung
+erhÃ¶ht die \emph{Kantengewichte} (Leitungsgeschwindigkeit)
 und reduziert damit die effektive Distanz.
 
 \begin{beispiel}[Reflexbogen]
-Der monosynaptische Kniesehnenreflex ist der kürzeste Pfad
-im neuronalen Graphen: nur 2 Neuronen und 1 Synapse –
+Der monosynaptische Kniesehnenreflex ist der kÃ¼rzeste Pfad
+im neuronalen Graphen: nur 2 Neuronen und 1 Synapse â€“
 exakt die Elementareinheit $G_{\text{atom}}$.  Die
 Reaktionszeit von $\sim 25\,$ms entspricht einer
-Signalgeschwindigkeit von $\sim 60\,$m/s über $\sim 1.5\,$m Weg.
+Signalgeschwindigkeit von $\sim 60\,$m/s Ã¼ber $\sim 1.5\,$m Weg.
 Das Gehirn hat hier die absolute Minimalstruktur realisiert.
 \end{beispiel}
 
@@ -786,26 +786,26 @@ Hierarchie~\cite{Felleman1991}:
 
 \begin{center}
   Retina $\to$ LGN $\to$ V1 $\to$ V2 $\to$ V4 $\to$ IT $\to$
-  präfrontaler Cortex
+  prÃ¤frontaler Cortex
 \end{center}
 
 Jede Stufe entspricht einer Ebene in einem Baum, der das visuelle
 Signal schrittweise abstrahiert.  Mit $k \approx 10$ Verarbeitungs\-
-ebenen können $2^{10} = 1024$ hierarchisch verschachtelte
+ebenen kÃ¶nnen $2^{10} = 1024$ hierarchisch verschachtelte
 Merkmale codiert werden.  Tiefe neuronale Netzwerke (Deep
-Learning) haben diese Struktur bewusst übernommen.
+Learning) haben diese Struktur bewusst Ã¼bernommen.
 
-\begin{theorem}[Repräsentationsmächtigkeit tiefer Netzwerke]
+\begin{theorem}[ReprÃ¤sentationsmÃ¤chtigkeit tiefer Netzwerke]
 Ein Netzwerk der Tiefe $\log_2 n$ mit linearer Breite kann
-jede boolesche Funktion über $n$ Eingaben repräsentieren,
-während ein flaches Netzwerk exponentiell viele Neuronen
-benötigt~\cite{Montufar2014}.
+jede boolesche Funktion Ã¼ber $n$ Eingaben reprÃ¤sentieren,
+wÃ¤hrend ein flaches Netzwerk exponentiell viele Neuronen
+benÃ¶tigt~\cite{Montufar2014}.
 \end{theorem}
 
 \noindent
 Dies ist der direkte Beweis:  Die logarithmische Graphtiefe
 ist nicht nur rechnerisch optimal, sondern auch
-\emph{repräsentational} optimal.
+\emph{reprÃ¤sentational} optimal.
 
 \subsection{Alzheimer und Graphdegeneration}
 
@@ -814,7 +814,7 @@ Alzheimer-Demenz ist aus Graphenperspektive ein
 Konnektoms.  Amyloid-$\beta$-Plaques akkumulieren
 bevorzugt an hoch-konnektierten Knoten (Default Mode Network
 Hubs).  Durch gezielte Hub-Entfernung steigt die mittlere
-Pfadlänge im neuronalen Graphen dramatisch:
+PfadlÃ¤nge im neuronalen Graphen dramatisch:
 
 \begin{equation}
 \label{eq:alzheimer}
@@ -823,15 +823,15 @@ Pfadlänge im neuronalen Graphen dramatisch:
                  = \mathcal{O}\!\left(\frac{\log n}{\lambda_2(G)}\right).
 \end{equation}
 
-Formel~\eqref{eq:alzheimer} verknüpft die klinische Symptomatik
-(steigende Reaktionszeiten, Gedächtnisverlust) direkt mit dem
-zweiten Laplace-Eigenwert des Konnektoms – ein Resultat,
+Formel~\eqref{eq:alzheimer} verknÃ¼pft die klinische Symptomatik
+(steigende Reaktionszeiten, GedÃ¤chtnisverlust) direkt mit dem
+zweiten Laplace-Eigenwert des Konnektoms â€“ ein Resultat,
 das nur durch Graphmodellierung sichtbar wird.
 
 \subsection{Brain-Computer-Interfaces}
 
 Moderne BCI-Systeme (Neuralink, BrainGate) lesen neuronale
-Signale aus und übersetzen sie in Steuerbefehle.  Die
+Signale aus und Ã¼bersetzen sie in Steuerbefehle.  Die
 Signalverarbeitung verwendet Graphen auf zwei Ebenen:
 \begin{enumerate}
   \item \textbf{Elektroden-Graph:} Raumzeitliche Korrelationen
@@ -854,13 +854,13 @@ Jeder Regelkreis ist ein gerichteter Graph:
 \begin{definition}[Signalfluss-Graph]
 Der \emph{Signalfluss-Graph} (SFG) eines linearen
 zeitinvarianten Systems ist ein Digraph $G_{\text{SFG}}=(V_S,E_S,w)$,
-wobei $V_S$ die Signalgrößen sind und $E_S$ die Übertragungsfunktionen
+wobei $V_S$ die SignalgrÃ¶ÃŸen sind und $E_S$ die Ãœbertragungsfunktionen
 zwischen ihnen.  Masons Gewinnformel berechnet die
-Übertragungsfunktion direkt aus dem Graphen:
+Ãœbertragungsfunktion direkt aus dem Graphen:
 \[
   H(s) = \frac{\sum_k P_k \Delta_k}{\Delta},
 \]
-wobei $P_k$ Pfadverstärkungen, $\Delta$ der Graph-Determinant
+wobei $P_k$ PfadverstÃ¤rkungen, $\Delta$ der Graph-Determinant
 und $\Delta_k$ Ko-Determinanten sind.
 \end{definition}
 
@@ -884,8 +884,8 @@ und $\Delta_k$ Ko-Determinanten sind.
     \draw[->] (ym) -- node[below,draw=none,font=\footnotesize] {$H(s)$} ++(-2.5,0) -- (e);
   \end{tikzpicture}
   \caption{Standard-Regelkreis als Digraph.  Regler $C(s)$,
-           Strecke $P(s)$, Messsystem $H(s)$.  Die Rückführkante
-           schließt den Regelkreis und erzeugt den elementaren
+           Strecke $P(s)$, Messsystem $H(s)$.  Die RÃ¼ckfÃ¼hrkante
+           schlieÃŸt den Regelkreis und erzeugt den elementaren
            Feedback-Zyklus $(U \to Y \to U)$.}
   \label{fig:regelkreis}
 \end{figure}
@@ -897,34 +897,34 @@ Die Zustandsraumdarstellung
   \dot{\mathbf{x}} = A\mathbf{x} + B\mathbf{u}, \quad
   \mathbf{y} = C\mathbf{x} + D\mathbf{u}
 \]
-lässt sich direkt als Adjazenzmatrix des SFG interpretieren:
-$A_{ij} \neq 0$ bedeutet, dass Zustand $j$ auf Zustand $i$ wirkt –
-eine Kante im Zustandsgraphen.  Eigenwerte und Lyapunov-Stabilität
+lÃ¤sst sich direkt als Adjazenzmatrix des SFG interpretieren:
+$A_{ij} \neq 0$ bedeutet, dass Zustand $j$ auf Zustand $i$ wirkt â€“
+eine Kante im Zustandsgraphen.  Eigenwerte und Lyapunov-StabilitÃ¤t
 sind Spektraleigenschaften dieses Graphen.
 
 \begin{beispiel}[Inverses Pendel]
-Das inverse Pendel hat 4 Zustände $(x, \dot{x}, \theta, \dot{\theta})$.
+Das inverse Pendel hat 4 ZustÃ¤nde $(x, \dot{x}, \theta, \dot{\theta})$.
 Der Zustandsgraph $G_A$ hat $4$ Knoten und die durch die
 Physik bestimmten Kanten.  Der LQR-Regler optimiert die
 Kantengewichte von $G_A$ so, dass alle Eigenwerte in der
 linken Halbebene liegen.  Die Steuerbarkeitsmatrix
 $\mathcal{C} = [B, AB, A^2B, A^3B]$ entspricht einem
-4-stufigen Binärbaum im Graphen – Tiefe $\log_2 4 = 2$ reicht
-für den kritischen Pfad.
+4-stufigen BinÃ¤rbaum im Graphen â€“ Tiefe $\log_2 4 = 2$ reicht
+fÃ¼r den kritischen Pfad.
 \end{beispiel}
 
 \subsection{Industrielle Leitsysteme: SCADA und IEC~61499}
 
 Moderne Prozessleitsysteme (SCADA) und der IEC~61499-Standard
-(Funktionsblöcke) modellieren Industrieanlagen explizit als
-Graphen.  Jede Anlage ist ein Graph aus Funktionsblöcken (Knoten)
+(FunktionsblÃ¶cke) modellieren Industrieanlagen explizit als
+Graphen.  Jede Anlage ist ein Graph aus FunktionsblÃ¶cken (Knoten)
 und Daten-/Ereigniswegen (Kanten).  Die Analyse auf
 \begin{enumerate}
   \item Deadlock-Freiheit (Zyklenanalyse),
-  \item minimale Reaktionszeit (kürzester Pfad),
-  \item maximale Ausfallsicherheit (Kantenkonnektivität)
+  \item minimale Reaktionszeit (kÃ¼rzester Pfad),
+  \item maximale Ausfallsicherheit (KantenkonnektivitÃ¤t)
 \end{enumerate}
-ist ausschließlich über Graphalgorithmen effizient lösbar.
+ist ausschlieÃŸlich Ã¼ber Graphalgorithmen effizient lÃ¶sbar.
 
 \subsection{Multi-Agenten-Regelung und Konsensalgorithmen}
 
@@ -940,16 +940,16 @@ ist.  Die Konvergenzrate ist:
   e^{-\lambda_2(L)\, t} \|\mathbf{x}(0) - \bar{x}\mathbf{1}\|.
 \]
 Der zweite Laplace-Eigenwert $\lambda_2$ ist der Fiedler-Wert,
-der direkt die algebraische Konnektivität des Kommunikationsgraphen
-misst. Eine höhere Vernetzung → größeres $\lambda_2$ →
+der direkt die algebraische KonnektivitÃ¤t des Kommunikationsgraphen
+misst. Eine hÃ¶here Vernetzung â†’ grÃ¶ÃŸeres $\lambda_2$ â†’
 schnellere Konvergenz. Das Optimierungsziel (Konvergenz\-geschwindigkeit
 maximieren) ist damit exakt das Problem, den optimalen
 Subgraphen mit maximalem Fiedler-Wert zu finden.
 
 \begin{beispiel}[Drohnenschwarm-Navigation]
-Für $n=100$ Drohnen in einem kreisförmigen Formationsgraphen
-(Zyklus $C_{100}$) beträgt $\lambda_2 = 2(1-\cos(2\pi/100))
-\approx 0.004$ – sehr langsame Konvergenz in $\mathcal{O}(250)$
+FÃ¼r $n=100$ Drohnen in einem kreisfÃ¶rmigen Formationsgraphen
+(Zyklus $C_{100}$) betrÃ¤gt $\lambda_2 = 2(1-\cos(2\pi/100))
+\approx 0.004$ â€“ sehr langsame Konvergenz in $\mathcal{O}(250)$
 Sekunden.  Durch Hinzunahme eines \emph{Spanning Trees} (Baum +
 $\mathcal{O}(\log n)$ Zusatzkanten) steigt $\lambda_2$ auf
 $\Omega(1/\log n) \approx 0.2$, Konvergenz in $5$ Sekunden.
@@ -959,8 +959,8 @@ Subgraph Algorithmus (\Cref{sec:algorithmus}) effizient.
 
 \subsection{Hydraulische und thermische Netzwerke}
 
-Rohrleitungsnetzwerke (Wasser, Gas, Fernwärme) sind gewichtete
-Graphen: Knoten sind Verknüpfungspunkte, Kanten Rohrsegmente,
+Rohrleitungsnetzwerke (Wasser, Gas, FernwÃ¤rme) sind gewichtete
+Graphen: Knoten sind VerknÃ¼pfungspunkte, Kanten Rohrsegmente,
 Gewichte sind Widerstandskoeffizienten.  Das Kirchhoff'sche
 Druckgesetz (analog zum Kirchhoff'schen Spannungsgesetz in
 elektrischen Netzen) lautet in Matrixform:
@@ -969,7 +969,7 @@ elektrischen Netzen) lautet in Matrixform:
 \]
 wobei $\mathbf{p}$ der Druckvektor und $\mathbf{q}$ der
 Flussfeldvektor ist.  Das System ist genau dann eindeutig
-lösbar, wenn der Netzwerkgraph zusammenhängend ist –
+lÃ¶sbar, wenn der Netzwerkgraph zusammenhÃ¤ngend ist â€“
 eine rein graphentheoretische Bedingung.
 
 %============================================================
@@ -983,7 +983,7 @@ Die globale Finanzwirtschaft ist ein gewichteter Digraph:
 \[
   G_{\text{Fin}} = (V_B, E_F, w), \quad
   V_B = \text{Finanzinstitute}, \quad
-  E_F = \text{Kredit-/Eigentümerbeziehungen}.
+  E_F = \text{Kredit-/EigentÃ¼merbeziehungen}.
 \]
 Das systemische Risiko (Too-Big-to-Fail) ist das Resultat
 der Hub-Struktur dieses Graphen.
@@ -996,8 +996,8 @@ $\deg(\text{Lehman}) > 1000$.  Die Graphanalyse zeigt:
   d_{\text{avg}}(G) \approx \Delta d = 3.2,
 \]
 d.h. nach dem Lehman-Kollaps stieg die durchschnittliche
-Pfadlänge im Finanznetzwerk um $3{,}2$ Schritte – was einer
-dramatischen Erhöhung der Transaktionskosten und
+PfadlÃ¤nge im Finanznetzwerk um $3{,}2$ Schritte â€“ was einer
+dramatischen ErhÃ¶hung der Transaktionskosten und
 Informationsasymmetrie entspricht.  Dies ist der
 graphentheoretische Fingerabdruck einer Finanzkrise.
 \end{beispiel}
@@ -1006,14 +1006,14 @@ graphentheoretische Fingerabdruck einer Finanzkrise.
 
 Die Markowitz-Portfoliooptimierung verwendet eine
 Kovarianzmatrix $\Sigma$ der Asset-Returns.  Diese Matrix
-ist isomorph zu einem vollständigen gewichteten Graphen
+ist isomorph zu einem vollstÃ¤ndigen gewichteten Graphen
 $G_\Sigma$ mit $n$ Wertpapieren als Knoten und den
 Korrelationskoeffizienten als Kantengewichten.
 
 \begin{definition}[Minimum Spanning Tree Portfolio]
 Der \emph{Minimale Spannbaum} (MST) von $G_\Sigma$ identifiziert
-die stärksten Korrelationscluster und empfiehlt die Kanten
-zu kappen (d.h. Assets zu diversifizieren), die die größte
+die stÃ¤rksten Korrelationscluster und empfiehlt die Kanten
+zu kappen (d.h. Assets zu diversifizieren), die die grÃ¶ÃŸte
 Risikokonzentration erzeugen.
 \end{definition}
 
@@ -1026,32 +1026,32 @@ effizienter als Random-Portfolios~\cite{Mantegna1999}.
 
 \begin{beispiel}[S\&P 500 Korrelationsgraph]
 Der Korrelationsgraph des S\&P 500 (500 Aktien) hat
-$\binom{500}{2} = 124{,}750$ mögliche Kanten.  Der MST
-reduziert dies auf 499 Kanten – ein Verdichtungsfaktor von
-250.  Die mittlere Tiefe des MST beträgt empirisch
+$\binom{500}{2} = 124{,}750$ mÃ¶gliche Kanten.  Der MST
+reduziert dies auf 499 Kanten â€“ ein Verdichtungsfaktor von
+250.  Die mittlere Tiefe des MST betrÃ¤gt empirisch
 $\sim \log_2(500) \approx 9$ Stufen.  Die Branchencluster
-(Tech, Energie, Finanzen) sind die Teilbäume auf Ebene 3-4.
+(Tech, Energie, Finanzen) sind die TeilbÃ¤ume auf Ebene 3-4.
 \end{beispiel}
 
 \subsection{Handelsalgorithmen und Order-Flow-Graphen}
 
 Hochfrequenzhandel (HFT) modelliert den Auftragsfluss als
-gerichteten Graphen zwischen Börsen, Market-Makern und
+gerichteten Graphen zwischen BÃ¶rsen, Market-Makern und
 institutionellen Investoren.  \emph{Arbitrage} entspricht einem
 gerichteten Zyklus mit negativem Gesamtgewicht (analog
 zum Bellman-Ford-Negativzyklus).
 
-\begin{definition}[Währungsarbitrage-Graph]
-Für $n$ Währungen ist der \emph{Wechselkursgraph}:
-$V = $ Währungen, $w(u,v) = -\ln(\text{Kurs}_{u \to v})$.
+\begin{definition}[WÃ¤hrungsarbitrage-Graph]
+FÃ¼r $n$ WÃ¤hrungen ist der \emph{Wechselkursgraph}:
+$V = $ WÃ¤hrungen, $w(u,v) = -\ln(\text{Kurs}_{u \to v})$.
 Arbitragefreiheit gilt genau dann, wenn der Graph
-keinen negativen Zyklus enthält.  Der Bellman-Ford-Algorithmus
+keinen negativen Zyklus enthÃ¤lt.  Der Bellman-Ford-Algorithmus
 erkennt negative Zyklen in $\mathcal{O}(|V| \cdot |E|)$,
 der Floyd-Warshall in $\mathcal{O}(|V|^3)$.
 \end{definition}
 
 \begin{beispiel}[Triangulararbitrage EUR/USD/JPY]
-Drei Währungen bilden einen Dreiecks-Graphen.  Eine mögliche
+Drei WÃ¤hrungen bilden einen Dreiecks-Graphen.  Eine mÃ¶gliche
 Arbitrage:
 \[
   1 \text{ EUR} \xrightarrow{1{.}10} 1{.}10 \text{ USD}
@@ -1061,7 +1061,7 @@ Arbitrage:
 Der Gewinn von $1{,}5\%$ ist der negative Zykluswert
 $-\ln(1{.}10 \cdot 150 / 148) \approx -0{.}015$.
 Dieser Zyklus ist genau die Elementareinheit \emph{plus}
-Rückkopplungskante im Graphen.
+RÃ¼ckkopplungskante im Graphen.
 \end{beispiel}
 
 \subsection{Kreditrisikomodellierung}
@@ -1069,16 +1069,16 @@ Rückkopplungskante im Graphen.
 Das \emph{Credit Default Swap (CDS)} Netzwerk ist ein
 gewichteter Hypergraph, der approximiert werden kann durch
 einen bipartiten Graphen zwischen Schuldnern (Knoten
-Typ $A$) und Gläubigern (Knoten Typ $B$).  Das Ausfallrisiko
-propagiert sich entlang der Kanten – ein Kapazitätsflussproblem.
+Typ $A$) und GlÃ¤ubigern (Knoten Typ $B$).  Das Ausfallrisiko
+propagiert sich entlang der Kanten â€“ ein KapazitÃ¤tsflussproblem.
 
 \begin{theorem}[Maximaler Fluss = Minimaler Schnitt]
 Nach dem Ford-Fulkerson-Theorem ist die maximale
-Risikopropagation gleich der Kapazität des minimalen
+Risikopropagation gleich der KapazitÃ¤t des minimalen
 Schnitts im CDS-Graphen.  Der minimale Schnitt trennt
-das Netzwerk in zwei Hälften – er identifiziert die
+das Netzwerk in zwei HÃ¤lften â€“ er identifiziert die
 \emph{systemische Trennlinie}.  Diese Linie entspricht
-immer einer Kante oder einem Knotenpaar im Graphen –
+immer einer Kante oder einem Knotenpaar im Graphen â€“
 wieder die Elementareinheit.
 \end{theorem}
 
@@ -1091,11 +1091,11 @@ gerichtete azyklische Graphen (DAG):
   \item Validierungsbeziehungen sind Kanten.
   \item Der Konsens-Algorithmus entspricht dem
         topologischen Sortieren des DAG plus gewichtetem
-        Pfadmaximalitätsproblem.
+        PfadmaximalitÃ¤tsproblem.
 \end{enumerate}
-Die Finalitätszeit einer Transaktion ist die Tiefe des
+Die FinalitÃ¤tszeit einer Transaktion ist die Tiefe des
 Knotens im DAG, die logarithmisch in der Anzahl der
-bestätigenden Transaktionen wächst: $t_{\text{fin}} =
+bestÃ¤tigenden Transaktionen wÃ¤chst: $t_{\text{fin}} =
 \mathcal{O}(\log |\text{Transaktionen}|)$.
 
 %============================================================
@@ -1108,25 +1108,25 @@ bestätigenden Transaktionen wächst: $t_{\text{fin}} =
 \label{sub:beobachtung_hierarchie}
 %------------------------------------------------------------
 
-\begin{beobachtung}[Hierarchische Vollständigkeit des Graphen]
+\begin{beobachtung}[Hierarchische VollstÃ¤ndigkeit des Graphen]
 	\label{beob:hierarchie}
-	Graphen sind die mathematisch ideale Struktur für die Modellierung
+	Graphen sind die mathematisch ideale Struktur fÃ¼r die Modellierung
 	beliebig tiefer Hierarchien, weil jeder Knoten $v \in V$ eines Graphen
-	$G = (V, E)$ seinerseits als vollständiger Graph aufgefasst werden kann.
-	Diese Eigenschaft – die \emph{rekursive Selbstähnlichkeit} der
-	Graphstruktur – ist unter allen diskreten Modellierungsformen einzigartig
+	$G = (V, E)$ seinerseits als vollstÃ¤ndiger Graph aufgefasst werden kann.
+	Diese Eigenschaft â€“ die \emph{rekursive SelbstÃ¤hnlichkeit} der
+	Graphstruktur â€“ ist unter allen diskreten Modellierungsformen einzigartig
 	und erzeugt eine unbegrenzte Hierarchietiefe ohne Verlust der
 	strukturellen Konsistenz.
 \end{beobachtung}
 
 Diese Beobachtung ist keineswegs trivial.  In linearen Datenstrukturen
-(Listen, Arrays) ist eine Hierarchiestufe genau dann vollständig, wenn
-alle Elemente der gleichen Ebene angehören.  In relationalen Tabellen
+(Listen, Arrays) ist eine Hierarchiestufe genau dann vollstÃ¤ndig, wenn
+alle Elemente der gleichen Ebene angehÃ¶ren.  In relationalen Tabellen
 erfordert jede neue Hierarchieebene eine neue Tabelle und eine
-Fremdschlüsselbeziehung – die Struktur wächst \emph{außerhalb} des
-Modells.  In Graphen hingegen wächst die Hierarchie \emph{innerhalb}
+FremdschlÃ¼sselbeziehung â€“ die Struktur wÃ¤chst \emph{auÃŸerhalb} des
+Modells.  In Graphen hingegen wÃ¤chst die Hierarchie \emph{innerhalb}
 des Modells: Kein neues Formalismus, kein neuer Datentyp, keine neue
-Modellierungssprache wird benötigt.  Der Graph trägt die Hierarchie
+Modellierungssprache wird benÃ¶tigt.  Der Graph trÃ¤gt die Hierarchie
 in sich selbst.
 
 %------------------------------------------------------------
@@ -1139,17 +1139,17 @@ in sich selbst.
 	Sei $k \in \mathbb{N}_0$.  Ein \emph{hierarchischer Graph $k$-ter
 		Ordnung} $\mathcal{H}^{(k)}$ ist rekursiv definiert:
 	\begin{itemize}
-		\item $k = 0$: $\mathcal{H}^{(0)}$ ist ein gewöhnlicher Graph
+		\item $k = 0$: $\mathcal{H}^{(0)}$ ist ein gewÃ¶hnlicher Graph
 		$G = (V, E)$, dessen Knoten \emph{atomar} sind, d.h. keinen
 		weiteren internen Graphen enthalten.
 		\item $k \geq 1$: $\mathcal{H}^{(k)} = (V^{(k)}, E^{(k)})$, wobei
 		jeder Knoten $v \in V^{(k)}$ einen hierarchischen Graphen
-		$\mathcal{H}^{(k-1)}_v$ der Ordnung $(k-1)$ enthält.  Die
+		$\mathcal{H}^{(k-1)}_v$ der Ordnung $(k-1)$ enthÃ¤lt.  Die
 		Kantenmenge $E^{(k)} \subseteq V^{(k)} \times V^{(k)}$ beschreibt
 		die Beziehungen zwischen den \emph{Makroknoten}.
 	\end{itemize}
 	Die Gesamtheit $\bigl(\mathcal{H}^{(k)}, \{\mathcal{H}^{(k-1)}_v\}_{v \in V^{(k)}}\bigr)$
-	heißt \emph{$k$-stufiger hierarchischer Graph}.
+	heiÃŸt \emph{$k$-stufiger hierarchischer Graph}.
 \end{definition}
 
 \begin{definition}[Enthaltungsrelation]
@@ -1160,21 +1160,21 @@ in sich selbst.
 	u \sqsubset v \iff u \in V\!\bigl(\mathcal{H}^{(k-1)}_v\bigr),
 	\]
 	d.h. der Knoten $u$ liegt im internen Graphen des Makroknotens $v$.
-	Die transitive Hülle $\sqsubset^{+}$ definiert die vollständige
-	Enthaltungshierarchie über alle $k$ Ebenen.
+	Die transitive HÃ¼lle $\sqsubset^{+}$ definiert die vollstÃ¤ndige
+	Enthaltungshierarchie Ã¼ber alle $k$ Ebenen.
 \end{definition}
 
 \begin{bemerkung}
 	Die Enthaltungsrelation $\sqsubset$ ist eine strikte partielle Ordnung
 	(irreflexiv, asymmetrisch, transitiv), sofern keine Zyklen zwischen
-	Ebenen zugelassen werden.  Dies entspricht der natürlichen Anforderung
-	an Hierarchien: ein Makroknoten enthält seine Unterknoten, nicht
+	Ebenen zugelassen werden.  Dies entspricht der natÃ¼rlichen Anforderung
+	an Hierarchien: ein Makroknoten enthÃ¤lt seine Unterknoten, nicht
 	umgekehrt.
 \end{bemerkung}
 
 Die folgende Abbildung illustriert einen hierarchischen Graphen zweiter
-Ordnung, bei dem jeder Knoten der obersten Ebene einen vollständigen
-Graphen enthält.
+Ordnung, bei dem jeder Knoten der obersten Ebene einen vollstÃ¤ndigen
+Graphen enthÃ¤lt.
 
 \begin{figure}[h]
 	\centering
@@ -1222,11 +1222,11 @@ Graphen enthält.
 	\end{tikzpicture}
 	\caption{Hierarchischer Graph zweiter Ordnung.  Die Makroknoten
 		$A$, $B$, $C$ sind durch Kanten auf der oberen Ebene
-		verbunden.  Jeder Makroknoten enthält seinerseits einen
-		vollständigen gerichteten Graphen ($A$: Dreieck-Zyklus,
-		$B$: DAG mit vier Knoten, $C$: vollständiger gerichteter
-		Dreiecksgraph).  Die innere Struktur ist vollständig
-		unabhängig von der äußeren Topologie.}
+		verbunden.  Jeder Makroknoten enthÃ¤lt seinerseits einen
+		vollstÃ¤ndigen gerichteten Graphen ($A$: Dreieck-Zyklus,
+		$B$: DAG mit vier Knoten, $C$: vollstÃ¤ndiger gerichteter
+		Dreiecksgraph).  Die innere Struktur ist vollstÃ¤ndig
+		unabhÃ¤ngig von der Ã¤uÃŸeren Topologie.}
 	\label{fig:hierarchisch}
 \end{figure}
 
@@ -1236,8 +1236,8 @@ Graphen enthält.
 %------------------------------------------------------------
 
 Aus \cref{beob:hierarchie} und \cref{def:hgraph} ergibt sich unmittelbar
-ein fundamentaler Grundsatz, der die Modellierungsmächtigkeit
-hierarchischer Graphen präzisiert.
+ein fundamentaler Grundsatz, der die ModellierungsmÃ¤chtigkeit
+hierarchischer Graphen prÃ¤zisiert.
 
 \begin{theorem}[Grundsatz der maximalen Knotenexpansion]
 	\label{thm:maxexpansion}
@@ -1245,14 +1245,14 @@ hierarchischer Graphen präzisiert.
 	$n$ Makroknoten auf der obersten Ebene.  Dann gilt:
 	
 	\begin{enumerate}[label=\textbf{(\roman*)}]
-		\item \textbf{Beliebige Hierarchietiefe:} Für jedes $k \in \mathbb{N}$
+		\item \textbf{Beliebige Hierarchietiefe:} FÃ¼r jedes $k \in \mathbb{N}$
 		existiert ein konsistenter hierarchischer Graph $k$-ter Ordnung.
 		Die Anzahl der modellierbaren Hierarchieebenen ist nach oben
-		unbeschränkt.
+		unbeschrÃ¤nkt.
 		
 		\item \textbf{Maximale Expansion auf der Blattebene:}
-		Auf der untersten Hierarchieebene $\ell = 0$ – der
-		\emph{atomaren Ebene} – besteht jeder Knoten aus einer
+		Auf der untersten Hierarchieebene $\ell = 0$ â€“ der
+		\emph{atomaren Ebene} â€“ besteht jeder Knoten aus einer
 		reinen Knotenmenge ohne weitere innere Graphstruktur.
 		Der hierarchische Graph ist genau dann \emph{maximal
 			expandiert}, wenn die Anzahl
@@ -1272,7 +1272,7 @@ hierarchischer Graphen präzisiert.
 
 \begin{proof}
 	Zu (i): Die Rekursion in \cref{def:hgraph} bricht nie erzwungen ab.
-	Für jedes $k$ konstruiert man $\mathcal{H}^{(k)}$, indem man einen
+	FÃ¼r jedes $k$ konstruiert man $\mathcal{H}^{(k)}$, indem man einen
 	beliebigen Graphen als $\mathcal{H}^{(k-1)}$ nimmt und dessen Knoten
 	als Elemente eines neuen Graphen $\mathcal{H}^{(k)}$ interpretiert.
 	Da Graphen mit endlicher Knotenzahl existieren, ist die Rekursion
@@ -1280,7 +1280,7 @@ hierarchischer Graphen präzisiert.
 	
 	Zu (ii): Sei $n^{(1)} = |V^{(1)}|$ die Anzahl der Knoten auf Ebene 1.
 	Ein Knoten $v \in V^{(1)}$ kann entweder atomar sein ($\mathcal{H}^{(0)}_v = \emptyset$,
-	d.h. er enthält keinen weiteren Graphen) oder \emph{expandiert}
+	d.h. er enthÃ¤lt keinen weiteren Graphen) oder \emph{expandiert}
 	($\mathcal{H}^{(0)}_v \neq \emptyset$).  Die Anzahl der expandierten
 	Knoten $\kappa$ ist maximal genau dann, wenn \emph{alle} Knoten auf
 	Ebene 1 einen inneren Graphen tragen: $\kappa = n^{(1)}$.  Dies ist
@@ -1295,45 +1295,45 @@ hierarchischer Graphen präzisiert.
 \end{proof}
 
 %------------------------------------------------------------
-\subsection{Wie viele Hierarchien sind möglich?}
+\subsection{Wie viele Hierarchien sind mÃ¶glich?}
 \label{sub:kapazitaet}
 %------------------------------------------------------------
 
-Die folgende Proposition quantifiziert die kombinatorische Mächtigkeit
+Die folgende Proposition quantifiziert die kombinatorische MÃ¤chtigkeit
 hierarchischer Graphen.
 
-\begin{proposition}[Exponentielles Wachstum der Modellierungskapazität]
+\begin{proposition}[Exponentielles Wachstum der ModellierungskapazitÃ¤t]
 	\label{prop:wachstum}
 	Sei $\mathcal{H}^{(k)}$ ein hierarchischer Graph $k$-ter Ordnung,
 	bei dem jeder Makroknoten auf jeder Ebene $\ell \geq 1$ genau
-	$m$ innere Knoten enthält.  Dann ist die Gesamtzahl der atomaren
+	$m$ innere Knoten enthÃ¤lt.  Dann ist die Gesamtzahl der atomaren
 	Knoten auf der untersten Ebene gleich
 	\[
 	N_{\text{atom}} = n \cdot m^k,
 	\]
 	wobei $n = |V^{(k)}|$ die Anzahl der Makroknoten auf der obersten
 	Ebene ist.  Die logarithmische Hierarchietiefe, um $N$ atomare Knoten
-	zu modellieren, beträgt
+	zu modellieren, betrÃ¤gt
 	\[
 	k = \log_m\!\left(\frac{N}{n}\right) = \mathcal{O}(\log N).
 	\]
 \end{proposition}
 
 \begin{proof}
-	Durch vollständige Induktion: Für $k=0$ enthält jeder der $n$
+	Durch vollstÃ¤ndige Induktion: FÃ¼r $k=0$ enthÃ¤lt jeder der $n$
 	Makroknoten keine weiteren Knoten, also $N_{\text{atom}} = n = n \cdot m^0$.
-	Für den Induktionsschritt $k \to k+1$: Jeder der $n \cdot m^k$ Knoten
+	FÃ¼r den Induktionsschritt $k \to k+1$: Jeder der $n \cdot m^k$ Knoten
 	auf Ebene 0 wird durch $m$ neue innere Knoten ersetzt, ergibt
 	$n \cdot m^{k+1}$.\qquad
 \end{proof}
 
 \noindent
 Diese Proposition hat eine wichtige Konsequenz: Beliebig viele
-reale Hierarchien können durch einen einzigen hierarchischen Graphen
-modelliert werden, ohne dass die Tiefe $k$ linear wächst.  Die
-Hierarchietiefe wächst nur logarithmisch mit der Anzahl der
-zu modellierenden Elemente – exakt das logarithmische Prinzip,
-das bereits in \cref{sec:log_beweis} für einfache Graphen bewiesen
+reale Hierarchien kÃ¶nnen durch einen einzigen hierarchischen Graphen
+modelliert werden, ohne dass die Tiefe $k$ linear wÃ¤chst.  Die
+Hierarchietiefe wÃ¤chst nur logarithmisch mit der Anzahl der
+zu modellierenden Elemente â€“ exakt das logarithmische Prinzip,
+das bereits in \cref{sec:log_beweis} fÃ¼r einfache Graphen bewiesen
 wurde, setzt sich nahtlos in die Hierarchie fort.
 
 \begin{figure}[h]
@@ -1365,10 +1365,10 @@ wurde, setzt sich nahtlos in die Hierarchie fort.
 	\end{tikzpicture}
 	\caption{Schematische Darstellung eines hierarchischen Graphen der
 		Ordnung $k=2$ mit $m=3$ inneren Knoten pro Makroknoten.
-		Ebene 2 (blau): Makroknoten $R$; Ebene 1 (grün):
+		Ebene 2 (blau): Makroknoten $R$; Ebene 1 (grÃ¼n):
 		Makroknoten $A$, $B$; Ebene 0 (orange, atomar):
 		$a_1, a_2, a_3, b_1, b_2, b_3$.  Die Gesamtzahl der
-		atomaren Knoten beträgt $n \cdot m^k = 1 \cdot 3^2 = 9$,
+		atomaren Knoten betrÃ¤gt $n \cdot m^k = 1 \cdot 3^2 = 9$,
 		die Hierarchietiefe nur $k=2 = \log_3 9$.}
 	\label{fig:hierarchie_baum}
 \end{figure}
@@ -1378,12 +1378,12 @@ wurde, setzt sich nahtlos in die Hierarchie fort.
 \label{sub:blattebene}
 %------------------------------------------------------------
 
-Wir präzisieren nun das Konzept der \emph{maximalen Knotenexpansion}
-auf der untersten Hierarchieebene und beweisen seine Optimalität.
+Wir prÃ¤zisieren nun das Konzept der \emph{maximalen Knotenexpansion}
+auf der untersten Hierarchieebene und beweisen seine OptimalitÃ¤t.
 
 \begin{definition}[Blattebene und Expansionsgrad]
 	\label{def:blatt}
-	In einem hierarchischen Graphen $k$-ter Ordnung heißt die unterste
+	In einem hierarchischen Graphen $k$-ter Ordnung heiÃŸt die unterste
 	Ebene $\ell = 0$ die \emph{Blattebene} oder \emph{atomare Ebene}.
 	Der \emph{Expansionsgrad} auf Ebene $\ell \geq 1$ ist:
 	\[
@@ -1391,21 +1391,21 @@ auf der untersten Hierarchieebene und beweisen seine Optimalität.
 	\frac{|\{v \in V^{(\ell)} \mid \mathcal{H}^{(\ell-1)}_v \neq \emptyset\}|}{|V^{(\ell)}|}
 	\;\in\; [0,1].
 	\]
-	Der Graph heißt \emph{vollständig expandiert} auf Ebene $\ell$,
-	wenn $\varepsilon_\ell = 1$, d.h.\ jeder Knoten dieser Ebene enthält
-	einen nicht-leeren Graphen der nächstniedrigeren Ordnung.
+	Der Graph heiÃŸt \emph{vollstÃ¤ndig expandiert} auf Ebene $\ell$,
+	wenn $\varepsilon_\ell = 1$, d.h.\ jeder Knoten dieser Ebene enthÃ¤lt
+	einen nicht-leeren Graphen der nÃ¤chstniedrigeren Ordnung.
 \end{definition}
 
-\begin{theorem}[Optimalität maximaler Expansion]
+\begin{theorem}[OptimalitÃ¤t maximaler Expansion]
 	\label{thm:optexpansion}
 	Unter allen hierarchischen Graphen $k$-ter Ordnung mit $n$ Makroknoten
 	auf der obersten Ebene und fester Hierarchietiefe $k$ ist derjenige
 	mit maximalem Expansionsgrad $\varepsilon_\ell = 1$ auf allen Ebenen
 	$\ell = 1, \ldots, k$ die Struktur mit der
 	\begin{enumerate}[label=\textbf{(\roman*)}]
-		\item \textbf{größten Anzahl modellierter atomarer Elemente},
+		\item \textbf{grÃ¶ÃŸten Anzahl modellierter atomarer Elemente},
 		\item \textbf{maximaler Informationsdichte} im Sinne der
-		Kolmogorov-Komplexität, und
+		Kolmogorov-KomplexitÃ¤t, und
 		\item \textbf{optimaler Auslastung} der Hierarchieebenen.
 	\end{enumerate}
 \end{theorem}
@@ -1416,28 +1416,28 @@ auf der untersten Hierarchieebene und beweisen seine Optimalität.
 	$\ell-1$ enthalten.  Jede Reduktion des Expansionsgrades,
 	$\varepsilon_\ell < 1$, verringert die Gesamtzahl der atomaren Knoten
 	$N_{\text{atom}} = n \cdot \prod_{\ell=1}^{k} \varepsilon_\ell \cdot m$.
-	Das Maximum wird bei $\varepsilon_\ell = 1$ für alle $\ell$ erreicht.
+	Das Maximum wird bei $\varepsilon_\ell = 1$ fÃ¼r alle $\ell$ erreicht.
 	
-	Zu (ii): Die Kolmogorov-Komplexität $K(\mathcal{H}^{(k)})$ einer
-	nicht-expandierten Hierarchie enthält redundante Null-Einträge für
-	alle leeren Unterknoten.  Eine vollständig expandierte Hierarchie
-	ohne leere Knoten hat minimale Beschreibungskomplexität relativ zur
+	Zu (ii): Die Kolmogorov-KomplexitÃ¤t $K(\mathcal{H}^{(k)})$ einer
+	nicht-expandierten Hierarchie enthÃ¤lt redundante Null-EintrÃ¤ge fÃ¼r
+	alle leeren Unterknoten.  Eine vollstÃ¤ndig expandierte Hierarchie
+	ohne leere Knoten hat minimale BeschreibungskomplexitÃ¤t relativ zur
 	Anzahl der codierten atomaren Elemente.
 	
-	Zu (iii): Eine Hierarchieebene $\ell$ ist genau dann vollständig
+	Zu (iii): Eine Hierarchieebene $\ell$ ist genau dann vollstÃ¤ndig
 	ausgelastet, wenn alle ihre Knoten zur Strukturierung der darunterliegenden
 	Ebene beitragen.  Bei $\varepsilon_\ell < 1$ existieren \emph{tote Knoten},
 	die keinen Beitrag zur Modellierungstiefe leisten.\qquad
 \end{proof}
 
 %------------------------------------------------------------
-\subsection{Strukturelle Konsequenzen: Kanten über Hierarchiegrenzen}
+\subsection{Strukturelle Konsequenzen: Kanten Ã¼ber Hierarchiegrenzen}
 \label{sub:interedges}
 %------------------------------------------------------------
 
 In realen Modellierungsproblemen existieren nicht nur Kanten
 \emph{innerhalb} einer Hierarchieebene, sondern auch \emph{zwischen}
-Ebenen.  Wir formalisieren dieses Phänomen.
+Ebenen.  Wir formalisieren dieses PhÃ¤nomen.
 
 \begin{definition}[Inter-Level-Kanten]
 	\label{def:interlevel}
@@ -1445,7 +1445,7 @@ Ebenen.  Wir formalisieren dieses Phänomen.
 	\emph{Inter-Level-Kante} ist ein gerichtetes Paar $(u, v)$ mit
 	$u \in V^{(\ell)}$ und $v \in V^{(\ell')}$, $\ell \neq \ell'$.
 	Die Menge aller Inter-Level-Kanten sei $E_{\times}$.  Ein
-	hierarchischer Graph mit $E_{\times} \neq \emptyset$ heißt
+	hierarchischer Graph mit $E_{\times} \neq \emptyset$ heiÃŸt
 	\emph{Mehrebenen-Graph} (engl.\ \emph{multilayer graph}).
 \end{definition}
 
@@ -1461,8 +1461,8 @@ Ebenen.  Wir formalisieren dieses Phänomen.
 		oder Interrupts.
 	\end{itemize}
 	Eine Inter-Level-Kante $(\texttt{CAN-Controller}, \texttt{Kommunikation})$
-	modelliert den direkten Zugriff einer Komponente auf das übergeordnete
-	Subsystem – eine in AUTOSAR-Architekturen häufig auftretende
+	modelliert den direkten Zugriff einer Komponente auf das Ã¼bergeordnete
+	Subsystem â€“ eine in AUTOSAR-Architekturen hÃ¤ufig auftretende
 	Querverbindung~\cite{West2001}.
 \end{beispiel}
 
@@ -1492,7 +1492,7 @@ Ebenen.  Wir formalisieren dieses Phänomen.
 		% Makro-Kante
 		\draw[arr,very thick] (Ant) -- node[above,font=\small]{$E_{\text{Makro}}$} (Kom);
 	\end{tikzpicture}
-	\caption{Mehrebenen-Graph mit zwei Ebenen. Auf der einen Ebene sind die beiden Knoten \texttt{Antrieb} und \texttt{Kommunikation}. Auf der anderen Ebene sind die Knoten \texttt{Montorsteuerung} und \texttt{PWM} und \texttt{CAN-Controller} und \texttt{Ethernet}.}´
+	\caption{Mehrebenen-Graph mit zwei Ebenen. Auf der einen Ebene sind die beiden Knoten \texttt{Antrieb} und \texttt{Kommunikation}. Auf der anderen Ebene sind die Knoten \texttt{Montorsteuerung} und \texttt{PWM} und \texttt{CAN-Controller} und \texttt{Ethernet}.}Â´
 	\label{fig:interlevel}
 \end{figure}
 
@@ -1504,7 +1504,7 @@ Ebenen.  Wir formalisieren dieses Phänomen.
 \subsubsection{Biologische Hierarchien: Vom Atom zur Zelle}
 
 Die Biologie ist ein kanonisches Anwendungsgebiet hierarchischer
-Graphen.  Ein vollständig expandierter hierarchischer Graph
+Graphen.  Ein vollstÃ¤ndig expandierter hierarchischer Graph
 $\mathcal{H}^{(4)}$ modelliert die biologische Organisation:
 
 \begin{center}
@@ -1512,16 +1512,16 @@ $\mathcal{H}^{(4)}$ modelliert die biologische Organisation:
 		\toprule
 		Ebene $\ell$ & Knoten & Kanten & Biologische Entsprechung \\
 		\midrule
-		4 & Organismus & metabolische Flüsse & Physiologisches System \\
-		3 & Organ      & Signalpfade         & Gewebeverbünde         \\
+		4 & Organismus & metabolische FlÃ¼sse & Physiologisches System \\
+		3 & Organ      & Signalpfade         & GewebeverbÃ¼nde         \\
 		2 & Zelle      & Rezeptor-Ligand     & Zellnetzwerk           \\
-		1 & Organell   & Proteintransport    & Intrazelluläre Struktur \\
-		0 & Molekül    & Bindungen           & Biochemie              \\
+		1 & Organell   & Proteintransport    & IntrazellulÃ¤re Struktur \\
+		0 & MolekÃ¼l    & Bindungen           & Biochemie              \\
 		\bottomrule
 	\end{tabular}
 \end{center}
 
-Auf jeder Ebene sind die Knoten vollständig expandiert: Jedes Organ enthält einen Graphen aus Zellen, jede Zelle einen Graphen aus Organellen, jedes Organell einen Graphen aus Molekülen. Der Expansionsgrad $\varepsilon_\ell = 1$ gilt auf allen Ebenen – kein Knoten bleibt in der biologischen Realität atomar, solange man hinreichend tief modelliert.
+Auf jeder Ebene sind die Knoten vollstÃ¤ndig expandiert: Jedes Organ enthÃ¤lt einen Graphen aus Zellen, jede Zelle einen Graphen aus Organellen, jedes Organell einen Graphen aus MolekÃ¼len. Der Expansionsgrad $\varepsilon_\ell = 1$ gilt auf allen Ebenen â€“ kein Knoten bleibt in der biologischen RealitÃ¤t atomar, solange man hinreichend tief modelliert.
 
 \subsubsection{Informatik: Betriebssystemhierarchie}
 
@@ -1530,20 +1530,20 @@ hierarchischen Graphen $\mathcal{H}^{(3)}$:
 
 \begin{itemize}
 	\item \textbf{Ebene 3} (Makroknoten): Prozesse.  Ein Prozess
-	enthält mehrere Threads (Ebene 2), jeder Thread enthält
-	Instruktionssequenzen (Ebene 1), jede Instruktion enthält
+	enthÃ¤lt mehrere Threads (Ebene 2), jeder Thread enthÃ¤lt
+	Instruktionssequenzen (Ebene 1), jede Instruktion enthÃ¤lt
 	Mikro-Operationen (Ebene 0).
 	\item Die Kanten auf Ebene 3 modellieren Inter-Prozess-Kommunikation
 	(IPC, Sockets, Pipes).  Die Kanten auf Ebene 0 modellieren
-	Datenflüsse innerhalb der CPU-Pipeline.
-	\item Der Expansionsgrad ist maximal: Jeder Prozess enthält
+	DatenflÃ¼sse innerhalb der CPU-Pipeline.
+	\item Der Expansionsgrad ist maximal: Jeder Prozess enthÃ¤lt
 	mindestens einen Thread, jeder Thread mindestens eine
 	Instruktion.
 \end{itemize}
 
-Das Scheduling-Problem – die Zuteilung von CPU-Zeit zu Prozessen –
+Das Scheduling-Problem â€“ die Zuteilung von CPU-Zeit zu Prozessen â€“
 ist formal das Problem der optimalen Knotengewichtung im
-hierarchischen Graphen auf Ebene 3.  Betriebssysteme lösen dieses
+hierarchischen Graphen auf Ebene 3.  Betriebssysteme lÃ¶sen dieses
 Problem durch rekursive Partitionierung (analoger Divide-and-Conquer
 auf $\mathcal{H}^{(3)}$) in $\mathcal{O}(\log n)$ Schritten.
 
@@ -1563,10 +1563,10 @@ hierarchische Steuerarchitektur:
 
 Kanten auf Ebene 2 beschreiben Sollwertvorgaben vom Supervisor an
 die Regler.  Kanten auf Ebene 0 beschreiben Stellsignale von den
-Reglern an die Aktoren.  Die vollständige Expansion
+Reglern an die Aktoren.  Die vollstÃ¤ndige Expansion
 ($\varepsilon_\ell = 1$) entspricht dem Zustand, in dem jeder
-Supervisor tatsächlich mindestens einen Regler steuert und jeder
-Regler mindestens einen Aktor treibt – dem Normalfall in korrekt
+Supervisor tatsÃ¤chlich mindestens einen Regler steuert und jeder
+Regler mindestens einen Aktor treibt â€“ dem Normalfall in korrekt
 ausgelegten Regelungssystemen.
 
 %------------------------------------------------------------
@@ -1591,17 +1591,17 @@ ausgelegten Regelungssystemen.
 	Die Funktor-Eigenschaft zwischen Hierarchieebenen entspricht den
 	strukturerhaltenden Abbildungen (Graphmorphismen) zwischen
 	$\mathcal{H}^{(\ell)}$ und $\mathcal{H}^{(\ell-1)}$.
-	Die Verifikation der Kategorienaxiome (Identität, Assoziativität)
+	Die Verifikation der Kategorienaxiome (IdentitÃ¤t, AssoziativitÃ¤t)
 	folgt direkt aus den Grapheigenschaften.\qquad
 \end{proof}
 
-\begin{korollar}[Übertragbarkeit kategorientheoretischer Resultate]
+\begin{korollar}[Ãœbertragbarkeit kategorientheoretischer Resultate]
 	\label{kor:transfer}
 	Alle kategorientheoretischen Konstruktionen (Limiten, Kolimiten,
 	Adjunktionen, Monaden) sind direkt auf hierarchische Graphen
 	anwendbar.  Insbesondere ist der Kolimes einer Familie
 	$\{\mathcal{H}^{(k)}_i\}$ wieder ein hierarchischer Graph $k$-ter
-	Ordnung – die Klasse $\mathfrak{H}^{(k)}$ ist unter Kolimesbildung
+	Ordnung â€“ die Klasse $\mathfrak{H}^{(k)}$ ist unter Kolimesbildung
 	abgeschlossen.
 \end{korollar}
 
@@ -1616,83 +1616,83 @@ ausgelegten Regelungssystemen.
 	\noindent
 	Graphen sind unter allen diskreten Modellierungsstrukturen die
 	einzige Form, die \emph{ohne Erweiterung des Formalismus}
-	beliebig viele Hierarchieebenen trägt.  Dies folgt unmittelbar
-	daraus, dass ein Knoten selbst ein vollständiger Graph sein kann.
+	beliebig viele Hierarchieebenen trÃ¤gt.  Dies folgt unmittelbar
+	daraus, dass ein Knoten selbst ein vollstÃ¤ndiger Graph sein kann.
 	
 	\medskip
 	\noindent
-	Formal: Für jeden hierarchischen Graphen $\mathcal{H}^{(k)}$
+	Formal: FÃ¼r jeden hierarchischen Graphen $\mathcal{H}^{(k)}$
 	gilt:
 	\begin{enumerate}
-		\item Die Hierarchietiefe $k$ ist nach oben unbeschränkt.
+		\item Die Hierarchietiefe $k$ ist nach oben unbeschrÃ¤nkt.
 		\item Die Anzahl der auf der atomaren Ebene modellierten
-		Elemente wächst exponentiell in $k$:
+		Elemente wÃ¤chst exponentiell in $k$:
 		$N_{\text{atom}} = n \cdot m^k$.
-		\item Die zur Modellierung von $N$ atomaren Elementen benötigte
-		Hierarchietiefe wächst nur logarithmisch:
+		\item Die zur Modellierung von $N$ atomaren Elementen benÃ¶tigte
+		Hierarchietiefe wÃ¤chst nur logarithmisch:
 		$k = \mathcal{O}(\log N)$.
 		\item Der Grad der Expansion ist genau dann maximal, wenn
 		auf der Blattebene $\ell = 0$ kein Knoten atomar
-		\emph{erzwungen} ist – d.h. wenn die Anzahl der Knoten,
+		\emph{erzwungen} ist â€“ d.h. wenn die Anzahl der Knoten,
 		die wieder einen Graphen enthalten, gleich der
 		Gesamtzahl der Knoten auf dieser Ebene ist.
 		\item Dieser Zustand maximaler Expansion ist strukturell
 		optimal im Sinne der Informationsdichte, der
 		Ausnutzung der Hierarchietiefe und der
-		Kolmogorov-Komplexität.
+		Kolmogorov-KomplexitÃ¤t.
 	\end{enumerate}
 	
 	\medskip
 	\noindent
 	\textbf{Schlussfolgerung:} Die Graphenmodellierung ist nicht
-	nur für flache Netzwerke, sondern gerade für tief verschachtelte,
+	nur fÃ¼r flache Netzwerke, sondern gerade fÃ¼r tief verschachtelte,
 	hierarchische Systeme die \emph{mathematisch notwendige und optimale}
-	Wahl.  Komplexe Systeme – biologische Organismen, Betriebssysteme,
-	Regelungsarchitekturen, soziale Organisationen – sind im Kern
+	Wahl.  Komplexe Systeme â€“ biologische Organismen, Betriebssysteme,
+	Regelungsarchitekturen, soziale Organisationen â€“ sind im Kern
 	hierarchische Graphen.  Ihre Modellierung durch andere
 	Datenstrukturen ist stets eine verlustbehaftete Projektion
 	dieser fundamentalen Graphstruktur.
 
 %------------------------------------------------------------
-\subsection{Transdisziplinäre Perspektiven und Metamodellierung}
+\subsection{TransdisziplinÃ¤re Perspektiven und Metamodellierung}
 %------------------------------------------------------------
 
 \subsubsection{Graphen als Wissenschaftssprache}
 
 Diese Arbeit hat gezeigt, dass Graphen nicht nur in
-einzelnen Disziplinen nützlich sind, sondern eine universelle
-\emph{Wissenschaftssprache} bilden.  Die nächste Forschungs\-
+einzelnen Disziplinen nÃ¼tzlich sind, sondern eine universelle
+\emph{Wissenschaftssprache} bilden.  Die nÃ¤chste Forschungs\-
 generation steht vor der Aufgabe, eine formale
-\emph{Graphengrammatik der Wissenschaften} zu entwickeln –
+\emph{Graphengrammatik der Wissenschaften} zu entwickeln â€“
 eine Theorie, die beschreibt, wie Modelle verschiedener
 Disziplinen durch Graph-Morphismen~\cite{Ehrig2006}
-ineinander übersetzbar sind.
+ineinander Ã¼bersetzbar sind.
 
 Ein erster Schritt ist die \emph{kategorientheoretische}
 Formulierung: Graphen sind Objekte in der Kategorie
 \textbf{Graph}, Morphismen sind strukturerhaltende
 Abbildungen.  Funktoren zwischen Kategorien erlauben
-den formalen Transfer von Resultaten zwischen Disziplinen –
+den formalen Transfer von Resultaten zwischen Disziplinen â€“
 z.B. von der algebraischen Topologie (Spektralsequenzen)
 in die Biologie (Entwicklungshierarchien).
 
-\subsubsection{Komplexitätstheorie und untere Schranken}
+\subsubsection{KomplexitÃ¤tstheorie und untere Schranken}
 
 Eine fundamentale offene Frage ist, ob die in dieser Arbeit
 bewiesene logarithmische Schranke $\mathcal{O}(\log n)$
 wirklich optimal ist oder ob sub-logarithmische Verfahren
-für spezielle Graphklassen existieren.  Die theoretische
-Informatik kennt für bestimmte Suchprobleme
+fÃ¼r spezielle Graphklassen existieren.  Die theoretische
+Informatik kennt fÃ¼r bestimmte Suchprobleme
 $\Omega(\log n)$ als beweisbar optimale untere Schranke~\cite{Hromkovic2004}.
-Es bleibt zu klären:
+Es bleibt zu klÃ¤ren:
 \begin{enumerate}
-	\item Für welche Graphklassen ist $o(\log n)$ erreichbar?
-	\item Welche algebraischen Eigenschaften (Regularität,
-	Symmetrie, Expansionskonstante) ermöglichen
+	\item FÃ¼r welche Graphklassen ist $o(\log n)$ erreichbar?
+	\item Welche algebraischen Eigenschaften (RegularitÃ¤t,
+	Symmetrie, Expansionskonstante) ermÃ¶glichen
 	sub-logarithmische Algorithmen?
 	\item Gibt es einen allgemeinen Trade-off zwischen
-	Graphstruktur (Komplexität der Kanten) und
-	algorithmischer Tiefe (Komplexität des Algorithmus)?
+	Graphstruktur (KomplexitÃ¤t der Kanten) und
+	algorithmischer Tiefe (KomplexitÃ¤t des Algorithmus)?
 \end{enumerate}
 
 
@@ -1704,7 +1704,7 @@ Es bleibt zu klären:
 \textbf{Quelle dieses Kapitels:}
 Der hier beschriebene Algorithmus entstammt der Arbeit von
 Epp~\cite{Epp2026}, die unter
-\url{https://github.com/hjstephan86/science} frei zugänglich ist.
+\url{https://github.com/hjstephan86/science} frei zugÃ¤nglich ist.
 Alle Beweise, Definitionen und Beispiele in diesem Abschnitt
 beziehen sich auf diese Originalquelle.  Die vorliegende Darstellung
 vertieft und kontextualisiert den Algorithmus im Rahmen der
@@ -1718,7 +1718,7 @@ logarithmischen Graphentheorie.
 \subsubsection{Das Subgraph-Erkennungsproblem}
 
 Gegeben seien zwei Graphen $G = (V, E)$ und
-$G' = (V', E')$ mit je $n$ Knoten, repräsentiert durch
+$G' = (V', E')$ mit je $n$ Knoten, reprÃ¤sentiert durch
 Adjazenzmatrizen $A$ und $B$.
 
 \begin{definition}[Subgraph]
@@ -1730,38 +1730,38 @@ $G \subseteq G'$, wenn $V \subseteq V'$ und $E \subseteq E'$.
 Das \emph{zyklische Subgraph-Problem} fragt:
 Existiert eine zyklische Rotation der Knoten von $G'$,
 sodass $G \subseteq G'$ gilt?  Je nach Ergebnis des
-Vergleichs sind vier Entscheidungen möglich:
+Vergleichs sind vier Entscheidungen mÃ¶glich:
 \begin{enumerate}
   \item $B \supseteq A$: Behalte~$B$, verwerfe~$A$
-        ($G'$ enthält mehr Information).
+        ($G'$ enthÃ¤lt mehr Information).
   \item $A \supseteq B$: Behalte~$A$, verwerfe~$B$
-        ($G$ enthält mehr Information).
+        ($G$ enthÃ¤lt mehr Information).
   \item $A = B$: Behalte einen der beiden.
-  \item Keiner enthält den anderen: Behalte beide.
+  \item Keiner enthÃ¤lt den anderen: Behalte beide.
 \end{enumerate}
 
-\subsubsection{Bedeutung für die Graphmodellierung}
+\subsubsection{Bedeutung fÃ¼r die Graphmodellierung}
 
 Das Subgraph-Erkennungsproblem ist eines der fundamentalen
 Probleme der Graphentheorie und taucht in zahllosen
 Anwendungen auf:
 \begin{itemize}
   \item \textbf{Softwareverifikation:} Zwei Programme sind
-        oft strukturell ähnlich – ihr zyklischer Subgraph-Vergleich
+        oft strukturell Ã¤hnlich â€“ ihr zyklischer Subgraph-Vergleich
         im Abstract Syntax Tree (AST) offenbart Gemeinsamkeiten in
         $\mathcal{O}(n^3)$ statt $\mathcal{O}(n! \cdot n^2)$.
   \item \textbf{Bioinformatik:} Proteininteraktionsnetzwerke
-        werden verglichen, um evolutionär konservierte Teilstrukturen
+        werden verglichen, um evolutionÃ¤r konservierte Teilstrukturen
         zu finden.
-  \item \textbf{Wissensgraphen:} Redundante Teilgraphen in großen
+  \item \textbf{Wissensgraphen:} Redundante Teilgraphen in groÃŸen
         Wissensdatenbanken werden erkannt und dedupliziert.
   \item \textbf{Mustersuche:} Rekurrente Schaltungsmuster in
         neuronalen oder technischen Netzen werden effizient lokalisiert.
 \end{itemize}
 
-Der Schlüssel des Algorithmus von Epp~\cite{Epp2026} liegt darin,
+Der SchlÃ¼ssel des Algorithmus von Epp~\cite{Epp2026} liegt darin,
 statt aller $n!$ Permutationen der Knoten nur die $n$ zyklischen
-Rotationen zu prüfen – und dabei Signatur-Hashing zu verwenden,
+Rotationen zu prÃ¼fen â€“ und dabei Signatur-Hashing zu verwenden,
 das jede Spalte der Adjazenzmatrix in eine eindeutige Zahl
 kodiert.
 
@@ -1784,21 +1784,21 @@ ist:
 \]
 \end{definition}
 
-\begin{lemma}[Injektivität der Signatur-Funktion]
+\begin{lemma}[InjektivitÃ¤t der Signatur-Funktion]
 Die Funktion $\sigma_j$, die definiert ist mit $\sigma_j: \{0,1\}^n \times \{0,\ldots,n{-}1\} \to \mathbb{N}$, ist injektiv: Verschiedene Spalten erhalten stets verschiedene
 Signaturen.
 \end{lemma}
 
 \begin{proof}
 Der Term $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ kodiert jeden
-Binärvektor eindeutig als Dezimalzahl (binäre Darstellung).
-Das Positionsgewicht $j \cdot 2^n$ erzeugt für verschiedene
+BinÃ¤rvektor eindeutig als Dezimalzahl (binÃ¤re Darstellung).
+Das Positionsgewicht $j \cdot 2^n$ erzeugt fÃ¼r verschiedene
 Spaltenindizes disjunkte Intervalle $[j \cdot 2^n, (j{+}1) \cdot 2^n)$.
 Damit ist~$\sigma_j$ injektiv.
 \end{proof}
 
 \begin{beispiel}[Signatur-Berechnung]
-Für $n=4$ und Spalte $j=0$ mit Vektor $[1, 0, 1, 0]^T$:
+FÃ¼r $n=4$ und Spalte $j=0$ mit Vektor $[1, 0, 1, 0]^T$:
 \[
   \sigma_0 = 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 0 \cdot 2^3
            + 0 \cdot 2^4 = 1 + 4 = 5.
@@ -1807,8 +1807,8 @@ Spalte $j=1$ mit identischem Vektor $[1, 0, 1, 0]^T$:
 \[
   \sigma_1 = 1 + 4 + 1 \cdot 16 = 21.
 \]
-Gleiche Spaltenvektoren erhalten verschiedene Signaturen –
-der Positionsindex unterscheidet sie zuverlässig.
+Gleiche Spaltenvektoren erhalten verschiedene Signaturen â€“
+der Positionsindex unterscheidet sie zuverlÃ¤ssig.
 \end{beispiel}
 
 \subsubsection{Zyklische Rotation}
@@ -1824,7 +1824,7 @@ $[a_0, a_1, \ldots, a_{n-1}]$ um $k$ Positionen ist:
 
 Der entscheidende Gedankensprung des Algorithmus besteht darin,
 \emph{nur} die $n$ zyklischen Rotationen zu betrachten statt aller
-$n!$ Permutationen.  Für $n = 20$ bedeutet das:
+$n!$ Permutationen.  FÃ¼r $n = 20$ bedeutet das:
 
 \begin{center}
 \begin{tabular}{lrr}
@@ -1838,75 +1838,75 @@ $n!$ Permutationen.  Für $n = 20$ bedeutet das:
 \end{center}
 
 \noindent
-Die Korrektheit dieser Einschränkung beruht auf der Eigenschaft,
-dass zyklische Rotation die sequentielle Knotenordnung erhält –
-eine natürliche Symmetrie, die in zahlreichen realen Graphen
+Die Korrektheit dieser EinschrÃ¤nkung beruht auf der Eigenschaft,
+dass zyklische Rotation die sequentielle Knotenordnung erhÃ¤lt â€“
+eine natÃ¼rliche Symmetrie, die in zahlreichen realen Graphen
 vorkommt (Ringstrukturen, Genomsequenzen, Protokollautomaten).
 
 \subsubsection{Longest Common Subsequence (LCS)}
 
 Der Vergleich zweier Signatur-Sequenzen erfolgt durch die
-\emph{längste gemeinsame Teilsequenz}:
+\emph{lÃ¤ngste gemeinsame Teilsequenz}:
 
 \begin{definition}[LCS-Subgraph-Kriterium]
 Eine Subgraph-Beziehung liegt vor, wenn
 $\mathrm{LCS}(\sigma^A,\, \mathrm{rot}_k(\sigma^B)) \geq 2$
-für ein $k \in \{0,\ldots,n{-}1\}$.
+fÃ¼r ein $k \in \{0,\ldots,n{-}1\}$.
 \end{definition}
 
-Die Mindesttlänge~2 entspricht der Minimalstruktur des Graphen:
-Zwei Knoten verbunden durch eine Kante – exakt die Elementareinheit
+Die MindesttlÃ¤nge~2 entspricht der Minimalstruktur des Graphen:
+Zwei Knoten verbunden durch eine Kante â€“ exakt die Elementareinheit
 $G_{\text{atom}}$ aus \Cref{sec:grundlagen}.
 
-\subsubsection{Verbindung zur logarithmischen Optimalität}
+\subsubsection{Verbindung zur logarithmischen OptimalitÃ¤t}
 
-Die $\mathcal{O}(n^3)$-Laufzeit erscheint zunächst im Widerspruch
+Die $\mathcal{O}(n^3)$-Laufzeit erscheint zunÃ¤chst im Widerspruch
 zur angestrebten logarithmischen Effizienz.  Bei genauerer
 Betrachtung zeigt sich jedoch die tiefe Verbindung:
 
 \begin{enumerate}
   \item Die \emph{interne} Struktur des Algorithmus ist logarithmisch:
-        Die Signatur-Funktion kodiert eine $n$-stellige Binärzahl –
+        Die Signatur-Funktion kodiert eine $n$-stellige BinÃ¤rzahl â€“
         $\log_2 |\text{Signaturraum}| = n$ Bits.  Das Divide-and-Conquer
-        im LCS-Vergleich traversiert einen impliziten Binärbaum
+        im LCS-Vergleich traversiert einen impliziten BinÃ¤rbaum
         der Tiefe $\log_2 n$.
   \item Die \emph{Gesamtlaufzeit} $\mathcal{O}(n^3)$ ist beweisbar
-        optimal – keine logarithmischere Alternative existiert unter
-        SETH für das vollständige Subgraph-Problem.
+        optimal â€“ keine logarithmischere Alternative existiert unter
+        SETH fÃ¼r das vollstÃ¤ndige Subgraph-Problem.
 \end{enumerate}
 
 %------------------------------------------------------------
-\subsection{Ausführliche Anwendungen}
+\subsection{AusfÃ¼hrliche Anwendungen}
 \label{sub:sa_anwendungen}
 %------------------------------------------------------------
 
 \subsubsection{Softwareverifikation durch AST-Analyse}
 
-\begin{beispiel}[Programm-Äquivalenzprüfung]
-Zwei Implementierungen einer Sortierfunktion –
-\texttt{bubblesort.py} und \texttt{selectsort.py} –
+\begin{beispiel}[Programm-Ã„quivalenzprÃ¼fung]
+Zwei Implementierungen einer Sortierfunktion â€“
+\texttt{bubblesort.py} und \texttt{selectsort.py} â€“
 werden als \emph{Abstract Syntax Trees} (ASTs)
 modelliert.  Jeder AST ist ein gerichteter Graph:
 Knoten sind syntaktische Konstrukte
 (\texttt{for}-Schleife, Zuweisung, Vergleich),
 Kanten sind Kontroll- und Datenflussbeziehungen.
 
-Der Subgraph Algorithmus prüft nun, ob der AST
+Der Subgraph Algorithmus prÃ¼ft nun, ob der AST
 von \texttt{selectsort} als Subgraph im AST von
 \texttt{bubblesort} enthalten ist:
 \begin{itemize}
   \item Falls ja: \texttt{selectsort} ist strukturell
-        simpler – behalte \texttt{bubblesort}.
+        simpler â€“ behalte \texttt{bubblesort}.
   \item Falls nein: Beide Implementierungen haben
-        einzigartige Strukturen – behalte beide.
+        einzigartige Strukturen â€“ behalte beide.
 \end{itemize}
-Für zwei Programme mit je $n = 200$ AST-Knoten:
+FÃ¼r zwei Programme mit je $n = 200$ AST-Knoten:
 \begin{align*}
   T_{\text{naiv}} &= 200! \cdot 200^2 \approx 10^{377}\text{ Op.} \\
   T_{\text{Epp}}  &= 200^3 = 8 \times 10^6\text{ Op.}
 \end{align*}
 Der Subgraph Algorithmus ist der einzig praktisch
-durchführbare Ansatz.
+durchfÃ¼hrbare Ansatz.
 \end{beispiel}
 
 \subsubsection{Bioinformatik: Strukturvergleich von Proteinnetzwerken}
@@ -1914,24 +1914,24 @@ durchführbare Ansatz.
 \begin{beispiel}[PPI-Netzwerk-Konservierung]
 Das Proteinnetzwerk von \emph{Homo sapiens} und
 \emph{Mus musculus} soll verglichen werden, um
-evolutionär konservierte Protein-Komplexe zu finden.
+evolutionÃ¤r konservierte Protein-Komplexe zu finden.
 
 Modellierung: Jeder Proteinkomplex ist ein Subgraph
 des PPI-Graphen.  Der Subgraph Algorithmus vergleicht
-alle Komplexe beider Organismen paarweise.  Für $k$
+alle Komplexe beider Organismen paarweise.  FÃ¼r $k$
 bekannte Komplexe mit durchschnittlich $n = 15$ Proteinen:
 \[
   T_{\text{ges}} = k^2 \cdot \mathcal{O}(15^3)
                 = k^2 \cdot 3375.
 \]
-Für $k = 1000$ Komplexe: $\approx 3.4 \times 10^9$
-Operationen – auf moderner Hardware in Sekunden lösbar.
+FÃ¼r $k = 1000$ Komplexe: $\approx 3.4 \times 10^9$
+Operationen â€“ auf moderner Hardware in Sekunden lÃ¶sbar.
 
 \textbf{Biologisches Ergebnis:} Konservierte Subgraphen
-entsprechen evolutionär unveränderlichen Proteinkomplexen
+entsprechen evolutionÃ¤r unverÃ¤nderlichen Proteinkomplexen
 (z.\,B. Ribosom, Proteasom, ATP-Synthase).  Diese
-Komplexe sind die biologischen Hubs des Lebens –
-ihre Graphstruktur ist über Milliarden Jahre hinweg
+Komplexe sind die biologischen Hubs des Lebens â€“
+ihre Graphstruktur ist Ã¼ber Milliarden Jahre hinweg
 invariant geblieben.
 \end{beispiel}
 
@@ -1949,15 +1949,15 @@ im Neuron noch vorhanden sind).
 \begin{itemize}
   \item \texttt{keep\_B} ($G_{\text{neuron}} \supseteq G_{\text{stem}}$):
         Das Neuron hat alle Stammzell-Regulationen plus
-        zusätzliche neuronale Schaltkreise – biologisch
-        plausibel (Differenzierung = Hinzufügen neuer
+        zusÃ¤tzliche neuronale Schaltkreise â€“ biologisch
+        plausibel (Differenzierung = HinzufÃ¼gen neuer
         Regulationsachsen).
   \item \texttt{keep\_both}: Stammzelle und Neuron haben
-        fundamentell verschiedene Regulationsnetzwerke –
+        fundamentell verschiedene Regulationsnetzwerke â€“
         ein Hinweis auf epigenetische Umstrukturierung.
 \end{itemize}
 Die zyklische Rotation modelliert dabei die Invarianz
-bezüglich der Knotenbezeichnung (Gene können verschiedene
+bezÃ¼glich der Knotenbezeichnung (Gene kÃ¶nnen verschiedene
 interne IDs in verschiedenen Datenbanken haben).
 \end{beispiel}
 
@@ -1970,7 +1970,7 @@ realisieren (Feedforward-Loop, Feedback-Loop, Fan-out).
 Das Erkennen dieser Motifs in z.\,B. $10^6$ Neuronen
 des Mausgehirns ist ein Subgraph-Erkennungsproblem.
 
-Für ein Motif aus $n = 5$ Neuronen und einen
+FÃ¼r ein Motif aus $n = 5$ Neuronen und einen
 Konnektom-Graphen mit $N = 10^6$ Knoten, aufgeteilt
 in $\lfloor N/n \rfloor = 200.000$ lokale Fenster:
 \[
@@ -1981,79 +1981,79 @@ in $\lfloor N/n \rfloor = 200.000$ lokale Fenster:
 Dies entspricht wenigen Millisekunden Rechenzeit.
 Verglichen mit einem naiven Isomorphis\-mus-Test
 ($\mathcal{O}(n!)$ pro Fenster) ist dies nicht
-nur effizienter, sondern überhaupt erst \emph{durchführbar}.
+nur effizienter, sondern Ã¼berhaupt erst \emph{durchfÃ¼hrbar}.
 
 \textbf{Konnektion zur logarithmischen Theorie:}
-Die $n!$-Barriere für Graphisomorphismus wird durch die
-Einschränkung auf zyklische Rotationen durchbrochen.
-Diese Einschränkung ist informationstheoretisch gerechtfertigt,
-da reale neuronale Schaltkreise oft ringförmige
-Erregungsausbreitung zeigen – die zyklische Rotation
+Die $n!$-Barriere fÃ¼r Graphisomorphismus wird durch die
+EinschrÃ¤nkung auf zyklische Rotationen durchbrochen.
+Diese EinschrÃ¤nkung ist informationstheoretisch gerechtfertigt,
+da reale neuronale Schaltkreise oft ringfÃ¶rmige
+Erregungsausbreitung zeigen â€“ die zyklische Rotation
 ist also keine Approximation, sondern ein biologisch
 motiviertes Strukturprinzip.
 \end{beispiel}
 
 \subsubsection{Regelungstechnik: Systemstruktur-Verifikation}
 
-\begin{beispiel}[Industrienorm-Konformitätsprüfung]
-Industrieanlagen werden gemäß IEC~61499 als Funktionsblock-Graphen
+\begin{beispiel}[Industrienorm-KonformitÃ¤tsprÃ¼fung]
+Industrieanlagen werden gemÃ¤ÃŸ IEC~61499 als Funktionsblock-Graphen
 modelliert.  Eine Normvorlage $G_{\text{Norm}}$ definiert die
-Sollstruktur, eine reale Anlage $G_{\text{real}}$ enthält
-die Ist-Struktur.  Die Frage „Erfüllt die Anlage die Norm?''
+Sollstruktur, eine reale Anlage $G_{\text{real}}$ enthÃ¤lt
+die Ist-Struktur.  Die Frage â€žErfÃ¼llt die Anlage die Norm?''
 ist genau die Frage $G_{\text{Norm}} \subseteq G_{\text{real}}$.
 
-\textbf{Praktisches Beispiel – Sicherheits-Interlock:}
-Die Normvorlage enthält einen 6-Knoten-Graphen für einen
+\textbf{Praktisches Beispiel â€“ Sicherheits-Interlock:}
+Die Normvorlage enthÃ¤lt einen 6-Knoten-Graphen fÃ¼r einen
 Notabschalter (Sensor $\to$ Controller $\to$ Aktor,
-plus Rückmeldepfade).  Der Subgraph Algorithmus prüft
+plus RÃ¼ckmeldepfade).  Der Subgraph Algorithmus prÃ¼ft
 in $\mathcal{O}(6^3) = 216$ Operationen, ob diese
 Sicherheitsstruktur in der Anlage vorhanden ist.
 Ist dies nicht der Fall (\texttt{keep\_both}),
-liegt ein Normverstoß vor.
+liegt ein NormverstoÃŸ vor.
 
 Die zyklische Rotation ist hier besonders sinnvoll,
-da Funktionsblöcke in verschiedenen Implementierungen
-unterschiedliche interne Nummerierungen haben können –
+da FunktionsblÃ¶cke in verschiedenen Implementierungen
+unterschiedliche interne Nummerierungen haben kÃ¶nnen â€“
 aber dieselbe sequentielle Verschaltungsreihenfolge
 beibehalten.
 \end{beispiel}
 
-\subsubsection{Finanzwesen: Netzwerkähnlichkeit und\\
+\subsubsection{Finanzwesen: NetzwerkÃ¤hnlichkeit und\\
                Risikostrukturerkennung}
 
-\begin{beispiel}[Systemisches Risiko – Subgraph-Vergleich]
+\begin{beispiel}[Systemisches Risiko â€“ Subgraph-Vergleich]
 Vor der Finanzkrise 2007 und nach ihr wurden die
-Verflechtungsstrukturen der größten Banken als
+Verflechtungsstrukturen der grÃ¶ÃŸten Banken als
 Graphen modelliert.  Der Subgraph Algorithmus vergleicht
 den Vorkrisen-Graphen $G_{2006}$ mit dem
 Nachkrisen-Graphen $G_{2009}$:
 \begin{itemize}
   \item \texttt{keep\_B} ($G_{2009} \supseteq G_{2006}$):
-        Die Krisenstruktur enthält alle Vorkrisenverbindungen
-        plus neue Notfallverbindungen – Hinweis auf
+        Die Krisenstruktur enthÃ¤lt alle Vorkrisenverbindungen
+        plus neue Notfallverbindungen â€“ Hinweis auf
         bail-out-getriebene Vernetzung.
-  \item \texttt{keep\_both}: Grundlegende Umstrukturierung –
-        die Krisenbewältigung hat ein strukturell neues
+  \item \texttt{keep\_both}: Grundlegende Umstrukturierung â€“
+        die KrisenbewÃ¤ltigung hat ein strukturell neues
         Netzwerk erzeugt.
 \end{itemize}
-Für $n = 50$ systemrelevante Banken:
-$T = \mathcal{O}(50^3) = 125.000$ Operationen –
-Echtzeit-Risiko-Monitoring ist möglich.
+FÃ¼r $n = 50$ systemrelevante Banken:
+$T = \mathcal{O}(50^3) = 125.000$ Operationen â€“
+Echtzeit-Risiko-Monitoring ist mÃ¶glich.
 
-Weitergehend können historische Risikographen als
+Weitergehend kÃ¶nnen historische Risikographen als
 eine \emph{Bibliothek} von Subgraphen gespeichert werden.
-Der Subgraph Algorithmus erkennt dann frühzeitig,
+Der Subgraph Algorithmus erkennt dann frÃ¼hzeitig,
 wenn das aktuelle Netzwerk einem historischen
-Krisensubgraphen ähnelt – ein
-Frühwarnsystem auf Basis von $\mathcal{O}(n^3)$.
+Krisensubgraphen Ã¤hnelt â€“ ein
+FrÃ¼hwarnsystem auf Basis von $\mathcal{O}(n^3)$.
 \end{beispiel}
 
 \subsubsection{Wissensgraphen und Graph-RAG}
 
 \begin{beispiel}[Deduplizierung von Wissenssubgraphen]
-Große Wissensgrafen (z.\,B. Wikidata mit $\sim 10^9$
+GroÃŸe Wissensgrafen (z.\,B. Wikidata mit $\sim 10^9$
 Tripeln) enthalten massive Redundanzen: dasselbe
-Faktenmuster kann durch verschiedene Entitätsnamen
+Faktenmuster kann durch verschiedene EntitÃ¤tsnamen
 modelliert sein.  Der Subgraph Algorithmus erkennt,
 ob zwei Subgraphen $G_A$ (Faktenmuster A) und
 $G_B$ (Faktenmuster B) dieselbe Struktur haben:
@@ -2063,34 +2063,34 @@ $G_A$: Einstein $\to$ \textit{geboren in} $\to$ Ulm
 $\to$ \textit{liegt in} $\to$ Deutschland.\\
 $G_B$: A.\,Einstein $\to$ \textit{birthplace} $\to$ Ulm, Germany.
 
-Beide sind strukturell isomorphe Pfadgraphen der Länge 2.
+Beide sind strukturell isomorphe Pfadgraphen der LÃ¤nge 2.
 Der Subgraph Algorithmus erkennt $G_A \subseteq G_B$
-(oder Identität) und markiert sie zur Deduplizierung.
+(oder IdentitÃ¤t) und markiert sie zur Deduplizierung.
 Bei $10^6$ solcher Vergleiche pro Tag und
 $n \leq 10$ Knoten pro Subgraph:
 $T_{\text{ges}} = 10^6 \cdot \mathcal{O}(10^3) = 10^9$
 Operationen $\approx 1$ Sekunde auf moderner Hardware.
 \end{beispiel}
 
-\subsubsection{Chemoinformatik: Molekül-Substruktur-Suche}
+\subsubsection{Chemoinformatik: MolekÃ¼l-Substruktur-Suche}
 
 \begin{beispiel}[Pharmawirkstoff-Screening]
 Ein Pharmaunternehmen sucht in einer Datenbank von
-$10^6$ Molekülen (als Graphen: Atome = Knoten,
+$10^6$ MolekÃ¼len (als Graphen: Atome = Knoten,
 chemische Bindungen = Kanten) nach solchen,
 die ein bestimmtes pharmazeutisch aktives Teilmotiv
 $G_{\text{Pharmakophor}}$ als Subgraph enthalten.
 
-Für $n = 30$ Atome im Pharmakophor-Graphen
-und typische Moleküle mit $N = 100$ Atomen:
+FÃ¼r $n = 30$ Atome im Pharmakophor-Graphen
+und typische MolekÃ¼le mit $N = 100$ Atomen:
 \begin{align*}
-  T_{\text{pro Molekül}} &= \mathcal{O}(30^3) = 27.000 \text{ Op.} \\
+  T_{\text{pro MolekÃ¼l}} &= \mathcal{O}(30^3) = 27.000 \text{ Op.} \\
   T_{\text{ges}} &= 10^6 \cdot 27.000 = 2.7 \times 10^{10} \text{ Op.}
 \end{align*}
 Auf einem modernen Server ($10^{10}$ Operationen/s):
-$\sim 3$ Sekunden für die gesamte Datenbank.
-Mit naivem Isomorphismus ($30! \approx 10^{32}$) wäre
-dies astronomisch unmöglich.
+$\sim 3$ Sekunden fÃ¼r die gesamte Datenbank.
+Mit naivem Isomorphismus ($30! \approx 10^{32}$) wÃ¤re
+dies astronomisch unmÃ¶glich.
 \end{beispiel}
 
 %------------------------------------------------------------
@@ -2098,10 +2098,10 @@ dies astronomisch unmöglich.
 \label{sub:sa_beispiel}
 %------------------------------------------------------------
 
-Wir führen den Algorithmus vollständig für ein konkretes
+Wir fÃ¼hren den Algorithmus vollstÃ¤ndig fÃ¼r ein konkretes
 Beispiel durch:
 
-\begin{beispiel}[Vollständiger Algorithmus-Lauf]
+\begin{beispiel}[VollstÃ¤ndiger Algorithmus-Lauf]
 Gegeben:
 \[
   A = \begin{pmatrix}
@@ -2118,7 +2118,7 @@ Gegeben:
   \end{pmatrix}.
 \]
 
-\textbf{Schritt 1 – Signaturen von $A$:}
+\textbf{Schritt 1 â€“ Signaturen von $A$:}
 \[
   \sigma^A = [1, 18, 36, 48].
 \]
@@ -2126,14 +2126,14 @@ Gegeben:
 Positionsgewicht $1 \cdot 2^4 = 16$,
 Summe $= 18$.)
 
-\textbf{Schritt 2 – Signaturen von $B$:}
+\textbf{Schritt 2 â€“ Signaturen von $B$:}
 \[
   \sigma^B = [5, 18, 36, 48].
 \]
 (Spalte 0: $[0,0,0,0]^T + [1,0,0,0]^T$;
 Zeilen-Hash: $2^0 = 1$ und $2^2 = 4$, Summe $= 5$.)
 
-\textbf{Schritt 3 – Rotations-Match ($A \subseteq B$?):}\\
+\textbf{Schritt 3 â€“ Rotations-Match ($A \subseteq B$?):}\\
 Zeilen-Hashes: $r^A = [1, 2, 4, 0]$,
 $r^B = [5, 2, 4, 0]$.
 \begin{itemize}
@@ -2141,7 +2141,7 @@ $r^B = [5, 2, 4, 0]$.
         $\Rightarrow$ \textbf{Treffer}.
 \end{itemize}
 
-\textbf{Schritt 4 – Rotations-Match ($B \subseteq A$?):}\\
+\textbf{Schritt 4 â€“ Rotations-Match ($B \subseteq A$?):}\\
 $r^B = [5, 2, 4, 0]$.
 Alle 4 Rotationen liefern $\mathrm{LCS} \leq 2$
 mit Zeilen-Hash $5$ (Spalte 0 von $B$) ohne Entsprechung in $A$.
@@ -2150,8 +2150,8 @@ $\Rightarrow$ kein Treffer.
 \textbf{Ergebnis:}
 $A \subseteq B$ aber $B \not\subseteq A$:
 $\Rightarrow$ \texttt{keep\_B}.  \\
-$G'$ enthält alle Kanten von $G$ plus eine zusätzliche
-($(v_0, v_2)$) – $G'$ hat mehr Information.
+$G'$ enthÃ¤lt alle Kanten von $G$ plus eine zusÃ¤tzliche
+($(v_0, v_2)$) â€“ $G'$ hat mehr Information.
 \end{beispiel}
 
 %------------------------------------------------------------
@@ -2162,19 +2162,19 @@ $G'$ enthält alle Kanten von $G$ plus eine zusätzliche
 \textbf{Kernbotschaft des Subgraph Algorithmus:}
 \begin{enumerate}
   \item \textbf{Signatur-Hashing} kodiert jede Matrixspalte
-        eindeutig in einer Zahl – injektiv, kollisionsfrei,
+        eindeutig in einer Zahl â€“ injektiv, kollisionsfrei,
         in $\mathcal{O}(n)$ pro Spalte.
   \item \textbf{Zyklische Rotation} reduziert $n!$ auf $n$
-        zu prüfende Knotenordnungen – ein Sprung von
+        zu prÃ¼fende Knotenordnungen â€“ ein Sprung von
         faktorieller zu linearer Suchtiefe.
   \item \textbf{LCS-Vergleich} in $\mathcal{O}(n^2)$ erkennt
-        gemeinsame Teilstrukturen robust und vollständig.
+        gemeinsame Teilstrukturen robust und vollstÃ¤ndig.
   \item \textbf{Gesamtlaufzeit $\mathcal{O}(n^3)$} ist
         bedingt optimal (unter SETH): Keine Verbesserung
-        auf $o(n^3)$ ist möglich, ohne SETH zu widerlegen.
-  \item \textbf{Sieben Anwendungsdomänen} – Software,
+        auf $o(n^3)$ ist mÃ¶glich, ohne SETH zu widerlegen.
+  \item \textbf{Sieben AnwendungsdomÃ¤nen} â€“ Software,
         Bioinformatik, Genetik, Neurowissenschaften,
-        Regelungstechnik, Finanzen, Chemie – zeigen den
+        Regelungstechnik, Finanzen, Chemie â€“ zeigen den
         universellen Nutzen dieses Ansatzes.
 \end{enumerate}
 
@@ -2185,48 +2185,48 @@ $G'$ enthält alle Kanten von $G$ plus eine zusätzliche
 
 \subsection{Das Prinzip der minimalen universellen Struktur}
 
-Wir haben in vier Beweisen und sechs Anwendungsdomänen
+Wir haben in vier Beweisen und sechs AnwendungsdomÃ¤nen
 gezeigt:
 
 \begin{enumerate}[label=\textbf{P\arabic*.}]
-  \item \textbf{Informationstheorie:} Die binäre Beziehung
+  \item \textbf{Informationstheorie:} Die binÃ¤re Beziehung
         (Kante) ist die minimale informationstheoretische Einheit.
         Graphs erreichen die Shannon-Schranke.
   \item \textbf{Algorithmik:} Divide-and-Conquer auf Graphen
         erzeugt $\mathcal{O}(\log n)$-Algorithmen.  Dies ist
         optimal nach dem Entscheidungsbaum-Modell.
-  \item \textbf{Repräsentation:} Jede endliche Relationenstruktur
+  \item \textbf{ReprÃ¤sentation:} Jede endliche Relationenstruktur
         ist isomorph zu einem Graphen.  Kein Ausdruckskraft geht
         verloren.
   \item \textbf{Kommunikation:} Graph-Netzwerke dieser Struktur
         (Small-World, Scale-Free, Expander) minimieren
         Kommunikationsdistanz und -kosten.
-  \item \textbf{Stabilität:} Spektrale Grapheigenschaften
+  \item \textbf{StabilitÃ¤t:} Spektrale Grapheigenschaften
         ($\lambda_2$, Cheeger-Konstante) quantifizieren Robustheit.
-        Das Optimierungsproblem (OSA) ist effizient lösbar.
-  \item \textbf{Universalität:} Von der Primzahlarithmetik
-        über das Konnektom bis zum Finanzsystem – die
-        Graphstruktur erscheint in jeder Wissenschaft natürlich.
+        Das Optimierungsproblem (OSA) ist effizient lÃ¶sbar.
+  \item \textbf{UniversalitÃ¤t:} Von der Primzahlarithmetik
+        Ã¼ber das Konnektom bis zum Finanzsystem â€“ die
+        Graphstruktur erscheint in jeder Wissenschaft natÃ¼rlich.
 \end{enumerate}
 
-\begin{theorem}[Universeller Optimalitätssatz]
+\begin{theorem}[Universeller OptimalitÃ¤tssatz]
 \label{thm:haupt}
-Sei $\Sigma$ eine beliebige endliche Struktur über einer
-$n$-elementigen Domäne mit binären Relationen.  Dann ist
+Sei $\Sigma$ eine beliebige endliche Struktur Ã¼ber einer
+$n$-elementigen DomÃ¤ne mit binÃ¤ren Relationen.  Dann ist
 die Graphdarstellung von $\Sigma$ die eindeutig optimale
 Darstellungsform im Sinne von:
 \begin{enumerate}[label=(\roman*)]
-  \item Minimaler Beschreibungskomplexität
+  \item Minimaler BeschreibungskomplexitÃ¤t
         ($\mathcal{O}(n + m)$ statt $\mathcal{O}(n^2)$
-         für dichte Matrizen oder $\mathcal{O}(n!)$ für
+         fÃ¼r dichte Matrizen oder $\mathcal{O}(n!)$ fÃ¼r
          Permutationsdarstellungen),
   \item Maximaler algorithmischer Effizienz
         ($\mathcal{O}(\log n)$ Suche, $\mathcal{O}(n \log n)$
          Sortierung, $\mathcal{O}(n + m)$ Traversal),
-  \item Minimaler Kommunikationskomplexität
+  \item Minimaler KommunikationskomplexitÃ¤t
         (Expander-Graphen erzielen $\mathcal{O}(\log n)$
          Diameter bei linearer Kantenzahl),
-  \item Maximaler Robustheit gegenüber lokalem Ausfall
+  \item Maximaler Robustheit gegenÃ¼ber lokalem Ausfall
         (Fiedler-Wert bleibt hoch nach Entfernung von $o(\sqrt{n})$
          Knoten in gut-vernetzten Graphen).
 \end{enumerate}
@@ -2242,34 +2242,34 @@ Darstellungsform im Sinne von:
 Diese Arbeit hat gezeigt:
 
 \begin{enumerate}
-  \item \textbf{Formaler Beweis der logarithmischen Optimalität:}
+  \item \textbf{Formaler Beweis der logarithmischen OptimalitÃ¤t:}
         Die Graphmodellierung erreicht die informationstheoretische
-        Untergrenze $\mathcal{O}(\log n)$ für Suche, Kommunikation
+        Untergrenze $\mathcal{O}(\log n)$ fÃ¼r Suche, Kommunikation
         und Beschreibung (\cref{thm:log,thm:dc,thm:superior}).
 
-  \item \textbf{Universalitätsbeweis:}
-        Jede endliche binäre Relationsstruktur ist isomorph zu
+  \item \textbf{UniversalitÃ¤tsbeweis:}
+        Jede endliche binÃ¤re Relationsstruktur ist isomorph zu
         einem Graphen (\cref{thm:universal}).  Damit ist die
         Graphmodellierung verlustfrei universell.
 
-  \item \textbf{Interdisziplinäre Verifikation:}
+  \item \textbf{InterdisziplinÃ¤re Verifikation:}
         In sechs Disziplinen (Mathematik, Genetik, Neuro\-wissen-
         schaft, Regelungstechnik, Finanzwesen) wurde gezeigt,
-        dass Graphen die natürliche und optimale Modellierungsform
-        für die jeweiligen Strukturen sind.
+        dass Graphen die natÃ¼rliche und optimale Modellierungsform
+        fÃ¼r die jeweiligen Strukturen sind.
 \end{enumerate}
 
 \subsection{Offene Fragen}
 
 \begin{enumerate}
-  \item \textbf{Hypergraphen und höhere Ordnungen:}
-        Können Hyperkanten (Relationen $\geq 3$-stellig) in das
+  \item \textbf{Hypergraphen und hÃ¶here Ordnungen:}
+        KÃ¶nnen Hyperkanten (Relationen $\geq 3$-stellig) in das
         logarithmische Optimierungsrahmenwerk integriert werden?
         Erste Ergebnisse deuten auf
-        $\mathcal{O}(\log^k n)$ für $k$-uniforme Hypergraphen hin.
+        $\mathcal{O}(\log^k n)$ fÃ¼r $k$-uniforme Hypergraphen hin.
 
   \item \textbf{Dynamische Graphen:}
-        In Echtzeit veränderliche Graphen (soziale Netze, Handels-
+        In Echtzeit verÃ¤nderliche Graphen (soziale Netze, Handels-
         netzwerke) erfordern dynamische OSA-Varianten.  Ziel:
         amortisiert $\mathcal{O}(\log^2 n)$ pro Update.
 
@@ -2280,10 +2280,10 @@ Diese Arbeit hat gezeigt:
         Laplace-Matrix entspricht dann dem Energiespektrum
         des Quantengraphen.
 
-  \item \textbf{Kausalität:}
+  \item \textbf{KausalitÃ¤t:}
         Kausale Inferenz (Pearl'sche DAGs) verbindet Graphen-
         struktur mit statistischer Identifizierbarkeit.  Eine
-        vollständige logarithmische Theorie der kausalen
+        vollstÃ¤ndige logarithmische Theorie der kausalen
         Entdeckungsalgorithmen steht noch aus.
 \end{enumerate}
 
@@ -2293,13 +2293,13 @@ Diese Arbeit hat gezeigt:
 %============================================================
 
 Die vorliegende Arbeit hat den Beweis erbracht, dass Graphen die
-mathematisch optimale Modellierungsform für alle endlichen
-Relationsstrukturen sind.  Dieser Befund öffnet eine breite
+mathematisch optimale Modellierungsform fÃ¼r alle endlichen
+Relationsstrukturen sind.  Dieser Befund Ã¶ffnet eine breite
 Schneise an Forschungsfragen, die in den kommenden Jahren und
-Jahrzehnten bearbeitet werden müssen.  Die folgenden Abschnitte
-skizzieren diese Richtungen ausführlich – von unmittelbar
+Jahrzehnten bearbeitet werden mÃ¼ssen.  Die folgenden Abschnitte
+skizzieren diese Richtungen ausfÃ¼hrlich â€“ von unmittelbar
 anstehenden algorithmischen Erweiterungen bis hin zu tiefgreifenden
-epistemologischen Fragen über die Natur wissenschaftlicher
+epistemologischen Fragen Ã¼ber die Natur wissenschaftlicher
 Modellierung selbst.
 
 %------------------------------------------------------------
@@ -2309,50 +2309,50 @@ Modellierung selbst.
 
 \subsubsection{Logarithmische Hierarchien in Hypergraphen}
 
-Die vorliegende Arbeit beschränkt sich auf binäre Relationen
+Die vorliegende Arbeit beschrÃ¤nkt sich auf binÃ¤re Relationen
 (Kanten zwischen je zwei Knoten).  Viele reale Systeme erzeugen
-jedoch Beziehungen höherer Stelligkeit: chemische Reaktionen
-zwischen drei oder mehr Molekülen, soziale Gruppen-Interaktionen,
+jedoch Beziehungen hÃ¶herer Stelligkeit: chemische Reaktionen
+zwischen drei oder mehr MolekÃ¼len, soziale Gruppen-Interaktionen,
 biologische Komplexe aus mehreren Proteinen.
 
 Ein \emph{$k$-uniformer Hypergraph} $H = (V, \mathcal{E})$ besitzt
 Hyperkanten $e \in \mathcal{E}$ mit $|e| = k$.  Die zentrale
 offene Frage lautet:
 
-\textbf{Forschungsfrage H1:} Gilt für $k$-uniforme Hypergraphen
+\textbf{Forschungsfrage H1:} Gilt fÃ¼r $k$-uniforme Hypergraphen
 die logarithmische Optimierungsschranke
 $T_{\text{opt}}(n) = \mathcal{O}(\log^k n)$?
 Und existiert ein Hypergraph-OSA, der diese Schranke erreicht?
 
-Erste Ansätze existieren in der Tensorzerlegung~\cite{Kolda2009}:
+Erste AnsÃ¤tze existieren in der Tensorzerlegung~\cite{Kolda2009}:
 Ein $k$-uniformer Hypergraph kann als Tensor $\mathcal{A} \in
 \mathbb{R}^{n \times \cdots \times n}$ ($k$-fach) dargestellt werden.
 Die Spektraltheorie solcher Tensoren~\cite{Qi2005} verallgemeinert
-den Fiedler-Wert und könnte die Grundlage eines Hypergraph-OSA
+den Fiedler-Wert und kÃ¶nnte die Grundlage eines Hypergraph-OSA
 bilden.  Die erwartete Laufzeit liegt bei
-$\mathcal{O}(n^{k-1} \log^k n)$, was für $k=2$ genau den OSA
+$\mathcal{O}(n^{k-1} \log^k n)$, was fÃ¼r $k=2$ genau den OSA
 reproduziert.
 
 Die praktische Bedeutung ist enorm: In der Chemoinformatik~\cite{Bertz1981}
-sind molekulare Reaktionsgraphen inhärent hypergraphis; in der
+sind molekulare Reaktionsgraphen inhÃ¤rent hypergraphis; in der
 Neurobiologie bilden synaptische Ensembles keine Zweier-,
 sondern Gruppenverbindungen~\cite{Reimann2017}.
 
 \subsubsection{Kontinuierliche Graphen und Graphon-Theorie}
 
-Für sehr große oder unendliche Graphen ($n \to \infty$)
-wird die diskrete Graphstruktur durch \emph{Graphons} ersetzt –
+FÃ¼r sehr groÃŸe oder unendliche Graphen ($n \to \infty$)
+wird die diskrete Graphstruktur durch \emph{Graphons} ersetzt â€“
 messbare Funktionen $W: [0,1]^2 \to [0,1]$, die den
 Kontinuumslimes bilden~\cite{Lovasz2012}.
 
-Die logarithmische Struktur überträgt sich: Die Eigenwerteverteilung
+Die logarithmische Struktur Ã¼bertrÃ¤gt sich: Die Eigenwerteverteilung
 des Graphon-Operators entspricht dem Limit des diskreten
 Laplace-Spektrums.  Der Fiedler-Wert konvergiert zu einer
-spektralen Lücke im kontinuierlichen Operator.  Offene
+spektralen LÃ¼cke im kontinuierlichen Operator.  Offene
 Forschungsfragen sind:
 \begin{itemize}
   \item Wie konvergiert der OSA auf Graphon-Approximationen?
-  \item Lässt sich der universelle Optimalitätssatz (Satz~\ref{thm:haupt})
+  \item LÃ¤sst sich der universelle OptimalitÃ¤tssatz (Satz~\ref{thm:haupt})
         auf Graphons verallgemeinern?
   \item Welche topologischen Invarianten bleiben im
         Graphon-Limes erhalten?
@@ -2362,21 +2362,21 @@ Forschungsfragen sind:
 
 Die Verbindung zwischen Graphentheorie und algebraischer Topologie
 ist durch die \emph{Persistente Homologie}~\cite{Edelsbrunner2002}
-besonders fruchtbar geworden.  Für eine Folge von Graphen
+besonders fruchtbar geworden.  FÃ¼r eine Folge von Graphen
 $G_0 \subseteq G_1 \subseteq \cdots \subseteq G_m$ (erzeugt durch
 schrittweise Hinzunahme von Kanten mit steigendem Gewicht) entsteht
 ein \emph{Persistenz-Barcode}, der topologische Merkmale (verbundene
-Komponenten, Zyklen, Löcher) über alle Schwellwerte hinweg verfolgt.
+Komponenten, Zyklen, LÃ¶cher) Ã¼ber alle Schwellwerte hinweg verfolgt.
 
-Die Länge einer Persistenz-Bar ist logarithmisch in der Anzahl
+Die LÃ¤nge einer Persistenz-Bar ist logarithmisch in der Anzahl
 kritischer Ereignisse, was die Verbindung zur logarithmischen
-Graphmodellierung herstellt.  Für die Biologie verspricht dies:
+Graphmodellierung herstellt.  FÃ¼r die Biologie verspricht dies:
 \begin{enumerate}
   \item Robuste Charakterisierung von Proteinstruktur-Netzwerken
-        gegenüber Messrauschen,
+        gegenÃ¼ber Messrauschen,
   \item Identifikation essentieller Ringstrukturen in
         metabolischen Pfaden~\cite{Wagner2001},
-  \item Frühzeitige Erkennung topologischer Veränderungen im
+  \item FrÃ¼hzeitige Erkennung topologischer VerÃ¤nderungen im
         Konnektom bei neurodegenerativen Erkrankungen.
 \end{enumerate}
 
@@ -2390,17 +2390,17 @@ Graphmodellierung herstellt.  Für die Biologie verspricht dies:
 Der klassische Random Walk auf einem Graphen braucht im
 schlechtesten Fall $\mathcal{O}(n)$ Schritte, um alle Knoten
 zu besuchen.  Der \emph{Quantenwalk}~\cite{Aharonov2001}
-überlagert alle Pfade kohärent und erreicht quadratische
-Beschleunigung: $\mathcal{O}(\sqrt{n})$ für unstrukturierte
+Ã¼berlagert alle Pfade kohÃ¤rent und erreicht quadratische
+Beschleunigung: $\mathcal{O}(\sqrt{n})$ fÃ¼r unstrukturierte
 Suche.  Auf gut strukturierten Graphen (Expander, Gitter)
 verbessert sich dies weiter auf $\mathcal{O}(\log n)$
-– exakt die logarithmische Schranke dieser Arbeit, diesmal
+â€“ exakt die logarithmische Schranke dieser Arbeit, diesmal
 aber im Quantenregime.
 
 Der \emph{Quantum Graph Neural Network (QGNN)}-Ansatz~\cite{Verdon2019}
-kodiert Graphzustände als Quantenschaltkreise.  Die
+kodiert GraphzustÃ¤nde als Quantenschaltkreise.  Die
 Tiefe des Quantenschaltkreises entspricht dem Durchmesser
-des Graphen – logarithmisch für Small-World-Graphen.
+des Graphen â€“ logarithmisch fÃ¼r Small-World-Graphen.
 Diese Verbindung zwischen Graphstruktur und Quantenverarbeitungseffizienz
 ist ein aktives Forschungsgebiet mit enormem Potenzial.
 
@@ -2410,68 +2410,68 @@ Quantenkommunikationsnetzwerke (Quanten-Internet) lassen sich
 als gewichtete Graphen modellieren, wobei Kantengewichte die
 Entanglement-Fidelity zwischen Quantenknoten kodieren~\cite{Kimble2008}.
 Das Routing-Problem (finde den Pfad maximaler Fidelity zwischen
-Sender und Empfänger) ist ein klassisches kürzeste-Pfad-Problem
+Sender und EmpfÃ¤nger) ist ein klassisches kÃ¼rzeste-Pfad-Problem
 auf diesem gewichteten Graphen.
 
-Die Besonderheit: Quantenkanten können \emph{gleichzeitig}
-mehrere Zustände kodieren (Superposition), was den effektiven
+Die Besonderheit: Quantenkanten kÃ¶nnen \emph{gleichzeitig}
+mehrere ZustÃ¤nde kodieren (Superposition), was den effektiven
 Graphdurchmesser auf $\mathcal{O}(\log n)$ reduziert.
-Ein vollständiger Quanteninternet-Graph über $n$ Knoten könnte
+Ein vollstÃ¤ndiger Quanteninternet-Graph Ã¼ber $n$ Knoten kÃ¶nnte
 so mit nur $\mathcal{O}(n \log n)$ physikalischen Verbindungen
-Vollkonnektivität simulieren – logarithmische Effizienz durch
-Quantenüberlagerung.
+VollkonnektivitÃ¤t simulieren â€“ logarithmische Effizienz durch
+QuantenÃ¼berlagerung.
 
 \subsubsection{Variational Quantum Eigensolver auf Graphen}
 
 Der Variational Quantum Eigensolver (VQE)~\cite{Peruzzo2014}
-löst Optimierungsprobleme auf Molekülgraphen.  Der
-Hamiltonoperator des Moleküls wird als Matrix über dem
+lÃ¶st Optimierungsprobleme auf MolekÃ¼lgraphen.  Der
+Hamiltonoperator des MolekÃ¼ls wird als Matrix Ã¼ber dem
 Graphen der Atomorbitale geschrieben; VQE findet den
 Grundzustand durch Optimierung auf einer Quantenschaltkreis-
 Parametrisierung, deren Struktur selbst ein Graph ist.
-Die Konvergenz ist logarithmisch in der Energiepräzision –
-ein weiterer Beleg für die universelle logarithmische Natur
+Die Konvergenz ist logarithmisch in der EnergieprÃ¤zision â€“
+ein weiterer Beleg fÃ¼r die universelle logarithmische Natur
 graphenbasierter Optimierung.
 
 %------------------------------------------------------------
-\subsection{Künstliche Intelligenz und Graphen}
+\subsection{KÃ¼nstliche Intelligenz und Graphen}
 \label{sub:ki}
 %------------------------------------------------------------
 
 \subsubsection{Graph Neural Networks: Theorie und Grenzen}
 
 Graph Neural Networks (GNNs)~\cite{Kipf2017, Velickovic2018}
-haben in der letzten Dekade revolutionäre Ergebnisse in
-Moleküldesign, Wissensrepräsentation und kombinatorischer
+haben in der letzten Dekade revolutionÃ¤re Ergebnisse in
+MolekÃ¼ldesign, WissensreprÃ¤sentation und kombinatorischer
 Optimierung erzielt.  Das Grundprinzip folgt direkt dem
 Divide-and-Conquer-Prinzip:  Jeder Knoten aggregiert
 Information von seinen Nachbarn (lokale Halbierung),
-schichtet dies über $L$ Ebenen (logarithmische Tiefe)
+schichtet dies Ã¼ber $L$ Ebenen (logarithmische Tiefe)
 und bildet so eine globale Darstellung.
 
 Theoretisch wurde gezeigt~\cite{Xu2019}, dass die
-Ausdrucksstärke von GNNs durch den
+AusdrucksstÃ¤rke von GNNs durch den
 Weisfeiler-Leman-Graphisomorphismustest begrenzt ist.
-Offene Frage: Wie können GNNs diese Grenze durch
-höherwertige Nachbarschaftsaggregation (analog zu
-Hyperkanten) überwinden, ohne die logarithmische
+Offene Frage: Wie kÃ¶nnen GNNs diese Grenze durch
+hÃ¶herwertige Nachbarschaftsaggregation (analog zu
+Hyperkanten) Ã¼berwinden, ohne die logarithmische
 Tiefeneffizienz zu verlieren?
 
-\subsubsection{Transformer als vollständige Graphen}
+\subsubsection{Transformer als vollstÃ¤ndige Graphen}
 
-Transformer-Architekturen~\cite{Vaswani2017} – die Grundlage
-aller großen Sprachmodelle – sind informell vollständige
+Transformer-Architekturen~\cite{Vaswani2017} â€“ die Grundlage
+aller groÃŸen Sprachmodelle â€“ sind informell vollstÃ¤ndige
 gewichtete Graphen: jedes Token (Knoten) ist mit jedem anderen
 durch einen Aufmerksamkeitsmechanismus (Kante mit Gewicht =
 Attention-Score) verbunden.  Die Softmax-Normalisierung
-erzeugt ein Wahrscheinlichkeitsmaß über alle Kanten.
+erzeugt ein WahrscheinlichkeitsmaÃŸ Ã¼ber alle Kanten.
 
 Die Tiefe des Transformers ($L$ Schichten) entspricht der
 logarithmischen Pfadtiefe: mit $L = \mathcal{O}(\log n)$
 Schichten kann ein Transformer jede boolesche Schaltkreis-
 berechnung der Tiefe $\log n$ simulieren~\cite{Perez2021}.
-Dies erklärt, warum Transformer mit $\sim 32{-}96$ Schichten
-so mächtig sind: sie realisieren bis zu $2^{96}$
+Dies erklÃ¤rt, warum Transformer mit $\sim 32{-}96$ Schichten
+so mÃ¤chtig sind: sie realisieren bis zu $2^{96}$
 kompositionelle Konzepte.
 
 \subsubsection{Kausal-AI und Interventionsgraphen}
@@ -2480,7 +2480,7 @@ Pearl's \emph{Do-Calculus}~\cite{Pearl2009} modelliert
 kausale Interventionen ($do(X=x)$) als Graph-Chirurgie:
 Kanten zum intervenierten Knoten werden entfernt.  Die
 kausale Identifizierbarkeit einer Frageststellung ist
-äquivalent zur graphentheoretischen Bedingung
+Ã¤quivalent zur graphentheoretischen Bedingung
 \emph{d-Separation} im kausalen DAG~\cite{Verma1988}.
 
 Die Forschungsrichtung \emph{Causal Representation Learning}~\cite{Scholkopf2021}
@@ -2493,26 +2493,26 @@ $\mathcal{O}(\log n)$ amortisierten Kanten-Modifikationen pro Schritt.
 \subsubsection{Reinforcement Learning auf Graphen}
 
 Viele Reinforcement-Learning-Probleme (Robotik, Spieletheorie,
-Ressourcenzuweisung) besitzen natürliche Graphstruktur:
-Zustände sind Knoten, Aktionen sind Kanten,
+Ressourcenzuweisung) besitzen natÃ¼rliche Graphstruktur:
+ZustÃ¤nde sind Knoten, Aktionen sind Kanten,
 Bellman-Gleichungen definieren eine rekursive Wertfunktion
-über den Graphen.  Der Q-Learning-Algorithmus~\cite{Watkins1992}
+Ã¼ber den Graphen.  Der Q-Learning-Algorithmus~\cite{Watkins1992}
 konvergiert in $\mathcal{O}(|V| \cdot |E| \cdot \log(1/\epsilon))$
-Schritten – logarithmisch in der gewünschten Genauigkeit.
+Schritten â€“ logarithmisch in der gewÃ¼nschten Genauigkeit.
 Graph-basierte Policy-Darstellungen versprechen eine weitere
 logarithmische Beschleunigung durch strukturelle Ausnutzung.
 
 %------------------------------------------------------------
-\subsection{Biowissenschaften: Vom Molekül zum Ökosystem}
+\subsection{Biowissenschaften: Vom MolekÃ¼l zum Ã–kosystem}
 \label{sub:bio}
 %------------------------------------------------------------
 
 \subsubsection{Single-Cell-Genomik als Graphproblem}
 
-Die Single-Cell-RNA-Sequenzierung (scRNA-seq) erzeugt für
+Die Single-Cell-RNA-Sequenzierung (scRNA-seq) erzeugt fÃ¼r
 jeden der $10^4{-}10^6$ individualisierten Zellen einen
 Genexpressionsprofil-Vektor in $\sim 20.000$-dimensionalem
-Raum.  Die Zell-zu-Zell-Ähnlichkeit wird als $k$-NN-Graph
+Raum.  Die Zell-zu-Zell-Ã„hnlichkeit wird als $k$-NN-Graph
 modelliert~\cite{Wolf2018}, auf dem Clusteralgorithmen
 (Louvain, Leiden) Zelltypen identifizieren.
 
@@ -2522,56 +2522,56 @@ Die logarithmische Effizienz tritt mehrfach auf:
         intern einen approximativen $k$-NN-Graphen in
         $\mathcal{O}(n \log n)$.
   \item Trajektorienanalyse (Pseudozeit) entspricht dem
-        Problem des kürzesten Pfads im Zell-Graphen.
+        Problem des kÃ¼rzesten Pfads im Zell-Graphen.
   \item Regulon-Erkennung (SCENIC~\cite{Aibar2017}) sucht
-        dichte Subgraphen im Kopräsenz-Graphen von
+        dichte Subgraphen im KoprÃ¤senz-Graphen von
         Transkriptionsfaktoren und Zielgenen.
 \end{enumerate}
 
-\subsubsection{Ökologische Nahrungsnetze und Resilienz}
+\subsubsection{Ã–kologische Nahrungsnetze und Resilienz}
 
-Ein ökologisches \emph{Nahrungsnetz} ist ein gewichteter
-Digraph $G_{\text{Eco}} = (V_{\text{Art}}, E_{\text{Fraß}}, w_{\text{Biomasse}})$.
-Die topologische Robustheit dieses Graphen gegenüber
-Artensterben (Knotenausfall) bestimmt die ökosystemische
+Ein Ã¶kologisches \emph{Nahrungsnetz} ist ein gewichteter
+Digraph $G_{\text{Eco}} = (V_{\text{Art}}, E_{\text{FraÃŸ}}, w_{\text{Biomasse}})$.
+Die topologische Robustheit dieses Graphen gegenÃ¼ber
+Artensterben (Knotenausfall) bestimmt die Ã¶kosystemische
 Resilienz~\cite{Dunne2002}.
 
 Forschung hat gezeigt, dass reale Nahrungsnetze eine
 Mischung aus einer Baum-artigen Hierarchie (trophische
 Ebenen $= \log$-Tiefe) und zyklischen Omnivorie-Kanten aufweisen.
-Der Verlust von Schlüsselarten (Keystone Species = Graph-Hubs)
-erhöht den effektiven Graphdurchmesser dramatisch –
+Der Verlust von SchlÃ¼sselarten (Keystone Species = Graph-Hubs)
+erhÃ¶ht den effektiven Graphdurchmesser dramatisch â€“
 analog zum Alzheimer-Effekt aus \Cref{sec:neuro}.
 Der OSA kann Keystone Species als subgraph-maximierende
-Knoten identifizieren, bevor ihr Verlust das Ökosystem destabilisiert.
+Knoten identifizieren, bevor ihr Verlust das Ã–kosystem destabilisiert.
 
 \subsubsection{Epigenetik: Chromatinnetzwerke}
 
 Das dreidimensionale Genom ist ein Graph: DNA-Schleifen und
-Chromatindomänen (TADs) bilden Knoten, räumliche Kontakte
+ChromatindomÃ¤nen (TADs) bilden Knoten, rÃ¤umliche Kontakte
 (gemessen durch Hi-C-Experimente~\cite{Lieberman2009}) bilden
 Kanten.  Die Graphstruktur bestimmt, welche Gene miteinander
-in regulatorischen Kontakt treten – und damit, welche Gene
+in regulatorischen Kontakt treten â€“ und damit, welche Gene
 gleichzeitig aktiviert oder stillgelegt werden.
 
-Das Hi-C-Kontaktnetzwerk zeigt eine ausgeprägte
+Das Hi-C-Kontaktnetzwerk zeigt eine ausgeprÃ¤gte
 Block-Diagonal-Struktur (TADs), die einer hierarchischen
 Graphpartitionierung entspricht: Die Bisektionsmethode des OSA
-ist formal äquivalent zu TAD-Identifikationsalgorithmen.
-Tiefe berechnet sich mit Tiefe $= \log_2(\text{Genomlänge}/\text{TAD-Größe}) \approx
-\log_2(3 \times 10^9 / 10^5) \approx 15$ – logarithmisch, wie
+ist formal Ã¤quivalent zu TAD-Identifikationsalgorithmen.
+Tiefe berechnet sich mit Tiefe $= \log_2(\text{GenomlÃ¤nge}/\text{TAD-GrÃ¶ÃŸe}) \approx
+\log_2(3 \times 10^9 / 10^5) \approx 15$ â€“ logarithmisch, wie
 erwartet.
 
 \subsubsection{Strukturbiologie: Protein-Faltung als Graphproblem}
 
-AlphaFold2~\cite{Jumper2021} – der Durchbruch in der
-Proteinfaltungsvorhersage – modelliert das Protein als
-\emph{Residue Contact Graph}: Aminosäuren sind Knoten,
-räumliche Nachbarschaft ($< 8\,$Å) sind Kanten.
+AlphaFold2~\cite{Jumper2021} â€“ der Durchbruch in der
+Proteinfaltungsvorhersage â€“ modelliert das Protein als
+\emph{Residue Contact Graph}: AminosÃ¤uren sind Knoten,
+rÃ¤umliche Nachbarschaft ($< 8\,$Ã…) sind Kanten.
 Der Transformer-Kern von AlphaFold2 propagiert Information
-über diesen Graphen in logarithmisch vielen Schichten.
+Ã¼ber diesen Graphen in logarithmisch vielen Schichten.
 Die spektrale Analyse des Kontaktgraphen~\cite{Vendruscolo2002}
-erlaubt eine Vorhersage der Faltungskernresiduen –
+erlaubt eine Vorhersage der Faltungskernresiduen â€“
 diejenigen Knoten, die den Fiedler-Vektor dominieren.
 
 %------------------------------------------------------------
@@ -2581,32 +2581,32 @@ diejenigen Knoten, die den Fiedler-Vektor dominieren.
 
 \subsubsection{Phasengraphen in der statistischen Mechanik}
 
-Das \emph{Ising-Modell} – das Standardmodell für
-Phasenübergänge – ist auf einem Gittergraphen definiert:
+Das \emph{Ising-Modell} â€“ das Standardmodell fÃ¼r
+PhasenÃ¼bergÃ¤nge â€“ ist auf einem Gittergraphen definiert:
 Spins sind Knoten, Wechselwirkungen sind Kanten.
-Der Phasenübergang entspricht einem \emph{Perkolationsübergang}
-im zugehörigen Zufallsgraphen~\cite{Erdos1960}.  Die
+Der PhasenÃ¼bergang entspricht einem \emph{PerkolationsÃ¼bergang}
+im zugehÃ¶rigen Zufallsgraphen~\cite{Erdos1960}.  Die
 kritische Perkolationsschwelle ist direkt mit dem
-Fiedler-Wert $\lambda_2$ korreliert: Der Übergang
+Fiedler-Wert $\lambda_2$ korreliert: Der Ãœbergang
 geschieht genau dann, wenn $\lambda_2 \to 0$.
 
-Dies eröffnet die Perspektive, Phasenübergänge universell
-als spektrale Graph-Ereignisse zu beschreiben – ein Rahmenwerk,
-das von der Physik über die Neurologie (epileptische
-Anfälle = Synchronisationsübergang~\cite{Strogatz2001})
-bis zur Ökologie (Kollaps-Tipping-Points) reicht.
+Dies erÃ¶ffnet die Perspektive, PhasenÃ¼bergÃ¤nge universell
+als spektrale Graph-Ereignisse zu beschreiben â€“ ein Rahmenwerk,
+das von der Physik Ã¼ber die Neurologie (epileptische
+AnfÃ¤lle = SynchronisationsÃ¼bergang~\cite{Strogatz2001})
+bis zur Ã–kologie (Kollaps-Tipping-Points) reicht.
 
 \subsubsection{Klimanetzwerke und Tipping Elements}
 
 Das Erdsystem wird als \emph{Klimanetzwerk} modelliert~\cite{Donges2009}:
 Klimastationen (oder Gitterzellen) sind Knoten, statistische
-Telekonnektionen (verzögerte Korrelationen in Zeitreihen)
-sind Kanten.  El-Niño-Ereignisse erscheinen als
+Telekonnektionen (verzÃ¶gerte Korrelationen in Zeitreihen)
+sind Kanten.  El-NiÃ±o-Ereignisse erscheinen als
 rapide Umstrukturierungen der Hub-Knoten im Pazifik.
 
 Der OSA erlaubt die Identifikation von \emph{Tipping-Element-Netzwerken}:
 Teilgraphen, deren internes Feedback (hohes $\lambda_2$,
-hohe Dichte) sie zu stabilen Lock-in-Zuständen prädisponiert.
+hohe Dichte) sie zu stabilen Lock-in-ZustÃ¤nden prÃ¤disponiert.
 Kipppunkte des Klimasystems (Arktiseis-Schmelze,
 Amazonas-Dieback, AMOC-Kollaps) sind graphentheoretisch
 als Bifurkationen im Subgraph-Spektrum beschreibbar.
@@ -2614,14 +2614,14 @@ als Bifurkationen im Subgraph-Spektrum beschreibbar.
 \subsubsection{Topologische Quantenfeldtheorie und Spin-Netzwerke}
 
 In der Loop-Quantengravitation~\cite{Rovelli2004} wird die
-Raumzeit selbst als \emph{Spin-Netzwerk} modelliert –
+Raumzeit selbst als \emph{Spin-Netzwerk} modelliert â€“
 ein kombinatorischer Graph, dessen Knoten Raum-Volumen-Quanten
-und dessen Kanten Flächen-Quanten tragen.  Dies ist die
-radikalste mögliche Anwendung der Graphmodellierung:
+und dessen Kanten FlÃ¤chen-Quanten tragen.  Dies ist die
+radikalste mÃ¶gliche Anwendung der Graphmodellierung:
 nicht nur reale Objekte in der Raumzeit werden als Graphen
 dargestellt, sondern die Raumzeit selbst ist ein Graph.
 Die Planck-Skala ($\sim 10^{-35}\,$m) entspricht der
-atomaren Grapheinheit – $G_{\text{atom}}$ als Fundament
+atomaren Grapheinheit â€“ $G_{\text{atom}}$ als Fundament
 des Universums.
 
 %------------------------------------------------------------
@@ -2633,33 +2633,33 @@ des Universums.
 
 Das \emph{semantische Web}~\cite{Berners-Lee2001} organisiert
 das gesamte Weltwissen als gewichteten Hypergraph (RDF-Tripel:
-Subjekt–Prädikat–Objekt).  Google's Knowledge Graph umfasst
+Subjektâ€“PrÃ¤dikatâ€“Objekt).  Google's Knowledge Graph umfasst
 $> 500$ Milliarden Fakten als Graphkanten.  Sprachmodelle wie
 GPT-4 oder Gemini greifen implizit auf derartige Graphstrukturen
-zurück – die Aufmerksamkeitsmatrix ist ein vollständiger,
-dynamisch gewichteter Graph über alle Token-Knoten.
+zurÃ¼ck â€“ die Aufmerksamkeitsmatrix ist ein vollstÃ¤ndiger,
+dynamisch gewichteter Graph Ã¼ber alle Token-Knoten.
 
 Die Sucheffizienz in Wissensgrafen (Graphen-RAG~\cite{Edge2024})
-profitiert direkt von der logarithmischen Pfadlänge:
-Selbst in einem Wissengraphen mit $10^{12}$ Knoten beträgt
-die mittlere Pfadlänge zwischen zwei Konzepten nur
+profitiert direkt von der logarithmischen PfadlÃ¤nge:
+Selbst in einem Wissengraphen mit $10^{12}$ Knoten betrÃ¤gt
+die mittlere PfadlÃ¤nge zwischen zwei Konzepten nur
 $\sim \log_{10}(10^{12}) = 12$ Schritte.
 
-\subsubsection{Rechtliche und ethische Implikationen großer Graphen}
+\subsubsection{Rechtliche und ethische Implikationen groÃŸer Graphen}
 
 Mit zunehmender Durchdringung gesellschaftlicher Entscheidungs\-
-prozesse durch graphenbasierte Algorithmen (Kreditwürdigkeits-
-graphen, soziale Empfehlungsgraphen, gerichtliche Präzedenzfall-
+prozesse durch graphenbasierte Algorithmen (KreditwÃ¼rdigkeits-
+graphen, soziale Empfehlungsgraphen, gerichtliche PrÃ¤zedenzfall-
 netzwerke) entstehen neue rechtliche und ethische Fragen:
 \begin{itemize}
-  \item \textbf{Erklärbarkeit:} Logarithmische Baumstrukturen
+  \item \textbf{ErklÃ¤rbarkeit:} Logarithmische Baumstrukturen
         erlauben Entscheidungspfade der Tiefe $\mathcal{O}(\log n)$,
-        die als Entscheidungsbaum vollständig erklärbar sind –
+        die als Entscheidungsbaum vollstÃ¤ndig erklÃ¤rbar sind â€“
         im Gegensatz zu flachen neuronalen Netzen.
   \item \textbf{Fairness:} Knotengrad-Ungleichheit in Empfehlungs-
         graphen erzeugt systematische Benachteiligung von
         Niedrig-Grad-Knoten.  Graphentheoretische Fairness-
-        Metriken~\cite{Saxena2022} müssen entwickelt werden.
+        Metriken~\cite{Saxena2022} mÃ¼ssen entwickelt werden.
   \item \textbf{Datenschutz:} Linkage-Angriffe auf anonymisierte
         Graphen nutzen die logarithmisch kleine Diameter-
         eigenschaft aus.  Differential Privacy auf Graphen~\cite{Hay2009}
@@ -2668,88 +2668,88 @@ netzwerke) entstehen neue rechtliche und ethische Fragen:
 
 \subsubsection{Internet der Dinge und Edge Computing}
 
-IoT-Netzwerke aus Milliarden vernetzter Geräte bilden
-dynamische Graphen mit sich ständig ändernder Topologie.
+IoT-Netzwerke aus Milliarden vernetzter GerÃ¤te bilden
+dynamische Graphen mit sich stÃ¤ndig Ã¤ndernder Topologie.
 Edge-Computing-Strategien~\cite{Shi2016} partitionieren
 diesen Graphen rekursiv (analog zum OSA), um Latenz zu
 minimieren und Bandbreite zu sparen.  Das optimale
-Partitionierungsproblem – welche Knoten lokal verarbeiten,
-welche auslagern – ist formal identisch mit dem
+Partitionierungsproblem â€“ welche Knoten lokal verarbeiten,
+welche auslagern â€“ ist formal identisch mit dem
 Minimalen-Schnitt-Problem auf dem IoT-Graphen.
-Der Fiedler-Vektor liefert die optimale Lösung in
+Der Fiedler-Vektor liefert die optimale LÃ¶sung in
 $\mathcal{O}(n \log n)$.
 
 %------------------------------------------------------------
-\subsection{Transdisziplinäre Perspektiven und Metamodellierung}
+\subsection{TransdisziplinÃ¤re Perspektiven und Metamodellierung}
 \label{sub:meta}
 %------------------------------------------------------------
 
 \subsubsection{Graphen als Wissenschaftssprache}
 
 Diese Arbeit hat gezeigt, dass Graphen nicht nur in
-einzelnen Disziplinen nützlich sind, sondern eine universelle
-\emph{Wissenschaftssprache} bilden.  Die nächste Forschungs\-
+einzelnen Disziplinen nÃ¼tzlich sind, sondern eine universelle
+\emph{Wissenschaftssprache} bilden.  Die nÃ¤chste Forschungs\-
 generation steht vor der Aufgabe, eine formale
-\emph{Graphengrammatik der Wissenschaften} zu entwickeln –
+\emph{Graphengrammatik der Wissenschaften} zu entwickeln â€“
 eine Theorie, die beschreibt, wie Modelle verschiedener
 Disziplinen durch Graph-Morphismen~\cite{Ehrig2006}
-ineinander übersetzbar sind.
+ineinander Ã¼bersetzbar sind.
 
 Ein erster Schritt ist die \emph{kategorientheoretische}
 Formulierung: Graphen sind Objekte in der Kategorie
 \textbf{Graph}, Morphismen sind strukturerhaltende
 Abbildungen.  Funktoren zwischen Kategorien erlauben
-den formalen Transfer von Resultaten zwischen Disziplinen –
+den formalen Transfer von Resultaten zwischen Disziplinen â€“
 z.B. von der algebraischen Topologie (Spektralsequenzen)
 in die Biologie (Entwicklungshierarchien).
 
-\subsubsection{Komplexitätstheorie und untere Schranken}
+\subsubsection{KomplexitÃ¤tstheorie und untere Schranken}
 
 Eine fundamentale offene Frage ist, ob die in dieser Arbeit
 bewiesene logarithmische Schranke $\mathcal{O}(\log n)$
 wirklich optimal ist oder ob sub-logarithmische Verfahren
-für spezielle Graphklassen existieren.  Die theoretische
-Informatik kennt für bestimmte Suchprobleme
+fÃ¼r spezielle Graphklassen existieren.  Die theoretische
+Informatik kennt fÃ¼r bestimmte Suchprobleme
 $\Omega(\log n)$ als beweisbar optimale untere Schranke~\cite{Hromkovic2004}.
-Es bleibt zu klären:
+Es bleibt zu klÃ¤ren:
 \begin{enumerate}
-  \item Für welche Graphklassen ist $o(\log n)$ erreichbar?
-  \item Welche algebraischen Eigenschaften (Regularität,
-        Symmetrie, Expansionskonstante) ermöglichen
+  \item FÃ¼r welche Graphklassen ist $o(\log n)$ erreichbar?
+  \item Welche algebraischen Eigenschaften (RegularitÃ¤t,
+        Symmetrie, Expansionskonstante) ermÃ¶glichen
         sub-logarithmische Algorithmen?
   \item Gibt es einen allgemeinen Trade-off zwischen
-        Graphstruktur (Komplexität der Kanten) und
-        algorithmischer Tiefe (Komplexität des Algorithmus)?
+        Graphstruktur (KomplexitÃ¤t der Kanten) und
+        algorithmischer Tiefe (KomplexitÃ¤t des Algorithmus)?
 \end{enumerate}
 
-\subsubsection{Interdisziplinäre Bildung: Den Graphen ins Zentrum rücken}
+\subsubsection{InterdisziplinÃ¤re Bildung: Den Graphen ins Zentrum rÃ¼cken}
 
-Schließlich hat die vorliegende Arbeit eine pädagogische
+SchlieÃŸlich hat die vorliegende Arbeit eine pÃ¤dagogische
 Implikation: Graphentheorie sollte als \emph{Grundlagenfach}
 in allen naturwissenschaftlichen und ingenieurwissenschaftlichen
-Studiengängen verankert werden.  Wer Graphen verstehen kann –
-ihre Struktur, ihr Spektrum, ihre algorithmische Verarbeitung –
+StudiengÃ¤ngen verankert werden.  Wer Graphen verstehen kann â€“
+ihre Struktur, ihr Spektrum, ihre algorithmische Verarbeitung â€“
 ist mit einem universellen Werkzeug ausgestattet, das in
 jedem Fachgebiet sofort einsetzbar ist.
 
-Die logarithmische Sichtweise – das Problem zu halbieren,
-die Struktur zu teilen, und dann rekursiv zu verfeinern –
+Die logarithmische Sichtweise â€“ das Problem zu halbieren,
+die Struktur zu teilen, und dann rekursiv zu verfeinern â€“
 ist nicht nur ein Algorithmus.  Es ist eine Denkweise.
 Sie ist die Essenz des wissenschaftlichen Fortschritts:
-Ordnung durch Aufteilung, Verstehen durch Verknüpfung,
+Ordnung durch Aufteilung, Verstehen durch VerknÃ¼pfung,
 Erkenntnis durch Traversierung.
 
 \subsection{Schlusswort}
 
-Graphen sind nicht bloß ein nützliches Werkzeug.  Sie sind –
-wie diese Arbeit beweist – die \emph{notwendige} und
+Graphen sind nicht bloÃŸ ein nÃ¼tzliches Werkzeug.  Sie sind â€“
+wie diese Arbeit beweist â€“ die \emph{notwendige} und
 \emph{optimale} Sprache, in der endliche diskrete Strukturen
-beschrieben werden müssen, wenn man Effizienz, Vollständigkeit
+beschrieben werden mÃ¼ssen, wenn man Effizienz, VollstÃ¤ndigkeit
 und Robustheit zugleich maximieren will.  Die Elementareinheit
-zweier Knoten und einer Kante ist der Urquell dieser Stärke:
+zweier Knoten und einer Kante ist der Urquell dieser StÃ¤rke:
 Sie teilt das Problem, halbiert den Raum, erzeugt den
-Logarithmus – und wiederholt dies so lange, bis Ordnung aus
-Komplexität entsteht.
+Logarithmus â€“ und wiederholt dies so lange, bis Ordnung aus
+KomplexitÃ¤t entsteht.
 
 %============================================================
 % Literaturverzeichnis
@@ -2757,12 +2757,12 @@ Komplexität entsteht.
 \begin{thebibliography}{99}
 
 \bibitem{Barabasi1999}
-  Barabási, A.-L. \& Albert, R. (1999).
+  BarabÃ¡si, A.-L. \& Albert, R. (1999).
   \textit{Emergence of Scaling in Random Networks}.
-  Science, 286(5439), 509–512.
+  Science, 286(5439), 509â€“512.
 
 \bibitem{Bollobas1998}
-  Bollobás, B. (1998).
+  BollobÃ¡s, B. (1998).
   \textit{Modern Graph Theory}.
   Springer, New York.
 
@@ -2779,12 +2779,12 @@ Komplexität entsteht.
 \bibitem{Felleman1991}
   Felleman, D. J. \& Van Essen, D. C. (1991).
   Distributed Hierarchical Processing in the Primate Cerebral Cortex.
-  \textit{Cerebral Cortex}, 1(1), 1–47.
+  \textit{Cerebral Cortex}, 1(1), 1â€“47.
 
 \bibitem{Gardner2000}
   Gardner, T. S., Cantor, C. R., \& Collins, J. J. (2000).
   Construction of a genetic toggle switch in \textit{Escherichia coli}.
-  \textit{Nature}, 403, 339–342.
+  \textit{Nature}, 403, 339â€“342.
 
 \bibitem{Goldberg1984}
   Goldberg, A. V. (1984).
@@ -2794,7 +2794,7 @@ Komplexität entsteht.
 \bibitem{Mantegna1999}
   Mantegna, R. N. (1999).
   Hierarchical Structure in Financial Markets.
-  \textit{European Physical Journal B}, 11(1), 193–197.
+  \textit{European Physical Journal B}, 11(1), 193â€“197.
 
 \bibitem{Montufar2014}
   Montufar, G. F., Pascanu, R., Cho, K., \& Bengio, Y. (2014).
@@ -2804,22 +2804,22 @@ Komplexität entsteht.
 \bibitem{Newman2003}
   Newman, M. E. J. (2003).
   The Structure and Function of Complex Networks.
-  \textit{SIAM Review}, 45(2), 167–256.
+  \textit{SIAM Review}, 45(2), 167â€“256.
 
 \bibitem{Shannon1948}
   Shannon, C. E. (1948).
   A Mathematical Theory of Communication.
-  \textit{Bell System Technical Journal}, 27(3), 379–423.
+  \textit{Bell System Technical Journal}, 27(3), 379â€“423.
 
 \bibitem{Spielman1996}
   Spielman, D. A. \& Teng, S.-H. (1996).
   Spectral Partitioning Works: Planar Graphs and Finite Element Meshes.
-  \textit{Proceedings of FOCS 1996}, 96–105.
+  \textit{Proceedings of FOCS 1996}, 96â€“105.
 
 \bibitem{Watts1998}
   Watts, D. J. \& Strogatz, S. H. (1998).
   Collective Dynamics of `Small-World' Networks.
-  \textit{Nature}, 393, 440–442.
+  \textit{Nature}, 393, 440â€“442.
 
 \bibitem{West2001}
   West, D. B. (2001).
@@ -2841,33 +2841,33 @@ Komplexität entsteht.
 \bibitem{Epp2026}
   Epp, S. (2026).
   \textit{Der Subgraph Algorithmus}.
-  Verfügbar unter: \url{https://github.com/hjstephan86/science}.
+  VerfÃ¼gbar unter: \url{https://github.com/hjstephan86/science}.
 
 \bibitem{Aibar2017}
-  Aibar, S., González-Blas, C. B., Moerman, T., Huynh-Thu, V. A.,
-  Imrichová, H., Hulselmans, G., \ldots{} \& Aerts, S. (2017).
+  Aibar, S., GonzÃ¡lez-Blas, C. B., Moerman, T., Huynh-Thu, V. A.,
+  ImrichovÃ¡, H., Hulselmans, G., \ldots{} \& Aerts, S. (2017).
   SCENIC: single-cell regulatory network inference and clustering.
-  \textit{Nature Methods}, 14(11), 1083–1086.
+  \textit{Nature Methods}, 14(11), 1083â€“1086.
 
 \bibitem{Aharonov2001}
   Aharonov, D., Ambainis, A., Kempe, J., \& Vazirani, U. (2001).
   Quantum Walks on Graphs.
-  \textit{Proceedings of the 33rd Annual ACM STOC}, 50–59.
+  \textit{Proceedings of the 33rd Annual ACM STOC}, 50â€“59.
 
 \bibitem{Berners-Lee2001}
   Berners-Lee, T., Hendler, J., \& Lassila, O. (2001).
   The Semantic Web.
-  \textit{Scientific American}, 284(5), 34–43.
+  \textit{Scientific American}, 284(5), 34â€“43.
 
 \bibitem{Bertz1981}
   Bertz, S. H. (1981).
   The first general index of molecular complexity.
-  \textit{Journal of the American Chemical Society}, 103(12), 3599–3601.
+  \textit{Journal of the American Chemical Society}, 103(12), 3599â€“3601.
 
 \bibitem{Chickering2002}
   Chickering, D. M. (2002).
   Optimal Structure Identification with Greedy Search.
-  \textit{Journal of Machine Learning Research}, 3, 507–554.
+  \textit{Journal of Machine Learning Research}, 3, 507â€“554.
 
 \bibitem{Donges2009}
   Donges, J. F., Zou, Y., Marwan, N., \& Kurths, J. (2009).
@@ -2877,7 +2877,7 @@ Komplexität entsteht.
 \bibitem{Dunne2002}
   Dunne, J. A., Williams, R. J., \& Martinez, N. D. (2002).
   Network Structure and Biodiversity Loss in Food Webs.
-  \textit{Ecology Letters}, 5(4), 558–567.
+  \textit{Ecology Letters}, 5(4), 558â€“567.
 
 \bibitem{Edge2024}
   Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A.,
@@ -2889,7 +2889,7 @@ Komplexität entsteht.
 \bibitem{Edelsbrunner2002}
   Edelsbrunner, H., Letscher, D., \& Zomorodian, A. (2002).
   Topological Persistence and Simplification.
-  \textit{Discrete \& Computational Geometry}, 28(4), 511–533.
+  \textit{Discrete \& Computational Geometry}, 28(4), 511â€“533.
 
 \bibitem{Ehrig2006}
   Ehrig, H., Ehrig, K., Prange, U., \& Taentzer, G. (2006).
@@ -2897,10 +2897,10 @@ Komplexität entsteht.
   Springer, Berlin.
 
 \bibitem{Erdos1960}
-  Erdős, P. \& Rényi, A. (1960).
+  ErdÅ‘s, P. \& RÃ©nyi, A. (1960).
   On the Evolution of Random Graphs.
   \textit{Publications of the Mathematical Institute of the Hungarian
-  Academy of Sciences}, 5, 17–61.
+  Academy of Sciences}, 5, 17â€“61.
 
 \bibitem{Hay2009}
   Hay, M., Miklau, G., Jensen, D., Weis, P., \& Srivastava, S. (2009).
@@ -2908,7 +2908,7 @@ Komplexität entsteht.
   \textit{Technical Report 07-19}, University of Massachusetts.
 
 \bibitem{Hromkovic2004}
-  Hromkovič, J. (2004).
+  HromkoviÄ, J. (2004).
   \textit{Algorithmics for Hard Problems} (2nd ed.).
   Springer, Berlin.
 
@@ -2916,12 +2916,12 @@ Komplexität entsteht.
   Jumper, J., Evans, R., Pritzel, A., Green, T., Figurnov, M.,
   Ronneberger, O., \ldots{} \& Hassabis, D. (2021).
   Highly accurate protein structure prediction with AlphaFold.
-  \textit{Nature}, 596, 583–589.
+  \textit{Nature}, 596, 583â€“589.
 
 \bibitem{Kimble2008}
   Kimble, H. J. (2008).
   The quantum internet.
-  \textit{Nature}, 453, 1023–1030.
+  \textit{Nature}, 453, 1023â€“1030.
 
 \bibitem{Kipf2017}
   Kipf, T. N. \& Welling, M. (2017).
@@ -2931,17 +2931,17 @@ Komplexität entsteht.
 \bibitem{Kolda2009}
   Kolda, T. G. \& Bader, B. W. (2009).
   Tensor Decompositions and Applications.
-  \textit{SIAM Review}, 51(3), 455–500.
+  \textit{SIAM Review}, 51(3), 455â€“500.
 
 \bibitem{Lieberman2009}
   Lieberman-Aiden, E., van Berkum, N. L., Williams, L., Imakaev, M.,
   Ragoczy, T., Telling, A., \ldots{} \& Dekker, J. (2009).
   Comprehensive mapping of long-range interactions reveals folding
   principles of the human genome.
-  \textit{Science}, 326(5950), 289–293.
+  \textit{Science}, 326(5950), 289â€“293.
 
 \bibitem{Lovasz2012}
-  Lovász, L. (2012).
+  LovÃ¡sz, L. (2012).
   \textit{Large Networks and Graph Limits}.
   American Mathematical Society.
 
@@ -2952,7 +2952,7 @@ Komplexität entsteht.
   \textit{arXiv preprint arXiv:1802.03426}.
 
 \bibitem{Perez2021}
-  Pérez, J., Marinković, J., \& Barceló, P. (2021).
+  PÃ©rez, J., MarinkoviÄ‡, J., \& BarcelÃ³, P. (2021).
   On the Turing Completeness of Modern Neural Network Architectures.
   \textit{Proceedings of ICLR 2019} (extended version).
 
@@ -2965,7 +2965,7 @@ Komplexität entsteht.
 \bibitem{Qi2005}
   Qi, L., \& Luo, Z. (2005).
   Eigenvalues and invariants of tensors.
-  \textit{Journal of Mathematical Analysis and Applications}, 325(2), 1363–1377.
+  \textit{Journal of Mathematical Analysis and Applications}, 325(2), 1363â€“1377.
 
 \bibitem{Reimann2017}
   Reimann, M. W., Nolte, M., Scolamiero, M., Turner, K., Perin, R.,
@@ -2987,20 +2987,20 @@ Komplexität entsteht.
   \textit{Proceedings of AAAI 2019} (extended).
 
 \bibitem{Scholkopf2021}
-  Schölkopf, B., Locatello, F., Bauer, S., Ke, N. R., Kalchbrenner, N.,
+  SchÃ¶lkopf, B., Locatello, F., Bauer, S., Ke, N. R., Kalchbrenner, N.,
   Goyal, A., \& Bengio, Y. (2021).
   Toward Causal Representation Learning.
-  \textit{Proceedings of the IEEE}, 109(5), 612–634.
+  \textit{Proceedings of the IEEE}, 109(5), 612â€“634.
 
 \bibitem{Shi2016}
   Shi, W., Cao, J., Zhang, Q., Li, Y., \& Xu, L. (2016).
   Edge Computing: Vision and Challenges.
-  \textit{IEEE Internet of Things Journal}, 3(5), 637–646.
+  \textit{IEEE Internet of Things Journal}, 3(5), 637â€“646.
 
 \bibitem{Strogatz2001}
   Strogatz, S. H. (2001).
   Exploring Complex Networks.
-  \textit{Nature}, 410, 268–276.
+  \textit{Nature}, 410, 268â€“276.
 
 \bibitem{Vaswani2017}
   Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L.,
@@ -3009,8 +3009,8 @@ Komplexität entsteht.
   \textit{Advances in Neural Information Processing Systems}, 30.
 
 \bibitem{Velickovic2018}
-  Veličković, P., Cucurull, G., Casanova, A., Romero, A.,
-  Liò, P., \& Bengio, Y. (2018).
+  VeliÄkoviÄ‡, P., Cucurull, G., Casanova, A., Romero, A.,
+  LiÃ², P., \& Bengio, Y. (2018).
   Graph Attention Networks.
   \textit{Proceedings of ICLR 2018}.
 
@@ -3029,17 +3029,17 @@ Komplexität entsteht.
 \bibitem{Verma1988}
   Verma, T. \& Pearl, J. (1988).
   Causal Networks: Semantics and Expressiveness.
-  \textit{Proceedings of the 4th Workshop on Uncertainty in AI}, 352–359.
+  \textit{Proceedings of the 4th Workshop on Uncertainty in AI}, 352â€“359.
 
 \bibitem{Wagner2001}
   Wagner, A. \& Fell, D. A. (2001).
   The small world inside large metabolic networks.
-  \textit{Proceedings of the Royal Society B}, 268(1478), 1803–1810.
+  \textit{Proceedings of the Royal Society B}, 268(1478), 1803â€“1810.
 
 \bibitem{Watkins1992}
   Watkins, C. J. C. H. \& Dayan, P. (1992).
   Q-learning.
-  \textit{Machine Learning}, 8(3–4), 279–292.
+  \textit{Machine Learning}, 8(3â€“4), 279â€“292.
 
 \bibitem{Wolf2018}
   Wolf, F. A., Angerer, P., \& Theis, F. J. (2018).
@@ -3056,3 +3056,4 @@ Komplexität entsteht.
 %============================================================
 \end{document}
 %============================================================
+

@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 
 %-----------------------------------------------------------
 % Pakete
@@ -99,8 +99,8 @@
 % Titelbereich
 %-----------------------------------------------------------
 \title{{\bfseries Tanyzyten als dritter Tau-Clearance-Weg \\ bei der Alzheimer-Erkrankung}\\
-		Mathematische Modellierung, Beweisführung
-		und fundamentale therapeutische Lösungsansätze
+		Mathematische Modellierung, BeweisfÃ¼hrung
+		und fundamentale therapeutische LÃ¶sungsansÃ¤tze
 }
 
 \author{Stephan Epp}
@@ -118,43 +118,43 @@
 	\section{Einleitung und Problemstellung}
 	%=================================================================
 	
-	Die vorliegende Arbeit analysiert und formalisiert die kürzlich durch Prévot et al.\ (Inserm/CHU Lille, 2026) entdeckte Schlüsselrolle hypothalamischer Tanyzyten beim Transport von Tau-Protein aus der Gehirn-Rückenmarks-Flüssigkeit (Liquor cerebrospinalis, CSF) in das Blutgefäßsystem. Dieser dritte Eliminationsweg -- neben der bekannten Mikroglia-vermittelten Immunreaktion und dem glymphatischen System -- eröffnet fundamentale neue Perspektiven für Diagnostik und Therapie der Alzheimer-Erkrankung.
+	Die vorliegende Arbeit analysiert und formalisiert die kÃ¼rzlich durch PrÃ©vot et al.\ (Inserm/CHU Lille, 2026) entdeckte SchlÃ¼sselrolle hypothalamischer Tanyzyten beim Transport von Tau-Protein aus der Gehirn-RÃ¼ckenmarks-FlÃ¼ssigkeit (Liquor cerebrospinalis, CSF) in das BlutgefÃ¤ÃŸsystem. Dieser dritte Eliminationsweg -- neben der bekannten Mikroglia-vermittelten Immunreaktion und dem glymphatischen System -- erÃ¶ffnet fundamentale neue Perspektiven fÃ¼r Diagnostik und Therapie der Alzheimer-Erkrankung.
 	
-	Wir entwickeln ein vollständiges mathematisches Modell des Drei-Kompartiment-Tau-Transportsystems als nichtlineares gewöhnliches Differentialgleichungssystem (ODE-System), leiten Existenz- und Stabilitätseigenschaften formal her und beweisen notwendige und hinreichende Bedingungen für die pathologische Tau-Akkumulation. Auf Basis dieser Theorie werden vier fundamentale therapeutische Lösungsstrategien mit formaler Korrektheitsprüfung abgeleitet: (\emph{i}) Tanyzyt-Protektion durch Wachstumsfaktor-Infusion, (\emph{ii}) Gentherapeutische Stärkung der Tanyzyt-Transportmaschinerie, (\emph{iii}) Biomarker-gestützte Früherkennung via Tau-Ratio-Diagnostik, sowie (\emph{iv}) Kombinationstherapie zur simultanen Aktivierung aller drei Clearance-Achsen.
+	Wir entwickeln ein vollstÃ¤ndiges mathematisches Modell des Drei-Kompartiment-Tau-Transportsystems als nichtlineares gewÃ¶hnliches Differentialgleichungssystem (ODE-System), leiten Existenz- und StabilitÃ¤tseigenschaften formal her und beweisen notwendige und hinreichende Bedingungen fÃ¼r die pathologische Tau-Akkumulation. Auf Basis dieser Theorie werden vier fundamentale therapeutische LÃ¶sungsstrategien mit formaler KorrektheitsprÃ¼fung abgeleitet: (\emph{i}) Tanyzyt-Protektion durch Wachstumsfaktor-Infusion, (\emph{ii}) Gentherapeutische StÃ¤rkung der Tanyzyt-Transportmaschinerie, (\emph{iii}) Biomarker-gestÃ¼tzte FrÃ¼herkennung via Tau-Ratio-Diagnostik, sowie (\emph{iv}) Kombinationstherapie zur simultanen Aktivierung aller drei Clearance-Achsen.
 	
-	Die theoretischen Ergebnisse werden durch umfangreiche numerische Simulationen sowie statistische Modellierung auf Basis biographischer Daten aus der Primärliteratur validiert. Sechs Abbildungen (matplotlib, TikZ) dokumentieren die gewonnenen Erkenntnisse.
+	Die theoretischen Ergebnisse werden durch umfangreiche numerische Simulationen sowie statistische Modellierung auf Basis biographischer Daten aus der PrimÃ¤rliteratur validiert. Sechs Abbildungen (matplotlib, TikZ) dokumentieren die gewonnenen Erkenntnisse.
 	
-	Die Alzheimer-Erkrankung (AE) ist die häufigste neurodegenerative Erkrankung weltweit. In Deutschland sind gegenwärtig etwa \num{1.2} Millionen Menschen betroffen, in Frankreich mindestens \num{900000}; global liegt die Zahl der Erkrankten bei über 55 Millionen~\cite{WHO2023}. Trotz jahrzehntelanger Forschung existiert kein kurativer Therapieansatz; alle bislang zugelassenen Medikamente lindern lediglich Symptome oder verlangsamen bestenfalls das Fortschreiten der Erkrankung temporär.
+	Die Alzheimer-Erkrankung (AE) ist die hÃ¤ufigste neurodegenerative Erkrankung weltweit. In Deutschland sind gegenwÃ¤rtig etwa \num{1.2} Millionen Menschen betroffen, in Frankreich mindestens \num{900000}; global liegt die Zahl der Erkrankten bei Ã¼ber 55 Millionen~\cite{WHO2023}. Trotz jahrzehntelanger Forschung existiert kein kurativer Therapieansatz; alle bislang zugelassenen Medikamente lindern lediglich Symptome oder verlangsamen bestenfalls das Fortschreiten der Erkrankung temporÃ¤r.
 	
-	\textbf{Schlüsselwörter:} Alzheimer-Erkrankung, Tanyzyten, Tau-Protein-Clearance, glymphatisches System, ODE-Modellierung, Tanyzyt-Protektion, Biomarker, Frühdiagnostik, neurodegenerative Erkrankung, CSF-Blut-Transport
+	\textbf{SchlÃ¼sselwÃ¶rter:} Alzheimer-Erkrankung, Tanyzyten, Tau-Protein-Clearance, glymphatisches System, ODE-Modellierung, Tanyzyt-Protektion, Biomarker, FrÃ¼hdiagnostik, neurodegenerative Erkrankung, CSF-Blut-Transport
 	
 	\subsection{Pathophysiologischer Hintergrund}
 	
-	Das zentrale neuropathologische Merkmal der AE ist die intrazelluläre Akkumulation hyperphosphorylierter Tau-Proteine in Form sogenannter neurofibrillärer Bündel (\emph{neurofibrillary tangles}) sowie die Ablagerung extrazellulärer Amyloid-$\beta$-Plaques~\cite{Braak2006}. Die Tau-Kaskadenhypothese postuliert, dass Tau-Aggregation downstream von Amyloid-$\beta$ zur synaptischen Dysfunktion und zum neuronalen Tod führt.
+	Das zentrale neuropathologische Merkmal der AE ist die intrazellulÃ¤re Akkumulation hyperphosphorylierter Tau-Proteine in Form sogenannter neurofibrillÃ¤rer BÃ¼ndel (\emph{neurofibrillary tangles}) sowie die Ablagerung extrazellulÃ¤rer Amyloid-$\beta$-Plaques~\cite{Braak2006}. Die Tau-Kaskadenhypothese postuliert, dass Tau-Aggregation downstream von Amyloid-$\beta$ zur synaptischen Dysfunktion und zum neuronalen Tod fÃ¼hrt.
 	
-	Die Frage, warum Tau trotz kontinuierlicher Produktion im gesunden Gehirn normalerweise kein pathologisches Niveau erreicht, führt zum zentralen Thema dieser Arbeit: den Mechanismen der Tau-Elimination.
+	Die Frage, warum Tau trotz kontinuierlicher Produktion im gesunden Gehirn normalerweise kein pathologisches Niveau erreicht, fÃ¼hrt zum zentralen Thema dieser Arbeit: den Mechanismen der Tau-Elimination.
 	
 	\subsection{Bekannte Clearance-Wege vor der Entdeckung}
 	
-	Vor der Veröffentlichung von Prévot et al.\ (2026)~\cite{Prevot2026} waren zwei wesentliche Eliminationsmechanismen bekannt:
+	Vor der VerÃ¶ffentlichung von PrÃ©vot et al.\ (2026)~\cite{Prevot2026} waren zwei wesentliche Eliminationsmechanismen bekannt:
 	
 	\begin{enumerate}[label=(\roman*)]
-		\item \textbf{Immunologisch-zelluläre Clearance}: Mikroglia und Astrozyten phagozytieren und degradieren extrazelluläres Tau über Lysosomen und das Ubiquitin-Proteasom-System~\cite{Heneka2015}.
-		\item \textbf{Das glymphatische System}: Das 2013 von Iliff et al.\ beschriebene paraarterielle Netzwerk aquaporin-4-exprimierender Astrozyten ermöglicht den konvektiven Abtransport von Tau und anderen Proteinen aus dem Interstitium in den CSF, insbesondere während des Schlafs~\cite{Iliff2013}.
+		\item \textbf{Immunologisch-zellulÃ¤re Clearance}: Mikroglia und Astrozyten phagozytieren und degradieren extrazellulÃ¤res Tau Ã¼ber Lysosomen und das Ubiquitin-Proteasom-System~\cite{Heneka2015}.
+		\item \textbf{Das glymphatische System}: Das 2013 von Iliff et al.\ beschriebene paraarterielle Netzwerk aquaporin-4-exprimierender Astrozyten ermÃ¶glicht den konvektiven Abtransport von Tau und anderen Proteinen aus dem Interstitium in den CSF, insbesondere wÃ¤hrend des Schlafs~\cite{Iliff2013}.
 	\end{enumerate}
 	
 	\subsection{Die neue Entdeckung: Tanyzyten als dritter Weg}
 	
-	Tanyzyten sind spezialisierte, ependymale Gliazellen des Hypothalamus, die den ventralen dritten Ventrikel auskleiden und morphologisch durch lange, den Parenchym durchdringende Fortsätze charakterisiert sind. Sie bilden biochemisch aktive \emph{Brücken} zwischen dem CSF im dritten Ventrikel und dem Portalblut des Hypophysenstiels.
+	Tanyzyten sind spezialisierte, ependymale Gliazellen des Hypothalamus, die den ventralen dritten Ventrikel auskleiden und morphologisch durch lange, den Parenchym durchdringende FortsÃ¤tze charakterisiert sind. Sie bilden biochemisch aktive \emph{BrÃ¼cken} zwischen dem CSF im dritten Ventrikel und dem Portalblut des Hypophysenstiels.
 	
-	Prévot und Kollegen~\cite{Prevot2026} zeigten mit fluoreszenzmarkiertem Tau in Mausmodellen erstmals, dass Tanyzyten Tau aus dem CSF aufnehmen und translokal in die Blutkapillaren transportieren. Bei Alzheimer-Patienten waren die Tanyzyt-Strukturen post mortem vollständig kollabiert, eine Befund, der sich bei anderen Demenzformen nicht zeigte.
+	PrÃ©vot und Kollegen~\cite{Prevot2026} zeigten mit fluoreszenzmarkiertem Tau in Mausmodellen erstmals, dass Tanyzyten Tau aus dem CSF aufnehmen und translokal in die Blutkapillaren transportieren. Bei Alzheimer-Patienten waren die Tanyzyt-Strukturen post mortem vollstÃ¤ndig kollabiert, eine Befund, der sich bei anderen Demenzformen nicht zeigte.
 	
 	\subsection{Zielsetzung dieser Arbeit}
 	
-	Die vorliegende Arbeit verfolgt vier primäre Ziele:
+	Die vorliegende Arbeit verfolgt vier primÃ¤re Ziele:
 	\begin{enumerate}[label=(\arabic*)]
 		\item Formale mathematische Modellierung des Drei-Wege-Tau-Clearance-Systems
-		\item Beweis der notwendigen und hinreichenden Bedingungen für pathologische Tau-Akkumulation
+		\item Beweis der notwendigen und hinreichenden Bedingungen fÃ¼r pathologische Tau-Akkumulation
 		\item Ableitung fundamentaler therapeutischer Interventionspunkte
 		\item Numerische und statistische Validierung der theoretischen Ergebnisse
 	\end{enumerate}
@@ -165,7 +165,7 @@
 	
 	\subsection{Morphologie und Klassifikation}
 	
-	Tanyzyten werden nach ihrer subventrikulären Lokalisation in vier Subtypen unterteilt:
+	Tanyzyten werden nach ihrer subventrikulÃ¤ren Lokalisation in vier Subtypen unterteilt:
 	
 	\begin{table}[H]
 		\centering
@@ -175,7 +175,7 @@
 			\toprule
 			\textbf{Subtyp} & \textbf{Lokalisation} & \textbf{Hauptfunktion} & \textbf{Transportgut} \\
 			\midrule
-			$\alpha_1$ & Dorsaler 3. Ventrikel & Barrierefunktion CSF & Kleine Moleküle \\
+			$\alpha_1$ & Dorsaler 3. Ventrikel & Barrierefunktion CSF & Kleine MolekÃ¼le \\
 			$\alpha_2$ & Mittlerer 3. Ventrikel & Hormonkommunikation & Leptin, IGF-1 \\
 			$\beta_1$  & Ventraler 3. Ventrikel & CSF$\leftrightarrow$Blut & Tau, Amyloid-$\beta$ \\
 			$\beta_2$  & Eminentia mediana & Neuroendokrin & GnRH, TRH \\
@@ -183,7 +183,7 @@
 		\end{tabular}
 	\end{table}
 	
-	Für den Tau-Transport sind primär die $\beta_1$-Tanyzyten relevant, deren apikale Endfüße direkten Kontakt mit dem CSF und deren basale Fortsätze Kontakt mit dem Perikapillarraum haben.
+	FÃ¼r den Tau-Transport sind primÃ¤r die $\beta_1$-Tanyzyten relevant, deren apikale EndfÃ¼ÃŸe direkten Kontakt mit dem CSF und deren basale FortsÃ¤tze Kontakt mit dem Perikapillarraum haben.
 	
 	\subsection{Molekulare Transportmaschinerie}
 	
@@ -192,19 +192,19 @@
 	\begin{definition}[Tanyzyt-Transportzyklus]
 		Der \emph{Tanyzyt-Transportzyklus} (TTC) bezeichnet die geordnete Sequenz:
 		\[
-		\text{CSF-Tau} \xrightarrow{(1)} \text{Endozytose} \xrightarrow{(2)} \text{vesikulärer Transport} \xrightarrow{(3)} \text{Exozytose} \xrightarrow{(4)} \text{Blut-Tau}
+		\text{CSF-Tau} \xrightarrow{(1)} \text{Endozytose} \xrightarrow{(2)} \text{vesikulÃ¤rer Transport} \xrightarrow{(3)} \text{Exozytose} \xrightarrow{(4)} \text{Blut-Tau}
 		\]
-		wobei Schritt (1) durch Low-Density Lipoprotein Receptor-Related Protein 1 (LRP1) vermittelt wird, Schritt (2) durch Dynein-abhängigen axonalen Transport entlang Mikrotubuli, und Schritt (3) durch SNARE-Protein-komplexe.
+		wobei Schritt (1) durch Low-Density Lipoprotein Receptor-Related Protein 1 (LRP1) vermittelt wird, Schritt (2) durch Dynein-abhÃ¤ngigen axonalen Transport entlang Mikrotubuli, und Schritt (3) durch SNARE-Protein-komplexe.
 	\end{definition}
 	
 	\subsection{Verbindung zu bekannten Risikofaktoren}
 	
-	Die Entdeckung der Tanyzyt-Funktion integriert mehrere bisher isoliert betrachtete Risikofaktoren in ein kohärentes Modell:
+	Die Entdeckung der Tanyzyt-Funktion integriert mehrere bisher isoliert betrachtete Risikofaktoren in ein kohÃ¤rentes Modell:
 	
 	\begin{itemize}
-		\item \textbf{Adipositas}: Prévot et al.\ zeigten bereits 2010, dass Leptin-Resistenz durch Tanyzyt-Dysfunktion verursacht wird~\cite{Prevot2010}. Da Fettleibigkeit ein Alzheimer-Risikofaktor ist, legt dies eine gemeinsame tanyzytäre Pathogenese nahe.
-		\item \textbf{Diabetes mellitus Typ 2}: Insulinresistenz beeinträchtigt die Tanyzyt-Signaltrans\-duktion über den Insulin-Rezeptor~\cite{Benner2018}.
-		\item \textbf{Schlafmangel}: Chronischer Schlafmangel schädigt die glymphatische Funktion und erhöht die Tau-Last im CSF, was sekundär die Tanyzyten überlastet~\cite{Xie2013}.
+		\item \textbf{Adipositas}: PrÃ©vot et al.\ zeigten bereits 2010, dass Leptin-Resistenz durch Tanyzyt-Dysfunktion verursacht wird~\cite{Prevot2010}. Da Fettleibigkeit ein Alzheimer-Risikofaktor ist, legt dies eine gemeinsame tanyzytÃ¤re Pathogenese nahe.
+		\item \textbf{Diabetes mellitus Typ 2}: Insulinresistenz beeintrÃ¤chtigt die Tanyzyt-Signaltrans\-duktion Ã¼ber den Insulin-Rezeptor~\cite{Benner2018}.
+		\item \textbf{Schlafmangel}: Chronischer Schlafmangel schÃ¤digt die glymphatische Funktion und erhÃ¶ht die Tau-Last im CSF, was sekundÃ¤r die Tanyzyten Ã¼berlastet~\cite{Xie2013}.
 	\end{itemize}
 	
 	\subsection{Diagramm: Anatomische Lokalisation der Tanyzyten}
@@ -241,7 +241,7 @@
 			\foreach \xi/\label in {-3.5/$\beta_1$, -1.2/$\beta_1$, 1.2/$\beta_1$, 3.5/$\beta_1$} {
 				% Apikaler Fortsatz (nach oben zum CSF)
 				\draw[green!60!black, line width=2.5pt] (\xi, 1.5) -- (\xi, 2.1);
-				% Zellkörper
+				% ZellkÃ¶rper
 				\filldraw[fill=green!30, draw=green!60!black, thick] (\xi, 0.3) ellipse (0.55 and 0.6);
 				% Nucleus
 				\filldraw[fill=green!70!black] (\xi, 0.35) circle (0.18);
@@ -281,16 +281,16 @@
 			\draw[redarrow] (-5.8, 3.5) -- (-5.8, -2.6) node[midway, left, font=\small, align=center] 
 			{Tau-\\Transport};
 			
-			%-- Verbindungsbrücke hervorheben
+			%-- VerbindungsbrÃ¼cke hervorheben
 			\draw[thick, orange!70!black, dashed, rounded corners=5pt]
 			(-1.8, -1.35) rectangle (1.8, 2.2);
-			\node[font=\small\bfseries, color=orange!80!black] at (0, -1.6) {Tanyzyt-Brücke};
+			\node[font=\small\bfseries, color=orange!80!black] at (0, -1.6) {Tanyzyt-BrÃ¼cke};
 			
 		\end{tikzpicture}
-		\caption{Anatomisches Schema der Tanyzyten im dritten Ventrikel mit Tau-Transportweg und therapeutischer Brückenzone.}
+		\caption{Anatomisches Schema der Tanyzyten im dritten Ventrikel mit Tau-Transportweg und therapeutischer BrÃ¼ckenzone.}
 		\label{fig:tanyzyt_anatomie}
 	\end{figure}
-	{\small Abbildung~\ref{fig:tanyzyt_anatomie} zeigt das anatomische Schema des dritten Ventrikels. $\beta_1$-Tanyzyten bilden eine biologische Brücke zwischen dem tau-reichen CSF und dem Blutkapillarsystem; rote Pfeile kennzeichnen den aktiven Transportweg durch die Tanyzyt-Ausläufer. Die orange gestrichelte Box markiert die therapeutisch relevante Tanyzyt-Brückenzone im ventromedialen Hypothalamus, die in den Strategien $\mathcal{P}_1$--$\mathcal{P}_4$ als Angriffspunkt dient.}
+	{\small Abbildung~\ref{fig:tanyzyt_anatomie} zeigt das anatomische Schema des dritten Ventrikels. $\beta_1$-Tanyzyten bilden eine biologische BrÃ¼cke zwischen dem tau-reichen CSF und dem Blutkapillarsystem; rote Pfeile kennzeichnen den aktiven Transportweg durch die Tanyzyt-AuslÃ¤ufer. Die orange gestrichelte Box markiert die therapeutisch relevante Tanyzyt-BrÃ¼ckenzone im ventromedialen Hypothalamus, die in den Strategien $\mathcal{P}_1$--$\mathcal{P}_4$ als Angriffspunkt dient.}
 	
 	%=================================================================
 	\section{Mathematisches Modell des Tau-Clearance-Systems}
@@ -302,7 +302,7 @@
 	
 	\begin{definition}[Tau-Clearance-Zustandsraum]
 		\label{def:zustandsraum}
-		Sei $\Omega \subset \R^4$ der zulässige Zustandsraum mit:
+		Sei $\Omega \subset \R^4$ der zulÃ¤ssige Zustandsraum mit:
 		\begin{align}
 			\mathbf{y}(t) &= \bigl(\tau_C(t),\; \tau_B(t),\; \eta(t),\; \gamma(t)\bigr)^\top \in \Omega
 		\end{align}
@@ -310,8 +310,8 @@
 		\begin{itemize}
 			\item $\tau_C(t) \geq 0$: Tau-Konzentration im CSF zum Zeitpunkt $t$
 			\item $\tau_B(t) \geq 0$: Tau-Konzentration im Blutplasma
-			\item $\eta(t) \in [0,1]$: Tanyzyt-Integrität (0 = vollständig zerstört, 1 = intakt)
-			\item $\gamma(t) \in [0,1]$: Glymphatische Aktivität (normiert)
+			\item $\eta(t) \in [0,1]$: Tanyzyt-IntegritÃ¤t (0 = vollstÃ¤ndig zerstÃ¶rt, 1 = intakt)
+			\item $\gamma(t) \in [0,1]$: Glymphatische AktivitÃ¤t (normiert)
 		\end{itemize}
 	\end{definition}
 	
@@ -346,18 +346,18 @@
 			$k_I > 0$ & Immunologische Clearance-Rate & $\text{h}^{-1}$ \\
 			$k_G > 0$ & Glymphatische Clearance-Rate & $\text{h}^{-1}$ \\
 			$k_E > 0$ & Systemische Blut-Eliminationsrate & $\text{h}^{-1}$ \\
-			$\delta_T \geq 0$ & Tanyzyt-Degradationsrate (Tau-abhängig) & $[\tau]^{-1}\cdot\text{h}^{-1}$ \\
+			$\delta_T \geq 0$ & Tanyzyt-Degradationsrate (Tau-abhÃ¤ngig) & $[\tau]^{-1}\cdot\text{h}^{-1}$ \\
 			$\mu_\eta \geq 0$ & Basale Tanyzyt-Alterungsrate & $\text{h}^{-1}$ \\
 			$\omega_G > 0$ & Amplitude des zirkadianen Rhythmus & $\text{h}^{-1}$ \\
-			$\lambda_G > 0$ & Glymphatische Dämpfungskonstante & $\text{h}^{-1}$ \\
-			$T_G = 24\,\text{h}$ & Perioden-Länge des Tagesrhythmus & $\text{h}$ \\
+			$\lambda_G > 0$ & Glymphatische DÃ¤mpfungskonstante & $\text{h}^{-1}$ \\
+			$T_G = 24\,\text{h}$ & Perioden-LÃ¤nge des Tagesrhythmus & $\text{h}$ \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
 	\subsection{Vereinfachtes autonomes System}
 	
-	Für die stationäre Analyse betrachten wir das gemittelte System (zeitlich gemittelte glymphatische Aktivität $\bar{\gamma}$):
+	FÃ¼r die stationÃ¤re Analyse betrachten wir das gemittelte System (zeitlich gemittelte glymphatische AktivitÃ¤t $\bar{\gamma}$):
 	
 	\begin{align}
 		\dot{\tau}_C &= k_p - \bigl(k_T\,\eta + k_I + k_G\,\bar{\gamma}\bigr)\,\tau_C =: k_p - \kappa(\eta)\,\tau_C \label{eq:auto1}\\
@@ -368,35 +368,35 @@
 	wobei $\kappa(\eta) := k_T\,\eta + k_I + k_G\,\bar{\gamma} > 0$ die effektive Clearance-Rate darstellt.
 	
 	%=================================================================
-	\section{Formale Beweisführung}
+	\section{Formale BeweisfÃ¼hrung}
 	%=================================================================
 	
 	\subsection{Wohlgestelltheit des Systems}
 	
 	\begin{theorem}[Existenz und Eindeutigkeit]
 		\label{thm:existence}
-		Für Anfangsbedingungen $\mathbf{y}_0$ mit $\mathbf{y}_0 = (\tau_{C,0}, \tau_{B,0}, \eta_0, \gamma_0) \in \Omega$ mit $\tau_{C,0}, \tau_{B,0} \geq 0$, $\eta_0 \in [0,1]$, $\gamma_0 \in [0,1]$, existiert eine eindeutige Lösung $\mathbf{y}(t)$ des ODE-Systems $\mathcal{S}$ auf $[0, \infty)$, welche $\Omega$ invariant lässt.
+		FÃ¼r Anfangsbedingungen $\mathbf{y}_0$ mit $\mathbf{y}_0 = (\tau_{C,0}, \tau_{B,0}, \eta_0, \gamma_0) \in \Omega$ mit $\tau_{C,0}, \tau_{B,0} \geq 0$, $\eta_0 \in [0,1]$, $\gamma_0 \in [0,1]$, existiert eine eindeutige LÃ¶sung $\mathbf{y}(t)$ des ODE-Systems $\mathcal{S}$ auf $[0, \infty)$, welche $\Omega$ invariant lÃ¤sst.
 	\end{theorem}
 	
 	\begin{proof}
-		Das Vektorfeld $\mathbf{f}: \Omega \to \R^4$ von $\mathcal{S}$ ist auf dem kompakten abgeschlossenen Raum $\Omega = [0,\infty)^2 \times [0,1]^2$ lokal Lipschitz-stetig als Komposition von Polynomen in den Zustandsvariablen. Nach dem Picard-Lindelöf-Theorem existiert daher lokal eine eindeutige Lösung.
+		Das Vektorfeld $\mathbf{f}: \Omega \to \R^4$ von $\mathcal{S}$ ist auf dem kompakten abgeschlossenen Raum $\Omega = [0,\infty)^2 \times [0,1]^2$ lokal Lipschitz-stetig als Komposition von Polynomen in den Zustandsvariablen. Nach dem Picard-LindelÃ¶f-Theorem existiert daher lokal eine eindeutige LÃ¶sung.
 		
-		Für die globale Existenz zeigen wir positive Invarianz von $\Omega$:
+		FÃ¼r die globale Existenz zeigen wir positive Invarianz von $\Omega$:
 		
 		\emph{Schritt 1} ($\tau_C \geq 0$): An der Randmenge $\{\tau_C = 0\}$ gilt $\dot{\tau}_C = k_p > 0$, also zeigt das Vektorfeld ins Innere. \checkmark
 		
 		\emph{Schritt 2} ($\tau_B \geq 0$): An $\{\tau_B = 0\}$ gilt $\dot{\tau}_B = k_T\,\eta\,\tau_C \geq 0$. \checkmark
 		
-		\emph{Schritt 3} ($\eta \in [0,1]$): An $\{\eta = 0\}$ gilt $\dot{\eta} = 0$; an $\{\eta = 1\}$ gilt $\dot{\eta} = -\mu_\eta < 0$ (also Rückfall ins Innere). \checkmark
+		\emph{Schritt 3} ($\eta \in [0,1]$): An $\{\eta = 0\}$ gilt $\dot{\eta} = 0$; an $\{\eta = 1\}$ gilt $\dot{\eta} = -\mu_\eta < 0$ (also RÃ¼ckfall ins Innere). \checkmark
 		
-		\emph{Schritt 4} (beschränkte Lösungen): Die Lyapunov-Funktion $V = \tau_C + \tau_B + c_1(1-\eta) + c_2\gamma$ ist entlang der Lösungen beschränkt, da
+		\emph{Schritt 4} (beschrÃ¤nkte LÃ¶sungen): Die Lyapunov-Funktion $V = \tau_C + \tau_B + c_1(1-\eta) + c_2\gamma$ ist entlang der LÃ¶sungen beschrÃ¤nkt, da
 		\[
 		\dot{V} \leq k_p + c_1\mu_\eta - \min(k_I, k_E)\,(\tau_C + \tau_B) \leq M - c\,V
 		\]
-		für geeignete Konstanten $M, c > 0$. Damit sind alle Lösungen global beschränkt, und globale Existenz folgt aus dem Gronwall-Lemma.
+		fÃ¼r geeignete Konstanten $M, c > 0$. Damit sind alle LÃ¶sungen global beschrÃ¤nkt, und globale Existenz folgt aus dem Gronwall-Lemma.
 	\end{proof}
 	
-	\subsection{Stationäre Punkte und Stabilität}
+	\subsection{StationÃ¤re Punkte und StabilitÃ¤t}
 	
 	\begin{theorem}[Charakterisierung der Gleichgewichte]
 		\label{thm:equilibria}
@@ -404,7 +404,7 @@
 		
 		\begin{enumerate}[label=(\roman*)]
 			\item \textbf{Gesundes Gleichgewicht} $E^* = (\tau_C^*, \tau_B^*, \eta^*)$ mit $\eta^* > 0$ und $\tau_C^* < \tau_{C,\text{krit}}$
-			\item \textbf{Pathologisches Gleichgewicht} $E^0 = (\tau_C^0, \tau_B^0, 0)$ mit $\eta^0 = 0$ (vollständige Tanyzyt-Degeneration)
+			\item \textbf{Pathologisches Gleichgewicht} $E^0 = (\tau_C^0, \tau_B^0, 0)$ mit $\eta^0 = 0$ (vollstÃ¤ndige Tanyzyt-Degeneration)
 		\end{enumerate}
 	\end{theorem}
 	
@@ -421,18 +421,18 @@
 		\[
 		\tau_C^* = \frac{k_p}{\kappa(\eta^*)} = \frac{k_p}{k_T\,\eta^* + k_I + k_G\,\bar{\gamma}}.
 		\]
-		Diese implizite Gleichung hat nach dem Banach'schen Fixpunktsatz genau eine Lösung in $(0, \tau_{C,\text{krit}})$, wenn $k_p / (k_I + k_G\bar{\gamma}) < \tau_{C,\text{krit}}$, wobei der kritische Wert durch $\tau_{C,\text{krit}} = \mu_\eta / \delta_T$ definiert ist.
+		Diese implizite Gleichung hat nach dem Banach'schen Fixpunktsatz genau eine LÃ¶sung in $(0, \tau_{C,\text{krit}})$, wenn $k_p / (k_I + k_G\bar{\gamma}) < \tau_{C,\text{krit}}$, wobei der kritische Wert durch $\tau_{C,\text{krit}} = \mu_\eta / \delta_T$ definiert ist.
 		
 		\textbf{Fall (ii) -- Pathologisches Gleichgewicht:} Mit $\eta^0 = 0$ vereinfacht sich das System zu:
 		\[
 		\tau_C^0 = \frac{k_p}{k_I + k_G\,\bar{\gamma}}, \quad \tau_B^0 = 0.
 		\]
-		Dies zeigt, dass ohne funktionierende Tanyzyten die Tau-Konzentration im CSF nur noch durch immunologische und glymphatische Clearance limitiert wird, was zu erhöhten Werten führt.
+		Dies zeigt, dass ohne funktionierende Tanyzyten die Tau-Konzentration im CSF nur noch durch immunologische und glymphatische Clearance limitiert wird, was zu erhÃ¶hten Werten fÃ¼hrt.
 	\end{proof}
 	
-	\begin{theorem}[Stabilitätsbedingung]
+	\begin{theorem}[StabilitÃ¤tsbedingung]
 		\label{thm:stability}
-		Das gesunde Gleichgewicht $E^*$ ist lokal asymptotisch stabil, wenn die \emph{Tanyzyt-Stabilitätsbedingung} (TSB) erfüllt ist:
+		Das gesunde Gleichgewicht $E^*$ ist lokal asymptotisch stabil, wenn die \emph{Tanyzyt-StabilitÃ¤tsbedingung} (TSB) erfÃ¼llt ist:
 		\begin{equation}
 			\boxed{k_T\,\eta^* > \delta_T\,\frac{k_p}{\bigl(k_I + k_G\,\bar{\gamma}\bigr)^2} \cdot \mu_\eta}
 			\tag{TSB}
@@ -459,10 +459,10 @@
 		\[
 		\kappa^*\,\alpha^* > k_T^2\,\tau_C^*\,(1-\eta^*).
 		\]
-		Nach Einsetzen der Gleichgewichtsausdrücke vereinfacht sich dies zur TSB.
+		Nach Einsetzen der GleichgewichtsausdrÃ¼cke vereinfacht sich dies zur TSB.
 	\end{proof}
 	
-	\subsection{Notwendige und hinreichende Bedingung für Alzheimer-Pathologie}
+	\subsection{Notwendige und hinreichende Bedingung fÃ¼r Alzheimer-Pathologie}
 	
 	\begin{theorem}[Alzheimer-Pathologie-Bedingung]
 		\label{thm:alzheimer_condition}
@@ -478,18 +478,18 @@
 		\[
 		\tau_C^0 = \frac{k_p}{k_I + k_G\,\bar{\gamma}}.
 		\]
-		Übersteigt $\tau_C^0$ den Diagnoseschwellenwert, liegt Alzheimer-Pathologie vor. Aus der Bedingung $\tau_C^0 > \tau_{C,\text{AD}}$ folgt direkt \eqref{eq:alzheimer_bedingung}.
+		Ãœbersteigt $\tau_C^0$ den Diagnoseschwellenwert, liegt Alzheimer-Pathologie vor. Aus der Bedingung $\tau_C^0 > \tau_{C,\text{AD}}$ folgt direkt \eqref{eq:alzheimer_bedingung}.
 		
-		\textbf{Notwendig}: Falls $\tau_C(t) \to \tau_{C,\text{AD}}$ mit $\eta(t) \to 0$, dann nähert sich das System dem pathologischen Gleichgewicht $E^0$. Dies erfordert, dass (TSB) verletzt ist, was äquivalent zu \eqref{eq:alzheimer_bedingung} ist.
+		\textbf{Notwendig}: Falls $\tau_C(t) \to \tau_{C,\text{AD}}$ mit $\eta(t) \to 0$, dann nÃ¤hert sich das System dem pathologischen Gleichgewicht $E^0$. Dies erfordert, dass (TSB) verletzt ist, was Ã¤quivalent zu \eqref{eq:alzheimer_bedingung} ist.
 		
-		\textbf{Biologische Interpretation}: Die linke Seite von \eqref{eq:alzheimer_bedingung} beschreibt die Tau-Last bei vollständiger Tanyzyt-Degeneration. Die rechte Seite ist der kritische Schwellenwert, unterhalb dessen das System ohne Tanyzyten stabil bleibt. Alzheimer entsteht, wenn die Tau-Produktion und/oder Tanyzyt-Schädigung diesen Schwellenwert überschreiten.
+		\textbf{Biologische Interpretation}: Die linke Seite von \eqref{eq:alzheimer_bedingung} beschreibt die Tau-Last bei vollstÃ¤ndiger Tanyzyt-Degeneration. Die rechte Seite ist der kritische Schwellenwert, unterhalb dessen das System ohne Tanyzyten stabil bleibt. Alzheimer entsteht, wenn die Tau-Produktion und/oder Tanyzyt-SchÃ¤digung diesen Schwellenwert Ã¼berschreiten.
 	\end{proof}
 	
 	\subsection{Korollar: Tanyzyten als kritische Komponente}
 	
 	\begin{corollary}[Tanyzyt-Unentbehrlichkeit]
 		\label{cor:tanycyte_essential}
-		Wenn $k_I + k_G\,\bar{\gamma} < k_p / \tau_{C,\text{AD}}$, dann ist eine minimale Tanyzyt-Aktivität $k_T\,\eta_{\min} > 0$ notwendig und hinreichend für die Aufrechterhaltung des gesunden Gleichgewichts.
+		Wenn $k_I + k_G\,\bar{\gamma} < k_p / \tau_{C,\text{AD}}$, dann ist eine minimale Tanyzyt-AktivitÃ¤t $k_T\,\eta_{\min} > 0$ notwendig und hinreichend fÃ¼r die Aufrechterhaltung des gesunden Gleichgewichts.
 	\end{corollary}
 	
 	\begin{proof}
@@ -506,41 +506,41 @@
 	%=================================================================
 
 	Die bisherige Analyse des Tau-Clearance-Systems hat gezeigt, dass Tanyzyt-Dysfunktion
-	zur pathologischen Tau-Akkumulation führt. In diesem Abschnitt wird eine fundamentale
+	zur pathologischen Tau-Akkumulation fÃ¼hrt. In diesem Abschnitt wird eine fundamentale
 	theoretische Verbindung hergestellt: Die Tau-Akkumulation ist nicht nur ein biochemisches
-	Phänomen, sondern manifestiert sich direkt und formal messbar als \emph{epistemische
+	PhÃ¤nomen, sondern manifestiert sich direkt und formal messbar als \emph{epistemische
 	Wolke}~\cite{Epp2026brn} -- als kognitiver Zustand, in dem der betroffene Mensch keinen
-	vollständigen Zugang zur Wahrheit seines eigenen Denkens hat. Wir integrieren hier die
+	vollstÃ¤ndigen Zugang zur Wahrheit seines eigenen Denkens hat. Wir integrieren hier die
 	vier fundamentalen Dimensionen kognitiver Funktion nach Epp~\cite{Epp2026brn} --
-	epistemische Vollständigkeit, Lebensgeist-Intensität, kortikale Rechtsdrehung und
+	epistemische VollstÃ¤ndigkeit, Lebensgeist-IntensitÃ¤t, kortikale Rechtsdrehung und
 	kognitive Benetzung -- mit dem Tau-Clearance-ODE-Modell~$\mathcal{S}$ dieser Arbeit.
-	Das Ergebnis ist eine vollständige, mathematisch präzise Beschreibung des kognitiven
+	Das Ergebnis ist eine vollstÃ¤ndige, mathematisch prÃ¤zise Beschreibung des kognitiven
 	Degradationspfads bei Alzheimer und ein neuer formaler Beweis des therapeutischen
-	Potenzials tanyzytärer Intervention.
+	Potenzials tanyzytÃ¤rer Intervention.
 
 	\subsection{Epistemische Wolke und kognitiver Wahrheitszugang}
 
-	Die grundlegende Arbeit von Epp~\cite{Epp2026brn} formalisiert vier Konstrukte, die für
+	Die grundlegende Arbeit von Epp~\cite{Epp2026brn} formalisiert vier Konstrukte, die fÃ¼r
 	die Alzheimer-Forschung unmittelbar relevant sind.
 
 	\begin{definition}[Epistemische Wolke und Wolken-Dichte nach Epp (2026)]
 		\label{def:epist_wolke}
 		Eine Person $P$ befindet sich in einer \emph{epistemischen Wolke} $\mathcal{W}$
-		bezüglich Problemraum~$\Omega$, wenn ihre verfügbare Informationsmenge
+		bezÃ¼glich Problemraum~$\Omega$, wenn ihre verfÃ¼gbare Informationsmenge
 		$\mathcal{I}_P$ vom notwendigen Set~$\mathcal{I}^*$ abweicht. Die
 		\emph{Wolken-Dichte} ist
 		\[
 			\delta(\mathcal{W}) \;:=\; 1 - \frac{|\mathcal{I}_P \cap \mathcal{I}^*|}{|\mathcal{I}^*|}
 			\;\in\; [0,1].
 		\]
-		Für $\delta = 0$: vollständige kognitive Klarheit. Für $\delta = 1$: vollständige
+		FÃ¼r $\delta = 0$: vollstÃ¤ndige kognitive Klarheit. FÃ¼r $\delta = 1$: vollstÃ¤ndige
 		kognitive Blockade.
 	\end{definition}
 
 	\begin{definition}[Unsichtbarer Geist des Lebens -- Lebensgeist]
 		\label{def:lebensgeist}
 		Der \emph{unsichtbare Geist des Lebens} $\mathcal{G}$ ist der integrale Strom
-		synaptischer Informationsübertragungsereignisse:
+		synaptischer InformationsÃ¼bertragungsereignisse:
 		\[
 			\mathcal{G}(\mathcal{N}, t) \;:=\; \sum_{s \in \mathcal{S}}
 			\lambda_s(t) \cdot w_s \cdot \phi_s,
@@ -561,28 +561,28 @@
 			\;\cdot\;
 			\mathbf{1}_{\omega < 0},
 		\]
-		wobei $\mathbf{1}_{\omega < 0}$ der Indikator für rechtsdrehende kortikale
-		Aktivität ist und $\omega(t) = d\varphi/dt$ die instantane Winkelgeschwindigkeit
+		wobei $\mathbf{1}_{\omega < 0}$ der Indikator fÃ¼r rechtsdrehende kortikale
+		AktivitÃ¤t ist und $\omega(t) = d\varphi/dt$ die instantane Winkelgeschwindigkeit
 		des kortikalen Aktivierungsvektors bezeichnet~\cite{Epp2026brn}.
 	\end{definition}
 
 	\begin{definition}[Kognitive Benetzung]
 		\label{def:kognbenet}
 		Die \emph{kognitive Benetzung} $\hat{\mathcal{B}}(t)$ bezeichnet den Anteil
-		aktiver synaptischer Verbindungen, die zum Zeitpunkt~$t$ für Informationsfluss
+		aktiver synaptischer Verbindungen, die zum Zeitpunkt~$t$ fÃ¼r Informationsfluss
 		erreichbar sind:
 		\[
 			\hat{\mathcal{B}}(t) \;:=\; \frac{1}{N} \sum_{i=1}^N
 			\mathbf{1}\bigl[\Phi_i(t) \geq \Phi_{\min}\bigr] \;\in\; [0,1],
 		\]
-		mit Aktivitätsfluss $\Phi_i(t)$ an Verbindung~$i$ und Mindestschwelle $\Phi_{\min}$.
-		Vollständige Benetzung ($\hat{\mathcal{B}} \geq 0{,}75$) ist notwendige Bedingung
-		für freies, unbegrenztes Denken~\cite{Epp2026brn}.
+		mit AktivitÃ¤tsfluss $\Phi_i(t)$ an Verbindung~$i$ und Mindestschwelle $\Phi_{\min}$.
+		VollstÃ¤ndige Benetzung ($\hat{\mathcal{B}} \geq 0{,}75$) ist notwendige Bedingung
+		fÃ¼r freies, unbegrenztes Denken~\cite{Epp2026brn}.
 	\end{definition}
 
-	\subsection{Tau-induzierte epistemische Wolke: Formale Verknüpfung}
+	\subsection{Tau-induzierte epistemische Wolke: Formale VerknÃ¼pfung}
 
-	Die zentrale neue Verknüpfung dieser Arbeit ist die formale Abbildung des
+	Die zentrale neue VerknÃ¼pfung dieser Arbeit ist die formale Abbildung des
 	Systemzustands $(\tau_C(t), \eta(t))$ des ODE-Modells~$\mathcal{S}$ auf die kognitiven
 	Parameter $(\delta, \mathcal{G}, \omega, \hat{\mathcal{B}})$ der Hirn-Theorie~\cite{Epp2026brn}.
 
@@ -595,12 +595,12 @@
 		\]
 		wobei $\tau_{C,\mathrm{krit}} = \mu_\eta / \delta_T$ (aus dem ODE-System $\mathcal{S}$,
 		\cref{tab:parameter}) die kritische Tau-Konzentration ist, ab der synaptische
-		Toxizität vollständig wird. Unterhalb $\tau_{C,\mathrm{krit}}$ wächst $\delta_\tau$
-		linear mit der Tau-Last; oberhalb ist die epistemische Blockade vollständig.
+		ToxizitÃ¤t vollstÃ¤ndig wird. Unterhalb $\tau_{C,\mathrm{krit}}$ wÃ¤chst $\delta_\tau$
+		linear mit der Tau-Last; oberhalb ist die epistemische Blockade vollstÃ¤ndig.
 	\end{definition}
 
 	\begin{remark}
-		Die Wahl $\tau_{C,\mathrm{krit}} = \mu_\eta/\delta_T$ ist nicht willkürlich: Es handelt
+		Die Wahl $\tau_{C,\mathrm{krit}} = \mu_\eta/\delta_T$ ist nicht willkÃ¼rlich: Es handelt
 		sich um genau denjenigen Schwellenwert des ODE-Systems, der die Grenze zwischen
 		gesundem und pathologischem Gleichgewicht bestimmt (vgl.\ \cref{thm:equilibria}). Das
 		ODE-Modell und die epistemischen Konzepte teilen damit dieselbe kritische Schwelle.
@@ -609,30 +609,30 @@
 	\begin{theorem}[Tau-Wolken-Kopplung]
 		\label{thm:taucloud}
 		Die tau-induzierte Wolken-Dichte $\delta_\tau$ ist eine streng monoton wachsende
-		Funktion der CSF-Tau-Konzentration $\tau_C$ für $\tau_C < \tau_{C,\mathrm{krit}}$:
+		Funktion der CSF-Tau-Konzentration $\tau_C$ fÃ¼r $\tau_C < \tau_{C,\mathrm{krit}}$:
 		\[
 			\frac{d\delta_\tau}{d\tau_C} \;=\; \frac{1}{\tau_{C,\mathrm{krit}}} \;>\; 0
-			\quad\text{für }\tau_C < \tau_{C,\mathrm{krit}}.
+			\quad\text{fÃ¼r }\tau_C < \tau_{C,\mathrm{krit}}.
 		\]
-		Für $\tau_C \geq \tau_{C,\mathrm{krit}}$ gilt $\delta_\tau = 1$ (vollständige
+		FÃ¼r $\tau_C \geq \tau_{C,\mathrm{krit}}$ gilt $\delta_\tau = 1$ (vollstÃ¤ndige
 		epistemische Blockade). Steigende Tau-Last erzeugt damit monoton wachsende
-		kognitive Einschränkung.
+		kognitive EinschrÃ¤nkung.
 	\end{theorem}
 
 	\begin{proof}
-		Für $\tau_C < \tau_{C,\mathrm{krit}}$ gilt $\delta_\tau = \tau_C/\tau_{C,\mathrm{krit}}$,
+		FÃ¼r $\tau_C < \tau_{C,\mathrm{krit}}$ gilt $\delta_\tau = \tau_C/\tau_{C,\mathrm{krit}}$,
 		und die Ableitung lautet $d\delta_\tau/d\tau_C = 1/\tau_{C,\mathrm{krit}} > 0$.
-		Die biologische Grundlage: Jede Erhöhung von $\tau_C$ verstärkt die synaptische
-		Tau-Toxizität über drei Pfade -- (i)~Tau beeinträchtigt den axonalen Transport
-		(Dynein/Kinesin-Störung), was die Verfügbarkeit präsynaptischer Proteine mindert;
-		(ii)~Tau-Oligomere stören AMPA-Rezeptor-Trafficking, was $w_s$ senkt;
-		(iii)~Tau aktiviert über oxidativen Stress die HPA-Achse und erhöht Cortisol, was
+		Die biologische Grundlage: Jede ErhÃ¶hung von $\tau_C$ verstÃ¤rkt die synaptische
+		Tau-ToxizitÃ¤t Ã¼ber drei Pfade -- (i)~Tau beeintrÃ¤chtigt den axonalen Transport
+		(Dynein/Kinesin-StÃ¶rung), was die VerfÃ¼gbarkeit prÃ¤synaptischer Proteine mindert;
+		(ii)~Tau-Oligomere stÃ¶ren AMPA-Rezeptor-Trafficking, was $w_s$ senkt;
+		(iii)~Tau aktiviert Ã¼ber oxidativen Stress die HPA-Achse und erhÃ¶ht Cortisol, was
 		nach dem Wolken-Suppressions-Theorem~\cite{Epp2026brn} $\delta$ weiter steigert.
-		Im Sättigungsbereich $\tau_C \geq \tau_{C,\mathrm{krit}}$ ist die synaptische
-		Übertragungsfähigkeit vollständig erloschen: $\delta_\tau = 1$.
+		Im SÃ¤ttigungsbereich $\tau_C \geq \tau_{C,\mathrm{krit}}$ ist die synaptische
+		ÃœbertragungsfÃ¤higkeit vollstÃ¤ndig erloschen: $\delta_\tau = 1$.
 	\end{proof}
 
-	\begin{theorem}[Alzheimer-Gleichgewicht impliziert vollständige epistemische Wolke]
+	\begin{theorem}[Alzheimer-Gleichgewicht impliziert vollstÃ¤ndige epistemische Wolke]
 		\label{thm:alz_wolke}
 		Im pathologischen Gleichgewicht $E^0 = (\tau_C^0, \tau_B^0, 0)$ des Systems
 		$\mathcal{S}$ gilt:
@@ -641,17 +641,17 @@
 			\quad\Rightarrow\quad
 			\WZI_{\mathrm{AD}} = 0.
 		\]
-		Vollständige Tanyzyt-Degeneration (Alzheimer) impliziert formal vollständige
-		kognitive Blockade: Kein Wahrheitszugang mehr möglich.
+		VollstÃ¤ndige Tanyzyt-Degeneration (Alzheimer) impliziert formal vollstÃ¤ndige
+		kognitive Blockade: Kein Wahrheitszugang mehr mÃ¶glich.
 	\end{theorem}
 
 	\begin{proof}
 		Aus \cref{thm:equilibria}: $\tau_C^0 = k_p/(k_I + k_G\bar{\gamma})$.
-		Die Alzheimer-Bedingung~\eqref{eq:alzheimer_bedingung} ist genau dann erfüllt,
+		Die Alzheimer-Bedingung~\eqref{eq:alzheimer_bedingung} ist genau dann erfÃ¼llt,
 		wenn $\tau_C^0 > \tau_{C,\mathrm{AD}}$.
 		Da der klinische Diagnoseschwellenwert $\tau_{C,\mathrm{AD}}$ definitorisch
 		oberhalb der kritischen Konzentration $\tau_{C,\mathrm{krit}}$ liegt (Alzheimer
-		manifestiert sich erst nach dem Zusammenbruch der Tanyzyt-Pufferkapazität), gilt
+		manifestiert sich erst nach dem Zusammenbruch der Tanyzyt-PufferkapazitÃ¤t), gilt
 		$\tau_C^0 \geq \tau_{C,\mathrm{AD}} \geq \tau_{C,\mathrm{krit}}$.
 		Daher $\delta_\tau(\tau_C^0) = 1$.
 		Einsetzen in \cref{def:wzi_tany}: $\WZI = (1 - 1) \cdot (\cdot) \cdot (\cdot) = 0$.
@@ -660,7 +660,7 @@
 
 	\subsection{Tau-Suppression des Lebensgeistes: Mechanistische Modellierung}
 
-	Tau-Pathologie schädigt den Lebensgeist~$\mathcal{G}$ über drei molekulare Mechanismen,
+	Tau-Pathologie schÃ¤digt den Lebensgeist~$\mathcal{G}$ Ã¼ber drei molekulare Mechanismen,
 	die zusammen eine sigmoidale Suppressionskurve erzeugen.
 
 	\begin{definition}[Tau-supprimierter Lebensgeist]
@@ -693,8 +693,8 @@
 	\end{theorem}
 
 	\begin{proof}
-		\emph{Komponente $\lambda_s$:} Tau beeinträchtigt mitochondriale Funktion durch
-		Störung des OxPhos-Komplexes. ATP-Mangel $\to$ Na$^+$/K$^+$-ATPase-Blockade $\to$
+		\emph{Komponente $\lambda_s$:} Tau beeintrÃ¤chtigt mitochondriale Funktion durch
+		StÃ¶rung des OxPhos-Komplexes. ATP-Mangel $\to$ Na$^+$/K$^+$-ATPase-Blockade $\to$
 		chronische Depolarisation $\to$ Aktionspotential-Inaktivierung (Depolarisationsblock).
 		Formal: $\lambda_s(\tau_C) \propto \exp(-\alpha_\lambda \tau_C)$, $\alpha_\lambda > 0$.
 
@@ -702,14 +702,14 @@
 		AMPA-Rezeptor-Einbau und erzeugen ein LTP-Deficit (Bhatt et al., 2009).
 		Formal: $w_s(\tau_C) = w_{s,0}/(1 + \beta_w \tau_C)$, $\beta_w > 0$.
 
-		\emph{Komponente $\phi_s$:} Tau reduziert den präsynaptischen Vesikelpool durch
+		\emph{Komponente $\phi_s$:} Tau reduziert den prÃ¤synaptischen Vesikelpool durch
 		Actin-Depolymeri\-sation (Morales et al., 2015), was $n$ (Anzahl Release-Sites) und $p$
 		(Release-Wahrscheinlich\-keit) in der Quanten-Formel $\mu_\mathrm{EPSP} = n \cdot p \cdot q$
 		senkt. Formal: $\phi_s(\tau_C) \propto n(\tau_C) \cdot p(\tau_C)$.
 
 		Da alle drei Komponenten monoton fallend sind, folgt via Produktregel:
 		$d(\lambda_s w_s \phi_s)/d\tau_C < 0$.
-		Die kumulative Suppression über alle Synapsen ergibt die sigmoidale Kurve
+		Die kumulative Suppression Ã¼ber alle Synapsen ergibt die sigmoidale Kurve
 		$\mathcal{G}_\tau(\tau_C)$.
 	\end{proof}
 
@@ -717,9 +717,9 @@
 
 	Die kortikale Rechtsdrehung -- definiert als negative Instantan-Winkelgeschwindigkeit
 	$\omega(t) < 0$ des kortikalen Aktivierungsvektors~\cite{Epp2026brn} -- ist eine der
-	ersten kognitiven Eigenschaften, die Tau-Toxizität beeinträchtigt. Sie hängt von drei
+	ersten kognitiven Eigenschaften, die Tau-ToxizitÃ¤t beeintrÃ¤chtigt. Sie hÃ¤ngt von drei
 	tau-sensitiven Strukturen ab: (i)~dem hippocampalen Theta-Generator (CA1/CA3), der durch
-	Tau-Pathologie in Braak-Stadium~I--II direkt geschädigt wird; (ii)~der thalamo-kortikalen
+	Tau-Pathologie in Braak-Stadium~I--II direkt geschÃ¤digt wird; (ii)~der thalamo-kortikalen
 	Schleifensynchrony (ARAS-System), welche Tau-basierte Tankzelldegeneration in angrenzenden
 	Hypothalamusarealen destabilisiert; (iii)~dem Phase-Amplitude-Coupling (PAC),
 	das ohne intakten Theta-Rhythmus zusammenbricht.
@@ -732,15 +732,15 @@
 			\;:=\;
 			-\omega_0 \cdot \max\!\left(0,\; 1 - \frac{\tau_C}{\tau_{C,\mathrm{krit}}}\right),
 		\]
-		mit gesunder Rechtsdrehungsfrequenz $\omega_0 > 0$. Für $\tau_C = 0$:
-		$\omega_{\mathrm{eff}} = -\omega_0$ (volle Rechtsdrehung). Für
+		mit gesunder Rechtsdrehungsfrequenz $\omega_0 > 0$. FÃ¼r $\tau_C = 0$:
+		$\omega_{\mathrm{eff}} = -\omega_0$ (volle Rechtsdrehung). FÃ¼r
 		$\tau_C \geq \tau_{C,\mathrm{krit}}$: $\omega_{\mathrm{eff}} = 0$
-		(Rechtsdrehung vollständig kollabiert).
+		(Rechtsdrehung vollstÃ¤ndig kollabiert).
 	\end{definition}
 
 	\begin{theorem}[Rechtsdrehungs-Degradations-Theorem]
 		\label{thm:rotation_tau}
-		Längs der pathologischen Trajektorie $\tau_C(t) \to \tau_C^0 \geq \tau_{C,\mathrm{krit}}$
+		LÃ¤ngs der pathologischen Trajektorie $\tau_C(t) \to \tau_C^0 \geq \tau_{C,\mathrm{krit}}$
 		des Systems~$\mathcal{S}$ gilt:
 		\[
 			\lim_{t \to \infty} \omega_{\mathrm{eff}}\bigl(\tau_C(t)\bigr) = 0
@@ -751,22 +751,22 @@
 	\end{theorem}
 
 	\begin{proof}
-		Aus \cref{thm:equilibria}: Auf der pathologischen Trajektorie wächst
+		Aus \cref{thm:equilibria}: Auf der pathologischen Trajektorie wÃ¤chst
 		$\tau_C(t)$ monoton (da $\dot{\tau}_C > 0$ bei niedrigem $\eta$). Nach
-		\cref{def:omega_tau}: $\omega_{\mathrm{eff}}(\tau_C) \to 0$ für
+		\cref{def:omega_tau}: $\omega_{\mathrm{eff}}(\tau_C) \to 0$ fÃ¼r
 		$\tau_C \to \tau_C^0 \geq \tau_{C,\mathrm{krit}}$. Damit
 		$\mathbf{1}_{\omega_{\mathrm{eff}} < 0} \to 0$.
-		Biologisch: (i)~Tau schädigt hippocampale Theta-Generatoren $\to$ PAC bricht zusammen
-		$\to$ Phasen-Führungs-Struktur der rechtsdrehenden Welle löst sich auf;
-		(ii)~Tanyzyt-Schäden in hypothalamischen Bereichen benachbarter Areale stören
-		zusätzlich die ARAS-Schleife, die für stabile kortikale Drehrichtung notwendig ist
+		Biologisch: (i)~Tau schÃ¤digt hippocampale Theta-Generatoren $\to$ PAC bricht zusammen
+		$\to$ Phasen-FÃ¼hrungs-Struktur der rechtsdrehenden Welle lÃ¶st sich auf;
+		(ii)~Tanyzyt-SchÃ¤den in hypothalamischen Bereichen benachbarter Areale stÃ¶ren
+		zusÃ¤tzlich die ARAS-Schleife, die fÃ¼r stabile kortikale Drehrichtung notwendig ist
 		(Theorem~3.7 in~\cite{Epp2026brn}).
 	\end{proof}
 
 	\begin{corollary}[WZI-Superlinearer-Kollaps bei Alzheimer]
 		\label{cor:wzi_collapse}
-		Längs der pathologischen Alzheimer-Trajektorie kollabiert der WZI
-		durch drei simultane, sich multiplikativ verstärkende Prozesse:
+		LÃ¤ngs der pathologischen Alzheimer-Trajektorie kollabiert der WZI
+		durch drei simultane, sich multiplikativ verstÃ¤rkende Prozesse:
 		\[
 			\WZI(t) \;=\;
 			\underbrace{\bigl(1 - \delta_\tau(\tau_C(t))\bigr)}_{\;\to\; 0}
@@ -776,7 +776,7 @@
 			\underbrace{\mathbf{1}_{\omega_{\mathrm{eff}} < 0}}_{\;\to\; 0}
 			\;\xrightarrow{t\to\infty}\; 0.
 		\]
-		Der Gesamtverlust überschreitet den direkten Einzelbeitrag jedes Faktors
+		Der Gesamtverlust Ã¼berschreitet den direkten Einzelbeitrag jedes Faktors
 		(superlinearer Kollaps).
 	\end{corollary}
 
@@ -785,22 +785,22 @@
 		verschwinden alle drei Faktoren auf der pathologischen Trajektorie.
 		Das Produkt dreier gegen null konvergierender Funktionen konvergiert schneller
 		gegen null als jede Einzelfunktion -- der Kollaps ist superlinear. Verglichen mit
-		dem direkten WZI-Verlust des $\delta$-Faktors allein übersteigt der Gesamtkollaps
+		dem direkten WZI-Verlust des $\delta$-Faktors allein Ã¼bersteigt der Gesamtkollaps
 		diesen um mindestens $\varepsilon > 0$ (analog zu Theorem~3.5 in~\cite{Epp2026brn}).
 		
 	\end{proof}
 
-	\subsection{Kognitive Benetzung und Tanyzyt-Integrität}
+	\subsection{Kognitive Benetzung und Tanyzyt-IntegritÃ¤t}
 
 	Kognitive Benetzung -- der Grad, zu dem synaptische Verbindungen aktiv mit
-	Informationsfluss durchdrungen sind -- ist die strukturell tiefste Voraussetzung für
-	freies Denken~\cite{Epp2026brn}. Tau-Pathologie schädigt die Benetzung über drei Wege:
-	direkte Synaptotoxizität (vesikulärer Transport, AMPA-Rezeptor), Astrozyten-Dysfunktion
+	Informationsfluss durchdrungen sind -- ist die strukturell tiefste Voraussetzung fÃ¼r
+	freies Denken~\cite{Epp2026brn}. Tau-Pathologie schÃ¤digt die Benetzung Ã¼ber drei Wege:
+	direkte SynaptotoxizitÃ¤t (vesikulÃ¤rer Transport, AMPA-Rezeptor), Astrozyten-Dysfunktion
 	(K$^+$-Pufferung) sowie mitochondrialen Energiemangel.
 
-	\begin{definition}[Tau- und Tanyzyt-abhängige kognitive Benetzung]
+	\begin{definition}[Tau- und Tanyzyt-abhÃ¤ngige kognitive Benetzung]
 		\label{def:nass_tany}
-		Die \emph{tau- und tanyzyt-abhängige kognitive Benetzung} ist:
+		Die \emph{tau- und tanyzyt-abhÃ¤ngige kognitive Benetzung} ist:
 		\[
 			\hat{\mathcal{B}}\bigl(\tau_C, \eta\bigr)
 			\;:=\;
@@ -808,10 +808,10 @@
 			\bigl(1 - \delta_\tau(\tau_C)\bigr)^{\!\alpha},
 			\quad \alpha = 1{,}8,
 		\]
-		mit maximaler Benetzung $\hat{\mathcal{B}}_0 = 1$, Tanyzyt-Integrität~$\eta \in [0,1]$
+		mit maximaler Benetzung $\hat{\mathcal{B}}_0 = 1$, Tanyzyt-IntegritÃ¤t~$\eta \in [0,1]$
 		aus dem ODE-System $\mathcal{S}$ und Benetzungs-Degradationsexponenten
 		$\alpha = 1{,}8$~\cite{Epp2026brn}. Der Faktor~$\eta$ kodiert die direkte
-		tanyzytäre Mitverantwortung für neuronale Mikromilieu-Stabilität.
+		tanyzytÃ¤re Mitverantwortung fÃ¼r neuronale Mikromilieu-StabilitÃ¤t.
 	\end{definition}
 
 	\begin{theorem}[Benetzungs-Tanyzyt-Theorem]
@@ -823,7 +823,7 @@
 			\item Im gesunden Gleichgewicht~$E^*$: $\hat{\mathcal{B}}^* > \hat{\mathcal{B}}_{\min} = 0{,}75$
 			      (Benetzung oberhalb kritischer Schwelle).
 			\item Im pathologischen Gleichgewicht~$E^0$: $\hat{\mathcal{B}}^0 = 0$
-			      (vollständige kognitive Austrocknung).
+			      (vollstÃ¤ndige kognitive Austrocknung).
 		\end{enumerate}
 	\end{theorem}
 
@@ -834,24 +834,24 @@
 
 		(ii): Im gesunden Gleichgewicht gilt $\eta^* > 0$ und $\tau_C^* < \tau_{C,\mathrm{krit}}$
 		(Theorem~\ref{thm:equilibria}), daher $\delta_\tau(\tau_C^*) < 1$.
-		Die Bedingung $\hat{\mathcal{B}}^* \geq 0{,}75$ ist äquivalent zur Tanyzyt-Stabilitätsbedingung
+		Die Bedingung $\hat{\mathcal{B}}^* \geq 0{,}75$ ist Ã¤quivalent zur Tanyzyt-StabilitÃ¤tsbedingung
 		(TSB, \cref{thm:stability}): Wenn das gesunde Gleichgewicht lokal asymptotisch stabil ist,
-		liegt die Benetzung oberhalb des kritischen Schwellwerts für freies Denken.
+		liegt die Benetzung oberhalb des kritischen Schwellwerts fÃ¼r freies Denken.
 
-		(iii): $\eta^0 = 0$ (vollständige Tanyzyt-Degeneration, \cref{thm:equilibria})
+		(iii): $\eta^0 = 0$ (vollstÃ¤ndige Tanyzyt-Degeneration, \cref{thm:equilibria})
 		$\Rightarrow$ $\hat{\mathcal{B}}^0 = \hat{\mathcal{B}}_0 \cdot 0 \cdot (\cdot)^\alpha = 0$,
-		unabhängig von~$\tau_C^0$.
+		unabhÃ¤ngig von~$\tau_C^0$.
 	\end{proof}
 
-	\begin{proposition}[Benetzungs-Phasenübergang]
+	\begin{proposition}[Benetzungs-PhasenÃ¼bergang]
 		\label{prop:benet_phase}
 		Es gibt einen kritischen Tanyzyt-Schwellenwert
 		\[
 			\eta_{\mathrm{wet}}
 			\;:=\; \frac{\hat{\mathcal{B}}_{\min}}{(1 - \delta_\tau(\tau_C^*))^\alpha},
 		\]
-		unterhalb dessen die kognitive Benetzung phasenübergangsartig unter das lebensnotwendige
-		Minimum kollabiert: Für $\eta < \eta_{\mathrm{wet}}$ gilt
+		unterhalb dessen die kognitive Benetzung phasenÃ¼bergangsartig unter das lebensnotwendige
+		Minimum kollabiert: FÃ¼r $\eta < \eta_{\mathrm{wet}}$ gilt
 		$\hat{\mathcal{B}} < \hat{\mathcal{B}}_{\min} = 0{,}75$.
 	\end{proposition}
 
@@ -861,16 +861,16 @@
 		$\eta \geq \hat{\mathcal{B}}_{\min}/(1-\delta_\tau(\tau_C^*))^\alpha =: \eta_{\mathrm{wet}}$.
 	\end{proof}
 
-	\subsection{Die vollständige Integrationsgleichung des freien Denkens}
+	\subsection{Die vollstÃ¤ndige Integrationsgleichung des freien Denkens}
 
 	Alle vier Faktoren -- Benetzung, Lebensgeist, Wolken-Freiheit und Rechtsdrehung --
 	lassen sich jetzt in einer einzigen Gleichung integrieren, die den Grad des freien,
-	ungehinderten Denkens vollständig als Funktion der ODE-Zustandsvariablen
-	$(\tau_C(t), \eta(t))$ des Tau-Clearance-Modells~$\mathcal{S}$ ausdrückt.
+	ungehinderten Denkens vollstÃ¤ndig als Funktion der ODE-Zustandsvariablen
+	$(\tau_C(t), \eta(t))$ des Tau-Clearance-Modells~$\mathcal{S}$ ausdrÃ¼ckt.
 
-	\begin{definition}[Freies-Denken-Kapazität]
+	\begin{definition}[Freies-Denken-KapazitÃ¤t]
 		\label{def:psi_frei}
-		Die \emph{Freies-Denken-Kapazität} $\Psi_{\mathrm{frei}}(t)$ ist:
+		Die \emph{Freies-Denken-KapazitÃ¤t} $\Psi_{\mathrm{frei}}(t)$ ist:
 		\begin{equation}
 			\boxed{
 			\Psi_{\mathrm{frei}}\bigl(\tau_C(t), \eta(t)\bigr)
@@ -891,7 +891,7 @@
 
 	\begin{theorem}[Hauptsatz der kognitiven Degradation bei Alzheimer]
 		\label{thm:hauptsatz}
-		Längs der pathologischen Trajektorie des Systems $\mathcal{S}$ (unter
+		LÃ¤ngs der pathologischen Trajektorie des Systems $\mathcal{S}$ (unter
 		Alzheimer-Bedingung~\eqref{eq:alzheimer_bedingung}) ist $\Psi_{\mathrm{frei}}(t)$
 		eine streng monoton fallende Funktion der Zeit:
 		\[
@@ -906,10 +906,10 @@
 		$\tau_C(t)$ ist streng monoton wachsend und $\eta(t)$ streng monoton fallend.
 		Nach den Theoremen~\ref{thm:taucloud}, \ref{thm:gtau}, \ref{thm:rotation_tau}
 		und~\ref{thm:benet_tany} sind alle vier Faktoren in~\eqref{eq:psi_frei}
-		für steigendes $\tau_C$ und fallendes $\eta$ monoton fallend.
+		fÃ¼r steigendes $\tau_C$ und fallendes $\eta$ monoton fallend.
 		Das Produkt positiv-fallender Faktoren ist streng fallend.
 		$\Psi_{\mathrm{frei}} \to 0$ folgt aus \cref{cor:wzi_collapse} und
-		$\hat{\mathcal{B}} \to 0$ für $\eta \to 0$ (\cref{thm:benet_tany}~(iii)).
+		$\hat{\mathcal{B}} \to 0$ fÃ¼r $\eta \to 0$ (\cref{thm:benet_tany}~(iii)).
 	\end{proof}
 
 	\begin{theorem}[Therapeutische Wiederherstellung der Denkfreiheit]
@@ -935,23 +935,23 @@
 		\Rightarrow \hat{\mathcal{B}} \geq 0{,}75$.
 		Damit sind alle vier Faktoren in~\eqref{eq:psi_frei} streng positiv,
 		und $\Psi_{\mathrm{frei}}^{\mathcal{P}_4} > \Psi^*$. Die Kombinations\-therapie
-		restauriert nicht nur die Tau-Homöostase, sondern auch die vollständige kognitive
+		restauriert nicht nur die Tau-HomÃ¶ostase, sondern auch die vollstÃ¤ndige kognitive
 		Freiheit des Patienten.
 	\end{proof}
 
 	\begin{remark}[Klinische Messbarkeit von $\Psi_{\mathrm{frei}}$]
-		Die Freies-Denken-Kapazität $\Psi_{\mathrm{frei}}$ ist empirisch zugänglich:
+		Die Freies-Denken-KapazitÃ¤t $\Psi_{\mathrm{frei}}$ ist empirisch zugÃ¤nglich:
 		\begin{itemize}
-			\item \textbf{MMSE/MoCA-Score} als Gesamt-Proxy für $\Psi_{\mathrm{frei}}$;
-			\item \textbf{EEG-Gamma-Kohärenz und PAC} als direkte Messung der
+			\item \textbf{MMSE/MoCA-Score} als Gesamt-Proxy fÃ¼r $\Psi_{\mathrm{frei}}$;
+			\item \textbf{EEG-Gamma-KohÃ¤renz und PAC} als direkte Messung der
 			      Rechtsdrehungs-Komponente $\Omega_\tau$;
-			\item \textbf{fMRI-PFC-Aktivierung} als Proxy für
+			\item \textbf{fMRI-PFC-Aktivierung} als Proxy fÃ¼r
 			      $\mathcal{G}_\tau/\mathcal{G}_{\max}$ (Lebensgeist);
-			\item \textbf{Tau-Ratio-Biomarker} $\tau_C/\tau_B$ als Proxy für
+			\item \textbf{Tau-Ratio-Biomarker} $\tau_C/\tau_B$ als Proxy fÃ¼r
 			      $\delta_\tau$ (Wolken-Dichte).
 		\end{itemize}
 		Damit stellt $\Psi_{\mathrm{frei}}$ eine neue, mehrdimensionale Verlaufsmarker-Konzeption
-		für Alzheimer-Studien bereit, die über MMSE-Score-Verlauf hinausgeht.
+		fÃ¼r Alzheimer-Studien bereit, die Ã¼ber MMSE-Score-Verlauf hinausgeht.
 	\end{remark}
 
 	%=================================================================
@@ -961,74 +961,74 @@
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\textwidth]{plots/plot1_tau_akkumulation.pdf}
-		\caption{\textbf{Tau-Akkumulation und Tanyzyt-Transporteffizienz} bei intakten und geschädigten Tanyzyten sowie für drei klinische Kohorten.}
+		\caption{\textbf{Tau-Akkumulation und Tanyzyt-Transporteffizienz} bei intakten und geschÃ¤digten Tanyzyten sowie fÃ¼r drei klinische Kohorten.}
 		\label{fig:tau_akkumulation}
 	\end{figure}
-	{\small Abbildung~\ref{fig:tau_akkumulation} zeigt zwei Aspekte der Tau-Dynamik. Im \emph{Tau-Akkumulationsplot} steigt die Konzentration ab dem 40.\ Lebensjahr bei geschädigten Tanyzyten (rot) deutlich früher über den klinischen Schwellenwert $\tau = 8$\,[a.u.] (orange gestrichelt) als bei intakten (blau); die rote Schraffur quantifiziert die resultierende Akkumulationsdifferenz. Im \emph{Effizienz-Altersplot} fällt die Tanyzyt-Transporteffizienz für alle drei Kohorten (Kontrolle, MCI, Alzheimer) monoton mit dem Lebensalter; sobald sie die kritische 40\%-Schwelle (horizontale Linie) unterschreitet, kann das System die Tau-Last nicht mehr kompensieren.}
+	{\small Abbildung~\ref{fig:tau_akkumulation} zeigt zwei Aspekte der Tau-Dynamik. Im \emph{Tau-Akkumulationsplot} steigt die Konzentration ab dem 40.\ Lebensjahr bei geschÃ¤digten Tanyzyten (rot) deutlich frÃ¼her Ã¼ber den klinischen Schwellenwert $\tau = 8$\,[a.u.] (orange gestrichelt) als bei intakten (blau); die rote Schraffur quantifiziert die resultierende Akkumulationsdifferenz. Im \emph{Effizienz-Altersplot} fÃ¤llt die Tanyzyt-Transporteffizienz fÃ¼r alle drei Kohorten (Kontrolle, MCI, Alzheimer) monoton mit dem Lebensalter; sobald sie die kritische 40\%-Schwelle (horizontale Linie) unterschreitet, kann das System die Tau-Last nicht mehr kompensieren.}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\textwidth]{plots/plot2_tanyzyt_bruecken.pdf}
-		\caption{\textbf{Tanyzyt-Brückenmodell: Gesund (A) vs.\ Alzheimer (B).} Intrazellulärer Tau-Transport durch intakte und kollabierte Tanyzyt-Strukturen.}
+		\caption{\textbf{Tanyzyt-BrÃ¼ckenmodell: Gesund (A) vs.\ Alzheimer (B).} IntrazellulÃ¤rer Tau-Transport durch intakte und kollabierte Tanyzyt-Strukturen.}
 		\label{fig:tanyzyt_bruecken}
 	\end{figure}
-	{\small Abbildung~\ref{fig:tanyzyt_bruecken} stellt die molekulare Brücke im gesunden und pathologischen Zustand gegenuber. \emph{Panel~A} zeigt intakte $\beta_1$-Tanyzyten (grün) mit aktiver Tau-Translokation vom CSF (blau) ins Blutgefäßsystem (rot); rote Pfeile markieren den Transportfluss. \emph{Panel~B} illustriert den Alzheimer-Zustand: Die Tanyzyt-Strukturen sind kollabiert, die Brücke unterbrochen (Kreuz-Markierungen), Tau akkumuliert im CSF, und kein nennenswerter Transport ins Blut findet mehr statt.}
+	{\small Abbildung~\ref{fig:tanyzyt_bruecken} stellt die molekulare BrÃ¼cke im gesunden und pathologischen Zustand gegenuber. \emph{Panel~A} zeigt intakte $\beta_1$-Tanyzyten (grÃ¼n) mit aktiver Tau-Translokation vom CSF (blau) ins BlutgefÃ¤ÃŸsystem (rot); rote Pfeile markieren den Transportfluss. \emph{Panel~B} illustriert den Alzheimer-Zustand: Die Tanyzyt-Strukturen sind kollabiert, die BrÃ¼cke unterbrochen (Kreuz-Markierungen), Tau akkumuliert im CSF, und kein nennenswerter Transport ins Blut findet mehr statt.}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\textwidth]{plots/plot3_ode_modell.pdf}
-		\caption{\textbf{Numerische ODE-Simulation des Tau-Clearance-Modells.} CSF-Tau, Plasma-Tau, Tanyzyt-Integrität und Phasendiagramm für gesunde, Alzheimer- und Therapie-Szenarien.}
+		\caption{\textbf{Numerische ODE-Simulation des Tau-Clearance-Modells.} CSF-Tau, Plasma-Tau, Tanyzyt-IntegritÃ¤t und Phasendiagramm fÃ¼r gesunde, Alzheimer- und Therapie-Szenarien.}
 		\label{fig:ode_modell}
 	\end{figure}
-	{\small Abbildung~\ref{fig:ode_modell} zeigt die numerische Lösung des ODE-Systems $\mathcal{S}$ für drei Szenarien. Im \emph{CSF-Tau-Zeitverlauf} $\tau_C(t)$ konvergiert die Alzheimer-Trajektorie (rot) zum pathologischen Gleichgewicht~$E^0$, während das gesunde Szenario (blau) stabil bleibt. Im \emph{Plasma-Tau-Zeitverlauf} $\tau_B(t)$ spiegelt sich die CSF-Dynamik biomarkerrelevant wider. Im \emph{Tanyzyt-Integritätsverlauf} $\eta(t)$ zeigt sich der monotone Kollaps im Alzheimer-Fall. Das \emph{Phasendiagramm} ($\tau_C$ vs.\ $\eta$) verdeutlicht den attraktiven Charakter beider Gleichgewichte: $E^*$ (blau) und $E^0$ (rot); die grüne Therapie-Trajektorie $\mathcal{P}_4$ führt das System aus dem pathologischen Becken zu $E^*$ zurück.}
+	{\small Abbildung~\ref{fig:ode_modell} zeigt die numerische LÃ¶sung des ODE-Systems $\mathcal{S}$ fÃ¼r drei Szenarien. Im \emph{CSF-Tau-Zeitverlauf} $\tau_C(t)$ konvergiert die Alzheimer-Trajektorie (rot) zum pathologischen Gleichgewicht~$E^0$, wÃ¤hrend das gesunde Szenario (blau) stabil bleibt. Im \emph{Plasma-Tau-Zeitverlauf} $\tau_B(t)$ spiegelt sich die CSF-Dynamik biomarkerrelevant wider. Im \emph{Tanyzyt-IntegritÃ¤tsverlauf} $\eta(t)$ zeigt sich der monotone Kollaps im Alzheimer-Fall. Das \emph{Phasendiagramm} ($\tau_C$ vs.\ $\eta$) verdeutlicht den attraktiven Charakter beider Gleichgewichte: $E^*$ (blau) und $E^0$ (rot); die grÃ¼ne Therapie-Trajektorie $\mathcal{P}_4$ fÃ¼hrt das System aus dem pathologischen Becken zu $E^*$ zurÃ¼ck.}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\textwidth]{plots/plot4_clearance_mechanismen.pdf}
-		\caption{\textbf{Quantitative Analyse der drei Tau-Clearance-Mechanismen.} Relativer Anteil, zirkadianer Rhythmus und Tau-Ratio-Boxplots für vier klinische Gruppen.}
+		\caption{\textbf{Quantitative Analyse der drei Tau-Clearance-Mechanismen.} Relativer Anteil, zirkadianer Rhythmus und Tau-Ratio-Boxplots fÃ¼r vier klinische Gruppen.}
 		\label{fig:clearance_mechanismen}
 	\end{figure}
-	{\small Abbildung~\ref{fig:clearance_mechanismen} quantifiziert alle drei Clearance-Wege aus unterschiedlichen Perspektiven. Das \emph{Balkendiagramm} zeigt den relativen Anteil der Wege bei Kontrollen und Alzheimer-Patienten: Der Tanyzyt-Anteil kollabiert von 40\% auf 5\%, während die immunologische Komponente stabil bleibt. Die \emph{zirkadiane Verlaufskurve} über 48 Stunden offenbart die starke schlafabhängige Amplifikation der glymphatischen Aktivität (blau gestrichelt) gegenüber der relativ konstanten Tanyzyt-Clearance (grün). Der \emph{Tau-Ratio-Boxplot} dokumentiert die monotone Zunahme des CSF/Plasma-Verhältnisses von gesund bis spätem Alzheimer über alle vier klinischen Gruppen (***$p < 0{,}001$).}
+	{\small Abbildung~\ref{fig:clearance_mechanismen} quantifiziert alle drei Clearance-Wege aus unterschiedlichen Perspektiven. Das \emph{Balkendiagramm} zeigt den relativen Anteil der Wege bei Kontrollen und Alzheimer-Patienten: Der Tanyzyt-Anteil kollabiert von 40\% auf 5\%, wÃ¤hrend die immunologische Komponente stabil bleibt. Die \emph{zirkadiane Verlaufskurve} Ã¼ber 48 Stunden offenbart die starke schlafabhÃ¤ngige Amplifikation der glymphatischen AktivitÃ¤t (blau gestrichelt) gegenÃ¼ber der relativ konstanten Tanyzyt-Clearance (grÃ¼n). Der \emph{Tau-Ratio-Boxplot} dokumentiert die monotone Zunahme des CSF/Plasma-VerhÃ¤ltnisses von gesund bis spÃ¤tem Alzheimer Ã¼ber alle vier klinischen Gruppen (***$p < 0{,}001$).}
 	
 	\begin{sidewaysfigure}
 		\centering
 		\includegraphics[width=0.75\textwidth]{plots/plot5_therapie_analyse.pdf}
-		\caption{\textbf{Therapeutische Interventionsanalyse.} MMSE-Verlauf, Tau-Reduktion, ROC-Kurven und molekulares Interaktionsnetzwerk der vier Therapiestrategien $\mathcal{P}_1$–$\mathcal{P}_4$.}
+		\caption{\textbf{Therapeutische Interventionsanalyse.} MMSE-Verlauf, Tau-Reduktion, ROC-Kurven und molekulares Interaktionsnetzwerk der vier Therapiestrategien $\mathcal{P}_1$â€“$\mathcal{P}_4$.}
 		\label{fig:therapie_analyse}
 	\end{sidewaysfigure}
-	{\small Abbildung~\ref{fig:therapie_analyse} vergleicht die vier Therapiestrategien $\mathcal{P}_1$--$\mathcal{P}_4$ auf vier Ebenen. Der \emph{MMSE-Verlauf} zeigt, dass frühzeitige Intervention ($t=5$\,Jahre, blau) den größten kognitiven Schutz gewährt. Die \emph{Tau-Reduktionsanalyse} belegt, dass gezieltes Tanyzyt-Targeting (dunkelblau) den Effekt jeder Strategie verstärkt; $\mathcal{P}_4$ erreicht 65\% Tau-Reduktion. Die \emph{ROC-Analyse} weist den tanyzytgestützten kombinierten Biomarker als überlegen aus (AUC = 0{,}94). Das \emph{Interaktionsnetzwerk} illustriert den Tanyzyt als zentralen regulatorischen Knoten, über den alle vier Strategien konvergieren.}
+	{\small Abbildung~\ref{fig:therapie_analyse} vergleicht die vier Therapiestrategien $\mathcal{P}_1$--$\mathcal{P}_4$ auf vier Ebenen. Der \emph{MMSE-Verlauf} zeigt, dass frÃ¼hzeitige Intervention ($t=5$\,Jahre, blau) den grÃ¶ÃŸten kognitiven Schutz gewÃ¤hrt. Die \emph{Tau-Reduktionsanalyse} belegt, dass gezieltes Tanyzyt-Targeting (dunkelblau) den Effekt jeder Strategie verstÃ¤rkt; $\mathcal{P}_4$ erreicht 65\% Tau-Reduktion. Die \emph{ROC-Analyse} weist den tanyzytgestÃ¼tzten kombinierten Biomarker als Ã¼berlegen aus (AUC = 0{,}94). Das \emph{Interaktionsnetzwerk} illustriert den Tanyzyt als zentralen regulatorischen Knoten, Ã¼ber den alle vier Strategien konvergieren.}
 	
 	\begin{sidewaysfigure}
 		\centering
 		\includegraphics[width=0.75\textwidth]{plots/plot6_validierung.pdf}
-		\caption{\textbf{Statistische Validierung und Modell-Kalibrierung.} Korrelationsanalyse ($n=85$, $r=-0{,}87$), longitudinale Biomarker, Radar-Qualitätsprofil, Risikofaktoren, Modell-Fit und Sensitivitätsanalyse.}
+		\caption{\textbf{Statistische Validierung und Modell-Kalibrierung.} Korrelationsanalyse ($n=85$, $r=-0{,}87$), longitudinale Biomarker, Radar-QualitÃ¤tsprofil, Risikofaktoren, Modell-Fit und SensitivitÃ¤tsanalyse.}
 		\label{fig:validierung}
 	\end{sidewaysfigure}
-	{\small Abbildung~\ref{fig:validierung} liefert die statistische Absicherung des Modells auf sechs Ebenen. Die \emph{Tanyzyt-Tau-Korrelation} (post mortem, $n=85$, $r=-0{,}87$, $p<0{,}001$) belegt den inversen Zusammenhang zwischen Tanyzyt-Dichte und Tau-Last. Der \emph{longitudinale Biomarkerverlauf} über 48 Monate zeigt die diagnostisch relevante CSF/Plasma-Schere im Alzheimer-Verlauf (rot). Das \emph{Radar-Qualitätsprofil} (post mortem) dokumentiert den Alzheimer-spezifischen Kollaps aller Tanyzyt-Strukturdimensionen -- andere Demenzen bleiben relativ intakt (Spezifitätsnachweis). Die \emph{Risikofaktor-Heatmap} identifiziert metabolische Risikofaktoren. Der \emph{Modell-Fit-Vergleich} (exponentiell vs.\ logistisch) liefert die Parameterschätzungen für $\mathcal{S}$. Die \emph{Sensitivitätsanalyse} zeigt, dass $k_T$ und $\delta_T$ die dominanten Parameter sind.}
+	{\small Abbildung~\ref{fig:validierung} liefert die statistische Absicherung des Modells auf sechs Ebenen. Die \emph{Tanyzyt-Tau-Korrelation} (post mortem, $n=85$, $r=-0{,}87$, $p<0{,}001$) belegt den inversen Zusammenhang zwischen Tanyzyt-Dichte und Tau-Last. Der \emph{longitudinale Biomarkerverlauf} Ã¼ber 48 Monate zeigt die diagnostisch relevante CSF/Plasma-Schere im Alzheimer-Verlauf (rot). Das \emph{Radar-QualitÃ¤tsprofil} (post mortem) dokumentiert den Alzheimer-spezifischen Kollaps aller Tanyzyt-Strukturdimensionen -- andere Demenzen bleiben relativ intakt (SpezifitÃ¤tsnachweis). Die \emph{Risikofaktor-Heatmap} identifiziert metabolische Risikofaktoren. Der \emph{Modell-Fit-Vergleich} (exponentiell vs.\ logistisch) liefert die ParameterschÃ¤tzungen fÃ¼r $\mathcal{S}$. Die \emph{SensitivitÃ¤tsanalyse} zeigt, dass $k_T$ und $\delta_T$ die dominanten Parameter sind.}
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.92\textwidth]{plots/plot7_tau_wolke_kopplung.pdf}
-		\caption{\textbf{Tau-Epistemische-Wolke-Kopplung.} $\WZI(\tau_C)$, Lebensgeist-Suppression $\mathcal{G}_\tau$, Wolken-Dichte-Zeitverlauf und Rechtsdrehungs-Phasenübergang für gesunde und Alzheimer-Szenarien (siehe \cref{def:gtau,def:omega_tau}).}
+		\caption{\textbf{Tau-Epistemische-Wolke-Kopplung.} $\WZI(\tau_C)$, Lebensgeist-Suppression $\mathcal{G}_\tau$, Wolken-Dichte-Zeitverlauf und Rechtsdrehungs-PhasenÃ¼bergang fÃ¼r gesunde und Alzheimer-Szenarien (siehe \cref{def:gtau,def:omega_tau}).}
 		\label{fig:tau_wolke_kopplung}
 	\end{figure}
-	{\small Abbildung~\ref{fig:tau_wolke_kopplung} visualisiert die formale Kopplung zwischen der ODE-Dynamik und den kognitiven Parametern der Hirn-Theorie \cite{Epp2026brn}. Die \emph{WZI-Kurve} $\WZI(\tau_C)$ zeigt, wie mit steigendem CSF-Tau der Wahrheitszugang-Index durch drei simultane Mechanismen kollabiert (epistemische Wolke, Lebensgeist-Suppression, Rechtsdrehungs-Kollaps); $E^*$ und $E^0$ sind als grüner bzw.\ roter Stern eingetragen. Die \emph{Lebensgeist-Suppressionskurve} $\mathcal{G}_\tau/\mathcal{G}_{\max}$ gemäß \cref{def:gtau} zeigt die Einzelbeiträge $\lambda_s$, $w_s$, $\phi_s$ sowie die kumulative Sigmoid-Suppression mit Halbmaximum bei $0{,}6\,\tau_{C,\mathrm{krit}}$. Der \emph{kognitive Zeitverlauf} vergleicht $\delta_\tau(t)$ und $\WZI(t)$ für gesunde (blau) und Alzheimer-Trajektorien (rot); die Schwellenlinie bei $\delta=0{,}5$ markiert den Eintritt in die klinische Einschränkungszone. Das \emph{Rechtsdrehungs-Diagramm} $\omega_{\mathrm{eff}}(\tau_C)$ gemäß \cref{def:omega_tau} zeigt den Phasenübergang bei $\tau_{C,\mathrm{krit}}$: gesunder Rechtsdrehungs-Bereich (grün, $\omega<0$), präklinisches Übergangsstadium (gelb) und pathologischer Stillstand (rot).}
+	{\small Abbildung~\ref{fig:tau_wolke_kopplung} visualisiert die formale Kopplung zwischen der ODE-Dynamik und den kognitiven Parametern der Hirn-Theorie \cite{Epp2026brn}. Die \emph{WZI-Kurve} $\WZI(\tau_C)$ zeigt, wie mit steigendem CSF-Tau der Wahrheitszugang-Index durch drei simultane Mechanismen kollabiert (epistemische Wolke, Lebensgeist-Suppression, Rechtsdrehungs-Kollaps); $E^*$ und $E^0$ sind als grÃ¼ner bzw.\ roter Stern eingetragen. Die \emph{Lebensgeist-Suppressionskurve} $\mathcal{G}_\tau/\mathcal{G}_{\max}$ gemÃ¤ÃŸ \cref{def:gtau} zeigt die EinzelbeitrÃ¤ge $\lambda_s$, $w_s$, $\phi_s$ sowie die kumulative Sigmoid-Suppression mit Halbmaximum bei $0{,}6\,\tau_{C,\mathrm{krit}}$. Der \emph{kognitive Zeitverlauf} vergleicht $\delta_\tau(t)$ und $\WZI(t)$ fÃ¼r gesunde (blau) und Alzheimer-Trajektorien (rot); die Schwellenlinie bei $\delta=0{,}5$ markiert den Eintritt in die klinische EinschrÃ¤nkungszone. Das \emph{Rechtsdrehungs-Diagramm} $\omega_{\mathrm{eff}}(\tau_C)$ gemÃ¤ÃŸ \cref{def:omega_tau} zeigt den PhasenÃ¼bergang bei $\tau_{C,\mathrm{krit}}$: gesunder Rechtsdrehungs-Bereich (grÃ¼n, $\omega<0$), prÃ¤klinisches Ãœbergangsstadium (gelb) und pathologischer Stillstand (rot).}
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.92\textwidth]{plots/plot8_benetzung_rotation.pdf}
-		\caption{\textbf{Kognitive Benetzung $\hat{\mathcal{B}}$ und Freies-Denken-Kapazität $\Psi_{\mathrm{frei}}$.} Kurvenschar $\hat{\mathcal{B}}(\tau_C,\eta)$, Zeitverlauf, Komponenten\-zerlegung und Phasenporträt für gesunde, Alzheimer- und Therapie-Szenarien.}
+		\caption{\textbf{Kognitive Benetzung $\hat{\mathcal{B}}$ und Freies-Denken-KapazitÃ¤t $\Psi_{\mathrm{frei}}$.} Kurvenschar $\hat{\mathcal{B}}(\tau_C,\eta)$, Zeitverlauf, Komponenten\-zerlegung und PhasenportrÃ¤t fÃ¼r gesunde, Alzheimer- und Therapie-Szenarien.}
 		\label{fig:benetzung_rotation}
 	\end{figure}
-	{\small Abbildung~\ref{fig:benetzung_rotation} zeigt die kognitive Benetzungsfunktion und $\Psi_{\mathrm{frei}}$ auf vier Analyseebenen. Die \emph{Benetzungs-Kurvenschar} $\hat{\mathcal{B}}(\tau_C,\eta)$ für fünf Integritätsniveaus ($\eta=1{,}0$ bis $0{,}2$) belegt, dass bei $\eta=1{,}0$ erst nahe $\tau_{C,\mathrm{krit}}$ die Minimalschwelle $\hat{\mathcal{B}}_{\min}=0{,}75$ (\cref{prop:benet_phase}) unterschritten wird, während bei $\eta=0{,}2$ die kognitive Benetzung dauerhaft ungenügend ist. Der \emph{Benetzungs-Zeitverlauf} $\hat{\mathcal{B}}(t)$ zeigt, dass die Therapie $\mathcal{P}_4$ (grün) $\hat{\mathcal{B}} > \hat{\mathcal{B}}_{\min}$ dauerhaft aufrechterhält, die Alzheimer-Trajektorie (rot) jedoch kollabiert. Die \emph{Komponentenzerlegung} von $\Psi_{\mathrm{frei}}(t)$ (gestapelte Flächen) zeigt, dass Benetzung (grün) und Lebensgeist (blau) früh degradieren, Wolken-Freiheit (orange) und Rechtsdrehung (violett) spät abrupt einbrechen. Das \emph{Phasenporträt} $\Psi_{\mathrm{frei}}$ vs.\ $\eta$ mit Iso-$\tau_C$-Kurven trennt die kognitiv freie Zone ($\Psi_{\mathrm{frei}} > 0{,}6$, grün) von der eingeschränkten (rot); der blaue Pfeil markiert den $\mathcal{P}_4$-Therapiepfad zurück in die gesunde Zone.}
+	{\small Abbildung~\ref{fig:benetzung_rotation} zeigt die kognitive Benetzungsfunktion und $\Psi_{\mathrm{frei}}$ auf vier Analyseebenen. Die \emph{Benetzungs-Kurvenschar} $\hat{\mathcal{B}}(\tau_C,\eta)$ fÃ¼r fÃ¼nf IntegritÃ¤tsniveaus ($\eta=1{,}0$ bis $0{,}2$) belegt, dass bei $\eta=1{,}0$ erst nahe $\tau_{C,\mathrm{krit}}$ die Minimalschwelle $\hat{\mathcal{B}}_{\min}=0{,}75$ (\cref{prop:benet_phase}) unterschritten wird, wÃ¤hrend bei $\eta=0{,}2$ die kognitive Benetzung dauerhaft ungenÃ¼gend ist. Der \emph{Benetzungs-Zeitverlauf} $\hat{\mathcal{B}}(t)$ zeigt, dass die Therapie $\mathcal{P}_4$ (grÃ¼n) $\hat{\mathcal{B}} > \hat{\mathcal{B}}_{\min}$ dauerhaft aufrechterhÃ¤lt, die Alzheimer-Trajektorie (rot) jedoch kollabiert. Die \emph{Komponentenzerlegung} von $\Psi_{\mathrm{frei}}(t)$ (gestapelte FlÃ¤chen) zeigt, dass Benetzung (grÃ¼n) und Lebensgeist (blau) frÃ¼h degradieren, Wolken-Freiheit (orange) und Rechtsdrehung (violett) spÃ¤t abrupt einbrechen. Das \emph{PhasenportrÃ¤t} $\Psi_{\mathrm{frei}}$ vs.\ $\eta$ mit Iso-$\tau_C$-Kurven trennt die kognitiv freie Zone ($\Psi_{\mathrm{frei}} > 0{,}6$, grÃ¼n) von der eingeschrÃ¤nkten (rot); der blaue Pfeil markiert den $\mathcal{P}_4$-Therapiepfad zurÃ¼ck in die gesunde Zone.}
 
 	\begin{sidewaysfigure}
 		\centering
 		\includegraphics[width=0.88\textwidth]{plots/plot9_systemkaskade.pdf}
-		\caption{\textbf{Systemkaskade der kognitiven Degradation.} $\eta(t)$, $\tau_C(t)$, $\delta_\tau(t)$, $\mathcal{G}_\tau(t)$, $\hat{\mathcal{B}}(t)$ und $\Psi_{\mathrm{frei}}(t)$ für gesunde, Alzheimer- und Therapie-$\mathcal{P}_4$-Verläufe (vgl.\ \cref{eq:psi_frei}).}
+		\caption{\textbf{Systemkaskade der kognitiven Degradation.} $\eta(t)$, $\tau_C(t)$, $\delta_\tau(t)$, $\mathcal{G}_\tau(t)$, $\hat{\mathcal{B}}(t)$ und $\Psi_{\mathrm{frei}}(t)$ fÃ¼r gesunde, Alzheimer- und Therapie-$\mathcal{P}_4$-VerlÃ¤ufe (vgl.\ \cref{eq:psi_frei}).}
 		\label{fig:systemkaskade}
 	\end{sidewaysfigure}
-	{\small Abbildung~\ref{fig:systemkaskade} zeigt die vollständige Kausalkaskade für drei Szenarien (gesund blau, Alzheimer rot, $\mathcal{P}_4$-Therapie grün). Im \emph{Tanyzyt-Integritätsverlauf} fällt $\eta(t)$ im Alzheimer-Fall exponentiell auf null. Die daraus resultierende \emph{Tau-Akkumulation} $\tau_C(t)$ überschreitet monoton $\tau_{C,\mathrm{krit}}$ (orange). Die \emph{Wolken-Dichte} $\delta_\tau(t)$ sättigt bei~1. Der \emph{Lebensgeist} $\mathcal{G}_\tau(t)/\mathcal{G}_{\max}$ zeigt sigmoidale Suppression. Die \emph{kognitive Benetzung} $\hat{\mathcal{B}}(t)$ kollabiert synergistisch durch Tanyzyt-Verlust und Tau-Toxizität. Die \emph{Freies-Denken-Kapazität} $\Psi_{\mathrm{frei}}(t)$ (\cref{eq:psi_frei}) ist das Endsignal der Kaskade: gesund $>0{,}6$, Alzheimer $\to 0$, Therapie $\mathcal{P}_4$ restauriert kognitive Freiheit vollständig.}
+	{\small Abbildung~\ref{fig:systemkaskade} zeigt die vollstÃ¤ndige Kausalkaskade fÃ¼r drei Szenarien (gesund blau, Alzheimer rot, $\mathcal{P}_4$-Therapie grÃ¼n). Im \emph{Tanyzyt-IntegritÃ¤tsverlauf} fÃ¤llt $\eta(t)$ im Alzheimer-Fall exponentiell auf null. Die daraus resultierende \emph{Tau-Akkumulation} $\tau_C(t)$ Ã¼berschreitet monoton $\tau_{C,\mathrm{krit}}$ (orange). Die \emph{Wolken-Dichte} $\delta_\tau(t)$ sÃ¤ttigt bei~1. Der \emph{Lebensgeist} $\mathcal{G}_\tau(t)/\mathcal{G}_{\max}$ zeigt sigmoidale Suppression. Die \emph{kognitive Benetzung} $\hat{\mathcal{B}}(t)$ kollabiert synergistisch durch Tanyzyt-Verlust und Tau-ToxizitÃ¤t. Die \emph{Freies-Denken-KapazitÃ¤t} $\Psi_{\mathrm{frei}}(t)$ (\cref{eq:psi_frei}) ist das Endsignal der Kaskade: gesund $>0{,}6$, Alzheimer $\to 0$, Therapie $\mathcal{P}_4$ restauriert kognitive Freiheit vollstÃ¤ndig.}
 	
 	\begin{sidewaysfigure}
 		\centering
@@ -1083,36 +1083,36 @@
 			\draw[arrow, red!70!black] (acc) -- (alz);
 			\draw[arrow, red!70!black] (alz) -- (neuro);
 			
-			%-- Rückkopplungsschleife (Tau schädigt Tanyzyten)
+			%-- RÃ¼ckkopplungsschleife (Tau schÃ¤digt Tanyzyten)
 			%\draw[inhibit, very thick, bend right=35]
 			%(csf.east) to node[right, font=\scriptsize, color=red!70!black, %align=center]{$\delta_T$:\\ Tau-induzierte\\Degradation} (alz.north);
 			
 			%-- Therapie-Pfeil
-			\draw[activate, very thick] (ther) -- (tanycyte) node[midway, above, font=\scriptsize, color=blue!70!black]{stärkt};
+			\draw[activate, very thick] (ther) -- (tanycyte) node[midway, above, font=\scriptsize, color=blue!70!black]{stÃ¤rkt};
 			\draw[activate, bend right=30] (ther.north) to (csf.west);
 			
 			%-- Legende
 			\node[below=2.0cm of lyso, xshift=1cm] (leg) {};
 			\draw[arrow, green!50!black, thick] ([xshift=0]leg) -- ([xshift=1.5cm]leg) node[right, font=\small]{Tau-Clearance};
-			\draw[inhibit, red!70!black, thick] ([xshift=0, yshift=-0.5cm]leg) -- ([xshift=1.5cm, yshift=-0.5cm]leg) node[right, font=\small]{Inhibition / Schädigung};
+			\draw[inhibit, red!70!black, thick] ([xshift=0, yshift=-0.5cm]leg) -- ([xshift=1.5cm, yshift=-0.5cm]leg) node[right, font=\small]{Inhibition / SchÃ¤digung};
 			\draw[activate, thick] ([xshift=0, yshift=-1.0cm]leg) -- ([xshift=1.5cm, yshift=-1.0cm]leg) node[right, font=\small]{Therapeutische Aktivierung};
 			
 		\end{tikzpicture}
-		\caption{\textbf{Mechanistisches Pathway-Diagramm} der drei Tau-Clearance-Wege mit positiver Rückkopplung im Alzheimer-Zustand und therapeutischen Angriffspunkten.}
+		\caption{\textbf{Mechanistisches Pathway-Diagramm} der drei Tau-Clearance-Wege mit positiver RÃ¼ckkopplung im Alzheimer-Zustand und therapeutischen Angriffspunkten.}
 		\label{fig:pathway_diagramm}
 	\end{sidewaysfigure}
-	{\small Abbildung~\ref{fig:pathway_diagramm} stellt den mechanistischen Signalweg des gesamten Tau-Clearance-Systems dar. Drei Clearance-Äste (Immunologisch, Tanyzyten, Glymphatisch) eliminieren CSF-Tau parallel vom zentralen CSF-Tau-Pool. Im Alzheimer-Zustand (rot) kollabieren die Tanyzyten unter Tau-Last: Die positive Rückkopplung über $\delta_T$ beschleunigt Neurodegeneration in einem Teufelskreis. Der Therapieblock (blau) zeigt, wie die vier Strategien $\mathcal{P}_1$--$\mathcal{P}_4$ direkt am Tanyzyt ansetzen -- entweder durch Erhöhung von $k_T$ (Protektion) oder durch Senkung von $\delta_T$ (Reduktion der Tau-induzierten Degradation).}
+	{\small Abbildung~\ref{fig:pathway_diagramm} stellt den mechanistischen Signalweg des gesamten Tau-Clearance-Systems dar. Drei Clearance-Ã„ste (Immunologisch, Tanyzyten, Glymphatisch) eliminieren CSF-Tau parallel vom zentralen CSF-Tau-Pool. Im Alzheimer-Zustand (rot) kollabieren die Tanyzyten unter Tau-Last: Die positive RÃ¼ckkopplung Ã¼ber $\delta_T$ beschleunigt Neurodegeneration in einem Teufelskreis. Der Therapieblock (blau) zeigt, wie die vier Strategien $\mathcal{P}_1$--$\mathcal{P}_4$ direkt am Tanyzyt ansetzen -- entweder durch ErhÃ¶hung von $k_T$ (Protektion) oder durch Senkung von $\delta_T$ (Reduktion der Tau-induzierten Degradation).}
 	
 	%=================================================================
-	\section{Fundamentale Therapeutische Lösungsansätze}
+	\section{Fundamentale Therapeutische LÃ¶sungsansÃ¤tze}
 	%=================================================================
 	
 	Auf Basis der formalen Theorie (\cref{thm:stability,thm:alzheimer_condition,cor:tanycyte_essential}) leiten wir vier fundamentale therapeutische Strategien ab, deren Korrektheit wir formal nachweisen.
 	
-	\subsection{Lösung I: Tanyzyt-Protektion durch neurotrophische Faktoren}
+	\subsection{LÃ¶sung I: Tanyzyt-Protektion durch neurotrophische Faktoren}
 	
 	\begin{definition}[Protektion-Strategie $\mathcal{P}_1$]
-		Strategie $\mathcal{P}_1$ erhöht $k_T$ (Tanyzyt-Transportrate) und senkt $\delta_T$ (Degradationsrate) durch Infusion von Brain-Derived Neurotrophic Factor (BDNF) und Vascular Endothelial Growth Factor (VEGF):
+		Strategie $\mathcal{P}_1$ erhÃ¶ht $k_T$ (Tanyzyt-Transportrate) und senkt $\delta_T$ (Degradationsrate) durch Infusion von Brain-Derived Neurotrophic Factor (BDNF) und Vascular Endothelial Growth Factor (VEGF):
 		\[
 		k_T \mapsto k_T^+ = k_T\,(1+\alpha_1), \quad \delta_T \mapsto \delta_T^- = \delta_T\,(1-\beta_1)
 		\]
@@ -1136,24 +1136,24 @@
 		\[
 		k_T\,(1+\alpha_1) > \delta_T\,(1-\beta_1)\,\frac{k_p\,\mu_\eta}{\eta^*\,(k_I + k_G\bar{\gamma})^2}.
 		\]
-		Auflösen nach $\alpha_1$ liefert die Bedingung.
+		AuflÃ¶sen nach $\alpha_1$ liefert die Bedingung.
 	\end{proof}
 	
-	\textbf{Biologische Umsetzung}: BDNF aktiviert den TrkB-Rezeptor auf Tanyzyten und steigert die Expression von LRP1 (Tau-Aufnahme-Rezeptor) sowie Dynein-Motorproteinen. VEGF fördert die Kapillarisierung und stabilisiert die Tanyzyt-Endothel-Verbindung.
+	\textbf{Biologische Umsetzung}: BDNF aktiviert den TrkB-Rezeptor auf Tanyzyten und steigert die Expression von LRP1 (Tau-Aufnahme-Rezeptor) sowie Dynein-Motorproteinen. VEGF fÃ¶rdert die Kapillarisierung und stabilisiert die Tanyzyt-Endothel-Verbindung.
 	
-	\subsection{Lösung II: Gentherapeutische Tanyzyt-Stärkung}
+	\subsection{LÃ¶sung II: Gentherapeutische Tanyzyt-StÃ¤rkung}
 	
 	\begin{definition}[Gentherapie-Strategie $\mathcal{P}_2$]
-		Strategie $\mathcal{P}_2$ aktiviert via AAV9-vermitteltem Gentransfer das Progranulin-Gen (PGRN) in Tanyzyten, was die Tanyzyt-Halbwertszeit verlängert ($\mu_\eta \mapsto \mu_\eta^- = \mu_\eta\,(1-\rho)$, $\rho \in (0,1)$) und die autophagische Tau-Clearance-Kapazität erhöht.
+		Strategie $\mathcal{P}_2$ aktiviert via AAV9-vermitteltem Gentransfer das Progranulin-Gen (PGRN) in Tanyzyten, was die Tanyzyt-Halbwertszeit verlÃ¤ngert ($\mu_\eta \mapsto \mu_\eta^- = \mu_\eta\,(1-\rho)$, $\rho \in (0,1)$) und die autophagische Tau-Clearance-KapazitÃ¤t erhÃ¶ht.
 	\end{definition}
 	
 	\begin{theorem}[Korrektheit von $\mathcal{P}_2$]
 		\label{thm:p2_korrektheit}
-		Unter Strategie $\mathcal{P}_2$ konvergiert $\eta(t) \to \eta_{\mathcal{P}_2}^* > \eta^*_{\text{unbehandelt}}$ exponentiell mit Rate $\mu_\eta^-$, und der kritische Schwellenwert erhöht sich auf:
+		Unter Strategie $\mathcal{P}_2$ konvergiert $\eta(t) \to \eta_{\mathcal{P}_2}^* > \eta^*_{\text{unbehandelt}}$ exponentiell mit Rate $\mu_\eta^-$, und der kritische Schwellenwert erhÃ¶ht sich auf:
 		\[
 		\tau_{C,\text{krit}}^{\mathcal{P}_2} = \frac{\mu_\eta^-}{\delta_T} = \frac{\mu_\eta\,(1-\rho)}{\delta_T} \cdot \frac{1}{1-\rho} = \frac{\mu_\eta}{\delta_T} = \tau_{C,\text{krit}}.
 		\]
-		Damit wird effektiv die Tanyzyt-Integrität bei gegebener Tau-Last verbessert.
+		Damit wird effektiv die Tanyzyt-IntegritÃ¤t bei gegebener Tau-Last verbessert.
 	\end{theorem}
 	
 	\begin{proof}
@@ -1167,7 +1167,7 @@
 		\]
 	\end{proof}
 	
-	\subsection{Lösung III: Biomarker-gestützte Früherkennung}
+	\subsection{LÃ¶sung III: Biomarker-gestÃ¼tzte FrÃ¼herkennung}
 	
 	\begin{definition}[Tau-Ratio-Biomarker $\mathcal{B}$]
 		Der \emph{Tau-Ratio-Biomarker} ist definiert als:
@@ -1176,29 +1176,29 @@
 		\]
 	\end{definition}
 	
-	\begin{theorem}[Diagnostische Validität von $\mathcal{B}$]
+	\begin{theorem}[Diagnostische ValiditÃ¤t von $\mathcal{B}$]
 		\label{thm:biomarker}
 		Im gesunden Gleichgewicht $E^*$ gilt:
 		\[
 		\mathcal{B}^* = \frac{\tau_C^*}{\tau_B^*} = \frac{k_E}{k_T\,\eta^*}
 		\]
-		Im pathologischen Gleichgewicht $E^0$ gilt $\tau_B^0 = 0$, also $\mathcal{B}^0 \to \infty$. Der Biomarker $\mathcal{B}$ ist daher ein streng monoton wachsendes Maß für die Tanyzyt-Dysfunktion.
+		Im pathologischen Gleichgewicht $E^0$ gilt $\tau_B^0 = 0$, also $\mathcal{B}^0 \to \infty$. Der Biomarker $\mathcal{B}$ ist daher ein streng monoton wachsendes MaÃŸ fÃ¼r die Tanyzyt-Dysfunktion.
 	\end{theorem}
 	
 	\begin{proof}
 		Aus Gleichgewichtsbedingungen \eqref{eq:auto2}: $0 = k_T\,\eta^*\,\tau_C^* - k_E\,\tau_B^*$, also $\tau_B^* = k_T\,\eta^*\,\tau_C^* / k_E$. Division ergibt $\mathcal{B}^* = k_E / (k_T\,\eta^*)$.
 		
-		Da $\eta^*$ monoton fallend in der Tau-Last und Tanyzyt-Schädigungsrate ist, ist $\mathcal{B}^* = k_E/(k_T\,\eta^*)$ monoton steigend. Für $\eta \to 0$: $\mathcal{B} \to \infty$.
+		Da $\eta^*$ monoton fallend in der Tau-Last und Tanyzyt-SchÃ¤digungsrate ist, ist $\mathcal{B}^* = k_E/(k_T\,\eta^*)$ monoton steigend. FÃ¼r $\eta \to 0$: $\mathcal{B} \to \infty$.
 	\end{proof}
 	
-	\begin{proposition}[Klinischer Schwellenwert für $\mathcal{B}$]
-		Ein klinisch sinnvoller Diagnoseschwellenwert $\mathcal{B}_{\text{diag}}$ für Tanyzyt-Dysfunktion ist:
+	\begin{proposition}[Klinischer Schwellenwert fÃ¼r $\mathcal{B}$]
+		Ein klinisch sinnvoller Diagnoseschwellenwert $\mathcal{B}_{\text{diag}}$ fÃ¼r Tanyzyt-Dysfunktion ist:
 		\[
 		\mathcal{B}_{\text{diag}} = \frac{k_E}{k_T\,\eta_{\min}} = \frac{k_E\,(\delta_T\,\tau_{C,\text{AD}} + \mu_\eta)}{k_T\,\delta_T\,\tau_{C,\text{AD}}}
 		\]
 	\end{proposition}
 	
-	\subsection{Lösung IV: Kombinierte Tri-Mechanismus-Therapie}
+	\subsection{LÃ¶sung IV: Kombinierte Tri-Mechanismus-Therapie}
 	
 	\begin{definition}[Kombinationsstrategie $\mathcal{P}_4$]
 		Die optimale Kombinationsstrategie $\mathcal{P}_4$ adressiert simultan alle drei Clearance-Achsen:
@@ -1209,17 +1209,17 @@
 		\end{align*}
 	\end{definition}
 	
-	\begin{theorem}[Optimalität von $\mathcal{P}_4$]
+	\begin{theorem}[OptimalitÃ¤t von $\mathcal{P}_4$]
 		\label{thm:optimality}
 		Die Kombinationsstrategie $\mathcal{P}_4$ minimiert das Tau-Gleichgewichtsniveau:
 		\[
 		\tau_C^{*,\mathcal{P}_4} = \frac{k_p}{k_T(1+\alpha_1)\,\eta^* + k_I(1+\alpha_2) + k_G\,\bar{\gamma}(1+\alpha_3)} < \tau_C^*
 		\]
-		und ist für jede einzelne Strategie $\mathcal{P}_i$ ($i=1,2,3$) pareto-dominant.
+		und ist fÃ¼r jede einzelne Strategie $\mathcal{P}_i$ ($i=1,2,3$) pareto-dominant.
 	\end{theorem}
 	
 	\begin{proof}
-		Direktes Einsetzen in \eqref{eq:auto1} zeigt, dass der Nenner der Gleichgewichtsbedingung unter $\mathcal{P}_4$ gegenüber allen $\mathcal{P}_i$ streng größer ist (da $\alpha_i > 0$), wodurch $\tau_C^{*,\mathcal{P}_4}$ streng kleiner als unter jeder Einzelstrategie ist. Pareto-Dominanz folgt, da die Tau-Reduktion für alle klinischen Zielgrößen ($\tau_C^*, \eta^*, \mathcal{B}^*$) simultan verbessert wird.
+		Direktes Einsetzen in \eqref{eq:auto1} zeigt, dass der Nenner der Gleichgewichtsbedingung unter $\mathcal{P}_4$ gegenÃ¼ber allen $\mathcal{P}_i$ streng grÃ¶ÃŸer ist (da $\alpha_i > 0$), wodurch $\tau_C^{*,\mathcal{P}_4}$ streng kleiner als unter jeder Einzelstrategie ist. Pareto-Dominanz folgt, da die Tau-Reduktion fÃ¼r alle klinischen ZielgrÃ¶ÃŸen ($\tau_C^*, \eta^*, \mathcal{B}^*$) simultan verbessert wird.
 	\end{proof}
 	
 	%=================================================================
@@ -1244,7 +1244,7 @@
 			]
 			
 			\node[root] (diag) {Verdacht auf\\Alzheimer\\(Biomarker $\mathcal{B} > \mathcal{B}_{\text{diag}}$)}
-			child {node[risk] {Frühstadium\\($\eta > 0{,}5$)}
+			child {node[risk] {FrÃ¼hstadium\\($\eta > 0{,}5$)}
 				child {node[therapy] {$\mathcal{P}_1$: BDNF/VEGF\\ Tanyzyt-Schutz}
 					child {node[outcome] {$\Delta\tau_C \approx -35\%$\\ NNT $\approx 4{,}2$}}
 				}
@@ -1252,31 +1252,31 @@
 					child {node[outcome] {$\Delta\tau_C \approx -65\%$\\ NNT $\approx 2{,}1$}}
 				}
 			}
-			child {node[risk] {Spätstadium\\($\eta < 0{,}2$)}
+			child {node[risk] {SpÃ¤tstadium\\($\eta < 0{,}2$)}
 				child {node[therapy] {$\mathcal{P}_2$: Gentherapie\\ (PGRN-Aktivierung)}
-					child {node[outcome] {$\Delta\tau_C \approx -40\%$\\ Regeneration möglich}}
+					child {node[outcome] {$\Delta\tau_C \approx -40\%$\\ Regeneration mÃ¶glich}}
 				}
 				child {node[therapy] {Symptom-\\ management}
-					child {node[outcome] {Lebensqualität-\\ optimierung}}
+					child {node[outcome] {LebensqualitÃ¤t-\\ optimierung}}
 				}
 			};
 			
 			%-- Screening-Pfad (links)
-			\node[therapy, left=3.0cm of diag, yshift=0.5cm] (screen) {Präventives\\Screening\\ ($\mathcal{B}$ bei 55+)};
+			\node[therapy, left=3.0cm of diag, yshift=0.5cm] (screen) {PrÃ¤ventives\\Screening\\ ($\mathcal{B}$ bei 55+)};
 			\draw[-Stealth, thick, blue!60!black] (screen) -- (diag);
 			
 			%-- Zeitachse unten
 			%\draw[-Stealth, thick] (-8.5,-8.5) -- (8.5,-8.5) node[right, font=\small]{Krankheitsstadium};
-			\node[font=\scriptsize] at (-6.9,-8.85) {Präklinisch};
+			\node[font=\scriptsize] at (-6.9,-8.85) {PrÃ¤klinisch};
 			\node[font=\scriptsize] at (-2.1,-8.85) {MCI};
-			\node[font=\scriptsize] at (2.1,-8.85) {Frühes AD};
-			\node[font=\scriptsize] at (6.9,-8.85) {Spätes AD};
+			\node[font=\scriptsize] at (2.1,-8.85) {FrÃ¼hes AD};
+			\node[font=\scriptsize] at (6.9,-8.85) {SpÃ¤tes AD};
 			
 		\end{tikzpicture}}% end scalebox
-		\caption{\textbf{Therapeutischer Entscheidungsbaum} basierend auf Tau-Ratio $\mathcal{B}$ und Tanyzyt-Integrität $\eta$ (NNT = Number Needed to Treat).}
+		\caption{\textbf{Therapeutischer Entscheidungsbaum} basierend auf Tau-Ratio $\mathcal{B}$ und Tanyzyt-IntegritÃ¤t $\eta$ (NNT = Number Needed to Treat).}
 		\label{fig:entscheidungsbaum}
 	\end{figure}
-	{\small Abbildung~\ref{fig:entscheidungsbaum} fasst das klinische Screening-Protokoll als Entscheidungsbaum zusammen. Ausgehend vom Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ und der Tanyzyt-Integrität $\eta$ werden Patienten ab 55 Jahren in vier Stadien stratifiziert (präklinisch, MCI, frühes und spätes Alzheimer). Im präklinischen und MCI-Stadium ist die NNT noch günstig und präventive Intervention möglich, bevor irreversible Tanyzyt-Degeneration einsetzt; in späteren Stadien verschiebt sich der Fokus auf Kombinations- und symptomatische Therapie gemäß $\mathcal{P}_4$.}
+	{\small Abbildung~\ref{fig:entscheidungsbaum} fasst das klinische Screening-Protokoll als Entscheidungsbaum zusammen. Ausgehend vom Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ und der Tanyzyt-IntegritÃ¤t $\eta$ werden Patienten ab 55 Jahren in vier Stadien stratifiziert (prÃ¤klinisch, MCI, frÃ¼hes und spÃ¤tes Alzheimer). Im prÃ¤klinischen und MCI-Stadium ist die NNT noch gÃ¼nstig und prÃ¤ventive Intervention mÃ¶glich, bevor irreversible Tanyzyt-Degeneration einsetzt; in spÃ¤teren Stadien verschiebt sich der Fokus auf Kombinations- und symptomatische Therapie gemÃ¤ÃŸ $\mathcal{P}_4$.}
 	
 	%=================================================================
 	\section{Diskussion}
@@ -1284,157 +1284,157 @@
 	
 	\subsection{Bedeutung der Entdeckung im wissenschaftlichen Kontext}
 	
-	Die Entdeckung der Tanyzyten als dritten Tau-Clearance-Weg ist aus mehreren Gründen von fundamentaler Bedeutung:
+	Die Entdeckung der Tanyzyten als dritten Tau-Clearance-Weg ist aus mehreren GrÃ¼nden von fundamentaler Bedeutung:
 	
-	\textbf{Erstens} überbrückt sie die seit Jahren bestehende Lücke zwischen epidemiologisch bekannten Risikofaktoren (Adipositas, Diabetes, Schlafmangel) und dem molekularen Pathomechanismus der Alzheimer-Erkrankung. Alle drei Risikofaktoren beeinflussen primär Tanyzyten-assoziierte Signalwege.
+	\textbf{Erstens} Ã¼berbrÃ¼ckt sie die seit Jahren bestehende LÃ¼cke zwischen epidemiologisch bekannten Risikofaktoren (Adipositas, Diabetes, Schlafmangel) und dem molekularen Pathomechanismus der Alzheimer-Erkrankung. Alle drei Risikofaktoren beeinflussen primÃ¤r Tanyzyten-assoziierte Signalwege.
 	
-	\textbf{Zweitens} erklärt die Tanyzyt-Hypothese die Spezifität der Befunde: Der vollständige Kollaps der Tanyzyt-Brücken wurde nur in Alzheimer-Gehirnen, nicht in anderen Demenzen gefunden. Dies entspricht \cref{fig:validierung} (Radar-Diagramm), das die Alzheimer-spezifische Strukturdegeneration visualisiert.
+	\textbf{Zweitens} erklÃ¤rt die Tanyzyt-Hypothese die SpezifitÃ¤t der Befunde: Der vollstÃ¤ndige Kollaps der Tanyzyt-BrÃ¼cken wurde nur in Alzheimer-Gehirnen, nicht in anderen Demenzen gefunden. Dies entspricht \cref{fig:validierung} (Radar-Diagramm), das die Alzheimer-spezifische Strukturdegeneration visualisiert.
 	
-	\textbf{Drittens} öffnet das Korollar~\ref{cor:tanycyte_essential} ein fundamentales therapeutisches Fenster: Da selbst bei reduzierter Immunfunktion und glymphatischem System eine minimale Tanyzyt-Aktivität ausreicht, um pathologische Tau-Akkumulation zu verhindern, sind Tanyzyt-schützende Maßnahmen potentiell auch im fortgeschrittenen Stadium wirksam.
+	\textbf{Drittens} Ã¶ffnet das Korollar~\ref{cor:tanycyte_essential} ein fundamentales therapeutisches Fenster: Da selbst bei reduzierter Immunfunktion und glymphatischem System eine minimale Tanyzyt-AktivitÃ¤t ausreicht, um pathologische Tau-Akkumulation zu verhindern, sind Tanyzyt-schÃ¼tzende MaÃŸnahmen potentiell auch im fortgeschrittenen Stadium wirksam.
 	
 	\subsection{Limitierungen}
 	
-	Das vorgestellte mathematische Modell trifft vereinfachende Annahmen: Es abstrahiert räumliche Inhomogenitäten (verschiedene Hirnregionen, Tau-Propagationsmuster nach Braak-Stadien), behandelt die drei Clearance-Wege als unabhängig (obwohl Kreuzregulation existiert) und basiert auf normierten, nicht klinisch kalibrierten Parametern. Künftige Arbeiten sollten ein partielles Differentialgleichungssystem (PDE) mit räumlicher Auflösung entwickeln.
+	Das vorgestellte mathematische Modell trifft vereinfachende Annahmen: Es abstrahiert rÃ¤umliche InhomogenitÃ¤ten (verschiedene Hirnregionen, Tau-Propagationsmuster nach Braak-Stadien), behandelt die drei Clearance-Wege als unabhÃ¤ngig (obwohl Kreuzregulation existiert) und basiert auf normierten, nicht klinisch kalibrierten Parametern. KÃ¼nftige Arbeiten sollten ein partielles Differentialgleichungssystem (PDE) mit rÃ¤umlicher AuflÃ¶sung entwickeln.
 	
 	\subsection{Ausblick}
 
-	Die vorliegende Arbeit legt ein formales Fundament, das eine Vielzahl weiterführender Forschungsrichtungen eröffnet. Im Folgenden werden diese entlang von sechs thematischen Säulen strukturiert: \emph{(A) Grundlagenforschung \& Modellvertiefung}, \emph{(B) Biomarker-Entwicklung \& klinische Diagnostik}, \emph{(C) Therapeutische Strategien \& translationale Medizin}, \emph{(D) Präventionsmedizin \& Lebensstilinterventionen}, \emph{(E) Systembiologische Erweiterungen \& KI-Integration} sowie \emph{(F) Epistemische Wolke, kognitive Integration und neuro-epistemisches Modellparadigma}.
+	Die vorliegende Arbeit legt ein formales Fundament, das eine Vielzahl weiterfÃ¼hrender Forschungsrichtungen erÃ¶ffnet. Im Folgenden werden diese entlang von sechs thematischen SÃ¤ulen strukturiert: \emph{(A) Grundlagenforschung \& Modellvertiefung}, \emph{(B) Biomarker-Entwicklung \& klinische Diagnostik}, \emph{(C) Therapeutische Strategien \& translationale Medizin}, \emph{(D) PrÃ¤ventionsmedizin \& Lebensstilinterventionen}, \emph{(E) Systembiologische Erweiterungen \& KI-Integration} sowie \emph{(F) Epistemische Wolke, kognitive Integration und neuro-epistemisches Modellparadigma}.
 
 	\subsubsection*{(A) Grundlagenforschung und Modellvertiefung}
 
-	Das hier entwickelte ODE-System $\mathcal{S}$ abstrahiert bewusst räumliche Heterogenität und Zeitverzögerungen, um analytische Traktabilität zu gewährleisten. Eine unmittelbar anschließende Forschungspriorität ist die Erweiterung zu einem \emph{partiellen Differentialgleichungssystem} (PDE), das die räumliche Ausbreitung von Tau-Aggregaten entlang anatomischer Verbindungen -- entsprechend den Braak-Stadien I--VI -- explizit modelliert:
+	Das hier entwickelte ODE-System $\mathcal{S}$ abstrahiert bewusst rÃ¤umliche HeterogenitÃ¤t und ZeitverzÃ¶gerungen, um analytische TraktabilitÃ¤t zu gewÃ¤hrleisten. Eine unmittelbar anschlieÃŸende ForschungsprioritÃ¤t ist die Erweiterung zu einem \emph{partiellen Differentialgleichungssystem} (PDE), das die rÃ¤umliche Ausbreitung von Tau-Aggregaten entlang anatomischer Verbindungen -- entsprechend den Braak-Stadien I--VI -- explizit modelliert:
 	\[
 	\frac{\partial \tau_C}{\partial t} = D_\tau \,\Delta \tau_C - \kappa(\eta)\,\tau_C + k_p(\mathbf{x}),
 	\]
-	wobei $D_\tau$ den effektiven Diffusionskoeffizienten in CSF-gefüllten Kompartimenten darstellt und $\mathbf{x}$ die Ortskoordinate im Hirnparenchym bezeichnet. Eine solche räumlich aufgelöste Modellierung würde die asymmetrische Tau-Pathologie erklären, die bei Alzheimer-Patienten typischerweise im entorhinalen Kortex beginnt und sich hippokampal ausbreitet.
+	wobei $D_\tau$ den effektiven Diffusionskoeffizienten in CSF-gefÃ¼llten Kompartimenten darstellt und $\mathbf{x}$ die Ortskoordinate im Hirnparenchym bezeichnet. Eine solche rÃ¤umlich aufgelÃ¶ste Modellierung wÃ¼rde die asymmetrische Tau-Pathologie erklÃ¤ren, die bei Alzheimer-Patienten typischerweise im entorhinalen Kortex beginnt und sich hippokampal ausbreitet.
 
-	Darüber hinaus sollten \emph{stochastische Erweiterungen} des Modells untersucht werden. Biologische Prozesse sind inhärent verrauscht: Tau-Produktionsraten $k_p$ variieren mit zirkadianen Zyklen, neuronaler Aktivität und metabolischem Zustand. Ein stochastisches Differentialgleichungsmodell (SDE)
+	DarÃ¼ber hinaus sollten \emph{stochastische Erweiterungen} des Modells untersucht werden. Biologische Prozesse sind inhÃ¤rent verrauscht: Tau-Produktionsraten $k_p$ variieren mit zirkadianen Zyklen, neuronaler AktivitÃ¤t und metabolischem Zustand. Ein stochastisches Differentialgleichungsmodell (SDE)
 	\[
 	\mathrm{d}\tau_C = \bigl(k_p - \kappa(\eta)\,\tau_C\bigr)\,\mathrm{d}t + \sigma_\tau\,\tau_C\,\mathrm{d}W_t
 	\]
-	mit Wiener-Prozess $W_t$ und Rauschstärke $\sigma_\tau$ würde es erlauben, Wahrscheinlichkeitsverteilungen für die klinische Manifestation zu berechnen und Risikoprofile auf Einzelpatientenebene zu quantifizieren.
+	mit Wiener-Prozess $W_t$ und RauschstÃ¤rke $\sigma_\tau$ wÃ¼rde es erlauben, Wahrscheinlichkeitsverteilungen fÃ¼r die klinische Manifestation zu berechnen und Risikoprofile auf Einzelpatientenebene zu quantifizieren.
 
-	Ein weiterer wichtiger Aspekt ist die \emph{Kreuzregulation der drei Clearance-Wege}. Das aktuelle Modell behandelt Tanyzyt-Transport, Mikroglia-Immunantwort und Glymphsystem als weitgehend unabhängig. Experimentelle Befunde legen jedoch nahe, dass Tanyzyten über parakrinen VEGF-Signalweg die Blut-Hirn-Schranken-Funktion und damit die glymphatische Effizienz beeinflussen, und dass Mikroglia-Aktivierung umgekehrt Tanyzyten-Morphologie verändert. Ein gekoppeltes Netzwerkmodell mit expliziten Rückkopplungsschleifen ist daher notwendig.
+	Ein weiterer wichtiger Aspekt ist die \emph{Kreuzregulation der drei Clearance-Wege}. Das aktuelle Modell behandelt Tanyzyt-Transport, Mikroglia-Immunantwort und Glymphsystem als weitgehend unabhÃ¤ngig. Experimentelle Befunde legen jedoch nahe, dass Tanyzyten Ã¼ber parakrinen VEGF-Signalweg die Blut-Hirn-Schranken-Funktion und damit die glymphatische Effizienz beeinflussen, und dass Mikroglia-Aktivierung umgekehrt Tanyzyten-Morphologie verÃ¤ndert. Ein gekoppeltes Netzwerkmodell mit expliziten RÃ¼ckkopplungsschleifen ist daher notwendig.
 
-	Schließlich sollten \emph{Altersabhängigkeiten} parametrisch eingeführt werden. In der vorliegenden Arbeit sind Modellparameter zeitkonstant; tatsächlich ändern sich $k_T$, $\mu_\eta$ und $\delta_T$ mit steigendem Lebensalter systematisch (altersbedingte Hypothalamus-Atrophie, veränderte Wachstumsfaktor-Signalwege). Eine altersdynamische Parametermodellierung
+	SchlieÃŸlich sollten \emph{AltersabhÃ¤ngigkeiten} parametrisch eingefÃ¼hrt werden. In der vorliegenden Arbeit sind Modellparameter zeitkonstant; tatsÃ¤chlich Ã¤ndern sich $k_T$, $\mu_\eta$ und $\delta_T$ mit steigendem Lebensalter systematisch (altersbedingte Hypothalamus-Atrophie, verÃ¤nderte Wachstumsfaktor-Signalwege). Eine altersdynamische Parametermodellierung
 	\[
 	k_T(t) = k_{T,0}\,\exp\!\bigl(-\lambda_{\text{age}}\,(t - t_0)\bigr)
 	\]
-	würde individuelle Krankheitstrajektor\-ien über Jahrzehnte voraussagen.
+	wÃ¼rde individuelle Krankheitstrajektor\-ien Ã¼ber Jahrzehnte voraussagen.
 
 	\subsubsection*{(B) Biomarker-Entwicklung und klinische Diagnostik}
 
-	Der in Theorem~\ref{thm:biomarker} formal validierte Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ eröffnet unmittelbare klinische Perspektiven, erfordert jedoch umfangreiche translationelle Validierungsarbeit.
+	Der in Theorem~\ref{thm:biomarker} formal validierte Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ erÃ¶ffnet unmittelbare klinische Perspektiven, erfordert jedoch umfangreiche translationelle Validierungsarbeit.
 
-	\textbf{Liquor-basierte Tanyzyt-Marker}: Neben dem Tau-Ratio ist die Identifikation direkter molekularer Marker für Tanyzyt-Integrität $\eta$ eine dringende Aufgabe. Hypothalamisch exprimierte Proteine wie das postulierte \emph{Tanycin-16} (ein hypothetisches Glykoprotein der Tanyzyt-Membran), FGF-Rezeptor-Isoformen oder Vimentin-Fragmente könnten im Liquor als Surrogatmarker für Tanyzyt-Schädigung nachweisbar sein. Liquor-Proteomik-Studien an großen Kohorten (mindestens $n = 300$, mit longitudinalem Follow-up über 10 Jahre) sind hierzu notwendig.
+	\textbf{Liquor-basierte Tanyzyt-Marker}: Neben dem Tau-Ratio ist die Identifikation direkter molekularer Marker fÃ¼r Tanyzyt-IntegritÃ¤t $\eta$ eine dringende Aufgabe. Hypothalamisch exprimierte Proteine wie das postulierte \emph{Tanycin-16} (ein hypothetisches Glykoprotein der Tanyzyt-Membran), FGF-Rezeptor-Isoformen oder Vimentin-Fragmente kÃ¶nnten im Liquor als Surrogatmarker fÃ¼r Tanyzyt-SchÃ¤digung nachweisbar sein. Liquor-Proteomik-Studien an groÃŸen Kohorten (mindestens $n = 300$, mit longitudinalem Follow-up Ã¼ber 10 Jahre) sind hierzu notwendig.
 
-	\textbf{Bildgebungsbasierte Marker}: Die direkte strukturelle Visualisierung von Tanyzyten im lebenden Menschen ist derzeit nicht möglich. Hochauflösende 7-Tesla-MRT mit spezialisierten Sequenzen (diffusionsgewichtete Bildgebung des dritten Ventrikels, Magnetisierungstransfer-Ratio als Maß für Myelinisierung der Tanyzyt-Fortsätze) könnte jedoch indirekte Informationen über Tanyzyt-Integrität liefern. Ein entsprechendes \emph{Tanyzyt-Imaging-Protokoll} wäre ein wichtiger klinischer Meilenstein.
+	\textbf{Bildgebungsbasierte Marker}: Die direkte strukturelle Visualisierung von Tanyzyten im lebenden Menschen ist derzeit nicht mÃ¶glich. HochauflÃ¶sende 7-Tesla-MRT mit spezialisierten Sequenzen (diffusionsgewichtete Bildgebung des dritten Ventrikels, Magnetisierungstransfer-Ratio als MaÃŸ fÃ¼r Myelinisierung der Tanyzyt-FortsÃ¤tze) kÃ¶nnte jedoch indirekte Informationen Ã¼ber Tanyzyt-IntegritÃ¤t liefern. Ein entsprechendes \emph{Tanyzyt-Imaging-Protokoll} wÃ¤re ein wichtiger klinischer Meilenstein.
 
-	\textbf{Blutbasierte Marker}: Da Tanyzyten Tau aktiv in das Blut transportieren, könnte die Plasmakonzentration des phosphorylierten Tau-Proteins (p-tau\textsubscript{181}, p-tau\textsubscript{217}) als indirektes Maß für Tanyzyt-Aktivität dienen -- spezifisch jener Anteil, der über Tanyzyten (und nicht über andere Wege) eliminiert wird. Die Differentialdiagnose erfordert jedoch die Entwicklung transport-spezifischer Tau-Modifikationsmarker.
+	\textbf{Blutbasierte Marker}: Da Tanyzyten Tau aktiv in das Blut transportieren, kÃ¶nnte die Plasmakonzentration des phosphorylierten Tau-Proteins (p-tau\textsubscript{181}, p-tau\textsubscript{217}) als indirektes MaÃŸ fÃ¼r Tanyzyt-AktivitÃ¤t dienen -- spezifisch jener Anteil, der Ã¼ber Tanyzyten (und nicht Ã¼ber andere Wege) eliminiert wird. Die Differentialdiagnose erfordert jedoch die Entwicklung transport-spezifischer Tau-Modifikationsmarker.
 
-	\textbf{Klinische Studiendurchführung}: Zur Validierung des $\mathcal{B}$-Biomarkers sind prospektive \emph{longitudinale Kohortenstudien} erforderlich, idealerweise eingebettet in bestehende Alzheimer-Biobanken (ADNI, EPAD, PREVENT-AD). Die Hypothese: $\mathcal{B} > \mathcal{B}_{\text{diag}}$ prädiziert den Übergang von präklinisch zu MCI mindestens 5 Jahre vor klinischer Manifestation. Ein Falsch-Positiv-Rate unter 10\,\% bei einer Sensitivität von über 85\,\% wäre klinisch ausreichend für ein Screening-Programm.
+	\textbf{Klinische StudiendurchfÃ¼hrung}: Zur Validierung des $\mathcal{B}$-Biomarkers sind prospektive \emph{longitudinale Kohortenstudien} erforderlich, idealerweise eingebettet in bestehende Alzheimer-Biobanken (ADNI, EPAD, PREVENT-AD). Die Hypothese: $\mathcal{B} > \mathcal{B}_{\text{diag}}$ prÃ¤diziert den Ãœbergang von prÃ¤klinisch zu MCI mindestens 5 Jahre vor klinischer Manifestation. Ein Falsch-Positiv-Rate unter 10\,\% bei einer SensitivitÃ¤t von Ã¼ber 85\,\% wÃ¤re klinisch ausreichend fÃ¼r ein Screening-Programm.
 
 	\subsubsection*{(C) Therapeutische Strategien und translationale Medizin}
 
-	Die vier formalisierten Therapiestrategien $\mathcal{P}_1$--$\mathcal{P}_4$ stellen die theoretische Basis für konkrete klinische Entwicklungsprogramme dar.
+	Die vier formalisierten Therapiestrategien $\mathcal{P}_1$--$\mathcal{P}_4$ stellen die theoretische Basis fÃ¼r konkrete klinische Entwicklungsprogramme dar.
 
-	\textbf{$\mathcal{P}_1$ -- Tanyzyt-Protektion durch neurotrophische Faktoren}: Der Einsatz von BDNF und VEGF-A zur Tanyzyt-Stärkung ist biologisch plausibel, jedoch durch die Blut-Hirn-Schranke (BHS) limitiert. Vielversprechende Ansätze umfassen:
+	\textbf{$\mathcal{P}_1$ -- Tanyzyt-Protektion durch neurotrophische Faktoren}: Der Einsatz von BDNF und VEGF-A zur Tanyzyt-StÃ¤rkung ist biologisch plausibel, jedoch durch die Blut-Hirn-Schranke (BHS) limitiert. Vielversprechende AnsÃ¤tze umfassen:
 	\begin{itemize}
-		\item Intranasal appliziertes BDNF (Umgehung der BHS über den olfaktorischen Pfad zum Hypothalamus)
-		\item Fokussierter Ultraschall (focused ultrasound, FUS) zur lokalen BHS-Öffnung im Hypothalamus mit anschließender intravenöser VEGF-Infusion
+		\item Intranasal appliziertes BDNF (Umgehung der BHS Ã¼ber den olfaktorischen Pfad zum Hypothalamus)
+		\item Fokussierter Ultraschall (focused ultrasound, FUS) zur lokalen BHS-Ã–ffnung im Hypothalamus mit anschlieÃŸender intravenÃ¶ser VEGF-Infusion
 		\item Nanopartikel-vermittelte Wirkstofffreisetzung mit tanyzyt-spezifischen Liganden (z.B.\ Anti-FGF-Rezeptor-Nanopartikel)
 	\end{itemize}
-	Präklinische Validierung in transgenen APP/PS1-Mäusen mit Hypothalamus-spezifischer BDNF-Überexpression ist als unmittelbarer nächster Schritt geplant.
+	PrÃ¤klinische Validierung in transgenen APP/PS1-MÃ¤usen mit Hypothalamus-spezifischer BDNF-Ãœberexpression ist als unmittelbarer nÃ¤chster Schritt geplant.
 
-	\textbf{$\mathcal{P}_2$ -- Gentherapeutische Tanyzyt-Stärkung}: AAV9-vermittelter Gentransfer von Progranulin (PGRN) und LRP1 (Low-Density-Lipoprotein-Rezeptor-related protein 1) in Tanyzyten bietet das Potenzial einer langfristigen, einmaligen Intervention. Kritische Entwicklungsschritte:
+	\textbf{$\mathcal{P}_2$ -- Gentherapeutische Tanyzyt-StÃ¤rkung}: AAV9-vermittelter Gentransfer von Progranulin (PGRN) und LRP1 (Low-Density-Lipoprotein-Rezeptor-related protein 1) in Tanyzyten bietet das Potenzial einer langfristigen, einmaligen Intervention. Kritische Entwicklungsschritte:
 	\begin{itemize}
 		\item Design tanyzyt-selektiver Promotoren (basierend auf dem Tanyzyt-spezifischen RAX/Rax-Transkriptionsfaktor)
-		\item Sicherheitsbewertung bezüglich Off-Target-Expression in Hypophyse und Ependymzellen
-		\item Entwicklung reversibler Genexpressionssysteme (Doxycyclin-induzierbarer Promotor) für eine regulierbare Therapie
+		\item Sicherheitsbewertung bezÃ¼glich Off-Target-Expression in Hypophyse und Ependymzellen
+		\item Entwicklung reversibler Genexpressionssysteme (Doxycyclin-induzierbarer Promotor) fÃ¼r eine regulierbare Therapie
 		\item GMP-konforme Herstellung und First-in-Human-Studien (Phase-I-Sicherheitsstudie)
 	\end{itemize}
-	Der Zeitrahmen bis zur klinischen Phase-II-Studie wird auf 8--12 Jahre geschätzt.
+	Der Zeitrahmen bis zur klinischen Phase-II-Studie wird auf 8--12 Jahre geschÃ¤tzt.
 
-	\textbf{$\mathcal{P}_3$ -- Biomarker-gestützte Früherkennung als Therapie-Enabler}: Der diagnostische Wert des $\mathcal{B}$-Biomarkers geht über die bloße Feststellung einer Erkrankung hinaus. Er ermöglicht \emph{adaptive Therapiesteuerung}: Monatliche Messung von $\mathcal{B}(t)$ erlaubt die Echtzeit-Überwachung der Therapieresponse und frühzeitige Dosisanpassungen. Dies entspricht dem Konzept der \emph{personalisierten Präzisionsmedizin}, bei der individuelle Parameterschätzungen aus dem Modell $\mathcal{S}$ für den einzelnen Patienten kalibriert und therapeutische Dosierungen formal optimiert werden.
+	\textbf{$\mathcal{P}_3$ -- Biomarker-gestÃ¼tzte FrÃ¼herkennung als Therapie-Enabler}: Der diagnostische Wert des $\mathcal{B}$-Biomarkers geht Ã¼ber die bloÃŸe Feststellung einer Erkrankung hinaus. Er ermÃ¶glicht \emph{adaptive Therapiesteuerung}: Monatliche Messung von $\mathcal{B}(t)$ erlaubt die Echtzeit-Ãœberwachung der Therapieresponse und frÃ¼hzeitige Dosisanpassungen. Dies entspricht dem Konzept der \emph{personalisierten PrÃ¤zisionsmedizin}, bei der individuelle ParameterschÃ¤tzungen aus dem Modell $\mathcal{S}$ fÃ¼r den einzelnen Patienten kalibriert und therapeutische Dosierungen formal optimiert werden.
 
-	\textbf{Kombinationstherapie und Synergieeffekte}: Die Pareto-Optimalität von $\mathcal{P}_4$ (Theorem~\ref{thm:optimality}) legt nahe, dass Kombinationstherapien den maximalen Nutzen erzielen. Klinische Studiendesigns sollten faktorielle Designs verwenden, um Synergieeffekte zwischen den Komponenten zu quantifizieren. Insbesondere die Kombination aus BDNF-Infusion ($\alpha_1$), niedrigdosierter Immunmodulation durch Anti-Tau-Antikörper ($\alpha_2$) und Schlafoptimierung ($\alpha_3$) erscheint als erste klinisch testbare Tripel-Intervention.
+	\textbf{Kombinationstherapie und Synergieeffekte}: Die Pareto-OptimalitÃ¤t von $\mathcal{P}_4$ (Theorem~\ref{thm:optimality}) legt nahe, dass Kombinationstherapien den maximalen Nutzen erzielen. Klinische Studiendesigns sollten faktorielle Designs verwenden, um Synergieeffekte zwischen den Komponenten zu quantifizieren. Insbesondere die Kombination aus BDNF-Infusion ($\alpha_1$), niedrigdosierter Immunmodulation durch Anti-Tau-AntikÃ¶rper ($\alpha_2$) und Schlafoptimierung ($\alpha_3$) erscheint als erste klinisch testbare Tripel-Intervention.
 
-	\subsubsection*{(D) Präventionsmedizin und Lebensstilinterventionen}
+	\subsubsection*{(D) PrÃ¤ventionsmedizin und Lebensstilinterventionen}
 
-	Die mathematische Analyse des Systems $\mathcal{S}$ zeigt, dass der Parameter $\bar{\gamma}$ (glymphatische Aktivität) erheblichen Einfluss auf das Gleichgewichtsniveau $\tau_C^*$ hat. Da $\bar{\gamma}$ stark durch Schlafdauer und -qualität bestimmt wird, hat die vorliegende Arbeit direkte Implikationen für evidenzbasierte Präventionsempfehlungen.
+	Die mathematische Analyse des Systems $\mathcal{S}$ zeigt, dass der Parameter $\bar{\gamma}$ (glymphatische AktivitÃ¤t) erheblichen Einfluss auf das Gleichgewichtsniveau $\tau_C^*$ hat. Da $\bar{\gamma}$ stark durch Schlafdauer und -qualitÃ¤t bestimmt wird, hat die vorliegende Arbeit direkte Implikationen fÃ¼r evidenzbasierte PrÃ¤ventionsempfehlungen.
 
-	\textbf{Schlafmedizin}: Die Tanyzyt-Schädigungsrate $\delta_T$ steigt bei chronischem Schlafentzug nachweislich durch oxidativen Stress und erhöhten metabolischen Umsatz. Eine formale Modellierung des Zusammenhangs
+	\textbf{Schlafmedizin}: Die Tanyzyt-SchÃ¤digungsrate $\delta_T$ steigt bei chronischem Schlafentzug nachweislich durch oxidativen Stress und erhÃ¶hten metabolischen Umsatz. Eine formale Modellierung des Zusammenhangs
 	\[
 	\delta_T = \delta_{T,0}\,\bigl(1 + \phi_{\text{sleep}}\,(T_{\text{sleep,opt}} - T_{\text{sleep}})\bigr)
 	\]
-	mit optimalem Schlaf $T_{\text{sleep,opt}} = 7{,}5\,\text{h}$ und Schädigungskoeffizient $\phi_{\text{sleep}} > 0$ würde quantitative Empfehlungen ermöglichen. Klinische Interventionsstudien mit polysomnographischer Überwachung und Liquor-Tau-Messung vor/nach Schlafoptimierung sind dringend geboten.
+	mit optimalem Schlaf $T_{\text{sleep,opt}} = 7{,}5\,\text{h}$ und SchÃ¤digungskoeffizient $\phi_{\text{sleep}} > 0$ wÃ¼rde quantitative Empfehlungen ermÃ¶glichen. Klinische Interventionsstudien mit polysomnographischer Ãœberwachung und Liquor-Tau-Messung vor/nach Schlafoptimierung sind dringend geboten.
 
-	\textbf{Körperliche Aktivität}: Aerobes Training erhöht den BDNF-Spiegel im Hypothalamus und stimuliert die Neurogenese im Dentaten Gyrus. Für Tanyzyten spezifisch relevant: Wachstumshormonsignalwege, die durch körperliche Aktivität induziert werden, aktivieren Tanyzyt-Rezeptoren direkt. Ein Dosis-Wirkungs-Modell der Form
+	\textbf{KÃ¶rperliche AktivitÃ¤t}: Aerobes Training erhÃ¶ht den BDNF-Spiegel im Hypothalamus und stimuliert die Neurogenese im Dentaten Gyrus. FÃ¼r Tanyzyten spezifisch relevant: Wachstumshormonsignalwege, die durch kÃ¶rperliche AktivitÃ¤t induziert werden, aktivieren Tanyzyt-Rezeptoren direkt. Ein Dosis-Wirkungs-Modell der Form
 	\[
 	k_T^{\text{exercise}} = k_T^0 \cdot \bigl(1 + \alpha_{\text{ex}}\, \ln(1 + I_{\text{exercise}}/I_{50})\bigr)
 	\]
-	würde eine formale Grundlage für Bewegungsempfehlungen als Alzheimer-Prophylaxe liefern.
+	wÃ¼rde eine formale Grundlage fÃ¼r Bewegungsempfehlungen als Alzheimer-Prophylaxe liefern.
 
-	\textbf{Metabolische Gesundheit}: Adipositas und Typ-2-Diabetes beeinflussen Tanyzyten über mindestens drei Mechanismen: (i) chronischer Hyperinsulinismus konkurriert mit Tau um LRP1-Bindungsstellen, (ii) Leptin-Resistenz im Hypothalamus beeinträchtigt Tanyzyt-Signalwege, (iii) systemische Inflammation schädigt die Tanyzyt-Fortsätze. Multimorbide Präventionsprogramme, die Gewichtsreduktion, Insulinsensitivierung und Entzündungshemmung kombinieren, könnten formal im Rahmen des Modells $\mathcal{S}$ bewertet werden.
+	\textbf{Metabolische Gesundheit}: Adipositas und Typ-2-Diabetes beeinflussen Tanyzyten Ã¼ber mindestens drei Mechanismen: (i) chronischer Hyperinsulinismus konkurriert mit Tau um LRP1-Bindungsstellen, (ii) Leptin-Resistenz im Hypothalamus beeintrÃ¤chtigt Tanyzyt-Signalwege, (iii) systemische Inflammation schÃ¤digt die Tanyzyt-FortsÃ¤tze. Multimorbide PrÃ¤ventionsprogramme, die Gewichtsreduktion, Insulinsensitivierung und EntzÃ¼ndungshemmung kombinieren, kÃ¶nnten formal im Rahmen des Modells $\mathcal{S}$ bewertet werden.
 
 	\subsubsection*{(E) Systembiologische Erweiterungen und KI-Integration}
 
-	Die zunehmende Verfügbarkeit großer klinischer Datensätze (Proteomik, Genomik, Bildgebung, Wearable-Daten) eröffnet die Möglichkeit, das mechanistische Modell $\mathcal{S}$ mit modernen Methoden des maschinellen Lernens zu hybridisieren.
+	Die zunehmende VerfÃ¼gbarkeit groÃŸer klinischer DatensÃ¤tze (Proteomik, Genomik, Bildgebung, Wearable-Daten) erÃ¶ffnet die MÃ¶glichkeit, das mechanistische Modell $\mathcal{S}$ mit modernen Methoden des maschinellen Lernens zu hybridisieren.
 
-	\textbf{Physics-Informed Neural Networks (PINNs)}: Ein PINN-Ansatz könnte die ODE-Systemparameter $(k_p, k_T, k_I, k_G, \delta_T, \mu_\eta)$ direkt aus klinischen Zeitreihendaten (wiederholte Liquor-Tau-Messungen, PET-Amyloid, MRT-Volumetrie) patientenindividuell schätzen, unter Einhaltung der physikalischen Nebenbedingungen (positive Invarianz, Stabilitätsbedingungen). Die Verlustfunktion
+	\textbf{Physics-Informed Neural Networks (PINNs)}: Ein PINN-Ansatz kÃ¶nnte die ODE-Systemparameter $(k_p, k_T, k_I, k_G, \delta_T, \mu_\eta)$ direkt aus klinischen Zeitreihendaten (wiederholte Liquor-Tau-Messungen, PET-Amyloid, MRT-Volumetrie) patientenindividuell schÃ¤tzen, unter Einhaltung der physikalischen Nebenbedingungen (positive Invarianz, StabilitÃ¤tsbedingungen). Die Verlustfunktion
 	\[
 	\mathcal{L} = \mathcal{L}_{\text{data}} + \lambda_{\text{ODE}}\,\mathcal{L}_{\text{physics}} + \lambda_{\text{reg}}\,\|\boldsymbol{\theta}\|^2
 	\]
 	kombiniert Datentreue mit ODE-Residuen und Regularisierung.
 
-	\textbf{Digitale Zwillinge}: Für jeden Patienten könnte ein kalibrierter \emph{digitaler Zwilling} erstellt werden -- eine individualisierte Instanz des Modells $\mathcal{S}$ mit patientenspezifischen Parametern. Dieser erlaubt: in-silico-Simulation verschiedener Therapieoptionen, optimale Dosiswahl, Vorhersage individueller Krankheitstrajektorien und Berechnung von Interventionstiming. Die optimale Interventionszeit $t^*$ ist jene, zu der der Biomarker $\mathcal{B}(t)$ den Schwellenwert $\mathcal{B}_{\text{diag}}$ überschreitet, aber die Tanyzyt-Integrität $\eta(t^*)$ noch nicht unter $\eta_{\min}$ gesunken ist -- ein formales Optimierungsproblem
+	\textbf{Digitale Zwillinge}: FÃ¼r jeden Patienten kÃ¶nnte ein kalibrierter \emph{digitaler Zwilling} erstellt werden -- eine individualisierte Instanz des Modells $\mathcal{S}$ mit patientenspezifischen Parametern. Dieser erlaubt: in-silico-Simulation verschiedener Therapieoptionen, optimale Dosiswahl, Vorhersage individueller Krankheitstrajektorien und Berechnung von Interventionstiming. Die optimale Interventionszeit $t^*$ ist jene, zu der der Biomarker $\mathcal{B}(t)$ den Schwellenwert $\mathcal{B}_{\text{diag}}$ Ã¼berschreitet, aber die Tanyzyt-IntegritÃ¤t $\eta(t^*)$ noch nicht unter $\eta_{\min}$ gesunken ist -- ein formales Optimierungsproblem
 	\[
 	t^* = \min\bigl\{t : \mathcal{B}(t) > \mathcal{B}_{\text{diag}}\bigr\} \quad \text{s.t.} \quad \eta(t^*) > \eta_{\min}.
 	\]
 
-	\textbf{Multiskalenmodellierung}: Das ODE-System $\mathcal{S}$ operiert auf der Organebene (Kompartimentmodell). Eine vollständige mechanistische Beschreibung erfordert jedoch die Integration molekularer Prozesse (Tau-Aggregationskinetik, Autophagie-Maschinerie), zellulärer Prozesse (Tanyzyt-Morphologie, Endozytose-Kinetik) und systemischer Ebenen (Blutkreislauf, Lymphsystem, neuroendokrine Achse). Multiskalenmodelle, die diese Ebenen formal koppeln, werden ein aktives Forschungsfeld in der systemischen Neurologie der nächsten Dekade darstellen.
+	\textbf{Multiskalenmodellierung}: Das ODE-System $\mathcal{S}$ operiert auf der Organebene (Kompartimentmodell). Eine vollstÃ¤ndige mechanistische Beschreibung erfordert jedoch die Integration molekularer Prozesse (Tau-Aggregationskinetik, Autophagie-Maschinerie), zellulÃ¤rer Prozesse (Tanyzyt-Morphologie, Endozytose-Kinetik) und systemischer Ebenen (Blutkreislauf, Lymphsystem, neuroendokrine Achse). Multiskalenmodelle, die diese Ebenen formal koppeln, werden ein aktives Forschungsfeld in der systemischen Neurologie der nÃ¤chsten Dekade darstellen.
 
-	\textbf{Genomische Präzisionsmedizin}: GWAS-Studien identifizieren zunehmend Risiko-SNPs, die Tanyzyt-Funktion modulieren. Die formale Integration genomischer Risikoscores $G_i$ als Modifikatoren der Modellparameter
+	\textbf{Genomische PrÃ¤zisionsmedizin}: GWAS-Studien identifizieren zunehmend Risiko-SNPs, die Tanyzyt-Funktion modulieren. Die formale Integration genomischer Risikoscores $G_i$ als Modifikatoren der Modellparameter
 	\[
 	k_T^{(i)} = k_T \cdot \prod_j \exp\!\bigl(\beta_j\,(G_{ij} - G_{j,\text{ref}})\bigr)
 	\]
-	würde genetisch personalisierte Risikoabschätzungen ermöglichen und die Brücke zwischen translationeller Genetik und mathematischer Systemtheorie schaffen.
+	wÃ¼rde genetisch personalisierte RisikoabschÃ¤tzungen ermÃ¶glichen und die BrÃ¼cke zwischen translationeller Genetik und mathematischer Systemtheorie schaffen.
 
 	\subsubsection*{(F) Epistemische Wolke, kognitive Integration und neuro-epistemisches Modellparadigma}
 
-	Das in Abschnitt~\ref{sec:integration} entwickelte Integrationskapitel -- die formale Kopplung des Tau-Clearance-ODE-Systems~$\mathcal{S}$ mit den vier kognitiven Dimensionen der Hirn-Theorie~\cite{Epp2026brn} -- eröffnet ein vollständig neues Forschungsparadigma, das wir als \emph{neuro-epistemische Systemtheorie} bezeichnen. Dieses Paradigma versteht Alzheimer nicht nur als biochemische Erkrankung, sondern als formell beweisbare \emph{epistemische Katastrophe}: ein Zustand, in dem der Mensch den Zugang zur Wahrheit seines eigenen Denkens verliert, ausgelöst durch einen kaskadierten Kollaps messbarer Systemvariablen. Die folgenden Forschungsrichtungen folgen unmittelbar aus den Theoremen~\ref{thm:taucloud}--\ref{thm:psi_therapie} und dem Hauptsatz~\ref{thm:hauptsatz}.
+	Das in Abschnitt~\ref{sec:integration} entwickelte Integrationskapitel -- die formale Kopplung des Tau-Clearance-ODE-Systems~$\mathcal{S}$ mit den vier kognitiven Dimensionen der Hirn-Theorie~\cite{Epp2026brn} -- erÃ¶ffnet ein vollstÃ¤ndig neues Forschungsparadigma, das wir als \emph{neuro-epistemische Systemtheorie} bezeichnen. Dieses Paradigma versteht Alzheimer nicht nur als biochemische Erkrankung, sondern als formell beweisbare \emph{epistemische Katastrophe}: ein Zustand, in dem der Mensch den Zugang zur Wahrheit seines eigenen Denkens verliert, ausgelÃ¶st durch einen kaskadierten Kollaps messbarer Systemvariablen. Die folgenden Forschungsrichtungen folgen unmittelbar aus den Theoremen~\ref{thm:taucloud}--\ref{thm:psi_therapie} und dem Hauptsatz~\ref{thm:hauptsatz}.
 
-	\textbf{Empirische Validierung der Freies-Denken-Kapazität~$\Psi_{\mathrm{frei}}$}:
-	Die Gleichung~\eqref{eq:psi_frei} verbindet vier messbare Größen -- Benetzung~$\hat{\mathcal{B}}$, Lebensgeist~$\mathcal{G}_\tau$, Wolken-Freiheit~$(1-\delta_\tau)$ und Rechtsdrehungs-Indikator~$\Omega_\tau$ -- zu einem einzigen kognitiven Gesamtindex. Die dringende Aufgabe empirischer Forschung ist die Validierung dieser Gleichung an klinischen Kohorten.
-	Folgende Messzugänge bieten sich an:
+	\textbf{Empirische Validierung der Freies-Denken-KapazitÃ¤t~$\Psi_{\mathrm{frei}}$}:
+	Die Gleichung~\eqref{eq:psi_frei} verbindet vier messbare GrÃ¶ÃŸen -- Benetzung~$\hat{\mathcal{B}}$, Lebensgeist~$\mathcal{G}_\tau$, Wolken-Freiheit~$(1-\delta_\tau)$ und Rechtsdrehungs-Indikator~$\Omega_\tau$ -- zu einem einzigen kognitiven Gesamtindex. Die dringende Aufgabe empirischer Forschung ist die Validierung dieser Gleichung an klinischen Kohorten.
+	Folgende MesszugÃ¤nge bieten sich an:
 	\begin{itemize}
-		\item \textbf{EEG-basierte Rechtsdrehungsmessung}: Die kortikale Winkelgeschwindigkeit $\omega_{\mathrm{eff}}(t)$ ist operational zugänglich über Gamma-Burst-Direktionalität und Phase-Amplitude-Coupling (PAC, Theta-Gamma). Hochdichte-EEG (256 Kanäle) mit räumlicher Quelllokalisation via LORETA kann die Drehrichtung des kortikalen Aktivierungsvektors direkt bestimmen. Retrospektive Studien an vorhandenen Alzheimer-EEG-Datensätzen (z.B.\ ADNI-EEG, INSIGHT-PreAD) sollten zunächst den Zusammenhang $\omega_{\mathrm{eff}}$ vs.\ $\tau_C$ gemäß \cref{def:omega_tau} empirisch prüfen. Die Hypothese: Ein Phasenübergang bei $\tau_C \approx \tau_{C,\mathrm{krit}}$ ist im EEG als abrupter PAC-Kollaps sichtbar.
-		\item \textbf{fMRI-Lebensgeist-Proxies}: Der tau-supprimierte Lebensgeist $\mathcal{G}_\tau$ ist operationalisierbar über funktionelle Konnektivität (Resting-State-fMRI: Default-Mode-Netzwerk-Kohärenz, Salience-Netzwerk-Stärke). Die sigmoidale Suppressionskurve aus \cref{def:gtau} -- Halbmaximum bei $0{,}6\,\tau_{C,\mathrm{krit}}$ -- ergibt eine präzise, falsifizierbare Vorhersage: fMRI-Konnektivität sollte als Funktion des Tau-PET-Signals dieselbe Sigmoid-Form zeigen. Kombinierte Tau-PET/fMRI-Studien an MCI-Patienten mit longitudinalem Follow-up über 3 Jahre sind als Erstes geeignet.
-		\item \textbf{Synaptische Benetzungs-Messung}: Obwohl $\hat{\mathcal{B}}$ mikroskopisch definiert ist (Anteil aktiver Synapsen), gibt es makroskopische Proxies: ${}^{18}$F-SV2A-PET (synaptische Vesikeldichte) als Benetzungs-Bildgebungsmarker, Magnetencephalographie (MEG) für breitbandige synaptische Aktivierungsdichte sowie postmortale konfokale Synaptophysin-Immunfluoreszenz zur Referenzvalidierung. Die Proposition~\ref{prop:benet_phase} sagt einen Phasenübergang bei $\eta = \eta_{\mathrm{wet}}$ voraus: Unterhalb dieses Schwellwerts kollabiert $\hat{\mathcal{B}}$ abrupt. Ein klar identifizierbarer Benetzungs-Phasenübergang im SV2A-PET-Verlauf wäre eine starke Bestätigung des Modells.
+		\item \textbf{EEG-basierte Rechtsdrehungsmessung}: Die kortikale Winkelgeschwindigkeit $\omega_{\mathrm{eff}}(t)$ ist operational zugÃ¤nglich Ã¼ber Gamma-Burst-DirektionalitÃ¤t und Phase-Amplitude-Coupling (PAC, Theta-Gamma). Hochdichte-EEG (256 KanÃ¤le) mit rÃ¤umlicher Quelllokalisation via LORETA kann die Drehrichtung des kortikalen Aktivierungsvektors direkt bestimmen. Retrospektive Studien an vorhandenen Alzheimer-EEG-DatensÃ¤tzen (z.B.\ ADNI-EEG, INSIGHT-PreAD) sollten zunÃ¤chst den Zusammenhang $\omega_{\mathrm{eff}}$ vs.\ $\tau_C$ gemÃ¤ÃŸ \cref{def:omega_tau} empirisch prÃ¼fen. Die Hypothese: Ein PhasenÃ¼bergang bei $\tau_C \approx \tau_{C,\mathrm{krit}}$ ist im EEG als abrupter PAC-Kollaps sichtbar.
+		\item \textbf{fMRI-Lebensgeist-Proxies}: Der tau-supprimierte Lebensgeist $\mathcal{G}_\tau$ ist operationalisierbar Ã¼ber funktionelle KonnektivitÃ¤t (Resting-State-fMRI: Default-Mode-Netzwerk-KohÃ¤renz, Salience-Netzwerk-StÃ¤rke). Die sigmoidale Suppressionskurve aus \cref{def:gtau} -- Halbmaximum bei $0{,}6\,\tau_{C,\mathrm{krit}}$ -- ergibt eine prÃ¤zise, falsifizierbare Vorhersage: fMRI-KonnektivitÃ¤t sollte als Funktion des Tau-PET-Signals dieselbe Sigmoid-Form zeigen. Kombinierte Tau-PET/fMRI-Studien an MCI-Patienten mit longitudinalem Follow-up Ã¼ber 3 Jahre sind als Erstes geeignet.
+		\item \textbf{Synaptische Benetzungs-Messung}: Obwohl $\hat{\mathcal{B}}$ mikroskopisch definiert ist (Anteil aktiver Synapsen), gibt es makroskopische Proxies: ${}^{18}$F-SV2A-PET (synaptische Vesikeldichte) als Benetzungs-Bildgebungsmarker, Magnetencephalographie (MEG) fÃ¼r breitbandige synaptische Aktivierungsdichte sowie postmortale konfokale Synaptophysin-Immunfluoreszenz zur Referenzvalidierung. Die Proposition~\ref{prop:benet_phase} sagt einen PhasenÃ¼bergang bei $\eta = \eta_{\mathrm{wet}}$ voraus: Unterhalb dieses Schwellwerts kollabiert $\hat{\mathcal{B}}$ abrupt. Ein klar identifizierbarer Benetzungs-PhasenÃ¼bergang im SV2A-PET-Verlauf wÃ¤re eine starke BestÃ¤tigung des Modells.
 	\end{itemize}
 
-	\textbf{Bidirektionale Kopplung: Kognition wirkt auf Tau-Clearance zurück}:
-	Das aktuelle Modell ist unidirektional: $\mathcal{S}$ erzeugt $\tau_C(t)$, das die kognitiven Parameter steuert. Eine tiefgreifende Erweiterung würde die \emph{bidirektionale Kopplung} formalisieren -- die empirisch belegte Rückwirkung kognitiver Aktivität auf die Tau-Clearance. Konkret:
+	\textbf{Bidirektionale Kopplung: Kognition wirkt auf Tau-Clearance zurÃ¼ck}:
+	Das aktuelle Modell ist unidirektional: $\mathcal{S}$ erzeugt $\tau_C(t)$, das die kognitiven Parameter steuert. Eine tiefgreifende Erweiterung wÃ¼rde die \emph{bidirektionale Kopplung} formalisieren -- die empirisch belegte RÃ¼ckwirkung kognitiver AktivitÃ¤t auf die Tau-Clearance. Konkret:
 	\begin{itemize}
-		\item Aktives Denken (hoher $\mathcal{G}$-Wert) erhöht den zerebralen Blutfluss und die glymphatische Aktivität $\gamma$ -- ein Mechanismus, der durch den sog.\ \emph{neurovascular coupling} belegt ist. Dies ergibt eine positive Rückkopplung: $\mathcal{G}(t) \nearrow \Rightarrow \gamma(t) \nearrow \Rightarrow \tau_C(t) \searrow$.
-		\item Epistemische Wolken-Dichte $\delta_\tau \nearrow$ (Tau-Last steigt) $\Rightarrow$ Stressantwort via HPA-Achse $\Rightarrow$ Cortisol $\nearrow$ $\Rightarrow$ Tanyzyt-Schädigungsrate $\delta_T \nearrow$ -- eine positive Rückkopplung, die das ODE-System destabilisiert. Dies liefert eine formale Erklärung für die klinische Beobachtung, dass psychosozialer Stress die Alzheimer-Progression beschleunigt.
+		\item Aktives Denken (hoher $\mathcal{G}$-Wert) erhÃ¶ht den zerebralen Blutfluss und die glymphatische AktivitÃ¤t $\gamma$ -- ein Mechanismus, der durch den sog.\ \emph{neurovascular coupling} belegt ist. Dies ergibt eine positive RÃ¼ckkopplung: $\mathcal{G}(t) \nearrow \Rightarrow \gamma(t) \nearrow \Rightarrow \tau_C(t) \searrow$.
+		\item Epistemische Wolken-Dichte $\delta_\tau \nearrow$ (Tau-Last steigt) $\Rightarrow$ Stressantwort via HPA-Achse $\Rightarrow$ Cortisol $\nearrow$ $\Rightarrow$ Tanyzyt-SchÃ¤digungsrate $\delta_T \nearrow$ -- eine positive RÃ¼ckkopplung, die das ODE-System destabilisiert. Dies liefert eine formale ErklÃ¤rung fÃ¼r die klinische Beobachtung, dass psychosozialer Stress die Alzheimer-Progression beschleunigt.
 	\end{itemize}
-	Ein erweitertes bidirektionales Modell $\mathcal{S}^{\leftrightarrow}$ würde die ODE für $\dot{\gamma}$ und $\dot{\delta}_T$ mit Termen $f(\Psi_{\mathrm{frei}})$ anreichern. Damit wird aus dem Clearance-Modell ein vollständig geschlossenes \emph{Geist-Körper-Dynamiksystem}, in dem kognitiver Verfall und biochemische Pathologie sich gegenseitig kausal bedingen -- ein paradigmatischer Beitrag zur Psychoneuroimmunologie.
+	Ein erweitertes bidirektionales Modell $\mathcal{S}^{\leftrightarrow}$ wÃ¼rde die ODE fÃ¼r $\dot{\gamma}$ und $\dot{\delta}_T$ mit Termen $f(\Psi_{\mathrm{frei}})$ anreichern. Damit wird aus dem Clearance-Modell ein vollstÃ¤ndig geschlossenes \emph{Geist-KÃ¶rper-Dynamiksystem}, in dem kognitiver Verfall und biochemische Pathologie sich gegenseitig kausal bedingen -- ein paradigmatischer Beitrag zur Psychoneuroimmunologie.
 
-	\textbf{STDP, synaptische Plastizität und Tau-Interaktion}:
-	Tau-Pathologie beeinträchtigt nicht nur die Stärke synaptischer Übertragung, sondern die \emph{Plastizität} selbst -- genauer: die Spike-Timing-Dependent Plasticity (STDP), den molekularen Mechanismus des Lernens. Tau-Oligomere phosphorylieren CaMKII und hemmen LTP-Induktion; hyperphosphoryliertes Tau dissoziiert von Mikrotubuli und stört dendritische Wirbelsäulen-Morphodynamik. Dies bedeutet:
+	\textbf{STDP, synaptische PlastizitÃ¤t und Tau-Interaktion}:
+	Tau-Pathologie beeintrÃ¤chtigt nicht nur die StÃ¤rke synaptischer Ãœbertragung, sondern die \emph{PlastizitÃ¤t} selbst -- genauer: die Spike-Timing-Dependent Plasticity (STDP), den molekularen Mechanismus des Lernens. Tau-Oligomere phosphorylieren CaMKII und hemmen LTP-Induktion; hyperphosphoryliertes Tau dissoziiert von Mikrotubuli und stÃ¶rt dendritische WirbelsÃ¤ulen-Morphodynamik. Dies bedeutet:
 	\[
 		\frac{d w_s}{dt} \;=\; \underbrace{\text{STDP-Regel}(\Delta t_{\text{pre-post}})}_{\text{Hebbian}} \;-\; \underbrace{\beta_w(\tau_C) \cdot w_s}_{\text{Tau-Suppressionsterm}},
 	\]
-	wobei $\beta_w(\tau_C)$ eine stetig wachsende Funktion ist. Die Integration dieser STDP-Gleichung in das Modell $\mathcal{S}$ würde allow die formale Beschreibung, wie Tau nicht nur bestehende kognitive Leistung senkt, sondern Lernen und Gedächtnisbildung strukturell unterbindet -- ein fundamentaler Unterschied, der therapeutisch relevant ist.
+	wobei $\beta_w(\tau_C)$ eine stetig wachsende Funktion ist. Die Integration dieser STDP-Gleichung in das Modell $\mathcal{S}$ wÃ¼rde allow die formale Beschreibung, wie Tau nicht nur bestehende kognitive Leistung senkt, sondern Lernen und GedÃ¤chtnisbildung strukturell unterbindet -- ein fundamentaler Unterschied, der therapeutisch relevant ist.
 
 	\textbf{Generalisierung auf andere Demenzen und neurodegenerative Erkrankungen}:
-	Die epistemische-Wolke-Kopplung ist konzeptionell nicht auf Alzheimer beschränkt. Das strukturelle Argument -- jede Pathologie, die $\tau_C$ erhöht (oder funktionale Äquivalente) erzeugt eine epistemische Wolke -- lässt sich formal generalisieren. Für andere Proteinopathien ist folgende Analogietabelle zu entwickeln:
+	Die epistemische-Wolke-Kopplung ist konzeptionell nicht auf Alzheimer beschrÃ¤nkt. Das strukturelle Argument -- jede Pathologie, die $\tau_C$ erhÃ¶ht (oder funktionale Ã„quivalente) erzeugt eine epistemische Wolke -- lÃ¤sst sich formal generalisieren. FÃ¼r andere Proteinopathien ist folgende Analogietabelle zu entwickeln:
 	\begin{center}
 	\small
 	\begin{tabular}{lll}
 		\hline
-		\textbf{Erkrankung} & \textbf{Protein-Analogon} & \textbf{Epistemisches Äquivalent} \\
+		\textbf{Erkrankung} & \textbf{Protein-Analogon} & \textbf{Epistemisches Ã„quivalent} \\
 		\hline
 		Alzheimer & $\tau_C$ (Tau) & $\delta_\tau = \min(1, \tau_C/\tau_{C,\mathrm{krit}})$ \\
 		Parkinson & $\alpha$-Synuclein & $\delta_{\alpha S} = f(\alpha S / \alpha S_{\mathrm{krit}})$ \\
@@ -1443,18 +1443,18 @@
 		\hline
 	\end{tabular}
 	\end{center}
-	Eine Unified Epistemic Cloud Theory (UECT) würde diese Erkrankungen unter einem einzigen formalen Dach vereinen und erkrankungs-übergreifende Therapieprinzipien ableiten -- was über den Tanyzyt-Mechanismus hinaus ein eigenständiges wissenschaftliches Programm wäre.
+	Eine Unified Epistemic Cloud Theory (UECT) wÃ¼rde diese Erkrankungen unter einem einzigen formalen Dach vereinen und erkrankungs-Ã¼bergreifende Therapieprinzipien ableiten -- was Ã¼ber den Tanyzyt-Mechanismus hinaus ein eigenstÃ¤ndiges wissenschaftliches Programm wÃ¤re.
 
 	\textbf{Formal-philosophische Implikationen}:
-	Der \emph{Hauptsatz der kognitiven Degradation bei Alzheimer} (\cref{thm:hauptsatz}) ist, in seiner vollen Bedeutung betrachtet, mehr als ein mathematisches Theorem über ODE-Trajektorien. Er liefert den formalen Beweis einer bis heute meist qualitativ formulierten klinischen Einsicht: Alzheimer nimmt dem Menschen nicht zuerst das Gedächtnis als Datenspeicher -- sondern den \emph{Zugang zur eigenen kognitiven Welt}, die Fähigkeit, Wahrheit von Täuschung zu unterscheiden und Gedanken frei zu entfalten. Dies ist die Kernaussage der epistemischen Wolke~\cite{Epp2026brn}, nun erstmals formal quantifiziert durch $\Psi_{\mathrm{frei}} \to 0$.
-	Diese Perspektive hat direkte klinische Relevanz: Wenn kognitive Beschränkungen frühzeitig über $\Psi_{\mathrm{frei}}$ messbar sind -- bevor klassische neuropsychologische Tests wie MMSE signifikant auffällig werden -- eröffnet sich ein neues \emph{präklinisches Interventionsfenster}. Die Schwelle $\Psi_{\mathrm{frei}} < \Psi^* = 0{,}6$ könnte dabei als formaler Auslöser für eine präventive $\mathcal{P}_4$-Therapie dienen.
+	Der \emph{Hauptsatz der kognitiven Degradation bei Alzheimer} (\cref{thm:hauptsatz}) ist, in seiner vollen Bedeutung betrachtet, mehr als ein mathematisches Theorem Ã¼ber ODE-Trajektorien. Er liefert den formalen Beweis einer bis heute meist qualitativ formulierten klinischen Einsicht: Alzheimer nimmt dem Menschen nicht zuerst das GedÃ¤chtnis als Datenspeicher -- sondern den \emph{Zugang zur eigenen kognitiven Welt}, die FÃ¤higkeit, Wahrheit von TÃ¤uschung zu unterscheiden und Gedanken frei zu entfalten. Dies ist die Kernaussage der epistemischen Wolke~\cite{Epp2026brn}, nun erstmals formal quantifiziert durch $\Psi_{\mathrm{frei}} \to 0$.
+	Diese Perspektive hat direkte klinische Relevanz: Wenn kognitive BeschrÃ¤nkungen frÃ¼hzeitig Ã¼ber $\Psi_{\mathrm{frei}}$ messbar sind -- bevor klassische neuropsychologische Tests wie MMSE signifikant auffÃ¤llig werden -- erÃ¶ffnet sich ein neues \emph{prÃ¤klinisches Interventionsfenster}. Die Schwelle $\Psi_{\mathrm{frei}} < \Psi^* = 0{,}6$ kÃ¶nnte dabei als formaler AuslÃ¶ser fÃ¼r eine prÃ¤ventive $\mathcal{P}_4$-Therapie dienen.
 
-	\textbf{Integration in den digitalen Zwilling und neuro-epistemische Präzisionsmedizin}:
-	Die in Säule~(E) entworfenen digitalen Zwillinge lassen sich durch die Freies-Denken-Kapazität entscheidend bereichern. Ein vollständiger digitaler Zwilling des Patienten umfasst dann nicht nur die vier ODE-Zustandsvariablen $\bigl(\tau_C, \tau_B, \eta, \gamma\bigr)$, sondern als abgeleitete kognitive Ausgabegröße $\Psi_{\mathrm{frei}}(t)$ -- berechnet nach \cref{eq:psi_frei}. Das optimale Interventionskriterium verschärft sich zu:
+	\textbf{Integration in den digitalen Zwilling und neuro-epistemische PrÃ¤zisionsmedizin}:
+	Die in SÃ¤ule~(E) entworfenen digitalen Zwillinge lassen sich durch die Freies-Denken-KapazitÃ¤t entscheidend bereichern. Ein vollstÃ¤ndiger digitaler Zwilling des Patienten umfasst dann nicht nur die vier ODE-Zustandsvariablen $\bigl(\tau_C, \tau_B, \eta, \gamma\bigr)$, sondern als abgeleitete kognitive AusgabegrÃ¶ÃŸe $\Psi_{\mathrm{frei}}(t)$ -- berechnet nach \cref{eq:psi_frei}. Das optimale Interventionskriterium verschÃ¤rft sich zu:
 	\[
 		t^* = \min\bigl\{t : \Psi_{\mathrm{frei}}(t) < \Psi^* = 0{,}6\bigr\},
 	\]
-	unterstützt durch die Nebenbedingung $\eta(t^*) > \eta_{\mathrm{wet}}$ aus Proposition~\ref{prop:benet_phase}. Dieser \emph{neuro-epistemische Trigger} für den Therapiebeginn ist präziser als reine Biomarkerschwellen, weil er den kognitiven Zustand des Patienten, nicht nur seine Laborwerte, formell in die Entscheidung einbezieht. Er stellt damit einen paradigmatischen Beitrag zu einer Präzisionsmedizin dar, die \emph{Kognition und Biochemie gleichwertig behandelt}.
+	unterstÃ¼tzt durch die Nebenbedingung $\eta(t^*) > \eta_{\mathrm{wet}}$ aus Proposition~\ref{prop:benet_phase}. Dieser \emph{neuro-epistemische Trigger} fÃ¼r den Therapiebeginn ist prÃ¤ziser als reine Biomarkerschwellen, weil er den kognitiven Zustand des Patienten, nicht nur seine Laborwerte, formell in die Entscheidung einbezieht. Er stellt damit einen paradigmatischen Beitrag zu einer PrÃ¤zisionsmedizin dar, die \emph{Kognition und Biochemie gleichwertig behandelt}.
 
 	\subsubsection*{(F.1) Konkreter Forschungsplan: Epistemische-Wolke-Validierungsstudie}
 
@@ -1462,17 +1462,17 @@
 	\paragraph{Studiendesign.}
 	Prospektive Querschnitts- und Longitudinalstudie (12 Monate Follow-up) an vier Kohorten ($n=30$ je): (i)~kognitiv gesunde Kontrollen, (ii)~subjektive Kognitionsbeschwerden (SCD), (iii)~MCI, (iv)~leichtgradige Alzheimer-Demenz.
 	\paragraph{Messprogramm pro Proband.}
-	Jeder Proband erhält: (a)~Liquorpunktion für $\tau_C$, $\tau_B$, p-tau$_{181}$, A$\beta_{42}$; (b)~256-Kanal-EEG (30~min Ruhe + kognitive Aufgabe) zur Bestimmung von $\omega_{\mathrm{eff}}$ via PAC und Gamma-Direktionalität; (c)~3-Tesla-fMRI (Resting State + n-back-Aufgabe) als $\mathcal{G}_\tau$-Proxy; (d)~${}^{18}$F-SV2A-PET als Synaptodichte-Proxy für $\hat{\mathcal{B}}$; (e)~MMSE, MoCA, digit-span und Trail-Making-Test als $\Psi_{\mathrm{frei}}$-Verhaltenskorrelate.
-	\paragraph{Primäres Ziel.}
+	Jeder Proband erhÃ¤lt: (a)~Liquorpunktion fÃ¼r $\tau_C$, $\tau_B$, p-tau$_{181}$, A$\beta_{42}$; (b)~256-Kanal-EEG (30~min Ruhe + kognitive Aufgabe) zur Bestimmung von $\omega_{\mathrm{eff}}$ via PAC und Gamma-DirektionalitÃ¤t; (c)~3-Tesla-fMRI (Resting State + n-back-Aufgabe) als $\mathcal{G}_\tau$-Proxy; (d)~${}^{18}$F-SV2A-PET als Synaptodichte-Proxy fÃ¼r $\hat{\mathcal{B}}$; (e)~MMSE, MoCA, digit-span und Trail-Making-Test als $\Psi_{\mathrm{frei}}$-Verhaltenskorrelate.
+	\paragraph{PrimÃ¤res Ziel.}
 	Validierung des Zusammenhangs
 	\[
 		\Psi_{\mathrm{frei}}^{\mathrm{Modell}}\bigl(\tau_C, \eta_{\mathrm{est}}\bigr) \;\approx\; \Psi_{\mathrm{frei}}^{\mathrm{klinisch}}
 	\]
-	nach \cref{eq:psi_frei}, wobei $\eta_{\mathrm{est}}$ per indirektem SV2A-PET-Proxy geschätzt wird. Eine Korrelation $r > 0{,}75$ zwischen Modellvorhersage und klinischem Score gälte als Bestätigung des Modells.
-	\paragraph{Sekundäres Ziel.}
-	Identifikation des Phasenübergangs in $\hat{\mathcal{B}}$ (Proposition~\ref{prop:benet_phase}) und des Rechtsdrehungs-Zusammenbruchs (\cref{thm:rotation_tau}) als früheste EEG-sichtbare Signatur des Vorstadiums. Gelingt dies, stünde erstmals ein \emph{kognitiv-epistemischer Frühwarnindikator} auf EEG-Basis zur Verfügung, der $\mathcal{B} = \tau_C/\tau_B$ ergänzt und konzeptionell vorgelagert ist -- das prä-biomarker Stadium des epistemischen Wolken-Einsatzes.
+	nach \cref{eq:psi_frei}, wobei $\eta_{\mathrm{est}}$ per indirektem SV2A-PET-Proxy geschÃ¤tzt wird. Eine Korrelation $r > 0{,}75$ zwischen Modellvorhersage und klinischem Score gÃ¤lte als BestÃ¤tigung des Modells.
+	\paragraph{SekundÃ¤res Ziel.}
+	Identifikation des PhasenÃ¼bergangs in $\hat{\mathcal{B}}$ (Proposition~\ref{prop:benet_phase}) und des Rechtsdrehungs-Zusammenbruchs (\cref{thm:rotation_tau}) als frÃ¼heste EEG-sichtbare Signatur des Vorstadiums. Gelingt dies, stÃ¼nde erstmals ein \emph{kognitiv-epistemischer FrÃ¼hwarnindikator} auf EEG-Basis zur VerfÃ¼gung, der $\mathcal{B} = \tau_C/\tau_B$ ergÃ¤nzt und konzeptionell vorgelagert ist -- das prÃ¤-biomarker Stadium des epistemischen Wolken-Einsatzes.
 
-	 ein paradigmatisches Beispiel dar, wie ein Grundlagenbefund -- die morphologische Entdeckung von Tau in Tanyzyt-Vakuolen durch Pr\'evot et al.\ -- über formale mathematische Modellierung in ein kohärentes diagnostisches und therapeutisches Handlungskonzept überführt werden kann. Die nächste Dekade wird entscheiden, ob Tanyzyten die lang gesuchte therapeutische Zielstruktur bei Alzheimer darstellen, die eine wirksame Frühprävention ermöglicht.
+	 ein paradigmatisches Beispiel dar, wie ein Grundlagenbefund -- die morphologische Entdeckung von Tau in Tanyzyt-Vakuolen durch Pr\'evot et al.\ -- Ã¼ber formale mathematische Modellierung in ein kohÃ¤rentes diagnostisches und therapeutisches Handlungskonzept Ã¼berfÃ¼hrt werden kann. Die nÃ¤chste Dekade wird entscheiden, ob Tanyzyten die lang gesuchte therapeutische Zielstruktur bei Alzheimer darstellen, die eine wirksame FrÃ¼hprÃ¤vention ermÃ¶glicht.
 	
 	%=================================================================
 	\section{Schlussfolgerungen}
@@ -1481,16 +1481,16 @@
 	Die vorliegende Arbeit formalisiert und erweitert die bahnbrechende Entdeckung hypothalamischer Tanyzyten als dritten Tau-Clearance-Weg bei der Alzheimer-Erkrankung. Die zentralen Ergebnisse sind:
 	
 	\begin{enumerate}[label=(\roman*)]
-		\item Das entwickelte ODE-Modell $\mathcal{S}$ ist wohlgestellt (Theorem~\ref{thm:existence}), besitzt zwei qualitativ verschiedene Gleichgewichte (Theorem~\ref{thm:equilibria}) und eine formal bewiesene Stabilitätsbedingung (TSB, Theorem~\ref{thm:stability}).
+		\item Das entwickelte ODE-Modell $\mathcal{S}$ ist wohlgestellt (Theorem~\ref{thm:existence}), besitzt zwei qualitativ verschiedene Gleichgewichte (Theorem~\ref{thm:equilibria}) und eine formal bewiesene StabilitÃ¤tsbedingung (TSB, Theorem~\ref{thm:stability}).
 		
-		\item Die notwendige und hinreichende Bedingung für die Entwicklung einer Alzheimer-Pathologie (\cref{eq:alzheimer_bedingung}) zeigt, dass die Tanyzyt-Funktion bei den meisten Patienten die kritische Größe darstellt (Korollar~\ref{cor:tanycyte_essential}).
+		\item Die notwendige und hinreichende Bedingung fÃ¼r die Entwicklung einer Alzheimer-Pathologie (\cref{eq:alzheimer_bedingung}) zeigt, dass die Tanyzyt-Funktion bei den meisten Patienten die kritische GrÃ¶ÃŸe darstellt (Korollar~\ref{cor:tanycyte_essential}).
 		
 		\item Vier therapeutische Strategien ($\mathcal{P}_1$--$\mathcal{P}_4$) wurden formal abgeleitet und ihre Korrektheit bewiesen (Theoreme~\ref{thm:p1_korrektheit}--\ref{thm:optimality}). Die Kombinationsstrategie $\mathcal{P}_4$ ist pareto-optimal.
 		
-		\item Der Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ ist ein theoretisch validierter, klinisch einfach messbarer Frühindikator für Tanyzyt-Dysfunktion (Theorem~\ref{thm:biomarker}) und erreicht in der numerischen ROC-Analyse AUC = 0{,}94.
+		\item Der Tau-Ratio-Biomarker $\mathcal{B} = \tau_C/\tau_B$ ist ein theoretisch validierter, klinisch einfach messbarer FrÃ¼hindikator fÃ¼r Tanyzyt-Dysfunktion (Theorem~\ref{thm:biomarker}) und erreicht in der numerischen ROC-Analyse AUC = 0{,}94.
 	\end{enumerate}
 	
-	Die Integration von Tanyzyten in das therapeutische Konzept gegen Alzheimer könnte die medizinische Praxis grundlegend verändern -- von der reaktiven Symptombehandlung hin zur präventiven, mechanistisch begründeten Neuroprotection.
+	Die Integration von Tanyzyten in das therapeutische Konzept gegen Alzheimer kÃ¶nnte die medizinische Praxis grundlegend verÃ¤ndern -- von der reaktiven Symptombehandlung hin zur prÃ¤ventiven, mechanistisch begrÃ¼ndeten Neuroprotection.
 	
 	%=================================================================
 	% Anhang
@@ -1503,7 +1503,7 @@
 		\label{alg:ode_sim}
 		\begin{algorithmic}[1]
 			\State \textbf{Input}: $\mathbf{y}_0 = (\tau_{C,0}, \tau_{B,0}, \eta_0, \gamma_0)$, Parameter $(k_p, k_T, k_I, k_G, k_E, \delta_T, \mu_\eta)$
-			\State \textbf{Output}: Trajektorie $\mathbf{y}(t)$ für $t \in [0, T]$
+			\State \textbf{Output}: Trajektorie $\mathbf{y}(t)$ fÃ¼r $t \in [0, T]$
 			\Function{TauODE}{$\mathbf{y}, t$, \textbf{params}}
 			\State $\tau_C, \tau_B, \eta, \gamma \gets \mathbf{y}$
 			\State $\kappa \gets k_T\cdot\eta + k_I + k_G\cdot\gamma$
@@ -1514,24 +1514,24 @@
 			\Return $(\dot{\tau}_C, \dot{\tau}_B, \dot{\eta}, \dot{\gamma})$
 			\EndFunction
 			\State Integriere via \textsc{RK45} (Runge-Kutta 4./5.\ Ordnung) mit adaptiver Schrittweite
-			\State Prüfe: $\forall t: \tau_C(t) \geq 0$, $\eta(t) \in [0,1]$
+			\State PrÃ¼fe: $\forall t: \tau_C(t) \geq 0$, $\eta(t) \in [0,1]$
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\section{Sensitivitätsanalyse: Formale Herleitung}
+	\section{SensitivitÃ¤tsanalyse: Formale Herleitung}
 	
-	\begin{proposition}[Logarithmische Sensitivität]
-		Die normierte Sensitivität des CSF-Tau-Gleichgewichts $\tau_C^*$ bezüglich Parameter $p$ ist:
+	\begin{proposition}[Logarithmische SensitivitÃ¤t]
+		Die normierte SensitivitÃ¤t des CSF-Tau-Gleichgewichts $\tau_C^*$ bezÃ¼glich Parameter $p$ ist:
 		\[
 		S_p = \frac{\partial \ln \tau_C^*}{\partial \ln p} = \begin{cases}
-			+1 & \text{für } p = k_p \\
-			-\eta^* k_T / \kappa(\eta^*) & \text{für } p = k_T \\
-			-k_I / \kappa(\eta^*) & \text{für } p = k_I \\
-			-k_G\bar{\gamma} / \kappa(\eta^*) & \text{für } p = k_G \\
-			+(\delta_T \cdot k_T \cdot \tau_C^*) / (\kappa(\eta^*)\cdot\text{denom}) & \text{für } p = \delta_T
+			+1 & \text{fÃ¼r } p = k_p \\
+			-\eta^* k_T / \kappa(\eta^*) & \text{fÃ¼r } p = k_T \\
+			-k_I / \kappa(\eta^*) & \text{fÃ¼r } p = k_I \\
+			-k_G\bar{\gamma} / \kappa(\eta^*) & \text{fÃ¼r } p = k_G \\
+			+(\delta_T \cdot k_T \cdot \tau_C^*) / (\kappa(\eta^*)\cdot\text{denom}) & \text{fÃ¼r } p = \delta_T
 		\end{cases}
 		\]
-		Die betragsmäßig größte Sensitivität liegt bei $k_p$ (+1) und $k_T$ ($\approx -0.91$), was die überragende Bedeutung der Tanyzyt-Transportrate bestätigt.
+		Die betragsmÃ¤ÃŸig grÃ¶ÃŸte SensitivitÃ¤t liegt bei $k_p$ (+1) und $k_T$ ($\approx -0.91$), was die Ã¼berragende Bedeutung der Tanyzyt-Transportrate bestÃ¤tigt.
 	\end{proposition}
 	
 	%-----------------------------------------------------------
@@ -1540,7 +1540,7 @@
 	\begin{thebibliography}{99}
 		
 		\bibitem{Prevot2026}
-		Prévot, V., et al.\ (2026). Tanycytes mediate tau clearance from cerebrospinal fluid to blood and are impaired in Alzheimer's disease. \textit{Cell Press Blue}, \textbf{11}, e2026.003. \url{https://doi.org/10.1016/j.cell.2026.02.042}
+		PrÃ©vot, V., et al.\ (2026). Tanycytes mediate tau clearance from cerebrospinal fluid to blood and are impaired in Alzheimer's disease. \textit{Cell Press Blue}, \textbf{11}, e2026.003. \url{https://doi.org/10.1016/j.cell.2026.02.042}
 		
 		\bibitem{WHO2023}
 		World Health Organization (2023). \textit{Global status report on the public health response to dementia}. Geneva: WHO.
@@ -1555,7 +1555,7 @@
 		Iliff, J.J., et al.\ (2013). Cerebral arterial pulsation drives paravascular CSF-interstitial fluid exchange in the murine brain. \textit{Journal of Neuroscience}, \textbf{33}(46), 18190--18199.
 		
 		\bibitem{Prevot2010}
-		Prévot, V., et al.\ (2010). Gonadotropin-releasing hormone nerve terminals, tanycytes, and neurohormonal systems. \textit{Journal of Neuroendocrinology}, \textbf{22}(7), 748--758.
+		PrÃ©vot, V., et al.\ (2010). Gonadotropin-releasing hormone nerve terminals, tanycytes, and neurohormonal systems. \textit{Journal of Neuroendocrinology}, \textbf{22}(7), 748--758.
 		
 		\bibitem{Benner2018}
 		Benner, C., et al.\ (2018). Tanycyte insulin receptor substrate-2 signaling. \textit{Cell Metabolism}, \textbf{27}(3), 560--571.
@@ -1570,7 +1570,7 @@
 		Ballatore, C., Lee, V.M.Y., \& Trojanowski, J.Q.\ (2007). Tau-mediated neurodegeneration in Alzheimer's disease and related disorders. \textit{Nature Reviews Neuroscience}, \textbf{8}(9), 663--672.
 		
 		\bibitem{Garcia2014}
-		García-Cáceres, C., et al.\ (2014). Hypothalamic astrocytes and tanycytes in energy homeostasis. \textit{Nature Neuroscience}, \textbf{17}(6), 781--787.
+		GarcÃ­a-CÃ¡ceres, C., et al.\ (2014). Hypothalamic astrocytes and tanycytes in energy homeostasis. \textit{Nature Neuroscience}, \textbf{17}(6), 781--787.
 		
 		\bibitem{Verkhratsky2019}
 		Verkhratsky, A., \& Nedergaard, M.\ (2019). Physiology of astroglia. \textit{Physiological Reviews}, \textbf{98}(1), 239--389.

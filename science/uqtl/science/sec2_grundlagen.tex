@@ -1,34 +1,34 @@
-% ═══════════════════════════════════════════════════════════════════════════════
+﻿% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \section{Theoretische Grundlagen}
 \label{sec:grundlagen}
-% ═══════════════════════════════════════════════════════════════════════════════
+% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 \subsection{Relationale Algebra und SQL}
 \label{subsec:rel_algebra}
 
-Die theoretische Basis für die Query-Übersetzung bildet die \emph{relationale
+Die theoretische Basis fÃ¼r die Query-Ãœbersetzung bildet die \emph{relationale
 Algebra} nach Codd \cite{codd1970relational}. Alle im UQTL-Standard behandelten
 Query-Operatoren lassen sich auf eine endliche Menge algebraischer
-Grundoperationen zurückführen.
+Grundoperationen zurÃ¼ckfÃ¼hren.
 
 \begin{definition}[Relationale Grundoperationen]
 \label{def:rel_ops}
-Gegeben seien Relationen $R$, $S$ über einem Schema $\mathcal{R}$.
+Gegeben seien Relationen $R$, $S$ Ã¼ber einem Schema $\mathcal{R}$.
 Die relationalen Grundoperationen sind:
 \begin{align*}
-  \sigma_p(R) &\quad \text{Selektion (Filterung) mit Prädikat } p \\
+  \sigma_p(R) &\quad \text{Selektion (Filterung) mit PrÃ¤dikat } p \\
   \pi_A(R)    &\quad \text{Projektion auf Attributmenge } A \subseteq \mathcal{R} \\
   R \times S  &\quad \text{Kartesisches Produkt} \\
   R \cup S    &\quad \text{Vereinigung} \\
   R - S       &\quad \text{Differenz} \\
-  R \bowtie_p S &\quad \text{Join mit Prädikat } p \\
+  R \bowtie_p S &\quad \text{Join mit PrÃ¤dikat } p \\
   \gamma_{A,F}(R) &\quad \text{Gruppierung nach } A \text{ mit Aggregatfunktionen } F
 \end{align*}
 \end{definition}
 
-SQL ist eine deklarative Anfragesprache, die über diese algebraischen
+SQL ist eine deklarative Anfragesprache, die Ã¼ber diese algebraischen
 Grundoperationen hinausgeht und um Fensterfunktionen, rekursive Abfragen
-(CTE), Mengenoperationen sowie datenbankspezifische Erweiterungen ergänzt wird.
+(CTE), Mengenoperationen sowie datenbankspezifische Erweiterungen ergÃ¤nzt wird.
 ANSI SQL:2016 \cite{ansi_sql_2016} bildet die Ziel-Spezifikation des UQTL-Standards.
 
 \subsection{Query-Abstraktion in modernen Programmiersprachen}
@@ -39,10 +39,10 @@ Alle drei im UQTL-Standard behandelten Sprachen implementieren das Konzept der
 
 \subsubsection{Python -- SQLAlchemy Core \& ORM}
 
-Python verfügt über keine native Query-Syntax in der Sprache selbst.
-Der De-facto-Standard für relationale Abfragen ist \textbf{SQLAlchemy},
+Python verfÃ¼gt Ã¼ber keine native Query-Syntax in der Sprache selbst.
+Der De-facto-Standard fÃ¼r relationale Abfragen ist \textbf{SQLAlchemy},
 dessen \emph{Core}-Schicht einen Expression Language API bereitstellt.
-Abfragen werden als verkettete Methodenaufrufe oder als ORM-Ausdrücke
+Abfragen werden als verkettete Methodenaufrufe oder als ORM-AusdrÃ¼cke
 formuliert \cite{sqlalchemy_docs}:
 
 \begin{lstlisting}[style=pythonstyle, caption={Python SQLAlchemy -- Query-Stilarten},
@@ -66,8 +66,8 @@ users = ps.sqldf("SELECT * FROM users WHERE active=1 ORDER BY name")
 
 \subsubsection{Java -- Stream API und JPA Criteria API}
 
-Java bietet seit Version 8 die \textbf{Stream API} für funktionale
-Datenverarbeitung auf Collections \cite{java_stream_docs}. Für
+Java bietet seit Version 8 die \textbf{Stream API} fÃ¼r funktionale
+Datenverarbeitung auf Collections \cite{java_stream_docs}. FÃ¼r
 Datenbankabfragen wird die \textbf{JPA Criteria API} oder Frameworks
 wie \textbf{QueryDSL} verwendet:
 
@@ -99,9 +99,9 @@ List<User> users = new JPAQuery<>(em)
 \subsubsection{C\# -- LINQ (Language Integrated Query)}
 
 C\# bietet mit \textbf{LINQ} eine nativ in die Sprache integrierte
-Query-Syntax, die vom Compiler direkt in Methodenaufrufe übersetzt wird.
+Query-Syntax, die vom Compiler direkt in Methodenaufrufe Ã¼bersetzt wird.
 Entity Framework Core implementiert den \texttt{IQueryable<T>}-Provider
-für SQL-Generierung \cite{ef_core_docs,linq_docs}:
+fÃ¼r SQL-Generierung \cite{ef_core_docs,linq_docs}:
 
 \begin{lstlisting}[style=csharpstyle, caption={C\# LINQ -- Query-Stilarten},
   label=lst:cs_styles]
@@ -123,15 +123,15 @@ var result = context.Users
     .Select(u => new { u.Id, u.Name, u.Email });
 \end{lstlisting}
 
-\subsection{Bestehende Ansätze und deren Limitierungen}
+\subsection{Bestehende AnsÃ¤tze und deren Limitierungen}
 \label{subsec:bestehend}
 
-Tabelle~\ref{tab:bestehend} fasst bestehende Ansätze zur Query-Abstraktion
+Tabelle~\ref{tab:bestehend} fasst bestehende AnsÃ¤tze zur Query-Abstraktion
 und deren Grenzen zusammen.
 
 \begin{table}[H]
 \centering
-\caption{Bestehende Query-Abstraktionsansätze und ihre Limitierungen}
+\caption{Bestehende Query-AbstraktionsansÃ¤tze und ihre Limitierungen}
 \label{tab:bestehend}
 \renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\textwidth}{lXX}
@@ -139,8 +139,8 @@ und deren Grenzen zusammen.
 \textbf{Ansatz} & \textbf{Merkmale} & \textbf{Limitierungen} \\
 \midrule
 Hibernate (Java)
-  & Mächtiges ORM, HQL, Criteria API
-  & Nur Java; erzeugt oft ineffiziente SQL; kein sprachübergreifender Standard \\
+  & MÃ¤chtiges ORM, HQL, Criteria API
+  & Nur Java; erzeugt oft ineffiziente SQL; kein sprachÃ¼bergreifender Standard \\
 \hline
 Entity Framework (C\#)
   & LINQ-Integration, Migrations
@@ -152,18 +152,18 @@ SQLAlchemy (Python)
 \hline
 JOOQ (Java)
   & Typsicherer SQL-Builder
-  & Nur Java; erfordert Code-Generierung; kommerziell für Enterprise \\
+  & Nur Java; erfordert Code-Generierung; kommerziell fÃ¼r Enterprise \\
 \hline
 Exposed (Kotlin)
-  & Kotlin DSL für SQL
-  & Nur JVM/Kotlin; junges Ökosystem \\
+  & Kotlin DSL fÃ¼r SQL
+  & Nur JVM/Kotlin; junges Ã–kosystem \\
 \hline
 Prisma (Node.js)
-  & Typsicherer ORM für TypeScript
-  & Nur Node.js/TypeScript; anderes Ökosystem \\
+  & Typsicherer ORM fÃ¼r TypeScript
+  & Nur Node.js/TypeScript; anderes Ã–kosystem \\
 \hline
 GraphQL-to-SQL
-  & Graphenabfragen über SQL
+  & Graphenabfragen Ã¼ber SQL
   & Anderes Paradigma; nicht auf Standard-CRUD ausgerichtet \\
 \bottomrule
 \end{tabularx}
@@ -171,9 +171,9 @@ GraphQL-to-SQL
 
 \begin{warningbox}
 \textbf{Kritische Feststellung:}
-Kein bestehender Ansatz garantiert sprachübergreifende SQL-Äquivalenz.
-Die Lücke liegt nicht in der fehlenden Implementierung, sondern im Fehlen
-eines formalen Standards, der Äquivalenzanforderungen und
+Kein bestehender Ansatz garantiert sprachÃ¼bergreifende SQL-Ã„quivalenz.
+Die LÃ¼cke liegt nicht in der fehlenden Implementierung, sondern im Fehlen
+eines formalen Standards, der Ã„quivalenzanforderungen und
 Normalisierungsregeln verbindlich definiert.
 \end{warningbox}
 
@@ -183,24 +183,24 @@ Normalisierungsregeln verbindlich definiert.
 \begin{definition}[Query-Ausdruck]
 \label{def:query_expr}
 Ein \emph{Query-Ausdruck} $Q$ ist ein Term einer Operatoralgebra $\mathcal{A}$
-über einer Datenbankschema-Instanz $\sigma$. Die \emph{Semantik} von $Q$ ist
+Ã¼ber einer Datenbankschema-Instanz $\sigma$. Die \emph{Semantik} von $Q$ ist
 die Relation $\llbracket Q \rrbracket_\sigma$, die durch Auswertung von $Q$
 in $\sigma$ entsteht.
 \end{definition}
 
-\begin{definition}[Semantische Äquivalenz]
+\begin{definition}[Semantische Ã„quivalenz]
 \label{def:sem_aequiv}
-Zwei Query-Ausdrücke $Q_1$ und $Q_2$ heißen \emph{semantisch äquivalent},
-geschrieben $Q_1 \equiv Q_2$, wenn für alle Datenbankinstanzen $\sigma$ gilt:
+Zwei Query-AusdrÃ¼cke $Q_1$ und $Q_2$ heiÃŸen \emph{semantisch Ã¤quivalent},
+geschrieben $Q_1 \equiv Q_2$, wenn fÃ¼r alle Datenbankinstanzen $\sigma$ gilt:
 \[
   \llbracket Q_1 \rrbracket_\sigma = \llbracket Q_2 \rrbracket_\sigma
 \]
 \end{definition}
 
-\begin{definition}[UQTL-Konformität]
+\begin{definition}[UQTL-KonformitÃ¤t]
 \label{def:konformitaet}
-Ein Übersetzungssystem $T$ heißt \emph{UQTL-konform}, wenn für alle
-äquivalenten Quellanfragen $Q_{py} \equiv Q_{java} \equiv Q_{cs}$ gilt:
+Ein Ãœbersetzungssystem $T$ heiÃŸt \emph{UQTL-konform}, wenn fÃ¼r alle
+Ã¤quivalenten Quellanfragen $Q_{py} \equiv Q_{java} \equiv Q_{cs}$ gilt:
 \[
   T(Q_{py}) = T(Q_{java}) = T(Q_{cs}) = S^*
 \]
@@ -208,3 +208,4 @@ wobei $S^*$ das normalisierte SQL-Statement im UQTL-Normalformat ist.
 \end{definition}
 
 Diese Definitionen bilden das formale Fundament des gesamten Standards.
+

@@ -85,7 +85,7 @@ def plot1_capacity_gain():
     axes[1].set_xlim(0, 15)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot1_capacity.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot1_capacity.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 1 gespeichert.")
 
@@ -178,7 +178,7 @@ def plot2_spectral():
     axes[2].legend(handles=[patch_b, patch_r], fontsize=8)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot2_spectral.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot2_spectral.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 2 gespeichert.")
 
@@ -271,7 +271,7 @@ def plot3_learning():
     ax.set_title(f'Finale Genauigkeit über {runs} Experimente')
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot3_learning.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot3_learning.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 3 gespeichert.")
 
@@ -363,7 +363,7 @@ def plot4_graph_structure():
                ncol=3, fontsize=10, bbox_to_anchor=(0.5, -0.04))
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot4_graph.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot4_graph.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 4 gespeichert.")
 
@@ -448,7 +448,7 @@ def plot5_information():
     ax.legend(fontsize=9)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot5_information.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot5_information.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 5 gespeichert.")
 
@@ -537,7 +537,7 @@ def plot6_weights():
     ax.set_ylim(0.5, 1.05)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot6_weights.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot6_weights.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 6 gespeichert.")
 
@@ -594,7 +594,7 @@ def plot7_transfer():
     ax.set_title('Pareto-Front: Alte vs. neue Aufgabe')
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot7_transfer.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot7_transfer.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 7 gespeichert.")
 
@@ -674,7 +674,7 @@ def plot8_bounds():
     ax.set_ylim(0, 1.5)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot8_bounds.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot8_bounds.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 8 gespeichert.")
 
@@ -745,7 +745,7 @@ def plot9_decision():
         ax.legend(fontsize=8, loc='upper right')
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot9_decision.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot9_decision.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 9 gespeichert.")
 
@@ -883,7 +883,7 @@ def plot10_scaling():
     ax.set_ylim(-0.15, 1.45)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot10_scaling.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot10_scaling.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 10 gespeichert.")
 
@@ -976,7 +976,7 @@ def plot11_subgraph_motifs():
     fig.suptitle('Strukturelle Subgraph-Erkennung und kanonische Reduktion',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot11_subgraph_motifs.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot11_subgraph_motifs.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 11 gespeichert.")
 
@@ -1050,7 +1050,7 @@ def plot12_compression_iterations():
     fig.suptitle('Iterative Subgraph-Kompression: Netzwerkentwicklung',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot12_compression_iterations.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot12_compression_iterations.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 12 gespeichert.")
 
@@ -1116,7 +1116,7 @@ def plot13_runtime_analysis():
 
     fig.suptitle('Laufzeit- und Motivstruktur-Analyse', fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot13_runtime_analysis.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot13_runtime_analysis.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 13 gespeichert.")
 
@@ -1190,7 +1190,7 @@ def plot14_information_routing():
     fig.suptitle('Informationsfluss-Routing nach kanonischer Reduktion',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot14_information_routing.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot14_information_routing.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 14 gespeichert.")
 
@@ -1276,7 +1276,7 @@ def plot15_energy_efficiency():
     fig.suptitle('Energieeffizienz durch strukturelle Subgraph-Kompression',
                  fontsize=13, fontweight='bold')
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot15_energy_efficiency.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot15_energy_efficiency.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 15 gespeichert.")
 
@@ -1394,7 +1394,7 @@ def plot16_energy_balance():
     ax.set_ylim(0, totals[0] * 1.12)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot16_energy_balance.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot16_energy_balance.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 16 gespeichert.")
 
@@ -1486,7 +1486,7 @@ def plot17_energy_savings_scale():
     ax.legend(fontsize=8)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot17_energy_savings_scale.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot17_energy_savings_scale.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 17 gespeichert.")
 
@@ -1592,7 +1592,7 @@ def plot18_co2_impact():
     ax.set_xlim(0, max(values) * 1.3)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot18_co2_impact.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot18_co2_impact.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 18 gespeichert.")
 
@@ -1687,7 +1687,7 @@ def plot19_cooling_pue():
     ax.legend(handles=[compute_patch, cool_patch], fontsize=9)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot19_cooling_pue.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot19_cooling_pue.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 19 gespeichert.")
 
@@ -1783,7 +1783,7 @@ def plot20_tco_analysis():
     ax.invert_xaxis()
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot20_tco_analysis.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot20_tco_analysis.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 20 gespeichert.")
 
@@ -1895,7 +1895,7 @@ def plot21_training_vs_inference():
     ax.set_xlim(2023.5, 2030.5)
 
     fig.tight_layout()
-    fig.savefig('/home/stephan/Git/nngraphs/science/plot21_training_vs_inference.pdf', bbox_inches='tight')
+    fig.savefig('nngraphs/science/plot21_training_vs_inference.pdf', bbox_inches='tight')
     plt.close(fig)
     print("Plot 21 gespeichert.")
 

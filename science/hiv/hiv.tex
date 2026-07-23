@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -51,13 +51,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}1
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
+	{Ã–}{{\"O}}1
+	{Ã„}{{\"A}}1
+	{Ãœ}{{\"U}}1
+	{ÃŸ}{{\ss}}1
+	{Ã¼}{{\"u}}1
+	{Ã¤}{{\"a}}1
+	{Ã¶}{{\"o}}1
 }
 
 \title{\textbf{HIV-Infektion:}\\[0.4em]
@@ -103,7 +103,7 @@ beobachtet, die sp\"ater als \emph{Acquired Immunodeficiency Syndrome} (AIDS) be
 -- das Humane Immundefizienz-Virus (HIV) --, wof\"ur sie 2008 den Nobelpreis f\"ur Medizin erhielten.
 
 Seit Beginn der Epidemie hat das Virus mehr als \textbf{85 Millionen} Menschen infiziert und
-\"uber \textbf{40 Millionen Todesfälle} verursacht~\cite{bekker2023hiv}. Ende 2023 lebten
+\"uber \textbf{40 Millionen TodesfÃ¤lle} verursacht~\cite{bekker2023hiv}. Ende 2023 lebten
 weltweit rund 39,9 Millionen Menschen mit HIV. Trotz dieser enormen Last hat die Entwicklung
 hochwirksamer antiretroviraler Therapien (ART) seit Mitte der 1990er-Jahre die Prognose der
 Erkrankung fundamental ver\"andert: HIV-Infektion ist heute f\"ur Personen mit Zugang zu ART
@@ -113,7 +113,7 @@ eine chronisch behandelbare Erkrankung mit nahezu normaler Lebenserwartung.
 \centering
 \includegraphics[width=0.92\textwidth]{plot1_epidemic.pdf}
 \caption{Globale HIV/AIDS-Epidemiekurve 1990--2023. \textbf{Oben:} Neuinfektionen und
-AIDS-bedingte Todesfälle pro Jahr. Die Einf\"uhrung der kombinierten antiretroviralen
+AIDS-bedingte TodesfÃ¤lle pro Jahr. Die Einf\"uhrung der kombinierten antiretroviralen
 Therapie (cART, 1996) und die US-amerikanische PEPFAR-Initiative (2004) markieren
 kritische Wendepunkte. \textbf{Unten:} Gesamtzahl der Menschen mit HIV.
 Daten: UNAIDS World AIDS Day Report 2023.}
@@ -122,11 +122,11 @@ Daten: UNAIDS World AIDS Day Report 2023.}
 
 \subsection{Problemstellung}
 
-Der Verlauf einer HIV-Infektion ohne Therapie lässt sich in drei Phasen unterteilen:
+Der Verlauf einer HIV-Infektion ohne Therapie lÃ¤sst sich in drei Phasen unterteilen:
 
 \begin{enumerate}
 \item \textbf{Akute Phase} (Wochen 1--6): Rasche virale Replikation, hohe Viruslast,
-      transiente Reduktion der CD4$^+$ T-Zellzahl, grippeähnliche Symptome.
+      transiente Reduktion der CD4$^+$ T-Zellzahl, grippeÃ¤hnliche Symptome.
 \item \textbf{Chronische Phase} (Monate bis Jahre): Klinische Latenz, moderater Abfall der
       CD4$^+$ T-Zellen, niedrige bis moderate Viruslast.
 \item \textbf{AIDS-Stadium} (nach Abfall des CD4-Wertes unter 200 Zellen/$\mu$L): Schwere
@@ -135,15 +135,15 @@ Der Verlauf einer HIV-Infektion ohne Therapie lässt sich in drei Phasen unterte
 
 \textbf{Zentrale biologische Fragen:}
 \begin{itemize}
-\item Wie infiziert HIV-1 Wirtszellen über CD4, CCR5 und CXCR4?
+\item Wie infiziert HIV-1 Wirtszellen Ã¼ber CD4, CCR5 und CXCR4?
 \item Welche mathematischen Gesetze beschreiben die Within-Host-Dynamik?
 \item Unter welchen formalen Bedingungen ist virale Suppression durch ART erreichbar?
-\item Wie lässt sich die epidemische Ausbreitung formal kontrollieren?
+\item Wie lÃ¤sst sich die epidemische Ausbreitung formal kontrollieren?
 \end{itemize}
 
 \subsection{Motivation}
 
-Das formale Verständnis der HIV-Dynamik ist aus mehreren Gr\"unden essenziell:
+Das formale VerstÃ¤ndnis der HIV-Dynamik ist aus mehreren Gr\"unden essenziell:
 Erstens erlaubt es die pr\"azise Vorhersage des Krankheitsverlaufs und die Optimierung
 von Therapieregimen. Zweitens erm\"oglicht die mathematische Modellierung der
 Epidemiologie die Planung wirksamer pr\"aventiver Interventionen.
@@ -203,21 +203,21 @@ R_0 < 1 \;\Leftrightarrow\; \text{Infektion stirbt aus}.
 Der Replikationszyklus von HIV-1 in einer Zielzelle verl\"auft in acht definierten Schritten:
 
 \begin{enumerate}
-\item \textbf{Adsorption}: Das Hüllprotein gp120 bindet an den CD4-Rezeptor.
+\item \textbf{Adsorption}: Das HÃ¼llprotein gp120 bindet an den CD4-Rezeptor.
       Diese Bindung induziert eine Konformations\"anderung.
 \item \textbf{Korezeptorbindung}: Konformations-ge\"andertes gp120 bindet an CCR5
       (bei R5-trop-hem Virus) oder CXCR4 (bei X4-trophem Virus).
-\item \textbf{Fusion}: Das Hüllprotein gp41 vermittelt die Fusion der viralen Hülle
+\item \textbf{Fusion}: Das HÃ¼llprotein gp41 vermittelt die Fusion der viralen HÃ¼lle
       mit der Zellmembran; das Kapsid gelangt ins Zytoplasma.
 \item \textbf{Reverse Transkription}: Die virale Reverse Transkriptase (RT) synthetisiert
-      aus der ssRNA eine doppelsträngige DNA (dsDNA).
+      aus der ssRNA eine doppelstrÃ¤ngige DNA (dsDNA).
 \item \textbf{Import}: Der Pr\"aintegrationskomplex (PIC) wird in den Kern importiert.
 \item \textbf{Integration}: Die virale Integrase katalysiert die kovalente Integration
       der viralen DNA in das Wirtszellgenom (Provirus).
-\item \textbf{Transkription und Translation}: Das Provirus wird durch zelluläre und virale
+\item \textbf{Transkription und Translation}: Das Provirus wird durch zellulÃ¤re und virale
       Faktoren (Tat) transkribiert; virale Proteine werden synthetisiert.
 \item \textbf{Reifung und Knospung}: Neue Virionen knospen aus der Zellmembran;
-      die virale Protease spal-tet Gag- und Gag-Pol-Vorläufer zur Reifung.
+      die virale Protease spal-tet Gag- und Gag-Pol-VorlÃ¤ufer zur Reifung.
 \end{enumerate}
 
 \subsection{Pharmakologische Angriffspunkte}
@@ -344,7 +344,7 @@ die blaue die chronische Phase. Parameterwerte gem\"a{\ss} obiger Tabelle.}
 \end{figure}
 
 % =============================================================================
-\section{Formale Analyse: Reproduktionszahl und Stabilitätssätze}
+\section{Formale Analyse: Reproduktionszahl und StabilitÃ¤tssÃ¤tze}
 % =============================================================================
 
 \subsection{Die Basisreproduktionszahl $R_0$}
@@ -648,7 +648,7 @@ der ART-Entwicklung mit Wirkstoffklassen und zulassungsjahr.}
 
 Entsprechend den UNAIDS-Daten 2023 lebten weltweit rund 39{,}9 Millionen Menschen
 mit HIV, darunter 37{,}5 Mio.\ Erwachsene und 1{,}4 Mio.\ Kinder unter 15 Jahren.
-Rund 1{,}3 Millionen Neuinfektionen und 630.000 AIDS-bedingte Todesfälle wurden
+Rund 1{,}3 Millionen Neuinfektionen und 630.000 AIDS-bedingte TodesfÃ¤lle wurden
 2023 registriert -- ein deutlicher R\"uckgang von je 59\% bzw.\ 71\% seit den
 Hochpunkten der Epidemie~\cite{bekker2023hiv}.
 
@@ -665,7 +665,7 @@ HIV-1 wird haupts\"achlich durch folgende Wege \"ubertragen:
 \begin{enumerate}
 \item \textbf{Sexuell}: Hetero- und homosexuelle Kontakte (weltweit dominanter Weg);
       Transmissionswahrscheinlichkeit pro Akt: 0{,}001--0{,}14 (anal/vaginal).
-\item \textbf{Parenteral}: Intravenöser Drogengebrauch (Nadelteilen);
+\item \textbf{Parenteral}: IntravenÃ¶ser Drogengebrauch (Nadelteilen);
       Transmissionswahrscheinlichkeit pro Stich: $\approx 0{,}006$--$0{,}02$.
 \item \textbf{Vertikal}: Mutter-Kind-\"Ubertragung (perinatal, Stillen);
       ohne Intervention: 15--45\%; mit PMTCT: $< 2\%$.
@@ -730,7 +730,7 @@ Dieses Reservoir wird durch ART nicht beseitigt und ist f\"ur den viralen Reboun
 nach ART-Absetzen verantwortlich.
 
 \textbf{Sterilisierende Heilung (sterilizing cure)} zielt darauf ab, alle infizierten
-Zellen vollst\"andig zu eliminieren. Ansätze hierfür umfassen:
+Zellen vollst\"andig zu eliminieren. AnsÃ¤tze hierfÃ¼r umfassen:
 
 \begin{itemize}
 \item \textbf{``Shock and Kill''}: Latenzreaktivatoren (LRA) wie Bromodomain-Inhibitoren
@@ -743,7 +743,7 @@ Zellen vollst\"andig zu eliminieren. Ansätze hierfür umfassen:
 \item \textbf{CRISPR-Cas9 und Gentherapie}: CRISPR-basierte Systeme k\"onnen das Provirus
       in infizierten Zellen direkt ausschneiden oder inaktivieren. Im Tiermodell
       (Excision BioTherapeutics, Temple University) wurde Elimination des Provirus in
-      HIV-infizierten Mäusen und Affen gezeigt. Klinische Phase-I-Studien am Menschen
+      HIV-infizierten MÃ¤usen und Affen gezeigt. Klinische Phase-I-Studien am Menschen
       laufen seit 2022.
 
 \item \textbf{CCR5-Gene-Editing}: Die nat\"urliche Resistenz von CCR5-$\Delta$32-Homozygoten
@@ -777,15 +777,15 @@ zu kontrollieren ohne es vollst\"andig zu eliminieren:
 \subsection{Prophylaktische Impfstoffe}
 
 Ein hochwirksamer prophylaktischer HIV-Impfstoff bleibt eine der gr\"o\ss ten
-ungelösten Herausforderungen der Biomedizin. Die Schwierigkeiten sind fundamental:
+ungelÃ¶sten Herausforderungen der Biomedizin. Die Schwierigkeiten sind fundamental:
 \begin{enumerate}
 \item \textbf{Extreme genetische Diversit\"at}: HIV-1 existiert in drei Gruppen
       (M, N, O) und neun Subtypen (A--K) mit bis zu 35\% Sequenzdivergenz im
       Env-Protein -- mehr als die Differenz zwischen Human- und Affengrippe.
 \item \textbf{Immune Evasion}: Das Env-Trimer ist dicht mit N-gebundenen Glykanen
-      bedeckt (``glycan shield''), die Antikörperziele maskieren.
+      bedeckt (``glycan shield''), die AntikÃ¶rperziele maskieren.
 \item \textbf{Fehlendes Tiermodell}: Schimpansen infizieren sich mit HIV-1,
-      erkranken aber nicht; Makakenmodelle nutzen SHIV (chimäres SIV/HIV),
+      erkranken aber nicht; Makakenmodelle nutzen SHIV (chimÃ¤res SIV/HIV),
       das nicht identisch mit HIV ist.
 \end{enumerate}
 
@@ -823,7 +823,7 @@ zu \emph{long-acting} (LA) Formulierungen, die nur monatlich oder halbj\"ahrlich
 verabreicht werden:
 
 \begin{itemize}
-\item \textbf{Cabotegravir + Rilpivirin intramuskulär}: Seit 2021 in den USA
+\item \textbf{Cabotegravir + Rilpivirin intramuskulÃ¤r}: Seit 2021 in den USA
       und Europa zugelassen (Cabenuva). Monatliche oder zweimonatliche i.m.-Injektion
       ist mindestens genauso wirksam wie t\"agliche orale ART.
 
@@ -856,17 +856,17 @@ Trotz hoher Wirksamkeit bleibt die globale PrEP-Abdeckung (ca.\ 5 Mio.\ Nutzer w
 2023 vs.\ gesch\"atztem Bedarf von 10+ Mio.) ein kritisches Defizit.
 
 Das Lenacapavir-Ergebnis (PURPOSE-1, 2024) er\"offnet erstmals die Perspektive
-einer halbj\"ahrlichen PrEP-Injektion mit $100\%$ Wirksamkeit und könnte die
-Adhärenzproblematik der t\"aglichen PrEP fundamental l\"osen.
+einer halbj\"ahrlichen PrEP-Injektion mit $100\%$ Wirksamkeit und kÃ¶nnte die
+AdhÃ¤renzproblematik der t\"aglichen PrEP fundamental l\"osen.
 
-\subsection{Immuntherapie und monoklonale Antikörper}
+\subsection{Immuntherapie und monoklonale AntikÃ¶rper}
 
 Jenseits klassischer antiviraler Wirkstoffe gewinnen immuntherapeutische Ans\"atze
 an Bedeutung:
 
 \begin{itemize}
 \item \textbf{Checkpoint-Inhibitoren}: HIV-spezifische CD8$^+$ T-Zellen werden w\"ahrend
-      der chronischen Infektion exhausted (erschöpft) durch PD-1/PD-L1-Signalwege.
+      der chronischen Infektion exhausted (erschÃ¶pft) durch PD-1/PD-L1-Signalwege.
       Anti-PD-1-Therapien (Pembrolizumab, Nivolumab) k\"onnen in Kombination mit
       LRA das ``Shock and Kill''-Paradigma st\"arken, haben aber signifikante
       Nebenwirkungsprofile.
@@ -884,7 +884,7 @@ an Bedeutung:
       prolongierten viralen Rebound in einem Subset von Patienten.
 \end{itemize}
 
-\subsection{Multimorbidität und Langzeitbetreuung}
+\subsection{MultimorbiditÃ¤t und Langzeitbetreuung}
 
 Mit steigender Lebenserwartung von HIV-Infizierten unter ART r\"ucken altersassoziierte
 Komorbidit\"aten in den Vordergrund~\cite{bekker2023hiv}:
@@ -907,10 +907,10 @@ Komorbidit\"aten in den Vordergrund~\cite{bekker2023hiv}:
       (Didanosin, Stavudin, Zidovudin) verursacht, teils durch HIV selbst.
 
 \item \textbf{Osteoporose}: Erh\"ohte Frakturrate, bedingt durch HIV,
-      Inflammation und TDF-induzierte renale tubuläre Dysfunktion.
+      Inflammation und TDF-induzierte renale tubulÃ¤re Dysfunktion.
 \end{itemize}
 
-Die integrierte Versorgung von HIV-Infizierten erfordert multidisziplinäre Teams
+Die integrierte Versorgung von HIV-Infizierten erfordert multidisziplinÃ¤re Teams
 aus Infektiologen, Kardiologen, Neurologen, Onkologen und Psychologen.
 
 \subsection{Globale Gesundheitsgerechtigkeit und Zugangsproblematik}
@@ -927,7 +927,7 @@ Ungleichheiten im globalen Gesundheitssystem wider~\cite{bekker2023hiv}.
       einkommensschwachen L\"andern.
 
 \item \textbf{Medikamenten-Pipeline f\"ur Niedriglohnl\"ander}: LA-ART (Lenacapavir)
-      kostet in Hocheinkommensländern ca.\ 42.250 USD/Jahr. Generika-LA-ART
+      kostet in HocheinkommenslÃ¤ndern ca.\ 42.250 USD/Jahr. Generika-LA-ART
       k\"onnten theoretisch f\"ur \$40/Jahr produziert werden (MSF-Sch\"atzung);
       dies erfordert Freigabe von Patenten durch Originalhersteller (Gilead).
 
@@ -938,7 +938,7 @@ Ungleichheiten im globalen Gesundheitssystem wider~\cite{bekker2023hiv}.
       Individuen das Virus nicht sexuell \"ubertragen.
 
 \item \textbf{Schl\"usselgruppen}: Homosexuelle M\"anner, transgender Personen,
-      intravenöse Drogenkonsumenten und Sexarbeiter tragen weltweit
+      intravenÃ¶se Drogenkonsumenten und Sexarbeiter tragen weltweit
       \"uberproportional zur HIV-Inzidenz bei und sind in vielen L\"andern
       durch Kriminalisierung besonders gef\"ahrdet.
 \end{itemize}
@@ -974,7 +974,7 @@ Die UNAIDS-Strategie ``End the AIDS Pandemic by 2030'' formuliert folgende
 quantitative Ziele:
 \begin{itemize}
 \item $<$ 370.000 Neuinfektionen j\"ahrlich weltweit,
-\item $<$ 250.000 AIDS-bedingte Todesfälle j\"ahrlich,
+\item $<$ 250.000 AIDS-bedingte TodesfÃ¤lle j\"ahrlich,
 \item $<$ 10\% HIV-bezogene Diskriminierung in Bev\"olkerungsumfragen.
 \end{itemize}
 
@@ -1075,3 +1075,4 @@ Twice-yearly lenacapavir or daily F/TAF for HIV prevention in cisgender women.
 \end{thebibliography}
 
 \end{document}
+

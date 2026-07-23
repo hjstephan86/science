@@ -74,6 +74,5 @@ ax2.text(2015, 5, '≈ 40 Mio. kumulierte\nTodesfälle seit 1981',
          bbox=dict(boxstyle='round,pad=0.4', facecolor='#fff0ee', edgecolor='#b4321e', alpha=0.9))
 
 plt.tight_layout(rect=[0, 0, 1, 0.97])
-plt.savefig('/home/claude/plot1_epidemic.pdf', dpi=200, bbox_inches='tight')
-plt.savefig('/home/claude/plot1_epidemic.png', dpi=150, bbox_inches='tight')
+plt.savefig('home/claude/plot1_epidemic.png', dpi=150, bbox_inches='tight')
 print("Plot 1 saved.")

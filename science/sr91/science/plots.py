@@ -13,7 +13,7 @@ from scipy.integrate import odeint
 from scipy.optimize import fsolve
 import os
 
-OUT = "/home/claude/recon_aircraft/figures"
+OUT = 'figures"
 os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({

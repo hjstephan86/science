@@ -125,7 +125,7 @@ ax.legend(handles=leg_entries, loc='lower right', fontsize=8.5,
           framealpha=0.9, edgecolor='#cccccc')
 
 plt.tight_layout()
-plt.savefig('/home/claude/knotengleichung/plot2_wasserkreislauf.pdf',
+plt.savefig('plot2_wasserkreislauf.pdf',
             bbox_inches='tight', dpi=300)
 plt.close()
 print("Plot 2 gespeichert.")

@@ -93,7 +93,7 @@ ax3.set_facecolor('#F5F5F8')
 fig.suptitle('Abbildung 4: Das Beruhigungstheorem — Kontemplation der Naturgesetze als einzige dauerhafte Angstreduktion',
              fontsize=12, fontweight='bold', y=1.01)
 
-plt.savefig('/home/claude/naturgesetze/plot4_beruhigung.pdf', bbox_inches='tight', dpi=200)
-plt.savefig('/home/claude/naturgesetze/plot4_beruhigung.png', bbox_inches='tight', dpi=150)
+plt.savefig('plot4_beruhigung.pdf', bbox_inches='tight', dpi=200)
+plt.savefig('plot4_beruhigung.png', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 4 gespeichert.")

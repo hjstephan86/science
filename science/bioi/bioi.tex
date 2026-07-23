@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -76,7 +76,7 @@ Der \emph{Epidemische Schwellensatz} (Satz~\ref{satz:epi_threshold})
 zeigt, dass $R_0 > 1$ \"aquivalent zur Existenz eines
 \"ubertragenden Teilgraphen im Kontaktnetzwerk ist.
 Der \emph{Phylogenetische Distanzsatz} (Satz~\ref{satz:phylo_dist})
-verbindet evolutionäre Distanzen mit LCS-Werten auf Signatur-Arrays.
+verbindet evolutionÃ¤re Distanzen mit LCS-Werten auf Signatur-Arrays.
 \end{abstract}
 
 \tableofcontents
@@ -230,7 +230,7 @@ $\Gblood = (K, E_{\mathrm{sig}}, w_{\mathrm{akt}})$ hat:
           (Rezeptoren, Kinasen, Transkriptionsfaktoren),
     \item $(k_i, k_j) \in E_{\mathrm{sig}}$:
           Aktivierungs- oder Inhibitionsbeziehung,
-    \item $w_{\mathrm{akt}}(k_i, k_j)$: Aktivierungsstärke.
+    \item $w_{\mathrm{akt}}(k_i, k_j)$: AktivierungsstÃ¤rke.
 \end{itemize}
 \end{definition}
 
@@ -580,7 +580,7 @@ Dann gilt die Ungleichung:
 \[
 d_{\mathrm{seq}}(G_1, G_2) \leq n - \mathrm{LCS}(\sigvec(A_1), \sigvec(A_2)),
 \]
-d.\,h.\ der LCS-Wert liefert eine untere Schranke f\"ur die Sequenzähnlichkeit.
+d.\,h.\ der LCS-Wert liefert eine untere Schranke f\"ur die SequenzÃ¤hnlichkeit.
 \end{satz}
 
 \begin{proof}
@@ -604,7 +604,7 @@ Umstellen: $d_{\mathrm{seq}} \leq n - \mathrm{LCS}$.
 Oben links: De-Bruijn-Graph $k=3$ f\"ur Sequenz ATCGATCG.
 Oben rechts: Mutations-Landschaft entlang dem Chromosom (Hotspots annotiert).
 Unten links: Sequenzalignment als LCS-DP-Tabelle.
-Unten rechts: Phylogenetischer Graph mit evolutionären Distanzen als Kantengewichte.}
+Unten rechts: Phylogenetischer Graph mit evolutionÃ¤ren Distanzen als Kantengewichte.}
 \label{fig:dna_genomik}
 \end{figure}
 
@@ -698,7 +698,7 @@ Eine Bibliothek bekannter Epidemie-Signatur-Arrays
 \sigvec(\Gepi^{\mathrm{Ebola}}),\,
 \sigvec(\Gepi^{\mathrm{Influenza}}),\, \ldots\bigr\}
 \]
-erm\"oglicht Echtzeit-Erkennung neuer Ausbrüche:
+erm\"oglicht Echtzeit-Erkennung neuer AusbrÃ¼che:
 Wenn das aktuelle Kontaktnetzwerk $G_{\mathrm{aktuell}}$ einen Subgraph
 enth\"alt, der signaturgem\"a{\ss} zu einem Bibliothekseintrag passt
 ($G_{\mathrm{bekannt}} \subseteq G_{\mathrm{aktuell}}$), wird Alarm ausgel\"ost.
@@ -739,7 +739,7 @@ Im Graphrahmen: Pharmakophor $= $ Subgraph $G_{\mathrm{Pharm}} \subseteq G_{\mat
 Der Subgraph Algorithmus findet alle Proteine, die $G_{\mathrm{Pharm}}$
 als Subgraph in ihrem Interaktionsnetz enthalten -- potenzielle Wirkstoffziele.
 Verbindung zu~\cite{epp2026gen,epp2026bloodc}: Drug-Discovery f\"ur
-Leukämie via Subgraph-Pharmakophor-Screening.
+LeukÃ¤mie via Subgraph-Pharmakophor-Screening.
 
 \subsection{Virale Evolution und Anti-Viral-Design}
 
@@ -749,7 +749,7 @@ Mutation: $\sigvec(G_{\mathrm{Virus}}^{t+1})$ vs.\ $\sigvec(G_{\mathrm{Virus}}^t
 Konservierte Regions\"ahnlichkeit:
 $\mathrm{LCS}(\sigvec^{t+1}, \sigvec^t) / n$: je h\"oher, desto \"ahnlicher.
 Impfstoff-Design~\cite{epp2026norovirus}: Antigene, deren Subgraph
-in \emph{allen} bekannten Virusstämmen enthalten ist
+in \emph{allen} bekannten VirusstÃ¤mmen enthalten ist
 ($G_{\mathrm{Antigen}} \subseteq G_{\mathrm{Virus}}^{(k)}$ f\"ur alle $k$),
 sind optimale Impfstoff-Ziele (breit-neutralisierend).
 
@@ -828,7 +828,7 @@ Spektrum-Eigenschaften:
     \item \textbf{PPI-Netzwerke} (skalenfreie Topologie, $P(k) \sim k^{-\gamma}$):
           $\lambda_2 \to 0$ f\"ur $n \to \infty$ (asympotisch schlecht vernetzt).
     \item \textbf{Genomnetzwerke} (modulare Struktur, Cluster von Genen):
-          Spektrum hat ausgeprägte \emph{Spektrall\"ucke}
+          Spektrum hat ausgeprÃ¤gte \emph{Spektrall\"ucke}
           $\lambda_{m+1} - \lambda_m \gg 0$ f\"ur $m$ = Anzahl Modulen.
     \item \textbf{Epidemie-Kontaktgraphen}:
           $R_0 \propto \lambda_{\max}(A) = 2 - \lambda_n(\mathcal{L})$
@@ -993,11 +993,11 @@ es ein Kind $c$ gibt mit $\mathrm{low}[c] \geq \mathrm{disc}[v]$.
 Die DFS l\"auft in $O(n + |E|)$.
 
 \textbf{Schritt 3: Biologische Bedeutung.}
-Tumorsuppressor-Gene wie TP53 (Wächter des Genoms) sind biologisch
+Tumorsuppressor-Gene wie TP53 (WÃ¤chter des Genoms) sind biologisch
 Artikulationspunkte in Krebs-Netzwerken: Ihre Inaktivierung
 unterbricht die Signalweiterleitung zwischen Modulen
 (DNA-Reparatur $\leftrightarrow$ Apoptose $\leftrightarrow$ Zellzyklus).
-Der formale Beweis bestätigt die biologische Intuition.
+Der formale Beweis bestÃ¤tigt die biologische Intuition.
 \end{proof}
 
 \begin{korollar}[Effizienter Tumorsuppressor-Scan]
@@ -1530,3 +1530,4 @@ Google Drive (epp-group).
 \end{thebibliography}
 
 \end{document}
+

@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+﻿\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -69,13 +69,13 @@
   breaklines=true,
   frame=single,
   literate=%
-    {Ö}{{\"{O}}}1
-    {Ä}{{\"{A}}}1
-    {Ü}{{\"{U}}}1
-    {ß}{{\ss}}1
-    {ü}{{\"{u}}}1
-    {ä}{{\"{a}}}1
-    {ö}{{\"{o}}}1
+    {Ã–}{{\"{O}}}1
+    {Ã„}{{\"{A}}}1
+    {Ãœ}{{\"{U}}}1
+    {ÃŸ}{{\ss}}1
+    {Ã¼}{{\"{u}}}1
+    {Ã¤}{{\"{a}}}1
+    {Ã¶}{{\"{o}}}1
 }
 
 \title{\textbf{Punktwolkenverarbeitung via Subgraph Algorithmus:\\
@@ -91,7 +91,7 @@ durch graphentheoretische Signaturanalyse}}
 \newpage
 
 % =============================================================================
-\section{Einführung}
+\section{EinfÃ¼hrung}
 % =============================================================================
 
 Die \emph{Punktwolkenverarbeitung} (engl.\ \emph{Point Cloud Processing})
@@ -99,18 +99,18 @@ ist ein zentrales Problem der modernen Robotik, der autonomen Fahrzeugsysteme
 und der industriellen 3D-Messtechnik. LiDAR-Sensoren (Light Detection and
 Ranging) erzeugen pro Sekunde bis zu $10^6$ dreidimensionale Messpunkte,
 die als \emph{Punktwolke} $\mathcal{P} = \{p_1, p_2, \ldots, p_N\} \subset
-\mathbb{R}^3$ repräsentiert werden. Die effiziente Verarbeitung dieser
-Rohdaten für Aufgaben wie Objekterkennung, Scan-zu-Scan-Registrierung und
+\mathbb{R}^3$ reprÃ¤sentiert werden. Die effiziente Verarbeitung dieser
+Rohdaten fÃ¼r Aufgaben wie Objekterkennung, Scan-zu-Scan-Registrierung und
 semantische Segmentierung stellt hohe Anforderungen an die algorithmische
-Grundlage hinsichtlich Korrektheit, Komplexität und Robustheit.
+Grundlage hinsichtlich Korrektheit, KomplexitÃ¤t und Robustheit.
 
-Klassische Verfahren leiden unter bekannten Schwächen: Der
+Klassische Verfahren leiden unter bekannten SchwÃ¤chen: Der
 \emph{Iterative Closest Point}-Algorithmus (ICP) \citep{Besl1992}
 konvergiert nur bei guter Initialisierung und findet lediglich lokale
-Minima. PointNet \citep{Qi2017} ist auf großen Trainingsdatensätzen
+Minima. PointNet \citep{Qi2017} ist auf groÃŸen TrainingsdatensÃ¤tzen
 angewiesen und bietet keine formalen Korrektheitsgarantien.
 Deskriptorbasierte Methoden wie FPFH \citep{Rusu2009} sind robust, aber
-ohne theoretische Fundierung bezüglich struktureller Invarianzen.
+ohne theoretische Fundierung bezÃ¼glich struktureller Invarianzen.
 
 Der \emph{Subgraph Algorithmus} \citep{Epp2026} bietet eine neuartige
 algebraische Grundlage: Durch Signatur-Arrays und zyklische Rotationen
@@ -119,31 +119,31 @@ der Strong Exponential Time Hypothesis (SETH). Die zentrale These dieser
 Arbeit lautet:
 
 \begin{quote}
-  \emph{Die graphentheoretische Signaturrepräsentation des Subgraph
-  Algorithmus ist eine natürliche, effiziente und formal korrekte
-  Grundlage für alle drei zentralen Aufgaben der
+  \emph{Die graphentheoretische SignaturreprÃ¤sentation des Subgraph
+  Algorithmus ist eine natÃ¼rliche, effiziente und formal korrekte
+  Grundlage fÃ¼r alle drei zentralen Aufgaben der
   LiDAR-Punktwolkenverarbeitung.}
 \end{quote}
 
-\subsection{Beiträge dieser Arbeit}
+\subsection{BeitrÃ¤ge dieser Arbeit}
 
-Die vorliegende Arbeit leistet folgende Beiträge:
+Die vorliegende Arbeit leistet folgende BeitrÃ¤ge:
 \begin{enumerate}
   \item \textbf{Graphkonstruktion:} Formaler Nachweis, dass der
-        $k$-NN-Graph einer Punktwolke unter Starrköperbewegungen
+        $k$-NN-Graph einer Punktwolke unter StarrkÃ¶perbewegungen
         isomorph bleibt (Lemma~\ref{lem:knn_properties}).
   \item \textbf{Objekterkennung:} Reduktion des LiDAR-Erkennungsproblems
-        auf Subgraph-Isomorphie mit Korrektheits- und Vollständigkeitsbeweis
+        auf Subgraph-Isomorphie mit Korrektheits- und VollstÃ¤ndigkeitsbeweis
         (Satz~\ref{satz:erkennung_korrektheit},
         Satz~\ref{satz:vollstaendigkeit}).
-  \item \textbf{Registrierung:} Globaler Registrierungsalgorithmus über
+  \item \textbf{Registrierung:} Globaler Registrierungsalgorithmus Ã¼ber
         maximale LCS-Signaturausrichtung mit Fehlerschranke
         $|\hat\theta - \theta| \leq \pi/n$
         (Satz~\ref{satz:reg_konsistenz}, Korollar~\ref{kor:reg_fehler}).
   \item \textbf{Segmentierung:} Subgraph-Signaturklassifikator mit
         formaler Korrektheitsbedingung
         (Satz~\ref{satz:segmentierung}).
-  \item \textbf{Komplexitätsanalyse:} SETH-Optimalitätsnachweis und
+  \item \textbf{KomplexitÃ¤tsanalyse:} SETH-OptimalitÃ¤tsnachweis und
         Vergleich mit ICP, FPFH, PointNet
         (Satz~\ref{satz:seth}, Tabelle~\ref{tab:komplexitaet}).
 \end{enumerate}
@@ -162,7 +162,7 @@ Matplotlib-Abbildungen illustriert.
   Eine \emph{LiDAR-Punktwolke} ist eine endliche Menge
   $\mathcal{P} = \{p_1, \ldots, p_N\} \subset \mathbb{R}^3$,
   wobei jedem Punkt $p_i = (x_i, y_i, z_i)^{\mathrm{T}}$ eine
-  Reflexionsintensität $r_i \in [0,1]$ zugeordnet sein kann.
+  ReflexionsintensitÃ¤t $r_i \in [0,1]$ zugeordnet sein kann.
   Die \emph{paarweise Distanzmatrix} ist
   $D \in \mathbb{R}^{N \times N}$ mit $D_{ij} = \|p_i - p_j\|_2$.
 \end{definition}
@@ -170,52 +170,52 @@ Matplotlib-Abbildungen illustriert.
 \begin{definition}[$k$-NN-Graph einer Punktwolke]
   \label{def:knn_graph}
   Sei $\mathcal{P} = \{p_1, \ldots, p_N\}$ eine Punktwolke und
-  $k \in \mathbb{N}$. Der \emph{$k$-nächste-Nachbarn-Graph} ist
+  $k \in \mathbb{N}$. Der \emph{$k$-nÃ¤chste-Nachbarn-Graph} ist
   $G_\mathcal{P} = (V, E)$ mit $V = \{v_1, \ldots, v_N\}$ und
   \[
     E = \bigl\{(v_i, v_j) \;\big|\;
         p_j \in \mathrm{kNN}_k(p_i) \text{ oder }
         p_i \in \mathrm{kNN}_k(p_j)\bigr\},
   \]
-  wobei $\mathrm{kNN}_k(p_i)$ die $k$ euklidisch nächsten Nachbarn
+  wobei $\mathrm{kNN}_k(p_i)$ die $k$ euklidisch nÃ¤chsten Nachbarn
   von $p_i$ bezeichnet.
 \end{definition}
 
-\begin{definition}[Starrköpertransformation]
+\begin{definition}[StarrkÃ¶pertransformation]
   \label{def:starr}
-  Eine \emph{Starrköpertransformation} ist eine Abbildung
+  Eine \emph{StarrkÃ¶pertransformation} ist eine Abbildung
   $T_{R,t}: \mathbb{R}^3 \to \mathbb{R}^3,\; p \mapsto Rp + t$
   mit $R \in SO(3)$ und $t \in \mathbb{R}^3$.
-  Sie erhält alle paarweisen Abstände:
-  $\|T_{R,t}(p_i) - T_{R,t}(p_j)\| = \|p_i - p_j\|$ für alle $i,j$.
+  Sie erhÃ¤lt alle paarweisen AbstÃ¤nde:
+  $\|T_{R,t}(p_i) - T_{R,t}(p_j)\| = \|p_i - p_j\|$ fÃ¼r alle $i,j$.
 \end{definition}
 
 \begin{lemma}[Eigenschaften des $k$-NN-Graphen]
   \label{lem:knn_properties}
-  Der $k$-NN-Graph $G_\mathcal{P}$ erfüllt:
+  Der $k$-NN-Graph $G_\mathcal{P}$ erfÃ¼llt:
   \begin{enumerate}
     \item $|E| \leq k \cdot N$ (Kantenanzahl linear in $N$).
-    \item $G_\mathcal{P}$ ist zusammenhängend für $k \geq
+    \item $G_\mathcal{P}$ ist zusammenhÃ¤ngend fÃ¼r $k \geq
           \lceil \log N \rceil$, sofern $\mathcal{P}$ keine
           isolierten Teilmengen besitzt.
-    \item Für jede Starrköpertransformation $T_{R,t}$ gilt:
+    \item FÃ¼r jede StarrkÃ¶pertransformation $T_{R,t}$ gilt:
           $G_{T_{R,t}(\mathcal{P})} \cong G_\mathcal{P}$
           (Isomorphie).
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  \emph{(i)} Jeder Knoten $v_i$ hat höchstens $k$ ausgehende Kanten,
+  \emph{(i)} Jeder Knoten $v_i$ hat hÃ¶chstens $k$ ausgehende Kanten,
   also $|E| \leq k \cdot N$.
 
-  \emph{(ii)} Für $k \geq \lceil \log N \rceil$ ist die
+  \emph{(ii)} FÃ¼r $k \geq \lceil \log N \rceil$ ist die
   Verbindungswahrscheinlichkeit asymptotisch 1 nach dem Theorem
-  über geometrische Zufallsgraphen \citep{Penrose2003}.
+  Ã¼ber geometrische Zufallsgraphen \citep{Penrose2003}.
 
-  \emph{(iii)} Da $T_{R,t}$ alle paarweisen Abstände erhält
+  \emph{(iii)} Da $T_{R,t}$ alle paarweisen AbstÃ¤nde erhÃ¤lt
   (Definition~\ref{def:starr}), bleiben die $k$-Nachbarschaften
   jedes Punktes identisch. Folglich stimmt die Kantenmenge nach
-  Transformation strukturell mit der Originalstruktur überein;
+  Transformation strukturell mit der Originalstruktur Ã¼berein;
   die Knotenumbenennung $v_i \mapsto T_{R,t}(v_i)$ liefert
   den Isomorphismus. \hfill$\blacksquare$
 \end{proof}
@@ -228,12 +228,12 @@ und den daraus konstruierten $k$-NN-Graphen.
   \includegraphics[width=\linewidth]{plot1_punktwolke_graph.pdf}
   \caption{(a)~LiDAR-Punktwolke in der Draufsicht mit drei
            konzentrischen Ringen unterschiedlicher Entfernung
-           (blau, orange, grün) sowie Hintergrundrauschen (grau).
+           (blau, orange, grÃ¼n) sowie Hintergrundrauschen (grau).
            (b)~Aus der Punktwolke konstruierter $k$-NN-Graph ($k=4$):
            Kanten verbinden geometrisch nahe Punkte und kodieren die
-           räumliche Topologie der Szene kompakt.
+           rÃ¤umliche Topologie der Szene kompakt.
            Die Graphstruktur ist nach Lemma~\ref{lem:knn_properties}
-           invariant gegenüber Starrköperbewegungen.}
+           invariant gegenÃ¼ber StarrkÃ¶perbewegungen.}
   \label{fig:plot1}
 \end{figure}
 
@@ -241,13 +241,13 @@ und den daraus konstruierten $k$-NN-Graphen.
 
 \begin{definition}[Graph und Adjazenzmatrix]
   Ein Graph $G = (V, E)$ mit $n = |V|$ Knoten wird durch seine
-  Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ repräsentiert:
+  Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ reprÃ¤sentiert:
   $A_{ij} = 1$ gdw.\ $(v_i, v_j) \in E$, sonst $A_{ij} = 0$.
 \end{definition}
 
 \begin{definition}[Signaturabbildung, \citealt{Epp2026}]
   \label{def:signatur}
-  Für eine Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und
+  FÃ¼r eine Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und
   Spaltenindex $j \in \{0,\ldots,n-1\}$ ist die \emph{Signatur}:
   \begin{equation}
     \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n.
@@ -264,16 +264,16 @@ und den daraus konstruierten $k$-NN-Graphen.
   \]
 \end{definition}
 
-\begin{definition}[Längste gemeinsame Teilsequenz]
+\begin{definition}[LÃ¤ngste gemeinsame Teilsequenz]
   Seien $A = [a_0,\ldots,a_{m-1}]$ und $B = [b_0,\ldots,b_{n-1}]$
-  zwei Sequenzen. Die \emph{längste gemeinsame Teilsequenz}
-  $\mathrm{LCS}(A, B)$ ist die Länge der längsten Sequenz
-  $[c_0,\ldots,c_{l-1}]$, die sowohl als (nicht-zusammenhängende)
+  zwei Sequenzen. Die \emph{lÃ¤ngste gemeinsame Teilsequenz}
+  $\mathrm{LCS}(A, B)$ ist die LÃ¤nge der lÃ¤ngsten Sequenz
+  $[c_0,\ldots,c_{l-1}]$, die sowohl als (nicht-zusammenhÃ¤ngende)
   Teilfolge von $A$ als auch von $B$ erscheint. Sie wird durch
   dynamische Programmierung in $\Theta(mn)$ Zeit berechnet.
 \end{definition}
 
-\begin{lemma}[Injektivität der Signaturabbildung, \citealt{Epp2026}]
+\begin{lemma}[InjektivitÃ¤t der Signaturabbildung, \citealt{Epp2026}]
   \label{lem:injektivitaet}
   Die Signaturabbildung $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\}
   \to \mathbb{N}$ aus Gleichung~\eqref{eq:signatur} ist injektiv.
@@ -281,7 +281,7 @@ und den daraus konstruierten $k$-NN-Graphen.
 
 \begin{proof}
   Seien $(A_{*j}, j) \neq (A_{*k}, k)$ zwei verschiedene
-  Spalten-Index-Paare. Wir unterscheiden zwei Fälle.
+  Spalten-Index-Paare. Wir unterscheiden zwei FÃ¤lle.
 
   \emph{Fall~1:} $j \neq k$. Dann gilt $j \cdot 2^n \neq k \cdot 2^n$.
   Der Term $\sum_i A_{ij} \cdot 2^i \in [0, 2^n - 1]$ kann den
@@ -289,20 +289,20 @@ und den daraus konstruierten $k$-NN-Graphen.
   da $\sum_i A_{ij} \cdot 2^i < 2^n$.
 
   \emph{Fall~2:} $j = k$, aber $A_{*j} \neq A_{*k}$.
-  Die Abbildung $v \mapsto \sum_i v_i \cdot 2^i$ ist die binäre
+  Die Abbildung $v \mapsto \sum_i v_i \cdot 2^i$ ist die binÃ¤re
   Darstellung des Vektors $v \in \{0,1\}^n$ und damit injektiv.
 
-  In beiden Fällen folgt $\sigma(A_{*j}, j) \neq \sigma(A_{*k}, k)$.
+  In beiden FÃ¤llen folgt $\sigma(A_{*j}, j) \neq \sigma(A_{*k}, k)$.
   \hfill$\blacksquare$
 \end{proof}
 
 \begin{lemma}[Strukturerhaltung durch Rotation]
   \label{lem:rot_strukturerhaltung}
   Jede zyklische Rotation $\mathrm{rotate}_k(A)$ einer
-  Adjazenzmatrix~$A$ repräsentiert einen Graphen $G^{(k)}$, der
+  Adjazenzmatrix~$A$ reprÃ¤sentiert einen Graphen $G^{(k)}$, der
   zu $G$ isomorph unter der zyklischen Knotenpermutation
   $\pi_k: i \mapsto (i+k) \bmod n$ ist.
-  Insbesondere gilt $|E^{(k)}| = |E|$ für alle $k$.
+  Insbesondere gilt $|E^{(k)}| = |E|$ fÃ¼r alle $k$.
 \end{lemma}
 
 \begin{proof}
@@ -312,7 +312,7 @@ und den daraus konstruierten $k$-NN-Graphen.
   strukturell erhalten. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[Komplexität des Subgraph Algorithmus, \citealt{Epp2026}]
+\begin{satz}[KomplexitÃ¤t des Subgraph Algorithmus, \citealt{Epp2026}]
   \label{satz:komplexitaet}
   Der Subgraph Algorithmus bestimmt in Zeit $\Theta(n^3)$ und Raum
   $O(n^2)$, ob ein Graph~$G$ mit $n$ Knoten als Subgraph in einem
@@ -320,24 +320,24 @@ und den daraus konstruierten $k$-NN-Graphen.
 \end{satz}
 
 \begin{proof}
-  Der Algorithmus läuft in drei Phasen:
+  Der Algorithmus lÃ¤uft in drei Phasen:
   \begin{enumerate}
-    \item \emph{Signaturberechnung:} Für jeden der $n$ Spalten beider
-          Matrizen ($O(n^2)$ Einträge) wird ein Signaturwert nach
+    \item \emph{Signaturberechnung:} FÃ¼r jeden der $n$ Spalten beider
+          Matrizen ($O(n^2)$ EintrÃ¤ge) wird ein Signaturwert nach
           Gleichung~\eqref{eq:signatur} berechnet. Laufzeit: $O(n^2)$.
     \item \emph{Rotationserzeugung:} $n$ zyklische Rotationen der
           Signatursequenz $\sigma^B$, je $O(n)$. Gesamt: $O(n^2)$.
-    \item \emph{LCS-Berechnung:} Für jede der $n$ Rotationen eine
-          LCS-Berechnung zweier Länge-$n$-Arrays mittels dynamischer
+    \item \emph{LCS-Berechnung:} FÃ¼r jede der $n$ Rotationen eine
+          LCS-Berechnung zweier LÃ¤nge-$n$-Arrays mittels dynamischer
           Programmierung: $n \cdot \Theta(n^2) = \Theta(n^3)$.
   \end{enumerate}
-  Phase~3 dominiert; Gesamtkomplexität $\Theta(n^3)$.
-  Speicherbedarf: $O(n^2)$ für die Adjazenzmatrizen.
+  Phase~3 dominiert; GesamtkomplexitÃ¤t $\Theta(n^3)$.
+  Speicherbedarf: $O(n^2)$ fÃ¼r die Adjazenzmatrizen.
   \hfill$\blacksquare$
 \end{proof}
 
 Abbildung~\ref{fig:plot2} veranschaulicht Signaturberechnung und
-zyklische Rotationen für einen Beispiel-Graphen.
+zyklische Rotationen fÃ¼r einen Beispiel-Graphen.
 
 \begin{figure}[htbp]
   \centering
@@ -348,7 +348,7 @@ zyklische Rotationen für einen Beispiel-Graphen.
            $j \cdot 2^n$ garantiert Eindeutigkeit
            (Lemma~\ref{lem:injektivitaet}). (c)~Alle~6 zyklischen
            Rotationen der Signatursequenz als Heatmap; statt $n! = 720$
-           Permutationen genügen $n = 6$ Rotationen.}
+           Permutationen genÃ¼gen $n = 6$ Rotationen.}
   \label{fig:plot2}
 \end{figure}
 
@@ -370,32 +370,32 @@ zyklische Rotationen für einen Beispiel-Graphen.
 
 \begin{definition}[Erkennungsschwellenwert]
   \label{def:schwellenwert}
-  Für einen Mustergraphen $G_M$ mit $m$ Knoten:
+  FÃ¼r einen Mustergraphen $G_M$ mit $m$ Knoten:
   \[
     \tau_M = \left\lceil \frac{m}{2} \right\rceil.
   \]
-  Ein Szenen-Graph $G_S$ \emph{enthält} $G_M$, wenn
+  Ein Szenen-Graph $G_S$ \emph{enthÃ¤lt} $G_M$, wenn
   $\max_k \mathrm{LCS}(\sigma^M, \mathrm{rotate}_k(\sigma^S))
   \geq \tau_M$.
 \end{definition}
 
 \begin{satz}[Korrektheit der Subgraph-Erkennung]
   \label{satz:erkennung_korrektheit}
-  Der Subgraph Algorithmus löst das Objekterkennungsproblem aus
+  Der Subgraph Algorithmus lÃ¶st das Objekterkennungsproblem aus
   Definition~\ref{def:erkennung} korrekt in Zeit $O(n^3)$.
 \end{satz}
 
 \begin{proof}
   \emph{Korrektheit (kein falsch-Positiv):} Liefert der Algorithmus
   ``erkannt'', so gilt $\mathrm{LCS}(\sigma^M, \mathrm{rotate}_{k^*}
-  (\sigma^S)) \geq \tau_M$ für ein $k^*$. Nach
+  (\sigma^S)) \geq \tau_M$ fÃ¼r ein $k^*$. Nach
   Lemma~\ref{lem:injektivitaet} kodiert die Signatur bijektiv;
   $\tau_M$ gemeinsame Signaturen implizieren mindestens $\tau_M$
-  strukturell übereinstimmende Spalten, also eine partielle
+  strukturell Ã¼bereinstimmende Spalten, also eine partielle
   Subgraph-Einbettung.
 
-  \emph{Laufzeit:} Analog zu Satz~\ref{satz:komplexitaet} für
-  Graphen der Größen $m$ und $n$: $O(n^3)$. \hfill$\blacksquare$
+  \emph{Laufzeit:} Analog zu Satz~\ref{satz:komplexitaet} fÃ¼r
+  Graphen der GrÃ¶ÃŸen $m$ und $n$: $O(n^3)$. \hfill$\blacksquare$
 \end{proof}
 
 \begin{lemma}[Rotationsinvarianz der Erkennung]
@@ -408,23 +408,23 @@ zyklische Rotationen für einen Beispiel-Graphen.
 \begin{proof}
   Sei $\pi: V_M \to V_S$ ein zyklischer Isomorphismus mit
   $\pi(v_i) = v_{(i+k) \bmod n}$. Die Zeilenkomponente
-  $\sum_i A_{ij} \cdot 2^i$ stimmt für korrespondierende Spalten
-  nach Rotation überein. Für $n \geq 2$ liefert die LCS-Berechnung
-  mindestens Länge~2. \hfill$\blacksquare$
+  $\sum_i A_{ij} \cdot 2^i$ stimmt fÃ¼r korrespondierende Spalten
+  nach Rotation Ã¼berein. FÃ¼r $n \geq 2$ liefert die LCS-Berechnung
+  mindestens LÃ¤nge~2. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[Vollständigkeit der Subgraph-Erkennung]
+\begin{satz}[VollstÃ¤ndigkeit der Subgraph-Erkennung]
   \label{satz:vollstaendigkeit}
-  Für $G_M \subseteq G_S$ gilt stets:
+  FÃ¼r $G_M \subseteq G_S$ gilt stets:
   $\max_{k} \mathrm{LCS}(\sigma^M, \mathrm{rotate}_k(\sigma^S))
   \geq \tau_M$.
 \end{satz}
 
 \begin{proof}
   Aus $G_M \subseteq G_S$ folgt eine injektive Einbettung $\phi$.
-  Die Signatursequenz $\sigma^M$ enthält $m$ eindeutige Werte
+  Die Signatursequenz $\sigma^M$ enthÃ¤lt $m$ eindeutige Werte
   (Lemma~\ref{lem:injektivitaet}). Die korrespondierende Rotation
-  von $\sigma^S$ enthält mindestens $m$ übereinstimmende Signaturen,
+  von $\sigma^S$ enthÃ¤lt mindestens $m$ Ã¼bereinstimmende Signaturen,
   also $\mathrm{LCS} \geq m \geq \lceil m/2 \rceil = \tau_M$.
   \hfill$\blacksquare$
 \end{proof}
@@ -463,7 +463,7 @@ zyklische Rotationen für einen Beispiel-Graphen.
                + 1 \cdot 64 = 21 + 64 = 85.
   \]
 
-  \textbf{Schritt~2: LCS über alle Rotationen.}
+  \textbf{Schritt~2: LCS Ã¼ber alle Rotationen.}
   Der maximale LCS-Wert $\max_k = 5 \geq \tau_M = 3$ wird
   bei $k = 0$ und $k = 3$ erreicht.
 
@@ -475,24 +475,24 @@ zyklische Rotationen für einen Beispiel-Graphen.
 \subsection{LCS-Matching und Schwellenwertanalyse}
 
 Abbildung~\ref{fig:plot3} zeigt die LCS-DP-Tabelle und die
-LCS-Werte über alle Rotationen für das Erkennungsbeispiel.
+LCS-Werte Ã¼ber alle Rotationen fÃ¼r das Erkennungsbeispiel.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot3_lcs_matching.pdf}
-  \caption{(a)~LCS-DP-Tabelle für den Vergleich von
+  \caption{(a)~LCS-DP-Tabelle fÃ¼r den Vergleich von
            $\sigma^A = [17,34,38,52,56,68]$ und $\sigma^B$:
-           Das Maximum $|LCS| = 5$ überschreitet $\tau_M = 3$.
-           (b)~LCS-Wert über alle Rotationen~$k$: Optimale
+           Das Maximum $|LCS| = 5$ Ã¼berschreitet $\tau_M = 3$.
+           (b)~LCS-Wert Ã¼ber alle Rotationen~$k$: Optimale
            Ausrichtung bei $k=0$ und $k=3$ (rot markiert);
            Schwellenwert $\tau$ (orange) trennt erkannte von
-           nicht erkannten Übereinstimmungen.}
+           nicht erkannten Ãœbereinstimmungen.}
   \label{fig:plot3}
 \end{figure}
 
 \begin{proposition}[Erkennungsschwellenwert und Falsch-Positiv-Rate]
   \label{prop:fpr}
-  Für zufällige Graphen $G_M, G_S$ mit $m, n$ Knoten und
+  FÃ¼r zufÃ¤llige Graphen $G_M, G_S$ mit $m, n$ Knoten und
   Kantendichte $p \in (0,1)$ gilt asymptotisch:
   \[
     P\!\left(\max_k \mathrm{LCS}(\sigma^M,
@@ -502,28 +502,28 @@ LCS-Werte über alle Rotationen für das Erkennungsbeispiel.
 \end{proposition}
 
 \begin{proof}
-  Für jede feste Rotation $k$ ist die Wahrscheinlichkeit, dass
-  mindestens $\tau_M$ Signaturwerte übereinstimmen, durch
-  $p^{\tau_M}$ nach oben beschränkt (unabhängige Signaturen bei
-  Zufallsgraphen). Ein Union-Bound über alle $n$ Rotationen
+  FÃ¼r jede feste Rotation $k$ ist die Wahrscheinlichkeit, dass
+  mindestens $\tau_M$ Signaturwerte Ã¼bereinstimmen, durch
+  $p^{\tau_M}$ nach oben beschrÃ¤nkt (unabhÃ¤ngige Signaturen bei
+  Zufallsgraphen). Ein Union-Bound Ã¼ber alle $n$ Rotationen
   ergibt die Behauptung. \hfill$\blacksquare$
 \end{proof}
 
 \subsection{Mehrklassen-Erkennung und Bibliotheken}
 
-In der Praxis enthält eine Klassenbibliothek $\mathcal{L} =
+In der Praxis enthÃ¤lt eine Klassenbibliothek $\mathcal{L} =
 \{G_1^{(l)}, \ldots, G_C^{(l)}\}$ mehrere Mustergraphen.
 
-\begin{satz}[Mehrklassen-Erkennungskomplexität]
+\begin{satz}[Mehrklassen-ErkennungskomplexitÃ¤t]
   \label{satz:mehrklassen}
   Die Erkennung aller $C$ Klassen in einem Szenen-Graphen $G_S$
-  mit $n$ Knoten hat Zeitkomplexität $O(C \cdot n^3)$.
-  Für festes $C$ ist dies $O(n^3)$.
+  mit $n$ Knoten hat ZeitkomplexitÃ¤t $O(C \cdot n^3)$.
+  FÃ¼r festes $C$ ist dies $O(n^3)$.
 \end{satz}
 
 \begin{proof}
-  Für jede der $C$ Klassen wird der Subgraph Algorithmus einmal in
-  $O(n^3)$ ausgeführt. Gesamt: $O(C \cdot n^3)$. \hfill$\blacksquare$
+  FÃ¼r jede der $C$ Klassen wird der Subgraph Algorithmus einmal in
+  $O(n^3)$ ausgefÃ¼hrt. Gesamt: $O(C \cdot n^3)$. \hfill$\blacksquare$
 \end{proof}
 
 % =============================================================================
@@ -555,12 +555,12 @@ In der Praxis enthält eine Klassenbibliothek $\mathcal{L} =
           \mathrm{LCS}\!\bigl(\sigma^{G_1},\,
           \mathrm{rotate}_k(\sigma^{G_2})\bigr).
   \]
-  Der geschätzte Rotationswinkel: $\hat\theta = k^* \cdot 2\pi / n$.
+  Der geschÃ¤tzte Rotationswinkel: $\hat\theta = k^* \cdot 2\pi / n$.
 \end{definition}
 
 \begin{satz}[Konsistenz der Signaturausrichtung]
   \label{satz:reg_konsistenz}
-  Sei $\mathcal{P}_2 = R_\theta \mathcal{P}_1 + t$ für eine
+  Sei $\mathcal{P}_2 = R_\theta \mathcal{P}_1 + t$ fÃ¼r eine
   Rotation um Winkel $\theta$ und Translation $t$.
   Dann liefert $k^* = \lfloor \theta \cdot n / (2\pi) \rfloor$
   maximales LCS-Matching: $\mathrm{LCS}(\sigma^{G_1},
@@ -568,82 +568,82 @@ In der Praxis enthält eine Klassenbibliothek $\mathcal{L} =
 \end{satz}
 
 \begin{proof}
-  $R_\theta$ erhält die $k$-NN-Struktur
+  $R_\theta$ erhÃ¤lt die $k$-NN-Struktur
   (Lemma~\ref{lem:knn_properties}~(iii)) und entspricht einer
   zyklischen Umnummerierung der Knoten um $k^*$ Positionen.
   Nach Lemma~\ref{lem:rot_strukturerhaltung} stimmen bei
-  Rotation~$k^*$ alle $n$ Signaturwerte überein:
+  Rotation~$k^*$ alle $n$ Signaturwerte Ã¼berein:
   $\mathrm{LCS} = n$. \hfill$\blacksquare$
 \end{proof}
 
 \begin{korollar}[Registrierungsfehler]
   \label{kor:reg_fehler}
-  Der Winkelschätzfehler ist beschränkt durch
+  Der WinkelschÃ¤tzfehler ist beschrÃ¤nkt durch
   $|\hat\theta - \theta| \leq \pi / n$.
 \end{korollar}
 
 \begin{proof}
   Der Diskretisierungsfehler von $k^* = \lfloor \theta \cdot n /
-  (2\pi) \rfloor$ beträgt höchstens $1$ Indexschritt, was einem
+  (2\pi) \rfloor$ betrÃ¤gt hÃ¶chstens $1$ Indexschritt, was einem
   Winkel von $2\pi / (2n) = \pi/n$ entspricht. \hfill$\blacksquare$
 \end{proof}
 
-\begin{lemma}[Translationsschätzung nach Winkelausrichtung]
+\begin{lemma}[TranslationsschÃ¤tzung nach Winkelausrichtung]
   \label{lem:translation}
   Nach optimaler Winkelausrichtung $k^*$ wird die Translation
-  $t^*$ durch den Differenzvektor der Schwerpunkte geschätzt:
+  $t^*$ durch den Differenzvektor der Schwerpunkte geschÃ¤tzt:
   \[
     \hat{t} = \bar{p}^{(2)} - R_{\hat\theta}\, \bar{p}^{(1)},
     \quad
     \bar{p}^{(s)} = \frac{1}{N}\sum_{i=1}^N p_i^{(s)}.
   \]
-  Dieser Schätzer ist erwartungstreu für zentrierte Punktwolken.
+  Dieser SchÃ¤tzer ist erwartungstreu fÃ¼r zentrierte Punktwolken.
 \end{lemma}
 
 \begin{proof}
-  Für $\mathcal{P}_2 = R_\theta \mathcal{P}_1 + t$ gilt
+  FÃ¼r $\mathcal{P}_2 = R_\theta \mathcal{P}_1 + t$ gilt
   $\bar{p}^{(2)} = R_\theta \bar{p}^{(1)} + t$, also
   $\hat{t} = \bar{p}^{(2)} - R_{\hat\theta} \bar{p}^{(1)}
   = t + (R_\theta - R_{\hat\theta})\bar{p}^{(1)}$.
-  Für $\hat\theta = \theta$ ist $\hat{t} = t$ exakt. Da
+  FÃ¼r $\hat\theta = \theta$ ist $\hat{t} = t$ exakt. Da
   $|\hat\theta - \theta| \leq \pi/n$ (Korollar~\ref{kor:reg_fehler}),
   ist der Fehler proportional zu $\|\bar{p}^{(1)}\| \cdot \pi/n$
-  und damit für grosse $n$ vernachlässigbar. \hfill$\blacksquare$
+  und damit fÃ¼r grosse $n$ vernachlÃ¤ssigbar. \hfill$\blacksquare$
 \end{proof}
 
 \subsection{Vergleich mit ICP}
 
-\begin{satz}[Vorteile gegenüber ICP]
+\begin{satz}[Vorteile gegenÃ¼ber ICP]
   \label{satz:icp_vorteil}
-  Der Subgraph-Registrierungsalgorithmus übertrifft ICP in drei
+  Der Subgraph-Registrierungsalgorithmus Ã¼bertrifft ICP in drei
   Aspekten:
   \begin{enumerate}
-    \item \emph{Initialisierungsfreiheit:} Die Suche über alle
-          $n$ Rotationen ist global; keine Startschätzung nötig.
-    \item \emph{Globalität:} Das Maximum von $\mathrm{LCS}$ über
+    \item \emph{Initialisierungsfreiheit:} Die Suche Ã¼ber alle
+          $n$ Rotationen ist global; keine StartschÃ¤tzung nÃ¶tig.
+    \item \emph{GlobalitÃ¤t:} Das Maximum von $\mathrm{LCS}$ Ã¼ber
           alle~$n$ Rotationen ist das globale Optimum der diskreten
           Rotationslandschaft.
-    \item \emph{Gleiche Komplexitätsordnung:} Subgraph: $O(n^3)$;
+    \item \emph{Gleiche KomplexitÃ¤tsordnung:} Subgraph: $O(n^3)$;
           ICP mit $O(n)$ Iterationen je $O(n^2)$: ebenfalls $O(n^3)$,
           jedoch ohne Konvergenzgarantie.
   \end{enumerate}
 \end{satz}
 
 \begin{proof}
-  \emph{(i)} Exhaustive Suche über $n$ Rotationen, kein Startwert.
-  \emph{(ii)} $\max_k$ wird über alle $n$ Werte berechnet.
+  \emph{(i)} Exhaustive Suche Ã¼ber $n$ Rotationen, kein Startwert.
+  \emph{(ii)} $\max_k$ wird Ã¼ber alle $n$ Werte berechnet.
   \emph{(iii)} $n \cdot O(n^2) = O(n^3)$ nach
   Satz~\ref{satz:komplexitaet}. \hfill$\blacksquare$
 \end{proof}
 
-Abbildung~\ref{fig:plot6} zeigt den vollständigen Registrierungs\-prozess.
+Abbildung~\ref{fig:plot6} zeigt den vollstÃ¤ndigen Registrierungs\-prozess.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot6_registrierung.pdf}
   \caption{(a)~Zwei LiDAR-Scans vor Registrierung: Referenz (blau)
            und Scan (orange) weichen durch 25\textdegree-Rotation und
-           0,58\,m Translation ab. (b)~LCS-Signaturähnlichkeit über
+           0,58\,m Translation ab. (b)~LCS-SignaturÃ¤hnlichkeit Ã¼ber
            alle~20 Rotationen; Maximum bei $k=5$ (rot).
            (c)~Nach Subgraph-Registrierung: Residualfehler
            $\varepsilon < 0{,}06$\,m (graue Verbindungslinien).}
@@ -667,7 +667,7 @@ Abbildung~\ref{fig:plot6} zeigt den vollständigen Registrierungs\-prozess.
 
 \begin{definition}[Lokales Signaturprofil]
   \label{def:sig_profil}
-  Für Knoten $v_i \in V_S$ mit $k$-Nachbarschaft $N_k(i)$:
+  FÃ¼r Knoten $v_i \in V_S$ mit $k$-Nachbarschaft $N_k(i)$:
   \[
     \Sigma_i = \bigl[\sigma_j^{N_k(i)}\bigr]_{j \in N_k(i)}.
   \]
@@ -695,34 +695,34 @@ Abbildung~\ref{fig:plot6} zeigt den vollständigen Registrierungs\-prozess.
   Seien $v_i, v_j$ Knoten mit $c_i \neq c_j$ und disjunkten
   LCS-Maxima: $\max_{k'} \mathrm{LCS}(\Sigma_i,
   \sigma^{G_{c_i}^{(l)}}) > \max_{k'} \mathrm{LCS}(\Sigma_i,
-  \sigma^{G_c^{(l)}})$ für alle $c \neq c_i$. Dann wählt $\arg\max$
+  \sigma^{G_c^{(l)}})$ fÃ¼r alle $c \neq c_i$. Dann wÃ¤hlt $\arg\max$
   in Definition~\ref{def:sig_klassifikator} stets die korrekte
   Klasse. \hfill$\blacksquare$
 \end{proof}
 
-\begin{lemma}[Segmentierungskomplexität]
+\begin{lemma}[SegmentierungskomplexitÃ¤t]
   \label{lem:seg_komplexitaet}
   Die Segmentierung eines Szenen-Graphen mit $N$ Knoten und $C$
-  Klassen hat Zeitkomplexität $O(C \cdot N \cdot n^3)$, wobei $n$
-  die maximale Klassengraphgröße ist. Für feste $C, n$ ist dies
+  Klassen hat ZeitkomplexitÃ¤t $O(C \cdot N \cdot n^3)$, wobei $n$
+  die maximale KlassengraphgrÃ¶ÃŸe ist. FÃ¼r feste $C, n$ ist dies
   $O(N)$.
 \end{lemma}
 
 \begin{proof}
-  Für jeden der $N$ Knoten und jede der $C$ Klassen: $O(n^3)$.
+  FÃ¼r jeden der $N$ Knoten und jede der $C$ Klassen: $O(n^3)$.
   Gesamt: $O(C \cdot N \cdot n^3)$. \hfill$\blacksquare$
 \end{proof}
 
-\begin{korollar}[Lineare Skalierung für feste Klassenbibliothek]
-  Für eine fest kalibrierte Bibliothek mit $C$ Klassen und
-  maximaler Klassengraphgröße $n$ skaliert die Segmentierung
-  \emph{linear} in der Punktanzahl~$N$. Dies ermöglicht
+\begin{korollar}[Lineare Skalierung fÃ¼r feste Klassenbibliothek]
+  FÃ¼r eine fest kalibrierte Bibliothek mit $C$ Klassen und
+  maximaler KlassengraphgrÃ¶ÃŸe $n$ skaliert die Segmentierung
+  \emph{linear} in der Punktanzahl~$N$. Dies ermÃ¶glicht
   Echtzeit-Segmentierung bei konstantem $C$ und $n$.
 \end{korollar}
 
 \begin{proof}
   Direktes Korollar aus Lemma~\ref{lem:seg_komplexitaet}:
-  $O(C \cdot N \cdot n^3) = O(N)$ für konstante $C, n$.
+  $O(C \cdot N \cdot n^3) = O(N)$ fÃ¼r konstante $C, n$.
   \hfill$\blacksquare$
 \end{proof}
 
@@ -732,38 +732,38 @@ Abbildung~\ref{fig:plot7} zeigt die Segmentierung mit vier Klassen.
   \centering
   \includegraphics[width=\linewidth]{plot7_segmentierung.pdf}
   \caption{(a)~Subgraph-Segmentierung der LiDAR-Punktwolke: Boden
-           (braun), Gebäude (blau), Fahrzeug (rot), Fußgänger (lila).
-           Jeder Knoten wird über den Subgraph-Signaturklassifikator
+           (braun), GebÃ¤ude (blau), Fahrzeug (rot), FuÃŸgÃ¤nger (lila).
+           Jeder Knoten wird Ã¼ber den Subgraph-Signaturklassifikator
            (Definition~\ref{def:sig_klassifikator}) einer Klasse
            zugeordnet.
            (b)~Konfusionsmatrix: Gesamtgenauigkeit $103/110 = 93{,}6\,\%$;
-           geringe Verwechslungsrate bestätigt die strukturelle
-           Trennkraft der Signaturrepräsentation.}
+           geringe Verwechslungsrate bestÃ¤tigt die strukturelle
+           Trennkraft der SignaturreprÃ¤sentation.}
   \label{fig:plot7}
 \end{figure}
 
 % =============================================================================
-\section{Komplexitätsanalyse und Vergleich}
+\section{KomplexitÃ¤tsanalyse und Vergleich}
 % =============================================================================
 
 \subsection{Theoretische Schranken}
 
-\begin{satz}[SETH-Optimalität, \citealt{Epp2026}]
+\begin{satz}[SETH-OptimalitÃ¤t, \citealt{Epp2026}]
   \label{satz:seth}
   Unter der Strong Exponential Time Hypothesis (SETH) kann kein
-  Algorithmus das zyklische Subgraph-Problem für Graphen mit $n$
-  Knoten in $O(n^{3-\varepsilon})$ Zeit für beliebiges
-  $\varepsilon > 0$ lösen.
+  Algorithmus das zyklische Subgraph-Problem fÃ¼r Graphen mit $n$
+  Knoten in $O(n^{3-\varepsilon})$ Zeit fÃ¼r beliebiges
+  $\varepsilon > 0$ lÃ¶sen.
 \end{satz}
 
 \begin{korollar}
-  Die $O(n^3)$-Komplexität des Subgraph Algorithmus für
+  Die $O(n^3)$-KomplexitÃ¤t des Subgraph Algorithmus fÃ¼r
   LiDAR-Objekterkennung und Registrierung ist unter SETH optimal.
 \end{korollar}
 
-\begin{satz}[Komplexitätsvergleich]
+\begin{satz}[KomplexitÃ¤tsvergleich]
   \label{satz:komplexitaet_vergleich}
-  Tabelle~\ref{tab:komplexitaet} zeigt die Zeitkomplexitäten der
+  Tabelle~\ref{tab:komplexitaet} zeigt die ZeitkomplexitÃ¤ten der
   wichtigsten LiDAR-Verarbeitungsverfahren. Der Subgraph Algorithmus
   vereint alle drei Aufgaben in einer einheitlichen Methode
   mit $O(n^3)$ und globalen Korrektheitsgarantien.
@@ -771,8 +771,8 @@ Abbildung~\ref{fig:plot7} zeigt die Segmentierung mit vier Klassen.
 
 \begin{table}[htbp]
   \centering
-  \caption{Zeitkomplexitäten verschiedener LiDAR-Verarbeitungsalgorithmen.
-           $N$: Punktanzahl; $n$: Graphgröße; $C$: Klassenzahl;
+  \caption{ZeitkomplexitÃ¤ten verschiedener LiDAR-Verarbeitungsalgorithmen.
+           $N$: Punktanzahl; $n$: GraphgrÃ¶ÃŸe; $C$: Klassenzahl;
            $k_{\mathrm{iter}}$: ICP-Iterationen.}
   \label{tab:komplexitaet}
   \begin{tabular}{@{}lllll@{}}
@@ -788,13 +788,13 @@ Abbildung~\ref{fig:plot7} zeigt die Segmentierung mit vier Klassen.
   \end{tabular}
 \end{table}
 
-Abbildung~\ref{fig:plot4} veranschaulicht den Komplexitätsvergleich
+Abbildung~\ref{fig:plot4} veranschaulicht den KomplexitÃ¤tsvergleich
 theoretisch und empirisch.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot4_komplexitaet.pdf}
-  \caption{(a)~Zeitkomplexität auf logarithmischer Skala: naiver
+  \caption{(a)~ZeitkomplexitÃ¤t auf logarithmischer Skala: naiver
            Subgraph-Vergleich ($O(n!\cdot n^2)$, grau) wird ab $n>12$
            impraktikabel; Subgraph Algorithmus ($O(n^3)$, blau) bleibt
            polynomial. (b)~Praktische Laufzeit in Millisekunden:
@@ -805,7 +805,7 @@ theoretisch und empirisch.
 
 \subsection{Objekterkennung: Detaillierter Subgraph-Nachweis}
 
-Abbildung~\ref{fig:plot5} zeigt die vollständige Subgraph-Einbettung
+Abbildung~\ref{fig:plot5} zeigt die vollstÃ¤ndige Subgraph-Einbettung
 eines Fahrzeug-Mustergraphen in einen Szenen-Graphen.
 
 \begin{figure}[htbp]
@@ -815,7 +815,7 @@ eines Fahrzeug-Mustergraphen in einen Szenen-Graphen.
            6~Knoten, 7~Kanten). (b)~Szenen-Graph $G_S'$ mit~9~Knoten:
            Die blauen Knoten~$v_0$--$v_5$ und roten Kanten zeigen die
            erkannte Subgraph-Einbettung $G_M \hookrightarrow G_S'$;
-           orange Knoten~$v_6$--$v_8$ gehören zum Hintergrund.}
+           orange Knoten~$v_6$--$v_8$ gehÃ¶ren zum Hintergrund.}
   \label{fig:plot5}
 \end{figure}
 
@@ -824,7 +824,7 @@ eines Fahrzeug-Mustergraphen in einen Szenen-Graphen.
 % =============================================================================
 
 Die vorliegende Arbeit hat gezeigt, dass der Subgraph Algorithmus
-\citep{Epp2026} eine einheitliche, formal korrekte Grundlage für die
+\citep{Epp2026} eine einheitliche, formal korrekte Grundlage fÃ¼r die
 drei zentralen Aufgaben der LiDAR-Punktwolkenverarbeitung bietet.
 
 \begin{center}
@@ -839,10 +839,10 @@ drei zentralen Aufgaben der LiDAR-Punktwolkenverarbeitung bietet.
 \end{tabular}
 \end{center}
 
-Formal wurden bewiesen: 14 Sätze, 6 Lemmata, 4 Korollare,
+Formal wurden bewiesen: 14 SÃ¤tze, 6 Lemmata, 4 Korollare,
 2 Propositionen. Alle Ergebnisse wurden durch 7 Matplotlib-Abbildungen
 illustriert und sind unter \url{https://github.com/hjstephan86/science/tree/main/science/pointcloud}
-verfügbar.
+verfÃ¼gbar.
 
 % =============================================================================
 \section{Ausblick}
@@ -850,76 +850,76 @@ verfügbar.
 
 \subsection{Erweiterung auf gewichtete und gerichtete Graphen}
 
-Die aktuelle Signaturformel~\eqref{eq:signatur} ist für ungewichtete,
+Die aktuelle Signaturformel~\eqref{eq:signatur} ist fÃ¼r ungewichtete,
 ungerichtete Graphen definiert. Eine Erweiterung auf gewichtete Graphen
-$G = (V, E, w)$ mit $w: E \to \mathbb{R}_{>0}$ könnte metrische
+$G = (V, E, w)$ mit $w: E \to \mathbb{R}_{>0}$ kÃ¶nnte metrische
 LiDAR-Information direkt einbetten:
 \[
   \sigma_j^w = \sum_{i=0}^{n-1} \lfloor w(v_i, v_j) \cdot 2^b \rfloor
                \cdot r^i + j \cdot r^n,
 \]
 wobei $b$ die Quantisierungstiefe in Bits und $r > \max_e w(e) \cdot
-2^b$ eine geeignete Basis ist. Dies würde Abstands- und
-Intensitätsinformation aus LiDAR-Scans direkt in die Signatur
-einbetten und die Erkennungsgenauigkeit bei strukturell ähnlichen
-Objekten auf verschiedenen Maßstabsebenen erhöhen.
+2^b$ eine geeignete Basis ist. Dies wÃ¼rde Abstands- und
+IntensitÃ¤tsinformation aus LiDAR-Scans direkt in die Signatur
+einbetten und die Erkennungsgenauigkeit bei strukturell Ã¤hnlichen
+Objekten auf verschiedenen MaÃŸstabsebenen erhÃ¶hen.
 
-Für gerichtete Graphen erfordert eine separate Behandlung von
+FÃ¼r gerichtete Graphen erfordert eine separate Behandlung von
 Ein- und Ausgangssignaturen:
 \[
   \sigma_j^{\mathrm{out}} = \sum_i A_{ij} \cdot 2^i + j \cdot 2^n,
   \quad
   \sigma_j^{\mathrm{in}}  = \sum_i A_{ji} \cdot 2^i + j \cdot 2^n.
 \]
-Dies wäre relevant für gerichtete Szenegraphen in der Robotik,
-wo Abhängigkeiten zwischen Objekten eine Richtung haben
-(z.\,B.\ ``stützt sich auf'').
+Dies wÃ¤re relevant fÃ¼r gerichtete Szenegraphen in der Robotik,
+wo AbhÃ¤ngigkeiten zwischen Objekten eine Richtung haben
+(z.\,B.\ ``stÃ¼tzt sich auf'').
 
 \subsection{Integration mit Deep Learning: SubgraphNet}
 
 PointNet \citep{Qi2017} und seine Nachfolger leiden unter mangelnder
 struktureller Interpretierbarkeit. Ein hybrider Ansatz
-\emph{SubgraphNet} könnte die Stärken beider Paradigmen verbinden:
+\emph{SubgraphNet} kÃ¶nnte die StÃ¤rken beider Paradigmen verbinden:
 
 \begin{itemize}
   \item \emph{Subgraph-Vorverarbeitung:} Erkennung bekannter Muster
-        in $O(n^3)$ als strukturelles Feature-Eingabe für ein neuronales
+        in $O(n^3)$ als strukturelles Feature-Eingabe fÃ¼r ein neuronales
         Netz.
   \item \emph{Lernbare Signaturbasen:} Die Gewichte $2^i$ in
         Gleichung~\eqref{eq:signatur} werden durch Backpropagation
         optimiert: $\sigma_j^\theta = \sum_i A_{ij} \cdot e^{\theta_i}
         + j \cdot e^{\theta_n}$, wobei $\theta$ lernbare Parameter sind.
   \item \emph{Subgraph-Pooling:} Ersatz des Max-Pooling in PointNet
-        durch subgraph-isomorphe Aggregation über erkannte Teilstrukturen.
+        durch subgraph-isomorphe Aggregation Ã¼ber erkannte Teilstrukturen.
 \end{itemize}
 
 Eine offene theoretische Frage: Erbt SubgraphNet die universelle
-Approximationseigenschaft von PointNet, und garantiert es zusätzlich
+Approximationseigenschaft von PointNet, und garantiert es zusÃ¤tzlich
 strukturelle Invarianzen formal?
 
-\subsection{Echtzeit-Implementierung für autonome Fahrzeuge}
+\subsection{Echtzeit-Implementierung fÃ¼r autonome Fahrzeuge}
 
 Autonome Fahrzeuge verarbeiten LiDAR-Daten mit 10--20\,Hz bei
-$N \approx 10^5$ Punkten pro Frame \citep{Waymo2023}. Für diese
+$N \approx 10^5$ Punkten pro Frame \citep{Waymo2023}. FÃ¼r diese
 Anforderungen sind folgende Optimierungen notwendig:
 
 \begin{itemize}
-  \item \emph{Hierarchische Graphkonstruktion:} Mehrstufige Auflösung
+  \item \emph{Hierarchische Graphkonstruktion:} Mehrstufige AuflÃ¶sung
         (Coarse-to-Fine) reduziert $n$ auf jeder Ebene um Faktor~4.
-        Gesamtkomplexität: $O(n^3 \cdot 64/63) \approx O(n^3)$, aber
+        GesamtkomplexitÃ¤t: $O(n^3 \cdot 64/63) \approx O(n^3)$, aber
         mit kleinerem Vorfaktor.
   \item \emph{GPU-Parallelisierung:} Die $n$ LCS-Berechnungen sind
-        voneinander unabhängig und können auf $n$ CUDA-Kerne verteilt
+        voneinander unabhÃ¤ngig und kÃ¶nnen auf $n$ CUDA-Kerne verteilt
         werden, was die amortisierte Laufzeit auf $O(n^2)$ senkt.
   \item \emph{AUTOSAR-Integration:} Portierung auf AUTOSAR Adaptive
-        Platform \citep{AUTOSAR2023} für LiDAR-Verarbeitung in
-        sicherheitskritischen Steuergeräten (ISO~26262 ASIL-D).
+        Platform \citep{AUTOSAR2023} fÃ¼r LiDAR-Verarbeitung in
+        sicherheitskritischen SteuergerÃ¤ten (ISO~26262 ASIL-D).
 \end{itemize}
 
-\subsection{Robustheit gegenüber Messrauschen und Okklusion}
+\subsection{Robustheit gegenÃ¼ber Messrauschen und Okklusion}
 
 Reale LiDAR-Messungen unterliegen Rauschen ($\sigma_r \approx 1{,}5$\,cm
-für Velodyne HDL-64E) und partieller Okklusion. Erweiterungen für
+fÃ¼r Velodyne HDL-64E) und partieller Okklusion. Erweiterungen fÃ¼r
 robuste Erkennung:
 
 \begin{itemize}
@@ -945,14 +945,14 @@ um eine Zeitkomponente erweitert werden:
                 + \lfloor t / \Delta t \rfloor \cdot 2^{2n},
 \]
 wobei $\Delta t$ das Zeitintervall zwischen LiDAR-Frames ist.
-Dies ermöglicht die Erkennung von Bewegungsmustern als
-4D-Subgraphen $(V, E, t)$ und könnte Bewegungsprädiktion durch
+Dies ermÃ¶glicht die Erkennung von Bewegungsmustern als
+4D-Subgraphen $(V, E, t)$ und kÃ¶nnte BewegungsprÃ¤diktion durch
 historische Subgraph-Bibliotheken ersetzen.
 
 Eine theoretische Herausforderung ist die Behandlung von
-Topologieänderungen bei Okklusion. Eine Erweiterung auf
-\emph{persistente Homologie} \citep{Edelsbrunner2002} könnte
-topologische Invarianten über Zeit erhalten.
+TopologieÃ¤nderungen bei Okklusion. Eine Erweiterung auf
+\emph{persistente Homologie} \citep{Edelsbrunner2002} kÃ¶nnte
+topologische Invarianten Ã¼ber Zeit erhalten.
 
 \subsection{SLAM und Kartenaufbau}
 
@@ -966,8 +966,8 @@ profitiert direkt vom Subgraph Algorithmus:
   \item \emph{Inkrementelles Kartenwachstum:} Neue LiDAR-Frames
         werden als Subgraph-Erweiterungen der bestehenden Karte
         modelliert.
-  \item \emph{Globale Konsistenz:} Die Signaturrepräsentation ist
-        permutationsinvariant und daher unabhängig von der
+  \item \emph{Globale Konsistenz:} Die SignaturreprÃ¤sentation ist
+        permutationsinvariant und daher unabhÃ¤ngig von der
         Knotenindizierung bei der Kartenfusion.
 \end{itemize}
 
@@ -977,7 +977,7 @@ Der $k$-NN-Graph einer Punktwolke steht in enger Verbindung zur
 Delaunay-Triangulierung \citep{deBerg2008}. Delaunay-Graphen auf $N$
 Punkten in $\mathbb{R}^2$ haben $O(N)$ Kanten. Eine offene Frage ist:
 Ist der Subgraph Algorithmus auf Delaunay-Graphen effizienter, z.\,B.\
-in $O(n^2)$, da die Signatursequenzen durch die Gradschranke kürzer sind?
+in $O(n^2)$, da die Signatursequenzen durch die Gradschranke kÃ¼rzer sind?
 
 \subsection{Medizinische Bildgebung und Bioinformatik}
 
@@ -989,45 +989,45 @@ Punktwolken entstehen auch durch CT und MRT. Anwendungen:
   \item \emph{Tumor-Segmentierung:} Klassifikation durch
         Subgraph-Signaturvergleich mit einer Gewebedatenbank.
   \item \emph{Chirurgische Navigation:} Intraoperative Registrierung
-        von CT-Vordaten mit Ultraschalldaten über Subgraph-Ausrichtung.
+        von CT-Vordaten mit Ultraschalldaten Ã¼ber Subgraph-Ausrichtung.
 \end{itemize}
 
 \subsection{Topologische Datenanalyse}
 
 Die Topologische Datenanalyse (TDA) \citep{Carlsson2009} extrahiert
 topologische Invarianten aus Datenwolken. Der Subgraph Algorithmus
-bietet eine komplementäre algebraische Perspektive. Eine Synthese
-könnte ein \emph{Persistent Subgraph Barcode} sein: Für jeden
+bietet eine komplementÃ¤re algebraische Perspektive. Eine Synthese
+kÃ¶nnte ein \emph{Persistent Subgraph Barcode} sein: FÃ¼r jeden
 Rauschwert $\delta$ wird verzeichnet, wann ein Subgraph $G_M$ erstmals
 in $G_S$ erscheint. Dies liefert eine robuste, mehrskalige Beschreibung
-der strukturellen Komplexität.
+der strukturellen KomplexitÃ¤t.
 
-\subsection{Quantenkomplexität}
+\subsection{QuantenkomplexitÃ¤t}
 
-Eine offene Frage betrifft die Quantenkomplexität des
+Eine offene Frage betrifft die QuantenkomplexitÃ¤t des
 Subgraph-Problems. Grover-basierte Algorithmen \citep{Childs2010}
-könnten das Rotationsmaximum in $O(\sqrt{n})$ Orakelaufrufen statt
-$O(n)$ finden, was die Gesamtkomplexität auf $O(n^{2.5})$ senken würde.
-Eine formale Analyse der Quantenkomplexität des
+kÃ¶nnten das Rotationsmaximum in $O(\sqrt{n})$ Orakelaufrufen statt
+$O(n)$ finden, was die GesamtkomplexitÃ¤t auf $O(n^{2.5})$ senken wÃ¼rde.
+Eine formale Analyse der QuantenkomplexitÃ¤t des
 Signatur-LCS-Problems steht noch aus.
 
 \subsection{Offene Fragen}
 
 \begin{enumerate}
-  \item \textbf{Untere Schranke für Registrierung:} Gibt es unter
-        SETH eine $\Omega(n^{3-\varepsilon})$-Schranke für das
-        Registrierungsproblem, oder ermöglicht die Translationsfreiheit
+  \item \textbf{Untere Schranke fÃ¼r Registrierung:} Gibt es unter
+        SETH eine $\Omega(n^{3-\varepsilon})$-Schranke fÃ¼r das
+        Registrierungsproblem, oder ermÃ¶glicht die Translationsfreiheit
         ein subkubisches Verfahren?
   \item \textbf{Approximationsalgorithmen:} Gibt es einen
-        $(1+\varepsilon)$-Approximationsalgorithmus für Subgraph-Matching
+        $(1+\varepsilon)$-Approximationsalgorithmus fÃ¼r Subgraph-Matching
         auf geometrischen Graphen in $O(n^{3-\delta})$ mit $\delta > 0$?
   \item \textbf{Lernbare Signaturen:} Kann ein neuronales Netz die
-        optimale Signaturformel für eine gegebene Domäne
+        optimale Signaturformel fÃ¼r eine gegebene DomÃ¤ne
         (LiDAR, MRT, CT) erlernen?
-  \item \textbf{Quantenalgorithmus:} Löst ein Quanten-Algorithmus
+  \item \textbf{Quantenalgorithmus:} LÃ¶st ein Quanten-Algorithmus
         das Subgraph-Problem in $O(n^{2.5})$?
   \item \textbf{Streaming:} Kann der Subgraph Algorithmus auf
-        Punktwolken-Streams ohne vollständige Graphspeicherung
+        Punktwolken-Streams ohne vollstÃ¤ndige Graphspeicherung
         im RAM angepasst werden?
   \item \textbf{Mehrskalige Signaturen:} Gibt es eine hierarchische
         Signaturerweiterung, die Strukturen auf mehreren Skalen
@@ -1105,3 +1105,4 @@ Waymo. (2023).
 \end{thebibliography}
 
 \end{document}
+

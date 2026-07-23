@@ -87,6 +87,6 @@ ax2.spines['top'].set_visible(False)
 ax2.spines['right'].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('/home/claude/liberalismus/plot5_schuld.pdf', format='pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot5_schuld.pdf', format='pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 5 gespeichert.")

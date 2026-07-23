@@ -162,6 +162,7 @@ ax5.set_ylabel('Operationen $\\Theta(n_T^3)$')
 ax5.set_title('Subgraph Algorithmus Komplexität\nnach CPU:GPU-Konfiguration')
 ax5.legend(fontsize=8)
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_a.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_a.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_a.pdf saved")
+
 

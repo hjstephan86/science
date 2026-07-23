@@ -144,6 +144,7 @@ lines1, labels1 = ax5.get_legend_handles_labels()
 lines2, labels2 = ax5b.get_legend_handles_labels()
 ax5.legend(lines1+lines2, labels1+labels2, fontsize=8)
 
-plt.savefig('/home/claude/rz_extended/plot_cpugpu_c.pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot_cpugpu_c.pdf', bbox_inches='tight', dpi=150)
 print("plot_cpugpu_c.pdf saved")
+
 

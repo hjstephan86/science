@@ -72,7 +72,7 @@ legend_e = [
 ax.legend(handles=legend_e, loc='lower left', fontsize=9)
 ax.set_title('Plot 1: Raumzeit als gerichteter kausaler Graph $G_{\\mathcal{M}}$', pad=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot1_raumzeit_graph.pdf', bbox_inches='tight')
+plt.savefig('plot1_raumzeit_graph.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 1 erstellt")
 
@@ -112,7 +112,7 @@ ax.text(3, 0.2, r'Planck-Skala: $\ell_P \approx 1.6 \times 10^{-35}$ m',
 
 fig.suptitle('Plot 2: Klassische vs.\ diskrete Quanten-Raumzeit', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot2_klassisch_vs_quanten.pdf', bbox_inches='tight')
+plt.savefig('plot2_klassisch_vs_quanten.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 2 erstellt")
 
@@ -149,7 +149,7 @@ axes[1].grid(True, alpha=0.3, axis='y')
 
 fig.suptitle('Plot 3: Signaturberechnung fuer Spin-Netzwerk-Graphen', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot3_spinnet_signaturen.pdf', bbox_inches='tight')
+plt.savefig('plot3_spinnet_signaturen.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 3 erstellt")
 
@@ -181,7 +181,7 @@ ax.set_title('Plot 4: Subgraph-Hierarchie der Raumzeit-Skalen\n'
              r'$G_{\rm Planck} \subseteq G_{\rm nuc} \subseteq G_{\rm BH} \subseteq G_{\rm galaxy} \subseteq G_{\rm cosmos}$',
              pad=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot4_hierarchie_skalen.pdf', bbox_inches='tight')
+plt.savefig('plot4_hierarchie_skalen.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 4 erstellt")
 
@@ -229,7 +229,7 @@ ax.set_aspect('equal')
 fig.suptitle('Plot 5: Einstein-Gleichungen als Kantentransformation des Raumzeit-Graphen\n'
              r'$G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot5_einstein_graph.pdf', bbox_inches='tight')
+plt.savefig('plot5_einstein_graph.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 5 erstellt")
 
@@ -276,7 +276,7 @@ axes[1].legend(fontsize=9); axes[1].grid(True, alpha=0.3)
 
 fig.suptitle('Plot 6: LCS-basierter Nachweis $G_Q \\subseteq G_{GR}$', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot6_lcs_qg_gr.pdf', bbox_inches='tight')
+plt.savefig('plot6_lcs_qg_gr.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 6 erstellt")
 
@@ -338,7 +338,7 @@ ax.legend(handles=legend_bh, loc='lower left', fontsize=9)
 ax.set_title('Plot 7: Schwarzes Loch als Subgraph $G_{BH} \\subseteq G_{\\mathcal{M}}$\n'
              'Subgraph Algorithmus erkennt Ereignishorizont in $O(n^3)$', pad=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot7_schwarzes_loch.pdf', bbox_inches='tight')
+plt.savefig('plot7_schwarzes_loch.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 7 erstellt")
 
@@ -375,7 +375,7 @@ ax2.legend(fontsize=8); ax2.grid(True, alpha=0.3, which='both')
 
 fig.suptitle('Plot 8: Komplexitaetsanalyse des Subgraph Algorithmus fuer Quantengravitation', fontsize=11)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot8_komplexitaet_qg.pdf', bbox_inches='tight')
+plt.savefig('plot8_komplexitaet_qg.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 8 erstellt")
 
@@ -408,7 +408,7 @@ for idx, (ax, label, n_nodes, seed) in enumerate(zip(
 fig.suptitle('Plot 9: Spin-Schaum-Entwicklung als dynamische Subgraph-Sequenz\n'
              r'$G_Q^{(t_0)} \hookrightarrow G_Q^{(t_1)} \hookrightarrow G_Q^{(t_2)}$', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot9_spin_schaum.pdf', bbox_inches='tight')
+plt.savefig('plot9_spin_schaum.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 9 erstellt")
 
@@ -462,7 +462,7 @@ axes[1].legend(fontsize=9); axes[1].grid(True, alpha=0.3, which='both')
 
 fig.suptitle('Plot 10: Empirische Laufzeitmessung fuer Quantengravitations-Graphen', fontsize=12)
 plt.tight_layout()
-plt.savefig('/home/claude/qgrav/plot10_laufzeit_empirisch.pdf', bbox_inches='tight')
+plt.savefig('plot10_laufzeit_empirisch.pdf', bbox_inches='tight')
 plt.close()
 print("Plot 10 erstellt")
 print("\nAlle 10 Plots erfolgreich erstellt!")

@@ -12,7 +12,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import scipy.linalg as la
 import os
 
-OUT = "/home/claude/matrix_paper/figures"
+OUT = 'figures"
 os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({

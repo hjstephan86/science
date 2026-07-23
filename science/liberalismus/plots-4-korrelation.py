@@ -56,6 +56,6 @@ ax.set_title('Korrelationsmatrix der Wertindizes $L_i(t)$\n(Pearson, $n = 13$ Da
              fontsize=11.5, fontweight='bold', color=mainblue, pad=12)
 
 plt.tight_layout()
-plt.savefig('/home/claude/liberalismus/plot4_korrelation.pdf', format='pdf', bbox_inches='tight', dpi=150)
+plt.savefig('plot4_korrelation.pdf', format='pdf', bbox_inches='tight', dpi=150)
 plt.close()
 print("Plot 4 gespeichert.")
