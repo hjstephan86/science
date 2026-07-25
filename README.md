@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **245 wissenschaftliche Arbeiten** von Stephan Epp
+> **246 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -262,6 +262,7 @@
 | Repository | Beschreibung |
 |---|---|
 | phoenixd | FSI von Benchmark zur Unbeschreibbarkeit: Deterministisches FSI-2 → Spektrale Methoden → RANS/LES → Willkür des Meeres; Monte-Carlo, Turbulenzmodellierung, epistemologische Grenzen. |
+| rpr | Realistic Pressure Response: Nichtlineare Druckverteilungen, Selbst-Wechselwirkung, Fehleranalyse, Springbrunnen-Anwendung mit fünf visualisierten Plots. |
 
 ---
 
