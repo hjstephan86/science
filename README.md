@@ -1,6 +1,6 @@
-# Wissenschaftliche Arbeiten
+# Wissenschaften
 
-> **247 wissenschaftliche Arbeiten** von Stephan Epp
+> **247 Wissenschaften** von Stephan Epp
 
 ---
 
