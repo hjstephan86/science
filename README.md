@@ -1,6 +1,6 @@
 # Wissenschaftliche Arbeiten
 
-> **246 wissenschaftliche Arbeiten** von Stephan Epp
+> **247 wissenschaftliche Arbeiten** von Stephan Epp
 
 ---
 
@@ -201,6 +201,7 @@
 | maschinenbau | Technische Mechanik und Maschinenbau — Lehrwerk mit formalen Beweisen zu Statik, Kinematik, Festigkeitslehre, Thermodynamik, Werkstofftechnik und Regelungstechnik |
 | dengin | Optimierung von Dieselkraftstoff und -motor für maximale Lebensdauer (Archard, EHD-Schmierung, Wiebe-Verbrennung) |
 | obrake | Optimale Bremsklotz-Konfiguration — analytische Herleitung des Verhältnisses Vorder-/Hinterachse, ±120°-Winkelabstand |
+| gripm | GripMaster® Sandungssystem: Optimierte Haftkraftregelung für Schienenfahrzeuge mit Reaktionszeit-Analyse, Effizienzverbesserungen und Zuverlässigkeitsstudien |
 | rubbr | Maximale Lebensdauer von Gummibereifung — drei ECU-Konzepte (Reifendruck CRDS, Lenkung SCS, Lastausgleich LCS) |
 | zrrs | Zentrales Reifendruckregelsystem: formale Analyse, Verschleißoptimierung, einöffnungsbasierte Druckluftversorgung |
 | engncompt | Innovativer Motorraum-Entwurf für Verbrennungs- und Elektrofahrzeuge — zugänglichkeitsorientierter Entwurfsrahmen |
