@@ -1,6 +1,6 @@
 # Wissenschaften
 
-> **247 Wissenschaften** von Stephan Epp
+> **248 Wissenschaften** von Stephan Epp
 
 ---
 
@@ -58,6 +58,7 @@
 | analog *(Drive)* | Analog als primärer Begriff — ontologische Priorität des Kontinuierlichen; Fourier, Maßtheorie, Shannon-Kapazität |
 | dirac *(Drive)* | Der Dirac-Impuls δ(t) — formale Theorie im Rahmen der Distributionentheorie (Schwartz): Siebungseigenschaft, Faltungsidentität, Fourier-/Laplace-Transformierte, Dirac-Kamm, LTI-Systeme, Quantenmechanik |
 | elevator | The Einstein-Elevator: Advanced Microgravity Research Infrastructure — Design, Analysis, and Optimization |
+| lightd | Lichtgeschwindigkeit in verschiedenen Medien - Formale Analyse der Abweichungen und Verteilungen |
 
 ---
 
