@@ -46,8 +46,8 @@
   numbers=left, numberstyle=\tiny\color{codegray},
   breaklines=true, frame=single, backgroundcolor=\color{codebg},
   captionpos=b, aboveskip=6pt, belowskip=6pt,
-  literate={Ã¼}{{\"{u}}}1{Ã¤}{{\"{a}}}1{Ã¶}{{\"{o}}}1
-            {Ãœ}{{\"{U}}}1{Ã„}{{\"{A}}}1{Ã–}{{\"{O}}}1{ÃŸ}{{\ss}}1
+  literate={ü}{{\"{u}}}1{ä}{{\"{a}}}1{ö}{{\"{o}}}1
+            {Ü}{{\"{U}}}1{Ä}{{\"{A}}}1{Ö}{{\"{O}}}1{ß}{{\ss}}1
 }
 
 \hypersetup{colorlinks=true,linkcolor=blue!60!black,
@@ -60,7 +60,7 @@
 \title{\textbf{Entwicklung eines Norovirus-Impfstoffes\\[4pt]
 durch Subgraph-Algorithmen-gesteuerte\\[4pt]
 Protein-Netzwerk-Analyse}\\[10pt]
-{\large Grundlegende Ãœberarbeitung -- Claude Sonnet 4.6}}
+{\large Grundlegende Überarbeitung -- Claude Sonnet 4.6}}
 \author{Stephan Epp}
 \date{Mai 2026}
 % ---------------------------------------------------------------
@@ -70,15 +70,15 @@ Protein-Netzwerk-Analyse}\\[10pt]
 \maketitle
 \begin{abstract}
 \noindent
-Das Norovirus (NoV) ist der hÃ¤ufigste Erreger nicht-bakterieller Gastroenteritis weltweit mit
-ca.~685~Millionen Infektionen und 200\,000 TodesfÃ¤llen pro Jahr. Trotz intensiver Forschung
-existiert kein zugelassener Impfstoff. Die vorliegende Arbeit prÃ¤sentiert einen neuartigen
-rechnergestÃ¼tzten Ansatz: Die Anwendung des \emph{Subgraph Algorithmus} (Epp~2026) auf
+Das Norovirus (NoV) ist der häufigste Erreger nicht-bakterieller Gastroenteritis weltweit mit
+ca.~685~Millionen Infektionen und 200\,000 Todesfällen pro Jahr. Trotz intensiver Forschung
+existiert kein zugelassener Impfstoff. Die vorliegende Arbeit präsentiert einen neuartigen
+rechnergestützten Ansatz: Die Anwendung des \emph{Subgraph Algorithmus} (Epp~2026) auf
 VP1-Protein-Sequenz-Graphen und Struktur-Kontakt-Netzwerke, um konservierte, immunogene
 Epitop-Kandidaten zu identifizieren. Aus 150~Isolaten werden acht hochkonservierte Regionen
-($>84\,\%$) der P-DomÃ¤ne extrahiert. Die Validierung gegen 25~bekannte Epitope ergibt eine
-SensitivitÃ¤t von 88\,\% und einen ROC-AUC von 0{,}91. Auf Basis dieser Ergebnisse werden ein
-chimÃ¤rer VLP-Impfstoff sowie ein 3C-Protease-Inhibitor-Konzept abgeleitet und in einem
+($>84\,\%$) der P-Domäne extrahiert. Die Validierung gegen 25~bekannte Epitope ergibt eine
+Sensitivität von 88\,\% und einen ROC-AUC von 0{,}91. Auf Basis dieser Ergebnisse werden ein
+chimärer VLP-Impfstoff sowie ein 3C-Protease-Inhibitor-Konzept abgeleitet und in einem
 detaillierten klinischen Entwicklungsplan von Phase~I bis Phase~III weiterentwickelt.
 \end{abstract}
 
@@ -86,37 +86,37 @@ detaillierten klinischen Entwicklungsplan von Phase~I bis Phase~III weiterentwic
 \newpage
 
 % ===============================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ===============================================================
 
-Das humane Norovirus (HuNoV) zÃ¤hlt zu den global bedeutendsten Krankheitserregern.
-Laut WHO verursacht es jÃ¤hrlich rund 685~Millionen Gastroenteritis-FÃ¤lle, darunter
-200~Millionen Kinder unter fÃ¼nf Jahren \citep{who2021norovirus}. Die Gesamtlast belÃ¤uft
-sich auf geschÃ¤tzte 60~Milliarden US-Dollar direkter und indirekter Kosten pro Jahr
+Das humane Norovirus (HuNoV) zählt zu den global bedeutendsten Krankheitserregern.
+Laut WHO verursacht es jährlich rund 685~Millionen Gastroenteritis-Fälle, darunter
+200~Millionen Kinder unter fünf Jahren \citep{who2021norovirus}. Die Gesamtlast beläuft
+sich auf geschätzte 60~Milliarden US-Dollar direkter und indirekter Kosten pro Jahr
 \citep{bartsch2016norovirus}.
 
 Die Entwicklung eines wirksamen Impfstoffes scheitert bislang an drei strukturellen Problemen:
 \begin{enumerate}[label=\arabic*.]
-  \item \textbf{AntigenvariabilitÃ¤t:} VP1-Mutationen erzeugen >50~bekannte Genotypen in zwei
+  \item \textbf{Antigenvariabilität:} VP1-Mutationen erzeugen >50~bekannte Genotypen in zwei
         Hauptgenogruppen (GI, GII), die sich immunologisch kaum kreuzneutralisieren.
-  \item \textbf{Fehlende Kulturierbarkeit:} HuNoV lÃ¤sst sich in vitro kaum replizieren,
-        was klassische Impfstoffstrategien einschrÃ¤nkt.
+  \item \textbf{Fehlende Kulturierbarkeit:} HuNoV lässt sich in vitro kaum replizieren,
+        was klassische Impfstoffstrategien einschränkt.
   \item \textbf{Komplexe Immunantwort:} Schutzmechanismen sind multifaktoriell
-        (AntikÃ¶rper, T-Zellen, angeborene ImmunitÃ¤t) und nicht vollstÃ¤ndig verstanden.
+        (Antikörper, T-Zellen, angeborene Immunität) und nicht vollständig verstanden.
 \end{enumerate}
 
-\subsection{Wissenschaftliche LÃ¼cke und Beitrag dieser Arbeit}
+\subsection{Wissenschaftliche Lücke und Beitrag dieser Arbeit}
 
 Bestehende Impfstoff-Kandidaten (HilleVax, Vaxart, Moderna/mRNA) fokussieren auf einzelne
-Genogruppen. Ein \emph{universeller} Ansatz fehlt. Diese Arbeit schlieÃŸt diese LÃ¼cke durch
-drei BeitrÃ¤ge:
+Genogruppen. Ein \emph{universeller} Ansatz fehlt. Diese Arbeit schließt diese Lücke durch
+drei Beiträge:
 
 \begin{enumerate}[label=(\roman*)]
   \item Anpassung des Subgraph Algorithmus \citep{epp2026subgraph} an multivariate
         virologische Protein-Netzwerke.
-  \item Identifikation von acht hochkonservierten, oberflÃ¤chenexponierten Epitopen als
+  \item Identifikation von acht hochkonservierten, oberflächenexponierten Epitopen als
         Grundlage eines pan-genogruppen-wirksamen VLP-Impfstoffes.
-  \item Erstellung eines vollstÃ¤ndigen klinischen Entwicklungs-Fahrplans.
+  \item Erstellung eines vollständigen klinischen Entwicklungs-Fahrplans.
 \end{enumerate}
 
 % ===============================================================
@@ -126,8 +126,8 @@ drei BeitrÃ¤ge:
 \subsection{Norovirus-Biologie und Molekularstruktur}
 
 \begin{definition}[Norovirus-Partikel]
-Das Norovirus ist ein nicht-behÃ¼lltes, ikosaedrisches RNA-Virus ($\varnothing\approx 27$--$38\,\text{nm}$)
-der Familie \textit{Caliciviridae}, Genus \textit{Norovirus}. Das einzelstrÃ¤ngige, positiv-sense
+Das Norovirus ist ein nicht-behülltes, ikosaedrisches RNA-Virus ($\varnothing\approx 27$--$38\,\text{nm}$)
+der Familie \textit{Caliciviridae}, Genus \textit{Norovirus}. Das einzelsträngige, positiv-sense
 RNA-Genom ($\sim\!7{,}5\,\text{kb}$) kodiert drei Open Reading Frames (ORFs):
 ORF1 (nicht-strukturelle Polyproteine), ORF2 (VP1) und ORF3 (VP2).
 \end{definition}
@@ -135,35 +135,35 @@ ORF1 (nicht-strukturelle Polyproteine), ORF2 (VP1) und ORF3 (VP2).
 \begin{definition}[VP1-Struktur]
 Das Major-Kapsid-Protein VP1 (${\sim}58\,\text{kDa}$) besteht aus:
 \begin{itemize}
-  \item \textbf{S-DomÃ¤ne} (Positionen 1--225): IntrapartikulÃ¤rer Schalenbereich,
-        hochkonserviert, verantwortlich fÃ¼r die $T=3$-Ikosaeder-Symmetrie.
-  \item \textbf{P-DomÃ¤ne} (Positionen 226--530): OberflÃ¤chenexponiert,
+  \item \textbf{S-Domäne} (Positionen 1--225): Intrapartikulärer Schalenbereich,
+        hochkonserviert, verantwortlich für die $T=3$-Ikosaeder-Symmetrie.
+  \item \textbf{P-Domäne} (Positionen 226--530): Oberflächenexponiert,
         subdividiert in P1 (Stammregion) und P2 (hypervariable Spitze).
-        Bindet HBGA-Rezeptoren (Histoblut-Gruppen-Antigene) und ist primÃ¤res
-        AntikÃ¶rper-Ziel.
+        Bindet HBGA-Rezeptoren (Histoblut-Gruppen-Antigene) und ist primäres
+        Antikörper-Ziel.
 \end{itemize}
 \end{definition}
 
 \begin{definition}[Virus-Like Particles (VLPs)]
 VLPs entstehen durch rekombinante Expression von VP1 ohne virales Genom. Sie bilden
-morphologisch echten Virionen Ã¤hnliche Partikel, sind jedoch vollstÃ¤ndig nicht-infektiÃ¶s
-und hochimmunogen. VLPs stellen das fÃ¼hrende Plattform-Format fÃ¼r Norovirus-Impfstoffe dar.
+morphologisch echten Virionen ähnliche Partikel, sind jedoch vollständig nicht-infektiös
+und hochimmunogen. VLPs stellen das führende Plattform-Format für Norovirus-Impfstoffe dar.
 \end{definition}
 
 \subsection{Epitop-Klassifikation und Immunerkennung}
 
 \begin{definition}[B-Zell-Epitop]
 Ein B-Zell-Epitop ist jene minimale Antigensequenz, die von einem B-Zell-Rezeptor (BCR)
-oder dem resultierenden sekretorischen AntikÃ¶rper direkt erkannt wird.
-\textit{Lineare} Epitope ($\geq\!6$ AminosÃ¤uren) werden als kontinuierliche Sequenz erkannt;
-\textit{konformationelle} Epitope entstehen durch rÃ¤umliche Faltung nicht-adjazenter Residuen
+oder dem resultierenden sekretorischen Antikörper direkt erkannt wird.
+\textit{Lineare} Epitope ($\geq\!6$ Aminosäuren) werden als kontinuierliche Sequenz erkannt;
+\textit{konformationelle} Epitope entstehen durch räumliche Faltung nicht-adjazenter Residuen
 und sind nur in der nativen 3D-Struktur immunogen.
 \end{definition}
 
 \begin{definition}[T-Zell-Epitop und MHC-Bindung]
-T-Zell-Epitope ($8$--$11$~AminosÃ¤uren fÃ¼r MHC-I; $13$--$25$ fÃ¼r MHC-II) werden als
-prozessierte Peptide im Kontext von Major Histocompatibility Complex (MHC)-MolekÃ¼len
-prÃ¤sentiert. Die BindungsaffinitÃ¤t $K_d < 500\,\text{nM}$ gilt als Schwellenwert fÃ¼r
+T-Zell-Epitope ($8$--$11$~Aminosäuren für MHC-I; $13$--$25$ für MHC-II) werden als
+prozessierte Peptide im Kontext von Major Histocompatibility Complex (MHC)-Molekülen
+präsentiert. Die Bindungsaffinität $K_d < 500\,\text{nM}$ gilt als Schwellenwert für
 starke MHC-Bindung \citep{netmhc2019}.
 \end{definition}
 
@@ -171,7 +171,7 @@ starke MHC-Bindung \citep{netmhc2019}.
 \section{Graphen-theoretischer Rahmen}
 % ===============================================================
 
-\subsection{Formale Graph-Modelle fÃ¼r Virusproteine}
+\subsection{Formale Graph-Modelle für Virusproteine}
 
 \begin{definition}[Sequenz-Konservierungs-Graph]
 Sei $\mathcal{I} = \{I_1,\ldots,I_m\}$ eine Menge von $m$ VP1-Isolaten.
@@ -193,18 +193,18 @@ Sei $\mathcal{S}$ eine VP1-Kristallstruktur. Der \emph{Struktur-Kontakt-Graph} i
 \[
   G_{\text{str}} = (V_{\text{str}},\, E_{\text{str}},\, w_{\text{SASA}})
 \]
-mit Knoten $V_{\text{str}}$ entsprechend SekundÃ¤rstruktur-Elementen,
+mit Knoten $V_{\text{str}}$ entsprechend Sekundärstruktur-Elementen,
 Kanten $E_{\text{str}} = \{(v_i,v_j) \mid d_{\text{C}\alpha}(i,j) \leq 4{,}5\,\text{\AA}\}$
 und Gewichten $w_{\text{SASA}}(v_j)$ gleich dem normierten Solvent-Accessible Surface Area (SASA).
 \end{definition}
 
-\begin{definition}[ImmunogenitÃ¤ts-Graph]
-Der \emph{ImmunogenitÃ¤ts-Graph}
+\begin{definition}[Immunogenitäts-Graph]
+Der \emph{Immunogenitäts-Graph}
 \[
   G_{\text{imm}} = (V_{\text{imm}},\, E_{\text{imm}},\, w_{\text{imm}})
 \]
-integriert B-Zell-Epitop-Scores (BepiPred-2.0) und T-Zell-MHC-BindungsaffinitÃ¤ten
-(NetMHCpan-4.1) als Knotengewichte. Kanten verbinden Epitope mit Ã¼berlappenden
+integriert B-Zell-Epitop-Scores (BepiPred-2.0) und T-Zell-MHC-Bindungsaffinitäten
+(NetMHCpan-4.1) als Knotengewichte. Kanten verbinden Epitope mit überlappenden
 Bindungsprofilen.
 \end{definition}
 
@@ -214,7 +214,7 @@ Bindungsprofilen.
 
 \subsection{Signatur-Berechnung}
 
-FÃ¼r einen gewichteten Graphen $G=(V,E,w)$ mit Adjazenzmatrix $A\in\{0,1\}^{n\times n}$
+Für einen gewichteten Graphen $G=(V,E,w)$ mit Adjazenzmatrix $A\in\{0,1\}^{n\times n}$
 und Gewichtsvektor $\mathbf{w}=(w_1,\ldots,w_n)^T$ definieren wir die
 \emph{erweiterte Spalten-Signatur}:
 
@@ -236,9 +236,9 @@ $\boldsymbol{\sigma}=\boldsymbol{\sigma}'$ genau dann, wenn sie isomorph sind
 
 \begin{proof}
 Die ersten $n$ Terme kodieren die Adjazenzmatrix-Spalten injektiv in Ganzzahlen
-(Eindeutigkeit der BinÃ¤r-Darstellung). Die Terme $j\cdot 2^n$ separieren verschiedene
+(Eindeutigkeit der Binär-Darstellung). Die Terme $j\cdot 2^n$ separieren verschiedene
 Spalten. Die Gewichts-Terme $\lfloor w_j M\rfloor\cdot 2^{2n}$ sind paarweise disjunkt
-in den Bit-Positionen $[2n, 3n+20]$ fÃ¼r $M=10^6$. Somit ist $\sigma_j$ eine injektive
+in den Bit-Positionen $[2n, 3n+20]$ für $M=10^6$. Somit ist $\sigma_j$ eine injektive
 Abbildung von $(A_{\cdot j}, j, w_j)$ auf $\mathbb{N}$, und die Folge
 $\boldsymbol{\sigma}$ rekonstruiert den Graphen eindeutig.
 \end{proof}
@@ -246,7 +246,7 @@ $\boldsymbol{\sigma}$ rekonstruiert den Graphen eindeutig.
 \subsection{Zyklische Rotation und LCS-Matching}
 
 \begin{definition}[Zyklische Rotation]
-FÃ¼r $r\in\{0,\ldots,n-1\}$ ist die $r$-te zyklische Rotation von $\boldsymbol{\sigma}$:
+Für $r\in\{0,\ldots,n-1\}$ ist die $r$-te zyklische Rotation von $\boldsymbol{\sigma}$:
 \[
   \boldsymbol{\sigma}^{(r)} = (\sigma_r,\,\sigma_{r+1},\,\ldots,\,\sigma_{n-1},\,
                                 \sigma_0,\,\ldots,\,\sigma_{r-1}).
@@ -279,16 +279,16 @@ SASA-Gewicht $w_{\text{SASA}}(v_j) > \tau_{\text{SASA}}$.
 
 \begin{proof}
 Sei $r^*$ die optimale Rotation. LCS $\geq \theta$ garantiert, dass mindestens $\theta$
-Signatur-Elemente Ã¼bereinstimmen, d.\,h.\ mindestens $\theta$ Spalten der Adjazenzmatrizen
+Signatur-Elemente übereinstimmen, d.\,h.\ mindestens $\theta$ Spalten der Adjazenzmatrizen
 sind nach zyklischer Permutation identisch -- dies entspricht einem gemeinsamen Subgraph
 $S$ mit $|S| \geq \theta$ Knoten. Die Zusatzbedingungen $w_{\text{cons}}>0{,}70$
-(Konservierung) und $w_{\text{SASA}}>0{,}40$ (OberflÃ¤chenexposition) sichern
-biologische ValiditÃ¤t: Nur Positionen, die in $>70\,\%$ aller Isolate unverÃ¤ndert
-und gleichzeitig lÃ¶sungsmittelzugÃ¤nglich sind, kÃ¶nnen von AntikÃ¶rpern erkannt werden.
+(Konservierung) und $w_{\text{SASA}}>0{,}40$ (Oberflächenexposition) sichern
+biologische Validität: Nur Positionen, die in $>70\,\%$ aller Isolate unverändert
+und gleichzeitig lösungsmittelzugänglich sind, können von Antikörpern erkannt werden.
 \end{proof}
 
-\begin{korollar}[Multi-Graph-Intersection fÃ¼r Impfstoffdesign]\label{kor:multi}
-Der optimale VLP-Impfstoff enthÃ¤lt die Vereinigung aller Epitope aus dem
+\begin{korollar}[Multi-Graph-Intersection für Impfstoffdesign]\label{kor:multi}
+Der optimale VLP-Impfstoff enthält die Vereinigung aller Epitope aus dem
 \emph{Triple-Intersection-Subgraphen}:
 \[
   \mathcal{E}^* = \bigcup_{k} S_k,\quad
@@ -300,7 +300,7 @@ Der optimale VLP-Impfstoff enthÃ¤lt die Vereinigung aller Epitope aus dem
 \subsection{Pseudo-Code und Implementierung}
 
 \begin{lstlisting}[language=Python,
-  caption={Subgraph-Analyse fÃ¼r Norovirus-Epitop-Identifikation},
+  caption={Subgraph-Analyse für Norovirus-Epitop-Identifikation},
   label=lst:subgraph]
 import numpy as np
 
@@ -346,30 +346,30 @@ def norovirus_epitope_analysis(G_seq_list, G_str, G_imm,
     return merge_overlapping_epitopes(epitopes)
 \end{lstlisting}
 
-\subsection{KomplexitÃ¤tsanalyse}
+\subsection{Komplexitätsanalyse}
 
 \begin{lemma}[Signatur-Berechnung]\label{lem:sig}
-Die Berechnung aller $n$ Signaturen eines Graphen mit $n$ Knoten benÃ¶tigt
+Die Berechnung aller $n$ Signaturen eines Graphen mit $n$ Knoten benötigt
 $O(n^2)$ Zeit und $O(n)$ Raum.
 \end{lemma}
 
-\begin{satz}[GesamtkomplexitÃ¤t]\label{satz:kompl}
-Die vollstÃ¤ndige Epitop-Analyse fÃ¼r $m$ Isolate, Graphen der GrÃ¶ÃŸe $n$
-und $q$ LCS-Vergleiche hat GesamtkomplexitÃ¤t:
+\begin{satz}[Gesamtkomplexität]\label{satz:kompl}
+Die vollständige Epitop-Analyse für $m$ Isolate, Graphen der Größe $n$
+und $q$ LCS-Vergleiche hat Gesamtkomplexität:
 \[
   T(m,n) = O(m \cdot n^2) \;\text{(Signaturen)}\;
           + O(m \cdot n \cdot n^2) \;\text{(LCS-Rotationen)}
           = O(m \cdot n^3).
 \]
-FÃ¼r typische Werte $m=150$, $n=100$: $T \approx 1{,}5\times10^8$ Operationen
+Für typische Werte $m=150$, $n=100$: $T \approx 1{,}5\times10^8$ Operationen
 (ca.\ $1$--$5\,\text{s}$ auf modernem Hardware).
 \end{satz}
 
 \begin{bemerkung}[SETH-Untergrenze]
-Unter der Strong Exponential Time Hypothesis (SETH) ist die LCS-Berechnung fÃ¼r
-zwei Folgen der LÃ¤nge $n$ nicht in $O(n^{2-\varepsilon})$ fÃ¼r $\varepsilon>0$
-lÃ¶sbar. Damit ist die $O(n^2)$-Schranke im LCS-Schritt asymptotisch optimal,
-und der Algorithmus insgesamt $O(n^3)$ optimal (fÃ¼r festes~$m$).
+Unter der Strong Exponential Time Hypothesis (SETH) ist die LCS-Berechnung für
+zwei Folgen der Länge $n$ nicht in $O(n^{2-\varepsilon})$ für $\varepsilon>0$
+lösbar. Damit ist die $O(n^2)$-Schranke im LCS-Schritt asymptotisch optimal,
+und der Algorithmus insgesamt $O(n^3)$ optimal (für festes~$m$).
 \end{bemerkung}
 
 % ===============================================================
@@ -380,32 +380,32 @@ und der Algorithmus insgesamt $O(n^3)$ optimal (fÃ¼r festes~$m$).
 
 \subsubsection{Abbildungsbeschreibung: Konservierungsprofil (Abbildung~\ref{fig:conservation})}
 
-Abbildung~\ref{fig:conservation} zeigt das Konservierungsprofil der VP1-Sequenz Ã¼ber alle
-150~Isolate. Auf der $x$-Achse sind die 530~AminosÃ¤urepositionen von VP1 aufgetragen,
+Abbildung~\ref{fig:conservation} zeigt das Konservierungsprofil der VP1-Sequenz über alle
+150~Isolate. Auf der $x$-Achse sind die 530~Aminosäurepositionen von VP1 aufgetragen,
 auf der $y$-Achse der Konservierungs-Score in Prozent ($0$--$100\,\%$).
 
-Die \textbf{S-DomÃ¤ne} (Positionen 1--225, linker Bereich) zeigt ein durchgÃ¤ngig hohes
+Die \textbf{S-Domäne} (Positionen 1--225, linker Bereich) zeigt ein durchgängig hohes
 Konservierungsniveau von durchschnittlich $85\,\%\pm8\,\%$. Das ist biologisch erwartet,
-da diese DomÃ¤ne vorwiegend strukturelle Funktion erfÃ¼llt und durch die Partikelschale dem
-Immunsystem wenig zugÃ¤nglich ist. Die \textbf{P-DomÃ¤ne} (Positionen 226--530) ist variabler
-($60\,\%\pm15\,\%$), weil sie auf der PartikeloberflÃ¤che liegt und dem antikÃ¶rpervermittelten
+da diese Domäne vorwiegend strukturelle Funktion erfüllt und durch die Partikelschale dem
+Immunsystem wenig zugänglich ist. Die \textbf{P-Domäne} (Positionen 226--530) ist variabler
+($60\,\%\pm15\,\%$), weil sie auf der Partikeloberfläche liegt und dem antikörpervermittelten
 Selektionsdruck ausgesetzt ist.
 
-Hervorgehoben sind acht Regionen (E1--E8), die trotz OberflÃ¤chenexposition hochkonserviert
+Hervorgehoben sind acht Regionen (E1--E8), die trotz Oberflächenexposition hochkonserviert
 ($>84\,\%$) bleiben. Die rote gestrichelte Linie markiert den Algorithmus-Schwellwert $\tau_{\text{seq}}=70\,\%$,
 oberhalb dessen Positionen als Knoten in $G_{\text{seq}}$ aufgenommen werden.
 
-\textbf{Biologische Interpretation:} Hochkonservierte OberflÃ¤chenregionen stehen unter
+\textbf{Biologische Interpretation:} Hochkonservierte Oberflächenregionen stehen unter
 stabilisierendem Selektionsdruck, der Mutationen bestraft -- entweder weil sie Rezeptorbindung
-oder strukturelle IntegritÃ¤t der Partikel gewÃ¤hrleisten. Genau diese funktionelle Unverzichtbarkeit
-macht sie zum idealen Impfstoff-Ziel: Escape-Mutationen wÃ¤ren fitnessneutral oder -negativ fÃ¼r
+oder strukturelle Integrität der Partikel gewährleisten. Genau diese funktionelle Unverzichtbarkeit
+macht sie zum idealen Impfstoff-Ziel: Escape-Mutationen wären fitnessneutral oder -negativ für
 das Virus.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_01_conservation.pdf}
-  \caption{VP1-Konservierungsprofil Ã¼ber 150 Norovirus-Isolate. Farbige Schattierungen markieren
-           die acht Epitop-Kandidaten E1--E8 in der P-DomÃ¤ne (rechts der vertikalen Trennlinie bei
+  \caption{VP1-Konservierungsprofil über 150 Norovirus-Isolate. Farbige Schattierungen markieren
+           die acht Epitop-Kandidaten E1--E8 in der P-Domäne (rechts der vertikalen Trennlinie bei
            Position~225). Die rote Linie kennzeichnet den Algorithmus-Schwellwert $\tau=70\,\%$.}
   \label{fig:conservation}
 \end{figure}
@@ -436,25 +436,25 @@ E8 & 510--525  & 89\,\% & 78\,\% & 87 \\
 \subsubsection{Abbildungsbeschreibung: Matching-Scores (Abbildung~\ref{fig:matching})}
 
 Abbildung~\ref{fig:matching} stellt die LCS-Scores aller elf getesteten Rotationen des
-Struktur-Kontakt-Graphen gegenÃ¼ber dem Sequenz-Konservierungs-Graphen dar. Jeder Balken
+Struktur-Kontakt-Graphen gegenüber dem Sequenz-Konservierungs-Graphen dar. Jeder Balken
 entspricht einer zyklischen Verschiebung $r\in\{0,50,100,\ldots,500\}$ der Signaturfolge
 $\boldsymbol{\sigma}^{\text{str}}$.
 
-\textbf{Lesehinweis:} GrÃ¼ne Balken (LCS $\geq 30$) kennzeichnen Rotationen, bei denen der
+\textbf{Lesehinweis:} Grüne Balken (LCS $\geq 30$) kennzeichnen Rotationen, bei denen der
 Subgraph-Test positiv ist; rote Balken liegen unterhalb des Schwellwerts $\theta=30$.
-Drei Rotationen -- R5, R6, R9 -- Ã¼berschreiten den Schwellwert mit Scores von 45, 38 und 25.
-Nur R5 und R6 liegen sicher Ã¼ber $\theta$.
+Drei Rotationen -- R5, R6, R9 -- überschreiten den Schwellwert mit Scores von 45, 38 und 25.
+Nur R5 und R6 liegen sicher über $\theta$.
 
-\textbf{Statistische Absicherung:} Bei 1\,000 zufÃ¤llig generierten Graphen gleicher GrÃ¶ÃŸe
-betrÃ¤gt der mittlere LCS-Score nur $8{,}3\pm2{,}1$. Der beobachtete Maximalwert von 45
-liegt damit mehr als $17\sigma$ Ã¼ber dem Zufalls-Erwartungswert, was die biologische
-Signifikanz der gefundenen Subgraph-Ãœbereinstimmungen belegt.
+\textbf{Statistische Absicherung:} Bei 1\,000 zufällig generierten Graphen gleicher Größe
+beträgt der mittlere LCS-Score nur $8{,}3\pm2{,}1$. Der beobachtete Maximalwert von 45
+liegt damit mehr als $17\sigma$ über dem Zufalls-Erwartungswert, was die biologische
+Signifikanz der gefundenen Subgraph-Übereinstimmungen belegt.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_02_subgraph_matching.pdf}
-  \caption{LCS-Matching-Scores fÃ¼r elf zyklische Rotationen des Struktur-Kontakt-Graphen.
-           GrÃ¼ne Balken: Positiver Subgraph-Match (LCS\,$\geq$\,30). Gestrichelte Linie:
+  \caption{LCS-Matching-Scores für elf zyklische Rotationen des Struktur-Kontakt-Graphen.
+           Grüne Balken: Positiver Subgraph-Match (LCS\,$\geq$\,30). Gestrichelte Linie:
            Algorithmus-Schwellwert~$\theta$.}
   \label{fig:matching}
 \end{figure}
@@ -467,98 +467,98 @@ Abbildung~\ref{fig:radar} zeigt acht Radar-Diagramme -- eines pro Epitop-Kandida
 Jede der vier Achsen kodiert eine biologisch-algorithmische Dimension:
 
 \begin{enumerate}
-  \item \textbf{Konservierung:} Prozentualer Anteil der Isolate mit unverÃ¤nderter Epitop-Sequenz.
-  \item \textbf{OberflÃ¤chenexposition (SASA):} Anteil der EpitopoberflÃ¤che, der fÃ¼r
-        LÃ¶sungsmittelmolekÃ¼le und AntikÃ¶rper zugÃ¤nglich ist. Werte $>70\,\%$ gelten als
+  \item \textbf{Konservierung:} Prozentualer Anteil der Isolate mit unveränderter Epitop-Sequenz.
+  \item \textbf{Oberflächenexposition (SASA):} Anteil der Epitopoberfläche, der für
+        Lösungsmittelmoleküle und Antikörper zugänglich ist. Werte $>70\,\%$ gelten als
         optimal.
-  \item \textbf{ImmunogenitÃ¤t:} Kombinierter Score aus physikochemischen Parametern
-        (HydrophobizitÃ¤tsindex, Ladungsdichte, lokale FlexibilitÃ¤t), die mit
-        experimentellen ImmunogenitÃ¤tsdaten korrelieren.
-  \item \textbf{B-Zell-Potenzial:} BepiPred-2.0-Score fÃ¼r kontinuierliche B-Zell-Epitop-Wahrscheinlichkeit.
+  \item \textbf{Immunogenität:} Kombinierter Score aus physikochemischen Parametern
+        (Hydrophobizitätsindex, Ladungsdichte, lokale Flexibilität), die mit
+        experimentellen Immunogenitätsdaten korrelieren.
+  \item \textbf{B-Zell-Potenzial:} BepiPred-2.0-Score für kontinuierliche B-Zell-Epitop-Wahrscheinlichkeit.
 \end{enumerate}
 
-\textbf{Interpretation:} Epitope E1 und E5 dominieren Ã¼ber alle vier Dimensionen
+\textbf{Interpretation:} Epitope E1 und E5 dominieren über alle vier Dimensionen
 (Durchschnitt $>88\,\%$), gefolgt von E8 ($87\,\%$) und E4 ($82\,\%$). E3 und E6
-zeigen SchwÃ¤chen in SASA und ImmunogenitÃ¤t, sind aber durch ihre Kombinationswirkung
-im Multi-Epitop-Impfstoff dennoch wertvoll. Die polygonale AusfÃ¼llung verdeutlicht,
-dass kein einzelner Epitop alle vier Kriterien perfekt erfÃ¼llt -- ein weiteres Argument
-fÃ¼r den Multi-Epitop-Ansatz.
+zeigen Schwächen in SASA und Immunogenität, sind aber durch ihre Kombinationswirkung
+im Multi-Epitop-Impfstoff dennoch wertvoll. Die polygonale Ausfüllung verdeutlicht,
+dass kein einzelner Epitop alle vier Kriterien perfekt erfüllt -- ein weiteres Argument
+für den Multi-Epitop-Ansatz.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_03_epitope_characterization.pdf}
   \caption{Radar-Diagramme der acht Epitop-Kandidaten E1--E8 in vier Bewertungsdimensionen:
-           Konservierung, OberflÃ¤chenexposition (SASA), ImmunogenitÃ¤t und B-Zell-Potenzial.
-           Farbige FlÃ¤chen: Scoring-Profil des jeweiligen Epitops (Skala: 0--100\,\%).}
+           Konservierung, Oberflächenexposition (SASA), Immunogenität und B-Zell-Potenzial.
+           Farbige Flächen: Scoring-Profil des jeweiligen Epitops (Skala: 0--100\,\%).}
   \label{fig:radar}
 \end{figure}
 
-\subsection{Genotypen-Ã¼bergreifende Abdeckungsanalyse}
+\subsection{Genotypen-übergreifende Abdeckungsanalyse}
 
 \subsubsection{Abbildungsbeschreibung: Heatmap (Abbildung~\ref{fig:heatmap})}
 
-Abbildung~\ref{fig:heatmap} ist eine $8\times8$-Heatmap: Spalten reprÃ¤sentieren die
+Abbildung~\ref{fig:heatmap} ist eine $8\times8$-Heatmap: Spalten repräsentieren die
 acht Epitope, Zeilen acht klinisch relevante Norovirus-Genotypen (GI.1, GI.3, GI.7,
 GII.2, GII.4, GII.17, GII.P16, GII.P17). Die Farbkodierung reicht von Dunkelrot
-(niedrige Konservierung $\approx 0{,}65$) bis DunkelgrÃ¼n (hohe Konservierung $\approx 1{,}00$).
+(niedrige Konservierung $\approx 0{,}65$) bis Dunkelgrün (hohe Konservierung $\approx 1{,}00$).
 
 \textbf{Wichtige Befunde:}
 \begin{itemize}
-  \item GII.4-Varianten (Sydney, Neo) zeigen die hÃ¶chste Gesamtkonservierung Ã¼ber alle Epitope.
-        Dies ist konsistent mit dem epidemiologischen Befund, dass GII.4 der hÃ¤ufigste
+  \item GII.4-Varianten (Sydney, Neo) zeigen die höchste Gesamtkonservierung über alle Epitope.
+        Dies ist konsistent mit dem epidemiologischen Befund, dass GII.4 der häufigste
         global zirkulierende Stamm ist -- starker Selektionsdruck konserviert funktionelle
         Regionen.
-  \item Epitop~E1 zeigt mit einem Zellminimum von 0{,}85 die robusteste Genotypen-Ã¼bergreifende
+  \item Epitop~E1 zeigt mit einem Zellminimum von 0{,}85 die robusteste Genotypen-übergreifende
         Konservierung.
-  \item GI.3 weist bei E2 und E6 LÃ¼cken auf ($\approx 0{,}80$--$0{,}85$), was auf stamm-spezifische
+  \item GI.3 weist bei E2 und E6 Lücken auf ($\approx 0{,}80$--$0{,}85$), was auf stamm-spezifische
         Variation hindeutet.
-  \item Kombiniert Ã¼ber alle acht Epitope und Genotypen ergibt sich ein Gesamtmittel von
+  \item Kombiniert über alle acht Epitope und Genotypen ergibt sich ein Gesamtmittel von
         $\bar{c}=0{,}89$, was einer theoretischen Breitabdeckung von $89\,\%$ entspricht.
 \end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_04_genotype_coverage.pdf}
-  \caption{Heatmap der Epitop-Konservierung fÃ¼r acht Norovirus-Genotypen (Zeilen) und
+  \caption{Heatmap der Epitop-Konservierung für acht Norovirus-Genotypen (Zeilen) und
            acht Epitop-Kandidaten E1--E8 (Spalten). Farbskala: 0 (kein Schutz, Rot) bis
-           1 (vollstÃ¤ndige Konservierung, GrÃ¼n). Numerische Werte in jeder Zelle.}
+           1 (vollständige Konservierung, Grün). Numerische Werte in jeder Zelle.}
   \label{fig:heatmap}
 \end{figure}
 
-\subsection{T-Zell-ImmunogenitÃ¤t: MHC-Bindungsvorhersage}
+\subsection{T-Zell-Immunogenität: MHC-Bindungsvorhersage}
 
-\subsubsection{Abbildungsbeschreibung: MHC-BindungsaffinitÃ¤t (Abbildung~\ref{fig:tcell})}
+\subsubsection{Abbildungsbeschreibung: MHC-Bindungsaffinität (Abbildung~\ref{fig:tcell})}
 
-Abbildung~\ref{fig:tcell} zeigt Balkengruppen fÃ¼r jeden der acht Epitope, wobei jeder
-Balken die NetMHCpan-4.1-vorhergesagte BindungsaffinitÃ¤t $K_d$ (in nM) fÃ¼r eines der
-fÃ¼nf hÃ¤ufigsten HLA-Allele in der europÃ¤ischen BevÃ¶lkerung darstellt.
+Abbildung~\ref{fig:tcell} zeigt Balkengruppen für jeden der acht Epitope, wobei jeder
+Balken die NetMHCpan-4.1-vorhergesagte Bindungsaffinität $K_d$ (in nM) für eines der
+fünf häufigsten HLA-Allele in der europäischen Bevölkerung darstellt.
 Die Skalierung der $y$-Achse geht von 0 bis 600\,nM; die horizontale Linie bei
-500\,nM markiert den Schwellwert fÃ¼r starke Bindung.
+500\,nM markiert den Schwellwert für starke Bindung.
 
-\textbf{Biologischer Kontext:} $K_d < 50\,\text{nM}$ gilt als HochaffinitÃ¤tsbindung
+\textbf{Biologischer Kontext:} $K_d < 50\,\text{nM}$ gilt als Hochaffinitätsbindung
 (sogenannte ``strong binder''), $K_d < 500\,\text{nM}$ als moderate Bindung. Nur
-starke und moderate Binder aktivieren T-Zellen zuverlÃ¤ssig.
+starke und moderate Binder aktivieren T-Zellen zuverlässig.
 
 \textbf{Befunde:}
 \begin{itemize}
-  \item E1, E4 und E5 sind fÃ¼r alle fÃ¼nf HLA-Allele unter 500\,nM -- klassenunabhÃ¤ngige
+  \item E1, E4 und E5 sind für alle fünf HLA-Allele unter 500\,nM -- klassenunabhängige
         T-Zell-Epitope mit potenziell universeller Immunaktivierung.
-  \item E2, E7, E8 sind fÃ¼r mindestens drei HLA-Allele unter 500\,nM.
-  \item E3 und E6 binden schwÃ¤cher ($K_d > 300\,\text{nM}$ fÃ¼r die meisten Allele).
-  \item HLA-A*02:01 (hÃ¤ufigstes Allel, $\sim30\,\%$ Frequenz in Europa) wird von allen
+  \item E2, E7, E8 sind für mindestens drei HLA-Allele unter 500\,nM.
+  \item E3 und E6 binden schwächer ($K_d > 300\,\text{nM}$ für die meisten Allele).
+  \item HLA-A*02:01 (häufigstes Allel, $\sim30\,\%$ Frequenz in Europa) wird von allen
         Epitopen mit $K_d < 300\,\text{nM}$ gebunden.
 \end{itemize}
 
 \textbf{Schlussfolgerung:} Durch die Kombination aller acht Epitope kann eine
-T-Zell-Populationsabdeckung von $>90\,\%$ der europÃ¤ischen und $>85\,\%$ der
-asiatischen BevÃ¶lkerung erreicht werden.
+T-Zell-Populationsabdeckung von $>90\,\%$ der europäischen und $>85\,\%$ der
+asiatischen Bevölkerung erreicht werden.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_05_t_cell_epitopes.pdf}
-  \caption{NetMHCpan-4.1-BindungsaffinitÃ¤tsvorhersage ($K_d$ in nM) der acht Epitope
-           gegenÃ¼ber fÃ¼nf hÃ¤ufigen HLA-Allelen. Niedrigere Werte = stÃ¤rkere Bindung.
-           Gestrichelte Linie: Schwellwert fÃ¼r starke MHC-Bindung ($500\,\text{nM}$).}
+  \caption{NetMHCpan-4.1-Bindungsaffinitätsvorhersage ($K_d$ in nM) der acht Epitope
+           gegenüber fünf häufigen HLA-Allelen. Niedrigere Werte = stärkere Bindung.
+           Gestrichelte Linie: Schwellwert für starke MHC-Bindung ($500\,\text{nM}$).}
   \label{fig:tcell}
 \end{figure}
 
@@ -569,15 +569,15 @@ asiatischen BevÃ¶lkerung erreicht werden.
 Abbildung~\ref{fig:valid} umfasst zwei Panels:
 
 \textbf{Linkes Panel -- ROC-Kurve:} Die Receiver Operating Characteristic (ROC)-Kurve
-stellt die Trennleistung des Subgraph Algorithmus Ã¼ber alle mÃ¶glichen Schwellwerte $\theta$
+stellt die Trennleistung des Subgraph Algorithmus über alle möglichen Schwellwerte $\theta$
 dar. Die $x$-Achse zeigt die False Positive Rate (FPR = FP/(FP+TN)), die $y$-Achse
-die True Positive Rate (TPR = SensitivitÃ¤t = TP/(TP+FN)). Die Kurve liegt deutlich Ã¼ber
+die True Positive Rate (TPR = Sensitivität = TP/(TP+FN)). Die Kurve liegt deutlich über
 der Diagonalen (Zufalls-Klassifizierer, AUC=0{,}5) und erreicht einen AUC-Wert von
-\textbf{0{,}91}. Das bedeutet: Bei zufÃ¤lliger Auswahl eines bekannten Epitops und eines
+\textbf{0{,}91}. Das bedeutet: Bei zufälliger Auswahl eines bekannten Epitops und eines
 bekannten Nicht-Epitops weist der Algorithmus mit 91-prozentiger Wahrscheinlichkeit dem
-Epitop den hÃ¶heren Score zu.
+Epitop den höheren Score zu.
 
-\textbf{Rechtes Panel -- Confusion Matrix:} FÃ¼r den optimal gewÃ¤hlten Schwellwert
+\textbf{Rechtes Panel -- Confusion Matrix:} Für den optimal gewählten Schwellwert
 $\theta^*=30$ ergibt der Test gegen 25~experimentell validierte Norovirus-Epitope
 aus der Literatur folgendes Ergebnis:
 
@@ -586,15 +586,15 @@ aus der Literatur folgendes Ergebnis:
 \toprule
  & \textbf{Pred.~Positiv} & \textbf{Pred.~Negativ} \\
 \midrule
-\textbf{TatsÃ¤chlich Positiv} & 22 (TP) & 3 (FN) \\
-\textbf{TatsÃ¤chlich Negativ} & 1 (FP) & 3 (TN) \\
+\textbf{Tatsächlich Positiv} & 22 (TP) & 3 (FN) \\
+\textbf{Tatsächlich Negativ} & 1 (FP) & 3 (TN) \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 Daraus ergeben sich:
 \begin{align*}
-  \text{SensitivitÃ¤t} &= \tfrac{22}{25} = 88\,\%,\\
+  \text{Sensitivität} &= \tfrac{22}{25} = 88\,\%,\\
   \text{Precision (PPV)} &= \tfrac{22}{23} = 95{,}7\,\%,\\
   \text{F1-Score} &= \tfrac{2\cdot0{,}88\cdot0{,}957}{0{,}88+0{,}957} = 91{,}7\,\%.
 \end{align*}
@@ -603,14 +603,14 @@ Daraus ergeben sich:
   \centering
   \includegraphics[width=\linewidth]{plot_06_validation.pdf}
   \caption{Validierung des Subgraph Algorithmus. \textit{Links:} ROC-Kurve mit AUC\,=\,0{,}91
-           (blau) gegenÃ¼ber Zufalls-Klassifizierer (gestrichelt). \textit{Rechts:} Confusion
-           Matrix fÃ¼r den optimalen Schwellwert~$\theta^*=30$, Test gegen 25~literaturbekannte
+           (blau) gegenüber Zufalls-Klassifizierer (gestrichelt). \textit{Rechts:} Confusion
+           Matrix für den optimalen Schwellwert~$\theta^*=30$, Test gegen 25~literaturbekannte
            Epitope.}
   \label{fig:valid}
 \end{figure}
 
 \begin{satz}[Statistische Signifikanz]\label{satz:stats}
-Unter der Nullhypothese $H_0: p=0{,}5$ (Algorithmus trifft zufÃ¤llig) und den beobachteten
+Unter der Nullhypothese $H_0: p=0{,}5$ (Algorithmus trifft zufällig) und den beobachteten
 $k=22$ Erfolgen in $n=25$ Versuchen gilt:
 \[
   P(K\geq 22\mid n=25,\,p=0{,}5)
@@ -624,15 +624,15 @@ Die Leistung des Algorithmus ist hochsignifikant ($p<10^{-4}$, zweiseitiger Bino
 \section{Impfstoff- und Medikamenten-Design}
 % ===============================================================
 
-\subsection{ChimÃ¤rer VLP-Impfstoff}
+\subsection{Chimärer VLP-Impfstoff}
 
-\subsubsection{Abbildungsbeschreibung: AntikÃ¶rper-Kinetik (Abbildung~\ref{fig:kinetics})}
+\subsubsection{Abbildungsbeschreibung: Antikörper-Kinetik (Abbildung~\ref{fig:kinetics})}
 
 Abbildung~\ref{fig:kinetics} zeigt das mathematisch modellierte Profil der neutralisierenden
-AntikÃ¶rper-Konzentration (in nM) Ã¼ber 200~Tage nach Impfbeginn. Das dreiteilige
+Antikörper-Konzentration (in nM) über 200~Tage nach Impfbeginn. Das dreiteilige
 Impfschema (Tag~0, 30, 180) ist durch vertikale rote Linien markiert.
 
-Der zeitliche Verlauf der AntikÃ¶rper-Konzentration nach jeder Dosis folgt dem
+Der zeitliche Verlauf der Antikörper-Konzentration nach jeder Dosis folgt dem
 biphasischen Modell:
 \[
   A(t) = A_{\max}\cdot e^{-\lambda(t-t_d)}\cdot\bigl(1 - e^{-\alpha(t-t_d)}\bigr),
@@ -640,40 +640,40 @@ biphasischen Modell:
 \]
 mit Zerfallskonstante $\lambda=0{,}02\,\text{d}^{-1}$ (Halbwertszeit $\approx35\,\text{d}$)
 und Aufbaukonstante $\alpha=0{,}3\,\text{d}^{-1}$. Die Gesamtkonzentration ist die
-Summe Ã¼ber alle drei Dosisgaben.
+Summe über alle drei Dosisgaben.
 
-\textbf{Schutz-Schwellwert:} Die grÃ¼ne gestrichelte Linie bei 400\,nM markiert die
-Mindestkonzentration neutralisierender AntikÃ¶rper, unterhalb derer Infektionen nicht
-sicher verhindert werden. GrÃ¼n schattierte Bereiche = Schutzphase; rot schattiert = erhÃ¶htes
+\textbf{Schutz-Schwellwert:} Die grüne gestrichelte Linie bei 400\,nM markiert die
+Mindestkonzentration neutralisierender Antikörper, unterhalb derer Infektionen nicht
+sicher verhindert werden. Grün schattierte Bereiche = Schutzphase; rot schattiert = erhöhtes
 Infektionsrisiko.
 
 \textbf{Klinische Schlussfolgerungen:}
 \begin{enumerate}
   \item Nach der ersten Dosis (Tag~0) ist ein kurzes Schutzfenster von $\sim7$ Tagen
         erforderlich, bis der Schwellwert erreicht wird.
-  \item Die zweite Dosis (Tag~30) lÃ¶st eine beschleunigte GedÃ¤chtnis-B-Zell-Antwort aus,
+  \item Die zweite Dosis (Tag~30) löst eine beschleunigte Gedächtnis-B-Zell-Antwort aus,
         die den Titer auf $>600\,\text{nM}$ anhebt.
   \item Nach der dritten Dosis (Tag~180) wird ein Titer von $>800\,\text{nM}$ erreicht,
-        der modellgemÃ¤ÃŸ fÃ¼r $>180$ Tage Ã¼ber dem Schwellwert bleibt.
+        der modellgemäß für $>180$ Tage über dem Schwellwert bleibt.
   \item Ein Booster nach 12~Monaten ist vermutlich erforderlich, um Langzeitschutz zu
-        gewÃ¤hrleisten.
+        gewährleisten.
 \end{enumerate}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_07_antibody_kinetics.pdf}
-  \caption{Modellierte AntikÃ¶rper-Kinetik nach dreiteiligem Impfschema (Tag 0, 30, 180).
-           GrÃ¼ne Schattierung: Schutzphase ($>400\,\text{nM}$). Rote Schattierung: ungeschÃ¼tzte
+  \caption{Modellierte Antikörper-Kinetik nach dreiteiligem Impfschema (Tag 0, 30, 180).
+           Grüne Schattierung: Schutzphase ($>400\,\text{nM}$). Rote Schattierung: ungeschützte
            Phase. Vertikale Linien: Impfzeitpunkte.}
   \label{fig:kinetics}
 \end{figure}
 
 \subsubsection{Impfstoff-Formulierung}
 
-\begin{definition}[ChimÃ¤rer Norovirus-VLP-Impfstoff]
+\begin{definition}[Chimärer Norovirus-VLP-Impfstoff]
 Der vorgeschlagene Impfstoff ist ein rekombinant hergestelltes VP1-Protein, das die
 acht Epitope E1--E8 aus den Genogruppen GI.1, GI.7, GII.4 und GII.17 als
-Polyepitop-Insert in der P2-DomÃ¤ne trÃ¤gt. Die chimÃ¤ren VP1-Monomere assemblieren
+Polyepitop-Insert in der P2-Domäne trägt. Die chimären VP1-Monomere assemblieren
 spontan zu $T=3$-Ikosaedern ($\varnothing\approx32\,\text{nm}$).
 \end{definition}
 
@@ -682,11 +682,11 @@ spontan zu $T=3$-Ikosaedern ($\varnothing\approx32\,\text{nm}$).
 \toprule
 \textbf{Parameter}  & \textbf{Spezifikation} \\
 \midrule
-Dosierung           & 25\,Âµg VLP pro Injektion \\
+Dosierung           & 25\, µg VLP pro Injektion \\
 Adjuvans            & Alum\,+\,CpG\,ODN\,1018 \\
-Verabreichung       & IntramuskulÃ¤r (Deltoideus) \\
-PrimÃ¤rschema        & Tag 0, 30, 180 \\
-Lagertemperatur     & 2--8\,Â°C (lyophilisiert: RT) \\
+Verabreichung       & Intramuskulär (Deltoideus) \\
+Primärschema        & Tag 0, 30, 180 \\
+Lagertemperatur     & 2--8\, °C (lyophilisiert: RT) \\
 Expressionssystem   & Baculovirus/Sf9 oder Nicotiana \\
 \bottomrule
 \end{tabular}
@@ -694,30 +694,30 @@ Expressionssystem   & Baculovirus/Sf9 oder Nicotiana \\
 
 \subsection{Antivirales Medikament: 3C-Protease-Inhibitor}
 
-\subsubsection{Abbildungsbeschreibung: Laufzeit-KomplexitÃ¤t (Abbildung~\ref{fig:compl})}
+\subsubsection{Abbildungsbeschreibung: Laufzeit-Komplexität (Abbildung~\ref{fig:compl})}
 
 Abbildung~\ref{fig:compl} illustriert die asymptotische Laufzeit des Subgraph Algorithmus
-auf einer doppelt-logarithmischen Skala. Die $x$-Achse zeigt die GraphgrÃ¶ÃŸe $n$ von
-$10$ bis $1000$ Knoten, die $y$-Achse die normierte Laufzeit (willkÃ¼rliche Einheiten).
+auf einer doppelt-logarithmischen Skala. Die $x$-Achse zeigt die Graphgröße $n$ von
+$10$ bis $1000$ Knoten, die $y$-Achse die normierte Laufzeit (willkürliche Einheiten).
 
 Drei Kurven werden verglichen:
 \begin{enumerate}
-  \item \textbf{GrÃ¼n -- $O(n^2)$:} Untere Schranke (durch Lesen der Adjazenzmatrix vorgegeben).
-  \item \textbf{Rot -- $O(n^{2{,}8})$:} Praktisch erreichbare KomplexitÃ¤t mit Cache-optimierten
+  \item \textbf{Grün -- $O(n^2)$:} Untere Schranke (durch Lesen der Adjazenzmatrix vorgegeben).
+  \item \textbf{Rot -- $O(n^{2{,}8})$:} Praktisch erreichbare Komplexität mit Cache-optimierten
         LCS-Implementierungen.
-  \item \textbf{Gelb gestrichelt -- $O(n^3)$:} Theoretische KomplexitÃ¤t der naiven
+  \item \textbf{Gelb gestrichelt -- $O(n^3)$:} Theoretische Komplexität der naiven
         LCS-Berechnung (Satz~\ref{satz:kompl}).
 \end{enumerate}
 
 In einem log-log-Plot erscheinen Potenzgesetze $f(n)=cn^k$ als Geraden mit Steigung~$k$.
 Die deutlich erkennbare Divergenz zwischen den Kurven ab $n>200$ zeigt, warum
-Implementierungsoptimierungen fÃ¼r grÃ¶ÃŸere Graphen (z.\,B.\ vollstÃ¤ndige Proteom-Netzwerke)
+Implementierungsoptimierungen für größere Graphen (z.\,B.\ vollständige Proteom-Netzwerke)
 kritisch sind.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_08_complexity.pdf}
-  \caption{Laufzeit-KomplexitÃ¤t des Subgraph Algorithmus (log-log-Skala). GrÃ¼n: $O(n^2)$
+  \caption{Laufzeit-Komplexität des Subgraph Algorithmus (log-log-Skala). Grün: $O(n^2)$
            (Untergrenze). Rot: $O(n^{2{,}8})$ (optimierte Praxis). Gelb gestrichelt: $O(n^3)$
            (naive Implementierung). Knotenanzahl $n$ auf der $x$-Achse.}
   \label{fig:compl}
@@ -728,67 +728,67 @@ kritisch sind.
 \subsubsection{Abbildungsbeschreibung: Struktur-Kontakt-Netzwerk (Abbildung~\ref{fig:network})}
 
 Abbildung~\ref{fig:network} visualisiert den Struktur-Kontakt-Graphen $G_{\text{str}}$
-der VP1-Proteinstruktur (PDB 1IHM). 25~Knoten entsprechen funktionellen DomÃ¤nen bzw.\
-SekundÃ¤rstruktur-Elementen; graue Kanten verbinden Residuen mit rÃ¤umlichem Abstand
+der VP1-Proteinstruktur (PDB 1IHM). 25~Knoten entsprechen funktionellen Domänen bzw.\
+Sekundärstruktur-Elementen; graue Kanten verbinden Residuen mit räumlichem Abstand
 $d\leq4{,}5\,\text{\AA}$.
 
-Die acht Epitop-Kandidaten (E1--E8, rote Sterne) sind im Netzwerk ungleichmÃ¤ÃŸig verteilt:
+Die acht Epitop-Kandidaten (E1--E8, rote Sterne) sind im Netzwerk ungleichmäßig verteilt:
 \begin{itemize}
-  \item E1, E4, E5 liegen in einer rÃ¤umlich dichten Substruktur (Knotendichte erhÃ¶ht),
-        was auf ihre Rolle als strukturelles Ensemble hindeutet -- mÃ¶glicherweise bilden
-        sie gemeinsam eine konformationelle Bindungstasche fÃ¼r HBGA-Liganden.
+  \item E1, E4, E5 liegen in einer räumlich dichten Substruktur (Knotendichte erhöht),
+        was auf ihre Rolle als strukturelles Ensemble hindeutet -- möglicherweise bilden
+        sie gemeinsam eine konformationelle Bindungstasche für HBGA-Liganden.
   \item E2 und E7 liegen peripher mit weniger Kanten, aber hoher SASA -- klassische
-        OberflÃ¤chenloops, die flexibel und gut zugÃ¤nglich sind.
-  \item E3 und E6 zeigen mittlere KonnektivitÃ¤t und sind Kandidaten fÃ¼r Hybridstrategien
+        Oberflächenloops, die flexibel und gut zugänglich sind.
+  \item E3 und E6 zeigen mittlere Konnektivität und sind Kandidaten für Hybridstrategien
         (lineares Epitop kombiniert mit konformationellem Kontext).
 \end{itemize}
 
-Der durchschnittliche Knotengrad des Netzwerks betrÃ¤gt $\bar{d}=3{,}2$, was einem
-spÃ¤rlich vernetzten ``Small-World''-Netzwerk entspricht -- typisch fÃ¼r Proteinstrukturen.
-Solche Netzwerke zeigen Robustheit gegenÃ¼ber zufÃ¤lligen Mutationen, sind aber anfÃ¤llig
-fÃ¼r gezielte Angriffe auf ``Hub''-Knoten (hoher Knotengrad), die als zukÃ¼nftige
-Medikamentenziele dienen kÃ¶nnten.
+Der durchschnittliche Knotengrad des Netzwerks beträgt $\bar{d}=3{,}2$, was einem
+spärlich vernetzten ``Small-World''-Netzwerk entspricht -- typisch für Proteinstrukturen.
+Solche Netzwerke zeigen Robustheit gegenüber zufälligen Mutationen, sind aber anfällig
+für gezielte Angriffe auf ``Hub''-Knoten (hoher Knotengrad), die als zukünftige
+Medikamentenziele dienen könnten.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.92\linewidth]{plot_09_structure_network.pdf}
   \caption{VP1-Struktur-Kontakt-Netzwerk ($G_{\text{str}}$). Blaue Kreise: nicht-epitopische
-           DomÃ¤nen. Rote Sterne: Epitop-Kandidaten E1--E8. Graue Kanten: rÃ¤umliche Kontakte
+           Domänen. Rote Sterne: Epitop-Kandidaten E1--E8. Graue Kanten: räumliche Kontakte
            ($d\leq4{,}5\,\text{\AA}$). Layout: Force-Directed (Fruchterman-Reingold).}
   \label{fig:network}
 \end{figure}
 
 \subsection{Neutralisierungs-Breite des VLP-Impfstoffs}
 
-\subsubsection{Abbildungsbeschreibung: Neutralisierende AntikÃ¶rper (Abbildung~\ref{fig:nab})}
+\subsubsection{Abbildungsbeschreibung: Neutralisierende Antikörper (Abbildung~\ref{fig:nab})}
 
-Abbildung~\ref{fig:nab} zeigt die vorhergesagten neutralisierenden AntikÃ¶rper-Titer
-des chimÃ¤ren VLP-Impfstoffs gegen zehn klinisch relevante Norovirus-StÃ¤mme. Die
+Abbildung~\ref{fig:nab} zeigt die vorhergesagten neutralisierenden Antikörper-Titer
+des chimären VLP-Impfstoffs gegen zehn klinisch relevante Norovirus-Stämme. Die
 $y$-Achse gibt den PRNT\textsubscript{50}-Titer (50\,\%-Plaquereditkons-Titer) an;
 Blau markiert Genogruppe~I, Rot Genogruppe~II.
 
-\textbf{GrÃ¼ne Linie:} Schutz-Schwellwert bei Titer~200. Alle StÃ¤mme auÃŸer GI.3
-und GII.P17 liegen Ã¼ber diesem Schwellwert. Der globale Mittelwert betrÃ¤gt $\approx340$,
+\textbf{Grüne Linie:} Schutz-Schwellwert bei Titer~200. Alle Stämme außer GI.3
+und GII.P17 liegen über diesem Schwellwert. Der globale Mittelwert beträgt $\approx340$,
 der Median~$\approx310$.
 
 \textbf{Herausragende Befunde:}
 \begin{itemize}
-  \item GII.4-Sydney und GII.4-Neo (die epidemiologisch dominantesten StÃ¤mme) zeigen
-        mit Titern $>600$ die stÃ¤rkste Neutralisierung -- gute Nachricht fÃ¼r
-        Ausbruchskontrolle in KrankenhÃ¤usern.
+  \item GII.4-Sydney und GII.4-Neo (die epidemiologisch dominantesten Stämme) zeigen
+        mit Titern $>600$ die stärkste Neutralisierung -- gute Nachricht für
+        Ausbruchskontrolle in Krankenhäusern.
   \item GII.17 (seit 2014 aufsteigender Stamm in Asien) zeigt ebenfalls Titer $>500$.
-  \item GI.3 liegt mit Titer $\approx120$ unter dem Schwellwert -- dieser Stamm ist fÃ¼r
-        das Design einer modifizierten zweiten Impfstoffgeneration prioritÃ¤r.
-  \item Die Gesamtabdeckung Ã¼ber alle zehn StÃ¤mme betrÃ¤gt $80\,\%$ (8 von 10 Ã¼ber
+  \item GI.3 liegt mit Titer $\approx120$ unter dem Schwellwert -- dieser Stamm ist für
+        das Design einer modifizierten zweiten Impfstoffgeneration prioritär.
+  \item Die Gesamtabdeckung über alle zehn Stämme beträgt $80\,\%$ (8 von 10 über
         Schwellwert).
 \end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{plot_10_neutralizing_antibodies.pdf}
-  \caption{Neutralisierende AntikÃ¶rper-Titer (PRNT\textsubscript{50}) des chimÃ¤ren
-           VLP-Impfstoffs gegen zehn Norovirus-StÃ¤mme. Blau: Genogruppe~I; Rot: Genogruppe~II.
-           GrÃ¼ne Linie: Schutz-Schwellwert~200. Orange gepunktet: Median aller StÃ¤mme.}
+  \caption{Neutralisierende Antikörper-Titer (PRNT\textsubscript{50}) des chimären
+           VLP-Impfstoffs gegen zehn Norovirus-Stämme. Blau: Genogruppe~I; Rot: Genogruppe~II.
+           Grüne Linie: Schutz-Schwellwert~200. Orange gepunktet: Median aller Stämme.}
   \label{fig:nab}
 \end{figure}
 
@@ -796,32 +796,32 @@ der Median~$\approx310$.
 \section{Mathematische Validierung}
 % ===============================================================
 
-\subsection{VollstÃ¤ndiger Beweis der KomplexitÃ¤tsoptimalitÃ¤t}
+\subsection{Vollständiger Beweis der Komplexitätsoptimalität}
 
 \begin{satz}[Untere Schranke unter SETH]\label{satz:seth}
 Angenommen, die Strong Exponential Time Hypothesis (SETH) gilt. Dann gibt es kein
-Algorithmus, der fÃ¼r beliebige Graphen $G_1, G_2$ auf je $n$ Knoten in Zeit
-$O(n^{3-\varepsilon})$ fÃ¼r ein $\varepsilon>0$ das maximale gemeinsame Subgraph-Problem
-(MCS) und die LCS-basierte Subgraph-Ã„hnlichkeit lÃ¶st.
+Algorithmus, der für beliebige Graphen $G_1, G_2$ auf je $n$ Knoten in Zeit
+$O(n^{3-\varepsilon})$ für ein $\varepsilon>0$ das maximale gemeinsame Subgraph-Problem
+(MCS) und die LCS-basierte Subgraph-Ähnlichkeit löst.
 \end{satz}
 
 \begin{proof}[Beweisskizze]
-Abbink et al.\ (2019) zeigten, dass LCS nicht in $O(n^{2-\varepsilon})$ lÃ¶sbar ist unter
-SETH (durch Reduktion von k-OV). Unser Algorithmus fÃ¼hrt $n$ LCS-Berechnungen auf
-Folgen der LÃ¤nge $n$ durch. Damit ist die Gesamtlaufzeit $\Omega(n\cdot n^{2-\varepsilon'})
-= \Omega(n^{3-\varepsilon'})$ fÃ¼r jedes $\varepsilon'>0$ -- also $O(n^3)$ ist
+Abbink et al.\ (2019) zeigten, dass LCS nicht in $O(n^{2-\varepsilon})$ lösbar ist unter
+SETH (durch Reduktion von k-OV). Unser Algorithmus führt $n$ LCS-Berechnungen auf
+Folgen der Länge $n$ durch. Damit ist die Gesamtlaufzeit $\Omega(n\cdot n^{2-\varepsilon'})
+= \Omega(n^{3-\varepsilon'})$ für jedes $\varepsilon'>0$ -- also $O(n^3)$ ist
 asymptotisch optimal.
 \end{proof}
 
-\begin{korollar}[Praktische OptimalitÃ¤t]
-FÃ¼r $n\leq150$ (typische Epitop-Graphen) ist die Laufzeit $\leq 10^6$ Operationen --
-praktisch sofortig. FÃ¼r $n\leq1000$ bleibt die Laufzeit unter $10$ Sekunden auf
-moderner Hardware. Der Algorithmus ist damit fÃ¼r alle in vivo relevanten ProteingrÃ¶ÃŸen
+\begin{korollar}[Praktische Optimalität]
+Für $n\leq150$ (typische Epitop-Graphen) ist die Laufzeit $\leq 10^6$ Operationen --
+praktisch sofortig. Für $n\leq1000$ bleibt die Laufzeit unter $10$ Sekunden auf
+moderner Hardware. Der Algorithmus ist damit für alle in vivo relevanten Proteingrößen
 praktikabel.
 \end{korollar}
 
 % ===============================================================
-\section{Vergleich mit bestehenden AnsÃ¤tzen}
+\section{Vergleich mit bestehenden Ansätzen}
 % ===============================================================
 
 \begin{center}
@@ -829,7 +829,7 @@ praktikabel.
 \toprule
 \textbf{Ansatz} & \textbf{Genotypen} & \textbf{Basis} & \textbf{Status} & \textbf{AUC} \\
 \midrule
-Subgraph (diese Arbeit) & 4 GG & Algorithmus & PrÃ¤klinisch & 0{,}91 \\
+Subgraph (diese Arbeit) & 4 GG & Algorithmus & Präklinisch & 0{,}91 \\
 BepiPred-2.0 (allgemein) & alle & ML & Fertig & 0{,}74 \\
 NetMHCpan (T-Zell) & alle & ML & Fertig & 0{,}82 \\
 HilleVax HV-norovirus-1 & 2 GG & VLP/klinisch & Phase~2 & -- \\
@@ -840,7 +840,7 @@ Moderna mRNA-1403 & 2 GG & mRNA & Phase~1/2 & -- \\
 \end{center}
 
 Der Subgraph Algorithmus erzielt mit AUC~0{,}91 die beste Vorhersageleistung in
-der Epitop-Identifikation, Ã¼berzeugend gegenÃ¼ber etablierten ML-Methoden wie
+der Epitop-Identifikation, überzeugend gegenüber etablierten ML-Methoden wie
 BepiPred-2.0 (0{,}74) und NetMHCpan (0{,}82). Zudem adressiert er als einziger Ansatz
 vier Genogruppen rational (nicht empirisch).
 
@@ -848,27 +848,27 @@ vier Genogruppen rational (nicht empirisch).
 \section{Ausblick}
 % ===============================================================
 
-\subsection{PrÃ¤klinische Validierung (0--18 Monate)}
+\subsection{Präklinische Validierung (0--18 Monate)}
 
 \subsubsection{In-vitro-Studien}
 
-Die unmittelbaren nÃ¤chsten Schritte umfassen die biochemische Herstellung der chimÃ¤ren
+Die unmittelbaren nächsten Schritte umfassen die biochemische Herstellung der chimären
 VLPs sowie deren Charakterisierung:
 
 \begin{enumerate}
-  \item \textbf{Rekombinante Proteinexpression:} Klonierung des chimÃ¤ren VP1-Gens
+  \item \textbf{Rekombinante Proteinexpression:} Klonierung des chimären VP1-Gens
         in Baculovirus-Transfer-Vektor pFastBac1; Transfektion von Spodoptera
-        frugiperda (Sf9)-Zellen; Expression bei 27\,Â°C fÃ¼r 72\,h. Erwartet:
+        frugiperda (Sf9)-Zellen; Expression bei 27\, °C für 72\,h. Erwartet:
         $>100\,\text{mg}$ VLP pro Liter Kultur.
-  \item \textbf{Partikelcharakterisierung:} TEM-Visualisierung, DLS-GrÃ¶ÃŸenbestimmung
-        ($\varnothing$ soll 30--36\,nm betragen), SEC-MALS fÃ¼r Molmasse-Bestimmung.
-  \item \textbf{AntigenizitÃ¤t:} ELISA mit Maus-Polyklonal-Antisera gegen individuelle
-        Epitope; KreuzreaktivitÃ¤tstest mit nativen Virionen aus klinischen Stuhl-Proben.
-  \item \textbf{Thermische StabilitÃ¤t:} Differential Scanning Fluorimetry (DSF)
-        -- Ziel: Schmelztemperatur $T_m > 55\,^\circ\text{C}$ fÃ¼r LagerungsstabilitÃ¤t.
-  \item \textbf{ImmunogenitÃ¤t in vitro:} Stimulation von humanen PBMCs (peripheral
-        blood mononuclear cells) mit 10\,Âµg/ml VLP; ELISpot fÃ¼r IFN-$\gamma$ und
-        IL-2; Luminex-Multiplex fÃ¼r Zytokin-Profil.
+  \item \textbf{Partikelcharakterisierung:} TEM-Visualisierung, DLS-Größenbestimmung
+        ($\varnothing$ soll 30--36\,nm betragen), SEC-MALS für Molmasse-Bestimmung.
+  \item \textbf{Antigenizität:} ELISA mit Maus-Polyklonal-Antisera gegen individuelle
+        Epitope; Kreuzreaktivitätstest mit nativen Virionen aus klinischen Stuhl-Proben.
+  \item \textbf{Thermische Stabilität:} Differential Scanning Fluorimetry (DSF)
+        -- Ziel: Schmelztemperatur $T_m > 55\,^\circ\text{C}$ für Lagerungsstabilität.
+  \item \textbf{Immunogenität in vitro:} Stimulation von humanen PBMCs (peripheral
+        blood mononuclear cells) mit 10\, µg/ml VLP; ELISpot für IFN-$\gamma$ und
+        IL-2; Luminex-Multiplex für Zytokin-Profil.
 \end{enumerate}
 
 \subsubsection{Tiermodell-Studien}
@@ -885,58 +885,58 @@ VLPs sowie deren Charakterisierung:
         Norovirus-Challenge-Modell (Sutor et al.\ 2022). Hier wird virale Replikation
         (RT-PCR im Stuhl), Symptomschwere und protektiver Titer direkt gemessen.
   \item \textbf{Nicht-menschliche Primaten (Rhesus-Makaken):} Dosisfindung (10, 25,
-        50\,Âµg); Immunkinetik Ã¼ber 6~Monate; GedÃ¤chtnis-B-Zell-PhÃ¤notypisierung
+        50\, µg); Immunkinetik über 6~Monate; Gedächtnis-B-Zell-Phänotypisierung
         via Flow-Cytometrie.
 \end{enumerate}
 
 \subsubsection{Antivirales Medikament: 3C-Protease-Inhibitor}
 
-Parallel zur Impfstoffentwicklung wird ein kleines MolekÃ¼l als antivirales
+Parallel zur Impfstoffentwicklung wird ein kleines Molekül als antivirales
 Medikament entwickelt:
 
 \begin{enumerate}
   \item \textbf{Virtuelles Screening:} 5~Millionen Verbindungen aus ZINC15 gegen
         NoV-3C-Protease (PDB 2FYQ) via AutoDock-Vina.
-  \item \textbf{PrioritÃ¤ts-Kandidaten:} Compound A ($\Delta G=-8{,}2\,\text{kcal/mol}$),
-        Compound~B ($-7{,}8$), Compound~C ($-7{,}5$); alle Ã¤hnlich zu Rupintrivir
+  \item \textbf{Prioritäts-Kandidaten:} Compound A ($\Delta G=-8{,}2\,\text{kcal/mol}$),
+        Compound~B ($-7{,}8$), Compound~C ($-7{,}5$); alle ähnlich zu Rupintrivir
         (bekannter 3C-Inhibitor).
   \item \textbf{Biochemische Validierung:} Fluoreszenz-basierter Protease-Assay
         (EC\textsubscript{50}-Bestimmung), Kristallstrukturen der Ko-Komplexe.
-  \item \textbf{ADME/ToxizitÃ¤t:} In-silico (SwissADME), dann Caco-2-PermeabilitÃ¤t
+  \item \textbf{ADME/Toxizität:} In-silico (SwissADME), dann Caco-2-Permeabilität
         und CYP-Inhibitionstest.
 \end{enumerate}
 
 \subsection{Klinische Entwicklung Phase I/II (18--48 Monate)}
 
-\subsubsection{Phase-I-Studie: Sicherheit und ErstimmunogenitÃ¤t}
+\subsubsection{Phase-I-Studie: Sicherheit und Erstimmunogenität}
 
 \begin{itemize}
   \item \textbf{Design:} Randomisiert, doppelblind, placebokontrolliert, 3~Dosisgruppen
   \item \textbf{Population:} 60~gesunde Erwachsene (18--55 Jahre), $n=20$ pro Gruppe
-  \item \textbf{Dosen:} 10, 25, 50\,Âµg VLP mit CpG-Adjuvans
+  \item \textbf{Dosen:} 10, 25, 50\, µg VLP mit CpG-Adjuvans
   \item \textbf{Impfschema:} Tag 0, 30, 180
-  \item \textbf{PrimÃ¤rer Endpunkt:} Sicherheit und TolerabilitÃ¤t (7 Tage lokal,
+  \item \textbf{Primärer Endpunkt:} Sicherheit und Tolerabilität (7 Tage lokal,
         28 Tage systemisch)
-  \item \textbf{SekundÃ¤r:} AntikÃ¶rper-Titer (ELISA, Tag 0/28/56/210),
-        neutralisierende AntikÃ¶rper (Pseudovirus-Assay),
+  \item \textbf{Sekundär:} Antikörper-Titer (ELISA, Tag 0/28/56/210),
+        neutralisierende Antikörper (Pseudovirus-Assay),
         T-Zell-Antworten (ELISpot IFN-$\gamma$)
 \end{itemize}
 
-\subsubsection{Phase-II-Studie: ImmunogenitÃ¤t und Dosisoptimierung}
+\subsubsection{Phase-II-Studie: Immunogenität und Dosisoptimierung}
 
 \begin{itemize}
   \item \textbf{Population:} 300~Erwachsene (18--65 Jahre), stratifiziert nach Alter
         und HBGA-Blutgruppentyp
-  \item \textbf{PrimÃ¤r-Endpunkte:}
+  \item \textbf{Primär-Endpunkte:}
         \begin{enumerate}
-          \item SeroprÃ¤valenz ($\geq\!4$-facher GMT-Anstieg): Ziel $\geq80\,\%$
+          \item Seroprävalenz ($\geq\!4$-facher GMT-Anstieg): Ziel $\geq80\,\%$
           \item Neutralisierungstiter gegen GI.1, GI.7, GII.4, GII.17 nach Abschluss
-                des PrimÃ¤rschemas
+                des Primärschemas
         \end{enumerate}
-  \item \textbf{SekundÃ¤r:} Persistenz Ã¼ber 12~Monate, IgG-Subklassen (IgG1/IgG3
-        als Th1-Marker), GedÃ¤chtnis-B-Zellen (Flow-Cytometrie)
-  \item \textbf{Explorative Kohorte:} $n=50$ Ã„ltere ($>65$ Jahre) -- besonders
-        gefÃ¤hrdete Gruppe
+  \item \textbf{Sekundär:} Persistenz über 12~Monate, IgG-Subklassen (IgG1/IgG3
+        als Th1-Marker), Gedächtnis-B-Zellen (Flow-Cytometrie)
+  \item \textbf{Explorative Kohorte:} $n=50$ Ältere ($>65$ Jahre) -- besonders
+        gefährdete Gruppe
 \end{itemize}
 
 \subsection{Phase-III-Studie: Wirksamkeitsbeweis (48--84 Monate)}
@@ -944,15 +944,15 @@ Medikament entwickelt:
 Die Zulassungsstudie ist eine globale, multizentrische Wirksamkeitsstudie:
 
 \begin{itemize}
-  \item \textbf{StichprobengrÃ¶ÃŸe:} $n=15\,000$--$30\,000$ (basierend auf erwartetem
+  \item \textbf{Stichprobengröße:} $n=15\,000$--$30\,000$ (basierend auf erwartetem
         Schutzeffekt~60\,\%, $\alpha=0{,}025$, Power~90\,\%)
-  \item \textbf{LÃ¤nder:} USA, EU, Japan, Australien, Indien (epidemiologisch divers)
-  \item \textbf{Endpunkt:} Inzidenz laborbestÃ¤tigter, symptomatischer Norovirus-
-        Gastroenteritis Ã¼ber 24~Monate (RT-PCR + Sequenzierung aus Stuhlproben)
+  \item \textbf{Länder:} USA, EU, Japan, Australien, Indien (epidemiologisch divers)
+  \item \textbf{Endpunkt:} Inzidenz laborbestätigter, symptomatischer Norovirus-
+        Gastroenteritis über 24~Monate (RT-PCR + Sequenzierung aus Stuhlproben)
   \item \textbf{Sicherheit:} Kontinuierliche Pharmacovigilance; SAE-Monitoring
-        durch unabhÃ¤ngiges Data Safety Monitoring Board (DSMB)
-  \item \textbf{Subgruppen:} Ã„ltere, Kinder (5--17 Jahre) als explorative Kohorten,
-        Immunsupprimierte, HBGA-Nicht-Sekretor (natÃ¼rlich resistent gegen GII.4)
+        durch unabhängiges Data Safety Monitoring Board (DSMB)
+  \item \textbf{Subgruppen:} Ältere, Kinder (5--17 Jahre) als explorative Kohorten,
+        Immunsupprimierte, HBGA-Nicht-Sekretor (natürlich resistent gegen GII.4)
 \end{itemize}
 
 \subsection{Antivirales Medikament: Klinische Phase I/II}
@@ -960,55 +960,55 @@ Die Zulassungsstudie ist eine globale, multizentrische Wirksamkeitsstudie:
 Parallel zum Impfstoff wird der 3C-Protease-Inhibitor klinisch entwickelt:
 
 \begin{itemize}
-  \item \textbf{Indikation:} Akute Norovirus-Gastroenteritis (FrÃ¼htherapie $\leq48$~h
-        nach Symptombeginn) bei Hospitalisierten, Ã„lteren und ImmungeschwÃ¤chten
-  \item \textbf{Phase I:} Sicherheit/PK bei 40~gesunden Probanden; orale BioverfÃ¼gbarkeit,
+  \item \textbf{Indikation:} Akute Norovirus-Gastroenteritis (Frühtherapie $\leq48$~h
+        nach Symptombeginn) bei Hospitalisierten, Älteren und Immungeschwächten
+  \item \textbf{Phase I:} Sicherheit/PK bei 40~gesunden Probanden; orale Bioverfügbarkeit,
         Halbwertszeit, Metabolismus via CYP3A4
-  \item \textbf{Phase II:} 200~Patienten (RCT); primÃ¤rer Endpunkt: Reduktion der
-        Symptom-Dauer (Stunden); sekundÃ¤r: virale Last (RT-PCR), Hospitalverweildauer
+  \item \textbf{Phase II:} 200~Patienten (RCT); primärer Endpunkt: Reduktion der
+        Symptom-Dauer (Stunden); sekundär: virale Last (RT-PCR), Hospitalverweildauer
 \end{itemize}
 
 \subsection{Technologische Weiterentwicklung des Subgraph Algorithmus}
 
-\subsubsection{Graph Neural Networks (GNNs) als ErgÃ¤nzung}
+\subsubsection{Graph Neural Networks (GNNs) als Ergänzung}
 
 Die Integration des Subgraph Algorithmus mit Graph Neural Networks (GNNs) bietet
 transformatives Potenzial:
 
 \begin{enumerate}
-  \item \textbf{GraphSAGE fÃ¼r Epitop-Embedding:} Lerne kontinuierliche Vektor-ReprÃ¤sentationen
-        von Protein-Netzwerk-Knoten; Ã¼bertrage auf unbekannte Sequenzen.
+  \item \textbf{GraphSAGE für Epitop-Embedding:} Lerne kontinuierliche Vektor-Repräsentationen
+        von Protein-Netzwerk-Knoten; übertrage auf unbekannte Sequenzen.
   \item \textbf{Transfer Learning:} Trainiere auf gut charakterisierten Viren
-        (Influenza, SARS-CoV-2) und transferiere auf datenÃ¤rmere Erreger (Norovirus,
+        (Influenza, SARS-CoV-2) und transferiere auf datenärmere Erreger (Norovirus,
         Sapovirus).
   \item \textbf{Explainability via GNN-Attention:} Attention-Gewichte identifizieren,
-        welche Netzwerkkanten kritisch fÃ¼r die Epitop-Erkennung sind -- dies validiert
-        und ergÃ¤nzt den Subgraph Algorithmus.
+        welche Netzwerkkanten kritisch für die Epitop-Erkennung sind -- dies validiert
+        und ergänzt den Subgraph Algorithmus.
   \item \textbf{Generative Modelle (VAE/GAN auf Graphen):} Generiere \textit{de novo}
-        kÃ¼nstliche Epitop-Sequenzen mit optimierten ImmunogenitÃ¤ts-Scores.
+        künstliche Epitop-Sequenzen mit optimierten Immunogenitäts-Scores.
 \end{enumerate}
 
 \subsubsection{GPU-Parallelisierung und Hochdurchsatz}
 
 \begin{enumerate}
   \item LCS-Berechnung ist hochgradig parallelisierbar auf GPU (CUDA/ROCm).
-  \item FÃ¼r $m=150$ Isolate und $n=100$ Knoten: theoretischer Speedup $\approx500\times$
-        gegenÃ¼ber CPU-Implementierung (NVIDIA H100).
-  \item Dies ermÃ¶glicht die Analyse vollstÃ¤ndiger Virom-Datenbanken ($>10^5$ Sequenzen)
+  \item Für $m=150$ Isolate und $n=100$ Knoten: theoretischer Speedup $\approx500\times$
+        gegenüber CPU-Implementierung (NVIDIA H100).
+  \item Dies ermöglicht die Analyse vollständiger Virom-Datenbanken ($>10^5$ Sequenzen)
         innerhalb von Minuten.
 \end{enumerate}
 
 \subsubsection{Verallgemeinerung auf andere Pathogene}
 
-Der Subgraph-Ansatz ist direkt Ã¼bertragbar auf:
+Der Subgraph-Ansatz ist direkt übertragbar auf:
 
 \begin{itemize}
   \item \textbf{RNA-Viren:} Rotavirus (12 Serotypen), Dengue (4 Serotypen),
         RSV (2 Subtypen), Influenza A/B
-  \item \textbf{DNA-Viren:} CMV, EBV, HPV (KrebsprÃ¤vention)
-  \item \textbf{Bakterielle OberflÃ¤chen-Antigene:} Pneumococcus, Meningococcus
+  \item \textbf{DNA-Viren:} CMV, EBV, HPV (Krebsprävention)
+  \item \textbf{Bakterielle Oberflächen-Antigene:} Pneumococcus, Meningococcus
   \item \textbf{Parasiten:} Plasmodium falciparum (Malaria) -- konservierte Merozoiten-
-        OberflÃ¤chenproteine
+        Oberflächenproteine
 \end{itemize}
 
 \subsection{Regulatorische Strategie und Gesellschaftliche Implikationen}
@@ -1017,49 +1017,49 @@ Der Subgraph-Ansatz ist direkt Ã¼bertragbar auf:
 
 \begin{itemize}
   \item \textbf{FDA:} Biologics License Application (BLA); Antrag auf
-        ``Priority Review'' (auf Basis ungÃ¼nstiger PDUFA-Frist) und
-        ``Accelerated Approval'' (auf Basis immunologischer Surrogatendpunkte) mÃ¶glich.
+        ``Priority Review'' (auf Basis ungünstiger PDUFA-Frist) und
+        ``Accelerated Approval'' (auf Basis immunologischer Surrogatendpunkte) möglich.
   \item \textbf{EMA:} Centralized Procedure; Anfrage auf bedingte Zulassung
-        (Conditional Marketing Authorisation) fÃ¼r vulnerable Gruppen wÃ¤hrend laufender Phase~III.
-  \item \textbf{WHO-PrÃ¤-Qualifikation:} Unabdingbar fÃ¼r Einschluss in UNICEF/GAVI-
-        Impfprogramme in LÃ¤ndern mit niedrigem und mittlerem Einkommen.
-  \item \textbf{Harmonisierung:} ICH-E6(R2)-konforme GCP-Studien fÃ¼r globale
-        Akzeptanz aller BehÃ¶rden.
+        (Conditional Marketing Authorisation) für vulnerable Gruppen während laufender Phase~III.
+  \item \textbf{WHO-Prä-Qualifikation:} Unabdingbar für Einschluss in UNICEF/GAVI-
+        Impfprogramme in Ländern mit niedrigem und mittlerem Einkommen.
+  \item \textbf{Harmonisierung:} ICH-E6(R2)-konforme GCP-Studien für globale
+        Akzeptanz aller Behörden.
 \end{itemize}
 
-\subsubsection{GesundheitsÃ¶konomische Bewertung}
+\subsubsection{Gesundheitsökonomische Bewertung}
 
-Eine vollstÃ¤ndige QALY-Analyse (Quality-Adjusted Life Years) wird erforderlich sein:
+Eine vollständige QALY-Analyse (Quality-Adjusted Life Years) wird erforderlich sein:
 
 \begin{itemize}
   \item \textbf{Direkte Kosten/Nutzen:} Einsparung von Hospitalisierungen ($\approx\!
-        \$1\,500$ pro Fall in IndustrielÃ¤ndern), medizinischen Behandlungen,
-        stationÃ¤rer Pflege in Altenheimen.
-  \item \textbf{Indirekte Einsparungen:} Reduzierte ArbeitsausfÃ¤lle, kÃ¼rzere
-        Schul-/BetriebsschlieÃŸungen.
-  \item \textbf{Zielpreis:} FÃ¼r HocheinkommenslÃ¤nder $\approx\$30$--$50$ pro Dosis;
-        fÃ¼r LMIC-MÃ¤rkte $\leq\$2$ (Tiered Pricing).
+        \$1\,500$ pro Fall in Industrieländern), medizinischen Behandlungen,
+        stationärer Pflege in Altenheimen.
+  \item \textbf{Indirekte Einsparungen:} Reduzierte Arbeitsausfälle, kürzere
+        Schul-/Betriebsschließungen.
+  \item \textbf{Zielpreis:} Für Hocheinkommensländer $\approx\$30$--$50$ pro Dosis;
+        für LMIC-Märkte $\leq\$2$ (Tiered Pricing).
   \item \textbf{Break-even:} Modellrechnung zeigt Break-even bei $\geq15\,\%$
-        Impfquote in Ã¼ber-65-jÃ¤hrigen -- erreichbar im ersten Marktjahr.
+        Impfquote in über-65-jährigen -- erreichbar im ersten Marktjahr.
 \end{itemize}
 
-\subsubsection{Langzeit-Vision: Elimination zirkulierender StÃ¤mme}
+\subsubsection{Langzeit-Vision: Elimination zirkulierender Stämme}
 
-Mit ausreichender Impfquote ($>65\,\%$) ist HerdenimmunitÃ¤t theoretisch erreichbar.
-Das Norovirus mÃ¼sste dann wie Poliovirus oder Masernvirus regional eliminiert werden.
+Mit ausreichender Impfquote ($>65\,\%$) ist Herdenimmunität theoretisch erreichbar.
+Das Norovirus müsste dann wie Poliovirus oder Masernvirus regional eliminiert werden.
 Realistischer Zeithorizont: 15--20 Jahre nach Marktzulassung, analog zur HPV-Impfung
-und der Reduktion von GebÃ¤rmutterhalskrebs in durchimpften Populationen.
+und der Reduktion von Gebärmutterhalskrebs in durchimpften Populationen.
 
 \subsection{Wissenschaftliche Perspektive: Subgraph Algorithmus als Paradigma}
 
 Die vorliegende Arbeit demonstriert, dass formale Graph-Algorithmen aus der
 theoretischen Informatik direkt und mit hoher Effizienz in die angewandte Biologie
-Ã¼bertragbar sind. Der Subgraph Algorithmus bildet damit die BrÃ¼cke zwischen:
+übertragbar sind. Der Subgraph Algorithmus bildet damit die Brücke zwischen:
 
 \begin{itemize}
-  \item \textbf{Algorithmik:} KomplexitÃ¤tstheorie, LCS, Signaturmethoden (Epp~2026)
+  \item \textbf{Algorithmik:} Komplexitätstheorie, LCS, Signaturmethoden (Epp~2026)
   \item \textbf{Strukturbiologie:} Protein-Netzwerke, SASA, Konservierungsanalyse
-  \item \textbf{Immunologie:} B-Zell- und T-Zell-Epitope, MHC-Bindung, AntikÃ¶rper-Kinetik
+  \item \textbf{Immunologie:} B-Zell- und T-Zell-Epitope, MHC-Bindung, Antikörper-Kinetik
   \item \textbf{Klinischer Medizin:} Impfstoff-Design, antivirale Therapie, klinische Studien
 \end{itemize}
 
@@ -1073,27 +1073,27 @@ oder \textit{PLOS Pathogens}.
 % ===============================================================
 
 Diese Arbeit hat erstmals den Subgraph Algorithmus systematisch auf die
-Norovirus-Impfstoff-Entwicklung angewendet. Die KernbeitrÃ¤ge sind:
+Norovirus-Impfstoff-Entwicklung angewendet. Die Kernbeiträge sind:
 
 \begin{enumerate}
   \item \textbf{Algorithmus:} Erweiterung des Subgraph Algorithmus (Epp~2026) auf
-        multivariate biologische Graphen mit drei Schichten (Sequenz, Struktur, ImmunogenitÃ¤t).
-        Formaler Beweis der $O(n^3)$-KomplexitÃ¤t und SETH-OptimalitÃ¤t.
+        multivariate biologische Graphen mit drei Schichten (Sequenz, Struktur, Immunogenität).
+        Formaler Beweis der $O(n^3)$-Komplexität und SETH-Optimalität.
   \item \textbf{Bioinformatik:} Identifikation von acht hochkonservierten ($>84\,\%$),
-        oberflÃ¤chenexponierten Epitopen aus 150 VP1-Isolaten. Validierung:
-        SensitivitÃ¤t~88\,\%, AUC~0{,}91 ($p<10^{-4}$).
-  \item \textbf{Impfstoff-Design:} Konzept eines chimÃ¤ren VLP-Impfstoffs mit
-        Breitabdeckung Ã¼ber vier Genogruppen, vollstÃ¤ndiges Formulierungs- und
+        oberflächenexponierten Epitopen aus 150 VP1-Isolaten. Validierung:
+        Sensitivität~88\,\%, AUC~0{,}91 ($p<10^{-4}$).
+  \item \textbf{Impfstoff-Design:} Konzept eines chimären VLP-Impfstoffs mit
+        Breitabdeckung über vier Genogruppen, vollständiges Formulierungs- und
         Dosierungskonzept.
-  \item \textbf{Klinischer Fahrplan:} VollstÃ¤ndiger Entwicklungsplan von prÃ¤klinischen
-        Studien Ã¼ber Phase~I--III bis zur regulatorischen Zulassung, einschlieÃŸlich
+  \item \textbf{Klinischer Fahrplan:} Vollständiger Entwicklungsplan von präklinischen
+        Studien über Phase~I--III bis zur regulatorischen Zulassung, einschließlich
         antiviraler Parallelentwicklung.
   \item \textbf{Technologie-Transfer:} Nachweis der Generalisierbarkeit des Ansatzes
         auf andere Viren und Pathogene; Integration mit GNN und GPU-Parallelisierung.
 \end{enumerate}
 
-Mit angemessener FÃ¶rderung und koordinierter Zusammenarbeit zwischen akademischen
-Zentren und der pharmazeutischen Industrie erscheint ein klinisch verfÃ¼gbarer
+Mit angemessener Förderung und koordinierter Zusammenarbeit zwischen akademischen
+Zentren und der pharmazeutischen Industrie erscheint ein klinisch verfügbarer
 Norovirus-Impfstoff innerhalb von 6--8 Jahren realisierbar.
 
 % ---------------------------------------------------------------
@@ -1192,7 +1192,7 @@ Cormen, T.\,H.\ et~al. (2009).
 MIT Press.
 
 \bibitem[Abbink et~al.(2019)]{abbink2019seth}
-Bringmann, K.\ \& KÃ¼nnemann, M.\ (2018).
+Bringmann, K.\ \& Künnemann, M.\ (2018).
 Quadratic conditional lower bounds for string problems and dynamic time warping.
 \emph{SIAM Journal on Computing}, 47(5), 2042--2089.
 

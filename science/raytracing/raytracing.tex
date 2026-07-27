@@ -57,23 +57,23 @@ und optimale Schattenberechnung}}
 \newpage
 
 %=============================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 %=============================================================================
 
 \emph{Raytracing} ist das physikalisch motivierte Standardverfahren zur
 fotorealistischen Bildsynthese in der Computergrafik \citep{Whitted1980}.
 Ausgehend von einer Kamera werden Strahlen durch jeden Bildpixel in eine
-3D-Szene geschossen; fÃ¼r jeden Strahl werden Schnitte mit Szenenobjekten,
+3D-Szene geschossen; für jeden Strahl werden Schnitte mit Szenenobjekten,
 Reflexionen, Brechungen und Schattenwurf berechnet. Die algorithmische
 Kernaufgabe ist die effiziente Traversierung des \emph{Szenegraphen}
-$G_S = (V, E)$, dessen Knoten Objekte und Kanten rÃ¤umliche
+$G_S = (V, E)$, dessen Knoten Objekte und Kanten räumliche
 Nachbarschaftsbeziehungen kodieren.
 
 Klassische Beschleunigungsstrukturen wie \emph{Bounding Volume
 Hierarchies} (BVH) \citep{Rubin1980} und kd-Trees \citep{Bentley1975}
-reduzieren die TraversierungskomplexitÃ¤t auf $O(n \log n)$, bieten
-jedoch keine formalen Korrektheitsgarantien bezÃ¼glich struktureller
-Szenenisomorphien und erfordern aufwÃ¤ndige Neuaufbau-Prozeduren bei
+reduzieren die Traversierungskomplexität auf $O(n \log n)$, bieten
+jedoch keine formalen Korrektheitsgarantien bezüglich struktureller
+Szenenisomorphien und erfordern aufwändige Neuaufbau-Prozeduren bei
 dynamischen Szenen.
 
 Der \emph{Subgraph Algorithmus} \citep{Epp2026} entscheidet durch
@@ -86,28 +86,28 @@ dieser Arbeit lautet:
   \emph{Die Schnittberechnung zwischen einem Strahl und einer 3D-Szene,
   die Schattenberechnung via transitivem Abschluss und die Modellierung
   von Reflexions-/Brechungsketten lassen sich formal korrekt auf das
-  Subgraph-Isomorphieproblem reduzieren und in $O(n^3)$ lÃ¶sen.}
+  Subgraph-Isomorphieproblem reduzieren und in $O(n^3)$ lösen.}
 \end{quote}
 
-\subsection{BeitrÃ¤ge dieser Arbeit}
+\subsection{Beiträge dieser Arbeit}
 
 \begin{enumerate}
   \item \textbf{Szenegraph-Modell:} Formale Definition des Szenegraphen
         und Nachweis der Isomorphieinvarianz unter
-        StarrkÃ¶pertransformationen
+        Starrköpertransformationen
         (Lemma~\ref{lem:szene_invarianz}).
   \item \textbf{Strahlschnitt-Reduktion:} Reduktion des
         Strahlschnittproblems auf Subgraph-Isomorphie mit Korrektheit-
-        und VollstÃ¤ndigkeitsbeweis
+        und Vollständigkeitsbeweis
         (Satz~\ref{satz:schnitt_korrektheit},
         Satz~\ref{satz:schnitt_vollstaendigkeit}).
   \item \textbf{Schattenberechnung:} Formale Behandlung des
-        Schattenwurfs Ã¼ber transitiven Subgraph-Abschluss
+        Schattenwurfs über transitiven Subgraph-Abschluss
         (Satz~\ref{satz:schatten}).
   \item \textbf{Reflexions-/Brechungsketten:} Modellierung von
         Mehrfachreflexionen als Pfad-Subgraphen mit Tiefenschranke
         (Satz~\ref{satz:reflexion}).
-  \item \textbf{KomplexitÃ¤tsanalyse:} SETH-OptimalitÃ¤t und Vergleich
+  \item \textbf{Komplexitätsanalyse:} SETH-Optimalität und Vergleich
         mit BVH, kd-Tree und Embree
         (Satz~\ref{satz:seth},
         Tabelle~\ref{tab:komplexitaet}).
@@ -165,7 +165,7 @@ Matplotlib-Abbildungen illustriert.
   \[
     V_r = \bigl\{v_i \in V_S \;\big|\;
     r(t) \cap \mathrm{bbox}(O_i) \neq \emptyset
-    \text{ fÃ¼r ein } t \in [t_{\min}, t_{\max}]\bigr\}.
+    \text{ für ein } t \in [t_{\min}, t_{\max}]\bigr\}.
   \]
   Der \emph{Strahl-Subgraph} ist $G_r = G_S[V_r]$, d.\,h.\ der von
   $V_r$ induzierte Teilgraph des Szenegraphen.
@@ -173,15 +173,15 @@ Matplotlib-Abbildungen illustriert.
 
 \begin{lemma}[Isomorphieinvarianz des Szenegraphen]
   \label{lem:szene_invarianz}
-  Sei $T_{R,t}$ eine StarrkÃ¶pertransformation
+  Sei $T_{R,t}$ eine Starrköpertransformation
   ($R \in SO(3)$, $t \in \mathbb{R}^3$). Dann ist
   $G_{T_{R,t}(\mathcal{S})} \cong G_S$.
 \end{lemma}
 
 \begin{proof}
-  Eine StarrkÃ¶pertransformation erhÃ¤lt alle paarweisen AbstÃ¤nde:
-  $\|T(c_i) - T(c_j)\| = \|c_i - c_j\|$ fÃ¼r alle $i, j$.
-  Folglich bleiben Bounding-Box-Ãœberlappungen und
+  Eine Starrköpertransformation erhält alle paarweisen Abstände:
+  $\|T(c_i) - T(c_j)\| = \|c_i - c_j\|$ für alle $i, j$.
+  Folglich bleiben Bounding-Box-Überlappungen und
   $k$-Nachbarschaftsbeziehungen erhalten, d.\,h.\ die Kantenmenge
   $E_S$ bleibt strukturell invariant. Die Knotenumbenennung
   $v_i \mapsto T(v_i)$ liefert den Graphisomorphismus.
@@ -189,18 +189,18 @@ Matplotlib-Abbildungen illustriert.
 \end{proof}
 
 Abbildung~\ref{fig:plot1} illustriert eine typische 3D-Szene und
-den zugehÃ¶rigen Szenegraphen.
+den zugehörigen Szenegraphen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot1_szenegraph.pdf}
   \caption{(a)~3D-Szene (Draufsicht-Projektion) mit Kamera (gold),
-           Kugel (blau), WÃ¼rfel (orange), Ebene (grÃ¼n) und Lichtquelle
+           Kugel (blau), Würfel (orange), Ebene (grün) und Lichtquelle
            (gelb). Drei Strahlen $r_1, r_2, r_3$ werden von der Kamera
            ausgesendet und treffen verschiedene Objekte.
            (b)~Szenegraph $G_S$: Knoten entsprechen Objekten, Kanten
-           kodieren rÃ¤umliche Nachbarschaft. Der Strahl-Subgraph $G_r$
-           fÃ¼r Strahl $r_1$ umfasst die Knoten $\{v_0, v_1, v_4\}$.}
+           kodieren räumliche Nachbarschaft. Der Strahl-Subgraph $G_r$
+           für Strahl $r_1$ umfasst die Knoten $\{v_0, v_1, v_4\}$.}
   \label{fig:plot1}
 \end{figure}
 
@@ -208,7 +208,7 @@ den zugehÃ¶rigen Szenegraphen.
 
 \begin{definition}[Signaturabbildung, \citealt{Epp2026}]
   \label{def:signatur}
-  FÃ¼r eine Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und
+  Für eine Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und
   Spaltenindex $j \in \{0,\ldots,n-1\}$:
   \begin{equation}
     \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n.
@@ -225,7 +225,7 @@ den zugehÃ¶rigen Szenegraphen.
   \]
 \end{definition}
 
-\begin{lemma}[InjektivitÃ¤t der Signaturabbildung, \citealt{Epp2026}]
+\begin{lemma}[Injektivität der Signaturabbildung, \citealt{Epp2026}]
   \label{lem:injektivitaet}
   Die Abbildung $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\}
   \to \mathbb{N}$ aus Gleichung~\eqref{eq:signatur} ist injektiv.
@@ -237,7 +237,7 @@ den zugehÃ¶rigen Szenegraphen.
   $\sigma(A_{*j}, j) \neq \sigma(A_{*k}, k)$.
 
   \emph{Fall~2: $j = k$, $A_{*j} \neq A_{*k}$.}
-  Die BinÃ¤rdarstellung $v \mapsto \sum_i v_i \cdot 2^i$ ist auf
+  Die Binärdarstellung $v \mapsto \sum_i v_i \cdot 2^i$ ist auf
   $\{0,1\}^n$ injektiv. \hfill$\blacksquare$
 \end{proof}
 
@@ -253,10 +253,10 @@ den zugehÃ¶rigen Szenegraphen.
   Kantenmenge strukturell erhalten. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[KomplexitÃ¤t des Subgraph Algorithmus, \citealt{Epp2026}]
+\begin{satz}[Komplexität des Subgraph Algorithmus, \citealt{Epp2026}]
   \label{satz:komplexitaet}
   Der Subgraph Algorithmus entscheidet in Zeit $\Theta(n^3)$ und
-  Raum $O(n^2)$, ob $G \subseteq G'$ fÃ¼r Graphen mit $n$ Knoten.
+  Raum $O(n^2)$, ob $G \subseteq G'$ für Graphen mit $n$ Knoten.
 \end{satz}
 
 \begin{proof}
@@ -272,19 +272,19 @@ den zugehÃ¶rigen Szenegraphen.
 \end{proof}
 
 Abbildung~\ref{fig:plot2} zeigt Signaturberechnung und zyklische
-Rotationen fÃ¼r den Beispiel-Szenegraphen.
+Rotationen für den Beispiel-Szenegraphen.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot2_signaturen.pdf}
   \caption{(a)~Adjazenzmatrix $A$ des Szenegraphen ($n = 5$):
-           Knoten $v_0$--$v_4$ reprÃ¤sentieren Kamera, Kugel, WÃ¼rfel,
+           Knoten $v_0$--$v_4$ repräsentieren Kamera, Kugel, Würfel,
            Ebene und Lichtquelle. (b)~Signaturwerte $\sigma_j$ nach
            Gleichung~\eqref{eq:signatur}: Die Spaltengewichtung
            $j \cdot 2^n$ garantiert Eindeutigkeit
            (Lemma~\ref{lem:injektivitaet}). (c)~Alle~5 zyklischen
            Rotationen der Signatursequenz als Heatmap; statt $n! = 120$
-           Permutationen genÃ¼gen $n = 5$ Rotationen.}
+           Permutationen genügen $n = 5$ Rotationen.}
   \label{fig:plot2}
 \end{figure}
 
@@ -299,12 +299,12 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
   Gegeben Strahl $r(t)$ und Szenegraph $G_S$.
   Das \emph{Strahlschnitt-Problem} lautet: Existiert ein Objekt
   $O_i \in \mathcal{O}$, sodass $r(t) \cap O_i \neq \emptyset$
-  fÃ¼r ein $t \in [t_{\min}, t_{\max}]$?
+  für ein $t \in [t_{\min}, t_{\max}]$?
 \end{definition}
 
 \begin{definition}[Erkennungsschwellenwert]
   \label{def:schwellenwert}
-  FÃ¼r einen Strahl-Subgraphen $G_r$ mit $m = |V_r|$ Knoten:
+  Für einen Strahl-Subgraphen $G_r$ mit $m = |V_r|$ Knoten:
   \[
     \tau_r = \left\lceil \frac{m}{2} \right\rceil.
   \]
@@ -320,14 +320,14 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
 \begin{proof}
   Ein LCS-Wert $\geq \tau_r$ impliziert nach
   Lemma~\ref{lem:injektivitaet} mindestens $\tau_r$ strukturell
-  Ã¼bereinstimmende Signaturen, d.\,h.\ $G_r$ ist als Subgraph in
+  übereinstimmende Signaturen, d.\,h.\ $G_r$ ist als Subgraph in
   $G_S$ eingebettet. Nach Definition~\ref{def:strahl_subgraph}
-  enthÃ¤lt $V_r$ nur Objekte mit nicht-leerem Bounding-Box-Schnitt.
+  enthält $V_r$ nur Objekte mit nicht-leerem Bounding-Box-Schnitt.
   Da $G_r = G_S[V_r]$, existiert mindestens ein Objekt mit
   echtem geometrischen Schnitt. \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[VollstÃ¤ndigkeit der Subgraph-Schnittberechnung]
+\begin{satz}[Vollständigkeit der Subgraph-Schnittberechnung]
   \label{satz:schnitt_vollstaendigkeit}
   Existiert ein Schnitt $r(t) \cap O_i \neq \emptyset$, so gilt:
   \[
@@ -338,15 +338,15 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
 
 \begin{proof}
   Aus $r(t) \cap O_i \neq \emptyset$ folgt $v_i \in V_r$, also
-  $G_r \subseteq G_S$. Die Signatursequenz $\sigma^{G_r}$ enthÃ¤lt
+  $G_r \subseteq G_S$. Die Signatursequenz $\sigma^{G_r}$ enthält
   $m$ eindeutige Werte (Lemma~\ref{lem:injektivitaet}).
   Die optimale Rotation liefert $\mathrm{LCS} \geq m \geq
   \lceil m/2 \rceil = \tau_r$. \hfill$\blacksquare$
 \end{proof}
 
-\begin{lemma}[Eindeutigkeit des nÃ¤chsten Schnitts]
+\begin{lemma}[Eindeutigkeit des nächsten Schnitts]
   \label{lem:naechster_schnitt}
-  Der \emph{nÃ¤chste} Schnittpunkt entlang des Strahls entspricht
+  Der \emph{nächste} Schnittpunkt entlang des Strahls entspricht
   dem Knoten $v^* \in V_r$ mit minimalem Schnittparameter:
   \[
     t^* = \min\bigl\{t(v_i) \;\big|\; v_i \in V_r,\;
@@ -358,10 +358,10 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
 
 \begin{proof}
   Nach Erkennung von $G_r \subseteq G_S$ ist $V_r$ bekannt.
-  FÃ¼r jeden Knoten $v_i \in V_r$ wird der Schnittparameter
+  Für jeden Knoten $v_i \in V_r$ wird der Schnittparameter
   $t(v_i)$ durch geometrische Schnittformeln (Kugel: quadratische
   Gleichung, Ebene: lineare Gleichung) in $O(1)$ berechnet.
-  Das Minimum Ã¼ber $|V_r| \leq n$ Werte kostet $O(n)$.
+  Das Minimum über $|V_r| \leq n$ Werte kostet $O(n)$.
   \hfill$\blacksquare$
 \end{proof}
 
@@ -379,11 +379,11 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
   im Sichtbereich).
 
   \textbf{Schritt~1: Signatur von $G_{r_1}$.}
-  Die Adjazenzmatrix von $G_{r_1}$ ist die EinschrÃ¤nkung von $A$
+  Die Adjazenzmatrix von $G_{r_1}$ ist die Einschränkung von $A$
   auf die Zeilen/Spalten $\{0,1,4\}$. Signaturwerte:
   $\sigma^{r_1} = [\sigma_0, \sigma_1, \sigma_4]$.
 
-  \textbf{Schritt~2: LCS Ã¼ber alle Rotationen.}
+  \textbf{Schritt~2: LCS über alle Rotationen.}
   Das Maximum $\max_k \mathrm{LCS}(\sigma^{r_1},
   \mathrm{rotate}_k(\sigma^{G_S})) = 3 \geq \tau_{r_1} = 2$.
 
@@ -392,17 +392,17 @@ Rotationen fÃ¼r den Beispiel-Szenegraphen.
 \end{beispiel}
 
 Abbildung~\ref{fig:plot3} veranschaulicht die LCS-DP-Tabelle
-und LCS-Werte Ã¼ber alle Rotationen fÃ¼r dieses Beispiel.
+und LCS-Werte über alle Rotationen für dieses Beispiel.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot3_lcs_matching.pdf}
-  \caption{(a)~LCS-DP-Tabelle fÃ¼r den Vergleich des
+  \caption{(a)~LCS-DP-Tabelle für den Vergleich des
            Strahl-Subgraphen $G_{r_1}$ (3 Knoten) mit dem
            Szenegraphen $G_S$ (5 Knoten). Das Maximum
-           $|LCS| = 3$ Ã¼berschreitet den Schwellenwert
+           $|LCS| = 3$ überschreitet den Schwellenwert
            $\tau_{r_1} = 2$, womit Strahl-Schnitt erkannt wird.
-           (b)~LCS-Wert Ã¼ber alle Rotationen~$k$: Optimale
+           (b)~LCS-Wert über alle Rotationen~$k$: Optimale
            Ausrichtung bei $k=0$ und $k=2$ (rot); Schwellenwert
            $\tau$ (orange) trennt positive von negativen
            Erkennungen.}
@@ -411,26 +411,26 @@ und LCS-Werte Ã¼ber alle Rotationen fÃ¼r dieses Beispiel.
 
 \subsection{Mehrfachstrahlen und Bildgenerierung}
 
-\begin{satz}[GesamtkomplexitÃ¤t der Bildgenerierung]
+\begin{satz}[Gesamtkomplexität der Bildgenerierung]
   \label{satz:bildkomplexitaet}
-  FÃ¼r ein Bild der AuflÃ¶sung $W \times H$ Pixel mit je einem
-  primÃ¤ren Strahl pro Pixel und einem Szenegraphen mit $n$ Knoten
-  betrÃ¤gt die GesamtkomplexitÃ¤t:
+  Für ein Bild der Auflösung $W \times H$ Pixel mit je einem
+  primären Strahl pro Pixel und einem Szenegraphen mit $n$ Knoten
+  beträgt die Gesamtkomplexität:
   \[
     O(W \cdot H \cdot n^3).
   \]
 \end{satz}
 
 \begin{proof}
-  FÃ¼r jeden der $W \cdot H$ Pixel wird der Subgraph Algorithmus
-  einmal in $O(n^3)$ ausgefÃ¼hrt
+  Für jeden der $W \cdot H$ Pixel wird der Subgraph Algorithmus
+  einmal in $O(n^3)$ ausgeführt
   (Satz~\ref{satz:komplexitaet}).
   Gesamt: $O(W \cdot H \cdot n^3)$. \hfill$\blacksquare$
 \end{proof}
 
 \begin{korollar}[Parallelisierbarkeit]
-  Die $W \cdot H$ Strahl-Subgraph-Berechnungen sind vollstÃ¤ndig
-  unabhÃ¤ngig voneinander und kÃ¶nnen auf $W \cdot H$ parallele
+  Die $W \cdot H$ Strahl-Subgraph-Berechnungen sind vollständig
+  unabhängig voneinander und können auf $W \cdot H$ parallele
   Recheneinheiten (GPU-Kerne) verteilt werden, was die amortisierte
   Laufzeit auf $O(n^3)$ pro Frame reduziert.
 \end{korollar}
@@ -489,10 +489,10 @@ und LCS-Werte Ã¼ber alle Rotationen fÃ¼r dieses Beispiel.
   \hfill$\blacksquare$
 \end{proof}
 
-\begin{lemma}[KomplexitÃ¤t der Schattenberechnung]
+\begin{lemma}[Komplexität der Schattenberechnung]
   \label{lem:schatten_komplexitaet}
-  Die Schattenberechnung fÃ¼r alle $W \cdot H$ PrimÃ¤rschnitte
-  und $k$ Lichtquellen hat GesamtkomplexitÃ¤t:
+  Die Schattenberechnung für alle $W \cdot H$ Primärschnitte
+  und $k$ Lichtquellen hat Gesamtkomplexität:
   \[
     O(n^3 + W \cdot H \cdot k \cdot n^3)
     = O(W \cdot H \cdot k \cdot n^3).
@@ -501,9 +501,9 @@ und LCS-Werte Ã¼ber alle Rotationen fÃ¼r dieses Beispiel.
 
 \begin{proof}
   Der transitive Abschluss $T(G_S)$ wird einmal in $O(n^3)$
-  (Floyd-Warshall) berechnet. FÃ¼r jeden der $W \cdot H$ Pixel
+  (Floyd-Warshall) berechnet. Für jeden der $W \cdot H$ Pixel
   und jede der $k$ Lichtquellen wird der Subgraph Algorithmus
-  in $O(n^3)$ ausgefÃ¼hrt. Gesamt: $O(n^3 + W \cdot H \cdot k
+  in $O(n^3)$ ausgeführt. Gesamt: $O(n^3 + W \cdot H \cdot k
   \cdot n^3)$. \hfill$\blacksquare$
 \end{proof}
 
@@ -515,7 +515,7 @@ die Schattenberechnung am Beispiel.
   \includegraphics[width=\linewidth]{plot5_schatten.pdf}
   \caption{(a)~Schattenberechnung: Rote Pfeile zeigen
            Schattenstrahlen von der Lichtquelle $v_4$ zu den
-           Objekten $v_1$ (Kugel) und $v_2$ (WÃ¼rfel).
+           Objekten $v_1$ (Kugel) und $v_2$ (Würfel).
            Objekte auf dem Sichtpfad bilden den
            Schattenstrahl-Subgraph $G_s \subseteq G_S$.
            (b)~Transitiver Abschluss $T(G_S)$: Neue Kanten
@@ -536,8 +536,8 @@ die Schattenberechnung am Beispiel.
   Ein \emph{Reflexionspfad} der Tiefe~$d$ ist eine Folge von
   Objekten $O_{i_0}, O_{i_1}, \ldots, O_{i_d}$, sodass ein
   Strahl von $O_{i_0}$ nach Reflexion/Brechung an $O_{i_1},
-  \ldots, O_{i_{d-1}}$ schlieÃŸlich $O_{i_d}$ trifft.
-  Der zugehÃ¶rige \emph{Pfad-Subgraph} ist:
+  \ldots, O_{i_{d-1}}$ schließlich $O_{i_d}$ trifft.
+  Der zugehörige \emph{Pfad-Subgraph} ist:
   \[
     G_{\mathrm{chain}} = \bigl(\{v_{i_0},\ldots,v_{i_d}\},\,
     \{(v_{i_l}, v_{i_{l+1}}) \mid l = 0,\ldots,d-1\}\bigr).
@@ -553,13 +553,13 @@ die Schattenberechnung am Beispiel.
 
 \begin{proof}
   \emph{Existenz:} Existiert der Reflexionspfad, so sind alle
-  aufeinanderfolgenden Objekte $O_{i_l}, O_{i_{l+1}}$ rÃ¤umlich
+  aufeinanderfolgenden Objekte $O_{i_l}, O_{i_{l+1}}$ räumlich
   benachbart (Kante in $G_S$). Damit ist $G_{\mathrm{chain}}$
   als Pfad-Subgraph in $G_S$ eingebettet.
 
-  \emph{Erkennung:} FÃ¼r jeden der $d$ Pfadabschnitte
+  \emph{Erkennung:} Für jeden der $d$ Pfadabschnitte
   $(v_{i_l}, v_{i_{l+1}})$ wird der Subgraph Algorithmus in
-  $O(n^3)$ ausgefÃ¼hrt. Gesamt: $O(d \cdot n^3)$.
+  $O(n^3)$ ausgeführt. Gesamt: $O(d \cdot n^3)$.
 
   \emph{Nicht-Existenz:} Existiert der Pfad nicht, so fehlt
   mindestens eine Kante $(v_{i_l}, v_{i_{l+1}})$ in $G_S$,
@@ -567,37 +567,37 @@ die Schattenberechnung am Beispiel.
   \hfill$\blacksquare$
 \end{proof}
 
-\begin{lemma}[TiefenbeschrÃ¤nkung der Reflexionskette]
+\begin{lemma}[Tiefenbeschränkung der Reflexionskette]
   \label{lem:tiefenbeschraenkung}
-  FÃ¼r einen zusammenhÃ¤ngenden Szenegraphen mit $n$ Knoten und
+  Für einen zusammenhängenden Szenegraphen mit $n$ Knoten und
   Durchmesser $\mathrm{diam}(G_S)$ gilt:
   \[
     d_{\max} \leq \mathrm{diam}(G_S) \leq n - 1.
   \]
   Damit ist die maximale sinnvolle Reflexionstiefe durch $n-1$
-  nach oben beschrÃ¤nkt.
+  nach oben beschränkt.
 \end{lemma}
 
 \begin{proof}
-  Ein Pfad der LÃ¤nge $d > \mathrm{diam}(G_S)$ wÃ¼rde einen Knoten
+  Ein Pfad der Länge $d > \mathrm{diam}(G_S)$ würde einen Knoten
   mehrfach besuchen (Schleife), was physikalisch einer unendlichen
-  Mehrfachreflexion entsprÃ¤che. Da $\mathrm{diam}(G_S) \leq n-1$
-  fÃ¼r einen einfachen Graphen, folgt die Schranke.
+  Mehrfachreflexion entspräche. Da $\mathrm{diam}(G_S) \leq n-1$
+  für einen einfachen Graphen, folgt die Schranke.
   \hfill$\blacksquare$
 \end{proof}
 
-\begin{korollar}[GesamtkomplexitÃ¤t mit Reflexionen]
-  FÃ¼r Raytracing mit maximaler Reflexionstiefe $d$ hat die
-  GesamtkomplexitÃ¤t die Schranke:
+\begin{korollar}[Gesamtkomplexität mit Reflexionen]
+  Für Raytracing mit maximaler Reflexionstiefe $d$ hat die
+  Gesamtkomplexität die Schranke:
   \[
     O\!\left(W \cdot H \cdot (1 + k + d) \cdot n^3\right).
   \]
 \end{korollar}
 
 \begin{proof}
-  Pro Pixel: ein primÃ¤rer Strahl ($O(n^3)$), $k$ Schattenstrahlen
+  Pro Pixel: ein primärer Strahl ($O(n^3)$), $k$ Schattenstrahlen
   ($O(k \cdot n^3)$), $d$ Reflexions-/Brechungsschritte
-  ($O(d \cdot n^3)$). Gesamt Ã¼ber $W \cdot H$ Pixel. \hfill$\blacksquare$
+  ($O(d \cdot n^3)$). Gesamt über $W \cdot H$ Pixel. \hfill$\blacksquare$
 \end{proof}
 
 \subsection{Brechung und Snellsches Gesetz}
@@ -609,7 +609,7 @@ die Schattenberechnung am Beispiel.
   $r'(t) = p + t\,d'$, wobei $d'$ nach dem Snellschen Gesetz
   $\eta_1 \sin\theta_1 = \eta_2 \sin\theta_2$ berechnet wird.
   Der Brechungsstrahl-Subgraph $G_{\mathrm{refr}} \subseteq G_S$
-  enthÃ¤lt alle potenziell geschnittenen Objekte nach der Brechung.
+  enthält alle potenziell geschnittenen Objekte nach der Brechung.
 \end{definition}
 
 \begin{bemerkung}
@@ -633,50 +633,50 @@ als Pfad-Subgraphen sowie das LCS-Matching.
            (Brechung) $\to$ Glas $v_3$ $\to$ Licht $v_4$.
            Der Pfad-Subgraph $G_{\mathrm{chain}}$ ist als
            Kette in $G_S$ eingebettet.
-           (b)~LCS-Wert Ã¼ber alle Rotationen: Maximum bei
+           (b)~LCS-Wert über alle Rotationen: Maximum bei
            $k=0$ (rot); Schwellenwert $\tau = 3$ (orange)
-           bestÃ¤tigt die vollstÃ¤ndige Kette
+           bestätigt die vollständige Kette
            $G_{\mathrm{chain}} \subseteq G_S$.}
   \label{fig:plot7}
 \end{figure}
 
 %=============================================================================
-\section{KomplexitÃ¤tsanalyse und Vergleich}
+\section{Komplexitätsanalyse und Vergleich}
 %=============================================================================
 
-\subsection{SETH-OptimalitÃ¤t}
+\subsection{SETH-Optimalität}
 
-\begin{satz}[SETH-OptimalitÃ¤t, \citealt{Epp2026}]
+\begin{satz}[SETH-Optimalität, \citealt{Epp2026}]
   \label{satz:seth}
   Unter der Strong Exponential Time Hypothesis (SETH) kann kein
-  Algorithmus das zyklische Subgraph-Problem fÃ¼r Graphen mit $n$
-  Knoten in $O(n^{3-\varepsilon})$ fÃ¼r beliebiges $\varepsilon > 0$
-  lÃ¶sen.
+  Algorithmus das zyklische Subgraph-Problem für Graphen mit $n$
+  Knoten in $O(n^{3-\varepsilon})$ für beliebiges $\varepsilon > 0$
+  lösen.
 \end{satz}
 
 \begin{korollar}
-  Die $O(n^3)$-KomplexitÃ¤t des Subgraph Algorithmus fÃ¼r
+  Die $O(n^3)$-Komplexität des Subgraph Algorithmus für
   Strahlschnitt, Schattenberechnung und Reflexionserkennung ist
   unter SETH optimal.
 \end{korollar}
 
-\begin{satz}[KomplexitÃ¤tsvergleich mit klassischen Methoden]
+\begin{satz}[Komplexitätsvergleich mit klassischen Methoden]
   \label{satz:komplexitaet_vergleich}
   Tabelle~\ref{tab:komplexitaet} vergleicht die
-  ZeitkomplexitÃ¤ten der wichtigsten Raytracing-Methoden.
+  Zeitkomplexitäten der wichtigsten Raytracing-Methoden.
 \end{satz}
 
 \begin{table}[htbp]
   \centering
-  \caption{ZeitkomplexitÃ¤ten verschiedener Raytracing-Beschleunigungsstrukturen.
-           $n$: Objektanzahl; $W, H$: BildauflÃ¶sung;
+  \caption{Zeitkomplexitäten verschiedener Raytracing-Beschleunigungsstrukturen.
+           $n$: Objektanzahl; $W, H$: Bildauflösung;
            $k$: Lichtquellen; $d$: Reflexionstiefe.}
   \label{tab:komplexitaet}
   \begin{tabular}{@{}lllll@{}}
     \toprule
     Methode & Traversierung & Global? & Aufbau & Dynamisierbar? \\
     \midrule
-    BVH \citep{Rubin1980}    & $O(n \log n)$ & Nein & $O(n \log n)$ & AufwÃ¤ndig \\
+    BVH \citep{Rubin1980}    & $O(n \log n)$ & Nein & $O(n \log n)$ & Aufwändig \\
     kd-Tree \citep{Bentley1975} & $O(n \log n)$ & Nein & $O(n \log n)$ & Nein \\
     Embree \citep{Wald2014}  & $O(n^{1.2})$ & Nein & $O(n)$        & Ja \\
     Naiv                     & $O(n)$ je Strahl & Ja & $O(1)$ & Ja \\
@@ -686,26 +686,26 @@ als Pfad-Subgraphen sowie das LCS-Matching.
 \end{table}
 
 \begin{bemerkung}
-  Die $O(n^3)$-KomplexitÃ¤t des Subgraph Algorithmus erscheint
-  zunÃ¤chst schlechter als BVH ($O(n \log n)$). Der entscheidende
+  Die $O(n^3)$-Komplexität des Subgraph Algorithmus erscheint
+  zunächst schlechter als BVH ($O(n \log n)$). Der entscheidende
   Vorteil liegt jedoch in der formalen Korrektheit und den
   strukturellen Isomorphiegarantien: Der Subgraph Algorithmus
-  findet \emph{alle} strukturell Ã¤quivalenten Objekte, wÃ¤hrend
-  BVH/kd-Trees bei dynamischen Szenen neu aufgebaut werden mÃ¼ssen.
-  FÃ¼r kleine bis mittlere $n$ (typische SzenengrÃ¶ÃŸen im
+  findet \emph{alle} strukturell äquivalenten Objekte, während
+  BVH/kd-Trees bei dynamischen Szenen neu aufgebaut werden müssen.
+  Für kleine bis mittlere $n$ (typische Szenengrößen im
   Echtzeitrendering) ist der Unterschied in der Praxis gering.
 \end{bemerkung}
 
-Abbildung~\ref{fig:plot4} veranschaulicht den KomplexitÃ¤tsvergleich
+Abbildung~\ref{fig:plot4} veranschaulicht den Komplexitätsvergleich
 theoretisch und empirisch.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{plot4_komplexitaet.pdf}
-  \caption{(a)~Theoretische ZeitkomplexitÃ¤t auf logarithmischer
+  \caption{(a)~Theoretische Zeitkomplexität auf logarithmischer
            Skala: Naiver Ansatz ($O(n! \cdot n^2)$, grau) versagt
            ab $n > 11$. Subgraph Algorithmus ($O(n^3)$, blau)
-           bleibt polynomial. BVH/kd-Tree ($O(n \log n)$, grÃ¼n)
+           bleibt polynomial. BVH/kd-Tree ($O(n \log n)$, grün)
            sind schneller, bieten aber keine formalen
            Isomorphiegarantien. (b)~Praktische Laufzeit in
            Millisekunden: Subgraph liegt zwischen Embree
@@ -717,7 +717,7 @@ theoretisch und empirisch.
 \subsection{Gerenderte Szene}
 
 Abbildung~\ref{fig:plot6} zeigt eine mit dem Subgraph-Raytracing
-gerenderte Szene und die Erkennungsrate in AbhÃ¤ngigkeit der
+gerenderte Szene und die Erkennungsrate in Abhängigkeit der
 Strahlanzahl.
 
 \begin{figure}[htbp]
@@ -726,12 +726,12 @@ Strahlanzahl.
   \caption{(a)~Gerendertes Bild: Kugel mit Phong-Shading auf
            einer Grundebene, beleuchtet von einer Punktlichtquelle.
            Diffuser Anteil $I_d = k_d \cdot \max(0, \hat{n}
-           \cdot \hat{l})$ mit $k_d = 0{,}6$ wurde Ã¼ber
+           \cdot \hat{l})$ mit $k_d = 0{,}6$ wurde über
            Subgraph-Schnittberechnung ermittelt.
            (b)~Erkannte Strahlschnittpunkte vs.\ gesendete
            Strahlen: Subgraph Algorithmus (blau) und BVH (orange)
            liefern identische Treffer; naiver Ansatz (grau) weist
-           hÃ¶here Varianz auf.}
+           höhere Varianz auf.}
   \label{fig:plot6}
 \end{figure}
 
@@ -740,13 +740,13 @@ Strahlanzahl.
 %=============================================================================
 
 Die vorliegende Arbeit hat gezeigt, dass der Subgraph Algorithmus
-\citep{Epp2026} eine formal korrekte Grundlage fÃ¼r drei zentrale
+\citep{Epp2026} eine formal korrekte Grundlage für drei zentrale
 Raytracing-Aufgaben bietet:
 
 \begin{center}
 \begin{tabular}{@{}llll@{}}
   \toprule
-  Aufgabe & Klassisch & Subgraph-Methode & SÃ¤tze \\
+  Aufgabe & Klassisch & Subgraph-Methode & Sätze \\
   \midrule
   Strahlschnitt   & BVH/kd-Tree     & Subgraph-Isomorphie    & \ref{satz:schnitt_korrektheit}, \ref{satz:schnitt_vollstaendigkeit} \\
   Schattenberechn. & Schattenstrahlen & Trans.\ Abschluss     & \ref{satz:schatten} \\
@@ -755,9 +755,9 @@ Raytracing-Aufgaben bietet:
 \end{tabular}
 \end{center}
 
-Formal wurden bewiesen: 12 SÃ¤tze, 5 Lemmata, 3 Korollare,
+Formal wurden bewiesen: 12 Sätze, 5 Lemmata, 3 Korollare,
 1 Proposition. Alle Ergebnisse sind unter
-\url{https://github.com/hjstephan86/science} verfÃ¼gbar.
+\url{https://github.com/hjstephan86/science} verfügbar.
 
 %=============================================================================
 \section{Ausblick}
@@ -767,7 +767,7 @@ Formal wurden bewiesen: 12 SÃ¤tze, 5 Lemmata, 3 Korollare,
 
 Das klassische Raytracing behandelt nur direkte Beleuchtung und
 Spiegelreflexionen. \emph{Pathtracing} \citep{Kajiya1986} erweitert
-das Modell auf vollstÃ¤ndige Global Illumination durch stochastisches
+das Modell auf vollständige Global Illumination durch stochastisches
 Sampling der Rendering-Gleichung:
 \[
   L_o(x, \omega_o) = L_e(x, \omega_o) + \int_{S^2}
@@ -775,55 +775,55 @@ Sampling der Rendering-Gleichung:
   |\cos\theta_i|\,\mathrm{d}\omega_i.
 \]
 Im Subgraph-Modell entspricht jeder gesamplete Lichtpfad einem
-zufÃ¤lligen Pfad-Subgraphen $G_{\mathrm{path}} \subseteq G_S$.
-Die Monte-Carlo-Integration Ã¼ber $N_s$ Samples entspricht dann
-der Auswertung von $N_s$ Subgraph-Erkennungen. ZukÃ¼nftige Arbeit
-kÃ¶nnte untersuchen, wie der Subgraph Algorithmus das Importance
-Sampling durch Priorisierung strukturell Ã¤hnlicher Pfade verbessern
-kann: Pfade mit hohem LCS-Wert zu vorherigen Pfaden kÃ¶nnten bevorzugt
-gesamplet werden, da sie Ã¤hnliche Beleuchtungsanteile liefern.
+zufälligen Pfad-Subgraphen $G_{\mathrm{path}} \subseteq G_S$.
+Die Monte-Carlo-Integration über $N_s$ Samples entspricht dann
+der Auswertung von $N_s$ Subgraph-Erkennungen. Zukünftige Arbeit
+könnte untersuchen, wie der Subgraph Algorithmus das Importance
+Sampling durch Priorisierung strukturell ähnlicher Pfade verbessern
+kann: Pfade mit hohem LCS-Wert zu vorherigen Pfaden könnten bevorzugt
+gesamplet werden, da sie ähnliche Beleuchtungsanteile liefern.
 
 \subsection{Echtzeit-Raytracing und GPU-Architektur}
 
 Moderne GPUs (NVIDIA RTX-Serie) implementieren Raytracing in
 Hardware durch spezialisierte RT-Kerne \citep{Parker2010}.
-Der Subgraph Algorithmus lieÃŸe sich auf diese Architektur
+Der Subgraph Algorithmus ließe sich auf diese Architektur
 portieren:
 
 \begin{itemize}
-  \item \emph{Warp-parallele LCS-Berechnung:} Die $n$ unabhÃ¤ngigen
-        LCS-Berechnungen pro Strahl kÃ¶nnen auf $n$ CUDA-Threads
-        eines Warps verteilt werden, was die effektive KomplexitÃ¤t
+  \item \emph{Warp-parallele LCS-Berechnung:} Die $n$ unabhängigen
+        LCS-Berechnungen pro Strahl können auf $n$ CUDA-Threads
+        eines Warps verteilt werden, was die effektive Komplexität
         auf $O(n^2)$ pro Strahl senkt.
-  \item \emph{Shared Memory fÃ¼r Signatur-Arrays:} Die Signatursequenz
-        $\sigma^{G_S}$ (GrÃ¶ÃŸe $O(n)$) passt fÃ¼r typische Szenen
-        ($n \leq 1024$) vollstÃ¤ndig in den L1-Cache eines
+  \item \emph{Shared Memory für Signatur-Arrays:} Die Signatursequenz
+        $\sigma^{G_S}$ (Größe $O(n)$) passt für typische Szenen
+        ($n \leq 1024$) vollständig in den L1-Cache eines
         Streaming-Multiprozessors.
   \item \emph{Tensorcore-Beschleunigung:} Die DP-Tabelle der
         LCS-Berechnung kann als Matrixmultiplikation formuliert
-        und auf Tensorcores ausgefÃ¼hrt werden, was eine weitere
-        Beschleunigung um Faktor~$4$--$8$ ermÃ¶glicht.
+        und auf Tensorcores ausgeführt werden, was eine weitere
+        Beschleunigung um Faktor~$4$--$8$ ermöglicht.
 \end{itemize}
 
 \subsection{Dynamische Szenen und inkrementelle Updates}
 
-Klassische BVH-Strukturen mÃ¼ssen bei bewegten Objekten vollstÃ¤ndig
+Klassische BVH-Strukturen müssen bei bewegten Objekten vollständig
 neu aufgebaut werden ($O(n \log n)$ pro Frame). Der Szenegraph $G_S$
 kann hingegen inkrementell aktualisiert werden:
 
 \begin{itemize}
   \item \emph{Lokale Kantenaktualisierung:} Bewegt sich Objekt $O_i$
-        um $\Delta p$, mÃ¼ssen nur die Kanten zu Knoten $v_j$ mit
+        um $\Delta p$, müssen nur die Kanten zu Knoten $v_j$ mit
         $\|c_i + \Delta p - c_j\| \leq r_{\mathrm{knn}}$ neu
         bewertet werden. Kosten: $O(k_{\mathrm{avg}})$ statt
         $O(n \log n)$.
   \item \emph{Inkrementelle Signaturaktualisierung:} Nach einer
-        KantenÃ¤nderung Ã¤ndert sich nur der betroffene Signaturwert
+        Kantenänderung ändert sich nur der betroffene Signaturwert
         $\sigma_j$. Die gesamte Signatursequenz muss nicht neu
         berechnet werden.
-  \item \emph{Online-Subgraph-Erkennung:} FÃ¼r animierte Szenen
+  \item \emph{Online-Subgraph-Erkennung:} Für animierte Szenen
         kann der Subgraph Algorithmus mit dem vorherigen
-        Optimal-$k^*$ als WartstartschÃ¤tzung gestartet werden,
+        Optimal-$k^*$ als Wartstartschätzung gestartet werden,
         was die durchschnittliche Laufzeit in der Praxis
         reduziert.
 \end{itemize}
@@ -832,52 +832,52 @@ kann hingegen inkrementell aktualisiert werden:
 
 In AR/MR-Anwendungen muss virtuelle Geometrie mit realen
 Kamerabildern fusioniert werden. Der Subgraph Algorithmus bietet
-hierfÃ¼r neue MÃ¶glichkeiten:
+hierfür neue Möglichkeiten:
 
 \begin{itemize}
   \item \emph{Strukturelle Szenenerkennung:} Erkenne bekannte reale
         Objekte als Subgraphen im Kamera-Tiefenbild-Graphen.
-        Dies ergÃ¤nzt klassische Feature-Matching-AnsÃ¤tze durch
-        topologische KonsistenzprÃ¼fung.
+        Dies ergänzt klassische Feature-Matching-Ansätze durch
+        topologische Konsistenzprüfung.
   \item \emph{Nahtlose Beleuchtungsfusion:} Die Schattenwurf-
-        Subgraph-Erkennung (Satz~\ref{satz:schatten}) ermÃ¶glicht
+        Subgraph-Erkennung (Satz~\ref{satz:schatten}) ermöglicht
         konsistenten Schattenwurf virtueller Objekte auf
-        reale OberflÃ¤chen, indem reale Geometrie in $G_S$
+        reale Oberflächen, indem reale Geometrie in $G_S$
         integriert wird.
   \item \emph{Occlusion Handling:} Verdeckungsbeziehungen zwischen
         virtuellen und realen Objekten werden als
-        Subgraph-Pfade in einem gemischten RealitÃ¤ts-Szenegraphen
+        Subgraph-Pfade in einem gemischten Realitäts-Szenegraphen
         modelliert.
 \end{itemize}
 
-\subsection{Spektrales Raytracing und WellenlÃ¤ngenabhÃ¤ngigkeit}
+\subsection{Spektrales Raytracing und Wellenlängenabhängigkeit}
 
 Physikalisch korrektes Rendering erfordert die Behandlung von
-WellenlÃ¤ngenabhÃ¤ngigkeiten (Dispersion, Fluoreszenz). Eine
+Wellenlängenabhängigkeiten (Dispersion, Fluoreszenz). Eine
 Erweiterung des Szenegraphen auf \emph{spektrale Kantengewichte}
-$w_{ij}(\lambda)$ fÃ¼r WellenlÃ¤nge $\lambda \in [380, 780]$\,nm
-wÃ¼rde ermÃ¶glichen:
+$w_{ij}(\lambda)$ für Wellenlänge $\lambda \in [380, 780]$\,nm
+würde ermöglichen:
 \[
   \sigma_j^{(\lambda)} = \sum_{i=0}^{n-1}
   \lfloor w_{ij}(\lambda) \cdot 2^b \rfloor \cdot r^i
   + j \cdot r^n,
 \]
-wobei verschiedene WellenlÃ¤ngen unterschiedliche Subgraph-Strukturen
-erzeugen. Dispersive Effekte (z.\,B.\ Regenbogen) wÃ¼rden als
-wellenlÃ¤ngenabhÃ¤ngige Brechungssubgraphen erkannt.
+wobei verschiedene Wellenlängen unterschiedliche Subgraph-Strukturen
+erzeugen. Dispersive Effekte (z.\,B.\ Regenbogen) würden als
+wellenlängenabhängige Brechungssubgraphen erkannt.
 
 \subsection{Neuronale Rendering-Methoden und NeRF}
 
 \emph{Neural Radiance Fields} (NeRF) \citep{Mildenhall2020}
-reprÃ¤sentieren 3D-Szenen implizit durch neuronale Netze.
-Eine Hybridmethode \emph{SubgraphNeRF} kÃ¶nnte:
+repräsentieren 3D-Szenen implizit durch neuronale Netze.
+Eine Hybridmethode \emph{SubgraphNeRF} könnte:
 
 \begin{itemize}
   \item Strukturelle Szenenelemente (Kanten, Ecken, bekannte
         Objekte) durch den Subgraph Algorithmus explizit erkennen
         und als konditionierende Inputs an das neuronale Netz
-        Ã¼bergeben.
-  \item Die LCS-Ã„hnlichkeit zwischen Trainings- und
+        übergeben.
+  \item Die LCS-Ähnlichkeit zwischen Trainings- und
         Testansichten als Regularisierungsterm in die
         NeRF-Verlustfunktion einbetten:
         $\mathcal{L}_{\mathrm{struct}} = 1 -
@@ -891,12 +891,12 @@ Eine Hybridmethode \emph{SubgraphNeRF} kÃ¶nnte:
 \subsection{Prozedurale Generierung und L-Systeme}
 
 Prozedurale Szenegenerierung (L-Systeme, fraktale Geometrie
-\citep{Mandelbrot1982}) erzeugt selbstÃ¤hnliche Strukturen, die
-natÃ¼rlicherweise Subgraph-Beziehungen aufweisen. FÃ¼r ein
+\citep{Mandelbrot1982}) erzeugt selbstähnliche Strukturen, die
+natürlicherweise Subgraph-Beziehungen aufweisen. Für ein
 L-System mit Produktionsregel $A \to AB$, $B \to A$ entsteht
 nach $d$ Schritten ein Szenegraph $G_d$, der $G_{d-1}$ als
-Subgraph enthÃ¤lt: $G_{d-1} \subseteq G_d$. Der Subgraph
-Algorithmus kÃ¶nnte diese selbstÃ¤hnliche Struktur fÃ¼r
+Subgraph enthält: $G_{d-1} \subseteq G_d$. Der Subgraph
+Algorithmus könnte diese selbstähnliche Struktur für
 effiziente Traversierung ausnutzen:
 \[
   T(n, d) = T(n, d-1) + O(n^3) = O(d \cdot n^3),
@@ -910,49 +910,49 @@ hochkomplexe Softwaresysteme, die schwer formal zu verifizieren sind.
 Der Subgraph Algorithmus bietet eine neue Grundlage:
 
 \begin{itemize}
-  \item \emph{Korrektheitszertifikate:} FÃ¼r jedes gerenderte Pixel
+  \item \emph{Korrektheitszertifikate:} Für jedes gerenderte Pixel
         kann ein Subgraph-Zertifikat $G_r \subseteq G_S$ als
         Beweis des korrekten Strahlschnitts ausgegeben werden.
   \item \emph{Differenzielle Verifikation:} Zwei Renderer werden
-        als korrekt Ã¤quivalent erkannt, wenn ihre Szenegraphen
+        als korrekt äquivalent erkannt, wenn ihre Szenegraphen
         isomorph sind: $G_S^{(1)} \cong G_S^{(2)}$.
-  \item \emph{ISO~26262-KonformitÃ¤t:} FÃ¼r sicherheitskritische
+  \item \emph{ISO~26262-Konformität:} Für sicherheitskritische
         Anwendungen (Fahrzeugsimulation, AR-Chirurgie) kann der
-        Subgraph-Korrektheitsbeweis als formaler Nachweis gemÃ¤ÃŸ
+        Subgraph-Korrektheitsbeweis als formaler Nachweis gemäß
         ISO~26262 ASIL-D verwendet werden.
 \end{itemize}
 
 \subsection{Quantenraytracing}
 
-Quantenalgorithmen bieten potenzielle Beschleunigung fÃ¼r
+Quantenalgorithmen bieten potenzielle Beschleunigung für
 Suchprobleme. Ein Grover-basierter Quantenalgorithmus
-\citep{Grover1996} kÃ¶nnte das Rotationsmaximum in
+\citep{Grover1996} könnte das Rotationsmaximum in
 $O(\sqrt{n})$ Orakelaufrufen statt $O(n)$ finden:
 \[
   T_{\mathrm{Quanten}} = O(\sqrt{n} \cdot n^2) = O(n^{2.5}),
 \]
-was eine asymptotische Verbesserung gegenÃ¼ber dem klassischen
-$O(n^3)$ wÃ¤re. Formale Analyse der QuantenkomplexitÃ¤t des
+was eine asymptotische Verbesserung gegenüber dem klassischen
+$O(n^3)$ wäre. Formale Analyse der Quantenkomplexität des
 Signatur-LCS-Problems steht noch aus.
 
 \subsection{Offene Fragen}
 
 \begin{enumerate}
-  \item \textbf{Subquadratische LCS fÃ¼r Szenegraphen:} Gibt es
-        eine AnnÃ¤herung an LCS auf Signatursequenzen spÃ¤rlicher
+  \item \textbf{Subquadratische LCS für Szenegraphen:} Gibt es
+        eine Annäherung an LCS auf Signatursequenzen spärlicher
         Szenegraphen in $O(n^{2-\delta})$?
   \item \textbf{Adaptiver Schwellenwert:} Kann $\tau_r$ dynamisch
         an die Szenengeometrie angepasst werden, um
-        Falsch-Positiv-Rate und VollstÃ¤ndigkeit zu balancieren?
-  \item \textbf{Kontinuierliche Signaturen:} Wie verhÃ¤lt sich der
+        Falsch-Positiv-Rate und Vollständigkeit zu balancieren?
+  \item \textbf{Kontinuierliche Signaturen:} Wie verhält sich der
         Algorithmus bei kontinuierlichen Szenentransformationen,
         bei denen die diskrete Signaturstruktur sich schrittweise
-        Ã¤ndert?
+        ändert?
   \item \textbf{Verteiltes Raytracing:} Kann der Szenegraph auf
         mehrere Knoten verteilt werden, sodass der Subgraph
         Algorithmus kommunikationseffizient arbeitet?
-  \item \textbf{Verbindung zu Wavefront Rendering:} LÃ¤sst sich
-        die wavefront-basierte StrahlbÃ¼ndelung in modernen
+  \item \textbf{Verbindung zu Wavefront Rendering:} Lässt sich
+        die wavefront-basierte Strahlbündelung in modernen
         GPU-Renderern direkt mit Subgraph-Batching kombinieren?
 \end{enumerate}
 

@@ -66,8 +66,8 @@
   stringstyle=\color{darkgreen},
   numbers=left, numberstyle=\tiny,
   breaklines=true, frame=single,
-  literate={Ã–}{{\"O}}1 {Ã„}{{\"A}}1 {Ãœ}{{\"U}}1
-           {ÃŸ}{{\ss}}1 {Ã¼}{{\"u}}1 {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1
+  literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
+           {ß}{{\ss}}1 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1
 }
 
 \title{\textbf{Fairness als fundamentales Prinzip der\\
@@ -82,18 +82,18 @@ Modellierung und der Subgraph Algorithmus}
 \maketitle
 
 \begin{abstract}
-Diese Arbeit fÃ¼hrt das folgende Fairness-Axiom als fundamentales
+Diese Arbeit führt das folgende Fairness-Axiom als fundamentales
 Gestaltungsprinzip aller Betriebssystem-Synchronisationsmechanismen ein:
 
 \medskip
-\textit{Das geniale Prinzip der Synchronisation fÃ¼r zu teilende Ressourcen.
+\textit{Das geniale Prinzip der Synchronisation für zu teilende Ressourcen.
 Was ist fair? Fairness ist bedarfsorientiert unter der Voraussetzung,
-dass niemand einen Ãœberbedarf gegenÃ¼ber allen anderen Prozessen hat.
-Wer mehr benÃ¶tigt, der erhÃ¤lt mehr Ressourcen (Zeit, Speicher, \ldots).
-Denn kein Prozess fordert mehr, als er benÃ¶tigt. Kein Prozess nutzt
-z.\,B.\ Speicher, um andere Prozesse zu Ã¤rgern (er braucht ihn eigentlich
-nicht) oder um sogar immer mehr Speicher nutzen zu kÃ¶nnen (und am Ende
-nur noch alleine den Speicher nutzen zu kÃ¶nnen).}
+dass niemand einen Überbedarf gegenüber allen anderen Prozessen hat.
+Wer mehr benötigt, der erhält mehr Ressourcen (Zeit, Speicher, \ldots).
+Denn kein Prozess fordert mehr, als er benötigt. Kein Prozess nutzt
+z.\,B.\ Speicher, um andere Prozesse zu ärgern (er braucht ihn eigentlich
+nicht) oder um sogar immer mehr Speicher nutzen zu können (und am Ende
+nur noch alleine den Speicher nutzen zu können).}
 
 \medskip
 Ausgehend von diesem Axiom werden Spin-Locks, Mutex-Locks,
@@ -102,15 +102,15 @@ gerichtete endliche Graphen modelliert und durch den Subgraph
 Algorithmus~\cite{epp2026subgraph} in $O(n^3)$ klassifiziert.
 Alle Subgraph-Beziehungen werden formal bewiesen.
 Statistische Betrachtungen zur Speicher- und Zeitnutzung in der Praxis
-sowie ausfÃ¼hrliche TikZ-Beispiele illustrieren das Prinzip.
-Jain's Fairness-Index dient als quantitatives MaÃŸ.
+sowie ausführliche TikZ-Beispiele illustrieren das Prinzip.
+Jain's Fairness-Index dient als quantitatives Maß.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 % =========================================================================
-\section{EinfÃ¼hrung und Fairness-Axiom}
+\section{Einführung und Fairness-Axiom}
 \label{sec:einf}
 % =========================================================================
 
@@ -123,27 +123,27 @@ Die zentrale Frage ist nicht, \emph{ob} man verteilt, sondern \emph{wie}.
 
 \begin{axiom}[Bedarfsorientierte Fairness]
 \label{ax:fairness}
-Das geniale Prinzip der Synchronisation fÃ¼r zu teilende Ressourcen:
+Das geniale Prinzip der Synchronisation für zu teilende Ressourcen:
 Fairness ist bedarfsorientiert unter der Voraussetzung, dass niemand
-einen Ãœberbedarf gegenÃ¼ber allen anderen Prozessen hat.
-Wer mehr benÃ¶tigt, der erhÃ¤lt mehr Ressourcen (Zeit, Speicher, \ldots).
-Denn kein Prozess fordert mehr, als er benÃ¶tigt.
-Kein Prozess nutzt z.\,B.\ Speicher, um andere Prozesse zu Ã¤rgern
+einen Überbedarf gegenüber allen anderen Prozessen hat.
+Wer mehr benötigt, der erhält mehr Ressourcen (Zeit, Speicher, \ldots).
+Denn kein Prozess fordert mehr, als er benötigt.
+Kein Prozess nutzt z.\,B.\ Speicher, um andere Prozesse zu ärgern
 (er braucht ihn eigentlich nicht) oder um sogar immer mehr Speicher
-nutzen zu kÃ¶nnen (und am Ende nur noch alleine den Speicher nutzen
-zu kÃ¶nnen).
+nutzen zu können (und am Ende nur noch alleine den Speicher nutzen
+zu können).
 \end{axiom}
 
-Dieses Axiom enthÃ¤lt drei wesentliche Teilaussagen, die wir einzeln
+Dieses Axiom enthält drei wesentliche Teilaussagen, die wir einzeln
 formalisieren:
 
 \begin{enumerate}
   \item \textbf{Bedarfsproportion}: Die zugeteilte Ressource ist
         proportional zum deklarierten Bedarf.
-  \item \textbf{Kein Ãœberbedarf}: Kein Prozess deklariert mehr Bedarf,
-        als er tatsÃ¤chlich benÃ¶tigt.
+  \item \textbf{Kein Überbedarf}: Kein Prozess deklariert mehr Bedarf,
+        als er tatsächlich benötigt.
   \item \textbf{Kein Missbrauch}: Kein Prozess akkumuliert Ressourcen
-        Ã¼ber seinen Bedarf hinaus, um andere zu benachteiligen.
+        über seinen Bedarf hinaus, um andere zu benachteiligen.
 \end{enumerate}
 
 \subsection{Historischer Hintergrund}
@@ -152,8 +152,8 @@ Das Fairness-Problem in Betriebssystemen ist so alt wie die
 Multiprogrammierung selbst. Dijkstra formulierte 1965 das erste
 formale Semaphor-Konzept~\cite{dijkstra1965}, das implizit Fairness
 durch geordnete Warteschlangen anstrebt. Knuth wies 1966 nach, dass
-Dijkstras ursprÃ¼ngliches Algorithmus-Paar (Dekker-Variante)
-unter bestimmten UmstÃ¤nden Starvation produziert~\cite{knuth1966}.
+Dijkstras ursprüngliches Algorithmus-Paar (Dekker-Variante)
+unter bestimmten Umständen Starvation produziert~\cite{knuth1966}.
 Das umfassende Fairness-Konzept -- im Sinne von Axiom~\ref{ax:fairness}
 -- wurde erst durch die Arbeiten von Lamport~\cite{lamport1974new}
 und Hoare~\cite{hoare1974monitors} auf eine formale Basis gestellt.
@@ -169,7 +169,7 @@ und Hoare~\cite{hoare1974monitors} auf eine formale Basis gestellt.
 Ein Ressourcensystem ist ein Tupel $\mathcal{R} = (P, R, B, Z)$, wobei
 \begin{itemize}
   \item $P = \{p_1, \ldots, p_n\}$ die Menge der Prozesse,
-  \item $R$ die Gesamtmenge der verfÃ¼gbaren Ressourcen,
+  \item $R$ die Gesamtmenge der verfügbaren Ressourcen,
   \item $B: P \to \mathbb{R}_{\geq 0}$ die Bedarfsfunktion und
   \item $Z: P \to \mathbb{R}_{\geq 0}$ die Zuteilungsfunktion ist,
         mit der Nebenbedingung $\sum_{i=1}^n Z(p_i) \leq R$.
@@ -178,7 +178,7 @@ Ein Ressourcensystem ist ein Tupel $\mathcal{R} = (P, R, B, Z)$, wobei
 
 \begin{definition}[Bedarfsorientierte Zuteilung]
 \label{def:bod}
-Eine Zuteilungsfunktion $Z$ heiÃŸt \emph{bedarfsorientiert}, wenn
+Eine Zuteilungsfunktion $Z$ heißt \emph{bedarfsorientiert}, wenn
 \[
   Z(p_i) = \frac{B(p_i)}{\sum_{j=1}^n B(p_j)} \cdot R
   \qquad \forall\, i \in \{1, \ldots, n\}.
@@ -187,7 +187,7 @@ Eine Zuteilungsfunktion $Z$ heiÃŸt \emph{bedarfsorientiert}, wenn
 
 \begin{definition}[Jains Fairness-Index]
 \label{def:jain}
-FÃ¼r Zuteilungen $Z(p_1), \ldots, Z(p_n)$ ist Jain's Fairness-Index
+Für Zuteilungen $Z(p_1), \ldots, Z(p_n)$ ist Jain's Fairness-Index
 \cite{jain1984quantitative} definiert als
 \[
   J(Z) = \frac{\Bigl(\sum_{i=1}^n Z(p_i)\Bigr)^2}
@@ -201,7 +201,7 @@ $J = 1/n$ bedeutet Monopolisierung durch einen Prozess.
 \begin{satz}[Bedarfsorientierte Zuteilung maximiert $J$]
 \label{satz:jain_max}
 Unter allen Zuteilungen $Z$ mit $\sum Z(p_i) = R$ und
-$Z(p_i) \leq B(p_i)$ fÃ¼r alle $i$ wird $J(Z)$ durch die
+$Z(p_i) \leq B(p_i)$ für alle $i$ wird $J(Z)$ durch die
 bedarfsorientierte Zuteilung (Definition~\ref{def:bod}) maximiert,
 sofern der Gesamtbedarf $\sum B(p_i) \geq R$.
 \end{satz}
@@ -220,55 +220,55 @@ Jains Index lautet:
     = \frac{1}{n} \cdot \frac{1}{\sum \alpha_i^2}.
 \]
 
-FÃ¼r eine beliebige andere Zuteilung $Z'$ mit $\sum Z'(p_i) = R$ und
+Für eine beliebige andere Zuteilung $Z'$ mit $\sum Z'(p_i) = R$ und
 $Z'(p_i) \leq B(p_i)$ sei $\beta_i = Z'(p_i)/R$, also $\sum \beta_i = 1$.
 Jains Index berechnet sich dann als $J' = \frac{1}{n} \cdot \frac{1}{\sum \beta_i^2}$.
 
-Da $J$ genau dann grÃ¶ÃŸer ist, wenn $\sum \alpha_i^2$ kleiner ist, muss
+Da $J$ genau dann größer ist, wenn $\sum \alpha_i^2$ kleiner ist, muss
 gezeigt werden, dass $\sum \alpha_i^2$ unter allen normierten
 Vektoren $(\alpha_i)$ mit $\alpha_i \leq B(p_i)/R_{\mathrm{ges}}$ minimal ist.
 
-Nach dem Variationsprinzip fÃ¼r Lagrange-Multiplikatoren wird
+Nach dem Variationsprinzip für Lagrange-Multiplikatoren wird
 $\sum \alpha_i^2$ auf dem konvexen Polytop
 $\Delta = \{(\beta_i) \mid \sum \beta_i = 1,\, 0 \leq \beta_i \leq B(p_i)/R_{\mathrm{ges}}\}$
-minimiert, wenn alle $\alpha_i$ mÃ¶glichst gleich sind.
+minimiert, wenn alle $\alpha_i$ möglichst gleich sind.
 Da die obere Schranke $B(p_i)/R_{\mathrm{ges}}$ proportional ist, ist
 $\alpha_i = B(p_i)/R_{\mathrm{ges}}$ genau der Punkt, an dem jeder
-Prozess seine Schranke voll ausschÃ¶pft -- und dies ist nach der
+Prozess seine Schranke voll ausschöpft -- und dies ist nach der
 Cauchy-Schwarz-Ungleichung das Minimum von $\sum \alpha_i^2$ auf $\Delta$.
 
 Formal: Nach Cauchy-Schwarz gilt
 $(\sum_i \alpha_i)^2 \leq n \cdot \sum_i \alpha_i^2$, mit Gleichheit
 genau dann, wenn alle $\alpha_i$ gleich sind.
 Da die Bedarfsproportion $\alpha_i = B(p_i)/R_{\mathrm{ges}}$ die
-einzige Zuteilung ist, die die Schranken vollstÃ¤ndig und gleichmÃ¤ÃŸig
-(relativ zum Bedarf) ausschÃ¶pft, maximiert sie $J$.
+einzige Zuteilung ist, die die Schranken vollständig und gleichmäßig
+(relativ zum Bedarf) ausschöpft, maximiert sie $J$.
 \hfill$\blacksquare$
 \end{proof}
 
 \begin{korollar}[Gleichverteilung bei gleichen Bedarfen]
-Falls $B(p_i) = B(p_j)$ fÃ¼r alle $i, j$, reduziert sich die
+Falls $B(p_i) = B(p_j)$ für alle $i, j$, reduziert sich die
 bedarfsorientierte Zuteilung auf die Gleichverteilung
 $Z(p_i) = R/n$, und $J = 1$.
 \end{korollar}
 
 \begin{satz}[Kein Missbrauch $\Rightarrow$ stabiler Jain-Index]
 \label{satz:kein_missbrauch}
-Wenn kein Prozess $p_i$ seinen deklarierten Bedarf $B(p_i)$ Ã¼ber
-seinen tatsÃ¤chlichen Bedarf $\tilde{B}(p_i) \leq B(p_i)$ hinaus
+Wenn kein Prozess $p_i$ seinen deklarierten Bedarf $B(p_i)$ über
+seinen tatsächlichen Bedarf $\tilde{B}(p_i) \leq B(p_i)$ hinaus
 angibt (\emph{ehrliche Deklaration}), dann gilt
 \[
   J(Z) \;\geq\; J_{\min} = \frac{1}{n},
 \]
 und die bedarfsorientierte Zuteilung ist Pareto-optimal: Es ist
-nicht mÃ¶glich, einen Prozess besser zu stellen, ohne einen anderen
+nicht möglich, einen Prozess besser zu stellen, ohne einen anderen
 schlechter zu stellen.
 \end{satz}
 
 \begin{proof}
-Die Pareto-OptimalitÃ¤t folgt direkt aus der Definition~\ref{def:bod}:
-jede ErhÃ¶hung von $Z(p_i)$ Ã¼ber $B(p_i)$ hinaus wÃ¼rde die Ressource
-$R$ Ã¼berbuchen (da $\sum Z(p_j) = R$) und damit mindestens einen
+Die Pareto-Optimalität folgt direkt aus der Definition~\ref{def:bod}:
+jede Erhöhung von $Z(p_i)$ über $B(p_i)$ hinaus würde die Ressource
+$R$ überbuchen (da $\sum Z(p_j) = R$) und damit mindestens einen
 anderen Prozess $p_j$ unterversorgen ($Z(p_j) < B(p_j)$).
 \hfill$\blacksquare$
 \end{proof}
@@ -285,13 +285,13 @@ $E \subseteq E'$.
 
 \begin{definition}[Signaturfunktion~\cite{epp2026subgraph}]
 \label{def:sig}
-FÃ¼r Spalte $j$ der Matrix $A \in \{0,1\}^{n\times n}$:
+Für Spalte $j$ der Matrix $A \in \{0,1\}^{n\times n}$:
 \[
   \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n.
 \]
 \end{definition}
 
-\begin{lemma}[InjektivitÃ¤t der Signaturen]
+\begin{lemma}[Injektivität der Signaturen]
 Die Abbildung $(A_{\cdot j}, j) \mapsto \sigma_j$ ist injektiv.
 \end{lemma}
 
@@ -311,7 +311,7 @@ in das disjunkte Intervall $[j \cdot 2^n,\, (j+1) \cdot 2^n)$.
 
 Das folgende Bild zeigt drei Prozesse $P_1$, $P_2$, $P_3$ mit
 Bedarfen 2\,MB, 5\,MB und 1\,MB bei 8\,MB Gesamtspeicher.
-Bedarfsorientierte Zuteilung weist proportional zu, wÃ¤hrend
+Bedarfsorientierte Zuteilung weist proportional zu, während
 Gleichverteilung alle benachteiligt bzw.\ bevorzugt.
 
 \begin{figure}[H]
@@ -340,7 +340,7 @@ Gleichverteilung alle benachteiligt bzw.\ bevorzugt.
     \draw[bar=tikzred] (2.0, \y-0.35) rectangle (4.67, \y+0.35);
     \node[font=\tiny, color=tikzred] at (3.35, \y) {2,67 MB};
   }
-  % Ãœberlauf P2 markieren
+  % Überlauf P2 markieren
   \draw[->, tikzred, thick, dashed]
     (4.67, 2.5) -- (5.1, 2.5)
     node[right, font=\tiny, color=tikzred] {Bedarf: 5\,MB!};
@@ -371,10 +371,10 @@ Gleichverteilung alle benachteiligt bzw.\ bevorzugt.
       {$R = 8$\,MB gesamt};
 
 \end{tikzpicture}
-\caption{Speicherzuteilung fÃ¼r drei Prozesse: Gleichverteilung
+\caption{Speicherzuteilung für drei Prozesse: Gleichverteilung
   (links, rot) vs.\ bedarfsorientierte Zuteilung (rechts, farbig).
   $P_2$ wird bei Gleichverteilung unterversorgt (Bedarf 5\,MB,
-  erhÃ¤lt nur 2,67\,MB); bedarfsorientiert erhÃ¤lt jeder genau seinen Anteil.}
+  erhält nur 2,67\,MB); bedarfsorientiert erhält jeder genau seinen Anteil.}
 \label{fig:tikz1}
 \end{figure}
 
@@ -398,13 +398,13 @@ Bei Gleichverteilung ($Z(P_i) = 8/3$):
 Obwohl $J_{\mathrm{gl}} = 1$ nominell optimal erscheint, deckt diese
 Zuteilung den Bedarf von $P_2$ nicht -- ein Zeichen, dass $J$ allein
 nicht ausreicht und durch die Bedingung $Z(p_i) \leq B(p_i)$
-ergÃ¤nzt werden muss (vgl.\ Satz~\ref{satz:jain_max}).
+ergänzt werden muss (vgl.\ Satz~\ref{satz:jain_max}).
 \end{beispiel}
 
 \subsection{Beispiel 2: Mutex-Lock als Fairness-Mechanismus}
 
-Der Mutex-Lock implementiert das Fairness-Prinzip fÃ¼r den gegenseitigen
-Ausschluss: Prozesse warten passiv in einer Warteschlange (kein Ãœberbedarf
+Der Mutex-Lock implementiert das Fairness-Prinzip für den gegenseitigen
+Ausschluss: Prozesse warten passiv in einer Warteschlange (kein Überbedarf
 durch Busy-Waiting) und werden in FIFO-Reihenfolge geweckt.
 
 \begin{figure}[H]
@@ -422,7 +422,7 @@ durch Busy-Waiting) und werden in FIFO-Reihenfolge geweckt.
     label/.style={font=\scriptsize, color=darkgray}
   ]
 
-  % ZustÃ¤nde des Mutex-Ablaufs
+  % Zustände des Mutex-Ablaufs
   \node[state] (frei)  at (0, 0)    {frei};
   \node[state] (vers)  at (3, 0)    {lock()};
   \node[state] (blk)   at (3, -2.2) {blockiert};
@@ -440,7 +440,7 @@ durch Busy-Waiting) und werden in FIFO-Reihenfolge geweckt.
         tikzorange, thick]
     (1.1, -4.3) -- (4.9, -4.3)
     node[midway, below=4pt, font=\scriptsize, color=tikzorange]
-      {Ã¤ltestes Warten $\leftarrow$ FIFO $\rightarrow$ jÃ¼ngstes Warten};
+      {ältestes Warten $\leftarrow$ FIFO $\rightarrow$ jüngstes Warten};
 
   % Kanten
   \draw[arr=tikzblue] (frei) -- (vers)
@@ -460,21 +460,21 @@ durch Busy-Waiting) und werden in FIFO-Reihenfolge geweckt.
   \node[draw=tikzgreen, fill=tikzgreen!8, rounded corners=3pt,
         font=\scriptsize\bfseries, text width=3.2cm,
         align=center] at (9, -2.2)
-    {Fairness:\\FIFO-Wecken\\kein Ãœberbedarf\\durch Polling};
+    {Fairness:\\FIFO-Wecken\\kein Überbedarf\\durch Polling};
 
 \end{tikzpicture}
 \caption{Mutex-Lock als Fairness-Mechanismus. Blockierte Prozesse stehen
-  in einer FIFO-Warteschlange (bedarfsorientiert: wer lÃ¤nger wartet,
+  in einer FIFO-Warteschlange (bedarfsorientiert: wer länger wartet,
   wird bevorzugt geweckt). Kein Prozess verschwendet CPU durch
-  aktives Warten (kein Ãœberbedarf).}
+  aktives Warten (kein Überbedarf).}
 \label{fig:tikz2}
 \end{figure}
 
-\subsection{Beispiel 3: Semaphor fÃ¼r Ressourcen-Pool (Fairness bei $k$ Einheiten)}
+\subsection{Beispiel 3: Semaphor für Ressourcen-Pool (Fairness bei $k$ Einheiten)}
 
-Ein ZÃ¤hl-Semaphor mit $k = 3$ modelliert einen Pool aus $k$ gleichwertigen
+Ein Zähl-Semaphor mit $k = 3$ modelliert einen Pool aus $k$ gleichwertigen
 Ressourcen (z.\,B.\ Datenbankverbindungen, Drucker). Das Fairness-Prinzip
-verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benÃ¶tigt.
+verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benötigt.
 
 \begin{figure}[H]
 \centering
@@ -490,9 +490,9 @@ verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benÃ¶tigt.
     arr/.style={-{Stealth[length=3.5pt]}, thick, #1}
   ]
 
-  % Ãœberschrift
+  % Überschrift
   \node[font=\bfseries\small] at (5.5, 4.5)
-    {ZÃ¤hl-Semaphor ($k{=}3$): fairer Ressourcen-Pool};
+    {Zähl-Semaphor ($k{=}3$): fairer Ressourcen-Pool};
 
   % Ressourcen-Pool
   \foreach \i/\col in {1/tikzblue, 2/tikzblue, 3/tikzblue}{
@@ -502,7 +502,7 @@ verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benÃ¶tigt.
     {Ressourcen-Pool};
   \draw[tikzblue, thick, rounded corners] (0.6, 3.1) rectangle (4.4, 3.9);
 
-  % Semaphor-ZÃ¤hler
+  % Semaphor-Zähler
   \node[sem] (S) at (5.8, 3.5) {$S=3$};
   \node[font=\scriptsize, color=tikzgreen] at (5.8, 4.2)
     {Semaphor};
@@ -531,17 +531,17 @@ verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benÃ¶tigt.
      $P_3$ belegt 1 Res.\\
      $\Sigma = 4 > k{=}3$:\\
      $\Rightarrow$ $P_2$ muss warten\\
-     (kein Ãœberbedarf)};
+     (kein Überbedarf)};
 
-  % ZÃ¤hlerstand-Tabelle
+  % Zählerstand-Tabelle
   \node[font=\scriptsize\bfseries] at (5.8, 0.5)
-    {ZÃ¤hlerstand: $3 \xrightarrow{P_1} 2 \xrightarrow{P_3} 1
+    {Zählerstand: $3 \xrightarrow{P_1} 2 \xrightarrow{P_3} 1
      \xrightarrow{P_2\text{: 2?}} \text{blockiert}$};
 
 \end{tikzpicture}
-\caption{ZÃ¤hl-Semaphor mit $k=3$ Ressourcen. $P_1$ und $P_3$ belegen
-  je eine Einheit (Bedarf $= 1$), $P_2$ benÃ¶tigt 2 Einheiten, muss
-  aber warten, da der ZÃ¤hler nach $P_1$ und $P_3$ auf $S=1$ gefallen
+\caption{Zähl-Semaphor mit $k=3$ Ressourcen. $P_1$ und $P_3$ belegen
+  je eine Einheit (Bedarf $= 1$), $P_2$ benötigt 2 Einheiten, muss
+  aber warten, da der Zähler nach $P_1$ und $P_3$ auf $S=1$ gefallen
   ist. Kein Prozess belegt mehr als seinen deklarierten Bedarf.}
 \label{fig:tikz3}
 \end{figure}
@@ -550,8 +550,8 @@ verlangt: Jeder Prozess nimmt nur so viele Verbindungen, wie er benÃ¶tigt.
 
 Ein RW-Lock erlaubt simultanes Lesen, aber exklusives Schreiben.
 Das Fairness-Prinzip gilt asymmetrisch: Leser konkurrieren nicht
-untereinander (ihr Bedarf ist simultan erfÃ¼llbar), aber Schreiber
-benÃ¶tigen exklusiven Zugang.
+untereinander (ihr Bedarf ist simultan erfüllbar), aber Schreiber
+benötigen exklusiven Zugang.
 
 \begin{figure}[H]
 \centering
@@ -568,7 +568,7 @@ benÃ¶tigen exklusiven Zugang.
 
   % Schematische Zeitachse
   \node[font=\bfseries\small] at (6, 5.3)
-    {RW-Lock: Zeitlicher Ablauf (Fairness fÃ¼r Leser und Schreiber)};
+    {RW-Lock: Zeitlicher Ablauf (Fairness für Leser und Schreiber)};
 
   % Zeitachse
   \draw[->, thick] (0, 0) -- (12.5, 0) node[right, font=\small] {Zeit};
@@ -619,15 +619,15 @@ benÃ¶tigen exklusiven Zugang.
   \node[font=\scriptsize, align=left] at (10.9, 1.9)
     {\textbf{Fairness:}\\
      -- Leser: parallel\\
-     \hspace{2pt}(kein Ãœberbedarf)\\
+     \hspace{2pt}(kein Überbedarf)\\
      -- Schreiber: exkl.\\
      \hspace{2pt}(exakter Bedarf)\\
      -- Starvation-frei\\
-     \hspace{2pt}durch PrioritÃ¤t};
+     \hspace{2pt}durch Priorität};
 
 \end{tikzpicture}
 \caption{RW-Lock Zeitdiagramm. Leser $R_1$--$R_3$ greifen simultan zu
-  (ihr Bedarf ist gleichzeitig erfÃ¼llbar), $W_1$ schreibt exklusiv
+  (ihr Bedarf ist gleichzeitig erfüllbar), $W_1$ schreibt exklusiv
   von $t=5$ bis $t=7{,}5$. Leser $R_4$ und $R_5$ warten fair
   (FIFO-Prinzip) und werden nach $W_1$'s Freigabe geweckt.}
 \label{fig:tikz4}
@@ -636,7 +636,7 @@ benÃ¶tigen exklusiven Zugang.
 \subsection{Beispiel 5: Starvation -- Verletzung des Fairness-Axioms}
 
 Starvation (Verhungern) tritt auf, wenn ein Prozess dauerhaft
-keinen Zugang zur Ressource erhÃ¤lt, obwohl er einen legitimen Bedarf hat.
+keinen Zugang zur Ressource erhält, obwohl er einen legitimen Bedarf hat.
 Dies verletzt Axiom~\ref{ax:fairness} direkt.
 
 \begin{figure}[H]
@@ -687,25 +687,25 @@ Dies verletzt Axiom~\ref{ax:fairness} direkt.
      lang -- obwohl sein\\
      Bedarf legitim ist.\\[4pt]
      \textbf{Verletzt Axiom~1:}\\
-     $P_H$ hat Ãœberbedarf\\
+     $P_H$ hat Überbedarf\\
      (nimmt mehr CPU,\\
-     als er benÃ¶tigt).};
+     als er benötigt).};
 
-  % Fairness-LÃ¶sung
+  % Fairness-Lösung
   \draw[fill=tikzgreen!8, draw=tikzgreen, rounded corners=4pt]
     (0.2, 3.2) rectangle (2.8, 5.4);
   \node[font=\scriptsize, align=left, text width=2.3cm] at (1.5, 4.3)
-    {\textbf{LÃ¶sung:}\\
-     Aging: PrioritÃ¤t\\
+    {\textbf{Lösung:}\\
+     Aging: Priorität\\
      steigt mit\\
      Wartezeit.\\
      Bedarfsorient.\\
-     wird erfÃ¼llt.};
+     wird erfüllt.};
 
 \end{tikzpicture}
 \caption{Starvation als Verletzung des Fairness-Axioms. Prozess $P_L$
-  wartet dauerhaft, weil $P_H$ dauerhaft die CPU belegt (Ãœberbedarf).
-  Die bedarfsorientierte LÃ¶sung ist \emph{Aging}: die PrioritÃ¤t
+  wartet dauerhaft, weil $P_H$ dauerhaft die CPU belegt (Überbedarf).
+  Die bedarfsorientierte Lösung ist \emph{Aging}: die Priorität
   steigt proportional zur Wartezeit.}
 \label{fig:tikz5}
 \end{figure}
@@ -737,7 +737,7 @@ $Z_{\mathrm{ML}} = \{0_F,\, 1_V,\, 2_B,\, 3_K,\, 4_U\}$
 \]
 \end{definition}
 
-\begin{definition}[BinÃ¤res Semaphor $G_{\mathrm{BS}}$]
+\begin{definition}[Binäres Semaphor $G_{\mathrm{BS}}$]
 $Z_{\mathrm{BS}} = \{0_F,\, 1_B,\, 2_K,\, 3_S\}$.
 \[
   A_{\mathrm{BS}} =
@@ -776,7 +776,7 @@ Spalte $j=1$: $[1,0,0,0,0]^T$:
 \[
   \sigma_1^{\mathrm{ML}} = 1\cdot2^0 + 1\cdot2^5 = 1 + 32 = 33.
 \]
-VollstÃ¤ndige Signatur-Arrays:
+Vollständige Signatur-Arrays:
 \[
   \sigma^{\mathrm{ML}} = [16,\,33,\,4,\,10,\,24],\quad
   \sigma^{\mathrm{BS}} = [9,\,5,\,10,\,24],\quad
@@ -797,7 +797,7 @@ $\varphi: Z_{\mathrm{SL}} \to Z_{\mathrm{ML}}$:
   \varphi(1_V) = 1_V,\quad
   \varphi(2_K) = 3_K.
 \]
-KantenprÃ¼fung:
+Kantenprüfung:
 \begin{enumerate}
   \item $(0_F, 1_V) \in G_{\mathrm{SL}}$:
         $A_{\mathrm{ML}}[0][1] = 1$.\checkmark
@@ -815,9 +815,9 @@ LCS-Berechnung:
 $\sigma^{\mathrm{SL}} = [2, 9, 0]$,
 $\sigma^{\mathrm{ML}} = [16, 33, 4, 10, 24]$.
 
-Keine Signatur stimmt exakt Ã¼berein; nach dynamischer Programmierung:
-Die Spalten-\emph{Muster} der frei$\to$KA-ÃœbergÃ¤nge stimmen nach
-Rotation Ã¼berein. Bei Rotation $r=1$ von $\sigma^{\mathrm{ML}}$:
+Keine Signatur stimmt exakt überein; nach dynamischer Programmierung:
+Die Spalten-\emph{Muster} der frei$\to$KA-Übergänge stimmen nach
+Rotation überein. Bei Rotation $r=1$ von $\sigma^{\mathrm{ML}}$:
 $[33, 4, 10, 24, 16]$. LCS$([2,9,0], [33,4,10,24,16]) = 1$.
 
 Da die Signaturwerte von $G_{\mathrm{SL}}$ ($n=3$) und
@@ -830,7 +830,7 @@ Der Subgraph Algorithmus erkennt die Beziehung.
 \hfill$\blacksquare$
 \end{proof}
 
-\begin{satz}[BinÃ¤res Semaphor $\subseteq$ Mutex-Lock]
+\begin{satz}[Binäres Semaphor $\subseteq$ Mutex-Lock]
 \label{satz:bs_ml}
 $G_{\mathrm{BS}} \subseteq G_{\mathrm{ML}}$.
 \end{satz}
@@ -842,7 +842,7 @@ $\varphi(0_F) = 0_F,\;
  \varphi(2_K) = 3_K,\;
  \varphi(3_S) = 4_U.$
 
-KantenprÃ¼fung:
+Kantenprüfung:
 \begin{enumerate}
   \item $(0_F, 1_B)$ -- \texttt{wait()} bei belegt:
         $A_{\mathrm{ML}}[\varphi(0)][\varphi(1)] = A_{\mathrm{ML}}[0][2] = 0$.
@@ -850,7 +850,7 @@ KantenprÃ¼fung:
         (indirekt via Zustand $1_V$) ist im Mutex-Graph vorhanden.
   \item $(0_F, 2_K)$ -- direkter Eintritt:
         $A_{\mathrm{ML}}[0][3] = 0$.
-        Weg: $0 \xrightarrow{} 1 \xrightarrow{} 3$. \checkmark (Pfad der LÃ¤nge 2)
+        Weg: $0 \xrightarrow{} 1 \xrightarrow{} 3$. \checkmark (Pfad der Länge 2)
   \item $(1_B, 2_K)$ -- Aufwecken:
         $A_{\mathrm{ML}}[2][3] = 1$. \checkmark
   \item $(2_K, 3_S)$:
@@ -859,10 +859,10 @@ KantenprÃ¼fung:
         $A_{\mathrm{ML}}[4][0] = 1$. \checkmark
 \end{enumerate}
 
-Vier von fÃ¼nf Kanten sind direkt vorhanden; die verbleibenden
-zwei sind als Pfade der LÃ¤nge~2 im Mutex-Graph enthalten.
+Vier von fünf Kanten sind direkt vorhanden; die verbleibenden
+zwei sind als Pfade der Länge~2 im Mutex-Graph enthalten.
 LCS auf Spaltenmuster: LCS $\geq 3$ (Kanten $(2,3), (3,4), (4,0)$
-stimmen Ã¼berein).
+stimmen überein).
 \hfill$\blacksquare$
 \end{proof}
 
@@ -872,14 +872,14 @@ $G_{\mathrm{ML}} \subseteq G_{\mathrm{CV}}$.
 \end{satz}
 
 \begin{proof}
-Die Bedingungsvariable schlieÃŸt den Mutex-Lock ein (ZustÃ¤nde
+Die Bedingungsvariable schließt den Mutex-Lock ein (Zustände
 $0_I, 1_L, 3_W, 4_K, 5_U$ von $G_{\mathrm{CV}}$ entsprechen
 $0_F, 1_V, 2_B, 3_K, 4_U$ von $G_{\mathrm{ML}}$).
 
 Abbildung: $\varphi = \{0_F\mapsto0_I,\, 1_V\mapsto1_L,\,
 2_B\mapsto3_W,\, 3_K\mapsto4_K,\, 4_U\mapsto5_U\}$.
 
-Alle fÃ¼nf Kanten von $G_{\mathrm{ML}}$ sind entweder direkte
+Alle fünf Kanten von $G_{\mathrm{ML}}$ sind entweder direkte
 Kanten oder Pfade in $G_{\mathrm{CV}}$:
 $(0_I,1_L), (1_L,3_W)$ via $(1_L,2_T,3_W)$,
 $(3_W,4_K)$ via $(3_W,1_L,2_T,4_K)$, $(4_K,5_U), (5_U,0_I)$.
@@ -889,7 +889,7 @@ LCS $\geq 3$.
 
 \begin{korollar}[Fairness-Hierarchie]
 \label{kor:hier}
-Es gilt die vollstÃ¤ndige Subgraph-Hierarchie:
+Es gilt die vollständige Subgraph-Hierarchie:
 \[
   G_{\mathrm{SL}} \;\subseteq\;
   G_{\mathrm{BS}} \;\subseteq\;
@@ -917,18 +917,18 @@ Prozesse $> 100$\,MB):
   \centering
   \includegraphics[width=\textwidth]{plot6_statistics.png}
   \caption{Links: Bimodale Verteilung des Speicherbedarfs von $n=1000$
-    Prozessen. Mittelwert (rot) und Median (grÃ¼n) weichen voneinander ab
+    Prozessen. Mittelwert (rot) und Median (grün) weichen voneinander ab
     -- ein Zeichen, dass eine Gleichverteilungsstrategie ($Z(p_i) = \bar{B}$)
     systematisch die schweren Prozesse unterversorgt.
     Rechts: Die empirische CDF zeigt, dass 90\,\% der Prozesse
-    weniger als $\approx 25$\,MB benÃ¶tigen.}
+    weniger als $\approx 25$\,MB benötigen.}
   \label{fig:stat}
 \end{figure}
 
 \begin{satz}[Bedarfsorientiert minimiert Unterversorgungsrate]
 \label{satz:unterversorgung}
-Sei $B(p_i)$ der tatsÃ¤chliche Bedarf und $Z(p_i)$ die Zuteilung.
-FÃ¼r die Gleichverteilung $Z^{\mathrm{gl}}(p_i) = R/n$ gilt
+Sei $B(p_i)$ der tatsächliche Bedarf und $Z(p_i)$ die Zuteilung.
+Für die Gleichverteilung $Z^{\mathrm{gl}}(p_i) = R/n$ gilt
 \[
   \Pr\!\bigl[Z^{\mathrm{gl}}(p_i) < B(p_i)\bigr]
   = \Pr\!\bigl[B(p_i) > R/n\bigr] = 1 - F_B(R/n),
@@ -942,7 +942,7 @@ $\sum_i B(p_i) \leq R$.
 \begin{proof}
 Per Konstruktion gilt $Z^{\mathrm{bed}}(p_i) = B(p_i)$ wenn
 $\sum_j B(p_j) \leq R$.
-Dann ist $Z^{\mathrm{bed}}(p_i) \geq B(p_i)$ fÃ¼r alle $i$,
+Dann ist $Z^{\mathrm{bed}}(p_i) \geq B(p_i)$ für alle $i$,
 also $\Pr[Z^{\mathrm{bed}}(p_i) < B(p_i)] = 0$.
 \hfill$\blacksquare$
 \end{proof}
@@ -973,11 +973,11 @@ also $\Pr[Z^{\mathrm{bed}}(p_i) < B(p_i)] = 0$.
 \end{table}
 
 \begin{bemerkung}
-Das Fairness-Axiom~\ref{ax:fairness} wÃ¤hlt den Mechanismus mit
-minimaler Latenz, der den Bedarf erfÃ¼llt:
+Das Fairness-Axiom~\ref{ax:fairness} wählt den Mechanismus mit
+minimaler Latenz, der den Bedarf erfüllt:
 \begin{itemize}
   \item Kurze kritische Regionen ($< 50$\,ns): Spin-Lock (fairstes
-        VerhÃ¤ltnis Wartezeit/Nutzungszeit).
+        Verhältnis Wartezeit/Nutzungszeit).
   \item Mittlere Regionen ($50$--$500$\,ns): Mutex-Lock (FIFO-Fairness,
         kein aktives Warten).
   \item Komplexe Bedingungen: Bedingungsvariable.
@@ -990,8 +990,8 @@ minimaler Latenz, der den Bedarf erfÃ¼llt:
 \centering
 \includegraphics[width=\textwidth]{plot5_hierarchy.png}
 \caption{Subgraph-Hierarchie der Synchronisationsmechanismen.
-  Jeder Mechanismus baut auf dem nÃ¤chst-einfacheren auf:
-  das Fairness-Axiom ist die Basis, Spin-Lock und binÃ¤res Semaphor
+  Jeder Mechanismus baut auf dem nächst-einfacheren auf:
+  das Fairness-Axiom ist die Basis, Spin-Lock und binäres Semaphor
   implementieren es am einfachsten, Bedingungsvariable und RW-Lock
   am allgemeinsten.}
 \label{fig:hierarchy}
@@ -1000,7 +1000,7 @@ minimaler Latenz, der den Bedarf erfÃ¼llt:
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot1_fairness.png}
-\caption{Bedarfsorientierte vs.\ gleiche Zuteilung fÃ¼r fÃ¼nf Prozesse
+\caption{Bedarfsorientierte vs.\ gleiche Zuteilung für fünf Prozesse
   mit unterschiedlichem Speicherbedarf. Links: absoluter Vergleich;
   rechts: prozentualer Anteil am Gesamtspeicher.}
 \label{fig:fairness1}
@@ -1009,10 +1009,10 @@ minimaler Latenz, der den Bedarf erfÃ¼llt:
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot2_dynamic.png}
-\caption{Dynamische Speicherzuteilung Ã¼ber die Zeit fÃ¼r drei Prozesse.
+\caption{Dynamische Speicherzuteilung über die Zeit für drei Prozesse.
   Die gestrichelten Linien zeigen den Instantbedarf, die
-  durchgezogenen Linien die tatsÃ¤chliche Zuteilung (gleitend
-  gemittelt). Das System reagiert mit kurzer VerzÃ¶gerung --
+  durchgezogenen Linien die tatsächliche Zuteilung (gleitend
+  gemittelt). Das System reagiert mit kurzer Verzögerung --
   entsprechend dem Fairness-Axiom.}
 \label{fig:dynamic}
 \end{figure}
@@ -1020,10 +1020,10 @@ minimaler Latenz, der den Bedarf erfÃ¼llt:
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot3_jain.png}
-\caption{Jain's Fairness-Index fÃ¼r drei Zuteilungsstrategien.
+\caption{Jain's Fairness-Index für drei Zuteilungsstrategien.
   Gleichverteilung erreicht $J=1$, schadet aber Prozessen mit
   hohem Bedarf. Bedarfsorientiert liegt bei $J \approx 0{,}93$
-  und erfÃ¼llt alle Bedarfe vollstÃ¤ndig.
+  und erfüllt alle Bedarfe vollständig.
   Monopolisierung ($J = 1/n$) verletzt Axiom~\ref{ax:fairness}.}
 \label{fig:jain}
 \end{figure}
@@ -1031,20 +1031,20 @@ minimaler Latenz, der den Bedarf erfÃ¼llt:
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot4_timeslices.png}
-\caption{CPU-Zeitscheiben: unfaire Zuteilung (links, $P_1$ erhÃ¤lt
+\caption{CPU-Zeitscheiben: unfaire Zuteilung (links, $P_1$ erhält
   80\,\% der Zeitscheiben) vs.\ bedarfsorientierte Zuteilung (rechts).
-  Die bedarfsorientierte Variante gewÃ¤hrleistet, dass $P_2$ seinen
-  vollen Bedarf von 42\,\% erhÃ¤lt.}
+  Die bedarfsorientierte Variante gewährleistet, dass $P_2$ seinen
+  vollen Bedarf von 42\,\% erhält.}
 \label{fig:timeslices}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{plot7_waiting.png}
-\caption{Wartezeiten unter drei Scheduling-Politiken fÃ¼r $n=20$
+\caption{Wartezeiten unter drei Scheduling-Politiken für $n=20$
   Prozesse. FCFS produziert stark variierende Wartezeiten;
   bedarfsorientierte Zuteilung minimiert den Mittelwert;
-  PrioritÃ¤tsinversion schÃ¤digt niedrigpriore Prozesse (Starvation).}
+  Prioritätsinversion schädigt niedrigpriore Prozesse (Starvation).}
 \label{fig:waiting}
 \end{figure}
 
@@ -1065,23 +1065,23 @@ Backoff}).
 
 \begin{prinzip}[Exponential Backoff]
 \label{prinzip:backoff}
-Warte eine sehr kurze Basiszeit~$\tau$, prÃ¼fe die Ressource neu.
-Warte die doppelte Zeit~$2\tau$, prÃ¼fe die Ressource neu.
-Warte die doppelte Zeit~$4\tau$, prÃ¼fe die Ressource neu.
-Warte die doppelte Zeit~$8\tau$, prÃ¼fe die Ressource neu -- und so weiter.
+Warte eine sehr kurze Basiszeit~$\tau$, prüfe die Ressource neu.
+Warte die doppelte Zeit~$2\tau$, prüfe die Ressource neu.
+Warte die doppelte Zeit~$4\tau$, prüfe die Ressource neu.
+Warte die doppelte Zeit~$8\tau$, prüfe die Ressource neu -- und so weiter.
 \[
   W_k \sim \mathrm{Uniform}\bigl\{0,\, 1,\, \ldots,\, 2^k - 1\bigr\} \cdot \tau,
   \qquad k = 0, 1, 2, \ldots
 \]
 Dabei bezeichnet $k$ die Anzahl der bisherigen Kollisionen und $\tau$ die
-LÃ¤nge eines Zeitschlitzes (\emph{slot time}).
+Länge eines Zeitschlitzes (\emph{slot time}).
 \end{prinzip}
 
 Das Verfahren realisiert Axiom~\ref{ax:fairness} auf bemerkenswert
-elegante Weise: Ein Sender, der hÃ¤ufig kollidiert (= hoher Bedarf an
-der gemeinsamen Ressource), wÃ¤hlt aus einem immer grÃ¶ÃŸeren Intervall
-eine Wartezeit -- er tritt also freiwillig zurÃ¼ck und gibt anderen
-Sendern Platz. Kein zentraler Scheduler ist nÃ¶tig; die Fairness entsteht
+elegante Weise: Ein Sender, der häufig kollidiert (= hoher Bedarf an
+der gemeinsamen Ressource), wählt aus einem immer größeren Intervall
+eine Wartezeit -- er tritt also freiwillig zurück und gibt anderen
+Sendern Platz. Kein zentraler Scheduler ist nötig; die Fairness entsteht
 emergent aus dem Protokoll.
 
 \subsection{Mathematische Grundlagen}
@@ -1090,22 +1090,22 @@ emergent aus dem Protokoll.
 
 \begin{definition}[Zeitschlitz und Slot Time]
 Sei $\tau > 0$ die \emph{Slot Time}, d.\,h.\ die minimale Zeiteinheit
-des Kanals (bei Ethernet: $\tau = 51{,}2\,\mu\mathrm{s}$ fÃ¼r
+des Kanals (bei Ethernet: $\tau = 51{,}2\,\mu\mathrm{s}$ für
 10\,Mbit/s). Das Wartezeitintervall nach $k$ Kollisionen ist
 $\{0, 1, \ldots, 2^{\min(k, k_{\max})} - 1\} \cdot \tau$.
 \end{definition}
 
-\begin{definition}[ZufÃ¤llige Wartezeit]
-Die zufÃ¤llige Wartezeit nach $k$ Kollisionen ist
+\begin{definition}[Zufällige Wartezeit]
+Die zufällige Wartezeit nach $k$ Kollisionen ist
 \[
   W_k = X_k \cdot \tau, \qquad
   X_k \sim \mathrm{Uniform}\bigl\{0, 1, \ldots, 2^{\min(k,k_{\max})}-1\bigr\},
 \]
-wobei $k_{\max} = 10$ (IEEE 802.3) bzw.\ implementierungsabhÃ¤ngig.
+wobei $k_{\max} = 10$ (IEEE 802.3) bzw.\ implementierungsabhängig.
 \end{definition}
 
 \begin{definition}[Erfolgswahrscheinlichkeit pro Slot]
-Bei $n$ gleichzeitig sendenden Stationen und IntervallgrÃ¶ÃŸe $2^k$
+Bei $n$ gleichzeitig sendenden Stationen und Intervallgröße $2^k$
 ist die Wahrscheinlichkeit, dass genau eine Station sendet (Erfolg):
 \[
   p_{\mathrm{suc}}(n, k) = n \cdot \frac{1}{2^k}
@@ -1117,7 +1117,7 @@ ist die Wahrscheinlichkeit, dass genau eine Station sendet (Erfolg):
 
 \begin{satz}[Erwartete Wartezeit nach $k$ Kollisionen]
 \label{satz:erwartung_backoff}
-FÃ¼r $X_k \sim \mathrm{Uniform}\{0, 1, \ldots, 2^k - 1\}$ gilt:
+Für $X_k \sim \mathrm{Uniform}\{0, 1, \ldots, 2^k - 1\}$ gilt:
 \[
   E[W_k] = \frac{2^k - 1}{2} \cdot \tau,
 \]
@@ -1137,7 +1137,7 @@ Da $X_k$ gleichverteilt auf $\{0, 1, \ldots, N-1\}$ mit $N = 2^k$ ist:
 \]
 Damit $E[W_k] = E[X_k] \cdot \tau = \frac{2^k-1}{2} \cdot \tau$.
 
-FÃ¼r die Varianz:
+Für die Varianz:
 \[
   E[X_k^2] = \frac{1}{N}\sum_{x=0}^{N-1} x^2
             = \frac{1}{N} \cdot \frac{(N-1)N(2N-1)}{6}
@@ -1162,7 +1162,7 @@ Also $\mathrm{Var}[W_k] = \mathrm{Var}[X_k] \cdot \tau^2 = \frac{4^k-1}{12} \cdo
 \begin{korollar}[Exponentielle Verdopplung des Erwartungswerts]
 \[
   E[W_{k+1}] = \frac{2^{k+1}-1}{2}\cdot\tau
-             \approx 2 \cdot E[W_k] \quad \text{fÃ¼r groÃŸe } k.
+             \approx 2 \cdot E[W_k] \quad \text{für große } k.
 \]
 Genauer: $E[W_{k+1}] = 2\,E[W_k] + \tfrac{\tau}{2}$.
 Die Verdopplung ist also asymptotisch exakt, mit einem additiven
@@ -1182,13 +1182,13 @@ $E[W_{k+1}] - 2\,E[W_k]
 \begin{satz}[Kumulierte Wartezeit bis Erfolg]
 \label{satz:kumuliert}
 Sei $K$ die Anzahl der Kollisionen bis zum ersten Erfolg.
-Die erwartete Gesamtwartezeit betrÃ¤gt:
+Die erwartete Gesamtwartezeit beträgt:
 \[
   E\!\left[\sum_{j=0}^{K-1} W_j\right]
   = \sum_{k=0}^{\infty} E[W_k] \cdot P(K > k)
   = \tau \sum_{k=0}^{\infty} \frac{2^k - 1}{2} \cdot P(K > k).
 \]
-FÃ¼r $n$ Sender und feste Erfolgswahrscheinlichkeit
+Für $n$ Sender und feste Erfolgswahrscheinlichkeit
 $p = p_{\mathrm{suc}}(n, k) \approx p_0$ (vereinfacht):
 \[
   E[K] = \frac{1}{p_0}, \qquad
@@ -1205,15 +1205,15 @@ Erfolg eingetreten ist.
   = \sum_{k=0}^{\infty} E[W_k \cdot \mathbf{1}_{K>k}]
   = \sum_{k=0}^{\infty} E[W_k] \cdot P(K > k),
 \]
-da $W_k$ und $K > k$ bedingt unabhÃ¤ngig sind (der Zufallswert
-$X_k$ wird neu gezogen, unabhÃ¤ngig von der Geschichte).
+da $W_k$ und $K > k$ bedingt unabhängig sind (der Zufallswert
+$X_k$ wird neu gezogen, unabhängig von der Geschichte).
 Mit $P(K > k) = \prod_{j=0}^{k-1}(1-p_j)$ und dem vereinfachten
 Modell $p_j \approx p_0$ gilt $P(K > k) \approx (1-p_0)^k$:
 \[
   E\!\left[\sum W_j\right]
   \approx \frac{\tau}{2} \sum_{k=0}^{\infty} (2^k - 1)(1-p_0)^k.
 \]
-Die Reihe konvergiert fÃ¼r $p_0 > 1 - 1/2 = 1/2$, also fÃ¼r
+Die Reihe konvergiert für $p_0 > 1 - 1/2 = 1/2$, also für
 ausreichend kleine Netzlast.
 \hfill$\blacksquare$
 \end{proof}
@@ -1223,35 +1223,35 @@ ausreichend kleine Netzlast.
 \begin{satz}[Exponential Backoff realisiert bedarfsorientierte Fairness]
 \label{satz:backoff_fairness}
 Sei $\lambda_i$ die Senderate (Pakete/s) von Sender $i$, d.\,h.\ ein
-MaÃŸ fÃ¼r seinen Ressourcenbedarf am Kanal.
-Unter Binary Exponential Backoff gilt: Der Sender mit hÃ¶herer Rate
-$\lambda_i > \lambda_j$ hat eine lÃ¤ngere mittlere Wartezeit
+Maß für seinen Ressourcenbedarf am Kanal.
+Unter Binary Exponential Backoff gilt: Der Sender mit höherer Rate
+$\lambda_i > \lambda_j$ hat eine längere mittlere Wartezeit
 $E[W^{(i)}] > E[W^{(j)}]$ und gibt damit dem geringer lastenden
 Sender Vorrang -- im Einklang mit Axiom~\ref{ax:fairness}.
 \end{satz}
 
 \begin{proof}
-Ein Sender mit hÃ¶herer Rate $\lambda_i$ stÃ¶ÃŸt hÃ¤ufiger auf Kollisionen,
+Ein Sender mit höherer Rate $\lambda_i$ stößt häufiger auf Kollisionen,
 da die Kollisionswahrscheinlichkeit mit der gemeinsamen Kanalauslastung
-$\rho = \sum_j \lambda_j / \mu$ steigt (wobei $\mu$ die KanalkapazitÃ¤t).
-Nach jeder Kollision wÃ¤chst der Backoff-Index $k_i$, womit
+$\rho = \sum_j \lambda_j / \mu$ steigt (wobei $\mu$ die Kanalkapazität).
+Nach jeder Kollision wächst der Backoff-Index $k_i$, womit
 $E[W_{k_i}] = \frac{2^{k_i}-1}{2}\tau$ ansteigt.
 
 Formal: Sei $k_i(t)$ der Backoff-Index von Sender $i$ zum Zeitpunkt $t$.
-FÃ¼r $\lambda_i > \lambda_j$ gilt im stochastischen Mittel
-$E[k_i(t)] > E[k_j(t)]$ (mehr Kollisionen $\Rightarrow$ grÃ¶ÃŸerer Index),
+Für $\lambda_i > \lambda_j$ gilt im stochastischen Mittel
+$E[k_i(t)] > E[k_j(t)]$ (mehr Kollisionen $\Rightarrow$ größerer Index),
 und damit
 \[
   E\!\left[W_{k_i(t)}\right] = \frac{2^{E[k_i(t)]}-1}{2}\tau
   \;>\;
   \frac{2^{E[k_j(t)]}-1}{2}\tau = E\!\left[W_{k_j(t)}\right].
 \]
-(Die Ungleichung gilt wegen der KonvexitÃ¤t von $2^k$:
+(Die Ungleichung gilt wegen der Konvexität von $2^k$:
 $2^{E[k]} \leq E[2^k]$, aber die Ordnungsrelation bleibt erhalten
-fÃ¼r $E[k_i] > E[k_j]$.)
+für $E[k_i] > E[k_j]$.)
 
-Der viel sendende Sender wartet lÃ¤nger $\Rightarrow$ er gibt Bandbreite
-frei fÃ¼r Sender mit niedrigerer Rate -- bedarfsorientierte Fairness
+Der viel sendende Sender wartet länger $\Rightarrow$ er gibt Bandbreite
+frei für Sender mit niedrigerer Rate -- bedarfsorientierte Fairness
 ohne zentrale Steuerung.
 \hfill$\blacksquare$
 \end{proof}
@@ -1260,7 +1260,7 @@ ohne zentrale Steuerung.
 
 \subsubsection{TCP Retransmission Timeout (RFC 6298)}
 
-Das prominenteste Beispiel fÃ¼r Exponential Backoff in der Praxis ist
+Das prominenteste Beispiel für Exponential Backoff in der Praxis ist
 der \emph{Retransmission Timeout} (RTO) von TCP~\cite{rfc6298}.
 
 \begin{definition}[TCP RTO mit Exponential Backoff]
@@ -1271,7 +1271,7 @@ Nach jedem Timeout ohne Empfang eines ACK wird verdoppelt:
                               \mathrm{RTO}_{\max}\bigr),
   \quad \mathrm{RTO}_{\max} = 64\,\mathrm{s}.
 \]
-Nach maximal 12--15 Versuchen (implementierungsabhÃ¤ngig) bricht TCP
+Nach maximal 12--15 Versuchen (implementierungsabhängig) bricht TCP
 die Verbindung ab.
 \end{definition}
 
@@ -1280,7 +1280,7 @@ Bei $\mathrm{RTO}_0 = 1\,\mathrm{s}$ und $\mathrm{RTO}_{\max} = 64\,\mathrm{s}$:
 \[
   \mathrm{RTO}_k \in \{1, 2, 4, 8, 16, 32, 64, 64, 64, \ldots\}\,\mathrm{s}.
 \]
-Die kumulierte Wartezeit bis zum Abbruch (nach 9 Versuchen) betrÃ¤gt:
+Die kumulierte Wartezeit bis zum Abbruch (nach 9 Versuchen) beträgt:
 \[
   \sum_{k=0}^{8} \mathrm{RTO}_k = 1+2+4+8+16+32+64+64+64 = 255\,\mathrm{s}
   \approx 4{,}25\,\mathrm{min}.
@@ -1289,7 +1289,7 @@ Die kumulierte Wartezeit bis zum Abbruch (nach 9 Versuchen) betrÃ¤gt:
 
 \begin{satz}[Konvergenz der TCP-Gesamtwartezeit]
 \label{satz:tcp_konvergenz}
-FÃ¼r $\mathrm{RTO}_{\max} = M$ und Startzeit $\mathrm{RTO}_0 = r_0$
+Für $\mathrm{RTO}_{\max} = M$ und Startzeit $\mathrm{RTO}_0 = r_0$
 ist die kumulierte Wartezeit bis zum ersten Eintreffen von
 $\mathrm{RTO}_k = M$ (bei $k^* = \log_2(M/r_0)$ Verdopplungen):
 \[
@@ -1298,7 +1298,7 @@ $\mathrm{RTO}_k = M$ (bei $k^* = \log_2(M/r_0)$ Verdopplungen):
   = r_0(2^{k^*+1}-1)
   = 2M - r_0.
 \]
-Ab $k = k^*$ wÃ¤chst die Gesamtwartezeit linear mit Schrittweite $M$.
+Ab $k = k^*$ wächst die Gesamtwartezeit linear mit Schrittweite $M$.
 \end{satz}
 
 \begin{proof}
@@ -1318,21 +1318,21 @@ Stationen eine Zufallszahl aus $\{0, 1, \ldots, 2^k-1\}$ und warten
 entsprechend viele Slot-Zeiten.
 
 \begin{definition}[Backoff-Intervall nach IEEE 802.3]
-Nach $k$ Kollisionen wÃ¤hlt jede Station zufÃ¤llig:
+Nach $k$ Kollisionen wählt jede Station zufällig:
 \[
   r \in \{0, 1, \ldots, 2^{\min(k,10)}-1\},
 \]
-und wartet $r \cdot 51{,}2\,\mu\mathrm{s}$ (Slot Time fÃ¼r 10\,Mbit/s).
+und wartet $r \cdot 51{,}2\,\mu\mathrm{s}$ (Slot Time für 10\,Mbit/s).
 Nach $k = 16$ Kollisionen wird der Rahmen verworfen.
 \end{definition}
 
 \begin{satz}[Maximale Wartezeit bei IEEE 802.3]
 \label{satz:max_ethernet}
-Die maximale Wartezeit nach $k$ Kollisionen ($k \leq 10$) betrÃ¤gt:
+Die maximale Wartezeit nach $k$ Kollisionen ($k \leq 10$) beträgt:
 \[
   W_k^{\max} = (2^k - 1) \cdot 51{,}2\,\mu\mathrm{s}.
 \]
-FÃ¼r $k = 10$: $W_{10}^{\max} = 1023 \cdot 51{,}2\,\mu\mathrm{s}
+Für $k = 10$: $W_{10}^{\max} = 1023 \cdot 51{,}2\,\mu\mathrm{s}
 \approx 52{,}4\,\mathrm{ms}$.
 \end{satz}
 
@@ -1352,23 +1352,23 @@ und Systemen:
         die Wartezeit zwischen Verbindungsversuchen bei Server-Fehlern
         (503 Service Unavailable).
   \item \textbf{DHCP} (RFC 2131~\cite{rfc2131}): Ein Client, der keine
-        DHCP-Antwort erhÃ¤lt, verdoppelt die Wartezeit:
+        DHCP-Antwort erhält, verdoppelt die Wartezeit:
         $4\,\mathrm{s}, 8\,\mathrm{s}, 16\,\mathrm{s}, 32\,\mathrm{s},
         64\,\mathrm{s}$.
   \item \textbf{WiFi 802.11 CSMA/CA}: Statt Kollisionserkennung
         (\emph{CD}) wird eine Kollision \emph{vermieden} (\emph{CA})
-        durch zufÃ¤llige Backoff-Zeiten aus einem wachsenden Contention
+        durch zufällige Backoff-Zeiten aus einem wachsenden Contention
         Window $[0, \mathrm{CW}]$, wobei $\mathrm{CW}$ sich nach
-        jeder erfolglosen Ãœbertragung verdoppelt~\cite{ieee80211}.
-  \item \textbf{AWS SDK / Google Cloud / Azure}: Alle groÃŸen Cloud-SDKs
+        jeder erfolglosen Übertragung verdoppelt~\cite{ieee80211}.
+  \item \textbf{AWS SDK / Google Cloud / Azure}: Alle großen Cloud-SDKs
         implementieren Exponential Backoff mit Jitter als Standard-Retry-
         Strategie~\cite{amazon2022backoff}.
   \item \textbf{STP Spanning Tree Protocol} (IEEE 802.1D): Backoff beim
         Erkennen von Schleifen im Netzwerk.
-  \item \textbf{BGP Route Dampening}: Routen, die hÃ¤ufig
-        flappen, werden mit wachsender Penalty-Zeit unterdrÃ¼ckt -- ein
+  \item \textbf{BGP Route Dampening}: Routen, die häufig
+        flappen, werden mit wachsender Penalty-Zeit unterdrückt -- ein
         direkter Ausdruck von Axiom~\ref{ax:fairness}: instabile Routen
-        werden zurÃ¼ckgedrÃ¤ngt.
+        werden zurückgedrängt.
 \end{itemize}
 
 \subsection{TikZ-Anschauungsbeispiele zum Exponential Backoff}
@@ -1403,7 +1403,7 @@ und Systemen:
   % Kollision markieren
   \draw[tikzred, very thick, line cap=round]
     (1, 4.7) -- (1, 6.0) node[above, font=\tiny, color=tikzred] {Koll.};
-  % k=1: wÃ¤hle aus {0,1} â†’ z.B. r_A=1 Slot warten
+  % k=1: wähle aus {0,1} â†’ z.B. r_A=1 Slot warten
   \draw[tikzblue, dashed, ->] (1, 5.3) -- (2, 5.3)
     node[midway, above, font=\tiny, color=tikzblue] {$k{=}1$, $r_A{=}1$};
   % Versuch 2 bei Slot 2
@@ -1469,20 +1469,20 @@ und Systemen:
     (9, 3.0) rectangle (15.3, 6.2);
   \node[font=\small, align=left, text width=5.8cm] at (12.1, 4.6)
     {\textbf{Fairness-Emergenz:}\\[4pt]
-     Nach $k$ Kollisionen wÃ¤hlt jede\\
-     Station aus $2^k$ mÃ¶glichen Slots.\\[4pt]
+     Nach $k$ Kollisionen wählt jede\\
+     Station aus $2^k$ möglichen Slots.\\[4pt]
      $\Rightarrow$ Mehr Kollisionen = mehr\\
-     \hspace{7pt}Geduld = mehr RÃ¼cktritt.\\[4pt]
+     \hspace{7pt}Geduld = mehr Rücktritt.\\[4pt]
      $\Rightarrow$ Kein Sender monopolisiert\\
      \hspace{7pt}den Kanal dauerhaft.\\[4pt]
-     Axiom~\ref{ax:fairness}: erfÃ¼llt ohne\\
+     Axiom~\ref{ax:fairness}: erfüllt ohne\\
      zentralen Koordinator.};
 
 \end{tikzpicture}%
 }% end resizebox
-\caption{Ablauf des Binary Exponential Backoff fÃ¼r zwei Stationen.
-  Station~A wÃ¤hlt bei der 2.~Kollision $r_A = 3$ (wartet 3~Slots),
-  Station~B wÃ¤hlt $r_B = 0$ (sendet sofort).
+\caption{Ablauf des Binary Exponential Backoff für zwei Stationen.
+  Station~A wählt bei der 2.~Kollision $r_A = 3$ (wartet 3~Slots),
+  Station~B wählt $r_B = 0$ (sendet sofort).
   Im Mittel findet Desynchronisation statt.
   Die wachsenden Intervalle zeigen die exponentielle Skalierung.}
 \label{fig:tikz_eb1}
@@ -1508,7 +1508,7 @@ und Systemen:
   \node[font=\bfseries\small] at (7, 7.5)
     {TCP Retransmission Timeout: Zustandsgraph mit Exponential Backoff};
 
-  % SendezustÃ¤nde
+  % Sendezustände
   \node[state]   (s0) at (0, 6)    {Sende $k{=}0$};
   \node[timeout] (t0) at (3, 6)    {Timeout $1\,\mathrm{s}$};
   \node[state]   (s1) at (6, 6)    {Sende $k{=}1$};
@@ -1523,7 +1523,7 @@ und Systemen:
         minimum width=2.0cm, minimum height=0.75cm]
     (abort) at (6, 2.4) {ABBRUCH};
 
-  % OK-ZustÃ¤nde (ACK empfangen)
+  % OK-Zustände (ACK empfangen)
   \node[ok] (ok0) at (1.5, 7.3) {ACK empf.};
   \node[ok] (ok1) at (7.5, 7.3) {ACK empf.};
 
@@ -1561,8 +1561,8 @@ und Systemen:
 \end{tikzpicture}
 \caption{TCP Retransmission als Zustandsgraph. Jeder Timeout verdoppelt
   das RTO bis zum Maximum von 64\,s (RFC 6298). Die Gesamtwartezeit
-  bis zum Verbindungsabbruch betrÃ¤gt nach Satz~\ref{satz:tcp_konvergenz}
-  $2 \cdot 64 - 1 = 127\,\mathrm{s}$ fÃ¼r die reine Verdopplungsphase,
+  bis zum Verbindungsabbruch beträgt nach Satz~\ref{satz:tcp_konvergenz}
+  $2 \cdot 64 - 1 = 127\,\mathrm{s}$ für die reine Verdopplungsphase,
   plus linearer Teil.}
 \label{fig:tikz_eb2}
 \end{figure}
@@ -1655,9 +1655,9 @@ und Systemen:
   \caption{Erwartete Wartezeit $E[W_k] = \frac{2^k-1}{2}\cdot\tau$
     (blau, Satz~\ref{satz:erwartung_backoff}) und maximale Wartezeit
     $(2^k-1)\tau$ (rot gestrichelt) als Funktion des
-    KollisionszÃ¤hlers~$k$ ($\tau = 50\,\mathrm{ms}$).
-    Die grÃ¼nen Pfeile markieren die Verdopplung von $E[W_k]$ bei
-    jedem Schritt; der blaue Bereich zeigt alle mÃ¶glichen Wartezeiten.}
+    Kollisionszählers~$k$ ($\tau = 50\,\mathrm{ms}$).
+    Die grünen Pfeile markieren die Verdopplung von $E[W_k]$ bei
+    jedem Schritt; der blaue Bereich zeigt alle möglichen Wartezeiten.}
   \label{fig:eb1}
 \end{figure}
 
@@ -1668,26 +1668,26 @@ und Systemen:
     Verdopplung bis $\mathrm{RTO}_{\max} = 64\,\mathrm{s}$.
     Rechts: Kumulierte Wartezeit; nach 9 Versuchen
     sind $\approx 255\,\mathrm{s}$ vergangen, dann Verbindungsabbruch.
-    Die Kurve knickt bei $k = 6$ ab (RTO-SÃ¤ttigung, Satz~\ref{satz:tcp_konvergenz}).}
+    Die Kurve knickt bei $k = 6$ ab (RTO-Sättigung, Satz~\ref{satz:tcp_konvergenz}).}
   \label{fig:eb2}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot_eb3_csma.png}
-  \caption{Links: Kollisionswahrscheinlichkeit fÃ¼r CSMA/CD bei
-    verschiedenen Backoff-Intervallen. Ein grÃ¶ÃŸeres Intervall ($k=5$)
+  \caption{Links: Kollisionswahrscheinlichkeit für CSMA/CD bei
+    verschiedenen Backoff-Intervallen. Ein größeres Intervall ($k=5$)
     senkt die Kollisionswahrscheinlichkeit drastisch -- auf Kosten
-    hÃ¶herer Wartezeiten. Rechts: Netzwerkdurchsatz als Funktion der
+    höherer Wartezeiten. Rechts: Netzwerkdurchsatz als Funktion der
     angebotenen Last; Exponential Backoff stabilisiert den Durchsatz
-    Ã¼ber den SÃ¤ttigungspunkt hinaus.}
+    über den Sättigungspunkt hinaus.}
   \label{fig:eb3}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot_eb4_stochastic.png}
-  \caption{Links: Verteilung der ersten erfolgreichen Ãœbertragung
+  \caption{Links: Verteilung der ersten erfolgreichen Übertragung
     bei 4 konkurrierenden Sendern. Die meisten Erfolge treten
     bei $k = 1$ oder $k = 2$ ein (Geometrische Verteilung).
     Rechts: Erwartete Versuche bis Erfolg als Funktion der
@@ -1700,10 +1700,10 @@ und Systemen:
   \includegraphics[width=\textwidth]{plot_eb5_jitter.png}
   \caption{\textbf{Thundering Herd Problem}: Ohne Jitter
     synchronisieren sich 100 Clients, die gleichzeitig gestartet
-    sind, auf exakt gleiche Backoff-Zeiten und stÃ¼rmen den Server
+    sind, auf exakt gleiche Backoff-Zeiten und stürmen den Server
     periodisch (links). Mit Jitter -- d.\,h.\ einer gleichverteilten
     Zufallskomponente in $[0, W_k]$ -- verteilen sich die
-    Verbindungsversuche gleichmÃ¤ÃŸig (rechts). Jitter ist damit
+    Verbindungsversuche gleichmäßig (rechts). Jitter ist damit
     eine direkte Implementierung von Axiom~\ref{ax:fairness}.}
   \label{fig:eb5}
 \end{figure}
@@ -1712,17 +1712,17 @@ und Systemen:
   \centering
   \includegraphics[width=\textwidth]{plot_eb6_fairness.png}
   \caption{Verbindung zum Fairness-Axiom~\ref{ax:fairness}:
-    Sender~A mit hoher Last kollidiert hÃ¤ufig
+    Sender~A mit hoher Last kollidiert häufig
     und hat daher einen hohen Backoff-Index~$k_A$, was zu langen
-    Wartezeiten fÃ¼hrt. Sender~C mit niedriger Last wartet kaum.
+    Wartezeiten führt. Sender~C mit niedriger Last wartet kaum.
     Der Algorithmus reguliert sich \emph{selbst}: Viel-Nutzer
-    treten zurÃ¼ck, ohne dass ein zentraler Scheduler eingreift.}
+    treten zurück, ohne dass ein zentraler Scheduler eingreift.}
   \label{fig:eb6}
 \end{figure}
 
 \subsection{Subgraph-Modellierung des Exponential Backoff}
 
-Der Exponential-Backoff-Prozess lÃ¤sst sich als gerichteter Graph
+Der Exponential-Backoff-Prozess lässt sich als gerichteter Graph
 $G_{\mathrm{EB}}$ modellieren, dessen Knoten die Backoff-Stufen
 $\{0, 1, \ldots, k_{\max}, \mathrm{OK}\}$ sind.
 
@@ -1733,21 +1733,21 @@ $Z_{\mathrm{EB}} = \{0, 1, 2, 3, 4, \mathrm{OK}\}$ und
 \[
   A_{\mathrm{EB}}[i][j] = 1 \iff
   \begin{cases}
-    j = i+1 & \text{(Kollision, Backoff-ErhÃ¶hung)} \\
+    j = i+1 & \text{(Kollision, Backoff-Erhöhung)} \\
     j = \mathrm{OK} & \text{(Erfolg aus Stufe } i\text{)} \\
-    j = i & i = k_{\max} \text{ (SÃ¤ttigung)}
+    j = i & i = k_{\max} \text{ (Sättigung)}
   \end{cases}.
 \]
 \end{definition}
 
 \begin{satz}[Backoff als Subgraph des Mutex-Lock]
 \label{satz:backoff_subgraph}
-Der Kern des Backoff-Graphen (ZustÃ¤nde $\{0, 1, \mathrm{OK}\}$)
+Der Kern des Backoff-Graphen (Zustände $\{0, 1, \mathrm{OK}\}$)
 ist ein Subgraph des Spin-Lock-Graphen $G_{\mathrm{SL}}$.
 \end{satz}
 
 \begin{proof}
-Betrachte die EinschrÃ¤nkung von $G_{\mathrm{EB}}$ auf
+Betrachte die Einschränkung von $G_{\mathrm{EB}}$ auf
 $\{k=0, k=1, \mathrm{OK}\}$:
 \begin{itemize}
   \item Kante $(0, 1)$: Kollision beim ersten Versuch. Entspricht
@@ -1755,7 +1755,7 @@ $\{k=0, k=1, \mathrm{OK}\}$:
   \item Kante $(0, \mathrm{OK})$ und $(1, \mathrm{OK})$:
         Erfolg. Entspricht $(1_V, 2_K)$ in $G_{\mathrm{SL}}$.
   \item Kante $(1, 0)$ (Reset nach Erfolg auf Stufe~1):
-        Entspricht der Polling-RÃ¼ckkehr $(1_V, 0_F)$ in
+        Entspricht der Polling-Rückkehr $(1_V, 0_F)$ in
         $G_{\mathrm{SL}}$.
 \end{itemize}
 LCS$(\sigma^{\mathrm{EB}|_3}, \sigma^{\mathrm{SL}}) \geq 2$;
@@ -1764,18 +1764,18 @@ der Subgraph Algorithmus erkennt die Einbettung.
 \end{proof}
 
 \begin{bemerkung}
-Der vollstÃ¤ndige Backoff-Graph $G_{\mathrm{EB}}$ mit $k_{\max}$
+Der vollständige Backoff-Graph $G_{\mathrm{EB}}$ mit $k_{\max}$
 Stufen ist ein \emph{Supergraph} von $G_{\mathrm{SL}}$: Er erweitert
-den Spin-Lock um das exponentielle GedÃ¤chtnis (steigende Wartezeiten).
+den Spin-Lock um das exponentielle Gedächtnis (steigende Wartezeiten).
 Dies spiegelt das Fairness-Axiom wider:
-Der einfache Spin-Lock hat kein GedÃ¤chtnis (aktives Warten ohne
-RÃ¼cksicht auf andere); der Backoff-Graph lernt aus Kollisionen
-und tritt progressiv zurÃ¼ck.
+Der einfache Spin-Lock hat kein Gedächtnis (aktives Warten ohne
+Rücksicht auf andere); der Backoff-Graph lernt aus Kollisionen
+und tritt progressiv zurück.
 \end{bemerkung}
 
 \begin{table}[H]
 \centering
-\caption{Ãœbersicht der Exponential-Backoff-Parameter in
+\caption{Übersicht der Exponential-Backoff-Parameter in
   realen Protokollen}
 \label{tab:backoff_protokolle}
 \begin{tabular}{lccccl}
@@ -1803,7 +1803,7 @@ Diese Arbeit hat das Fairness-Axiom~\ref{ax:fairness} als
 fundamentales und einheitliches Gestaltungsprinzip aller
 Betriebssystem-Synchronisationsmechanismen etabliert.
 Ausgehend vom zentralen Grundsatz -- Fairness ist
-bedarfsorientiert, kein Prozess fordert mehr als er benÃ¶tigt,
+bedarfsorientiert, kein Prozess fordert mehr als er benötigt,
 kein Prozess akkumuliert Ressourcen auf Kosten anderer --
 wurden folgende Ergebnisse formal bewiesen und praktisch
 veranschaulicht:
@@ -1815,9 +1815,9 @@ veranschaulicht:
         Cauchy-Schwarz-Ungleichung).
   \item \textbf{Satz~\ref{satz:kein_missbrauch}}: Ehrliche
         Bedarfsdeklaration ist notwendige und hinreichende
-        Bedingung fÃ¼r Pareto-OptimalitÃ¤t der Zuteilung.
-  \item \textbf{SÃ¤tze~\ref{satz:sl_ml}--\ref{satz:ml_cv}
-        und Korollar~\ref{kor:hier}}: Spin-Lock, binÃ¤res
+        Bedingung für Pareto-Optimalität der Zuteilung.
+  \item \textbf{Sätze~\ref{satz:sl_ml}--\ref{satz:ml_cv}
+        und Korollar~\ref{kor:hier}}: Spin-Lock, binäres
         Semaphor, Mutex-Lock und Bedingungsvariable bilden
         eine formale Subgraph-Hierarchie
         $G_{\mathrm{SL}} \subseteq G_{\mathrm{BS}}
@@ -1829,23 +1829,23 @@ veranschaulicht:
         sofern $\sum_i B(p_i) \leq R$.
   \item \textbf{Satz~\ref{satz:erwartung_backoff}}: Der
         Exponential Backoff realisiert das Fairness-Axiom
-        dezentral: $E[W_k] = \frac{2^k-1}{2}\tau$ wÃ¤chst
-        exponentiell mit der KollisionshÃ¤ufigkeit.
+        dezentral: $E[W_k] = \frac{2^k-1}{2}\tau$ wächst
+        exponentiell mit der Kollisionshäufigkeit.
   \item \textbf{Satz~\ref{satz:backoff_fairness}}: Sender
-        mit hÃ¶herer Last warten im Mittel lÃ¤nger -- bedarfsorientierte
+        mit höherer Last warten im Mittel länger -- bedarfsorientierte
         Fairness entsteht emergent, ohne zentralen Koordinator.
   \item \textbf{Satz~\ref{satz:tcp_konvergenz}}: Die TCP-RTO-Gesamtwartezeit
-        konvergiert gegen $2M - r_0$; ab der SÃ¤ttigungsstufe
-        wÃ¤chst sie linear.
+        konvergiert gegen $2M - r_0$; ab der Sättigungsstufe
+        wächst sie linear.
   \item \textbf{Satz~\ref{satz:backoff_subgraph}}: Der
         Backoff-Kern ist ein Subgraph von $G_{\mathrm{SL}}$;
-        der vollstÃ¤ndige Backoff-Graph ist ein Supergraph
-        mit exponentiellem GedÃ¤chtnis.
+        der vollständige Backoff-Graph ist ein Supergraph
+        mit exponentiellem Gedächtnis.
 \end{itemize}
 
 Sieben Matplotlib-Plots und acht TikZ-Diagramme illustrieren
 die Ergebnisse anschaulich: von der bedarfsorientierten
-Speicherzuteilung Ã¼ber TCP-Retransmission-Kurven bis hin
+Speicherzuteilung über TCP-Retransmission-Kurven bis hin
 zu Thundering-Herd-Simulationen und Jain-Index-Analysen.
 Die statistische Betrachtung (bimodale Speicherverteilung,
 CDF-Analyse, Latenz-Tabellen) verankert die formalen
@@ -1859,32 +1859,32 @@ Linux Completely Fair Scheduler}
 Das Fairness-Axiom~\ref{ax:fairness} entspricht in der
 Netzwerktheorie dem Konzept der \emph{Max-Min-Fairness}
 \cite{bertsekas1992data}: Man maximiert iterativ die minimale
-Zuteilung unter allen ungesÃ¤ttigten Prozessen, bis alle
-Ressourcen verteilt oder alle Bedarfe erfÃ¼llt sind.
-Das zugehÃ¶rige \emph{Water-Filling}-Verfahren~\cite{cover2006elements}
-realisiert dies in $O(n \log n)$: Man gieÃŸt Wasser in ein
-GefÃ¤ÃŸ, dessen Boden durch die Bedarfe $B(p_i)$ geformt ist --
+Zuteilung unter allen ungesättigten Prozessen, bis alle
+Ressourcen verteilt oder alle Bedarfe erfüllt sind.
+Das zugehörige \emph{Water-Filling}-Verfahren~\cite{cover2006elements}
+realisiert dies in $O(n \log n)$: Man gießt Wasser in ein
+Gefäß, dessen Boden durch die Bedarfe $B(p_i)$ geformt ist --
 der Wasserstand entspricht der Zuteilung.
 
 Der Linux Completely Fair Scheduler (CFS)~\cite{molnar2007cfs}
-implementiert eine diskrete Approximation: Er fÃ¼hrt eine
+implementiert eine diskrete Approximation: Er führt eine
 virtuelle Laufzeit $\mathrm{vruntime}(p_i)$ pro Prozess,
-die bei CPU-Zuteilung wÃ¤chst. Der Prozess mit der kleinsten
+die bei CPU-Zuteilung wächst. Der Prozess mit der kleinsten
 $\mathrm{vruntime}$ wird bevorzugt. Dies entspricht
 bedarfsorientierter Fairness, wenn man den Bedarf als
-die gewÃ¼nschte CPU-Zeit pro Zeiteinheit auffasst.
+die gewünschte CPU-Zeit pro Zeiteinheit auffasst.
 
 Eine offene Forschungsfrage ist, ob der Subgraph Algorithmus
 CFS-Zustandsgraphen auf bekannte Fairness-Hierarchien
 reduzieren kann: Ist $G_{\mathrm{CFS}} \subseteq G_{\mathrm{CV}}$?
-Formal wÃ¤re zu zeigen, dass die virtuellen Laufzeit-ZustÃ¤nde
+Formal wäre zu zeigen, dass die virtuellen Laufzeit-Zustände
 als Knoten und Scheduler-Ereignisse als Kanten einen Graphen
-bilden, der den Bedingungsvariablen-Graphen als Subgraph enthÃ¤lt.
+bilden, der den Bedingungsvariablen-Graphen als Subgraph enthält.
 
 \subsubsection{Formale Verifikation mit TLA+, SPIN und Coq}
 
 Die in dieser Arbeit definierten Zustandsgraphen (Abschnitt~4)
-lassen sich direkt als Kripke-Strukturen in drei komplementÃ¤ren
+lassen sich direkt als Kripke-Strukturen in drei komplementären
 Verifikationsrahmen einsetzen:
 
 \textbf{TLA+ (Lamport~\cite{lamport2002tla}):} Das Fairness-Axiom
@@ -1895,64 +1895,64 @@ wird zur Liveness-Eigenschaft
 \]
 die besagt: Wenn ein Prozess dauerhaft Bedarf hat, wird er
 dauerhaft bedient (keine Starvation). TLA+ kann diese
-Eigenschaft fÃ¼r die Mutex- und Semaphor-Modelle automatisch
-prÃ¼fen.
+Eigenschaft für die Mutex- und Semaphor-Modelle automatisch
+prüfen.
 
 \textbf{SPIN / Promela~\cite{holzmann2004spin}:} Die
 Zustandsgraphen werden als Promela-Prozesse modelliert;
 die Fairness-Eigenschaft als LTL-Formel. SPIN's Partial-Order-Reduction
 reduziert den Zustandsraum exponentiell.
 
-\textbf{Coq / Isabelle~\cite{bertot2004coq}:} FÃ¼r einen
+\textbf{Coq / Isabelle~\cite{bertot2004coq}:} Für einen
 \emph{maschinenverifizierten} Beweis von Satz~\ref{satz:jain_max}
-mÃ¼ssten die Beweise dieser Arbeit in das Typsystem von Coq
-Ã¼bertragen werden. Dies ist methodisch anspruchsvoll, wÃ¼rde
-aber eine absolute Garantie liefern -- insbesondere fÃ¼r den
+müssten die Beweise dieser Arbeit in das Typsystem von Coq
+übertragen werden. Dies ist methodisch anspruchsvoll, würde
+aber eine absolute Garantie liefern -- insbesondere für den
 Einsatz in sicherheitskritischen Systemen (ISO 26262
 ASIL~D~\cite{iso26262}).
 
 \subsubsection{Maschinelles Lernen zur antizipatorischen
 Bedarfsvorhersage}
 
-Eine grundlegende SchwÃ¤che des Fairness-Axioms ist, dass der
-zukÃ¼nftige Bedarf $B(p_i)$ selten exakt bekannt ist.
+Eine grundlegende Schwäche des Fairness-Axioms ist, dass der
+zukünftige Bedarf $B(p_i)$ selten exakt bekannt ist.
 Drei Lernparadigmen sind relevant:
 
 \textbf{Online-Learning~\cite{cesa2006prediction}:}
 Algorithmen wie \emph{Follow-the-Regularized-Leader} (FTRL)
 oder \emph{Hedge} lernen aus vergangenen Bedarfsprofilen
-$B(p_i, t-1), B(p_i, t-2), \ldots$ und schÃ¤tzen
-$\hat{B}(p_i, t)$ mit sublinearem Regret. Die SchÃ¤tzung
-wird dem bedarfsorientierten Zuteilungsprotokoll Ã¼bergeben.
+$B(p_i, t-1), B(p_i, t-2), \ldots$ und schätzen
+$\hat{B}(p_i, t)$ mit sublinearem Regret. Die Schätzung
+wird dem bedarfsorientierten Zuteilungsprotokoll übergeben.
 
 \textbf{Graph Neural Networks (GNNs)~\cite{scarselli2009graph}:}
-Der Subgraph Algorithmus liefert fÃ¼r eine groÃŸe Prozessdatenbank
+Der Subgraph Algorithmus liefert für eine große Prozessdatenbank
 exakte Subgraph-Labels; das GNN lernt, diese in $O(1)$
 vorherzusagen. In der Inferenzphase klassifiziert das GNN
 einen neuen Prozess als Typ (Spin-Lock-Nutzer,
-Mutex-Nutzer usw.) und schÃ¤tzt dessen Bedarf anhand
+Mutex-Nutzer usw.) und schätzt dessen Bedarf anhand
 historischer Bedarfsprofile des gleichen Typs.
 
 \textbf{Reinforcement Learning~\cite{sutton2018reinforcement}:}
 Der Scheduler wird als RL-Agent modelliert, der Zuteilungen
-$Z(p_i)$ als Aktionen wÃ¤hlt und als Belohnung den
-Jain-Index $J(Z)$ erhÃ¤lt. Ãœber Policy-Gradient-Methoden
+$Z(p_i)$ als Aktionen wählt und als Belohnung den
+Jain-Index $J(Z)$ erhält. Über Policy-Gradient-Methoden
 (REINFORCE, PPO) kann der Agent eine optimale
 bedarfsorientierte Politik erlernen -- ohne explizites
-Wissen Ã¼ber die Bedarfsfunktion $B$.
+Wissen über die Bedarfsfunktion $B$.
 
-\subsubsection{Quantifizierung von Ãœberbedarf, Missbrauchs\-erkennung
+\subsubsection{Quantifizierung von Überbedarf, Missbrauchs\-erkennung
 und Cloud-Throttling}
 
 In Multi-Tenant-Clouds~\cite{armbrust2010view} deklarieren
 Mieter (Tenants) Ressourcenbedarfe, die nicht immer mit dem
-tatsÃ¤chlichen Bedarf Ã¼bereinstimmen. Eine formale
-\emph{Ãœberbedarf-Metrik} quantifiziert das AusmaÃŸ:
+tatsächlichen Bedarf übereinstimmen. Eine formale
+\emph{Überbedarf-Metrik} quantifiziert das Ausmaß:
 \[
   O(p_i, t) = \frac{Z(p_i, t) - \tilde{B}(p_i, t)}
                    {\tilde{B}(p_i, t)} \;\geq\; 0,
 \]
-wobei $\tilde{B}(p_i, t)$ die tatsÃ¤chlich \emph{genutzte}
+wobei $\tilde{B}(p_i, t)$ die tatsächlich \emph{genutzte}
 Ressource im Zeitfenster $[t-T, t]$ ist.
 
 \textbf{Dynamisches Throttling:} Bei $O(p_i) > \theta$
@@ -1961,16 +1961,16 @@ $Z'(p_i) = Z(p_i) \cdot e^{-\lambda \cdot O(p_i)}$
 (exponentielles Throttling, analog zu Backoff).
 
 \textbf{Anomalie-Erkennung:} Statistische Tests (z.\,B.\
-CUSUM~\cite{page1954continuous}) kÃ¶nnen sprunghaften Anstieg
+CUSUM~\cite{page1954continuous}) können sprunghaften Anstieg
 von $O(p_i)$ erkennen und als Speicher-Hoarding-Angriff
-klassifizieren. Dies schÃ¼tzt das System vor dem im
+klassifizieren. Dies schützt das System vor dem im
 Fairness-Axiom beschriebenen Szenario: dem Prozess, der
 Speicher akkumuliert, um ihn am Ende alleine zu nutzen.
 
 \textbf{Verbindung zu Exponential Backoff:} Throttling und
-Backoff sind mathematisch dual: Backoff erhÃ¶ht die Wartezeit
+Backoff sind mathematisch dual: Backoff erhöht die Wartezeit
 exponentiell bei Kollision; Throttling reduziert die Zuteilung
-exponentiell bei Ãœberbedarf. Beide Verfahren realisieren
+exponentiell bei Überbedarf. Beide Verfahren realisieren
 Axiom~\ref{ax:fairness} auf verschiedenen Zeitskalen.
 
 \subsubsection{Erweiterung auf NUMA- und heterogene Speicher\-architekturen}
@@ -1988,20 +1988,20 @@ wobei $w_{ij}$ die Zugriffskosten von Prozess~$p_i$ auf
 NUMA-Knoten~$j$ kodiert und $B_j(p_i)$ der Speicherbedarf
 auf Knoten~$j$ ist.
 
-DarÃ¼ber hinaus umfassen moderne Systeme heterogene
+Darüber hinaus umfassen moderne Systeme heterogene
 Speicherhierarchien: DRAM, HBM (High Bandwidth Memory),
 Persistent Memory (NVM), NVMe-SSDs -- jede mit eigenem
 Latenz-/Bandbreitenprofil~\cite{izraelevitz2019basic}.
-Bedarfsorientierte Fairness muss hier nicht nur KapazitÃ¤t,
+Bedarfsorientierte Fairness muss hier nicht nur Kapazität,
 sondern auch Zugriffsgeschwindigkeit und Persistenz
-berÃ¼cksichtigen.
+berücksichtigen.
 
 Der Subgraph Algorithmus auf NUMA-Topologiegraphen kann
-helfen, strukturelle Ã„hnlichkeiten zwischen
+helfen, strukturelle Ähnlichkeiten zwischen
 Prozess-zu-Knoten-Zuordnungen zu erkennen: Zwei
-Zuordnungen sind Ã¤hnlich, wenn ihre Topologiegraphen eine
-Subgraph-Beziehung haben -- was auf Ã¤hnliche
-Speicherzugriffsprofile schlieÃŸen lÃ¤sst.
+Zuordnungen sind ähnlich, wenn ihre Topologiegraphen eine
+Subgraph-Beziehung haben -- was auf ähnliche
+Speicherzugriffsprofile schließen lässt.
 
 \subsubsection{Bedarfsorientierte Fairness in Echtzeitund Safety-kritischen Systemen}
 
@@ -2014,7 +2014,7 @@ Echtzeitprinzip: Das \emph{Earliest Deadline First}
 nach Bedarf, sondern nach Dringlichkeit.
 
 Eine vereinheitlichende Theorie -- \emph{Fairness-Aware
-Real-Time Scheduling (FARTS)} -- kÃ¶nnte beide Prinzipien
+Real-Time Scheduling (FARTS)} -- könnte beide Prinzipien
 integrieren:
 \[
   \mathrm{Prio}(p_i) = \alpha \cdot \frac{B(p_i)}{R}
@@ -2022,15 +2022,15 @@ integrieren:
 \]
 wobei $D_i$ die Deadline, $t$ die aktuelle Zeit und
 $\alpha \in [0,1]$ ein Gewichtungsparameter ist.
-FÃ¼r $\alpha = 0$ degeneriert FARTS zu EDF;
-fÃ¼r $\alpha = 1$ zu bedarfsorientierter Fairness.
+Für $\alpha = 0$ degeneriert FARTS zu EDF;
+für $\alpha = 1$ zu bedarfsorientierter Fairness.
 
 \textbf{ISO 26262 und Sicherheitsanforderungen:}
 In sicherheitskritischen Systemen (ASIL-B bis ASIL-D
 \cite{iso26262}) muss Starvation formal ausgeschlossen
 werden -- dies entspricht exakt der Liveness-Eigenschaft
 des Fairness-Axioms. Eine formale Zertifizierung des
-Fairness-Mechanismus (z.\,B.\ via Coq-Beweis) wÃ¤re
+Fairness-Mechanismus (z.\,B.\ via Coq-Beweis) wäre
 ein direkter Beitrag zur funktionalen Sicherheit.
 
 \subsubsection{Spieltheoretisches Gleichgewicht, Mechanismus-Design
@@ -2046,26 +2046,26 @@ Spiel $\Gamma = (P, \{S_i\}, \{u_i\})$ modellierbar:
         $u_i(Z) = \min\!\bigl(Z(p_i), B(p_i)\bigr) -
         c \cdot \max\!\bigl(0, Z(p_i) - B(p_i)\bigr)$
 \end{itemize}
-Der zweite Term bestraft Ãœberbedarf mit Faktor $c > 0$.
+Der zweite Term bestraft Überbedarf mit Faktor $c > 0$.
 Das Nash-Gleichgewicht~\cite{nash1950equilibrium} dieses Spiels
 ist genau $\hat{B}(p_i) = B(p_i)$ (ehrliche Deklaration),
-da jede Ãœber- oder Untertreibung die Nutzenfunktion
+da jede Über- oder Untertreibung die Nutzenfunktion
 verschlechtert.
 
 \textbf{Revelation Principle~\cite{myerson1981optimal}:}
 Das bedarfsorientierte Zuteilungsprotokoll ist
 \emph{Dominant-Strategy Incentive Compatible} (DSIC):
-Ehrliche Deklaration ist fÃ¼r jeden Prozess dominant,
-unabhÃ¤ngig vom Verhalten der anderen. Dies ist die stÃ¤rkste
-Form von AnreizkompatibilitÃ¤t und garantiert Axiom~\ref{ax:fairness}
+Ehrliche Deklaration ist für jeden Prozess dominant,
+unabhängig vom Verhalten der anderen. Dies ist die stärkste
+Form von Anreizkompatibilität und garantiert Axiom~\ref{ax:fairness}
 auch in strategischen Umgebungen.
 
 \textbf{VCG-Mechanismus~\cite{vickrey1961counterspeculation}:}
 Der Vickrey-Clarke-Groves-Mechanismus kann eingesetzt werden,
 um bedarfsorientierte Fairness mit effizienter Allokation
-zu kombinieren: Prozesse, die hÃ¶heren sozialen Nutzen aus
+zu kombinieren: Prozesse, die höheren sozialen Nutzen aus
 Ressourcen ziehen, erhalten mehr -- aber nur bis zu ihrem
-tatsÃ¤chlichen Bedarf.
+tatsächlichen Bedarf.
 
 \subsubsection{Exponential Backoff in verteilten Systemen:
 Konsensalgorithmen und Blockchain}
@@ -2074,9 +2074,9 @@ Das in Abschnitt~\ref{sec:backoff} analysierte Backoff-Prinzip
 findet sich in weiteren verteilten Systemen:
 
 \textbf{Raft-Konsensalgorithmus~\cite{ongaro2014raft}:}
-Leader-Election-Timeouts werden zufÃ¤llig aus einem Intervall
-$[T, 2T]$ gewÃ¤hlt -- eine einstufige Variante des Backoffs.
-Bei Konflikten (gleichzeitige Kandidaten) verlÃ¤ngert sich
+Leader-Election-Timeouts werden zufällig aus einem Intervall
+$[T, 2T]$ gewählt -- eine einstufige Variante des Backoffs.
+Bei Konflikten (gleichzeitige Kandidaten) verlängert sich
 das Timeout implizit. Eine formale Analyse als
 Backoff-Graph $G_{\mathrm{Raft}} \supseteq G_{\mathrm{SL}}$
 ist eine offene Frage.
@@ -2084,8 +2084,8 @@ ist eine offene Frage.
 \textbf{Bitcoin Proof-of-Work~\cite{nakamoto2008bitcoin}:}
 Der Mining-Prozess ist strukturell analog zu Exponential
 Backoff: Alle Miner konkurrieren um denselben Block; bei
-zu hoher Kollisionsrate (zwei simultane BlÃ¶cke) wird die
-Schwierigkeit erhÃ¶ht (analoges Backoff-Intervall). Fairness
+zu hoher Kollisionsrate (zwei simultane Blöcke) wird die
+Schwierigkeit erhöht (analoges Backoff-Intervall). Fairness
 entsteht durch die probabilistische Gleichverteilung der
 Hash-Funktion -- ein direkter Ausdruck von
 Axiom~\ref{ax:fairness}.
@@ -2095,15 +2095,15 @@ Congestion Control implementiert Cubic und BBR als
 Backoff-Varianten: Bei Paketverlust (Kollisionssignal)
 wird das Congestion Window reduziert -- ein multiplikatives,
 nicht exponentielles Backoff. Die Verbindung zur
-bedarfsorientierten Fairness Ã¼ber Jain's Fairness-Index
-wurde fÃ¼r QUIC noch nicht formal bewiesen und ist
+bedarfsorientierten Fairness über Jain's Fairness-Index
+wurde für QUIC noch nicht formal bewiesen und ist
 eine offene Forschungsfrage.
 
-\subsubsection{Adaptive Backoff-Strategien: Ãœber das einfache
+\subsubsection{Adaptive Backoff-Strategien: Über das einfache
 Exponential hinaus}
 
-Das binÃ¤re Exponential Backoff ist nur eine von vielen
-mÃ¶glichen Backoff-Strategien. Eine allgemeine Backoff-Familie
+Das binäre Exponential Backoff ist nur eine von vielen
+möglichen Backoff-Strategien. Eine allgemeine Backoff-Familie
 ist:
 \[
   W_k = f(k) \cdot \tau, \qquad f: \mathbb{N} \to \mathbb{R}_{> 0}.
@@ -2114,17 +2114,17 @@ ist:
   \item \textbf{Fibonacci:} $f(k) = F_k$ (goldener Schnitt:
         $\phi \approx 1{,}618$ als Wachstumsfaktor)
   \item \textbf{Logarithmisch:} $f(k) = \log_2(k+1)$
-        (sehr sanft, gut fÃ¼r lange Wartezeiten)
+        (sehr sanft, gut für lange Wartezeiten)
   \item \textbf{Adaptiv (PID-gesteuert):}
         $f(k) = f(k-1) + K_P \cdot e_k + K_I \sum e_j$,
         wobei $e_k$ der Regelungsfehler (Abweichung vom
         Ziel-Kollisionsrate) ist.
 \end{itemize}
 
-Eine formale Optimierungstheorie fÃ¼r Backoff-Strategien --
+Eine formale Optimierungstheorie für Backoff-Strategien --
 welche $f$ minimiert die mittlere Wartezeit bei gegebener
 Fairness-Garantie ($J \geq J_{\min}$)? -- ist ein
-offenes Problem. Erste AnsÃ¤tze finden sich in der
+offenes Problem. Erste Ansätze finden sich in der
 Literatur zur Stochastischen Optimierung~\cite{spall2003introduction}.
 
 \subsubsection{Verbindung zwischen Exponential Backoff und
@@ -2132,7 +2132,7 @@ dem Subgraph Algorithmus}
 
 Die tiefste Verbindung zwischen Exponential Backoff und dem
 Subgraph Algorithmus~\cite{epp2026subgraph} ist struktureller
-Natur: Beide Verfahren lÃ¶sen dasselbe Problem auf
+Natur: Beide Verfahren lösen dasselbe Problem auf
 verschiedenen Ebenen.
 
 \textbf{Auf Protokollebene:} Backoff entscheidet, \emph{wann}
@@ -2143,25 +2143,25 @@ einem Prozess entspricht (Klassifikation durch Subgraph-Match).
 \textbf{Formal:} Der Subgraph Algorithmus auf dem
 Backoff-Graphen $G_{\mathrm{EB}}$ klassifiziert, ob ein
 gegebenes Backoff-Protokoll eine Subgraph-Beziehung zu einem
-bekannten Mechanismus hat. So kÃ¶nnte man automatisch
+bekannten Mechanismus hat. So könnte man automatisch
 entscheiden: Ist ein neues Cloud-Retry-Protokoll strukturell
-Ã¤quivalent zu TCP-RTO oder zu DHCP-Backoff?
+äquivalent zu TCP-RTO oder zu DHCP-Backoff?
 
-\textbf{KomplexitÃ¤tstheoretisch:} Beide Verfahren haben die
-gleiche untere Schranke $\Omega(n^2)$ fÃ¼r die EingabegrÃ¶ÃŸe.
+\textbf{Komplexitätstheoretisch:} Beide Verfahren haben die
+gleiche untere Schranke $\Omega(n^2)$ für die Eingabegröße.
 Backoff hat im Mittel $O(\log n)$ Versuche (geometrische
 Verteilung), der Subgraph Algorithmus $O(n^3)$ Schritte.
 Die Komposition beider zu einem adaptiven Protokoll-Klassifikator
-mit Retry-Logik wÃ¤re ein neuartiger Beitrag zur
+mit Retry-Logik wäre ein neuartiger Beitrag zur
 Netzwerktheorie.
 
-\subsubsection{Quantencomputing: Superposition der Ressourcen\-zustÃ¤nde}
+\subsubsection{Quantencomputing: Superposition der Ressourcen\-zustände}
 
-In Quantencomputern~\cite{nielsen2010quantum} kÃ¶nnen
-Prozesse (Qubits) in SuperpositionszustÃ¤nden existieren:
+In Quantencomputern~\cite{nielsen2010quantum} können
+Prozesse (Qubits) in Superpositionszuständen existieren:
 Ein Qubit kann gleichzeitig im Zustand $|0\rangle$ (frei)
 und $|1\rangle$ (belegt) sein. Das Fairness-Axiom muss auf
-diese RealitÃ¤t verallgemeinert werden:
+diese Realität verallgemeinert werden:
 
 \[
   B_{\mathrm{quant}}(p_i)
@@ -2173,24 +2173,24 @@ und $\hat{B}$ der Bedarfs-Observable ist.
 Quantenmechanische Synchronisation -- \emph{Quantum Mutual
 Exclusion}~\cite{mosca2007quantum} -- ist ein aktives
 Forschungsgebiet: Klassische Mutex-Locks lassen sich nicht
-direkt auf Quantenschaltkreise Ã¼bertragen, da Messung den
+direkt auf Quantenschaltkreise übertragen, da Messung den
 Zustand kollabiert. Eine Theorie des \emph{Quantum Exponential
 Backoff} (bei Quanten-Kollisionen, d.\,h.\ destruktiver
-Interferenz) ist noch nicht entwickelt und wÃ¤re ein
+Interferenz) ist noch nicht entwickelt und wäre ein
 Pionierbeitrag.
 
-\subsubsection{Offene KomplexitÃ¤tstheoretische Fragen}
+\subsubsection{Offene Komplexitätstheoretische Fragen}
 
-AbschlieÃŸend seien die wichtigsten offenen Probleme
-aufgefÃ¼hrt, die aus dieser Arbeit erwachsen:
+Abschließend seien die wichtigsten offenen Probleme
+aufgeführt, die aus dieser Arbeit erwachsen:
 
 \begin{enumerate}
-  \item \textbf{Unbedingte untere Schranke fÃ¼r Subgraph:}
-        Kann $\Omega(n^3)$ fÃ¼r den zyklischen
+  \item \textbf{Unbedingte untere Schranke für Subgraph:}
+        Kann $\Omega(n^3)$ für den zyklischen
         Subgraph Algorithmus ohne die SETH-Hypothese
         bewiesen werden~\cite{abboud2015tight}?
-        Dies wÃ¼rde eine der wichtigsten offenen Fragen
-        der Sequenz-KomplexitÃ¤tstheorie lÃ¶sen.
+        Dies würde eine der wichtigsten offenen Fragen
+        der Sequenz-Komplexitätstheorie lösen.
 
   \item \textbf{Optimale Backoff-Funktion:}
         Welche Funktion $f(k)$ minimiert die mittlere
@@ -2199,23 +2199,23 @@ aufgefÃ¼hrt, die aus dieser Arbeit erwachsen:
         $n$ Sendern? Gibt es eine geschlossene Form?
 
   \item \textbf{Jain-Index des Subgraph-Matchings:}
-        Gibt es einen Fairness-Index fÃ¼r die
-        GÃ¼te eines Subgraph-Matchings, der dem
-        Jain-Index fÃ¼r Ressourcenzuteilungen entspricht?
+        Gibt es einen Fairness-Index für die
+        Güte eines Subgraph-Matchings, der dem
+        Jain-Index für Ressourcenzuteilungen entspricht?
         Formal: Eine Funktion
         $J_{\mathrm{match}}: (G, G') \mapsto [0,1]$,
         die $J_{\mathrm{match}}(G, G') = 1$ genau dann,
         wenn $G \cong G'$ (Isomorphie), und
         $J_{\mathrm{match}} = 1/n$ wenn nur ein
-        Knoten Ã¼bereinstimmt.
+        Knoten übereinstimmt.
 
-  \item \textbf{Fairness im PrÃ¤emptiven Scheduling:}
-        Kann das Fairness-Axiom auf prÃ¤emptive
+  \item \textbf{Fairness im Präemptiven Scheduling:}
+        Kann das Fairness-Axiom auf präemptive
         Scheduler formalisiert werden, bei denen
-        Prozesse unterbrochen werden kÃ¶nnen?
-        Starvation-Freiheit unter prÃ¤emptivem
+        Prozesse unterbrochen werden können?
+        Starvation-Freiheit unter präemptivem
         EDF ist bereits bewiesen~\cite{liu1973scheduling};
-        bedarfsorientierte Fairness unter PrÃ¤emption
+        bedarfsorientierte Fairness unter Präemption
         ist eine offene Frage.
 
   \item \textbf{Mehrdimensionale Ressourcen:}
@@ -2225,8 +2225,8 @@ aufgefÃ¼hrt, die aus dieser Arbeit erwachsen:
         B_{\mathrm{MEM}}, B_{\mathrm{IO}},
         B_{\mathrm{NET}}) \in \mathbb{R}^4_{\geq 0}$.
         Eine mehrdimensionale bedarfsorientierte
-        Zuteilung und der zugehÃ¶rige Jain-Index
-        sind formal noch nicht vollstÃ¤ndig
+        Zuteilung und der zugehörige Jain-Index
+        sind formal noch nicht vollständig
         charakterisiert.
 \end{enumerate}
 

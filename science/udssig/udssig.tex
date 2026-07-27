@@ -15,7 +15,7 @@
 
 \geometry{margin=2.5cm}
 
-% Verhindert Ãœberlauf von Text Ã¼ber den rechten Rand
+% Verhindert Überlauf von Text über den rechten Rand
 \sloppy
 \emergencystretch=3em
 \tolerance=2000
@@ -55,13 +55,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -70,7 +70,7 @@
 }
 
 \title{UDS-Signalvisualisierung: Eine Subgraph-basierte\\
-Erweiterung der Unified Diagnostic Services fÃ¼r\\
+Erweiterung der Unified Diagnostic Services für\\
 standardisierte Werkstatt- und Mobile-App-Darstellung}
 \author{Stephan Epp}
 \date{30. Juni 2026}
@@ -82,34 +82,34 @@ standardisierte Werkstatt- und Mobile-App-Darstellung}
 \tableofcontents
 \newpage
 
-\section{EinfÃ¼hrung}
+\section{Einführung}
 
-Die Unified Diagnostic Services (UDS, ISO~14229) bilden seit ihrer AblÃ¶sung von KWP2000/ISO~14230 den weltweit verbindlichen Anwendungsschichtstandard fÃ¼r die Kommunikation zwischen Diagnosetester und SteuergerÃ¤t (ECU) in modernen Fahrzeugen. UDS definiert Dienste (Service Identifier, SID) fÃ¼r Diagnose, Programmierung, Sicherheitszugriff, Routinen, Speicher- und DatenÃ¼bertragung Ã¼ber CAN, CAN~FD oder DoIP (Diagnostics over Internet Protocol nach ISO~13400). Trotz dieser umfassenden Diensteabdeckung adressiert UDS in seiner heutigen Spezifikation nicht, \emph{wie} eine wachsende Zahl gleichzeitig erfasster, oft voneinander abhÃ¤ngiger Signale (Rohwerte, abgeleitete GrÃ¶ÃŸen, Freeze-Frame-Daten) fÃ¼r einen menschlichen Betrachter strukturiert und in Echtzeit dargestellt werden soll -- weder auf einem klassischen Werkstatt-DiagnosegerÃ¤t noch auf einem Smartphone oder Tablet im Rahmen einer standardisierten mobilen Diagnose-App.
+Die Unified Diagnostic Services (UDS, ISO~14229) bilden seit ihrer Ablösung von KWP2000/ISO~14230 den weltweit verbindlichen Anwendungsschichtstandard für die Kommunikation zwischen Diagnosetester und Steuergerät (ECU) in modernen Fahrzeugen. UDS definiert Dienste (Service Identifier, SID) für Diagnose, Programmierung, Sicherheitszugriff, Routinen, Speicher- und Datenübertragung über CAN, CAN~FD oder DoIP (Diagnostics over Internet Protocol nach ISO~13400). Trotz dieser umfassenden Diensteabdeckung adressiert UDS in seiner heutigen Spezifikation nicht, \emph{wie} eine wachsende Zahl gleichzeitig erfasster, oft voneinander abhängiger Signale (Rohwerte, abgeleitete Größen, Freeze-Frame-Daten) für einen menschlichen Betrachter strukturiert und in Echtzeit dargestellt werden soll -- weder auf einem klassischen Werkstatt-Diagnosegerät noch auf einem Smartphone oder Tablet im Rahmen einer standardisierten mobilen Diagnose-App.
 
 \subsection{Problemstellung}
 
-Mit zunehmender SteuergerÃ¤te-Vernetzung wÃ¤chst die Zahl der Ã¼ber \texttt{ReadDataByIdentifier} (SID~0x22) und \texttt{RoutineControl} (SID~0x31) gleichzeitig verfÃ¼gbaren Signale drastisch. Viele dieser Signale stehen in funktionalen AbhÃ¤ngigkeiten zueinander (z.\,B. Ladezustand $\leftarrow$ Spannung, Strom; Reichweite $\leftarrow$ Ladezustand, Geschwindigkeit). Ein AnzeigegerÃ¤t -- ob fest verbautes WerkstattgerÃ¤t oder mobile App -- verfÃ¼gt Ã¼ber eine begrenzte Menge an DarstellungsfÃ¤higkeiten (Liniendiagramm, Gauge, Balkenanzeige, kombiniertes Dashboard) sowie begrenzte Bandbreite und BildschirmflÃ¤che. Es stellt sich die Frage, welche \emph{grÃ¶ÃŸte konsistente Teilmenge} der verfÃ¼gbaren Signale unter den gegebenen DarstellungsfÃ¤higkeiten und Transportrestriktionen verlustfrei und strukturerhaltend angezeigt werden kann.
+Mit zunehmender Steuergeräte-Vernetzung wächst die Zahl der über \texttt{ReadDataByIdentifier} (SID~0x22) und \texttt{RoutineControl} (SID~0x31) gleichzeitig verfügbaren Signale drastisch. Viele dieser Signale stehen in funktionalen Abhängigkeiten zueinander (z.\,B. Ladezustand $\leftarrow$ Spannung, Strom; Reichweite $\leftarrow$ Ladezustand, Geschwindigkeit). Ein Anzeigegerät -- ob fest verbautes Werkstattgerät oder mobile App -- verfügt über eine begrenzte Menge an Darstellungsfähigkeiten (Liniendiagramm, Gauge, Balkenanzeige, kombiniertes Dashboard) sowie begrenzte Bandbreite und Bildschirmfläche. Es stellt sich die Frage, welche \emph{größte konsistente Teilmenge} der verfügbaren Signale unter den gegebenen Darstellungsfähigkeiten und Transportrestriktionen verlustfrei und strukturerhaltend angezeigt werden kann.
 
-\textbf{Zentrale These dieser Arbeit:} Dieses Auswahlproblem lÃ¤sst sich formal als Subgraph-Isomorphieproblem zwischen einem \emph{Signal-AbhÃ¤ngigkeitsgraphen} $G_S$ und einem \emph{Darstellungs-FÃ¤higkeitsgraphen} $G_D$ modellieren und mit dem Subgraph Algorithmus (Epp, 2026; \url{https://github.com/hjstephan86/subgraph}) in $\Theta(n^3)$ Zeit optimal und beweisbar korrekt lÃ¶sen -- deutlich effizienter als ein naiver Abgleich aller $n!$ Signal-Permutationen.
+\textbf{Zentrale These dieser Arbeit:} Dieses Auswahlproblem lässt sich formal als Subgraph-Isomorphieproblem zwischen einem \emph{Signal-Abhängigkeitsgraphen} $G_S$ und einem \emph{Darstellungs-Fähigkeitsgraphen} $G_D$ modellieren und mit dem Subgraph Algorithmus (Epp, 2026; \url{https://github.com/hjstephan86/subgraph}) in $\Theta(n^3)$ Zeit optimal und beweisbar korrekt lösen -- deutlich effizienter als ein naiver Abgleich aller $n!$ Signal-Permutationen.
 
 \subsection{Motivation und Beitrag}
 
-Diese Arbeit schlÃ¤gt eine standardisierungsfÃ¤hige UDS-Erweiterung vor: einen neuen logischen Dienst \emph{Signal Graph Service} (vorgeschlagene SID \texttt{0x3B}, im reservierten Bereich), der es einer ECU erlaubt, dem Tester nicht nur Rohwerte, sondern auch deren AbhÃ¤ngigkeitsstruktur als Graph mitzuteilen. Ein DiagnosegerÃ¤t oder eine mobile App kann diese Struktur anschlieÃŸend mit der eigenen DarstellungsfÃ¤higkeit Ã¼ber den Subgraph Algorithmus abgleichen und so automatisch die grÃ¶ÃŸte sinnvoll darstellbare Signalmenge bestimmen -- konsistent zwischen WerkstattgerÃ¤t und Smartphone/Tablet, ohne gerÃ¤tespezifische SonderlÃ¶sungen.
+Diese Arbeit schlägt eine standardisierungsfähige UDS-Erweiterung vor: einen neuen logischen Dienst \emph{Signal Graph Service} (vorgeschlagene SID \texttt{0x3B}, im reservierten Bereich), der es einer ECU erlaubt, dem Tester nicht nur Rohwerte, sondern auch deren Abhängigkeitsstruktur als Graph mitzuteilen. Ein Diagnosegerät oder eine mobile App kann diese Struktur anschließend mit der eigenen Darstellungsfähigkeit über den Subgraph Algorithmus abgleichen und so automatisch die größte sinnvoll darstellbare Signalmenge bestimmen -- konsistent zwischen Werkstattgerät und Smartphone/Tablet, ohne gerätespezifische Sonderlösungen.
 
 Der Beitrag dieser Arbeit gliedert sich wie folgt:
 \begin{itemize}
-	\item formale Modellierung von Signalstruktur und GerÃ¤te-FÃ¤higkeit als gerichtete Graphen,
-	\item Ãœbertragung des Subgraph Algorithmus auf dieses Modell samt vollstÃ¤ndigem Korrektheits- und KomplexitÃ¤tsbeweis,
-	\item ein unterer Schrankenbeweis (bedingt unter SETH), der die OptimalitÃ¤t des Verfahrens fÃ¼r die Signalauswahl zeigt,
-	\item eine konkrete Protokollerweiterung fÃ¼r UDS inklusive Nachrichtenformat,
-	\item eine experimentelle und transportabhÃ¤ngige Auswertung mit matplotlib-Visualisierungen.
+	\item formale Modellierung von Signalstruktur und Geräte-Fähigkeit als gerichtete Graphen,
+	\item Übertragung des Subgraph Algorithmus auf dieses Modell samt vollständigem Korrektheits- und Komplexitätsbeweis,
+	\item ein unterer Schrankenbeweis (bedingt unter SETH), der die Optimalität des Verfahrens für die Signalauswahl zeigt,
+	\item eine konkrete Protokollerweiterung für UDS inklusive Nachrichtenformat,
+	\item eine experimentelle und transportabhängige Auswertung mit matplotlib-Visualisierungen.
 \end{itemize}
 
 \section{Grundlagen}
 
 \subsection{UDS-Grundlagen}
 
-UDS folgt einem Anfrage-Antwort-Modell zwischen Tester und ECU. Jede Anfrage besteht aus einem Service Identifier (SID), optional einer Sub-Funktion und Parametern; die Antwort enthÃ¤lt den um \texttt{0x40} erhÃ¶hten SID (Positivantwort) sowie die angeforderten Daten. Tabelle~\ref{tab:uds-services} fasst die fÃ¼r diese Arbeit relevanten Bestandsdienste zusammen.
+UDS folgt einem Anfrage-Antwort-Modell zwischen Tester und ECU. Jede Anfrage besteht aus einem Service Identifier (SID), optional einer Sub-Funktion und Parametern; die Antwort enthält den um \texttt{0x40} erhöhten SID (Positivantwort) sowie die angeforderten Daten. Tabelle~\ref{tab:uds-services} fasst die für diese Arbeit relevanten Bestandsdienste zusammen.
 
 \begin{table}[h]
 \centering
@@ -122,8 +122,8 @@ SID & Name & Funktion \\
 0x22 & ReadDataByIdentifier & Lesen einzelner Signal-DIDs \\
 0x27 & SecurityAccess & Freischaltung gesicherter Operationen \\
 0x31 & RoutineControl & Start/Stopp von Routinen \\
-0x34/0x36 & RequestDownload/TransferData & DatenÃ¼bertragung in BlÃ¶cken \\
-\textbf{0x3B} & \textbf{SignalGraphService (neu)} & \textbf{Abfrage der Signal-AbhÃ¤ngigkeitsstruktur} \\
+0x34/0x36 & RequestDownload/TransferData & Datenübertragung in Blöcken \\
+\textbf{0x3B} & \textbf{SignalGraphService (neu)} & \textbf{Abfrage der Signal-Abhängigkeitsstruktur} \\
 \bottomrule
 \end{tabular}
 \caption{Relevante UDS-Dienste nach ISO~14229-1 sowie der in dieser Arbeit vorgeschlagene neue Dienst.}
@@ -132,51 +132,51 @@ SID & Name & Funktion \\
 
 \subsection{Definitionen}
 
-\begin{definition}[Signal-AbhÃ¤ngigkeitsgraph]
-	Ein Signal-AbhÃ¤ngigkeitsgraph $G_S = (V_S, E_S)$ ist ein gerichteter Graph, dessen Knotenmenge $V_S$ die Ã¼ber UDS bereitgestellten Roh- und abgeleiteten Signale (DIDs sowie Routinenergebnisse) reprÃ¤sentiert. Eine Kante $(v_i, v_j) \in E_S$ existiert genau dann, wenn das Signal $v_j$ funktional von $v_i$ abhÃ¤ngt (z.\,B. $v_j$ wird aus $v_i$ berechnet oder zeitgleich fÃ¼r eine gemeinsame Darstellung benÃ¶tigt).
+\begin{definition}[Signal-Abhängigkeitsgraph]
+	Ein Signal-Abhängigkeitsgraph $G_S = (V_S, E_S)$ ist ein gerichteter Graph, dessen Knotenmenge $V_S$ die über UDS bereitgestellten Roh- und abgeleiteten Signale (DIDs sowie Routinenergebnisse) repräsentiert. Eine Kante $(v_i, v_j) \in E_S$ existiert genau dann, wenn das Signal $v_j$ funktional von $v_i$ abhängt (z.\,B. $v_j$ wird aus $v_i$ berechnet oder zeitgleich für eine gemeinsame Darstellung benötigt).
 \end{definition}
 
-\begin{definition}[Darstellungs-FÃ¤higkeitsgraph]
-	Ein Darstellungs-FÃ¤higkeitsgraph $G_D = (V_D, E_D)$ ist ein gerichteter Graph, dessen Knoten Anzeigeprimitive eines DiagnosegerÃ¤ts oder einer mobilen App (Rohwertanzeige, Liniendiagramm, Gauge, Balkenanzeige, Dashboard) sind. Eine Kante $(u_i, u_j) \in E_D$ existiert, wenn das Primitiv $u_j$ das Primitiv $u_i$ als Eingabe konsumieren bzw. mit ihm kombiniert dargestellt werden kann.
+\begin{definition}[Darstellungs-Fähigkeitsgraph]
+	Ein Darstellungs-Fähigkeitsgraph $G_D = (V_D, E_D)$ ist ein gerichteter Graph, dessen Knoten Anzeigeprimitive eines Diagnosegeräts oder einer mobilen App (Rohwertanzeige, Liniendiagramm, Gauge, Balkenanzeige, Dashboard) sind. Eine Kante $(u_i, u_j) \in E_D$ existiert, wenn das Primitiv $u_j$ das Primitiv $u_i$ als Eingabe konsumieren bzw. mit ihm kombiniert dargestellt werden kann.
 \end{definition}
 
 \begin{definition}[Darstellbare Signalmenge]
-	Eine Teilmenge $S \subseteq V_S$ heiÃŸt \emph{darstellbar} bezÃ¼glich $G_D$, wenn der durch $S$ induzierte Teilgraph von $G_S$ ein Subgraph von $G_D$ unter geeigneter Knotenzuordnung ist, d.\,h. $G_S[S] \subseteq G_D$.
+	Eine Teilmenge $S \subseteq V_S$ heißt \emph{darstellbar} bezüglich $G_D$, wenn der durch $S$ induzierte Teilgraph von $G_S$ ein Subgraph von $G_D$ unter geeigneter Knotenzuordnung ist, d.\,h. $G_S[S] \subseteq G_D$.
 \end{definition}
 
-\begin{definition}[Eindeutige Signatur, Ã¼bernommen]
-	FÃ¼r eine Adjazenzmatrix $M \in \{0,1\}^{n \times n}$ und Spalte $j$ ist die Signatur
+\begin{definition}[Eindeutige Signatur, übernommen]
+	Für eine Adjazenzmatrix $M \in \{0,1\}^{n \times n}$ und Spalte $j$ ist die Signatur
 	\[
 	\sigma_j(M) = \sum_{i=0}^{n-1} M_{ij} \cdot 2^i + j \cdot 2^n.
 	\]
 \end{definition}
 
-\begin{lemma}[InjektivitÃ¤t, Ã¼bernommen aus Epp (2026)]
+\begin{lemma}[Injektivität, übernommen aus Epp (2026)]
 \label{lem:injektiv}
 	Die Signatur-Funktion $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\} \to \mathbb{N}$ ist injektiv.
 \end{lemma}
 \begin{proof}
-	Die Zeilenkomponente $\sum_i M_{ij} 2^i \in [0, 2^n)$ kodiert jedes Bitmuster eindeutig. Die Spaltengewichtung $j \cdot 2^n$ erzeugt fÃ¼r $j \in \{0,\ldots,n-1\}$ paarweise disjunkte Intervalle $[j 2^n, (j{+}1) 2^n)$, sodass sich Zeilen- und Spaltenkomponente nicht Ã¼berlagern kÃ¶nnen.
+	Die Zeilenkomponente $\sum_i M_{ij} 2^i \in [0, 2^n)$ kodiert jedes Bitmuster eindeutig. Die Spaltengewichtung $j \cdot 2^n$ erzeugt für $j \in \{0,\ldots,n-1\}$ paarweise disjunkte Intervalle $[j 2^n, (j{+}1) 2^n)$, sodass sich Zeilen- und Spaltenkomponente nicht überlagern können.
 \end{proof}
 
 \section{Der Signal-Subgraph-Matching-Algorithmus}
 
-\subsection{Ãœbertragung des Subgraph Algorithmus}
+\subsection{Übertragung des Subgraph Algorithmus}
 
-Wir Ã¼bertragen den Subgraph Algorithmus (Epp, 2026) unmittelbar auf das oben definierte Modell: Statt zweier beliebiger Graphen $G$ und $G'$ vergleichen wir den Signal-AbhÃ¤ngigkeitsgraphen $G_S$ (Adjazenzmatrix $A$, $n_S$ Knoten) mit dem Darstellungs-FÃ¤higkeitsgraphen $G_D$ (Adjazenzmatrix $B$, $n_D$ Knoten). Ohne BeschrÃ¤nkung der Allgemeinheit sei $n := \max(n_S, n_D)$ und beide Matrizen werden durch AuffÃ¼llen mit isolierten Knoten auf GrÃ¶ÃŸe $n$ gebracht (dies erhÃ¶ht die Laufzeit hÃ¶chstens um einen konstanten Faktor und Ã¤ndert keine der nachfolgenden Schranken asymptotisch).
+Wir übertragen den Subgraph Algorithmus (Epp, 2026) unmittelbar auf das oben definierte Modell: Statt zweier beliebiger Graphen $G$ und $G'$ vergleichen wir den Signal-Abhängigkeitsgraphen $G_S$ (Adjazenzmatrix $A$, $n_S$ Knoten) mit dem Darstellungs-Fähigkeitsgraphen $G_D$ (Adjazenzmatrix $B$, $n_D$ Knoten). Ohne Beschränkung der Allgemeinheit sei $n := \max(n_S, n_D)$ und beide Matrizen werden durch Auffüllen mit isolierten Knoten auf Größe $n$ gebracht (dies erhöht die Laufzeit höchstens um einen konstanten Faktor und ändert keine der nachfolgenden Schranken asymptotisch).
 
-\textbf{Schritt 1.} Berechne fÃ¼r jede Spalte $j$ von $A$ die Signatur $\sigma_j^A$ nach Definition~5.
+\textbf{Schritt 1.} Berechne für jede Spalte $j$ von $A$ die Signatur $\sigma_j^A$ nach Definition~5.
 
-\textbf{Schritt 2.} Berechne analog $\sigma_j^B$ fÃ¼r $B$.
+\textbf{Schritt 2.} Berechne analog $\sigma_j^B$ für $B$.
 
-\textbf{Schritt 3.} FÃ¼r jede der $n$ zyklischen Rotationen von $\sigma^B$: vergleiche die (von der Spaltengewichtung befreite) Zeilenkomponenten-Sequenz mit der von $\sigma^A$ mittels Longest Common Subsequence (LCS). Die Rotation mit maximalem LCS-Wert $\ell^\ast$ liefert die maximal darstellbare Signalmenge: Die an der LCS beteiligten Knoten von $G_S$ bilden $S^\ast \subseteq V_S$ mit $|S^\ast| = \ell^\ast$.
+\textbf{Schritt 3.} Für jede der $n$ zyklischen Rotationen von $\sigma^B$: vergleiche die (von der Spaltengewichtung befreite) Zeilenkomponenten-Sequenz mit der von $\sigma^A$ mittels Longest Common Subsequence (LCS). Die Rotation mit maximalem LCS-Wert $\ell^\ast$ liefert die maximal darstellbare Signalmenge: Die an der LCS beteiligten Knoten von $G_S$ bilden $S^\ast \subseteq V_S$ mit $|S^\ast| = \ell^\ast$.
 
 \begin{satz}[Korrektheit des Signal-Subgraph-Matchings]
 \label{satz:korrektheit}
-	Die durch die LCS-Ãœbereinstimmung an der optimalen Rotation $r^\ast$ identifizierte Knotenmenge $S^\ast$ ist die grÃ¶ÃŸte Teilmenge von $V_S$, fÃ¼r die $G_S[S^\ast]$ unter einer ordnungserhaltenden zyklischen Zuordnung ein Subgraph von $G_D$ ist.
+	Die durch die LCS-Übereinstimmung an der optimalen Rotation $r^\ast$ identifizierte Knotenmenge $S^\ast$ ist die größte Teilmenge von $V_S$, für die $G_S[S^\ast]$ unter einer ordnungserhaltenden zyklischen Zuordnung ein Subgraph von $G_D$ ist.
 \end{satz}
 \begin{proof}
-	Nach Lemma~\ref{lem:injektiv} entspricht jeder Signatur eindeutig ein Spaltenvektor, d.\,h. eine eindeutige Knotenkonfiguration. Zwei Signaturen stimmen in ihrer Zeilenkomponente genau dann Ã¼berein, wenn die zugehÃ¶rigen KonnektivitÃ¤tsmuster identisch sind. Die LCS zweier Sequenzen liefert per Definition die lÃ¤ngste Teilfolge Ã¼bereinstimmender Elemente unter Erhalt der relativen Reihenfolge; dies entspricht exakt der grÃ¶ÃŸten ordnungserhaltenden Teilmenge strukturell Ã¼bereinstimmender Knoten zwischen $G_S$ und der jeweiligen Rotation von $G_D$. Da alle $n$ zyklischen Rotationen geprÃ¼ft werden (Beweis der VollstÃ¤ndigkeit der Rotationsmenge: siehe Originalarbeit, Satz~1, Korrektheit), wird das Maximum Ã¼ber alle ordnungserhaltenden Zuordnungen erreicht. Damit ist $S^\ast$ die grÃ¶ÃŸte unter den durch zyklische Rotation erreichbaren darstellbaren Mengen. $\blacksquare$
+	Nach Lemma~\ref{lem:injektiv} entspricht jeder Signatur eindeutig ein Spaltenvektor, d.\,h. eine eindeutige Knotenkonfiguration. Zwei Signaturen stimmen in ihrer Zeilenkomponente genau dann überein, wenn die zugehörigen Konnektivitätsmuster identisch sind. Die LCS zweier Sequenzen liefert per Definition die längste Teilfolge übereinstimmender Elemente unter Erhalt der relativen Reihenfolge; dies entspricht exakt der größten ordnungserhaltenden Teilmenge strukturell übereinstimmender Knoten zwischen $G_S$ und der jeweiligen Rotation von $G_D$. Da alle $n$ zyklischen Rotationen geprüft werden (Beweis der Vollständigkeit der Rotationsmenge: siehe Originalarbeit, Satz~1, Korrektheit), wird das Maximum über alle ordnungserhaltenden Zuordnungen erreicht. Damit ist $S^\ast$ die größte unter den durch zyklische Rotation erreichbaren darstellbaren Mengen. $\blacksquare$
 \end{proof}
 
 \subsection{Laufzeitanalyse}
@@ -186,7 +186,7 @@ Wir Ã¼bertragen den Subgraph Algorithmus (Epp, 2026) unmittelbar auf das oben 
 	Der Signal-Subgraph-Matching-Algorithmus berechnet $S^\ast$ in $\Theta(n^3)$ Zeit, wobei $n = \max(n_S, n_D)$.
 \end{satz}
 \begin{proof}
-	Die Signaturberechnung (Schritte 1--2) liest und verarbeitet jeden der $2n^2$ MatrixeintrÃ¤ge konstant oft: $O(n^2)$. Schritt~3 prÃ¼ft $n$ Rotationen; jede LCS-Berechnung zweier Sequenzen der LÃ¤nge $n$ benÃ¶tigt mittels dynamischer Programmierung $\Theta(n^2)$ Zeit und Speicher. Insgesamt:
+	Die Signaturberechnung (Schritte 1--2) liest und verarbeitet jeden der $2n^2$ Matrixeinträge konstant oft: $O(n^2)$. Schritt~3 prüft $n$ Rotationen; jede LCS-Berechnung zweier Sequenzen der Länge $n$ benötigt mittels dynamischer Programmierung $\Theta(n^2)$ Zeit und Speicher. Insgesamt:
 	\[
 	T(n) = \underbrace{O(n^2)}_{\text{Signaturen}} + \underbrace{n \cdot \Theta(n^2)}_{\text{Rotationen} \times \text{LCS}} = \Theta(n^3). \qedhere
 	\]
@@ -194,57 +194,57 @@ Wir Ã¼bertragen den Subgraph Algorithmus (Epp, 2026) unmittelbar auf das oben 
 
 \begin{lemma}[Untere Eingabeschranke]
 \label{lem:eingabe}
-	Jeder korrekte Algorithmus fÃ¼r das Signal-Subgraph-Matching-Problem muss im schlechtesten Fall $\Omega(n^2)$ Zeit aufwenden, da die Eingabe (zwei $n \times n$-Adjazenzmatrizen) $\Theta(n^2)$ Bits umfasst und jedes Bit das Ergebnis beeinflussen kann.
+	Jeder korrekte Algorithmus für das Signal-Subgraph-Matching-Problem muss im schlechtesten Fall $\Omega(n^2)$ Zeit aufwenden, da die Eingabe (zwei $n \times n$-Adjazenzmatrizen) $\Theta(n^2)$ Bits umfasst und jedes Bit das Ergebnis beeinflussen kann.
 \end{lemma}
 \begin{proof}
-	FÃ¼r jedes Bit $A_{ij}$ existiert eine Instanz, in der das Kippen dieses Bits die Antwort \emph{darstellbar/nicht darstellbar} verÃ¤ndert (z.\,B. wenn $S^\ast$ genau an diesem Knoten endet). Ein Algorithmus, der ein Bit nicht liest, kann auf solchen Paarinstanzen nicht korrekt unterscheiden. Da es $\Theta(n^2)$ Bits gibt, folgt $\Omega(n^2)$.
+	Für jedes Bit $A_{ij}$ existiert eine Instanz, in der das Kippen dieses Bits die Antwort \emph{darstellbar/nicht darstellbar} verändert (z.\,B. wenn $S^\ast$ genau an diesem Knoten endet). Ein Algorithmus, der ein Bit nicht liest, kann auf solchen Paarinstanzen nicht korrekt unterscheiden. Da es $\Theta(n^2)$ Bits gibt, folgt $\Omega(n^2)$.
 \end{proof}
 
 \begin{lemma}[Untere Schranke pro Rotation unter SETH]
 \label{lem:lcs}
-	Unter der Strong Exponential Time Hypothesis (SETH) gilt fÃ¼r die LCS-Berechnung zweier Sequenzen der LÃ¤nge $n$ Ã¼ber beliebigem Alphabet (Abboud, Backurs, Vassilevska Williams, FOCS 2015):
+	Unter der Strong Exponential Time Hypothesis (SETH) gilt für die LCS-Berechnung zweier Sequenzen der Länge $n$ über beliebigem Alphabet (Abboud, Backurs, Vassilevska Williams, FOCS 2015):
 	\[
-	T_{\mathrm{LCS}}(n) \geq \Omega(n^{2-\varepsilon}) \quad \text{fÃ¼r alle } \varepsilon > 0.
+	T_{\mathrm{LCS}}(n) \geq \Omega(n^{2-\varepsilon}) \quad \text{für alle } \varepsilon > 0.
 	\]
 \end{lemma}
 \begin{proof}
-	Die Signaturen des Signal-Subgraph-Matchings sind ganzzahlige Werte ohne AlphabetbeschrÃ¤nkung; das zitierte Resultat gilt daher unmittelbar fÃ¼r die hier verwendeten Signatur-Sequenzen.
+	Die Signaturen des Signal-Subgraph-Matchings sind ganzzahlige Werte ohne Alphabetbeschränkung; das zitierte Resultat gilt daher unmittelbar für die hier verwendeten Signatur-Sequenzen.
 \end{proof}
 
-\begin{lemma}[UnabhÃ¤ngigkeit der Rotationsvergleiche, Ã¼bertragen]
+\begin{lemma}[Unabhängigkeit der Rotationsvergleiche, übertragen]
 \label{lem:unabhaengigkeit}
-	Die $n$ LCS-Berechnungen Ã¼ber die $n$ zyklischen Rotationen von $\sigma^B$ kÃ¶nnen im Allgemeinen nicht mit Gesamtaufwand $o(n \cdot T_{\mathrm{LCS}}(n))$ durchgefÃ¼hrt werden.
+	Die $n$ LCS-Berechnungen über die $n$ zyklischen Rotationen von $\sigma^B$ können im Allgemeinen nicht mit Gesamtaufwand $o(n \cdot T_{\mathrm{LCS}}(n))$ durchgeführt werden.
 \end{lemma}
 \begin{proof}
-	Identisch zur Argumentation der Originalarbeit (dort Lemma~4): FÃ¼r ein Alphabet paarweise verschiedener Signaturwerte mit $\sigma^A = [a_0,\ldots,a_{n-1}]$ und $\sigma^B_0$ in umgekehrter Reihenfolge erzeugt jede Rotation $\sigma^B_r$ eine strukturell neue Anordnung, sodass sich die dynamische Programmiertabelle fÃ¼r $\mathrm{LCS}(\sigma^A, \sigma^B_r)$ nicht inkrementell aus jener fÃ¼r $\sigma^B_{r-1}$ ableiten lÃ¤sst. Diese Konstruktion Ã¼bertrÃ¤gt sich identisch auf Signal- und GerÃ¤te-Signaturen, da die BeweisfÃ¼hrung ausschlieÃŸlich auf der paarweisen Verschiedenheit der Werte beruht, nicht auf deren semantischer Herkunft.
+	Identisch zur Argumentation der Originalarbeit (dort Lemma~4): Für ein Alphabet paarweise verschiedener Signaturwerte mit $\sigma^A = [a_0,\ldots,a_{n-1}]$ und $\sigma^B_0$ in umgekehrter Reihenfolge erzeugt jede Rotation $\sigma^B_r$ eine strukturell neue Anordnung, sodass sich die dynamische Programmiertabelle für $\mathrm{LCS}(\sigma^A, \sigma^B_r)$ nicht inkrementell aus jener für $\sigma^B_{r-1}$ ableiten lässt. Diese Konstruktion überträgt sich identisch auf Signal- und Geräte-Signaturen, da die Beweisführung ausschließlich auf der paarweisen Verschiedenheit der Werte beruht, nicht auf deren semantischer Herkunft.
 \end{proof}
 
-\begin{satz}[Bedingte OptimalitÃ¤t des Signal-Subgraph-Matchings]
+\begin{satz}[Bedingte Optimalität des Signal-Subgraph-Matchings]
 \label{satz:optimalitaet}
-	Unter SETH kann kein Algorithmus das Signal-Subgraph-Matching-Problem fÃ¼r $n_S, n_D \leq n$ in $O(n^{3-\varepsilon})$ Zeit fÃ¼r beliebiges $\varepsilon > 0$ lÃ¶sen.
+	Unter SETH kann kein Algorithmus das Signal-Subgraph-Matching-Problem für $n_S, n_D \leq n$ in $O(n^{3-\varepsilon})$ Zeit für beliebiges $\varepsilon > 0$ lösen.
 \end{satz}
 \begin{proof}
-	Aus Lemma~\ref{lem:rotationen-impl} (Notwendigkeit aller $n$ Rotationen, analog zur Originalarbeit, da eine fehlende Rotation eine darstellbare Menge $S^\ast$ systematisch Ã¼bersehen kann -- Konstruktion: platziere die einzige gÃ¼ltige Zuordnung exakt bei Rotation $r_0$, alle anderen Rotationen liefern LCS $< |S^\ast|$), Lemma~\ref{lem:lcs} und Lemma~\ref{lem:unabhaengigkeit} folgt
+	Aus Lemma~\ref{lem:rotationen-impl} (Notwendigkeit aller $n$ Rotationen, analog zur Originalarbeit, da eine fehlende Rotation eine darstellbare Menge $S^\ast$ systematisch übersehen kann -- Konstruktion: platziere die einzige gültige Zuordnung exakt bei Rotation $r_0$, alle anderen Rotationen liefern LCS $< |S^\ast|$), Lemma~\ref{lem:lcs} und Lemma~\ref{lem:unabhaengigkeit} folgt
 	\[
 	T_{\text{Matching}}(n) \;\geq\; n \cdot \Omega(n^{2-\varepsilon}) \;=\; \Omega(n^{3-\varepsilon}).
 	\]
-	Mit Satz~\ref{satz:laufzeit} ($T_{\text{Matching}}(n) = \Theta(n^3)$) folgt die asymptotische OptimalitÃ¤t des vorgestellten Verfahrens bis auf den $n^\varepsilon$-Faktor. $\blacksquare$
+	Mit Satz~\ref{satz:laufzeit} ($T_{\text{Matching}}(n) = \Theta(n^3)$) folgt die asymptotische Optimalität des vorgestellten Verfahrens bis auf den $n^\varepsilon$-Faktor. $\blacksquare$
 \end{proof}
 
 \begin{lemma}[Notwendigkeit aller Rotationen]
 \label{lem:rotationen-impl}
-	Es existieren Instanzen von $G_S, G_D$, bei denen genau eine von $n$ Rotationen die maximale darstellbare Menge $S^\ast$ liefert; alle Ã¼brigen Rotationen liefern ein echt kleineres LCS.
+	Es existieren Instanzen von $G_S, G_D$, bei denen genau eine von $n$ Rotationen die maximale darstellbare Menge $S^\ast$ liefert; alle übrigen Rotationen liefern ein echt kleineres LCS.
 \end{lemma}
 \begin{proof}
-	Konstruiere $G_D$ so, dass die Knotenreihenfolge in $G_D$ exakt der um $r_0$ zyklisch verschobenen Knotenreihenfolge von $G_S$ entspricht (Konstruktion wie im Beweis von Satz~1 der Originalarbeit). FÃ¼r jede Rotation $r \neq r_0$ wird die strukturelle Ãœbereinstimmung durch die Verschiebung gestÃ¶rt, sodass die LCS-LÃ¤nge echt kleiner ausfÃ¤llt. Ein Verfahren, das Rotation $r_0$ ausspart, wÃ¼rde auf dieser Instanz das tatsÃ¤chliche Optimum $S^\ast$ verfehlen.
+	Konstruiere $G_D$ so, dass die Knotenreihenfolge in $G_D$ exakt der um $r_0$ zyklisch verschobenen Knotenreihenfolge von $G_S$ entspricht (Konstruktion wie im Beweis von Satz~1 der Originalarbeit). Für jede Rotation $r \neq r_0$ wird die strukturelle Übereinstimmung durch die Verschiebung gestört, sodass die LCS-Länge echt kleiner ausfällt. Ein Verfahren, das Rotation $r_0$ ausspart, würde auf dieser Instanz das tatsächliche Optimum $S^\ast$ verfehlen.
 \end{proof}
 
 \begin{korollar}
 \label{kor:speicher}
-	Der Signal-Subgraph-Matching-Algorithmus benÃ¶tigt $O(n^2)$ Speicher fÃ¼r die Adjazenzmatrizen und die LCS-DP-Tabelle, sowie $O(n)$ Speicher fÃ¼r die Signatur-Arrays.
+	Der Signal-Subgraph-Matching-Algorithmus benötigt $O(n^2)$ Speicher für die Adjazenzmatrizen und die LCS-DP-Tabelle, sowie $O(n)$ Speicher für die Signatur-Arrays.
 \end{korollar}
 \begin{proof}
-	Unmittelbar aus der GrÃ¶ÃŸe der verwendeten Matrizen ($n \times n$) und Arrays (LÃ¤nge $n$).
+	Unmittelbar aus der Größe der verwendeten Matrizen ($n \times n$) und Arrays (Länge $n$).
 \end{proof}
 
 \section{Protokollerweiterung: SignalGraphService (SID 0x3B)}
@@ -272,7 +272,7 @@ Signatur-Array & $4n$ & 32-Bit-Signaturen $\sigma_j^A$ \\
 \label{tab:format}
 \end{table}
 
-Der Tester (DiagnosegerÃ¤t oder mobile App) fordert mit Sub-Funktion \texttt{0x01} die Topologie an, berechnet lokal $G_D$ aus den eigenen AnzeigefÃ¤higkeiten und fÃ¼hrt das Signal-Subgraph-Matching gemÃ¤ÃŸ Abschnitt~3 lokal aus, ohne dass die ECU selbst Rechenlast fÃ¼r die Darstellungslogik trÃ¤gt -- ein wichtiges Kriterium, da SteuergerÃ¤te Ã¼blicherweise stark ressourcenbeschrÃ¤nkt sind.
+Der Tester (Diagnosegerät oder mobile App) fordert mit Sub-Funktion \texttt{0x01} die Topologie an, berechnet lokal $G_D$ aus den eigenen Anzeigefähigkeiten und führt das Signal-Subgraph-Matching gemäß Abschnitt~3 lokal aus, ohne dass die ECU selbst Rechenlast für die Darstellungslogik trägt -- ein wichtiges Kriterium, da Steuergeräte üblicherweise stark ressourcenbeschränkt sind.
 
 \subsection{Ablauf im Diagnosezyklus}
 
@@ -281,91 +281,91 @@ Der vorgeschlagene Ablauf erweitert den klassischen UDS-Workflow (DiagnosticSess
 \begin{enumerate}
 	\item Sitzungsstart (\texttt{0x10}) und ggf. SecurityAccess (\texttt{0x27}).
 	\item \texttt{SignalGraphService} (\texttt{0x3B}, Sub-Funktion \texttt{0x01}): Tester liest $G_S$.
-	\item Lokales Signal-Subgraph-Matching gegen den gerÃ¤teeigenen $G_D$ in $\Theta(n^3)$ Zeit.
-	\item Gezielte \texttt{ReadDataByIdentifier}-Anfragen (\texttt{0x22}) ausschlieÃŸlich fÃ¼r $S^\ast \subseteq V_S$.
-	\item Darstellung von $S^\ast$ strukturerhaltend in WerkstattgerÃ¤t bzw. standardisierter mobiler App.
+	\item Lokales Signal-Subgraph-Matching gegen den geräteeigenen $G_D$ in $\Theta(n^3)$ Zeit.
+	\item Gezielte \texttt{ReadDataByIdentifier}-Anfragen (\texttt{0x22}) ausschließlich für $S^\ast \subseteq V_S$.
+	\item Darstellung von $S^\ast$ strukturerhaltend in Werkstattgerät bzw. standardisierter mobiler App.
 \end{enumerate}
 
-Dieser Ablauf stellt sicher, dass identische Signalstrukturlogik auf WerkstattgerÃ¤t und Mobile App verwendet wird -- die GerÃ¤te unterscheiden sich lediglich in $G_D$, nicht im Auswahlverfahren.
+Dieser Ablauf stellt sicher, dass identische Signalstrukturlogik auf Werkstattgerät und Mobile App verwendet wird -- die Geräte unterscheiden sich lediglich in $G_D$, nicht im Auswahlverfahren.
 
 \section{Experimentelle Auswertung}
 
 \subsection{Visualisierung der Graphmodelle}
 
-Abbildung~\ref{fig:graphs} zeigt ein Beispiel eines Signal-AbhÃ¤ngigkeitsgraphen (Batteriespannung, -strom, Ladezustand, Reichweite) sowie eines typischen Darstellungs-FÃ¤higkeitsgraphen eines Tablets mit Liniendiagramm-, Balken- und Gauge-Primitiven, die zu einem kombinierten Dashboard zusammengefÃ¼hrt werden kÃ¶nnen.
+Abbildung~\ref{fig:graphs} zeigt ein Beispiel eines Signal-Abhängigkeitsgraphen (Batteriespannung, -strom, Ladezustand, Reichweite) sowie eines typischen Darstellungs-Fähigkeitsgraphen eines Tablets mit Liniendiagramm-, Balken- und Gauge-Primitiven, die zu einem kombinierten Dashboard zusammengeführt werden können.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{plot1_graphs.pdf}
-	\caption{Links: Signal-AbhÃ¤ngigkeitsgraph $G_S$ mit abgeleiteten GrÃ¶ÃŸen (SOC, Reichweite). Rechts: Darstellungs-FÃ¤higkeitsgraph $G_D$ eines Tablets. Das Signal-Subgraph-Matching bestimmt die grÃ¶ÃŸte Teilmenge von $G_S$, die strukturerhaltend in $G_D$ abgebildet werden kann.}
+	\caption{Links: Signal-Abhängigkeitsgraph $G_S$ mit abgeleiteten Größen (SOC, Reichweite). Rechts: Darstellungs-Fähigkeitsgraph $G_D$ eines Tablets. Das Signal-Subgraph-Matching bestimmt die größte Teilmenge von $G_S$, die strukturerhaltend in $G_D$ abgebildet werden kann.}
 	\label{fig:graphs}
 \end{figure}
 
 \subsection{Laufzeitmessung}
 
-Zur empirischen BestÃ¤tigung von Satz~\ref{satz:laufzeit} wurde der Algorithmus fÃ¼r $n \in \{8,12,16,20,24,28,32,40,48,56\}$ Signal-/GerÃ¤teknoten in einer Python-Referenzimplementierung (Signatur-Berechnung und LCS-DP) ausgefÃ¼hrt. Abbildung~\ref{fig:runtime} zeigt die gemessene Laufzeit zusammen mit der an den letzten Messpunkt kalibrierten theoretischen $O(n^3)$-Kurve.
+Zur empirischen Bestätigung von Satz~\ref{satz:laufzeit} wurde der Algorithmus für $n \in \{8,12,16,20,24,28,32,40,48,56\}$ Signal-/Geräteknoten in einer Python-Referenzimplementierung (Signatur-Berechnung und LCS-DP) ausgeführt. Abbildung~\ref{fig:runtime} zeigt die gemessene Laufzeit zusammen mit der an den letzten Messpunkt kalibrierten theoretischen $O(n^3)$-Kurve.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.78\textwidth]{plot2_runtime.pdf}
-	\caption{Gemessene Laufzeit des Signal-Subgraph-Matchings im Vergleich zur theoretischen $O(n^3)$-Schranke. Die kubische Skalierung gemÃ¤ÃŸ Satz~\ref{satz:laufzeit} wird durch die Messung bestÃ¤tigt.}
+	\caption{Gemessene Laufzeit des Signal-Subgraph-Matchings im Vergleich zur theoretischen $O(n^3)$-Schranke. Die kubische Skalierung gemäß Satz~\ref{satz:laufzeit} wird durch die Messung bestätigt.}
 	\label{fig:runtime}
 \end{figure}
 
-Die Messung bestÃ¤tigt die in Satz~\ref{satz:laufzeit} hergeleitete kubische Skalierung: Eine Verdoppelung von $n$ (z.\,B. von $16$ auf $32$) fÃ¼hrt zu einer Laufzeitsteigerung um etwa den Faktor $5{,}7$, nahe am theoretischen Faktor $2^3 = 8$ unter BerÃ¼cksichtigung konstanter Vorfaktoren und Python-spezifischer Overheads.
+Die Messung bestätigt die in Satz~\ref{satz:laufzeit} hergeleitete kubische Skalierung: Eine Verdoppelung von $n$ (z.\,B. von $16$ auf $32$) führt zu einer Laufzeitsteigerung um etwa den Faktor $5{,}7$, nahe am theoretischen Faktor $2^3 = 8$ unter Berücksichtigung konstanter Vorfaktoren und Python-spezifischer Overheads.
 
-\subsection{TransportabhÃ¤ngige SignalkapazitÃ¤t}
+\subsection{Transportabhängige Signalkapazität}
 
-Da die im SignalGraphService Ã¼bertragene Adjazenzmatrix und die anschlieÃŸenden \texttt{ReadDataByIdentifier}-Anfragen Ã¼ber CAN, CAN~FD oder DoIP transportiert werden, begrenzt die jeweilige Transportbandbreite die Anzahl der pro Diagnosezyklus (hier: 20~ms, 8~Byte pro Signal inkl. Protokoll-Overhead) praktisch darstellbaren Signale. Abbildung~\ref{fig:bandwidth} zeigt diese Obergrenze fÃ¼r die vier in ISO~15765-2 bzw. ISO~13400 spezifizierten Transportvarianten.
+Da die im SignalGraphService übertragene Adjazenzmatrix und die anschließenden \texttt{ReadDataByIdentifier}-Anfragen über CAN, CAN~FD oder DoIP transportiert werden, begrenzt die jeweilige Transportbandbreite die Anzahl der pro Diagnosezyklus (hier: 20~ms, 8~Byte pro Signal inkl. Protokoll-Overhead) praktisch darstellbaren Signale. Abbildung~\ref{fig:bandwidth} zeigt diese Obergrenze für die vier in ISO~15765-2 bzw. ISO~13400 spezifizierten Transportvarianten.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.78\textwidth]{plot3_bandwidth.pdf}
-	\caption{TransportabhÃ¤ngige Obergrenze gleichzeitig Ã¼bertragbarer Signale pro 20-ms-Zyklus. DoIP mit 1000~Mbps erlaubt mehrere GrÃ¶ÃŸenordnungen mehr Signale als klassisches CAN, was die Praxisrelevanz des Signal-Subgraph-Matchings zur Vorauswahl relevanter Teilmengen unterstreicht: Selbst bei hoher Bandbreite begrenzen BildschirmflÃ¤che und kognitive KapazitÃ¤t des Betrachters die sinnvoll darstellbare Signalmenge stÃ¤rker als der reine Transport.}
+	\caption{Transportabhängige Obergrenze gleichzeitig übertragbarer Signale pro 20-ms-Zyklus. DoIP mit 1000~Mbps erlaubt mehrere Größenordnungen mehr Signale als klassisches CAN, was die Praxisrelevanz des Signal-Subgraph-Matchings zur Vorauswahl relevanter Teilmengen unterstreicht: Selbst bei hoher Bandbreite begrenzen Bildschirmfläche und kognitive Kapazität des Betrachters die sinnvoll darstellbare Signalmenge stärker als der reine Transport.}
 	\label{fig:bandwidth}
 \end{figure}
 
 \subsection{Beispielrechnung}
 
 \begin{beispiel}
-	FÃ¼r $G_S$ mit $n_S = 4$ Knoten (Spannung, Strom, SOC, Reichweite; Adjazenzmatrix wie in Abbildung~\ref{fig:graphs} links, vereinfacht auf vier Knoten reduziert) und $G_D$ mit $n_D = 4$ Anzeigeprimitiven liefert die Signaturberechnung nach Schritt~1--2 vier Wertepaare; die LCS-Suche Ã¼ber alle vier Rotationen identifiziert $S^\ast$ mit $|S^\ast| = 3$ (Spannung, Strom, SOC darstellbar; Reichweite erfordert ein zusÃ¤tzliches, hier nicht vorhandenes Kombinationsprimitiv). Damit zeigt der Tester dem Anwender genau diese drei Signale strukturkonsistent an, statt eine fehlerhafte oder unvollstÃ¤ndige Reichweitenanzeige zu riskieren.
+	Für $G_S$ mit $n_S = 4$ Knoten (Spannung, Strom, SOC, Reichweite; Adjazenzmatrix wie in Abbildung~\ref{fig:graphs} links, vereinfacht auf vier Knoten reduziert) und $G_D$ mit $n_D = 4$ Anzeigeprimitiven liefert die Signaturberechnung nach Schritt~1--2 vier Wertepaare; die LCS-Suche über alle vier Rotationen identifiziert $S^\ast$ mit $|S^\ast| = 3$ (Spannung, Strom, SOC darstellbar; Reichweite erfordert ein zusätzliches, hier nicht vorhandenes Kombinationsprimitiv). Damit zeigt der Tester dem Anwender genau diese drei Signale strukturkonsistent an, statt eine fehlerhafte oder unvollständige Reichweitenanzeige zu riskieren.
 \end{beispiel}
 
 \section{Zusammenfassung}
 
-Diese Arbeit Ã¼bertrÃ¤gt den Subgraph Algorithmus (Epp, 2026) erstmals auf das Problem der strukturerhaltenden Signalauswahl fÃ¼r die Diagnoseanzeige nach ISO~14229 (UDS). Durch die Modellierung von SignalabhÃ¤ngigkeiten und GerÃ¤te-DarstellungsfÃ¤higkeiten als gerichtete Graphen sowie die Anwendung von injektiven Spaltensignaturen und zyklischen Rotationsvergleichen wird die grÃ¶ÃŸte strukturerhaltend darstellbare Signalmenge in $\Theta(n^3)$ Zeit bestimmt -- bedingt optimal unter SETH (Satz~\ref{satz:optimalitaet}). ErgÃ¤nzend wurde mit dem \texttt{SignalGraphService} (SID \texttt{0x3B}) eine konkrete, mit dem bestehenden UDS-Nachrichtenformat kompatible Protokollerweiterung vorgeschlagen, die identische Auswahllogik auf WerkstattgerÃ¤ten und standardisierten mobilen Apps ermÃ¶glicht.
+Diese Arbeit überträgt den Subgraph Algorithmus (Epp, 2026) erstmals auf das Problem der strukturerhaltenden Signalauswahl für die Diagnoseanzeige nach ISO~14229 (UDS). Durch die Modellierung von Signalabhängigkeiten und Geräte-Darstellungsfähigkeiten als gerichtete Graphen sowie die Anwendung von injektiven Spaltensignaturen und zyklischen Rotationsvergleichen wird die größte strukturerhaltend darstellbare Signalmenge in $\Theta(n^3)$ Zeit bestimmt -- bedingt optimal unter SETH (Satz~\ref{satz:optimalitaet}). Ergänzend wurde mit dem \texttt{SignalGraphService} (SID \texttt{0x3B}) eine konkrete, mit dem bestehenden UDS-Nachrichtenformat kompatible Protokollerweiterung vorgeschlagen, die identische Auswahllogik auf Werkstattgeräten und standardisierten mobilen Apps ermöglicht.
 
 \subsection{Anwendungen}
 
 \begin{itemize}
-	\item Werkstatt-DiagnosegerÃ¤te mit automatischer, strukturkonsistenter Signalauswahl statt manueller Konfiguration.
-	\item Standardisierte mobile Diagnose-Apps (Smartphone/Tablet) mit identischer Auswahllogik wie stationÃ¤re GerÃ¤te.
-	\item Reduktion der Busbelastung durch gezieltes Lesen ausschlieÃŸlich darstellbarer Signale ($S^\ast$ statt $V_S$).
-	\item Konsistente Dashboard-Darstellung bei heterogener GerÃ¤telandschaft (unterschiedliche $G_D$, identischer Algorithmus).
-	\item Vorfilterung sicherheitsrelevanter Signalkombinationen vor Anzeige in Aftermarket-DiagnosegerÃ¤ten.
+	\item Werkstatt-Diagnosegeräte mit automatischer, strukturkonsistenter Signalauswahl statt manueller Konfiguration.
+	\item Standardisierte mobile Diagnose-Apps (Smartphone/Tablet) mit identischer Auswahllogik wie stationäre Geräte.
+	\item Reduktion der Busbelastung durch gezieltes Lesen ausschließlich darstellbarer Signale ($S^\ast$ statt $V_S$).
+	\item Konsistente Dashboard-Darstellung bei heterogener Gerätelandschaft (unterschiedliche $G_D$, identischer Algorithmus).
+	\item Vorfilterung sicherheitsrelevanter Signalkombinationen vor Anzeige in Aftermarket-Diagnosegeräten.
 \end{itemize}
 
 \subsection{Ausblick}
 
-Die hier vorgestellte Ãœbertragung des Subgraph Algorithmus auf die UDS-Signalvisualisierung erÃ¶ffnet ein breites Feld weiterfÃ¼hrender Forschungs- und Standardisierungsarbeit, das im Folgenden ausfÃ¼hrlich skizziert wird.
+Die hier vorgestellte Übertragung des Subgraph Algorithmus auf die UDS-Signalvisualisierung eröffnet ein breites Feld weiterführender Forschungs- und Standardisierungsarbeit, das im Folgenden ausführlich skizziert wird.
 
-\textbf{Gewichtete und priorisierte Signalgraphen.} Die vorliegende Arbeit behandelt $G_S$ und $G_D$ als ungewichtete gerichtete Graphen. In der Praxis besitzen Signale jedoch unterschiedliche Sicherheits- und Diagnoserelevanz (z.\,B. Bremsdruck vs. Innenraumtemperatur). Eine natÃ¼rliche Erweiterung gewichtet Kanten und Knoten mit Relevanzwerten $w: V_S \to \mathbb{R}^+$ und sucht nicht mehr die \emph{grÃ¶ÃŸte}, sondern die \emph{gewichtsmaximale} darstellbare Teilmenge. Die Signatur-Methode lÃ¤sst sich hierzu erweitern, indem die Gewichtung in die Kostenfunktion der LCS-Dynamik (gewichtete LCS, analog zur gewichteten Editierdistanz) einflieÃŸt; die $\Theta(n^3)$-Schranke bleibt dabei strukturell erhalten, sofern die Gewichtsberechnung in konstanter Zeit pro DP-Zelle erfolgt.
+\textbf{Gewichtete und priorisierte Signalgraphen.} Die vorliegende Arbeit behandelt $G_S$ und $G_D$ als ungewichtete gerichtete Graphen. In der Praxis besitzen Signale jedoch unterschiedliche Sicherheits- und Diagnoserelevanz (z.\,B. Bremsdruck vs. Innenraumtemperatur). Eine natürliche Erweiterung gewichtet Kanten und Knoten mit Relevanzwerten $w: V_S \to \mathbb{R}^+$ und sucht nicht mehr die \emph{größte}, sondern die \emph{gewichtsmaximale} darstellbare Teilmenge. Die Signatur-Methode lässt sich hierzu erweitern, indem die Gewichtung in die Kostenfunktion der LCS-Dynamik (gewichtete LCS, analog zur gewichteten Editierdistanz) einfließt; die $\Theta(n^3)$-Schranke bleibt dabei strukturell erhalten, sofern die Gewichtsberechnung in konstanter Zeit pro DP-Zelle erfolgt.
 
-\textbf{Dynamische, zeitverÃ¤nderliche Graphen.} Reale SteuergerÃ¤te Ã¤ndern ihre verfÃ¼gbare Signalmenge zur Laufzeit (z.\,B. abhÃ¤ngig vom Fahrzeugzustand, ZÃ¼ndungsstatus oder freigeschalteten Funktionen). Eine inkrementelle Variante des Signal-Subgraph-Matchings, die bei kleinen Ã„nderungen von $G_S$ nicht die vollstÃ¤ndige $\Theta(n^3)$-Berechnung wiederholt, sondern nur betroffene Teilstrukturen aktualisiert, wÃ¤re fÃ¼r Echtzeit-Dashboards mit hoher Aktualisierungsrate von erheblichem praktischen Wert. Erste Ãœberlegungen deuten auf eine amortisierte KomplexitÃ¤t von $O(n^2)$ pro inkrementeller Ã„nderung hin, sofern sich Ã„nderungen auf $O(1)$ Knoten oder Kanten beschrÃ¤nken; ein vollstÃ¤ndiger formaler Beweis steht jedoch noch aus und ist Gegenstand zukÃ¼nftiger Arbeit.
+\textbf{Dynamische, zeitveränderliche Graphen.} Reale Steuergeräte ändern ihre verfügbare Signalmenge zur Laufzeit (z.\,B. abhängig vom Fahrzeugzustand, Zündungsstatus oder freigeschalteten Funktionen). Eine inkrementelle Variante des Signal-Subgraph-Matchings, die bei kleinen Änderungen von $G_S$ nicht die vollständige $\Theta(n^3)$-Berechnung wiederholt, sondern nur betroffene Teilstrukturen aktualisiert, wäre für Echtzeit-Dashboards mit hoher Aktualisierungsrate von erheblichem praktischen Wert. Erste Überlegungen deuten auf eine amortisierte Komplexität von $O(n^2)$ pro inkrementeller Änderung hin, sofern sich Änderungen auf $O(1)$ Knoten oder Kanten beschränken; ein vollständiger formaler Beweis steht jedoch noch aus und ist Gegenstand zukünftiger Arbeit.
 
-\textbf{Parallelisierung der RotationsprÃ¼fung.} Da die $n$ Rotationsvergleiche nach Lemma~\ref{lem:unabhaengigkeit} weitgehend unabhÃ¤ngig voneinander sind, eignet sich der Algorithmus hervorragend fÃ¼r eine Parallelisierung auf Mehrkernprozessoren mobiler EndgerÃ¤te oder auf GPU-Architekturen moderner Tablets. Eine Aufteilung der $n$ Rotationen auf $p$ Kerne reduziert die Laufzeit auf $O(n^3/p)$ bei vernachlÃ¤ssigbarem Kommunikationsaufwand, da jede Rotation lediglich das Ergebnis (LCS-LÃ¤nge und zugehÃ¶rige Knotenmenge) zurÃ¼ckmelden muss. FÃ¼r sehr groÃŸe Signalgraphen ($n > 1000$, etwa bei flottenweiten Telematik-Backends) erscheint zudem eine verteilte MapReduce-artige Umsetzung sinnvoll.
+\textbf{Parallelisierung der Rotationsprüfung.} Da die $n$ Rotationsvergleiche nach Lemma~\ref{lem:unabhaengigkeit} weitgehend unabhängig voneinander sind, eignet sich der Algorithmus hervorragend für eine Parallelisierung auf Mehrkernprozessoren mobiler Endgeräte oder auf GPU-Architekturen moderner Tablets. Eine Aufteilung der $n$ Rotationen auf $p$ Kerne reduziert die Laufzeit auf $O(n^3/p)$ bei vernachlässigbarem Kommunikationsaufwand, da jede Rotation lediglich das Ergebnis (LCS-Länge und zugehörige Knotenmenge) zurückmelden muss. Für sehr große Signalgraphen ($n > 1000$, etwa bei flottenweiten Telematik-Backends) erscheint zudem eine verteilte MapReduce-artige Umsetzung sinnvoll.
 
-\textbf{Approximative Verfahren fÃ¼r harte Echtzeitanforderungen.} FÃ¼r AnwendungsfÃ¤lle mit harten Echtzeitanforderungen (z.\,B. Renndiagnose, Race-Telemetrie) kann eine $\Theta(n^3)$-Berechnung selbst bei moderatem $n$ zu langsam sein. Approximative Heuristiken, die auf einer Teilmenge der Rotationen oder auf greedy LCS-Approximationen basieren, kÃ¶nnten eine $(1-\varepsilon)$-Approximation der optimalen Signalmenge $S^\ast$ in deutlich kÃ¼rzerer Zeit liefern. Die Entwicklung scharfer Approximationsgarantien unter Beibehaltung der Subgraph-Korrektheitseigenschaft (keine strukturell inkonsistente Anzeige) ist ein vielversprechendes, aber anspruchsvolles offenes Problem.
+\textbf{Approximative Verfahren für harte Echtzeitanforderungen.} Für Anwendungsfälle mit harten Echtzeitanforderungen (z.\,B. Renndiagnose, Race-Telemetrie) kann eine $\Theta(n^3)$-Berechnung selbst bei moderatem $n$ zu langsam sein. Approximative Heuristiken, die auf einer Teilmenge der Rotationen oder auf greedy LCS-Approximationen basieren, könnten eine $(1-\varepsilon)$-Approximation der optimalen Signalmenge $S^\ast$ in deutlich kürzerer Zeit liefern. Die Entwicklung scharfer Approximationsgarantien unter Beibehaltung der Subgraph-Korrektheitseigenschaft (keine strukturell inkonsistente Anzeige) ist ein vielversprechendes, aber anspruchsvolles offenes Problem.
 
-\textbf{Standardisierungsaspekte.} Die vorgeschlagene SID \texttt{0x3B} liegt im durch ISO~14229-1 als herstellerspezifisch bzw. reserviert ausgewiesenen Bereich. Eine echte Standardisierung erfordert Abstimmung mit ASAM (insbesondere ASAM MCD-2D/ODX fÃ¼r die Beschreibung der Diagnosedaten) sowie eine Erweiterung der ODX-Datenformate um eine Graph-ReprÃ¤sentation der SignalabhÃ¤ngigkeiten, etwa als zusÃ¤tzliches XML-Schema-Element \texttt{SIGNAL-GRAPH} innerhalb der ODX-D-Containerstruktur. Eine enge Zusammenarbeit mit OEM-Diagnosearchitekturgruppen sowie eine Referenzimplementierung als Open-Source-Bibliothek (aufbauend auf \url{https://github.com/hjstephan86/subgraph}) wÃ¼rden die AdoptionshÃ¼rde erheblich senken.
+\textbf{Standardisierungsaspekte.} Die vorgeschlagene SID \texttt{0x3B} liegt im durch ISO~14229-1 als herstellerspezifisch bzw. reserviert ausgewiesenen Bereich. Eine echte Standardisierung erfordert Abstimmung mit ASAM (insbesondere ASAM MCD-2D/ODX für die Beschreibung der Diagnosedaten) sowie eine Erweiterung der ODX-Datenformate um eine Graph-Repräsentation der Signalabhängigkeiten, etwa als zusätzliches XML-Schema-Element \texttt{SIGNAL-GRAPH} innerhalb der ODX-D-Containerstruktur. Eine enge Zusammenarbeit mit OEM-Diagnosearchitekturgruppen sowie eine Referenzimplementierung als Open-Source-Bibliothek (aufbauend auf \url{https://github.com/hjstephan86/subgraph}) würden die Adoptionshürde erheblich senken.
 
-\textbf{Sicherheitsanalyse.} Da der SignalGraphService vor dem eigentlichen \texttt{SecurityAccess} (\texttt{0x27}) abgefragt werden kÃ¶nnte, um bereits die Topologie zu kennen, ist eine Sicherheitsanalyse notwendig: Welche Informationen Ã¼ber die interne Signalstruktur einer ECU dÃ¼rfen ungesichert preisgegeben werden, ohne RÃ¼ckschlÃ¼sse auf sicherheitskritische Implementierungsdetails zuzulassen? Eine gestufte Freigabe der Graphtiefe abhÃ¤ngig vom Sicherheitslevel (analog zu \texttt{SecurityAccess}-Leveln) erscheint sinnvoll und sollte in einer Folgearbeit formal mit einem Informationsflussmodell untersucht werden.
+\textbf{Sicherheitsanalyse.} Da der SignalGraphService vor dem eigentlichen \texttt{SecurityAccess} (\texttt{0x27}) abgefragt werden könnte, um bereits die Topologie zu kennen, ist eine Sicherheitsanalyse notwendig: Welche Informationen über die interne Signalstruktur einer ECU dürfen ungesichert preisgegeben werden, ohne Rückschlüsse auf sicherheitskritische Implementierungsdetails zuzulassen? Eine gestufte Freigabe der Graphtiefe abhängig vom Sicherheitslevel (analog zu \texttt{SecurityAccess}-Leveln) erscheint sinnvoll und sollte in einer Folgearbeit formal mit einem Informationsflussmodell untersucht werden.
 
-\textbf{Erweiterung auf Multi-ECU-Topologien.} Die vorliegende Arbeit betrachtet den Signalgraphen einer einzelnen ECU. In modernen Fahrzeugarchitekturen mit zentralisierten DomÃ¤nen-SteuergerÃ¤ten und Zonal-Architekturen verteilen sich funktional zusammenhÃ¤ngende Signale jedoch Ã¼ber mehrere physische SteuergerÃ¤te und Gateways. Eine Erweiterung des Modells auf einen fahrzeugweiten, Ã¼ber Gateway-Routing aggregierten Signalgraphen $G_S^{\text{Fahrzeug}} = \bigcup_k G_S^{(k)}$ mit Cross-ECU-AbhÃ¤ngigkeitskanten sowie die Untersuchung, ob und wie die $\Theta(n^3)$-Schranke bei verteilter, gatewaybasierter Vorberechnung pro ECU auf eine bessere GesamtkomplexitÃ¤t reduziert werden kann, stellt eine der vielversprechendsten Richtungen fÃ¼r zukÃ¼nftige Arbeiten dar.
+\textbf{Erweiterung auf Multi-ECU-Topologien.} Die vorliegende Arbeit betrachtet den Signalgraphen einer einzelnen ECU. In modernen Fahrzeugarchitekturen mit zentralisierten Domänen-Steuergeräten und Zonal-Architekturen verteilen sich funktional zusammenhängende Signale jedoch über mehrere physische Steuergeräte und Gateways. Eine Erweiterung des Modells auf einen fahrzeugweiten, über Gateway-Routing aggregierten Signalgraphen $G_S^{\text{Fahrzeug}} = \bigcup_k G_S^{(k)}$ mit Cross-ECU-Abhängigkeitskanten sowie die Untersuchung, ob und wie die $\Theta(n^3)$-Schranke bei verteilter, gatewaybasierter Vorberechnung pro ECU auf eine bessere Gesamtkomplexität reduziert werden kann, stellt eine der vielversprechendsten Richtungen für zukünftige Arbeiten dar.
 
-\textbf{Empirische Validierung an realen Fahrzeugdaten.} Die in Abschnitt~5 gezeigten Laufzeitmessungen basieren auf einer Python-Referenzimplementierung mit synthetischen Zufallsgraphen. Eine Validierung mit realen ODX-Signalkatalogen heutiger Fahrzeuggenerationen (typischerweise mehrere Hundert bis wenige Tausend Signale pro DomÃ¤ne) sowie ein Vergleich mit einer C/C++- oder Rust-Implementierung auf realer Diagnosehardware wÃ¤ren ein wichtiger nÃ¤chster Schritt zur Beurteilung der Praxistauglichkeit, insbesondere hinsichtlich der konstanten Vorfaktoren, die in der asymptotischen Analyse naturgemÃ¤ÃŸ unberÃ¼cksichtigt bleiben.
+\textbf{Empirische Validierung an realen Fahrzeugdaten.} Die in Abschnitt~5 gezeigten Laufzeitmessungen basieren auf einer Python-Referenzimplementierung mit synthetischen Zufallsgraphen. Eine Validierung mit realen ODX-Signalkatalogen heutiger Fahrzeuggenerationen (typischerweise mehrere Hundert bis wenige Tausend Signale pro Domäne) sowie ein Vergleich mit einer C/C++- oder Rust-Implementierung auf realer Diagnosehardware wären ein wichtiger nächster Schritt zur Beurteilung der Praxistauglichkeit, insbesondere hinsichtlich der konstanten Vorfaktoren, die in der asymptotischen Analyse naturgemäß unberücksichtigt bleiben.
 
-Zusammengefasst zeigt diese Arbeit, dass die UDS-Signalvisualisierung weit Ã¼ber eine reine Implementierungsfrage hinausgeht: Sie lÃ¤sst sich als formal beweisbares, graphentheoretisch fundiertes Optimierungsproblem fassen, dessen LÃ¶sung mittels des Subgraph Algorithmus sowohl beweisbar korrekt als auch unter realistischen KomplexitÃ¤tsannahmen (SETH) asymptotisch optimal ist -- ein Ergebnis, das die in der Originalarbeit zum Subgraph Algorithmus aufgezeigte AllgemeingÃ¼ltigkeit des Verfahrens fÃ¼r strukturelle Vergleichsprobleme eindrucksvoll fÃ¼r die Fahrzeugdiagnose bestÃ¤tigt.
+Zusammengefasst zeigt diese Arbeit, dass die UDS-Signalvisualisierung weit über eine reine Implementierungsfrage hinausgeht: Sie lässt sich als formal beweisbares, graphentheoretisch fundiertes Optimierungsproblem fassen, dessen Lösung mittels des Subgraph Algorithmus sowohl beweisbar korrekt als auch unter realistischen Komplexitätsannahmen (SETH) asymptotisch optimal ist -- ein Ergebnis, das die in der Originalarbeit zum Subgraph Algorithmus aufgezeigte Allgemeingültigkeit des Verfahrens für strukturelle Vergleichsprobleme eindrucksvoll für die Fahrzeugdiagnose bestätigt.
 
 \section*{Literaturverzeichnis}
 \addcontentsline{toc}{section}{Literaturverzeichnis}

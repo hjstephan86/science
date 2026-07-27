@@ -74,7 +74,7 @@
 
 \title{
   \textbf{\LARGE EtherCAT Protocol Erweiterung}\\
-  \textbf{\Large App-basierte HMI als Ersatz fÃ¼r HMI-Controller}\\[0.4cm]
+  \textbf{\Large App-basierte HMI als Ersatz für HMI-Controller}\\[0.4cm]
   \large Mobile und Desktop-Anwendungsschnittstelle\\
    in EtherCAT-Netzwerken\\[0.3cm]
 }
@@ -95,22 +95,22 @@
 \section{Einleitung}
 \label{sec:intro}
 % =====================================================================
-Diese Arbeit schlÃ¤gt eine Erweiterung des EtherCAT-Standards vor, die formal eine neue
+Diese Arbeit schlägt eine Erweiterung des EtherCAT-Standards vor, die formal eine neue
 Klasse von Human-Machine Interfaces (HMI) definiert, die ausschlie\ss{}lich auf mobilen und
 Desktop-Applikationen basiert. Traditionelle, band-integrierte HMI-Controller sind teuer,
-wartungsintensiv und kÃ¶nnen die AnzeigequalitÃ¤t moderner Consumer-Hardware bei weitem
+wartungsintensiv und können die Anzeigequalität moderner Consumer-Hardware bei weitem
 nicht erreichen.
 
-Die vorgeschlagene Erweiterung fÃ¼hrt einen \emph{App-Based HMI Layer} (ABH) im
-EtherCAT-Ã–kosystem ein, der es Tablets und Smartphones erlaubt, vollstÃ¤ndige
-HMI-Verantwortung auf Maschinenebene zu Ã¼bernehmen, wÃ¤hrend eine erweiterte
-Desktop-Variante fÃ¼r Inbetriebnahme und Diagnose durch Applikationsingenieure genutzt
+Die vorgeschlagene Erweiterung führt einen \emph{App-Based HMI Layer} (ABH) im
+EtherCAT-Ökosystem ein, der es Tablets und Smartphones erlaubt, vollständige
+HMI-Verantwortung auf Maschinenebene zu übernehmen, während eine erweiterte
+Desktop-Variante für Inbetriebnahme und Diagnose durch Applikationsingenieure genutzt
 wird. Diese Arbeit beschreibt im Detail die Systemarchitektur, die notwendigen
 Protokollerweiterungen, das Sicherheitsmodell mit Authentifizierung und rollenbasierter
 Zugriffskontrolle, eine vierstufige Migrationsstrategie sowie ein Referenz-Implementierungsframework.
 
-Die quantitative Kosten-Nutzen-Analyse zeigt eine Einsparung von bis zu 81\,\% Ã¼ber
-fÃ¼nf Jahre bei 20 HMI-Stationen. Der Proposal richtet sich an die EtherCAT Technology
+Die quantitative Kosten-Nutzen-Analyse zeigt eine Einsparung von bis zu 81\,\% über
+fünf Jahre bei 20 HMI-Stationen. Der Proposal richtet sich an die EtherCAT Technology
 Group (ETG) mit dem Ziel, EHAE als formale Erweiterung des EtherCAT Application Layer
 in den ETG.1000-Standard aufzunehmen.
 
@@ -119,51 +119,51 @@ IEC~61784, ist eines der am weitesten verbreiteten Echtzeit-Industrial-Ethernet-
 weltweit. Mit seiner segment-basierten Topologie, hochgeschwindigkeits-Datenverarbeitung
 und dem verteilten Uhr-Mechanismus (Distributed Clock) ist EtherCAT zur Basis-Infra\-struk\-tur
 moderner Maschinenautomation geworden \cite{iec61158}. Zykluszeiten von weniger als
-$100\,\si{\micro\second}$ ermÃ¶glichen prÃ¤zise Bewegungssteuerung und synchronisierte
-Multi-Achs-Applikationen, die mit klassischen Feldbussystemen nicht realisierbar wÃ¤ren
+$100\,\si{\micro\second}$ ermöglichen präzise Bewegungssteuerung und synchronisierte
+Multi-Achs-Applikationen, die mit klassischen Feldbussystemen nicht realisierbar wären
 \cite{etg_spec}.
 
 Die Human-Machine Interface (HMI) --- ein kritisches Teilsystem jeder Maschine --- wurde
 jedoch historisch vom Standardisierungsumfang von EtherCAT ausgeschlossen. Dies hat
-zur Entstehung einer heterogenen HMI-Landschaft gefÃ¼hrt, in der proprietÃ¤re LÃ¶sungen
+zur Entstehung einer heterogenen HMI-Landschaft geführt, in der proprietäre Lösungen
 verschiedener Hersteller parallel existieren, ohne gemeinsame Schnittstellen oder
-InteroperabilitÃ¤t zu gewÃ¤hrleisten.
+Interoperabilität zu gewährleisten.
 
 \subsection{Problemstellung}
 
-Traditionell rÃ¼sten Maschinenbauer jede Produktionslinie (sog.\ \emph{Band}) mit einem
-dedizierten HMI-Panel aus: einem eingebetteten Touchscreen-System, das eine proprietÃ¤re
-Runtime ausfÃ¼hrt und direkt am MaschinengehÃ¤use montiert ist. Obwohl diese Systeme
-ihren Zweck grundsÃ¤tzlich erfÃ¼llen, bringen sie erhebliche Nachteile mit sich:
+Traditionell rüsten Maschinenbauer jede Produktionslinie (sog.\ \emph{Band}) mit einem
+dedizierten HMI-Panel aus: einem eingebetteten Touchscreen-System, das eine proprietäre
+Runtime ausführt und direkt am Maschinengehäuse montiert ist. Obwohl diese Systeme
+ihren Zweck grundsätzlich erfüllen, bringen sie erhebliche Nachteile mit sich:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{Hohe Anschaffungskosten:} Industrielle Panel-PCs liegen im Preisbereich
-    von \EUR{800} bis Ã¼ber \EUR{5\,000} pro Einheit, abhÃ¤ngig von Schutzklasse,
-    DisplaygrÃ¶\ss{}e und Rechnerleistung.
-  \item \textbf{Geringe AnzeigequalitÃ¤t:} AuflÃ¶sungen zwischen 800$\times$600 und
-    1920$\times$1080 bei eingeschrÃ¤nkter Helligkeit (typisch 350--600\,nit) sind der
+    von \EUR{800} bis über \EUR{5\,000} pro Einheit, abhängig von Schutzklasse,
+    Displaygrö\ss{}e und Rechnerleistung.
+  \item \textbf{Geringe Anzeigequalität:} Auflösungen zwischen 800$\times$600 und
+    1920$\times$1080 bei eingeschränkter Helligkeit (typisch 350--600\,nit) sind der
     Standard.
-  \item \textbf{ProprietÃ¤rer Runtime-Lock-in:} Jeder Hersteller nutzt eine eigene
+  \item \textbf{Proprietärer Runtime-Lock-in:} Jeder Hersteller nutzt eine eigene
     Entwicklungsumgebung und Runtime (z.\,B.\ Siemens WinCC, Beckhoff TwinCAT HMI,
-    Wein\-tek EasyBuilder), was Portierbarkeit und HerstellerunabhÃ¤ngigkeit stark einschrÃ¤nkt.
-  \item \textbf{Wartungsaufwand:} Ersatzteilbeschaffung und Software-KompatibilitÃ¤t bei
+    Wein\-tek EasyBuilder), was Portierbarkeit und Herstellerunabhängigkeit stark einschränkt.
+  \item \textbf{Wartungsaufwand:} Ersatzteilbeschaffung und Software-Kompatibilität bei
     veralteten Panels stellen langfristig erhebliche Herausforderungen dar.
-  \item \textbf{Fehlende KonnektivitÃ¤t:} Integrierte Remote-Monitoring- und
-    Cloud-Anbindungen sind nur mit proprietÃ¤ren ZusatzlÃ¶sungen realisierbar.
+  \item \textbf{Fehlende Konnektivität:} Integrierte Remote-Monitoring- und
+    Cloud-Anbindungen sind nur mit proprietären Zusatzlösungen realisierbar.
   \item \textbf{Langer Update-Zyklus:} Firmware- und Software-Updates erfordern oft
     manuelle Eingriffe vor Ort und sind nicht zentral ausrollbar.
 \end{itemize}
 
-Gleichzeitig Ã¼bersteigen Consumer-Tablets die HMI-AnzeigequalitÃ¤t bei einem Bruchteil
-der Kosten. Ein modernes iPad Pro erreicht AuflÃ¶sungen von 2752$\times$2064 Pixeln,
+Gleichzeitig übersteigen Consumer-Tablets die HMI-Anzeigequalität bei einem Bruchteil
+der Kosten. Ein modernes iPad Pro erreicht Auflösungen von 2752$\times$2064 Pixeln,
 Bildwiederholraten von 120\,Hz sowie eine Helligkeit von bis zu 1600\,nit --- Werte, die
-industrielle Panels nicht annÃ¤hernd bieten.
+industrielle Panels nicht annähernd bieten.
 
 \subsection{Ziel dieser Arbeit}
 
-Diese Arbeit schlÃ¤gt die \textbf{EtherCAT-HMI-App Extension (EHAE)} vor und definiert,
-wie app-basierte HMI-Clients mit EtherCAT-Mastern integriert werden kÃ¶nnen, um
-band-integrierte HMI-Controller vollstÃ¤ndig zu ersetzen. Die zentralen BeitrÃ¤ge dieser
+Diese Arbeit schlägt die \textbf{EtherCAT-HMI-App Extension (EHAE)} vor und definiert,
+wie app-basierte HMI-Clients mit EtherCAT-Mastern integriert werden können, um
+band-integrierte HMI-Controller vollständig zu ersetzen. Die zentralen Beiträge dieser
 Arbeit sind:
 
 \begin{enumerate}[leftmargin=2em]
@@ -175,14 +175,14 @@ Arbeit sind:
     Berechtigungsstufen.
   \item Beschreibung eines auf OAuth~2.0, TLS~1.3 und RBAC aufbauenden
     Sicherheitsmodells.
-  \item Quantitativer Nachweis der Kosteneinsparungen gegenÃ¼ber traditionellen AnsÃ¤tzen.
+  \item Quantitativer Nachweis der Kosteneinsparungen gegenüber traditionellen Ansätzen.
 \end{enumerate}
 
 \subsection{Kostenvergleich}
 
 Abbildung~\ref{fig:cost_comparison} illustriert den 5-Jahres-Gesamtbetriebskostenvergleich
 (Total Cost of Ownership, TCO) zwischen einem traditionellen HMI-Panel und einer
-app-basierten LÃ¶sung.
+app-basierten Lösung.
 
 \begin{figure}[H]
 \centering
@@ -207,18 +207,18 @@ app-basierten LÃ¶sung.
 \end{axis}
 \end{tikzpicture}
 \caption{5-Jahres-TCO-Vergleich: traditionelles HMI-Panel vs.\ app-basiertes HMI pro
-  Station. Das Balkendiagramm zeigt fÃ¼nf Kostenkategorien (Hardware, Lizenzierung,
-  Wartung, Ersatz und Gesamtkosten) jeweils nebeneinander fÃ¼r beide Varianten. Beim
+  Station. Das Balkendiagramm zeigt fünf Kostenkategorien (Hardware, Lizenzierung,
+  Wartung, Ersatz und Gesamtkosten) jeweils nebeneinander für beide Varianten. Beim
   traditionellen HMI-Panel dominieren die Hardware-Kosten mit \EUR{3\,500} sowie
-  Wartungskosten von \EUR{3\,000}. Die app-basierte LÃ¶sung reduziert alle
+  Wartungskosten von \EUR{3\,000}. Die app-basierte Lösung reduziert alle
   Einzelpositionen drastisch: Hardware auf \EUR{600}, Wartung auf \EUR{300}. In der
-  Gesamtbetrachtung Ã¼ber fÃ¼nf Jahre ergibt sich \EUR{10\,700} gegenÃ¼ber nur \EUR{1\,300}
+  Gesamtbetrachtung über fünf Jahre ergibt sich \EUR{10\,700} gegenüber nur \EUR{1\,300}
   --- eine Einsparung von \textbf{87\,\%} pro Station.}
 \label{fig:cost_comparison}
 \end{figure}
 
-Die Differenz zwischen den Varianten ist auf mehrere Faktoren zurÃ¼ckzufÃ¼hren: Industrielle
-Panels erfordern WartungsvertrÃ¤ge, herstellerspezifische Schulungen und kostspielige
+Die Differenz zwischen den Varianten ist auf mehrere Faktoren zurückzuführen: Industrielle
+Panels erfordern Wartungsverträge, herstellerspezifische Schulungen und kostspielige
 Ersatzteile. App-basierte Systeme auf Consumer-Hardware profitieren von der Skalierung
 des Massenmarktes, standardisierten App-Store-Distributionen sowie kostenlosen oder
 preiswerten Entwicklungsframeworks wie Flutter oder .NET MAUI.
@@ -228,26 +228,26 @@ preiswerten Entwicklungsframeworks wie Flutter oder .NET MAUI.
 \label{sec:sota}
 % =====================================================================
 
-\subsection{EtherCAT-ProtokollÃ¼bersicht}
+\subsection{EtherCAT-Protokollübersicht}
 
 EtherCAT operiert auf einem Master-Slave-Prinzip \cite{etg_spec}. Ein einzelner Master
-kommuniziert mit mehreren Slave-GerÃ¤ten in einer Ring- oder Linientopologie Ã¼ber
+kommuniziert mit mehreren Slave-Geräten in einer Ring- oder Linientopologie über
 Standard-Ethernet-Frames und erreicht dabei Zykluszeiten von weniger als
 $100\,\si{\micro\second}$. Das Protokoll verwendet einen innovativen
-\emph{Processing-on-the-fly}-Ansatz: Jeder Slave liest die fÃ¼r ihn relevanten Daten aus
-dem durchlaufenden Frame heraus und schreibt seine Prozessdaten hinein, wÃ¤hrend der
-Frame den Knoten passiert --- ohne Pufferung und ohne zusÃ¤tzliche Latenz.
+\emph{Processing-on-the-fly}-Ansatz: Jeder Slave liest die für ihn relevanten Daten aus
+dem durchlaufenden Frame heraus und schreibt seine Prozessdaten hinein, während der
+Frame den Knoten passiert --- ohne Pufferung und ohne zusätzliche Latenz.
 
 Die EtherCAT-Protokollarchitektur besteht aus drei wesentlichen Schichten:
 
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{Physical Layer (IEC~61158-2):} Definiert die elektrischen und mechanischen
-    Eigenschaften der Ãœbertragung, typischerweise 100BASE-TX Ã¼ber Cat-5-Kabel.
+    Eigenschaften der Übertragung, typischerweise 100BASE-TX über Cat-5-Kabel.
   \item \textbf{Data Link Layer:} Beinhaltet das Field Memory Management Unit (FMMU) und
-    den SyncManager. Das FMMU ermÃ¶glicht das flexible Mapping von Prozessdaten in den
-    EtherCAT-Frame, wÃ¤hrend der SyncManager die synchronisierte Kommunikation zwischen
+    den SyncManager. Das FMMU ermöglicht das flexible Mapping von Prozessdaten in den
+    EtherCAT-Frame, während der SyncManager die synchronisierte Kommunikation zwischen
     Master und Slave verwaltet.
-  \item \textbf{Application Layer:} Definiert hÃ¶here Protokolle wie CAN over EtherCAT
+  \item \textbf{Application Layer:} Definiert höhere Protokolle wie CAN over EtherCAT
     (CoE), File over EtherCAT (FoE), Ethernet over EtherCAT (EoE) und ADS over EtherCAT
     (AoE) \cite{iec61784}.
 \end{enumerate}
@@ -284,25 +284,25 @@ traditionellem HMI-Panel.
 \end{tikzpicture}
 \caption{Standard-EtherCAT-Topologie mit traditionell angebundenem HMI-Panel. Das
   Diagramm zeigt den EtherCAT-Master (blau, links oben) als zentralen Kommunikationsknoten,
-  der Ã¼ber eine lineare Ethernet-Kette mit drei Slave-GerÃ¤ten verbunden ist: Drive~1,
+  der über eine lineare Ethernet-Kette mit drei Slave-Geräten verbunden ist: Drive~1,
   Drive~2 und einem I/O-Modul (alle grau). Ein vierter Slave, der Sensor Hub, ist mit
   gestrichelter Linie als Abzweigung von Drive~2 dargestellt. Das traditionelle HMI-Panel
-  (rot markiert, unten links) ist \emph{nicht} Teil des EtherCAT-Rings, sondern Ã¼ber eine
+  (rot markiert, unten links) ist \emph{nicht} Teil des EtherCAT-Rings, sondern über eine
   gestrichelte, rot markierte Verbindung mit nicht-standardisierten Protokollen (Modbus oder
   OPC-UA) am Master angebunden. Dies illustriert das Kernproblem: HMI ist kein nativer
-  Bestandteil des EtherCAT-Standards, sondern eine proprietÃ¤re ErgÃ¤nzung.}
+  Bestandteil des EtherCAT-Standards, sondern eine proprietäre Ergänzung.}
 \label{fig:ethercat_topology}
 \end{figure}
 
 Diese Entkopplung hat weitreichende Konsequenzen: Da das HMI au\ss{}erhalb des
 EtherCAT-Standards liegt, existiert keine einheitliche Schnittstelle. Jeder Hersteller
 implementiert die Verbindung zwischen Master und HMI individuell, was zu
-KompatibilitÃ¤tsproblemen, proprietÃ¤ren Protokollen und erhÃ¶htem Integrationsaufwand fÃ¼hrt.
+Kompatibilitätsproblemen, proprietären Protokollen und erhöhtem Integrationsaufwand führt.
 
-\subsection{Consumer-Hardware-FÃ¤higkeiten}
+\subsection{Consumer-Hardware-Fähigkeiten}
 
-Der rasante Fortschritt im Consumer-Elektronik-Markt hat eine technologische LÃ¼cke
-gegenÃ¼ber industriellen HMI-Panels entstehen lassen, die sich Jahr fÃ¼r Jahr vergrÃ¶\ss{}ert.
+Der rasante Fortschritt im Consumer-Elektronik-Markt hat eine technologische Lücke
+gegenüber industriellen HMI-Panels entstehen lassen, die sich Jahr für Jahr vergrö\ss{}ert.
 Tabelle~\ref{tab:hw_comparison} fasst die wichtigsten Parameter zusammen.
 
 \begin{table}[H]
@@ -314,52 +314,52 @@ Tabelle~\ref{tab:hw_comparison} fasst die wichtigsten Parameter zusammen.
 \textbf{Parameter} & \textbf{Industrielles HMI-Panel} & \textbf{Consumer-Tablet (iPad Pro /
 Galaxy Tab S9)} \\
 \midrule
-AuflÃ¶sung          & 1024$\times$768 -- 1920$\times$1080  & 2560$\times$1600 --
+Auflösung          & 1024$\times$768 -- 1920$\times$1080  & 2560$\times$1600 --
 2752$\times$2064 \\
 Bildwiederholrate  & 60\,Hz                               & 60--120\,Hz (ProMotion) \\
 Helligkeit         & 350--600\,nit                        & 600--1600\,nit \\
-Touch-PrÃ¤zision    & $\pm$2--5\,mm                        & $\pm$0{,}5\,mm \\
+Touch-Präzision    & $\pm$2--5\,mm                        & $\pm$0{,}5\,mm \\
 Preis (EUR)        & 800--5\,000                          & 350--1\,300 \\
 Prozessor          & ARM Cortex-A, 1--2\,GHz              & Apple M4 / Snapdragon 8 Gen 2 \\
 RAM                & 512\,MB -- 2\,GB                     & 8--16\,GB \\
-Akkulaufzeit       & entfÃ¤llt (Netzbetrieb)               & 10--12\,Stunden \\
+Akkulaufzeit       & entfällt (Netzbetrieb)               & 10--12\,Stunden \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 Neben den Displayeigenschaften sind Consumer-Tablets in weiteren Dimensionen deutlich
-Ã¼berlegen: ihre Prozessoren ermÃ¶glichen flÃ¼ssige Echtzeitvisualisierungen, Trend-Displays
+überlegen: ihre Prozessoren ermöglichen flüssige Echtzeitvisualisierungen, Trend-Displays
 und sogar lokale Datenanalyse. Die Integration von Wi-Fi~6, Bluetooth und Mobilfunk bietet
-KonnektivitÃ¤tsoptionen, die industrielle Panels nicht besitzen.
+Konnektivitätsoptionen, die industrielle Panels nicht besitzen.
 
-\subsection{Bestehende AnsÃ¤tze und deren Grenzen}
+\subsection{Bestehende Ansätze und deren Grenzen}
 
-Bereits heute gibt es Versuche, Consumer-GerÃ¤te als HMI einzusetzen. Diese basieren
-typischerweise auf OPC-UA-KonnektivitÃ¤t oder proprietÃ¤ren HerstellerlÃ¶sungen wie
-Siemens MindSphere oder Beckhoff TF2000. Sie weisen jedoch folgende SchwÃ¤chen auf:
+Bereits heute gibt es Versuche, Consumer-Geräte als HMI einzusetzen. Diese basieren
+typischerweise auf OPC-UA-Konnektivität oder proprietären Herstellerlösungen wie
+Siemens MindSphere oder Beckhoff TF2000. Sie weisen jedoch folgende Schwächen auf:
 
 \begin{itemize}[leftmargin=2em]
   \item Keine formale Standardisierung im EtherCAT-Kontext.
   \item Fehlende Definition von Sicherheitsrollen und Zugriffsrechten.
-  \item Keine spezifizierte Latenzanforderung fÃ¼r die HMI-App-KonnektivitÃ¤t.
-  \item Vendor-Lock-in durch proprietÃ¤re Protokolle.
+  \item Keine spezifizierte Latenzanforderung für die HMI-App-Konnektivität.
+  \item Vendor-Lock-in durch proprietäre Protokolle.
 \end{itemize}
 
-EHAE schlie\ss{}t diese LÃ¼cke durch eine vollstÃ¤ndige, herstellerunabhÃ¤ngige Spezifikation.
+EHAE schlie\ss{}t diese Lücke durch eine vollständige, herstellerunabhängige Spezifikation.
 
 % =====================================================================
 \section{EHAE-Architektur}
 \label{sec:ehae}
 % =====================================================================
 
-\subsection{SystemÃ¼bersicht}
+\subsection{Systemübersicht}
 
 Die EHAE definiert einen neuen Software-Layer --- den \emph{HMI Application Gateway
 (HAG)} --- innerhalb des EtherCAT-Master-Stacks. Der HAG exponiert eine abgesicherte,
-WebSocket-basierte API, mit der HMI-App-Clients Ã¼ber Wi-Fi oder kabelgebundenes Ethernet
-verbinden kÃ¶nnen.
+WebSocket-basierte API, mit der HMI-App-Clients über Wi-Fi oder kabelgebundenes Ethernet
+verbinden können.
 
-Abbildung~\ref{fig:ehae_architecture} zeigt das vollstÃ¤ndige Schichtenmodell der EHAE.
+Abbildung~\ref{fig:ehae_architecture} zeigt das vollständige Schichtenmodell der EHAE.
 
 \begin{figure}[H]
 \centering
@@ -390,12 +390,12 @@ Abbildung~\ref{fig:ehae_architecture} zeigt das vollstÃ¤ndige Schichtenmodell 
 \end{tikzpicture}
 \caption{EHAE-Architekturdiagramm: Schichtenmodell der erweiterten EtherCAT-Protokollstack.
   Das Diagramm ist von unten nach oben aufgebaut und zeigt vier aufeinander aufbauende
-  Schichten. Ganz unten (grau) liegt der \emph{EtherCAT Physical Layer} gemÃ¤\ss{} IEC~61158-2.
-  DarÃ¼ber (blau) befindet sich der \emph{Data Link Layer} mit FMMU und SyncManager.
-  Die dritte Schicht (grÃ¼n) ist der \emph{Application Layer} mit CoE, FoE, EoE und AoE.
+  Schichten. Ganz unten (grau) liegt der \emph{EtherCAT Physical Layer} gemä\ss{} IEC~61158-2.
+  Darüber (blau) befindet sich der \emph{Data Link Layer} mit FMMU und SyncManager.
+  Die dritte Schicht (grün) ist der \emph{Application Layer} mit CoE, FoE, EoE und AoE.
   Die vierte, orange hervorgehobene Schicht ist die neue EHAE-Erweiterung: der
   \emph{HMI Application Gateway (HAG)}. Von dieser Schicht aus verbinden sich vier Typen
-  von App-Clients Ã¼ber WebSocket-Verbindungen (Pfeile von oben): die Operator~App
+  von App-Clients über WebSocket-Verbindungen (Pfeile von oben): die Operator~App
   (Tablet/Smartphone), die Engineer~App (Desktop/Tablet), die Remote~App (Cloud-Monitor)
   sowie Drittanbieter-SCADA-Systeme. Rechts neben dem HAG zeigt eine geschweifte Klammer
   die eingesetzten Sicherheitsmechanismen: TLS~1.3, OAuth~2.0 und RBAC.}
@@ -407,12 +407,12 @@ Die zentrale Design-Entscheidung des EHAE-Architekturmodells besteht darin, den 
 Vorteile:
 
 \begin{itemize}[leftmargin=2em]
-  \item \textbf{Keine Ã„nderungen an Slave-Firmware:} Alle Erweiterungen laufen
+  \item \textbf{Keine Änderungen an Slave-Firmware:} Alle Erweiterungen laufen
     ausschlie\ss{}lich im Master-Stack.
-  \item \textbf{RÃ¼ckwÃ¤rtskompatibilitÃ¤t:} Bestehende EtherCAT-Netzwerke kÃ¶nnen ohne
-    Modifikation der FeldgerÃ¤te auf EHAE migrieren.
+  \item \textbf{Rückwärtskompatibilität:} Bestehende EtherCAT-Netzwerke können ohne
+    Modifikation der Feldgeräte auf EHAE migrieren.
   \item \textbf{Herstellerfreiheit:} Jeder EtherCAT-Master-Stack-Anbieter kann den HAG
-    unabhÃ¤ngig implementieren.
+    unabhängig implementieren.
 \end{itemize}
 
 \subsection{Interne Struktur des HMI Application Gateway}
@@ -454,13 +454,13 @@ Abbildung~\ref{fig:hag_internal} zeigt die interne Modulstruktur des HAG.
 \end{tikzpicture}
 \caption{Interne Modulstruktur des HAG. Das Blockdiagramm zeigt sieben funktionale Module
   (blau) sowie eine zentrale Datenbank (grau, Zylinder-Symbol) und zwei externe
-  Schnittstellen (grÃ¼n). Von links kommend empfÃ¤ngt der \emph{Config Loader} die
+  Schnittstellen (grün). Von links kommend empfängt der \emph{Config Loader} die
   Prozessdaten-Mappings aus dem EtherCAT Application Layer. Der \emph{PDO Mapper}
-  Ã¼bersetzt rohe EtherCAT-Prozessdaten in benannte HMI-Variablen und speichert diese in
+  übersetzt rohe EtherCAT-Prozessdaten in benannte HMI-Variablen und speichert diese in
   der \emph{Variable Database (Var DB)}. Der \emph{WebSocket Server} in der Mitte ist
-  das VerbindungsstÃ¼ck zu den App-Clients (rechts). Er kommuniziert bidirektional mit dem
+  das Verbindungsstück zu den App-Clients (rechts). Er kommuniziert bidirektional mit dem
   \emph{Auth Broker} (Token-Validierung) und der \emph{RBAC Engine}
-  (ZugriffsrechtsprÃ¼fung). Der \emph{Event Bus} sammelt Ereignisse aus dem PDO Mapper
+  (Zugriffsrechtsprüfung). Der \emph{Event Bus} sammelt Ereignisse aus dem PDO Mapper
   und dem \emph{Alarm Manager} und leitet sie an den WebSocket Server weiter, der sie als
   Push-Nachrichten an die Clients ausliefert.}
 \label{fig:hag_internal}
@@ -471,19 +471,19 @@ Jedes Modul des HAG hat eine klar definierte Verantwortlichkeit:
 \begin{description}[leftmargin=2em]
   \item[Config Loader] Liest und parst die HMI Variable Map (HVM, siehe
     Abschnitt~\ref{sec:protocol}) und konfiguriert daraus den PDO Mapper zur Laufzeit.
-  \item[PDO Mapper] FÃ¼hrt das zyklische Mapping von EtherCAT-Prozessdatenobjekten
-    (PDOs) auf benannte HMI-Variablen durch. Erkennt WerteÃ¤nderungen und generiert
+  \item[PDO Mapper] Führt das zyklische Mapping von EtherCAT-Prozessdatenobjekten
+    (PDOs) auf benannte HMI-Variablen durch. Erkennt Werteänderungen und generiert
     entsprechende Events.
   \item[Variable Database] In-Memory-Datenbank, die den aktuellen Zustand aller
-    HMI-Varia\-blen hÃ¤lt. Dient als konsistenter Snapshot-Speicher fÃ¼r neue
+    HMI-Varia\-blen hält. Dient als konsistenter Snapshot-Speicher für neue
     WebSocket-Verbindungen.
   \item[WebSocket Server] Verwaltet alle aktiven Client-Verbindungen, verarbeitet
     eingehende Nachrichten und verteilt ausgehende Updates asynchron.
   \item[Auth Broker] Validiert JWT-Tokens bei Verbindungsaufbau via
     Token-Introspection-Endpunkt des Identity Providers.
-  \item[RBAC Engine] PrÃ¼ft vor jeder schreibenden Operation, ob die Rolle des Clients die
+  \item[RBAC Engine] Prüft vor jeder schreibenden Operation, ob die Rolle des Clients die
     erforderliche Berechtigung besitzt.
-  \item[Event Bus] Internes Publish-Subscribe-System fÃ¼r lose Kopplung zwischen Modulen.
+  \item[Event Bus] Internes Publish-Subscribe-System für lose Kopplung zwischen Modulen.
   \item[Alarm Manager] Verwaltet den Alarm-Lifecycle (raise, acknowledge, clear) und
     persistiert die Alarm-Historie.
 \end{description}
@@ -495,7 +495,7 @@ Jedes Modul des HAG hat eine klar definierte Verantwortlichkeit:
 
 EHAE definiert formal zwei App-Rollen, die auf demselben Anwendungsframework laufen,
 aber unterschiedliche Capability-Sets besitzen. Dieses Modell erlaubt es, eine einzige
-Codebase fÃ¼r beide Rollen zu nutzen und die FÃ¤higkeiten dynamisch auf Basis des
+Codebase für beide Rollen zu nutzen und die Fähigkeiten dynamisch auf Basis des
 OAuth-Tokens zur Laufzeit zu aktivieren.
 
 \begin{figure}[H]
@@ -515,7 +515,7 @@ OAuth-Tokens zur Laufzeit zu aktivieren.
 \node[feat] at (0, 0.4) {\checkmark~Maschine EIN/AUS};
 \node[feat] at (0,-0.1) {\checkmark~Statusanzeige};
 \node[feat] at (0,-0.6) {\checkmark~Alarm ACK};
-\node[font=\tiny, color=accentred] at (0,-1.1) {\texttimes~ParameterÃ¤nderung};
+\node[font=\tiny, color=accentred] at (0,-1.1) {\texttimes~Parameteränderung};
 \node[tablet] (tb) at (5.5,0) {};
 \node[lbl, text=appgreen] at (5.5,1.0)  {Operator App\\(Tablet)};
 \node[feat] at (5.5, 0.3) {\checkmark~Alle Smartphone-Features};
@@ -529,23 +529,23 @@ OAuth-Tokens zur Laufzeit zu aktivieren.
 \node[feat] at (11.5,-0.7) {\checkmark~Firmware-Update (FoE)};
 \node[feat] at (11.5,-1.2) {\checkmark~Oszilloskop-Ansicht};
 \end{tikzpicture}
-\caption{Dual-Role-App-Modell: GegenÃ¼berstellung von Operator~App und Engineer~App.
-  Das Diagramm zeigt drei GerÃ¤teklassen von links nach rechts, deren Capability-Sets
+\caption{Dual-Role-App-Modell: Gegenüberstellung von Operator~App und Engineer~App.
+  Das Diagramm zeigt drei Geräteklassen von links nach rechts, deren Capability-Sets
   streng hierarchisch aufgebaut sind. Links (blau) steht die \emph{Operator App} auf
   einem Smartphone: sie erlaubt grundlegende Steuerungsoperationen (EIN/AUS), die
-  Statusanzeige und das Quittieren von Alarmen; ParameterÃ¤nderungen sind explizit
-  gesperrt (\texttimes). In der Mitte (grÃ¼n) die \emph{Operator App} auf einem Tablet
-  mit erweiterter AnzeigeflÃ¤che: alle Smartphone-Features plus Trendanzeige und
-  Rezeptauswahl sind verfÃ¼gbar. Rechts (grau) die \emph{Engineer App} auf Desktop
-  oder Tablet: das vollstÃ¤ndige Capability-Set einschlie\ss{}lich SDO-Parametrierung,
-  Antriebsinbetriebnahme, Firmware-Updates Ã¼ber FoE und Echtzeitoszilloskop.}
+  Statusanzeige und das Quittieren von Alarmen; Parameteränderungen sind explizit
+  gesperrt (\texttimes). In der Mitte (grün) die \emph{Operator App} auf einem Tablet
+  mit erweiterter Anzeigefläche: alle Smartphone-Features plus Trendanzeige und
+  Rezeptauswahl sind verfügbar. Rechts (grau) die \emph{Engineer App} auf Desktop
+  oder Tablet: das vollständige Capability-Set einschlie\ss{}lich SDO-Parametrierung,
+  Antriebsinbetriebnahme, Firmware-Updates über FoE und Echtzeitoszilloskop.}
 \label{fig:dual_role}
 \end{figure}
 
 \subsection{Engineer App: Topologie-Ansicht}
 
-Eine der leistungsstÃ¤rksten Funktionen der Engineer App ist die Live-Topologie-Visuali\-sierung.
-Sie zeigt das gesamte EtherCAT-Netzwerk in Echtzeit, inklusive GerÃ¤tezustÃ¤nde, Diagnose-
+Eine der leistungsstärksten Funktionen der Engineer App ist die Live-Topologie-Visuali\-sierung.
+Sie zeigt das gesamte EtherCAT-Netzwerk in Echtzeit, inklusive Gerätezustände, Diagnose-
 informationen und Netzwerkstatistiken.
 
 \begin{figure}[H]
@@ -581,38 +581,38 @@ informationen und Netzwerkstatistiken.
 \node[font=\tiny, color=etherblue, align=center] at (0,-2.5)
   {Netzwerkzyklus: 250\,\si{\micro\second} | Working Counter: 12/12 | Frame Loss: 0};
 \end{tikzpicture}
-\caption{Engineer-App-Topologieansicht: Live-EtherCAT-Netzwerkkarte mit GerÃ¤tezustÃ¤nden.
-  Das Diagramm zeigt den EtherCAT-Master (blau) links, von dem zwei parallele StrÃ¤nge
-  abzweigen. Der obere Strang fÃ¼hrt Ã¼ber Drive~1 (Achse~X, grÃ¼n $=$ Betrieb) zu Drive~3
-  (Achse~Z, \textbf{rot $=$ Fehler}), der untere Ã¼ber Drive~2 (Achse~Y) zu I/O-Coupler
+\caption{Engineer-App-Topologieansicht: Live-EtherCAT-Netzwerkkarte mit Gerätezuständen.
+  Das Diagramm zeigt den EtherCAT-Master (blau) links, von dem zwei parallele Stränge
+  abzweigen. Der obere Strang führt über Drive~1 (Achse~X, grün $=$ Betrieb) zu Drive~3
+  (Achse~Z, \textbf{rot $=$ Fehler}), der untere über Drive~2 (Achse~Y) zu I/O-Coupler
   EK1100 und I/O-Modul EL2008. Der Encoder EL5151 ist als Abzweigung von Drive~3
-  dargestellt. Ãœber jedem Slave-Knoten ist ein farbiger Kreis mit StatuskÃ¼rzel
-  dargestellt: \textbf{grÃ¼n OP} (Operational) fÃ¼r alle funktionierenden GerÃ¤te,
-  \textbf{rot ERR} fÃ¼r Drive~3~(Achse~Z), das einen Fehler meldet. Die
-  Statuszeile am unteren Rand zeigt Netzwerkparameter: Zykluszeit 250\,Âµs, Working
+  dargestellt. Über jedem Slave-Knoten ist ein farbiger Kreis mit Statuskürzel
+  dargestellt: \textbf{grün OP} (Operational) für alle funktionierenden Geräte,
+  \textbf{rot ERR} für Drive~3~(Achse~Z), das einen Fehler meldet. Die
+  Statuszeile am unteren Rand zeigt Netzwerkparameter: Zykluszeit 250\, µs, Working
   Counter 12/12 (alle Slaves antworten), Frame Loss~0.}
 \label{fig:eng_topo_view}
 \end{figure}
 
 Der Working Counter (WC) ist ein kritischer Diagnoseparameter in EtherCAT-Netzwerken.
-Er zÃ¤hlt, wie viele Slaves korrekt auf den umlaufenden Frame geantwortet haben. Ein WC
+Er zählt, wie viele Slaves korrekt auf den umlaufenden Frame geantwortet haben. Ein WC
 von 12/12 bedeutet, dass alle erwarteten 12 Datagramm-Antworten eingetroffen sind.
 Abweichungen deuten auf Kommunikationsfehler oder ausgefallene Slaves hin. Die
-Engineer App visualisiert diesen Parameter dauerhaft und schlÃ¤gt Alarm bei
+Engineer App visualisiert diesen Parameter dauerhaft und schlägt Alarm bei
 Unstimmigkeiten.
 
 \subsection{Engineer App: Oszilloskop-Ansicht}
 
-Die Engineer App bietet eine vollstÃ¤ndige Oszilloskop-Funktion, die Prozessvariablen
-in Echtzeit mit einer konfigurierbaren Abtastrate aufzeichnet. Typische AnwendungsfÃ¤lle
+Die Engineer App bietet eine vollständige Oszilloskop-Funktion, die Prozessvariablen
+in Echtzeit mit einer konfigurierbaren Abtastrate aufzeichnet. Typische Anwendungsfälle
 sind:
 
 \begin{itemize}[leftmargin=2em]
-  \item Analyse von Regelkreisverhalten (Ãœberschwingen, Einregelzeit, StationÃ¤re
+  \item Analyse von Regelkreisverhalten (Überschwingen, Einregelzeit, Stationäre
     Abweichung).
   \item Diagnose von mechanischen Resonanzen durch FFT-Analyse.
   \item Inbetriebnahme von Lageregelungen (Position, Geschwindigkeit, Strom).
-  \item Aufzeichnung von Anlaufkurven nach ParameterÃ¤nderungen.
+  \item Aufzeichnung von Anlaufkurven nach Parameteränderungen.
 \end{itemize}
 
 % =====================================================================
@@ -622,10 +622,10 @@ sind:
 
 \subsection{HAG Communication Protocol (HCP)}
 
-Die EHAE definiert das \emph{HAG Communication Protocol (HCP)}, das Ã¼ber WebSocket
+Die EHAE definiert das \emph{HAG Communication Protocol (HCP)}, das über WebSocket
 (RFC~6455) \cite{rfc6455} mit JSON- oder MessagePack-Serialisierung arbeitet. Die Wahl
-von WebSocket Ã¼ber alternatives HTTP/REST ist bewusst getroffen: WebSocket unterstÃ¼tzt
-Full-Duplex-Kommunikation und Server-seitige Push-Events, was fÃ¼r eine reaktive HMI mit
+von WebSocket über alternatives HTTP/REST ist bewusst getroffen: WebSocket unterstützt
+Full-Duplex-Kommunikation und Server-seitige Push-Events, was für eine reaktive HMI mit
 geringer Latenz unverzichtbar ist.
 
 Tabelle~\ref{tab:hcp_messages} listet alle definierten HCP-Nachrichtentypen auf.
@@ -641,7 +641,7 @@ Tabelle~\ref{tab:hcp_messages} listet alle definierten HCP-Nachrichtentypen auf.
 \texttt{SUBSCRIBE}          & Client $\to$ HAG      & Abonnement benannter HMI-Variablen \\
 \texttt{DATA\_UPDATE}       & HAG $\to$ Client      & Push aktualisierter Variablenwerte \\
 \texttt{WRITE\_VAR}         & Client $\to$ HAG      & Variable schreiben (rollengesperrt) \\
-\texttt{ALARM\_EVENT}       & HAG $\to$ Client      & Alarm ausgelÃ¶st oder quittiert \\
+\texttt{ALARM\_EVENT}       & HAG $\to$ Client      & Alarm ausgelöst oder quittiert \\
 \texttt{ALARM\_ACK}         & Client $\to$ HAG      & Operator quittiert Alarm \\
 \texttt{SDO\_READ/WRITE}    & Client $\to$ HAG      & SDO-Zugriff (nur Engineer-Rolle) \\
 \texttt{TOPO\_REQUEST}      & Client $\to$ HAG      & Topologie-Snapshot anfordern \\
@@ -680,14 +680,14 @@ Jede HCP-Nachricht folgt einem einheitlichen JSON-Schema:
 }
 \end{lstlisting}
 
-Das Feld \texttt{quality} folgt der OPC-UA-QualitÃ¤tssemantik (GOOD, UNCERTAIN, BAD)
+Das Feld \texttt{quality} folgt der OPC-UA-Qualitätssemantik (GOOD, UNCERTAIN, BAD)
 und erlaubt der App, fehlerhafte oder veraltete Werte visuell zu kennzeichnen.
 
 \subsection{Variable Mapping Konfiguration (HVM)}
 
 Die HMI Variable Map (HVM) ist eine XML-Konfigurationsdatei, die die Abbildung von
 EtherCAT-PDO/SDO-Indizes auf benannte HMI-Variablen beschreibt. Sie definiert
-Datentyp, Skalierung, Einheit, Zugriffsrechte und die erforderliche Mindestrolle fÃ¼r
+Datentyp, Skalierung, Einheit, Zugriffsrechte und die erforderliche Mindestrolle für
 jeden Parameter.
 
 \begin{lstlisting}[language=xml, caption={HMI Variable Map (HVM) Konfigurationsbeispiel.}]
@@ -719,7 +719,7 @@ jeden Parameter.
 \end{lstlisting}
 
 Die Erweiterung um \texttt{alarmHigh}/\texttt{warnHigh}-Attribute erlaubt es dem Alarm
-Manager, GrenzwertÃ¼berschreitungen direkt aus der HVM-Konfiguration abzuleiten, ohne
+Manager, Grenzwertüberschreitungen direkt aus der HVM-Konfiguration abzuleiten, ohne
 dass diese Logik in der App selbst implementiert werden muss.
 
 % =====================================================================
@@ -727,13 +727,13 @@ dass diese Logik in der App selbst implementiert werden muss.
 \label{sec:security}
 % =====================================================================
 
-Die Sicherheitsarchitektur der EHAE basiert auf drei aufeinander aufbauenden SÃ¤ulen:
-Transport-VerschlÃ¼sselung (TLS~1.3), Authentifizierung (OAuth~2.0 mit PKCE) und
+Die Sicherheitsarchitektur der EHAE basiert auf drei aufeinander aufbauenden Säulen:
+Transport-Verschlüsselung (TLS~1.3), Authentifizierung (OAuth~2.0 mit PKCE) und
 Autorisierung (Role-Based Access Control, RBAC).
 
 \subsection{Authentifizierungsablauf}
 
-Abbildung~\ref{fig:auth_flow} zeigt die vollstÃ¤ndige OAuth-2.0-PKCE-Sequenz fÃ¼r den
+Abbildung~\ref{fig:auth_flow} zeigt die vollständige OAuth-2.0-PKCE-Sequenz für den
 Verbindungsaufbau einer HMI-App zum HAG.
 
 \begin{figure}[H]
@@ -775,32 +775,32 @@ Verbindungsaufbau einer HMI-App zum HAG.
   gestrichelten Lebenslinien: die \emph{HMI App} (links), den \emph{Identity Provider}
   (Mitte) und den \emph{HAG} (rechts). In Schritt~1 sendet die App einen Auth-Request
   mit einem PKCE-Code-Challenge an den Identity Provider. Dieser antwortet mit einer
-  Login-Seite (Schritt~2). Nach Eingabe der Credentials und Ãœbermittlung des Code-Verifiers
+  Login-Seite (Schritt~2). Nach Eingabe der Credentials und Übermittlung des Code-Verifiers
   (Schritt~3) stellt der Identity Provider ein JWT-Access-Token mit 1~Stunde Laufzeit und
-  ein Refresh-Token aus (Schritt~4). In Schritt~5 verbindet sich die App Ã¼ber TLS~1.3
-  mit dem HAG und Ã¼bergibt das Bearer-Token. Der HAG verifiziert das Token durch
+  ein Refresh-Token aus (Schritt~4). In Schritt~5 verbindet sich die App über TLS~1.3
+  mit dem HAG und übergibt das Bearer-Token. Der HAG verifiziert das Token durch
   Token-Introspection beim Identity Provider (Schritte~6--7) und akzeptiert die Verbindung
-  mit Ãœbertragung der initialen Variable-Datenbank (Schritt~8). Abschlie\ss{}end
-  abonniert die App ihre benÃ¶tigten Variablen (Schritt~9).}
+  mit Übertragung der initialen Variable-Datenbank (Schritt~8). Abschlie\ss{}end
+  abonniert die App ihre benötigten Variablen (Schritt~9).}
 \label{fig:auth_flow}
 \end{figure}
 
-Die Verwendung von PKCE \cite{rfc7636} ist entscheidend fÃ¼r die Sicherheit auf mobilen
-GerÃ¤ten, da diese keine Client-Secrets sicher speichern kÃ¶nnen. PKCE stellt sicher, dass
-nur der Initiator des Auth-Flows das Token einlÃ¶sen kann, selbst wenn der Authorization
+Die Verwendung von PKCE \cite{rfc7636} ist entscheidend für die Sicherheit auf mobilen
+Geräten, da diese keine Client-Secrets sicher speichern können. PKCE stellt sicher, dass
+nur der Initiator des Auth-Flows das Token einlösen kann, selbst wenn der Authorization
 Code abgefangen wird.
 
 \subsection{Token-Management}
 
-JWTs enthalten folgende standardisierten Claims gemÃ¤\ss{} RFC~7519:
+JWTs enthalten folgende standardisierten Claims gemä\ss{} RFC~7519:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{sub:} Eindeutige Benutzer-ID.
   \item \textbf{iat/exp:} Ausstellungs- und Ablaufzeit (1 Stunde TTL).
-  \item \textbf{ehae\_role:} EHAE-spezifischer Claim fÃ¼r die Rolle (VIEWER, OPERATOR,
+  \item \textbf{ehae\_role:} EHAE-spezifischer Claim für die Rolle (VIEWER, OPERATOR,
     ENGINEER, ADMIN).
   \item \textbf{ehae\_machines:} Whitelist der Maschinen-IDs, auf die dieser Token
-    Zugriff gewÃ¤hrt.
+    Zugriff gewährt.
 \end{itemize}
 
 Nach Ablauf des Access Tokens verwendet die App das Refresh Token, um still im
@@ -809,7 +809,7 @@ Login zu unterbrechen.
 
 \subsection{Rollenbasierte Zugriffskontrolle}
 
-Tabelle~\ref{tab:rbac} zeigt die vollstÃ¤ndige RBAC-Matrix fÃ¼r alle vier EHAE-Rollen.
+Tabelle~\ref{tab:rbac} zeigt die vollständige RBAC-Matrix für alle vier EHAE-Rollen.
 
 \begin{table}[H]
 \centering
@@ -817,7 +817,7 @@ Tabelle~\ref{tab:rbac} zeigt die vollstÃ¤ndige RBAC-Matrix fÃ¼r alle vier EH
 \label{tab:rbac}
 \begin{tabularx}{\textwidth}{lXXXX}
 \toprule
-\textbf{FÃ¤higkeit}                & \textbf{Viewer} & \textbf{Operator} & \textbf{Engineer} & \textbf{Admin} \\
+\textbf{Fähigkeit}                & \textbf{Viewer} & \textbf{Operator} & \textbf{Engineer} & \textbf{Admin} \\
 \midrule
 Prozessdaten lesen                & \checkmark & \checkmark & \checkmark & \checkmark \\
 Alarme quittieren                 &            & \checkmark & \checkmark & \checkmark \\
@@ -827,26 +827,26 @@ SDO-Parameter lesen/schreiben     &            &            & \checkmark & \chec
 Firmware-Update (FoE)             &            &            & \checkmark & \checkmark \\
 Oszilloskop-Stream                &            &            & \checkmark & \checkmark \\
 Benutzerverwaltung                &            &            &            & \checkmark \\
-RollenÃ¤nderung                    &            &            &            & \checkmark \\
+Rollenänderung                    &            &            &            & \checkmark \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Die RBAC-Engine prÃ¼ft bei jeder eingehenden \texttt{WRITE\_VAR}- oder
+Die RBAC-Engine prüft bei jeder eingehenden \texttt{WRITE\_VAR}- oder
 \texttt{SDO\_WRITE}-Nachricht sowohl die Rolle des Clients als auch die
 \texttt{minRole}-Definition der jeweiligen Variable in der HVM-Konfiguration. Eine
-Schreiboperation wird nur ausgefÃ¼hrt, wenn beide Bedingungen erfÃ¼llt sind.
+Schreiboperation wird nur ausgeführt, wenn beide Bedingungen erfüllt sind.
 
 \subsection{Netzwerksicherheit}
 
-Alle WebSocket-Verbindungen sind obligatorisch Ã¼ber TLS~1.3 \cite{rfc8446} gesichert.
-TLS~1.3 bietet gegenÃ¼ber TLS~1.2 wichtige Verbesserungen:
+Alle WebSocket-Verbindungen sind obligatorisch über TLS~1.3 \cite{rfc8446} gesichert.
+TLS~1.3 bietet gegenüber TLS~1.2 wichtige Verbesserungen:
 
 \begin{itemize}[leftmargin=2em]
   \item Reduzierter Handshake auf 1 Round-Trip-Time (1-RTT).
   \item Entfernung unsicherer Cipher Suites (RC4, 3DES, etc.).
-  \item Forward Secrecy fÃ¼r alle Verbindungen durch ephemere Diffie-Hellman-SchlÃ¼ssel.
-  \item 0-RTT-Wiederverbindung fÃ¼r bekannte Server (mit Replay-Schutz).
+  \item Forward Secrecy für alle Verbindungen durch ephemere Diffie-Hellman-Schlüssel.
+  \item 0-RTT-Wiederverbindung für bekannte Server (mit Replay-Schutz).
 \end{itemize}
 
 % =====================================================================
@@ -889,24 +889,24 @@ TLS~1.3 bietet gegenÃ¼ber TLS~1.2 wichtige Verbesserungen:
 \draw[arr, color=etherblue] (master) -- (slaves)
   node[midway, left, font=\tiny] {EtherCAT};
 \end{tikzpicture}
-\caption{Empfohlene Netzwerksegmentierung fÃ¼r EHAE mit drei VLANs. Das Diagramm
-  zeigt die vollstÃ¤ndige Netzwerktopologie von oben nach unten. Ganz oben steht der
-  \emph{Cloud Monitor} (blau, Ellipse), der Ã¼ber einen zentralen \emph{Firewall/Router}
-  (grau) mit drei separaten VLANs verbunden ist: VLAN~10 fÃ¼r das
-  Unternehmens-/BÃ¼ronetz (links), VLAN~20 fÃ¼r das Produktionsnetz (Mitte) und
-  VLAN~30 fÃ¼r das HMI-Netz (rechts). Im Produktionsnetz (VLAN~20) befindet sich der
+\caption{Empfohlene Netzwerksegmentierung für EHAE mit drei VLANs. Das Diagramm
+  zeigt die vollständige Netzwerktopologie von oben nach unten. Ganz oben steht der
+  \emph{Cloud Monitor} (blau, Ellipse), der über einen zentralen \emph{Firewall/Router}
+  (grau) mit drei separaten VLANs verbunden ist: VLAN~10 für das
+  Unternehmens-/Büronetz (links), VLAN~20 für das Produktionsnetz (Mitte) und
+  VLAN~30 für das HMI-Netz (rechts). Im Produktionsnetz (VLAN~20) befindet sich der
   \emph{EtherCAT Master mit HAG} sowie die direkt angebundenen
   \emph{EtherCAT Slaves}. Im HMI-Netz (VLAN~30) steht ein \emph{Wi-Fi Access Point
-  802.11ax}, Ã¼ber den \emph{Operator-Tablet} und \emph{Engineer-Laptop}
-  (gestrichelte Pfeile = WLAN) verbunden sind. Im BÃ¼ronetz (VLAN~10) ist ein
-  \emph{Office PC} fÃ¼r die Viewer-Rolle angebunden. Die Firewall kontrolliert den
+  802.11ax}, über den \emph{Operator-Tablet} und \emph{Engineer-Laptop}
+  (gestrichelte Pfeile = WLAN) verbunden sind. Im Büronetz (VLAN~10) ist ein
+  \emph{Office PC} für die Viewer-Rolle angebunden. Die Firewall kontrolliert den
   Zugriff zwischen den VLANs und zur Cloud.}
 \label{fig:network_diagram}
 \end{figure}
 
 Die VLAN-Segmentierung ist eine zentrale Sicherheitsma\ss{}nahme: Sie verhindert, dass
-kompromittierte HMI-GerÃ¤te direkten Zugriff auf das EtherCAT-Produktionsnetz erhalten.
-Der gesamte Datenfluss lÃ¤uft ausschlie\ss{}lich Ã¼ber den HAG, der als einziger
+kompromittierte HMI-Geräte direkten Zugriff auf das EtherCAT-Produktionsnetz erhalten.
+Der gesamte Datenfluss läuft ausschlie\ss{}lich über den HAG, der als einziger
 Kommunikationspunkt zwischen App-Clients und EtherCAT-Netz fungiert.
 
 \subsection{Firewall-Regelwerk}
@@ -923,20 +923,20 @@ Das empfohlene Firewall-Regelwerk erlaubt folgende Verbindungen:
 
 \subsection{Latenzbudget}
 
-Tabelle~\ref{tab:latency} zeigt das End-to-End-Latenzbudget fÃ¼r die app-basierte HMI.
+Tabelle~\ref{tab:latency} zeigt das End-to-End-Latenzbudget für die app-basierte HMI.
 
 \begin{table}[H]
 \centering
-\caption{End-to-End-Latenzbudget fÃ¼r app-basiertes HMI.}
+\caption{End-to-End-Latenzbudget für app-basiertes HMI.}
 \label{tab:latency}
 \begin{tabularx}{\textwidth}{lXrr}
 \toprule
 \textbf{Stufe}         & \textbf{Beschreibung}          & \textbf{Typisch}             & \textbf{Maximum} \\
 \midrule
 EtherCAT-Zyklus        & PDO-Datenaktualisierung        & $250\,\si{\micro\second}$    & 1\,ms \\
-HAG-Verarbeitung       & Mapping, Ã„nderungserkennung    & 0{,}1\,ms                   & 0{,}5\,ms \\
+HAG-Verarbeitung       & Mapping, Änderungserkennung    & 0{,}1\,ms                   & 0{,}5\,ms \\
 WebSocket-Framing      & JSON-Serialisierung            & 0{,}5\,ms                   & 2\,ms \\
-Wi-Fi~6                & Drahtlose Ãœbertragung          & 1--3\,ms                    & 10\,ms \\
+Wi-Fi~6                & Drahtlose Übertragung          & 1--3\,ms                    & 10\,ms \\
 App-Rendering          & UI-Aktualisierung              & 8--16\,ms                   & 33\,ms \\
 \midrule
 \textbf{Gesamt E2E}    & Prozessdaten bis Display       & $\approx$10\,ms             & $\approx$47\,ms \\
@@ -944,12 +944,12 @@ App-Rendering          & UI-Aktualisierung              & 8--16\,ms             
 \end{tabularx}
 \end{table}
 
-Eine Gesamtlatenz von typisch 10\,ms ist fÃ¼r alle HMI-Anwendungsszenarien vollkommen
-ausreichend. Die menschliche Wahrnehmungsschwelle fÃ¼r visuelle Reaktionen liegt bei ca.
+Eine Gesamtlatenz von typisch 10\,ms ist für alle HMI-Anwendungsszenarien vollkommen
+ausreichend. Die menschliche Wahrnehmungsschwelle für visuelle Reaktionen liegt bei ca.
 100\,ms; damit bietet EHAE einen komfortablen 10-fachen Sicherheitsabstand. Lediglich
-fÃ¼r hochdynamische Steuerungseingriffe (Not-Halt etc.) muss beachtet werden, dass
+für hochdynamische Steuerungseingriffe (Not-Halt etc.) muss beachtet werden, dass
 Not-Halt-Funktionen weiterhin direkt am Feldbus oder als Safety-Funktion (STO) im Antrieb
-implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
+implementiert werden müssen --- nicht über die HMI-App.
 
 %% =====================================================================
 %\section{Operator-App UI-Referenz}
@@ -971,7 +971,7 @@ implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
 %\node[bar=etherblue] at (0, 5.25) {};
 %\node[font=\tiny\bfseries, text=white] at (0, 5.25) {Produktionslinie A | Schicht 2 | 14:32};
 %\node[card] at (0, 4.2) {};
-%\node[font=\small\bfseries, color=appgreen]  at (-1.5, 4.4) {LÃ„UFT};
+%\node[font=\small\bfseries, color=appgreen]  at (-1.5, 4.4) {LÄUFT};
 %\node[font=\tiny]                            at (0, 4.0)    {Drehzahl: 1250 rpm | Modus: AUTO};
 %\node[card] at (0, 2.8) {};
 %\node[font=\scriptsize, color=warnorange]    at (-1.5, 2.95) {\textbf{WARNUNG} Temp Achse Z};
@@ -999,11 +999,11 @@ implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
 %\caption{Referenz-Layout: Operator-App Hauptansicht (Smartphone-Darstellung). Das
 %  Mockup zeigt ein hochformatiges Smartphone-Display mit blauem Header-Bereich, der
 %  Produktionslinie, Schichtbezeichnung und Uhrzeit anzeigt. Darunter folgen vier
-%  Informationskarten: (1)~Maschinenstatus in GrÃ¼n ("{}LÃ„UFT"{}) mit aktueller
-%  Drehzahl 1250~rpm im Automatikmodus, (2)~eine orange Warnmeldung fÃ¼r Achse~Z mit
+%  Informationskarten: (1)~Maschinenstatus in Grün ("{}LÄUFT"{}) mit aktueller
+%  Drehzahl 1250~rpm im Automatikmodus, (2)~eine orange Warnmeldung für Achse~Z mit
 %  Temperatur 72\,\textdegree C bei einem Grenzwert von 80\,\textdegree C sowie einem "{}ACK"{}-Button zum
-%  Quittieren, (3)~ein ProduktionszÃ¤hler mit aktuellem Stand 1\,284 Teilen gegenÃ¼ber
-%  dem Tagesziel von 1\,500, (4)~ein Fortschrittsbalken fÃ¼r die Bandgeschwindigkeit
+%  Quittieren, (3)~ein Produktionszähler mit aktuellem Stand 1\,284 Teilen gegenüber
+%  dem Tagesziel von 1\,500, (4)~ein Fortschrittsbalken für die Bandgeschwindigkeit
 %  (0{,}45~m/s von max. 1{,}2~m/s, etwa 37\,\% der maximalen Geschwindigkeit).
 %  Am unteren Rand befinden sich prominente "{}STOP"{}- und "{}START"{}-Buttons
 %  sowie eine Navigation mit vier Reitern (Home, Trends, Alarme, Einstellungen).}
@@ -1011,10 +1011,10 @@ implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
 %\end{figure}
 %
 %Das UI-Design folgt den Prinzipien des \emph{Progressive Disclosure}: die
-%wichtigsten Informationen (Status, kritische Alarme) sind sofort sichtbar, wÃ¤hrend
+%wichtigsten Informationen (Status, kritische Alarme) sind sofort sichtbar, während
 %detailliertere Ansichten (Trends, Parameterdetails) durch Navigation in weiteren
-%Reitern erreichbar sind. Die Farbcodierung ist konsistent: GrÃ¼n fÃ¼r Normalbetrieb,
-%Orange fÃ¼r Warnungen, Rot fÃ¼r Fehler und Notoperationen.
+%Reitern erreichbar sind. Die Farbcodierung ist konsistent: Grün für Normalbetrieb,
+%Orange für Warnungen, Rot für Fehler und Notoperationen.
 
 % =====================================================================
 \section{Migrationsstrategie}
@@ -1048,11 +1048,11 @@ implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
 \caption{Vierstufige Migrationsstrategie von traditionellen HMI-Panels zu EHAE. Das
   Phasendiagramm zeigt vier sequentielle Phasen auf einer Zeitachse. \textbf{Phase~1
   (blau, 0--1 Monat):} Assessment --- alle vorhandenen HMI-Panels werden inventarisiert,
-  PDO/SDO-Anforderungen analysiert und Benutzerrollen definiert. \textbf{Phase~2 (grÃ¼n,
+  PDO/SDO-Anforderungen analysiert und Benutzerrollen definiert. \textbf{Phase~2 (grün,
   1--3 Monate):} Parallelbetrieb --- der HAG wird deployt und parallel zum bestehenden
   HMI-Panel betrieben; das Variable-Mapping wird validiert und Mitarbeiter werden
   geschult. \textbf{Phase~3 (orange, 3--6 Monate):} App-Rollout --- Tablets werden an
-  Operatoren verteilt, die Engineer App wird fÃ¼r alle Inbetriebnahmen genutzt, und die
+  Operatoren verteilt, die Engineer App wird für alle Inbetriebnahmen genutzt, und die
   traditionellen Panels werden schrittweise entfernt. \textbf{Phase~4 (grau, ab 6
   Monate):} Vollbetrieb EHAE --- 100\,\% app-basierter Betrieb mit Remote-Monitoring
   und Over-the-Air-Updates.}
@@ -1060,23 +1060,23 @@ implementiert werden mÃ¼ssen --- nicht Ã¼ber die HMI-App.
 \end{figure}
 
 Die Migrationsstrategie ist so konzipiert, dass zu keinem Zeitpunkt ein Produktionsausfall
-entsteht. In Phase~2 laufen beide Systeme parallel, und erst nach vollstÃ¤ndiger Validierung
+entsteht. In Phase~2 laufen beide Systeme parallel, und erst nach vollständiger Validierung
 des app-basierten HMI werden die Panels abgebaut. Dies minimiert das Risiko und erlaubt
-einen kontrollierten Ãœbergang auch in laufenden Produktionsumgebungen.
+einen kontrollierten Übergang auch in laufenden Produktionsumgebungen.
 
 \subsubsection{Risikominderung}
 
 Folgende Ma\ss{}nahmen reduzieren das Migrationsrisiko:
 
 \begin{itemize}[leftmargin=2em]
-  \item \textbf{Fallback-Plan:} WÃ¤hrend Phase~2 und~3 bleibt das traditionelle Panel als
-    RÃ¼ckfalloption aktiv.
+  \item \textbf{Fallback-Plan:} Während Phase~2 und~3 bleibt das traditionelle Panel als
+    Rückfalloption aktiv.
   \item \textbf{Pilotmaschine:} Die Migration beginnt an einer unkritischen Pilotmaschine,
     bevor sie auf die gesamte Produktionslinie ausgerollt wird.
-  \item \textbf{Schrittweise Rollenfreigabe:} Operators erhalten zunÃ¤chst nur
+  \item \textbf{Schrittweise Rollenfreigabe:} Operators erhalten zunächst nur
     Lesezugriff; Schreibrechte werden nach Schulungsabschluss freigeschaltet.
   \item \textbf{Audit-Log:} Alle Schreiboperationen und Alarmereignisse werden im HAG
-    protokolliert und sind fÃ¼r Audits nachverfolgbar.
+    protokolliert und sind für Audits nachverfolgbar.
 \end{itemize}
 
 % =====================================================================
@@ -1085,22 +1085,22 @@ Folgende Ma\ss{}nahmen reduzieren das Migrationsrisiko:
 % =====================================================================
 
 Der EHAE-Referenz-Implementierung liegt eine entscheidende Architekturentscheidung
-zugrunde: Die Mobile App fÃ¼r Android ist \emph{keine} eigenstÃ¤ndige Entwicklung,
-sondern eine direkte Kapselung der bereits vollstÃ¤ndig funktionsfÃ¤higen Web-App in eine
+zugrunde: Die Mobile App für Android ist \emph{keine} eigenständige Entwicklung,
+sondern eine direkte Kapselung der bereits vollständig funktionsfähigen Web-App in eine
 native Android-Anwendung --- realisiert durch das \textbf{Capacitor-Framework}
 \cite{capacitor} von Ionic. Dieses Prinzip der \emph{web-getriebenen
 Mobile-App-Entwicklung} maximiert den Code-Reuse und minimiert den Wartungsaufwand
-erheblich: jede Ã„nderung an der Web-App steht automatisch auch in der Mobile App zur
-VerfÃ¼gung, ohne dass eine zweite Codebase gepflegt werden muss.
+erheblich: jede Änderung an der Web-App steht automatisch auch in der Mobile App zur
+Verfügung, ohne dass eine zweite Codebase gepflegt werden muss.
 
 \subsection{Das Capacitor-Prinzip}
 
-Capacitor ist ein plattformÃ¼bergreifendes App-Laufzeit-Framework, das Web-Apps
-(HTML, CSS, JavaScript) als vollwertige native Apps auf Android und iOS ausfÃ¼hrt.
+Capacitor ist ein plattformübergreifendes App-Laufzeit-Framework, das Web-Apps
+(HTML, CSS, JavaScript) als vollwertige native Apps auf Android und iOS ausführt.
 Im Gegensatz zu einem klassischen Hybrid-App-Ansatz (z.\,B.\ Cordova/PhoneGap)
 bettet Capacitor die Web-App in eine native \texttt{WebView}-Komponente
-(\texttt{android.webkit.WebView}) ein und stellt eine JavaScript-Bridge zur VerfÃ¼gung,
-Ã¼ber die Web-Code auf native GerÃ¤teschnittstellen zugreifen kann.
+(\texttt{android.webkit.WebView}) ein und stellt eine JavaScript-Bridge zur Verfügung,
+über die Web-Code auf native Geräteschnittstellen zugreifen kann.
 
 \begin{figure}[h]
 \centering
@@ -1123,20 +1123,20 @@ bettet Capacitor die Web-App in eine native \texttt{WebView}-Komponente
   {Native\\Android};
 \draw[decorate, decoration={brace,amplitude=8pt}, color=appgreen]
   (6.4,3.3) -- (6.4,6.1) node[midway, right=8pt, font=\tiny, color=appgreen, align=left]
-  {Web-Layer\\(plattform-\\unabhÃ¤ngig)};
+  {Web-Layer\\(plattform-\\unabhängig)};
 \end{tikzpicture}
-\caption{Capacitor-Schichtenmodell der EHAE-Android-App. Das Diagramm zeigt fÃ¼nf
+\caption{Capacitor-Schichtenmodell der EHAE-Android-App. Das Diagramm zeigt fünf
   aufeinander aufbauende Schichten von unten nach oben. Ganz unten (grau) das
-  \emph{Android-Betriebssystem (AOSP)}. DarÃ¼ber (blau) die \emph{Capacitor Native
+  \emph{Android-Betriebssystem (AOSP)}. Darüber (blau) die \emph{Capacitor Native
   Shell}: eine \texttt{CapacitorActivity}, die den Android-Lebenszyklus verwaltet.
   Die dritte Schicht (orange) ist die \emph{Capacitor JavaScript Bridge}: sie
-  ermÃ¶glicht den bidirektionalen Datenaustausch zwischen nativem Kotlin/Java-Code
-  und dem JavaScript der Web-App. Die vierte Schicht (grÃ¼n) ist die
+  ermöglicht den bidirektionalen Datenaustausch zwischen nativem Kotlin/Java-Code
+  und dem JavaScript der Web-App. Die vierte Schicht (grün) ist die
   \emph{Android WebView} auf Chromium-Basis, die die Web-App rendert.
   Die oberste Schicht (blau) ist die eigentliche \emph{EHAE Web-App} --- dieselbe
   \texttt{index.html}, die auch als Browser-Anwendung genutzt wird. Rechts zeigen
   zwei geschweifte Klammern die Trennung zwischen nativem Android-Layer und dem
-  plattformunabhÃ¤ngigen Web-Layer.}
+  plattformunabhängigen Web-Layer.}
 \label{fig:capacitor_stack}
 \end{figure}
 
@@ -1144,7 +1144,7 @@ Die entscheidende Konsequenz dieses Modells: Die gesamte EHAE-Applikationslogik
 --- Dashboard, Topologie-Viewer, Alarm-Manager, Oszilloskop, SDO-Browser,
 TCO-Kostenanalyse --- ist \emph{ausschlie\ss{}lich} in der Web-App implementiert
 und muss nur \emph{einmal} entwickelt und gewartet werden. Capacitor fungiert dabei
-als dÃ¼nner Wrapper, der die Web-App in eine vollwertige Android-APK verwandelt.
+als dünner Wrapper, der die Web-App in eine vollwertige Android-APK verwandelt.
 
 \subsection{Projektstruktur}
 
@@ -1165,10 +1165,10 @@ ehae-android/
 `-- package.json            # npm-Abhaengigkeiten
 \end{lstlisting}
 
-Das Verzeichnis \texttt{www/} enthÃ¤lt die Web-App-Assets --- identisch mit der
+Das Verzeichnis \texttt{www/} enthält die Web-App-Assets --- identisch mit der
 Desktop-Browser-Version unter \texttt{src/index.html}. Capacitor liest diese Assets
-beim Build-Vorgang ein und bÃ¼ndelt sie in das Android-App-Bundle, so dass die App
-offline und ohne externe Netzwerkzugriffe auf die eigene UI-Logik lauffÃ¤hig ist.
+beim Build-Vorgang ein und bündelt sie in das Android-App-Bundle, so dass die App
+offline und ohne externe Netzwerkzugriffe auf die eigene UI-Logik lauffähig ist.
 
 \subsection{Capacitor-Konfiguration}
 
@@ -1200,30 +1200,30 @@ Die wichtigsten Konfigurationsparameter im Einzelnen:
 
 \begin{description}[leftmargin=2em]
   \item[\texttt{appId}] Eindeutiger Android-App-Bezeichner nach Reverse-Domain-Notation
-    (\texttt{de.epp.ehae}), der die App im Google Play Store und auf dem GerÃ¤t identifiziert.
+    (\texttt{de.epp.ehae}), der die App im Google Play Store und auf dem Gerät identifiziert.
   \item[\texttt{webDir}] Verzeichnis mit den Web-Assets. Der Inhalt des
     \texttt{www/}-Verzeichnisses dient als Einstiegspunkt der WebView-Anwendung.
-  \item[\texttt{androidScheme: "https"}] Erzwingt das HTTPS-Schema fÃ¼r interne
+  \item[\texttt{androidScheme: "https"}] Erzwingt das HTTPS-Schema für interne
     WebView-URLs, damit der Browser-Sicherheitskontext und Cookies korrekt
     funktionieren.
   \item[\texttt{allowMixedContent}] Erlaubt gemischte HTTP/HTTPS-Verbindungen im
-    Intranet-Kontext, damit die App auch Ã¼ber unverschlÃ¼sselte lokale HAG-Verbindungen
+    Intranet-Kontext, damit die App auch über unverschlüsselte lokale HAG-Verbindungen
     kommunizieren kann.
   \item[\texttt{backgroundColor}] Setzt die initiale Hintergrundfarbe auf das
-    EHAE-Dunkelblau (\texttt{\#07090f}) fÃ¼r einen nahtlosen Ãœbergang vom Splash-Screen
-    zur vollstÃ¤ndig geladenen Web-App.
+    EHAE-Dunkelblau (\texttt{\#07090f}) für einen nahtlosen Übergang vom Splash-Screen
+    zur vollständig geladenen Web-App.
   \item[\texttt{overrideUserAgent}] Identifiziert App-Anfragen als
-    \texttt{EHAE-HMI/1.0 Android}, was im HAG fÃ¼r Logging und
-    gerÃ¤tetyp-spezifische Optimierungen genutzt werden kann.
+    \texttt{EHAE-HMI/1.0 Android}, was im HAG für Logging und
+    gerätetyp-spezifische Optimierungen genutzt werden kann.
 \end{description}
 
-\subsection{AbhÃ¤ngigkeiten und Framework-Version}
+\subsection{Abhängigkeiten und Framework-Version}
 
-Tabelle~\ref{tab:npm_deps} listet die npm-AbhÃ¤ngigkeiten der Android-App auf.
+Tabelle~\ref{tab:npm_deps} listet die npm-Abhängigkeiten der Android-App auf.
 
 \begin{table}[h]
 \centering
-\caption{npm-AbhÃ¤ngigkeiten der EHAE-Android-App (\texttt{package.json}).}
+\caption{npm-Abhängigkeiten der EHAE-Android-App (\texttt{package.json}).}
 \label{tab:npm_deps}
 \begin{tabularx}{\textwidth}{llX}
 \toprule
@@ -1239,10 +1239,10 @@ Tabelle~\ref{tab:npm_deps} listet die npm-AbhÃ¤ngigkeiten der Android-App auf.
 \end{table}
 
 Die Verwendung von Capacitor~6 stellt sicher, dass die Web-App auf Android~5.1 bis
-Android~14 (\texttt{minSdkVersion}~22, \texttt{targetSdkVersion}~34) lauffÃ¤hig ist.
-Das Plugin \texttt{@capawesome/\newline capacitor-android-edge-to-edge-support} ermÃ¶glicht die
+Android~14 (\texttt{minSdkVersion}~22, \texttt{targetSdkVersion}~34) lauffähig ist.
+Das Plugin \texttt{@capawesome/\newline capacitor-android-edge-to-edge-support} ermöglicht die
 vollkantige Darstellung ohne Statusbar- oder Navigationsbar-Unterbrechung --- kritisch
-fÃ¼r HMI-Dashboards, die maximale BildschirmflÃ¤che benÃ¶tigen.
+für HMI-Dashboards, die maximale Bildschirmfläche benötigen.
 
 \subsection{Build-Workflow}
 
@@ -1273,14 +1273,14 @@ bis zur verteilbaren Android-APK.
 \end{tikzpicture}
 \caption{Build-Workflow der EHAE-Android-App. Das Ablaufdiagramm zeigt vier Schritte.
   \textbf{Schritt~1 (blau):} Die Web-App wird entwickelt und direkt im Browser
-  getestet --- ohne Android-AbhÃ¤ngigkeiten. \textbf{Schritt~2 (blau):} Die fertigen
+  getestet --- ohne Android-Abhängigkeiten. \textbf{Schritt~2 (blau):} Die fertigen
   Web-Assets (\texttt{index.html}) werden in das \texttt{www/}-Verzeichnis des
-  Capacitor-Projekts kopiert. \textbf{Schritt~3 (grÃ¼n):} \texttt{cap sync android}
+  Capacitor-Projekts kopiert. \textbf{Schritt~3 (grün):} \texttt{cap sync android}
   synchronisiert die Web-Assets und alle Capacitor-Plugins in das native
   Android-Gradle-Projekt. \textbf{Schritt~4 (orange):} \texttt{./gradlew
-  assembleRelease} baut das vollstÃ¤ndige Android-App-Bundle. Das Ergebnis (rot) ist
-  eine APK oder ein AAB, die direkt auf Android-GerÃ¤ten installiert oder im
-  Google Play Store verÃ¶ffentlicht werden kann.}
+  assembleRelease} baut das vollständige Android-App-Bundle. Das Ergebnis (rot) ist
+  eine APK oder ein AAB, die direkt auf Android-Geräten installiert oder im
+  Google Play Store veröffentlicht werden kann.}
 \label{fig:capacitor_build}
 \end{figure}
 
@@ -1304,7 +1304,7 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 \subsection{Vorteile der web-getriebenen Mobile-App-Entwicklung}
 
 Tabelle~\ref{tab:capacitor_advantages} fasst die wichtigsten Vorteile des
-Capacitor-Ansatzes gegenÃ¼ber einer nativen Android-Entwicklung zusammen.
+Capacitor-Ansatzes gegenüber einer nativen Android-Entwicklung zusammen.
 
 \begin{table}[H]
 \centering
@@ -1314,19 +1314,19 @@ Capacitor-Ansatzes gegenÃ¼ber einer nativen Android-Entwicklung zusammen.
 \toprule
 \textbf{Aspekt} & \textbf{Capacitor (Web-Wrapper)} & \textbf{Native Android-Entwicklung} \\
 \midrule
-Codebase           & Eine gemeinsame Codebase fÃ¼r Web und Android
+Codebase           & Eine gemeinsame Codebase für Web und Android
                    & Separate Android-Codebase (Kotlin/Java) \\
 Wartungsaufwand    & Einmalige Pflege der Web-App
                    & Doppelter Aufwand (Web und Android) \\
-Feature-ParitÃ¤t    & Automatisch: Web $\equiv$ App
+Feature-Parität    & Automatisch: Web $\equiv$ App
                    & Manuelle Synchronisation erforderlich \\
-UI-Tests           & Direkt im Browser ausfÃ¼hrbar
-                   & Android-Emulator oder -GerÃ¤t notwendig \\
+UI-Tests           & Direkt im Browser ausführbar
+                   & Android-Emulator oder -Gerät notwendig \\
 Update-Zyklus      & Web-App-Update $=$ App-Update
                    & Separater Gradle-Build und APK-Release \\
 Zielplattformen    & Web, Android, iOS aus einer Codebase
                    & Ausschlie\ss{}lich Android \\
-EinstiegshÃ¼rde     & Niedrig (Web-Kenntnisse genÃ¼gen)
+Einstiegshürde     & Niedrig (Web-Kenntnisse genügen)
                    & Hoch (Android-SDK-Kenntnisse erforderlich) \\
 \bottomrule
 \end{tabularx}
@@ -1334,12 +1334,12 @@ EinstiegshÃ¼rde     & Niedrig (Web-Kenntnisse genÃ¼gen)
 
 Der praktische Nutzen manifestiert sich im gesamten Entwicklungs-Workflow: Neue HMI-%
 Features werden ausschlie\ss{}lich in der Web-App (\texttt{src/index.html}) entwickelt
-und sofort im Browser getestet. Nach der Verifikation genÃ¼gt ein \texttt{cap sync
-android} gefolgt von einem Gradle-Build, um die identische FunktionalitÃ¤t als
+und sofort im Browser getestet. Nach der Verifikation genügt ein \texttt{cap sync
+android} gefolgt von einem Gradle-Build, um die identische Funktionalität als
 Android-APK auszuliefern. Es entsteht kein redundanter Code, keine Divergenz zwischen
-Web- und App-Version und kein zusÃ¤tzlicher QualitÃ¤tssicherungsaufwand fÃ¼r eine zweite
+Web- und App-Version und kein zusätzlicher Qualitätssicherungsaufwand für eine zweite
 Plattform. Dieses Prinzip spiegelt exakt das EHAE-Gesamtkonzept wider: maximale
-Standardisierung und minimaler proprietÃ¤rer Aufwand.
+Standardisierung und minimaler proprietärer Aufwand.
 
 \subsection{Android-spezifische Anpassungen}
 
@@ -1350,21 +1350,21 @@ eine native Nutzererfahrung zu bieten:
   \item[Edge-to-Edge-Darstellung] Das Plugin
     \texttt{@capawesome/capacitor-android-edge-to\newline -edge-support} deaktiviert die
     Android-Systemleisten (Statusbar, Navigationsleiste) und erlaubt der EHAE-Web-App,
-    das gesamte Displayformat fÃ¼r das HMI-Dashboard zu nutzen --- entscheidend fÃ¼r
+    das gesamte Displayformat für das HMI-Dashboard zu nutzen --- entscheidend für
     Querformat-HMI-Layouts auf Industrietablets.
   \item[Querformat-Fixierung] Das Android-Manifest konfiguriert
     \texttt{screenOrientation="{}land\newline scape"{}}, sodass die App immer im Querformat
-    geÃ¶ffnet wird. HMI-Dashboards sind auf Querformat optimiert und wÃ¼rden im
+    geöffnet wird. HMI-Dashboards sind auf Querformat optimiert und würden im
     Hochformat wichtige Informationsdichte verlieren.
-  \item[Intranet-Verbindungen] Im Produktionsnetz kommuniziert die App Ã¼ber
-    unverschlÃ¼sselte HTTP-Verbindungen mit dem lokalen HAG.
+  \item[Intranet-Verbindungen] Im Produktionsnetz kommuniziert die App über
+    unverschlüsselte HTTP-Verbindungen mit dem lokalen HAG.
     \texttt{allowMixedContent: true} und \texttt{usesCleartextTraffic} im
     Android-Manifest erlauben diese Verbindungen im Intranet-Kontext, ohne die
-    TLS-Anforderung fÃ¼r externe Verbindungen aufzuweichen.
-  \item[Splash-Screen] Ein 1{,}5-sekÃ¼ndiger Splash-Screen in der EHAE-Hintergrundfarbe
-    \texttt{\#07090f} Ã¼berbrÃ¼ckt die WebView-Ladezeit und vermittelt ein
+    TLS-Anforderung für externe Verbindungen aufzuweichen.
+  \item[Splash-Screen] Ein 1{,}5-sekündiger Splash-Screen in der EHAE-Hintergrundfarbe
+    \texttt{\#07090f} überbrückt die WebView-Ladezeit und vermittelt ein
     professionelles, natives Erscheinungsbild.
-  \item[User-Agent-Identifikation] Der Ã¼berschriebene User-Agent
+  \item[User-Agent-Identifikation] Der überschriebene User-Agent
     (\texttt{EHAE-HMI/1.0 Android}) erlaubt dem HAG, Mobile-App-Verbindungen
     von Browser-Verbindungen zu unterscheiden.
 \end{description}
@@ -1376,7 +1376,7 @@ eine native Nutzererfahrung zu bieten:
 
 \subsection{Kumulative Kostenanalyse}
 
-Abbildung~\ref{fig:cumulative_cost} zeigt die kumulative 5-Jahres-Kostenentwicklung fÃ¼r
+Abbildung~\ref{fig:cumulative_cost} zeigt die kumulative 5-Jahres-Kostenentwicklung für
 eine typische Anlage mit 20 HMI-Stationen.
 
 \begin{figure}[h]
@@ -1399,34 +1399,34 @@ eine typische Anlage mit 20 HMI-Stationen.
 \legend{Traditionelles HMI-Panel (20 Stationen), App-Based HMI (EHAE)}
 \end{axis}
 \end{tikzpicture}
-\caption{Kumulative 5-Jahres-Kosten fÃ¼r 20 HMI-Stationen: traditionelles HMI-Panel vs.\
-  EHAE-LÃ¶sung. Das Liniendiagramm zeigt zwei Kurven Ã¼ber fÃ¼nf Jahre. Die \textbf{blaue
+\caption{Kumulative 5-Jahres-Kosten für 20 HMI-Stationen: traditionelles HMI-Panel vs.\
+  EHAE-Lösung. Das Liniendiagramm zeigt zwei Kurven über fünf Jahre. Die \textbf{blaue
   Kurve} (traditionelle HMI-Panels) steigt steil an: nach Jahr~1 bereits \EUR{70\,000}
   (20 Panels $\times$ \EUR{3\,500}), nach Jahr~2 \EUR{110\,000} (Wartungskosten
-  akkumulieren), und erreicht nach Jahr~5 \EUR{214\,000}. Die \textbf{grÃ¼ne Kurve}
-  (EHAE app-basiert) verlÃ¤uft deutlich flacher: Jahr~1 \EUR{16\,000} (Tablets +
-  HAG-Softwarelizenzen), danach nur geringe ZuwÃ¤chse durch minimale Wartungskosten,
+  akkumulieren), und erreicht nach Jahr~5 \EUR{214\,000}. Die \textbf{grüne Kurve}
+  (EHAE app-basiert) verläuft deutlich flacher: Jahr~1 \EUR{16\,000} (Tablets +
+  HAG-Softwarelizenzen), danach nur geringe Zuwächse durch minimale Wartungskosten,
   Endstand nach Jahr~5: \EUR{40\,000}. Dies entspricht einer \textbf{Kostenreduktion
-  von 81\,\%}. Die Schere zwischen beiden Kurven Ã¶ffnet sich von Jahr zu Jahr weiter,
+  von 81\,\%}. Die Schere zwischen beiden Kurven öffnet sich von Jahr zu Jahr weiter,
   da traditionelle Panels hohe laufende Wartungs- und Lizenzkosten verursachen.}
 \label{fig:cumulative_cost}
 \end{figure}
 
-\subsection{Nicht-monetÃ¤re Vorteile}
+\subsection{Nicht-monetäre Vorteile}
 
 Neben den direkten Kostenersparnissen bietet EHAE weitere Vorteile, die schwerer
-monetÃ¤r quantifizierbar, aber operativ signifikant sind:
+monetär quantifizierbar, aber operativ signifikant sind:
 
 \begin{description}[leftmargin=2em]
-  \item[Verbesserte DiagnosefÃ¤higkeit] Die Engineer App mit integriertem Topologie-Viewer,
-    Oszilloskop und SDO-Browser ermÃ¶glicht Inbetriebnahmen und Fehlerdiagnosen, die mit
-    traditionellen Panels nicht mÃ¶glich waren.
-  \item[OrtsunabhÃ¤ngiges Monitoring] Fernzugriff Ã¼ber das Cloud-Monitoring-Modul erlaubt
+  \item[Verbesserte Diagnosefähigkeit] Die Engineer App mit integriertem Topologie-Viewer,
+    Oszilloskop und SDO-Browser ermöglicht Inbetriebnahmen und Fehlerdiagnosen, die mit
+    traditionellen Panels nicht möglich waren.
+  \item[Ortsunabhängiges Monitoring] Fernzugriff über das Cloud-Monitoring-Modul erlaubt
     OEM-Support und Remote-Diagnose ohne Vor-Ort-Besuch.
-  \item[KÃ¼rzere Update-Zyklen] App-Updates werden zentral Ã¼ber App-Stores ausgerollt;
+  \item[Kürzere Update-Zyklen] App-Updates werden zentral über App-Stores ausgerollt;
     keine manuelle Panel-Aktualisierung notwendig.
-  \item[Zukunftssicherheit] Consumer-Hardware-Ã–kosysteme (iOS, Android, Windows)
-    werden langfristig von gro\ss{}en Unternehmen gepflegt und stÃ¤ndig verbessert.
+  \item[Zukunftssicherheit] Consumer-Hardware-Ökosysteme (iOS, Android, Windows)
+    werden langfristig von gro\ss{}en Unternehmen gepflegt und ständig verbessert.
 \end{description}
 
 % =====================================================================
@@ -1436,22 +1436,22 @@ monetÃ¤r quantifizierbar, aber operativ signifikant sind:
 
 Diese Arbeit hat die EtherCAT-HMI-App Extension (EHAE) vorgestellt, die
 band-integrierte HMI-Controller aus EtherCAT-basierten Anlagen formal eliminiert. Die
-zentralen BeitrÃ¤ge dieser Arbeit sind:
+zentralen Beiträge dieser Arbeit sind:
 
 \begin{enumerate}[leftmargin=2em]
   \item Der \emph{HMI Application Gateway (HAG)}: ein neues Master-Stack-Modul, das
-    keine Ã„nderungen an der Slave-Firmware erfordert und vollstÃ¤ndig rÃ¼ckwÃ¤rtskompatibel
+    keine Änderungen an der Slave-Firmware erfordert und vollständig rückwärtskompatibel
     ist.
   \item Das \emph{HAG Communication Protocol (HCP)}: WebSocket-basierter,
-    JSON-serialisierter Echtzeit-Variablenzugriff mit Alarm-Delivery, SDO-UnterstÃ¼tzung,
+    JSON-serialisierter Echtzeit-Variablenzugriff mit Alarm-Delivery, SDO-Unterstützung,
     Oszilloskop-Strea\-ming und FoE-Firmware-Updates.
   \item Ein \emph{Dual-Role-App-Modell}: Operator App und Engineer App aus einer einzigen
     Codebase mit dynamischer Rollenaktivierung.
   \item Ein umfassendes Sicherheitsmodell auf Basis von OAuth~2.0 mit PKCE, TLS~1.3 und
     RBAC mit vier Rollen.
   \item Eine vierstufige Migrationsstrategie mit Fallback-Option und Risikominderungsplan.
-  \item Nachgewiesene Kosteneinsparungen von bis zu 81\,\% Ã¼ber 5 Jahre bei gleichzeitiger
-    erheblicher Verbesserung der AnzeigequalitÃ¤t und DiagnosefÃ¤higkeit.
+  \item Nachgewiesene Kosteneinsparungen von bis zu 81\,\% über 5 Jahre bei gleichzeitiger
+    erheblicher Verbesserung der Anzeigequalität und Diagnosefähigkeit.
 \end{enumerate}
 
 Wir laden die EtherCAT Technology Group ein, EHAE als formale Erweiterung des EtherCAT
@@ -1459,188 +1459,188 @@ Application Layer in die ETG.1000-Spezifikation aufzunehmen.
 
 \subsection{Ausblick}
 
-Die in dieser Arbeit vorgestellte EHAE-Architektur bildet eine tragfÃ¤hige Basis fÃ¼r
-eine Vielzahl weiterfÃ¼hrender Entwicklungen. Die folgenden Abschnitte beschreiben
+Die in dieser Arbeit vorgestellte EHAE-Architektur bildet eine tragfähige Basis für
+eine Vielzahl weiterführender Entwicklungen. Die folgenden Abschnitte beschreiben
 konkrete Forschungs- und Implementierungsrichtungen, die kurz-, mittel- und
 langfristig verfolgt werden sollten, um das Potenzial app-basierter HMI-Clients im
-industriellen EtherCAT-Umfeld vollstÃ¤ndig auszuschÃ¶pfen.
+industriellen EtherCAT-Umfeld vollständig auszuschöpfen.
 
 \subsubsection*{Funktionale Sicherheit -- EHAE Safety Extension}
 
-Das aktuelle EHAE-Modell ist fÃ¼r informationally-kritische, aber nicht fÃ¼r
-sicherheitsgerichtete Anwendungen ausgelegt. Eine zukÃ¼nftige \emph{EHAE Safety
-Extension} wÃ¼rde einen separaten, redundant Ã¼bertragenen HMI-Kanal nach
+Das aktuelle EHAE-Modell ist für informationally-kritische, aber nicht für
+sicherheitsgerichtete Anwendungen ausgelegt. Eine zukünftige \emph{EHAE Safety
+Extension} würde einen separaten, redundant übertragenen HMI-Kanal nach
 IEC~61508\,SIL\,2 und EN~ISO~13849\,PLd definieren. Dabei sind folgende
-Teilprobleme zu lÃ¶sen:
+Teilprobleme zu lösen:
 
 \begin{itemize}[leftmargin=2em]
-  \item \textbf{Gesicherte BefehlsbestÃ¤tigung:} Jeder sicherheitsrelevante
+  \item \textbf{Gesicherte Befehlsbestätigung:} Jeder sicherheitsrelevante
     Bedienerbefehl (z.\,B.\ Not-Halt-Quittierung, Schutzgitter-Freigabe) muss
     durch einen kryptografisch abgesicherten Handshake zwischen App und HAG
     quittiert werden. Das HCP-Protokoll ist um ein \verb|SAFE_ACK|-Feld zu
-    ergÃ¤nzen, das einen Hardware-Token (FIDO2/U2F) oder einen
-    Biometrie-Nachweis des Bedieners einschlieÃŸt.
-  \item \textbf{Latenz-Budget-Garantien:} FÃ¼r sicherheitsrelevante Kommandos
+    ergänzen, das einen Hardware-Token (FIDO2/U2F) oder einen
+    Biometrie-Nachweis des Bedieners einschließt.
+  \item \textbf{Latenz-Budget-Garantien:} Für sicherheitsrelevante Kommandos
     muss die Ende-zu-Ende-Latenz (App $\to$ HAG $\to$ Slave) formal nachgewiesen
     werden. Reservierte Quality-of-Service-Klassen im WebSocket-Multiplexing und
     eine dedizierte TCP-Verbindung (alternativ QUIC-Datagram) sind vorzusehen.
   \item \textbf{Watchdog-Mechanismus:} Der HAG muss bei Verbindungsverlust zur
     Operator-App innerhalb einer konfigurierbaren Watchdog-Zeit ($t_{\text{WD}}
     \leq 500\,\si{\milli\second}$) autonom in einen sicheren Maschinenzustand
-    Ã¼bergehen und dies per \verb|SAFETY_TIMEOUT|-Alarm signalisieren.
-  \item \textbf{Zertifizierungsweg:} Eine Zusammenarbeit mit einem PrÃ¼finstitut
-    (TÃœV, DEKRA) ist notwendig, um eine typische EHAE-Safety-Installation nach
-    IEC~62443-3-3 und EN~ISO~13849 zu zertifizieren. Das Ergebnis wÃ¤re ein
-    standardisiertes PrÃ¼fverfahren fÃ¼r ETG-Mitglieder.
+    übergehen und dies per \verb|SAFETY_TIMEOUT|-Alarm signalisieren.
+  \item \textbf{Zertifizierungsweg:} Eine Zusammenarbeit mit einem Prüfinstitut
+    (TÜV, DEKRA) ist notwendig, um eine typische EHAE-Safety-Installation nach
+    IEC~62443-3-3 und EN~ISO~13849 zu zertifizieren. Das Ergebnis wäre ein
+    standardisiertes Prüfverfahren für ETG-Mitglieder.
 \end{itemize}
 
 \subsubsection*{Drahtlose Echtzeit-Kommunikation -- TSN und Wi-Fi~7}
 
 Die aktuelle EHAE-Spezifikation setzt auf kabelgebundenes Ethernet oder Standard-Wi-Fi.
-Time-Sensitive Networking (TSN, IEEE~802.1Q-2022) und Wi-Fi~7 (IEEE~802.11be) erÃ¶ffnen
-neue MÃ¶glichkeiten:
+Time-Sensitive Networking (TSN, IEEE~802.1Q-2022) und Wi-Fi~7 (IEEE~802.11be) eröffnen
+neue Möglichkeiten:
 
 \begin{itemize}[leftmargin=2em]
-  \item \textbf{TSN-Integration:} Durch IEEE~802.1Qbv (Time-Aware Shaper) kÃ¶nnen
+  \item \textbf{TSN-Integration:} Durch IEEE~802.1Qbv (Time-Aware Shaper) können
     HCP-Pakete in dedizierten Sendezeitfenstern (Guard Bands) priorisiert werden.
-    Dies ermÃ¶glicht eine garantierte Latenz von unter $5\,\si{\milli\second}$ fÃ¼r
-    PDO-Updates auch in Ã¼berlasteten Netzwerken -- relevant fÃ¼r
+    Dies ermöglicht eine garantierte Latenz von unter $5\,\si{\milli\second}$ für
+    PDO-Updates auch in überlasteten Netzwerken -- relevant für
     Montagelinien mit mehreren parallelen EHAE-Clients.
   \item \textbf{Wi-Fi~7 Multi-Link Operation (MLO):} IEEE~802.11be erlaubt
-    simultane Ãœbertragung Ã¼ber mehrere FrequenzbÃ¤nder (2,4\,GHz, 5\,GHz, 6\,GHz).
-    FÃ¼r EHAE bedeutet dies eine drastische Reduktion des Jitters bei
+    simultane Übertragung über mehrere Frequenzbänder (2,4\,GHz, 5\,GHz, 6\,GHz).
+    Für EHAE bedeutet dies eine drastische Reduktion des Jitters bei
     drahtlosen Tablets in der Fabrikhalle. Eine HAG-seitige Implementierung
-    mÃ¼sste differenzierte DSCP-Markierungen fÃ¼r HCP-Nachrichten gegenÃ¼ber
+    müsste differenzierte DSCP-Markierungen für HCP-Nachrichten gegenüber
     Hintergrundverkehr vergeben.
-  \item \textbf{5G-Industrial-Private-Networks:} In weitlÃ¤ufigen Anlagen (z.\,B.\
+  \item \textbf{5G-Industrial-Private-Networks:} In weitläufigen Anlagen (z.\,B.\
     Logistikzentren) sind 5G-Campus-Netzwerke mit URLLC-Profil (\emph{Ultra
-    Reliable Low Latency Communication}) eine realistische Option fÃ¼r
+    Reliable Low Latency Communication}) eine realistische Option für
     EHAE-Clients auf fahrerlosen Transportsystemen (FTS). Der HAG muss in
     diesem Fall eine redundante Uplink-Umschaltung zwischen Wi-Fi und 5G
-    unterstÃ¼tzen, ohne aktive WebSocket-Sessions zu unterbrechen (Session
+    unterstützen, ohne aktive WebSocket-Sessions zu unterbrechen (Session
     Migration via QUIC Connection ID Migration).
 \end{itemize}
 
-\subsubsection*{KÃ¼nstliche Intelligenz und prÃ¤diktive Wartung}
+\subsubsection*{Künstliche Intelligenz und prädiktive Wartung}
 
 Die PDO-Zeitreihendaten, die der HAG bereits sammelt, stellen ein hochwertiges
-Rohmaterial fÃ¼r maschinelles Lernen dar. Konkrete Ausbaustufen:
+Rohmaterial für maschinelles Lernen dar. Konkrete Ausbaustufen:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{On-Device-Anomalieerkennung im HAG:} Ein leichtgewichtiges
     LSTM- oder Autoencoder-Modell (quantisiert auf INT8, z.\,B.\ via TensorFlow
     Lite) kann direkt auf dem HAG-Host-Prozessor laufen und statistische
-    AusreiÃŸer in Stromaufnahme, Temperatur oder Positionsfehlern erkennen,
-    bevor ein Alarm ausgelÃ¶st wird. Die Schwellenwerte werden durch
-    unÃ¼berwachtes Lernen in der Anlaufphase der Maschine automatisch kalibriert.
+    Ausreißer in Stromaufnahme, Temperatur oder Positionsfehlern erkennen,
+    bevor ein Alarm ausgelöst wird. Die Schwellenwerte werden durch
+    unüberwachtes Lernen in der Anlaufphase der Maschine automatisch kalibriert.
   \item \textbf{Cloud-basiertes Fleet-Learning:} Mehrere Anlagen desselben
-    Typs kÃ¶nnen aggregierte (anonymisierte) Degradationsdaten in ein zentrales
+    Typs können aggregierte (anonymisierte) Degradationsdaten in ein zentrales
     ML-Backend (z.\,B.\ Azure Machine Learning, AWS SageMaker) einspeisen.
-    Das daraus gewonnene globale Modell wird per FoE Ã¼ber den HAG auf alle
+    Das daraus gewonnene globale Modell wird per FoE über den HAG auf alle
     Slaves verteilt, die ein lokales Inferenz-Modul enthalten.
   \item \textbf{Natural Language Interface:} Mittelfristig ist ein
-    KI-Assistent denkbar, der auf dem mobilen HMI-Client lÃ¤uft und dem
-    Bediener auf Basis aktueller Maschinendaten in natÃ¼rlicher Sprache
+    KI-Assistent denkbar, der auf dem mobilen HMI-Client läuft und dem
+    Bediener auf Basis aktueller Maschinendaten in natürlicher Sprache
     Diagnosen und Handlungsempfehlungen liefert (z.\,B.:\ \emph{``Achse 3
-    zeigt erhÃ¶hten Schleppfehler -- Kugelgewindetrieb prÃ¼fen''}).
+    zeigt erhöhten Schleppfehler -- Kugelgewindetrieb prüfen''}).
     Large Language Models (LLMs) mit On-Device-Inferenz auf
-    Apple-Silicon- bzw.\ Qualcomm-Snapdragon-Chips wÃ¤ren hier praktikabel.
-  \item \textbf{Reinforcement Learning fÃ¼r Rezeptoptimierung:} FÃ¼r
-    parametrierbare Prozesse (z.\,B.\ SchweiÃŸnÃ¤hte, Dosierungen) kÃ¶nnte
-    ein RL-Agent auf Basis beobachteter QualitÃ¤tskennzahlen die
+    Apple-Silicon- bzw.\ Qualcomm-Snapdragon-Chips wären hier praktikabel.
+  \item \textbf{Reinforcement Learning für Rezeptoptimierung:} Für
+    parametrierbare Prozesse (z.\,B.\ Schweißnähte, Dosierungen) könnte
+    ein RL-Agent auf Basis beobachteter Qualitätskennzahlen die
     Maschinenparameter inkrementell optimieren -- mit dem HMI-Client als
     Supervision- und Override-Interface.
 \end{itemize}
 
 \subsubsection*{Augmented Reality und neue Interaktionsparadigmen}
 
-Die EHAE-App-Schnittstelle ist fÃ¼r 2D-Touchscreens ausgelegt. ZukÃ¼nftige
-Interaktionsformen werden deutlich rÃ¤umlicher:
+Die EHAE-App-Schnittstelle ist für 2D-Touchscreens ausgelegt. Zukünftige
+Interaktionsformen werden deutlich räumlicher:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{Spatial Computing (Apple Vision Pro, Meta Quest Pro):}
     Die WebXR Device API erlaubt Web-Apps, 3D-Overlays in das
     Kamerabild der Brille zu rendern -- ohne nativen Code. Da EHAE
-    bereits auf einer Web-App basiert, genÃ¼gt eine Erweiterung der
+    bereits auf einer Web-App basiert, genügt eine Erweiterung der
     HMI-Komponenten um \texttt{<a-frame>}-Elemente oder Three.js, um
-    3D-Maschinensymbole Ã¼ber den physischen Slaves schweben zu lassen.
-    PDO-Echtzeitwerte wÃ¼rden direkt am Slave-GehÃ¤use visualisiert.
-  \item \textbf{Microsoft HoloLens 2 / RealWear HMT-1:} FÃ¼r Wartungstechniker
-    in industriellen Umgebungen ermÃ¶glicht eine EHAE-AR-Erweiterung
+    3D-Maschinensymbole über den physischen Slaves schweben zu lassen.
+    PDO-Echtzeitwerte würden direkt am Slave-Gehäuse visualisiert.
+  \item \textbf{Microsoft HoloLens 2 / RealWear HMT-1:} Für Wartungstechniker
+    in industriellen Umgebungen ermöglicht eine EHAE-AR-Erweiterung
     hands-free Diagnose: QR-Code am Slave scannen, HAG liefert
     automatisch Topologie-Position, SDO-Werte und Fehlerliste im
     HoloLens-Overlay.
-  \item \textbf{Gestensteuerung fÃ¼r sterile Umgebungen:} In der
+  \item \textbf{Gestensteuerung für sterile Umgebungen:} In der
     Pharma- und Lebensmittelproduktion, wo Touchscreens hygienisch
-    problematisch sind, ermÃ¶glicht eine Integration von MediaPipe
-    (Google) Hand Tracking den berÃ¼hrungslosen Betrieb des
-    EHAE-HMI-Clients -- vollstÃ¤ndig browserbasiert ohne
-    zusÃ¤tzliche Treiber.
+    problematisch sind, ermöglicht eine Integration von MediaPipe
+    (Google) Hand Tracking den berührungslosen Betrieb des
+    EHAE-HMI-Clients -- vollständig browserbasiert ohne
+    zusätzliche Treiber.
   \item \textbf{Voice Control:} Die Web Speech API ist in allen
-    modernen Browsern verfÃ¼gbar. Sprachkommandos wie \emph{``Zeige
-    Fehlerhistorie Achse 2''} oder \emph{``Starte Teach-Modus''} kÃ¶nnten
-    maschinenlesbar in HCP-Nachrichten Ã¼bersetzt werden,
-    was den Bedienkomfort in LÃ¤rm- und Schutzhandschuh-Szenarien
+    modernen Browsern verfügbar. Sprachkommandos wie \emph{``Zeige
+    Fehlerhistorie Achse 2''} oder \emph{``Starte Teach-Modus''} könnten
+    maschinenlesbar in HCP-Nachrichten übersetzt werden,
+    was den Bedienkomfort in Lärm- und Schutzhandschuh-Szenarien
     erheblich verbessert.
 \end{itemize}
 
 \subsubsection*{Edge Computing und HAG-Erweiterbarkeit}
 
 Der HAG ist konzeptionell ein Middleware-Dienst. Seine Erweiterbarkeit zu einer
-vollstÃ¤ndigen Edge-Computing-Plattform ist ein natÃ¼rlicher nÃ¤chster Schritt:
+vollständigen Edge-Computing-Plattform ist ein natürlicher nächster Schritt:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{Plugin-Architektur:} Eine formale Plugin-API (z.\,B.\ auf Basis
-    von WebAssembly-Modulen oder dynamisch geladenen Shared Libraries) wÃ¼rde
+    von WebAssembly-Modulen oder dynamisch geladenen Shared Libraries) würde
     es ETG-Mitgliedern erlauben, herstellerspezifische Protokoll-Adapter zu
-    entwickeln (z.\,B.\ CoE-Profil-Decoder fÃ¼r SINAMICS-Antriebe, spezifische
-    FoE-Handler). Das Plugin-System mÃ¼sste hot-reload-fÃ¤hig sein, um
-    ProduktionsstillstÃ¤nde bei Updates zu vermeiden.
+    entwickeln (z.\,B.\ CoE-Profil-Decoder für SINAMICS-Antriebe, spezifische
+    FoE-Handler). Das Plugin-System müsste hot-reload-fähig sein, um
+    Produktionsstillstände bei Updates zu vermeiden.
   \item \textbf{Containerisierung:} Der HAG als Docker-Container (OCI-konform)
     auf einem industriellen Edge-Server (z.\,B.\ Siemens SIMATIC IPC, Dell
-    Edge Gateway) ermÃ¶glicht orchestrierte Deployments via Kubernetes~K3s.
+    Edge Gateway) ermöglicht orchestrierte Deployments via Kubernetes~K3s.
     Dies vereinfacht Rolling Updates, A/B-Deployments und Health-Monitoring.
-  \item \textbf{Multi-Master-UnterstÃ¼tzung:} Anlagen mit mehreren EtherCAT-Linien
-    (z.\,B.\ parallele FertigungsstraÃŸen) benÃ¶tigen einen Ã¼bergeordneten
+  \item \textbf{Multi-Master-Unterstützung:} Anlagen mit mehreren EtherCAT-Linien
+    (z.\,B.\ parallele Fertigungsstraßen) benötigen einen übergeordneten
     \emph{EHAE Aggregation Gateway}, der die HAG-Instanzen mehrerer Master
-    unter einer einheitlichen HCP-Session zusammenfÃ¼hrt. Der HMI-Client sieht
-    dann eine einheitliche Topologie-Ansicht Ã¼ber alle Linien hinweg.
-  \item \textbf{HAG-Redundanz (High Availability):} FÃ¼r missionskritische Anlagen
+    unter einer einheitlichen HCP-Session zusammenführt. Der HMI-Client sieht
+    dann eine einheitliche Topologie-Ansicht über alle Linien hinweg.
+  \item \textbf{HAG-Redundanz (High Availability):} Für missionskritische Anlagen
     ist ein Active-Standby-HAG-Paar mit Shared State via Redis oder
     Apache Kafka denkbar. Failover unter $1\,\si{\second}$ ohne
-    Client-Session-Unterbrechung wÃ¤re das Zielkriterium.
+    Client-Session-Unterbrechung wäre das Zielkriterium.
 \end{itemize}
 
 \subsubsection*{Digital Twin und IIoT-Integration}
 
 Die strukturierten PDO- und SDO-Daten, die der HAG kontinuierlich verarbeitet,
-sind ideale Eingaben fÃ¼r digitale Zwillinge und IIoT-Plattformen:
+sind ideale Eingaben für digitale Zwillinge und IIoT-Plattformen:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{OPC~UA~FX (Field eXchange):} Die neue OPC~UA~Part~80
     (\emph{Field eXchange}) spezifiziert ein Echtzeit-Kommunikationsprotokoll
-    zwischen FeldgerÃ¤ten Ã¼ber Hersteller- und Protokollgrenzen hinweg. Ein
-    HAG-seitiger OPC~UA~FX-Publisher wÃ¼rde Ether\-CAT-PDOs als
+    zwischen Feldgeräten über Hersteller- und Protokollgrenzen hinweg. Ein
+    HAG-seitiger OPC~UA~FX-Publisher würde Ether\-CAT-PDOs als
     OPC~UA-Nodes exponieren und damit EHAE in industrielle IoT-Plattformen
     wie Azure Industrial IoT, Siemens MindSphere oder Bosch IoT Suite
     integrierbar machen.
-  \item \textbf{Digital Twin nach ISO~23247:} Der ISO-Standard fÃ¼r digitale
+  \item \textbf{Digital Twin nach ISO~23247:} Der ISO-Standard für digitale
     Zwillinge in der Fertigung definiert eine \emph{Observable Manufacturing
-    Element (OME)}-Schnittstelle. Ein EHAE-KompatibilitÃ¤tsmodul kÃ¶nnte
+    Element (OME)}-Schnittstelle. Ein EHAE-Kompatibilitätsmodul könnte
     automatisch aus dem EtherCAT-ENI-File (EtherCAT Network Information) einen
     strukturierten Digital-Twin-Deskriptor generieren und diesen in
     DTDL (\emph{Digital Twin Definition Language}, Microsoft) oder
-    AAS (\emph{Asset Administration Shell}, IEC~63278) ausdrÃ¼cken.
+    AAS (\emph{Asset Administration Shell}, IEC~63278) ausdrücken.
   \item \textbf{MQTT-Sparkplug-B-Publisher:} Viele MES- und SCADA-Systeme
     erwarten MQTT-Sparkplug-B-Telemetrie. Ein HAG-Modul, das PDO-Werte
     automatisch als Sparkplug-B-Metriken unter einem konfigurierbaren
-    Topic-Namespace publiziert, wÃ¼rde EHAE ohne weitere Middleware mit
+    Topic-Namespace publiziert, würde EHAE ohne weitere Middleware mit
     Systemen wie Ignition, Node-RED oder InfluxDB verbinden.
   \item \textbf{Historisierung und Langzeitarchivierung:} Ein integrierter
-    Time-Series-Adapter (InfluxDB, TimescaleDB) im HAG wÃ¼rde PDO-Zeitreihen
-    direkt archivieren -- mit konfigurierbarer AuflÃ¶sung (z.\,B.\ $1\,\si{ms}$
-    fÃ¼r Debugging, $1\,\si{s}$ fÃ¼r Langzeittrends) und automatischem Downsampling
-    per Retention Policy. Die Engineer App kÃ¶nnte historische Daten im gleichen
+    Time-Series-Adapter (InfluxDB, TimescaleDB) im HAG würde PDO-Zeitreihen
+    direkt archivieren -- mit konfigurierbarer Auflösung (z.\,B.\ $1\,\si{ms}$
+    für Debugging, $1\,\si{s}$ für Langzeittrends) und automatischem Downsampling
+    per Retention Policy. Die Engineer App könnte historische Daten im gleichen
     Oszilloskop-Interface darstellen wie Live-Daten.
 \end{itemize}
 
@@ -1651,120 +1651,120 @@ Plattformerweiterungen sind mit minimalem Aufwand realisierbar und betrieblich
 relevant:
 
 \begin{itemize}[leftmargin=2em]
-  \item \textbf{iOS-App:} Capacitor unterstÃ¼tzt iOS nativ. Die vorhandene
-    Web-App-Codebase kann ohne Anpassung fÃ¼r den Apple App Store kompiliert
-    werden. Sicherheitsrelevante ErgÃ¤nzungen fÃ¼r iOS wÃ¤ren die Integration von
-    Face~ID/Touch~ID als PKCE-ergÃ¤nzendem Second Factor sowie die Nutzung
-    des iOS Secure Enclave fÃ¼r JWT-Refresh-Token-Speicherung.
+  \item \textbf{iOS-App:} Capacitor unterstützt iOS nativ. Die vorhandene
+    Web-App-Codebase kann ohne Anpassung für den Apple App Store kompiliert
+    werden. Sicherheitsrelevante Ergänzungen für iOS wären die Integration von
+    Face~ID/Touch~ID als PKCE-ergänzendem Second Factor sowie die Nutzung
+    des iOS Secure Enclave für JWT-Refresh-Token-Speicherung.
   \item \textbf{Progressive Web App (PWA):} Durch ein Service Worker-Manifest
     und eine \texttt{manifest.webmanifest}-Datei kann die EHAE Web App als
     PWA installiert werden -- ohne App Store, direkt aus dem Intranet-Browser.
-    Besonders relevant fÃ¼r Windows-Arbeitsstationen im BÃ¼ro/Engineering-Umfeld,
+    Besonders relevant für Windows-Arbeitsstationen im Büro/Engineering-Umfeld,
     die keine dedizierte App-Installation erlauben.
-  \item \textbf{Desktop-App via Electron/Tauri:} FÃ¼r die Engineer App, die
-    auf groÃŸen Monitoren mit Maus- und Tastaturinteraktion genutzt wird, bietet
-    Tauri (Rust-basiert, $\sim$3\,MB BinÃ¤rgrÃ¶ÃŸe) eine schlanke Alternative zu
+  \item \textbf{Desktop-App via Electron/Tauri:} Für die Engineer App, die
+    auf großen Monitoren mit Maus- und Tastaturinteraktion genutzt wird, bietet
+    Tauri (Rust-basiert, $\sim$3\,MB Binärgröße) eine schlanke Alternative zu
     Electron. Die gleiche Web-App-Codebase wird als native Desktop-Applikation
-    fÃ¼r Windows, macOS und Linux verpackt. Native OS-Integrationen (Systemtray,
-    Dateiexport, serieller Port fÃ¼r direkten EtherCAT-Zugriff) kÃ¶nnen per
-    Tauri-Plugin ergÃ¤nzt werden.
+    für Windows, macOS und Linux verpackt. Native OS-Integrationen (Systemtray,
+    Dateiexport, serieller Port für direkten EtherCAT-Zugriff) können per
+    Tauri-Plugin ergänzt werden.
   \item \textbf{Chromebook / Android-Enterprise-Deployment:} In
     Unternehmensumgebungen mit Google Workspace lassen sich EHAE-Apps
-    Ã¼ber die Android-Enterprise-Management-API (AMAPI) zentral deployen,
+    über die Android-Enterprise-Management-API (AMAPI) zentral deployen,
     konfigurieren und in einem Kiosk-Modus sperren -- ohne manuelle
-    GerÃ¤teeinrichtung durch den Anlagenbetreiber.
+    Geräteeinrichtung durch den Anlagenbetreiber.
 \end{itemize}
 
 \subsubsection*{Standardisierung und ETG-Roadmap}
 
-Der langfristig bedeutsamste Schritt fÃ¼r EHAE ist die formale Aufnahme in den
+Der langfristig bedeutsamste Schritt für EHAE ist die formale Aufnahme in den
 EtherCAT-Standard:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{ETG.1000-Erweiterung (Application Layer):} Die vorliegende
-    Arbeit liefert alle notwendigen technischen Grundlagen fÃ¼r einen
-    ETG-Proposal. Als nÃ¤chster Schritt ist die Einreichung bei der ETG
-    Technical Working Group sowie die DurchfÃ¼hrung eines
-    Multi-Vendor-InteroperabilitÃ¤tstests (IOT) mit mindestens drei
-    unabhÃ¤ngigen HAG-Implementierungen anzustreben.
-  \item \textbf{KonformitÃ¤tstest-Suite:} Analog zu den bestehenden
-    ETG-Conformance-Tests fÃ¼r Slaves sollte eine EHAE-Conformance-Test-Suite
-    entwickelt werden, die automatisiert prÃ¼ft, ob ein HAG alle HCP-Nachrichten
-    korrekt und vollstÃ¤ndig implementiert. Dies ist Voraussetzung fÃ¼r ein
-    offizielles ETG-KonformitÃ¤tszertifikat.
-  \item \textbf{Open-Source-Referenzimplementierung:} Die VerÃ¶ffentlichung
+    Arbeit liefert alle notwendigen technischen Grundlagen für einen
+    ETG-Proposal. Als nächster Schritt ist die Einreichung bei der ETG
+    Technical Working Group sowie die Durchführung eines
+    Multi-Vendor-Interoperabilitätstests (IOT) mit mindestens drei
+    unabhängigen HAG-Implementierungen anzustreben.
+  \item \textbf{Konformitätstest-Suite:} Analog zu den bestehenden
+    ETG-Conformance-Tests für Slaves sollte eine EHAE-Conformance-Test-Suite
+    entwickelt werden, die automatisiert prüft, ob ein HAG alle HCP-Nachrichten
+    korrekt und vollständig implementiert. Dies ist Voraussetzung für ein
+    offizielles ETG-Konformitätszertifikat.
+  \item \textbf{Open-Source-Referenzimplementierung:} Die Veröffentlichung
     einer HAG-Refe\-renzimplementierung unter Apache-2.0-Lizenz (z.\,B.\ auf
-    GitHub unter der ETG-Organisation) wÃ¼rde die Akzeptanz des Standards
-    massiv erhÃ¶hen. Sie dient ETG-Mitgliedern als Integrationsgrundlage und
+    GitHub unter der ETG-Organisation) würde die Akzeptanz des Standards
+    massiv erhöhen. Sie dient ETG-Mitgliedern als Integrationsgrundlage und
     der Forschungsgemeinschaft als reproduzierbares Bewertungssubstrat.
   \item \textbf{IEC-Normungsverfahren:} Mittelfristig sollte EHAE als
     Bestandteil von IEC~61784-5 (\emph{Installation profile for industrial
-    networks over Ethernet}) eingereicht werden. Dies wÃ¼rde die
-    InteroperabilitÃ¤t mit OPC~UA, PROFINET und EtherNet/IP auf normativer
-    Ebene regeln und EHAE fÃ¼r GroÃŸunternehmen mit strikten
-    Normierungsanforderungen (Automobilindustrie, Luftfahrt) Ã¶ffnen.
+    networks over Ethernet}) eingereicht werden. Dies würde die
+    Interoperabilität mit OPC~UA, PROFINET und EtherNet/IP auf normativer
+    Ebene regeln und EHAE für Großunternehmen mit strikten
+    Normierungsanforderungen (Automobilindustrie, Luftfahrt) öffnen.
 \end{itemize}
 
 \subsubsection*{Netzwerksicherheit und Zero Trust}
 
 Das aktuelle Sicherheitsmodell basiert auf OAuth~2.0 mit PKCE und TLS~1.3 und
-ist fÃ¼r den typischen Maschinenpark ausreichend. FÃ¼r hochsensible Umgebungen
-(kritische Infrastruktur, RÃ¼stung, Pharma) sind folgende Erweiterungen zu
+ist für den typischen Maschinenpark ausreichend. Für hochsensible Umgebungen
+(kritische Infrastruktur, Rüstung, Pharma) sind folgende Erweiterungen zu
 untersuchen:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{Zero-Trust-Netzwerkarchitektur:} Statt eines perimeterbasierten
-    Sicherheitsmodells wÃ¼rde ein Zero-Trust-Ansatz (NIST SP~800-207) jeden
-    HCP-Request unabhÃ¤ngig vom Netzwerkstandort des Clients authentifizieren
+    Sicherheitsmodells würde ein Zero-Trust-Ansatz (NIST SP~800-207) jeden
+    HCP-Request unabhängig vom Netzwerkstandort des Clients authentifizieren
     und autorisieren. Dies erfordert eine kurzlebige, per-Request-Zertifikat-
-    Ausstellung (SPIFFE/SPIRE) und eine kontinuierliche Anomalie-Ãœberwachung
+    Ausstellung (SPIFFE/SPIRE) und eine kontinuierliche Anomalie-Überwachung
     des Datenverkehrs.
   \item \textbf{Post-Quanten-Kryptografie:} NIST hat 2024 die ersten
     Post-Quanten-Kryptografie-Standards (FIPS~203 ML-KEM, FIPS~204 ML-DSA)
     verabschiedet. Eine Erweiterung des HCP-Protokolls und der
-    TLS-Konfiguration auf hybrid-SchlÃ¼sselaustausch (X25519 + ML-KEM-768)
-    sollte mittelfristig erfolgen, um die Kommunikation gegenÃ¼ber zukÃ¼nftigen
-    Quantencomputern zu schÃ¼tzen.
-  \item \textbf{Hardware Security Module (HSM):} FÃ¼r den HAG in
-    sicherheitskritischen Anlagen sollte der private TLS-SchlÃ¼ssel in einem
+    TLS-Konfiguration auf hybrid-Schlüsselaustausch (X25519 + ML-KEM-768)
+    sollte mittelfristig erfolgen, um die Kommunikation gegenüber zukünftigen
+    Quantencomputern zu schützen.
+  \item \textbf{Hardware Security Module (HSM):} Für den HAG in
+    sicherheitskritischen Anlagen sollte der private TLS-Schlüssel in einem
     dedizierten HSM (z.\,B.\ Infineon OPTIGA TPM, NXP SE050) gespeichert
-    werden, das physische Tamper-Erkennung bietet und den SchlÃ¼ssel auch
-    bei Kompromittierung des Betriebssystems schÃ¼tzt.
-  \item \textbf{Audit Log mit Blockchain-Anker:} Zur unverÃ¤nderlichen
+    werden, das physische Tamper-Erkennung bietet und den Schlüssel auch
+    bei Kompromittierung des Betriebssystems schützt.
+  \item \textbf{Audit Log mit Blockchain-Anker:} Zur unveränderlichen
     Nachvollziehbarkeit aller Bedienereingriffe (wer hat wann welchen
-    Sollwert gesetzt?) kÃ¶nnte ein Audit-Log-Modul Hashchains Ã¼ber
-    alle HCP-Schreibkommandos bilden und regelmÃ¤ÃŸig auf einer permissioned
-    Blockchain (Hyperledger Fabric) verankern -- relevant fÃ¼r
+    Sollwert gesetzt?) könnte ein Audit-Log-Modul Hashchains über
+    alle HCP-Schreibkommandos bilden und regelmäßig auf einer permissioned
+    Blockchain (Hyperledger Fabric) verankern -- relevant für
     regulierte Branchen mit GxP-Anforderungen (FDA 21 CFR Part 11).
 \end{itemize}
 
-\subsubsection*{Formale Verifikation und ZuverlÃ¤ssigkeitsanalyse}
+\subsubsection*{Formale Verifikation und Zuverlässigkeitsanalyse}
 
-FÃ¼r den Einsatz in sicherheitsrelevanten Maschinen ist formale Verifikation
-ein wichtiges ZukÃ¼nftiges Arbeitsfeld:
+Für den Einsatz in sicherheitsrelevanten Maschinen ist formale Verifikation
+ein wichtiges Zukünftiges Arbeitsfeld:
 
 \begin{itemize}[leftmargin=2em]
   \item \textbf{TLA\textsuperscript{+}-Modell des HCP-Protokolls:} Das
     HCP-Zustandsmaschine (Session-Aufbau, Token-Refresh, Alarm-Delivery) sollte
     in TLA\textsuperscript{+} modelliert und mit dem TLC Model Checker auf
-    Deadlock- und Liveness-Eigenschaften geprÃ¼ft werden. Dies liefert einen
+    Deadlock- und Liveness-Eigenschaften geprüft werden. Dies liefert einen
     formalen Beweis, dass z.\,B.\ kein Zustand erreichbar ist, in dem ein
     Alarm dauerhaft nicht zugestellt wird.
   \item \textbf{Fuzzing und Property-based Testing:} HAG-Implementierungen
-    sollten einem strukturierten Fuzzing-Programm (AFL++, libFuzzer) fÃ¼r
+    sollten einem strukturierten Fuzzing-Programm (AFL++, libFuzzer) für
     den WebSocket-Parser und den JSON-Deserializer unterzogen werden, da
-    malformierte Eingaben in Industrieumgebungen durch defekte GerÃ¤te
-    realistisch auftreten. ErgÃ¤nzend bietet sich Property-based Testing
-    (Hypothesis, QuickCheck) fÃ¼r das Variable-Mapping-Subsystem an.
+    malformierte Eingaben in Industrieumgebungen durch defekte Geräte
+    realistisch auftreten. Ergänzend bietet sich Property-based Testing
+    (Hypothesis, QuickCheck) für das Variable-Mapping-Subsystem an.
   \item \textbf{FMEA des Gesamtsystems:} Eine formale Failure Mode and Effects
-    Analysis (FMEA) nach IEC~60812 fÃ¼r das EHAE-System wÃ¼rde die
-    Schwachstellen-Priorisierung fÃ¼r zukÃ¼nftige HÃ¤rtungsmaÃŸnahmen ermÃ¶glichen
-    und ist Voraussetzung fÃ¼r eine Maschinenzulassung nach dem EU \emph{Machinery
+    Analysis (FMEA) nach IEC~60812 für das EHAE-System würde die
+    Schwachstellen-Priorisierung für zukünftige Härtungsmaßnahmen ermöglichen
+    und ist Voraussetzung für eine Maschinenzulassung nach dem EU \emph{Machinery
     Regulation} 2023/1230.
 \end{itemize}
 
 % =====================================================================
-%\section{AbkÃ¼rzungsverzeichnis}
+%\section{Abkürzungsverzeichnis}
 %
 %\begin{acronym}
 %\acro{EHAE}{EtherCAT HMI App Extension}

@@ -27,9 +27,9 @@
 \newtheorem{korollar}{Korollar}
 \newtheorem{beobachtung}{Beobachtung}
 
-\title{Die au\ss ergewÃ¶hnliche Asymmetrie in der Reihendarstellung der
+\title{Die au\ss ergewöhnliche Asymmetrie in der Reihendarstellung der
        Exponentialfunktion \\[0.5ex]
-       \large Strukturelle Zerlegung, KomplexitÃ¤tsunterschiede und
+       \large Strukturelle Zerlegung, Komplexitätsunterschiede und
        parallele Berechnung}
 \author{Stephan Epp}
 \date{\today}
@@ -41,18 +41,18 @@
 \newpage
 
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\section{EinfÃ¼hrung}
+\section{Einführung}
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Die Exponentialfunktion $e^x$ ist eine der fundamentalsten Funktionen der
 Mathematik. Ihre Reihendarstellung erscheint auf den ersten Blick homogen und
 symmetrisch. Bei genauerer Betrachtung offenbart sich jedoch eine tiefe
-strukturelle Asymmetrie, die weitreichende Konsequenzen fÃ¼r das VerstÃ¤ndnis der
+strukturelle Asymmetrie, die weitreichende Konsequenzen für das Verständnis der
 Funktion hat.
 
 Die zentrale Beobachtung dieser Arbeit ist: Die geraden Glieder der Reihe sind
 strukturell einfacher als die ungeraden Glieder. Achsensymmetrie ist
-fundamentaler als Punktsymmetrie. Diese Erkenntnis ermÃ¶glicht eine alternative
+fundamentaler als Punktsymmetrie. Diese Erkenntnis ermöglicht eine alternative
 Berechnungsstrategie: Berechne die geraden Glieder direkt, berechne die gesamte
 Funktion, und erhalte die ungeraden Glieder als Differenz.
 
@@ -73,16 +73,16 @@ Die Exponentialfunktion ist definiert durch ihre Taylorreihe:
       = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!}
         + \frac{x^5}{5!} + \cdots
 \end{align}
-Diese Reihe konvergiert fÃ¼r alle $x \in \mathbb{R}$ absolut.
+Diese Reihe konvergiert für alle $x \in \mathbb{R}$ absolut.
 \end{definition}
 
-Diese scheinbar homogene Struktur verbirgt eine fundamentale DualitÃ¤t zwischen
+Diese scheinbar homogene Struktur verbirgt eine fundamentale Dualität zwischen
 geraden und ungeraden Gliedern.
 
 \subsection{Zerlegung in symmetrische Komponenten}
 
 \begin{definition}[Gerade und ungerade Komponenten]
-Die Exponentialfunktion lÃ¤sst sich eindeutig zerlegen in:
+Die Exponentialfunktion lässt sich eindeutig zerlegen in:
 \begin{align}
   e^x = E(x) + U(x)
 \end{align}
@@ -110,19 +110,19 @@ Symmetrieeigenschaften:
 \end{satz}
 
 \begin{proof}
-FÃ¼r die gerade Komponente gilt:
+Für die gerade Komponente gilt:
 \begin{align}
   E(-x) = \sum_{n=0}^{\infty} \frac{(-x)^{2n}}{(2n)!}
         = \sum_{n=0}^{\infty} \frac{x^{2n}}{(2n)!} = E(x)
 \end{align}
-da $(-1)^{2n} = 1$ fÃ¼r alle $n \in \mathbb{N}_0$.
+da $(-1)^{2n} = 1$ für alle $n \in \mathbb{N}_0$.
 
-FÃ¼r die ungerade Komponente gilt:
+Für die ungerade Komponente gilt:
 \begin{align}
   U(-x) = \sum_{n=0}^{\infty} \frac{(-x)^{2n+1}}{(2n+1)!}
         = -\sum_{n=0}^{\infty} \frac{x^{2n+1}}{(2n+1)!} = -U(x)
 \end{align}
-da $(-1)^{2n+1} = -1$ fÃ¼r alle $n \in \mathbb{N}_0$.
+da $(-1)^{2n+1} = -1$ für alle $n \in \mathbb{N}_0$.
 \end{proof}
 
 \subsection{Verbindung zu hyperbolischen Funktionen}
@@ -136,56 +136,56 @@ Die geraden und ungeraden Komponenten sind gegeben durch:
 \end{satz}
 
 \begin{proof}
-Addition der IdentitÃ¤ten ergibt:
+Addition der Identitäten ergibt:
 \begin{align}
   E(x) + U(x)
     = \frac{e^x + e^{-x}}{2} + \frac{e^x - e^{-x}}{2} = e^x
 \end{align}
-Subtraktion mit $e^{-x} = E(x) - U(x)$ bestÃ¤tigt die Darstellung.
+Subtraktion mit $e^{-x} = E(x) - U(x)$ bestätigt die Darstellung.
 \end{proof}
 
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Die fundamentale Asymmetrie: Achsensymmetrie versus Punktsymmetrie}
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\subsection{Strukturelle KomplexitÃ¤t}
+\subsection{Strukturelle Komplexität}
 
 \begin{beobachtung}[Einfachheit der geraden Glieder]
 Achsensymmetrie ist strukturell einfacher als Punktsymmetrie:
 \begin{itemize}
   \item[-] \textbf{Achsensymmetrie} ($E(-x) = E(x)$): Erfordert nur, dass das
            Vorzeichen von $x$ irrelevant ist
-  \item[-] \textbf{Punktsymmetrie} ($U(-x) = -U(x)$): Erfordert zusÃ¤tzlich
+  \item[-] \textbf{Punktsymmetrie} ($U(-x) = -U(x)$): Erfordert zusätzlich
            Vorzeichenwechsel des Funktionswerts
 \end{itemize}
 \end{beobachtung}
 
 \subsubsection{Algebraische Struktur}
 
-FÃ¼r die gerade Komponente gilt:
+Für die gerade Komponente gilt:
 \begin{align}
   E(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \frac{x^6}{6!} + \cdots
 \end{align}
-Jedes Glied ist \textbf{nicht-negativ} fÃ¼r $x \in \mathbb{R}$, da
-$x^{2n} \geq 0$ fÃ¼r alle $n \in \mathbb{N}_0$.
+Jedes Glied ist \textbf{nicht-negativ} für $x \in \mathbb{R}$, da
+$x^{2n} \geq 0$ für alle $n \in \mathbb{N}_0$.
 
-FÃ¼r die ungerade Komponente gilt:
+Für die ungerade Komponente gilt:
 \begin{align}
   U(x) = x + \frac{x^3}{3!} + \frac{x^5}{5!} + \frac{x^7}{7!} + \cdots
 \end{align}
-Die Glieder wechseln das Vorzeichen abhÃ¤ngig vom Vorzeichen von $x$.
-Dies erfordert zusÃ¤tzliche Vorzeichenverwaltung.
+Die Glieder wechseln das Vorzeichen abhängig vom Vorzeichen von $x$.
+Dies erfordert zusätzliche Vorzeichenverwaltung.
 
-\subsubsection{BerechnungskomplexitÃ¤t}
+\subsubsection{Berechnungskomplexität}
 
 \begin{lemma}[Effizienz der Potenzberechnung]
 Die Berechnung von $x^{2n}$ ist effizienter als die von $x^{2n+1}$:
 \begin{itemize}
   \item[-] $x^{2n} = (x^2)^n$: Erst Quadrieren, dann $n$-fache Multiplikation
-  \item[-] $x^{2n+1} = x \cdot x^{2n}$: ZusÃ¤tzliche Multiplikation mit $x$
+  \item[-] $x^{2n+1} = x \cdot x^{2n}$: Zusätzliche Multiplikation mit $x$
 \end{itemize}
-FÃ¼r groÃŸe $n$ ist der relative Unterschied gering, aber strukturell ist
-$x^{2n}$ direkter zugÃ¤nglich.
+Für große $n$ ist der relative Unterschied gering, aber strukturell ist
+$x^{2n}$ direkter zugänglich.
 \end{lemma}
 
 \subsection{Geometrische Interpretation}
@@ -208,7 +208,7 @@ Punktsymmetrie ist damit eine Komposition zweier elementarer Operationen.
 \subsection{Die Differenzmethode}
 
 \begin{satz}[Berechnung durch Differenzbildung]
-Seien $e^x$ und $E(x)$ bekannt. Dann lÃ¤sst sich die ungerade Komponente
+Seien $e^x$ und $E(x)$ bekannt. Dann lässt sich die ungerade Komponente
 berechnen als:
 \begin{align}
   U(x) = e^x - E(x)
@@ -225,7 +225,7 @@ Nach Definition gilt $e^x = E(x) + U(x)$, also $U(x) = e^x - E(x)$.
 Der Algorithmus zur Berechnung von $U(x)$ lautet:
 \begin{enumerate}
   \item Berechne $E(x) = \cosh(x)$ durch Summation der geraden Glieder
-  \item Berechne $e^x$ durch die vollstÃ¤ndige Reihe
+  \item Berechne $e^x$ durch die vollständige Reihe
   \item Setze $U(x) = e^x - E(x)$
 \end{enumerate}
 
@@ -237,7 +237,7 @@ $f_{\text{einfach}}$ strukturell einfacher ist. Dann gilt:
 \begin{align}
   f_{\text{kompliziert}}(x) = f(x) - f_{\text{einfach}}(x)
 \end{align}
-vorausgesetzt, $f(x)$ ist direkt zugÃ¤nglich.
+vorausgesetzt, $f(x)$ ist direkt zugänglich.
 \end{korollar}
 
 Dies ist ein fundamentales Prinzip der numerischen Mathematik:
@@ -250,7 +250,7 @@ Dies ist ein fundamentales Prinzip der numerischen Mathematik:
 \subsection{Komplexe Exponentialfunktion}
 
 \begin{satz}[Euler-Formel]
-FÃ¼r $x \in \mathbb{R}$ gilt:
+Für $x \in \mathbb{R}$ gilt:
 \begin{align}
   e^{ix} = \cos(x) + i\sin(x)
 \end{align}
@@ -279,15 +279,15 @@ Mit $i^{2n} = (-1)^n$ und $i^{2n+1} = i(-1)^n$ folgt:
 \subsection{Asymmetrie im Komplexen}
 
 \begin{lemma}[Komplexe Symmetrie]
-FÃ¼r die komplexe Exponentialfunktion gilt:
+Für die komplexe Exponentialfunktion gilt:
 \begin{align}
   \operatorname{Re}(e^{ix}) &= \cos(x) = \text{gerade Komponente} \\
   \operatorname{Im}(e^{ix}) &= \sin(x) = \text{ungerade Komponente}
 \end{align}
 \end{lemma}
 
-\begin{beobachtung}[Strukturelle ParallelitÃ¤t]
-Die Asymmetrie zwischen Real- und ImaginÃ¤rteil spiegelt die Asymmetrie
+\begin{beobachtung}[Strukturelle Parallelität]
+Die Asymmetrie zwischen Real- und Imaginärteil spiegelt die Asymmetrie
 zwischen geraden und ungeraden Gliedern:
 \begin{itemize}
   \item[-] $\cos(x)$: Gerade Funktion, nur gerade Potenzen, beginnt mit
@@ -306,39 +306,39 @@ $E(x)$ versus $U(x)$.
 \subsection{Konvergenzgeschwindigkeit}
 
 \begin{satz}[Relative Konvergenz]
-FÃ¼r festes $x \in \mathbb{R}$ haben beide Teilreihen $E(x)$ und $U(x)$
+Für festes $x \in \mathbb{R}$ haben beide Teilreihen $E(x)$ und $U(x)$
 identische Konvergenzgeschwindigkeit, da beide Teilmengen derselben absolut
 konvergenten Reihe sind.
 \end{satz}
 
 \begin{proof}
-Das VerhÃ¤ltnis aufeinanderfolgender Glieder ist:
+Das Verhältnis aufeinanderfolgender Glieder ist:
 \begin{align}
-  \frac{a_{n+1}}{a_n} = \frac{|x|}{n+1} \to 0 \quad \text{fÃ¼r } n \to \infty
+  \frac{a_{n+1}}{a_n} = \frac{|x|}{n+1} \to 0 \quad \text{für } n \to \infty
 \end{align}
-Sowohl fÃ¼r gerade als auch ungerade Teilreihen gilt dasselbe asymptotische
+Sowohl für gerade als auch ungerade Teilreihen gilt dasselbe asymptotische
 Verhalten.
 \end{proof}
 
-\subsection{Numerische StabilitÃ¤t der Differenzmethode}
+\subsection{Numerische Stabilität der Differenzmethode}
 
-\begin{beobachtung}[AuslÃ¶schungseffekte]
-Die Differenzbildung $U(x) = e^x - E(x)$ unterliegt fÃ¼r groÃŸe $x$ der
-AuslÃ¶schung:
+\begin{beobachtung}[Auslöschungseffekte]
+Die Differenzbildung $U(x) = e^x - E(x)$ unterliegt für große $x$ der
+Auslöschung:
 \begin{itemize}
-  \item[-] FÃ¼r $x \gg 1$: $e^x \approx E(x) \approx \frac{e^x}{2}$
-           (beide sehr groÃŸ), die Differenz verliert relative PrÃ¤zision
-  \item[-] FÃ¼r $x$ klein: $E(x) \approx 1$, $U(x) \approx x$,
-           keine AuslÃ¶schung
+  \item[-] Für $x \gg 1$: $e^x \approx E(x) \approx \frac{e^x}{2}$
+           (beide sehr groß), die Differenz verliert relative Präzision
+  \item[-] Für $x$ klein: $E(x) \approx 1$, $U(x) \approx x$,
+           keine Auslöschung
 \end{itemize}
 \end{beobachtung}
 
 \begin{satz}[Optimaler Berechnungsbereich]
-Die Differenzmethode ist numerisch stabil fÃ¼r $|x| < 1$. FÃ¼r $|x| > 1$
+Die Differenzmethode ist numerisch stabil für $|x| < 1$. Für $|x| > 1$
 sollte direkte Summation verwendet werden.
 \end{satz}
 
-\begin{beispiel}[Partielle Summen fÃ¼r $x=1$]
+\begin{beispiel}[Partielle Summen für $x=1$]
 Exakte Werte: $E(1) = \cosh(1) \approx 1.5431$,
 $U(1) = \sinh(1) \approx 1.1752$.
 
@@ -362,23 +362,23 @@ Beide Reihen konvergieren gleich schnell.
 \subsection{Parallelisierbarkeit der Taylorreihe}
 
 \begin{beobachtung}[Parallele Berechnung]
-Die Taylorreihe lÃ¤sst sich auf $P$ Prozesse verteilen:
+Die Taylorreihe lässt sich auf $P$ Prozesse verteilen:
 \begin{enumerate}
   \item Prozess $k$ berechnet Glieder mit Indizes
         $\{k,\, k+P,\, k+2P,\, \ldots\}$
-  \item Die Teilsummen werden anschlieÃŸend addiert
-  \item Echte ParallelitÃ¤t erfordert \texttt{multiprocessing} statt
+  \item Die Teilsummen werden anschließend addiert
+  \item Echte Parallelität erfordert \texttt{multiprocessing} statt
         \texttt{threading}, um den GIL zu umgehen
 \end{enumerate}
 \end{beobachtung}
 
 \begin{satz}[Theoretischer Speedup nach Amdahl]
-Sei $p$ der parallele Anteil der Berechnung. Dann betrÃ¤gt der theoretische
+Sei $p$ der parallele Anteil der Berechnung. Dann beträgt der theoretische
 Speedup mit $N$ Prozessen:
 \begin{align}
   S(N) = \frac{1}{(1-p) + \tfrac{p}{N}}
 \end{align}
-FÃ¼r die Taylorreihen-Berechnung gilt $p \approx 0.90\text{--}0.95$,
+Für die Taylorreihen-Berechnung gilt $p \approx 0.90\text{--}0.95$,
 woraus folgt $S(4) \lesssim 3.1$ und $S(8) \lesssim 5.0$.
 \end{satz}
 
@@ -387,8 +387,8 @@ woraus folgt $S(4) \lesssim 3.1$ und $S(8) \lesssim 5.0$.
 Die Python-Implementierung mit \texttt{threading} zeigt keine echte
 Beschleunigung, da der Global Interpreter Lock (GIL) CPU-gebundene Threads
 serialisiert. \texttt{multiprocessing} startet dagegen separate
-Betriebssystemprozesse mit eigenem Python-Interpreter und ermÃ¶glicht damit
-echte parallele AusfÃ¼hrung auf mehreren CPU-Kernen.
+Betriebssystemprozesse mit eigenem Python-Interpreter und ermöglicht damit
+echte parallele Ausführung auf mehreren CPU-Kernen.
 
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \section{Experimente}
@@ -396,17 +396,17 @@ echte parallele AusfÃ¼hrung auf mehreren CPU-Kernen.
 
 \subsection{Setup}
 
-Alle Experimente verwenden die reine Python-Taylorreihe ohne RÃ¼ckgriff auf
-optimierte C-Bibliotheken (\texttt{math.exp}). Die ProblemgrÃ¶ÃŸe wurde so
-gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
-Ã¼berwiegt ($\geq 5.000$ Glieder).
+Alle Experimente verwenden die reine Python-Taylorreihe ohne Rückgriff auf
+optimierte C-Bibliotheken (\texttt{math.exp}). Die Problemgröße wurde so
+gewählt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
+überwiegt ($\geq 5.000$ Glieder).
 
 \subsection{Laufzeit vs.\ Prozessanzahl}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{plots/process_scaling.pdf}
-  \caption{Laufzeit und Speedup in AbhÃ¤ngigkeit von der Prozessanzahl
+  \caption{Laufzeit und Speedup in Abhängigkeit von der Prozessanzahl
            ($e^5$, $10.000$ Glieder). Rechts: gemessener Speedup (blau) im
            Vergleich zum idealen Speedup (orange gestrichelt).}
   \label{fig:process_scaling}
@@ -417,9 +417,9 @@ gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{plots/parallel_vs_sequential.pdf}
-  \caption{Laufzeitvergleich sequenziell vs.\ parallel (4 Prozesse) fÃ¼r
+  \caption{Laufzeitvergleich sequenziell vs.\ parallel (4 Prozesse) für
            $e^2$ mit variierender Termanzahl. Ab ca.\ $5.000$ Gliedern
-           Ã¼berwiegt der parallele Rechenanteil den Prozess-Overhead.}
+           überwiegt der parallele Rechenanteil den Prozess-Overhead.}
   \label{fig:parallel_vs_seq}
 \end{figure}
 
@@ -428,20 +428,20 @@ gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{plots/amdahl_analysis.pdf}
-  \caption{Gemessener Speedup (links) und parallele Effizienz (rechts) fÃ¼r
+  \caption{Gemessener Speedup (links) und parallele Effizienz (rechts) für
            $e^3$ mit $10.000$ Gliedern. Der gemessene Speedup liegt zwischen
-           den Amdahl-Kurven fÃ¼r $p=0.90$ und $p=0.95$.}
+           den Amdahl-Kurven für $p=0.90$ und $p=0.95$.}
   \label{fig:amdahl}
 \end{figure}
 
-\subsection{Speedup vs.\ ProblemgrÃ¶ÃŸe}
+\subsection{Speedup vs.\ Problemgröße}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{plots/problem_size_scaling.pdf}
-  \caption{Speedup in AbhÃ¤ngigkeit der Termanzahl (log-Skala, 4 Prozesse).
-           FÃ¼r kleine Probleme dominiert der Prozess-Overhead; ab ca.\
-           $5.000$ Gliedern nÃ¤hert sich der Speedup dem idealen Wert an.}
+  \caption{Speedup in Abhängigkeit der Termanzahl (log-Skala, 4 Prozesse).
+           Für kleine Probleme dominiert der Prozess-Overhead; ab ca.\
+           $5.000$ Gliedern nähert sich der Speedup dem idealen Wert an.}
   \label{fig:problem_size}
 \end{figure}
 
@@ -450,7 +450,7 @@ gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{plots/accuracy_analysis.pdf}
-  \caption{Absoluter Fehler (log-Skala) der Taylorreihen-Approximation fÃ¼r
+  \caption{Absoluter Fehler (log-Skala) der Taylorreihen-Approximation für
            $x \in \{1, 2, 5\}$. Bereits ab $n=20$ Gliedern liegt der Fehler
            im Bereich der Maschinengenauigkeit.}
   \label{fig:accuracy}
@@ -469,7 +469,7 @@ gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
              & 10\,000 & 4 & ${\approx}2.8\times$ & ${\approx}70\,\%$ \\
              & 10\,000 & 8 & ${\approx}4.0\times$ & ${\approx}50\,\%$ \\
   \midrule
-  ProblemgrÃ¶ÃŸe & 500     & 4 & ${<}1.0\times$ & ${<}25\,\%$ \\
+  Problemgröße & 500     & 4 & ${<}1.0\times$ & ${<}25\,\%$ \\
                & 5\,000  & 4 & ${\approx}2.0\times$ & ${\approx}50\,\%$ \\
                & 50\,000 & 4 & ${\approx}3.5\times$ & ${\approx}88\,\%$ \\
   \bottomrule
@@ -480,19 +480,19 @@ gewÃ¤hlt, dass der parallele Rechenanteil den Prozess-Overhead deutlich
 \section{Theoretische Implikationen}
 %% â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\subsection{FundamentalitÃ¤t gerader Funktionen}
+\subsection{Fundamentalität gerader Funktionen}
 
-\begin{satz}[PrimitivitÃ¤t der Achsensymmetrie]
+\begin{satz}[Primitivität der Achsensymmetrie]
 In der Funktionentheorie ist Achsensymmetrie fundamentaler als Punktsymmetrie:
 \begin{enumerate}
-  \item Jede Funktion $f: \mathbb{R} \to \mathbb{R}$ lÃ¤sst sich eindeutig
+  \item Jede Funktion $f: \mathbb{R} \to \mathbb{R}$ lässt sich eindeutig
         zerlegen:
         \begin{align}
           f(x) = f_{\text{gerade}}(x) + f_{\text{ungerade}}(x)
         \end{align}
         mit $f_{\text{gerade}}(x) = \tfrac{1}{2}(f(x)+f(-x))$ und
         $f_{\text{ungerade}}(x) = \tfrac{1}{2}(f(x)-f(-x))$
-  \item Die gerade Komponente existiert unabhÃ¤ngig von der
+  \item Die gerade Komponente existiert unabhängig von der
         Differenzierbarkeit von $f$
   \item Achsensymmetrische Funktionen bilden einen Untervektorraum
 \end{enumerate}
@@ -512,14 +512,14 @@ wobei jede Stufe restriktiver (und damit strukturell einfacher) ist.
 \begin{beobachtung}[Analogie: Wege und Potenzen]
 In der Graphentheorie (vgl.\ \emph{Graphen mit Knoten und Kanten}, Epp):
 \begin{itemize}
-  \item[-] Gerade WegelÃ¤ngen entsprechen geraden Potenzen $E(x)$
-  \item[-] Ungerade WegelÃ¤ngen entsprechen ungeraden Potenzen $U(x)$
-  \item[-] VollstÃ¤ndige Information: $e^x = E(x) + U(x)$
+  \item[-] Gerade Wegelängen entsprechen geraden Potenzen $E(x)$
+  \item[-] Ungerade Wegelängen entsprechen ungeraden Potenzen $U(x)$
+  \item[-] Vollständige Information: $e^x = E(x) + U(x)$
 \end{itemize}
 \end{beobachtung}
 
 \begin{korollar}[Einheitliche Strategie]
-In beiden FÃ¤llen gilt das Prinzip:
+In beiden Fällen gilt das Prinzip:
 \begin{align}
   \text{Komplizierte Komponente}
     = \text{Gesamtstruktur} - \text{Einfache Komponente}
@@ -541,11 +541,11 @@ sind:
 \begin{enumerate}
   \item \textbf{Fundamentale Asymmetrie}: Achsensymmetrie (gerade Glieder)
         ist strukturell einfacher als Punktsymmetrie (ungerade Glieder)
-  \item \textbf{Berechnungsstrategie}: Die ungeraden Glieder kÃ¶nnen effizient
+  \item \textbf{Berechnungsstrategie}: Die ungeraden Glieder können effizient
         durch Differenzbildung $U(x) = e^x - E(x)$ gewonnen werden
-  \item \textbf{Parallelisierung}: Echte ParallelitÃ¤t erfordert
+  \item \textbf{Parallelisierung}: Echte Parallelität erfordert
         \texttt{multiprocessing}; der Speedup wird erst bei ausreichend
-        groÃŸen Problemen ($\geq 5.000$ Glieder) sichtbar
+        großen Problemen ($\geq 5.000$ Glieder) sichtbar
   \item \textbf{Universelles Prinzip}: Komplexe Strukturen durch Subtraktion
         einfacher Komponenten konstruieren
   \item \textbf{Analogie zur Graphentheorie}: Die Strategie parallelt die
@@ -555,25 +555,25 @@ sind:
 \subsection{Offene Fragen}
 
 \begin{itemize}
-  \item[-] LÃ¤sst sich die Asymmetrie quantifizieren durch ein formales
-           KomplexitÃ¤tsmaÃŸ?
-  \item[-] Welche anderen Funktionen besitzen Ã¤hnliche asymmetrische
+  \item[-] Lässt sich die Asymmetrie quantifizieren durch ein formales
+           Komplexitätsmaß?
+  \item[-] Welche anderen Funktionen besitzen ähnliche asymmetrische
            Zerlegungen?
-  \item[-] Kann die Differenzmethode fÃ¼r andere transzendente Funktionen
+  \item[-] Kann die Differenzmethode für andere transzendente Funktionen
            optimiert werden?
   \item[-] Gibt es eine kategorientheoretische Formulierung der
-           FundamentalitÃ¤t gerader Funktionen?
+           Fundamentalität gerader Funktionen?
 \end{itemize}
 
 \subsection{Fazit}
 
 Die Exponentialfunktion offenbart bei genauerer Betrachtung eine tiefe
-strukturelle DualitÃ¤t. Die geraden Glieder sind nicht nur mathematisch
+strukturelle Dualität. Die geraden Glieder sind nicht nur mathematisch
 einfacher, sondern auch konzeptuell fundamentaler als die ungeraden Glieder.
 Achsensymmetrie ist eine primitivere Eigenschaft als Punktsymmetrie.
 
 Die Strategie, komplexe Strukturen durch Subtraktion einfacher Komponenten zu
-gewinnen, erweist sich als universell anwendbar -- von der Analysis Ã¼ber die
+gewinnen, erweist sich als universell anwendbar -- von der Analysis über die
 Graphentheorie bis zur theoretischen Physik. Sie spiegelt ein fundamentales
 Konstruktionsprinzip wider:
 
@@ -594,13 +594,13 @@ $(-1)^n$ erzeugt eine interne Zerlegung in positive und negative Teilreihen.
 
 \subsection{Binomialreihe}
 
-FÃ¼r $(1+x)^\alpha$ mit $\alpha \in \mathbb{R}$ gilt:
+Für $(1+x)^\alpha$ mit $\alpha \in \mathbb{R}$ gilt:
 \begin{align}
   (1+x)^\alpha
     = \sum_{n=0}^{\infty} \binom{\alpha}{2n} x^{2n}
     + \sum_{n=0}^{\infty} \binom{\alpha}{2n+1} x^{2n+1}
 \end{align}
-Die Symmetrie zwischen den Komponenten hÃ¤ngt von $\alpha$ ab.
+Die Symmetrie zwischen den Komponenten hängt von $\alpha$ ab.
 
 \section{Schlussbetrachtung}
 
@@ -611,16 +611,16 @@ Sie offenbart ein tiefes mathematisches Prinzip: Die Hierarchie der Symmetrien.
 Achsensymmetrie, kodiert in den geraden Gliedern, ist fundamental. Sie
 erfordert nur, dass die Funktion invariant unter Vorzeichenwechsel des
 Arguments ist. Punktsymmetrie, manifestiert in den ungeraden Gliedern, ist
-komplexer -- sie verlangt zusÃ¤tzlich einen Vorzeichenwechsel des Funktionswerts.
+komplexer -- sie verlangt zusätzlich einen Vorzeichenwechsel des Funktionswerts.
 
-In beiden FÃ¤llen gilt: \textit{Vermeide die direkte Konstruktion des
+In beiden Fällen gilt: \textit{Vermeide die direkte Konstruktion des
 Komplizierten. Konstruiere stattdessen das Einfache und das Ganze, und erhalte
 das Komplizierte als deren Differenz.}
 
-Dieses Prinzip ist nicht auf Mathematik beschrÃ¤nkt. In der Informatik spricht
+Dieses Prinzip ist nicht auf Mathematik beschränkt. In der Informatik spricht
 man von \glqq divide and conquer\grqq{} -- zerlege ein Problem in einfachere
 Teilprobleme. In der Physik sucht man nach fundamentalen Symmetrien, aus denen
-komplexe PhÃ¤nomene emergieren. In der Philosophie unterscheidet man zwischen
+komplexe Phänomene emergieren. In der Philosophie unterscheidet man zwischen
 dem Wesentlichen und dem Akzidentiellen.
 
 \textbf{Die zentrale Erkenntnis}: Das Gerade ist einfacher als das Ungerade.
@@ -628,9 +628,9 @@ Achsensymmetrie ist fundamentaler als Punktsymmetrie. Und das Komplizierte
 muss nicht direkt konstruiert werden -- es ist die Differenz zwischen dem
 Ganzen und dem Einfachen.
 
-In einer Zeit, in der numerische Berechnungen allgegenwÃ¤rtig sind, erinnert
+In einer Zeit, in der numerische Berechnungen allgegenwärtig sind, erinnert
 uns die Exponentialfunktion daran: Manchmal ist der indirekte Weg der
-effizienteste. Manchmal ist die Subtraktion mÃ¤chtiger als die Addition. Und
+effizienteste. Manchmal ist die Subtraktion mächtiger als die Addition. Und
 immer ist die Struktur wichtiger als die Formel.
 
 
@@ -655,7 +655,7 @@ Marcum-Michaelem Bousquet, Lausanne, 1748.
 
 \bibitem{forster2016}
 O.~Forster,
-\textit{Analysis 1: Differential- und Integralrechnung einer VerÃ¤nderlichen},
+\textit{Analysis 1: Differential- und Integralrechnung einer Veränderlichen},
 13.~Aufl., Springer Spektrum, Wiesbaden, 2016.
 
 \bibitem{graham1994}

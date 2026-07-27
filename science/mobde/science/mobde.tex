@@ -31,7 +31,7 @@
   linkcolor=blue!60!black,
   urlcolor=blue!70!black,
   citecolor=green!50!black,
-  pdftitle={Zur VerfÃ¼gung stellen von Dateien in mobilen Betriebssystemen},
+  pdftitle={Zur Verfügung stellen von Dateien in mobilen Betriebssystemen},
   pdfauthor={Stephan Epp},
   pdfsubject={Mobile Computing, Dateiarchitektur, Systemintegration},
 }
@@ -124,9 +124,9 @@
   breaklines=true, captionpos=b,
 }
 
-\title{\textbf{Zur VerfÃ¼gung stellen von Dateien\\ in mobilen Betriebssystemen}}
+\title{\textbf{Zur Verfügung stellen von Dateien\\ in mobilen Betriebssystemen}}
 \author{Stephan Epp}
-\date{25. MÃ¤rz 2026}
+\date{25. März 2026}
 
 %============================================================
 \begin{document}
@@ -143,27 +143,27 @@
 
 Mobile Betriebssysteme â€” allen voran Android und iOS â€” haben im vergangenen Jahrzehnt
 eine Architektur herausgebildet, die den Umgang mit Dateien fundamental von klassischen
-Desktop-Paradigmen unterscheidet. WÃ¤hrend auf traditionellen Computersystemen eine
-Datei im Dateisystem des Betriebssystems als primÃ¤rer Speicherort fÃ¼r persistente Daten
+Desktop-Paradigmen unterscheidet. Während auf traditionellen Computersystemen eine
+Datei im Dateisystem des Betriebssystems als primärer Speicherort für persistente Daten
 gilt und Anwendungen lediglich lesen und schreiben, wurden auf mobilen Plattformen
-gezielt Sandboxing-Mechanismen eingefÃ¼hrt, die jede Anwendung in einem isolierten
-Speicherbereich kapseln. Diese Isolierung dient primÃ¤r der Sicherheit und dem Datenschutz,
-erzeugt jedoch zugleich ein strukturelles SpannungsverhÃ¤ltnis: Anwendungen, die Dateien
-produzieren â€” Kameras, Dokumenteneditoren, Audio-Recorder, Mediaplayer â€” mÃ¼ssen
+gezielt Sandboxing-Mechanismen eingeführt, die jede Anwendung in einem isolierten
+Speicherbereich kapseln. Diese Isolierung dient primär der Sicherheit und dem Datenschutz,
+erzeugt jedoch zugleich ein strukturelles Spannungsverhältnis: Anwendungen, die Dateien
+produzieren â€” Kameras, Dokumenteneditoren, Audio-Recorder, Mediaplayer â€” müssen
 entscheiden, \emph{wo} diese Dateien residieren und \emph{wer} auf sie zugreifen kann.
 
 In der Praxis hat sich ein klares und ethisch wie technisch gebotenes Prinzip herausgestellt:
 
 \noindent\textbf{Das Bereitstellungsprinzip:} Eine dateiproduzierende mobile Anwendung hat die
 erzeugten Dateien dem systemweiten Dateiverwaltungssystem des Betriebssystems
-\emph{zur VerfÃ¼gung zu stellen}. Dateien dÃ¼rfen nicht dauerhaft im App-eigenen,
-fÃ¼r andere Anwendungen und den Benutzer unzugÃ¤nglichen Speicher verbleiben.
+\emph{zur Verfügung zu stellen}. Dateien dürfen nicht dauerhaft im App-eigenen,
+für andere Anwendungen und den Benutzer unzugänglichen Speicher verbleiben.
 
-Dieses Prinzip bildet den Kern der vorliegenden Arbeit. Es wird zunÃ¤chst die technische
+Dieses Prinzip bildet den Kern der vorliegenden Arbeit. Es wird zunächst die technische
 Architektur mobiler Betriebssysteme untersucht (\cref{sec:architektur}), dann das
-Bereitstellungsprinzip formal definiert und hergeleitet (\cref{sec:prinzip}), anschlieÃŸend
+Bereitstellungsprinzip formal definiert und hergeleitet (\cref{sec:prinzip}), anschließend
 an konkreten Anwendungsklassen exemplifiziert (\cref{sec:anwendungsklassen}), und
-schlieÃŸlich werden alle Randgebiete und Konsequenzen umfassend diskutiert
+schließlich werden alle Randgebiete und Konsequenzen umfassend diskutiert
 (\cref{sec:konsequenzen}).
 
 \subsection{Definitionen}
@@ -171,24 +171,24 @@ schlieÃŸlich werden alle Randgebiete und Konsequenzen umfassend diskutiert
 Der Begriff \enquote{Freigabe} entstammt dem Sprachgebrauch der Praxis und ist historisch
 durch die Erfahrung im Umgang mit mobilen Apps entstanden. Er ist berechtigt, weil er
 das subjektive Erleben des Benutzers akkurat beschreibt: Eine Datei, die aus einer App
-heraus \enquote{freigegeben} wird, ist plÃ¶tzlich systemweit zugÃ¤nglich. Dennoch ist
+heraus \enquote{freigegeben} wird, ist plötzlich systemweit zugänglich. Dennoch ist
 er aus technischer Perspektive ungenau, da er eine vorherige Sperrung impliziert, die
 in der korrekten Implementierung gar nicht erst existieren sollte.
 
-\begin{definition}[Zur-VerfÃ¼gung-Stellen]
+\begin{definition}[Zur-Verfügung-Stellen]
 \label{def:verfuegbarstellen}
-Das \emph{Zur-VerfÃ¼gung-Stellen} einer Datei bezeichnet den Prozess, durch den eine
-dateiproduzierende Anwendung eine erzeugte Datei in einem fÃ¼r das Betriebssystem
-und autorisierte Drittanwendungen zugÃ¤nglichen Speicherbereich ablegt und diesen
+Das \emph{Zur-Verfügung-Stellen} einer Datei bezeichnet den Prozess, durch den eine
+dateiproduzierende Anwendung eine erzeugte Datei in einem für das Betriebssystem
+und autorisierte Drittanwendungen zugänglichen Speicherbereich ablegt und diesen
 Vorgang dem Medienspeicher-System des Betriebssystems signalisiert.
 \end{definition}
 
 \begin{bemerkung}
-Die Terminologie \enquote{zur VerfÃ¼gung stellen} ist \enquote{Freigabe} vorzuziehen,
-da sie keine nachtrÃ¤gliche Handlung impliziert, sondern den Normalzustand beschreibt:
+Die Terminologie \enquote{zur Verfügung stellen} ist \enquote{Freigabe} vorzuziehen,
+da sie keine nachträgliche Handlung impliziert, sondern den Normalzustand beschreibt:
 Eine Datei, die ein Produktionsprozess erzeugt, ist \emph{von Natur aus} dem System
-zur VerfÃ¼gung zu stellen. Dieses Dokument verwendet beide Begriffe Ã¤quivalent,
-bevorzugt jedoch die prÃ¤zisere Formulierung.
+zur Verfügung zu stellen. Dieses Dokument verwendet beide Begriffe äquivalent,
+bevorzugt jedoch die präzisere Formulierung.
 \end{bemerkung}
 
 %============================================================
@@ -199,16 +199,16 @@ bevorzugt jedoch die prÃ¤zisere Formulierung.
 \subsection{Das Sandboxing-Modell}
 
 Moderne mobile Betriebssysteme basieren auf dem Prinzip der \emph{Anwendungsisolation}.
-Jede installierte App erhÃ¤lt einen eigenen, abgeschotteten Speicherbereich, auf den
-ausschlieÃŸlich diese App zugreifen kann. Dieses Modell, bekannt als \emph{Sandboxing},
-hat zwei wesentliche AusprÃ¤gungen:
+Jede installierte App erhält einen eigenen, abgeschotteten Speicherbereich, auf den
+ausschließlich diese App zugreifen kann. Dieses Modell, bekannt als \emph{Sandboxing},
+hat zwei wesentliche Ausprägungen:
 
 \begin{enumerate}[label=\textbf{\arabic*.}]
   \item \textbf{App-privater Speicher (Internal Storage):} Verzeichnisse wie
     \texttt{/data/data/\newline <package>} (Android) oder \texttt{Documents/} (iOS-App-Container),
-    auf die ausschlieÃŸlich die eigene App zugreifen kann.
+    auf die ausschließlich die eigene App zugreifen kann.
   \item \textbf{Geteilter / systemweiter Speicher (Shared Storage):} Bereiche wie
-    Galerien, Download-Ordner, Musikbibliotheken â€” zugÃ¤nglich fÃ¼r Betriebssystem,
+    Galerien, Download-Ordner, Musikbibliotheken â€” zugänglich für Betriebssystem,
     Datei-Manager und anderen autorisierten Apps.
 \end{enumerate}
 
@@ -240,7 +240,7 @@ hat zwei wesentliche AusprÃ¤gungen:
 \node[appbox, minimum width=4.5cm, minimum height=3.5cm] (app1) at (-4.5, 1.5) {};
 \node[font=\bfseries\small, color=secblue] at (-4.5, 2.8) {Kamera-App};
 \node[privbox, minimum width=3.5cm, minimum height=1cm] at (-4.5, 1.8) {App-Privatspeicher};
-\node[box, draw=secblue!60, fill=white, minimum width=3.5cm, minimum height=0.7cm, font=\scriptsize] at (-4.5, 0.8) {TemporÃ¤re Puffer};
+\node[box, draw=secblue!60, fill=white, minimum width=3.5cm, minimum height=0.7cm, font=\scriptsize] at (-4.5, 0.8) {Temporäre Puffer};
 
 % App-Sandbox 2 (Dokument)
 \node[appbox, minimum width=4.5cm, minimum height=3.5cm] (app2) at (-4.5, -2) {};
@@ -250,11 +250,11 @@ hat zwei wesentliche AusprÃ¤gungen:
 
 % Arrows: Kamera -> Shared
 \draw[arrow, color=okgreen!70!black, very thick] (-2.2, 1.7) -- (1.0, 1.7) 
-  node[midway, above, font=\scriptsize\bfseries, color=okgreen!70!black] {Zur VerfÃ¼gung stellen};
+  node[midway, above, font=\scriptsize\bfseries, color=okgreen!70!black] {Zur Verfügung stellen};
 
 % Arrows: Dokument -> Shared
 \draw[arrow, color=okgreen!70!black, very thick] (-2.2, -1.7) -- (1.0, -0.9)
-  node[midway, below, font=\scriptsize\bfseries, color=okgreen!70!black] {Zur VerfÃ¼gung stellen};
+  node[midway, below, font=\scriptsize\bfseries, color=okgreen!70!black] {Zur Verfügung stellen};
 
 % MediaStore
 \node[box, draw=accentgold!80!black, fill=accentgold!10, minimum width=3cm, minimum height=0.8cm, font=\scriptsize\bfseries] (ms) at (-0.5, -3.5) {MediaStore / FileProvider API};
@@ -267,8 +267,8 @@ hat zwei wesentliche AusprÃ¤gungen:
 
 \end{tikzpicture}
 \caption{Schematische Darstellung der Speicherarchitektur eines mobilen Betriebssystems.
-App-private Bereiche (rot) sind von auÃŸen nicht zugÃ¤nglich; der geteilte Speicher (grÃ¼n)
-ist systemweit verfÃ¼gbar. Das Zur-VerfÃ¼gung-Stellen (grÃ¼ne Pfeile) ist der zentrale Vorgang.}
+App-private Bereiche (rot) sind von außen nicht zugänglich; der geteilte Speicher (grün)
+ist systemweit verfügbar. Das Zur-Verfügung-Stellen (grüne Pfeile) ist der zentrale Vorgang.}
 \label{fig:speicherarchitektur}
 \end{figure}
 
@@ -279,7 +279,7 @@ Unter Android gliedert sich der Speicher seit API-Level 29 (Android 10) durch
 
 \begin{longtable}{@{}p{3.5cm} p{3.5cm} p{4.5cm} p{2cm}@{}}
 \toprule
-\textbf{Bereich} & \textbf{Pfad (typisch)} & \textbf{ZugÃ¤nglichkeit} & \textbf{App-spezifisch} \\
+\textbf{Bereich} & \textbf{Pfad (typisch)} & \textbf{Zugänglichkeit} & \textbf{App-spezifisch} \\
 \midrule
 \endhead
 Internal Storage & \texttt{/data/data/pkg/} & Nur eigene App & Ja \\
@@ -289,18 +289,18 @@ Shared Music & \texttt{/sdcard/Music/} & Alle Apps mit Berechtigung & Nein \\
 Shared Downloads & \texttt{/sdcard/Download/} & Alle Apps mit Berechtigung & Nein \\
 Shared Documents & \texttt{/sdcard/Documents/} & Alle Apps mit Berechtigung & Nein \\
 \bottomrule
-\caption{Speicherbereiche unter Android mit ZugÃ¤nglichkeit}
+\caption{Speicherbereiche unter Android mit Zugänglichkeit}
 \label{tab:android-speicher}
 \end{longtable}
 
 \subsection{iOS: Das App-Container-Modell}
 
-Unter iOS existiert ein Ã¤hnliches, wenngleich anders benanntes System. Jede App besitzt
-einen \emph{App-Container}, der folgende Unterverzeichnisse enthÃ¤lt: \texttt{Documents/}
+Unter iOS existiert ein ähnliches, wenngleich anders benanntes System. Jede App besitzt
+einen \emph{App-Container}, der folgende Unterverzeichnisse enthält: \texttt{Documents/}
 (app-privat, im iCloud-Backup), \texttt{Library/} (Konfigurationen), \texttt{tmp/}
-(temporÃ¤r). Systemweite ZugÃ¤nglichkeit wird Ã¼ber das \emph{Files-App-Framework} und
+(temporär). Systemweite Zugänglichkeit wird über das \emph{Files-App-Framework} und
 die \emph{Photos Library API} realisiert. Eine dateiproduzierende App muss auf iOS
-explizit Dateien Ã¼ber diese APIs dem System zur VerfÃ¼gung stellen.
+explizit Dateien über diese APIs dem System zur Verfügung stellen.
 
 \subsection{Die Rolle des MediaStore (Android)}
 
@@ -335,17 +335,17 @@ try (OutputStream out = getContentResolver().openOutputStream(imageUri)) {
 \begin{definition}[Dateiproduzierende Anwendung]
 \label{def:dpapp}
 Eine \emph{dateiproduzierende Anwendung} $A$ ist eine mobile Softwareanwendung, deren
-primÃ¤rer Zweck oder ein wesentlicher Teilzweck darin besteht, persistente digitale
+primärer Zweck oder ein wesentlicher Teilzweck darin besteht, persistente digitale
 Dateien zu erzeugen. Formal: $A$ ist dateiproduierend, wenn $\exists\, t: \text{Output}(A, t) \cap \mathcal{F} \neq \emptyset$,
-wobei $\mathcal{F}$ die Menge aller mÃ¶glichen Dateitypen bezeichnet und $t$ einen
-AusfÃ¼hrungszeitpunkt darstellt.
+wobei $\mathcal{F}$ die Menge aller möglichen Dateitypen bezeichnet und $t$ einen
+Ausführungszeitpunkt darstellt.
 \end{definition}
 
 \begin{definition}[App-privater Speicher]
 \label{def:privatspeicher}
 Der \emph{App-private Speicher} $S_{\text{priv}}(A)$ einer Anwendung $A$ ist der
-Speicherbereich, auf den ausschlieÃŸlich $A$ selbst (und privilegierte Systemprozesse)
-lesend und schreibend zugreifen kÃ¶nnen. Es gilt:
+Speicherbereich, auf den ausschließlich $A$ selbst (und privilegierte Systemprozesse)
+lesend und schreibend zugreifen können. Es gilt:
 \[
   \forall B \neq A: \text{Access}(B, S_{\text{priv}}(A)) = \bot
 \]
@@ -354,8 +354,8 @@ lesend und schreibend zugreifen kÃ¶nnen. Es gilt:
 \begin{definition}[Systemweiter Speicher]
 \label{def:systemspeicher}
 Der \emph{systemweite Speicher} $S_{\text{sys}}$ ist der Speicherbereich, auf den das
-Betriebssystem, autorisierte Drittanwendungen und der Benutzer Ã¼ber
-Systemwerkzeuge zugreifen kÃ¶nnen:
+Betriebssystem, autorisierte Drittanwendungen und der Benutzer über
+Systemwerkzeuge zugreifen können:
 \[
   \forall B \in \mathcal{A}_{\text{auth}}: \text{Access}(B, S_{\text{sys}}) = \top
 \]
@@ -366,7 +366,7 @@ wobei $\mathcal{A}_{\text{auth}}$ die Menge der berechtigten Anwendungen ist.
 \label{def:bereitstellung}
 Die \emph{Bereitstellungsoperation} $\Phi: \mathcal{F} \times S_{\text{priv}} \to S_{\text{sys}}$
 ist die Abbildung, die eine Datei $f \in \mathcal{F}$ aus dem App-privaten in den
-systemweiten Speicher Ã¼berfÃ¼hrt und den Systemmedienspeicher Ã¼ber die neue Datei
+systemweiten Speicher überführt und den Systemmedienspeicher über die neue Datei
 informiert:
 \[
   \Phi(f) := \big( \text{Move}(f, S_{\text{sys}}),\; \text{Notify}(\text{MediaStore}, f) \big)
@@ -378,13 +378,13 @@ informiert:
 \begin{prinzip}[Das Bereitstellungsprinzip]
 \label{prinzip:bereitstellung}
 Sei $A$ eine dateiproduzierende Anwendung und $f \in \mathcal{F}$ eine von $A$ erzeugte
-Datei. Dann gilt unter allen UmstÃ¤nden:
+Datei. Dann gilt unter allen Umständen:
 \[
   \text{Persist}(f) \Rightarrow \Phi(f)
 \]
-Das heiÃŸt: Jede Datei, die persistent gespeichert werden soll, \textbf{muss} durch die
-Bereitstellungsoperation $\Phi$ in den systemweiten Speicher Ã¼berfÃ¼hrt werden.
-Die dauerhafte Ablage in $S_{\text{priv}}(A)$ ist unzulÃ¤ssig.
+Das heißt: Jede Datei, die persistent gespeichert werden soll, \textbf{muss} durch die
+Bereitstellungsoperation $\Phi$ in den systemweiten Speicher überführt werden.
+Die dauerhafte Ablage in $S_{\text{priv}}(A)$ ist unzulässig.
 \end{prinzip}
 
 \begin{prinzip}[Verletzungsfall]
@@ -394,30 +394,30 @@ Eine Anwendung $A$ verletzt das Bereitstellungsprinzip, wenn:
   \exists\, f \in \mathcal{F}: \text{Persist}(f) \wedge \neg\Phi(f) \wedge f \in S_{\text{priv}}(A)
 \]
 Dies stellt einen schwerwiegenden Implementierungsfehler dar, der Benutzerrechte,
-DatensouverÃ¤nitÃ¤t und SystemintegritÃ¤t verletzt.
+Datensouveränität und Systemintegrität verletzt.
 \end{prinzip}
 
-\subsection{Herleitung aus dem BenutzersouverÃ¤nitÃ¤tsprinzip}
+\subsection{Herleitung aus dem Benutzersouveränitätsprinzip}
 
-Das Bereitstellungsprinzip folgt unmittelbar aus dem Ã¼bergeordneten
-\emph{BenutzersouverÃ¤nitÃ¤tsprinzip}, das besagt: Der Benutzer eines mobilen GerÃ¤ts
-ist der rechtmÃ¤ÃŸige EigentÃ¼mer aller auf seinem GerÃ¤t erzeugten Daten. Daraus folgt:
+Das Bereitstellungsprinzip folgt unmittelbar aus dem übergeordneten
+\emph{Benutzersouveränitätsprinzip}, das besagt: Der Benutzer eines mobilen Geräts
+ist der rechtmäßige Eigentümer aller auf seinem Gerät erzeugten Daten. Daraus folgt:
 
-\begin{satz}[DatensouverÃ¤nitÃ¤t impliziert Bereitstellungspflicht]
+\begin{satz}[Datensouveränität impliziert Bereitstellungspflicht]
 \label{satz:datensouveraenitaet}
-Sei $u$ der Benutzer eines mobilen GerÃ¤ts $D$ und $A$ eine dateiproduzierende
+Sei $u$ der Benutzer eines mobilen Geräts $D$ und $A$ eine dateiproduzierende
 Anwendung auf $D$. Dann gilt:
 \[
-  \text{SouverÃ¤n}(u, D) \Rightarrow \text{Zugriffsrecht}(u, f) \quad \forall\, f \in \text{Erzeugt}(A)
+  \text{Souverän}(u, D) \Rightarrow \text{Zugriffsrecht}(u, f) \quad \forall\, f \in \text{Erzeugt}(A)
 \]
-Da $\text{Zugriffsrecht}(u, f)$ nur dann erfÃ¼llt ist, wenn $f \in S_{\text{sys}}$, folgt
+Da $\text{Zugriffsrecht}(u, f)$ nur dann erfüllt ist, wenn $f \in S_{\text{sys}}$, folgt
 das Bereitstellungsprinzip (\cref{prinzip:bereitstellung}) als notwendige Bedingung.
 \end{satz}
 
 \begin{proof}
-Der Benutzer $u$ kann auf $S_{\text{priv}}(A)$ ohne spezielle (und Ã¼blicherweise nicht
+Der Benutzer $u$ kann auf $S_{\text{priv}}(A)$ ohne spezielle (und üblicherweise nicht
 vorhandene) Berechtigungen nicht zugreifen. Folglich ist $\text{Zugriffsrecht}(u, f) = \bot$
-fÃ¼r $f \in S_{\text{priv}}(A)$. Dies steht im Widerspruch zu $\text{SouverÃ¤n}(u, D)$.
+für $f \in S_{\text{priv}}(A)$. Dies steht im Widerspruch zu $\text{Souverän}(u, D)$.
 Daher muss $f \in S_{\text{sys}}$ gelten.
 \end{proof}
 
@@ -429,8 +429,8 @@ Daher muss $f \in S_{\text{sys}}$ gelten.
 \subsection{Die Kamera-Applikation}
 
 Die Kamera-Applikation ist das paradigmatische Beispiel einer dateiproduzierenden App.
-Ihre Ausgabe â€” fotografische Bilder und Videoaufnahmen â€” sind PrimÃ¤rdaten, die unmittelbar
-nach ihrer Erzeugung dem System zur VerfÃ¼gung gestellt werden mÃ¼ssen.
+Ihre Ausgabe â€” fotografische Bilder und Videoaufnahmen â€” sind Primärdaten, die unmittelbar
+nach ihrer Erzeugung dem System zur Verfügung gestellt werden müssen.
 
 \subsubsection{Korrekte Implementierung unter Android}
 
@@ -484,16 +484,16 @@ von anderen Anwendungen weiterverarbeitet werden sollen.
 
 \noindent\textbf{Beispiel â€” Dokumenten-App unter Android.}\par
 Eine Dokumenten-App, die eine PDF-Datei erzeugt, muss diese in
-\texttt{/sdcard/Documents/} (Ã¼ber \texttt{MediaStore.Files} oder Storage Access Framework)
+\texttt{/sdcard/Documents/} (über \texttt{MediaStore.Files} oder Storage Access Framework)
 ablegen und den entsprechenden MIME-Typ \texttt{application/pdf} registrieren.
-Die Datei ist dann Ã¼ber jeden installierten Dateimanager und jede PDF-Leseanwendung
-zugÃ¤nglich.
+Die Datei ist dann über jeden installierten Dateimanager und jede PDF-Leseanwendung
+zugänglich.
 
 \subsubsection{Storage Access Framework (SAF)}
 
 Unter Android bietet das \emph{Storage Access Framework} einen standardisierten
-Mechanismus, um Dateien systemweit zur VerfÃ¼gung zu stellen, ohne direkte
-Dateipfad-AbhÃ¤ngigkeiten zu erzeugen:
+Mechanismus, um Dateien systemweit zur Verfügung zu stellen, ohne direkte
+Dateipfad-Abhängigkeiten zu erzeugen:
 
 \begin{lstlisting}[style=android, caption={Dokument ueber SAF systemweit bereitstellen}]
 // Benutzer waehlt Speicherort (systemweiter Dialog)
@@ -522,7 +522,7 @@ protected void onActivityResult(int requestCode, int result, Intent data) {
 
 \subsubsection{Audio-Recorder}
 
-Aufnahme-Anwendungen erzeugen Audiodateien (WAV, MP3, AAC, FLAC). Diese mÃ¼ssen
+Aufnahme-Anwendungen erzeugen Audiodateien (WAV, MP3, AAC, FLAC). Diese müssen
 nach Abschluss der Aufnahme in der Musikbibliothek oder dem Download-Ordner des
 Systems registriert werden:
 
@@ -543,16 +543,16 @@ Uri audioUri = getContentResolver().insert(
 
 Anwendungen, die Audiodateien aus dem Internet herunterladen, stellen einen wichtigen
 Grenzfall dar. Der Download-Prozess erzeugt eine Datei, die dem Benutzer dauerhaft
-zur VerfÃ¼gung stehen soll:
+zur Verfügung stehen soll:
 
 \begin{enumerate}[label=\textbf{\arabic*:}]
-  \item \textbf{Download initiieren:} Die Datei wird temporÃ¤r in einen Arbeitsspeicher
+  \item \textbf{Download initiieren:} Die Datei wird temporär in einen Arbeitsspeicher
     geladen.
-  \item \textbf{ÃœberprÃ¼fung:} IntegritÃ¤t und Lizenzstatus der Datei werden geprÃ¼ft.
-  \item \textbf{Bereitstellung:} Die abgeschlossene Datei wird Ã¼ber \texttt{MediaStore}
+  \item \textbf{Überprüfung:} Integrität und Lizenzstatus der Datei werden geprüft.
+  \item \textbf{Bereitstellung:} Die abgeschlossene Datei wird über \texttt{MediaStore}
     oder \texttt{DownloadMana-\newline ger} in den systemweiten Speicher (\texttt{Downloads/}
-    oder \texttt{Music/}) Ã¼berfÃ¼hrt.
-  \item \textbf{Benachrichtigung:} Das Betriebssystem wird Ã¼ber die neue Datei
+    oder \texttt{Music/}) überführt.
+  \item \textbf{Benachrichtigung:} Das Betriebssystem wird über die neue Datei
     informiert.
 \end{enumerate}
 
@@ -575,13 +575,13 @@ long downloadId = dm.enqueue(request);
 \subsection{Videobearbeitungsanwendungen}
 
 Videobearbeitungs-Apps exportieren fertige Videos in den systemweiten
-Medienspeicher. Zwischendateien (Schnittdaten, Projekte, Render-Cache) kÃ¶nnen
+Medienspeicher. Zwischendateien (Schnittdaten, Projekte, Render-Cache) können
 im App-privaten Speicher verbleiben â€” das fertige Exportprodukt jedoch
 \emph{muss} systemweit bereitgestellt werden.
 
 \subsection{QR-Code- und Barcode-Generatoren}
 
-Anwendungen, die Bilder (QR-Codes, Barcodes) erzeugen, mÃ¼ssen diese auf Wunsch
+Anwendungen, die Bilder (QR-Codes, Barcodes) erzeugen, müssen diese auf Wunsch
 des Benutzers in die Galerie speichern â€” nicht nur im App-internen Cache.
 
 \subsection{Zusammenfassung der Anwendungsklassen}
@@ -605,12 +605,12 @@ des Benutzers in die Galerie speichern â€” nicht nur im App-internen Cache.
 \node[appclass] (vid)  at (4.5, -2.2) {Video-Editor};
 \node[appclass] (qr)   at (9, -2.2)  {Bild-Generator};
 
-\node[output] (dcim)  at (0, -1.2)   {DCIM/ Â· Galerie};
-\node[output] (docs)  at (4.5, -1.2) {Documents/ Â· PDF};
-\node[output] (music) at (9, -1.2)   {Music/ Â· Aufnahmen};
-\node[output] (down)  at (0, -3.4)   {Downloads/ Â· Music/};
-\node[output] (vidout)at (4.5, -3.4) {DCIM/ Â· Movies};
-\node[output] (pics)  at (9, -3.4)   {Pictures/ Â· Galerie};
+\node[output] (dcim)  at (0, -1.2)   {DCIM/  · Galerie};
+\node[output] (docs)  at (4.5, -1.2) {Documents/  · PDF};
+\node[output] (music) at (9, -1.2)   {Music/  · Aufnahmen};
+\node[output] (down)  at (0, -3.4)   {Downloads/  · Music/};
+\node[output] (vidout)at (4.5, -3.4) {DCIM/  · Movies};
+\node[output] (pics)  at (9, -3.4)   {Pictures/  · Galerie};
 
 \draw[arrow] (cam) -- (dcim);
 \draw[arrow] (doc) -- (docs);
@@ -624,7 +624,7 @@ des Benutzers in die Galerie speichern â€” nicht nur im App-internen Cache.
 \node[color=okgreen!70!black, font=\small\itshape] at (4.5, -4.1) {Systemweite Bereitstellungsziele};
 
 \end{tikzpicture}
-\caption{Ãœbersicht der Anwendungsklassen und ihrer jeweiligen Bereitstellungsziele im systemweiten Speicher.}
+\caption{Übersicht der Anwendungsklassen und ihrer jeweiligen Bereitstellungsziele im systemweiten Speicher.}
 \label{fig:anwendungsklassen}
 \end{figure}
 
@@ -633,38 +633,38 @@ des Benutzers in die Galerie speichern â€” nicht nur im App-internen Cache.
 \label{sec:konsequenzen}
 %============================================================
 
-\subsection{Konsequenzen fÃ¼r den Benutzer}
+\subsection{Konsequenzen für den Benutzer}
 
-\subsubsection{DatensouverÃ¤nitÃ¤t und Kontrolle}
+\subsubsection{Datensouveränität und Kontrolle}
 
-Das Bereitstellungsprinzip ist die technische Umsetzung von DatensouverÃ¤nitÃ¤t.
-Wenn eine App Dateien nur im App-privaten Speicher behÃ¤lt, verliert der Benutzer
-die effektive Kontrolle Ã¼ber seine eigenen Daten. Dies hat mehrere unmittelbare
+Das Bereitstellungsprinzip ist die technische Umsetzung von Datensouveränität.
+Wenn eine App Dateien nur im App-privaten Speicher behält, verliert der Benutzer
+die effektive Kontrolle über seine eigenen Daten. Dies hat mehrere unmittelbare
 Folgen:
 
 \noindent\textbf{Benutzerauswirkungen bei Verletzung des Bereitstellungsprinzips:}
 \begin{itemize}[leftmargin=*]
   \item \textbf{Datenverlust bei Deinstallation:} App-private Daten werden bei
-    Deinstallation unwiederbringlich gelÃ¶scht.
-  \item \textbf{UnmÃ¶glichkeit des App-Wechsels:} Der Benutzer ist an die
+    Deinstallation unwiederbringlich gelöscht.
+  \item \textbf{Unmöglichkeit des App-Wechsels:} Der Benutzer ist an die
     produzierende App gebunden, da Konkurrenzprodukte nicht auf die Daten
-    zugreifen kÃ¶nnen.
+    zugreifen können.
   \item \textbf{Keine Backup-Integration:} Systemseitige Backups erfassen den
-    App-privaten Speicher nur eingeschrÃ¤nkt oder gar nicht.
+    App-privaten Speicher nur eingeschränkt oder gar nicht.
   \item \textbf{Keine Mediensuche:} Dateien sind in der systemweiten Galerie,
     im Dateimanager und in Suchfunktionen nicht auffindbar.
 \end{itemize}
 
 \begin{konsequenz}[Benutzerautonomie]
-Das Bereitstellungsprinzip ist eine notwendige Bedingung fÃ¼r Benutzerautonomie
-auf mobilen GerÃ¤ten. Seine Verletzung erzeugt eine faktische AbhÃ¤ngigkeit
+Das Bereitstellungsprinzip ist eine notwendige Bedingung für Benutzerautonomie
+auf mobilen Geräten. Seine Verletzung erzeugt eine faktische Abhängigkeit
 (\emph{Vendor Lock-in}) auf Dateiebene.
 \end{konsequenz}
 
 \subsubsection{Datenpersistenz und Langzeitspeicherung}
 
-Dateien im systemweiten Speicher Ã¼berleben die deinstallation der erzeugenden App.
-Dies ist fÃ¼r den Benutzer grundlegend: Ein Foto bleibt auch dann erhalten, wenn
+Dateien im systemweiten Speicher überleben die deinstallation der erzeugenden App.
+Dies ist für den Benutzer grundlegend: Ein Foto bleibt auch dann erhalten, wenn
 die Kamera-App deinstalliert oder durch eine andere ersetzt wird.
 
 \begin{figure}[ht]
@@ -672,7 +672,7 @@ die Kamera-App deinstalliert oder durch eine andere ersetzt wird.
 \begin{tikzpicture}[scale=0.85]
   \begin{axis}[
     xlabel={Zeit (Monate nach Aufnahme)},
-    ylabel={DatenverfÃ¼gbarkeit (\%)},
+    ylabel={Datenverfügbarkeit (\%)},
     xmin=0, xmax=24, ymin=0, ymax=105,
     legend pos=south west,
     grid=major, grid style={gray!25},
@@ -685,7 +685,7 @@ die Kamera-App deinstalliert oder durch eine andere ersetzt wird.
     coordinates {(0,100)(6,100)(12,100)(18,100)(24,100)};
   \addlegendentry{Systemweit bereitgestellt}
 
-  % App-privat: fÃ¤llt bei Deinstallation auf 0
+  % App-privat: fällt bei Deinstallation auf 0
   \addplot[color=alertred, very thick, mark=none, dashed]
     coordinates {(0,100)(7.9,100)(8,0)(24,0)};
   \addlegendentry{App-privat gespeichert (App bei Monat 8 deinstalliert)}
@@ -696,25 +696,25 @@ die Kamera-App deinstalliert oder durch eine andere ersetzt wird.
     {Deinstallation der App\\â†’ Datenverlust};
   \end{axis}
 \end{tikzpicture}
-\caption{Datenpersistenz Ã¼ber die Zeit: Systemweit bereitgestellte Dateien sind dauerhaft
-verfÃ¼gbar; App-privat gespeicherte Dateien gehen bei Deinstallation der App verloren.}
+\caption{Datenpersistenz über die Zeit: Systemweit bereitgestellte Dateien sind dauerhaft
+verfügbar; App-privat gespeicherte Dateien gehen bei Deinstallation der App verloren.}
 \label{fig:persistenz}
 \end{figure}
 
-\subsection{Konsequenzen fÃ¼r die Softwareentwicklung}
+\subsection{Konsequenzen für die Softwareentwicklung}
 
 \subsubsection{API-Wahl und Architekturentscheidungen}
 
-Entwickler mÃ¼ssen von Beginn an die korrekte API fÃ¼r Dateispeicherung wÃ¤hlen.
+Entwickler müssen von Beginn an die korrekte API für Dateispeicherung wählen.
 Die Wahl des falschen APIs (z.\,B. \texttt{getFilesDir()} statt \texttt{MediaStore}
-fÃ¼r persistente Mediendateien) ist ein fundamentaler Architekturmangel, der
-nachtrÃ¤glich schwer zu korrigieren ist.
+für persistente Mediendateien) ist ein fundamentaler Architekturmangel, der
+nachträglich schwer zu korrigieren ist.
 
-\begin{satz}[API-Ã„quivalenz]
+\begin{satz}[API-Äquivalenz]
 \label{satz:api}
-FÃ¼r jede Datei $f$ vom Typ $\tau \in \{\text{Bild, Video, Audio, Dokument}\}$
+Für jede Datei $f$ vom Typ $\tau \in \{\text{Bild, Video, Audio, Dokument}\}$
 existiert eine eindeutige Ziel-API $\text{API}(\tau)$ im mobilen Betriebssystem,
-Ã¼ber die $f$ korrekt dem System zur VerfÃ¼gung zu stellen ist:
+über die $f$ korrekt dem System zur Verfügung zu stellen ist:
 \[
   \text{API}(\tau) = \begin{cases}
     \text{MediaStore.Images} & \text{falls } \tau = \text{Bild} \\
@@ -737,13 +737,13 @@ Audio & \texttt{MediaStore.Audio} & \texttt{MPMediaLibrary} & \texttt{Music/} \\
 Dokument & \texttt{MediaStore.Files} / SAF & UIDocumentPicker & \texttt{Documents/} \\
 Download & \texttt{DownloadManager} & URLSession + FileManager & \texttt{Downloads/} \\
 \bottomrule
-\caption{Korrekte APIs fÃ¼r verschiedene Dateitypen auf Android und iOS}
+\caption{Korrekte APIs für verschiedene Dateitypen auf Android und iOS}
 \label{tab:apis}
 \end{longtable}
 
 \subsubsection{Berechtigungssystem und Datenschutz}
 
-Das korrekte Zur-VerfÃ¼gung-Stellen erfordert auf modernen Android-Versionen
+Das korrekte Zur-Verfügung-Stellen erfordert auf modernen Android-Versionen
 (API 33+) granulare Berechtigungen:
 
 \begin{lstlisting}[style=xml, caption={AndroidManifest.xml: Korrekte Berechtigungen fuer Medienzugriff}]
@@ -771,10 +771,10 @@ Das korrekte Zur-VerfÃ¼gung-Stellen erfordert auf modernen Android-Versionen
 </manifest>
 \end{lstlisting}
 
-\subsubsection{FileProvider fÃ¼r App-zu-App-Kommunikation}
+\subsubsection{FileProvider für App-zu-App-Kommunikation}
 
-Wenn eine dateiproduzierende App eine Datei direkt an eine andere App Ã¼bergeben
-mÃ¶chte (z.\,B. \enquote{Teilen} einer gerade erstellten Datei), ohne sie zunÃ¤chst
+Wenn eine dateiproduzierende App eine Datei direkt an eine andere App übergeben
+möchte (z.\,B. \enquote{Teilen} einer gerade erstellten Datei), ohne sie zunächst
 in den systemweiten Speicher zu schreiben, muss der \texttt{FileProvider}
 verwendet werden:
 
@@ -796,18 +796,18 @@ startActivity(Intent.createChooser(shareIntent, "Teilen via"));
 \end{lstlisting}
 
 \begin{bemerkung}
-FileProvider ist fÃ¼r \emph{temporÃ¤re} Ãœbergaben geeignet; fÃ¼r dauerhafte
-systemweite VerfÃ¼gbarkeit muss die Datei dennoch Ã¼ber \texttt{MediaStore}
+FileProvider ist für \emph{temporäre} Übergaben geeignet; für dauerhafte
+systemweite Verfügbarkeit muss die Datei dennoch über \texttt{MediaStore}
 oder SAF bereitgestellt werden.
 \end{bemerkung}
 
-\subsection{Konsequenzen fÃ¼r die SystemintegritÃ¤t}
+\subsection{Konsequenzen für die Systemintegrität}
 
 \subsubsection{Medienscan und Indexierung}
 
-Das Betriebssystem fÃ¼hrt regelmÃ¤ÃŸige Media-Scans durch, um den \texttt{MediaStore}
+Das Betriebssystem führt regelmäßige Media-Scans durch, um den \texttt{MediaStore}
 aktuell zu halten. Wenn eine App Dateien ohne \texttt{MediaStore}-Eintrag in
-(theoretisch zugÃ¤ngliche) Bereiche schreibt, kann es zu VerzÃ¶gerungen bei der
+(theoretisch zugängliche) Bereiche schreibt, kann es zu Verzögerungen bei der
 Sichtbarkeit kommen. Die korrekte Implementierung nutzt \texttt{MediaStore.insert()}
 oder \texttt{MediaScannerConnection.scanFile()} unmittelbar nach dem Schreibvorgang.
 
@@ -829,71 +829,71 @@ MediaScannerConnection.scanFile(
 Das Betriebssystem kann unter Speicherdruck App-private Caches bereinigen,
 ohne den Benutzer zu informieren. Dateien im App-privaten \texttt{cacheDir()} sind
 \emph{nicht persistent}. Dieser Mechanismus illustriert, warum dauerhafte Dateien
-\emph{niemals} im App-privaten Speicher verbleiben dÃ¼rfen.
+\emph{niemals} im App-privaten Speicher verbleiben dürfen.
 
-\begin{konsequenz}[SystemkohÃ¤renz]
-Wird das Bereitstellungsprinzip flÃ¤chendeckend eingehalten, entsteht ein
-kohÃ¤rentes Dateisystem, in dem alle datenproduzierenden AktivitÃ¤ten des Benutzers
-an einem zentralen, systemweit zugÃ¤nglichen Ort reflektiert werden. Dies ist
-eine Grundvoraussetzung fÃ¼r ein funktionstÃ¼chtiges und benutzerfreundliches
+\begin{konsequenz}[Systemkohärenz]
+Wird das Bereitstellungsprinzip flächendeckend eingehalten, entsteht ein
+kohärentes Dateisystem, in dem alle datenproduzierenden Aktivitäten des Benutzers
+an einem zentralen, systemweit zugänglichen Ort reflektiert werden. Dies ist
+eine Grundvoraussetzung für ein funktionstüchtiges und benutzerfreundliches
 Betriebssystem.
 \end{konsequenz}
 
-\subsection{Konsequenzen fÃ¼r Sicherheit und Datenschutz}
+\subsection{Konsequenzen für Sicherheit und Datenschutz}
 
 \subsubsection{Das Paradox der Sandbox}
 
 Ironischerweise kann die Sandboxing-Architektur zu Datenschutzverletzungen
-fÃ¼hren, wenn sie missbraucht wird: Eine App, die Dateien \emph{nur} im
-App-privaten Speicher behÃ¤lt, entzieht diese Dateien der Kontrolle des
+führen, wenn sie missbraucht wird: Eine App, die Dateien \emph{nur} im
+App-privaten Speicher behält, entzieht diese Dateien der Kontrolle des
 Benutzers, obwohl das Sandboxing eigentlich dessen Schutz dienen soll.
 
 \begin{satz}[Sandbox-Paradox]
-Die Sandboxing-Architektur mobiler Betriebssysteme, konzipiert als SchutzmaÃŸnahme
-fÃ¼r den Benutzer, kann durch Nicht-Bereitstellung produzierter Dateien zu einer
-EinschrÃ¤nkung der Benutzerrechte pervertiert werden. Es gilt:
+Die Sandboxing-Architektur mobiler Betriebssysteme, konzipiert als Schutzmaßnahme
+für den Benutzer, kann durch Nicht-Bereitstellung produzierter Dateien zu einer
+Einschränkung der Benutzerrechte pervertiert werden. Es gilt:
 \[
   \text{Sandbox}(A) + \neg\Phi(f) \Rightarrow \text{EffektiverDateinentzug}(u, f)
 \]
 \end{satz}
 
-\subsubsection{DSGVO und DatensouverÃ¤nitÃ¤t}
+\subsubsection{DSGVO und Datensouveränität}
 
-Im europÃ¤ischen Rechtsraum ergibt sich eine datenschutzrechtliche Dimension:
+Im europäischen Rechtsraum ergibt sich eine datenschutzrechtliche Dimension:
 Die Daten\-schutz-Grundverordnung (DSGVO) garantiert Betroffenen unter anderem
-das Recht auf Datenzugang (Art. 15 DSGVO) und DatenÃ¼bertragbarkeit (Art. 20 DSGVO).
-Eine App, die vom Benutzer produzierte Dateien im App-privaten Speicher einschlieÃŸt,
+das Recht auf Datenzugang (Art. 15 DSGVO) und Datenübertragbarkeit (Art. 20 DSGVO).
+Eine App, die vom Benutzer produzierte Dateien im App-privaten Speicher einschließt,
 erschwert oder verhindert die Wahrnehmung dieser Rechte.
 
-\noindent\textbf{Rechtliche Konsequenz.} Apps, die nutzergenerierte Dateien im App-privaten Speicher einschlieÃŸen und
+\noindent\textbf{Rechtliche Konsequenz.} Apps, die nutzergenerierte Dateien im App-privaten Speicher einschließen und
 dem Benutzer den Zugang zu seinen eigenen Daten systematisch verwehren,
-kÃ¶nnen gegen Art. 15 und Art. 20 DSGVO verstoÃŸen, wenn diese Daten als
+können gegen Art. 15 und Art. 20 DSGVO verstoßen, wenn diese Daten als
 personenbezogene Daten zu qualifizieren sind.
 
 \subsubsection{Sicherheit: Zugriffssteuerung durch das Betriebssystem}
 
-Der systemweite Speicher ist \emph{nicht} unkontrolliert zugÃ¤nglich. Unter
-Android mÃ¼ssen Apps seit API 23 Laufzeitberechtigungen fÃ¼r den Medienzugriff
+Der systemweite Speicher ist \emph{nicht} unkontrolliert zugänglich. Unter
+Android müssen Apps seit API 23 Laufzeitberechtigungen für den Medienzugriff
 einholen; unter iOS gilt ein vergleichbares Modell. Das Betriebssystem stellt
-sicher, dass nur berechtigte Apps auf die Dateien zugreifen kÃ¶nnen â€” ein
-Sicherheitsgewinn gegenÃ¼ber unkontrollierter App-privater Hortung.
+sicher, dass nur berechtigte Apps auf die Dateien zugreifen können â€” ein
+Sicherheitsgewinn gegenüber unkontrollierter App-privater Hortung.
 
-\subsection{Konsequenzen fÃ¼r InteroperabilitÃ¤t und Ã–kosystem}
+\subsection{Konsequenzen für Interoperabilität und Ökosystem}
 
-\subsubsection{App-Ã¼bergreifende Workflows}
+\subsubsection{App-übergreifende Workflows}
 
-Wenn dateiproduzierende Apps das Bereitstellungsprinzip einhalten, ermÃ¶glichen
-sie komplexe, app-Ã¼bergreifende Workflows. Beispiele:
+Wenn dateiproduzierende Apps das Bereitstellungsprinzip einhalten, ermöglichen
+sie komplexe, app-übergreifende Workflows. Beispiele:
 
 \begin{enumerate}[label=\textbf{\arabic*.}]
   \item \textbf{Foto-Workflow:} Kamera-App erzeugt Bild â†’ Galerie zeigt es an â†’
-    Bearbeitungs-App Ã¶ffnet es â†’ Teilen-Dialog Ã¼bermittelt es â†’ Cloud-Sync
+    Bearbeitungs-App öffnet es â†’ Teilen-Dialog übermittelt es â†’ Cloud-Sync
     sichert es. Jeder dieser Schritte funktioniert nur, wenn das Bild systemweit
-    verfÃ¼gbar ist.
+    verfügbar ist.
   \item \textbf{Dokument-Workflow:} Dokumenten-App erzeugt PDF â†’ E-Mail-App
-    hÃ¤ngt es an â†’ Drucker-App druckt es â†’ Cloud-Speicher synchronisiert es.
+    hängt es an â†’ Drucker-App druckt es â†’ Cloud-Speicher synchronisiert es.
   \item \textbf{Audio-Workflow:} Recorder-App nimmt Sprache auf â†’ Transkriptions-App
-    verarbeitet die Audiodatei â†’ Texteditor Ã¶ffnet das Transkript.
+    verarbeitet die Audiodatei â†’ Texteditor öffnet das Transkript.
 \end{enumerate}
 
 \subsubsection{Cloud-Integration und Synchronisierung}
@@ -903,24 +903,24 @@ dem systemweiten Dateisystem. Nur bereitgestellte Dateien werden automatisch
 synchronisiert und gesichert.
 
 \begin{konsequenz}[Cloud-Sync]
-Das Bereitstellungsprinzip ist eine notwendige Bedingung fÃ¼r die automatische
-Cloud-Synchronisierung und damit fÃ¼r die Datensicherheit des Benutzers.
+Das Bereitstellungsprinzip ist eine notwendige Bedingung für die automatische
+Cloud-Synchronisierung und damit für die Datensicherheit des Benutzers.
 \end{konsequenz}
 
 \subsubsection{Barrierefreiheit und Assistivtechnologien}
 
 Assistivtechnologien (Screenreader, Dokumenten-Vorlesedienste, Braille-Ausgabe)
-operieren auf systemweit zugÃ¤nglichen Dateien. Eine App, die Dateien einschlieÃŸt,
-schlieÃŸt damit auch Benutzer mit Behinderungen von ihren eigenen Inhalten aus â€”
-ein klarer VerstoÃŸ gegen BarrierefreiheitsgrundsÃ¤tze.
+operieren auf systemweit zugänglichen Dateien. Eine App, die Dateien einschließt,
+schließt damit auch Benutzer mit Behinderungen von ihren eigenen Inhalten aus â€”
+ein klarer Verstoß gegen Barrierefreiheitsgrundsätze.
 
-\subsection{Konsequenzen fÃ¼r Backup und GerÃ¤tewechsel}
+\subsection{Konsequenzen für Backup und Gerätewechsel}
 
 \subsubsection{Systemseitiges Backup}
 
 Sowohl Android (Auto Backup) als auch iOS (iCloud Backup) sichern den systemweiten
-Speicher vollstÃ¤ndig. App-private Daten werden nur bei expliziter Konfiguration
-durch den App-Entwickler gesichert â€” und diese Konfiguration ist fehleranfÃ¤llig
+Speicher vollständig. App-private Daten werden nur bei expliziter Konfiguration
+durch den App-Entwickler gesichert â€” und diese Konfiguration ist fehleranfällig
 und nicht standardisiert.
 
 \begin{figure}[ht]
@@ -938,7 +938,7 @@ und nicht standardisiert.
 ]
 
 \node[device] (d1) at (0, 0) {};
-\node[font=\scriptsize\bfseries, color=primblue] at (0, 1.5) {GerÃ¤t A};
+\node[font=\scriptsize\bfseries, color=primblue] at (0, 1.5) {Gerät A};
 \node[file] at (0, 0.6) {Foto.jpg};
 \node[file] at (0, -0.0) {Dok.pdf};
 \node[file] at (0, -0.6) {Audio.m4a};
@@ -947,7 +947,7 @@ und nicht standardisiert.
 \node[font=\small\bfseries, color=secblue] at (4.5, 0) {Cloud Backup};
 
 \node[device] (d2) at (9, 0) {};
-\node[font=\scriptsize\bfseries, color=primblue] at (9, 1.5) {GerÃ¤t B (neu)};
+\node[font=\scriptsize\bfseries, color=primblue] at (9, 1.5) {Gerät B (neu)};
 \node[file] at (9, 0.6) {Foto.jpg};
 \node[file] at (9, -0.0) {Dok.pdf};
 \node[file] at (9, -0.6) {Audio.m4a};
@@ -959,7 +959,7 @@ und nicht standardisiert.
 
 % Verletzungsfall darunter
 \node[device] (d3) at (0, -4) {};
-\node[font=\scriptsize\bfseries, color=primblue] at (0, -2.5) {GerÃ¤t A};
+\node[font=\scriptsize\bfseries, color=primblue] at (0, -2.5) {Gerät A};
 \node[draw=alertred, fill=alertred!8, rounded corners=3pt,
       minimum width=2cm, minimum height=0.5cm, font=\scriptsize] at (0, -3.4) {Foto.jpg};
 \node[font=\scriptsize, color=alertred] at (0, -4.1) {(App-privat)};
@@ -969,7 +969,7 @@ und nicht standardisiert.
 \node[font=\small\bfseries, color=gray] at (4.5, -4) {Cloud Backup};
 
 \node[device] (d4) at (9, -4) {};
-\node[font=\scriptsize\bfseries, color=primblue] at (9, -2.5) {GerÃ¤t B (neu)};
+\node[font=\scriptsize\bfseries, color=primblue] at (9, -2.5) {Gerät B (neu)};
 \node[font=\scriptsize, color=alertred] at (9, -4) {Datei nicht vorhanden!};
 \node[font=\large, color=alertred] at (9, -4.6) {\textbf{X}};
 
@@ -982,36 +982,36 @@ und nicht standardisiert.
 \node[font=\small\itshape, color=alertred] at (4.5, -2.7) {Verletzungsfall};
 
 \end{tikzpicture}
-\caption{Backup und GerÃ¤tewechsel: Korrekt bereitgestellte Dateien werden gesichert und
-auf neuen GerÃ¤ten wiederhergestellt; App-privat gespeicherte Dateien gehen verloren.}
+\caption{Backup und Gerätewechsel: Korrekt bereitgestellte Dateien werden gesichert und
+auf neuen Geräten wiederhergestellt; App-privat gespeicherte Dateien gehen verloren.}
 \label{fig:backup}
 \end{figure}
 
-\subsubsection{GerÃ¤tewechsel und Migration}
+\subsubsection{Gerätewechsel und Migration}
 
-Bei einem GerÃ¤tewechsel â€” oder beim Wechsel zwischen Android und iOS Ã¼ber
-Migrationswerkzeuge â€” sind ausschlieÃŸlich systemweit verfÃ¼gbare Dateien Ã¼bertragbar.
-App-private Dateien kÃ¶nnen in der Regel nicht migriert werden, auch nicht durch
+Bei einem Gerätewechsel â€” oder beim Wechsel zwischen Android und iOS über
+Migrationswerkzeuge â€” sind ausschließlich systemweit verfügbare Dateien übertragbar.
+App-private Dateien können in der Regel nicht migriert werden, auch nicht durch
 Hersteller-Migrationswerkzeuge wie \enquote{Move to iOS} oder \enquote{Google
 Backup \& Restore}.
 
-\subsection{Konsequenzen fÃ¼r das App-Ã–kosystem und den Wettbewerb}
+\subsection{Konsequenzen für das App-Ökosystem und den Wettbewerb}
 
 \subsubsection{Gegen Vendor Lock-in auf Dateiebene}
 
-Apps, die das Bereitstellungsprinzip verletzen, erzeugen einen unzulÃ¤ssigen
+Apps, die das Bereitstellungsprinzip verletzen, erzeugen einen unzulässigen
 \emph{Vendor Lock-in}: Der Benutzer ist an die App gebunden, weil seine Daten
 in ihr \enquote{gefangen} sind. Dies ist nicht nur ein technisches Problem,
 sondern ein wettbewerbspolitisches:
 
 \begin{konsequenz}[Wettbewerbsverzerrung]
-Eine App, die Benutzerdaten im App-privaten Speicher einschlieÃŸt, schafft
-kÃ¼nstliche Wechselbarrieren und verstÃ¶ÃŸt gegen den Grundsatz des fairen
-Wettbewerbs im App-Ã–kosystem. BehÃ¶rden im Bereich des Digitalmarktrechts
+Eine App, die Benutzerdaten im App-privaten Speicher einschließt, schafft
+künstliche Wechselbarrieren und verstößt gegen den Grundsatz des fairen
+Wettbewerbs im App-Ökosystem. Behörden im Bereich des Digitalmarktrechts
 (Digital Markets Act, EU) adressieren solche Praktiken zunehmend.
 \end{konsequenz}
 
-\subsubsection{KompatibilitÃ¤t mit App-Store-Richtlinien}
+\subsubsection{Kompatibilität mit App-Store-Richtlinien}
 
 Sowohl der Google Play Store als auch der Apple App Store haben in ihren
 Entwicklerrichtlinien Anforderungen formuliert, die implizit oder explizit
@@ -1021,22 +1021,22 @@ das Bereitstellungsprinzip fordern:
   \item Google Play: \emph{User Data Policy} verlangt, dass Apps mit nutzererzeugten
     Daten verantwortungsvoll umgehen.
   \item Apple App Store: \emph{App Store Review Guidelines} (Abschnitt 5.1)
-    verlangen, dass Apps den Datenzugang fÃ¼r Benutzer sicherstellen.
+    verlangen, dass Apps den Datenzugang für Benutzer sicherstellen.
 \end{itemize}
 
-\subsection{Konsequenzen fÃ¼r Fehlerdiagnose und Debugging}
+\subsection{Konsequenzen für Fehlerdiagnose und Debugging}
 
 \subsubsection{Auffindbarkeit von Fehlern}
 
-Wenn Dateien im App-privaten Speicher gespeichert werden, sind sie fÃ¼r
+Wenn Dateien im App-privaten Speicher gespeichert werden, sind sie für
 Debugging-Werkzeuge (Android Debug Bridge, Xcode File Inspector) nur mit
-erhÃ¶hten Berechtigungen (root / dev-Modus) zugÃ¤nglich. Dies erschwert
+erhöhten Berechtigungen (root / dev-Modus) zugänglich. Dies erschwert
 die Fehlerdiagnose bei Produktionsproblemen.
 
 \subsubsection{Testbarkeit}
 
 Automationstests, die das Vorhandensein einer Datei nach einer App-Aktion
-prÃ¼fen, mÃ¼ssen auf den systemweiten Speicher zugreifen kÃ¶nnen. Bei
+prüfen, müssen auf den systemweiten Speicher zugreifen können. Bei
 korrekter Implementierung sind solche Tests einfach zu schreiben; bei
 App-privater Speicherung erfordern sie privilegierten Zugang.
 
@@ -1061,13 +1061,13 @@ public void testKamerafoto_wirdInGalerieBereitgestellt() {
 }
 \end{lstlisting}
 
-\subsection{Konsequenzen fÃ¼r spezielle Randgebiete}
+\subsection{Konsequenzen für spezielle Randgebiete}
 
-\subsubsection{IoT und verbundene GerÃ¤te}
+\subsubsection{IoT und verbundene Geräte}
 
-Wenn ein Smartphone Ã¼ber Bluetooth oder WiFi mit IoT-GerÃ¤ten (Drohnen, Kameras,
-Smarthome-Sensoren) verbunden ist und Daten von diesen GerÃ¤ten empfÃ¤ngt, gelten
-dieselben Bereitstellungspflichten. Eine Drohnen-App, die Luftaufnahmen herunterlÃ¤dt,
+Wenn ein Smartphone über Bluetooth oder WiFi mit IoT-Geräten (Drohnen, Kameras,
+Smarthome-Sensoren) verbunden ist und Daten von diesen Geräten empfängt, gelten
+dieselben Bereitstellungspflichten. Eine Drohnen-App, die Luftaufnahmen herunterlädt,
 muss diese in der Galerie bereitstellen.
 
 \subsubsection{Medizinische Anwendungen}
@@ -1075,16 +1075,16 @@ muss diese in der Galerie bereitstellen.
 Medizinische Apps (EKG-Aufzeichnungen, Spirometrie-Daten, medizinische Bilder)
 stellen einen sensiblen Randbereich dar. Hier kollidieren:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Bereitstellungsprinzip:} Daten sollen dem Benutzer zugÃ¤nglich sein.
+  \item \textbf{Bereitstellungsprinzip:} Daten sollen dem Benutzer zugänglich sein.
   \item \textbf{Datenschutz:} Medizinische Daten sind hochsensibel (Art. 9 DSGVO).
-  \item \textbf{Medizinproduktrecht:} Anforderungen an Datensicherheit und IntegritÃ¤t.
+  \item \textbf{Medizinproduktrecht:} Anforderungen an Datensicherheit und Integrität.
 \end{itemize}
 
-Die LÃ¶sung liegt nicht im EinschlieÃŸen der Daten im App-privaten Speicher, sondern
-in verschlÃ¼sselter Speicherung im systemweiten Bereich mit benutzergesteuertem
+Die Lösung liegt nicht im Einschließen der Daten im App-privaten Speicher, sondern
+in verschlüsselter Speicherung im systemweiten Bereich mit benutzergesteuertem
 Zugriffsmanagement.
 
-\subsubsection{UnternehmenslÃ¶sungen und MDM}
+\subsubsection{Unternehmenslösungen und MDM}
 
 Im Enterprise-Kontext mit Mobile Device Management (MDM) gelten spezifische
 Richtlinien. Hier kann eine kontrollierte Bereitstellung in dedizierte,
@@ -1094,29 +1094,29 @@ realisieren.
 
 \subsubsection{Offline-First-Anwendungen}
 
-Apps, die primÃ¤r offline arbeiten und Daten lokal zwischenspeichern (z.\,B. fÃ¼r
-spÃ¤tere Synchronisierung), dÃ¼rfen Arbeitsdaten temporÃ¤r im App-privaten Cache
+Apps, die primär offline arbeiten und Daten lokal zwischenspeichern (z.\,B. für
+spätere Synchronisierung), dürfen Arbeitsdaten temporär im App-privaten Cache
 halten. Sobald jedoch eine Datei als \enquote{fertiggestellt} gilt, greift das
-Bereitstellungsprinzip uneingeschrÃ¤nkt.
+Bereitstellungsprinzip uneingeschränkt.
 
 \subsubsection{Progressive Web Apps (PWA)}
 
-PWAs, die als mobile Apps installiert werden, unterliegen einem eingeschrÃ¤nkten
-Dateisystemzugang. Dennoch gilt das Bereitstellungsprinzip: Ãœber die
-\emph{File System Access API} (wo verfÃ¼gbar) oder Download-Mechanismen
-mÃ¼ssen produzierte Dateien dem Benutzer systemweit zugÃ¤nglich gemacht werden.
+PWAs, die als mobile Apps installiert werden, unterliegen einem eingeschränkten
+Dateisystemzugang. Dennoch gilt das Bereitstellungsprinzip: Über die
+\emph{File System Access API} (wo verfügbar) oder Download-Mechanismen
+müssen produzierte Dateien dem Benutzer systemweit zugänglich gemacht werden.
 
 %============================================================
 \section{Systemisches Modell der Dateibereitstellung}
 \label{sec:modell}
 %============================================================
 
-\subsection{Das vollstÃ¤ndige Bereitstellungsmodell}
+\subsection{Das vollständige Bereitstellungsmodell}
 
-Wir fassen alle Bestandteile zu einem vollstÃ¤ndigen formalen Modell zusammen:
+Wir fassen alle Bestandteile zu einem vollständigen formalen Modell zusammen:
 
-\begin{definition}[Mobiles Dateisystem-Ã–kosystem]
-Das \emph{mobile Dateisystem-Ã–kosystem} $\mathcal{E}$ ist ein Tupel:
+\begin{definition}[Mobiles Dateisystem-Ökosystem]
+Das \emph{mobile Dateisystem-Ökosystem} $\mathcal{E}$ ist ein Tupel:
 \[
   \mathcal{E} = \big(\mathcal{A}, \mathcal{F}, S_{\text{priv}}, S_{\text{sys}}, \Phi, \mathcal{U}, \mathcal{P}\big)
 \]
@@ -1132,21 +1132,21 @@ wobei:
 \end{align*}
 \end{definition}
 
-\begin{satz}[Konsistenz des Ã–kosystems]
-Das Ã–kosystem $\mathcal{E}$ ist \emph{benutzerrechtskonform} genau dann, wenn:
+\begin{satz}[Konsistenz des Ökosystems]
+Das Ökosystem $\mathcal{E}$ ist \emph{benutzerrechtskonform} genau dann, wenn:
 \[
   \forall A \in \mathcal{A}_{\text{prod}}, \forall f \in \text{Erzeugt}(A), \forall u \in \mathcal{U}:
   \quad f \in S_{\text{sys}} \wedge \mathcal{P}(u, f) = \top
 \]
 wobei $\mathcal{A}_{\text{prod}} \subseteq \mathcal{A}$ die Menge der dateiproduzierenden
-Anwendungen ist. Diese Bedingung ist Ã¤quivalent zum vollstÃ¤ndigen Einhalten des
+Anwendungen ist. Diese Bedingung ist äquivalent zum vollständigen Einhalten des
 Bereitstellungsprinzips durch alle Anwendungen in $\mathcal{A}_{\text{prod}}$.
 \end{satz}
 
-\subsection{QualitÃ¤tsstufen der Bereitstellung}
+\subsection{Qualitätsstufen der Bereitstellung}
 
 Nicht alle Bereitstellungsimplementierungen sind gleich. Wir definieren ein
-QualitÃ¤tsstufenmodell:
+Qualitätsstufenmodell:
 
 \begin{figure}[ht]
 \centering
@@ -1161,9 +1161,9 @@ QualitÃ¤tsstufenmodell:
   \node[font=\bfseries\small, color=\col] at (-2.5, \y) {\label};
   \node[font=\scriptsize, color=darkgray, align=left] at (2.0, \y) {\desc};
 }
-\node[font=\bfseries\small, color=darkgray] at (0, 5.2) {QualitÃ¤tsstufenmodell der Dateibereitstellung};
+\node[font=\bfseries\small, color=darkgray] at (0, 5.2) {Qualitätsstufenmodell der Dateibereitstellung};
 \end{tikzpicture}
-\caption{QualitÃ¤tsstufen der Dateibereitstellung. Nur Stufe 2 und 3 sind
+\caption{Qualitätsstufen der Dateibereitstellung. Nur Stufe 2 und 3 sind
 bereitstellungskonform; Stufe 3 ist die empfohlene Implementierung.}
 \label{fig:qualitaet}
 \end{figure}
@@ -1173,48 +1173,48 @@ bereitstellungskonform; Stufe 3 ist die empfohlene Implementierung.}
 \label{sec:empfehlungen}
 %============================================================
 
-\subsection{FÃ¼r Entwickler}
+\subsection{Für Entwickler}
 
 \begin{enumerate}[label=\textbf{E\arabic*.}]
-  \item \textbf{MediaStore als erste Wahl:} FÃ¼r alle persistenten Mediendateien
+  \item \textbf{MediaStore als erste Wahl:} Für alle persistenten Mediendateien
     (Bilder, Videos, Audio) immer \texttt{MediaStore} verwenden, nie
     \texttt{getFilesDir()} oder \texttt{getExternalFiles\newline Dir()}.
-  \item \textbf{SAF fÃ¼r Dokumente:} Das Storage Access Framework fÃ¼r
-    nicht-Mediendateien verwenden, um maximale Benutzerfreiheit zu gewÃ¤hrleisten.
-  \item \textbf{DownloadManager fÃ¼r Downloads:} Dateien aus dem Internet Ã¼ber
+  \item \textbf{SAF für Dokumente:} Das Storage Access Framework für
+    nicht-Mediendateien verwenden, um maximale Benutzerfreiheit zu gewährleisten.
+  \item \textbf{DownloadManager für Downloads:} Dateien aus dem Internet über
     \texttt{DownloadMa-\newline nager} herunterladen, der automatisch die systemweite
     Bereitstellung sicherstellt.
-  \item \textbf{IS\_PENDING-Muster verwenden:} Beim Schreiben groÃŸer Dateien
-    das \texttt{IS\_PEN\newline DING}-Flag nutzen, um IntegritÃ¤t sicherzustellen.
+  \item \textbf{IS\_PENDING-Muster verwenden:} Beim Schreiben großer Dateien
+    das \texttt{IS\_PEN\newline DING}-Flag nutzen, um Integrität sicherzustellen.
   \item \textbf{Sofortige Bereitstellung:} Die Bereitstellung unmittelbar nach
-    Abschluss des Erzeugungsprozesses vornehmen, nicht verzÃ¶gert oder auf
+    Abschluss des Erzeugungsprozesses vornehmen, nicht verzögert oder auf
     Benutzerinteraktion wartend.
-  \item \textbf{AussagekrÃ¤ftige Metadaten:} Beim MediaStore-Eintrag vollstÃ¤ndige
+  \item \textbf{Aussagekräftige Metadaten:} Beim MediaStore-Eintrag vollständige
     Metadaten (Name, MIME-Typ, Datum, Beschreibung) eintragen.
   \item \textbf{Testen mit Integrationstest:} Automatisierte Tests schreiben,
-    die die systemweite VerfÃ¼gbarkeit von erzeugten Dateien prÃ¼fen.
+    die die systemweite Verfügbarkeit von erzeugten Dateien prüfen.
 \end{enumerate}
 
-\subsection{FÃ¼r Plattformbetreiber}
+\subsection{Für Plattformbetreiber}
 
 \begin{enumerate}[label=\textbf{P\arabic*.}]
   \item \textbf{Linting-Regeln:} Statische Analyse-Werkzeuge um Regeln erweitern,
-    die die Verwendung von \texttt{getFilesDir()} fÃ¼r persistente Mediendateien
+    die die Verwendung von \texttt{getFilesDir()} für persistente Mediendateien
     als Warnung oder Fehler markieren.
-  \item \textbf{App-Store-Reviews:} Systematische PrÃ¼fung auf Verletzungen des
+  \item \textbf{App-Store-Reviews:} Systematische Prüfung auf Verletzungen des
     Bereitstellungsprinzips im App-Review-Prozess.
   \item \textbf{Entwicklerdokumentation:} Das Bereitstellungsprinzip explizit in
     Entwicklerdokumentationen als verpflichtend kennzeichnen.
 \end{enumerate}
 
-\subsection{FÃ¼r Benutzer}
+\subsection{Für Benutzer}
 
 \begin{enumerate}[label=\textbf{B\arabic*.}]
-  \item \textbf{Apps prÃ¼fen:} ÃœberprÃ¼fen, ob erzeugte Dateien im Dateimanager
+  \item \textbf{Apps prüfen:} Überprüfen, ob erzeugte Dateien im Dateimanager
     sichtbar sind. Wenn nicht, ist die App wahrscheinlich bereitstellungswidrig.
-  \item \textbf{Feedback geben:} Entwickler Ã¼ber fehlende systemweite
+  \item \textbf{Feedback geben:} Entwickler über fehlende systemweite
     Bereitstellung informieren (Store-Bewertung, Entwickler-Kontakt).
-  \item \textbf{Alternativ-Apps wÃ¤hlen:} Bei systematischer Verletzung des
+  \item \textbf{Alternativ-Apps wählen:} Bei systematischer Verletzung des
     Bereitstellungsprinzips auf konforme Alternativen wechseln.
 \end{enumerate}
 
@@ -1230,336 +1230,336 @@ Die wesentlichen Erkenntnisse lassen sich wie folgt zusammenfassen:
 \noindent\textbf{Kern-Erkenntnisse:}
 \begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
   \item \textbf{Das Bereitstellungsprinzip ist unbedingt:} Jede dateiproduzierende
-    App \emph{muss} erzeugte Dateien dem systemweiten Speicher zur VerfÃ¼gung stellen.
-    Es gibt keine legitime Ausnahme fÃ¼r persistente Benutzerdaten.
-  \item \textbf{Es ist technisch umsetzbar:} Android und iOS bieten vollstÃ¤ndige
-    API-UnterstÃ¼tzung fÃ¼r korrekte Bereitstellung (MediaStore, SAF, PHPhotoLibrary).
-  \item \textbf{Es ist rechtlich geboten:} DatensouverÃ¤nitÃ¤t, DSGVO und
-    Wettbewerbsrecht stÃ¼tzen das Bereitstellungsprinzip.
-  \item \textbf{Die Terminologie ist zu prÃ¤zisieren:} \enquote{Zur VerfÃ¼gung stellen}
+    App \emph{muss} erzeugte Dateien dem systemweiten Speicher zur Verfügung stellen.
+    Es gibt keine legitime Ausnahme für persistente Benutzerdaten.
+  \item \textbf{Es ist technisch umsetzbar:} Android und iOS bieten vollständige
+    API-Unterstützung für korrekte Bereitstellung (MediaStore, SAF, PHPhotoLibrary).
+  \item \textbf{Es ist rechtlich geboten:} Datensouveränität, DSGVO und
+    Wettbewerbsrecht stützen das Bereitstellungsprinzip.
+  \item \textbf{Die Terminologie ist zu präzisieren:} \enquote{Zur Verfügung stellen}
     ist die korrekte Formulierung; sie beschreibt den Normalzustand, nicht
-    eine nachtrÃ¤gliche Handlung.
-  \item \textbf{Die Konsequenzen sind weitreichend:} Backup, InteroperabilitÃ¤t,
-    Barrierefreiheit, Cloud-Sync, GerÃ¤tewechsel, Wettbewerb, RechtskonformitÃ¤t
-    --- all diese Bereiche hÃ¤ngen von der Einhaltung des Bereitstellungsprinzips ab.
+    eine nachträgliche Handlung.
+  \item \textbf{Die Konsequenzen sind weitreichend:} Backup, Interoperabilität,
+    Barrierefreiheit, Cloud-Sync, Gerätewechsel, Wettbewerb, Rechtskonformität
+    --- all diese Bereiche hängen von der Einhaltung des Bereitstellungsprinzips ab.
 \end{enumerate}
 
-Das Bereitstellungsprinzip ist keine optionale QualitÃ¤tseigenschaft, sondern
+Das Bereitstellungsprinzip ist keine optionale Qualitätseigenschaft, sondern
 ein architektonisches und ethisches Gebot. Mobile Betriebssysteme wurden
-konzipiert, um Benutzer zu befÃ¤higen â€” nicht, um Daten in App-Silos zu
-fragmentieren. Die Verantwortung fÃ¼r seine Einhaltung liegt bei Entwicklern,
+konzipiert, um Benutzer zu befähigen â€” nicht, um Daten in App-Silos zu
+fragmentieren. Die Verantwortung für seine Einhaltung liegt bei Entwicklern,
 Plattformbetreibern und â€” durch ihre Marktmacht â€” bei den Benutzern selbst.
 
 \subsection{Ausblick}
 \label{sec:ausblick}
 
-Die in dieser Arbeit dargelegten GrundsÃ¤tze und Konsequenzen des Bereitstellungsprinzips
+Die in dieser Arbeit dargelegten Grundsätze und Konsequenzen des Bereitstellungsprinzips
 sind keineswegs als abgeschlossenes Erkenntnissystem zu verstehen. Die mobile
 Computing-Landschaft befindet sich in einem stetigen und teils rasanten Wandel,
 der sowohl technische als auch rechtliche und gesellschaftliche Dimensionen umfasst.
 Der folgende Ausblick skizziert die wichtigsten Entwicklungstendenzen, die das
-Bereitstellungsprinzip in den kommenden Jahren prÃ¤gen, herausfordern und
+Bereitstellungsprinzip in den kommenden Jahren prägen, herausfordern und
 weiterentwickeln werden.
 
 \subsubsection{Weiterentwicklung der Plattform-APIs und Betriebssystemarchitekturen}
 
-Die Bereitstellungs-APIs beider groÃŸen mobilen Plattformen --- Android und iOS --- befinden
-sich in kontinuierlicher Weiterentwicklung. Auf Android-Seite wurde mit der EinfÃ¼hrung
+Die Bereitstellungs-APIs beider großen mobilen Plattformen --- Android und iOS --- befinden
+sich in kontinuierlicher Weiterentwicklung. Auf Android-Seite wurde mit der Einführung
 von \emph{Scoped Storage} in Android 10 ein grundlegender Paradigmenwechsel vollzogen:
-Apps erhalten keinen freien Dateisystemzugriff mehr, sondern operieren Ã¼ber streng
+Apps erhalten keinen freien Dateisystemzugriff mehr, sondern operieren über streng
 typisierten APIs. Dieser Trend wird sich fortsetzen. Es ist zu erwarten, dass
-zukÃ¼nftige Android-Versionen:
+zukünftige Android-Versionen:
 \begin{itemize}[leftmargin=*]
-  \item die GranularitÃ¤t des Berechtigungssystems weiter verfeinern, etwa durch
+  \item die Granularität des Berechtigungssystems weiter verfeinern, etwa durch
     zeitlich begrenzte oder zweckgebundene Zugriffsberechtigungen auf Mediendateien;
-  \item neue \texttt{MediaStore}-Kategorien einfÃ¼hren, die spezialisierte Dateitypen
+  \item neue \texttt{MediaStore}-Kategorien einführen, die spezialisierte Dateitypen
     (medizinische Daten, Finanzdokumente, Bildungsmaterialien) semantisch erfassen;
-  \item die \emph{Health\,Connect}-Plattform als Modell fÃ¼r zukÃ¼nftige, datentypspezifische
-    Bereitstellungs-APIs etablieren --- Ã¤hnlich wie HealthKit auf iOS einen
-    standardisierten, sicheren Datenaustausch fÃ¼r Gesundheitsdaten ermÃ¶glicht;
+  \item die \emph{Health\,Connect}-Plattform als Modell für zukünftige, datentypspezifische
+    Bereitstellungs-APIs etablieren --- ähnlich wie HealthKit auf iOS einen
+    standardisierten, sicheren Datenaustausch für Gesundheitsdaten ermöglicht;
   \item einen erweiterten \emph{Photo Picker} bereitstellen, der Anwendungen den Zugriff
-    auf Mediendateien ohne vollstÃ¤ndige Lese-Berechtigungen ermÃ¶glicht und damit das
+    auf Mediendateien ohne vollständige Lese-Berechtigungen ermöglicht und damit das
     Bereitstellungsprinzip schreibend von App-Seite konsequent einfordert.
 \end{itemize}
 
-Auf iOS-Seite ist eine sukzessive Ã–ffnung des Dateisystems zu beobachten, die mit iOS 11
+Auf iOS-Seite ist eine sukzessive Öffnung des Dateisystems zu beobachten, die mit iOS 11
 durch die Files-App und das \texttt{UIDocumentBrowserViewController}-Framework eingeleitet
-wurde. ZukÃ¼nftige iOS-Versionen werden voraussichtlich die Inter-App-Kommunikation auf
+wurde. Zukünftige iOS-Versionen werden voraussichtlich die Inter-App-Kommunikation auf
 Dateiebene weiter erleichtern, das \emph{Shared with You}-Framework ausbauen und die
-AbhÃ¤ngigkeit von proprietÃ¤ren iCloud-Strukturen reduzieren, indem offene Dateiformate und
+Abhängigkeit von proprietären iCloud-Strukturen reduzieren, indem offene Dateiformate und
 standardisierte Metadaten bevorzugt werden.
 
 Ein besonders bedeutsamer Trend ist die zunehmende Konvergenz zwischen Desktop- und
 mobilen Betriebssystemen. Apples \emph{Catalyst}-Technologie und Microsofts Integration
 von Android-Apps unter Windows (Windows Subsystem for Android) deuten darauf hin, dass
 die scharfe Grenze zwischen mobilen und Desktop-Dateisystemparadigmen langfristig
-verschwimmen kÃ¶nnte. Das Bereitstellungsprinzip wird dabei als BrÃ¼ckenkonzept fungieren
-mÃ¼ssen, das mobile Bereitstellungsmechanismen mit klassischen Desktop-Dateisystemzugriffen
+verschwimmen könnte. Das Bereitstellungsprinzip wird dabei als Brückenkonzept fungieren
+müssen, das mobile Bereitstellungsmechanismen mit klassischen Desktop-Dateisystemzugriffen
 harmonisiert.
 
 \subsubsection{Das Origin Private File System und webbasierte Speicherparadigmen}
 
 Die Entstehung des \emph{Origin Private File System} (OPFS) im Rahmen des
 \emph{File System Access API}-Standards des W3C stellt eine fundamentale Herausforderung
-fÃ¼r das Bereitstellungsprinzip im Web-Kontext dar. OPFS bietet Progressive Web Apps einen
+für das Bereitstellungsprinzip im Web-Kontext dar. OPFS bietet Progressive Web Apps einen
 performanten, privaten Dateispeicher --- analog zum App-privaten Speicher nativer Apps.
-Gleichzeitig haben Progressive Web Apps Ã¼ber die \texttt{showSaveFilePicker()}-API die
-MÃ¶glichkeit, Dateien in den systemweiten Speicher zu schreiben.
+Gleichzeitig haben Progressive Web Apps über die \texttt{showSaveFilePicker()}-API die
+Möglichkeit, Dateien in den systemweiten Speicher zu schreiben.
 
-Die Frage, welche dieser APIs fÃ¼r welchen Dateityp zu verwenden ist, spiegelt unmittelbar
-das Bereitstellungsprinzip wider: TemporÃ¤re Arbeitsdaten gehÃ¶ren in OPFS; persistente
-Benutzerdateien mÃ¼ssen Ã¼ber \texttt{showSaveFilePicker()} dem System zugÃ¤nglich gemacht
-werden. ZukÃ¼nftige Forschung sollte untersuchen, ob und wie das Bereitstellungsprinzip
-formal auf das Web-Ã–kosystem Ã¼bertragen werden kann, insbesondere in Anbetracht der
+Die Frage, welche dieser APIs für welchen Dateityp zu verwenden ist, spiegelt unmittelbar
+das Bereitstellungsprinzip wider: Temporäre Arbeitsdaten gehören in OPFS; persistente
+Benutzerdateien müssen über \texttt{showSaveFilePicker()} dem System zugänglich gemacht
+werden. Zukünftige Forschung sollte untersuchen, ob und wie das Bereitstellungsprinzip
+formal auf das Web-Ökosystem übertragen werden kann, insbesondere in Anbetracht der
 unterschiedlichen Sicherheitsmodelle zwischen Same-Origin-Policy und dem
 Android-Sandboxing-Ansatz.
 
 \subsubsection{Regulatorische und rechtliche Entwicklungen}
 
-Das rechtliche Umfeld fÃ¼r mobile Betriebssysteme und App-Ã–ko\-sys\-te\-me befindet sich
+Das rechtliche Umfeld für mobile Betriebssysteme und App-Öko\-sys\-te\-me befindet sich
 in einem historisch einzigartigen Wandel. Mehrere regulatorische Entwicklungen werden
-das Bereitstellungsprinzip direkt oder indirekt stÃ¤rken.
+das Bereitstellungsprinzip direkt oder indirekt stärken.
 
 \paragraph{Digital Markets Act (DMA).}
-Der im November 2022 in Kraft getretene \emph{Digital Markets Act} der EuropÃ¤ischen Union
+Der im November 2022 in Kraft getretene \emph{Digital Markets Act} der Europäischen Union
 verpflichtet sogenannte \emph{Gatekeeper} --- zu denen Apple und Google mit ihren
-App-Ã–kosystemen zÃ¤hlen --- zu weitreichender InteroperabilitÃ¤t und DatenportabilitÃ¤t.
+App-Ökosystemen zählen --- zu weitreichender Interoperabilität und Datenportabilität.
 Art.\,6 Abs.\,9 DMA verlangt insbesondere, dass Gatekeeper Nutzern den Zugang zu ihren
-generierten Daten ermÃ¶glichen. Dies deckt sich exakt mit dem Bereitstellungsprinzip:
-Daten, die auf einem GerÃ¤t erzeugt wurden, mÃ¼ssen dem Nutzer zugÃ¤nglich sein. ZukÃ¼nftige
-DMA-Durchsetzungsverfahren kÃ¶nnten explizit auf das Bereitstellungsprinzip als technischen
+generierten Daten ermöglichen. Dies deckt sich exakt mit dem Bereitstellungsprinzip:
+Daten, die auf einem Gerät erzeugt wurden, müssen dem Nutzer zugänglich sein. Zukünftige
+DMA-Durchsetzungsverfahren könnten explizit auf das Bereitstellungsprinzip als technischen
 Standard verweisen und damit seine Verbindlichkeit auf Plattformebene durchsetzen.
 
 \paragraph{Data Act.}
-Der im MÃ¤rz 2024 in Kraft getretene \emph{Data Act} (Verordnung (EU) 2023/2854) schafft
-horizontale Regeln fÃ¼r den Datenzugang und die Datennutzung in der gesamten EU-Wirtschaft.
-FÃ¼r mobile Apps, die Nutzerdaten erzeugen, ergibt sich die Verpflichtung, diese Daten in
+Der im März 2024 in Kraft getretene \emph{Data Act} (Verordnung (EU) 2023/2854) schafft
+horizontale Regeln für den Datenzugang und die Datennutzung in der gesamten EU-Wirtschaft.
+Für mobile Apps, die Nutzerdaten erzeugen, ergibt sich die Verpflichtung, diese Daten in
 interoperablen Formaten bereitzustellen. Das Bereitstellungsprinzip wird durch den Data Act
-eine explizite rechtliche Grundlage erhalten, die Ã¼ber die bisher aus der DSGVO mittelbar
+eine explizite rechtliche Grundlage erhalten, die über die bisher aus der DSGVO mittelbar
 ableitbare Datenzugangsregelung hinausgeht.
 
 \paragraph{AI Act und dateibasierte KI-Trainingsdaten.}
-Die \emph{Verordnung Ã¼ber KÃ¼nstliche Intelligenz} (AI Act, Verordnung (EU) 2024/1689)
-fÃ¼hrt neue Anforderungen an die Nachvollziehbarkeit von KI-Trainingsdaten ein. Wenn
-mobile Apps auf gerÃ¤teerzeugten Dateien KI-Modelle trainieren oder diese Daten fÃ¼r
+Die \emph{Verordnung über Künstliche Intelligenz} (AI Act, Verordnung (EU) 2024/1689)
+führt neue Anforderungen an die Nachvollziehbarkeit von KI-Trainingsdaten ein. Wenn
+mobile Apps auf geräteerzeugten Dateien KI-Modelle trainieren oder diese Daten für
 systemische KI-Anwendungen verwenden, entsteht ein Spannungsfeld zwischen dem
-Bereitstellungsprinzip (Daten sollen systemweit zugÃ¤nglich sein) und dem Schutz vor
-unerwÃ¼nschter KI-Nutzung dieser Daten. ZukÃ¼nftige Forschung muss untersuchen, wie das
+Bereitstellungsprinzip (Daten sollen systemweit zugänglich sein) und dem Schutz vor
+unerwünschter KI-Nutzung dieser Daten. Zukünftige Forschung muss untersuchen, wie das
 Bereitstellungsprinzip in KI-regulierten Umgebungen zu kalibrieren ist.
 
 \paragraph{Internationaler Rechtsrahmen.}
-AuÃŸerhalb der EU entstehen vergleichbare Regelungstendenzen: Der \emph{American Data
+Außerhalb der EU entstehen vergleichbare Regelungstendenzen: Der \emph{American Data
 Privacy and Protection Act} (ADPPA), das \emph{California Consumer Privacy Act} (CCPA)
 und Regelungen in Asien (Japans APPI, Indiens DPDP Act) konvergieren zunehmend auf
-gemeinsame Prinzipien der DatensouverÃ¤nitÃ¤t, die das hier beschriebene Bereitstellungs\-prinzip
-international stÃ¼tzen.
+gemeinsame Prinzipien der Datensouveränität, die das hier beschriebene Bereitstellungs\-prinzip
+international stützen.
 
 \subsubsection{Technologische Trends: Cloud-native Storage und Hybridarchitekturen}
 
-Die zunehmende Durchdringung mobiler GerÃ¤te mit permanenter Internetverbindung fÃ¼hrt
+Die zunehmende Durchdringung mobiler Geräte mit permanenter Internetverbindung führt
 zu neuen Speicherparadigmen, die das Bereitstellungsprinzip in seiner klassischen,
 lokal orientierten Form herausfordern.
 
 \paragraph{Cloud-as-Primary-Storage.}
 Dienste wie Google Drive, iCloud Drive und OneDrive werden zunehmend nicht mehr als
-nachgelagerte Synchronisationsschicht, sondern als primÃ¤rer Speicherort fÃ¼r erzeugte
+nachgelagerte Synchronisationsschicht, sondern als primärer Speicherort für erzeugte
 Dateien betrachtet. Das Bereitstellungsprinzip muss in diesem Kontext auf cloud-basierte
 Speicherziele ausgedehnt werden: Eine dateiproduzierende App, die Dateien direkt in der
-Cloud speichert, muss sicherstellen, dass diese Dateien Ã¼ber standardisierte
-Schnittstellen (WebDAV, CMIS, proprietÃ¤re Cloud-APIs) fÃ¼r den Benutzer zugÃ¤nglich sind.
+Cloud speichert, muss sicherstellen, dass diese Dateien über standardisierte
+Schnittstellen (WebDAV, CMIS, proprietäre Cloud-APIs) für den Benutzer zugänglich sind.
 
 \paragraph{FUSE und virtuelle Dateisysteme.}
-\emph{Filesystem in Userspace} (FUSE) ermÃ¶glicht die transparente Integration von
-Remotspeichern in lokale Dateistrukturen. ZukÃ¼nftige mobile Betriebssysteme kÃ¶nnten
+\emph{Filesystem in Userspace} (FUSE) ermöglicht die transparente Integration von
+Remotspeichern in lokale Dateistrukturen. Zukünftige mobile Betriebssysteme könnten
 FUSE-artige Mechanismen einsetzen, um cloud-basierte und lokale Speicher unter einer
-einheitlichen Dateisystemabstraktion zusammenzufÃ¼hren. Das Bereitstellungsprinzip wÃ¼rde
-davon profitieren: Eine Datei, die in einem virtuellen Dateisystem abgelegt ist, wÃ¤re
-automatisch systemweit verfÃ¼gbar, unabhÃ¤ngig von ihrem physischen Speicherort.
+einheitlichen Dateisystemabstraktion zusammenzuführen. Das Bereitstellungsprinzip würde
+davon profitieren: Eine Datei, die in einem virtuellen Dateisystem abgelegt ist, wäre
+automatisch systemweit verfügbar, unabhängig von ihrem physischen Speicherort.
 
 \paragraph{Peer-to-Peer-Dateisysteme.}
 Dezentrale Dateisysteme wie \emph{IPFS} (InterPlanetary File System) beginnen, in mobilen
 Anwendungsszenarien Relevanz zu erlangen. In solchen Systemen erfolgt die Bereitstellung
-nicht mehr Ã¼ber einen zentralen Systemdienst (MediaStore, Files-App), sondern Ã¼ber ein
+nicht mehr über einen zentralen Systemdienst (MediaStore, Files-App), sondern über ein
 Netzwerkprotokoll. Das Bereitstellungsprinzip muss in diesem Fall auf die Frage erweitert
-werden, ob und wie eine Datei fÃ¼r den \emph{EigentÃ¼mer} auffindbar und zugreifbar bleibt,
+werden, ob und wie eine Datei für den \emph{Eigentümer} auffindbar und zugreifbar bleibt,
 auch wenn sie dezentral gespeichert ist.
 
-\subsubsection{KÃ¼nstliche Intelligenz und semantische Dateiverwaltung}
+\subsubsection{Künstliche Intelligenz und semantische Dateiverwaltung}
 
 Vielleicht die tiefgreifendste Transformation des mobilen Dateisystems steht durch den
 Einsatz von KI-Methoden bevor. Aktuelle Entwicklungen lassen folgende Trends erkennen:
 
 \paragraph{Automatische Dateikategorisierung.}
-KI-gestÃ¼tzte Systeme (wie Googles \emph{Gemini}-Integration in Android oder Apples
+KI-gestützte Systeme (wie Googles \emph{Gemini}-Integration in Android oder Apples
 \emph{Intelligence}-Funktionen) sind zunehmend in der Lage, Dateiinhalte semantisch zu
-verstehen und automatisch zu kategorisieren. ZukÃ¼nftig kÃ¶nnten mobile Betriebssysteme
+verstehen und automatisch zu kategorisieren. Zukünftig könnten mobile Betriebssysteme
 Dateien automatisch dem richtigen systemweiten Bereitstellungsziel zuordnen: Ein
 KI-Modell erkennt, dass eine erzeugte Datei ein Bild ist, und legt sie automatisch im
 korrekten \texttt{MediaStore}-Bucket ab, ohne dass die App explizit eine \texttt{insert()}-Operation
-aufrufen muss. Dies wÃ¼rde das technische Risiko von Bereitstellungsverletzungen aus
+aufrufen muss. Dies würde das technische Risiko von Bereitstellungsverletzungen aus
 Implementierungsfehlern erheblich reduzieren.
 
 \paragraph{On-Device-AI und datenschutzwahrende Verarbeitung.}
-Die Verlagerung von KI-Verarbeitung auf das GerÃ¤t selbst (On-Device-AI) erzeugt neue
+Die Verlagerung von KI-Verarbeitung auf das Gerät selbst (On-Device-AI) erzeugt neue
 Arten dateiproduzierender Prozesse: KI-generierte Bilder, zusammengefasste Dokumente,
-transkribierte Audiodateien. Das Bereitstellungsprinzip gilt fÃ¼r diese Ausgaben
-uneingeschrÃ¤nkt --- auch KI-erzeugte Inhalte mÃ¼ssen systemweit zugÃ¤nglich gemacht werden,
+transkribierte Audiodateien. Das Bereitstellungsprinzip gilt für diese Ausgaben
+uneingeschränkt --- auch KI-erzeugte Inhalte müssen systemweit zugänglich gemacht werden,
 wenn der Benutzer sie als persistente Ergebnisse betrachtet.
 
 \paragraph{Semantische Metadatenanreicherung.}
-ZukÃ¼nftige Bereitstellungssysteme werden Ã¼ber reine Dateipfade hinausgehen und Dateien
-mit semantischen Metadaten anreichern. Der \texttt{MediaStore} kÃ¶nnte um Felder fÃ¼r
+Zukünftige Bereitstellungssysteme werden über reine Dateipfade hinausgehen und Dateien
+mit semantischen Metadaten anreichern. Der \texttt{MediaStore} könnte um Felder für
 KI-erzeugte Beschreibungen, erkannte Objekte oder inhaltliche Zusammenfassungen erweitert
-werden. Das Bereitstellungsprinzip mÃ¼sste in diesem Fall nicht nur die \emph{physische}
-VerfÃ¼gbarkeit einer Datei fordern, sondern auch ihre \emph{semantische} Auffindbarkeit
+werden. Das Bereitstellungsprinzip müsste in diesem Fall nicht nur die \emph{physische}
+Verfügbarkeit einer Datei fordern, sondern auch ihre \emph{semantische} Auffindbarkeit
 durch systemweite Suchfunktionen.
 
 \subsubsection{Sicherheit und datenschutzfreundliche Bereitstellungsarchitekturen}
 
-Das SpannungsverhÃ¤ltnis zwischen systemweiter Bereitstellung und Datenschutz wird in
-Zukunft durch neue technische Architekturen aufgelÃ¶st werden mÃ¼ssen.
+Das Spannungsverhältnis zwischen systemweiter Bereitstellung und Datenschutz wird in
+Zukunft durch neue technische Architekturen aufgelöst werden müssen.
 
 \paragraph{Vertrauliche Bereitstellung.}
 Eine vielversprechende Forschungsrichtung ist die \emph{vertrauliche Bereitstellung}:
-Dateien werden systemweit bereitgestellt, jedoch in einer Weise verschlÃ¼sselt, die nur
-authorisierten Apps und Benutzern den Inhaltszugriff ermÃ¶glicht. Technologien wie
-\emph{Trusted Execution Environments} (TEE) auf ARM-Prozessoren (TrustZone) kÃ¶nnten
-als Basis fÃ¼r schlÃ¼sselverwaltende Bereitstellungsinfrastruktur dienen. In diesem Modell
-ist eine Datei \emph{auffindbar} (Bereitstellungsprinzip erfÃ¼llt) und gleichzeitig
-\emph{inhaltlich geschÃ¼tzt} (Datenschutz gewahrt).
+Dateien werden systemweit bereitgestellt, jedoch in einer Weise verschlüsselt, die nur
+authorisierten Apps und Benutzern den Inhaltszugriff ermöglicht. Technologien wie
+\emph{Trusted Execution Environments} (TEE) auf ARM-Prozessoren (TrustZone) könnten
+als Basis für schlüsselverwaltende Bereitstellungsinfrastruktur dienen. In diesem Modell
+ist eine Datei \emph{auffindbar} (Bereitstellungsprinzip erfüllt) und gleichzeitig
+\emph{inhaltlich geschützt} (Datenschutz gewahrt).
 
 \paragraph{Attributbasierte Zugangskontrolle.}
-Klassische Zugangskontrolle basiert auf IdentitÃ¤ten (welche App darf zugreifen?).
-ZukÃ¼nftige Systeme kÃ¶nnten \emph{attributbasierte Zugangskontrolle} (ABAC) einsetzen:
-Eine Datei ist systemweit bereitgestellt, aber Zugriff wird nur Anwendungen gewÃ¤hrt,
+Klassische Zugangskontrolle basiert auf Identitäten (welche App darf zugreifen?).
+Zukünftige Systeme könnten \emph{attributbasierte Zugangskontrolle} (ABAC) einsetzen:
+Eine Datei ist systemweit bereitgestellt, aber Zugriff wird nur Anwendungen gewährt,
 die bestimmte Attribute aufweisen (z.\,B. \enquote{ist als medizinische App zertifiziert}
-oder \enquote{hat explizite Nutzerfreigabe fÃ¼r diesen Dateityp}). Dies wÃ¼rde das
+oder \enquote{hat explizite Nutzerfreigabe für diesen Dateityp}). Dies würde das
 Bereitstellungsprinzip mit feingranularem Datenschutz verbinden.
 
 \paragraph{Datensparsamkeit und typenspezifische Bereitstellung.}
 Im Lichte von Art.\,5 Abs.\,1 lit.\,c DSGVO (Datensparsamkeit) entsteht die Frage, ob
-das Bereitstellungsprinzip zu einer systemweiten Nachverfolgbarkeit fÃ¼hren kann, die dem
+das Bereitstellungsprinzip zu einer systemweiten Nachverfolgbarkeit führen kann, die dem
 Datensparsamkeitsprinzip widerspricht. Konzeptuell ist zu betonen: Das Bereitstellungsprinzip
-fordert \emph{ZugÃ¤nglichkeit fÃ¼r den Benutzer}, nicht \emph{Sichtbarkeit fÃ¼r Dritte}.
-ZukÃ¼nftige Implementierungen mÃ¼ssen diese Unterscheidung technisch prÃ¤ziser abbilden.
+fordert \emph{Zugänglichkeit für den Benutzer}, nicht \emph{Sichtbarkeit für Dritte}.
+Zukünftige Implementierungen müssen diese Unterscheidung technisch präziser abbilden.
 
-\subsubsection{IoT, Edge Computing und erweiterte GerÃ¤teklassen}
+\subsubsection{IoT, Edge Computing und erweiterte Geräteklassen}
 
-Die Grenzen des \enquote{mobilen GerÃ¤ts} verschwimmen zunehmend. Smartwatches,
-AR/VR-Brillen, Connected Cars und smarte HaushaltsgerÃ¤te werden zu dateiproduzierenden
-Systemen, fÃ¼r die das Bereitstellungsprinzip Anwendung finden muss.
+Die Grenzen des \enquote{mobilen Geräts} verschwimmen zunehmend. Smartwatches,
+AR/VR-Brillen, Connected Cars und smarte Haushaltsgeräte werden zu dateiproduzierenden
+Systemen, für die das Bereitstellungsprinzip Anwendung finden muss.
 
 \paragraph{Wearables und Gesundheitsdaten.}
 Smartwatch- und Fitness-Tracker-Apps erzeugen kontinuierlich Dateien (Schlafprotokolle,
-EKG-Aufzeichnungen, Bewegungsdaten). Die zugehÃ¶rigen mobilen Apps mÃ¼ssen diese Daten
-Ã¼ber APIs wie Apple HealthKit (iOS) oder Android Health Connect systemweit bereitstellen.
-Die besondere SensibilitÃ¤t dieser Daten (Art.\,9 DSGVO: besondere Kategorien
+EKG-Aufzeichnungen, Bewegungsdaten). Die zugehörigen mobilen Apps müssen diese Daten
+über APIs wie Apple HealthKit (iOS) oder Android Health Connect systemweit bereitstellen.
+Die besondere Sensibilität dieser Daten (Art.\,9 DSGVO: besondere Kategorien
 personenbezogener Daten) erfordert dabei ein differenzierteres Bereitstellungsmodell,
-das ZugÃ¤nglichkeit und Schutz ausbalanciert.
+das Zugänglichkeit und Schutz ausbalanciert.
 
-\paragraph{AR/VR-GerÃ¤te und rÃ¤umliche Daten.}
+\paragraph{AR/VR-Geräte und räumliche Daten.}
 Augmented-Reality- und Virtual-Reality-Headsets (Apple Vision Pro, Meta Quest) erzeugen
-neuartige Dateiformate: rÃ¤umliche Scans, 3D-Objekte, immersive Videoinhalte. Es ist zu
-erwarten, dass zukÃ¼nftige \texttt{MediaStore}-Kategorien diese Dateitypen aufnehmen
+neuartige Dateiformate: räumliche Scans, 3D-Objekte, immersive Videoinhalte. Es ist zu
+erwarten, dass zukünftige \texttt{MediaStore}-Kategorien diese Dateitypen aufnehmen
 werden. Das Bereitstellungsprinzip postuliert: Auch 3D-Inhalte, die auf einem
-AR/VR-GerÃ¤t erzeugt werden, mÃ¼ssen Ã¼ber standardisierte APIs dem System zur VerfÃ¼gung
+AR/VR-Gerät erzeugt werden, müssen über standardisierte APIs dem System zur Verfügung
 gestellt werden.
 
 \paragraph{Vernetzte Fahrzeuge und mobile Arbeitsumgebungen.}
 In moderne Kraftfahrzeuge integrierte Betriebssysteme (Android Automotive,
-CarPlay-unterstÃ¼tzte Systeme) bilden erweiterte mobile Plattformen. Dashcam-Aufnahmen,
+CarPlay-unterstützte Systeme) bilden erweiterte mobile Plattformen. Dashcam-Aufnahmen,
 Navigationshistorien und fahrzeugintern erzeugte Dokumente fallen unter das
-Bereitstellungsprinzip. ZukÃ¼nftige Fahrzeugbetriebssysteme werden einen eigenen
-Medienspeicher entwickeln mÃ¼ssen, der mit mobilen GerÃ¤tearchiven synchronisiert
+Bereitstellungsprinzip. Zukünftige Fahrzeugbetriebssysteme werden einen eigenen
+Medienspeicher entwickeln müssen, der mit mobilen Gerätearchiven synchronisiert
 werden kann.
 
-\subsubsection{Standardisierung und internationale InteroperabilitÃ¤t}
+\subsubsection{Standardisierung und internationale Interoperabilität}
 
-Ein wesentliches Desiderat der zukÃ¼nftigen Forschung und Normierungsarbeit ist die
-plattformÃ¼bergreifende Standardisierung des Bereitstellungsprinzips.
+Ein wesentliches Desiderat der zukünftigen Forschung und Normierungsarbeit ist die
+plattformübergreifende Standardisierung des Bereitstellungsprinzips.
 
 \paragraph{W3C-Standardisierung.}
 Die \emph{File System Access API} des W3C ist ein erster Schritt zur Standardisierung
-webbasierter Dateibereitstellung. ZukÃ¼nftige W3C-Standards sollten explizit das
+webbasierter Dateibereitstellung. Zukünftige W3C-Standards sollten explizit das
 Bereitstellungsprinzip kodieren und klare Anforderungen an das Schreiben persistenter
-Nutzerdaten in zugÃ¤ngliche Speicherbereiche formulieren. Das \emph{Storage Foundation API}
-ist ein vielversprechender AnknÃ¼pfungspunkt fÃ¼r diese Standardisierungsarbeit.
+Nutzerdaten in zugängliche Speicherbereiche formulieren. Das \emph{Storage Foundation API}
+ist ein vielversprechender Anknüpfungspunkt für diese Standardisierungsarbeit.
 
 \paragraph{ISO/IEC-Normierung.}
 Im Bereich der mobilen Anwendungssicherheit existieren Normen wie ISO/IEC\,27034
 (Application Security). Eine Erweiterung dieser Normen um explizite Anforderungen an
-die Dateibereitstellung wÃ¼rde das Bereitstellungsprinzip in international anerkannte
-QualitÃ¤tsstandards integrieren.
+die Dateibereitstellung würde das Bereitstellungsprinzip in international anerkannte
+Qualitätsstandards integrieren.
 
-\paragraph{PlattformÃ¼bergreifende InteroperabilitÃ¤t.}
-Das grÃ¶ÃŸte offene Problem ist die InteroperabilitÃ¤t zwischen Android und iOS. Eine
-auf iOS erstellte Datei kann nicht automatisch Ã¼ber den Android-MediaStore zugÃ¤nglich
-gemacht werden und umgekehrt. Cloud-Synchronisationsdienste lÃ¶sen dieses Problem
-partiell, setzen aber proprietÃ¤re Infrastruktur voraus. Eine zukÃ¼nftige
+\paragraph{Plattformübergreifende Interoperabilität.}
+Das größte offene Problem ist die Interoperabilität zwischen Android und iOS. Eine
+auf iOS erstellte Datei kann nicht automatisch über den Android-MediaStore zugänglich
+gemacht werden und umgekehrt. Cloud-Synchronisationsdienste lösen dieses Problem
+partiell, setzen aber proprietäre Infrastruktur voraus. Eine zukünftige
 \emph{Mobile File Provisioning Interoperability Specification} --- vergleichbar mit
-dem \emph{WebDAV}-Standard fÃ¼r Netzwerkdateisysteme --- kÃ¶nnte plattformÃ¼bergreifende
-Bereitstellung ohne Cloud-AbhÃ¤ngigkeit realisieren.
+dem \emph{WebDAV}-Standard für Netzwerkdateisysteme --- könnte plattformübergreifende
+Bereitstellung ohne Cloud-Abhängigkeit realisieren.
 
 \subsubsection{Offene Forschungsfragen}
 
 Die vorliegende Arbeit wirft eine Reihe von Forschungsfragen auf, die einer
-systematischen wissenschaftlichen Bearbeitung bedÃ¼rfen:
+systematischen wissenschaftlichen Bearbeitung bedürfen:
 
 \begin{enumerate}[label=\textbf{F\arabic*.}, leftmargin=*]
-  \item \textbf{Formale Verifikation:} LÃ¤sst sich das Bereitstellungsprinzip in formale
-    App-Verifi\-kationswerkzeuge integrieren? KÃ¶nnen statische Analysatoren (z.\,B. auf
+  \item \textbf{Formale Verifikation:} Lässt sich das Bereitstellungsprinzip in formale
+    App-Verifi\-kationswerkzeuge integrieren? Können statische Analysatoren (z.\,B. auf
     Basis von \emph{Datalog}-Regeln oder Typtheorie) Verletzungen des
     Bereitstellungsprinzips zur Compile-Zeit erkennen?
-  \item \textbf{Automatisches Refactoring:} KÃ¶nnen KI-gestÃ¼tzte Code-Transformatoren
-    (z.\,B.\ GitHub Copilot oder Ã¤hnliche Systeme) Implementierungen, die gegen das
-    Bereitstellungsprinzip verstoÃŸen, automatisch identifizieren und korrekte Alternativen
+  \item \textbf{Automatisches Refactoring:} Können KI-gestützte Code-Transformatoren
+    (z.\,B.\ GitHub Copilot oder ähnliche Systeme) Implementierungen, die gegen das
+    Bereitstellungsprinzip verstoßen, automatisch identifizieren und korrekte Alternativen
     vorschlagen?
-  \item \textbf{Empirische PrÃ¤valenz:} Wie verbreitet sind Verletzungen des
+  \item \textbf{Empirische Prävalenz:} Wie verbreitet sind Verletzungen des
     Bereitstellungsprinzips in der realen App-Landschaft? Eine systematische Analyse
-    Ã¼ber den Google Play Store und den Apple App Store --- basierend auf statischer
-    Analyse und Laufzeittests --- kÃ¶nnte empirische Daten zu dieser Frage liefern.
-  \item \textbf{BenutzerprÃ¤ferenzen:} Welche PrÃ¤ferenzen haben Benutzer bezÃ¼glich der
-    ZugÃ¤nglichkeit ihrer erzeugten Dateien? Empirische Usability-Studien kÃ¶nnten das
-    Bereitstellungsprinzip durch nutzerzentrierte Evidenz stÃ¼tzen oder differenzieren.
+    über den Google Play Store und den Apple App Store --- basierend auf statischer
+    Analyse und Laufzeittests --- könnte empirische Daten zu dieser Frage liefern.
+  \item \textbf{Benutzerpräferenzen:} Welche Präferenzen haben Benutzer bezüglich der
+    Zugänglichkeit ihrer erzeugten Dateien? Empirische Usability-Studien könnten das
+    Bereitstellungsprinzip durch nutzerzentrierte Evidenz stützen oder differenzieren.
   \item \textbf{Performanz-Implikationen:} Hat die systemweite Bereitstellung von Dateien
     messbare Auswirkungen auf die App-Performanz (Latenz beim Schreiben,
-    Energie\-verbrauch durch MediaStore-Operationen)? Benchmarking-Studien kÃ¶nnten die
+    Energie\-verbrauch durch MediaStore-Operationen)? Benchmarking-Studien könnten die
     praktischen Kosten der korrekten Implementierung quantifizieren.
-  \item \textbf{Quantitativer Datenverlust:} Wie groÃŸ ist der tatsÃ¤chliche Datenverlust,
+  \item \textbf{Quantitativer Datenverlust:} Wie groß ist der tatsächliche Datenverlust,
     der durch Verletzungen des Bereitstellungsprinzips entsteht? Eine Befragungsstudie
-    mit mobilen Nutzern, die Datenverluste nach App-Deinstallationen erlebt haben, kÃ¶nnte
+    mit mobilen Nutzern, die Datenverluste nach App-Deinstallationen erlebt haben, könnte
     die gesellschaftlichen Kosten dieser Verletzungen sichtbar machen.
   \item \textbf{Semantisches Bereitstellungsmodell:} Ist ein erweitertes
     Bereitstellungsmodell denkbar, das nicht nur Dateien, sondern auch strukturierte Daten
-    (Datenbanken, App-ZustÃ¤nde, Konfigurationen) dem Bereitstellungsprinzip unterwirft?
-    Diese Erweiterung wÃ¼rde das Bereitstellungsprinzip zu einem umfassenden
-    \emph{DatensouverÃ¤nitÃ¤tsprinzip} fÃ¼r mobile GerÃ¤te verallgemeinern.
+    (Datenbanken, App-Zustände, Konfigurationen) dem Bereitstellungsprinzip unterwirft?
+    Diese Erweiterung würde das Bereitstellungsprinzip zu einem umfassenden
+    \emph{Datensouveränitätsprinzip} für mobile Geräte verallgemeinern.
 \end{enumerate}
 
 \subsubsection{Langfristige Vision: Das benutzerzentristische Dateisystem}
 
-Auf einer Ã¼bergeordneten Ebene zeigt die vorliegende Analyse, dass das
-Bereitstellungsprinzip Teil einer grÃ¶ÃŸeren Vision fÃ¼r mobile Betriebssysteme ist:
+Auf einer übergeordneten Ebene zeigt die vorliegende Analyse, dass das
+Bereitstellungsprinzip Teil einer größeren Vision für mobile Betriebssysteme ist:
 das \emph{benutzerzentrische Dateisystem}, in dem der Benutzer --- nicht die App ---
-als EigentÃ¼mer und primÃ¤rer Verwalter aller erzeugten Daten fungiert.
+als Eigentümer und primärer Verwalter aller erzeugten Daten fungiert.
 
 Diese Vision impliziert einen strukturellen Wandel: Statt dass Apps entscheiden,
-\emph{wo} und \emph{wie} Dateien gespeichert werden, Ã¼bernimmt das Betriebssystem
-die Verantwortung fÃ¼r eine optimale Bereitstellung, basierend auf Dateityp,
-NutzungsprÃ¤ferenzen und rechtlichen Anforderungen. Apps werden zu reinen Produzenten;
+\emph{wo} und \emph{wie} Dateien gespeichert werden, übernimmt das Betriebssystem
+die Verantwortung für eine optimale Bereitstellung, basierend auf Dateityp,
+Nutzungspräferenzen und rechtlichen Anforderungen. Apps werden zu reinen Produzenten;
 das Betriebssystem wird zum intelligenten Verteiler und Verwalter.
 
-Technologische Bausteine fÃ¼r diese Vision sind bereits erkennbar: Androids
+Technologische Bausteine für diese Vision sind bereits erkennbar: Androids
 \texttt{MediaStore} mit seinen typisierten Buckets, Apples \texttt{PHPhotoLibrary}
 mit ihrer nicht-destruktiven Bearbeitungsphilosophie, Googles
 \emph{Personal Data Store}-Konzepte --- all diese Entwicklungen deuten in dieselbe
 Richtung. Das Bereitstellungsprinzip ist damit nicht nur ein technischer Grundsatz
-der gegenwÃ¤rtigen mobilen Softwareentwicklung, sondern auch ein Wegweiser fÃ¼r die
-Architektur zukÃ¼nftiger mobiler Betriebssysteme.
+der gegenwärtigen mobilen Softwareentwicklung, sondern auch ein Wegweiser für die
+Architektur zukünftiger mobiler Betriebssysteme.
 
 Die konsequente Anwendung und Weiterentwicklung des Bereitstellungsprinzips wird
-langfristig dazu beitragen, das Vertrauen der Nutzer in mobile Plattformen zu stÃ¤rken,
-digitale SouverÃ¤nitÃ¤t zu fÃ¶rdern und eine fairere, interoperablere digitale Infrastruktur
+langfristig dazu beitragen, das Vertrauen der Nutzer in mobile Plattformen zu stärken,
+digitale Souveränität zu fördern und eine fairere, interoperablere digitale Infrastruktur
 zu schaffen --- eine Infrastruktur, in der Daten dem dienen, der sie erzeugt hat:
 dem Benutzer selbst.
 
@@ -1647,28 +1647,28 @@ Apple Inc.
 \newblock \url{https://developer.apple.com/icloud/documentation/}
 
 \bibitem{dsgvo-text}
-EuropÃ¤isches Parlament und Rat der EuropÃ¤ischen Union.
-\newblock \emph{Verordnung (EU) 2016/679 des EuropÃ¤ischen Parlaments und des Rates
+Europäisches Parlament und Rat der Europäischen Union.
+\newblock \emph{Verordnung (EU) 2016/679 des Europäischen Parlaments und des Rates
   (Datenschutz-Grundverordnung)}.
-\newblock Amtsblatt der EuropÃ¤ischen Union, L~119, S.~1--88, 4.~Mai 2016.
+\newblock Amtsblatt der Europäischen Union, L~119, S.~1--88, 4.~Mai 2016.
 
 \bibitem{dma-text}
-EuropÃ¤isches Parlament und Rat der EuropÃ¤ischen Union.
-\newblock \emph{Verordnung (EU) 2022/1925 Ã¼ber bestreitbare und faire MÃ¤rkte im
+Europäisches Parlament und Rat der Europäischen Union.
+\newblock \emph{Verordnung (EU) 2022/1925 über bestreitbare und faire Märkte im
   digitalen Sektor (Digital Markets Act)}.
-\newblock Amtsblatt der EuropÃ¤ischen Union, L~265, S.~1--66, 12.~Oktober 2022.
+\newblock Amtsblatt der Europäischen Union, L~265, S.~1--66, 12.~Oktober 2022.
 
 \bibitem{data-act-text}
-EuropÃ¤isches Parlament und Rat der EuropÃ¤ischen Union.
-\newblock \emph{Verordnung (EU) 2023/2854 Ã¼ber harmonisierte Vorschriften fÃ¼r einen
+Europäisches Parlament und Rat der Europäischen Union.
+\newblock \emph{Verordnung (EU) 2023/2854 über harmonisierte Vorschriften für einen
   fairen Datenzugang und eine faire Datennutzung (Data Act)}.
-\newblock Amtsblatt der EuropÃ¤ischen Union, L~2023/2854, 13.~Dezember 2023.
+\newblock Amtsblatt der Europäischen Union, L~2023/2854, 13.~Dezember 2023.
 
 \bibitem{ai-act-text}
-EuropÃ¤isches Parlament und Rat der EuropÃ¤ischen Union.
+Europäisches Parlament und Rat der Europäischen Union.
 \newblock \emph{Verordnung (EU) 2024/1689 zur Festlegung harmonisierter Vorschriften
-  fÃ¼r kÃ¼nstliche Intelligenz (Gesetz Ã¼ber kÃ¼nstliche Intelligenz)}.
-\newblock Amtsblatt der EuropÃ¤ischen Union, L~2024/1689, 12.~Juli 2024.
+  für künstliche Intelligenz (Gesetz über künstliche Intelligenz)}.
+\newblock Amtsblatt der Europäischen Union, L~2024/1689, 12.~Juli 2024.
 
 \bibitem{sandboxing-security}
 Enck, W., Ongtang, M., und McDaniel, P.
@@ -1737,9 +1737,9 @@ Google LLC.
 \newblock \url{https://developer.android.com/health-and-fitness/guides/health-connect}
 
 \bibitem{digital-markets-act-enforcement}
-EuropÃ¤ische Kommission.
+Europäische Kommission.
 \newblock \emph{Digital Markets Act: Erster Bewertungsbericht zu den Gatekeeper-Verpflichtungen}.
-\newblock EuropÃ¤ische Kommission, BrÃ¼ssel, 2024.
+\newblock Europäische Kommission, Brüssel, 2024.
 \newblock \url{https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-contestable-digital-markets_de}
 
 \bibitem{mobile-os-architecture}

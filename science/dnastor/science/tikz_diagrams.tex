@@ -37,7 +37,7 @@
 \begin{tikzpicture}[node distance=0.55cm]
   \node[layer=darkgray] (os)   {Betriebssystem / Dateisystem-Interface};
   \node[layer=mainblue, below=of os]  (cod)
-        {QuaternÃ¤rer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
+        {Quaternärer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
   \node[layer=darkgreen, below=of cod] (idx)
         {Subgraph-Signatur-Index $\mathcal{I}$ \quad|\quad Rotations-Match-Cache \quad|\quad
          Redundanz-Pool $\mathcal{M}$};
@@ -61,7 +61,7 @@
 \newpage
 
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-% TIKZ 2  â€“  QuaternÃ¤res Kodierungsschema (Bijektion)
+% TIKZ 2  â€“  Quaternäres Kodierungsschema (Bijektion)
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{tikzpicture}[node distance=1.2cm and 2.5cm]
   % Bit-Paare
@@ -82,7 +82,7 @@
   \draw[arrow, darkgreen] (b10.east) -- (G.west);
   \draw[arrow, gold]      (b11.east) -- (C.west);
 
-  % RÃ¼ckwÃ¤rtspfeile (Dekodierung)
+  % Rückwärtspfeile (Dekodierung)
   \draw[arrow, mainblue!60,  dashed] (A.east) to[bend right=20]
         node[right,font=\tiny]{$\psi$} ++(1.2,0)
         node[right,font=\footnotesize,mainblue]{\texttt{00}};
@@ -99,7 +99,7 @@
   \node[above=0.5cm of A -| {(6.2,3)}, font=\small\itshape, darkgray]
         {Dekodierung~$\psi$};
 
-  % BijektivitÃ¤tsannotation
+  % Bijektivitätsannotation
   \node[draw=darkgreen, fill=lightgreen, rounded corners=3pt,
         font=\small, align=center, below=1.0cm of b11]
         {$\phi: \mathcal{B}^2 \to \Sigma$ ist bijektiv\\
@@ -139,7 +139,7 @@
   \node[sysbox=darkgray, below=0.85cm of ecc, minimum width=3.0cm]
         (verify) {Subgraph-\\Verifikation $\checkmark$};
   \node[sysbox=darkgreen, below=0.85cm of verify, minimum width=3.0cm]
-        (decode) {QuaternÃ¤re\\Dekodierung $\psi$};
+        (decode) {Quaternäre\\Dekodierung $\psi$};
   \node[sysbox=mainblue, below=0.85cm of decode, minimum width=2.5cm]
         (out) {Datenblock $D_i$};
 
@@ -178,7 +178,7 @@
   \draw[arrow, darkgray, very thick] (G) -- node[above,font=\tiny]{back} (A);
   \draw[arrow, darkgray, very thick] (A) -- node[above,font=\tiny]{back} (C);
 
-  % Watson-Crick-Kanten (komplementÃ¤r: Tâ€“A und Gâ€“C)
+  % Watson-Crick-Kanten (komplementär: Tâ€“A und Gâ€“C)
   \draw[-{Stealth}, teal, thick, dashed, bend right=40]
         (T) to node[below,font=\tiny,teal]{$T\!-\!A$} (A);
   \draw[-{Stealth}, teal, thick, dashed, bend right=40]

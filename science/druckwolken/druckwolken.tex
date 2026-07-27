@@ -14,7 +14,7 @@
 
 \geometry{margin=2.5cm}
 
-% Verhindert Ãœberlauf Ã¼ber den rechten Rand
+% Verhindert Überlauf über den rechten Rand
 \sloppy
 \emergencystretch=3em
 
@@ -55,13 +55,13 @@
 	frame=single,
 	columns=fullflexible,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{â‰ˆ}{{$\approx$}}1
@@ -71,7 +71,7 @@
 }
 
 \title{Energiegewinnung aus Druckdifferenzen in Wolken\\[0.3em]
-\large Ein formales Modell zur Nutzung atmosphÃ¤rischer Druckgradienten\\ in konvektiven Wolkensystemen}
+\large Ein formales Modell zur Nutzung atmosphärischer Druckgradienten\\ in konvektiven Wolkensystemen}
 \author{Stephan Epp}
 \date{15. Juni 2026}
 
@@ -82,82 +82,82 @@
 \tableofcontents
 \newpage
 
-\section{EinfÃ¼hrung}
+\section{Einführung}
 
-Die Erde ist von einer GashÃ¼lle umgeben, deren Druck in vertikaler Richtung
-nach dem hydrostatischen Gleichgewicht abnimmt und deren rÃ¤umliche
+Die Erde ist von einer Gashülle umgeben, deren Druck in vertikaler Richtung
+nach dem hydrostatischen Gleichgewicht abnimmt und deren räumliche
 Verteilung durch konvektive Prozesse -- insbesondere in und um Wolken --
-zusÃ¤tzlich gestÃ¶rt wird. Innerhalb von konvektiven Wolkensystemen (z.\,B.
+zusätzlich gestört wird. Innerhalb von konvektiven Wolkensystemen (z.\,B.
 Cumulus- und Cumulonimbus-Wolken) entstehen durch Auf- und
-Abwindbewegungen lokale Druckabweichungen von der ungestÃ¶rten Umgebung,
-die als \emph{dynamische DruckstÃ¶rungen} bezeichnet werden.
+Abwindbewegungen lokale Druckabweichungen von der ungestörten Umgebung,
+die als \emph{dynamische Druckstörungen} bezeichnet werden.
 
 Diese Arbeit entwickelt ein formales Modell, mit dem solche
 Druckdifferenzen $\Delta p$ -- sowohl hydrostatischer als auch dynamischer
-Natur -- systematisch quantifiziert und fÃ¼r die Energiegewinnung mittels
-eines \emph{Druckdifferenz-Wandlers} (eines strÃ¶mungsgetriebenen
-Turbinenelements) nutzbar gemacht werden kÃ¶nnen. Im Zentrum steht die
-Frage, welcher Anteil der verfÃ¼gbaren Druckdifferenz tatsÃ¤chlich in
+Natur -- systematisch quantifiziert und für die Energiegewinnung mittels
+eines \emph{Druckdifferenz-Wandlers} (eines strömungsgetriebenen
+Turbinenelements) nutzbar gemacht werden können. Im Zentrum steht die
+Frage, welcher Anteil der verfügbaren Druckdifferenz tatsächlich in
 mechanische bzw. elektrische Leistung umgewandelt werden kann, und wie
-dieser Anteil optimal zu wÃ¤hlen ist.
+dieser Anteil optimal zu wählen ist.
 
 \subsection{Problemstellung}
 
 Gegeben sei eine \emph{Druckdifferenzzelle}: ein Paar von Punkten $P_1$
-und $P_2$ in der AtmosphÃ¤re -- etwa die Wolkenbasis und der Kern eines
-Aufwindschlauchs, oder zwei Punkte unterschiedlicher HÃ¶he -- mit DrÃ¼cken
+und $P_2$ in der Atmosphäre -- etwa die Wolkenbasis und der Kern eines
+Aufwindschlauchs, oder zwei Punkte unterschiedlicher Höhe -- mit Drücken
 $p_1 > p_2$, Druckdifferenz $\Delta p = p_1 - p_2$ und lokaler Luftdichte
 $\rho$.
 
 \textbf{Ziel:} Bestimme den Anteil $x \in [0,1]$ der Druckdifferenz
-$\Delta p$, der Ã¼ber ein Turbinenelement abgebaut werden soll, so dass die
+$\Delta p$, der über ein Turbinenelement abgebaut werden soll, so dass die
 daraus resultierende elektrische bzw.\ mechanische Leistung $P(x)$ maximal
-wird, und bestimme diese maximale Leistung $P_{\max}$ in AbhÃ¤ngigkeit von
-$\Delta p$, der QuerschnittsflÃ¤che $A$ des Wandlers und der Luftdichte
+wird, und bestimme diese maximale Leistung $P_{\max}$ in Abhängigkeit von
+$\Delta p$, der Querschnittsfläche $A$ des Wandlers und der Luftdichte
 $\rho$.
 
 \textbf{Ergebnis:}
 \begin{itemize}
 	\item Es existiert ein \textbf{eindeutiger} optimaler Extraktionsanteil
-	$x^\ast = 2/3$, unabhÃ¤ngig von $\Delta p$, $A$ und $\rho$.
+	$x^\ast = 2/3$, unabhängig von $\Delta p$, $A$ und $\rho$.
 	\item Die maximale Leistung skaliert mit $\Delta p^{3/2}$, d.\,h.\
-	bereits kleine ErhÃ¶hungen der Druckdifferenz fÃ¼hren zu
-	Ã¼berproportionalen LeistungszuwÃ¤chsen.
+	bereits kleine Erhöhungen der Druckdifferenz führen zu
+	überproportionalen Leistungszuwächsen.
 	\item Es ergibt sich ein dimensionsloser \emph{Leistungsbeiwert}
 	$c_p = 2\sqrt{3}/9 \approx 0{,}3849$, der die Effizienz des
 	Druckdifferenz-Wandlers im Vergleich zur kinetischen
-	Energieflussdichte des Ã¤quivalenten Windes beschreibt.
-	\item FÃ¼r $\Delta h \ll H$ (SkalenhÃ¶he der AtmosphÃ¤re) ist die
-	hydrostatische Druckdifferenz nÃ¤herungsweise linear in $\Delta h$,
+	Energieflussdichte des äquivalenten Windes beschreibt.
+	\item Für $\Delta h \ll H$ (Skalenhöhe der Atmosphäre) ist die
+	hydrostatische Druckdifferenz näherungsweise linear in $\Delta h$,
 	mit explizit angebbarer Fehlerschranke.
 \end{itemize}
 
 \subsection{Motivation}
 
-Die Nutzung atmosphÃ¤rischer EnergieflÃ¼sse -- etwa in Form von
-HÃ¶henwindenergie (\emph{Airborne Wind Energy}, AWE) oder
+Die Nutzung atmosphärischer Energieflüsse -- etwa in Form von
+Höhenwindenergie (\emph{Airborne Wind Energy}, AWE) oder
 Druckdifferenz-getriebenen Systemen -- gewinnt im Kontext erneuerbarer
-Energien zunehmend an Bedeutung. WÃ¤hrend klassische Windenergieanlagen die
+Energien zunehmend an Bedeutung. Während klassische Windenergieanlagen die
 kinetische Energie des Windes nutzen, betrachtet diese Arbeit einen
-komplementÃ¤ren Ansatz: die direkte Nutzung von \emph{statischen
+komplementären Ansatz: die direkte Nutzung von \emph{statischen
 Druckdifferenzen}, wie sie hydrostatisch zwischen verschiedenen
-HÃ¶henschichten der AtmosphÃ¤re und dynamisch innerhalb konvektiver Zellen
+Höhenschichten der Atmosphäre und dynamisch innerhalb konvektiver Zellen
 auftreten.
 
 Der hier entwickelte formale Rahmen ist bewusst allgemein gehalten: Er
 beschreibt einen idealisierten, verlustfreien Wandler auf Basis der
 Bernoulli-Gleichung und liefert damit eine \emph{theoretische Obergrenze}
-fÃ¼r die erzielbare Leistung. Diese Obergrenze dient als Referenzpunkt fÃ¼r
+für die erzielbare Leistung. Diese Obergrenze dient als Referenzpunkt für
 die Bewertung realer technischer Umsetzungen, deren Wirkungsgrade
-naturgemÃ¤ÃŸ darunter liegen werden.
+naturgemäß darunter liegen werden.
 
 \section{Grundlagen}
 
 \subsection{Definitionen}
 
 \begin{definition}[Hydrostatisches Gleichgewicht]
-	FÃ¼r eine ruhende AtmosphÃ¤re mit Dichte $\rho(h)$ in AbhÃ¤ngigkeit von
-	der HÃ¶he $h$ Ã¼ber dem Boden gilt das hydrostatische Gleichgewicht
+	Für eine ruhende Atmosphäre mit Dichte $\rho(h)$ in Abhängigkeit von
+	der Höhe $h$ über dem Boden gilt das hydrostatische Gleichgewicht
 	\[
 		\frac{dp}{dh} = -\rho(h)\, g,
 	\]
@@ -165,23 +165,23 @@ naturgemÃ¤ÃŸ darunter liegen werden.
 	die Erdbeschleunigung ist.
 \end{definition}
 
-\begin{definition}[SkalenhÃ¶he]
-	FÃ¼r eine isotherme AtmosphÃ¤re der Temperatur $T$ mit der idealen
+\begin{definition}[Skalenhöhe]
+	Für eine isotherme Atmosphäre der Temperatur $T$ mit der idealen
 	Gasgleichung $\rho = \dfrac{pM}{RT}$ (mit molarer Masse $M$ der
-	trockenen Luft und universeller Gaskonstante $R$) ist die SkalenhÃ¶he
+	trockenen Luft und universeller Gaskonstante $R$) ist die Skalenhöhe
 	definiert durch
 	\[
 		H := \frac{RT}{Mg}.
 	\]
 \end{definition}
 
-\begin{lemma}[Barometrische HÃ¶henformel]
+\begin{lemma}[Barometrische Höhenformel]
 	\label{lem:barometrisch}
-	FÃ¼r eine isotherme AtmosphÃ¤re gilt
+	Für eine isotherme Atmosphäre gilt
 	\[
 		p(h) = p_0 \, e^{-h/H},
 	\]
-	wobei $p_0 = p(0)$ der Druck auf BezugshÃ¶he $h=0$ ist.
+	wobei $p_0 = p(0)$ der Druck auf Bezugshöhe $h=0$ ist.
 \end{lemma}
 
 \begin{proof}
@@ -190,7 +190,7 @@ naturgemÃ¤ÃŸ darunter liegen werden.
 	\[
 		\frac{dp}{dh} = -\frac{Mg}{RT}\, p = -\frac{p}{H}.
 	\]
-	Dies ist eine separierbare gewÃ¶hnliche Differentialgleichung erster
+	Dies ist eine separierbare gewöhnliche Differentialgleichung erster
 	Ordnung:
 	\[
 		\frac{dp}{p} = -\frac{dh}{H}
@@ -203,8 +203,8 @@ naturgemÃ¤ÃŸ darunter liegen werden.
 
 \begin{beispiel}
 	\label{bsp:skalenhoehe}
-	FÃ¼r $T = 288{,}15\ \mathrm{K}$ (entspricht $15\,^\circ\mathrm{C}$,
-	StandardatmosphÃ¤re auf MeereshÃ¶he), $R = 8{,}314\
+	Für $T = 288{,}15\ \mathrm{K}$ (entspricht $15\,^\circ\mathrm{C}$,
+	Standardatmosphäre auf Meereshöhe), $R = 8{,}314\
 	\mathrm{J\,mol^{-1}\,K^{-1}}$, $M = 0{,}02896\ \mathrm{kg/mol}$ und
 	$g = 9{,}81\ \mathrm{m/s^2}$ ergibt sich
 	\[
@@ -219,17 +219,17 @@ naturgemÃ¤ÃŸ darunter liegen werden.
 	\label{def:zelle}
 	Eine \emph{Druckdifferenzzelle} ist ein Tripel
 	$(P_1, P_2, \rho)$ bestehend aus zwei Punkten $P_1, P_2$ in der
-	AtmosphÃ¤re mit zugehÃ¶rigen DrÃ¼cken $p_1 > p_2$ und einer (lokal als
+	Atmosphäre mit zugehörigen Drücken $p_1 > p_2$ und einer (lokal als
 	konstant angenommenen) Luftdichte $\rho$ im Bereich der Zelle. Die
 	\emph{Druckdifferenz} der Zelle ist $\Delta p := p_1 - p_2 > 0$.
 \end{definition}
 
 \begin{definition}[Leistungsdichte]
-	FÃ¼r einen Volumenstrom der Geschwindigkeit $v$ durch eine FlÃ¤che $A$
+	Für einen Volumenstrom der Geschwindigkeit $v$ durch eine Fläche $A$
 	bei Druckdifferenz $\Delta p$ ist die \emph{Leistungsdichte}
 	$\pi := \Delta p \cdot v$ definiert. Sie hat die Einheit
 	$[\pi] = \mathrm{Pa} \cdot \mathrm{m/s} = \mathrm{W/m^2}$, ist also
-	eine Leistung pro FlÃ¤che.
+	eine Leistung pro Fläche.
 \end{definition}
 
 \subsection{Grundidee}
@@ -237,11 +237,11 @@ naturgemÃ¤ÃŸ darunter liegen werden.
 \subsubsection{Energieextraktion aus Druckdifferenzen}
 
 Die Grundidee des Druckdifferenz-Wandlers basiert auf der
-Bernoulli-Gleichung fÃ¼r stationÃ¤re, inkompressible, reibungsfreie
-StrÃ¶mung entlang einer Stromlinie. Befindet sich die Luft auf der
-Hochdruckseite ($p_1$) nÃ¤herungsweise in Ruhe ($v_1 \approx 0$) und wird
+Bernoulli-Gleichung für stationäre, inkompressible, reibungsfreie
+Strömung entlang einer Stromlinie. Befindet sich die Luft auf der
+Hochdruckseite ($p_1$) näherungsweise in Ruhe ($v_1 \approx 0$) und wird
 durch ein Wandlerelement (z.\,B.\ eine Turbine in einem Kanal) auf die
-Niederdruckseite ($p_2$) gefÃ¼hrt, so gilt fÃ¼r die Austrittsgeschwindigkeit
+Niederdruckseite ($p_2$) geführt, so gilt für die Austrittsgeschwindigkeit
 $v$ und den am Wandler abgebauten Druck $\Delta p_t$:
 \[
 	p_1 = p_2 + \tfrac{1}{2}\rho v^2 + \Delta p_t.
@@ -256,19 +256,19 @@ Mit $\Delta p = p_1 - p_2$ folgt
 
 Gleichung~\eqref{eq:bernoulli} zeigt das zentrale Spannungsfeld des
 Problems: Wird der \emph{gesamte} Druckunterschied am Wandler abgebaut
-($\Delta p_t = \Delta p$), so verschwindet die StrÃ¶mungsgeschwindigkeit
-$v$ -- und damit der Volumenstrom -- vollstÃ¤ndig, sodass trotz maximalem
-Druckabbau \emph{keine} Leistung Ã¼bertragen wird. Wird umgekehrt gar kein
-Druck abgebaut ($\Delta p_t = 0$), so erreicht die StrÃ¶mung maximale
+($\Delta p_t = \Delta p$), so verschwindet die Strömungsgeschwindigkeit
+$v$ -- und damit der Volumenstrom -- vollständig, sodass trotz maximalem
+Druckabbau \emph{keine} Leistung übertragen wird. Wird umgekehrt gar kein
+Druck abgebaut ($\Delta p_t = 0$), so erreicht die Strömung maximale
 Geschwindigkeit, aber der Wandler entzieht ihr keine Energie. Der
 optimale Betriebspunkt liegt folglich \emph{zwischen} diesen beiden
 Extremen.
 
-\subsubsection{Extraktionsanteil statt vollstÃ¤ndigem Druckabbau}
+\subsubsection{Extraktionsanteil statt vollständigem Druckabbau}
 
 Anstatt -- wie im Subgraph Algorithmus alle $n!$ Permutationen durch $n$
 zyklische Rotationen ersetzt werden -- hier alle denkbaren
-StrÃ¶mungszustÃ¤nde einzeln zu betrachten, parametrisieren wir das Problem
+Strömungszustände einzeln zu betrachten, parametrisieren wir das Problem
 durch einen einzigen \emph{Extraktionsanteil} $x \in [0,1]$:
 \[
 	\Delta p_t =: x \cdot \Delta p, \qquad x \in [0,1].
@@ -281,14 +281,14 @@ Aus Gleichung~\eqref{eq:bernoulli} folgt damit
 
 \begin{beispiel}
 	\label{bsp:rotation}
-	FÃ¼r $\Delta p = 300\ \mathrm{Pa}$ und $\rho = 1{,}0\ \mathrm{kg/m^3}$
-	ergeben sich fÃ¼r drei Extraktionsanteile:
+	Für $\Delta p = 300\ \mathrm{Pa}$ und $\rho = 1{,}0\ \mathrm{kg/m^3}$
+	ergeben sich für drei Extraktionsanteile:
 	\begin{align*}
 		x=0{,}0:&\quad v(0) = \sqrt{600}\ \mathrm{m/s} \approx 24{,}5\ \mathrm{m/s}, \\
 		x=2/3:&\quad v(2/3) = \sqrt{200}\ \mathrm{m/s} \approx 14{,}1\ \mathrm{m/s}, \\
 		x=1{,}0:&\quad v(1) = 0\ \mathrm{m/s}.
 	\end{align*}
-	Diese drei FÃ¤lle entsprechen genau den drei in
+	Diese drei Fälle entsprechen genau den drei in
 	Abschnitt~\ref{sec:optimierung} diskutierten qualitativen Regimen.
 \end{beispiel}
 
@@ -300,19 +300,19 @@ Der Druckdifferenz-Wandler arbeitet in drei Hauptschritten:
 
 \textbf{Schritt 1: Bestimmung der Druckdifferenzzelle}
 
-Bestimme fÃ¼r eine gegebene Wolkenregion eine Druckdifferenzzelle
+Bestimme für eine gegebene Wolkenregion eine Druckdifferenzzelle
 $(P_1, P_2, \rho)$ im Sinne von Definition~\ref{def:zelle}, d.\,h.\
 ermittle $\Delta p = p_1 - p_2$ und die lokale Dichte $\rho$.
 
 \textbf{Schritt 2: Wahl des Extraktionsanteils}
 
-WÃ¤hle einen Extraktionsanteil $x \in [0,1]$ und berechne gemÃ¤ÃŸ
-Gleichung~\eqref{eq:v_von_x} die resultierende StrÃ¶mungsgeschwindigkeit
+Wähle einen Extraktionsanteil $x \in [0,1]$ und berechne gemäß
+Gleichung~\eqref{eq:v_von_x} die resultierende Strömungsgeschwindigkeit
 $v(x)$ durch den Wandler.
 
 \textbf{Schritt 3: Berechnung der Leistung}
 
-Berechne den Volumenstrom $Q(x) = A \cdot v(x)$ durch die QuerschnittsflÃ¤che
+Berechne den Volumenstrom $Q(x) = A \cdot v(x)$ durch die Querschnittsfläche
 $A$ des Wandlers und daraus die abgegebene Leistung
 \begin{equation}
 	\label{eq:leistung}
@@ -324,9 +324,9 @@ $A$ des Wandlers und daraus die abgegebene Leistung
 \label{sec:optimierung}
 
 Die Funktion $f(x) = x\sqrt{1-x}$ aus Gleichung~\eqref{eq:leistung}
-bestimmt das gesamte $x$-abhÃ¤ngige Verhalten der Leistung; der
+bestimmt das gesamte $x$-abhängige Verhalten der Leistung; der
 verbleibende Faktor $A\sqrt{2/\rho}\,\Delta p^{3/2}$ ist eine von $x$
-unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
+unabhängige Konstante. Es genügt daher, $f$ auf $[0,1]$ zu maximieren.
 
 \begin{satz}[Optimaler Extraktionsanteil]
 	\label{satz:optimal_x}
@@ -346,11 +346,11 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 	auf $[0,1]$ ein globales Maximum an.
 
 	\textbf{Randwerte.} Es gilt $f(0) = 0 \cdot \sqrt{1} = 0$ und
-	$f(1) = 1 \cdot \sqrt{0} = 0$. Da $f(x) > 0$ fÃ¼r alle $x \in (0,1)$
+	$f(1) = 1 \cdot \sqrt{0} = 0$. Da $f(x) > 0$ für alle $x \in (0,1)$
 	(Produkt zweier positiver Faktoren), liegt das globale Maximum im
 	offenen Intervall $(0,1)$.
 
-	\textbf{Kritischer Punkt.} FÃ¼r $x \in (0,1)$ ist $f$ differenzierbar
+	\textbf{Kritischer Punkt.} Für $x \in (0,1)$ ist $f$ differenzierbar
 	mit
 	\[
 		f'(x) = \sqrt{1-x} + x \cdot \frac{-1}{2\sqrt{1-x}}
@@ -358,13 +358,13 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 		= \frac{2(1-x) - x}{2\sqrt{1-x}}
 		= \frac{2 - 3x}{2\sqrt{1-x}}.
 	\]
-	Da $2\sqrt{1-x} > 0$ fÃ¼r $x \in (0,1)$, hat $f'(x)$ dasselbe
+	Da $2\sqrt{1-x} > 0$ für $x \in (0,1)$, hat $f'(x)$ dasselbe
 	Vorzeichen wie $2-3x$. Somit:
 	\begin{itemize}
-		\item $f'(x) > 0$ fÃ¼r $x \in (0, 2/3)$ -- $f$ ist streng
+		\item $f'(x) > 0$ für $x \in (0, 2/3)$ -- $f$ ist streng
 		monoton steigend,
-		\item $f'(x) = 0$ fÃ¼r $x = 2/3$ -- einziger kritischer Punkt,
-		\item $f'(x) < 0$ fÃ¼r $x \in (2/3, 1)$ -- $f$ ist streng
+		\item $f'(x) = 0$ für $x = 2/3$ -- einziger kritischer Punkt,
+		\item $f'(x) < 0$ für $x \in (2/3, 1)$ -- $f$ ist streng
 		monoton fallend.
 	\end{itemize}
 	$f$ ist also auf $(0, 2/3]$ streng monoton steigend und auf
@@ -384,28 +384,28 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 
 \begin{korollar}[Maximale Leistung des Druckdifferenz-Wandlers]
 	\label{kor:pmax}
-	FÃ¼r eine Druckdifferenzzelle mit Druckdifferenz $\Delta p$, Dichte
-	$\rho$ und Wandlerquerschnitt $A$ ist die maximal Ã¼bertragbare
+	Für eine Druckdifferenzzelle mit Druckdifferenz $\Delta p$, Dichte
+	$\rho$ und Wandlerquerschnitt $A$ ist die maximal übertragbare
 	Leistung
 	\begin{equation}
 		\label{eq:pmax}
 		P_{\max} = c_p \cdot A \sqrt{\frac{2}{\rho}}\, \Delta p^{3/2},
 		\qquad c_p := \frac{2\sqrt{3}}{9} \approx 0{,}3849,
 	\end{equation}
-	und wird fÃ¼r den Extraktionsanteil $x^\ast = 2/3$ erreicht. Die
-	zugehÃ¶rige StrÃ¶mungsgeschwindigkeit ist
+	und wird für den Extraktionsanteil $x^\ast = 2/3$ erreicht. Die
+	zugehörige Strömungsgeschwindigkeit ist
 	\[
 		v(x^\ast) = \sqrt{\frac{2}{3}\cdot\frac{\Delta p}{\rho}},
 	\]
 	d.\,h.\ $v(x^\ast) = \tfrac{1}{\sqrt{3}}\, v(0)$, wobei
 	$v(0) = \sqrt{2\Delta p/\rho}$ die ungebremste
-	StrÃ¶mungsgeschwindigkeit ohne Energieentzug ist.
+	Strömungsgeschwindigkeit ohne Energieentzug ist.
 \end{korollar}
 
 \begin{proof}
 	Einsetzen von $x^\ast = 2/3$ und $f(x^\ast) = 2\sqrt{3}/9$ aus
 	Satz~\ref{satz:optimal_x} in Gleichung~\eqref{eq:leistung} liefert
-	unmittelbar Gleichung~\eqref{eq:pmax}. FÃ¼r die Geschwindigkeit folgt
+	unmittelbar Gleichung~\eqref{eq:pmax}. Für die Geschwindigkeit folgt
 	aus Gleichung~\eqref{eq:v_von_x}
 	\[
 		v(2/3) = \sqrt{\frac{2(1-2/3)\Delta p}{\rho}}
@@ -417,7 +417,7 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 
 \begin{beispiel}[Numerisches Beispiel]
 	\label{bsp:numerisch}
-	FÃ¼r $\Delta p = 300\ \mathrm{Pa}$, $\rho = 1{,}0\ \mathrm{kg/m^3}$ und
+	Für $\Delta p = 300\ \mathrm{Pa}$, $\rho = 1{,}0\ \mathrm{kg/m^3}$ und
 	$A = 10\ \mathrm{m^2}$ ergibt sich mit $x^\ast = 2/3$:
 	\begin{align*}
 		v(x^\ast) &= \sqrt{200}\ \mathrm{m/s} \approx 14{,}14\ \mathrm{m/s}, \\
@@ -425,7 +425,7 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 		\Delta p_t &= x^\ast \Delta p = 200\ \mathrm{Pa}, \\
 		P_{\max} &= \Delta p_t \cdot Q \approx 28{,}3\ \mathrm{kW}.
 	\end{align*}
-	Zur Kontrolle Ã¼ber Gleichung~\eqref{eq:pmax}:
+	Zur Kontrolle über Gleichung~\eqref{eq:pmax}:
 	$P_{\max} = c_p \cdot 10 \cdot \sqrt{2} \cdot 300^{3/2}
 	\approx 0{,}3849 \cdot 10 \cdot 1{,}4142 \cdot 5196{,}2
 	\approx 28\,284\ \mathrm{W}$. \checkmark
@@ -433,9 +433,9 @@ unabhÃ¤ngige Konstante. Es genÃ¼gt daher, $f$ auf $[0,1]$ zu maximieren.
 
 \subsection{Implementierung}
 
-Die Berechnung von $x^\ast$, $v(x^\ast)$ und $P_{\max}$ lÃ¤sst sich direkt
+Die Berechnung von $x^\ast$, $v(x^\ast)$ und $P_{\max}$ lässt sich direkt
 in Python umsetzen. Die folgende Implementierung verwendet sowohl die
-geschlossene analytische LÃ¶sung aus Satz~\ref{satz:optimal_x} als auch
+geschlossene analytische Lösung aus Satz~\ref{satz:optimal_x} als auch
 -- zur Verifikation -- eine numerische Optimierung:
 
 \begin{lstlisting}[language=Python, caption=Leistungsfunktion und Optimierung]
@@ -447,7 +447,7 @@ def f(x: float) -> float:
     """
     Normierte Leistungsfunktion f(x) = x * sqrt(1-x).
 
-    f(x) beschreibt den x-abhÃ¤ngigen Anteil der Leistung
+    f(x) beschreibt den x-abhängigen Anteil der Leistung
     P(x) = A * sqrt(2/rho) * dp**1.5 * f(x)
     eines Druckdifferenz-Wandlers mit Extraktionsanteil x.
 
@@ -519,7 +519,7 @@ if __name__ == "__main__":
 \begin{satz}[Skalierungsgesetz]
 	\label{satz:skalierung}
 	Die maximale Leistung $P_{\max}$ eines Druckdifferenz-Wandlers ist
-	proportional zur QuerschnittsflÃ¤che $A$, zur Wurzel des Kehrwerts
+	proportional zur Querschnittsfläche $A$, zur Wurzel des Kehrwerts
 	der Dichte $\rho^{-1/2}$ und zur $\tfrac{3}{2}$-ten Potenz der
 	Druckdifferenz $\Delta p^{3/2}$:
 	\[
@@ -529,8 +529,8 @@ if __name__ == "__main__":
 
 \begin{proof}
 	Dies folgt unmittelbar aus Gleichung~\eqref{eq:pmax}, da $c_p$ und
-	der Faktor $\sqrt{2}$ dimensionslose bzw.\ konstante GrÃ¶ÃŸen sind.
-	Zur KonsistenzprÃ¼fung fÃ¼hren wir eine Dimensionsanalyse durch.
+	der Faktor $\sqrt{2}$ dimensionslose bzw.\ konstante Größen sind.
+	Zur Konsistenzprüfung führen wir eine Dimensionsanalyse durch.
 	Mit den SI-Basiseinheiten gilt $[\Delta p] = \mathrm{Pa} =
 	\mathrm{kg\,m^{-1}\,s^{-2}}$ und $[\rho] = \mathrm{kg\,m^{-3}}$.
 	Damit
@@ -547,7 +547,7 @@ if __name__ == "__main__":
 		= \mathrm{kg^{3/2-1/2}\,m^{-3/2+3/2}\,s^{-3}}
 		= \mathrm{kg\,s^{-3}}.
 	\]
-	Multiplikation mit $[A] = \mathrm{m^2}$ liefert schlieÃŸlich
+	Multiplikation mit $[A] = \mathrm{m^2}$ liefert schließlich
 	\[
 		\left[A \cdot \rho^{-1/2} \cdot \Delta p^{3/2}\right]
 		= \mathrm{kg\,m^2\,s^{-3}}
@@ -555,36 +555,36 @@ if __name__ == "__main__":
 		= \frac{\mathrm{J}}{\mathrm{s}}
 		= \mathrm{W},
 	\]
-	also tatsÃ¤chlich die Einheit einer Leistung. Die ProportionalitÃ¤t ist
+	also tatsächlich die Einheit einer Leistung. Die Proportionalität ist
 	damit sowohl algebraisch (aus Gleichung~\eqref{eq:pmax}) als auch
 	dimensional konsistent.
 \end{proof}
 
 \begin{bemerkung}
 	Satz~\ref{satz:skalierung} hat eine wichtige praktische Konsequenz:
-	Eine Verdoppelung der Druckdifferenz $\Delta p$ fÃ¼hrt zu einer
-	Leistungssteigerung um den Faktor $2^{3/2} \approx 2{,}83$, wÃ¤hrend
-	eine Verdoppelung der FlÃ¤che $A$ die Leistung nur um den Faktor $2$
-	erhÃ¶ht. Druckdifferenzen sind also der "hebelstÃ¤rkere" Parameter --
+	Eine Verdoppelung der Druckdifferenz $\Delta p$ führt zu einer
+	Leistungssteigerung um den Faktor $2^{3/2} \approx 2{,}83$, während
+	eine Verdoppelung der Fläche $A$ die Leistung nur um den Faktor $2$
+	erhöht. Druckdifferenzen sind also der "hebelstärkere" Parameter --
 	dies motiviert die in Abschnitt~\ref{sec:atmosphaere} folgende
-	Analyse, wie groÃŸ $\Delta p$ in realen Wolkensystemen werden kann.
+	Analyse, wie groß $\Delta p$ in realen Wolkensystemen werden kann.
 \end{bemerkung}
 
-\subsection{Druckdifferenzen in der AtmosphÃ¤re}
+\subsection{Druckdifferenzen in der Atmosphäre}
 \label{sec:atmosphaere}
 
-Mit Lemma~\ref{lem:barometrisch} lÃ¤sst sich die hydrostatische
-Druckdifferenz zwischen zwei HÃ¶hen $h$ und $h+\Delta h$ explizit angeben.
+Mit Lemma~\ref{lem:barometrisch} lässt sich die hydrostatische
+Druckdifferenz zwischen zwei Höhen $h$ und $h+\Delta h$ explizit angeben.
 
 \begin{lemma}[Hydrostatische Druckdifferenz]
 	\label{lem:hydrostatisch}
-	FÃ¼r zwei HÃ¶hen $h_1 < h_2 = h_1 + \Delta h$ in einer isothermen
-	AtmosphÃ¤re mit SkalenhÃ¶he $H$ gilt
+	Für zwei Höhen $h_1 < h_2 = h_1 + \Delta h$ in einer isothermen
+	Atmosphäre mit Skalenhöhe $H$ gilt
 	\[
 		\Delta p(\Delta h) := p(h_1) - p(h_2)
 		= p(h_1)\left(1 - e^{-\Delta h / H}\right).
 	\]
-	Insbesondere gilt fÃ¼r $h_1 = 0$:
+	Insbesondere gilt für $h_1 = 0$:
 	$\Delta p(\Delta h) = p_0\left(1 - e^{-\Delta h/H}\right)$.
 \end{lemma}
 
@@ -594,9 +594,9 @@ Druckdifferenz zwischen zwei HÃ¶hen $h$ und $h+\Delta h$ explizit angeben.
 	$\Delta p(\Delta h) = p(h_1) - p(h_2)$ liefert die Behauptung.
 \end{proof}
 
-\begin{lemma}[Linearisierung fÃ¼r $\Delta h \ll H$]
+\begin{lemma}[Linearisierung für $\Delta h \ll H$]
 	\label{lem:linearisierung}
-	FÃ¼r $\Delta h \geq 0$ gilt
+	Für $\Delta h \geq 0$ gilt
 	\[
 		\left| \Delta p(\Delta h) - \frac{p_0}{H}\Delta h \right|
 		\leq \frac{p_0}{2H^2}\, \Delta h^2.
@@ -611,7 +611,7 @@ Druckdifferenz zwischen zwei HÃ¶hen $h$ und $h+\Delta h$ explizit angeben.
 	\[
 		e^{-u} = 1 - u + \frac{u^2}{2} - \frac{u^3}{6}e^{-\xi}.
 	\]
-	Da $e^{-\xi} \in (0,1]$ fÃ¼r $\xi \geq 0$, folgt
+	Da $e^{-\xi} \in (0,1]$ für $\xi \geq 0$, folgt
 	\[
 		1 - e^{-u} = u - \frac{u^2}{2} + \frac{u^3}{6}e^{-\xi}
 		= u - \frac{u^2}{2} + R(u), \qquad
@@ -624,20 +624,20 @@ Druckdifferenz zwischen zwei HÃ¶hen $h$ und $h+\Delta h$ explizit angeben.
 		\leq \frac{u^2}{2} + R(u)
 		\leq \frac{u^2}{2} + \frac{u^3}{6}.
 	\]
-	FÃ¼r $u \in [0,1]$ (also $\Delta h \leq H$) gilt $u^3 \leq u^2$ und
+	Für $u \in [0,1]$ (also $\Delta h \leq H$) gilt $u^3 \leq u^2$ und
 	somit $\frac{u^2}{2} + \frac{u^3}{6} \leq \frac{u^2}{2} +
 	\frac{u^2}{6} = \frac{2u^2}{3} \leq u^2$. Also
-	$\left|(1-e^{-u}) - u\right| \leq u^2$ fÃ¼r $u \in [0,1]$; eine etwas
-	schÃ¤rfere, fÃ¼r alle $u \geq 0$ gÃ¼ltige Schranke ist
-	$\left|(1-e^{-u})-u\right| \le u^2/2$ fÃ¼r hinreichend kleine $u$, da
-	dann $R(u) = O(u^3)$ gegenÃ¼ber $u^2/2$ vernachlÃ¤ssigbar ist. Mit
+	$\left|(1-e^{-u}) - u\right| \leq u^2$ für $u \in [0,1]$; eine etwas
+	schärfere, für alle $u \geq 0$ gültige Schranke ist
+	$\left|(1-e^{-u})-u\right| \le u^2/2$ für hinreichend kleine $u$, da
+	dann $R(u) = O(u^3)$ gegenüber $u^2/2$ vernachlässigbar ist. Mit
 	$\Delta p(\Delta h) = p_0(1-e^{-u})$ und $u = \Delta h/H$ folgt
 	\[
 		\left|\Delta p(\Delta h) - \frac{p_0}{H}\Delta h\right|
 		= p_0\left|(1-e^{-u}) - u\right|
 		\leq \frac{p_0}{2H^2}\Delta h^2
 	\]
-	fÃ¼r $\Delta h$ hinreichend klein gegenÃ¼ber $H$, was die Behauptung
+	für $\Delta h$ hinreichend klein gegenüber $H$, was die Behauptung
 	zeigt. \qedhere
 \end{proof}
 
@@ -645,54 +645,54 @@ Druckdifferenz zwischen zwei HÃ¶hen $h$ und $h+\Delta h$ explizit angeben.
 	\label{bsp:linearisierung}
 	Mit $p_0 = 101\,325\ \mathrm{Pa}$ und $H \approx 8434\ \mathrm{m}$
 	(Beispiel~\ref{bsp:skalenhoehe}) gilt $p_0/H \approx 12{,}01\
-	\mathrm{Pa/m}$. FÃ¼r $\Delta h = 1000\ \mathrm{m}$ liefert die exakte
+	\mathrm{Pa/m}$. Für $\Delta h = 1000\ \mathrm{m}$ liefert die exakte
 	Formel
 	\[
 		\Delta p(1000) = p_0\left(1 - e^{-1000/8434}\right)
 		\approx 101\,325 \cdot 0{,}1126
 		\approx 11\,409\ \mathrm{Pa},
 	\]
-	wÃ¤hrend die Linearisierung $\frac{p_0}{H}\Delta h \approx 12\,012\
+	während die Linearisierung $\frac{p_0}{H}\Delta h \approx 12\,012\
 	\mathrm{Pa}$ liefert -- ein relativer Fehler von ca.\ $5{,}3\,\%$,
-	in Ãœbereinstimmung mit der Fehlerschranke $O(\Delta h/H) \approx
-	11{,}9\,\%$ aus Lemma~\ref{lem:linearisierung} (die tatsÃ¤chliche
-	Abweichung liegt, wie fÃ¼r eine quadratische Schranke erster Ordnung
+	in Übereinstimmung mit der Fehlerschranke $O(\Delta h/H) \approx
+	11{,}9\,\%$ aus Lemma~\ref{lem:linearisierung} (die tatsächliche
+	Abweichung liegt, wie für eine quadratische Schranke erster Ordnung
 	zu erwarten, deutlich darunter).
 \end{beispiel}
 
 Neben dieser \emph{hydrostatischen} Komponente treten in konvektiven
-Wolken \emph{dynamische} DruckstÃ¶rungen auf, die direkt mit den
-StrÃ¶mungsgeschwindigkeiten der Auf- und Abwinde zusammenhÃ¤ngen. FÃ¼r eine
-lokale GeschwindigkeitsstÃ¶rung $v$ relativ zur ruhenden Umgebung folgt aus
-der Bernoulli-Gleichung eine dynamische DruckstÃ¶rung der GrÃ¶ÃŸenordnung
+Wolken \emph{dynamische} Druckstörungen auf, die direkt mit den
+Strömungsgeschwindigkeiten der Auf- und Abwinde zusammenhängen. Für eine
+lokale Geschwindigkeitsstörung $v$ relativ zur ruhenden Umgebung folgt aus
+der Bernoulli-Gleichung eine dynamische Druckstörung der Größenordnung
 \[
 	\Delta p_{\mathrm{dyn}} \sim \tfrac{1}{2}\rho v^2.
 \]
-FÃ¼r krÃ¤ftige Aufwinde in Cumulonimbus-Wolken werden in der Literatur
+Für kräftige Aufwinde in Cumulonimbus-Wolken werden in der Literatur
 vertikale Geschwindigkeiten von $v \approx 20$--$30\ \mathrm{m/s}$
-berichtet. FÃ¼r $v = 24{,}5\ \mathrm{m/s}$ und $\rho = 1{,}0\
+berichtet. Für $v = 24{,}5\ \mathrm{m/s}$ und $\rho = 1{,}0\
 \mathrm{kg/m^3}$ ergibt sich $\Delta p_{\mathrm{dyn}} \approx
 300\ \mathrm{Pa}$ -- genau der Wert, der in den
 Beispielen~\ref{bsp:rotation} und \ref{bsp:numerisch} verwendet wurde.
-Dynamische DruckstÃ¶rungen dieser GrÃ¶ÃŸenordnung sind also in starken
-konvektiven Zellen physikalisch plausibel, wÃ¤hrend die in
+Dynamische Druckstörungen dieser Größenordnung sind also in starken
+konvektiven Zellen physikalisch plausibel, während die in
 Beispiel~\ref{bsp:linearisierung} berechnete hydrostatische
-Druckdifferenz von Ã¼ber $11\,000\ \mathrm{Pa}$ eine HÃ¶hendifferenz von
-$\Delta h = 1000\ \mathrm{m}$ voraussetzt und damit eher fÃ¼r vertikal
+Druckdifferenz von über $11\,000\ \mathrm{Pa}$ eine Höhendifferenz von
+$\Delta h = 1000\ \mathrm{m}$ voraussetzt und damit eher für vertikal
 ausgedehnte, geflesselte Systeme relevant ist (siehe
 Abschnitt~\ref{sec:ausblick}).
 
-\subsection{Ã„quivalente Windgeschwindigkeit und Vergleich mit Windenergie}
+\subsection{Äquivalente Windgeschwindigkeit und Vergleich mit Windenergie}
 
-\begin{definition}[Ã„quivalente Windgeschwindigkeit]
-	FÃ¼r eine Druckdifferenzzelle mit $\Delta p$ und $\rho$ ist die
-	\emph{Ã¤quivalente Windgeschwindigkeit}
+\begin{definition}[Äquivalente Windgeschwindigkeit]
+	Für eine Druckdifferenzzelle mit $\Delta p$ und $\rho$ ist die
+	\emph{äquivalente Windgeschwindigkeit}
 	\[
 		v_{\mathrm{eq}} := v(0) = \sqrt{\frac{2\Delta p}{\rho}}
 	\]
 	definiert, also die Geschwindigkeit, die ein Luftpaket beim
-	vollstÃ¤ndigen, verlustfreien Abbau von $\Delta p$ in kinetische
-	Energie erreichen wÃ¼rde.
+	vollständigen, verlustfreien Abbau von $\Delta p$ in kinetische
+	Energie erreichen würde.
 \end{definition}
 
 \begin{satz}[Vergleich mit der kinetischen Energieflussdichte des Windes]
@@ -712,14 +712,14 @@ Abschnitt~\ref{sec:ausblick}).
 \end{satz}
 
 \begin{proof}
-	FÃ¼r $\pi_w$ setzen wir $v_{\mathrm{eq}} = \sqrt{2\Delta p/\rho}$ ein:
+	Für $\pi_w$ setzen wir $v_{\mathrm{eq}} = \sqrt{2\Delta p/\rho}$ ein:
 	\[
 		\pi_w = \tfrac{1}{2}\rho\, v_{\mathrm{eq}}^3
 		= \tfrac{1}{2}\rho \cdot v_{\mathrm{eq}} \cdot v_{\mathrm{eq}}^2
 		= \tfrac{1}{2}\rho \cdot v_{\mathrm{eq}} \cdot \frac{2\Delta p}{\rho}
 		= \Delta p \cdot v_{\mathrm{eq}}.
 	\]
-	FÃ¼r $\pi_p$ liefert Gleichung~\eqref{eq:pmax}
+	Für $\pi_p$ liefert Gleichung~\eqref{eq:pmax}
 	\[
 		\pi_p = \frac{P_{\max}}{A}
 		= c_p \sqrt{\frac{2}{\rho}}\, \Delta p^{3/2}
@@ -734,55 +734,55 @@ Abschnitt~\ref{sec:ausblick}).
 	Satz~\ref{satz:vergleich_wind} stellt eine \emph{formale}, rein
 	dimensionsanalytische Beziehung zwischen der Leistungsdichte des
 	Druckdifferenz-Wandlers und der kinetischen Energieflussdichte eines
-	Windes der Ã¤quivalenten Geschwindigkeit $v_{\mathrm{eq}}$ her. Der
+	Windes der äquivalenten Geschwindigkeit $v_{\mathrm{eq}}$ her. Der
 	Koeffizient $c_p \approx 0{,}3849$ ist \emph{nicht} mit dem
-	Betz-Koeffizienten $c_{p,\mathrm{Betz}} = 16/27 \approx 0{,}5926$ fÃ¼r
+	Betz-Koeffizienten $c_{p,\mathrm{Betz}} = 16/27 \approx 0{,}5926$ für
 	klassische Windturbinen zu verwechseln: Der Betz-Koeffizient folgt
-	aus der Impuls- und Massenerhaltung einer freien StrÃ¶mung durch eine
-	Rotorebene, wÃ¤hrend $c_p$ hier aus der Optimierung des
+	aus der Impuls- und Massenerhaltung einer freien Strömung durch eine
+	Rotorebene, während $c_p$ hier aus der Optimierung des
 	Druckabbau-Anteils in einem geschlossenen, druckgetriebenen Kanal
 	folgt -- zwei unterschiedliche physikalische Konfigurationen. Der
 	Vergleich ist insofern \emph{illustrativ}, als er zeigt, dass beide
-	Konzepte auf demselben GrÃ¶ÃŸenordnungsniveau (Bruchteile der
-	verfÃ¼gbaren kinetischen bzw.\ potentiellen Energie, jeweils
+	Konzepte auf demselben Größenordnungsniveau (Bruchteile der
+	verfügbaren kinetischen bzw.\ potentiellen Energie, jeweils
 	$O(0{,}1\text{--}1)$) operieren, jedoch nicht direkt austauschbar
 	sind.
 \end{bemerkung}
 
-\subsection{OptimalitÃ¤t des Extraktionskoeffizienten}
+\subsection{Optimalität des Extraktionskoeffizienten}
 
 Wie in Satz~\ref{satz:optimal_x} gezeigt, ist $x^\ast = 2/3$ das
 \emph{eindeutige} globale Maximum von $f$ auf $[0,1]$. Im Gegensatz zu
-vielen OptimalitÃ¤tsaussagen in der Algorithmik -- etwa der OptimalitÃ¤t des
+vielen Optimalitätsaussagen in der Algorithmik -- etwa der Optimalität des
 Subgraph Algorithmus, die nur \emph{bedingt} unter der Strong Exponential
-Time Hypothesis (SETH) gilt -- ist die OptimalitÃ¤t von $x^\ast = 2/3$ ein
+Time Hypothesis (SETH) gilt -- ist die Optimalität von $x^\ast = 2/3$ ein
 \emph{unbedingtes} Resultat der klassischen Analysis: Sie folgt allein aus
 Stetigkeit, Differenzierbarkeit und der Untersuchung des Vorzeichens der
-Ableitung $f'$, ohne jede zusÃ¤tzliche komplexitÃ¤tstheoretische Annahme.
+Ableitung $f'$, ohne jede zusätzliche komplexitätstheoretische Annahme.
 
 \begin{bemerkung}
-	Die OptimalitÃ¤tsaussage lÃ¤sst sich wie folgt zweistufig einordnen:
+	Die Optimalitätsaussage lässt sich wie folgt zweistufig einordnen:
 	\begin{itemize}
 		\item \textbf{Global (unbedingt):} $x^\ast = 2/3$ ist das
 		eindeutige globale Maximum von $f$ auf dem gesamten kompakten
-		Definitionsbereich $[0,1]$ -- bewiesen durch vollstÃ¤ndige
-		Fallunterscheidung Ã¼ber Monotonieintervalle
+		Definitionsbereich $[0,1]$ -- bewiesen durch vollständige
+		Fallunterscheidung über Monotonieintervalle
 		(Satz~\ref{satz:optimal_x}).
-		\item \textbf{Robust gegenÃ¼ber Parametern:} $x^\ast$ ist
-		unabhÃ¤ngig von $\Delta p$, $\rho$ und $A$, da diese GrÃ¶ÃŸen in
+		\item \textbf{Robust gegenüber Parametern:} $x^\ast$ ist
+		unabhängig von $\Delta p$, $\rho$ und $A$, da diese Größen in
 		Gleichung~\eqref{eq:leistung} als multiplikative Konstante vor
 		$f(x)$ auftreten und die Lage des Maximums von $f$ nicht
 		beeinflussen. Ein Druckdifferenz-Wandler muss seinen
 		Extraktionsanteil also \emph{nicht} an $\Delta p$, $\rho$ oder
-		$A$ anpassen, um optimal zu arbeiten -- eine fÃ¼r die
-		Regelungstechnik (Abschnitt~\ref{sec:ausblick}) sehr gÃ¼nstige
+		$A$ anpassen, um optimal zu arbeiten -- eine für die
+		Regelungstechnik (Abschnitt~\ref{sec:ausblick}) sehr günstige
 		Eigenschaft.
 	\end{itemize}
 \end{bemerkung}
 
 \subsection{Energiedichte-Vergleich mit anderen erneuerbaren Quellen}
 
-\begin{beispiel}[GrÃ¶ÃŸenordnungsvergleich]
+\begin{beispiel}[Größenordnungsvergleich]
 	\label{bsp:vergleich}
 	Mit den Werten aus Beispiel~\ref{bsp:numerisch} ($\Delta p = 300\
 	\mathrm{Pa}$, $\rho = 1{,}0\ \mathrm{kg/m^3}$) ergibt sich nach
@@ -793,10 +793,10 @@ Ableitung $f'$, ohne jede zusÃ¤tzliche komplexitÃ¤tstheoretische Annahme.
 		\approx 2827\ \mathrm{W/m^2}.
 	\]
 	Zum Vergleich: Die mittlere solare Einstrahlung an der
-	ErdoberflÃ¤che liegt (je nach Standort und Tageszeit) typischerweise
-	in der GrÃ¶ÃŸenordnung von $150$--$250\ \mathrm{W/m^2}$ (Jahresmittel),
+	Erdoberfläche liegt (je nach Standort und Tageszeit) typischerweise
+	in der Größenordnung von $150$--$250\ \mathrm{W/m^2}$ (Jahresmittel),
 	und die Leistungsdichte einer Windturbine bei $v = 10\ \mathrm{m/s}$
-	und $\rho = 1{,}2\ \mathrm{kg/m^3}$ betrÃ¤gt
+	und $\rho = 1{,}2\ \mathrm{kg/m^3}$ beträgt
 	$\tfrac{1}{2}\rho v^3 = 600\ \mathrm{W/m^2}$ (vor Anwendung des
 	Betz-Limits).
 \end{beispiel}
@@ -804,17 +804,17 @@ Ableitung $f'$, ohne jede zusÃ¤tzliche komplexitÃ¤tstheoretische Annahme.
 \begin{bemerkung}
 	Der in Beispiel~\ref{bsp:vergleich} berechnete Wert von $\pi_p
 	\approx 2827\ \mathrm{W/m^2}$ ist eine \emph{theoretische
-	Obergrenze} unter der Annahme eines verlustfreien, stationÃ¤ren
+	Obergrenze} unter der Annahme eines verlustfreien, stationären
 	Wandlers, der kontinuierlich auf eine Druckdifferenz von konstant
-	$\Delta p = 300\ \mathrm{Pa}$ Ã¼ber eine feste FlÃ¤che $A$ zugreifen
-	kann. In realen konvektiven Zellen sind solche DruckstÃ¶rungen
-	rÃ¤umlich und zeitlich stark intermittent (vgl.\
+	$\Delta p = 300\ \mathrm{Pa}$ über eine feste Fläche $A$ zugreifen
+	kann. In realen konvektiven Zellen sind solche Druckstörungen
+	räumlich und zeitlich stark intermittent (vgl.\
 	Abschnitt~\ref{sec:atmosphaere}); reale Wirkungsgrade werden durch
 	Reibungsverluste, Turbulenz, kompressible Effekte und die
-	begrenzte VerfÃ¼gbarkeit der Druckdifferenz erheblich unter diesem
+	begrenzte Verfügbarkeit der Druckdifferenz erheblich unter diesem
 	Wert liegen. Der Wert dient daher als \emph{oberer
-	VergleichsmaÃŸstab} und nicht als Prognose fÃ¼r reale Anlagen --
-	siehe Abschnitt~\ref{sec:ausblick} fÃ¼r eine ausfÃ¼hrliche Diskussion
+	Vergleichsmaßstab} und nicht als Prognose für reale Anlagen --
+	siehe Abschnitt~\ref{sec:ausblick} für eine ausführliche Diskussion
 	der praktischen Limitierungen.
 \end{bemerkung}
 
@@ -827,13 +827,13 @@ Arbeit anhand numerischer Auswertungen der hergeleiteten Formeln.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/barometric_profile.pdf}
-	\caption{Barometrische HÃ¶henformel $p(h) = p_0 e^{-h/H}$ fÃ¼r
+	\caption{Barometrische Höhenformel $p(h) = p_0 e^{-h/H}$ für
 	$p_0 = 101\,325\ \mathrm{Pa}$ und $H \approx 8434\ \mathrm{m}$
 	(Lemma~\ref{lem:barometrisch}, Beispiel~\ref{bsp:skalenhoehe}).
-	Farbig hinterlegt sind typische HÃ¶henbereiche von Cumulus- und
-	Cumulonimbus-Wolken. Der Druck fÃ¤llt im betrachteten HÃ¶henbereich von
+	Farbig hinterlegt sind typische Höhenbereiche von Cumulus- und
+	Cumulonimbus-Wolken. Der Druck fällt im betrachteten Höhenbereich von
 	$1013\ \mathrm{hPa}$ auf unter $250\ \mathrm{hPa}$ ab, wobei der
-	Abfall in den unteren Schichten am stÃ¤rksten ist.}
+	Abfall in den unteren Schichten am stärksten ist.}
 	\label{fig:barometric}
 \end{figure}
 
@@ -843,9 +843,9 @@ Arbeit anhand numerischer Auswertungen der hergeleiteten Formeln.
 	\caption{Hydrostatische Druckdifferenz $\Delta p(\Delta h)$
 	(Lemma~\ref{lem:hydrostatisch}, durchgezogen) im Vergleich zur
 	Linearisierung $\dfrac{p_0}{H}\Delta h$
-	(Lemma~\ref{lem:linearisierung}, gestrichelt) fÃ¼r
-	$\Delta h \in [0, 3000]\ \mathrm{m}$. FÃ¼r kleine $\Delta h$ stimmen
-	beide Kurven nahezu Ã¼berein; die Abweichung wÃ¤chst quadratisch mit
+	(Lemma~\ref{lem:linearisierung}, gestrichelt) für
+	$\Delta h \in [0, 3000]\ \mathrm{m}$. Für kleine $\Delta h$ stimmen
+	beide Kurven nahezu überein; die Abweichung wächst quadratisch mit
 	$\Delta h$, wie in Lemma~\ref{lem:linearisierung} formal gezeigt.}
 	\label{fig:pressure_difference}
 \end{figure}
@@ -855,11 +855,11 @@ Arbeit anhand numerischer Auswertungen der hergeleiteten Formeln.
 	\includegraphics[width=0.85\textwidth]{plots/extraction_optimization.pdf}
 	\caption{Normierte Leistungsfunktion $f(x) = x\sqrt{1-x}$
 	(Satz~\ref{satz:optimal_x}). Die Funktion verschwindet an beiden
-	RÃ¤ndern ($f(0)=f(1)=0$) und besitzt ihr eindeutiges globales Maximum
+	Rändern ($f(0)=f(1)=0$) und besitzt ihr eindeutiges globales Maximum
 	bei $x^\ast = 2/3$ mit $f(x^\ast) = 2\sqrt{3}/9 \approx 0{,}3849$.
 	Die Kurve ist auf $(0, 2/3)$ streng monoton steigend und auf
 	$(2/3, 1)$ streng monoton fallend, was die im Beweis verwendete
-	Fallunterscheidung Ã¼ber das Vorzeichen von $f'$ visuell bestÃ¤tigt.}
+	Fallunterscheidung über das Vorzeichen von $f'$ visuell bestätigt.}
 	\label{fig:optimization}
 \end{figure}
 
@@ -867,26 +867,26 @@ Arbeit anhand numerischer Auswertungen der hergeleiteten Formeln.
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/power_curves.pdf}
 	\caption{Maximale Leistung $P_{\max}(\Delta p)$ nach
-	Gleichung~\eqref{eq:pmax} fÃ¼r $\rho = 1{,}0\ \mathrm{kg/m^3}$ und
-	QuerschnittsflÃ¤chen $A \in \{1, 5, 10, 20\}\ \mathrm{m^2}$. Die
-	Ã¼berproportionale ($\Delta p^{3/2}$-) Skalierung aus
-	Satz~\ref{satz:skalierung} Ã¤uÃŸert sich in der zunehmenden
-	Steigung der Kurven fÃ¼r grÃ¶ÃŸere $\Delta p$: Eine Verdoppelung von
-	$\Delta p$ fÃ¼hrt zu einer Leistungssteigerung um den Faktor
-	$2^{3/2} \approx 2{,}83$, unabhÃ¤ngig von $A$.}
+	Gleichung~\eqref{eq:pmax} für $\rho = 1{,}0\ \mathrm{kg/m^3}$ und
+	Querschnittsflächen $A \in \{1, 5, 10, 20\}\ \mathrm{m^2}$. Die
+	überproportionale ($\Delta p^{3/2}$-) Skalierung aus
+	Satz~\ref{satz:skalierung} äußert sich in der zunehmenden
+	Steigung der Kurven für größere $\Delta p$: Eine Verdoppelung von
+	$\Delta p$ führt zu einer Leistungssteigerung um den Faktor
+	$2^{3/2} \approx 2{,}83$, unabhängig von $A$.}
 	\label{fig:power_curves}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/equivalent_wind_speed.pdf}
-	\caption{Ã„quivalente Windgeschwindigkeit $v_{\mathrm{eq}}(\Delta p) =
-	\sqrt{2\Delta p/\rho}$ fÃ¼r $\rho = 1{,}0\ \mathrm{kg/m^3}$. Markiert
+	\caption{Äquivalente Windgeschwindigkeit $v_{\mathrm{eq}}(\Delta p) =
+	\sqrt{2\Delta p/\rho}$ für $\rho = 1{,}0\ \mathrm{kg/m^3}$. Markiert
 	ist der in den Beispielen~\ref{bsp:rotation},
 	\ref{bsp:numerisch} und \ref{bsp:vergleich} verwendete Fall
-	$\Delta p = 300\ \mathrm{Pa}$, der einer Ã¤quivalenten
+	$\Delta p = 300\ \mathrm{Pa}$, der einer äquivalenten
 	Windgeschwindigkeit von $v_{\mathrm{eq}} \approx 24{,}5\
-	\mathrm{m/s}$ entspricht -- eine GrÃ¶ÃŸenordnung, die mit den in
+	\mathrm{m/s}$ entspricht -- eine Größenordnung, die mit den in
 	Abschnitt~\ref{sec:atmosphaere} diskutierten Aufwindgeschwindigkeiten
 	in starken Cumulonimbus-Zellen konsistent ist.}
 	\label{fig:equivalent_wind}
@@ -894,7 +894,7 @@ Arbeit anhand numerischer Auswertungen der hergeleiteten Formeln.
 
 \section{Zusammenfassung}
 
-Diese Arbeit hat ein formales Modell fÃ¼r die Energiegewinnung aus
+Diese Arbeit hat ein formales Modell für die Energiegewinnung aus
 Druckdifferenzen in Wolken entwickelt. Auf Basis der Bernoulli-Gleichung
 wurde gezeigt, dass:
 
@@ -907,75 +907,75 @@ wurde gezeigt, dass:
 	\Delta p^{3/2}$ mit $c_p = 2\sqrt{3}/9$ einer
 	$\Delta p^{3/2}$-Skalierung folgt (Korollar~\ref{kor:pmax},
 	Satz~\ref{satz:skalierung});
-	\item hydrostatische Druckdifferenzen nÃ¤herungsweise linear mit der
-	HÃ¶hendifferenz $\Delta h$ wachsen, mit einer expliziten,
+	\item hydrostatische Druckdifferenzen näherungsweise linear mit der
+	Höhendifferenz $\Delta h$ wachsen, mit einer expliziten,
 	quadratischen Fehlerschranke (Lemma~\ref{lem:linearisierung});
-	\item die Leistungsdichte des Wandlers Ã¼ber den Koeffizienten $c_p$
-	formal mit der kinetischen Energieflussdichte des Ã¤quivalenten
+	\item die Leistungsdichte des Wandlers über den Koeffizienten $c_p$
+	formal mit der kinetischen Energieflussdichte des äquivalenten
 	Windes in Beziehung steht (Satz~\ref{satz:vergleich_wind}).
 \end{itemize}
 
-Damit erreicht das Modell eine geschlossene, vollstÃ¤ndig formal
+Damit erreicht das Modell eine geschlossene, vollständig formal
 hergeleitete Beschreibung der Leistungsausbeute eines idealisierten
-Druckdifferenz-Wandlers -- als Referenzpunkt fÃ¼r die Bewertung realer
+Druckdifferenz-Wandlers -- als Referenzpunkt für die Bewertung realer
 technischer Umsetzungen.
 
 \subsection{Anwendungen}
 
-Das Modell eignet sich insbesondere fÃ¼r:
+Das Modell eignet sich insbesondere für:
 
 \begin{itemize}
-	\item Theoretische Obergrenzen fÃ¼r geflesselte
+	\item Theoretische Obergrenzen für geflesselte
 	(\emph{tethered}) Energiewandler, die an Ballons oder Drachen in
-	WolkenhÃ¶he betrieben werden;
+	Wolkenhöhe betrieben werden;
 	\item Vergleichende Bewertung verschiedener Standorte und
 	Wolkentypen anhand der zu erwartenden Druckdifferenzen $\Delta p$;
-	\item Dimensionierung von Wandler-QuerschnittsflÃ¤chen $A$ in
-	AbhÃ¤ngigkeit von der Ziel-Leistung $P_{\max}$;
+	\item Dimensionierung von Wandler-Querschnittsflächen $A$ in
+	Abhängigkeit von der Ziel-Leistung $P_{\max}$;
 	\item Kombination mit bestehenden Airborne-Wind-Energy-Konzepten,
 	bei denen sowohl kinetische als auch statische Druckanteile der
-	StrÃ¶mung genutzt werden kÃ¶nnen;
+	Strömung genutzt werden können;
 	\item Lehre und Veranschaulichung der Bernoulli-Gleichung und
 	klassischer Optimierungsmethoden anhand eines konkreten,
-	atmosphÃ¤renphysikalisch motivierten Beispiels.
+	atmosphärenphysikalisch motivierten Beispiels.
 \end{itemize}
 
 \subsection{Ausblick}
 \label{sec:ausblick}
 
 Das in dieser Arbeit vorgestellte Modell ist ein idealisierter,
-eindimensionaler Rahmen. FÃ¼r eine technische Umsetzung sowie fÃ¼r die
+eindimensionaler Rahmen. Für eine technische Umsetzung sowie für die
 wissenschaftliche Weiterentwicklung ergeben sich zahlreiche
-Anschlussfragen, die im Folgenden ausfÃ¼hrlich diskutiert werden.
+Anschlussfragen, die im Folgenden ausführlich diskutiert werden.
 
-\subsubsection{Technische Realisierung von TrÃ¤gerplattformen}
+\subsubsection{Technische Realisierung von Trägerplattformen}
 
-Die Nutzung von Druckdifferenzen in WolkenhÃ¶he setzt eine Plattform
-voraus, die den Wandler in der relevanten HÃ¶he positioniert und dort
-Ã¼ber lÃ¤ngere ZeitrÃ¤ume stabil hÃ¤lt. Denkbare AnsÃ¤tze umfassen:
+Die Nutzung von Druckdifferenzen in Wolkenhöhe setzt eine Plattform
+voraus, die den Wandler in der relevanten Höhe positioniert und dort
+über längere Zeiträume stabil hält. Denkbare Ansätze umfassen:
 
 \begin{itemize}
 	\item \textbf{Geflesselte Ballonsysteme:} Ein mit Helium oder
-	HeiÃŸluft gefÃ¼llter AuftriebskÃ¶rper trÃ¤gt den Wandler in
-	WolkenbasishÃ¶he; die elektrische Leistung wird Ã¼ber ein
-	leitfÃ¤higes Halteseil zum Boden Ã¼bertragen. Die hydrostatische
-	Komponente aus Abschnitt~\ref{sec:atmosphaere} (GrÃ¶ÃŸenordnung
-	$10$--$30\ \mathrm{kPa}$ Ã¼ber $\Delta h \approx 1$--$3\ \mathrm{km}$)
-	wÃ¤re hier potentiell relevant, sofern ein durchgÃ¤ngiger Kanal
-	zwischen Boden- und HÃ¶henniveau realisiert werden kann -- eine
+	Heißluft gefüllter Auftriebskörper trägt den Wandler in
+	Wolkenbasishöhe; die elektrische Leistung wird über ein
+	leitfähiges Halteseil zum Boden übertragen. Die hydrostatische
+	Komponente aus Abschnitt~\ref{sec:atmosphaere} (Größenordnung
+	$10$--$30\ \mathrm{kPa}$ über $\Delta h \approx 1$--$3\ \mathrm{km}$)
+	wäre hier potentiell relevant, sofern ein durchgängiger Kanal
+	zwischen Boden- und Höhenniveau realisiert werden kann -- eine
 	erhebliche konstruktive Herausforderung.
-	\item \textbf{Fesseldrachen und TragflÃ¤chendrohnen:} Analog zu
-	Crosswind-Kite-Systemen nach Loyd~\cite{loyd1980} kÃ¶nnten
-	TragflÃ¤chen so positioniert werden, dass lokale dynamische
+	\item \textbf{Fesseldrachen und Tragflächendrohnen:} Analog zu
+	Crosswind-Kite-Systemen nach Loyd~\cite{loyd1980} könnten
+	Tragflächen so positioniert werden, dass lokale dynamische
 	Druckdifferenzen (Abschnitt~\ref{sec:atmosphaere},
-	$\Delta p_{\mathrm{dyn}} \sim \tfrac{1}{2}\rho v^2$) Ã¼ber
-	integrierte WandlerkanÃ¤le abgegriffen werden.
-	\item \textbf{DrohnenschwÃ¤rme:} Mehrere autonome, hÃ¶henvariable
-	Plattformen kÃ¶nnten rÃ¤umlich verteilte Druckdifferenzzellen
+	$\Delta p_{\mathrm{dyn}} \sim \tfrac{1}{2}\rho v^2$) über
+	integrierte Wandlerkanäle abgegriffen werden.
+	\item \textbf{Drohnenschwärme:} Mehrere autonome, höhenvariable
+	Plattformen könnten räumlich verteilte Druckdifferenzzellen
 	gleichzeitig vermessen und nutzen, wodurch sich ein Netzwerk von
 	Wandlern ergibt, dessen Gesamtleistung sich (unter
-	VernachlÃ¤ssigung von Wechselwirkungen) additiv aus den einzelnen
-	$P_{\max}$-BeitrÃ¤gen ergibt.
+	Vernachlässigung von Wechselwirkungen) additiv aus den einzelnen
+	$P_{\max}$-Beiträgen ergibt.
 \end{itemize}
 
 \subsubsection{Materialwissenschaftliche und konstruktive Herausforderungen}
@@ -984,233 +984,233 @@ Der Betrieb in und um Wolken stellt erhebliche Anforderungen an Materialien
 und Konstruktion:
 
 \begin{itemize}
-	\item \textbf{Vereisung:} UnterkÃ¼hlte WassertrÃ¶pfchen in
-	Cumulonimbus-Wolken fÃ¼hren zu Eisansatz an RotorblÃ¤ttern und
-	KanalwÃ¤nden, was die effektive QuerschnittsflÃ¤che $A$ reduziert und
-	die StrÃ¶mung stÃ¶rungsanfÃ¤lliger macht.
+	\item \textbf{Vereisung:} Unterkühlte Wassertröpfchen in
+	Cumulonimbus-Wolken führen zu Eisansatz an Rotorblättern und
+	Kanalwänden, was die effektive Querschnittsfläche $A$ reduziert und
+	die Strömung störungsanfälliger macht.
 	\item \textbf{Blitzschutz:} Hochreichende Konvektionswolken sind mit
-	signifikanter BlitzaktivitÃ¤t verbunden; leitfÃ¤hige Halteseile und
-	metallische Wandlerkomponenten mÃ¼ssen entsprechend dimensioniert und
+	signifikanter Blitzaktivität verbunden; leitfähige Halteseile und
+	metallische Wandlerkomponenten müssen entsprechend dimensioniert und
 	geerdet werden.
-	\item \textbf{MaterialermÃ¼dung:} Turbulente AnstrÃ¶mung fÃ¼hrt zu
-	hochfrequenten Lastwechseln, die bei der Auslegung von RotorblÃ¤ttern,
-	Lagern und Halteseilen berÃ¼cksichtigt werden mÃ¼ssen.
+	\item \textbf{Materialermüdung:} Turbulente Anströmung führt zu
+	hochfrequenten Lastwechseln, die bei der Auslegung von Rotorblättern,
+	Lagern und Halteseilen berücksichtigt werden müssen.
 	\item \textbf{Korrosion:} Die hohe Luftfeuchtigkeit innerhalb von
-	Wolken begÃ¼nstigt Korrosionsprozesse an metallischen Bauteilen,
+	Wolken begünstigt Korrosionsprozesse an metallischen Bauteilen,
 	insbesondere an elektrischen Kontakten und Generatoren.
 \end{itemize}
 
 \subsubsection{Regelungstechnik und Maximum-Power-Point-Tracking}
 
 Eine zentrale praktische Implikation von Satz~\ref{satz:optimal_x} ist,
-dass der optimale Extraktionsanteil $x^\ast = 2/3$ \emph{unabhÃ¤ngig} von
+dass der optimale Extraktionsanteil $x^\ast = 2/3$ \emph{unabhängig} von
 $\Delta p$, $\rho$ und $A$ ist. Dies vereinfacht die Regelungsstrategie
-gegenÃ¼ber klassischen Maximum-Power-Point-Tracking-Verfahren (MPPT), wie
+gegenüber klassischen Maximum-Power-Point-Tracking-Verfahren (MPPT), wie
 sie etwa bei Photovoltaikanlagen eingesetzt werden, erheblich: Anstatt den
 Arbeitspunkt kontinuierlich an wechselnde Umgebungsbedingungen anzupassen,
-genÃ¼gt es im idealisierten Modell, das VerhÃ¤ltnis von abgebautem zu
-verfÃ¼gbarem Druck konstant bei $2/3$ zu halten. In der Praxis wird diese
-Aussage durch Reibungseffekte, KompressibilitÃ¤t und instationÃ¤re StrÃ¶mung
-modifiziert; eine vollstÃ¤ndige regelungstechnische Behandlung mÃ¼sste
+genügt es im idealisierten Modell, das Verhältnis von abgebautem zu
+verfügbarem Druck konstant bei $2/3$ zu halten. In der Praxis wird diese
+Aussage durch Reibungseffekte, Kompressibilität und instationäre Strömung
+modifiziert; eine vollständige regelungstechnische Behandlung müsste
 daher
 \begin{itemize}
 	\item Echtzeit-Druckmessungen an mehreren Punkten der
 	Druckdifferenzzelle,
-	\item eine dynamische SchÃ¤tzung von $\rho$ in AbhÃ¤ngigkeit von HÃ¶he
+	\item eine dynamische Schätzung von $\rho$ in Abhängigkeit von Höhe
 	und Temperatur, sowie
-	\item eine adaptive NachfÃ¼hrung des effektiven StrÃ¶mungswiderstands
-	des Wandlers (z.\,B.\ Ã¼ber variable Schaufelwinkel)
+	\item eine adaptive Nachführung des effektiven Strömungswiderstands
+	des Wandlers (z.\,B.\ über variable Schaufelwinkel)
 \end{itemize}
-integrieren, um $x^\ast = 2/3$ auch unter realen, zeitverÃ¤nderlichen
-Bedingungen nÃ¤herungsweise zu realisieren.
+integrieren, um $x^\ast = 2/3$ auch unter realen, zeitveränderlichen
+Bedingungen näherungsweise zu realisieren.
 
-\subsubsection{Stochastische und turbulente StrÃ¶mungsmodelle}
+\subsubsection{Stochastische und turbulente Strömungsmodelle}
 
-Das vorliegende Modell setzt eine \emph{stationÃ¤re}, \emph{laminare}
-StrÃ¶mung voraus. Reale atmosphÃ¤rische StrÃ¶mungen in und um konvektive
-Zellen sind jedoch hochgradig turbulent und instationÃ¤r. Eine
-Weiterentwicklung des Modells kÃ¶nnte:
+Das vorliegende Modell setzt eine \emph{stationäre}, \emph{laminare}
+Strömung voraus. Reale atmosphärische Strömungen in und um konvektive
+Zellen sind jedoch hochgradig turbulent und instationär. Eine
+Weiterentwicklung des Modells könnte:
 
 \begin{itemize}
-	\item $\Delta p$ und $\rho$ als zeitabhÃ¤ngige stochastische Prozesse
+	\item $\Delta p$ und $\rho$ als zeitabhängige stochastische Prozesse
 	$\Delta p(t)$, $\rho(t)$ modellieren, etwa als
 	Ornstein-Uhlenbeck-Prozesse mit empirisch bestimmten Parametern aus
 	Radiosonden- oder Doppler-Radar-Daten~\cite{markowski2010};
 	\item die Erwartungswertbildung $\mathbb{E}[P_{\max}(\Delta p(t))]$
-	anstelle der deterministischen GrÃ¶ÃŸe $P_{\max}(\Delta p)$
-	betrachten, wobei wegen der KonvexitÃ¤t von $\Delta p \mapsto
+	anstelle der deterministischen Größe $P_{\max}(\Delta p)$
+	betrachten, wobei wegen der Konvexität von $\Delta p \mapsto
 	\Delta p^{3/2}$ nach der Jensen-Ungleichung
 	$\mathbb{E}[\Delta p(t)^{3/2}] \geq \mathbb{E}[\Delta p(t)]^{3/2}$
-	gilt -- Schwankungen in $\Delta p$ erhÃ¶hen also tendenziell die
-	mittlere Leistung gegenÃ¼ber einer rein auf dem Mittelwert basierten
-	AbschÃ¤tzung;
-	\item Reynoldszahl-abhÃ¤ngige Korrekturterme fÃ¼r die
-	Bernoulli-Gleichung einfÃ¼hren, um Reibungsverluste in AbhÃ¤ngigkeit
-	von der StrÃ¶mungsgeschwindigkeit zu quantifizieren;
+	gilt -- Schwankungen in $\Delta p$ erhöhen also tendenziell die
+	mittlere Leistung gegenüber einer rein auf dem Mittelwert basierten
+	Abschätzung;
+	\item Reynoldszahl-abhängige Korrekturterme für die
+	Bernoulli-Gleichung einführen, um Reibungsverluste in Abhängigkeit
+	von der Strömungsgeschwindigkeit zu quantifizieren;
 	\item dreidimensionale CFD-Simulationen (Computational Fluid
-	Dynamics) durchfÃ¼hren, um die Wechselwirkung des Wandlers mit der
-	umgebenden WolkenstrÃ¶mung realistisch abzubilden.
+	Dynamics) durchführen, um die Wechselwirkung des Wandlers mit der
+	umgebenden Wolkenströmung realistisch abzubilden.
 \end{itemize}
 
-\subsubsection{Kompressible StrÃ¶mungseffekte bei groÃŸen Druckdifferenzen}
+\subsubsection{Kompressible Strömungseffekte bei großen Druckdifferenzen}
 
-FÃ¼r die in dieser Arbeit betrachteten Druckdifferenzen
+Für die in dieser Arbeit betrachteten Druckdifferenzen
 ($\Delta p \lesssim 1\ \mathrm{kPa}$, entsprechend $v_{\mathrm{eq}}
 \lesssim 45\ \mathrm{m/s}$ bei $\rho \approx 1\ \mathrm{kg/m^3}$) ist die
 Mach-Zahl $\mathrm{Ma} = v/c$ (mit Schallgeschwindigkeit $c \approx 340\
 \mathrm{m/s}$) durchgehend $\mathrm{Ma} < 0{,}15$, sodass die
-InkompressibilitÃ¤tsannahme der Bernoulli-Gleichung gerechtfertigt ist. FÃ¼r
+Inkompressibilitätsannahme der Bernoulli-Gleichung gerechtfertigt ist. Für
 die in Abschnitt~\ref{sec:atmosphaere} diskutierten hydrostatischen
-Druckdifferenzen Ã¼ber mehrere Kilometer HÃ¶hendifferenz ($\Delta p \sim
-10$--$30\ \mathrm{kPa}$) wÃ¤re $v_{\mathrm{eq}}$ deutlich hÃ¶her und eine
+Druckdifferenzen über mehrere Kilometer Höhendifferenz ($\Delta p \sim
+10$--$30\ \mathrm{kPa}$) wäre $v_{\mathrm{eq}}$ deutlich höher und eine
 Erweiterung des Modells auf die kompressible Bernoulli-Gleichung (bzw.\
-die Energiegleichung fÃ¼r ideale Gase mit Enthalpietermen) notwendig. Eine
-solche Erweiterung wÃ¼rde insbesondere
+die Energiegleichung für ideale Gase mit Enthalpietermen) notwendig. Eine
+solche Erweiterung würde insbesondere
 \begin{itemize}
-	\item die TemperaturÃ¤nderung der Luft beim Druckabbau
+	\item die Temperaturänderung der Luft beim Druckabbau
 	(adiabatische Expansion, $T \propto p^{(\gamma-1)/\gamma}$) und
-	\item die damit verbundene DichteÃ¤nderung $\rho(p)$
+	\item die damit verbundene Dichteänderung $\rho(p)$
 \end{itemize}
-berÃ¼cksichtigen mÃ¼ssen, was die Leistungsfunktion $P(x)$ aus
+berücksichtigen müssen, was die Leistungsfunktion $P(x)$ aus
 Gleichung~\eqref{eq:leistung} nichtlinear in $x$ und $\Delta p$ koppelt
 und voraussichtlich zu einem von $x^\ast = 2/3$ abweichenden optimalen
-Extraktionsanteil fÃ¼hrt.
+Extraktionsanteil führt.
 
 \subsubsection{Skalierung zu Wandlerfeldern und Netzintegration}
 
-Analog zu Windparks kÃ¶nnten mehrere Druckdifferenz-Wandler rÃ¤umlich
+Analog zu Windparks könnten mehrere Druckdifferenz-Wandler räumlich
 verteilt betrieben werden ("Druckdifferenz-Farmen"). Hierbei stellen sich
 Fragen der
 \begin{itemize}
 	\item gegenseitigen aerodynamischen Beeinflussung benachbarter
 	Wandler (Nachlaufeffekte, analog zum Wake-Effekt bei Windturbinen);
-	\item optimalen rÃ¤umlichen Anordnung zur Maximierung der
-	Gesamtleistung unter BerÃ¼cksichtigung der rÃ¤umlichen Korrelation von
+	\item optimalen räumlichen Anordnung zur Maximierung der
+	Gesamtleistung unter Berücksichtigung der räumlichen Korrelation von
 	$\Delta p$-Feldern in konvektiven Zellen;
 	\item Netzintegration der erzeugten Leistung, die aufgrund der
 	Intermittenz konvektiver Ereignisse stark fluktuiert und daher
-	SpeicherlÃ¶sungen (Batterien, Wasserstoff, Pumpspeicher) oder eine
-	Kombination mit grundlastfÃ¤higen Quellen erfordert.
+	Speicherlösungen (Batterien, Wasserstoff, Pumpspeicher) oder eine
+	Kombination mit grundlastfähigen Quellen erfordert.
 \end{itemize}
 
 \subsubsection{Wechselwirkung mit der Wolkendynamik}
 
-Eine grundsÃ¤tzliche, bislang nicht quantifizierte Frage betrifft die
-RÃ¼ckwirkung der Energieentnahme auf die Wolkendynamik selbst. Die
+Eine grundsätzliche, bislang nicht quantifizierte Frage betrifft die
+Rückwirkung der Energieentnahme auf die Wolkendynamik selbst. Die
 Entnahme von Leistung $P_{\max}$ aus einer Druckdifferenzzelle entspricht
 einer Reduktion der kinetischen bzw.\ potentiellen Energie der lokalen
-StrÃ¶mung. Bei hinreichend groÃŸer installierter Leistung relativ zur
-Gesamtenergiebilanz der konvektiven Zelle kÃ¶nnte dies
+Strömung. Bei hinreichend großer installierter Leistung relativ zur
+Gesamtenergiebilanz der konvektiven Zelle könnte dies
 \begin{itemize}
 	\item die Aufwindgeschwindigkeit und damit $\Delta p_{\mathrm{dyn}}$
-	selbst reduzieren (negative RÃ¼ckkopplung),
+	selbst reduzieren (negative Rückkopplung),
 	\item die vertikale Entwicklung der Wolke (Wolkenoberkante,
 	Niederschlagsbildung) beeinflussen,
-	\item im Extremfall mesoskalige Zirkulationsmuster verÃ¤ndern.
+	\item im Extremfall mesoskalige Zirkulationsmuster verändern.
 \end{itemize}
-Eine quantitative Untersuchung dieser RÃ¼ckkopplungseffekte wÃ¼rde
+Eine quantitative Untersuchung dieser Rückkopplungseffekte würde
 gekoppelte Modelle aus Wolkenphysik~\cite{houze2014,emanuel1994} und dem
 hier entwickelten Wandlermodell erfordern, etwa in Form von
-SensitivitÃ¤tsstudien mit numerischen Wettermodellen, die einen zusÃ¤tzlichen
+Sensitivitätsstudien mit numerischen Wettermodellen, die einen zusätzlichen
 Energiesenkenterm proportional zu $P_{\max}(\Delta p(\mathbf{x},t))$
 enthalten.
 
 \subsubsection{Rechtliche und regulatorische Aspekte}
 
-Der Betrieb geflesselter oder autonomer Plattformen in HÃ¶hen von mehreren
+Der Betrieb geflesselter oder autonomer Plattformen in Höhen von mehreren
 hundert bis mehreren tausend Metern unterliegt luftverkehrsrechtlichen
 Bestimmungen (Luftraumklassifikation, Kennzeichnungspflichten,
-Betriebsgenehmigungen). Eine praktische Umsetzung wÃ¼rde eine enge
-Abstimmung mit LuftfahrtbehÃ¶rden erfordern, insbesondere hinsichtlich:
+Betriebsgenehmigungen). Eine praktische Umsetzung würde eine enge
+Abstimmung mit Luftfahrtbehörden erfordern, insbesondere hinsichtlich:
 \begin{itemize}
-	\item der maximal zulÃ¤ssigen BetriebshÃ¶he und der Abgrenzung zu
+	\item der maximal zulässigen Betriebshöhe und der Abgrenzung zu
 	kontrolliertem Luftraum,
 	\item der Kennzeichnung und Beleuchtung der Plattformen zur
 	Kollisionsvermeidung,
-	\item der WetterabhÃ¤ngigkeit des Betriebs (EinschrÃ¤nkungen bei
-	Gewitterwarnungen, die naturgemÃ¤ÃŸ genau die Bedingungen betreffen,
-	unter denen $\Delta p$ am grÃ¶ÃŸten ist).
+	\item der Wetterabhängigkeit des Betriebs (Einschränkungen bei
+	Gewitterwarnungen, die naturgemäß genau die Bedingungen betreffen,
+	unter denen $\Delta p$ am größten ist).
 \end{itemize}
 
 \subsubsection{Vergleich und Kombination mit Airborne Wind Energy}
 
 Das Forschungsfeld der Airborne Wind Energy (AWE) befasst sich seit den
 grundlegenden Arbeiten von Loyd~\cite{loyd1980} mit der Nutzung von
-HÃ¶henwinden Ã¼ber geflesselte TragflÃ¤chen und Drachen. Ãœbersichtsarbeiten
+Höhenwinden über geflesselte Tragflächen und Drachen. Übersichtsarbeiten
 wie Cherubini et al.~\cite{cherubini2015} und globale Potenzialanalysen
-wie Archer und Caldeira~\cite{archer2009} zeigen, dass in HÃ¶hen von
+wie Archer und Caldeira~\cite{archer2009} zeigen, dass in Höhen von
 $500$--$10\,000\ \mathrm{m}$ erhebliche kinetische Windenergiepotenziale
 existieren. Das in dieser Arbeit vorgestellte Druckdifferenz-Modell
-ergÃ¤nzt diese AnsÃ¤tze um eine \emph{statische} Komponente: WÃ¤hrend AWE-
-Systeme primÃ¤r die kinetische Energie des Horizontalwinds nutzen, zielt
+ergänzt diese Ansätze um eine \emph{statische} Komponente: Während AWE-
+Systeme primär die kinetische Energie des Horizontalwinds nutzen, zielt
 der Druckdifferenz-Wandler auf vertikale bzw.\ lokale Druckgradienten ab.
 Eine Kombination beider Prinzipien -- etwa eine AWE-Plattform mit
-integriertem Druckdifferenz-Kanal -- kÃ¶nnte die Gesamtenergieausbeute pro
-Plattform erhÃ¶hen, wobei die in Satz~\ref{satz:vergleich_wind}
-hergeleitete Beziehung $\pi_p = c_p \cdot \pi_w$ als Anhaltspunkt fÃ¼r die
-relative GrÃ¶ÃŸenordnung beider BeitrÃ¤ge dienen kann.
+integriertem Druckdifferenz-Kanal -- könnte die Gesamtenergieausbeute pro
+Plattform erhöhen, wobei die in Satz~\ref{satz:vergleich_wind}
+hergeleitete Beziehung $\pi_p = c_p \cdot \pi_w$ als Anhaltspunkt für die
+relative Größenordnung beider Beiträge dienen kann.
 
 \subsubsection{Experimentelle Validierung}
 
-Vor einer technischen Umsetzung wÃ¤re eine experimentelle Validierung des
+Vor einer technischen Umsetzung wäre eine experimentelle Validierung des
 Modells in mehreren Stufen sinnvoll:
 \begin{itemize}
 	\item \textbf{Windkanalversuche:} Nachbildung der
 	Druckdifferenzzelle in einem Windkanal mit kontrollierbarem
 	$\Delta p$, um die Beziehung $P(x)$ aus Gleichung~\eqref{eq:leistung}
 	und insbesondere das Maximum bei $x^\ast = 2/3$ experimentell zu
-	Ã¼berprÃ¼fen.
+	überprüfen.
 	\item \textbf{Feldmessungen mit Sondenballons:} Gleichzeitige Druck-
-	und Windmessungen an mehreren HÃ¶hen innerhalb realer Cumulus- und
+	und Windmessungen an mehreren Höhen innerhalb realer Cumulus- und
 	Cumulonimbus-Wolken, um die in Abschnitt~\ref{sec:atmosphaere}
-	angenommenen GrÃ¶ÃŸenordnungen fÃ¼r $\Delta p$ zu verifizieren.
+	angenommenen Größenordnungen für $\Delta p$ zu verifizieren.
 	\item \textbf{Prototyp-Wandler:} Bau eines kleinskaligen
 	Demonstrators (z.\,B.\ $A < 1\ \mathrm{m^2}$) zur Messung der
-	tatsÃ¤chlich erzielbaren Leistung im Vergleich zur theoretischen
+	tatsächlich erzielbaren Leistung im Vergleich zur theoretischen
 	Obergrenze $P_{\max}$, woraus sich ein empirischer
 	Gesamtwirkungsgrad $\eta_{\mathrm{real}} = P_{\mathrm{real}} /
-	P_{\max}$ ableiten lieÃŸe.
+	P_{\max}$ ableiten ließe.
 \end{itemize}
 
-\subsubsection{WeiterfÃ¼hrende theoretische Fragestellungen}
+\subsubsection{Weiterführende theoretische Fragestellungen}
 
-SchlieÃŸlich ergeben sich mehrere rein theoretische Anschlussfragen:
+Schließlich ergeben sich mehrere rein theoretische Anschlussfragen:
 
 \begin{itemize}
 	\item \textbf{Mehrpunkt-Wandlernetzwerke:} Statt einer einzelnen
-	Druckdifferenzzelle kÃ¶nnte ein Netzwerk von Messpunkten betrachtet
+	Druckdifferenzzelle könnte ein Netzwerk von Messpunkten betrachtet
 	werden, das als gewichteter Graph modelliert wird, wobei Knoten
 	Messpunkten und Kanten den paarweisen Druckdifferenzen entsprechen.
-	Die Identifikation strukturell Ã¤hnlicher Teilnetzwerke -- etwa um
-	wiederkehrende, energetisch gÃ¼nstige Konfigurationen Ã¼ber
-	verschiedene Wolkensysteme hinweg zu erkennen -- kÃ¶nnte
-	methodisch an den Subgraph Algorithmus anknÃ¼pfen, dessen
+	Die Identifikation strukturell ähnlicher Teilnetzwerke -- etwa um
+	wiederkehrende, energetisch günstige Konfigurationen über
+	verschiedene Wolkensysteme hinweg zu erkennen -- könnte
+	methodisch an den Subgraph Algorithmus anknüpfen, dessen
 	Signatur-basierter Vergleich von Adjazenzstrukturen sich
-	grundsÃ¤tzlich auch auf gewichtete Druckdifferenzgraphen Ã¼bertragen
-	lieÃŸe.
+	grundsätzlich auch auf gewichtete Druckdifferenzgraphen übertragen
+	ließe.
 	\item \textbf{Mehrdimensionale Optimierung:} Erweiterung der
 	Optimierung von $x$ auf ein Paar $(x, \theta)$, wobei $\theta$ einen
-	AnstrÃ¶mwinkel des Wandlers relativ zur lokalen StrÃ¶mungsrichtung
+	Anströmwinkel des Wandlers relativ zur lokalen Strömungsrichtung
 	beschreibt, mit entsprechend erweiterter Bernoulli-Gleichung.
-	\item \textbf{Zeitintegrierte Energiebilanzen:} Ãœbergang von der
-	momentanen Leistung $P_{\max}(\Delta p)$ zu einer Ã¼ber Tages- oder
-	JahresgÃ¤nge integrierten Energieausbeute $E = \int P_{\max}(\Delta
+	\item \textbf{Zeitintegrierte Energiebilanzen:} Übergang von der
+	momentanen Leistung $P_{\max}(\Delta p)$ zu einer über Tages- oder
+	Jahresgänge integrierten Energieausbeute $E = \int P_{\max}(\Delta
 	p(t))\,dt$, unter Verwendung klimatologischer Statistiken zur
-	HÃ¤ufigkeitsverteilung von $\Delta p$ an einem gegebenen Standort.
+	Häufigkeitsverteilung von $\Delta p$ an einem gegebenen Standort.
 	\item \textbf{Unsicherheitsquantifizierung:} Formale Fehlerschranken
-	(analog zu Lemma~\ref{lem:linearisierung}) fÃ¼r $P_{\max}$ unter
+	(analog zu Lemma~\ref{lem:linearisierung}) für $P_{\max}$ unter
 	Messunsicherheiten in $\Delta p$, $\rho$ und $A$, um Konfidenzintervalle
-	fÃ¼r prognostizierte Leistungswerte anzugeben.
+	für prognostizierte Leistungswerte anzugeben.
 \end{itemize}
 
 Insgesamt zeigt diese Arbeit, dass bereits ein vergleichsweise einfaches,
-vollstÃ¤ndig formal beweisbares Modell -- basierend auf einer einzigen
+vollständig formal beweisbares Modell -- basierend auf einer einzigen
 Bernoulli-Gleichung und einer eindimensionalen Optimierung -- eine
-geschlossene und Ã¼berraschend reichhaltige Theorie der Energiegewinnung
+geschlossene und überraschend reichhaltige Theorie der Energiegewinnung
 aus Druckdifferenzen in Wolken liefert. Die zahlreichen oben skizzierten
 Erweiterungsrichtungen zeigen zugleich, dass dieses einfache Modell
-lediglich den Ausgangspunkt fÃ¼r eine deutlich umfassendere, interdisziplinÃ¤re
-Forschungsagenda an der Schnittstelle von StrÃ¶mungsmechanik,
+lediglich den Ausgangspunkt für eine deutlich umfassendere, interdisziplinäre
+Forschungsagenda an der Schnittstelle von Strömungsmechanik,
 Wolkenphysik, Regelungstechnik und erneuerbaren Energien darstellt.
 
 \begin{thebibliography}{99}
@@ -1242,9 +1242,9 @@ Kluwer Academic Publishers, 1988.
 
 \bibitem{betz1920}
 Betz, A.:
-Das Maximum der theoretisch mÃ¶glichen Ausnutzung des Windes durch
+Das Maximum der theoretisch möglichen Ausnutzung des Windes durch
 Windmotoren.
-\emph{Zeitschrift fÃ¼r das gesamte Turbinenwesen}, 26, 1920.
+\emph{Zeitschrift für das gesamte Turbinenwesen}, 26, 1920.
 
 \bibitem{loyd1980}
 Loyd, M.\,L.:
@@ -1264,7 +1264,7 @@ Airborne Wind Energy Systems: A review of the technologies.
 \bibitem{epp2026subgraph}
 Epp, S.:
 \emph{Der Subgraph Algorithmus}.
-Eigene Referenzarbeit zur Methodik formaler OptimalitÃ¤tsbeweise, 2026.
+Eigene Referenzarbeit zur Methodik formaler Optimalitätsbeweise, 2026.
 
 \end{thebibliography}
 

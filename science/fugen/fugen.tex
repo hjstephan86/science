@@ -51,17 +51,17 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 }
 
 \title{Optimale Anordnung von Fugen und Fugenbreite\\
-fÃ¼r maximale Lebensdauer des Bodens\\
+für maximale Lebensdauer des Bodens\\
 bei Fliesen und Steinen}
 \author{Stephan Epp}
 \date{28. Juni 2026}
@@ -71,15 +71,15 @@ bei Fliesen und Steinen}
 \maketitle
 
 \begin{abstract}
-Die Lebensdauer von Belagssystemen aus Fliesen und Natursteinen wird maÃŸgeblich
+Die Lebensdauer von Belagssystemen aus Fliesen und Natursteinen wird maßgeblich
 durch Fugenbreite, Fugenabstand und Fugenanordnung bestimmt. Diese Arbeit
 entwickelt ein mathematisches Modell zur Optimierung dieser Parameter,
-beweist formal eine analytische Formel fÃ¼r die optimale Fugenbreite
-$w^*(L) = k \cdot L + w_{\min}$ in AbhÃ¤ngigkeit vom Plattenformat $L$
+beweist formal eine analytische Formel für die optimale Fugenbreite
+$w^*(L) = k \cdot L + w_{\min}$ in Abhängigkeit vom Plattenformat $L$
 und leitet aus der Mechanik thermischer Dehnung,
 elastischer Spannungsaufnahme und Schwind\-verformung des Untergrunds
 notwendige Bedingungen ab. Sechs Matplotlib-Abbildungen veranschaulichen
-die zentralen ZusammenhÃ¤nge quantitativ. Ein umfangreicher Ausblick
+die zentralen Zusammenhänge quantitativ. Ein umfangreicher Ausblick
 benennt offene Forschungsfragen und Anwendungsfelder.
 \end{abstract}
 
@@ -87,58 +87,58 @@ benennt offene Forschungsfragen und Anwendungsfelder.
 \newpage
 
 % ==========================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ==========================================================================
 
-BelÃ¤ge aus keramischen Fliesen, Natursteinen oder Betonwerkstein gehÃ¶ren zu den
-langlebigsten BodenbelÃ¤gen in Innen- und AuÃŸenbereichen. Ihre tatsÃ¤chliche
-Nutzungsdauer schwankt jedoch erheblich: WÃ¤hrend fachgerecht verlegte BÃ¶den
-mehrere Jahrzehnte ohne SchÃ¤den Ã¼berstehen, zeigen Objekte mit
+Beläge aus keramischen Fliesen, Natursteinen oder Betonwerkstein gehören zu den
+langlebigsten Bodenbelägen in Innen- und Außenbereichen. Ihre tatsächliche
+Nutzungsdauer schwankt jedoch erheblich: Während fachgerecht verlegte Böden
+mehrere Jahrzehnte ohne Schäden überstehen, zeigen Objekte mit
 handwerklichen Fehlern bereits nach wenigen Jahren Risse, Hohllagen
 oder abplatzende Kanten.
 
-Die entscheidende, aber hÃ¤ufig unterschÃ¤tzte GrÃ¶ÃŸe ist das \emph{Fugensystem}.
-Es erfÃ¼llt drei grundlegende technische Aufgaben:
+Die entscheidende, aber häufig unterschätzte Größe ist das \emph{Fugensystem}.
+Es erfüllt drei grundlegende technische Aufgaben:
 \begin{itemize}
-	\item Aufnahme thermisch und hygrisch bedingter LÃ¤ngenÃ¤nderungen von
-	      Platte, MÃ¶rtel und Untergrund
-	\item Verteilung punktueller Lasten auf eine grÃ¶ÃŸere UntergrundflÃ¤che
-	\item Ausgleich von MaÃŸtoleranzen der Platten und des Untergrunds
+	\item Aufnahme thermisch und hygrisch bedingter Längenänderungen von
+	      Platte, Mörtel und Untergrund
+	\item Verteilung punktueller Lasten auf eine größere Untergrundfläche
+	\item Ausgleich von Maßtoleranzen der Platten und des Untergrunds
 \end{itemize}
 
-Trotz dieser zentralen Rolle existieren bis heute keine allgemeingÃ¼ltigen,
+Trotz dieser zentralen Rolle existieren bis heute keine allgemeingültigen,
 mathematisch fundierten Optimierungsmodelle, die alle drei Aufgaben
-gemeinsam berÃ¼cksichtigen. Praxisnormen wie DIN~18157 \cite{din18157}
+gemeinsam berücksichtigen. Praxisnormen wie DIN~18157 \cite{din18157}
 oder ETAG~004 \cite{etag004} liefern Erfahrungswerte, keine Herleitungen.
 
 \subsection{Problemstellung}
 
-Gegeben sei ein Belagssystem aus ebenen Platten der KantenlÃ¤nge $L$
+Gegeben sei ein Belagssystem aus ebenen Platten der Kantenlänge $L$
 (in mm), verlegt auf einem Untergrund mit bekannten elastischen
 Eigenschaften. Gesucht sind:
 \begin{enumerate}
-	\item Die optimale Fugenbreite $w^*(L)$ in AbhÃ¤ngigkeit von $L$.
+	\item Die optimale Fugenbreite $w^*(L)$ in Abhängigkeit von $L$.
 	\item Der optimale Fugenabstand $d^*$ zwischen Dehnungsfugen.
 	\item Die Fugenanordnung (Kreuzfuge, Halbversatz, Drittelversatz),
 	      die die mechanische Spannungskonzentration minimiert.
 \end{enumerate}
 
-\textbf{ZielgrÃ¶ÃŸe} ist die erwartete Lebensdauer $T$ des Belags in Jahren,
-definiert als Zeitraum bis zum ersten Ã¤sthetisch oder strukturell
+\textbf{Zielgröße} ist die erwartete Lebensdauer $T$ des Belags in Jahren,
+definiert als Zeitraum bis zum ersten ästhetisch oder strukturell
 relevanten Schaden.
 
 \subsection{Motivation}
 
-Fehlende Fugen oder zu enge Fugen erzwingen bei TemperaturÃ¤nderungen
-elastische und schlieÃŸlich plastische Verformungen in Platte und Kleber.
-Ãœberschreitet die resultierende Zugspannung die Haftzugfestigkeit
+Fehlende Fugen oder zu enge Fugen erzwingen bei Temperaturänderungen
+elastische und schließlich plastische Verformungen in Platte und Kleber.
+Überschreitet die resultierende Zugspannung die Haftzugfestigkeit
 des Fliesenklebers (typisch $\sigma_{\text{Haft}} \geq 0{,}5\,\text{N/mm}^2$),
-entstehen Hohllagen. Wird die Biegezugfestigkeit der Platte Ã¼berschritten,
+entstehen Hohllagen. Wird die Biegezugfestigkeit der Platte überschritten,
 kommt es zu Rissen oder Abplatzungen.
 
-Zu breite Fugen ihrerseits fÃ¼hren zu erhÃ¶htem Verschmutzungsaufkommen,
-mechanischer InstabilitÃ¤t der Fugenflanken und einem Ã¤sthetisch
-unerwÃ¼nschten Erscheinungsbild.
+Zu breite Fugen ihrerseits führen zu erhöhtem Verschmutzungsaufkommen,
+mechanischer Instabilität der Fugenflanken und einem ästhetisch
+unerwünschten Erscheinungsbild.
 
 Ziel dieser Arbeit ist die exakte analytische Formulierung und der
 formale Beweis der optimalen Fugenparameter.
@@ -151,16 +151,16 @@ formale Beweis der optimalen Fugenparameter.
 
 \begin{definition}[Belagssystem]
 	Ein Belagssystem $\mathcal{B} = (P, F, U)$ besteht aus einer endlichen
-	Menge von Platten $P = \{p_1, \ldots, p_N\}$ mit KantenlÃ¤nge $L$,
+	Menge von Platten $P = \{p_1, \ldots, p_N\}$ mit Kantenlänge $L$,
 	einem Fugensystem $F$ mit Fugenbreite $w$ und Fugenabstand $d$,
-	sowie einem Untergrund $U$ mit ElastizitÃ¤tsmodul $E_U$ und
+	sowie einem Untergrund $U$ mit Elastizitätsmodul $E_U$ und
 	thermischem Ausdehnungskoeffizient $\alpha_U$.
 \end{definition}
 
 \begin{definition}[Fugenbreite]
 	Die Fugenbreite $w \in \mathbb{R}^+$ bezeichnet den lichten Abstand
 	zweier benachbarter Platten in mm, gemessen senkrecht zur
-	PlattenoberflÃ¤che.
+	Plattenoberfläche.
 \end{definition}
 
 \begin{definition}[Fugenabstand]
@@ -169,19 +169,19 @@ formale Beweis der optimalen Fugenparameter.
 \end{definition}
 
 \begin{definition}[Thermische Dehnung]
-	Die thermische Dehnung einer Platte der LÃ¤nge $L$ bei
-	Temperaturdifferenz $\Delta T$ betrÃ¤gt:
+	Die thermische Dehnung einer Platte der Länge $L$ bei
+	Temperaturdifferenz $\Delta T$ beträgt:
 	\[
 	\Delta L_{\text{th}}(L,\Delta T) = \alpha_{\text{th}} \cdot L \cdot \Delta T
 	\]
 	mit dem thermischen Ausdehnungskoeffizienten $\alpha_{\text{th}}$
-	der PlattenoberflÃ¤che $[\alpha_{\text{th}}] = \mathrm{K}^{-1}$.
+	der Plattenoberfläche $[\alpha_{\text{th}}] = \mathrm{K}^{-1}$.
 \end{definition}
 
-\begin{definition}[FugenaufnahmekapazitÃ¤t]
-	Die FugenaufnahmekapazitÃ¤t $C(w, \varepsilon_{\max})$ bezeichnet die
-	maximale FormÃ¤nderung, die eine Fuge der Breite $w$ ohne bleibende
-	SchÃ¤digung der Fugenmasse aufnehmen kann:
+\begin{definition}[Fugenaufnahmekapazität]
+	Die Fugenaufnahmekapazität $C(w, \varepsilon_{\max})$ bezeichnet die
+	maximale Formänderung, die eine Fuge der Breite $w$ ohne bleibende
+	Schädigung der Fugenmasse aufnehmen kann:
 	\[
 	C(w, \varepsilon_{\max}) = w \cdot \varepsilon_{\max}
 	\]
@@ -207,14 +207,14 @@ keramischer Fliesen und typischer Verlegungssysteme zusammen.
 
 \begin{table}[h]
 	\centering
-	\caption{Typische Materialparameter fÃ¼r keramische Fliesen}
+	\caption{Typische Materialparameter für keramische Fliesen}
 	\label{tab:parameter}
 	\begin{tabular}{llll}
 		\toprule
 		Parameter & Symbol & Wert & Einheit \\
 		\midrule
 		Thermischer Ausdehnungskoeff. & $\alpha_{\text{th}}$ & $6{-}9 \cdot 10^{-6}$ & K$^{-1}$ \\
-		ElastizitÃ¤tsmodul (Fliese) & $E_F$ & $40{-}80$ & kN/mm$^2$ \\
+		Elastizitätsmodul (Fliese) & $E_F$ & $40{-}80$ & kN/mm$^2$ \\
 		Biegezugfestigkeit & $\sigma_B$ & $25{-}45$ & N/mm$^2$ \\
 		Druckfestigkeit & $\sigma_D$ & $200{-}400$ & N/mm$^2$ \\
 		Haftzugfestigkeit Kleber & $\sigma_H$ & $0{,}5{-}2{,}0$ & N/mm$^2$ \\
@@ -230,13 +230,13 @@ keramischer Fliesen und typischer Verlegungssysteme zusammen.
 \subsection{Spannungsanalyse in der Fuge}
 
 Sei $\sigma_{\text{th}}$ die thermisch induzierte Spannung in einem
-Belagssystem ohne Fugen. Nach dem Hookeschen Gesetz gilt fÃ¼r eine
-ungehinderte Platte der LÃ¤nge $L$:
+Belagssystem ohne Fugen. Nach dem Hookeschen Gesetz gilt für eine
+ungehinderte Platte der Länge $L$:
 \[
 \sigma_{\text{th}} = E_F \cdot \alpha_{\text{th}} \cdot \Delta T
 \]
 
-Eine Fuge der Breite $w$ mit AufnahmekapazitÃ¤t $C = w \cdot \varepsilon_{\max}$
+Eine Fuge der Breite $w$ mit Aufnahmekapazität $C = w \cdot \varepsilon_{\max}$
 reduziert die wirksame Dehnung. Der Anteil der Dehnung, der in den
 Platten verbleibt:
 \[
@@ -252,7 +252,7 @@ Die verbleibende Spannung in der Platte ist dann:
 
 \begin{lemma}[Spannungsfreiheit]
 	\label{lem:spannungsfreiheit}
-	Ein Belagssystem ist spannungsfrei bezÃ¼glich thermischer Lasten, wenn
+	Ein Belagssystem ist spannungsfrei bezüglich thermischer Lasten, wenn
 	\[
 	w \;\geq\; \frac{\alpha_{\text{th}} \cdot L \cdot \Delta T}{\varepsilon_{\max}}
 	\]
@@ -265,31 +265,31 @@ Die verbleibende Spannung in der Platte ist dann:
 	\quad\Longleftrightarrow\quad
 	w \geq \frac{\alpha_{\text{th}} \cdot L \cdot \Delta T}{\varepsilon_{\max}}
 	\]
-	Dies ist die notwendige und hinreichende Bedingung fÃ¼r
+	Dies ist die notwendige und hinreichende Bedingung für
 	$\sigma_{\text{rest}} = 0$.
 \end{proof}
 
 \begin{korollar}[Minimale Fugenbreite]
 	\label{kor:minbreite}
-	FÃ¼r keramische Fliesen mit $\alpha_{\text{th}} = 8 \cdot 10^{-6}\,\text{K}^{-1}$,
+	Für keramische Fliesen mit $\alpha_{\text{th}} = 8 \cdot 10^{-6}\,\text{K}^{-1}$,
 	$\Delta T = 60\,\text{K}$ und $\varepsilon_{\max} = 0{,}30$ gilt:
 	\[
 	w_{\min}(L) = \frac{8 \cdot 10^{-6} \cdot L \cdot 60}{0{,}30}
 	= \frac{L}{6250}\;\text{mm} \;\approx\; 0{,}0016 \cdot L\;\text{mm}
 	\]
-	FÃ¼r eine Platte mit $L = 600\,\text{mm}$ folgt $w_{\min} \approx 0{,}96\,\text{mm}$.
+	Für eine Platte mit $L = 600\,\text{mm}$ folgt $w_{\min} \approx 0{,}96\,\text{mm}$.
 \end{korollar}
 
 \subsection{Modell der optimalen Fugenbreite}
 
-Die Lebensdauer $T(w, L)$ wird durch zwei gegenlÃ¤ufige Effekte bestimmt:
+Die Lebensdauer $T(w, L)$ wird durch zwei gegenläufige Effekte bestimmt:
 
 \begin{itemize}
-	\item \textbf{Zu enge Fuge} ($w < w^*$): Thermische Spannungen Ã¼bersteigen
-	      die KleberkapazitÃ¤t; Hohllagen und Risse entstehen vorzeitig.
-	\item \textbf{Zu breite Fuge} ($w > w^*$): Mechanische InstabilitÃ¤t der
-	      Fugenflanken, erhÃ¶hte Rissbildung in der Fugenmasse durch
-	      Ã¼bermÃ¤ÃŸige Deformation bei Belastung.
+	\item \textbf{Zu enge Fuge} ($w < w^*$): Thermische Spannungen übersteigen
+	      die Kleberkapazität; Hohllagen und Risse entstehen vorzeitig.
+	\item \textbf{Zu breite Fuge} ($w > w^*$): Mechanische Instabilität der
+	      Fugenflanken, erhöhte Rissbildung in der Fugenmasse durch
+	      übermäßige Deformation bei Belastung.
 \end{itemize}
 
 \begin{satz}[Optimale Fugenbreite]
@@ -305,11 +305,11 @@ Die Lebensdauer $T(w, L)$ wird durch zwei gegenlÃ¤ufige Effekte bestimmt:
 \end{satz}
 
 \begin{proof}
-	Wir zeigen, dass $T(w, L)$ fÃ¼r $w < w^*(L)$ streng monoton wÃ¤chst
-	und fÃ¼r $w > w^*(L)$ streng monoton fÃ¤llt.
+	Wir zeigen, dass $T(w, L)$ für $w < w^*(L)$ streng monoton wächst
+	und für $w > w^*(L)$ streng monoton fällt.
 
 	\textbf{Schritt 1: Differenzierbarkeit.}
-	Nach Definition ist $T(w, L)$ als GauÃŸfunktion in $w$ auf ganz
+	Nach Definition ist $T(w, L)$ als Gaußfunktion in $w$ auf ganz
 	$\mathbb{R}^+$ differenzierbar mit:
 	\[
 	\frac{\partial T}{\partial w}(w, L) = T(w, L) \cdot \frac{-(w - w^*(L))}{\sigma_w^2(L)}
@@ -322,37 +322,37 @@ Die Lebensdauer $T(w, L)$ wird durch zwei gegenlÃ¤ufige Effekte bestimmt:
 	\]
 
 	\textbf{Schritt 3: Eindeutigkeit.}
-	Da $\partial T/\partial w = 0$ genau fÃ¼r $w = w^*(L)$ gilt, ist das
+	Da $\partial T/\partial w = 0$ genau für $w = w^*(L)$ gilt, ist das
 	Maximum eindeutig.
 
-	\textbf{Schritt 4: LinearitÃ¤t in $L$.}
+	\textbf{Schritt 4: Linearität in $L$.}
 	Die optimale Fugenbreite $w^*(L)$ leitet sich aus Lemma~\ref{lem:spannungsfreiheit}
 	ab: Spannungsfreiheit erfordert $w \geq \alpha_{\text{th}} \cdot L \cdot \Delta T / \varepsilon_{\max}$.
 	Da $k = \alpha_{\text{th}} \cdot \Delta T / \varepsilon_{\max}$ eine
-	Materialkonstante ist, folgt die LinearitÃ¤t $w^*(L) = k \cdot L + w_0$
+	Materialkonstante ist, folgt die Linearität $w^*(L) = k \cdot L + w_0$
 	unmittelbar.
 \end{proof}
 
 \begin{bemerkung}
-	Der Koeffizient $k$ nimmt fÃ¼r typische keramische Fliesen den Wert
+	Der Koeffizient $k$ nimmt für typische keramische Fliesen den Wert
 	$k = 8 \cdot 10^{-6} \cdot 60 / 0{,}30 \approx 0{,}0016$ an.
-	FÃ¼r ein Plattenformat $L = 600\,\text{mm}$ ergibt sich damit
+	Für ein Plattenformat $L = 600\,\text{mm}$ ergibt sich damit
 	$w^*(600) \approx 0{,}96\,\text{mm} + w_0 \approx 2{,}5\,\text{mm}$,
-	was mit den Empfehlungen der DIN~18157 Ã¼bereinstimmt.
+	was mit den Empfehlungen der DIN~18157 übereinstimmt.
 \end{bemerkung}
 
 \subsection{Modell des optimalen Fugenabstands}
 
-Neben der Einzelfuge zwischen zwei Platten mÃ¼ssen in grÃ¶ÃŸeren FlÃ¤chen
+Neben der Einzelfuge zwischen zwei Platten müssen in größeren Flächen
 Dehnungsfugen (Bewegungsfugen) angeordnet werden, die durchgehend bis
-auf den Untergrund reichen und ausschlieÃŸlich elastische Fugenmasse
+auf den Untergrund reichen und ausschließlich elastische Fugenmasse
 enthalten.
 
 \begin{definition}[Kritischer Fugenabstand]
 	Der kritische Fugenabstand $d^*$ ist der Abstand zwischen zwei
 	Dehnungsfugen, bei dem die kumulative thermische Dehnung der
-	dazwischenliegenden FlÃ¤che die KapazitÃ¤t aller enthaltenen
-	Fugenmassen gerade nicht Ã¼berschreitet:
+	dazwischenliegenden Fläche die Kapazität aller enthaltenen
+	Fugenmassen gerade nicht überschreitet:
 	\[
 	d^* = \frac{N_F \cdot w \cdot \varepsilon_{\max}}{\alpha_{\text{th}} \cdot \Delta T}
 	\]
@@ -362,26 +362,26 @@ enthalten.
 
 \begin{satz}[Maximaler Fugenabstand]
 	\label{satz:fugenabstand}
-	FÃ¼r ein homogenes Plattenfeld mit Plattenformat $L$, Fugenbreite $w$
-	und Dehnungsfugen im Abstand $d$ gilt: Das Schadensrisiko Ã¼berschreitet
+	Für ein homogenes Plattenfeld mit Plattenformat $L$, Fugenbreite $w$
+	und Dehnungsfugen im Abstand $d$ gilt: Das Schadensrisiko überschreitet
 	die Schranke $R_{\max}$ nicht, wenn:
 	\[
 	d \leq d^*_{\max} = \frac{w \cdot \varepsilon_{\max}}{\alpha_{\text{th}} \cdot \Delta T}
 	\cdot \left\lfloor \frac{d^*_{\max}}{L + w} \right\rfloor
 	\]
-	Im Innenbereich empfiehlt sich $d \leq 3\,\text{m}$, im AuÃŸenbereich
+	Im Innenbereich empfiehlt sich $d \leq 3\,\text{m}$, im Außenbereich
 	$d \leq 5\,\text{m}$ bei $\Delta T \leq 60\,\text{K}$.
 \end{satz}
 
 \begin{proof}
-	Die kumulative thermische Dehnung einer FlÃ¤che der LÃ¤nge $d$ betrÃ¤gt
+	Die kumulative thermische Dehnung einer Fläche der Länge $d$ beträgt
 	$\Delta L_d = \alpha_{\text{th}} \cdot d \cdot \Delta T$ (in mm, mit
-	$d$ in mm umgerechnet). Die AufnahmekapazitÃ¤t aller $N_F$ Fugen zwischen
-	zwei Dehnungsfugen betrÃ¤gt $C_{\text{ges}} = N_F \cdot w \cdot \varepsilon_{\max}$.
+	$d$ in mm umgerechnet). Die Aufnahmekapazität aller $N_F$ Fugen zwischen
+	zwei Dehnungsfugen beträgt $C_{\text{ges}} = N_F \cdot w \cdot \varepsilon_{\max}$.
 	Schadensfreiheit erfordert $\Delta L_d \leq C_{\text{ges}}$, woraus
 	$d \leq N_F \cdot w \cdot \varepsilon_{\max} / (\alpha_{\text{th}} \cdot \Delta T)$
-	folgt. Durch iterative LÃ¶sung (Fixpunktiteration) erhÃ¤lt man $d^*_{\max}$.
-	FÃ¼r keramische Fliesen mit $w = 5\,\text{mm}$, $\varepsilon_{\max} = 0{,}30$,
+	folgt. Durch iterative Lösung (Fixpunktiteration) erhält man $d^*_{\max}$.
+	Für keramische Fliesen mit $w = 5\,\text{mm}$, $\varepsilon_{\max} = 0{,}30$,
 	$\alpha_{\text{th}} = 8 \cdot 10^{-6}\,\text{K}^{-1}$, $\Delta T = 60\,\text{K}$
 	und $L = 600\,\text{mm}$:
 	\[
@@ -404,27 +404,27 @@ und die Rissfortpflanzung im Schadensfall.
 \begin{satz}[Optimales Verlegemuster]
 	\label{satz:muster}
 	Bei Kreuzfugen wirkt eine Punktlast $F$ auf einen einzelnen
-	PlattenkÃ¶rper. Bei Halbversatz (Streckenverband) verteilt sich
+	Plattenkörper. Bei Halbversatz (Streckenverband) verteilt sich
 	dieselbe Last auf bis zu zwei benachbarte Platten. Der Halbversatz
 	reduziert die maximale Biegespannung in der Einzelplatte um den Faktor:
 	\[
 	\eta = \frac{\sigma_{\text{Kreuz}}}{\sigma_{\text{Versatz}}} = \frac{4}{3} \approx 1{,}33
 	\]
-	Der Halbversatz erhÃ¶ht die mechanische TragfÃ¤higkeit um $33\,\%$.
+	Der Halbversatz erhöht die mechanische Tragfähigkeit um $33\,\%$.
 \end{satz}
 
 \begin{proof}
 	Modelliere eine Platte als rechteckige Biegeplatte nach
 	Kirchhoff~\cite{kirchhoff1850}. Die maximale Biegespannung bei
-	Mittelpunktlast $F$ auf einer Platte mit Auflagerbreite $a$ betrÃ¤gt:
+	Mittelpunktlast $F$ auf einer Platte mit Auflagerbreite $a$ beträgt:
 	\[
 	\sigma_{\max} = \frac{3 F (1 + \nu)}{4 t^2} \left(\ln\!\frac{a}{\pi r_0} + 0{,}6159\right)
 	\]
 	mit Plattendicke $t$ und Poisson-Zahl $\nu$.
 
-	Bei Kreuzfuge trÃ¤gt eine Platte die gesamte Last $F$ allein.
-	Bei Halbversatz liegt der Lastangriffspunkt an der LÃ¤ngsseite
-	zweier Platten, sodass nach SteifigkeitsverhÃ¤ltnis jede Platte
+	Bei Kreuzfuge trägt eine Platte die gesamte Last $F$ allein.
+	Bei Halbversatz liegt der Lastangriffspunkt an der Längsseite
+	zweier Platten, sodass nach Steifigkeitsverhältnis jede Platte
 	$F/2$ aufnimmt (gleiche Platten vorausgesetzt). Da $\sigma_{\max}$
 	linear in $F$ ist, folgt:
 	\[
@@ -438,59 +438,59 @@ und die Rissfortpflanzung im Schadensfall.
 \section{Ergebnisse und Abbildungen}
 % ==========================================================================
 
-\subsection{Abbildung 1: Lebensdauer in AbhÃ¤ngigkeit der Fugenbreite}
+\subsection{Abbildung 1: Lebensdauer in Abhängigkeit der Fugenbreite}
 
 Abbildung~\ref{fig:lebensdauer_fugenbreite} zeigt die nach
-Satz~\ref{satz:optimum} berechnete Lebensdauer $T(w, L)$ fÃ¼r vier
-reprÃ¤sentative Plattenformate. Die GauÃŸform ist gut erkennbar;
+Satz~\ref{satz:optimum} berechnete Lebensdauer $T(w, L)$ für vier
+repräsentative Plattenformate. Die Gaußform ist gut erkennbar;
 das Maximum verschiebt sich linear mit dem Plattenformat nach rechts
-(grÃ¶ÃŸere $w^*$). FÃ¼r das Kleinformat ($L = 300\,\text{mm}$) liegt das
-Optimum bei etwa $w^* \approx 2{,}7\,\text{mm}$, fÃ¼r das XXL-Format
+(größere $w^*$). Für das Kleinformat ($L = 300\,\text{mm}$) liegt das
+Optimum bei etwa $w^* \approx 2{,}7\,\text{mm}$, für das XXL-Format
 ($L = 1500\,\text{mm}$) bei $w^* \approx 7{,}5\,\text{mm}$.
 Die gestrichelten Vertikallinien markieren die jeweilige optimale
 Fugenbreite. Ein deutliches Abweichen -- nach oben oder unten --
-fÃ¼hrt bereits bei $\Delta w = \pm 2\,\text{mm}$ zu einer Reduktion
+führt bereits bei $\Delta w = \pm 2\,\text{mm}$ zu einer Reduktion
 der Lebensdauer um $15{-}30\,\%$.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plot_lebensdauer_fugenbreite.pdf}
-	\caption{Lebensdauer des Belags als Funktion der Fugenbreite $w$ fÃ¼r
+	\caption{Lebensdauer des Belags als Funktion der Fugenbreite $w$ für
 	         vier verschiedene Plattenformate. Gestrichelte Linien markieren
 	         die jeweilige optimale Fugenbreite $w^*(L)$.}
 	\label{fig:lebensdauer_fugenbreite}
 \end{figure}
 
-\subsection{Abbildung 2: Thermische Dehnung und FugenaufnahmekapazitÃ¤t}
+\subsection{Abbildung 2: Thermische Dehnung und Fugenaufnahmekapazität}
 
 Abbildung~\ref{fig:thermische_dehnung} veranschaulicht die thermische
 Dehnung $\Delta L_{\text{th}}(T)$ dreier Plattenformate als Funktion
-der Umgebungstemperatur (Bezugstemperatur $T_0 = 20\,\text{Â°C}$).
-Die horizontalen Linien zeigen die FugenaufnahmekapazitÃ¤ten fÃ¼r
-$w = 3\,\text{mm}$ und $w = 5\,\text{mm}$ (je 30\,\% KompressibilitÃ¤t).
+der Umgebungstemperatur (Bezugstemperatur $T_0 = 20\,\text{ °C}$).
+Die horizontalen Linien zeigen die Fugenaufnahmekapazitäten für
+$w = 3\,\text{mm}$ und $w = 5\,\text{mm}$ (je 30\,\% Kompressibilität).
 
-FÃ¼r die Platte mit $L = 600\,\text{mm}$ Ã¼bersteigt die thermische
-Dehnung bei $\Delta T = 40\,\text{K}$ bereits die KapazitÃ¤t einer
-$3\,\text{mm}$-Fuge. Erst eine $5\,\text{mm}$-Fuge hÃ¤lt den gesamten
-Temperaturbereich $-20\,\text{Â°C}$ bis $+60\,\text{Â°C}$ abgedeckt.
+Für die Platte mit $L = 600\,\text{mm}$ übersteigt die thermische
+Dehnung bei $\Delta T = 40\,\text{K}$ bereits die Kapazität einer
+$3\,\text{mm}$-Fuge. Erst eine $5\,\text{mm}$-Fuge hält den gesamten
+Temperaturbereich $-20\,\text{ °C}$ bis $+60\,\text{ °C}$ abgedeckt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plot_thermische_dehnung.pdf}
 	\caption{Thermische Dehnung dreier Plattenformate im Vergleich zur
-	         FugenaufnahmekapazitÃ¤t bei $w = 3\,\text{mm}$ (gestrichelt)
+	         Fugenaufnahmekapazität bei $w = 3\,\text{mm}$ (gestrichelt)
 	         und $w = 5\,\text{mm}$ (strichpunktiert).}
 	\label{fig:thermische_dehnung}
 \end{figure}
 
 \subsection{Abbildung 3: Optimale Fugenbreite als Funktion des Plattenformats}
 
-Abbildung~\ref{fig:optimale_fugenbreite} bestÃ¤tigt die in
-Satz~\ref{satz:optimum} bewiesene LinearitÃ¤t $w^*(L) = k \cdot L + w_0$.
+Abbildung~\ref{fig:optimale_fugenbreite} bestätigt die in
+Satz~\ref{satz:optimum} bewiesene Linearität $w^*(L) = k \cdot L + w_0$.
 Die blaue Kurve zeigt das analytische Modell, das blaue Band den
 Toleranzbereich $\pm 1\,\text{mm}$. Die roten Punkte sind
-Normwerte nach DIN~18157 und prÃ¼fen das Modell empirisch.
-Die Ãœbereinstimmung ist fÃ¼r alle Plattenformate von
+Normwerte nach DIN~18157 und prüfen das Modell empirisch.
+Die Übereinstimmung ist für alle Plattenformate von
 $L = 200\,\text{mm}$ bis $L = 1500\,\text{mm}$ sehr gut.
 
 \begin{figure}[h]
@@ -502,13 +502,13 @@ $L = 200\,\text{mm}$ bis $L = 1500\,\text{mm}$ sehr gut.
 	\label{fig:optimale_fugenbreite}
 \end{figure}
 
-\subsection{Abbildung 4: Schadensrisiko in AbhÃ¤ngigkeit vom Fugenabstand}
+\subsection{Abbildung 4: Schadensrisiko in Abhängigkeit vom Fugenabstand}
 
 Abbildung~\ref{fig:fugenabstand_risiko} zeigt das normierte
 Schadensrisiko $R(d)$ als Funktion des Fugenabstands $d$ zwischen
-Dehnungsfugen. Das Risiko steigt nichtlinear an und Ã¼berschreitet
+Dehnungsfugen. Das Risiko steigt nichtlinear an und überschreitet
 $50\,\%$ bereits bei $d \approx 4\,\text{m}$. Die empfohlenen
-Grenzwerte von $3\,\text{m}$ (Innen) und $5\,\text{m}$ (AuÃŸen)
+Grenzwerte von $3\,\text{m}$ (Innen) und $5\,\text{m}$ (Außen)
 nach Satz~\ref{satz:fugenabstand} sind eingezeichnet.
 
 \begin{figure}[h]
@@ -516,24 +516,24 @@ nach Satz~\ref{satz:fugenabstand} sind eingezeichnet.
 	\includegraphics[width=0.85\textwidth]{plot_fugenabstand_risiko.pdf}
 	\caption{Schadensrisiko in Prozent als Funktion des Fugenabstands $d$.
 	         Vertikale Linien markieren die empfohlenen Grenzwerte
-	         fÃ¼r Innen- und AuÃŸenbereich.}
+	         für Innen- und Außenbereich.}
 	\label{fig:fugenabstand_risiko}
 \end{figure}
 
 \subsection{Abbildung 5: Lebensdauer als Funktion der Fugenmassen-Eigenschaften}
 
 Abbildung~\ref{fig:fugenmasse} zeigt eine Konturkarte der
-erwarteten Lebensdauer in AbhÃ¤ngigkeit von ElastizitÃ¤t und
+erwarteten Lebensdauer in Abhängigkeit von Elastizität und
 Zugfestigkeit der Fugenmasse. Das Maximum der Lebensdauer liegt
-bei mittlerer ElastizitÃ¤t ($40{-}50\,\%$) und hoher Zugfestigkeit
-($> 3{,}5\,\text{N/mm}^2$). Zu hohe ElastizitÃ¤t (Ã¼ber $60\,\%$)
+bei mittlerer Elastizität ($40{-}50\,\%$) und hoher Zugfestigkeit
+($> 3{,}5\,\text{N/mm}^2$). Zu hohe Elastizität (über $60\,\%$)
 reduziert die Zugfestigkeit und damit die Lebensdauer.
 Die Isolinien entsprechen Lebensdauern von $20$ bis $40$ Jahren.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plot_fugenmasse_eigenschaften.pdf}
-	\caption{Lebensdauer des Belags als Funktion der ElastizitÃ¤t
+	\caption{Lebensdauer des Belags als Funktion der Elastizität
 	         und Zugfestigkeit der verwendeten Fugenmasse.
 	         Konturlinien in Jahresschritten.}
 	\label{fig:fugenmasse}
@@ -542,12 +542,12 @@ Die Isolinien entsprechen Lebensdauern von $20$ bis $40$ Jahren.
 \subsection{Abbildung 6: Vergleich verschiedener Verlegemuster}
 
 Abbildung~\ref{fig:verlegemuster} stellt drei grundlegende
-Fugenanordnungen gegenÃ¼ber: Kreuzfuge, Streckenverband (Halbversatz)
+Fugenanordnungen gegenüber: Kreuzfuge, Streckenverband (Halbversatz)
 und Drittelversatz. Der Streckenverband reduziert die Biegespannung
 bei Punktlast nach Satz~\ref{satz:muster} um $33\,\%$.
 Der Drittelversatz verteilt die Last auf bis zu drei Platten und
-erzielt eine weitere Verbesserung, erfordert jedoch prÃ¤zisere
-AusfÃ¼hrung und erhÃ¶hten Verlegeaufwand.
+erzielt eine weitere Verbesserung, erfordert jedoch präzisere
+Ausführung und erhöhten Verlegeaufwand.
 
 \begin{figure}[h]
 	\centering
@@ -562,7 +562,7 @@ AusfÃ¼hrung und erhÃ¶hten Verlegeaufwand.
 \section{Zusammenfassung}
 % ==========================================================================
 
-Diese Arbeit hat ein vollstÃ¤ndiges mathematisches Modell zur Optimierung
+Diese Arbeit hat ein vollständiges mathematisches Modell zur Optimierung
 von Fugenbreite, Fugenabstand und Fugenanordnung in Belagssystemen aus
 keramischen Fliesen und Natursteinen entwickelt.
 
@@ -571,14 +571,14 @@ Die zentralen Ergebnisse sind:
 \begin{itemize}
 	\item \textbf{Optimale Fugenbreite:} $w^*(L) = k \cdot L + w_0$ mit
 	      $k \approx 0{,}004$ (Satz~\ref{satz:optimum}), formal bewiesen
-	      Ã¼ber die GauÃŸsymmetrie der Lebensdauerfunktion und die
-	      LinearitÃ¤t der Spannungsfreiheitsbedingung.
+	      über die Gaußsymmetrie der Lebensdauerfunktion und die
+	      Linearität der Spannungsfreiheitsbedingung.
 	\item \textbf{Maximaler Fugenabstand:} $d \leq 3\,\text{m}$ (Innen)
-	      bzw. $d \leq 5\,\text{m}$ (AuÃŸen) nach Satz~\ref{satz:fugenabstand}.
+	      bzw. $d \leq 5\,\text{m}$ (Außen) nach Satz~\ref{satz:fugenabstand}.
 	\item \textbf{Optimale Anordnung:} Streckenverband oder Drittelversatz
-	      reduziert die maximale Biegespannung um $33\,\%$ gegenÃ¼ber der
+	      reduziert die maximale Biegespannung um $33\,\%$ gegenüber der
 	      Kreuzfuge (Satz~\ref{satz:muster}).
-	\item \textbf{Fugenmasse:} ElastizitÃ¤t $40{-}50\,\%$ bei
+	\item \textbf{Fugenmasse:} Elastizität $40{-}50\,\%$ bei
 	      Zugfestigkeit $> 3{,}5\,\text{N/mm}^2$ maximiert die Lebensdauer.
 \end{itemize}
 
@@ -586,67 +586,67 @@ Die zentralen Ergebnisse sind:
 \section{Ausblick}
 % ==========================================================================
 
-Die vorliegende Arbeit Ã¶ffnet mehrere weitreichende Forschungsrichtungen,
-die im Folgenden ausfÃ¼hrlich dargestellt werden.
+Die vorliegende Arbeit öffnet mehrere weitreichende Forschungsrichtungen,
+die im Folgenden ausführlich dargestellt werden.
 
 \subsection{Erweiterung auf Mehrschichtsysteme}
 
-Das entwickelte Modell betrachtet ausschlieÃŸlich die thermische Ausdehnung
+Das entwickelte Modell betrachtet ausschließlich die thermische Ausdehnung
 der Deckschicht. In der Praxis besteht ein Bodenaufbau aus mindestens
 vier Schichten: Rohdecke, Estrich, Fliesenkleber und Fliese. Jede Schicht
-besitzt unterschiedliche thermische Ausdehnungskoeffizienten, ElastizitÃ¤ts-
-module und SchwindmaÃŸe.
+besitzt unterschiedliche thermische Ausdehnungskoeffizienten, Elastizitäts-
+module und Schwindmaße.
 
-Eine vollstÃ¤ndige Modellierung erfordert ein Mehrschicht-Verbundmodell,
-in dem die KompatibilitÃ¤tsbedingungen an jeder Schichtgrenze explizit
+Eine vollständige Modellierung erfordert ein Mehrschicht-Verbundmodell,
+in dem die Kompatibilitätsbedingungen an jeder Schichtgrenze explizit
 formuliert werden. Mit der Methode der Finiten Elemente (FEM) lassen
 sich die Spannungsverteilungen in einem solchen Schichtverbund numerisch
 berechnen~\cite{zienkiewicz2000}. Die analytische Herleitung der optimalen
-Fugenbreite unter BerÃ¼cksichtigung aller Schichten ist eine offene
+Fugenbreite unter Berücksichtigung aller Schichten ist eine offene
 und lohnende mathematische Aufgabe.
 
-Von besonderem Interesse ist der Fall unterschiedlicher ElastizitÃ¤tsmodule
-zwischen Kleber und Fliese: Weicher Kleber unter steifer Fliese fÃ¼hrt zu
-Scherspannungen, die unabhÃ¤ngig von der Fugenbreite wirken. Die Interaktion
+Von besonderem Interesse ist der Fall unterschiedlicher Elastizitätsmodule
+zwischen Kleber und Fliese: Weicher Kleber unter steifer Fliese führt zu
+Scherspannungen, die unabhängig von der Fugenbreite wirken. Die Interaktion
 zwischen Fugenmasse und Klebersteifigkeit ist bislang nicht systematisch
 untersucht worden.
 
-\subsection{Dynamische Belastungen und ErmÃ¼dungsmodelle}
+\subsection{Dynamische Belastungen und Ermüdungsmodelle}
 
-Das vorliegende Modell betrachtet ausschlieÃŸlich quasi-statische thermische
-Lasten. Reale BÃ¶den unterliegen jedoch zyklischen Belastungen:
-tÃ¤gliche Temperaturschwankungen im AuÃŸenbereich, wiederkehrende
-Verkehrslasten in IndustriebÃ¶den, StoÃŸbelastungen in ProduktionsstÃ¤tten.
+Das vorliegende Modell betrachtet ausschließlich quasi-statische thermische
+Lasten. Reale Böden unterliegen jedoch zyklischen Belastungen:
+tägliche Temperaturschwankungen im Außenbereich, wiederkehrende
+Verkehrslasten in Industrieböden, Stoßbelastungen in Produktionsstätten.
 
-FÃ¼r solche Szenarien sind ErmÃ¼dungsmodelle nach dem Konzept der
-Miner-Regel~\cite{miner1945} oder frakturmechanische AnsÃ¤tze
+Für solche Szenarien sind Ermüdungsmodelle nach dem Konzept der
+Miner-Regel~\cite{miner1945} oder frakturmechanische Ansätze
 nach Paris und Erdogan~\cite{paris1963} erforderlich. Die
 Lebensdauerfunktion $T(w, L, N)$ wird dann nicht nur von der
-Fugenbreite und dem Format abhÃ¤ngen, sondern auch von der
+Fugenbreite und dem Format abhängen, sondern auch von der
 Anzahl $N$ der Lastzyklen und der Lastamplitude.
 
-Ein vollstÃ¤ndiges ErmÃ¼dungsmodell wÃ¼rde es ermÃ¶glichen,
-fÃ¼r Industriehallen, Bahnhofshallen oder FlughÃ¤fen (alle mit sehr
-hohem FuÃŸ- oder Radverkehr) objektspezifische Fugenparameter zu
-berechnen -- eine erhebliche Verbesserung gegenÃ¼ber den heutigen
+Ein vollständiges Ermüdungsmodell würde es ermöglichen,
+für Industriehallen, Bahnhofshallen oder Flughäfen (alle mit sehr
+hohem Fuß- oder Radverkehr) objektspezifische Fugenparameter zu
+berechnen -- eine erhebliche Verbesserung gegenüber den heutigen
 pauschalen Normwerten.
 
-\subsection{Feuchte- und FrosteinflÃ¼sse}
+\subsection{Feuchte- und Frosteinflüsse}
 
-Im AuÃŸenbereich ist nicht nur die thermische Dehnung maÃŸgebend,
+Im Außenbereich ist nicht nur die thermische Dehnung maßgebend,
 sondern auch die hygrische Dehnung durch Wasseraufnahme sowie
 die Frostdehnung. Wasser, das in die Fuge eindringt und gefriert,
-Ã¼bt DrÃ¼cke von bis zu $200\,\text{N/mm}^2$ aus~\cite{powers1945} --
+übt Drücke von bis zu $200\,\text{N/mm}^2$ aus~\cite{powers1945} --
 weit oberhalb der Biegezugfestigkeit keramischer Fliesen.
 
 Ein erweitertes Modell muss daher die Frostdilatation
 $\Delta V_{\text{Frost}} = 0{,}09 \cdot V_{\text{Wasser}}$
-(volumetrische Ausdehnung beim Gefrieren) als zusÃ¤tzlichen
-Lastterm einbeziehen. Die optimale Fugenbreite im AuÃŸenbereich
-wird unter Frosteinwirkung systemat deutlich grÃ¶ÃŸer ausfallen
+(volumetrische Ausdehnung beim Gefrieren) als zusätzlichen
+Lastterm einbeziehen. Die optimale Fugenbreite im Außenbereich
+wird unter Frosteinwirkung systemat deutlich größer ausfallen
 als das rein thermische Modell vorhersagt.
 
-Gleichzeitig dÃ¼rfen Fugen nicht so breit werden, dass sie
+Gleichzeitig dürfen Fugen nicht so breit werden, dass sie
 Schmutz und Wasser zu leicht aufnehmen. Eine Optimierung unter
 diesen widerstreitenden Anforderungen ist ein nichtlineares
 Optimierungsproblem mit mehreren Nebenbedingungen.
@@ -655,121 +655,121 @@ Optimierungsproblem mit mehreren Nebenbedingungen.
 
 Die bisher betrachteten Modelle sind deterministisch:
 Plattenformat, Fugenbreite und Materialparameter gelten als
-exakt bekannt. In der Praxis schwanken PlattenmaÃŸe um
+exakt bekannt. In der Praxis schwanken Plattenmaße um
 $\pm 0{,}5\,\text{mm}$ (Klasse~EU~nach~EN~ISO~10545-2~\cite{en10545}),
 und Fugenmasse wird manuell aufgetragen mit Schwankungen von
 $\pm 1{-}2\,\text{mm}$.
 
-Eine stochastische Erweiterung des Modells wÃ¼rde die Fugenbreite $w$
+Eine stochastische Erweiterung des Modells würde die Fugenbreite $w$
 als Zufallsvariable $W \sim \mathcal{N}(w^*, \sigma_{\text{Verarbeitung}}^2)$
 modellieren. Die erwartete Lebensdauer ist dann:
 \[
 \mathbb{E}[T(W, L)] = \int_0^\infty T(w, L) \cdot f_W(w) \, dw
 \]
-Die Auswertung dieses Integrals fÃ¼r die GauÃŸsche Lebensdauerfunktion
-ergibt eine analytisch geschlossene Formel (Faltung zweier GauÃŸkurven),
-deren explizite Ableitung Gegenstand zukÃ¼nftiger Arbeiten sein kann.
+Die Auswertung dieses Integrals für die Gaußsche Lebensdauerfunktion
+ergibt eine analytisch geschlossene Formel (Faltung zweier Gaußkurven),
+deren explizite Ableitung Gegenstand zukünftiger Arbeiten sein kann.
 
 \subsection{Maschinelles Lernen zur Parameteridentifikation}
 
 Die in dieser Arbeit hergeleiteten Modelle enthalten Materialparameter
-($\alpha_{\text{th}}$, $E_F$, $\varepsilon_{\max}$), die fÃ¼r neue
-Materialien (Ultrakompakt-Sinterplatten, GroÃŸformatkeramik bis $3\,\text{m}$,
-Natursteinvarianten) experimentell bestimmt werden mÃ¼ssen.
+($\alpha_{\text{th}}$, $E_F$, $\varepsilon_{\max}$), die für neue
+Materialien (Ultrakompakt-Sinterplatten, Großformatkeramik bis $3\,\text{m}$,
+Natursteinvarianten) experimentell bestimmt werden müssen.
 
-Statt teurer LaborprÃ¼fungen bieten sich Methoden des maschinellen Lernens
-an: Durch Bildanalyse von BelÃ¤gen (Drohnenaufnahmen, Smartphone-Fotos)
+Statt teurer Laborprüfungen bieten sich Methoden des maschinellen Lernens
+an: Durch Bildanalyse von Belägen (Drohnenaufnahmen, Smartphone-Fotos)
 lassen sich Schadensmuster automatisch klassifizieren. Ein trainiertes
-Convolutional Neural Network (CNN) kÃ¶nnte aus Schadensbildern rÃ¼ckwÃ¤rts
-auf die zugrunde liegenden Materialparameter schlieÃŸen (inverse Modellierung)
-und diese als Eingabe fÃ¼r das analytische Optimierungsmodell liefern.
+Convolutional Neural Network (CNN) könnte aus Schadensbildern rückwärts
+auf die zugrunde liegenden Materialparameter schließen (inverse Modellierung)
+und diese als Eingabe für das analytische Optimierungsmodell liefern.
 
-Erste AnsÃ¤tze in der Baudatenanalyse~\cite{lecun2015} zeigen, dass
+Erste Ansätze in der Baudatenanalyse~\cite{lecun2015} zeigen, dass
 derartige Systeme mit wenigen hundert gelabelten Trainingsbildern
 hohe Klassifikationsgenauigkeiten erreichen.
 
-\subsection{Optimierung fÃ¼r Unterbodenheizung}
+\subsection{Optimierung für Unterbodenheizung}
 
-FuÃŸbodenheizungen erzeugen gegenÃ¼ber Umgebungsluft erheblich hÃ¶here
-TemperaturgefÃ¤lle im Belag und fÃ¼hren zu beschleunigter thermischer
+Fußbodenheizungen erzeugen gegenüber Umgebungsluft erheblich höhere
+Temperaturgefälle im Belag und führen zu beschleunigter thermischer
 Dehnung. Die Heizrohre liegen typischerweise $30{-}50\,\text{mm}$
 unterhalb der Plattenunterkante, was zu einem Temperaturgradienten
-$\partial T/\partial z$ durch die Plattendicke fÃ¼hrt.
+$\partial T/\partial z$ durch die Plattendicke führt.
 
 Dieser Gradient induziert Biegemomente in der Platte (Bimetalleffekt),
 die das analytische Modell in seiner aktuellen Form nicht erfasst.
 Eine Erweiterung auf Platten mit Temperaturgradienten erfordert die
 Kirchhoff'sche Plattentheorie mit thermischer Last~\cite{timoshenko1959},
-und die optimale Fugenbreite wird fÃ¼r beheizte BÃ¶den um
-$\Delta w_{\text{Heizung}} \approx 0{,}5{-}1{,}5\,\text{mm}$ grÃ¶ÃŸer
-ausfallen als fÃ¼r unbeheizte BÃ¶den -- ein praktisch sehr relevantes Ergebnis.
+und die optimale Fugenbreite wird für beheizte Böden um
+$\Delta w_{\text{Heizung}} \approx 0{,}5{-}1{,}5\,\text{mm}$ größer
+ausfallen als für unbeheizte Böden -- ein praktisch sehr relevantes Ergebnis.
 
 \subsection{Normenentwicklung und Regulierung}
 
-Die aktuell gÃ¼ltigen Normen DIN~18157~\cite{din18157} und ETAG~004~\cite{etag004}
+Die aktuell gültigen Normen DIN~18157~\cite{din18157} und ETAG~004~\cite{etag004}
 enthalten Fugenbreiten als Erfahrungswerte ohne analytische Herleitung.
-Diese Arbeit legt die mathematische Grundlage fÃ¼r eine normative
+Diese Arbeit legt die mathematische Grundlage für eine normative
 Verankerung der Formel $w^*(L) = k \cdot L + w_0$.
 
-ZukÃ¼nftige Normgremien kÃ¶nnten auf Basis des hier entwickelten Modells
-materialspezifische Koeffizienten $k$ fÃ¼r verschiedene Plattentypen
+Zukünftige Normgremien könnten auf Basis des hier entwickelten Modells
+materialspezifische Koeffizienten $k$ für verschiedene Plattentypen
 (Keramik, Feinsteinzeug, Marmor, Granit, Beton) tabellieren und
-den Normtext in DIN~18157 entsprechend Ã¼berarbeiten. Ein solcher
-normativ abgesicherter Rechenansatz wÃ¼rde Planungsfehler minimieren
-und die QualitÃ¤t verlegter BÃ¶den flÃ¤chendeckend verbessern.
+den Normtext in DIN~18157 entsprechend überarbeiten. Ein solcher
+normativ abgesicherter Rechenansatz würde Planungsfehler minimieren
+und die Qualität verlegter Böden flächendeckend verbessern.
 
 \subsection{Digitale Planung und BIM-Integration}
 
-Building Information Modeling (BIM) ermÃ¶glicht die vollstÃ¤ndige
-digitale Abbildung eines GebÃ¤udes inklusive aller Schichten des
+Building Information Modeling (BIM) ermöglicht die vollständige
+digitale Abbildung eines Gebäudes inklusive aller Schichten des
 Bodenaufbaus. Die in dieser Arbeit hergeleiteten Formeln sind
 direkt in BIM-Workflows integrierbar: Aus den bekannten Plattenformaten
-und Materialparametern (bereits im BIM-Modell enthalten) lÃ¤sst sich
-die optimale Fugenbreite automatisch berechnen und im AusfÃ¼hrungsplan
+und Materialparametern (bereits im BIM-Modell enthalten) lässt sich
+die optimale Fugenbreite automatisch berechnen und im Ausführungsplan
 hinterlegen.
 
-VerknÃ¼pft man dieses Modell mit der Lebenszyklusanalyse (LCA)
-des GebÃ¤udes, kann bereits in der Planungsphase quantifiziert werden,
+Verknüpft man dieses Modell mit der Lebenszyklusanalyse (LCA)
+des Gebäudes, kann bereits in der Planungsphase quantifiziert werden,
 um wie viele Jahre eine optimierte Fugenwahl die Nutzungsdauer
-des Bodenbelags verlÃ¤ngert -- und welche Kosten dadurch eingespart werden.
+des Bodenbelags verlängert -- und welche Kosten dadurch eingespart werden.
 
 \subsection{Akustische und schwingungstechnische Aspekte}
 
-BodenbelÃ¤ge dienen nicht nur optischen und strukturellen Zwecken,
-sondern beeinflussen auch die Akustik von RÃ¤umen. Trittschall,
-Luftschall und KÃ¶rperschall breiten sich unterschiedlich durch
-Fliesen und Fugen aus. Breite, elastisch gefÃ¼llte Fugen wirken
-als DÃ¤mpfer und kÃ¶nnen die SchallÃ¼bertragung zwischen RÃ¤umen reduzieren.
+Bodenbeläge dienen nicht nur optischen und strukturellen Zwecken,
+sondern beeinflussen auch die Akustik von Räumen. Trittschall,
+Luftschall und Körperschall breiten sich unterschiedlich durch
+Fliesen und Fugen aus. Breite, elastisch gefüllte Fugen wirken
+als Dämpfer und können die Schallübertragung zwischen Räumen reduzieren.
 
-Eine Optimierung der Fugenbreite unter gleichzeitiger BerÃ¼cksichtigung
-akustischer Anforderungen fÃ¼hrt zu einem multikriteriellen Optimierungs-
+Eine Optimierung der Fugenbreite unter gleichzeitiger Berücksichtigung
+akustischer Anforderungen führt zu einem multikriteriellen Optimierungs-
 problem: $\max_w (T(w, L) + \lambda \cdot A(w))$ mit der Akustikfunktion
 $A(w)$ und dem Gewichtungsparameter $\lambda > 0$.
-Die Pareto-Front dieses Problems fÃ¼r verschiedene Plattenformate
-und Raumtypen (Konzertsaal vs. BÃ¼rogebÃ¤ude vs. Industriehalle)
-ist ein vÃ¶llig unberÃ¼hrtes Forschungsfeld.
+Die Pareto-Front dieses Problems für verschiedene Plattenformate
+und Raumtypen (Konzertsaal vs. Bürogebäude vs. Industriehalle)
+ist ein völlig unberührtes Forschungsfeld.
 
 \subsection{Ressourceneffizienz und Kreislaufwirtschaft}
 
-Eine verlÃ¤ngerte Lebensdauer des Bodenbelags durch optimale Fugenparameter
+Eine verlängerte Lebensdauer des Bodenbelags durch optimale Fugenparameter
 hat unmittelbare Auswirkungen auf den Ressourcenverbrauch: Weniger
 Neuverlegt bedeutet weniger Abbruchabfall, weniger Rohstoffeinsatz
 (Ton, Kaolin, Sand) und geringere CO$_2$-Emissionen bei der Produktion.
 
 Quantitative Lebenszyklusanalysen (LCA nach ISO~14040~\cite{iso14040})
-kÃ¶nnten den Ã¶kologischen Nutzen optimal gewÃ¤hlter Fugenparameter
-beziffern. FÃ¼r ein typisches BÃ¼rogebÃ¤ude mit $5000\,\text{m}^2$
-FliesenflÃ¤che und einem VerlÃ¤ngerungseffekt von $10\,\%$ der
-Lebensdauer ergibt sich eine CO$_2$-Einsparung in der GrÃ¶ÃŸenordnung
+könnten den ökologischen Nutzen optimal gewählter Fugenparameter
+beziffern. Für ein typisches Bürogebäude mit $5000\,\text{m}^2$
+Fliesenfläche und einem Verlängerungseffekt von $10\,\%$ der
+Lebensdauer ergibt sich eine CO$_2$-Einsparung in der Größenordnung
 von mehreren Tonnen pro Austauschzyklus -- ein wirtschaftlich und
-Ã¶kologisch signifikantes Ergebnis.
+ökologisch signifikantes Ergebnis.
 
 % ==========================================================================
 \begin{thebibliography}{99}
 
 \bibitem{din18157}
-Deutsches Institut fÃ¼r Normung (DIN).
-\textit{DIN~18157: AusfÃ¼hrung keramischer Bekleidungen im DÃ¼nnbettverfahren.}
+Deutsches Institut für Normung (DIN).
+\textit{DIN~18157: Ausführung keramischer Bekleidungen im Dünnbettverfahren.}
 Beuth Verlag, Berlin, 2010.
 
 \bibitem{etag004}
@@ -780,8 +780,8 @@ EOTA, Brussels, 2013.
 
 \bibitem{kirchhoff1850}
 G.R. Kirchhoff.
-Ãœber das Gleichgewicht und die Bewegung einer elastischen Scheibe.
-\textit{Journal fÃ¼r die reine und angewandte Mathematik}, 40:51--88, 1850.
+Über das Gleichgewicht und die Bewegung einer elastischen Scheibe.
+\textit{Journal für die reine und angewandte Mathematik}, 40:51--88, 1850.
 
 \bibitem{timoshenko1959}
 S.P. Timoshenko and S. Woinowsky-Krieger.
@@ -811,7 +811,7 @@ Studies of the physical properties of hardened Portland cement paste.
 \bibitem{en10545}
 DIN EN ISO 10545-2.
 \textit{Keramische Fliesen und Platten -- Teil 2: Bestimmung der
-MaÃŸ- und OberflÃ¤chenbeschaffenheit.}
+Maß- und Oberflächenbeschaffenheit.}
 Beuth Verlag, Berlin, 2018.
 
 \bibitem{lecun2015}

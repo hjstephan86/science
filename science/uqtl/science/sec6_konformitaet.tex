@@ -1,10 +1,10 @@
 ﻿% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-\section{KonformitÃ¤tsstufen}
+\section{Konformitätsstufen}
 \label{sec:konformitaet}
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-Der UQTL-Standard definiert vier KonformitÃ¤tsstufen (Conformance Levels),
-die eine schrittweise Implementierung ermÃ¶glichen. HÃ¶here Stufen schlieÃŸen
+Der UQTL-Standard definiert vier Konformitätsstufen (Conformance Levels),
+die eine schrittweise Implementierung ermöglichen. Höhere Stufen schließen
 alle Anforderungen niedrigerer Stufen ein.
 
 \begin{figure}[H]
@@ -21,43 +21,43 @@ alle Anforderungen niedrigerer Stufen ein.
   \node[cl1] (l1) at (0,0)   {\textbf{CL-1 (Basis):}~~~Filter, Projektion, Sortierung, LIMIT/OFFSET};
   \node[cl2] (l2) at (0,1.3) {\textbf{CL-2 (Standard):}~~~CL-1 + Aggregation, GROUP BY, HAVING, INNER JOIN};
   \node[cl3] (l3) at (0,2.6) {\textbf{CL-3 (Erweitert):}~~~CL-2 + alle JOIN-Typen, Unterabfragen, EXISTS, UNION};
-  \node[cl4] (l4) at (0,3.9) {\textbf{CL-4 (VollstÃ¤ndig):}~~~CL-3 + Fensterfunktionen, CTEs, Mengenoperationen};
+  \node[cl4] (l4) at (0,3.9) {\textbf{CL-4 (Vollständig):}~~~CL-3 + Fensterfunktionen, CTEs, Mengenoperationen};
 \end{tikzpicture}
-\caption{UQTL-KonformitÃ¤tspyramide (CL-1 bis CL-4)}
+\caption{UQTL-Konformitätspyramide (CL-1 bis CL-4)}
 \label{fig:konformitaet}
 \end{figure}
 
-\subsection{CL-1: BasiskonformitÃ¤t}
+\subsection{CL-1: Basiskonformität}
 \label{subsec:cl1}
 
-Ein CL-1-konformes System muss die folgenden Operatoren vollstÃ¤ndig und
-Ã¤quivalenzerhaltend unterstÃ¼tzen:
+Ein CL-1-konformes System muss die folgenden Operatoren vollständig und
+äquivalenzerhaltend unterstützen:
 
 \begin{itemize}[leftmargin=1.5cm]
   \item \textbf{SCAN:} Zugriff auf einzelne Tabellen mit optionalem Alias
   \item \textbf{FILTER (WHERE):} Alle Vergleichsoperatoren ($=$, $\neq$, $<$, $\leq$, $>$, $\geq$),
     \texttt{IN}, \texttt{BETWEEN}, \texttt{LIKE}, \texttt{IS NULL}, \texttt{AND}, \texttt{OR}, \texttt{NOT}
-  \item \textbf{PROJECT:} Spaltenselektion, AusdrÃ¼cke, \texttt{DISTINCT}
+  \item \textbf{PROJECT:} Spaltenselektion, Ausdrücke, \texttt{DISTINCT}
   \item \textbf{SORT:} \texttt{ORDER BY} ASC/DESC, mehrstufig
   \item \textbf{LIMIT:} \texttt{LIMIT n OFFSET m}
 \end{itemize}
 
-\subsection{CL-2: StandardkonformitÃ¤t}
+\subsection{CL-2: Standardkonformität}
 \label{subsec:cl2}
 
-ZusÃ¤tzlich zu CL-1 mÃ¼ssen CL-2-konforme Systeme unterstÃ¼tzen:
+Zusätzlich zu CL-1 müssen CL-2-konforme Systeme unterstützen:
 
 \begin{itemize}[leftmargin=1.5cm]
   \item \textbf{GROUP\_AGG:} \texttt{GROUP BY}, alle Standardaggregationen (\texttt{COUNT}, \texttt{SUM}, \texttt{AVG}, \texttt{MIN}, \texttt{MAX})
-  \item \textbf{FILTER (HAVING):} AggregatprÃ¤dikate nach \texttt{GROUP BY}
+  \item \textbf{FILTER (HAVING):} Aggregatprädikate nach \texttt{GROUP BY}
   \item \textbf{JOIN (INNER):} \texttt{INNER JOIN ... ON}, \texttt{NATURAL JOIN}
-  \item \textbf{Arithmetische AusdrÃ¼cke} in Projektionen und PrÃ¤dikaten
+  \item \textbf{Arithmetische Ausdrücke} in Projektionen und Prädikaten
 \end{itemize}
 
-\subsection{CL-3: Erweiterte KonformitÃ¤t}
+\subsection{CL-3: Erweiterte Konformität}
 \label{subsec:cl3}
 
-ZusÃ¤tzlich zu CL-2:
+Zusätzlich zu CL-2:
 
 \begin{itemize}[leftmargin=1.5cm]
   \item \textbf{JOIN (alle Typen):} \texttt{LEFT/RIGHT/FULL OUTER JOIN}, \texttt{CROSS JOIN}
@@ -67,22 +67,22 @@ ZusÃ¤tzlich zu CL-2:
   \item \textbf{Skalare Funktionen:} Zeichenkettenfunktionen, Datumsfunktionen, mathematische Funktionen
 \end{itemize}
 
-\subsection{CL-4: VollstÃ¤ndige KonformitÃ¤t}
+\subsection{CL-4: Vollständige Konformität}
 \label{subsec:cl4}
 
-ZusÃ¤tzlich zu CL-3:
+Zusätzlich zu CL-3:
 
 \begin{itemize}[leftmargin=1.5cm]
   \item \textbf{WINDOW:} Alle ANSI-Fensterfunktionen (\texttt{ROW\_NUMBER}, \texttt{RANK}, \texttt{DENSE\_RANK}, \texttt{LAG}, \texttt{LEAD}, \texttt{FIRST\_VALUE}, \texttt{LAST\_VALUE}, \texttt{NTH\_VALUE}, gleitende Aggregate)
   \item \textbf{WITH (CTEs):} Einfache und rekursive CTEs
-  \item \textbf{SET\_OP vollstÃ¤ndig:} \texttt{INTERSECT}, \texttt{EXCEPT}
-  \item \textbf{CASE-AusdrÃ¼cke}
+  \item \textbf{SET\_OP vollständig:} \texttt{INTERSECT}, \texttt{EXCEPT}
+  \item \textbf{CASE-Ausdrücke}
   \item \textbf{Dialekt-Erweiterungen} (als optionale Zertifizierung)
 \end{itemize}
 
 \begin{table}[H]
 \centering
-\caption{KonformitÃ¤tsstufen-Ãœbersicht}
+\caption{Konformitätsstufen-Übersicht}
 \label{tab:konformitaet}
 \renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\textwidth}{lXXXX}
@@ -103,7 +103,7 @@ UNION / UNION ALL & & & \checkmark & \checkmark \\
 Fensterfunktionen & & & & \checkmark \\
 CTEs (WITH) & & & & \checkmark \\
 INTERSECT / EXCEPT & & & & \checkmark \\
-CASE-AusdrÃ¼cke & & & & \checkmark \\
+CASE-Ausdrücke & & & & \checkmark \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -123,7 +123,7 @@ Eine UQTL-konforme Implementierung besteht aus drei Schichten:
     IQT-Aufbau (je ein Parser pro Quellsprache)
   \item \textbf{IQT-Normalisierer:} Anwendung der Normalisierungsregeln
     (\ref{subsec:iqt_norm})
-  \item \textbf{SQL-Codegenerator:} IQT-zu-SQL-Ãœbersetzung nach Zieldialekt
+  \item \textbf{SQL-Codegenerator:} IQT-zu-SQL-Übersetzung nach Zieldialekt
 \end{enumerate}
 
 \subsection{Pseudocode des IQT-Builders (Python-Frontend)}
@@ -246,13 +246,13 @@ class AnsiSqlCodegen:
         return sql
 \end{lstlisting}
 
-\subsection{KonformitÃ¤tstests}
+\subsection{Konformitätstests}
 \label{subsec:impl_tests}
 
-Eine UQTL-Referenzimplementierung muss eine Test-Suite bestehen, die fÃ¼r
-jede KonformitÃ¤tsstufe die semantische Ã„quivalenz der Ãœbersetzungen prÃ¼ft:
+Eine UQTL-Referenzimplementierung muss eine Test-Suite bestehen, die für
+jede Konformitätsstufe die semantische Äquivalenz der Übersetzungen prüft:
 
-\begin{lstlisting}[style=pythonstyle, caption={KonformitÃ¤tstest-Schablone},
+\begin{lstlisting}[style=pythonstyle, caption={Konformitätstest-Schablone},
   label=lst:impl_test]
 class UQTLConformanceTest:
 

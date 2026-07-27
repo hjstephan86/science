@@ -29,7 +29,7 @@
   bend angle=25
 ]
 
-%% ZustÃ¤nde
+%% Zustände
 \node[stateINIT]    (init)    at (0,  0)   {};
 \node[state]        (idle)    at (2.5, 0)  {IDLE};
 \node[state]        (notify)  at (5.5, 0)  {NOTIFIED};
@@ -65,7 +65,7 @@
 \draw (rbdone) edge[bend right=15] (idle)
                node[pos=0.5, below, trans] {};
 
-%% ZurÃ¼ck zu idle bei Benutzerabbruch
+%% Zurück zu idle bei Benutzerabbruch
 \draw (notify) edge[bend left=40] (idle)
                node[pos=0.5, above, trans] {};
 

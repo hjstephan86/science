@@ -138,7 +138,7 @@ Die vorliegende Arbeit verfolgt vier Ziele:
           mittels Definitionen, S\"{a}tzen und vollst\"{a}ndigen Beweisen
     \item Simulation und Visualisierung der zentralen Ergebnisse durch
           reproduzierbare matplotlib-Experimente
-    \item Verbindung der DOCSIS-DomÃ¤ne mit modernen Methoden aus Machine Learning,
+    \item Verbindung der DOCSIS-Domäne mit modernen Methoden aus Machine Learning,
           formaler Algorithmik und Graphentheorie
     \item Ausarbeitung eines umfassenden Forschungsausblicks
 \end{enumerate}
@@ -413,7 +413,7 @@ ECT(1)-Bit im IP-Header).
         \item Klassik-Warteschlange $\mathcal{Q}_C$ mit PI$^2$-Regler:
               $\pi_C(t) = k_p \cdot e(t) + k_i \int_0^t e(\tau)\,d\tau$,
               wobei $e(t) = q(t) - q_{\mathrm{ref}}$ die Abweichung der
-              WarteschlangenlÃ¤nge vom Referenzwert ist.
+              Warteschlangenlänge vom Referenzwert ist.
         \item L4S-Warteschlange $\mathcal{Q}_L$ mit linearer Markierungsrate:
               $\pi_L(t) = \min(1, \alpha_L \cdot q_L(t))$, wobei $q_L(t)$
               die aktuelle L\"{a}nge der L4S-Warteschlange ist.
@@ -517,7 +517,7 @@ ECT(1)-Bit im IP-Header).
 \end{satz}
 
 \begin{proof}
-    Die Transportlatenz setzt sich zusammen aus AusbreitungsverzÃ¶gerung
+    Die Transportlatenz setzt sich zusammen aus Ausbreitungsverzögerung
     $t_{\mathrm{prop}} = P/c_{\mathrm{HFC}}$, MAP-Scheduling-Latenz $\leq T_{\mathrm{MAP}}$
     (durch Proactive Grants auf $T_{\mathrm{MAP}}$ begrenzt) und
     Warteschlangenlatenz $\leq W_{\mathrm{ziel}}$ (durch LLD-AQM garantiert).
@@ -620,7 +620,7 @@ ECT(1)-Bit im IP-Header).
         auf logarithmischer Skala. Remote-Chirurgie und V2X Safety sind die
         anspruchsvollsten Dienste (rot markiert). LLD erf\"{u}llt alle
         Anforderungen au{\ss}er V2X Safety (Restl\"{u}cke durch 5G URLLC zu schlie{\ss}en).
-        \textit{(b)}~ZuverlÃ¤ssigkeits-Latenz-Kurven: LLD-DOCSIS~4.0 (blau)
+        \textit{(b)}~Zuverlässigkeits-Latenz-Kurven: LLD-DOCSIS~4.0 (blau)
         n\"{a}hert sich der 99.999\,\%-Grenze (gr\"{u}n gepunktet) bei kurzen Latenzen
         deutlich schneller als DOCSIS~3.1 oder 5G NR URLLC allein.
     }
@@ -737,7 +737,7 @@ ECT(1)-Bit im IP-Header).
         U(t) \;\propto\; \eta_{\mathrm{L4S}}(t)^2,
     \]
     d.\,h.\ eine Verdopplung der beiderseitigen Adoptionsrate vervierfacht den
-    Systemnutzen (Metcalfe-Gesetz f\"{u}r bilateral komplementÃ¤re Technologien).
+    Systemnutzen (Metcalfe-Gesetz f\"{u}r bilateral komplementäre Technologien).
 \end{satz}
 
 \begin{proof}
@@ -764,7 +764,7 @@ ECT(1)-Bit im IP-Header).
         \textbf{Industrieller L4S-Rollout 2024--2026.}
         \textit{(a)}~Adoptionskurven f\"{u}r L4S-f\"{a}hige Endger\"{a}te (blau) und
         ISPs (rot) von Q1-2024 bis Q2-2026. Markierte Ereignisse: Comcast-Rollout
-        (Q1-2025), T-Mobile-L4S-AnkÃ¼ndigung (Q3-2025), Apple iOS~18.x-Integration
+        (Q1-2025), T-Mobile-L4S-Ankündigung (Q3-2025), Apple iOS~18.x-Integration
         (Q1-2026). Die kritische Adoptiosschwelle $\eta^* = 0.5$ wurde in
         Q2-2026 \"{u}berschritten.
         \textit{(b)}~Latenzverbesserung pro Anwendungsfall durch L4S-Aktivierung:
@@ -800,7 +800,7 @@ Klassische Ergebnisse aus der Warteschlangentheorie (z.\,B.\ das Kingman-Lemma
 f\"{u}r G/G/1-Schlangen) liefern hier erste Ans\"{a}tze, aber die Verbindung zur
 DOCSIS-spezifischen MAP-Periodenstruktur erfordert neue theoretische Werkzeuge.
 
-\textbf{KanalÃ¼bergreifendes Grant-Sharing in OFDMA.}
+\textbf{Kanalübergreifendes Grant-Sharing in OFDMA.}
 DOCSIS~4.0 verwendet OFDMA mit mehreren Upstream-Kan\"{a}len (Sub-Carrier Groups,
 SCGs). Grant-Sharing zwischen verschiedenen SCGs er\"{o}ffnet eine neue
 Optimierungsdimension: Die Zuordnung von Grants zu SCGs ist eine gemischt-ganzzahlige
@@ -825,7 +825,7 @@ asymptotischen Sinne. F\"{u}r den Produktionseinsatz ist jedoch eine \emph{forma
 Safety-Garantie} erforderlich: Das RL-System darf die Latenzobergrenzen auch
 in der Explorationsphase nicht verletzen. Techniken aus dem Bereich
 \emph{Safe Reinforcement Learning} -- insbesondere die Verwendung von
-Control-Barrier-Functions (CBFs) als SicherheitshÃ¼lle um den RL-Agenten --
+Control-Barrier-Functions (CBFs) als Sicherheitshülle um den RL-Agenten --
 sind hier ein vielversprechender Ansatz.
 
 \textbf{Federated Learning \"{u}ber DOCSIS-Segmente.}
@@ -858,9 +858,9 @@ Erste Ans\"{a}tze in ns-3 und INET~4 existieren, sind aber noch unvollst\"{a}ndi
 Der DualPI2-Regler hat vier Parameter ($k_p, k_i, \alpha_L, q_{\mathrm{ref}}$),
 die aktuell statisch konfiguriert werden. In heterogenen HFC-Netzen -- mit
 sehr unterschiedlichen RTTs je nach Ger\"{a}te-Typ -- ist eine
-\emph{adaptive Parameteranpassung} erforderlich. ModellprÃ¤diktive Regelung
+\emph{adaptive Parameteranpassung} erforderlich. Modellprädiktive Regelung
 (MPC) und Adaptive Control Theory bieten hier einen robusten Rahmen, der
-die formalen StabilitÃ¤tsgarantien des PI$^2$-Reglers (Lyapunov-Stabilit\"{a}t
+die formalen Stabilitätsgarantien des PI$^2$-Reglers (Lyapunov-Stabilit\"{a}t
 des geschlossenen Regelkreises) mit datengetriebener Parameteridentifikation
 verbindet.
 
@@ -896,7 +896,7 @@ DOCSIS~4.0 nutzt Frequenzen bis 1.2~GHz (Extended Spectrum DOCSIS) bzw.\ bis
 1.8~GHz (Full Duplex DOCSIS). In manchen Szenarien bestehen Interferenzrisiken
 mit terrestrischen Broadcast-Frequenzen oder Legacy-LTE-Signalen. Die formale
 Analyse dieser Spektrum-Koexistenz mittels Signalverarbeitungstheorie
-(Interferenzkanal-KapazitÃ¤t nach Shannon) ist eine offene Forschungsaufgabe.
+(Interferenzkanal-Kapazität nach Shannon) ist eine offene Forschungsaufgabe.
 
 \subsection{Ausblick: Vertikale Anwendungsdom\"{a}nen}
 
@@ -915,7 +915,7 @@ Autonome Fahrzeuge teilen Sensordaten (Kamera, LiDAR, RADAR) in Echtzeit
 \"{u}ber das Netz (Collective Perception, ETSI~TS~103~324). Die notwendige
 Bandbreite (50--500~Mbps pro Fahrzeug) und Latenz ($< 20\,\mathrm{ms}$) sind
 durch 5G NR allein bei hoher Verkehrsdichte nicht immer garantierbar.
-Die Nutzung von DOCSIS-RSU (Road Side Unit) als stationÃ¤rem Ankerpunkt
+Die Nutzung von DOCSIS-RSU (Road Side Unit) als stationärem Ankerpunkt
 f\"{u}r kooperative Wahrnehmung -- kombiniert mit LLD f\"{u}r Safety-kritische
 Nachrichten -- ist ein vielversprechender Ansatz, der formal noch nicht
 analysiert wurde.
@@ -969,7 +969,7 @@ f\"{u}r europ\"{a}ische ISPs.
 LLD verbessert die Ressourcennutzung und k\"{o}nnte die Energieeffizienz von
 Netzger\"{a}ten erh\"{o}hen. Gleichzeitig erm\"{o}glicht LLD neue daten\-intensive
 Dienste (Remote-Chirurgie, V2X), die den Gesamtdatenverkehr steigern. Die
-Nettobilanz des CO$_2$-FuÃŸabdrucks von LLD-Netzen -- unter Ber\"{u}cksichtigung
+Nettobilanz des CO$_2$-Fußabdrucks von LLD-Netzen -- unter Ber\"{u}cksichtigung
 des Rebound-Effekts (Jevons-Paradoxon) -- ist eine offene \"{o}konomisch-technische
 Forschungsfrage.
 

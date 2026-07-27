@@ -76,8 +76,8 @@
 	frame=single,
 	backgroundcolor=\color{codebg},
 	rulecolor=\color{lightgray},
-	literate={Ã¶}{{\"{o}}}1{Ã¤}{{\"{a}}}1{Ã¼}{{\"{u}}}1
-	{Ã–}{{\"{O}}}1{Ã„}{{\"{A}}}1{Ãœ}{{\"{U}}}1{ÃŸ}{{\ss}}1
+	literate={ö}{{\"{o}}}1{ä}{{\"{a}}}1{ü}{{\"{u}}}1
+	{Ö}{{\"{O}}}1{Ä}{{\"{A}}}1{Ü}{{\"{U}}}1{ß}{{\ss}}1
 }
 
 \setlist[itemize,1]{label=--}
@@ -112,18 +112,18 @@
 	% ==============================================================
 	\chapter{Einleitung und Motivation}
 	
-	Diese Arbeit prÃ¤sentiert ein umfassendes Konzept fÃ¼r ein neues Betriebssystem, das
+	Diese Arbeit präsentiert ein umfassendes Konzept für ein neues Betriebssystem, das
 	auf dem \textbf{EDF$^+$}-Scheduling-Algorithmus \cite{Epp2026edfplus} als zentralem
 	Paradigma aufbaut. Ausgehend von den physikalischen Grundlagen digitaler Hardware --
-	R/L/C-Schaltkreisen, Analog-Digital-Wandlern und Signaltheorie -- Ã¼ber die
-	vollstÃ¤ndige x86-64-Boot-Sequenz (Reset-Vektor, BIOS/UEFI-POST, ACPI,
-	Bootloader-Kernel-Ãœbergang) bis hin zur Prozessor-Initialisierung in
+	R/L/C-Schaltkreisen, Analog-Digital-Wandlern und Signaltheorie -- über die
+	vollständige x86-64-Boot-Sequenz (Reset-Vektor, BIOS/UEFI-POST, ACPI,
+	Bootloader-Kernel-Übergang) bis hin zur Prozessor-Initialisierung in
 	Real-Modus, Protected-Modus und Long-Modus werden alle wesentlichen Schichten
 	eines modernen Betriebssystems formal behandelt.
 	
 	Der \textbf{EDF$^+$}-Scheduler erweitert klassisches Earliest-Deadline-First
-	durch einen dynamischen Penalty-Mechanismus fÃ¼r Blocking-Ereignisse und
-	wird als optimaler Algorithmus fÃ¼r die Hardware-Initialisierungssequenz
+	durch einen dynamischen Penalty-Mechanismus für Blocking-Ereignisse und
+	wird als optimaler Algorithmus für die Hardware-Initialisierungssequenz
 	eingesetzt. Darauf aufbauend beschreibt die Arbeit die
 	\textbf{PYMCA-8}-Mehrkernarchitektur \cite{Epp2026pymca8} mit acht Kernen,
 	Python-Speichermodell, IoFET-basiertem Dynamic-Voltage-and-Frequency-Scaling
@@ -131,38 +131,38 @@
 	
 	Weitere Kapitel behandeln graphentheoretische OS-Verifikation mittels
 	Subgraph Algorithmus \cite{Epp2026subgraph} und Boolescher Matrixmultiplikation
-	\cite{Epp2026boolmm}, Lyapunov-StabilitÃ¤t von Systemzustandsmatrizen
+	\cite{Epp2026boolmm}, Lyapunov-Stabilität von Systemzustandsmatrizen
 	\cite{Epp2026sysstate}, Dateisystem-Deduplizierung \cite{Epp2026dusgraph},
 	AUTOSAR-Treiber\-architektur \cite{Epp2026autsre}, EtherCAT \cite{Epp2026ethercate},
 	Energiemanagement mit IoFET-Sigmoid-DVFS und Li-Ionen-Akku-Modell
 	\cite{Epp2026liionp,Epp2026iono} sowie Post-Quanten-Kryptographie
 	\cite{Epp2026pqc}.
 	
-	Im Kapitel Neue Erkenntnisse werden sechs originÃ¤re SÃ¤tze formal bewiesen:
+	Im Kapitel Neue Erkenntnisse werden sechs originäre Sätze formal bewiesen:
 	die OS-Initialisierungssequenz als EDF$^+$-Task-System (Satz~14.1),
-	Subgraph-basierte Treiber-KompatibilitÃ¤t in $O(n^3)$ (Satz~14.2),
+	Subgraph-basierte Treiber-Kompatibilität in $O(n^3)$ (Satz~14.2),
 	stochastische Bootzeit-Schranke mit Hoeffding-Ungleichung (Satz~14.3),
-	Lyapunov-StabilitÃ¤t des Betriebssystems (Satz~14.4),
-	OptimalitÃ¤t der IoFET-DVFS-Kurve beim Booten (Korollar~14.5) sowie
+	Lyapunov-Stabilität des Betriebssystems (Satz~14.4),
+	Optimalität der IoFET-DVFS-Kurve beim Booten (Korollar~14.5) sowie
 	Post-Quanten-sichere Speicheradressierung via LWE (Satz~14.6).
 	
 	\section{Warum ein neues Betriebssystem?}
 	
-	Moderne Betriebssysteme wie Linux, Windows oder macOS sind Ã¼ber Jahrzehnte
+	Moderne Betriebssysteme wie Linux, Windows oder macOS sind über Jahrzehnte
 	gewachsen und tragen erheblichen historischen Ballast. Ihre Scheduling-Strategien
-	stammen aus einer Ã„ra, in der Blocking-Ereignisse eher die Ausnahme als die Regel
+	stammen aus einer Ära, in der Blocking-Ereignisse eher die Ausnahme als die Regel
 	waren und Echtzeit-Anforderungen allenfalls in Spezialsystemen auftraten. Heute
 	hingegen sind eingebettete Systeme in Fahrzeugen (AUTOSAR, ISO~26262 \cite{ISO26262}),
-	Industrierobotern (EtherCAT \cite{IEC61158}) und KI-Beschleunigern allgegenwÃ¤rtig --
-	allesamt DomÃ¤nen, die harte Echtzeit-Garantien, vorhersagbaren Energieverbrauch
+	Industrierobotern (EtherCAT \cite{IEC61158}) und KI-Beschleunigern allgegenwärtig --
+	allesamt Domänen, die harte Echtzeit-Garantien, vorhersagbaren Energieverbrauch
 	und formale Korrektheitsnachweise verlangen.
 	
 	Das in dieser Arbeit beschriebene Betriebssystem \textbf{BS/EDF$^+$} setzt
-	EDF$^+$-Scheduling \cite{Epp2026edfplus} als einheitliches Paradigma Ã¼ber alle
+	EDF$^+$-Scheduling \cite{Epp2026edfplus} als einheitliches Paradigma über alle
 	Systemschichten ein: von der ersten Instruktion nach dem Reset bis zum Scheduling
 	der Benutzeranwendungen. Dadurch entsteht eine vertikal integrierte,
-	formal beweisbare Systemarchitektur, die bisherige AnsÃ¤tze in drei wesentlichen
-	Punkten Ã¼bertrifft:
+	formal beweisbare Systemarchitektur, die bisherige Ansätze in drei wesentlichen
+	Punkten übertrifft:
 	
 	\begin{enumerate}
 		\item \textbf{Formale Korrektheit:} Jede Hardware-Initialisierungsphase ist
@@ -176,32 +176,32 @@
 	\section{Benutzerperspektive}
 	
 	Der Benutzer erlebt das neue Betriebssystem als eine Folge sichtbarer
-	ZustÃ¤nde, beginnend beim Einschalten:
+	Zustände, beginnend beim Einschalten:
 	
 	\begin{enumerate}
 		\item \textbf{POST-Meldungen} (ca.\ 0--500\,ms): Speicher-Check, CPU-Identifikation.
 		\item \textbf{Bootlogo} (ca.\ 500\,ms--2\,s): Grafiktreiber-Init, DVFS-Aktivierung.
 		\item \textbf{Anmeldebildschirm} (ca.\ 2--4\,s): Dateisystem gemountet, Netzwerk bereit.
-		\item \textbf{Desktop} (ca.\ 4--6\,s): Alle Treiber aktiv, EDF$^+$-Scheduler lÃ¤uft.
+		\item \textbf{Desktop} (ca.\ 4--6\,s): Alle Treiber aktiv, EDF$^+$-Scheduler läuft.
 	\end{enumerate}
 	
 	Satz~14.3 (Stochastische Bootzeit-Schranke) garantiert formal, dass die
 	Gesamtbootzeit mit hoher Wahrscheinlichkeit unter einer berechneten Grenze
 	$t_{\max}$ liegt.
 	
-	\section{Wissenschaftliche BeitrÃ¤ge}
+	\section{Wissenschaftliche Beiträge}
 	
-	Die HauptbeitrÃ¤ge dieser Arbeit sind:
+	Die Hauptbeiträge dieser Arbeit sind:
 	
 	\begin{itemize}
-		\item \textbf{Theoretisch:} Sechs neue SÃ¤tze mit vollstÃ¤ndigen formalen Beweisen
+		\item \textbf{Theoretisch:} Sechs neue Sätze mit vollständigen formalen Beweisen
 		(Kapitel~14), die EDF$^+$, Subgraph Algorithmus, stochastische Analyse,
-		Lyapunov-StabilitÃ¤t, DVFS-OptimalitÃ¤t und Post-Quanten-Sicherheit
-		zu einem kohÃ¤renten Framework verbinden.
-		\item \textbf{Architektonisch:} VollstÃ¤ndige Beschreibung aller OS-Schichten
+		Lyapunov-Stabilität, DVFS-Optimalität und Post-Quanten-Sicherheit
+		zu einem kohärenten Framework verbinden.
+		\item \textbf{Architektonisch:} Vollständige Beschreibung aller OS-Schichten
 		(Kapitel~2--13) auf Basis der referenzierten eigenen Arbeiten.
 		\item \textbf{Algorithmisch:} Integration des Subgraph Algorithmus
-		\cite{Epp2026subgraph} in die Treiber-Kompatibi\-litÃ¤tsprÃ¼fung (O(n$^3$)).
+		\cite{Epp2026subgraph} in die Treiber-Kompatibi\-litätsprüfung (O(n$^3$)).
 	\end{itemize}
 	
 	\section{Aufbau der Arbeit}
@@ -211,20 +211,20 @@
 	Boot-Sequenz, Kapitel~5 den EDF$^+$-Scheduler im Detail,
 	Kapitel~6 die PYMCA-8-Architektur. Kapitel~7 analysiert das Archiv- und
 	Speicherverwaltungsproblem. Kapitel~8--13 decken Graphenverifikation,
-	SystemzustÃ¤nde, Dateisystem, Treiber, Energie und Kryptographie ab.
-	Kapitel~14 enthÃ¤lt die neuen Beweise, Kapitel~15 Zusammenfassung und Ausblick.
+	Systemzustände, Dateisystem, Treiber, Energie und Kryptographie ab.
+	Kapitel~14 enthält die neuen Beweise, Kapitel~15 Zusammenfassung und Ausblick.
 	
 	% ==============================================================
 	%  KAPITEL 2 â€“ COMPUTERHARDWARE-GRUNDLAGEN
 	% ==============================================================
 	\chapter{Computerhardware-Grundlagen}
 	
-	\section{Ãœberblick: Hardwarekomponenten}
+	\section{Überblick: Hardwarekomponenten}
 	
 	Ein moderner Computer besteht aus einer hierarchisch organisierten Menge von
-	Hardwarekomponenten, die Ã¼ber standardisierte Bussysteme kommunizieren.
+	Hardwarekomponenten, die über standardisierte Bussysteme kommunizieren.
 	Abbildung~\ref{fig:hw-overview} zeigt schematisch die wesentlichen Elemente und
-	deren Verbindungsstruktur Ã¼ber den PCIe-Root-Complex und den Speicher-Controller
+	deren Verbindungsstruktur über den PCIe-Root-Complex und den Speicher-Controller
 	als zentralen Verbindungsknoten.
 
 	\begin{sidewaysfigure}
@@ -262,14 +262,14 @@
 		\caption{Schematische Darstellung der Systemhardware. Der Speicher-Controller
 			verbindet die CPU direkt mit dem DDR5-DRAM (On-Die-Integration bei modernen
 			Prozessoren). Der PCIe-Root-Complex verteilt die Bandbreite an alle
-			PeripheriegerÃ¤te; GPU und NVMe-SSD erhalten die breitesten Lanes.}
+			Peripheriegeräte; GPU und NVMe-SSD erhalten die breitesten Lanes.}
 		\label{fig:hw-overview}
 	\end{sidewaysfigure}
 
-	Die Kommunikation zwischen CPU und DRAM erfolgt Ã¼ber einen
+	Die Kommunikation zwischen CPU und DRAM erfolgt über einen
 	\emph{integrierten Speicher-Controller} (IMC), der bei modernen Intel- und
-	AMD-Prozessoren direkt im Die sitzt. Dadurch sinkt die Zugriffslatenz gegenÃ¼ber
-	externen Speicher-Controllern (Northbridge) von Ã¼ber 100\,ns auf etwa 65\,ns.
+	AMD-Prozessoren direkt im Die sitzt. Dadurch sinkt die Zugriffslatenz gegenüber
+	externen Speicher-Controllern (Northbridge) von über 100\,ns auf etwa 65\,ns.
 	Der PCIe-Root-Complex ist logisch ein Switch, dessen Bandbreite von GPU und
 	NVMe-SSDs gemeinsam genutzt wird; BS/EDF$^+$ modelliert diese Bandbreite
 	als geteilte Ressource innerhalb des EDF$^+$-Task-Systems (Kapitel~5).
@@ -279,13 +279,13 @@
 		\[
 		\mathcal{H} = (P, M, S, I, B)
 		\]
-		mit Prozessormenge~$P$, Speicherhierarchie~$M$, SpeichergerÃ¤ten~$S$,
-		Ein-/Ausgabe-GerÃ¤ten~$I$ und Busnetzwerk~$B$.
+		mit Prozessormenge~$P$, Speicherhierarchie~$M$, Speichergeräten~$S$,
+		Ein-/Ausgabe-Geräten~$I$ und Busnetzwerk~$B$.
 	\end{definition}
 	
 	\section{Prozessor (CPU)}
 	
-	\subsection{Register und AusfÃ¼hrungsmodell}
+	\subsection{Register und Ausführungsmodell}
 	
 	Der x86-64-Prozessor besitzt 16 Allzweckregister (RAX, RBX, \ldots{}, R15),
 	sechs Segmentregister (CS, DS, ES, FS, GS, SS), den Instruction Pointer (RIP),
@@ -305,9 +305,9 @@
 	\subsection{Instruktions-Pipeline}
 
 	Moderne x86-64-Prozessoren nutzen eine \emph{Out-of-Order-Pipeline} mit bis zu
-	20 Stufen. Das Grundprinzip lÃ¤sst sich anhand einer vereinfachten
+	20 Stufen. Das Grundprinzip lässt sich anhand einer vereinfachten
 	5-Stufen-In-Order-Pipeline verdeutlichen, wie sie in eingebetteten Prozessoren
-	(z.\,B.\ ARM Cortex-M) vorkommt und als konzeptuelles Modell fÃ¼r
+	(z.\,B.\ ARM Cortex-M) vorkommt und als konzeptuelles Modell für
 	Latenz-Analysen dient.
 
 	\begin{figure}[H]
@@ -336,20 +336,20 @@
 		\caption{Vereinfachte 5-Stufen-Pipeline (IF--ID--EX--MEM--WB). Ein
 			\emph{Data-Hazard} entsteht, wenn eine Stufe auf ein Ergebnis wartet,
 			das noch in einer vorangehenden Stufe berechnet wird. \emph{Forwarding}
-			(gestrichelte grÃ¼ne Linie) leitet das Ergebnis direkt aus der EX-Stufe
-			zurÃ¼ck, ohne einen Stall einzufÃ¼gen. BS/EDF$^+$ berÃ¼cksichtigt
+			(gestrichelte grüne Linie) leitet das Ergebnis direkt aus der EX-Stufe
+			zurück, ohne einen Stall einzufügen. BS/EDF$^+$ berücksichtigt
 			Pipeline-Stall-Wahrscheinlichkeiten bei der Worst-Case-Execution-Time
-			(WCET)-SchÃ¤tzung der EDF$^+$-Tasks.}
+			(WCET)-Schätzung der EDF$^+$-Tasks.}
 		\label{fig:pipeline}
 	\end{figure}
 
-	Die \emph{Out-of-Order}-AusfÃ¼hrung moderner Prozessoren (Intel Raptor Lake,
-	AMD Zen~4) nutzt einen \emph{Reorder Buffer} (ROB) mit bis zu 512 EintrÃ¤gen.
+	Die \emph{Out-of-Order}-Ausführung moderner Prozessoren (Intel Raptor Lake,
+	AMD Zen~4) nutzt einen \emph{Reorder Buffer} (ROB) mit bis zu 512 Einträgen.
 	Instruktionen werden nach ihrer Fertigstellung in Programm\-reihenfolge
 	\emph{retired}, sodass der architektursichtbare Zustand stets konsistent bleibt.
-	FÃ¼r Echtzeit-Scheduling nach EDF$^+$ ist maÃŸgeblich, dass die maximale
+	Für Echtzeit-Scheduling nach EDF$^+$ ist maßgeblich, dass die maximale
 	Instruktionslatenz durch den \emph{Worst-Case Execution Path} (WCEP)
-	beschreibbar ist -- ein Pfad, auf dem alle Branches die ungÃ¼nstigste
+	beschreibbar ist -- ein Pfad, auf dem alle Branches die ungünstigste
 	Richtung einschlagen und alle Cache-Zugriffe misslingen.
 
 	\begin{definition}[WCET]
@@ -362,45 +362,45 @@
 		verwendet $C_i = C_i^{\max}$ zur sicheren Schedulierbarkeitsanalyse.
 	\end{definition}
 
-	\subsection{Cache-KohÃ¤renz und MESI-Protokoll}
+	\subsection{Cache-Kohärenz und MESI-Protokoll}
 
-	Auf Mehr\-kern-Systemen wie PYMCA-8 mÃ¼ssen alle Kerne ein konsistentes Bild
+	Auf Mehr\-kern-Systemen wie PYMCA-8 müssen alle Kerne ein konsistentes Bild
 	des Hauptspeichers haben. Das \textbf{MESI-Protokoll} definiert vier
-	ZustÃ¤nde fÃ¼r jede Cache-Line (64\,Byte):
+	Zustände für jede Cache-Line (64\,Byte):
 
 	\begin{center}
 		\begin{tabular}{lll}
 			\toprule
 			Zustand & Bedeutung & Bedingung \\
 			\midrule
-			\textbf{M} (Modified)  & GeÃ¤ndert, nur in diesem Cache & Dirty, exklusiv \\
+			\textbf{M} (Modified)  & Geändert, nur in diesem Cache & Dirty, exklusiv \\
 			\textbf{E} (Exclusive) & Sauber, nur in diesem Cache    & Clean, exklusiv \\
 			\textbf{S} (Shared)    & Sauber, ggf.\ in mehreren Caches & Clean, geteilt \\
-			\textbf{I} (Invalid)   & UngÃ¼ltig                        & Muss neu geladen werden \\
+			\textbf{I} (Invalid)   & Ungültig                        & Muss neu geladen werden \\
 			\bottomrule
 		\end{tabular}
 	\end{center}
 
 	Bei einem \emph{Write} auf eine Shared-Line senden alle anderen Kerne ein
 	\emph{Invalidate}-Signal, bevor der schreibende Kern seine Kopie auf Modified
-	setzt. Dieser \emph{Cache-Invalidierungsoverhead} ist fÃ¼r EDF$^+$ relevant:
+	setzt. Dieser \emph{Cache-Invalidierungsoverhead} ist für EDF$^+$ relevant:
 	Bei Task-Migrationen zwischen PYMCA-8-Kernen kann das Neueinladen von
-	Cache-Lines zusÃ¤tzliche Zyklen kosten, die in die WCET-SchÃ¤tzung einflieÃŸen.
+	Cache-Lines zusätzliche Zyklen kosten, die in die WCET-Schätzung einfließen.
 
 	\subsection{Cache-Hierarchie}
 
 	\begin{definition}[Speicherhierarchie]
 		Die \textbf{Speicherhierarchie} $M = (M_1, M_2, \ldots, M_k)$ ist geordnet
-		nach Zugriffszeit $t_i$ und KapazitÃ¤t $C_i$ mit $t_1 < t_2 < \cdots < t_k$
+		nach Zugriffszeit $t_i$ und Kapazität $C_i$ mit $t_1 < t_2 < \cdots < t_k$
 		und $C_1 < C_2 < \cdots < C_k$.
 	\end{definition}
 	
-	Typische Werte fÃ¼r aktuelle x86-64-Prozessoren:
+	Typische Werte für aktuelle x86-64-Prozessoren:
 	
 	\begin{center}
 		\begin{tabular}{llll}
 			\toprule
-			Ebene & Typ & KapazitÃ¤t & Latenz \\
+			Ebene & Typ & Kapazität & Latenz \\
 			\midrule
 			L1-D/I & SRAM & 32--64\,KB & 4 Zyklen \\
 			L2     & SRAM & 256\,KB--1\,MB & 12 Zyklen \\
@@ -414,7 +414,7 @@
 	\subsection{CPUID und MSR}
 	
 	Die \texttt{CPUID}-Instruktion liefert Prozessor-Identifikation und
-	Feature-Flags. Wichtige BlÃ¤tter:
+	Feature-Flags. Wichtige Blätter:
 	\begin{itemize}
 		\item \texttt{EAX=0x01}: Family/Model/Stepping, Standard-Features (SSE, AVX, AES-NI)
 		\item \texttt{EAX=0x07}: Extended Features (AVX-512, SHA)
@@ -422,14 +422,14 @@
 	\end{itemize}
 	
 	Model-Specific-Register werden via \texttt{RDMSR}/\texttt{WRMSR}
-	gelesen/geschrieben. FÃ¼r EDF$^+$-Sche\-duling relevant sind:
-	MSR \texttt{0x0C0000100} (FS.base), \texttt{0x0C0000101} (GS.base) fÃ¼r
-	thread-lokale Speicherung sowie \texttt{IA32\_PERF\_CTL} (0x199) fÃ¼r DVFS.
+	gelesen/geschrieben. Für EDF$^+$-Sche\-duling relevant sind:
+	MSR \texttt{0x0C0000100} (FS.base), \texttt{0x0C0000101} (GS.base) für
+	thread-lokale Speicherung sowie \texttt{IA32\_PERF\_CTL} (0x199) für DVFS.
 	
 	\section{Speicher (RAM)}
 	
 	Moderner DDR5-DRAM ist organisiert in Channels, DIMMs, Ranks, Banks und
-	Rows/Columns. FÃ¼r das Betriebssystem sind folgende physikalische Adressen
+	Rows/Columns. Für das Betriebssystem sind folgende physikalische Adressen
 	nach dem POST reserviert:
 	
 	\begin{center}
@@ -446,28 +446,28 @@
 	
 	\section{GPU und Grafiksubsystem}
 	
-	Moderne Grafikprozessoren (NVIDIA H100, AMD RX 7900) kommunizieren Ã¼ber
+	Moderne Grafikprozessoren (NVIDIA H100, AMD RX 7900) kommunizieren über
 	PCIe Gen~4/5 mit dem Host. Das BS/EDF$^+$ initialisiert die GPU im
 	Bootprozess als EDF$^+$-Task $T_{\text{GPU}}$ mit Deadline $D_{\text{GPU}}$,
 	die durch das Booten des grafischen Terminals bedingt ist.
-	FÃ¼r HPC-Workloads unterstÃ¼tzt PYMCA-8 \cite{Epp2026pymca8} CUDA/ROCm-Integration
+	Für HPC-Workloads unterstützt PYMCA-8 \cite{Epp2026pymca8} CUDA/ROCm-Integration
 	mit IoFET-DVFS auch auf der GPU-Seite.
 	
 	\section{PCIe, NVMe und SATA}
 	
 	PCI Express (PCIe Gen~5: 32\,GT/s pro Lane, $\times$16: 64\,GB/s bidirektional)
-	verbindet GPU, NVMe-SSDs und Netzwerkkarten mit dem Prozessor Ã¼ber den
-	Root Complex. Der BS/EDF$^+$-Boot-Scheduler behandelt jede PCIe-GerÃ¤teinitiali\-sierung
+	verbindet GPU, NVMe-SSDs und Netzwerkkarten mit dem Prozessor über den
+	Root Complex. Der BS/EDF$^+$-Boot-Scheduler behandelt jede PCIe-Geräteinitiali\-sierung
 	als separaten Task mit angemessener Deadline.
 	
 	NVMe-SSDs verwenden bis zu 64\,000 I/O-Queues (im Gegensatz zu AHCI: 1 Queue,
-	32 Commands), wodurch parallele Initialisierung im EDF$^+$-Framework mÃ¶glich ist.
+	32 Commands), wodurch parallele Initialisierung im EDF$^+$-Framework möglich ist.
 	
 	\section{USB und Netzwerk}
 	
 	USB~3.2 Gen~2Ã—2 erreicht 20\,Gbit/s. Netzwerkkarten (10-GbE, 100-GbE) werden
-	Ã¼ber UEFI PXE-Boot oder nach dem Kernel-Start Ã¼ber DHCP initialisiert.
-	FÃ¼r eingebettete Systeme ist EtherCAT \cite{IEC61158} relevant, das in
+	über UEFI PXE-Boot oder nach dem Kernel-Start über DHCP initialisiert.
+	Für eingebettete Systeme ist EtherCAT \cite{IEC61158} relevant, das in
 	Kapitel~11 detailliert behandelt wird.
 	
 	% ==============================================================
@@ -477,12 +477,12 @@
 	
 	\section{R/L/C-Schaltkreise und Zeitkonstanten}
 
-	Digitale Hardware basiert auf Schaltkreisen aus WiderstÃ¤nden ($R$),
-	InduktivitÃ¤ten ($L$) und KapazitÃ¤ten ($C$). Die Zeitkonstante bestimmt
-	SignalverzÃ¶gerungen und damit Taktlimits \cite{Epp2026physd}.
+	Digitale Hardware basiert auf Schaltkreisen aus Widerständen ($R$),
+	Induktivitäten ($L$) und Kapazitäten ($C$). Die Zeitkonstante bestimmt
+	Signalverzögerungen und damit Taktlimits \cite{Epp2026physd}.
 
 	\begin{definition}[RC-Zeitkonstante]
-		FÃ¼r einen einfachen RC-Tiefpass gilt die Zeitkonstante
+		Für einen einfachen RC-Tiefpass gilt die Zeitkonstante
 		\[
 		\tau_{RC} = R \cdot C.
 		\]
@@ -493,12 +493,12 @@
 	\end{definition}
 
 	Abbildung~\ref{fig:rc-charge} zeigt die normierte Ladekurve
-	$u_C(t)/U_0$ fÃ¼r verschiedene Zeitkonstanten. FÃ¼r Prozessortakte
-	der heutigen Generation mÃ¼ssen Bypass-Kondensatoren mit sehr kleiner
+	$u_C(t)/U_0$ für verschiedene Zeitkonstanten. Für Prozessortakte
+	der heutigen Generation müssen Bypass-Kondensatoren mit sehr kleiner
 	Impedanz ($Z < 1\,\Omega$ bei der CPU-Taktfrequenz) eingesetzt werden,
 	da bei $f_{\text{CPU}} = 5\,\text{GHz}$ und $\tau_{RC} = 200\,\text{ps}$
-	der Spannungsabfall bei transienten LaststÃ¶ÃŸen bereits die
-	StabilitÃ¤tsschwelle des Prozessors erreichen kann.
+	der Spannungsabfall bei transienten Laststößen bereits die
+	Stabilitätsschwelle des Prozessors erreichen kann.
 
 	\begin{figure}[H]
 		\centering
@@ -531,7 +531,7 @@
 			Zeitkonstante $\tau_{RC}$ hat der Kondensator $63.2\,\%$ seiner
 			Endspannung erreicht (roter Punkt). Im Kontext von Taktleitungen auf
 			Leiterplatten entspricht die Zeitkonstante der Flankenzeit des
-			Taktsignals; fÃ¼r $f_{\text{CPU}} = 5\,\text{GHz}$ muss
+			Taktsignals; für $f_{\text{CPU}} = 5\,\text{GHz}$ muss
 			$\tau_{RC} \ll 100\,\text{ps}$ gelten.}
 		\label{fig:rc-charge}
 	\end{figure}
@@ -541,19 +541,19 @@
 		\[
 		L\ddot{i} + R\dot{i} + \frac{1}{C}i = \frac{d u_e}{dt}.
 		\]
-		Die Eigenfrequenz betrÃ¤gt $\omega_0 = 1/\sqrt{LC}$ und der
-		DÃ¤mpfungsgrad $\delta = R/(2L)$. Das System ist:
+		Die Eigenfrequenz beträgt $\omega_0 = 1/\sqrt{LC}$ und der
+		Dämpfungsgrad $\delta = R/(2L)$. Das System ist:
 		\begin{itemize}
-			\item \emph{Ã¼berdÃ¤mpft} falls $\delta > \omega_0$,
-			\item \emph{kritisch gedÃ¤mpft} falls $\delta = \omega_0$,
+			\item \emph{überdämpft} falls $\delta > \omega_0$,
+			\item \emph{kritisch gedämpft} falls $\delta = \omega_0$,
 			\item \emph{schwingend} falls $\delta < \omega_0$.
 		\end{itemize}
 	\end{definition}
 	
-	FÃ¼r Prozessortakte mit $f_{\text{CPU}} = 3$--$5\,\text{GHz}$ mÃ¼ssen
-	LeitungsinduktivitÃ¤ten im Bereich $L < 1\,\text{nH}$ und
+	Für Prozessortakte mit $f_{\text{CPU}} = 3$--$5\,\text{GHz}$ müssen
+	Leitungsinduktivitäten im Bereich $L < 1\,\text{nH}$ und
 	Bypass-Kondensatoren $C \approx 100\,\mu\text{F}$ dimensioniert werden,
-	um $\tau_{LC} = \sqrt{LC} < 10\,\text{ps}$ zu gewÃ¤hrleisten.
+	um $\tau_{LC} = \sqrt{LC} < 10\,\text{ps}$ zu gewährleisten.
 	
 	\section{Fourier-Analyse und Signaldarstellung}
 	
@@ -562,25 +562,25 @@
 		\[
 		X(f) = \int_{-\infty}^{\infty} x(t)\, e^{-j2\pi f t}\, dt.
 		\]
-		Die RÃ¼cktransformation lautet:
+		Die Rücktransformation lautet:
 		\[
 		x(t) = \int_{-\infty}^{\infty} X(f)\, e^{j2\pi f t}\, df.
 		\]
 	\end{definition}
 	
-	FÃ¼r Rechteckpulse der Breite $\tau$ und Periode $T$ (Taktsignal) gilt:
+	Für Rechteckpulse der Breite $\tau$ und Periode $T$ (Taktsignal) gilt:
 	\[
 	X_n = \frac{\tau}{T} \cdot \text{sinc}\!\left(\frac{n\tau}{T}\right),
 	\]
 	wobei $\text{sinc}(x) = \sin(\pi x)/(\pi x)$. Die Bandbreite eines
-	Takt\-signals der Frequenz $f_0$ betrÃ¤gt typischerweise $B = 5f_0$,
-	was fÃ¼r 5\,GHz also 25\,GHz Bandbreite erfordert -- relevant fÃ¼r
-	PCB-Design und SignalintegritÃ¤t \cite{Epp2026signalth}.
+	Takt\-signals der Frequenz $f_0$ beträgt typischerweise $B = 5f_0$,
+	was für 5\,GHz also 25\,GHz Bandbreite erfordert -- relevant für
+	PCB-Design und Signalintegrität \cite{Epp2026signalth}.
 	
 	\section{Abtasttheorem und Analog-Digital-Wandlung}
 	
 	\begin{satz}[Nyquist-Shannon-Abtasttheorem]
-		Ein bandbegrenztes Signal $x(t)$ mit $X(f) = 0$ fÃ¼r $|f| > f_{\max}$
+		Ein bandbegrenztes Signal $x(t)$ mit $X(f) = 0$ für $|f| > f_{\max}$
 		kann aus seinen Abtastwerten $x(nT_s)$ eindeutig rekonstruiert werden,
 		falls die Abtastrate
 		\[
@@ -592,9 +592,9 @@
 		Die Abtastung im Zeitbereich entspricht einer Faltung mit einem Dirac-Kamm
 		$s(t) = \sum_n \delta(t - nT_s)$, was im Frequenzbereich eine Periodisierung
 		mit Periode $f_s$ ergibt: $X_s(f) = f_s \sum_k X(f - kf_s)$. Falls
-		$f_s \geq 2f_{\max}$, Ã¼berlappen die periodisierten Spektren nicht, und
+		$f_s \geq 2f_{\max}$, überlappen die periodisierten Spektren nicht, und
 		$X(f)$ kann durch einen idealen Tiefpass mit Grenzfrequenz $f_s/2$
-		vollstÃ¤ndig zurÃ¼ckgewonnen werden.
+		vollständig zurückgewonnen werden.
 	\end{proof}
 	
 	\begin{definition}[ADC-Quantisierungsrauschen]
@@ -605,45 +605,45 @@
 		\]
 	\end{definition}
 	
-	FÃ¼r Sensorinterfaces in eingebetteten Systemen (z.\,B.\ Temperatur-, Druck-
+	Für Sensorinterfaces in eingebetteten Systemen (z.\,B.\ Temperatur-, Druck-
 	oder Stromsensoren in AUTOSAR-ECUs) sind typischerweise 12--16-Bit-ADCs
 	mit $f_s = 1$--$100\,\mathrm{kHz}$ im Einsatz.
 	
 	\section{Energiebilanz digitaler Schaltkreise}
 	
-	Die dynamische Verlustleistung eines CMOS-Gatters betrÃ¤gt:
+	Die dynamische Verlustleistung eines CMOS-Gatters beträgt:
 	\[
 	P_{\text{dyn}} = \alpha \cdot C_L \cdot V_{DD}^2 \cdot f,
 	\]
-	wobei $\alpha$ die SchaltaktivitÃ¤t, $C_L$ die LastkapazitÃ¤t, $V_{DD}$
+	wobei $\alpha$ die Schaltaktivität, $C_L$ die Lastkapazität, $V_{DD}$
 	die Versorgungsspannung und $f$ die Taktfrequenz ist. Dies ist die
 	physikalische Grundlage des DVFS-Konzepts (Kapitel~6 und~12): durch
 	simultane Reduktion von $V_{DD}$ und $f$ sinkt die Leistung kubisch.
 
-	\section{SignalintegritÃ¤t und Ãœbertragungsleitungen}
+	\section{Signalintegrität und Übertragungsleitungen}
 
-	Bei Signalfrequenzen oberhalb von etwa $100\,\text{MHz}$ und LeitungslÃ¤ngen
-	im Bereich der WellenlÃ¤nge muss eine Leitung als \emph{Ãœbertragungsleitung}
+	Bei Signalfrequenzen oberhalb von etwa $100\,\text{MHz}$ und Leitungslängen
+	im Bereich der Wellenlänge muss eine Leitung als \emph{Übertragungsleitung}
 	modelliert werden (Telegrafen-Gleichungen):
 	\[
 	\frac{\partial u}{\partial z} = -L'\frac{\partial i}{\partial t} - R' i,
 	\qquad
 	\frac{\partial i}{\partial z} = -C'\frac{\partial u}{\partial t} - G' u,
 	\]
-	mit BelagsgrÃ¶ÃŸen $R'$, $L'$, $C'$, $G'$ (pro LÃ¤ngeneinheit).
-	Der \textbf{Wellenwiderstand} betrÃ¤gt
+	mit Belagsgrößen $R'$, $L'$, $C'$, $G'$ (pro Längeneinheit).
+	Der \textbf{Wellenwiderstand} beträgt
 	\[
 	Z_0 = \sqrt{\frac{L'}{C'}} \approx 50\,\Omega
 	\]
-	fÃ¼r typische PCB-Mikro\-streifenleitungen. Eine Fehlanpassung
+	für typische PCB-Mikro\-streifenleitungen. Eine Fehlanpassung
 	$Z_{\mathrm{Last}} \neq Z_0$ erzeugt Reflexionen, die das Setup-und-Hold-Fenster
-	von Flip-Flops gefÃ¤hrden kÃ¶nnen.
+	von Flip-Flops gefährden können.
 
-	\begin{bemerkung}[DVFS und SignalintegritÃ¤t]
+	\begin{bemerkung}[DVFS und Signalintegrität]
 		Eine DVFS-Spannungsabsenkung $V_{DD} \to V_{DD}'$ verringert die
-		SpannungspegelabstÃ¤nde und damit das Rauschmargen-Budget (\emph{Noise Margin}).
-		BS/EDF$^+$ beschrÃ¤nkt daher DVFS-Absenkungen auf maximal $\Delta V = 200\,\text{mV}$
-		pro Takt-DomÃ¤ne, um $V_{\mathrm{NM}} > 150\,\text{mV}$ zu garantieren.
+		Spannungspegelabstände und damit das Rauschmargen-Budget (\emph{Noise Margin}).
+		BS/EDF$^+$ beschränkt daher DVFS-Absenkungen auf maximal $\Delta V = 200\,\text{mV}$
+		pro Takt-Domäne, um $V_{\mathrm{NM}} > 150\,\text{mV}$ zu garantieren.
 	\end{bemerkung}
 	
 	% ==============================================================
@@ -651,15 +651,15 @@
 	% ==============================================================
 	\chapter{Boot-Sequenz}
 	
-	\section{Ãœberblick}
+	\section{Überblick}
 
 	Die Boot-Sequenz umfasst alle Schritte vom Anlegen der Versorgungsspannung
-	bis zum vollstÃ¤ndig initialisierten Kernel. Sie gliedert sich in sechs Phasen:
+	bis zum vollständig initialisierten Kernel. Sie gliedert sich in sechs Phasen:
 
 	\begin{enumerate}
 		\item \textbf{Power-On-Reset}: Versorgungsspannung stabilisiert sich,
 		Reset-Vektor wird geladen.
-		\item \textbf{POST} (Power-On Self-Test): BIOS/UEFI prÃ¼ft und initialisiert
+		\item \textbf{POST} (Power-On Self-Test): BIOS/UEFI prüft und initialisiert
 		Hardware.
 		\item \textbf{ACPI-Tabellen}: System-Topologie wird beschrieben.
 		\item \textbf{Bootloader}: MBR oder EFI-Partition, Kernel-Image wird geladen.
@@ -670,15 +670,15 @@
 	\end{enumerate}
 
 	Abbildung~\ref{fig:boot-flow} illustriert den gesamten Ablauf als
-	sequentielle Zustandsmaschine. Jeder Ãœbergang zwischen Phasen ist ein
-	\emph{Task-Release}-Ereignis im EDF$^+$-Framework.Der Ablauf des Algorithmus lÃ¤sst sich wie folgt beschreiben: 
-	Beim Anlegen der Betriebsspannung beginnt der Prozessor mit dem AusfÃ¼hren von
+	sequentielle Zustandsmaschine. Jeder Übergang zwischen Phasen ist ein
+	\emph{Task-Release}-Ereignis im EDF$^+$-Framework.Der Ablauf des Algorithmus lässt sich wie folgt beschreiben: 
+	Beim Anlegen der Betriebsspannung beginnt der Prozessor mit dem Ausführen von
 	Mikrocode-Routinen, die den internen Zustand des Prozessors initialisieren
-	(Register auf Null setzen, Fehlerflags lÃ¶schen). Danach wird der erste
+	(Register auf Null setzen, Fehlerflags löschen). Danach wird der erste
 	Maschinenbefehl am Reset-Vektor \texttt{0xFFFFFFF0} abgerufen -- ein
-	unbedingter Sprung in den BIOS/UEFI-ROM-Code. Die UEFI-Firmware durchlÃ¤uft
+	unbedingter Sprung in den BIOS/UEFI-ROM-Code. Die UEFI-Firmware durchläuft
 	dann die SEC-, PEI-, DXE-, und BDS-Phasen (Abschnitt~\ref{sec:uefi_phases})
-	und Ã¼bergibt die Kontrolle schlieÃŸlich an den Bootloader. Dieser
+	und übergibt die Kontrolle schließlich an den Bootloader. Dieser
 	dekomprimiert das Kernel-Image und springt in den Kernel-Einstiegspunkt,
 	wo BS/EDF$^+$ den ersten EDF$^+$-Scheduling-Kontext aufbaut.
 
@@ -716,11 +716,11 @@
 			\draw[arr] (kinit) -- (sched);
 			\draw[arr] (sched) -- (init);
 		\end{tikzpicture}
-		\caption{VollstÃ¤ndiges Boot-Ablaufdiagramm von BS/EDF$^+$. Jede Phase
+		\caption{Vollständiges Boot-Ablaufdiagramm von BS/EDF$^+$. Jede Phase
 			entspricht einem oder mehreren EDF$^+$-Tasks. Der POST-Ausgangstest
-			(\emph{POST OK?}) trennt den normalen Startpfad (grÃ¼ner Weg nach unten)
-			vom Fehlerpfad (rechts). Ab der Kernel-Initialisierungsphase Ã¼bernimmt
-			der EDF$^+$-Scheduler die Kontrolle Ã¼ber alle weiteren Tasks.}
+			(\emph{POST OK?}) trennt den normalen Startpfad (grüner Weg nach unten)
+			vom Fehlerpfad (rechts). Ab der Kernel-Initialisierungsphase übernimmt
+			der EDF$^+$-Scheduler die Kontrolle über alle weiteren Tasks.}
 		\label{fig:boot-flow}
 	\end{figure}
 
@@ -743,20 +743,20 @@
 	
 	\subsection{Legacy-BIOS}
 	
-	Das legacy BIOS fÃ¼hrt folgende Schritte aus:
+	Das legacy BIOS führt folgende Schritte aus:
 	\begin{enumerate}
 		\item \textbf{CPU-Test}: CPUID-Aufruf, Familien-Identifikation.
-		\item \textbf{Speichertest}: Walking-1-Muster Ã¼ber alle DRAM-Adressen.
+		\item \textbf{Speichertest}: Walking-1-Muster über alle DRAM-Adressen.
 		\item \textbf{PCI-Enumeration}: Bus-Scan, BAR-Zuweisung.
 		\item \textbf{IRQ-Routing}: PIC/IOAPIC-Konfiguration.
 		\item \textbf{Option-ROM}: GPU-BIOS, NIC-PXE-ROM.
-		\item \textbf{Boot-Device-Order}: MBR laden, Bootsektor ausfÃ¼hren.
+		\item \textbf{Boot-Device-Order}: MBR laden, Bootsektor ausführen.
 	\end{enumerate}
 	
 	\subsection{UEFI}
 
 	UEFI (Unified Extensible Firmware Interface, Spec 2.10) abstrahiert die
-	Hardware vollstÃ¤ndig hinter EFI-Protokollen und ermÃ¶glicht 64-Bit-AusfÃ¼hrung
+	Hardware vollständig hinter EFI-Protokollen und ermöglicht 64-Bit-Ausführung
 	ab SEC-Phase. Die Phasen sind:
 	\begin{itemize}
 		\item \textbf{SEC} (Security): Cache-as-RAM, erste Vertrauensbasis.
@@ -771,9 +771,9 @@
 
 	\subsection{Prozessormodus-Transitionen}
 
-	WÃ¤hrend der Boot-Sequenz traversiert der Prozessor drei grundlegende
+	Während der Boot-Sequenz traversiert der Prozessor drei grundlegende
 	Betriebsmodi. Abbildung~\ref{fig:cpu-modes} veranschaulicht die
-	Transitionen. Der Algorithmus, der diese Transitionen durchfÃ¼hrt, ist
+	Transitionen. Der Algorithmus, der diese Transitionen durchführt, ist
 	in \texttt{head\_64.S} implementiert und arbeitet wie folgt:
 
 	\begin{enumerate}
@@ -781,12 +781,12 @@
 		PE-Bit (Bit\,0) in Register~CR0 wird auf~1 gesetzt. Vor dem Setzen
 		werden GDT und IDT geladen (\texttt{LGDT}/\texttt{LIDT}). Nach dem
 		Setzen bewirkt ein internes CS-Segment-Reload (Far Jump) den
-		vollstÃ¤ndigen Modewechsel. Interrupts bleiben wÃ¤hrend des Ãœbergangs
+		vollständigen Modewechsel. Interrupts bleiben während des Übergangs
 		deaktiviert (EFLAGS.IF = 0).
 		\item \textbf{Protected-Modus $\to$ Long-Modus (64\,Bit):} PAE wird
 		durch Setzen v. CR4.PAE aktiviert. Dann wird die PML4-Seitentabelle
 		in CR3 eingetragen, IA32\_EFER.LME (Bit\,8) gesetzt, und
-		schlieÃŸlich Paging durch CR0.PG = 1 aktiviert. Ab dem nÃ¤chsten
+		schließlich Paging durch CR0.PG = 1 aktiviert. Ab dem nächsten
 		Instruktionsholen ist der Prozessor im Long-Modus.
 	\end{enumerate}
 
@@ -812,12 +812,12 @@
 				node[below, lbl, accentred]{SMI} (smm);
 			\draw[tr, dashed, accentred] (lm) -- node[below, lbl, accentred]{RSM} (smm);
 		\end{tikzpicture}}%
-		\caption{Prozessormodus-Transitionen wÃ¤hrend der Boot-Sequenz. Der normale
-			Boot-Pfad fÃ¼hrt von Real-Modus (gestrichelt: mÃ¶gliche SMI-Interrupts
-			zum System-Management-Modus) Ã¼ber Protected-Modus in den Long-Modus.
+		\caption{Prozessormodus-Transitionen während der Boot-Sequenz. Der normale
+			Boot-Pfad führt von Real-Modus (gestrichelt: mögliche SMI-Interrupts
+			zum System-Management-Modus) über Protected-Modus in den Long-Modus.
 			Die roten Pfeile symbolisieren den SMI-Interrupt-Pfad, der jederzeit
 			durch Firmware aufgerufen werden kann und nach \texttt{RSM}-Instruktion
-			in den vorherigen Modus zurÃ¼ckkehrt.}
+			in den vorherigen Modus zurückkehrt.}
 		\label{fig:cpu-modes}
 	\end{figure}
 	
@@ -828,39 +828,39 @@
 	
 	\begin{definition}[ACPI-RSDP]
 		Der \textbf{Root System Description Pointer} (RSDP) liegt im
-		Speicherbereich \texttt{0xE0000}--\texttt{0xFFFFF} und enthÃ¤lt die
+		Speicherbereich \texttt{0xE0000}--\texttt{0xFFFFF} und enthält die
 		physikalische Adresse der \textbf{RSDT/XSDT}.
 	\end{definition}
 	
-	FÃ¼r EDF$^+$-Scheduling relevante Tabellen:
+	Für EDF$^+$-Scheduling relevante Tabellen:
 	\begin{itemize}
 		\item \textbf{MADT} (Multiple APIC Description Table): CPU-Topologie,
 		LAPIC/IOAPIC-Adressen.
 		\item \textbf{SRAT} (System Resource Affinity Table): NUMA-Topologie.
-		\item \textbf{HPET}: High-Precision Event Timer fÃ¼r EDF$^+$-Zeitbasis.
-		\item \textbf{FADT}: Power-Management-Parameter fÃ¼r DVFS.
+		\item \textbf{HPET}: High-Precision Event Timer für EDF$^+$-Zeitbasis.
+		\item \textbf{FADT}: Power-Management-Parameter für DVFS.
 	\end{itemize}
 	
-	\section{Bootloader und Kernel-Ãœbergang}
+	\section{Bootloader und Kernel-Übergang}
 	
 	\subsection{GRUB2}
 	
 	GRUB2 (GNU GRand Unified Bootloader) operiert in drei Stufen:
 	\begin{enumerate}
-		\item \textbf{Stage 1}: MBR-Code (446 Bytes), lÃ¤dt Stage 1.5.
+		\item \textbf{Stage 1}: MBR-Code (446 Bytes), lädt Stage 1.5.
 		\item \textbf{Stage 1.5}: Dateisystem-Treiber im Zwischenbereich.
-		\item \textbf{Stage 2}: VollstÃ¤ndiger Bootmanager, lÃ¤dt Kernel-Image.
+		\item \textbf{Stage 2}: Vollständiger Bootmanager, lädt Kernel-Image.
 	\end{enumerate}
 	
 	\subsection{Kernel-Image und Decompression}
 	
-	Das Linux-Kernel-Image (\texttt{vmlinuz}) enthÃ¤lt einen Selbstextrahierer
+	Das Linux-Kernel-Image (\texttt{vmlinuz}) enthält einen Selbstextrahierer
 	(zstd/LZ4/gzip). Der Kernel wird an Adresse \texttt{0x100000} (1\,MB) oder
 	\texttt{0x1000000} (16\,MB, bei CONFIG\_RELOCA\newline TABLE) entpackt.
 	
 	\subsection{Early Kernel Initialization}
 	
-	Die Kernel-Initialisierungssequenz (relevant fÃ¼r EDF$^+$):
+	Die Kernel-Initialisierungssequenz (relevant für EDF$^+$):
 	\begin{enumerate}
 		\item \textbf{head\_64.S}: GDT/IDT Setup, Protected-/Long-Modus-Aktivierung.
 		\item \textbf{start\_kernel()}: Speicher, Timer, Scheduling.
@@ -874,13 +874,13 @@
 	% ==============================================================
 	\chapter{\texorpdfstring{EDF$^+$}{EDF+} Scheduler}
 	
-	\section{Ãœberblick und Motivation}
+	\section{Überblick und Motivation}
 	
 	EDF$^+$ (Earliest Deadline First Plus) \cite{Epp2026edfplus} erweitert den
 	klassischen EDF-Algorithmus \cite{Liu1973} um ein dynamisches
-	Penalty-Verfahren fÃ¼r Blocking-Ereignisse. Der Algorithmus ist formal
-	optimal fÃ¼r prÃ¤emptive Uniprocessor-Systeme und liefert analytische
-	Schranken fÃ¼r Multi-Core-Systeme (PYMCA-8, Kapitel~6).
+	Penalty-Verfahren für Blocking-Ereignisse. Der Algorithmus ist formal
+	optimal für präemptive Uniprocessor-Systeme und liefert analytische
+	Schranken für Multi-Core-Systeme (PYMCA-8, Kapitel~6).
 	
 	\section{Formale Definitionen}
 	
@@ -890,7 +890,7 @@
 		\Sigma = \bigl(\mathcal{T},\, \mathbf{C},\, \mathbf{D},\, \mathbf{P}\bigr)
 		\]
 		mit Task-Menge $\mathcal{T} = \{T_1, \ldots, T_n\}$,
-		AusfÃ¼hrungszeiten $\mathbf{C} \in \mathbb{R}_{>0}^n$,
+		Ausführungszeiten $\mathbf{C} \in \mathbb{R}_{>0}^n$,
 		Deadlines $\mathbf{D} \in \mathbb{R}_{>0}^n$ und
 		Perioden $\mathbf{P} \in \mathbb{R}_{>0}^n$ mit $C_i \leq D_i \leq P_i$.
 	\end{definition}
@@ -900,7 +900,7 @@
 		\[
 		U = \sum_{i=1}^{n} \frac{C_i}{P_i}.
 		\]
-		Das System heiÃŸt \emph{schedulierbar}, falls $U \leq 1$.
+		Das System heißt \emph{schedulierbar}, falls $U \leq 1$.
 	\end{definition}
 	
 	\begin{definition}[Blocking-Ereignis]
@@ -919,17 +919,17 @@
 		\begin{enumerate}
 			\item Sortiere $\mathcal{T}$ nach $\mathbf{D}$ aufsteigend
 			(Merge-Sort, $\Theta(n \log n)$).
-			\item FÃ¼hre den EDF-Schedule aus.
+			\item Führe den EDF-Schedule aus.
 			\item Bei jedem Blocking-Ereignis: setze $D_i^{\mathrm{eff}} \leftarrow +\infty$,
 			starte Neuplanung.
 			\item Wiederhole bis alle Tasks abgearbeitet.
 		\end{enumerate}
 	\end{definition}
 	
-	\section{OptimalitÃ¤tsbeweis}
+	\section{Optimalitätsbeweis}
 	
-	\begin{satz}[EDF$^+$-OptimalitÃ¤t]\label{satz:edfopt}
-		FÃ¼r jedes schedulierbare Task-System $\Sigma$ mit $U \leq 1$ ist
+	\begin{satz}[EDF$^+$-Optimalität]\label{satz:edfopt}
+		Für jedes schedulierbare Task-System $\Sigma$ mit $U \leq 1$ ist
 		EDF$^+$ optimal in dem Sinne, dass kein Algorithmus weniger
 		Deadline-Verfehlungen produziert.
 	\end{satz}
@@ -937,32 +937,32 @@
 	\begin{proof}
 		\textbf{Schritt 1 (Reduktion auf EDF):} Ohne Blocking ($p = 0$) reduziert
 		sich EDF$^+$ auf klassisches EDF. Nach dem Satz von Dertouzos~\cite{Dertouzos1974}
-		ist EDF optimal fÃ¼r prÃ¤emptive Uniprocessor-Systeme: Angenommen, ein
+		ist EDF optimal für präemptive Uniprocessor-Systeme: Angenommen, ein
 		anderer Schedule $S'$ vermeidet eine Deadline-Verfehlung, die EDF verursacht.
-		Dann existiert ein Zeitpunkt $t^*$, an dem $S'$ eine Task $T_j$ ausfÃ¼hrt,
-		wÃ¤hrend EDF $T_i$ mit $D_i < D_j$ ausfÃ¼hrt. Ein Exchange-Argument zeigt,
+		Dann existiert ein Zeitpunkt $t^*$, an dem $S'$ eine Task $T_j$ ausführt,
+		während EDF $T_i$ mit $D_i < D_j$ ausführt. Ein Exchange-Argument zeigt,
 		dass der Tausch den Schedule nicht verschlechtert -- EDF ist demnach optimal.
 		
 		\textbf{Schritt 2 (Blocking-Fall):} Blockiert $T_i$ zum Zeitpunkt $t_b$,
 		steht die CPU leer. EDF$^+$ setzt $D_i^{\mathrm{eff}} = +\infty$ und
-		plant sofort neu. Damit erhÃ¤lt die Task mit der nÃ¤chsten realen Deadline
-		sofort die CPU -- kein anderer Algorithmus kann die geblockte Task frÃ¼her
+		plant sofort neu. Damit erhält die Task mit der nächsten realen Deadline
+		sofort die CPU -- kein anderer Algorithmus kann die geblockte Task früher
 		entblocken, da Blocking exogen ist. Jeder alternative Algorithmus, der
-		$T_i$ an der CPU belÃ¤sst, verschwendet CPU-Zeit. EDF$^+$ minimiert also
+		$T_i$ an der CPU belässt, verschwendet CPU-Zeit. EDF$^+$ minimiert also
 		die Leer\-laufzeit der CPU bei Blocking.
 		
 		\textbf{Schritt 3 (Dynamische Tasks):} Bei Ankunft neuer Task $T_{\text{new}}$
 		mit Deadline $D_{\text{new}}$ wird sofort neu sortiert. Da der neue Schedule
 		die kleinste offene Deadline priorisiert, ist er lokal optimal zum
-		Ankunftszeitpunkt. Durch Induktion Ã¼ber alle AnkÃ¼nfte folgt die globale
-		OptimalitÃ¤t.
+		Ankunftszeitpunkt. Durch Induktion über alle Ankünfte folgt die globale
+		Optimalität.
 	\end{proof}
 	
 	\section{Stochastische Analyse}
 	
 	\begin{satz}[Erwartete Neuplanungen]\label{satz:reprob}
 		Sei $X_i \sim \mathrm{Geom}(p)$ die Anzahl der Versuche bis Task~$T_i$
-		nicht mehr blockiert. Dann ist die erwartete Anzahl Neuplanungen fÃ¼r
+		nicht mehr blockiert. Dann ist die erwartete Anzahl Neuplanungen für
 		$n = 40$ Tasks:
 		\[
 		\E\!\left[\sum_{i=1}^{n} (X_i - 1)\right]
@@ -973,27 +973,27 @@
 	
 	\begin{proof}
 		Da $X_i \sim \mathrm{Geom}(p)$ gilt $\E[X_i] = 1/p$, also
-		$\E[X_i - 1] = (1-p)/p$. Die $X_i$ sind unabhÃ¤ngig (i.i.d.), daher
-		folgt durch LinearitÃ¤t des Erwartungswertes:
+		$\E[X_i - 1] = (1-p)/p$. Die $X_i$ sind unabhängig (i.i.d.), daher
+		folgt durch Linearität des Erwartungswertes:
 		\[
 		\E\!\left[\sum_{i=1}^{n}(X_i-1)\right]
 		= n \cdot \frac{1-p}{p}. \qedhere
 		\]
 	\end{proof}
 	
-	\section{LaufzeitkomplexitÃ¤t}
+	\section{Laufzeitkomplexität}
 	
 	\begin{satz}[WCET-Overhead]\label{satz:wcet}
-		Der Worst-Case-Overhead von EDF$^+$ gegenÃ¼ber klassischem EDF betrÃ¤gt
+		Der Worst-Case-Overhead von EDF$^+$ gegenüber klassischem EDF beträgt
 		$O(K \cdot n \log n)$, wobei $K$ die maximale Anzahl Blocking-Ereignisse
 		ist.
 	\end{satz}
 	
 	\begin{proof}
 		Jede Neuplanung erfordert einen Merge-Sort in $\Theta(n \log n)$. Im
-		Worst Case tritt fÃ¼r jede der $n$ Tasks genau $K$ Mal ein Blocking auf,
+		Worst Case tritt für jede der $n$ Tasks genau $K$ Mal ein Blocking auf,
 		was $K \cdot n$ Neuplanungen ergibt. Daraus folgt
-		$O(K \cdot n \cdot n \log n)$ gesamt; fÃ¼r $K = 1$ ergibt sich
+		$O(K \cdot n \cdot n \log n)$ gesamt; für $K = 1$ ergibt sich
 		$O(n^2 \log n)$. Da in der Praxis $K \ll n$, ist der Overhead $O(n \log n)$.
 	\end{proof}
 	
@@ -1006,7 +1006,7 @@
 		\item \textbf{Echtzeit-Prozesse}: Deadlines explizit, gesetzt via
 		\texttt{sched\_setattr()}.
 		\item \textbf{Best-Effort-Prozesse}: $D_i^{\mathrm{eff}} = +\infty$
-		(Ã¤quivalent zum Blocking-Fall, niedrigste PrioritÃ¤t).
+		(äquivalent zum Blocking-Fall, niedrigste Priorität).
 		\item \textbf{Kernel-Threads}: Interne Deadlines basierend auf
 		Hardware-Interrupt-Latenzanfor\-derungen.
 	\end{itemize}
@@ -1035,18 +1035,18 @@
 
 	\paragraph{Algorithmusbeschreibung.}
 	Der EDF$^+$-Kernel-Scheduler (Algorithmus~\ref{alg:edfplus_kernel}) arbeitet
-	in folgenden Schritten: ZunÃ¤chst wird die Task-Menge $\mathcal{T}$ nach den
+	in folgenden Schritten: Zunächst wird die Task-Menge $\mathcal{T}$ nach den
 	effektiven Deadlines $\mathbf{D}^{\mathrm{eff}}$ aufsteigend sortiert
 	(Zeile~2, Merge-Sort in $\Theta(n \log n)$). Die sortierten Tasks werden
 	der Reihe nach dispatcht (Zeile~6). Wenn ein Task beim Dispatching
 	blockiert -- also auf eine externe Ressource warten muss (I/O,
 	Mutex, Netzwerk) -- wird seine effektive Deadline sofort auf $+\infty$
 	gesetzt (Zeile~8), was ihn aus der aktiven Priority-Queue entfernt.
-	AnschlieÃŸend wird sofort eine Neu-Sortierung durchgefÃ¼hrt (Zeile~9) und
+	Anschließend wird sofort eine Neu-Sortierung durchgeführt (Zeile~9) und
 	der Scheduling-Durchlauf von vorne begonnen (Zeile~10). Nicht-blockierte
 	Tasks werden sequenziell abgearbeitet (Zeile~12). Dieses Verfahren
 	garantiert, dass keine CPU-Zyklen auf blockierte Tasks verschwendet werden
-	und die nÃ¤chste erreichbare Deadline stets als nÃ¤chstes bedient wird.
+	und die nächste erreichbare Deadline stets als nächstes bedient wird.
 
 	\section{Scheduling-Beispiel und Gantt-Diagramm}
 
@@ -1078,7 +1078,7 @@
 			\foreach \x in {0,2,...,15}
 				\draw (\x,-.08) -- (\x,.08) node[below,font=\tiny]{\x};
 
-			% Farben fÃ¼r Tasks
+			% Farben für Tasks
 			\def\htask{0.5}
 			% T1
 			\fill[mainblue!70]   (0,2.1) rectangle (2,2.1+\htask)
@@ -1106,13 +1106,13 @@
 			\node[left, font=\small] at (0, 0.95) {$T_3$};
 			\node[left, font=\small] at (0, 0.25) {$T_4$};
 		\end{tikzpicture}
-		\caption{Gantt-Diagramm des EDF$^+$-Schedules fÃ¼r das 4-Task-Beispiel.
-			Jeder farbige Block reprÃ¤sentiert die AusfÃ¼hrungszeit eines Tasks;
+		\caption{Gantt-Diagramm des EDF$^+$-Schedules für das 4-Task-Beispiel.
+			Jeder farbige Block repräsentiert die Ausführungszeit eines Tasks;
 			die roten gestrichelten Linien markieren die jeweiligen Deadlines.
-			$T_1$ hat die frÃ¼heste Deadline ($D_1 = 5\,\text{ms}$) und wird
-			zuerst ausgefÃ¼hrt. Bei $t = 2\,\text{ms}$ wird $T_2$ dispatcht,
-			da $T_1$ abgeschlossen ist. EDF$^+$ wÃ¤hlt stets den Task mit
-			der nÃ¤chsten absoluten Deadline, unabhÃ¤ngig von der Ankunftszeit.}
+			$T_1$ hat die früheste Deadline ($D_1 = 5\,\text{ms}$) und wird
+			zuerst ausgeführt. Bei $t = 2\,\text{ms}$ wird $T_2$ dispatcht,
+			da $T_1$ abgeschlossen ist. EDF$^+$ wählt stets den Task mit
+			der nächsten absoluten Deadline, unabhängig von der Ankunftszeit.}
 		\label{fig:gantt-edfplus}
 	\end{figure}
 	
@@ -1121,19 +1121,19 @@
 	% ==============================================================
 	\chapter{PYMCA-8 Mehrkernarchitektur}
 	
-	\section{Ãœberblick}
+	\section{Überblick}
 
 	PYMCA-8 (Python Multi-Core Architecture~8) \cite{Epp2026pymca8} ist eine
 	8-Kern-Architektur, die EDF$^+$-Scheduling mit einem fein abgestimmten
 	Python-Speichermodell, IoFET-basiertem DVFS und stochastischer
-	Wartestrategie kombiniert. Die Architektur ist insbesondere fÃ¼r
+	Wartestrategie kombiniert. Die Architektur ist insbesondere für
 	KI-nahe Workloads (Vektorsuche, Metagenomik, LLM-Inference) optimiert
-	und bildet die AusfÃ¼hrungsumgebung von PYMCA-8-kompatiblen OS-Diensten.
+	und bildet die Ausführungsumgebung von PYMCA-8-kompatiblen OS-Diensten.
 
 	Abbildung~\ref{fig:pymca8} zeigt die Gesamtarchitektur: Acht symmetrische
-	Rechenkerne -- jeder mit privatem L1/L2-Cache und zugehÃ¶rigem lokalen
-	EDF$^+$-Scheduler -- sind Ã¼ber einen gemeinsamen L3-Cache und einen
-	Ring-Bus verbunden. Die Inter-Core-Kommunikation fÃ¼r Task-Migration nutzt
+	Rechenkerne -- jeder mit privatem L1/L2-Cache und zugehörigem lokalen
+	EDF$^+$-Scheduler -- sind über einen gemeinsamen L3-Cache und einen
+	Ring-Bus verbunden. Die Inter-Core-Kommunikation für Task-Migration nutzt
 	lock-freie FIFO-Queues; der DVFS-Controller passt Spannung und Frequenz
 	jedes Kerns individuell an.
 
@@ -1162,7 +1162,7 @@
 			}
 
 			% L3 shared cache
-			\node[shared] at (4.9, -5.8) (l3) {\textbf{L3-Cache (32\,MB, geteilt)} \quad MESI-KohÃ¤renz};
+			\node[shared] at (4.9, -5.8) (l3) {\textbf{L3-Cache (32\,MB, geteilt)} \quad MESI-Kohärenz};
 
 			% Ring bus (simplified as a rectangle)
 			\draw[bus, mainblue, thick] (0.0,-5.2) -- (9.8,-5.2) -- (9.8,-0.05) -- (0.0,-0.05) -- cycle;
@@ -1180,24 +1180,24 @@
 				at (13.5, -5.8) (ddr) {DDR5-IMC\\(4-Channel)};
 			\draw[arr, darkgray] (ddr) -- (l3.east);
 		\end{tikzpicture}
-		\caption{PYMCA-8-ArchitekturÃ¼bersicht mit acht Kernen (oben: Kerne 0--3,
+		\caption{PYMCA-8-Architekturübersicht mit acht Kernen (oben: Kerne 0--3,
 			unten: Kerne 4--7). Jeder Kern besitzt einen privaten L1- und L2-Cache
 			sowie einen lokalen EDF$^+$-Scheduler. Der geteilte L3-Cache
-			(32\,MB) wird Ã¼ber das MESI-KohÃ¤renzprotokoll konsistent gehalten.
+			(32\,MB) wird über das MESI-Kohärenzprotokoll konsistent gehalten.
 			Der IoFET-DVFS-Controller (rechts) passt Spannung und Frequenz jedes
 			Kerns individuell an die aktuelle EDF$^+$-Auslastung an; der DDR5-IMC
-			verbindet alle Kerne Ã¼ber 4-Kanal-DRAM mit 192\,GB/s Bandbreite.}
+			verbindet alle Kerne über 4-Kanal-DRAM mit 192\,GB/s Bandbreite.}
 		\label{fig:pymca8}
 	\end{figure}
 
 	\paragraph{Inter-Core-Scheduling-Algorithmus.}
 	Die Task-Zuweisung auf die acht Kerne erfolgt durch einen globalen
 	\emph{Work-Stealing}-Meta-Scheduler, der oberhalb der lokalen
-	EDF$^+$-Scheduler operiert. Der Algorithmus Ã¼berwacht periodisch
+	EDF$^+$-Scheduler operiert. Der Algorithmus überwacht periodisch
 	(alle $\Delta t = 1\,\text{ms}$) die Auslastung jedes Kerns. Ist
-	die Differenz der Auslastungen zweier Kerne grÃ¶ÃŸer als $\theta = 0.2$
-	(20\,\%), wird ein Task vom hÃ¶her belasteten Kern auf den leerer laufenden
-	migriert. Die Task-Auswahl erfolgt nach EDF$^+$-PrioritÃ¤t: Der Task
+	die Differenz der Auslastungen zweier Kerne größer als $\theta = 0.2$
+	(20\,\%), wird ein Task vom höher belasteten Kern auf den leerer laufenden
+	migriert. Die Task-Auswahl erfolgt nach EDF$^+$-Priorität: Der Task
 	mit der fernsten Deadline wird migriert (er ist am ehesten ``abgebbar'',
 	ohne eine Deadline-Verfehlung zu riskieren).
 	
@@ -1208,26 +1208,26 @@
 	\begin{definition}[GIL]
 		Der \textbf{Global Interpreter Lock} ist ein Mutex, der sicherstellt,
 		dass in einem Python-Interpreter immer nur ein Thread gleichzeitig
-		Bytecode ausfÃ¼hrt. In CPython wird der GIL alle $N_{\mathrm{GIL}}$
+		Bytecode ausführt. In CPython wird der GIL alle $N_{\mathrm{GIL}}$
 		Bytecode-Instruktionen freigegeben (Default: 100).
 	\end{definition}
 	
 	In PYMCA-8 wird der GIL durch einen modifizierten CPython-Interpreter
 	auf EDF$^+$-Ebene verwaltet: Der GIL-Release-Zyklus $N_{\mathrm{GIL}}$
 	wird als Task-Period $P_{\mathrm{GIL}}$ interpretiert, und der Thread
-	mit der nÃ¤chsten Deadline erhÃ¤lt den GIL zuerst.
+	mit der nächsten Deadline erhält den GIL zuerst.
 	
-	\subsection{ReferenzzÃ¤hlung und Garbage Collection}
+	\subsection{Referenzzählung und Garbage Collection}
 	
-	\begin{definition}[ReferenzzÃ¤hlung]
-		CPython verwendet \textbf{ReferenzzÃ¤hlung}: Jedes Objekt besitzt
-		einen ZÃ¤hler $\mathrm{rc}(o)$. Bei $\mathrm{rc}(o) = 0$ wird das
+	\begin{definition}[Referenzzählung]
+		CPython verwendet \textbf{Referenzzählung}: Jedes Objekt besitzt
+		einen Zähler $\mathrm{rc}(o)$. Bei $\mathrm{rc}(o) = 0$ wird das
 		Objekt sofort dealloziert. Zyklische Referenzen werden durch den
-		Cycle-Garbage-Collector (CGC) aufgelÃ¶st.
+		Cycle-Garbage-Collector (CGC) aufgelöst.
 	\end{definition}
 	
 	\begin{lemma}[CGC-Latenz]\label{lem:cgc}
-		Die maximale CGC-Pause betrÃ¤gt $O(|G_{\mathrm{zyk}}|)$, wobei
+		Die maximale CGC-Pause beträgt $O(|G_{\mathrm{zyk}}|)$, wobei
 		$|G_{\mathrm{zyk}}|$ die Anzahl der Objekte im zyklischen Graph ist.
 		Unter PYMCA-8 wird CGC als EDF$^+$-Task mit Deadline
 		$D_{\mathrm{CGC}} = P_{\mathrm{CGC}}$ geplant.
@@ -1235,8 +1235,8 @@
 	
 	\section{IoFET-basiertes DVFS}
 	
-	\begin{definition}[IoFET-LeitfÃ¤higkeit]
-		Die normierte LeitfÃ¤higkeit eines ionischen Feldeffekttransistors
+	\begin{definition}[IoFET-Leitfähigkeit]
+		Die normierte Leitfähigkeit eines ionischen Feldeffekttransistors
 		(IoFET) \cite{Epp2026iono} folgt einem sigmoiden Modell:
 		\[
 		G_{\mathrm{IoFET}}(V) = G_{\max} \cdot \sigma\!\left(\frac{V - V_{\mathrm{th}}}{\Delta V}\right),
@@ -1245,14 +1245,14 @@
 		\]
 	\end{definition}
 	
-	Die DVFS-Steuerung in PYMCA-8 nutzt dieses Modell, um fÃ¼r jeden der
+	Die DVFS-Steuerung in PYMCA-8 nutzt dieses Modell, um für jeden der
 	8 Kerne die optimale Betriebsspannung $V^*$ zu bestimmen (Details in
 	Kapitel~12 und Korollar~14.5).
 	
 	\section{Stochastische Wartestrategie}
 	
 	\begin{definition}[Archiv-Batch-Timer $\mu^*$]
-		Der optimale Batch-Timer fÃ¼r das Archiv-Problem \cite{Epp2026archv} ist
+		Der optimale Batch-Timer für das Archiv-Problem \cite{Epp2026archv} ist
 		\[
 		\mu^* = \sqrt{\frac{c_{\mathrm{wait}} \cdot \lambda}{c_{\mathrm{shift}}}},
 		\]
@@ -1263,8 +1263,8 @@
 	
 	\section{PYMCA-8 im OS-Kontext}
 	
-	Jeder der 8 Kerne fÃ¼hrt einen eigenen EDF$^+$-Scheduler aus. Die
-	Inter-Core-Kommunikation erfolgt Ã¼ber lock-freie FIFO-Queues mit
+	Jeder der 8 Kerne führt einen eigenen EDF$^+$-Scheduler aus. Die
+	Inter-Core-Kommunikation erfolgt über lock-freie FIFO-Queues mit
 	EDF$^+$-Priorisierung. Das Task-Migrationsproblem (Lastverteilung)
 	wird als Subgraph-Isomorphismus formuliert (Kapitel~8).
 	
@@ -1277,7 +1277,7 @@
 	
 	\begin{definition}[Archiv-Problem]
 		Gegeben sei ein System mit Ankunftsrate $\lambda$ (Poisson-Prozess)
-		neuer DatensÃ¤tze und Batch-Insertionskosten $c_{\mathrm{shift}}$.
+		neuer Datensätze und Batch-Insertionskosten $c_{\mathrm{shift}}$.
 		Das \textbf{Archiv-Problem} fragt nach dem optimalen Batch-Timer
 		$\mu$ der minimiert:
 		\[
@@ -1310,7 +1310,7 @@
 		\mu^* = \sqrt{\frac{c_{\mathrm{wait}} \lambda}{c_{\mathrm{shift}}}}
 		\]
 		liefert. Die zweite Ableitung $d^2J/d\mu^2 = 2c_{\mathrm{wait}}\lambda/\mu^3 > 0$
-		bestÃ¤tigt das Minimum.
+		bestätigt das Minimum.
 	\end{proof}
 	
 	\section{Laplace-Transformierte und Wartezeitanalyse}
@@ -1322,7 +1322,7 @@
 	\]
 	wobei $F$ die Batch-Insertionszeitverteilung ist.
 	
-	FÃ¼r exponentiell verteilte Batch-Insertionszeiten mit Rate $\nu$ gilt:
+	Für exponentiell verteilte Batch-Insertionszeiten mit Rate $\nu$ gilt:
 	\[
 	W(s) = \frac{s}{\lambda + s} \cdot \frac{\nu}{\nu + s},
 	\]
@@ -1332,7 +1332,7 @@
 	\section{Virtueller Speicher und Paging}
 
 	\begin{definition}[Page-Table-Entry]
-		Ein x86-64 \textbf{Page-Table-Entry} (PTE, 8 Byte) enthÃ¤lt:
+		Ein x86-64 \textbf{Page-Table-Entry} (PTE, 8 Byte) enthält:
 		\begin{itemize}
 			\item Bits [11:0]: Flags (Present, Writable, User, PWT, PCD, Accessed,
 			Dirty, PAT, Global, PKE).
@@ -1344,7 +1344,7 @@
 	Das 4-Level-Paging (PML4 $\to$ PDPT $\to$ PD $\to$ PT) adressiert
 	$2^{48}$\,Byte = 256\,TB virtuellen Adressraum. Im Kontext von
 	Post-Quanten-Sicherheit (Kapitel~13 und Satz~14.6) werden die PPFN-Bits
-	durch LWE-VerschlÃ¼sselung geschÃ¼tzt.
+	durch LWE-Verschlüsselung geschützt.
 
 	Abbildung~\ref{fig:paging} zeigt, wie eine 64-Bit-virtuelle Adresse in
 	vier Index-Felder und einen Page-Offset aufgeteilt wird und wie die
@@ -1405,47 +1405,47 @@
 				{Jeder Pfeil = 1 Speicherzugriff $\Rightarrow$ 4 TLB-Miss-Zugriffe ohne TLB-Hit};
 		\end{tikzpicture}
 		\caption{x86-64 4-Level-Paging-Hierarchie. Eine virtuelle Adresse wird in
-			fÃ¼nf Felder aufgeteilt: vier 9-Bit-Indizes fÃ¼r PML4, PDPT, PD und PT
+			fünf Felder aufgeteilt: vier 9-Bit-Indizes für PML4, PDPT, PD und PT
 			sowie einen 12-Bit-Page-Offset (4\,KB-Pages). Die Hardware-MMU traversiert
 			die vier Tabellen beginnend bei der physikalischen Basisadresse in
-			Register~CR3. Bei einem TLB-Miss kostet die AdressÃ¼bersetzung vier
-			Speicherzugriffe (rot markierte EintrÃ¤ge); bei einem TLB-Hit entfÃ¤llt
-			die Traversierung vollstÃ¤ndig. Im BS/EDF$^+$-LWE-Schema werden die
-			PPFN-Felder verschlÃ¼sselt gespeichert (Satz~\ref{satz:pqc_mem}).}
+			Register~CR3. Bei einem TLB-Miss kostet die Adressübersetzung vier
+			Speicherzugriffe (rot markierte Einträge); bei einem TLB-Hit entfällt
+			die Traversierung vollständig. Im BS/EDF$^+$-LWE-Schema werden die
+			PPFN-Felder verschlüsselt gespeichert (Satz~\ref{satz:pqc_mem}).}
 		\label{fig:paging}
 	\end{figure}
 
-	\paragraph{AdressÃ¼bersetzungs-Algorithmus.}
-	Die x86-64-MMU fÃ¼hrt die Seitentabellen-Traversie\-rung (Page-Table-Walk)
-	in Hardware durch. Jede Traversierung durchlÃ¤uft vier Ebenen: Aus dem
+	\paragraph{Adressübersetzungs-Algorithmus.}
+	Die x86-64-MMU führt die Seitentabellen-Traversie\-rung (Page-Table-Walk)
+	in Hardware durch. Jede Traversierung durchläuft vier Ebenen: Aus dem
 	virtuellen Adressfeld $[47:39]$ wird ein Index in die PML4 gebildet;
-	der dort stehende Eintrag enthÃ¤lt die physikalische Basisadresse der PDPT.
+	der dort stehende Eintrag enthält die physikalische Basisadresse der PDPT.
 	Aus Adressfeld $[38:30]$ wird ein PDPT-Index gebildet, der auf die PD-Basis
-	zeigt, und so weiter bis zur PT-Ebene. Der PTE in der PT enthÃ¤lt die
+	zeigt, und so weiter bis zur PT-Ebene. Der PTE in der PT enthält die
 	Physical Page Frame Number (PPFN), die mit dem 12-Bit-Offset konkateniert
 	die physikalische Adresse ergibt. Fehlt das Present-Bit in einem Eintrag,
-	lÃ¶st die MMU einen Page-Fault aus (Interrupt~14), der den OS-seitigen
+	löst die MMU einen Page-Fault aus (Interrupt~14), der den OS-seitigen
 	Page-Fault-Handler aufruft -- im BS/EDF$^+$-System ein EDF$^+$-Task
-	mit sehr hoher PrioritÃ¤t (niedrige Deadline).
+	mit sehr hoher Priorität (niedrige Deadline).
 
 	\section{Speicherverwaltung unter \texorpdfstring{EDF$^+$}{EDF+}}
 
 	Der Kernel-Allokator (Buddy-System + Slab) wird als EDF$^+$-Task
-	$T_{\mathrm{alloc}}$ gefÃ¼hrt. GroÃŸe Allokationen ($> 2\,\mathrm{MB}$)
-	lÃ¶sen einen Defragmentierungslauf aus, der als separater Task
-	$T_{\mathrm{defrag}}$ mit niedriger PrioritÃ¤t geplant wird.
+	$T_{\mathrm{alloc}}$ geführt. Große Allokationen ($> 2\,\mathrm{MB}$)
+	lösen einen Defragmentierungslauf aus, der als separater Task
+	$T_{\mathrm{defrag}}$ mit niedriger Priorität geplant wird.
 
 	\paragraph{Buddy-System-Algorithmus.}
-	Das Buddy-System verwaltet den physikalischen Speicher in BlÃ¶cken der
-	GrÃ¶ÃŸe $2^k \cdot 4\,\text{KB}$ fÃ¼r $k = 0, 1, \ldots, 10$ (also 4\,KB
-	bis 4\,MB). FÃ¼r jede Ordnung~$k$ wird eine Free-List $\mathrm{FL}[k]$
-	gehalten. Eine Allokation der Ordnung $k'$ sucht zunÃ¤chst in
+	Das Buddy-System verwaltet den physikalischen Speicher in Blöcken der
+	Größe $2^k \cdot 4\,\text{KB}$ für $k = 0, 1, \ldots, 10$ (also 4\,KB
+	bis 4\,MB). Für jede Ordnung~$k$ wird eine Free-List $\mathrm{FL}[k]$
+	gehalten. Eine Allokation der Ordnung $k'$ sucht zunächst in
 	$\mathrm{FL}[k']$; ist diese leer, wird rekursiv ein Block der Ordnung
 	$k'+1$ gespaltet (Splitting): Der eine Teilblock verbleibt in
-	$\mathrm{FL}[k']$, der andere wird zurÃ¼ckgegeben. Beim Freigeben eines
-	Blocks der Ordnung~$k$ wird geprÃ¼ft, ob sein \emph{Buddy} (der benachbarte
-	Block gleicher GrÃ¶ÃŸe, erkennbar am komplementÃ¤ren Bit\,$k$ der
-	Blockadresse) ebenfalls frei ist; falls ja, werden beide BlÃ¶cke zusammen
+	$\mathrm{FL}[k']$, der andere wird zurückgegeben. Beim Freigeben eines
+	Blocks der Ordnung~$k$ wird geprüft, ob sein \emph{Buddy} (der benachbarte
+	Block gleicher Größe, erkennbar am komplementären Bit\,$k$ der
+	Blockadresse) ebenfalls frei ist; falls ja, werden beide Blöcke zusammen
 	auf Ordnung~$k+1$ gehoben (Coalescing). Algorithmus~\ref{alg:buddy}
 	fasst dieses Verfahren zusammen.
 
@@ -1467,8 +1467,8 @@
 	Die Free-Listen $\mathrm{FL}[0]$ bis $\mathrm{FL}[10]$ werden im Kernel
 	als doppelt verkettete Listen gehalten. Splitting erzeugt in $O(1)$
 	einen neuen freien Buddy-Block; Coalescing ist ebenfalls $O(1)$
-	(Adress-XOR zum Buddy). Die amortisierte KomplexitÃ¤t einer Allokation
-	betrÃ¤gt $O(\log_2 N)$ mit $N = $ Gesamtseitenzahl.
+	(Adress-XOR zum Buddy). Die amortisierte Komplexität einer Allokation
+	beträgt $O(\log_2 N)$ mit $N = $ Gesamtseitenzahl.
 	
 	% ==============================================================
 	%  KAPITEL 8 -- GRAPHENTHEORETISCHE OS-VERIFIKATION
@@ -1498,27 +1498,27 @@
 
 	Der Subgraph Algorithmus \cite{Epp2026subgraph} nutzt $\sigma$ als
 	Vorfilterschritt: Nur Knoten mit identischer Signatur werden als
-	Kandidaten fÃ¼r Subgraph-Isomorphismus geprÃ¼ft.
+	Kandidaten für Subgraph-Isomorphismus geprüft.
 
 	\paragraph{Algorithmusbeschreibung.}
 	Der Subgraph Algorithmus gliedert sich in drei Phasen:
 	\begin{enumerate}
-		\item \textbf{Signaturberechnung} ($O(n)$): FÃ¼r jeden Knoten $v$
+		\item \textbf{Signaturberechnung} ($O(n)$): Für jeden Knoten $v$
 		im Host-Graphen $G_S$ und im Query-Graphen $G_N$ wird $\sigma(v)$
-		berechnet. Dies erfordert das ZÃ¤hlen der Eingangs- und Ausgangskanten
+		berechnet. Dies erfordert das Zählen der Eingangs- und Ausgangskanten
 		sowie die Berechnung des lokalen Clustering-Koeffizienten. Letzterer
 		misst, wie viele der Nachbarn eines Knotens untereinander verbunden sind:
 		$\mathrm{cc}(v) = 2 e_v / (\deg(v)(\deg(v)-1))$, wobei $e_v$ die Kanten
 		unter den Nachbarn von $v$ bezeichnet.
-		\item \textbf{Kandidatenfilterung} ($O(n)$): FÃ¼r jeden Query-Knoten $u$
-		werden nur diejenigen Host-Knoten $v$ als Kandidaten zugelassen, fÃ¼r die
+		\item \textbf{Kandidatenfilterung} ($O(n)$): Für jeden Query-Knoten $u$
+		werden nur diejenigen Host-Knoten $v$ als Kandidaten zugelassen, für die
 		$\sigma(v) = \sigma(u)$ gilt. Da die Signaturfunktion eine notwendige
-		Bedingung fÃ¼r Isomorphismus kodiert, werden durch diesen Schritt typischerweise
-		mehr als $90\,\%$ der mÃ¶glichen Abbildungen verworfen.
-		\item \textbf{AdjazenzprÃ¼fung} ($O(|V_N|^2 \cdot |V_S|)$): FÃ¼r jede
-		Kandidaten-Abbildung $\phi: V_N \to V_S$ wird geprÃ¼ft, ob die
+		Bedingung für Isomorphismus kodiert, werden durch diesen Schritt typischerweise
+		mehr als $90\,\%$ der möglichen Abbildungen verworfen.
+		\item \textbf{Adjazenzprüfung} ($O(|V_N|^2 \cdot |V_S|)$): Für jede
+		Kandidaten-Abbildung $\phi: V_N \to V_S$ wird geprüft, ob die
 		Subgrapheigenschaft gilt: $(u_i, u_j) \in E_N \Rightarrow (\phi(u_i), \phi(u_j)) \in E_S$.
-		Diese PrÃ¼fung erfolgt durch Adjazenzmatrix-Lookup in $O(1)$ pro Kante.
+		Diese Prüfung erfolgt durch Adjazenzmatrix-Lookup in $O(1)$ pro Kante.
 	\end{enumerate}
 
 	\begin{figure}[H]
@@ -1578,10 +1578,10 @@
 			\node[font=\scriptsize, darkgray, align=center] at (6.0, -0.6)
 				{Rote Kanten: gefundener Subgraph $G_N \subseteq G_S$};
 		\end{tikzpicture}
-		\caption{Subgraph-Isomorphismus-Beispiel fÃ¼r Treiber-KompatibilitÃ¤tsprÃ¼fung.
-			Der Query-Graph $G_N$ (blau, links) reprÃ¤sentiert die AbhÃ¤ngigkeiten
+		\caption{Subgraph-Isomorphismus-Beispiel für Treiber-Kompatibilitätsprüfung.
+			Der Query-Graph $G_N$ (blau, links) repräsentiert die Abhängigkeiten
 			eines neuen Treibers ($u_1 \to u_2$, $u_2 \to u_3$, $u_1 \to u_3$).
-			Der Host-Graph $G_S$ (grÃ¼n, rechts) ist der aktuelle Treibergraph
+			Der Host-Graph $G_S$ (grün, rechts) ist der aktuelle Treibergraph
 			des Systems. Die gestrichelten Pfeile zeigen die Abbildung $\phi$:
 			$u_1 \mapsto v_1$, $u_2 \mapsto v_5$, $u_3 \mapsto v_6$. Die
 			rot markierten Kanten in $G_S$ bilden den Subgraphen $G_N$ ab.
@@ -1589,56 +1589,56 @@
 		\label{fig:subgraph-ex}
 	\end{figure}
 	
-	\begin{satz}[Subgraph Algorithmus KomplexitÃ¤t]\label{satz:subgraph_comp}
-		Der Subgraph Algorithmus hat GesamtkomplexitÃ¤t $O(n^3)$ im Worst Case
+	\begin{satz}[Subgraph Algorithmus Komplexität]\label{satz:subgraph_comp}
+		Der Subgraph Algorithmus hat Gesamtkomplexität $O(n^3)$ im Worst Case
 		und $O(n^2)$ im Average Case mit Signaturfilterung.
 	\end{satz}
 	
 	\begin{proof}
-		Ohne Filterung entspricht Subgraph-Isomorphismus dem NP-vollstÃ¤ndigen
+		Ohne Filterung entspricht Subgraph-Isomorphismus dem NP-vollständigen
 		Problem \cite{Cook1971}. Der Subgraph Algorithmus nutzt jedoch folgende
 		Struktur: (1) Signaturberechnung in $O(n)$; (2) Kandidatenfilterung
 		reduziert die Kandidatenmenge auf $O(\sqrt{n})$ im Average Case;
-		(3) AdjazenzprÃ¼fung fÃ¼r jeden Kandidaten in $O(n)$. Gesamt: $O(n^2)$
+		(3) Adjazenzprüfung für jeden Kandidaten in $O(n)$. Gesamt: $O(n^2)$
 		im Average Case. Im Worst Case (alle Signaturen gleich) degeneriert
-		dies zu $O(n^3)$ durch vollstÃ¤ndige AdjazenzprÃ¼fung.
+		dies zu $O(n^3)$ durch vollständige Adjazenzprüfung.
 	\end{proof}
 	
 	\section{Boolesche Matrixmultiplikation}
 	
 	\begin{definition}[Boolesche Matrix]
 		Eine \textbf{Boolesche Matrix} $A \in \{0,1\}^{n \times n}$ hat
-		EintrÃ¤ge $a_{ij} \in \{0,1\}$ mit Boolescher Addition
+		Einträge $a_{ij} \in \{0,1\}$ mit Boolescher Addition
 		($0 \oplus 0 = 0$, $0 \oplus 1 = 1 \oplus 0 = 1 \oplus 1 = 1$)
 		und Multiplikation ($0 \otimes 0 = 0 \otimes 1 = 1 \otimes 0 = 0$,
 		$1 \otimes 1 = 1$).
 	\end{definition}
 	
-	\begin{satz}[Transitive HÃ¼lle via BMM]\label{satz:bmm}
-		Die transitive HÃ¼lle $G^+$ eines Graphen $G$ mit Adjazenzmatrix $A$
+	\begin{satz}[Transitive Hülle via BMM]\label{satz:bmm}
+		Die transitive Hülle $G^+$ eines Graphen $G$ mit Adjazenzmatrix $A$
 		kann in $O(n^{2.37})$ berechnet werden \cite{Epp2026boolmm}.
 	\end{satz}
 	
-	Im OS-Kontext dient die transitive HÃ¼lle zur Verifikation von
-	Treiber-AbhÃ¤ngigkeitsgraphen: Falls $G^+_{ij} = 1$, hÃ¤ngt Treiber~$i$
+	Im OS-Kontext dient die transitive Hülle zur Verifikation von
+	Treiber-Abhängigkeitsgraphen: Falls $G^+_{ij} = 1$, hängt Treiber~$i$
 	(transitiv) von Treiber~$j$ ab.
 	
-	\section{Treiber-AbhÃ¤ngigkeitsgraph}
+	\section{Treiber-Abhängigkeitsgraph}
 	
-	\begin{definition}[Treiber-AbhÃ¤ngigkeitsgraph]
-		Der \textbf{Treiber-AbhÃ¤ngigkeitsgraph} $G_D = (V_D, E_D)$ hat als
+	\begin{definition}[Treiber-Abhängigkeitsgraph]
+		Der \textbf{Treiber-Abhängigkeitsgraph} $G_D = (V_D, E_D)$ hat als
 		Knoten die Treiber $V_D = \{d_1, \ldots, d_m\}$ und als Kanten
-		$E_D = \{(d_i, d_j) \mid d_i \text{ benÃ¶tigt } d_j\}$.
+		$E_D = \{(d_i, d_j) \mid d_i \text{ benötigt } d_j\}$.
 	\end{definition}
 	
-	Satz~14.2 beweist formal, dass die Treiber-KompatibilitÃ¤tsprÃ¼fung
+	Satz~14.2 beweist formal, dass die Treiber-Kompatibilitätsprüfung
 	auf Subgraph-Isomor\-phismus in $G_D$ reduzierbar ist und in $O(n^3)$
 	entschieden werden kann.
 	
 	% ==============================================================
-	%  KAPITEL 9 -- SYSTEMZUSTÃ„NDE UND LYAPUNOV-STABILITÃ„T
+	%  KAPITEL 9 -- SYSTEMZUSTÄNDE UND LYAPUNOV-STABILITÄT
 	% ==============================================================
-	\chapter{SystemzustÃ¤nde und Lyapunov-StabilitÃ¤t}
+	\chapter{Systemzustände und Lyapunov-Stabilität}
 	
 	\section{Systemzustands-Klassifikation}
 
@@ -1657,15 +1657,15 @@
 		Analog zu \cite{Epp2026sysstate} klassifizieren wir:
 		\begin{itemize}
 			\item \textbf{KS-I} (Nominal): $\|\mathbf{x}_t\|_\infty < 0{,}7$
-			\item \textbf{KS-II} (ErhÃ¶ht): $0{,}7 \leq \|\mathbf{x}_t\|_\infty < 0{,}85$
+			\item \textbf{KS-II} (Erhöht): $0{,}7 \leq \|\mathbf{x}_t\|_\infty < 0{,}85$
 			\item \textbf{KS-III} (Kritisch): $0{,}85 \leq \|\mathbf{x}_t\|_\infty < 1{,}0$
-			\item \textbf{KS-IV} (Ãœberlast): $\|\mathbf{x}_t\|_\infty = 1{,}0$
+			\item \textbf{KS-IV} (Überlast): $\|\mathbf{x}_t\|_\infty = 1{,}0$
 		\end{itemize}
 	\end{definition}
 
 	Abbildung~\ref{fig:ks-automat} zeigt den Zustandsautomaten der vier
-	Klassen mit den Ãœbergangsbedingungen. Auf BS/EDF$^+$ reagiert das
-	System auf KlassenÃ¼bergÃ¤nge durch adaptives Scheduling: In KS-II wird
+	Klassen mit den Übergangsbedingungen. Auf BS/EDF$^+$ reagiert das
+	System auf Klassenübergänge durch adaptives Scheduling: In KS-II wird
 	die DVFS-Frequenz um $10\,\%$ angehoben; in KS-III um weitere $20\,\%$.
 	In KS-IV wird ein Notfall-Scheduling-Modus aktiviert, der alle
 	Best-Effort-Tasks suspendiert.
@@ -1681,9 +1681,9 @@
 			lbl/.style={font=\scriptsize, align=center, text width=2.4cm}
 		]
 			\node[state] (ks1) at (0, 0)    {\textbf{KS-I}\\Nominal};
-			\node[state] (ks2) at (4, 0)    {\textbf{KS-II}\\ErhÃ¶ht};
+			\node[state] (ks2) at (4, 0)    {\textbf{KS-II}\\Erhöht};
 			\node[crit]  (ks3) at (8, 0)    {\textbf{KS-III}\\Kritisch};
-			\node[crit]  (ks4) at (8, -2.8) {\textbf{KS-IV}\\Ãœberlast};
+			\node[crit]  (ks4) at (8, -2.8) {\textbf{KS-IV}\\Überlast};
 
 			% KS-I -> KS-II
 			\draw[arr, darkgray] (ks1.east) to[bend left=18]
@@ -1717,11 +1717,11 @@
 				{KS-I: Normal, KS-II: +10\,\%\,f, KS-III: +30\,\%\,f, KS-IV: Notfallmodus};
 		\end{tikzpicture}
 		\caption{Zustandsautomat der Systemzustands-Klassen KS-I bis KS-IV.
-			GrÃ¼ne Pfeile symbolisieren Entspannung (abnehmende Auslastung),
+			Grüne Pfeile symbolisieren Entspannung (abnehmende Auslastung),
 			graue und rote Pfeile Eskalation. BS/EDF$^+$ reagiert auf jeden
-			KlassenÃ¼bergang durch Anpassung der DVFS-Frequenz und ggf.\ Aktivierung
+			Klassenübergang durch Anpassung der DVFS-Frequenz und ggf.\ Aktivierung
 			des Notfall-Scheduling-Modus (KS-IV), in dem alle Best-Effort-Tasks
-			suspendiert und nur noch EDF$^+$-Echtzeit-Tasks ausgefÃ¼hrt werden.}
+			suspendiert und nur noch EDF$^+$-Echtzeit-Tasks ausgeführt werden.}
 		\label{fig:ks-automat}
 	\end{figure}
 
@@ -1731,13 +1731,13 @@
 	CPU-Auslastung aus dem Kernel-Scheduler-Statistikpuffer, Speicherauslastung
 	aus dem Buddy-Allokator, I/O-Auslastung aus der Block-Device-Layer-Queue,
 	Netzwerkauslastung aus der Treiber-TX/RX-Statistik. Die Infinity-Norm
-	$\|\mathbf{x}_t\|_\infty$ wird bestimmt und die Zustandsklasse nachgefÃ¼hrt.
-	KlassenÃ¼bergÃ¤nge lÃ¶sen asynchrone Callbacks in der EDF$^+$-Scheduler-Core
+	$\|\mathbf{x}_t\|_\infty$ wird bestimmt und die Zustandsklasse nachgeführt.
+	Klassenübergänge lösen asynchrone Callbacks in der EDF$^+$-Scheduler-Core
 	aus, die die DVFS-Parameter des IoFET-Controllers aktualisieren.
 
 	\section{Dynamisches System und Zustandsmatrix}
 	
-	\begin{definition}[OS-ZustandsÃ¼bergangsmatrix]
+	\begin{definition}[OS-Zustandsübergangsmatrix]
 		Das OS-Systemzustand-Dynamikmodell ist
 		\[
 		\mathbf{x}_{t+1} = A \mathbf{x}_t + B \mathbf{u}_t,
@@ -1748,15 +1748,15 @@
 	\end{definition}
 	
 	\begin{definition}[Lyapunov-Funktion]
-		Eine Funktion $V: \mathbb{R}^n \to \mathbb{R}_{\geq 0}$ heiÃŸt
-		\textbf{Lyapunov-Funktion} fÃ¼r $\mathbf{x}_{t+1} = A\mathbf{x}_t$, falls:
+		Eine Funktion $V: \mathbb{R}^n \to \mathbb{R}_{\geq 0}$ heißt
+		\textbf{Lyapunov-Funktion} für $\mathbf{x}_{t+1} = A\mathbf{x}_t$, falls:
 		\begin{enumerate}
-			\item $V(\mathbf{0}) = 0$ und $V(\mathbf{x}) > 0$ fÃ¼r $\mathbf{x} \neq \mathbf{0}$,
-			\item $V(A\mathbf{x}) < V(\mathbf{x})$ fÃ¼r alle $\mathbf{x} \neq \mathbf{0}$.
+			\item $V(\mathbf{0}) = 0$ und $V(\mathbf{x}) > 0$ für $\mathbf{x} \neq \mathbf{0}$,
+			\item $V(A\mathbf{x}) < V(\mathbf{x})$ für alle $\mathbf{x} \neq \mathbf{0}$.
 		\end{enumerate}
 	\end{definition}
 	
-	\begin{satz}[StabilitÃ¤t durch Lyapunov]\label{satz:lyap_prelim}
+	\begin{satz}[Stabilität durch Lyapunov]\label{satz:lyap_prelim}
 		Das System $\mathbf{x}_{t+1} = A\mathbf{x}_t$ ist asymptotisch stabil
 		genau dann, wenn der Spektralradius
 		$\rho(A) = \max_i |\lambda_i(A)| < 1$.
@@ -1764,9 +1764,9 @@
 	
 	\begin{proof}
 		Die Jordanzerlegung $A = P J P^{-1}$ liefert $A^t = P J^t P^{-1}$.
-		Falls $\rho(A) < 1$, gilt $\|J^t\| \to 0$ fÃ¼r $t \to \infty$.
+		Falls $\rho(A) < 1$, gilt $\|J^t\| \to 0$ für $t \to \infty$.
 		Daher $A^t \to 0$, also $\mathbf{x}_t \to \mathbf{0}$.
-		Umgekehrt: falls ein $|\lambda_i| \geq 1$, wÃ¤chst der entsprechende
+		Umgekehrt: falls ein $|\lambda_i| \geq 1$, wächst der entsprechende
 		Eigenvektor-Anteil nicht gegen Null.
 	\end{proof}
 	
@@ -1792,13 +1792,13 @@
 	\begin{definition}[Inode-Graph]
 		Der \textbf{Inode-Graph} $G_{\mathrm{FS}} = (V_{\mathrm{FS}}, E_{\mathrm{FS}})$
 		hat als Knoten die Inodes (Dateien, Verzeichnisse) und als Kanten
-		die Verzeichnis-EintrÃ¤ge.
+		die Verzeichnis-Einträge.
 	\end{definition}
 
 	Abbildung~\ref{fig:inode-graph} zeigt einen beispielhaften Inode-Graphen
 	mit drei Verzeichnissen und vier Dateien, von denen zwei identische
 	Inhalte besitzen (Inodes~$F_3$ und $F_4$). Das Deduplizierungssystem
-	erkennt diese Gleichheit Ã¼ber SHA3-256-Hashing und ersetzt eine der
+	erkennt diese Gleichheit über SHA3-256-Hashing und ersetzt eine der
 	Kopien durch einen Hard-Link.
 
 	\begin{figure}[H]
@@ -1851,27 +1851,27 @@
 			$F_4$ (\texttt{/tmp/cache.dat}) haben identische SHA3-256-Hashes
 			(rot markiert). Der Deduplizierungsalgorithmus ersetzt $F_4$ durch
 			einen Hard-Link auf $F_3$ (roter gestrichelter Pfeil), sodass beide
-			VerzeichniseintrÃ¤ge auf denselben Inode zeigen. Im Inode-Graphen
+			Verzeichniseinträge auf denselben Inode zeigen. Im Inode-Graphen
 			entsteht damit eine Kante von \texttt{/tmp} direkt zu $F_3$.}
 		\label{fig:inode-graph}
 	\end{figure}
 
 	Das Deduplizierungssystem \cite{Epp2026dusgraph} identifiziert
 	isomorphe Teilgraphen im $G_{\mathrm{FS}}$. Der Subgraph Algorithmus
-	\cite{Epp2026subgraph} liefert das algorithmische RÃ¼ckgrat.
+	\cite{Epp2026subgraph} liefert das algorithmische Rückgrat.
 
 	\paragraph{Deduplizierungs-Algorithmus.}
-	Algorithmus~\ref{alg:dedup} fÃ¼hrt die Dateisystem-Deduplizierung durch.
-	In Phase~1 (Zeilen~2--4) werden fÃ¼r alle Inodes SHA3-256-Hashes berechnet.
+	Algorithmus~\ref{alg:dedup} führt die Dateisystem-Deduplizierung durch.
+	In Phase~1 (Zeilen~2--4) werden für alle Inodes SHA3-256-Hashes berechnet.
 	SHA3-256 ist kollisionsresistent mit einer Kollisionswahrscheinlichkeit
-	von $2^{-128}$ und daher fÃ¼r praktische Zwecke als injektiv anzusehen.
+	von $2^{-128}$ und daher für praktische Zwecke als injektiv anzusehen.
 	In Phase~2 (Zeilen~5--10) werden Inodes nach gleichem Hash gruppiert.
-	Jede Gruppe mit mehr als einem Element enthÃ¤lt duplizierten Inhalt.
-	FÃ¼r jede solche Gruppe wird ein ReprÃ¤sentant~$v_{\mathrm{repr}}$ gewÃ¤hlt
-	(derjenige Inode mit dem Ã¤ltesten Erstellungszeitpunkt), und alle anderen
+	Jede Gruppe mit mehr als einem Element enthält duplizierten Inhalt.
+	Für jede solche Gruppe wird ein Repräsentant~$v_{\mathrm{repr}}$ gewählt
+	(derjenige Inode mit dem ältesten Erstellungszeitpunkt), und alle anderen
 	Inodes der Gruppe werden durch Hard-Links auf~$v_{\mathrm{repr}}$ ersetzt.
 	Hard-Links sind OS-seitig $O(1)$: der Verzeichniseintrag wird einfach
-	auf die Inode-Nummer von~$v_{\mathrm{repr}}$ geÃ¤ndert.
+	auf die Inode-Nummer von~$v_{\mathrm{repr}}$ geändert.
 
 	\begin{algorithm}[H]
 		\caption{Dateisystem-Deduplizierung}
@@ -1894,35 +1894,35 @@
 	
 	\section{Mobile-OS-Dateiarchitektur}
 	
-	FÃ¼r mobile GerÃ¤te nutzt BS/EDF$^+$ eine partitionierte Dateisystem-Architektur
+	Für mobile Geräte nutzt BS/EDF$^+$ eine partitionierte Dateisystem-Architektur
 	\cite{Epp2026mobde}:
 	\begin{itemize}
-		\item \textbf{/system}: Read-Only, A/B-OTA-Update-fÃ¤hig.
-		\item \textbf{/data}: VerschlÃ¼sselt (AES-256-XTS), benutzerspezifisch.
-		\item \textbf{/cache}: TemporÃ¤r, automatisch bereinigt durch
-		$T_{\mathrm{cache\_evict}}$ (EDF$^+$-Task, nie\-drige PrioritÃ¤t).
+		\item \textbf{/system}: Read-Only, A/B-OTA-Update-fähig.
+		\item \textbf{/data}: Verschlüsselt (AES-256-XTS), benutzerspezifisch.
+		\item \textbf{/cache}: Temporär, automatisch bereinigt durch
+		$T_{\mathrm{cache\_evict}}$ (EDF$^+$-Task, nie\-drige Priorität).
 	\end{itemize}
 	
 	% ==============================================================
-	%  KAPITEL 11 -- GERÃ„TETREIBER-ARCHITEKTUR
+	%  KAPITEL 11 -- GERÄTETREIBER-ARCHITEKTUR
 	% ==============================================================
-	\chapter{GerÃ¤tetreiber-Architektur}
+	\chapter{Gerätetreiber-Architektur}
 	
 	\section{AUTOSAR-Treiber-Framework}
 
 	AUTOSAR \cite{AUTOSAR2023} definiert eine mehrschichtige Softwarearchitektur:
 	\begin{itemize}
 		\item \textbf{MCAL}: Direkter Hardware-Zugriff (SPI, CAN, LIN, ETH, PWM).
-		\item \textbf{ECU-AL}: HAL Ã¼ber MCAL.
+		\item \textbf{ECU-AL}: HAL über MCAL.
 		\item \textbf{Services Layer}: OS, Memory, Communication.
 		\item \textbf{RTE}: Verbindet SWCs.
 		\item \textbf{SWC}: Anwendungslogik.
 	\end{itemize}
 
 	Abbildung~\ref{fig:autosar-layers} zeigt den AUTOSAR-Schichtenaufbau und
-	seine Integration in BS/EDF$^+$. Jede Schicht kommuniziert Ã¼ber klar
-	definierte Interfaces mit den angrenzenden Schichten; direkte Schicht-SprÃ¼nge
-	sind unzulÃ¤ssig.
+	seine Integration in BS/EDF$^+$. Jede Schicht kommuniziert über klar
+	definierte Interfaces mit den angrenzenden Schichten; direkte Schicht-Sprünge
+	sind unzulässig.
 
 	\begin{figure}[H]
 		\centering
@@ -1955,36 +1955,36 @@
 		\end{tikzpicture}
 		\caption{AUTOSAR-Schichtenarchitektur und BS/EDF$^+$-Integration.
 			Die Anwendungssoftware-Komponenten (SWC, oberste Schicht) kommunizieren
-			nur Ã¼ber die Laufzeitumgebung (RTE) mit der restlichen Architektur.
+			nur über die Laufzeitumgebung (RTE) mit der restlichen Architektur.
 			Der BS/EDF$^+$-Kernel ist im Services Layer eingebettet (rot markiert)
-			und steuert alle Tasks Ã¼ber EDF$^+$. Die MCAL-Schicht kapselt den
-			direkten Hardware-Zugriff; Treiber-AbhÃ¤ngigkeiten werden via
-			Subgraph Algorithmus (Kapitel~8) auf KompatibilitÃ¤t geprÃ¼ft, bevor
+			und steuert alle Tasks über EDF$^+$. Die MCAL-Schicht kapselt den
+			direkten Hardware-Zugriff; Treiber-Abhängigkeiten werden via
+			Subgraph Algorithmus (Kapitel~8) auf Kompatibilität geprüft, bevor
 			ein MCAL-Modul geladen wird.}
 		\label{fig:autosar-layers}
 	\end{figure}
 
 	\begin{definition}[ECU-Zustandsmaschine]
-		Die \textbf{ECU-Zustandsmaschine} hat ZustÃ¤nde
+		Die \textbf{ECU-Zustandsmaschine} hat Zustände
 		$Q = \{Q_{\mathrm{init}}, Q_{\mathrm{run}}, Q_{\mathrm{sleep}},
-		Q_{\mathrm{fault}}, Q_{\mathrm{shutdown}}\}$ und Ãœbergangsfunktion
+		Q_{\mathrm{fault}}, Q_{\mathrm{shutdown}}\}$ und Übergangsfunktion
 		$\delta: Q \times \Sigma \to Q$.
 	\end{definition}
 
 	BS/EDF$^+$ implementiert AUTOSAR-OTA-Updates \cite{Epp2026autsre}
 	als EDF$^+$-Task $T_{\mathrm{OTA}}$ mit Deadline $D_{\mathrm{OTA}}$
-	nach ISO~26262 ASIL. Der OTA-Update-Prozess verlÃ¤uft wie folgt:
-	ZunÃ¤chst wird das Update-Image Ã¼ber das Netzwerk (EtherCAT oder ETH)
+	nach ISO~26262 ASIL. Der OTA-Update-Prozess verläuft wie folgt:
+	Zunächst wird das Update-Image über das Netzwerk (EtherCAT oder ETH)
 	empfangen und in einer Schattierpartition (\emph{B-Slot}) gespeichert.
-	Dann prÃ¼ft ein IntegritÃ¤ts-Task $T_{\mathrm{verify}}$ die Signatur
-	des Images mit CRYSTALS-Dilithium-3. Besteht die PrÃ¼fung, wird der
-	Bootmanager angewiesen, beim nÃ¤chsten Start aus dem B-Slot zu booten.
-	SchlÃ¤gt die Verifikation fehl, verbleibt das System im A-Slot (aktuelle
+	Dann prüft ein Integritäts-Task $T_{\mathrm{verify}}$ die Signatur
+	des Images mit CRYSTALS-Dilithium-3. Besteht die Prüfung, wird der
+	Bootmanager angewiesen, beim nächsten Start aus dem B-Slot zu booten.
+	Schlägt die Verifikation fehl, verbleibt das System im A-Slot (aktuelle
 	Produktionsversion) und eine Fehlermeldung wird protokolliert.
 
 	\section{EtherCAT-Integration}
 
-	EtherCAT \cite{IEC61158,Epp2026ethercate} ist echtzeitfÃ¤higes
+	EtherCAT \cite{IEC61158,Epp2026ethercate} ist echtzeitfähiges
 	Ethernet mit $\leq 100\,\mu\text{s}$ Zykluszeit.
 
 	\begin{definition}[EtherCAT-Telegramm]
@@ -1996,14 +1996,14 @@
 	Im EHAE-Framework \cite{Epp2026ethercate} wird jedes eingehende EtherCAT-Telegramm
 	als EDF$^+$-Task mit harter Deadline $D_{\mathrm{EC}} = T_{\mathrm{Zyklus}}$
 	registriert. Der Verarbeitungsalgorithmus arbeitet wie folgt: Beim Eingang
-	eines Ethernet-Frames prÃ¼ft der NIC-Interrupt-Handler zunÃ¤chst den
-	EtherType-Wert (\texttt{0x88A4} fÃ¼r EtherCAT). Wenn erkannt, wird ein
+	eines Ethernet-Frames prüft der NIC-Interrupt-Handler zunächst den
+	EtherType-Wert (\texttt{0x88A4} für EtherCAT). Wenn erkannt, wird ein
 	neuer EDF$^+$-Task $T_{\mathrm{EC}}$ erstellt mit Deadline
-	$D = t_{\mathrm{now}} + T_{\mathrm{Zyklus}}$. Dieser Task durchlÃ¤uft das
+	$D = t_{\mathrm{now}} + T_{\mathrm{Zyklus}}$. Dieser Task durchläuft das
 	Telegramm sequenziell: Jeder EtherCAT-Slave liest seinen Datenbereich,
 	schreibt seine Prozessdaten, inkrementiert den Working Counter und leitet
 	das Telegramm weiter. Nach dem letzten Slave wird das Telegramm an den
-	Master zurÃ¼ckgesendet. Der Master-Task prÃ¼ft, ob $\mathrm{WKC}$ dem
+	Master zurückgesendet. Der Master-Task prüft, ob $\mathrm{WKC}$ dem
 	erwarteten Wert entspricht (Anzahl aktiver Slaves); Abweichungen signalisieren
 	einen ausgefallenen Slave.
 	
@@ -2041,9 +2041,9 @@ class Driver:
 
 	Die IoFET-Sigmoid-Kurve beschreibt, wie die Betriebsspannung mit
 	steigender Frequenz sanft und monoton ansteigt. Abbildung~\ref{fig:dvfs-sigmoid}
-	zeigt die Kurve fÃ¼r typische Parameterwerte ($V_{\min} = 0.7\,\text{V}$,
+	zeigt die Kurve für typische Parameterwerte ($V_{\min} = 0.7\,\text{V}$,
 	$V_{\max} = 1.3\,\text{V}$, $f_{1/2} = 3\,\text{GHz}$, $\Delta f = 1\,\text{GHz}$).
-	Im Betrieb schlÃ¤gt der IoFET-DVFS-Controller nach jedem EDF$^+$-Scheduling-Zyklus
+	Im Betrieb schlägt der IoFET-DVFS-Controller nach jedem EDF$^+$-Scheduling-Zyklus
 	die optimale Betriebsspannung nach, indem er die aktuelle Taktfrequenz $f(t)$
 	in die Sigmoid-Formel einsetzt und das Ergebnis in das MSR~\texttt{IA32\_PERF\_CTL}
 	schreibt.
@@ -2083,31 +2083,31 @@ class Driver:
 			\end{axis}
 		\end{tikzpicture}
 		\caption{IoFET-Sigmoid-DVFS-Kurve (blau) im Vergleich zu einem linearen
-			DVFS-Referenzmodell (gestrichelt). Die Sigmoid-Kurve hÃ¤lt die
+			DVFS-Referenzmodell (gestrichelt). Die Sigmoid-Kurve hält die
 			Betriebsspannung bei niedrigen Frequenzen nahe $V_{\min} = 0.7\,\text{V}$
 			und steigt erst ab dem Wendepunkt $f_{1/2} = 3\,\text{GHz}$ steil an.
-			GegenÃ¼ber dem linearen Modell spart die Sigmoid-Kurve im Niedriglast-Bereich
+			Gegenüber dem linearen Modell spart die Sigmoid-Kurve im Niedriglast-Bereich
 			($f < 2\,\text{GHz}$) bis zu $18\,\%$ Verlustleistung (blau schraffierter
-			Bereich). Korollar~\ref{kor:dvfs_opt} beweist die EnergieoptimalitÃ¤t dieses
+			Bereich). Korollar~\ref{kor:dvfs_opt} beweist die Energieoptimalität dieses
 			Steuergesetzes.}
 		\label{fig:dvfs-sigmoid}
 	\end{figure}
 
-	\begin{satz}[DVFS-KonvexitÃ¤t]\label{satz:dvfs_convex}
+	\begin{satz}[DVFS-Konvexität]\label{satz:dvfs_convex}
 		Die Energiefunktion $E(f) = \alpha C_L V^*(f)^2$ ist konvex in $f$
-		fÃ¼r das IoFET-Steuergesetz.
+		für das IoFET-Steuergesetz.
 	\end{satz}
 
 	\begin{proof}
 		$V^*(f)$ ist eine glatte, streng monoton wachsende Funktion von $f$
-		(Sigmoid ist konvex fÃ¼r $f > f_{1/2}$). Das Quadrat einer konvexen
+		(Sigmoid ist konvex für $f > f_{1/2}$). Das Quadrat einer konvexen
 		nicht-negativen Funktion ist wieder konvex. Also ist $E(f)$ konvex,
 		und das eindeutige Minimum wird durch $dE/df = 0$ bestimmt.
 	\end{proof}
 
 	\section{Li-Ionen-Akkumodell}
 
-	\begin{definition}[Ã„quivalentkreis-Modell]
+	\begin{definition}[Äquivalentkreis-Modell]
 		Die Klemmenspannung des Thevenin-Ersatz\-schaltbilds \cite{Epp2026liionp}:
 		\[
 		V(t) = V_{\mathrm{OCV}}(\mathrm{SoC}) - I(t) R_0 - V_{R_1 C_1}(t) - V_{R_2 C_2}(t).
@@ -2115,9 +2115,9 @@ class Driver:
 	\end{definition}
 
 	Abbildung~\ref{fig:liion-circuit} zeigt das Thevenin-Ersatzschaltbild
-	des Li-Ionen-Akku-Modells. Die offene Klemmspannung $V_{\mathrm{OCV}}$ hÃ¤ngt
+	des Li-Ionen-Akku-Modells. Die offene Klemmspannung $V_{\mathrm{OCV}}$ hängt
 	nichtlinear vom Ladezustand (State of Charge, SoC) ab und wird in BS/EDF$^+$
-	durch eine Lookup-Table mit 256 StÃ¼tzpunkten approximiert.
+	durch eine Lookup-Table mit 256 Stützpunkten approximiert.
 
 	\begin{figure}[H]
 		\centering
@@ -2185,12 +2185,12 @@ class Driver:
 		\end{tikzpicture}
 		\caption{Thevenin-Ersatzschaltbild des Li-Ionen-Akku-Modells. Die
 			Spannungsquelle~$V_{\mathrm{OCV}}$ modelliert die leerlaufspannungs-
-			abhÃ¤ngige Zellspannung in AbhÃ¤ngigkeit vom SoC. Der Innenwiderstand~$R_0$
-			reprÃ¤sentiert den ohmschen Widerstand des Elektrolyten und der Elektroden.
+			abhängige Zellspannung in Abhängigkeit vom SoC. Der Innenwiderstand~$R_0$
+			repräsentiert den ohmschen Widerstand des Elektrolyten und der Elektroden.
 			Die $RC$-Glieder $R_1C_1$ und $R_2C_2$ modellieren den elektrochemischen
 			Doppelschicht-Effekt (langsame Diffusionsdynamik). BS/EDF$^+$ berechnet
-			aus diesem Modell prÃ¤diktiv den SoC und passt die DVFS-Parameter proaktiv
-			an, um unnÃ¶tige Tiefentladungen zu vermeiden.}
+			aus diesem Modell prädiktiv den SoC und passt die DVFS-Parameter proaktiv
+			an, um unnötige Tiefentladungen zu vermeiden.}
 		\label{fig:liion-circuit}
 	\end{figure}
 
@@ -2198,12 +2198,12 @@ class Driver:
 	\[
 	\frac{d\,\mathrm{SoC}}{dt} = -\frac{I(t)}{Q_{\mathrm{nom}}}.
 	\]
-	Das KI-gestÃ¼tzte PMM \cite{Epp2026liionp} prÃ¤diziert $\mathrm{SoC}(t + \Delta t)$
+	Das KI-gestützte PMM \cite{Epp2026liionp} prädiziert $\mathrm{SoC}(t + \Delta t)$
 	und passt DVFS-Parameter proaktiv an.
 	
-	\section{Kontinuierliche P-ZustÃ¤nde}
+	\section{Kontinuierliche P-Zustände}
 	
-	BS/EDF$^+$ implementiert kontinuierliche P-ZustÃ¤nde Ã¼ber MSR \texttt{IA32\_PERF\_CTL}:
+	BS/EDF$^+$ implementiert kontinuierliche P-Zustände über MSR \texttt{IA32\_PERF\_CTL}:
 	\[
 	f(t) = f_{\min} + (f_{\max} - f_{\min}) \cdot \frac{U_{\mathrm{EDF}^+}(t)}{U_{\max}}.
 	\]
@@ -2225,7 +2225,7 @@ class Driver:
 	Abbildung~\ref{fig:lattice-lwe} zeigt ein zweidimensionales Gitter mit
 	Basispunkten und verrauschten LWE-Samples. Das Grundprinzip von LWE
 	besteht darin, dass die Samples $(\mathbf{a}_i, b_i)$ auf den ersten
-	Blick wie zufÃ¤llig aussehen -- selbst fÃ¼r einen Angreifer, der den
+	Blick wie zufällig aussehen -- selbst für einen Angreifer, der den
 	Algorithmus kennt, ist es rechnerisch schwer, den geheimen Vektor
 	$\mathbf{s}$ aus polynomiell vielen Samples $(\mathbf{a}_i, b_i)$ zu
 	rekonstruieren.
@@ -2273,10 +2273,10 @@ class Driver:
 		\caption{Zwei\-dimensionales Gitter $\mathcal{L}$ (blaue Punkte) mit
 			LWE-Samples (rote Kreuze). Die roten Samples liegen nahe, aber nicht
 			exakt auf Gitterpunkten -- der Fehlerterm~$e_i$ verursacht eine
-			kleine Verschiebung. Der geheime Vektor~$\mathbf{s}$ (grÃ¼ner Pfeil)
+			kleine Verschiebung. Der geheime Vektor~$\mathbf{s}$ (grüner Pfeil)
 			ist der gesuchte Parameter, den ein Angreifer aus den Samples ermitteln
-			mÃ¼sste. In hohen Dimensionen ($n \geq 1024$) ist dies rechnerisch
-			unlÃ¶sbar (SIVP-HÃ¤rte nach Regev~\cite{Regev2009}).}
+			müsste. In hohen Dimensionen ($n \geq 1024$) ist dies rechnerisch
+			unlösbar (SIVP-Härte nach Regev~\cite{Regev2009}).}
 		\label{fig:lattice-lwe}
 	\end{figure}
 
@@ -2287,34 +2287,34 @@ class Driver:
 		-- finde $\mathbf{s} \in \mathbb{Z}_q^n$.
 	\end{definition}
 
-	\paragraph{LWE-VerschlÃ¼sselungs-Algorithmus.}
-	Das LWE-basierte VerschlÃ¼sselungsschema fÃ¼r physikalische Speicheradressen
+	\paragraph{LWE-Verschlüsselungs-Algorithmus.}
+	Das LWE-basierte Verschlüsselungsschema für physikalische Speicheradressen
 	(Satz~\ref{satz:pqc_mem}) arbeitet in drei Phasen:
 	\begin{enumerate}
-		\item \textbf{SchlÃ¼sselgenerierung:} WÃ¤hle zufÃ¤llig
-		$\mathbf{s} \gets \mathbb{Z}_q^n$ (geheimer SchlÃ¼ssel) und
-		generiere eine $m \times n$-Matrix $A$ gleichverteilt Ã¼ber $\mathbb{Z}_q^n$.
+		\item \textbf{Schlüsselgenerierung:} Wähle zufällig
+		$\mathbf{s} \gets \mathbb{Z}_q^n$ (geheimer Schlüssel) und
+		generiere eine $m \times n$-Matrix $A$ gleichverteilt über $\mathbb{Z}_q^n$.
 		Berechne $\mathbf{b} = A\mathbf{s} + \mathbf{e} \pmod{q}$ mit kleinem
 		Fehlervektor $\mathbf{e} \in \{-\lfloor q/8 \rfloor, \ldots, \lfloor q/8 \rfloor\}^m$.
-		Der Ã¶ffentliche SchlÃ¼ssel ist $(A, \mathbf{b})$.
-		\item \textbf{VerschlÃ¼sselung einer Adresse $a$:} WÃ¤hle zufÃ¤llig
+		Der öffentliche Schlüssel ist $(A, \mathbf{b})$.
+		\item \textbf{Verschlüsselung einer Adresse $a$:} Wähle zufällig
 		$\mathbf{r} \in \{0,1\}^m$. Berechne:
 		$\mathbf{c}_1 = A^T \mathbf{r} \pmod{q}$ und
 		$c_2 = \mathbf{b}^T \mathbf{r} + \lfloor q/2 \rfloor \cdot a_{\text{bit}} \pmod{q}$.
 		Das Chiffrat ist $(\mathbf{c}_1, c_2)$.
-		\item \textbf{EntschlÃ¼sselung:} Berechne
+		\item \textbf{Entschlüsselung:} Berechne
 		$\hat{a} = c_2 - \mathbf{s}^T \mathbf{c}_1 \pmod{q}$.
-		Falls $\hat{a}$ nÃ¤her an $\lfloor q/2 \rfloor$ liegt als an~$0$,
+		Falls $\hat{a}$ näher an $\lfloor q/2 \rfloor$ liegt als an~$0$,
 		ist das Bit~$1$, sonst~$0$.
 	\end{enumerate}
 	Die Korrektheit folgt aus der Fehler-Kompensation: der Fehlerterm
-	$\mathbf{e}^T \mathbf{r}$ bleibt klein und stÃ¶rt die EntschlÃ¼sselung nicht.
+	$\mathbf{e}^T \mathbf{r}$ bleibt klein und stört die Entschlüsselung nicht.
 
 	\section{CRYSTALS-Kyber und Dilithium}
 	
 	CRYSTALS-Kyber \cite{Bos2018} ist ein IND-CCA2-sicheres KEM auf Module-LWE.
 	CRYSTALS-Dilithium \cite{Ducas2018} ist ein Signaturverfahren auf Modul-LWE.
-	Beide sind NIST-PQC-Standards (2024) und werden in BS/EDF$^+$ eingesetzt fÃ¼r:
+	Beide sind NIST-PQC-Standards (2024) und werden in BS/EDF$^+$ eingesetzt für:
 	\begin{itemize}
 		\item \textbf{Secure Boot:} Kernel-Signierung mit Dilithium-3.
 		\item \textbf{TLS 1.3:} Kyber-768 als Key-Exchange.
@@ -2325,7 +2325,7 @@ class Driver:
 	
 	\begin{definition}[Quantenangreifer]
 		Ein \textbf{Quantenangreifer} $\mathcal{A}_Q$ kann Shors Algorithmus
-		\cite{Shor1994} ausfÃ¼hren: RSA/ECC bricht in $O(n^3)$ Quantenoperationen.
+		\cite{Shor1994} ausführen: RSA/ECC bricht in $O(n^3)$ Quantenoperationen.
 	\end{definition}
 	
 	LWE mit Dimension $n \geq 1024$ liefert $128$-Bit Post-Quanten-Sicherheit.
@@ -2341,14 +2341,14 @@ class Driver:
 	\begin{satz}[OS-Init als EDF$^+$-Task-System]\label{satz:os_init}
 		Jede Hardware-Initialisierungssequenz eines Computersystems kann als
 		schedulierbares EDF$^+$-Task-System $\Sigma_{\mathrm{boot}}$ modelliert werden,
-		fÃ¼r das EDF$^+$ die optimale Boot-Reihenfolge bestimmt.
+		für das EDF$^+$ die optimale Boot-Reihenfolge bestimmt.
 	\end{satz}
 	
 	\begin{proof}
-		\textbf{Konstruktion:} Definiere fÃ¼r jede Hardware-Komponente $h_i$
+		\textbf{Konstruktion:} Definiere für jede Hardware-Komponente $h_i$
 		einen Task $T_i = (C_i, D_i, P_i)$, wobei $C_i$ die Initialisierungszeit,
-		$D_i$ die Deadline (durch KomponentenabhÃ¤ngigkeiten bestimmt) und
-		$P_i = D_i$ (einmalige AusfÃ¼hrung).
+		$D_i$ die Deadline (durch Komponentenabhängigkeiten bestimmt) und
+		$P_i = D_i$ (einmalige Ausführung).
 		
 		\textbf{Schedulierbarkeit:} Da jede Komponente einmal initialisiert
 		wird und $C_i \leq D_i$ per Hardware-Spezifikation gilt:
@@ -2356,12 +2356,12 @@ class Driver:
 		U_{\mathrm{boot}} = \sum_{i=1}^{n} \frac{C_i}{D_i} \leq 1.
 		\]
 		
-		\textbf{OptimalitÃ¤t:} Nach Satz~\ref{satz:edfopt} ist EDF$^+$ optimal.
-		Hardware-AbhÃ¤ngigkeiten $h_i \to h_j$ werden als $D_i < D_j$ kodiert,
+		\textbf{Optimalität:} Nach Satz~\ref{satz:edfopt} ist EDF$^+$ optimal.
+		Hardware-Abhängigkeiten $h_i \to h_j$ werden als $D_i < D_j$ kodiert,
 		wodurch EDF$^+$ automatisch die korrekte Reihenfolge erzwingt.
 		
 		\textbf{Blocking-Behandlung:} Falls $h_i$ blockiert (Timeout), setzt
-		EDF$^+$ $D_i^{\mathrm{eff}} = +\infty$ und initialisiert unabhÃ¤ngige
+		EDF$^+$ $D_i^{\mathrm{eff}} = +\infty$ und initialisiert unabhängige
 		Komponenten zuerst. Das System bleibt schedulierbar.
 	\end{proof}
 	
@@ -2371,49 +2371,49 @@ class Driver:
 	\end{korollar}
 	
 	\begin{proof}
-		Partitionierung von $\Sigma_{\mathrm{boot}}$ in $k$ unabhÃ¤ngige
-		Teilmengen und parallele EDF$^+$-AusfÃ¼hrung ergibt lineare Skalierung.
-		Der kritische Pfad (abhÃ¤ngige Tasks) bleibt $O(t_{\max})$.
+		Partitionierung von $\Sigma_{\mathrm{boot}}$ in $k$ unabhängige
+		Teilmengen und parallele EDF$^+$-Ausführung ergibt lineare Skalierung.
+		Der kritische Pfad (abhängige Tasks) bleibt $O(t_{\max})$.
 	\end{proof}
 	
-	\section{Satz 2: Subgraph-basierte Treiber-KompatibilitÃ¤t}
+	\section{Satz 2: Subgraph-basierte Treiber-Kompatibilität}
 	
-	\begin{satz}[Treiber-KompatibilitÃ¤t via Subgraph]\label{satz:drv_compat}
+	\begin{satz}[Treiber-Kompatibilität via Subgraph]\label{satz:drv_compat}
 		Sei $G_S = (V_S, E_S)$ der Systemgraph der geladenen Treiber und
-		$G_N = (V_N, E_N)$ der AbhÃ¤ngigkeitsgraph eines neuen Treibers.
+		$G_N = (V_N, E_N)$ der Abhängigkeitsgraph eines neuen Treibers.
 		Der neue Treiber ist kompatibel genau dann, wenn $G_N \subseteq G_S$.
-		Diese PrÃ¼fung ist in $O(|V_S|^3)$ entscheidbar.
+		Diese Prüfung ist in $O(|V_S|^3)$ entscheidbar.
 	\end{satz}
 	
 	\begin{proof}
-		\textbf{Korrektheit der Modellierung:} KompatibilitÃ¤t erfordert
+		\textbf{Korrektheit der Modellierung:} Kompatibilität erfordert
 		$V_N \subseteq V_S$ und eine injektive Abbildung
 		$\phi: V_N \to V_S$ mit $\phi(E_N) \subseteq E_S$ --
 		genau Subgraph-Isomorphismus.
 		
-		\textbf{KomplexitÃ¤t:}
+		\textbf{Komplexität:}
 		\begin{enumerate}
-			\item Signaturberechnung (Definition~\ref{def:sig}) fÃ¼r alle $v \in V_S$: $O(|V_S|)$.
+			\item Signaturberechnung (Definition~\ref{def:sig}) für alle $v \in V_S$: $O(|V_S|)$.
 			\item Kandidatenfilterung: nur $v$ mit $\sigma(v) = \sigma(u)$
-			werden fÃ¼r $u \in V_N$ geprÃ¼ft.
-			\item AdjazenzprÃ¼fung fÃ¼r Kandidatenpaare: $O(|V_N|^2 \cdot |V_S|) = O(n^3)$.
+			werden für $u \in V_N$ geprüft.
+			\item Adjazenzprüfung für Kandidatenpaare: $O(|V_N|^2 \cdot |V_S|) = O(n^3)$.
 		\end{enumerate}
 		
 		\textbf{Korrektheit:} Die Signaturfunktion ist notwendige Bedingung
-		fÃ¼r Isomorphismus; die AdjazenzprÃ¼fung ist hinreichend.
+		für Isomorphismus; die Adjazenzprüfung ist hinreichend.
 	\end{proof}
 	
 	\begin{bemerkung}
-		FÃ¼r $n \leq 200$ Treiber lÃ¤uft die PrÃ¼fung in Millisekunden.
-		Der $O(n^2)$-Average-Case ermÃ¶glicht Echtzeit-PrÃ¼fung bei
+		Für $n \leq 200$ Treiber läuft die Prüfung in Millisekunden.
+		Der $O(n^2)$-Average-Case ermöglicht Echtzeit-Prüfung bei
 		dynamisch geladenen Kernel-Modulen.
 	\end{bemerkung}
 	
 	\section{Satz 3: Stochastische Bootzeit-Schranke}
 	
 	\begin{satz}[Stochastische Bootzeit-Schranke]\label{satz:boottime}
-		Seien $C_1, \ldots, C_n$ unabhÃ¤ngige Zufallsvariablen mit
-		$C_i \in [a_i, b_i]$. FÃ¼r die Gesamtbootzeit
+		Seien $C_1, \ldots, C_n$ unabhängige Zufallsvariablen mit
+		$C_i \in [a_i, b_i]$. Für die Gesamtbootzeit
 		$T_{\mathrm{boot}} = \sum_{i=1}^n C_i$ gilt:
 		\[
 		\Prob\!\left(T_{\mathrm{boot}} - \E[T_{\mathrm{boot}}] \geq \varepsilon\right)
@@ -2423,7 +2423,7 @@ class Driver:
 	
 	\begin{proof}
 		Direkte Anwendung der Hoeffding-Ungleichung \cite{Hoeffding1963}:
-		FÃ¼r unabhÃ¤ngige beschrÃ¤nkte Zufallsvariablen $X_i \in [a_i, b_i]$ gilt
+		Für unabhängige beschränkte Zufallsvariablen $X_i \in [a_i, b_i]$ gilt
 		\[
 		\Prob\!\left(\sum_i X_i - \sum_i \E[X_i] \geq t\right)
 		\leq \exp\!\left(-\frac{2t^2}{\sum_i (b_i-a_i)^2}\right).
@@ -2432,7 +2432,7 @@ class Driver:
 	\end{proof}
 	
 	\begin{beispiel}
-		FÃ¼r $n = 20$ Komponenten mit $b_i - a_i = 10\,\text{ms}$ und
+		Für $n = 20$ Komponenten mit $b_i - a_i = 10\,\text{ms}$ und
 		$\E[T_{\mathrm{boot}}] = 3\,\text{s}$:
 		\[
 		\Prob(T_{\mathrm{boot}} > 3{,}1\,\text{s})
@@ -2442,9 +2442,9 @@ class Driver:
 		Mit mehr als $99{,}99\,\%$ Wahrscheinlichkeit dauert der Boot unter 3,1\,s.
 	\end{beispiel}
 	
-	\section{Satz 4: Lyapunov-StabilitÃ¤t des Betriebssystems}
+	\section{Satz 4: Lyapunov-Stabilität des Betriebssystems}
 	
-	\begin{satz}[OS-Lyapunov-StabilitÃ¤t]\label{satz:os_lyapunov}
+	\begin{satz}[OS-Lyapunov-Stabilität]\label{satz:os_lyapunov}
 		Das BS/EDF$^+$-System mit Zustandsmatrix $A$ ist asymptotisch
 		stabil unter EDF$^+$-Scheduling genau dann, wenn
 		$\rho(A) = \max_i |\lambda_i(A)| < 1$,
@@ -2454,7 +2454,7 @@ class Driver:
 	\begin{proof}
 		\textbf{Existenz der Lyapunov-Funktion:} Sei $Q = I_4$. Die diskrete
 		Lyapunov-Gleichung $A^T P A - P = -Q$ hat eine eindeutige positiv
-		definite LÃ¶sung $P \succ 0$ genau dann, wenn $\rho(A) < 1$
+		definite Lösung $P \succ 0$ genau dann, wenn $\rho(A) < 1$
 		\cite{Khalil2002}.
 		
 		\textbf{V ist Lyapunov-Funktion:} Mit $V(\mathbf{x}) = \mathbf{x}^T P \mathbf{x}$:
@@ -2464,25 +2464,25 @@ class Driver:
 		= -\mathbf{x}^T Q \mathbf{x}
 		= -\|\mathbf{x}\|^2 < 0
 		\]
-		fÃ¼r $\mathbf{x} \neq \mathbf{0}$.
+		für $\mathbf{x} \neq \mathbf{0}$.
 		
 		\textbf{EDF$^+$ als stabilisierendes Scheduling:} Das Scheduling-Gesetz
 		$\mathbf{u}_t = K \mathbf{x}_t$ (EDF$^+$, wobei $K$ aus der
-		Deadline-PrioritÃ¤t abgeleitet ist) garantiert, dass $A + BK$
-		StabilitÃ¤t erbt, da $(A, B)$ steuerbar durch ACPI/DVFS-Aktuatoren.
+		Deadline-Priorität abgeleitet ist) garantiert, dass $A + BK$
+		Stabilität erbt, da $(A, B)$ steuerbar durch ACPI/DVFS-Aktuatoren.
 	\end{proof}
 	
 	\begin{korollar}[KS-IV-Vermeidung]
 		Falls $\rho(A) < 1$, existiert $\varepsilon > 0$ mit
-		$\|\mathbf{x}_t\|_\infty < 1 - \varepsilon$ fÃ¼r alle $t \geq t_0$:
-		der KS-IV-Ãœberlastzustand wird asymptotisch vermieden.
+		$\|\mathbf{x}_t\|_\infty < 1 - \varepsilon$ für alle $t \geq t_0$:
+		der KS-IV-Überlastzustand wird asymptotisch vermieden.
 	\end{korollar}
 	
 	\section{Korollar 5: Optimale DVFS-Kurve beim Booten}
 	
-	\begin{korollar}[IoFET-DVFS EnergieoptimalitÃ¤t]\label{kor:dvfs_opt}
+	\begin{korollar}[IoFET-DVFS Energieoptimalität]\label{kor:dvfs_opt}
 		Die IoFET-Sigmoid-Kurve $V^*(f)$ ist die eindeutig energieoptimale
-		Spannungs-Frequenz-Kurve fÃ¼r die Boot-Sequenz unter Einhaltung aller
+		Spannungs-Frequenz-Kurve für die Boot-Sequenz unter Einhaltung aller
 		EDF$^+$-Deadlines.
 	\end{korollar}
 	
@@ -2493,10 +2493,10 @@ class Driver:
 		\]
 		unter $f_i C_i \leq D_i$ und $V_{\min} \leq V_i \leq V_{\max}$.
 		
-		\textbf{KKT-Bedingungen:} Die stationÃ¤re Bedingung
+		\textbf{KKT-Bedingungen:} Die stationäre Bedingung
 		$\partial \mathcal{L}/\partial V_i = 2\alpha_i C_L V_i f_i C_i + \lambda_{V,i} = 0$
 		liefert $V_i^* \propto 1/\sqrt{f_i}$, was einer sigmoiden Kurve
-		entspricht, wenn die FrequenzabhÃ¤ngigkeit des IoFET-Modells berÃ¼cksichtigt wird.
+		entspricht, wenn die Frequenzabhängigkeit des IoFET-Modells berücksichtigt wird.
 		
 		\textbf{Eindeutigkeit:} Da $E(f)$ nach Satz~\ref{satz:dvfs_convex}
 		konvex ist, ist das Minimum eindeutig. Kein anderes Steuergesetz
@@ -2506,7 +2506,7 @@ class Driver:
 	\section{Satz 6: PQC-sichere Speicheradressierung}
 	
 	\begin{satz}[Quantensichere Speicheradressierung]\label{satz:pqc_mem}
-		Sei $\mathbf{s} \in \mathbb{Z}_q^n$ ein geheimer SchlÃ¼ssel und
+		Sei $\mathbf{s} \in \mathbb{Z}_q^n$ ein geheimer Schlüssel und
 		$\Phi: \mathbb{Z}^{64} \to \mathbb{Z}_q^n$ eine injektive Hash-Funktion.
 		Das LWE-Adressierungsschema
 		\[
@@ -2514,36 +2514,36 @@ class Driver:
 		+ e + \Phi(a) \pmod{q}\bigr)
 		\]
 		ist quantensicher: Kein PPT-Quantenangreifer kann $\mathrm{PA}(a) \mapsto a$
-		mit nicht-vernachlÃ¤ssigbarer Wahrscheinlichkeit bestimmen, sofern LWE
+		mit nicht-vernachlässigbarer Wahrscheinlichkeit bestimmen, sofern LWE
 		quantenschwer ist.
 	\end{satz}
 	
 	\begin{proof}
 		\textbf{Sicherheitsreduktion:} Angenommen, $\mathcal{A}_Q$ bestimmt
 		$\mathrm{PA}(a) \mapsto a$ mit Vorteil $\varepsilon > 0$. Dann kann
-		$\mathcal{A}_Q$ genutzt werden, um das LWE-Problem zu lÃ¶sen: Gegeben
+		$\mathcal{A}_Q$ genutzt werden, um das LWE-Problem zu lösen: Gegeben
 		LWE-Sample $(\mathbf{a}, b)$, setze $b' = b - \Phi(0)$.
-		$\mathcal{A}_Q$ mÃ¼sste $\mathbf{s}$ aus $(\mathbf{a}, b')$ ableiten --
+		$\mathcal{A}_Q$ müsste $\mathbf{s}$ aus $(\mathbf{a}, b')$ ableiten --
 		das ist das LWE-Problem.
 		
 		\textbf{Quantenschwere von LWE:} Regev \cite{Regev2009} zeigt, dass
 		LWE mindestens so schwer ist wie $\mathrm{SIVP}_\gamma$ im Worst Case.
-		Es ist kein effizienter Quantenalgorithmus fÃ¼r $\mathrm{SIVP}$ bekannt.
+		Es ist kein effizienter Quantenalgorithmus für $\mathrm{SIVP}$ bekannt.
 		
-		\textbf{Effizienz:} LWE-EntschlÃ¼sselung ($n = 1024$, $q = 12289$)
-		benÃ¶tigt $< 1\,\mu\text{s}$ auf moderner Hardware. BMM \cite{Epp2026boolmm}
+		\textbf{Effizienz:} LWE-Entschlüsselung ($n = 1024$, $q = 12289$)
+		benötigt $< 1\,\mu\text{s}$ auf moderner Hardware. BMM \cite{Epp2026boolmm}
 		optimiert den TLB-Cache auf $O(n^{2.37})$.
 	\end{proof}
 	
 	\begin{bemerkung}
-		Die vollstÃ¤ndige LWE-Adressierung aller Pages ist fÃ¼r
-		Hochsicherheitsanwendungen vorgesehen. FÃ¼r Standard-Betrieb genÃ¼gt
+		Die vollständige LWE-Adressierung aller Pages ist für
+		Hochsicherheitsanwendungen vorgesehen. Für Standard-Betrieb genügt
 		selektive Anwendung auf Kernel-Speicherbereiche (Page Tables, IDT, APIC).
 	\end{bemerkung}
 	
 	% ==============================================================
 	%  KAPITEL 15 -- ZUSAMMENFASSUNG UND AUSBLICK
-	%  Erweiterter Ausblick -- Ersatz fÃ¼r den bisherigen Abschnitt
+	%  Erweiterter Ausblick -- Ersatz für den bisherigen Abschnitt
 	%  "Offene Fragen und Ausblick" in bs.tex
 	% ==============================================================
 	
@@ -2559,12 +2559,12 @@ class Driver:
 	\begin{enumerate}
 		\item \textbf{Satz~14.1:} Boot-Sequenz als EDF$^+$-Task-System --
 		formale Korrektheit der Initialisierungsreihenfolge.
-		\item \textbf{Satz~14.2:} Treiber-KompatibilitÃ¤t via Subgraph-Isomorphismus
+		\item \textbf{Satz~14.2:} Treiber-Kompatibilität via Subgraph-Isomorphismus
 		in $O(n^3)$.
-		\item \textbf{Satz~14.3:} Hoeffding-Schranke fÃ¼r die Bootzeit:
+		\item \textbf{Satz~14.3:} Hoeffding-Schranke für die Bootzeit:
 		$> 99{,}99\,\%$ Wahrscheinlichkeit unter $t_{\max}$.
-		\item \textbf{Satz~14.4:} Lyapunov-StabilitÃ¤t unter EDF$^+$ vermeidet
-		KS-IV-ÃœberlastzustÃ¤nde.
+		\item \textbf{Satz~14.4:} Lyapunov-Stabilität unter EDF$^+$ vermeidet
+		KS-IV-Überlastzustände.
 		\item \textbf{Korollar~14.5:} IoFET-Sigmoid ist energieoptimale
 		DVFS-Kurve beim Booten.
 		\item \textbf{Satz~14.6:} LWE-basierte Speicheradressierung ist
@@ -2579,24 +2579,24 @@ class Driver:
 	Grundlage, die in mehrere Richtungen erheblich vertieft und ausgebaut werden kann.
 	Der folgende Ausblick gliedert sich in kurzfristige (1--3 Jahre),
 	mittelfristige (3--7 Jahre) und langfristige (7--15 Jahre) Forschungsziele
-	sowie in Ã¼bergreifende Themen zur gesellschaftlichen und industriellen
+	sowie in übergreifende Themen zur gesellschaftlichen und industriellen
 	Wirkung des hier entwickelten Ansatzes.
 	
 	% ---------------------------------------------------------------
-	\subsection{Formale Verifikation: Von Papierbeweisen zu maschinengeprÃ¼ften Zertifikaten}
+	\subsection{Formale Verifikation: Von Papierbeweisen zu maschinengeprüften Zertifikaten}
 	% ---------------------------------------------------------------
 	
-	Die sechs SÃ¤tze in Kapitel~14 sind vollstÃ¤ndige mathematische Beweise auf
-	Papierebene. Der unmittelbarste und wichtigste nÃ¤chste Schritt ist ihre
+	Die sechs Sätze in Kapitel~14 sind vollständige mathematische Beweise auf
+	Papierebene. Der unmittelbarste und wichtigste nächste Schritt ist ihre
 	\emph{maschinelle Verifikation} in einem interaktiven Beweisassistenten.
 	
 	\subsubsection{Isabelle/HOL und Coq}
 	
-	Isabelle/HOL \cite{Nipkow2002} eignet sich besonders fÃ¼r Satz~14.1 und
-	Satz~14.2, da beide auf endlichen Graphenstrukturen operieren, fÃ¼r die
+	Isabelle/HOL \cite{Nipkow2002} eignet sich besonders für Satz~14.1 und
+	Satz~14.2, da beide auf endlichen Graphenstrukturen operieren, für die
 	reiche HOL-Bibliotheken (z.\,B.\ \texttt{Graph\_Theory}) existieren.
-	Der Beweis von Satz~14.1 lÃ¤sst sich in Isabelle als parametrisierter
-	Satz Ã¼ber beliebige EDF$^+$-Task-Systeme mit $n$ Phasen formulieren:
+	Der Beweis von Satz~14.1 lässt sich in Isabelle als parametrisierter
+	Satz über beliebige EDF$^+$-Task-Systeme mit $n$ Phasen formulieren:
 	
 	\[
 	\forall\, n \in \mathbb{N},\; \forall\,\tau_1,\ldots,\tau_n.\;
@@ -2604,26 +2604,26 @@ class Driver:
 	\text{sched}(\tau_1,\ldots,\tau_n) \text{ ist terminierend}
 	\]
 	
-	Coq bietet darÃ¼ber hinaus die MÃ¶glichkeit, aus dem verifizierten Beweis
+	Coq bietet darüber hinaus die Möglichkeit, aus dem verifizierten Beweis
 	direkt \emph{zertifizierten C-Code} zu extrahieren (via \texttt{Extraction}),
 	der in den BS/EDF$^+$-Kernel integriert werden kann -- ein Ansatz, der
-	bereits im seL4-Projekt \cite{Klein2009} fÃ¼r den Kernel-Korrektheitsbeweis
+	bereits im seL4-Projekt \cite{Klein2009} für den Kernel-Korrektheitsbeweis
 	erfolgreich eingesetzt wurde.
 	
-	\subsubsection{TLA\texorpdfstring{$^+$}{+} fÃ¼r concurrent Boot-Sequenzen}
+	\subsubsection{TLA\texorpdfstring{$^+$}{+} für concurrent Boot-Sequenzen}
 	
-	TLA$^+$ \cite{Lamport2002} ist prÃ¤destiniert fÃ¼r die Modellierung
-	nebenlÃ¤ufiger Boot-Phasen auf PYMCA-8-Mehrkern\-systemen. Insbesondere
+	TLA$^+$ \cite{Lamport2002} ist prädestiniert für die Modellierung
+	nebenläufiger Boot-Phasen auf PYMCA-8-Mehrkern\-systemen. Insbesondere
 	die Synchronisationsinvarianten zwischen den acht Kernen (Kapitel~6) lassen
-	sich als TLA$^+$-Spezifikation ausdrÃ¼cken und mit dem TLC-Model-Checker
-	auf Deadlock-Freiheit und Liveness-Eigenschaften prÃ¼fen. Eine vollstÃ¤ndige
-	TLA$^+$-Spezifikation von BS/EDF$^+$ kÃ¶nnte als maschinengeprÃ¼ftes
-	Referenzdokument fÃ¼r zukÃ¼nftige Kernel-Implementierungen dienen.
+	sich als TLA$^+$-Spezifikation ausdrücken und mit dem TLC-Model-Checker
+	auf Deadlock-Freiheit und Liveness-Eigenschaften prüfen. Eine vollständige
+	TLA$^+$-Spezifikation von BS/EDF$^+$ könnte als maschinengeprüftes
+	Referenzdokument für zukünftige Kernel-Implementierungen dienen.
 	
 	\subsubsection{Parametrische Timed Automata}
 	
 	Der unendliche Zustandsraum der Boot-Sequenz (Satz~14.3) ist ein klassisches
-	Problem fÃ¼r \emph{Parametrische Timed Automata} (PTA, Alur et al.\ 1993).
+	Problem für \emph{Parametrische Timed Automata} (PTA, Alur et al.\ 1993).
 	Mit Werkzeugen wie IMITATOR lassen sich parametrische Zeitschranken
 	$t_{\max}(\Delta, n)$ als Funktion der Systemparameter automatisch synthesieren --
 	eine direkte Erweiterung der in Satz~14.3 manuell bewiesenen
@@ -2633,29 +2633,29 @@ class Driver:
 	\subsection{Portierung auf ARM, RISC-V und heterogene Architekturen}
 	% ---------------------------------------------------------------
 	
-	BS/EDF$^+$ wurde fÃ¼r x86-64 entwickelt, ist aber konzeptionell
-	ISA-unabhÃ¤ngig. Drei Portierungsziele erscheinen besonders vielversprechend.
+	BS/EDF$^+$ wurde für x86-64 entwickelt, ist aber konzeptionell
+	ISA-unabhängig. Drei Portierungsziele erscheinen besonders vielversprechend.
 	
-	\subsubsection{ARM Cortex-A78 und die mobile DomÃ¤ne}
+	\subsubsection{ARM Cortex-A78 und die mobile Domäne}
 	
 	Der ARM Cortex-A78 ist der Kern moderner Smartphone-SoCs
 	(Qualcomm Snapdragon 888, Samsung Exynos 2200). Die DVFS-Implementierung
 	muss von x86-64 MSRs auf die ARM \emph{SCMI} (System Control and
 	Management Interface) portiert werden; die IoFET-Sigmoid-Kurve (Korollar~14.5)
-	ist architekturunabhÃ¤ngig und kann direkt Ã¼bernommen werden.
-	FÃ¼r den mobilen Einsatz ist insbesondere die Integration mit
+	ist architekturunabhängig und kann direkt übernommen werden.
+	Für den mobilen Einsatz ist insbesondere die Integration mit
 	Android-Treiber-Stacks (Binder IPC, HIDL) durch Subgraph-Isomorphismus
 	(Satz~14.2) interessant: Das Framework \cite{Epp2026mobde} liefert
-	hierfÃ¼r bereits Vorarbeiten.
+	hierfür bereits Vorarbeiten.
 	
 	\subsubsection{RISC-V RV64GC: offene ISA-Verifikation}
 	
-	RISC-V (RV64GC) ermÃ¶glicht es, die gesamte ISA-Spezifikation quelloffen
+	RISC-V (RV64GC) ermöglicht es, die gesamte ISA-Spezifikation quelloffen
 	zu halten. In Kombination mit formaler Verifikation in Isabelle/HOL
 	entsteht damit ein durchgehend verifizierbarer Stack: von der
-	Transistorschicht (IoFET, \cite{Epp2026iono}) Ã¼ber die ISA bis zum
+	Transistorschicht (IoFET, \cite{Epp2026iono}) über die ISA bis zum
 	OS-Scheduler. Das Ziel ist ein \emph{durchgehend beweisbares System}
-	ohne vertrauenswÃ¼rdige Komponenten -- ein \emph{Trusted Computing Base}
+	ohne vertrauenswürdige Komponenten -- ein \emph{Trusted Computing Base}
 	von theoretisch null Elementen, sofern die Hardware-Verifikation
 	abgeschlossen ist.
 	
@@ -2663,28 +2663,28 @@ class Driver:
 	
 	Moderne Systeme on Chip (NVIDIA Orin, Apple M3) kombinieren CPU-Kerne,
 	Grafik\-prozessoren und Neural Processing Units auf einem Die.
-	BS/EDF$^+$ mÃ¼sste auf einen \emph{Heterogeneous EDF$^+$}-Algorithmus
+	BS/EDF$^+$ müsste auf einen \emph{Heterogeneous EDF$^+$}-Algorithmus
 	(HEDF$^+$) erweitert werden, der Tasks dynamisch auf die am besten
-	geeignete AusfÃ¼hrungseinheit zuweist. Die Subgraph-KompatibilitÃ¤tsprÃ¼fung
-	(Satz~14.2) bietet einen natÃ¼rlichen Rahmen: Ein Task-Graph wird mit
+	geeignete Ausführungseinheit zuweist. Die Subgraph-Kompatibilitätsprüfung
+	(Satz~14.2) bietet einen natürlichen Rahmen: Ein Task-Graph wird mit
 	dem Hardware-Ressourcengraph verglichen; der Isomorphismus liefert
 	die optimale Zuordnung. Die Laufzeit bleibt $O(n^3)$ auf der
 	kombinierten Graphstruktur.
 	
 	% ---------------------------------------------------------------
-	\subsection{KI-gestÃ¼tzte Systemoptimierung}
+	\subsection{KI-gestützte Systemoptimierung}
 	% ---------------------------------------------------------------
 	
-	Maschinelles Lernen bietet erhebliche MÃ¶glichkeiten, die in dieser Arbeit
-	entwickelten formalen Schranken empirisch zu verschÃ¤rfen.
+	Maschinelles Lernen bietet erhebliche Möglichkeiten, die in dieser Arbeit
+	entwickelten formalen Schranken empirisch zu verschärfen.
 	
 	\subsubsection{LSTM-basierte Bootzeit-Vorhersage}
 	
 	Die stochastische Schranke in Satz~14.3 setzt voraus, dass die
-	AusfÃ¼hrungszeiten $C_i$ der Boot-Tasks bekannt sind. In der Praxis
+	Ausführungszeiten $C_i$ der Boot-Tasks bekannt sind. In der Praxis
 	variieren diese durch Hardware-Alterung, Temperatureffekte und
 	Speicherfehler. Ein LSTM-Netzwerk, das auf Millionen von Boot-Traces
-	trainiert wird, kann $C_i$ fÃ¼r den nÃ¤chsten Boot mit weniger als
+	trainiert wird, kann $C_i$ für den nächsten Boot mit weniger als
 	$1\,\%$ relativer Abweichung vorhersagen und damit die Hoeffding-Schranke
 	adaptiv anpassen. Das folgende Trainings-Ziel formalisiert dies:
 	
@@ -2694,48 +2694,48 @@ class Driver:
 	\]
 	
 	wobei $\Theta$ die LSTM-Parameter und $\hat{C}_i^{\Theta}$ die vorhergesagte
-	AusfÃ¼hrungszeit sind. Mit einem kalibrierten $\hat{C}_i$ kann
+	Ausführungszeit sind. Mit einem kalibrierten $\hat{C}_i$ kann
 	$t_{\max}$ um typischerweise $15$--$25\,\%$ reduziert werden, ohne die
-	Verletzungswahrscheinlichkeit zu erhÃ¶hen.
+	Verletzungswahrscheinlichkeit zu erhöhen.
 	
-	\subsubsection{Reinforcement Learning fÃ¼r adaptives DVFS}
+	\subsubsection{Reinforcement Learning für adaptives DVFS}
 	
 	Die IoFET-Sigmoid-DVFS-Kurve (Korollar~14.5) ist statisch optimal
 	unter der Annahme eines bekannten Arbeitslastprofils. Ein Reinforcement-Learning-Agent
-	(z.\,B.\ PPO oder SAC) kÃ¶nnte die DVFS-Parameter in Echtzeit anpassen,
+	(z.\,B.\ PPO oder SAC) könnte die DVFS-Parameter in Echtzeit anpassen,
 	indem er die thermische Zustandsmatrix $A$ des Systems (Satz~14.4)
 	als Beobachtungsraum und den Energieverbrauch als negativen Reward verwendet.
-	Das Lyapunov-StabilitÃ¤tskriterium aus Satz~14.4 kann dabei als
+	Das Lyapunov-Stabilitätskriterium aus Satz~14.4 kann dabei als
 	harte Constraint in den RL-Optimierungsprozess eingebettet werden
-	(\emph{Constrained RL}), sodass der Agent niemals den KS-IV-Ãœberlastzustand
+	(\emph{Constrained RL}), sodass der Agent niemals den KS-IV-Überlastzustand
 	induziert.
 	
 	\subsubsection{Anomalieerkennung im Kernel}
 	
-	Der Subgraph Algorithmus \cite{Epp2026subgraph} ermÃ¶glicht eine neuartige
-	Form der Kernel-IntegritÃ¤tsprÃ¼\-fung: Der Graph der aktiven Kernel-Subsysteme
-	(Treiber, Interrupt-Handler, IPC-KanÃ¤le) wird kontinuierlich als
+	Der Subgraph Algorithmus \cite{Epp2026subgraph} ermöglicht eine neuartige
+	Form der Kernel-Integritätsprü\-fung: Der Graph der aktiven Kernel-Subsysteme
+	(Treiber, Interrupt-Handler, IPC-Kanäle) wird kontinuierlich als
 	\emph{Graph-Profil} gespeichert und mit einem Referenzprofil verglichen.
-	Eine Abweichung, die sich nicht als Subgraph-Isomorphismus darstellen lÃ¤sst,
-	signalisiert eine anomale SystemverÃ¤nderung -- z.\,B.\ durch Rootkits oder
+	Eine Abweichung, die sich nicht als Subgraph-Isomorphismus darstellen lässt,
+	signalisiert eine anomale Systemveränderung -- z.\,B.\ durch Rootkits oder
 	Speicherkorrumption. In Kombination mit LWE-gesicherter Speicheradressierung
-	(Satz~14.6) und der stochastischen Archiv-LÃ¶sung \cite{Epp2026archv}
-	entsteht ein dreistufiges IntegritÃ¤tssystem:
+	(Satz~14.6) und der stochastischen Archiv-Lösung \cite{Epp2026archv}
+	entsteht ein dreistufiges Integritätssystem:
 	(1) kryptographische Speichersicherung,
-	(2) graphenbasierte StrukturintegritÃ¤t,
-	(3) stochastische ArchivintegritÃ¤t.
+	(2) graphenbasierte Strukturintegrität,
+	(3) stochastische Archivintegrität.
 	
 	% ---------------------------------------------------------------
 	\subsection{Quantencomputer-Resilienz und Post-Quanten-Migration}
 	% ---------------------------------------------------------------
 	
-	\subsubsection{Empirische HÃ¤rtungsversuche mit Gitterreduktionsalgorithmen}
+	\subsubsection{Empirische Härtungsversuche mit Gitterreduktionsalgorithmen}
 	
-	Sobald Quantencomputer mit mehr als 1000 \emph{logischen} Qubits verfÃ¼gbar
+	Sobald Quantencomputer mit mehr als 1000 \emph{logischen} Qubits verfügbar
 	sind (nach aktuellem Stand der Technik voraussichtlich ab 2030--2035),
 	sollte die Sicherheit des LWE-Schemas (Satz~14.6) mit dem BKZ-2.0-Algorithmus
-	\cite{Chen2011} unter realen Quantenfehlerkorrekturoverheads Ã¼berprÃ¼ft werden.
-	FÃ¼r $n = 1024$, $q = 12289$ liegt die klassische AngriffskomplexitÃ¤t bei
+	\cite{Chen2011} unter realen Quantenfehlerkorrekturoverheads überprüft werden.
+	Für $n = 1024$, $q = 12289$ liegt die klassische Angriffskomplexität bei
 	$2^{218}$ Operationen; mit Quantenbeschleunigung (Grover-Vorfaktor
 	$\sqrt{\cdot}$) sinkt sie auf $\approx 2^{109}$ -- immer noch weit jenseits
 	jeder praktischen Angreifbarkeit bei korrekter Parameterwahl.
@@ -2743,51 +2743,51 @@ class Driver:
 	\subsubsection{Migration zu CRYSTALS-Kyber und CRYSTALS-Dilithium}
 	
 	Der NIST-Post-Quanten-Standard hat im Jahr 2024 CRYSTALS-Kyber \cite{Bos2018}
-	fÃ¼r SchlÃ¼sselaustausch und CRYSTALS-Dilithium \cite{Ducas2018} fÃ¼r
+	für Schlüsselaustausch und CRYSTALS-Dilithium \cite{Ducas2018} für
 	digitale Signaturen standardisiert. BS/EDF$^+$ sollte beide Schemata
 	als native Kernel-Primitive integrieren:
 	
 	\begin{itemize}
-		\item \textbf{Kyber-1024} als Ersatz fÃ¼r RSA-2048 im Secure-Boot-Prozess:
+		\item \textbf{Kyber-1024} als Ersatz für RSA-2048 im Secure-Boot-Prozess:
 		Der Bootloader verifiziert die Kernel-Signatur mit Kyber-1024,
 		das gegen Shors Algorithmus \cite{Shor1994} immun ist.
-		\item \textbf{Dilithium-3} fÃ¼r die Kernel-Modul-Signierung:
-		Jedes Treibermodul trÃ¤gt eine Dili\-thium-Signatur; der Subgraph
-		Algorithmus prÃ¼ft sowohl die kryptographische IntegritÃ¤t als auch
-		die strukturelle KompatibilitÃ¤t (Satz~14.2).
+		\item \textbf{Dilithium-3} für die Kernel-Modul-Signierung:
+		Jedes Treibermodul trägt eine Dili\-thium-Signatur; der Subgraph
+		Algorithmus prüft sowohl die kryptographische Integrität als auch
+		die strukturelle Kompatibilität (Satz~14.2).
 	\end{itemize}
 	
 	\subsubsection{Hybride klassisch-quantensichere Adressierung}
 	
-	Satz~14.6 beschreibt eine vollstÃ¤ndige LWE-Adressierung, die fÃ¼r
-	Hochsicherheitsanwendungen geeignet ist. FÃ¼r den Standardbetrieb
+	Satz~14.6 beschreibt eine vollständige LWE-Adressierung, die für
+	Hochsicherheitsanwendungen geeignet ist. Für den Standardbetrieb
 	ist eine \emph{hybride Strategie} effizienter: Konventionelle
-	virtuelle Adressierung (x86-64 4-Ebenen-Paging) schÃ¼tzt regulÃ¤re
+	virtuelle Adressierung (x86-64 4-Ebenen-Paging) schützt reguläre
 	Benutzer-Pages; LWE-Adressierung wird selektiv auf
 	sicherheitskritische Kernel-Regionen (Page Tables, IDT, APIC-Register)
 	angewendet. Diese Hybrid-Strategie reduziert den Overhead von
 	$O(n^{2.37})$ auf $O(k \cdot n^{2.37}/n)$, wobei $k$ die Anzahl
-	der geschÃ¼tzten Pages ist ($k \ll n$). Eine formale
-	Analyse dieses Trade-offs ist Gegenstand zukÃ¼nftiger Arbeit.
+	der geschützten Pages ist ($k \ll n$). Eine formale
+	Analyse dieses Trade-offs ist Gegenstand zukünftiger Arbeit.
 	
 	% ---------------------------------------------------------------
 	\subsection{Erweiterung des PYMCA-8-Modells auf viele Kerne und NUMA}
 	% ---------------------------------------------------------------
 	
 	Die PYMCA-8-Architektur (Kapitel~6, \cite{Epp2026pymca8}) beschreibt
-	acht Kerne mit Python-Speicher\-modell und IoFET-DVFS. Die natÃ¼rliche
-	Erweiterung fÃ¼hrt in zwei Richtungen.
+	acht Kerne mit Python-Speicher\-modell und IoFET-DVFS. Die natürliche
+	Erweiterung führt in zwei Richtungen.
 	
 	\subsubsection{PYMCA-$n$: Skalierung auf beliebig viele Kerne}
 	
 	Eine theoretische Verallgemeinerung auf $n$ Kerne erfordert:
 	
 	\begin{enumerate}
-		\item Eine formale Beweis-Erweiterung von Satz~14.4 (Lyapunov-StabilitÃ¤t)
+		\item Eine formale Beweis-Erweiterung von Satz~14.4 (Lyapunov-Stabilität)
 		auf $n \times n$-Systemmatrizen $A \in \mathbb{R}^{n \times n}$, wobei
-		NUMA-Latenzeffekte als Off-Diagonal-EintrÃ¤ge modelliert werden.
+		NUMA-Latenzeffekte als Off-Diagonal-Einträge modelliert werden.
 		\item Eine skalierbare Variante des Subgraph Algorithmus
-		\cite{Epp2026subgraph} fÃ¼r $n$-Kern-Treibergraphen, die die
+		\cite{Epp2026subgraph} für $n$-Kern-Treibergraphen, die die
 		$O(n^3)$-Schranke durch parallele Subgraph-Zerlegung auf
 		$O(n^2 \log n)$ reduziert.
 		\item Eine Erweiterung des stochastischen Archiv-Problems
@@ -2797,12 +2797,12 @@ class Driver:
 	\subsubsection{Integration mit AUTOSAR-Adaptive auf Mehrkernsystemen}
 	
 	AUTOSAR Adaptive Platform (AP, R23-11 \cite{AUTOSAR2023}) zielt auf
-	hochleistungsfÃ¤hige SoCs mit dynamischer Dienstarchitektur.
-	BS/EDF$^+$ kÃ¶nnte als Execution Platform fÃ¼r AUTOSAR-AP dienen:
-	Der EDF$^+$-Scheduler Ã¼bernimmt das Task-Scheduling der
+	hochleistungsfähige SoCs mit dynamischer Dienstarchitektur.
+	BS/EDF$^+$ könnte als Execution Platform für AUTOSAR-AP dienen:
+	Der EDF$^+$-Scheduler übernimmt das Task-Scheduling der
 	AUTOSAR-Execution-Management-Schicht; der Subgraph Algorithmus
-	prÃ¼ft Service-KompatibilitÃ¤t im AUTO\-SAR-Dienstverzeichnis.
-	Damit entsteht eine formale BrÃ¼cke zwischen dem akademischen
+	prüft Service-Kompatibilität im AUTO\-SAR-Dienstverzeichnis.
+	Damit entsteht eine formale Brücke zwischen dem akademischen
 	BS/EDF$^+$-Konzept und dem industriellen AUTOSAR-Standard --
 	ein wesentlicher Schritt zur praktischen Verwertung dieser Arbeit.
 	
@@ -2811,27 +2811,27 @@ class Driver:
 	Die Integration von EtherCAT \cite{IEC61158} in das EHAE-Framework
 	\cite{Epp2026ethercate} mit EDF$^+$-Scheduling sollte bei der
 	EtherCAT Technology Group (ETG) als Standarderweiterung vorgeschlagen werden.
-	Konkret ermÃ¶glicht EDF$^+$ eine \emph{dynamische Slot-Vergabe} im
+	Konkret ermöglicht EDF$^+$ eine \emph{dynamische Slot-Vergabe} im
 	EtherCAT-Frame: Statt statisch konfigurierten Zeitfenstern (wie in
-	der aktuellen ETG-Spezifikation) vergibt EDF$^+$ Ãœbertragungsslots
-	nach Deadline-PrioritÃ¤t. Satz~14.1 garantiert die Schedulierbarkeit
-	unter der Bedingung $U_{\mathrm{EDF}^+} \le 1$; fÃ¼r typische
+	der aktuellen ETG-Spezifikation) vergibt EDF$^+$ Übertragungsslots
+	nach Deadline-Priorität. Satz~14.1 garantiert die Schedulierbarkeit
+	unter der Bedingung $U_{\mathrm{EDF}^+} \le 1$; für typische
 	Industrieinstallationen mit $n = 128$ EtherCAT-Slaves liegt
 	$U$ bei $\approx 0{,}72$ -- hinreichend weit unterhalb der
-	StabilitÃ¤tsgrenze.
+	Stabilitätsgrenze.
 	
 	% ---------------------------------------------------------------
 	\subsection{Energiemanagement: IoFET-DVFS und Li-Ionen-Integration}
 	% ---------------------------------------------------------------
 	
-	\subsubsection{Dynamische Temperaturmodelle fÃ¼r IoFET-Transistoren}
+	\subsubsection{Dynamische Temperaturmodelle für IoFET-Transistoren}
 	
-	Korollar~14.5 beweist die OptimalitÃ¤t der IoFET-Sigmoid-DVFS-Kurve
+	Korollar~14.5 beweist die Optimalität der IoFET-Sigmoid-DVFS-Kurve
 	unter der Annahme konstanter Temperatur. Reale Systeme unterliegen
 	jedoch thermischen Transienten: Die Drain-Strom-Charakteristik
-	$I_D = I_0 \sinh\!\left(\frac{V_{GS}}{nV_T}\right)$ ist stark temperaturabhÃ¤ngig
+	$I_D = I_0 \sinh\!\left(\frac{V_{GS}}{nV_T}\right)$ ist stark temperaturabhängig
 	($V_T = k_BT/q$). Eine Erweiterung des Modells \cite{Epp2026iono}
-	auf temperaturabhÃ¤ngige IoFET-Parameter fÃ¼hrt zu einem
+	auf temperaturabhängige IoFET-Parameter führt zu einem
 	\emph{thermoelektrisch gekoppelten DVFS-Optimierungsproblem}:
 	
 	\[
@@ -2843,15 +2843,15 @@ class Driver:
 	wobei $T(t)$ die Chip-Temperatur ist und $\alpha, \beta$ thermische
 	Transferkoeffizienten bezeichnen. Dieses Problem ist ein Optimal-Control-Problem
 	und kann mit Pontrjaginschen Maximumprinzip oder numerischer
-	Kollokation gelÃ¶st werden.
+	Kollokation gelöst werden.
 	
 	\subsubsection{Hybride IoFET-Li-Ionen-Energiepolitik}
 	
-	Die KI-gestÃ¼tzte Akkuverwaltung \cite{Epp2026liionp} und das
+	Die KI-gestützte Akkuverwaltung \cite{Epp2026liionp} und das
 	IoFET-DVFS-Modell \cite{Epp2026iono} wurden bisher separat entwickelt.
 	Eine integrierte Energiepolitik, die den Akkuzustand (State-of-Charge,
-	State-of-Health) als Eingabe des DVFS-Reglers verwendet, kÃ¶nnte
-	die Gesamtsystemlebensdauer signifikant verlÃ¤ngern. Formal lÃ¤sst sich
+	State-of-Health) als Eingabe des DVFS-Reglers verwendet, könnte
+	die Gesamtsystemlebensdauer signifikant verlängern. Formal lässt sich
 	dies als \emph{Markov-Decision-Process} (MDP) formulieren:
 	
 	\[
@@ -2861,7 +2861,7 @@ class Driver:
 	
 	wobei der Zustandsraum $s_t = (f_t, V_t, \mathrm{SoC}_t, T_t)$
 	und die Aktion $a_t$ die Wahl der DVFS-Stufe ist.
-	Der Reward $R$ balanciert Performanz und AkkuverschleiÃŸ.
+	Der Reward $R$ balanciert Performanz und Akkuverschleiß.
 	
 	% ---------------------------------------------------------------
 	\subsection{Dateisystem und Speicherverwaltung}
@@ -2870,52 +2870,52 @@ class Driver:
 	\subsubsection{Subgraph-basierte Deduplizierung auf NVMe-Speicher}
 	
 	Das Dateisystem-Deduplizierungsframework \cite{Epp2026dusgraph} nutzt
-	Subgraph-Isomorphismus zur Erkennung strukturell Ã¤hnlicher DatenblÃ¶cke.
+	Subgraph-Isomorphismus zur Erkennung strukturell ähnlicher Datenblöcke.
 	Aktuelle Implementierungen operieren auf Block-Ebene; eine Erweiterung
-	auf \emph{semantische Deduplizierung} -- d.\,h.\ inhaltsbezogene Ã„hnlichkeit
-	auf Ebene von Dokumentstrukturen, Code-Abstrakt-SyntaxbÃ¤umen (AST) oder
-	Vektordatenbanken (VADIS \cite{Epp2026vadis}) -- wÃ¼rde erhebliche
-	Speichereinsparungen ermÃ¶glichen. FÃ¼r NVMe-SSDs mit $10^9$ Datenobjekten
+	auf \emph{semantische Deduplizierung} -- d.\,h.\ inhaltsbezogene Ähnlichkeit
+	auf Ebene von Dokumentstrukturen, Code-Abstrakt-Syntaxbäumen (AST) oder
+	Vektordatenbanken (VADIS \cite{Epp2026vadis}) -- würde erhebliche
+	Speichereinsparungen ermöglichen. Für NVMe-SSDs mit $10^9$ Datenobjekten
 	ist eine parallele Subgraph-Verarbeitung auf PYMCA-8 mit $O(n^2\log n)$
-	KomplexitÃ¤t erforderlich.
+	Komplexität erforderlich.
 	
 	\subsubsection{Persistente Speicherklassen (NVDIMM, CXL)}
 	
-	Compute Express Link (CXL) 3.0 ermÃ¶glicht Memory-Pooling zwischen
+	Compute Express Link (CXL) 3.0 ermöglicht Memory-Pooling zwischen
 	mehreren Hosts. BS/EDF$^+$ sollte CXL als neue Speicherklasse
-	modellieren: CXL-Speicher hat hÃ¶here Latenz als DRAM, aber niedrigere
+	modellieren: CXL-Speicher hat höhere Latenz als DRAM, aber niedrigere
 	als NVMe; das stochastische Archiv-Modell \cite{Epp2026archv} muss
 	um eine dritte Speicherebene (DRAM / CXL / NVMe) erweitert werden.
-	Die optimale Batch-Timer-Strategie Ã¤ndert sich dabei qualitativ:
-	FÃ¼r CXL-Zugriffe mit Poisson-AnkÃ¼nften der Rate $\lambda_{CXL}$
-	ergibt sich ein modifiziertes Optimierungsproblem fÃ¼r den
+	Die optimale Batch-Timer-Strategie ändert sich dabei qualitativ:
+	Für CXL-Zugriffe mit Poisson-Ankünften der Rate $\lambda_{CXL}$
+	ergibt sich ein modifiziertes Optimierungsproblem für den
 	Erwartungswert der Latenz.
 	
 	% ---------------------------------------------------------------
 	\subsection{Graphentheoretische Systemverifikation}
 	% ---------------------------------------------------------------
 	
-	\subsubsection{HS-DFS-Erweiterung fÃ¼r dynamische Kernel-Graphen}
+	\subsubsection{HS-DFS-Erweiterung für dynamische Kernel-Graphen}
 	
 	Der Subgraph Algorithmus \cite{Epp2026subgraph} und der
 	HS-DFS-Algorithmus (Graph-of-Graphs, \cite{Epp2026msubgraph}) operieren
 	aktuell auf statischen Graphen. Echtzeit-Kernel-Systeme sind jedoch
 	dynamisch: Treiber werden geladen und entladen, IPC-Verbindungen
 	werden aufgebaut und beendet. Eine Erweiterung auf \emph{dynamische
-		Graph-StrÃ¶me} (\emph{graph streams}) mit Online-Subgraph-Erkennung
-	in amortisierter $O(\log n)$-Zeit pro Ã„nderungsoperation ist ein
+		Graph-Ströme} (\emph{graph streams}) mit Online-Subgraph-Erkennung
+	in amortisierter $O(\log n)$-Zeit pro Änderungsoperation ist ein
 	wichtiger offener Forschungspunkt.
 	
-	\subsubsection{Boolesche Matrixmultiplikation fÃ¼r Cache-KohÃ¤renz}
+	\subsubsection{Boolesche Matrixmultiplikation für Cache-Kohärenz}
 	
 	Die Boolesche Matrixmultiplikation in $O(n^{2.37})$
-	\cite{Epp2026boolmm} wurde bisher fÃ¼r TLB-Cache-Opti\-mierung
-	genutzt. Eine direkte Anwendung liegt in der \emph{Cache-KohÃ¤renz-Analyse}
-	auf PYMCA-8: Die AbhÃ¤ngigkeitsmatrix $D \in \{0,1\}^{n \times n}$
+	\cite{Epp2026boolmm} wurde bisher für TLB-Cache-Opti\-mierung
+	genutzt. Eine direkte Anwendung liegt in der \emph{Cache-Kohärenz-Analyse}
+	auf PYMCA-8: Die Abhängigkeitsmatrix $D \in \{0,1\}^{n \times n}$
 	zwischen $n$ Tasks wird als Boolesches Matrix-Produkt berechnet;
-	EintrÃ¤ge $D_{ij} = 1$ signalisieren potenzielle Cache-Invalidierungen.
-	Die schnelle BMM ermÃ¶glicht es, diese Analyse in jedem
-	Scheduling-Zyklus ($\approx 1\,\mu\text{s}$) neu auszufÃ¼hren.
+	Einträge $D_{ij} = 1$ signalisieren potenzielle Cache-Invalidierungen.
+	Die schnelle BMM ermöglicht es, diese Analyse in jedem
+	Scheduling-Zyklus ($\approx 1\,\mu\text{s}$) neu auszuführen.
 	
 	% ---------------------------------------------------------------
 	\subsection{Sicherheitsarchitektur und Isolation}
@@ -2924,100 +2924,100 @@ class Driver:
 	\subsubsection{Capability-basierte Zugriffskontrolle}
 	
 	Das aktuelle BS/EDF$^+$-Sicherheitsmodell basiert auf LWE-Adressierung
-	(Satz~14.6) und Subgraph-IntegritÃ¤tsprÃ¼fung. Eine Erweiterung um
-	\emph{Capabilities} (im Sinne von seL4 oder CHERI) wÃ¼rde eine
-	fein\-granulare Zugriffskontrolle auf Objekt\-ebene ermÃ¶glichen:
+	(Satz~14.6) und Subgraph-Integritätsprüfung. Eine Erweiterung um
+	\emph{Capabilities} (im Sinne von seL4 oder CHERI) würde eine
+	fein\-granulare Zugriffskontrolle auf Objekt\-ebene ermöglichen:
 	Jede Capability $c = (o, p, \sigma)$ kodiert ein Objekt $o$,
 	eine Permissionsmaske $p$ und eine kryptographische Signatur $\sigma$
-	(Dilithium-3). Der Subgraph Algorithmus prÃ¼ft, ob der Capability-Graph
-	des anfragenden Tasks ein gÃ¼ltiger Subgraph des Ressourcen-Graphen ist --
-	eine natÃ¼rliche Erweiterung von Satz~14.2 auf Sicherheitspolicies.
+	(Dilithium-3). Der Subgraph Algorithmus prüft, ob der Capability-Graph
+	des anfragenden Tasks ein gültiger Subgraph des Ressourcen-Graphen ist --
+	eine natürliche Erweiterung von Satz~14.2 auf Sicherheitspolicies.
 	
-	\subsubsection{Isolierte AusfÃ¼hrungsumgebungen fÃ¼r AUTOSAR-Partitionen}
+	\subsubsection{Isolierte Ausführungsumgebungen für AUTOSAR-Partitionen}
 	
-	ISO~26262 \cite{ISO26262} fordert rÃ¤umliche und zeitliche
+	ISO~26262 \cite{ISO26262} fordert räumliche und zeitliche
 	Isolation zwischen AUTOSAR-Partitionen (ASIL-A bis ASIL-D).
 	BS/EDF$^+$ kann diese Isolation durch eine Kombination aus
 	(1) EDF$^+$-Time-Partitioning (zeitliche Isolation),
-	(2) LWE-gesicherter Speicheradressierung per Partition (rÃ¤umliche Isolation)
-	und (3) Subgraph-KompatibilitÃ¤tsprÃ¼fung vor jedem Treiberladen gewÃ¤hrleisten.
+	(2) LWE-gesicherter Speicheradressierung per Partition (räumliche Isolation)
+	und (3) Subgraph-Kompatibilitätsprüfung vor jedem Treiberladen gewährleisten.
 	Eine formale Verifikation dieser Drei-Ebenen-Isolation in Isabelle/HOL
-	wÃ¼rde eine ASIL-D-Zertifizierung von BS/EDF$^+$ ermÃ¶glichen --
+	würde eine ASIL-D-Zertifizierung von BS/EDF$^+$ ermöglichen --
 	eine erhebliche industrielle Wirkung.
 	
 	% ---------------------------------------------------------------
 	\subsection{Systemzustandsklassifikation und Echtzeit-Diagnostik}
 	% ---------------------------------------------------------------
 	
-	\subsubsection{Erweiterung der KS-Klassifikation auf fÃ¼nf Ebenen}
+	\subsubsection{Erweiterung der KS-Klassifikation auf fünf Ebenen}
 	
 	Das aktuelle Modell \cite{Epp2026sysstate} unterscheidet vier
-	SystemzustÃ¤nde KS-I (stabil) bis KS-IV (Ã¼berlastet). Eine Erweiterung
-	auf fÃ¼nf Ebenen durch Hinzunahme eines \emph{KS-V: Degradierter
-		Betrieb} wÃ¼rde qualitativ neue Reaktionsstrategien ermÃ¶glichen:
+	Systemzustände KS-I (stabil) bis KS-IV (überlastet). Eine Erweiterung
+	auf fünf Ebenen durch Hinzunahme eines \emph{KS-V: Degradierter
+		Betrieb} würde qualitativ neue Reaktionsstrategien ermöglichen:
 	Im KS-V-Zustand reduziert der Kernel proaktiv die Anzahl aktiver
-	Tasks auf eine sichere Teilmenge, die durch Lyapunov-StabilitÃ¤t
-	(Satz~14.4) garantiert stabil bleibt. Der Ãœbergang KS-IV $\to$
-	KS-V wÃ¤re durch eine Hysterese-Bedingung geregelt, um Flatter-Effekte
+	Tasks auf eine sichere Teilmenge, die durch Lyapunov-Stabilität
+	(Satz~14.4) garantiert stabil bleibt. Der Übergang KS-IV $\to$
+	KS-V wäre durch eine Hysterese-Bedingung geregelt, um Flatter-Effekte
 	zu vermeiden.
 	
 	\subsubsection{Echtzeit-Spektralanalyse der Systemzustands\-matrix}
 	
-	Satz~14.4 zeigt, dass Lyapunov-StabilitÃ¤t Ã¤quivalent zu
+	Satz~14.4 zeigt, dass Lyapunov-Stabilität äquivalent zu
 	$\max_i \mathrm{Re}(\lambda_i(A)) < 0$ ist. Eine kontinuierliche
-	Online-Ãœberwachung des Spektralradius $\rho(A)$ in Echtzeit erfordert
+	Online-Überwachung des Spektralradius $\rho(A)$ in Echtzeit erfordert
 	effiziente inkrementelle Eigenwertberechnung. Mit der
-	Borst-Golub-Reinsch-Methode fÃ¼r \emph{rank-1-updates} der
+	Borst-Golub-Reinsch-Methode für \emph{rank-1-updates} der
 	Systemmatrix $A \mapsto A + uv^T$ lassen sich
-	EigenwertÃ¤nderungen in $O(n^2)$ statt $O(n^3)$ berechnen --
-	ein wesentlicher Effizienzgewinn fÃ¼r den $n = 8$ Kern-Fall
+	Eigenwertänderungen in $O(n^2)$ statt $O(n^3)$ berechnen --
+	ein wesentlicher Effizienzgewinn für den $n = 8$ Kern-Fall
 	von PYMCA-8.
 	
 	% ---------------------------------------------------------------
-	\subsection{Langfristige Vision: BS/EDF\texorpdfstring{$^+$}{+} als offenes Ã–kosystem}
+	\subsection{Langfristige Vision: BS/EDF\texorpdfstring{$^+$}{+} als offenes Ökosystem}
 	% ---------------------------------------------------------------
 	
 	\subsubsection{Open-Source-Kernel-Implementierung}
 	
 	Alle in dieser Arbeit beschriebenen Algorithmen und Konzepte sind
 	implementierungsoffen und unter MIT-Lizenz auf
-	\texttt{github.com/hjstephan86/science/tree/main/science/} verÃ¶ffentlicht. Die nÃ¤chste Stufe
-	ist ein ausfÃ¼hrbarer Proof-of-Concept-Kernel in Rust:
+	\texttt{github.com/hjstephan86/science/tree/main/science/} veröffentlicht. Die nächste Stufe
+	ist ein ausführbarer Proof-of-Concept-Kernel in Rust:
 	
 	\begin{enumerate}
 		\item \textbf{Bootloader:} 16-Bit-Realmode $\to$ 32-Bit-Protected-Mode
 		$\to$ 64-Bit-Long-Mode, verifiziert in TLA$^+$.
 		\item \textbf{EDF$^+$-Scheduler:} Rust-\texttt{no\_std}-Implementierung
 		mit formaler Korrektheit durch Coq-Extraktion.
-		\item \textbf{Subgraph-Modul:} $O(n^3)$-Treiber-KompatibilitÃ¤tsprÃ¼fung
+		\item \textbf{Subgraph-Modul:} $O(n^3)$-Treiber-Kompatibilitätsprüfung
 		als Kernel-Subsystem.
 		\item \textbf{LWE-Speichertreiber:} CRYSTALS-Kyber-basierter
-		Page-Table-Walk fÃ¼r Hochsicherheitsseiten.
+		Page-Table-Walk für Hochsicherheitsseiten.
 		\item \textbf{IoFET-DVFS-Regler:} Sigmoid-Kurvenparametrisierung
 		mit Online-Temperatur\-korrektur.
 	\end{enumerate}
 	
-	\subsubsection{InteroperabilitÃ¤t mit Linux-Treibern via AUTOSAR-HAL}
+	\subsubsection{Interoperabilität mit Linux-Treibern via AUTOSAR-HAL}
 	
-	Eine vollstÃ¤ndige Neuentwicklung aller GerÃ¤tetreiber ist
+	Eine vollständige Neuentwicklung aller Gerätetreiber ist
 	mittelfristig nicht realistisch. Stattdessen kann BS/EDF$^+$
-	Ã¼ber eine \emph{Hardware Abstraction Layer} (HAL) kompatibel
+	über eine \emph{Hardware Abstraction Layer} (HAL) kompatibel
 	zu bestehenden Linux-Treibern (via AUTOSAR-HAL-Schicht,
 	\cite{Epp2026autsrepy}) gemacht werden: Linux-Treiber werden
-	als EDF$^+$-Tasks mit konservativ geschÃ¤tzten WCET-Werten
-	modelliert; Satz~14.2 prÃ¼ft KompatibilitÃ¤t automatisch.
-	Damit wird der Ãœbergang von Linux zu BS/EDF$^+$ zu einem
+	als EDF$^+$-Tasks mit konservativ geschätzten WCET-Werten
+	modelliert; Satz~14.2 prüft Kompatibilität automatisch.
+	Damit wird der Übergang von Linux zu BS/EDF$^+$ zu einem
 	inkrementellen Migrationspfad.
 	
-	\subsubsection{Referenzimplementierung fÃ¼r die Lehre}
+	\subsubsection{Referenzimplementierung für die Lehre}
 	
 	BS/EDF$^+$ ist als Lehrgegenstand in Betriebssystem-Vorlesungen
 	besonders geeignet, weil alle Konzepte -- EDF-Scheduling,
 	formale Verifikation, Kryptographie, Graphenalgorithmen --
-	in einem kohÃ¤renten Rahmen zusammengefÃ¼hrt werden.
+	in einem kohärenten Rahmen zusammengeführt werden.
 	Eine \emph{QEMU-basierte Lehrumgebung} mit vorkompilierten
-	Kernel-Images und schrittweisem Debugger wÃ¼rde Studierenden
-	ermÃ¶glichen, jeden der sechs HauptsÃ¤tze dieser Arbeit
+	Kernel-Images und schrittweisem Debugger würde Studierenden
+	ermöglichen, jeden der sechs Hauptsätze dieser Arbeit
 	direkt am laufenden System zu beobachten.
 	
 	% ---------------------------------------------------------------
@@ -3029,29 +3029,29 @@ class Driver:
 	Mit der zunehmenden Digitalisierung kritischer Infrastrukturen
 	(Energienetze, Wasserversorgung, autonome Fahrzeuge) steigt der
 	Bedarf an formal verifizierten Betriebssystemen dramatisch.
-	BS/EDF$^+$ bietet einen Weg, wie ein vollstÃ¤ndig beweisbares
-	Echtzeit-OS fÃ¼r ASIL-D-Systeme aussehen kÃ¶nnte -- ein Beitrag,
-	der weit Ã¼ber die akademische Forschung hinausgeht.
+	BS/EDF$^+$ bietet einen Weg, wie ein vollständig beweisbares
+	Echtzeit-OS für ASIL-D-Systeme aussehen könnte -- ein Beitrag,
+	der weit über die akademische Forschung hinausgeht.
 	
 	\subsubsection{Software-Defined Vehicles}
 	
 	Die AUTOSAR-OTA-Architektur \cite{Epp2026autsre} und 
 	EDF$^+$-basierte Treiber-Validierung (Satz~14.2) sind direkte
-	Bausteine fÃ¼r Software-Defined Vehicles (SDV): Fahrzeuge, deren
-	gesamte FunktionalitÃ¤t durch Software definiert und Ã¼ber-the-air
-	aktualisiert wird. BS/EDF$^+$ liefert das formale Fundament fÃ¼r
-	die Sicherheitsnachweise, die regulatorische ZulassungsbehÃ¶rden
-	(KBA, UN-ECE WP.29) fÃ¼r SDV-Systeme fordern werden.
+	Bausteine für Software-Defined Vehicles (SDV): Fahrzeuge, deren
+	gesamte Funktionalität durch Software definiert und über-the-air
+	aktualisiert wird. BS/EDF$^+$ liefert das formale Fundament für
+	die Sicherheitsnachweise, die regulatorische Zulassungsbehörden
+	(KBA, UN-ECE WP.29) für SDV-Systeme fordern werden.
 	
 	\subsubsection{Quantensichere Infrastruktur bis 2035}
 	
-	Satz~14.6 positioniert BS/EDF$^+$ als frÃ¼hen Vertreter
+	Satz~14.6 positioniert BS/EDF$^+$ als frühen Vertreter
 	einer Generation von Betriebssystemen, die bereits heute
-	gegen zukÃ¼nftige Quantenangriffe gehÃ¤rtet sind. Mit der
-	bevorstehenden Migration nationaler SicherheitsbehÃ¶rden
+	gegen zukünftige Quantenangriffe gehärtet sind. Mit der
+	bevorstehenden Migration nationaler Sicherheitsbehörden
 	auf Post-Quanten-Kryptographie (BSI TR-02102, NIST SP 800-208)
 	ist die in dieser Arbeit entwickelte LWE-Speicheradressierung
-	ein zeitgemÃ¤ÃŸer und zukunftssicherer Ansatz.
+	ein zeitgemäßer und zukunftssicherer Ansatz.
 	
 	\begin{bemerkung}
 		Die in diesem Ausblick beschriebenen Forschungsziele sind nicht
@@ -3060,7 +3060,7 @@ class Driver:
 		sind parallel verfolgbar und gegenseitig bereichernd.
 		BS/EDF$^+$ ist kein abgeschlossenes System, sondern ein
 		lebendiges Forschungsprogramm, dessen innere Konsistenz durch
-		die sechs HauptsÃ¤tze dieser Arbeit garantiert wird.
+		die sechs Hauptsätze dieser Arbeit garantiert wird.
 	\end{bemerkung}
 	
 	% ==============================================================
@@ -3158,85 +3158,85 @@ class Driver:
 		
 		\bibitem{Epp2026edfplus}
 		S.\ Epp,
-		\textit{Optimaler Scheduling-Algorithmus EDF$^+$: PrioritÃ¤tsstrafe und
-		stochastische Analyse bei 40 Tasks}, 2026. VerfÃ¼gbar auf
+		\textit{Optimaler Scheduling-Algorithmus EDF$^+$: Prioritätsstrafe und
+		stochastische Analyse bei 40 Tasks}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/edfplus}
 		
 		\bibitem{Epp2026pymca8}
 		S.\ Epp,
-		\textit{PYMCA-8: Python Multi-Core Architecture 8}, 2026. VerfÃ¼gbar auf
+		\textit{PYMCA-8: Python Multi-Core Architecture 8}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/pymca8}
 		
 		\bibitem{Epp2026msubgraph}
 		S.\ Epp,
-		\textit{The Hierarchical Subgraph-DFS Algorithm}, 2026. VerfÃ¼gbar auf
+		\textit{The Hierarchical Subgraph-DFS Algorithm}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science}
 		
 		\bibitem{Epp2026subgraph}
 		S.\ Epp,
-		\textit{Der Subgraph Algorithmus: Graph-Profile und $O(n^3)$-Isomorphismus}, 2026. VerfÃ¼gbar auf \texttt{github.com/hjstephan86/science}
+		\textit{Der Subgraph Algorithmus: Graph-Profile und $O(n^3)$-Isomorphismus}, 2026. Verfügbar auf \texttt{github.com/hjstephan86/science}
 		
 		\bibitem{Epp2026boolmm}
 		S.\ Epp,
-		\textit{Boolesche Matrixmultiplikation in $O(n^{2.37})$}, 2026. VerfÃ¼gbar auf \texttt{github.com/hjstephan86/science/tree/main/science/bool-mm}
+		\textit{Boolesche Matrixmultiplikation in $O(n^{2.37})$}, 2026. Verfügbar auf \texttt{github.com/hjstephan86/science/tree/main/science/bool-mm}
 		
 		\bibitem{Epp2026archv}
 		S.\ Epp,
-		\textit{Das stochastische Archiv-Problem: Optimaler Batch-Timer}, 2026. VerfÃ¼gbar auf
+		\textit{Das stochastische Archiv-Problem: Optimaler Batch-Timer}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/archv}
 		
 		\bibitem{Epp2026sysstate}
 		S.\ Epp,
-		\textit{Dynamische Systemzustandsklassifikation KS-I bis KS-IV}, 2026. VerfÃ¼gbar auf
+		\textit{Dynamische Systemzustandsklassifikation KS-I bis KS-IV}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/sysstate}
 		
 		\bibitem{Epp2026dusgraph}
 		S.\ Epp,
-		\textit{Dateisystem-Deduplizierung via Subgraph-Isomorphismus}, 2026. VerfÃ¼gbar auf
+		\textit{Dateisystem-Deduplizierung via Subgraph-Isomorphismus}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/dusgraph}
 		
 		\bibitem{Epp2026autsre}
 		S.\ Epp,
-		\textit{AUTOSAR OTA-Update-Architektur fÃ¼r Software-Defined Vehicles}, 2026. VerfÃ¼gbar auf
+		\textit{AUTOSAR OTA-Update-Architektur für Software-Defined Vehicles}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/autsre}
 		
 		\bibitem{Epp2026autsrepy}
 		S.\ Epp,
-		\textit{AUTOSAR Python-Treiber-Framework}, 2026. VerfÃ¼gbar auf
+		\textit{AUTOSAR Python-Treiber-Framework}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/autsrepy}
 		
 		\bibitem{Epp2026ethercate}
 		S.\ Epp,
-		\textit{EHAE: EtherCAT Hardware Abstraction Extension}, 2026. VerfÃ¼gbar auf
+		\textit{EHAE: EtherCAT Hardware Abstraction Extension}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/ethercate}
 		
 		\bibitem{Epp2026liionp}
 		S.\ Epp,
-		\textit{KI-gestÃ¼tztes Power Management Model fÃ¼r Lithium-Ionen-Akkumulatoren}, 2026. VerfÃ¼gbar auf \texttt{github.com/hjstephan86/science/tree/main/science/liionp}
+		\textit{KI-gestütztes Power Management Model für Lithium-Ionen-Akkumulatoren}, 2026. Verfügbar auf \texttt{github.com/hjstephan86/science/tree/main/science/liionp}
 		
 		\bibitem{Epp2026iono}
 		S.\ Epp,
-		\textit{Ionische Feldeffekttransistoren (IoFET) und Sigmoid-DVFS}, 2026. VerfÃ¼gbar auf
+		\textit{Ionische Feldeffekttransistoren (IoFET) und Sigmoid-DVFS}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/iono}
 		
 		\bibitem{Epp2026pqc}
 		S.\ Epp,
-		\textit{Post-Quanten-Kryptographie: LWE und Gitter-basierte Adressierung}, 2026. VerfÃ¼gbar auf
+		\textit{Post-Quanten-Kryptographie: LWE und Gitter-basierte Adressierung}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/pqc}
 		
 		\bibitem{Epp2026physd}
 		S.\ Epp,
-		\textit{Physikalische Grundlagen digitaler Schaltkreise}, 2026. VerfÃ¼gbar auf
+		\textit{Physikalische Grundlagen digitaler Schaltkreise}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/physd}
 		
 		\bibitem{Epp2026signalth}
 		S.\ Epp,
-		\textit{Signaltheorie: Fourier-Transformation und Abtasttheorem}, 2026. VerfÃ¼gbar auf
+		\textit{Signaltheorie: Fourier-Transformation und Abtasttheorem}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/signalth}
 		
 		\bibitem{Epp2026mobde}
 		S.\ Epp,
-		\textit{Mobile Betriebssystem-Dateisystem-Architektur}, 2026. VerfÃ¼gbar auf
+		\textit{Mobile Betriebssystem-Dateisystem-Architektur}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/mobde}
 		
 		\bibitem{Sha1990}
@@ -3273,8 +3273,8 @@ class Driver:
 
 		\bibitem{Epp2026vadis}
 		S.\ Epp,
-		\textit{Skalierbare Vektorisierung und KI-gestÃ¼tzte Strukturierung heterogener
-		GroÃŸdaten: Ein Framework fÃ¼r On-Demand-Darstellung (VADIS)}, 2026. VerfÃ¼gbar auf
+		\textit{Skalierbare Vektorisierung und KI-gestützte Strukturierung heterogener
+		Großdaten: Ein Framework für On-Demand-Darstellung (VADIS)}, 2026. Verfügbar auf
 		\texttt{github.com/hjstephan86/science/tree/main/science/vadis}
 		
 	\end{thebibliography}

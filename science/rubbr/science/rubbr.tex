@@ -43,7 +43,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Bemerkung}
 
-% ----- AbkÃ¼rzungen ----------------------------------------
+% ----- Abkürzungen ----------------------------------------
 \newcommand{\ECU}{\mathrm{ECU}}
 \newcommand{\CPS}{\mathrm{CPS}}   % Central Pressure System
 \newcommand{\SCS}{\mathrm{SCS}}   % Steering Control System
@@ -59,7 +59,7 @@
 \title{\textbf{Maximale Lebensdauer von Gummibereifung in der Automobilindustrie}}
 
 \author{Stephan Epp}
-\date{05. MÃ¤rz 2026}
+\date{05. März 2026}
 
 % ===========================================================
 \begin{document}
@@ -75,66 +75,66 @@
 \section{Einleitung und Motivation}
 
 Die vorliegende Arbeit untersucht drei aufeinander abgestimmte
-elektronische SteuergerÃ¤tekonzepte (ECUs) zur Maximierung der
+elektronische Steuergerätekonzepte (ECUs) zur Maximierung der
 Lebensdauer von Kraftfahrzeugreifen.
 
 \textbf{Konzept~1} beschreibt ein \emph{Zentrales Reifendruckregelungssystem} (CRDS),
-das bei eingeschalteter ZÃ¼ndung Ã¼ber eine einzige ZentralbefÃ¼llungsanlage am Fahrzeug
-einen lastadaptiven, temperaturkompensierten Reifeninnendruck einstellt und hÃ¤lt.
+das bei eingeschalteter Zündung über eine einzige Zentralbefüllungsanlage am Fahrzeug
+einen lastadaptiven, temperaturkompensierten Reifeninnendruck einstellt und hält.
 Es wird formal bewiesen, dass jede Abweichung vom optimalen Betriebsdruck
 die Reifenlebensdauer monoton verringert.
 
-\textbf{Konzept~2} beschreibt ein \emph{LenksteuergerÃ¤t} (SCS -- Steering Control
-System), das Ã¼ber eine modellprÃ¤diktive Trajektorienplanung den SchrÃ¤glaufwinkel
+\textbf{Konzept~2} beschreibt ein \emph{Lenksteuergerät} (SCS -- Steering Control
+System), das über eine modellprädiktive Trajektorienplanung den Schräglaufwinkel
 und die Querkraft auf die Reifen minimiert und damit Latsch-Mikroschlupf
-sowie thermischen VerschleiÃŸ reduziert.
+sowie thermischen Verschleiß reduziert.
 
-\textbf{Konzept~3} beschreibt ein \emph{Lastausgleichs-SteuergerÃ¤t} (LCS -- Load
-Control System), das die Achslastverteilung in Echtzeit Ã¼berwacht, dem Fahrer
-Beladungshinweise gibt und Ã¼ber aktive Federung die dynamische Radlast
+\textbf{Konzept~3} beschreibt ein \emph{Lastausgleichs-Steuergerät} (LCS -- Load
+Control System), das die Achslastverteilung in Echtzeit überwacht, dem Fahrer
+Beladungshinweise gibt und über aktive Federung die dynamische Radlast
 nivelliert.
 
-FÃ¼r jedes Konzept werden physikalische Grundlagen, mathematische Modelle,
-Optimierungsformulierungen und formale Beweise ausgefÃ¼hrt.
-AbschlieÃŸend wird die kombinierte Wirkung aller drei Systeme durch
+Für jedes Konzept werden physikalische Grundlagen, mathematische Modelle,
+Optimierungsformulierungen und formale Beweise ausgeführt.
+Abschließend wird die kombinierte Wirkung aller drei Systeme durch
 ein Gesamtlebensdauermodell zusammengefasst und quantifiziert.
 
-\textbf{SchlÃ¼sselwÃ¶rter:}
+\textbf{Schlüsselwörter:}
 Reifenlebensdauer, Reifendruck, Lenkkinematik, Lastverteilung,
-ReifenverschleiÃŸ, SteuergerÃ¤t, ECU, Kraftfahrzeug, Tribologie,
+Reifenverschleiß, Steuergerät, ECU, Kraftfahrzeug, Tribologie,
 Regelungstechnik.
 
 \subsection{Ausgangssituation}
 
 Kraftfahrzeugreifen sind das einzige Bindeglied zwischen Fahrzeug und Fahrbahn.
-Ihre Lebensdauer wird durch eine Vielzahl von EinflÃ¼ssen bestimmt:
+Ihre Lebensdauer wird durch eine Vielzahl von Einflüssen bestimmt:
 
 \begin{itemize}[nosep]
-  \item Reifeninnendruck (Unter- bzw.\ Ãœberdruck fÃ¼hren zu ungleichmÃ¤ÃŸigem Abrieb),
-  \item Lenkgeometrie und SchrÃ¤glaufwinkel (erzeugen SeitenkrÃ¤fte und Latschmikroschlupf),
-  \item Radlasten und deren Verteilung auf alle Achsen (Ãœberlastung einzelner Reifen),
+  \item Reifeninnendruck (Unter- bzw.\ Überdruck führen zu ungleichmäßigem Abrieb),
+  \item Lenkgeometrie und Schräglaufwinkel (erzeugen Seitenkräfte und Latschmikroschlupf),
+  \item Radlasten und deren Verteilung auf alle Achsen (Überlastung einzelner Reifen),
   \item Fahrgeschwindigkeit und Fahrstil,
-  \item Umgebungstemperatur und FahrbahnoberflÃ¤chenbeschaffenheit.
+  \item Umgebungstemperatur und Fahrbahnoberflächenbeschaffenheit.
 \end{itemize}
 
-Die wirtschaftliche Bedeutung ist erheblich: In der EU werden jÃ¤hrlich ca.\ 450
+Die wirtschaftliche Bedeutung ist erheblich: In der EU werden jährlich ca.\ 450
 Millionen PKW-Reifen verbraucht~\cite{ETRMA2023}. Ein Anstieg der durchschnittlichen
-Reifenlebensdauer um nur 15\,\% wÃ¼rde den jÃ¤hrlichen Ressourcenverbrauch um ca.\ 67,5
+Reifenlebensdauer um nur 15\,\% würde den jährlichen Ressourcenverbrauch um ca.\ 67,5
 Millionen Reifen verringern. Hinzu kommen Effizienzgewinne durch geringeren Rollwiderstand
 bei optimalem Reifendruck~\cite{Sandberg2011}.
 
 \subsection{Zielsetzung der Arbeit}
 
-Diese Arbeit verfolgt drei komplementÃ¤re Ziele:
+Diese Arbeit verfolgt drei komplementäre Ziele:
 
 \begin{enumerate}
   \item \textbf{Reifendruckregelung:} Formal-mathematischen Nachweis erbringen, dass
-        eine zentrale, steuergerÃ¤tgefÃ¼hrte Druckregelung bei eingeschalteter ZÃ¼ndung
-        die Reifenlebensdauer gegenÃ¼ber manueller Druckpflege maximiert.
-  \item \textbf{Lenksteuerung:} Nachweis, dass ein modellprÃ¤diktiver Lenkungsregler
-        die reifenschÃ¤digenden SeitenkrÃ¤fte und SchrÃ¤glaufwinkel Ã¼ber den gesamten
+        eine zentrale, steuergerätgeführte Druckregelung bei eingeschalteter Zündung
+        die Reifenlebensdauer gegenüber manueller Druckpflege maximiert.
+  \item \textbf{Lenksteuerung:} Nachweis, dass ein modellprädiktiver Lenkungsregler
+        die reifenschädigenden Seitenkräfte und Schräglaufwinkel über den gesamten
         Fahrzyklus minimiert.
-  \item \textbf{Lastausgleich:} Nachweis, dass eine gleichmÃ¤ÃŸige dynamische Radlastverteilung
+  \item \textbf{Lastausgleich:} Nachweis, dass eine gleichmäßige dynamische Radlastverteilung
         durch ein aktives Fahrwerk- und Beladungshinweissystem die Gesamtreifenlebensdauer
         eines Reifensatzes maximiert.
 \end{enumerate}
@@ -142,11 +142,11 @@ Diese Arbeit verfolgt drei komplementÃ¤re Ziele:
 \subsection{Aufbau der Arbeit}
 
 Abschnitt~\ref{sec:grundlagen} legt die physikalischen und tribologischen Grundlagen
-des ReifenverschleiÃŸes dar. Die Abschnitte~\ref{sec:crds}, \ref{sec:scs} und
-\ref{sec:lcs} behandeln die drei ECU-Konzepte mit vollstÃ¤ndigem mathematischen Apparat
+des Reifenverschleißes dar. Die Abschnitte~\ref{sec:crds}, \ref{sec:scs} und
+\ref{sec:lcs} behandeln die drei ECU-Konzepte mit vollständigem mathematischen Apparat
 und formalen Beweisen. Abschnitt~\ref{sec:gesamtmodell} fasst das Gesamtmodell zusammen.
 Abschnitt~\ref{sec:schluss} gibt Schlussfolgerungen und einen Ausblick.
-Das Quellenverzeichnis am Ende der Arbeit ist vollstÃ¤ndig und inline eingebettet.
+Das Quellenverzeichnis am Ende der Arbeit ist vollständig und inline eingebettet.
 
 % ===========================================================
 \section{Physikalische und Tribologische Grundlagen}
@@ -156,8 +156,8 @@ Das Quellenverzeichnis am Ende der Arbeit ist vollstÃ¤ndig und inline eingebet
 
 \subsubsection{Latschgeometrie und Kontaktdruck}
 
-Der Reifenlatsch (KontaktflÃ¤che Reifenâ€“Fahrbahn) kann fÃ¼r einen pneumatischen
-Reifen unter der vereinfachenden Annahme einer rechteckigen FlÃ¤che modelliert
+Der Reifenlatsch (Kontaktfläche Reifenâ€“Fahrbahn) kann für einen pneumatischen
+Reifen unter der vereinfachenden Annahme einer rechteckigen Fläche modelliert
 werden~\cite{Pacejka2012}:
 
 \begin{equation}
@@ -166,15 +166,15 @@ werden~\cite{Pacejka2012}:
 \end{equation}
 
 wobei $\Fz$ die Radlast [\si{\newton}] und $p_i$ der Reifeninnendruck
-[\si{\pascal}] sind. Der mittlere Kontaktdruck $\sigma_0$ betrÃ¤gt dann:
+[\si{\pascal}] sind. Der mittlere Kontaktdruck $\sigma_0$ beträgt dann:
 
 \begin{equation}
   \sigma_0 = \frac{\Fz}{A_{\mathrm{latsch}}} = p_i
   \label{eq:kontaktdruck}
 \end{equation}
 
-Diese NÃ¤herung ist fÃ¼r Standardreifen bis ca.\ $\pm 20$\,\% des Nenndrucks
-valide~\cite{Gent2006}. Eine prÃ¤zisere Modellierung berÃ¼cksichtigt die
+Diese Näherung ist für Standardreifen bis ca.\ $\pm 20$\,\% des Nenndrucks
+valide~\cite{Gent2006}. Eine präzisere Modellierung berücksichtigt die
 Karkassensteifigkeit $k_c$:
 
 \begin{equation}
@@ -184,11 +184,11 @@ Karkassensteifigkeit $k_c$:
 
 wobei $r_d$ den dynamischen Reifenrollradius bezeichnet.
 
-\subsubsection{SchrÃ¤glauftheorie nach Pacejka}
+\subsubsection{Schräglauftheorie nach Pacejka}
 
 Der laterale Kraftaufbau im Reifen folgt dem \emph{Magic Formula}-Modell
-von Pacejka, siehe dazu \cite{Pacejka2012}. FÃ¼r die Seitenkraft $F_y$ als Funktion des
-SchrÃ¤glaufwinkels $\alpha$ gilt:
+von Pacejka, siehe dazu \cite{Pacejka2012}. Für die Seitenkraft $F_y$ als Funktion des
+Schräglaufwinkels $\alpha$ gilt:
 
 \begin{equation}
   F_y(\alpha) = D \cdot \sin\!\bigl[C \cdot \arctan\!\bigl(B\alpha - E(B\alpha
@@ -199,31 +199,31 @@ SchrÃ¤glaufwinkels $\alpha$ gilt:
 Hierbei sind:
 \begin{itemize}[nosep]
   \item $B$ -- Steifigkeitsfaktor,
-  \item $C$ -- Formfaktor (typisch $C \approx 1{,}3$ fÃ¼r SeitenkrÃ¤fte),
+  \item $C$ -- Formfaktor (typisch $C \approx 1{,}3$ für Seitenkräfte),
   \item $D$ -- Spitzenwert der Seitenkraft,
-  \item $E$ -- KrÃ¼mmungsfaktor.
+  \item $E$ -- Krümmungsfaktor.
 \end{itemize}
 
-\subsection{ReifenverschleiÃŸmodell}
+\subsection{Reifenverschleißmodell}
 
-\subsubsection{Archard-Modell fÃ¼r Reifenabrieb}
+\subsubsection{Archard-Modell für Reifenabrieb}
 
-Reifenabrieb ist primÃ¤r AdhÃ¤sions- und AbrasivverschleiÃŸ. Das klassische
-Archard-VerschleiÃŸ\-gesetz~\cite{Archard1953} lautet:
+Reifenabrieb ist primär Adhäsions- und Abrasivverschleiß. Das klassische
+Archard-Verschleiß\-gesetz~\cite{Archard1953} lautet:
 
 \begin{equation}
   \dot{V}_w = k_w \cdot \frac{\Fz \cdot v_s}{H}
   \label{eq:archard}
 \end{equation}
 
-wobei $\dot{V}_w$ das VolumenverschleiÃŸrate [\si{\metre\cubed\per\second}],
-$k_w$ der VerschleiÃŸkoeffizient (Archard-Konstante), $v_s$ die
+wobei $\dot{V}_w$ das Volumenverschleißrate [\si{\metre\cubed\per\second}],
+$k_w$ der Verschleißkoeffizient (Archard-Konstante), $v_s$ die
 Schlupfgeschwindigkeit [\si{\metre\per\second}] und $H$ die
-ReifengummihÃ¤rte [\si{\pascal}] sind.
+Reifengummihärte [\si{\pascal}] sind.
 
-\subsubsection{Energetisches VerschleiÃŸmodell}
+\subsubsection{Energetisches Verschleißmodell}
 
-Moderner und fÃ¼r Reifen prÃ¤ziser ist das energetische Modell nach
+Moderner und für Reifen präziser ist das energetische Modell nach
 Schallamach und Grosch \cite{Schallamach1971}, \cite{Grosch1963}:
 
 \begin{equation}
@@ -231,11 +231,11 @@ Schallamach und Grosch \cite{Schallamach1971}, \cite{Grosch1963}:
   \label{eq:energetisch}
 \end{equation}
 
-wobei $\dot{m}_w$ die MasseverschleiÃŸrate, $k_E$ der energetische
-VerschleiÃŸkoeffizient, $p$ der lokale Kontaktdruck und $v_s$ die lokale
+wobei $\dot{m}_w$ die Masseverschleißrate, $k_E$ der energetische
+Verschleißkoeffizient, $p$ der lokale Kontaktdruck und $v_s$ die lokale
 Schlupfgeschwindigkeit sind.
 
-\subsubsection{Reifenlebensdauer als integrierte GrÃ¶ÃŸe}
+\subsubsection{Reifenlebensdauer als integrierte Größe}
 
 Die Gesamtlebensdauer eines Reifens $\Ltire$ wird definiert als der
 Zeitpunkt, an dem die Profiltiefe $h(t)$ den gesetzlich vorgeschriebenen
@@ -264,7 +264,7 @@ Schlupfleistungsdichte:
 
 mit der reifenspezifischen Konstante $c_h > 0$.
 
-\subsection{TemperaturabhÃ¤ngigkeit}
+\subsection{Temperaturabhängigkeit}
 
 Die Reifentemperatur $T_r$ beeinflusst $k_E$ exponentiell (WLF-Gesetz~\cite{Williams1955}):
 
@@ -275,7 +275,7 @@ Die Reifentemperatur $T_r$ beeinflusst $k_E$ exponentiell (WLF-Gesetz~\cite{Will
 \end{equation}
 
 mit den WLF-Konstanten $C_1 \approx 17{,}44$, $C_2 \approx 51{,}6$\,K
-(bezogen auf $T_{\mathrm{ref}} = T_g + 50$\,K, $T_g$ = GlasÃ¼bergangstemperatur).
+(bezogen auf $T_{\mathrm{ref}} = T_g + 50$\,K, $T_g$ = Glasübergangstemperatur).
 
 % ===========================================================
 \section{Konzept 1: Zentrales Reifendruckregelungssystem (CRDS)}
@@ -285,26 +285,26 @@ mit den WLF-Konstanten $C_1 \approx 17{,}44$, $C_2 \approx 51{,}6$\,K
 
 Das CRDS umfasst:
 \begin{itemize}
-  \item Eine zentrale Hochdruckpumpe und einen LuftbehÃ¤lter ($p_{\max}$
+  \item Eine zentrale Hochdruckpumpe und einen Luftbehälter ($p_{\max}$
         $\approx$ \SI{10}{\bar}) mit elektromagnetischen Sperrventilen,
-  \item Je einen DrehÃ¼bertrager (rotierender Schlauchanschluss) pro Achse,
-  \item Raddrucksensoren an allen vier RÃ¤dern,
-  \item Temperatursensoren im Reifeninnern oder NÃ¤herungsschÃ¤tzung via
-        WÃ¤rmemodell,
+  \item Je einen Drehübertrager (rotierender Schlauchanschluss) pro Achse,
+  \item Raddrucksensoren an allen vier Rädern,
+  \item Temperatursensoren im Reifeninnern oder Näherungsschätzung via
+        Wärmemodell,
   \item Einen zentralen Mikrokontroller (CRDS-ECU) mit CAN-Bus-Anbindung,
-  \item Ablassventile zum kontrollierten Druckablassen bei Ãœberdruck.
+  \item Ablassventile zum kontrollierten Druckablassen bei Überdruck.
 \end{itemize}
 
-Das System ist nur aktiv, wenn ZÃ¼ndung EIN und Fahrzeuggeschwindigkeit
-$v < v_{\mathrm{threshold}}$ oder der Druck auÃŸerhalb des Toleranzbandes liegt.
+Das System ist nur aktiv, wenn Zündung EIN und Fahrzeuggeschwindigkeit
+$v < v_{\mathrm{threshold}}$ oder der Druck außerhalb des Toleranzbandes liegt.
 
 \subsection{Optimaler Reifeninnendruck}
 
-\subsubsection{DruckabhÃ¤ngige VerschleiÃŸrate}
+\subsubsection{Druckabhängige Verschleißrate}
 
-Aus dem Latschmodell (Gl.~\ref{eq:latsch}) und dem VerschleiÃŸmodell
-(Gl.~\ref{eq:energetisch}) folgt die druckabhÃ¤ngige VerschleiÃŸrate.
-FÃ¼r einen symmetrischen Latsch (keine SchrÃ¤glaufkraft) gilt mit dem
+Aus dem Latschmodell (Gl.~\ref{eq:latsch}) und dem Verschleißmodell
+(Gl.~\ref{eq:energetisch}) folgt die druckabhängige Verschleißrate.
+Für einen symmetrischen Latsch (keine Schräglaufkraft) gilt mit dem
 Rollschlupf $\kappa$ (typisch $|\kappa| < 1$\,\%):
 
 \begin{equation}
@@ -312,9 +312,9 @@ Rollschlupf $\kappa$ (typisch $|\kappa| < 1$\,\%):
   \label{eq:hdot_pi}
 \end{equation}
 
-wobei $f_{\mathrm{dist}}(p_i)$ die druckabhÃ¤ngige Verteilungsfunktion der
-Kontaktspannung beschreibt. Bei Unterdruck bildet sich eine RandlasthÃ¶hung
-(``Trogform''), bei Ãœberdruck eine MittenlasthÃ¶hung (``Kugelform'')~\cite{Gent2006}:
+wobei $f_{\mathrm{dist}}(p_i)$ die druckabhängige Verteilungsfunktion der
+Kontaktspannung beschreibt. Bei Unterdruck bildet sich eine Randlasthöhung
+(``Trogform''), bei Überdruck eine Mittenlasthöhung (``Kugelform'')~\cite{Gent2006}:
 
 \begin{equation}
   f_{\mathrm{dist}}(p_i) = 1 + \beta \left(\frac{p_i - \pref}{\pref}\right)^2,
@@ -324,9 +324,9 @@ Kontaktspannung beschreibt. Bei Unterdruck bildet sich eine RandlasthÃ¶hung
 
 Das Minimum liegt bei $p_i = \pref$ mit $f_{\mathrm{dist}}(\pref) = 1$.
 
-\begin{theorem}[Optimaler Reifendruck minimiert VerschleiÃŸ]
+\begin{theorem}[Optimaler Reifendruck minimiert Verschleiß]
 \label{thm:pressure}
-Sei $\dot{h}(p_i)$ gemÃ¤ÃŸ Gl.~\eqref{eq:hdot_pi}--\eqref{eq:fdist} mit
+Sei $\dot{h}(p_i)$ gemäß Gl.~\eqref{eq:hdot_pi}--\eqref{eq:fdist} mit
 $\beta > 0$. Dann gilt:
 \begin{equation}
   \dot{h}(\pref) \leq \dot{h}(p_i) \quad \forall\, p_i > 0
@@ -337,7 +337,7 @@ und $\Ltire(p_i)$ ist maximal bei $p_i = \pref$.
 
 \begin{proof}
 Da $c_h > 0$, $\Fz > 0$ und $|\kappa| \geq 0$ sind konstante positive Faktoren,
-genÃ¼gt es, $f_{\mathrm{dist}}(p_i)$ zu minimieren.
+genügt es, $f_{\mathrm{dist}}(p_i)$ zu minimieren.
 Es gilt:
 \begin{equation}
   f_{\mathrm{dist}}(p_i) = 1 + \beta \underbrace{\left(\frac{p_i - \pref}{\pref}\right)^2}_{\geq\, 0}
@@ -348,7 +348,7 @@ $p_i = \pref$ angenommen. Aus \eqref{eq:profiltiefe} folgt:
 \begin{equation}
   h(t; p_i) = h_0 - \int_0^t \dot{h}(p_i)\,\mathrm{d}\tau
             = h_0 - \dot{h}(p_i) \cdot t
-  \quad\text{(fÃ¼r konstantes $p_i$)}
+  \quad\text{(für konstantes $p_i$)}
 \end{equation}
 Aus $h(t; p_i) = h_{\min}$ folgt:
 \begin{equation}
@@ -362,9 +362,9 @@ Da $\dot{h}(p_i) \geq \dot{h}(\pref)$, gilt:
 Also ist $\Ltire$ maximal bei $p_i = \pref$.
 \end{proof}
 
-\subsection{LastabhÃ¤ngige Druckkorrektur}
+\subsection{Lastabhängige Druckkorrektur}
 
-Der optimale Druck ist last- und temperaturabhÃ¤ngig. Die ReferenzgrÃ¶ÃŸe lautet:
+Der optimale Druck ist last- und temperaturabhängig. Die Referenzgröße lautet:
 
 \begin{equation}
   \pref(\Fz, T_r) = p_0 \cdot \frac{\Fz}{F_{z,\mathrm{ref}}} \cdot
@@ -373,7 +373,7 @@ Der optimale Druck ist last- und temperaturabhÃ¤ngig. Die ReferenzgrÃ¶ÃŸe 
 \end{equation}
 
 Dabei ist $p_0$ der Referenzdruck bei Nennlast $F_{z,\mathrm{ref}}$ und
-Referenztemperatur $T_{r,\mathrm{ref}}$ (Ã¼blicherweise \SI{20}{\celsius}).
+Referenztemperatur $T_{r,\mathrm{ref}}$ (üblicherweise \SI{20}{\celsius}).
 Die Temperaturkorrektur folgt dem idealen Gasgesetz (Gay-Lussac).
 
 \subsection{Regelungsgesetz des CRDS-ECU}
@@ -386,28 +386,28 @@ Der diskrete Regelkreis (Abtastintervall $T_s$) lautet:
        \label{eq:crds_pid}
 \end{align}
 
-mit der StellgrÃ¶ÃŸe $u_k \in \{-1, 0, +1\}$ (Ablassen, Halten, BefÃ¼llen).
-Der Beweis der StabilitÃ¤t und StationÃ¤rgenauigkeit dieses PID-Reglers
-folgt aus dem Nyquist-Kriterium fÃ¼r das diskrete System~\cite{Astrom1997}.
+mit der Stellgröße $u_k \in \{-1, 0, +1\}$ (Ablassen, Halten, Befüllen).
+Der Beweis der Stabilität und Stationärgenauigkeit dieses PID-Reglers
+folgt aus dem Nyquist-Kriterium für das diskrete System~\cite{Astrom1997}.
 
-\subsubsection{StabilitÃ¤tsbeweis des Druckreglers}
+\subsubsection{Stabilitätsbeweis des Druckreglers}
 
-\begin{theorem}[StabilitÃ¤t des CRDS-Reglers]
+\begin{theorem}[Stabilität des CRDS-Reglers]
 \label{thm:crds_stability}
 Der PI-Druckregler (Gl.~\eqref{eq:crds_e}--\eqref{eq:crds_pid}) konvergiert
-fÃ¼r das PT1-Streckenmodell der pneumatischen Strecke gegen den stationÃ¤ren
-Sollwert $\pref$, wenn die ReglerverstÃ¤rkungen $K_P$, $K_I$ so gewÃ¤hlt sind,
+für das PT1-Streckenmodell der pneumatischen Strecke gegen den stationären
+Sollwert $\pref$, wenn die Reglerverstärkungen $K_P$, $K_I$ so gewählt sind,
 dass alle Pole des geschlossenen Kreises innerhalb des Einheitskreises liegen.
 \end{theorem}
 
 \begin{proof}
-Das Streckenmodell (BefÃ¼llung durch ein Magnetventil in ein
+Das Streckenmodell (Befüllung durch ein Magnetventil in ein
 Volumen $V$ mit Widerstand $R_v$) ist ein PT1-Glied:
 \begin{equation}
   G(s) = \frac{K_{str}}{1 + T_{str} s}, \quad
   T_{str} = R_v \cdot V, \quad K_{str} > 0
 \end{equation}
-Der PI-Regler hat die Ãœbertragungsfunktion:
+Der PI-Regler hat die Übertragungsfunktion:
 \begin{equation}
   C(s) = K_P + \frac{K_I}{s} = \frac{K_P s + K_I}{s}
 \end{equation}
@@ -420,59 +420,59 @@ Das charakteristische Polynom des geschlossenen Kreises:
   1 + L(s) = 0 \;\Rightarrow\; T_{str} s^2 + (1 + K_{str} K_P) s + K_{str} K_I = 0
 \end{equation}
 Nach dem Hurwitz-Kriterium sind alle Koeffizienten positiv, wenn
-$K_P > -1/K_{str}$ (in der Praxis trivial erfÃ¼llt fÃ¼r $K_P > 0$) und $K_I > 0$.
-Damit sind beide Pole in der linken Halbebene. FÃ¼r das diskrete System wird
+$K_P > -1/K_{str}$ (in der Praxis trivial erfüllt für $K_P > 0$) und $K_I > 0$.
+Damit sind beide Pole in der linken Halbebene. Für das diskrete System wird
 mit der Tustin-Transformation $s = \frac{2}{T_s}\frac{z-1}{z+1}$ die entsprechende
-StabilitÃ¤tsbedingung im Einheitskreis sichergestellt.
+Stabilitätsbedingung im Einheitskreis sichergestellt.
 \end{proof}
 
 \subsection{Energiebetrachtung}
 
 Die Energiekosten der Druckregelung sind gering. Der Arbeitsbedarf zur
-BefÃ¼llung eines Reifens um $\Delta p$ bei Volumen $V_r$ betrÃ¤gt nÃ¤herungsweise:
+Befüllung eines Reifens um $\Delta p$ bei Volumen $V_r$ beträgt näherungsweise:
 
 \begin{equation}
-  W_{\text{BefÃ¼llung}} = V_r \cdot \Delta p \cdot \ln\!\frac{p_{\mathrm{final}}}{p_{\mathrm{init}}}
+  W_{\text{Befüllung}} = V_r \cdot \Delta p \cdot \ln\!\frac{p_{\mathrm{final}}}{p_{\mathrm{init}}}
   \approx V_r \cdot \Delta p
-  \quad\text{fÃ¼r kleine $\Delta p$}
+  \quad\text{für kleine $\Delta p$}
 \end{equation}
 
-FÃ¼r $V_r \approx$ \SI{20}{\litre}, $\Delta p \approx$ \SI{0{,}1}{\bar} ergibt sich
+Für $V_r \approx$ \SI{20}{\litre}, $\Delta p \approx$ \SI{0{,}1}{\bar} ergibt sich
 $W \approx$ \SI{200}{\joule}, was bei einer Kompressorleistung von \SI{200}{\watt}
-einer Betriebsdauer von \SI{1}{\second} entspricht -- energetisch vernachlÃ¤ssigbar.
+einer Betriebsdauer von \SI{1}{\second} entspricht -- energetisch vernachlässigbar.
 
 \subsection{Sicherheitskonzept}
 
 Das CRDS muss folgende Sicherheitsfunktionen implementieren:
 
 \begin{enumerate}
-  \item \textbf{Redundante Drucksensoren:} Mindestens zwei unabhÃ¤ngige Drucksensoren
-        pro Rad mit PlausibilitÃ¤tsprÃ¼fung.
+  \item \textbf{Redundante Drucksensoren:} Mindestens zwei unabhängige Drucksensoren
+        pro Rad mit Plausibilitätsprüfung.
   \item \textbf{Fail-Safe:} Bei Sensorausfall wird der letzte valide Druckwert
-        gehalten; der Fahrer erhÃ¤lt eine Warnung.
-  \item \textbf{Ãœberdruck-Schutzventil:} Mechanisches Ãœberdruckventil bei
+        gehalten; der Fahrer erhält eine Warnung.
+  \item \textbf{Überdruck-Schutzventil:} Mechanisches Überdruckventil bei
         $p > p_{\max,\mathrm{safe}}$.
-  \item \textbf{Aktivierung nur bei ZÃ¼ndung EIN:} Verhindert Entladung der
+  \item \textbf{Aktivierung nur bei Zündung EIN:} Verhindert Entladung der
         12-V-Batterie bei stehendem Fahrzeug.
 \end{enumerate}
 
 % ===========================================================
-\section{Konzept 2: LenksteuergerÃ¤t mit Reifenschonender Trajektorienplanung (SCS)}
+\section{Konzept 2: Lenksteuergerät mit Reifenschonender Trajektorienplanung (SCS)}
 \label{sec:scs}
 
-\subsection{Motivation: Seitenkraft als HauptverschleiÃŸursache}
+\subsection{Motivation: Seitenkraft als Hauptverschleißursache}
 
-SeitenkrÃ¤fte (QuerkrÃ¤fte) am Reifen erzeugen Latschmikroschlupf und sind
-nach Rollwiderstand und LÃ¤ngsschlupf die dominierende VerschleiÃŸursache~\cite{Niskanen2014}.
-Die seitliche VerschleiÃŸrate ist:
+Seitenkräfte (Querkräfte) am Reifen erzeugen Latschmikroschlupf und sind
+nach Rollwiderstand und Längsschlupf die dominierende Verschleißursache~\cite{Niskanen2014}.
+Die seitliche Verschleißrate ist:
 
 \begin{equation}
   \dot{h}_{\mathrm{lat}} = c_y \cdot |F_y(\alpha)| \cdot |\alpha|
   \label{eq:wear_lat}
 \end{equation}
 
-Da $F_y(\alpha)$ fÃ¼r kleine $\alpha$ nÃ¤herungsweise linear ist ($F_y \approx C_\alpha \alpha$,
-mit der SchrÃ¤glaufsteifigkeit $C_\alpha$):
+Da $F_y(\alpha)$ für kleine $\alpha$ näherungsweise linear ist ($F_y \approx C_\alpha \alpha$,
+mit der Schräglaufsteifigkeit $C_\alpha$):
 
 \begin{equation}
   \dot{h}_{\mathrm{lat}} \approx c_y \cdot C_\alpha \cdot \alpha^2
@@ -495,26 +495,26 @@ wobei:
 \begin{itemize}[nosep]
   \item $m$ -- Fahrzeugmasse,
   \item $v$ -- Fahrzeuggeschwindigkeit,
-  \item $l_v, l_h$ -- AbstÃ¤nde Schwerpunkt--Vorder-/Hinterachse,
-  \item $F_{y,v}, F_{y,h}$ -- SeitenkrÃ¤fte an Vorder-/Hinterachse,
-  \item $I_z$ -- MassentrÃ¤gheitsmoment um Hochachse.
+  \item $l_v, l_h$ -- Abstände Schwerpunkt--Vorder-/Hinterachse,
+  \item $F_{y,v}, F_{y,h}$ -- Seitenkräfte an Vorder-/Hinterachse,
+  \item $I_z$ -- Massenträgheitsmoment um Hochachse.
 \end{itemize}
 
-Die SchrÃ¤glaufwinkel der Achsen betragen:
+Die Schräglaufwinkel der Achsen betragen:
 
 \begin{align}
   \alpha_v &= \delta - \beta - \frac{l_v \dot{\psi}}{v} \label{eq:alpha_v}\\
   \alpha_h &= -\beta + \frac{l_h \dot{\psi}}{v} \label{eq:alpha_h}
 \end{align}
 
-\subsection{Optimaler Lenkwinkel zur Minimierung des ReifenverschleiÃŸes}
+\subsection{Optimaler Lenkwinkel zur Minimierung des Reifenverschleißes}
 
 \subsubsection{Optimierungsproblem}
 
-FÃ¼r eine gegebene Trajektorie (ZielkrÃ¼mmung $\kappa_{\mathrm{ref}}$, Geschwindigkeit $v$)
-wird der Lenkwinkel $\delta$ so gewÃ¤hlt, dass der SchrÃ¤glaufwinkel minimiert wird.
+Für eine gegebene Trajektorie (Zielkrümmung $\kappa_{\mathrm{ref}}$, Geschwindigkeit $v$)
+wird der Lenkwinkel $\delta$ so gewählt, dass der Schräglaufwinkel minimiert wird.
 
-Die GesamtverschleiÃŸrate aller vier Reifen lautet:
+Die Gesamtverschleißrate aller vier Reifen lautet:
 
 \begin{equation}
   J_w(\delta) = \sum_{i \in \{vl, vr, hl, hr\}} \dot{h}_i(\alpha_i(\delta))
@@ -532,23 +532,23 @@ Das SCS-Optimierungsproblem:
 
 \begin{theorem}[Existenz und Eindeutigkeit des optimalen Lenkwinkels]
 \label{thm:scs_unique}
-FÃ¼r gegebene $\kappa_{\mathrm{ref}}$, $v > 0$ und ein lineares Reifenmodell besitzt
-das Optimierungsproblem \eqref{eq:scs_opt} eine eindeutige LÃ¶sung $\delta^*$.
+Für gegebene $\kappa_{\mathrm{ref}}$, $v > 0$ und ein lineares Reifenmodell besitzt
+das Optimierungsproblem \eqref{eq:scs_opt} eine eindeutige Lösung $\delta^*$.
 \end{theorem}
 
 \begin{proof}
-Im linearen Bereich sind die SchrÃ¤glaufwinkel $\alpha_v, \alpha_h$ affin-linear
+Im linearen Bereich sind die Schräglaufwinkel $\alpha_v, \alpha_h$ affin-linear
 in $\delta$ (vgl.\ \eqref{eq:alpha_v}, \eqref{eq:alpha_h}). Das Quadrat ist konvex;
 eine endliche Summe konvexer Funktionen ist konvex. Die Nebenbedingung
-$\kappa(x_k, \delta_k) = \kappa_{\mathrm{ref}}$ ist fÃ¼r das Einspurmodell eine
-Gleichungsnebenbedingung und linear in $\delta$ fÃ¼r kleine Winkel. Damit ist
-das Problem ein konvex beschrÃ¤nktes QP (quadratisches Programm) in einer
-Variablen -- die LÃ¶sung existiert und ist eindeutig.
+$\kappa(x_k, \delta_k) = \kappa_{\mathrm{ref}}$ ist für das Einspurmodell eine
+Gleichungsnebenbedingung und linear in $\delta$ für kleine Winkel. Damit ist
+das Problem ein konvex beschränktes QP (quadratisches Programm) in einer
+Variablen -- die Lösung existiert und ist eindeutig.
 \end{proof}
 
-\subsubsection{Analytische LÃ¶sung fÃ¼r symmetrisches Fahrzeug}
+\subsubsection{Analytische Lösung für symmetrisches Fahrzeug}
 
-FÃ¼r den Sonderfall $l_v = l_h = l/2$ (symmetrischer Radstand) und
+Für den Sonderfall $l_v = l_h = l/2$ (symmetrischer Radstand) und
 $C_{\alpha,v} = C_{\alpha,h} = C_\alpha$ ergibt sich die Ackermann-Bedingung
 als optimaler Lenkwinkel:
 
@@ -558,19 +558,19 @@ als optimaler Lenkwinkel:
   \label{eq:ackermann}
 \end{equation}
 
-wobei $\rho$ der Kurvenradius ist. Dies minimiert beide SchrÃ¤glaufwinkel
+wobei $\rho$ der Kurvenradius ist. Dies minimiert beide Schräglaufwinkel
 simultaneously auf Null, was dem globalen Minimum von $J_w$ entspricht.
 
-\begin{corollary}[Ackermann-Lenkung als VerschleiÃŸminimum]
-Die ideale Ackermann-Lenkgeometrie minimiert die reifenverschleiÃŸende
-SeitenfÃ¼hrungskraft fÃ¼r stationÃ¤res Kurvenfahren.
+\begin{corollary}[Ackermann-Lenkung als Verschleißminimum]
+Die ideale Ackermann-Lenkgeometrie minimiert die reifenverschleißende
+Seitenführungskraft für stationäres Kurvenfahren.
 \end{corollary}
 
-\subsection{ModellprÃ¤diktive Lenkungsregelung (MPC)}
+\subsection{Modellprädiktive Lenkungsregelung (MPC)}
 
-\subsubsection{Systemzustand und PrÃ¤diktionshorizont}
+\subsubsection{Systemzustand und Prädiktionshorizont}
 
-Der Zustandsvektor sei $\mathbf{x} = [\beta, \dot{\psi}, v]^T$, die StellgrÃ¶ÃŸe
+Der Zustandsvektor sei $\mathbf{x} = [\beta, \dot{\psi}, v]^T$, die Stellgröße
 $u = \delta$ (Lenkwinkel). Das diskrete Zustandsraummodell lautet:
 
 \begin{equation}
@@ -578,7 +578,7 @@ $u = \delta$ (Lenkwinkel). Das diskrete Zustandsraummodell lautet:
   \label{eq:state_space}
 \end{equation}
 
-Der MPC-Regler lÃ¶st Ã¼ber den PrÃ¤diktionshorizont $N$ das Optimierungsproblem:
+Der MPC-Regler löst über den Prädiktionshorizont $N$ das Optimierungsproblem:
 
 \begin{equation}
   \min_{\{u_k, \ldots, u_{k+N-1}\}} \sum_{j=k}^{k+N-1}
@@ -588,12 +588,12 @@ Der MPC-Regler lÃ¶st Ã¼ber den PrÃ¤diktionshorizont $N$ das Optimierungspr
 \end{equation}
 
 mit den Gewichtsmatrizen $\mathbf{Q} \succeq 0$ (Zustandskosten) und
-$R > 0$ (StellgrÃ¶ÃŸenkosten, penalisiert zu starkes Lenken).
+$R > 0$ (Stellgrößenkosten, penalisiert zu starkes Lenken).
 
-\subsubsection{ReifenverschleiÃŸ als Optimierungsziel}
+\subsubsection{Reifenverschleiß als Optimierungsziel}
 
 Durch entsprechende Wahl von $\mathbf{Q}$ -- mit hohem Gewicht auf den
-SchrÃ¤glaufwinkeln $\alpha_v, \alpha_h$ -- wird der VerschleiÃŸterm in das
+Schräglaufwinkeln $\alpha_v, \alpha_h$ -- wird der Verschleißterm in das
 MPC-Kostenfunktional integriert:
 
 \begin{equation}
@@ -602,54 +602,54 @@ MPC-Kostenfunktional integriert:
   \label{eq:q_weights}
 \end{equation}
 
-\begin{theorem}[MPC-Optimierung reduziert ReifenverschleiÃŸ]
+\begin{theorem}[MPC-Optimierung reduziert Reifenverschleiß]
 \label{thm:mpc_wear}
-Sei der ReifenverschleiÃŸ eine stetig differenzierbare, konvexe Funktion der
-SchrÃ¤glaufwinkel. Dann konvergiert die MPC-LÃ¶sung fÃ¼r $N \to \infty$ gegen
-die Trajektorie mit minimalem GesamtverschleiÃŸ unter Einhaltung der
+Sei der Reifenverschleiß eine stetig differenzierbare, konvexe Funktion der
+Schräglaufwinkel. Dann konvergiert die MPC-Lösung für $N \to \infty$ gegen
+die Trajektorie mit minimalem Gesamtverschleiß unter Einhaltung der
 Trajektorienvorgaben.
 \end{theorem}
 
 \begin{proof}
-FÃ¼r konvexe Kostenfunktionale und lineare Systemdynamik ist das MPC-Problem
-ein konvexes QP. FÃ¼r $N \to \infty$ nÃ¤hert sich die MPC-LÃ¶sung der
-\emph{infinite-horizon} optimalen Regelung an (LQR-Ã„quivalenz)~\cite{Mayne2000}.
+Für konvexe Kostenfunktionale und lineare Systemdynamik ist das MPC-Problem
+ein konvexes QP. Für $N \to \infty$ nähert sich die MPC-Lösung der
+\emph{infinite-horizon} optimalen Regelung an (LQR-Äquivalenz)~\cite{Mayne2000}.
 Das Gesamtlebensdauerintegral $\int_0^T J_w(t)\,\mathrm{d}t$ wird minimiert,
-da jedes endliche Zeitsegment durch die MPC-LÃ¶sung sub-optimal (fÃ¼r endliches $N$)
-bzw.\ optimal (fÃ¼r $N \to \infty$) behandelt wird. Damit ist die resultierende
-Trajektorie verschleiÃŸoptimal.
+da jedes endliche Zeitsegment durch die MPC-Lösung sub-optimal (für endliches $N$)
+bzw.\ optimal (für $N \to \infty$) behandelt wird. Damit ist die resultierende
+Trajektorie verschleißoptimal.
 \end{proof}
 
-\subsection{ReifenverschleiÃŸ-Ausgleich durch SpurwinkeldÃ¤mpfung}
+\subsection{Reifenverschleiß-Ausgleich durch Spurwinkeldämpfung}
 
 In Geradeausfahrt kann das SCS durch kleine Lenkkorrekturen die Abnutzung
-Ã¼ber die Reifenbreite verteilen (``Wear Leveling''). Das SCS-ECU Ã¼berwacht
+über die Reifenbreite verteilen (``Wear Leveling''). Das SCS-ECU überwacht
 die kumulierte Schlupfenergie $E_s = \int_0^t F_y \cdot v_s \,\mathrm{d}\tau$
 pro Reifensegment und gibt Lenkkorrekturen, die die Kontaktpunktverteilung
 optimieren.
 
 % ===========================================================
-\section{Konzept 3: Lastausgleichs-SteuergerÃ¤t mit Fahrerhinweissystem (LCS)}
+\section{Konzept 3: Lastausgleichs-Steuergerät mit Fahrerhinweissystem (LCS)}
 \label{sec:lcs}
 
 \subsection{Einfluss der Radlastverteilung auf die Reifenlebensdauer}
 
-\subsubsection{Nichtlinearer Zusammenhang zwischen Last und VerschleiÃŸ}
+\subsubsection{Nichtlinearer Zusammenhang zwischen Last und Verschleiß}
 
-Das VerschleiÃŸgesetz (Gl.~\ref{eq:energetisch}) ist \emph{nichtlinear} in der
-Radlast $\Fz$, wenn man die Schlupfgeschwindigkeit berÃ¼cksichtigt:
+Das Verschleißgesetz (Gl.~\ref{eq:energetisch}) ist \emph{nichtlinear} in der
+Radlast $\Fz$, wenn man die Schlupfgeschwindigkeit berücksichtigt:
 
 \begin{equation}
   \dot{h}(\Fz) = c_h \cdot \Fz^n, \quad n > 1
   \label{eq:wear_fz}
 \end{equation}
 
-Empirisch gilt fÃ¼r Autobahnreifen $n \approx 1{,}5$ bis $2{,}0$~\cite{Niskanen2014,
+Empirisch gilt für Autobahnreifen $n \approx 1{,}5$ bis $2{,}0$~\cite{Niskanen2014,
 Williams1955}.
 
-\begin{theorem}[GleichmÃ¤ÃŸige Lastverteilung maximiert Reifensatzlebensdauer]
+\begin{theorem}[Gleichmäßige Lastverteilung maximiert Reifensatzlebensdauer]
 \label{thm:load_even}
-Sei die VerschleiÃŸrate jedes Reifens $i$ gemÃ¤ÃŸ $\dot{h}_i = c_h F_{z,i}^n$,
+Sei die Verschleißrate jedes Reifens $i$ gemäß $\dot{h}_i = c_h F_{z,i}^n$,
 $n > 1$, und die Gesamtlast $\sum_{i=1}^4 F_{z,i} = F_{\mathrm{ges}} = \mathrm{const}$.
 Die Lebensdauer des Reifensatzes sei definiert als:
 \begin{equation}
@@ -657,32 +657,32 @@ Die Lebensdauer des Reifensatzes sei definiert als:
                         = \min_i \frac{h_0 - h_{\min}}{c_h F_{z,i}^n}
   \label{eq:life_set}
 \end{equation}
-Dann wird $\Ltire^{\mathrm{set}}$ maximiert bei gleichmÃ¤ÃŸiger Lastverteilung
-$F_{z,i} = F_{\mathrm{ges}} / 4$ fÃ¼r alle $i$.
+Dann wird $\Ltire^{\mathrm{set}}$ maximiert bei gleichmäßiger Lastverteilung
+$F_{z,i} = F_{\mathrm{ges}} / 4$ für alle $i$.
 \end{theorem}
 
 \begin{proof}
 Da $L_{\mathrm{tire},i} = K / F_{z,i}^n$ mit $K = (h_0 - h_{\min}) / c_h > 0$, ist
 $\Ltire^{\mathrm{set}} = K / \max_i(F_{z,i}^n) = K / (\max_i F_{z,i})^n$.
-Das Minimum der Lebensdauern wird also durch den hÃ¶chstbelasteten Reifen
-bestimmt. Da $f(x) = x^n$ fÃ¼r $n > 1$ strikt konvex und monoton steigend ist,
+Das Minimum der Lebensdauern wird also durch den höchstbelasteten Reifen
+bestimmt. Da $f(x) = x^n$ für $n > 1$ strikt konvex und monoton steigend ist,
 gilt:
 \begin{equation}
   \max_i F_{z,i} \geq \frac{F_{\mathrm{ges}}}{4}
 \end{equation}
 mit Gleichheit genau dann, wenn $F_{z,1} = F_{z,2} = F_{z,3} = F_{z,4} = F_{\mathrm{ges}}/4$.
 Damit ist $\Ltire^{\mathrm{set}} = K \cdot (4/F_{\mathrm{ges}})^n$ bei
-gleichmÃ¤ÃŸiger Verteilung maximal.
+gleichmäßiger Verteilung maximal.
 \end{proof}
 
-\subsubsection{KonvexitÃ¤tsargument fÃ¼r allgemeine VerschleiÃŸfunktionen}
+\subsubsection{Konvexitätsargument für allgemeine Verschleißfunktionen}
 
-Das Ergebnis lÃ¤sst sich verallgemeinern:
+Das Ergebnis lässt sich verallgemeinern:
 
-\begin{proposition}[Jensensche Ungleichung fÃ¼r ReifenverschleiÃŸ]
+\begin{proposition}[Jensensche Ungleichung für Reifenverschleiß]
 \label{prop:jensen}
 Sei $\phi : \R_{>0} \to \R_{>0}$ strikt konvex und $\phi' > 0$.
-FÃ¼r den mittleren VerschleiÃŸ gilt:
+Für den mittleren Verschleiß gilt:
 \begin{equation}
   \frac{1}{4}\sum_{i=1}^4 \phi(F_{z,i}) \geq \phi\!\left(\frac{1}{4}\sum_{i=1}^4 F_{z,i}\right)
     = \phi\!\left(\frac{F_{\mathrm{ges}}}{4}\right)
@@ -692,11 +692,11 @@ mit Gleichheit genau bei $F_{z,1} = \cdots = F_{z,4}$.
 \end{proposition}
 
 \begin{proof}
-Direkte Anwendung der Jensenschen Ungleichung~\cite{Jensen1906} fÃ¼r strikt
+Direkte Anwendung der Jensenschen Ungleichung~\cite{Jensen1906} für strikt
 konvexe Funktionen.
 \end{proof}
 
-\subsection{Radlastmessung und SchÃ¤tzung}
+\subsection{Radlastmessung und Schätzung}
 
 Das LCS-ECU ermittelt die Radlasten aus:
 \begin{itemize}
@@ -704,19 +704,19 @@ Das LCS-ECU ermittelt die Radlasten aus:
         (linear-viskoelastisches Federmodell),
   \item \textbf{Beschleunigungssensoren} (zur Filterung dynamischer Anteile),
   \item \textbf{Gewichtssensoren} in den Sitzschienen (Insassengewicht),
-  \item \textbf{Laderaum-Drucksensoren} oder kamerabasierte Volumen/SchwerpunktschÃ¤tzung.
+  \item \textbf{Laderaum-Drucksensoren} oder kamerabasierte Volumen/Schwerpunktschätzung.
 \end{itemize}
 
-\subsubsection{Kalman-Filter fÃ¼r RadlastschÃ¤tzung}
+\subsubsection{Kalman-Filter für Radlastschätzung}
 
-Zur RauschunterdrÃ¼ckung verwendet das LCS-ECU einen Kalman-Filter~\cite{Kalman1960}
+Zur Rauschunterdrückung verwendet das LCS-ECU einen Kalman-Filter~\cite{Kalman1960}
 mit dem Zustandsvektor:
 
 \begin{equation}
   \mathbf{z}_k = \left[F_{z,1}, F_{z,2}, F_{z,3}, F_{z,4}, F_{\mathrm{Zuladung}}\right]^T
 \end{equation}
 
-Der PrÃ¤diktionsschritt:
+Der Prädiktionsschritt:
 \begin{align}
   \hat{\mathbf{z}}_{k|k-1} &= \mathbf{A}_z \hat{\mathbf{z}}_{k-1|k-1}\\
   \mathbf{P}_{k|k-1} &= \mathbf{A}_z \mathbf{P}_{k-1|k-1} \mathbf{A}_z^T + \mathbf{Q}_z
@@ -744,14 +744,14 @@ Das LCS-ECU berechnet den \emph{Lastverteilungs-Ungleichgewichts-Index} (LUI):
 
 $\mathrm{LUI} = 0$ entspricht perfekter Gleichverteilung; Grenzwerte:
 \begin{itemize}[nosep]
-  \item $\mathrm{LUI} < 0{,}1$: GrÃ¼n (optimal),
+  \item $\mathrm{LUI} < 0{,}1$: Grün (optimal),
   \item $0{,}1 \leq \mathrm{LUI} < 0{,}3$: Gelb (Hinweis empfohlen),
-  \item $\mathrm{LUI} \geq 0{,}3$: Rot (Warnung, Reifenlebensdauer stark beeintrÃ¤chtigt).
+  \item $\mathrm{LUI} \geq 0{,}3$: Rot (Warnung, Reifenlebensdauer stark beeinträchtigt).
 \end{itemize}
 
 \subsubsection{Beladungshinweis-Algorithmus}
 
-Beim Einschalten der ZÃ¼ndung fÃ¼hrt das LCS-ECU folgende Routine aus:
+Beim Einschalten der Zündung führt das LCS-ECU folgende Routine aus:
 
 \begin{enumerate}
   \item Messung aller vier Radlasten $F_{z,i}^{(0)}$.
@@ -768,12 +768,12 @@ Beim Einschalten der ZÃ¼ndung fÃ¼hrt das LCS-ECU folgende Routine aus:
           x_{\mathrm{act}} = \frac{l_h \sum_v F_{z,i} - l_v \sum_h F_{z,i}}{F_{\mathrm{Zuladung}}}
           \label{eq:actual_cog}
         \end{equation}
-  \item Ausgabe eines sprachlichen Hinweises an den Fahrer Ã¼ber das Display/Sprachsystem:
-        z.\,B.\ ``GepÃ¤ck bitte \SI{20}{\centi\metre} weiter nach vorne und
+  \item Ausgabe eines sprachlichen Hinweises an den Fahrer über das Display/Sprachsystem:
+        z.\,B.\ ``Gepäck bitte \SI{20}{\centi\metre} weiter nach vorne und
         \SI{10}{\centi\metre} zur Mitte verschieben.''
 \end{enumerate}
 
-\subsection{Aktives Fahrwerk als ergÃ¤nzende MaÃŸnahme}
+\subsection{Aktives Fahrwerk als ergänzende Maßnahme}
 
 Neben der Beladungsoptimierung kann ein aktives (semi-aktives) Fahrwerksystem die
 dynamischen Radlastschwankungen $\Delta F_{z,i}(t)$ reduzieren:
@@ -783,7 +783,7 @@ dynamischen Radlastschwankungen $\Delta F_{z,i}(t)$ reduzieren:
   \Delta F_{z,i}(t) = -c_a(t)\,z_i(t) - d_a(t)\,\dot{z}_i(t)
 \end{equation}
 
-wobei $c_a, d_a$ die aktiv geregelten Feder- und DÃ¤mpferkoeffizienten sind.
+wobei $c_a, d_a$ die aktiv geregelten Feder- und Dämpferkoeffizienten sind.
 
 \begin{theorem}[Dynamische Radlastminimierung durch aktives Fahrwerk]
 \label{thm:active_suspension}
@@ -791,28 +791,28 @@ Sei die mittlere quadratische Radlastschwankung:
 \begin{equation}
   J_\Delta = \sum_{i=1}^4 \mathbb{E}\!\left[(\Delta F_{z,i})^2\right]
 \end{equation}
-Ein optimaler $\mathcal{H}_2$-Regler fÃ¼r das Fahrwerkssystem minimiert $J_\Delta$
-und reduziert damit die nichtlineare VerschleiÃŸverstÃ¤rkung aus Gl.~\eqref{eq:wear_fz}.
+Ein optimaler $\mathcal{H}_2$-Regler für das Fahrwerkssystem minimiert $J_\Delta$
+und reduziert damit die nichtlineare Verschleißverstärkung aus Gl.~\eqref{eq:wear_fz}.
 \end{theorem}
 
 \begin{proof}
-FÃ¼r Stochastik mit weiÃŸem Rauschen als StraÃŸenanregung ist die $\mathcal{H}_2$-Optimierung
+Für Stochastik mit weißem Rauschen als Straßenanregung ist die $\mathcal{H}_2$-Optimierung
 das LQG-Problem (Linear Quadratic Gaussian)~\cite{Anderson1990}. Die Existenz eines
 optimalen Reglers ist garantiert, wenn das System steuerbar und beobachtbar ist
-(erfÃ¼llt fÃ¼r Standardfahrwerksmodelle). Die Minimierung von $J_\Delta$ verringert
+(erfüllt für Standardfahrwerksmodelle). Die Minimierung von $J_\Delta$ verringert
 $\mathbb{E}[F_{z,i}^n] = (F_{z,i}^{(0)})^n + \binom{n}{2}(F_{z,i}^{(0)})^{n-2}\mathbb{E}[(\Delta F_{z,i})^2]
-+ \mathcal{O}(\mathbb{E}[(\Delta F_{z,i})^3])$ fÃ¼r $n \geq 2$, womit die mittlere
-VerschleiÃŸrate sinkt.
++ \mathcal{O}(\mathbb{E}[(\Delta F_{z,i})^3])$ für $n \geq 2$, womit die mittlere
+Verschleißrate sinkt.
 \end{proof}
 
 % ===========================================================
 \section{Gesamtmodell: Kombinierte Lebensdauersteigerung}
 \label{sec:gesamtmodell}
 
-\subsection{Multiplikatives VerschleiÃŸmodell}
+\subsection{Multiplikatives Verschleißmodell}
 
-Die EinzelbeitrÃ¤ge der drei Konzepte kÃ¶nnen als multiplikative Faktoren
-auf die BasisverschleiÃŸrate modelliert werden:
+Die Einzelbeiträge der drei Konzepte können als multiplikative Faktoren
+auf die Basisverschleißrate modelliert werden:
 
 \begin{equation}
   \dot{h}_{\mathrm{ges}}(t) = \dot{h}_{\mathrm{basis}} \cdot
@@ -822,14 +822,14 @@ auf die BasisverschleiÃŸrate modelliert werden:
   \label{eq:total_wear}
 \end{equation}
 
-mit den dimensionslosen VerschleiÃŸfaktoren:
+mit den dimensionslosen Verschleißfaktoren:
 
 \begin{align}
   \Phi_P(p_i) &= f_{\mathrm{dist}}(p_i) = 1 + \beta\left(\frac{p_i - \pref}{\pref}\right)^2
                 \geq 1 \label{eq:phi_p}\\
   \Phi_S(\alpha) &= 1 + \gamma \alpha^2 \geq 1 \label{eq:phi_s}\\
   \Phi_L(\Fz) &= \left(\frac{\Fz}{F_{\mathrm{ref}}}\right)^{n-1} \geq 1
-    \quad\text{fÃ¼r } \Fz \geq F_{\mathrm{ref}} \label{eq:phi_l}
+    \quad\text{für } \Fz \geq F_{\mathrm{ref}} \label{eq:phi_l}
 \end{align}
 
 \begin{theorem}[Gesamtlebensdauer-Maximierung durch kombinierte Systeme]
@@ -841,30 +841,30 @@ Unter den Annahmen \eqref{eq:phi_p}--\eqref{eq:phi_l} gilt:
   \label{eq:life_combined}
 \end{equation}
 Jede Reduzierung der Faktoren $\Phi_P^*, \Phi_S^*, \Phi_L^*$ auf ihren
-Minimalwert~1 durch die entsprechenden SteuergerÃ¤te verlÃ¤ngert $\Ltire^{\mathrm{combined}}$
+Minimalwert~1 durch die entsprechenden Steuergeräte verlängert $\Ltire^{\mathrm{combined}}$
 monoton und strebt gegen das theoretische Maximum $\Ltire^{\max}$.
 \end{theorem}
 
 \begin{proof}
-Da alle drei Faktoren $\geq 1$ und paarweise unabhÃ¤ngig sind:
+Da alle drei Faktoren $\geq 1$ und paarweise unabhängig sind:
 \begin{equation}
   \frac{1}{\Phi_P \Phi_S \Phi_L} \leq 1 \cdot \frac{1}{\min \Phi_P \cdot \min \Phi_S \cdot \min \Phi_L}
     = \frac{1}{1 \cdot 1 \cdot 1} = 1
 \end{equation}
-Das Optimum $\Phi_i^* = 1$ (fÃ¼r alle $i$) ist gleichzeitig erreichbar:
+Das Optimum $\Phi_i^* = 1$ (für alle $i$) ist gleichzeitig erreichbar:
 CRDS setzt $p_i = \pref$ ($\Phi_P = 1$), SCS setzt $\alpha = 0$ ($\Phi_S = 1$),
 LCS setzt $\Fz = F_{\mathrm{ref}} = F_{\mathrm{ges}}/4$ ($\Phi_L = 1$).
 Damit ist $\Ltire^{\mathrm{combined}} = (h_0 - h_{\min}) / \dot{h}_{\mathrm{basis}}$
 maximal.
 \end{proof}
 
-\subsection{Quantitative AbschÃ¤tzung}
+\subsection{Quantitative Abschätzung}
 
-Typische VerschleiÃŸfaktor-Verbesserungen durch die drei Systeme:
+Typische Verschleißfaktor-Verbesserungen durch die drei Systeme:
 
 \begin{table}[H]
 \centering
-\caption{Typische VerschleiÃŸfaktoren und erzielte Verbesserungen}
+\caption{Typische Verschleißfaktoren und erzielte Verbesserungen}
 \label{tab:improvement}
 \begin{tabular}{lccc}
 \toprule
@@ -879,13 +879,13 @@ LCS (Lastausgleich)      & $\Phi_L \approx 1{,}35$ & $\Phi_L = 1{,}0$ & $+35\,\%
 \end{tabular}
 \end{table}
 
-Das heiÃŸt: Im kombinierten Betrieb kann die Reifenlebensdauer theoretisch
-mehr als verdoppelt werden. Diese AbschÃ¤tzung basiert auf den in der Literatur
+Das heißt: Im kombinierten Betrieb kann die Reifenlebensdauer theoretisch
+mehr als verdoppelt werden. Diese Abschätzung basiert auf den in der Literatur
 dokumentierten Einzeleffekten~\cite{Sandberg2011, Niskanen2014, Gent2006}.
 
 \subsection{Systemintegration und CAN-Bus-Kommunikation}
 
-Die drei ECUs kommunizieren Ã¼ber den CAN-Bus des Fahrzeugs (CAN~2.0B,
+Die drei ECUs kommunizieren über den CAN-Bus des Fahrzeugs (CAN~2.0B,
 ISO~11898 \cite{Bosch1991}):
 
 \begin{figure}[H]
@@ -902,16 +902,16 @@ ISO~11898 \cite{Bosch1991}):
 \multicolumn{3}{|c|}{\textbf{SCS-ECU (Lenkoptimierung)}}\\
 \hline
 \end{tabular}
-\caption{Vereinfachtes Schema der ECU-Kommunikation Ã¼ber CAN-Bus}
+\caption{Vereinfachtes Schema der ECU-Kommunikation über CAN-Bus}
 \label{fig:can_schema}
 \end{figure}
 
 Relevante CAN-Nachrichten:
 \begin{itemize}
   \item CRDS $\to$ SCS/LCS: aktueller Reifendruck, Druckstatus, Temperatur.
-  \item LCS $\to$ CRDS: Radlasten (fÃ¼r druckadaptive Korrektur nach Gl.~\eqref{eq:pref_adapt}).
-  \item LCS $\to$ SCS: Schwerpunktlage (fÃ¼r Lenkparametrierung).
-  \item SCS $\to$ LCS: QuerkrÃ¤fte (fÃ¼r dynamische Lastkorrektur).
+  \item LCS $\to$ CRDS: Radlasten (für druckadaptive Korrektur nach Gl.~\eqref{eq:pref_adapt}).
+  \item LCS $\to$ SCS: Schwerpunktlage (für Lenkparametrierung).
+  \item SCS $\to$ LCS: Querkräfte (für dynamische Lastkorrektur).
 \end{itemize}
 
 % ===========================================================
@@ -924,40 +924,40 @@ Diese Arbeit hat formal-mathematisch bewiesen, dass:
 
 \begin{enumerate}
   \item \textbf{CRDS (Theorem~\ref{thm:pressure})}: Ein zentral geregelter
-        Reifeninnendruck minimiert die druckbedingte VerschleiÃŸrate.
-        Die StabilitÃ¤tsanalyse (Theorem~\ref{thm:crds_stability}) sichert
+        Reifeninnendruck minimiert die druckbedingte Verschleißrate.
+        Die Stabilitätsanalyse (Theorem~\ref{thm:crds_stability}) sichert
         die Realisierbarkeit.
   \item \textbf{SCS (Theorem~\ref{thm:scs_unique}, Theorem~\ref{thm:mpc_wear})}:
-        Eine modellprÃ¤diktive Lenkungsregelung minimiert die SchrÃ¤glaufwinkel
-        und damit die laterale VerschleiÃŸrate.
+        Eine modellprädiktive Lenkungsregelung minimiert die Schräglaufwinkel
+        und damit die laterale Verschleißrate.
   \item \textbf{LCS (Theorem~\ref{thm:load_even}, Proposition~\ref{prop:jensen},
-        Theorem~\ref{thm:active_suspension})}: Eine gleichmÃ¤ÃŸige Radlastverteilung,
-        unterstÃ¼tzt durch Fahrerhinweise und aktives Fahrwerk, maximiert die
+        Theorem~\ref{thm:active_suspension})}: Eine gleichmäßige Radlastverteilung,
+        unterstützt durch Fahrerhinweise und aktives Fahrwerk, maximiert die
         Lebensdauer des Reifensatzes.
   \item \textbf{Kombination (Theorem~\ref{thm:combined})}: Alle drei Systeme
-        wirken multiplikativ und kÃ¶nnen im kombinierten Betrieb die Reifenlebensdauer
-        um Ã¼ber 100\,\% steigern.
+        wirken multiplikativ und können im kombinierten Betrieb die Reifenlebensdauer
+        um über 100\,\% steigern.
 \end{enumerate}
 
 \subsection{Praktische Umsetzbarkeit}
 
 Die vorgeschlagenen Systeme sind mit heutiger Fahrzeugtechnik (CAN-Bus,
-OBD-II, aktives Fahrwerk, elektrische Servolenkung) vollstÃ¤ndig realisierbar.
-TPMS (Tyre Pressure Monitoring System) ist in der EU seit 2014 fÃ¼r alle
+OBD-II, aktives Fahrwerk, elektrische Servolenkung) vollständig realisierbar.
+TPMS (Tyre Pressure Monitoring System) ist in der EU seit 2014 für alle
 Neuwagen vorgeschrieben~\cite{EU_TPMS2009}; das CRDS ist eine Erweiterung
-hierzu. ModellprÃ¤diktive Regler sind in aktuellen Fahrdynamiksystemen
+hierzu. Modellprädiktive Regler sind in aktuellen Fahrdynamiksystemen
 bereits im Einsatz~\cite{Falcone2007}.
 
 \subsection{Ausblick}
 
-ZukÃ¼nftige Arbeiten kÃ¶nnten:
+Zukünftige Arbeiten könnten:
 \begin{itemize}
-  \item Digitale Zwillinge des Reifens fÃ¼r eine prÃ¤zisere Prognose der
+  \item Digitale Zwillinge des Reifens für eine präzisere Prognose der
         Restlebensdauer (Remaining Useful Life, RUL) einsetzen,
-  \item Maschinelles Lernen zur individualisierten VerschleiÃŸmodellierung nutzen,
+  \item Maschinelles Lernen zur individualisierten Verschleißmodellierung nutzen,
   \item Die Systeme mit V2X-Kommunikation (Fahrzeug-zu-Infrastruktur) koppeln,
-        um Fahrbahnzustandsdaten fÃ¼r die VerschleiÃŸprognose zu nutzen,
-  \item Flotten-Ã¼bergreifende Reifendatenbanken fÃ¼r statistische Validierung aufbauen.
+        um Fahrbahnzustandsdaten für die Verschleißprognose zu nutzen,
+  \item Flotten-übergreifende Reifendatenbanken für statistische Validierung aufbauen.
 \end{itemize}
 
 % ===========================================================
@@ -968,25 +968,25 @@ ZukÃ¼nftige Arbeiten kÃ¶nnten:
 \toprule
 \textbf{Symbol} & \textbf{Einheit} & \textbf{Bedeutung}\\
 \midrule
-$A_{\mathrm{latsch}}$ & \si{\metre\squared} & ReifenlatschflÃ¤che\\
-$C_\alpha$ & \si{\newton\per\radian} & SchrÃ¤glaufsteifigkeit\\
-$c_h$ & \si{1\per\metre\per\pascal} & ProfiltiefenverschleiÃŸkonstante\\
-$c_y$ & -- & SeitenverschleiÃŸkoeffizient\\
+$A_{\mathrm{latsch}}$ & \si{\metre\squared} & Reifenlatschfläche\\
+$C_\alpha$ & \si{\newton\per\radian} & Schräglaufsteifigkeit\\
+$c_h$ & \si{1\per\metre\per\pascal} & Profiltiefenverschleißkonstante\\
+$c_y$ & -- & Seitenverschleißkoeffizient\\
 $D$ & \si{\newton} & Maximale Seitenkraft (Pacejka)\\
 $E_s$ & \si{\joule} & Schlupfenergie\\
 $\Fz$ & \si{\newton} & Radlast\\
 $F_{\mathrm{ges}}$ & \si{\newton} & Gesamtfahrzeuglast\\
-$f_{\mathrm{dist}}$ & -- & DruckabhÃ¤ngige Kontaktverteilung\\
+$f_{\mathrm{dist}}$ & -- & Druckabhängige Kontaktverteilung\\
 $h$ & \si{\metre} & Reifenprofiltiefe\\
 $h_0$ & \si{\metre} & Anfangsprofiltiefe\\
 $h_{\min}$ & \si{\metre} & Mindestprofiltiefe (gesetzlich)\\
-$I_z$ & \si{\kilogram\metre\squared} & MassentrÃ¤gheitsmoment Hochachse\\
-$k_E$ & \si{\metre\squared\per\newton} & Energetischer VerschleiÃŸkoeffizient\\
-$k_w$ & -- & Archard-VerschleiÃŸkonstante\\
+$I_z$ & \si{\kilogram\metre\squared} & Massenträgheitsmoment Hochachse\\
+$k_E$ & \si{\metre\squared\per\newton} & Energetischer Verschleißkoeffizient\\
+$k_w$ & -- & Archard-Verschleißkonstante\\
 $l_v, l_h$ & \si{\metre} & Achsabstand vorn/hinten zum Schwerpunkt\\
 $L_{\mathrm{tire}}$ & \si{\second} & Reifenlebensdauer\\
 $m$ & \si{\kilogram} & Fahrzeugmasse\\
-$n$ & -- & Lastexponent im VerschleiÃŸmodell\\
+$n$ & -- & Lastexponent im Verschleißmodell\\
 $p_i$ & \si{\pascal} & Reifeninnendruck\\
 $p_{\mathrm{ref}}$ & \si{\pascal} & Optimaler/Referenz-Reifendruck\\
 $r_d$ & \si{\metre} & Dynamischer Reifenrollradius\\
@@ -994,14 +994,14 @@ $T_r$ & \si{\celsius} & Reifentemperatur\\
 $v$ & \si{\metre\per\second} & Fahrzeuggeschwindigkeit\\
 $v_s$ & \si{\metre\per\second} & Schlupfgeschwindigkeit\\
 $V_r$ & \si{\metre\cubed} & Reifenvolumen (Luftkammer)\\
-$\alpha$ & \si{\radian} & SchrÃ¤glaufwinkel\\
+$\alpha$ & \si{\radian} & Schräglaufwinkel\\
 $\beta$ & \si{\radian} & Schwimmwinkel\\
 $\delta$ & \si{\radian} & Lenkwinkel\\
 $\dot\psi$ & \si{\radian\per\second} & Gierrate\\
-$\kappa$ & -- & LÃ¤ngsschlupf\\
+$\kappa$ & -- & Längsschlupf\\
 $\sigma_0$ & \si{\pascal} & Mittlerer Kontaktdruck\\
-$\phi(\cdot)$ & -- & Konvexe VerschleiÃŸfunktion\\
-$\Phi_P, \Phi_S, \Phi_L$ & -- & VerschleiÃŸfaktoren (Druck, Schlupf, Last)\\
+$\phi(\cdot)$ & -- & Konvexe Verschleißfunktion\\
+$\Phi_P, \Phi_S, \Phi_L$ & -- & Verschleißfaktoren (Druck, Schlupf, Last)\\
 \bottomrule
 \end{longtable}
 
@@ -1013,38 +1013,38 @@ Anderson, B.\,D.\,O.; Moore, J.\,B.: \textit{Optimal Control: Linear Quadratic M
 Prentice Hall, Englewood Cliffs, NJ, 1990.
 ISBN~0-13-638651-2.
 Inhalt: Standardwerk zur optimalen Regelungstheorie, LQR und LQG-Synthese.
-Grundlage fÃ¼r Theorem~\ref{thm:active_suspension}.
+Grundlage für Theorem~\ref{thm:active_suspension}.
 
 \bibitem[Archard1953]{Archard1953}
 Archard, J.\,F.: \textit{Contact and Rubbing of Flat Surfaces}.
 In: Journal of Applied Physics, Vol.~24, Nr.~8, S.~981--988, 1953.
 DOI:~10.1063/1.1721448.
-Inhalt: Grundlegende Formulierung des Archard-VerschleiÃŸgesetzes (Gl.~\ref{eq:archard}).
+Inhalt: Grundlegende Formulierung des Archard-Verschleißgesetzes (Gl.~\ref{eq:archard}).
 
 \bibitem[Astrom1997]{Astrom1997}
-Ã…strÃ¶m, K.\,J.; Wittenmark, B.: \textit{Computer Controlled Systems: Theory and Design}.
+Ã…ström, K.\,J.; Wittenmark, B.: \textit{Computer Controlled Systems: Theory and Design}.
 3. Aufl., Prentice Hall, 1997.
 ISBN~0-13-314899-8.
-Inhalt: Digitale Regelungstechnik, Nyquist- und Hurwitz-Kriterien, StabilitÃ¤tsnachweis
-fÃ¼r diskrete Regler (Basis fÃ¼r Theorem~\ref{thm:crds_stability}).
+Inhalt: Digitale Regelungstechnik, Nyquist- und Hurwitz-Kriterien, Stabilitätsnachweis
+für diskrete Regler (Basis für Theorem~\ref{thm:crds_stability}).
 
 \bibitem[Bosch1991]{Bosch1991}
 Robert Bosch GmbH: \textit{CAN Specification, Version 2.0}.
 Bosch, Stuttgart, 1991.
-Inhalt: Spezifikation des CAN-Protokolls (ISO~11898), Grundlage fÃ¼r das
+Inhalt: Spezifikation des CAN-Protokolls (ISO~11898), Grundlage für das
 ECU-Kommunikationskonzept in Abschnitt~\ref{sec:gesamtmodell}.
 
 \bibitem[ETRMA2023]{ETRMA2023}
 European Tyre and Rubber Manufacturers' Association (ETRMA):
 \textit{Annual Statistics -- European Tyre Industry Key Figures 2023}.
-ETRMA, BrÃ¼ssel, 2023. URL: \url{https://www.etrma.org}.
-Inhalt: Statistiken zum europÃ¤ischen Reifenmarkt, Verbrauchszahlen.
+ETRMA, Brüssel, 2023. URL: \url{https://www.etrma.org}.
+Inhalt: Statistiken zum europäischen Reifenmarkt, Verbrauchszahlen.
 
 \bibitem[EU\_TPMS2009]{EU_TPMS2009}
-EuropÃ¤isches Parlament; Rat der EU:
-\textit{Verordnung (EG) Nr.~661/2009 des EuropÃ¤ischen Parlaments und des Rates}
-Ã¼ber die Typgenehmigung von Kraftfahrzeugen, Anhang II (TPMS-Anforderungen).
-Amtsblatt der EuropÃ¤ischen Union, 2009.
+Europäisches Parlament; Rat der EU:
+\textit{Verordnung (EG) Nr.~661/2009 des Europäischen Parlaments und des Rates}
+über die Typgenehmigung von Kraftfahrzeugen, Anhang II (TPMS-Anforderungen).
+Amtsblatt der Europäischen Union, 2009.
 Inhalt: Vorschrift zur Pflicht-Ausstattung von Neuwagen mit Reifendruckkontrollsystemen (TPMS).
 
 \bibitem[Falcone2007]{Falcone2007}
@@ -1052,7 +1052,7 @@ Falcone, P.; Borrelli, F.; Asgari, J.; Tseng, H.\,E.; Hrovat, D.:
 \textit{Predictive Active Steering Control for Autonomous Vehicle Systems}.
 In: IEEE Transactions on Control Systems Technology, Vol.~15, Nr.~3,
 S.~566--580, 2007. DOI:~10.1109/TCST.2007.894653.
-Inhalt: ModellprÃ¤diktive Lenkungsregelung (MPC) fÃ¼r Fahrzeuge, Basis fÃ¼r
+Inhalt: Modellprädiktive Lenkungsregelung (MPC) für Fahrzeuge, Basis für
 Abschnitt~\ref{sec:scs}.
 
 \bibitem[Gent2006]{Gent2006}
@@ -1060,18 +1060,18 @@ Gent, A.\,N.; Walter, J.\,D. (Hrsg.): \textit{The Pneumatic Tire}.
 NHTSA, U.S. Department of Transportation, Washington D.C., 2006.
 DOT-HS-810-561.
 Inhalt: Umfassendes Standardwerk zur Reifentechnik: Latschgeometrie, Kontaktmechanik,
-VerschleiÃŸ, Reifendruckeinfluss (Grundlage fÃ¼r Abschnitt~\ref{sec:crds}).
+Verschleiß, Reifendruckeinfluss (Grundlage für Abschnitt~\ref{sec:crds}).
 
 \bibitem[Grosch1963]{Grosch1963}
 Grosch, K.\,A.: \textit{The Relation Between the Friction and Visco-Elastic Properties
 of Rubber}.
 In: Proceedings of the Royal Society of London A, Vol.~274, S.~21--39, 1963.
 DOI:~10.1098/rspa.1963.0090.
-Inhalt: Visko-elastisches Reibungsmodell fÃ¼r Gummi, Grundlage fÃ¼r energetisches
-VerschleiÃŸmodell (Gl.~\ref{eq:energetisch}).
+Inhalt: Visko-elastisches Reibungsmodell für Gummi, Grundlage für energetisches
+Verschleißmodell (Gl.~\ref{eq:energetisch}).
 
 \bibitem[Jensen1906]{Jensen1906}
-Jensen, J.\,L.\,W.\,V.: \textit{Sur les fonctions convexes et les inÃ©galitÃ©s entre
+Jensen, J.\,L.\,W.\,V.: \textit{Sur les fonctions convexes et les inégalités entre
 les valeurs moyennes}.
 In: Acta Mathematica, Vol.~30, S.~175--193, 1906.
 DOI:~10.1007/BF02418571.
@@ -1081,7 +1081,7 @@ Inhalt: Mathematische Grundlage der Jensenschen Ungleichung (Proposition~\ref{pr
 Kalman, R.\,E.: \textit{A New Approach to Linear Filtering and Prediction Problems}.
 In: Transactions of the ASME -- Journal of Basic Engineering, Vol.~82, S.~35--45, 1960.
 DOI:~10.1115/1.3662552.
-Inhalt: Kalman-Filter-Algorithmus; Grundlage fÃ¼r die RadlastschÃ¤tzung
+Inhalt: Kalman-Filter-Algorithmus; Grundlage für die Radlastschätzung
 in Abschnitt~\ref{sec:lcs}.
 
 \bibitem[Mayne2000]{Mayne2000}
@@ -1089,8 +1089,8 @@ Mayne, D.\,Q.; Rawlings, J.\,B.; Rao, C.\,V.; Scokaert, P.\,O.\,M.:
 \textit{Constrained Model Predictive Control: Stability and Optimality}.
 In: Automatica, Vol.~36, Nr.~6, S.~789--814, 2000.
 DOI:~10.1016/S0005-1098(99)00214-9.
-Inhalt: Standardreferenz fÃ¼r MPC-StabilitÃ¤t und -OptimalitÃ¤t
-(Basis fÃ¼r Theorem~\ref{thm:mpc_wear}).
+Inhalt: Standardreferenz für MPC-Stabilität und -Optimalität
+(Basis für Theorem~\ref{thm:mpc_wear}).
 
 \bibitem[Niskanen2014]{Niskanen2014}
 Niskanen, A.\,J.; Tuononen, A.\,J.:
@@ -1100,7 +1100,7 @@ In: Proceedings of the Institution of Mechanical Engineers, Part D:
 Journal of Automobile Engineering, Vol.~228, Nr.~10, S.~1157--1167, 2014.
 DOI:~10.1177/0954407014526073.
 Inhalt: Messung von Reifenkontaktverformungen; empirischer Zusammenhang
-zwischen Radlast und VerschleiÃŸ.
+zwischen Radlast und Verschleiß.
 
 \bibitem[Pacejka2012]{Pacejka2012}
 Pacejka, H.\,B.: \textit{Tire and Vehicle Dynamics}. 3. Aufl.,
@@ -1112,21 +1112,21 @@ Latschmodell (Gl.~\ref{eq:latsch}).
 Rajamani, R.: \textit{Vehicle Dynamics and Control}.
 Springer, New York, 2006. ISBN~978-0-387-26396-0.
 Inhalt: Fahrdynamikmodelle (Einspurmodell, Gl.~\ref{eq:bicycle1}--\ref{eq:alpha_h}),
-Grundlage fÃ¼r Abschnitt~\ref{sec:scs}.
+Grundlage für Abschnitt~\ref{sec:scs}.
 
 \bibitem[Sandberg2011]{Sandberg2011}
 Sandberg, U.; Bergiers, A.; Ejsmont, J.\,A.; Goubert, L.; Karlsson, R.;
-ZÃ¶ller, M.: \textit{Road Surface Influence on Tyre/Road Rolling Resistance}.
+Zöller, M.: \textit{Road Surface Influence on Tyre/Road Rolling Resistance}.
 EU-Projekt MIRIAM SP1, 2011. URL: \url{http://www.miriam-co2.net}.
-Inhalt: Einfluss von FahrbahnoberflÃ¤che und Reifendruck auf Rollwiderstand
-und damit auf ReifenverschleiÃŸ.
+Inhalt: Einfluss von Fahrbahnoberfläche und Reifendruck auf Rollwiderstand
+und damit auf Reifenverschleiß.
 
 \bibitem[Schallamach1971]{Schallamach1971}
 Schallamach, A.: \textit{How Does Rubber Slide?}
 In: Wear, Vol.~17, Nr.~4, S.~301--312, 1971.
 DOI:~10.1016/0043-1648(71)90033-0.
-Inhalt: Physikalisches Modell fÃ¼r Gleitverhalten und Abrieb von Gummi;
-Grundlage des energetischen VerschleiÃŸmodells (Gl.~\ref{eq:energetisch}).
+Inhalt: Physikalisches Modell für Gleitverhalten und Abrieb von Gummi;
+Grundlage des energetischen Verschleißmodells (Gl.~\ref{eq:energetisch}).
 
 \bibitem[Williams1955]{Williams1955}
 Williams, M.\,L.; Landel, R.\,F.; Ferry, J.\,D.:
@@ -1134,7 +1134,7 @@ Williams, M.\,L.; Landel, R.\,F.; Ferry, J.\,D.:
 and Other Glass-Forming Liquids}.
 In: Journal of the American Chemical Society, Vol.~77, Nr.~14, S.~3701--3707, 1955.
 DOI:~10.1021/ja01619a008.
-Inhalt: WLF-Gleichung fÃ¼r temperaturabhÃ¤ngige Materialeigenschaften von Polymeren/Gummi
+Inhalt: WLF-Gleichung für temperaturabhängige Materialeigenschaften von Polymeren/Gummi
 (Gl.~\ref{eq:wlf}).
 
 \end{thebibliography}

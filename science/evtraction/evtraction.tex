@@ -67,13 +67,13 @@ Systemanalyse}
 Diese Arbeit behandelt die mathematischen und physikalischen Grundlagen der
 Drehmoment-Drehzahl-Kennlinien permanentmagneterregter Synchronmaschinen (PMSM)
 als Traktionsantriebe in Elektrofahrzeugen (EV). Es werden formal der konstante
-Drehmomentbereich, der Konstantleistungsbereich (FeldschwÃ¤chung), die
+Drehmomentbereich, der Konstantleistungsbereich (Feldschwächung), die
 Leistungsbilanz sowie das regenerative Bremsen hergeleitet und bewiesen.
 Anhand eines Referenzmotors mit $T_{\max} = \SI{250}{\newton\metre}$,
 $P_{\max} = \SI{104{,}7}{\kilo\watt}$, $n_{\mathrm{base}} = \SI{4000}{RPM}$ und
 $n_{\max} = \SI{12000}{RPM}$ werden alle Aussagen quantitativ untermauert und
 mittels Matplotlib-Grafiken veranschaulicht. Ein umfangreicher Ausblick
-beleuchtet zukÃ¼nftige Forschungsrichtungen in Motordesign, Regelungstechnik,
+beleuchtet zukünftige Forschungsrichtungen in Motordesign, Regelungstechnik,
 Thermomanagement und Fahrzeugsystemintegration.
 \end{abstract}
 
@@ -81,32 +81,32 @@ Thermomanagement und Fahrzeugsystemintegration.
 \newpage
 
 % ============================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ============================================================
 
 Der elektrische Antriebsstrang moderner Elektrofahrzeuge unterscheidet sich
-grundlegend vom Verbrennungsmotor. WÃ¤hrend konventionelle Motoren ein eng
+grundlegend vom Verbrennungsmotor. Während konventionelle Motoren ein eng
 begrenztes Drehzahlband mit nutzbarem Drehmoment aufweisen und daher mehrstufige
-Getriebe benÃ¶tigen, deckt der elektrische Traktionsmotor ein breites Drehzahlspektrum
-mit hohem Drehmoment ab. Das HerzstÃ¼ck dieser Eigenschaft ist die
+Getriebe benötigen, deckt der elektrische Traktionsmotor ein breites Drehzahlspektrum
+mit hohem Drehmoment ab. Das Herzstück dieser Eigenschaft ist die
 \emph{Drehmoment-Drehzahl-Kennlinie} (engl.\ \emph{torque-speed characteristic}),
-welche das Betriebsverhalten des Motors Ã¼ber den gesamten Drehzahlbereich beschreibt.
+welche das Betriebsverhalten des Motors über den gesamten Drehzahlbereich beschreibt.
 
 \subsection{Motivation und Bedeutung}
 
 Das Drehmoment-Drehzahl-Profil bestimmt unmittelbar:
 \begin{itemize}
-    \item die \textbf{BeschleunigungsfÃ¤higkeit} (Anfahrmoment bei $n = 0$),
-    \item die \textbf{SteigfÃ¤higkeit} (Overcoming von Hangwiderstand bei niedrigen
+    \item die \textbf{Beschleunigungsfähigkeit} (Anfahrmoment bei $n = 0$),
+    \item die \textbf{Steigfähigkeit} (Overcoming von Hangwiderstand bei niedrigen
           Geschwindigkeiten),
-    \item die \textbf{HÃ¶chstgeschwindigkeit} (Dauerleistung bei hohen Drehzahlen),
+    \item die \textbf{Höchstgeschwindigkeit} (Dauerleistung bei hohen Drehzahlen),
     \item die \textbf{Energieeffizienz} im gesamten Fahrzyklus,
-    \item die \textbf{Dimensionierung} von Wechselrichter, Batterie und KÃ¼hlsystem.
+    \item die \textbf{Dimensionierung} von Wechselrichter, Batterie und Kühlsystem.
 \end{itemize}
 
 Permanentmagneterregte Synchronmaschinen (PMSM) haben sich wegen ihres hohen
-Wirkungsgrades ($\eta > 95\,\%$), ihrer hohen Leistungsdichte und ihrer prÃ¤zisen
-Regelbarkeit als bevorzugte Technologie fÃ¼r EV-Traktionsanwendungen
+Wirkungsgrades ($\eta > 95\,\%$), ihrer hohen Leistungsdichte und ihrer präzisen
+Regelbarkeit als bevorzugte Technologie für EV-Traktionsanwendungen
 durchgesetzt~\cite{bose2002modern,zhu2007electrical}.
 
 \subsection{Aufbau der Arbeit}
@@ -114,18 +114,18 @@ durchgesetzt~\cite{bose2002modern,zhu2007electrical}.
 Abschnitt~\ref{sec:grundlagen} legt die mathematischen Grundlagen fest. In
 Abschnitt~\ref{sec:kennlinie} werden Konstantmoment- und Konstantleistungsbereich
 formal hergeleitet und bewiesen. Abschnitt~\ref{sec:feldschwaechung} behandelt
-die FeldschwÃ¤chung. Die Leistungsbilanz und das Radmoment werden in
+die Feldschwächung. Die Leistungsbilanz und das Radmoment werden in
 Abschnitt~\ref{sec:leistung} analysiert. Abschnitt~\ref{sec:rekuperation}
 widmet sich dem regenerativen Bremsen. Messdaten und Wirkungsgradkarte werden in
 Abschnitt~\ref{sec:effizienz} diskutiert. Abschnitt~\ref{sec:ausblick} gibt
-einen umfassenden Ausblick auf zukÃ¼nftige Entwicklungen.
+einen umfassenden Ausblick auf zukünftige Entwicklungen.
 
 % ============================================================
 \section{Mathematische Grundlagen}
 \label{sec:grundlagen}
 % ============================================================
 
-\subsection{Physikalische GrundgrÃ¶ÃŸen}
+\subsection{Physikalische Grundgrößen}
 
 \begin{definition}[Winkelgeschwindigkeit]
     Die Winkelgeschwindigkeit $\omega$ eines rotierenden Systems ist definiert als
@@ -145,11 +145,11 @@ einen umfassenden Ausblick auf zukÃ¼nftige Entwicklungen.
 \end{definition}
 
 \begin{definition}[Radmoment]
-    Das auf die AntriebsrÃ¤der Ã¼bertragene Radmoment $T_W$ berechnet sich zu
+    Das auf die Antriebsräder übertragene Radmoment $T_W$ berechnet sich zu
     \[
         T_W = T_m \cdot G \cdot \eta_{\mathrm{DT}},
     \]
-    wobei $T_m$ das Motordrehmoment, $G$ das GesamtÃ¼bersetzungsverhÃ¤ltnis und
+    wobei $T_m$ das Motordrehmoment, $G$ das Gesamtübersetzungsverhältnis und
     $\eta_{\mathrm{DT}}$ der Wirkungsgrad des Antriebsstrangs ist.
 \end{definition}
 
@@ -164,7 +164,7 @@ einen umfassenden Ausblick auf zukÃ¼nftige Entwicklungen.
 
 \begin{lemma}[Numerischer Wert der Basisfrequenz]
 \label{lem:nbase}
-    FÃ¼r den Referenzmotor mit $P_{\max} = \SI{104700}{\watt}$ und
+    Für den Referenzmotor mit $P_{\max} = \SI{104700}{\watt}$ und
     $T_{\max} = \SI{250}{\newton\metre}$ ergibt sich
     \[
         n_{\mathrm{base}}
@@ -196,8 +196,8 @@ zwei fundamentale Regionen:
           Das Drehmoment ist auf $T_{\max}$ begrenzt; der begrenzende Faktor ist
           der maximale Strom des Wechselrichters und die thermische Belastbarkeit.
     \item \textbf{Konstantleistungsbereich} ($n_{\mathrm{base}} < n \leq n_{\max}$):
-          Das Drehmoment sinkt hyperbolisch; die Leistung bleibt annÃ¤hernd konstant.
-          ErmÃ¶glicht wird dieser Bereich durch FeldschwÃ¤chung.
+          Das Drehmoment sinkt hyperbolisch; die Leistung bleibt annähernd konstant.
+          Ermöglicht wird dieser Bereich durch Feldschwächung.
 \end{enumerate}
 
 \subsection{Formale Herleitung der Kennlinie}
@@ -219,8 +219,8 @@ zwei fundamentale Regionen:
 
 \begin{proof}
     \textbf{Bereich 1 ($n \leq n_{\mathrm{base}}$):}
-    Im Konstantmomentbereich ist der Statorstrom $I_s$ gleich dem maximal zulÃ¤ssigen
-    Strom $I_{\max}$. Da der Flusslinkung $\psi$ noch nicht geschwÃ¤cht wird, gilt fÃ¼r den
+    Im Konstantmomentbereich ist der Statorstrom $I_s$ gleich dem maximal zulässigen
+    Strom $I_{\max}$. Da der Flusslinkung $\psi$ noch nicht geschwächt wird, gilt für den
     drehmomentbildenden $q$-Achsenstrom $I_q = I_{\max}$ (Vereinfachung: $I_d \approx 0$).
     Das elektromagnetische Drehmoment des PMSM ist
     \[
@@ -237,13 +237,13 @@ zwei fundamentale Regionen:
 
     \textbf{Bereich 2 ($n > n_{\mathrm{base}}$):}
     Bei $n = n_{\mathrm{base}}$ erreicht $U_{\mathrm{EMF}}$ die Spannungsgrenze
-    $U_{\max}$ des Wechselrichters. Eine weitere DrehzahlerhÃ¶hung erfordert die
+    $U_{\max}$ des Wechselrichters. Eine weitere Drehzahlerhöhung erfordert die
     Reduktion der Flusslinkung durch negativen $d$-Achsenstrom $I_d < 0$
-    (FeldschwÃ¤chung). Die maximale Leistung ist auf
+    (Feldschwächung). Die maximale Leistung ist auf
     \[
         P_{\max} = T_{\max} \cdot \omega_{\mathrm{base}} = T_{\max} \cdot \frac{2\pi n_{\mathrm{base}}}{60}
     \]
-    beschrÃ¤nkt. Im Konstantleistungsbereich gilt $P(n) = T(n) \cdot \omega(n) = P_{\max}$,
+    beschränkt. Im Konstantleistungsbereich gilt $P(n) = T(n) \cdot \omega(n) = P_{\max}$,
     also
     \[
         T(n) = \frac{P_{\max}}{\omega(n)} = \frac{P_{\max}}{\frac{2\pi n}{60}}
@@ -260,7 +260,7 @@ zwei fundamentale Regionen:
 \begin{proof}
     Es gilt $\lim_{n \to n_{\mathrm{base}}^-} T(n) = T_{\max}$ und
     $\lim_{n \to n_{\mathrm{base}}^+} T(n) = \frac{T_{\max} \cdot n_{\mathrm{base}}}{n_{\mathrm{base}}} = T_{\max}$.
-    Beide einseitigen Grenzwerte stimmen Ã¼berein.
+    Beide einseitigen Grenzwerte stimmen überein.
 \end{proof}
 
 In Abbildung~\ref{fig:torque_speed} ist die Drehmoment-Drehzahl-Kennlinie des
@@ -270,7 +270,7 @@ Referenzmotors grafisch dargestellt.
     \centering
     \includegraphics[width=0.92\textwidth]{plot1_torque_speed.pdf}
     \caption{Drehmoment-Drehzahl-Kennlinie (orange) und Leistungs-Drehzahl-Kennlinie
-             (blau gestrichelt) des PMSM-Referenzmotors. Der Ãœbergang von konstantem
+             (blau gestrichelt) des PMSM-Referenzmotors. Der Übergang von konstantem
              Drehmoment zu konstanter Leistung erfolgt bei der Eckdrehzahl
              $n_{\mathrm{base}} = \SI{4000}{RPM}$.}
     \label{fig:torque_speed}
@@ -278,13 +278,13 @@ Referenzmotors grafisch dargestellt.
 
 \subsection{Numerische Verifikation anhand der Messtabelle}
 
-Tabelle~\ref{tab:messdaten} listet die im Infografik angegebenen StÃ¼tzpunkte und
+Tabelle~\ref{tab:messdaten} listet die im Infografik angegebenen Stützpunkte und
 vergleicht sie mit den Werten aus Satz~\ref{satz:kennlinie}.
 
 \begin{table}[H]
     \centering
-    \caption{Numerische ÃœberprÃ¼fung der Kennlinie. $T_{\mathrm{theor.}} =
-             T_{\max} \cdot n_{\mathrm{base}} / n$ fÃ¼r $n > n_{\mathrm{base}}$.}
+    \caption{Numerische Überprüfung der Kennlinie. $T_{\mathrm{theor.}} =
+             T_{\max} \cdot n_{\mathrm{base}} / n$ für $n > n_{\mathrm{base}}$.}
     \label{tab:messdaten}
     \begin{tabular}{S[table-format=5.0] S[table-format=3.1] S[table-format=3.1] S[table-format=5.1]}
         \toprule
@@ -301,17 +301,17 @@ vergleicht sie mit den Werten aus Satz~\ref{satz:kennlinie}.
     \end{tabular}
 \end{table}
 
-\begin{lemma}[Ãœbereinstimmung von Messdaten und Modell]
+\begin{lemma}[Übereinstimmung von Messdaten und Modell]
     Alle Messpunkte aus Tabelle~\ref{tab:messdaten} weichen weniger als
     $\SI{0.5}{\newton\metre}$ ($< 0{,}6\,\%$) vom analytischen Modell ab.
 \end{lemma}
 
 \begin{proof}
     Der maximale absolute Fehler tritt bei $n = \SI{12000}{RPM}$ auf:
-    $|83 - 83{,}\overline{3}| = 0{,}\overline{3}\,\si{\newton\metre}$. FÃ¼r alle
-    anderen StÃ¼tzpunkte ist die Abweichung kleiner oder gleich null, da
-    Ganzzahlrundung der angegebenen Werte mit der theoretischen Kurve Ã¼bereinstimmt.
-    Die relativen Fehler bleiben stets unter $0{,}6\,\%$, was die ModellgÃ¼te bestÃ¤tigt.
+    $|83 - 83{,}\overline{3}| = 0{,}\overline{3}\,\si{\newton\metre}$. Für alle
+    anderen Stützpunkte ist die Abweichung kleiner oder gleich null, da
+    Ganzzahlrundung der angegebenen Werte mit der theoretischen Kurve übereinstimmt.
+    Die relativen Fehler bleiben stets unter $0{,}6\,\%$, was die Modellgüte bestätigt.
 \end{proof}
 
 % ============================================================
@@ -323,7 +323,7 @@ vergleicht sie mit den Werten aus Satz~\ref{satz:kennlinie}.
 
 \begin{satz}[Leistungs-Drehzahl-Kennlinie]
 \label{satz:leistung}
-    Die mechanische Leistung $P(n)$ als Funktion der Drehzahl betrÃ¤gt:
+    Die mechanische Leistung $P(n)$ als Funktion der Drehzahl beträgt:
     \[
         P(n) =
         \begin{cases}
@@ -336,17 +336,17 @@ vergleicht sie mit den Werten aus Satz~\ref{satz:kennlinie}.
 \end{satz}
 
 \begin{proof}
-    FÃ¼r $n \leq n_{\mathrm{base}}$: $P = T(n) \cdot \omega = T_{\max} \cdot \frac{2\pi n}{60}$,
+    Für $n \leq n_{\mathrm{base}}$: $P = T(n) \cdot \omega = T_{\max} \cdot \frac{2\pi n}{60}$,
     da $T(n) = T_{\max}$ nach Satz~\ref{satz:kennlinie}. Dies ist eine Linearfunktion in $n$.
 
-    FÃ¼r $n > n_{\mathrm{base}}$: $P = T(n) \cdot \omega =
+    Für $n > n_{\mathrm{base}}$: $P = T(n) \cdot \omega =
     \frac{T_{\max} \cdot n_{\mathrm{base}}}{n} \cdot \frac{2\pi n}{60}
     = T_{\max} \cdot \frac{2\pi n_{\mathrm{base}}}{60} = P_{\max} = \mathrm{const}$.
-    Die Terme $n$ im ZÃ¤hler und Nenner kÃ¼rzen sich vollstÃ¤ndig heraus.
+    Die Terme $n$ im Zähler und Nenner kürzen sich vollständig heraus.
 \end{proof}
 
 \begin{lemma}[Numerischer Wert der Maximalleistung]
-    FÃ¼r den Referenzmotor gilt
+    Für den Referenzmotor gilt
     \[
         P_{\max} = 250 \cdot \frac{2\pi \cdot 4000}{60}
                  = 250 \cdot 418{,}88 = \SI{104720}{\watt} \approx \SI{104{,}7}{\kilo\watt}.
@@ -356,7 +356,7 @@ vergleicht sie mit den Werten aus Satz~\ref{satz:kennlinie}.
 \begin{proof}
     Direkte Auswertung von Satz~\ref{satz:leistung} mit $T_{\max} = \SI{250}{\newton\metre}$
     und $n_{\mathrm{base}} = \SI{4000}{RPM}$ ergibt $P_{\max} = \SI{104{,}72}{\kilo\watt}$,
-    was mit dem Tabellenwert $\SI{104{,}7}{\kilo\watt}$ Ã¼bereinstimmt.
+    was mit dem Tabellenwert $\SI{104{,}7}{\kilo\watt}$ übereinstimmt.
 \end{proof}
 
 Abbildung~\ref{fig:power_speed} zeigt die Leistungs-Drehzahl-Kennlinie.
@@ -366,7 +366,7 @@ Abbildung~\ref{fig:power_speed} zeigt die Leistungs-Drehzahl-Kennlinie.
     \includegraphics[width=0.88\textwidth]{plot2_power_speed.pdf}
     \caption{Leistungs-Drehzahl-Kennlinie des Referenzmotors. Die Leistung steigt
              linear bis zur Eckdrehzahl $n_{\mathrm{base}} = \SI{4000}{RPM}$ und
-             bleibt danach annÃ¤hernd konstant bei $P_{\max} = \SI{104{,}7}{\kilo\watt}$.}
+             bleibt danach annähernd konstant bei $P_{\max} = \SI{104{,}7}{\kilo\watt}$.}
     \label{fig:power_speed}
 \end{figure}
 
@@ -374,47 +374,47 @@ Abbildung~\ref{fig:power_speed} zeigt die Leistungs-Drehzahl-Kennlinie.
 
 \begin{satz}[Radmoment als Funktion der Fahrzeuggeschwindigkeit]
 \label{satz:radmoment}
-    Sei $r$ der dynamische Reifenradius, $G$ das GesamtÃ¼bersetzungsverhÃ¤ltnis und
+    Sei $r$ der dynamische Reifenradius, $G$ das Gesamtübersetzungsverhältnis und
     $\eta_{\mathrm{DT}}$ der Antriebsstrangwirkungsgrad. Die Fahrzeuggeschwindigkeit
-    $v$ ergibt sich aus der Motordrehzahl Ã¼ber
+    $v$ ergibt sich aus der Motordrehzahl über
     \[
         v = \frac{2\pi n}{60} \cdot \frac{r}{G} \cdot \frac{1}{3{,}6} \cdot 3{,}6
           = \frac{n \cdot r \cdot \pi}{30 \cdot G} \cdot 3{,}6 \quad [\si{\kilo\metre\per\hour}].
     \]
-    Das Radmoment als Funktion der Geschwindigkeit betrÃ¤gt dann:
+    Das Radmoment als Funktion der Geschwindigkeit beträgt dann:
     \[
         T_W(v) = T(n(v)) \cdot G \cdot \eta_{\mathrm{DT}}.
     \]
 \end{satz}
 
-Abbildung~\ref{fig:wheel_torque} veranschaulicht das Radmoment Ã¼ber der
-Fahrzeuggeschwindigkeit fÃ¼r $G = 9$ und $\eta_{\mathrm{DT}} = 0{,}95$.
+Abbildung~\ref{fig:wheel_torque} veranschaulicht das Radmoment über der
+Fahrzeuggeschwindigkeit für $G = 9$ und $\eta_{\mathrm{DT}} = 0{,}95$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{plot6_wheel_torque.pdf}
-    \caption{Radmoment $T_W$ als Funktion der Fahrzeuggeschwindigkeit $v$ fÃ¼r
-             Ãœbersetzung $G = 9$ und Antriebsstrangwirkungsgrad $\eta_{\mathrm{DT}} = 0{,}95$.
-             Das maximale Radmoment betrÃ¤gt $T_{W,\max} = 250 \cdot 9 \cdot 0{,}95 \approx
+    \caption{Radmoment $T_W$ als Funktion der Fahrzeuggeschwindigkeit $v$ für
+             Übersetzung $G = 9$ und Antriebsstrangwirkungsgrad $\eta_{\mathrm{DT}} = 0{,}95$.
+             Das maximale Radmoment beträgt $T_{W,\max} = 250 \cdot 9 \cdot 0{,}95 \approx
              \SI{2.1}{\kilo\newton\metre}$.}
     \label{fig:wheel_torque}
 \end{figure}
 
 % ============================================================
-\section{FeldschwÃ¤chung}
+\section{Feldschwächung}
 \label{sec:feldschwaechung}
 % ============================================================
 
-\subsection{Grundprinzip der FeldschwÃ¤chung}
+\subsection{Grundprinzip der Feldschwächung}
 
-Die FeldschwÃ¤chung (engl.\ \emph{field weakening}) ist das entscheidende Verfahren,
-das den Betrieb des PMSM oberhalb der Eckdrehzahl ermÃ¶glicht. Ohne FeldschwÃ¤chung
-wÃ¼rde die induzierte Spannung bei $n > n_{\mathrm{base}}$ die zulÃ¤ssige
-Versorgungsspannung $U_{\max}$ Ã¼bersteigen.
+Die Feldschwächung (engl.\ \emph{field weakening}) ist das entscheidende Verfahren,
+das den Betrieb des PMSM oberhalb der Eckdrehzahl ermöglicht. Ohne Feldschwächung
+würde die induzierte Spannung bei $n > n_{\mathrm{base}}$ die zulässige
+Versorgungsspannung $U_{\max}$ übersteigen.
 
-\begin{satz}[FeldschwÃ¤chungsstrom]
+\begin{satz}[Feldschwächungsstrom]
 \label{satz:feldschwaechung}
-    Im FeldschwÃ¤chbereich wird durch EinprÃ¤gung eines negativen $d$-Achsenstroms
+    Im Feldschwächbereich wird durch Einprägung eines negativen $d$-Achsenstroms
     $I_d < 0$ die effektive Flusslinkung
     \[
         \psi_{\mathrm{eff}} = \psi_{\mathrm{PM}} + L_d \cdot I_d
@@ -424,47 +424,47 @@ Versorgungsspannung $U_{\max}$ Ã¼bersteigen.
         U_s = \omega \cdot \sqrt{(\psi_{\mathrm{PM}} + L_d \cdot I_d)^2 + (L_q \cdot I_q)^2}
             \leq U_{\max}
     \]
-    eingehalten wird. Dabei bezeichnen $L_d, L_q$ die InduktivitÃ¤ten in $d$- und
+    eingehalten wird. Dabei bezeichnen $L_d, L_q$ die Induktivitäten in $d$- und
     $q$-Achse des PMSM.
 \end{satz}
 
 \begin{proof}
-    Im stationÃ¤ren Betrieb des PMSM in $dq$-Koordinaten gelten die Spannungsgleichungen
+    Im stationären Betrieb des PMSM in $dq$-Koordinaten gelten die Spannungsgleichungen
     \begin{align*}
         U_d &= R_s I_d - \omega L_q I_q, \\
         U_q &= R_s I_q + \omega (L_d I_d + \psi_{\mathrm{PM}}).
     \end{align*}
-    FÃ¼r ohmsch vernachlÃ¤ssigbaren Statorwiderstand ($R_s \approx 0$, was bei hohen
+    Für ohmsch vernachlässigbaren Statorwiderstand ($R_s \approx 0$, was bei hohen
     Drehzahlen gilt, da $\omega L \gg R_s$) vereinfacht sich der Spannungsbetrag zu
     \[
         U_s^2 = U_d^2 + U_q^2
                = \omega^2 \left[(L_q I_q)^2 + (L_d I_d + \psi_{\mathrm{PM}})^2\right].
     \]
-    Um $U_s \leq U_{\max}$ zu gewÃ¤hrleisten, muss bei steigendem $\omega$ der Term
+    Um $U_s \leq U_{\max}$ zu gewährleisten, muss bei steigendem $\omega$ der Term
     $(L_d I_d + \psi_{\mathrm{PM}})$ reduziert werden, was durch $I_d < 0$ erreicht wird.
 \end{proof}
 
-\begin{lemma}[Drehmomentverlust durch FeldschwÃ¤chung]
-    Im FeldschwÃ¤chbereich reduziert sich das maximal erzielbare Drehmoment, weil
-    $I_d \neq 0$ und die StrombeschrÃ¤nkung $I_s^2 = I_d^2 + I_q^2 \leq I_{\max}^2$
+\begin{lemma}[Drehmomentverlust durch Feldschwächung]
+    Im Feldschwächbereich reduziert sich das maximal erzielbare Drehmoment, weil
+    $I_d \neq 0$ und die Strombeschränkung $I_s^2 = I_d^2 + I_q^2 \leq I_{\max}^2$
     aktiv ist:
     \[
         I_q = \sqrt{I_{\max}^2 - I_d^2} < I_{\max}.
     \]
-    Das verfÃ¼gbare Drehmoment fÃ¤llt daher auf
+    Das verfügbare Drehmoment fällt daher auf
     $T = \frac{3}{2} p [\psi_{\mathrm{PM}} I_q + (L_d - L_q) I_d I_q]$.
 \end{lemma}
 
 Abbildung~\ref{fig:field_weakening} zeigt die Stromkomponenten $I_d$ und $I_q$
-im FeldschwÃ¤chbereich.
+im Feldschwächbereich.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{plot5_field_weakening.pdf}
-    \caption{Normierte Stromkomponenten im FeldschwÃ¤chbereich. Mit zunehmender
-             Drehzahl wÃ¤chst $|I_d|$ (FeldschwÃ¤chstrom), wÃ¤hrend $I_q$
+    \caption{Normierte Stromkomponenten im Feldschwächbereich. Mit zunehmender
+             Drehzahl wächst $|I_d|$ (Feldschwächstrom), während $I_q$
              (Drehmomentstrom) sinkt. Der Gesamtstromzeiger $|I_{\mathrm{total}}|$
-             bleibt konstant gleich dem maximal zulÃ¤ssigen Strom.}
+             bleibt konstant gleich dem maximal zulässigen Strom.}
     \label{fig:field_weakening}
 \end{figure}
 
@@ -475,7 +475,7 @@ im FeldschwÃ¤chbereich.
 
 \subsection{Grundlagen der Rekuperation}
 
-\begin{satz}[ReversibilitÃ¤t des PMSM als Generator]
+\begin{satz}[Reversibilität des PMSM als Generator]
 \label{satz:rekuperation}
     Die PMSM-Maschine kann im Vier-Quadranten-Betrieb als Motor und Generator
     eingesetzt werden. Im Rekuperationsbetrieb (Generator) wird negatives Drehmoment
@@ -484,7 +484,7 @@ im FeldschwÃ¤chbereich.
         T_{\mathrm{regen}}(n) = -\eta_{\mathrm{regen}} \cdot T_{\mathrm{drive}}(n),
     \]
     wobei $\eta_{\mathrm{regen}} \in (0, 1]$ den Rekuperationswirkungsgrad bezeichnet.
-    Die rekuperierte Leistung betrÃ¤gt
+    Die rekuperierte Leistung beträgt
     \[
         P_{\mathrm{regen}}(n) = \eta_{\mathrm{regen}} \cdot P_{\mathrm{drive}}(n).
     \]
@@ -493,7 +493,7 @@ im FeldschwÃ¤chbereich.
 \begin{proof}
     Im Generatorbetrieb kehrt sich die Energieflussrichtung um: Kinetische Energie
     des Fahrzeugs treibt die Maschine an; diese erzeugt elektrische Energie, die in
-    die Batterie zurÃ¼ckgespeist wird. Die Drehmomentkennlinie ist anti-symmetrisch
+    die Batterie zurückgespeist wird. Die Drehmomentkennlinie ist anti-symmetrisch
     zur Antriebskennlinie, mit einem Verlustterm $1 - \eta_{\mathrm{regen}}$ der die
     Umwandlungsverluste (Kupfer-, Eisen- und Wechselrichterverluste) erfasst. Da der
     PMSM im selben Betriebspunkt arbeitet â€” nur mit umgekehrter Drehmomentrichtung â€”
@@ -505,7 +505,7 @@ Abbildung~\ref{fig:regen} veranschaulicht den Antriebs- und Rekuperationsbereich
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{plot4_regenerative_braking.pdf}
-    \caption{Vier-Quadranten-Darstellung des PMSM. Der grÃ¼ne Bereich zeigt das
+    \caption{Vier-Quadranten-Darstellung des PMSM. Der grüne Bereich zeigt das
              Antriebsmoment (positiv), der rote Bereich das Rekuperationsmoment
              (negativ). Ein typischer Rekuperationswirkungsgrad von
              $\eta_{\mathrm{regen}} = 70\,\%$ wurde angesetzt.}
@@ -514,23 +514,23 @@ Abbildung~\ref{fig:regen} veranschaulicht den Antriebs- und Rekuperationsbereich
 
 \subsection{Energiebilanz der Rekuperation}
 
-\begin{lemma}[EnergierÃ¼ckgewinnung bei einem Bremsvorgang]
+\begin{lemma}[Energierückgewinnung bei einem Bremsvorgang]
     Beim Bremsvorgang eines Fahrzeugs der Masse $m$ von Geschwindigkeit $v_1$ auf
-    $v_2 < v_1$ betrÃ¤gt die theoretisch rÃ¼ckgewinnbare Energie:
+    $v_2 < v_1$ beträgt die theoretisch rückgewinnbare Energie:
     \[
         E_{\mathrm{reken}} = \frac{1}{2} m (v_1^2 - v_2^2) \cdot \eta_{\mathrm{regen}}.
     \]
 \end{lemma}
 
 \begin{beispiel}
-    FÃ¼r $m = \SI{1800}{\kilo\gram}$, $v_1 = \SI{100}{\kilo\metre\per\hour} = \SI{27{,}78}{\metre\per\second}$,
+    Für $m = \SI{1800}{\kilo\gram}$, $v_1 = \SI{100}{\kilo\metre\per\hour} = \SI{27{,}78}{\metre\per\second}$,
     $v_2 = 0$, $\eta_{\mathrm{regen}} = 0{,}70$:
     \[
         E_{\mathrm{reken}} = \frac{1}{2} \cdot 1800 \cdot (27{,}78)^2 \cdot 0{,}70
                            \approx \SI{486}{\kilo\joule} \approx \SI{0{,}135}{\kilo\watt\hour}.
     \]
     Dies entspricht etwa $10$--$15\,\%$ des Energieverbrauchs auf $\SI{100}{\kilo\metre}$
-    und zeigt die signifikante ReichweitenerhÃ¶hung durch Rekuperation.
+    und zeigt die signifikante Reichweitenerhöhung durch Rekuperation.
 \end{beispiel}
 
 % ============================================================
@@ -558,15 +558,15 @@ Abbildung~\ref{fig:regen} veranschaulicht den Antriebs- und Rekuperationsbereich
         + \underbrace{k_{\mathrm{mech}} \cdot \omega^2}_{P_{\mathrm{mech}}}
         + \underbrace{P_{\mathrm{WR}}(I_s, \omega)}_{P_{\mathrm{Wechselrichter}}},
     \]
-    wobei $k_{\mathrm{Fe}}$ und $k_{\mathrm{mech}}$ materialabhÃ¤ngige Konstanten sind.
+    wobei $k_{\mathrm{Fe}}$ und $k_{\mathrm{mech}}$ materialabhängige Konstanten sind.
 \end{satz}
 
 \begin{proof}
-    \textit{Kupferverluste} $P_{\mathrm{Cu}} = R_s I_s^2$: Joulsche WÃ¤rme in den
+    \textit{Kupferverluste} $P_{\mathrm{Cu}} = R_s I_s^2$: Joulsche Wärme in den
     Statorwicklungen; proportional zum Quadrat des Statorstroms.
 
     \textit{Eisenverluste} $P_{\mathrm{Fe}}$: Ummagnetisierungsverluste (Hysterese
-    und Wirbelstrom) in den Blechpaketen; steigen Ã¼berproportional mit der Frequenz.
+    und Wirbelstrom) in den Blechpaketen; steigen überproportional mit der Frequenz.
     Die Steinmetz-Approximation $P_{\mathrm{Fe}} \propto f^{1{,}5} B^{1{,}6}$ wird
     hier als $\propto \omega^{1{,}5}$ vereinfacht.
 
@@ -574,9 +574,9 @@ Abbildung~\ref{fig:regen} veranschaulicht den Antriebs- und Rekuperationsbereich
     Windungsverluste (Luftreibung) wachsen mit dem Quadrat der Drehzahl.
 
     \textit{Wechselrichterverluste} $P_{\mathrm{WR}}$: Schaltverluste der IGBT/SiC-FET
-    sowie Durchlassverluste; abhÃ¤ngig von Strom und Schaltfrequenz.
+    sowie Durchlassverluste; abhängig von Strom und Schaltfrequenz.
 
-    Die Summe dieser vier Terme liefert ein hinreichend genaues Verlustmodell fÃ¼r die
+    Die Summe dieser vier Terme liefert ein hinreichend genaues Verlustmodell für die
     Ingenieurpraxis~\cite{mohan2003electric}.
 \end{proof}
 
@@ -586,7 +586,7 @@ Abbildung~\ref{fig:efficiency} zeigt eine vereinfachte Wirkungsgradkarte.
     \centering
     \includegraphics[width=0.92\textwidth]{plot3_efficiency_map.pdf}
     \caption{Wirkungsgradkarte des PMSM-Referenzmotors. Das Hocheffizienzgebiet
-             ($\eta > 95\,\%$, gelb-grÃ¼ner Bereich) liegt typischerweise im mittleren
+             ($\eta > 95\,\%$, gelb-grüner Bereich) liegt typischerweise im mittleren
              Drehzahl- und Lastbereich. Bei sehr kleinen Lasten dominieren Eisen-
              und Leerlaufverluste; bei sehr hohen Drehzahlen nehmen Eisenverluste zu.}
     \label{fig:efficiency}
@@ -603,14 +603,14 @@ Abbildung~\ref{fig:efficiency} zeigt eine vereinfachte Wirkungsgradkarte.
     \]
 \end{definition}
 
-\begin{lemma}[MTPA-Bedingung fÃ¼r PMSM mit Reluktanzanteil]
-    FÃ¼r einen PMSM mit Reluktanzanteil ($L_d \neq L_q$) lautet die MTPA-Bedingung:
+\begin{lemma}[MTPA-Bedingung für PMSM mit Reluktanzanteil]
+    Für einen PMSM mit Reluktanzanteil ($L_d \neq L_q$) lautet die MTPA-Bedingung:
     \[
         I_d^* = \frac{\psi_{\mathrm{PM}}}{4(L_q - L_d)}
                - \sqrt{\left(\frac{\psi_{\mathrm{PM}}}{4(L_q - L_d)}\right)^2 + \frac{I_s^2}{2}}.
     \]
-    FÃ¼r einen reinen PMSM ohne Reluktanz ($L_d = L_q$) gilt $I_d^* = 0$, d.\,h.
-    der gesamte Strom flieÃŸt in die $q$-Achse.
+    Für einen reinen PMSM ohne Reluktanz ($L_d = L_q$) gilt $I_d^* = 0$, d.\,h.
+    der gesamte Strom fließt in die $q$-Achse.
 \end{lemma}
 
 % ============================================================
@@ -624,7 +624,7 @@ Die Feldorientierte Regelung (FOC, auch \emph{Vector Control}) ist das
 Standardverfahren zur hochdynamischen Regelung von PMSM-Traktionsmotoren.
 
 \begin{definition}[Feldorientierte Regelung]
-    Die FOC transformiert die dreiphasigen StatorgrÃ¶ÃŸen $(a, b, c)$ Ã¼ber die
+    Die FOC transformiert die dreiphasigen Statorgrößen $(a, b, c)$ über die
     Clarke-Transformation ($\alpha\beta$-Koordinaten) und die Park-Transformation
     (rotierende $dq$-Koordinaten) in ein mit dem Rotorfluss mitrotierendes
     Koordinatensystem:
@@ -637,8 +637,8 @@ Standardverfahren zur hochdynamischen Regelung von PMSM-Traktionsmotoren.
     wobei $\theta_r$ der Rotorwinkel ist.
 \end{definition}
 
-Im $dq$-System kÃ¶nnen $I_d$ und $I_q$ unabhÃ¤ngig mit klassischen PI-Reglern
-geregelt werden, was eine entkoppelte Drehmoment- und Flussregelung ermÃ¶glicht.
+Im $dq$-System können $I_d$ und $I_q$ unabhängig mit klassischen PI-Reglern
+geregelt werden, was eine entkoppelte Drehmoment- und Flussregelung ermöglicht.
 
 \subsection{Advanced Control Algorithms}
 
@@ -647,11 +647,11 @@ weitere Algorithmen:
 
 \begin{itemize}
     \item \textbf{MTPA (Maximum Torque Per Ampere):} Minimiert Kupferverluste
-          durch optimale Stromzeigerwahl im ungeschwÃ¤chten Betrieb.
-    \item \textbf{FWC (Field Weakening Control):} Regelt $I_d$ im Ãœberdrehzahlbereich
+          durch optimale Stromzeigerwahl im ungeschwächten Betrieb.
+    \item \textbf{FWC (Field Weakening Control):} Regelt $I_d$ im Überdrehzahlbereich
           zur Einhaltung der Spannungsgrenze.
     \item \textbf{RTO (Real-Time Optimization):} Kombination beider Verfahren
-          mit BerÃ¼cksichtigung von Temperaturmodellen und Wechselrichterverlusten
+          mit Berücksichtigung von Temperaturmodellen und Wechselrichterverlusten
           zur Maximierung des Systemwirkungsgrades in Echtzeit.
 \end{itemize}
 
@@ -668,13 +668,13 @@ verifiziert. Die wesentlichen Ergebnisse sind:
 
 \begin{itemize}
     \item Im Konstantmomentbereich ($0 \leq n \leq n_{\mathrm{base}}$) liefert der
-          Motor bei maximalem Strom konstantes Drehmoment; die Leistung wÃ¤chst linear.
+          Motor bei maximalem Strom konstantes Drehmoment; die Leistung wächst linear.
     \item Im Konstantleistungsbereich ($n_{\mathrm{base}} < n \leq n_{\max}$) sinkt
           das Drehmoment hyperbolisch; die Leistung bleibt konstant bei $P_{\max}$.
-    \item Die FeldschwÃ¤chung durch negativen $d$-Achsenstrom ermÃ¶glicht den Betrieb
-          oberhalb der Eckdrehzahl ohne Ãœberschreitung der Wechselrichterspannung.
+    \item Die Feldschwächung durch negativen $d$-Achsenstrom ermöglicht den Betrieb
+          oberhalb der Eckdrehzahl ohne Überschreitung der Wechselrichterspannung.
     \item Regeneratives Bremsen nutzt den Maschinenbetrieb im Generatormodus zur
-          EnergierÃ¼ckgewinnung mit typisch $60$--$80\,\%$ Wirkungsgrad.
+          Energierückgewinnung mit typisch $60$--$80\,\%$ Wirkungsgrad.
     \item Die Wirkungsgradkarte zeigt Spitzenwirkungsgrade $> 95\,\%$ im mittleren
           Lastbereich.
 \end{itemize}
@@ -693,18 +693,18 @@ beleuchten die wichtigsten Forschungsrichtungen und Innovationspotenziale.
 \subsubsection{Axialflussmaschinen}
 
 Axialflussmaschinen (AFM) bieten im Vergleich zu konventionellen Radialflussmaschinen
-eine deutlich hÃ¶here Leistungsdichte bei reduzierter axialer BaulÃ¤nge. Die
-Drehmoment-Drehzahl-Charakteristik von AFMs unterscheidet sich durch kÃ¼rzere
-Flusslinien und grÃ¶ÃŸere aktive LuftspaltflÃ¤chen. Aktuelle Forschung fokussiert
+eine deutlich höhere Leistungsdichte bei reduzierter axialer Baulänge. Die
+Drehmoment-Drehzahl-Charakteristik von AFMs unterscheidet sich durch kürzere
+Flusslinien und größere aktive Luftspaltflächen. Aktuelle Forschung fokussiert
 auf die Optimierung der Scheibenmagnete aus NdFeB-Material sowie auf
-additiv gefertigte Wicklungsgeometrien fÃ¼r minimale KupferfÃ¼llfaktor-Verluste.
+additiv gefertigte Wicklungsgeometrien für minimale Kupferfüllfaktor-Verluste.
 Unternehmen wie YASA (Mercedes-Benz) und Magnax treiben die Skalierbarkeit von
-AFMs fÃ¼r $>\SI{200}{\kilo\watt}$ voran~\cite{chalmers2011axial}.
+AFMs für $>\SI{200}{\kilo\watt}$ voran~\cite{chalmers2011axial}.
 
 \subsubsection{Hochdrehzahlkonzepte ($n > \SI{20000}{RPM}$)}
 
 Hochdrehzahlkonzepte verschieben die Eckdrehzahl $n_{\mathrm{base}}$ nach oben
-und ermÃ¶glichen bei gleicher Leistung deutlich kleinere und leichtere Motoren.
+und ermöglichen bei gleicher Leistung deutlich kleinere und leichtere Motoren.
 Die Herausforderungen liegen in der mechanischen Festigkeit des Rotors
 (Fliehkraftbeanspruchung der Magnete), in der Lagerauswahl (Keramikhybridlager
 oder aktive Magnetlager) sowie in der Reduktion drehzahlproportionaler
@@ -715,47 +715,47 @@ Materialien~\cite{gerada2014high}.
 
 Synchron-Reluktanzmotoren (SyRM) ohne oder mit reduzierten Permanentmagneten
 bieten Kostenpotenziale durch Reduzierung seltener Erden. Die MTPA-Trajektorie
-und das FeldschwÃ¤chverhalten unterscheiden sich grundlegend von reinen PMSM.
-Hybride aus SyRM und PMSM (IPMSM) erlauben durch Optimierung des VerhÃ¤ltnisses
-$L_d/L_q$ eine maÃŸgeschneiderte Kennlinie fÃ¼r spezifische Fahrzeugklassen.
+und das Feldschwächverhalten unterscheiden sich grundlegend von reinen PMSM.
+Hybride aus SyRM und PMSM (IPMSM) erlauben durch Optimierung des Verhältnisses
+$L_d/L_q$ eine maßgeschneiderte Kennlinie für spezifische Fahrzeugklassen.
 
 \subsubsection{Supraleitende Traktionsmotoren}
 
 Supraleitende Maschinen (HTS-Motoren) versprechen durch den nahezu verlustfreien
 Stromfluss in supraleitenden Wicklungen Wirkungsgrade $> 99\,\%$ und eine um
-Faktor $5$--$10$ hÃ¶here Leistungsdichte. Die Haupthindernisse sind die
-KÃ¼hlinfrastruktur (flÃ¼ssiger Stickstoff oder Helium) und die mechanische
+Faktor $5$--$10$ höhere Leistungsdichte. Die Haupthindernisse sind die
+Kühlinfrastruktur (flüssiger Stickstoff oder Helium) und die mechanische
 Robustheit der Supraleiter unter dynamischen Betriebsbedingungen. NASA und
-das EU-Projekt HYFLYERS entwickeln Prototypen fÃ¼r die Luftfahrt, wobei
-Erkenntnisse auf EV-Anwendungen Ã¼bertragbar sind~\cite{filippenko2017superconducting}.
+das EU-Projekt HYFLYERS entwickeln Prototypen für die Luftfahrt, wobei
+Erkenntnisse auf EV-Anwendungen übertragbar sind~\cite{filippenko2017superconducting}.
 
-\subsection{Regelungsverfahren der nÃ¤chsten Generation}
+\subsection{Regelungsverfahren der nächsten Generation}
 
-\subsubsection{ModellprÃ¤diktive Regelung (MPC)}
+\subsubsection{Modellprädiktive Regelung (MPC)}
 
-Die modellprÃ¤diktive Regelung (Model Predictive Control, MPC) lÃ¶st online ein
-Optimierungsproblem Ã¼ber einen PrÃ¤diktionshorizont und bietet gegenÃ¼ber
+Die modellprädiktive Regelung (Model Predictive Control, MPC) löst online ein
+Optimierungsproblem über einen Prädiktionshorizont und bietet gegenüber
 klassischer FOC folgende Vorteile:
 \begin{itemize}
-    \item Explizite Behandlung von Strom- und SpannungsbeschrÃ¤nkungen
+    \item Explizite Behandlung von Strom- und Spannungsbeschränkungen
           in der Optimierung,
-    \item natÃ¼rliche Einbeziehung von MehrgrÃ¶ÃŸenabhÃ¤ngigkeiten
-          ($dq$-Kopplung, SÃ¤ttigung),
+    \item natürliche Einbeziehung von Mehrgrößenabhängigkeiten
+          ($dq$-Kopplung, Sättigung),
     \item direkte Minimierung von Verlusten als Kostenfunktion
           statt indirekte MTPA-Approximation.
 \end{itemize}
-Finite-Control-Set MPC (FCS-MPC) ist echtzeitfÃ¤hig auf modernen DSPs und FPGAs
+Finite-Control-Set MPC (FCS-MPC) ist echtzeitfähig auf modernen DSPs und FPGAs
 und wird zunehmend in Serienprodukten eingesetzt~\cite{rodriguez2013mpc}.
 
 \subsubsection{Maschinelles Lernen in der Motorregelung}
 
 Deep-Reinforcement-Learning-Agenten (DRL) haben in Simulationsstudien gezeigt,
-dass sie MTPA- und FeldschwÃ¤chungsstrategien adaptiv und ohne explizites
-Motormodell erlernen kÃ¶nnen. Wesentliche Forschungsthemen sind:
+dass sie MTPA- und Feldschwächungsstrategien adaptiv und ohne explizites
+Motormodell erlernen können. Wesentliche Forschungsthemen sind:
 \begin{itemize}
     \item Transferierbarkeit von Sim-to-Real: Lernstrategien aus Simulationsmodellen
-          mÃ¼ssen robust gegenÃ¼ber Parameterunsicherheiten (SÃ¤ttigungscharakteristik,
-          TemperaturabhÃ¤ngigkeit von $R_s$, $\psi_{\mathrm{PM}}$) sein.
+          müssen robust gegenüber Parameterunsicherheiten (Sättigungscharakteristik,
+          Temperaturabhängigkeit von $R_s$, $\psi_{\mathrm{PM}}$) sein.
     \item Online-Adaption: Fortlaufende Anpassung der Regelparameter an
           Alterungseffekte (Entmagnetisierung der Permanentmagnete, Wicklungsalterung).
     \item Sicherheitszertifizierung: Formale Verifikation von DRL-Reglern nach
@@ -764,8 +764,8 @@ Motormodell erlernen kÃ¶nnen. Wesentliche Forschungsthemen sind:
 
 \subsubsection{Parameteridentifikation und digitale Zwillinge}
 
-Digitale Zwillinge (Digital Twins) des Traktionsmotors ermÃ¶glichen Echtzeit-
-ZustandsschÃ¤tzung und prÃ¤diktive Wartung. Hochgenaue Finite-Elemente-Modelle
+Digitale Zwillinge (Digital Twins) des Traktionsmotors ermöglichen Echtzeit-
+Zustandsschätzung und prädiktive Wartung. Hochgenaue Finite-Elemente-Modelle
 (FEM) kalibriert durch Recursive Least Squares (RLS) oder Extended Kalman Filter
 (EKF) erlauben die laufende Identifikation von $L_d(I_d, T)$, $L_q(I_q, T)$,
 $R_s(T)$ und $\psi_{\mathrm{PM}}(T)$. Solche adaptiven Modelle verbessern die
@@ -773,29 +773,29 @@ MTPA-Genauigkeit bei variierenden Temperaturen erheblich~\cite{belkhier2021obser
 
 \subsection{Thermomanagement}
 
-\subsubsection{Direkte FlÃ¼ssigkeitskÃ¼hlung der Statorwicklung}
+\subsubsection{Direkte Flüssigkeitskühlung der Statorwicklung}
 
-Konventionelle WassermÃ¤ntel um das MotorgehÃ¤use fÃ¼hren WÃ¤rme ineffizient Ã¼ber
-mehrere Schichten ab. Direkte KÃ¼hlung durch KÃ¼hlmittel im Wickelkopf (Hair-Pin-
-Wicklung mit KÃ¼hlkanÃ¤len) oder durch dielektrische ImmersionskÃ¼hlung reduziert
-die Wicklungstemperatur drastisch und erlaubt dauerhaft $30$--$50\,\%$ hÃ¶here
+Konventionelle Wassermäntel um das Motorgehäuse führen Wärme ineffizient über
+mehrere Schichten ab. Direkte Kühlung durch Kühlmittel im Wickelkopf (Hair-Pin-
+Wicklung mit Kühlkanälen) oder durch dielektrische Immersionskühlung reduziert
+die Wicklungstemperatur drastisch und erlaubt dauerhaft $30$--$50\,\%$ höhere
 Strombelastung bei gleicher Motorgeometrie.
 
-\subsubsection{WÃ¤rmemanagement der Permanentmagnete}
+\subsubsection{Wärmemanagement der Permanentmagnete}
 
-Permanentmagnete aus NdFeB verlieren reversibel KoerzitivfeldstÃ¤rke und
-Remanenz bei erhÃ¶hter Temperatur und kÃ¶nnen irreversibel entmagnetisiert werden
+Permanentmagnete aus NdFeB verlieren reversibel Koerzitivfeldstärke und
+Remanenz bei erhöhter Temperatur und können irreversibel entmagnetisiert werden
 ($T > \SI{150}{\degreeCelsius}$ typisch). Thermische Modelle auf Basis
-von Lumped-Parameter-Netzwerken (LPTN) mit $> 20$ Knoten ermÃ¶glichen die
-EchtzeitÃ¼berwachung der Magnettemperatur aus messbaren GrÃ¶ÃŸen (Strom,
-Spannung, GehÃ¤usetemperatur)~\cite{nategh2017thermal}.
+von Lumped-Parameter-Netzwerken (LPTN) mit $> 20$ Knoten ermöglichen die
+Echtzeitüberwachung der Magnettemperatur aus messbaren Größen (Strom,
+Spannung, Gehäusetemperatur)~\cite{nategh2017thermal}.
 
-\subsubsection{WÃ¤rmepumpenintegration}
+\subsubsection{Wärmepumpenintegration}
 
-Im Winterbetrieb kann der Traktionsmotor als WÃ¤rmelieferant fÃ¼r den
-Fahrzeuginnenraum genutzt werden. Optimierte Verlustverteilung (gezielt erhÃ¶hte
+Im Winterbetrieb kann der Traktionsmotor als Wärmelieferant für den
+Fahrzeuginnenraum genutzt werden. Optimierte Verlustverteilung (gezielt erhöhte
 Kupferverluste durch leicht suboptimale MTPA-Strategie) bei niedrigen Lasten
-reduziert den Heizbedarf der WÃ¤rmepumpe und verbessert die Winterreichweite
+reduziert den Heizbedarf der Wärmepumpe und verbessert die Winterreichweite
 um bis zu $15\,\%$.
 
 \subsection{Leistungselektronik und Wechselrichter}
@@ -803,18 +803,18 @@ um bis zu $15\,\%$.
 \subsubsection{Wide-Bandgap-Halbleiter (SiC, GaN)}
 
 Siliziumcarbid (SiC) und Galliumnitrid (GaN) Leistungshalbleiter erlauben
-deutlich hÃ¶here Schaltfrequenzen ($>\SI{100}{\kilo\hertz}$) bei geringeren
-Durchlassverlusten als konventionelles IGBT-Silizium. Folgen fÃ¼r die
+deutlich höhere Schaltfrequenzen ($>\SI{100}{\kilo\hertz}$) bei geringeren
+Durchlassverlusten als konventionelles IGBT-Silizium. Folgen für die
 Kennlinie des Traktionssystems:
 \begin{itemize}
     \item Reduzierte Stromschwankungen und damit geringere Motorverluste,
     \item kleinere Filterkondensatoren im Zwischenkreis,
-    \item erhÃ¶hte Dynamik der FOC durch schnellere Strommessung und
+    \item erhöhte Dynamik der FOC durch schnellere Strommessung und
           Modulation,
     \item Systemwirkungsgrade $> 98\,\%$ im Wechselrichter.
 \end{itemize}
 Tesla (Model 3/Y) und BYD (Blade-Plattform) setzen SiC-Wechselrichter bereits
-in GroÃŸserie ein~\cite{wang2020sic}.
+in Großserie ein~\cite{wang2020sic}.
 
 \subsubsection{48-Volt-Bordnetz und Hochvolttrends}
 
@@ -824,7 +824,7 @@ Wechselrichtertopologie. Kaskadenkonverter und Modulare Multilevelkonverter
 (MMC) verteilen die Schaltverluste auf viele Leistungsstufen und reduzieren
 den Filteraufwand. Bei $\SI{800}{\volt}$ verdoppelt sich bei gleicher Leistung
 der Ladestrom im DC/AC-Wandler nicht, was schnelleres Laden ($>\SI{350}{\kilo\watt}$)
-und dÃ¼nnere Kabeldurchmesser ermÃ¶glicht.
+und dünnere Kabeldurchmesser ermöglicht.
 
 \subsection{Fahrzeugsystemintegration}
 
@@ -833,23 +833,23 @@ und dÃ¼nnere Kabeldurchmesser ermÃ¶glicht.
 Die Integration von Motor, Wechselrichter und Getriebe zu einer kompakten
 E-Achse ist ein dominanter Trend. Die mechanische Kopplung stellt neue
 Anforderungen an die Drehmomentkennlinie: Getriebevibrationen und
-DrehmomentstÃ¶ÃŸe bei Gangwechsel (in mehrstufigen E-Getrieben) mÃ¼ssen durch
+Drehmomentstöße bei Gangwechsel (in mehrstufigen E-Getrieben) müssen durch
 schnelle Drehmomentensteuerung ($<\SI{1}{\milli\second}$) kompensiert werden.
 
 \subsubsection{Mehrmotorenkonzepte und Torque Vectoring}
 
-Fahrzeuge mit je einem Motor pro Rad oder Achse ermÃ¶glichen elektromagnetisches
+Fahrzeuge mit je einem Motor pro Rad oder Achse ermöglichen elektromagnetisches
 Torque Vectoring: individuell steuerbares Rad-Drehmoment verbessert
-FahrstabilitÃ¤t, Kurvengeschwindigkeit und Traktion ohne mechanisches
+Fahrstabilität, Kurvengeschwindigkeit und Traktion ohne mechanisches
 Sperrdifferential. Die Drehmoment-Drehzahl-Charakteristik jedes Motors muss
-dann im Zusammenspiel optimiert werden; dies erfordert MehrgrÃ¶ÃŸen-Optimierer
+dann im Zusammenspiel optimiert werden; dies erfordert Mehrgrößen-Optimierer
 auf Fahrzeugebene.
 
-\subsubsection{Autonomes Fahren und prÃ¤diktives Energiemanagement}
+\subsubsection{Autonomes Fahren und prädiktives Energiemanagement}
 
 Autonome Fahrzeuge kennen ihre Route, Topographie und den umgebenden
-Verkehrsfluss im Voraus. PrÃ¤diktives Energiemanagement (look-ahead control)
-kann Rekuperations- und Beschleunigungsmomente Ã¼ber den gesamten Fahrtweg
+Verkehrsfluss im Voraus. Prädiktives Energiemanagement (look-ahead control)
+kann Rekuperations- und Beschleunigungsmomente über den gesamten Fahrtweg
 vorausplanen und dabei immer den Hocheffizienzbereich der Wirkungsgradkarte
 ansteuern. Kombiniert mit V2X-Kommunikation (Vehicle-to-Grid, Vehicle-to-Home)
 entsteht ein bidirektionales Energienetz, in dem der EV-Traktionsmotor nicht
@@ -859,10 +859,10 @@ nur Verbraucher sondern auch Energiepuffer und Netzstabilisator ist.
 
 \subsubsection{Seltene-Erden-freie Magnete}
 
-Die AbhÃ¤ngigkeit von NdFeB-Magneten stellt ein Versorgungsrisiko dar.
+Die Abhängigkeit von NdFeB-Magneten stellt ein Versorgungsrisiko dar.
 Ferrit-Verbundmagnete, MnBi-Magnete und neue Legierungen (z.\,B.\ auf
 Fe$_{16}$N$_2$-Basis) bieten bei deutlich geringerer Remanenz und
-KoerzitivfeldstÃ¤rke eine Alternative. Forschung an hochkoerzitiven Ferritmagneten
+Koerzitivfeldstärke eine Alternative. Forschung an hochkoerzitiven Ferritmagneten
 durch Nanoskalierung und Dotierung zielt auf Betriebstemperaturen $>\SI{120}{\degreeCelsius}$
 ohne Entmagnetisierungsrisiko~\cite{gutfleisch2011magnetic}.
 
@@ -870,21 +870,21 @@ ohne Entmagnetisierungsrisiko~\cite{gutfleisch2011magnetic}.
 
 Das Recycling von NdFeB-Magneten aus EV-Motoren am Ende des Fahrzeuglebens
 ist ein aktives Forschungsfeld. Hydrometallurgische und pyrometallurgische
-Verfahren zur RÃ¼ckgewinnung von Nd, Dy und Pr kÃ¶nnten die VerfÃ¼gbarkeit
+Verfahren zur Rückgewinnung von Nd, Dy und Pr könnten die Verfügbarkeit
 dieser Materialien langfristig sichern und die $\mathrm{CO}_2$-Bilanz der
 EV-Produktion verbessern.
 
 \subsection{Normung und Zertifizierung}
 
 Die Normung von EV-Traktionsmotoren (IEC~60034, ISO~21498, SAE~J2907) entwickelt
-sich kontinuierlich weiter. ZukÃ¼nftige Normen werden voraussichtlich:
+sich kontinuierlich weiter. Zukünftige Normen werden voraussichtlich:
 \begin{itemize}
-    \item standardisierte Kennlinienformate fÃ¼r digitale Fahrzeugdatenbanken
+    \item standardisierte Kennlinienformate für digitale Fahrzeugdatenbanken
           (ASAM MDF) definieren,
-    \item Wirkungsgradklassen analog zu IE1--IE5 fÃ¼r EV-Motoren einfÃ¼hren,
-    \item Mindestanforderungen an die Rekuperationseffizienz Ã¼ber standardisierte
+    \item Wirkungsgradklassen analog zu IE1--IE5 für EV-Motoren einführen,
+    \item Mindestanforderungen an die Rekuperationseffizienz über standardisierte
           Fahrzyklen (WLTP, NEDC) festlegen,
-    \item Sicherheitsanforderungen fÃ¼r ML-basierte Motorregler im Kontext
+    \item Sicherheitsanforderungen für ML-basierte Motorregler im Kontext
           ASIL-D (ISO~26262) und SOTIF (ISO~21448) konkretisieren.
 \end{itemize}
 
@@ -921,7 +921,7 @@ C.\ Gerada, K.\ Bradley,
 pp.\,3300--3306, 2008.
 
 \bibitem{filippenko2017superconducting}
-M.\ Filipenko, M.\ KÃ¼hn,
+M.\ Filipenko, M.\ Kühn,
 ``High Power Density Superconducting Electric Motor for Aircraft Applications,''
 \textit{IOP Conference Series: Materials Science and Engineering},
 vol.\,756, no.\,1, 2020.
@@ -952,7 +952,7 @@ F.\ Wang, Z.\ Zhang, T.\,A.\ Ericsen, R.\ Raju, R.\ Burgos, D.\ Boroyevich,
 \textit{Proceedings of the IEEE}, vol.\,103, no.\,12, pp.\,2285--2311, 2015.
 
 \bibitem{gutfleisch2011magnetic}
-O.\ Gutfleisch, M.\,A.\ Willard, E.\ BrÃ¼ck, C.\,H.\ Chen, S.\,G.\ Sankar,
+O.\ Gutfleisch, M.\,A.\ Willard, E.\ Brück, C.\,H.\ Chen, S.\,G.\ Sankar,
 J.\,P.\ Liu,
 ``Magnetic Materials and Devices for the 21st Century: Stronger, Lighter,
 and More Energy Efficient,''

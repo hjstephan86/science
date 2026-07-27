@@ -24,7 +24,7 @@
 
 \geometry{margin=2.5cm}
 
-%% ---- Mikrotypografie: verhindert ÃœberlÃ¤ufe Ã¼ber den rechten Rand ----
+%% ---- Mikrotypografie: verhindert Überläufe über den rechten Rand ----
 \usepackage[protrusion=true, expansion=false, final]{microtype}
 
 %% ---- Keine Kopfzeilen, nur Seitenzahl unten mittig ----
@@ -100,8 +100,8 @@
   breaklines=true,
   frame=single,
   literate=%
-  {Ã–}{{\"O}}1{Ã„}{{\"A}}1{Ãœ}{{\"U}}1
-  {ÃŸ}{{\ss}}1{Ã¼}{{\"u}}1{Ã¤}{{\"a}}1{Ã¶}{{\"o}}1
+  {Ö}{{\"O}}1{Ä}{{\"A}}1{Ü}{{\"U}}1
+  {ß}{{\ss}}1{ü}{{\"u}}1{ä}{{\"a}}1{ö}{{\"o}}1
 }
 
 %% ---- Titelseite ----
@@ -169,7 +169,7 @@ Resonanzfrequenzverschiebung \emph{dieselbe} physikalische Ursache haben -- eine
 Einsicht, die aus dem Ergebnis allein nicht hervorgeht. Der Beweis der
 Rippelkompensation bei $D = 1/N$ (Kapitel~\ref{kap:bidi_dcdc}) ist ein einzeiliges
 algebraisches Argument, das aber sofort erkl\"art, warum vier phasenversetzte Br\"ucken
-und kein anderes $N$ f\"ur ein TastverhÃ¤ltnis von $0{,}25$ optimal sind.
+und kein anderes $N$ f\"ur ein Tastverhältnis von $0{,}25$ optimal sind.
 
 Neben der theoretischen Fundierung enth\"alt jedes Kapitel Schaltkreisdarstellungen,
 die mit dem Paket \texttt{circuitikz} gesetzt wurden, sowie numerische Diagramme,
@@ -241,7 +241,7 @@ Differentialgleichungen) werden vorausgesetzt. Grundlagen der Elektrotechnik
 (Kirchhoff'sche Gesetze, Vierpol-Theorie, Fourier-Analyse) sollten bekannt sein.
 Kenntnisse der Leistungselektronik im engeren Sinne sind hilfreich, aber nicht
 zwingend -- die relevanten Konzepte (Schaltverluste, Resonanzkonverter, Feldorientierung)
-werden jeweils eingefÃ¼hrt.
+werden jeweils eingeführt.
 
 \abschnitt{Dank}
 
@@ -447,10 +447,10 @@ stehende Wellen im Kern -- die sogenannte \emph{dimensionale Resonanz}.
     \node at (2,5.4) {\small Halb-Br\"ucke};
     \node at (5,3.2) {\small Resonanzkreis};
   \end{circuitikz}
-  \caption{LLC-Resonanzkonverter mit GaN-HEMT-HalbbrÃ¼cke: Die GaN-Transistoren $S_1$, $S_2$
+  \caption{LLC-Resonanzkonverter mit GaN-HEMT-Halbbrücke: Die GaN-Transistoren $S_1$, $S_2$
            erzeugen eine Rechteckspannung am Eingang des Serienresonanzkreises ($L_r$, $C_r$,
-           $L_m$). Die MagnetisierungsinduktivitÃ¤t $L_m$ bildet zusammen mit $C_r$ die zweite
-           Resonanzfrequenz. SekundÃ¤rseitig schalten die synchronen Gleichrichter $SR_1$, $SR_2$
+           $L_m$). Die Magnetisierungsinduktivität $L_m$ bildet zusammen mit $C_r$ die zweite
+           Resonanzfrequenz. Sekundärseitig schalten die synchronen Gleichrichter $SR_1$, $SR_2$
            bei Nulldurchgang des Resonanzstroms (ZCS oder ZVS je nach Betriebspunkt).}
   \label{abb:llc_gan}
 \end{figure}
@@ -458,12 +458,12 @@ stehende Wellen im Kern -- die sogenannte \emph{dimensionale Resonanz}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{plots/plot01_gan_sic_losses.pdf}
-  \caption{Normierte Schaltverluste als Funktion der Schaltfrequenz fÃ¼r Si-IGBT,
-           SiC-MOSFET und GaN-HEMT. Der grÃ¼n hinterlegte MHz-Bereich zeigt, dass nur
-           GaN-Halbleiter dort mit vertretbaren Verlusten betrieben werden kÃ¶nnen.
+  \caption{Normierte Schaltverluste als Funktion der Schaltfrequenz für Si-IGBT,
+           SiC-MOSFET und GaN-HEMT. Der grün hinterlegte MHz-Bereich zeigt, dass nur
+           GaN-Halbleiter dort mit vertretbaren Verlusten betrieben werden können.
            Aus \autoref{hilfssatz:schaltverl} folgt der lineare Anstieg mit der Frequenz;
            der geringere Vorfaktor bei GaN ergibt sich aus dem fehlenden $Q_{rr}$ und den
-           kÃ¼rzeren Schaltzeiten.}
+           kürzeren Schaltzeiten.}
   \label{abb:gan_losses}
 \end{figure}
 
@@ -620,11 +620,11 @@ Kennlinie des Elektrolyseurs ist nichtlinear und temperaturabh\"angig.
     \draw (8,3.5) -- (7.5,3.5) -- (7.5,4) -- (7,4) -- (7,3.7);
     \draw (8,0) -- (7,0) -- (7,0.3);
   \end{circuitikz}
-  \caption{Kaskadierter LLC-Umrichter fÃ¼r PEM-Wasserstoffelektrolyse: Ein PFC-Gleichrichter
+  \caption{Kaskadierter LLC-Umrichter für PEM-Wasserstoffelektrolyse: Ein PFC-Gleichrichter
            speist drei (oder mehr) identische 22\,kW-LLC-Module, die ausgangsseitig parallel
            an den Elektrolyseur-Stack geschaltet sind. Jedes Modul arbeitet mit Frequenzmodulation
            zur Stromregelung. Das dritte Modul (gestrichelt) wird im Teillastbetrieb abgeschaltet,
-           um den Wirkungsgrad gemÃ¤ÃŸ \autoref{satz:teillast} zu optimieren.}
+           um den Wirkungsgrad gemäß \autoref{satz:teillast} zu optimieren.}
   \label{abb:kaskadierter_h2}
 \end{figure}
 
@@ -649,11 +649,11 @@ $f_n = f_s / f_{res}$ beeinflusst. Die station\"are Spannungs\"ubertragung:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{plots/plot02_llc_gain.pdf}
-  \caption{LLC-SpannungsÃ¼bertragungskennlinie $M(f_n)$ fÃ¼r verschiedene GÃ¼tefaktoren $Q$
-           bei $L_n = 5$. Bei $f_n = 1$ gilt $M = 1$ (Resonanzpunkt, unabhÃ¤ngig von $Q$).
-           Im ZVS-Bereich ($f_n > 1$) fÃ¤llt $M$ mit steigender Frequenz ab -- der Regelbereich
+  \caption{LLC-Spannungsübertragungskennlinie $M(f_n)$ für verschiedene Gütefaktoren $Q$
+           bei $L_n = 5$. Bei $f_n = 1$ gilt $M = 1$ (Resonanzpunkt, unabhängig von $Q$).
+           Im ZVS-Bereich ($f_n > 1$) fällt $M$ mit steigender Frequenz ab -- der Regelbereich
            liegt zwischen $M_{min}$ (Maximalfrequenz) und $M = 1$ (Resonanz).
-           Der ZCS-Bereich ($f_n < 1$, kapazitiv) ist fÃ¼r IGBT-basierte Systeme relevant
+           Der ZCS-Bereich ($f_n < 1$, kapazitiv) ist für IGBT-basierte Systeme relevant
            (vgl.\ \autoref{kap:zcs_llc}).}
   \label{abb:llc_kennlinie}
 \end{figure}
@@ -729,7 +729,7 @@ als bidirektionaler Netzwandler w\"ahrend des Fahrzeugbetriebs verwendet.
     G_i(s) = \frac{1}{L_f s + R_f} \approx \frac{1}{L_f s} \quad (R_f \approx 0).
   \]
   Der PI-Regler $C_i(s) = K_p(1 + 1/(T_i s))$ ergibt f\"ur die Kreisverst\"arkung
-  $L_i(s) = C_i(s) G_i(s)$. Stabilit\"at folgt aus der Phasenreserve $> 45Â°$, was bei
+  $L_i(s) = C_i(s) G_i(s)$. Stabilit\"at folgt aus der Phasenreserve $> 45 °$, was bei
   der obigen Bandbreitenbedingung gew\"ahrleistet ist. Die Entkopplung beider Regelkreise
   (Faktor 10) stellt sicher, dass der \"au\ss{}ere Kreis die innere Dynamik nicht destabilisiert.
   F\"ur negative Leistung (V2G) vertauschen sich Referenzrichtungen; die Struktur bleibt
@@ -745,7 +745,7 @@ als bidirektionaler Netzwandler w\"ahrend des Fahrzeugbetriebs verwendet.
     % Bidirektionale PFC-Bruecke (4 IGBTs / GaN)
     \draw[thick] (1.5,0) rectangle (4.5,5.5);
     \node at (3,4.5) {\small Bidirekt.};
-    \node at (3,3.8) {\small PFC-BrÃ¼cke};
+    \node at (3,3.8) {\small PFC-Brücke};
     \node at (3,3.1) {\small (GaN/IGBT)};
     \node at (3,2.3) {\small 3{,}3\,kW};
     \node at (3,1.6) {\small oder};
@@ -774,9 +774,9 @@ als bidirektionaler Netzwandler w\"ahrend des Fahrzeugbetriebs verwendet.
     \draw (4.5,5) -- (5,5);
     \draw (4.5,0) -- (5,0);
   \end{circuitikz}
-  \caption{Bidirektionaler On-Board-Lader fÃ¼r NeMo.bil: Die aktive PFC-BrÃ¼cke (links)
+  \caption{Bidirektionaler On-Board-Lader für NeMo.bil: Die aktive PFC-Brücke (links)
            regelt Netzstrom und DC-Zwischenkreisspannung. Der nachfolgende LLC-Konverter
-           sorgt fÃ¼r galvanische Trennung und regelt den Batteriestrom. Die blauen/roten
+           sorgt für galvanische Trennung und regelt den Batteriestrom. Die blauen/roten
            Pfeile zeigen die beiden Energieflussrichtungen (G2V/V2G).}
   \label{abb:nemo_obc}
 \end{figure}
@@ -784,10 +784,10 @@ als bidirektionaler Netzwandler w\"ahrend des Fahrzeugbetriebs verwendet.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.84\textwidth]{plots/plot15_nemo_bil.pdf}
-  \caption{Links: Ladeverlauf im Konvoibetrieb fÃ¼r Pro-Bus (22\,kW, blau) und
+  \caption{Links: Ladeverlauf im Konvoibetrieb für Pro-Bus (22\,kW, blau) und
            Cab-Fahrzeug (3{,}3\,kW, rot). Das zeitliche Profil spiegelt die
            Fahrpausen im Konvoi wider: kurze Stopp-Phasen mit maximaler Ladeleistung.
-           Rechts: Wirkungsgrad des bidirektionalen Wandlers Ã¼ber dem Leistungsbereich;
+           Rechts: Wirkungsgrad des bidirektionalen Wandlers über dem Leistungsbereich;
            das Optimum liegt nahe 11\,kW ($\approx 97\,\%$).}
   \label{abb:nemo_power}
 \end{figure}
@@ -910,8 +910,8 @@ an den DC-DC-Konverter gestellt~\cite{Bolte2020}:
     \draw (10.5,3) -- (11.5,3) to[R] (11.5,1) -- (10.5,1);
     \draw (11.5,3) node[right]{14\,V};
   \end{circuitikz}
-  \caption{Zweistufiger DC-DC-Konverter fÃ¼r EV-Bordnetze: Boost-Stufe ($S_b$, $L_b$, $D_b$)
-           hebt $V_{in}$ auf konstante $V_{DC} = 400$\,V an. Die H-BrÃ¼cke ($S_1$--$S_4$) treibt
+  \caption{Zweistufiger DC-DC-Konverter für EV-Bordnetze: Boost-Stufe ($S_b$, $L_b$, $D_b$)
+           hebt $V_{in}$ auf konstante $V_{DC} = 400$\,V an. Die H-Brücke ($S_1$--$S_4$) treibt
            den Serienresonanzkreis ($L_r$, $C_r$) in den Transformator; der Ausgangsgleichrichter
            ($D_1$, $D_2$, $L_o$, $C_o$) liefert 14\,V. Maximaler Wirkungsgrad $\eta \approx 98{,}2\,\%$.}
   \label{abb:dcdc_ev}
@@ -922,7 +922,7 @@ an den DC-DC-Konverter gestellt~\cite{Bolte2020}:
   \includegraphics[width=0.74\textwidth]{plots/plot06_dcdc_losses.pdf}
   \caption{Verlustverteilung im DC-DC-Konverter bei 250\,W und 500\,W Ausgangsleistung.
            Die Transformatorkernverluste dominieren bei hoher Last; die kalorimetrisch
-           bestimmten Werte stimmen mit der Simulation auf $< 5\,\%$ Ã¼berein.
+           bestimmten Werte stimmen mit der Simulation auf $< 5\,\%$ überein.
            Die Steinmetz-Parameter ($\alpha = 1{,}24$, $\beta = 2{,}59$) wurden aus
            denselben Messungen extrahiert.}
   \label{abb:dcdc_verluste}
@@ -942,15 +942,15 @@ Die wichtigsten technischen Kenndaten des untersuchten Studentenprojekts:
   \item Bidirektionaler Leistungstransfer: 48\,V $\leftrightarrow$ 12\,V,
   \item Nennleistung 1\,kW, Spitzenleistung 1{,}5\,kW,
   \item Schaltfrequenz 200\,kHz -- erm\"oglicht durch GaN-HEM-Transistoren,
-  \item Vier phasenversetzte HalbbrÃ¼cken (Interleaving) f\"ur minimalen Stromrippel,
+  \item Vier phasenversetzte Halbbrücken (Interleaving) f\"ur minimalen Stromrippel,
   \item Leistungsdichte $\geq 2{,}1\,\mathrm{kW/dm^3}$.
 \end{itemize}
 
 \abschnitt{Theorie der phasenversetzten Taktung}
 
-\begin{definition}[Phasenversetzung bei $N$ parallelen HalbbrÃ¼cken]
-  Bei $N$ identischen HalbbrÃ¼cken, die jeweils mit TastverhÃ¤ltnis $D$ und
-  gegenseitigem Phasenversatz $\Delta\phi = 360Â°/N$ betrieben werden, ergibt sich
+\begin{definition}[Phasenversetzung bei $N$ parallelen Halbbrücken]
+  Bei $N$ identischen Halbbrücken, die jeweils mit Tastverhältnis $D$ und
+  gegenseitigem Phasenversatz $\Delta\phi = 360 °/N$ betrieben werden, ergibt sich
   der Ausgangsstromrippel zu:
   \[
     \Delta i_{out}(D) =
@@ -962,7 +962,7 @@ Die wichtigsten technischen Kenndaten des untersuchten Studentenprojekts:
 \end{definition}
 
 \begin{satz}[Rippelfreiheit bei $D = 1/N$]
-  Bei $N$ phasenversetzt getakteten HalbbrÃ¼cken verschwindet der Ausgangsstromrippel
+  Bei $N$ phasenversetzt getakteten Halbbrücken verschwindet der Ausgangsstromrippel
   exakt f\"ur $D = 1/N$ (sowie $D = k/N$, $k \in \mathbb{Z}$):
   \[
     \Delta i_{out}\!\left(D = \frac{1}{N}\right) = 0.
@@ -975,7 +975,7 @@ Die wichtigsten technischen Kenndaten des untersuchten Studentenprojekts:
     \Delta i_{out} = \frac{V_{in} \cdot (1/N)(1 - N \cdot 1/N)}{N^2 f_s L}
     = \frac{V_{in} \cdot (1/N)(1 - 1)}{N^2 f_s L} = 0. \quad\square
   \]
-  Anschaulich: Bei $D = 1/N$ und $N = 4$ ist genau immer eine HalbbrÃ¼cke im
+  Anschaulich: Bei $D = 1/N$ und $N = 4$ ist genau immer eine Halbbrücke im
   eingeschalteten Zustand; die Einzel\-stromrippel der vier Zweige addieren sich
   exakt zu null.
 \end{proof}
@@ -1015,23 +1015,23 @@ Die wichtigsten technischen Kenndaten des untersuchten Studentenprojekts:
     \draw (6,5) -- (7.5,5) to[R] (7.5,0) -- (6,0);
     \draw (7.5,5) node[right]{\small 12\,V};
     % Phasenversatz-Hinweis
-    \node[right] at (2.3,5) {\tiny $0Â°$};
-    \node[right] at (3.3,5) {\tiny $90Â°$};
-    \node[right] at (4.3,5) {\tiny $180Â°$};
+    \node[right] at (2.3,5) {\tiny $0 °$};
+    \node[right] at (3.3,5) {\tiny $90 °$};
+    \node[right] at (4.3,5) {\tiny $180 °$};
   \end{circuitikz}
   \caption{Phasenversetzter bidirektionaler DC-DC-Wandler (3 von 4 Zweigen dargestellt):
-           GaN-HEM-Transistoren in HalbbrÃ¼cken-Konfiguration mit den FilterinduktivitÃ¤ten
-           $L_1$, $L_2$, $L_3$. Der Phasenversatz von je $90Â°$ bei vier Zweigen bewirkt
-           bei $D = 0{,}25$ vollstÃ¤ndige Rippelkompensation am Ausgangs-Kondensator $C_{out}$.}
+           GaN-HEM-Transistoren in Halbbrücken-Konfiguration mit den Filterinduktivitäten
+           $L_1$, $L_2$, $L_3$. Der Phasenversatz von je $90 °$ bei vier Zweigen bewirkt
+           bei $D = 0{,}25$ vollständige Rippelkompensation am Ausgangs-Kondensator $C_{out}$.}
   \label{abb:bidi_dcdc}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.84\textwidth]{plots/plot09_interleaved_dcdc.pdf}
-  \caption{Simulation der vier phasenversetzten SpulenstrÃ¶me (oben, je in einer anderen Farbe)
+  \caption{Simulation der vier phasenversetzten Spulenströme (oben, je in einer anderen Farbe)
            und des resultierenden Gesamtstroms (unten, schwarz). Bei $D = 0{,}25$ und vier
-           Phasen hebt sich der Rippel vollstÃ¤ndig auf; der Ausgangsstrom ist nahezu
+           Phasen hebt sich der Rippel vollständig auf; der Ausgangsstrom ist nahezu
            konstant ($\Delta i / I \approx 0\,\%$).}
   \label{abb:interleaved}
 \end{figure}
@@ -1137,10 +1137,10 @@ f\"uhrt. Das Inverter Loss Management (ILM) adressiert dieses Problem.
     \node at (6,5.5) {\small W};
     \node at (3.8,-0.5) {\small Dreiphasiger IGBT-Wechselrichter};
   \end{circuitikz}
-  \caption{Dreiphasiger IGBT-Wechselrichter fÃ¼r Hochdrehzahlantrieb: Die sechs IGBTs
-           $T_1$--$T_6$ werden durch SOPWM-Pulsmuster gesteuert, das offline fÃ¼r jeden
-           Betriebspunkt ($n$, $T$) optimiert wurde. Die StatorinduktivitÃ¤ten $L_s$ und
-           -widerstÃ¤nde $R_s$ bilden die PMSM-Statorwicklung.}
+  \caption{Dreiphasiger IGBT-Wechselrichter für Hochdrehzahlantrieb: Die sechs IGBTs
+           $T_1$--$T_6$ werden durch SOPWM-Pulsmuster gesteuert, das offline für jeden
+           Betriebspunkt ($n$, $T$) optimiert wurde. Die Statorinduktivitäten $L_s$ und
+           -widerstände $R_s$ bilden die PMSM-Statorwicklung.}
   \label{abb:3ph_inv}
 \end{figure}
 
@@ -1149,15 +1149,15 @@ f\"uhrt. Das Inverter Loss Management (ILM) adressiert dieses Problem.
   \includegraphics[width=0.84\textwidth]{plots/plot05_pwm_harmonics.pdf}
   \caption{Harmonisches Oberschwingungsspektrum: STPWM (links) mit deutlichen Oberschwingungen
            5., 7., 11. und 13. Ordnung; SOPWM (rechts) mit gezielt auf null reduzierten
-           ausgewÃ¤hlten Harmonischen (SHE-Modus). Die Grundschwingung (1. Ordnung) bleibt
-           in beiden FÃ¤llen unverÃ¤ndert ($100\,\%$).}
+           ausgewählten Harmonischen (SHE-Modus). Die Grundschwingung (1. Ordnung) bleibt
+           in beiden Fällen unverändert ($100\,\%$).}
   \label{abb:pwm_harm}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.80\textwidth]{plots/plot13_sopwm_losses.pdf}
-  \caption{Schaltverlustvergleich STPWM vs. SOPWM (PvSWmin-Modus) fÃ¼r vier Betriebspunkte
+  \caption{Schaltverlustvergleich STPWM vs. SOPWM (PvSWmin-Modus) für vier Betriebspunkte
            des Hochdrehzahlantriebs ($n = 25.000$\,min$^{-1}$, $f_1 = 833$\,Hz, $f_s = 7{,}5$\,kHz).
            SOPWM reduziert die Schaltverluste um ca. $32\,\%$ (von 289\,W auf 195\,W) --
            konsistent mit den auf dem LEA-Poster dokumentierten Messergebnissen.}
@@ -1177,7 +1177,7 @@ Besondere Merkmale:
 \begin{itemize}
   \item Ausgepr\"agte Eisen\-s\"attigungseffekte bei hohen Str\"omen,
   \item Nichtlineares Reluktanzmoment ($L_d \neq L_q$ bei IPMSM),
-  \item Weiter Drehzahlbereich durch FeldschwÃ¤chregelung,
+  \item Weiter Drehzahlbereich durch Feldschwächregelung,
   \item Hohe elektrische Frequenzen (bis 2\,kHz bei 12.000\,min$^{-1}$ und $p = 10$).
 \end{itemize}
 
@@ -1252,8 +1252,8 @@ Besondere Merkmale:
     \node at (8.5,2) {\small $q$-Achse};
   \end{circuitikz}
   \caption{Ersatzschaltbild des PMSM in d-q-Koordinaten: Die d-Achse (links) beinhaltet
-           den Statorwiderstand $R_s$, die d-Achsen-InduktivitÃ¤t $L_d$ und die
-           Gegeninduktions-EMK $\omega_e L_q i_q$. Die q-Achse (rechts) enthÃ¤lt analog
+           den Statorwiderstand $R_s$, die d-Achsen-Induktivität $L_d$ und die
+           Gegeninduktions-EMK $\omega_e L_q i_q$. Die q-Achse (rechts) enthält analog
            $R_s$, $L_q$ und die kombinierte Gegen-EMK $\omega_e(\Psi_{PM} + L_d i_d)$.
            Die Entkopplungs-Vorsteuerung im Regler kompensiert die Kreuzterme.}
   \label{abb:pmsm_dq}
@@ -1263,9 +1263,9 @@ Besondere Merkmale:
   \centering
   \includegraphics[width=0.74\textwidth]{plots/plot04_pmsm_torque_speed.pdf}
   \caption{PMSM-Betriebsgrenzkennlinie: Unterhalb der Eckdrehzahl $n_b = 3000$\,min$^{-1}$
-           begrenzt der Strom das Drehmoment (MTPC, blaue FlÃ¤che). Oberhalb setzt die
-           FeldschwÃ¤chregelung ein; das Drehmoment fÃ¤llt hyperbolisch mit $T \propto 1/n$.
-           Maximale Drehzahl des PrÃ¼fstands: 12.000\,min$^{-1}$.}
+           begrenzt der Strom das Drehmoment (MTPC, blaue Fläche). Oberhalb setzt die
+           Feldschwächregelung ein; das Drehmoment fällt hyperbolisch mit $T \propto 1/n$.
+           Maximale Drehzahl des Prüfstands: 12.000\,min$^{-1}$.}
   \label{abb:pmsm_ts}
 \end{figure}
 
@@ -1342,8 +1342,8 @@ robusterer und preisg\"unstigerer IGBTs erm\"oglicht~\cite{Urbaneck2022}.
     \draw (6.5,4) -- (7.5,4) to[R] (7.5,1) -- (6.5,1);
     \draw (7.5,4) node[right]{\small $V_{out}$\,11--16\,V};
   \end{circuitikz}
-  \caption{IGBT-basierter ZCS-LLC-Resonanzkonverter fÃ¼r 2\,kW Kfz-Anwendung:
-           IGBT-VollbrÃ¼cke ($S_1$--$S_4$, 420\,V Eingangsspannung), Serienresonanzkreis
+  \caption{IGBT-basierter ZCS-LLC-Resonanzkonverter für 2\,kW Kfz-Anwendung:
+           IGBT-Vollbrücke ($S_1$--$S_4$, 420\,V Eingangsspannung), Serienresonanzkreis
            ($L_r = 44{,}6\,\mu$H, $C_r = 56{,}8$\,nF, $L_m = 89{,}1\,\mu$H),
            mittelabgegriffener Transformator (Center-Tapped, CT) und synchroner
            Gleichrichter ($SR_1$, $SR_2$). Vier Betriebspunkte: 420\,V/$8$\,V bis 200\,V/$16$\,V.}
@@ -1353,10 +1353,10 @@ robusterer und preisg\"unstigerer IGBTs erm\"oglicht~\cite{Urbaneck2022}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.74\textwidth]{plots/plot12_zcs_llc_efficiency.pdf}
-  \caption{Gemessener Wirkungsgrad des ZCS-LLC-Konverters fÃ¼r vier Betriebsarten:
-           VollbrÃ¼cke (FB, blau), HalbbrÃ¼cke (HB, rot), phasenverschobene VollbrÃ¼cke
-           mit $\varphi = 10Â°$ und $20Â°$. VollbrÃ¼ckenbetrieb erzielt mit $\eta > 90\,\%$
-           den hÃ¶chsten Wirkungsgrad und ist laut \autoref{satz:pmsm_moment} die
+  \caption{Gemessener Wirkungsgrad des ZCS-LLC-Konverters für vier Betriebsarten:
+           Vollbrücke (FB, blau), Halbbrücke (HB, rot), phasenverschobene Vollbrücke
+           mit $\varphi = 10 °$ und $20 °$. Vollbrückenbetrieb erzielt mit $\eta > 90\,\%$
+           den höchsten Wirkungsgrad und ist laut \autoref{satz:pmsm_moment} die
            robusteste Betriebsart.}
   \label{abb:zcs_eta}
 \end{figure}
@@ -1384,7 +1384,7 @@ ohne hohe EMV-Emissionen zu erzeugen.
 \end{definition}
 
 \begin{satz}[Gleichtaktfreiheit der GaNius-Topologie]
-  Die GaNius-Topologie erzeugt bei symmetrischem Betrieb (gleiche TastverhÃ¤ltnisse
+  Die GaNius-Topologie erzeugt bei symmetrischem Betrieb (gleiche Tastverhältnisse
   in allen drei Phasen) eine identisch null Gleich\-takt\-spannung:
   \[
     u_{CM,GaNius} = 0 \quad \forall t.
@@ -1430,7 +1430,7 @@ ohne hohe EMV-Emissionen zu erzeugen.
   \caption{GaNius dreiphasiger PFC-Gleichrichter: Jede Phase besitzt einen oberen ($Q_{pH}$)
            und unteren ($Q_{pL}$) monolithisch bidirektionalen GaN-Transistor.
            Die gleichstaktarme Schaltsequenz verhindert hohe $du_{CM}/dt$-Werte und
-           ermÃ¶glicht den Verzicht auf aufwendige Gleichtaktfilter.}
+           ermöglicht den Verzicht auf aufwendige Gleichtaktfilter.}
   \label{abb:ganius}
 \end{figure}
 
@@ -1439,8 +1439,8 @@ ohne hohe EMV-Emissionen zu erzeugen.
   \includegraphics[width=0.80\textwidth]{plots/plot10_ganius_pfc.pdf}
   \caption{Dreiphasiger Eingangsstrom ohne PFC (oben): deutliche Oberschwingungen der
            5. und 7. Ordnung, THD $\approx 25\,\%$. Mit GaNius-PFC (unten): nahezu
-           sinusfÃ¶rmiger Strom, THD $< 2\,\%$, Leistungsfaktor $\cos\varphi > 0{,}99$.
-           Die drei Phasenkurven sind um $120Â°$ versetzt (symmetrisches Dreiphasennetz).}
+           sinusförmiger Strom, THD $< 2\,\%$, Leistungsfaktor $\cos\varphi > 0{,}99$.
+           Die drei Phasenkurven sind um $120 °$ versetzt (symmetrisches Dreiphasennetz).}
   \label{abb:ganius_strom}
 \end{figure}
 
@@ -1540,11 +1540,11 @@ in Kapitel~\ref{kap:sopwm} und \ref{kap:zcs_llc}.
     \draw[->, red, dashed] (5,4.5) node[right]{\small $v_{DS}$} -- (4.2,4.5);
     \draw[->, red, dashed] (5,1.5) node[right]{\small $i_T = v_{shunt}/R_{shunt}$} -- (4.2,1.5);
   \end{circuitikz}
-  \caption{DPT-Schaltung fÃ¼r SiC-MOSFET-Charakterisierung: LastinduktivitÃ¤t $L_{load}$,
-           Freilaufschalter $M_2$ (Messung im induktiven Quadranten), PrÃ¼fling $M_1$
+  \caption{DPT-Schaltung für SiC-MOSFET-Charakterisierung: Lastinduktivität $L_{load}$,
+           Freilaufschalter $M_2$ (Messung im induktiven Quadranten), Prüfling $M_1$
            (DUT) und Shunt-Widerstand $R_{shunt}$. Testparameter: $V_{DC} = 800$\,V,
            $I_{T,max} = 120$\,A.
-           Die roten Pfeile markieren die kritischen Messpunkte fÃ¼r $v_{DS}$ und $i_T$.}
+           Die roten Pfeile markieren die kritischen Messpunkte für $v_{DS}$ und $i_T$.}
   \label{abb:dpt_schalt}
 \end{figure}
 
@@ -1554,9 +1554,9 @@ in Kapitel~\ref{kap:sopwm} und \ref{kap:zcs_llc}.
   \caption{DPT-Messwellenformen eines SiC-MOSFET (C3M0120065J, 1200\,V / 65\,m$\Omega$):
            Gate-Spannung $v_{GS}$ (oben), Drain-Source-Spannung $v_{DS}$ (mitte) und
            Drain-Strom $i_T$ (unten). Beim Einschalten steigt $i_T$ auf den Teststrom
-           und $v_{DS}$ fÃ¤llt auf die leitende Spannung; beim Ausschalten kehrt sich
+           und $v_{DS}$ fällt auf die leitende Spannung; beim Ausschalten kehrt sich
            der Vorgang um. Die Schaltenergie $E_{sw}$ wird aus dem grau markierten
-           Ãœberlappungsbereich berechnet.}
+           Überlappungsbereich berechnet.}
   \label{abb:dpt_wf}
 \end{figure}
 
@@ -1565,8 +1565,8 @@ in Kapitel~\ref{kap:sopwm} und \ref{kap:zcs_llc}.
   \includegraphics[width=0.72\textwidth]{plots/plot17_coax_shunt.pdf}
   \caption{Impedanzkennlinien von Koaxial-Shunts verschiedener Produktionsjahre (2015,
            2020, 2023). Ab $\sim 1$\,MHz weichen alle Chargen von der Idealkennlinie
-           (gestrichelt, 50\,m$\Omega$ = konstant) ab; Ã¤ltere Chargen (2015) zeigen
-           eine hÃ¶here Grenzfrequenz. Dieses Ergebnis verdeutlicht die Notwendigkeit
+           (gestrichelt, 50\,m$\Omega$ = konstant) ab; ältere Chargen (2015) zeigen
+           eine höhere Grenzfrequenz. Dieses Ergebnis verdeutlicht die Notwendigkeit
            einer chargenbezogenen Impedanzkalibrierung.}
   \label{abb:shunt_imp}
 \end{figure}
@@ -1589,9 +1589,9 @@ maschinellen Lernens, in dem ein Agent durch Interaktion mit seiner Umgebung und
 \begin{definition}[Markov-Entscheidungsprozess (MDP)]
   Ein MDP ist ein Tupel $(\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$:
   \begin{itemize}
-    \item $\mathcal{S}$: Zustandsraum (MessgrÃ¶ÃŸen des Antriebs: StrÃ¶me, Drehzahl, Drehmoment)
-    \item $\mathcal{A}$: Aktionsraum (SteuereingrÃ¶ÃŸe: Spannungsraumzeiger $\vec{u}_s$)
-    \item $\mathcal{P}(s'|s,a)$: ZustandsÃ¼bergangswahrscheinlichkeit (Systemdynamik)
+    \item $\mathcal{S}$: Zustandsraum (Messgrößen des Antriebs: Ströme, Drehzahl, Drehmoment)
+    \item $\mathcal{A}$: Aktionsraum (Steuereingröße: Spannungsraumzeiger $\vec{u}_s$)
+    \item $\mathcal{P}(s'|s,a)$: Zustandsübergangswahrscheinlichkeit (Systemdynamik)
     \item $\mathcal{R}(s,a) \in \mathbb{R}$: Belohnungsfunktion
     \item $\gamma \in [0, 1)$: Diskontierungsfaktor (Zeithorizont der Bewertung)
   \end{itemize}
@@ -1638,10 +1638,10 @@ maschinellen Lernens, in dem ein Agent durch Interaktion mit seiner Umgebung und
   \centering
   \includegraphics[width=0.86\textwidth]{plots/plot08_rl_control.pdf}
   \caption{Links: Trainingskonvergenz des RL-Agenten -- nach etwa 200 Episoden konvergiert
-           die kumulierte Belohnung gegen null (Zielwert), was einem stationÃ¤r korrekten
+           die kumulierte Belohnung gegen null (Zielwert), was einem stationär korrekten
            Drehmoment entspricht.
-           Rechts: Sprungantwort fÃ¼r einen $T_{ref}$-Sprung auf 100\,Nm. Der RL-Regler
-           (blau) zeigt geringeres Ãœberschwingen und schnelleres Einschwingen als der
+           Rechts: Sprungantwort für einen $T_{ref}$-Sprung auf 100\,Nm. Der RL-Regler
+           (blau) zeigt geringeres Überschwingen und schnelleres Einschwingen als der
            klassische PI-Regler (rot, gestrichelt).}
   \label{abb:rl_ergebnisse}
 \end{figure}
@@ -1738,17 +1738,17 @@ konfigurierbaren Netzumfeld getestet werden.
   \caption{Microgrid-Schaltplan: PV-Wechselrichter und Windgenerator als
            erneuerbare Quellen, bidirektionaler Batteriespeicher, ohmsche
            Industrielast und E-Fahrzeug-Lader. Der PCC-Schalter trennt das Microgrid
-           vom Ã¶ffentlichen Netz fÃ¼r Inselnetz-Betrieb. Emulierte Gesamtleistung: bis zu 4\,MVA.}
+           vom öffentlichen Netz für Inselnetz-Betrieb. Emulierte Gesamtleistung: bis zu 4\,MVA.}
   \label{abb:microgrid_schalt}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.84\textwidth]{plots/plot11_microgrid_power.pdf}
-  \caption{Tagesverlauf der Microgrid-LeistungsflÃ¼sse: PV-Einspeisung (oben, orange),
-           variable Netzlast (mitte, rot) und Batterieladeleistung (unten; grÃ¼n = Laden,
-           blau = Entladen). In der Mittagsspitze Ã¼bersteigt die PV-Leistung den Bedarf;
-           die Batterie speichert den Ãœberschuss. Am Abend deckt die Batterie die
+  \caption{Tagesverlauf der Microgrid-Leistungsflüsse: PV-Einspeisung (oben, orange),
+           variable Netzlast (mitte, rot) und Batterieladeleistung (unten; grün = Laden,
+           blau = Entladen). In der Mittagsspitze übersteigt die PV-Leistung den Bedarf;
+           die Batterie speichert den Überschuss. Am Abend deckt die Batterie die
            fehlende Erzeugungsleistung.}
   \label{abb:microgrid_power}
 \end{figure}
@@ -1802,11 +1802,11 @@ modellieren NODEs das System durch ein kontinuierliches Differentialgleichungssy
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.84\textwidth]{plots/plot16_ml_expert.pdf}
-  \caption{Links: Vergleich von NODE-Modell und Echtsystem im Zeitbereich fÃ¼r einen
+  \caption{Links: Vergleich von NODE-Modell und Echtsystem im Zeitbereich für einen
            elektrischen Antrieb. Das trainierte Modell folgt der Systemdynamik mit einem
-           RMS-Fehler $< 2\,\%$ Ã¼ber den gesamten Beobachtungszeitraum.
+           RMS-Fehler $< 2\,\%$ über den gesamten Beobachtungszeitraum.
            Rechts: Absoluter Modellierungsfehler auf logarithmischer Skala; nach dem
-           Einschwingvorgang (ca.\ 50\,Âµs) stabilisiert sich der Fehler unterhalb $10^{-2}$.}
+           Einschwingvorgang (ca.\ 50\, µs) stabilisiert sich der Fehler unterhalb $10^{-2}$.}
   \label{abb:ml_expert}
 \end{figure}
 
@@ -1871,9 +1871,9 @@ mehrkriterielle Optimierung.
   \includegraphics[width=0.64\textwidth]{plots/plot14_pareto.pdf}
   \caption{OpenAutoMoLE: Pareto-Optimierung eines LLC-Konverters. Die blaue Pareto-Front
            zeigt den Trade-off zwischen Wirkungsgrad (x-Achse) und Leistungsdichte
-           (y-Achse). Graue Punkte sind dominierte (suboptimale) EntwÃ¼rfe aus dem
+           (y-Achse). Graue Punkte sind dominierte (suboptimale) Entwürfe aus dem
            Designraum ($L = 100\,\mu$H, $f_s = 100$\,kHz, $T = 3C25$-Ferrit). Jeder
-           Punkt auf der Front entspricht einem vollstÃ¤ndig simulierten Konverterentwurf.}
+           Punkt auf der Front entspricht einem vollständig simulierten Konverterentwurf.}
   \label{abb:pareto}
 \end{figure}
 
@@ -1958,7 +1958,7 @@ erheblichem wirtschaftlichem Wert.
 Das NeMo.bil-Kapitel stellt das Konzept des \emph{mobilen Ladesystems im Konvoi} vor.
 Der Grundgedanke ist technisch elegant: Die Leistungselektronik, die im Fahrzeug
 ohnehin vorhanden ist, wird im Stand zu einem bidirektionalen Netzwechselrichter.
-Damit entf\"allt die Notwendigkeit einer separaten stationÃ¤ren Ladeinfrastruktur f\"ur
+Damit entf\"allt die Notwendigkeit einer separaten stationären Ladeinfrastruktur f\"ur
 den Zwischenstopp -- der Pro-Bus l\"adt das Cab-Fahrzeug.
 
 Der wissenschaftliche Kern liegt im Beweis der Kaskadenregler-Stabilit\"at
@@ -2033,7 +2033,7 @@ Beitr\"age sind hervorzuheben:
     Auslegung der MTPC-Trajektorie essenziell.
   \item Die Herleitung der MTPC-Trajektorie im $i_d$-$i_q$-Raum, die den
     wirkungsgradoptimalen Arbeitspunkt bei gegebenem Drehmoment liefert.
-  \item Die Beschreibung der FeldschwÃ¤chregelung f\"ur den Betrieb oberhalb der
+  \item Die Beschreibung der Feldschwächregelung f\"ur den Betrieb oberhalb der
     Eckdrehzahl $n_b$, bei der das Drehmoment hyperbolisch mit $1/n$ abf\"allt.
 \end{enumerate}
 
@@ -2105,7 +2105,7 @@ und der in k\"unftigen DPT-Normen explizit adressiert werden sollte.
 
 Kapitel~11 stellt den paradigmatischsten Wechsel des gesamten Kompendiums vor: den
 \"Ubergang von regelbasierter zu lernbasierter Regelung. W\"ahrend alle vorangehenden
-Kapitel klassische Regelungsverfahren (PI, FeldschwÃ¤che) oder optimierte, aber offline
+Kapitel klassische Regelungsverfahren (PI, Feldschwäche) oder optimierte, aber offline
 berechnete Muster (SOPWM) verwenden, lernt der RL-Agent seine Policy vollst\"andig
 aus Interaktion mit dem System.
 
@@ -2261,7 +2261,7 @@ GaN-Interleaving 48\,V/12\,V & 7--8 & 2026 &
   AEC-Q101 f\"ur GaN \\
 SOPWM Hochdrehzahl & 7--8 & 2026--2027 &
   Prozessor-Speicherbedarf \\
-PMSM-FeldschwÃ¤chregelung & 9 & Serienreif &
+PMSM-Feldschwächregelung & 9 & Serienreif &
   -- \\
 IGBT ZCS-LLC 2\,kW & 6--7 & 2027--2029 &
   FHA-Ersatz f\"ur Auslegung \\
@@ -2687,7 +2687,7 @@ durch gezielte Lastregelung Systemdienstleistungen f\"ur das Stromnetz erbringen
   \item \textbf{Blindleistungskompensation}: Der netzseitige Umrichter des Elektrolyseurs
     kann unabh\"angig von seiner Wirkleistung Blindleistung in das Netz einspeisen oder
     absorbieren -- analog zu einem STATCOM.
-  \item \textbf{TrÃ¤gheits-Emulation (Synthetic Inertia)}: Durch schnelle Strom\"anderungen
+  \item \textbf{Trägheits-Emulation (Synthetic Inertia)}: Durch schnelle Strom\"anderungen
     kann der Umrichter eine virtuelle Massentr\"agheit $H_{virt}$ emulieren, die zur
     Stabilisierung von Netzen mit hohem Anteil erneuerbarer Energien ohne Synchrongeneratoren
     beitr\"agt.

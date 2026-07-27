@@ -42,7 +42,7 @@
 \usepackage{cleveref}
 \usepackage{eurosym}
 
-% AufzÃ¤hlungen
+% Aufzählungen
 \usepackage{enumitem}
 \setlist[itemize,1]{label=--}
 
@@ -96,7 +96,7 @@
 \newtheorem{bemerkung}[theorem]{Bemerkung}
 \newtheorem{beispiel}[theorem]{Beispiel}
 
-% AbkÃ¼rzungen
+% Abkürzungen
 \newcommand{\rhoL}{\rho_{\text{L}}}
 \newcommand{\cW}{c_{\text{W}}}
 \newcommand{\Astirnfl}{A_{\text{Stirn}}}
@@ -113,7 +113,7 @@
   bei Kraftfahrzeugen und Satelliten im erdnahen Orbit
 }
 \author{Stephan Epp}
-\date{27. MÃ¤rz 2026}
+\date{27. März 2026}
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \begin{document}
@@ -130,52 +130,52 @@
 
 Der steigende Energiebedarf moderner Kraftfahrzeuge und die strenger werdenden
 CO\textsubscript{2}-Grenzwerte fordern die Entwicklung neuartiger Methoden zur
-EnergierÃ¼ckgewinnung. Eine viel diskutierte Klasse von Konzepten betrifft die
-Nutzung des beim Fahren entstehenden \emph{Luftwiderstands} als sekundÃ¤re
+Energierückgewinnung. Eine viel diskutierte Klasse von Konzepten betrifft die
+Nutzung des beim Fahren entstehenden \emph{Luftwiderstands} als sekundäre
 Energiequelle. Im Zentrum dieser Arbeit steht das Konzept der
-\textbf{Induktionsfeder} -- ein miniaturisierter schwingungsfÃ¤higer
+\textbf{Induktionsfeder} -- ein miniaturisierter schwingungsfähiger
 Energiewandler, der in den Luftstrom eines fahrenden Fahrzeugs eingebracht
-wird und kinetische StrÃ¶mungsenergie in elektrische Energie umwandelt.
+wird und kinetische Strömungsenergie in elektrische Energie umwandelt.
 
-Parallel dazu stellt sich fÃ¼r Satelliten im \emph{erdnahen Orbit} (ca.\ 80
-bis 400\,km HÃ¶he) die Frage, ob der dort wirkende atmosphÃ¤rische Restluft\-widerstand
-als Energiequelle fÃ¼r Bord\-systeme genutzt werden kann. Insbesondere die
-OrbitalhÃ¶he von rund \SI{100}{\kilo\metre} -- die sogenannte \emph{KÃ¡rmÃ¡n-Linie}
+Parallel dazu stellt sich für Satelliten im \emph{erdnahen Orbit} (ca.\ 80
+bis 400\,km Höhe) die Frage, ob der dort wirkende atmosphärische Restluft\-widerstand
+als Energiequelle für Bord\-systeme genutzt werden kann. Insbesondere die
+Orbitalhöhe von rund \SI{100}{\kilo\metre} -- die sogenannte \emph{KÃ¡rmÃ¡n-Linie}
 als internationale Grenze zum Weltraum -- ist dabei von besonderem Interesse,
-da hier die Luftdichte noch ausreichend groÃŸ ist, um merkliche aerodynamische
-KrÃ¤fte zu erzeugen.
+da hier die Luftdichte noch ausreichend groß ist, um merkliche aerodynamische
+Kräfte zu erzeugen.
 
 \begin{hinweis}[Abgrenzung zu anderen Konzepten]
-  Die Induktionsfeder stellt keine vÃ¶llig neue Erfindung dar: Verwandte
+  Die Induktionsfeder stellt keine völlig neue Erfindung dar: Verwandte
   Konzepte sind Piezo-Ernter (engl.\ \emph{Piezoelectric Energy Harvesters}),
   Winkelgetriebe-Generatoren und Vortex-Induced-Vibration-(VIV-)Wandler.
   Der Beitrag dieser Arbeit liegt in der \emph{systematischen physikalischen
-  Modellierung}, der \emph{vollstÃ¤ndigen Energiebilanz} sowie der
+  Modellierung}, der \emph{vollständigen Energiebilanz} sowie der
   \emph{formalen thermodynamischen Bewertung} aller Szenarien.
 \end{hinweis}
 
 \section{Historischer Hintergrund und verwandte Arbeiten}
 
-Die Idee, kinetische Energie eines vorbeistrÃ¶menden Fluids mittels
-schwingungsfÃ¤higer KÃ¶rper in ElektrizitÃ¤t umzuwandeln, geht auf frÃ¼he
-Untersuchungen zur \emph{KÃ¡rmÃ¡n'schen WirbelstraÃŸe} zurÃ¼ck:
+Die Idee, kinetische Energie eines vorbeiströmenden Fluids mittels
+schwingungsfähiger Körper in Elektrizität umzuwandeln, geht auf frühe
+Untersuchungen zur \emph{KÃ¡rmÃ¡n'schen Wirbelstraße} zurück:
 
 \begin{itemize}
   \item \textbf{von KÃ¡rmÃ¡n (1911):} Str\"omungsinstabilit\"aten hinter stumpfen
-        K\"orpern f\"uhren zu periodisch abwechselnden WirbelablÃ¶sungen, die
+        K\"orpern f\"uhren zu periodisch abwechselnden Wirbelablösungen, die
         transversale Schwingungsanregungen erzeugen~\cite{karman1911}.
   \item \textbf{Strouhal (1878):} Quantitative Beschreibung der
         Wirbelfrequenz~\cite{strouhal1878}.
   \item \textbf{McKinney \& DeLaurier (1981):} Erste Studie zur Leistungsentnahme
         aus VIV-Schwingungen~\cite{mckinney1981}.
-  \item \textbf{Anton \& Sodano (2007):} Ãœbersichtsartikel Ã¼ber aerodynamische
+  \item \textbf{Anton \& Sodano (2007):} Übersichtsartikel über aerodynamische
         Piezo-Ernter~\cite{anton2007}.
   \item \textbf{Tang et al.\ (2009):} Aeroelastische Flatter-Ernter~\cite{tang2009}.
 \end{itemize}
 
 Im Bereich der Fahrzeuganwendungen wurde von mehreren Automobilherstellern
 experimentiert:\ Bose, Toyota und Honda publizierten Studien zu
-\emph{regenerativen StoÃŸdÃ¤mpfersystemen}, die Fahrbahnunebenheiten nutzen.
+\emph{regenerativen Stoßdämpfersystemen}, die Fahrbahnunebenheiten nutzen.
 Die Nutzung des \emph{Fahrtwinds} als Einlassstrom ist dagegen weniger
 systematisch untersucht.
 
@@ -185,20 +185,20 @@ Diese Untersuchung verfolgt folgende Ziele:
 
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{Physikalisches Modell:} Formale Herleitung der Leistungsgleichungen
-        fÃ¼r Induktionsfedern im StrÃ¶mungskanal eines Fahrzeugs.
-  \item \textbf{Energiebilanz KFZ:} VollstÃ¤ndige Analyse der erntefÃ¤higen
-        elektrischen Leistung bei vollstÃ¤ndiger FrontflÃ¤chenausnutzung
-        (Breite \SI{1.8}{\metre} $\times$ HÃ¶he \SI{0.4}{\metre}).
-  \item \textbf{Satelliten-Szenario:} Berechnung der verfÃ¼gbaren
-        Luftwiderstandsleistung in \SI{100}{\kilo\metre} OrbitalhÃ¶he.
+        für Induktionsfedern im Strömungskanal eines Fahrzeugs.
+  \item \textbf{Energiebilanz KFZ:} Vollständige Analyse der erntefähigen
+        elektrischen Leistung bei vollständiger Frontflächenausnutzung
+        (Breite \SI{1.8}{\metre} $\times$ Höhe \SI{0.4}{\metre}).
+  \item \textbf{Satelliten-Szenario:} Berechnung der verfügbaren
+        Luftwiderstandsleistung in \SI{100}{\kilo\metre} Orbitalhöhe.
   \item \textbf{Thermodynamische Grenzen:} Formaler Beweis, warum ein
-        dauerhafter Eigenantrieb ausschlieÃŸlich aus dem Luftwiderstand
+        dauerhafter Eigenantrieb ausschließlich aus dem Luftwiderstand
         dem Ersten Hauptsatz der Thermodynamik widerspricht.
   \item \textbf{Legitime Anwendungen:} Identifikation der physikalisch
         realisierbaren Nutzung als \emph{Hilfsleistungsquelle}.
 \end{enumerate}
 
-Die Aussage dieser Arbeit ist, Induktionsfedern gewinnen elektrische Hilfsleistung aus dem FahrtluftstrÃ¶m (fÃ¼r Bordnetz, Beleuchtung, Klimatisierung). Sie kÃ¶nnen jedoch \emph{nicht} als PrimÃ¤rantrieb dienen, da dies die Energieerhaltung verletzen wÃ¼rde. Eine exakte Bilanzrechnung belegt dies.
+Die Aussage dieser Arbeit ist, Induktionsfedern gewinnen elektrische Hilfsleistung aus dem Fahrtluftström (für Bordnetz, Beleuchtung, Klimatisierung). Sie können jedoch \emph{nicht} als Primärantrieb dienen, da dies die Energieerhaltung verletzen würde. Eine exakte Bilanzrechnung belegt dies.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \chapter{Grundlagen der Aerodynamik}
@@ -207,30 +207,30 @@ Die Aussage dieser Arbeit ist, Induktionsfedern gewinnen elektrische Hilfsleistu
 
 \section{Die Bernoulli-Gleichung}
 
-Die Bernoulli-Gleichung fÃ¼r stationÃ¤re, inkompressible, reibungsfreie StrÃ¶mungen
-lÃ¤ngs einer Stromlinie lautet:
+Die Bernoulli-Gleichung für stationäre, inkompressible, reibungsfreie Strömungen
+längs einer Stromlinie lautet:
 
 \begin{equation}
   p + \frac{1}{2}\rhoL v^2 + \rhoL g z = \text{const}
   \label{eq:bernoulli}
 \end{equation}
 
-Dabei bezeichnen $p$ den Druck, $\rhoL$ die Luftdichte, $v$ die StrÃ¶mungsgeschwindigkeit
-und $z$ die HÃ¶he. Der Term $\frac{1}{2}\rhoL v^2$ heiÃŸt \emph{dynamischer Druck}
-$q$ und ist von fundamentaler Bedeutung fÃ¼r die Luftwiderstandsbeziehung:
+Dabei bezeichnen $p$ den Druck, $\rhoL$ die Luftdichte, $v$ die Strömungsgeschwindigkeit
+und $z$ die Höhe. Der Term $\frac{1}{2}\rhoL v^2$ heißt \emph{dynamischer Druck}
+$q$ und ist von fundamentaler Bedeutung für die Luftwiderstandsbeziehung:
 
 \begin{equation}
   q = \frac{1}{2}\rhoL v^2
   \label{eq:dyn_druck}
 \end{equation}
 
-FÃ¼r Fahrzeuggeschwindigkeiten bis \SI{200}{\kilo\metre\per\hour} ist die
-Machzahl $Ma = v/v_{\text{Schall}} < 0.16$, womit die InkompressibilitÃ¤ts\-annahme
+Für Fahrzeuggeschwindigkeiten bis \SI{200}{\kilo\metre\per\hour} ist die
+Machzahl $Ma = v/v_{\text{Schall}} < 0.16$, womit die Inkompressibilitäts\-annahme
 mit einem Fehler $< 1.3\,\%$ gerechtfertigt ist.
 
 \section{Luftwiderstandskraft und -leistung}
 
-Die Luftwiderstandskraft eines KÃ¶rpers ist durch den dimensionslosen
+Die Luftwiderstandskraft eines Körpers ist durch den dimensionslosen
 \emph{$\cW$-Wert} (Luftwiderstandsbeiwert, engl.\ \emph{drag coefficient}
 $c_D$) definiert:
 
@@ -239,22 +239,22 @@ $c_D$) definiert:
   \label{eq:fw}
 \end{equation}
 
-Die zur Ãœberwindung dieses Widerstands benÃ¶tigte \emph{Antriebsleistung} ist:
+Die zur Überwindung dieses Widerstands benötigte \emph{Antriebsleistung} ist:
 
 \begin{equation}
   P_W = F_W \cdot v = \cW \cdot \frac{1}{2}\rhoL v^3 \cdot \Astirnfl
   \label{eq:pw}
 \end{equation}
 
-\begin{wichtig}[Kubische GeschwindigkeitsabhÃ¤ngigkeit]
-  Gleichung~\eqref{eq:pw} zeigt: Die Luftwiderstandsleistung wÃ¤chst mit der
+\begin{wichtig}[Kubische Geschwindigkeitsabhängigkeit]
+  Gleichung~\eqref{eq:pw} zeigt: Die Luftwiderstandsleistung wächst mit der
   \emph{dritten Potenz} der Geschwindigkeit. Eine Verdopplung der Geschwindigkeit
   (z.\,B.\ von 65 auf 130\,km/h) veracht\-facht die Luftwiderstandsleistung.
-  Dies hat erhebliche Konsequenzen sowohl fÃ¼r den Energiebedarf als auch fÃ¼r
+  Dies hat erhebliche Konsequenzen sowohl für den Energiebedarf als auch für
   die potenzielle Ernteleistung der Induktionsfedern.
 \end{wichtig}
 
-FÃ¼r einen typischen Serien-PKW mit $\cW = 0.28$ und $\Astirnfl = \SI{2.2}{\metre\squared}$:
+Für einen typischen Serien-PKW mit $\cW = 0.28$ und $\Astirnfl = \SI{2.2}{\metre\squared}$:
 
 \begin{align}
   P_W(50\text{ km/h})  &= 0.28 \cdot \tfrac{1}{2} \cdot 1.225 \cdot 13.9^3 \cdot 2.2 \approx \SI{1.01}{\kilo\watt} \label{eq:pw50}\\
@@ -271,7 +271,7 @@ Der \emph{Rollwiderstand} eines Fahrzeugs (Reifenverformung, Lagerreibung) ist:
   \label{eq:roll}
 \end{equation}
 
-FÃ¼r typische Werte $\mu_R = 0.012$, $m = \SI{1500}{\kilo\gram}$:
+Für typische Werte $\mu_R = 0.012$, $m = \SI{1500}{\kilo\gram}$:
 
 \begin{equation}
   P_R(v) = 0.012 \cdot 1500 \cdot 9.81 \cdot v \approx 176.6 \cdot v \quad [\si{\watt}]
@@ -290,11 +290,11 @@ der Luftwiderstand die dominierende Verlustquelle wird:
 
 Oberhalb von \SI{62}{\kilo\metre\per\hour} dominiert der Luftwiderstand.
 
-\section{US-StandardatmosphÃ¤re}
+\section{US-Standardatmosphäre}
 
-Das mathematische Modell der AtmosphÃ¤re ist fÃ¼r die Satelliten-Berechnung essenziell.
-Die US-StandardatmosphÃ¤re (USSA76) beschreibt die Dichte im Bereich 0 bis \SI{86}{\kilo\metre}
-schichtweise; oberhalb \SI{86}{\kilo\metre} (ThermosphÃ¤re) wird ein vereinfachter
+Das mathematische Modell der Atmosphäre ist für die Satelliten-Berechnung essenziell.
+Die US-Standardatmosphäre (USSA76) beschreibt die Dichte im Bereich 0 bis \SI{86}{\kilo\metre}
+schichtweise; oberhalb \SI{86}{\kilo\metre} (Thermosphäre) wird ein vereinfachter
 Exponentialabfall verwendet:
 
 \begin{equation}
@@ -308,8 +308,8 @@ Exponentialabfall verwendet:
   \label{eq:ussa76}
 \end{equation}
 
-wobei $\alpha_T \approx 6.5 \times 10^{-5}\,\si{\per\metre}$ die SkalenhÃ¶he der
-ThermosphÃ¤re beschreibt. An der KÃ¡rmÃ¡n-Linie ($h = \SI{100}{\kilo\metre}$) ergibt
+wobei $\alpha_T \approx 6.5 \times 10^{-5}\,\si{\per\metre}$ die Skalenhöhe der
+Thermosphäre beschreibt. An der KÃ¡rmÃ¡n-Linie ($h = \SI{100}{\kilo\metre}$) ergibt
 sich eine Luftdichte von:
 
 \begin{equation}
@@ -318,33 +318,33 @@ sich eine Luftdichte von:
 \end{equation}
 
 Dies entspricht einem Faktor $\approx 2.2 \times 10^{6}$ unterhalb der
-Meeresspiegeldichte -- fÃ¼r die Widerstandsberechnung ist damit eine
-SatellitenlÃ¶sung mit groÃŸer QuerschnittsflÃ¤che und hoher Orbitalgeschwindigkeit
-erforderlich, um messbare KrÃ¤fte zu erzielen.
+Meeresspiegeldichte -- für die Widerstandsberechnung ist damit eine
+Satellitenlösung mit großer Querschnittsfläche und hoher Orbitalgeschwindigkeit
+erforderlich, um messbare Kräfte zu erzielen.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plots/plot1_luftwiderstand.pdf}
   \caption{%
-    \textbf{Luftwiderstand und Antriebsleistung in AbhÃ¤ngigkeit der Fahrzeuggeschwindigkeit.}
-    \textit{Links:} Luftwiderstandskraft fÃ¼r verschiedene $\cW \cdot A$-Produkte.
+    \textbf{Luftwiderstand und Antriebsleistung in Abhängigkeit der Fahrzeuggeschwindigkeit.}
+    \textit{Links:} Luftwiderstandskraft für verschiedene $\cW \cdot A$-Produkte.
     Die stark nichtlineare (quadratische) Zunahme mit der Geschwindigkeit ist
-    klar erkennbar; bei 200\,km/h Ã¼bersteigt die Widerstandskraft fÃ¼r einen
+    klar erkennbar; bei 200\,km/h übersteigt die Widerstandskraft für einen
     typischen SUV bereits $\SI{1}{\kilo\newton}$.
     \textit{Mitte:} Antriebsleistungsanteile (gestapelt): Luftwiderstand (blau)
-    wÃ¤chst kubisch, Rollwiderstand (rot) linear; ab ca.\ 62\,km/h dominiert der
+    wächst kubisch, Rollwiderstand (rot) linear; ab ca.\ 62\,km/h dominiert der
     Luftwiderstand.
-    \textit{Rechts:} Im Einlass verfÃ¼gbare Luftleistung (kinetischer Fluss
-    $\frac{1}{2}\rhoL v^3 A_{\text{Einlass}}$) fÃ¼r verschiedene
-    EinlassflÃ¤chen. Die gestrichelte Kurve zeigt das Betz-Limit ($\eta = 59.3\,\%$)
-    fÃ¼r die vollstÃ¤ndige FrontflÃ¤chenausnutzung $A = \SI{0.72}{\metre\squared}$.
+    \textit{Rechts:} Im Einlass verfügbare Luftleistung (kinetischer Fluss
+    $\frac{1}{2}\rhoL v^3 A_{\text{Einlass}}$) für verschiedene
+    Einlassflächen. Die gestrichelte Kurve zeigt das Betz-Limit ($\eta = 59.3\,\%$)
+    für die vollständige Frontflächenausnutzung $A = \SI{0.72}{\metre\squared}$.
   }
   \label{fig:luftwiderstand}
 \end{figure}
 
-\section{Grenzschicht und turbulente StrÃ¶mung}
+\section{Grenzschicht und turbulente Strömung}
 
-Die charakteristische Reynoldszahl fÃ¼r einen Fahrzeugeinlass mit
+Die charakteristische Reynoldszahl für einen Fahrzeugeinlass mit
 Kanaldurchmesser $d = \SI{0.05}{\metre}$ bei $v = \SI{36}{\metre\per\second}$
 (130\,km/h) ist:
 
@@ -353,8 +353,8 @@ Kanaldurchmesser $d = \SI{0.05}{\metre}$ bei $v = \SI{36}{\metre\per\second}$
   \label{eq:reynolds}
 \end{equation}
 
-Da $Re \gg Re_{\text{krit}} \approx 2300$, liegt vollstÃ¤ndig turbulente StÃ¶mung vor.
-Die \emph{KÃ¡rmÃ¡n'sche WirbelstraÃŸe} hinter zylindrischen Hindernissen hat die
+Da $Re \gg Re_{\text{krit}} \approx 2300$, liegt vollständig turbulente Stömung vor.
+Die \emph{KÃ¡rmÃ¡n'sche Wirbelstraße} hinter zylindrischen Hindernissen hat die
 Strouhal-Frequenz:
 
 \begin{equation}
@@ -376,10 +376,10 @@ wie in Kapitel~\ref{chap:federsystem} gezeigt wird.
 \label{chap:federsystem}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\section{Mechanisches Grundmodell: Schwingender KÃ¶rper im Fluidstrom}
+\section{Mechanisches Grundmodell: Schwingender Körper im Fluidstrom}
 
-Eine Induktionsfeder (IF) ist ein schwingungsfÃ¤higes Masse-Feder-DÃ¤mpfer-System,
-das in einem StrÃ¶mungskanal angebracht wird. Der StrÃ¶mungsdruck versetzt die
+Eine Induktionsfeder (IF) ist ein schwingungsfähiges Masse-Feder-Dämpfer-System,
+das in einem Strömungskanal angebracht wird. Der Strömungsdruck versetzt die
 Schwingmasse $m_s$ in Resonanzschwingungen, die elektromagnetisch oder
 piezoelektrisch in elektrische Energie umgewandelt werden.
 
@@ -387,9 +387,9 @@ piezoelektrisch in elektrische Energie umgewandelt werden.
   Eine \emph{Induktionsfeder} ist ein mechanischer Resonator bestehend aus:
   \begin{itemize}
     \item einer Schwingmasse $m_s$ (typisch 10--100\,g),
-    \item einer RÃ¼ckstellfeder der Steifigkeit $k$,
-    \item einem mechanischen (parasitÃ¤ren) DÃ¤mpfer $c_m$ (Reibung, Material),
-    \item einem \emph{elektrischen DÃ¤mpfer} $c_e$ (Energieentnahme durch
+    \item einer Rückstellfeder der Steifigkeit $k$,
+    \item einem mechanischen (parasitären) Dämpfer $c_m$ (Reibung, Material),
+    \item einem \emph{elektrischen Dämpfer} $c_e$ (Energieentnahme durch
           elektrisches Feld/Piezo).
   \end{itemize}
 \end{definition}
@@ -401,7 +401,7 @@ Die Bewegungsgleichung bei harmonischer Anregung $F(t) = \hat{F}\sin(\omega t)$:
   \label{eq:bewegungsgl}
 \end{equation}
 
-Die stationÃ¤re LÃ¶sung hat die Amplitude:
+Die stationäre Lösung hat die Amplitude:
 
 \begin{equation}
   \hat{X}(\omega) = \frac{\hat{F}/k}{\sqrt{\left(1 - \left(\frac{\omega}{\omega_0}\right)^2\right)^2
@@ -412,7 +412,7 @@ Die stationÃ¤re LÃ¶sung hat die Amplitude:
 
 \section{Elektrische Ausgangsleistung}
 
-Die vom elektrischen DÃ¤mpfer $c_e$ entnommene Leistung ist die nutzbare
+Die vom elektrischen Dämpfer $c_e$ entnommene Leistung ist die nutzbare
 elektrische Leistung der Induktionsfeder:
 
 \begin{equation}
@@ -429,14 +429,14 @@ Einsetzen von Gleichung~\eqref{eq:amplitude}:
   \label{eq:p_el_full}
 \end{equation}
 
-\begin{theorem}[Optimaler elektrischer DÃ¤mpfer]
+\begin{theorem}[Optimaler elektrischer Dämpfer]
   \label{thm:opt_daempfer}
   Bei Betrieb in Resonanz ($\omega = \omega_0$) wird $P_{\text{el}}$ maximiert bei:
   \begin{equation}
     c_e^* = c_m
     \label{eq:ce_opt}
   \end{equation}
-  Die maximale Leistung betrÃ¤gt dann:
+  Die maximale Leistung beträgt dann:
   \begin{equation}
     P_{\text{el,max}} = \frac{\hat{F}^2}{8\,c_m^2\,\omega_0^2}\cdot\frac{1}{m_s} \cdot m_s \omega_0^2
     = \frac{\hat{F}^2}{8\,c_m\,\omega_0}
@@ -455,10 +455,10 @@ Einsetzen von Gleichung~\eqref{eq:amplitude}:
     \frac{\dd P_{\text{el}}}{\dd c_e} = \frac{\hat{F}^2}{2m_s^2\omega_0^4}
     \cdot \frac{(c_m + c_e)^2 - 2c_e(c_m + c_e)}{(c_m + c_e)^4} = 0
   \end{equation}
-  ZÃ¤hler null: $c_m + c_e - 2c_e = 0 \implies c_e = c_m$. 
+  Zähler null: $c_m + c_e - 2c_e = 0 \implies c_e = c_m$. 
 \end{proof}
 
-\section{Resonanzauslegung fÃ¼r Fahrtwind}
+\section{Resonanzauslegung für Fahrtwind}
 
 Die Eigenfrequenz der Induktionsfeder muss auf die KÃ¡rmÃ¡n-Wirbelfrequenz
 (Gl.~\eqref{eq:strouhal}) abgestimmt werden:
@@ -475,7 +475,7 @@ Die passende Federsteifigkeit bei gegebener Schwingmasse $m_s$:
   \label{eq:k_opt}
 \end{equation}
 
-\begin{beispiel}[Auslegung fÃ¼r 100\,km/h]
+\begin{beispiel}[Auslegung für 100\,km/h]
   Mit $m_s = \SI{0.05}{\kilo\gram}$, $d = \SI{0.05}{\metre}$, $v = 27.8\,\text{m/s}$:
   \begin{align}
     f_{\text{KÃ¡rmÃ¡n}} &= 0.20 \cdot \frac{27.8}{0.05} = \SI{111}{\hertz} \\
@@ -492,11 +492,11 @@ Die passende Federsteifigkeit bei gegebener Schwingmasse $m_s$:
     \textit{Links:} Energiebilanz des Feder-Masse-Systems: kinetische
     Energie (blau) und potentielle Federenergie (rot) sind im idealen System
     konstant.
-    \textit{Mitte:} Frequenzgang (Resonanzkurve) fÃ¼r verschiedene elektrische
-    DÃ¤mpfer $c_e$. Bei zu kleinem $c_e$ schwingt das System zu stark, bei zu
-    groÃŸem wird es Ã¼berdÃ¤mpft; das Optimum liegt bei $c_e = c_m$.
+    \textit{Mitte:} Frequenzgang (Resonanzkurve) für verschiedene elektrische
+    Dämpfer $c_e$. Bei zu kleinem $c_e$ schwingt das System zu stark, bei zu
+    großem wird es überdämpft; das Optimum liegt bei $c_e = c_m$.
     \textit{Rechts:} Normierte elektrische Ausgangsleistung als Funktion des
-    elektrischen DÃ¤mpfers -- deutliches Maximum bei $c_e^* = c_m \approx 2\,\text{NÂ·s/m}$.
+    elektrischen Dämpfers -- deutliches Maximum bei $c_e^* = c_m \approx 2\,\text{N ·s/m}$.
   }
   \label{fig:federsystem}
 \end{figure}
@@ -511,7 +511,7 @@ gilt das Faraday'sche Induktionsgesetz:
   \label{eq:emk}
 \end{equation}
 
-Dabei ist $B$ die magnetische Flussdichte, $l$ die effektive LeiterlÃ¤nge der
+Dabei ist $B$ die magnetische Flussdichte, $l$ die effektive Leiterlänge der
 Spule und $\dot{x}$ die Schwinggeschwindigkeit. Die Leistung an einem
 Lastwiderstand $R_L$:
 
@@ -521,14 +521,14 @@ Lastwiderstand $R_L$:
   \label{eq:p_el_em}
 \end{equation}
 
-FÃ¼r $R_L = R_i$ (Leistungsanpassung):
+Für $R_L = R_i$ (Leistungsanpassung):
 
 \begin{equation}
   P_{\text{el,max}} = \frac{(Bl)^2 \dot{x}^2}{4 R_i}
   \label{eq:p_el_em_max}
 \end{equation}
 
-Der Ã¤quivalente elektrische DÃ¤mpfungskoeffizient des elektromagnetischen
+Der äquivalente elektrische Dämpfungskoeffizient des elektromagnetischen
 Wandlers ist:
 
 \begin{equation}
@@ -549,9 +549,9 @@ Die Ausgangsladung $Q$ und Spannung $U$ einer Biegebalkenkonfiguration:
 \end{equation}
 
 wobei $d_{31}$ der piezoelektrische Koeffizient (typisch $-170\,\text{pC/N}$
-fÃ¼r PZT-5A), $E_p$ der ElastizitÃ¤tsmodul, $t_p$ die Dicke des Piezomaterials
-und $C_p$ die KapazitÃ¤t der Scheibe ist. Typische Wandlereffizienzen liegen
-fÃ¼r Piezo-Biegebalken bei $\eta_{\text{piezo}} \approx 15-20\,\%$.
+für PZT-5A), $E_p$ der Elastizitätsmodul, $t_p$ die Dicke des Piezomaterials
+und $C_p$ die Kapazität der Scheibe ist. Typische Wandlereffizienzen liegen
+für Piezo-Biegebalken bei $\eta_{\text{piezo}} \approx 15-20\,\%$.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \chapter{Betz-Limit: Theoretische Obergrenze der Energieextraktion}
@@ -561,11 +561,11 @@ fÃ¼r Piezo-Biegebalken bei $\eta_{\text{piezo}} \approx 15-20\,\%$.
 \section{Ableitung des Betz-Limits}
 
 Das Betz'sche Leistungsmaximum (1919) gibt die theoretische Obergrenze des
-extrahierbaren Leistungsanteils aus einer durchstrÃ¶mten QuerschnittsflÃ¤che an.
+extrahierbaren Leistungsanteils aus einer durchströmten Querschnittsfläche an.
 Es wird aus dem Impuls- und Energieerhaltungssatz hergeleitet.
 
-Sei $v_1$ die AnstrÃ¶mgeschwindigkeit und $v_2 < v_1$ die AbstrÃ¶mgeschwindigkeit
-hinter der Anlage. Die Massenflussrate durch die RotorflÃ¤che $A$ mit
+Sei $v_1$ die Anströmgeschwindigkeit und $v_2 < v_1$ die Abströmgeschwindigkeit
+hinter der Anlage. Die Massenflussrate durch die Rotorfläche $A$ mit
 mittlerer Geschwindigkeit $v_m = \frac{v_1+v_2}{2}$:
 
 \begin{equation}
@@ -582,7 +582,7 @@ Extrahierte Leistung aus dem Impulssatz:
   \label{eq:p_betz}
 \end{equation}
 
-Normiert auf die verfÃ¼gbare kinetische Leistung $P_0 = \frac{1}{2}\rhoL A v_1^3$
+Normiert auf die verfügbare kinetische Leistung $P_0 = \frac{1}{2}\rhoL A v_1^3$
 ergibt sich der Leistungsbeiwert $C_P$:
 
 \begin{equation}
@@ -594,7 +594,7 @@ ergibt sich der Leistungsbeiwert $C_P$:
 \begin{theorem}[Betz-Limit]
   \label{thm:betz}
   Der Leistungsbeiwert $C_P(\lambda)$ wird maximiert bei
-  $\lambda^* = \frac{1}{3}$. Das Maximum betrÃ¤gt:
+  $\lambda^* = \frac{1}{3}$. Das Maximum beträgt:
   \begin{equation}
     C_P^{\max} = \frac{16}{27} \approx 0.5926
     \label{eq:betz_max}
@@ -605,26 +605,26 @@ ergibt sich der Leistungsbeiwert $C_P$:
   $\frac{\dd C_P}{\dd\lambda} = \frac{1}{2}\left[(1-\lambda^2) + (1+\lambda)(-2\lambda)\right]
   = \frac{1}{2}(1-\lambda^2-2\lambda-2\lambda^2) = \frac{1}{2}(1-2\lambda-3\lambda^2) = 0$
 
-  AuflÃ¶sen der quadratischen Gleichung:
+  Auflösen der quadratischen Gleichung:
   $\lambda = \frac{-2 \pm \sqrt{4 + 12}}{6} = \frac{-2 \pm 4}{6}$
 
-  Physikalische LÃ¶sung: $\lambda = \frac{1}{3}$.
+  Physikalische Lösung: $\lambda = \frac{1}{3}$.
 
   Einsetzen: $C_P^{\max} = \frac{1}{2}\left(1+\frac{1}{3}\right)\left(1-\frac{1}{9}\right)
   = \frac{1}{2} \cdot \frac{4}{3} \cdot \frac{8}{9} = \frac{32}{54} = \frac{16}{27}$.
 \end{proof}
 
-\begin{ergebnis}[Folgerung fÃ¼r Induktionsfedern]
+\begin{ergebnis}[Folgerung für Induktionsfedern]
   Kein Energiewandler -- auch kein Induktionsfeder-Array -- kann mehr als
-  $C_P^{\max} = 59.3\,\%$ der durch seine QuerschnittsflÃ¤che strÃ¶menden
+  $C_P^{\max} = 59.3\,\%$ der durch seine Querschnittsfläche strömenden
   kinetischen Luftenergie extrahieren. Selbst das theoretische Maximum
-  lÃ¤sst 40.7\,\% als kinetische Energie im Nachlauf zurÃ¼ck.
+  lässt 40.7\,\% als kinetische Energie im Nachlauf zurück.
 \end{ergebnis}
 
 \section{Anwendung auf den Fahrzeugeinlass}
 
-Die durch den Einlass $\Aeinlass = \SI{0.72}{\metre\squared}$ strÃ¶mende
-kinetische Leistung (in Fahrzeuggeschwindigkeit $v$ ausgedrÃ¼ckt):
+Die durch den Einlass $\Aeinlass = \SI{0.72}{\metre\squared}$ strömende
+kinetische Leistung (in Fahrzeuggeschwindigkeit $v$ ausgedrückt):
 
 \begin{equation}
   P_{\text{avail}}(v) = \frac{1}{2}\rhoL \Aeinlass v^3
@@ -638,19 +638,19 @@ Die theoretisch maximal erntbare Leistung:
   \label{eq:p_betz_einlass}
 \end{equation}
 
-FÃ¼r einen realen Induktionsfeder-Wandler mit Systemwirkungsgrad $\eta_{\text{IF}} = 0.32$:
+Für einen realen Induktionsfeder-Wandler mit Systemwirkungsgrad $\eta_{\text{IF}} = 0.32$:
 
 \begin{equation}
   P_{\text{IF}}(v) = \eta_{\text{IF}} \cdot \frac{1}{2}\rhoL \Aeinlass v^3
   \label{eq:p_if}
 \end{equation}
 
-Tabelle~\ref{tab:p_betz_vergleich} fasst die Werte fÃ¼r verschiedene
+Tabelle~\ref{tab:p_betz_vergleich} fasst die Werte für verschiedene
 Fahrzeuggeschwindigkeiten zusammen.
 
 \begin{table}[H]
   \centering
-  \caption{Vergleich verfÃ¼gbarer Luftleistung, Betz-Limit und
+  \caption{Vergleich verfügbarer Luftleistung, Betz-Limit und
            Induktionsfeder-Ernte bei verschiedenen Geschwindigkeiten
            ($\Aeinlass = \SI{0.72}{\metre\squared}$, $\eta_{\text{IF}} = 0.32$)}
   \label{tab:p_betz_vergleich}
@@ -674,13 +674,13 @@ Fahrzeuggeschwindigkeiten zusammen.
   \caption{%
     \textbf{Betz-Limit und Wirkungsgrade aerodynamischer Energiewandler.}
     \textit{Links:} Der Betz-Leistungsbeiwert $C_P(\lambda)$ als Funktion
-    des GeschwindigkeitsverhÃ¤ltnisses $\lambda = v_2/v_1$. Das absolute
+    des Geschwindigkeitsverhältnisses $\lambda = v_2/v_1$. Das absolute
     Maximum $16/27 \approx 0.593$ tritt bei $\lambda = 1/3$ auf.
     \textit{Mitte:} Wirkungsgrade verschiedener Wandlertechnologien im
     horizontalen Vergleich: Windturbinen erreichen bis zu 48\,\%, reale
     Induktionsfedern etwa 32\,\%, Piezo-Arrays minimal 18\,\%.
-    \textit{Rechts:} Ernte\-leistung verschiedener Wandler bei vollstÃ¤ndiger
-    FrontflÃ¤chen\-ausnutzung ($\Aeinlass = \SI{0.72}{\metre\squared}$).
+    \textit{Rechts:} Ernte\-leistung verschiedener Wandler bei vollständiger
+    Frontflächen\-ausnutzung ($\Aeinlass = \SI{0.72}{\metre\squared}$).
     Horizontale gestrichelte Linie: typischer PKW-Bordnetzbedarf 3\,kW.
   }
   \label{fig:betz}
@@ -693,38 +693,38 @@ Fahrzeuggeschwindigkeiten zusammen.
 
 \section{Optimale Einbauposition: Hinter der Fahrzeugfront}
 
-Als optimaler Einbauort fÃ¼r das Induktionsfeder-Array ergibt sich die
-\emph{Frontpartie hinter dem KÃ¼hlergrill} des Fahrzeugs. Dort gilt:
+Als optimaler Einbauort für das Induktionsfeder-Array ergibt sich die
+\emph{Frontpartie hinter dem Kühlergrill} des Fahrzeugs. Dort gilt:
 
 \begin{itemize}
-  \item Der Luftstrom trifft mit annÃ¤hernder Fahrzeuggeschwindigkeit $v$ auf
+  \item Der Luftstrom trifft mit annähernder Fahrzeuggeschwindigkeit $v$ auf
         (Staudruckzone, $v_{\text{rel}} \approx v$).
-  \item Die StrÃ¶mung ist noch weitgehend laminat/laminar-turbulent und
-        definiert gerichtelt (vor dem KÃ¼hler).
-  \item Technische Integration in bestehende KÃ¼hler/LuftfÃ¼hrungskanÃ¤le
-        mÃ¶glich ohne wesentliche aerodynamische Nachteile.
+  \item Die Strömung ist noch weitgehend laminat/laminar-turbulent und
+        definiert gerichtelt (vor dem Kühler).
+  \item Technische Integration in bestehende Kühler/Luftführungskanäle
+        möglich ohne wesentliche aerodynamische Nachteile.
   \item Wartungszugang von vorne.
 \end{itemize}
 
-\begin{hinweis}[StrÃ¶mungsfÃ¼hrung]
-  Die nachfolgende Analyse zeigt, dass das IF-Array die EinlassstrÃ¶mung
-  partiell verlangsamt. Dies erhÃ¶ht den effektiven Luftwiderstand geringfÃ¼gig.
-  In der vollstÃ¤ndigen Energiebilanz (Kap.~\ref{chap:energiebilanz}) wird
+\begin{hinweis}[Strömungsführung]
+  Die nachfolgende Analyse zeigt, dass das IF-Array die Einlassströmung
+  partiell verlangsamt. Dies erhöht den effektiven Luftwiderstand geringfügig.
+  In der vollständigen Energiebilanz (Kap.~\ref{chap:energiebilanz}) wird
   dieser Effekt exakt quantifiziert.
 \end{hinweis}
 
-\section{Geometrie der vollstÃ¤ndigen FrontflÃ¤chenausnutzung}
+\section{Geometrie der vollständigen Frontflächenausnutzung}
 
-FÃ¼r ein Serien-PKW mit typischen MaÃŸen:
+Für ein Serien-PKW mit typischen Maßen:
 
 \begin{align}
   \text{Fahrzeugbreite: } & b = \SI{1.80}{\metre} \\
-  \text{NutzhÃ¶he (KÃ¼hlergrill):} & h = \SI{0.40}{\metre} \\
-  \text{EinlassflÃ¤che:} & \Aeinlass = b \cdot h = 1.80 \cdot 0.40 = \SI{0.72}{\metre\squared}
+  \text{Nutzhöhe (Kühlergrill):} & h = \SI{0.40}{\metre} \\
+  \text{Einlassfläche:} & \Aeinlass = b \cdot h = 1.80 \cdot 0.40 = \SI{0.72}{\metre\squared}
   \label{eq:a_einlass}
 \end{align}
 
-Bei einer Einzelfeder-QuerschnittsflÃ¤che von $A_F = (5\,\text{cm})^2 = \SI{25e-4}{\metre\squared}$
+Bei einer Einzelfeder-Querschnittsfläche von $A_F = (5\,\text{cm})^2 = \SI{25e-4}{\metre\squared}$
 ergibt sich die maximale Federanzahl:
 
 \begin{equation}
@@ -740,21 +740,21 @@ Die Gesamternteleistung des Arrays:
   \label{eq:p_array}
 \end{equation}
 
-Dies ist Ã¤quivalent zu Gleichung~\eqref{eq:p_if}, was zeigt: \emph{Die Anzahl
-der Einzelfedern ist irrelevant -- entscheidend ist die GesamteinlassflÃ¤che}.
+Dies ist äquivalent zu Gleichung~\eqref{eq:p_if}, was zeigt: \emph{Die Anzahl
+der Einzelfedern ist irrelevant -- entscheidend ist die Gesamteinlassfläche}.
 
 \section{Einfluss auf den Luftwiderstandsbeiwert}
 
-Durch das IF-Array wird dem Luftstrom zusÃ¤tzlicher Impulsstrom entzogen.
-Der Ã„nderung des Widerstandsbeiwertes lÃ¤sst sich abschÃ¤tzen Ã¼ber den
-zusÃ¤tzlichen Impulsentzug:
+Durch das IF-Array wird dem Luftstrom zusätzlicher Impulsstrom entzogen.
+Der Änderung des Widerstandsbeiwertes lässt sich abschätzen über den
+zusätzlichen Impulsentzug:
 
 \begin{equation}
   \Delta F_W = \frac{P_{\text{IF}}}{v} = \eta_{\text{IF}} \cdot \frac{1}{2}\rhoL \Aeinlass v^2
   \label{eq:delta_fw}
 \end{equation}
 
-Die zugehÃ¶rige Ã„nderung des $\cW$-Werts bezogen auf die GesamtstirnflÃ¤che:
+Die zugehörige Änderung des $\cW$-Werts bezogen auf die Gesamtstirnfläche:
 
 \begin{equation}
   \Delta \cW = \frac{\Delta F_W}{\frac{1}{2}\rhoL \Astirnfl v^2}
@@ -763,15 +763,15 @@ Die zugehÃ¶rige Ã„nderung des $\cW$-Werts bezogen auf die GesamtstirnflÃ¤
   \label{eq:delta_cw}
 \end{equation}
 
-Dieser Wert muss in der vollstÃ¤ndigen Energiebilanz berÃ¼cksichtigt werden.
+Dieser Wert muss in der vollständigen Energiebilanz berücksichtigt werden.
 
-\section{StrÃ¶mungsprofil und DruckverhÃ¤ltnisse im Frontkanal}
+\section{Strömungsprofil und Druckverhältnisse im Frontkanal}
 \label{sec:kfz_kanal}
 
-Der Bereich hinter dem KÃ¼hlergrill bis vor dem MotorkÃ¼hler bildet einen
+Der Bereich hinter dem Kühlergrill bis vor dem Motorkühler bildet einen
 aerodynamischen \emph{Frontkanal} mit definierter Geometrie. Infolge des
-Staudrucks vor der Fahrzeugfront wird die anstrÃ¶mende Luft in den Kanal
-gedrÃ¼ckt. Die Druckdifferenz zwischen Freistrom und Kanaleinlass betrÃ¤gt
+Staudrucks vor der Fahrzeugfront wird die anströmende Luft in den Kanal
+gedrückt. Die Druckdifferenz zwischen Freistrom und Kanaleinlass beträgt
 nach der Bernoulli-Gleichung:
 
 \begin{equation}
@@ -779,10 +779,10 @@ nach der Bernoulli-Gleichung:
   \label{eq:staudruck_kanal}
 \end{equation}
 
-Aufgrund der StrÃ¶mungsverengung durch das Gitterbild und das IF-Array nimmt
-die effektive Kanalgeschwindigkeit $v_K$ gegenÃ¼ber der AuÃŸengeschwindigkeit $v$
-zu. Mit dem KontinuitÃ¤tssatz und dem Ã–ffnungsgrad $\sigma = A_{\text{offen}}/\Aeinlass$
-(typisch $\sigma = 0.60$--$0.78$ fÃ¼r PKW-KÃ¼hlergrills nach Idel'Äik,
+Aufgrund der Strömungsverengung durch das Gitterbild und das IF-Array nimmt
+die effektive Kanalgeschwindigkeit $v_K$ gegenüber der Außengeschwindigkeit $v$
+zu. Mit dem Kontinuitätssatz und dem Öffnungsgrad $\sigma = A_{\text{offen}}/\Aeinlass$
+(typisch $\sigma = 0.60$--$0.78$ für PKW-Kühlergrills nach Idel'Äik,
 \emph{Handbook of Hydraulic Resistance}) gilt:
 
 \begin{equation}
@@ -790,7 +790,7 @@ zu. Mit dem KontinuitÃ¤tssatz und dem Ã–ffnungsgrad $\sigma = A_{\text{offe
   \label{eq:v_kanal}
 \end{equation}
 
-wobei $C_c$ der Kontraktionskoeffizient des StrÃ¶mungsquerschnitts ist.
+wobei $C_c$ der Kontraktionskoeffizient des Strömungsquerschnitts ist.
 Bei $\sigma = 0.70$, $C_c = 0.90$ und $v = 36.1\,\text{m/s}$ (130\,km/h):
 
 \begin{equation}
@@ -798,9 +798,9 @@ Bei $\sigma = 0.70$, $C_c = 0.90$ und $v = 36.1\,\text{m/s}$ (130\,km/h):
   \label{eq:v_kanal_130}
 \end{equation}
 
-Die erhÃ¶hte lokale AnstrÃ¶mgeschwindigkeit bedeutet, dass die im Kanal tatsÃ¤chlich
-verfÃ¼gbare kinetische Leistungsdichte gegenÃ¼ber der AuÃŸenstrÃ¶mung erhÃ¶ht ist.
-Der Korrekturfaktor bezogen auf dieselbe effektive Ã–ffnungsflÃ¤che
+Die erhöhte lokale Anströmgeschwindigkeit bedeutet, dass die im Kanal tatsächlich
+verfügbare kinetische Leistungsdichte gegenüber der Außenströmung erhöht ist.
+Der Korrekturfaktor bezogen auf dieselbe effektive Öffnungsfläche
 $\sigma \Aeinlass$ lautet:
 
 \begin{equation}
@@ -809,7 +809,7 @@ $\sigma \Aeinlass$ lautet:
   \label{eq:kappa_v}
 \end{equation}
 
-Die \emph{im Kanal} verfÃ¼gbare kinetische Leistung berechnet sich daher als:
+Die \emph{im Kanal} verfügbare kinetische Leistung berechnet sich daher als:
 
 \begin{equation}
   P_{\text{avail,Kanal}} = \frac{1}{2}\rhoL (\sigma \Aeinlass) v_K^3
@@ -818,27 +818,27 @@ Die \emph{im Kanal} verfÃ¼gbare kinetische Leistung berechnet sich daher als:
   \label{eq:p_kanal_korr}
 \end{equation}
 
-Die reale verfÃ¼gbare Leistung im Kanalinnern Ã¼bersteigt den Wert bei einfacher
-AuÃŸenstrÃ¶mungsbetrachtung damit um $49\,\%$ -- ein inhÃ¤renter Vorteil der
+Die reale verfügbare Leistung im Kanalinnern übersteigt den Wert bei einfacher
+Außenströmungsbetrachtung damit um $49\,\%$ -- ein inhärenter Vorteil der
 Kanaleinbaugeometrie.
 
 \begin{hinweis}[Venturi-Kanal als Designfreiheitsgrad]
-  Durch aerodynamisch geformte Einlauftrichter (Venturi-Querschnitt) lÃ¤sst
-  sich $v_K/v$ gezielt erhÃ¶hen. Ein Venturi-Kanal mit FlÃ¤chenverhÃ¤ltnis $1:2$
+  Durch aerodynamisch geformte Einlauftrichter (Venturi-Querschnitt) lässt
+  sich $v_K/v$ gezielt erhöhen. Ein Venturi-Kanal mit Flächenverhältnis $1:2$
   verdoppelt $v_K$ und verachtfacht die lokale kinetische Leistungsdichte --
-  zum Preis eines erhÃ¶hten Druckverlusts im Gesamtsystem. Der Netto-Gewinn
+  zum Preis eines erhöhten Druckverlusts im Gesamtsystem. Der Netto-Gewinn
   ist positiv, solange die gewonnene Mehrleistung die hydraulischen
-  Druckverluste Ã¼berkompensiert.
+  Druckverluste überkompensiert.
 \end{hinweis}
 
 \subsection{Druckverlustbilanz im Frontkanal}
 
-FÃ¼r den Gesamtdruckverlust $\Delta p_{\text{ges}}$ zwischen dem Freistrom und
-der motorseitigen AustrÃ¶mung ist eine hydraulische Bilanz aufzustellen:
+Für den Gesamtdruckverlust $\Delta p_{\text{ges}}$ zwischen dem Freistrom und
+der motorseitigen Auströmung ist eine hydraulische Bilanz aufzustellen:
 
 \begin{equation}
   \Delta p_{\text{ges}} = \underbrace{\Delta p_{\text{IF}}}_{\text{IF-Array}}
-  + \underbrace{\Delta p_{\text{KÃ¼hler}}}_{\text{KÃ¼hlernetz}}
+  + \underbrace{\Delta p_{\text{Kühler}}}_{\text{Kühlernetz}}
   + \underbrace{\Delta p_{\text{Wand}}}_{\text{Kanalreibung}}
   \label{eq:druckverlust_bilanz}
 \end{equation}
@@ -862,17 +862,17 @@ Bei 130\,km/h ergibt sich ein konkreter Gegendruck von:
   \label{eq:dp_if_130}
 \end{equation}
 
-Zum Vergleich: Ein typischer PKW-FahrzeugkÃ¼hler erzeugt bei gleichem Massenstrom
-$\Delta p_{\text{KÃ¼hler}} \approx 150$--$300\,\text{Pa}$. Das IF-Array erzeugt
-also einen etwa vier- bis achtfach hÃ¶heren Druckverlust -- was die
-Kanalquerschnittsdimensionierung und die thermische Auslegung des KÃ¼hlsystems
+Zum Vergleich: Ein typischer PKW-Fahrzeugkühler erzeugt bei gleichem Massenstrom
+$\Delta p_{\text{Kühler}} \approx 150$--$300\,\text{Pa}$. Das IF-Array erzeugt
+also einen etwa vier- bis achtfach höheren Druckverlust -- was die
+Kanalquerschnittsdimensionierung und die thermische Auslegung des Kühlsystems
 beeinflusst und in Abschnitt~\ref{sec:kfz_thermal} quantifiziert wird.
 
-\section{Thermische Wechselwirkung mit dem MotorkÃ¼hlsystem}
+\section{Thermische Wechselwirkung mit dem Motorkühlsystem}
 \label{sec:kfz_thermal}
 
 Ein zentraler ingenieurtechnischer Aspekt ist die Wechselwirkung des
-IF-Arrays mit dem \emph{MotorkÃ¼hlsystem}. Beide Systeme teilen denselben
+IF-Arrays mit dem \emph{Motorkühlsystem}. Beide Systeme teilen denselben
 Luftmassenstrom $\dot{m}_{\text{Luft}}$ durch den Frontkanal. Bei
 $v = 130\,\text{km/h}$:
 
@@ -882,36 +882,36 @@ $v = 130\,\text{km/h}$:
   \label{eq:mdot_luft}
 \end{equation}
 
-Die KÃ¼hlleistung des Fahrzeugradiators hÃ¤ngt nach dem Newton'schen
-WÃ¤rmeÃ¼bertrager-Modell vom Massenstrom ab:
+Die Kühlleistung des Fahrzeugradiators hängt nach dem Newton'schen
+Wärmeübertrager-Modell vom Massenstrom ab:
 
 \begin{equation}
-  \dot{Q}_{\text{KÃ¼hler}} = \dot{m}_{\text{Luft}} \cdot c_{p,\text{Luft}} \cdot \Delta T_{\text{Luft}}
+  \dot{Q}_{\text{Kühler}} = \dot{m}_{\text{Luft}} \cdot c_{p,\text{Luft}} \cdot \Delta T_{\text{Luft}}
   \label{eq:q_kuehler}
 \end{equation}
 
-Mit $\Delta T_{\text{Luft}} \approx 10\,\text{K}$ (typische ErwÃ¤rmung der
-DurchstrÃ¶mungsluft am KÃ¼hler) und dem Massenstrom aus Gl.~\eqref{eq:mdot_luft}:
+Mit $\Delta T_{\text{Luft}} \approx 10\,\text{K}$ (typische Erwärmung der
+Durchströmungsluft am Kühler) und dem Massenstrom aus Gl.~\eqref{eq:mdot_luft}:
 
 \begin{equation}
-  \dot{Q}_{\text{KÃ¼hler,0}} = 28.7 \cdot 1005 \cdot 10 \approx \SI{288}{\kilo\watt}
+  \dot{Q}_{\text{Kühler,0}} = 28.7 \cdot 1005 \cdot 10 \approx \SI{288}{\kilo\watt}
   \label{eq:q_kuehler_0}
 \end{equation}
 
 Ein Benzin-PKW bei 130\,km/h ($P_{\text{Motor}} \approx 80\,\text{kW}$,
 Motorwirkungsgrad $\eta_M \approx 0.38$) emittiert ca.\ $35\,\%$ der
-Kraftstoffleistung als AbwÃ¤rme ins KÃ¼hlwasser:
+Kraftstoffleistung als Abwärme ins Kühlwasser:
 
 \begin{equation}
-  \dot{Q}_{\text{nÃ¶tig}} \approx (1 - \eta_M) \cdot P_{\text{Motor}}
+  \dot{Q}_{\text{nötig}} \approx (1 - \eta_M) \cdot P_{\text{Motor}}
   = 0.62 \cdot 80 = \SI{49.6}{\kilo\watt}
   \label{eq:q_noetig}
 \end{equation}
 
-Der KÃ¼hler ist bei dieser Fahrsituation also um den Faktor $288/49.6 \approx 5.8$
-Ã¼berdimensioniert. Das IF-Array erzeugt einen Druckverlust von $\approx 1245\,\text{Pa}$,
-der den GesamtdurchstrÃ¶mungszustand im Kanal modifiziert. Der Massenstromabfall
-ergibt sich nach der hydraulischen Ã„hnlichkeit:
+Der Kühler ist bei dieser Fahrsituation also um den Faktor $288/49.6 \approx 5.8$
+überdimensioniert. Das IF-Array erzeugt einen Druckverlust von $\approx 1245\,\text{Pa}$,
+der den Gesamtdurchströmungszustand im Kanal modifiziert. Der Massenstromabfall
+ergibt sich nach der hydraulischen Ähnlichkeit:
 
 \begin{equation}
   \frac{\dot{m}_{\text{IF}}}{\dot{m}_0}
@@ -920,18 +920,18 @@ ergibt sich nach der hydraulischen Ã„hnlichkeit:
   \label{eq:massenstrom_ratio}
 \end{equation}
 
-Die KÃ¼hlleistungsreduktion betrÃ¤gt damit lediglich $\approx 8\,\%$ --
-bei einem KÃ¼hlÃ¼berschuss von Faktor $5.8$ ist dies vollstÃ¤ndig unkritisch.
+Die Kühlleistungsreduktion beträgt damit lediglich $\approx 8\,\%$ --
+bei einem Kühlüberschuss von Faktor $5.8$ ist dies vollständig unkritisch.
 Nur bei niedrigen Fahrzeuggeschwindigkeiten (Stadtverkehr, Steigungsfahrt
-unter Volllast), wenn der KÃ¼hler nahe an seiner thermischen Grenze arbeitet,
-muss das IF-Array partiell oder vollstÃ¤ndig deaktiviert werden.
+unter Volllast), wenn der Kühler nahe an seiner thermischen Grenze arbeitet,
+muss das IF-Array partiell oder vollständig deaktiviert werden.
 
 \begin{wichtig}[Thermisches Management als Systembedingung]
-  Das IF-Array ist mit einer aktiven KÃ¼hlluft-Jalousie zu koppeln, wie sie
-  viele Hersteller (BMW, Mercedes-Benz, Audi) bereits fÃ¼r aktive
-  Luftstromsteuerung serienmÃ¤ÃŸig einsetzen. Ein KÃ¼hlmitteltemperatur-Sensor
-  ($T_{\text{KÃ¼hl}} > T_{\text{thresh}} = 100\,^\circ\text{C}$) kann das Array
-  sicher drosseln oder sperren, ohne Motorschutzfunktionen zu beeintrÃ¤chtigen.
+  Das IF-Array ist mit einer aktiven Kühlluft-Jalousie zu koppeln, wie sie
+  viele Hersteller (BMW, Mercedes-Benz, Audi) bereits für aktive
+  Luftstromsteuerung serienmäßig einsetzen. Ein Kühlmitteltemperatur-Sensor
+  ($T_{\text{Kühl}} > T_{\text{thresh}} = 100\,^\circ\text{C}$) kann das Array
+  sicher drosseln oder sperren, ohne Motorschutzfunktionen zu beeinträchtigen.
   Bei Autobahnfahrt unter moderater Last ($< 70\,\%$ Vollast) ist eine
   Aktivierung praktisch jederzeit unproblematisch.
 \end{wichtig}
@@ -939,53 +939,53 @@ muss das IF-Array partiell oder vollstÃ¤ndig deaktiviert werden.
 \subsection{Temperatureinfluss auf die Ernteleistung}
 
 Die Luftdichte ist eine Funktion der Temperatur ($p = \rhoL R_{\text{spez}} T$,
-ideales Gas). FÃ¼r die IF-Ernteleistung ergibt sich daher eine TemperaturabhÃ¤ngigkeit:
+ideales Gas). Für die IF-Ernteleistung ergibt sich daher eine Temperaturabhängigkeit:
 
 \begin{equation}
   P_{\text{IF}}(T) = P_{\text{IF}}(T_0) \cdot \frac{T_0}{T}
   \label{eq:p_if_temp}
 \end{equation}
 
-Bei $T_0 = 293\,\text{K}$ (20\,Â°C) und $T = 253\,\text{K}$ ($-20\,^\circ$C):
+Bei $T_0 = 293\,\text{K}$ (20\, °C) und $T = 253\,\text{K}$ ($-20\,^\circ$C):
 
 \begin{equation}
   P_{\text{IF}}(-20\,^\circ\text{C}) = 6.65 \cdot \frac{293}{253} \approx \SI{7.70}{\kilo\watt}
   \label{eq:p_if_winter}
 \end{equation}
 
-Im Winter ist die Ernteleistung also um $\approx 15.8\,\%$ hÃ¶her als bei
-20\,Â°C -- ein gÃ¼nstiger Jahreszeit-Effekt, da im Winter auch der Bordnetzbedarf
-(Heizung, Sitzheizung, Scheiben\-wischer) am hÃ¶chsten ist.
+Im Winter ist die Ernteleistung also um $\approx 15.8\,\%$ höher als bei
+20\, °C -- ein günstiger Jahreszeit-Effekt, da im Winter auch der Bordnetzbedarf
+(Heizung, Sitzheizung, Scheiben\-wischer) am höchsten ist.
 
 \section{Alternative Einbaupositionen: Vergleich}
 \label{sec:kfz_positionen}
 
-Neben der FrontkÃ¼hler-Position sind weitere Einbaupositionen am Fahrzeug
+Neben der Frontkühler-Position sind weitere Einbaupositionen am Fahrzeug
 physikalisch realisierbar. Tabelle~\ref{tab:einbaupositionen} erfasst die
 wesentlichen Alternativen mit einer qualitativen Bewertung:
 
 \begin{table}[H]
   \centering
-  \caption{Vergleich mÃ¶glicher Einbaupositionen fÃ¼r IF-Arrays am PKW-Serienfahrzeug.
+  \caption{Vergleich möglicher Einbaupositionen für IF-Arrays am PKW-Serienfahrzeug.
            Bewertung: $++$ (sehr gut), $+$ (gut), $\circ$ (mittel), $-$ (schlecht).}
   \label{tab:einbaupositionen}
   \begin{tabular}{l>{\raggedright\arraybackslash}p{4.2cm}ccc}
     \toprule
-    Position & StrÃ¶mungsverhÃ¤ltnisse & Erntepotential & Integration & Wartung \\
+    Position & Strömungsverhältnisse & Erntepotential & Integration & Wartung \\
     \midrule
-    Front / KÃ¼hlergrill & Gerichtet, $v_K \approx v$ & $++$ & $++$ & $++$ \\
+    Front / Kühlergrill & Gerichtet, $v_K \approx v$ & $++$ & $++$ & $++$ \\
     Unterflur           & Grenzschicht, $v_{\text{eff}} \approx 0.7\,v$ & $+$  & $+$  & $-$  \\
     Heckdiffusor        & Nachlauf, $v \approx 0.4\text{--}0.6\,v$ & $\circ$ & $\circ$ & $+$ \\
     Schwellerkanal      & Seitlich, $v \cdot 0.5\text{--}0.8$ & $\circ$ & $\circ$ & $-$ \\
     Dachkante / Spoiler & Turbulent, breites $f$-Spektrum & $\circ$ & $\circ$ & $+$ \\
-    A-SÃ¤ulen-Kanal      & AbgelÃ¶st, gering $v$ & $-$  & $-$  & $-$ \\
+    A-Säulen-Kanal      & Abgelöst, gering $v$ & $-$  & $-$  & $-$ \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 \textbf{Unterflur-Einbau:}
-Unterhalb des Fahrzeugbodens bewegt sich die Luft gegenÃ¼ber dem Fahrzeug
-mit $v_{\text{eff}} \approx 0.70\,v$. FÃ¼r eine nutzbare Unterflur-FlÃ¤che
+Unterhalb des Fahrzeugbodens bewegt sich die Luft gegenüber dem Fahrzeug
+mit $v_{\text{eff}} \approx 0.70\,v$. Für eine nutzbare Unterflur-Fläche
 von $\Aeinlass^{\text{Uf}} = 0.50\,\text{m}^2$:
 
 \begin{equation}
@@ -995,15 +995,15 @@ von $\Aeinlass^{\text{Uf}} = 0.50\,\text{m}^2$:
 \end{equation}
 
 Dieser Wert entspricht $\approx 24\,\%$ des Front-Systems und kann als
-\emph{ergÃ¤nzendes} Subsystem genutzt werden, bringt aber erhebliche
-Integrations- und Verschmutzungsherausforderungen (Steinschlag, StraÃŸennÃ¤sse,
+\emph{ergänzendes} Subsystem genutzt werden, bringt aber erhebliche
+Integrations- und Verschmutzungsherausforderungen (Steinschlag, Straßennässe,
 Spritzwasser) mit sich.
 
 \textbf{Heckdiffusor-Einbau:}
-Im Heckbereich treten komplexe AblÃ¶sewirbel auf. Die mittlere
+Im Heckbereich treten komplexe Ablösewirbel auf. Die mittlere
 Relativgeschwindigkeit liegt bei $v_{\text{Diff}} \approx 0.4$--$0.6\,v$.
-Das Erntepotential ist geringer; die erhÃ¶hte Turbulenz ermÃ¶glicht jedoch
-breitbandige Anregung Ã¼ber einen grÃ¶ÃŸeren Frequenzbereich
+Das Erntepotential ist geringer; die erhöhte Turbulenz ermöglicht jedoch
+breitbandige Anregung über einen größeren Frequenzbereich
 ($\Delta f / f_0 \approx 25\,\%$ statt $5\,\%$ vorne), was bei nicht
 geschwindigkeits-optimierten Resonanzfedern Vorteile bietet.
 
@@ -1012,12 +1012,12 @@ geschwindigkeits-optimierten Resonanzfedern Vorteile bietet.
 
 \subsection{Mechanische Lasten auf das IF-Array}
 
-Das IF-Array unterliegt im Fahrbetrieb mehreren Ã¼berlagerten mechanischen
-Belastungen, die fÃ¼r die Strukturauslegung maÃŸgebend sind:
+Das IF-Array unterliegt im Fahrbetrieb mehreren überlagerten mechanischen
+Belastungen, die für die Strukturauslegung maßgebend sind:
 
 \begin{itemize}
-  \item \textbf{Aerodynamische FlÃ¤chenlast:} Der Staudruck $q$ wirkt als
-        gleichmÃ¤ÃŸige Normalspannung auf die FrontflÃ¤che. Bei 130\,km/h:
+  \item \textbf{Aerodynamische Flächenlast:} Der Staudruck $q$ wirkt als
+        gleichmäßige Normalspannung auf die Frontfläche. Bei 130\,km/h:
         \begin{equation}
           F_q = q \cdot \Aeinlass = 799 \cdot 0.72 \approx \SI{575}{\newton}
           \label{eq:f_stau}
@@ -1026,13 +1026,13 @@ Belastungen, die fÃ¼r die Strukturauslegung maÃŸgebend sind:
   \item \textbf{Fahrbahn-Vibration:} Nach ISO~8608 Klasse~C (gute Fahrbahn)
         treten Vertikalbeschleunigungen von $a_{\text{rms}} \approx 1.5\,g$
         an der Vorderachse auf (Spitzenwerte bis $10\,g$). Die resultierende
-        TrÃ¤gheitskraft auf das Array-Modul:
+        Trägheitskraft auf das Array-Modul:
         \begin{equation}
           F_{\text{Vib}} = m_{\text{Array}} \cdot a_{\text{max}}
           \approx 33.5 \cdot 10 \cdot 9.81 \approx \SI{3280}{\newton}
           \label{eq:f_vib}
         \end{equation}
-        Dies ist die \emph{dimensionierende} Last fÃ¼r die Bahnsicherung.
+        Dies ist die \emph{dimensionierende} Last für die Bahnsicherung.
 
   \item \textbf{Steinschlag und Partikelimpakt:} Im Frontbereich sind
         Partikelimpakte mit Steinmassen bis $m_S \approx 10\,\text{g}$ und
@@ -1043,24 +1043,24 @@ Belastungen, die fÃ¼r die Strukturauslegung maÃŸgebend sind:
           \approx \SI{6.5}{\joule}
           \label{eq:e_impakt}
         \end{equation}
-        Die GehÃ¤usewand muss diese Energie plastisch absorbieren kÃ¶nnen;
-        hierbei bewÃ¤hrt sich glasfaserverstÃ¤rktes Polyamid\,6.6 (GF30-PA6.6)
-        mit KerbschlagzÃ¤higkeit $> 50\,\text{kJ/m}^2$.
+        Die Gehäusewand muss diese Energie plastisch absorbieren können;
+        hierbei bewährt sich glasfaserverstärktes Polyamid\,6.6 (GF30-PA6.6)
+        mit Kerbschlagzähigkeit $> 50\,\text{kJ/m}^2$.
 \end{itemize}
 
 \subsection{Rahmen- und Befestigungskonzept}
 
-Ein einteiliger AluminiumtrÃ¤ger-Rahmen aus AlMgSi1 ($E = 70\,\text{GPa}$,
-$\sigma_{\text{FlieÃŸ}} = 240\,\text{MPa}$) mit genormten Schnell\-verschlÃ¼ssen
-(Push-Pull-Bajonetts, BSL-kompatibel) erfÃ¼llt alle strukturellen Anforderungen
-und ermÃ¶glicht zusÃ¤tzlich:
+Ein einteiliger Aluminiumträger-Rahmen aus AlMgSi1 ($E = 70\,\text{GPa}$,
+$\sigma_{\text{Fließ}} = 240\,\text{MPa}$) mit genormten Schnell\-verschlüssen
+(Push-Pull-Bajonetts, BSL-kompatibel) erfüllt alle strukturellen Anforderungen
+und ermöglicht zusätzlich:
 
 \begin{itemize}
-  \item Einbau ohne Spezialwerkzeug in weniger als 30\,Minuten (NachrÃ¼stlÃ¶sung
-        fÃ¼r den Werkstattbetrieb).
-  \item VollstÃ¤ndige Entnehmbarkeit des Arrays als eine Einheit fÃ¼r
+  \item Einbau ohne Spezialwerkzeug in weniger als 30\,Minuten (Nachrüstlösung
+        für den Werkstattbetrieb).
+  \item Vollständige Entnehmbarkeit des Arrays als eine Einheit für
         Reinigung, Inspektion und Feder-Austausch.
-  \item Anpassung an unterschiedliche KÃ¼hlergrill-Schnittstellen durch
+  \item Anpassung an unterschiedliche Kühlergrill-Schnittstellen durch
         normierte Adapterbleche ($\pm 20\,\text{mm}$ Spielraum).
 \end{itemize}
 
@@ -1068,16 +1068,16 @@ und ermÃ¶glicht zusÃ¤tzlich:
 
 \begin{table}[H]
   \centering
-  \caption{Masse-Budget fÃ¼r ein 288-Federn-IF-Array (elektromagnetischer Wandler)}
+  \caption{Masse-Budget für ein 288-Federn-IF-Array (elektromagnetischer Wandler)}
   \label{tab:gewicht}
   \begin{tabular}{lS}
     \toprule
     Komponente & {Masse [kg]} \\
     \midrule
     Schwingmassen ($288 \times 50\,\text{g}$)           & 14.4 \\
-    Federelemente und GehÃ¤use ($288 \times 30\,\text{g}$) & 8.6 \\
+    Federelemente und Gehäuse ($288 \times 30\,\text{g}$) & 8.6 \\
     EM-Wandlereinheit ($288 \times 20\,\text{g}$)        & 5.8 \\
-    Al-Rahmen und TrÃ¤ger                                 & 3.2 \\
+    Al-Rahmen und Träger                                 & 3.2 \\
     Verkabelung und Wechselrichter                       & 1.5 \\
     \midrule
     \textbf{Gesamt}                                      & \textbf{33.5} \\
@@ -1085,7 +1085,7 @@ und ermÃ¶glicht zusÃ¤tzlich:
   \end{tabular}
 \end{table}
 
-Das Mehrgewicht von $\Delta m = 33.5\,\text{kg}$ erzeugt einen zusÃ¤tzlichen
+Das Mehrgewicht von $\Delta m = 33.5\,\text{kg}$ erzeugt einen zusätzlichen
 Rollwiderstandsverlust:
 
 \begin{equation}
@@ -1095,20 +1095,20 @@ Rollwiderstandsverlust:
 \end{equation}
 
 Der gewichtsbedingte Mehrverbrauch von $142\,\text{W}$ entspricht
-$\approx 2.1\,\%$ der Ernteleistung ($6.65\,\text{kW}$) und ist vernachlÃ¤ssigbar.
+$\approx 2.1\,\%$ der Ernteleistung ($6.65\,\text{kW}$) und ist vernachlässigbar.
 
 \section{Integration in verschiedene Fahrzeugklassen}
 \label{sec:kfz_klassen}
 
 Die Skalierbarkeit der IF-Technologie auf alle Fahrzeugklassen ist ein
 wesentlicher Vorteil. Tabelle~\ref{tab:fahrzeugklassen} zeigt die
-geschÃ¤tzten KenngrÃ¶ÃŸen fÃ¼r gÃ¤ngige Klassen bei 130\,km/h:
+geschätzten Kenngrößen für gängige Klassen bei 130\,km/h:
 
 \begin{table}[H]
   \centering
-  \caption{IF-Array-Kenndaten fÃ¼r verschiedene Fahrzeugklassen bei
+  \caption{IF-Array-Kenndaten für verschiedene Fahrzeugklassen bei
            $v = 130\,\text{km/h}$, $\eta_{\text{IF}} = 0.32$.
-           Bordnetzbedarf gemÃ¤ÃŸ durchschnittlichem OEM-Datenblatt.}
+           Bordnetzbedarf gemäß durchschnittlichem OEM-Datenblatt.}
   \label{tab:fahrzeugklassen}
   {\footnotesize\setlength{\tabcolsep}{4pt}
   \begin{tabular}{lSSSSS}
@@ -1120,19 +1120,19 @@ geschÃ¤tzten KenngrÃ¶ÃŸen fÃ¼r gÃ¤ngige Klassen bei 130\,km/h:
     Kompaktwagen (B/C-Klasse)    & 0.50 &  4.60 & 2.5 & 184 & 200 \\
     Mittelklasse (D-Klasse)      & 0.72 &  6.65 & 3.0 & 222 & 288 \\
     SUV / Crossover (E-Klasse)   & 1.10 & 10.1  & 4.0 & 253 & 440 \\
-    GroÃŸraumvan / Transporter    & 2.00 & 18.5  & 6.0 & 308 & 800 \\
+    Großraumvan / Transporter    & 2.00 & 18.5  & 6.0 & 308 & 800 \\
     Fernlast-LKW (Sattelzug)     & 3.00 & 27.7  & 8.0 & 346 & 1200 \\
     \bottomrule
   \end{tabular}}
 \end{table}
 
 Der \emph{Deckungsgrad} -- der Anteil des Bordnetzbedarfs, der allein durch
-das IF-Array gedeckt werden kann -- wÃ¤chst systematisch mit der FahrzeuggrÃ¶ÃŸe:
-GroÃŸe Fahrzeuge besitzen proportional mehr nutzbare FrontquerschnittsflÃ¤che
-als elektrischen Energiebedarf. Besonders bei Fernlast-LKW, die tÃ¤glich
-300--600\,km bei Autobahngeschwindigkeit zurÃ¼cklegen, kann das Array
-weit mehr als den gesamten Bordnetzbedarf decken -- der Ãœberschuss lÃ¤sst
-sich fÃ¼r KÃ¼hlaggregate, Fahrerkabinen-Versorgung (Kochen, Schlafen, Heizen)
+das IF-Array gedeckt werden kann -- wächst systematisch mit der Fahrzeuggröße:
+Große Fahrzeuge besitzen proportional mehr nutzbare Frontquerschnittsfläche
+als elektrischen Energiebedarf. Besonders bei Fernlast-LKW, die täglich
+300--600\,km bei Autobahngeschwindigkeit zurücklegen, kann das Array
+weit mehr als den gesamten Bordnetzbedarf decken -- der Überschuss lässt
+sich für Kühlaggregate, Fahrerkabinen-Versorgung (Kochen, Schlafen, Heizen)
 oder direkte Einspeisung in einen Hochvolt-Zusatzspeicher nutzen.
 
 \begin{beispiel}[Fernlast-LKW bei heutiger Praxis]
@@ -1143,8 +1143,8 @@ oder direkte Einspeisung in einen Hochvolt-Zusatzspeicher nutzen.
     \cdot 25.0^3 = \SI{9.19}{\kilo\watt} \\
     P_{\text{Bordnetz}}^{\text{LKW}} &\approx \SI{5.0}{\kilo\watt}
   \end{align}
-  Das IF-Array liefert $184\,\%$ des Bordnetzbedarfs; der Ãœberschuss
-  ($4.19\,\text{kW}$) kann das TK-Aggregat einer KÃ¼hlbrÃ¼cke teilweise
+  Das IF-Array liefert $184\,\%$ des Bordnetzbedarfs; der Überschuss
+  ($4.19\,\text{kW}$) kann das TK-Aggregat einer Kühlbrücke teilweise
   versorgen und ersetzt damit separate Dieselaggregate mit $\eta \approx 25\,\%$
   durch eine nahezu CO\textsubscript{2}-freie Alternative.
 \end{beispiel}
@@ -1152,16 +1152,16 @@ oder direkte Einspeisung in einen Hochvolt-Zusatzspeicher nutzen.
 \section{Auslegungsverfahren: Schrittweise Vorgehensweise}
 \label{sec:kfz_auslegung}
 
-Die folgende systematische Auslegungsprozedur fÃ¼r ein IF-Array fasst
+Die folgende systematische Auslegungsprozedur für ein IF-Array fasst
 die in den vorangegangenen Abschnitten entwickelten Gleichungen zusammen
 und bietet Ingenieuren eine praxisnahe Vorlage:
 
 \begin{enumerate}[leftmargin=2em]
-  \item \textbf{Zielgeschwindigkeit $v^*$ und EinlassflÃ¤che $\Aeinlass$ festlegen:}
-        Typischerweise Auslegung fÃ¼r Autobahnrichtgeschwindigkeit
-        (100 oder 130\,km/h) und volle KÃ¼hlergrill-NutzflÃ¤che.
+  \item \textbf{Zielgeschwindigkeit $v^*$ und Einlassfläche $\Aeinlass$ festlegen:}
+        Typischerweise Auslegung für Autobahnrichtgeschwindigkeit
+        (100 oder 130\,km/h) und volle Kühlergrill-Nutzfläche.
 
-  \item \textbf{KÃ¡rmÃ¡n-Wirbelfrequenz ermitteln} (wÃ¤hlbarer Zylinderdurchmesser $d$):
+  \item \textbf{KÃ¡rmÃ¡n-Wirbelfrequenz ermitteln} (wählbarer Zylinderdurchmesser $d$):
         \begin{equation}
           f_0 = St \cdot v^*/d, \qquad St = 0.20 \quad \text{(Kreiszylinder)}
           \label{eq:ausleg_f0}
@@ -1173,8 +1173,8 @@ und bietet Ingenieuren eine praxisnahe Vorlage:
           \label{eq:ausleg_k}
         \end{equation}
 
-  \item \textbf{Optimalen elektrischen DÃ¤mpfer wÃ¤hlen} (Theorem~\ref{thm:opt_daempfer}):
-        $c_e^* = c_m$; fÃ¼r EM-Wandler Ã¼ber $R_L = R_i$ realisiert.
+  \item \textbf{Optimalen elektrischen Dämpfer wählen} (Theorem~\ref{thm:opt_daempfer}):
+        $c_e^* = c_m$; für EM-Wandler über $R_L = R_i$ realisiert.
 
   \item \textbf{Einzelfeder-Leistung berechnen} (Gl.~\eqref{eq:p_el_max}):
         $P_{\text{el,IF}} = \hat{F}^2 / (8\,c_m\,\omega_0)$.
@@ -1182,9 +1182,9 @@ und bietet Ingenieuren eine praxisnahe Vorlage:
   \item \textbf{Federzahl $N$ aus Array-Gesamtleistung ermitteln:}
         $N = P_{\text{Ziel}} / P_{\text{el,IF}}$.
 
-  \item \textbf{ÃœberprÃ¼fung thermische KompatibilitÃ¤t:} Kanaldruckverlust nach
+  \item \textbf{Überprüfung thermische Kompatibilität:} Kanaldruckverlust nach
         Gl.~\eqref{eq:dp_if_130}; Massenstromabfall nach Gl.~\eqref{eq:massenstrom_ratio};
-        verbleibende KÃ¼hlleistung $> \dot{Q}_{\text{nÃ¶tig}}$ (Gl.~\eqref{eq:q_noetig}).
+        verbleibende Kühlleistung $> \dot{Q}_{\text{nötig}}$ (Gl.~\eqref{eq:q_noetig}).
 
   \item \textbf{Strukturnachweis:} Gewichtsbudget (Tab.~\ref{tab:gewicht}),
         Vi\-brations\-last (Gl.~\eqref{eq:f_vib}), Stein\-schlag-Energie
@@ -1192,13 +1192,13 @@ und bietet Ingenieuren eine praxisnahe Vorlage:
 \end{enumerate}
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\chapter{VollstÃ¤ndige Energiebilanz der Kraftfahrzeug-Anwendung}
+\chapter{Vollständige Energiebilanz der Kraftfahrzeug-Anwendung}
 \label{chap:energiebilanz}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \section{Leistungsanteile ohne Induktionsfedern}
 
-Die fÃ¼r den Fahrbetrieb erforderliche Motorleistung setzt sich zusammen aus:
+Die für den Fahrbetrieb erforderliche Motorleistung setzt sich zusammen aus:
 
 \begin{equation}
   P_{\text{Motor}} = P_W + P_R + P_{\text{Aux}} + P_{\text{Trieb}}
@@ -1228,10 +1228,10 @@ Numerisch bei 130\,km/h ($v = 36.1\,\text{m/s}$):
 
 \section{Leistungsanteile mit Induktionsfedern}
 
-Nach Installation des IF-Arrays (volle FrontflÃ¤chenausnutzung) gilt:
+Nach Installation des IF-Arrays (volle Frontflächenausnutzung) gilt:
 
 \begin{itemize}
-  \item Der Luftwiderstand erhÃ¶ht sich um $\Delta\cW = 0.105$ (vgl.\ Gl.~\eqref{eq:delta_cw}):
+  \item Der Luftwiderstand erhöht sich um $\Delta\cW = 0.105$ (vgl.\ Gl.~\eqref{eq:delta_cw}):
   \begin{equation}
     \cW' = \cW + \Delta\cW = 0.28 + 0.105 = 0.385
     \label{eq:cw_neu}
@@ -1246,8 +1246,8 @@ Nach Installation des IF-Arrays (volle FrontflÃ¤chenausnutzung) gilt:
     P_{\text{IF}} = 0.32 \cdot 0.5 \cdot 1.225 \cdot 0.72 \cdot 36.1^3 = \SI{6.65}{\kilo\watt}
     \label{eq:p_if_130}
   \end{equation}
-  Da $P_{\text{IF}} > P_{\text{Aux}} = 3\,\text{kW}$, wird die Lichtmaschine vollstÃ¤ndig
-  ersetzt; Ãœberschuss ($\approx 3.65$\,kW) lÃ¤dt die Fahrzeugbatterie.
+  Da $P_{\text{IF}} > P_{\text{Aux}} = 3\,\text{kW}$, wird die Lichtmaschine vollständig
+  ersetzt; Überschuss ($\approx 3.65$\,kW) lädt die Fahrzeugbatterie.
   \item Neue Gesamtmotorleistung:
   \begin{align}
     P_{\text{Motor,IF}} &= P_W' + P_R + 0 + P_{\text{Trieb}} \notag \\
@@ -1258,7 +1258,7 @@ Nach Installation des IF-Arrays (volle FrontflÃ¤chenausnutzung) gilt:
 
 \section{Netto-Energiebilanz}
 
-Der Nettoverbrauch \emph{Ã¤ndert sich mit IF wie folgt}:
+Der Nettoverbrauch \emph{ändert sich mit IF wie folgt}:
 
 \begin{align}
   \Delta P_{\text{Motor}} &= P_{\text{Motor,IF}} - P_{\text{Motor,0}} = 32.4 - 28.7 = +\SI{3.7}{\kilo\watt}
@@ -1268,18 +1268,18 @@ Der Nettoverbrauch \emph{Ã¤ndert sich mit IF wie folgt}:
 \end{align}
 
 \begin{wichtig}[Kernaussage der Energiebilanz]
-  Die Installation der Induktionsfedern \emph{erhÃ¶ht} den Motorleistungsbedarf
-  um $\Delta P_{\text{Motor}} = +3.7\,\text{kW}$ (durch erhÃ¶hten Luftwiderstand)
+  Die Installation der Induktionsfedern \emph{erhöht} den Motorleistungsbedarf
+  um $\Delta P_{\text{Motor}} = +3.7\,\text{kW}$ (durch erhöhten Luftwiderstand)
   und liefert $P_{\text{IF}} = 6.65\,\text{kW}$ elektrisch, wovon 3.0\,kW das
-  Bordnetz direkt versorgen. Der Motormehrverbrauch ($3.7\,\text{kW}$) Ã¼bertrifft
-  die Einsparung aus der wegfallenden Lichtmaschine ($3.0\,\text{kW}$) geringfÃ¼gig.
+  Bordnetz direkt versorgen. Der Motormehrverbrauch ($3.7\,\text{kW}$) übertrifft
+  die Einsparung aus der wegfallenden Lichtmaschine ($3.0\,\text{kW}$) geringfügig.
   Es liegt \textbf{kein Perpetuum Mobile} vor -- der Erste Hauptsatz der
   Thermodynamik ist gewahrt.
 \end{wichtig}
 
 \begin{ergebnis}[Praktischer Nutzen]
-  Der \emph{tatsÃ¤chliche} Nutzen liegt in der Verschiebung der Energiequelle:
-  Das IF-Array kann den Alternator (Generator) vollstÃ¤ndig ersetzen.
+  Der \emph{tatsächliche} Nutzen liegt in der Verschiebung der Energiequelle:
+  Das IF-Array kann den Alternator (Generator) vollständig ersetzen.
   Konventionelle Lichtmaschinen arbeiten mit $\eta_{\text{alt}} \approx 55$--$65\,\%$
   und erzeugen dabei Reibungsverluste im Riemenantrieb. Durch Wegfall der
   Lichtmaschine ergibt sich ein netto positiver Effizienzgewinn von:
@@ -1295,43 +1295,43 @@ Der Nettoverbrauch \emph{Ã¤ndert sich mit IF wie folgt}:
   \centering
   \includegraphics[width=\textwidth]{plots/plot4_energiebilanz_kfz.pdf}
   \caption{%
-    \textbf{VollstÃ¤ndige Energiebilanz eines Kraftfahrzeugs mit Induktionsfedern.}
+    \textbf{Vollständige Energiebilanz eines Kraftfahrzeugs mit Induktionsfedern.}
     \textit{Links:} Kreisdiagramm der Leistungsverteilung bei 130\,km/h:
     Luftwiderstand dominiert mit 62\,\%.
-    \textit{Mitte:} Gestapeltes FlÃ¤chendiagramm aller vier Leistungsanteile
-    als Funktion der Geschwindigkeit; ab ca.\ 90\,km/h Ã¼berwiegt der
+    \textit{Mitte:} Gestapeltes Flächendiagramm aller vier Leistungsanteile
+    als Funktion der Geschwindigkeit; ab ca.\ 90\,km/h überwiegt der
     Luftwiderstand die Summe aller anderen Verluste.
-    \textit{Rechts:} Ernteleistung $P_{\text{IF}}$ (blaue FlÃ¤che) beim
+    \textit{Rechts:} Ernteleistung $P_{\text{IF}}$ (blaue Fläche) beim
     IF-Array mit $\eta = 32\,\%$ und $\Aeinlass = 0.72\,\text{m}^2$.
-    Ab 96\,km/h wird der Bordnetzbedarf von 3\,kW vollstÃ¤ndig gedeckt;
-    darÃ¼ber lÃ¤dt das System die Fahrzeugbatterie.
+    Ab 96\,km/h wird der Bordnetzbedarf von 3\,kW vollständig gedeckt;
+    darüber lädt das System die Fahrzeugbatterie.
   }
   \label{fig:energiebilanz_kfz}
 \end{figure}
 
-\section{VollstÃ¤ndige FrontflÃ¤chenausnutzung: Quantitative Analyse}
+\section{Vollständige Frontflächenausnutzung: Quantitative Analyse}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plots/plot5_frontflaeche.pdf}
   \caption{%
-    \textbf{Analyse der vollstÃ¤ndigen FrontflÃ¤chenausnutzung.}
-    \textit{Links:} Ernteleistung als Funktion des Wirkungsgrades fÃ¼r verschiedene
-    FronthÃ¶hen (bei konstanter Breite 1.8\,m). FÃ¼r $h = 40\,\text{cm}$ und
+    \textbf{Analyse der vollständigen Frontflächenausnutzung.}
+    \textit{Links:} Ernteleistung als Funktion des Wirkungsgrades für verschiedene
+    Fronthöhen (bei konstanter Breite 1.8\,m). Für $h = 40\,\text{cm}$ und
     $\eta = 32\,\%$ werden bei 130\,km/h $\approx 6.6\,\text{kW}$ geerntet.
-    \textit{Mitte:} Ernteleistung vs.\ Geschwindigkeit fÃ¼r optimale Konfiguration
+    \textit{Mitte:} Ernteleistung vs.\ Geschwindigkeit für optimale Konfiguration
     ($A = 0.72\,\text{m}^2$) bei verschiedenen Wirkungsgraden.
     \textit{Rechts:} Projizierter Jahresenergieertrag bei je
     15\,000\,km Fahrleistung pro Jahr -- 850 bis 2\,200\,kWh
     je nach Technologie; der Bordnetz-Jahresbedarf ($\approx 750\,\text{kWh}$)
-    wird auch bei moderater Auslegung Ã¼bererfÃ¼llt.
+    wird auch bei moderater Auslegung übererfüllt.
   }
   \label{fig:frontflaeche}
 \end{figure}
 
-\section{\texorpdfstring{JÃ¤hrliche CO\textsubscript{2}-Bilanz}{JÃ¤hrliche CO2-Bilanz}}
+\section{\texorpdfstring{Jährliche CO\textsubscript{2}-Bilanz}{Jährliche CO2-Bilanz}}
 
-FÃ¼r ein Fahrzeug mit Verbrennungsmotor ergibt sich durch den Wegfall der
+Für ein Fahrzeug mit Verbrennungsmotor ergibt sich durch den Wegfall der
 konventionellen Lichtmaschine folgende CO\textsubscript{2}-Einsparung:
 
 \begin{equation}
@@ -1356,9 +1356,9 @@ Hilfsleistungsoffset allein.
 \label{chap:satellit}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\section{Orbitalmechanik bei \SI{100}{\kilo\metre} HÃ¶he}
+\section{Orbitalmechanik bei \SI{100}{\kilo\metre} Höhe}
 
-Die Kreisbahngeschwindigkeit eines Satelliten in HÃ¶he $h$ Ã¼ber der ErdoberflÃ¤che
+Die Kreisbahngeschwindigkeit eines Satelliten in Höhe $h$ über der Erdoberfläche
 folgt aus dem Gleichgewicht von Gravitations- und Zentripetalkraft:
 
 \begin{equation}
@@ -1403,7 +1403,7 @@ $A_{\text{sat}} = \SI{10}{\metre\squared}$:
   \label{eq:fd_sat_100}
 \end{align}
 
-Die damit verbundene VerzÃ¶gerung eines $m_{\text{sat}} = \SI{1000}{\kilo\gram}$-Satelliten:
+Die damit verbundene Verzögerung eines $m_{\text{sat}} = \SI{1000}{\kilo\gram}$-Satelliten:
 
 \begin{equation}
   a_D = \frac{F_D}{m_{\text{sat}}} = \frac{379.5}{1000} = \SI{0.38}{\metre\per\second\squared}
@@ -1411,38 +1411,38 @@ Die damit verbundene VerzÃ¶gerung eines $m_{\text{sat}} = \SI{1000}{\kilo\gram
 \end{equation}
 
 \begin{wichtig}[Dramatischer Orbitaler Abbau bei 100\,km]
-  Mit $a_D = 0.38\,\text{m/s}^2$ verliert ein Satellit bei 100\,km OrbitalhÃ¶he
+  Mit $a_D = 0.38\,\text{m/s}^2$ verliert ein Satellit bei 100\,km Orbitalhöhe
   in einer Umlaufzeit von $T = 86.3\,\text{min}$:
   \begin{equation}
     \Delta v = a_D \cdot T = 0.38 \cdot 5178 \approx \SI{1968}{\metre\per\second}\text{ pro Umlauf}
   \end{equation}
-  Dies erklÃ¤rt, warum keine realen Satelliten dauerhaft in 100\,km HÃ¶he orbiten --
-  ohne kontinuierliche Nachschubsenergie (PerigÃ¤um-Antrieb) wÃ¼rden sie innerhalb
-  weniger Stunden in die AtmosphÃ¤re eintreten.
+  Dies erklärt, warum keine realen Satelliten dauerhaft in 100\,km Höhe orbiten --
+  ohne kontinuierliche Nachschubsenergie (Perigäum-Antrieb) würden sie innerhalb
+  weniger Stunden in die Atmosphäre eintreten.
 \end{wichtig}
 
 \section{Dissipierte Leistung durch Luftwiderstand}
 
-Die vom Luftwiderstand auf den Satelliten Ã¼bertragene mechanische Leistung:
+Die vom Luftwiderstand auf den Satelliten übertragene mechanische Leistung:
 
 \begin{align}
   P_D &= F_D \cdot v_{\text{orb}} = 379.5 \cdot 7848 = \SI{2\,979}{\kilo\watt} \approx \SI{3.0}{\mega\watt}
   \label{eq:pd_sat}
 \end{align}
 
-\begin{ergebnis}[VerfÃ¼gbare StrÃ¶mungsleistung auf Satelliten]
-  Ein Satellit in 100\,km HÃ¶he dissipiert durch den atmosphÃ¤rischen Widerstand
+\begin{ergebnis}[Verfügbare Strömungsleistung auf Satelliten]
+  Ein Satellit in 100\,km Höhe dissipiert durch den atmosphärischen Widerstand
   rund \textbf{3\,MW} an kinetischer Orbitalenergie. Bei einem Systemic-Wirkungsgrad
-  von $\eta = 0.25$ kÃ¶nnte ein IF-System theoretisch $\SI{750}{\kilo\watt}$
+  von $\eta = 0.25$ könnte ein IF-System theoretisch $\SI{750}{\kilo\watt}$
   als elektrische Leistung gewinnen.
 \end{ergebnis}
 
 \section{Energiebilanz des Satelliten-Szenarios}
 
 Die entscheidende Frage ist: Kann die geerntete elektrische Leistung $P_{\text{IF,sat}}$
-den Schub aufrechterhalten, der zum Halten der OrbitalhÃ¶he notwendig ist?
+den Schub aufrechterhalten, der zum Halten der Orbitalhöhe notwendig ist?
 
-Der zur Orbit\-aufrechterhaltung benÃ¶tigte Schub entspricht genau der
+Der zur Orbit\-aufrechterhaltung benötigte Schub entspricht genau der
 Luftwiderstandskraft:
 
 \begin{equation}
@@ -1450,7 +1450,7 @@ Luftwiderstandskraft:
   \label{eq:f_schub}
 \end{equation}
 
-Die dafÃ¼r erforderliche \emph{elektrische} Antriebsleistung (z.\,B.\ mit
+Die dafür erforderliche \emph{elektrische} Antriebsleistung (z.\,B.\ mit
 Ionen\-triebwerk $\eta_{\text{EP}} = 0.65$, $I_{\text{sp}} = 3000\,\text{s}$):
 
 \begin{equation}
@@ -1461,37 +1461,37 @@ Ionen\-triebwerk $\eta_{\text{EP}} = 0.65$, $I_{\text{sp}} = 3000\,\text{s}$):
   \label{eq:p_antrieb_ep}
 \end{equation}
 
-Das VerhÃ¤ltnis:
+Das Verhältnis:
 
 \begin{equation}
   \frac{P_{\text{IF,sat}}}{P_{\text{Antrieb,ep}}} = \frac{750\,\text{kW}}{8570\,\text{kW}} \approx 8.8\,\%
   \label{eq:ratio_sat}
 \end{equation}
 
-Die IF-Ernte betrÃ¤gt also nur $\approx 9\,\%$ der fÃ¼r die Orbitmaintenance
-benÃ¶tigten Antriebsleistung. Ein Perpetuum Mobile ist \emph{nicht} realisierbar.
+Die IF-Ernte beträgt also nur $\approx 9\,\%$ der für die Orbitmaintenance
+benötigten Antriebsleistung. Ein Perpetuum Mobile ist \emph{nicht} realisierbar.
 
-\begin{ergebnis}[Legitime Nutzung fÃ¼r Bordstrom]
-  Obwohl die Induktionsfedern die Orbital-Aufrechterhaltung nicht ermÃ¶glichen,
+\begin{ergebnis}[Legitime Nutzung für Bordstrom]
+  Obwohl die Induktionsfedern die Orbital-Aufrechterhaltung nicht ermöglichen,
   stellen sie bei Satelliten in sehr niedrigen Orbits (150--300\,km) eine
-  attraktive Quelle fÃ¼r \emph{Bordelektronik-Strom} dar -- als ErgÃ¤nzung zu
-  Solar\-zellen, die bei diesen HÃ¶hen durch Schattenphasen und StrahlungsgÃ¼rtel
-  eingeschrÃ¤nkt sind.
+  attraktive Quelle für \emph{Bordelektronik-Strom} dar -- als Ergänzung zu
+  Solar\-zellen, die bei diesen Höhen durch Schattenphasen und Strahlungsgürtel
+  eingeschränkt sind.
 \end{ergebnis}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plots/plot6_atmosphaere.pdf}
   \caption{%
-    \textbf{AtmosphÃ¤rische Bedingungen und Satelliten-Luftwiderstand (80--400\,km).}
-    \textit{Links:} US-StandardatmosphÃ¤re Dichteprofil bis 400\,km. Die Dichte
-    fÃ¤llt um mehr als sechs GrÃ¶ÃŸenordnungen. Bei 100\,km (KÃ¡rmÃ¡n-Linie) liegt
+    \textbf{Atmosphärische Bedingungen und Satelliten-Luftwiderstand (80--400\,km).}
+    \textit{Links:} US-Standardatmosphäre Dichteprofil bis 400\,km. Die Dichte
+    fällt um mehr als sechs Größenordnungen. Bei 100\,km (KÃ¡rmÃ¡n-Linie) liegt
     $\rhoL \approx 5.6 \times 10^{-7}\,\text{kg/m}^3$.
     \textit{Mitte:} Luftwiderstandskraft (blau, linke Achse) und dissipierte
-    Leistung (orange gestrichelt, rechte Achse) fÃ¼r $A = 10\,\text{m}^2$,
+    Leistung (orange gestrichelt, rechte Achse) für $A = 10\,\text{m}^2$,
     $C_D = 2.2$: Bei 100\,km wirken fast 380\,N, dissipiert werden $\approx 3$\,MW.
-    \textit{Rechts:} Orbitaler HÃ¶henverlust pro Tag (blau) und pro Orbit (orange
-    gestrichelt) -- bei 100\,km fallen Satelliten ohne Schub tÃ¤glich mehrere
+    \textit{Rechts:} Orbitaler Höhenverlust pro Tag (blau) und pro Orbit (orange
+    gestrichelt) -- bei 100\,km fallen Satelliten ohne Schub täglich mehrere
     Dutzend Kilometer ab.
   }
   \label{fig:atmosphaere}
@@ -1502,16 +1502,16 @@ benÃ¶tigten Antriebsleistung. Ein Perpetuum Mobile ist \emph{nicht} realisierb
   \includegraphics[width=\textwidth]{plots/plot7_satellit_energiebilanz.pdf}
   \caption{%
     \textbf{Satelliten-Energiebilanz und Orbitalabbau-Simulation.}
-    \textit{Links:} ErntemÃ¶gliche Leistung (beim IF, gestrichelt) im Vergleich
-    zur gesamten atmosphÃ¤rischen Widerstandsleistung (schwarz) Ã¼ber der HÃ¶he --
-    der Faktor zwischen geernteter und benÃ¶tigter Antriebsleistung bleibt stets
+    \textit{Links:} Erntemögliche Leistung (beim IF, gestrichelt) im Vergleich
+    zur gesamten atmosphärischen Widerstandsleistung (schwarz) über der Höhe --
+    der Faktor zwischen geernteter und benötigter Antriebsleistung bleibt stets
     $\gg 1$ (Energiedefizit).
     \textit{Mitte:} Das Netto-Energiedefizit $|P_{\text{Ernte}} - P_{\text{Antrieb}}|$
-    ist fÃ¼r alle realisierbaren Wirkungsgrade positiv, d.\,h.\ ein autonomer
+    ist für alle realisierbaren Wirkungsgrade positiv, d.\,h.\ ein autonomer
     Selbstantrieb ist ausgeschlossen (1.\ Hauptsatz der Thermodynamik).
     \textit{Rechts:} Numerische Simulation des Orbitalen Abbaus eines 1000\,kg-Satelliten
     ohne Schub startend bei 100\,km -- innerhalb von ca.\ 6\,Stunden sinkt
-    die HÃ¶he auf $<$\,80\,km (Wiedereintrittsgrenze).
+    die Höhe auf $<$\,80\,km (Wiedereintrittsgrenze).
   }
   \label{fig:satellit_bilanz}
 \end{figure}
@@ -1531,44 +1531,44 @@ Energie in einem abgeschlossenen System:
   \label{eq:1hs}
 \end{equation}
 
-\begin{theorem}[UnmÃ¶glichkeit des aerodynamischen Perpetuum Mobile]
+\begin{theorem}[Unmöglichkeit des aerodynamischen Perpetuum Mobile]
   \label{thm:pm}
-  Ein Fahrzeug, das ausschlieÃŸlich durch die Energie des von ihm selbst
+  Ein Fahrzeug, das ausschließlich durch die Energie des von ihm selbst
   erzeugten Fahrtwinds dauerhaft angetrieben wird (``selbsttreibendes
   Induktionsfeder-Fahrzeug''), verletzt den Ersten Hauptsatz der
-  Thermodynamik und ist physikalisch unmÃ¶glich.
+  Thermodynamik und ist physikalisch unmöglich.
 \end{theorem}
 
 \begin{proof}
-  Betrachte ein Fahrzeug, das mit konstanter Geschwindigkeit $v$ fÃ¤hrt.
+  Betrachte ein Fahrzeug, das mit konstanter Geschwindigkeit $v$ fährt.
   In einem Bezugssystem, das sich mit dem Fahrzeug mitbewegt:
 
   \begin{enumerate}
-    \item Die auf das Fahrzeug wirkende Luftwiderstandskraft betrÃ¤gt $F_W > 0$
+    \item Die auf das Fahrzeug wirkende Luftwiderstandskraft beträgt $F_W > 0$
           (Gl.~\eqref{eq:fw}).
     \item Das IF-Array extrahiert eine elektrische Leistung $P_{\text{IF}}$,
-          die dem Fahrzeug als Antriebsleistung zurÃ¼ckgefÃ¼hrt wird.
+          die dem Fahrzeug als Antriebsleistung zurückgeführt wird.
     \item Die \emph{Antriebs\-gegenkraft} durch den IF-Impulsentzug:
           $\Delta F_W = P_{\text{IF}}/v$
-    \item Die fÃ¼r die Orbitmaintenance benÃ¶tigte Antriebskraft:
+    \item Die für die Orbitmaintenance benötigte Antriebskraft:
           $F_{\text{prop}} = F_W + \Delta F_W$
-    \item Die benÃ¶tigte Antriebsleistung:
+    \item Die benötigte Antriebsleistung:
           $P_{\text{prop}} = F_{\text{prop}} \cdot v = (F_W + \Delta F_W) \cdot v
           = P_W + P_{\text{IF}}$
     \item Es muss stets gelten: $P_{\text{prop}} > P_{\text{IF}}$,
           solange $P_W > 0$.
   \end{enumerate}
 
-  Aus Schritt 5 und 6 folgt: Die zur Selbstversorgung benÃ¶tigte Antriebsleistung
-  Ã¼bersteigt stets die geerntete Leistung um genau $P_W > 0$. Es existiert
-  daher keine externe Energiequelle, die weggelassen werden kÃ¶nnte. 
+  Aus Schritt 5 und 6 folgt: Die zur Selbstversorgung benötigte Antriebsleistung
+  übersteigt stets die geerntete Leistung um genau $P_W > 0$. Es existiert
+  daher keine externe Energiequelle, die weggelassen werden könnte. 
 \end{proof}
 
 \begin{korollar}
-  Die einzig mÃ¶gliche Anwendung, bei der Induktionsfedern einen echten
+  Die einzig mögliche Anwendung, bei der Induktionsfedern einen echten
   \emph{Nettobeitrag} liefern, ist die Substitution anderer Hilfsenergiesysteme
-  (Lichtmaschine, WindkÃ¼hlung), deren interne Verluste hÃ¶her sind als die
-  zusÃ¤tzlichen Luftwiderstandsverluste durch die Federn.
+  (Lichtmaschine, Windkühlung), deren interne Verluste höher sind als die
+  zusätzlichen Luftwiderstandsverluste durch die Federn.
 \end{korollar}
 
 \section{Zweiter Hauptsatz: Entropieproduktion}
@@ -1597,9 +1597,9 @@ Mit $T_{\text{amb}} = 293\,\text{K}$ bei 130\,km/h:
   \label{eq:s_lw_130}
 \end{equation}
 
-Durch Installation der Induktionsfedern erhÃ¶ht sich die Entropieproduktionsrate
-nicht\-negativ, da die Federn zusÃ¤tzliche Dissipationsmechanismen einfÃ¼hren
-(interne Reibung, ohmsche WÃ¤rme, Schallemission):
+Durch Installation der Induktionsfedern erhöht sich die Entropieproduktionsrate
+nicht\-negativ, da die Federn zusätzliche Dissipationsmechanismen einführen
+(interne Reibung, ohmsche Wärme, Schallemission):
 
 \begin{equation}
   \dot{S}_{\text{irr,IF}} = \dot{S}_W + \underbrace{\dot{S}_{\Delta W}}_{\text{Mehrwiderstand}}
@@ -1609,18 +1609,18 @@ nicht\-negativ, da die Federn zusÃ¤tzliche Dissipationsmechanismen einfÃ¼hre
 
 \section{Betz-Schranke als Entropieargument}
 
-Das Betz-Limit lÃ¤sst sich auch als \emph{Minimalentropie-Argument} formulieren:
-Um die Luft vollstÃ¤ndig stillzustehen zu lassen ($v_2 = 0$, $\lambda = 0$),
-mÃ¼sste man all their kinetische Energie extrahieren. Das ist unmÃ¶glich, weil
-der Massenstrom durch die Anlage dann auf null sinken wÃ¼rde ($\dot{m} \to 0$),
+Das Betz-Limit lässt sich auch als \emph{Minimalentropie-Argument} formulieren:
+Um die Luft vollständig stillzustehen zu lassen ($v_2 = 0$, $\lambda = 0$),
+müsste man all their kinetische Energie extrahieren. Das ist unmöglich, weil
+der Massenstrom durch die Anlage dann auf null sinken würde ($\dot{m} \to 0$),
 und damit auch $P_{\text{ex}} \to 0$. Das Optimum bei $\lambda = 1/3$ ist ein
 Kompromiss zwischen maximalem Massenstrom und maximaler spezifischer Energieabgabe.
 
 \begin{hinweis}[Analogie zum Carnot-Wirkungsgrad]
-  Ã„hnlich wie der Carnot-Wirkungsgrad $\eta_C = 1 - T_2/T_1$ die obere
-  Grenze fÃ¼r WÃ¤rmekraftmaschinen darstellt, stellt das Betz-Limit
-  $C_P^{\max} = 16/27$ die obere Grenze fÃ¼r Windkraftmaschinen dar.
-  Beide Grenzen folgen aus dem Zweiten Hauptsatz -- das Betz-Limit zusÃ¤tzlich
+  Ähnlich wie der Carnot-Wirkungsgrad $\eta_C = 1 - T_2/T_1$ die obere
+  Grenze für Wärmekraftmaschinen darstellt, stellt das Betz-Limit
+  $C_P^{\max} = 16/27$ die obere Grenze für Windkraftmaschinen dar.
+  Beide Grenzen folgen aus dem Zweiten Hauptsatz -- das Betz-Limit zusätzlich
   aus dem Impulserhaltungssatz der Fluiddynamik.
 \end{hinweis}
 
@@ -1630,13 +1630,13 @@ Kompromiss zwischen maximalem Massenstrom und maximaler spezifischer Energieabga
   \caption{%
     \textbf{Thermodynamische Grenzen aerodynamischer Energiewandlung.}
     \textit{Links:} Energiefluss-Sankey bei 130\,km/h: Von $\approx 20.8\,\text{kW}$
-    verfÃ¼gbarer kinetischer Einlassenergie werden maximal 12.3\,kW (Betz),
+    verfügbarer kinetischer Einlassenergie werden maximal 12.3\,kW (Betz),
     realistisch 6.65\,kW (IF, $\eta=32\,\%$) extrahiert; der Rest (14.2\,kW)
-    dissipiert als NachlaufwÃ¤rme.
+    dissipiert als Nachlaufwärme.
     \textit{Mitte:} Entropieproduktionsrate ohne und mit Induktionsfedern --
-    das IF-System erhÃ¶ht die Entropieproduktion leicht (Zweiter Hauptsatz).
-    \textit{Rechts:} Das VerhÃ¤ltnis $P_{\text{Ernte}}/P_{\text{Antrieb}}$ zeigt,
-    dass selbst das theoretische Maximum (Betz auf voller StirnflÃ¤che)
+    das IF-System erhöht die Entropieproduktion leicht (Zweiter Hauptsatz).
+    \textit{Rechts:} Das Verhältnis $P_{\text{Ernte}}/P_{\text{Antrieb}}$ zeigt,
+    dass selbst das theoretische Maximum (Betz auf voller Stirnfläche)
     die 100\,\%-Marke niemals erreicht -- ein dauerhafter Eigenantrieb
     ist ausgeschlossen.
   }
@@ -1650,22 +1650,22 @@ Kompromiss zwischen maximalem Massenstrom und maximaler spezifischer Energieabga
 
 \section{Simulationsparameter}
 
-Alle numerischen Berechnungen wurden mit Python (NumPy, Matplotlib) durchgefÃ¼hrt.
+Alle numerischen Berechnungen wurden mit Python (NumPy, Matplotlib) durchgeführt.
 Tabelle~\ref{tab:sim_param} listet die verwendeten Parameter.
 
 \begin{table}[H]
   \centering
-  \caption{Simulationsparameter fÃ¼r KFZ und Satelliten-Szenario}
+  \caption{Simulationsparameter für KFZ und Satelliten-Szenario}
   \label{tab:sim_param}
   \begin{tabular}{llSl}
     \toprule
-    GrÃ¶ÃŸe & Symbol & {Wert} & Einheit \\
+    Größe & Symbol & {Wert} & Einheit \\
     \midrule
     Luftdichte (Meeresspiegel) & $\rho_0$   & 1.225   & kg/m\textsuperscript{3} \\
-    kin.\ ViskositÃ¤t Luft      & $\nu$      & 1.5e-5  & m\textsuperscript{2}/s  \\
+    kin.\ Viskosität Luft      & $\nu$      & 1.5e-5  & m\textsuperscript{2}/s  \\
     $\cW$-Wert PKW             & $\cW$      & 0.28    & --    \\
-    StirnflÃ¤che PKW            & $\Astirnfl$& 2.2     & m\textsuperscript{2}    \\
-    EinlassflÃ¤che PKW          & $\Aeinlass$& 0.72    & m\textsuperscript{2}    \\
+    Stirnfläche PKW            & $\Astirnfl$& 2.2     & m\textsuperscript{2}    \\
+    Einlassfläche PKW          & $\Aeinlass$& 0.72    & m\textsuperscript{2}    \\
     Fahrzeugmasse              & $m$        & 1500    & kg    \\
     Rollwid.beiwert            & $\mu_R$    & 0.012   & --    \\
     Wirkungsgrad IF-System     & $\eta_{\text{IF}}$ & 0.32 & -- \\
@@ -1686,21 +1686,21 @@ Tabelle~\ref{tab:sim_param} listet die verwendeten Parameter.
   \centering
   \includegraphics[width=\textwidth]{plots/plot9_parameterstudie.pdf}
   \caption{%
-    \textbf{Numerische Parameterstudie fÃ¼r KFZ und Satelliten.}
+    \textbf{Numerische Parameterstudie für KFZ und Satelliten.}
     \textit{Oben links:} Array-Leistung als Funktion der Federanzahl bei
     5\,$\times$\,5\,cm Einzelfeder-Querschnitt: Ab $n \approx 230$ Federn
     wird der 3\,kW-Bordnetzbedarf bei 130\,km/h gedeckt.
     \textit{Oben mitte:} Optimale Federsteifigkeit in Resonanz mit der
     KÃ¡rmÃ¡n-Wirbelfrequenz -- bei 100\,km/h optimal: $k^* \approx 16\,\text{kN/m}$,
     bei 130\,km/h: $k^* \approx 27\,\text{kN/m}$.
-    \textit{Oben rechts:} TemperaturabhÃ¤ngigkeit der Ernteleistung
+    \textit{Oben rechts:} Temperaturabhängigkeit der Ernteleistung
     (Dichte- und Wirkungsgradeffekte) -- bei $-20\,^\circ\text{C}$ ca.\ 15\,\%
-    hÃ¶here Ernte als bei $+40\,^\circ\text{C}$ durch hÃ¶here Luftdichte.
-    \textit{Unten links:} Satellit: Ernteleistung als Funktion der KollektorflÃ¤che
-    bei 100\,km HÃ¶he -- im MW-Bereich theoretisch mÃ¶glich.
-    \textit{Unten mitte:} JÃ¤hrlicher Treibstoffbedarf fÃ¼r Orbitalmaintenance;
+    höhere Ernte als bei $+40\,^\circ\text{C}$ durch höhere Luftdichte.
+    \textit{Unten links:} Satellit: Ernteleistung als Funktion der Kollektorfläche
+    bei 100\,km Höhe -- im MW-Bereich theoretisch möglich.
+    \textit{Unten mitte:} Jährlicher Treibstoffbedarf für Orbitalmaintenance;
     das IF-System kann ca.\ 30\,\% offsetten.
-    \textit{Unten rechts:} Ãœbersicht aller sechs analysierter Szenarien
+    \textit{Unten rechts:} Übersicht aller sechs analysierter Szenarien
     mit jeweiliger Ernteleistung.
   }
   \label{fig:parameterstudie}
@@ -1716,16 +1716,16 @@ Aus der Parameterstudie lassen sich folgende Kernresultate destillieren:
         plus 3.65\,kW Batterie\-ladung.
 
   \item \textbf{KFZ, 100 km/h, $\eta$=32\%, A=0.72\,m$^2$:}
-        $P_{\text{IF}} = 3.03\,\text{kW}$ -- Gerade ausreichend fÃ¼r Bordnetz.
+        $P_{\text{IF}} = 3.03\,\text{kW}$ -- Gerade ausreichend für Bordnetz.
 
   \item \textbf{Optimale Federsteifigkeit:} Je nach Ziel\-geschwindigkeit
-        ist $k^*$ zwischen 10 und 40\,kN/m zu wÃ¤hlen; eine \emph{adaptive
-        Federsteifigkeit} (FormgedÃ¤chtnis-Legierungen) kÃ¶nnte die Resonanz
+        ist $k^*$ zwischen 10 und 40\,kN/m zu wählen; eine \emph{adaptive
+        Federsteifigkeit} (Formgedächtnis-Legierungen) könnte die Resonanz
         geschwindigkeitsadaptiv halten.
 
   \item \textbf{Satellit, 100 km, $\eta$=25\%, A=10\,m$^2$:}
-        $P_{\text{IF}} = 750\,\text{kW}$ fÃ¼r Bordelektronik -- ausreichend
-        fÃ¼r umfangreiche Nutzsysteme. Die Orbitmaintenance ($\approx8.5$\,MW)
+        $P_{\text{IF}} = 750\,\text{kW}$ für Bordelektronik -- ausreichend
+        für umfangreiche Nutzsysteme. Die Orbitmaintenance ($\approx8.5$\,MW)
         ist aber nicht realisierbar.
 
   \item \textbf{Jahresenergieertrag KFZ:} Bei WLTP-typischem Fahrprofil und
@@ -1741,8 +1741,8 @@ Aus der Parameterstudie lassen sich folgende Kernresultate destillieren:
 \section{Vergleich mit regenerativer Bremsung}
 
 Regenerative Bremsung (Rekuperation) ist die am weitesten verbreitete
-fahrzeugseitige EnergierÃ¼ckgewinnung. Sie greift kinetische Fahrzeugenergie
-beim Bremsen ab, die sonst als WÃ¤rmeverlust verloren gehen wÃ¼rde:
+fahrzeugseitige Energierückgewinnung. Sie greift kinetische Fahrzeugenergie
+beim Bremsen ab, die sonst als Wärmeverlust verloren gehen würde:
 
 \begin{equation}
   P_{\text{rek}} = \eta_{\text{rek}} \cdot \frac{1}{2}mv_0^2 / t_{\text{brems}}
@@ -1767,56 +1767,56 @@ Im Vergleich zu Induktionsfedern:
   \end{tabular}
 \end{table}
 
-WÃ¤hrend Rekuperation bei hÃ¤ufigem Bremsen (Stadtverkehr) Ã¼berlegen ist,
+Während Rekuperation bei häufigem Bremsen (Stadtverkehr) überlegen ist,
 haben Induktionsfedern ihren Vorteil bei \emph{konstanter Autobahnfahrt},
-wo kaum gebremst wird und die Luftwiderstandsleistung am grÃ¶ÃŸten ist.
+wo kaum gebremst wird und die Luftwiderstandsleistung am größten ist.
 
 \section{Systemintegration im Fahrzeug}
 
-Eine vollstÃ¤ndige Integration wÃ¼rde folgende Systemarchitektur nutzen:
+Eine vollständige Integration würde folgende Systemarchitektur nutzen:
 
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{IF-Array:} 250--300 elektromagnetische Wandlerfedern im
         Frontgrill-Bereich ($0.72\,\text{m}^2$).
   \item \textbf{Resonanz-Management:} Adaptives Steifigkeitssystem zur
-        GeschwindigkeitsnachfÃ¼hrung (z.\,B.\ elektromagnetische Vorspannung).
+        Geschwindigkeitsnachführung (z.\,B.\ elektromagnetische Vorspannung).
   \item \textbf{Hochfrequenz-Wechselrichter:} Mehrphasige AC/DC-Gleichrichterspule
         mit MPPT-Regelung (Maximum Power Point Tracking).
-  \item \textbf{Energiespeicher:} Superkondensator-Puffer fÃ¼r Spitzenleistungen,
+  \item \textbf{Energiespeicher:} Superkondensator-Puffer für Spitzenleistungen,
         Zufuhr zum Fahrzeugakku.
   \item \textbf{Lichtmaschinen-Bypass:} Direkter Ersatz des konventionellen
         Generators durch das IF-System.
 \end{enumerate}
 
-\section{Anwendungsszenarien fÃ¼r Satelliten}
+\section{Anwendungsszenarien für Satelliten}
 
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{Very Low Earth Orbit (VLEO, 150--300\,km):} Technologische
-        Nische fÃ¼r Erdbeo\-bachtungs\-satelliten mit hoher AuflÃ¶sung. IF-Systeme
-        als ErgÃ¤nzung zu Solarpaneln, die in engen Orbits Ã¶fter in den
+        Nische für Erdbeo\-bachtungs\-satelliten mit hoher Auflösung. IF-Systeme
+        als Ergänzung zu Solarpaneln, die in engen Orbits öfter in den
         Erdschatten geraten.
-  \item \textbf{Drag-Augmentation Devices:} GroÃŸe IF-FlÃ¼gel als kontrollierte
+  \item \textbf{Drag-Augmentation Devices:} Große IF-Flügel als kontrollierte
         Bremsen, die Satellitenabbau beschleunigen (Deorbiting) und gleichzeitig
-        kurzfristig Strom fÃ¼r Datenspeicherung liefern.
+        kurzfristig Strom für Datenspeicherung liefern.
   \item \textbf{100\,km-Transits:} Sondenmissionen, die kurzzeitig in dichten
-        AtmosphÃ¤renschichten penetrieren und dabei IF-Systeme nutzen.
+        Atmosphärenschichten penetrieren und dabei IF-Systeme nutzen.
 \end{enumerate}
 
-\section{Detaillierter Technologievergleich: Leistungsdichte und KomplementaritÃ¤t}
+\section{Detaillierter Technologievergleich: Leistungsdichte und Komplementarität}
 \label{sec:vergleich_leistungsdichte}
 
 \subsection{Leistungsdichte verschiedener Erntetechnologien}
 
 Um die Induktionsfeder objektiv in das Spektrum fahrzeugseitiger
-Energieernte-Technologien einzuordnen, ist die \emph{flÃ¤chenbezogene
+Energieernte-Technologien einzuordnen, ist die \emph{flächenbezogene
 Leistungsdichte} $p_{\text{spez}} = P / A_{\text{Einbau}}$ die entscheidende
-VergleichsgrÃ¶ÃŸe:
+Vergleichsgröße:
 
 \begin{table}[H]
   \centering
   \caption{Leistungsdichte-Vergleich fahrzeugseitiger Energieernte-Technologien.
-           Bedingungen: 130\,km/h fÃ¼r IF, Volllast-Teillast-Mix fÃ¼r TEG,
-           Mitteleuropa-GHI fÃ¼r Solar, WLTP-Stadtprofil fÃ¼r Rekuperation.}
+           Bedingungen: 130\,km/h für IF, Volllast-Teillast-Mix für TEG,
+           Mitteleuropa-GHI für Solar, WLTP-Stadtprofil für Rekuperation.}
   \label{tab:leistungsdichte}
   \begin{tabular}{lSSl}
     \toprule
@@ -1830,46 +1830,46 @@ VergleichsgrÃ¶ÃŸe:
     Solardach (GaAs, 32\,\%)                 & 0.34 &  160 & 1.50--3.00 \\
     Thermoelektr.\ Generator (TEG)           & 0.85 &  200 & 0.50--1.20 \\
     Rekuperation (BEV, $\eta = 75\,\%$)      & {--} &  800 & 0.05--0.10 \\
-    StoÃŸdÃ¤mpfer-Piezo                        & 0.06 &   80 & 0.80--2.00 \\
+    Stoßdämpfer-Piezo                        & 0.06 &   80 & 0.80--2.00 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 Die elektromagnetische Induktionsfeder weist mit $9.24\,\text{kW/m}^2$ die
-mit Abstand hÃ¶chste flÃ¤chenbezogene Leistungsdichte aller verglichenen
+mit Abstand höchste flächenbezogene Leistungsdichte aller verglichenen
 Technologien auf -- etwa 46-mal mehr als ein Si-Solardach und mehr als
-10-mal mehr als ein TEG auf gleicher FlÃ¤che. Diese herausragende Energiedichte
-folgt direkt aus der kubischen GeschwindigkeitsabhÃ¤ngigkeit und dem hohen
+10-mal mehr als ein TEG auf gleicher Fläche. Diese herausragende Energiedichte
+folgt direkt aus der kubischen Geschwindigkeitsabhängigkeit und dem hohen
 $v^3$-Wert bei Autobahnfahrt; bei Halbierung der Geschwindigkeit auf 65\,km/h
 sinkt die Leistungsdichte auf $9.24/8 \approx 1.16\,\text{kW/m}^2$ -- immer
 noch deutlich besser als Solar.
 
-\subsection{KomplementaritÃ¤t im Fahrprofil}
+\subsection{Komplementarität im Fahrprofil}
 
 Die verschiedenen Technologien weisen unterschiedliche
-\emph{Erzeugungsprofile} Ã¼ber Tageszeit, Jahreszeit und Fahrsituation auf.
+\emph{Erzeugungsprofile} über Tageszeit, Jahreszeit und Fahrsituation auf.
 Dieses Profil bestimmt die optimale Kombination:
 
 \begin{itemize}
   \item \textbf{Induktionsfeder:} Ernteleistung $\propto v^3$. Null bei
-        Stillstand, maximal bei Autobahnfahrt. Wetter- und tageszeitunabhÃ¤ngig.
-        Ideal fÃ¼r Pendler mit langen Autobahnabschnitten und Fernverkehr.
+        Stillstand, maximal bei Autobahnfahrt. Wetter- und tageszeitunabhängig.
+        Ideal für Pendler mit langen Autobahnabschnitten und Fernverkehr.
 
-  \item \textbf{Rekuperation:} Maximalleistung bei hÃ¤ufigem Bremsen
+  \item \textbf{Rekuperation:} Maximalleistung bei häufigem Bremsen
         (Stadtverkehr, Bergabfahrten). Null bei konstanter Fahrt.
-        Ideal fÃ¼r Stadtfahrprofile; kein Beitrag bei Autobahnfahrt.
+        Ideal für Stadtfahrprofile; kein Beitrag bei Autobahnfahrt.
 
   \item \textbf{Solardach:} Kontinuierliche Erzeugung bei Sonnenschein,
-        unabhÃ¤ngig von der Fahrsituation. Ideal fÃ¼r lange Standzeiten
+        unabhängig von der Fahrsituation. Ideal für lange Standzeiten
         im Freien; kein Ertrag nachts, in Tunneln oder unter Schnee.
 
   \item \textbf{Thermoelektrischer Generator (TEG):} Leistung proportional
         zur Motorresthitze und Abgastemperatur. Maximal bei hoher Last und
-        langen Streckenprofilen -- zeitlich komplementÃ¤r zur IF.
+        langen Streckenprofilen -- zeitlich komplementär zur IF.
 \end{itemize}
 
 Die \emph{Systemkombination} IF + Rekuperation + TEG erzielt bei einem
-typischen WLTP-Jahresprofil (30\,\% Stadtanteil, 30\,\% Ãœberlandanteil,
+typischen WLTP-Jahresprofil (30\,\% Stadtanteil, 30\,\% Überlandanteil,
 40\,\% Autobahnanteil):
 
 \begin{equation}
@@ -1882,25 +1882,25 @@ typischen WLTP-Jahresprofil (30\,\% Stadtanteil, 30\,\% Ãœberlandanteil,
 
 Dies entspricht dem $2.8$-fachen des PKW-Bordnetz-Jahresbedarfs
 ($\approx 750\,\text{kWh/a}$). Bei einem Elektro-PKW mit $75\,\text{kWh}$-Akku
-kÃ¶nnte der JahresÃ¼berschuss ($1350\,\text{kWh}$) je nach Fahrprofil
-$1800$--$2500\,\text{km}$ zusÃ¤tzliche Reichweite generieren.
+könnte der Jahresüberschuss ($1350\,\text{kWh}$) je nach Fahrprofil
+$1800$--$2500\,\text{km}$ zusätzliche Reichweite generieren.
 
 \section{Detaillierter Vergleich mit Solardach-Systemen}
 \label{sec:vergleich_solar}
 
-\subsection{Energetische GegenÃ¼berstellung fÃ¼r Deutschland}
+\subsection{Energetische Gegenüberstellung für Deutschland}
 
-Photovoltaische Dachanlagen fÃ¼r PKW befinden sich seit ca.\ 2020 in der
+Photovoltaische Dachanlagen für PKW befinden sich seit ca.\ 2020 in der
 Serienentwicklung: Toyota Prius PHEV Solar Roof ($180\,\text{W}_p$),
 Hyundai Ioniq~6 Solardach ($200\,\text{W}_p$), Lightyear~0 ($1{,}05\,\text{kW}_p$).
-Der Jahresenergieertrag hÃ¤ngt von der globalen Horizontalstrahlung (GHI) ab:
+Der Jahresenergieertrag hängt von der globalen Horizontalstrahlung (GHI) ab:
 
 \begin{equation}
   E_{\text{Solar,Jahr}} = A_{\text{Solar}} \cdot \eta_{\text{PV}} \cdot H_{\text{GHI}}
   \label{eq:e_solar}
 \end{equation}
 
-FÃ¼r Deutschland gilt $H_{\text{GHI}} \approx 1050\,\text{kWh/(m}^2\text{a)}$.
+Für Deutschland gilt $H_{\text{GHI}} \approx 1050\,\text{kWh/(m}^2\text{a)}$.
 Mit $A_{\text{Solar}} = 0.50\,\text{m}^2$ und $\eta_{\text{PV}} = 0.22$
 (monokristallines Silizium):
 
@@ -1909,9 +1909,9 @@ Mit $A_{\text{Solar}} = 0.50\,\text{m}^2$ und $\eta_{\text{PV}} = 0.22$
   \label{eq:e_solar_de}
 \end{equation}
 
-GegenÃ¼ber $E_{\text{IF,Jahr}} \approx \SI{1100}{\kilo\watt\hour\per\year}$ fÃ¼r
-das vollstÃ¤ndige IF-Array betrÃ¤gt der Vorteil der Induktionsfeder den Faktor
-$\approx 9.5$ -- obwohl das Solardach vollstÃ¤ndig passiv arbeitet und
+Gegenüber $E_{\text{IF,Jahr}} \approx \SI{1100}{\kilo\watt\hour\per\year}$ für
+das vollständige IF-Array beträgt der Vorteil der Induktionsfeder den Faktor
+$\approx 9.5$ -- obwohl das Solardach vollständig passiv arbeitet und
 keinerlei Mehrwiderstand erzeugt.
 
 \subsection{Gewicht, Aerodynamik und Systemkosten im Vergleich}
@@ -1922,10 +1922,10 @@ keinerlei Mehrwiderstand erzeugt.
   \label{tab:if_vs_solar}
   \begin{tabular}{lcc}
     \toprule
-    KenngrÃ¶ÃŸe & {IF-Array} & {Solardach (mono-Si)} \\
+    Kenngröße & {IF-Array} & {Solardach (mono-Si)} \\
     \midrule
     Jahresertrag [kWh/a]          & 1100 & 115 \\
-    EinbauflÃ¤che [m$^2$]          & 0.72 & 0.50 \\
+    Einbaufläche [m$^2$]          & 0.72 & 0.50 \\
     Leistungsdichte [kW/m$^2$]    & 9.24 & 0.20 \\
     Systemgewicht [kg]            & 33.5 & 4.0 \\
     $\Delta\cW$ durch Einbau      & 0.105 & 0 \\
@@ -1935,15 +1935,15 @@ keinerlei Mehrwiderstand erzeugt.
   \end{tabular}
 \end{table}
 
-\subsection{KlimaabhÃ¤ngigkeit und Robustheit: Systemvergleich}
+\subsection{Klimaabhängigkeit und Robustheit: Systemvergleich}
 
-Der entscheidende \emph{Systemvorteil} der Induktionsfeder gegenÃ¼ber dem
-Solardach liegt in der \textbf{Wetter-, Tageszeit- und SaisonunabhÃ¤ngigkeit}:
+Der entscheidende \emph{Systemvorteil} der Induktionsfeder gegenüber dem
+Solardach liegt in der \textbf{Wetter-, Tageszeit- und Saisonunabhängigkeit}:
 
 \begin{table}[H]
   \centering
-  \caption{VerfÃ¼gbarkeit von IF-System und Solardach in verschiedenen
-           Fahrsituationen (relativer Ertrag gegenÃ¼ber Nennleistung)}
+  \caption{Verfügbarkeit von IF-System und Solardach in verschiedenen
+           Fahrsituationen (relativer Ertrag gegenüber Nennleistung)}
   \label{tab:verfuegbarkeit}
   \begin{tabular}{lcc}
     \toprule
@@ -1951,52 +1951,52 @@ Solardach liegt in der \textbf{Wetter-, Tageszeit- und SaisonunabhÃ¤ngigkeit}:
     \midrule
     Autobahnfahrt, Sonne          & 100\,\%        & 100\,\% \\
     Autobahnfahrt, Nacht          & 100\,\%        & 0\,\% \\
-    Autobahnfahrt, BewÃ¶lkung      & 100\,\%        & $<$20\,\% \\
+    Autobahnfahrt, Bewölkung      & 100\,\%        & $<$20\,\% \\
     Autobahnfahrt, Schneebedeckung& 100\,\%        & 0\,\% \\
     Tunnel / Tiefgarage           & 100\,\%        & 0\,\% \\
     Stadtfahrt ($< 50\,\text{km/h}$) & 13\,\%     & 100\,\%* \\
     Fahrzeug im Stand, Sonne      & 0\,\%          & 100\,\% \\
     \bottomrule
-    \multicolumn{3}{l}{\footnotesize *unabhÃ¤ngig von Fahrgeschwindigkeit}
+    \multicolumn{3}{l}{\footnotesize *unabhängig von Fahrgeschwindigkeit}
   \end{tabular}
 \end{table}
 
-FÃ¼r Fahrzeugbetreiber in mittel- und nordeuropÃ¤ischen Klimazonen mit langen
+Für Fahrzeugbetreiber in mittel- und nordeuropäischen Klimazonen mit langen
 Wintern und vielen Autobahnstunden (Fernfahrer, Pendler, Poolfahrzeuge)
-Ã¼berwiegt der IF-Vorteil deutlich. Das Solardach ergÃ¤nzt das IF-System
+überwiegt der IF-Vorteil deutlich. Das Solardach ergänzt das IF-System
 optimal bei Standzeiten und Stadtfahrten -- beide Technologien
-\emph{konkurrieren nicht}, sondern sind komplementÃ¤r.
+\emph{konkurrieren nicht}, sondern sind komplementär.
 
 \section{Technologiereifegrad-Analyse (TRL)}
 \label{sec:trl}
 
-Die Induktionsfeder-Technologie lÃ¤sst sich nach der NASA-Technology-Readiness-Level
+Die Induktionsfeder-Technologie lässt sich nach der NASA-Technology-Readiness-Level
 (TRL)-Skala (TRL~1 bis TRL~9) bewertet werden. Tabelle~\ref{tab:trl} zeigt
-den aktuellen Reifegrad der SchlÃ¼sselkomponenten nach Stand MÃ¤rz 2026:
+den aktuellen Reifegrad der Schlüsselkomponenten nach Stand März 2026:
 
 \begin{table}[H]
   \centering
-  \caption{TRL-Bewertung der IF-Systemkomponenten (Stand: MÃ¤rz 2026).
+  \caption{TRL-Bewertung der IF-Systemkomponenten (Stand: März 2026).
            TRL~1 = physikalisches Prinzip, TRL~9 = Serieneinsatz.}
   \label{tab:trl}
   \begin{tabular}{lc>{\raggedright\arraybackslash}p{6.8cm}}
     \toprule
-    Komponente & TRL & BegrÃ¼ndung \\
+    Komponente & TRL & Begründung \\
     \midrule
     Physikalisches Prinzip (EM-Wandl.)   & 9 &
-      VollstÃ¤ndig bekannt; identisch mit Tauchspulen-Aktoren (Lautsprecher,
+      Vollständig bekannt; identisch mit Tauchspulen-Aktoren (Lautsprecher,
       Linearantriebe) \\
     Einzelwandler-Prototyp (Labor)         & 5 &
       Im Windkanal demonstriert; $\eta > 30\,\%$ in Versuchen erreicht \\
-    Array-Integration (KFZ-MaÃŸstab)       & 3 &
-      Konzeptionell validiert; kein Fahrzeugprototyp Ã¶ffentlich bekannt \\
+    Array-Integration (KFZ-Maßstab)       & 3 &
+      Konzeptionell validiert; kein Fahrzeugprototyp öffentlich bekannt \\
     Adaptives Resonanz-Management         & 4 &
       Demonstratoren in Forschungsprojekten (U Bristol, TU Delft) \\
     MPPT-Wechselrichter (KFZ-Anw.)   & 6 &
       Technisch analog zu PV-Wechselrichtern; CAN-FD-Integration fehlt noch \\
     Lebensdauer-Validierung (VHCF)        & 2 &
-      Nur analytische AbschÃ¤tzungen; keine DauerlÃ¤ufe $> 10^8$ Zyklen \\
-    KÃ¼hler-KompatibilitÃ¤t (Windkanal)     & 3 &
+      Nur analytische Abschätzungen; keine Dauerläufe $> 10^8$ Zyklen \\
+    Kühler-Kompatibilität (Windkanal)     & 3 &
       Druckverlust-Messungen im Kanal; keine Fahrzeugmessungen \\
     OEM-Serienentwicklung                 & 2 &
       Kein Serienhersteller mit aktivem Entwicklungsprogramm bekannt \\
@@ -2004,36 +2004,36 @@ den aktuellen Reifegrad der SchlÃ¼sselkomponenten nach Stand MÃ¤rz 2026:
   \end{tabular}
 \end{table}
 
-Der Gesamt-TRL des integrierten Systems ist durch die schwÃ¤chste Komponente
-(Lebensdauer, OEM-Integration: TRL~2) limitiert. FÃ¼r den Weg zur Serienreife
-(TRL~8--9) sind nach aktueller EinschÃ¤tzung noch mindestens 6--10 Jahre
+Der Gesamt-TRL des integrierten Systems ist durch die schwächste Komponente
+(Lebensdauer, OEM-Integration: TRL~2) limitiert. Für den Weg zur Serienreife
+(TRL~8--9) sind nach aktueller Einschätzung noch mindestens 6--10 Jahre
 intensiver F\&E-Arbeit notwendig, insbesondere in den Bereichen:
 
 \begin{enumerate}[leftmargin=2em]
   \item Lebensdauer-Nachweis $\geq 10^9$ Zyklen (VHCF-Tests, vgl.\
         Abschn.~\ref{ssec:ausblick_ermuedung})
   \item Fahrzeugintegrations-Prototype und Windkanal-Messungen am
-        vollstÃ¤ndigen Fahrzeug
+        vollständigen Fahrzeug
   \item Typengenehmigungs-Verfahren (ECE-R~33, ISO~26262)
-  \item Lieferketten-Aufbau fÃ¼r GroÃŸ\-serie ($> 100\,000$ Einheiten/Jahr)
+  \item Lieferketten-Aufbau für Groß\-serie ($> 100\,000$ Einheiten/Jahr)
 \end{enumerate}
 
 \begin{hinweis}[Einordnung relativ zu anderen Erntetechnologien]
   Zum Vergleich: Regenerative Bremsung (TRL~9, seit 2000 in Serie),
   Solardach-KFZ (TRL~7--8, Kleinserie seit 2022), TEG-Abgas
   (TRL~5--6, Prototypen bei Honda und BMW). Das IF-System ist die
-  jÃ¼ngste der verglichenen Technologien -- mit entsprechend hÃ¶herem
-  Entwicklungsrisiko, aber auch dem hÃ¶chsten noch nicht erschlossenen
-  Differenzierungspotential fÃ¼r OEMs.
+  jüngste der verglichenen Technologien -- mit entsprechend höherem
+  Entwicklungsrisiko, aber auch dem höchsten noch nicht erschlossenen
+  Differenzierungspotential für OEMs.
 \end{hinweis}
 
-\section{Ã–kologische Lebenszyklusanalyse (LCA)}
+\section{Ökologische Lebenszyklusanalyse (LCA)}
 \label{sec:lca}
 
 \subsection{Herstellungsphase: Grauer Energie-Rucksack}
 
 Jede Technologie hat bei ihrer Herstellung einen \emph{grauen Energie-Rucksack}
-(engl.\ \emph{embodied energy}), der die CO\textsubscript{2}-Emissionen fÃ¼r
+(engl.\ \emph{embodied energy}), der die CO\textsubscript{2}-Emissionen für
 Materialgewinnung, Verarbeitung und Logistik umfasst:
 
 \begin{equation}
@@ -2041,13 +2041,13 @@ Materialgewinnung, Verarbeitung und Logistik umfasst:
   \label{eq:e_grau}
 \end{equation}
 
-FÃ¼r ein IF-Array mit 288 EM-Wandlern (Hauptbestandteile: Stahl, Kupfer,
+Für ein IF-Array mit 288 EM-Wandlern (Hauptbestandteile: Stahl, Kupfer,
 Permanentmagnete, Al-Rahmen):
 
 \begin{table}[H]
   \centering
   \caption{Grauer Energie-Rucksack des IF-Arrays (288 EM-Wandler gesamt).
-           EnergieintensitÃ¤ten $e_i$ nach Ecoinvent-Datenbank v3.9 (2025).}
+           Energieintensitäten $e_i$ nach Ecoinvent-Datenbank v3.9 (2025).}
   \label{tab:grau_energie}
   \begin{tabular}{lSSS}
     \toprule
@@ -2059,7 +2059,7 @@ Permanentmagnete, Al-Rahmen):
     Hartmagnet (AlNiCo)           &  3.6 &  40 &  144 \\
     AlMgSi1 (Rahmen, Strangpress) &  6.8 & 155 & 1054 \\
     PCB und Leistungselektronik   &  0.8 & 400 &  320 \\
-    PA6.6-GF30 (GehÃ¤use)          &  5.0 &  90 &  450 \\
+    PA6.6-GF30 (Gehäuse)          &  5.0 &  90 &  450 \\
     Sonstiges (Kabel, Schrauben)  &  4.5 &  50 &  225 \\
     \midrule
     \textbf{Gesamt}               & 33.5 &     & 2681 \\
@@ -2068,8 +2068,8 @@ Permanentmagnete, Al-Rahmen):
 \end{table}
 
 Der graue Rucksack von $E_{\text{grau}} = 2681\,\text{MJ}$ entspricht bei
-einem CO\textsubscript{2}-IntensitÃ¤tsfaktor von $0.074\,\text{kg\,CO}_2/\text{MJ}$
-(europÃ¤ischer Strom- und PrimÃ¤renergiemix):
+einem CO\textsubscript{2}-Intensitätsfaktor von $0.074\,\text{kg\,CO}_2/\text{MJ}$
+(europäischer Strom- und Primärenergiemix):
 
 \begin{equation}
   m_{\text{CO}_2,\text{Herst}} = 2681 \cdot 0.074 \approx \SI{198}{\kilo\gram\,\text{CO}_2}
@@ -2078,8 +2078,8 @@ einem CO\textsubscript{2}-IntensitÃ¤tsfaktor von $0.074\,\text{kg\,CO}_2/\text
 
 \subsection{\texorpdfstring{Nutzungsphase: CO\textsubscript{2}-Gutschrift und Amortisation}{Nutzungsphase: CO2-Gutschrift und Amortisation}}
 
-Die jÃ¤hrliche CO\textsubscript{2}-Einsparung durch Substitution der
-konventionellen Lichtmaschine betrÃ¤gt (vgl.\ Gl.~\eqref{eq:co2}):
+Die jährliche CO\textsubscript{2}-Einsparung durch Substitution der
+konventionellen Lichtmaschine beträgt (vgl.\ Gl.~\eqref{eq:co2}):
 
 \begin{equation}
   \Delta m_{\text{CO}_2,\text{Jahr}} \approx \SI{27}{\kilo\gram\,\text{CO}_2\text{/Jahr}}
@@ -2093,8 +2093,8 @@ Die CO\textsubscript{2}-Amortisationszeit ergibt sich damit zu:
   \label{eq:t_co2_amort}
 \end{equation}
 
-Bei einer angesetzten Systemlebensdauer von 15 Jahren betrÃ¤gt die
-Netto-CO\textsubscript{2}-Gutschrift Ã¼ber den gesamten Lebenszyklus:
+Bei einer angesetzten Systemlebensdauer von 15 Jahren beträgt die
+Netto-CO\textsubscript{2}-Gutschrift über den gesamten Lebenszyklus:
 
 \begin{equation}
   \Delta m_{\text{CO}_2,\text{gesamt}} = 27 \cdot 15 - 198
@@ -2102,45 +2102,45 @@ Netto-CO\textsubscript{2}-Gutschrift Ã¼ber den gesamten Lebenszyklus:
   \label{eq:co2_netto}
 \end{equation}
 
-Das IF-Array ist damit Ã¼ber seine Gesamtlebensdauer \emph{CO\textsubscript{2}-positiv}:
+Das IF-Array ist damit über seine Gesamtlebensdauer \emph{CO\textsubscript{2}-positiv}:
 Es spart mehr als doppelt so viel CO\textsubscript{2} ein wie bei seiner
 Herstellung emittiert wurde.
 
 \subsection{End-of-Life: Recycling-Potential}
 
 Die Hauptbestandteile des IF-Arrays (Stahl~26\,\%, Kupfer~13\,\%,
-Aluminium~20\,\%) sind hochwertige SekundÃ¤rrohstoffe mit EU-weiten
+Aluminium~20\,\%) sind hochwertige Sekundärrohstoffe mit EU-weiten
 Recyclingquoten von $> 85\,\%$ (Kupfer: 95\,\%, Aluminium: 73\,\%,
 Stahl: 90\,\%). Lediglich Elektronikkomponenten (PCB, Leistungshalbleiter)
-erfordern aufwendigere SekundÃ¤rbehandlung nach WEEE-Richtlinie (2012/19/EU).
+erfordern aufwendigere Sekundärbehandlung nach WEEE-Richtlinie (2012/19/EU).
 Die Magnete (AlNiCo) sind im Unterschied zu Neodym-Eisen-Bor-Magneten
 (NdFeB) frei von kritischen Seltenerdelementen -- ein strategischer
-Rohstoff-Vorteil gegenÃ¼ber Synchron-Generatoren und Solarzellen mit
+Rohstoff-Vorteil gegenüber Synchron-Generatoren und Solarzellen mit
 Metallkontakten.
 
 \section{Normative und regulatorische Rahmenbedingungen}
 \label{sec:normativ}
 
-Die MarkteinfÃ¼hrung von Induktionsfeder-Systemen berÃ¼hrt mehrere
+Die Markteinführung von Induktionsfeder-Systemen berührt mehrere
 regulatorische Rahmenbedingungen, die bereits in der Entwicklungsphase
-zu berÃ¼cksichtigen sind:
+zu berücksichtigen sind:
 
 \subsection{Fahrzeugzulassung und Sicherheitsnormen}
 
 \begin{itemize}
   \item \textbf{ECE-R~33 (Verhalten bei Frontalkollision):} Bauteile im
-        Frontbereich mÃ¼ssen bei Kollisionslast ($> 15\,\text{kN}$) definierte
-        Deformationseigenschaften aufweisen. Das IF-Array-GehÃ¤use ist als
+        Frontbereich müssen bei Kollisionslast ($> 15\,\text{kN}$) definierte
+        Deformationseigenschaften aufweisen. Das IF-Array-Gehäuse ist als
         \emph{energieabsorbierende Knautschzone} auszulegen (PA6.6-GF30
         oder Aluminiumschaum).
 
-  \item \textbf{ECE-R~26 (AuÃŸenvorsprÃ¼nge):} Keine scharfen Kanten mit
-        Radius $< 2.5\,\text{mm}$ dÃ¼rfen aus der Karosserie herausstehen.
-        Da das IF-Array hinter dem KÃ¼hlergrill versenkt eingebaut ist,
-        entfÃ¤llt diese Anforderung praktisch.
+  \item \textbf{ECE-R~26 (Außenvorsprünge):} Keine scharfen Kanten mit
+        Radius $< 2.5\,\text{mm}$ dürfen aus der Karosserie herausstehen.
+        Da das IF-Array hinter dem Kühlergrill versenkt eingebaut ist,
+        entfällt diese Anforderung praktisch.
 
-  \item \textbf{UN GTR~9 (FuÃŸgÃ¤ngerschutz):} Frontbauteile werden auf
-        Kopfaufprall-Energie\-absorption geprÃ¼ft. Das Massemehr von
+  \item \textbf{UN GTR~9 (Fußgängerschutz):} Frontbauteile werden auf
+        Kopfaufprall-Energie\-absorption geprüft. Das Massemehr von
         $33.5\,\text{kg}$ im Frontbereich erfordert eine begleitende
         Strukturoptimierung der Fahrzeugkarosserie, um die HIC
         (Head Injury Criterion)-Werte einzuhalten.
@@ -2154,17 +2154,17 @@ zu berÃ¼cksichtigen sind:
   \item \textbf{CISPR~25 (EMV im Kraftfahrzeug):} Ein 288-faches Hochfrequenz-
         Speisenetz bei $f_0 \approx 100\,\text{Hz}$ erzeugt Oberwellen bis
         in den kHz-Bereich, die CAN-Bus-Kommunikation und Fahrassistenz
-        beeintrÃ¤chtigen kÃ¶nnen. Geschirmte Einzelleitungen und ein aktiver
+        beeinträchtigen können. Geschirmte Einzelleitungen und ein aktiver
         EMV-Breitbandfilter am Wechselrichterausgang sind Pflicht.
 \end{itemize}
 
 \subsection{\texorpdfstring{Typgenehmigung und CO\textsubscript{2}-Anrechnung}{Typgenehmigung und CO2-Anrechnung}}
 
-Im Rahmen der EU-Typgenehmigung (Verordnung EU~2019/631) kÃ¶nnen
-serien\-technische EffizienzmaÃŸnahmen als \emph{Eco-Innovationen}
+Im Rahmen der EU-Typgenehmigung (Verordnung EU~2019/631) können
+serien\-technische Effizienzmaßnahmen als \emph{Eco-Innovationen}
 anerkannt werden, sofern die CO\textsubscript{2}-Einsparung messtechnisch
-nach UNECE-Verfahren auf dem RollenprÃ¼fstand im WLTP-Fahrzyklus zertifiziert
-wird. FÃ¼r das IF-System ergibt sich folgende AbschÃ¤tzung der WLTP-Einsparung:
+nach UNECE-Verfahren auf dem Rollenprüfstand im WLTP-Fahrzyklus zertifiziert
+wird. Für das IF-System ergibt sich folgende Abschätzung der WLTP-Einsparung:
 
 \begin{equation}
   \Delta \text{CO}_{2,\text{WLTP}} \approx
@@ -2175,8 +2175,8 @@ wird. FÃ¼r das IF-System ergibt sich folgende AbschÃ¤tzung der WLTP-Einsparu
 \end{equation}
 
 Eine WLTP-Einsparung von $2.3\,\text{g\,CO}_2/\text{km}$ ist wirtschaftlich
-fÃ¼r Hersteller bedeutsam: FÃ¼r einen OEM, der den EU-Flottengrenzwert um
-$2\,\text{g/km}$ Ã¼berschreitet, drohen bei einer Jahresproduktion von
+für Hersteller bedeutsam: Für einen OEM, der den EU-Flottengrenzwert um
+$2\,\text{g/km}$ überschreitet, drohen bei einer Jahresproduktion von
 100\,000 Fahrzeugen Strafzahlungen von:
 
 \begin{equation}
@@ -2185,27 +2185,27 @@ $2\,\text{g/km}$ Ã¼berschreitet, drohen bei einer Jahresproduktion von
   \label{eq:strafe_eu}
 \end{equation}
 
-GegenÃ¼ber den geschÃ¤tzten Entwicklungskosten einer IF-SerienanlÃ¶sung von
+Gegenüber den geschätzten Entwicklungskosten einer IF-Serienanlösung von
 $5$--$10\,\text{Mio.}$ EUR amortisiert sich der regulatorische Nutzen
-innerhalb eines Produktionsjahres -- ein erheblicher Anreiz fÃ¼r OEMs zur
+innerhalb eines Produktionsjahres -- ein erheblicher Anreiz für OEMs zur
 Aufnahme des IF-Systems in ihre Effizienz-Roadmap.
 
 \begin{ergebnis}[Gesamtbewertung im Technologievergleich]
   Die Induktionsfeder schneidet im Technologievergleich wie folgt ab:
   \begin{itemize}
-    \item \textbf{Leistungsdichte:} Ãœberragend (Faktor $> 10$ Ã¼ber Solar und TEG).
-    \item \textbf{Jahresertrag:} HÃ¶chster Wert aller Einzel-Technologien, besonders
+    \item \textbf{Leistungsdichte:} Überragend (Faktor $> 10$ über Solar und TEG).
+    \item \textbf{Jahresertrag:} Höchster Wert aller Einzel-Technologien, besonders
           bei Autobahnprofilen.
-    \item \textbf{Wetterrobustheit:} VollstÃ¤ndig wetter- und tageszeitunabhÃ¤ngig;
-          klarer Vorteil gegenÃ¼ber Solar.
-    \item \textbf{KomplementaritÃ¤t:} ErgÃ¤nzt Rekuperation und Solar optimal
-          ohne deren Einsatzbereiche einzuschrÃ¤nken.
+    \item \textbf{Wetterrobustheit:} Vollständig wetter- und tageszeitunabhängig;
+          klarer Vorteil gegenüber Solar.
+    \item \textbf{Komplementarität:} Ergänzt Rekuperation und Solar optimal
+          ohne deren Einsatzbereiche einzuschränken.
     \item \textbf{Technologiereifegrad:} Geringer als bei Solar und Rekuperation
-          -- grÃ¶ÃŸtes noch zu erschlieÃŸendes F\&E-Potential.
-    \item \textbf{Ã–kologie:} CO\textsubscript{2}-positiv Ã¼ber Lebenszyklus,
+          -- größtes noch zu erschließendes F\&E-Potential.
+    \item \textbf{Ökologie:} CO\textsubscript{2}-positiv über Lebenszyklus,
           kein Einsatz kritischer Seltenerdelemente.
-    \item \textbf{Regulatorik:} Eco-Innovation-fÃ¤hig; kurze wirtschaftliche
-          Amortisation fÃ¼r Hersteller bei EU-CO\textsubscript{2}-Strafrisiko.
+    \item \textbf{Regulatorik:} Eco-Innovation-fähig; kurze wirtschaftliche
+          Amortisation für Hersteller bei EU-CO\textsubscript{2}-Strafrisiko.
   \end{itemize}
 \end{ergebnis}
 
@@ -2220,13 +2220,13 @@ Aufnahme des IF-Systems in ihre Effizienz-Roadmap.
   \centering
   \includegraphics[width=\textwidth]{plots/plot10_zusammenfassung.pdf}
   \caption{%
-    \textbf{GesamtÃ¼bersicht: Potenzial und physikalische Grenzen von Induktionsfedern.}
-    \textit{Oben links:} Motor- vs.\ Ernteleistung Ã¼ber die Fahrzeuggeschwindigkeit:
-    die Ernte betrÃ¤gt maximal 15\,\% der Motorleistung bei hoher Geschwindigkeit.
+    \textbf{Gesamtübersicht: Potenzial und physikalische Grenzen von Induktionsfedern.}
+    \textit{Oben links:} Motor- vs.\ Ernteleistung über die Fahrzeuggeschwindigkeit:
+    die Ernte beträgt maximal 15\,\% der Motorleistung bei hoher Geschwindigkeit.
     \textit{Oben rechts:} CO\textsubscript{2}-Einsparung durch Hilfsleistungs-Offset
     im Stadtbetrieb (Verbrennungsmotor).
-    \textit{Unten links:} Reichweitengewinn bei E-Fahrzeugen verschiedener AkkugrÃ¶ÃŸen:
-    typisch 3--7\,\% zusÃ¤tzliche Reichweite bei 100\,km/h.
+    \textit{Unten links:} Reichweitengewinn bei E-Fahrzeugen verschiedener Akkugrößen:
+    typisch 3--7\,\% zusätzliche Reichweite bei 100\,km/h.
     \textit{Unten rechts:} Gesamtbewertungsmatrix -- Hilfsleistungsversorgung (KFZ):
     85\,\%, Antriebsversorgung (KFZ): 12\,\%, Perpetuum Mobile: strikt 0\,\%.
   }
@@ -2235,8 +2235,8 @@ Aufnahme des IF-Systems in ihre Effizienz-Roadmap.
 
 \section{Formale Schlussfolgerungen}
 
-\begin{ergebnis}[Schlussfolgerung 1: EnergierÃ¼ckgewinnung fÃ¼r Hilfsverbraucher]
-  Das vollstÃ¤ndig ausgelegte Induktionsfeder-Array
+\begin{ergebnis}[Schlussfolgerung 1: Energierückgewinnung für Hilfsverbraucher]
+  Das vollständig ausgelegte Induktionsfeder-Array
   ($\Aeinlass = 1.8\,\text{m} \times 0.4\,\text{m} = 0.72\,\text{m}^2$,
   $\eta_{\text{IF}} = 32\,\%$) liefert bei der Autobahngeschwindigkeit von
   100\,km/h ca.\ 3\,kW elektrische Hilfsleistung -- genug, um den gesamten
@@ -2244,35 +2244,35 @@ Aufnahme des IF-Systems in ihre Effizienz-Roadmap.
 \end{ergebnis}
 
 \begin{ergebnis}[Schlussfolgerung 2: Jahresenergieertrag]
-  Ãœber ein typisches Fahrprofil von 15\,000\,km/Jahr erzeugt das IF-System
-  1\,000--1\,200\,kWh/a, Ã¼bertrifft damit den Bordnetz-Jahresbedarf
+  Über ein typisches Fahrprofil von 15\,000\,km/Jahr erzeugt das IF-System
+  1\,000--1\,200\,kWh/a, übertrifft damit den Bordnetz-Jahresbedarf
   ($750\,\text{kWh/a}$) und kann in Elektrofahrzeugen 3--7\,\% Reichweite
-  zusÃ¤tzlich liefern.
+  zusätzlich liefern.
 \end{ergebnis}
 
 \begin{ergebnis}[Schlussfolgerung 3: Satelliten-Bordstrom]
-  FÃ¼r Satelliten in VLEO (150--300\,km) bietet ein IF-System mit
+  Für Satelliten in VLEO (150--300\,km) bietet ein IF-System mit
   $A = 10\,\text{m}^2$ eine technisch nutzbare Hilfsleistung von
   typisch einigen hundert Watt bis wenigen Kilowatt -- eine sinnvolle
-  ErgÃ¤nzung zu Solar\-zellen.
+  Ergänzung zu Solar\-zellen.
 \end{ergebnis}
 
-\begin{wichtig}[Schlussfolgerung 4: Kein dauerhafter Eigenantrieb mÃ¶glich]
+\begin{wichtig}[Schlussfolgerung 4: Kein dauerhafter Eigenantrieb möglich]
   \textbf{Formal bewiesener Satz~\ref{thm:pm}:} Die Induktionsfeder \emph{kann nicht}
-  als PrimÃ¤rantrieb dienen. Die vollstÃ¤ndige Energiebilanz (Kap.~\ref{chap:energiebilanz})
+  als Primärantrieb dienen. Die vollständige Energiebilanz (Kap.~\ref{chap:energiebilanz})
   sowie der thermodynamische Beweis (Satz~\ref{thm:pm}) zeigen zwingend:
   jede aus dem Fahrtwind geerntete Leistung erfordert eine mindestens gleich
-  groÃŸe zusÃ¤tzliche Antriebsleistung zur Kompensation des erhÃ¶hten Luftwiderstands.
+  große zusätzliche Antriebsleistung zur Kompensation des erhöhten Luftwiderstands.
   Der Erste Hauptsatz der Thermodynamik ist nicht verletzbar.
 \end{wichtig}
 
 \section{Ausblick und offene Forschungsfragen}
 \label{sec:ausblick}
 
-Die vorliegende Arbeit steckt den physikalischen Rahmen fÃ¼r Induktionsfedern
-als aerodynamische Hilfsenergiequelle ab und liefert vollstÃ¤ndige Energiebilanzen.
+Die vorliegende Arbeit steckt den physikalischen Rahmen für Induktionsfedern
+als aerodynamische Hilfsenergiequelle ab und liefert vollständige Energiebilanzen.
 Gleichwohl verbleiben zahlreiche offene Fragen auf technologischer, ingenieurtechnischer
-und systemischer Ebene, die erhebliches Potential fÃ¼r kÃ¼nftige Forschung und
+und systemischer Ebene, die erhebliches Potential für künftige Forschung und
 industrielle Entwicklung bieten. Die folgenden Abschnitte strukturieren dieses
 Potential nach Themengebieten.
 
@@ -2281,44 +2281,44 @@ Potential nach Themengebieten.
 \label{ssec:ausblick_resonanz}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Das grÃ¶ÃŸte einzelne Optimierungspotential liegt in der Resonanzabstimmung:
-Ein Induk\-tionsfeder-Array, das ausschlieÃŸlich bei einer festen Eigenfrequenz
+Das größte einzelne Optimierungspotential liegt in der Resonanzabstimmung:
+Ein Induk\-tionsfeder-Array, das ausschließlich bei einer festen Eigenfrequenz
 $\omega_0$ arbeitet, nutzt nur in einem schmalen Geschwindigkeitsfenster
-$\Delta v \approx \pm 15\,\text{km/h}$ die volle ResonanzverstÃ¤rkung aus.
-AuÃŸerhal\-b dieses Fensters sinkt die Ernteleistung auf Werte nahe null.
+$\Delta v \approx \pm 15\,\text{km/h}$ die volle Resonanzverstärkung aus.
+Außerhal\-b dieses Fensters sinkt die Ernteleistung auf Werte nahe null.
 
-Eine LÃ¶sung bieten \emph{adaptiv einstellbare Federsteifigkeiten}. Mehrere
+Eine Lösung bieten \emph{adaptiv einstellbare Federsteifigkeiten}. Mehrere
 physikalische Prinzipien bieten sich an:
 
 \begin{itemize}
   \item \textbf{Piezomagnetische Vorspannung:} Durch einen axial zuschaltbaren
-        Permanentmagneten wird die effektive RÃ¼ckstellkraft der Feder modifiziert.
-        Kleine StellerstrÃ¶me (einige Milliampere) ermÃ¶glichen relative
-        SteifigkeitsÃ¤nderungen von $\pm 40\,\%$, was den Abdeckbereich auf
+        Permanentmagneten wird die effektive Rückstellkraft der Feder modifiziert.
+        Kleine Stellerströme (einige Milliampere) ermöglichen relative
+        Steifigkeitsänderungen von $\pm 40\,\%$, was den Abdeckbereich auf
         $\Delta v \approx \pm 35\,\text{km/h}$ ausdehnt~\cite{tang2009}.
 
-  \item \textbf{FormgedÃ¤chtnislegierungen (SMA):} Nitinol-DrÃ¤hte Ã¤ndern ihren
-        ElastizitÃ¤tsmodul beim Ãœbergang zwischen martensitischer und
+  \item \textbf{Formgedächtnislegierungen (SMA):} Nitinol-Drähte ändern ihren
+        Elastizitätsmodul beim Übergang zwischen martensitischer und
         austenitischer Phase um bis zu Faktor 3. Da die Phasentemperatur
         geregelt werden kann, ergibt sich eine elektrisch steuerbare Steifigkeit.
-        Nachteil: Reaktionszeiten von einigen Sekunden sind fÃ¼r schnelle
-        GeschwindigkeitsÃ¤nderungen zu langsam; geeignet fÃ¼r Autobahnfahrten
+        Nachteil: Reaktionszeiten von einigen Sekunden sind für schnelle
+        Geschwindigkeitsänderungen zu langsam; geeignet für Autobahnfahrten
         mit langsam wechselndem $v$.
 
-  \item \textbf{Magnetorheologische DÃ¤mpfer (MRF):} Durch ein variables
-        Magnetfeld Ã¤ndert sich die apparente ViskositÃ¤t der MRF-FlÃ¼ssigkeit
-        um mehrere GrÃ¶ÃŸenordnungen. Dies erlaubt eine prÃ¤zise Echtzeitregelung
-        des DÃ¤mpferkoeffizienten $c_m + c_e$ bei Millisekunden-Reaktionszeit.
+  \item \textbf{Magnetorheologische Dämpfer (MRF):} Durch ein variables
+        Magnetfeld ändert sich die apparente Viskosität der MRF-Flüssigkeit
+        um mehrere Größenordnungen. Dies erlaubt eine präzise Echtzeitregelung
+        des Dämpferkoeffizienten $c_m + c_e$ bei Millisekunden-Reaktionszeit.
 
-  \item \textbf{MEMS-Resonator-Arrays:} FÃ¼r sehr kleine Einzel-Wandler kÃ¶nnen
+  \item \textbf{MEMS-Resonator-Arrays:} Für sehr kleine Einzel-Wandler können
         mikro\-elektro\-mechanische Resonatorgitter mit unterschiedlichen
-        vordefinierten Eigenfrequenzen $f_{0,i}$ Ã¼berlagert werden, sodass das
+        vordefinierten Eigenfrequenzen $f_{0,i}$ überlagert werden, sodass das
         Array als \emph{Breitband-Wandler} arbeitet. Dies ist analog zur
-        Cochlea im menschlichen Ohr, die unterschiedliche Frequenzen Ã¼ber
-        rÃ¤umlich getrennte Haarsinneszellen verarbeitet.
+        Cochlea im menschlichen Ohr, die unterschiedliche Frequenzen über
+        räumlich getrennte Haarsinneszellen verarbeitet.
 \end{itemize}
 
-Die optimale Regelstrategie fÃ¼r ein adaptives IF-Array lÃ¤sst sich als
+Die optimale Regelstrategie für ein adaptives IF-Array lässt sich als
 Online-Optimie\-rungsproblem formulieren:
 
 \begin{equation}
@@ -2327,85 +2327,85 @@ Online-Optimie\-rungsproblem formulieren:
   \label{eq:k_opt_online}
 \end{equation}
 
-wobei $v(t)$ die momentane Fahrzeuggeschwindigkeit (verfÃ¼gbar Ã¼ber CAN-Bus) ist.
-Mit einem einfachen \emph{Hill-Climbing}-Regler lÃ¤sst sich das Optimum
-in Echtzeit nachfÃ¼hren.
+wobei $v(t)$ die momentane Fahrzeuggeschwindigkeit (verfügbar über CAN-Bus) ist.
+Mit einem einfachen \emph{Hill-Climbing}-Regler lässt sich das Optimum
+in Echtzeit nachführen.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Aerodynamische Optimierung und CFD-Simulation}
 \label{ssec:ausblick_cfd}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Die Installation eines IF-Arrays im Frontbereich erhÃ¶ht den Luftwiderstand.
-In dieser Arbeit wurde der Mehrwiderstand durch die einfache ImpulsbilanznÃ¤herung
-(Gl.~\eqref{eq:delta_cw}: $\Delta\cW \approx 0.105$) abgeschÃ¤tzt. Diese
-NÃ¤herung vernachlÃ¤ssigt:
+Die Installation eines IF-Arrays im Frontbereich erhöht den Luftwiderstand.
+In dieser Arbeit wurde der Mehrwiderstand durch die einfache Impulsbilanznäherung
+(Gl.~\eqref{eq:delta_cw}: $\Delta\cW \approx 0.105$) abgeschätzt. Diese
+Näherung vernachlässigt:
 
 \begin{itemize}
-  \item Interferenzeffekte zwischen benachbarten WirbelkÃ¶rpern im Array
+  \item Interferenzeffekte zwischen benachbarten Wirbelkörpern im Array
         (konstruktive oder destruktive Interferenz der KÃ¡rmÃ¡n-Wirbel).
-  \item Stromab-Wechselwirkung mit dem KÃ¼hler und dem Motorraum.
-  \item Die \emph{Blockage}-Korrektur bei hohem FlÃ¤chenbedeckungsgrad
+  \item Stromab-Wechselwirkung mit dem Kühler und dem Motorraum.
+  \item Die \emph{Blockage}-Korrektur bei hohem Flächenbedeckungsgrad
         $A_{\text{block}}/A_{\text{Kanal}} > 0.3$.
   \item Dreidimensionale Effekte an den Randzonen des Arrays.
 \end{itemize}
 
-ZukÃ¼nftige Arbeit sollte Reynolds-gemittelte Navier-Stokes-Simulationen (RANS)
-mit einem $k$-$\omega$-SST-Turbulenzmodell auf einem hochauflÃ¶senden Gitter
-(min.\ $5 \times 10^6$ Zellen) fÃ¼r das Gesamtfahrzeug mit eingebautem IF-Array
-durchfÃ¼hren. Die ZielgrÃ¶ÃŸe ist die \emph{aerodynamische Netto-Effizienz}:
+Zukünftige Arbeit sollte Reynolds-gemittelte Navier-Stokes-Simulationen (RANS)
+mit einem $k$-$\omega$-SST-Turbulenzmodell auf einem hochauflösenden Gitter
+(min.\ $5 \times 10^6$ Zellen) für das Gesamtfahrzeug mit eingebautem IF-Array
+durchführen. Die Zielgröße ist die \emph{aerodynamische Netto-Effizienz}:
 
 \begin{equation}
   \eta_{\text{aero,netto}} = \frac{P_{\text{IF}} - \Delta P_W}{\frac{1}{2}\rhoL \Aeinlass v^3}
   \label{eq:eta_aero_netto}
 \end{equation}
 
-VorlÃ¤ufige AbschÃ¤tzungen deuten darauf hin, dass ein \emph{strÃ¶mungskanal\-gefÃ¼hrtes}
+Vorläufige Abschätzungen deuten darauf hin, dass ein \emph{strömungskanal\-geführtes}
 Array (mit aerodynamischen Leitblechen vor und hinter dem Gitterfeld) den
-Mehrwiderstand um 30--40\,\% gegenÃ¼ber einem ungefÃ¼hrten Array reduzieren kann.
+Mehrwiderstand um 30--40\,\% gegenüber einem ungeführten Array reduzieren kann.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\subsection{Werkstoffphysik und ErmÃ¼dungslebensdauer}
+\subsection{Werkstoffphysik und Ermüdungslebensdauer}
 \label{ssec:ausblick_ermuedung}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Eine bisher kaum beachtete, aber praktisch kritische Fragestellung ist die
 mechanische Langzeit\-haltbarkeit der Schwingfedern. Bei $f_0 \approx 100\,\text{Hz}$
-und einer tÃ¤glichen Fahrzeit von 1\,h ergibt sich:
+und einer täglichen Fahrzeit von 1\,h ergibt sich:
 
 \begin{equation}
   N_{\text{Zyklen/Jahr}} = 100\,\text{Hz} \times 3600\,\text{s} \times 365 = 1.31 \times 10^9
   \label{eq:n_zyklen}
 \end{equation}
 
-Diese Zyklenzahl liegt weit jenseits der Hochzyklus-ErmÃ¼dungsgrenze (HCF,
-$N > 10^7$) und sogar im Bereich der Gigazyklen-ErmÃ¼dung (VHCF,
-$N > 10^9$). FÃ¼r die Materialauswahl folgt daraus:
+Diese Zyklenzahl liegt weit jenseits der Hochzyklus-Ermüdungsgrenze (HCF,
+$N > 10^7$) und sogar im Bereich der Gigazyklen-Ermüdung (VHCF,
+$N > 10^9$). Für die Materialauswahl folgt daraus:
 
 \begin{itemize}
   \item \textbf{Federstahl (50CrV4):} Gut bekannt, Dauerfestigkeit
         $\sigma_D \approx 750\,\text{MPa}$. VHCF-Verhalten zeigt jedoch
         ein signifikantes Festigkeits-Abklingen im Bereich $10^8$--$10^9$ Zyklen
-        durch innere EinschlÃ¼sse (``Fisheye''-Rissbildung).
+        durch innere Einschlüsse (``Fisheye''-Rissbildung).
 
-  \item \textbf{Titanlegierungen (Ti-6Al-4V):} HÃ¶here spezifische Festigkeit
+  \item \textbf{Titanlegierungen (Ti-6Al-4V):} Höhere spezifische Festigkeit
         ($\sigma_D/\rho$ um Faktor 2,5 besser als Stahl), kein Festigkeitsabfall
-        bis $10^{10}$ Zyklen bekannt. Nachteil: hÃ¶herer Materialpreis.
+        bis $10^{10}$ Zyklen bekannt. Nachteil: höherer Materialpreis.
 
-  \item \textbf{FaserverstÃ¤rkte Kunststoffe (CFRP):} HÃ¶chste spezifische
-        Steifigkeit, keine metallische ErmÃ¼dungsgrenze, aber interlaminare
-        SchÃ¤digungsakkumulation. Geeignet fÃ¼r piezoelektrisch integrierte
+  \item \textbf{Faserverstärkte Kunststoffe (CFRP):} Höchste spezifische
+        Steifigkeit, keine metallische Ermüdungsgrenze, aber interlaminare
+        Schädigungsakkumulation. Geeignet für piezoelektrisch integrierte
         Verbundsysteme (``Smart CFRP'').
 
-  \item \textbf{Amorphe Metalllegierungen (Metallic Glass):} VorlÃ¤ufige
-        Ergebnisse zeigen extrem hohe VHCF-BestÃ¤ndigkeit durch fehlende
-        Versetzungsstruktur; kommerziell noch eingeschrÃ¤nkt verfÃ¼gbar.
+  \item \textbf{Amorphe Metalllegierungen (Metallic Glass):} Vorläufige
+        Ergebnisse zeigen extrem hohe VHCF-Beständigkeit durch fehlende
+        Versetzungsstruktur; kommerziell noch eingeschränkt verfügbar.
 \end{itemize}
 
-FÃ¼r eine belastbare Auslegung muss das WÃ¶hler-Diagramm im VHCF-Bereich
+Für eine belastbare Auslegung muss das Wöhler-Diagramm im VHCF-Bereich
 experimentell ermittelt werden. Die kritische Amplitude ergibt sich aus
 der geforderten Spannungsamplitude im Federelement, die direkt von der
-Anregungskraft $\hat{F}$ und der ResonanzÃ¼berhÃ¶hung abhÃ¤ngt:
+Anregungskraft $\hat{F}$ und der Resonanzüberhöhung abhängt:
 
 \begin{equation}
   \sigma_a = \frac{\hat{F}}{A_{\text{quer}}} \cdot \frac{1}{2\zeta},
@@ -2414,7 +2414,7 @@ Anregungskraft $\hat{F}$ und der ResonanzÃ¼berhÃ¶hung abhÃ¤ngt:
 \end{equation}
 
 Die Sicherheitsauslegung muss $\sigma_a < \sigma_D / S_F$ mit
-Sicherheitsfaktor $S_F \geq 1.5$ gewÃ¤hrleisten.
+Sicherheitsfaktor $S_F \geq 1.5$ gewährleisten.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Systemintegration im Kraftfahrzeug: Elektronik und Regelung}
@@ -2427,42 +2427,42 @@ Forschungsfragen. Zentrale Herausforderungen sind:
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{Wechselrichter-Architektur:} Jede Einzelfeder erzeugt eine
         geringe Wechselspannung (typisch 1--5\,V$_{\text{pp}}$ bei 100\,Hz).
-        FÃ¼r 288 Federn in einem Array sind zwei Architekturen denkbar:
+        Für 288 Federn in einem Array sind zwei Architekturen denkbar:
         (a)~\emph{Zentraler Hochfrequenz-Vollweggleichrichter} mit Summierung
         auf DC-Sammelschiene, oder (b)~\emph{Verteilte DC/DC-Wandler} pro
-        Federcluster mit individueller MPP-Verfolgung. Letzteres erhÃ¶ht den
-        Aufwand, erlaubt aber Teillastoptimierung bei inhomogenem StrÃ¶mungsfeld.
+        Federcluster mit individueller MPP-Verfolgung. Letzteres erhöht den
+        Aufwand, erlaubt aber Teillastoptimierung bei inhomogenem Strömungsfeld.
 
   \item \textbf{Maximum-Power-Point-Tracking (MPPT):} Analog zu
         Solar\-wechsel\-richtern kann ein MPPT-Regler den Lastpunkt adaptiv
         so einstellen, dass $c_e \to c_e^*$ geregelt wird. Da $c_e$ in einer
-        elektromagnetischen Feder direkt Ã¼ber den Lastwiderstand $R_L$ einstellbar
-        ist ($c_e^{\text{EM}} = (Bl)^2/(R_L+R_i)$), lÃ¤sst sich eine
+        elektromagnetischen Feder direkt über den Lastwiderstand $R_L$ einstellbar
+        ist ($c_e^{\text{EM}} = (Bl)^2/(R_L+R_i)$), lässt sich eine
         Tracking-Bandbreite von $> 10\,\text{Hz}$ erzielen.
 
-  \item \textbf{EMV (Elektromagnetische VertrÃ¤glichkeit):} Ein 288-faches
+  \item \textbf{EMV (Elektromagnetische Verträglichkeit):} Ein 288-faches
         Einspeisenetz bei 100\,Hz erzeugt Oberwellen, die die CAN-Bus-Kommunikation
-        und Fahrassistenzsysteme beeintrÃ¤chtigen kÃ¶nnen. Aktive EMV-Filter
+        und Fahrassistenzsysteme beeinträchtigen können. Aktive EMV-Filter
         und galvanische Trennung sind Pflicht.
 
   \item \textbf{Smart-Grid-Integration im Fahrzeug:} In einem modernen
-        Elektro\-fahrzeug kommuniziert das IF-Array Ã¼ber das Fahrzeugnetzwerk
+        Elektro\-fahrzeug kommuniziert das IF-Array über das Fahrzeugnetzwerk
         (ISO~11898, CAN FD) mit dem Batterie\-management\-system (BMS). Ein
         kooperativer Algoritmus entscheidet, ob die Ernteleistung direkt
-        fÃ¼r Verbraucher genutzt oder in den Hochvolt-Akku eingespeist wird,
-        abhÃ¤ngig von Akku-SoC, AuÃŸentemperatur und Route.
+        für Verbraucher genutzt oder in den Hochvolt-Akku eingespeist wird,
+        abhängig von Akku-SoC, Außentemperatur und Route.
 \end{enumerate}
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\subsection{Anwendungen jenseits des PKW: Nutzfahrzeuge und ZÃ¼ge}
+\subsection{Anwendungen jenseits des PKW: Nutzfahrzeuge und Züge}
 \label{ssec:ausblick_nutzfahrzeuge}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Kraftfahrzeuge sind nicht die einzigen MobilitÃ¤tssysteme, bei denen aerodynamische
-Energie geerntet werden kann. Weitaus grÃ¶ÃŸere absolute Potentiale bieten:
+Kraftfahrzeuge sind nicht die einzigen Mobilitätssysteme, bei denen aerodynamische
+Energie geerntet werden kann. Weitaus größere absolute Potentiale bieten:
 
-\textbf{SattelzÃ¼ge und Fernlastkraftwagen (Fernverkehrs-LKW):}
-Ein Fernlast\-wagen hat eine StirnflÃ¤che von $\Astirnfl \approx \SI{9}{\metre\squared}$
+\textbf{Sattelzüge und Fernlastkraftwagen (Fernverkehrs-LKW):}
+Ein Fernlast\-wagen hat eine Stirnfläche von $\Astirnfl \approx \SI{9}{\metre\squared}$
 und einen typischen $\cW \approx 0.55$ bei Autobahngeschwindigkeit
 (90\,km/h $= 25\,\text{m/s}$):
 
@@ -2472,8 +2472,8 @@ und einen typischen $\cW \approx 0.55$ bei Autobahngeschwindigkeit
   \label{eq:pw_lkw}
 \end{equation}
 
-Bei einer nutzbaren FrontflÃ¤che von $\Aeinlass^{\text{LKW}} = \SI{3.0}{\metre\squared}$
-(KÃ¼hlergrill-Bereich hinter der AerodynamikschÃ¼rze) und $\eta_{\text{IF}} = 0.32$:
+Bei einer nutzbaren Frontfläche von $\Aeinlass^{\text{LKW}} = \SI{3.0}{\metre\squared}$
+(Kühlergrill-Bereich hinter der Aerodynamikschürze) und $\eta_{\text{IF}} = 0.32$:
 
 \begin{equation}
   P_{\text{IF}}^{\text{LKW}} = 0.32 \cdot \tfrac{1}{2} \cdot 1.225 \cdot 3.0 \cdot 25^3
@@ -2481,14 +2481,14 @@ Bei einer nutzbaren FrontflÃ¤che von $\Aeinlass^{\text{LKW}} = \SI{3.0}{\metre
   \label{eq:p_if_lkw}
 \end{equation}
 
-Dies Ã¼bersteigt den kompletten 24\,V-Bordnetz\-bedarf eines modernen LKW
-(typisch 3--6\,kW fÃ¼r Bordcomputer, KÃ¼hlanlage, Fahrerassistenz) deutlich
-und ermÃ¶glicht darÃ¼ber hinaus eine Teilladung der Hilfsbatterie sowie die
-Versorgung einer elektrischen KÃ¼hlbrÃ¼cke.
+Dies übersteigt den kompletten 24\,V-Bordnetz\-bedarf eines modernen LKW
+(typisch 3--6\,kW für Bordcomputer, Kühlanlage, Fahrerassistenz) deutlich
+und ermöglicht darüber hinaus eine Teilladung der Hilfsbatterie sowie die
+Versorgung einer elektrischen Kühlbrücke.
 
-\textbf{HochgeschwindigkeitszÃ¼ge (ICE/TGV):}
+\textbf{Hochgeschwindigkeitszüge (ICE/TGV):}
 Bei $v = 300\,\text{km/h} = 83.3\,\text{m/s}$ ist die kinetische Luftleistung
-pro QuerschnittsflÃ¤che:
+pro Querschnittsfläche:
 
 \begin{equation}
   \frac{P_{\text{avail}}}{A} = \tfrac{1}{2} \cdot 1.225 \cdot 83.3^3
@@ -2496,29 +2496,29 @@ pro QuerschnittsflÃ¤che:
   \label{eq:p_avail_zug}
 \end{equation}
 
-An einem ICE-3 mit StirnflÃ¤che $\approx \SI{12}{\metre\squared}$ und
-nutzbarer StrÃ¶mungsflÃ¤che $\approx \SI{1.5}{\metre\squared}$ kÃ¶nnten
-theoretisch $\approx 170\,\text{kW}$ geerntet werden -- ausreichend fÃ¼r
+An einem ICE-3 mit Stirnfläche $\approx \SI{12}{\metre\squared}$ und
+nutzbarer Strömungsfläche $\approx \SI{1.5}{\metre\squared}$ könnten
+theoretisch $\approx 170\,\text{kW}$ geerntet werden -- ausreichend für
 die gesamte interne Lokomotivelektronik sowie die Klimaanlagen mehrerer
-Waggons. Der Einbau ist hier besonders attraktiv, da ZÃ¼ge keine der
-fÃ¼r PKW Ã¼blichen DesignzwÃ¤nge (KÃ¼hleroptik, FuÃŸgÃ¤ngerschutz) haben.
+Waggons. Der Einbau ist hier besonders attraktiv, da Züge keine der
+für PKW üblichen Designzwänge (Kühleroptik, Fußgängerschutz) haben.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\subsection{Satelliten-Szenario: WeiterfÃ¼hrende Konzepte}
+\subsection{Satelliten-Szenario: Weiterführende Konzepte}
 \label{ssec:ausblick_satellit}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-FÃ¼r Satelliten erÃ¶ffnen sich trotz des fehlenden Eigenantriebs interessante
+Für Satelliten eröffnen sich trotz des fehlenden Eigenantriebs interessante
 Anwendungsszenarien:
 
 \textbf{Air-Breathing Electric Propulsion (ABEP):}
 Ein innovatives Konzept kombiniert das IF-Prinzip mit einem Ionentriebwerk,
-das direkt die abgebremste AtmosphÃ¤ren-Luft als Treibstoff nutzt
+das direkt die abgebremste Atmosphären-Luft als Treibstoff nutzt
 (\emph{Atmosphere-Breathing Electric Propulsion}). In der IF-Variante
-wÃ¼rde die geerntete elektrische Leistung $P_{\text{IF}}$ ein schwaches
-Ionentriebwerk speisen, das die abgesaugte Luft ionisiert und rÃ¼ckwÃ¤rts
-ausstÃ¶ÃŸt. Die Ionisationsenergie von Stickstoff betrÃ¤gt
-$E_{\text{ion}}(\text{N}_2) = \SI{15.58}{\electronvolt}$ pro MolekÃ¼l. Der
+würde die geerntete elektrische Leistung $P_{\text{IF}}$ ein schwaches
+Ionentriebwerk speisen, das die abgesaugte Luft ionisiert und rückwärts
+ausstößt. Die Ionisationsenergie von Stickstoff beträgt
+$E_{\text{ion}}(\text{N}_2) = \SI{15.58}{\electronvolt}$ pro Molekül. Der
 Ionisation-Massenstrom durch den Triebwerkseinlass:
 
 \begin{equation}
@@ -2538,26 +2538,26 @@ geernteten IF-Leistung ($P_0 = 750\,\text{kW}$) mit $I_{\text{sp}} = 7000\,\text
   \label{eq:f_abep}
 \end{equation}
 
-GegenÃ¼ber dem benÃ¶tigten Kompensationsschub $F_D = 379.5\,\text{N}$ (Gl.~\eqref{eq:fd_sat_100})
-betrÃ¤gt das Defizit noch immer Faktor $\approx 27$. Dieses verbleibt unÃ¼berwindbar,
-solange $\eta_{\text{IF}} < 1$. Mit steigender OrbitalhÃ¶he ($h > 200\,\text{km}$)
-nÃ¤hert sich $F_D \to 0$; dort kÃ¶nnte ABEP die Restabbremsug vollstÃ¤ndig
+Gegenüber dem benötigten Kompensationsschub $F_D = 379.5\,\text{N}$ (Gl.~\eqref{eq:fd_sat_100})
+beträgt das Defizit noch immer Faktor $\approx 27$. Dieses verbleibt unüberwindbar,
+solange $\eta_{\text{IF}} < 1$. Mit steigender Orbitalhöhe ($h > 200\,\text{km}$)
+nähert sich $F_D \to 0$; dort könnte ABEP die Restabbremsug vollständig
 kompensieren -- was dem Konzept des VLEO-Dauersatelliten entspricht und derzeit
 von der ESA (Projekt GOCE-Nachfolger) und JAXA (RAM-EP-Projekt) untersucht wird.
 
 \textbf{Deorbiting durch kontrollierte Energieernte:}
 Ein umgekehrter Ansatz nutzt das IF-Array als \emph{aktive Bremsvorrichtung}:
-Durch VergrÃ¶ÃŸerung der effektiven QuerschnittsflÃ¤che (ausklappbare IF-FlÃ¼gel)
+Durch Vergrößerung der effektiven Querschnittsfläche (ausklappbare IF-Flügel)
 wird der Orbitale Abbau beschleunigt. Gleichzeitig speist das Array die
-letzten Minuten vor dem Wiedereintritt die Onboard-Recorder fÃ¼r die
+letzten Minuten vor dem Wiedereintritt die Onboard-Recorder für die
 Aufzeichnung von Wiedereintritts-Messdaten. Diese Konzeption ist direkt
 kompatibel mit der Debris-Mitigation-Richtlinie der UN (25-Jahres-Regel).
 
-\textbf{AtmosphÃ¤rensonden mit IF-Antrieb:}
-Hochgeschwindigkeits-AtmosphÃ¤ren\-sonden (analog zu NASA-Forschungsraketen
+\textbf{Atmosphärensonden mit IF-Antrieb:}
+Hochgeschwindigkeits-Atmosphären\-sonden (analog zu NASA-Forschungsraketen
 der SOUNDING-ROCKET-Klasse), die kurzzeitig in dichten Schichten ($h < 80\,\text{km}$)
-fliegen, kÃ¶nnten IF-Arrays fÃ¼r die Eigenversorgung der Nutzlast nutzen,
-ohne separate Batteriemassen mitzufÃ¼hren. Bei $h = 60\,\text{km}$ und
+fliegen, könnten IF-Arrays für die Eigenversorgung der Nutzlast nutzen,
+ohne separate Batteriemassen mitzuführen. Bei $h = 60\,\text{km}$ und
 $v = 2\,\text{km/s}$ gilt $\rhoL \approx 3 \times 10^{-4}\,\text{kg/m}^3$:
 
 \begin{equation}
@@ -2566,7 +2566,7 @@ $v = 2\,\text{km/s}$ gilt $\rhoL \approx 3 \times 10^{-4}\,\text{kg/m}^3$:
   \label{eq:p_sonde}
 \end{equation}
 
-ausreichend fÃ¼r MessgerÃ¤te, Sender und Datenrekorder Ã¼ber die gesamte
+ausreichend für Messgeräte, Sender und Datenrekorder über die gesamte
 Flugzeit von typisch 10--60\,Minuten.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2574,14 +2574,14 @@ Flugzeit von typisch 10--60\,Minuten.
 \label{ssec:ausblick_hybrid}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Die Kombination von Induktionsfedern mit komplementÃ¤ren Wandlertechnologien
+Die Kombination von Induktionsfedern mit komplementären Wandlertechnologien
 verspricht erhebliche Synergiepotentiale:
 
 \textbf{Thermoelektrische Abgasnutzung (TEG):}
 Moderne Fahrzeug-Verbrennungsmoto\-ren emittieren $\approx 30\,\%$ der
-Kraftstoffenergie als AbgaswÃ¤rme. Bei $P_{\text{Motor}} = 60\,\text{kW}$
-und einem Wirk\-sgrad des TEG von $\eta_{\text{TEG}} = 6\,\%$ (typisch fÃ¼r
-$\Delta T = 300\,\text{K}$, BiTe-ModulÃ©) ergibt sich:
+Kraftstoffenergie als Abgaswärme. Bei $P_{\text{Motor}} = 60\,\text{kW}$
+und einem Wirk\-sgrad des TEG von $\eta_{\text{TEG}} = 6\,\%$ (typisch für
+$\Delta T = 300\,\text{K}$, BiTe-Modulé) ergibt sich:
 
 \begin{equation}
   P_{\text{TEG}} = \eta_{\text{TEG}} \cdot 0.30 \cdot P_{\text{Motor}}
@@ -2590,28 +2590,28 @@ $\Delta T = 300\,\text{K}$, BiTe-ModulÃ©) ergibt sich:
 \end{equation}
 
 Die Kombination $P_{\text{IF}} + P_{\text{TEG}} \approx 6650 + 1080 = \SI{7.7}{\kilo\watt}$
-bei 130\,km/h Ã¼bertrÃ¤fe die Lichtmaschine um das Zweifache und ermÃ¶glichte
+bei 130\,km/h überträfe die Lichtmaschine um das Zweifache und ermöglichte
 sogar den Betrieb einer elektrischen Klimaanlage aus Ernte-Energie allein.
 
 \textbf{Piezoelektrische Fahrbahnunebenheiten:}
-An den StoÃŸdÃ¤mpfersystemen kÃ¶nnen piezoelektrische Einlagen
+An den Stoßdämpfersystemen können piezoelektrische Einlagen
 Fahrbahn-Anregungsenergie ($f = 1$--$30\,\text{Hz}$) ernten. Die Leistung
-ist geschwindigkeitsunabhÃ¤ngig (bestimmt durch Profiltiefe $h_{\text{Fahrbahn}}$
+ist geschwindigkeitsunabhängig (bestimmt durch Profiltiefe $h_{\text{Fahrbahn}}$
 und $v$), komplementiert also das IF-System bei niedrigen Geschwindigkeiten
 im Stadtbetrieb:
 
 \begin{equation}
-  P_{\text{Fahr}} \approx \tfrac{1}{2} k_{\text{DÃ¤mpf}} a_{\text{RMS}}^2 / \omega_{\text{Prof}}
+  P_{\text{Fahr}} \approx \tfrac{1}{2} k_{\text{Dämpf}} a_{\text{RMS}}^2 / \omega_{\text{Prof}}
   \approx \SI{50}{\watt}\text{ bis }\SI{300}{\watt}
   \label{eq:p_fahrbahn}
 \end{equation}
 
 \textbf{Triboelektrische Generatoren (TENG):}
 Neuartige triboelektrische Nano\-generatoren nutzen Kontaktelektrifizierung
-an der Fahrzeugkarosserie (Luft-Kunststoff-GrenzflÃ¤che). Obwohl die
-Einzelleistungsdichte gering ist ($< 1\,\text{mW/m}^2$), kÃ¶nnte die gesamte
-AuÃŸenflÃ¤che eines PKW ($\approx 8\,\text{m}^2$) bei 130\,km/h einige Watt
-liefern -- nÃ¼tzlich fÃ¼r drahtlose Sensorsysteme (Reifendrucksensoren,
+an der Fahrzeugkarosserie (Luft-Kunststoff-Grenzfläche). Obwohl die
+Einzelleistungsdichte gering ist ($< 1\,\text{mW/m}^2$), könnte die gesamte
+Außenfläche eines PKW ($\approx 8\,\text{m}^2$) bei 130\,km/h einige Watt
+liefern -- nützlich für drahtlose Sensorsysteme (Reifendrucksensoren,
 externer Ultraschall).
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2620,13 +2620,13 @@ externer Ultraschall).
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Mit fortschreitender MEMS-Technologie (Micro-Electro-Mechanical Systems)
-rÃ¼ckt eine vollstÃ¤ndige Integration der Induktionsfedern auf Chip-Basis
-in den Bereich des MÃ¶glichen. MEMS-Resonatoren in Si oder AlN
-(Aluminiumnitrid) erzielen GÃ¼tefaktoren $Q > 10\,000$ und Resonanz\-frequenzen
-von 10\,kHz bis 10\,MHz. FÃ¼r aerodynamische Anwendungen ist der relevante
-Bereich 50--500\,Hz, der mit OberflÃ¤chenmikromechanik-Prozessen gut zugÃ¤nglich ist.
+rückt eine vollständige Integration der Induktionsfedern auf Chip-Basis
+in den Bereich des Möglichen. MEMS-Resonatoren in Si oder AlN
+(Aluminiumnitrid) erzielen Gütefaktoren $Q > 10\,000$ und Resonanz\-frequenzen
+von 10\,kHz bis 10\,MHz. Für aerodynamische Anwendungen ist der relevante
+Bereich 50--500\,Hz, der mit Oberflächenmikromechanik-Prozessen gut zugänglich ist.
 
-Der Leistungsertrag eines einzelnen MEMS-Resonators der FlÃ¤che
+Der Leistungsertrag eines einzelnen MEMS-Resonators der Fläche
 $A_{\text{MEMS}} = (1\,\text{mm})^2$ bei $Q = 1000$, $f_0 = 150\,\text{Hz}$
 und $\hat{F} = \SI{10}{\micro\newton}$:
 
@@ -2637,32 +2637,32 @@ und $\hat{F} = \SI{10}{\micro\newton}$:
   \label{eq:p_mems}
 \end{equation}
 
-FÃ¼r ein Array von $10^6$ MEMS-Resonatoren auf einer FlÃ¤che von $1\,\text{dm}^2$:
+Für ein Array von $10^6$ MEMS-Resonatoren auf einer Fläche von $1\,\text{dm}^2$:
 
 \begin{equation}
   P_{\text{MEMS,Array}} \approx 10^6 \cdot 14\,\text{nW} = \SI{14}{\milli\watt}
   \label{eq:p_mems_array}
 \end{equation}
 
-Dies ist fÃ¼r Selbstversorgung von drahtlosen Sensor\-knoten
-(Batteriestrom\-bedarf: 1--100\,mW) attraktiv. Anwendungen wÃ¤ren:
-Reifendrucksensoren, AbgastemperaturfÃ¼hler, Partikel\-sensoren im Luftstrom.
+Dies ist für Selbstversorgung von drahtlosen Sensor\-knoten
+(Batteriestrom\-bedarf: 1--100\,mW) attraktiv. Anwendungen wären:
+Reifendrucksensoren, Abgastemperaturfühler, Partikel\-sensoren im Luftstrom.
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \subsection{Wirtschaftliche Bewertung und Marktpotential}
 \label{ssec:ausblick_wirtschaft}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-Eine erste Kosten-Nutzen-AbschÃ¤tzung zeigt das Marktpotential:
+Eine erste Kosten-Nutzen-Abschätzung zeigt das Marktpotential:
 
 \textbf{Systemkosten PKW:} Ein IF-Array mit 288 elektromagnetischen Einzel\-wandlern,
-adaptivem Resonanzregler und MPPT-Wechselrichter wird in GroÃŸ\-serie
+adaptivem Resonanzregler und MPPT-Wechselrichter wird in Groß\-serie
 (> 100\,000 Einheiten/Jahr) auf ca.\ 180--320\,EUR Herstell\-kosten
-geschÃ¤tzt (Basis: StÃ¼ckkosten fÃ¼r Tauchspulen-Aktoren in vergleichbarer
-StÃ¼ckzahl, z.\,B.\ in Lautsprechern: $\approx 0.50$\,EUR/StÃ¼ck).
+geschätzt (Basis: Stückkosten für Tauchspulen-Aktoren in vergleichbarer
+Stückzahl, z.\,B.\ in Lautsprechern: $\approx 0.50$\,EUR/Stück).
 
 \textbf{Kraftstoffeinsparung:} Bei Wegfall der Lichtmaschine
-(VerbrauchsÃ¤quivalent $\Delta V \approx 0.3\,\text{L}/100\,\text{km}$,
+(Verbrauchsäquivalent $\Delta V \approx 0.3\,\text{L}/100\,\text{km}$,
 Kraftstoffpreis 1.80\,EUR/L) und 15\,000\,km/Jahr:
 
 \begin{equation}
@@ -2673,10 +2673,10 @@ Kraftstoffpreis 1.80\,EUR/L) und 15\,000\,km/Jahr:
 
 \textbf{Amortisationszeit:} $\approx 2.5$--$4\,\text{Jahre}$ -- damit wirtschaftlich
 darstellbar bei einer Fahrzeuglebensdauer von 10--15\,Jahren. Bei steigenden
-Energiepreisen verkÃ¼rzt sich die Amortisationszeit entsprechend.
+Energiepreisen verkürzt sich die Amortisationszeit entsprechend.
 
-\textbf{Flottenanwendungen:} FÃ¼r Taxiunternehmen, Lieferdienste und
-LKW-Flotten, die tÃ¤glich 300--600\,km zurÃ¼cklegen, verbessert sich die
+\textbf{Flottenanwendungen:} Für Taxiunternehmen, Lieferdienste und
+LKW-Flotten, die täglich 300--600\,km zurücklegen, verbessert sich die
 Wirtschaftlichkeit drastisch:
 
 \begin{equation}
@@ -2695,47 +2695,47 @@ Marktvolumen von $> 600\,\text{Mio.\ EUR/Jahr}$ allein in Deutschland.
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Auf lange Sicht -- einem Zeithorizont von 15--25\,Jahren -- sind
-systemische Anwendungen vorstellbar, die Ã¼ber das einzelne Fahrzeug hinausgehen:
+systemische Anwendungen vorstellbar, die über das einzelne Fahrzeug hinausgehen:
 
 \begin{itemize}
-  \item \textbf{Autobahn-Seitenstreifen-Ernter:} StationÃ¤re IF-Arrays auf
-        Leitplanken oder SchallschutzwÃ¤nden neben HochgeschwindigkeitsstraÃŸen
+  \item \textbf{Autobahn-Seitenstreifen-Ernter:} Stationäre IF-Arrays auf
+        Leitplanken oder Schallschutzwänden neben Hochgeschwindigkeitsstraßen
         ernten den Schlepp\-wind vorbeifahrender Fahrzeuge. Bei einem
         Verkehrsvolumen von 50\,000\,Fahr\-zeugen/Tag auf einer Autobahn
         mit Durchschnitts\-tempo 120\,km/h entsteht eine kontinuierliche
         Windanregung im Bereich 5--15\,m/s im Nahfeld der Leitplanke.
 
-  \item \textbf{Unterwasser-Induktionsfedern in MeeresstrÃ¶mungen:} Das
-        Konzept Ã¼bertrÃ¤gt sich direkt auf hydraulische Anwendungen --
-        schwingungsfÃ¤hige UnterwasserkÃ¶rper in Tiefseest\-rÃ¶mungen
+  \item \textbf{Unterwasser-Induktionsfedern in Meeresströmungen:} Das
+        Konzept überträgt sich direkt auf hydraulische Anwendungen --
+        schwingungsfähige Unterwasserkörper in Tiefseest\-römungen
         (Gulf Stream: $v \approx 2\,\text{m/s}$, $\rho_{\text{Wasser}} = 1025\,\text{kg/m}^3$)
-        kÃ¶nnten enorme Leistungsdichten liefern ($P_{\text{avail}} \propto \rhoL v^3$),
+        könnten enorme Leistungsdichten liefern ($P_{\text{avail}} \propto \rhoL v^3$),
         da $\rho_{\text{Wasser}}/\rho_{\text{Luft}} \approx 837$, was die
-        verfÃ¼gbare Fluidleistung bei gleicher StrÃ¶mungsgeschwindigkeit
-        um Faktor 837 vergrÃ¶ÃŸert.
+        verfügbare Fluidleistung bei gleicher Strömungsgeschwindigkeit
+        um Faktor 837 vergrößert.
 
   \item \textbf{Raumschiff-Bremssegel im interplanetaren Raum:}
         Im Sonnensysteminneren existiert ein stetiger Teilchenstrom
         (Sonnenwind: $\dot{n} \approx 5 \times 10^8\,\text{cm}^{-3}$,
         $v_{\text{SW}} \approx 400\,\text{km/s}$, $m_p = 1.67 \times 10^{-27}\,\text{kg}$).
-        Die Strahldruck-Kraft auf eine FlÃ¤che $A$:
+        Die Strahldruck-Kraft auf eine Fläche $A$:
         \begin{equation}
           F_{\text{SW}} = \frac{1}{2}\rho_{\text{SW}} A v_{\text{SW}}^2,
           \quad \rho_{\text{SW}} \approx 8.4 \times 10^{-21}\,\text{kg/m}^3
         \end{equation}
         Bei $A = 1\,\text{km}^2$ ergibt sich $F_{\text{SW}} \approx 280\,\text{mN}$ --
-        fÃ¼r Mikrosatelliten oder Solar-Segel-Konzepte (IKAROS, LightSail)
+        für Mikrosatelliten oder Solar-Segel-Konzepte (IKAROS, LightSail)
         durchaus nutzbar als passiver Antrieb ohne IF-Hardware.
 \end{itemize}
 
 \begin{hinweis}[Einordnung in den energie-technologischen Kontext]
   Induktionsfedern stellen keine Energie-Revolution dar. Sie sind ein
   weiteres Werkzeug im Werkzeugkasten der \emph{Effizienzsteigerung}:
-  energie\-technisch gesehen ist jede Kilowattstunde, die nicht primÃ¤r
-  erzeugt werden muss, die gÃ¼nstigste kWh. Das Konzept komplementiert
-  bestehende AnsÃ¤tze (Rekuperation, Solardach, Abgasthermoelektrik)
+  energie\-technisch gesehen ist jede Kilowattstunde, die nicht primär
+  erzeugt werden muss, die günstigste kWh. Das Konzept komplementiert
+  bestehende Ansätze (Rekuperation, Solardach, Abgasthermoelektrik)
   und ist besonders dort wirksam, wo bisher keine Ernte\-technologie
-  zugÃ¤nglich war: bei konstanter Autobahnfahrt Ã¼ber viele Stunden.
+  zugänglich war: bei konstanter Autobahnfahrt über viele Stunden.
 \end{hinweis}
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2744,13 +2744,13 @@ systemische Anwendungen vorstellbar, die Ã¼ber das einzelne Fahrzeug hinausgeh
 
 \bibitem{karman1911}
   von KÃ¡rmÃ¡n, T.
-  Ãœber den Mechanismus des Widerstandes, den ein bewegter KÃ¶rper in einer
-  FlÃ¼ssigkeit erfÃ¤hrt.
-  \textit{Nachrichten der Gesellschaft der Wissenschaften zu GÃ¶ttingen}, 509--517, 1911.
+  Über den Mechanismus des Widerstandes, den ein bewegter Körper in einer
+  Flüssigkeit erfährt.
+  \textit{Nachrichten der Gesellschaft der Wissenschaften zu Göttingen}, 509--517, 1911.
 
 \bibitem{strouhal1878}
   Strouhal, V.
-  Ãœber eine besondere Art der Tonerregung.
+  Über eine besondere Art der Tonerregung.
   \textit{Annalen der Physik und Chemie}, 5, 216--251, 1878.
 
 \bibitem{mckinney1981}
@@ -2771,8 +2771,8 @@ systemische Anwendungen vorstellbar, die Ã¼ber das einzelne Fahrzeug hinausgeh
 
 \bibitem{betz1920}
   Betz, A.
-  Das Maximum der theoretisch mÃ¶glichen AusnÃ¼tzung des Windes durch Windmotoren.
-  \textit{Zeitschrift fÃ¼r das gesamte Turbinenwesen}, 26, 307--309, 1920.
+  Das Maximum der theoretisch möglichen Ausnützung des Windes durch Windmotoren.
+  \textit{Zeitschrift für das gesamte Turbinenwesen}, 26, 307--309, 1920.
 
 \bibitem{anderson2011}
   Anderson, J.\,D.
@@ -2832,7 +2832,7 @@ systemische Anwendungen vorstellbar, die Ã¼ber das einzelne Fahrzeug hinausgeh
   Epp, S.
   \textit{Gravitationsmotor als Alternative zum Elektromotor:
   Wirkungsgradsteigerung und Reduktion von Neodym.}
-  24.~MÃ¤rz 2026.
+  24.~März 2026.
 
 \end{thebibliography}
 

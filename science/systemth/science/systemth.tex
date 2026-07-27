@@ -55,7 +55,7 @@
 	frame=single
 }
 
-\title{\textbf{Asymmetrische Matrixmultiplikation\\ fÃ¼r dynamische Systeme} \\[0.5ex]\large Von der Boolean Algebra zur Systemtheorie}
+\title{\textbf{Asymmetrische Matrixmultiplikation\\ für dynamische Systeme} \\[0.5ex]\large Von der Boolean Algebra zur Systemtheorie}
 \author{Stephan Epp}
 \date{23. Januar 2026}
 
@@ -65,114 +65,114 @@
 	\tableofcontents
 	\newpage
 	
-	\chapter{EinfÃ¼hrung}
+	\chapter{Einführung}
 	
-	Die Analyse dynamischer Systeme basiert auf der wiederholten Anwendung von Matrixoperationen. Ein lineares zeitinvariantes System entwickelt sich gemÃ¤ÃŸ
+	Die Analyse dynamischer Systeme basiert auf der wiederholten Anwendung von Matrixoperationen. Ein lineares zeitinvariantes System entwickelt sich gemäß
 	\[
 	x_{t+1} = A \cdot x_t
 	\]
-	wobei die LÃ¶sung zum Zeitpunkt $t$ durch die Matrixpotenz $A^t$ gegeben ist:
+	wobei die Lösung zum Zeitpunkt $t$ durch die Matrixpotenz $A^t$ gegeben ist:
 	\[
 	x_t = A^t \cdot x_0
 	\]
 	
-	Diese fundamentale Struktur verbindet die Systemtheorie direkt mit den in der Arbeit Ã¼ber Graphprofile entwickelten Methoden zur effizienten Matrixmultiplikation. WÃ¤hrend dort Boolean Matrizen im Fokus standen, stellt sich die zentrale Frage: Lassen sich die Erkenntnisse Ã¼ber asymmetrische Matrixstrukturen und effiziente Signatur-Methoden auf kontinuierliche dynamische Systeme Ã¼bertragen?
+	Diese fundamentale Struktur verbindet die Systemtheorie direkt mit den in der Arbeit über Graphprofile entwickelten Methoden zur effizienten Matrixmultiplikation. Während dort Boolean Matrizen im Fokus standen, stellt sich die zentrale Frage: Lassen sich die Erkenntnisse über asymmetrische Matrixstrukturen und effiziente Signatur-Methoden auf kontinuierliche dynamische Systeme übertragen?
 	
 	\section{Motivation und Problemstellung}
 	
-	Die Boolean Matrixmultiplikation konnte durch die Signatur-Methode von $O(n^3)$ auf $O(n^2)$ beschleunigt werden. Der Kerngedanke war die Kodierung von Zeilen und Spalten als Bitmuster, kombiniert mit bitweisen UND-Operationen. FÃ¼r Broadcasting-Graphen mit stark asymmetrischer Gradverteilung wurden sogar Beschleunigungen um Faktor $n$ erreicht.
+	Die Boolean Matrixmultiplikation konnte durch die Signatur-Methode von $O(n^3)$ auf $O(n^2)$ beschleunigt werden. Der Kerngedanke war die Kodierung von Zeilen und Spalten als Bitmuster, kombiniert mit bitweisen UND-Operationen. Für Broadcasting-Graphen mit stark asymmetrischer Gradverteilung wurden sogar Beschleunigungen um Faktor $n$ erreicht.
 	
 	Diese Erkenntnisse werfen unmittelbar Fragen auf:
 	
 	\begin{enumerate}
 		\item Existiert eine analoge Asymmetrie in reellwertigen Systemmatrizen?
-		\item Falls ja, lÃ¤sst sich diese Asymmetrie algorithmisch ausnutzen?
+		\item Falls ja, lässt sich diese Asymmetrie algorithmisch ausnutzen?
 		\item Welche Rolle spielt die Sparsity-Struktur bei der Effizienzsteigerung?
-		\item KÃ¶nnen die Prinzipien auf kontinuierliche Systeme mit Matrixexponentialfunktion erweitert werden?
+		\item Können die Prinzipien auf kontinuierliche Systeme mit Matrixexponentialfunktion erweitert werden?
 	\end{enumerate}
 	
 	Die vorliegende Arbeit verfolgt zwei zentrale Forschungsrichtungen:
 	
-	\textbf{Konkrete Richtung (Kapitel 2-4)}: Wie manifestiert sich die Asymmetrie zwischen Zeilen und Spalten in der Systemmatrix dynamischer Systeme? Die Zeilen einer Matrix kodieren, wie ein Zustand von allen anderen beeinflusst wird (Aggregation, EmpfÃ¤nger-Struktur). Die Spalten kodieren, wie ein Zustand alle anderen beeinflusst (Ausbreitung, Sender-Struktur). Diese semantische DualitÃ¤t sollte sich in unterschiedlichen Berechnungsstrategien niederschlagen.
+	\textbf{Konkrete Richtung (Kapitel 2-4)}: Wie manifestiert sich die Asymmetrie zwischen Zeilen und Spalten in der Systemmatrix dynamischer Systeme? Die Zeilen einer Matrix kodieren, wie ein Zustand von allen anderen beeinflusst wird (Aggregation, Empfänger-Struktur). Die Spalten kodieren, wie ein Zustand alle anderen beeinflusst (Ausbreitung, Sender-Struktur). Diese semantische Dualität sollte sich in unterschiedlichen Berechnungsstrategien niederschlagen.
 	
-	\textbf{Allgemeine Richtung (Kapitel 5-7)}: Inwieweit beschleunigt die effiziente Matrixmultiplikation des Subgraph Algorithmus die Berechnung des Systemverhaltens allgemeiner dynamischer Systeme? FÃ¼r kontinuierliche Systeme $\dot{x} = Ax$ ist die LÃ¶sung durch die Matrixexponentialfunktion $e^{At}$ gegeben. Diese lÃ¤sst sich als Taylor-Reihe darstellen, die wiederum Matrixpotenzen erfordert.
+	\textbf{Allgemeine Richtung (Kapitel 5-7)}: Inwieweit beschleunigt die effiziente Matrixmultiplikation des Subgraph Algorithmus die Berechnung des Systemverhaltens allgemeiner dynamischer Systeme? Für kontinuierliche Systeme $\dot{x} = Ax$ ist die Lösung durch die Matrixexponentialfunktion $e^{At}$ gegeben. Diese lässt sich als Taylor-Reihe darstellen, die wiederum Matrixpotenzen erfordert.
 	
 	\section{Historischer Kontext}
 	
 	Die Effizienz der Matrixmultiplikation ist seit Jahrzehnten Gegenstand intensiver Forschung:
 	
 	\begin{itemize}
-		\item \textbf{Standard-Algorithmus} (Gauss): $O(n^3)$ fÃ¼r dichte Matrizen
+		\item \textbf{Standard-Algorithmus} (Gauss): $O(n^3)$ für dichte Matrizen
 		\item \textbf{Strassen} (1969): $O(n^{2.807})$ durch rekursive Block-Zerlegung
 		\item \textbf{Coppersmith-Winograd} (1990): $O(n^{2.376})$ mit hohen Konstanten
 		\item \textbf{Le Gall} (2014): $O(n^{2.3728639})$ theoretisches Limit
-		\item \textbf{Boolean Matrizen}: Signatur-Methode erreicht $O(n^2)$ fÃ¼r $n \leq 64$
+		\item \textbf{Boolean Matrizen}: Signatur-Methode erreicht $O(n^2)$ für $n \leq 64$
 	\end{itemize}
 	
-	Die Signatur-Methode ist bemerkenswert, da sie nicht auf algebraischen Tricks basiert, sondern die diskrete Struktur der Boolean Algebra ausnutzt. Die Frage ist: Existiert ein analoges Prinzip fÃ¼r reellwertige Matrizen?
+	Die Signatur-Methode ist bemerkenswert, da sie nicht auf algebraischen Tricks basiert, sondern die diskrete Struktur der Boolean Algebra ausnutzt. Die Frage ist: Existiert ein analoges Prinzip für reellwertige Matrizen?
 	
 	\section{Zentrale Aussage}
 	
-	Die zentrale Aussage dieser Arbeit lautet: \textit{Die Asymmetrie zwischen Zeilen und Spalten ist kein Artefakt der Boolean Algebra, sondern ein fundamentales Organisationsprinzip aller matrixbasierten dynamischen Systeme. Diese Asymmetrie manifestiert sich in der semantischen DualitÃ¤t zwischen Aggregation und Ausbreitung und kann systematisch zur Effizienzsteigerung ausgenutzt werden.}
+	Die zentrale Aussage dieser Arbeit lautet: \textit{Die Asymmetrie zwischen Zeilen und Spalten ist kein Artefakt der Boolean Algebra, sondern ein fundamentales Organisationsprinzip aller matrixbasierten dynamischen Systeme. Diese Asymmetrie manifestiert sich in der semantischen Dualität zwischen Aggregation und Ausbreitung und kann systematisch zur Effizienzsteigerung ausgenutzt werden.}
 	
-	\section{BeitrÃ¤ge der Arbeit}
+	\section{Beiträge der Arbeit}
 	
-	Die wesentlichen BeitrÃ¤ge dieser Arbeit sind:
+	Die wesentlichen Beiträge dieser Arbeit sind:
 	
 	\begin{enumerate}
-		\item \textbf{Formalisierung der Zeilen-Spalten-Asymmetrie} fÃ¼r allgemeine Systemmatrizen
-		\item \textbf{Spalten-priorisierte Algorithmen} fÃ¼r sparse Matrix-Vektor-Multiplikation
+		\item \textbf{Formalisierung der Zeilen-Spalten-Asymmetrie} für allgemeine Systemmatrizen
+		\item \textbf{Spalten-priorisierte Algorithmen} für sparse Matrix-Vektor-Multiplikation
 		\item \textbf{Charakterisierung von Broadcasting-Systemen} und Hub-Strukturen
 		\item \textbf{Analyse hierarchischer und azyklischer Systeme} mit Nilpotenz-Eigenschaften
 		\item \textbf{Anwendung auf neuronale Netze} mit empirischen Beschleunigungsfaktoren
 		\item \textbf{Erweiterung auf kontinuierliche Systeme} via Matrixexponentialfunktion
-		\item \textbf{Strukturausnutzung} fÃ¼r Block-Diagonal und diagonalisierbare Matrizen
+		\item \textbf{Strukturausnutzung} für Block-Diagonal und diagonalisierbare Matrizen
 	\end{enumerate}
 	
 	\chapter{Asymmetrie in Systemmatrizen}
 	
-	Die Systemmatrix $A \in \mathbb{R}^{n \times n}$ eines linearen dynamischen Systems kodiert die Kopplungsstruktur zwischen den $n$ ZustÃ¤nden. WÃ¤hrend eine naive Betrachtung Zeilen und Spalten als gleichwertig ansieht, zeigt eine tiefere Analyse fundamentale Unterschiede in ihrer semantischen Bedeutung und rechnerischen Behandlung.
+	Die Systemmatrix $A \in \mathbb{R}^{n \times n}$ eines linearen dynamischen Systems kodiert die Kopplungsstruktur zwischen den $n$ Zuständen. Während eine naive Betrachtung Zeilen und Spalten als gleichwertig ansieht, zeigt eine tiefere Analyse fundamentale Unterschiede in ihrer semantischen Bedeutung und rechnerischen Behandlung.
 	
 	\section{Semantische Asymmetrie}
 	
 	\begin{definition}[Zeilen- und Spalten-Semantik in Systemmatrizen]
-		FÃ¼r die Systemmatrix $A \in \mathbb{R}^{n \times n}$ eines linearen Systems $x_{t+1} = Ax_t$ gilt:
+		Für die Systemmatrix $A \in \mathbb{R}^{n \times n}$ eines linearen Systems $x_{t+1} = Ax_t$ gilt:
 		\begin{itemize}
-			\item \textbf{Zeile $i$}: Der Vektor $(A_{i1}, A_{i2}, \ldots, A_{in})$ beschreibt, wie Zustand $x_i$ sich aus allen anderen ZustÃ¤nden zusammensetzt
+			\item \textbf{Zeile $i$}: Der Vektor $(A_{i1}, A_{i2}, \ldots, A_{in})$ beschreibt, wie Zustand $x_i$ sich aus allen anderen Zuständen zusammensetzt
 			\begin{itemize}
-				\item Interpretation: "Zustand $i$ empfÃ¤ngt BeitrÃ¤ge von allen ZustÃ¤nden $j$"
+				\item Interpretation: "Zustand $i$ empfängt Beiträge von allen Zuständen $j$"
 				\item Semantik: \textbf{Aggregation} (many-to-one)
-				\item Charakterisierung: \textbf{EmpfÃ¤nger-Struktur}
-				\item Physikalische Bedeutung: Eingehende EinflÃ¼sse
+				\item Charakterisierung: \textbf{Empfänger-Struktur}
+				\item Physikalische Bedeutung: Eingehende Einflüsse
 			\end{itemize}
-			\item \textbf{Spalte $j$}: Der Vektor $(A_{1j}, A_{2j}, \ldots, A_{nj})^T$ beschreibt, wie Zustand $x_j$ alle anderen ZustÃ¤nde beeinflusst
+			\item \textbf{Spalte $j$}: Der Vektor $(A_{1j}, A_{2j}, \ldots, A_{nj})^T$ beschreibt, wie Zustand $x_j$ alle anderen Zustände beeinflusst
 			\begin{itemize}
-				\item Interpretation: "Zustand $j$ sendet BeitrÃ¤ge an alle ZustÃ¤nde $i$"
+				\item Interpretation: "Zustand $j$ sendet Beiträge an alle Zustände $i$"
 				\item Semantik: \textbf{Ausbreitung} (one-to-many)
 				\item Charakterisierung: \textbf{Sender-Struktur}
-				\item Physikalische Bedeutung: Ausgehende EinflÃ¼sse
+				\item Physikalische Bedeutung: Ausgehende Einflüsse
 			\end{itemize}
 		\end{itemize}
 	\end{definition}
 	
 	Diese Unterscheidung ist nicht nur konzeptionell, sondern hat direkte Auswirkungen auf die Berechnung der Zustandsentwicklung.
 	
-	\begin{lemma}[DualitÃ¤t der Zustandsevolution]
-		Die Berechnung des neuen Zustands $x_{t+1} = A \cdot x_t$ lÃ¤sst sich auf zwei Ã¤quivalente, aber konzeptionell unterschiedliche Weisen durchfÃ¼hren:
+	\begin{lemma}[Dualität der Zustandsevolution]
+		Die Berechnung des neuen Zustands $x_{t+1} = A \cdot x_t$ lässt sich auf zwei äquivalente, aber konzeptionell unterschiedliche Weisen durchführen:
 		
 		\textbf{(1) Zeilen-Perspektive (Aggregation)}:
-		FÃ¼r jeden Zustand $i \in \{1,\ldots,n\}$ berechne:
+		Für jeden Zustand $i \in \{1,\ldots,n\}$ berechne:
 		\[
 		x_i^{t+1} = \sum_{j=1}^{n} A_{ij} \cdot x_j^t
 		\]
-		Dies ist eine \textbf{gewichtete Aggregation} aller eingehenden EinflÃ¼sse. Der neue Wert von $x_i$ entsteht durch Sammeln und Gewichten aller BeitrÃ¤ge.
+		Dies ist eine \textbf{gewichtete Aggregation} aller eingehenden Einflüsse. Der neue Wert von $x_i$ entsteht durch Sammeln und Gewichten aller Beiträge.
 		
 		\textbf{(2) Spalten-Perspektive (Ausbreitung)}:
-		FÃ¼r jeden Zustand $j \in \{1,\ldots,n\}$ berechne seinen Beitrag zum Gesamtsystem:
+		Für jeden Zustand $j \in \{1,\ldots,n\}$ berechne seinen Beitrag zum Gesamtsystem:
 		\[
 		\Delta x^{t+1}_j = x_j^t \cdot \begin{pmatrix} A_{1j} \\ A_{2j} \\ \vdots \\ A_{nj} \end{pmatrix}
 		\]
-		und summiere alle BeitrÃ¤ge:
+		und summiere alle Beiträge:
 		\[
 		x^{t+1} = \sum_{j=1}^{n} \Delta x^{t+1}_j
 		\]
@@ -180,12 +180,12 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Die Ã„quivalenz folgt aus der DistributivitÃ¤t der Matrixmultiplikation. FÃ¼r die Zeilen-Perspektive gilt:
+		Die Äquivalenz folgt aus der Distributivität der Matrixmultiplikation. Für die Zeilen-Perspektive gilt:
 		\begin{align}
 			x^{t+1} &= A \cdot x^t \\
 			x_i^{t+1} &= \sum_{j=1}^n A_{ij} x_j^t
 		\end{align}
-		FÃ¼r die Spalten-Perspektive schreiben wir die Matrix als Summe von Rang-1-Matrizen:
+		Für die Spalten-Perspektive schreiben wir die Matrix als Summe von Rang-1-Matrizen:
 		\begin{align}
 			A &= \sum_{j=1}^n \mathbf{e}_j \mathbf{a}_j^T
 		\end{align}
@@ -196,67 +196,67 @@
 	\end{proof}
 	
 	\begin{beispiel}[Elektrisches Netzwerk]
-		Betrachten Sie ein elektrisches Netzwerk mit $n$ Knoten. Die Spannungen $x_i$ an den Knoten und die Leitwerte $G_{ij}$ zwischen den Knoten definieren ein lineares System. Die Systemmatrix enthÃ¤lt die Leitwerte.
+		Betrachten Sie ein elektrisches Netzwerk mit $n$ Knoten. Die Spannungen $x_i$ an den Knoten und die Leitwerte $G_{ij}$ zwischen den Knoten definieren ein lineares System. Die Systemmatrix enthält die Leitwerte.
 		
 		\textbf{Zeilen-Sicht (Kirchhoffsches Knotengesetz)}:
 		Die Spannung an Knoten $i$ ergibt sich aus dem Spannungsabgleich mit allen verbundenen Knoten:
 		\[
 		x_i^{t+1} = \sum_{j \text{ verbunden mit } i} G_{ij} (x_j^t - x_i^t) + x_i^t
 		\]
-		Dies ist eine Aggregation: Knoten $i$ "sammelt" die BeitrÃ¤ge aller Nachbarn.
+		Dies ist eine Aggregation: Knoten $i$ "sammelt" die Beiträge aller Nachbarn.
 		
 		\textbf{Spalten-Sicht (Ohmsches Gesetz)}:
-		Die Spannung $x_j$ an Knoten $j$ treibt StrÃ¶me in alle verbundenen Knoten:
+		Die Spannung $x_j$ an Knoten $j$ treibt Ströme in alle verbundenen Knoten:
 		\[
 		I_{ij} = G_{ij}(x_j^t - x_i^t)
 		\]
-		Jeder Knoten $j$ "sendet" StrÃ¶me basierend auf seiner Spannung.
+		Jeder Knoten $j$ "sendet" Ströme basierend auf seiner Spannung.
 		
 		Beide Sichtweisen sind physikalisch korrekt, aber konzeptionell different.
 	\end{beispiel}
 	
 	\begin{beispiel}[Populationsdynamik]
-		In einem System von $n$ miteinander interagierenden Populationen (z.B. RÃ¤uber-Beute) kodiert $A_{ij}$ den Einfluss von Population $j$ auf Population $i$.
+		In einem System von $n$ miteinander interagierenden Populationen (z.B. Räuber-Beute) kodiert $A_{ij}$ den Einfluss von Population $j$ auf Population $i$.
 		
-		\textbf{Zeilen-Sicht}: Die Wachstumsrate von Population $i$ hÃ¤ngt von allen anderen Populationen ab:
+		\textbf{Zeilen-Sicht}: Die Wachstumsrate von Population $i$ hängt von allen anderen Populationen ab:
 		\[
 		\frac{dx_i}{dt} = \sum_{j=1}^n A_{ij} x_j
 		\]
-		Population $i$ aggregiert alle Ã¶kologischen EinflÃ¼sse.
+		Population $i$ aggregiert alle ökologischen Einflüsse.
 		
-		\textbf{Spalten-Sicht}: Population $j$ beeinflusst das gesamte Ã–kosystem:
+		\textbf{Spalten-Sicht}: Population $j$ beeinflusst das gesamte Ökosystem:
 		\[
 		\text{Einfluss von } j = x_j \begin{pmatrix} A_{1j} \\ \vdots \\ A_{nj} \end{pmatrix}
 		\]
-		Eine dominante RÃ¤uberpopulation "sendet" ihren Einfluss an alle Beutepopulationen.
+		Eine dominante Räuberpopulation "sendet" ihren Einfluss an alle Beutepopulationen.
 	\end{beispiel}
 	
 	\section{Rechnerische Implikationen}
 	
 	Die semantische Asymmetrie hat direkte Auswirkungen auf die algorithmische Effizienz.
 	
-	\begin{satz}[Ã„quivalenz der BerechnungskomplexitÃ¤t fÃ¼r dichte Matrizen]
-		FÃ¼r eine dichte Matrix $A \in \mathbb{R}^{n \times n}$ und Vektor $x \in \mathbb{R}^n$ erfordern sowohl zeilen- als auch spalten-orientierte Berechnung von $y = Ax$ exakt:
+	\begin{satz}[Äquivalenz der Berechnungskomplexität für dichte Matrizen]
+		Für eine dichte Matrix $A \in \mathbb{R}^{n \times n}$ und Vektor $x \in \mathbb{R}^n$ erfordern sowohl zeilen- als auch spalten-orientierte Berechnung von $y = Ax$ exakt:
 		\[
 		T_{\text{ops}} = n^2 \text{ Multiplikationen} + n(n-1) \text{ Additionen} = O(n^2)
 		\]
 	\end{satz}
 	
-	FÃ¼r dichte Matrizen ist die Asymmetrie also rechnerisch nicht relevant. Aber fÃ¼r sparse Matrizen Ã¤ndert sich dies fundamental.
+	Für dichte Matrizen ist die Asymmetrie also rechnerisch nicht relevant. Aber für sparse Matrizen ändert sich dies fundamental.
 	
 	\section{Sparse Systemmatrizen}
 	
-	Viele reale Systeme haben sparse Kopplungsstrukturen: Jeder Zustand interagiert nur mit wenigen anderen. Dies fÃ¼hrt zu sparse Systemmatrizen mit $m = O(n)$ oder $m = O(n \log n)$ nicht-null EintrÃ¤gen statt $m = \Theta(n^2)$ fÃ¼r dichte Matrizen.
+	Viele reale Systeme haben sparse Kopplungsstrukturen: Jeder Zustand interagiert nur mit wenigen anderen. Dies führt zu sparse Systemmatrizen mit $m = O(n)$ oder $m = O(n \log n)$ nicht-null Einträgen statt $m = \Theta(n^2)$ für dichte Matrizen.
 	
-	\begin{definition}[In-Degree und Out-Degree fÃ¼r Systemmatrizen]
-		FÃ¼r eine Systemmatrix $A \in \mathbb{R}^{n \times n}$ mit numerischem Schwellwert $\tau > 0$ (typisch $\tau = 10^{-12}$ fÃ¼r double precision) definieren wir:
+	\begin{definition}[In-Degree und Out-Degree für Systemmatrizen]
+		Für eine Systemmatrix $A \in \mathbb{R}^{n \times n}$ mit numerischem Schwellwert $\tau > 0$ (typisch $\tau = 10^{-12}$ für double precision) definieren wir:
 		\begin{align}
 			\text{in-deg}(i) &= |\{j \in \{1,\ldots,n\} : |A_{ij}| > \tau\}| \\
-			&= \text{Anzahl signifikanter EintrÃ¤ge in Zeile } i
+			&= \text{Anzahl signifikanter Einträge in Zeile } i
 		\end{align}
 		\begin{align}
 			\text{out-deg}(j) &= |\{i \in \{1,\ldots,n\} : |A_{ij}| > \tau\}| \\
-			&= \text{Anzahl signifikanter EintrÃ¤ge in Spalte } j
+			&= \text{Anzahl signifikanter Einträge in Spalte } j
 		\end{align}
 		
 		Die durchschnittlichen Degrees sind:
@@ -264,25 +264,25 @@
 			\bar{d}_{\text{in}} &= \frac{1}{n} \sum_{i=1}^{n} \text{in-deg}(i) = \frac{m}{n} \\
 			\bar{d}_{\text{out}} &= \frac{1}{n} \sum_{j=1}^{n} \text{out-deg}(j) = \frac{m}{n}
 		\end{align}
-		wobei $m$ die Gesamtzahl nicht-null EintrÃ¤ge ist.
+		wobei $m$ die Gesamtzahl nicht-null Einträge ist.
 	\end{definition}
 	
-	FÃ¼r symmetrische Matrizen ($A = A^T$) gilt $\text{in-deg}(i) = \text{out-deg}(i)$ fÃ¼r alle $i$. FÃ¼r asymmetrische Matrizen kÃ¶nnen diese Werte jedoch stark divergieren.
+	Für symmetrische Matrizen ($A = A^T$) gilt $\text{in-deg}(i) = \text{out-deg}(i)$ für alle $i$. Für asymmetrische Matrizen können diese Werte jedoch stark divergieren.
 	
-	\begin{satz}[KomplexitÃ¤t der sparse Matrix-Vektor-Multiplikation]
-		FÃ¼r sparse Matrix $A$ mit $m$ nicht-null EintrÃ¤gen erfordert die Berechnung von $y = Ax$:
+	\begin{satz}[Komplexität der sparse Matrix-Vektor-Multiplikation]
+		Für sparse Matrix $A$ mit $m$ nicht-null Einträgen erfordert die Berechnung von $y = Ax$:
 		
 		\textbf{Zeilen-orientiert}:
 		\begin{itemize}
-			\item Iteriere Ã¼ber alle Zeilen $i = 1,\ldots,n$
-			\item FÃ¼r jede Zeile: $\text{in-deg}(i)$ Multiplikationen und Additionen
+			\item Iteriere über alle Zeilen $i = 1,\ldots,n$
+			\item Für jede Zeile: $\text{in-deg}(i)$ Multiplikationen und Additionen
 			\item Gesamtkosten: $\sum_{i=1}^n \text{in-deg}(i) = m$ Operationen
 		\end{itemize}
 		
 		\textbf{Spalten-orientiert}:
 		\begin{itemize}
-			\item Iteriere Ã¼ber alle Spalten $j = 1,\ldots,n$
-			\item FÃ¼r jede Spalte: $\text{out-deg}(j)$ Multiplikationen und Additionen
+			\item Iteriere über alle Spalten $j = 1,\ldots,n$
+			\item Für jede Spalte: $\text{out-deg}(j)$ Multiplikationen und Additionen
 			\item Gesamtkosten: $\sum_{j=1}^n \text{out-deg}(j) = m$ Operationen
 		\end{itemize}
 		
@@ -326,8 +326,8 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[Laufzeit fÃ¼r sparse Eingabevektoren]
-		Falls der Eingabevektor $x$ selbst sparse ist mit $s = |\{j : x_j \neq 0\}| \ll n$ nicht-null EintrÃ¤gen, dann hat Algorithmus \ref{alg:column-matvec-detailed} (spalten-orientiert) Laufzeit:
+	\begin{satz}[Laufzeit für sparse Eingabevektoren]
+		Falls der Eingabevektor $x$ selbst sparse ist mit $s = |\{j : x_j \neq 0\}| \ll n$ nicht-null Einträgen, dann hat Algorithmus \ref{alg:column-matvec-detailed} (spalten-orientiert) Laufzeit:
 		\[
 		T(n,s) = O\left(\sum_{j: x_j \neq 0} \text{out-deg}(j)\right) \leq O(s \cdot \bar{d}_{\text{out}})
 		\]
@@ -335,34 +335,34 @@
 	\end{satz}
 	
 	\begin{proof}
-		Die Ã¤uÃŸere Schleife iteriert Ã¼ber alle $n$ Spalten, aber die innere Schleife wird nur fÃ¼r die $s$ Spalten mit $x_j \neq 0$ ausgefÃ¼hrt. FÃ¼r jede solche Spalte $j$ werden $\text{out-deg}(j)$ Operationen durchgefÃ¼hrt. Die Gesamtlaufzeit ist daher:
+		Die äußere Schleife iteriert über alle $n$ Spalten, aber die innere Schleife wird nur für die $s$ Spalten mit $x_j \neq 0$ ausgeführt. Für jede solche Spalte $j$ werden $\text{out-deg}(j)$ Operationen durchgeführt. Die Gesamtlaufzeit ist daher:
 		\[
 		T = \sum_{j: x_j \neq 0} O(\text{out-deg}(j)) = O\left(\sum_{j: x_j \neq 0} \text{out-deg}(j)\right)
 		\]
-		Im Mittel Ã¼ber alle Spalten gilt $\mathbb{E}[\text{out-deg}(j)] = \bar{d}_{\text{out}}$, daher:
+		Im Mittel über alle Spalten gilt $\mathbb{E}[\text{out-deg}(j)] = \bar{d}_{\text{out}}$, daher:
 		\[
 		T \leq O(s \cdot \bar{d}_{\text{out}})
 		\]
 	\end{proof}
 	
-	Dies ist die zentrale Beobachtung: \textbf{FÃ¼r sparse Eingabevektoren ist die spalten-orientierte Berechnung Ã¼berlegen, da nur aktive Spalten verarbeitet werden mÃ¼ssen.}
+	Dies ist die zentrale Beobachtung: \textbf{Für sparse Eingabevektoren ist die spalten-orientierte Berechnung überlegen, da nur aktive Spalten verarbeitet werden müssen.}
 	
 	\section{Broadcasting-Systeme und Hub-Strukturen}
 	
-	Die Asymmetrie zwischen In- und Out-Degree ist besonders ausgeprÃ¤gt in Broadcasting-Systemen, bei denen wenige ZustÃ¤nde viele andere beeinflussen.
+	Die Asymmetrie zwischen In- und Out-Degree ist besonders ausgeprägt in Broadcasting-Systemen, bei denen wenige Zustände viele andere beeinflussen.
 	
 	\begin{definition}[Broadcasting-Systemmatrix]
-		Eine Systemmatrix $A \in \mathbb{R}^{n \times n}$ heiÃŸt Broadcasting-Matrix, falls eine Partition der ZustÃ¤nde in Broadcaster $B \subset \{1,\ldots,n\}$ und EmpfÃ¤nger $R = \{1,\ldots,n\} \setminus B$ existiert mit:
+		Eine Systemmatrix $A \in \mathbb{R}^{n \times n}$ heißt Broadcasting-Matrix, falls eine Partition der Zustände in Broadcaster $B \subset \{1,\ldots,n\}$ und Empfänger $R = \{1,\ldots,n\} \setminus B$ existiert mit:
 		\begin{itemize}
 			\item $|B| \ll n$ (wenige Broadcaster)
-			\item FÃ¼r $j \in B$: $\text{out-deg}(j) = \Theta(n)$ (Broadcaster beeinflussen viele)
-			\item FÃ¼r $j \in R$: $\text{out-deg}(j) = O(1)$ (EmpfÃ¤nger beeinflussen wenige)
+			\item Für $j \in B$: $\text{out-deg}(j) = \Theta(n)$ (Broadcaster beeinflussen viele)
+			\item Für $j \in R$: $\text{out-deg}(j) = O(1)$ (Empfänger beeinflussen wenige)
 			\item Resultierende Varianz: $\text{Var}[\text{out-deg}] \gg \bar{d}_{\text{out}}$
 		\end{itemize}
 	\end{definition}
 	
 	\begin{beispiel}[Neuronales Netz mit Hub-Neuronen]
-		Betrachten Sie ein kÃ¼nstliches neuronales Netz mit $n = 10.000$ Neuronen, von denen $|B| = 10$ Hub-Neuronen sind, die jeweils mit $5.000$ anderen Neuronen verbunden sind. Die restlichen $9.990$ normalen Neuronen haben durchschnittlich $10$ Verbindungen.
+		Betrachten Sie ein künstliches neuronales Netz mit $n = 10.000$ Neuronen, von denen $|B| = 10$ Hub-Neuronen sind, die jeweils mit $5.000$ anderen Neuronen verbunden sind. Die restlichen $9.990$ normalen Neuronen haben durchschnittlich $10$ Verbindungen.
 		
 		\textbf{Statistische Charakterisierung}:
 		\begin{align}
@@ -385,11 +385,11 @@
 			&\approx 24.850 \gg 15 = \bar{d}
 		\end{align}
 		
-		Die extreme Varianz zeigt, dass der Mittelwert die Struktur nicht adÃ¤quat beschreibt!
+		Die extreme Varianz zeigt, dass der Mittelwert die Struktur nicht adäquat beschreibt!
 	\end{beispiel}
 	
-	\begin{korollar}[Effizienz fÃ¼r sparse Aktivierungen]
-		Falls in einem Broadcasting-System nur wenige ZustÃ¤nde aktiv sind (typisch fÃ¼r neuronale Netze mit ReLU-Aktivierung), und diese \textbf{keine} Hub-Neuronen enthalten, dann ist die spalten-orientierte Berechnung dramatisch schneller:
+	\begin{korollar}[Effizienz für sparse Aktivierungen]
+		Falls in einem Broadcasting-System nur wenige Zustände aktiv sind (typisch für neuronale Netze mit ReLU-Aktivierung), und diese \textbf{keine} Hub-Neuronen enthalten, dann ist die spalten-orientierte Berechnung dramatisch schneller:
 		
 		Falls $s$ aktive Neuronen alle aus $R$ (normale Neuronen) mit Out-Degree $d_R = O(1)$:
 		\[
@@ -399,15 +399,15 @@
 		\[
 		T_{\text{zeilen}} = O(n \cdot \bar{d}_{\text{in}}) = O(n \cdot 15)
 		\]
-		Beschleunigung: Faktor $\frac{n \cdot 15}{s} = \frac{10.000 \cdot 15}{1.000} = 150$ fÃ¼r $s = 1.000$ aktive Neuronen!
+		Beschleunigung: Faktor $\frac{n \cdot 15}{s} = \frac{10.000 \cdot 15}{1.000} = 150$ für $s = 1.000$ aktive Neuronen!
 	\end{korollar}
 	
 	\section{Cache-Effizienz und Speicherzugriffsmuster}
 	
 	Die Wahl zwischen zeilen- und spalten-orientierter Berechnung hat nicht nur Auswirkungen auf die Anzahl der Operationen, sondern auch auf die Effizienz des Speicherzugriffs.
 	
-	\begin{lemma}[Speicherlayout und Cache-LokalitÃ¤t]
-		Moderne Speichersysteme laden Daten in Cache-Lines (typisch 64 Bytes = 8 doubles). Bei Zugriff auf $A_{ij}$ werden automatisch benachbarte EintrÃ¤ge in den Cache geladen:
+	\begin{lemma}[Speicherlayout und Cache-Lokalität]
+		Moderne Speichersysteme laden Daten in Cache-Lines (typisch 64 Bytes = 8 doubles). Bei Zugriff auf $A_{ij}$ werden automatisch benachbarte Einträge in den Cache geladen:
 		\begin{itemize}
 			\item \textbf{Row-Major-Speicherung} (C, C++, Python NumPy): $A_{i,j}, A_{i,j+1}, A_{i,j+2}, \ldots$ liegen konsekutiv
 			\item \textbf{Column-Major-Speicherung} (Fortran, MATLAB, Julia): $A_{i,j}, A_{i+1,j}, A_{i+2,j}, \ldots$ liegen konsekutiv
@@ -415,7 +415,7 @@
 	\end{lemma}
 	
 	\begin{satz}[Optimale Zugriffsreihenfolge]
-		FÃ¼r optimale Cache-Ausnutzung sollte die Berechnungsstrategie zum Speicherlayout passen:
+		Für optimale Cache-Ausnutzung sollte die Berechnungsstrategie zum Speicherlayout passen:
 		\begin{itemize}
 			\item Row-Major + Zeilen-orientiert: Cache-effizient (konsekutive Zugriffe)
 			\item Column-Major + Spalten-orientiert: Cache-effizient (konsekutive Zugriffe)
@@ -423,18 +423,18 @@
 			\item Column-Major + Zeilen-orientiert: Cache-ineffizient (Stride-Zugriffe)
 		\end{itemize}
 		
-		FÃ¼r sparse Matrizen in CSC-Format (Compressed Sparse Column) ist spalten-orientierte Berechnung um Faktor 2-5 schneller als zeilen-orientierte.
+		Für sparse Matrizen in CSC-Format (Compressed Sparse Column) ist spalten-orientierte Berechnung um Faktor 2-5 schneller als zeilen-orientierte.
 	\end{satz}
 	
 	\begin{beispiel}[Praktische Performance]
-		Auf einem Intel Xeon mit 32KB L1-Cache und 256KB L2-Cache wurde fÃ¼r eine sparse Matrix mit $n = 10.000$, $m = 150.000$ gemessen:
+		Auf einem Intel Xeon mit 32KB L1-Cache und 256KB L2-Cache wurde für eine sparse Matrix mit $n = 10.000$, $m = 150.000$ gemessen:
 		\begin{itemize}
 			\item Spalten-orientiert (CSC): 2.3ms
 			\item Zeilen-orientiert (CSR): 5.7ms
 			\item Speedup: Faktor 2.48
 		\end{itemize}
 		
-		FÃ¼r dieselbe Matrix mit sparse Eingabevektor ($s = 1000$ aktive EintrÃ¤ge):
+		Für dieselbe Matrix mit sparse Eingabevektor ($s = 1000$ aktive Einträge):
 		\begin{itemize}
 			\item Spalten-orientiert: 0.31ms (nutzt Sparsity aus)
 			\item Zeilen-orientiert: 5.8ms (muss alle Zeilen durchlaufen)
@@ -444,12 +444,12 @@
 	
 	\chapter{Gerichtete Kopplungsstrukturen}
 	
-	Viele physikalische, biologische und technische Systeme besitzen inhÃ¤rent gerichtete Kopplungen. Information oder Energie flieÃŸt bevorzugt in eine Richtung. Diese Richtungsasymmetrie manifestiert sich in charakteristischen Mustern der Systemmatrix.
+	Viele physikalische, biologische und technische Systeme besitzen inhärent gerichtete Kopplungen. Information oder Energie fließt bevorzugt in eine Richtung. Diese Richtungsasymmetrie manifestiert sich in charakteristischen Mustern der Systemmatrix.
 	
 	\section{Hierarchische Systeme}
 	
 	\begin{definition}[Hierarchisches System]
-		Ein System mit Systemmatrix $A \in \mathbb{R}^{n \times n}$ heiÃŸt hierarchisch, falls die ZustÃ¤nde in $h$ Ebenen $L_1, L_2, \ldots, L_h$ partitioniert werden kÃ¶nnen, sodass signifikante Kopplungen nur von Ebene $L_k$ zu $L_{k+1}$ existieren.
+		Ein System mit Systemmatrix $A \in \mathbb{R}^{n \times n}$ heißt hierarchisch, falls die Zustände in $h$ Ebenen $L_1, L_2, \ldots, L_h$ partitioniert werden können, sodass signifikante Kopplungen nur von Ebene $L_k$ zu $L_{k+1}$ existieren.
 		
 		Formal: Nach geeigneter Permutation hat $A$ Block-Dreiecksstruktur
 		\[
@@ -465,19 +465,19 @@
 	\end{definition}
 	
 	\begin{satz}[Nilpotenz hierarchischer Matrizen]
-		FÃ¼r eine hierarchische Matrix $A$ mit $h$ Ebenen gilt:
+		Für eine hierarchische Matrix $A$ mit $h$ Ebenen gilt:
 		\[
-		A^k = 0 \quad \text{fÃ¼r alle } k \geq h
+		A^k = 0 \quad \text{für alle } k \geq h
 		\]
 		Die Matrix ist nilpotent mit Nilpotenzindex $h$.
 	\end{satz}
 	
 	\begin{proof}
-		Durch vollstÃ¤ndige Induktion Ã¼ber die Anzahl der Ebenen.
+		Durch vollständige Induktion über die Anzahl der Ebenen.
 		
-		\textbf{Induktionsanfang}: FÃ¼r $h = 1$ (eine Ebene) ist $A = 0$ und $A^1 = 0$.
+		\textbf{Induktionsanfang}: Für $h = 1$ (eine Ebene) ist $A = 0$ und $A^1 = 0$.
 		
-		\textbf{Induktionsschritt}: Sei die Aussage fÃ¼r $h$ Ebenen erfÃ¼llt. Betrachte hierarchische Matrix mit $h+1$ Ebenen. Die Matrix hat die Form:
+		\textbf{Induktionsschritt}: Sei die Aussage für $h$ Ebenen erfüllt. Betrachte hierarchische Matrix mit $h+1$ Ebenen. Die Matrix hat die Form:
 		\[
 		A = \begin{pmatrix}
 			0 & B \\
@@ -486,7 +486,7 @@
 		\]
 		wobei $C$ hierarchisch mit $h$ Ebenen ist (nach IV: $C^h = 0$) und $B$ beliebig.
 		
-		FÃ¼r $A^2$ gilt:
+		Für $A^2$ gilt:
 		\[
 		A^2 = \begin{pmatrix}
 			0 & B \\
@@ -500,7 +500,7 @@
 		\end{pmatrix}
 		\]
 		
-		Allgemein fÃ¼r $A^k$:
+		Allgemein für $A^k$:
 		\[
 		A^k = \begin{pmatrix}
 			0 & BC^{k-1} \\
@@ -508,21 +508,21 @@
 		\end{pmatrix}
 		\]
 		
-		FÃ¼r $k = h+1$ gilt $C^{h+1} = C \cdot C^h = C \cdot 0 = 0$ und $BC^h = B \cdot 0 = 0$, also $A^{h+1} = 0$.
+		Für $k = h+1$ gilt $C^{h+1} = C \cdot C^h = C \cdot 0 = 0$ und $BC^h = B \cdot 0 = 0$, also $A^{h+1} = 0$.
 	\end{proof}
 	
 	\begin{korollar}[Effizienz der Zustandsberechnung]
-		FÃ¼r hierarchisches System gilt:
+		Für hierarchisches System gilt:
 		\[
 		x_t = A^t \cdot x_0 = \begin{cases}
 			A^t \cdot x_0 & \text{falls } t < h \\
 			0 & \text{falls } t \geq h
 		\end{cases}
 		\]
-		Die Berechnung von $x_t$ erfordert nur $\min(t, h-1)$ Matrix-Vektor-Multiplikationen. FÃ¼r $t \geq h$ ist das System im Nullzustand.
+		Die Berechnung von $x_t$ erfordert nur $\min(t, h-1)$ Matrix-Vektor-Multiplikationen. Für $t \geq h$ ist das System im Nullzustand.
 	\end{korollar}
 	
-	Dies hat fundamentale Konsequenzen: Hierarchische Systeme haben rein transiente Dynamik ohne stationÃ¤re ZustÃ¤nde oder Oszillationen.
+	Dies hat fundamentale Konsequenzen: Hierarchische Systeme haben rein transiente Dynamik ohne stationäre Zustände oder Oszillationen.
 	
 	\begin{beispiel}[Feed-Forward-Neuronales Netz]
 		Ein Feed-Forward-Netz mit $L$ Schichten und $n_l$ Neuronen pro Schicht ist ein hierarchisches System mit $h = L$.
@@ -543,7 +543,7 @@
 		x_L = A^{L-1} \cdot x_0
 		\]
 		
-		Nach $L-1$ Schritten hat die Information alle Schichten durchlaufen und die Ausgabeschicht erreicht. Weitere Iterationen wÃ¼rden nur Nullen produzieren.
+		Nach $L-1$ Schritten hat die Information alle Schichten durchlaufen und die Ausgabeschicht erreicht. Weitere Iterationen würden nur Nullen produzieren.
 	\end{beispiel}
 	
 	\begin{beispiel}[Produktionskette]
@@ -556,13 +556,13 @@
 			\item $L_h$: Endprodukte
 		\end{itemize}
 		
-		Material flieÃŸt strikt von $L_k$ zu $L_{k+1}$. Nach $h$ Zeitschritten ist der gesamte Input verarbeitet.
+		Material fließt strikt von $L_k$ zu $L_{k+1}$. Nach $h$ Zeitschritten ist der gesamte Input verarbeitet.
 	\end{beispiel}
 	
 	\section{Asymmetrie in hierarchischen Systemen}
 	
 	\begin{lemma}[Extreme In-/Out-Degree-Asymmetrie nach Ebene]
-		In einem hierarchischen System mit gleichmÃ¤ÃŸiger Verteilung der ZustÃ¤nde ($n_k \approx n/h$ fÃ¼r alle Ebenen) und dichten Kopplungen zwischen Ebenen gilt:
+		In einem hierarchischen System mit gleichmäßiger Verteilung der Zustände ($n_k \approx n/h$ für alle Ebenen) und dichten Kopplungen zwischen Ebenen gilt:
 		
 		\textbf{Eingabe-Ebene} ($L_1$):
 		\begin{align}
@@ -576,7 +576,7 @@
 			\bar{d}_{\text{out}}^{(h)} &= 0 \quad \text{(keine ausgehenden Verbindungen)}
 		\end{align}
 		
-		\textbf{Mittlere Ebenen} ($L_k$ fÃ¼r $1 < k < h$):
+		\textbf{Mittlere Ebenen} ($L_k$ für $1 < k < h$):
 		\begin{align}
 			\bar{d}_{\text{in}}^{(k)} &\approx \bar{d}_{\text{out}}^{(k)} \approx \Theta(n/h)
 		\end{align}
@@ -592,7 +592,7 @@
 		\begin{algorithmic}[1]
 			\State $y \gets \mathbf{0} \in \mathbb{R}^n$
 			\For{$k = 1$ \textbf{to} $h-1$}
-			\State Bestimme aktive ZustÃ¤nde in $L_k$: $S_k = \{j \in L_k : |x_j| > \tau\}$
+			\State Bestimme aktive Zustände in $L_k$: $S_k = \{j \in L_k : |x_j| > \tau\}$
 			\State $\text{sparsity} \gets |S_k| / |L_k|$
 			\If{$\text{sparsity} < 0.5$}
 			\State \textbf{Spalten-priorisiert}: Verarbeite nur Spalten $j \in S_k$
@@ -614,22 +614,22 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[AdaptivitÃ¤t zahlt sich aus]
-		Algorithmus \ref{alg:layer-adaptive} wÃ¤hlt fÃ¼r jede Ebene die optimale Strategie. FÃ¼r sparse Aktivierungen in allen Ebenen (typisch $\text{sparsity} \approx 0.1$) ergibt sich Gesamtlaufzeit:
+	\begin{satz}[Adaptivität zahlt sich aus]
+		Algorithmus \ref{alg:layer-adaptive} wählt für jede Ebene die optimale Strategie. Für sparse Aktivierungen in allen Ebenen (typisch $\text{sparsity} \approx 0.1$) ergibt sich Gesamtlaufzeit:
 		\[
 		T = \sum_{k=1}^{h-1} O(|S_k| \cdot |L_{k+1}|) = O\left(\sum_{k=1}^{h-1} 0.1 \cdot \frac{n}{h} \cdot \frac{n}{h}\right) = O\left(\frac{0.1 \cdot n^2}{h}\right)
 		\]
-		Beschleunigung gegenÃ¼ber naiver Berechnung: Faktor $10 \cdot h$.
+		Beschleunigung gegenüber naiver Berechnung: Faktor $10 \cdot h$.
 		
-		FÃ¼r $h = 10$ Ebenen: Faktor 100!
+		Für $h = 10$ Ebenen: Faktor 100!
 	\end{satz}
 	
 	\section{Azyklische Systeme}
 	
 	\begin{definition}[Azyklisches System]
-		Ein System mit Systemmatrix $A \in \mathbb{R}^{n \times n}$ heiÃŸt azyklisch (oder DAG-strukturiert), falls eine Permutationsmatrix $P$ existiert, sodass $P^T A P$ strikt obere Dreiecksmatrix ist (alle DiagonaleintrÃ¤ge sind Null).
+		Ein System mit Systemmatrix $A \in \mathbb{R}^{n \times n}$ heißt azyklisch (oder DAG-strukturiert), falls eine Permutationsmatrix $P$ existiert, sodass $P^T A P$ strikt obere Dreiecksmatrix ist (alle Diagonaleinträge sind Null).
 		
-		Ã„quivalent: Der zugehÃ¶rige gerichtete Graph enthÃ¤lt keine gerichteten Zyklen.
+		Äquivalent: Der zugehörige gerichtete Graph enthält keine gerichteten Zyklen.
 	\end{definition}
 	
 	\begin{satz}[Charakterisierung durch Eigenwerte]
@@ -637,23 +637,23 @@
 	\end{satz}
 	
 	\begin{proof}
-		"$\Rightarrow$": Falls $A$ azyklisch, dann existiert $P$ mit $\tilde{A} = P^T A P$ strikt obere Dreiecksmatrix. FÃ¼r obere Dreiecksmatrizen stehen die Eigenwerte auf der Diagonale. Da $\tilde{A}_{ii} = 0$ fÃ¼r alle $i$, sind alle Eigenwerte Null.
+		"$\Rightarrow$": Falls $A$ azyklisch, dann existiert $P$ mit $\tilde{A} = P^T A P$ strikt obere Dreiecksmatrix. Für obere Dreiecksmatrizen stehen die Eigenwerte auf der Diagonale. Da $\tilde{A}_{ii} = 0$ für alle $i$, sind alle Eigenwerte Null.
 		
-		Da $A$ und $\tilde{A}$ Ã¤hnlich sind, haben sie dieselben Eigenwerte.
+		Da $A$ und $\tilde{A}$ ähnlich sind, haben sie dieselben Eigenwerte.
 		
 		"$\Leftarrow$": Falls alle Eigenwerte Null sind, ist $A$ nilpotent (Cayley-Hamilton). Eine nilpotente Matrix kann in obere Dreiecksform mit Null-Diagonale gebracht werden.
 	\end{proof}
 	
 	\begin{lemma}[Transiente Dynamik azyklischer Systeme]
-		In einem azyklischen System mit $n$ ZustÃ¤nden gilt:
+		In einem azyklischen System mit $n$ Zuständen gilt:
 		\[
-		x_t = A^t x_0 = 0 \quad \text{fÃ¼r alle } t \geq n
+		x_t = A^t x_0 = 0 \quad \text{für alle } t \geq n
 		\]
 		Die Dynamik ist rein transient: Nach endlich vielen Schritten erreicht jeder Startzustand den Nullzustand.
 	\end{lemma}
 	
 	\begin{proof}
-		Da alle Eigenwerte Null sind, ist die charakteristische Gleichung $\lambda^n = 0$. Nach Cayley-Hamilton gilt $A^n = 0$, also $x_t = A^t x_0 = 0$ fÃ¼r $t \geq n$.
+		Da alle Eigenwerte Null sind, ist die charakteristische Gleichung $\lambda^n = 0$. Nach Cayley-Hamilton gilt $A^n = 0$, also $x_t = A^t x_0 = 0$ für $t \geq n$.
 	\end{proof}
 	
 	\begin{beispiel}[Informationsfluss in Feed-Forward-Netzwerken]
@@ -665,15 +665,15 @@
 			\item Effiziente Berechnung durch topologische Sortierung
 		\end{itemize}
 		
-		Im Gegensatz dazu kÃ¶nnen rekurrente Netze (RNNs) Zyklen enthalten, was zu komplexem Langzeitverhalten fÃ¼hrt, aber auch Training erschwert.
+		Im Gegensatz dazu können rekurrente Netze (RNNs) Zyklen enthalten, was zu komplexem Langzeitverhalten führt, aber auch Training erschwert.
 	\end{beispiel}
 	
 	\section{Zyklische Systeme und Feedback}
 	
-	Im Gegensatz zu azyklischen Systemen besitzen zyklische Systeme RÃ¼ckkopplungen, die zu komplexem Langzeitverhalten fÃ¼hren kÃ¶nnen.
+	Im Gegensatz zu azyklischen Systemen besitzen zyklische Systeme Rückkopplungen, die zu komplexem Langzeitverhalten führen können.
 	
 	\begin{definition}[Zyklisches System]
-		Ein System heiÃŸt zyklisch, falls mindestens ein gerichteter Zyklus in der assoziierten Graphstruktur existiert, d.h. es gibt mindestens einen Zustand $i$ und $k \geq 1$ mit $(A^k)_{ii} \neq 0$.
+		Ein System heißt zyklisch, falls mindestens ein gerichteter Zyklus in der assoziierten Graphstruktur existiert, d.h. es gibt mindestens einen Zustand $i$ und $k \geq 1$ mit $(A^k)_{ii} \neq 0$.
 	\end{definition}
 	
 	\begin{lemma}[Persistenz der Dynamik]
@@ -684,16 +684,16 @@
 		Die Dynamik persistiert unbegrenzt (Oszillationen oder Divergenz).
 	\end{lemma}
 	
-	FÃ¼r zyklische Systeme ist die Asymmetrie zwischen Zeilen und Spalten subtiler, da ZustÃ¤nde sich gegenseitig beeinflussen und Information im System zirkuliert.
+	Für zyklische Systeme ist die Asymmetrie zwischen Zeilen und Spalten subtiler, da Zustände sich gegenseitig beeinflussen und Information im System zirkuliert.
 	
 	\chapter{Anwendungen auf neuronale Netze}
 	
-	Die asymmetrische Struktur von Systemmatrizen findet direkte Anwendung in kÃ¼nstlichen neuronalen Netzen. Die Gewichtsmatrizen kodieren die InformationsflÃ¼sse zwischen Neuronen, und deren Struktur bestimmt die Effizienz der Berechnung.
+	Die asymmetrische Struktur von Systemmatrizen findet direkte Anwendung in künstlichen neuronalen Netzen. Die Gewichtsmatrizen kodieren die Informationsflüsse zwischen Neuronen, und deren Struktur bestimmt die Effizienz der Berechnung.
 	
 	\section{Neuronale Netze als dynamische Systeme}
 	
 	\begin{definition}[Neuronales Netz als dynamisches System]
-		Ein kÃ¼nstliches neuronales Netz mit $L$ Schichten und Gewichtsmatrizen $W_1 \in \mathbb{R}^{n_1 \times n_0}, W_2 \in \mathbb{R}^{n_2 \times n_1}, \ldots, W_{L-1} \in \mathbb{R}^{n_{L-1} \times n_{L-2}}$ kann als hierarchisches dynamisches System modelliert werden.
+		Ein künstliches neuronales Netz mit $L$ Schichten und Gewichtsmatrizen $W_1 \in \mathbb{R}^{n_1 \times n_0}, W_2 \in \mathbb{R}^{n_2 \times n_1}, \ldots, W_{L-1} \in \mathbb{R}^{n_{L-1} \times n_{L-2}}$ kann als hierarchisches dynamisches System modelliert werden.
 		
 		Die Aktivierung der Schicht $l+1$ ist:
 		\[
@@ -701,7 +701,7 @@
 		\]
 		wobei $\sigma : \mathbb{R} \to \mathbb{R}$ die (komponentenweise angewendete) Aktivierungsfunktion und $b_l \in \mathbb{R}^{n_l}$ der Bias-Vektor ist.
 		
-		FÃ¼r die Analyse der Gewichtsstruktur betrachten wir die linearisierte Version (relevant fÃ¼r kleine Aktivierungen oder lineare Aktivierung):
+		Für die Analyse der Gewichtsstruktur betrachten wir die linearisierte Version (relevant für kleine Aktivierungen oder lineare Aktivierung):
 		\[
 		a_{l+1} \approx W_l \cdot a_l
 		\]
@@ -714,7 +714,7 @@
 		\begin{itemize}
 			\item Pruning-Techniken entfernen bis zu 90\% der Gewichte
 			\item Strukturiertes Pruning entfernt ganze Neuronen
-			\item Sparse Gewichtsmatrizen $W_l$ mit $10\%$ - $30\%$ nicht-null EintrÃ¤gen
+			\item Sparse Gewichtsmatrizen $W_l$ mit $10\%$ - $30\%$ nicht-null Einträgen
 		\end{itemize}
 		
 		\textbf{Aktivierungs-Sparsity}:
@@ -726,26 +726,26 @@
 	\end{satz}
 	
 	\begin{beispiel}[ResNet-50 Aktivierungsmuster]
-		FÃ¼r ResNet-50 auf ImageNet wurde empirisch gemessen:
+		Für ResNet-50 auf ImageNet wurde empirisch gemessen:
 		\begin{itemize}
 			\item Durchschnittliche Aktivierungs-Sparsity: 73\%
-			\item In frÃ¼hen Schichten: $\approx 50\%$ Sparsity
+			\item In frühen Schichten: $\approx 50\%$ Sparsity
 			\item In tiefen Schichten: $\approx 85\%$ Sparsity
 			\item Nach Pruning der Gewichte (90\% entfernt): Sparsity kombiniert $\approx 97\%$
 		\end{itemize}
 		
-		Dies bedeutet: Von $n \times m$ mÃ¶glichen Operationen werden nur $\approx 3\%$ tatsÃ¤chlich benÃ¶tigt!
+		Dies bedeutet: Von $n \times m$ möglichen Operationen werden nur $\approx 3\%$ tatsächlich benötigt!
 	\end{beispiel}
 	
 	\section{Sparse Forward-Propagation}
 	
 	\begin{satz}[Asymmetrie in Gewichtsmatrizen neuronaler Netze]
-		FÃ¼r ein neuronales Netz mit sparse Aktivierungen (z.B. ReLU mit 80\% Nullen) gilt:
+		Für ein neuronales Netz mit sparse Aktivierungen (z.B. ReLU mit 80\% Nullen) gilt:
 		\begin{itemize}
 			\item Die Anzahl aktiver Neuronen in Schicht $l$ ist $s_l = (1-p) \cdot n_l$ wobei $p \approx 0.8$ die Sparsity ist
 			\item Die spalten-priorisierte Forward-Propagation verarbeitet nur aktive Neuronen
-			\item Theoretische Beschleunigung: Faktor $1/p \approx 5$ fÃ¼r $p = 0.8$
-			\item Praktische Beschleunigung: Faktor $3-10$ (abhÃ¤ngig von Implementierung und Hardware)
+			\item Theoretische Beschleunigung: Faktor $1/p \approx 5$ für $p = 0.8$
+			\item Praktische Beschleunigung: Faktor $3-10$ (abhängig von Implementierung und Hardware)
 		\end{itemize}
 	\end{satz}
 	
@@ -760,7 +760,7 @@
 			\For{$l = 1$ \textbf{to} $L-1$}
 			\State Identifiziere aktive Neuronen: $S_l \gets \{j : |a_j| > \tau\}$
 			\State $\text{activePattern}[l] \gets S_l$
-			\State Initialisiere nÃ¤chste Aktivierung: $a_{\text{next}} \gets b_l$ \Comment{Start mit Bias}
+			\State Initialisiere nächste Aktivierung: $a_{\text{next}} \gets b_l$ \Comment{Start mit Bias}
 			\For{$j \in S_l$} \Comment{Nur aktive Neuronen}
 			\State $\text{contribution} \gets a_j$
 			\For{$i \in \text{NonZeroRows}(\text{column}_j(W_l))$} \Comment{Sparse Gewichte}
@@ -773,8 +773,8 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[KomplexitÃ¤tsanalyse Sparse Forward-Propagation]
-		FÃ¼r ein Netz mit $L$ Schichten, $n$ Neuronen pro Schicht, Aktivierungs-Sparsity $p_a$ und Gewichts-Sparsity $p_w$ betrÃ¤gt die Laufzeit von Algorithmus \ref{alg:sparse-forward-detailed}:
+	\begin{satz}[Komplexitätsanalyse Sparse Forward-Propagation]
+		Für ein Netz mit $L$ Schichten, $n$ Neuronen pro Schicht, Aktivierungs-Sparsity $p_a$ und Gewichts-Sparsity $p_w$ beträgt die Laufzeit von Algorithmus \ref{alg:sparse-forward-detailed}:
 		\[
 		T_{\text{sparse}} = O\left( L \cdot (1-p_a) \cdot n \cdot (1-p_w) \cdot n \right) = O(L \cdot (1-p_a)(1-p_w) \cdot n^2)
 		\]
@@ -789,14 +789,14 @@
 		\text{Speedup} = \frac{T_{\text{dense}}}{T_{\text{sparse}}} = \frac{1}{(1-p_a)(1-p_w)}
 		\]
 		
-		FÃ¼r $p_a = 0.8$ und $p_w = 0.9$:
+		Für $p_a = 0.8$ und $p_w = 0.9$:
 		\[
 		\text{Speedup} = \frac{1}{0.2 \cdot 0.1} = \frac{1}{0.02} = 50\times
 		\]
 	\end{satz}
 	
 	\begin{korollar}[Praktische Beschleunigung]
-		FÃ¼r ein typisches Deep Learning Modell mit:
+		Für ein typisches Deep Learning Modell mit:
 		\begin{itemize}
 			\item $L = 50$ Schichten
 			\item $n = 1000$ Neuronen pro Schicht
@@ -809,7 +809,7 @@
 		\text{Speedup} = \frac{1}{1-0.7} = \frac{1}{0.3} \approx 3.33\times
 		\]
 		
-		Mit zusÃ¤tzlichem Gewichts-Pruning ($p_w = 0.5$):
+		Mit zusätzlichem Gewichts-Pruning ($p_w = 0.5$):
 		\[
 		\text{Speedup} = \frac{1}{0.3 \cdot 0.5} = \frac{1}{0.15} \approx 6.67\times
 		\]
@@ -817,7 +817,7 @@
 	
 	\section{Backpropagation und transponierte Asymmetrie}
 	
-	Die Backpropagation berechnet Gradienten durch RÃ¼ckwÃ¤rtspropagierung der Fehler. Dies erfordert Multiplikation mit transponierten Gewichtsmatrizen.
+	Die Backpropagation berechnet Gradienten durch Rückwärtspropagierung der Fehler. Dies erfordert Multiplikation mit transponierten Gewichtsmatrizen.
 	
 	\begin{lemma}[Asymmetrie-Umkehr durch Transposition]
 		Sei $W \in \mathbb{R}^{m \times n}$ eine Gewichtsmatrix. Die Transposition $W^T \in \mathbb{R}^{n \times m}$ vertauscht die Rollen von Zeilen und Spalten:
@@ -829,62 +829,62 @@
 		\end{align}
 	\end{lemma}
 	
-	\begin{satz}[Optimale Strategie fÃ¼r Forward/Backward Pass]
-		FÃ¼r ein neuronales Netz mit sparse Aktivierungen ist die optimale Berechnungsstrategie:
+	\begin{satz}[Optimale Strategie für Forward/Backward Pass]
+		Für ein neuronales Netz mit sparse Aktivierungen ist die optimale Berechnungsstrategie:
 		
 		\textbf{Forward Pass}: 
 		\begin{itemize}
 			\item Gegeben: Aktivierungsvektor $a_l$ (sparse)
 			\item Berechne: $a_{l+1} = W_l \cdot a_l$
 			\item Strategie: Spalten-priorisiert (nutzt Sparsity von $a_l$ aus)
-			\item Speicherformat: CSC (Compressed Sparse Column) fÃ¼r $W_l$
+			\item Speicherformat: CSC (Compressed Sparse Column) für $W_l$
 		\end{itemize}
 		
 		\textbf{Backward Pass}:
 		\begin{itemize}
-			\item Gegeben: Fehlervektor $\delta_{l+1}$ (typisch sparse oder dÃ¼nn besetzt)
+			\item Gegeben: Fehlervektor $\delta_{l+1}$ (typisch sparse oder dünn besetzt)
 			\item Berechne: $\delta_l = W_l^T \cdot \delta_{l+1}$
 			\item Strategie: Zeilen-priorisiert auf $W^T$ $\equiv$ Spalten-priorisiert auf $W$
-			\item Speicherformat: CSC fÃ¼r $W_l$ (funktioniert fÃ¼r beide Richtungen!)
+			\item Speicherformat: CSC für $W_l$ (funktioniert für beide Richtungen!)
 		\end{itemize}
 		
-		Beide PÃ¤sse kÃ¶nnen dieselbe Datenstruktur verwenden, was Speicher spart und Cache-LokalitÃ¤t verbessert.
+		Beide Pässe können dieselbe Datenstruktur verwenden, was Speicher spart und Cache-Lokalität verbessert.
 	\end{satz}
 	
 	\chapter{Matrixexponentialfunktion und kontinuierliche Systeme}
 	
-	WÃ¤hrend diskrete Systeme durch Matrixpotenzen $A^k$ beschrieben werden, folgen kontinuierliche Systeme der Differentialgleichung:
+	Während diskrete Systeme durch Matrixpotenzen $A^k$ beschrieben werden, folgen kontinuierliche Systeme der Differentialgleichung:
 	\[
 	\frac{dx}{dt} = A x
 	\]
-	Die LÃ¶sung ist gegeben durch die Matrixexponentialfunktion:
+	Die Lösung ist gegeben durch die Matrixexponentialfunktion:
 	\[
 	x(t) = e^{At} x_0
 	\]
 	
-	Die zentrale Frage ist: Lassen sich die Erkenntnisse Ã¼ber effiziente Matrixmultiplikation auf die Berechnung von $e^{At}$ Ã¼bertragen?
+	Die zentrale Frage ist: Lassen sich die Erkenntnisse über effiziente Matrixmultiplikation auf die Berechnung von $e^{At}$ übertragen?
 	
 	\section{Taylor-Entwicklung der Matrixexponentialfunktion}
 	
 	\begin{definition}[Matrixexponential]
-		FÃ¼r eine quadratische Matrix $A \in \mathbb{R}^{n \times n}$ ist die Matrixexponentialfunktion definiert als:
+		Für eine quadratische Matrix $A \in \mathbb{R}^{n \times n}$ ist die Matrixexponentialfunktion definiert als:
 		\[
 		e^{At} = \sum_{k=0}^{\infty} \frac{(At)^k}{k!} = I + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \frac{(At)^4}{4!} + \cdots
 		\]
-		Diese Reihe konvergiert fÃ¼r alle $A$ und $t$.
+		Diese Reihe konvergiert für alle $A$ und $t$.
 	\end{definition}
 	
 	Die Taylor-Entwicklung erfordert die Berechnung von Matrixpotenzen -- genau wie die diskrete Systemanalyse!
 	
 	\begin{satz}[Konvergenz der Taylor-Reihe]
-		FÃ¼r beliebige Matrix $A \in \mathbb{R}^{n \times n}$ und $t \in \mathbb{R}$ konvergiert die Taylor-Reihe absolut:
+		Für beliebige Matrix $A \in \mathbb{R}^{n \times n}$ und $t \in \mathbb{R}$ konvergiert die Taylor-Reihe absolut:
 		\[
 		\|e^{At}\| \leq e^{\|A\| \cdot |t|}
 		\]
 	\end{satz}
 	
 	\begin{proof}
-		Mit der SubmultiplikativitÃ¤t der Matrixnorm:
+		Mit der Submultiplikativität der Matrixnorm:
 		\begin{align}
 			\left\| \sum_{k=0}^{\infty} \frac{(At)^k}{k!} \right\| &\leq \sum_{k=0}^{\infty} \frac{\|(At)^k\|}{k!} \\
 			&\leq \sum_{k=0}^{\infty} \frac{\|A\|^k |t|^k}{k!} \\
@@ -893,24 +893,24 @@
 	\end{proof}
 	
 	\begin{satz}[Approximation durch Trunkierung]
-		FÃ¼r gegebene Genauigkeit $\epsilon > 0$ und Matrix $A$ existiert $K = K(A, t, \epsilon)$ mit:
+		Für gegebene Genauigkeit $\epsilon > 0$ und Matrix $A$ existiert $K = K(A, t, \epsilon)$ mit:
 		\[
 		\left\| e^{At} - \sum_{k=0}^{K} \frac{(At)^k}{k!} \right\| < \epsilon
 		\]
 		
-		FÃ¼r kleine $t$ (z.B. $\|At\| < 1$) ist bereits $K = 5$ oft ausreichend fÃ¼r Maschinengenauigkeit.
+		Für kleine $t$ (z.B. $\|At\| < 1$) ist bereits $K = 5$ oft ausreichend für Maschinengenauigkeit.
 	\end{satz}
 	
 	\begin{beispiel}[Praktische Wahl von $K$]
-		FÃ¼r Systemmatrix $A$ mit $\|A\|_2 = 10$ und Zeitschritt $t = 0.01$:
+		Für Systemmatrix $A$ mit $\|A\|_2 = 10$ und Zeitschritt $t = 0.01$:
 		\begin{align}
 			\|At\| &= 0.1 \\
 			\text{Fehler nach } K=5: \quad \epsilon &\approx \frac{(0.1)^6}{6!} = \frac{10^{-6}}{720} \approx 1.4 \times 10^{-9}
 		\end{align}
 		
-		Dies ist ausreichend fÃ¼r double precision ($\approx 10^{-16}$ relative Genauigkeit).
+		Dies ist ausreichend für double precision ($\approx 10^{-16}$ relative Genauigkeit).
 		
-		FÃ¼r grÃ¶ÃŸere $t$ oder steife Systeme ist $K$ grÃ¶ÃŸer, oder man verwendet Skalierungs-Techniken: Berechne $e^{At/m}$ fÃ¼r groÃŸes $m$, dann $e^{At} = (e^{At/m})^m$.
+		Für größere $t$ oder steife Systeme ist $K$ größer, oder man verwendet Skalierungs-Techniken: Berechne $e^{At/m}$ für großes $m$, dann $e^{At} = (e^{At/m})^m$.
 	\end{beispiel}
 	
 	\section{Verbindung zu Matrixpotenzen}
@@ -920,7 +920,7 @@
 	I, At, (At)^2, (At)^3, \ldots, (At)^K
 	\]
 	
-	Diese kÃ¶nnen induktiv berechnet werden:
+	Diese können induktiv berechnet werden:
 	\begin{align}
 		M_0 &= I \\
 		M_1 &= At \\
@@ -933,17 +933,17 @@
 	\begin{satz}[Laufzeit der Taylor-Approximation]
 		Die Berechnung von $e^{At} \approx \sum_{k=0}^K \frac{(At)^k}{k!}$ erfordert:
 		\begin{itemize}
-			\item $K$ Matrix-Matrix-Multiplikationen (fÃ¼r Potenzen)
+			\item $K$ Matrix-Matrix-Multiplikationen (für Potenzen)
 			\item $K$ Skalierungen (Division durch $k!$)
 			\item $K$ Matrix-Additionen
 		\end{itemize}
 		
-		FÃ¼r dichte Matrizen:
+		Für dichte Matrizen:
 		\[
 		T_{\text{dense}} = O(K \cdot n^3)
 		\]
 		
-		FÃ¼r sparse Matrizen mit Degree $\bar{d}$:
+		Für sparse Matrizen mit Degree $\bar{d}$:
 		\[
 		T_{\text{sparse}} = O(K \cdot n \cdot \bar{d}^2)
 		\]
@@ -951,7 +951,7 @@
 	\end{satz}
 	
 	\begin{lemma}[Fill-in bei Matrixpotenzen]
-		FÃ¼r sparse Matrix $A$ mit $m$ nicht-null EintrÃ¤gen kann $A^2$ bis zu $n \cdot m$ nicht-null EintrÃ¤ge haben (worst case). Allgemein:
+		Für sparse Matrix $A$ mit $m$ nicht-null Einträgen kann $A^2$ bis zu $n \cdot m$ nicht-null Einträge haben (worst case). Allgemein:
 		\[
 		\text{nnz}(A^k) \leq \min(n^2, n \cdot \text{nnz}(A^{k-1}))
 		\]
@@ -959,20 +959,20 @@
 		Praktisch: Nach wenigen Potenzen wird die Matrix oft dicht, was die Effizienz reduziert.
 	\end{lemma}
 	
-	\section{PadÃ©-Approximation}
+	\section{Padé-Approximation}
 	
-	Eine Alternative zur Taylor-Reihe ist die PadÃ©-Approximation, die eine rationale Funktion verwendet.
+	Eine Alternative zur Taylor-Reihe ist die Padé-Approximation, die eine rationale Funktion verwendet.
 	
-	\begin{definition}[PadÃ©-Approximant $(p,q)$]
-		Der PadÃ©-Approximant der Ordnung $(p,q)$ fÃ¼r $e^{At}$ ist definiert als:
+	\begin{definition}[Padé-Approximant $(p,q)$]
+		Der Padé-Approximant der Ordnung $(p,q)$ für $e^{At}$ ist definiert als:
 		\[
 		e^{At} \approx P_{pq}(At) = \left[ D_q(At) \right]^{-1} N_p(At)
 		\]
-		wobei $N_p$ und $D_q$ Polynome in $At$ vom Grad $p$ bzw. $q$ sind, die so gewÃ¤hlt werden, dass die Taylor-Entwicklung von $P_{pq}$ mit der von $e^{At}$ bis zur Ordnung $p+q$ Ã¼bereinstimmt.
+		wobei $N_p$ und $D_q$ Polynome in $At$ vom Grad $p$ bzw. $q$ sind, die so gewählt werden, dass die Taylor-Entwicklung von $P_{pq}$ mit der von $e^{At}$ bis zur Ordnung $p+q$ übereinstimmt.
 	\end{definition}
 	
-	\begin{beispiel}[PadÃ© $(1,1)$-Approximant]
-		Der einfachste nicht-triviale PadÃ©-Approximant ist:
+	\begin{beispiel}[Padé $(1,1)$-Approximant]
+		Der einfachste nicht-triviale Padé-Approximant ist:
 		\[
 		P_{11}(At) = \frac{I + \frac{At}{2}}{I - \frac{At}{2}} = \left(I - \frac{At}{2}\right)^{-1} \left(I + \frac{At}{2}\right)
 		\]
@@ -981,19 +981,19 @@
 		\[
 		x_{n+1} = x_n + \frac{\Delta t}{2}(Ax_n + Ax_{n+1})
 		\]
-		AuflÃ¶sen nach $x_{n+1}$:
+		Auflösen nach $x_{n+1}$:
 		\[
 		x_{n+1} = \left(I - \frac{\Delta t}{2} A\right)^{-1} \left(I + \frac{\Delta t}{2} A\right) x_n
 		\]
 	\end{beispiel}
 	
-	\begin{satz}[StabilitÃ¤t der PadÃ©-Approximation]
-		FÃ¼r Matrizen $A$ mit Eigenwerten in der linken Halbebene ($\text{Re}(\lambda_i) < 0$ fÃ¼r alle $i$) ist der PadÃ© $(p,q)$-Approximant mit $p = q$ A-stabil, d.h. $\|P_{pp}(At)\| \leq 1$ fÃ¼r alle $t > 0$.
+	\begin{satz}[Stabilität der Padé-Approximation]
+		Für Matrizen $A$ mit Eigenwerten in der linken Halbebene ($\text{Re}(\lambda_i) < 0$ für alle $i$) ist der Padé $(p,q)$-Approximant mit $p = q$ A-stabil, d.h. $\|P_{pp}(At)\| \leq 1$ für alle $t > 0$.
 		
-		Dies ist wichtig fÃ¼r steife Systeme, bei denen Taylor-Reihen instabil werden kÃ¶nnen.
+		Dies ist wichtig für steife Systeme, bei denen Taylor-Reihen instabil werden können.
 	\end{satz}
 	
-	\begin{beispiel}[PadÃ© $(2,2)$-Approximant]
+	\begin{beispiel}[Padé $(2,2)$-Approximant]
 		\[
 		P_{22}(At) = \frac{I + \frac{At}{2} + \frac{(At)^2}{12}}{I - \frac{At}{2} + \frac{(At)^2}{12}}
 		\]
@@ -1001,53 +1001,53 @@
 		Genauigkeit: Fehler $O(t^5)$, deutlich besser als $(1,1)$ mit $O(t^3)$.
 	\end{beispiel}
 	
-	\section{Berechnung der PadÃ©-Approximation}
+	\section{Berechnung der Padé-Approximation}
 	
 	\begin{algorithm}[H]
-		\caption{PadÃ©-Approximation fÃ¼r Matrixexponential}
+		\caption{Padé-Approximation für Matrixexponential}
 		\label{alg:pade}
 		\textbf{Eingabe:} Matrix $A$, Zeitschritt $t$, Ordnungen $p, q$ \\
 		\textbf{Ausgabe:} $P_{pq}(At) \approx e^{At}$
 		\begin{algorithmic}[1]
 			\State Berechne $M = At$
 			\State Berechne Potenzen $M^2, M^3, \ldots, M^{\max(p,q)}$ induktiv
-			\State Konstruiere ZÃ¤hler: $N_p = \sum_{k=0}^p c_k^{(p)} M^k$
+			\State Konstruiere Zähler: $N_p = \sum_{k=0}^p c_k^{(p)} M^k$
 			\State Konstruiere Nenner: $D_q = \sum_{k=0}^q d_k^{(q)} M^k$
-			\State LÃ¶se lineares Gleichungssystem: $D_q \cdot X = N_p$
+			\State Löse lineares Gleichungssystem: $D_q \cdot X = N_p$
 			\State \Return $X$
 		\end{algorithmic}
 	\end{algorithm}
 	
-	Die Koeffizienten $c_k^{(p)}$ und $d_k^{(q)}$ sind analytisch bekannt. FÃ¼r $(p,q) = (1,1)$:
+	Die Koeffizienten $c_k^{(p)}$ und $d_k^{(q)}$ sind analytisch bekannt. Für $(p,q) = (1,1)$:
 	\[
 	c_0^{(1)} = 1, \quad c_1^{(1)} = 1/2, \quad d_0^{(1)} = 1, \quad d_1^{(1)} = -1/2
 	\]
 	
-	\begin{satz}[KomplexitÃ¤t der PadÃ©-Berechnung]
+	\begin{satz}[Komplexität der Padé-Berechnung]
 		Algorithmus \ref{alg:pade} erfordert:
 		\begin{itemize}
-			\item $\max(p,q)$ Matrix-Matrix-Multiplikationen (fÃ¼r Potenzen)
+			\item $\max(p,q)$ Matrix-Matrix-Multiplikationen (für Potenzen)
 			\item $p + q$ Matrix-Skalierungen und -Additionen
-			\item 1 LÃ¶sung eines linearen Gleichungssystems $n \times n$
+			\item 1 Lösung eines linearen Gleichungssystems $n \times n$
 		\end{itemize}
 		
-		GesamtkomplexitÃ¤t: $O(\max(p,q) \cdot n^3) + O(n^3) = O(\max(p,q) \cdot n^3)$
+		Gesamtkomplexität: $O(\max(p,q) \cdot n^3) + O(n^3) = O(\max(p,q) \cdot n^3)$
 		
-		FÃ¼r festes $p, q$ (z.B. $(2,2)$): $O(n^3)$
+		Für festes $p, q$ (z.B. $(2,2)$): $O(n^3)$
 	\end{satz}
 	
 	\section{Skalierungs- und Quadrierungs-Technik}
 	
-	FÃ¼r groÃŸe $t$ oder steife Systeme kombiniert man PadÃ©-Approximation mit Skalierung.
+	Für große $t$ oder steife Systeme kombiniert man Padé-Approximation mit Skalierung.
 	
 	\begin{algorithm}[H]
-		\caption{Scaling and Squaring fÃ¼r Matrixexponential}
+		\caption{Scaling and Squaring für Matrixexponential}
 		\label{alg:scaling-squaring}
 		\textbf{Eingabe:} Matrix $A$, Zeit $t$ \\
 		\textbf{Ausgabe:} $e^{At}$
 		\begin{algorithmic}[1]
-			\State WÃ¤hle $s \in \mathbb{N}$ sodass $\|At/2^s\| < 1$
-			\State Berechne $Y = P_{pq}(At/2^s)$ via PadÃ©-Approximation
+			\State Wähle $s \in \mathbb{N}$ sodass $\|At/2^s\| < 1$
+			\State Berechne $Y = P_{pq}(At/2^s)$ via Padé-Approximation
 			\For{$i = 1$ \textbf{to} $s$}
 			\State $Y \gets Y \cdot Y$ \Comment{Quadrierung}
 			\EndFor
@@ -1058,16 +1058,16 @@
 	\begin{satz}[Korrektheit von Scaling and Squaring]
 		Da $e^{At} = (e^{At/2^s})^{2^s}$, berechnet Algorithmus \ref{alg:scaling-squaring} eine Approximation von $e^{At}$ durch:
 		\begin{enumerate}
-			\item Approximiere $e^{At/2^s}$ mit PadÃ© (gut, da Argument klein)
+			\item Approximiere $e^{At/2^s}$ mit Padé (gut, da Argument klein)
 			\item Quadriere $s$-mal: $(e^{At/2^s})^{2^s} \approx e^{At}$
 		\end{enumerate}
 		
-		Fehler setzt sich zusammen aus PadÃ©-Fehler (klein) und Rundungsfehlern bei Quadrierung.
+		Fehler setzt sich zusammen aus Padé-Fehler (klein) und Rundungsfehlern bei Quadrierung.
 	\end{satz}
 	
 	\section{Sparse Matrixpotenzen und Asymmetrie}
 	
-	FÃ¼r sparse Systemmatrix $A$ lÃ¤sst sich die spalten-priorisierte Idee auf die Berechnung der Potenzen Ã¼bertragen.
+	Für sparse Systemmatrix $A$ lässt sich die spalten-priorisierte Idee auf die Berechnung der Potenzen übertragen.
 	
 	\begin{algorithm}[H]
 		\caption{Sparse Matrixpotenz-Berechnung}
@@ -1086,39 +1086,39 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[Laufzeit fÃ¼r sparse Potenzen]
-		Falls alle Zwischenresultate $A, A^2, \ldots, A^k$ sparse bleiben mit durchschnittlichem Degree $\bar{d}$, betrÃ¤gt die Laufzeit:
+	\begin{satz}[Laufzeit für sparse Potenzen]
+		Falls alle Zwischenresultate $A, A^2, \ldots, A^k$ sparse bleiben mit durchschnittlichem Degree $\bar{d}$, beträgt die Laufzeit:
 		\[
 		T(k) = O(k \cdot n \cdot \bar{d}^2)
 		\]
 		
 		Im Best Case ($\bar{d} = O(1)$): $T(k) = O(k \cdot n)$ linear in $n$!
 		
-		Im Worst Case (Fill-in fÃ¼hrt zu dichten Matrizen): $T(k) = O(k \cdot n^3)$ wie naive Methode.
+		Im Worst Case (Fill-in führt zu dichten Matrizen): $T(k) = O(k \cdot n^3)$ wie naive Methode.
 	\end{satz}
 	
 	\begin{beispiel}[Tridiagonale Systemmatrix]
-		FÃ¼r tridiagonale Matrix $A$ (nur Haupt-, Ober- und Unterdiagonale besetzt):
+		Für tridiagonale Matrix $A$ (nur Haupt-, Ober- und Unterdiagonale besetzt):
 		\begin{itemize}
-			\item $A$ hat $3n - 2$ nicht-null EintrÃ¤ge, $\bar{d} = 3$
-			\item $A^2$ hat $5n - 4$ nicht-null EintrÃ¤ge (5 Diagonalen)
-			\item $A^3$ hat $7n - 6$ nicht-null EintrÃ¤ge (7 Diagonalen)
-			\item $A^k$ hat $(2k+1)n - 2k$ nicht-null EintrÃ¤ge
+			\item $A$ hat $3n - 2$ nicht-null Einträge, $\bar{d} = 3$
+			\item $A^2$ hat $5n - 4$ nicht-null Einträge (5 Diagonalen)
+			\item $A^3$ hat $7n - 6$ nicht-null Einträge (7 Diagonalen)
+			\item $A^k$ hat $(2k+1)n - 2k$ nicht-null Einträge
 		\end{itemize}
 		
-		FÃ¼r $k \ll n$ bleibt die Matrix sparse! Laufzeit: $O(k \cdot n)$ statt $O(k \cdot n^3)$.
+		Für $k \ll n$ bleibt die Matrix sparse! Laufzeit: $O(k \cdot n)$ statt $O(k \cdot n^3)$.
 		
 		Beschleunigung: Faktor $n^2 / k$.
 	\end{beispiel}
 	
 	\chapter{Strukturausnutzung in Systemmatrizen}
 	
-	Viele praktische Systemmatrizen besitzen spezielle Strukturen, die systematisch ausgenutzt werden kÃ¶nnen. Die Asymmetrie zwischen Zeilen und Spalten ist nur eine von vielen strukturellen Eigenschaften.
+	Viele praktische Systemmatrizen besitzen spezielle Strukturen, die systematisch ausgenutzt werden können. Die Asymmetrie zwischen Zeilen und Spalten ist nur eine von vielen strukturellen Eigenschaften.
 	
 	\section{Block-Diagonale Systeme}
 	
 	\begin{definition}[Block-Diagonal-Matrix]
-		Eine Matrix $A \in \mathbb{R}^{n \times n}$ heiÃŸt block-diagonal, falls sie die Form
+		Eine Matrix $A \in \mathbb{R}^{n \times n}$ heißt block-diagonal, falls sie die Form
 		\[
 		A = \begin{pmatrix}
 			A_1 & 0 & \cdots & 0 \\
@@ -1130,10 +1130,10 @@
 		hat, wobei $A_i \in \mathbb{R}^{n_i \times n_i}$ und $\sum_{i=1}^m n_i = n$.
 	\end{definition}
 	
-	Block-diagonale Systeme zerfallen in $m$ unabhÃ¤ngige Subsysteme.
+	Block-diagonale Systeme zerfallen in $m$ unabhängige Subsysteme.
 	
 	\begin{satz}[Potenz von Block-Diagonal-Matrizen]
-		FÃ¼r block-diagonale Matrix $A$ mit $A = \text{diag}(A_1, \ldots, A_m)$ gilt:
+		Für block-diagonale Matrix $A$ mit $A = \text{diag}(A_1, \ldots, A_m)$ gilt:
 		\[
 		A^k = \text{diag}(A_1^k, A_2^k, \ldots, A_m^k)
 		\]
@@ -1144,7 +1144,7 @@
 	\end{satz}
 	
 	\begin{proof}
-		Durch Induktion fÃ¼r Potenzen. Die Matrixexponentialfunktion folgt aus der Taylor-Reihe:
+		Durch Induktion für Potenzen. Die Matrixexponentialfunktion folgt aus der Taylor-Reihe:
 		\begin{align}
 			e^{At} &= \sum_{k=0}^\infty \frac{(At)^k}{k!} = \sum_{k=0}^\infty \frac{\text{diag}(A_1^k t^k, \ldots, A_m^k t^k)}{k!} \\
 			&= \text{diag}\left(\sum_{k=0}^\infty \frac{(A_1 t)^k}{k!}, \ldots, \sum_{k=0}^\infty \frac{(A_m t)^k}{k!}\right) \\
@@ -1152,8 +1152,8 @@
 		\end{align}
 	\end{proof}
 	
-	\begin{korollar}[Drastische KomplexitÃ¤tsreduktion]
-		Die Berechnung von $A^k$ fÃ¼r block-diagonale Matrix erfordert:
+	\begin{korollar}[Drastische Komplexitätsreduktion]
+		Die Berechnung von $A^k$ für block-diagonale Matrix erfordert:
 		\[
 		T_{\text{block}} = \sum_{i=1}^m O(n_i^3) = O\left(\sum_{i=1}^m n_i^3\right)
 		\]
@@ -1163,25 +1163,25 @@
 		T_{\text{direkt}} = O(n^3) = O\left(\left(\sum_{i=1}^m n_i\right)^3\right)
 		\]
 		
-		FÃ¼r gleich groÃŸe BlÃ¶cke $n_i = n/m$:
+		Für gleich große Blöcke $n_i = n/m$:
 		\[
 		\frac{T_{\text{direkt}}}{T_{\text{block}}} = \frac{(m \cdot n/m)^3}{m \cdot (n/m)^3} = \frac{n^3}{n^3/m^2} = m^2
 		\]
 		
-		Beschleunigung: \textbf{Quadratisch in der Anzahl der BlÃ¶cke}!
+		Beschleunigung: \textbf{Quadratisch in der Anzahl der Blöcke}!
 	\end{korollar}
 	
 	\begin{beispiel}[Modulare Systeme]
-		Betrachten Sie ein modulares System mit $m = 5$ unabhÃ¤ngigen Subsystemen:
+		Betrachten Sie ein modulares System mit $m = 5$ unabhängigen Subsystemen:
 		\begin{itemize}
-			\item Subsystem 1: $n_1 = 100$ ZustÃ¤nde, Systemmatrix $A_1 \in \mathbb{R}^{100 \times 100}$
-			\item Subsystem 2: $n_2 = 200$ ZustÃ¤nde, Systemmatrix $A_2 \in \mathbb{R}^{200 \times 200}$
-			\item Subsystem 3: $n_3 = 150$ ZustÃ¤nde, Systemmatrix $A_3 \in \mathbb{R}^{150 \times 150}$
-			\item Subsystem 4: $n_4 = 300$ ZustÃ¤nde, Systemmatrix $A_4 \in \mathbb{R}^{300 \times 300}$
-			\item Subsystem 5: $n_5 = 250$ ZustÃ¤nde, Systemmatrix $A_5 \in \mathbb{R}^{250 \times 250}$
+			\item Subsystem 1: $n_1 = 100$ Zustände, Systemmatrix $A_1 \in \mathbb{R}^{100 \times 100}$
+			\item Subsystem 2: $n_2 = 200$ Zustände, Systemmatrix $A_2 \in \mathbb{R}^{200 \times 200}$
+			\item Subsystem 3: $n_3 = 150$ Zustände, Systemmatrix $A_3 \in \mathbb{R}^{150 \times 150}$
+			\item Subsystem 4: $n_4 = 300$ Zustände, Systemmatrix $A_4 \in \mathbb{R}^{300 \times 300}$
+			\item Subsystem 5: $n_5 = 250$ Zustände, Systemmatrix $A_5 \in \mathbb{R}^{250 \times 250}$
 		\end{itemize}
 		
-		Gesamtsystem: $n = 1000$ ZustÃ¤nde, aber block-diagonal strukturiert.
+		Gesamtsystem: $n = 1000$ Zustände, aber block-diagonal strukturiert.
 		
 		\textbf{Berechnung von $A^{10}$}:
 		\begin{itemize}
@@ -1194,21 +1194,21 @@
 			\item Beschleunigung: Faktor $\frac{10^9}{5.4 \cdot 10^7} \approx 18.5$
 		\end{itemize}
 		
-		Dies ist deutlich besser als die theoretische Vorhersage $m^2 = 25$, da die BlÃ¶cke unterschiedliche GrÃ¶ÃŸen haben.
+		Dies ist deutlich besser als die theoretische Vorhersage $m^2 = 25$, da die Blöcke unterschiedliche Größen haben.
 	\end{beispiel}
 	
 	\section{Diagonalisierbare Matrizen und Eigenwertzerlegung}
 	
 	\begin{definition}[Diagonalisierbare Matrix]
-		Eine Matrix $A \in \mathbb{R}^{n \times n}$ heiÃŸt diagonalisierbar, falls eine invertierbare Matrix $P \in \mathbb{R}^{n \times n}$ und eine Diagonalmatrix $\Lambda = \text{diag}(\lambda_1, \ldots, \lambda_n)$ existieren mit:
+		Eine Matrix $A \in \mathbb{R}^{n \times n}$ heißt diagonalisierbar, falls eine invertierbare Matrix $P \in \mathbb{R}^{n \times n}$ und eine Diagonalmatrix $\Lambda = \text{diag}(\lambda_1, \ldots, \lambda_n)$ existieren mit:
 		\[
 		A = P \Lambda P^{-1}
 		\]
-		Die Spalten von $P$ sind die Eigenvektoren von $A$, und die DiagonaleintrÃ¤ge von $\Lambda$ sind die Eigenwerte.
+		Die Spalten von $P$ sind die Eigenvektoren von $A$, und die Diagonaleinträge von $\Lambda$ sind die Eigenwerte.
 	\end{definition}
 	
 	\begin{satz}[Potenz diagonalisierbarer Matrizen]
-		FÃ¼r diagonalisierbare Matrix $A = P \Lambda P^{-1}$ gilt:
+		Für diagonalisierbare Matrix $A = P \Lambda P^{-1}$ gilt:
 		\[
 		A^k = P \Lambda^k P^{-1} = P \text{diag}(\lambda_1^k, \ldots, \lambda_n^k) P^{-1}
 		\]
@@ -1216,15 +1216,15 @@
 		Die Berechnung von $A^k$ reduziert sich auf:
 		\begin{enumerate}
 			\item Berechnung der Eigenwertzerlegung: $O(n^3)$ (einmalig)
-			\item Berechnung der Potenzen $\lambda_i^k$: $O(n)$ (fÃ¼r alle Eigenwerte)
+			\item Berechnung der Potenzen $\lambda_i^k$: $O(n)$ (für alle Eigenwerte)
 			\item Multiplikation $P \Lambda^k P^{-1}$: $O(n^3)$ (zwei Matrix-Multiplikationen)
 		\end{enumerate}
 		
-		GesamtkomplexitÃ¤t: $O(n^3)$ (gleich wie naive Methode, aber mit besseren Konstanten fÃ¼r groÃŸe $k$).
+		Gesamtkomplexität: $O(n^3)$ (gleich wie naive Methode, aber mit besseren Konstanten für große $k$).
 	\end{satz}
 	
 	\begin{proof}
-		Durch Induktion Ã¼ber $k$:
+		Durch Induktion über $k$:
 		\begin{align}
 			A^k &= (P \Lambda P^{-1})^k = P \Lambda P^{-1} P \Lambda P^{-1} \cdots P \Lambda P^{-1} \\
 			&= P \Lambda \Lambda \cdots \Lambda P^{-1} = P \Lambda^k P^{-1}
@@ -1237,22 +1237,22 @@
 	\end{proof}
 	
 	\begin{korollar}[Asymptotisches Verhalten]
-		FÃ¼r diagonalisierbare Matrix mit Eigenwerten $\lambda_1, \ldots, \lambda_n$ gilt:
+		Für diagonalisierbare Matrix mit Eigenwerten $\lambda_1, \ldots, \lambda_n$ gilt:
 		\[
 		A^k = P \text{diag}(\lambda_1^k, \ldots, \lambda_n^k) P^{-1}
 		\]
 		
-		Falls $|\lambda_1| > |\lambda_2| \geq \cdots \geq |\lambda_n|$, dann dominiert der erste Term fÃ¼r groÃŸe $k$:
+		Falls $|\lambda_1| > |\lambda_2| \geq \cdots \geq |\lambda_n|$, dann dominiert der erste Term für große $k$:
 		\[
 		A^k \approx \lambda_1^k P e_1 e_1^T P^{-1}
 		\]
 		wobei $e_1$ der erste Einheitsvektor ist.
 		
-		Dies erklÃ¤rt das asymptotische Verhalten dynamischer Systeme: Der dominante Eigenwert bestimmt das Langzeitverhalten.
+		Dies erklärt das asymptotische Verhalten dynamischer Systeme: Der dominante Eigenwert bestimmt das Langzeitverhalten.
 	\end{korollar}
 	
 	\begin{beispiel}[Populationsdynamik mit Eigenwertanalyse]
-		Betrachten Sie ein Lotka-Volterra RÃ¤uber-Beute-Modell mit Systemmatrix:
+		Betrachten Sie ein Lotka-Volterra Räuber-Beute-Modell mit Systemmatrix:
 		\[
 		A = \begin{pmatrix}
 			0.1 & -0.02 \\
@@ -1265,20 +1265,20 @@
 		\textbf{Langzeitverhalten}:
 		\begin{itemize}
 			\item Nach $t = 10$ Schritten: $\lambda_1^{10} \approx 0.0317$, $\lambda_2^{10} \approx 2.7 \times 10^{-14}$
-			\item Der zweite Eigenwert ist vernachlÃ¤ssigbar
+			\item Der zweite Eigenwert ist vernachlässigbar
 			\item Das System konvergiert gegen den Eigenraum des dominanten Eigenwerts
 		\end{itemize}
 		
-		Dies ermÃ¶glicht Modellreduktion: Nur die dominanten Eigenvektoren sind fÃ¼r das Langzeitverhalten relevant.
+		Dies ermöglicht Modellreduktion: Nur die dominanten Eigenvektoren sind für das Langzeitverhalten relevant.
 	\end{beispiel}
 	
 	\begin{satz}[Matrixexponential diagonalisierbarer Matrizen]
-		FÃ¼r diagonalisierbare Matrix $A = P \Lambda P^{-1}$ gilt:
+		Für diagonalisierbare Matrix $A = P \Lambda P^{-1}$ gilt:
 		\[
 		e^{At} = P e^{\Lambda t} P^{-1} = P \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t}) P^{-1}
 		\]
 		
-		Dies ist eine exakte Formel (keine Approximation nÃ¶tig)!
+		Dies ist eine exakte Formel (keine Approximation nötig)!
 	\end{satz}
 	
 	\begin{proof}
@@ -1303,23 +1303,23 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[KomplexitÃ¤t der Eigenwertmethode]
+	\begin{satz}[Komplexität der Eigenwertmethode]
 		Algorithmus \ref{alg:matrix-exp-eigenvalue} erfordert:
 		\begin{itemize}
-			\item Eigenwertzerlegung: $O(n^3)$ (QR-Algorithmus oder Ã¤hnlich)
+			\item Eigenwertzerlegung: $O(n^3)$ (QR-Algorithmus oder ähnlich)
 			\item Exponentiation der Eigenwerte: $O(n)$
 			\item Zwei Matrix-Multiplikationen: $2 \times O(n^3) = O(n^3)$
 		\end{itemize}
 		
-		GesamtkomplexitÃ¤t: $O(n^3)$
+		Gesamtkomplexität: $O(n^3)$
 		
-		\textbf{Vorteil gegenÃ¼ber PadÃ©-Approximation}: Exakte Berechnung (keine Approximationsfehler), besonders wertvoll fÃ¼r steife Systeme.
+		\textbf{Vorteil gegenüber Padé-Approximation}: Exakte Berechnung (keine Approximationsfehler), besonders wertvoll für steife Systeme.
 	\end{satz}
 	
-	\begin{beispiel}[Vergleich: PadÃ© vs. Eigenwertmethode]
-		FÃ¼r steifes System mit Eigenwerten $\lambda_1 = -1000$, $\lambda_2 = -1$:
+	\begin{beispiel}[Vergleich: Padé vs. Eigenwertmethode]
+		Für steifes System mit Eigenwerten $\lambda_1 = -1000$, $\lambda_2 = -1$:
 		
-		\textbf{PadÃ©-Approximation}:
+		\textbf{Padé-Approximation}:
 		\begin{itemize}
 			\item Skalierungsfaktor: $s = \lceil \log_2(1000) \rceil = 10$
 			\item Quadrierungen: 10
@@ -1333,13 +1333,13 @@
 			\item Gesamtoperationen: $\approx 12 \times n^3$
 		\end{itemize}
 		
-		Beschleunigung: Faktor $\approx 1.67$ fÃ¼r steife Systeme.
+		Beschleunigung: Faktor $\approx 1.67$ für steife Systeme.
 	\end{beispiel}
 	
 	\section{Jordansche Normalform}
 	
 	\begin{definition}[Jordansche Normalform]
-		FÃ¼r beliebige Matrix $A \in \mathbb{R}^{n \times n}$ existiert eine invertierbare Matrix $P$ und eine Jordansche Normalform $J$ mit:
+		Für beliebige Matrix $A \in \mathbb{R}^{n \times n}$ existiert eine invertierbare Matrix $P$ und eine Jordansche Normalform $J$ mit:
 		\[
 		A = P J P^{-1}
 		\]
@@ -1361,15 +1361,15 @@
 		\]
 	\end{definition}
 	
-	\begin{satz}[Potenz von Jordan-BlÃ¶cken]
-		FÃ¼r einen Jordan-Block $J_k$ der GrÃ¶ÃŸe $m_k \times m_k$ mit Eigenwert $\lambda_k$ gilt:
+	\begin{satz}[Potenz von Jordan-Blöcken]
+		Für einen Jordan-Block $J_k$ der Größe $m_k \times m_k$ mit Eigenwert $\lambda_k$ gilt:
 		\[
 		J_k^n = \sum_{j=0}^{m_k-1} \binom{n}{j} \lambda_k^{n-j} N^j
 		\]
 		
 		wobei $N$ die nilpotente Matrix mit Einsen auf der Superdiagonale ist.
 		
-		FÃ¼r groÃŸe $n$ dominiert der Term $\lambda_k^n$, und die nilpotenten Terme werden vernachlÃ¤ssigbar.
+		Für große $n$ dominiert der Term $\lambda_k^n$, und die nilpotenten Terme werden vernachlässigbar.
 	\end{satz}
 	
 	\begin{beispiel}[Defekte Eigenwerte]
@@ -1382,7 +1382,7 @@
 		\end{pmatrix}
 		\]
 		
-		Dies ist ein Jordan-Block mit $\lambda = 2$ und GrÃ¶ÃŸe 3.
+		Dies ist ein Jordan-Block mit $\lambda = 2$ und Größe 3.
 		
 		\textbf{Berechnung von $A^{10}$}:
 		\[
@@ -1418,7 +1418,7 @@
 			\State \textbf{Schritt 2: Block-Struktur-Analyse}
 			\State Berechne Permutation $P$ via Bandreduktion oder Nested Dissection
 			\State $\tilde{A} \gets P^T A P$
-			\State PrÃ¼fe auf Block-Diagonalstruktur in $\tilde{A}$
+			\State Prüfe auf Block-Diagonalstruktur in $\tilde{A}$
 			\If{Block-Struktur erkannt}
 			\State \Return \textbf{``Block-Diagonal''} $\rightarrow$ Zerlege in Subsysteme
 			\EndIf
@@ -1440,40 +1440,40 @@
 			\State \textbf{Schritt 5: Konditionszahl}
 			\State Berechne Konditionszahl: $\kappa(A) = \|A\| \|A^{-1}\|$
 			\If{$\kappa(A) > 10^{10}$}
-			\State \Return \textbf{``Schlecht konditioniert''} $\rightarrow$ Numerische InstabilitÃ¤t
+			\State \Return \textbf{``Schlecht konditioniert''} $\rightarrow$ Numerische Instabilität
 			\EndIf
 			
 			\State \Return \textbf{``Allgemeine Matrix''} $\rightarrow$ Verwende Standard-Algorithmen
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[KomplexitÃ¤t der Strukturerkennung]
+	\begin{satz}[Komplexität der Strukturerkennung]
 		Algorithmus \ref{alg:structure-detection} erfordert:
 		\begin{itemize}
-			\item Sparsity-Analyse: $O(n^2)$ oder $O(\text{nnz}(A))$ fÃ¼r sparse Matrizen
+			\item Sparsity-Analyse: $O(n^2)$ oder $O(\text{nnz}(A))$ für sparse Matrizen
 			\item Bandreduktion: $O(n^3)$ (aber oft schneller in der Praxis)
-			\item Topologische Sortierung: $O(n + m)$ fÃ¼r Graph mit $m$ Kanten
+			\item Topologische Sortierung: $O(n + m)$ für Graph mit $m$ Kanten
 			\item Eigenwertanalyse: $O(n^3)$ (Power-Iteration oder QR-Algorithmus)
 		\end{itemize}
 		
-		GesamtkomplexitÃ¤t: $O(n^3)$ (dominiert durch Eigenwertanalyse)
+		Gesamtkomplexität: $O(n^3)$ (dominiert durch Eigenwertanalyse)
 		
-		\textbf{Praktischer Hinweis}: Die Strukturerkennung ist einmalig und wird amortisiert Ã¼ber viele Systemsimulationen.
+		\textbf{Praktischer Hinweis}: Die Strukturerkennung ist einmalig und wird amortisiert über viele Systemsimulationen.
 	\end{satz}
 	
 	\section{Vergleich verschiedener Strukturtypen}
 	
-	\begin{satz}[KomplexitÃ¤ts-Vergleich]
-		FÃ¼r verschiedene Strukturtypen und Berechnung von $A^k$ oder $e^{At}$:
+	\begin{satz}[Komplexitäts-Vergleich]
+		Für verschiedene Strukturtypen und Berechnung von $A^k$ oder $e^{At}$:
 		
 		\begin{center}
 			\begin{tabular}{|l|c|c|c|}
 				\hline
-				\textbf{Strukturtyp} & \textbf{KomplexitÃ¤t} & \textbf{Speicher} & \textbf{StabilitÃ¤t} \\
+				\textbf{Strukturtyp} & \textbf{Komplexität} & \textbf{Speicher} & \textbf{Stabilität} \\
 				\hline
 				Allgemeine dichte Matrix & $O(n^3)$ & $O(n^2)$ & Numerisch stabil \\
 				Sparse Matrix ($\bar{d} = O(1)$) & $O(k \cdot n)$ & $O(n)$ & Sehr stabil \\
-				Block-Diagonal ($m$ BlÃ¶cke) & $O(n^3/m^2)$ & $O(n^2/m)$ & Sehr stabil \\
+				Block-Diagonal ($m$ Blöcke) & $O(n^3/m^2)$ & $O(n^2/m)$ & Sehr stabil \\
 				Diagonalisierbar & $O(n^3)$ & $O(n^2)$ & Exakt (keine Fehler) \\
 				Hierarchisch ($h$ Ebenen) & $O(n^2/h)$ & $O(n^2/h)$ & Sehr stabil \\
 				Tridiagonal & $O(n)$ & $O(n)$ & Sehr stabil \\
@@ -1483,20 +1483,20 @@
 		
 		\textbf{Erkenntnisse}:
 		\begin{itemize}
-			\item Sparse Matrizen: Beste KomplexitÃ¤t, aber Fill-in mÃ¶glich
+			\item Sparse Matrizen: Beste Komplexität, aber Fill-in möglich
 			\item Block-Diagonal: Quadratische Beschleunigung in Blockanzahl
 			\item Diagonalisierbar: Exakte Berechnung, aber Eigenwertzerlegung teuer
-			\item Hierarchisch: Lineare KomplexitÃ¤t in Ebenenanzahl
+			\item Hierarchisch: Lineare Komplexität in Ebenenanzahl
 		\end{itemize}
 	\end{satz}
 	
 	\begin{beispiel}[Praktische Wahl der Methode]
-		Gegeben: System mit $n = 10.000$ ZustÃ¤nden, $m = 50.000$ nicht-null EintrÃ¤ge.
+		Gegeben: System mit $n = 10.000$ Zuständen, $m = 50.000$ nicht-null Einträge.
 		
 		\textbf{Szenario 1: Einmalige Berechnung von $e^{At}$}
 		\begin{itemize}
 			\item Sparse Methode: $O(50.000 \cdot 10) = 500.000$ Operationen
-			\item PadÃ©-Approximation: $O(5 \cdot 10.000^3) = 5 \times 10^{12}$ Operationen
+			\item Padé-Approximation: $O(5 \cdot 10.000^3) = 5 \times 10^{12}$ Operationen
 			\item Beschleunigung: Faktor $10^7$!
 		\end{itemize}
 		
@@ -1507,22 +1507,22 @@
 			\item Nach 100 Berechnungen: Amortisierte Kosten $\approx 10^{10}$ pro Berechnung
 		\end{itemize}
 		
-		\textbf{Empfehlung}: FÃ¼r viele Berechnungen Eigenwertzerlegung verwenden, sonst sparse Methode.
+		\textbf{Empfehlung}: Für viele Berechnungen Eigenwertzerlegung verwenden, sonst sparse Methode.
 	\end{beispiel}
 	
 	\section{Zusammenfassung: Strukturausnutzung}
 	
-	Die systematische Ausnutzung von Matrixstrukturen ist ein SchlÃ¼ssel zur Effizienzsteigerung:
+	Die systematische Ausnutzung von Matrixstrukturen ist ein Schlüssel zur Effizienzsteigerung:
 	
 	\begin{enumerate}
 		\item \textbf{Block-Diagonale Systeme}: Quadratische Beschleunigung in der Blockanzahl
 		\item \textbf{Diagonalisierbare Matrizen}: Exakte Berechnung via Eigenwertzerlegung
-		\item \textbf{Jordansche Normalform}: Allgemeine Struktur fÃ¼r beliebige Matrizen
-		\item \textbf{Sparse Matrizen}: Lineare KomplexitÃ¤t in der Anzahl nicht-null EintrÃ¤ge
-		\item \textbf{Hierarchische Systeme}: Lineare KomplexitÃ¤t in der Ebenenanzahl
+		\item \textbf{Jordansche Normalform}: Allgemeine Struktur für beliebige Matrizen
+		\item \textbf{Sparse Matrizen}: Lineare Komplexität in der Anzahl nicht-null Einträge
+		\item \textbf{Hierarchische Systeme}: Lineare Komplexität in der Ebenenanzahl
 	\end{enumerate}
 	
-	Die Wahl der optimalen Methode hÃ¤ngt von der spezifischen Struktur und dem Anwendungsszenario ab. Algorithmus \ref{alg:structure-detection} bietet eine automatisierte Entscheidungshilfe.
+	Die Wahl der optimalen Methode hängt von der spezifischen Struktur und dem Anwendungsszenario ab. Algorithmus \ref{alg:structure-detection} bietet eine automatisierte Entscheidungshilfe.
 	
 	\chapter{Praktische Implikationen}
 	
@@ -1533,7 +1533,7 @@
 	Viele technische Systeme erfordern Echtzeitsimulation: Regelungssysteme, Robotik, Fahrzeugsimulation, etc. Die Anforderung ist, dass die Berechnung eines Zeitschritts schneller als die physikalische Zeit ablaufen muss.
 	
 	\begin{definition}[Echtzeit-Anforderung]
-		Ein Simulationsalgorithmus erfÃ¼llt die Echtzeit-Anforderung, falls die Berechnung eines Zeitschritts $\Delta t$ weniger Zeit als $\Delta t$ benÃ¶tigt.
+		Ein Simulationsalgorithmus erfüllt die Echtzeit-Anforderung, falls die Berechnung eines Zeitschritts $\Delta t$ weniger Zeit als $\Delta t$ benötigt.
 		
 		Formal: Sei $T_{\text{comp}}$ die Rechenzeit und $T_{\text{phys}} = \Delta t$ die physikalische Zeit. Dann:
 		\[
@@ -1542,34 +1542,34 @@
 	\end{definition}
 	
 	\begin{beispiel}[Fahrzeugsimulation]
-		Ein Fahrzeugsimulator mit $n = 1000$ ZustÃ¤nden (Position, Geschwindigkeit, Beschleunigung, ReifenkrÃ¤fte, etc.) muss mit Zeitschritt $\Delta t = 1$ ms simuliert werden (1000 Hz Simulationsfrequenz).
+		Ein Fahrzeugsimulator mit $n = 1000$ Zuständen (Position, Geschwindigkeit, Beschleunigung, Reifenkräfte, etc.) muss mit Zeitschritt $\Delta t = 1$ ms simuliert werden (1000 Hz Simulationsfrequenz).
 		
 		\textbf{Anforderung}: Berechnung muss in weniger als 1 ms erfolgen.
 		
-		\textbf{Naive Methode} (PadÃ©-Approximation):
+		\textbf{Naive Methode} (Padé-Approximation):
 		\begin{itemize}
 			\item Berechnung von $e^{A \Delta t}$: $O(n^3) = 10^9$ Operationen
 			\item Auf modernem Prozessor (1 GHz): $\approx 1$ Sekunde
-			\item \textbf{Nicht echtzeit-fÃ¤hig!}
+			\item \textbf{Nicht echtzeit-fähig!}
 		\end{itemize}
 		
 		\textbf{Optimierte Methode} (Sparse + Struktur):
 		\begin{itemize}
-			\item Sparse Systemmatrix: $m = 10.000$ nicht-null EintrÃ¤ge
+			\item Sparse Systemmatrix: $m = 10.000$ nicht-null Einträge
 			\item Spalten-priorisierte Berechnung: $O(m) = 10^4$ Operationen
 			\item Auf modernem Prozessor: $\approx 10$ \u00e6s
-			\item \textbf{Echtzeit-fÃ¤hig mit Faktor 100 Sicherheitsmarge!}
+			\item \textbf{Echtzeit-fähig mit Faktor 100 Sicherheitsmarge!}
 		\end{itemize}
 	\end{beispiel}
 	
 	\begin{satz}[Adaptive Zeitschrittsteuerung]
-		FÃ¼r Systeme mit variabler Sparsity kann die ZeitschrittgrÃ¶ÃŸe adaptiv gewÃ¤hlt werden:
+		Für Systeme mit variabler Sparsity kann die Zeitschrittgröße adaptiv gewählt werden:
 		
 		\[
 		\Delta t_{\text{opt}} = \min\left(\Delta t_{\text{max}}, \frac{T_{\text{budget}}}{T_{\text{comp}}(s)} \cdot \Delta t_{\text{current}}\right)
 		\]
 		
-		wobei $T_{\text{budget}}$ die verfÃ¼gbare Rechenzeit und $s$ die aktuelle Sparsity ist.
+		wobei $T_{\text{budget}}$ die verfügbare Rechenzeit und $s$ die aktuelle Sparsity ist.
 	\end{satz}
 	
 	\begin{algorithm}[H]
@@ -1583,7 +1583,7 @@
 			\While{$t < T$}
 			\State $t_{\text{start}} \gets \text{currentTime}()$
 			\State Berechne Sparsity: $s \gets \text{countNonZero}(x) / n$
-			\State WÃ¤hle Algorithmus basierend auf $s$
+			\State Wähle Algorithmus basierend auf $s$
 			\State Berechne $x_{\text{next}} = e^{A \Delta t} x$
 			\State $t_{\text{end}} \gets \text{currentTime}()$
 			\State $T_{\text{comp}} \gets t_{\text{end}} - t_{\text{start}}$
@@ -1595,12 +1595,12 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\section{ModellprÃ¤diktive Regelung (MPC)}
+	\section{Modellprädiktive Regelung (MPC)}
 	
-	ModellprÃ¤diktive Regelung ist eine fortgeschrittene Regelungstechnik, die zukÃ¼nftige SystemzustÃ¤nde vorhersagt und Steuereingaben optimiert.
+	Modellprädiktive Regelung ist eine fortgeschrittene Regelungstechnik, die zukünftige Systemzustände vorhersagt und Steuereingaben optimiert.
 	
-	\begin{definition}[ModellprÃ¤diktive Regelung]
-		MPC lÃ¶st in jedem Zeitschritt ein Optimierungsproblem:
+	\begin{definition}[Modellprädiktive Regelung]
+		MPC löst in jedem Zeitschritt ein Optimierungsproblem:
 		\[
 		\min_{u_0, \ldots, u_{N-1}} \sum_{k=0}^{N-1} \|x_k - x_{\text{ref}}\|^2 + \|u_k\|^2
 		\]
@@ -1612,40 +1612,40 @@
 			|u_k| &\leq u_{\text{max}} \quad \text{(Eingabebegrenzung)}
 		\end{align}
 		
-		wobei $N$ der PrÃ¤diktionshorizont ist.
+		wobei $N$ der Prädiktionshorizont ist.
 	\end{definition}
 	
-	\begin{satz}[KomplexitÃ¤t von MPC]
-		Die LÃ¶sung des MPC-Optimierungsproblems erfordert typischerweise:
+	\begin{satz}[Komplexität von MPC]
+		Die Lösung des MPC-Optimierungsproblems erfordert typischerweise:
 		\begin{itemize}
-			\item Berechnung von $A^k$ fÃ¼r $k = 1, \ldots, N$: $O(N \cdot n^3)$
-			\item LÃ¶sung des quadratischen Programms: $O(N^3 n^3)$ (Interior-Point-Methode)
+			\item Berechnung von $A^k$ für $k = 1, \ldots, N$: $O(N \cdot n^3)$
+			\item Lösung des quadratischen Programms: $O(N^3 n^3)$ (Interior-Point-Methode)
 		\end{itemize}
 		
-		GesamtkomplexitÃ¤t: $O(N^3 n^3)$
+		Gesamtkomplexität: $O(N^3 n^3)$
 		
-		FÃ¼r $N = 20$ und $n = 100$: $\approx 8 \times 10^{12}$ Operationen (nicht echtzeit-fÃ¤hig auf Standard-Hardware).
+		Für $N = 20$ und $n = 100$: $\approx 8 \times 10^{12}$ Operationen (nicht echtzeit-fähig auf Standard-Hardware).
 	\end{satz}
 	
 	\begin{korollar}[Beschleunigung durch Strukturausnutzung]
 		Falls die Systemmatrix $A$ sparse ist mit $\bar{d} = O(1)$:
 		\begin{itemize}
 			\item Berechnung von $A^k$: $O(N \cdot n)$ statt $O(N \cdot n^3)$
-			\item Beschleunigung: Faktor $n^2 = 10.000$ fÃ¼r $n = 100$
+			\item Beschleunigung: Faktor $n^2 = 10.000$ für $n = 100$
 		\end{itemize}
 		
-		Dies macht MPC fÃ¼r groÃŸe Systeme praktikabel.
+		Dies macht MPC für große Systeme praktikabel.
 	\end{korollar}
 	
-	\begin{beispiel}[MPC fÃ¼r Temperaturregelung]
-		Betrachten Sie ein GebÃ¤ude mit $n = 50$ RÃ¤umen und $m = 10$ HeizkÃ¶rpern. Das Temperaturmodell ist:
+	\begin{beispiel}[MPC für Temperaturregelung]
+		Betrachten Sie ein Gebäude mit $n = 50$ Räumen und $m = 10$ Heizkörpern. Das Temperaturmodell ist:
 		\[
 		\frac{dT_i}{dt} = \sum_{j \text{ benachbart}} \alpha_{ij} (T_j - T_i) + \beta_i u_i + \gamma_i T_{\text{outside}}
 		\]
 		
-		Die Systemmatrix ist sparse (jeder Raum koppelt nur mit NachbarrÃ¤umen): $m \approx 150$ nicht-null EintrÃ¤ge.
+		Die Systemmatrix ist sparse (jeder Raum koppelt nur mit Nachbarräumen): $m \approx 150$ nicht-null Einträge.
 		
-		\textbf{MPC mit PrÃ¤diktionshorizont $N = 24$ (24 Stunden)}:
+		\textbf{MPC mit Prädiktionshorizont $N = 24$ (24 Stunden)}:
 		\begin{itemize}
 			\item Naive Methode: $O(24^3 \cdot 50^3) \approx 4.3 \times 10^{12}$ Operationen
 			\item Sparse Methode: $O(24 \cdot 150) \approx 3.6 \times 10^3$ Operationen
@@ -1655,17 +1655,17 @@
 		Die sparse Methode ist praktikabel, die naive Methode nicht.
 	\end{beispiel}
 	
-	\section{GroÃŸskalige Systeme und Parallelisierung}
+	\section{Großskalige Systeme und Parallelisierung}
 	
-	FÃ¼r sehr groÃŸe Systeme (z.B. $n = 10^6$ oder mehr) ist Parallelisierung notwendig.
+	Für sehr große Systeme (z.B. $n = 10^6$ oder mehr) ist Parallelisierung notwendig.
 	
 	\begin{satz}[Parallelisierbarkeit spalten-orientierter Algorithmen]
 		Algorithmus \ref{alg:column-matvec-detailed} (spalten-orientierte Matrix-Vektor-Multiplikation) ist hochgradig parallelisierbar:
 		
 		\begin{itemize}
-			\item Die Ã¤uÃŸere Schleife Ã¼ber Spalten kann parallelisiert werden
-			\item Jeder Thread verarbeitet eine Teilmenge der Spalten unabhÃ¤ngig
-			\item Synchronisation nur am Ende nÃ¶tig
+			\item Die äußere Schleife über Spalten kann parallelisiert werden
+			\item Jeder Thread verarbeitet eine Teilmenge der Spalten unabhängig
+			\item Synchronisation nur am Ende nötig
 			\item Speedup: Nahezu linear in der Anzahl der Threads (bis zu Speicherbandbreite)
 		\end{itemize}
 	\end{satz}
@@ -1675,10 +1675,10 @@
 		\begin{itemize}
 			\item 6912 CUDA-Kerne
 			\item 2 TB/s Speicherbandbreite
-			\item Optimiert fÃ¼r spalten-orientierte Operationen
+			\item Optimiert für spalten-orientierte Operationen
 		\end{itemize}
 		
-		FÃ¼r sparse Matrix-Vektor-Multiplikation mit $n = 10^6$, $m = 10^7$:
+		Für sparse Matrix-Vektor-Multiplikation mit $n = 10^6$, $m = 10^7$:
 		\begin{itemize}
 			\item CPU (Intel Xeon): $\approx 100$ ms
 			\item GPU (NVIDIA A100): $\approx 1$ ms
@@ -1693,7 +1693,7 @@
 		\textbf{Ausgabe:} $y = A \cdot x$ (auf GPU)
 		\begin{algorithmic}[1]
 			\State Initialisiere $y \gets \mathbf{0}$ auf GPU
-			\State Starte $\text{numBlocks} = \lceil n / 256 \rceil$ BlÃ¶cke mit je 256 Threads
+			\State Starte $\text{numBlocks} = \lceil n / 256 \rceil$ Blöcke mit je 256 Threads
 			\For{\textbf{each block in parallel}}
 			\State $j \gets \text{blockIdx.x} \cdot 256 + \text{threadIdx.x}$
 			\If{$j < n$ and $x_j \neq 0$}
@@ -1708,12 +1708,12 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\section{Numerische StabilitÃ¤t und Fehleranalyse}
+	\section{Numerische Stabilität und Fehleranalyse}
 	
-	Bei der Berechnung von Matrixexponentialen und Potenzen kÃ¶nnen numerische Fehler auftreten.
+	Bei der Berechnung von Matrixexponentialen und Potenzen können numerische Fehler auftreten.
 	
 	\begin{satz}[Fehlerfortpflanzung]
-		FÃ¼r die Berechnung von $y = A x$ mit gestÃ¶rter Matrix $\tilde{A} = A + \Delta A$ und Vektor $\tilde{x} = x + \Delta x$ gilt:
+		Für die Berechnung von $y = A x$ mit gestörter Matrix $\tilde{A} = A + \Delta A$ und Vektor $\tilde{x} = x + \Delta x$ gilt:
 		\[
 		\tilde{y} = \tilde{A} \tilde{x} = (A + \Delta A)(x + \Delta x) = Ax + A \Delta x + \Delta A x + \Delta A \Delta x
 		\]
@@ -1737,36 +1737,36 @@
 		\end{pmatrix}
 		\]
 		
-		Die Konditionszahl wÃ¤chst exponentiell:
+		Die Konditionszahl wächst exponentiell:
 		\begin{itemize}
 			\item $\kappa(H_5) \approx 4.8 \times 10^5$
 			\item $\kappa(H_{10}) \approx 1.6 \times 10^{13}$
 			\item $\kappa(H_{20}) \approx 10^{18}$
 		\end{itemize}
 		
-		FÃ¼r $n = 20$ ist die Matrix praktisch singulÃ¤r und numerisch nicht invertierbar.
+		Für $n = 20$ ist die Matrix praktisch singulär und numerisch nicht invertierbar.
 	\end{beispiel}
 	
-	\begin{satz}[StabilitÃ¤t der PadÃ©-Approximation]
-		Die PadÃ©-Approximation ist numerisch stabil fÃ¼r:
+	\begin{satz}[Stabilität der Padé-Approximation]
+		Die Padé-Approximation ist numerisch stabil für:
 		\begin{itemize}
 			\item Matrizen mit Eigenwerten in der linken Halbebene (A-stabil)
 			\item Kleine Zeitschritte $\|At\| < 1$
 			\item Gut konditionierte Matrizen $\kappa(A) < 10^{10}$
 		\end{itemize}
 		
-		FÃ¼r steife oder schlecht konditionierte Systeme sollte die Eigenwertmethode verwendet werden.
+		Für steife oder schlecht konditionierte Systeme sollte die Eigenwertmethode verwendet werden.
 	\end{satz}
 	
 	\section{Vergleich verschiedener Implementierungsstrategien}
 	
-	\begin{satz}[Entscheidungsbaum fÃ¼r Implementierungsstrategie]
-		Die optimale Implementierungsstrategie hÃ¤ngt von mehreren Faktoren ab:
+	\begin{satz}[Entscheidungsbaum für Implementierungsstrategie]
+		Die optimale Implementierungsstrategie hängt von mehreren Faktoren ab:
 		
 		\begin{enumerate}
-			\item \textbf{SystemgrÃ¶ÃŸe $n$}:
+			\item \textbf{Systemgröße $n$}:
 			\begin{itemize}
-				\item $n < 100$: Dichte Methoden (PadÃ©, Eigenwert)
+				\item $n < 100$: Dichte Methoden (Padé, Eigenwert)
 				\item $100 < n < 10.000$: Sparse Methoden wenn $\text{sparsity} > 0.9$
 				\item $n > 10.000$: GPU-beschleunigte sparse Methoden
 			\end{itemize}
@@ -1788,8 +1788,8 @@
 			\item \textbf{Anforderungen}:
 			\begin{itemize}
 				\item Echtzeit: Spalten-priorisierte Algorithmen
-				\item Genauigkeit: Eigenwertmethode oder PadÃ© mit hoher Ordnung
-				\item StabilitÃ¤t: PadÃ© mit $p = q$ oder Eigenwertmethode
+				\item Genauigkeit: Eigenwertmethode oder Padé mit hoher Ordnung
+				\item Stabilität: Padé mit $p = q$ oder Eigenwertmethode
 			\end{itemize}
 		\end{enumerate}
 	\end{satz}
@@ -1807,39 +1807,39 @@
 		
 		\textbf{Erwartete Performance}:
 		\begin{itemize}
-			\item Nicht-null EintrÃ¤ge: $m = 0.05 \cdot 5000^2 = 1.25 \times 10^6$
+			\item Nicht-null Einträge: $m = 0.05 \cdot 5000^2 = 1.25 \times 10^6$
 			\item Operationen pro Zeitschritt: $O(m) = 1.25 \times 10^6$
 			\item Auf modernem Prozessor (1 GHz): $\approx 1.25$ ms
-			\item Echtzeit-fÃ¤hig mit Faktor 10 Sicherheitsmarge (fÃ¼r 10 ms Zeitschritt)
+			\item Echtzeit-fähig mit Faktor 10 Sicherheitsmarge (für 10 ms Zeitschritt)
 		\end{itemize}
 	\end{beispiel}
 	
 	\chapter{Experimentelle Evaluation}
 	
-	Die theoretischen Erkenntnisse der vorherigen Kapitel werden nun durch umfassende Experimente validiert. Ziel ist es, die praktische Effizienz der entwickelten Algorithmen zu demonstrieren und die theoretischen Vorhersagen empirisch zu Ã¼berprÃ¼fen.
+	Die theoretischen Erkenntnisse der vorherigen Kapitel werden nun durch umfassende Experimente validiert. Ziel ist es, die praktische Effizienz der entwickelten Algorithmen zu demonstrieren und die theoretischen Vorhersagen empirisch zu überprüfen.
 	
 	\section{Experiment 1: Genauigkeit der Matrixexponential-Metho\-den}
 	
 	\subsection{Zielsetzung}
 	
-	Vergleich der Genauigkeit verschiedener Methoden zur Berechnung der Matrixexponentialfunktion $e^{At}$ fÃ¼r unterschiedliche Matrixtypen.
+	Vergleich der Genauigkeit verschiedener Methoden zur Berechnung der Matrixexponentialfunktion $e^{At}$ für unterschiedliche Matrixtypen.
 	
 	\subsection{Experimentdesign}
 	
 	Wir betrachten vier charakteristische Matrixtypen:
 	
 	\begin{enumerate}
-		\item \textbf{Symmetrische Matrix}: $A = \frac{1}{2}(M + M^T)$ mit zufÃ¤lliger $M \in \mathbb{R}^{10 \times 10}$
+		\item \textbf{Symmetrische Matrix}: $A = \frac{1}{2}(M + M^T)$ mit zufälliger $M \in \mathbb{R}^{10 \times 10}$
 		\item \textbf{Antisymmetrische Matrix}: $A = \frac{1}{2}(M - M^T)$
-		\item \textbf{Diagonalmatrix}: $A = \text{diag}(\lambda_1, \ldots, \lambda_{10})$ mit zufÃ¤lligen Eigenwerten
+		\item \textbf{Diagonalmatrix}: $A = \text{diag}(\lambda_1, \ldots, \lambda_{10})$ mit zufälligen Eigenwerten
 		\item \textbf{Nilpotente Matrix}: $A = $ strikt obere Dreiecksmatrix
 	\end{enumerate}
 	
-	FÃ¼r jeden Typ testen wir drei Berechnungsmethoden:
+	Für jeden Typ testen wir drei Berechnungsmethoden:
 	
 	\begin{itemize}
 		\item \textbf{Taylor-Reihe}: $e^{At} \approx \sum_{k=0}^{30} \frac{(At)^k}{k!}$
-		\item \textbf{PadÃ©-Approximation}: $(p,q) = (8,8)$-Approximant
+		\item \textbf{Padé-Approximation}: $(p,q) = (8,8)$-Approximant
 		\item \textbf{Eigenwertmethode}: $e^{At} = P \text{diag}(e^{\lambda_i t}) P^{-1}$
 	\end{itemize}
 	
@@ -1853,7 +1853,7 @@
 	Die experimentellen Resultate zeigen klare Unterschiede zwischen den Methoden:
 	
 	\begin{satz}[Experimentelle Beobachtungen zur Genauigkeit]
-		FÃ¼r die getesteten Matrixtypen und Zeitpunkte $t \in [10^{-2}, 10]$ ergaben sich folgende Fehlercharakteristiken:
+		Für die getesteten Matrixtypen und Zeitpunkte $t \in [10^{-2}, 10]$ ergaben sich folgende Fehlercharakteristiken:
 		
 		\textbf{Taylor-Reihe}:
 		\begin{itemize}
@@ -1863,11 +1863,11 @@
 			\item Nilpotente Matrix: Fehler $\epsilon = 0$ (exakt, da endliche Reihe)
 		\end{itemize}
 		
-		\textbf{PadÃ©-Approximation}:
+		\textbf{Padé-Approximation}:
 		\begin{itemize}
 			\item Alle Matrixtypen: Fehler $\epsilon \approx 10^{-13}$ bis $10^{-11}$
-			\item Konsistent Ã¼ber alle Zeitpunkte
-			\item Numerisch stabiler als Taylor fÃ¼r groÃŸe $t$
+			\item Konsistent über alle Zeitpunkte
+			\item Numerisch stabiler als Taylor für große $t$
 		\end{itemize}
 		
 		\textbf{Eigenwertmethode}:
@@ -1882,14 +1882,14 @@
 	\begin{korollar}[Methodenwahl basierend auf Genauigkeit]
 		Die experimentellen Daten legen folgende Empfehlungen nahe:
 		\begin{itemize}
-			\item FÃ¼r \textbf{diagonalisierbare Matrizen}: Eigenwertmethode (beste Genauigkeit)
-			\item FÃ¼r \textbf{nilpotente Matrizen}: Taylor-Reihe (exakt mit endlich vielen Termen)
-			\item FÃ¼r \textbf{allgemeine Matrizen}: PadÃ©-Approximation (konsistent und stabil)
-			\item FÃ¼r \textbf{kleine Zeitschritte} $\|At\| < 0.1$: Taylor-Reihe (effizient)
+			\item Für \textbf{diagonalisierbare Matrizen}: Eigenwertmethode (beste Genauigkeit)
+			\item Für \textbf{nilpotente Matrizen}: Taylor-Reihe (exakt mit endlich vielen Termen)
+			\item Für \textbf{allgemeine Matrizen}: Padé-Approximation (konsistent und stabil)
+			\item Für \textbf{kleine Zeitschritte} $\|At\| < 0.1$: Taylor-Reihe (effizient)
 		\end{itemize}
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp1} zeigt die Ergebnisse fÃ¼r das Experiment 1: Genauigkeit der Matrixexpo\-nential-Methoden. Es zeigt die Fehlerentwicklung Ã¼ber verschiedene Zeitpunkte. Bemerkenswert ist die Ãœberlegenheit der Eigenwertmethode fÃ¼r symmetrische und diagonale Matrizen, wÃ¤hrend die PadÃ©-Approximation konsistent gute Ergebnisse Ã¼ber alle Matrixtypen liefert.
+	Abbildung \ref{fig:exp1} zeigt die Ergebnisse für das Experiment 1: Genauigkeit der Matrixexpo\-nential-Methoden. Es zeigt die Fehlerentwicklung über verschiedene Zeitpunkte. Bemerkenswert ist die Überlegenheit der Eigenwertmethode für symmetrische und diagonale Matrizen, während die Padé-Approximation konsistent gute Ergebnisse über alle Matrixtypen liefert.
 	
 	\begin{figure}[H]
 		\centering
@@ -1902,7 +1902,7 @@
 	
 	\subsection{Zielsetzung}
 	
-	Quantifizierung der Performance-Unterschiede zwischen zeilen-, spalten- und adaptiv-orientierter sparse Matrix-Vektor-Multiplikation in AbhÃ¤ngigkeit von Matrix- und Input-Sparsity.
+	Quantifizierung der Performance-Unterschiede zwischen zeilen-, spalten- und adaptiv-orientierter sparse Matrix-Vektor-Multiplikation in Abhängigkeit von Matrix- und Input-Sparsity.
 	
 	\subsection{Experimentdesign}
 	
@@ -1911,7 +1911,7 @@
 	\text{Matrix-Sparsity} \in \{0.5, 0.55, 0.61, 0.66, 0.72, 0.77, 0.83, 0.88, 0.94, 0.99\}
 	\]
 	
-	FÃ¼r jede Matrix testen wir sparse Eingabevektoren mit Sparsity:
+	Für jede Matrix testen wir sparse Eingabevektoren mit Sparsity:
 	\[
 	\text{Input-Sparsity} \in \{0.5, 0.7, 0.9, 0.95, 0.99\}
 	\]
@@ -1921,28 +1921,28 @@
 	\begin{itemize}
 		\item \textbf{Row-oriented}: Algorithmus \ref{alg:row-matvec} mit CSR-Format
 		\item \textbf{Column-oriented}: Algorithmus \ref{alg:column-matvec-detailed} mit CSC-Format
-		\item \textbf{Adaptive}: WÃ¤hlt zwischen row/column basierend auf Input-Sparsity
+		\item \textbf{Adaptive}: Wählt zwischen row/column basierend auf Input-Sparsity
 	\end{itemize}
 	
 	\subsection{Ergebnisse}
 	
-	Die experimentellen Messungen bestÃ¤tigen die theoretischen Vorhersagen eindrucksvoll:
+	Die experimentellen Messungen bestätigen die theoretischen Vorhersagen eindrucksvoll:
 	
 	\begin{satz}[Experimentelle Performance-Charakteristik]
-		FÃ¼r sparse Matrix-Vektor-Multipli\-kation wurden folgende Laufzeiten gemessen (in Millisekunden, Mittelwert Ã¼ber 10 DurchlÃ¤u\-fe):
+		Für sparse Matrix-Vektor-Multipli\-kation wurden folgende Laufzeiten gemessen (in Millisekunden, Mittelwert über 10 Durchläu\-fe):
 		
 		\textbf{Input-Sparsity 50\% (dichter Eingabevektor)}:
 		\begin{itemize}
-			\item Row-oriented: $2.3$ ms (unabhÃ¤ngig von Matrix-Sparsity)
+			\item Row-oriented: $2.3$ ms (unabhängig von Matrix-Sparsity)
 			\item Column-oriented: $2.8$ ms (leicht langsamer durch Stride-Zugriffe)
-			\item Adaptive: $2.3$ ms (wÃ¤hlt Row-oriented)
+			\item Adaptive: $2.3$ ms (wählt Row-oriented)
 		\end{itemize}
 		
 		\textbf{Input-Sparsity 90\% (sparse Eingabevektor)}:
 		\begin{itemize}
 			\item Row-oriented: $2.4$ ms (keine Verbesserung)
 			\item Column-oriented: $0.52$ ms (\textbf{Faktor 4.6 schneller!})
-			\item Adaptive: $0.53$ ms (wÃ¤hlt Column-oriented)
+			\item Adaptive: $0.53$ ms (wählt Column-oriented)
 		\end{itemize}
 		
 		\textbf{Input-Sparsity 99\% (extrem sparse)}:
@@ -1956,14 +1956,14 @@
 	\begin{korollar}[Praktischer Speedup durch Sparsity-Ausnutzung]
 		Die experimentellen Daten zeigen:
 		\begin{enumerate}
-			\item FÃ¼r \textbf{dichte Eingabevektoren}: Row-oriented ist optimal (geringer Cache-Overhead)
-			\item FÃ¼r \textbf{sparse Eingabevektoren} (>70\% Sparsity): Column-oriented ist dramatisch schneller
+			\item Für \textbf{dichte Eingabevektoren}: Row-oriented ist optimal (geringer Cache-Overhead)
+			\item Für \textbf{sparse Eingabevektoren} (>70\% Sparsity): Column-oriented ist dramatisch schneller
 			\item Der \textbf{adaptive Algorithmus} erreicht nahezu optimale Performance in allen Szenarien
-			\item Der Speedup wÃ¤chst mit Input-Sparsity: Faktor $1/(1-p_{\text{input}})$
+			\item Der Speedup wächst mit Input-Sparsity: Faktor $1/(1-p_{\text{input}})$
 		\end{enumerate}
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp2} zeigt die Ergebnisse fÃ¼r das Experiment 2: Performance sparse Matrix-Vektor-Multiplikation mit sechs Szenarien mit verschiedenen Input-Sparsity-Levels. Der dramatische Performancegewinn der column-oriented Methode bei hoher Input-Sparsity ist klar erkennbar.
+	Abbildung \ref{fig:exp2} zeigt die Ergebnisse für das Experiment 2: Performance sparse Matrix-Vektor-Multiplikation mit sechs Szenarien mit verschiedenen Input-Sparsity-Levels. Der dramatische Performancegewinn der column-oriented Methode bei hoher Input-Sparsity ist klar erkennbar.
 	
 	\begin{figure}[H]
 		\centering
@@ -1980,7 +1980,7 @@
 	
 	\subsection{Experimentdesign}
 	
-	Wir konstruieren ein vollstÃ¤ndig verbundenes neuronales Netz mit Architektur:
+	Wir konstruieren ein vollständig verbundenes neuronales Netz mit Architektur:
 	\[
 	[100, 200, 200, 100, 50]
 	\]
@@ -1994,11 +1994,11 @@
 	
 	Wir messen:
 	\begin{itemize}
-		\item TatsÃ¤chliche Gewichts-Sparsity pro Layer
+		\item Tatsächliche Gewichts-Sparsity pro Layer
 		\item Aktivierungs-Sparsity pro Layer (Anteil der Neuronen mit Output = 0)
 		\item Kombinierte Sparsity: $1 - (1-p_w)(1-p_a)$
 		\item Theoretischer Speedup: $1/[(1-p_w)(1-p_a)]$
-		\item TatsÃ¤chliche Operationszahl in Forward-Pass
+		\item Tatsächliche Operationszahl in Forward-Pass
 	\end{itemize}
 	
 	\subsection{Ergebnisse}
@@ -2006,7 +2006,7 @@
 	Die experimentellen Resultate zeigen dramatische Effizienzgewinne:
 	
 	\begin{satz}[Sparsity-Charakteristik neuronaler Netze]
-		FÃ¼r das getestete Netzwerk wurden folgende Sparsity-Werte gemessen:
+		Für das getestete Netzwerk wurden folgende Sparsity-Werte gemessen:
 		
 		\textbf{Gewichts-Sparsity = 0.0 (dense Netzwerk)}:
 		\begin{itemize}
@@ -2014,7 +2014,7 @@
 			\item Gemessene Aktivierungs-Sparsity: $0.52$ (ReLU setzt 52\% auf Null)
 			\item Kombinierte Sparsity: $0.52$
 			\item Theoretischer Speedup: $2.08\times$
-			\item Operationen: $120{,}000$ (von $250{,}000$ mÃ¶glichen)
+			\item Operationen: $120{,}000$ (von $250{,}000$ möglichen)
 		\end{itemize}
 		
 		\textbf{Gewichts-Sparsity = 0.9 (stark geprunt)}:
@@ -2023,7 +2023,7 @@
 			\item Gemessene Aktivierungs-Sparsity: $0.88$ (mehr Nullen durch sparse Gewichte)
 			\item Kombinierte Sparsity: $0.99$
 			\item Theoretischer Speedup: $83.3\times$
-			\item Operationen: $3{,}000$ (nur 1.2\% der mÃ¶glichen Operationen!)
+			\item Operationen: $3{,}000$ (nur 1.2\% der möglichen Operationen!)
 		\end{itemize}
 		
 		\textbf{Gewichts-Sparsity = 0.95 (extreme Sparsity)}:
@@ -2041,17 +2041,17 @@
 		\[
 		\text{Speedup}_{\max} = 39.53\times
 		\]
-		fÃ¼r Gewichts-Sparsity $p_w = 0.95$ und resultierende Aktivierungs-Sparsity $p_a = 0.92$.
+		für Gewichts-Sparsity $p_w = 0.95$ und resultierende Aktivierungs-Sparsity $p_a = 0.92$.
 		
-		Dies entspricht einer Reduktion der Operationen von $250{,}000$ auf $5{,}730$, d.h. nur \textbf{2.3\%} der ursprÃ¼nglichen Berechnungen sind tatsÃ¤chlich notwendig.
+		Dies entspricht einer Reduktion der Operationen von $250{,}000$ auf $5{,}730$, d.h. nur \textbf{2.3\%} der ursprünglichen Berechnungen sind tatsächlich notwendig.
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp3} zeigt die Ergebnisse fÃ¼r das Experiment 3: Sparsity in neuronalen Netzen.
+	Abbildung \ref{fig:exp3} zeigt die Ergebnisse für das Experiment 3: Sparsity in neuronalen Netzen.
 	\begin{itemize}
 		\item Subplot 1: Entwicklung der verschiedenen Sparsity-Metriken
 		\item Subplot 2: Theoretischer Speedup (logarithmische Skala)
 		\item Subplot 3: Operationszahl pro Forward-Pass
-		\item Subplots 4-6: Layer-weise Sparsity-Analyse fÃ¼r ausgewÃ¤hlte Konfigurationen
+		\item Subplots 4-6: Layer-weise Sparsity-Analyse für ausgewählte Konfigurationen
 	\end{itemize}
 	
 	\begin{figure}[H]
@@ -2061,7 +2061,7 @@
 		\label{fig:exp3}
 	\end{figure}
 	
-	Bemerkenswert ist die \textbf{SelbstverstÃ¤rkung} der Sparsity: Sparse Gewichte fÃ¼hren zu sparseren Aktivierungen, was wiederum die effektive kombinierte Sparsity erhÃ¶ht. Dieser Effekt ist in den tieferen Schichten besonders ausgeprÃ¤gt.
+	Bemerkenswert ist die \textbf{Selbstverstärkung} der Sparsity: Sparse Gewichte führen zu sparseren Aktivierungen, was wiederum die effektive kombinierte Sparsity erhöht. Dieser Effekt ist in den tieferen Schichten besonders ausgeprägt.
 	
 	\section{Experiment 4: Automatische Strukturerkennung}
 	
@@ -2074,13 +2074,13 @@
 	Wir generieren vier charakteristische Matrixstrukturen:
 	
 	\begin{enumerate}
-		\item \textbf{Block-Diagonal}: $4$ BlÃ¶cke der GrÃ¶ÃŸen $[10, 15, 12, 13]$
+		\item \textbf{Block-Diagonal}: $4$ Blöcke der Größen $[10, 15, 12, 13]$
 		\item \textbf{Hierarchisch}: Feed-Forward-Struktur mit 4 Ebenen
-		\item \textbf{Sparse Random}: ZufÃ¤llige sparse Matrix mit 10\% Density
-		\item \textbf{Dense}: VollstÃ¤ndig besetzte Matrix
+		\item \textbf{Sparse Random}: Zufällige sparse Matrix mit 10\% Density
+		\item \textbf{Dense}: Vollständig besetzte Matrix
 	\end{enumerate}
 	
-	FÃ¼r jede Struktur fÃ¼hren wir Algorithmus \ref{alg:structure-detection} aus und analysieren:
+	Für jede Struktur führen wir Algorithmus \ref{alg:structure-detection} aus und analysieren:
 	\begin{itemize}
 		\item Erkannte Sparsity und Density
 		\item In-Degree und Out-Degree Verteilungen
@@ -2090,17 +2090,17 @@
 	
 	\subsection{Ergebnisse}
 	
-	Die Strukturerkennung funktioniert zuverlÃ¤ssig:
+	Die Strukturerkennung funktioniert zuverlässig:
 	
-	\begin{satz}[Strukturerkennungs-QualitÃ¤t]
-		FÃ¼r die vier getesteten Strukturtypen ergaben sich folgende Erkennungsresultate:
+	\begin{satz}[Strukturerkennungs-Qualität]
+		Für die vier getesteten Strukturtypen ergaben sich folgende Erkennungsresultate:
 		
 		\textbf{Block-Diagonal-Matrix}:
 		\begin{itemize}
 			\item Erkannte Sparsity: $0.73$ (korrekt)
-			\item Erkannte Struktur: Block-Diagonal mit $4$ BlÃ¶cken
+			\item Erkannte Struktur: Block-Diagonal mit $4$ Blöcken
 			\item Empfohlener Algorithmus: \texttt{block\_diagonal}
-			\item Degree-Verteilung: Klar segmentiert nach BlÃ¶cken
+			\item Degree-Verteilung: Klar segmentiert nach Blöcken
 			\item \textbf{Korrekte Erkennung!}
 		\end{itemize}
 		
@@ -2118,13 +2118,13 @@
 			\item Erkannte Sparsity: $0.90$ (target war 0.90)
 			\item Erkannte Struktur: Keine Spezialstruktur
 			\item Empfohlener Algorithmus: \texttt{sparse\_column\_oriented}
-			\item Degree-Verteilung: GleichmÃ¤ÃŸig verteilt
+			\item Degree-Verteilung: Gleichmäßig verteilt
 			\item \textbf{Korrekt als unstrukturiert sparse erkannt!}
 		\end{itemize}
 		
 		\textbf{Dense Matrix}:
 		\begin{itemize}
-			\item Erkannte Sparsity: $0.00$ (vollstÃ¤ndig besetzt)
+			\item Erkannte Sparsity: $0.00$ (vollständig besetzt)
 			\item Erkannte Struktur: Dense
 			\item Empfohlener Algorithmus: \texttt{dense}
 			\item Degree-Verteilung: Alle Neuronen mit Degree $n$
@@ -2132,7 +2132,7 @@
 		\end{itemize}
 	\end{satz}
 	
-	Abbildung \ref{fig:exp4} zeigt die Ergebnisse fÃ¼r das Experiment 4: Automatische Strukturerkennung.
+	Abbildung \ref{fig:exp4} zeigt die Ergebnisse für das Experiment 4: Automatische Strukturerkennung.
 	\begin{itemize}
 		\item Oben: Heatmap der Matrix (zeigt visuelle Struktur)
 		\item Unten: In-Degree und Out-Degree Verteilung
@@ -2159,16 +2159,16 @@
 	Wir testen vier verschiedene Block-Konfigurationen:
 	
 	\begin{enumerate}
-		\item $4$ BlÃ¶cke der GrÃ¶ÃŸe $10 \times 10$ (uniform, total $n=40$)
-		\item $3$ BlÃ¶cke der GrÃ¶ÃŸe $20 \times 20$ (uniform, total $n=60$)
-		\item $5$ BlÃ¶cke der GrÃ¶ÃŸe $15 \times 15$ (uniform, total $n=75$)
-		\item $4$ BlÃ¶cke variabler GrÃ¶ÃŸe $[30, 20, 10, 5]$ (non-uniform, total $n=65$)
+		\item $4$ Blöcke der Größe $10 \times 10$ (uniform, total $n=40$)
+		\item $3$ Blöcke der Größe $20 \times 20$ (uniform, total $n=60$)
+		\item $5$ Blöcke der Größe $15 \times 15$ (uniform, total $n=75$)
+		\item $4$ Blöcke variabler Größe $[30, 20, 10, 5]$ (non-uniform, total $n=65$)
 	\end{enumerate}
 	
-	FÃ¼r jede Konfiguration messen wir:
+	Für jede Konfiguration messen wir:
 	\begin{itemize}
-		\item Zeit fÃ¼r Matrix-Vektor-Multiplikation ($100$ Wiederholungen)
-		\item Zeit fÃ¼r Berechnung von $A^5$ (Matrix-Potenz)
+		\item Zeit für Matrix-Vektor-Multiplikation ($100$ Wiederholungen)
+		\item Zeit für Berechnung von $A^5$ (Matrix-Potenz)
 		\item Vergleich: Block-optimiert vs. Dense-Berechnung
 	\end{itemize}
 	
@@ -2190,26 +2190,26 @@
 		
 		\textbf{Matrix-Potenz} $A^5$:
 		\begin{itemize}
-			\item Block-optimierte Methode: Schneller fÃ¼r grÃ¶ÃŸere BlÃ¶cke
-			\item Dense-Methode: Schneller fÃ¼r kleine BlÃ¶cke (bessere Cache-Nutzung)
+			\item Block-optimierte Methode: Schneller für größere Blöcke
+			\item Dense-Methode: Schneller für kleine Blöcke (bessere Cache-Nutzung)
 		\end{itemize}
 	\end{satz}
 	
 	\begin{korollar}[Interpretation des negativen Speedups]
-		Der negative Speedup fÃ¼r Matrix-Vektor-Multiplikation ist erklÃ¤rbar durch:
+		Der negative Speedup für Matrix-Vektor-Multiplikation ist erklärbar durch:
 		\begin{enumerate}
-			\item \textbf{Overhead der Block-Verwaltung}: ZusÃ¤tzliche Schleifeniterationen und Index-Berechnungen
-			\item \textbf{Zu kleine SystemgrÃ¶ÃŸe}: Bei $n < 100$ dominiert der Overhead
+			\item \textbf{Overhead der Block-Verwaltung}: Zusätzliche Schleifeniterationen und Index-Berechnungen
+			\item \textbf{Zu kleine Systemgröße}: Bei $n < 100$ dominiert der Overhead
 			\item \textbf{Optimierte BLAS-Routinen}: NumPy/SciPy nutzen hochoptimierte dense Matrix-Operationen
-			\item \textbf{Cache-Effizienz}: Dense Berechnung profitiert von besserer DatenlokalitÃ¤t
+			\item \textbf{Cache-Effizienz}: Dense Berechnung profitiert von besserer Datenlokalität
 		\end{enumerate}
 		
-		Theoretische Vorhersage: Speedup $m^2$ (z.B. $4^2 = 16$ fÃ¼r 4 BlÃ¶cke) gilt nur fÃ¼r \textbf{groÃŸe BlÃ¶cke} ($n_i > 1000$) und bei Implementierung ohne Overhead.
+		Theoretische Vorhersage: Speedup $m^2$ (z.B. $4^2 = 16$ für 4 Blöcke) gilt nur für \textbf{große Blöcke} ($n_i > 1000$) und bei Implementierung ohne Overhead.
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp5} zeigt die Ergebnisse fÃ¼r das Experiment 5: Block-Diagonal Performance.
+	Abbildung \ref{fig:exp5} zeigt die Ergebnisse für das Experiment 5: Block-Diagonal Performance.
 	\begin{itemize}
-		\item Subplot 1: Vergleich der Zeiten fÃ¼r MatVec
+		\item Subplot 1: Vergleich der Zeiten für MatVec
 		\item Subplot 2: Speedup-Faktoren (alle $< 1$, d.h. Slowdown)
 		\item Subplot 3: Matrix-Power-Zeiten
 		\item Subplot 4: Beispiel-Visualisierung einer Block-Diagonal-Struktur
@@ -2235,13 +2235,13 @@
 	\text{Layer-Sizes} = [20, 30, 25, 15, 10]
 	\]
 	
-	Die Kopplungsmatrizen $W_k \in \mathbb{R}^{n_k \times n_{k+1}}$ werden zufÃ¤llig initialisiert. Wir analysieren:
+	Die Kopplungsmatrizen $W_k \in \mathbb{R}^{n_k \times n_{k+1}}$ werden zufällig initialisiert. Wir analysieren:
 	
 	\begin{itemize}
 		\item Forward-Propagation durch alle Ebenen
-		\item Nilpotenz-Eigenschaften ($A^h = 0$ fÃ¼r $h = $ Anzahl Ebenen)
-		\item Normen der Matrixpotenzen $\|A^k\|$ fÃ¼r $k = 1, \ldots, 10$
-		\item KopplungsstÃ¤rken zwischen Ebenen
+		\item Nilpotenz-Eigenschaften ($A^h = 0$ für $h = $ Anzahl Ebenen)
+		\item Normen der Matrixpotenzen $\|A^k\|$ für $k = 1, \ldots, 10$
+		\item Kopplungsstärken zwischen Ebenen
 	\end{itemize}
 	
 	\subsection{Ergebnisse}
@@ -2249,7 +2249,7 @@
 	Die hierarchische Struktur zeigt die erwarteten theoretischen Eigenschaften:
 	
 	\begin{satz}[Nilpotenz hierarchischer Systeme]
-		FÃ¼r das getestete hierarchische System wurden gemessen:
+		Für das getestete hierarchische System wurden gemessen:
 		
 		\textbf{Nilpotenz-Eigenschaften}:
 		\begin{itemize}
@@ -2260,12 +2260,12 @@
 			\item $\|A^3\| = 0.96$
 			\item $\|A^4\| = 0.31$
 			\item $\|A^5\| = 4.2 \times 10^{-15}$ (numerisch Null)
-			\item $\|A^k\| \approx 0$ fÃ¼r alle $k \geq 5$
+			\item $\|A^k\| \approx 0$ für alle $k \geq 5$
 		\end{itemize}
 		
 		\textbf{Forward-Propagation}:
 		\begin{itemize}
-			\item Information durchlÃ¤uft alle 5 Ebenen
+			\item Information durchläuft alle 5 Ebenen
 			\item Aktivierungsnormen nehmen ab: $\|a_1\| = 4.47 \to \|a_5\| = 1.22$
 			\item Nach 5 Schritten: System im (nahezu) Nullzustand
 		\end{itemize}
@@ -2275,20 +2275,20 @@
 		Die Nilpotenz-Eigenschaft bedeutet:
 		\begin{enumerate}
 			\item \textbf{Endliche Dynamik}: System erreicht Nullzustand in endlicher Zeit
-			\item \textbf{Keine Oszillationen}: Keine periodischen LÃ¶sungen mÃ¶glich
-			\item \textbf{Keine Explosionen}: BeschrÃ¤nktes Wachstum garantiert
-			\item \textbf{Effiziente Berechnung}: Nur $h-1$ Matrixmultiplikationen nÃ¶tig
+			\item \textbf{Keine Oszillationen}: Keine periodischen Lösungen möglich
+			\item \textbf{Keine Explosionen}: Beschränktes Wachstum garantiert
+			\item \textbf{Effiziente Berechnung}: Nur $h-1$ Matrixmultiplikationen nötig
 		\end{enumerate}
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp6} zeigt die Ergebnisse fÃ¼r das Experiment 6: Hierarchisches System.
+	Abbildung \ref{fig:exp6} zeigt die Ergebnisse für das Experiment 6: Hierarchisches System.
 	\begin{itemize}
 		\item Subplot 1: Systemmatrix mit klarer Block-Dreiecks-Struktur
 		\item Subplot 2: Forward-Propagation durch alle Ebenen
 		\item Subplot 3: Aktivierungsnormen pro Ebene
 		\item Subplot 4: Nilpotenz-Analyse ($\|A^k\|$ vs. $k$) mit vertikaler Linie bei $h=5$
-		\item Subplot 5: Netzwerk-Architektur (Layer-GrÃ¶ÃŸen)
-		\item Subplot 6: Inter-Layer-KopplungsstÃ¤rken
+		\item Subplot 5: Netzwerk-Architektur (Layer-Größen)
+		\item Subplot 6: Inter-Layer-Kopplungsstärken
 	\end{itemize}
 	
 	\begin{figure}[H]
@@ -2310,63 +2310,63 @@
 	
 	Wir generieren eine azyklische Matrix als strikt obere Dreiecksmatrix:
 	\[
-	A \in \mathbb{R}^{30 \times 30}, \quad A_{ij} = 0 \text{ fÃ¼r } i \geq j
+	A \in \mathbb{R}^{30 \times 30}, \quad A_{ij} = 0 \text{ für } i \geq j
 	\]
 	
-	mit zufÃ¤lligen EintrÃ¤gen fÃ¼r $i < j$. Wir analysieren:
+	mit zufälligen Einträgen für $i < j$. Wir analysieren:
 	
 	\begin{itemize}
-		\item Topologische Sortierung des zugehÃ¶rigen Graphen
+		\item Topologische Sortierung des zugehörigen Graphen
 		\item Nilpotenz-Index (kleinstes $h$ mit $A^h = 0$)
 		\item Transiente Analyse mit Anfangszustand $x_0 \sim \mathcal{N}(0, I)$
-		\item Entwicklung von $\|x_t\|$ Ã¼ber Zeit
-		\item Anzahl aktiver ZustÃ¤nde Ã¼ber Zeit
+		\item Entwicklung von $\|x_t\|$ über Zeit
+		\item Anzahl aktiver Zustände über Zeit
 	\end{itemize}
 	
 	\subsection{Ergebnisse und Korrektur}
 	
 	\begin{satz}[Korrigierte Nilpotenz-Analyse azyklischer Systeme]
-		FÃ¼r ein azyklisches System mit $n$ ZustÃ¤nden gilt theoretisch:
+		Für ein azyklisches System mit $n$ Zuständen gilt theoretisch:
 		\[
-		A^k = 0 \quad \text{fÃ¼r alle } k \geq n
+		A^k = 0 \quad \text{für alle } k \geq n
 		\]
 		
-		Das ist eine \textbf{obere Schranke}. In der Praxis ist der tatsÃ¤chliche Nilpotenz-Index oft deutlich kleiner als $n$, abhÃ¤ngig von der spezifischen Struktur des Graphen.
+		Das ist eine \textbf{obere Schranke}. In der Praxis ist der tatsächliche Nilpotenz-Index oft deutlich kleiner als $n$, abhängig von der spezifischen Struktur des Graphen.
 		
-		\textbf{Gemessene Werte fÃ¼r $n = 30$}:
+		\textbf{Gemessene Werte für $n = 30$}:
 		Der gemessene Nilpotenz-Index von $h = 12$ bedeutet, dass $A^{12} \approx 0$ (numerisch), was korrekt ist und sogar besser als die theoretische Garantie.
 	\end{satz}
 	
-	\begin{proof}[ErklÃ¤rung der Diskrepanz]
-		Die theoretische obere Schranke $h \leq n$ gilt fÃ¼r den \textbf{worst case} -- einen linearen Graphen:
+	\begin{proof}[Erklärung der Diskrepanz]
+		Die theoretische obere Schranke $h \leq n$ gilt für den \textbf{worst case} -- einen linearen Graphen:
 		\[
 		1 \to 2 \to 3 \to \cdots \to n
 		\]
 		
-		FÃ¼r einen solchen Graph ist tatsÃ¤chlich $h = n$, da Information $n$ Schritte benÃ¶tigt, um vom ersten zum letzten Knoten zu gelangen.
+		Für einen solchen Graph ist tatsächlich $h = n$, da Information $n$ Schritte benötigt, um vom ersten zum letzten Knoten zu gelangen.
 		
-		FÃ¼r den zufÃ¤llig generierten azyklischen Graphen in unserem Experiment ist die Struktur jedoch komplexer:
+		Für den zufällig generierten azyklischen Graphen in unserem Experiment ist die Struktur jedoch komplexer:
 		\begin{itemize}
 			\item Mehrere Startknoten (In-Degree = 0)
-			\item Verzweigungen und ZusammenfÃ¼hrungen
-			\item Maximale PfadlÃ¤nge deutlich kleiner als $n$
+			\item Verzweigungen und Zusammenführungen
+			\item Maximale Pfadlänge deutlich kleiner als $n$
 		\end{itemize}
 		
-		Der Nilpotenz-Index entspricht der \textbf{lÃ¤ngsten PfadlÃ¤nge} im Graphen plus eins. FÃ¼r unseren Graphen ist diese maximale PfadlÃ¤nge $\approx 11$, daher $h = 12$.
+		Der Nilpotenz-Index entspricht der \textbf{längsten Pfadlänge} im Graphen plus eins. Für unseren Graphen ist diese maximale Pfadlänge $\approx 11$, daher $h = 12$.
 	\end{proof}
 	
 	Das azyklische System zeigt klare transiente Dynamik:
 	
 	\begin{satz}[Transiente Dynamik azyklischer Systeme]
-		FÃ¼r das getestete System ($n=30$, strikt obere Dreiecksmatrix) wurden gemessen:
+		Für das getestete System ($n=30$, strikt obere Dreiecksmatrix) wurden gemessen:
 		
 		\textbf{Strukturelle Eigenschaften}:
 		\begin{itemize}
 			\item System ist azyklisch: \texttt{True} (topologische Sortierung existiert)
-			\item Nilpotenz bestÃ¤tigt: $\|A^{12}\| < 10^{-14}$ (numerisch Null)
+			\item Nilpotenz bestätigt: $\|A^{12}\| < 10^{-14}$ (numerisch Null)
 			\item Theoretische obere Schranke: $h \leq 30$
-			\item TatsÃ¤chlicher Nilpotenz-Index: $h = 12$ (optimale Struktur)
-			\item VerhÃ¤ltnis $h/n = 0.4$ zeigt ``breiten'' Graphen mit vielen Parallelpfaden
+			\item Tatsächlicher Nilpotenz-Index: $h = 12$ (optimale Struktur)
+			\item Verhältnis $h/n = 0.4$ zeigt ``breiten'' Graphen mit vielen Parallelpfaden
 		\end{itemize}
 		
 		\textbf{Matrixpotenzen-Normen}:
@@ -2376,43 +2376,43 @@
 			\item $\|A^5\| \approx 0.31$ (deutliche Reduktion)
 			\item $\|A^{10}\| \approx 3.2 \times 10^{-13}$ (nahezu Null)
 			\item $\|A^{12}\| < 10^{-14}$ (Maschinengenauigkeit)
-			\item $\|A^k\| = 0$ fÃ¼r alle $k \geq 12$
+			\item $\|A^k\| = 0$ für alle $k \geq 12$
 		\end{itemize}
 		
 		\textbf{Transientes Verhalten mit Anfangszustand $x_0 \sim \mathcal{N}(0, I)$}:
 		\begin{itemize}
-			\item Zustandsnorm $\|x_t\|$ fÃ¤llt monoton und exponentiell
+			\item Zustandsnorm $\|x_t\|$ fällt monoton und exponentiell
 			\item $\|x_0\| \approx 5.48$ (Ausgangsnorm)
 			\item $\|x_5\| \approx 1.23$ (Reduktion um Faktor 4.5)
 			\item $\|x_{10}\| \approx 0.08$ (Reduktion um Faktor 68)
 			\item $\|x_{12}\| < 10^{-10}$ (praktisch Null)
-			\item System im Nullzustand fÃ¼r $t \geq 12$
+			\item System im Nullzustand für $t \geq 12$
 		\end{itemize}
 		
-		\textbf{Aktive ZustÃ¤nde Ã¼ber Zeit}:
+		\textbf{Aktive Zustände über Zeit}:
 		\begin{itemize}
-			\item Anfangs: 30 aktive ZustÃ¤nde (alle nicht-null)
-			\item Nach $t=5$: $\approx 18$ aktive ZustÃ¤nde
-			\item Nach $t=10$: $\approx 3$ aktive ZustÃ¤nde
-			\item Nach $t=12$: 0 aktive ZustÃ¤nde (alle $< 10^{-10}$)
+			\item Anfangs: 30 aktive Zustände (alle nicht-null)
+			\item Nach $t=5$: $\approx 18$ aktive Zustände
+			\item Nach $t=10$: $\approx 3$ aktive Zustände
+			\item Nach $t=12$: 0 aktive Zustände (alle $< 10^{-10}$)
 			\item Monotones Fallen (keine Oszillationen)
 		\end{itemize}
 	\end{satz}
 	
 	\begin{korollar}[Vergleich mit theoretischen Vorhersagen]
-		Die experimentellen Ergebnisse bestÃ¤tigen alle theoretischen Vorhersagen:
+		Die experimentellen Ergebnisse bestätigen alle theoretischen Vorhersagen:
 		
-		\textbf{BestÃ¤tigt}:
+		\textbf{Bestätigt}:
 		\begin{itemize}
-			\item[$\checkmark$] Nilpotenz: $A^h = 0$ fÃ¼r ein $h \leq n$
-			\item[$\checkmark$] TatsÃ¤chlicher Index $h = 12 < 30 = n$ (sogar besser als Garantie)
-			\item[$\checkmark$] Transiente Dynamik: $x_t \to 0$ fÃ¼r $t \to \infty$
+			\item[$\checkmark$] Nilpotenz: $A^h = 0$ für ein $h \leq n$
+			\item[$\checkmark$] Tatsächlicher Index $h = 12 < 30 = n$ (sogar besser als Garantie)
+			\item[$\checkmark$] Transiente Dynamik: $x_t \to 0$ für $t \to \infty$
 			\item[$\checkmark$] Keine Oszillationen (streng monotoner Abfall)
 			\item[$\checkmark$] Endlicher Nullzustand (nach $h$ Schritten erreicht)
 		\end{itemize}
 		
-		\textbf{ZusÃ¤tzliche Beobachtung}:
-		Das VerhÃ¤ltnis $h/n = 0.4$ ist charakteristisch fÃ¼r zufÃ¤llige obere Dreiecksmatrizen mit gleichverteilten Nicht-Null-EintrÃ¤gen. FÃ¼r systematisch konstruierte hierarchische Systeme (wie in Experiment 6) ist $h$ typischerweise gleich der Anzahl der Ebenen.
+		\textbf{Zusätzliche Beobachtung}:
+		Das Verhältnis $h/n = 0.4$ ist charakteristisch für zufällige obere Dreiecksmatrizen mit gleichverteilten Nicht-Null-Einträgen. Für systematisch konstruierte hierarchische Systeme (wie in Experiment 6) ist $h$ typischerweise gleich der Anzahl der Ebenen.
 	\end{korollar}
 	
 	\begin{korollar}[Praktische Implikationen]
@@ -2421,13 +2421,13 @@
 		\textbf{Optimale Simulationsdauer}:
 		\begin{itemize}
 			\item Worst-Case-Garantie: Nach $n$ Zeitschritten ist System garantiert im Nullzustand
-			\item Typischer Fall: Nilpotenz-Index oft $h \approx 0.3n$ bis $0.5n$ fÃ¼r zufÃ¤llige Strukturen
-			\item Implementierung: Berechne $h$ einmalig, simuliere hÃ¶chstens $h$ Schritte (nicht $n$)
-			\item Potenzielle Zeitersparnis: Faktor $2-3$ gegenÃ¼ber konservativer Schranke $n$
+			\item Typischer Fall: Nilpotenz-Index oft $h \approx 0.3n$ bis $0.5n$ für zufällige Strukturen
+			\item Implementierung: Berechne $h$ einmalig, simuliere höchstens $h$ Schritte (nicht $n$)
+			\item Potenzielle Zeitersparnis: Faktor $2-3$ gegenüber konservativer Schranke $n$
 		\end{itemize}
 	\end{korollar}
 	
-	Abbildung \ref{fig:exp7} zeigt die Ergebnisse fÃ¼r das Experiment 7: Azyklisches System.
+	Abbildung \ref{fig:exp7} zeigt die Ergebnisse für das Experiment 7: Azyklisches System.
 	
 	\begin{figure}[H]
 		\centering
@@ -2436,20 +2436,20 @@
 		\label{fig:exp7}
 	\end{figure}
 	
-	\textbf{Wichtige Klarstellung}: Der gemessene Nilpotenz-Index $h = 12$ fÃ¼r $n = 30$ ist \textbf{kein Fehler}. Die theoretische Schranke $h \leq n$ ist eine obere Grenze fÃ¼r den worst case. In der Praxis ist $h$ oft deutlich kleiner, was die Effizienz der Graphstruktur zeigt. Das VerhÃ¤ltnis $h/n = 0.4$ bedeutet, dass das System eine ``breite'' Struktur mit vielen parallelen Pfaden hat, was zu schnellerer Konvergenz zum Nullzustand fÃ¼hrt
+	\textbf{Wichtige Klarstellung}: Der gemessene Nilpotenz-Index $h = 12$ für $n = 30$ ist \textbf{kein Fehler}. Die theoretische Schranke $h \leq n$ ist eine obere Grenze für den worst case. In der Praxis ist $h$ oft deutlich kleiner, was die Effizienz der Graphstruktur zeigt. Das Verhältnis $h/n = 0.4$ bedeutet, dass das System eine ``breite'' Struktur mit vielen parallelen Pfaden hat, was zu schnellerer Konvergenz zum Nullzustand führt
 	
 	\chapter{Erweiterte Anwendungen und Fallstudien}
 	
-	Die theoretischen Erkenntnisse und experimentellen Validierungen der vorherigen Kapitel bilden die Grundlage fÃ¼r konkrete industrielle Anwendungen. Dieses Kapitel prÃ¤sentiert vier detaillierte Fallstudien, die zeigen, wie die Asymmetrie zwischen Zeilen und Spalten in realen Systemen systematisch ausgenutzt werden kann.
+	Die theoretischen Erkenntnisse und experimentellen Validierungen der vorherigen Kapitel bilden die Grundlage für konkrete industrielle Anwendungen. Dieses Kapitel präsentiert vier detaillierte Fallstudien, die zeigen, wie die Asymmetrie zwischen Zeilen und Spalten in realen Systemen systematisch ausgenutzt werden kann.
 	
-	\section{Echtzeit-Robotersteuerung mit modellprÃ¤diktiver Regelung}
+	\section{Echtzeit-Robotersteuerung mit modellprädiktiver Regelung}
 	
-	Moderne Robotersysteme erfordern prÃ¤zise Trajektorienplanung in Echtzeit. ModellprÃ¤diktive Regelung (MPC) ist eine leistungsfÃ¤hige Methode, die jedoch rechenintensiv ist. Die Ausnutzung der Systemstruktur ermÃ¶glicht erstmals echtzeitfÃ¤hige MPC fÃ¼r komplexe Roboter.
+	Moderne Robotersysteme erfordern präzise Trajektorienplanung in Echtzeit. Modellprädiktive Regelung (MPC) ist eine leistungsfähige Methode, die jedoch rechenintensiv ist. Die Ausnutzung der Systemstruktur ermöglicht erstmals echtzeitfähige MPC für komplexe Roboter.
 	
 	\subsection{Systemmodellierung}
 	
 	\begin{definition}[Roboterdynamik als hierarchisches System]
-		Ein 6-DOF-Roboterarm mit $n = 18$ ZustÃ¤nden (6 Gelenkwinkel, 6 Geschwindigkeiten, 6 Beschleunigungen) wird durch ein linearisiertes Modell beschrieben:
+		Ein 6-DOF-Roboterarm mit $n = 18$ Zuständen (6 Gelenkwinkel, 6 Geschwindigkeiten, 6 Beschleunigungen) wird durch ein linearisiertes Modell beschrieben:
 		\[
 		x_{t+1} = A x_t + B u_t
 		\]
@@ -2467,31 +2467,31 @@
 	\end{definition}
 	
 	\begin{satz}[Sparsity der Roboterdynamik]
-		Die Dynamikmatrix $A_{\text{dyn}} \in \mathbb{R}^{6 \times 6}$ kodiert die Kopplungen zwischen Gelenken. FÃ¼r typische serielle Roboter gilt:
+		Die Dynamikmatrix $A_{\text{dyn}} \in \mathbb{R}^{6 \times 6}$ kodiert die Kopplungen zwischen Gelenken. Für typische serielle Roboter gilt:
 		\begin{itemize}
 			\item Benachbarte Gelenke: starke Kopplung ($|A_{i,i+1}|$, $|A_{i+1,i}| \gg 0$)
-			\item Entfernte Gelenke: schwache Kopplung ($|A_{ij}| \approx 0$ fÃ¼r $|i-j| > 2$)
-			\item Resultierende Sparsity: $\approx 70\%$ (nur $30\%$ der EintrÃ¤ge signifikant)
+			\item Entfernte Gelenke: schwache Kopplung ($|A_{ij}| \approx 0$ für $|i-j| > 2$)
+			\item Resultierende Sparsity: $\approx 70\%$ (nur $30\%$ der Einträge signifikant)
 		\end{itemize}
 		
 		Die Gesamtmatrix $A$ hat Sparsity $\approx 85\%$ durch die hierarchische Block-Struktur.
 	\end{satz}
 	
 	\begin{beispiel}[KUKA LBR iiwa Roboter]
-		FÃ¼r den KUKA LBR iiwa 7-DOF-Roboter mit $\Delta t = 1$ ms ergibt sich:
+		Für den KUKA LBR iiwa 7-DOF-Roboter mit $\Delta t = 1$ ms ergibt sich:
 		
 		\textbf{Systemparameter}:
 		\begin{itemize}
 			\item Zustandsdimension: $n = 21$ (7 DOF $\times$ 3 Ebenen)
 			\item Steuerdimension: $m = 7$ (Drehmomente)
-			\item PrÃ¤diktionshorizont: $N = 50$ (50 ms vorausplanen)
+			\item Prädiktionshorizont: $N = 50$ (50 ms vorausplanen)
 			\item Optimierungsvariablen: $N \times m = 350$
 		\end{itemize}
 		
 		\textbf{Sparsity-Analyse}:
 		\begin{itemize}
-			\item GesamteintrÃ¤ge in $A$: $21 \times 21 = 441$
-			\item Nicht-Null-EintrÃ¤ge: $m_A = 67$
+			\item Gesamteinträge in $A$: $21 \times 21 = 441$
+			\item Nicht-Null-Einträge: $m_A = 67$
 			\item Sparsity: $1 - 67/441 = 0.848$ (84.8\%)
 		\end{itemize}
 	\end{beispiel}
@@ -2499,27 +2499,27 @@
 	\subsection{MPC-Optimierung mit Strukturausnutzung}
 	
 	\begin{algorithm}[H]
-		\caption{Strukturausnutzende MPC fÃ¼r Robotersteuerung}
+		\caption{Strukturausnutzende MPC für Robotersteuerung}
 		\label{alg:robot-mpc}
 		\textbf{Eingabe:} Systemmatrizen $A, B$, Referenztrajektorie $x_{\text{ref}}$, Horizont $N$ \\
 		\textbf{Ausgabe:} Optimale Steuersequenz $u^* = [u_0^*, \ldots, u_{N-1}^*]$
 		\begin{algorithmic}[1]
 			\State \textbf{Vorbereitung} (einmalig):
 			\State Berechne hierarchische Struktur von $A$
-			\State Identifiziere sparse Muster in $A^k$ fÃ¼r $k = 1, \ldots, N$
+			\State Identifiziere sparse Muster in $A^k$ für $k = 1, \ldots, N$
 			\State Kompiliere spalten-priorisierte Vorhersage-Routinen
 			
 			\State \textbf{Echtzeitschleife}:
 			\While{Roboter aktiv}
 			\State Messe aktuellen Zustand: $x_{\text{current}}$
 			
-			\State \textbf{PrÃ¤diktion} (spalten-priorisiert):
+			\State \textbf{Prädiktion} (spalten-priorisiert):
 			\State $X_{\text{pred}} \gets \text{predict}(A, B, x_{\text{current}}, u_{\text{init}}, N)$
 			\Comment{Nutzt Sparsity}
 			
 			\State \textbf{Optimierung}:
 			\State Formuliere QP: $\min_{u_0, \ldots, u_{N-1}} \sum_{k=0}^{N-1} \|x_k - x_{\text{ref},k}\|^2_Q + \|u_k\|^2_R$
-			\State LÃ¶se mit sparse QP-Solver (z.B. OSQP)
+			\State Löse mit sparse QP-Solver (z.B. OSQP)
 			\State $u^* \gets \text{solution}$
 			
 			\State \textbf{Steuerung}:
@@ -2529,17 +2529,17 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{satz}[Laufzeitanalyse fÃ¼r Roboter-MPC]
+	\begin{satz}[Laufzeitanalyse für Roboter-MPC]
 		Die Laufzeit von Algorithmus \ref{alg:robot-mpc} setzt sich zusammen aus:
 		
-		\textbf{PrÃ¤diktion}:
+		\textbf{Prädiktion}:
 		\begin{itemize}
 			\item Naive Methode: $O(N \cdot n^3) = O(50 \cdot 21^3) \approx 4.6 \times 10^5$ Operationen
 			\item Spalten-priorisiert: $O(N \cdot m_A \cdot n) = O(50 \cdot 67 \cdot 21) \approx 7 \times 10^4$ Operationen
 			\item Speedup: Faktor $\approx 6.6$
 		\end{itemize}
 		
-		\textbf{QP-LÃ¶sung}:
+		\textbf{QP-Lösung}:
 		\begin{itemize}
 			\item Standard-Solver: $O((Nm)^3) = O(350^3) \approx 4.3 \times 10^7$ Operationen
 			\item Sparse-Solver (OSQP): $O(N \cdot m^2 \cdot k_{\text{iter}}) \approx 10^5$ Operationen (typisch 10-20 Iterationen)
@@ -2549,25 +2549,25 @@
 		\textbf{Gesamtlaufzeit}:
 		Auf Intel Core i7 (2.8 GHz):
 		\begin{itemize}
-			\item Naive Implementierung: $\approx 15$ ms (nicht echtzeitfÃ¤hig fÃ¼r 1 ms Zykluszeit)
-			\item Strukturausnutzend: $\approx 0.8$ ms (echtzeitfÃ¤hig mit Sicherheitsmarge)
+			\item Naive Implementierung: $\approx 15$ ms (nicht echtzeitfähig für 1 ms Zykluszeit)
+			\item Strukturausnutzend: $\approx 0.8$ ms (echtzeitfähig mit Sicherheitsmarge)
 		\end{itemize}
 	\end{satz}
 	
-	\begin{korollar}[Praktische EchtzeitfÃ¤higkeit]
+	\begin{korollar}[Praktische Echtzeitfähigkeit]
 		Durch Kombination von:
 		\begin{enumerate}
 			\item Hierarchischer Block-Struktur (Faktor 3)
 			\item Sparse Matrix-Operationen (Faktor 2.2)
-			\item Spalten-priorisierter PrÃ¤diktion (Faktor 1.5)
+			\item Spalten-priorisierter Prädiktion (Faktor 1.5)
 			\item Sparse QP-Solver (Faktor 400)
 		\end{enumerate}
 		
-		wird eine Gesamtbeschleunigung um Faktor $\approx 20$ fÃ¼r die PrÃ¤diktion und Faktor $\approx 400$ fÃ¼r die Optimierung erreicht. Dies ermÃ¶glicht MPC mit 1 kHz Regelfrequenz auf Standard-Hardware.
+		wird eine Gesamtbeschleunigung um Faktor $\approx 20$ für die Prädiktion und Faktor $\approx 400$ für die Optimierung erreicht. Dies ermöglicht MPC mit 1 kHz Regelfrequenz auf Standard-Hardware.
 	\end{korollar}
 	
 	\begin{beispiel}[Trajektorienfolge-Experiment]
-		Ein KUKA LBR iiwa fÃ¼hrt eine komplexe 3D-Trajektorie aus:
+		Ein KUKA LBR iiwa führt eine komplexe 3D-Trajektorie aus:
 		
 		\textbf{Aufgabe}: Kreisbahn mit 20 cm Radius in 2 Sekunden
 		
@@ -2579,19 +2579,19 @@
 				\hline
 				Durchschnittliche Rechenzeit & 14.7 ms & 0.79 ms \\
 				Maximale Rechenzeit & 23.1 ms & 1.12 ms \\
-				EchtzeitfÃ¤hig (1 ms Takt)? & Nein & Ja \\
+				Echtzeitfähig (1 ms Takt)? & Nein & Ja \\
 				RMS-Tracking-Fehler & 2.3 mm & 0.8 mm \\
 				Maximaler Fehler & 8.1 mm & 2.4 mm \\
 				\hline
 			\end{tabular}
 		\end{center}
 		
-		Der bessere Tracking-Fehler der strukturausnutzenden Methode resultiert aus der hÃ¶heren Regelfrequenz (1 kHz vs. 50 Hz).
+		Der bessere Tracking-Fehler der strukturausnutzenden Methode resultiert aus der höheren Regelfrequenz (1 kHz vs. 50 Hz).
 	\end{beispiel}
 	
-	\section{GroÃŸskalige Netzwerkdynamik und Informationsausbreitung}
+	\section{Großskalige Netzwerkdynamik und Informationsausbreitung}
 	
-	Soziale Netzwerke, epidemiologische Modelle und Kommunikationssysteme sind natÃ¼rliche Anwendungen fÃ¼r die entwickelten Methoden. Die Broadcasting-Struktur mit Hub-Knoten ist charakteristisch fÃ¼r diese DomÃ¤nen.
+	Soziale Netzwerke, epidemiologische Modelle und Kommunikationssysteme sind natürliche Anwendungen für die entwickelten Methoden. Die Broadcasting-Struktur mit Hub-Knoten ist charakteristisch für diese Domänen.
 	
 	\subsection{Soziale Netzwerke als Broadcasting-Systeme}
 	
@@ -2607,17 +2607,17 @@
 		\[
 		x_{t+1} = A x_t + (1-\alpha) x_t
 		\]
-		wobei $x_i(t) \in [0,1]$ die Wahrscheinlichkeit ist, dass Nutzer $i$ zum Zeitpunkt $t$ eine Information (z.B. Meme, Nachricht) kennt, und $\alpha \in [0,1]$ der DÃ¤mpfungsfaktor (Vergessen).
+		wobei $x_i(t) \in [0,1]$ die Wahrscheinlichkeit ist, dass Nutzer $i$ zum Zeitpunkt $t$ eine Information (z.B. Meme, Nachricht) kennt, und $\alpha \in [0,1]$ der Dämpfungsfaktor (Vergessen).
 	\end{definition}
 	
 	\begin{satz}[Power-Law-Verteilung in sozialen Netzwerken]
-		Reale soziale Netzwerke folgen typischerweise einer Power-Law-Verteilung fÃ¼r die Anzahl der Follower:
+		Reale soziale Netzwerke folgen typischerweise einer Power-Law-Verteilung für die Anzahl der Follower:
 		\[
 		P(\text{out-deg} = k) \propto k^{-\gamma}
 		\]
 		mit Exponent $\gamma \in [2, 3]$.
 		
-		Dies fÃ¼hrt zu extremer Asymmetrie:
+		Dies führt zu extremer Asymmetrie:
 		\begin{itemize}
 			\item Wenige Influencer (Top 0.1\%): Out-Degree $\approx 10^5$ - $10^6$
 			\item Durchschnittliche Nutzer (99.9\%): Out-Degree $\approx 100$ - $1000$
@@ -2638,7 +2638,7 @@
 		
 		\textbf{Informationsausbreitung-Simulation}:
 		\begin{itemize}
-			\item Startknoten: Ein zufÃ¤lliger Top-100-Influencer postet eine Nachricht
+			\item Startknoten: Ein zufälliger Top-100-Influencer postet eine Nachricht
 			\item Ausbreitungsmodell: $P(\text{retweet}) = 0.01$ pro Follower
 			\item Zeitskala: Diskrete Zeitschritte (1 Stunde)
 		\end{itemize}
@@ -2671,11 +2671,11 @@
 		
 		wobei:
 		\begin{itemize}
-			\item $S_{i,t}$: Anzahl anfÃ¤lliger Personen in Region $i$
+			\item $S_{i,t}$: Anzahl anfälliger Personen in Region $i$
 			\item $I_{i,t}$: Anzahl infizierter Personen in Region $i$
 			\item $R_{i,t}$: Anzahl genesener Personen in Region $i$
 			\item $A_{ij}$: Kontaktrate zwischen Regionen $i$ und $j$
-			\item $\beta$: Ãœbertragungsrate
+			\item $\beta$: Übertragungsrate
 			\item $\gamma$: Genesungsrate
 		\end{itemize}
 	\end{definition}
@@ -2684,11 +2684,11 @@
 		Kontaktnetzwerke zwischen geografischen Regionen haben charakteristische Sparsity:
 		\begin{itemize}
 			\item Lokale Kontakte: Hohe Raten zwischen benachbarten Regionen
-			\item Fernkontakte: Geringe Raten, beschrÃ¤nkt auf Verkehrsknotenpunkte (FlughÃ¤fen, BahnhÃ¶fe)
-			\item Typische Sparsity: $> 95\%$ fÃ¼r nationale Netzwerke mit 100+ Regionen
+			\item Fernkontakte: Geringe Raten, beschränkt auf Verkehrsknotenpunkte (Flughäfen, Bahnhöfe)
+			\item Typische Sparsity: $> 95\%$ für nationale Netzwerke mit 100+ Regionen
 		\end{itemize}
 		
-		ZusÃ¤tzlich: In frÃ¼hen Phasen einer Epidemie ist $I_t$ extrem sparse ($< 1\%$ der Regionen betroffen).
+		Zusätzlich: In frühen Phasen einer Epidemie ist $I_t$ extrem sparse ($< 1\%$ der Regionen betroffen).
 	\end{satz}
 	
 	\begin{beispiel}[COVID-19-Ausbreitung Deutschland]
@@ -2697,7 +2697,7 @@
 		\textbf{Netzwerkstruktur}:
 		\begin{itemize}
 			\item Knoten: $n = 401$ Landkreise
-			\item Kanten: Basierend auf PendlerstrÃ¶men (Bundesagentur fÃ¼r Arbeit)
+			\item Kanten: Basierend auf Pendlerströmen (Bundesagentur für Arbeit)
 			\item Sparsity: 96.7\% (nur benachbarte und stark verbundene Landkreise)
 		\end{itemize}
 		
@@ -2705,14 +2705,14 @@
 		\begin{itemize}
 			\item Zeitraum: Januar 2020 - Dezember 2021 (730 Tage)
 			\item Zeitschritt: 1 Tag
-			\item Parameter: $\beta = 0.3$, $\gamma = 0.1$ (variierend mit MaÃŸnahmen)
+			\item Parameter: $\beta = 0.3$, $\gamma = 0.1$ (variierend mit Maßnahmen)
 		\end{itemize}
 		
 		\textbf{Rechenzeitvergleich}:
 		\begin{center}
 			\begin{tabular}{|l|c|c|}
 				\hline
-				\textbf{Methode} & \textbf{Zeit fÃ¼r 730 Tage} & \textbf{Speedup} \\
+				\textbf{Methode} & \textbf{Zeit für 730 Tage} & \textbf{Speedup} \\
 				\hline
 				Dense (alle Regionen immer) & 47.2 s & 1.0$\times$ \\
 				Sparse Row-oriented & 8.3 s & 5.7$\times$ \\
@@ -2724,14 +2724,14 @@
 		
 		Die adaptive Methode nutzt aus, dass:
 		\begin{enumerate}
-			\item In frÃ¼hen Phasen: Wenige Regionen infiziert â†’ spalten-orientiert
-			\item In spÃ¤ten Phasen: Viele Regionen infiziert â†’ zeilen-orientiert
+			\item In frühen Phasen: Wenige Regionen infiziert â†’ spalten-orientiert
+			\item In späten Phasen: Viele Regionen infiziert â†’ zeilen-orientiert
 			\item Automatischer Wechsel bei $\approx 50\%$ Inzidenz
 		\end{enumerate}
 	\end{beispiel}
 	
 	\begin{korollar}[Monte-Carlo-Simulation]
-		FÃ¼r stochastische Epidemie-Modelle sind $10.000+$ Monte-Carlo-DurchlÃ¤ufe nÃ¶tig fÃ¼r robuste Statistiken. Mit Speedup von 40$\times$:
+		Für stochastische Epidemie-Modelle sind $10.000+$ Monte-Carlo-Durchläufe nötig für robuste Statistiken. Mit Speedup von 40$\times$:
 		\begin{itemize}
 			\item Naive Methode: $47.2 \text{ s} \times 10.000 = 131 \text{ Stunden}$
 			\item Adaptive Methode: $1.1 \text{ s} \times 10.000 = 3.1 \text{ Stunden}$
@@ -2742,14 +2742,14 @@
 	
 	\section{Optimierung tiefer neuronaler Netze}
 	
-	Die in Experiment 3 beobachtete Sparsity in neuronalen Netzen kann systematisch fÃ¼r Training und Inferenz ausgenutzt werden.
+	Die in Experiment 3 beobachtete Sparsity in neuronalen Netzen kann systematisch für Training und Inferenz ausgenutzt werden.
 	
 	\subsection{Structured Pruning mit Asymmetrie-Awareness}
 	
 	\begin{definition}[Asymmetrie-bewusstes Pruning]
-		Traditionelles Pruning entfernt Gewichte basierend auf ihrer Magnitude. Asymmetrie-bewusstes Pruning berÃ¼cksichtigt zusÃ¤tzlich die Struktur:
+		Traditionelles Pruning entfernt Gewichte basierend auf ihrer Magnitude. Asymmetrie-bewusstes Pruning berücksichtigt zusätzlich die Struktur:
 		
-		\textbf{Kriterium fÃ¼r Gewicht $W_{ij}$}:
+		\textbf{Kriterium für Gewicht $W_{ij}$}:
 		\[
 		\text{Importance}(W_{ij}) = |W_{ij}| \cdot \left( \alpha \cdot \text{out-activity}(j) + (1-\alpha) \cdot \text{in-activity}(i) \right)
 		\]
@@ -2758,21 +2758,21 @@
 		\begin{itemize}
 			\item $\text{out-activity}(j) = \mathbb{E}[\mathbb{1}_{a_j \neq 0}]$: Wie oft ist Neuron $j$ aktiv?
 			\item $\text{in-activity}(i) = \mathbb{E}[\mathbb{1}_{a_i \neq 0}]$: Wie oft ist Neuron $i$ aktiv?
-			\item $\alpha \in [0,1]$: Balance zwischen Sender- und EmpfÃ¤nger-Relevanz
+			\item $\alpha \in [0,1]$: Balance zwischen Sender- und Empfänger-Relevanz
 		\end{itemize}
 		
 		Gewichte mit niedrigem Importance-Score werden entfernt.
 	\end{definition}
 	
 	\begin{satz}[Optimale Pruning-Strategie]
-		FÃ¼r spalten-priorisierte Inferenz ist $\alpha = 1$ optimal (nur Out-Activity zÃ¤hlt), da:
+		Für spalten-priorisierte Inferenz ist $\alpha = 1$ optimal (nur Out-Activity zählt), da:
 		\begin{itemize}
-			\item Spalten-orientierte Berechnung iteriert Ã¼ber aktive Input-Neuronen
+			\item Spalten-orientierte Berechnung iteriert über aktive Input-Neuronen
 			\item Gewichte von inaktiven Neuronen werden nie verwendet
 			\item Pruning sollte Gewichte von selten aktiven Neuronen entfernen
 		\end{itemize}
 		
-		FÃ¼r zeilen-priorisierte Inferenz ist $\alpha = 0$ optimal (nur In-Activity zÃ¤hlt).
+		Für zeilen-priorisierte Inferenz ist $\alpha = 0$ optimal (nur In-Activity zählt).
 	\end{satz}
 	
 	\begin{algorithm}[H]
@@ -2781,11 +2781,11 @@
 		\textbf{Eingabe:} Trainiertes Netz $\{W_1, \ldots, W_L\}$, Trainingsdaten $\mathcal{D}$, Sparsity-Ziel $p_{\text{target}}$ \\
 		\textbf{Ausgabe:} Gepruntes Netz $\{\tilde{W}_1, \ldots, \tilde{W}_L\}$
 		\begin{algorithmic}[1]
-			\State \textbf{Schritt 1: AktivitÃ¤tsanalyse}
+			\State \textbf{Schritt 1: Aktivitätsanalyse}
 			\For{$\text{batch} \in \mathcal{D}$}
 			\State Forward-Pass durch Netz
 			\For{jede Schicht $l$}
-			\State ZÃ¤hle Aktivierungen: $\text{count}_l[j] \gets \text{count}_l[j] + \mathbb{1}_{a_{l,j} \neq 0}$
+			\State Zähle Aktivierungen: $\text{count}_l[j] \gets \text{count}_l[j] + \mathbb{1}_{a_{l,j} \neq 0}$
 			\EndFor
 			\EndFor
 			\State Normalisiere: $\text{out-activity}_l[j] \gets \text{count}_l[j] / |\mathcal{D}|$
@@ -2803,7 +2803,7 @@
 			\State Setze die $k$ unwichtigsten Gewichte auf Null
 			
 			\State \textbf{Schritt 4: Fine-Tuning}
-			\State Trainiere gepruntes Netz fÃ¼r wenige Epochen
+			\State Trainiere gepruntes Netz für wenige Epochen
 			
 			\State \Return $\{\tilde{W}_1, \ldots, \tilde{W}_L\}$
 		\end{algorithmic}
@@ -2837,15 +2837,15 @@
 		\textbf{Beobachtungen}:
 		\begin{enumerate}
 			\item Asymmetrie-bewusstes Pruning erreicht bessere Genauigkeit bei gleicher Sparsity
-			\item Speedup ist hÃ¶her, da Pruning gezielt spalten-orientierte Struktur optimiert
+			\item Speedup ist höher, da Pruning gezielt spalten-orientierte Struktur optimiert
 			\item Bei 90\% Sparsity: 1.2 Prozentpunkte bessere Genauigkeit, 1.7$\times$ schneller
 		\end{enumerate}
 	\end{beispiel}
 	
-	\subsection{Training-Strategien fÃ¼r optimale Sparsity-Muster}
+	\subsection{Training-Strategien für optimale Sparsity-Muster}
 	
 	\begin{definition}[Sparsity-induzierende Regularisierung]
-		WÃ¤hrend des Trainings kann Sparsity durch modifizierte Loss-Funktion gefÃ¶rdert werden:
+		Während des Trainings kann Sparsity durch modifizierte Loss-Funktion gefördert werden:
 		\[
 		\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}} + \lambda_1 \|W\|_1 + \lambda_2 \sum_{j} \left(\sum_i |W_{ij}|\right)^2
 		\]
@@ -2853,28 +2853,28 @@
 		Terme:
 		\begin{itemize}
 			\item $\mathcal{L}_{\text{task}}$: Aufgabenspezifischer Loss (z.B. Cross-Entropy)
-			\item $\lambda_1 \|W\|_1$: L1-Regularisierung (fÃ¶rdert sparse Gewichte)
-			\item $\lambda_2 \sum_{j} (\sum_i |W_{ij}|)^2$: Spalten-Gruppierungs-Term (fÃ¶rdert, dass ganze Spalten Null werden)
+			\item $\lambda_1 \|W\|_1$: L1-Regularisierung (fördert sparse Gewichte)
+			\item $\lambda_2 \sum_{j} (\sum_i |W_{ij}|)^2$: Spalten-Gruppierungs-Term (fördert, dass ganze Spalten Null werden)
 		\end{itemize}
 	\end{definition}
 	
 	\begin{satz}[Konvergenz zu strukturierter Sparsity]
-		Die modifizierte Loss-Funktion fÃ¶rdert Gewichtsmatrizen mit folgenden Eigenschaften:
+		Die modifizierte Loss-Funktion fördert Gewichtsmatrizen mit folgenden Eigenschaften:
 		\begin{enumerate}
 			\item Spalten-Sparsity: Ganze Spalten (korrespondierend zu Input-Neuronen) werden Null
-			\item Dies ist optimal fÃ¼r spalten-priorisierte Inferenz
+			\item Dies ist optimal für spalten-priorisierte Inferenz
 			\item Theoretischer Speedup: $1 / (1 - p_{\text{column}})$ wobei $p_{\text{column}}$ der Anteil Null-Spalten
 		\end{enumerate}
 	\end{satz}
 	
-	\begin{beispiel}[LSTM fÃ¼r Sprachmodellierung]
+	\begin{beispiel}[LSTM für Sprachmodellierung]
 		Training eines LSTM (4 Schichten, 1024 Hidden Units) auf Penn Treebank:
 		
 		\textbf{Training-Konfiguration}:
 		\begin{itemize}
 			\item Baseline: Standardtraining ohne Sparsity-Regularisierung
 			\item Sparse: $\lambda_1 = 10^{-5}$, $\lambda_2 = 10^{-4}$
-			\item Structured-Sparse: $\lambda_1 = 10^{-5}$, $\lambda_2 = 10^{-3}$ (hÃ¶herer Gruppierungs-Term)
+			\item Structured-Sparse: $\lambda_1 = 10^{-5}$, $\lambda_2 = 10^{-3}$ (höherer Gruppierungs-Term)
 		\end{itemize}
 		
 		\textbf{Ergebnisse nach Konvergenz}:
@@ -2890,17 +2890,17 @@
 			\end{tabular}
 		\end{center}
 		
-		Structured-Sparse erzielt mehr als doppelten Speedup bei nur minimal hÃ¶herer Perplexity, da die Sparsity gezielt spalten-orientiert ist.
+		Structured-Sparse erzielt mehr als doppelten Speedup bei nur minimal höherer Perplexity, da die Sparsity gezielt spalten-orientiert ist.
 	\end{beispiel}
 	
 	\section{Finanzmathematik und Risikomanagement}
 	
-	FinanzmÃ¤rkte sind hochgradig vernetzte Systeme mit charakteristischer Asymmetrie: Wenige systemisch wichtige Institutionen beeinflussen viele andere.
+	Finanzmärkte sind hochgradig vernetzte Systeme mit charakteristischer Asymmetrie: Wenige systemisch wichtige Institutionen beeinflussen viele andere.
 	
 	\subsection{Portfolio-Optimierung mit sparse Korrelationsmatrizen}
 	
 	\begin{definition}[Markowitz Mean-Variance-Optimierung]
-		Die klassische Portfolio-Opti\-mierung lÃ¶st:
+		Die klassische Portfolio-Opti\-mierung löst:
 		\[
 		\min_{w} w^T \Sigma w \quad \text{s.t.} \quad w^T \mu = \mu_{\text{target}}, \quad \sum_i w_i = 1
 		\]
@@ -2915,31 +2915,31 @@
 	\end{definition}
 	
 	\begin{satz}[Sparsity in Korrelationsmatrizen]
-		Empirische Korrelationsmatrizen groÃŸer Asset-Universen zeigen charakteristische Struktur:
+		Empirische Korrelationsmatrizen großer Asset-Universen zeigen charakteristische Struktur:
 		\begin{itemize}
 			\item Sektorale Cluster: Assets innerhalb eines Sektors stark korreliert
-			\item Geringe Cross-Sektor-Korrelation: Typisch $|r_{ij}| < 0.1$ fÃ¼r $i, j$ in verschiedenen Sektoren
-			\item Sparse Approximation: Setze $\Sigma_{ij} = 0$ fÃ¼r $|r_{ij}| < \tau$ (z.B. $\tau = 0.05$)
+			\item Geringe Cross-Sektor-Korrelation: Typisch $|r_{ij}| < 0.1$ für $i, j$ in verschiedenen Sektoren
+			\item Sparse Approximation: Setze $\Sigma_{ij} = 0$ für $|r_{ij}| < \tau$ (z.B. $\tau = 0.05$)
 		\end{itemize}
 		
-		FÃ¼r S\&P 500 mit 11 Sektoren: Sparsity $\approx 85\%$ nach Thresholding.
+		Für S\&P 500 mit 11 Sektoren: Sparsity $\approx 85\%$ nach Thresholding.
 	\end{satz}
 	
 	\begin{beispiel}[S\&P 500 Portfolio-Optimierung]
-		Optimierung eines Portfolios Ã¼ber alle S\&P 500 Aktien:
+		Optimierung eines Portfolios über alle S\&P 500 Aktien:
 		
 		\textbf{Daten}:
 		\begin{itemize}
 			\item Assets: $n = 500$
 			\item Beobachtungsperiode: 5 Jahre (1260 Handelstage)
-			\item Kovarianzmatrix: $500 \times 500 = 250.000$ EintrÃ¤ge
+			\item Kovarianzmatrix: $500 \times 500 = 250.000$ Einträge
 		\end{itemize}
 		
 		\textbf{Sparse Approximation}:
 		\begin{itemize}
 			\item Schwellwert: $\tau = 0.05$ (Korrelationen $< 0.05$ werden Null gesetzt)
 			\item Resultierende Sparsity: 87.3\%
-			\item Nicht-Null-EintrÃ¤ge: 31.750 (statt 250.000)
+			\item Nicht-Null-Einträge: 31.750 (statt 250.000)
 		\end{itemize}
 		
 		\textbf{Optimierungslaufzeit}:
@@ -2968,7 +2968,7 @@
 		Ein Bankensystem mit $n$ Banken wird als gerichtetes Netzwerk modelliert:
 		\begin{itemize}
 			\item Knoten: Banken
-			\item Kante $(i,j)$ mit Gewicht $E_{ij}$: Bank $i$ hat Forderungen in HÃ¶he $E_{ij}$ gegenÃ¼ber Bank $j$
+			\item Kante $(i,j)$ mit Gewicht $E_{ij}$: Bank $i$ hat Forderungen in Höhe $E_{ij}$ gegenüber Bank $j$
 			\item Systemmatrix: $A_{ij} = E_{ij} / C_i$ (Exposition relativ zu Eigenkapital von Bank $i$)
 		\end{itemize}
 		
@@ -2990,8 +2990,8 @@
 		Konsequenz: Ein Schock bei einer SIFI propagiert zu vielen Banken gleichzeitig (spalten-orientierte Ausbreitung optimal).
 	\end{satz}
 	
-	\begin{beispiel}[EuropÃ¤isches Bankennetzwerk]
-		Simulation eines Schock-Szenarios im europÃ¤ischen Bankensystem:
+	\begin{beispiel}[Europäisches Bankennetzwerk]
+		Simulation eines Schock-Szenarios im europäischen Bankensystem:
 		
 		\textbf{Netzwerk-Charakteristika}:
 		\begin{itemize}
@@ -3003,7 +3003,7 @@
 		\textbf{Schock-Szenario}:
 		\begin{itemize}
 			\item Initialschock: Eine G-SIB erleidet 30\% Kapitalverlust
-			\item Propagation: Ãœber Expositions-Netzwerk
+			\item Propagation: Über Expositions-Netzwerk
 			\item Zeitskala: 10 Perioden (z.B. Quartale)
 		\end{itemize}
 		
@@ -3021,23 +3021,23 @@
 			\end{tabular}
 		\end{center}
 		
-		Die sparse Methode liefert identische Ergebnisse bei 8$\times$ Speedup. FÃ¼r Monte-Carlo-Stress-Tests mit 10.000 Szenarien:
+		Die sparse Methode liefert identische Ergebnisse bei 8$\times$ Speedup. Für Monte-Carlo-Stress-Tests mit 10.000 Szenarien:
 		\begin{itemize}
 			\item Dense: $0.73 \times 10.000 = 7.300$ s $\approx$ 2 Stunden
 			\item Sparse: $0.09 \times 10.000 = 900$ s $\approx$ 15 Minuten
 		\end{itemize}
 	\end{beispiel}
 	
-	\begin{korollar}[Praktische Implikationen fÃ¼r Regulierung]
-		Die effiziente Berechnung systemischer RisikomaÃŸe ermÃ¶glicht:
+	\begin{korollar}[Praktische Implikationen für Regulierung]
+		Die effiziente Berechnung systemischer Risikomaße ermöglicht:
 		\begin{enumerate}
-			\item Echtzeit-Ãœberwachung systemischer Risiken
-			\item HÃ¤ufigere Stress-Tests (monatlich statt jÃ¤hrlich)
+			\item Echtzeit-Überwachung systemischer Risiken
+			\item Häufigere Stress-Tests (monatlich statt jährlich)
 			\item Detailliertere Szenario-Analysen
 			\item Quantifizierung von Tail-Risiken via Monte-Carlo
 		\end{enumerate}
 		
-		Dies verbessert die FÃ¤higkeit von Regulatoren, systemische Krisen frÃ¼hzeitig zu erkennen.
+		Dies verbessert die Fähigkeit von Regulatoren, systemische Krisen frühzeitig zu erkennen.
 	\end{korollar}
 	
 	\section{Zusammenfassung der Anwendungen}
@@ -3045,10 +3045,10 @@
 	Die vier Fallstudien demonstrieren die Vielseitigkeit der entwickelten Methoden:
 	
 	\begin{enumerate}
-		\item \textbf{Robotersteuerung}: Hierarchische Struktur â†’ Faktor 20 Speedup â†’ Echtzeit-MPC mÃ¶glich
+		\item \textbf{Robotersteuerung}: Hierarchische Struktur â†’ Faktor 20 Speedup â†’ Echtzeit-MPC möglich
 		\item \textbf{Netzwerkdynamik}: Broadcasting-Struktur â†’ Faktor 40+ Speedup â†’ Monte-Carlo-Simulation praktikabel
 		\item \textbf{Neuronale Netze}: Kombinierte Sparsity â†’ Faktor 8+ Speedup â†’ Edge-Device-Inferenz
-		\item \textbf{Finanzrisiko}: Sparse Korrelationen â†’ Faktor 8 Speedup â†’ HÃ¤ufigere Stress-Tests
+		\item \textbf{Finanzrisiko}: Sparse Korrelationen â†’ Faktor 8 Speedup â†’ Häufigere Stress-Tests
 	\end{enumerate}
 	
 	Gemeinsame Erfolgsfaktoren:
@@ -3056,34 +3056,34 @@
 		\item Hohe Sparsity ($> 70\%$) in System- oder Inputstrukturen
 		\item Klare Asymmetrie zwischen In- und Out-Degree
 		\item Wiederholte Berechnungen (amortisieren Strukturerkennung)
-		\item GroÃŸe SystemgrÃ¶ÃŸen ($n > 100$)
+		\item Große Systemgrößen ($n > 100$)
 	\end{itemize}
 	
 	\chapter{Theoretische Vertiefung: Spektrale Eigenschaften und Langzeitverhalten}
 	
-	Die bisherige Analyse fokussierte auf algorithmische Effizienz. Dieses Kapitel vertieft das theoretische VerstÃ¤ndnis durch spektrale Analyse und untersucht das Langzeitverhalten dynamischer Systeme.
+	Die bisherige Analyse fokussierte auf algorithmische Effizienz. Dieses Kapitel vertieft das theoretische Verständnis durch spektrale Analyse und untersucht das Langzeitverhalten dynamischer Systeme.
 	
 	\section{Spektrale Analyse asymmetrischer Systemmatrizen}
 	
-	Die Eigenwerte einer Matrix kodieren fundamentale Eigenschaften des Systems. FÃ¼r asymmetrische Matrizen besteht ein direkter Zusammenhang zwischen Degree-Verteilung und Eigenwertspektrum.
+	Die Eigenwerte einer Matrix kodieren fundamentale Eigenschaften des Systems. Für asymmetrische Matrizen besteht ein direkter Zusammenhang zwischen Degree-Verteilung und Eigenwertspektrum.
 	
 	\subsection{Gershgorin-Kreise und Degree-Schranken}
 	
-	\begin{satz}[Gershgorin-Kreise fÃ¼r In- und Out-Degree]
-		FÃ¼r Systemmatrix $A \in \mathbb{R}^{n \times n}$ liegen alle Eigenwerte in der Vereinigung der Gershgorin-Kreise:
+	\begin{satz}[Gershgorin-Kreise für In- und Out-Degree]
+		Für Systemmatrix $A \in \mathbb{R}^{n \times n}$ liegen alle Eigenwerte in der Vereinigung der Gershgorin-Kreise:
 		\[
 		\lambda \in \bigcup_{i=1}^n \left\{ z \in \mathbb{C} : |z - A_{ii}| \leq R_i \right\}
 		\]
 		wobei $R_i = \sum_{j \neq i} |A_{ij}|$ der Zeilenradius ist.
 		
 		\textbf{Zusammenhang mit In-Degree}:
-		FÃ¼r sparse Matrix mit In-Degree $d_{\text{in}}(i)$ gilt:
+		Für sparse Matrix mit In-Degree $d_{\text{in}}(i)$ gilt:
 		\[
 		R_i \approx \bar{w} \cdot d_{\text{in}}(i)
 		\]
 		wobei $\bar{w}$ das durchschnittliche Gewicht ist.
 		
-		\textbf{Implikation}: Zeilen mit hohem In-Degree fÃ¼hren zu grÃ¶ÃŸeren Kreisen â†’ potenziell grÃ¶ÃŸere Eigenwerte.
+		\textbf{Implikation}: Zeilen mit hohem In-Degree führen zu größeren Kreisen â†’ potenziell größere Eigenwerte.
 	\end{satz}
 	
 	\begin{proof}
@@ -3092,57 +3092,57 @@
 		|Ax - \lambda x| = 0 \implies |A_{ii} - \lambda| \leq \sum_{j \neq i} |A_{ij}| \frac{|x_j|}{|x_i|}
 		\]
 		
-		FÃ¼r die entsprechende Komponente $i$ mit $|x_i| = \max_k |x_k|$ folgt:
+		Für die entsprechende Komponente $i$ mit $|x_i| = \max_k |x_k|$ folgt:
 		\[
 		|\lambda - A_{ii}| \leq \sum_{j \neq i} |A_{ij}| = R_i
 		\]
 		
-		FÃ¼r sparse Matrix ist $R_i$ proportional zur Anzahl nicht-null EintrÃ¤ge in Zeile $i$, also dem In-Degree.
+		Für sparse Matrix ist $R_i$ proportional zur Anzahl nicht-null Einträge in Zeile $i$, also dem In-Degree.
 	\end{proof}
 	
 	\begin{korollar}[Spektralradius-Schranke]
-		Der Spektralradius $\rho(A) = \max_i |\lambda_i|$ ist beschrÃ¤nkt durch:
+		Der Spektralradius $\rho(A) = \max_i |\lambda_i|$ ist beschränkt durch:
 		\[
 		\rho(A) \leq \max_i \left( |A_{ii}| + \sum_{j \neq i} |A_{ij}| \right) \leq \|A\|_{\infty} = \max_i \sum_j |A_{ij}|
 		\]
 		
-		Dies ist die maximale Zeilensumme, direkt abhÃ¤ngig vom maximalen In-Degree.
+		Dies ist die maximale Zeilensumme, direkt abhängig vom maximalen In-Degree.
 	\end{korollar}
 	
 	\begin{beispiel}[Broadcasting-Matrix]
-		FÃ¼r Broadcasting-Matrix mit Hub-Struktur:
+		Für Broadcasting-Matrix mit Hub-Struktur:
 		\begin{itemize}
-			\item Normale Zeilen: $R_i \approx 5$ (wenige EinflÃ¼sse)
-			\item Hub-Zeilen: $R_i \approx 5000$ (viele EinflÃ¼sse von Hub)
-			\item Gershgorin-Kreise: Extreme Varianz in GrÃ¶ÃŸe
+			\item Normale Zeilen: $R_i \approx 5$ (wenige Einflüsse)
+			\item Hub-Zeilen: $R_i \approx 5000$ (viele Einflüsse von Hub)
+			\item Gershgorin-Kreise: Extreme Varianz in Größe
 			\item Spektralradius: Dominiert durch Hub-Zeilen
 		\end{itemize}
 		
-		Dies erklÃ¤rt, warum Broadcasting-Systeme oft einen dominanten Eigenwert haben, der weit vom Rest des Spektrums entfernt ist.
+		Dies erklärt, warum Broadcasting-Systeme oft einen dominanten Eigenwert haben, der weit vom Rest des Spektrums entfernt ist.
 	\end{beispiel}
 	
 	\subsection{Perron-Frobenius-Theorie}
 	
-	\begin{satz}[Perron-Frobenius fÃ¼r nicht-negative Matrizen]
-		FÃ¼r nicht-negative, irreduzible Matrix $A \geq 0$ existiert ein dominanter Eigenwert $\lambda_1 > 0$ mit:
+	\begin{satz}[Perron-Frobenius für nicht-negative Matrizen]
+		Für nicht-negative, irreduzible Matrix $A \geq 0$ existiert ein dominanter Eigenwert $\lambda_1 > 0$ mit:
 		\begin{enumerate}
-			\item $\lambda_1$ ist einfach (algebraische MultiplizitÃ¤t 1)
-			\item $\lambda_1 > |\lambda_i|$ fÃ¼r alle $i \neq 1$
-			\item Der zugehÃ¶rige Eigenvektor $v_1$ hat nur positive Komponenten
+			\item $\lambda_1$ ist einfach (algebraische Multiplizität 1)
+			\item $\lambda_1 > |\lambda_i|$ für alle $i \neq 1$
+			\item Der zugehörige Eigenvektor $v_1$ hat nur positive Komponenten
 			\item $\lambda_1 \leq \max_i \sum_j A_{ij}$ (maximale Zeilensumme)
 			\item $\lambda_1 \geq \min_i \sum_j A_{ij}$ (minimale Zeilensumme)
 		\end{enumerate}
 	\end{satz}
 	
 	\begin{korollar}[Asymmetrie und dominanter Eigenwert]
-		FÃ¼r Broadcasting-Matrix mit extremer In-Degree-Asymmetrie gilt:
+		Für Broadcasting-Matrix mit extremer In-Degree-Asymmetrie gilt:
 		\begin{itemize}
 			\item Obere Schranke: $\lambda_1 \leq \max_i \text{in-deg}(i) \cdot \bar{w}$ (Hub-Zeilen)
 			\item Untere Schranke: $\lambda_1 \geq \min_i \text{in-deg}(i) \cdot \bar{w}$ (normale Zeilen)
-			\item VerhÃ¤ltnis: $\frac{\lambda_1^{\text{upper}}}{\lambda_1^{\text{lower}}} \approx \frac{\max \text{in-deg}}{\min \text{in-deg}}$ kann sehr groÃŸ sein
+			\item Verhältnis: $\frac{\lambda_1^{\text{upper}}}{\lambda_1^{\text{lower}}} \approx \frac{\max \text{in-deg}}{\min \text{in-deg}}$ kann sehr groß sein
 		\end{itemize}
 		
-		Dies impliziert: Broadcasting-Systeme haben typischerweise groÃŸe spektrale LÃ¼cke ($\lambda_1 \gg \lambda_2$).
+		Dies impliziert: Broadcasting-Systeme haben typischerweise große spektrale Lücke ($\lambda_1 \gg \lambda_2$).
 	\end{korollar}
 	
 	\begin{beispiel}[PageRank-Matrix]
@@ -3154,22 +3154,22 @@
 		
 		\textbf{Spektrale Eigenschaften}:
 		\begin{itemize}
-			\item Dominanter Eigenwert: $\lambda_1 = 1$ (stationÃ¤re Verteilung existiert)
-			\item Spektrale LÃ¼cke: $\lambda_2 \approx 0.85$ (schnelle Konvergenz zur stationÃ¤ren Verteilung)
+			\item Dominanter Eigenwert: $\lambda_1 = 1$ (stationäre Verteilung existiert)
+			\item Spektrale Lücke: $\lambda_2 \approx 0.85$ (schnelle Konvergenz zur stationären Verteilung)
 			\item Konvergenzrate: $O(\lambda_2^t)$ â†’ nach $t \approx 50$ Iterationen konvergiert
 		\end{itemize}
 		
-		Die spalten-orientierte Power-Iteration nutzt die Sparsity von $S$ aus und beschleunigt die Berechnung um Faktor $\approx 100$ fÃ¼r Web-Graphen mit Milliarden Seiten.
+		Die spalten-orientierte Power-Iteration nutzt die Sparsity von $S$ aus und beschleunigt die Berechnung um Faktor $\approx 100$ für Web-Graphen mit Milliarden Seiten.
 	\end{beispiel}
 	
 	\section{Langzeitverhalten und Konvergenz}
 	
 	Das asymptotische Verhalten dynamischer Systeme wird durch das Eigenwertspektrum bestimmt.
 	
-	\subsection{Konvergenz zu stationÃ¤ren ZustÃ¤nden}
+	\subsection{Konvergenz zu stationären Zuständen}
 	
-	\begin{definition}[StationÃ¤re Verteilung]
-		FÃ¼r Markov-Kette mit Ãœbergangsmatrix $P$ ist $\pi \in \mathbb{R}^n$ eine stationÃ¤re Verteilung, falls:
+	\begin{definition}[Stationäre Verteilung]
+		Für Markov-Kette mit Übergangsmatrix $P$ ist $\pi \in \mathbb{R}^n$ eine stationäre Verteilung, falls:
 		\[
 		\pi = P^T \pi, \quad \sum_i \pi_i = 1, \quad \pi_i \geq 0 \quad \forall i
 		\]
@@ -3177,18 +3177,18 @@
 		Physikalisch: $\pi$ ist der Gleichgewichtszustand des Systems.
 	\end{definition}
 	
-	\begin{satz}[Konvergenz fÃ¼r ergodische Ketten]
-		FÃ¼r irreduzible, aperiodische Markov-Kette mit Ãœbergangsmatrix $P$ gilt:
+	\begin{satz}[Konvergenz für ergodische Ketten]
+		Für irreduzible, aperiodische Markov-Kette mit Übergangsmatrix $P$ gilt:
 		\[
 		\lim_{t \to \infty} P^t = \mathbf{1} \pi^T
 		\]
-		wobei $\pi$ die eindeutige stationÃ¤re Verteilung ist.
+		wobei $\pi$ die eindeutige stationäre Verteilung ist.
 		
 		Die Konvergenzrate ist exponentiell:
 		\[
 		\|P^t - \mathbf{1}\pi^T\| \leq C \lambda_2^t
 		\]
-		wobei $\lambda_2$ der zweitgrÃ¶ÃŸte Eigenwert (in Betrag) ist.
+		wobei $\lambda_2$ der zweitgrößte Eigenwert (in Betrag) ist.
 	\end{satz}
 	
 	\begin{beispiel}[Random Walk auf sozialem Netzwerk]
@@ -3196,17 +3196,17 @@
 		\begin{itemize}
 			\item Knoten: $n = 10.000$ Nutzer
 			\item Kanten: Freundschaftsverbindungen
-			\item Ãœbergangsmatrix: $P_{ij} = 1/d_j$ falls $(i,j)$ Kante, sonst 0
+			\item Übergangsmatrix: $P_{ij} = 1/d_j$ falls $(i,j)$ Kante, sonst 0
 		\end{itemize}
 		
 		\textbf{Spektrale Analyse}:
 		\begin{itemize}
-			\item $\lambda_1 = 1$ (stationÃ¤re Verteilung existiert)
-			\item $\lambda_2 \approx 0.92$ (moderate spektrale LÃ¼cke)
+			\item $\lambda_1 = 1$ (stationäre Verteilung existiert)
+			\item $\lambda_2 \approx 0.92$ (moderate spektrale Lücke)
 			\item Mischungszeit: $t_{\text{mix}} \approx \frac{\log(n)}{1 - \lambda_2} \approx \frac{9.2}{0.08} \approx 115$ Schritte
 		\end{itemize}
 		
-		\textbf{Berechnung der stationÃ¤ren Verteilung}:
+		\textbf{Berechnung der stationären Verteilung}:
 		\begin{itemize}
 			\item Power-Iteration: $\pi^{(t+1)} = P^T \pi^{(t)}$
 			\item Spalten-orientiert: Nutzt Sparsity von $P$ ($\approx 95\%$)
@@ -3226,20 +3226,20 @@
 		wobei $\|\cdot\|_{\text{TV}}$ die Total-Variation-Distanz ist.
 	\end{definition}
 	
-	\begin{satz}[Mischungszeit und spektrale LÃ¼cke]
-		FÃ¼r reversible Markov-Kette gilt:
+	\begin{satz}[Mischungszeit und spektrale Lücke]
+		Für reversible Markov-Kette gilt:
 		\[
 		t_{\text{mix}}(\epsilon) \leq \frac{1}{1-\lambda_2} \log\left(\frac{1}{\epsilon \pi_{\min}}\right)
 		\]
-		wobei $\pi_{\min} = \min_i \pi_i$ die kleinste stationÃ¤re Wahrscheinlichkeit.
+		wobei $\pi_{\min} = \min_i \pi_i$ die kleinste stationäre Wahrscheinlichkeit.
 		
 		\textbf{Zusammenhang mit Asymmetrie}:
-		FÃ¼r Broadcasting-Netzwerke gilt typischerweise:
+		Für Broadcasting-Netzwerke gilt typischerweise:
 		\begin{itemize}
-			\item Hubs haben hohe stationÃ¤re Wahrscheinlichkeit: $\pi_{\text{hub}} \gg \bar{\pi}$
+			\item Hubs haben hohe stationäre Wahrscheinlichkeit: $\pi_{\text{hub}} \gg \bar{\pi}$
 			\item Normale Knoten: $\pi_{\text{normal}} \approx \bar{\pi}$
 			\item Minimale Wahrscheinlichkeit: $\pi_{\min} \ll \bar{\pi}$
-			\item Konsequenz: LÃ¤ngere Mischungszeiten
+			\item Konsequenz: Längere Mischungszeiten
 		\end{itemize}
 	\end{satz}
 	
@@ -3258,88 +3258,88 @@
 		\begin{itemize}
 			\item 10 Hubs: Degree $\approx 500$
 			\item 990 normale: Degree $\approx 5$
-			\item $\lambda_2 \approx 0.98$ (grÃ¶ÃŸer!)
+			\item $\lambda_2 \approx 0.98$ (größer!)
 			\item $\pi_{\min} \approx 1/100.000$ (viel kleiner!)
-			\item $t_{\text{mix}}(0.01) \approx 580$ Schritte (4$\times$ lÃ¤nger!)
+			\item $t_{\text{mix}}(0.01) \approx 580$ Schritte (4$\times$ länger!)
 		\end{itemize}
 		
-		Broadcasting-Struktur verlangsamt paradoxerweise die Konvergenz zur stationÃ¤ren Verteilung, obwohl Information schnell propagiert.
+		Broadcasting-Struktur verlangsamt paradoxerweise die Konvergenz zur stationären Verteilung, obwohl Information schnell propagiert.
 	\end{beispiel}
 	
-	\section{SensitivitÃ¤tsanalyse}
+	\section{Sensitivitätsanalyse}
 	
-	Die Robustheit der entwickelten Algorithmen gegenÃ¼ber StÃ¶rungen ist entscheidend fÃ¼r praktische Anwendungen.
+	Die Robustheit der entwickelten Algorithmen gegenüber Störungen ist entscheidend für praktische Anwendungen.
 	
-	\subsection{Perturbationstheorie fÃ¼r Eigenwerte}
+	\subsection{Perturbationstheorie für Eigenwerte}
 	
 	\begin{satz}[Bauer-Fike-Theorem]
-		Sei $A = X \Lambda X^{-1}$ diagonalisierbar mit Eigenwerten $\lambda_1, \ldots, \lambda_n$. FÃ¼r gestÃ¶rte Matrix $\tilde{A} = A + E$ liegt jeder Eigenwert $\tilde{\lambda}$ von $\tilde{A}$ in mindestens einem der Kreise:
+		Sei $A = X \Lambda X^{-1}$ diagonalisierbar mit Eigenwerten $\lambda_1, \ldots, \lambda_n$. Für gestörte Matrix $\tilde{A} = A + E$ liegt jeder Eigenwert $\tilde{\lambda}$ von $\tilde{A}$ in mindestens einem der Kreise:
 		\[
 		|\tilde{\lambda} - \lambda_i| \leq \kappa(X) \|E\|
 		\]
 		wobei $\kappa(X) = \|X\| \|X^{-1}\|$ die Konditionszahl der Eigenvektormatrix.
 		
-		\textbf{Implikation}: Schlecht konditionierte Eigenvektoren fÃ¼hren zu hoher SensitivitÃ¤t.
+		\textbf{Implikation}: Schlecht konditionierte Eigenvektoren führen zu hoher Sensitivität.
 	\end{satz}
 	
 	\begin{korollar}[Konditionierung asymmetrischer Matrizen]
-		FÃ¼r asymmetrische Matrizen (nicht-normal) kann $\kappa(X) \gg 1$ sein:
+		Für asymmetrische Matrizen (nicht-normal) kann $\kappa(X) \gg 1$ sein:
 		\begin{itemize}
 			\item Normale Matrizen ($AA^T = A^T A$): $\kappa(X) = 1$ (optimal)
 			\item Symmetrische Matrizen: $\kappa(X) = 1$ (Eigenvektoren orthogonal)
-			\item Broadcasting-Matrizen: $\kappa(X)$ kann $10^6$ oder grÃ¶ÃŸer sein
+			\item Broadcasting-Matrizen: $\kappa(X)$ kann $10^6$ oder größer sein
 		\end{itemize}
 		
-		Dies bedeutet: Kleine StÃ¶rungen in $A$ kÃ¶nnen groÃŸe Ã„nderungen in Eigenwerten verursachen.
+		Dies bedeutet: Kleine Störungen in $A$ können große Änderungen in Eigenwerten verursachen.
 	\end{korollar}
 	
-	\begin{beispiel}[SensitivitÃ¤t von Broadcasting-Systemen]
-		FÃ¼r Broadcasting-Matrix mit extremer Asymmetrie:
+	\begin{beispiel}[Sensitivität von Broadcasting-Systemen]
+		Für Broadcasting-Matrix mit extremer Asymmetrie:
 		\begin{itemize}
 			\item Exakte Matrix $A$: $\lambda_1 = 5.0$, $\lambda_2 = 0.3$
 			\item Konditionszahl: $\kappa(X) = 10^5$
-			\item StÃ¶rung: $\|E\| = 10^{-6}$ (numerische Rundungsfehler)
-			\item Eigenwert-Ã„nderung: $|\tilde{\lambda}_1 - \lambda_1| \leq 10^5 \cdot 10^{-6} = 0.1$
+			\item Störung: $\|E\| = 10^{-6}$ (numerische Rundungsfehler)
+			\item Eigenwert-Änderung: $|\tilde{\lambda}_1 - \lambda_1| \leq 10^5 \cdot 10^{-6} = 0.1$
 		\end{itemize}
 		
-		Der dominante Eigenwert kann sich um bis zu 2\% Ã¤ndern durch winzige StÃ¶rungen!
+		Der dominante Eigenwert kann sich um bis zu 2\% ändern durch winzige Störungen!
 		
-		\textbf{Praktische Konsequenz}: FÃ¼r schlecht konditionierte Systeme sollte die Eigenwertmethode vorsichtig verwendet werden. Iterative Methoden (Power-Iteration) sind oft robuster.
+		\textbf{Praktische Konsequenz}: Für schlecht konditionierte Systeme sollte die Eigenwertmethode vorsichtig verwendet werden. Iterative Methoden (Power-Iteration) sind oft robuster.
 	\end{beispiel}
 	
 	\subsection{Robustheit der Sparsity-Ausnutzung}
 	
-	\begin{satz}[StabilitÃ¤t spalten-orientierter Algorithmen]
-		FÃ¼r Matrix-Vektor-Multiplikation $y = Ax$ mit gestÃ¶rten Daten:
+	\begin{satz}[Stabilität spalten-orientierter Algorithmen]
+		Für Matrix-Vektor-Multiplikation $y = Ax$ mit gestörten Daten:
 		\begin{itemize}
-			\item GestÃ¶rte Matrix: $\tilde{A} = A + \Delta A$ mit $\|\Delta A\| \leq \epsilon_A \|A\|$
-			\item GestÃ¶rter Vektor: $\tilde{x} = x + \Delta x$ mit $\|\Delta x\| \leq \epsilon_x \|x\|$
+			\item Gestörte Matrix: $\tilde{A} = A + \Delta A$ mit $\|\Delta A\| \leq \epsilon_A \|A\|$
+			\item Gestörter Vektor: $\tilde{x} = x + \Delta x$ mit $\|\Delta x\| \leq \epsilon_x \|x\|$
 		\end{itemize}
 		
-		Der relative Fehler ist beschrÃ¤nkt durch:
+		Der relative Fehler ist beschränkt durch:
 		\[
 		\frac{\|\tilde{y} - y\|}{\|y\|} \leq \left( \kappa(A) + 1 \right) \max(\epsilon_A, \epsilon_x) + O(\epsilon^2)
 		\]
 		
-		Dies ist \textbf{unabhÃ¤ngig} von der Berechnungsmethode (zeilen- vs. spalten-orientiert).
+		Dies ist \textbf{unabhängig} von der Berechnungsmethode (zeilen- vs. spalten-orientiert).
 		
-		\textbf{Konsequenz}: Sparsity-Ausnutzung Ã¤ndert Effizienz, nicht StabilitÃ¤t.
+		\textbf{Konsequenz}: Sparsity-Ausnutzung ändert Effizienz, nicht Stabilität.
 	\end{satz}
 	
 	\begin{proof}
-		Standardresultat aus numerischer linearer Algebra. Die Fehlerfortpflanzung hÃ¤ngt nur von der Konditionszahl der Matrix ab, nicht von der Berechnungsreihenfolge.
+		Standardresultat aus numerischer linearer Algebra. Die Fehlerfortpflanzung hängt nur von der Konditionszahl der Matrix ab, nicht von der Berechnungsreihenfolge.
 	\end{proof}
 	
 	\begin{beispiel}[Numerische Experimente zur Robustheit]
 		Test mit sparse Matrix $A \in \mathbb{R}^{1000 \times 1000}$, Sparsity 90\%:
 		
-		\textbf{StÃ¶rungen}:
+		\textbf{Störungen}:
 		\begin{itemize}
 			\item Rundungsfehler: double precision ($\epsilon \approx 2.2 \times 10^{-16}$)
-			\item ZusÃ¤tzliches Rauschen: $\Delta A_{ij} \sim \mathcal{N}(0, 10^{-10})$
+			\item Zusätzliches Rauschen: $\Delta A_{ij} \sim \mathcal{N}(0, 10^{-10})$
 		\end{itemize}
 		
-		\textbf{Gemessene Fehler} (1000 DurchlÃ¤ufe):
+		\textbf{Gemessene Fehler} (1000 Durchläufe):
 		\begin{center}
 			\begin{tabular}{|l|c|c|}
 				\hline
@@ -3352,17 +3352,17 @@
 			\end{tabular}
 		\end{center}
 		
-		Alle Methoden haben praktisch identische Fehler â†’ Robustheit bestÃ¤tigt.
+		Alle Methoden haben praktisch identische Fehler â†’ Robustheit bestätigt.
 	\end{beispiel}
 	
 	\section{Verallgemeinerung auf Tensorsysteme}
 	
-	Viele moderne Anwendungen (Deep Learning, Quantenchemie, Data Mining) verwenden hÃ¶herdimensionale Arrays (Tensoren). Die Asymmetrie-Konzepte lassen sich erweitern.
+	Viele moderne Anwendungen (Deep Learning, Quantenchemie, Data Mining) verwenden höherdimensionale Arrays (Tensoren). Die Asymmetrie-Konzepte lassen sich erweitern.
 	
 	\subsection{Tensor-Vektor-Multiplikation}
 	
 	\begin{definition}[Mode-$k$-Produkt]
-		FÃ¼r Tensor $\mathcal{A} \in \mathbb{R}^{n_1 \times n_2 \times \cdots \times n_d}$ und Vektor $v \in \mathbb{R}^{n_k}$ ist das Mode-$k$-Produkt:
+		Für Tensor $\mathcal{A} \in \mathbb{R}^{n_1 \times n_2 \times \cdots \times n_d}$ und Vektor $v \in \mathbb{R}^{n_k}$ ist das Mode-$k$-Produkt:
 		\[
 		(\mathcal{A} \times_k v)_{i_1, \ldots, i_{k-1}, i_{k+1}, \ldots, i_d} = \sum_{i_k=1}^{n_k} \mathcal{A}_{i_1, \ldots, i_d} \cdot v_{i_k}
 		\]
@@ -3371,31 +3371,31 @@
 	\end{definition}
 	
 	\begin{satz}[Asymmetrie in Tensor-Modi]
-		Analog zum Matrix-Fall gibt es fÃ¼r Tensoren $d$ verschiedene "Richtungen" der Multiplikation (Modi). FÃ¼r sparse Tensor mit Sparsity-Muster:
+		Analog zum Matrix-Fall gibt es für Tensoren $d$ verschiedene "Richtungen" der Multiplikation (Modi). Für sparse Tensor mit Sparsity-Muster:
 		\begin{itemize}
 			\item Mode-$k$-Sparsity: Anteil der Null-Fasern entlang Mode $k$
-			\item Asymmetrie: Verschiedene Modi kÃ¶nnen drastisch unterschiedliche Sparsity haben
+			\item Asymmetrie: Verschiedene Modi können drastisch unterschiedliche Sparsity haben
 		\end{itemize}
 		
 		Optimale Berechnungsreihenfolge: Beginne mit dem sparsesten Mode.
 	\end{satz}
 	
 	\begin{beispiel}[3D Convolutional Neural Networks]
-		Ein 3D-CNN verarbeitet Video-Daten (Zeit $\times$ HÃ¶he $\times$ Breite):
+		Ein 3D-CNN verarbeitet Video-Daten (Zeit $\times$ Höhe $\times$ Breite):
 		
 		\textbf{Activation Tensor}: $\mathcal{A} \in \mathbb{R}^{T \times H \times W}$ mit $T=16$, $H=W=224$
 		
 		\textbf{Sparsity-Analyse} (nach ReLU):
 		\begin{itemize}
-			\item Zeit-Mode: 45\% Sparsity (viele Frames haben Ã¤hnliche Aktivierungen)
-			\item Raum-Mode: 78\% Sparsity (viele rÃ¤umliche Regionen inaktiv)
+			\item Zeit-Mode: 45\% Sparsity (viele Frames haben ähnliche Aktivierungen)
+			\item Raum-Mode: 78\% Sparsity (viele räumliche Regionen inaktiv)
 			\item Unterschied: Faktor 1.7 in Sparsity
 		\end{itemize}
 		
 		\textbf{Optimale Berechnungsreihenfolge}:
-		Verarbeite zuerst rÃ¤umliche Modi (hÃ¶here Sparsity), dann zeitlichen Mode.
+		Verarbeite zuerst räumliche Modi (höhere Sparsity), dann zeitlichen Mode.
 		
-		\textbf{Speedup}: 3.2$\times$ gegenÃ¼ber naiver Reihenfolge
+		\textbf{Speedup}: 3.2$\times$ gegenüber naiver Reihenfolge
 	\end{beispiel}
 	
 	\subsection{Tucker-Zerlegung und Asymmetrie}
@@ -3413,11 +3413,11 @@
 		\end{itemize}
 	\end{definition}
 	
-	\begin{satz}[Asymmetrische RÃ¤nge]
-		FÃ¼r Tensoren aus realen Anwendungen sind die RÃ¤nge oft stark asymmetrisch:
+	\begin{satz}[Asymmetrische Ränge]
+		Für Tensoren aus realen Anwendungen sind die Ränge oft stark asymmetrisch:
 		\begin{itemize}
-			\item Video-Daten: Zeitlicher Rang $r_t \ll$ rÃ¤umlicher Rang $r_s$ (temporale KohÃ¤renz)
-			\item fMRI-Gehirn-Daten: RÃ¤umlicher Rang $r_{\text{space}} \gg$ temporaler Rang $r_{\text{time}}$ (viele Hirnregionen, wenige Zeitskalen)
+			\item Video-Daten: Zeitlicher Rang $r_t \ll$ räumlicher Rang $r_s$ (temporale Kohärenz)
+			\item fMRI-Gehirn-Daten: Räumlicher Rang $r_{\text{space}} \gg$ temporaler Rang $r_{\text{time}}$ (viele Hirnregionen, wenige Zeitskalen)
 		\end{itemize}
 		
 		Optimale Kompressionsstrategie: Komprimiere zuerst Modi mit niedrigem Rang.
@@ -3429,17 +3429,17 @@
 		\textbf{Tucker-Zerlegung}:
 		\begin{itemize}
 			\item Zeitlicher Rang: $r_t = 5$ (nur wenige Bewegungsmuster)
-			\item RÃ¤umlicher Rang: $r_h = r_w = 50$ (komplexere rÃ¤umliche Strukturen)
+			\item Räumlicher Rang: $r_h = r_w = 50$ (komplexere räumliche Strukturen)
 		\end{itemize}
 		
-		\textbf{KompressionsverhÃ¤ltnis}:
+		\textbf{Kompressionsverhältnis}:
 		\begin{itemize}
 			\item Original: $1920 \times 1080 \times 1000 = 2.07 \times 10^9$ Werte
 			\item Tucker: $5 \times 50 \times 50 + 1920 \times 50 + 1080 \times 50 + 1000 \times 5 = 117.500$ Werte
-			\item VerhÃ¤ltnis: $\approx 17.600:1$
+			\item Verhältnis: $\approx 17.600:1$
 		\end{itemize}
 		
-		Die extreme Asymmetrie ($r_t \ll r_h, r_w$) ermÃ¶glicht diese massive Kompression.
+		Die extreme Asymmetrie ($r_t \ll r_h, r_w$) ermöglicht diese massive Kompression.
 	\end{beispiel}
 	
 	\section{Zusammenfassung der theoretischen Vertiefung}
@@ -3448,16 +3448,16 @@
 	
 	\begin{enumerate}
 		\item \textbf{Gershgorin-Kreise}: In-Degree-Asymmetrie manifestiert sich in Eigenwertlokalisierung
-		\item \textbf{Perron-Frobenius}: Broadcasting-Systeme haben groÃŸe spektrale LÃ¼cke
+		\item \textbf{Perron-Frobenius}: Broadcasting-Systeme haben große spektrale Lücke
 		\item \textbf{Mischungszeiten}: Hub-Strukturen verlangsamen paradoxerweise Konvergenz
-		\item \textbf{SensitivitÃ¤t}: Asymmetrische Matrizen kÃ¶nnen schlecht konditioniert sein
-		\item \textbf{Robustheit}: Sparsity-Ausnutzung Ã¤ndert Effizienz, nicht numerische StabilitÃ¤t
-		\item \textbf{Tensor-Verallgemeinerung}: Asymmetrie-Konzepte Ã¼bertragen sich auf hÃ¶here Dimensionen
+		\item \textbf{Sensitivität}: Asymmetrische Matrizen können schlecht konditioniert sein
+		\item \textbf{Robustheit}: Sparsity-Ausnutzung ändert Effizienz, nicht numerische Stabilität
+		\item \textbf{Tensor-Verallgemeinerung}: Asymmetrie-Konzepte übertragen sich auf höhere Dimensionen
 	\end{enumerate}
 	
-	Diese theoretischen Erkenntnisse komplementieren die algorithmischen Resultate und liefern ein umfassendes VerstÃ¤ndnis asymmetrischer Systemmatrizen.
+	Diese theoretischen Erkenntnisse komplementieren die algorithmischen Resultate und liefern ein umfassendes Verständnis asymmetrischer Systemmatrizen.
 	
-	\chapter{Ãœberarbeitete Zusammenfassung und Ausblick}
+	\chapter{Überarbeitete Zusammenfassung und Ausblick}
 	
 	\section{Synthese der Kernerkenntnisse}
 	
@@ -3468,20 +3468,20 @@
 	Die semantische Unterscheidung zwischen Aggregation (Zeilen) und Ausbreitung (Spalten) ist mehr als eine konzeptionelle Betrachtung. Sie manifestiert sich konkret in:
 	
 	\begin{enumerate}
-		\item \textbf{Algorithmischer KomplexitÃ¤t}: Spalten-priorisierte Berechnung nutzt sparse Eingabevektoren aus und erreicht Laufzeit $O(s \cdot \bar{d}_{\text{out}})$ statt $O(n \cdot \bar{d}_{\text{in}})$, wobei typischerweise $s \ll n$.
+		\item \textbf{Algorithmischer Komplexität}: Spalten-priorisierte Berechnung nutzt sparse Eingabevektoren aus und erreicht Laufzeit $O(s \cdot \bar{d}_{\text{out}})$ statt $O(n \cdot \bar{d}_{\text{in}})$, wobei typischerweise $s \ll n$.
 		
 		\item \textbf{Broadcasting-Systemen}: Hub-Strukturen zeigen extreme Out-Degree-Varianz ($\text{Var}[\text{out-deg}] \gg \bar{d}^2$), die spalten-orientierte Methoden optimal ausnutzen.
 		
-		\item \textbf{Hierarchischen Strukturen}: Nilpotenz mit Index $h$ (Ebenenanzahl) fÃ¼hrt zu deterministischer transienter Dynamik und ermÃ¶glicht Beschleunigungen um Faktor $h$.
+		\item \textbf{Hierarchischen Strukturen}: Nilpotenz mit Index $h$ (Ebenenanzahl) führt zu deterministischer transienter Dynamik und ermöglicht Beschleunigungen um Faktor $h$.
 		
-		\item \textbf{Spektralen Eigenschaften}: Gershgorin-Kreise verbinden In-Degree mit Eigenwertlokalisierung; Perron-Frobenius-Theorie erklÃ¤rt dominante Eigenwerte in Broadcasting-Systemen.
+		\item \textbf{Spektralen Eigenschaften}: Gershgorin-Kreise verbinden In-Degree mit Eigenwertlokalisierung; Perron-Frobenius-Theorie erklärt dominante Eigenwerte in Broadcasting-Systemen.
 	\end{enumerate}
 	
 	\subsection{Experimentelle Validierung und praktische Grenzen}
 	
-	Die sieben durchgefÃ¼hrten Experimente lieferten sowohl BestÃ¤tigungen als auch wichtige Erkenntnisse Ã¼ber praktische Grenzen:
+	Die sieben durchgeführten Experimente lieferten sowohl Bestätigungen als auch wichtige Erkenntnisse über praktische Grenzen:
 	
-	\textbf{BestÃ¤tigte theoretische Vorhersagen}:
+	\textbf{Bestätigte theoretische Vorhersagen}:
 	\begin{itemize}
 		\item Sparse Matrix-Vektor-Multiplikation: 4-23$\times$ Speedup bei 90-99\% Input-Sparsity (Experiment 2)
 		\item Neuronale Netze: Bis zu 39.5$\times$ Speedup bei kombinierter Gewichts- und Aktivierungs-Sparsity (Experiment 3)
@@ -3492,7 +3492,7 @@
 	\textbf{Entdeckte praktische Grenzen}:
 	\begin{itemize}
 		\item Block-Diagonal-Optimierung: Overhead dominiert bei $n < 100$ â†’ Speedup nur 0.21$\times$ statt theoretisch $m^2$ (Experiment 5)
-		\item Hochoptimierte BLAS: FÃ¼r dichte Matrizen mittlerer GrÃ¶ÃŸe schwer zu schlagen durch strukturelle Optimierung
+		\item Hochoptimierte BLAS: Für dichte Matrizen mittlerer Größe schwer zu schlagen durch strukturelle Optimierung
 		\item Amortisierung: Strukturerkennung ($O(n^3)$) lohnt sich nur bei $> 100$ wiederholten Berechnungen
 	\end{itemize}
 	
@@ -3508,7 +3508,7 @@
 			Roboter-MPC & Hierarchisch & 20$\times$ & Echtzeit-MPC @ 1 kHz \\
 			Netzwerkdynamik & Broadcasting & 40+$\times$ & Monte-Carlo praktikabel \\
 			Neuronale Netze & Sparse & 8+$\times$ & Edge-Device-Inferenz \\
-			Finanzrisiko & Sparse & 8$\times$ & HÃ¤ufigere Stress-Tests \\
+			Finanzrisiko & Sparse & 8$\times$ & Häufigere Stress-Tests \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -3522,12 +3522,12 @@
 	\subsection{Entscheidungsbaum}
 	
 	\begin{algorithm}[H]
-		\caption{Strategie-Auswahl fÃ¼r Matrix-basierte Systeme}
+		\caption{Strategie-Auswahl für Matrix-basierte Systeme}
 		\label{alg:final-decision-tree}
 		\textbf{Eingabe:} Systemmatrix $A$, geplante Anzahl Berechnungen $N_{\text{ops}}$ \\
 		\textbf{Ausgabe:} Empfohlene Implementierungsstrategie
 		\begin{algorithmic}[1]
-			\State Messe Systemparameter: $n$ (GrÃ¶ÃŸe), $m$ (Nicht-Null-EintrÃ¤ge)
+			\State Messe Systemparameter: $n$ (Größe), $m$ (Nicht-Null-Einträge)
 			\State $\text{sparsity} \gets 1 - m/n^2$
 			
 			\If{$n < 100$}
@@ -3563,21 +3563,21 @@
 	
 	\subsection{Implementierungs-Checkliste}
 	
-	FÃ¼r erfolgreiche Implementierung:
+	Für erfolgreiche Implementierung:
 	
 	\begin{enumerate}
 		\item \textbf{Profilierung}: Messe reale Sparsity-Muster auf Produktionsdaten, nicht synthetischen Beispielen
-		\item \textbf{Schwellwerte}: Kalibriere numerische Schwellwerte ($\tau \approx 10^{-12}$ fÃ¼r double precision)
-		\item \textbf{Speicherformat}: WÃ¤hle CSC fÃ¼r spalten-orientiert, CSR fÃ¼r zeilen-orientiert
-		\item \textbf{Cache-Optimierung}: BerÃ¼cksichtige Cache-Linien (typisch 64 Bytes)
-		\item \textbf{Fallback}: Implementiere dense Fallback fÃ¼r FÃ¤lle, wo Sparsity-Annahmen verletzt werden
+		\item \textbf{Schwellwerte}: Kalibriere numerische Schwellwerte ($\tau \approx 10^{-12}$ für double precision)
+		\item \textbf{Speicherformat}: Wähle CSC für spalten-orientiert, CSR für zeilen-orientiert
+		\item \textbf{Cache-Optimierung}: Berücksichtige Cache-Linien (typisch 64 Bytes)
+		\item \textbf{Fallback}: Implementiere dense Fallback für Fälle, wo Sparsity-Annahmen verletzt werden
 		\item \textbf{Validierung}: Vergleiche Ergebnisse mit Referenzimplementierung (Genauigkeit)
 		\item \textbf{Benchmarking}: Messe auf Zielarchitektur, nicht Entwicklungsmaschine
 	\end{enumerate}
 	
 	\section{Forschungsagenda}
 	
-	Die Arbeit Ã¶ffnet mehrere vielversprechende Forschungsrichtungen:
+	Die Arbeit öffnet mehrere vielversprechende Forschungsrichtungen:
 	
 	\subsection{Kurzfristige Forschungsziele (1-2 Jahre)}
 	
@@ -3585,21 +3585,21 @@
 		\item \textbf{Hardware-spezifische Optimierung}
 		\begin{itemize}
 			\item GPU-Implementierung spalten-orientierter Algorithmen mit CUDA
-			\item TPU-Mapping fÃ¼r strukturierte Sparsity
-			\item ARM NEON SIMD-Optimierung fÃ¼r Edge-Devices
-			\item Benchmarking Ã¼ber diverse Architekturen
+			\item TPU-Mapping für strukturierte Sparsity
+			\item ARM NEON SIMD-Optimierung für Edge-Devices
+			\item Benchmarking über diverse Architekturen
 		\end{itemize}
 		
 		\item \textbf{Automatische Codegenerierung}
 		\begin{itemize}
-			\item Compiler-Extension fÃ¼r strukturbewusste Optimierung
+			\item Compiler-Extension für strukturbewusste Optimierung
 			\item JIT-Kompilierung basierend auf Runtime-Sparsity
 			\item Integration in MLIR (Multi-Level Intermediate Representation)
 		\end{itemize}
 		
 		\item \textbf{Erweiterte Strukturerkennung}
 		\begin{itemize}
-			\item Machine Learning fÃ¼r Struktur-Klassifikation
+			\item Machine Learning für Struktur-Klassifikation
 			\item Automatische Parameterwahl ($\tau$, Algorithmus) via Bayessche Optimierung
 			\item Online-Lernen: Adaptation an zeitvariante Sparsity
 		\end{itemize}
@@ -3610,8 +3610,8 @@
 	\begin{enumerate}
 		\item \textbf{Theoretische Vertiefung}
 		\begin{itemize}
-			\item Beweis optimaler Speedup-Faktoren fÃ¼r spezifische Strukturklassen
-			\item Untere Schranken: Kann man besser als $O(m)$ fÃ¼r sparse Matrizen?
+			\item Beweis optimaler Speedup-Faktoren für spezifische Strukturklassen
+			\item Untere Schranken: Kann man besser als $O(m)$ für sparse Matrizen?
 			\item Approximationstheorie: Trade-off zwischen Genauigkeit und Geschwindigkeit
 		\end{itemize}
 		
@@ -3619,7 +3619,7 @@
 		\begin{itemize}
 			\item Asymmetrie in nichtlinearen dynamischen Systemen
 			\item Neuronale ODEs mit adaptiver Sparsity
-			\item Koopman-Operator-Theorie fÃ¼r nichtlineare Systeme
+			\item Koopman-Operator-Theorie für nichtlineare Systeme
 		\end{itemize}
 		
 		\item \textbf{Stochastische Systeme}
@@ -3631,7 +3631,7 @@
 		
 		\item \textbf{Quantencomputing}
 		\begin{itemize}
-			\item Quantenalgorithmen fÃ¼r sparse Matrix-Operationen
+			\item Quantenalgorithmen für sparse Matrix-Operationen
 			\item HHL-Algorithmus (Harrow-Hassidim-Lloyd) mit Strukturausnutzung
 			\item Fehlerkorrektur in Quantensystemen
 		\end{itemize}
@@ -3642,14 +3642,14 @@
 	\begin{enumerate}
 		\item \textbf{Hardware-Software-Co-Design}
 		\begin{itemize}
-			\item Spezialisierte Prozessoren fÃ¼r spalten-orientierte Operationen
-			\item Neuromorphe Hardware mit inhÃ¤renter Sparsity
+			\item Spezialisierte Prozessoren für spalten-orientierte Operationen
+			\item Neuromorphe Hardware mit inhärenter Sparsity
 			\item Optische Computer: Nutzung von Asymmetrie in photonischen Systemen
 		\end{itemize}
 		
-		\item \textbf{Foundation Models fÃ¼r Systemdynamik}
+		\item \textbf{Foundation Models für Systemdynamik}
 		\begin{itemize}
-			\item Pre-trained Models fÃ¼r Struktur-PrÃ¤diktion
+			\item Pre-trained Models für Struktur-Prädiktion
 			\item Transfer Learning zwischen verschiedenen Systemklassen
 			\item Few-Shot Learning: Strukturerkennung mit minimalen Daten
 		\end{itemize}
@@ -3658,7 +3658,7 @@
 		\begin{itemize}
 			\item Selbst-optimierende Algorithmen mit Online-Strukturlernen
 			\item Adaptive Computing: Hardware rekonfiguriert sich basierend auf Struktur
-			\item Bio-inspirierte Architekturen: Gehirn als Vorbild fÃ¼r asymmetrische Verarbeitung
+			\item Bio-inspirierte Architekturen: Gehirn als Vorbild für asymmetrische Verarbeitung
 		\end{itemize}
 	\end{enumerate}
 	
@@ -3669,18 +3669,18 @@
 	\begin{frage}[Optimale Schwellwerttheorie]
 		Existiert eine optimale Strategie zur Wahl des Sparsity-Schwellwerts $\tau$, die den Trade-off zwischen Genauigkeit und Geschwindigkeit minimiert?
 		
-		Formal: Gegeben gewÃ¼nschte Genauigkeit $\epsilon$ und Matrix $A$, finde:
+		Formal: Gegeben gewünschte Genauigkeit $\epsilon$ und Matrix $A$, finde:
 		\[
 		\tau^* = \arg\min_{\tau} T(\tau) \quad \text{s.t.} \quad \text{Error}(\tau) \leq \epsilon
 		\]
 		
-		Dies ist ein Optimierungsproblem mit unbekannten Zielfunktionen (Laufzeit und Fehler hÃ¤ngen komplex von $\tau$ ab).
+		Dies ist ein Optimierungsproblem mit unbekannten Zielfunktionen (Laufzeit und Fehler hängen komplex von $\tau$ ab).
 	\end{frage}
 	
 	\begin{frage}[Universelle Speedup-Schranken]
-		Existieren universelle obere Schranken fÃ¼r den Speedup spalten-orientierter Methoden?
+		Existieren universelle obere Schranken für den Speedup spalten-orientierter Methoden?
 		
-		Vermutung: FÃ¼r sparse Matrix mit Sparsity $p$ und Eingabevektor-Sparsity $p_x$ gilt:
+		Vermutung: Für sparse Matrix mit Sparsity $p$ und Eingabevektor-Sparsity $p_x$ gilt:
 		\[
 		\text{Speedup} \leq \frac{1}{(1-p)(1-p_x)} \cdot C(\text{arch})
 		\]
@@ -3690,44 +3690,44 @@
 	\end{frage}
 	
 	\begin{frage}[Fill-in-Vermeidung]
-		FÃ¼r welche Klassen von sparse Matrizen bleiben die Potenzen $A^k$ sparse?
+		Für welche Klassen von sparse Matrizen bleiben die Potenzen $A^k$ sparse?
 		
 		Bekannt: Tridiagonale, Band-Matrizen haben kontrolliertes Fill-in.
 		
-		Unbekannt: Gibt es eine allgemeine Charakterisierung? Kann man Fill-in fÃ¼r beliebige Strukturen vorhersagen?
+		Unbekannt: Gibt es eine allgemeine Charakterisierung? Kann man Fill-in für beliebige Strukturen vorhersagen?
 	\end{frage}
 	
 	\begin{frage}[Nichtlineare Asymmetrie]
-		LÃ¤sst sich das Asymmetrie-Konzept auf nichtlineare Systeme verallgemeinern?
+		Lässt sich das Asymmetrie-Konzept auf nichtlineare Systeme verallgemeinern?
 		
-		FÃ¼r $\dot{x} = f(x)$ mit Jacobi-Matrix $J(x) = \nabla f(x)$: Die Asymmetrie von $J(x)$ variiert mit $x$. Wie kann man dies ausnutzen?
+		Für $\dot{x} = f(x)$ mit Jacobi-Matrix $J(x) = \nabla f(x)$: Die Asymmetrie von $J(x)$ variiert mit $x$. Wie kann man dies ausnutzen?
 		
-		MÃ¶glicher Ansatz: Lokale Linearisierung + adaptive Algorithmuswahl basierend auf $J(x(t))$.
+		Möglicher Ansatz: Lokale Linearisierung + adaptive Algorithmuswahl basierend auf $J(x(t))$.
 	\end{frage}
 	
-	\section{AbschlieÃŸende philosophische Reflexion}
+	\section{Abschließende philosophische Reflexion}
 	
-	Die Asymmetrie zwischen Zeilen und Spalten ist ein bemerkenswertes Beispiel dafÃ¼r, wie mathematische Struktur physikalische RealitÃ¤t widerspiegelt:
+	Die Asymmetrie zwischen Zeilen und Spalten ist ein bemerkenswertes Beispiel dafür, wie mathematische Struktur physikalische Realität widerspiegelt:
 	
-	\textbf{Zeilen als Aggregatoren}: In Naturgesetzen, Physik und Biologie ist Aggregation ubiquitÃ¤r. Elektrisches Potential aggregiert BeitrÃ¤ge aller Ladungen, Populationswachstum aggregiert alle Ã¶kologischen EinflÃ¼sse, neuronale Aktivierung aggregiert alle synaptischen Inputs. Die Zeilen-Perspektive kodiert diese "many-to-one"-Struktur.
+	\textbf{Zeilen als Aggregatoren}: In Naturgesetzen, Physik und Biologie ist Aggregation ubiquitär. Elektrisches Potential aggregiert Beiträge aller Ladungen, Populationswachstum aggregiert alle ökologischen Einflüsse, neuronale Aktivierung aggregiert alle synaptischen Inputs. Die Zeilen-Perspektive kodiert diese "many-to-one"-Struktur.
 	
-	\textbf{Spalten als Broadcaster}: Gleichzeitig propagieren EinflÃ¼sse von wenigen Quellen zu vielen Zielen. Ein Influencer erreicht Millionen, eine Mutation breitet sich in einer Population aus, ein Hub-Neuron aktiviert viele nachgelagerte Neuronen. Die Spalten-Perspektive kodiert diese "one-to-many"-Struktur.
+	\textbf{Spalten als Broadcaster}: Gleichzeitig propagieren Einflüsse von wenigen Quellen zu vielen Zielen. Ein Influencer erreicht Millionen, eine Mutation breitet sich in einer Population aus, ein Hub-Neuron aktiviert viele nachgelagerte Neuronen. Die Spalten-Perspektive kodiert diese "one-to-many"-Struktur.
 	
-	Diese DualitÃ¤t ist nicht nur mathematisch elegant, sondern fundamentales Organisationsprinzip komplexer Systeme. Die vorliegende Arbeit hat gezeigt, dass die systematische Ausnutzung dieser Asymmetrie transformative Auswirkungen auf Berechnungseffizienz haben kann â€“ mit Speedups von 40Ã— und mehr in realen Anwendungen.
+	Diese Dualität ist nicht nur mathematisch elegant, sondern fundamentales Organisationsprinzip komplexer Systeme. Die vorliegende Arbeit hat gezeigt, dass die systematische Ausnutzung dieser Asymmetrie transformative Auswirkungen auf Berechnungseffizienz haben kann â€“ mit Speedups von 40Ã— und mehr in realen Anwendungen.
 	
-	Blickt man weiter in die Zukunft, so deutet sich ein Paradigmenwechsel an: Von symmetrischer, gleichfÃ¶rmiger Verarbeitung (wie in klassischen Architekturen) hin zu asymmetrischer, strukturbewusster Verarbeitung (wie im Gehirn). Das menschliche Gehirn ist das ultimative asymmetrische System: Wenige Neuronen haben tausende Verbindungen, die meisten nur hunderte. Diese Asymmetrie ist kein Fehler, sondern Feature â€“ sie ermÃ¶glicht effiziente Verarbeitung komplexer Aufgaben mit begrenzten Ressourcen.
+	Blickt man weiter in die Zukunft, so deutet sich ein Paradigmenwechsel an: Von symmetrischer, gleichförmiger Verarbeitung (wie in klassischen Architekturen) hin zu asymmetrischer, strukturbewusster Verarbeitung (wie im Gehirn). Das menschliche Gehirn ist das ultimative asymmetrische System: Wenige Neuronen haben tausende Verbindungen, die meisten nur hunderte. Diese Asymmetrie ist kein Fehler, sondern Feature â€“ sie ermöglicht effiziente Verarbeitung komplexer Aufgaben mit begrenzten Ressourcen.
 	
 	Die Erkenntnisse dieser Arbeit sind ein kleiner Schritt in Richtung solcher bio-inspirierter, strukturbewusster Berechnungssysteme. Sie zeigen: Asymmetrie ist nicht zu vermeiden â€“ sie ist zu umarmen, zu verstehen und systematisch auszunutzen.
 	
 	\section{Schlusswort}
 	
-	Diese Arbeit begann mit der einfachen Beobachtung, dass Zeilen und Spalten einer Matrix unterschiedliche semantische Rollen spielen. Sie endet mit der Erkenntnis, dass diese Asymmetrie ein fundamentales Prinzip ist, das von der Theorie Ã¼ber Algorithmen bis hin zu konkreten industriellen Anwendungen durchgÃ¤ngig relevant ist.
+	Diese Arbeit begann mit der einfachen Beobachtung, dass Zeilen und Spalten einer Matrix unterschiedliche semantische Rollen spielen. Sie endet mit der Erkenntnis, dass diese Asymmetrie ein fundamentales Prinzip ist, das von der Theorie über Algorithmen bis hin zu konkreten industriellen Anwendungen durchgängig relevant ist.
 	
-	Die erzielten Speedups â€“ bis zu 40Ã— in realen Szenarien â€“ sind nicht nur akademisch interessant. Sie ermÃ¶glichen Anwendungen, die zuvor nicht praktikabel waren: Echtzeit-MPC fÃ¼r komplexe Roboter, Monte-Carlo-Simulation epidemiologischer Modelle mit Millionen Szenarien, Edge-Device-Inferenz tiefer neuronaler Netze, und hÃ¤ufige Stress-Tests systemischer Finanzrisiken.
+	Die erzielten Speedups â€“ bis zu 40Ã— in realen Szenarien â€“ sind nicht nur akademisch interessant. Sie ermöglichen Anwendungen, die zuvor nicht praktikabel waren: Echtzeit-MPC für komplexe Roboter, Monte-Carlo-Simulation epidemiologischer Modelle mit Millionen Szenarien, Edge-Device-Inferenz tiefer neuronaler Netze, und häufige Stress-Tests systemischer Finanzrisiken.
 	
 	Gleichzeitig zeigt die Arbeit auch die Grenzen: Overhead dominiert bei kleinen Systemen, hochoptimierte Bibliotheken sind schwer zu schlagen, und nicht jede strukturelle Eigenschaft lohnt die Ausnutzung. Diese Erkenntnisse sind genauso wertvoll wie die Erfolge.
 	
-	Die Zukunft gehÃ¶rt strukturbewussten, adaptiven Systemen, die automatisch erkennen, wie Berechnungen optimal durchzufÃ¼hren sind. Diese Arbeit liefert theoretische Grundlagen, algorithmische Werkzeuge und praktische Leitlinien fÃ¼r diesen Weg. Sie zeigt: Die Asymmetrie zwischen Zeilen und Spalten ist kein Detail â€“ sie ist SchlÃ¼ssel zu effizienter Berechnung im 21. Jahrhundert.
+	Die Zukunft gehört strukturbewussten, adaptiven Systemen, die automatisch erkennen, wie Berechnungen optimal durchzuführen sind. Diese Arbeit liefert theoretische Grundlagen, algorithmische Werkzeuge und praktische Leitlinien für diesen Weg. Sie zeigt: Die Asymmetrie zwischen Zeilen und Spalten ist kein Detail â€“ sie ist Schlüssel zu effizienter Berechnung im 21. Jahrhundert.
 	
 	\vspace{1cm}
 	
@@ -3737,11 +3737,11 @@
 	
 	\vspace{0.5cm}
 	
-	\textit{Die vorliegende Arbeit hat gezeigt, dass fundamentale mathematische Strukturen â€“ wie die Asymmetrie zwischen Zeilen und Spalten â€“ nicht nur theoretische Eleganz besitzen, sondern praktische Auswirkungen von enormer Tragweite haben. Von der Robotik Ã¼ber Epidemiologie bis zur KÃ¼nstlichen Intelligenz: Ãœberall, wo Matrizen die Welt beschreiben, lauert Potenzial fÃ¼r dramatische Effizienzgewinne.}
+	\textit{Die vorliegende Arbeit hat gezeigt, dass fundamentale mathematische Strukturen â€“ wie die Asymmetrie zwischen Zeilen und Spalten â€“ nicht nur theoretische Eleganz besitzen, sondern praktische Auswirkungen von enormer Tragweite haben. Von der Robotik über Epidemiologie bis zur Künstlichen Intelligenz: Überall, wo Matrizen die Welt beschreiben, lauert Potenzial für dramatische Effizienzgewinne.}
 
 \begin{thebibliography}{50}
 
-% â”€â”€ Matrixmultiplikation und KomplexitÃ¤t â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+% â”€â”€ Matrixmultiplikation und Komplexität â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \bibitem{strassen1969}
 V.~Strassen.
 \newblock Gaussian elimination is not optimal.
@@ -3828,7 +3828,7 @@ T.~Kailath.
 \bibitem{antsaklis2006}
 P.~J.~Antsaklis und A.~N.~Michel.
 \newblock \textit{A Linear Systems Primer}.
-\newblock BirkhÃ¤user, Boston, 2006.
+\newblock Birkhäuser, Boston, 2006.
 
 \bibitem{chen1984}
 C.-T.~Chen.
@@ -3923,7 +3923,7 @@ Intel Corporation.
 \newblock \textit{Intel Math Kernel Library Reference Manual}.
 \newblock Intel Press, Santa Clara, CA, 2020.
 
-% â”€â”€ ModellprÃ¤diktive Regelung â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+% â”€â”€ Modellprädiktive Regelung â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 \bibitem{rawlings2017}
 J.~B.~Rawlings, D.~Q.~Mayne und M.~M.~Diehl.
 \newblock \textit{Model Predictive Control: Theory, Computation, and Design}, 2.~Auflage.
@@ -4018,7 +4018,7 @@ B.~D.~O.~Anderson und J.~B.~Moore.
 \newblock Dover Publications, Mineola, NY, 2007.
 
 \bibitem{mezard2009}
-M.~MÃ©zard und A.~Montanari.
+M.~Mézard und A.~Montanari.
 \newblock \textit{Information, Physics, and Computation}.
 \newblock Oxford University Press, Oxford, 2009.
 

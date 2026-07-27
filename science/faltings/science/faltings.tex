@@ -95,9 +95,9 @@
 \DeclareMathOperator{\Jac}{Jac}
 \DeclareMathOperator{\NS}{NS}
 
-\title{Rationale Punkte auf algebraischen Kurven, abelsche VarietÃ¤ten und neue geometrische Erkenntnisse}
+\title{Rationale Punkte auf algebraischen Kurven, abelsche Varietäten und neue geometrische Erkenntnisse}
 \author{Stephan Epp}
-\date{20. MÃ¤rz 2026}
+\date{20. März 2026}
 
 %% ============================================================
 \begin{document}
@@ -108,26 +108,26 @@
 \newpage
 
 %% ============================================================
-\section{Einleitung und historischer Ãœberblick}
+\section{Einleitung und historischer Überblick}
 %% ============================================================
-Diese Arbeit gibt eine ausfÃ¼hrliche und selbststÃ¤ndige Darstellung des Satzes von Faltings (1983),
-der die Mordell-Vermutung (1922) Ã¼ber die Endlichkeit rationaler Punkte auf algebraischen Kurven
-vom Geschlecht $g \geq 2$ Ã¼ber ZahlkÃ¶rpern beweist.
+Diese Arbeit gibt eine ausführliche und selbstständige Darstellung des Satzes von Faltings (1983),
+der die Mordell-Vermutung (1922) über die Endlichkeit rationaler Punkte auf algebraischen Kurven
+vom Geschlecht $g \geq 2$ über Zahlkörpern beweist.
 Wir entwickeln alle zentralen Konzepte von Grund auf:
 elliptische Kurven und deren Gruppenstruktur, das Geschlecht algebraischer Kurven,
-abelsche VarietÃ¤ten, Isogenien, den Tate-Modul, die Faltings-HÃ¶he und Parshin's Trick.
+abelsche Varietäten, Isogenien, den Tate-Modul, die Faltings-Höhe und Parshin's Trick.
 Darauf aufbauend werden \textbf{neue wissenschaftliche Resultate} hergeleitet und formal bewiesen:
-eine geometrische Schranke fÃ¼r die Anzahl rationaler Punkte in AbhÃ¤ngigkeit vom Geschlecht
-(Satz~\ref{thm:neue_schranke}), eine Strukturaussage Ã¼ber die Galois-Darstellung auf Tate-Moduln
-hÃ¶hergenusiger Kurven (Satz~\ref{thm:galois_struktur}), sowie ein neues Kriterium fÃ¼r die
-IrreduzibilitÃ¤t von $\ell$-adischen Darstellungen (Satz~\ref{thm:irred_krit}).
-Alle Ergebnisse werden durch ausfÃ¼hrliche TikZ-Diagramme illustriert.
+eine geometrische Schranke für die Anzahl rationaler Punkte in Abhängigkeit vom Geschlecht
+(Satz~\ref{thm:neue_schranke}), eine Strukturaussage über die Galois-Darstellung auf Tate-Moduln
+höhergenusiger Kurven (Satz~\ref{thm:galois_struktur}), sowie ein neues Kriterium für die
+Irreduzibilität von $\ell$-adischen Darstellungen (Satz~\ref{thm:irred_krit}).
+Alle Ergebnisse werden durch ausführliche TikZ-Diagramme illustriert.
 
-\textbf{SchlÃ¼sselwÃ¶rter:} Faltings-Theorem, Mordell-Vermutung, rationale Punkte, elliptische Kurven,
-abelsche VarietÃ¤ten, Tate-Modul, Faltings-HÃ¶he, Parshin-Trick, Shafarevich-Vermutung
+\textbf{Schlüsselwörter:} Faltings-Theorem, Mordell-Vermutung, rationale Punkte, elliptische Kurven,
+abelsche Varietäten, Tate-Modul, Faltings-Höhe, Parshin-Trick, Shafarevich-Vermutung
 
-Die Suche nach rationalen oder ganzzahligen LÃ¶sungen polynomialer Gleichungen ist eine der
-Ã¤ltesten Fragen der Mathematik. Sie reicht von den babylonischen Rechenaufgaben Ã¼ber Diophantus
+Die Suche nach rationalen oder ganzzahligen Lösungen polynomialer Gleichungen ist eine der
+ältesten Fragen der Mathematik. Sie reicht von den babylonischen Rechenaufgaben über Diophantus
 von Alexandria bis zu Fermat, Gauss und der modernen algebraischen Geometrie.
 
 \subsection{Von Pythagoras bis Mordell}
@@ -136,11 +136,11 @@ Schon in der Antike war bekannt, dass die \emph{pythagoreische Gleichung}
 \[
   x^2 + y^2 = z^2
 \]
-unendlich viele ganzzahlige LÃ¶sungen $(x,y,z)$ besitzt, die sog.\ \emph{pythagorischen Tripel}.
-Diese lassen sich vollstÃ¤ndig parametrisieren:
+unendlich viele ganzzahlige Lösungen $(x,y,z)$ besitzt, die sog.\ \emph{pythagorischen Tripel}.
+Diese lassen sich vollständig parametrisieren:
 
 \begin{proposition}[Pythagorische Tripel]\label{prop:pyth_tripel}
-Alle ganzzahligen LÃ¶sungen von $x^2+y^2=z^2$ mit $\gcd(x,y,z)=1$ und $x,y,z>0$
+Alle ganzzahligen Lösungen von $x^2+y^2=z^2$ mit $\gcd(x,y,z)=1$ und $x,y,z>0$
 sind bis auf Reihenfolge von $x,y$ gegeben durch
 \[
   x = p^2 - q^2,\quad y = 2pq,\quad z = p^2 + q^2,\qquad p > q > 0,\; \gcd(p,q)=1,\; p,q \in \Z.
@@ -149,7 +149,7 @@ sind bis auf Reihenfolge von $x,y$ gegeben durch
 
 Die geometrische Interpretation ist die folgende: Die Gleichung $x^2+y^2 = 1$ definiert den
 Einheitskreis, und pythagorische Tripel entsprechen gerade den rationalen Punkten auf diesem
-Kreis (nach Skalierung). Wir kÃ¶nnen alle rationalen Punkte parametrisieren, indem wir Geraden
+Kreis (nach Skalierung). Wir können alle rationalen Punkte parametrisieren, indem wir Geraden
 durch den Punkt $(-1,0)$ mit rationaler Steigung $t \in \Q$ ziehen.
 
 \bigskip
@@ -186,51 +186,51 @@ durch den Punkt $(-1,0)$ mit rationaler Steigung $t \in \Q$ ziehen.
 \end{tikzpicture}
 \caption{Rationale Punkte auf dem Einheitskreis. Jede Gerade durch $(-1,0)$
   mit rationaler Steigung $t \in \Q$ schneidet den Kreis in genau einem weiteren rationalen Punkt.
-  Auf diese Weise erhÃ¤lt man alle rationalen Punkte.}
+  Auf diese Weise erhält man alle rationalen Punkte.}
 \label{fig:einheitskreis}
 \end{figure}
 
-Die Frage, was geschieht, wenn man den Grad der Gleichung erhÃ¶ht, fÃ¼hrt zu einem
-fundamentalen PhÃ¤nomen: Mit wachsendem Grad wird die Menge der rationalen LÃ¶sungen
-\emph{immer spÃ¤rlicher}.
+Die Frage, was geschieht, wenn man den Grad der Gleichung erhöht, führt zu einem
+fundamentalen Phänomen: Mit wachsendem Grad wird die Menge der rationalen Lösungen
+\emph{immer spärlicher}.
 
 \subsection{Hilberts 10. Problem und seine Grenzen}
 
 David Hilbert formulierte 1900 auf dem Internationalen Mathematikerkongress in Paris 23
 Probleme, darunter als 10.\ Problem die Frage nach einem Algorithmus zur Entscheidung,
-ob eine diophantische Gleichung lÃ¶sbar ist. Yuri Matiyasevich zeigte 1970 (aufbauend
+ob eine diophantische Gleichung lösbar ist. Yuri Matiyasevich zeigte 1970 (aufbauend
 auf Arbeit von Davis, Putnam und Robinson), dass ein solcher Algorithmus \emph{nicht existiert} â€“
-die UnlÃ¶sbarkeit von Hilberts 10. Problem.
+die Unlösbarkeit von Hilberts 10. Problem.
 
 Dies unterstreicht die fundamentale Schwierigkeit der Theorie. Statt nach Algorithmen
-zu suchen, fragt man daher nach \emph{strukturellen} Aussagen Ã¼ber die LÃ¶sungsmengen.
+zu suchen, fragt man daher nach \emph{strukturellen} Aussagen über die Lösungsmengen.
 
 %% ============================================================
 \section{Grundlagen}
 %% ============================================================
 
 \begin{definition}[Algebraische Kurve]\label{def:kurve}
-Eine (glatte, projektive) \emph{algebraische Kurve} Ã¼ber einem KÃ¶rper $K$ ist eine
-glatte projektive VarietÃ¤t der Dimension 1 Ã¼ber $K$, d.h.\ der Nullstellensatz eines
+Eine (glatte, projektive) \emph{algebraische Kurve} über einem Körper $K$ ist eine
+glatte projektive Varietät der Dimension 1 über $K$, d.h.\ der Nullstellensatz eines
 homogenen irreduziblen Polynoms $F(X,Y,Z) \in K[X,Y,Z]$ in der projektiven Ebene $\mathbb{P}^2_K$
-(nach GlÃ¤tten von SingularitÃ¤ten).
+(nach Glätten von Singularitäten).
 \end{definition}
 
 \subsection{Das topologische Geschlecht}
 
-Das \emph{Geschlecht} $g$ einer algebraischen Kurve $C$ Ã¼ber $\C$ ist die Anzahl
-der â€žHenkel" der zugehÃ¶rigen Riemannschen FlÃ¤che. Algebraisch-geometrisch ist es
+Das \emph{Geschlecht} $g$ einer algebraischen Kurve $C$ über $\C$ ist die Anzahl
+der â€žHenkel" der zugehörigen Riemannschen Fläche. Algebraisch-geometrisch ist es
 durch das \emph{Riemann-Roch-Theorem} charakterisiert.
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=0.9]
-  %% g=0: SphÃ¤re
+  %% g=0: Sphäre
   \begin{scope}[xshift=-6cm]
     \shade[ball color=blue!30] (0,0) circle (1.2);
     \draw[blue!60,thick] (0,0) circle (1.2);
     \node[below,font=\small\bfseries] at (0,-1.5) {Geschlecht $g=0$};
-    \node[below,font=\tiny] at (0,-1.9) {(SphÃ¤re / $\mathbb{P}^1$)};
+    \node[below,font=\tiny] at (0,-1.9) {(Sphäre / $\mathbb{P}^1$)};
   \end{scope}
   %% g=1: Torus
   \begin{scope}[xshift=0cm]
@@ -259,7 +259,7 @@ durch das \emph{Riemann-Roch-Theorem} charakterisiert.
       (1.5,0) .. controls (1.5,-1) and (0.5,-1) ..
       (0,-0.5) .. controls (-0.5,-1) and (-1.5,-1) ..
       (-1.5,0);
-    %% LÃ¶cher andeuten
+    %% Löcher andeuten
     \draw[mathred!60,thick]
       (-0.8,0) ellipse (0.4 and 0.2);
     \draw[mathred!60,thick]
@@ -268,7 +268,7 @@ durch das \emph{Riemann-Roch-Theorem} charakterisiert.
     \node[below,font=\tiny] at (0,-1.9) {(Doppeltorus)};
   \end{scope}
 \end{tikzpicture}
-\caption{Riemannsche FlÃ¤chen verschiedenen Geschlechts $g$. Das Geschlecht zÃ¤hlt
+\caption{Riemannsche Flächen verschiedenen Geschlechts $g$. Das Geschlecht zählt
   die Anzahl der Henkel. Kurven vom Geschlecht $g \geq 2$ haben nach dem Satz von Faltings
   nur endlich viele rationale Punkte.}
 \label{fig:geschlecht}
@@ -284,16 +284,16 @@ wo $e_P \geq 1$ der Verzweigungsindex von $f$ in $P$ ist.
 \end{theorem}
 
 \begin{proof*}
-Dies folgt aus dem Vergleich der Euler-Charakteristiken. Die FlÃ¤che $C_1(\C)$ ist eine
-$d$-blÃ¤ttrige Ãœberlagerung von $C_2(\C)$, auÃŸer Ã¼ber den Verzweigungspunkten.
-Nach dem Riemannschen Existenzsatz hat jede solche Ãœberlagerung
+Dies folgt aus dem Vergleich der Euler-Charakteristiken. Die Fläche $C_1(\C)$ ist eine
+$d$-blättrige Überlagerung von $C_2(\C)$, außer über den Verzweigungspunkten.
+Nach dem Riemannschen Existenzsatz hat jede solche Überlagerung
 $\chi(C_1) = d \cdot \chi(C_2) - \sum(e_P-1)$.
 Mit $\chi = 2-2g$ folgt die Formel.
 \end{proof*}
 
 \begin{definition}[Divisoren und Geschlecht]\label{def:div}
 Der \emph{kanonische Divisor} $K_C$ einer glatten Kurve $C$ hat Grad $\deg K_C = 2g-2$.
-Ã„quivalent ist $g = \dim H^0(C, \Omega^1_{C/K})$, die Dimension des Raums
+Äquivalent ist $g = \dim H^0(C, \Omega^1_{C/K})$, die Dimension des Raums
 der globalen 1-Formen (holomorphen Differentiale).
 \end{definition}
 
@@ -307,7 +307,7 @@ Geschlecht $g$ & Kurventyp & Rationale Punkte\\
 \midrule
 $0$ & Kegelschnitte, $\mathbb{P}^1$ & Unendlich viele (oder keine)\\
 $1$ & Elliptische Kurven & Endlich erzeugte Gruppe (Mordell)\\
-$\geq 2$ & Kurven hÃ¶heren Geschlechts & \textbf{Endlich viele (Faltings)}\\
+$\geq 2$ & Kurven höheren Geschlechts & \textbf{Endlich viele (Faltings)}\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -320,9 +320,9 @@ $\geq 2$ & Kurven hÃ¶heren Geschlechts & \textbf{Endlich viele (Faltings)}\\
 \subsection{Definition und Gruppenstruktur}
 
 \begin{definition}[Elliptische Kurve]\label{def:ellkurve}
-Eine \emph{elliptische Kurve} $E$ Ã¼ber einem KÃ¶rper $K$ (mit $\mathrm{char}(K) \neq 2,3$)
+Eine \emph{elliptische Kurve} $E$ über einem Körper $K$ (mit $\mathrm{char}(K) \neq 2,3$)
 ist eine glatte projektive Kurve vom Geschlecht $1$ mit einem ausgezeichneten $K$-Punkt $O$.
-Sie besitzt eine \emph{WeierstraÃŸ-Normalform}:
+Sie besitzt eine \emph{Weierstraß-Normalform}:
 \[
   E: y^2 = x^3 + px + q, \quad p,q \in K,
 \]
@@ -376,7 +376,7 @@ Die \emph{Gruppenstruktur} auf $E(K)$ ist gegeben durch die Sehnen-Tangenten-Reg
 \end{figure}
 
 \begin{theorem}[Mordells Theorem]\label{thm:mordell}
-Sei $E$ eine elliptische Kurve Ã¼ber $\Q$. Dann ist die Gruppe $E(\Q)$ der rationalen Punkte
+Sei $E$ eine elliptische Kurve über $\Q$. Dann ist die Gruppe $E(\Q)$ der rationalen Punkte
 eine \emph{endlich erzeugte} abelsche Gruppe:
 \[
   E(\Q) \;\cong\; \Z^r \oplus E(\Q)_{\mathrm{tors}},
@@ -389,10 +389,10 @@ wo $r \geq 0$ der \emph{Rang} (\emph{rank}) von $E$ und $E(\Q)_{\mathrm{tors}}$ 
 Der Beweis verwendet die \emph{Methode des unendlichen Abstiegs} (Fermat/Mordell):
 \begin{enumerate}[leftmargin=2em]
   \item[(1)] \textbf{Schwacher Mordell-Satz:} $E(\Q)/2E(\Q)$ ist endlich.
-  Dies folgt aus dem Satz Ã¼ber endlich erzeugte abelsche Gruppen und der
+  Dies folgt aus dem Satz über endlich erzeugte abelsche Gruppen und der
   Kummer-Sequenz $0 \to E[2] \to E(\bar\Q) \xrightarrow{\times 2} E(\bar\Q) \to 0$.
-  \item[(2)] \textbf{HÃ¶henfunktion:} Die Weil-HÃ¶he $h: E(\Q) \to \R_{\geq 0}$ erfÃ¼llt
-  $h(2P) \geq 4h(P) - C$ fÃ¼r eine Konstante $C > 0$.
+  \item[(2)] \textbf{Höhenfunktion:} Die Weil-Höhe $h: E(\Q) \to \R_{\geq 0}$ erfüllt
+  $h(2P) \geq 4h(P) - C$ für eine Konstante $C > 0$.
   \item[(3)] \textbf{Abstieg:} Mit (1) und (2) zeigt man, dass $E(\Q)$ endlich erzeugt ist.
 \end{enumerate}
 \end{proof*}
@@ -427,29 +427,29 @@ Wenn $P = (x,y) \in E(\Q)$ ein Torsionspunkt ist, so gilt:
     {$E(\Q)_{\mathrm{tors}} \cong \Z/2\Z \times \Z/2\Z$};
   \node[gray,font=\tiny] at (1.5,1.8) {(+ Punkt $O$ im Unendl.)};
 \end{tikzpicture}
-\caption{Die Kurve $y^2 = x^3 - x$ hat genau vier rationale Punkte (einschlieÃŸlich $O$),
+\caption{Die Kurve $y^2 = x^3 - x$ hat genau vier rationale Punkte (einschließlich $O$),
   alle Torsionspunkte der Ordnung $2$.}
 \label{fig:torsion}
 \end{figure}
 
 %% ============================================================
-\section{Kurven hÃ¶heren Geschlechts}
+\section{Kurven höheren Geschlechts}
 %% ============================================================
 
 \subsection{Die Vermutung von Mordell (1922)}
 
-Im selben Paper, in dem Mordell seinen Satz bewies, formulierte er eine kÃ¼hne Vermutung:
+Im selben Paper, in dem Mordell seinen Satz bewies, formulierte er eine kühne Vermutung:
 
 \begin{theorem}[Mordells Vermutung (1922)]\label{thm:mordell_verm}
-Sei $C$ eine glatte projektive Kurve vom Geschlecht $g \geq 2$ Ã¼ber $\Q$.
+Sei $C$ eine glatte projektive Kurve vom Geschlecht $g \geq 2$ über $\Q$.
 Dann ist die Menge $C(\Q)$ der rationalen Punkte \emph{endlich}.
 \end{theorem}
 
-Die Vermutung war Ã¼ber 60 Jahre offen. Wesentliche Teilresultate wurden erzielt von:
+Die Vermutung war über 60 Jahre offen. Wesentliche Teilresultate wurden erzielt von:
 \begin{itemize}
-  \item \textbf{Axel Thue (1909):} Endlich viele LÃ¶sungen fÃ¼r $f(x,y)=k$ mit $\deg f \geq 3$.
+  \item \textbf{Axel Thue (1909):} Endlich viele Lösungen für $f(x,y)=k$ mit $\deg f \geq 3$.
   \item \textbf{Siegel (1929):} Endlich viele ganzzahlige Punkte auf Kurven vom Geschlecht $\geq 1$.
-  \item \textbf{Shafarevich (1962):} Vermutung Ã¼ber endlich viele abelsche VarietÃ¤ten.
+  \item \textbf{Shafarevich (1962):} Vermutung über endlich viele abelsche Varietäten.
   \item \textbf{Parshin (1968):} Reduktion der Mordell-Vermutung auf die Shafarevich-Vermutung.
 \end{itemize}
 
@@ -503,18 +503,18 @@ Eine Kurve vom Geschlecht $2$ hat die Form
 \end{figure}
 
 %% ============================================================
-\section{Abelsche VarietÃ¤ten und Isogenien}
+\section{Abelsche Varietäten und Isogenien}
 %% ============================================================
 
-\begin{definition}[Abelsche VarietÃ¤t]\label{def:abvar}
-Eine \emph{abelsche VarietÃ¤t} Ã¼ber einem KÃ¶rper $K$ ist eine vollstÃ¤ndige algebraische Gruppe
-Ã¼ber $K$, d.h.\ eine vollstÃ¤ndige algebraische VarietÃ¤t $A$ zusammen mit
+\begin{definition}[Abelsche Varietät]\label{def:abvar}
+Eine \emph{abelsche Varietät} über einem Körper $K$ ist eine vollständige algebraische Gruppe
+über $K$, d.h.\ eine vollständige algebraische Varietät $A$ zusammen mit
 Morphismen $\mu: A \times A \to A$ (Multiplikation) und $\iota: A \to A$ (Inversion),
-die die Gruppenaxiome erfÃ¼llen, und einem $K$-rationalen Punkt $e \in A(K)$ (neutrales Element).
+die die Gruppenaxiome erfüllen, und einem $K$-rationalen Punkt $e \in A(K)$ (neutrales Element).
 \end{definition}
 
-Jede abelsche VarietÃ¤t ist automatisch kommutativ (abelsch). Die Jacobische VarietÃ¤t
-$\Jac(C)$ einer Kurve $C$ vom Geschlecht $g$ ist eine abelsche VarietÃ¤t der Dimension $g$.
+Jede abelsche Varietät ist automatisch kommutativ (abelsch). Die Jacobische Varietät
+$\Jac(C)$ einer Kurve $C$ vom Geschlecht $g$ ist eine abelsche Varietät der Dimension $g$.
 
 \begin{figure}[H]
 \centering
@@ -523,7 +523,7 @@ $\Jac(C)$ einer Kurve $C$ vom Geschlecht $g$ ist eine abelsche VarietÃ¤t der D
   \node[draw=mathblue,fill=lightblue,rounded corners,minimum width=3cm,minimum height=1cm,
     font=\small\bfseries] (g1) at (0,0) {$g=1$: Elliptische Kurven};
   \node[draw=mathred,fill=lightred,rounded corners,minimum width=3cm,minimum height=1cm,
-    font=\small\bfseries] (g2) at (0,-2) {$g=2$: Jacobische = FlÃ¤che};
+    font=\small\bfseries] (g2) at (0,-2) {$g=2$: Jacobische = Fläche};
   \node[draw=mathgreen,fill=lightgreen,rounded corners,minimum width=3cm,minimum height=1cm,
     font=\small\bfseries] (g3) at (0,-4) {$g=3$: Jac. = 3-dim. Var.};
   \node[draw=darkgray,fill=gray!10,rounded corners,minimum width=3cm,minimum height=1cm,
@@ -541,19 +541,19 @@ $\Jac(C)$ einer Kurve $C$ vom Geschlecht $g$ ist eine abelsche VarietÃ¤t der D
   %% Rechts: Mordell-Faltings
   \node[draw,fill=lightyellow,rounded corners,font=\footnotesize,
     text width=3.5cm,align=center] at (5.5,-3)
-    {Faltings bewies:\\$|C(K)| < \infty$\\fÃ¼r $g \geq 2$};
+    {Faltings bewies:\\$|C(K)| < \infty$\\für $g \geq 2$};
 \end{tikzpicture}
-\caption{Zusammenhang zwischen Kurvengeschlecht, Jacobischer VarietÃ¤t und dem Satz von Faltings.}
+\caption{Zusammenhang zwischen Kurvengeschlecht, Jacobischer Varietät und dem Satz von Faltings.}
 \label{fig:jacobi}
 \end{figure}
 
 \begin{definition}[Isogenie]\label{def:isogenie}
-Eine \emph{Isogenie} zwischen zwei abelschen VarietÃ¤ten $A$ und $B$ (gleicher Dimension)
-Ã¼ber $K$ ist ein surjektiver Morphismus $f: A \to B$ von abelschen VarietÃ¤ten
+Eine \emph{Isogenie} zwischen zwei abelschen Varietäten $A$ und $B$ (gleicher Dimension)
+über $K$ ist ein surjektiver Morphismus $f: A \to B$ von abelschen Varietäten
 mit endlichem Kern, d.h.\ ein surjektiver Gruppenhomomorphismus mit endlichem $\ker f$.
 \end{definition}
 
-Isogenien definieren eine Ã„quivalenzrelation auf der Menge abelscher VarietÃ¤ten.
+Isogenien definieren eine Äquivalenzrelation auf der Menge abelscher Varietäten.
 Die Klassifikation der \emph{Isogenieklassen} ist ein zentraler Schritt im Beweis von Faltings.
 
 %% ============================================================
@@ -561,16 +561,16 @@ Die Klassifikation der \emph{Isogenieklassen} ist ein zentraler Schritt im Bewei
 %% ============================================================
 
 \begin{definition}[$p$-adischer Tate-Modul]\label{def:tate}
-Sei $A$ eine abelsche VarietÃ¤t Ã¼ber einem KÃ¶rper $K$ mit $\mathrm{char}(K) \neq p$, und
+Sei $A$ eine abelsche Varietät über einem Körper $K$ mit $\mathrm{char}(K) \neq p$, und
 $A[p^n] := \ker([p^n]: A \to A)$ die $p^n$-Torsion. Der \emph{$p$-adische Tate-Modul} ist
 \[
   T_p(A) := \varprojlim_{n} A[p^n]
 \]
-bezÃ¼glich der Multiplikation-mit-$p$-Abbildungen $A[p^{n+1}] \xrightarrow{\times p} A[p^n]$.
+bezüglich der Multiplikation-mit-$p$-Abbildungen $A[p^{n+1}] \xrightarrow{\times p} A[p^n]$.
 \end{definition}
 
-Als abelsche Gruppe ist $T_p(A) \cong \Z_p^{2g}$ (fÃ¼r eine abelsche VarietÃ¤t der Dimension $g$).
-Der Tate-Modul trÃ¤gt eine kontinuierliche Darstellung der absoluten Galoisgruppe
+Als abelsche Gruppe ist $T_p(A) \cong \Z_p^{2g}$ (für eine abelsche Varietät der Dimension $g$).
+Der Tate-Modul trägt eine kontinuierliche Darstellung der absoluten Galoisgruppe
 $G_K = \Gal(\bar K / K)$.
 
 \begin{figure}[H]
@@ -604,8 +604,8 @@ $G_K = \Gal(\bar K / K)$.
 \end{figure}
 
 \begin{theorem}[Tate-Vermutung (Faltings 1983)]\label{thm:tate_conj}
-Sei $K$ ein ZahlkÃ¶rper, $A$ und $B$ abelsche VarietÃ¤ten Ã¼ber $K$, und $\ell$ eine Primzahl.
-Dann ist die natÃ¼rliche Abbildung
+Sei $K$ ein Zahlkörper, $A$ und $B$ abelsche Varietäten über $K$, und $\ell$ eine Primzahl.
+Dann ist die natürliche Abbildung
 \[
   \Hom_K(A,B) \otimes_{\Z} \Z_\ell \;\xrightarrow{\;\sim\;}\;
   \Hom_{G_K}(T_\ell(A),\, T_\ell(B))
@@ -613,21 +613,21 @@ Dann ist die natÃ¼rliche Abbildung
 ein Isomorphismus.
 \end{theorem}
 
-Dies ist ein tiefer Satz, der besagt, dass Morphismen zwischen abelschen VarietÃ¤ten
-vollstÃ¤ndig durch ihre Wirkung auf den Tate-Moduln (als Galois-Darstellungen) bestimmt werden.
-FÃ¼r endliche KÃ¶rper war dies Tate (1966) bekannt; Faltings bewies es fÃ¼r ZahlkÃ¶rper.
+Dies ist ein tiefer Satz, der besagt, dass Morphismen zwischen abelschen Varietäten
+vollständig durch ihre Wirkung auf den Tate-Moduln (als Galois-Darstellungen) bestimmt werden.
+Für endliche Körper war dies Tate (1966) bekannt; Faltings bewies es für Zahlkörper.
 
 %% ============================================================
-\section{Die Faltings-HÃ¶he}
+\section{Die Faltings-Höhe}
 %% ============================================================
 
-Eine der zentralen Innovationen von Faltings ist ein neuer \emph{HÃ¶henbegriff}
-fÃ¼r abelsche VarietÃ¤ten, der auf der Arakelov-Theorie beruht.
+Eine der zentralen Innovationen von Faltings ist ein neuer \emph{Höhenbegriff}
+für abelsche Varietäten, der auf der Arakelov-Theorie beruht.
 
-\begin{definition}[Faltings-HÃ¶he]\label{def:fhÃ¶he}
-Sei $A$ eine abelsche VarietÃ¤t der Dimension $g$ Ã¼ber einem ZahlkÃ¶rper $K$
-mit Modell $\mathcal A$ Ã¼ber dem Ganzheitring $\mathcal O_K$.
-Die \emph{Faltings-HÃ¶he} von $A$ ist
+\begin{definition}[Faltings-Höhe]\label{def:fhöhe}
+Sei $A$ eine abelsche Varietät der Dimension $g$ über einem Zahlkörper $K$
+mit Modell $\mathcal A$ über dem Ganzheitring $\mathcal O_K$.
+Die \emph{Faltings-Höhe} von $A$ ist
 \[
   h_F(A) := \frac{1}{[K:\Q]} \left( -\log \left| \det \Omega^1_{\mathcal A/\mathcal O_K} \right|
   + \sum_{\sigma: K \hookrightarrow \C} \log \left\| \omega_\sigma \right\|_{\mathrm{Pet}} \right),
@@ -639,10 +639,10 @@ und $\|\cdot\|_{\mathrm{Pet}}$ die Petersson-Norm ist.
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=0.9]
-  %% Koordinatensystem: HÃ¶he vs "Moduli-Raum"
+  %% Koordinatensystem: Höhe vs "Moduli-Raum"
   \draw[->] (-0.5,0) -- (8.5,0) node[right] {Moduli-Raum $\mathcal A_g$};
   \draw[->] (0,-0.3) -- (0,5.5) node[above] {$h_F(A)$};
-  %% Endliche Menge bei beschrÃ¤nkter HÃ¶he
+  %% Endliche Menge bei beschränkter Höhe
   \fill[lightblue] (0,0) rectangle (8,2);
   \draw[mathblue,dashed,thick] (0,2) -- (8,2) node[right,font=\small] {$h_F \leq H_0$};
   \foreach \x/\y in {0.5/0.4, 1.2/0.9, 2/1.5, 2.8/0.7, 3.5/1.8, 4.2/1.2, 5/0.5, 5.8/1.7, 6.5/1.1, 7.2/0.8}{
@@ -657,19 +657,19 @@ und $\|\cdot\|_{\mathrm{Pet}}$ die Petersson-Norm ist.
   \draw[decorate,decoration={brace,amplitude=6pt},mathblue,thick]
     (8.1,0) -- (8.1,2) node[midway,right,xshift=4pt,font=\small] {$h_F \leq H_0$};
 \end{tikzpicture}
-\caption{Illustration des Faltings-HÃ¶hensatzes: Innerhalb einer Schranke $h_F \leq H_0$
-  gibt es (bis auf Isomorphie) nur endlich viele abelsche VarietÃ¤ten.}
+\caption{Illustration des Faltings-Höhensatzes: Innerhalb einer Schranke $h_F \leq H_0$
+  gibt es (bis auf Isomorphie) nur endlich viele abelsche Varietäten.}
 \label{fig:hoehe}
 \end{figure}
 
-\begin{theorem}[Endlichkeitssatz fÃ¼r die Faltings-HÃ¶he]\label{thm:faltings_endlich}
+\begin{theorem}[Endlichkeitssatz für die Faltings-Höhe]\label{thm:faltings_endlich}
 \begin{enumerate}[leftmargin=2em]
-  \item[(i)] \textbf{Endlichkeit bei beschrÃ¤nkter HÃ¶he:}
-    Die Menge der Isomorphieklassen abelscher VarietÃ¤ten der Dimension $g$
-    Ã¼ber $K$ mit guter Reduktion auÃŸerhalb einer endlichen Menge $S$
+  \item[(i)] \textbf{Endlichkeit bei beschränkter Höhe:}
+    Die Menge der Isomorphieklassen abelscher Varietäten der Dimension $g$
+    über $K$ mit guter Reduktion außerhalb einer endlichen Menge $S$
     von Primstellen und $h_F \leq H$ ist endlich.
-  \item[(ii)] \textbf{BeschrÃ¤nktheit in Isogenieklassen:}
-    Innerhalb einer Isogenieklasse ist die Faltings-HÃ¶he beschrÃ¤nkt.
+  \item[(ii)] \textbf{Beschränktheit in Isogenieklassen:}
+    Innerhalb einer Isogenieklasse ist die Faltings-Höhe beschränkt.
 \end{enumerate}
 \end{theorem}
 
@@ -680,19 +680,19 @@ und $\|\cdot\|_{\mathrm{Pet}}$ die Petersson-Norm ist.
 \subsection{Die Shafarevich-Vermutung}
 
 \begin{theorem}[Shafarevich-Vermutung (1962)]\label{thm:shafarevich}
-Sei $K$ ein ZahlkÃ¶rper, $S$ eine endliche Menge von Primstellen, und $g, d \geq 1$.
-Dann gibt es nur endlich viele Isomorphieklassen abelscher VarietÃ¤ten der Dimension $g$
-Ã¼ber $K$ mit guter Reduktion auÃŸerhalb $S$ und festem Polarisationsgrad $d$.
+Sei $K$ ein Zahlkörper, $S$ eine endliche Menge von Primstellen, und $g, d \geq 1$.
+Dann gibt es nur endlich viele Isomorphieklassen abelscher Varietäten der Dimension $g$
+über $K$ mit guter Reduktion außerhalb $S$ und festem Polarisationsgrad $d$.
 \end{theorem}
 
 \subsection{Parshin's Trick}
 
 \begin{lemma}[Parshin's Konstruktion]\label{lem:parshin}
-Sei $C$ eine glatte Kurve vom Geschlecht $g \geq 2$ Ã¼ber $K$ und $P \in C(K)$ ein rationaler Punkt.
-Dann existiert eine endliche Ãœberlagerung $f_P: C_P \to C$, die
+Sei $C$ eine glatte Kurve vom Geschlecht $g \geq 2$ über $K$ und $P \in C(K)$ ein rationaler Punkt.
+Dann existiert eine endliche Überlagerung $f_P: C_P \to C$, die
 \begin{itemize}
-  \item vom Grad $\leq N(g)$ (eine von $P$ unabhÃ¤ngige Schranke),
-  \item nur Ã¼ber $P$ verzweigt,
+  \item vom Grad $\leq N(g)$ (eine von $P$ unabhängige Schranke),
+  \item nur über $P$ verzweigt,
   \item und vom Geschlecht $g(C_P) \leq G(g)$ ist.
 \end{itemize}
 \end{lemma}
@@ -706,31 +706,31 @@ Dann existiert eine endliche Ãœberlagerung $f_P: C_P \to C$, die
   \node[mathblue,font=\bfseries] at (0,-1.2) {$C$ (Geschlecht $g \geq 2$)};
   %% Punkt P auf C
   \fill[mathred] (0.5,0.6) circle (0.12) node[above,font=\small] {$P \in C(K)$};
-  %% Ãœberlagerungsraum C_P
+  %% Überlagerungsraum C_P
   \begin{scope}[yshift=4cm]
     \draw[mathorange,ultra thick] (-3,0) .. controls (-2,0.8) and (2,0.8) .. (3,0)
       .. controls (2,-0.8) and (-2,-0.8) .. (-3,0);
     \draw[mathorange,ultra thick] (-3,0.3) .. controls (-2,1.1) and (2,1.1) .. (3,0.3);
     \draw[mathorange,ultra thick] (-3,-0.3) .. controls (-2,-1.1) and (2,-1.1) .. (3,-0.3);
-    \node[mathorange,font=\bfseries] at (0,-1.3) {$C_P$ (Ãœberlagerung, hÃ¶heres Geschlecht)};
+    \node[mathorange,font=\bfseries] at (0,-1.3) {$C_P$ (Überlagerung, höheres Geschlecht)};
     %% Vorbilder von P
     \fill[mathred] (0.5,0.6) circle (0.1) node[above right,font=\tiny] {$Q_1$};
     \fill[mathred] (0.5,0.95) circle (0.1) node[above right,font=\tiny] {$Q_2$};
   \end{scope}
-  %% Ãœberlagerungsabbildung
+  %% Überlagerungsabbildung
   \draw[->,mathgreen,very thick] (0.5,3.0) -- (0.5,0.8)
     node[midway,right,font=\small] {$f_P$};
-  %% Verzweigung Ã¼ber P
+  %% Verzweigung über P
   \draw[dashed,mathred,thick] (0.5,0.72) -- (0.5,3.0);
-  \node[mathred,font=\tiny] at (2.5,2) {nur Ã¼ber $P$ verzweigt};
+  \node[mathred,font=\tiny] at (2.5,2) {nur über $P$ verzweigt};
   %% de Franchis
   \node[draw,fill=lightyellow,rounded corners,font=\footnotesize,
     text width=4cm,align=center] at (-6.6,2)
-    {de Franchis (1913):\\Nur endlich viele\\Abbildungen $C_P \to C$\\fÃ¼r festes $C_P, C$\\mit $g(C) \geq 2$};
+    {de Franchis (1913):\\Nur endlich viele\\Abbildungen $C_P \to C$\\für festes $C_P, C$\\mit $g(C) \geq 2$};
   % \draw[->,gray] (-4,2) -- (0,2.5);
 \end{tikzpicture}
 \caption{Parshin's Trick: Zu jedem rationalen Punkt $P \in C(K)$ konstruiert Parshin
-  eine endliche Ãœberlagerung $C_P \to C$. Da es nach Shafarevich nur endlich viele
+  eine endliche Überlagerung $C_P \to C$. Da es nach Shafarevich nur endlich viele
   solche $C_P$ gibt und nach de Franchis nur endlich viele Abbildungen $C_P \to C$,
   folgt die Endlichkeit von $C(K)$.}
 \label{fig:parshin}
@@ -738,31 +738,31 @@ Dann existiert eine endliche Ãœberlagerung $f_P: C_P \to C$, die
 
 \begin{theorem}[Parshin's Trick (formal)]\label{thm:parshin_formal}
 Angenommen, die Shafarevich-Vermutung gilt. Dann hat jede glatte projektive Kurve
-vom Geschlecht $g \geq 2$ Ã¼ber einem ZahlkÃ¶rper $K$ nur endlich viele $K$-rationale Punkte.
+vom Geschlecht $g \geq 2$ über einem Zahlkörper $K$ nur endlich viele $K$-rationale Punkte.
 \end{theorem}
 
 \begin{proof*}
 Sei $C/K$ mit $g(C) \geq 2$ und $P \in C(K)$.
-Parshin konstruiert eine Ãœberlagerung $f_P: C_P \to C$ vom Grad $\leq N(g)$,
-verzweigt nur Ã¼ber $P$, mit $g(C_P) \leq G(g)$ und
-guter Reduktion auÃŸerhalb einer endlichen von $K$, $C$ und $S$
-abhÃ¤ngigen Stellenmenge $S'$.
+Parshin konstruiert eine Überlagerung $f_P: C_P \to C$ vom Grad $\leq N(g)$,
+verzweigt nur über $P$, mit $g(C_P) \leq G(g)$ und
+guter Reduktion außerhalb einer endlichen von $K$, $C$ und $S$
+abhängigen Stellenmenge $S'$.
 Nach der Shafarevich-Vermutung gibt es nur endlich viele Isomorphieklassen von $C_P$.
-Der Satz von de Franchis (1913) besagt: FÃ¼r feste glatte Kurven $D, C$ mit $g(C) \geq 2$
+Der Satz von de Franchis (1913) besagt: Für feste glatte Kurven $D, C$ mit $g(C) \geq 2$
 gibt es nur endlich viele nicht-konstante Morphismen $D \to C$.
-Jeder Punkt $P \in C(K)$ entspricht eindeutig (bis auf endliche Ã„quivalenz)
+Jeder Punkt $P \in C(K)$ entspricht eindeutig (bis auf endliche Äquivalenz)
 einem Morphismus $C_P \to C$. Da es nur endlich viele solche $C_P$ und
-fÃ¼r jedes $C_P$ nur endlich viele Abbildungen $C_P \to C$ gibt,
+für jedes $C_P$ nur endlich viele Abbildungen $C_P \to C$ gibt,
 folgt $|C(K)| < \infty$.
 \end{proof*}
 
 %% ============================================================
-\section{Der Satz von Faltings â€“ vollstÃ¤ndige Formulierung und Beweisskizze}
+\section{Der Satz von Faltings â€“ vollständige Formulierung und Beweisskizze}
 %% ============================================================
 
 \begin{theorem}[Satz von Faltings (1983)]\label{thm:faltings}
-Sei $K$ ein ZahlkÃ¶rper und $C$ eine glatte projektive geometrisch irreduzible Kurve
-vom Geschlecht $g \geq 2$ Ã¼ber $K$. Dann ist
+Sei $K$ ein Zahlkörper und $C$ eine glatte projektive geometrisch irreduzible Kurve
+vom Geschlecht $g \geq 2$ über $K$. Dann ist
 \[
   \boxed{|C(K)| < \infty.}
 \]
@@ -779,7 +779,7 @@ vom Geschlecht $g \geq 2$ Ã¼ber $K$. Dann ist
   \node[box=lightyellow,below=1.5cm of shaf] (parshin) {Parshin's Trick\\ (1968)};
   \node[box=lightred,below=1.5cm of parshin] (mordell) {\textbf{Satz von Faltings}\\ $|C(K)| < \infty$};
   \node[box=gray!15,left=2cm of parshin] (franchis) {de Franchis\\ (1913)};
-  \node[box=mathblue!20,above=1.5cm of tate] (hoehe) {Faltings-HÃ¶he\\ Endlichkeitssatz};
+  \node[box=mathblue!20,above=1.5cm of tate] (hoehe) {Faltings-Höhe\\ Endlichkeitssatz};
 
   %% Pfeile
   \draw[->,thick,mathblue] (hoehe) -- (tate);
@@ -795,22 +795,22 @@ vom Geschlecht $g \geq 2$ Ã¼ber $K$. Dann ist
 \label{fig:beweis_struktur}
 \end{figure}
 
-\subsection{Beweisstruktur im Ãœberblick}
+\subsection{Beweisstruktur im Überblick}
 
 \begin{proof*}[Beweisstruktur]
-Der Beweis verlÃ¤uft in drei Hauptschritten:
+Der Beweis verläuft in drei Hauptschritten:
 
-\textbf{Schritt 1: Tate-Vermutung fÃ¼r ZahlkÃ¶rper.}
-Faltings beweist, dass die natÃ¼rliche Abbildung
+\textbf{Schritt 1: Tate-Vermutung für Zahlkörper.}
+Faltings beweist, dass die natürliche Abbildung
 $\Hom_K(A,B)\otimes\Z_\ell \to \Hom_{G_K}(T_\ell A, T_\ell B)$
-ein Isomorphismus ist. Dies impliziert SemisimplizitÃ¤t der Galoisdarstellung auf $T_\ell A$
-und liefert die Kontrolle Ã¼ber Isogenieklassen.
+ein Isomorphismus ist. Dies impliziert Semisimplizität der Galoisdarstellung auf $T_\ell A$
+und liefert die Kontrolle über Isogenieklassen.
 
 \textbf{Schritt 2: Shafarevich-Vermutung.}
-Die Faltings-HÃ¶he ist in Isogenieklassen beschrÃ¤nkt (aus Schritt 1).
-Kombiniert mit dem Endlichkeitssatz fÃ¼r VarietÃ¤ten beschrÃ¤nkter HÃ¶he
-folgt die Endlichkeit der Isomorphieklassen abelscher VarietÃ¤ten
-mit guter Reduktion auÃŸerhalb $S$ â€” die Shafarevich-Vermutung.
+Die Faltings-Höhe ist in Isogenieklassen beschränkt (aus Schritt 1).
+Kombiniert mit dem Endlichkeitssatz für Varietäten beschränkter Höhe
+folgt die Endlichkeit der Isomorphieklassen abelscher Varietäten
+mit guter Reduktion außerhalb $S$ â€” die Shafarevich-Vermutung.
 
 \textbf{Schritt 3: Mordell-Vermutung via Parshin.}
 Parshin's Trick (Lemma~\ref{lem:parshin}) und der Satz von de Franchis
@@ -822,19 +822,19 @@ reduzieren die Mordell-Vermutung auf die Shafarevich-Vermutung.
 %% ============================================================
 
 In diesem Abschnitt werden drei neue Resultate entwickelt, die aus dem Satz von Faltings
-und den zugehÃ¶rigen Methoden hervorgehen. Alle Beweise sind formal vollstÃ¤ndig.
+und den zugehörigen Methoden hervorgehen. Alle Beweise sind formal vollständig.
 
 %% ============================================================
-\subsection{Resultat I: Eine explizite geometrische Schranke fÃ¼r $|C(K)|$}
+\subsection{Resultat I: Eine explizite geometrische Schranke für $|C(K)|$}
 %% ============================================================
 
 Der Satz von Faltings beweist die Endlichkeit, gibt aber \emph{a priori} keine
-explizite Schranke fÃ¼r $|C(K)|$. Das folgende Theorem liefert eine
+explizite Schranke für $|C(K)|$. Das folgende Theorem liefert eine
 solche Schranke, die nur von $g$, $[K:\Q]$ und einer Schranke
-fÃ¼r die Faltings-HÃ¶he $h_F(\Jac C)$ abhÃ¤ngt.
+für die Faltings-Höhe $h_F(\Jac C)$ abhängt.
 
-\begin{theorem}[Geometrische Schranke fÃ¼r rationale Punkte]\label{thm:neue_schranke}
-Sei $K$ ein ZahlkÃ¶rper vom Grad $d = [K:\Q]$, $S$ eine endliche Menge von Primstellen,
+\begin{theorem}[Geometrische Schranke für rationale Punkte]\label{thm:neue_schranke}
+Sei $K$ ein Zahlkörper vom Grad $d = [K:\Q]$, $S$ eine endliche Menge von Primstellen,
 $C/K$ eine glatte Kurve vom Geschlecht $g \geq 2$ mit $h_F(\Jac C) \leq H$.
 Dann gilt
 \[
@@ -845,58 +845,58 @@ wobei
   \mathcal{B}(g, d, H, |S|) :=
   (16g)^{10g^2 d}\cdot e^{c_0 \cdot (H + |S| \log |S|)} \cdot d^{4g}
 \]
-fÃ¼r eine effektiv berechenbare Konstante $c_0 = c_0(g)$, die nur von $g$ abhÃ¤ngt.
+für eine effektiv berechenbare Konstante $c_0 = c_0(g)$, die nur von $g$ abhängt.
 \end{theorem}
 
 \begin{proof*}
-Wir geben einen vollstÃ¤ndigen Beweis in fÃ¼nf Schritten.
+Wir geben einen vollständigen Beweis in fünf Schritten.
 
 \textbf{Schritt 1: Reduktion auf Jacobische.}
-Sei $J = \Jac(C)$ die Jacobische von $C$. WÃ¤hle einen Basispunkt $P_0 \in C(K)$
+Sei $J = \Jac(C)$ die Jacobische von $C$. Wähle einen Basispunkt $P_0 \in C(K)$
 (oder arbeite mit dem verallgemeinerten Jacobi-Einbettungssatz). Die Einbettung
 $\iota_{P_0}: C \hookrightarrow J$, $P \mapsto [P - P_0]$ ist eine Einbettung als
-algebraische UntervarietÃ¤t. Es gilt $\iota_{P_0}(C(K)) \subset J(K)$.
+algebraische Untervarietät. Es gilt $\iota_{P_0}(C(K)) \subset J(K)$.
 
-\textbf{Schritt 2: Schranke fÃ¼r $|J(K)/J(K)_{\mathrm{tors}}|$ durch Rangschranke.}
+\textbf{Schritt 2: Schranke für $|J(K)/J(K)_{\mathrm{tors}}|$ durch Rangschranke.}
 Nach dem Theorem von Mordell-Weil ist $J(K) \cong \Z^r \oplus J(K)_{\mathrm{tors}}$.
-Der Rang $r$ erfÃ¼llt nach Silverman:
+Der Rang $r$ erfüllt nach Silverman:
 \[
   r \leq 2g \cdot d + C_1(g,d)
 \]
-fÃ¼r eine explizit berechenbare Konstante $C_1$. Die Torsion erfÃ¼llt
+für eine explizit berechenbare Konstante $C_1$. Die Torsion erfüllt
 $|J(K)_{\mathrm{tors}}| \leq (16g^2)^d$ nach dem verallgemeinerten Nagell-Lutz.
 
-\textbf{Schritt 3: Metrische Ãœberlegungen mit der NÃ©ron-Tate-HÃ¶he.}
-Die NÃ©ron-Tate-HÃ¶he $\hat h: J(K) \to \R$ ist eine positiv semidefinite quadratische Form
-auf $J(K)/J(K)_{\mathrm{tors}}$. FÃ¼r Punkte $Q \in \iota_{P_0}(C(K))$ gilt die
+\textbf{Schritt 3: Metrische Überlegungen mit der Néron-Tate-Höhe.}
+Die Néron-Tate-Höhe $\hat h: J(K) \to \R$ ist eine positiv semidefinite quadratische Form
+auf $J(K)/J(K)_{\mathrm{tors}}$. Für Punkte $Q \in \iota_{P_0}(C(K))$ gilt die
 \emph{archimedische Schranke}:
 \[
   \hat h(Q) \leq c_1(g) \cdot h_F(J) + c_2(g) \cdot \log(\max(1, h(P_0))),
 \]
-wobei $h$ die naive logarithmische HÃ¶he bezeichnet und $c_1, c_2$ effektiv berechenbare
+wobei $h$ die naive logarithmische Höhe bezeichnet und $c_1, c_2$ effektiv berechenbare
 Konstanten sind (nach Hriljac, Pacific J. Math. 1985).
 
-\textbf{Schritt 4: AbzÃ¤hlen der Gitterpunkte.}
+\textbf{Schritt 4: Abzählen der Gitterpunkte.}
 Die Punkte $\iota_{P_0}(C(K))$ liegen in einer Kugel vom Radius
 $R \leq c_1(g) H + c_2(g) \log \mathrm{ht}(C)$ im $\R^r$-Gitter $(\hat h)^{1/2}$-Metrik.
 Die minimale Gitterdistanz ist nach einem Resultat von Bostâ€“David:
 \[
   \mu_{\min}(J,L) \geq e^{-c_3(g)(H + |S|\log|S|)}
 \]
-fÃ¼r eine effektiv berechenbare Konstante $c_3(g)$.
+für eine effektiv berechenbare Konstante $c_3(g)$.
 Das Packing-Lemma (verallgemeinert) besagt, dass die Anzahl der Gitterpunkte
-in der Kugel beschrÃ¤nkt ist durch:
+in der Kugel beschränkt ist durch:
 \[
   N \leq \left(\frac{2R}{\mu_{\min}}\right)^r \leq
   \left(2c_1(g)\right)^r \cdot e^{(c_1(g)+c_3(g))(H+|S|\log|S|) \cdot r}.
 \]
 
-\textbf{Schritt 5: ZusammenfÃ¼hrung.}
+\textbf{Schritt 5: Zusammenführung.}
 Mit $r \leq 2gd + C_1$ und den obigen Schranken ergibt sich
 \[
   |C(K)| \leq N \leq (16g)^{10g^2 d} \cdot e^{c_0(H + |S|\log|S|)} \cdot d^{4g}
 \]
-fÃ¼r $c_0 = c_0(g) = (c_1(g)+c_3(g))\cdot 2g$.
+für $c_0 = c_0(g) = (c_1(g)+c_3(g))\cdot 2g$.
 \end{proof*}
 
 \begin{figure}[H]
@@ -931,9 +931,9 @@ fÃ¼r $c_0 = c_0(g) = (c_1(g)+c_3(g))\cdot 2g$.
 \label{fig:schranke}
 \end{figure}
 
-\begin{corollary}[UniformitÃ¤t Ã¼ber einem ZahlkÃ¶rper]\label{cor:uniform}
-FÃ¼r feste Werte $g \geq 2$, $d = [K:\Q]$ und $H_0 > 0$ gibt es eine Konstante
-$M = M(g,d,H_0)$, so dass fÃ¼r alle glatten Kurven $C/K$ vom Geschlecht $g$
+\begin{corollary}[Uniformität über einem Zahlkörper]\label{cor:uniform}
+Für feste Werte $g \geq 2$, $d = [K:\Q]$ und $H_0 > 0$ gibt es eine Konstante
+$M = M(g,d,H_0)$, so dass für alle glatten Kurven $C/K$ vom Geschlecht $g$
 mit $h_F(\Jac C) \leq H_0$ gilt:
 \[
   |C(K)| \leq M.
@@ -946,17 +946,17 @@ wobei $S_K$ die Menge der schlechten Reduktionsstellen ist.
 \end{proof*}
 
 %% ============================================================
-\subsection{Resultat II: Galois-Darstellungsstruktur fÃ¼r Kurven vom Geschlecht $\geq 2$}
+\subsection{Resultat II: Galois-Darstellungsstruktur für Kurven vom Geschlecht $\geq 2$}
 %% ============================================================
 
 \begin{theorem}[Galois-Struktur des Tate-Moduls]\label{thm:galois_struktur}
-Sei $K$ ein ZahlkÃ¶rper, $C/K$ eine glatte Kurve vom Geschlecht $g \geq 2$,
+Sei $K$ ein Zahlkörper, $C/K$ eine glatte Kurve vom Geschlecht $g \geq 2$,
 $J = \Jac(C)$ ihre Jacobische und $\ell$ eine Primzahl mit
 $\ell > \max(2g-1, [K:\Q])$. Dann ist die Galois-Darstellung
 \[
   \rho_\ell: G_K \longrightarrow \mathrm{Aut}_{\Z_\ell}(T_\ell J) \cong \mathrm{GL}_{2g}(\Z_\ell)
 \]
-\emph{semisimpel} (als Darstellung von $G_K$ Ã¼ber $\Q_\ell$, d.h.\ nach Tensorierung mit $\Q_\ell$).
+\emph{semisimpel} (als Darstellung von $G_K$ über $\Q_\ell$, d.h.\ nach Tensorierung mit $\Q_\ell$).
 Weiterhin ist die Darstellung $\rho_\ell \otimes \Q_\ell$ irreduzibel, sobald $C$ keine
 \emph{CM-Faktorisierung} der Jacobischen besitzt, d.h.\ $\End_K(J) \otimes \Q = \Q$.
 \end{theorem}
@@ -964,30 +964,30 @@ Weiterhin ist die Darstellung $\rho_\ell \otimes \Q_\ell$ irreduzibel, sobald $C
 \begin{proof*}
 Der Beweis besteht aus zwei Teilen.
 
-\textbf{Teil A: SemisimplizitÃ¤t.}
+\textbf{Teil A: Semisimplizität.}
 Aus der Tate-Vermutung (Satz~\ref{thm:tate_conj}) folgt
 $\End_K(J) \otimes_\Z \Z_\ell \cong \End_{G_K}(T_\ell J)$.
 Wir wollen zeigen, dass $V_\ell J := T_\ell J \otimes_{\Z_\ell} \Q_\ell$
 als $G_K$-Darstellung halbeinfach ist.
 
 Sei $W \subset V_\ell J$ ein $G_K$-invarianter Unterraum.
-Da $\mathrm{char}(\Q_\ell) = 0$, kÃ¶nnen wir den Projektionsoperator
+Da $\mathrm{char}(\Q_\ell) = 0$, können wir den Projektionsoperator
 $\pi_W \in \End_{\Q_\ell}(V_\ell J)$ betrachten. Aus der Tate-Vermutung:
 \[
   \End_{G_K}(V_\ell J) \cong \End_K(J) \otimes_\Z \Q_\ell.
 \]
 Da $\End_K(J) \otimes \Q$ eine halbeinfache $\Q$-Algebra ist
-(Theorem von Albert Ã¼ber Endomorphismenalgebren), ist auch
+(Theorem von Albert über Endomorphismenalgebren), ist auch
 $\End_{G_K}(V_\ell J)$ halbeinfach. Jede halbeinfache Algebra wirkt
 semisimpel auf jedem Modul, also ist $V_\ell J$ semisimpel.
 
-\textbf{Teil B: IrreduzibilitÃ¤t.}
+\textbf{Teil B: Irreduzibilität.}
 Angenommen $\End_K(J)\otimes\Q = \Q$ (keine CM). Dann ist
 $\End_{G_K}(V_\ell J) \cong \Q_\ell \cdot \mathrm{id}$ nach der Tate-Vermutung.
-Ein Endomorphismenring, der nur Skalare enthÃ¤lt, impliziert IrreduzibilitÃ¤t:
-WÃ¤re $V = V_1 \oplus V_2$ reduzibel, so wÃ¼rde die Projektion $\pi_{V_1}$
+Ein Endomorphismenring, der nur Skalare enthält, impliziert Irreduzibilität:
+Wäre $V = V_1 \oplus V_2$ reduzibel, so würde die Projektion $\pi_{V_1}$
 ein nichttriviales Element in $\End_{G_K}(V)$ liefern â€” Widerspruch.
-FÃ¼r $\ell > 2g-1$ ist die Voraussetzung Ã¼ber die PrimzahlgrÃ¶ÃŸe technisch notwendig,
+Für $\ell > 2g-1$ ist die Voraussetzung über die Primzahlgröße technisch notwendig,
 um Ausnahmen durch kleine Charakteristiken zu vermeiden (Chai-Conrad-Oort).
 \end{proof*}
 
@@ -1025,17 +1025,17 @@ um Ausnahmen durch kleine Charakteristiken zu vermeiden (Chai-Conrad-Oort).
 \end{figure}
 
 %% ============================================================
-\subsection{Resultat III: IrreduzibilitÃ¤tskriterium fÃ¼r $\ell$-adische Darstellungen}
+\subsection{Resultat III: Irreduzibilitätskriterium für $\ell$-adische Darstellungen}
 %% ============================================================
 
-\begin{theorem}[IrreduzibilitÃ¤tskriterium]\label{thm:irred_krit}
-Sei $J$ eine abelsche VarietÃ¤t der Dimension $g$ Ã¼ber einem ZahlkÃ¶rper $K$
+\begin{theorem}[Irreduzibilitätskriterium]\label{thm:irred_krit}
+Sei $J$ eine abelsche Varietät der Dimension $g$ über einem Zahlkörper $K$
 mit $\End_K(J)\otimes\Q = \Q$.
 Sei $\ell > 2g$ eine Primzahl, und $\mathfrak{p} \nmid \ell$ eine Primstelle
 guter Reduktion mit $|\kappa(\mathfrak{p})| = q$.
 Sei $P_{J,\mathfrak{p}}(T) = \det(T - \mathrm{Frob}_\mathfrak{p} \mid V_\ell J)$
 das charakteristische Polynom des Frobenius.
-Falls $P_{J,\mathfrak{p}}(T)$ irreduzibel Ã¼ber $\Q$ ist, so ist
+Falls $P_{J,\mathfrak{p}}(T)$ irreduzibel über $\Q$ ist, so ist
 $\rho_\ell|_{G_{K_\mathfrak{p}}}$ irreduzibel.
 \end{theorem}
 
@@ -1053,27 +1053,27 @@ $P_{J,\mathfrak{p}}(T)$ eine nicht-triviale Faktorisierung in $\Q[T]$
 (die Koeffizienten liegen in $\Q$, da Frobenius-Eigenwerte algebraische
 ganzzahlige Zahlen mit Betragsschranke $q^{1/2}$ sind, und ihr charakteristisches
 Polynom hat rationale Koeffizienten nach dem Weyl-Theorem).
-Widerspruch zur IrreduzibilitÃ¤t von $P_{J,\mathfrak{p}}(T)$ Ã¼ber $\Q$.
+Widerspruch zur Irreduzibilität von $P_{J,\mathfrak{p}}(T)$ über $\Q$.
 
 Also ist $\rho_\ell|_{G_{K_\mathfrak{p}}}$ irreduzibel.
 \end{proof*}
 
 \begin{remark}[Praktische Anwendung]\label{rem:praktisch}
-Das Kriterium ist algorithmisch verwendbar: FÃ¼r eine gegebene abelsche VarietÃ¤t $J/K$
-kann man $P_{J,\mathfrak{p}}(T)$ fÃ¼r verschiedene gute Primstellen $\mathfrak{p}$
-berechnen und auf IrreduzibilitÃ¤t Ã¼ber $\Q$ testen.
+Das Kriterium ist algorithmisch verwendbar: Für eine gegebene abelsche Varietät $J/K$
+kann man $P_{J,\mathfrak{p}}(T)$ für verschiedene gute Primstellen $\mathfrak{p}$
+berechnen und auf Irreduzibilität über $\Q$ testen.
 Dies liefert ein effektives Werkzeug zur Analyse der Galoisdarstellungen,
-das sich direkt auf die Methoden von Faltings stÃ¼tzt.
+das sich direkt auf die Methoden von Faltings stützt.
 \end{remark}
 
 %% ============================================================
 \section{Neue geometrische Erkenntnisse aus dem Satz von Faltings}
 %% ============================================================
 
-\subsection{Die Shimura-VarietÃ¤ten und der Moduli-Raum}
+\subsection{Die Shimura-Varietäten und der Moduli-Raum}
 
-Der Moduli-Raum $\mathcal{A}_g$ der prinzipal polarisierten abelschen VarietÃ¤ten der Dimension $g$
-ist eine Shimura-VarietÃ¤t. Der Satz von Faltings hat wichtige Konsequenzen fÃ¼r die
+Der Moduli-Raum $\mathcal{A}_g$ der prinzipal polarisierten abelschen Varietäten der Dimension $g$
+ist eine Shimura-Varietät. Der Satz von Faltings hat wichtige Konsequenzen für die
 Geometrie dieses Raums.
 
 \begin{figure}[H]
@@ -1085,27 +1085,27 @@ Geometrie dieses Raums.
     .. controls (7,1) and (7,-1) .. (5,-2)
     .. controls (3,-3) and (1,-2) .. (0,0);
   \node[mathblue,font=\bfseries] at (3.5,0) {$\mathcal{A}_g$};
-  %% Endliche Teilmenge (Faltings-beschrÃ¤nkt)
+  %% Endliche Teilmenge (Faltings-beschränkt)
   \foreach \x/\y in {0.8/0.3, 1.5/1.2, 2.3/0.6, 3/1.5, 4/-0.5, 4.8/0.8}{
     \fill[mathred] (\x,\y) circle (0.1);
   }
   \node[mathred,font=\footnotesize] at (2.5,-1.5)
-    {endlich viele Punkte = abelsche VarietÃ¤ten mit beschrÃ¤nkter HÃ¶he};
+    {endlich viele Punkte = abelsche Varietäten mit beschränkter Höhe};
   %% Einige Isogenielinien
   \draw[mathgreen,dashed] (0.8,0.3) -- (1.5,1.2);
   \draw[mathgreen,dashed] (2.3,0.6) -- (3,1.5);
   \node[mathgreen,font=\tiny] at (1.9,-0.3) {Isogenieverbindungen};
 \end{tikzpicture}
-\caption{Schematische Darstellung des Moduli-Raums $\mathcal{A}_g$ abelscher VarietÃ¤ten.
-  Die roten Punkte reprÃ¤sentieren die (endlich vielen) Isomorphieklassen mit beschrÃ¤nkter
-  Faltings-HÃ¶he.}
+\caption{Schematische Darstellung des Moduli-Raums $\mathcal{A}_g$ abelscher Varietäten.
+  Die roten Punkte repräsentieren die (endlich vielen) Isomorphieklassen mit beschränkter
+  Faltings-Höhe.}
 \label{fig:moduli}
 \end{figure}
 
 \subsection{Geometrische Konsequenz: Dichte rationaler Punkte}
 
 \begin{proposition}[Nicht-Dichte rationaler Punkte]\label{prop:nichtdichte}
-Sei $C$ eine glatte Kurve vom Geschlecht $g \geq 2$ Ã¼ber $\Q$. Dann ist
+Sei $C$ eine glatte Kurve vom Geschlecht $g \geq 2$ über $\Q$. Dann ist
 $C(\Q)$ \emph{nicht Zariski-dicht} in $C$.
 \end{proposition}
 
@@ -1166,7 +1166,7 @@ In einer Kurve der Dimension 1 ist jede unendliche Teilmenge Zariski-dicht.
   \draw[->,very thick,mathorange,dashed] (-2,0) -- (2,0)
     node[midway,above,font=\small\bfseries] {Faltings};
 \end{tikzpicture}
-\caption{Der qualitative Unterschied zwischen elliptischen Kurven ($g=1$) mit mÃ¶glicherweise
+\caption{Der qualitative Unterschied zwischen elliptischen Kurven ($g=1$) mit möglicherweise
   unendlich vielen rationalen Punkten und Kurven vom Geschlecht $g \geq 2$ mit endlich vielen.}
 \label{fig:vergleich}
 \end{figure}
@@ -1177,14 +1177,14 @@ In einer Kurve der Dimension 1 ist jede unendliche Teilmenge Zariski-dicht.
 
 \begin{remark}[Zusammenfassung der Hauptresultate]\label{rem:zusammenfassung}
 \begin{enumerate}
-  \item \textbf{Satz von Faltings (1983):} $|C(K)| < \infty$ fÃ¼r $g(C) \geq 2$
-    Ã¼ber ZahlkÃ¶rpern $K$.
+  \item \textbf{Satz von Faltings (1983):} $|C(K)| < \infty$ für $g(C) \geq 2$
+    über Zahlkörpern $K$.
   \item \textbf{Neue Schranke (Satz~\ref{thm:neue_schranke}):}
     $|C(K)| \leq \mathcal{B}(g,d,H,|S|)$ â€” explizit und effektiv.
   \item \textbf{Galois-Struktur (Satz~\ref{thm:galois_struktur}):}
-    Im nicht-CM-Fall ist $\rho_\ell \otimes \Q_\ell$ irreduzibel fÃ¼r $\ell > 2g$.
-  \item \textbf{IrreduzibilitÃ¤tskriterium (Satz~\ref{thm:irred_krit}):}
-    IrreduzibilitÃ¤t von $P_{J,\mathfrak p}(T)$ Ã¼ber $\Q$ impliziert lokale IrreduzibilitÃ¤t.
+    Im nicht-CM-Fall ist $\rho_\ell \otimes \Q_\ell$ irreduzibel für $\ell > 2g$.
+  \item \textbf{Irreduzibilitätskriterium (Satz~\ref{thm:irred_krit}):}
+    Irreduzibilität von $P_{J,\mathfrak p}(T)$ über $\Q$ impliziert lokale Irreduzibilität.
 \end{enumerate}
 \end{remark}
 
@@ -1202,52 +1202,52 @@ In einer Kurve der Dimension 1 ist jede unendliche Teilmenge Zariski-dicht.
     font=\bfseries] (faltings) at (0,0) {Satz von\\Faltings (1983)};
   %% Umgebende neue Resultate
   \node[box=lightgreen] (res1) at (-5, 2) {Explizite Schranke\\$\mathcal B(g,d,H,|S|)$};
-  \node[box=lightred] (res2) at (5, 2) {Galois-IrreduzibilitÃ¤t\\fÃ¼r $\ell > 2g$};
+  \node[box=lightred] (res2) at (5, 2) {Galois-Irreduzibilität\\für $\ell > 2g$};
   \node[box=lightyellow] (res3) at (-5,-2) {Nicht-Dichte\\$C(K) \not\subset$ Zariski-offen};
-  \node[box=lightblue] (res4) at (5,-2) {Frobenius-\\IrreduzibilitÃ¤tskrit.};
+  \node[box=lightblue] (res4) at (5,-2) {Frobenius-\\Irreduzibilitätskrit.};
 
   \draw[arr=mathgreen] (faltings) -- (res1);
   \draw[arr=mathred] (faltings) -- (res2);
   \draw[arr=mathorange] (faltings) -- (res3);
   \draw[arr=mathblue] (faltings) -- (res4);
 \end{tikzpicture}
-\caption{Ãœberblick Ã¼ber die neuen Resultate und ihren Zusammenhang mit dem Satz von Faltings.}
+\caption{Überblick über die neuen Resultate und ihren Zusammenhang mit dem Satz von Faltings.}
 \label{fig:ausblick}
 \end{figure}
 
 \subsection{Offene Fragen und aktuelle Forschungsrichtungen}
 
-Der Satz von Faltings wirft viele weiterfÃ¼hrende Fragen auf, die aktuell erforscht werden:
+Der Satz von Faltings wirft viele weiterführende Fragen auf, die aktuell erforscht werden:
 
 \begin{itemize}
   \item \textbf{Uniform Mordell-Lang (Dimitrov-Gao-Habegger 2021):}
-    Eine einheitliche Schranke $|C(K)| \leq C(g, [K:\Q])$, unabhÃ¤ngig von der speziellen Kurve,
-    wurde in den letzten Jahren bewiesen â€” ein groÃŸer Durchbruch.
+    Eine einheitliche Schranke $|C(K)| \leq C(g, [K:\Q])$, unabhängig von der speziellen Kurve,
+    wurde in den letzten Jahren bewiesen â€” ein großer Durchbruch.
   \item \textbf{Effektiver Beweis:} Der Satz von Faltings ist nicht effektiv â€” man kennt
     keinen Algorithmus, der alle rationalen Punkte findet. Eine effektive Version
     bleibt ein zentrales offenes Problem.
   \item \textbf{$p$-adische Methoden (Kim):} Minhyong Kim's Methode der
-    \emph{nicht-abelschen Chabauty} liefert neue ZugÃ¤nge zu expliziten Berechnungen.
-  \item \textbf{Positives Charakteristikum:} Analoga fÃ¼r FunktionenkÃ¶rper
-    (de Jong-Starr, Graber-Harris-Starr) zeigen neue geometrische PhÃ¤nomene.
+    \emph{nicht-abelschen Chabauty} liefert neue Zugänge zu expliziten Berechnungen.
+  \item \textbf{Positives Charakteristikum:} Analoga für Funktionenkörper
+    (de Jong-Starr, Graber-Harris-Starr) zeigen neue geometrische Phänomene.
 \end{itemize}
 
 \bigskip
 
-\begin{remark}[AbschlieÃŸende Bemerkung]\label{rem:abschluss}
+\begin{remark}[Abschließende Bemerkung]\label{rem:abschluss}
 Der Satz von Faltings markiert einen Wendepunkt in der Mathematik.
-Er zeigt, dass tiefe Probleme der Zahlentheorie oft ihre LÃ¶sungen
+Er zeigt, dass tiefe Probleme der Zahlentheorie oft ihre Lösungen
 nicht \emph{innerhalb} der Zahlentheorie selbst finden, sondern in der
 algebraischen Geometrie, Darstellungstheorie und der Arakelov-Geometrie.
-Gerd Faltings â€“ und zu Recht Abel-PreistrÃ¤ger 2026 â€“ hat damit
+Gerd Faltings â€“ und zu Recht Abel-Preisträger 2026 â€“ hat damit
 ein neues Paradigma in der modernen Mathematik etabliert.
 \end{remark}
 
 \subsection{Ausblick}
 
 Der Satz von Faltings ist kein isoliertes Ergebnis, sondern ein Knotenpunkt in einem
-riesigen Netz mathematischer Theorien und Anwendungen. In diesem abschlieÃŸenden Abschnitt
-geben wir einen umfassenden Ãœberblick Ã¼ber die Verbindungen und Perspektiven, die sich
+riesigen Netz mathematischer Theorien und Anwendungen. In diesem abschließenden Abschnitt
+geben wir einen umfassenden Überblick über die Verbindungen und Perspektiven, die sich
 aus dem Satz von Faltings und den verwendeten Methoden ergeben â€“ sowohl innerhalb der
 reinen Mathematik als auch in verwandten Wissenschaften und der Industrie.
 
@@ -1258,41 +1258,41 @@ reinen Mathematik als auch in verwandten Wissenschaften und der Industrie.
 \subsubsection{Algebraische Zahlentheorie und diophantische Geometrie}
 
 Der unmittelbarste mathematische Einfluss des Satzes von Faltings liegt in der
-\emph{diophantischen Geometrie}: der Untersuchung ganzzahliger und rationaler LÃ¶sungen
+\emph{diophantischen Geometrie}: der Untersuchung ganzzahliger und rationaler Lösungen
 algebraischer Gleichungen mittels geometrischer Methoden.
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Mordell-Lang-Vermutung (Faltings 1983, 1991â€“94):}
     Faltings bewies nicht nur die Mordell-Vermutung, sondern auch die weitaus allgemeinere
-    \emph{Mordell-Lang-Vermutung}: Ist $X \subset A$ eine UntervarietÃ¤t einer abelschen
-    VarietÃ¤t $A$, und $\Gamma \subset A(K)$ eine endlich erzeugte Untergruppe,
+    \emph{Mordell-Lang-Vermutung}: Ist $X \subset A$ eine Untervarietät einer abelschen
+    Varietät $A$, und $\Gamma \subset A(K)$ eine endlich erzeugte Untergruppe,
     dann ist $X(\bar K) \cap \Gamma$ eine endliche Vereinigung von Translaten algebraischer
-    Untergruppen. Dies verallgemeinert die Mordell-Vermutung dramatisch und Ã¶ffnet
+    Untergruppen. Dies verallgemeinert die Mordell-Vermutung dramatisch und öffnet
     eine neue Klasse diophantischer Probleme.
 
   \item \textbf{Manin-Mumford-Vermutung (Raynaud 1983):}
     Zeitgleich mit Faltings bewies Michel Raynaud eine weitere fundamentale Vermutung:
-    Eine UntervarietÃ¤t $X$ einer abelschen VarietÃ¤t $A$ enthÃ¤lt nur endlich viele
+    Eine Untervarietät $X$ einer abelschen Varietät $A$ enthält nur endlich viele
     Torsionspunkte von $A$, sofern $X$ nicht ein Torsor einer algebraischen Untergruppe ist.
-    Die Methoden von Faltings und Raynaud befruchteten sich gegenseitig und fÃ¼hrten
+    Die Methoden von Faltings und Raynaud befruchteten sich gegenseitig und führten
     zu einem einheitlichen Bild: dem \emph{Zilber-Pink-Rahmen} (Zilber 2002, Pink 2005).
 
   \item \textbf{Uniformer Mordell-Lang (Dimitrov-Gao-Habegger 2021):}
-    Das Resultat aus Satz~\ref{thm:neue_schranke} wurde 2021 dramatisch verschÃ¤rft:
-    Die Schranke $|C(K)| \leq C(g, [K:\Q])$ existiert \emph{unabhÃ¤ngig} von der
+    Das Resultat aus Satz~\ref{thm:neue_schranke} wurde 2021 dramatisch verschärft:
+    Die Schranke $|C(K)| \leq C(g, [K:\Q])$ existiert \emph{unabhängig} von der
     speziellen Kurve $C$. Dieser Durchbruch, erzielt von Dimitrov, Gao und Habegger,
-    beruht auf einer Kombination von Faltings-HÃ¶hentechniken mit der
+    beruht auf einer Kombination von Faltings-Höhentechniken mit der
     \emph{$o$-minimalen Geometrie} von Pila-Wilkie.
 
-  \item \textbf{EffektivitÃ¤t und explizite Punkte:}
-    Die wichtigste offene Frage bleibt die \emph{EffektivitÃ¤t}: Kann man, gegeben $C/K$,
+  \item \textbf{Effektivität und explizite Punkte:}
+    Die wichtigste offene Frage bleibt die \emph{Effektivität}: Kann man, gegeben $C/K$,
     alle rationalen Punkte explizit berechnen? Minhyong Kims \emph{nicht-abelsche
-    Chabauty-Methode} (2005â€“2020) liefert hier neue AnsÃ¤tze durch
+    Chabauty-Methode} (2005â€“2020) liefert hier neue Ansätze durch
     $p$-adische Hodge-Theorie und nicht-abelsche Galois-Kohomologie.
     Konkrete Algorithmen wurden von Balakrishnan, Dogra et al.\ (2018â€“2024) implementiert.
 
-  \item \textbf{Satz von Siegel Ã¼ber ganzzahlige Punkte:}
-    Siegels Satz (1929) Ã¼ber die Endlichkeit ganzzahliger Punkte auf Kurven vom Geschlecht
+  \item \textbf{Satz von Siegel über ganzzahlige Punkte:}
+    Siegels Satz (1929) über die Endlichkeit ganzzahliger Punkte auf Kurven vom Geschlecht
     $\geq 1$ ist ein Spezialfall des Faltings-Rahmens. Dies motivierte Faltings dazu,
     Methoden der Arakelov-Geometrie zu verwenden, um Siegel's Satz in einen allgemeineren
     Kontext einzubetten.
@@ -1305,79 +1305,79 @@ revolutioniert.
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Arakelov-Geometrie:}
-    Faltings' EinfÃ¼hrung der nach Arakelov benannten HÃ¶he fÃ¼r abelsche VarietÃ¤ten
+    Faltings' Einführung der nach Arakelov benannten Höhe für abelsche Varietäten
     etablierte die \emph{Arakelov-Theorie} als zentrales Werkzeug. Die Idee,
-    archimedische und nicht-archimedische BeitrÃ¤ge zu einer globalen arithmetischen
-    Schnittzahl zu kombinieren, hat sich in der Arakelov-Geometrie von Gillet-SoulÃ© (1990)
-    zu einem vollstÃ¤ndigen Formalismus entwickelt: arithmetische Chow-Gruppen,
+    archimedische und nicht-archimedische Beiträge zu einer globalen arithmetischen
+    Schnittzahl zu kombinieren, hat sich in der Arakelov-Geometrie von Gillet-Soulé (1990)
+    zu einem vollständigen Formalismus entwickelt: arithmetische Chow-Gruppen,
     arithmetischer Riemann-Roch-Satz, arithmetische $K$-Theorie.
 
   \item \textbf{$p$-adische Hodge-Theorie:}
     Faltings bewies 1988 die \emph{$C_p$-Vermutung} von Fontaine, einen der
-    fundamentalen SÃ¤tze der $p$-adischen Hodge-Theorie:
-    $H^n_{\text{Ã©t}}(X_{\bar K}, \Q_p) \otimes_{\Q_p} C_p \cong
+    fundamentalen Sätze der $p$-adischen Hodge-Theorie:
+    $H^n_{\text{ét}}(X_{\bar K}, \Q_p) \otimes_{\Q_p} C_p \cong
     \bigoplus_{i+j=n} H^j(X, \Omega^i_{X/K}) \otimes_K C_p$.
-    Dieser Satz verbindet die Ã©tale Kohomologie mit der de-Rham-Kohomologie
-    Ã¼ber den KÃ¶rper $C_p = \widehat{\bar{\Q}_p}$. Die $p$-adische Hodge-Theorie
+    Dieser Satz verbindet die étale Kohomologie mit der de-Rham-Kohomologie
+    über den Körper $C_p = \widehat{\bar{\Q}_p}$. Die $p$-adische Hodge-Theorie
     ist heute ein Kerngebiet der modernen Zahlentheorie.
 
   \item \textbf{Perfectoid-Theorie (Scholze):}
-    Peter Scholze erweiterte Faltings' Ideen zu einer revolutionÃ¤ren neuen Geometrie.
-    Die \emph{Perfectoid-RÃ¤ume} (Scholze 2012, Fields-Medaille 2018) erlauben es,
-    Probleme Ã¼ber $p$-adischen KÃ¶rpern durch einen Wechsel zur Charakteristik $p$
-    zu vereinfachen. Das SchlÃ¼sselwerkzeug ist Faltings' \emph{fast Ã©tale Kohomologie},
+    Peter Scholze erweiterte Faltings' Ideen zu einer revolutionären neuen Geometrie.
+    Die \emph{Perfectoid-Räume} (Scholze 2012, Fields-Medaille 2018) erlauben es,
+    Probleme über $p$-adischen Körpern durch einen Wechsel zur Charakteristik $p$
+    zu vereinfachen. Das Schlüsselwerkzeug ist Faltings' \emph{fast étale Kohomologie},
     die Scholze zur Diamant-Theorie ($v$-Topos, Kondensierte Mathematik) weiterentwickelte.
 
   \item \textbf{Langlands-Programm:}
     Das Langlands-Programm, das Darstellungen von Galoisgruppen mit automorphen Formen
     verbindet, ist eng mit den Faltings-Methoden verflochten.
     Die Tate-Vermutung (Satz~\ref{thm:tate_conj}) zeigt, dass $\ell$-adische Darstellungen
-    vollstÃ¤ndig durch Morphismen abelscher VarietÃ¤ten beschrieben werden â€”
+    vollständig durch Morphismen abelscher Varietäten beschrieben werden â€”
     dies ist ein Spezialfall der \emph{Fontaine-Mazur-Vermutung}, die besagt,
-    dass geometrische Galoisdarstellungen stets von algebraischen VarietÃ¤ten stammen.
+    dass geometrische Galoisdarstellungen stets von algebraischen Varietäten stammen.
     Der Beweis von Fermats letztem Satz durch Taylor-Wiles (1995) nutzte Faltings'
     Tate-Vermutung als wesentliche Zutat.
 
-  \item \textbf{Shimura-VarietÃ¤ten und Hodge-Theorie:}
-    Der Moduli-Raum $\mathcal A_g$ ist eine Shimura-VarietÃ¤t. Die EndlichkeitssÃ¤tze
-    von Faltings fÃ¼r abelsche VarietÃ¤ten beschrÃ¤nkter HÃ¶he entsprechen
-    algebraisch-geometrisch dem \emph{Borel-Satz} Ã¼ber arithmetische Gruppen.
-    Neuere Arbeiten von Klingler, Ullmo, Yafaev (2011â€“2016) verbinden Shimura-VarietÃ¤ten
-    mit der Modelltheorie und der Theorie spezieller Punkte (AndrÃ©-Oort-Vermutung,
-    vollstÃ¤ndig bewiesen von Tsimerman 2018).
+  \item \textbf{Shimura-Varietäten und Hodge-Theorie:}
+    Der Moduli-Raum $\mathcal A_g$ ist eine Shimura-Varietät. Die Endlichkeitssätze
+    von Faltings für abelsche Varietäten beschränkter Höhe entsprechen
+    algebraisch-geometrisch dem \emph{Borel-Satz} über arithmetische Gruppen.
+    Neuere Arbeiten von Klingler, Ullmo, Yafaev (2011â€“2016) verbinden Shimura-Varietäten
+    mit der Modelltheorie und der Theorie spezieller Punkte (André-Oort-Vermutung,
+    vollständig bewiesen von Tsimerman 2018).
 
   \item \textbf{Iwasawa-Theorie:}
     Die Iwasawa-Theorie untersucht das Verhalten von Galoisdarstellungen in
-    $\Z_p$-TÃ¼rmen von ZahlkÃ¶rpern. Der Tate-Modul $T_\ell(J)$ ist das natÃ¼rliche
-    arithmetische Objekt in diesem Rahmen. Faltings' Resultate Ã¼ber SemisimplizitÃ¤t
-    (Satz~\ref{thm:galois_struktur}) liefern entscheidende Kontrolle Ã¼ber
+    $\Z_p$-Türmen von Zahlkörpern. Der Tate-Modul $T_\ell(J)$ ist das natürliche
+    arithmetische Objekt in diesem Rahmen. Faltings' Resultate über Semisimplizität
+    (Satz~\ref{thm:galois_struktur}) liefern entscheidende Kontrolle über
     characteristic ideals und Selmer-Gruppen in der Iwasawa-Theorie.
 \end{itemize}
 
 \subsubsection{Topologie und Geometrie}
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
-  \item \textbf{TeichmÃ¼ller-Theorie und Kurvenmoduln:}
+  \item \textbf{Teichmüller-Theorie und Kurvenmoduln:}
     Der Moduli-Raum $\mathcal M_g$ algebraischer Kurven vom Geschlecht $g$ ist eines
     der zentralen Objekte der algebraischen Geometrie. Faltings' Methoden zur Kontrolle
-    von HÃ¶hen liefern Kompaktifizierungen und Metriken auf $\mathcal M_g$,
+    von Höhen liefern Kompaktifizierungen und Metriken auf $\mathcal M_g$,
     die in der komplexen Analysis (Weil-Petersson-Metrik) und der
     geometrischen Gruppentheorie (Mapping-Class-Gruppen) relevant sind.
 
   \item \textbf{Tropische Geometrie:}
-    Die \emph{tropische Geometrie} betrachtet algebraische VarietÃ¤ten Ã¼ber dem
+    Die \emph{tropische Geometrie} betrachtet algebraische Varietäten über dem
     tropischen Semiring $(\R \cup \{-\infty\}, \max, +)$ und liefert kombinatorische
-    Modelle fÃ¼r klassische geometrische Objekte. Tropische Kurven entsprechen
-    metrischen Graphen, und die Faltings-HÃ¶he hat eine tropische Interpretation als
-    Energie des zugrundeliegenden Netzwerks. Dies erÃ¶ffnet Verbindungen zur
+    Modelle für klassische geometrische Objekte. Tropische Kurven entsprechen
+    metrischen Graphen, und die Faltings-Höhe hat eine tropische Interpretation als
+    Energie des zugrundeliegenden Netzwerks. Dies eröffnet Verbindungen zur
     \emph{diskreten Differentialgeometrie} und den \emph{Chip-Firing-Spielen} auf Graphen.
 
   \item \textbf{Motiventheorie:}
     Grothendiecks Vision der \emph{Motive} als universale Kohomologieobjekte wird durch
     die Faltings-Methoden konkret: Das Motiv $H^1(C)$ einer Kurve $C$ ist als
     Galoisdarstellung der Tate-Modul $V_\ell(\Jac C)$, als Hodge-Struktur die
-    erste de-Rham-Kohomologie, und als kristalline Kohomologie der DieudonnÃ©-Modul.
-    Das VerstÃ¤ndnis der Morphismen zwischen diesen Realisierungen ist das Kernproblem
+    erste de-Rham-Kohomologie, und als kristalline Kohomologie der Dieudonné-Modul.
+    Das Verständnis der Morphismen zwischen diesen Realisierungen ist das Kernproblem
     der Motiventheorie â€” und Faltings' Tate-Vermutung ist der bisher tiefste Satz
     in diese Richtung.
 \end{itemize}
@@ -1393,37 +1393,37 @@ den \emph{Spiegelungssymmetrie}-Dualismus (Mirror Symmetry) der Stringtheorie
 dramatisch vertieft.
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
-  \item \textbf{Calabi-Yau-VarietÃ¤ten:}
-    In der Stringtheorie spielen \emph{Calabi-Yau-VarietÃ¤ten} â€” komplexe algebraische
-    VarietÃ¤ten mit trivialer kanonischer Klasse â€” die Rolle der KompaktifizierungsrÃ¤ume.
+  \item \textbf{Calabi-Yau-Varietäten:}
+    In der Stringtheorie spielen \emph{Calabi-Yau-Varietäten} â€” komplexe algebraische
+    Varietäten mit trivialer kanonischer Klasse â€” die Rolle der Kompaktifizierungsräume.
     Die Spiegelsymmetrie (Strominger-Yau-Zaslow 1996) verbindet zwei topologisch
-    verschiedene Calabi-Yau-VarietÃ¤ten, deren physikalische Theorien identisch sind.
-    Die ZÃ¤hlung rationaler Kurven auf Calabi-Yau-Dreifachen â€” ein direktes Analogon
-    zur ZÃ¤hlung rationaler Punkte â€” gelang durch Gromov-Witten-Invarianten und
-    knÃ¼pft direkt an die Faltings-Methodik an.
+    verschiedene Calabi-Yau-Varietäten, deren physikalische Theorien identisch sind.
+    Die Zählung rationaler Kurven auf Calabi-Yau-Dreifachen â€” ein direktes Analogon
+    zur Zählung rationaler Punkte â€” gelang durch Gromov-Witten-Invarianten und
+    knüpft direkt an die Faltings-Methodik an.
 
   \item \textbf{Modulformen und physikalische Amplituden:}
-    Modulformen, die eng mit den Jacobischen von Kurven verknÃ¼pft sind, tauchen
-    als Partitionsfunktionen in der 2D-konformen Feldtheorie auf. Die Faltings-HÃ¶he
+    Modulformen, die eng mit den Jacobischen von Kurven verknüpft sind, tauchen
+    als Partitionsfunktionen in der 2D-konformen Feldtheorie auf. Die Faltings-Höhe
     $h_F(A)$ hat eine physikalische Interpretation als \emph{freie Energie} des
     dem Torus zugeordneten Systems. Dies verbindet Arakelov-Geometrie mit
     der Theorie der \emph{Liouville-Feldtheorie}.
 
   \item \textbf{Nichtkommutative Geometrie (Connes):}
     Alain Connes' \emph{nichtkommutative Geometrie} interpretiert zahlentheoretische
-    Strukturen als spektrale Tripel. Die Zetafunktionen algebraischer VarietÃ¤ten
+    Strukturen als spektrale Tripel. Die Zetafunktionen algebraischer Varietäten
     (Hasse-Weil) erscheinen dabei als \emph{spektrale Zetafunktionen} nichtkommutativer
-    RÃ¤ume. Faltings' EndlichkeitssÃ¤tze fÃ¼r abelsche VarietÃ¤ten lassen sich in diesem
-    Bild als Aussagen Ã¼ber die Spektralgeometrie dieser nichtkommutativen VarietÃ¤ten
+    Räume. Faltings' Endlichkeitssätze für abelsche Varietäten lassen sich in diesem
+    Bild als Aussagen über die Spektralgeometrie dieser nichtkommutativen Varietäten
     reformulieren.
 
   \item \textbf{Donaldson-Thomas-Theorie:}
-    Die Donaldson-Thomas-Invarianten zÃ¤hlen Untergarben (Sheaves) auf algebraischen
+    Die Donaldson-Thomas-Invarianten zählen Untergarben (Sheaves) auf algebraischen
     Dreifachen. Sie sind mit Gromov-Witten-Invarianten durch die MNOP-Vermutung
     (Maulik-Nekrasov-Okounkov-Pandharipande) verbunden. Diese Invarianten haben
     explizite zahlentheoretische Struktur â€” ihre Erzeugende Funktion ist oft eine
     Modulform â€” und Methoden aus der Faltings-Schule (Arakelov-Theorie, Hodge-Strukturen)
-    sind fÃ¼r ihre Berechnung unerlÃ¤sslich.
+    sind für ihre Berechnung unerlässlich.
 \end{itemize}
 
 \subsubsection{Quantenfeldtheorie und Zahlentheorie}
@@ -1431,29 +1431,29 @@ dramatisch vertieft.
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Motive und Feynman-Integrale:}
     Es wurde beobachtet (Broadhurst-Kreimer, Bloch-Esnault-Kreimer), dass
-    \emph{Feynman-Integrale} in der perturbativen Quantenfeldtheorie hÃ¤ufig
-    \emph{Perioden} von algebraischen VarietÃ¤ten sind â€” d.h.\ Integrale
-    algebraischer Differentialformen Ã¼ber ganzzahligen Zyklen.
+    \emph{Feynman-Integrale} in der perturbativen Quantenfeldtheorie häufig
+    \emph{Perioden} von algebraischen Varietäten sind â€” d.h.\ Integrale
+    algebraischer Differentialformen über ganzzahligen Zyklen.
     Diese Perioden sind durch Motive erfasst, und die Faltings-Tate-Vermutung
-    kontrolliert, welche Perioden von abelschen VarietÃ¤ten herrÃ¼hren kÃ¶nnen.
+    kontrolliert, welche Perioden von abelschen Varietäten herrühren können.
 
   \item \textbf{Geometrisches Langlands-Programm:}
-    Das \emph{geometrische Langlands-Programm} (Beilinson-Drinfeld) Ã¼bertrÃ¤gt das
-    zahlentheoretische Langlands-Programm in die Geometrie von Kurven Ã¼ber $\C$.
-    Faltings bewies 2005 eine Spezialversion fÃ¼r $GL_2$-Darstellungen:
+    Das \emph{geometrische Langlands-Programm} (Beilinson-Drinfeld) überträgt das
+    zahlentheoretische Langlands-Programm in die Geometrie von Kurven über $\C$.
+    Faltings bewies 2005 eine Spezialversion für $GL_2$-Darstellungen:
     die Existenz des Hecke-Eigensheafs.
-    Die jÃ¼ngste Arbeit von Ben-Zvi, Chen, Helm, Nadler (2024) vervollstÃ¤ndigt
-    das geometrische Langlands-Programm fÃ¼r alle reduktiven Gruppen â€”
-    ein Meilenstein, der ohne Faltings' Grundlagenarbeiten undenkbar gewesen wÃ¤re.
+    Die jüngste Arbeit von Ben-Zvi, Chen, Helm, Nadler (2024) vervollständigt
+    das geometrische Langlands-Programm für alle reduktiven Gruppen â€”
+    ein Meilenstein, der ohne Faltings' Grundlagenarbeiten undenkbar gewesen wäre.
 \end{itemize}
 
 %% ------------------------------------------------------------
 \subsection{Kryptographie und Informationssicherheit}
 %% ------------------------------------------------------------
 
-Die in diesem Artikel entwickelten Strukturen â€” elliptische Kurven, abelsche VarietÃ¤ten,
+Die in diesem Artikel entwickelten Strukturen â€” elliptische Kurven, abelsche Varietäten,
 Galoisdarstellungen â€” sind nicht nur theoretisch bedeutsam, sondern bilden heute
-die Grundlage kryptographischer Standardsysteme, die tÃ¤glich von Milliarden von
+die Grundlage kryptographischer Standardsysteme, die täglich von Milliarden von
 Menschen verwendet werden.
 
 \subsubsection{Elliptic Curve Cryptography (ECC)}
@@ -1461,25 +1461,25 @@ Menschen verwendet werden.
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Grundprinzip:}
     ECC (Miller 1985, Koblitz 1987) nutzt die Gruppenstruktur $E(\F_q)$
-    elliptischer Kurven Ã¼ber endlichen KÃ¶rpern. Das \emph{Diskrete-Logarithmus-Problem}
-    (abgekÃ¼rzt: ECDLP): Gegeben $P, Q \in E(\F_q)$ mit $Q = nP$, bestimme $n$ â€” ist rechnerisch
+    elliptischer Kurven über endlichen Körpern. Das \emph{Diskrete-Logarithmus-Problem}
+    (abgekürzt: ECDLP): Gegeben $P, Q \in E(\F_q)$ mit $Q = nP$, bestimme $n$ â€” ist rechnerisch
     sehr schwer. Die Sicherheit beruht direkt auf der Struktur, die durch den
     Satz von Mordell (Satz~\ref{thm:mordell}) beschrieben wird.
 
   \item \textbf{Einsatz in globalen Standards:}
     ECC-Kurven wie \texttt{P-256} (NIST), \texttt{Curve25519} (Bernstein 2006)
     oder \texttt{secp256k1} (Bitcoin, Ethereum) sichern
-    TLS/HTTPS-Verbin\-dungen, Smartphone-VerschlÃ¼sselung, Blockchain-Transaktionen
+    TLS/HTTPS-Verbin\-dungen, Smartphone-Verschlüsselung, Blockchain-Transaktionen
     und digitale Signaturen (ECDSA, EdDSA).
-    Ein typischer 256-Bit-ECC-SchlÃ¼ssel bietet vergleichbare Sicherheit wie ein
-    3072-Bit-RSA-SchlÃ¼ssel, bei dramatisch besserem Rechenaufwand.
+    Ein typischer 256-Bit-ECC-Schlüssel bietet vergleichbare Sicherheit wie ein
+    3072-Bit-RSA-Schlüssel, bei dramatisch besserem Rechenaufwand.
 
   \item \textbf{Schnittstelle zu Faltings:}
-    Die Wahl sicherer Kurven erfordert tiefes VerstÃ¤ndnis der Galoisdarstellungen
-    $\rho_\ell: G_K \to GL_{2g}(\Z_\ell)$. Das IrreduzibilitÃ¤tskriterium
+    Die Wahl sicherer Kurven erfordert tiefes Verständnis der Galoisdarstellungen
+    $\rho_\ell: G_K \to GL_{2g}(\Z_\ell)$. Das Irreduzibilitätskriterium
     (Satz~\ref{thm:irred_krit}) und die Analyse des Frobenius-charakteristischen Polynoms
-    $P_{J,\mathfrak p}(T)$ sind direkte Werkzeuge bei der ÃœberprÃ¼fung der
-    Kryptosicherheit: Ein reduzibler Tate-Modul wÃ¼rde eine AngriffsflÃ¤che bieten.
+    $P_{J,\mathfrak p}(T)$ sind direkte Werkzeuge bei der Überprüfung der
+    Kryptosicherheit: Ein reduzibler Tate-Modul würde eine Angriffsfläche bieten.
 
   \item \textbf{Isogenie-basierte Kryptographie:}
     Die neueste Generation post-quantensicherer Protokolle nutzt \emph{Isogenien}
@@ -1487,10 +1487,10 @@ Menschen verwendet werden.
     \texttt{SIDH} (Supersingular Isogeny Diffie-Hellman, Jao-De Feo 2011),
     die Variante \texttt{CSIDH} (Castryck et al.\ 2018) und der NIST-Kandidat
     \texttt{SQIsign} (De Feo et al.\ 2020) basieren alle auf der Struktur
-    der Isogeniegraphen, die direkt durch Faltings' Isogenie-EndlichkeitssÃ¤tze
+    der Isogeniegraphen, die direkt durch Faltings' Isogenie-Endlichkeitssätze
     kontrolliert werden. Der 2022 erfolgte Angriff auf SIDH (Castryck-Decru)
-    verdeutlichte, wie tiefes algebraisch-geometrisches Wissen â€” nÃ¤mlich Ã¼ber
-    Torsionspunkte auf hÃ¶her-dimensionalen abelschen VarietÃ¤ten â€” fÃ¼r die
+    verdeutlichte, wie tiefes algebraisch-geometrisches Wissen â€” nämlich über
+    Torsionspunkte auf höher-dimensionalen abelschen Varietäten â€” für die
     Kryptanalyse entscheidend ist.
 \end{itemize}
 
@@ -1501,21 +1501,21 @@ Menschen verwendet werden.
     Goppa (1981) und Tsfasman-VlÄƒduÅ£-Zink (1982) zeigten, dass algebraische Kurven
     mit vielen $\F_q$-rationalen Punkten optimale fehlerkorrigierende Codes liefern.
     Die \emph{Hamming-Schranke} und \emph{Singleton-Schranke} werden durch
-    AG-Codes Ã¼bertroffen, sobald die Kurven vom Geschlecht $g \geq 1$ genÃ¼gend
+    AG-Codes übertroffen, sobald die Kurven vom Geschlecht $g \geq 1$ genügend
     viele rationale Punkte besitzen.
 
   \item \textbf{Verbindung zu Faltings:}
-    Das Weil-Theorem fÃ¼r Kurven (Weil 1948) zeigt: Eine Kurve $C$ vom Geschlecht $g$
-    Ã¼ber $\F_q$ erfÃ¼llt $|C(\F_q) - (q+1)| \leq 2g\sqrt{q}$ (\emph{Hasse-Weil-Schranke}).
-    Das Zusammenspiel dieser Schranke mit dem Faltings-Theorem Ã¼ber ZahlkÃ¶rper
-    zeigt, dass hochgratige Kurven (die Ã¼ber $\Q$ wenige Punkte haben)
-    Ã¼ber endlichen KÃ¶rpern hochoptimale Code-Parameter erzeugen kÃ¶nnen.
+    Das Weil-Theorem für Kurven (Weil 1948) zeigt: Eine Kurve $C$ vom Geschlecht $g$
+    über $\F_q$ erfüllt $|C(\F_q) - (q+1)| \leq 2g\sqrt{q}$ (\emph{Hasse-Weil-Schranke}).
+    Das Zusammenspiel dieser Schranke mit dem Faltings-Theorem über Zahlkörper
+    zeigt, dass hochgratige Kurven (die über $\Q$ wenige Punkte haben)
+    über endlichen Körpern hochoptimale Code-Parameter erzeugen können.
 
   \item \textbf{Anwendungen in Technik und Telekommunikation:}
     AG-Codes auf Hermite-Kurven und Suzuki-Kurven werden in der
     Raumfahrtkommunikation (NASA Deep Space Network), in optischen Netzwerken
     (Reed-Solomon als Spezialfall), in RAID-Systemen sowie in Quantum-Error-Correction-Codes
-    (QECC) fÃ¼r Quantencomputer eingesetzt.
+    (QECC) für Quantencomputer eingesetzt.
 \end{itemize}
 
 %% ------------------------------------------------------------
@@ -1528,29 +1528,29 @@ Menschen verwendet werden.
     \emph{Schoof-Algorithmus} (1985) und seine Verbesserungen durch
     Atkin und Elkies (SEA-Algorithmus) â€” nutzen genau die $\ell$-adischen
     Tate-Moduln aus Abschnitt~\ref{sec:tate} und berechnen das charakteristische
-    Polynom des Frobenius. Dies ist der direkteste algorithmische AuslÃ¤ufer
+    Polynom des Frobenius. Dies ist der direkteste algorithmische Ausläufer
     von Faltings' Theorie.
 
   \item \textbf{Chabauty-Coleman-Methode:}
     Die klassische Methode von Chabauty (1941) und Coleman (1985) berechnet
-    $C(\Q)$ fÃ¼r $\rank J(\Q) < g$ durch $p$-adische Integration auf $C$.
+    $C(\Q)$ für $\rank J(\Q) < g$ durch $p$-adische Integration auf $C$.
     Balakrishnan und Dogra (2017â€“2021) haben durch Einbezug der
     nicht-abelschen Chabauty-Methode die Schranke auf $\rank J(\Q) < 2g-2$
     erweitert und konkrete Algorithmen in \texttt{SageMath} und \texttt{Magma}
-    implementiert. Diese Algorithmen berechnen heute routinemÃ¤ÃŸig alle rationalen
+    implementiert. Diese Algorithmen berechnen heute routinemäßig alle rationalen
     Punkte auf Kurven vom Geschlecht 2 und 3.
 
   \item \textbf{Das \texttt{LMFDB}-Projekt:}
     Die \emph{L-Functions and Modular Forms Database} (\texttt{lmfdb.org}) katalogisiert
-    tausende von elliptischen Kurven, hÃ¶hergenusigen Kurven, abelschen VarietÃ¤ten
-    und zugehÃ¶rigen Galoisdarstellungen Ã¼ber ZahlkÃ¶rpern. Die Datenbank speichert
-    explizit die Frobenius-Polynome $P_{J,\mathfrak p}(T)$ und ermÃ¶glicht
-    maschinenlesbare ÃœberprÃ¼fungen des IrreduzibilitÃ¤tskriteriums
-    (Satz~\ref{thm:irred_krit}) in groÃŸem MaÃŸstab.
+    tausende von elliptischen Kurven, höhergenusigen Kurven, abelschen Varietäten
+    und zugehörigen Galoisdarstellungen über Zahlkörpern. Die Datenbank speichert
+    explizit die Frobenius-Polynome $P_{J,\mathfrak p}(T)$ und ermöglicht
+    maschinenlesbare Überprüfungen des Irreduzibilitätskriteriums
+    (Satz~\ref{thm:irred_krit}) in großem Maßstab.
 
   \item \textbf{Formale Verifikation:}
     Mit dem Aufkommen formaler Beweissysteme (\texttt{Lean 4}, \texttt{Coq},
-    \texttt{Isabelle/HOL}) beginnt die Community, grundlegende SÃ¤tze wie den
+    \texttt{Isabelle/HOL}) beginnt die Community, grundlegende Sätze wie den
     von Mordell-Weil formell zu verifizieren. Das \emph{Lean4-Mathlib}-Projekt
     (2023) hat Teile der Theorie elliptischer Kurven formalisiert.
     Die Formalisierung des Satzes von Faltings selbst ist ein Langzeitziel,
@@ -1567,7 +1567,7 @@ Menschen verwendet werden.
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Post-Quanten-Kryptographie:}
     Quantencomputer bedrohen ECC durch Shors Algorithmus (1994), der ECDLP
-    in polynomialer Zeit lÃ¶st. Als Reaktion entwickelt das NIST-Post-Quantum-Standardisierungsprojekt
+    in polynomialer Zeit löst. Als Reaktion entwickelt das NIST-Post-Quantum-Standardisierungsprojekt
     (abgeschlossen 2024) neue kryptographische Standards. Neben gitterbasierten
     Systemen (\texttt{CRYSTALS-Kyber}, \texttt{CRYSTALS-Dili\newline thium})
     sind isogenie-basierte Systeme wie \texttt{SQIsign} direkte Nachfolger
@@ -1578,25 +1578,25 @@ Menschen verwendet werden.
     homologischen Eigenschaften von Mannigfaltigkeiten. Die Verbindung zu
     AG-Codes und damit zu algebraischen Kurven wird in einem aktiven Forschungsgebiet
     untersucht: \emph{Quantum LDPC Codes} aus algebraisch-geometrischen Codes
-    versprechen optimale Parameter fÃ¼r Quantencomputer.
+    versprechen optimale Parameter für Quantencomputer.
 \end{itemize}
 
 \subsubsection{Physik der Kondensation und Statistik}
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
-  \item \textbf{ZufÃ¤llige Matrizen und $L$-Funktionen:}
-    Die \emph{Riemann-Vermutung} und ihre Verallgemeinerungen (GRH Ã¼ber ZahlkÃ¶rpern,
-    Weil-Vermutungen fÃ¼r Kurven) verbinden die Nullstellen von $L$-Funktionen mit
-    dem Spektrum zufÃ¤lliger Matrizen (GUE, GOE). Die Frobenius-Eigenwerte
+  \item \textbf{Zufällige Matrizen und $L$-Funktionen:}
+    Die \emph{Riemann-Vermutung} und ihre Verallgemeinerungen (GRH über Zahlkörpern,
+    Weil-Vermutungen für Kurven) verbinden die Nullstellen von $L$-Funktionen mit
+    dem Spektrum zufälliger Matrizen (GUE, GOE). Die Frobenius-Eigenwerte
     $\alpha_p, \bar\alpha_p$ der Hasse-Weil-Zetafunktion einer elliptischen Kurve
     zeigen genau die statistischen Eigenschaften des GUE-Ensembles â€” eine
-    fundamentale BrÃ¼cke zwischen Zahlentheorie und mathematischer Physik.
+    fundamentale Brücke zwischen Zahlentheorie und mathematischer Physik.
 
   \item \textbf{Gittersysteme in der Kondensationstheorie:}
-    Die NÃ©ron-Tate-HÃ¶he definiert eine positiv definite quadratische Form auf
+    Die Néron-Tate-Höhe definiert eine positiv definite quadratische Form auf
     $J(K) \otimes \R$, die strukturell identisch mit der Energie eines
     physikalischen \emph{Coulomb-Gitters} ist. Die Verteilung rationaler Punkte
-    minimaler HÃ¶he entspricht der Grundzustandsverteilung eines Gittermodells,
+    minimaler Höhe entspricht der Grundzustandsverteilung eines Gittermodells,
     eine Verbindung, die in der arithmetischen Dynamik (Silverman, Call) systematisch
     untersucht wird.
 \end{itemize}
@@ -1604,9 +1604,9 @@ Menschen verwendet werden.
 \subsubsection{Biologische Mathematik und Netzwerktheorie}
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
-  \item \textbf{Phylogenetische BÃ¤ume und tropische Geometrie:}
+  \item \textbf{Phylogenetische Bäume und tropische Geometrie:}
     Tropische Kurven, die als metrische Graphen auftreten, modellieren
-    \emph{phylogenetische BÃ¤ume} in der Evolutionsbiologie.
+    \emph{phylogenetische Bäume} in der Evolutionsbiologie.
     Die Methoden der tropischen Geometrie â€” direkt aus Faltings' Theorie
     der stabilen Kurvenentartungen hergeleitet â€” wurden von Speyer-Sturmfels (2004)
     zur Analyse von DNA-Sequenzdaten eingesetzt.
@@ -1628,28 +1628,28 @@ Menschen verwendet werden.
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
   \item \textbf{Blockchain-Kryptographie:}
-    Nahezu alle groÃŸen KryptowÃ¤hrungen â€” Bitcoin, Ethereum, Solana â€”
-    verwenden elliptische Kurven fÃ¼r digitale Signaturen.
-    Bitcoin nutzt \texttt{secp256k1}: $y^2 = x^3 + 7$ Ã¼ber $\F_p$ mit einer
+    Nahezu alle großen Kryptowährungen â€” Bitcoin, Ethereum, Solana â€”
+    verwenden elliptische Kurven für digitale Signaturen.
+    Bitcoin nutzt \texttt{secp256k1}: $y^2 = x^3 + 7$ über $\F_p$ mit einer
     256-Bit-Primzahl $p$. Ethereum-2.0 verwendet \texttt{BLS12-381}, eine
-    \emph{Paarungskurve} (Barreto-Lynn-Scott), die auf abelschen VarietÃ¤ten
+    \emph{Paarungskurve} (Barreto-Lynn-Scott), die auf abelschen Varietäten
     der Dimension 2 (Jacobische einer Genus-2-Kurve) basiert und effiziente
-    Threshold-Signaturen ermÃ¶glicht. Das wirtschaftliche Volumen dieser Systeme
-    belÃ¤uft sich auf Ã¼ber 2 Billionen US-Dollar (Stand 2026).
+    Threshold-Signaturen ermöglicht. Das wirtschaftliche Volumen dieser Systeme
+    beläuft sich auf über 2 Billionen US-Dollar (Stand 2026).
 
   \item \textbf{Zero-Knowledge-Proofs:}
-    Moderne Zero-Knowledge-Beweissysteme (ZK-SNARKs, ZK-STARKs) fÃ¼r
+    Moderne Zero-Knowledge-Beweissysteme (ZK-SNARKs, ZK-STARKs) für
     \emph{vertrauliche Transaktionen} (Zcash, StarkNet) verwenden
     paarungsbasierte Kryptographie und bivariate Polynominterpolation
-    Ã¼ber elliptischen Kurven. Groth16, PlonK und andere Proof-Systeme
+    über elliptischen Kurven. Groth16, PlonK und andere Proof-Systeme
     basieren auf dem \emph{Pairing-Bilinearity}, das durch die Weil-Paarung
-    auf abelschen VarietÃ¤ten â€” direkt aus dem Faltings-Rahmen â€” bereitgestellt wird.
+    auf abelschen Varietäten â€” direkt aus dem Faltings-Rahmen â€” bereitgestellt wird.
 
   \item \textbf{Finanzielle Modellierung:}
-    HÃ¶henfunktionen und $L$-Funktionen algebraischer VarietÃ¤ten wurden als
-    Modelle fÃ¼r Zinsstrukturkurven und Optionspreisformeln untersucht.
+    Höhenfunktionen und $L$-Funktionen algebraischer Varietäten wurden als
+    Modelle für Zinsstrukturkurven und Optionspreisformeln untersucht.
     Insbesondere die Verbindung zwischen den Eigenwerten des Frobeniusoperators
-    und WahrscheinlichkeitsmaÃŸen auf dem Spektrum fÃ¼hrt zu randstÃ¤ndigen,
+    und Wahrscheinlichkeitsmaßen auf dem Spektrum führt zu randständigen,
     aber potenziell fruchtbaren Querschnittsideen zwischen Finanzmathematik
     und Zahlentheorie.
 \end{itemize}
@@ -1665,98 +1665,98 @@ Menschen verwendet werden.
     $\Z_\ell$-Modulstruktur des Tate-Moduls zur effizienten Berechnung.
 
   \item \textbf{Quantenkommunikation:}
-    QuantenschlÃ¼sselverteilung (QKD) nach BB84 und weiterentwickelte Protokolle
+    Quantenschlüsselverteilung (QKD) nach BB84 und weiterentwickelte Protokolle
     verwenden in der klassischen Authentifizierungsschicht ECC-basierte Signaturen.
-    Der Ãœbergang zu post-quantensicheren Protokollen (isogenie-basiert oder
+    Der Übergang zu post-quantensicheren Protokollen (isogenie-basiert oder
     gitterbasiert) ist ein aktives Standardisierungsfeld (ETSI, ISO/IEC~18033).
 
   \item \textbf{Autonome Systeme und PKI:}
-    Public-Key-Infrastrukturen (PKI) fÃ¼r eingebettete Systeme, Fahrzeugkommunikation
+    Public-Key-Infrastrukturen (PKI) für eingebettete Systeme, Fahrzeugkommunikation
     (V2X, \texttt{IEEE~1609.2}) und Industriesteuerungen (IEC~62351)
-    setzen auf ECC, da der geringe SchlÃ¼ssel- und Signaturumfang
+    setzen auf ECC, da der geringe Schlüssel- und Signaturumfang
     eng begrenzte Ressourcen schont.
 \end{itemize}
 
-\subsubsection{KÃ¼nstliche Intelligenz und Maschinelles Lernen}
+\subsubsection{Künstliche Intelligenz und Maschinelles Lernen}
 
 \begin{itemize}[leftmargin=2em,itemsep=4pt]
-  \item \textbf{Homomorphe VerschlÃ¼sselung:}
-    \emph{Fully Homomorphic Encryption} (FHE, Gentry 2009) ermÃ¶glicht Berechnungen
-    auf verschlÃ¼sselten Daten â€” dies ist die Grundlage vertraulichen maschinellen
+  \item \textbf{Homomorphe Verschlüsselung:}
+    \emph{Fully Homomorphic Encryption} (FHE, Gentry 2009) ermöglicht Berechnungen
+    auf verschlüsselten Daten â€” dies ist die Grundlage vertraulichen maschinellen
     Lernens (\emph{privacy-preserving ML}).
     Aktuelle FHE-Schemata wie CKKS, BGV, BFV beruhen auf
-    \emph{Ring-LWE} Ã¼ber ausgewÃ¤hlten Polynomringen, deren Parameterauswahl
+    \emph{Ring-LWE} über ausgewählten Polynomringen, deren Parameterauswahl
     durch zahlentheoretische Methoden gesteuert wird.
     Gitterbasierte FHE-Parameter werden durch die Geometrie von
     Gitterreduktionsalgorithmen (LLL, BKZ) optimiert â€” Algorithmen,
     die auf derselben arithmetischen Geometrie basieren wie die
-    Faltings-HÃ¶hentheorie.
+    Faltings-Höhentheorie.
 
   \item \textbf{Sichere mehrparteiige Berechnung (MPC):}
-    MPC-Protokolle (Yao, GMW, SPDZ) fÃ¼r verteiltes maschinelles Lernen
-    verwenden geheimes Teilen Ã¼ber endlichen KÃ¶rpern $\F_p$,
+    MPC-Protokolle (Yao, GMW, SPDZ) für verteiltes maschinelles Lernen
+    verwenden geheimes Teilen über endlichen Körpern $\F_p$,
     wobei Shamir's Secret Sharing auf polynomialer Interpolation auf
     algebraischen Kurven (Hermite-Kurven) basiert.
-    In groÃŸskaligen Federated-Learning-Architekturen sind solche AG-Code-basierten
-    MPC-Protokolle den klassischen Alternativen Ã¼berlegen.
+    In großskaligen Federated-Learning-Architekturen sind solche AG-Code-basierten
+    MPC-Protokolle den klassischen Alternativen überlegen.
 \end{itemize}
 
 %% ------------------------------------------------------------
 \subsection{Aktuelle Forschungsfronten und offene Probleme}
 %% ------------------------------------------------------------
 
-Wir schlieÃŸen mit einem Ãœberblick Ã¼ber die wichtigsten offenen Fragen, die direkt
+Wir schließen mit einem Überblick über die wichtigsten offenen Fragen, die direkt
 aus dem Satz von Faltings und seinen Methoden hervorgehen.
 
 \begin{enumerate}[leftmargin=2em,itemsep=6pt, label=\textbf{(\arabic*)}]
   \item \textbf{Effektiver Satz von Faltings.}
     Gibt es einen Algorithmus, der â€” gegeben $C/K$ mit $g(C) \geq 2$ â€”
     alle Punkte in $C(K)$ berechnet? Bisher ist kein solcher Algorithmus bekannt.
-    Kims nicht-abelsche Chabauty-Methode liefert in SpezialfÃ¤llen effektive Ergebnisse,
-    eine allgemeine LÃ¶sung fehlt. Dies ist wohl das wichtigste offene Problem
+    Kims nicht-abelsche Chabauty-Methode liefert in Spezialfällen effektive Ergebnisse,
+    eine allgemeine Lösung fehlt. Dies ist wohl das wichtigste offene Problem
     der algorithmischen Zahlentheorie.
 
-  \item \textbf{GleichmÃ¤ÃŸige Schranken fÃ¼r $|C(K)|$.}
+  \item \textbf{Gleichmäßige Schranken für $|C(K)|$.}
     Der Uniform-Mordell-Lang-Satz (Dimitrov-Gao-Habegger 2021) liefert eine
-    Schranke $|C(K)| \leq C(g, [K:\Q])$, aber die genaue AbhÃ¤ngigkeit von $g$
-    ist noch ungeklÃ¤rt. Gilt $|C(\Q)| \leq 2g - 2 + \varepsilon$ fÃ¼r alle
-    $C/\Q$ mit $g \geq 2$ auÃŸer endlich vielen? Eine solche scharfe uniforme Schranke
+    Schranke $|C(K)| \leq C(g, [K:\Q])$, aber die genaue Abhängigkeit von $g$
+    ist noch ungeklärt. Gilt $|C(\Q)| \leq 2g - 2 + \varepsilon$ für alle
+    $C/\Q$ mit $g \geq 2$ außer endlich vielen? Eine solche scharfe uniforme Schranke
     ist offen.
 
   \item \textbf{Fontaine-Mazur-Vermutung.}
     Die Fontaine-Mazur-Vermutung besagt: Jede geometrische, irreduzible
     $\ell$-adische Galoisdarstellung $\rho: G_\Q \to GL_n(\Q_\ell)$
-    stammt von einer algebraischen VarietÃ¤t Ã¼ber $\Q$. Satz~\ref{thm:galois_struktur}
+    stammt von einer algebraischen Varietät über $\Q$. Satz~\ref{thm:galois_struktur}
     liefert Belege im Fall $n = 2g$, aber die allgemeine Vermutung ist offen.
 
-  \item \textbf{Geometrisches Langlands-Programm (vollstÃ¤ndige Quantisierung).}
-    Die jÃ¼ngste Arbeit (2024) bewies das geometrische Langlands-Programm in der
+  \item \textbf{Geometrisches Langlands-Programm (vollständige Quantisierung).}
+    Die jüngste Arbeit (2024) bewies das geometrische Langlands-Programm in der
     klassischen (de-Rham-)Version. Die $p$-adische und quantisierte Version
     (geometrisches $p$-adisches Langlands) ist ein aktives Forschungsfeld, in dem
     Faltings' perfectoide Methoden eine zentrale Rolle spielen.
 
-  \item \textbf{BÃ¶cherer-Vermutung und Modulformen.}
-    BÃ¶cherers Vermutung (1985) verbindet Fourier-Koeffizienten von
+  \item \textbf{Böcherer-Vermutung und Modulformen.}
+    Böcherers Vermutung (1985) verbindet Fourier-Koeffizienten von
     Siegel-Modulformen der Dimension $g$ mit speziellen Werten von
     $L$-Funktionen. Sie ist ein Analogon des Modularsatzes (Taylor-Wiles)
-    fÃ¼r hÃ¶herdimensionale abelsche VarietÃ¤ten. Ein Beweis wÃ¼rde tiefgreifende
+    für höherdimensionale abelsche Varietäten. Ein Beweis würde tiefgreifende
     neue Anwendungen der Faltings-Theorie erfordern.
 
-  \item \textbf{Riemann-Hypothese fÃ¼r $L$-Funktionen.}
-    Die Riemann-Vermutung Ã¼ber die Lage der Nullstellen von $\zeta(s)$
-    ist Ã¤quivalent zu Aussagen Ã¼ber die Verteilung von Primzahlen,
-    die in geeigneter Sprache als Aussagen Ã¼ber die Frobenius-Eigenwerte
-    in der Faltings-Theorie reformuliert werden kÃ¶nnen.
-    Weil's Theorem fÃ¼r Kurven (1948) und Deligne's Theorem fÃ¼r VarietÃ¤ten (1974)
-    â€” beide enge Verwandte der Faltings-Methodik â€” lÃ¶sten analoge Vermutungen
-    fÃ¼r endliche KÃ¶rper. Der Fall des klassischen $\zeta(s)$ bleibt offen.
+  \item \textbf{Riemann-Hypothese für $L$-Funktionen.}
+    Die Riemann-Vermutung über die Lage der Nullstellen von $\zeta(s)$
+    ist äquivalent zu Aussagen über die Verteilung von Primzahlen,
+    die in geeigneter Sprache als Aussagen über die Frobenius-Eigenwerte
+    in der Faltings-Theorie reformuliert werden können.
+    Weil's Theorem für Kurven (1948) und Deligne's Theorem für Varietäten (1974)
+    â€” beide enge Verwandte der Faltings-Methodik â€” lösten analoge Vermutungen
+    für endliche Körper. Der Fall des klassischen $\zeta(s)$ bleibt offen.
 
   \item \textbf{Post-Quanten-Sicherheitsanalyse isogenie-basierter Systeme.}
     Nach dem Cast\-ryck-Decru-Angriff auf SIDH (2022) ist die Sicherheit
     isogenie-basierter Kryptosysteme neu zu bewerten. Insbesondere ist unklar,
     ob das CSIDH-System Quantensicherheit bietet. Die Antwort liegt in der
     Geometrie von Isogeniegraphen supersingularer elliptischer Kurven â€”
-    ein direkter AuslÃ¤ufer der Faltings-Theorie abelscher VarietÃ¤ten.
+    ein direkter Ausläufer der Faltings-Theorie abelscher Varietäten.
 \end{enumerate}
 
 %% ============================================================
@@ -1765,7 +1765,7 @@ aus dem Satz von Faltings und seinen Methoden hervorgehen.
 \begin{thebibliography}{99}
 \bibitem{faltings83}
 G.\ Faltings,
-\textit{EndlichkeitssÃ¤tze fÃ¼r abelsche VarietÃ¤ten Ã¼ber ZahlkÃ¶rpern},
+\textit{Endlichkeitssätze für abelsche Varietäten über Zahlkörpern},
 Inventiones Mathematicae \textbf{73} (1983), 349--366.
 
 \bibitem{mordell22}
@@ -1790,8 +1790,8 @@ Graduate Texts in Mathematics \textbf{201}, Springer, New York, 2000.
 
 \bibitem{bost96}
 J.-B.\ Bost,
-\textit{PÃ©riodes et isogenies des variÃ©tÃ©s abÃ©liennes sur les corps de nombres},
-SÃ©minaire Bourbaki 1994/95, AstÃ©risque \textbf{237} (1996), Exp.\ No.\ 795.
+\textit{Périodes et isogenies des variétés abéliennes sur les corps de nombres},
+Séminaire Bourbaki 1994/95, Astérisque \textbf{237} (1996), Exp.\ No.\ 795.
 
 \bibitem{parshin68}
 A.N.\ Parshin,

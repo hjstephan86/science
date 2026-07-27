@@ -14,7 +14,7 @@
 
 \geometry{margin=2.5cm}
 
-% Verhindert Ãœberlauf Ã¼ber den rechten Rand
+% Verhindert Überlauf über den rechten Rand
 \setlength{\emergencystretch}{3em}
 \sloppy
 
@@ -53,13 +53,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -78,28 +78,28 @@
 \tableofcontents
 \newpage
 
-\section{EinfÃ¼hrung}
+\section{Einführung}
 
-Der Karton -- in seiner industriellen AusprÃ¤gung als Wellpappe-Verpackung -- ist eines der
-unauffÃ¤lligsten, zugleich aber wirkungsmÃ¤chtigsten technischen Artefakte unserer
-Zivilisation. Milliarden von Exemplaren durchlaufen tÃ¤glich globale Logistikketten,
-schÃ¼tzen empfindliche GÃ¼ter vor StoÃŸ, Druck und Feuchtigkeit, und werden nach Gebrauch
-nahezu vollstÃ¤ndig recycelt. Diese Arbeit untersucht den Karton nicht als triviales
-Alltagsobjekt, sondern als LÃ¶sung zweier ineinandergreifender Optimierungsprobleme:
-eines \emph{geometrischen} Problems (welche Ã¤uÃŸere Form minimiert den Materialeinsatz
+Der Karton -- in seiner industriellen Ausprägung als Wellpappe-Verpackung -- ist eines der
+unauffälligsten, zugleich aber wirkungsmächtigsten technischen Artefakte unserer
+Zivilisation. Milliarden von Exemplaren durchlaufen täglich globale Logistikketten,
+schützen empfindliche Güter vor Stoß, Druck und Feuchtigkeit, und werden nach Gebrauch
+nahezu vollständig recycelt. Diese Arbeit untersucht den Karton nicht als triviales
+Alltagsobjekt, sondern als Lösung zweier ineinandergreifender Optimierungsprobleme:
+eines \emph{geometrischen} Problems (welche äußere Form minimiert den Materialeinsatz
 bei vorgegebenem Volumen?) und eines \emph{strukturmechanischen} Problems (welche
-innere Struktur des Wandmaterials maximiert die TragfÃ¤higkeit bei minimalem
+innere Struktur des Wandmaterials maximiert die Tragfähigkeit bei minimalem
 Materialeinsatz?).
 
 \subsection{Problemstellung}
 
 Gegeben sei ein zu verpackendes Gut mit Mindestvolumen $V > 0$. Gesucht ist ein
-quaderfÃ¶rmiger Karton mit KantenlÃ¤ngen $\ell, b, h > 0$ und $\ell b h \geq V$, dessen
-Wandmaterial aus Wellpappe mit Decklagendicke $t_\ell$, FlÃ¶tenhÃ¶he $d$ und FlÃ¶tenteilung
+quaderförmiger Karton mit Kantenlängen $\ell, b, h > 0$ und $\ell b h \geq V$, dessen
+Wandmaterial aus Wellpappe mit Decklagendicke $t_\ell$, Flötenhöhe $d$ und Flötenteilung
 $\lambda$ besteht, sodass
 
 \begin{itemize}
-	\item der gesamte Materialeinsatz (OberflÃ¤che $\times$ effektive Materialdicke,
+	\item der gesamte Materialeinsatz (Oberfläche $\times$ effektive Materialdicke,
 	      gewichtet mit dem Take-up-Faktor der Wellenstruktur) minimal ist, und
 	\item die resultierende Stapeldruckfestigkeit (\emph{Box Compression Test},
 	      BCT) eine vorgegebene Mindestlast $F_{\min}$ nicht unterschreitet.
@@ -107,26 +107,26 @@ $\lambda$ besteht, sodass
 
 \textbf{Ergebnis dieser Arbeit:} Wir zeigen, dass die in der Praxis verwendeten
 Kartonformen und Wellenprofile bereits sehr nahe an den formal hergeleiteten Optima
-liegen -- der Karton ist, im wÃ¶rtlichen Sinn, eine \emph{geniale} Konstruktion, weil er
+liegen -- der Karton ist, im wörtlichen Sinn, eine \emph{geniale} Konstruktion, weil er
 zwei orthogonale Optimierungsprobleme (Makrogeometrie und Mikrostruktur) gleichzeitig
-mit elementaren mathematischen Mitteln nahezu optimal lÃ¶st.
+mit elementaren mathematischen Mitteln nahezu optimal löst.
 
 \subsection{Motivation}
 
-Die Ã¶konomische und Ã¶kologische Bedeutung des Themas ist erheblich: Die
+Die ökonomische und ökologische Bedeutung des Themas ist erheblich: Die
 Verpackungsindustrie verarbeitet weltweit hunderte Millionen Tonnen Wellpappe pro Jahr.
 Schon geringe relative Einsparungen im Materialeinsatz pro Karton -- etwa durch eine
-Optimierung des SeitenverhÃ¤ltnisses oder der Wellenform um wenige Prozent -- summieren
+Optimierung des Seitenverhältnisses oder der Wellenform um wenige Prozent -- summieren
 sich auf gewaltige absolute Mengen an Papier, Energie und CO\textsubscript{2}.
-Gleichzeitig ist der Karton ein dankbares Studienobjekt fÃ¼r die angewandte Mathematik:
+Gleichzeitig ist der Karton ein dankbares Studienobjekt für die angewandte Mathematik:
 Er verbindet klassische Extremwertaufgaben (Optimierung von Quadern unter
-Volumenrestriktion), Differentialgeometrie (BogenlÃ¤ngenintegrale sinusfÃ¶rmiger Profile),
-Balkentheorie (TrÃ¤gheitsmomente von Sandwich\-querschnitten, Euler-Knicken) und
+Volumenrestriktion), Differentialgeometrie (Bogenlängenintegrale sinusförmiger Profile),
+Balkentheorie (Trägheitsmomente von Sandwich\-querschnitten, Euler-Knicken) und
 empirische Ingenieurformeln (McKee-Formel) zu einem geschlossenen, formal
-nachvollziehbaren Gesamtbild. Diese interdisziplinÃ¤re Synthese -- von der reinen
+nachvollziehbaren Gesamtbild. Diese interdisziplinäre Synthese -- von der reinen
 Extremwertrechnung bis zur empirisch validierten Ingenieurformel -- macht den Karton zu
-einem idealen Beispiel dafÃ¼r, wie rigorose formale Methoden auf scheinbar triviale
-Alltagsobjekte angewendet werden kÃ¶nnen, um deren tatsÃ¤chliche \emph{GenialitÃ¤t}
+einem idealen Beispiel dafür, wie rigorose formale Methoden auf scheinbar triviale
+Alltagsobjekte angewendet werden können, um deren tatsächliche \emph{Genialität}
 nachzuweisen.
 
 \section{Grundlagen}
@@ -135,78 +135,78 @@ nachzuweisen.
 
 \begin{definition}[Karton]
 	Ein Karton ist ein Quader $K = [0,\ell] \times [0,b] \times [0,h]$ mit
-	KantenlÃ¤ngen $\ell, b, h > 0$, dessen BegrenzungsflÃ¤chen aus Wellpappe bestehen.
-	Das Innenvolumen betrÃ¤gt $V = \ell b h$, die gesamte AuÃŸenflÃ¤che (fÃ¼r einen
-	geschlossenen Karton mit Deckel) betrÃ¤gt
+	Kantenlängen $\ell, b, h > 0$, dessen Begrenzungsflächen aus Wellpappe bestehen.
+	Das Innenvolumen beträgt $V = \ell b h$, die gesamte Außenfläche (für einen
+	geschlossenen Karton mit Deckel) beträgt
 	\[
 		S = 2(\ell b + b h + \ell h).
 	\]
-	FÃ¼r einen offenen Karton (ohne Deckel) betrÃ¤gt die FlÃ¤che
+	Für einen offenen Karton (ohne Deckel) beträgt die Fläche
 	$S = \ell b + 2h(\ell + b)$.
 \end{definition}
 
 \begin{definition}[Wellpappe]
 	Wellpappe ist ein Sandwichmaterial, bestehend aus zwei ebenen Decklagen
 	(\emph{liner}) der Dicke $t_\ell$ und einer dazwischenliegenden gewellten
-	Mittellage (\emph{FlÃ¶te}) der Dicke $t_f$. Der Abstand zwischen den
-	Mittelachsen der beiden Decklagen heiÃŸt FlÃ¶tenhÃ¶he $d$ (auch
+	Mittellage (\emph{Flöte}) der Dicke $t_f$. Der Abstand zwischen den
+	Mittelachsen der beiden Decklagen heißt Flötenhöhe $d$ (auch
 	\emph{Kalliber} genannt).
 \end{definition}
 
-\begin{definition}[FlÃ¶tenprofil]
+\begin{definition}[Flötenprofil]
 	\label{def:flute}
 	Das Profil der Mittellage einer Wellpappe wird im Sinusmodell beschrieben
 	durch
 	\[
 		y(x) = A \sin\!\left(\frac{2\pi x}{\lambda}\right), \qquad x \in [0,\lambda],
 	\]
-	wobei $A = d/2$ die Amplitude (halbe FlÃ¶tenhÃ¶he) und $\lambda$ die
-	\emph{FlÃ¶tenteilung} (PeriodenlÃ¤nge, engl. \emph{pitch}) bezeichnet.
+	wobei $A = d/2$ die Amplitude (halbe Flötenhöhe) und $\lambda$ die
+	\emph{Flötenteilung} (Periodenlänge, engl. \emph{pitch}) bezeichnet.
 \end{definition}
 
 \begin{definition}[Kantenstauchwiderstand (ECT) und Stapeldruckfestigkeit (BCT)]
-	Der \emph{Edge Crush Test} (ECT) misst die Druckkraft pro LÃ¤ngeneinheit, die
-	ein hochkant stehender Streifen Wellpappe parallel zu den FlÃ¶ten aufnehmen
-	kann, Ã¼blicherweise angegeben in $\mathrm{kN/m}$. Der \emph{Box Compression
-	Test} (BCT) bezeichnet die maximale Druckkraft, die ein vollstÃ¤ndiger,
-	gefÃ¼llter Karton beim Stapeln (Belastung von oben) aufnehmen kann, angegeben
+	Der \emph{Edge Crush Test} (ECT) misst die Druckkraft pro Längeneinheit, die
+	ein hochkant stehender Streifen Wellpappe parallel zu den Flöten aufnehmen
+	kann, üblicherweise angegeben in $\mathrm{kN/m}$. Der \emph{Box Compression
+	Test} (BCT) bezeichnet die maximale Druckkraft, die ein vollständiger,
+	gefüllter Karton beim Stapeln (Belastung von oben) aufnehmen kann, angegeben
 	in Newton.
 \end{definition}
 
 \begin{definition}[Knicklast]
 	Die Knicklast (kritische Last) $P_{\mathrm{cr}}$ eines schlanken,
-	plattenfÃ¶rmigen Bauteils ist die Druckkraft, ab der das Bauteil seine
+	plattenförmigen Bauteils ist die Druckkraft, ab der das Bauteil seine
 	geradlinige Gleichgewichtslage verliert und seitlich ausweicht
 	(\emph{Beulen}/\emph{Knicken}).
 \end{definition}
 
 \subsection{Grundidee}
 
-Die GenialitÃ¤t des Kartons beruht auf der Entkopplung zweier Optimierungsebenen, die
-unabhÃ¤ngig voneinander gelÃ¶st und anschlieÃŸend kombiniert werden kÃ¶nnen:
+Die Genialität des Kartons beruht auf der Entkopplung zweier Optimierungsebenen, die
+unabhängig voneinander gelöst und anschließend kombiniert werden können:
 
 \subsubsection{Makroebene: Form des Kartons}
 
-Auf der Makroebene wird die Ã¤uÃŸere Quaderform $(\ell, b, h)$ so gewÃ¤hlt, dass bei
-gegebenem Volumen $V$ die OberflÃ¤che $S$ -- und damit der Materialverbrauch -- minimal
+Auf der Makroebene wird die äußere Quaderform $(\ell, b, h)$ so gewählt, dass bei
+gegebenem Volumen $V$ die Oberfläche $S$ -- und damit der Materialverbrauch -- minimal
 wird. Dies ist eine klassische Extremwertaufgabe mit Nebenbedingung.
 
 \subsubsection{Mikroebene: Struktur des Wandmaterials}
 
 Auf der Mikroebene wird das Wandmaterial selbst -- die Wellpappe -- so strukturiert,
-dass bei gegebener Materialmasse (Papiergewicht pro FlÃ¤cheneinheit) das
-FlÃ¤chentrÃ¤gheitsmoment und damit die Biege- bzw. Knicksteifigkeit der Wand maximal
+dass bei gegebener Materialmasse (Papiergewicht pro Flächeneinheit) das
+Flächenträgheitsmoment und damit die Biege- bzw. Knicksteifigkeit der Wand maximal
 wird. Dies ist im Kern ein Problem der Balkentheorie.
 
-\begin{beispiel}[Kombinatorische Explosion vs. analytische LÃ¶sung]
-	Ein naiver Ansatz zur Optimierung eines Kartons wÃ¼rde diskrete Kombinationen
-	aus KantenlÃ¤ngen (in Millimeterschritten), FlÃ¶tentypen (A, B, C, E, \ldots)
+\begin{beispiel}[Kombinatorische Explosion vs. analytische Lösung]
+	Ein naiver Ansatz zur Optimierung eines Kartons würde diskrete Kombinationen
+	aus Kantenlängen (in Millimeterschritten), Flötentypen (A, B, C, E, \ldots)
 	und Decklagendicken durchprobieren. Bereits bei einer Diskretisierung von
-	$\ell, b, h$ in $N = 1000$ Schritten und $4$ FlÃ¶tentypen ergÃ¤ben sich
+	$\ell, b, h$ in $N = 1000$ Schritten und $4$ Flötentypen ergäben sich
 	$N^3 \cdot 4 = 4 \cdot 10^9$ zu evaluierende Konfigurationen. Die in den
 	folgenden Abschnitten herzuleitenden geschlossenen Formeln liefern die
 	optimalen Parameter dagegen in $O(1)$ Rechenschritten -- ein Effizienzgewinn,
-	der die Bedeutung formaler Analyse fÃ¼r ein scheinbar triviales Objekt
+	der die Bedeutung formaler Analyse für ein scheinbar triviales Objekt
 	unterstreicht.
 \end{beispiel}
 
@@ -214,23 +214,23 @@ wird. Dies ist im Kern ein Problem der Balkentheorie.
 
 \subsection{Geometrisches Modell}
 
-Wir betrachten zunÃ¤chst die Makroebene. Der Karton sei ein Quader mit KantenlÃ¤ngen
+Wir betrachten zunächst die Makroebene. Der Karton sei ein Quader mit Kantenlängen
 $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktionsarten:
 
 \begin{itemize}
-	\item \textbf{Geschlossener Karton} (mit Deckel): OberflÃ¤che
+	\item \textbf{Geschlossener Karton} (mit Deckel): Oberfläche
 	      $S_{\mathrm{geschl}} = 2(\ell b + bh + \ell h)$.
 	\item \textbf{Offener Karton} (ohne Deckel, z.\,B. Versandkarton mit
-	      separatem Verschluss): OberflÃ¤che
+	      separatem Verschluss): Oberfläche
 	      $S_{\mathrm{offen}} = \ell b + 2h(\ell + b)$.
 \end{itemize}
 
-\subsection{Optimierung der Ã¤uÃŸeren Form}
+\subsection{Optimierung der äußeren Form}
 
-\begin{satz}[OptimalitÃ¤t des geschlossenen Kartons]
+\begin{satz}[Optimalität des geschlossenen Kartons]
 	\label{satz:wuerfel}
-	Unter allen Quadern mit KantenlÃ¤ngen $\ell, b, h > 0$ und festem Volumen
-	$\ell b h = V$ minimiert der WÃ¼rfel $\ell = b = h = V^{1/3}$ die OberflÃ¤che
+	Unter allen Quadern mit Kantenlängen $\ell, b, h > 0$ und festem Volumen
+	$\ell b h = V$ minimiert der Würfel $\ell = b = h = V^{1/3}$ die Oberfläche
 	$S_{\mathrm{geschl}} = 2(\ell b + bh + \ell h)$. Es gilt
 	\[
 		S_{\mathrm{geschl}} \geq 6V^{2/3},
@@ -239,25 +239,25 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{satz}
 
 \begin{proof}
-	Nach der Ungleichung vom arithmetischen und geometrischen Mittel (AM-GM) fÃ¼r
+	Nach der Ungleichung vom arithmetischen und geometrischen Mittel (AM-GM) für
 	die drei positiven Zahlen $\ell b$, $b h$, $\ell h$ gilt
 	\[
 		\frac{\ell b + bh + \ell h}{3} \;\geq\; \sqrt[3]{(\ell b)(bh)(\ell h)}
 		= \sqrt[3]{\ell^2 b^2 h^2} = (\ell b h)^{2/3} = V^{2/3}.
 	\]
-	Multiplikation mit $3$ und anschlieÃŸend mit $2$ liefert
+	Multiplikation mit $3$ und anschließend mit $2$ liefert
 	$S_{\mathrm{geschl}} = 2(\ell b + bh + \ell h) \geq 6V^{2/3}$. Gleichheit in
 	der AM-GM-Ungleichung gilt genau dann, wenn alle drei Terme gleich sind, also
-	$\ell b = bh = \ell h$. Aus $\ell b = bh$ folgt $\ell = h$ (fÃ¼r $b \neq 0$),
+	$\ell b = bh = \ell h$. Aus $\ell b = bh$ folgt $\ell = h$ (für $b \neq 0$),
 	und aus $bh = \ell h$ folgt $b = \ell$. Somit $\ell = b = h$, und wegen
 	$\ell b h = V$ folgt $\ell = b = h = V^{1/3}$.
 \end{proof}
 
-\begin{satz}[OptimalitÃ¤t des offenen Kartons]
+\begin{satz}[Optimalität des offenen Kartons]
 	\label{satz:offen}
-	Unter allen offenen Kartons mit quadratischer GrundflÃ¤che $\ell = b$ und
-	festem Volumen $V = \ell^2 h$ wird die OberflÃ¤che
-	$S_{\mathrm{offen}}(\ell) = \ell^2 + \dfrac{4V}{\ell}$ minimiert fÃ¼r
+	Unter allen offenen Kartons mit quadratischer Grundfläche $\ell = b$ und
+	festem Volumen $V = \ell^2 h$ wird die Oberfläche
+	$S_{\mathrm{offen}}(\ell) = \ell^2 + \dfrac{4V}{\ell}$ minimiert für
 	\[
 		\ell^\ast = (2V)^{1/3}, \qquad h^\ast = \frac{\ell^\ast}{2},
 	\]
@@ -274,7 +274,7 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 	\]
 	Setzen wir $S_{\mathrm{offen}}'(\ell) = 0$, so folgt $2\ell^3 = 4V$, also
 	$\ell^3 = 2V$ und $\ell^\ast = (2V)^{1/3}$. Die zweite Ableitung
-	$S_{\mathrm{offen}}''(\ell) = 2 + \dfrac{8V}{\ell^3} > 0$ fÃ¼r alle
+	$S_{\mathrm{offen}}''(\ell) = 2 + \dfrac{8V}{\ell^3} > 0$ für alle
 	$\ell > 0$ zeigt, dass es sich um ein (globales) Minimum handelt. Aus
 	$h^\ast = V/(\ell^\ast)^2 = V/(2V)^{2/3} = (V/4)^{1/3}$ und
 	$\ell^\ast = (2V)^{1/3} = 2 \cdot (V/4)^{1/3}$ (da
@@ -292,48 +292,48 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{proof}
 
 \begin{bemerkung}[Skalierungsgesetz]
-	Sowohl fÃ¼r den geschlossenen als auch fÃ¼r den offenen Karton skaliert die
-	minimale OberflÃ¤che mit $V^{2/3}$. Dies ist eine direkte Konsequenz der
-	Dimensionsanalyse: OberflÃ¤chen besitzen die Dimension $[\text{LÃ¤nge}]^2$,
-	Volumina die Dimension $[\text{LÃ¤nge}]^3$, und jede dimensionskonsistente
+	Sowohl für den geschlossenen als auch für den offenen Karton skaliert die
+	minimale Oberfläche mit $V^{2/3}$. Dies ist eine direkte Konsequenz der
+	Dimensionsanalyse: Oberflächen besitzen die Dimension $[\text{Länge}]^2$,
+	Volumina die Dimension $[\text{Länge}]^3$, und jede dimensionskonsistente
 	Funktion $S(V)$ einer einzigen Variable $V$ muss daher von der Form
 	$S(V) = c \cdot V^{2/3}$ sein. Die Konstante $c$ unterscheidet die beiden
 	Konstruktionsarten ($c_{\mathrm{geschl}} = 6$, $c_{\mathrm{offen}} = 3 \cdot
-	2^{2/3} \approx 4{,}7622$) und ist ein MaÃŸ fÃ¼r die \emph{Materialeffizienz}
+	2^{2/3} \approx 4{,}7622$) und ist ein Maß für die \emph{Materialeffizienz}
 	der jeweiligen Bauform. Bemerkenswert ist, dass der offene Karton -- obwohl
-	er bei gleichem Volumen \emph{eine} FlÃ¤che (den Deckel) einspart --
+	er bei gleichem Volumen \emph{eine} Fläche (den Deckel) einspart --
 	insgesamt nicht $1/6$, sondern nur etwa $20{,}6\,\%$ weniger Material
-	benÃ¶tigt, da sich die optimale Form gleichzeitig Ã¤ndert (von einem WÃ¼rfel zu
+	benötigt, da sich die optimale Form gleichzeitig ändert (von einem Würfel zu
 	einem Quader mit $\ell = b = 2h$).
 \end{bemerkung}
 
-\subsection{Mikrostruktur: FlÃ¶tengeometrie}
+\subsection{Mikrostruktur: Flötengeometrie}
 
 \begin{lemma}[Take-up-Faktor der Wellpappe]
 	\label{lem:takeup}
-	Sei das FlÃ¶tenprofil gemÃ¤ÃŸ Definition~\ref{def:flute} durch
+	Sei das Flötenprofil gemäß Definition~\ref{def:flute} durch
 	$y(x) = A\sin(2\pi x/\lambda)$ gegeben. Dann ist der
-	\emph{Take-up-Faktor} $f = L/\lambda$ -- das VerhÃ¤ltnis der BogenlÃ¤nge $L$
-	einer Periode zur PeriodenlÃ¤nge $\lambda$ -- fÃ¼r $A/\lambda \ll 1$ gegeben
-	durch die NÃ¤herung
+	\emph{Take-up-Faktor} $f = L/\lambda$ -- das Verhältnis der Bogenlänge $L$
+	einer Periode zur Periodenlänge $\lambda$ -- für $A/\lambda \ll 1$ gegeben
+	durch die Näherung
 	\[
 		f \;\approx\; 1 + \pi^2 \left(\frac{A}{\lambda}\right)^2.
 	\]
 \end{lemma}
 
 \begin{proof}
-	Die BogenlÃ¤nge einer Periode ist
+	Die Bogenlänge einer Periode ist
 	\[
 		L = \int_0^\lambda \sqrt{1 + y'(x)^2}\,dx, \qquad
 		y'(x) = A \cdot \frac{2\pi}{\lambda}\cos\!\left(\frac{2\pi x}{\lambda}\right).
 	\]
-	FÃ¼r $|y'(x)| \ll 1$ gilt die Taylor-Approximation
+	Für $|y'(x)| \ll 1$ gilt die Taylor-Approximation
 	$\sqrt{1+u^2} \approx 1 + \tfrac{1}{2}u^2$. Damit
 	\[
 		L \approx \int_0^\lambda \left(1 + \tfrac{1}{2}y'(x)^2\right) dx
 		= \lambda + \frac{1}{2}\int_0^\lambda y'(x)^2\,dx.
 	\]
-	Das verbleibende Integral berechnet sich mittels der IdentitÃ¤t
+	Das verbleibende Integral berechnet sich mittels der Identität
 	$\cos^2(\theta) = \tfrac{1}{2}(1+\cos(2\theta))$:
 	\[
 		\int_0^\lambda y'(x)^2\,dx
@@ -350,26 +350,26 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{proof}
 
 \begin{bemerkung}
-	Der Take-up-Faktor $f$ gibt an, um welchen Faktor mehr Papier fÃ¼r die
-	Mittellage benÃ¶tigt wird, verglichen mit einer flachen Bahn gleicher
-	projizierter LÃ¤nge $\lambda$. FÃ¼r reale FlÃ¶tentypen liegt
+	Der Take-up-Faktor $f$ gibt an, um welchen Faktor mehr Papier für die
+	Mittellage benötigt wird, verglichen mit einer flachen Bahn gleicher
+	projizierter Länge $\lambda$. Für reale Flötentypen liegt
 	$A/\lambda$ typischerweise im Bereich $[0{,}15;\,0{,}3]$ (siehe
 	Beispiel~\ref{bsp:fluten}), sodass $f \in [1{,}2;\,1{,}9]$ -- d.\,h. die
-	Mittellage benÃ¶tigt $20\,\%$ bis $90\,\%$ mehr Papier als die Decklagen pro
-	FlÃ¤cheneinheit. Wie in Abbildung~3 ersichtlich, unterschÃ¤tzt die
-	NÃ¤herung aus Lemma~\ref{lem:takeup} den exakten Wert systematisch leicht,
-	bleibt aber fÃ¼r $A/\lambda \leq 0{,}3$ eine brauchbare AbschÃ¤tzung mit einem
+	Mittellage benötigt $20\,\%$ bis $90\,\%$ mehr Papier als die Decklagen pro
+	Flächeneinheit. Wie in Abbildung~3 ersichtlich, unterschätzt die
+	Näherung aus Lemma~\ref{lem:takeup} den exakten Wert systematisch leicht,
+	bleibt aber für $A/\lambda \leq 0{,}3$ eine brauchbare Abschätzung mit einem
 	relativen Fehler von unter $10\,\%$.
 \end{bemerkung}
 
-\begin{beispiel}[FlÃ¶tentypen]
+\begin{beispiel}[Flötentypen]
 	\label{bsp:fluten}
-	Die Wellpappenindustrie unterscheidet genormte FlÃ¶tentypen, die sich in
-	HÃ¶he $d = 2A$ und Teilung $\lambda$ unterscheiden:
+	Die Wellpappenindustrie unterscheidet genormte Flötentypen, die sich in
+	Höhe $d = 2A$ und Teilung $\lambda$ unterscheiden:
 
 	\begin{center}
 	\begin{tabular}{lccc}
-		\textbf{FlÃ¶tentyp} & \textbf{HÃ¶he $d$ (mm)} & \textbf{Teilung $\lambda$ (mm)} & \textbf{$A/\lambda$} \\
+		\textbf{Flötentyp} & \textbf{Höhe $d$ (mm)} & \textbf{Teilung $\lambda$ (mm)} & \textbf{$A/\lambda$} \\
 		\hline
 		A & 4{,}7 & 8{,}5 & 0{,}276 \\
 		C & 3{,}6 & 7{,}5 & 0{,}240 \\
@@ -378,21 +378,21 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 	\end{tabular}
 	\end{center}
 
-	FlÃ¶tentyp A bietet die grÃ¶ÃŸte FlÃ¶tenhÃ¶he und damit (nach
-	Satz~\ref{satz:steifigkeit}) das grÃ¶ÃŸte TrÃ¤gheitsmoment, benÃ¶tigt jedoch
-	auch den grÃ¶ÃŸten Take-up-Faktor und damit den hÃ¶chsten relativen
-	Papierverbrauch. FlÃ¶tentyp E ist materialsparend, aber strukturell
-	schwÃ¤cher -- ein erstes Beispiel fÃ¼r den in Abschnitt~4 formalisierten
+	Flötentyp A bietet die größte Flötenhöhe und damit (nach
+	Satz~\ref{satz:steifigkeit}) das größte Trägheitsmoment, benötigt jedoch
+	auch den größten Take-up-Faktor und damit den höchsten relativen
+	Papierverbrauch. Flötentyp E ist materialsparend, aber strukturell
+	schwächer -- ein erstes Beispiel für den in Abschnitt~4 formalisierten
 	Zielkonflikt.
 \end{beispiel}
 
-\subsection{TragfÃ¤higkeitsmodell}
+\subsection{Tragfähigkeitsmodell}
 
-\begin{satz}[TrÃ¤gheitsmoment des Sandwichquerschnitts]
+\begin{satz}[Trägheitsmoment des Sandwichquerschnitts]
 	\label{satz:traegheit}
 	Ein Wandelement der Wellpappe mit Breite $b$ bestehe aus zwei Decklagen der
-	Dicke $t_\ell$, deren MittelflÃ¤chen den Abstand $d$ (FlÃ¶tenhÃ¶he) haben. Das
-	FlÃ¤chentrÃ¤gheitsmoment $I_{\mathrm{sand}}$ des Querschnitts bezÃ¼glich der
+	Dicke $t_\ell$, deren Mittelflächen den Abstand $d$ (Flötenhöhe) haben. Das
+	Flächenträgheitsmoment $I_{\mathrm{sand}}$ des Querschnitts bezüglich der
 	neutralen Faser (Mittelebene) ist
 	\[
 		I_{\mathrm{sand}} = \frac{b\,t_\ell^3}{6} + \frac{b\,t_\ell\,d^2}{2}.
@@ -400,20 +400,20 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{satz}
 
 \begin{proof}
-	Jede der beiden Decklagen ist ein Rechteck mit Breite $b$ und HÃ¶he
-	$t_\ell$, dessen eigenes FlÃ¤chentrÃ¤gheitsmoment bezÃ¼glich des eigenen
-	Schwerpunkts $\dfrac{b\,t_\ell^3}{12}$ betrÃ¤gt. Der Schwerpunkt jeder
+	Jede der beiden Decklagen ist ein Rechteck mit Breite $b$ und Höhe
+	$t_\ell$, dessen eigenes Flächenträgheitsmoment bezüglich des eigenen
+	Schwerpunkts $\dfrac{b\,t_\ell^3}{12}$ beträgt. Der Schwerpunkt jeder
 	Decklage liegt im Abstand $d/2$ von der neutralen Faser. Nach dem
-	Satz von Steiner (Parallelachsensatz) ist das TrÃ¤gheitsmoment einer
-	einzelnen Decklage bezÃ¼glich der neutralen Faser
+	Satz von Steiner (Parallelachsensatz) ist das Trägheitsmoment einer
+	einzelnen Decklage bezüglich der neutralen Faser
 	\[
 		I_{\text{einzeln}} = \frac{b\,t_\ell^3}{12} + b\,t_\ell \left(\frac{d}{2}\right)^2
 		= \frac{b\,t_\ell^3}{12} + \frac{b\,t_\ell\,d^2}{4}.
 	\]
 	Da der Querschnitt aus zwei symmetrisch angeordneten Decklagen besteht
-	(der Beitrag der gewellten Mittellage selbst wird fÃ¼r die Biegesteifigkeit
-	als vernachlÃ¤ssigbar angenommen, da sie nur Ã¼ber die StÃ¼tzwirkung wirkt),
-	ergibt sich das GesamttrÃ¤gheitsmoment durch Verdopplung:
+	(der Beitrag der gewellten Mittellage selbst wird für die Biegesteifigkeit
+	als vernachlässigbar angenommen, da sie nur über die Stützwirkung wirkt),
+	ergibt sich das Gesamtträgheitsmoment durch Verdopplung:
 	\[
 		I_{\mathrm{sand}} = 2\,I_{\text{einzeln}}
 		= \frac{b\,t_\ell^3}{6} + \frac{b\,t_\ell\,d^2}{2}. \qedhere
@@ -423,8 +423,8 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \begin{satz}[Steifigkeitsgewinn durch Sandwichstruktur]
 	\label{satz:steifigkeit}
 	Sei $I_{\mathrm{flach}} = \dfrac{b(2t_\ell)^3}{12} = \dfrac{2}{3}b\,t_\ell^3$
-	das FlÃ¤chentrÃ¤gheitsmoment einer massiven, flachen Bahn mit derselben
-	Gesamt-Decklagenmasse (Dicke $2t_\ell$, gleiches $b$). Dann gilt fÃ¼r
+	das Flächenträgheitsmoment einer massiven, flachen Bahn mit derselben
+	Gesamt-Decklagenmasse (Dicke $2t_\ell$, gleiches $b$). Dann gilt für
 	$t_\ell \ll d$:
 	\[
 		\frac{I_{\mathrm{sand}}}{I_{\mathrm{flach}}}
@@ -433,9 +433,9 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{satz}
 
 \begin{proof}
-	FÃ¼r $t_\ell \ll d$ ist der Term $\dfrac{b\,t_\ell^3}{6}$ in
-	$I_{\mathrm{sand}}$ gegenÃ¼ber $\dfrac{b\,t_\ell\,d^2}{2}$ von
-	hÃ¶herer Ordnung klein und kann vernachlÃ¤ssigt werden:
+	Für $t_\ell \ll d$ ist der Term $\dfrac{b\,t_\ell^3}{6}$ in
+	$I_{\mathrm{sand}}$ gegenüber $\dfrac{b\,t_\ell\,d^2}{2}$ von
+	höherer Ordnung klein und kann vernachlässigt werden:
 	$I_{\mathrm{sand}} \approx \dfrac{b\,t_\ell\,d^2}{2}$. Damit
 	\[
 		\frac{I_{\mathrm{sand}}}{I_{\mathrm{flach}}}
@@ -446,21 +446,21 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \end{proof}
 
 \begin{korollar}
-	FÃ¼r ein typisches VerhÃ¤ltnis $d/t_\ell = 20$ (z.\,B. $d \approx 4\,\mathrm{mm}$,
+	Für ein typisches Verhältnis $d/t_\ell = 20$ (z.\,B. $d \approx 4\,\mathrm{mm}$,
 	$t_\ell \approx 0{,}2\,\mathrm{mm}$) ergibt sich
 	$I_{\mathrm{sand}}/I_{\mathrm{flach}} \approx \tfrac{3}{4}\cdot 400 = 300$.
 	Die Wellpappenstruktur erreicht also bei \emph{identischer Papiermasse} ein
-	etwa $300$-fach grÃ¶ÃŸeres FlÃ¤chentrÃ¤gheitsmoment als eine massive, flache
+	etwa $300$-fach größeres Flächenträgheitsmoment als eine massive, flache
 	Bahn -- dies ist der zentrale physikalische Mechanismus, der die
-	auÃŸergewÃ¶hnliche Steifigkeit von Wellpappe bei minimalem Materialeinsatz
-	erklÃ¤rt (siehe Abbildung~5).
+	außergewöhnliche Steifigkeit von Wellpappe bei minimalem Materialeinsatz
+	erklärt (siehe Abbildung~5).
 \end{korollar}
 
 \begin{satz}[Euler-Knicklast einer Kartonwand]
 	\label{satz:euler}
-	Eine Kartonwand der HÃ¶he $L$ (Stapelrichtung), modelliert als schlanke,
+	Eine Kartonwand der Höhe $L$ (Stapelrichtung), modelliert als schlanke,
 	beidseitig gelenkig gelagerte Platte mit Biegesteifigkeit $E I_{\mathrm{sand}}$
-	($E$: ElastizitÃ¤tsmodul des Papiers, $I_{\mathrm{sand}}$ gemÃ¤ÃŸ
+	($E$: Elastizitätsmodul des Papiers, $I_{\mathrm{sand}}$ gemäß
 	Satz~\ref{satz:traegheit}), besitzt die kritische Knicklast
 	\[
 		P_{\mathrm{cr}} = \frac{\pi^2 E\,I_{\mathrm{sand}}}{L^2}.
@@ -473,11 +473,11 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 	\[
 		E I_{\mathrm{sand}}\,y''(x) + P\,y(x) = 0, \qquad y(0) = y(L) = 0.
 	\]
-	Mit $k^2 = \dfrac{P}{E I_{\mathrm{sand}}}$ lautet die allgemeine LÃ¶sung
+	Mit $k^2 = \dfrac{P}{E I_{\mathrm{sand}}}$ lautet die allgemeine Lösung
 	$y(x) = C_1 \sin(kx) + C_2\cos(kx)$. Die Randbedingung $y(0)=0$ liefert
-	$C_2 = 0$. Die Randbedingung $y(L)=0$ liefert $C_1 \sin(kL) = 0$. FÃ¼r eine
-	nichttriviale LÃ¶sung ($C_1 \neq 0$) muss $\sin(kL) = 0$ gelten, also
-	$kL = n\pi$ fÃ¼r $n \in \mathbb{N}$. Die kleinste positive LÃ¶sung ($n=1$,
+	$C_2 = 0$. Die Randbedingung $y(L)=0$ liefert $C_1 \sin(kL) = 0$. Für eine
+	nichttriviale Lösung ($C_1 \neq 0$) muss $\sin(kL) = 0$ gelten, also
+	$kL = n\pi$ für $n \in \mathbb{N}$. Die kleinste positive Lösung ($n=1$,
 	die erste und damit praktisch relevante Knickform) ergibt $k = \pi/L$,
 	also
 	\[
@@ -488,10 +488,10 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 \begin{bemerkung}[McKee-Formel]
 	\label{bem:mckee}
 	Die in Satz~\ref{satz:euler} hergeleitete Knicklast beschreibt das
-	Versagen einer \emph{einzelnen, idealisierten} Wand. Die tatsÃ¤chliche
-	Stapeldruckfestigkeit eines vollstÃ¤ndigen Kartons hÃ¤ngt zusÃ¤tzlich vom
+	Versagen einer \emph{einzelnen, idealisierten} Wand. Die tatsächliche
+	Stapeldruckfestigkeit eines vollständigen Kartons hängt zusätzlich vom
 	lokalen Kantenversagen (Edge Crush) sowie von Wechselwirkungen zwischen
-	den vier SeitenwÃ¤nden ab und entzieht sich einer rein analytischen
+	den vier Seitenwänden ab und entzieht sich einer rein analytischen
 	Herleitung. McKee, Gander und Wachuta (1963) entwickelten daher die
 	semi-empirische Formel
 	\[
@@ -503,10 +503,10 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 	Die Exponenten von $h$ und $Z$ liegen nahe bei den Werten $1$ bzw.\ $-1$,
 	die eine reine Plattenbeul-Theorie (analog Satz~\ref{satz:euler}, bei der
 	$P_{\mathrm{cr}} \propto I_{\mathrm{sand}} \propto t_\ell d^2$ und
-	$P_{\mathrm{cr}} \propto 1/L^2$ gilt) nahelegen wÃ¼rde; die empirisch
+	$P_{\mathrm{cr}} \propto 1/L^2$ gilt) nahelegen würde; die empirisch
 	bestimmten, etwas kleineren Exponenten ($0{,}508$ statt $1$, $0{,}492$
 	statt $1$, und insbesondere ein \emph{positiver} statt negativer Exponent
-	fÃ¼r $Z$) reflektieren den Ãœbergang vom reinen Knickversagen zu einem
+	für $Z$) reflektieren den Übergang vom reinen Knickversagen zu einem
 	kombinierten Versagensmodus mit lokalem Kantenstauchen, der bei realen,
 	endlich steifen Kartons dominiert. Die McKee-Formel ist bis heute der
 	industrielle Standard zur Auslegung von Versandkartons (vgl.
@@ -517,13 +517,13 @@ $\ell, b, h > 0$ und Volumen $V = \ell b h$. Wir unterscheiden zwei Konstruktion
 
 \subsection{Gesamtoptimierung als Mehrzieloptimierung}
 
-Die SÃ¤tze~\ref{satz:wuerfel} und \ref{satz:offen} minimieren den Materialeinsatz
-\emph{ohne} BerÃ¼cksichtigung der TragfÃ¤higkeit, wÃ¤hrend Satz~\ref{satz:steifigkeit}
-und Bemerkung~\ref{bem:mckee} die TragfÃ¤higkeit beschreiben, ohne den
-Materialeinsatz zu begrenzen. Das vollstÃ¤ndige Problem ist ein
+Die Sätze~\ref{satz:wuerfel} und \ref{satz:offen} minimieren den Materialeinsatz
+\emph{ohne} Berücksichtigung der Tragfähigkeit, während Satz~\ref{satz:steifigkeit}
+und Bemerkung~\ref{bem:mckee} die Tragfähigkeit beschreiben, ohne den
+Materialeinsatz zu begrenzen. Das vollständige Problem ist ein
 Mehrzieloptimierungsproblem:
 
-\begin{satz}[OptimalitÃ¤tsbedingung unter TragfÃ¤higkeitsrestriktion]
+\begin{satz}[Optimalitätsbedingung unter Tragfähigkeitsrestriktion]
 	\label{satz:lagrange}
 	Sei $V > 0$ fest und $F_{\min} > 0$ eine geforderte Mindeststapellast.
 	Betrachte das Optimierungsproblem
@@ -544,16 +544,16 @@ Mehrzieloptimierungsproblem:
 
 \begin{proof}
 	Dies ist eine direkte Anwendung der Karush-Kuhn-Tucker-Bedingungen (KKT)
-	fÃ¼r ein Optimierungsproblem mit einer Gleichheits- und einer
+	für ein Optimierungsproblem mit einer Gleichheits- und einer
 	Ungleichheitsrestriktion. Die Zielfunktion $S$ und die Restriktionsfunktion
-	$\mathrm{BCT}$ sind auf dem zulÃ¤ssigen Bereich $\ell,b,h>0$ stetig
+	$\mathrm{BCT}$ sind auf dem zulässigen Bereich $\ell,b,h>0$ stetig
 	differenzierbar (als Komposition von Potenz- und Polynomfunktionen), und
-	der zulÃ¤ssige Bereich ist nichtleer und offen, sodass eine
-	RegularitÃ¤tsbedingung (LICQ) generisch erfÃ¼llt ist. Die KKT-Theorie
+	der zulässige Bereich ist nichtleer und offen, sodass eine
+	Regularitätsbedingung (LICQ) generisch erfüllt ist. Die KKT-Theorie
 	garantiert dann, dass an einem lokalen Minimum $(\ell^\ast,b^\ast,h^\ast)$
 	der Gradient der Zielfunktion eine nichtnegative Linearkombination der
-	Gradienten der aktiven Restriktionen ist (mit beliebigem Vorzeichen fÃ¼r die
-	Gleichheitsrestriktion und nichtnegativem Vorzeichen $\nu \geq 0$ fÃ¼r die
+	Gradienten der aktiven Restriktionen ist (mit beliebigem Vorzeichen für die
+	Gleichheitsrestriktion und nichtnegativem Vorzeichen $\nu \geq 0$ für die
 	aktive Ungleichheitsrestriktion, da diese in Richtung wachsendem
 	$\mathrm{BCT}$ zeigt und $S$ am Optimum nicht durch eine Verbesserung von
 	$\mathrm{BCT}$ weiter reduziert werden kann).
@@ -561,43 +561,43 @@ Mehrzieloptimierungsproblem:
 
 \begin{bemerkung}
 	Satz~\ref{satz:lagrange} formalisiert den intuitiven Befund, dass das
-	optimale SeitenverhÃ¤ltnis eines Kartons \emph{von der geforderten
-	TragfÃ¤higkeit abhÃ¤ngt}: Ist $F_{\min}$ klein (leichte GÃ¼ter), so ist die
+	optimale Seitenverhältnis eines Kartons \emph{von der geforderten
+	Tragfähigkeit abhängt}: Ist $F_{\min}$ klein (leichte Güter), so ist die
 	BCT-Restriktion inaktiv ($\nu = 0$) und Satz~\ref{satz:wuerfel} bzw.
-	Satz~\ref{satz:offen} liefert die LÃ¶sung (wÃ¼rfelnahe Form). Ist $F_{\min}$
-	groÃŸ (schwere, stapelbare GÃ¼ter), so wird die BCT-Restriktion aktiv und das
-	Optimum verschiebt sich hin zu Formen mit grÃ¶ÃŸerem Umfang $Z$ (gemÃ¤ÃŸ
+	Satz~\ref{satz:offen} liefert die Lösung (würfelnahe Form). Ist $F_{\min}$
+	groß (schwere, stapelbare Güter), so wird die BCT-Restriktion aktiv und das
+	Optimum verschiebt sich hin zu Formen mit größerem Umfang $Z$ (gemäß
 	Bemerkung~\ref{bem:mckee} steigt $\mathrm{BCT}$ mit $Z^{0{,}492}$), selbst
-	wenn dies die OberflÃ¤che $S$ erhÃ¶ht. Die beobachtete Praxis -- Versandkartons
-	fÃ¼r schwere GÃ¼ter sind tendenziell flacher und breiter als rein
-	volumenoptimierte WÃ¼rfel -- ist damit eine direkte Konsequenz der hier
-	formal hergeleiteten OptimalitÃ¤tsbedingung.
+	wenn dies die Oberfläche $S$ erhöht. Die beobachtete Praxis -- Versandkartons
+	für schwere Güter sind tendenziell flacher und breiter als rein
+	volumenoptimierte Würfel -- ist damit eine direkte Konsequenz der hier
+	formal hergeleiteten Optimalitätsbedingung.
 \end{bemerkung}
 
-\subsection{Sicherheitsfaktoren und maximale StapelhÃ¶he}
+\subsection{Sicherheitsfaktoren und maximale Stapelhöhe}
 
-\begin{beispiel}[Maximale StapelhÃ¶he]
-	Sei $\mathrm{BCT} = 4500\,\mathrm{N}$ (typischer Wert fÃ¼r einen mittelgroÃŸen
+\begin{beispiel}[Maximale Stapelhöhe]
+	Sei $\mathrm{BCT} = 4500\,\mathrm{N}$ (typischer Wert für einen mittelgroßen
 	Versandkarton mit $\mathrm{ECT} = 6\,\mathrm{kN/m}$, $h = 4\,\mathrm{mm}$,
-	$Z = 140\,\mathrm{cm}$, vgl. Abbildung~4) und das Gewicht eines gefÃ¼llten
+	$Z = 140\,\mathrm{cm}$, vgl. Abbildung~4) und das Gewicht eines gefüllten
 	Kartons $m = 12\,\mathrm{kg}$, also $G = mg \approx 117{,}7\,\mathrm{N}$
 	(mit $g = 9{,}81\,\mathrm{m/s^2}$). In der Praxis wird ein
 	\emph{Sicherheitsfaktor} $\mathrm{SF} \in [4,6]$ angesetzt, um Effekte wie
-	Feuchtigkeit, Lagerzeit (Kriechen des Papiers) und dynamische StÃ¶ÃŸe beim
-	Transport zu berÃ¼cksichtigen:
+	Feuchtigkeit, Lagerzeit (Kriechen des Papiers) und dynamische Stöße beim
+	Transport zu berücksichtigen:
 	\[
 		\mathrm{BCT}_{\mathrm{zul}} = \frac{\mathrm{BCT}}{\mathrm{SF}}.
 	\]
 	Die maximale Anzahl $n_{\max}$ stapelbarer Kartons (der unterste Karton
-	trÃ¤gt das Gewicht aller $n-1$ darÃ¼berliegenden) ergibt sich aus
+	trägt das Gewicht aller $n-1$ darüberliegenden) ergibt sich aus
 	$(n_{\max}-1) \cdot G \leq \mathrm{BCT}_{\mathrm{zul}}$, also
 	\[
 		n_{\max} = \left\lfloor \frac{\mathrm{BCT}}{\mathrm{SF}\cdot G} \right\rfloor + 1.
 	\]
-	FÃ¼r $\mathrm{SF} = 5$ ergibt sich
+	Für $\mathrm{SF} = 5$ ergibt sich
 	$n_{\max} = \left\lfloor \dfrac{4500}{5 \cdot 117{,}7} \right\rfloor + 1
 	= \lfloor 7{,}64 \rfloor + 1 = 8$. Ein einzelner Stapel sollte also aus
-	hÃ¶chstens $8$ solchen Kartons bestehen -- eine in der Logistikpraxis
+	höchstens $8$ solchen Kartons bestehen -- eine in der Logistikpraxis
 	unmittelbar verwertbare Konsequenz der zuvor rein formal hergeleiteten
 	Gleichungen.
 \end{beispiel}
@@ -606,18 +606,18 @@ Mehrzieloptimierungsproblem:
 
 \begin{bemerkung}
 	Die in Satz~\ref{satz:steifigkeit} quantifizierte Steifigkeits-Masse-Relation
-	erklÃ¤rt auch, warum Wellpappe gegenÃ¼ber Alternativen wie Massivholz,
-	Vollkunststoff oder geschÃ¤umten Polymeren in vielen Anwendungen Ã¼berlegen
-	ist: Massivholz erreicht zwar ein hohes $E$, aber bei deutlich hÃ¶herer
+	erklärt auch, warum Wellpappe gegenüber Alternativen wie Massivholz,
+	Vollkunststoff oder geschäumten Polymeren in vielen Anwendungen überlegen
+	ist: Massivholz erreicht zwar ein hohes $E$, aber bei deutlich höherer
 	Dichte und ohne den quadratischen Hebel des Abstandsterms $d^2$ in
-	$I_{\mathrm{sand}}$. GeschÃ¤umte Polymere (z.\,B. EPS) erreichen einen
-	Ã¤hnlichen Sandwich-Effekt durch eingeschlossene Luft, sind jedoch
+	$I_{\mathrm{sand}}$. Geschäumte Polymere (z.\,B. EPS) erreichen einen
+	ähnlichen Sandwich-Effekt durch eingeschlossene Luft, sind jedoch
 	energieintensiver in der Herstellung und schwerer recycelbar. Die
 	Kombination aus zellulosebasiertem Rohstoff (nachwachsend, recycelbar),
 	geometrischer Versteifung durch Sinusprofil (Satz~\ref{satz:steifigkeit})
-	und global optimierter Quaderform (SÃ¤tze~\ref{satz:wuerfel}
+	und global optimierter Quaderform (Sätze~\ref{satz:wuerfel}
 	und~\ref{satz:offen}) macht den Karton somit nicht nur mathematisch,
-	sondern auch Ã¶kologisch und Ã¶konomisch zu einer herausragenden LÃ¶sung.
+	sondern auch ökologisch und ökonomisch zu einer herausragenden Lösung.
 \end{bemerkung}
 
 \section{Numerische Veranschaulichung}
@@ -629,41 +629,41 @@ hergeleiteten Ergebnisse anhand numerischer Beispiele (erzeugt mit
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/abb1_materialbedarf.pdf}
-	\caption{Materialbedarf (OberflÃ¤che) $S(\ell)$ fÃ¼r geschlossene und offene
-	Kartons mit quadratischer GrundflÃ¤che und festem Volumen $V=1$, in
-	AbhÃ¤ngigkeit der KantenlÃ¤nge $\ell$. Die markierten Minima entsprechen den
+	\caption{Materialbedarf (Oberfläche) $S(\ell)$ für geschlossene und offene
+	Kartons mit quadratischer Grundfläche und festem Volumen $V=1$, in
+	Abhängigkeit der Kantenlänge $\ell$. Die markierten Minima entsprechen den
 	in Satz~\ref{satz:wuerfel} (geschlossen, $\ell^\ast = V^{1/3}$) und
 	Satz~\ref{satz:offen} (offen, $\ell^\ast = (2V)^{1/3}$) hergeleiteten
-	optimalen KantenlÃ¤ngen. Sichtbar ist, dass der offene Karton bei seinem
-	jeweiligen Optimum eine grÃ¶ÃŸere GrundflÃ¤che, aber eine insgesamt kleinere
-	OberflÃ¤che besitzt als der geschlossene Karton bei seinem Optimum.}
+	optimalen Kantenlängen. Sichtbar ist, dass der offene Karton bei seinem
+	jeweiligen Optimum eine größere Grundfläche, aber eine insgesamt kleinere
+	Oberfläche besitzt als der geschlossene Karton bei seinem Optimum.}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/abb2_flutenprofile.pdf}
-	\caption{Sinusmodell (Definition~\ref{def:flute}) der FlÃ¶tenprofile fÃ¼r die
-	vier in Beispiel~\ref{bsp:fluten} aufgefÃ¼hrten Standard-Wellenarten A, B, C
-	und E. Deutlich erkennbar ist, dass FlÃ¶tentyp A die grÃ¶ÃŸte Amplitude und die
-	grÃ¶ÃŸte PeriodenlÃ¤nge besitzt, wÃ¤hrend FlÃ¶tentyp E die feinste und
-	flachste Welle aufweist. Die FlÃ¤che unter den Kurven (im Sinne der
-	BogenlÃ¤nge) bestimmt direkt den in Lemma~\ref{lem:takeup} behandelten
+	\caption{Sinusmodell (Definition~\ref{def:flute}) der Flötenprofile für die
+	vier in Beispiel~\ref{bsp:fluten} aufgeführten Standard-Wellenarten A, B, C
+	und E. Deutlich erkennbar ist, dass Flötentyp A die größte Amplitude und die
+	größte Periodenlänge besitzt, während Flötentyp E die feinste und
+	flachste Welle aufweist. Die Fläche unter den Kurven (im Sinne der
+	Bogenlänge) bestimmt direkt den in Lemma~\ref{lem:takeup} behandelten
 	Take-up-Faktor.}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/abb3_takeup_faktor.pdf}
-	\caption{Take-up-Faktor $f = L/\lambda$ als Funktion des VerhÃ¤ltnisses
-	$A/\lambda$, sowohl exakt (numerische Integration der BogenlÃ¤nge) als auch
-	gemÃ¤ÃŸ der NÃ¤herungsformel aus Lemma~\ref{lem:takeup}. Die vier
-	Standard-FlÃ¶tentypen sind als Punkte markiert. FÃ¼r die in der Praxis
+	\caption{Take-up-Faktor $f = L/\lambda$ als Funktion des Verhältnisses
+	$A/\lambda$, sowohl exakt (numerische Integration der Bogenlänge) als auch
+	gemäß der Näherungsformel aus Lemma~\ref{lem:takeup}. Die vier
+	Standard-Flötentypen sind als Punkte markiert. Für die in der Praxis
 	relevanten Werte $A/\lambda \leq 0{,}3$ approximiert die Formel
 	$f \approx 1 + \pi^2(A/\lambda)^2$ den exakten Wert mit einer relativen
-	Abweichung von unter $10\,\%$; fÃ¼r grÃ¶ÃŸere VerhÃ¤ltnisse divergiert die
-	NÃ¤herung zunehmend vom exakten Integral, da die zugrundeliegende
-	Taylor-Approximation $\sqrt{1+u^2}\approx 1+\tfrac{1}{2}u^2$ nur fÃ¼r kleine
-	$u$ gÃ¼ltig ist.}
+	Abweichung von unter $10\,\%$; für größere Verhältnisse divergiert die
+	Näherung zunehmend vom exakten Integral, da die zugrundeliegende
+	Taylor-Approximation $\sqrt{1+u^2}\approx 1+\tfrac{1}{2}u^2$ nur für kleine
+	$u$ gültig ist.}
 \end{figure}
 
 \begin{figure}[h]
@@ -671,49 +671,49 @@ hergeleiteten Ergebnisse anhand numerischer Beispiele (erzeugt mit
 	\includegraphics[width=0.85\textwidth]{plots/abb4_mckee_formel.pdf}
 	\caption{Stapeldruckfestigkeit $\mathrm{BCT}$ nach der McKee-Formel
 	(Bemerkung~\ref{bem:mckee}) als Funktion des Kartonumfangs
-	$Z = 2(\ell+b)$ fÃ¼r ein festes Kaliber $h = 4\,\mathrm{mm}$ und vier
-	verschiedene KantenstauchwiderstÃ¤nde $\mathrm{ECT} \in \{3,5,7,9\}\,
+	$Z = 2(\ell+b)$ für ein festes Kaliber $h = 4\,\mathrm{mm}$ und vier
+	verschiedene Kantenstauchwiderstände $\mathrm{ECT} \in \{3,5,7,9\}\,
 	\mathrm{kN/m}$. Der sublineare Anstieg ($\mathrm{BCT} \propto
-	Z^{0{,}492}$) zeigt, dass eine VergrÃ¶ÃŸerung des Kartons die TragfÃ¤higkeit
-	zwar erhÃ¶ht, jedoch mit abnehmendem Grenzertrag -- eine Verdopplung des
-	Umfangs erhÃ¶ht die Stapeldruckfestigkeit nur um den Faktor
+	Z^{0{,}492}$) zeigt, dass eine Vergrößerung des Kartons die Tragfähigkeit
+	zwar erhöht, jedoch mit abnehmendem Grenzertrag -- eine Verdopplung des
+	Umfangs erhöht die Stapeldruckfestigkeit nur um den Faktor
 	$2^{0{,}492}\approx 1{,}406$.}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{plots/abb5_traegheitsmoment.pdf}
-	\caption{VerhÃ¤ltnis der FlÃ¤chentrÃ¤gheitsmomente
-	$I_{\mathrm{sand}}/I_{\mathrm{flach}}$ als Funktion des VerhÃ¤ltnisses
-	$d/t_\ell$ (FlÃ¶tenhÃ¶he zu Decklagendicke), gemÃ¤ÃŸ
+	\caption{Verhältnis der Flächenträgheitsmomente
+	$I_{\mathrm{sand}}/I_{\mathrm{flach}}$ als Funktion des Verhältnisses
+	$d/t_\ell$ (Flötenhöhe zu Decklagendicke), gemäß
 	Satz~\ref{satz:steifigkeit}. Der quadratische Zusammenhang
 	$I_{\mathrm{sand}}/I_{\mathrm{flach}} \approx \tfrac{3}{4}(d/t_\ell)^2$
-	zeigt, dass bereits moderate VergrÃ¶ÃŸerungen des FlÃ¶tenhÃ¶he-zu-Decklagendicke-
-	VerhÃ¤ltnisses zu drastischen Steifigkeitsgewinnen fÃ¼hren. FÃ¼r das
-	praxisrelevante VerhÃ¤ltnis $d/t_\ell = 20$ (markiert) ergibt sich ein
-	Faktor von ca.\ $300$ -- der zentrale quantitative Beleg fÃ¼r die
-	â€žGenialitÃ¤t'' der Wellpappenstruktur.}
+	zeigt, dass bereits moderate Vergrößerungen des Flötenhöhe-zu-Decklagendicke-
+	Verhältnisses zu drastischen Steifigkeitsgewinnen führen. Für das
+	praxisrelevante Verhältnis $d/t_\ell = 20$ (markiert) ergibt sich ein
+	Faktor von ca.\ $300$ -- der zentrale quantitative Beleg für die
+	â€žGenialität'' der Wellpappenstruktur.}
 \end{figure}
 
 \section{Zusammenfassung}
 
-Diese Arbeit hat den Karton -- konkret die Wellpappenverpackung -- als LÃ¶sung zweier
-gekoppelter, formal lÃ¶sbarer Optimierungsprobleme analysiert:
+Diese Arbeit hat den Karton -- konkret die Wellpappenverpackung -- als Lösung zweier
+gekoppelter, formal lösbarer Optimierungsprobleme analysiert:
 
 \begin{itemize}
 	\item Auf der \textbf{Makroebene} minimiert die Quaderform bei gegebenem
-	      Volumen den Materialeinsatz (SÃ¤tze~\ref{satz:wuerfel}
+	      Volumen den Materialeinsatz (Sätze~\ref{satz:wuerfel}
 	      und~\ref{satz:offen}, mit dem charakteristischen
 	      $V^{2/3}$-Skalierungsgesetz).
-	\item Auf der \textbf{Mikroebene} maximiert das sinusfÃ¶rmige FlÃ¶tenprofil
-	      bei gegebener Papiermasse das FlÃ¤chentrÃ¤gheitsmoment und damit die
-	      Knicksteifigkeit (SÃ¤tze~\ref{satz:traegheit}--\ref{satz:euler}, mit
-	      dem quadratischen VerstÃ¤rkungsfaktor $\tfrac{3}{4}(d/t_\ell)^2$).
+	\item Auf der \textbf{Mikroebene} maximiert das sinusförmige Flötenprofil
+	      bei gegebener Papiermasse das Flächenträgheitsmoment und damit die
+	      Knicksteifigkeit (Sätze~\ref{satz:traegheit}--\ref{satz:euler}, mit
+	      dem quadratischen Verstärkungsfaktor $\tfrac{3}{4}(d/t_\ell)^2$).
 	\item Die \textbf{Kopplung} beider Ebenen unter einer
-	      TragfÃ¤higkeitsrestriktion fÃ¼hrt zu einer Lagrange-Charakterisierung
+	      Tragfähigkeitsrestriktion führt zu einer Lagrange-Charakterisierung
 	      (Satz~\ref{satz:lagrange}), die das in der Praxis beobachtete
-	      Verhalten -- grÃ¶ÃŸere, flachere Kartons fÃ¼r schwerere GÃ¼ter --
-	      formal erklÃ¤rt.
+	      Verhalten -- größere, flachere Kartons für schwerere Güter --
+	      formal erklärt.
 \end{itemize}
 
 \subsection{Anwendungen}
@@ -722,154 +722,154 @@ Die hergeleiteten Modelle besitzen unmittelbare praktische Anwendungen:
 
 \begin{itemize}
 	\item \textbf{Verpackungsdesign}: Automatisierte Bestimmung optimaler
-	      Kartonabmessungen und FlÃ¶tentypen fÃ¼r ein gegebenes
-	      Produktportfolio, unter Einhaltung von TragfÃ¤higkeitsvorgaben.
-	\item \textbf{Logistikplanung}: Berechnung maximaler StapelhÃ¶hen
+	      Kartonabmessungen und Flötentypen für ein gegebenes
+	      Produktportfolio, unter Einhaltung von Tragfähigkeitsvorgaben.
+	\item \textbf{Logistikplanung}: Berechnung maximaler Stapelhöhen
 	      (Abschnitt~4.2) zur sicheren Lagerplanung in Hochregallagern.
 	\item \textbf{Materialeinkauf}: Quantifizierung des Take-up-Faktors
 	      (Lemma~\ref{lem:takeup}) zur exakten Kalkulation des
-	      Papierbedarfs verschiedener FlÃ¶tentypen.
-	\item \textbf{QualitÃ¤tssicherung}: Nutzung der McKee-Formel
-	      (Bemerkung~\ref{bem:mckee}) zur Spezifikation und PrÃ¼fung von
+	      Papierbedarfs verschiedener Flötentypen.
+	\item \textbf{Qualitätssicherung}: Nutzung der McKee-Formel
+	      (Bemerkung~\ref{bem:mckee}) zur Spezifikation und Prüfung von
 	      Mindestanforderungen an Lieferkartons.
 	\item \textbf{Bildung und Popularisierung}: Demonstration, wie
 	      elementare Werkzeuge der Analysis, Differentialgeometrie und
-	      Balkentheorie auf ein allgegenwÃ¤rtiges Alltagsobjekt angewendet
-	      werden kÃ¶nnen -- ein anschauliches Beispiel fÃ¼r angewandte
+	      Balkentheorie auf ein allgegenwärtiges Alltagsobjekt angewendet
+	      werden können -- ein anschauliches Beispiel für angewandte
 	      Mathematik im Ingenieurwesen.
 \end{itemize}
 
 \subsection{Ausblick}
 
-Die in dieser Arbeit entwickelten Modelle bilden lediglich den Ausgangspunkt fÃ¼r
-eine Vielzahl vielversprechender Erweiterungen, die im Folgenden ausfÃ¼hrlich
+Die in dieser Arbeit entwickelten Modelle bilden lediglich den Ausgangspunkt für
+eine Vielzahl vielversprechender Erweiterungen, die im Folgenden ausführlich
 diskutiert werden.
 
 \paragraph{Topologieoptimierung und generatives Design.}
 Die hier betrachteten Modelle gehen von einer festen Quaderform und einem
 einfachen Sinusprofil aus. Moderne Verfahren der Topologieoptimierung, kombiniert
-mit der Finite-Elemente-Methode (FEM), kÃ¶nnten genutzt werden, um nicht-sinusfÃ¶rmige,
-lokal variierende FlÃ¶tenprofile zu entwerfen, die das VerhÃ¤ltnis
+mit der Finite-Elemente-Methode (FEM), könnten genutzt werden, um nicht-sinusförmige,
+lokal variierende Flötenprofile zu entwerfen, die das Verhältnis
 $I_{\mathrm{sand}}/I_{\mathrm{flach}}$ aus Satz~\ref{satz:steifigkeit} weiter
-verbessern -- etwa durch trapezfÃ¶rmige, asymmetrische oder fraktale Wellenmuster,
-deren TrÃ¤gheitsmomente analytisch deutlich aufwendiger, aber numerisch gut
-zugÃ¤nglich wÃ¤ren. Generative Designalgorithmen kÃ¶nnten zudem die Quaderform selbst
+verbessern -- etwa durch trapezförmige, asymmetrische oder fraktale Wellenmuster,
+deren Trägheitsmomente analytisch deutlich aufwendiger, aber numerisch gut
+zugänglich wären. Generative Designalgorithmen könnten zudem die Quaderform selbst
 aufgeben und organische, an die Produktgeometrie angepasste Kartonformen
 erzeugen, deren Materialbedarf das $V^{2/3}$-Skalierungsgesetz (Bemerkung nach
 Satz~\ref{satz:offen}) gegebenenfalls unterschreitet, sofern die
-TragfÃ¤higkeitsrestriktion entsprechend angepasst wird.
+Tragfähigkeitsrestriktion entsprechend angepasst wird.
 
-\paragraph{Hygroskopisches Verhalten und KlimaeinflÃ¼sse.}
-Das in Satz~\ref{satz:euler} verwendete ElastizitÃ¤tsmodul $E$ von Papier ist
-stark feuchtigkeitsabhÃ¤ngig: Bei hoher relativer Luftfeuchtigkeit kann $E$ um
-$30$--$50\,\%$ sinken, was Ã¼ber $P_{\mathrm{cr}} \propto E$ direkt die Knicklast
-reduziert. Eine Erweiterung des Modells um eine explizite AbhÃ¤ngigkeit
+\paragraph{Hygroskopisches Verhalten und Klimaeinflüsse.}
+Das in Satz~\ref{satz:euler} verwendete Elastizitätsmodul $E$ von Papier ist
+stark feuchtigkeitsabhängig: Bei hoher relativer Luftfeuchtigkeit kann $E$ um
+$30$--$50\,\%$ sinken, was über $P_{\mathrm{cr}} \propto E$ direkt die Knicklast
+reduziert. Eine Erweiterung des Modells um eine explizite Abhängigkeit
 $E = E(\varphi, t)$ (relative Feuchtigkeit $\varphi$, Lagerzeit $t$, unter
-BerÃ¼cksichtigung von Kriechprozessen im PapiergefÃ¼ge) wÃ¼rde die
+Berücksichtigung von Kriechprozessen im Papiergefüge) würde die
 Sicherheitsfaktoren aus Abschnitt~4.2 nicht mehr als pauschale Konstanten,
 sondern als Funktionen der Lager- und Transportbedingungen formalisieren --
 ein wichtiger Schritt hin zu klimaadaptiven Verpackungsspezifikationen,
-insbesondere fÃ¼r den globalen Schiffstransport durch Klimazonen mit stark
+insbesondere für den globalen Schiffstransport durch Klimazonen mit stark
 unterschiedlicher Luftfeuchtigkeit.
 
 \paragraph{Aktive und intelligente Verpackungen (Smart Packaging).}
-ZukÃ¼nftige Kartons kÃ¶nnten mit eingebetteten Sensoren (Feuchtigkeit,
+Zukünftige Kartons könnten mit eingebetteten Sensoren (Feuchtigkeit,
 Temperatur, Beschleunigung, Neigung) sowie RFID- oder Bluetooth-Trackern
-ausgestattet werden. Die hier entwickelten formalen Modelle lieÃŸen sich dann zu
+ausgestattet werden. Die hier entwickelten formalen Modelle ließen sich dann zu
 \emph{dynamischen} Modellen erweitern: Die Stapeldruckfestigkeit
-$\mathrm{BCT}(t)$ als Funktion der Zeit kÃ¶nnte mittels der gemessenen
-Feuchtigkeits- und Lasthistorie laufend neu geschÃ¤tzt werden, sodass
+$\mathrm{BCT}(t)$ als Funktion der Zeit könnte mittels der gemessenen
+Feuchtigkeits- und Lasthistorie laufend neu geschätzt werden, sodass
 Logistikunternehmen in Echtzeit vor drohendem Versagen einzelner Stapel gewarnt
-werden kÃ¶nnten. Dies erfordert eine Kopplung der mechanischen Modelle dieser
+werden könnten. Dies erfordert eine Kopplung der mechanischen Modelle dieser
 Arbeit mit Methoden des maschinellen Lernens zur Zeitreihenprognose.
 
-\paragraph{Mehrzieloptimierung mittels evolutionÃ¤rer Algorithmen.}
-Satz~\ref{satz:lagrange} liefert notwendige OptimalitÃ¤tsbedingungen fÃ¼r den Fall
-einer aktiven Restriktion, jedoch keine geschlossene LÃ¶sung fÃ¼r das allgemeine
+\paragraph{Mehrzieloptimierung mittels evolutionärer Algorithmen.}
+Satz~\ref{satz:lagrange} liefert notwendige Optimalitätsbedingungen für den Fall
+einer aktiven Restriktion, jedoch keine geschlossene Lösung für das allgemeine
 Mehrzieloptimierungsproblem (Minimierung von Material \emph{und} Maximierung von
-TragfÃ¤higkeit \emph{und} Minimierung des Take-up-Faktors). Eine naheliegende
-Erweiterung besteht in der numerischen Bestimmung der vollstÃ¤ndigen
+Tragfähigkeit \emph{und} Minimierung des Take-up-Faktors). Eine naheliegende
+Erweiterung besteht in der numerischen Bestimmung der vollständigen
 Pareto-Front mittels genetischer Algorithmen oder Partikelschwarm-Optimierung,
-unter Einbeziehung diskreter Entscheidungsvariablen (FlÃ¶tentyp, Decklagentyp,
+unter Einbeziehung diskreter Entscheidungsvariablen (Flötentyp, Decklagentyp,
 Anzahl der Wellpappenlagen: einwellig, zweiwellig, dreiwellig).
 
 \paragraph{Verbindung zum Subgraph Algorithmus: Nesting- und Cutting-Stock-Probleme.}
-Ein methodisch interessanter AnknÃ¼pfungspunkt ergibt sich aus der Perspektive
+Ein methodisch interessanter Anknüpfungspunkt ergibt sich aus der Perspektive
 der Schnittmusteroptimierung (\emph{Cutting-Stock-Problem}): Bevor ein Karton
 gefaltet wird, liegt er als zweidimensionaler Stanzzuschnitt (\emph{die-cut})
 vor, dessen Faltlinien und Klebelaschen eine strukturierte, graphartige Topologie
-besitzen (Knoten = Falzkanten, Kanten = angrenzende FlÃ¤chen). Die effiziente
+besitzen (Knoten = Falzkanten, Kanten = angrenzende Flächen). Die effiziente
 Anordnung (Nesting) mehrerer solcher Zuschnitte auf einer Wellpappenbahn mit
-minimalem Verschnitt lÃ¤sst sich als Subgraph-Erkennungsproblem auffassen:
+minimalem Verschnitt lässt sich als Subgraph-Erkennungsproblem auffassen:
 Gesucht werden wiederkehrende strukturelle Muster zwischen verschiedenen
-Zuschnitt-Layouts, analog zur in frÃ¼heren Arbeiten beschriebenen Anwendung des
+Zuschnitt-Layouts, analog zur in früheren Arbeiten beschriebenen Anwendung des
 Subgraph Algorithmus auf die Analyse von Abstract Syntax Trees. Eine
-Adjazenzmatrix-ReprÃ¤sentation der Faltlinien-Topologie, kombiniert mit den
-Signatur-Arrays und der zyklischen Rotation des Subgraph Algorithmus, kÃ¶nnte
+Adjazenzmatrix-Repräsentation der Faltlinien-Topologie, kombiniert mit den
+Signatur-Arrays und der zyklischen Rotation des Subgraph Algorithmus, könnte
 verwendet werden, um modulare Stanzformen zu identifizieren, die sich mit
-minimalem Verschnitt zu grÃ¶ÃŸeren Bahnen kombinieren lassen -- eine direkte
-BrÃ¼cke zwischen der hier vorgestellten Kontinuumsmechanik des Kartons und der
+minimalem Verschnitt zu größeren Bahnen kombinieren lassen -- eine direkte
+Brücke zwischen der hier vorgestellten Kontinuumsmechanik des Kartons und der
 diskreten Graphentheorie.
 
 \paragraph{Automatisierte Faltrobotik und Verpackungslinien.}
-Die geometrischen OptimalitÃ¤tsbedingungen aus SÃ¤tzen~\ref{satz:wuerfel}
-und~\ref{satz:offen} setzen voraus, dass beliebige KantenlÃ¤ngen $\ell, b, h$
+Die geometrischen Optimalitätsbedingungen aus Sätzen~\ref{satz:wuerfel}
+und~\ref{satz:offen} setzen voraus, dass beliebige Kantenlängen $\ell, b, h$
 realisierbar sind. In automatisierten Verpackungslinien ist dies jedoch durch
-die Mechanik der Faltroboter (Greifarme, Faltschwerter, KlebedÃ¼sen)
-eingeschrÃ¤nkt, die nur diskrete Formfaktoren effizient verarbeiten kÃ¶nnen. Eine
+die Mechanik der Faltroboter (Greifarme, Faltschwerter, Klebedüsen)
+eingeschränkt, die nur diskrete Formfaktoren effizient verarbeiten können. Eine
 Erweiterung des Modells um diskrete Formfaktor-Restriktionen (z.\,B.
 $\ell, b, h$ aus einem vorgegebenen Raster) und um die
-Zykluszeiten der Faltroboter als zusÃ¤tzliches Optimierungsziel wÃ¼rde das Modell
-fÃ¼r die industrielle Praxis direkt einsetzbar machen.
+Zykluszeiten der Faltroboter als zusätzliches Optimierungsziel würde das Modell
+für die industrielle Praxis direkt einsetzbar machen.
 
 \paragraph{Kreislaufwirtschaft, Recyclingfasern und Lebenszyklusanalyse.}
-Das ElastizitÃ¤tsmodul $E$ und der Kantenstauchwiderstand $\mathrm{ECT}$ hÃ¤ngen
-vom Anteil an Recyclingfasern im Papier ab: Mit jedem Recyclingzyklus verkÃ¼rzen
-sich die Zellulosefasern, was $E$ und $\mathrm{ECT}$ geringfÃ¼gig reduziert. Eine
+Das Elastizitätsmodul $E$ und der Kantenstauchwiderstand $\mathrm{ECT}$ hängen
+vom Anteil an Recyclingfasern im Papier ab: Mit jedem Recyclingzyklus verkürzen
+sich die Zellulosefasern, was $E$ und $\mathrm{ECT}$ geringfügig reduziert. Eine
 Erweiterung der McKee-Formel (Bemerkung~\ref{bem:mckee}) um einen
-Alterungsparameter $\mathrm{ECT}(n_{\text{Recycling}})$ wÃ¼rde es erlauben, die
-in dieser Arbeit hergeleiteten OptimalitÃ¤tsbedingungen mit einer vollstÃ¤ndigen
+Alterungsparameter $\mathrm{ECT}(n_{\text{Recycling}})$ würde es erlauben, die
+in dieser Arbeit hergeleiteten Optimalitätsbedingungen mit einer vollständigen
 Lebenszyklusanalyse (LCA) zu koppeln: Optimierung nicht nur des
-Materialeinsatzes pro Karton, sondern des gesamten Ã¶kologischen FuÃŸabdrucks Ã¼ber
-mehrere Recyclingzyklen hinweg, inklusive Energieaufwand fÃ¼r Wiederaufbereitung
+Materialeinsatzes pro Karton, sondern des gesamten ökologischen Fußabdrucks über
+mehrere Recyclingzyklen hinweg, inklusive Energieaufwand für Wiederaufbereitung
 und Transport.
 
-\paragraph{Erweiterung auf gewichtete, dynamische und stoÃŸartige Belastungen.}
-Die SÃ¤tze~\ref{satz:euler} und die McKee-Formel (Bemerkung~\ref{bem:mckee})
-betrachten ausschlieÃŸlich statische, vertikale Druckbelastung. In der RealitÃ¤t
-sind Kartons jedoch dynamischen StoÃŸbelastungen (FallprÃ¼fung, Vibrationen
-wÃ¤hrend des Transports) sowie horizontalen ScherkrÃ¤ften ausgesetzt. Eine
+\paragraph{Erweiterung auf gewichtete, dynamische und stoßartige Belastungen.}
+Die Sätze~\ref{satz:euler} und die McKee-Formel (Bemerkung~\ref{bem:mckee})
+betrachten ausschließlich statische, vertikale Druckbelastung. In der Realität
+sind Kartons jedoch dynamischen Stoßbelastungen (Fallprüfung, Vibrationen
+während des Transports) sowie horizontalen Scherkräften ausgesetzt. Eine
 Erweiterung um ein dynamisches Modell -- etwa basierend auf einem
-Feder-DÃ¤mpfer-System mit nichtlinearer Steifigkeit des Wellpappenkerns --
-wÃ¼rde es erlauben, die FallhÃ¶hen-Toleranz eines Kartons formal aus den hier
-entwickelten geometrischen und materialspezifischen GrÃ¶ÃŸen ($d$, $t_\ell$,
+Feder-Dämpfer-System mit nichtlinearer Steifigkeit des Wellpappenkerns --
+würde es erlauben, die Fallhöhen-Toleranz eines Kartons formal aus den hier
+entwickelten geometrischen und materialspezifischen Größen ($d$, $t_\ell$,
 $\lambda$, $E$) herzuleiten, anstatt sie empirisch durch Falltests zu
 bestimmen.
 
-\paragraph{Digitale Zwillinge fÃ¼r Verpackungssysteme.}
-Die Kombination aller oben genannten Erweiterungen -- feuchtigkeitsabhÃ¤ngige
+\paragraph{Digitale Zwillinge für Verpackungssysteme.}
+Die Kombination aller oben genannten Erweiterungen -- feuchtigkeitsabhängige
 Materialparameter, Sensordaten, dynamische Belastungsmodelle und
-Lebenszyklusdaten -- legt die Entwicklung eines vollstÃ¤ndigen \emph{digitalen
-Zwillings} eines Kartons nahe: ein Software-Modell, das fÃ¼r jeden individuellen
-Karton (identifizierbar Ã¼ber eingebettete RFID-Tags) kontinuierlich seinen
-aktuellen TragfÃ¤higkeitszustand $\mathrm{BCT}(t)$ auf Basis der formalen Modelle
+Lebenszyklusdaten -- legt die Entwicklung eines vollständigen \emph{digitalen
+Zwillings} eines Kartons nahe: ein Software-Modell, das für jeden individuellen
+Karton (identifizierbar über eingebettete RFID-Tags) kontinuierlich seinen
+aktuellen Tragfähigkeitszustand $\mathrm{BCT}(t)$ auf Basis der formalen Modelle
 dieser Arbeit, kombiniert mit Echtzeit-Sensordaten, berechnet und damit
-prÃ¤diktive Aussagen Ã¼ber die ResttragfÃ¤higkeit eines Stapels Ã¼ber die gesamte
-Lieferkette hinweg ermÃ¶glicht.
+prädiktive Aussagen über die Resttragfähigkeit eines Stapels über die gesamte
+Lieferkette hinweg ermöglicht.
 
-\paragraph{Verallgemeinerung auf nicht-quaderfÃ¶rmige und additiv gefertigte Strukturen.}
-SchlieÃŸlich beschrÃ¤nkt sich diese Arbeit auf quaderfÃ¶rmige Kartons mit
-sinusfÃ¶rmigem FlÃ¶tenprofil. Mit dem Aufkommen des 3D-Drucks von
+\paragraph{Verallgemeinerung auf nicht-quaderförmige und additiv gefertigte Strukturen.}
+Schließlich beschränkt sich diese Arbeit auf quaderförmige Kartons mit
+sinusförmigem Flötenprofil. Mit dem Aufkommen des 3D-Drucks von
 Wellpappenstrukturen und faserbasierten Verbundmaterialien wird es zunehmend
-mÃ¶glich, beliebige, lokal variierende Wandstrukturen zu fertigen. Eine
+möglich, beliebige, lokal variierende Wandstrukturen zu fertigen. Eine
 Verallgemeinerung der hier entwickelten Theorie auf variable Querschnittsprofile
 $y(x)$ (statt der festen Sinusform aus Definition~\ref{def:flute}) und auf
-nicht-quaderfÃ¶rmige HÃ¼llgeometrien (z.\,B. polyedrische oder zylindrische
-Verpackungen) wÃ¼rde den Anwendungsbereich der hier formal etablierten
-OptimalitÃ¤tsprinzipien -- Minimierung der OberflÃ¤che bei gegebenem Volumen
-(Makroebene) und Maximierung des TrÃ¤gheitsmoments bei gegebener Materialmasse
+nicht-quaderförmige Hüllgeometrien (z.\,B. polyedrische oder zylindrische
+Verpackungen) würde den Anwendungsbereich der hier formal etablierten
+Optimalitätsprinzipien -- Minimierung der Oberfläche bei gegebenem Volumen
+(Makroebene) und Maximierung des Trägheitsmoments bei gegebener Materialmasse
 (Mikroebene) -- erheblich erweitern und auf eine neue Klasse von
-â€žalgorithmisch entworfenen'' Verpackungsmaterialien Ã¼bertragen.
+â€žalgorithmisch entworfenen'' Verpackungsmaterialien übertragen.
 
 \begin{thebibliography}{99}
 
@@ -895,7 +895,7 @@ Packaging Technology}.
 DEStech Publications, Lancaster, PA, 2005.
 
 \bibitem{markstroem1999}
-MarkstrÃ¶m, H.:
+Markström, H.:
 \emph{Testing Methods and Standards for Corrugated Board}.
 Lorentzen \& Wettre, Stockholm, 1999.
 

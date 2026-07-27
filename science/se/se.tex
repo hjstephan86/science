@@ -16,7 +16,7 @@
 \usepackage{caption}
 \usepackage{longtable}
 
-% Verhindere Ãœberlauf Ã¼ber rechten Rand
+% Verhindere Überlauf über rechten Rand
 \setlength{\emergencystretch}{3em}
 \sloppy
 
@@ -57,17 +57,17 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ã–}{{\"O}}1
-    {Ã„}{{\"A}}1
-    {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
-    {Ã¼}{{\"u}}1
-    {Ã¤}{{\"a}}1
-    {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
 }
 
 \title{\textbf{Intentions- und Ideen-getriebene Softwareentwicklung:}\\
-\large Ein universelles Paradigma fÃ¼r Websites, mobile Apps\\
+\large Ein universelles Paradigma für Websites, mobile Apps\\
 und allgemeine Softwaresysteme}
 \author{Stephan Epp}
 \date{16. Juni 2026}
@@ -82,14 +82,14 @@ Diese Arbeit formuliert und beweist formal das Paradigma der
 der Leitgedanke, dass der Erfinder oder Entwickler eines Systems die Entwicklung
 intentions- oder ideen-getrieben bis zur Reife konsequent und konservativ betreibt.
 Diese Intention treibt den Entwurf aller Schichten in der Architektur -- von der
-Datenschicht Ã¼ber die Logik- oder Verwaltungsschicht bis hin zur UI-Schicht. Das
-Paradigma wird zunÃ¤chst fÃ¼r Websites hergeleitet und dann auf mobile Apps
+Datenschicht über die Logik- oder Verwaltungsschicht bis hin zur UI-Schicht. Das
+Paradigma wird zunächst für Websites hergeleitet und dann auf mobile Apps
 (iOS/Android), Desktop-Anwendungen, eingebettete Systeme und verteilte Systeme
 verallgemeinert. Es wird gezeigt, dass sowohl das UI-Primat als auch das
-Daten-Primat als AusprÃ¤gungen desselben Ã¼bergeordneten Prinzips zu verstehen
-sind, und dass in allen FÃ¤llen und fÃ¼r alle Systemklassen die konsequente und
-konservative Entwicklung das entscheidende QualitÃ¤tsmerkmal ist. Die Ergebnisse
-werden formal bewiesen, durch KohÃ¤renzmaÃŸe formalisiert und mit zwÃ¶lf
+Daten-Primat als Ausprägungen desselben übergeordneten Prinzips zu verstehen
+sind, und dass in allen Fällen und für alle Systemklassen die konsequente und
+konservative Entwicklung das entscheidende Qualitätsmerkmal ist. Die Ergebnisse
+werden formal bewiesen, durch Kohärenzmaße formalisiert und mit zwölf
 Matplotlib-Plots veranschaulicht.
 \end{abstract}
 
@@ -97,18 +97,18 @@ Matplotlib-Plots veranschaulicht.
 \newpage
 
 % ============================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ============================================================
 
 Die Entwicklung moderner Software -- ob als Website, mobile App, Desktop-Anwendung
-oder eingebettetes System -- wird in der Praxis hÃ¤ufig von wechselnden
+oder eingebettetes System -- wird in der Praxis häufig von wechselnden
 Anforderungen, kurzfristigen Trendwechseln und dem Druck zur schnellen
 Feature-Lieferung dominiert. Dieses opportunistische Vorgehen steht in
 fundamentalem Widerspruch zu einem zentralen Prinzip qualitativ hochwertiger
 Softwareentwicklung: der konsequenten und konservativen Verfolgung einer
-einzigen Leitidee oder Intention. Die Folgen sind in der Praxis allgegenwÃ¤rtig:
-technische Schulden, inkohÃ¤rente Architekturen, explodierende Wartungskosten
-und Systeme, die ihren ursprÃ¼nglichen Kernzweck mit jedem Release weiter
+einzigen Leitidee oder Intention. Die Folgen sind in der Praxis allgegenwärtig:
+technische Schulden, inkohärente Architekturen, explodierende Wartungskosten
+und Systeme, die ihren ursprünglichen Kernzweck mit jedem Release weiter
 verfehlen.
 
 Der vorliegende Beitrag stellt einen \emph{Paradigmenwechsel} im Softwareentwurf
@@ -119,82 +119,82 @@ vor. Das neue Paradigma lautet, in den Worten seines Urhebers:
 \glqq{}Der Erfinder oder Entwickler der Website treibt die Entwicklung
 intentions- oder ideen-getrieben bis zur Reife konsequent und konservativ.
 Diese treibt den Entwurf aller Schichten in der Architektur von der Datenschicht
-Ã¼ber die Logik- oder Verwaltungsschicht bis hin zur UI-Schicht.
+über die Logik- oder Verwaltungsschicht bis hin zur UI-Schicht.
 
 Es kann sein, dass die Idee des Erfinders oder Entwicklers eine besonders
 benutzerfreundliche Idee ist, die sich besonders in der UI-Schicht zeigt.
 Dann ist die Entwicklung der Datenstruktur und Verwaltung der Daten zwar auch
-wichtig, aber hat nicht hÃ¶chste PrioritÃ¤t in der Entwicklung. Es kann sein,
+wichtig, aber hat nicht höchste Priorität in der Entwicklung. Es kann sein,
 dass der Erfinder oder Entwickler den Wert auf eine besonders effiziente
 Datenstruktur legt. Dann hat die UI-Schicht zwar auch besondere Bedeutung
-zum Zugang dieser effizienten Datenstruktur, hat aber nicht die hÃ¶chste
-PrioritÃ¤t in der Entwicklung.
+zum Zugang dieser effizienten Datenstruktur, hat aber nicht die höchste
+Priorität in der Entwicklung.
 
-In beiden FÃ¤llen oder auch allen anderen FÃ¤llen ist dabei wichtig: die
-konsequente und konservative Entwicklung. FÃ¼r dieses eine Ziel oder diese
+In beiden Fällen oder auch allen anderen Fällen ist dabei wichtig: die
+konsequente und konservative Entwicklung. Für dieses eine Ziel oder diese
 eine Erfindung oder Idee wird oder wurde diese Website entwickelt. Dies gilt
 es konsequent in der gesamten Entwicklung und auch in der Benutzung zu
-berÃ¼cksichtigen.\grqq{} \upshape\cite{epp2026paradigma}
+berücksichtigen.\grqq{} \upshape\cite{epp2026paradigma}
 \end{quote}
 
 Dieser Leitgedanke ist gleichzeitig der treibende Inhalt der vorliegenden Arbeit.
 Wenngleich er im Zitat auf Websites bezogen ist, wird gezeigt, dass er in seiner
-Struktur universell ist: Er gilt mit derselben Kraft fÃ¼r mobile Apps,
+Struktur universell ist: Er gilt mit derselben Kraft für mobile Apps,
 Desktop-Anwendungen, eingebettete Systeme und verteilte Systeme.
 
 \subsection{Problemstellung}
 
-In nahezu allen Softwaresystemen -- unabhÃ¤ngig von der Zielplattform -- lassen
+In nahezu allen Softwaresystemen -- unabhängig von der Zielplattform -- lassen
 sich drei fundamentale Architekturschichten identifizieren:
 
 \begin{itemize}
     \item \textbf{Datenschicht} ($\mathcal{D}$): Persistenz, Datenmodellierung,
-          Datenbankzugriff, Caching. In eingebetteten Systemen: nichtflÃ¼chtiger
+          Datenbankzugriff, Caching. In eingebetteten Systemen: nichtflüchtiger
           Speicher, Sensorpuffer, EEPROM/Flash.
     \item \textbf{Logik- oder Verwaltungsschicht} ($\mathcal{L}$):
-          GeschÃ¤ftslogik, Datenverarbeitung, Zustandsverwaltung, Algorithmen.
+          Geschäftslogik, Datenverarbeitung, Zustandsverwaltung, Algorithmen.
           In mobilen Apps: ViewModels, Use-Cases, Services.
-    \item \textbf{UI-Schicht} ($\mathcal{U}$): BenutzeroberflÃ¤che, Interaktion,
-          visuelle PrÃ¤sentation. In eingebetteten Systemen: Sensorausgabe,
+    \item \textbf{UI-Schicht} ($\mathcal{U}$): Benutzeroberfläche, Interaktion,
+          visuelle Präsentation. In eingebetteten Systemen: Sensorausgabe,
           Aktuatoren, Kommunikationsschnittstellen.
 \end{itemize}
 
 \textbf{Kernfrage:} Wie wirkt sich eine eindeutig definierte Leitintention
-$\mathcal{I}$ auf die EntwicklungsprioritÃ¤t jeder Schicht in \emph{beliebigen}
+$\mathcal{I}$ auf die Entwicklungspriorität jeder Schicht in \emph{beliebigen}
 Softwaresystemen aus, und warum ist die konsequente und konservative Verfolgung
-dieser Intention das universelle entscheidende QualitÃ¤tsmerkmal?
+dieser Intention das universelle entscheidende Qualitätsmerkmal?
 
 \subsection{Motivation und Relevanz}
 
-Sowohl die Praxis als auch die theoretische Literatur zur SoftwarequalitÃ¤t
-zeigen, dass die hÃ¤ufigste Ursache fÃ¼r technische Schulden und Wartungsprobleme
+Sowohl die Praxis als auch die theoretische Literatur zur Softwarequalität
+zeigen, dass die häufigste Ursache für technische Schulden und Wartungsprobleme
 nicht das Fehlen von Ressourcen ist, sondern das Fehlen einer klaren,
 durchgehaltenen Entwicklungsvision \cite{cunningham1992debt, fowler2018refactoring}.
-Dies gilt nicht nur fÃ¼r Websites, sondern fÃ¼r alle Klassen von Softwaresystemen.
-Eine mobile App, die ursprÃ¼nglich als schnelle Kameraanwendung konzipiert wurde
-und durch inkonsequente Weiterentwicklung zu einem Ã¼berladenen Social-Media-Tool
-mutiert, verliert ihre KernqualitÃ¤t nicht durch mangelnde Ressourcen, sondern
+Dies gilt nicht nur für Websites, sondern für alle Klassen von Softwaresystemen.
+Eine mobile App, die ursprünglich als schnelle Kameraanwendung konzipiert wurde
+und durch inkonsequente Weiterentwicklung zu einem überladenen Social-Media-Tool
+mutiert, verliert ihre Kernqualität nicht durch mangelnde Ressourcen, sondern
 durch mangelnde Intentionskonsistenz. Ein eingebettetes Steuerungssystem, das
-durch nachtrÃ¤gliche Feature-ErgÃ¤nzungen den ursprÃ¼nglich eng bemessenen
-Echtzeitanforderungen nicht mehr genÃ¼gt, leidet am gleichen PhÃ¤nomen.
+durch nachträgliche Feature-Ergänzungen den ursprünglich eng bemessenen
+Echtzeitanforderungen nicht mehr genügt, leidet am gleichen Phänomen.
 
 Das in dieser Arbeit untersuchte Paradigma antwortet auf diese Erkenntnis mit
-einem formalen Rahmen, der plattformunabhÃ¤ngig gÃ¼ltig ist.
+einem formalen Rahmen, der plattformunabhängig gültig ist.
 
-\subsection{Ãœberblick und BeitrÃ¤ge}
+\subsection{Überblick und Beiträge}
 
-Die vorliegende Arbeit leistet folgende BeitrÃ¤ge:
+Die vorliegende Arbeit leistet folgende Beiträge:
 
 \begin{itemize}
     \item Formalisierung des Intentionsprinzips als mathematisches Modell
-          (PrioritÃ¤tsfunktion, Konsequenz-Koeffizient, KohÃ¤renzmaÃŸ, Reifefunktion).
-    \item Beweis des QualitÃ¤tsvorteils konsequenter Entwicklung fÃ¼r alle
+          (Prioritätsfunktion, Konsequenz-Koeffizient, Kohärenzmaß, Reifefunktion).
+    \item Beweis des Qualitätsvorteils konsequenter Entwicklung für alle
           Intentionstypen mittels Jensen-Ungleichung.
     \item Verallgemeinerung des Paradigmas auf mobile Apps, Desktop-Anwendungen,
           eingebettete Systeme und verteilte Systeme -- jeweils mit formalen
-          SÃ¤tzen, Beweisen und Beispielen.
+          Sätzen, Beweisen und Beispielen.
     \item Spieltheoretische Analyse von Entwicklerteams und Governance-Mechanismen.
-    \item ZwÃ¶lf Matplotlib-Plots, die alle zentralen Aussagen veranschaulichen.
+    \item Zwölf Matplotlib-Plots, die alle zentralen Aussagen veranschaulichen.
 \end{itemize}
 
 % ============================================================
@@ -206,7 +206,7 @@ Die vorliegende Arbeit leistet folgende BeitrÃ¤ge:
 \begin{definition}[Softwaresystem]
 Ein Softwaresystem $\mathcal{S} = (\mathcal{D}, \mathcal{L}, \mathcal{U},
 \mathcal{I})$ besteht aus den drei Architekturschichten Datenschicht
-$\mathcal{D}$, Logikschicht $\mathcal{L}$ und PrÃ¤sentations- oder
+$\mathcal{D}$, Logikschicht $\mathcal{L}$ und Präsentations- oder
 Interaktionsschicht $\mathcal{U}$, sowie der Leitintention $\mathcal{I}$
 des Entwicklers.
 \end{definition}
@@ -223,16 +223,16 @@ des Erfinders oder Entwicklers, die den \emph{gesamten} Entwicklungsprozess
 eines Softwaresystems von Beginn bis zur Reife motiviert und strukturiert.
 \end{definition}
 
-\begin{definition}[PrioritÃ¤tsfunktion]
+\begin{definition}[Prioritätsfunktion]
 Sei $\Pi: \{\mathcal{D}, \mathcal{L}, \mathcal{U}\} \times \mathbf{I}
-\to [0,1]$ eine PrioritÃ¤tsfunktion, wobei $\mathbf{I}$ die Menge aller
-mÃ¶glichen Leitintentionen bezeichnet. $\Pi(S, \mathcal{I})$ gibt die
-relative EntwicklungsprioritÃ¤t der Schicht $S$ unter der Intention
+\to [0,1]$ eine Prioritätsfunktion, wobei $\mathbf{I}$ die Menge aller
+möglichen Leitintentionen bezeichnet. $\Pi(S, \mathcal{I})$ gibt die
+relative Entwicklungspriorität der Schicht $S$ unter der Intention
 $\mathcal{I}$ an.
 \end{definition}
 
 \begin{definition}[Normierungsbedingung]
-FÃ¼r jede Leitintention $\mathcal{I} \in \mathbf{I}$ gilt:
+Für jede Leitintention $\mathcal{I} \in \mathbf{I}$ gilt:
 \[
 \Pi(\mathcal{D}, \mathcal{I}) + \Pi(\mathcal{L}, \mathcal{I}) +
 \Pi(\mathcal{U}, \mathcal{I}) = 1, \quad
@@ -241,38 +241,38 @@ FÃ¼r jede Leitintention $\mathcal{I} \in \mathbf{I}$ gilt:
 \end{definition}
 
 \begin{definition}[Konsistenz]
-Sei $\kappa \in [0,1]$ das \emph{KonsistenzmaÃŸ} einer Entwicklung.
+Sei $\kappa \in [0,1]$ das \emph{Konsistenzmaß} einer Entwicklung.
 $\kappa = 1$ bedeutet, dass jede Entwurfsentscheidung auf allen drei
-Schichten vollstÃ¤ndig und widerspruchsfrei der Leitintention $\mathcal{I}$
-folgt. $\kappa = 0$ bedeutet, dass die Intention vollstÃ¤ndig ignoriert wird.
+Schichten vollständig und widerspruchsfrei der Leitintention $\mathcal{I}$
+folgt. $\kappa = 0$ bedeutet, dass die Intention vollständig ignoriert wird.
 \end{definition}
 
-\begin{definition}[Schichten-KohÃ¤renz]
-Die \emph{Schichten-KohÃ¤renz} $\gamma_S(\kappa) \in [0,1]$ einer Schicht
+\begin{definition}[Schichten-Kohärenz]
+Die \emph{Schichten-Kohärenz} $\gamma_S(\kappa) \in [0,1]$ einer Schicht
 $S$ ist definiert als:
 \[
 \gamma_S(\kappa) = c_S \cdot \kappa^{\alpha_S},
 \quad c_S \in (0,1], \; \alpha_S > 0,
 \]
-wobei $c_S$ die maximale erreichbare KohÃ¤renz und $\alpha_S$ die
-SensitivitÃ¤t der Schicht gegenÃ¼ber Konsistenzabweichungen bezeichnet.
+wobei $c_S$ die maximale erreichbare Kohärenz und $\alpha_S$ die
+Sensitivität der Schicht gegenüber Konsistenzabweichungen bezeichnet.
 \end{definition}
 
 \begin{definition}[Reife]
 Die \emph{Reife} $\rho(t) \in [0,1]$ eines Softwaresystems zum Zeitpunkt $t$
-ist der auf $[0,1]$ normierte Fortschritt zur vollstÃ¤ndigen Realisierung
+ist der auf $[0,1]$ normierte Fortschritt zur vollständigen Realisierung
 der Leitintention $\mathcal{I}$.
 \end{definition}
 
 \begin{definition}[Konsequenz-Koeffizient]
 Der \emph{Konsequenz-Koeffizient} $\kappa_{\mathcal{I}}(t) \in [0,1]$
 misst zum Zeitpunkt $t$, welcher Anteil aller getroffenen
-Entwurfsentscheidungen vollstÃ¤ndig und widerspruchsfrei der
+Entwurfsentscheidungen vollständig und widerspruchsfrei der
 Leitintention $\mathcal{I}$ folgt.
 \end{definition}
 
 \begin{definition}[UI-Primat-Intention]
-Eine Leitintention $\mathcal{I}_{UI}$ heiÃŸt \emph{UI-Primat-Intention}, falls:
+Eine Leitintention $\mathcal{I}_{UI}$ heißt \emph{UI-Primat-Intention}, falls:
 \[
 \Pi(\mathcal{U}, \mathcal{I}_{UI}) > \Pi(\mathcal{L}, \mathcal{I}_{UI})
 > \Pi(\mathcal{D}, \mathcal{I}_{UI}).
@@ -280,7 +280,7 @@ Eine Leitintention $\mathcal{I}_{UI}$ heiÃŸt \emph{UI-Primat-Intention}, falls
 \end{definition}
 
 \begin{definition}[Daten-Primat-Intention]
-Eine Leitintention $\mathcal{I}_{D}$ heiÃŸt \emph{Daten-Primat-Intention}, falls:
+Eine Leitintention $\mathcal{I}_{D}$ heißt \emph{Daten-Primat-Intention}, falls:
 \[
 \Pi(\mathcal{D}, \mathcal{I}_{D}) > \Pi(\mathcal{L}, \mathcal{I}_{D})
 > \Pi(\mathcal{U}, \mathcal{I}_{D}).
@@ -288,8 +288,8 @@ Eine Leitintention $\mathcal{I}_{D}$ heiÃŸt \emph{Daten-Primat-Intention}, fal
 \end{definition}
 
 \begin{definition}[Logik-Primat-Intention]
-Eine Leitintention $\mathcal{I}_{L}$ heiÃŸt \emph{Logik-Primat-Intention}
-(typisch fÃ¼r algorithmisch getriebene Systeme, z.\,B. Berechnungsengines
+Eine Leitintention $\mathcal{I}_{L}$ heißt \emph{Logik-Primat-Intention}
+(typisch für algorithmisch getriebene Systeme, z.\,B. Berechnungsengines
 oder KI-Modelle), falls:
 \[
 \Pi(\mathcal{L}, \mathcal{I}_{L}) > \Pi(\mathcal{D}, \mathcal{I}_{L})
@@ -307,7 +307,7 @@ Erfinders durchdringt alle drei Schichten gleichzeitig.
     \centering
     \includegraphics[width=0.82\textwidth]{plot1_architekturschichten.pdf}
     \caption{Intentionsgetriebene Architekturschichten. Der Pfeil links
-    symbolisiert die durchgÃ¤ngige Wirkkraft der Leitintention $\mathcal{I}$
+    symbolisiert die durchgängige Wirkkraft der Leitintention $\mathcal{I}$
     von der Datenschicht bis zur UI-Schicht.}
     \label{fig:architekturschichten}
 \end{figure}
@@ -325,32 +325,32 @@ Die Leitintention $\mathcal{I}$ treibt den Entwurf aller Schichten
 $\mathcal{D}$, $\mathcal{L}$ und $\mathcal{U}$.
 \end{prinzip}
 
-\begin{satz}[Existenz und Eindeutigkeit der PrioritÃ¤tsfunktion]
+\begin{satz}[Existenz und Eindeutigkeit der Prioritätsfunktion]
 \label{satz:existenz}
 Zu jeder Leitintention $\mathcal{I} \in \mathbf{I}$ existiert eine
-eindeutige PrioritÃ¤tsfunktion $\Pi(\cdot, \mathcal{I})$, die die
-Normierungsbedingung erfÃ¼llt und die primÃ¤re Schicht $S^*(\mathcal{I})$
+eindeutige Prioritätsfunktion $\Pi(\cdot, \mathcal{I})$, die die
+Normierungsbedingung erfüllt und die primäre Schicht $S^*(\mathcal{I})$
 korrekt identifiziert.
 \end{satz}
 
 \begin{proof}
-Wir konstruieren $\Pi$ explizit. Sei $S^*(\mathcal{I})$ die primÃ¤re
-Schicht und $S^{**}(\mathcal{I})$ die sekundÃ¤re. Dann setze:
+Wir konstruieren $\Pi$ explizit. Sei $S^*(\mathcal{I})$ die primäre
+Schicht und $S^{**}(\mathcal{I})$ die sekundäre. Dann setze:
 \begin{align}
 \Pi(S^*, \mathcal{I}) &= p^* \in (1/3, 1), \\
 \Pi(S^{**}, \mathcal{I}) &= p^{**} \in (0, p^*), \\
 \Pi(S^{\circ}, \mathcal{I}) &= 1 - p^* - p^{**} > 0,
 \end{align}
 wobei $S^{\circ}$ die verbleibende Schicht ist. Die Normierungsbedingung
-ist per Konstruktion erfÃ¼llt. Die PositivitÃ¤t aller drei Terme folgt
+ist per Konstruktion erfüllt. Die Positivität aller drei Terme folgt
 aus $p^* > 1/2$ und $p^{**} > (1-p^*)/2 > 0$. Die Eindeutigkeit
 folgt daraus, dass $S^*$ durch die Intention eindeutig bestimmt ist.
 \end{proof}
 
 \begin{bemerkung}
-Jede Schicht -- auch die mit niedrigster PrioritÃ¤t -- erhÃ¤lt stets einen
+Jede Schicht -- auch die mit niedrigster Priorität -- erhält stets einen
 strikt positiven Beitrag. Dies entspricht genau dem Leitgedanken: Auch
-wenn die UI-Schicht nicht die hÃ¶chste PrioritÃ¤t hat, hat sie dennoch
+wenn die UI-Schicht nicht die höchste Priorität hat, hat sie dennoch
 besondere Bedeutung zum Zugang der effizienten Datenstruktur.
 \end{bemerkung}
 
@@ -361,13 +361,13 @@ Sei $\mathcal{I}_{UI}$ eine UI-Primat-Intention. Dann gilt:
 (1) $\Pi(\mathcal{U}, \mathcal{I}_{UI}) > 1/3$.
 (2) $\Pi(\mathcal{D}), \Pi(\mathcal{L}) > 0$.
 (3) Die Datenschicht und Logikschicht sind notwendige Bedingungen
-fÃ¼r die Realisierbarkeit der UI-Intention.
+für die Realisierbarkeit der UI-Intention.
 \end{satz}
 
 \begin{proof}
 (1) folgt aus UI-Primat-Definition und Normierung.
-(2) aus der Normierungsbedingung mit PositivitÃ¤t.
-(3) Formal gilt: $\rho(t) \to 1$ erfordert $\Pi(S) > 0$ fÃ¼r alle $S$,
+(2) aus der Normierungsbedingung mit Positivität.
+(3) Formal gilt: $\rho(t) \to 1$ erfordert $\Pi(S) > 0$ für alle $S$,
 da $\lim_{\Pi(\mathcal{D}) \to 0} \rho = 0$.
 \end{proof}
 
@@ -383,25 +383,25 @@ $f$ streng monoton wachsend und $f(0) = 0$.
 \begin{proof}
 Symmetrisch zu Satz~\ref{satz:uiprimat}. Aussage (2) folgt aus der
 Nutzungsbedingung: Ohne UI-Zugang ist die effiziente Datenstruktur
-fÃ¼r den Nutzer nicht erreichbar.
+für den Nutzer nicht erreichbar.
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.92\textwidth]{plot2_prioritaetsverteilung.pdf}
-    \caption{PrioritÃ¤tsverteilung nach primÃ¤rer Entwicklungsintention.
+    \caption{Prioritätsverteilung nach primärer Entwicklungsintention.
     Links: UI-Primat ($\mathcal{I}_{UI}$), rechts: Daten-Primat
-    ($\mathcal{I}_D$). In beiden FÃ¤llen erhalten alle drei Schichten
-    einen positiven PrioritÃ¤tswert.}
+    ($\mathcal{I}_D$). In beiden Fällen erhalten alle drei Schichten
+    einen positiven Prioritätswert.}
     \label{fig:prioritaet}
 \end{figure}
 
 \subsection{Konsequenz, Reife und Kosten}
 
-\begin{prinzip}[Konsequenz-KonservativitÃ¤ts-Prinzip]\label{prinzip:konsequenz}
-In allen FÃ¤llen -- ob UI-Primat, Daten-Primat, Logik-Primat oder jede
+\begin{prinzip}[Konsequenz-Konservativitäts-Prinzip]\label{prinzip:konsequenz}
+In allen Fällen -- ob UI-Primat, Daten-Primat, Logik-Primat oder jede
 andere Intentionsform -- ist die konsequente und konservative Entwicklung
-das entscheidende QualitÃ¤tsmerkmal. FÃ¼r dieses eine Ziel oder diese eine
+das entscheidende Qualitätsmerkmal. Für dieses eine Ziel oder diese eine
 Erfindung oder Idee wird oder wurde das System entwickelt.
 \end{prinzip}
 
@@ -415,7 +415,7 @@ eine streng monoton wachsende Funktion der Zeit.
 \end{satz}
 
 \begin{proof}
-Die Reifungsdynamik erfÃ¼llt die logistische Differentialgleichung:
+Die Reifungsdynamik erfüllt die logistische Differentialgleichung:
 \[
 \dot{\rho}(t) = \lambda(\kappa) \cdot \rho(t) \cdot (1 - \rho(t)).
 \]
@@ -424,9 +424,9 @@ Durch Separation der Variablen:
 \int \frac{d\rho}{\rho(1-\rho)} = \lambda(\kappa) \int dt
 \implies \rho(t) = \frac{1}{1 + e^{-\lambda(\kappa)(t - t_{1/2})}}.
 \]
-Strenge Monotonie: $\dot{\rho}(t) > 0$ fÃ¼r alle $t$, da
+Strenge Monotonie: $\dot{\rho}(t) > 0$ für alle $t$, da
 $\lambda(\kappa) > 0$ und $\rho \in (0,1)$. Da $\lambda$ streng
-wÃ¤chst, beschleunigt hÃ¶here Konsequenz die Reifung.
+wächst, beschleunigt höhere Konsequenz die Reifung.
 \end{proof}
 
 \begin{figure}[h]
@@ -434,13 +434,13 @@ wÃ¤chst, beschleunigt hÃ¶here Konsequenz die Reifung.
     \includegraphics[width=0.88\textwidth]{plot3_reifekurve.pdf}
     \caption{Reifekurve: Konservativ-konsequente Entwicklung (blau)
     folgt einem glatten sigmoiden Verlauf. Opportunistische Entwicklung
-    (rot, gestrichelt) zeigt Oszillationen durch hÃ¤ufige Richtungswechsel.}
+    (rot, gestrichelt) zeigt Oszillationen durch häufige Richtungswechsel.}
     \label{fig:reifekurve}
 \end{figure}
 
-\begin{lemma}[SuperlinearitÃ¤t der Inkonsistenzkosten]\label{lem:kosten}
-FÃ¼r eine konsequente Entwicklung gilt $K_{\kappa=1}(t) = a + bt$
-(linear). FÃ¼r $\kappa < 1$ gilt:
+\begin{lemma}[Superlinearität der Inkonsistenzkosten]\label{lem:kosten}
+Für eine konsequente Entwicklung gilt $K_{\kappa=1}(t) = a + bt$
+(linear). Für $\kappa < 1$ gilt:
 \[
 K_{\kappa}(t) = a + \beta t + \delta(\kappa) \cdot t^2,
 \quad \delta(\kappa) = \frac{c \mu (1 - \kappa)}{2} > 0.
@@ -456,24 +456,24 @@ K_{\text{ref}}(t) = c \int_0^t \mu(1-\kappa) s \, ds
 = \frac{c \mu (1-\kappa)}{2} \cdot t^2 = \delta(\kappa) \cdot t^2.
 \]
 $\delta'(\kappa) = -c\mu/2 < 0$: Je konsequenter, desto geringer
-die quadratischen Kosten. FÃ¼r $\kappa = 1$: $\delta(1) = 0$.
+die quadratischen Kosten. Für $\kappa = 1$: $\delta(1) = 0$.
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{plot4_entwicklungskosten.pdf}
-    \caption{Entwicklungskosten: Konsequente Entwicklung (blau) wÃ¤chst
-    linear; inkonsistente Entwicklung (rot) wÃ¤chst quadratisch durch
+    \caption{Entwicklungskosten: Konsequente Entwicklung (blau) wächst
+    linear; inkonsistente Entwicklung (rot) wächst quadratisch durch
     kumulative Refactoring-Kosten (Lemma~\ref{lem:kosten}).}
     \label{fig:kosten}
 \end{figure}
 
-\subsection{KohÃ¤renz- und QualitÃ¤tssÃ¤tze}
+\subsection{Kohärenz- und Qualitätssätze}
 
-\begin{satz}[Schichten-KohÃ¤renz-Theorem]\label{satz:kohÃ¤renz}
-FÃ¼r jede Schicht $S$: (1) $\gamma_S(\kappa)$ ist streng monoton
+\begin{satz}[Schichten-Kohärenz-Theorem]\label{satz:kohärenz}
+Für jede Schicht $S$: (1) $\gamma_S(\kappa)$ ist streng monoton
 wachsend. (2) $\gamma_S(0) = 0$. (3) $\gamma_S(1) = c_S$.
-(4) Die Interschicht-KohÃ¤renz $\Gamma(\kappa) = \min_S \gamma_S(\kappa)$
+(4) Die Interschicht-Kohärenz $\Gamma(\kappa) = \min_S \gamma_S(\kappa)$
 ist ebenfalls streng monoton wachsend in $\kappa$.
 \end{satz}
 
@@ -486,13 +486,13 @@ ist ebenfalls streng monoton wachsend in $\kappa$.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{plot6_kohaerenz.pdf}
-    \caption{Schichten-KohÃ¤renz als Funktion der Konsistenz $\kappa$.
-    Alle Schichten zeigen streng monoton wachsende KohÃ¤renz.}
-    \label{fig:kohÃ¤renz}
+    \caption{Schichten-Kohärenz als Funktion der Konsistenz $\kappa$.
+    Alle Schichten zeigen streng monoton wachsende Kohärenz.}
+    \label{fig:kohärenz}
 \end{figure}
 
-\begin{satz}[QualitÃ¤tsvorteil konservativer Entwicklung]\label{satz:qualitaet}
-Mit dem QualitÃ¤tsmaÃŸ $Q(t) = \sum_S \Pi(S, \mathcal{I}) \cdot
+\begin{satz}[Qualitätsvorteil konservativer Entwicklung]\label{satz:qualitaet}
+Mit dem Qualitätsmaß $Q(t) = \sum_S \Pi(S, \mathcal{I}) \cdot
 \gamma_S(\kappa(t))$ gilt:
 \[
 Q_{\text{konservativ}}(t) \geq Q_{\text{opportunistisch}}(t)
@@ -501,7 +501,7 @@ Q_{\text{konservativ}}(t) \geq Q_{\text{opportunistisch}}(t)
 \end{satz}
 
 \begin{proof}
-Konservative Entwicklung hÃ¤lt $\kappa(t) \equiv \kappa_{\max} \approx 1$.
+Konservative Entwicklung hält $\kappa(t) \equiv \kappa_{\max} \approx 1$.
 Opportunistische Entwicklung zeigt schwankende Konsistenz mit
 $\mathbb{E}[\hat{\kappa}(t)] < \kappa_{\max}$. Da $Q(\cdot)$ eine
 positive Linearkombination konvexer Funktionen ist, folgt mit der
@@ -514,26 +514,26 @@ Q(\kappa_{\max}) > Q(\mathbb{E}[\hat{\kappa}]) \geq \mathbb{E}[Q(\hat{\kappa})].
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.72\textwidth]{plot5_radar_qualitaet.pdf}
-    \caption{QualitÃ¤tsmerkmale im Vergleich: Konsequente Entwicklung (blau)
-    Ã¼bertrifft opportunistische Entwicklung (rot) in allen sechs Dimensionen.}
+    \caption{Qualitätsmerkmale im Vergleich: Konsequente Entwicklung (blau)
+    übertrifft opportunistische Entwicklung (rot) in allen sechs Dimensionen.}
     \label{fig:radar}
 \end{figure}
 
-\begin{satz}[DualitÃ¤t und UniversalitÃ¤t]\label{satz:dualitaet}
+\begin{satz}[Dualität und Universalität]\label{satz:dualitaet}
 Sowohl UI-Primat, Daten-Primat, Logik-Primat als auch alle anderen
-Intentionsformen sind spezielle AusprÃ¤gungen desselben
-Intentionsprinzips. Der QualitÃ¤tsvorteil konsequenter Entwicklung
-gilt universell, unabhÃ¤ngig von der Wahl der PrioritÃ¤tsfunktion.
+Intentionsformen sind spezielle Ausprägungen desselben
+Intentionsprinzips. Der Qualitätsvorteil konsequenter Entwicklung
+gilt universell, unabhängig von der Wahl der Prioritätsfunktion.
 \end{satz}
 
 \begin{proof}
 $Q(t) = \sum_S \Pi(S) \gamma_S(\kappa)$ ist eine positive Linearkombination
-konvexer Funktionen fÃ¼r jedes beliebige normierte $\Pi$. Daher gilt
-Satz~\ref{satz:qualitaet} fÃ¼r alle $\mathcal{I} \in \mathbf{I}$.
+konvexer Funktionen für jedes beliebige normierte $\Pi$. Daher gilt
+Satz~\ref{satz:qualitaet} für alle $\mathcal{I} \in \mathbf{I}$.
 \end{proof}
 
-\begin{korollar}[UniversalitÃ¤t der Konsequenz]
-FÃ¼r jede Intention $\mathcal{I}$ und $\kappa > 0$:
+\begin{korollar}[Universalität der Konsequenz]
+Für jede Intention $\mathcal{I}$ und $\kappa > 0$:
 \[
 \frac{\partial Q}{\partial \kappa} =
 \sum_S \Pi(S) c_S \alpha_S \kappa^{\alpha_S - 1} > 0.
@@ -542,30 +542,30 @@ Konsequenz zahlt sich immer aus.
 \end{korollar}
 
 % ============================================================
-\section{Verallgemeinerung: Das Paradigma fÃ¼r alle Softwaresysteme}
+\section{Verallgemeinerung: Das Paradigma für alle Softwaresysteme}
 % ============================================================
 
-Der Leitgedanke des Intentionsprinzips wurde im vorigen Abschnitt fÃ¼r
+Der Leitgedanke des Intentionsprinzips wurde im vorigen Abschnitt für
 Websites hergeleitet. In diesem Kernkapitel wird gezeigt, dass er mit
-gleicher Kraft fÃ¼r \emph{alle} relevanten Klassen von Softwaresystemen
+gleicher Kraft für \emph{alle} relevanten Klassen von Softwaresystemen
 gilt: mobile Apps, Desktop-Anwendungen, eingebettete Systeme und
 verteilte Systeme. Die Verallgemeinerung ist nicht trivial, denn jede
 Systemklasse hat eigene technische Constraints, eigene Schichtenstrukturen
 und eigene Manifestationen der drei Architekturschichten. Es wird in
 jedem Fall gezeigt, dass das Intentionsprinzip (Prinzip~\ref{prinzip:intention})
-und das Konsequenz-KonservativitÃ¤ts-Prinzip (Prinzip~\ref{prinzip:konsequenz})
+und das Konsequenz-Konservativitäts-Prinzip (Prinzip~\ref{prinzip:konsequenz})
 strukturell invariant bleiben.
 
 Abbildung~\ref{fig:plattformvergleich} gibt einen ersten quantitativen
-Ãœberblick: Ãœber alle Plattformen hinweg erzielt konsequente Entwicklung
-einen deutlichen und konsistenten QualitÃ¤tsvorteil.
+Überblick: Über alle Plattformen hinweg erzielt konsequente Entwicklung
+einen deutlichen und konsistenten Qualitätsvorteil.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.96\textwidth]{plot7_plattformvergleich.pdf}
-    \caption{SystemqualitÃ¤t $Q$ im Vergleich zwischen konsequenter
+    \caption{Systemqualität $Q$ im Vergleich zwischen konsequenter
     ($\kappa \approx 1$) und opportunistischer ($\kappa \approx 0.4$)
-    Entwicklung nach Plattformklasse. In allen Klassen Ã¼bertrifft
+    Entwicklung nach Plattformklasse. In allen Klassen übertrifft
     konsequente Entwicklung die opportunistische deutlich.}
     \label{fig:plattformvergleich}
 \end{figure}
@@ -574,25 +574,25 @@ einen deutlichen und konsistenten QualitÃ¤tsvorteil.
 
 \subsubsection{Architekturspezifik mobiler Systeme}
 
-Mobile Apps weisen gegenÃ¼ber Websites spezifische Constraints auf, die
-die AusprÃ¤gung der drei Schichten maÃŸgeblich beeinflussen:
+Mobile Apps weisen gegenüber Websites spezifische Constraints auf, die
+die Ausprägung der drei Schichten maßgeblich beeinflussen:
 
 \begin{itemize}
-    \item \textbf{RessourcenbeschrÃ¤nkung}: RAM, CPU und AkkukapazitÃ¤t
-          sind begrenzt. Jede unnÃ¶tige Schicht verbraucht wertvolle Ressourcen.
-    \item \textbf{Offline-FÃ¤higkeit}: Mobile Apps mÃ¼ssen hÃ¤ufig ohne
+    \item \textbf{Ressourcenbeschränkung}: RAM, CPU und Akkukapazität
+          sind begrenzt. Jede unnötige Schicht verbraucht wertvolle Ressourcen.
+    \item \textbf{Offline-Fähigkeit}: Mobile Apps müssen häufig ohne
           Netzwerkverbindung funktionieren. Die Datenschicht muss daher
           oft lokal (SQLite, Room, Core Data) und synchronisierend zugleich sein.
-    \item \textbf{Lifecycle-KomplexitÃ¤t}: Apps kÃ¶nnen vom Betriebssystem
+    \item \textbf{Lifecycle-Komplexität}: Apps können vom Betriebssystem
           jederzeit in den Hintergrund versetzt oder beendet werden.
-          Die Logikschicht muss Zustandswiederherstellung unterstÃ¼tzen.
+          Die Logikschicht muss Zustandswiederherstellung unterstützen.
     \item \textbf{Plattformdivergenz}: iOS und Android haben unterschiedliche
           UI-Paradigmen (UIKit/SwiftUI vs. View/Jetpack Compose), was
-          bei plattformÃ¼bergreifender Entwicklung (Flutter, React Native)
+          bei plattformübergreifender Entwicklung (Flutter, React Native)
           Intentionskonsistenz besonders herausfordernd macht.
 \end{itemize}
 
-Trotz dieser Constraints gilt das Intentionsprinzip unverÃ¤ndert. Die
+Trotz dieser Constraints gilt das Intentionsprinzip unverändert. Die
 drei Architekturschichten sind:
 
 \begin{itemize}
@@ -604,33 +604,33 @@ drei Architekturschichten sind:
           UIViewControllers/SwiftUI-Views (iOS), Jetpack Compose.
 \end{itemize}
 
-\subsubsection{Formale Ãœbertragung des Intentionsprinzips}
+\subsubsection{Formale Übertragung des Intentionsprinzips}
 
-\begin{satz}[Intentionsprinzip fÃ¼r mobile Apps]\label{satz:mobile}
-Das Intentionsprinzip (Prinzip~\ref{prinzip:intention}) gilt fÃ¼r mobile
+\begin{satz}[Intentionsprinzip für mobile Apps]\label{satz:mobile}
+Das Intentionsprinzip (Prinzip~\ref{prinzip:intention}) gilt für mobile
 Apps mit den Schichten $\mathcal{D}^{\text{mob}}$,
 $\mathcal{L}^{\text{mob}}$, $\mathcal{U}^{\text{mob}}$.
-Insbesondere: Jede Architekturentscheidung fÃ¼r eine mobile App --
+Insbesondere: Jede Architekturentscheidung für eine mobile App --
 ob Datenbankschema, Repository-Pattern oder UI-Komponentenstruktur --
 muss sich aus der Leitintention $\mathcal{I}$ ableiten lassen.
 \end{satz}
 
 \begin{proof}
 Die formale Struktur ist identisch zur Web-Version: Die Normierungsbedingung,
-die PositivitÃ¤tsbedingung und der Konsequenz-Koeffizient $\kappa$ sind
-plattformunabhÃ¤ngig definiert (Definition~5 und~8). Die Existenz der
+die Positivitätsbedingung und der Konsequenz-Koeffizient $\kappa$ sind
+plattformunabhängig definiert (Definition~5 und~8). Die Existenz der
 drei Schichten $\mathcal{D}^{\text{mob}}$, $\mathcal{L}^{\text{mob}}$,
-$\mathcal{U}^{\text{mob}}$ in jeder mobilen App (unabhÃ¤ngig von der
+$\mathcal{U}^{\text{mob}}$ in jeder mobilen App (unabhängig von der
 verwendeten Architektur MVC, MVP, MVVM oder Clean Architecture) ist
-eine empirische Tatsache, die durch sÃ¤mtliche offiziellen Architektur-
+eine empirische Tatsache, die durch sämtliche offiziellen Architektur-
 richtlinien von Google (Android Architecture) und Apple (UIKit/SwiftUI)
-bestÃ¤tigt wird \cite{google2023architecture, apple2023swiftui}.
-Damit sind alle Voraussetzungen der SÃ¤tze \ref{satz:existenz}--\ref{satz:dualitaet}
-auf mobile Systeme Ã¼bertragbar.
+bestätigt wird \cite{google2023architecture, apple2023swiftui}.
+Damit sind alle Voraussetzungen der Sätze \ref{satz:existenz}--\ref{satz:dualitaet}
+auf mobile Systeme übertragbar.
 \end{proof}
 
 \begin{beispiel}[Sofort-Kamera-App -- UI-Primat]\label{bsp:kamera}
-Eine Entwicklerin entwirft eine Kamera-App fÃ¼r iOS mit der Leitintention
+Eine Entwicklerin entwirft eine Kamera-App für iOS mit der Leitintention
 $\mathcal{I}_{UI}$: \textit{\glqq{}Ein Foto soll in unter zwei Sekunden vom
 Entsperren des Telefons bis zur Aufnahme erreichbar sein.\grqq{}} Diese
 UI-Primat-Intention strukturiert alle Entscheidungen:
@@ -650,18 +650,18 @@ Fotobibliothek, kein blockierender Schreibvorgang \\
 \end{tabular}
 \end{center}
 
-Inkonsistenz-Warnung: Das HinzufÃ¼gen eines komplexen Foto-Filter-Editors
+Inkonsistenz-Warnung: Das Hinzufügen eines komplexen Foto-Filter-Editors
 (UI-Umbau), eines KI-Bilderkennungs-Backends (Logik-Primat) oder einer
-iCloud-Synchronisation (Daten-PrioritÃ¤t) -- ohne Anpassung der
-Leitintention -- wÃ¼rde $\kappa$ auf unter 0.5 senken und gemÃ¤ÃŸ
+iCloud-Synchronisation (Daten-Priorität) -- ohne Anpassung der
+Leitintention -- würde $\kappa$ auf unter 0.5 senken und gemäß
 Lemma~\ref{lem:kosten} quadratische Mehrkosten erzeugen.
 \end{beispiel}
 
 \begin{beispiel}[Offline-First-Sync-App -- Daten-Primat]\label{bsp:sync}
-Ein Team entwickelt eine Feldvermessungs-App fÃ¼r Android, die ohne
+Ein Team entwickelt eine Feldvermessungs-App für Android, die ohne
 Mobilfunknetz funktionieren muss. Leitintention $\mathcal{I}_D$:
-\textit{\glqq{}Alle Messdaten werden zuverlÃ¤ssig gespeichert und bei
-Netzwerkverbindung vollstÃ¤ndig und konfliktfrei synchronisiert.\grqq{}}
+\textit{\glqq{}Alle Messdaten werden zuverlässig gespeichert und bei
+Netzwerkverbindung vollständig und konfliktfrei synchronisiert.\grqq{}}
 
 \begin{center}
 \begin{tabular}{lcp{5.5cm}}
@@ -669,7 +669,7 @@ Netzwerkverbindung vollstÃ¤ndig und konfliktfrei synchronisiert.\grqq{}}
 Schicht & $\Pi(S)$ & Entwurfsentscheidung \\
 \midrule
 Daten ($\mathcal{D}^{\text{mob}}$) & 0.60 & Room + WorkManager, CRDT-basierte
-KonfliktauflÃ¶sung, SQLite WAL-Modus \\
+Konfliktauflösung, SQLite WAL-Modus \\
 Logik ($\mathcal{L}^{\text{mob}}$) & 0.30 & Repository-Pattern,
 Synchronisations-Scheduler, Delta-Sync-Algorithmus \\
 UI ($\mathcal{U}^{\text{mob}}$) & 0.10 & Schlichtes Formular-Interface,
@@ -678,43 +678,43 @@ Sync-Status-Anzeige \\
 \end{tabular}
 \end{center}
 
-GemÃ¤ÃŸ Satz~\ref{satz:datenprimat} erhÃ¤lt die UI-Schicht $\Pi = 0.10 > 0$:
-Sie ist das notwendige Tor zu den Messdaten fÃ¼r den Feldvermesser --
-ohne sie wÃ¤ren die zuverlÃ¤ssig gespeicherten Daten im Feld nicht erfassbar.
+Gemäß Satz~\ref{satz:datenprimat} erhält die UI-Schicht $\Pi = 0.10 > 0$:
+Sie ist das notwendige Tor zu den Messdaten für den Feldvermesser --
+ohne sie wären die zuverlässig gespeicherten Daten im Feld nicht erfassbar.
 \end{beispiel}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.96\textwidth]{plot8_mobile_prioritaet.pdf}
-    \caption{PrioritÃ¤tsverteilung in der mobilen App-Entwicklung Ã¼ber
+    \caption{Prioritätsverteilung in der mobilen App-Entwicklung über
     die Zeit. Links: UI-Primat (Sofort-Kamera-App). Rechts: Daten-Primat
-    (Offline-Sync-App). In beiden FÃ¤llen pendeln sich die PrioritÃ¤ten
+    (Offline-Sync-App). In beiden Fällen pendeln sich die Prioritäten
     auf die intentionskonsistente Verteilung ein.}
     \label{fig:mobile}
 \end{figure}
 
-\subsubsection{PlattformÃ¼bergreifende Entwicklung und Intentionskonsistenz}
+\subsubsection{Plattformübergreifende Entwicklung und Intentionskonsistenz}
 
-PlattformÃ¼bergreifende Frameworks wie Flutter oder React Native stellen
-eine besondere Herausforderung fÃ¼r das Intentionsprinzip dar. Sie versprechen
-eine einzige Codebasis fÃ¼r iOS und Android, erzeugen aber hÃ¤ufig eine
+Plattformübergreifende Frameworks wie Flutter oder React Native stellen
+eine besondere Herausforderung für das Intentionsprinzip dar. Sie versprechen
+eine einzige Codebasis für iOS und Android, erzeugen aber häufig eine
 vierte, implizite Schicht -- den Plattform-Abstraktionskanal --
-die die Intentionskonsistenz gefÃ¤hrden kann.
+die die Intentionskonsistenz gefährden kann.
 
 \begin{lemma}[Plattform-Abstraktion und Konsequenz]\label{lem:plattform}
 Sei $\mathcal{A}$ ein Plattform-Abstraktionskanal (Flutter Engine,
 React Native Bridge). Dann gilt: Der Konsequenz-Koeffizient $\kappa$
-des Gesamtsystems ist nach oben beschrÃ¤nkt durch:
+des Gesamtsystems ist nach oben beschränkt durch:
 \[
 \kappa_{\text{gesamt}} \leq \kappa_{\text{App}} \cdot \eta(\mathcal{A}),
 \]
 wobei $\eta(\mathcal{A}) \in (0, 1]$ die Intentionstreue des Abstraktions-
 kanals bezeichnet: $\eta = 1$ bei perfekter Plattformintegration,
-$\eta < 1$ bei plattformspezifischen BrÃ¼chen.
+$\eta < 1$ bei plattformspezifischen Brüchen.
 \end{lemma}
 
 \begin{proof}
-Jede Inkonsistenz, die durch die Plattform-Abstraktion eingefÃ¼hrt wird
+Jede Inkonsistenz, die durch die Plattform-Abstraktion eingeführt wird
 (z.\,B. unterschiedliches Look-and-Feel zwischen iOS und Android trotz
 einheitlichem Code), reduziert den effektiven Konsequenz-Koeffizienten.
 Formal: Wenn $\mathcal{A}$ mit Wahrscheinlichkeit $1 - \eta$ eine
@@ -731,57 +731,57 @@ unterscheiden sich von Web- und mobilen Apps in mehreren relevanten Aspekten:
 
 \begin{itemize}
     \item \textbf{Reichere Ressourcen}: Desktop-Systeme haben in der Regel
-          mehr RAM, CPU und persistenten Speicher zur VerfÃ¼gung. Dies vergrÃ¶ÃŸert
-          den Raum der mÃ¶glichen Entwurfsentscheidungen und damit auch das
-          Risiko, die Leitintention durch unnÃ¶tige KomplexitÃ¤t zu verwÃ¤ssern.
-    \item \textbf{Komplexere UI-Paradigmen}: Drag-and-Drop, KontextmenÃ¼s,
-          TastaturkÃ¼rzel, MenÃ¼leisten -- Desktop-UIs sind reichhaltiger.
-          Dies kann dazu verfÃ¼hren, UI-Features zu ergÃ¤nzen, die nicht der
+          mehr RAM, CPU und persistenten Speicher zur Verfügung. Dies vergrößert
+          den Raum der möglichen Entwurfsentscheidungen und damit auch das
+          Risiko, die Leitintention durch unnötige Komplexität zu verwässern.
+    \item \textbf{Komplexere UI-Paradigmen}: Drag-and-Drop, Kontextmenüs,
+          Tastaturkürzel, Menüleisten -- Desktop-UIs sind reichhaltiger.
+          Dies kann dazu verführen, UI-Features zu ergänzen, die nicht der
           Leitintention dienen.
     \item \textbf{Interprozesskommunikation}: Desktop-Apps interagieren
-          hÃ¤ufig mit dem Betriebssystem, anderen Prozessen und Hardware-
+          häufig mit dem Betriebssystem, anderen Prozessen und Hardware-
           peripherie. Jede Schnittstelle ist eine potenzielle Quelle von
           Inkonsistenz.
 \end{itemize}
 
 \begin{definition}[Desktop-Schichtenmodell]
-FÃ¼r Desktop-Anwendungen sind die drei Architekturschichten:
+Für Desktop-Anwendungen sind die drei Architekturschichten:
 $\mathcal{D}^{\text{desk}}$ (lokale Datei- und Datenbanksysteme, ORM,
 Konfigurationspersistenz),
-$\mathcal{L}^{\text{desk}}$ (GeschÃ¤ftslogik, Controller, Presenter,
+$\mathcal{L}^{\text{desk}}$ (Geschäftslogik, Controller, Presenter,
 Hintergrundverarbeitung, Plugins),
 $\mathcal{U}^{\text{desk}}$ (nativer UI-Toolkit, Fensterverwaltung,
 Event-Loop, Widgets).
 \end{definition}
 
-\begin{satz}[Intentionsprinzip fÃ¼r Desktop-Anwendungen]\label{satz:desktop}
-Das Intentionsprinzip gilt fÃ¼r Desktop-Anwendungen mit den Schichten
+\begin{satz}[Intentionsprinzip für Desktop-Anwendungen]\label{satz:desktop}
+Das Intentionsprinzip gilt für Desktop-Anwendungen mit den Schichten
 $\mathcal{D}^{\text{desk}}$, $\mathcal{L}^{\text{desk}}$,
-$\mathcal{U}^{\text{desk}}$. FÃ¼r Desktop-Anwendungen mit reicheren
-Ressourcen gilt darÃ¼ber hinaus: Die erhÃ¶hte RessourcenverfÃ¼gbarkeit
-erhÃ¶ht ceteris paribus das Risiko der IntentionsverwÃ¤sserung, da
-mehr Entwurfsentscheidungen mÃ¶glich sind.
+$\mathcal{U}^{\text{desk}}$. Für Desktop-Anwendungen mit reicheren
+Ressourcen gilt darüber hinaus: Die erhöhte Ressourcenverfügbarkeit
+erhöht ceteris paribus das Risiko der Intentionsverwässerung, da
+mehr Entwurfsentscheidungen möglich sind.
 \end{satz}
 
 \begin{proof}
-Die erste Aussage folgt aus der plattformunabhÃ¤ngigen Formulierung von
-Prinzip~\ref{prinzip:intention}. FÃ¼r die zweite Aussage: Sei $N(r)$
-die Anzahl der mÃ¶glichen Entwurfsentscheidungen als wachsende Funktion
-der verfÃ¼gbaren Ressourcen $r$. Dann ist die Wahrscheinlichkeit einer
-zufÃ¤lligen intentionsfremden Entscheidung:
+Die erste Aussage folgt aus der plattformunabhängigen Formulierung von
+Prinzip~\ref{prinzip:intention}. Für die zweite Aussage: Sei $N(r)$
+die Anzahl der möglichen Entwurfsentscheidungen als wachsende Funktion
+der verfügbaren Ressourcen $r$. Dann ist die Wahrscheinlichkeit einer
+zufälligen intentionsfremden Entscheidung:
 \[
 P_{\text{inkonsequent}} = \frac{N_{\text{fremd}}(r)}{N(r)}.
 \]
-Da $N_{\text{fremd}}(r)$ schneller wÃ¤chst als $N_{\text{konform}}(r)$
-(mehr Ressourcen erÃ¶ffnen Ã¼berproportional mehr nicht-intentionskonforme
-MÃ¶glichkeiten), steigt das VerwÃ¤sserungsrisiko. Konsequenz ist daher
+Da $N_{\text{fremd}}(r)$ schneller wächst als $N_{\text{konform}}(r)$
+(mehr Ressourcen eröffnen überproportional mehr nicht-intentionskonforme
+Möglichkeiten), steigt das Verwässerungsrisiko. Konsequenz ist daher
 bei ressourcenreichen Systemen noch wichtiger.
 \end{proof}
 
 \begin{beispiel}[Texteditor -- Logik-Primat]\label{bsp:texteditor}
-Ein Entwickler entwirft einen Texteditor fÃ¼r Programmierer mit der
-Leitintention $\mathcal{I}_L$: \textit{\glqq{}Der Editor fÃ¼hrt jede
-Benutzeraktion in unter 16\,ms aus (60\,fps, keine spÃ¼rbaren Pausen).\grqq{}}
+Ein Entwickler entwirft einen Texteditor für Programmierer mit der
+Leitintention $\mathcal{I}_L$: \textit{\glqq{}Der Editor führt jede
+Benutzeraktion in unter 16\,ms aus (60\,fps, keine spürbaren Pausen).\grqq{}}
 Dies ist eine Logik-Primat-Intention: Nicht die visuelle Gestaltung,
 sondern die algorithmische Kernleistung steht im Vordergrund.
 
@@ -800,10 +800,10 @@ minimale Animationen \\
 \end{tabular}
 \end{center}
 
-Konsequenz-Gefahr: Das HinzufÃ¼gen von Markdown-Preview-Rendering (hohe
-UI-KomplexitÃ¤t), Plugin-Scripting (Logik-Erweiterung) oder Cloud-Sync
-(Daten-Umbau) -- ohne Anpassung der Performance-Intention -- wÃ¼rde
-$\kappa$ senken und die 16\,ms-Garantie gefÃ¤hrden.
+Konsequenz-Gefahr: Das Hinzufügen von Markdown-Preview-Rendering (hohe
+UI-Komplexität), Plugin-Scripting (Logik-Erweiterung) oder Cloud-Sync
+(Daten-Umbau) -- ohne Anpassung der Performance-Intention -- würde
+$\kappa$ senken und die 16\,ms-Garantie gefährden.
 \end{beispiel}
 
 \subsection{Eingebettete Systeme}
@@ -811,7 +811,7 @@ $\kappa$ senken und die 16\,ms-Garantie gefÃ¤hrden.
 \subsubsection{Architekturspezifik eingebetteter Systeme}
 
 Eingebettete Systeme (Mikrocontroller, FPGAs, industrielle Steuerungen,
-IoT-Devices) stellen die hÃ¤rtesten Anforderungen an Konsequenz, denn:
+IoT-Devices) stellen die härtesten Anforderungen an Konsequenz, denn:
 
 \begin{itemize}
     \item \textbf{Ressourcenextremum}: Typische Mikrocontroller haben
@@ -819,20 +819,20 @@ IoT-Devices) stellen die hÃ¤rtesten Anforderungen an Konsequenz, denn:
           das durch intentionsfremde Features belegt wird, fehlt dem
           Kernsystem.
     \item \textbf{Harte Echtzeitanforderungen}: Verletzungen der
-          Leitintention kÃ¶nnen direkte physikalische Konsequenzen haben
+          Leitintention können direkte physikalische Konsequenzen haben
           (Motorausfall, Sicherheitsversagen, Datenverlust).
-    \item \textbf{Fehlende LaufzeitflexibilitÃ¤t}: In Gegensatz zu Web-
+    \item \textbf{Fehlende Laufzeitflexibilität}: In Gegensatz zu Web-
           oder Desktop-Systemen kann eine eingebettete Firmware nicht
           einfach gepatcht werden. Inkonsequente Entwurfsentscheidungen
-          verursachen extrem hohe RÃ¼ckruf- und Nachbesserungskosten.
-    \item \textbf{Physikalische NÃ¤he}: Die UI-Schicht manifestiert sich
+          verursachen extrem hohe Rückruf- und Nachbesserungskosten.
+    \item \textbf{Physikalische Nähe}: Die UI-Schicht manifestiert sich
           als Sensorschnittstellen, Aktuatoren, Displays oder Feldbusse
           (CAN, Modbus, EtherCAT).
 \end{itemize}
 
 \begin{definition}[Embedded-Schichtenmodell]
-FÃ¼r eingebettete Systeme sind die Architekturschichten:
-$\mathcal{D}^{\text{emb}}$ (nichtflÃ¼chtiger Speicher: EEPROM, Flash,
+Für eingebettete Systeme sind die Architekturschichten:
+$\mathcal{D}^{\text{emb}}$ (nichtflüchtiger Speicher: EEPROM, Flash,
 SD-Karte; Ringpuffer, Sensorpuffer),
 $\mathcal{L}^{\text{emb}}$ (Steuerungsalgorithmen, Echtzeitscheduler,
 Kommunikationsprotokolle, Treiberschicht),
@@ -840,24 +840,24 @@ $\mathcal{U}^{\text{emb}}$ (Aktuatoren, Feldbusse, Displays, LEDs,
 externe Kommunikationsinterfaces).
 \end{definition}
 
-\begin{satz}[Intentionsprinzip fÃ¼r eingebettete Systeme]\label{satz:embedded}
-Das Intentionsprinzip gilt fÃ¼r eingebettete Systeme mit den Schichten
+\begin{satz}[Intentionsprinzip für eingebettete Systeme]\label{satz:embedded}
+Das Intentionsprinzip gilt für eingebettete Systeme mit den Schichten
 $\mathcal{D}^{\text{emb}}$, $\mathcal{L}^{\text{emb}}$,
 $\mathcal{U}^{\text{emb}}$. Der Quadratkoeffizient der Inkonsistenzkosten
-(Lemma~\ref{lem:kosten}) ist fÃ¼r eingebettete Systeme um den Faktor
+(Lemma~\ref{lem:kosten}) ist für eingebettete Systeme um den Faktor
 \[
 \delta_{\text{emb}} = \delta_{\text{web}} \cdot F_{\text{field}},
 \quad F_{\text{field}} \gg 1,
 \]
-erhÃ¶ht, wobei $F_{\text{field}}$ die FeldrÃ¼ckruf-Kostenmultiplikation
+erhöht, wobei $F_{\text{field}}$ die Feldrückruf-Kostenmultiplikation
 bezeichnet.
 \end{satz}
 
 \begin{proof}
-FÃ¼r eingebettete Systeme, die in der Produktion verbaut sind, erfordert
+Für eingebettete Systeme, die in der Produktion verbaut sind, erfordert
 eine inkonsequente Entwurfsentscheidung nicht nur Softwarerefactoring,
-sondern potenziell Hardware-Revisionen, Feldservice-EinsÃ¤tze und
-ProduktrÃ¼ckrufe. Sei $C_{\text{field}}$ die durchschnittlichen Kosten
+sondern potenziell Hardware-Revisionen, Feldservice-Einsätze und
+Produktrückrufe. Sei $C_{\text{field}}$ die durchschnittlichen Kosten
 eines Feldservice-Einsatzes und $n_{\text{units}}$ die Anzahl der
 verbauten Einheiten, dann gilt:
 \[
@@ -865,7 +865,7 @@ verbauten Einheiten, dann gilt:
 n_{\text{units}}}{T^2_{\text{ref}}},
 \]
 wobei $T_{\text{ref}}$ der Referenzzeitraum ist. Da
-$c_{\text{field}} \cdot n_{\text{units}} \gg 0$ fÃ¼r typische
+$c_{\text{field}} \cdot n_{\text{units}} \gg 0$ für typische
 Feldanwendungen, folgt $F_{\text{field}} \gg 1$.
 \end{proof}
 
@@ -873,7 +873,7 @@ Feldanwendungen, folgt $F_{\text{field}} \gg 1$.
     \centering
     \includegraphics[width=0.96\textwidth]{plot11_embedded_ressourcen.pdf}
     \caption{Ressourceneffizienz in eingebetteten Systemen: Konsequente
-    Entwicklung (blau) erzielt signifikant hÃ¶here RAM- und Flash-Nutzungs-
+    Entwicklung (blau) erzielt signifikant höhere RAM- und Flash-Nutzungs-
     effizienz als opportunistische Entwicklung (rot).}
     \label{fig:embedded}
 \end{figure}
@@ -891,17 +891,17 @@ Schicht & $\Pi(S)$ & Entwurfsentscheidung \\
 \midrule
 Logik ($\mathcal{L}^{\text{emb}}$) & 0.70 & Field-Oriented Control
 (FOC), DMA-basierter ADC, Interrupt-driven Scheduling \\
-Daten ($\mathcal{D}^{\text{emb}}$) & 0.20 & Ringpuffer fÃ¼r Messwerte,
-EEPROM nur fÃ¼r Konfigurationsparameter \\
+Daten ($\mathcal{D}^{\text{emb}}$) & 0.20 & Ringpuffer für Messwerte,
+EEPROM nur für Konfigurationsparameter \\
 UI ($\mathcal{U}^{\text{emb}}$) & 0.10 & CAN-Bus Status-Telegramme,
 eine Status-LED \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Intentionsverletzung: Das nachtrÃ¤gliche HinzufÃ¼gen eines UART-Debuginter-
-faces mit printf-Ausgaben wÃ¼rde die ISR-Latenz erhÃ¶hen und die 100\,$\mu$s-
-Garantie gefÃ¤hrden -- eine klassische inkonsequente Entwurfsentscheidung.
+Intentionsverletzung: Das nachträgliche Hinzufügen eines UART-Debuginter-
+faces mit printf-Ausgaben würde die ISR-Latenz erhöhen und die 100\,$\mu$s-
+Garantie gefährden -- eine klassische inkonsequente Entwurfsentscheidung.
 \end{beispiel}
 
 \subsection{Verteilte Systeme und Microservices}
@@ -910,16 +910,16 @@ Garantie gefÃ¤hrden -- eine klassische inkonsequente Entwurfsentscheidung.
 
 Verteilte Systeme -- Microservice-Architekturen, Event-Driven Systems,
 Cloud-native Anwendungen -- stellen besondere Herausforderungen an das
-Intentionsprinzip, da die drei Architekturschichten Ã¼ber mehrere physische
-Knoten verteilt sein kÃ¶nnen:
+Intentionsprinzip, da die drei Architekturschichten über mehrere physische
+Knoten verteilt sein können:
 
 \begin{itemize}
-    \item \textbf{Schichtenverteilung}: Die Datenschicht kann Ã¼ber mehrere
+    \item \textbf{Schichtenverteilung}: Die Datenschicht kann über mehrere
           Datenbankservices (PostgreSQL, Redis, Cassandra) verteilt sein;
-          die Logikschicht Ã¼ber hunderte Microservices; die UI-Schicht Ã¼ber
+          die Logikschicht über hunderte Microservices; die UI-Schicht über
           Frontend-Services und API-Gateways.
-    \item \textbf{CAP-Theorem}: Konsistenz, VerfÃ¼gbarkeit und
-          Partitionstoleranz kÃ¶nnen nicht gleichzeitig maximiert werden
+    \item \textbf{CAP-Theorem}: Konsistenz, Verfügbarkeit und
+          Partitionstoleranz können nicht gleichzeitig maximiert werden
           \cite{brewer2000cap}. Die Wahl der Leitintention bestimmt, welche
           dieser Eigenschaften priorisiert wird.
     \item \textbf{Conway's Law}: Die Organisationsstruktur des Entwicklungs-
@@ -927,12 +927,12 @@ Knoten verteilt sein kÃ¶nnen:
           Teams ohne gemeinsame Leitintention produzieren Architekturen ohne
           Intentionskonsistenz.
     \item \textbf{Verteilte Inkonsistenz}: Inkonsequente Entwurfs-
-          entscheidungen in einem Microservice pflanzen sich Ã¼ber APIs auf
+          entscheidungen in einem Microservice pflanzen sich über APIs auf
           andere Services fort und multiplizieren die Inkonsistenzkosten.
 \end{itemize}
 
 \begin{definition}[Verteiltes Schichtenmodell]
-FÃ¼r verteilte Systeme sind die Architekturschichten:
+Für verteilte Systeme sind die Architekturschichten:
 $\mathcal{D}^{\text{dist}}$ (Datenbankcluster, Message Queues, Event
 Stores, Distributed Caches),
 $\mathcal{L}^{\text{dist}}$ (Microservices, Worker Processes, Saga
@@ -943,7 +943,7 @@ Webhooks, CLI-Tools).
 
 \begin{satz}[Multiplikative Inkonsistenzkosten in verteilten Systemen]
 \label{satz:distributed}
-In einem verteilten System mit $k$ Microservices gilt fÃ¼r die
+In einem verteilten System mit $k$ Microservices gilt für die
 Gesamtinkonsistenzkosten:
 \[
 K_{\text{dist}}(t) = \sum_{i=1}^k K_i(t) +
@@ -955,12 +955,12 @@ die API-Kopplungskosten zwischen Service $i$ und $j$.
 \end{satz}
 
 \begin{proof}
-Die lokalen Terme $K_i(t)$ folgen aus Lemma~\ref{lem:kosten} fÃ¼r
+Die lokalen Terme $K_i(t)$ folgen aus Lemma~\ref{lem:kosten} für
 jeden Service $i$. Die Kopplungsterme entstehen, weil eine inkonsequente
 Entscheidung in Service $i$ (mit Wahrscheinlichkeit proportional zu
 $1-\kappa_i$) und eine inkonsequente Entscheidung in Service $j$
 (proportional zu $1-\kappa_j$), die dieselbe API betreffen, gemeinsam
-mit Kosten $C_{ij}$ einen Refactoring-Zyklus erfordern. Die HÃ¤ufigkeit
+mit Kosten $C_{ij}$ einen Refactoring-Zyklus erfordern. Die Häufigkeit
 solcher gleichzeitiger Inkonsistenzen ist proportional zum Produkt
 $(1-\kappa_i)(1-\kappa_j)$, die integrierten Kosten proportional zu
 $t^2$. Damit folgt der quadratische Kopplungsterm.
@@ -968,9 +968,9 @@ $t^2$. Damit folgt der quadratische Kopplungsterm.
 
 \begin{korollar}[Systemweite Konsequenz als Multiplikator]
 In verteilten Systemen ist eine systemweite Leitintention, die alle
-Services einheitlich ausrichtet ($\kappa_i \equiv \kappa$ fÃ¼r alle $i$),
-Ã¼berproportional wertvoll, da die Kopplungsterme quadratisch in $(1-\kappa)$
-skalieren: Eine ErhÃ¶hung von $\kappa$ von 0.6 auf 0.9 reduziert die
+Services einheitlich ausrichtet ($\kappa_i \equiv \kappa$ für alle $i$),
+überproportional wertvoll, da die Kopplungsterme quadratisch in $(1-\kappa)$
+skalieren: Eine Erhöhung von $\kappa$ von 0.6 auf 0.9 reduziert die
 Kopplungsterme um den Faktor $(0.4)^2/(0.1)^2 = 16$.
 \end{korollar}
 
@@ -986,7 +986,7 @@ Service & Schicht & Intentionskonforme Entscheidung \\
 \midrule
 Product Service & $\mathcal{D}^{\text{dist}}$ & Redis-Cache, Read-Replicas,
 CDC-Events \\
-Inventory Service & $\mathcal{L}^{\text{dist}}$ & Saga-Pattern fÃ¼r
+Inventory Service & $\mathcal{L}^{\text{dist}}$ & Saga-Pattern für
 atomare Bestandsaktualisierung \\
 API Gateway & $\mathcal{U}^{\text{dist}}$ & GraphQL mit Batching,
 kein Over-Fetching \\
@@ -995,34 +995,34 @@ kein Over-Fetching \\
 \end{center}
 
 Inkonsistenz-Beispiel: Das Inventory-Team wechselt zu einem Event-
-Sourcing-Ansatz ohne Abstimmung mit dem Product-Team. GemÃ¤ÃŸ
+Sourcing-Ansatz ohne Abstimmung mit dem Product-Team. Gemäß
 Satz~\ref{satz:distributed} entstehen Kopplungskosten $C_{ij} \cdot
-(1-\kappa_i)(1-\kappa_j) \cdot t^2$ fÃ¼r jedes betroffene Service-Paar.
+(1-\kappa_i)(1-\kappa_j) \cdot t^2$ für jedes betroffene Service-Paar.
 \end{beispiel}
 
-\subsection{Architekturmuster und ihre IntentionskompatibilitÃ¤t}
+\subsection{Architekturmuster und ihre Intentionskompatibilität}
 
 Die Wahl des Architekturmusters (MVC, MVP, MVVM, Clean Architecture,
 Hexagonale Architektur) beeinflusst, wie leicht die Leitintention
-$\mathcal{I}$ Ã¼ber alle Schichten aufrechterhalten werden kann. Wir
-fÃ¼hren das Konzept der IntentionskompatibilitÃ¤t ein.
+$\mathcal{I}$ über alle Schichten aufrechterhalten werden kann. Wir
+führen das Konzept der Intentionskompatibilität ein.
 
-\begin{definition}[IntentionskompatibilitÃ¤t]
-Die \emph{IntentionskompatibilitÃ¤t} $\iota(\mathcal{M}, \mathcal{I}) \in [0,1]$
-eines Architekturmusters $\mathcal{M}$ fÃ¼r eine Intention $\mathcal{I}$
+\begin{definition}[Intentionskompatibilität]
+Die \emph{Intentionskompatibilität} $\iota(\mathcal{M}, \mathcal{I}) \in [0,1]$
+eines Architekturmusters $\mathcal{M}$ für eine Intention $\mathcal{I}$
 misst, wie stark $\mathcal{M}$ die Erreichung und Aufrechterhaltung von
-$\kappa \approx 1$ strukturell unterstÃ¼tzt.
+$\kappa \approx 1$ strukturell unterstützt.
 \end{definition}
 
-Abbildung~\ref{fig:heatmap} veranschaulicht die IntentionskompatibilitÃ¤t
-verschiedener Architekturmuster fÃ¼r die vier Intentionstypen.
+Abbildung~\ref{fig:heatmap} veranschaulicht die Intentionskompatibilität
+verschiedener Architekturmuster für die vier Intentionstypen.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.92\textwidth]{plot10_architekturmuster_heatmap.pdf}
-    \caption{IntentionskompatibilitÃ¤t $\iota(\mathcal{M}, \mathcal{I})$
-    verschiedener Architekturmuster fÃ¼r vier Intentionstypen. GrÃ¼ne Felder
-    bedeuten hohe strukturelle UnterstÃ¼tzung der Intentionskonsistenz,
+    \caption{Intentionskompatibilität $\iota(\mathcal{M}, \mathcal{I})$
+    verschiedener Architekturmuster für vier Intentionstypen. Grüne Felder
+    bedeuten hohe strukturelle Unterstützung der Intentionskonsistenz,
     rote Felder bedeuten Reibungspunkte.}
     \label{fig:heatmap}
 \end{figure}
@@ -1036,10 +1036,10 @@ $\kappa_{\max}(\mathcal{M}, \mathcal{I})$.
 
 \begin{proof}
 Per Definition ist $\iota(\mathcal{M}, \mathcal{I})$ eine monotone
-Funktion von $\kappa_{\max}$: Ein Muster mit hÃ¶herer Intentionskompatibili-
-tÃ¤t reduziert strukturell die Reibungskosten bei der Aufrechterhaltung
-der Konsequenz und erhÃ¶ht damit $\kappa_{\max}$. Die Existenz eines
-Maximums folgt aus dem Extremwertsatz Ã¼ber die endliche Menge der
+Funktion von $\kappa_{\max}$: Ein Muster mit höherer Intentionskompatibili-
+tät reduziert strukturell die Reibungskosten bei der Aufrechterhaltung
+der Konsequenz und erhöht damit $\kappa_{\max}$. Die Existenz eines
+Maximums folgt aus dem Extremwertsatz über die endliche Menge der
 betrachteten Muster.
 \end{proof}
 
@@ -1047,16 +1047,16 @@ betrachteten Muster.
 Satz~\ref{satz:musterwahl} hat eine wichtige praktische Konsequenz:
 Die Wahl des Architekturmusters ist keine rein technische Entscheidung,
 sondern eine intentionsgetriebene. Ein Team mit UI-Primat-Intention
-sollte MVVM oder MVP wÃ¤hlen (hÃ¶chste KompatibilitÃ¤t); ein Team mit
+sollte MVVM oder MVP wählen (höchste Kompatibilität); ein Team mit
 Daten- oder Logik-Primat sollte Clean Architecture oder Hexagonale
 Architektur bevorzugen.
 \end{bemerkung}
 
 \subsection{Spieltheoretische Betrachtung von Entwicklerteams}
 
-In der Praxis arbeiten Teams mit mÃ¶glicherweise divergierenden
+In der Praxis arbeiten Teams mit möglicherweise divergierenden
 Teilintentionen. Jeder Entwickler ist ein Agent mit eigener
-PrÃ¤ferenz Ã¼ber den Raum der Entwurfsentscheidungen.
+Präferenz über den Raum der Entwurfsentscheidungen.
 
 \begin{definition}[Entwickler-Nutzenfunktion]
 Der Nutzen von Entwickler $i$ bei Team-Konsequenz $\kappa$ sei:
@@ -1088,19 +1088,19 @@ maximiert (Eigenschaft des quadratischen Verlustes).
 
 \begin{satz}[Governance-Mechanismus als Kappa-Verbesserung]\label{satz:governance}
 Ein Governance-Mechanismus $G$ (Architecture Decision Records,
-Architekturreviews, Intentionsdokumente) erhÃ¶ht das Nash-Gleichgewicht
+Architekturreviews, Intentionsdokumente) erhöht das Nash-Gleichgewicht
 auf:
 \[
 \kappa^*_G = \kappa^*_{\text{Nash}} + \Delta\kappa(G) > \kappa^*_{\text{Nash}},
 \]
-wobei $\Delta\kappa(G) > 0$ vom Wirkungsgrad des Mechanismus abhÃ¤ngt.
+wobei $\Delta\kappa(G) > 0$ vom Wirkungsgrad des Mechanismus abhängt.
 \end{satz}
 
 \begin{proof}
 Ein wirksamer Governance-Mechanismus verschiebt die Nutzenfunktion jedes
 Entwicklers durch explizite Intentionsdokumentation: Die Leitintention
 $\mathcal{I}$ macht abweichende Entscheidungen sichtbar und erzeugt
-sozialen Druck zur KonformitÃ¤t. Formal erhÃ¶ht $G$ die bevorzugte
+sozialen Druck zur Konformität. Formal erhöht $G$ die bevorzugte
 Konsistenz jedes Entwicklers von $\kappa_i^*$ auf $\kappa_i^* +
 \varepsilon_i(G)$ mit $\varepsilon_i(G) > 0$. Das neue Gleichgewicht
 ist damit $\kappa^*_G = \frac{1}{n}\sum_i (\kappa_i^* + \varepsilon_i(G))
@@ -1121,7 +1121,7 @@ ist damit $\kappa^*_G = \frac{1}{n}\sum_i (\kappa_i^* + \varepsilon_i(G))
 \subsection{Technische Schulden und Plattformvergleich}
 
 Abbildung~\ref{fig:schulden} vergleicht die Akkumulation technischer
-Schulden fÃ¼r die drei wichtigsten Systemklassen unter konsequenter
+Schulden für die drei wichtigsten Systemklassen unter konsequenter
 und opportunistischer Entwicklung. In allen Klassen zeigt sich das
 quadratische Wachstum der Schulden bei Inkonsistenz (Lemma~\ref{lem:kosten}),
 mit plattformspezifischen Koeffizienten.
@@ -1132,29 +1132,29 @@ mit plattformspezifischen Koeffizienten.
     \caption{Kumulative technische Schulden nach Systemtyp und
     Entwicklungsparadigma. Durchgezogene Linien: konsequente Entwicklung
     (linear). Gestrichelte Linien: opportunistische Entwicklung (quadratisch).
-    Eingebettete Systeme (rot) zeigen den stÃ¤rksten Kontrast durch
+    Eingebettete Systeme (rot) zeigen den stärksten Kontrast durch
     die hohen Feldkosten ($F_{\text{field}} \gg 1$, Satz~\ref{satz:embedded}).}
     \label{fig:schulden}
 \end{figure}
 
-\begin{korollar}[Reihenfolge der Plattform-SensitivitÃ¤t]
-BezÃ¼glich des Kostenvorteils konsequenter Entwicklung gilt:
+\begin{korollar}[Reihenfolge der Plattform-Sensitivität]
+Bezüglich des Kostenvorteils konsequenter Entwicklung gilt:
 \[
 \delta_{\text{emb}} > \delta_{\text{dist}} > \delta_{\text{desk}}
 > \delta_{\text{mob}} > \delta_{\text{web}},
 \]
 wobei $\delta_{\text{platform}}$ der quadratische Inkonsistenzkosten-
-koeffizient fÃ¼r die jeweilige Plattform ist.
+koeffizient für die jeweilige Plattform ist.
 \end{korollar}
 
 \begin{proof}
 Die Reihenfolge ergibt sich aus den plattformspezifischen Feldkosten:
-Eingebettete Systeme haben die hÃ¶chsten Feldservicekosten (GerÃ¤terÃ¼ckrufe,
-physikalische Sicherheitsrisiken); verteilte Systeme die hÃ¶chsten
+Eingebettete Systeme haben die höchsten Feldservicekosten (Geräterückrufe,
+physikalische Sicherheitsrisiken); verteilte Systeme die höchsten
 API-Kopplungskosten (Satz~\ref{satz:distributed}); Desktop-Anwendungen
-leiden unter Regressionstests Ã¼ber viele Betriebssystemkonfigurationen;
-mobile Apps haben zusÃ¤tzliche Store-Review-Prozesse; Web-Anwendungen
-kÃ¶nnen am schnellsten (Continuous Deployment) korrigiert werden.
+leiden unter Regressionstests über viele Betriebssystemkonfigurationen;
+mobile Apps haben zusätzliche Store-Review-Prozesse; Web-Anwendungen
+können am schnellsten (Continuous Deployment) korrigiert werden.
 \end{proof}
 
 % ============================================================
@@ -1206,10 +1206,10 @@ Ein Team beginnt mit $\mathcal{I}_{UI}$ (Notiz-App). Nach drei Monaten
 wechselt ein Teammitglied zu $\mathcal{I}_D$ (Multi-User-Cloud-Sync).
 Ergebnis: $\kappa \approx 0.4$.
 
-GemÃ¤ÃŸ Lemma~\ref{lem:kosten} mit $\delta(0.4) = c\mu \cdot 0.6/2 > 0$:
+Gemäß Lemma~\ref{lem:kosten} mit $\delta(0.4) = c\mu \cdot 0.6/2 > 0$:
 Quadratische Mehrkosten durch Refactoring (SQLite zu PostgreSQL,
 Ein-Feld zu Multi-User-Workspace, inkonsistente API-Schicht).
-GemÃ¤ÃŸ Satz~\ref{satz:distributed} entstehen fÃ¼r jedes betroffene
+Gemäß Satz~\ref{satz:distributed} entstehen für jedes betroffene
 Service-Paar Kopplungskosten.
 \end{beispiel}
 
@@ -1217,7 +1217,7 @@ Service-Paar Kopplungskosten.
 \section{Zusammenfassung}
 % ============================================================
 
-\subsection{Das Paradigma und seine universelle GÃ¼ltigkeit}
+\subsection{Das Paradigma und seine universelle Gültigkeit}
 
 Diese Arbeit hat das Paradigma der intentions- und ideen-getriebenen
 Softwareentwicklung formal fundiert und auf alle wesentlichen Klassen
@@ -1226,51 +1226,51 @@ eingebettete Systeme und verteilte Systeme -- verallgemeinert. Der
 Ausgangspunkt war der Leitgedanke, dass der Erfinder oder Entwickler
 die Entwicklung intentions- oder ideen-getrieben bis zur Reife konsequent
 und konservativ betreibt und dass diese Intention alle Schichten in der
-Architektur treibt. Dieser Gedanke erweist sich nicht nur fÃ¼r Websites,
+Architektur treibt. Dieser Gedanke erweist sich nicht nur für Websites,
 sondern als universelles Prinzip der Softwareentwicklung.
 
 \subsection{Zentrale formale Ergebnisse}
 
 Die wichtigsten Ergebnisse dieser Arbeit, geordnet nach Kapitel:
 
-\textbf{Grundmodell (Â§\,3):}
+\textbf{Grundmodell ( §\,3):}
 \begin{itemize}
     \item \textbf{Satz~\ref{satz:existenz}}: Zu jeder Leitintention
-          existiert eine eindeutige, normierte PrioritÃ¤tsfunktion, die
+          existiert eine eindeutige, normierte Prioritätsfunktion, die
           alle drei Architekturschichten positiv gewichtet.
-    \item \textbf{SÃ¤tze~\ref{satz:uiprimat} und~\ref{satz:datenprimat}}:
+    \item \textbf{Sätze~\ref{satz:uiprimat} und~\ref{satz:datenprimat}}:
           Sowohl UI-Primat als auch Daten-Primat erzwingen positive
-          PrioritÃ¤ten in allen Schichten. Keine Schicht darf auf null
+          Prioritäten in allen Schichten. Keine Schicht darf auf null
           gesetzt werden.
-    \item \textbf{Satz~\ref{satz:monotonie}}: Die Reife wÃ¤chst sigmoidal
-          und streng monoton mit konstanter Konsequenz. HÃ¶here Konsequenz
+    \item \textbf{Satz~\ref{satz:monotonie}}: Die Reife wächst sigmoidal
+          und streng monoton mit konstanter Konsequenz. Höhere Konsequenz
           beschleunigt die Reifung.
     \item \textbf{Lemma~\ref{lem:kosten}}: Inkonsistenz erzeugt
-          superlineare (quadratische) Mehrkosten. Jede RichtungsÃ¤nderung
+          superlineare (quadratische) Mehrkosten. Jede Richtungsänderung
           der Entwicklung ist teurer als die vorangegangene.
-    \item \textbf{Satz~\ref{satz:kohÃ¤renz}}: Schichten-KohÃ¤renz wÃ¤chst
+    \item \textbf{Satz~\ref{satz:kohärenz}}: Schichten-Kohärenz wächst
           streng monoton mit dem Konsequenz-Koeffizienten $\kappa$.
     \item \textbf{Satz~\ref{satz:qualitaet}}: Konservativ-konsequente
-          Entwicklung ist universell qualitativ Ã¼berlegen (Jensen-
+          Entwicklung ist universell qualitativ überlegen (Jensen-
           Ungleichung).
     \item \textbf{Satz~\ref{satz:dualitaet}}: UI-Primat, Daten-Primat
-          und alle anderen Intentionsformen sind strukturell Ã¤quivalent;
-          der QualitÃ¤tsvorteil der Konsequenz gilt fÃ¼r alle.
+          und alle anderen Intentionsformen sind strukturell äquivalent;
+          der Qualitätsvorteil der Konsequenz gilt für alle.
 \end{itemize}
 
-\textbf{Verallgemeinerung auf alle Systemklassen (Â§\,4):}
+\textbf{Verallgemeinerung auf alle Systemklassen ( §\,4):}
 \begin{itemize}
     \item \textbf{Satz~\ref{satz:mobile}}: Das Intentionsprinzip gilt
-          vollstÃ¤ndig fÃ¼r mobile Apps. PlattformÃ¼bergreifende Frameworks
+          vollständig für mobile Apps. Plattformübergreifende Frameworks
           reduzieren die erreichbare Konsequenz um den Faktor
           $\eta(\mathcal{A}) \leq 1$ (Lemma~\ref{lem:plattform}).
-    \item \textbf{Satz~\ref{satz:desktop}}: FÃ¼r Desktop-Anwendungen
+    \item \textbf{Satz~\ref{satz:desktop}}: Für Desktop-Anwendungen
           ist Konsequenz aufgrund der reicheren Ressourcen und der damit
-          verbundenen hÃ¶heren KomplexitÃ¤t des Entwurfsraums noch
-          wichtiger als fÃ¼r Websites.
-    \item \textbf{Satz~\ref{satz:embedded}}: FÃ¼r eingebettete Systeme
-          sind die Inkonsistenzkosten um den FeldrÃ¼ckruf-Multiplikator
-          $F_{\text{field}} \gg 1$ erhÃ¶ht. Konsequenz hat hier direkte
+          verbundenen höheren Komplexität des Entwurfsraums noch
+          wichtiger als für Websites.
+    \item \textbf{Satz~\ref{satz:embedded}}: Für eingebettete Systeme
+          sind die Inkonsistenzkosten um den Feldrückruf-Multiplikator
+          $F_{\text{field}} \gg 1$ erhöht. Konsequenz hat hier direkte
           physikalische und sicherheitsrelevante Konsequenzen.
     \item \textbf{Satz~\ref{satz:distributed}}: In verteilten Systemen
           entstehen multiplikative Kopplungskosten, die quadratisch in
@@ -1278,21 +1278,21 @@ Die wichtigsten Ergebnisse dieser Arbeit, geordnet nach Kapitel:
     \item \textbf{Satz~\ref{satz:musterwahl}}: Die Wahl des Architektur-
           musters ist eine intentionsgetriebene Entscheidung; das optimale
           Muster maximiert die strukturell erreichbare Konsequenz.
-    \item \textbf{SÃ¤tze~\ref{satz:nash} und~\ref{satz:governance}}:
-          In Entwicklerteams fÃ¼hrt das Nash-Gleichgewicht ohne Governance
-          zu suboptimaler Konsequenz; Governance-Mechanismen erhÃ¶hen das
+    \item \textbf{Sätze~\ref{satz:nash} und~\ref{satz:governance}}:
+          In Entwicklerteams führt das Nash-Gleichgewicht ohne Governance
+          zu suboptimaler Konsequenz; Governance-Mechanismen erhöhen das
           Gleichgewicht messbar.
 \end{itemize}
 
 \subsection{Das Paradigma in einem Satz}
 
-Das intentions- und ideen-getriebene Entwicklungsparadigma lÃ¤sst sich
+Das intentions- und ideen-getriebene Entwicklungsparadigma lässt sich
 in einem Satz zusammenfassen: \emph{Die Leitintention des Erfinders oder
 Entwicklers ist die einzige legitime Quelle jeder Entwurfsentscheidung
-in jedem Softwaresystem -- von der Datenschicht Ã¼ber die Logikschicht
+in jedem Softwaresystem -- von der Datenschicht über die Logikschicht
 bis zur UI-Schicht --, und die konsequente und konservative Verfolgung
 dieser einen Intention bis zur Reife ist das universelle, plattform-
-und intentionsunabhÃ¤ngige QualitÃ¤tsmerkmal.}
+und intentionsunabhängige Qualitätsmerkmal.}
 
 % ============================================================
 \section{Ausblick}
@@ -1302,135 +1302,135 @@ und intentionsunabhÃ¤ngige QualitÃ¤tsmerkmal.}
 
 Eine der wichtigsten offenen Fragen ist die formale Darstellung der
 Leitintention $\mathcal{I}$ selbst. In der vorliegenden Arbeit wurde
-$\mathcal{I}$ als gegebene, wohldefinierte EntitÃ¤t vorausgesetzt. In
-der Praxis ist die Intention jedoch hÃ¤ufig implizit, partiell oder
-widersprÃ¼chlich formuliert. Ein naheliegender nÃ¤chster Schritt ist die
+$\mathcal{I}$ als gegebene, wohldefinierte Entität vorausgesetzt. In
+der Praxis ist die Intention jedoch häufig implizit, partiell oder
+widersprüchlich formuliert. Ein naheliegender nächster Schritt ist die
 Entwicklung einer formalen \emph{Intentionssprache} -- einer
-eingeschrÃ¤nkten, prÃ¤zisen Beschreibungssprache, mit der die Leitintention
-eines Softwaresystems als maschinenlesbare Spezifikation ausgedrÃ¼ckt
-werden kann. Diese Sprache sollte die primÃ¤re Schicht $S^*$, die
-PrioritÃ¤tsfunktion $\Pi$ und die QualitÃ¤tsziele der Leitintention
+eingeschränkten, präzisen Beschreibungssprache, mit der die Leitintention
+eines Softwaresystems als maschinenlesbare Spezifikation ausgedrückt
+werden kann. Diese Sprache sollte die primäre Schicht $S^*$, die
+Prioritätsfunktion $\Pi$ und die Qualitätsziele der Leitintention
 in einem verifizierbaren Format kodieren. Aufbauend auf einer solchen
-Sprache wÃ¤re eine \emph{automatische Intentionsverifikation} mÃ¶glich:
-Ein statisches Analysewerkzeug prÃ¼ft bei jedem Commit, ob die vorge-
-nommenen Ã„nderungen in allen drei Schichten intentionskonform sind,
-und schÃ¤tzt den resultierenden Konsequenz-Koeffizienten $\kappa(t)$
+Sprache wäre eine \emph{automatische Intentionsverifikation} möglich:
+Ein statisches Analysewerkzeug prüft bei jedem Commit, ob die vorge-
+nommenen Änderungen in allen drei Schichten intentionskonform sind,
+und schätzt den resultierenden Konsequenz-Koeffizienten $\kappa(t)$
 \cite{bass2012software, clements2010documenting}.
 
 \subsection{Intentionsgetriebene KI-Codegenerierung}
 
-GroÃŸe Sprachmodelle (LLMs) wie GPT-4 oder Claude werden zunehmend
+Große Sprachmodelle (LLMs) wie GPT-4 oder Claude werden zunehmend
 zur Code-Generierung eingesetzt \cite{brown2020gpt3}. Das
-Intentionsprinzip erÃ¶ffnet hier eine neue QualitÃ¤tsdimension: Ein
+Intentionsprinzip eröffnet hier eine neue Qualitätsdimension: Ein
 LLM-basiertes Entwicklungswerkzeug, das die Leitintention $\mathcal{I}$
-des Projekts kennt und als Systemkontext erhÃ¤lt, kÃ¶nnte jeden generierten
-Code-Vorschlag automatisch auf Intentionskonsistenz prÃ¼fen und nur
-intentionskonforme VorschlÃ¤ge ausgeben. Dies wÃ¼rde den Konsequenz-
-Koeffizienten $\kappa$ strukturell erhÃ¶hen und die quadratischen
+des Projekts kennt und als Systemkontext erhält, könnte jeden generierten
+Code-Vorschlag automatisch auf Intentionskonsistenz prüfen und nur
+intentionskonforme Vorschläge ausgeben. Dies würde den Konsequenz-
+Koeffizienten $\kappa$ strukturell erhöhen und die quadratischen
 Mehrkosten (Lemma~\ref{lem:kosten}) proaktiv verhindern. Eine
 weitergehende Forschungsrichtung ist das \emph{Intention-aware Code
 Review}: Das LLM bewertet nicht nur die formale Korrektheit, sondern
 auch die semantische Intentionskonsistenz eines Code-Vorschlags und
-warnt vor SchichtenbrÃ¼chen oder PrioritÃ¤tsverletzungen.
-Diese Idee lÃ¤sst sich mit dem Subgraph Algorithmus \cite{epp2026subgraph}
+warnt vor Schichtenbrüchen oder Prioritätsverletzungen.
+Diese Idee lässt sich mit dem Subgraph Algorithmus \cite{epp2026subgraph}
 verbinden: Die Intentionsstruktur eines Softwaresystems kann als Graph
-modelliert werden; neue Code-VorschlÃ¤ge werden auf Subgraph-Konsistenz
-mit diesem Intentionsgraphen geprÃ¼ft.
+modelliert werden; neue Code-Vorschläge werden auf Subgraph-Konsistenz
+mit diesem Intentionsgraphen geprüft.
 
 \subsection{Quantitative Messung des Konsequenz-Koeffizienten}
 
-Diese Arbeit hat $\kappa$ als gegebene GrÃ¶ÃŸe verwendet. Ein wichtiges
+Diese Arbeit hat $\kappa$ als gegebene Größe verwendet. Ein wichtiges
 praktisches Problem ist die \emph{automatische Messung} von $\kappa(t)$
-aus vorhandenen Entwicklungsartefakten. Denkbare AnsÃ¤tze umfassen:
+aus vorhandenen Entwicklungsartefakten. Denkbare Ansätze umfassen:
 die Analyse von Commit-Messages mit NLP-Methoden zur semantischen
 Ausrichtungsmessung auf die Leitintention \cite{devlin2019bert};
 statische Code-Analyse mittels Abstract Syntax Trees (AST) zur
-Detektion von SchichtenbrÃ¼chen; Analyse von Issue-Historien und
+Detektion von Schichtenbrüchen; Analyse von Issue-Historien und
 Pull-Request-Kommentaren zur Rekonstruktion von $\kappa(t)$ als
-Zeitreihe; und maschinelles Lernen auf groÃŸen Open-Source-DatensÃ¤tzen
+Zeitreihe; und maschinelles Lernen auf großen Open-Source-Datensätzen
 (GitHub, GitLab) zur Erlernung von Intentionskonsistenz-Indikatoren.
-Mit einem robusten $\kappa$-Messverfahren kÃ¶nnten die in Lemma~\ref{lem:kosten}
+Mit einem robusten $\kappa$-Messverfahren könnten die in Lemma~\ref{lem:kosten}
 prognostizierten quadratischen Kosten empirisch validiert und die
 sigmoide Reifekurve (Satz~\ref{satz:monotonie}) an realen Projekten
-Ã¼berprÃ¼ft werden. Geeignete TestdatensÃ¤tze wÃ¤ren der Linux-Kernel,
-das Apache-Ã–kosystem und erfolgreich abgeschlossene Open-Source-Projekte
-mit vollstÃ¤ndiger Commit-Historien.
+überprüft werden. Geeignete Testdatensätze wären der Linux-Kernel,
+das Apache-Ökosystem und erfolgreich abgeschlossene Open-Source-Projekte
+mit vollständiger Commit-Historien.
 
 \subsection{Erweiterung auf hierarchische und zusammengesetzte Intentionen}
 
 Das vorgestellte Modell betrachtet eine einzelne, atomare Leitintention.
-In der Praxis gibt es hÃ¤ufig \emph{hierarchische Intentionen}: Eine
-Ã¼bergeordnete Intention $\mathcal{I}_0$ (z.\,B. \glqq{}beste Lernplattform
+In der Praxis gibt es häufig \emph{hierarchische Intentionen}: Eine
+übergeordnete Intention $\mathcal{I}_0$ (z.\,B. \glqq{}beste Lernplattform
 der Welt\grqq{}) dekomponiert sich in Teilintentionen $\mathcal{I}_1, \ldots,
 \mathcal{I}_k$ (\glqq{}schnellste Suchantwort\grqq{}, \glqq{}intuitivste Kursnavigation\grqq{},
-\glqq{}zuverlÃ¤ssigste Fortschrittsspeicherung\grqq{}). FÃ¼r eine formale Behandlung
-ist die Definition eines \emph{Intentionsbaums} nÃ¶tig, in dem der
+\glqq{}zuverlässigste Fortschrittsspeicherung\grqq{}). Für eine formale Behandlung
+ist die Definition eines \emph{Intentionsbaums} nötig, in dem der
 Konsequenz-Koeffizient auf jedem Knoten definiert wird. Zu beweisen
 ist, ob lokale Konsequenz auf Blattebene automatisch globale Konsequenz
-auf Wurzelebene impliziert oder ob zusÃ¤tzliche KohÃ¤renzanforderungen
-zwischen den Teilintentionen nÃ¶tig sind. FÃ¼r den Fall konkurrierender
+auf Wurzelebene impliziert oder ob zusätzliche Kohärenzanforderungen
+zwischen den Teilintentionen nötig sind. Für den Fall konkurrierender
 Teilintentionen -- wenn $\mathcal{I}_i$ und $\mathcal{I}_j$ sich gegenseitig
-ausschlieÃŸen -- ist eine Erweiterung auf \emph{Pareto-optimale
+ausschließen -- ist eine Erweiterung auf \emph{Pareto-optimale
 Intentionsvektoren} denkbar \cite{osborne1994gametheory}.
 
 \subsection{Intentionsgetriebenes Requirements Engineering}
 
-Das Paradigma hat direkte Implikationen fÃ¼r das Requirements Engineering.
-Traditionelle AnsÃ¤tze (Use Cases, User Stories, IEEE-830-Spezifikationen)
-erfassen \emph{was} ein System tun soll, aber selten die Ã¼bergeordnete
+Das Paradigma hat direkte Implikationen für das Requirements Engineering.
+Traditionelle Ansätze (Use Cases, User Stories, IEEE-830-Spezifikationen)
+erfassen \emph{was} ein System tun soll, aber selten die übergeordnete
 \emph{Intention} hinter den Anforderungen. Ein intentionsgetriebenes
-Requirements Engineering wÃ¼rde jeden Anforderungsartefakt explizit mit
-der Leitintention verknÃ¼pfen und die PrioritÃ¤tsfunktion $\Pi$ als
-primÃ¤res Strukturierungswerkzeug verwenden. Konkret kÃ¶nnte jede User
+Requirements Engineering würde jeden Anforderungsartefakt explizit mit
+der Leitintention verknüpfen und die Prioritätsfunktion $\Pi$ als
+primäres Strukturierungswerkzeug verwenden. Konkret könnte jede User
 Story mit einem $\Pi$-Vektor annotiert werden, der angibt, welche
-Schichten sie primÃ¤r betrifft und wie hoch ihr Beitrag zur Leitintention
-ist. Anforderungen mit niedrigem Intentionsbeitrag wÃ¼rden systematisch
-deprioritisiert oder abgelehnt. Dies wÃ¼rde den in der Praxis hÃ¤ufig
-beobachteten \emph{Feature Creep} -- die inkonsequente ErgÃ¤nzung von
-Features, die die Leitintention verwÃ¤ssern -- formal identifizierbar
+Schichten sie primär betrifft und wie hoch ihr Beitrag zur Leitintention
+ist. Anforderungen mit niedrigem Intentionsbeitrag würden systematisch
+deprioritisiert oder abgelehnt. Dies würde den in der Praxis häufig
+beobachteten \emph{Feature Creep} -- die inkonsequente Ergänzung von
+Features, die die Leitintention verwässern -- formal identifizierbar
 und damit steuerbar machen \cite{jacobson1992objectoriented}.
 
 \subsection{Mobile Apps: Cross-Platform-Konsequenz}
 
-FÃ¼r plattformÃ¼bergreifende mobile Entwicklung (Flutter, React Native,
+Für plattformübergreifende mobile Entwicklung (Flutter, React Native,
 Kotlin Multiplatform) wurde in Lemma~\ref{lem:plattform} gezeigt, dass
-der Abstraktionskanal die erreichbare Konsequenz beschrÃ¤nkt. Eine
+der Abstraktionskanal die erreichbare Konsequenz beschränkt. Eine
 wichtige offene Frage ist die genaue Bestimmung von $\eta(\mathcal{A})$
-fÃ¼r verschiedene Frameworks unter verschiedenen Intentionstypen. Erste
+für verschiedene Frameworks unter verschiedenen Intentionstypen. Erste
 empirische Untersuchungen deuten darauf hin, dass Flutter bei UI-Primat-
 Intentionen hohe $\eta$-Werte erreicht (einheitliches Widget-System),
-wÃ¤hrend React Native bei Logik-Primat-Intentionen besser abschneidet
+während React Native bei Logik-Primat-Intentionen besser abschneidet
 (JavaScript-Business-Logic als gemeinsame Quelle). Eine systematische
-Vermessung von $\eta(\mathcal{A}, \mathcal{I})$ Ã¼ber reale Apps wÃ¼rde
+Vermessung von $\eta(\mathcal{A}, \mathcal{I})$ über reale Apps würde
 die Wahl des Cross-Platform-Frameworks formal fundieren.
 
 \subsection{Eingebettete Systeme: Intentionsgetriebenes FPGA-Design}
 
-FÃ¼r eingebettete Systeme ist eine besonders interessante Erweiterung
+Für eingebettete Systeme ist eine besonders interessante Erweiterung
 das intentionsgetriebene Hardware-Software-Co-Design. Moderne FPGA-
 Systeme (z.\,B. Xilinx Zynq, Intel Cyclone) erlauben die Partitionierung
-von FunktionalitÃ¤t zwischen Hardware (FPGA-Fabric) und Software (ARM-Kern).
+von Funktionalität zwischen Hardware (FPGA-Fabric) und Software (ARM-Kern).
 Das Intentionsprinzip gibt hier klare Leitlinien: Eine Leitintention
 mit Logik-Primat (z.\,B. \glqq{}maximaler Datendurchsatz\grqq{}) treibt die
-Implementierung der Kernalgorithmen in FPGA-Logik, wÃ¤hrend die
+Implementierung der Kernalgorithmen in FPGA-Logik, während die
 Datenschicht und UI-Schicht (Konfigurationsinterface) im Software-Kern
 verbleiben. Eine inkonsequente Hardware-Software-Partitionierung --
-z.\,B. zeitkritische Logik im ARM-Kern und unkritische KontrollflÃ¼sse
-im FPGA -- wÃ¼rde die Leitintention fundamental verletzen
+z.\,B. zeitkritische Logik im ARM-Kern und unkritische Kontrollflüsse
+im FPGA -- würde die Leitintention fundamental verletzen
 \cite{epp2026subgraph}.
 
 \subsection{Verteilte Systeme: Intentionskonsistenz als Service-Level-Objective}
 
 In modernen Cloud-Architekturen werden Service-Level-Objectives (SLOs)
-als messbare QualitÃ¤tsziele verwendet. Das Intentionsprinzip schlÃ¤gt
-vor, \emph{Intentionskonsistenz-SLOs} einzufÃ¼hren: FÃ¼r jedes Microservice
+als messbare Qualitätsziele verwendet. Das Intentionsprinzip schlägt
+vor, \emph{Intentionskonsistenz-SLOs} einzuführen: Für jedes Microservice
 wird ein Mindest-$\kappa$-Wert definiert, dessen Unterschreitung als
-SLO-Verletzung gilt und automatische EskalationsmaÃŸnahmen auslÃ¶st.
-Diese $\kappa$-SLOs kÃ¶nnten mit Chaos-Engineering-Methoden getestet
-werden: Stochastische Intentionsverletzungen (zufÃ¤llige inkonsequente
-Ã„nderungen an einzelnen Services) wÃ¼rden die Resilienz des Systems
-gegenÃ¼ber Intentionserosion testen. Die gemessene Verschlechterung
-des GesamtqualitÃ¤tsmaÃŸes $Q_{\text{gesamt}} = \sum_{i} w_i Q_i$
+SLO-Verletzung gilt und automatische Eskalationsmaßnahmen auslöst.
+Diese $\kappa$-SLOs könnten mit Chaos-Engineering-Methoden getestet
+werden: Stochastische Intentionsverletzungen (zufällige inkonsequente
+Änderungen an einzelnen Services) würden die Resilienz des Systems
+gegenüber Intentionserosion testen. Die gemessene Verschlechterung
+des Gesamtqualitätsmaßes $Q_{\text{gesamt}} = \sum_{i} w_i Q_i$
 validiert empirisch die Kopplungskosten aus Satz~\ref{satz:distributed}
 \cite{brewer2000cap}.
 
@@ -1440,45 +1440,45 @@ Satz~\ref{satz:governance} zeigt, dass Governance-Mechanismen das
 Nash-Gleichgewicht der Team-Konsequenz verbessern. Eine weitergehende
 Forschungsrichtung ist die Gestaltung von \emph{Anreizsystemen}, die
 konsequentes Entwickeln direkt belohnen. Analogien zu Mechanismus-Design-
-Problemen in der Ã–konomie \cite{osborne1994gametheory} legen nahe, dass
+Problemen in der Ökonomie \cite{osborne1994gametheory} legen nahe, dass
 ein \emph{Intentionsmarkt} -- ein internes System, in dem Entwickler
-Token fÃ¼r intentionskonforme BeitrÃ¤ge erhalten -- das Gleichgewicht
-$\kappa^*_G$ weiter erhÃ¶hen kÃ¶nnte. Formal wÃ¤re zu beweisen, unter
+Token für intentionskonforme Beiträge erhalten -- das Gleichgewicht
+$\kappa^*_G$ weiter erhöhen könnte. Formal wäre zu beweisen, unter
 welchen Bedingungen ein solcher Markt \emph{incentive-compatible}
-ist, d.\,h. fÃ¼r jeden Entwickler dominant ist, die wahre Intention
-seiner BeitrÃ¤ge zu offenbaren.
+ist, d.\,h. für jeden Entwickler dominant ist, die wahre Intention
+seiner Beiträge zu offenbaren.
 
 \subsection{Nutzungskonsistenz und bidirektionales Intentionsprinzip}
 
-Das Intentionsprinzip gilt ausdrÃ¼cklich nicht nur fÃ¼r die Entwicklung,
-sondern auch fÃ¼r die Benutzung: \textit{\glqq{}Dies gilt es konsequent in
-der gesamten Entwicklung und auch in der Benutzung zu berÃ¼cksichtigen\grqq{}}
-\cite{epp2026paradigma}. Diese Aussage erÃ¶ffnet eine bislang kaum
+Das Intentionsprinzip gilt ausdrücklich nicht nur für die Entwicklung,
+sondern auch für die Benutzung: \textit{\glqq{}Dies gilt es konsequent in
+der gesamten Entwicklung und auch in der Benutzung zu berücksichtigen\grqq{}}
+\cite{epp2026paradigma}. Diese Aussage eröffnet eine bislang kaum
 formalisierte Forschungsrichtung: die \emph{Nutzungskonsistenz}. Formell
 sei $\kappa_U(t)$ der Nutzungs-Konsequenz-Koeffizient: der Anteil der
-tatsÃ¤chlichen Nutzungsinteraktionen, die der Leitintention des Systems
-entsprechen. Es ist zu beweisen, wie $\kappa_U(t)$ die DatenqualitÃ¤t
+tatsächlichen Nutzungsinteraktionen, die der Leitintention des Systems
+entsprechen. Es ist zu beweisen, wie $\kappa_U(t)$ die Datenqualität
 in der Datenschicht beeinflusst (Nutzer, die das System intentionsfremd
 verwenden, erzeugen Daten, die das System destabilisieren) und damit
-rÃ¼ckwirkend $\kappa(t)$ der Entwicklung senken kann. Dies wÃ¼rde eine
+rückwirkend $\kappa(t)$ der Entwicklung senken kann. Dies würde eine
 \emph{bidirektionale Intentionsdynamik} beschreiben: Intentionskonsistente
-Entwicklung fÃ¶rdert intentionskonsistente Nutzung, und umgekehrt.
+Entwicklung fördert intentionskonsistente Nutzung, und umgekehrt.
 
-\subsection{Verbindung zur KomplexitÃ¤tstheorie}
+\subsection{Verbindung zur Komplexitätstheorie}
 
 Eine tiefgehende offene Frage ist, ob die Suche nach der optimalen
 Leitintention $\mathcal{I}^*$ (derjenigen, die maximalen gesellschaftlichen
-Nutzen erzeugt) berechenbar ist. Formalisiert man den Raum der mÃ¶glichen
+Nutzen erzeugt) berechenbar ist. Formalisiert man den Raum der möglichen
 Softwaresysteme als gerichteten Graphen und die Intentionen als Pfade
 in diesem Graphen, so liegt eine Verbindung zum Subgraph-Isomorphismus-
 problem nahe \cite{cook1971complexity, epp2026subgraph}: Das Finden
 der intentionskonsistentesten Architektur in einem Raum von $2^n$
-mÃ¶glichen Entwurfsentscheidungen kÃ¶nnte NP-vollstÃ¤ndig sein.
+möglichen Entwurfsentscheidungen könnte NP-vollständig sein.
 Die Anwendung des Subgraph Algorithmus \cite{epp2026subgraph} zur
 effizienten Suche nach intentionskonsistenten Architekturmustern
 in bestehenden Code-Basen stellt eine vielversprechende Forschungsrichtung
 dar: Gegeben die Leitintention als Mustergraph $G$ und die bestehende
-Architektur als Graph $G'$, prÃ¼ft der Subgraph Algorithmus in $O(n^3)$,
+Architektur als Graph $G'$, prüft der Subgraph Algorithmus in $O(n^3)$,
 ob $G$ als Subgraph in $G'$ enthalten ist -- und identifiziert damit,
 welche Teile der Architektur intentionskonform sind und welche nicht.
 
@@ -1487,7 +1487,7 @@ welche Teile der Architektur intentionskonform sind und welche nicht.
 
 \bibitem{epp2026paradigma}
 Epp, S. (2026).
-\textit{Intentionsgetriebene Software-Entwicklung: Leitgedanke}. UnverÃ¶ffentlichtes Manuskript.
+\textit{Intentionsgetriebene Software-Entwicklung: Leitgedanke}. Unveröffentlichtes Manuskript.
 
 \bibitem{epp2026subgraph}
 Epp, S. (2026).
@@ -1526,7 +1526,7 @@ Clements, P. et~al. (2010).
 Addison-Wesley.
 
 \bibitem{jacobson1992objectoriented}
-Jacobson, I., Christerson, M., Jonsson, P., \& Ã–vergaard, G. (1992).
+Jacobson, I., Christerson, M., Jonsson, P., \& Övergaard, G. (1992).
 \textit{Object-Oriented Software Engineering: A Use Case Driven Approach}.
 Addison-Wesley.
 

@@ -63,13 +63,13 @@
   breaklines=true,
   frame=single,
   literate=%
-  {Ã–}{{\"O}}1
-  {Ã„}{{\"A}}1
-  {Ãœ}{{\"U}}1
-  {ÃŸ}{{\ss}}1
-  {Ã¼}{{\"u}}1
-  {Ã¤}{{\"a}}1
-  {Ã¶}{{\"o}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
   {Î£}{{$\Sigma$}}1
   {â†’}{{$\rightarrow$}}1
   {âŠ†}{{$\subseteq$}}1
@@ -77,8 +77,8 @@
 
 \title{\textbf{Der Subgraph Algorithmus als effizienter Navigator\\
 in der Polynomialzeithierarchie:\\
-Neue Konsequenzen fÃ¼r PSPACE, NPSPACE\\
-und verwandte KomplexitÃ¤tsklassen}}
+Neue Konsequenzen für PSPACE, NPSPACE\\
+und verwandte Komplexitätsklassen}}
 \author{Stephan Epp}
 \date{9. Juni 2026}
 
@@ -88,72 +88,72 @@ und verwandte KomplexitÃ¤tsklassen}}
 
 \begin{abstract}
 \noindent
-Der Subgraph Algorithmus~\cite{epp2026subgraph} lÃ¶st das zyklische Subgraphisomorphie\-problem
+Der Subgraph Algorithmus~\cite{epp2026subgraph} löst das zyklische Subgraphisomorphie\-problem
 in polynomialer Zeit $O(n^3)$ mithilfe von Signatur-Arrays und zyklischen Rotationen.
 In der vorliegenden Arbeit zeigen wir, dass dieser Algorithmus eine \emph{effizientere Nutzung
-des Platzes in der Polynomialzeithierarchie} (PH) ermÃ¶glicht und weitreichende Konsequenzen
-fÃ¼r die Klassifikation von PSPACE, NPSPACE sowie hÃ¶heren Stufen der PH hat.
+des Platzes in der Polynomialzeithierarchie} (PH) ermöglicht und weitreichende Konsequenzen
+für die Klassifikation von PSPACE, NPSPACE sowie höheren Stufen der PH hat.
 
 Wir beweisen formell: (1)~Das Subgraphproblem liegt in P~$\subseteq$ PH und ist durch den
-Algorithmus direkt lÃ¶sbar, ohne Orakelzugriffe auf hÃ¶here Stufen.
-(2)~Ãœber eine polynomiale Reduktion kÃ¶nnen PSPACE-vollstÃ¤ndige Probleme mittels
+Algorithmus direkt lösbar, ohne Orakelzugriffe auf höhere Stufen.
+(2)~Über eine polynomiale Reduktion können PSPACE-vollständige Probleme mittels
 des Subgraph Algorithmus als Unterprogramm strukturiert angegangen werden,
 was die praktische Laufzeit innerhalb zertifizierter PSPACE-Schranken signifikant verbessert.
 (3)~Durch Savitchs Theorem (PSPACE~$=$~NPSPACE) ergeben sich symmetrische Konsequenzen
-fÃ¼r nichtdeterministische Raumklassen.
+für nichtdeterministische Raumklassen.
 (4)~Wir analysieren die Relativierungsbarrieren und zeigen, dass Orakel-Separationsresultate
 die hier bewiesenen polynomialen Schranken nicht direkt widerlegen.
 
-Die Ergebnisse werden durch formale Beweise, ausfÃ¼hrliche Beispiele und
-fÃ¼nf Matplotlib-Visualisierungen untermauert. Ein umfangreicher Ausblick
-diskutiert offene Fragen zu P\,vs.\,NP, zum PH-Kollaps und zu zukÃ¼nftigen
+Die Ergebnisse werden durch formale Beweise, ausführliche Beispiele und
+fünf Matplotlib-Visualisierungen untermauert. Ein umfangreicher Ausblick
+diskutiert offene Fragen zu P\,vs.\,NP, zum PH-Kollaps und zu zukünftigen
 Anwendungen des Algorithmus in der automatischen Verifikation und
-der QuantenkomplexitÃ¤tstheorie.
+der Quantenkomplexitätstheorie.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 % ===========================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ===========================================================
 
 \subsection{Motivation und Problemstellung}
 
-Die Polynomialzeithierarchie (PH) ist eine der zentralen Strukturen der KomplexitÃ¤tstheorie.
+Die Polynomialzeithierarchie (PH) ist eine der zentralen Strukturen der Komplexitätstheorie.
 Sie entfaltet sich zwischen den gut verstandenen Klassen P und PSPACE und umfasst
 Klassen wie NP, coNP, $\Sigma_2^P$, $\Pi_2^P$ und so fort~\cite{stockmeyer1976poly,wrathall1976complete}.
 Eine fundamentale offene Frage lautet, ob die Hierarchie unendlich ist oder ob sie
-bei einer festen Stufe $k$ kollabiert, d.\,h.\ ob $\mathrm{PH} = \Sigma_k^P$ fÃ¼r ein konkretes $k$.
+bei einer festen Stufe $k$ kollabiert, d.\,h.\ ob $\mathrm{PH} = \Sigma_k^P$ für ein konkretes $k$.
 
 Der Subgraph Algorithmus~\cite{epp2026subgraph} bietet in diesem Kontext einen neuen Blickwinkel:
-Er lÃ¶st das Subgraphisomorphieproblem --- ein klassisches NP-vollstÃ¤ndiges Problem
-in seiner allgemeinsten Form --- fÃ¼r die spezielle Klasse zyklisch-rotationsÃ¤quivalenter
+Er löst das Subgraphisomorphieproblem --- ein klassisches NP-vollständiges Problem
+in seiner allgemeinsten Form --- für die spezielle Klasse zyklisch-rotationsäquivalenter
 Graphen in Zeit $O(n^3)$ und Raum $O(n^2)$.
 Damit liegt er in P und gestattet eine direkte Platzierung innerhalb der PH
 ohne Rekurs auf Nichtdeterminismus oder Orakelzugriffe.
 
 \textbf{Zentrale Fragestellung dieser Arbeit:}
-Wie kann der Subgraph Algorithmus genutzt werden, um den verfÃ¼gbaren
-Platz in der Polynomialzeithierarchie \emph{effizienter} auszuschÃ¶pfen?
-Welche neuen Konsequenzen ergeben sich fÃ¼r PSPACE und NPSPACE?
+Wie kann der Subgraph Algorithmus genutzt werden, um den verfügbaren
+Platz in der Polynomialzeithierarchie \emph{effizienter} auszuschöpfen?
+Welche neuen Konsequenzen ergeben sich für PSPACE und NPSPACE?
 
-\subsection{BeitrÃ¤ge dieser Arbeit}
+\subsection{Beiträge dieser Arbeit}
 
-Diese Arbeit liefert folgende formale BeitrÃ¤ge:
+Diese Arbeit liefert folgende formale Beiträge:
 
 \begin{enumerate}
-  \item \textbf{Formale Einbettung} des Subgraph Algorithmus in die PH mit prÃ¤zisen
-        KomplexitÃ¤tsgrenzen (Abschnitt~\ref{sec:grundlagen}--\ref{sec:einbettung}).
-  \item \textbf{Reduktionstheoreme}: Nachweis, dass ausgewÃ¤hlte PSPACE-vollstÃ¤ndige
+  \item \textbf{Formale Einbettung} des Subgraph Algorithmus in die PH mit präzisen
+        Komplexitätsgrenzen (Abschnitt~\ref{sec:grundlagen}--\ref{sec:einbettung}).
+  \item \textbf{Reduktionstheoreme}: Nachweis, dass ausgewählte PSPACE-vollständige
         Probleme polynomiell auf Subgraphprobleme reduzierbar sind
         (Abschnitt~\ref{sec:pspace}).
-  \item \textbf{Savitch-Konsequenzen}: Ãœbertragung auf NPSPACE durch
+  \item \textbf{Savitch-Konsequenzen}: Übertragung auf NPSPACE durch
         Savitchs Theorem (Abschnitt~\ref{sec:npspace}).
   \item \textbf{Analyse der Relativierungsbarrieren} (Abschnitt~\ref{sec:oracle}).
-  \item \textbf{FÃ¼nf Matplotlib-Visualisierungen} mit formalen Beschreibungen
+  \item \textbf{Fünf Matplotlib-Visualisierungen} mit formalen Beschreibungen
         (Abschnitte~\ref{sec:plot1}--\ref{sec:plot5}).
-  \item \textbf{AusfÃ¼hrlicher Ausblick} (Abschnitt~\ref{sec:ausblick}).
+  \item \textbf{Ausführlicher Ausblick} (Abschnitt~\ref{sec:ausblick}).
 \end{enumerate}
 
 % ===========================================================
@@ -184,24 +184,24 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 \label{def:algo}
   Seien $G = (V_G, E_G)$ und $G' = (V_{G'}, E_{G'})$ Graphen mit $|V_G| = |V_{G'}| = n$.
   Der Subgraph Algorithmus entscheidet, ob eine zyklische Rotation von $G'$ einen Subgraphen
-  von $G$ enthÃ¤lt, indem er fÃ¼r jedes $k \in \{0, \ldots, n-1\}$ prÃ¼ft, ob
+  von $G$ enthält, indem er für jedes $k \in \{0, \ldots, n-1\}$ prüft, ob
   $\mathrm{LCS}(\boldsymbol{\sigma}^G, \mathrm{rot}_k(\boldsymbol{\sigma}^{G'})) \geq 2$.
 \end{definition}
 
-\begin{satz}[KomplexitÃ¤t des Subgraph Algorithmus~\cite{epp2026subgraph}]
+\begin{satz}[Komplexität des Subgraph Algorithmus~\cite{epp2026subgraph}]
 \label{satz:komplex}
-  Der Subgraph Algorithmus besitzt eine ZeitkomplexitÃ¤t von $O(n^3)$
-  und eine RaumkomplexitÃ¤t von $O(n^2)$.
+  Der Subgraph Algorithmus besitzt eine Zeitkomplexität von $O(n^3)$
+  und eine Raumkomplexität von $O(n^2)$.
 \end{satz}
 
 \begin{proof}
-  Die Signaturberechnung erfordert das Lesen aller $n^2$ MatrixeintrÃ¤ge
+  Die Signaturberechnung erfordert das Lesen aller $n^2$ Matrixeinträge
   in $\Theta(n^2)$.
-  Pro Rotation wird eine LCS-Berechnung Ã¼ber Sequenzen der LÃ¤nge $n$
-  mittels dynamischer Programmierung in $\Theta(n^2)$ durchgefÃ¼hrt.
+  Pro Rotation wird eine LCS-Berechnung über Sequenzen der Länge $n$
+  mittels dynamischer Programmierung in $\Theta(n^2)$ durchgeführt.
   Da $n$ Rotationen anfallen, ergibt sich $n \cdot \Theta(n^2) = \Theta(n^3)$.
-  Der Speicherbedarf setzt sich zusammen aus $O(n^2)$ fÃ¼r die Adjazenzmatrizen
-  und $O(n)$ fÃ¼r die Signatur-Arrays, also insgesamt $O(n^2)$.
+  Der Speicherbedarf setzt sich zusammen aus $O(n^2)$ für die Adjazenzmatrizen
+  und $O(n)$ für die Signatur-Arrays, also insgesamt $O(n^2)$.
 \end{proof}
 
 \subsection{Polynomialzeithierarchie}
@@ -232,7 +232,7 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 
 \begin{theorem}[Savitch~\cite{savitch1970relationships}]
 \label{thm:savitch}
-  FÃ¼r jede platzkonstruierbare Funktion $s(n) \geq \log n$ gilt
+  Für jede platzkonstruierbare Funktion $s(n) \geq \log n$ gilt
   \[
     \mathrm{NSPACE}(s(n)) \subseteq \mathrm{DSPACE}(s(n)^2).
   \]
@@ -248,12 +248,12 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 \end{theorem}
 
 \begin{proof}[Beweisidee]
-  Durch Induktion Ã¼ber $k$: Jede $\Sigma_k^P$-Maschine simuliert
-  abwechselnd existentielle und universelle Quantoren Ã¼ber polynomiell
-  lange Zeugen. Der gesamte Konfigurationsraum ist polynomiell beschrÃ¤nkt,
-  da die Turingmaschine bei jedem Ãœbergang maximal polynomiell viel Platz
+  Durch Induktion über $k$: Jede $\Sigma_k^P$-Maschine simuliert
+  abwechselnd existentielle und universelle Quantoren über polynomiell
+  lange Zeugen. Der gesamte Konfigurationsraum ist polynomiell beschränkt,
+  da die Turingmaschine bei jedem Übergang maximal polynomiell viel Platz
   verwendet und die Quantorenalternierungen polynomiell aufeinander aufbauen.
-  Eine einfache Induktion zeigt $\Sigma_k^P \subseteq \mathrm{PSPACE}$ fÃ¼r alle $k$.
+  Eine einfache Induktion zeigt $\Sigma_k^P \subseteq \mathrm{PSPACE}$ für alle $k$.
 \end{proof}
 
 % ===========================================================
@@ -271,20 +271,20 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 
 \begin{proof}
   Nach Satz~\ref{satz:komplex} entscheidet der Subgraph Algorithmus das Problem
-  in Zeit $O(n^3)$, was polynomiell in der EingabegrÃ¶ÃŸe $|n^2|$ ist.
-  Da $\mathrm{P} = \Sigma_0^P \subseteq \Sigma_k^P$ fÃ¼r alle $k \geq 0$,
+  in Zeit $O(n^3)$, was polynomiell in der Eingabegröße $|n^2|$ ist.
+  Da $\mathrm{P} = \Sigma_0^P \subseteq \Sigma_k^P$ für alle $k \geq 0$,
   gilt $\mathrm{Subgraph} \in \mathrm{PH}$.
 \end{proof}
 
 \begin{korollar}
-  Das zyklische Subgraphisomorphieproblem ist kein NP-vollstÃ¤ndiges Problem
+  Das zyklische Subgraphisomorphieproblem ist kein NP-vollständiges Problem
   (sofern P~$\neq$~NP), da es in P liegt und damit unter der NP-Schwelle.
 \end{korollar}
 
 \begin{proof}
-  WÃ¼rde das Problem NP-vollstÃ¤ndig sein, so existierte eine Polynomialzeit-Reduktion
-  von SAT auf es. Da der Algorithmus das Problem in P lÃ¶st, wÃ¼rde SAT $\in$ P folgen,
-  was P~$=$~NP implizieren wÃ¼rde --- eine weithin als falsch angesehene Aussage.
+  Würde das Problem NP-vollständig sein, so existierte eine Polynomialzeit-Reduktion
+  von SAT auf es. Da der Algorithmus das Problem in P löst, würde SAT $\in$ P folgen,
+  was P~$=$~NP implizieren würde --- eine weithin als falsch angesehene Aussage.
 \end{proof}
 
 \subsection{Effizienzgewinn in der PH durch den Subgraph Algorithmus}
@@ -301,31 +301,31 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 \begin{satz}[Effizienzgewinn]
 \label{satz:effizienz}
   Besitzt ein Problem $\Pi \in \Sigma_k^P$ eine Subgraph-Zerlegung
-  der LÃ¤nge $\ell \in O(\mathrm{poly}(n))$, so kann $\Pi$ durch den
+  der Länge $\ell \in O(\mathrm{poly}(n))$, so kann $\Pi$ durch den
   Subgraph Algorithmus in Zeit $O(n^{3\ell})$ entschieden werden,
-  ohne auf ein $\Sigma_k^P$-Orakel zurÃ¼ckgreifen zu mÃ¼ssen.
+  ohne auf ein $\Sigma_k^P$-Orakel zurückgreifen zu müssen.
 \end{satz}
 
 \begin{proof}
   Jede Reduktion in der Kette $\Pi \leq_m^p \Pi_1 \leq_m^p \cdots \leq_m^p \Pi_\ell$
-  ist polynomiell zeitbeschrÃ¤nkt. Sei $p_i(n)$ die Laufzeit der $i$-ten Reduktion.
-  Da jede Reduktion polynomiell ist, gilt $p_i(n) \in O(n^{c_i})$ fÃ¼r Konstanten $c_i$.
-  Das Endproblem $\Pi_\ell$ wird durch den Subgraph Algorithmus in $O(m^3)$ gelÃ¶st,
-  wobei $m = p_\ell(n)$ die AusgabegrÃ¶ÃŸe der letzten Reduktion ist.
+  ist polynomiell zeitbeschränkt. Sei $p_i(n)$ die Laufzeit der $i$-ten Reduktion.
+  Da jede Reduktion polynomiell ist, gilt $p_i(n) \in O(n^{c_i})$ für Konstanten $c_i$.
+  Das Endproblem $\Pi_\ell$ wird durch den Subgraph Algorithmus in $O(m^3)$ gelöst,
+  wobei $m = p_\ell(n)$ die Ausgabegröße der letzten Reduktion ist.
   Da $m \in O(n^{c_\ell})$, folgt eine Gesamtlaufzeit von
   \[
     O\!\left(\sum_{i=1}^{\ell} n^{c_i} + n^{3c_\ell}\right) = O(n^{3\ell \cdot \max_i c_i}).
   \]
-  FÃ¼r konstante $c_i$ ergibt dies $O(n^{3\ell})$. Entscheidend: Es wird kein
-  nichtdeterministisches Orakel benÃ¶tigt, da $\Pi_\ell$ deterministisch in P gelÃ¶st wird.
+  Für konstante $c_i$ ergibt dies $O(n^{3\ell})$. Entscheidend: Es wird kein
+  nichtdeterministisches Orakel benötigt, da $\Pi_\ell$ deterministisch in P gelöst wird.
 \end{proof}
 
 \begin{bemerkung}
-  Der Effizienzgewinn zeigt sich am deutlichsten gegenÃ¼ber naiven exponentiellen
-  Verfahren. Ein brute-force Ansatz fÃ¼r Subgraphisomorphie benÃ¶tigt $O(n! \cdot n^2)$,
-  was fÃ¼r $n = 20$ bereits $> 10^{19}$ Operationen bedeutet.
-  Der Subgraph Algorithmus benÃ¶tigt bei $n = 20$ lediglich $8000$ Operationen
-  fÃ¼r das Kernproblem.
+  Der Effizienzgewinn zeigt sich am deutlichsten gegenüber naiven exponentiellen
+  Verfahren. Ein brute-force Ansatz für Subgraphisomorphie benötigt $O(n! \cdot n^2)$,
+  was für $n = 20$ bereits $> 10^{19}$ Operationen bedeutet.
+  Der Subgraph Algorithmus benötigt bei $n = 20$ lediglich $8000$ Operationen
+  für das Kernproblem.
 \end{bemerkung}
 
 % ===========================================================
@@ -339,12 +339,12 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
   \centering
   \includegraphics[width=0.80\textwidth]{plot1_hierarchy.pdf}
   \caption{Schematische Darstellung der Polynomialzeithierarchie.
-    Die ineinander geschachtelten Ellipsen reprÃ¤sentieren die Enthaltenseinsbeziehungen
+    Die ineinander geschachtelten Ellipsen repräsentieren die Enthaltenseinsbeziehungen
     $\mathrm{P} \subseteq \mathrm{NP} \subseteq \Sigma_2^P \subseteq \cdots \subseteq
     \mathrm{PH} \subseteq \mathrm{PSPACE} = \mathrm{NPSPACE} \subseteq \mathrm{EXPTIME}$.
     Der rote Pfeil illustriert, an welcher Stelle der Subgraph Algorithmus ($O(n^3) \in \mathrm{P}$)
     in die Hierarchie eingreift: Er navigiert deterministisch von der untersten Ebene P
-    nach oben, ohne Orakelzugriffe auf hÃ¶here Stufen zu benÃ¶tigen. Die Klasse
+    nach oben, ohne Orakelzugriffe auf höhere Stufen zu benötigen. Die Klasse
     $\mathrm{PSPACE} = \mathrm{NPSPACE}$ (nach Savitch) bildet die obere Schranke,
     innerhalb derer alle hier betrachteten Reduktionen stattfinden.}
   \label{fig:hierarchy}
@@ -352,7 +352,7 @@ Diese Arbeit liefert folgende formale BeitrÃ¤ge:
 
 Abbildung~\ref{fig:hierarchy} verdeutlicht die hierarchische Struktur.
 Der Subgraph Algorithmus operiert auf der untersten Ebene P und kann daher
-als Unterprogramm fÃ¼r Probleme auf beliebig hohen Stufen der PH dienen,
+als Unterprogramm für Probleme auf beliebig hohen Stufen der PH dienen,
 ohne die Struktur der Hierarchie zu verletzen.
 
 \subsection{Plot 2: Laufzeitvergleich}
@@ -362,13 +362,13 @@ ohne die Struktur der Hierarchie zu verletzen.
   \centering
   \includegraphics[width=0.85\textwidth]{plot2_runtime.pdf}
   \caption{Doppelt-logarithmischer Laufzeitvergleich des Subgraph Algorithmus ($O(n^3)$,
-    blau) gegenÃ¼ber alternativen Verfahren.
+    blau) gegenüber alternativen Verfahren.
     Die gestrichelte violette Kurve zeigt den Aufwand eines naiven $O(n^4)$-Verfahrens,
-    das bei PSPACE-Reduktionen ohne effizientes Unterprogramm entstehen wÃ¼rde.
+    das bei PSPACE-Reduktionen ohne effizientes Unterprogramm entstehen würde.
     Rot gepunktet: exponentieller Brute-Force-Ansatz $2^{n/10}$, der bereits bei
-    $n \approx 300$ die praktische Rechenschranke von $10^9$ Operationen Ã¼berschreitet.
-    Die strichpunktierte grÃ¼ne Kurve reprÃ¤sentiert die beste bekannte LCS-Approximation
-    ($O(n^2 \log n)$) fÃ¼r allgemeine Sequenzen~\cite{masek1980faster}.
+    $n \approx 300$ die praktische Rechenschranke von $10^9$ Operationen überschreitet.
+    Die strichpunktierte grüne Kurve repräsentiert die beste bekannte LCS-Approximation
+    ($O(n^2 \log n)$) für allgemeine Sequenzen~\cite{masek1980faster}.
     Die orange Horizontale markiert die praktische Operationsgrenze ($10^9$); der rote
     Bereich kennzeichnet den PSPACE-kritischen Bereich, in dem nur der $O(n^3)$-Algorithmus
     noch praxistauglich ist.}
@@ -385,26 +385,26 @@ einsetzbaren deterministischen Ansatz darstellt.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.90\textwidth]{plot3_collapse.pdf}
-  \caption{GegenÃ¼berstellung zweier Szenarien fÃ¼r die Struktur der PH.
+  \caption{Gegenüberstellung zweier Szenarien für die Struktur der PH.
     \emph{Links (Standardfall):} Die PH ist unendlich und strikt unterhalb von PSPACE
-    enthalten. Jede Stufe $\Sigma_k^P$ ist echt grÃ¶ÃŸer als die vorherige.
+    enthalten. Jede Stufe $\Sigma_k^P$ ist echt größer als die vorherige.
     \emph{Rechts (Subgraph-induzierter Kollaps):} Falls alle relevanten
     Probleme innerhalb der PH eine Subgraph-Zerlegung (Definition~5) besitzen,
-    kÃ¶nnen sie deterministisch in P gelÃ¶st werden, was de facto
-    einem Kollaps PH~$=$~P entsprÃ¤che.
+    können sie deterministisch in P gelöst werden, was de facto
+    einem Kollaps PH~$=$~P entspräche.
     Der rote Pfeil symbolisiert die konstruktive Einwirkung des Subgraph Algorithmus.
-    Wichtig: Dieser Kollaps ist \emph{kein} allgemeiner Beweis fÃ¼r P~$=$~NP,
-    sondern gilt nur fÃ¼r die Teilmenge der Probleme mit Subgraph-Zerlegung.}
+    Wichtig: Dieser Kollaps ist \emph{kein} allgemeiner Beweis für P~$=$~NP,
+    sondern gilt nur für die Teilmenge der Probleme mit Subgraph-Zerlegung.}
   \label{fig:collapse}
 \end{figure}
 
 Abbildung~\ref{fig:collapse} illustriert das zentrale theoretische Ergebnis dieser Arbeit:
 Der Subgraph Algorithmus \emph{impliziert keinen allgemeinen PH-Kollaps},
-sondern zeigt, dass fÃ¼r eine strukturell beschreibbare Teilmenge von PH-Problemen
+sondern zeigt, dass für eine strukturell beschreibbare Teilmenge von PH-Problemen
 polynomiale Determinisierbarkeit erreichbar ist.
 
 % ===========================================================
-\section{Konsequenzen fÃ¼r PSPACE und NPSPACE}
+\section{Konsequenzen für PSPACE und NPSPACE}
 \label{sec:pspace}
 % ===========================================================
 
@@ -420,41 +420,41 @@ polynomiale Determinisierbarkeit erreichbar ist.
 \begin{satz}[QBF-Subgraph-Reduktion]
 \label{satz:qbf}
   Sei $\mathrm{TQBF}$ das Problem der wahren quantifizierten Booleschen Formeln
-  (PSPACE-vollstÃ¤ndig~\cite{stockmeyer1973word}).
-  Dann gilt: FÃ¼r jede Instanz $\varphi$ von $\mathrm{TQBF}$ der Tiefe $d$ und
-  Variablenanzahl $m$ kann ein Ã¤quivalentes Subgraphproblem auf einem
+  (PSPACE-vollständig~\cite{stockmeyer1973word}).
+  Dann gilt: Für jede Instanz $\varphi$ von $\mathrm{TQBF}$ der Tiefe $d$ und
+  Variablenanzahl $m$ kann ein äquivalentes Subgraphproblem auf einem
   Graphen $G_\varphi$ mit $n = O(m \cdot d)$ Knoten konstruiert werden,
-  sodass $G_\varphi$ einen bestimmten Teilgraphen $H_\varphi$ genau dann enthÃ¤lt,
+  sodass $G_\varphi$ einen bestimmten Teilgraphen $H_\varphi$ genau dann enthält,
   wenn $\varphi$ wahr ist.
 \end{satz}
 
 \begin{proof}
   Wir konstruieren $G_\varphi$ wie folgt.
   Jede Variablenbelegung $x_i \in \{0, 1\}$ wird durch einen Knoten $v_i^{(0)}$
-  und $v_i^{(1)}$ reprÃ¤sentiert.
+  und $v_i^{(1)}$ repräsentiert.
   Jeder Quantor $Q_i x_i$ der Formel wird durch eine Kantenschicht realisiert:
-  FÃ¼r $Q_i = \exists$ fÃ¼gen wir eine Kante $(v_i^{(0)}, v_{i+1})$ oder
+  Für $Q_i = \exists$ fügen wir eine Kante $(v_i^{(0)}, v_{i+1})$ oder
   $(v_i^{(1)}, v_{i+1})$ ein (nichtdeterministische Wahl, kodiert als zwei
   Teilgraphen $H_0$ und $H_1$).
-  FÃ¼r $Q_i = \forall$ fÃ¼gen wir beide Kanten ein.
+  Für $Q_i = \forall$ fügen wir beide Kanten ein.
 
-  Die TeilgraphÃ¼berprÃ¼fung durch den Subgraph Algorithmus entspricht dann
+  Die Teilgraphüberprüfung durch den Subgraph Algorithmus entspricht dann
   genau der Auswertung der Quantoren:
   \begin{itemize}
-    \item $\exists x_i$: Es genÃ¼gt, \emph{einen} Subgraphen $H_b$ ($b \in \{0,1\}$) zu finden.
-    \item $\forall x_i$: Beide Subgraphen $H_0$ und $H_1$ mÃ¼ssen enthalten sein.
+    \item $\exists x_i$: Es genügt, \emph{einen} Subgraphen $H_b$ ($b \in \{0,1\}$) zu finden.
+    \item $\forall x_i$: Beide Subgraphen $H_0$ und $H_1$ müssen enthalten sein.
   \end{itemize}
 
   Die Konstruktion erzeugt einen Graphen mit $n = O(m \cdot d)$ Knoten und
   $O(m \cdot d)$ Kanten, da jede der $m$ Variablen auf $d$ Ebenen kodiert wird.
   Der Subgraph Algorithmus auf $G_\varphi$ entscheidet daher $\mathrm{TQBF}$
-  in Zeit $O(n^3) = O((m \cdot d)^3)$, was fÃ¼r konstantes $d$ polynomiell in $m$ ist.
+  in Zeit $O(n^3) = O((m \cdot d)^3)$, was für konstantes $d$ polynomiell in $m$ ist.
 \end{proof}
 
 \begin{bemerkung}
-  Die Reduktion in Satz~\ref{satz:qbf} ist nicht eine LÃ¶sung des TQBF-Problems
-  in Polynomialzeit (das wÃ¼rde PSPACE~$=$~P beweisen), sondern zeigt,
-  wie der Subgraph Algorithmus als strukturierendes Werkzeug fÃ¼r die
+  Die Reduktion in Satz~\ref{satz:qbf} ist nicht eine Lösung des TQBF-Problems
+  in Polynomialzeit (das würde PSPACE~$=$~P beweisen), sondern zeigt,
+  wie der Subgraph Algorithmus als strukturierendes Werkzeug für die
   \emph{Darstellung} von PSPACE-Instanzen dienen kann.
   Die exponentielle Tiefe $d$ bleibt im Allgemeinen exponentiell.
 \end{bemerkung}
@@ -465,29 +465,29 @@ polynomiale Determinisierbarkeit erreichbar ist.
   die $L$ in Raum $s(n) \in O(n^k)$ entscheidet.
   Dann kann die Konfigurationsgraphen-Traversal von $M$ als Subgraphproblem
   auf einem Graphen $G_M$ mit $|G_M| = 2^{O(s(n))}$ Knoten modelliert werden.
-  Der Subgraph Algorithmus auf $G_M$ lÃ¤uft in Zeit $O(2^{O(s(n))})$,
-  was fÃ¼r $s(n) = O(\log n)$ polynomiell in $n$ ist.
+  Der Subgraph Algorithmus auf $G_M$ läuft in Zeit $O(2^{O(s(n))})$,
+  was für $s(n) = O(\log n)$ polynomiell in $n$ ist.
 \end{satz}
 
 \begin{proof}
   Der Konfigurationsgraph $G_M$ hat als Knoten alle Konfigurationen von $M$
-  (Zustand, Kopfposition, Bandinhalt) und als Kanten die ÃœbergÃ¤nge.
-  FÃ¼r Raumschranke $s(n)$ gibt es $|G_M| = |\Gamma|^{s(n)} \cdot |Q| \cdot s(n)$
-  Konfigurationen, wobei $|\Gamma|$ die BandalphabetgrÃ¶ÃŸe und $|Q|$ die Zustandsanzahl sind.
+  (Zustand, Kopfposition, Bandinhalt) und als Kanten die Übergänge.
+  Für Raumschranke $s(n)$ gibt es $|G_M| = |\Gamma|^{s(n)} \cdot |Q| \cdot s(n)$
+  Konfigurationen, wobei $|\Gamma|$ die Bandalphabetgröße und $|Q|$ die Zustandsanzahl sind.
   Dies ist $2^{O(s(n))}$.
 
-  Die Frage, ob $M$ eine akzeptierende Konfiguration erreicht, ist Ã¤quivalent zur
+  Die Frage, ob $M$ eine akzeptierende Konfiguration erreicht, ist äquivalent zur
   Existenz eines Pfades (Subgraphs) vom Startzustand zu einem akzeptierenden Zustand.
   Der Subgraph Algorithmus entscheidet dies in $O(|G_M|^3) = O(2^{3s(n)})$.
 
-  FÃ¼r $s(n) = O(\log n)$: $2^{3 \cdot O(\log n)} = n^{O(1)}$ --- polynomiell.
+  Für $s(n) = O(\log n)$: $2^{3 \cdot O(\log n)} = n^{O(1)}$ --- polynomiell.
 \end{proof}
 
-\begin{korollar}[Subgraph fÃ¼r L und NL]
+\begin{korollar}[Subgraph für L und NL]
 \label{kor:nl}
   Das Erreichbarkeitsproblem in $\mathrm{NL}$ (nichtzusamm. Grapherreichbarkeit, $s$-$t$-CONN)
   ist direkt ein Subgraphproblem: Man sucht den Pfad-Teilgraphen als Subgraphen
-  des Eingabegraphen. Der Subgraph Algorithmus lÃ¶st dies in $O(n^3)$,
+  des Eingabegraphen. Der Subgraph Algorithmus löst dies in $O(n^3)$,
   was innerhalb der bekannten $\mathrm{NL} \subseteq \mathrm{P}$-Schranke liegt.
 \end{korollar}
 
@@ -500,28 +500,28 @@ polynomiale Determinisierbarkeit erreichbar ist.
   \caption{Savitchs Theorem und die Speichereffizienz des Subgraph Algorithmus.
     Die blaue Kurve zeigt die PSPACE-Schranke $s(n)^2$ (quadratischer Overhead
     durch Savitchs Simulation). Die violette gestrichelte Kurve ist identisch,
-    da $\mathrm{NPSPACE} = \mathrm{PSPACE}$ (Savitch). Die strichpunktierte grÃ¼ne
+    da $\mathrm{NPSPACE} = \mathrm{PSPACE}$ (Savitch). Die strichpunktierte grüne
     Kurve zeigt den Speicherbedarf des Subgraph Algorithmus ($O(n^2)$), der exakt
-    mit der PSPACE-Schranke Ã¼bereinstimmt.
+    mit der PSPACE-Schranke übereinstimmt.
     Auf der rechten Achse (rot gepunktet) ist die Laufzeit $O(n^3)$ aufgetragen.
-    Die Ãœbereinstimmung von Subgraph-Speicher und PSPACE-Schranke ist \emph{nicht
-    zufÃ¤llig}: Der Algorithmus nutzt die Adjazenzmatrix als kompakte Darstellung
+    Die Übereinstimmung von Subgraph-Speicher und PSPACE-Schranke ist \emph{nicht
+    zufällig}: Der Algorithmus nutzt die Adjazenzmatrix als kompakte Darstellung
     des gesamten Graphzustands, analog zur Konfigurationsmatrix in Savitchs Beweis.}
   \label{fig:savitch}
 \end{figure}
 
 % ===========================================================
-\section{Konsequenzen fÃ¼r NPSPACE}
+\section{Konsequenzen für NPSPACE}
 \label{sec:npspace}
 % ===========================================================
 
 \begin{satz}[NPSPACE-Konsequenz]
 \label{satz:npspace}
   Aus Theorem~\ref{thm:savitch} (Savitch) und Satz~\ref{satz:raum} folgt:
-  Jedes Problem $L \in \mathrm{NPSPACE}$ kann Ã¼ber den Konfigurationsgraphen
+  Jedes Problem $L \in \mathrm{NPSPACE}$ kann über den Konfigurationsgraphen
   seiner nichtdeterministischen Turingmaschine auf ein Subgraphproblem reduziert
-  werden, das der Subgraph Algorithmus in $O(2^{3s(n)})$ lÃ¶st.
-  FÃ¼r $s(n) = O(\log n)$ ergibt sich eine polynomielle Laufzeit.
+  werden, das der Subgraph Algorithmus in $O(2^{3s(n)})$ löst.
+  Für $s(n) = O(\log n)$ ergibt sich eine polynomielle Laufzeit.
 \end{satz}
 
 \begin{proof}
@@ -533,10 +533,10 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Alternativ: Wir konstruieren den Konfigurationsgraphen $G_N$ der nichtdeterministischen
   TM direkt mit $2^{O(s(n))}$ Knoten (jede nichtdeterministische Konfiguration ist ein Knoten)
   und suchen nach einem Pfad zu einem akzeptierenden Zustand mittels des Subgraph Algorithmus.
-  Die Laufzeit ist $O(2^{3s(n)})$ und fÃ¼r $s(n) = O(\log n)$ polynomiell.
+  Die Laufzeit ist $O(2^{3s(n)})$ und für $s(n) = O(\log n)$ polynomiell.
 \end{proof}
 
-\begin{korollar}[Effizienzgewinn gegenÃ¼ber Alternation]
+\begin{korollar}[Effizienzgewinn gegenüber Alternation]
   Das Entscheidungsverfahren aus Satz~\ref{satz:npspace} ist um einen Faktor
   $O(2^{s(n)})$ effizienter als der naive alternierende Ansatz,
   der alle $2^{s(n)}$ nichtdeterministischen Pfade einzeln verfolgt.
@@ -559,7 +559,7 @@ polynomiale Determinisierbarkeit erreichbar ist.
 \begin{satz}[Relativierungsbarriere]
 \label{satz:oracle}
   Die Polynomialzeiteigenschaft des Subgraph Algorithmus ist \emph{robust}
-  gegenÃ¼ber Orakel-Relativierungen: FÃ¼r jedes Orakel $A$ gilt
+  gegenüber Orakel-Relativierungen: Für jedes Orakel $A$ gilt
   $\mathrm{Subgraph} \in \mathrm{P}^A$.
 \end{satz}
 
@@ -567,24 +567,24 @@ polynomiale Determinisierbarkeit erreichbar ist.
   Der Subgraph Algorithmus stellt keine Orakelabfragen; er ist ein rein
   deterministischer Polynomialzeitalgorithmus.
   Daher gilt $\mathrm{Subgraph} \in \mathrm{P} \subseteq \mathrm{P}^A$
-  fÃ¼r jedes Orakel $A$, trivialerweise.
+  für jedes Orakel $A$, trivialerweise.
 \end{proof}
 
-\begin{lemma}[Baker-Gill-Solovay-KompatibilitÃ¤t]
+\begin{lemma}[Baker-Gill-Solovay-Kompatibilität]
   Die Existenz des Subgraph Algorithmus widerspricht nicht den
   Baker-Gill-Solovay-Orakeln~\cite{baker1975relativizations}:
   \begin{itemize}
-    \item FÃ¼r das Orakel $A$ mit $\mathrm{P}^A = \mathrm{NP}^A$ lÃ¶st der
+    \item Für das Orakel $A$ mit $\mathrm{P}^A = \mathrm{NP}^A$ löst der
           Subgraph Algorithmus weiterhin das spezifische Subgraphproblem in P.
-    \item FÃ¼r das Orakel $B$ mit $\mathrm{P}^B \neq \mathrm{NP}^B$ Ã¤ndert
+    \item Für das Orakel $B$ mit $\mathrm{P}^B \neq \mathrm{NP}^B$ ändert
           sich die Polynomialzeiteigenschaft des Subgraph Algorithmus nicht.
   \end{itemize}
 \end{lemma}
 
 \begin{proof}
   Da der Subgraph Algorithmus keine Orakelabfragen verwendet, sind seine
-  Eigenschaften orakelunabhÃ¤ngig. Die Separationsresultate aus~\cite{baker1975relativizations}
-  betreffen Probleme, die \emph{inhÃ¤rent} auf Orakelzugriffe angewiesen sind;
+  Eigenschaften orakelunabhängig. Die Separationsresultate aus~\cite{baker1975relativizations}
+  betreffen Probleme, die \emph{inhärent} auf Orakelzugriffe angewiesen sind;
   das Subgraphproblem ist dies nicht.
 \end{proof}
 
@@ -594,14 +594,14 @@ polynomiale Determinisierbarkeit erreichbar ist.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.87\textwidth]{plot5_oracles.pdf}
-  \caption{Oracle-Resultate und ihre relative EvidenzstÃ¤rke fÃ¼r P$\neq$NP
+  \caption{Oracle-Resultate und ihre relative Evidenzstärke für P$\neq$NP
     und PH-Separation (normiert auf $[0,1]$).
-    Baker-Gill-Solovay (Oracle A) liefert maximale Evidenz fÃ¼r P~$=$~NP relativ zu $A$,
-    aber keine direkte Aussage Ã¼ber das absolute Problem.
+    Baker-Gill-Solovay (Oracle A) liefert maximale Evidenz für P~$=$~NP relativ zu $A$,
+    aber keine direkte Aussage über das absolute Problem.
     Baker-Gill-Solovay (Oracle B) trennt P und NP relativ zu $B$.
     Furst-Saxe-Sipser trennt die PH von AC$^0$.
     Der Subgraph Algorithmus (ohne Orakel) hat \emph{moderate} P$\neq$NP-Evidenz
-    (er zeigt P-LÃ¶sbarkeit eines strukturierten Spezialfalls, nicht allgemeiner Isomorphie)
+    (er zeigt P-Lösbarkeit eines strukturierten Spezialfalls, nicht allgemeiner Isomorphie)
     und hohe PH-Evidenz (klare Platzierung in P $\subset$ PH).
     Razborov-Rudich~\cite{razborov1997natural} begrenzen den Zugang zu Separation
     durch Schaltkreisunterschranken.}
@@ -609,15 +609,15 @@ polynomiale Determinisierbarkeit erreichbar ist.
 \end{figure}
 
 Abbildung~\ref{fig:oracles} kontextualisiert den Subgraph Algorithmus
-innerhalb der bekannten Barrieren der KomplexitÃ¤tstheorie.
-Er ist \emph{kein} Beweis fÃ¼r P~$=$~NP, sondern ein Beweis, dass das
+innerhalb der bekannten Barrieren der Komplexitätstheorie.
+Er ist \emph{kein} Beweis für P~$=$~NP, sondern ein Beweis, dass das
 spezifische zyklische Subgraphisomorphieproblem in P liegt.
 
 % ===========================================================
 \section{Formale Hauptergebnisse}
 % ===========================================================
 
-\subsection{Zusammenfassung der SÃ¤tze}
+\subsection{Zusammenfassung der Sätze}
 
 Wir fassen die zentralen Ergebnisse in einem Theorem zusammen.
 
@@ -628,25 +628,25 @@ Wir fassen die zentralen Ergebnisse in einem Theorem zusammen.
   \begin{enumerate}
     \item \textbf{(Klassifizierung)} Das zyklische Subgraphisomorphieproblem liegt in P:
           $\mathrm{Subgraph} \in \mathrm{P} \subseteq \mathrm{PH} \subseteq \mathrm{PSPACE}$.
-    \item \textbf{(OptimalitÃ¤t)} Unter SETH ist der Algorithmus asymptotisch optimal:
+    \item \textbf{(Optimalität)} Unter SETH ist der Algorithmus asymptotisch optimal:
           $T_{\mathrm{Subgraph}}(n) = \Theta(n^3)$, und kein Algorithmus kann
-          das Problem in $O(n^{3-\varepsilon})$ fÃ¼r $\varepsilon > 0$ lÃ¶sen.
+          das Problem in $O(n^{3-\varepsilon})$ für $\varepsilon > 0$ lösen.
     \item \textbf{(PH-Effizienz)} Jedes Problem $\Pi \in \mathrm{PH}$ mit
-          Subgraph-Zerlegung der LÃ¤nge $\ell$ kann in Zeit $O(n^{3\ell})$
+          Subgraph-Zerlegung der Länge $\ell$ kann in Zeit $O(n^{3\ell})$
           deterministisch entschieden werden.
     \item \textbf{(PSPACE-Modellierung)} PSPACE-Instanzen mit logarithmischer
-          Raumschranke ($s(n) = O(\log n)$) kÃ¶nnen als Subgraphprobleme modelliert
+          Raumschranke ($s(n) = O(\log n)$) können als Subgraphprobleme modelliert
           und in Polynomialzeit entschieden werden.
     \item \textbf{(NPSPACE-Symmetrie)} Durch NPSPACE = PSPACE (Savitch) gelten
-          die Aussagen (3) und (4) symmetrisch fÃ¼r nichtdeterministische Raumklassen.
+          die Aussagen (3) und (4) symmetrisch für nichtdeterministische Raumklassen.
     \item \textbf{(Orakelrobustheit)} Die Polynomialzeiteigenschaft des Algorithmus
-          ist robust gegenÃ¼ber beliebigen Orakel-Relativierungen.
+          ist robust gegenüber beliebigen Orakel-Relativierungen.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
   (1) folgt aus Satz~\ref{satz:in_p} und Theorem~\ref{thm:ph_pspace}.
-  (2) folgt aus dem OptimalitÃ¤tssatz in~\cite{epp2026subgraph}.
+  (2) folgt aus dem Optimalitätssatz in~\cite{epp2026subgraph}.
   (3) folgt aus Satz~\ref{satz:effizienz}.
   (4) folgt aus Satz~\ref{satz:raum} und Korollar~\ref{kor:nl}.
   (5) folgt aus Satz~\ref{satz:npspace} und Theorem~\ref{thm:savitch}.
@@ -658,11 +658,11 @@ Wir fassen die zentralen Ergebnisse in einem Theorem zusammen.
 % ===========================================================
 
 Zur Veranschaulichung der theoretischen Ergebnisse betrachten wir
-konkrete Laufzahlen fÃ¼r verschiedene ProblemgrÃ¶ÃŸen.
+konkrete Laufzahlen für verschiedene Problemgrößen.
 
 \begin{table}[htbp]
   \centering
-  \caption{Vergleich der Operationsanzahlen fÃ¼r verschiedene Verfahren}
+  \caption{Vergleich der Operationsanzahlen für verschiedene Verfahren}
   \label{tab:ops}
   \begin{tabular}{r r r r r}
     \toprule
@@ -679,10 +679,10 @@ konkrete Laufzahlen fÃ¼r verschiedene ProblemgrÃ¶ÃŸen.
   \end{tabular}
 \end{table}
 
-Tabelle~\ref{tab:ops} zeigt, dass der Subgraph Algorithmus fÃ¼r
+Tabelle~\ref{tab:ops} zeigt, dass der Subgraph Algorithmus für
 $n \leq 1000$ noch innerhalb der praktischen Grenze von $10^9$ Operationen liegt,
-wÃ¤hrend der naive $O(n^4)$-Ansatz bereits bei $n = 500$ diese Grenze um
-Faktor $62$ Ã¼berschreitet.
+während der naive $O(n^4)$-Ansatz bereits bei $n = 500$ diese Grenze um
+Faktor $62$ überschreitet.
 
 % ===========================================================
 \section{Kollaps der Polynomialzeithierarchie unter Subgraph-Reduktionen}
@@ -691,35 +691,35 @@ Faktor $62$ Ã¼berschreitet.
 
 \subsection{Einleitung und Motivation}
 
-Die fundamentalste offene Frage der strukturellen KomplexitÃ¤tstheorie lautet,
+Die fundamentalste offene Frage der strukturellen Komplexitätstheorie lautet,
 ob die Polynomialzeithierarchie bei einer endlichen Stufe kollabiert oder ob sie
 echt unendlich ist. Stockmeyer~\cite{stockmeyer1976poly} bewies, dass ein Kollaps
-genau dann eintritt, wenn $\Sigma_k^P = \Pi_k^P$ fÃ¼r eine Stufe $k$ gilt.
+genau dann eintritt, wenn $\Sigma_k^P = \Pi_k^P$ für eine Stufe $k$ gilt.
 Seither ist es ein zentrales Ziel, Algorithmen zu identifizieren, die
 strukturierte Teilklassen der PH deterministisch kollabieren lassen.
 
 Der Subgraph Algorithmus liefert hier eine neue Perspektive.
 In Satz~\ref{satz:effizienz} haben wir bereits gezeigt, dass Probleme mit
-Subgraph-Zerlegung deterministisch in Polynomialzeit lÃ¶sbar sind --- also in P
+Subgraph-Zerlegung deterministisch in Polynomialzeit lösbar sind --- also in P
 und damit auf der untersten PH-Stufe liegen.
-Das vorliegende Kapitel fÃ¼hrt diese Analyse auf volle Tiefe aus:
-Wir charakterisieren prÃ¤zise, \emph{welche} Klassen von PH-Problemen
+Das vorliegende Kapitel führt diese Analyse auf volle Tiefe aus:
+Wir charakterisieren präzise, \emph{welche} Klassen von PH-Problemen
 eine Subgraph-Zerlegung besitzen, beweisen einen partiellen Kollaps-Satz
 mit formalen Vor- und Nachbedingungen, und diskutieren die strukturellen
-Konsequenzen fÃ¼r die gesamte Hierarchie.
+Konsequenzen für die gesamte Hierarchie.
 
 \subsection{Definitionen: Subgraph-Zerlegbarkeit und Kollaps-Klassen}
 
 \begin{definition}[Subgraph-Zerlegbarkeit]
 \label{def:zerlegbar}
-  Ein Entscheidungsproblem $\Pi$ heiÃŸt \emph{subgraph-zerlegbar der Tiefe $\ell$},
+  Ein Entscheidungsproblem $\Pi$ heißt \emph{subgraph-zerlegbar der Tiefe $\ell$},
   kurz $\Pi \in \mathcal{SZ}(\ell)$, wenn eine Folge von polynomiellen
   Reduktionen existiert
   \[
     \Pi \;\leq_m^p\; \Pi_1 \;\leq_m^p\; \cdots \;\leq_m^p\; \Pi_\ell
   \]
   derart, dass $\Pi_\ell$ ein Subgraphproblem im Sinne von Definition~\ref{def:algo}
-  ist und jede ZwischengrÃ¶ÃŸe $|\Pi_i|$ polynomiell in $|\Pi|$ bleibt.
+  ist und jede Zwischengröße $|\Pi_i|$ polynomiell in $|\Pi|$ bleibt.
 \end{definition}
 
 \begin{definition}[Kollaps-Klasse]
@@ -740,10 +740,10 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
 \begin{proof}
   Sei $B \in \mathcal{SZ}(\ell)$ mit Zerlegungskette
   $B \leq_m^p B_1 \leq_m^p \cdots \leq_m^p B_\ell$.
-  Sei weiter $f$ die Reduktionsfunktion fÃ¼r $A \leq_m^p B$, berechenbar in Zeit $p(n)$.
+  Sei weiter $f$ die Reduktionsfunktion für $A \leq_m^p B$, berechenbar in Zeit $p(n)$.
   Dann ist $A \leq_m^p B \leq_m^p B_1 \leq_m^p \cdots \leq_m^p B_\ell$
-  eine Zerlegungskette der LÃ¤nge $\ell + 1$.
-  Da $f$ polynomiell ist und alle ZwischengrÃ¶ÃŸen polynomiell bleiben,
+  eine Zerlegungskette der Länge $\ell + 1$.
+  Da $f$ polynomiell ist und alle Zwischengrößen polynomiell bleiben,
   gilt $A \in \mathcal{SZ}(\ell+1) \subseteq \mathcal{K}_\mathrm{Sub}$.
 \end{proof}
 
@@ -754,8 +754,8 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   Sei $\Pi$ ein Entscheidungsproblem auf planaren Graphen mit Knotenanzahl $n$,
   das in $\Sigma_k^P$ liegt.
   Falls $\Pi$ durch eine Eigenschaft entschieden werden kann, die sich als
-  PrÃ¤senz oder Absenz einer endlichen Menge von verbotenen Minoren ausdrÃ¼cken
-  lÃ¤sst (Robertson-Seymour-Theorie~\cite{robertson1986graph}),
+  Präsenz oder Absenz einer endlichen Menge von verbotenen Minoren ausdrücken
+  lässt (Robertson-Seymour-Theorie~\cite{robertson1986graph}),
   dann gilt $\Pi \in \mathcal{SZ}(O(1))$, also $\Pi \in \mathcal{K}_\mathrm{Sub}$.
 \end{satz}
 
@@ -765,46 +765,46 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   ein Topologischer Minor in $G$ ist.
 
   \textbf{Schritt 1: Reduktion auf Subgraph.}
-  Jede Minor-ÃœberprÃ¼fung ``$F_i$ ist kein Minor in $G$'' ist Ã¤quivalent zu:
+  Jede Minor-Überprüfung ``$F_i$ ist kein Minor in $G$'' ist äquivalent zu:
   Es existiert kein Subgraph $H$ von $G$, der durch Kantenkontraktion in $F_i$
-  Ã¼berfÃ¼hrbar ist. Da $F_i$ fest ist (GrÃ¶ÃŸe $O(1)$), kann man fÃ¼r jeden Minor $F_i$
-  in Zeit $O(n^{|V(F_i)|}) = O(n^c)$ (fÃ¼r eine Konstante $c$) prÃ¼fen, ob er
+  überführbar ist. Da $F_i$ fest ist (Größe $O(1)$), kann man für jeden Minor $F_i$
+  in Zeit $O(n^{|V(F_i)|}) = O(n^c)$ (für eine Konstante $c$) prüfen, ob er
   in $G$ vorkommt~\cite{robertson1995graph}.
 
-  \textbf{Schritt 2: Ãœbertragung auf Signatur-Subgraph.}
-  Die Subgraphsuche fÃ¼r feste Muster $F_i$ der GrÃ¶ÃŸe $c$ lÃ¤sst sich auf
+  \textbf{Schritt 2: Übertragung auf Signatur-Subgraph.}
+  Die Subgraphsuche für feste Muster $F_i$ der Größe $c$ lässt sich auf
   ein Subgraphproblem im Sinne von Definition~\ref{def:algo} reduzieren:
   Man bildet einen Hilfsgraphen $G'_{F_i}$ auf $c$ Knoten und fragt,
-  ob $G'_{F_i}$ als (zyklisch-rotationsÃ¤quivalenter) Subgraph in einer
+  ob $G'_{F_i}$ als (zyklisch-rotationsäquivalenter) Subgraph in einer
   $c$-knotigen Untergraphkopie von $G$ vorkommt.
   Der Subgraph Algorithmus entscheidet dies in $O(c^3) = O(1)$ pro Kopie,
   und es gibt $O(n^c)$ Kopien, also Gesamtlaufzeit $O(n^c)$.
 
   \textbf{Schritt 3: Zerlegungstiefe.}
   Da $m = |\mathcal{F}|$ und $c = \max_i |V(F_i)|$ beide Konstanten sind,
-  benÃ¶tigt die Zerlegung nur eine einzige Reduktionsstufe ($\ell = 1$):
+  benötigt die Zerlegung nur eine einzige Reduktionsstufe ($\ell = 1$):
   \[
     \Pi \;\leq_m^p\; \mathrm{Subgraph}_{F_1} \times \cdots \times \mathrm{Subgraph}_{F_m},
   \]
-  wobei jedes Teilproblem direkt durch den Subgraph Algorithmus lÃ¶sbar ist.
+  wobei jedes Teilproblem direkt durch den Subgraph Algorithmus lösbar ist.
   Damit gilt $\Pi \in \mathcal{SZ}(1) \subseteq \mathcal{K}_\mathrm{Sub}$.
 \end{proof}
 
 \begin{korollar}[Planare Separatoren und Baumweite]
 \label{kor:baumweite}
   Sei $\Pi$ ein Problem in $\mathrm{NP}$, das auf Graphen mit Baumweite
-  $\mathrm{tw}(G) \leq k$ fÃ¼r festes $k$ entschieden werden kann.
+  $\mathrm{tw}(G) \leq k$ für festes $k$ entschieden werden kann.
   Dann gilt $\Pi \in \mathcal{K}_\mathrm{Sub}$.
 \end{korollar}
 
 \begin{proof}
   Graphen mit Baumweite $k$ haben eine Baumzerlegung der Breite $k$.
-  Jede Zerlegungstasche enthÃ¤lt hÃ¶chstens $k+1$ Knoten.
-  Der Subgraph Algorithmus auf Taschen der GrÃ¶ÃŸe $k+1$ lÃ¤uft in $O((k+1)^3) = O(k^3)$.
-  Durch Dynamische Programmierung Ã¼ber den Zerlegungsbaum ergibt sich eine
-  Gesamtlaufzeit $O(n \cdot k^3)$ --- polynomiell fÃ¼r jedes feste $k$.
+  Jede Zerlegungstasche enthält höchstens $k+1$ Knoten.
+  Der Subgraph Algorithmus auf Taschen der Größe $k+1$ läuft in $O((k+1)^3) = O(k^3)$.
+  Durch Dynamische Programmierung über den Zerlegungsbaum ergibt sich eine
+  Gesamtlaufzeit $O(n \cdot k^3)$ --- polynomiell für jedes feste $k$.
   Die Zerlegung selbst konstituiert eine einzige Reduktionsstufe
-  von $\Pi$ auf eine Folge von Subgraphproblemen auf GrÃ¶ÃŸe $k+1$,
+  von $\Pi$ auf eine Folge von Subgraphproblemen auf Größe $k+1$,
   also $\Pi \in \mathcal{SZ}(1)$.
 \end{proof}
 
@@ -819,12 +819,12 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   \[
     \mathrm{PH}^{\mathrm{Sub}} \;\subseteq\; \mathrm{P}.
   \]
-  Das heiÃŸt: \emph{Alle subgraph-zerlegbaren PH-Probleme kollabieren auf P.}
+  Das heißt: \emph{Alle subgraph-zerlegbaren PH-Probleme kollabieren auf P.}
 \end{satz}
 
 \begin{proof}
-  Sei $\Pi \in \mathrm{PH}^{\mathrm{Sub}}$, also $\Pi \in \Sigma_k^P$ fÃ¼r ein $k$
-  und $\Pi \in \mathcal{SZ}(\ell)$ fÃ¼r ein $\ell$.
+  Sei $\Pi \in \mathrm{PH}^{\mathrm{Sub}}$, also $\Pi \in \Sigma_k^P$ für ein $k$
+  und $\Pi \in \mathcal{SZ}(\ell)$ für ein $\ell$.
   Nach Definition~\ref{def:zerlegbar} existiert eine Reduktionskette
   $\Pi \leq_m^p \Pi_1 \leq_m^p \cdots \leq_m^p \Pi_\ell$,
   wobei $\Pi_\ell$ ein Subgraphproblem ist.
@@ -832,7 +832,7 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   \textbf{Schritt 1: $\Pi_\ell \in \mathrm{P}$.}
   Nach Satz~\ref{satz:in_p} und Satz~\ref{satz:komplex} gilt
   $\Pi_\ell \in \mathrm{P}$, da der Subgraph Algorithmus $\Pi_\ell$
-  deterministisch in $O(m^3)$ entscheidet (wobei $m$ die EingabegrÃ¶ÃŸe von $\Pi_\ell$ ist).
+  deterministisch in $O(m^3)$ entscheidet (wobei $m$ die Eingabegröße von $\Pi_\ell$ ist).
 
   \textbf{Schritt 2: Komposition der Reduktionen in P.}
   Da jede Reduktion $\Pi_i \leq_m^p \Pi_{i+1}$ in Polynomialzeit berechenbar ist
@@ -841,44 +841,44 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   \[
     \Pi_{\ell-1} \leq_m^p \Pi_\ell \in \mathrm{P} \;\Rightarrow\; \Pi_{\ell-1} \in \mathrm{P}.
   \]
-  Per rÃ¼ckwÃ¤rtiger Induktion folgt $\Pi_i \in \mathrm{P}$ fÃ¼r alle
+  Per rückwärtiger Induktion folgt $\Pi_i \in \mathrm{P}$ für alle
   $i \in \{0, \ldots, \ell\}$ (mit $\Pi_0 = \Pi$).
 
   \textbf{Schritt 3: $\Pi \in \mathrm{P}$.}
   Insbesondere gilt $\Pi = \Pi_0 \in \mathrm{P}$.
-  Da $\Pi \in \Sigma_k^P$ fÃ¼r ein beliebiges $k$ war,
+  Da $\Pi \in \Sigma_k^P$ für ein beliebiges $k$ war,
   folgt $\Pi \in \mathrm{PH} \cap \mathrm{P} = \mathrm{P}$.
 \end{proof}
 
 \begin{bemerkung}
-  Satz~\ref{satz:kollaps} ist \emph{kein} Beweis fÃ¼r $\mathrm{PH} = \mathrm{P}$.
-  Die Aussage ist auf die Teilklasse $\mathrm{PH}^{\mathrm{Sub}}$ beschrÃ¤nkt.
-  Ob $\mathrm{PH}^{\mathrm{Sub}} = \mathrm{PH}$ gilt, ist Ã¤quivalent zur Frage,
+  Satz~\ref{satz:kollaps} ist \emph{kein} Beweis für $\mathrm{PH} = \mathrm{P}$.
+  Die Aussage ist auf die Teilklasse $\mathrm{PH}^{\mathrm{Sub}}$ beschränkt.
+  Ob $\mathrm{PH}^{\mathrm{Sub}} = \mathrm{PH}$ gilt, ist äquivalent zur Frage,
   ob \emph{jedes} PH-Problem subgraph-zerlegbar ist --- eine offene Frage,
-  deren Bejahung P~$=$~PH implizieren wÃ¼rde.
+  deren Bejahung P~$=$~PH implizieren würde.
 \end{bemerkung}
 
-\subsection{Konsequenzen fÃ¼r einzelne PH-Stufen}
+\subsection{Konsequenzen für einzelne PH-Stufen}
 
 \begin{korollar}[NP-Probleme in $\mathcal{K}_\mathrm{Sub}$]
 \label{kor:np}
   Sei $\Pi \in \mathrm{NP} = \Sigma_1^P$ mit $\Pi \in \mathcal{K}_\mathrm{Sub}$.
   Dann gilt $\Pi \in \mathrm{P}$.
-  Insbesondere: Falls ein NP-vollstÃ¤ndiges Problem subgraph-zerlegbar wÃ¤re,
-  wÃ¼rde $\mathrm{P} = \mathrm{NP}$ folgen.
+  Insbesondere: Falls ein NP-vollständiges Problem subgraph-zerlegbar wäre,
+  würde $\mathrm{P} = \mathrm{NP}$ folgen.
 \end{korollar}
 
 \begin{proof}
   Direktes Korollar aus Satz~\ref{satz:kollaps}: $\Pi \in \mathrm{NP} \cap \mathcal{K}_\mathrm{Sub}
   = \mathrm{NP} \cap \mathrm{PH}^{\mathrm{Sub}} \subseteq \mathrm{P}$.
-  WÃ¤re $\Pi$ NP-vollstÃ¤ndig und $\Pi \in \mathrm{P}$, so wÃ¼rde jedes NP-Problem
-  Ã¼ber die vollstÃ¤ndige Reduktion in P gelÃ¶st, also $\mathrm{NP} \subseteq \mathrm{P}$,
+  Wäre $\Pi$ NP-vollständig und $\Pi \in \mathrm{P}$, so würde jedes NP-Problem
+  über die vollständige Reduktion in P gelöst, also $\mathrm{NP} \subseteq \mathrm{P}$,
   was $\mathrm{P} = \mathrm{NP}$ ergibt.
 \end{proof}
 
 \begin{korollar}[$\Sigma_2^P$-Stufe]
 \label{kor:sigma2}
-  Das $\Sigma_2^P$-vollstÃ¤ndige Problem $\Pi_{\Sigma_2}$ (z.\,B.\ $\Sigma_2$-SAT:
+  Das $\Sigma_2^P$-vollständige Problem $\Pi_{\Sigma_2}$ (z.\,B.\ $\Sigma_2$-SAT:
   $\exists x\, \forall y\, \varphi(x,y)$) liegt \emph{nicht} in $\mathcal{K}_\mathrm{Sub}$,
   sofern $\mathrm{P} \neq \Sigma_2^P$ --- was unter der Annahme, dass PH unendlich ist,
   als sehr wahrscheinlich gilt.
@@ -887,8 +887,8 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
 \begin{proof}
   Angenommen, $\Pi_{\Sigma_2} \in \mathcal{K}_\mathrm{Sub}$.
   Nach Satz~\ref{satz:kollaps} folgt $\Pi_{\Sigma_2} \in \mathrm{P}$.
-  Da $\Pi_{\Sigma_2}$ $\Sigma_2^P$-vollstÃ¤ndig ist, wÃ¼rde $\Sigma_2^P \subseteq \mathrm{P}$
-  folgen, was einen PH-Kollaps auf Stufe 2 bedeuten wÃ¼rde.
+  Da $\Pi_{\Sigma_2}$ $\Sigma_2^P$-vollständig ist, würde $\Sigma_2^P \subseteq \mathrm{P}$
+  folgen, was einen PH-Kollaps auf Stufe 2 bedeuten würde.
   Unter der Standardannahme $\mathrm{P} \neq \Sigma_2^P$ ist dies ein Widerspruch.
 \end{proof}
 
@@ -898,42 +898,42 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
 \label{satz:grenze}
   Falls $\mathrm{P} \neq \mathrm{NP}$, so existieren Probleme
   $\Pi \in \mathrm{NP} \setminus \mathrm{P}$ mit $\Pi \notin \mathcal{K}_\mathrm{Sub}$.
-  Insbesondere kann der Subgraph Algorithmus NP-vollstÃ¤ndige Probleme
-  (in der allgemeinen Form, nicht fÃ¼r strukturell eingeschrÃ¤nkte Instanzen)
-  nicht lÃ¶sen.
+  Insbesondere kann der Subgraph Algorithmus NP-vollständige Probleme
+  (in der allgemeinen Form, nicht für strukturell eingeschränkte Instanzen)
+  nicht lösen.
 \end{satz}
 
 \begin{proof}
-  Angenommen, alle $\Pi \in \mathrm{NP}$ wÃ¤ren subgraph-zerlegbar.
-  Dann gÃ¤lte $\mathrm{NP} \subseteq \mathcal{K}_\mathrm{Sub}$,
+  Angenommen, alle $\Pi \in \mathrm{NP}$ wären subgraph-zerlegbar.
+  Dann gälte $\mathrm{NP} \subseteq \mathcal{K}_\mathrm{Sub}$,
   und nach Satz~\ref{satz:kollaps} $\mathrm{NP} \subseteq \mathrm{P}$,
   also $\mathrm{P} = \mathrm{NP}$ --- Widerspruch zur Annahme.
 \end{proof}
 
 \begin{bemerkung}
   Satz~\ref{satz:grenze} zeigt die \emph{exakte} Grenze der Kollaps-Methode:
-  Der Subgraph Algorithmus ist mÃ¤chtig genug, um eine natÃ¼rliche und ausgedehnte
+  Der Subgraph Algorithmus ist mächtig genug, um eine natürliche und ausgedehnte
   Teilklasse $\mathrm{PH}^{\mathrm{Sub}}$ auf P zu kollabieren
-  (SÃ¤tze~\ref{satz:planar}--\ref{satz:kollaps}),
-  aber er kann die Grenze P~vs.~NP \emph{nicht} Ã¼berschreiten, ohne P~$=$~NP zu beweisen.
-  Dies unterstreicht die Bedeutung des Algorithmus: Er schÃ¶pft den verfÃ¼gbaren
-  Raum in der PH prÃ¤zise und vollstÃ¤ndig aus --- ohne Ã¼ber seine eigene Grenze zu gehen.
+  (Sätze~\ref{satz:planar}--\ref{satz:kollaps}),
+  aber er kann die Grenze P~vs.~NP \emph{nicht} überschreiten, ohne P~$=$~NP zu beweisen.
+  Dies unterstreicht die Bedeutung des Algorithmus: Er schöpft den verfügbaren
+  Raum in der PH präzise und vollständig aus --- ohne über seine eigene Grenze zu gehen.
 \end{bemerkung}
 
 \subsection{Verbindung zur Ladner-Struktur}
 
-\begin{satz}[Ladner-KompatibilitÃ¤t]
+\begin{satz}[Ladner-Kompatibilität]
 \label{satz:ladner}
-  Falls $\mathrm{P} \neq \mathrm{NP}$, so enthÃ¤lt $\mathcal{K}_\mathrm{Sub}$ nach
-  Ladner~\cite{ladner1975structure} auch Probleme, die weder in P noch NP-vollstÃ¤ndig sind
+  Falls $\mathrm{P} \neq \mathrm{NP}$, so enthält $\mathcal{K}_\mathrm{Sub}$ nach
+  Ladner~\cite{ladner1975structure} auch Probleme, die weder in P noch NP-vollständig sind
   (sogenannte NP-intermediate-Probleme).
-  Der Subgraph Algorithmus lÃ¶st genau diese Zwischenprobleme,
+  Der Subgraph Algorithmus löst genau diese Zwischenprobleme,
   soweit sie subgraph-zerlegbar sind.
 \end{satz}
 
 \begin{proof}
   Ladners Theorem~\cite{ladner1975structure} besagt: Falls P~$\neq$~NP, gibt es
-  Probleme in NP, die weder in P noch NP-vollstÃ¤ndig sind.
+  Probleme in NP, die weder in P noch NP-vollständig sind.
   Sei $L$ ein solches NP-intermediate-Problem mit $L \in \mathcal{K}_\mathrm{Sub}$.
   Nach Satz~\ref{satz:kollaps} gilt $L \in \mathrm{P}$ --- Widerspruch zur Annahme,
   dass $L \notin \mathrm{P}$.
@@ -941,20 +941,20 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   in $\mathcal{K}_\mathrm{Sub}$.
   Umgekehrt: Probleme in $\mathcal{K}_\mathrm{Sub} \cap \mathrm{NP}$ sind stets in P
   und damit keine echten NP-intermediate-Probleme.
-  MÃ¶gliche NP-intermediate-Kandidaten (Graphisomorphie~GI, Faktorisierung~FACT)
+  Mögliche NP-intermediate-Kandidaten (Graphisomorphie~GI, Faktorisierung~FACT)
   sind daher entweder nicht in $\mathcal{K}_\mathrm{Sub}$ --- oder, falls doch,
-  in P, was diese Probleme aus der NP-intermediate-Klasse herausnehmen wÃ¼rde.
+  in P, was diese Probleme aus der NP-intermediate-Klasse herausnehmen würde.
 \end{proof}
 
 \begin{bemerkung}
   Die Verbindung zu Graphisomorphie (GI) ist besonders relevant:
-  GI gilt als NP-intermediate-Kandidat (weder bekannt in P noch NP-vollstÃ¤ndig).
+  GI gilt als NP-intermediate-Kandidat (weder bekannt in P noch NP-vollständig).
   Das zyklische Subgraphisomorphieproblem des Subgraph Algorithmus ist
   eine strukturierte Spezialisierung von GI.
-  Ob diese Spezialisierung ausreicht, um GI vollstÃ¤ndig in $\mathcal{K}_\mathrm{Sub}$
-  zu platzieren, ist eine offene Frage von grundsÃ¤tzlichem Interesse.
+  Ob diese Spezialisierung ausreicht, um GI vollständig in $\mathcal{K}_\mathrm{Sub}$
+  zu platzieren, ist eine offene Frage von grundsätzlichem Interesse.
   Babai~\cite{babai2016graph} bewies GI $\in$ quasipolynomiell~$= 2^{O((\log n)^c)}$;
-  falls GI subgraph-zerlegbar wÃ¤re, lÃ¤ge es in P.
+  falls GI subgraph-zerlegbar wäre, läge es in P.
 \end{bemerkung}
 
 \subsection{Quantitative Analyse des Kollaps-Gewinns}
@@ -962,23 +962,23 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
 \begin{satz}[Quantitativer Kollaps-Gewinn]
 \label{satz:quant}
   Sei $\Pi \in \Sigma_k^P \cap \mathcal{SZ}(\ell)$ ein Problem, das naiv in
-  $T_{\mathrm{naive}}(n)$ Zeit und $S_{\mathrm{naive}}(n)$ Raum lÃ¶sbar ist.
-  Nach ÃœberfÃ¼hrung in eine Subgraph-Zerlegung gilt:
+  $T_{\mathrm{naive}}(n)$ Zeit und $S_{\mathrm{naive}}(n)$ Raum lösbar ist.
+  Nach Überführung in eine Subgraph-Zerlegung gilt:
   \[
     T_{\mathrm{Sub}}(n) \;=\; O(n^{3\ell}) \;\ll\; T_{\mathrm{naive}}(n),
     \quad
     S_{\mathrm{Sub}}(n) \;=\; O(n^{2\ell}).
   \]
-  Der Gewinnfaktor betrÃ¤gt
+  Der Gewinnfaktor beträgt
   \[
     \frac{T_{\mathrm{naive}}(n)}{T_{\mathrm{Sub}}(n)} \;\geq\; \Omega\!\left(\frac{T_{\mathrm{naive}}(n)}{n^{3\ell}}\right).
   \]
 \end{satz}
 
 \begin{proof}
-  FÃ¼r $\Pi \in \Sigma_k^P$ ist die naive Simulation durch eine $\Sigma_k^P$-Maschine
-  mindestens $\Omega(2^{n^\epsilon})$ fÃ¼r ein $\varepsilon > 0$
-  (Annahme: $\Pi$ ist $\Sigma_k^P$-vollstÃ¤ndig und kein deterministischer
+  Für $\Pi \in \Sigma_k^P$ ist die naive Simulation durch eine $\Sigma_k^P$-Maschine
+  mindestens $\Omega(2^{n^\epsilon})$ für ein $\varepsilon > 0$
+  (Annahme: $\Pi$ ist $\Sigma_k^P$-vollständig und kein deterministischer
   Polynomialzeitalgorithmus bekannt).
   Nach Satz~\ref{satz:effizienz} entscheidet der Subgraph Algorithmus in $O(n^{3\ell})$.
   Der Quotient ist
@@ -986,14 +986,14 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
     \frac{2^{n^\varepsilon}}{n^{3\ell}} \;\xrightarrow{n \to \infty}\; \infty,
   \]
   also ist $T_\mathrm{Sub}$ asymptotisch drastisch kleiner als $T_\mathrm{naive}$.
-  Die Raumboundary folgt analog: Subgraph-Zerlegung benÃ¶tigt $O(n^{2\ell})$ Speicher
+  Die Raumboundary folgt analog: Subgraph-Zerlegung benötigt $O(n^{2\ell})$ Speicher
   statt $O(2^{n^\varepsilon})$ im Worst Case der $\Sigma_k^P$-Simulation.
 \end{proof}
 
 \begin{table}[htbp]
   \centering
-  \caption{Kollaps-Gewinn des Subgraph Algorithmus gegenÃ¼ber der naiven $\Sigma_k^P$-Simulation
-    fÃ¼r $\ell = 1$ und verschiedene $n$. ($k = 2$, naive Simulation $O(2^{n^{0.5}})$.)}
+  \caption{Kollaps-Gewinn des Subgraph Algorithmus gegenüber der naiven $\Sigma_k^P$-Simulation
+    für $\ell = 1$ und verschiedene $n$. ($k = 2$, naive Simulation $O(2^{n^{0.5}})$.)}
   \label{tab:kollaps}
   \begin{tabular}{r r r r}
     \toprule
@@ -1008,48 +1008,48 @@ Konsequenzen fÃ¼r die gesamte Hierarchie.
   \end{tabular}
 \end{table}
 
-Tabelle~\ref{tab:kollaps} zeigt, dass der Kollaps-Gewinn fÃ¼r kleine $n$ noch
-negativ sein kann (der Subgraph Algorithmus hat dann hÃ¶heren absoluten Aufwand
+Tabelle~\ref{tab:kollaps} zeigt, dass der Kollaps-Gewinn für kleine $n$ noch
+negativ sein kann (der Subgraph Algorithmus hat dann höheren absoluten Aufwand
 als die vereinfachte naive Simulation), aber ab $n \approx 2500$ dominiert
 der deterministische Polynomialzeit-Ansatz exponentiell.
 
 \subsection{Offene Fragen und Forschungsprogramm}
 
-Der partielle Kollaps-Satz (Satz~\ref{satz:kollaps}) wirft mehrere prÃ¤zise
-offene Fragen auf, die ein vollstÃ¤ndiges Forschungsprogramm konstituieren:
+Der partielle Kollaps-Satz (Satz~\ref{satz:kollaps}) wirft mehrere präzise
+offene Fragen auf, die ein vollständiges Forschungsprogramm konstituieren:
 
 \begin{enumerate}
   \item \textbf{Charakterisierungsproblem:}
         Gibt es eine logische Charakterisierung (im Sinne der Descriptive Complexity)
         von $\mathcal{K}_\mathrm{Sub}$?
-        Nach Immermans Theorem ist P die Klasse der in FO+LFP ausdrÃ¼ckbaren Eigenschaften~\cite{immerman1999descriptive}.
+        Nach Immermans Theorem ist P die Klasse der in FO+LFP ausdrückbaren Eigenschaften~\cite{immerman1999descriptive}.
         Die Frage lautet: Ist $\mathcal{K}_\mathrm{Sub}$ mit einer Teillogik von FO+LFP identisch?
 
-  \item \textbf{VollstÃ¤ndigkeitsproblem:}
-        Existiert ein $\mathcal{K}_\mathrm{Sub}$-vollstÃ¤ndiges Problem unter
-        polynomiellen Reduktionen? Ein solches Problem wÃ¤re der ``hÃ¤rteste''
-        subgraph-zerlegbare Fall und wÃ¼rde die Klasse abgrenzen.
+  \item \textbf{Vollständigkeitsproblem:}
+        Existiert ein $\mathcal{K}_\mathrm{Sub}$-vollständiges Problem unter
+        polynomiellen Reduktionen? Ein solches Problem wäre der ``härteste''
+        subgraph-zerlegbare Fall und würde die Klasse abgrenzen.
 
   \item \textbf{Separationsproblem:}
-        LÃ¤sst sich beweisen, dass $\mathcal{K}_\mathrm{Sub} \subsetneq \mathrm{NP}$
-        (unter P~$\neq$~NP-Annahme)? Dies wÃ¼rde die Kollaps-Klasse exakt
+        Lässt sich beweisen, dass $\mathcal{K}_\mathrm{Sub} \subsetneq \mathrm{NP}$
+        (unter P~$\neq$~NP-Annahme)? Dies würde die Kollaps-Klasse exakt
         zwischen P und NP einordnen und sie damit als strukturell echte
         Zwischenklasse identifizieren.
 
   \item \textbf{Dynamisches Erweiterungsproblem:}
-        Gibt es eine effizient berechenbare PrÃ¤dikat-Funktion
+        Gibt es eine effizient berechenbare Prädikat-Funktion
         $\mathtt{isSubgraphDecomposable}(\Pi) \in \{0,1\}$,
-        die fÃ¼r eine gegebene Probleminstanz in Polynomialzeit entscheidet,
-        ob eine Subgraph-Zerlegung existiert? Ein solches PrÃ¤dikat wÃ¤re
+        die für eine gegebene Probleminstanz in Polynomialzeit entscheidet,
+        ob eine Subgraph-Zerlegung existiert? Ein solches Prädikat wäre
         selbst ein Problem in P (oder NP), da die Zerlegung als Zertifikat dienen kann.
 
-  \item \textbf{HÃ¶herstufige Kollapse:}
-        Analoge Konstruktionen fÃ¼r $\Sigma_2^P$, $\Sigma_3^P$ usw.:
+  \item \textbf{Höherstufige Kollapse:}
+        Analoge Konstruktionen für $\Sigma_2^P$, $\Sigma_3^P$ usw.:
         Gibt es einen ``$\Sigma_k^P$-Subgraph Algorithmus'', der Probleme
         der $k$-ten PH-Stufe auf die $(k-1)$-te Stufe kollabiert,
         ohne die gesamte Hierarchie zu kollabieren?
-        Eine solche schrittweise Reduktion wÃ¼rde eine neue Familie von
-        Algorithmen begrÃ¼nden: \emph{hierarchische Subgraph-Zerlegungen}.
+        Eine solche schrittweise Reduktion würde eine neue Familie von
+        Algorithmen begründen: \emph{hierarchische Subgraph-Zerlegungen}.
 \end{enumerate}
 
 % ===========================================================
@@ -1057,87 +1057,87 @@ offene Fragen auf, die ein vollstÃ¤ndiges Forschungsprogramm konstituieren:
 \label{sec:ausblick}
 % ===========================================================
 
-\subsection{Ãœberblick Ã¼ber zukÃ¼nftige Forschungsrichtungen}
+\subsection{Überblick über zukünftige Forschungsrichtungen}
 
 Die vorliegende Arbeit hat gezeigt, dass der Subgraph Algorithmus weit mehr ist
-als ein effizientes Werkzeug fÃ¼r Graphprobleme: Er ist ein strukturierendes Prinzip,
+als ein effizientes Werkzeug für Graphprobleme: Er ist ein strukturierendes Prinzip,
 das deterministisch in die Polynomialzeithierarchie eingreift, partielle Kollapse
 erzwingt und neue Verbindungen zu PSPACE, NPSPACE und Orakel-Relativierungen aufzeigt.
 Im folgenden Ausblick diskutieren wir die vielversprechendsten Forschungsrichtungen
-in fÃ¼nf thematischen BlÃ¶cken.
+in fünf thematischen Blöcken.
 
-\subsection{KomplexitÃ¤tstheoretische Grundlagenforschung}
+\subsection{Komplexitätstheoretische Grundlagenforschung}
 
 \subsubsection{Verbindung zu Parameterisierten Algorithmen und FPT}
 
-Die Parameterisierte KomplexitÃ¤tstheorie~\cite{downey1999parameterized} klassifiziert
-Probleme nach ihrer \emph{festparametrisierten TraktabilitÃ¤t} (FPT):
-Ein Problem $\Pi$ ist in FPT, wenn es in Zeit $f(k) \cdot n^{O(1)}$ lÃ¶sbar ist,
+Die Parameterisierte Komplexitätstheorie~\cite{downey1999parameterized} klassifiziert
+Probleme nach ihrer \emph{festparametrisierten Traktabilität} (FPT):
+Ein Problem $\Pi$ ist in FPT, wenn es in Zeit $f(k) \cdot n^{O(1)}$ lösbar ist,
 wobei $k$ ein struktureller Parameter der Eingabe ist (z.\,B.\ Baumweite, Cliqueweite,
 Eliminationsbreite oder Genus der Einbettung).
 
-Der Subgraph Algorithmus ist natÃ¼rlicherweise durch die Knotenanzahl $n$ parametrisiert.
-Korollar~\ref{kor:baumweite} zeigt bereits, dass fÃ¼r Graphen mit Baumweite $k$
+Der Subgraph Algorithmus ist natürlicherweise durch die Knotenanzahl $n$ parametrisiert.
+Korollar~\ref{kor:baumweite} zeigt bereits, dass für Graphen mit Baumweite $k$
 eine Laufzeit von $O(n \cdot k^3)$ erreichbar ist --- dies ist FPT in $k$ mit
 dem Parameter ``Baumweite''.
 
 Die offene Forschungsfrage lautet: Welcher strukturelle Parameter $k$ macht das
-allgemeine (nicht zyklisch eingeschrÃ¤nkte) Subgraphisomorphieproblem FPT?
+allgemeine (nicht zyklisch eingeschränkte) Subgraphisomorphieproblem FPT?
 Courcelles Theorem~\cite{courcelle1990monadic} besagt, dass alle in Monadischer
-Logik zweiter Stufe (MSO$_2$) ausdrÃ¼ckbaren Grapheigenschaften fÃ¼r Graphen
-mit beschrÃ¤nkter Baumweite in linearer Zeit entscheidbar sind.
-Da Subgraphisomorphie fÃ¼r feste Mustergraphen in MSO$_2$ ausdrÃ¼ckbar ist,
+Logik zweiter Stufe (MSO$_2$) ausdrückbaren Grapheigenschaften für Graphen
+mit beschränkter Baumweite in linearer Zeit entscheidbar sind.
+Da Subgraphisomorphie für feste Mustergraphen in MSO$_2$ ausdrückbar ist,
 ergibt sich eine direkte FPT-Verbindung.
 
 Konkrete Forschungsziele:
 \begin{itemize}
-  \item Nachweis, dass $\mathrm{Subgraph} \in \mathrm{FPT}$ fÃ¼r den Parameter
+  \item Nachweis, dass $\mathrm{Subgraph} \in \mathrm{FPT}$ für den Parameter
         $k = \mathrm{tw}(\text{Mustergraph})$.
   \item Charakterisierung der Schnittstelle zwischen
-        $\mathcal{K}_\mathrm{Sub}$ und der W-Hierarchie der parameterisierten KomplexitÃ¤t.
+        $\mathcal{K}_\mathrm{Sub}$ und der W-Hierarchie der parameterisierten Komplexität.
   \item Nachweis oder Widerlegung: Ist $\mathrm{Subgraph}$ W[1]-schwer
-        fÃ¼r allgemeine Muster?
+        für allgemeine Muster?
 \end{itemize}
 
-\subsubsection{PH-VollstÃ¤ndigkeit und Zertifikatskonstruktion}
+\subsubsection{PH-Vollständigkeit und Zertifikatskonstruktion}
 
-Existiert fÃ¼r jede Stufe $k$ ein $\Sigma_k^P$-vollstÃ¤ndiges Subgraphproblem?
-Das wÃ¼rde bedeuten: FÃ¼r jede PH-Stufe gibt es eine natÃ¼rliche graphentheoretische
-Formulierung, die vollstÃ¤ndig fÃ¼r diese Stufe ist.
+Existiert für jede Stufe $k$ ein $\Sigma_k^P$-vollständiges Subgraphproblem?
+Das würde bedeuten: Für jede PH-Stufe gibt es eine natürliche graphentheoretische
+Formulierung, die vollständig für diese Stufe ist.
 
-Konkret: Ein $\Sigma_2^P$-vollstÃ¤ndiges Subgraphproblem wÃ¤re ein Problem der Form:
+Konkret: Ein $\Sigma_2^P$-vollständiges Subgraphproblem wäre ein Problem der Form:
 \[
   \exists G_1 \;\forall G_2 \;:\; G_1 \text{ ist Subgraph von } G_2 \text{ (unter gegebenen Bedingungen)}.
 \]
-Solche Alternierungen von Existenz- und Allquantoren Ã¼ber Graphen sind direkte
+Solche Alternierungen von Existenz- und Allquantoren über Graphen sind direkte
 Entsprechungen der Quantorstruktur in $\Sigma_k^P$.
-Eine formale Konstruktion solcher Probleme und der Nachweis ihrer VollstÃ¤ndigkeit
-fÃ¼r die jeweiligen PH-Stufen wÃ¤re ein bedeutender theoretischer Beitrag.
+Eine formale Konstruktion solcher Probleme und der Nachweis ihrer Vollständigkeit
+für die jeweiligen PH-Stufen wäre ein bedeutender theoretischer Beitrag.
 
 \subsubsection{Beziehung zur $\#$P-Klasse und zum Permanenten}
 
 Valiant~\cite{valiant1979complexity} zeigte, dass das Berechnen des Permanenten
-einer 0-1-Matrix $\#$P-vollstÃ¤ndig ist.
+einer 0-1-Matrix $\#$P-vollständig ist.
 Das Permanent einer $n \times n$-Adjazenzmatrix $A$ ist
 \[
   \mathrm{perm}(A) = \sum_{\pi \in S_n} \prod_{i=1}^n A_{i,\pi(i)},
 \]
-was die Anzahl perfekter Matchings im bipartiten Graphen zÃ¤hlt.
+was die Anzahl perfekter Matchings im bipartiten Graphen zählt.
 Der Subgraph Algorithmus berechnet mittels zyklischer Rotation eine
-strukturierte Teilsumme dieser Terme --- nÃ¤mlich nur Ã¼ber zyklische Permutationen $\pi$.
-Eine prÃ¤zise Charakterisierung des ``zyklischen Permanenten''
+strukturierte Teilsumme dieser Terme --- nämlich nur über zyklische Permutationen $\pi$.
+Eine präzise Charakterisierung des ``zyklischen Permanenten''
 $\mathrm{cperm}(A) = \sum_{k=0}^{n-1} \prod_{i=1}^n A_{i,(i+k \mod n)}$
-und seiner KomplexitÃ¤t (liegt es in FP, in $\#$P, oder dazwischen?) ist offen
-und kÃ¶nnte neue Einsichten in die Beziehung zwischen Subgraph Algorithmus
-und ZÃ¤hlkomplexitÃ¤t liefern.
+und seiner Komplexität (liegt es in FP, in $\#$P, oder dazwischen?) ist offen
+und könnte neue Einsichten in die Beziehung zwischen Subgraph Algorithmus
+und Zählkomplexität liefern.
 
-\subsection{QuantenkomplexitÃ¤t und Quantenalgorithmen}
+\subsection{Quantenkomplexität und Quantenalgorithmen}
 
 \subsubsection{Grovers Algorithmus und Subgraph-Suche}
 
-Grovers Suchalgorithmus~\cite{grover1996fast} liefert fÃ¼r unstrukturierte Suche
+Grovers Suchalgorithmus~\cite{grover1996fast} liefert für unstrukturierte Suche
 einen quadratischen Speedup: $O(\sqrt{N})$ statt $O(N)$.
-Der Subgraph Algorithmus sucht Ã¼ber $n$ zyklische Rotationen statt $n!$ Permutationen.
+Der Subgraph Algorithmus sucht über $n$ zyklische Rotationen statt $n!$ Permutationen.
 Grovers Algorithmus auf den $n$ Rotationen ergibt $O(\sqrt{n})$ Quantenschritte
 pro Rotation und $O(n \cdot \sqrt{n}) = O(n^{3/2})$ gesamt --- ein quadratischer
 Quantenspeedup auf $O(n^3)$.
@@ -1148,7 +1148,7 @@ Dieser Ansatz ist im Grunde eine \emph{Hybridisierung}:
         (klassische Strukturausnutzung, Faktor $\frac{n!}{n} = (n-1)!$).
   \item Grover reduziert die verbleibenden $n$ Suchen von $n$ auf $\sqrt{n}$
         (Quantenspeedup, Faktor $\sqrt{n}$).
-  \item Gesamte Speedup: $(n-1)! \cdot \sqrt{n}$ gegenÃ¼ber brute-force-Quantensuche.
+  \item Gesamte Speedup: $(n-1)! \cdot \sqrt{n}$ gegenüber brute-force-Quantensuche.
 \end{itemize}
 
 \subsubsection{Quantum-PSPACE und Quanteninteraktive Beweise}
@@ -1157,76 +1157,76 @@ Watrous~\cite{watrous2003pspace} bewies $\mathrm{PSPACE} = \mathrm{IP}$
 (Satz von Shamir) und $\mathrm{PSPACE} \subseteq \mathrm{QIP}(2)$
 (Quantum Interactive Proofs mit 2 Runden).
 Die Gleichheit $\mathrm{BQPSPACE} = \mathrm{PSPACE}$ legt nahe,
-dass Quantencomputer keinen superpolynomiellen Vorteil fÃ¼r PSPACE-Probleme
+dass Quantencomputer keinen superpolynomiellen Vorteil für PSPACE-Probleme
 bieten. Im Kontext des Subgraph Algorithmus bedeutet dies:
-Der klassische $O(n^3)$-Algorithmus kann durch quantengestÃ¼tzte Subgraph-Suche
-auf $O(n^{3/2})$ verbessert werden, aber eine sub-polynomielle QuantenlÃ¶sung
-wÃ¼rde $\mathrm{PSPACE} \neq \mathrm{BQP}$ widersprechen.
+Der klassische $O(n^3)$-Algorithmus kann durch quantengestützte Subgraph-Suche
+auf $O(n^{3/2})$ verbessert werden, aber eine sub-polynomielle Quantenlösung
+würde $\mathrm{PSPACE} \neq \mathrm{BQP}$ widersprechen.
 
 \subsubsection{Quantengraphen und Quantenisomorphie}
 
 Quantum-Graphenisomorphie (QGI) ist eine quantenmechanische Verallgemeinerung
 klassischer Graphenisomorphie, bei der Quantenkorrelationen zwischen Knotenpaaren
 erlaubt sind~\cite{mancinska2019quantum}.
-Der Subgraph Algorithmus kÃ¶nnte auf einen Quanten-Subgraph Algorithmus erweitert werden,
-bei dem die Signaturen $\sigma_j$ als QuantenzustÃ¤nde $|\sigma_j\rangle$ kodiert werden
-und die Rotationsvergleiche als Quanten-LCS (Quantum Sequence Alignment) durchgefÃ¼hrt werden.
-Dies wÃ¼rde eine BrÃ¼cke zwischen klassischer Subgraphisomorphie und dem neuartigen Feld
+Der Subgraph Algorithmus könnte auf einen Quanten-Subgraph Algorithmus erweitert werden,
+bei dem die Signaturen $\sigma_j$ als Quantenzustände $|\sigma_j\rangle$ kodiert werden
+und die Rotationsvergleiche als Quanten-LCS (Quantum Sequence Alignment) durchgeführt werden.
+Dies würde eine Brücke zwischen klassischer Subgraphisomorphie und dem neuartigen Feld
 der Quantengraphtheorie bauen.
 
 \subsection{Algorithmische und technische Erweiterungen}
 
 \subsubsection{Parallele und verteilte Subgraph-Zerlegung}
 
-Die $n$ Rotationsvergleiche im Subgraph Algorithmus sind vollstÃ¤ndig unabhÃ¤ngig~\cite{epp2026subgraph}.
+Die $n$ Rotationsvergleiche im Subgraph Algorithmus sind vollständig unabhängig~\cite{epp2026subgraph}.
 Auf einem Parallelrechner mit $p$ Prozessoren reduziert sich die Laufzeit auf $O(n^3 / p)$.
 Mit $p = n$ Prozessoren ergibt sich $O(n^2)$ --- ein linearer Speedup.
 
-Im Kontext der Kollaps-Klasse $\mathcal{K}_\mathrm{Sub}$ erÃ¶ffnet dies eine neue Dimension:
-FÃ¼r ein Problem $\Pi \in \mathcal{SZ}(\ell)$ kann die gesamte Zerlegungskette parallel
-ausgefÃ¼hrt werden, sodass der Gesamtaufwand auf $O(n^{3\ell}/p)$ sinkt.
-Bei $p = n^{3(\ell-1)}$ Prozessoren ergibt dies $O(n^3)$ --- unabhÃ¤ngig von der
+Im Kontext der Kollaps-Klasse $\mathcal{K}_\mathrm{Sub}$ eröffnet dies eine neue Dimension:
+Für ein Problem $\Pi \in \mathcal{SZ}(\ell)$ kann die gesamte Zerlegungskette parallel
+ausgeführt werden, sodass der Gesamtaufwand auf $O(n^{3\ell}/p)$ sinkt.
+Bei $p = n^{3(\ell-1)}$ Prozessoren ergibt dies $O(n^3)$ --- unabhängig von der
 Zerlegungstiefe $\ell$.
 
-FÃ¼r GPU-basierte Implementierungen (CUDA, SYCL) ergeben sich folgende Szenarien:
+Für GPU-basierte Implementierungen (CUDA, SYCL) ergeben sich folgende Szenarien:
 \begin{itemize}
-  \item \textbf{NVIDIA H100} (80 Multiprocessors, 6912 CUDA-Kerne): FÃ¼r $n = 1000$
+  \item \textbf{NVIDIA H100} (80 Multiprocessors, 6912 CUDA-Kerne): Für $n = 1000$
         ($n^3 = 10^9$ Operationen) ergibt sich mit $6912$ parallelen Threads
         eine effektive Laufzeit von $\approx 145\,000$ Operationen pro Thread ---
         praxistauglich in unter $1$\,ms bei Taktfrequenz $\sim 2$\,GHz.
-  \item \textbf{Distributed Computing}: FÃ¼r $n > 10\,000$ und $p > n^2$ Prozesse
-        (z.\,B.\ auf Cluster-Systemen wie SLURM) wÃ¤re der gesamte Subgraph Algorithmus
-        in $O(n)$ real-time Schritten ausfÃ¼hrbar --- eine dramatische Verbesserung.
+  \item \textbf{Distributed Computing}: Für $n > 10\,000$ und $p > n^2$ Prozesse
+        (z.\,B.\ auf Cluster-Systemen wie SLURM) wäre der gesamte Subgraph Algorithmus
+        in $O(n)$ real-time Schritten ausführbar --- eine dramatische Verbesserung.
 \end{itemize}
 
 \subsubsection{Inkrementelle und dynamische Subgraph-Zerlegung}
 
-In vielen Anwendungen Ã¤ndert sich der Graph $G$ inkrementell:
-Eine Kante wird hinzugefÃ¼gt oder entfernt, ein Knoten kommt hinzu.
-Der naive Ansatz wÃ¼rde den gesamten Algorithmus neu starten ($O(n^3)$).
-Ein \emph{dynamischer Subgraph Algorithmus} wÃ¼rde die Signaturen inkrementell
-aktualisieren: Das HinzufÃ¼gen einer Kante $(u,v)$ Ã¤ndert nur die Signaturen
-$\sigma_v$ (da nur Spalte $v$ von $A$ betroffen ist), was in $O(n)$ mÃ¶glich ist.
-AnschlieÃŸend muss nur die LCS fÃ¼r die geÃ¤nderte Signatur neu berechnet werden
+In vielen Anwendungen ändert sich der Graph $G$ inkrementell:
+Eine Kante wird hinzugefügt oder entfernt, ein Knoten kommt hinzu.
+Der naive Ansatz würde den gesamten Algorithmus neu starten ($O(n^3)$).
+Ein \emph{dynamischer Subgraph Algorithmus} würde die Signaturen inkrementell
+aktualisieren: Das Hinzufügen einer Kante $(u,v)$ ändert nur die Signaturen
+$\sigma_v$ (da nur Spalte $v$ von $A$ betroffen ist), was in $O(n)$ möglich ist.
+Anschließend muss nur die LCS für die geänderte Signatur neu berechnet werden
 ($O(n^2)$), was eine Gesamtlaufzeit von $O(n^2)$ pro Update ergibt ---
-ein Faktor $n$ schneller als die naÃ¯ve Neuberechnung.
+ein Faktor $n$ schneller als die naÏve Neuberechnung.
 
 \subsubsection{Approximative Subgraph-Algorithmen und Speedup-Tradeoffs}
 
-FÃ¼r sehr groÃŸe Graphen ($n > 10\,000$) ist auch $O(n^3)$ zu langsam.
-Approximative Subgraph-Algorithmen kÃ¶nnten eine NÃ¤herungslÃ¶sung mit
+Für sehr große Graphen ($n > 10\,000$) ist auch $O(n^3)$ zu langsam.
+Approximative Subgraph-Algorithmen könnten eine Näherungslösung mit
 garantiertem Approximationsfaktor liefern:
 \begin{itemize}
   \item \textbf{$(1-\varepsilon)$-Approximation in $O(n^{3-\delta})$}:
-        Unter bestimmten strukturellen Annahmen (z.\,B.\ Graphen mit beschrÃ¤nkter
-        Durchschnittsknotengrad) kÃ¶nnte eine approximative LCS-Berechnung
+        Unter bestimmten strukturellen Annahmen (z.\,B.\ Graphen mit beschränkter
+        Durchschnittsknotengrad) könnte eine approximative LCS-Berechnung
         in $O(n^{2-\varepsilon} \log n)$ ausreichen, um das korrekte Ergebnis
         mit Wahrscheinlichkeit $\geq 1 - n^{-c}$ zu liefern.
   \item \textbf{Spannerbasierte Approximation}: Spanner sind Subgraphen, die alle
-        AbstÃ¤nde bis zu einem Faktor $(1+\varepsilon)$ erhalten.
+        Abstände bis zu einem Faktor $(1+\varepsilon)$ erhalten.
         Ein $(1+\varepsilon)$-Spanner kann in $O(n^{1+1/k})$ Kanten aufgebaut werden.
-        Subgraphummengen in Spannern kÃ¶nnten als effiziente NÃ¤herungsstruktur
-        fÃ¼r den Subgraph Algorithmus dienen.
+        Subgraphummengen in Spannern könnten als effiziente Näherungsstruktur
+        für den Subgraph Algorithmus dienen.
 \end{itemize}
 
 \subsection{Anwendungsfelder}
@@ -1235,56 +1235,56 @@ garantiertem Approximationsfaktor liefern:
 
 Modelchecking-Probleme (Kripkestrukturen und CTL/LTL-Eigenschaften) liegen
 in PSPACE~\cite{clarke1999model}. Die Zustandsexplosion ist das zentrale
-praktische Problem: FÃ¼r ein System mit $n$ Komponenten wÃ¤chst der Zustandsraum
+praktische Problem: Für ein System mit $n$ Komponenten wächst der Zustandsraum
 exponentiell als $2^n$.
-Der Subgraph Algorithmus kann \emph{symmetrische ZustÃ¤nde} identifizieren
-und kollabieren: Zwei ZustÃ¤nde $s, s'$ im Kripkegraphen sind symmetrisch,
+Der Subgraph Algorithmus kann \emph{symmetrische Zustände} identifizieren
+und kollabieren: Zwei Zustände $s, s'$ im Kripkegraphen sind symmetrisch,
 wenn der Teilgraph des Zustands $s$ isomorph (im Sinne des Subgraph Algorithmus)
 zum Teilgraphen von $s'$ ist.
-Solche Symmetriekollapsen kÃ¶nnen den effektiven Zustandsraum um GrÃ¶ÃŸenordnungen
+Solche Symmetriekollapsen können den effektiven Zustandsraum um Größenordnungen
 reduzieren~\cite{clarke1999model}.
 
 Im Kontext der Programmanalyse (statische Analyse, Abstr. Interpretation, Taint Analysis):
 Der Subgraph Algorithmus kann in $O(n^3)$ duplizierte Code-Strukturen im AST erkennen,
-was fÃ¼r Dead Code Elimination, Common Subexpression Elimination und Loop Unrolling
+was für Dead Code Elimination, Common Subexpression Elimination und Loop Unrolling
 direkte Anwendung findet.
 
 \subsubsection{Kryptographische Protokolle und Zero-Knowledge}
 
 Die Signatur-Funktion $\sigma_j = \sum A_{ij} \cdot 2^i + j \cdot 2^n$ hat
-die Struktur einer linearen Hash-Funktion Ã¼ber $\mathbb{F}_2$.
-Ihre InjektivitÃ¤tseigenschaft~\cite{epp2026subgraph} macht sie geeignet fÃ¼r:
+die Struktur einer linearen Hash-Funktion über $\mathbb{F}_2$.
+Ihre Injektivitätseigenschaft~\cite{epp2026subgraph} macht sie geeignet für:
 \begin{itemize}
   \item \textbf{Graph-Hashing}: Zwei Graphen haben denselben Signatur-Vektor
         genau dann, wenn sie identisch sind (nicht nur isomorph) ---
         ein perfekter Graph-Fingerprint.
-  \item \textbf{Zero-Knowledge-Protokolle fÃ¼r Graphisomorphie}:
+  \item \textbf{Zero-Knowledge-Protokolle für Graphisomorphie}:
         Der Prover kennt die Isomorphie zweier Graphen; der Verifier
-        prÃ¼ft mit dem Subgraph Algorithmus in $O(n^3)$, ohne die Isomorphie-Abbildung
+        prüft mit dem Subgraph Algorithmus in $O(n^3)$, ohne die Isomorphie-Abbildung
         selbst zu erhalten.
   \item \textbf{Commitment Schemes}: Die Signatur $\sigma(\boldsymbol{A})$ kann
-        als Commitment fÃ¼r den Graphen $G$ dienen; die Ã–ffnung besteht
+        als Commitment für den Graphen $G$ dienen; die Öffnung besteht
         in der Vorlage der Adjazenzmatrix $A$.
 \end{itemize}
 
-\subsubsection{Bioinformatik: EvolutionÃ¤re Netzwerkanalyse}
+\subsubsection{Bioinformatik: Evolutionäre Netzwerkanalyse}
 
 Die Identifikation gemeinsamer funktionaler Netzwerkmotive in zwei Organismen
 (Pathway Alignment) ist eines der zentralen Probleme der Systems Biology~\cite{sharan2006comparative}.
 Formell: Gegeben Proteininteraktionsnetzwerke $G_\mathrm{Org1}$ und $G_\mathrm{Org2}$,
 finde maximale gemeinsame Subgraphen.
-Der Subgraph Algorithmus lÃ¶st die Subgraph-ÃœberprÃ¼fung in $O(n^3)$;
-kombiniert mit Branch-and-Bound-Suche Ã¼ber mÃ¶gliche Alignments ergibt sich
-ein praxistauglicher Algorithmus fÃ¼r moderate NetzwerkgrÃ¶ÃŸen ($n \leq 500$).
+Der Subgraph Algorithmus löst die Subgraph-Überprüfung in $O(n^3)$;
+kombiniert mit Branch-and-Bound-Suche über mögliche Alignments ergibt sich
+ein praxistauglicher Algorithmus für moderate Netzwerkgrößen ($n \leq 500$).
 
 \subsubsection{Neuronale Netze als Graphen und XAI}
 
-Moderne neuronale Netze kÃ¶nnen als Graphen reprÃ¤sentiert werden
-(Konnektom-Darstellung). ErklÃ¤rbare KI (XAI) sucht nach strukturellen Mustern
+Moderne neuronale Netze können als Graphen repräsentiert werden
+(Konnektom-Darstellung). Erklärbare KI (XAI) sucht nach strukturellen Mustern
 im Aktivierungsgraphen eines Netzes.
 Der Subgraph Algorithmus kann wiederkehrende Muster (``Motifs'') im
 Aktivierungsgraphen in $O(n^3)$ identifizieren,
-was fÃ¼r die Interpretierbarkeit von Transformer-Architekturen und
+was für die Interpretierbarkeit von Transformer-Architekturen und
 Graph Neural Networks (GNNs) direkt relevant ist.
 
 \subsection{Theoretische Langzeitziele}
@@ -1292,88 +1292,88 @@ Graph Neural Networks (GNNs) direkt relevant ist.
 \subsubsection{Geometric Complexity Theory und der Subgraph Algorithmus}
 
 Die Geometric Complexity Theory (GCT) von Mulmuley und Sohoni~\cite{mulmuley2001gct}
-reformuliert P~vs.~NP als Frage Ã¼ber algebraische VarietÃ¤ten und Darstellungstheorie.
-Der Subgraph Algorithmus operiert auf Adjazenzmatrizen Ã¼ber $\{0,1\}$;
-seine Signatur-Funktion ist eine lineare Form Ã¼ber $\mathbb{F}_2[x]$.
+reformuliert P~vs.~NP als Frage über algebraische Varietäten und Darstellungstheorie.
+Der Subgraph Algorithmus operiert auf Adjazenzmatrizen über $\{0,1\}$;
+seine Signatur-Funktion ist eine lineare Form über $\mathbb{F}_2[x]$.
 
-Ein mÃ¶glicher GCT-Ansatz: Die Klasse $\mathcal{K}_\mathrm{Sub}$ als algebraische
-VarietÃ¤t in dem Raum aller Adjazenzmatrizen zu charakterisieren.
+Ein möglicher GCT-Ansatz: Die Klasse $\mathcal{K}_\mathrm{Sub}$ als algebraische
+Varietät in dem Raum aller Adjazenzmatrizen zu charakterisieren.
 Falls $\mathcal{K}_\mathrm{Sub}$ durch eine polynomiale Gleichungsmenge beschreibbar
 ist, ergibt sich ein algebraisches Modell des partiellen PH-Kollaps.
 
 \subsubsection{Descriptive Complexity und Fixpunkt-Logik}
 
 Nach Immermans Theorem~\cite{immerman1999descriptive} ist P exakt die Klasse
-der in FO+LFP (First-Order Logic with Least Fixed Point) ausdrÃ¼ckbaren
+der in FO+LFP (First-Order Logic with Least Fixed Point) ausdrückbaren
 Eigenschaften auf geordneten Strukturen.
-Das zyklische Subgraphisomorphieproblem lÃ¤sst sich in FO+LFP ausdrÃ¼cken:
-Die Bedingung ``$G$ enthÃ¤lt einen zyklisch rotierten Subgraphen von $G'$''
-ist eine Fixpunkt-Iteration Ã¼ber den Rotationsindex $k$.
-Ein formaler Beweis dieser AusdrÃ¼ckbarkeit in FO+LFP steht noch aus und wÃ¤re
-ein schÃ¶ner Beitrag zur Descriptive Complexity des Subgraph Algorithmus.
+Das zyklische Subgraphisomorphieproblem lässt sich in FO+LFP ausdrücken:
+Die Bedingung ``$G$ enthält einen zyklisch rotierten Subgraphen von $G'$''
+ist eine Fixpunkt-Iteration über den Rotationsindex $k$.
+Ein formaler Beweis dieser Ausdrückbarkeit in FO+LFP steht noch aus und wäre
+ein schöner Beitrag zur Descriptive Complexity des Subgraph Algorithmus.
 
 Weitergehend: Kann $\mathcal{K}_\mathrm{Sub}$ als Fragment von FO+LFP charakterisiert
-werden? Falls ja, wÃ¼rde die Kollaps-Klasse eine logische Charakterisierung erhalten,
-was ihre Abgrenzung gegenÃ¼ber dem Rest der PH prÃ¤zisieren wÃ¼rde.
+werden? Falls ja, würde die Kollaps-Klasse eine logische Charakterisierung erhalten,
+was ihre Abgrenzung gegenüber dem Rest der PH präzisieren würde.
 
 \subsubsection{Verbindung zu Beweissystemen und Proof Complexity}
 
 Propositionale Beweissysteme (Resolution, Cutting Planes, Frege-Systeme)
-kÃ¶nnen als Suchprobleme auf Graphen formuliert werden.
+können als Suchprobleme auf Graphen formuliert werden.
 Die Frage, ob ein propositionales Theorem kurze Beweise hat, liegt in coNP.
-Eine Subgraph-Zerlegung fÃ¼r Beweissuchprobleme wÃ¼rde bedeuten, dass kurze Beweise
-deterministisch in Polynomialzeit gefunden werden kÃ¶nnen --- ein Resultat,
-das schwÃ¤cher als P~$=$~NP, aber stÃ¤rker als alle bekannten Beweissuchresultate wÃ¤re.
+Eine Subgraph-Zerlegung für Beweissuchprobleme würde bedeuten, dass kurze Beweise
+deterministisch in Polynomialzeit gefunden werden können --- ein Resultat,
+das schwächer als P~$=$~NP, aber stärker als alle bekannten Beweissuchresultate wäre.
 
 % ===========================================================
 \section{Zusammenfassung}
 \label{sec:zusammenfassung}
 % ===========================================================
 
-\subsection{Ãœberblick der Ergebnisse}
+\subsection{Überblick der Ergebnisse}
 
 Die vorliegende Arbeit hat den Subgraph Algorithmus~\cite{epp2026subgraph}
 als strukturierendes Werkzeug in der Polynomialzeithierarchie etabliert
-und weitreichende Konsequenzen fÃ¼r PSPACE, NPSPACE und den partiellen
+und weitreichende Konsequenzen für PSPACE, NPSPACE und den partiellen
 PH-Kollaps nachgewiesen. Wir fassen die zentralen Ergebnisse zusammen.
 
 \textbf{Formale Klassifizierung.}
 Das zyklische Subgraphisomorphieproblem liegt in P (Satz~\ref{satz:in_p}),
 ist unter SETH asymptotisch optimal mit $\Theta(n^3)$ (Theorem~\ref{thm:main}),
-und seine Polynomialzeiteigenschaft ist robust gegenÃ¼ber beliebigen
+und seine Polynomialzeiteigenschaft ist robust gegenüber beliebigen
 Orakel-Relativierungen (Satz~\ref{satz:oracle}).
-Damit nimmt der Algorithmus eine prÃ¤zise, stabile Position am untersten Ende
-der PH ein, die durch bekannte Relativierungsbarrieren nicht erschÃ¼ttert werden kann.
+Damit nimmt der Algorithmus eine präzise, stabile Position am untersten Ende
+der PH ein, die durch bekannte Relativierungsbarrieren nicht erschüttert werden kann.
 
 \textbf{Effizienz in der Polynomialzeithierarchie.}
 Satz~\ref{satz:effizienz} zeigt, dass Probleme in $\Sigma_k^P$ mit Subgraph-Zerlegung
-der LÃ¤nge $\ell$ deterministisch in $O(n^{3\ell})$ lÃ¶sbar sind ---
-ohne Orakelzugriffe auf hÃ¶here PH-Stufen. Dies bedeutet: Der Subgraph Algorithmus
-\emph{schÃ¶pft den verfÃ¼gbaren Platz in der PH} fÃ¼r diese Problemklasse vollstÃ¤ndig aus,
+der Länge $\ell$ deterministisch in $O(n^{3\ell})$ lösbar sind ---
+ohne Orakelzugriffe auf höhere PH-Stufen. Dies bedeutet: Der Subgraph Algorithmus
+\emph{schöpft den verfügbaren Platz in der PH} für diese Problemklasse vollständig aus,
 indem er nichtdeterministische Verfahren durch strukturierte Determinisierung ersetzt.
 
 \textbf{Partieller Kollaps der Polynomialzeithierarchie.}
 Das neue Kapitel~\ref{sec:kollaps} liefert das zentrale strukturelle Resultat:
 Die Kollaps-Klasse $\mathcal{K}_\mathrm{Sub}$ aller subgraph-zerlegbaren Probleme
-kollapiert vollstÃ¤ndig auf P (Satz~\ref{satz:kollaps}).
-Sie enthÃ¤lt alle planaren Minor-beschrÃ¤nkten Probleme (Satz~\ref{satz:planar}),
-alle Probleme auf Graphen mit beschrÃ¤nkter Baumweite (Korollar~\ref{kor:baumweite}),
+kollapiert vollständig auf P (Satz~\ref{satz:kollaps}).
+Sie enthält alle planaren Minor-beschränkten Probleme (Satz~\ref{satz:planar}),
+alle Probleme auf Graphen mit beschränkter Baumweite (Korollar~\ref{kor:baumweite}),
 und ist abgeschlossen unter polynomiellen Reduktionen (Lemma~\ref{lem:abgeschlossen}).
-Der Kollaps ist \emph{prÃ¤zise begrenzt}: Er gilt nicht fÃ¼r NP-vollstÃ¤ndige Probleme
+Der Kollaps ist \emph{präzise begrenzt}: Er gilt nicht für NP-vollständige Probleme
 (Satz~\ref{satz:grenze}), und seine Anwendungsgrenze ist durch die
 Struktureigenschaften der Eingabegraphen bestimmt.
 
 \textbf{PSPACE- und NPSPACE-Konsequenzen.}
 Satz~\ref{satz:raum} zeigt, dass PSPACE-Instanzen mit logarithmischer Raumschranke
 als Subgraphprobleme auf Konfigurationsgraphen modelliert und in Polynomialzeit
-entschieden werden kÃ¶nnen. Durch Savitchs Theorem (NPSPACE~$=$~PSPACE,
-Theorem~\ref{thm:savitch}) gelten diese Konsequenzen symmetrisch fÃ¼r
-nichtdeterministische Raumklassen. Die Ãœbereinstimmung des Subgraph-Speicherbedarfs
+entschieden werden können. Durch Savitchs Theorem (NPSPACE~$=$~PSPACE,
+Theorem~\ref{thm:savitch}) gelten diese Konsequenzen symmetrisch für
+nichtdeterministische Raumklassen. Die Übereinstimmung des Subgraph-Speicherbedarfs
 $O(n^2)$ mit der PSPACE-Schranke $s(n)^2$ (Abbildung~\ref{fig:savitch}) ist
 strukturell: Beide nutzen die Adjazenzmatrix als kompakte Darstellung des
 gesamten Konfigurationsraums.
 
-\textbf{FÃ¼nf Matplotlib-Visualisierungen.}
+\textbf{Fünf Matplotlib-Visualisierungen.}
 Die Abbildungen~\ref{fig:hierarchy}--\ref{fig:oracles} illustrieren:
 die hierarchische Einbettung (Abb.~\ref{fig:hierarchy}),
 den quantitativen Laufzeitgewinn um bis zu $10^{18}$ Faktor (Abb.~\ref{fig:runtime}),
@@ -1381,67 +1381,67 @@ die PH-Kollaps-Szenarien (Abb.~\ref{fig:collapse}),
 die Savitch-Speicheranalogien (Abb.~\ref{fig:savitch}) und
 die Einordnung in die Orakel-Landschaft (Abb.~\ref{fig:oracles}).
 
-\subsection{Bedeutung fÃ¼r die KomplexitÃ¤tstheorie}
+\subsection{Bedeutung für die Komplexitätstheorie}
 
 Die vorliegende Arbeit hat gezeigt, dass algorithmische Fortschritte ---
 hier in der effizienten Subgraphsuche durch zyklische Rotation ---
-nicht nur praktische, sondern tiefe \emph{strukturelle} Konsequenzen fÃ¼r
+nicht nur praktische, sondern tiefe \emph{strukturelle} Konsequenzen für
 die theoretische Informatik haben.
 
 Der partielle PH-Kollaps (Satz~\ref{satz:kollaps}) ist dabei das bedeutsamste
 Ergebnis. Er zeigt, dass die Polynomialzeithierarchie nicht als monolithische
 Struktur betrachtet werden darf: Innerhalb der PH gibt es eine ausgedehnte,
 strukturell charakterisierbare Teilklasse $\mathrm{PH}^{\mathrm{Sub}}$,
-die vollstÃ¤ndig auf P kollabiert. Diese Teilklasse enthÃ¤lt praxisrelevante
-Problemklassen wie planare Graphprobleme, Probleme mit beschrÃ¤nkter Baumweite,
+die vollständig auf P kollabiert. Diese Teilklasse enthält praxisrelevante
+Problemklassen wie planare Graphprobleme, Probleme mit beschränkter Baumweite,
 und Grapherreichbarkeitsprobleme (NL, Korollar~\ref{kor:nl}).
 
 Gleichzeitig unterstreicht Satz~\ref{satz:grenze} die fundamentale Grenze:
-Der Subgraph Algorithmus ist kein Beweis fÃ¼r P~$=$~NP. Er zeigt, dass die
-Grenze zwischen P und NP nicht durch zyklische Strukturausnutzung Ã¼berwunden
+Der Subgraph Algorithmus ist kein Beweis für P~$=$~NP. Er zeigt, dass die
+Grenze zwischen P und NP nicht durch zyklische Strukturausnutzung überwunden
 werden kann --- zumindest nicht ohne neue Ideen jenseits des hier entwickelten Rahmens.
 
 \subsection{Verbindung zu offenen Problemen der theoretischen Informatik}
 
-Die Arbeit berÃ¼hrt direkt drei der bedeutendsten offenen Probleme:
+Die Arbeit berührt direkt drei der bedeutendsten offenen Probleme:
 
 \begin{enumerate}
   \item \textbf{P vs.\ NP}: Der Kollaps-Satz~\ref{satz:kollaps} zeigt,
-        dass jeder Beweis von P~$=$~NP Ã¼ber den Subgraph-Rahmen zwingend
-        eine vollstÃ¤ndige Charakterisierung von $\mathcal{K}_\mathrm{Sub} = \mathrm{NP}$
-        erfordert. Umgekehrt wÃ¼rde ein Beweis, dass $\mathcal{K}_\mathrm{Sub} \subsetneq \mathrm{NP}$,
-        neue strukturelle Evidenz fÃ¼r P~$\neq$~NP liefern.
+        dass jeder Beweis von P~$=$~NP über den Subgraph-Rahmen zwingend
+        eine vollständige Charakterisierung von $\mathcal{K}_\mathrm{Sub} = \mathrm{NP}$
+        erfordert. Umgekehrt würde ein Beweis, dass $\mathcal{K}_\mathrm{Sub} \subsetneq \mathrm{NP}$,
+        neue strukturelle Evidenz für P~$\neq$~NP liefern.
 
   \item \textbf{PH-Kollaps}: Falls $\mathcal{K}_\mathrm{Sub} = \mathrm{PH}$
         (alle PH-Probleme sind subgraph-zerlegbar), folgt PH~$=$~P.
         Die Frage, ob $\mathcal{K}_\mathrm{Sub}$ die gesamte PH abdeckt,
-        ist damit Ã¤quivalent zur PH-Kollaps-Frage.
+        ist damit äquivalent zur PH-Kollaps-Frage.
 
   \item \textbf{Graphisomorphie}: Die Beziehung des Subgraph Algorithmus
         zu GI (Bemerkung zu Satz~\ref{satz:ladner}) zeigt:
         Falls GI subgraph-zerlegbar ist, liegt es in P.
-        Dies wÃ¤re eine LÃ¶sung des GI-Problems, ohne den vollen Apparat
-        der Gruppentheorie (Babai~\cite{babai2016graph}) zu benÃ¶tigen.
+        Dies wäre eine Lösung des GI-Problems, ohne den vollen Apparat
+        der Gruppentheorie (Babai~\cite{babai2016graph}) zu benötigen.
 \end{enumerate}
 
 \subsection{Schlussbetrachtung}
 
 Der Subgraph Algorithmus ist mehr als eine algorithmische Innovation ---
-er ist ein Denkwerkzeug fÃ¼r die strukturelle KomplexitÃ¤tstheorie.
+er ist ein Denkwerkzeug für die strukturelle Komplexitätstheorie.
 Durch die Kombination von Signatur-basierten Fingerprints, zyklischer Symmetrieausnutzung
-und dynamischer Programmierung erzielt er eine Polynomialzeit-LÃ¶sung,
+und dynamischer Programmierung erzielt er eine Polynomialzeit-Lösung,
 die tief in die Polynomialzeithierarchie eingreift, partielle Kollapse erzwingt
-und neue Verbindungen zu PSPACE, QuantenkomplexitÃ¤t und Parameterisierten Algorithmen aufzeigt.
+und neue Verbindungen zu PSPACE, Quantenkomplexität und Parameterisierten Algorithmen aufzeigt.
 
 Die in dieser Arbeit entwickelten Konzepte --- insbesondere die Kollaps-Klasse
 $\mathcal{K}_\mathrm{Sub}$, der partielle PH-Kollaps-Satz und das Forschungsprogramm
-zu offenen Fragen --- legen ein solides Fundament fÃ¼r eine neue Forschungslinie:
-die \emph{strukturelle Subgraph-KomplexitÃ¤tstheorie}, die algorithmische Effizienz
-und strukturelle KomplexitÃ¤tsanalyse in einem einheitlichen Rahmen verbindet.
+zu offenen Fragen --- legen ein solides Fundament für eine neue Forschungslinie:
+die \emph{strukturelle Subgraph-Komplexitätstheorie}, die algorithmische Effizienz
+und strukturelle Komplexitätsanalyse in einem einheitlichen Rahmen verbindet.
 
 Wir hoffen, dass die vorliegende Arbeit sowohl algorithmisch denkende Ingenieure,
 die effiziente Graphwerkzeuge suchen, als auch theoretisch orientierte Informatiker,
-die die Grenzen zwischen P, NP und PH erforschen, gleichermaÃŸen anspricht und
+die die Grenzen zwischen P, NP und PH erforschen, gleichermaßen anspricht und
 zu weiterer Forschung in diesem reichen Gebiet inspiriert.
 
 \newpage

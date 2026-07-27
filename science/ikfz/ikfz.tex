@@ -59,7 +59,7 @@
 	frame=single
 }
 
-\title{Sensor- und Aktor-Architektur in Kraftfahrzeugen:\\Strukturelle Trennung fÃ¼r intelligente Fahrzeugelektronik}
+\title{Sensor- und Aktor-Architektur in Kraftfahrzeugen:\\Strukturelle Trennung für intelligente Fahrzeugelektronik}
 \author{Stephan Epp}
 \date{17. Juli 2026}
 
@@ -71,25 +71,25 @@
 \newpage
 
 % ============================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ============================================================================
 
 Die elektronische Steuerung moderner Kraftfahrzeuge folgt einer komplexen Architektur, die 
-Sensoren zur Erfassung von Umgebungs- und BetriebszustÃ¤nden sowie Aktuatoren zur physischen 
+Sensoren zur Erfassung von Umgebungs- und Betriebszuständen sowie Aktuatoren zur physischen 
 Beeinflussung von Fahrzeugfunktionen integriert. Eine klare Trennung dieser beiden 
-Funktionsklassen ist fÃ¼r die Entwicklung zuverlÃ¤ssiger, wartbarer und sicherer 
-Fahrzeugelektronik unerlÃ¤sslich.
+Funktionsklassen ist für die Entwicklung zuverlässiger, wartbarer und sicherer 
+Fahrzeugelektronik unerlässlich.
 
 \subsection{Motivation und Problemstellung}
 
-WÃ¤hrend traditionelle Betrachtungen Sensoren und Aktuatoren oft unter dem Ã¼bergeordneten 
+Während traditionelle Betrachtungen Sensoren und Aktuatoren oft unter dem übergeordneten 
 Begriff "Peripherie" zusammenfassen, zeigt eine detaillierte Analyse substantielle 
 Unterschiede:
 
 \begin{itemize}
-	\item \textbf{Datenflussrichtung:} Sensoren fÃ¼hren Daten \textit{ein}, Aktuatoren fÃ¼hren 
+	\item \textbf{Datenflussrichtung:} Sensoren führen Daten \textit{ein}, Aktuatoren führen 
 	Steuersignale \textit{aus}
-	\item \textbf{Echtzeitanforderungen:} Kritische Aktuatoren benÃ¶tigen garantierte 
+	\item \textbf{Echtzeitanforderungen:} Kritische Aktuatoren benötigen garantierte 
 	Latenz-Obergrenzen
 	\item \textbf{Fehlerbehandlung:} Sensorfehler erfordern Validierung; Aktor-Fehler 
 	erfordern sichere Abschaltung
@@ -98,7 +98,7 @@ Unterschiede:
 \end{itemize}
 
 Diese Arbeit untersucht die architekturbedingten Unterschiede und leitet formale 
-Anforderungen fÃ¼r eine konsistente Sensor-Aktor-Trennung ab.
+Anforderungen für eine konsistente Sensor-Aktor-Trennung ab.
 
 % ============================================================================
 \section{Grundlagen und Definitionen}
@@ -127,7 +127,7 @@ in eine physikalische Aktion am Fahrzeug umwandelt.
 
 Ein Aktuator $A = (C, L, D_{\text{in}})$ besteht aus:
 \begin{itemize}
-	\item $C$: Kontrollparameter (z.B. Bremskraft, Lenkwinkel, Ã–ffnungsgrad)
+	\item $C$: Kontrollparameter (z.B. Bremskraft, Lenkwinkel, Öffnungsgrad)
 	\item $L$: Leistungsgrenzen und Sicherheitsschwellen
 	\item $D_{\text{in}}$: Eingangssteuersignal (unidirektional)
 \end{itemize}
@@ -135,7 +135,7 @@ Ein Aktuator $A = (C, L, D_{\text{in}})$ besteht aus:
 
 \subsection{Formale Charakterisierung der Datenfluss-Asymmetrie}
 
-\begin{satz}[UnidirektionalitÃ¤t]
+\begin{satz}[Unidirektionalität]
 Sensoren und Aktuatoren implementieren formal asymmetrische Datenfluss-Operationen:
 \begin{align}
 	\text{Sensor} &: \mathcal{P} \to \mathcal{D}_{\text{in}} 
@@ -144,14 +144,14 @@ Sensoren und Aktuatoren implementieren formal asymmetrische Datenfluss-Operation
 	\quad \text{(System} \to \text{Umwelt)}
 \end{align}
 
-wobei $\mathcal{P}$ die physikalischen MessgrÃ¶ÃŸen, $\mathcal{D}_{\text{in/out}}$ die 
-Datensignale und $\mathcal{E}$ die UmweltzustÃ¤nde bezeichnen.
+wobei $\mathcal{P}$ die physikalischen Messgrößen, $\mathcal{D}_{\text{in/out}}$ die 
+Datensignale und $\mathcal{E}$ die Umweltzustände bezeichnen.
 \end{satz}
 
 \begin{proof}
 Diese Asymmetrie ist kausal strukturiert: Der Datenfluss eines Sensors kann nicht 
-vom System aus initiiert werden (die Umwelt liefert die MessgrÃ¶ÃŸe). Der Datenfluss 
-eines Aktuators ist dagegen system-initiiert (das SteuergerÃ¤t sendet den Befehl). 
+vom System aus initiiert werden (die Umwelt liefert die Messgröße). Der Datenfluss 
+eines Aktuators ist dagegen system-initiiert (das Steuergerät sendet den Befehl). 
 Daraus folgt eine fundamentale Asymmetrie der Implementierungsanforderungen. 
 \end{proof}
 
@@ -159,7 +159,7 @@ Daraus folgt eine fundamentale Asymmetrie der Implementierungsanforderungen.
 \section{Sensor-Architektur und Datenverarbeitung}
 % ============================================================================
 
-\subsection{Signalverarbeitungs-Pipeline fÃ¼r Sensoren}
+\subsection{Signalverarbeitungs-Pipeline für Sensoren}
 
 Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 
@@ -167,8 +167,8 @@ Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 	\item \textbf{Akquisition:} Periodisches Auslesen des Sensorwerts mit Abtastrate $f_s$
 	\item \textbf{Filterung:} Rauschreduktion durch analoge und digitale Filter
 	\item \textbf{Kalibrierung:} Offset- und Skalierungskorrektur
-	\item \textbf{Plausibilisierung:} BereichsprÃ¼fung und PlausibilitÃ¤tskontrolle
-	\item \textbf{Fusion:} Kombination mehrerer Sensoren zur QualitÃ¤tserhÃ¶hung
+	\item \textbf{Plausibilisierung:} Bereichsprüfung und Plausibilitätskontrolle
+	\item \textbf{Fusion:} Kombination mehrerer Sensoren zur Qualitätserhöhung
 	\item \textbf{Entscheidung:} Ableitung von Steuerbefehlen
 \end{enumerate}
 
@@ -176,7 +176,7 @@ Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 
 \subsubsection{Umgebungssensoren}
 
-\textbf{Regensensor:} Erfasst OberflÃ¤chenfeuchtigkeit durch Reflexionsmessung.
+\textbf{Regensensor:} Erfasst Oberflächenfeuchtigkeit durch Reflexionsmessung.
 \begin{itemize}
 	\item Abtastrate: 40--100~Hz
 	\item Ausgabe: Feuchtegrads-Index [0, 100]
@@ -186,7 +186,7 @@ Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 \textbf{Lichtsensor:} Misst Umgebungshelligkeit durch Photodioden.
 \begin{itemize}
 	\item Abtastrate: 10--50~Hz
-	\item Ausgabe: LichtstÃ¤rke [lux]
+	\item Ausgabe: Lichtstärke [lux]
 	\item Anwendung: Automatische Scheinwerfersteuerung
 \end{itemize}
 
@@ -195,7 +195,7 @@ Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 	\item Abtastrate: 50--100~Hz (Automotive Radar: 77~GHz)
 	\item Ausgabe: Entfernung [m], Relativgeschwindigkeit [m/s]
 	\item Anwendung: Adaptive Geschwindigkeitsregelung (ACC)
-	\item KritikalitÃ¤t: \textbf{Sicherheitskritisch} (ASIL-B nach ISO 26262)
+	\item Kritikalität: \textbf{Sicherheitskritisch} (ASIL-B nach ISO 26262)
 \end{itemize}
 
 % ============================================================================
@@ -207,11 +207,11 @@ Die Verarbeitung von Sensorsignalen folgt einer charakteristischen Abfolge:
 Die Steuerung von Aktuatoren folgt einer invertierten Struktur:
 
 \begin{enumerate}
-	\item \textbf{Befehl-Empfang:} Ziel-Sollwert vom SteuergerÃ¤t
-	\item \textbf{Limitierung:} ÃœberprÃ¼fung von Sicherheitsgrenzen
-	\item \textbf{Rampung:} Sanfte ÃœbergÃ¤nge zur Vermeidung von TransientenstÃ¶ÃŸen
+	\item \textbf{Befehl-Empfang:} Ziel-Sollwert vom Steuergerät
+	\item \textbf{Limitierung:} Überprüfung von Sicherheitsgrenzen
+	\item \textbf{Rampung:} Sanfte Übergänge zur Vermeidung von Transientenstößen
 	\item \textbf{Antrieb:} Physikalische Aktuierung
-	\item \textbf{Fehlerdetection:} Ãœberwachung der AusfÃ¼hrung
+	\item \textbf{Fehlerdetection:} Überwachung der Ausführung
 	\item \textbf{Diagnostik:} Fehlerbehandlung und sichere Abschaltung
 \end{enumerate}
 
@@ -223,16 +223,16 @@ Die Steuerung von Aktuatoren folgt einer invertierten Struktur:
 \begin{itemize}
 	\item Eingabe: Bremskraft-Sollwert [0, 100]\%
 	\item Ausgabe: Bremsdruckaufbau [bar]
-	\item KritikalitÃ¤t: \textbf{ASIL-D} (hÃ¶chste Sicherheitsstufe)
+	\item Kritikalität: \textbf{ASIL-D} (höchste Sicherheitsstufe)
 	\item Latenz-Anforderung: $<$~10~ms
 	\item Fail-Safe: Bei Fehler -- Bremsanlage aktivieren
 \end{itemize}
 
-\textbf{Lenkaktuator:} Assistiert oder Ã¼bernimmt die Lenkung.
+\textbf{Lenkaktuator:} Assistiert oder übernimmt die Lenkung.
 \begin{itemize}
 	\item Eingabe: Lenkwinkel-Sollwert [\textdegree]
-	\item Ausgabe: Motorstrom fÃ¼r Lenkmotor [A]
-	\item KritikalitÃ¤t: \textbf{ASIL-D}
+	\item Ausgabe: Motorstrom für Lenkmotor [A]
+	\item Kritikalität: \textbf{ASIL-D}
 	\item Latenz-Anforderung: $<$~25~ms
 	\item Fail-Safe: Lenkung in sichere Mittelposition
 \end{itemize}
@@ -252,9 +252,9 @@ von Sensoren und Aktuatoren pro Funktionsgruppe dokumentiert.
 
 \textbf{Analyse der Ergebnisse:}
 
-Die Latenzanforderungen variieren drastisch je nach KritikalitÃ¤t der Anwendung. 
+Die Latenzanforderungen variieren drastisch je nach Kritikalität der Anwendung. 
 Sicherheitskritische Aktuatoren (Bremsanlage, Lenkung) erfordern sub-millisekunden-Latenz 
-($<$~25~ms), wÃ¤hrend Komfort-Aktuatoren mehrere hundert Millisekunden tolerieren.
+($<$~25~ms), während Komfort-Aktuatoren mehrere hundert Millisekunden tolerieren.
 
 \subsection{Signalverarbeitungs-Pipeline}
 
@@ -265,11 +265,11 @@ Sicherheitskritische Aktuatoren (Bremsanlage, Lenkung) erfordern sub-millisekund
 Diese Grafik zeigt die typische Transformation von Rohdaten zu hochqualitativen Messwerten:
 
 \begin{itemize}
-	\item \textbf{Akquisition (65\% QualitÃ¤t):} Rohes Sensorsignal mit Rauschen
-	\item \textbf{Filterung (72\% QualitÃ¤t):} Digitales Low-Pass-Filter
-	\item \textbf{Kalibrierung (85\% QualitÃ¤t):} Offset- und Skalierungskorrektur
-	\item \textbf{Fusion (91\% QualitÃ¤t):} Kombination mehrerer Sensoren
-	\item \textbf{Entscheidung (97\% QualitÃ¤t):} EndgÃ¼ltiger Steuersignal-Input
+	\item \textbf{Akquisition (65\% Qualität):} Rohes Sensorsignal mit Rauschen
+	\item \textbf{Filterung (72\% Qualität):} Digitales Low-Pass-Filter
+	\item \textbf{Kalibrierung (85\% Qualität):} Offset- und Skalierungskorrektur
+	\item \textbf{Fusion (91\% Qualität):} Kombination mehrerer Sensoren
+	\item \textbf{Entscheidung (97\% Qualität):} Endgültiger Steuersignal-Input
 \end{itemize}
 
 Die CPU-Last steigt proportional mit den Verarbeitungsschritten.
@@ -283,7 +283,7 @@ Die CPU-Last steigt proportional mit den Verarbeitungsschritten.
 \textbf{Interpretation:}
 
 \begin{enumerate}
-	\item \textbf{CAN-Bus (1 Mbps):} Klassische Infrastruktur, viele GerÃ¤te
+	\item \textbf{CAN-Bus (1 Mbps):} Klassische Infrastruktur, viele Geräte
 	\item \textbf{LIN-Bus (20 kbps):} Niedriggeschwindigkeitsnetz
 	\item \textbf{FlexRay (10 Mbps):} Deterministisches Echtzeit-Netzwerk
 	\item \textbf{Ethernet (100 Mbps):} High-Bandwidth-Backbone
@@ -299,18 +299,18 @@ Die CPU-Last steigt proportional mit den Verarbeitungsschritten.
 Die Kurve zeigt den klassischen Design-Trade-off zwischen Genauigkeit und Kosten.
 
 \begin{satz}[Genauigkeits-Kosten-Trade-off]
-Die Implementierungskosten fÃ¼r einen Sensor/Aktor wachsen Ã¼berproportional mit der 
+Die Implementierungskosten für einen Sensor/Aktor wachsen überproportional mit der 
 erforderlichen Genauigkeit. Ein praktisches Optimum liegt bei ca. 95\% Genauigkeit.
-Sicherheitskritische Systeme erfordern 99.5\% und hÃ¶her.
+Sicherheitskritische Systeme erfordern 99.5\% und höher.
 \end{satz}
 
 % ============================================================================
 \section{Formale Modellierung}
 % ============================================================================
 
-\subsection{Graph-basierte Architektur-ReprÃ¤sentation}
+\subsection{Graph-basierte Architektur-Repräsentation}
 
-Die Fahrzeugelektronik lÃ¤sst sich als gerichteter Graph $G = (V, E)$ modellieren:
+Die Fahrzeugelektronik lässt sich als gerichteter Graph $G = (V, E)$ modellieren:
 
 \begin{definition}[Architektur-Graph]
 \begin{itemize}
@@ -318,14 +318,14 @@ Die Fahrzeugelektronik lÃ¤sst sich als gerichteter Graph $G = (V, E)$ modellie
 	\begin{itemize}
 		\item $V_S$: Sensor-Knoten
 		\item $V_A$: Aktuator-Knoten
-		\item $V_C$: Control-Logic-Knoten (SteuergerÃ¤te)
+		\item $V_C$: Control-Logic-Knoten (Steuergeräte)
 	\end{itemize}
 	\item $E \subseteq V \times V$: Kommunikationskanten
 \end{itemize}
 \end{definition}
 
 \begin{satz}[Strukturelle Trennung]
-Eine korrekte Architektur erfÃ¼llt die Bedingung:
+Eine korrekte Architektur erfüllt die Bedingung:
 \[
 \forall e = (u, v) \in E: 
 \begin{cases}
@@ -340,8 +340,8 @@ Aktuatoren an, es gibt keine direkten Sensor-Aktuator-Verbindungen.
 \end{satz}
 
 \begin{proof}
-Direkte Sensor-Aktuator-Verbindungen wÃ¼rden Signalvalidierung und Fehlerbehandlung 
-umgehen, was zu unsicheren FahrzustÃ¤nden fÃ¼hrt. Die formale Trennung garantiert, 
+Direkte Sensor-Aktuator-Verbindungen würden Signalvalidierung und Fehlerbehandlung 
+umgehen, was zu unsicheren Fahrzuständen führt. Die formale Trennung garantiert, 
 dass jedes Aktor-Signal aus einer bewerteten Entscheidungslogik stammt. 
 \end{proof}
 
@@ -353,7 +353,7 @@ dass jedes Aktor-Signal aus einer bewerteten Entscheidungslogik stammt.
 
 \begin{definition}[ASIL-Level]
 Die funktionale Sicherheit wird durch den ASIL-Level (Automotive Safety Integrity 
-Level) definiert: ASIL-A (niedrig) bis ASIL-D (hÃ¶chst kritisch), ergÃ¤nzt durch 
+Level) definiert: ASIL-A (niedrig) bis ASIL-D (höchst kritisch), ergänzt durch 
 QM (nicht sicherheitskritisch).
 \end{definition}
 
@@ -365,7 +365,7 @@ QM (nicht sicherheitskritisch).
 \hline
 QM & Infotainment, Fenster & Keine speziellen Anforderungen \\
 ASIL-A & Lichtsensor & Basis-Fehlerbehandlung \\
-ASIL-B & Radarsensor, ACC & RedundanzprÃ¼fung erforderlich \\
+ASIL-B & Radarsensor, ACC & Redundanzprüfung erforderlich \\
 ASIL-C & Spurhalteassistent & Dual-Channel-Redundanz \\
 ASIL-D & Bremsanlage, Lenkung & Triple-Redundanz, Voting \\
 \hline
@@ -386,11 +386,11 @@ Aktor-Systemen in modernen Kraftfahrzeugen untersucht. Wesentliche Erkenntnisse:
 	\item \textbf{Echtzeitanforderungen:} Sicherheitskritische Aktuatoren erfordern 
 	sub-millisekunden-Latenz.
 	
-	\item \textbf{Fehlerbehandlung:} Unterschiedliche Strategien fÃ¼r Sensor- vs. 
+	\item \textbf{Fehlerbehandlung:} Unterschiedliche Strategien für Sensor- vs. 
 	Aktor-Fehler notwendig.
 	
-	\item \textbf{Formale Modellierung:} Graph-basierte Architektur-ReprÃ¤sentation 
-	ermÃ¶glicht Validierung.
+	\item \textbf{Formale Modellierung:} Graph-basierte Architektur-Repräsentation 
+	ermöglicht Validierung.
 	
 	\item \textbf{Praktische Implementierung:} Klare Trennung vereinfacht Entwicklung 
 	und Wartung.
@@ -400,42 +400,42 @@ Aktor-Systemen in modernen Kraftfahrzeugen untersucht. Wesentliche Erkenntnisse:
 \section{Ausblick}
 % ============================================================================
 
-Die Sensor-Aktor-Trennung wird sich mit zukÃ¼nftigen Entwicklungen weiter vertiefen:
+Die Sensor-Aktor-Trennung wird sich mit zukünftigen Entwicklungen weiter vertiefen:
 
 \subsection{Autonome Fahrzeuge}
 
-VollstÃ¤ndig autonome Fahrzeuge benÃ¶tigen redundante Sensor-Arrays mit Sensor-Fusion 
+Vollständig autonome Fahrzeuge benötigen redundante Sensor-Arrays mit Sensor-Fusion 
 auf Millisekunden-Ebene. Die Anforderungen an Echtzeitgarantien werden exponentiell steigen.
 
 \textbf{Forschungsbedarf:}
 \begin{itemize}
 	\item Formale Verifikation von Sensor-Fusionsalgorithmen
-	\item Hardwaregezielte Optimierung fÃ¼r Echtzeit-Sensor-Processing
-	\item Probabilistische Sicherheitsmodelle fÃ¼r autonome Navigation
+	\item Hardwaregezielte Optimierung für Echtzeit-Sensor-Processing
+	\item Probabilistische Sicherheitsmodelle für autonome Navigation
 \end{itemize}
 
 \subsection{Edge-Computing}
 
-ZukÃ¼nftige Fahrzeuge werden lokale Intelligenz in Sensor- und Aktor-Modulen selbst 
-integrieren. Dies erfordert neue Paradigmen fÃ¼r verteilte Echtzeit-Verarbeitung.
+Zukünftige Fahrzeuge werden lokale Intelligenz in Sensor- und Aktor-Modulen selbst 
+integrieren. Dies erfordert neue Paradigmen für verteilte Echtzeit-Verarbeitung.
 
 \textbf{Neue Architekturen:}
 \begin{itemize}
 	\item Distributed Real-Time Kernel: Sensoren und Aktuatoren mit lokalen Prozessoren
-	\item Time-Synchronized Ethernet: TSN fÃ¼r garantierte Latenz
+	\item Time-Synchronized Ethernet: TSN für garantierte Latenz
 	\item In-Sensor Processing: Vorverarbeitung zur Latenzreduktion
 \end{itemize}
 
-\subsection{KÃ¼nstliche Intelligenz}
+\subsection{Künstliche Intelligenz}
 
-Neuronale Netze fÃ¼r Sensor-Datenverarbeitung und Entscheidungslogik werden zunehmend 
+Neuronale Netze für Sensor-Datenverarbeitung und Entscheidungslogik werden zunehmend 
 kritisch. Dies erfordert neue Verifikationsmethoden.
 
 \textbf{Forschungsrichtungen:}
 \begin{itemize}
-	\item Formal verifiable AI fÃ¼r sicherheitskritische Systeme
+	\item Formal verifiable AI für sicherheitskritische Systeme
 	\item Adversarial Robustness gegen manipulierte Sensor-Eingaben
-	\item Interpretability von neuronalen Netzen fÃ¼r Fahrsicherheit
+	\item Interpretability von neuronalen Netzen für Fahrsicherheit
 \end{itemize}
 
 % ============================================================================

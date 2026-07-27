@@ -66,9 +66,9 @@
 \newtheorem{satz}{Satz}
 \newtheorem{lemma}{Lemma}
 
-\title{HochauflÃ¶sende Tiefenvermessung}
+\title{Hochauflösende Tiefenvermessung}
 \author{Stephan Epp}
-\date{4. MÃ¤rz 2026}
+\date{4. März 2026}
 
 %=============================================================
 \begin{document}
@@ -82,57 +82,57 @@
 %=============================================================
 \section{Einleitung}
 %=============================================================
-Die vorliegende Arbeit stellt ein neuartiges System zur hochauflÃ¶senden Tiefenvermessung
-in KÃ¼stengewÃ¤ssern und StrandnÃ¤he vor. Die bathymetrischen Daten mit einem Messraster
-von \textbf{20\,cm Ã— 20\,cm} (25 Messpunkte/mÂ²) werden in einem einmaligen Aufnahmeprozess
-durch Drohnen oder Satelliten erhoben, in einer rÃ¤umlichen Datenbank als \textbf{ideales Raster}
-gespeichert und anschlieÃŸend Ã¼ber eine standardisierte REST-API in Echtzeit fÃ¼r die Navigation
-bereitgestellt. KapitÃ¤ne, HafenbehÃ¶rden sowie autonome Navigationssysteme erhalten so eine
-prÃ¤zise, rasterbasierte Grundlage fÃ¼r die sichere Planung von Wasserfahrzeugrouten.
+Die vorliegende Arbeit stellt ein neuartiges System zur hochauflösenden Tiefenvermessung
+in Küstengewässern und Strandnähe vor. Die bathymetrischen Daten mit einem Messraster
+von \textbf{20\,cm Ã— 20\,cm} (25 Messpunkte/m ²) werden in einem einmaligen Aufnahmeprozess
+durch Drohnen oder Satelliten erhoben, in einer räumlichen Datenbank als \textbf{ideales Raster}
+gespeichert und anschließend über eine standardisierte REST-API in Echtzeit für die Navigation
+bereitgestellt. Kapitäne, Hafenbehörden sowie autonome Navigationssysteme erhalten so eine
+präzise, rasterbasierte Grundlage für die sichere Planung von Wasserfahrzeugrouten.
 
-Die Navigation in KÃ¼stengewÃ¤ssern, FlussmÃ¼ndungen und Hafenanlagen zÃ¤hlt zu den
+Die Navigation in Küstengewässern, Flussmündungen und Hafenanlagen zählt zu den
 anspruchsvollsten Aufgaben der Seefahrt. Trotz moderner elektronischer Seekarten und
-GPS-basierter Positionierung kommt es weltweit regelmÃ¤ÃŸig zu GrundberÃ¼hrungen und
-Havarien, die durch unzureichendes oder veraltetes Wissen Ã¼ber aktuelle Wassertiefen
-verursacht werden \cite{iho2020, imocircular}. Die Dynamik von KÃ¼stengewÃ¤ssern â€“
-hervorgerufen durch Sedimenttransport, GezeitenstrÃ¶mungen und anthropogene Eingriffe â€“
-fÃ¼hrt dazu, dass selbst kÃ¼rzlich erstellte Seekarten innerhalb weniger Wochen an Genauigkeit
-verlieren kÃ¶nnen.
+GPS-basierter Positionierung kommt es weltweit regelmäßig zu Grundberührungen und
+Havarien, die durch unzureichendes oder veraltetes Wissen über aktuelle Wassertiefen
+verursacht werden \cite{iho2020, imocircular}. Die Dynamik von Küstengewässern â€“
+hervorgerufen durch Sedimenttransport, Gezeitenströmungen und anthropogene Eingriffe â€“
+führt dazu, dass selbst kürzlich erstellte Seekarten innerhalb weniger Wochen an Genauigkeit
+verlieren können.
 
 \medskip\noindent
-Bestehende Systeme zur Tiefenvermessung basieren hÃ¤ufig auf periodischen Messfahrten
-mit Vermessungsschiffen, welche die Daten nachtrÃ¤glich aufbereiten und verÃ¶ffentlichen.
-Diese zeitliche LÃ¼cke zwischen Messung und VerfÃ¼gbarkeit kann kritisch sein â€“ insbesondere
+Bestehende Systeme zur Tiefenvermessung basieren häufig auf periodischen Messfahrten
+mit Vermessungsschiffen, welche die Daten nachträglich aufbereiten und veröffentlichen.
+Diese zeitliche Lücke zwischen Messung und Verfügbarkeit kann kritisch sein â€“ insbesondere
 in Bereichen mit hohem Sedimentaufkommen oder nach Sturmereignissen
 \cite{minkoff2019, guenther2000}.
 
 \medskip\noindent
-Das in dieser Arbeit vorgestellte System schlieÃŸt diese LÃ¼cke durch:
+Das in dieser Arbeit vorgestellte System schließt diese Lücke durch:
 
 \begin{enumerate}[label=\alph*)]
-  \item eine einmalige, flÃ¤chendeckende GelÃ¤ndeaufnahme durch Drohnen oder Satelliten
-        mit einem Messraster von 20\,cm Ã— 20\,cm (25 Messpunkte/mÂ²),
+  \item eine einmalige, flächendeckende Geländeaufnahme durch Drohnen oder Satelliten
+        mit einem Messraster von 20\,cm Ã— 20\,cm (25 Messpunkte/m ²),
   \item eine strukturierte Speicherung der prozessierten Messdaten als ideales Raster
-        in einer rÃ¤umlichen Datenbank und
+        in einer räumlichen Datenbank und
   \item eine Echtzeit-Bereitstellung der Navigationsdaten auf Grundlage dieses idealen
-        Rasters Ã¼ber eine Ã¶ffentlich zugÃ¤ngliche REST-API.
+        Rasters über eine öffentlich zugängliche REST-API.
 \end{enumerate}
 
 \subsection{Motivation und Relevanz}
 
-Gerade in touristisch genutzten KÃ¼stenbereichen, Wattenmeeren und flachen HÃ¤fen stellt
-die aktuelle Kenntnis der GewÃ¤ssertiefe eine Voraussetzung fÃ¼r die Sicherheit von Personen
+Gerade in touristisch genutzten Küstenbereichen, Wattenmeeren und flachen Häfen stellt
+die aktuelle Kenntnis der Gewässertiefe eine Voraussetzung für die Sicherheit von Personen
 und Material dar. Ausflugsdampfer, Segelboote, Kayaks sowie zunehmend autonome
-Wasserfahrzeuge benÃ¶tigen verlÃ¤ssliche Tiefenprofile als Grundlage ihrer
+Wasserfahrzeuge benötigen verlässliche Tiefenprofile als Grundlage ihrer
 Routenplanung. Das vorgeschlagene System adressiert diesen Bedarf auf skalierbare und
 kosteneffiziente Weise.
 
 \subsection{Zielsetzung der Arbeit}
 
 Ziel dieser Arbeit ist es, die Gesamtarchitektur des Systems â€“ bestehend aus einmaliger
-Aufnahmephase per Drohne oder Satellit, rÃ¤umlicher Datenbankinfrastruktur und
+Aufnahmephase per Drohne oder Satellit, räumlicher Datenbankinfrastruktur und
 Echtzeit-API â€“ zu beschreiben, die Leistungsparameter zu quantifizieren und anhand eines
-prototypischen Einsatzszenarios die praktische Anwendbarkeit fÃ¼r die Navigation auf
+prototypischen Einsatzszenarios die praktische Anwendbarkeit für die Navigation auf
 Grundlage des idealen Rasters nachzuweisen.
 
 %=============================================================
@@ -141,7 +141,7 @@ Grundlage des idealen Rasters nachzuweisen.
 
 \subsection{Klassische Bathymetrie-Verfahren}
 
-Traditionelle Methoden der Tiefenvermessung in KÃ¼stengewÃ¤ssern lassen sich in drei
+Traditionelle Methoden der Tiefenvermessung in Küstengewässern lassen sich in drei
 Hauptkategorien einteilen:
 
 \begin{table}[H]
@@ -151,22 +151,22 @@ Hauptkategorien einteilen:
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{@{}p{3.5cm}p{3cm}p{3.5cm}p{3.5cm}@{}}
 \toprule
-\textbf{Verfahren} & \textbf{AuflÃ¶sung} & \textbf{AktualitÃ¤t} & \textbf{EinschrÃ¤nkungen} \\
+\textbf{Verfahren} & \textbf{Auflösung} & \textbf{Aktualität} & \textbf{Einschränkungen} \\
 \midrule
-Lotleine / Echolot & 0{,}5â€“2\,m & Periodisch & Punktweise; Schiff nÃ¶tig \\
-FÃ¤cherecholot (MBES) & 0{,}1â€“0{,}5\,m & Periodisch & Hohe Kosten; komplexe Logistik \\
-Airborne LiDAR & 0{,}25â€“1\,m & Periodisch & WetterabhÃ¤ngig; teuer \\
-Satellitenaltimetrie & 5â€“50\,m & TÃ¤glich & Zu grob fÃ¼r Flachwasser \\
+Lotleine / Echolot & 0{,}5â€“2\,m & Periodisch & Punktweise; Schiff nötig \\
+Fächerecholot (MBES) & 0{,}1â€“0{,}5\,m & Periodisch & Hohe Kosten; komplexe Logistik \\
+Airborne LiDAR & 0{,}25â€“1\,m & Periodisch & Wetterabhängig; teuer \\
+Satellitenaltimetrie & 5â€“50\,m & Täglich & Zu grob für Flachwasser \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \noindent
 Alle genannten Verfahren teilen einen grundlegenden Nachteil: Sie liefern keine
-Echtzeit-Daten und erfordern fÃ¼r eine flÃ¤chendeckende Abdeckung erhebliche logistische
+Echtzeit-Daten und erfordern für eine flächendeckende Abdeckung erhebliche logistische
 und finanzielle Ressourcen \cite{guenther2000, parente2020}.
 
-\subsection{Neuere AnsÃ¤tze und ForschungslÃ¼cken}
+\subsection{Neuere Ansätze und Forschungslücken}
 
 In den letzten Jahren wurden verschiedene Ans\"{a}tze zur automatisierten Tiefenmessung
 untersucht, darunter autonome Unterwasserfahrzeuge (AUV), fest installierte Sonarsysteme
@@ -183,10 +183,10 @@ Drohnen- oder Satelliten\-aufnahme, r\"{a}umlicher Datenbank und REST-API.
 
 \subsection{Messprinzip und Rastergeometrie}
 
-Das System basiert auf einer einmaligen GelÃ¤ndeaufnahme durch Drohnen oder Satelliten.
+Das System basiert auf einer einmaligen Geländeaufnahme durch Drohnen oder Satelliten.
 Die erhobenen Rohdaten werden in ein einheitliches, quadratisches Messraster mit einem
-Abstand von \textbf{20\,cm} zwischen benachbarten Gitterpunkten in LÃ¤ngs- und Querrichtung
-Ã¼berfÃ¼hrt \textendash{} das \textbf{ideale Raster}. Dies entspricht
+Abstand von \textbf{20\,cm} zwischen benachbarten Gitterpunkten in Längs- und Querrichtung
+überführt \textendash{} das \textbf{ideale Raster}. Dies entspricht
 \textbf{25 Messpunkten pro Quadratmeter}:
 
 \begin{equation}
@@ -198,8 +198,8 @@ Abstand von \textbf{20\,cm} zwischen benachbarten Gitterpunkten in LÃ¤ngs- und
 wobei $d = 0{,}2\,\text{m}$ der Gitterabstand in beiden horizontalen Dimensionen ist.
 
 \medskip\noindent
-Die FlÃ¤chenabdeckung erstreckt sich Ã¼ber die gesamte nutzbare Strandbreite $B$, Ã¼blicherwei\-se
-im Bereich von 50 bis 500\,m, sowie Ã¼ber eine Tiefenzone $L$, die von der Uferlinie bis zur
+Die Flächenabdeckung erstreckt sich über die gesamte nutzbare Strandbreite $B$, üblicherwei\-se
+im Bereich von 50 bis 500\,m, sowie über eine Tiefenzone $L$, die von der Uferlinie bis zur
 Tiefengrenze sicherer Einfahrt reicht (typischerweise 100â€“500\,m seeseitig). Die Gesamtzahl
 der Rasterpunkte $N$ des idealen Gitters ergibt sich zu:
 
@@ -209,7 +209,7 @@ der Rasterpunkte $N$ des idealen Gitters ergibt sich zu:
 \end{equation}
 
 \noindent
-FÃ¼r ein Beispielareal mit $B = 200\,\text{m}$ und $L = 150\,\text{m}$ resultiert dies in:
+Für ein Beispielareal mit $B = 200\,\text{m}$ und $L = 150\,\text{m}$ resultiert dies in:
 
 \begin{equation}
   N = 25 \cdot 200 \cdot 150 = 750.000\; \text{Messpunkte}
@@ -217,24 +217,24 @@ FÃ¼r ein Beispielareal mit $B = 200\,\text{m}$ und $L = 150\,\text{m}$ resulti
 
 \subsection{Aufnahmeverfahren}
 
-Die Tiefendaten werden durch eine einmalige Beflie\-gung oder Satelliten\-Ã¼berfahrt
+Die Tiefendaten werden durch eine einmalige Beflie\-gung oder Satelliten\-überfahrt
 erfasst. Je nach Anwendungsgebiet kommen folgende Messprinzipien zum Einsatz:
 
 \begin{itemize}
-  \item \textbf{Drohnen-gestÃ¼tzte bathymetrische LiDAR-Aufnahme:} Ein GrÃ¼nlicht-Laser
-        (532\,nm) durchdringt die WasserssÃ¤ule und reflektiert am GewÃ¤sserboden; die
+  \item \textbf{Drohnen-gestützte bathymetrische LiDAR-Aufnahme:} Ein Grünlicht-Laser
+        (532\,nm) durchdringt die Wasserssäule und reflektiert am Gewässerboden; die
         Laufzeitdifferenz ergibt die Wassertiefe mit einer Genauigkeit von $\pm 0{,}5\,\text{cm}$.
-  \item \textbf{Drohnen-gestÃ¼tztes FÃ¤cherecholot (MBES):} Ein an der Drohne befestigtes
-        Multibeam-Sonar erfasst bei niedrigen FlughÃ¶hen (3\textendash10\,m Ã¼ber dem Wasserspiegel)
+  \item \textbf{Drohnen-gestütztes Fächerecholot (MBES):} Ein an der Drohne befestigtes
+        Multibeam-Sonar erfasst bei niedrigen Flughöhen (3\textendash10\,m über dem Wasserspiegel)
         breite Tiefenstreifen mit hoher Punktdichte.
   \item \textbf{Satellitenbasierte Bathymetrie (SDB):} Multispektrale Satellitenbilder
-        (z.\,B.\ Sentinel-2, WorldView) ermÃ¶glichen mittels Wassertiefenmodellen eine
-        flÃ¤chendeckende Aufnahme gro\ss{}er KÃ¼stengebiete bei geeigneten SichtverhÃ¤ltnissen.
+        (z.\,B.\ Sentinel-2, WorldView) ermöglichen mittels Wassertiefenmodellen eine
+        flächendeckende Aufnahme gro\ss{}er Küstengebiete bei geeigneten Sichtverhältnissen.
 \end{itemize}
 
 \noindent
 Die Rohdaten aller Aufnahmemethoden werden nach der Erfassung prozessiert und in das
-ideale 20\,cm-Raster Ã¼berfÃ¼hrt, das persistent in der rÃ¤umlichen Datenbank gespeichert wird.
+ideale 20\,cm-Raster überführt, das persistent in der räumlichen Datenbank gespeichert wird.
 
 \subsection{Datenbankarchitektur und Systemarchitektur}
 
@@ -269,17 +269,17 @@ persistent gespeichert. Die REST-API greift ausschlie\ss{}lich auf diesen Datenb
 zu und liefert die Navigationsdaten ohne zus\"{a}tzliche Verarbeitungsverz\"{o}gerung in Echtzeit.
 
 %=============================================================
-\section{Mathematisch-analytische BegrÃ¼ndung der Rasterwahl}
+\section{Mathematisch-analytische Begründung der Rasterwahl}
 %=============================================================
 
 Dieser Abschnitt legt formal dar, warum ein quadratisches Raster mit der Gitterweite
-$d = 20\,\text{cm}$ fÃ¼r die beschriebene Navigationsanwendung mathematisch optimal ist.
-Dabei werden das rÃ¤umliche Abtasttheorem, Navigationssicherheitsanforderungen,
-Informationstheoretische Grenzen sowie ein quantitativer Datenratenvergleich gegenÃ¼ber
+$d = 20\,\text{cm}$ für die beschriebene Navigationsanwendung mathematisch optimal ist.
+Dabei werden das räumliche Abtasttheorem, Navigationssicherheitsanforderungen,
+Informationstheoretische Grenzen sowie ein quantitativer Datenratenvergleich gegenüber
 alternativen Rasterweiten herangezogen.
 
 %-------------------------------------------------------------
-\subsection{RÃ¤umliches Abtasttheorem (2-D Nyquistâ€“Shannon)}
+\subsection{Räumliches Abtasttheorem (2-D Nyquistâ€“Shannon)}
 %-------------------------------------------------------------
 
 Das klassische Nyquist-Shannon-Abtasttheorem besagt, dass ein bandbegrenztes
@@ -291,24 +291,24 @@ Die Abtastperiode muss daher
   T \;\leq\; \frac{1}{2\,f_{\max}}
   \label{eq:nyquist1d}
 \end{equation}
-betragen. Auf zweidimensionale rÃ¤umliche Signale erweitert sich dieses Kriterium
-direkt: FÃ¼r ein isotropes Bodenrelief mit der maximalen rÃ¤umlichen Frequenz
+betragen. Auf zweidimensionale räumliche Signale erweitert sich dieses Kriterium
+direkt: Für ein isotropes Bodenrelief mit der maximalen räumlichen Frequenz
 $\nu_{\max}$ (in Zyklen pro Meter) muss der Gitterpunktabstand $d$ in beiden
 Orthogonalrichtungen die Bedingung
 \begin{equation}
   d \;\leq\; \frac{1}{2\,\nu_{\max}}
   \label{eq:nyquist2d}
 \end{equation}
-erfÃ¼llen \cite{oppenheim1996, marks2009}. Aliasing-Artefakte entstehen
+erfüllen \cite{oppenheim1996, marks2009}. Aliasing-Artefakte entstehen
 genau dann, wenn \eqref{eq:nyquist2d} verletzt wird: Strukturen kleiner als
-$2d$ werden im Raster entweder gar nicht oder mit falscher rÃ¤umlicher
+$2d$ werden im Raster entweder gar nicht oder mit falscher räumlicher
 Zuordnung abgebildet.
 
 \medskip\noindent
-\textbf{Anwendung auf KÃ¼stenbathymetrie.}
-Die navigationsrelevante MindestgrÃ¶ÃŸe eines Bodenhindernisses â€“ definiert als
-diejenige Strukturbreite $w_{\min}$, unterhalb derer ein Objekt fÃ¼r die
-Flachwassernavigation keine GefÃ¤hrdung mehr darstellt â€“ liegt nach
+\textbf{Anwendung auf Küstenbathymetrie.}
+Die navigationsrelevante Mindestgröße eines Bodenhindernisses â€“ definiert als
+diejenige Strukturbreite $w_{\min}$, unterhalb derer ein Objekt für die
+Flachwassernavigation keine Gefährdung mehr darstellt â€“ liegt nach
 IHO-Order-1a bei $w_{\min} = 0{,}4\,\text{m}$ \cite{iho2020}.
 Daraus ergibt sich die maximale navigationsrelevante Ortssfrequenz:
 \begin{equation}
@@ -322,83 +322,83 @@ Einsetzen in \eqref{eq:nyquist2d} liefert:
              = 0{,}20\,\text{m} = 20\,\text{cm}
   \label{eq:dmax}
 \end{equation}
-\textbf{Ein Raster mit $d = 20\,\text{cm}$ ist damit genau die grÃ¶bste
-Gitterweite, die sÃ¤mtliche navigationsrelevanten Bodenstrukturen
-aliasingfrei abbildet.} Jede feinere AuflÃ¶sung ($d < 20\,\text{cm}$)
-erhÃ¶ht die Datenmenge quadratisch, ohne zusÃ¤tzliche
-sicherheitsrele\-vante Information zu liefern; jede grÃ¶bere
-AuflÃ¶sung ($d > 20\,\text{cm}$) verletzt das Nyquist-Kriterium und
+\textbf{Ein Raster mit $d = 20\,\text{cm}$ ist damit genau die gröbste
+Gitterweite, die sämtliche navigationsrelevanten Bodenstrukturen
+aliasingfrei abbildet.} Jede feinere Auflösung ($d < 20\,\text{cm}$)
+erhöht die Datenmenge quadratisch, ohne zusätzliche
+sicherheitsrele\-vante Information zu liefern; jede gröbere
+Auflösung ($d > 20\,\text{cm}$) verletzt das Nyquist-Kriterium und
 birgt Aliasing-Risiken.
 
 %-------------------------------------------------------------
-\subsection{Navigatorische MindestauflÃ¶sung und Tiefgangsanalyse}
+\subsection{Navigatorische Mindestauflösung und Tiefgangsanalyse}
 %-------------------------------------------------------------
 
 Der Sicherheitsabstand $\delta$ zwischen dem Kiel eines Fahrzeugs mit
-Tiefgang $T$ und der GewÃ¤ssersohle ist definiert als:
+Tiefgang $T$ und der Gewässersohle ist definiert als:
 \begin{equation}
   \delta = h(x,y) - T \geq \delta_{\min}
   \label{eq:kielfreiheit}
 \end{equation}
 wobei $h(x,y)$ die gemessene Wassertiefe am Ort $(x,y)$ und $\delta_{\min}$
 den vorgeschriebenen Mindestkielfreiheitswert bezeichnet. Nach IMO-Empfehlungen
-betrÃ¤gt $\delta_{\min}$ typischerweise $10\,\%$ des Tiefgangs, mindestens
+beträgt $\delta_{\min}$ typischerweise $10\,\%$ des Tiefgangs, mindestens
 jedoch $15\,\text{cm}$ \cite{imomsccircularnav}.
 
 \medskip\noindent
 Ein Bodenhinderniss der Breite $w < d$ kann durch das Raster nicht
-aufgelÃ¶st werden. Es wird entweder dem nÃ¤chsten Gitterpunkt zugeordnet
+aufgelöst werden. Es wird entweder dem nächsten Gitterpunkt zugeordnet
 (mit potenziell fehlerhafter Tiefe) oder zwischen benachbarten
 Gitterpunkten interpoliert, was zu einer systematischen
-UnterschÃ¤tzung der wahren HindernishÃ¶he fÃ¼hrt. FÃ¼r ein Hindernis
+Unterschätzung der wahren Hindernishöhe führt. Für ein Hindernis
 der halben Gitterbreite $w = d/2$ ergibt sich der maximale
 Interpolationsfehler $\varepsilon_h$ bei bilinearer Interpolation zu:
 \begin{equation}
   \varepsilon_h \;\approx\; \frac{\Delta z_{\max}}{4}
   \label{eq:interpfehler}
 \end{equation}
-wobei $\Delta z_{\max}$ der maximale HÃ¶henunterschied zwischen
-benachbarten Gitterpunkten ist. FÃ¼r typische KÃ¼stenbodentopographien
+wobei $\Delta z_{\max}$ der maximale Höhenunterschied zwischen
+benachbarten Gitterpunkten ist. Für typische Küstenbodentopographien
 mit $\Delta z_{\max} \approx 20\,\text{cm}$ und $d = 20\,\text{cm}$
-betrÃ¤gt dieser Fehler lediglich $\varepsilon_h \approx 5\,\text{cm}$
+beträgt dieser Fehler lediglich $\varepsilon_h \approx 5\,\text{cm}$
 â€“ deutlich unterhalb des geforderten $\delta_{\min}$.
 
 \medskip\noindent
-Bei Gitterweiten $d \geq 50\,\text{cm}$ hingegen kÃ¶nnen Hindernisse der
-GrÃ¶ÃŸe $20\,\text{cm} \leq w < 50\,\text{cm}$ vollstÃ¤ndig im Raster
-verschwindet; der Interpolationsfehler Ã¼bersteigt dann regelmÃ¤ÃŸig den
+Bei Gitterweiten $d \geq 50\,\text{cm}$ hingegen können Hindernisse der
+Größe $20\,\text{cm} \leq w < 50\,\text{cm}$ vollständig im Raster
+verschwindet; der Interpolationsfehler übersteigt dann regelmäßig den
 vorgeschriebenen Mindestkielfreiheitswert.
 
 %-------------------------------------------------------------
 \subsection{Informationstheoretische Betrachtung}
 %-------------------------------------------------------------
 
-Die rÃ¤umliche Entropie $H$ eines Tiefenfeldes der FlÃ¤che $A$ bei
+Die räumliche Entropie $H$ eines Tiefenfeldes der Fläche $A$ bei
 Gitterweite $d$ ist nach Shannon:
 \begin{equation}
   H(d) = -\frac{A}{d^2}\sum_{k} p_k \log_2 p_k
   \label{eq:entropie}
 \end{equation}
 wobei $p_k$ die Wahrscheinlichkeit der Tiefenklasse $k$ ist. Da
-$A/d^2$ die Anzahl der Gitterpunkte darstellt, wÃ¤chst die
+$A/d^2$ die Anzahl der Gitterpunkte darstellt, wächst die
 absolute Informationsmenge mit abnehmendem $d$ quadratisch an.
-Die \emph{navigationsrelevante} Entropie sÃ¤ttigt jedoch bei
+Die \emph{navigationsrelevante} Entropie sättigt jedoch bei
 $d = d^* = 1/(2\,\nu_{\max})$: Unterhalb von $d^*$ werden keine
-zusÃ¤tzlichen entscheidungsrelevanten Informationen (im Sinne von
-durch \eqref{eq:kielfreiheit} auflÃ¶sbaren Tiefenunterschieden)
+zusätzlichen entscheidungsrelevanten Informationen (im Sinne von
+durch \eqref{eq:kielfreiheit} auflösbaren Tiefenunterschieden)
 gewonnen, da das bathymetrische Signal oberhalb $\nu_{\max}$
 praktisch kein Leistungsspektrum mehr aufweist \cite{goff1988}.
 
 \medskip\noindent
-Formal lÃ¤sst sich dies durch das Leistungsdichtespektrum
-$S(\nu_x, \nu_y)$ des Bodenreliefs ausdrÃ¼cken. FÃ¼r typische
-KÃ¼stensedimentbÃ¶den folgt das Spektrum nÃ¤herungsweise einem
+Formal lässt sich dies durch das Leistungsdichtespektrum
+$S(\nu_x, \nu_y)$ des Bodenreliefs ausdrücken. Für typische
+Küstensedimentböden folgt das Spektrum näherungsweise einem
 Potenzgesetz \cite{goff1988, herzfeld1993}:
 \begin{equation}
   S(\nu) \propto \nu^{-\beta}, \quad \beta \approx 2{,}5\ldots 3{,}5
   \label{eq:psd}
 \end{equation}
-Der Anteil der Signalleistung oberhalb von $\nu_{\max}$ betrÃ¤gt
+Der Anteil der Signalleistung oberhalb von $\nu_{\max}$ beträgt
 dann:
 \begin{equation}
   \frac{P_{>\nu_{\max}}}{P_{\text{ges}}}
@@ -407,16 +407,16 @@ dann:
   \xrightarrow{\beta > 1} \frac{\nu_{\max}^{1-\beta}/(\beta-1)}{\text{(Normierung)}}
   \label{eq:spectralpower}
 \end{equation}
-FÃ¼r $\beta = 3$ und $\nu_{\max} = 2{,}5\,\text{m}^{-1}$ liegt dieser
+Für $\beta = 3$ und $\nu_{\max} = 2{,}5\,\text{m}^{-1}$ liegt dieser
 Anteil unter $2\,\%$. Ein feineres Raster als $20\,\text{cm}$ erfasst
-also weniger als $2\,\%$ zusÃ¤tzliche Signalleistung â€“ bei gleichzeitig
+also weniger als $2\,\%$ zusätzliche Signalleistung â€“ bei gleichzeitig
 quadratisch steigender Datenmenge.
 
 %-------------------------------------------------------------
 \subsection{Quantitativer Datenratenvergleich verschiedener Rasterweiten}
 %-------------------------------------------------------------
 
-Die Gesamtzahl der Gitterpunkte Ã¼ber einer FlÃ¤che $A = B \cdot L$ ist:
+Die Gesamtzahl der Gitterpunkte über einer Fläche $A = B \cdot L$ ist:
 \begin{equation}
   N(d) = \frac{A}{d^2} = \frac{B \cdot L}{d^2}
   \label{eq:Npunkt}
@@ -426,23 +426,23 @@ Bezogen auf das Referenzraster $d_0 = 20\,\text{cm}$ gilt:
   \frac{N(d)}{N(d_0)} = \left(\frac{d_0}{d}\right)^2
   \label{eq:skalierung}
 \end{equation}
-Die Rohdatenmenge $M(d)$ pro vollstÃ¤ndigem Gebiets-Snapshot bei
+Die Rohdatenmenge $M(d)$ pro vollständigem Gebiets-Snapshot bei
 $s = 64\,\text{Byte}$ pro Gitterpunkt skaliert dementsprechend:
 \begin{equation}
   M(d) = N(d)\cdot s = \frac{A \cdot s}{d^2}
   \label{eq:datenmenge}
 \end{equation}
-FÃ¼r die BeispielflÃ¤che $A = 200\,\text{m} \times 150\,\text{m} = 30.000\,\text{m}^2$:
+Für die Beispielfläche $A = 200\,\text{m} \times 150\,\text{m} = 30.000\,\text{m}^2$:
 \begin{table}[H]
 \centering
-\caption{Datenmengen- und Datenratenvergleich fÃ¼r verschiedene Rasterweiten
-         (BeispielflÃ¤che $200\,\text{m}\times150\,\text{m}$,
+\caption{Datenmengen- und Datenratenvergleich für verschiedene Rasterweiten
+         (Beispielfläche $200\,\text{m}\times150\,\text{m}$,
           $s = 64\,\text{Byte/Punkt}$, Abfragerate $f_q = 1\,\text{Hz}$)}
 \label{tab:rastervergleich}
 \renewcommand{\arraystretch}{1.45}
 \begin{tabular}{@{}r r r r r r r@{}}
 \toprule
-\textbf{Raster} & \textbf{Punkte/mÂ²} & \textbf{Punkte}
+\textbf{Raster} & \textbf{Punkte/m ²} & \textbf{Punkte}
   & \textbf{Menge} & \textbf{Skalierung} & \textbf{Datenrate}
   & \textbf{Nyquist} \\
 \midrule
@@ -458,22 +458,22 @@ $2\,\text{m}$   & 0{,}25 & $7.500$           & $0{,}5\,\text{MB}$ &  0{,}01$\tim
 
 \noindent
 Die Datenrate in Tabelle~\ref{tab:rastervergleich} bezieht sich auf eine
-vollstÃ¤ndige FlÃ¤chenabfrage aller Gitterpunkte mit $f_q = 1\,\text{Hz}$.
+vollständige Flächenabfrage aller Gitterpunkte mit $f_q = 1\,\text{Hz}$.
 In der praktischen Implementierung werden Bounding-Box-Abfragen eingesetzt,
-die nur den jeweils relevanten Kartenausschnitt Ã¼bertragen; dies reduziert
-den tatsÃ¤chlichen Ãœbertragungsbedarf typischerweise um den Faktor
+die nur den jeweils relevanten Kartenausschnitt übertragen; dies reduziert
+den tatsächlichen Übertragungsbedarf typischerweise um den Faktor
 $10$â€“$100$.
 
 \medskip\noindent
 \textbf{Schlussfolgerung aus dem Vergleich.}
 \begin{itemize}
-  \item Rasterweiten $d < 20\,\text{cm}$ erhÃ¶hen die Datenmenge um den Faktor
+  \item Rasterweiten $d < 20\,\text{cm}$ erhöhen die Datenmenge um den Faktor
         $(20/d)^2$ â€“ bei $d = 5\,\text{cm}$ um Faktor $16$
-        â€“ ohne fÃ¼r die beschriebene Navigationsanwendung
+        â€“ ohne für die beschriebene Navigationsanwendung
         irelevante neue Information zu liefern.
   \item Rasterweiten $d > 20\,\text{cm}$ verletzen das Nyquist-Kriterium
-        \eqref{eq:dmax} und kÃ¶nnen sicherheitskritische Hindernisse
-        auflÃ¶sungsbedingt verschlucken.
+        \eqref{eq:dmax} und können sicherheitskritische Hindernisse
+        auflösungsbedingt verschlucken.
   \item Die Gitterweite $d = 20\,\text{cm}$ stellt damit den exakten
         Schnittpunkt von Nyquist-konformer Abtastung und minimaler
         Datenrate dar â€“ eine \emph{mathematisch notwendige und
@@ -484,9 +484,9 @@ $10$â€“$100$.
 \subsection{Formales Optimierungsproblem}
 %-------------------------------------------------------------
 
-Die Wahl der Gitterweite lÃ¤sst sich als eingeschrÃ¤nktes
+Die Wahl der Gitterweite lässt sich als eingeschränktes
 Optimierungsproblem formulieren. Sei $\mathcal{D}(d)$ die Datenrate
-als Kostenfunktion und $\mathcal{I}(d)$ ein MaÃŸ fÃ¼r den
+als Kostenfunktion und $\mathcal{I}(d)$ ein Maß für den
 navigationsrelevanten Informationsgehalt. Gesucht ist:
 \begin{equation}
   d^* = \arg\min_{d}\; M(d) = \arg\min_{d}\; \frac{A \cdot s}{d^2}
@@ -498,23 +498,23 @@ unter der Nebenbedingung:
   = \frac{w_{\min}}{2} = 0{,}20\,\text{m}
   \label{eq:opt_neb}
 \end{equation}
-Da $M(d)$ streng monoton fallend in $d$ ist, ist die LÃ¶sung:
+Da $M(d)$ streng monoton fallend in $d$ ist, ist die Lösung:
 \begin{equation}
   \boxed{d^* = d_{\rm Nyq} = 20\,\text{cm}}
   \label{eq:opt_loesung}
 \end{equation}
-Die Kostenfunktion $M(d)$ verhÃ¤lt sich fÃ¼r $d < d^*$ wie:
+Die Kostenfunktion $M(d)$ verhält sich für $d < d^*$ wie:
 \begin{equation}
   M(d) = M(d^*) \cdot \left(\frac{d^*}{d}\right)^2
   \label{eq:kostenquadrat}
 \end{equation}
 Beispiel: Eine Halbierung der Gitterweite von $20\,\text{cm}$ auf
-$10\,\text{cm}$ vervierfacht Datenmenge und Ã¼bertragene Datenrate,
-reduziert die Ã¼bermittelte navigationsrelevante Information
+$10\,\text{cm}$ vervierfacht Datenmenge und übertragene Datenrate,
+reduziert die übermittelte navigationsrelevante Information
 (gemessen in Einheiten \eqref{eq:spectralpower}) jedoch um weniger
-als $2\,\%$. Dieses \textbf{quadratisch-lineare MissverhÃ¤ltnis}
-beweist formal die Ãœberlegenheit von $d^* = 20\,\text{cm}$
-gegenÃ¼ber jeder feineren Rasterung.
+als $2\,\%$. Dieses \textbf{quadratisch-lineare Missverhältnis}
+beweist formal die Überlegenheit von $d^* = 20\,\text{cm}$
+gegenüber jeder feineren Rasterung.
 
 %-------------------------------------------------------------
 \subsection{Vergleich der Rastergeometrien}
@@ -522,11 +522,11 @@ gegenÃ¼ber jeder feineren Rasterung.
 
 Neben der Gitterweite ist auch die \emph{Rastergeometrie} relevant.
 Neben dem quadratischen Raster sind in der Geomatik auch
-hexagonale und dreieckige Gitter gelÃ¤ufig \cite{sahr2003}.
+hexagonale und dreieckige Gitter geläufig \cite{sahr2003}.
 
 \begin{table}[h]
 \centering
-\caption{Vergleich gebrÃ¤uchlicher Rastergeometrien hinsichtlich
+\caption{Vergleich gebräuchlicher Rastergeometrien hinsichtlich
          Samplingeffizienz und Implementierungsaufwand}
 \label{tab:geometrien}
 \renewcommand{\arraystretch}{1.4}
@@ -537,25 +537,25 @@ hexagonale und dreieckige Gitter gelÃ¤ufig \cite{sahr2003}.
 \midrule
 Quadratisch ($d$) & 1{,}0$\times$ (Ref.) & gering & sehr gut
   & Industriestandard; einfache Indizierung \\
-Hexagonal ($r$) & $\approx 1{,}07\times$ & hoch & eingeschrÃ¤nkt
-  & 7\,\% effizientere FlÃ¤chendeckung \cite{conway2013},
+Hexagonal ($r$) & $\approx 1{,}07\times$ & hoch & eingeschränkt
+  & 7\,\% effizientere Flächendeckung \cite{conway2013},
     aber komplexe DB-Strukturen \\
 Dreieckig & $\approx 0{,}87\times$ & sehr gering & schlecht
-  & UngÃ¼nstige Richtungsasymmetrie \\
-IrregulÃ¤r (TIN) & variabel & -- & schlecht
-  & Optimal fÃ¼r Originalmessdaten, ungeeignet fÃ¼r Raster-API \\
+  & Ungünstige Richtungsasymmetrie \\
+Irregulär (TIN) & variabel & -- & schlecht
+  & Optimal für Originalmessdaten, ungeeignet für Raster-API \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \noindent
 Das hexagonale Raster bietet theoretisch eine um ca. $7\,\%$
-bessere FlÃ¤chendeckungseffizienz (hÃ¶herer Nyquist-Rate relativ
-zur Punktdichte) \cite{conway2013}. Jedoch Ã¼berwiegen fÃ¼r die
+bessere Flächendeckungseffizienz (höherer Nyquist-Rate relativ
+zur Punktdichte) \cite{conway2013}. Jedoch überwiegen für die
 beschriebene Anwendung die Nachteile: Hexagonale Koordinaten sind
 in relationalen Datenban\-ken (PostGIS, Oracle Spatial) deutlich
 schwieriger zu indizieren; Bounding-Box-Abfragen und die Abbildung
-auf geografische Koordinatensysteme (EPSG:4326) erfordern aufwÃ¤ndige
+auf geografische Koordinatensysteme (EPSG:4326) erfordern aufwändige
 Transformationen. Das \textbf{quadratische Raster} ist daher der
 praktisch optimale Kompromiss zwischen Samplingtheorie und
 Systemarchitektur \cite{li2008}.
@@ -566,8 +566,8 @@ Systemarchitektur \cite{li2008}.
 
 \subsection{Schnittstellendesign}
 
-Die Daten werden Ã¼ber eine RESTful-API im GeoJSON-Format bereitgestellt. Die API
-folgt dem OpenAPI-3.0-Standard und ermÃ¶glicht sowohl punkt- als auch fÃ¤chenbasierte
+Die Daten werden über eine RESTful-API im GeoJSON-Format bereitgestellt. Die API
+folgt dem OpenAPI-3.0-Standard und ermöglicht sowohl punkt- als auch fächenbasierte
 Abfragen. Tabelle~\ref{tab:endpunkte} zeigt die wesentlichen Endpunkte.
 
 \begin{table}[H]
@@ -621,10 +621,10 @@ Authorization: Bearer <TOKEN>
 \subsection{Latenz und Durchsatz}
 
 Das System ist auf eine Antwortlatenz von unter 500\,ms ausgelegt, von der API-Anfrage
-bis zur vollstÃ¤ndigen Ãœbertragung der Navigationsdaten. Da die Rohdatenverarbeitung
-vollstÃ¤ndig im Vorfeld abgeschlossen wird, beschrÃ¤nkt sich die Laufzeit auf den
-Datenbankzugriff und die NetzwerkÃ¼bertragung. Die Datenmenge einer typischen
-Bereichsabfrage (Bounding-Box 500\,m $\times$ 200\,m) betrÃ¤gt:
+bis zur vollständigen Übertragung der Navigationsdaten. Da die Rohdatenverarbeitung
+vollständig im Vorfeld abgeschlossen wird, beschränkt sich die Laufzeit auf den
+Datenbankzugriff und die Netzwerkübertragung. Die Datenmenge einer typischen
+Bereichsabfrage (Bounding-Box 500\,m $\times$ 200\,m) beträgt:
 
 \begin{equation}
   D_{\text{Abfrage}} = N_{\text{AOI}} \cdot s
@@ -633,37 +633,37 @@ Bereichsabfrage (Bounding-Box 500\,m $\times$ 200\,m) betrÃ¤gt:
 
 \noindent
 wobei $s = 64\,\text{Byte}$ die komprimierte GeoJSON-Nutzlast pro Rasterpunkt darstellt.
-Durch rÃ¤umliche Datenbankindizes (z.\,B.\ GiST-Index in PostGIS) und server\-seitiges
-GeoJSON-Chunking wird der effektive Ãœbertragungsstrom auf typisch 1\textendash5\,MB/s begrenzt.
+Durch räumliche Datenbankindizes (z.\,B.\ GiST-Index in PostGIS) und server\-seitiges
+GeoJSON-Chunking wird der effektive Übertragungsstrom auf typisch 1\textendash5\,MB/s begrenzt.
 
 %=============================================================
-\section{QualitÃ¤tssicherung und Kalibrierung}
+\section{Qualitätssicherung und Kalibrierung}
 %=============================================================
 
-\subsection{Datenverarbeitungs-Pipeline und QualitÃ¤tssicherung}
+\subsection{Datenverarbeitungs-Pipeline und Qualitätssicherung}
 
-Die ÃœberfÃ¼hrung der Rohdaten in das ideale Raster erfolgt in einer definierten
+Die Überführung der Rohdaten in das ideale Raster erfolgt in einer definierten
 Verarbeitungs-Pipeline:
 
 \begin{enumerate}
   \item \textbf{Georeferenzierung:} Alle Messpunkte werden auf Basis der Positions-
         und Lagedaten (GNSS/IMU) der Drohne bzw.\ der Satelliten-Orbitdaten in das
-        geodÃ¤tische Referenzsystem (ETRS89\/WGS84) transformiert.
-  \item \textbf{Kalibrierung und Schallgeschwindigkeitskorrektur:} FÃ¼r Echolot- und
+        geodätische Referenzsystem (ETRS89\/WGS84) transformiert.
+  \item \textbf{Kalibrierung und Schallgeschwindigkeitskorrektur:} Für Echolot- und
         LiDAR-Daten werden Wassertemperatur und -dichte einbezogen; bei SDB-Daten
         erfolgt eine radiometrische Kalibrierung gegen Referenzpegel.
-  \item \textbf{Rasterisierung auf ideales Gitter:} Die unregelmÃ¤ÃŸig verteilten
+  \item \textbf{Rasterisierung auf ideales Gitter:} Die unregelmäßig verteilten
         Rohdatenpunkte werden mittels Kriging- oder TIN-Interpolation auf das
-        regulÃ¤re 20\,cm $\times$ 20\,cm Raster Ã¼berfÃ¼hrt und in der Datenbank gespeichert.
+        reguläre 20\,cm $\times$ 20\,cm Raster überführt und in der Datenbank gespeichert.
 \end{enumerate}
 
-\subsection{Fehlerbehandlung und DatengÃ¼te}
+\subsection{Fehlerbehandlung und Datengüte}
 
-Jeder Messwert wird mit einem QualitÃ¤tsindikator (QI) nach \cite{iho2020} klassifiziert:
+Jeder Messwert wird mit einem Qualitätsindikator (QI) nach \cite{iho2020} klassifiziert:
 
 \begin{table}[H]
 \centering
-\caption{QualitÃ¤tsindikatoren der Messwerte}
+\caption{Qualitätsindikatoren der Messwerte}
 \label{tab:qualitaet}
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{@{}cll@{}}
@@ -674,7 +674,7 @@ A & Exzellent & Abweichung $<$ 1\,cm \\
 B & Gut & Abweichung 1â€“5\,cm \\
 C & Akzeptabel & Abweichung 5â€“15\,cm \\
 D & Zweifelhaft & Abweichung $>$ 15\,cm \\
-X & UngÃ¼ltig & Sensorfehler \\
+X & Ungültig & Sensorfehler \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -685,34 +685,34 @@ X & UngÃ¼ltig & Sensorfehler \\
 
 \subsection{Maritime Navigation}
 
-Das primÃ¤re Anwendungsgebiet ist die UnterstÃ¼tzung von Schiffs- und BootsfÃ¼hrern beim
-Einlaufen in flache HÃ¤fen, beim Passieren von SandbÃ¤nken und beim AnkermanÃ¶ver in
-Wattengebieten. Navigations-Apps integrieren die API-Daten und stellen dem KapitÃ¤n
-ein aktuelles Tiefenprofil der geplanten Route dar. Das System ermÃ¶glicht darÃ¼ber hinaus:
+Das primäre Anwendungsgebiet ist die Unterstützung von Schiffs- und Bootsführern beim
+Einlaufen in flache Häfen, beim Passieren von Sandbänken und beim Ankermanöver in
+Wattengebieten. Navigations-Apps integrieren die API-Daten und stellen dem Kapitän
+ein aktuelles Tiefenprofil der geplanten Route dar. Das System ermöglicht darüber hinaus:
 
 \begin{itemize}
   \item automatische Warnungen bei kritischen Unterwassererhebungen,
   \item Optimierung der Fahrtroute hinsichtlich maximalen Tiefgangs,
-  \item UnterstÃ¼tzung autonomer Wasserfahrzeuge (USV) bei der Kollisionsvermeidung.
+  \item Unterstützung autonomer Wasserfahrzeuge (USV) bei der Kollisionsvermeidung.
 \end{itemize}
 
-\subsection{KÃ¼stenmanagement und Umweltmonitoring}
+\subsection{Küstenmanagement und Umweltmonitoring}
 
-Ãœber die Navigation hinaus liefern die hochfrequenten Tiefenprofile wertvolle Daten fÃ¼r
-die Geomorphologie von KÃ¼stenabschnitten, die FrÃ¼herkennung von Sandwanderungen
-sowie die Planung von BaggermaÃŸnahmen.
+Über die Navigation hinaus liefern die hochfrequenten Tiefenprofile wertvolle Daten für
+die Geomorphologie von Küstenabschnitten, die Früherkennung von Sandwanderungen
+sowie die Planung von Baggermaßnahmen.
 
-\subsection{Such- und RettungseinsÃ¤tze}
+\subsection{Such- und Rettungseinsätze}
 
-Bei SeenotfÃ¤llen ermÃ¶glicht das System RettungskrÃ¤ften, geeignete Anfahrtswege fÃ¼r
-Schlauchboote oder Hubschrauber Ã¼ber seichten GewÃ¤ssern in Echtzeit zu identifizieren.
+Bei Seenotfällen ermöglicht das System Rettungskräften, geeignete Anfahrtswege für
+Schlauchboote oder Hubschrauber über seichten Gewässern in Echtzeit zu identifizieren.
 
 %=============================================================
 \section{Prototypische Implementierung und Ergebnisse}
 %=============================================================
 
-Ein Pilotprojekt wurde an einem 200\,m breiten KÃ¼stenabschnitt mit einer LÃ¤nge von
-150\,m Ã¼ber einen Zeitraum von 12 Wochen durchgefÃ¼hrt. Die wichtigsten Ergebnisse
+Ein Pilotprojekt wurde an einem 200\,m breiten Küstenabschnitt mit einer Länge von
+150\,m über einen Zeitraum von 12 Wochen durchgeführt. Die wichtigsten Ergebnisse
 fasst Tabelle~\ref{tab:ergebnisse} zusammen.
 
 \begin{table}[H]
@@ -724,10 +724,10 @@ fasst Tabelle~\ref{tab:ergebnisse} zusammen.
 \toprule
 \textbf{Parameter} & \textbf{Zielwert} & \textbf{Erreichter Wert} \\
 \midrule
-RÃ¤umliche AuflÃ¶sung & 20\,cm & 20\,cm \\
+Räumliche Auflösung & 20\,cm & 20\,cm \\
 Tiefengenauigkeit (RMS) & $\pm 1\,\text{cm}$ & $\pm 0{,}7\,\text{cm}$ \\
 API-Latenz (95. Percentil) & $<$ 500\,ms & 310\,ms \\
-SystemverfÃ¼gbarkeit (API) & $>$ 99\,\% & 99{,}4\,\% \\
+Systemverfügbarkeit (API) & $>$ 99\,\% & 99{,}4\,\% \\
 Datenbankaktualisierungszeit & $<$ 4\,h & 2{,}7\,h \\
 Datendurchsatz (komprimiert) & $<$ 10\,MB/s & 4{,}2\,MB/s \\
 \bottomrule
@@ -735,39 +735,39 @@ Datendurchsatz (komprimiert) & $<$ 10\,MB/s & 4{,}2\,MB/s \\
 \end{table}
 
 \noindent
-Die Ergebnisse belegen, dass alle definierten Zielwerte erreicht oder Ã¼bertroffen wurden.
-Insbesondere die Tiefengenauigkeit von $\pm 0{,}7\,\text{cm}$ Ã¼bertrifft selbst die
+Die Ergebnisse belegen, dass alle definierten Zielwerte erreicht oder übertroffen wurden.
+Insbesondere die Tiefengenauigkeit von $\pm 0{,}7\,\text{cm}$ übertrifft selbst die
 Anforderungen der IHO-Order-1a-Norm \cite{iho2020}.
 
 %=============================================================
 \section{Diskussion}
 %=============================================================
 
-\subsection{StÃ¤rken des Systems}
+\subsection{Stärken des Systems}
 
-Das vorgestellte System verbindet drei wesentliche Vorteile: hohe rÃ¤umliche AuflÃ¶sung
+Das vorgestellte System verbindet drei wesentliche Vorteile: hohe räumliche Auflösung
 durch das ideale 20\,cm-Raster, flexible und skalierbare Datenerfassung per Drohne oder
-Satellit ohne permanente Sensorinfrastruktur sowie eine sofortige Echtzeit-VerfÃ¼gbarkeit
-der Navigationsdaten Ã¼ber die REST-API. GegenÃ¼ber klassischen Befahrungsverfahren
-entfÃ¤llt der Aufwand fÃ¼r eine fest installierte Sensor\-infrastruktur; die Datenbankarchitektur
-ermÃ¶glicht eine beliebig hÃ¤ufige Wiederaufnahme und einen unmittelbaren Austausch
-veralteter DatenbestÃ¤nde.
+Satellit ohne permanente Sensorinfrastruktur sowie eine sofortige Echtzeit-Verfügbarkeit
+der Navigationsdaten über die REST-API. Gegenüber klassischen Befahrungsverfahren
+entfällt der Aufwand für eine fest installierte Sensor\-infrastruktur; die Datenbankarchitektur
+ermöglicht eine beliebig häufige Wiederaufnahme und einen unmittelbaren Austausch
+veralteter Datenbestände.
 
 \subsection{Limitierungen und Herausforderungen}
 
-Da die Messdaten einmalig aufgenommen werden, spiegeln sie den Zustand des GewÃ¤ssers
+Da die Messdaten einmalig aufgenommen werden, spiegeln sie den Zustand des Gewässers
 zum Aufnahmezeitpunkt wider. In Bereichen mit hohem Sedimenttransport oder nach
-Sturmereignissen kÃ¶nnen signifikante TiefenverÃ¤nderungen eintreten, die eine erneute
+Sturmereignissen können signifikante Tiefenveränderungen eintreten, die eine erneute
 Aufnahme und Datenbankaktualisierung erfordern. Die API liefert in diesem Fall nicht
-die aktuelle MessrealitÃ¤t, sondern den zuletzt gespeicherten Datensatz des idealen
+die aktuelle Messrealität, sondern den zuletzt gespeicherten Datensatz des idealen
 Rasters; eine klar kommunizierte Altersangabe (\texttt{survey\_date}) ist daher
-zwingend erforderlich. Satellitenbasierte Verfahren sind zusÃ¤tzlich auf ausreichende
-Wasserklarheit und gÃ¼nstige LichtverhÃ¤ltnisse angewiesen.
+zwingend erforderlich. Satellitenbasierte Verfahren sind zusätzlich auf ausreichende
+Wasserklarheit und günstige Lichtverhältnisse angewiesen.
 
 \subsection{Ausblick}
 
 Weiterentwicklungen umfassen die Integration von maschinellen Lernverfahren zur
-prÃ¤dikti\-ven Modellierung von TiefenverÃ¤nderungen sowie die Erweiterung der API um
+prädikti\-ven Modellierung von Tiefenveränderungen sowie die Erweiterung der API um
 Wetterkorrelation und Sedimentprognosen. Langfristig ist eine Standardisierung des
 Datenformats im Rahmen einer IHO-Norm angestrebt.
 
@@ -775,16 +775,16 @@ Datenformats im Rahmen einer IHO-Norm angestrebt.
 \section{Schlussfolgerung}
 %=============================================================
 
-Die vorgestellte LÃ¶sung zur hochauflÃ¶senden Tiefenvermessung adressiert eine bedeutende
-LÃ¼cke in der maritimen Sicherheitsinfrastruktur. Durch die einmalige GelÃ¤ndeaufnahme
+Die vorgestellte Lösung zur hochauflösenden Tiefenvermessung adressiert eine bedeutende
+Lücke in der maritimen Sicherheitsinfrastruktur. Durch die einmalige Geländeaufnahme
 mittels Drohnen oder Satelliten, die Speicherung der prozessierten Daten als ideales
-20\,cm-Raster in einer rÃ¤umlichen Datenbank und die Bereitstellung Ã¼ber eine REST-API
+20\,cm-Raster in einer räumlichen Datenbank und die Bereitstellung über eine REST-API
 mit einer Latenz unter 500\,ms entsteht eine flexible, skalierbare und kosteneffiziente
-LÃ¶sung. Die API stellt die Navigationsdaten in Echtzeit auf Grundlage des idealen Rasters
-bereit und ermÃ¶glicht Schiffen, Booten und autonomen Navigations\-systemen eine
-prÃ¤zise Routenplanung in Flachwasserzonen. Die Ergebnisse des Pilotprojekts belegen
-die technische Machbarkeit. Das System erÃ¶ffnet darÃ¼ber hinaus neue Perspektiven fÃ¼r
-KÃ¼stenmanagement, Umweltmonitoring und Such- und RettungseinsÃ¤tze.
+Lösung. Die API stellt die Navigationsdaten in Echtzeit auf Grundlage des idealen Rasters
+bereit und ermöglicht Schiffen, Booten und autonomen Navigations\-systemen eine
+präzise Routenplanung in Flachwasserzonen. Die Ergebnisse des Pilotprojekts belegen
+die technische Machbarkeit. Das System eröffnet darüber hinaus neue Perspektiven für
+Küstenmanagement, Umweltmonitoring und Such- und Rettungseinsätze.
 
 %=============================================================
 % Literaturverzeichnis
@@ -899,7 +899,7 @@ A. Collin, B. Long und P. Archambault,
 topobathymetry,''
 \textit{Geomorphology}, vol.~310, pp.~66--74, 2018.
 
-% --- RÃ¤umliche Datenbanken und Geodateninfrastruktur ---
+% --- Räumliche Datenbanken und Geodateninfrastruktur ---
 \bibitem{argo2021}
 M. Argo, T. Schneider und B. Hauschildt,
 ``Stationary underwater sensor networks for continuous hydrographic monitoring,''
@@ -921,7 +921,7 @@ Open Geospatial Consortium (OGC),
 \textit{OGC Web Feature Service 2.0 Interface Standard},
 OGC Document 09-025r2, 2014.
 
-% --- Datenkompression und Ãœbertragung ---
+% --- Datenkompression und Übertragung ---
 \bibitem{sayood2017}
 K. Sayood,
 \textit{Introduction to Data Compression}, 5th ed.,

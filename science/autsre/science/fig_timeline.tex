@@ -1,5 +1,5 @@
 ﻿%% fig_timeline.tex
-%% Zeitlicher Ablauf des gestaffelten Update-Szenarios (Gantt-Ã¤hnlich)
+%% Zeitlicher Ablauf des gestaffelten Update-Szenarios (Gantt-ähnlich)
 \begin{tikzpicture}[
   x=0.22cm, y=1.0cm,
   barTuer/.style={fill=autosarorange!70, draw=autosarorange!90, rounded corners=1pt},
@@ -21,7 +21,7 @@
 %% Y-Achsenbeschriftungen
 \node[font=\small\bfseries] at (-6, 0)   {ZSG (Download)};
 \node[font=\small\bfseries] at (-6, -1)  {ZSG (Staging)};
-\node[font=\small\bfseries] at (-6, -2)  {\textcolor{autosarorange}{TÃ¼r-SG}};
+\node[font=\small\bfseries] at (-6, -2)  {\textcolor{autosarorange}{Tür-SG}};
 \node[font=\small\bfseries] at (-6, -3)  {\textcolor{autosargreen}{Radar-SG}};
 \node[font=\small\bfseries] at (-6, -4)  {\textcolor{autosarblue}{Bremsen-SG}};
 
@@ -40,12 +40,12 @@
   node[midway, font=\tiny, text=autosargray!80!black]
     {Verifikation \& Staging};
 
-%% TÃ¼r-SG Update: Transfer 15-16 min, Installation 16-18 min
+%% Tür-SG Update: Transfer 15-16 min, Installation 16-18 min
 \fill[barTuer] (15, -2.35) rectangle (16, -1.65)
   node[midway, font=\tiny\bfseries, text=white] {Transf.};
 \fill[barTuer, fill opacity=0.6] (16, -2.35) rectangle (18, -1.65)
   node[midway, font=\tiny, text=white] {Installation};
-%% BestÃ¤tigungspfeil
+%% Bestätigungspfeil
 \draw[-{Stealth[length=4pt]}, autosarorange, thick]
   (18, -2.0) -- (18, -0.95)
   node[font=\tiny, right, autosarorange] {OK};
@@ -70,7 +70,7 @@
 
 %% Abschluss-Meldung 42-45
 \fill[barZSG, fill opacity=0.7] (42, -1.35) rectangle (45, -0.65)
-  node[midway, font=\tiny] {Backend-BestÃ¤tigung};
+  node[midway, font=\tiny] {Backend-Bestätigung};
 
 %% Phasenmarkierungen oben
 \draw[thick, autosargray!50] (0, 0.8) -- (45, 0.8);

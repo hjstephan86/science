@@ -54,13 +54,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\O}}1
-	{Ã„}{{\A}}1
-	{Ãœ}{{\U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\u}}1
-	{Ã¤}{{\a}}1
-	{Ã¶}{{\o}}1
+	{Ö}{{\O}}1
+	{Ä}{{\A}}1
+	{Ü}{{\U}}1
+	{ß}{{\ss}}1
+	{ü}{{\u}}1
+	{ä}{{\a}}1
+	{ö}{{\o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -71,7 +71,7 @@
 \title{\textbf{Unifizierte virale Dynamik}\\[0.5em]
 \large Mathematische Modellierung und vergleichende Analyse\\
 von HIV und Ebolavirus-Infektionen\\[0.5em]
-\normalsize Ein innovativer Rahmen fÃ¼r strukturelle und epidemiologische Parallelen}
+\normalsize Ein innovativer Rahmen für strukturelle und epidemiologische Parallelen}
 \author{Stephan Epp\\
 \small Universit\at Bielefeld -- Fakult\at f\ur Informatik\\
 \small \texttt{stephan.epp@uni-bielefeld.de}}
@@ -82,19 +82,19 @@ von HIV und Ebolavirus-Infektionen\\[0.5em]
 \maketitle
 
 \begin{abstract}
-Diese Arbeit prÃ¤sentiert einen bahnbrechenden, einheitlichen mathematischen Rahmen zur Beschreibung der Infektionsdynamik zwei fundamental unterschiedlicher Pathogene: des Humanen Immundefizienzvirus (HIV) und des Ebolaviruses (EBOV). Trotz ihrer biologischen Unterschiede -- HIV als chronisches Retrovirus mit langsamer Replikation und EBOV als akutes Filovirus mit schneller Ausbreitung -- zeigen beide Viren gemeinsame strukturelle und epidemiologische Muster, die durch ein unifiziertes System gewÃ¶hnlicher Differentialgleichungen erfasst werden kÃ¶nnen.
+Diese Arbeit präsentiert einen bahnbrechenden, einheitlichen mathematischen Rahmen zur Beschreibung der Infektionsdynamik zwei fundamental unterschiedlicher Pathogene: des Humanen Immundefizienzvirus (HIV) und des Ebolaviruses (EBOV). Trotz ihrer biologischen Unterschiede -- HIV als chronisches Retrovirus mit langsamer Replikation und EBOV als akutes Filovirus mit schneller Ausbreitung -- zeigen beide Viren gemeinsame strukturelle und epidemiologische Muster, die durch ein unifiziertes System gewöhnlicher Differentialgleichungen erfasst werden können.
 
-KernbeitrÃ¤ge dieser Arbeit:
+Kernbeiträge dieser Arbeit:
 \begin{enumerate}
 \item Formalisierung des \textbf{Generisierten Within-Host-Replikationsmodells} (GWRM), das beide Virustypen durch parametrisierte ODEs beschreibt
-\item Strenge mathematische Beweise fÃ¼r \textbf{fÃ¼nf neue SÃ¤tze} zur Konvergenz von Viruslasttrajektor ien, GleichgewichtsstabilitÃ¤t und Interventionswirksamkeit
+\item Strenge mathematische Beweise für \textbf{fünf neue Sätze} zur Konvergenz von Viruslasttrajektor ien, Gleichgewichtsstabilität und Interventionswirksamkeit
 \item Synthese der \textbf{erweiterten Basisreproduktionszahl} $\mathcal{R}_0^\text{unified}$ als Funktion von Within-Host- und Between-Host-Parametern
-\item DurchfÃ¼hrung numerischer Simulationen mit sechs detaillierten matplotlib-Visualisierungen
-\item Identifikation von \textbf{strukturellen Invarianten} in den Replikationsmechanismen trotz phÃ¤notypischer Unterschiede
-\item Abgeleitung neuer Vorhersagen fÃ¼r Dual-Therapeutika und Breitspektrum-ImpfstoffansÃ¤tze
+\item Durchführung numerischer Simulationen mit sechs detaillierten matplotlib-Visualisierungen
+\item Identifikation von \textbf{strukturellen Invarianten} in den Replikationsmechanismen trotz phänotypischer Unterschiede
+\item Abgeleitung neuer Vorhersagen für Dual-Therapeutika und Breitspektrum-Impfstoffansätze
 \end{enumerate}
 
-Diese Arbeit vereint Erkenntnisse aus HIV-Epidemiologie, Filovirenbiologie, mathematischer Systemtheorie und klinischer Infektologie und Ã¶ffnet neue Perspektiven fÃ¼r rationalisierte antivirale Entwicklung.
+Diese Arbeit vereint Erkenntnisse aus HIV-Epidemiologie, Filovirenbiologie, mathematischer Systemtheorie und klinischer Infektologie und öffnet neue Perspektiven für rationalisierte antivirale Entwicklung.
 \end{abstract}
 
 \newpage
@@ -102,43 +102,43 @@ Diese Arbeit vereint Erkenntnisse aus HIV-Epidemiologie, Filovirenbiologie, math
 \newpage
 
 % =============================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % =============================================================================
 
 \subsection{Motivation und Problemstellung}
 
-Die HIV-Pandemie und die wiederkehrenden Ebolavirus-AusbrÃ¼che stellen zwei der gravierendsten Herausforderungen fÃ¼r die globale Gesundheit dar \cite{bekker2023hiv, johnson2023ebola}. WÃ¤hrend HIV mit Ã¼ber 40 Millionen TodesfÃ¤llen seit 1983 bekannt ist, verursacht EBOV mit Fallsterblichkeitsraten bis zu 90\% katastrophale Verluste in lokalen BevÃ¶lkerungen \cite{who2016report}.
+Die HIV-Pandemie und die wiederkehrenden Ebolavirus-Ausbrüche stellen zwei der gravierendsten Herausforderungen für die globale Gesundheit dar \cite{bekker2023hiv, johnson2023ebola}. Während HIV mit über 40 Millionen Todesfällen seit 1983 bekannt ist, verursacht EBOV mit Fallsterblichkeitsraten bis zu 90\% katastrophale Verluste in lokalen Bevölkerungen \cite{who2016report}.
 
-OberflÃ¤chlich betrachtet sind diese Viren fundamental verschieden:
+Oberflächlich betrachtet sind diese Viren fundamental verschieden:
 \begin{itemize}
-\item HIV ist ein Retrovirus mit DNA-Integrase; EBOV ist ein negativ-sense RNA-Virus mit RNA-abhÃ¤ngiger RNA-Polymerase (RdRp)
+\item HIV ist ein Retrovirus mit DNA-Integrase; EBOV ist ein negativ-sense RNA-Virus mit RNA-abhängiger RNA-Polymerase (RdRp)
 \item HIV infiziert CD4$^+$ T-Zellen chronisch; EBOV infiziert Makrophagen und Hepatozyten akut
 \item HIV hat eine $\mathcal{R}_0 \approx 2$; EBOV hat $\mathcal{R}_0 \approx 2,2$ 
 \item HIV-Inkubation: Wochen bis Jahre; EBOV-Inkubation: 2--21 Tage
 \end{itemize}
 
-\textbf{Zentrale These dieser Arbeit:} Trotz dieser Unterschiede folgen beide Viren gemeinsamen mathematischen Prinzipien fÃ¼r intrazellulÃ¤re Replikation, WirtszellzerstÃ¶rung und Populationsausbreitung. Durch ein generalisiertes, parametrisches Rahmenwerk kÃ¶nnen wir:
+\textbf{Zentrale These dieser Arbeit:} Trotz dieser Unterschiede folgen beide Viren gemeinsamen mathematischen Prinzipien für intrazelluläre Replikation, Wirtszellzerstörung und Populationsausbreitung. Durch ein generalisiertes, parametrisches Rahmenwerk können wir:
 
 \begin{enumerate}
-\item Strukturelle und dynamische Ã„hnlichkeiten aufdecken
+\item Strukturelle und dynamische Ähnlichkeiten aufdecken
 \item Transferable Erkenntnisse von einem Virus auf den anderen ableiten
-\item Neue therapeutische AnsÃ¤tze entwickeln, die auf beiden Viren wirken kÃ¶nnten
-\item Die Grundlagen fÃ¼r zukÃ¼nftige Pandemie-Vorbereitung schaffen
+\item Neue therapeutische Ansätze entwickeln, die auf beiden Viren wirken könnten
+\item Die Grundlagen für zukünftige Pandemie-Vorbereitung schaffen
 \end{enumerate}
 
-\subsection{Ãœbersicht der Arbeit}
+\subsection{Übersicht der Arbeit}
 
 Die Arbeit gliedert sich wie folgt:
 
-\textbf{Abschnitt 2} -- Mathematische Grundlagen: Wir etablieren die theoretischen Fundamente fÃ¼r Kompartimentmodelle, StabilitÃ¤t dynamischer Systeme und die Next-Generation-Matrix-Methode.
+\textbf{Abschnitt 2} -- Mathematische Grundlagen: Wir etablieren die theoretischen Fundamente für Kompartimentmodelle, Stabilität dynamischer Systeme und die Next-Generation-Matrix-Methode.
 
-\textbf{Abschnitt 3} -- Within-Host-Modelle: Formalisierung der intrazellulÃ¤ren Virusreplikation fÃ¼r HIV (Target-Cell-Limited-Modell) und Ebola (Tissue-Damage-Modell).
+\textbf{Abschnitt 3} -- Within-Host-Modelle: Formalisierung der intrazellulären Virusreplikation für HIV (Target-Cell-Limited-Modell) und Ebola (Tissue-Damage-Modell).
 
-\textbf{Abschnitt 4} -- Epidemiologische Modelle: SEIR-Formulierung und Berechnung von $\mathcal{R}_0$ fÃ¼r beide Pathogene.
+\textbf{Abschnitt 4} -- Epidemiologische Modelle: SEIR-Formulierung und Berechnung von $\mathcal{R}_0$ für beide Pathogene.
 
-\textbf{Abschnitt 5} -- Das unifizierte Rahmenwerk: PrÃ¤sentation des neuen GWRM und fÃ¼nf SÃ¤tze mit vollstÃ¤ndigen Beweisen.
+\textbf{Abschnitt 5} -- Das unifizierte Rahmenwerk: Präsentation des neuen GWRM und fünf Sätze mit vollständigen Beweisen.
 
-\textbf{Abschnitt 6} -- Numerische Simulationen und Visualisierungen: Sechs matplotlib-Plots mit ausfÃ¼hrlicher Interpretation.
+\textbf{Abschnitt 6} -- Numerische Simulationen und Visualisierungen: Sechs matplotlib-Plots mit ausführlicher Interpretation.
 
 \textbf{Abschnitt 7} -- Therapeutische Implikationen und klinische Anwendungen.
 
@@ -151,7 +151,7 @@ Die Arbeit gliedert sich wie folgt:
 \subsection{Kompartimentmodelle und Systeme von ODEs}
 
 \begin{definition}[Homogen gemischte Population]
-Eine Population von GrÃ¶ÃŸe $N \in \mathbb{N}$ heiÃŸt \emph{homogen gemischt}, wenn die Kontaktrate zwischen zwei beliebigen Individuen gleich ist. FÃ¼r infektiÃ¶se Krankheiten ist die Kraft der Infektion $\lambda(t)$ proportional zum Produkt $S(t) \cdot I(t)/N(t)$.
+Eine Population von Größe $N \in \mathbb{N}$ heißt \emph{homogen gemischt}, wenn die Kontaktrate zwischen zwei beliebigen Individuen gleich ist. Für infektiöse Krankheiten ist die Kraft der Infektion $\lambda(t)$ proportional zum Produkt $S(t) \cdot I(t)/N(t)$.
 \end{definition}
 
 \begin{definition}[Kompartimentmodell]
@@ -159,59 +159,59 @@ Ein Kompartimentmodell ist ein System von ODEs der Form
 \[
 \frac{d\mathbf{x}}{dt} = \mathbf{f}(t, \mathbf{x}),
 \]
-wobei $\mathbf{x} = (x_1, \ldots, x_k) \in \mathbb{R}_{\geq 0}^k$ die PopulationsgrÃ¶ÃŸen verschiedener Kompartimente darstellt. Die GesamtbevÃ¶lkerung $N = \sum_{i=1}^k x_i$ ist typischerweise konstant.
+wobei $\mathbf{x} = (x_1, \ldots, x_k) \in \mathbb{R}_{\geq 0}^k$ die Populationsgrößen verschiedener Kompartimente darstellt. Die Gesamtbevölkerung $N = \sum_{i=1}^k x_i$ ist typischerweise konstant.
 \end{definition}
 
-\begin{satz}[Existenz und Eindeutigkeit -- Picard-LindelÃ¶f]
-Sei $\mathbf{f}: [t_0, T] \times D \to \mathbb{R}^k$ eine Funktion, die Lipschitz-stetig in $\mathbf{x}$ ist. Dann existiert fÃ¼r jeden Anfangswert $\mathbf{x}_0 \in D$ eine eindeutige LÃ¶sung $\mathbf{x}(t)$ der ODE $\dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x})$ auf $[t_0, t_0 + \varepsilon]$ fÃ¼r ein $\varepsilon > 0$.
+\begin{satz}[Existenz und Eindeutigkeit -- Picard-Lindelöf]
+Sei $\mathbf{f}: [t_0, T] \times D \to \mathbb{R}^k$ eine Funktion, die Lipschitz-stetig in $\mathbf{x}$ ist. Dann existiert für jeden Anfangswert $\mathbf{x}_0 \in D$ eine eindeutige Lösung $\mathbf{x}(t)$ der ODE $\dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x})$ auf $[t_0, t_0 + \varepsilon]$ für ein $\varepsilon > 0$.
 \end{satz}
 
 \begin{proof}
-Dies ist ein klassisches Ergebnis der Theorie dynamischer Systeme. Siehe \cite{coddington1955theory} fÃ¼r den detaillierten Beweis basierend auf dem Banach-Fixpunktsatz.
+Dies ist ein klassisches Ergebnis der Theorie dynamischer Systeme. Siehe \cite{coddington1955theory} für den detaillierten Beweis basierend auf dem Banach-Fixpunktsatz.
 \end{proof}
 
-\subsection{StabilitÃ¤tstheorie und Gleichgewichte}
+\subsection{Stabilitätstheorie und Gleichgewichte}
 
 \begin{definition}[Gleichgewichtspunkt]
-Ein Punkt $\mathbf{x}^* \in \mathbb{R}^k$ heiÃŸt Gleichgewichtspunkt (oder stationÃ¤rer Punkt) des Systems $\dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x})$, falls $\mathbf{f}(t, \mathbf{x}^*) = \mathbf{0}$ fÃ¼r alle $t$.
+Ein Punkt $\mathbf{x}^* \in \mathbb{R}^k$ heißt Gleichgewichtspunkt (oder stationärer Punkt) des Systems $\dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x})$, falls $\mathbf{f}(t, \mathbf{x}^*) = \mathbf{0}$ für alle $t$.
 \end{definition}
 
-\begin{definition}[Asymptotische StabilitÃ¤t]
-Ein Gleichgewichtspunkt $\mathbf{x}^*$ heiÃŸt asymptotisch stabil, wenn:
+\begin{definition}[Asymptotische Stabilität]
+Ein Gleichgewichtspunkt $\mathbf{x}^*$ heißt asymptotisch stabil, wenn:
 \begin{enumerate}
-\item (StabilitÃ¤t) FÃ¼r alle $\varepsilon > 0$ existiert $\delta > 0$, so dass $\|\mathbf{x}_0 - \mathbf{x}^*\| < \delta$ impliziert $\|\mathbf{x}(t) - \mathbf{x}^*\| < \varepsilon$ fÃ¼r alle $t \geq t_0$.
-\item (AttraktivitÃ¤t) Es existiert $r > 0$, so dass $\lim_{t \to \infty} \mathbf{x}(t) = \mathbf{x}^*$ fÃ¼r alle $\mathbf{x}_0$ mit $\|\mathbf{x}_0 - \mathbf{x}^*\| < r$.
+\item (Stabilität) Für alle $\varepsilon > 0$ existiert $\delta > 0$, so dass $\|\mathbf{x}_0 - \mathbf{x}^*\| < \delta$ impliziert $\|\mathbf{x}(t) - \mathbf{x}^*\| < \varepsilon$ für alle $t \geq t_0$.
+\item (Attraktivität) Es existiert $r > 0$, so dass $\lim_{t \to \infty} \mathbf{x}(t) = \mathbf{x}^*$ für alle $\mathbf{x}_0$ mit $\|\mathbf{x}_0 - \mathbf{x}^*\| < r$.
 \end{enumerate}
 \end{definition}
 
-\begin{satz}[Linearisiertes StabilitÃ¤tskriterium]
+\begin{satz}[Linearisiertes Stabilitätskriterium]
 Sei $\mathbf{x}^*$ ein Gleichgewichtspunkt von $\dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x})$. Sei $J(\mathbf{x}^*) = \left(\frac{\partial f_i}{\partial x_j}\right)$ die Jacobi-Matrix bei $\mathbf{x}^*$. Wenn alle Eigenwerte von $J(\mathbf{x}^*)$ negative Realteile haben, dann ist $\mathbf{x}^*$ asymptotisch stabil.
 \end{satz}
 
 \begin{proof}
-Durch Taylor-Expansion um $\mathbf{x}^*$ erhÃ¤lt man
+Durch Taylor-Expansion um $\mathbf{x}^*$ erhält man
 \[
 \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}^*) + J(\mathbf{x}^*)(\mathbf{x} - \mathbf{x}^*) + O(\|\mathbf{x} - \mathbf{x}^*\|^2).
 \]
-Da $\mathbf{f}(\mathbf{x}^*) = \mathbf{0}$, ist das linearisierte System $\dot{\delta\mathbf{x}} = J(\mathbf{x}^*) \delta\mathbf{x}$ lokal dominant. StabilitÃ¤t der Linearisierung impliziert StabilitÃ¤t des nichtlinearen Systems.
+Da $\mathbf{f}(\mathbf{x}^*) = \mathbf{0}$, ist das linearisierte System $\dot{\delta\mathbf{x}} = J(\mathbf{x}^*) \delta\mathbf{x}$ lokal dominant. Stabilität der Linearisierung impliziert Stabilität des nichtlinearen Systems.
 \end{proof}
 
 \subsection{Basisreproduktionszahl mittels Next-Generation-Matrix}
 
 \begin{definition}[Next-Generation-Matrix]
-FÃ¼r ein epidemiologisches Modell mit $n$ Kompartimenten sei $F$ die Matrix der Raten neuer Infektionen und $V$ die Matrix der Ãœbergangsraten (Genesungen, TodesfÃ¤lle, etc.). Die Next-Generation-Matrix ist $K = FV^{-1}$.
+Für ein epidemiologisches Modell mit $n$ Kompartimenten sei $F$ die Matrix der Raten neuer Infektionen und $V$ die Matrix der Übergangsraten (Genesungen, Todesfälle, etc.). Die Next-Generation-Matrix ist $K = FV^{-1}$.
 \end{definition}
 
 \begin{satz}[Berechnung von $\mathcal{R}_0$]
-Die Basisreproduktionszahl $\mathcal{R}_0$ ist der grÃ¶ÃŸte Eigenwert der Next-Generation-Matrix $K = FV^{-1}$ ausgewertet am krankheitsfreien Gleichgewicht.
+Die Basisreproduktionszahl $\mathcal{R}_0$ ist der größte Eigenwert der Next-Generation-Matrix $K = FV^{-1}$ ausgewertet am krankheitsfreien Gleichgewicht.
 \end{satz}
 
 \begin{proof}
-Die Herleitung folgt aus der Van den Driessche-Watmough-Methode \cite{diekmann2010understanding}. Die Eigenwertinterpretation ergibt sich aus der asymptotischen Anzahl infizierter Nachkommen pro Individuum Ã¼ber eine Generation.
+Die Herleitung folgt aus der Van den Driessche-Watmough-Methode \cite{diekmann2010understanding}. Die Eigenwertinterpretation ergibt sich aus der asymptotischen Anzahl infizierter Nachkommen pro Individuum über eine Generation.
 \end{proof}
 
 % =============================================================================
-\section{Within-Host-Modelle fÃ¼r HIV und Ebola}
+\section{Within-Host-Modelle für HIV und Ebola}
 % =============================================================================
 
 \subsection{HIV-Dynamik: Target-Cell-Limited-Modell}
@@ -236,10 +236,10 @@ Die Dynamik wird durch folgende ODEs beschrieben:
 wobei:
 \begin{itemize}
 \item $\lambda$ = Quellrate nicht-infizierter T-Zellen [Zellen/Tag]
-\item $d_T$ = MortalitÃ¤tsrate nicht-infizierter Zellen [1/Tag]
-\item $k$ = Infektionsrate [Virionen$^{-1}$ Â· Tag$^{-1}$]
-\item $\delta_I$ = MortalitÃ¤tsrate infizierter Zellen $\approx 1/2$ [1/Tag]
-\item $p$ = Virusproduktionsrate [Virionen/(ZelleÂ·Tag)]
+\item $d_T$ = Mortalitätsrate nicht-infizierter Zellen [1/Tag]
+\item $k$ = Infektionsrate [Virionen$^{-1}$  · Tag$^{-1}$]
+\item $\delta_I$ = Mortalitätsrate infizierter Zellen $\approx 1/2$ [1/Tag]
+\item $p$ = Virusproduktionsrate [Virionen/(Zelle ·Tag)]
 \item $c$ = Virusclearance-Rate $\approx 1/3$ [1/Tag]
 \end{itemize}
 \end{definition}
@@ -262,7 +262,7 @@ Am Gleichgewicht gilt $\dot{T} = \dot{I} = \dot{V} = 0$. Aus Gl. \eqref{eq:hiv_v
 \[
 T_e^* = \frac{\delta_I I_e^*}{k V_e^*} = \frac{\delta_I c}{k p}.
 \]
-Die Substitution in Gl. \eqref{eq:hiv_t} fÃ¼hrt zu einer kubischen Gleichung in $V_e^*$, die zwei positive LÃ¶sungen haben kann: eine trivial bei $V_e^* = 0$ (krankheitsfrei) und mÃ¶glicherweise eine bei $V_e^* > 0$ (endemisch).
+Die Substitution in Gl. \eqref{eq:hiv_t} führt zu einer kubischen Gleichung in $V_e^*$, die zwei positive Lösungen haben kann: eine trivial bei $V_e^* = 0$ (krankheitsfrei) und möglicherweise eine bei $V_e^* > 0$ (endemisch).
 
 Das endemische Gleichgewicht existiert dann und nur dann, wenn
 \[
@@ -270,15 +270,15 @@ Das endemische Gleichgewicht existiert dann und nur dann, wenn
 \]
 \end{proof}
 
-\subsection{Ebola-Dynamik: GewebeschÃ¤digungs- und Viruskinetik-Modell}
+\subsection{Ebola-Dynamik: Gewebeschädigungs- und Viruskinetik-Modell}
 
-Das Ebolavirus unterscheidet sich fundamental durch sein akutes Verlaufsschema und seine multizellulÃ¤re Pathogenese. Wir formulieren ein erweitertes Modell:
+Das Ebolavirus unterscheidet sich fundamental durch sein akutes Verlaufsschema und seine multizelluläre Pathogenese. Wir formulieren ein erweitertes Modell:
 
 \begin{definition}[Ebola Tissue-Damage-Modell]
-Das System enthÃ¤lt fÃ¼nf Kompartimente:
+Das System enthält fünf Kompartimente:
 \begin{itemize}
-\item $H(t)$: Hepatozyten (primÃ¤r infiziert)
-\item $M(t)$: Makrophagen und Monozyten (sekundÃ¤r infiziert, disseminieren Virus)
+\item $H(t)$: Hepatozyten (primär infiziert)
+\item $M(t)$: Makrophagen und Monozyten (sekundär infiziert, disseminieren Virus)
 \item $V_{\text{free}}(t)$: Freie Virionen im Plasma
 \item $D(t)$: Tissue-Damage-Akkumulation
 \item $I_{\text{immune}}(t)$: Effective immune response
@@ -297,11 +297,11 @@ wobei alle Parameter $\alpha_H, \beta_H, \ldots, \sigma > 0$ sind und biologisch
 \end{definition}
 
 \begin{satz}[Ebola-Asymptotik]
-FÃ¼r das Ebola-Modell gilt:
+Für das Ebola-Modell gilt:
 \begin{enumerate}
 \item Wenn $\mathcal{R}_0^{\text{Ebola}} < 1$, dann konvergiert jede Trajektorie gegen das krankheitsfreie Gleichgewicht mit Exponentialrate $> -\log(\mathcal{R}_0^{\text{Ebola}})$.
-\item Wenn $\mathcal{R}_0^{\text{Ebola}} > 1$, dann gibt es ein endemisches Gleichgewicht (mÃ¶glicherweise nicht eindeutig).
-\item Die Tissue-Damage-Variable $D(t)$ ist monoton steigend, wenn Virus prÃ¤sent ist, und quantifiziert die kumulative Pathogenese.
+\item Wenn $\mathcal{R}_0^{\text{Ebola}} > 1$, dann gibt es ein endemisches Gleichgewicht (möglicherweise nicht eindeutig).
+\item Die Tissue-Damage-Variable $D(t)$ ist monoton steigend, wenn Virus präsent ist, und quantifiziert die kumulative Pathogenese.
 \end{enumerate}
 \end{satz}
 
@@ -310,7 +310,7 @@ FÃ¼r das Ebola-Modell gilt:
 \[
 \mathcal{L}(t) = a_1 H(t) + a_2 M(t) + a_3 V_{\text{free}}(t) + a_4 D(t) + a_5 I_{\text{immune}}(t)
 \]
-fÃ¼r sorgfÃ¤ltig gewÃ¤hlte Gewichte $a_i > 0$. Man zeigt, dass $\dot{\mathcal{L}} \leq -\lambda_0 \mathcal{L}$ fÃ¼r ein $\lambda_0 > 0$ gilt, wenn $\mathcal{R}_0 < 1$. Dies impliziert exponentielle Konvergenz gegen $(0, 0, 0, D_\infty, 0)$, wobei $D_\infty$ begrenzt ist.
+für sorgfältig gewählte Gewichte $a_i > 0$. Man zeigt, dass $\dot{\mathcal{L}} \leq -\lambda_0 \mathcal{L}$ für ein $\lambda_0 > 0$ gilt, wenn $\mathcal{R}_0 < 1$. Dies impliziert exponentielle Konvergenz gegen $(0, 0, 0, D_\infty, 0)$, wobei $D_\infty$ begrenzt ist.
 \end{proof}
 
 % =============================================================================
@@ -319,14 +319,14 @@ fÃ¼r sorgfÃ¤ltig gewÃ¤hlte Gewichte $a_i > 0$. Man zeigt, dass $\dot{\math
 
 \subsection{Das SEIR-Kompartimentmodell}
 
-Das Standard-SEIR-Modell (Susceptible -- Exposed -- Infectious -- Removed) wird fÃ¼r BevÃ¶lkerungsebene angewendet:
+Das Standard-SEIR-Modell (Susceptible -- Exposed -- Infectious -- Removed) wird für Bevölkerungsebene angewendet:
 
 \begin{definition}[SEIR-Modell]
-Die BevÃ¶lkerung von GrÃ¶ÃŸe $N$ ist in vier Kompartimente eingeteilt:
+Die Bevölkerung von Größe $N$ ist in vier Kompartimente eingeteilt:
 \begin{itemize}
-\item $S(t)$: Suszeptible (infektionsempfÃ¤nglich)
-\item $E(t)$: Exponierte (infiziert, aber nicht infektiÃ¶s)
-\item $I(t)$: InfektiÃ¶s
+\item $S(t)$: Suszeptible (infektionsempfänglich)
+\item $E(t)$: Exponierte (infiziert, aber nicht infektiös)
+\item $I(t)$: Infektiös
 \item $R(t)$: Recovered/Removed (genesen oder verstorben)
 \end{itemize}
 
@@ -340,9 +340,9 @@ Das System ist gegeben durch:
 
 mit den biologischen Parametern:
 \begin{itemize}
-\item $\beta$ = Transmissionsrate [Kontakte/(PersonÂ·Tag)]
-\item $\sigma$ = Rate des Ãœbergangs E $\to$ I [1/Tag] = $1/T_E$ (Inkubationsdauer)
-\item $\gamma$ = Genesungsrate [1/Tag] = $1/T_I$ (infektiÃ¶se Dauer)
+\item $\beta$ = Transmissionsrate [Kontakte/(Person ·Tag)]
+\item $\sigma$ = Rate des Übergangs E $\to$ I [1/Tag] = $1/T_E$ (Inkubationsdauer)
+\item $\gamma$ = Genesungsrate [1/Tag] = $1/T_I$ (infektiöse Dauer)
 \end{itemize}
 \end{definition}
 
@@ -354,26 +354,26 @@ Die Basisreproduktionszahl des SEIR-Modells ist
 \mathcal{R}_0 = \frac{\beta}{\gamma}.
 \]
 
-Dies kann alternativ Ã¼ber die Next-Generation-Matrix abgeleitet werden:
+Dies kann alternativ über die Next-Generation-Matrix abgeleitet werden:
 \[
 \mathcal{R}_0 = \beta \cdot T_I \cdot \frac{S_0}{N_0},
 \]
-wobei $T_I = 1/\gamma$ die infektiÃ¶se Dauer ist.
+wobei $T_I = 1/\gamma$ die infektiöse Dauer ist.
 \end{satz}
 
 \begin{proof}
-Ein infiziertes Individuum verursacht wÃ¤hrend seiner infektiÃ¶sen Dauer $T_I$ durchschnittlich $\beta \cdot T_I$ Kontakte mit suszeptiblen Individuen. Da am Anfang der Epidemie $S_0/N \approx 1$, folgt die Behauptung.
+Ein infiziertes Individuum verursacht während seiner infektiösen Dauer $T_I$ durchschnittlich $\beta \cdot T_I$ Kontakte mit suszeptiblen Individuen. Da am Anfang der Epidemie $S_0/N \approx 1$, folgt die Behauptung.
 
-FÃ¼r die NGM-Herleitung: Die infektiÃ¶se Klasse $I$ ist getrennt von $E$. Die Next-Generation-Matrix wird durch Partitionierung der Jacobi am krankheitsfreien Gleichgewicht berechnet:
+Für die NGM-Herleitung: Die infektiöse Klasse $I$ ist getrennt von $E$. Die Next-Generation-Matrix wird durch Partitionierung der Jacobi am krankheitsfreien Gleichgewicht berechnet:
 \[
 \mathcal{R}_0 = \rho(FV^{-1}),
 \]
-wobei $F$ die Neuinfektionsmatrix und $V$ die ÃœbergÃ¤nge sind. Dies gibt $\mathcal{R}_0 = \beta / \gamma$.
+wobei $F$ die Neuinfektionsmatrix und $V$ die Übergänge sind. Dies gibt $\mathcal{R}_0 = \beta / \gamma$.
 \end{proof}
 
-\subsection{HerdenimmunitÃ¤tsschwelle}
+\subsection{Herdenimmunitätsschwelle}
 
-\begin{korollar}[HerdenimmunitÃ¤tsschwelle]
+\begin{korollar}[Herdenimmunitätsschwelle]
 Eine Immunisierungsabdeckung von mindestens
 \[
 p^* = 1 - \frac{1}{\mathcal{R}_0}
@@ -382,7 +382,7 @@ ist erforderlich und hinreichend, um eine epidemische Ausbreitung zu verhindern.
 \end{korollar}
 
 \begin{proof}
-Mit Impfquote $p$ gibt es effektiv eine suszeptible Fraktion von $(1-p) S_0$. Die effektive Basisreproduktionszahl ist dann $\mathcal{R}_e = (1-p) \mathcal{R}_0$. Epidemische Ausbreitung wird verhindert, wenn $\mathcal{R}_e < 1$, d.h. $(1-p) \mathcal{R}_0 < 1$, was zu $p > 1 - 1/\mathcal{R}_0$ fÃ¼hrt.
+Mit Impfquote $p$ gibt es effektiv eine suszeptible Fraktion von $(1-p) S_0$. Die effektive Basisreproduktionszahl ist dann $\mathcal{R}_e = (1-p) \mathcal{R}_0$. Epidemische Ausbreitung wird verhindert, wenn $\mathcal{R}_e < 1$, d.h. $(1-p) \mathcal{R}_0 < 1$, was zu $p > 1 - 1/\mathcal{R}_0$ führt.
 \end{proof}
 
 % =============================================================================
@@ -397,31 +397,31 @@ Die zentrale Innovation dieser Arbeit ist die Formulierung eines parametrisierte
 Sei $n_c$ die Anzahl der infizierbaren Zelltypen und $n_v$ die Anzahl virusrelevanter Kompartimente. Das GWRM ist das System:
 
 \begin{align}
-\frac{dT_i}{dt} &= \lambda_i - d_{T,i} T_i - \sum_{j=1}^{n_v} k_{ij} V_j T_i \quad \text{fÃ¼r } i=1,\ldots,n_c \label{eq:gwrm_t}\\
-\frac{dI_i}{dt} &= \sum_{j=1}^{n_v} k_{ij} V_j T_i - \delta_{I,i} I_i - f_{I,i}(\mathbf{D}) \quad \text{fÃ¼r } i=1,\ldots,n_c \label{eq:gwrm_i}\\
-\frac{dV_j}{dt} &= \sum_{i=1}^{n_c} p_{ji} I_i - c_j V_j - g_j(\mathbf{D}, \mathbf{Imm}) \quad \text{fÃ¼r } j=1,\ldots,n_v \label{eq:gwrm_v}\\
-\frac{dD_\ell}{dt} &= h_\ell(\mathbf{I}, \mathbf{V}) - \phi_\ell D_\ell \quad \text{fÃ¼r } \ell = 1, \ldots, n_d \label{eq:gwrm_d}
+\frac{dT_i}{dt} &= \lambda_i - d_{T,i} T_i - \sum_{j=1}^{n_v} k_{ij} V_j T_i \quad \text{für } i=1,\ldots,n_c \label{eq:gwrm_t}\\
+\frac{dI_i}{dt} &= \sum_{j=1}^{n_v} k_{ij} V_j T_i - \delta_{I,i} I_i - f_{I,i}(\mathbf{D}) \quad \text{für } i=1,\ldots,n_c \label{eq:gwrm_i}\\
+\frac{dV_j}{dt} &= \sum_{i=1}^{n_c} p_{ji} I_i - c_j V_j - g_j(\mathbf{D}, \mathbf{Imm}) \quad \text{für } j=1,\ldots,n_v \label{eq:gwrm_v}\\
+\frac{dD_\ell}{dt} &= h_\ell(\mathbf{I}, \mathbf{V}) - \phi_\ell D_\ell \quad \text{für } \ell = 1, \ldots, n_d \label{eq:gwrm_d}
 \end{align}
 
-mit feedback-Funktionen $f_{I,i}$, $g_j$, und $h_\ell$, die Gewebe-SchÃ¤digung und Immunantwort modulieren.
+mit feedback-Funktionen $f_{I,i}$, $g_j$, und $h_\ell$, die Gewebe-Schädigung und Immunantwort modulieren.
 
-HIV wird durch die Spezialisierung auf $n_c=1$ (nur CD4-T-Zellen), $n_v=1$ (nur freie Viren), $n_d=0$ (keine GewebeschÃ¤digung), $f_{I,i} \equiv 0$, $g_j \equiv 0$ erhalten.
+HIV wird durch die Spezialisierung auf $n_c=1$ (nur CD4-T-Zellen), $n_v=1$ (nur freie Viren), $n_d=0$ (keine Gewebeschädigung), $f_{I,i} \equiv 0$, $g_j \equiv 0$ erhalten.
 
-Ebola wird durch $n_c=2$ (Hepatozyten + Makrophagen), $n_v=1$, $n_d=1$ (GewebeschÃ¤digung-Akkumulation), und aktivierte Feedback-Funktionen erhalten.
+Ebola wird durch $n_c=2$ (Hepatozyten + Makrophagen), $n_v=1$, $n_d=1$ (Gewebeschädigung-Akkumulation), und aktivierte Feedback-Funktionen erhalten.
 \end{definition}
 
-Diese unifizierte Formulierung ermÃ¶glicht Aussagen Ã¼ber \textbf{strukturelle Invarianten}, die unabhÃ¤ngig von der Spezialisierung gelten.
+Diese unifizierte Formulierung ermöglicht Aussagen über \textbf{strukturelle Invarianten}, die unabhängig von der Spezialisierung gelten.
 
-\subsection{FÃ¼nf HauptsÃ¤tze des GWRM}
+\subsection{Fünf Hauptsätze des GWRM}
 
 \begin{satz}[GWRM-Satz 1: Wohldefinertheit und Eindeutigkeit]
-FÃ¼r alle biologisch sinnvollen Parameter und Anfangsbedingungen existiert eine eindeutige LÃ¶sung des GWRM auf $[0, \infty)$. Alle Komponenten bleiben nicht-negativ und beschrÃ¤nkt.
+Für alle biologisch sinnvollen Parameter und Anfangsbedingungen existiert eine eindeutige Lösung des GWRM auf $[0, \infty)$. Alle Komponenten bleiben nicht-negativ und beschränkt.
 \end{satz}
 
 \begin{proof}
-Der GWRM ist ein System von nichtlinearen ODEs mit Lipschitz-stetigen rechten Seiten (da alle Funktionen $f, g, h$ glatt sind und die rechten Seiten Produkte und rationale Funktionen der Variablen sind). Nach dem Satz von Picard-LindelÃ¶f existiert eine eindeutige lokale LÃ¶sung.
+Der GWRM ist ein System von nichtlinearen ODEs mit Lipschitz-stetigen rechten Seiten (da alle Funktionen $f, g, h$ glatt sind und die rechten Seiten Produkte und rationale Funktionen der Variablen sind). Nach dem Satz von Picard-Lindelöf existiert eine eindeutige lokale Lösung.
 
-FÃ¼r die globale Existenz verwenden wir eine \textbf{positive invariante Menge}. Definiere die Menge
+Für die globale Existenz verwenden wir eine \textbf{positive invariante Menge}. Definiere die Menge
 \[
 \Omega = \{(T_i, I_i, V_j, D_\ell) : T_i \geq 0, I_i \geq 0, V_j \geq 0, D_\ell \geq 0, \sum_i T_i + \sum_i I_i \leq N\}.
 \]
@@ -431,7 +431,7 @@ Auf der Grenze dieser Menge (z.B., wenn $T_i = 0$), gilt:
 \]
 so dass Trajektorien nach innen zeigen. Dies zeigt, dass $\Omega$ positiv invariant ist.
 
-Da jede Komponente durch $N$ (fÃ¼r Zellen) oder eine endliche KapazitÃ¤t (fÃ¼r Virus und SchÃ¤digung) beschrÃ¤nkt ist, ist die LÃ¶sung global und beschrÃ¤nkt.
+Da jede Komponente durch $N$ (für Zellen) oder eine endliche Kapazität (für Virus und Schädigung) beschränkt ist, ist die Lösung global und beschränkt.
 \end{proof}
 
 \begin{satz}[GWRM-Satz 2: Krankheitsfreies Gleichgewicht und Existenz]
@@ -443,21 +443,21 @@ Dieses Gleichgewicht ist global asymptotisch stabil, wenn eine \emph{zusammenges
 \[
 \mathcal{R}_0^{\text{GWRM}} = \rho(M_{\text{NGM}}) < 1
 \]
-erfÃ¼llt, wobei $M_{\text{NGM}}$ die Next-Generation-Matrix des Systems ist.
+erfüllt, wobei $M_{\text{NGM}}$ die Next-Generation-Matrix des Systems ist.
 \end{satz}
 
 \begin{proof}
-(Beweis-Skizze) Die Next-Generation-Matrix wird aus den NeuinfektionsbeitrÃ¤gen und den Ãœbergangsraten konstruiert. FÃ¼r das HIV-Spezialfall ist
+(Beweis-Skizze) Die Next-Generation-Matrix wird aus den Neuinfektionsbeiträgen und den Übergangsraten konstruiert. Für das HIV-Spezialfall ist
 \[
 M_{\text{NGM}} = \begin{pmatrix} 0 & k p / (\delta_I c) \\ 1 & - \gamma \end{pmatrix},
 \]
 mit dominantem Eigenwert $\mathcal{R}_0^{\text{HIV}} = kp/(\delta_I c \gamma)$.
 
-FÃ¼r $\mathcal{R}_0 < 1$ kann man eine Lyapunov-Funktion konstruieren. Eine bekannte Wahl ist
+Für $\mathcal{R}_0 < 1$ kann man eine Lyapunov-Funktion konstruieren. Eine bekannte Wahl ist
 \[
 V = \sum_{i} w_i I_i + \alpha \sum_j v_j V_j,
 \]
-mit sorgfÃ¤ltig gewÃ¤hlten Gewichten $w_i$ und $\alpha$, so dass
+mit sorgfältig gewählten Gewichten $w_i$ und $\alpha$, so dass
 \[
 \dot{V} = - \rho (1 - \mathcal{R}_0/\mathcal{R}_0^{\text{crit}}) \cdot V + \text{terms} \rightarrow \text{negativ}.
 \]
@@ -470,46 +470,46 @@ Sei $\theta \in [0,1]$ ein Therapie-Wirksamkeitsparameter, der die Infektionsrat
 Dann gilt:
 \begin{enumerate}
 \item Eine \textit{Therapie-induzierte Schwelle} existiert: $\theta^* = 1 - 1/\mathcal{R}_0$. 
-\item FÃ¼r $\theta < \theta^*$, existiert ein Quasi-Gleichgewicht mit reduzierter, aber persistierender Virenlast.
-\item FÃ¼r $\theta > \theta^*$, konvergiert die Virenlast gegen null mit exponentieller Rate $\geq c_{\min}(1 - \mathcal{R}_e(\theta))$, wobei $\mathcal{R}_e(\theta) = (1-\theta) \mathcal{R}_0$.
+\item Für $\theta < \theta^*$, existiert ein Quasi-Gleichgewicht mit reduzierter, aber persistierender Virenlast.
+\item Für $\theta > \theta^*$, konvergiert die Virenlast gegen null mit exponentieller Rate $\geq c_{\min}(1 - \mathcal{R}_e(\theta))$, wobei $\mathcal{R}_e(\theta) = (1-\theta) \mathcal{R}_0$.
 \end{enumerate}
 \end{satz}
 
 \begin{proof}
 Mit Therapie-Parameter $\theta$ ist die effektive Reproduktionszahl $\mathcal{R}_e(\theta) = (1-\theta) \mathcal{R}_0$. Die Schwelle $\mathcal{R}_e = 1$ liefert $\theta^* = 1 - 1/\mathcal{R}_0$.
 
-FÃ¼r $\theta > \theta^*$: Die modifizierten ODEs sind
+Für $\theta > \theta^*$: Die modifizierten ODEs sind
 \begin{align}
 \dot{V} &= (1-\theta) p I - c V \\
 \dot{I} &= (1-\theta) k V T - \delta_I I
 \end{align}
-mit VerhÃ¤ltnis-Parameter $\tilde{\rho} = (1-\theta) p / (\delta_I c) = (1-\theta) \rho$. Die Virenlast fÃ¤llt mit charakteristischer Rate $c_{\min} = \min(c, \delta_I)$, und der Exponent ist $\approx c_{\min} (1 - (1-\theta)\rho/(c \delta_I)) = c_{\min}(1 - \mathcal{R}_e)$.
+mit Verhältnis-Parameter $\tilde{\rho} = (1-\theta) p / (\delta_I c) = (1-\theta) \rho$. Die Virenlast fällt mit charakteristischer Rate $c_{\min} = \min(c, \delta_I)$, und der Exponent ist $\approx c_{\min} (1 - (1-\theta)\rho/(c \delta_I)) = c_{\min}(1 - \mathcal{R}_e)$.
 \end{proof}
 
-\begin{satz}[GWRM-Satz 4: Bifurkationen und kritische PhÃ¤notypen]
-Das GWRM-System durchlÃ¤uft eine \emph{Transcritical Bifurkation} bei $\mathcal{R}_0 = 1$, wobei das krankheitsfreie Gleichgewicht die StabilitÃ¤t mit einem endemischen Gleichgewicht austauscht. Die Bifurkations-Normale Form ist
+\begin{satz}[GWRM-Satz 4: Bifurkationen und kritische Phänotypen]
+Das GWRM-System durchläuft eine \emph{Transcritical Bifurkation} bei $\mathcal{R}_0 = 1$, wobei das krankheitsfreie Gleichgewicht die Stabilität mit einem endemischen Gleichgewicht austauscht. Die Bifurkations-Normale Form ist
 \[
 \dot{\mathcal{R}} = \mu \mathcal{R} - \beta_1 \mathcal{R}^2 + O(\mathcal{R}^3),
 \]
-mit $\mu = \mathcal{R}_0 - 1$ und StabilitÃ¤tskoeffizient $\beta_1 > 0$.
+mit $\mu = \mathcal{R}_0 - 1$ und Stabilitätskoeffizient $\beta_1 > 0$.
 \end{satz}
 
 \begin{proof}
-Dies folgt aus der Normalformtheorie fÃ¼r hyperbolische Bifurkationen (siehe \cite{guckenheimer1983nonlinear}). Die Bifurkation ist superkritisch, da das endemische Gleichgewicht fÃ¼r $\mathcal{R}_0 > 1$ stabil ist.
+Dies folgt aus der Normalformtheorie für hyperbolische Bifurkationen (siehe \cite{guckenheimer1983nonlinear}). Die Bifurkation ist superkritisch, da das endemische Gleichgewicht für $\mathcal{R}_0 > 1$ stabil ist.
 \end{proof}
 
-\begin{satz}[GWRM-Satz 5: Universelle Effizienzgrenzen fÃ¼r Interventionen]
-Sei $\mathcal{E}(T)$ eine beliebige Interventionsstrategie (Impfung, Therapie, QuarantÃ¤ne mit Effizienzprofil Ã¼ber Zeit $[0,T]$. Dann gilt eine \textbf{universelle untere Schranke} fÃ¼r die Anzahl vermiedeter Infektionen:
+\begin{satz}[GWRM-Satz 5: Universelle Effizienzgrenzen für Interventionen]
+Sei $\mathcal{E}(T)$ eine beliebige Interventionsstrategie (Impfung, Therapie, Quarantäne mit Effizienzprofil über Zeit $[0,T]$. Dann gilt eine \textbf{universelle untere Schranke} für die Anzahl vermiedeter Infektionen:
 
 \[
-\text{Infektionen}_{\text{vermieden}} \geq \mathcal{C} \cdot T \cdot (1 - \mathcal{R}_0^{\text{-1}} \cdot \log \mathcal{R}_0) \quad \text{fÃ¼r} \quad T \to \infty,
+\text{Infektionen}_{\text{vermieden}} \geq \mathcal{C} \cdot T \cdot (1 - \mathcal{R}_0^{\text{-1}} \cdot \log \mathcal{R}_0) \quad \text{für} \quad T \to \infty,
 \]
 
-wobei $\mathcal{C} > 0$ eine Universal-Konstante ist, die nur von der BevÃ¶lkerungsgrÃ¶ÃŸe abhÃ¤ngt.
+wobei $\mathcal{C} > 0$ eine Universal-Konstante ist, die nur von der Bevölkerungsgröße abhängt.
 \end{satz}
 
 \begin{proof}
-(Beweis-Skizze Ã¼ber Information-Theorie) Die relative Entropie zwischen epidemiologischen Trajektorien mit und ohne Intervention ist beschrÃ¤nkt durch die KL-Divergenz der Virusparameter. Eine untere Schranke fÃ¼r Interventionswirksamkeit folgt aus der CramÃ©r-Rao-Ungleichung angewendet auf die effektive Reproduktionszahl $\mathcal{R}_e = \mathcal{R}_0 - \mathcal{A}(T)$, wobei $\mathcal{A}(T)$ die Interventions-Amplitude ist. Das Integral $\int_0^\infty (1 - 1/\mathcal{R}(t)) \, dt$ ist minimal, wenn $\mathcal{R}(t) = e^{-\alpha t}$ (exponentieller RÃ¼ckgang), was die untere Schranke liefert.
+(Beweis-Skizze über Information-Theorie) Die relative Entropie zwischen epidemiologischen Trajektorien mit und ohne Intervention ist beschränkt durch die KL-Divergenz der Virusparameter. Eine untere Schranke für Interventionswirksamkeit folgt aus der Cramér-Rao-Ungleichung angewendet auf die effektive Reproduktionszahl $\mathcal{R}_e = \mathcal{R}_0 - \mathcal{A}(T)$, wobei $\mathcal{A}(T)$ die Interventions-Amplitude ist. Das Integral $\int_0^\infty (1 - 1/\mathcal{R}(t)) \, dt$ ist minimal, wenn $\mathcal{R}(t) = e^{-\alpha t}$ (exponentieller Rückgang), was die untere Schranke liefert.
 \end{proof}
 
 % =============================================================================
@@ -520,11 +520,11 @@ wobei $\mathcal{C} > 0$ eine Universal-Konstante ist, die nur von der BevÃ¶lke
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_1_Viral_Replication_Kinetics.pdf}
-\caption{\textbf{Within-Host-Virenreplikationsdynamik fÃ¼r HIV und Ebola.} Das linke Panel zeigt die logistischen Wachstumskurve von HIV mit charakteristischen Parametern: Wachstumsrate $r_{\text{HIV}} \approx 0,15$ Tag$^{-1}$, resultierende Virenplateaus bei $\approx 10^6$ RNA-Kopien/ÂµL nach $\approx 200$ Tagen. Das rechte Panel illustriert Ebolavirenreplikation mit schnellerem Wachstum ($r_{\text{Ebola}} \approx 0,35$ Tag$^{-1}$), hÃ¶herer Plateauvirenlast ($10^9$ Kopien/mL) und kÃ¼rzerer Virenausscheide-Periode (ca. 21 Tage). Die blaue/rote FÃ¼llung zeigt die VariabilitÃ¤t um 2-fach um den Median. \textbf{Biologische Interpretation:} HIV etabliert ein chronisches Quasi-Gleichgewicht mit moderater VirÃ¤mie und jahrelanger Persistenz. Ebola hingegen verursacht eine explosive, sich selbst begrenzte VirÃ¤mie mit rasch tÃ¶dlichen Folgen, wenn nicht therapeutisch interveniert.}
+\caption{\textbf{Within-Host-Virenreplikationsdynamik für HIV und Ebola.} Das linke Panel zeigt die logistischen Wachstumskurve von HIV mit charakteristischen Parametern: Wachstumsrate $r_{\text{HIV}} \approx 0,15$ Tag$^{-1}$, resultierende Virenplateaus bei $\approx 10^6$ RNA-Kopien/ µL nach $\approx 200$ Tagen. Das rechte Panel illustriert Ebolavirenreplikation mit schnellerem Wachstum ($r_{\text{Ebola}} \approx 0,35$ Tag$^{-1}$), höherer Plateauvirenlast ($10^9$ Kopien/mL) und kürzerer Virenausscheide-Periode (ca. 21 Tage). Die blaue/rote Füllung zeigt die Variabilität um 2-fach um den Median. \textbf{Biologische Interpretation:} HIV etabliert ein chronisches Quasi-Gleichgewicht mit moderater Virämie und jahrelanger Persistenz. Ebola hingegen verursacht eine explosive, sich selbst begrenzte Virämie mit rasch tödlichen Folgen, wenn nicht therapeutisch interveniert.}
 \label{fig:plot1}
 \end{figure}
 
-Diese Plots wurden durch numerische LÃ¶sung der Within-Host-Modelle (Gleichungen \ref{eq:hiv_t}--\ref{eq:hiv_v} und \ref{eq:ebola_h}--\ref{eq:ebola_immune}) mit den klassischen biologischen Parametern generiert.
+Diese Plots wurden durch numerische Lösung der Within-Host-Modelle (Gleichungen \ref{eq:hiv_t}--\ref{eq:hiv_v} und \ref{eq:ebola_h}--\ref{eq:ebola_immune}) mit den klassischen biologischen Parametern generiert.
 
 \subsubsection{Quantitative Analyse}
 
@@ -532,43 +532,43 @@ Die HIV-Kurve folgt einer logistischen Differentialgleichung:
 \[
 \frac{dV}{dt} = r V \left(1 - \frac{V}{K}\right),
 \]
-mit LÃ¶sung
+mit Lösung
 \[
 V(t) = \frac{K}{1 + (K/V_0 - 1) e^{-rt}}.
 \]
 
-FÃ¼r HIV: $r = 0,15$ Tag$^{-1}$, $K = 10^6$, $V_0 = 10$. Dies gibt $t_{50} \approx 46$ Tage bis zur halben TrÃ¤gerkapazitÃ¤t.
+Für HIV: $r = 0,15$ Tag$^{-1}$, $K = 10^6$, $V_0 = 10$. Dies gibt $t_{50} \approx 46$ Tage bis zur halben Trägerkapazität.
 
-FÃ¼r Ebola: $r = 0,35$ Tag$^{-1}$, $K = 10^9$, $V_0 = 1$. Dies gibt $t_{50} \approx 12$ Tage.
+Für Ebola: $r = 0,35$ Tag$^{-1}$, $K = 10^9$, $V_0 = 1$. Dies gibt $t_{50} \approx 12$ Tage.
 
-Das VerhÃ¤ltnis der Wachstumsraten ist $r_{\text{Ebola}} / r_{\text{HIV}} \approx 2,3$, was die Beobachtung erklÃ¤rt, dass Ebola-Patienten schneller kritisch werden als HIV-Patienten in der akuten Phase (acute retroviral syndrome).
+Das Verhältnis der Wachstumsraten ist $r_{\text{Ebola}} / r_{\text{HIV}} \approx 2,3$, was die Beobachtung erklärt, dass Ebola-Patienten schneller kritisch werden als HIV-Patienten in der akuten Phase (acute retroviral syndrome).
 
-\subsection{Plot 2: R0-Vergleich und SensitivitÃ¤tsanalyse}
+\subsection{Plot 2: R0-Vergleich und Sensitivitätsanalyse}
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_2_R0_Comparison.pdf}
-\caption{\textbf{Vergleichende Analyse der Basisreproduktionszahl und ihrer Parameter.} Das linke Panel zeigt die $\mathcal{R}_0$-Werte ausgewÃ¤hlter Pathogene: Masern (12), RÃ¶teln (7), Ebola (2,2), COVID-19 WT (2,5), HIV unbehandelt (2,0). Die grÃ¼ne Kurve Ã¼berlagert die HerdenimmunitÃ¤tsschwelle $q^* = 1 - 1/\mathcal{R}_0$. Das rechte Panel stellt die SensitivitÃ¤t des $\mathcal{R}_0$ gegenÃ¼ber fÃ¼nf SchlÃ¼sselparametern fÃ¼r HIV vs. Ebola dar. HIV zeigt hÃ¶chste SensitivitÃ¤t gegenÃ¼ber infektiÃ¶ser Dauer und Kontaktrate. Ebola ist stark von Virenlast und Kontaktrate abhÃ¤ngig. \textbf{Klinische Implikation:} Interventionen sollten auf den Parametern mit hÃ¶chster SensitivitÃ¤t ansetzen -- fÃ¼r HIV: Therapie (Virenlast), fÃ¼r Ebola: Kontaktreduktion und Isolation.}
+\caption{\textbf{Vergleichende Analyse der Basisreproduktionszahl und ihrer Parameter.} Das linke Panel zeigt die $\mathcal{R}_0$-Werte ausgewählter Pathogene: Masern (12), Röteln (7), Ebola (2,2), COVID-19 WT (2,5), HIV unbehandelt (2,0). Die grüne Kurve überlagert die Herdenimmunitätsschwelle $q^* = 1 - 1/\mathcal{R}_0$. Das rechte Panel stellt die Sensitivität des $\mathcal{R}_0$ gegenüber fünf Schlüsselparametern für HIV vs. Ebola dar. HIV zeigt höchste Sensitivität gegenüber infektiöser Dauer und Kontaktrate. Ebola ist stark von Virenlast und Kontaktrate abhängig. \textbf{Klinische Implikation:} Interventionen sollten auf den Parametern mit höchster Sensitivität ansetzen -- für HIV: Therapie (Virenlast), für Ebola: Kontaktreduktion und Isolation.}
 \label{fig:plot2}
 \end{figure}
 
-\subsubsection{SensitivitÃ¤tskoeffizient-Definition}
+\subsubsection{Sensitivitätskoeffizient-Definition}
 
-Der normalisierte SensitivitÃ¤tskoeffizient einer Funktion $\mathcal{R}_0(\theta)$ gegenÃ¼ber Parameter $\theta$ ist:
+Der normalisierte Sensitivitätskoeffizient einer Funktion $\mathcal{R}_0(\theta)$ gegenüber Parameter $\theta$ ist:
 \[
 S_\theta = \frac{\partial \log \mathcal{R}_0}{\partial \log \theta} = \frac{\theta}{\mathcal{R}_0} \frac{\partial \mathcal{R}_0}{\partial \theta}.
 \]
 
-Dies wurde fÃ¼r jeden Parameter in den beiden VirusfÃ¤llen numerisch berechnet. Die Ergebnisse zeigen:
+Dies wurde für jeden Parameter in den beiden Virusfällen numerisch berechnet. Die Ergebnisse zeigen:
 \begin{itemize}
-\item HIV: SensitivitÃ¤t zur Dauer $\approx 0,45$, zur Kontaktrate $\approx 0,35$
-\item Ebola: SensitivitÃ¤t zur Virenlast $\approx 0,65$, zur Kontaktrate $\approx 0,55$
+\item HIV: Sensitivität zur Dauer $\approx 0,45$, zur Kontaktrate $\approx 0,35$
+\item Ebola: Sensitivität zur Virenlast $\approx 0,65$, zur Kontaktrate $\approx 0,55$
 \end{itemize}
 
 \subsection{Plot 3: SEIR-Modell-Dynamik}
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_3_SEIR_Dynamics.pdf}
-\caption{\textbf{BevÃ¶lkerungs-Ebene Kompartimentdynamik fÃ¼r HIV und Ebola.} \textbf{Linkes Panel:} HIV-SEIR mit langsamem InfektionsÃ¼bergang ($\sigma = 0,1$ Tag$^{-1}$, d.h. 10 Tage Inkubation) und sehr langsamer Genesungsrate ($\gamma = 0,001$ Tag$^{-1}$, d.h. 1000 Tage InfektiositÃ¤t ohne Therapie). Die Epidemie breitet sich Ã¼ber Jahre aus und erreicht kein Plateau. \textbf{Rechtes Panel:} Ebola-SEIR mit kurzer Inkubation (10 Tage) und kurzer InfektiositÃ¤t (10 Tage). Die Epidemie spitzt sich dramatisch zu und ist innert etwa 4 Monaten abgeklungen (ohne KontrollmaÃŸnahmen). Die unterschiedliche Zeitskala (1 Jahr fÃ¼r HIV vs. 100 Tage fÃ¼r Ebola) verdeutlicht die epidemiologischen Unterschiede. \textbf{PrÃ¤ventiv-strategische Folgerung:} HIV erfordert langfristige, dauerhafte Interventionen; Ebola erfordert intensive kurzfristige KontrollmaÃŸnahmen.}
+\caption{\textbf{Bevölkerungs-Ebene Kompartimentdynamik für HIV und Ebola.} \textbf{Linkes Panel:} HIV-SEIR mit langsamem Infektionsübergang ($\sigma = 0,1$ Tag$^{-1}$, d.h. 10 Tage Inkubation) und sehr langsamer Genesungsrate ($\gamma = 0,001$ Tag$^{-1}$, d.h. 1000 Tage Infektiosität ohne Therapie). Die Epidemie breitet sich über Jahre aus und erreicht kein Plateau. \textbf{Rechtes Panel:} Ebola-SEIR mit kurzer Inkubation (10 Tage) und kurzer Infektiosität (10 Tage). Die Epidemie spitzt sich dramatisch zu und ist innert etwa 4 Monaten abgeklungen (ohne Kontrollmaßnahmen). Die unterschiedliche Zeitskala (1 Jahr für HIV vs. 100 Tage für Ebola) verdeutlicht die epidemiologischen Unterschiede. \textbf{Präventiv-strategische Folgerung:} HIV erfordert langfristige, dauerhafte Interventionen; Ebola erfordert intensive kurzfristige Kontrollmaßnahmen.}
 \label{fig:plot3}
 \end{figure}
 
@@ -578,13 +578,13 @@ Das HIV-SEIR wurde mit $N = 100.000$, $\beta = 0,8$, $\sigma = 1/10$, $\gamma = 
 
 Das Ebola-SEIR wurde mit $N = 10.000$, $\beta = 3,5$, $\sigma = 1/10$, $\gamma = 1/10$ simuliert. Dies gibt $\mathcal{R}_0 = 3,5$, eine sehr transmissible Krankheit.
 
-Beachte: Diese $\mathcal{R}_0$-Werte sind BevÃ¶lkerungs-Ebene-SchÃ¤tzungen; die Within-Host-Parameter beeinflussen die Populationsdynamik indirekt.
+Beachte: Diese $\mathcal{R}_0$-Werte sind Bevölkerungs-Ebene-Schätzungen; die Within-Host-Parameter beeinflussen die Populationsdynamik indirekt.
 
 \subsection{Plot 4: Interventionsstrategien}
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_4_Intervention_Strategies.pdf}
-\caption{\textbf{Vergleichende Bewertung therapeutischer Eingriffe.} \textbf{Panel A:} ART-Wirksamkeit auf HIV-Virenlast: Unbehandelt (rote Kurve) steigt die Virenlast zu einem Plateau von $\sim 10^5$ Kopien/mL. Mit ART (grÃ¼ne Kurve), beginnend an Tag 10, fÃ¤llt die Virenlast exponentiell ab und wird unter die Nachweisgrenze ($<50$ Kopien/mL) nach $\sim 6$ Wochen gedrÃ¼ckt. \textbf{Panel B:} Ebola-Ãœberlebensraten: Supportive Care allein fÃ¼hrt zu 30\% Ãœberlebensrate (Baseline fÃ¼r schwer erkrankte Patienten). Monoklonale AntikÃ¶rper-Therapie (INMAZEB oder Ã¤hnlich) verbessert die Ãœberlebensrate auf 70\%. Diese SchÃ¤tzung basiert auf Daten aus der 2014-2016-Epidemie. \textbf{Panel C:} Impf-EffektivitÃ¤t Ã¼ber Zeit: HIV-Impfstoffe (noch nicht verfÃ¼gbar, theoretisches Modell) wÃ¼rden bei 50\% EffektivitÃ¤t stabilisieren (eine der groÃŸen Herausforderungen). Ebola-Impfstoffe (rVSV-ZEBOV) erreichen 97\% EffektivitÃ¤t. \textbf{Panel D:} Kosteneinsparungen: Keine Intervention: \$1,2M pro Infektion. Kombinierte Strategien reduzieren dies auf \$120K, ein 10-facher Vorteil. \textbf{Politische Schlussfolgerung:} PrÃ¤vention ist dramatisch kostengÃ¼nstiger als Behandlung.}
+\caption{\textbf{Vergleichende Bewertung therapeutischer Eingriffe.} \textbf{Panel A:} ART-Wirksamkeit auf HIV-Virenlast: Unbehandelt (rote Kurve) steigt die Virenlast zu einem Plateau von $\sim 10^5$ Kopien/mL. Mit ART (grüne Kurve), beginnend an Tag 10, fällt die Virenlast exponentiell ab und wird unter die Nachweisgrenze ($<50$ Kopien/mL) nach $\sim 6$ Wochen gedrückt. \textbf{Panel B:} Ebola-Überlebensraten: Supportive Care allein führt zu 30\% Überlebensrate (Baseline für schwer erkrankte Patienten). Monoklonale Antikörper-Therapie (INMAZEB oder ähnlich) verbessert die Überlebensrate auf 70\%. Diese Schätzung basiert auf Daten aus der 2014-2016-Epidemie. \textbf{Panel C:} Impf-Effektivität über Zeit: HIV-Impfstoffe (noch nicht verfügbar, theoretisches Modell) würden bei 50\% Effektivität stabilisieren (eine der großen Herausforderungen). Ebola-Impfstoffe (rVSV-ZEBOV) erreichen 97\% Effektivität. \textbf{Panel D:} Kosteneinsparungen: Keine Intervention: \$1,2M pro Infektion. Kombinierte Strategien reduzieren dies auf \$120K, ein 10-facher Vorteil. \textbf{Politische Schlussfolgerung:} Prävention ist dramatisch kostengünstiger als Behandlung.}
 \label{fig:plot4}
 \end{figure}
 
@@ -592,7 +592,7 @@ Beachte: Diese $\mathcal{R}_0$-Werte sind BevÃ¶lkerungs-Ebene-SchÃ¤tzungen; 
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_5_Cellular_Dynamics.pdf}
-\caption{\textbf{Target-Cell-Limited-Dynamik fÃ¼r HIV und komplexe GewebeschÃ¤digung fÃ¼r Ebola.} \textbf{Panel 1 (HIV T-Zellen):} CD4+ T-Zell-Abfall von anfÃ¤nglichen 100.000 Zellen/ÂµL zu langfristig $\sim 200$ Zellen/ÂµL bei chronischer Infektion (ohne Therapie). Der RÃ¼ckgang ist monoton Ã¼ber Monate bis Jahre. \textbf{Panel 2 (HIV infizierte Zellen):} Infizierte Zellen erreichen ein Quasi-Gleichgewicht bei $\sim 100.000$ Zellen/ÂµL trotz kontinuierlicher Neu-Infektionen und Zelltod. Dies liegt an der Balance zwischen Infektionsrate und Zelltod-Rate $\delta_I = 0,5$ Tag$^{-1}$. \textbf{Panel 3 (HIV Virenlast):} Semi-log-Plot zeigt logistisches Wachstum zu $10^5$ Kopien/mL. \textbf{Panels 4-6 (Ebola):} Hepatozyten-SchÃ¤digung folgt Gaussian-Funktion (Peak bei Tag 10-12 post-infectionem), Monozyten zeigen oszillatorisches Verhalten mit exponentiellen Abklingen (infizierte Monozyten werden von der Immunantwort eliminiert), und Immunantwort ist schwach in den frÃ¼hen Phasen, was die hohe Virenlast erklÃ¤rt. \textbf{Pathophysiologische Interpretation:} HIV ist eine chronische Immundefizienz, wÃ¤hrend Ebola akut letal ist und durch GerinnungsstÃ¶rungen und Multiorgan-Versagen endet.}
+\caption{\textbf{Target-Cell-Limited-Dynamik für HIV und komplexe Gewebeschädigung für Ebola.} \textbf{Panel 1 (HIV T-Zellen):} CD4+ T-Zell-Abfall von anfänglichen 100.000 Zellen/ µL zu langfristig $\sim 200$ Zellen/ µL bei chronischer Infektion (ohne Therapie). Der Rückgang ist monoton über Monate bis Jahre. \textbf{Panel 2 (HIV infizierte Zellen):} Infizierte Zellen erreichen ein Quasi-Gleichgewicht bei $\sim 100.000$ Zellen/ µL trotz kontinuierlicher Neu-Infektionen und Zelltod. Dies liegt an der Balance zwischen Infektionsrate und Zelltod-Rate $\delta_I = 0,5$ Tag$^{-1}$. \textbf{Panel 3 (HIV Virenlast):} Semi-log-Plot zeigt logistisches Wachstum zu $10^5$ Kopien/mL. \textbf{Panels 4-6 (Ebola):} Hepatozyten-Schädigung folgt Gaussian-Funktion (Peak bei Tag 10-12 post-infectionem), Monozyten zeigen oszillatorisches Verhalten mit exponentiellen Abklingen (infizierte Monozyten werden von der Immunantwort eliminiert), und Immunantwort ist schwach in den frühen Phasen, was die hohe Virenlast erklärt. \textbf{Pathophysiologische Interpretation:} HIV ist eine chronische Immundefizienz, während Ebola akut letal ist und durch Gerinnungsstörungen und Multiorgan-Versagen endet.}
 \label{fig:plot5}
 \end{figure}
 
@@ -600,7 +600,7 @@ Beachte: Diese $\mathcal{R}_0$-Werte sind BevÃ¶lkerungs-Ebene-SchÃ¤tzungen; 
 
 \begin{figure}[h]
 \includegraphics[width=0.9\textwidth]{plots/Plot_6_Comparative_Structure.pdf}
-\caption{\textbf{Strukturelle und phylogenetische Charakterisierung mit fokussierter Analyse von Gemeinsamkeiten.} \textbf{Panel A:} Phylogenetische Distanzen zeigen, dass EBOV (Zaire-Stamm) und HIV-1 etwa 15 Einheiten evolutionÃ¤rer Distanz trennen -- sie sind vÃ¶llig verschiedene Virenarten aus verschiedenen Familien (Filoviridae vs. Retroviridae). \textbf{Panel B:} Genome sind Ã¤hnlich groÃŸ ($\approx 9-19$ kb), aber EBOV hat 7 Gene, HIV 9 Gene. \textbf{Panel C:} Reverse-Transkriptase (HIV) vs. RdRp (Ebola) zeigen unterschiedliche zeitliche AktivitÃ¤tsmuster. \textbf{Panel D:} Enzym-Profile sind starkkomplementÃ¤r -- HIV braucht RT, Integrase, Protease; Ebola braucht RdRp und Nukleotidyl-Polymerase. \textbf{Panel E:} Sequenzhomologie-Heatmap zeigt, dass RT/RdRp nur 12-20\% Sequenzhomologie haben (trotz Ã¤hnlicher Funktion), aber Struktur-Ã¤hnlich sind. \textbf{Panel F:} ZelltrÃ¤ger-Tropismus: HIV primÃ¤r CD4-T-Zellen und einige Makrophagen; Ebola breite Tropismus mit Hepatozyten, Makrophagen, Endothelzellen. \textbf{Erkenntnisse:} Trotz evolutionÃ¤rer Entfernung und andersartiger Zellziele gibt es konvergente Evolution in katalytischen Funktionen. Dies motiviert Suche nach universal wirksamen Antiviralen (z.B. Polymerase-Inhibitoren mit breitem Spektrum).}
+\caption{\textbf{Strukturelle und phylogenetische Charakterisierung mit fokussierter Analyse von Gemeinsamkeiten.} \textbf{Panel A:} Phylogenetische Distanzen zeigen, dass EBOV (Zaire-Stamm) und HIV-1 etwa 15 Einheiten evolutionärer Distanz trennen -- sie sind völlig verschiedene Virenarten aus verschiedenen Familien (Filoviridae vs. Retroviridae). \textbf{Panel B:} Genome sind ähnlich groß ($\approx 9-19$ kb), aber EBOV hat 7 Gene, HIV 9 Gene. \textbf{Panel C:} Reverse-Transkriptase (HIV) vs. RdRp (Ebola) zeigen unterschiedliche zeitliche Aktivitätsmuster. \textbf{Panel D:} Enzym-Profile sind starkkomplementär -- HIV braucht RT, Integrase, Protease; Ebola braucht RdRp und Nukleotidyl-Polymerase. \textbf{Panel E:} Sequenzhomologie-Heatmap zeigt, dass RT/RdRp nur 12-20\% Sequenzhomologie haben (trotz ähnlicher Funktion), aber Struktur-ähnlich sind. \textbf{Panel F:} Zellträger-Tropismus: HIV primär CD4-T-Zellen und einige Makrophagen; Ebola breite Tropismus mit Hepatozyten, Makrophagen, Endothelzellen. \textbf{Erkenntnisse:} Trotz evolutionärer Entfernung und andersartiger Zellziele gibt es konvergente Evolution in katalytischen Funktionen. Dies motiviert Suche nach universal wirksamen Antiviralen (z.B. Polymerase-Inhibitoren mit breitem Spektrum).}
 \label{fig:plot6}
 \end{figure}
 
@@ -610,60 +610,60 @@ Beachte: Diese $\mathcal{R}_0$-Werte sind BevÃ¶lkerungs-Ebene-SchÃ¤tzungen; 
 
 \subsection{Antiretrovirale Strategien}
 
-Basierend auf dem GWRM kÃ¶nnen folgende optimale Therapie-Regime abgeleitet werden:
+Basierend auf dem GWRM können folgende optimale Therapie-Regime abgeleitet werden:
 
-\subsubsection{FÃ¼r HIV}
-Antiretrovirale Therapie sollte eine Kombinationstherapie sein, um Resistenzentwicklung zu minimieren. Das GWRM zeigt, dass eine Reduktion der Infektionsrate $k$ und/oder der Virusproduktion $p$ beide wirksam sind. Ein Modell mit drei Arzneimitteln (NRTI + NNRTI + PI) reduziert $\mathcal{R}_e$ auf typischerweise $< 0,001$, was virale Suppression auf nicht-nachweisbare Niveaus fÃ¼hrt.
+\subsubsection{Für HIV}
+Antiretrovirale Therapie sollte eine Kombinationstherapie sein, um Resistenzentwicklung zu minimieren. Das GWRM zeigt, dass eine Reduktion der Infektionsrate $k$ und/oder der Virusproduktion $p$ beide wirksam sind. Ein Modell mit drei Arzneimitteln (NRTI + NNRTI + PI) reduziert $\mathcal{R}_e$ auf typischerweise $< 0,001$, was virale Suppression auf nicht-nachweisbare Niveaus führt.
 
-\subsubsection{FÃ¼r Ebola}
-Monoklonale AntikÃ¶rper (mAbs) reduzieren die Virusproduktion und Enhancement von Immunzellen. Das Modell zeigt, dass frÃ¼he Intervention (innerhalb von 10 Tagen nach Symptombeginn) kritisch ist. Kombination mit supportiver Therapie (FlÃ¼ssigkeitsersatz, Elektrolyt-Management, Blutgerinnung-UnterstÃ¼tzung) ist essentiell.
+\subsubsection{Für Ebola}
+Monoklonale Antikörper (mAbs) reduzieren die Virusproduktion und Enhancement von Immunzellen. Das Modell zeigt, dass frühe Intervention (innerhalb von 10 Tagen nach Symptombeginn) kritisch ist. Kombination mit supportiver Therapie (Flüssigkeitsersatz, Elektrolyt-Management, Blutgerinnung-Unterstützung) ist essentiell.
 
 \subsection{Impf-Design}
 
-Das GWRM enthÃ¤lt Impf-EffektivitÃ¤t durch Modifikation der EmpfÃ¤nglichkeit $S$. Eine Impfstoff-EffektivitÃ¤t $\varepsilon$ entspricht einer Reduktion von $S \mapsto (1-\varepsilon) S$.
+Das GWRM enthält Impf-Effektivität durch Modifikation der Empfänglichkeit $S$. Eine Impfstoff-Effektivität $\varepsilon$ entspricht einer Reduktion von $S \mapsto (1-\varepsilon) S$.
 
-\textbf{FÃ¼r HIV:} Ein effektiver Impfstoff befindet sich noch in Entwicklung. Bisherige Kandidaten (wie RV 144) zeigten nur 31\% EffektivitÃ¤t. Das GWRM berechnet, dass fÃ¼r Ausrottung eine $\geq 70\%$ effektive Impfung mit $\geq 80\%$ Impfquote erforderlich wÃ¤re.
+\textbf{Für HIV:} Ein effektiver Impfstoff befindet sich noch in Entwicklung. Bisherige Kandidaten (wie RV 144) zeigten nur 31\% Effektivität. Das GWRM berechnet, dass für Ausrottung eine $\geq 70\%$ effektive Impfung mit $\geq 80\%$ Impfquote erforderlich wäre.
 
-\textbf{FÃ¼r Ebola:} Der rVSV-ZEBOV-Impfstoff erreicht 97\% EffektivitÃ¤t. Eine Impfquote von nur $q^* = 1 - 1/2,2 \approx 0,55$ (55\%) kÃ¶nnte die epidemische Ausbreitung verhindern.
+\textbf{Für Ebola:} Der rVSV-ZEBOV-Impfstoff erreicht 97\% Effektivität. Eine Impfquote von nur $q^* = 1 - 1/2,2 \approx 0,55$ (55\%) könnte die epidemische Ausbreitung verhindern.
 
 \subsection{Interventions-Kombinationen}
 
-Das GWRM zeigt, dass Kombinationen von Interventionen (Impfung + Therapie + VerhaltensÃ¤nderung) synergistisch sind. Ein Beispiel:
+Das GWRM zeigt, dass Kombinationen von Interventionen (Impfung + Therapie + Verhaltensänderung) synergistisch sind. Ein Beispiel:
 \begin{itemize}
-\item Nur ART fÃ¼r HIV: Reduziert $\mathcal{R}_e$ auf $\approx 0,01$
-\item Nur PrEP (PrÃ¤-Expositions-Prophylaxe): Reduziert $\mathcal{R}_e$ auf $\approx 0,1$
-\item ART + PrEP + Kondome: Reduziert $\mathcal{R}_e$ auf $\ll 0,001$ (Ausrottungsszenario mÃ¶glich)
+\item Nur ART für HIV: Reduziert $\mathcal{R}_e$ auf $\approx 0,01$
+\item Nur PrEP (Prä-Expositions-Prophylaxe): Reduziert $\mathcal{R}_e$ auf $\approx 0,1$
+\item ART + PrEP + Kondome: Reduziert $\mathcal{R}_e$ auf $\ll 0,001$ (Ausrottungsszenario möglich)
 \end{itemize}
 
 % =============================================================================
-\section{AusfÃ¼hrlicher Ausblick: Forschungsfrontieren und Offene Fragen}
+\section{Ausführlicher Ausblick: Forschungsfrontieren und Offene Fragen}
 % =============================================================================
 
 \subsection{Theoretische Erweiterungen des GWRM}
 
-\subsubsection{VariabilitÃ¤t und StochastizitÃ¤t}
-Das gegenwÃ¤rtige GWRM ist deterministisch. Eine realistische Erweiterung wÃ¤re die Formulierung als stochastisches Differentialgleichungs-System (SDEs):
+\subsubsection{Variabilität und Stochastizität}
+Das gegenwärtige GWRM ist deterministisch. Eine realistische Erweiterung wäre die Formulierung als stochastisches Differentialgleichungs-System (SDEs):
 \[
 d\mathbf{X}_t = \mathbf{f}(\mathbf{X}_t) dt + \sigma(\mathbf{X}_t) d\mathbf{W}_t,
 \]
-wobei $\mathbf{W}_t$ Standard-Wiener-Prozesse sind. Dies wÃ¼rde
+wobei $\mathbf{W}_t$ Standard-Wiener-Prozesse sind. Dies würde
 \begin{itemize}
-\item ZufÃ¤llige Fluktuationen bei kleinen Populationen berÃ¼cksichtigen
-\item Extinction-Wahrscheinlichkeiten fÃ¼r Epidemien berechnen
-\item Vertrauens-Intervalle fÃ¼r Vorhersagen liefern
+\item Zufällige Fluktuationen bei kleinen Populationen berücksichtigen
+\item Extinction-Wahrscheinlichkeiten für Epidemien berechnen
+\item Vertrauens-Intervalle für Vorhersagen liefern
 \end{itemize}
 
-Ein probabilistisches Framework, das auf Branching-Prozess-Theorie basiert, kÃ¶nnte zeigen, dass die Wahrscheinlichkeit einer groÃŸen Epidemie $P_{\text{outbreak}}(\mathcal{R}_0)$ fÃ¼r $\mathcal{R}_0$ nur knapp Ã¼ber 1 stark variiert.
+Ein probabilistisches Framework, das auf Branching-Prozess-Theorie basiert, könnte zeigen, dass die Wahrscheinlichkeit einer großen Epidemie $P_{\text{outbreak}}(\mathcal{R}_0)$ für $\mathcal{R}_0$ nur knapp über 1 stark variiert.
 
-\subsubsection{RÃ¤umliche HeterogenitÃ¤t}
-Das GWRM nimmt homogene Mischung an. Eine rÃ¤umliche Erweiterung wÃ¼rde Reaktions-Diffusions-Gleichungen verwenden:
+\subsubsection{Räumliche Heterogenität}
+Das GWRM nimmt homogene Mischung an. Eine räumliche Erweiterung würde Reaktions-Diffusions-Gleichungen verwenden:
 \[
 \frac{\partial I_i(\mathbf{r}, t)}{\partial t} = \Delta I_i - \text{Reaktionsterme},
 \]
-um zu modellieren, wie sich Infektionen lokal ausbreiten. Dies ist essentiell fÃ¼r Vorhersagen von Ausbruchsdynamik in geografisch verteilten BevÃ¶lkerungen (z.B. DRC Ebola-AusbrÃ¼che in mehreren Distrikten).
+um zu modellieren, wie sich Infektionen lokal ausbreiten. Dies ist essentiell für Vorhersagen von Ausbruchsdynamik in geografisch verteilten Bevölkerungen (z.B. DRC Ebola-Ausbrüche in mehreren Distrikten).
 
 \subsubsection{Altersstrukturierte Modelle}
-Viele Infektionskrankheiten haben altersabhÃ¤ngige Infektionsraten und Transmissions-Koeffiziente. Ein Alters-GWRM wÃ¼rde entlang Altersklassen strukturiert:
+Viele Infektionskrankheiten haben altersabhängige Infektionsraten und Transmissions-Koeffiziente. Ein Alters-GWRM würde entlang Altersklassen strukturiert:
 \[
 \frac{dI_i(a,t)}{dt} = -\frac{\partial I_i}{\partial a} + \text{Infektionsterme},
 \]
@@ -671,72 +671,72 @@ mit Kontakt-Matrix $C_{ab}$ zwischen Altersgruppen $a$ und $b$.
 
 \subsection{Numerische und Rechnerische Perspektiven}
 
-\subsubsection{Parameter-SchÃ¤tzung aus Daten}
-Ein SchlÃ¼ssel-Challenge ist die genaue SchÃ¤tzung von GWRM-Parametern aus epidemiologischen Daten. Methoden:
+\subsubsection{Parameter-Schätzung aus Daten}
+Ein Schlüssel-Challenge ist die genaue Schätzung von GWRM-Parametern aus epidemiologischen Daten. Methoden:
 \begin{itemize}
 \item Approximate Bayesian Computation (ABC)
 \item Particle Filter und Sequential Monte Carlo
-\item Variational Inference fÃ¼r HochdimensionalitÃ¤t
+\item Variational Inference für Hochdimensionalität
 \end{itemize}
 
-PrÃ¤liminÃ¤re Arbeiten mit realen HIV/EBOV-Daten kÃ¶nnen parameter-Unsicherheit quantifizieren und Prognose-Robustheit bewerten.
+Präliminäre Arbeiten mit realen HIV/EBOV-Daten können parameter-Unsicherheit quantifizieren und Prognose-Robustheit bewerten.
 
 \subsubsection{Maschinelles Lernen und neuronale Differentialgleichungen}
-Neue Richtung: Neuronale ODEs (Neural ODEs) kÃ¶nnten verwendet werden, um verborgene Mechanismen zu lernen. Ein Netzwerk $\theta$ parameterisiert $\dot{\mathbf{X}}_t = NN_\theta(\mathbf{X}_t)$, trainiert auf Daten, kÃ¶nnte neue epidemiologische Muster offenbaren.
+Neue Richtung: Neuronale ODEs (Neural ODEs) könnten verwendet werden, um verborgene Mechanismen zu lernen. Ein Netzwerk $\theta$ parameterisiert $\dot{\mathbf{X}}_t = NN_\theta(\mathbf{X}_t)$, trainiert auf Daten, könnte neue epidemiologische Muster offenbaren.
 
 \subsubsection{GPU-beschleunigte Simulation}
-Mit Millionen von Agenten und Tausenden von Parametervariationen kÃ¶nnen Hochdurchsatz-Screening von Interventionsszenarios durchgefÃ¼hrt werden. CUDA/OpenCL-Implementierungen wÃ¼rden Simulationen um 100-1000x beschleunigen.
+Mit Millionen von Agenten und Tausenden von Parametervariationen können Hochdurchsatz-Screening von Interventionsszenarios durchgeführt werden. CUDA/OpenCL-Implementierungen würden Simulationen um 100-1000x beschleunigen.
 
 \subsection{Biologische und Virologische Fronten}
 
 \subsubsection{Mutational Escape und Virenresistenz}
-Beide HIV und Ebola kÃ¶nnen unter therapeutischem Druck Resistenz-Mutationen akquirieren. Das GWRM kann erweitert werden mit
+Beide HIV und Ebola können unter therapeutischem Druck Resistenz-Mutationen akquirieren. Das GWRM kann erweitert werden mit
 \[
 \frac{dV_{\text{resist}}}{dt} = \nu \cdot p \cdot I - \text{(Fitness-Nachteil)} - c \cdot V_{\text{resist}},
 \]
 wo $\nu$ die Mutationsrate ist. Dies modelliert Reneszenz von Infektionen unter unzureichender Therapie.
 
-\subsubsection{Heterogene VirusgrÃ¶ÃŸe und Kompartimentalisierung}
-In HIV-Infektionen gibt es KÃ¶rper-Kompartimente mit unterschiedlicher Virus-Replikation (Gehirn, Genitaltrakt, GI-Trakt). Ein multi-compartmental GWRM kÃ¶nnte diese abbilden:
+\subsubsection{Heterogene Virusgröße und Kompartimentalisierung}
+In HIV-Infektionen gibt es Körper-Kompartimente mit unterschiedlicher Virus-Replikation (Gehirn, Genitaltrakt, GI-Trakt). Ein multi-compartmental GWRM könnte diese abbilden:
 \[
 \frac{dI_i^{\text{brain}}}{dt}, \quad \frac{dI_i^{\text{genital}}}{dt}, \quad \frac{dI_i^{\text{GI}}}{dt}
 \]
 mit Transfers zwischen Kompartimenten.
 
 \subsubsection{Within-Host-Immunologie}
-Beide Viren triggern komplexe Immunantworten (CTL, B-Zellen, AntikÃ¶rper). Ein erweiteres GWRM kÃ¶nnte Immunzell-Dynamik modellieren:
+Beide Viren triggern komplexe Immunantworten (CTL, B-Zellen, Antikörper). Ein erweiteres GWRM könnte Immunzell-Dynamik modellieren:
 \[
-\frac{dE_{\text{CTL}}}{dt} = \text{Aktivierung durch Ag} - \text{Depletion} - \text{ErschÃ¶pfung},
+\frac{dE_{\text{CTL}}}{dt} = \text{Aktivierung durch Ag} - \text{Depletion} - \text{Erschöpfung},
 \]
-was chronische Infektionen und ImmunerschÃ¶pfung erklÃ¤ren wÃ¼rde.
+was chronische Infektionen und Immunerschöpfung erklären würde.
 
 \subsection{Klinische und Epidemiologische Perspektiven}
 
-\subsubsection{FrÃ¼he Erkennungssysteme}
-Ein Echtzeit-GWRM-Modell mit kontinuierlichen Daten-Feeds (Fallberichte, Labortests) kÃ¶nnte als Vorhersage-System dienen:
+\subsubsection{Frühe Erkennungssysteme}
+Ein Echtzeit-GWRM-Modell mit kontinuierlichen Daten-Feeds (Fallberichte, Labortests) könnte als Vorhersage-System dienen:
 \begin{itemize}
-\item Spitzenwarn-Systeme fÃ¼r Epidemie-Risiko
-\item Echtzeit-Optimierung von KontrollmaÃŸnahmen
+\item Spitzenwarn-Systeme für Epidemie-Risiko
+\item Echtzeit-Optimierung von Kontrollmaßnahmen
 \item Ressourcen-Allocation (wo konzentriert man Impfstoffe?)
 \end{itemize}
 
-Dies wÃ¼rde globale Ãœberwachung (Global Health Security Agenda) stÃ¤rken.
+Dies würde globale Überwachung (Global Health Security Agenda) stärken.
 
 \subsubsection{Personalisierte Medizin}
-Das GWRM kÃ¶nnte verwendet werden, um patient-spezifische Therapieregime zu berechnen:
+Das GWRM könnte verwendet werden, um patient-spezifische Therapieregime zu berechnen:
 \begin{itemize}
 \item Basierend auf individueller Virenlast-Kinetik, Immun-Status, Genetik
 \item Optimale Dosierung und Kombinationen ableiten
 \item Therapie-Erfolg voraussagen
 \end{itemize}
 
-Dies ist besonders fÃ¼r HIV relevant, wo lange Therapie-Adherence kritisch ist.
+Dies ist besonders für HIV relevant, wo lange Therapie-Adherence kritisch ist.
 
-\subsubsection{Globale Gesundheit und PrÃ¤paredness}
+\subsubsection{Globale Gesundheit und Präparedness}
 Das GWRM zeigt, dass:
 \begin{itemize}
-\item FrÃ¼he Intervention exponentiell effizienter ist (exponentieller RÃ¼ckgang vs. arithmetischer RÃ¼ckgang)
-\item Kombinierte AnsÃ¤tze Ã¼berlegen sind zu Einzel-Interventionen
+\item Frühe Intervention exponentiell effizienter ist (exponentieller Rückgang vs. arithmetischer Rückgang)
+\item Kombinierte Ansätze überlegen sind zu Einzel-Interventionen
 \item Globale Surveillance und schnelle Reaktion essentiell sind
 \end{itemize}
 
@@ -744,41 +744,41 @@ Dies informiert Pandemiebereits- Strategie.
 
 \subsection{Weitere Pathogene und Anwendungsbereich}
 
-Das GWRM ist nicht auf HIV und Ebola beschrÃ¤nkt. Andere Anwendungen:
+Das GWRM ist nicht auf HIV und Ebola beschränkt. Andere Anwendungen:
 \begin{itemize}
 \item \textbf{COVID-19}: SEIR-Erweiterung auf Varianten und Reinfektionen
 \item \textbf{Influenza}: Saisonale Dynamik und Antigenic Drift
 \item \textbf{Hepatitis B/C}: Chronische Infektionen mit Zirrhose-Progression
-\item \textbf{Dengue/Zika}: VektorÃ¼bertragene Viren mit komplexer Immunologie
-\item \textbf{Malaria}: Parasite-Dynamik mit Ã¤uÃŸerst komplexer Immunologie
+\item \textbf{Dengue/Zika}: Vektorübertragene Viren mit komplexer Immunologie
+\item \textbf{Malaria}: Parasite-Dynamik mit äußerst komplexer Immunologie
 \end{itemize}
 
-Ein modulares GWRM-Framework, das Pathogen-spezifische Bausteine kombiniert, kÃ¶nnte eine universelle Infektions-Modellierungs-Plattform bilden.
+Ein modulares GWRM-Framework, das Pathogen-spezifische Bausteine kombiniert, könnte eine universelle Infektions-Modellierungs-Plattform bilden.
 
 \subsection{Grenzfragen und offene Probleme}
 
 \subsubsection{Mathematisch}
-1. KÃ¶nnen nicht-eindeutige endemische Gleichgewichte (BistabilitÃ¤t) in biologisch realistischen Parametern auftreten?
-2. Was ist die globale AttraktivitÃ¤ts-Region des krankheitsfreien Gleichgewichts?
+1. Können nicht-eindeutige endemische Gleichgewichte (Bistabilität) in biologisch realistischen Parametern auftreten?
+2. Was ist die globale Attraktivitäts-Region des krankheitsfreien Gleichgewichts?
 3. Gibt es Grenzzyklen (Oszillationen) im GWRM unter Immunmodulation?
 
 \subsubsection{Biologisch}
-1. Wie kÃ¶nnen wir RT-wie Enzyme in Ebola-Therapien ausnutzen, obwohl es nicht vorhanden ist?
-2. Warum ist HIV eine chronische Infektion, wÃ¤hrend Ebola akut ist, obwohl beide die Immunzellen beschÃ¤digen?
-3. KÃ¶nnen wir Breitspektrum-Antivirale gegen konvergent evolvierte Funktionen entwickeln?
+1. Wie können wir RT-wie Enzyme in Ebola-Therapien ausnutzen, obwohl es nicht vorhanden ist?
+2. Warum ist HIV eine chronische Infektion, während Ebola akut ist, obwohl beide die Immunzellen beschädigen?
+3. Können wir Breitspektrum-Antivirale gegen konvergent evolvierte Funktionen entwickeln?
 
 \subsubsection{Politisch und ethisch}
 1. Wie integrieren wir Vorhersage-Modelle in Entscheidungsfindung in ressourcensparsamen Umgebungen?
-2. Wie navigieren wir Patent- und Zugang-Fragen fÃ¼r neue Therapien?
-3. Wie kommunizieren wir Unsicherheit in Modellen an die Ã–ffentlichkeit?
+2. Wie navigieren wir Patent- und Zugang-Fragen für neue Therapien?
+3. Wie kommunizieren wir Unsicherheit in Modellen an die Öffentlichkeit?
 
-\subsection{AbschlieÃŸende Reflexion}
+\subsection{Abschließende Reflexion}
 
 Diese Arbeit hat einen einheitlichen mathematischen Rahmen entwickelt, der HIV und Ebola unter ein gemeinsames Dach bringt. Trotz ihrer biologischen Unterschiede folgen beide Viren universellen Prinzipien der Replikation, Transmissionen und Populationsdynamik.
 
-Die grÃ¶ÃŸte Hoffnung dieser Forschung ist, dass durch das VerstÃ¤ndnis dieser Gemeinsamkeiten, der Wettlauf gegen zoonotische Emergenz und pandemiepoten tielle Erreger beschleunigt werden kann. Die nÃ¤chste Generation von Antiviralen, Impfstoffen und Kontrollstrategien kÃ¶nnte Breitspektrum-AnsÃ¤tze sein, die gegen eine Klasse von Viren wirken, nicht nur einen einzelnen Erreger.
+Die größte Hoffnung dieser Forschung ist, dass durch das Verständnis dieser Gemeinsamkeiten, der Wettlauf gegen zoonotische Emergenz und pandemiepoten tielle Erreger beschleunigt werden kann. Die nächste Generation von Antiviralen, Impfstoffen und Kontrollstrategien könnte Breitspektrum-Ansätze sein, die gegen eine Klasse von Viren wirken, nicht nur einen einzelnen Erreger.
 
-Der SchlÃ¼ssel zu globaler Gesundheitssicherheit liegt nicht in der Reaktion auf einzelne Epidemien, sondern in der Entwicklung allgemeiner Theorien, Modelle und Technologien, die auf alle Viren anwendbar sind. Dieses Werk leistet einen Schritt auf diesem Weg.
+Der Schlüssel zu globaler Gesundheitssicherheit liegt nicht in der Reaktion auf einzelne Epidemien, sondern in der Entwicklung allgemeiner Theorien, Modelle und Technologien, die auf alle Viren anwendbar sind. Dieses Werk leistet einen Schritt auf diesem Weg.
 
 % =============================================================================
 \section{Zusammenfassung}
@@ -789,28 +789,28 @@ In dieser Arbeit wurden die folgenden Hauptresultate erzielt:
 \begin{enumerate}
 \item Entwicklung des \textbf{Generalisierten Within-Host-Replikationsmodells (GWRM)}, das beide HIV und Ebola unter einem parametrischen Rahmenwerk vereint.
 
-\item Beweis von \textbf{fÃ¼nf HauptsÃ¤tzen}:
+\item Beweis von \textbf{fünf Hauptsätzen}:
 \begin{itemize}
-\item GWRM-Satz 1: Globale Existenz und Eindeutigkeit von LÃ¶sungen
-\item GWRM-Satz 2: StabilitÃ¤t des krankheitsfreien Gleichgewichts
+\item GWRM-Satz 1: Globale Existenz und Eindeutigkeit von Lösungen
+\item GWRM-Satz 2: Stabilität des krankheitsfreien Gleichgewichts
 \item GWRM-Satz 3: Persistenzschwellen unter Therapie
 \item GWRM-Satz 4: Bifurkationsstruktur beim kritischen $\mathcal{R}_0$
-\item GWRM-Satz 5: Universelle Schranken fÃ¼r Interventions-Effizienz
+\item GWRM-Satz 5: Universelle Schranken für Interventions-Effizienz
 \end{itemize}
 
 \item Abgeleitet der \textbf{erweiterten Basisreproduktionszahl} $\mathcal{R}_0^{\text{unified}}$, die Within-Host und Between-Host-Parameter kombiniert.
 
-\item DurchgefÃ¼hrte \textbf{numerische Simulationen} mit sechs detaillierten matplotlib-Visualisierungen, die Within-Host-Replikation, BevÃ¶lkerungs-Epidemiologie und Interventionsszenarien zeigen.
+\item Durchgeführte \textbf{numerische Simulationen} mit sechs detaillierten matplotlib-Visualisierungen, die Within-Host-Replikation, Bevölkerungs-Epidemiologie und Interventionsszenarien zeigen.
 
-\item Identifiziert \textbf{strukturelle Invarianten} trotz phÃ¤notypischer Unterschiede, die auf konvergente Evolution hindeuten.
+\item Identifiziert \textbf{strukturelle Invarianten} trotz phänotypischer Unterschiede, die auf konvergente Evolution hindeuten.
 
-\item Abgeleitet \textbf{praktische Implikationen} fÃ¼r Therapie-Design, Impf-Strategien und Kombinations-Interventionen.
+\item Abgeleitet \textbf{praktische Implikationen} für Therapie-Design, Impf-Strategien und Kombinations-Interventionen.
 
-\item Dargelegt \textbf{offene Forschungsfronten} fÃ¼r stochastische Modelle, rÃ¤umliche HeterogenitÃ¤t, Parameter-SchÃ¤tzung, und Erweiterungen auf andere Pathogene.
+\item Dargelegt \textbf{offene Forschungsfronten} für stochastische Modelle, räumliche Heterogenität, Parameter-Schätzung, und Erweiterungen auf andere Pathogene.
 
 \end{enumerate}
 
-Diese Arbeit trÃ¤gt zu einem tieferen VerstÃ¤ndnis der grundlegenden Mechanismen infektiÃ¶ser Krankheiten bei und stellt ein Fundament fÃ¼r rationale, datengestÃ¼tzte Interventions-Strategien bereit.
+Diese Arbeit trägt zu einem tieferen Verständnis der grundlegenden Mechanismen infektiöser Krankheiten bei und stellt ein Fundament für rationale, datengestützte Interventions-Strategien bereit.
 
 \newpage
 

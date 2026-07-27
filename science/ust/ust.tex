@@ -52,13 +52,13 @@
     numbers=left, numberstyle=\tiny,
     breaklines=true, frame=single,
     literate=%
-    {Ã–}{{\"O}}1 {Ã„}{{\"A}}1 {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1 {Ã¼}{{\"u}}1 {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
+    {ß}{{\ss}}1 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1
 }
 
 \title{Die Universelle Signatur-Theorie:\\
 $\sigma_j = \sum_{i} A_{ij} \cdot 2^i + j \cdot 2^n$\\
-als domÃ¤nenÃ¼bergreifendes Isomorphie-Primitiv\\
+als domänenübergreifendes Isomorphie-Primitiv\\
 in 15 wissenschaftlichen Disziplinen}
 \author{Stephan Epp\\[4pt]
 \small Universit\"at Bielefeld}
@@ -85,7 +85,7 @@ Ferner wird der \emph{Boolesche Kompositionssatz} (Satz~\ref{satz:boolkomp})
 bewiesen, der die Verbindung zwischen $\sigma$ und Boolescher
 Matrizenmultiplikation herstellt, sowie der \emph{Hierarchie-Satz}
 (Satz~\ref{satz:hierarchie}), der zeigt, dass Subgraph-Inklusionsketten
-in \emph{allen} 15 DomÃ¤nen als LCS-Bedingungen auf Signatur-Arrays
+in \emph{allen} 15 Domänen als LCS-Bedingungen auf Signatur-Arrays
 \"aquivalent formulierbar sind.
 Die Arbeit schlie{\ss}t mit dem \emph{P$=$NP-Implikationssatz}
 (Satz~\ref{satz:pnp}), der zeigt, dass die SAT-Reduktion auf Subgraph-Isomorphie
@@ -126,7 +126,7 @@ bei der Quantencomputer-Architektur~\cite{epp2026qsubgraph},
 bei der Robotik-Pfadplanung~\cite{epp2026robophi} und
 bei Wirtschaftsnetzwerken~\cite{epp2026spieltheorie}.
 
-Bislang wurde diese Funktion jeweils \emph{ad hoc} f\"ur die jeweilige DomÃ¤ne
+Bislang wurde diese Funktion jeweils \emph{ad hoc} f\"ur die jeweilige Domäne
 entwickelt. Diese Arbeit beweist erstmals, dass es sich um \emph{eine einzige
 mathematische Struktur} handelt -- die Universelle Signatur-Funktion $\sigma$ --
 und leitet ihre allgemeinen Eigenschaften (Injektivit\"at, Kompositionsverhalten,
@@ -150,7 +150,7 @@ Quantenfehlerkorrektur und viele weitere Strukturaussagen beruhen.
 Abschnitt~2 entwickelt die formale Definition und beweist Injektivit\"at
 sowie Kanonizit\"at. Abschnitt~3 beweist den Universellen Signatur-Satz.
 Abschnitt~4 stellt die Verbindung zur Booleschen Matrizenmultiplikation her.
-Abschnitt~5 beweist den Hierarchie-Satz f\"ur alle 15 DomÃ¤nen.
+Abschnitt~5 beweist den Hierarchie-Satz f\"ur alle 15 Domänen.
 Abschnitt~6 gibt die P$=$NP-Implikation. Abschnitt~7 fasst zusammen.
 Abschnitt~8 gibt einen ausf\"uhrlichen Ausblick.
 
@@ -240,7 +240,7 @@ Dies gilt f\"ur alle $j$, also $A = A'$.
 \caption{Links: Injektivit\"at der Signatur-Funktion als disjunkte Intervalle
 $[j\cdot 2^n, (j+1)\cdot 2^n)$ f\"ur jede Spalte $j$;
 wei{\ss}e Dreiecke: Beispiel-Signaturwerte.
-Rechts: 15 DomÃ¤nen des wissenschaftlichen Portfolios als Rad-Diagramm;
+Rechts: 15 Domänen des wissenschaftlichen Portfolios als Rad-Diagramm;
 der zentrale Knoten $\sigma_j\;/\;O(n^3)$ repr\"asentiert den universellen Kern.}
 \label{fig:sigma_domains}
 \end{figure}
@@ -324,7 +324,7 @@ Gesamt: $O(n^2)$.
 goldener Rahmen markiert die kanonische Rotation.
 Oben rechts: LCS-DP-Tabelle f\"ur zwei Signatur-Arrays.
 Unten links: Komplexit\"atsvergleich (log-Skala).
-Unten rechts: DomÃ¤nen-Kopplungsmatrix ($D_{ij}=1$: gleiche $\sigma$-Struktur).}
+Unten rechts: Domänen-Kopplungsmatrix ($D_{ij}=1$: gleiche $\sigma$-Struktur).}
 \label{fig:lcs_rotation}
 \end{figure}
 
@@ -335,7 +335,7 @@ Unten rechts: DomÃ¤nen-Kopplungsmatrix ($D_{ij}=1$: gleiche $\sigma$-Struktur)
 \begin{satz}[Instanziierungs-Satz]
 \label{satz:instanz}
 Die Signatur-Funktion $\sigma_j$ aus Definition~\ref{def:sigma}
-instanziiert sich in mindestens sechs kanonischen DomÃ¤nen als
+instanziiert sich in mindestens sechs kanonischen Domänen als
 strukturell identische Abbildung:
 \begin{enumerate}[label=(\roman*)]
     \item \textbf{DFA-Graph} (formale Sprachen):
@@ -350,7 +350,7 @@ strukturell identische Abbildung:
     \item \textbf{Protein-Interaktionsnetz} (Biologie/Epidemiologie):
           $A_{\mathrm{PPI}} \in \{0,1\}^{|P|\times|P|}$,
           $\sigma_j = \sigma_j(A_{\mathrm{PPI}})$~\cite{epp2026gen}.
-    \item \textbf{AtmosphÃ¤rische Kopplungsmatrix} (Klimamodelle):
+    \item \textbf{Atmosphärische Kopplungsmatrix} (Klimamodelle):
           $A_{\mathrm{atm}} \in \{0,1\}^{|Z|\times|Z|}$,
           $\sigma_j = \sigma_j(A_{\mathrm{atm}})$~\cite{epp2026klima}.
     \item \textbf{Kryptographische Signatur-Matrix} (Kryptographie):
@@ -364,7 +364,7 @@ gilt, und das Subgraph-Problem ist in $O(n^3)$ entscheidbar.
 \begin{proof}
 Die Instanziierungen unterscheiden sich lediglich durch die Interpretation
 der Matrix $A$:
-In (i) kodiert $A_{ij} = 1$ einen ZustandsÃ¼bergang.
+In (i) kodiert $A_{ij} = 1$ einen Zustandsübergang.
 In (ii) kodiert $A_{ij} = 1$ eine Best-Response-Abweichung.
 In (iii) kodiert $A_{ij} = 1$ eine Fehlerkettenkopplung.
 In (iv) kodiert $A_{ij} = 1$ eine Protein-Protein-Interaktion.
@@ -379,10 +379,10 @@ gilt unabh\"angig von der physikalischen Interpretation.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{plot3_instanzen.pdf}
-\caption{Sechs Instanziierungen der Signatur-Funktion in verschiedenen DomÃ¤nen.
+\caption{Sechs Instanziierungen der Signatur-Funktion in verschiedenen Domänen.
 Obere H\"alfte: Adjazenzmatrix als Heatmap (blau = 1).
 Untere H\"alfte: Signatur-Balken $\sigma_j$ je Spalte.
-Alle sechs DomÃ¤nen teilen dieselbe algebraische Struktur der Signatur-Funktion.}
+Alle sechs Domänen teilen dieselbe algebraische Struktur der Signatur-Funktion.}
 \label{fig:instanzen}
 \end{figure}
 
@@ -453,7 +453,7 @@ Einzel-Signaturen.}
 
 \begin{satz}[Universeller Hierarchie-Satz]
 \label{satz:hierarchie}
-In jeder der 15 DomÃ¤nen des wissenschaftlichen Portfolios,
+In jeder der 15 Domänen des wissenschaftlichen Portfolios,
 in der eine Subgraph-Inklusionskette
 $G^{(1)} \subseteq G^{(2)} \subseteq \cdots \subseteq G^{(k)}$ definierbar ist,
 gilt diese Inklusionskette genau dann, wenn die LCS-Bedingung
@@ -475,7 +475,7 @@ F\"ur festes $k$ (Kettentiefe): $O(n^3)$.
 \end{proof}
 
 \begin{beispiel}[Hierarchie in formalen Sprachen]
-$G_{\text{RegulÃ¤r}} \subseteq G_{\text{KF}} \subseteq G_{\text{KS}} \subseteq G_{\text{Typ 0}}$
+$G_{\text{Regulär}} \subseteq G_{\text{KF}} \subseteq G_{\text{KS}} \subseteq G_{\text{Typ 0}}$
 entspricht der LCS-Bedingung zwischen den Signatur-Arrays der jeweiligen
 Automaten-Adjazenzmatrizen. Satz~\ref{satz:hierarchie} zeigt, dass die
 Chomsky-Hierarchie in $O(n^3)$ verifizierbar ist.
@@ -491,7 +491,7 @@ Surface Code enthalten ist.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{plot5_hierarchie.pdf}
-\caption{Links: Universelle Hierarchieketten in zwei DomÃ¤nen (formale Sprachen,
+\caption{Links: Universelle Hierarchieketten in zwei Domänen (formale Sprachen,
 Spieltheorie); echte Inklusionen als Subgraph-Pfeile.
 Rechts: Implikationskette $\sigma \Rightarrow O(n^3) \Rightarrow
 \text{SAT}\in P \Rightarrow P=NP$ als Pipeline-Diagramm.}
@@ -504,7 +504,7 @@ Rechts: Implikationskette $\sigma \Rightarrow O(n^3) \Rightarrow
 
 \begin{satz}[P$=$NP-Implikation der Universellen Signatur-Theorie]
 \label{satz:pnp}
-Sei die Universelle Signatur-Theorie korrekt (SÃ¤tze~\ref{satz:universal},
+Sei die Universelle Signatur-Theorie korrekt (Sätze~\ref{satz:universal},
 \ref{satz:boolkomp}, \ref{satz:hierarchie}). Dann gilt $\mathrm{P} = \mathrm{NP}$.
 \end{satz}
 
@@ -539,7 +539,7 @@ Die P$=$NP-Aussage h\"angt von der Korrektheit der SAT-Reduktion in Schritt~1
 ab. Eine vollst\"andige Verifikation dieser Reduktion findet sich
 in~\cite{epp2026lsat}. Die vorliegende Arbeit zeigt, dass die algorithmische
 Schranke $O(n^3)$ aus der Struktur der Universellen Signatur-Funktion
-folgt -- unabh\"angig von der spezifischen DomÃ¤ne.
+folgt -- unabh\"angig von der spezifischen Domäne.
 \end{bemerkung}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -575,7 +575,7 @@ via Subgraph-Inklusion (Satz~\ref{satz:universal}(ii)).
 Graphen $G_1, G_2, G_3$ werden auf ihre Signatur-Arrays abgebildet;
 Morphismen $f_{12}, f_{23}$ entsprechen LCS-Morphismen.
 Rechts: Konzentrische Schichten des universellen Rahmensystems:
-$\sigma$-Kern, Algorithmen-Schicht, Anwendungs-Schicht, 8 DomÃ¤nen.}
+$\sigma$-Kern, Algorithmen-Schicht, Anwendungs-Schicht, 8 Domänen.}
 \label{fig:kategorie}
 \end{figure}
 
@@ -595,12 +595,12 @@ mathematisches Fundament entwickelt. Die zentralen Ergebnisse:
           Isomorphieinvarianz, Subgraph-\"Aquivalenz, $O(n^3)$-Laufzeit.
     \item \textbf{Korollar~\ref{kor:kanon}} (Kanonisierung in $O(n^2)$).
     \item \textbf{Satz~\ref{satz:instanz}} (Instanziierungs-Satz):
-          6 kanonische DomÃ¤nen mit strukturell identischer $\sigma$-Funktion.
+          6 kanonische Domänen mit strukturell identischer $\sigma$-Funktion.
     \item \textbf{Satz~\ref{satz:boolkomp}} (Boolescher Kompositionssatz):
           $\vec{\sigma}(A_1 \odot A_2) = \Phi(\vec{\sigma}(A_1), \vec{\sigma}(A_2))$.
     \item \textbf{Korollar~\ref{kor:monoid}} (Monoid): $(\mathcal{M}_n, \star)$ Monoid.
     \item \textbf{Satz~\ref{satz:hierarchie}} (Hierarchie-Satz):
-          Subgraph-Inklusionsketten in allen 15 DomÃ¤nen via LCS.
+          Subgraph-Inklusionsketten in allen 15 Domänen via LCS.
     \item \textbf{Satz~\ref{satz:pnp}} ($P=NP$): $\sigma + $ SAT-Reduktion
           $\Rightarrow P = NP$.
     \item \textbf{Satz~\ref{satz:funktor}} (Funktor): $\Sigma$ ist ein
@@ -654,7 +654,7 @@ $\vec{\sigma}$ als kryptographischen Schl\"ussel.
 Post-Quanten-Sicherheit~\cite{epp2026lattice}: Das SVP im Signatur-Gitter
 $\Lambda(\vec{\sigma}) \subset \mathbb{Z}^n$ ist NP-schwer.
 Forschungsrichtung: Kann man aus der Universellen Signatur-Theorie ein
-\emph{universelles kryptographisches Primitiv} ableiten, das in allen 15 DomÃ¤nen
+\emph{universelles kryptographisches Primitiv} ableiten, das in allen 15 Domänen
 gleichzeitig als Sicherheitsgrundlage dient?
 
 \subsection{Signatur-Theorie und Neuronale Netzwerke}
@@ -752,7 +752,7 @@ Unterschiedliche Wissenschaften sind verschiedene
 
 \bibitem{fourier1822}
 Fourier, J.\,B.\,J. (1822).
-\textit{ThÃ©orie analytique de la chaleur}.
+\textit{Théorie analytique de la chaleur}.
 Paris: Firmin Didot.
 
 \bibitem{grothendieck1960}
@@ -772,7 +772,7 @@ Lexicographically least circular substrings.
 
 \bibitem{epp2026subgraph}
 Epp, S. (2026).
-Der Subgraph Algorithmus --- LÃ¶sung des Subgraph-Isomorphismus in $O(n^3)$.
+Der Subgraph Algorithmus --- Lösung des Subgraph-Isomorphismus in $O(n^3)$.
 \url{https://github.com/hjstephan86/science}
 
 \bibitem{epp2026boolmm}
@@ -802,7 +802,7 @@ Google Drive (epp-group).
 
 \bibitem{epp2026sigchiffre}
 Epp, S. (2026).
-Strukturbasierte VerschlÃ¼sselungsmethode (Signatur-Chiffre).
+Strukturbasierte Verschlüsselungsmethode (Signatur-Chiffre).
 \url{https://github.com/hjstephan86/science/tree/main/science/sigchiffre}
 
 \bibitem{epp2026vlsi}
@@ -827,7 +827,7 @@ Google Drive (epp-group).
 
 \bibitem{epp2026klima}
 Epp, S. (2026).
-AtmosphÃ¤rische Systemtheorie.
+Atmosphärische Systemtheorie.
 Google Drive (epp-group).
 
 \bibitem{epp2026dna}
@@ -871,12 +871,12 @@ Google Drive (epp-group).
 
 \bibitem{epp2026expl}
 Epp, S. (2026).
-Grenzen mathematischer Beschreibbarkeit --- UniversalitÃ¤t der Exponentialfunktion.
+Grenzen mathematischer Beschreibbarkeit --- Universalität der Exponentialfunktion.
 \url{https://github.com/hjstephan86/science/tree/main/science/expl}
 
 \bibitem{epp2026analog}
 Epp, S. (2026).
-Analog als primÃ¤rer Begriff zur Beschreibung der realen Welt.
+Analog als primärer Begriff zur Beschreibung der realen Welt.
 Google Drive (epp-group).
 
 \bibitem{epp2026naturgesetze}
@@ -886,7 +886,7 @@ Google Drive (epp-group).
 
 \bibitem{epp2026dusgrxdnastr}
 Epp, S. (2026).
-Ãœbertragung der Dateisystem-Deduplizierung auf DNA-basierte Datenspeicherung.
+Übertragung der Dateisystem-Deduplizierung auf DNA-basierte Datenspeicherung.
 \url{https://github.com/hjstephan86/science/tree/main/science/dusgrxdnastr}
 
 \end{thebibliography}

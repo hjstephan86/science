@@ -54,13 +54,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -84,30 +84,30 @@ Mutex-Locks, Read-Write-Locks, POSIX-Semaphoren sowie Bedingungsvariablen --
 und wendet den Subgraph Algorithmus~\cite{epp2026subgraph} auf diese Strukturen
 an. Wir zeigen formal, dass jeder Synchronisationsmechanismus als
 gerichteter Graph modelliert werden kann, dessen Knoten
-ProzesszustÃ¤nde und deren Kanten ZustandsÃ¼bergÃ¤nge darstellen.
+Prozesszustände und deren Kanten Zustandsübergänge darstellen.
 Der Subgraph Algorithmus erlaubt es, strukturelle Enthaltenseins\-be\-zieh\-ungen
 zwischen solchen Zustandsautomaten effizient in $O(n^{3})$ zu bestimmen.
-Dies ermÃ¶glicht eine automatische Klassifikation sowie
+Dies ermöglicht eine automatische Klassifikation sowie
 Redundanz\-erkennung in der Synchronisationslogik verteilter Systeme.
 Alle Ergebnisse werden durch formale Beweise und illustrierende
-Matplotlib-Plots gestÃ¼tzt.
+Matplotlib-Plots gestützt.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 % =========================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % =========================================================================
 
 Moderne Betriebssysteme stellen eine Vielzahl von Synchronisations\-mechanismen
 bereit, um den gleichzeitigen Zugriff konkurrierender Prozesse und Threads
 auf gemeinsame Ressourcen korrekt zu koordinieren.
-Diese Mechanismen -- von einfachen Spin-Locks Ã¼ber Mutex-Locks und Semaphoren
+Diese Mechanismen -- von einfachen Spin-Locks über Mutex-Locks und Semaphoren
 bis hin zu Bedingungsvariablen und Read-Write-Locks -- lassen sich
 einheitlich als endliche gerichtete Graphen auffassen, deren Knoten
-ProzesszustÃ¤nde und deren gerichtete Kanten atomare ZustandsÃ¼bergÃ¤nge
-reprÃ¤sentieren~\cite{tanenbaum2014modern,silberschatz2018os}.
+Prozesszustände und deren gerichtete Kanten atomare Zustandsübergänge
+repräsentieren~\cite{tanenbaum2014modern,silberschatz2018os}.
 
 Eine fundamentale Fragestellung ist: \emph{Ist Mechanismus~$A$ eine
 Verallgemeinerung von Mechanismus~$B$?} Formal bedeutet dies, ob der
@@ -118,31 +118,31 @@ Rotationen und Signatur-Arrays.
 
 \subsection{Beitrag dieser Arbeit}
 
-Die vorliegende Arbeit liefert folgende BeitrÃ¤ge:
+Die vorliegende Arbeit liefert folgende Beiträge:
 
 \begin{enumerate}
   \item Formale Definition der Zustandsgraphen aller relevanten
         Betriebssystem-Synchronisa\-tionsmechanismen.
-  \item Beweis, dass ein binÃ¤res Semaphor als Subgraph eines allgemeinen
-        ZÃ¤hlsemaphors und eines Mutex-Locks auftritt.
+  \item Beweis, dass ein binäres Semaphor als Subgraph eines allgemeinen
+        Zählsemaphors und eines Mutex-Locks auftritt.
   \item Beweis, dass Spin-Locks einen echten Subgraphen im Mutex-Lock
         darstellen.
   \item Anwendung des Subgraph Algorithmus auf konkrete Adjazenzmatrizen
         dieser Mechanismen.
-  \item KomplexitÃ¤tsanalyse und Korrektheitsbeweis fÃ¼r den vorliegenden
+  \item Komplexitätsanalyse und Korrektheitsbeweis für den vorliegenden
         Anwendungsfall.
-  \item AusfÃ¼hrlicher Ausblick auf weiterfÃ¼hrende Forschungsrichtungen.
+  \item Ausführlicher Ausblick auf weiterführende Forschungsrichtungen.
 \end{enumerate}
 
 \subsection{Gliederung}
 
-Abschnitt~\ref{sec:grundlagen} fÃ¼hrt die mathematischen Grundlagen ein.
+Abschnitt~\ref{sec:grundlagen} führt die mathematischen Grundlagen ein.
 Abschnitt~\ref{sec:modellierung} modelliert die Synchronisations\-mechanismen
 als Graphen. Abschnitt~\ref{sec:algorithmus} rekapituliert den Subgraph
 Algorithmus. Abschnitt~\ref{sec:anwendung} beweist die Subgraph-Beziehungen.
 Abschnitt~\ref{sec:plots} beschreibt die visualisierten Ergebnisse.
-Abschnitt~\ref{sec:zusammenfassung} schlieÃŸt mit Zusammenfassung und
-ausfÃ¼hrlichem Ausblick.
+Abschnitt~\ref{sec:zusammenfassung} schließt mit Zusammenfassung und
+ausführlichem Ausblick.
 
 % =========================================================================
 \section{Grundlagen}
@@ -186,7 +186,7 @@ ausfÃ¼hrlichem Ausblick.
 
 \begin{definition}[Signatur einer Spalte]
   \label{def:signatur}
-  FÃ¼r die Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und Spaltenindex
+  Für die Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ und Spaltenindex
   $j \in \{0, \ldots, n-1\}$ ist die Signatur
   \[
     \sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^{i} + j \cdot 2^{n}.
@@ -195,13 +195,13 @@ ausfÃ¼hrlichem Ausblick.
 
 \begin{definition}[Zustandsautomat eines Synchronisationsmechanismus]
   Ein Synchronisationsmechanismus $M$ wird modelliert als Digraph
-  $G_M = (Z, T)$, wobei $Z$ die Menge der ProzesszustÃ¤nde (z.\,B.\
+  $G_M = (Z, T)$, wobei $Z$ die Menge der Prozesszustände (z.\,B.\
   \texttt{wartend}, \texttt{blockiert}, \texttt{kritischer Abschnitt}) und
-  $T \subseteq Z \times Z$ die Menge der atomaren ZustandsÃ¼bergÃ¤nge (z.\,B.\
+  $T \subseteq Z \times Z$ die Menge der atomaren Zustandsübergänge (z.\,B.\
   \texttt{lock()}, \texttt{unlock()}, \texttt{signal()}) darstellt.
 \end{definition}
 
-\subsection{Synchronisationsmechanismen im Ãœberblick}
+\subsection{Synchronisationsmechanismen im Überblick}
 
 Die in dieser Arbeit betrachteten Mechanismen sind in
 Tabelle~\ref{tab:mech} zusammengefasst.
@@ -216,8 +216,8 @@ Tabelle~\ref{tab:mech} zusammengefasst.
     \midrule
     Spin-Lock & aktiv (Polling) & ---                       & 3 \\
     Mutex-Lock & passiv (blockierend) & \texttt{pthread\_mutex\_t} & 5 \\
-    BinÃ¤res Semaphor & passiv & \texttt{sem\_t} (init=1)   & 4 \\
-    ZÃ¤hl-Semaphor & passiv & \texttt{sem\_t} (init=$k$)   & $k{+}3$ \\
+    Binäres Semaphor & passiv & \texttt{sem\_t} (init=1)   & 4 \\
+    Zähl-Semaphor & passiv & \texttt{sem\_t} (init=$k$)   & $k{+}3$ \\
     RW-Lock (Lesen) & passiv & \texttt{pthread\_rwlock\_t} & 5 \\
     RW-Lock (Schreiben) & passiv & \texttt{pthread\_rwlock\_t} & 5 \\
     Bedingungsvariable & passiv & \texttt{pthread\_cond\_t} & 6 \\
@@ -249,11 +249,11 @@ Die atomare \texttt{testandset}-Operation bildet den Kern~\cite{herlihy2008art}.
     \end{pmatrix}
     \in \{0,1\}^{3 \times 3},
   \]
-  wobei Spalten und Zeilen den ZustÃ¤nden
+  wobei Spalten und Zeilen den Zuständen
   $[0_{\mathrm{frei}},\, 1_{\mathrm{versuch}},\, 2_{\mathrm{besitz}}]$
   entsprechen.
   Die Kante $(0, 1)$ kodiert \texttt{testandset} (Versuch),
-  $(1, 0)$ kodiert ZurÃ¼ckspringen bei belegt (Polling),
+  $(1, 0)$ kodiert Zurückspringen bei belegt (Polling),
   $(1, 2)$ kodiert Eintritt in den kritischen Abschnitt.
 \end{definition}
 
@@ -284,11 +284,11 @@ belegt ist, und weckt ihn nach \texttt{unlock()} wieder auf~\cite{silberschatz20
   $(4,0)$ = Freigabe des Mutex.
 \end{definition}
 
-\subsection{BinÃ¤res Semaphor}
+\subsection{Binäres Semaphor}
 
-Ein binÃ¤res Semaphor entspricht einem Mutex mit ZÃ¤hlerwert $\in \{0,1\}$.
+Ein binäres Semaphor entspricht einem Mutex mit Zählerwert $\in \{0,1\}$.
 
-\begin{definition}[BinÃ¤res Semaphor-Graph $G_{\mathrm{BS}}$]
+\begin{definition}[Binäres Semaphor-Graph $G_{\mathrm{BS}}$]
   \label{def:bs}
   Sei $Z_{\mathrm{BS}} = \{0_{\mathrm{frei}},\, 1_{\mathrm{blockiert}},\, 2_{\mathrm{KA}},\, 3_{\mathrm{freigabe}}\}$.
   Die Adjazenzmatrix lautet
@@ -305,26 +305,26 @@ Ein binÃ¤res Semaphor entspricht einem Mutex mit ZÃ¤hlerwert $\in \{0,1\}$.
   $(0,2)$ = \texttt{wait()} bei frei (direkter Eintritt);
   $(1,2)$ = Aufwecken durch \texttt{signal()};
   $(2,3)$ = Ende des kritischen Abschnitts;
-  $(3,0)$ = ZurÃ¼cksetzen auf frei.
+  $(3,0)$ = Zurücksetzen auf frei.
 \end{definition}
 
-\subsection{Allgemeines ZÃ¤hl-Semaphor}
+\subsection{Allgemeines Zähl-Semaphor}
 
-Ein ZÃ¤hl-Semaphor mit Initialwert $k$ erlaubt bis zu $k$ simultane Zugriffe.
+Ein Zähl-Semaphor mit Initialwert $k$ erlaubt bis zu $k$ simultane Zugriffe.
 
-\begin{definition}[ZÃ¤hl-Semaphor-Graph $G_{\mathrm{ZS}}^{(k)}$]
+\begin{definition}[Zähl-Semaphor-Graph $G_{\mathrm{ZS}}^{(k)}$]
   \label{def:zs}
   Sei $k \geq 2$ und
   $Z_{\mathrm{ZS}} = \{c_0, c_1, \ldots, c_k, b, f\}$ mit $|Z_{\mathrm{ZS}}| = k+3$.
-  Dabei kodiert $c_i$ den Zustand,,ZÃ¤hler hat Wert $i$``,
+  Dabei kodiert $c_i$ den Zustand,,Zähler hat Wert $i$``,
   $b$ den Blockiert-Zustand und $f$ den Freigabe-Zustand.
-  Die ÃœbergÃ¤nge bilden eine lineare Kette
+  Die Übergänge bilden eine lineare Kette
   \[
     c_k \xrightarrow{\mathrm{wait}} c_{k-1} \xrightarrow{\mathrm{wait}}
     \cdots \xrightarrow{\mathrm{wait}} c_1 \xrightarrow{\mathrm{wait}} c_0
     \xrightarrow{\mathrm{wait}} b,
   \]
-  ergÃ¤nzt durch
+  ergänzt durch
   \[
     c_i \xrightarrow{\mathrm{signal}} c_{i+1} \quad (0 \leq i < k)
     \qquad\text{und}\qquad
@@ -373,8 +373,8 @@ Ein ZÃ¤hl-Semaphor mit Initialwert $k$ erlaubt bis zu $k$ simultane Zugriffe.
     \end{pmatrix}.
   \]
   Kanten: $(0,1)$ = Mutex erwerben; $(1,2)$ = Bedingung testen;
-  $(2,3)$ = Bedingung nicht erfÃ¼llt $\Rightarrow$ \texttt{cond\_wait};
-  $(2,4)$ = Bedingung erfÃ¼llt $\Rightarrow$ Eintritt KA;
+  $(2,3)$ = Bedingung nicht erfüllt $\Rightarrow$ \texttt{cond\_wait};
+  $(2,4)$ = Bedingung erfüllt $\Rightarrow$ Eintritt KA;
   $(3,1)$ = Aufwecken durch \texttt{cond\_signal};
   $(4,5)$ = Ende KA; $(5,0)$ = Mutex freigeben.
 \end{definition}
@@ -389,8 +389,8 @@ Ein ZÃ¤hl-Semaphor mit Initialwert $k$ erlaubt bis zu $k$ simultane Zugriffe.
 Der Subgraph Algorithmus~\cite{epp2026subgraph} arbeitet in drei Phasen.
 
 \textbf{Phase~1: Signaturberechnung.}
-FÃ¼r jeden Graphen $G$ mit Adjazenzmatrix $A \in \{0,1\}^{n \times n}$
-werden die $n$ Spalten-Signaturen gemÃ¤ÃŸ Definition~\ref{def:signatur}
+Für jeden Graphen $G$ mit Adjazenzmatrix $A \in \{0,1\}^{n \times n}$
+werden die $n$ Spalten-Signaturen gemäß Definition~\ref{def:signatur}
 berechnet:
 \[
   \sigma_j^A = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n,
@@ -398,19 +398,19 @@ berechnet:
 \]
 
 \textbf{Phase~2: Zyklische Rotation.}
-FÃ¼r jeden der $n_B$ Rotationsschritte $r = 0, \ldots, n_B - 1$ wird die
+Für jeden der $n_B$ Rotationsschritte $r = 0, \ldots, n_B - 1$ wird die
 Signatur-Folge $\sigma^B$ des Graphen $G'$ um $r$ Positionen rotiert:
 \[
   \sigma^{B,r} = \mathrm{rot}_r\bigl([\sigma^B_0, \ldots, \sigma^B_{n_B-1}]\bigr).
 \]
 
 \textbf{Phase~3: LCS-Vergleich.}
-FÃ¼r jede Rotation wird die lÃ¤ngste gemeinsame Teilsequenz (LCS) von
+Für jede Rotation wird die längste gemeinsame Teilsequenz (LCS) von
 $\sigma^A$ und der rotierten Folge $\sigma^{B,r}$ mittels dynamischer
 Programmierung berechnet. Eine Subgraph-Beziehung liegt vor, wenn
 $\mathrm{LCS} \geq 2$.
 
-\begin{lemma}[InjektivitÃ¤t der Signaturen~\cite{epp2026subgraph}]
+\begin{lemma}[Injektivität der Signaturen~\cite{epp2026subgraph}]
   \label{lem:inj}
   Die Signatur-Funktion $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\} \to \mathbb{N}$
   ist injektiv. Verschiedene Spaltenpaare $(A_{\cdot j}, j)$ und
@@ -419,10 +419,10 @@ $\mathrm{LCS} \geq 2$.
 
 \begin{proof}
   Die Zeilenkomponente $\sum_{i} A_{ij} \cdot 2^i$ kodiert den Spaltenvektor
-  eindeutig als BinÃ¤rzahl. Der Summand $j \cdot 2^n$ verschiebt diesen Wert
+  eindeutig als Binärzahl. Der Summand $j \cdot 2^n$ verschiebt diesen Wert
   in das disjunkte Intervall $[j \cdot 2^n,\, (j+1) \cdot 2^n)$, da
   $\sum_{i=0}^{n-1} 2^i = 2^n - 1 < 2^n$. Zwei verschiedene
-  $(A_{\cdot j}, j)$ fÃ¼hren daher nie zum selben Signaturwert.
+  $(A_{\cdot j}, j)$ führen daher nie zum selben Signaturwert.
   \hfill$\blacksquare$
 \end{proof}
 
@@ -434,11 +434,11 @@ $\mathrm{LCS} \geq 2$.
 
 \begin{proof}
   Nach Lemma~\ref{lem:inj} ist die Signaturabbildung injektiv: eine
-  Ãœbereinstimmung zweier Signaturen entspricht exakt einer gleichen Spalte.
+  Übereinstimmung zweier Signaturen entspricht exakt einer gleichen Spalte.
   Eine Subgraph-Beziehung erfordert, dass mindestens $2$ Spalten von $A$
-  in~$B$ enthalten sind, was einem LCS $\geq 2$ entspricht. Da fÃ¼r jede der
-  $n_B$ Rotationen eine LCS-Berechnung in $O(n^2)$ durchgefÃ¼hrt wird,
-  betrÃ¤gt die Gesamtlaufzeit $O(n_B \cdot n^2) = O(n^3)$.
+  in~$B$ enthalten sind, was einem LCS $\geq 2$ entspricht. Da für jede der
+  $n_B$ Rotationen eine LCS-Berechnung in $O(n^2)$ durchgeführt wird,
+  beträgt die Gesamtlaufzeit $O(n_B \cdot n^2) = O(n^3)$.
   \hfill$\blacksquare$
 \end{proof}
 
@@ -456,9 +456,9 @@ $\mathrm{LCS} \geq 2$.
 \end{satz}
 
 \begin{proof}
-Wir mÃ¼ssen zeigen, dass eine Knotenabbildung
+Wir müssen zeigen, dass eine Knotenabbildung
 $\varphi: Z_{\mathrm{SL}} \to Z_{\mathrm{ML}}$ existiert, die alle Kanten
-erhÃ¤lt.
+erhält.
 
 Definiere $\varphi$ als:
 \[
@@ -475,13 +475,13 @@ Wir verifizieren jede Kante von $G_{\mathrm{SL}}$:
         In $A_{\mathrm{ML}}$ gilt $A_{\mathrm{ML}}[0][1] = 1$.
         \checkmark
 
-  \item Kante $(1, 0)$ in $G_{\mathrm{SL}}$ (Polling, zurÃ¼ck zu frei):
+  \item Kante $(1, 0)$ in $G_{\mathrm{SL}}$ (Polling, zurück zu frei):
         $\varphi(1) = 1$, $\varphi(0) = 0$.
         In $A_{\mathrm{ML}}$ gilt $A_{\mathrm{ML}}[1][0] = 0$.
         Diese Kante existiert im Mutex-Graph nicht direkt, da dort statt
-        ZurÃ¼ckspringen ein Blockieren $(1 \to 2)$ stattfindet.
+        Zurückspringen ein Blockieren $(1 \to 2)$ stattfindet.
 
-        Der Spin-Lock ist damit kein \emph{gewÃ¶hnlicher} Subgraph, sondern
+        Der Spin-Lock ist damit kein \emph{gewöhnlicher} Subgraph, sondern
         ein \emph{schwacher Subgraph}: die Polling-Schleife $(1 \to 0)$ des
         Spin-Locks fehlt im Mutex-Lock. Beide teilen jedoch den kritischen
         Pfad $0 \to 1 \to 3 \to 4 \to 0$, d.\,h.\ den Weg
@@ -493,13 +493,13 @@ Wir verifizieren jede Kante von $G_{\mathrm{SL}}$:
         \checkmark
 \end{enumerate}
 
-Die LCS-Berechnung auf den Signatur-Arrays bestÃ¤tigt $\mathrm{LCS} \geq 2$:
+Die LCS-Berechnung auf den Signatur-Arrays bestätigt $\mathrm{LCS} \geq 2$:
 
 \medskip
 \begin{center}
 \begin{tabular}{ll}
   \toprule
-  GrÃ¶ÃŸe & Wert \\
+  Größe & Wert \\
   \midrule
   $\sigma^{\mathrm{SL}}$ & $[1,\; 5,\; 0]$ (aus $A_{\mathrm{SL}}$, $n=3$) \\
   $\sigma^{\mathrm{ML}}$ & $[1,\; 6,\; 4,\; 8,\; 16]$ (aus $A_{\mathrm{ML}}$, $n=5$) \\
@@ -510,18 +510,18 @@ Die LCS-Berechnung auf den Signatur-Arrays bestÃ¤tigt $\mathrm{LCS} \geq 2$:
 \end{center}
 
 \medskip
-Der kritische gemeinsame Teilgraph enthÃ¤lt mindestens die ZustÃ¤nde
-\emph{frei} und \emph{KA} mit den ÃœbergÃ¤ngen \texttt{lock()} und dem
+Der kritische gemeinsame Teilgraph enthält mindestens die Zustände
+\emph{frei} und \emph{KA} mit den Übergängen \texttt{lock()} und dem
 Eintritt in den kritischen Abschnitt. Da $\mathrm{LCS} \geq 2$, erkennt der
 Subgraph Algorithmus diese Beziehung korrekt.
 \hfill$\blacksquare$
 \end{proof}
 
-\subsection{BinÃ¤res Semaphor als Subgraph des Mutex-Lock}
+\subsection{Binäres Semaphor als Subgraph des Mutex-Lock}
 
-\begin{satz}[BinÃ¤res Semaphor $\subseteq$ Mutex-Lock]
+\begin{satz}[Binäres Semaphor $\subseteq$ Mutex-Lock]
   \label{satz:bs_ml}
-  Der Graph $G_{\mathrm{BS}}$ des binÃ¤ren Semaphors ist ein Subgraph des
+  Der Graph $G_{\mathrm{BS}}$ des binären Semaphors ist ein Subgraph des
   Mutex-Lock-Graphen $G_{\mathrm{ML}}$.
 \end{satz}
 
@@ -539,10 +539,10 @@ Subgraph Algorithmus diese Beziehung korrekt.
   \begin{enumerate}
     \item $(0, 1)$ in $G_{\mathrm{BS}}$ (\texttt{wait()} bei belegt):
           $\varphi(0) = 0$, $\varphi(1) = 2$.
-          In $A_{\mathrm{ML}}$: Der Pfad $0 \to 1 \to 2$ mit LÃ¤nge~2 enthÃ¤lt
+          In $A_{\mathrm{ML}}$: Der Pfad $0 \to 1 \to 2$ mit Länge~2 enthält
           die Kante $(1, 2)$; die Kante $(0, 2)$ fehlt direkt, da
           beim Mutex stets durch Zustand~1 geroutet wird.
-          Jedoch erlaubt das LCS-Kriterium LÃ¼cken in der Sequenz.
+          Jedoch erlaubt das LCS-Kriterium Lücken in der Sequenz.
 
     \item $(0, 2)$ in $G_{\mathrm{BS}}$ (\texttt{wait()} bei frei, direkter
           Eintritt): $\varphi(0) = 0$, $\varphi(2) = 3$.
@@ -590,20 +590,20 @@ Subgraph Algorithmus diese Beziehung korrekt.
 \end{satz}
 
 \begin{proof}
-  Eine Bedingungsvariable umhÃ¼llt stets einen Mutex-Lock
+  Eine Bedingungsvariable umhüllt stets einen Mutex-Lock
   (siehe Definition~\ref{def:cv}). Die Abbildung
   \[
     \varphi: Z_{\mathrm{ML}} \to Z_{\mathrm{CV}},\quad
     \varphi = \{0 \mapsto 0,\; 1 \mapsto 1,\; 2 \mapsto 3,\;
                3 \mapsto 4,\; 4 \mapsto 5\}
   \]
-  erhÃ¤lt alle Kanten von $G_{\mathrm{ML}}$:
+  erhält alle Kanten von $G_{\mathrm{ML}}$:
 
   \begin{enumerate}
     \item $(0,1)$ in $G_{\mathrm{ML}}$: $A_{\mathrm{CV}}[0][1] = 1$. \checkmark
     \item $(1,2)$ in $G_{\mathrm{ML}}$: $\varphi(2) = 3$;
           $A_{\mathrm{CV}}[1][3]$: Pfad $1 \xrightarrow{(1,2)} 2 \xrightarrow{(2,3)} 3$
-          vorhanden. \checkmark (Ã¼ber Zwischenknoten Bedingungstest)
+          vorhanden. \checkmark (über Zwischenknoten Bedingungstest)
     \item $(1,3)$ in $G_{\mathrm{ML}}$: $\varphi(3)=4$;
           $A_{\mathrm{CV}}[1][2] \cdot A_{\mathrm{CV}}[2][4] = 1 \cdot 1$.
           Pfad $1 \to 2 \to 4$ kodiert direkten KA-Eintritt. \checkmark
@@ -616,31 +616,31 @@ Subgraph Algorithmus diese Beziehung korrekt.
 
   Alle Kanten sind als Pfade in $G_{\mathrm{CV}}$ enthalten.
   Damit $G_{\mathrm{ML}} \subseteq G_{\mathrm{CV}}$ (als schwacher Subgraph
-  unter Pfad-Einbettung). Der Subgraph Algorithmus bestÃ¤tigt
+  unter Pfad-Einbettung). Der Subgraph Algorithmus bestätigt
   $\mathrm{LCS}(\sigma^{\mathrm{ML}}, \sigma^{\mathrm{CV}}) \geq 2$.
   \hfill$\blacksquare$
 \end{proof}
 
-\subsection{BinÃ¤res Semaphor $\subseteq$ ZÃ¤hl-Semaphor}
+\subsection{Binäres Semaphor $\subseteq$ Zähl-Semaphor}
 
 \begin{satz}
   \label{satz:bs_zs}
-  FÃ¼r $k \geq 1$ gilt $G_{\mathrm{BS}} \subseteq G_{\mathrm{ZS}}^{(k)}$.
+  Für $k \geq 1$ gilt $G_{\mathrm{BS}} \subseteq G_{\mathrm{ZS}}^{(k)}$.
 \end{satz}
 
 \begin{proof}
-  FÃ¼r $k = 1$ stimmen $G_{\mathrm{BS}}$ und $G_{\mathrm{ZS}}^{(1)}$ per
-  Konstruktion Ã¼berein. FÃ¼r $k \geq 2$ existiert in $G_{\mathrm{ZS}}^{(k)}$
+  Für $k = 1$ stimmen $G_{\mathrm{BS}}$ und $G_{\mathrm{ZS}}^{(1)}$ per
+  Konstruktion überein. Für $k \geq 2$ existiert in $G_{\mathrm{ZS}}^{(k)}$
   die lineare Kette $c_k \to c_{k-1} \to \cdots \to c_0 \to b$. Die
-  EinschrÃ¤nkung auf die letzten zwei Stufen $c_1 \to c_0 \to b \to c_1$
+  Einschränkung auf die letzten zwei Stufen $c_1 \to c_0 \to b \to c_1$
   liefert genau den Subgraphen $G_{\mathrm{BS}}$ (mit $c_1 \equiv
   0_{\mathrm{frei}}$, $c_0 \equiv 3_{\mathrm{freigabe}}$,
   $b \equiv 1_{\mathrm{blockiert}}$).
-  Die Signaturberechnung ergibt $\mathrm{LCS} \geq 2$ fÃ¼r alle $k \geq 1$.
+  Die Signaturberechnung ergibt $\mathrm{LCS} \geq 2$ für alle $k \geq 1$.
   \hfill$\blacksquare$
 \end{proof}
 
-\subsection{VollstÃ¤ndige Subgraph-Hierarchie}
+\subsection{Vollständige Subgraph-Hierarchie}
 
 \begin{korollar}[Hierarchie der Synchronisationsgraphen]
   \label{kor:hierarchie}
@@ -658,7 +658,7 @@ Subgraph Algorithmus diese Beziehung korrekt.
 \end{korollar}
 
 \begin{proof}
-  Folgt direkt aus den SÃ¤tzen~\ref{satz:sl_ml}--\ref{satz:bs_zs}.
+  Folgt direkt aus den Sätzen~\ref{satz:sl_ml}--\ref{satz:bs_zs}.
   \hfill$\blacksquare$
 \end{proof}
 
@@ -672,48 +672,48 @@ Subgraph Algorithmus diese Beziehung korrekt.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot1_latency.png}
-  \caption{Vergleich der typischen AusfÃ¼hrungslatenzen der untersuchten
+  \caption{Vergleich der typischen Ausführungslatenzen der untersuchten
            Synchronisationsmechanismen auf einem Linux\,x86-64-System
            (schematische Richtwerte in Nanosekunden).
            Spin-Locks besitzen die geringste Latenz bei kurzen kritischen
            Regionen. Benannte Semaphoren weisen durch den
-           Dateisystem-Overhead die hÃ¶chste Latenz auf.}
+           Dateisystem-Overhead die höchste Latenz auf.}
   \label{fig:latency}
 \end{figure}
 
-Abbildung~\ref{fig:latency} verdeutlicht, dass die GraphengrÃ¶ÃŸe der
+Abbildung~\ref{fig:latency} verdeutlicht, dass die Graphengröße der
 Subgraph-Hierarchie (Korollar~\ref{kor:hierarchie}) qualitativ mit der
-Latenz korreliert: allgemeinere Mechanismen mit grÃ¶ÃŸerem Zustandsgraphen
-benÃ¶tigen im Mittel mehr Zeit pro Lock-/Unlock-Zyklus.
+Latenz korreliert: allgemeinere Mechanismen mit größerem Zustandsgraphen
+benötigen im Mittel mehr Zeit pro Lock-/Unlock-Zyklus.
 
-\subsection{KomplexitÃ¤tsvergleich des Subgraph Algorithmus (Plot~2)}
+\subsection{Komplexitätsvergleich des Subgraph Algorithmus (Plot~2)}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot2_complexity.png}
-  \caption{Doppelt-logarithmische Darstellung der LaufzeitkomplexitÃ¤ten.
+  \caption{Doppelt-logarithmische Darstellung der Laufzeitkomplexitäten.
            Der Subgraph Algorithmus ($O(n^3)$) liegt weit unterhalb des
-           naiven Ansatzes ($O(n!\cdot n^2)$) und nur eine GrÃ¶ÃŸenordnung
-           Ã¼ber der Signaturberechnungs-Schranke ($O(n^2)$).}
+           naiven Ansatzes ($O(n!\cdot n^2)$) und nur eine Größenordnung
+           über der Signaturberechnungs-Schranke ($O(n^2)$).}
   \label{fig:complexity}
 \end{figure}
 
 Die logarithmische Skalierung in Abbildung~\ref{fig:complexity} zeigt,
-dass $n! \cdot n^2$ bereits fÃ¼r $n = 12$ eine GrÃ¶ÃŸenordnung von $10^{10}$
-erreicht, wÃ¤hrend der Subgraph Algorithmus dieselbe ProblemgrÃ¶ÃŸe mit
-$12^3 = 1728$ Operationen bewÃ¤ltigt -- ein Faktor von mehr als $10^{6}$.
+dass $n! \cdot n^2$ bereits für $n = 12$ eine Größenordnung von $10^{10}$
+erreicht, während der Subgraph Algorithmus dieselbe Problemgröße mit
+$12^3 = 1728$ Operationen bewältigt -- ein Faktor von mehr als $10^{6}$.
 
 \subsection{Graphenvisualisierung des Subgraph-Matches (Plot~3)}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot3_graph_match.png}
-  \caption{Links: Mutex-Ablaufgraph $G_{\mathrm{ML}}$ mit ZustÃ¤nden
+  \caption{Links: Mutex-Ablaufgraph $G_{\mathrm{ML}}$ mit Zuständen
            \texttt{W} (wait), \texttt{L} (lock), \texttt{CS} (kritischer
            Abschnitt), \texttt{U} (unlock), \texttt{S} (signal).
            Mitte: Semaphor-Graph $G_{\mathrm{BS}}$ als Supergraph mit
            Zusatzkante (rot markiert). Rechts: der gemeinsame
-           Subgraph (LCS\,$\geq$\,2), der die strukturelle Ãœbereinstimmung
+           Subgraph (LCS\,$\geq$\,2), der die strukturelle Übereinstimmung
            beider Mechanismen belegt.}
   \label{fig:graphmatch}
 \end{figure}
@@ -727,13 +727,13 @@ $12^3 = 1728$ Operationen bewÃ¤ltigt -- ein Faktor von mehr als $10^{6}$.
            der Signatur-Arrays $\sigma^{\mathrm{ML}} = [5, 18, 36, 48, 72]$
            und $\sigma^{\mathrm{BS}} = [5, 21, 36, 48, 80]$.
            Dunkle Zellen markieren hohe LCS-Werte. Das Ergebnis
-           LCS\,$= 3$ bestÃ¤tigt die Subgraph-Beziehung eindeutig.}
+           LCS\,$= 3$ bestätigt die Subgraph-Beziehung eindeutig.}
   \label{fig:lcs}
 \end{figure}
 
 Die Farbskalierung in Abbildung~\ref{fig:lcs} visualisiert die diagonale
-AuffÃ¼llung der DP-Tabelle. Ãœbereinstimmende Signaturwerte ($5$, $36$, $48$)
-erzeugen SprÃ¼nge auf der Hauptdiagonale und liefern LCS\,$= 3$.
+Auffüllung der DP-Tabelle. Übereinstimmende Signaturwerte ($5$, $36$, $48$)
+erzeugen Sprünge auf der Hauptdiagonale und liefern LCS\,$= 3$.
 
 \subsection{Skalierungsverhalten (Plot~5)}
 
@@ -741,20 +741,20 @@ erzeugen SprÃ¼nge auf der Hauptdiagonale und liefern LCS\,$= 3$.
   \centering
   \includegraphics[width=\textwidth]{plot5_scaling.png}
   \caption{Relativer CPU-Overhead von Spin-Lock, Mutex-Lock und
-           POSIX-Semaphor Ã¼ber eine logarithmische Thread-Achse.
+           POSIX-Semaphor über eine logarithmische Thread-Achse.
            Spin-Locks skalieren am schlechtesten, da ihr aktives Warten
-           mit steigender Konkurrenz quadratisch wÃ¤chst.}
+           mit steigender Konkurrenz quadratisch wächst.}
   \label{fig:scaling}
 \end{figure}
 
-\subsection{LCS Ã¼ber alle Rotationen (Plot~6)}
+\subsection{LCS über alle Rotationen (Plot~6)}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{plot6_rotations_lcs.png}
-  \caption{LCS-LÃ¤nge Ã¼ber alle $n = 8$ Rotationsschritte fÃ¼r drei
+  \caption{LCS-Länge über alle $n = 8$ Rotationsschritte für drei
            Paare von Synchronisationsgraphen. Die gestrichelte Linie markiert
-           den Schwellwert LCS\,$= 2$. Alle drei Paare Ã¼berschreiten den
+           den Schwellwert LCS\,$= 2$. Alle drei Paare überschreiten den
            Schwellwert in mindestens einem Rotationsschritt, was die
            Subgraph-Beziehung belegt.}
   \label{fig:rotations}
@@ -767,20 +767,20 @@ erzeugen SprÃ¼nge auf der Hauptdiagonale und liefern LCS\,$= 3$.
 
 \subsection{Zusammenfassung}
 
-Diese Arbeit hat gezeigt, dass sÃ¤mtliche gÃ¤ngigen Betriebssystem-Synchroni\-sa\-tions\-me\-cha\-nis\-men -- Spin-Locks, Mutex-Locks, Semaphoren, Read-Write-Locks
+Diese Arbeit hat gezeigt, dass sämtliche gängigen Betriebssystem-Synchroni\-sa\-tions\-me\-cha\-nis\-men -- Spin-Locks, Mutex-Locks, Semaphoren, Read-Write-Locks
 und Bedingungsvariablen -- als gerichtete endliche Graphen modelliert werden
-kÃ¶nnen, deren Knoten ProzesszustÃ¤nde und deren Kanten atomare
-ZustandsÃ¼bergÃ¤nge darstellen. Auf dieser Basis wurde formell nachgewiesen:
+können, deren Knoten Prozesszustände und deren Kanten atomare
+Zustandsübergänge darstellen. Auf dieser Basis wurde formell nachgewiesen:
 
 \begin{itemize}
   \item Der Spin-Lock-Graph $G_{\mathrm{SL}}$ ist ein schwacher Subgraph von
         $G_{\mathrm{ML}}$ (Satz~\ref{satz:sl_ml}).
-  \item Das binÃ¤re Semaphor $G_{\mathrm{BS}}$ ist sowohl Subgraph von
-        $G_{\mathrm{ML}}$ als auch von $G_{\mathrm{ZS}}^{(k)}$ fÃ¼r alle
-        $k \geq 1$ (SÃ¤tze~\ref{satz:bs_ml} und~\ref{satz:bs_zs}).
+  \item Das binäre Semaphor $G_{\mathrm{BS}}$ ist sowohl Subgraph von
+        $G_{\mathrm{ML}}$ als auch von $G_{\mathrm{ZS}}^{(k)}$ für alle
+        $k \geq 1$ (Sätze~\ref{satz:bs_ml} und~\ref{satz:bs_zs}).
   \item Der Mutex-Lock $G_{\mathrm{ML}}$ ist Subgraph der Bedingungsvariable
         $G_{\mathrm{CV}}$ (Satz~\ref{satz:ml_cv}).
-  \item Die vollstÃ¤ndige Hierarchie ist in Korollar~\ref{kor:hierarchie}
+  \item Die vollständige Hierarchie ist in Korollar~\ref{kor:hierarchie}
         zusammengefasst.
   \item Der Subgraph Algorithmus erkennt alle diese Beziehungen korrekt und
         effizient in $O(n^3)$ (Satz~\ref{satz:korrektheit}).
@@ -788,96 +788,96 @@ ZustandsÃ¼bergÃ¤nge darstellen. Auf dieser Basis wurde formell nachgewiesen:
 
 \subsection{Ausblick}
 
-Die vorliegenden Ergebnisse erÃ¶ffnen eine Vielzahl weiterfÃ¼hrender
-Forschungsrichtungen, die im Folgenden detailliert ausgefÃ¼hrt werden.
+Die vorliegenden Ergebnisse eröffnen eine Vielzahl weiterführender
+Forschungsrichtungen, die im Folgenden detailliert ausgeführt werden.
 
 \subsubsection{Erweiterung auf gewichtete und probabilistische Graphen}
 
 Die derzeitige Modellierung verwendet ungewichtete Digraphen.
-Eine natÃ¼rliche Erweiterung besteht darin, Kantengewichte einzufÃ¼hren,
-die AusfÃ¼hrungswahrscheinlichkeiten oder mittlere Wartezeiten kodieren.
-Beispielsweise kÃ¶nnten die Kanten eines Mutex-Lock-Graphen mit empirisch
+Eine natürliche Erweiterung besteht darin, Kantengewichte einzuführen,
+die Ausführungswahrscheinlichkeiten oder mittlere Wartezeiten kodieren.
+Beispielsweise könnten die Kanten eines Mutex-Lock-Graphen mit empirisch
 gemessenen Transitionswahrscheinlichkeiten aus Linux-Kernel-Traces annotiert
 werden~\cite{love2010linux}.
-FÃ¼r gewichtete Subgraph-Erkennung mÃ¼sste die LCS-Komponente des Subgraph
-Algorithmus durch ein gewichtetes Sequenzalignment (Ã¤hnlich dem
+Für gewichtete Subgraph-Erkennung müsste die LCS-Komponente des Subgraph
+Algorithmus durch ein gewichtetes Sequenzalignment (ähnlich dem
 Smith-Waterman-Algorithmus~\cite{smith1981identification}) ersetzt werden.
-Dies wÃ¼rde eine probabilistische Subgraph-Relation ermÃ¶glichen, bei der
-eine Einbettung als gÃ¼ltig gilt, wenn das gewichtete Alignment einen
-vorgegebenen Schwellwert Ã¼berschreitet -- nÃ¼tzlich fÃ¼r die
+Dies würde eine probabilistische Subgraph-Relation ermöglichen, bei der
+eine Einbettung als gültig gilt, wenn das gewichtete Alignment einen
+vorgegebenen Schwellwert überschreitet -- nützlich für die
 Leistungsanalyse realer Betriebssystemkerne.
 
 \subsubsection{Parallele und verteilte Berechnung des Subgraph Algorithmus}
 
-Die $n$ Rotationsschritte des Subgraph Algorithmus sind gemÃ¤ÃŸ
-Lemma~\ref{lem:unabhaengigkeit} voneinander unabhÃ¤ngig.
-Dies ermÃ¶glicht eine \emph{embarrassingly parallel} Implementierung auf
+Die $n$ Rotationsschritte des Subgraph Algorithmus sind gemäß
+Lemma~\ref{lem:unabhaengigkeit} voneinander unabhängig.
+Dies ermöglicht eine \emph{embarrassingly parallel} Implementierung auf
 Mehr\-kern\-pro\-zes\-so\-ren: Jeder der $n$ Rotationsschritte wird einem
 separaten CPU-Kern zugewiesen; die $n$ LCS-Berechnungen laufen simultan.
-Die Gesamtlaufzeit sinkt von $O(n^3)$ auf $O(n^2)$ bei $n$ verfÃ¼gbaren
+Die Gesamtlaufzeit sinkt von $O(n^3)$ auf $O(n^2)$ bei $n$ verfügbaren
 Kernen~\cite{openmp2011}.
-DarÃ¼ber hinaus lÃ¤sst sich die DP-Matrix jeder LCS-Berechnung auf SIMD-fÃ¤hige
+Darüber hinaus lässt sich die DP-Matrix jeder LCS-Berechnung auf SIMD-fähige
 Vektorregister (AVX-512) abbilden, was die Berechnungslatenz pro Rotation
 um einen weiteren konstanten Faktor reduziert~\cite{rognes2011faster}.
-FÃ¼r extrem groÃŸe Graphen ($n > 10^4$) ist eine GPU-basierte Implementierung
+Für extrem große Graphen ($n > 10^4$) ist eine GPU-basierte Implementierung
 (CUDA/OpenCL) denkbar, bei der jede Zeile der DP-Tabelle als separater
 CUDA-Thread verarbeitet wird.
 
 \subsubsection{Anwendung auf formale Verifikation von Synchronisationsprotokollen}
 
-In der formalen Methodik werden Synchronisationsprotokolle hÃ¤ufig als
+In der formalen Methodik werden Synchronisationsprotokolle häufig als
 Kripke-Strukturen oder Transitionssysteme modelliert und mittels
 Model-Checking auf Eigenschaften wie Deadlock-Freiheit und
-starvation-Freiheit Ã¼berprÃ¼ft~\cite{clarke1999model}.
+starvation-Freiheit überprüft~\cite{clarke1999model}.
 Der Subgraph Algorithmus kann hier als \emph{Vorstufe} eingesetzt werden:
-Bevor ein teures Model-Checking durchgefÃ¼hrt wird, prÃ¼ft er, ob zwei
+Bevor ein teures Model-Checking durchgeführt wird, prüft er, ob zwei
 Synchronisationsprotokolle strukturell verwandt sind. Falls
 $G_A \subseteq G_B$ gilt und $G_B$ bereits als deadlock-frei verifiziert
-wurde, lÃ¤sst sich diese Eigenschaft unter zusÃ¤tzlichen Monotonie-Bedingungen
-auf $G_A$ Ã¼bertragen -- eine Technik, die als
+wurde, lässt sich diese Eigenschaft unter zusätzlichen Monotonie-Bedingungen
+auf $G_A$ übertragen -- eine Technik, die als
 \emph{compositional reasoning}~\cite{mcmillan1993symbolic} bekannt ist.
 
 \subsubsection{Integration in statische Analysetools und Compiler}
 
 Moderne Compiler (GCC, LLVM/Clang) erzeugen interne Darstellungen von
-nebenlÃ¤ufigem Code, die als Kontrollflussgraphen (CFG) oder
+nebenläufigem Code, die als Kontrollflussgraphen (CFG) oder
 Threaded-Code-Graphen vorliegen~\cite{lattner2004llvm}. Der Subgraph
-Algorithmus kÃ¶nnte als Compiler-Pass implementiert werden, der erkennt,
+Algorithmus könnte als Compiler-Pass implementiert werden, der erkennt,
 wenn ein Programmierer einen Mutex-Lock verwendet, obwohl ein einfacher
-Spin-Lock ausreichen wÃ¼rde -- oder umgekehrt, wenn ein Spin-Lock
+Spin-Lock ausreichen würde -- oder umgekehrt, wenn ein Spin-Lock
 einen Mutex ersetzen sollte (z.\,B.\ bei langen kritischen Regionen).
-Diese automatische Empfehlung wÃ¼rde die Systemleistung verbessern, ohne
+Diese automatische Empfehlung würde die Systemleistung verbessern, ohne
 dass Programmierer selbst fundierte Kenntnisse aller Synchronisations\-mechanismen
-benÃ¶tigen.
+benötigen.
 
-\subsubsection{Erweiterung auf hierarchische ParallelitÃ¤t (OpenMP, MPI)}
+\subsubsection{Erweiterung auf hierarchische Parallelität (OpenMP, MPI)}
 
 Die hier betrachteten Synchronisationsmechanismen beziehen sich
-hauptsÃ¤chlich auf POSIX-Threads (Pthreads) innerhalb eines Prozesses.
+hauptsächlich auf POSIX-Threads (Pthreads) innerhalb eines Prozesses.
 In modernen Hochleistungsrechnersystemen spielen jedoch auch
-Multi-Ebenen-ParallelitÃ¤tsmodelle wie OpenMP~\cite{openmp2011} (fÃ¼r
-Shared-Memory-Parallelismus) und MPI~\cite{mpi2009} (fÃ¼r
+Multi-Ebenen-Parallelitätsmodelle wie OpenMP~\cite{openmp2011} (für
+Shared-Memory-Parallelismus) und MPI~\cite{mpi2009} (für
 Distributed-Memory-Parallelismus) eine wesentliche Rolle. Die
 Zustandsgraphen von MPI-Kollektiv-Operationen (z.\,B.\
-\texttt{MPI\_Barrier}, \texttt{MPI\_Reduce}) kÃ¶nnten analog zu den
+\texttt{MPI\_Barrier}, \texttt{MPI\_Reduce}) könnten analog zu den
 hier definierten Synchronisationsgraphen modelliert und mittels
 Subgraph Algorithmus klassifiziert werden. Eine Hierarchie
-$G_{\mathrm{Barrier}} \subseteq G_{\mathrm{AllReduce}}$ wÃ¼rde
+$G_{\mathrm{Barrier}} \subseteq G_{\mathrm{AllReduce}}$ würde
 beispielsweise belegen, dass eine Barriere strukturell in einer
-AllReduce-Operation enthalten ist -- mit direkten Implikationen fÃ¼r
+AllReduce-Operation enthalten ist -- mit direkten Implikationen für
 die Optimierung kollektiver MPI-Kommunikation.
 
 \subsubsection{Maschinelles Lernen zur Subgraph-Vorhersage}
 
 Graph Neural Networks (GNNs)~\cite{scarselli2009graph} wurden in den
-letzten Jahren erfolgreich fÃ¼r Subgraph-Erkennungsaufgaben eingesetzt.
+letzten Jahren erfolgreich für Subgraph-Erkennungsaufgaben eingesetzt.
 Eine interessante Forschungsrichtung besteht darin, den Subgraph Algorithmus
-als \emph{Label} fÃ¼r das Training eines GNN zu verwenden: FÃ¼r eine groÃŸe
+als \emph{Label} für das Training eines GNN zu verwenden: Für eine große
 Datenbank von Synchronisationsgraphen werden die Subgraph-Beziehungen
-mittels Subgraph Algorithmus vorberechnet; das GNN lernt anschlieÃŸend, diese
+mittels Subgraph Algorithmus vorberechnet; das GNN lernt anschließend, diese
 Beziehungen in $O(1)$ vorherzusagen (nach dem Training).
 Dieser Ansatz kombiniert die Korrektheit des exakten Algorithmus mit der
-Schnelligkeit eines gelernten Modells -- besonders interessant fÃ¼r
+Schnelligkeit eines gelernten Modells -- besonders interessant für
 Echtzeit-Anwendungen wie die Live-Analyse laufender Betriebssystem\-prozesse.
 
 \subsubsection{Erweiterung auf hybride Synchronisationsprotokolle}
@@ -887,48 +887,48 @@ Mechanismen kombinieren: Der Linux-Kernel nutzt z.\,B.\ \texttt{futex}
 (Fast User-space Mutex), der im Unstrittenen Fall im Userspace operiert
 und nur bei Konkurrenz in den Kernel wechselt~\cite{franke2002fuss}.
 Der Zustandsgraph eines Futex besitzt daher Teile des Spin-Lock-Graphen
-(fÃ¼r den streitfreien Fall) und Teile des Mutex-Lock-Graphen (fÃ¼r den
+(für den streitfreien Fall) und Teile des Mutex-Lock-Graphen (für den
 strittigen Fall). Eine Erweiterung des Subgraph Algorithmus auf
 \emph{zusammengesetzte} Graphen, die als Vereinigung von Teilgraphen
-verschiedener Mechanismen modelliert werden, wÃ¤re ein wertvoller Beitrag.
+verschiedener Mechanismen modelliert werden, wäre ein wertvoller Beitrag.
 Dies erfordert eine Anpassung der Signaturberechnung auf Teilgraph-Mengen
 und eine modifizierte LCS-Variante, die Teilsequenzen aus mehreren
-Quellgraphen berÃ¼cksichtigt.
+Quellgraphen berücksichtigt.
 
 \subsubsection{Anwendung auf Echtzeitsysteme und AUTOSAR}
 
 In eingebetteten Echtzeitsystemen (RTOS) und dem AUTOSAR-Standard~\cite{autosar2021}
 spielen Synchronisationsmechanismen eine sicherheitskritische Rolle.
-PrioritÃ¤tsinversion -- das bekannte Problem, bei dem ein niedrigpriorer
+Prioritätsinversion -- das bekannte Problem, bei dem ein niedrigpriorer
 Prozess einen hochprioren blockiert -- ist direkt als Subgraph-Eigenschaft
 formulierbar: Tritt der Subgraph $G_{\mathrm{priorityInversion}} \subseteq
-G_{\mathrm{Protokoll}}$ auf, ist das Protokoll anfÃ¤llig fÃ¼r dieses Problem.
+G_{\mathrm{Protokoll}}$ auf, ist das Protokoll anfällig für dieses Problem.
 Die Anwendung des Subgraph Algorithmus auf AUTOSAR-Kommunikations\-protokolle
-kÃ¶nnte automatisch solche sicherheitskritischen Muster erkennen, bevor ein
-SteuergerÃ¤t in die Serienfertigung geht~\cite{iso26262}.
+könnte automatisch solche sicherheitskritischen Muster erkennen, bevor ein
+Steuergerät in die Serienfertigung geht~\cite{iso26262}.
 
 \subsubsection{Quantencomputing und Quanten-Synchronisation}
 
-Mit dem Aufkommen von Quantencomputern entstehen neue ParallelitÃ¤tsparadigmen,
+Mit dem Aufkommen von Quantencomputern entstehen neue Parallelitätsparadigmen,
 in denen klassische Konzepte wie Mutex-Locks und Semaphoren nicht direkt
-Ã¼bertragbar sind~\cite{gay2006quantum}. Dennoch existieren AnsÃ¤tze fÃ¼r
-Quanten-Zustandsautomaten, die Ã¤hnliche Strukturen wie die hier modellierten
+übertragbar sind~\cite{gay2006quantum}. Dennoch existieren Ansätze für
+Quanten-Zustandsautomaten, die ähnliche Strukturen wie die hier modellierten
 Synchronisationsgraphen aufweisen. Eine Forschungsfrage ist, ob der Subgraph
-Algorithmus auf Quanten-Zustandsgraphen -- modelliert als unitÃ¤re
-Transformationen auf Hilbert-RÃ¤umen -- erweitert werden kann. Dies wÃ¼rde
+Algorithmus auf Quanten-Zustandsgraphen -- modelliert als unitäre
+Transformationen auf Hilbert-Räumen -- erweitert werden kann. Dies würde
 erfordern, die diskrete Signatur-Funktion durch eine quantenmechanische
 Observable zu ersetzen und die LCS-Berechnung auf Quanten-Parallelismus
 zu verallgemeinern.
 
-\subsubsection{Offene KomplexitÃ¤tsfragen}
+\subsubsection{Offene Komplexitätsfragen}
 
 Aus theoretischer Sicht bleibt die Frage offen, ob eine \emph{unbedingte}
 untere Schranke von $\Omega(n^3)$ ohne die SETH-Hypothese beweisbar ist.
 Aktuelle Ergebnisse~\cite{abboud2015tight} zeigen lediglich eine bedingte
-Schranke unter SETH. Eine AuflÃ¶sung dieser Frage wÃ¤re ein bedeutender
-Fortschritt in der KomplexitÃ¤tstheorie des Subgraph-Isomorphismus.
-DarÃ¼ber hinaus ist unklar, ob der Subgraph Algorithmus auf
-\emph{approximative} Subgraph-Beziehungen (LCS $\geq \alpha \cdot n$ fÃ¼r
+Schranke unter SETH. Eine Auflösung dieser Frage wäre ein bedeutender
+Fortschritt in der Komplexitätstheorie des Subgraph-Isomorphismus.
+Darüber hinaus ist unklar, ob der Subgraph Algorithmus auf
+\emph{approximative} Subgraph-Beziehungen (LCS $\geq \alpha \cdot n$ für
 ein festes $\alpha \in (0, 1)$) in besserer Laufzeit als $O(n^3)$
 verallgemeinert werden kann, ohne SETH zu widerlegen.
 

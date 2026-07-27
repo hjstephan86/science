@@ -54,18 +54,18 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ã–}{{\"O}}1
-    {Ã„}{{\"A}}1
-    {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
-    {Ã¼}{{\"u}}1
-    {Ã¤}{{\"a}}1
-    {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
 }
 
 \title{\textbf{Das Prinzip der Diskretion des Kontinuierlichen}\\[0.5em]
 \large Formale Analyse von neun fundamentalen Anwendungsbereichen der Diskretisierung\\
-kontinuierlicher PhÃ¤nomene in der Natur und Wissenschaft}
+kontinuierlicher Phänomene in der Natur und Wissenschaft}
 \author{Stephan Epp}
 \date{6. Juni 2026}
 
@@ -75,32 +75,32 @@ kontinuierlicher PhÃ¤nomene in der Natur und Wissenschaft}
 
 \begin{abstract}
 \noindent
-Die Planck'sche Quantenhypothese ($E = h\nu$) beschreibt das fundamentale Prinzip, kontinuierliche physikalische GrÃ¶ÃŸen in diskrete, handhabbare Einheiten zu zerlegen. Dieses Diskretisierungsprinzip ist kein isoliertes PhÃ¤nomen der Quantenphysik, sondern eine universelle Strategie zur Beschreibung, Messung und Berechnung kontinuierlicher Natur\-phÃ¤nomene. Die vorliegende Arbeit identifiziert und analysiert neun weitere, grundlegende Anwendungsbereiche dieses Prinzips: die Fourier-Reihenentwicklung, das Shannon-Nyquist-Abtasttheorem, die numerische Integration (Riemann-Summe), die Euler-Diskretisierung gewÃ¶hnlicher Differentialgleichungen, die Finite-Elemente-Methode, die Analog-Digital-Wandlung, die neuronale Kodierung (Integrate-and-Fire), die DNA-Sequenzierung sowie die Diskretisierung stochastischer Prozesse durch Markov-Ketten. FÃ¼r jeden Bereich wird formal bewiesen, dass das diskrete Modell gegen das kontinuierliche Pendant konvergiert und die QualitÃ¤t der Approximation quantifizierbar ist. Die Ergebnisse werden durch matplotlib-Visualisierungen illustriert und schlieÃŸen mit einem umfassenden Ausblick auf offene Forschungsfragen.
+Die Planck'sche Quantenhypothese ($E = h\nu$) beschreibt das fundamentale Prinzip, kontinuierliche physikalische Größen in diskrete, handhabbare Einheiten zu zerlegen. Dieses Diskretisierungsprinzip ist kein isoliertes Phänomen der Quantenphysik, sondern eine universelle Strategie zur Beschreibung, Messung und Berechnung kontinuierlicher Natur\-phänomene. Die vorliegende Arbeit identifiziert und analysiert neun weitere, grundlegende Anwendungsbereiche dieses Prinzips: die Fourier-Reihenentwicklung, das Shannon-Nyquist-Abtasttheorem, die numerische Integration (Riemann-Summe), die Euler-Diskretisierung gewöhnlicher Differentialgleichungen, die Finite-Elemente-Methode, die Analog-Digital-Wandlung, die neuronale Kodierung (Integrate-and-Fire), die DNA-Sequenzierung sowie die Diskretisierung stochastischer Prozesse durch Markov-Ketten. Für jeden Bereich wird formal bewiesen, dass das diskrete Modell gegen das kontinuierliche Pendant konvergiert und die Qualität der Approximation quantifizierbar ist. Die Ergebnisse werden durch matplotlib-Visualisierungen illustriert und schließen mit einem umfassenden Ausblick auf offene Forschungsfragen.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 %============================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 %============================================================
 
 \subsection{Motivation und Problemstellung}
 
-Seit Max Plancks revolutionÃ¤rer Entdeckung im Jahr 1900, dass elektromagnetische Energie nicht kontinuierlich, sondern in diskreten Quanten der GrÃ¶ÃŸe $E = h\nu$ abgegeben wird, hat das Prinzip der Diskretisierung kontinuierlicher GrÃ¶ÃŸen die gesamte Naturwissenschaft und Ingenieurwissenschaft durchdrungen. Die Konstante
+Seit Max Plancks revolutionärer Entdeckung im Jahr 1900, dass elektromagnetische Energie nicht kontinuierlich, sondern in diskreten Quanten der Größe $E = h\nu$ abgegeben wird, hat das Prinzip der Diskretisierung kontinuierlicher Größen die gesamte Naturwissenschaft und Ingenieurwissenschaft durchdrungen. Die Konstante
 
 \[
 h = 6{,}626\,070\,15 \times 10^{-34}\,\text{J\,s}
 \]
 
-ist dabei weit mehr als ein Skalierungsfaktor: Sie symbolisiert die Erkenntnis, dass Natur und Mathematik eine fundamentale Strategie teilen -- die \emph{Reproduktion des Kontinuierlichen durch diskrete TeillÃ¶sungen}.
+ist dabei weit mehr als ein Skalierungsfaktor: Sie symbolisiert die Erkenntnis, dass Natur und Mathematik eine fundamentale Strategie teilen -- die \emph{Reproduktion des Kontinuierlichen durch diskrete Teillösungen}.
 
 \begin{definition}[Diskretisierungsprinzip]
-    Sei $f : \Omega \to \mathbb{R}$ eine auf einem kontinuierlichen Bereich $\Omega \subseteq \mathbb{R}^n$ definierte GrÃ¶ÃŸe. Eine \emph{Diskretisierung} von $f$ ist eine Abbildung
+    Sei $f : \Omega \to \mathbb{R}$ eine auf einem kontinuierlichen Bereich $\Omega \subseteq \mathbb{R}^n$ definierte Größe. Eine \emph{Diskretisierung} von $f$ ist eine Abbildung
     \[
     \mathcal{D}_N : C(\Omega) \to \mathbb{R}^N,\quad f \mapsto (f_1, f_2, \ldots, f_N),
     \]
-    sodass fÃ¼r eine geeignete Rekonstruktionsabbildung $\mathcal{R}_N : \mathbb{R}^N \to C(\Omega)$ gilt:
+    sodass für eine geeignete Rekonstruktionsabbildung $\mathcal{R}_N : \mathbb{R}^N \to C(\Omega)$ gilt:
     \[
     \lim_{N \to \infty} \left\| f - \mathcal{R}_N(\mathcal{D}_N(f)) \right\|_\infty = 0.
     \]
@@ -108,21 +108,21 @@ ist dabei weit mehr als ein Skalierungsfaktor: Sie symbolisiert die Erkenntnis, 
 
 \subsection{Ziel der Arbeit}
 
-Ziel dieser Arbeit ist es, neun grundlegende AnwendungsfÃ¤lle des Diskretisierungsprinzips formal zu analysieren, zu beweisen und zu visualisieren. Dabei wird fÃ¼r jedes Beispiel gezeigt:
+Ziel dieser Arbeit ist es, neun grundlegende Anwendungsfälle des Diskretisierungsprinzips formal zu analysieren, zu beweisen und zu visualisieren. Dabei wird für jedes Beispiel gezeigt:
 \begin{itemize}
-    \item Die formale Struktur des kontinuierlichen PhÃ¤nomens
+    \item Die formale Struktur des kontinuierlichen Phänomens
     \item Die Konstruktion der diskreten Approximation
-    \item Der Konvergenzbeweis $\mathcal{R}_N \circ \mathcal{D}_N \to \mathrm{id}$ fÃ¼r $N \to \infty$
-    \item Die Fehlerordnung als Funktion der DiskretisierungsauflÃ¶sung $N$
+    \item Der Konvergenzbeweis $\mathcal{R}_N \circ \mathcal{D}_N \to \mathrm{id}$ für $N \to \infty$
+    \item Die Fehlerordnung als Funktion der Diskretisierungsauflösung $N$
 \end{itemize}
 
-\subsection{Ãœberblick der behandelten PhÃ¤nomene}
+\subsection{Überblick der behandelten Phänomene}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{rllll}
 \toprule
-\textbf{Nr.} & \textbf{PhÃ¤nomen} & \textbf{Kontinuum} & \textbf{Diskretisierung} & \textbf{Fehlerordnung}\\
+\textbf{Nr.} & \textbf{Phänomen} & \textbf{Kontinuum} & \textbf{Diskretisierung} & \textbf{Fehlerordnung}\\
 \midrule
 0 & Planck-Strahlung & Spektrum $B(\nu)$ & Energiequanten $E_n$ & $O(N^{-1})$\\
 1 & Fourier-Reihe & $f \in L^2$ & Harmonische $a_k, b_k$ & $O(N^{-s})$\\
@@ -136,17 +136,17 @@ Ziel dieser Arbeit ist es, neun grundlegende AnwendungsfÃ¤lle des Diskretisier
 9 & Markov-Ketten & OU-Prozess & Zustandsraum $S$ & $O(|\Delta x|^2)$\\
 \bottomrule
 \end{tabular}
-\caption{Ãœbersicht der behandelten DiskretisierungsphÃ¤nomene}
+\caption{Übersicht der behandelten Diskretisierungsphänomene}
 \end{table}
 
 %============================================================
 \section{Grundlagen}
 %============================================================
 
-\subsection{FunktionenrÃ¤ume und Normen}
+\subsection{Funktionenräume und Normen}
 
 \begin{definition}[$L^p$-Raum]
-    FÃ¼r $1 \leq p < \infty$ ist der $L^p$-Raum Ã¼ber $[a,b]$ definiert als:
+    Für $1 \leq p < \infty$ ist der $L^p$-Raum über $[a,b]$ definiert als:
     \[
     L^p([a,b]) = \left\{ f : [a,b] \to \mathbb{R} \;\Big|\; \int_a^b |f(x)|^p\,dx < \infty \right\}
     \]
@@ -154,13 +154,13 @@ Ziel dieser Arbeit ist es, neun grundlegende AnwendungsfÃ¤lle des Diskretisier
 \end{definition}
 
 \begin{definition}[Bandlimitiertes Signal]
-    Ein Signal $x(t)$ heiÃŸt \emph{bandlimitiert} mit Bandbreite $B$, wenn seine Fourier-Transformierte $\hat{x}(f) = 0$ fÃ¼r alle $|f| > B$ gilt.
+    Ein Signal $x(t)$ heißt \emph{bandlimitiert} mit Bandbreite $B$, wenn seine Fourier-Transformierte $\hat{x}(f) = 0$ für alle $|f| > B$ gilt.
 \end{definition}
 
 \subsection{Konvergenzbegriffe}
 
-\begin{definition}[GleichmÃ¤ÃŸige Konvergenz einer Diskretisierung]
-    Eine Folge diskreter Approximationen $(f_N)_{N\in\mathbb{N}}$ konvergiert \emph{gleichmÃ¤ÃŸig} gegen $f$, wenn:
+\begin{definition}[Gleichmäßige Konvergenz einer Diskretisierung]
+    Eine Folge diskreter Approximationen $(f_N)_{N\in\mathbb{N}}$ konvergiert \emph{gleichmäßig} gegen $f$, wenn:
     \[
     \forall \varepsilon > 0\;\exists N_0 \in \mathbb{N} : \forall N \geq N_0,\;\forall x \in \Omega:\;|f_N(x) - f(x)| < \varepsilon.
     \]
@@ -172,11 +172,11 @@ Ziel dieser Arbeit ist es, neun grundlegende AnwendungsfÃ¤lle des Diskretisier
 
 \subsection{Kontinuierliches Modell}
 
-Die klassische Rayleigh-Jeans-Formel beschreibt die spektrale Energiedichte eines schwarzen KÃ¶rpers als:
+Die klassische Rayleigh-Jeans-Formel beschreibt die spektrale Energiedichte eines schwarzen Körpers als:
 \[
 B_{\text{klass}}(\nu, T) = \frac{2\nu^2}{c^2} k_B T,
 \]
-was fÃ¼r $\nu \to \infty$ zu unendlicher Energie fÃ¼hrt (\emph{Ultraviolettkatastrophe}).
+was für $\nu \to \infty$ zu unendlicher Energie führt (\emph{Ultraviolettkatastrophe}).
 
 \subsection{Diskretisierung durch Energiequanten}
 
@@ -192,7 +192,7 @@ was fÃ¼r $\nu \to \infty$ zu unendlicher Energie fÃ¼hrt (\emph{Ultraviolettk
     \[
     Z = \sum_{n=0}^\infty e^{-nx} = \frac{1}{1-e^{-x}}.
     \]
-    Der ZÃ¤hler ergibt sich durch Differentiation nach $\beta$:
+    Der Zähler ergibt sich durch Differentiation nach $\beta$:
     \[
     \sum_{n=0}^\infty n h\nu e^{-nh\nu\beta} = -h\nu \frac{\partial}{\partial(h\nu\beta)} \ln Z = h\nu \frac{e^{-x}}{1-e^{-x}} = \frac{h\nu}{e^x - 1}.
     \]
@@ -203,7 +203,7 @@ was fÃ¼r $\nu \to \infty$ zu unendlicher Energie fÃ¼hrt (\emph{Ultraviolettk
 \end{proof}
 
 \begin{lemma}[Klassischer Grenzfall]
-    FÃ¼r $h\nu \ll k_BT$ gilt $B(\nu,T) \to \frac{2\nu^2}{c^2}k_BT$ (Rayleigh-Jeans).
+    Für $h\nu \ll k_BT$ gilt $B(\nu,T) \to \frac{2\nu^2}{c^2}k_BT$ (Rayleigh-Jeans).
 \end{lemma}
 \begin{proof}
     Taylor-Entwicklung: $e^{h\nu/(k_BT)} - 1 \approx h\nu/(k_BT)$ ergibt $B \approx 2\nu^2 k_BT/c^2$. \qedhere
@@ -221,7 +221,7 @@ was fÃ¼r $\nu \to \infty$ zu unendlicher Energie fÃ¼hrt (\emph{Ultraviolettk
 
 \subsection{Kontinuierliches Modell}
 
-Sei $f \in L^2([0, 2\pi])$ eine quadratintegrierbare, periodische Funktion. Das kontinuierliche Spektrum $\hat{f}$ enthÃ¤lt (im Allgemeinen) unendlich viele Frequenzkomponenten.
+Sei $f \in L^2([0, 2\pi])$ eine quadratintegrierbare, periodische Funktion. Das kontinuierliche Spektrum $\hat{f}$ enthält (im Allgemeinen) unendlich viele Frequenzkomponenten.
 
 \subsection{Diskretisierung durch harmonische Oberwellen}
 
@@ -237,42 +237,42 @@ Sei $f \in L^2([0, 2\pi])$ eine quadratintegrierbare, periodische Funktion. Das 
 \end{definition}
 
 \begin{satz}[Parseval'sche Gleichung]
-    FÃ¼r $f \in L^2([0,2\pi])$ gilt:
+    Für $f \in L^2([0,2\pi])$ gilt:
     \[
     \|f\|_2^2 = \frac{a_0^2}{2} + \sum_{k=1}^\infty (a_k^2 + b_k^2).
     \]
 \end{satz}
 
 \begin{satz}[Konvergenz der Fourier-Reihe in $L^2$]
-    FÃ¼r jedes $f \in L^2([0,2\pi])$ gilt:
+    Für jedes $f \in L^2([0,2\pi])$ gilt:
     \[
     \lim_{N\to\infty} \|f - S_N f\|_2 = 0.
     \]
 \end{satz}
 
 \begin{proof}
-    Die trigonometrischen Polynome $\{1, \cos(kt), \sin(kt)\}_{k\geq 1}$ bilden ein vollstÃ¤ndiges Orthonormalsystem in $L^2([0,2\pi])$ (Satz von Fischer-Riesz). Daher ist die orthogonale Projektion $S_N f$ die beste Approximation in $\text{span}\{e^{ikt}\}_{|k|\leq N}$, und der Rest\-fehler:
+    Die trigonometrischen Polynome $\{1, \cos(kt), \sin(kt)\}_{k\geq 1}$ bilden ein vollständiges Orthonormalsystem in $L^2([0,2\pi])$ (Satz von Fischer-Riesz). Daher ist die orthogonale Projektion $S_N f$ die beste Approximation in $\text{span}\{e^{ikt}\}_{|k|\leq N}$, und der Rest\-fehler:
     \[
     \|f - S_N f\|_2^2 = \sum_{|k|>N} |\hat{f}(k)|^2 \to 0,
     \]
     da $\sum_{k=-\infty}^{\infty}|\hat{f}(k)|^2 = \|f\|_2^2 < \infty$ (Parseval). \qedhere
 \end{proof}
 
-\begin{lemma}[Fehlerabfall fÃ¼r glatte Funktionen]
+\begin{lemma}[Fehlerabfall für glatte Funktionen]
     Ist $f$ $s$-mal stetig differenzierbar, so gilt:
     \[
     \|f - S_N f\|_\infty \leq C_s \cdot N^{-s}
     \]
-    fÃ¼r eine von $f$ und $s$ abhÃ¤ngige Konstante $C_s > 0$.
+    für eine von $f$ und $s$ abhängige Konstante $C_s > 0$.
 \end{lemma}
 \begin{proof}
-    Partielle Integration $s$-mal liefert $|\hat{f}(k)| \leq \|f^{(s)}\|_1 / |k|^s$. Summation Ã¼ber $|k| > N$ und Cauchy-Schwarz ergibt die Schranke. \qedhere
+    Partielle Integration $s$-mal liefert $|\hat{f}(k)| \leq \|f^{(s)}\|_1 / |k|^s$. Summation über $|k| > N$ und Cauchy-Schwarz ergibt die Schranke. \qedhere
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot2_fourier.pdf}
-    \caption{Fourier-Partialsummen der Rechteckfunktion fÃ¼r $N \in \{1, 3, 9, 31\}$ harmonische Oberwellen. Der rote Bereich zeigt den Approximationsfehler. Das Gibbs-PhÃ¤nomen (Ã¼berschwingen an Sprungstellen) ist bei $N=31$ sichtbar.}
+    \caption{Fourier-Partialsummen der Rechteckfunktion für $N \in \{1, 3, 9, 31\}$ harmonische Oberwellen. Der rote Bereich zeigt den Approximationsfehler. Das Gibbs-Phänomen (überschwingen an Sprungstellen) ist bei $N=31$ sichtbar.}
 \end{figure}
 
 %============================================================
@@ -281,12 +281,12 @@ Sei $f \in L^2([0, 2\pi])$ eine quadratintegrierbare, periodische Funktion. Das 
 
 \subsection{Kontinuierliches Modell}
 
-Ein analoges Signal $x(t) \in L^2(\mathbb{R})$ ist definiert fÃ¼r alle $t \in \mathbb{R}$ und enthÃ¤lt prinzipiell unendlich viele Informationspunkte.
+Ein analoges Signal $x(t) \in L^2(\mathbb{R})$ ist definiert für alle $t \in \mathbb{R}$ und enthält prinzipiell unendlich viele Informationspunkte.
 
 \subsection{Diskretisierung durch Abtastwerte}
 
 \begin{satz}[Shannon-Nyquist-Whittaker Abtasttheorem]
-    Sei $x(t)$ ein bandlimitiertes Signal mit Bandbreite $B$ (d.\,h.\ $\hat{x}(f) = 0$ fÃ¼r $|f| > B$). Wird $x(t)$ mit der Abtastfrequenz $f_s > 2B$ abgetastet, dann kann $x(t)$ exakt aus den Abtastwerten $x(nT_s)$ mit $T_s = 1/f_s$ rekonstruiert werden:
+    Sei $x(t)$ ein bandlimitiertes Signal mit Bandbreite $B$ (d.\,h.\ $\hat{x}(f) = 0$ für $|f| > B$). Wird $x(t)$ mit der Abtastfrequenz $f_s > 2B$ abgetastet, dann kann $x(t)$ exakt aus den Abtastwerten $x(nT_s)$ mit $T_s = 1/f_s$ rekonstruiert werden:
     \[
     x(t) = \sum_{n=-\infty}^{\infty} x(nT_s)\,\operatorname{sinc}\!\left(\frac{t - nT_s}{T_s}\right),
     \]
@@ -294,15 +294,15 @@ Ein analoges Signal $x(t) \in L^2(\mathbb{R})$ ist definiert fÃ¼r alle $t \in 
 \end{satz}
 
 \begin{proof}
-    Da $x(t)$ bandlimitiert ist, gilt fÃ¼r die Fourier-Transformierte $\hat{x}(f)$, dass sie auf $(-B, B)$ getragen wird. Das abgetastete Signal
+    Da $x(t)$ bandlimitiert ist, gilt für die Fourier-Transformierte $\hat{x}(f)$, dass sie auf $(-B, B)$ getragen wird. Das abgetastete Signal
     \[
     x_s(t) = x(t)\sum_{n=-\infty}^\infty \delta(t - nT_s)
     \]
-    hat das Spektrum $\hat{x}_s(f) = f_s \sum_{k=-\infty}^\infty \hat{x}(f - kf_s)$. FÃ¼r $f_s > 2B$ Ã¼berlappen sich die Kopien $\hat{x}(f - kf_s)$ nicht (kein Aliasing). Ein ideales Tiefpassfilter $H(f) = T_s \cdot \mathbf{1}_{|f|\leq B}$ extrahiert $\hat{x}(f)$ exakt. Die inverse Fourier-Transformation liefert die Sinc-Rekonstruktionsformel. \qedhere
+    hat das Spektrum $\hat{x}_s(f) = f_s \sum_{k=-\infty}^\infty \hat{x}(f - kf_s)$. Für $f_s > 2B$ überlappen sich die Kopien $\hat{x}(f - kf_s)$ nicht (kein Aliasing). Ein ideales Tiefpassfilter $H(f) = T_s \cdot \mathbf{1}_{|f|\leq B}$ extrahiert $\hat{x}(f)$ exakt. Die inverse Fourier-Transformation liefert die Sinc-Rekonstruktionsformel. \qedhere
 \end{proof}
 
 \begin{lemma}[Aliasing-Fehler]
-    FÃ¼r $f_s \leq 2B$ entsteht ein Aliasing-Fehler der GrÃ¶ÃŸe:
+    Für $f_s \leq 2B$ entsteht ein Aliasing-Fehler der Größe:
     \[
     \|x - \hat{x}_{\text{rekons}}\|_2^2 = 2\int_B^{f_s/2} |\hat{x}(f)|^2\,df + \text{Interferenzterme} > 0.
     \]
@@ -311,7 +311,7 @@ Ein analoges Signal $x(t) \in L^2(\mathbb{R})$ ist definiert fÃ¼r alle $t \in 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot3_nyquist.pdf}
-    \caption{Sinc-Rekonstruktion aus diskreten Abtastwerten fÃ¼r vier Abtastfrequenzen. Bei $f_s = 11\,\text{Hz}$ (knapp Ã¼ber Nyquist) ist die Rekonstruktion bereits sehr gut. Bei $f_s = 200\,\text{Hz}$ (Ãœberabtastung) wird das Signal nahezu perfekt wiedergegeben.}
+    \caption{Sinc-Rekonstruktion aus diskreten Abtastwerten für vier Abtastfrequenzen. Bei $f_s = 11\,\text{Hz}$ (knapp über Nyquist) ist die Rekonstruktion bereits sehr gut. Bei $f_s = 200\,\text{Hz}$ (Überabtastung) wird das Signal nahezu perfekt wiedergegeben.}
 \end{figure}
 
 %============================================================
@@ -328,7 +328,7 @@ I = \int_a^b f(x)\,dx = \lim_{N\to\infty} \sum_{i=1}^N f(\xi_i)\,\Delta x_i.
 \subsection{Diskretisierung durch Riemann-Summen}
 
 \begin{definition}[Mittelpunkt-Riemann-Summe]
-    FÃ¼r eine gleichmÃ¤ÃŸige Zerlegung $x_i = a + i\cdot h$ mit $h = (b-a)/N$ und Mittelpunkten $\xi_i = x_{i-1} + h/2$:
+    Für eine gleichmäßige Zerlegung $x_i = a + i\cdot h$ mit $h = (b-a)/N$ und Mittelpunkten $\xi_i = x_{i-1} + h/2$:
     \[
     R_N(f) = h \sum_{i=1}^N f\!\left(a + \left(i - \tfrac{1}{2}\right)h\right).
     \]
@@ -342,11 +342,11 @@ I = \int_a^b f(x)\,dx = \lim_{N\to\infty} \sum_{i=1}^N f(\xi_i)\,\Delta x_i.
 \end{satz}
 
 \begin{proof}
-    FÃ¼r jedes Intervall $[x_{i-1}, x_i]$ liefert Taylor-Entwicklung um $\xi_i$:
+    Für jedes Intervall $[x_{i-1}, x_i]$ liefert Taylor-Entwicklung um $\xi_i$:
     \[
     \int_{x_{i-1}}^{x_i} f(x)\,dx = f(\xi_i)\,h + \frac{f''(\xi_i)}{24}\,h^3 + O(h^5).
     \]
-    Der lokale Fehler pro Intervall ist $|e_i| \leq \frac{M_2}{24}h^3$, wobei $M_2 = \max|f''|$. Summation Ã¼ber $N$ Intervalle:
+    Der lokale Fehler pro Intervall ist $|e_i| \leq \frac{M_2}{24}h^3$, wobei $M_2 = \max|f''|$. Summation über $N$ Intervalle:
     \[
     |I - R_N(f)| \leq N \cdot \frac{M_2}{24}h^3 = \frac{M_2(b-a)}{24}\,h^2 = \frac{M_2(b-a)^3}{24N^2}. \qedhere
     \]
@@ -355,7 +355,7 @@ I = \int_a^b f(x)\,dx = \lim_{N\to\infty} \sum_{i=1}^N f(\xi_i)\,\Delta x_i.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot10_riemann.pdf}
-    \caption{Riemann-Rechtecksummen fÃ¼r $N \in \{4, 10, 50, 200\}$ Intervalle. Der relative Fehler fÃ¤llt wie $O(N^{-2})$ ab -- bei $N=200$ liegt er unter $0.001\,\%$.}
+    \caption{Riemann-Rechtecksummen für $N \in \{4, 10, 50, 200\}$ Intervalle. Der relative Fehler fällt wie $O(N^{-2})$ ab -- bei $N=200$ liegt er unter $0.001\,\%$.}
 \end{figure}
 
 %============================================================
@@ -379,7 +379,7 @@ Ein kontinuierliches dynamisches System wird beschrieben durch:
 \end{definition}
 
 \begin{satz}[Konvergenz des Euler-Verfahrens]
-    Sei $F$ Lipschitz-stetig in $y$ mit Lipschitz-Konstante $L > 0$, und sei die exakte LÃ¶sung $y(t) \in C^2([t_0, T])$. Dann gilt fÃ¼r den globalen Fehler:
+    Sei $F$ Lipschitz-stetig in $y$ mit Lipschitz-Konstante $L > 0$, und sei die exakte Lösung $y(t) \in C^2([t_0, T])$. Dann gilt für den globalen Fehler:
     \[
     \max_{0 \leq k \leq N} |y(t_k) - y_k| \leq \frac{h M_2}{2L}\left(e^{L(T-t_0)} - 1\right) = O(h),
     \]
@@ -387,7 +387,7 @@ Ein kontinuierliches dynamisches System wird beschrieben durch:
 \end{satz}
 
 \begin{proof}
-    \textbf{Lokaler Abschneidefehler:} Taylor-Entwicklung der exakten LÃ¶sung um $t_k$:
+    \textbf{Lokaler Abschneidefehler:} Taylor-Entwicklung der exakten Lösung um $t_k$:
     \[
     y(t_{k+1}) = y(t_k) + h\,F(t_k, y(t_k)) + \frac{h^2}{2}\ddot{y}(\tau_k),\quad \tau_k \in (t_k, t_{k+1}).
     \]
@@ -408,7 +408,7 @@ Ein kontinuierliches dynamisches System wird beschrieben durch:
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot4_euler.pdf}
-    \caption{Euler-Diskretisierung der logistischen Gleichung fÃ¼r Schrittweiten $h \in \{2.0, 0.5, 0.1, 0.01\}$. Der rote Bereich (rechte Achse) zeigt den absoluten Fehler. Der Maximalfehler fÃ¤llt linear mit $h$ ab ($O(h)$-Konvergenz).}
+    \caption{Euler-Diskretisierung der logistischen Gleichung für Schrittweiten $h \in \{2.0, 0.5, 0.1, 0.01\}$. Der rote Bereich (rechte Achse) zeigt den absoluten Fehler. Der Maximalfehler fällt linear mit $h$ ab ($O(h)$-Konvergenz).}
 \end{figure}
 
 %============================================================
@@ -432,7 +432,7 @@ Betrachte das elliptische Randwertproblem:
 \end{definition}
 
 \begin{definition}[FEM-Diskretisierung]
-    Zerlegung $[0,1]$ in $N$ gleichmÃ¤ÃŸige Intervalle der LÃ¤nge $h=1/N$. Knotenpunkte $x_i = ih$. Hutfunktionen:
+    Zerlegung $[0,1]$ in $N$ gleichmäßige Intervalle der Länge $h=1/N$. Knotenpunkte $x_i = ih$. Hutfunktionen:
     \[
     \varphi_i(x) = \begin{cases}
         (x - x_{i-1})/h & x \in [x_{i-1}, x_i]\\
@@ -440,28 +440,28 @@ Betrachte das elliptische Randwertproblem:
         0 & \text{sonst}
     \end{cases}
     \]
-    Gesucht: $u_h = \sum_{i=1}^{N-1} u_i \varphi_i$ mit $a(u_h, \varphi_j) = \ell(\varphi_j)$ fÃ¼r alle $j$.
+    Gesucht: $u_h = \sum_{i=1}^{N-1} u_i \varphi_i$ mit $a(u_h, \varphi_j) = \ell(\varphi_j)$ für alle $j$.
 \end{definition}
 
-\begin{satz}[Cea's Lemma -- FEM-FehlerabschÃ¤tzung]
-    Sei $u \in H_0^1(0,1)$ die exakte LÃ¶sung und $u_h$ die FEM-LÃ¶sung. Dann gilt (Cea):
+\begin{satz}[Cea's Lemma -- FEM-Fehlerabschätzung]
+    Sei $u \in H_0^1(0,1)$ die exakte Lösung und $u_h$ die FEM-Lösung. Dann gilt (Cea):
     \[
     \|u - u_h\|_{H^1} \leq \frac{M}{\alpha}\,\inf_{v_h \in V_h}\|u - v_h\|_{H^1}.
     \]
-    FÃ¼r lineare Elemente und $u \in H^2$:
+    Für lineare Elemente und $u \in H^2$:
     \[
     \|u - u_h\|_{L^2} \leq C\,h^2\,\|u''\|_{L^2}.
     \]
 \end{satz}
 
 \begin{proof}
-    Das Bilinearformular $a(\cdot,\cdot)$ ist stetig ($|a(u,v)| \leq M\|u\|_{H^1}\|v\|_{H^1}$) und koerziv ($a(u,u) \geq \alpha\|u\|_{H^1}^2$ mit $\alpha = 1$ nach PoincarÃ©). Cea's Lemma folgt aus der Galerkin-OrthogonalitÃ¤t $a(u - u_h, v_h) = 0$. Die InterpolationsabschÃ¤tzung $\|u - \Pi_h u\|_{H^1} \leq Ch\|u''\|_{L^2}$ liefert zusammen mit dem Aubin-Nitsche-DualitÃ¤tsargument die $L^2$-SchÃ¤tzung zweiter Ordnung. \qedhere
+    Das Bilinearformular $a(\cdot,\cdot)$ ist stetig ($|a(u,v)| \leq M\|u\|_{H^1}\|v\|_{H^1}$) und koerziv ($a(u,u) \geq \alpha\|u\|_{H^1}^2$ mit $\alpha = 1$ nach Poincaré). Cea's Lemma folgt aus der Galerkin-Orthogonalität $a(u - u_h, v_h) = 0$. Die Interpolationsabschätzung $\|u - \Pi_h u\|_{H^1} \leq Ch\|u''\|_{L^2}$ liefert zusammen mit dem Aubin-Nitsche-Dualitätsargument die $L^2$-Schätzung zweiter Ordnung. \qedhere
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot6_fem.pdf}
-    \caption{FEM-LÃ¶sungen fÃ¼r $N \in \{3, 6, 12, 50\}$ Elemente im Vergleich zur analytischen LÃ¶sung $u(x) = \sin(\pi x)/\pi^2$. Der $L^2$-Fehler fÃ¤llt wie $O(h^2)$ ab.}
+    \caption{FEM-Lösungen für $N \in \{3, 6, 12, 50\}$ Elemente im Vergleich zur analytischen Lösung $u(x) = \sin(\pi x)/\pi^2$. Der $L^2$-Fehler fällt wie $O(h^2)$ ab.}
 \end{figure}
 
 %============================================================
@@ -474,8 +474,8 @@ Ein analoges elektrisches Signal $u(t) \in [u_{\min}, u_{\max}]$ nimmt kontinuie
 
 \subsection{Diskretisierung durch Quantisierung}
 
-\begin{definition}[$b$-Bit-GleichmÃ¤ÃŸigquantisierer]
-    Der Quantisierer $Q_b : \mathbb{R} \to \mathcal{Q}$ mit $|\mathcal{Q}| = 2^b$ gleichmÃ¤ÃŸigen Stufen der Schrittweite
+\begin{definition}[$b$-Bit-Gleichmäßigquantisierer]
+    Der Quantisierer $Q_b : \mathbb{R} \to \mathcal{Q}$ mit $|\mathcal{Q}| = 2^b$ gleichmäßigen Stufen der Schrittweite
     \[
     \Delta = \frac{u_{\max} - u_{\min}}{2^b - 1}
     \]
@@ -483,7 +483,7 @@ Ein analoges elektrisches Signal $u(t) \in [u_{\min}, u_{\max}]$ nimmt kontinuie
 \end{definition}
 
 \begin{satz}[Quantisierungsrauschen]
-    Der Quantisierungsfehler $\varepsilon = u - Q_b(u)$ ist gleichmÃ¤ÃŸig verteilt auf $[-\Delta/2, \Delta/2]$ (Granularrauschen) mit:
+    Der Quantisierungsfehler $\varepsilon = u - Q_b(u)$ ist gleichmäßig verteilt auf $[-\Delta/2, \Delta/2]$ (Granularrauschen) mit:
     \[
     \sigma_\varepsilon^2 = \frac{\Delta^2}{12} = \frac{(u_{\max}-u_{\min})^2}{12\cdot(2^b - 1)^2} \approx \frac{(u_{\max}-u_{\min})^2}{12}\cdot 4^{-b}.
     \]
@@ -494,7 +494,7 @@ Ein analoges elektrisches Signal $u(t) \in [u_{\min}, u_{\max}]$ nimmt kontinuie
 \end{proof}
 
 \begin{satz}[Signal-Rausch-Abstand]
-    FÃ¼r ein sinusfÃ¶rmiges Vollaussteuerungssignal gilt das SQNR (Signal-to-Quantization-Noise Ratio):
+    Für ein sinusförmiges Vollaussteuerungssignal gilt das SQNR (Signal-to-Quantization-Noise Ratio):
     \[
     \text{SQNR}_{\text{dB}} = 6{,}02 \cdot b + 1{,}76\,\text{ dB}.
     \]
@@ -511,7 +511,7 @@ Ein analoges elektrisches Signal $u(t) \in [u_{\min}, u_{\max}]$ nimmt kontinuie
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot7_adc.pdf}
-    \caption{Quantisierung eines Analogsignals mit $b \in \{2, 4, 8, 16\}$ Bit. Der SNR steigt um ca.\ $6\,\text{dB}$ pro zusÃ¤tzlichem Bit. Bei 16 Bit Ã¼berschreitet der SNR $98\,\text{dB}$.}
+    \caption{Quantisierung eines Analogsignals mit $b \in \{2, 4, 8, 16\}$ Bit. Der SNR steigt um ca.\ $6\,\text{dB}$ pro zusätzlichem Bit. Bei 16 Bit überschreitet der SNR $98\,\text{dB}$.}
 \end{figure}
 
 %============================================================
@@ -532,18 +532,18 @@ Das Membranpotential $V_m(t)$ eines Neurons ist eine kontinuierliche Funktion, d
     \[
     V_m(t^+) = V_{\text{reset}}\quad \text{wenn}\quad V_m(t^-) \geq V_\theta.
     \]
-    Die Spikefolge $\{t_1, t_2, \ldots, t_k\}$ ist die diskrete ReprÃ¤sentation des kontinuierlichen Stroms $I(t)$.
+    Die Spikefolge $\{t_1, t_2, \ldots, t_k\}$ ist die diskrete Repräsentation des kontinuierlichen Stroms $I(t)$.
 \end{definition}
 
-\begin{satz}[StationÃ¤re Feuerrate]
-    FÃ¼r einen konstanten Strom $I > I_\theta = (V_\theta - V_{\text{rest}})/R_m$ ergibt sich die stationÃ¤re Feuerrate:
+\begin{satz}[Stationäre Feuerrate]
+    Für einen konstanten Strom $I > I_\theta = (V_\theta - V_{\text{rest}})/R_m$ ergibt sich die stationäre Feuerrate:
     \[
     r = \left[\tau_m \ln\!\left(\frac{R_m I - V_{\text{rest}} + V_{\text{reset}}}{R_m I - V_\theta + V_{\text{reset}}}\right) + t_{\text{ref}}\right]^{-1}.
     \]
 \end{satz}
 
 \begin{proof}
-    Das Membranpotential zwischen zwei Spikes steigt gemÃ¤ÃŸ $V_m(t) = V_{\text{reset}} + (R_mI + V_{\text{rest}} - V_{\text{reset}})(1 - e^{-t/\tau_m})$. LÃ¶sung von $V_m(T_\text{ISI}) = V_\theta$ nach der Interspike-Periode $T_\text{ISI}$:
+    Das Membranpotential zwischen zwei Spikes steigt gemäß $V_m(t) = V_{\text{reset}} + (R_mI + V_{\text{rest}} - V_{\text{reset}})(1 - e^{-t/\tau_m})$. Lösung von $V_m(T_\text{ISI}) = V_\theta$ nach der Interspike-Periode $T_\text{ISI}$:
     \[
     T_\text{ISI} = \tau_m \ln\!\left(\frac{R_mI + V_\text{rest} - V_\text{reset}}{R_mI + V_\text{rest} - V_\theta}\right).
     \]
@@ -553,7 +553,7 @@ Das Membranpotential $V_m(t)$ eines Neurons ist eine kontinuierliche Funktion, d
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot8_neuron.pdf}
-    \caption{LIF-Neuron: Kontinuierliche Membranspannung $V_m(t)$ (blau) mit Schwelle (gestrichelt). Bei steigendem Eingangsstrom $I$ erhÃ¶ht sich die Feuerrate von ${\sim}5\,\text{Hz}$ auf ${\sim}50\,\text{Hz}$.}
+    \caption{LIF-Neuron: Kontinuierliche Membranspannung $V_m(t)$ (blau) mit Schwelle (gestrichelt). Bei steigendem Eingangsstrom $I$ erhöht sich die Feuerrate von ${\sim}5\,\text{Hz}$ auf ${\sim}50\,\text{Hz}$.}
 \end{figure}
 
 %============================================================
@@ -574,7 +574,7 @@ Bei der Sequenzierung durch Synthese (Next-Generation Sequencing, NGS) erzeugen 
 \end{definition}
 
 \begin{satz}[Fehlermodell]
-    Unter der Annahme, dass die SignalintensitÃ¤ten normalverteilt sind mit $I_c(t_k) \sim \mathcal{N}(\mu_c, \sigma^2)$, ist die Wahrscheinlichkeit eines korrekten Basecalls:
+    Unter der Annahme, dass die Signalintensitäten normalverteilt sind mit $I_c(t_k) \sim \mathcal{N}(\mu_c, \sigma^2)$, ist die Wahrscheinlichkeit eines korrekten Basecalls:
     \[
     P(\text{korrekt}) = P\!\left(I_{\text{true}} = \max_{c}\, I_c\right) = \int_{-\infty}^\infty \Phi\!\left(\frac{x}{\sigma}\right)^3 \frac{1}{\sigma}\phi\!\left(\frac{x - \mu_{\text{true}}}{\sigma}\right) dx,
     \]
@@ -582,13 +582,13 @@ Bei der Sequenzierung durch Synthese (Next-Generation Sequencing, NGS) erzeugen 
 \end{satz}
 
 \begin{proof}
-    Mit $Z_c \sim \mathcal{N}(0, \sigma^2)$ unabhÃ¤ngig und $I_c(t_k) = \mu_c + Z_c$: Die Wahrscheinlichkeit, dass der wahre Kanal $c^*$ das Maximum liefert, entspricht der Wahrscheinlichkeit $P(I_{c^*} > I_c$ fÃ¼r alle $c \neq c^*)$, d.\,h.\ $P(\mu_{c^*} + Z_{c^*} > \mu_c + Z_c)$. Integration Ã¼ber die Dichte von $I_{c^*}$ liefert die angegebene Formel. \qedhere
+    Mit $Z_c \sim \mathcal{N}(0, \sigma^2)$ unabhängig und $I_c(t_k) = \mu_c + Z_c$: Die Wahrscheinlichkeit, dass der wahre Kanal $c^*$ das Maximum liefert, entspricht der Wahrscheinlichkeit $P(I_{c^*} > I_c$ für alle $c \neq c^*)$, d.\,h.\ $P(\mu_{c^*} + Z_{c^*} > \mu_c + Z_c)$. Integration über die Dichte von $I_{c^*}$ liefert die angegebene Formel. \qedhere
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot5_dna.pdf}
-    \caption{Oben: Simuliertes 4-Kanal-Fluoreszenzsignal (kontinuierlich). Mitte: Diskrete Basenerkennung durch Maximumregel. Unten: QualitÃ¤tsprofil -- grÃ¼n = korrekte, rot = fehlerhafte Basecalls.}
+    \caption{Oben: Simuliertes 4-Kanal-Fluoreszenzsignal (kontinuierlich). Mitte: Diskrete Basenerkennung durch Maximumregel. Unten: Qualitätsprofil -- grün = korrekte, rot = fehlerhafte Basecalls.}
 \end{figure}
 
 %============================================================
@@ -606,15 +606,15 @@ wobei $W_t$ ein Wiener-Prozess (Brown'sche Bewegung) ist.
 \subsection{Diskretisierung durch endliche Markov-Ketten}
 
 \begin{definition}[Diskretisierung durch Zustandsquantisierung]
-    Sei $\{s_1, \ldots, s_K\}$ eine gleichmÃ¤ÃŸige Zerlegung des Zustandsraums. Die diskrete Markov-Kette $\{Y_n\}$ mit Ãœbergangswahrscheinlichkeiten
+    Sei $\{s_1, \ldots, s_K\}$ eine gleichmäßige Zerlegung des Zustandsraums. Die diskrete Markov-Kette $\{Y_n\}$ mit Übergangswahrscheinlichkeiten
     \[
     P_{ij} = P(X_{t+\Delta t} \in [s_j - \tfrac{\Delta s}{2}, s_j + \tfrac{\Delta s}{2}) \mid X_t \approx s_i)
     \]
     approximiert den OU-Prozess.
 \end{definition}
 
-\begin{satz}[Konvergenz der stationÃ¤ren Verteilung]
-    Sei $\pi_\infty(x) = \mathcal{N}(\mu, \sigma^2/(2\theta))$ die stationÃ¤re Dichte des OU-Prozesses und $\boldsymbol{\pi}^{(K)}$ die stationÃ¤re Verteilung der $K$-Zustands-Markov-Kette. Dann gilt:
+\begin{satz}[Konvergenz der stationären Verteilung]
+    Sei $\pi_\infty(x) = \mathcal{N}(\mu, \sigma^2/(2\theta))$ die stationäre Dichte des OU-Prozesses und $\boldsymbol{\pi}^{(K)}$ die stationäre Verteilung der $K$-Zustands-Markov-Kette. Dann gilt:
     \[
     d_{\text{TV}}(\boldsymbol{\pi}^{(K)}, \pi_\infty) \leq C \cdot \frac{1}{K},
     \]
@@ -622,13 +622,13 @@ wobei $W_t$ ein Wiener-Prozess (Brown'sche Bewegung) ist.
 \end{satz}
 
 \begin{proof}
-    Die stationÃ¤re Verteilung der diskretisierten Kette approximiert die stationÃ¤re Dichte durch Histogrammbinning: $\pi^{(K)}_j \approx \int_{s_j - \Delta s/2}^{s_j + \Delta s/2} \pi_\infty(x)\,dx$. Der Approximationsfehler in Totalvariation ist beschrÃ¤nkt durch die Summe der Schwankungen von $\pi_\infty$ auf den Bins der Breite $\Delta s = O(1/K)$: $d_\text{TV} \leq \frac{\Delta s}{2}\|\pi_\infty'\|_1 = O(1/K)$. \qedhere
+    Die stationäre Verteilung der diskretisierten Kette approximiert die stationäre Dichte durch Histogrammbinning: $\pi^{(K)}_j \approx \int_{s_j - \Delta s/2}^{s_j + \Delta s/2} \pi_\infty(x)\,dx$. Der Approximationsfehler in Totalvariation ist beschränkt durch die Summe der Schwankungen von $\pi_\infty$ auf den Bins der Breite $\Delta s = O(1/K)$: $d_\text{TV} \leq \frac{\Delta s}{2}\|\pi_\infty'\|_1 = O(1/K)$. \qedhere
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{plots/plot9_markov.pdf}
-    \caption{Diskretisierung des OU-Prozesses durch $K \in \{3, 5, 10, 25\}$ ZustÃ¤nde. Der RMS-Fehler zwischen kontinuierlicher Trajektorie und diskreter Zustandsfolge fÃ¤llt mit steigendem $K$ ab.}
+    \caption{Diskretisierung des OU-Prozesses durch $K \in \{3, 5, 10, 25\}$ Zustände. Der RMS-Fehler zwischen kontinuierlicher Trajektorie und diskreter Zustandsfolge fällt mit steigendem $K$ ab.}
 \end{figure}
 
 %============================================================
@@ -643,21 +643,21 @@ Das folgende Theorem fasst die gemeinsame Struktur aller behandelten Diskretisie
     Sei $\mathcal{F}$ ein Banachraum kontinuierlicher Objekte mit Norm $\|\cdot\|$. Sei $(\mathcal{D}_N, \mathcal{R}_N)_{N\in\mathbb{N}}$ eine Familie von Diskretisierungs-/Rekonstruktionsoperatoren. Unter folgenden Voraussetzungen:
     \begin{itemize}
         \item \textbf{(A1) Konsistenz:} $\|\mathcal{R}_N \circ \mathcal{D}_N(f) - f\| \leq C_f \cdot \omega(1/N)$
-        \item \textbf{(A2) StabilitÃ¤t:} $\|\mathcal{R}_N(d_1) - \mathcal{R}_N(d_2)\| \leq S \cdot \|d_1 - d_2\|_{\mathbb{R}^N}$
+        \item \textbf{(A2) Stabilität:} $\|\mathcal{R}_N(d_1) - \mathcal{R}_N(d_2)\| \leq S \cdot \|d_1 - d_2\|_{\mathbb{R}^N}$
     \end{itemize}
     gilt die \textbf{Konvergenz}: $\lim_{N\to\infty}\|\mathcal{R}_N \circ \mathcal{D}_N(f) - f\| = 0$,
-    wobei $\omega : \mathbb{R}_{>0} \to \mathbb{R}_{>0}$ ein Stetigkeitsmodul mit $\omega(\varepsilon)\to 0$ fÃ¼r $\varepsilon\to 0$.
+    wobei $\omega : \mathbb{R}_{>0} \to \mathbb{R}_{>0}$ ein Stetigkeitsmodul mit $\omega(\varepsilon)\to 0$ für $\varepsilon\to 0$.
 \end{satz}
 
 \begin{proof}
-    Direkt aus (A1): $\|\mathcal{R}_N \circ \mathcal{D}_N(f) - f\| \leq C_f \cdot \omega(1/N) \to 0$ fÃ¼r $N \to \infty$. \qedhere
+    Direkt aus (A1): $\|\mathcal{R}_N \circ \mathcal{D}_N(f) - f\| \leq C_f \cdot \omega(1/N) \to 0$ für $N \to \infty$. \qedhere
 \end{proof}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{lllll}
 \toprule
-\textbf{PhÃ¤nomen} & \textbf{Raum} $\mathcal{F}$ & \textbf{Norm} & \textbf{Fehler} & \textbf{Ordnung}\\
+\textbf{Phänomen} & \textbf{Raum} $\mathcal{F}$ & \textbf{Norm} & \textbf{Fehler} & \textbf{Ordnung}\\
 \midrule
 Planck & $C(\mathbb{R}_{>0})$ & $L^\infty$ & $O(N^{-1})$ & algebraisch\\
 Fourier & $L^2([0,2\pi])$ & $L^2$ & $O(N^{-s})$ & polynomiell\\
@@ -683,16 +683,16 @@ Markov & $\mathcal{P}(\mathbb{R})$ & TV & $O(K^{-1})$ & algebraisch\\
 
 Der in~\cite{epp2026subgraph} entwickelte Subgraph Algorithmus stellt eine bisher unbeachtete
 Instanz des in dieser Arbeit formalisierten universellen Diskretisierungstheorems dar.
-Graphen sind naturgemÃ¤ÃŸ diskrete Strukturen; dennoch liegt ihnen ein kontinuierliches Substrat
-zugrunde: der Raum aller mÃ¶glichen Morphismen, Isomorphismen und strukturellen
-Ã„quivalenzklassen bildet einen metrischen Raum, der durch kontinuierliche Invarianten
+Graphen sind naturgemäß diskrete Strukturen; dennoch liegt ihnen ein kontinuierliches Substrat
+zugrunde: der Raum aller möglichen Morphismen, Isomorphismen und strukturellen
+Äquivalenzklassen bildet einen metrischen Raum, der durch kontinuierliche Invarianten
 (Spektrum des Laplace-Operators, charakteristisches Polynom) charakterisiert wird.
 Der Subgraph Algorithmus diskretisiert diesen kontinuierlichen Invariantenraum durch ein
-algebraisch wohlbegrÃ¼ndetes Signaturarray und macht ihn so fÃ¼r exakten diskreten Vergleich
-zugÃ¤nglich.
+algebraisch wohlbegründetes Signaturarray und macht ihn so für exakten diskreten Vergleich
+zugänglich.
 
 Die drei im Ausblick (Abschnitt~\ref{sec:ausblick}) identifizierten offenen Punkte werden in
-diesem Kapitel vollstÃ¤ndig ausgearbeitet:
+diesem Kapitel vollständig ausgearbeitet:
 \begin{enumerate}
     \item Formale Interpretation des Signaturoperators als diskreter Messfunktional
           $\mathcal{D}_N$ im Sinne des universellen Diskretisierungstheorems.
@@ -702,11 +702,11 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
           Konvergenzgarantien aus der Verbindung beider Rahmen.
 \end{enumerate}
 
-\subsection{Formale Grundlagen: Graphen als metrische RÃ¤ume}
+\subsection{Formale Grundlagen: Graphen als metrische Räume}
 
 \begin{definition}[Graphraum und Isomorphieklasse]
     Sei $\mathcal{G}_n$ die Menge aller einfachen, ungerichteten Graphen auf $n$ Knoten.
-    Zwei Graphen $G, G' \in \mathcal{G}_n$ heiÃŸen \emph{isomorph} ($G \cong G'$), wenn eine
+    Zwei Graphen $G, G' \in \mathcal{G}_n$ heißen \emph{isomorph} ($G \cong G'$), wenn eine
     Bijektion $\pi : V(G) \to V(G')$ existiert mit
     \[
     (u,v) \in E(G) \;\Longleftrightarrow\; (\pi(u), \pi(v)) \in E(G').
@@ -719,16 +719,16 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     \[
     d_{\mathrm{GED}}(G, G') = \min_{\text{Edit-Sequenz } e} \sum_{o \in e} c(o),
     \]
-    wobei die Minimierung Ã¼ber alle Sequenzen von EinfÃ¼ge-/LÃ¶sch-/Substitutionsoperationen
-    $o$ mit Kosten $c(o)$ lÃ¤uft, die $G$ in $G'$ Ã¼berfÃ¼hren. Sie definiert eine Pseudometrik
+    wobei die Minimierung über alle Sequenzen von Einfüge-/Lösch-/Substitutionsoperationen
+    $o$ mit Kosten $c(o)$ läuft, die $G$ in $G'$ überführen. Sie definiert eine Pseudometrik
     auf $\mathcal{G}_n$, die zu einer echten Metrik auf $\mathcal{G}_n/{\cong}$ wird.
 \end{definition}
 
 \begin{bemerkung}
     Der Raum $(\mathcal{G}_n/{\cong},\, d_{\mathrm{GED}})$ ist ein diskreter metrischer Raum
-    mit $|\mathcal{G}_n/{\cong}|$ Punkten; dieser wÃ¤chst super-exponentiell in $n$.
+    mit $|\mathcal{G}_n/{\cong}|$ Punkten; dieser wächst super-exponentiell in $n$.
     Die Berechnung von $d_{\mathrm{GED}}$ ist NP-hart im Allgemeinen~\cite{zeng2009}.
-    Der Subgraph Algorithmus umgeht diese KomplexitÃ¤t durch eine algebraische Diskretisierung.
+    Der Subgraph Algorithmus umgeht diese Komplexität durch eine algebraische Diskretisierung.
 \end{bemerkung}
 
 \subsection{Punkt 1: Der Signaturoperator als diskreter Messfunktional}
@@ -745,18 +745,18 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     \sigma_j(G) = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i \;+\; j \cdot 2^n
     \]
     ist. Der erste Term kodiert das Bitmuster der $j$-ten Spalte (Nachbarschaftsvektor von
-    Knoten $j$), der zweite Term garantiert die InjektivitÃ¤t Ã¼ber verschiedene Spalten.
+    Knoten $j$), der zweite Term garantiert die Injektivität über verschiedene Spalten.
 \end{definition}
 
-\begin{satz}[InjektivitÃ¤t des Signaturoperators]
+\begin{satz}[Injektivität des Signaturoperators]
 \label{satz:inj}
     Der Signaturoperator $\mathcal{S}_n$ ist injektiv auf der Menge der Spaltenvektoren:
-    FÃ¼r zwei Spalten $j \neq j'$ gilt stets $\sigma_j(G) \neq \sigma_{j'}(G)$, selbst wenn die
+    Für zwei Spalten $j \neq j'$ gilt stets $\sigma_j(G) \neq \sigma_{j'}(G)$, selbst wenn die
     Spaltenvektoren $A_{\cdot j} = A_{\cdot j'}$ identisch sind.
 \end{satz}
 
 \begin{proof}
-    Seien $j \neq j'$ zwei Spaltenindizes und $A_{\cdot j} = A_{\cdot j'}$ (gleiche EintrÃ¤ge).
+    Seien $j \neq j'$ zwei Spaltenindizes und $A_{\cdot j} = A_{\cdot j'}$ (gleiche Einträge).
     Dann
     \[
     \sigma_j(G) - \sigma_{j'}(G) = j \cdot 2^n - j' \cdot 2^n = (j - j') \cdot 2^n.
@@ -764,10 +764,10 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     Da $j \neq j'$ und $j, j' \in \{0, \ldots, n-1\}$ gilt $(j - j') \neq 0$, somit
     $\sigma_j(G) \neq \sigma_{j'}(G)$.
 
-    FÃ¼r den Fall $A_{\cdot j} \neq A_{\cdot j'}$: Der Bitmuster-Term
+    Für den Fall $A_{\cdot j} \neq A_{\cdot j'}$: Der Bitmuster-Term
     $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ nimmt Werte in $[0, 2^n - 1]$ an, der Spaltenterm
     $j \cdot 2^n$ nimmt Werte in $\{0, 2^n, 2 \cdot 2^n, \ldots, (n-1) \cdot 2^n\}$ an.
-    Diese Intervalle $[j \cdot 2^n,\, (j+1) \cdot 2^n - 1]$ sind fÃ¼r verschiedene $j$ disjunkt.
+    Diese Intervalle $[j \cdot 2^n,\, (j+1) \cdot 2^n - 1]$ sind für verschiedene $j$ disjunkt.
     Folglich ist die Gesamtabbildung $(A_{\cdot j}, j) \mapsto \sigma_j(G)$ injektiv. \qedhere
 \end{proof}
 
@@ -776,7 +776,7 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     Sei $\mathcal{F} = C_{\mathrm{Lip}}(\mathcal{G}_n, d_{\mathrm{GED}})$ der Raum der
     Lipschitz-stetigen Graphfunktionale mit Norm $\|f\|_\infty = \sup_G |f(G)|$.
     Dann ist der Paar $(\mathcal{D}_N, \mathcal{R}_N) := (\mathcal{S}_n, \mathcal{S}_n^{-1}|_{\mathrm{Im}})$
-    eine exakte Diskretisierung: FÃ¼r alle $G \in \mathcal{G}_n$ gilt
+    eine exakte Diskretisierung: Für alle $G \in \mathcal{G}_n$ gilt
     \[
     \mathcal{R}_n\bigl(\mathcal{S}_n(G)\bigr) = G,\quad
     \text{d.\,h.\ }\|\mathcal{R}_n \circ \mathcal{S}_n(G) - G\|_{\mathrm{GED}} = 0.
@@ -788,19 +788,19 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     eindeutig rekonstruiert werden kann.
 
     \textbf{Schritt 1: Rekonstruktion der Spaltenvektoren.}
-    Aus $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ lÃ¤sst sich
+    Aus $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ lässt sich
     der Spaltenindex $j$ durch $j = \lfloor \sigma_j / 2^n \rfloor$ extrahieren und
     das Bitmuster durch $\sum_{i} A_{ij} 2^i = \sigma_j \mod 2^n$.
-    Durch BinÃ¤rdarstellung des letzten Terms erhÃ¤lt man die EintrÃ¤ge
+    Durch Binärdarstellung des letzten Terms erhält man die Einträge
     $A_{0j}, A_{1j}, \ldots, A_{n-1,j} \in \{0,1\}$ eindeutig.
 
     \textbf{Schritt 2: Rekonstruktion der Adjazenzmatrix.}
-    Da dies fÃ¼r jede Spalte $j \in \{0,\ldots,n-1\}$ gilt und die Spaltenindizes durch
+    Da dies für jede Spalte $j \in \{0,\ldots,n-1\}$ gilt und die Spaltenindizes durch
     Satz~\ref{satz:inj} eindeutig identifizierbar sind, ist die gesamte Matrix $A$ aus
     $\mathcal{S}_n(G)$ eindeutig rekonstruierbar.
 
     \textbf{Schritt 3: Rekonstruktion des Graphen.}
-    $G$ ist durch seine Adjazenzmatrix $A$ (zusammen mit der Knotenindizierung) vollstÃ¤ndig
+    $G$ ist durch seine Adjazenzmatrix $A$ (zusammen mit der Knotenindizierung) vollständig
     bestimmt. Damit ist $\mathcal{R}_n \circ \mathcal{S}_n = \mathrm{id}$ auf $\mathcal{G}_n$
     und insbesondere $d_{\mathrm{GED}}(\mathcal{R}_n(\mathcal{S}_n(G)), G) = 0$. \qedhere
 \end{proof}
@@ -809,7 +809,7 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     Satz~\ref{satz:sigdisk} zeigt, dass der Subgraph Algorithmus im Gegensatz zu allen anderen
     in dieser Arbeit behandelten Diskretisierungen eine \emph{verlustfreie} (exakte)
     Diskretisierung darstellt -- analog zum Shannon-Nyquist-Theorem, bei dem unter der
-    Bandlimitierungsbedingung ebenfalls eine exakte Rekonstruktion mÃ¶glich ist.
+    Bandlimitierungsbedingung ebenfalls eine exakte Rekonstruktion möglich ist.
 \end{bemerkung}
 
 \subsection{Punkt 2: Spektrale Graphentheorie als kontinuierliche Signatur}
@@ -835,19 +835,19 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
 \begin{proof}
     Ist $G \cong G'$ via Permutation $\pi$, so existiert eine Permutationsmatrix $P$ mit
     $A' = P A P^\top$ und $D' = P D P^\top$, also $L' = P L P^\top$.
-    Ã„hnliche Matrizen haben dasselbe charakteristische Polynom $\det(\lambda I - L') =
+    Ähnliche Matrizen haben dasselbe charakteristische Polynom $\det(\lambda I - L') =
     \det(\lambda I - PLP^\top) = \det(P(\lambda I - L)P^\top) = \det(\lambda I - L)$.
-    Folglich stimmen die Eigenwerte Ã¼berein. \qedhere
+    Folglich stimmen die Eigenwerte überein. \qedhere
 \end{proof}
 
-\begin{lemma}[Spektrale LÃ¼cke und Zusammenhang]
+\begin{lemma}[Spektrale Lücke und Zusammenhang]
 \label{lem:gap}
-    FÃ¼r einen Graphen $G$ gilt:
+    Für einen Graphen $G$ gilt:
     \begin{itemize}
-        \item $\lambda_1 = 0$ stets; die MultiplizitÃ¤t von $0$ entspricht der Anzahl der
+        \item $\lambda_1 = 0$ stets; die Multiplizität von $0$ entspricht der Anzahl der
               Zusammenhangskomponenten.
-        \item Die \emph{algebraische KonnektivitÃ¤t} (Fiedler-Wert) $\lambda_2 > 0$
-              genau dann, wenn $G$ zusammenhÃ¤ngend ist.
+        \item Die \emph{algebraische Konnektivität} (Fiedler-Wert) $\lambda_2 > 0$
+              genau dann, wenn $G$ zusammenhängend ist.
         \item $\lambda_n \leq 2\Delta$, wobei $\Delta = \max_i d_i$ der Maximalgrad ist.
     \end{itemize}
 \end{lemma}
@@ -856,20 +856,20 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
     \textbf{Zu $\lambda_1=0$:} $L\mathbf{1} = (D-A)\mathbf{1} = \mathbf{d} - A\mathbf{1} = \mathbf{0}$
     (jede Zeile von $A$ summiert zu $d_i$), also ist $\mathbf{1}$ Eigenvektor zum Eigenwert $0$.
 
-    \textbf{MultiplizitÃ¤t von $0$:} Der Kern von $L$ wird von den charakteristischen
+    \textbf{Multiplizität von $0$:} Der Kern von $L$ wird von den charakteristischen
     Vektoren der Zusammenhangskomponenten aufgespannt (klassisches Resultat der spektralen
     Graphentheorie, vgl.~\cite{mohar1991}).
 
     \textbf{Zu $\lambda_n \leq 2\Delta$:} Der Rayleigh-Quotient
     $\lambda_n = \max_{\mathbf{x}\neq 0} \mathbf{x}^\top L \mathbf{x}/\|\mathbf{x}\|^2$.
     Mit $\mathbf{x}^\top L \mathbf{x} = \sum_{(i,j)\in E}(x_i - x_j)^2 \leq
-    2\Delta \sum_i x_i^2 = 2\Delta \|\mathbf{x}\|^2$ (abschÃ¤tzen durch Dreiecksungleichung
+    2\Delta \sum_i x_i^2 = 2\Delta \|\mathbf{x}\|^2$ (abschätzen durch Dreiecksungleichung
     und Gradschranke) folgt die Aussage. \qedhere
 \end{proof}
 
-\begin{definition}[Spektrales AbstandsmaÃŸ]
+\begin{definition}[Spektrales Abstandsmaß]
 \label{def:specabst}
-    FÃ¼r zwei Graphen $G, G' \in \mathcal{G}_n$ ist der \emph{spektrale Abstand}
+    Für zwei Graphen $G, G' \in \mathcal{G}_n$ ist der \emph{spektrale Abstand}
     \[
     d_{\Lambda}(G, G') = \|\Lambda(G) - \Lambda(G')\|_2 = \sqrt{\sum_{k=1}^n (\lambda_k(G) - \lambda_k(G'))^2}.
     \]
@@ -885,16 +885,16 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
 \end{satz}
 
 \begin{proof}
-    Eine einzelne Kantenoperation (EinfÃ¼gen oder LÃ¶schen einer Kante $(u,v)$) verÃ¤ndert
+    Eine einzelne Kantenoperation (Einfügen oder Löschen einer Kante $(u,v)$) verändert
     die Laplace-Matrix $L$ um die Matrix $\pm(e_u - e_v)(e_u - e_v)^\top$ vom Rang $\leq 2$.
-    Nach dem Weyl'schen StÃ¶rungssatz fÃ¼r symmetrische Matrizen gilt fÃ¼r jede Rangeins-StÃ¶rung
+    Nach dem Weyl'schen Störungssatz für symmetrische Matrizen gilt für jede Rangeins-Störung
     $\Delta L$ mit $\|\Delta L\|_2 = \mu$:
     \[
     |\lambda_k(L + \Delta L) - \lambda_k(L)| \leq \|\Delta L\|_2 = \mu.
     \]
-    FÃ¼r eine Kantenoperation gilt $\|\Delta L\|_2 = \|(e_u - e_v)(e_u - e_v)^\top\|_2 = 2$
-    (da $\|(e_u-e_v)\|^2 = 2$). Damit Ã¤ndert sich jeder Eigenwert um hÃ¶chstens $2$.
-    Ãœber alle $n$ Eigenwerte: $d_\Lambda \leq \sqrt{n} \cdot 2$.
+    Für eine Kantenoperation gilt $\|\Delta L\|_2 = \|(e_u - e_v)(e_u - e_v)^\top\|_2 = 2$
+    (da $\|(e_u-e_v)\|^2 = 2$). Damit ändert sich jeder Eigenwert um höchstens $2$.
+    Über alle $n$ Eigenwerte: $d_\Lambda \leq \sqrt{n} \cdot 2$.
 
     Bei $m$ Kantenoperationen (wie in $d_{\mathrm{GED}}$) gilt durch Dreiecksungleichung:
     \[
@@ -906,15 +906,15 @@ diesem Kapitel vollstÃ¤ndig ausgearbeitet:
 \begin{bemerkung}
     Die Umkehrung gilt im Allgemeinen nicht: ko-spektrale Graphen (gleiche Eigenwerte,
     nicht isomorph) zeigen, dass $d_\Lambda = 0$ nicht $G \cong G'$ impliziert.
-    Die spektrale Signatur ist daher eine \emph{Relaxierung}, keine vollstÃ¤ndige Invariante.
-    Der Subgraph Algorithmus liefert durch die Signaturkodierung eine vollstÃ¤ndige Invariante
-    (Satz~\ref{satz:sigdisk}), wÃ¤hrend das Spektrum eine berechenbare untere Schranke darstellt.
+    Die spektrale Signatur ist daher eine \emph{Relaxierung}, keine vollständige Invariante.
+    Der Subgraph Algorithmus liefert durch die Signaturkodierung eine vollständige Invariante
+    (Satz~\ref{satz:sigdisk}), während das Spektrum eine berechenbare untere Schranke darstellt.
 \end{bemerkung}
 
 \subsection{Punkt 3: Neue Familie von Graphmatching-Algorithmen mit Konvergenzgarantien}
 
 Wir entwickeln nun einen \emph{Spektral-Subgraph Algorithmus} (SSA), der die Vorteile beider
-AnsÃ¤tze vereint: die vollstÃ¤ndige Korrektheit des Signaturverfahrens und die Effizienz
+Ansätze vereint: die vollständige Korrektheit des Signaturverfahrens und die Effizienz
 spektraler Vorfilterung.
 
 \begin{definition}[Spektral-Subgraph Algorithmus (SSA)]
@@ -923,10 +923,10 @@ spektraler Vorfilterung.
 
     \textbf{Phase 1 (Spektrale Vorfilterung):}
     Berechne $d_\Lambda(G, G')$. Falls $d_\Lambda(G, G') > \tau_\Lambda$
-    (Schwellwert), gib \texttt{kein Subgraph} zurÃ¼ck (FrÃ¼hausstieg).
+    (Schwellwert), gib \texttt{kein Subgraph} zurück (Frühausstieg).
 
     \textbf{Phase 2 (Signatur-Matching):}
-    Berechne $\mathcal{S}_n(G)$ und $\mathcal{S}_n(G')$. PrÃ¼fe via LCS-Vergleich
+    Berechne $\mathcal{S}_n(G)$ und $\mathcal{S}_n(G')$. Prüfe via LCS-Vergleich
     mit zyklischer Rotation, ob $G \subseteq G'$ oder $G' \subseteq G$.
 
     \textbf{Phase 3 (Entscheidung):}
@@ -941,21 +941,21 @@ spektraler Vorfilterung.
 \end{satz}
 
 \begin{proof}
-    \textbf{FrÃ¼hausstieg (Phase~1):}
+    \textbf{Frühausstieg (Phase~1):}
     Ist $d_\Lambda(G, G') > \tau_\Lambda$, so ist insbesondere $\Lambda(G) \neq \Lambda(G')$.
     Wir zeigen, dass $G \subseteq G'$ oder $G' \subseteq G$ ausgeschlossen ist, falls
-    $\tau_\Lambda$ geeignet gewÃ¤hlt wird.
+    $\tau_\Lambda$ geeignet gewählt wird.
 
     Ist $G \subseteq G'$ (Subgraph), so gilt $E(G) \subseteq E(G')$, d.\,h.\ $G'$
-    enthÃ¤lt alle Kanten von $G$ plus mindestens eine weitere. Nach Satz~\ref{satz:spekrelax}:
+    enthält alle Kanten von $G$ plus mindestens eine weitere. Nach Satz~\ref{satz:spekrelax}:
     \[
     d_\Lambda(G, G') \leq 2\sqrt{n}\,(|E(G')| - |E(G)|).
     \]
-    FÃ¼r den Test auf Nicht-Subgraph setzen wir $\tau_\Lambda$ deutlich kleiner als $2\sqrt{n}$
-    (z.\,B.\ $\tau_\Lambda = \epsilon$ fÃ¼r ein vorgegebenes $\epsilon > 0$): Wenn sogar
-    $d_\Lambda > 2\sqrt{n} \cdot n^2$ (maximale Kantenzahl), ist kein Subgraph mÃ¶glich.
-    In der Praxis wird $\tau_\Lambda$ adaptiv gesetzt; fÃ¼r einen konservativen (immer korrekten)
-    FrÃ¼hausstieg genÃ¼gt es, $\tau_\Lambda = +\infty$ zu setzen (Phase~1 wird Ã¼bersprungen).
+    Für den Test auf Nicht-Subgraph setzen wir $\tau_\Lambda$ deutlich kleiner als $2\sqrt{n}$
+    (z.\,B.\ $\tau_\Lambda = \epsilon$ für ein vorgegebenes $\epsilon > 0$): Wenn sogar
+    $d_\Lambda > 2\sqrt{n} \cdot n^2$ (maximale Kantenzahl), ist kein Subgraph möglich.
+    In der Praxis wird $\tau_\Lambda$ adaptiv gesetzt; für einen konservativen (immer korrekten)
+    Frühausstieg genügt es, $\tau_\Lambda = +\infty$ zu setzen (Phase~1 wird übersprungen).
 
     \textbf{Phase~2 ist exakt:}
     Nach Satz~\ref{satz:sigdisk} rekonstruiert $\mathcal{R}_n \circ \mathcal{S}_n$ den Graphen
@@ -963,13 +963,13 @@ spektraler Vorfilterung.
     ist korrekt (dort Satz~5). \qedhere
 \end{proof}
 
-\begin{satz}[ZeitkomplexitÃ¤t des SSA]
+\begin{satz}[Zeitkomplexität des SSA]
 \label{satz:ssa_kompl}
     Der SSA hat folgende Worst-Case-Laufzeit:
     \[
     T_{\mathrm{SSA}}(n) = \underbrace{O(n^2)}_{\text{Spektrum}} + \underbrace{O(n^3)}_{\text{Subgraph}} = O(n^3).
     \]
-    Im Durchschnittsfall mit FrÃ¼hausstieg-Wahrscheinlichkeit $p > 0$ gilt:
+    Im Durchschnittsfall mit Frühausstieg-Wahrscheinlichkeit $p > 0$ gilt:
     \[
     T_{\mathrm{SSA}}^{\mathrm{avg}}(n) = O(n^2) + (1-p)\cdot O(n^3).
     \]
@@ -979,43 +979,43 @@ spektraler Vorfilterung.
     \textbf{Spektrumsberechnung (Phase~1):}
     Die Eigenwertberechnung einer symmetrischen $n\times n$-Matrix kostet $O(n^2)$ mit dem
     Lanczos-Algorithmus (bis auf logarithmische Faktoren) oder $O(n^3)$ mit dem
-    QR-Algorithmus. FÃ¼r die Vorfilterung genÃ¼gen die grÃ¶ÃŸten wenigen Eigenwerte
-    (da bereits ein einziger Eigenwert zur FrÃ¼hausstieg-Entscheidung beitrÃ¤gt):
-    Lanczos liefert $k$ Eigenwerte in $O(kn^2)$; fÃ¼r $k = O(1)$ also $O(n^2)$.
+    QR-Algorithmus. Für die Vorfilterung genügen die größten wenigen Eigenwerte
+    (da bereits ein einziger Eigenwert zur Frühausstieg-Entscheidung beiträgt):
+    Lanczos liefert $k$ Eigenwerte in $O(kn^2)$; für $k = O(1)$ also $O(n^2)$.
 
     \textbf{Signatur-Phase (Phase~2):}
-    Nach~\cite{epp2026subgraph} (Satz~2 dort) lÃ¤uft der Subgraph Algorithmus in $\Theta(n^3)$.
+    Nach~\cite{epp2026subgraph} (Satz~2 dort) läuft der Subgraph Algorithmus in $\Theta(n^3)$.
 
     \textbf{Gesamtlaufzeit:}
     $O(n^2) + O(n^3) = O(n^3)$ im Worst-Case.
-    Mit FrÃ¼hausstieg (Phase~2 wird mit Wahrscheinlichkeit $p$ Ã¼bersprungen):
+    Mit Frühausstieg (Phase~2 wird mit Wahrscheinlichkeit $p$ übersprungen):
     $T_{\mathrm{avg}} = O(n^2) + (1-p)\cdot O(n^3)$. \qedhere
 \end{proof}
 
-\begin{satz}[Konvergenzgarantie: Spektrale ApproximationsgÃ¼te]
+\begin{satz}[Konvergenzgarantie: Spektrale Approximationsgüte]
 \label{satz:konvgaran}
     Sei $(G_m)_{m\in\mathbb{N}}$ eine Folge von Graphen mit
-    $d_{\mathrm{GED}}(G_m, G) \to 0$ (d.\,h.\ $G_m = G$ fÃ¼r alle hinreichend groÃŸen $m$).
+    $d_{\mathrm{GED}}(G_m, G) \to 0$ (d.\,h.\ $G_m = G$ für alle hinreichend großen $m$).
     Dann konvergiert die spektrale Approximation:
     \[
     \lim_{m\to\infty} d_\Lambda(G_m, G) = 0,
     \]
-    und der SSA liefert fÃ¼r alle hinreichend groÃŸen $m$ das korrekte Ergebnis bereits in
+    und der SSA liefert für alle hinreichend großen $m$ das korrekte Ergebnis bereits in
     Phase~1.
 \end{satz}
 
 \begin{proof}
     Da $d_{\mathrm{GED}}(G_m, G) \to 0$ und die Graph-Edit-Distanz ganzzahlige Werte annimmt,
-    gilt $d_{\mathrm{GED}}(G_m, G) = 0$ fÃ¼r alle $m \geq m_0$ fÃ¼r ein $m_0 \in \mathbb{N}$.
-    FÃ¼r $m \geq m_0$: $G_m = G$ (als Graphen), also $\Lambda(G_m) = \Lambda(G)$
+    gilt $d_{\mathrm{GED}}(G_m, G) = 0$ für alle $m \geq m_0$ für ein $m_0 \in \mathbb{N}$.
+    Für $m \geq m_0$: $G_m = G$ (als Graphen), also $\Lambda(G_m) = \Lambda(G)$
     (Satz~\ref{satz:spek}) und $d_\Lambda(G_m, G) = 0$.
 
-    Da $d_\Lambda = 0 < \tau_\Lambda$ fÃ¼r alle $\tau_\Lambda > 0$, fÃ¤hrt der SSA fÃ¼r
+    Da $d_\Lambda = 0 < \tau_\Lambda$ für alle $\tau_\Lambda > 0$, fährt der SSA für
     $m \geq m_0$ in Phase~2 fort und liefert das korrekte Ergebnis (Satz~\ref{satz:ssa_korrekt}).
 
-    FÃ¼r die Phase-1-Terminierung: Bei $d_\Lambda(G_m, G) > \tau_\Lambda$ terminiert der
-    Algorithmus frÃ¼h mit dem korrekten Ergebnis \texttt{kein Subgraph}
-    (sofern $\tau_\Lambda$ konservativ gewÃ¤hlt). \qedhere
+    Für die Phase-1-Terminierung: Bei $d_\Lambda(G_m, G) > \tau_\Lambda$ terminiert der
+    Algorithmus früh mit dem korrekten Ergebnis \texttt{kein Subgraph}
+    (sofern $\tau_\Lambda$ konservativ gewählt). \qedhere
 \end{proof}
 
 \subsection{Einbettung in das universelle Diskretisierungstheorem}
@@ -1025,12 +1025,12 @@ spektraler Vorfilterung.
     Das universelle Diskretisierungstheorem (Abschnitt~11, Satz~22) mit
     $\mathcal{F} = (\mathcal{G}_n, d_{\mathrm{GED}})$,
     $\mathcal{D}_N = \mathcal{S}_n$ (Signaturoperator, Definition~\ref{def:sigop}) und
-    $\mathcal{R}_N = \mathcal{S}_n^{-1}|_{\mathrm{Im}}$ (Rekonstruktion) ist erfÃ¼llt mit:
+    $\mathcal{R}_N = \mathcal{S}_n^{-1}|_{\mathrm{Im}}$ (Rekonstruktion) ist erfüllt mit:
     \begin{itemize}
         \item \textbf{Konsistenz (A1):} $\|\mathcal{R}_n(\mathcal{S}_n(G)) - G\|_{\mathrm{GED}} = 0$
-              fÃ¼r alle $G$ (exakte Rekonstruktion, Satz~\ref{satz:sigdisk}).
-        \item \textbf{StabilitÃ¤t (A2):} $\mathcal{R}_n$ ist $1$-Lipschitz bezÃ¼glich der
-              natÃ¼rlichen Metrik auf $\mathrm{Im}(\mathcal{S}_n) \subset \mathbb{Z}^n$.
+              für alle $G$ (exakte Rekonstruktion, Satz~\ref{satz:sigdisk}).
+        \item \textbf{Stabilität (A2):} $\mathcal{R}_n$ ist $1$-Lipschitz bezüglich der
+              natürlichen Metrik auf $\mathrm{Im}(\mathcal{S}_n) \subset \mathbb{Z}^n$.
         \item \textbf{Konvergenz:} $\|\mathcal{R}_n(\mathcal{S}_n(G)) - G\|_{\mathrm{GED}} = 0$
               (trivialerweise, da exakt).
     \end{itemize}
@@ -1042,7 +1042,7 @@ spektraler Vorfilterung.
     \textbf{Zu (A2):} $\mathcal{R}_n$ ist durch explizite Bit-Extraktion definiert
     (Beweis von Satz~\ref{satz:sigdisk}, Schritt~1--2). Sei
     $\|\mathbf{s} - \mathbf{s}'\|_1 \leq 1$ (ein Signatureintrag unterscheidet sich um $1$,
-    entsprechend einer Bitkipp-Operation). Die Ã„nderung eines Bits $A_{ij}: 0 \to 1$
+    entsprechend einer Bitkipp-Operation). Die Änderung eines Bits $A_{ij}: 0 \to 1$
     (oder $1 \to 0$) entspricht genau einer Kantenoperation, also
     $d_{\mathrm{GED}}(\mathcal{R}_n(\mathbf{s}), \mathcal{R}_n(\mathbf{s}')) = 1$.
     Daher ist $\mathcal{R}_n$ $1$-Lipschitz: $d_{\mathrm{GED}}(\mathcal{R}_n(\mathbf{s}),
@@ -1055,12 +1055,12 @@ spektraler Vorfilterung.
 \toprule
 \textbf{Eigenschaft} & \textbf{Subgraph Algorithmus} & \textbf{Spektrale Methode}\\
 \midrule
-VollstÃ¤ndigkeit & VollstÃ¤ndig (exakt) & UnvollstÃ¤ndig (ko-spektrale Graphen)\\
+Vollständigkeit & Vollständig (exakt) & Unvollständig (ko-spektrale Graphen)\\
 Laufzeit & $O(n^3)$ & $O(n^2)$ (Lanczos)\\
 Robustheit & Exakt & Stetig ($d_\Lambda \leq C \cdot d_{\mathrm{GED}}$)\\
-Rekonstruktion & Verlustfrei & NÃ¤herungsweise\\
+Rekonstruktion & Verlustfrei & Näherungsweise\\
 Konvergenzfehler & 0 & $O(d_{\mathrm{GED}})$\\
-FrÃ¼hausstieg & Nein & Ja (Vorfilterung)\\
+Frühausstieg & Nein & Ja (Vorfilterung)\\
 \bottomrule
 \end{tabular}
 \caption{Vergleich Subgraph Algorithmus vs.\ spektrale Graphenmethoden}
@@ -1070,13 +1070,13 @@ FrÃ¼hausstieg & Nein & Ja (Vorfilterung)\\
 \label{kor:opt}
     Der SSA (Definition~\ref{def:ssa}) ist die optimale Kombination:
     Er erreicht die Korrektheit des Subgraph Algorithmus \emph{und} die Effizienz
-    spektraler Vorfilterung. Im Erwartungswert Ã¼ber gleichverteilte Graphenpaare ist
+    spektraler Vorfilterung. Im Erwartungswert über gleichverteilte Graphenpaare ist
     $T_{\mathrm{SSA}}^{\mathrm{avg}} = O(n^2)$, sofern der spektrale Abstand in einer Mehrheit
-    der FÃ¤lle einen FrÃ¼hausstieg erlaubt.
+    der Fälle einen Frühausstieg erlaubt.
 \end{korollar}
 
 \begin{proof}
-    FÃ¼r zufÃ¤llige Graphen $G, G' \sim \mathrm{Erd\ddot{o}s\text{-}R\acute{e}nyi}(n, 1/2)$
+    Für zufällige Graphen $G, G' \sim \mathrm{Erd\ddot{o}s\text{-}R\acute{e}nyi}(n, 1/2)$
     gilt mit hoher Wahrscheinlichkeit $d_\Lambda(G, G') = \Omega(\sqrt{n})$
     (Konzentration der Eigenwerte des Wigner-Ensembles um den Halbkreis).
     Damit ist die Vorfilterung in Phase~1 mit Wahrscheinlichkeit $p \to 1$ aktiv,
@@ -1087,15 +1087,15 @@ FrÃ¼hausstieg & Nein & Ja (Vorfilterung)\\
 \section{Zusammenfassung}
 %============================================================
 
-Die vorliegende Arbeit hat gezeigt, dass das Planck'sche Diskretisierungsprinzip $E = h\nu$ keine Besonderheit der Quantenphysik ist, sondern ein universelles mathematisches Strukturprinzip darstellt: Die exakte Beschreibung, Messung und Berechnung kontinuierlicher PhÃ¤nomene erfordert -- und ermÃ¶glicht -- die Zerlegung in diskrete, handhabbare TeillÃ¶sungen. In allen zehn untersuchten Anwendungsbereichen der Kapitel~3 bis~13 wurde formal bewiesen:
+Die vorliegende Arbeit hat gezeigt, dass das Planck'sche Diskretisierungsprinzip $E = h\nu$ keine Besonderheit der Quantenphysik ist, sondern ein universelles mathematisches Strukturprinzip darstellt: Die exakte Beschreibung, Messung und Berechnung kontinuierlicher Phänomene erfordert -- und ermöglicht -- die Zerlegung in diskrete, handhabbare Teillösungen. In allen zehn untersuchten Anwendungsbereichen der Kapitel~3 bis~13 wurde formal bewiesen:
 
 \begin{itemize}
-    \item Es existiert ein wohldefinierter Diskretisierungsoperator $\mathcal{D}_N$ mit zugehÃ¶rigem Rekonstruktionsoperator $\mathcal{R}_N$.
-    \item Die Approximation konvergiert gegen das kontinuierliche Original: $\mathcal{R}_N \circ \mathcal{D}_N(f) \to f$ fÃ¼r $N \to \infty$.
-    \item Die Konvergenzrate ist quantifizierbar und von der AuflÃ¶sung $N$ abhÃ¤ngig (vgl.\ vergleichende Tabelle in Kapitel~12).
-    \item Das Prinzip ist domÃ¤nenunabhÃ¤ngig: Es gilt in Physik, Informationstechnik, Numerik, Neurophysiologie, Molekularbiologie, Stochastik und Graphentheorie gleichermaÃŸen.
-    \item Der Subgraph Algorithmus~\cite{epp2026subgraph} stellt -- wie in Kapitel~\ref{sec:subgraph} vollstÃ¤ndig formalisiert -- eine exakte, verlustfreie Instanz des universellen Diskretisierungstheorems (Kapitel~12, Satz~22) dar.
-    \item Der in Kapitel~\ref{sec:subgraph} neu entwickelte Spektral-Subgraph Algorithmus (SSA) vereint die vollstÃ¤ndige Korrektheit des Signaturverfahrens mit der Effizienz spektraler Vorfilterung und erreicht im Erwartungswert eine Laufzeit von $O(n^2)$ (Korollar~\ref{kor:opt}).
+    \item Es existiert ein wohldefinierter Diskretisierungsoperator $\mathcal{D}_N$ mit zugehörigem Rekonstruktionsoperator $\mathcal{R}_N$.
+    \item Die Approximation konvergiert gegen das kontinuierliche Original: $\mathcal{R}_N \circ \mathcal{D}_N(f) \to f$ für $N \to \infty$.
+    \item Die Konvergenzrate ist quantifizierbar und von der Auflösung $N$ abhängig (vgl.\ vergleichende Tabelle in Kapitel~12).
+    \item Das Prinzip ist domänenunabhängig: Es gilt in Physik, Informationstechnik, Numerik, Neurophysiologie, Molekularbiologie, Stochastik und Graphentheorie gleichermaßen.
+    \item Der Subgraph Algorithmus~\cite{epp2026subgraph} stellt -- wie in Kapitel~\ref{sec:subgraph} vollständig formalisiert -- eine exakte, verlustfreie Instanz des universellen Diskretisierungstheorems (Kapitel~12, Satz~22) dar.
+    \item Der in Kapitel~\ref{sec:subgraph} neu entwickelte Spektral-Subgraph Algorithmus (SSA) vereint die vollständige Korrektheit des Signaturverfahrens mit der Effizienz spektraler Vorfilterung und erreicht im Erwartungswert eine Laufzeit von $O(n^2)$ (Korollar~\ref{kor:opt}).
 \end{itemize}
 
 %============================================================
@@ -1104,26 +1104,26 @@ Die vorliegende Arbeit hat gezeigt, dass das Planck'sche Diskretisierungsprinzip
 %============================================================
 
 Der folgende Ausblick skizziert sieben offene Forschungsrichtungen, die sich unmittelbar aus
-den Ergebnissen dieser Arbeit ergeben. Die in Kapitel~\ref{sec:subgraph} vollstÃ¤ndig
+den Ergebnissen dieser Arbeit ergeben. Die in Kapitel~\ref{sec:subgraph} vollständig
 ausgearbeitete Verbindung zum Subgraph Algorithmus ist dabei kein isolierter Sonderfall,
-sondern bildet -- zusammen mit den Ergebnissen der Kapitel~3 bis~12 -- die Grundlage fÃ¼r
-eine weitreichende, domÃ¤nenÃ¼bergreifende Diskretisierungstheorie.
+sondern bildet -- zusammen mit den Ergebnissen der Kapitel~3 bis~12 -- die Grundlage für
+eine weitreichende, domänenübergreifende Diskretisierungstheorie.
 
 \subsection{Vereinheitlichung durch abstrakte Diskretisierungstheorie}
 
 Die formale Analogie zwischen allen in dieser Arbeit behandelten Diskretisierungsschemata
-legt nahe, eine \emph{abstrakte Diskretisierungstheorie} zu entwickeln, die alle FÃ¤lle --
-von der Fourier-Reihe (Kapitel~4) Ã¼ber die FEM (Kapitel~8) bis hin zur
+legt nahe, eine \emph{abstrakte Diskretisierungstheorie} zu entwickeln, die alle Fälle --
+von der Fourier-Reihe (Kapitel~4) über die FEM (Kapitel~8) bis hin zur
 Graphendiskretisierung (Kapitel~\ref{sec:subgraph}) -- als Instanzen eines einheitlichen
 Rahmens erfasst. Das universelle Diskretisierungstheorem aus Kapitel~12 (Satz~22) liefert
-dafÃ¼r bereits einen gemeinsamen Rahmen; er setzt jedoch Konsistenz (A1) und StabilitÃ¤t (A2)
-als Voraussetzungen voraus, ohne eine systematische Konstruktionsmethode fÃ¼r das Paar
+dafür bereits einen gemeinsamen Rahmen; er setzt jedoch Konsistenz (A1) und Stabilität (A2)
+als Voraussetzungen voraus, ohne eine systematische Konstruktionsmethode für das Paar
 $(\mathcal{D}_N, \mathcal{R}_N)$ anzugeben.
 
 Ein vielversprechender Vereinheitlichungsansatz ist die Theorie der
-\emph{reproduzierenden Kern-HilbertrÃ¤ume} (RKHS): Die optimale Rekonstruktion aus $N$
+\emph{reproduzierenden Kern-Hilberträume} (RKHS): Die optimale Rekonstruktion aus $N$
 diskreten Messungen ist stets die orthogonale Projektion auf den von $N$ Kernfunktionen
-$\{k(\cdot, x_i)\}_{i=1}^N$ aufgespannten Unterraum -- dies umfasst als SpezialfÃ¤lle die
+$\{k(\cdot, x_i)\}_{i=1}^N$ aufgespannten Unterraum -- dies umfasst als Spezialfälle die
 Fourier-Partialsumme (Kernel $k(x,y) = \sum_{|m|\leq N} e^{im(x-y)}$), die
 Sinc-Rekonstruktion (Shannon-Kernel) und die FEM-Interpolation (Hutfunktions-Kernel).
 Die Einbettung des Subgraph-Signaturoperators $\mathcal{S}_n$ aus
@@ -1132,36 +1132,36 @@ die Konstruktion eines geeigneten positiv definiten Kerns auf dem Graphraum
 $(\mathcal{G}_n, d_{\mathrm{GED}})$ -- eine offene, hochrelevante Forschungsfrage.
 
 Weitere offene Probleme: (i)~Charakterisierung \emph{aller} $(\mathcal{D}_N, \mathcal{R}_N)$-Paare, die
-Satz~22 erfÃ¼llen; (ii)~optimale (adaptiv positionierte) Diskretisierungspunkte fÃ¼r
-vorgegebene Funktionenklassen (Chebyshev-Punkte, GauÃŸ-Quadraturpunkte); (iii)~untere
-Schranken fÃ¼r die MindestauflÃ¶sung $N^*$, unterhalb derer keine stabile Rekonstruktion
-mehr mÃ¶glich ist (Verbindung zur Kolmogorov-$n$-Breite).
+Satz~22 erfüllen; (ii)~optimale (adaptiv positionierte) Diskretisierungspunkte für
+vorgegebene Funktionenklassen (Chebyshev-Punkte, Gauß-Quadraturpunkte); (iii)~untere
+Schranken für die Mindestauflösung $N^*$, unterhalb derer keine stabile Rekonstruktion
+mehr möglich ist (Verbindung zur Kolmogorov-$n$-Breite).
 
-\subsection{Quanteninformationstheorie und diskrete QuantenzustÃ¤nde}
+\subsection{Quanteninformationstheorie und diskrete Quantenzustände}
 
 Das Planck'sche Diskretisierungsprinzip aus Kapitel~3 findet seine tiefste physikalische
 Verwirklichung in der Quanteninformatik: Ein \emph{Qubit} $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$
 mit $|\alpha|^2 + |\beta|^2 = 1$ beschreibt eine kontinuierliche Superposition im
-$\mathbb{C}^2$, die durch eine Messung auf exakt einen von zwei diskreten ZustÃ¤nden
-kollabiert. Dieses Messprinzip ist formal Ã¤quivalent zur ADC-Quantisierung aus Kapitel~9:
+$\mathbb{C}^2$, die durch eine Messung auf exakt einen von zwei diskreten Zuständen
+kollabiert. Dieses Messprinzip ist formal äquivalent zur ADC-Quantisierung aus Kapitel~9:
 Der Hilbert-Raum $\mathbb{C}^2$ spielt die Rolle des analogen Signals, die Projektion auf
 $\{|0\rangle, |1\rangle\}$ die Rolle des $b=1$-Bit-Quantisierers.
 
-FÃ¼r $n$-Qubit-Systeme ($2^n$-dimensionaler Hilbert-Raum) stellt sich die Frage, wie
+Für $n$-Qubit-Systeme ($2^n$-dimensionaler Hilbert-Raum) stellt sich die Frage, wie
 robust diese Diskretisierung unter Rauschen ist -- dies ist das zentrale Problem der
-Quantenfehlerkorrektur. Der Kitaev-Toric-Code~\cite{kitaev2003} lÃ¶st dieses Problem durch
+Quantenfehlerkorrektur. Der Kitaev-Toric-Code~\cite{kitaev2003} löst dieses Problem durch
 topologische Stabilisierung: Logische Qubits werden in nicht-lokalen Freiheitsgraden
-kodiert, sodass lokale Fehler keine DekohÃ¤renz verursachen. Dies entspricht formal der
-Konstruktion eines fehlerkorrigierenden Codes mit groÃŸem Hamming-Abstand -- eine direkte
+kodiert, sodass lokale Fehler keine Dekohärenz verursachen. Dies entspricht formal der
+Konstruktion eines fehlerkorrigierenden Codes mit großem Hamming-Abstand -- eine direkte
 Analogie zur Fehlerrobustheit des genetischen Codes (vgl.\ Abschnitt~\ref{subsec:genomik}).
 
 Offene Fragen: (i)~Existiert eine allgemeine Theorie, die Quantenfehlerkorrektur und
-klassische DiskretisierungsstabilitÃ¤t (StabilitÃ¤t (A2) in Satz~22) unter einem gemeinsamen
-Dach vereint? (ii)~Wie lÃ¤sst sich der spektrale Abstand $d_\Lambda$ aus
-Kapitel~\ref{sec:subgraph} (Definition~\ref{def:specabst}) auf QuantenzustÃ¤nde
-(Dichtematrix-Fidelity) Ã¼bertragen?
+klassische Diskretisierungsstabilität (Stabilität (A2) in Satz~22) unter einem gemeinsamen
+Dach vereint? (ii)~Wie lässt sich der spektrale Abstand $d_\Lambda$ aus
+Kapitel~\ref{sec:subgraph} (Definition~\ref{def:specabst}) auf Quantenzustände
+(Dichtematrix-Fidelity) übertragen?
 
-\subsection{Diskretisierung in der kÃ¼nstlichen Intelligenz: Quantisierung neuronaler Netze}
+\subsection{Diskretisierung in der künstlichen Intelligenz: Quantisierung neuronaler Netze}
 
 Moderne Deep-Learning-Modelle mit Milliarden von Gleitkomma-Parametern (32-Bit IEEE~754)
 stellen einen enormen Speicher- und Energiebedarf dar. Die
@@ -1169,10 +1169,10 @@ stellen einen enormen Speicher- und Energiebedarf dar. Die
 Bit -- dies ist formal identisch mit der ADC-Diskretisierung aus Kapitel~9 angewandt auf
 den Parameterraum $\theta \in \mathbb{R}^P$ eines neuronalen Netzes $f_\theta$.
 
-Der Genauigkeitsverlust durch Quantisierung lÃ¤sst sich durch das SQNR-Prinzip aus
-Kapitel~9 (Satz~17: $\mathrm{SQNR} = 6{,}02b + 1{,}76\,\text{dB}$) abschÃ¤tzen, sofern
-die Gewichtsverteilung nÃ¤herungsweise sinusfÃ¶rmig ist. FÃ¼r realistische
-GauÃŸ-verteilte Gewichte gilt:
+Der Genauigkeitsverlust durch Quantisierung lässt sich durch das SQNR-Prinzip aus
+Kapitel~9 (Satz~17: $\mathrm{SQNR} = 6{,}02b + 1{,}76\,\text{dB}$) abschätzen, sofern
+die Gewichtsverteilung näherungsweise sinusförmig ist. Für realistische
+Gauß-verteilte Gewichte gilt:
 \[
 \Delta\mathcal{L} \approx \frac{1}{2}\sum_{p=1}^P H_{pp}\,\varepsilon_p^2,
 \quad \varepsilon_p \sim \mathcal{U}(-\Delta_p/2, \Delta_p/2),
@@ -1184,55 +1184,55 @@ tolerieren also aggressivere Diskretisierung -- eine Verbindung zur Generalisier
 
 Die Verbindung zur Graphendiskretisierung aus Kapitel~\ref{sec:subgraph} ergibt sich durch
 die Darstellung neuronaler Netze als gewichtete gerichtete Graphen: Der
-Spektral-Subgraph Algorithmus (SSA) kÃ¶nnte zur Architektursuche (NAS) eingesetzt werden,
-indem strukturÃ¤hnliche Teilnetzwerke effizient identifiziert und deren Gewichte geteilt
-werden (\emph{Weight Sharing}). Offene Forschungsfragen: Formale Schranken fÃ¼r die
-Quantisierungstoleranz in AbhÃ¤ngigkeit von Spektraleigenschaften des Netzwerkgraphen.
+Spektral-Subgraph Algorithmus (SSA) könnte zur Architektursuche (NAS) eingesetzt werden,
+indem strukturähnliche Teilnetzwerke effizient identifiziert und deren Gewichte geteilt
+werden (\emph{Weight Sharing}). Offene Forschungsfragen: Formale Schranken für die
+Quantisierungstoleranz in Abhängigkeit von Spektraleigenschaften des Netzwerkgraphen.
 
-\subsection{Biologische Diskretisierung: EvolutionÃ¤re Genomik}
+\subsection{Biologische Diskretisierung: Evolutionäre Genomik}
 \label{subsec:genomik}
 
-Der genetische Code ist das Ã¤lteste und robusteste bekannte Diskretisierungsschema der
-BiosphÃ¤re: Die kontinuierliche chemische AffinitÃ¤t von AminosÃ¤uren wird durch ein
-4-Buchstaben-Alphabet $\Sigma = \{A, C, G, U\}$ und $4^3 = 64$ Codons auf 20 AminosÃ¤uren
+Der genetische Code ist das älteste und robusteste bekannte Diskretisierungsschema der
+Biosphäre: Die kontinuierliche chemische Affinität von Aminosäuren wird durch ein
+4-Buchstaben-Alphabet $\Sigma = \{A, C, G, U\}$ und $4^3 = 64$ Codons auf 20 Aminosäuren
 abgebildet (plus Stop-Codons) -- eine Diskretisierung mit Redundanz ($64 > 20$), die
-Fehlerkorrektur ermÃ¶glicht, analog zur Kanalcodierung in Kapitel~9.
+Fehlerkorrektur ermöglicht, analog zur Kanalcodierung in Kapitel~9.
 
-Die \emph{Fehlerrobustheit} des Standard-Genetischen-Codes lÃ¤sst sich formal messen:
-Definiere den \emph{polaren Requirement Score} $r : \mathcal{AA} \to [0,1]$ fÃ¼r
-AminosÃ¤uren und den Hamming-Abstand $d_H$ auf Codons. Der Standard-Code minimiert
-nÃ¤herungsweise:
+Die \emph{Fehlerrobustheit} des Standard-Genetischen-Codes lässt sich formal messen:
+Definiere den \emph{polaren Requirement Score} $r : \mathcal{AA} \to [0,1]$ für
+Aminosäuren und den Hamming-Abstand $d_H$ auf Codons. Der Standard-Code minimiert
+näherungsweise:
 \[
 \mathcal{E}_{\mathrm{code}} = \sum_{\substack{c, c' \in \text{Codons} \\ d_H(c,c')=1}} |r(\mathrm{aa}(c)) - r(\mathrm{aa}(c'))|,
 \]
-d.\,h.\ benachbarte Codons (ein Basenaustausch) kodieren Ã¤hnliche AminosÃ¤uren. Randomisierte
-Codes erzielen im Mittel deutlich hÃ¶here Werte von $\mathcal{E}$~\cite{freeland1998}.
+d.\,h.\ benachbarte Codons (ein Basenaustausch) kodieren ähnliche Aminosäuren. Randomisierte
+Codes erzielen im Mittel deutlich höhere Werte von $\mathcal{E}$~\cite{freeland1998}.
 
-Verbindung zu Kapitel~\ref{sec:subgraph}: Der Subgraph Algorithmus kÃ¶nnte zur
-Analyse evolutionÃ¤rer Distanzen zwischen Genomen eingesetzt werden, indem
-Gennetzwerke (Protein-Interaktionsgraphen) durch den SSA auf strukturelle Ã„hnlichkeit
-geprÃ¼ft werden. Dies verbindet die Graphendiskretisierung mit vergleichender Genomik.
+Verbindung zu Kapitel~\ref{sec:subgraph}: Der Subgraph Algorithmus könnte zur
+Analyse evolutionärer Distanzen zwischen Genomen eingesetzt werden, indem
+Gennetzwerke (Protein-Interaktionsgraphen) durch den SSA auf strukturelle Ähnlichkeit
+geprüft werden. Dies verbindet die Graphendiskretisierung mit vergleichender Genomik.
 
 \subsection{Numerische Analysis: Exponentiell konvergente Methoden}
 
 Die in dieser Arbeit behandelten Diskretisierungsschemata decken eine Hierarchie von
 Konvergenzordnungen ab: $O(h)$ (Euler, Kapitel~7), $O(h^2)$ (Mittelpunktregel/FEM,
-Kapitel~6 und~8), $O(N^{-s})$ fÃ¼r beliebiges $s$ (Fourier, Kapitel~4). Die nÃ¤chste Stufe
+Kapitel~6 und~8), $O(N^{-s})$ für beliebiges $s$ (Fourier, Kapitel~4). Die nächste Stufe
 sind \emph{exponentiell konvergente} Methoden.
 
-\textbf{Spektralmethoden} (Chebyshev-Kollokation, Fourier-Pseudospektral): FÃ¼r eine
+\textbf{Spektralmethoden} (Chebyshev-Kollokation, Fourier-Pseudospektral): Für eine
 analytische Funktion $f$, die sich in eine Potenzreihe mit Konvergenzradius $\rho > 1$
-entwickeln lÃ¤sst, gilt:
+entwickeln lässt, gilt:
 \[
 \|u - u_N\|_\infty \leq C \rho^{-N}, \quad \rho > 1,
 \]
 d.\,h.\ die Fehlerabnahme ist \emph{exponentiell} in $N$ statt polynomial. Dies entspricht
-einer unendlichen GlÃ¤ttheit im Sinne von Lemma~3 (Fourier-Fehlerabfall): fÃ¼r $s \to \infty$
+einer unendlichen Glättheit im Sinne von Lemma~3 (Fourier-Fehlerabfall): für $s \to \infty$
 geht $O(N^{-s})$ gegen $O(\rho^{-N})$.
 
 \textbf{hp-FEM}: Kombiniert Netzverfeinerung ($h$-Strategie, Kapitel~8) mit
-PolynomgraderhÃ¶hung ($p$-Strategie). FÃ¼r LÃ¶sungen mit isolierten SingularitÃ¤ten
-(Ecken, Risse) erreicht hp-FEM ebenfalls exponentielle Konvergenz bezÃ¼glich der
+Polynomgraderhöhung ($p$-Strategie). Für Lösungen mit isolierten Singularitäten
+(Ecken, Risse) erreicht hp-FEM ebenfalls exponentielle Konvergenz bezüglich der
 Gesamtfreiheitsgrade $N$~\cite{schwab2004}:
 \[
 \|u - u_{hp}\|_{H^1} \leq C e^{-b\sqrt{N}}, \quad b > 0.
@@ -1241,11 +1241,11 @@ Gesamtfreiheitsgrade $N$~\cite{schwab2004}:
 Die Verbindung zur Graphendiskretisierung aus Kapitel~\ref{sec:subgraph} ergibt sich
 durch die \emph{spektrale Graphenpartitionierung}: Der Fiedler-Vektor (zum Eigenwert
 $\lambda_2$ des Laplacians, Lemma~\ref{lem:gap}) kann zur optimalen Gittergenerierung
-fÃ¼r FEM-Probleme auf unstrukturierten Gebieten eingesetzt werden.
+für FEM-Probleme auf unstrukturierten Gebieten eingesetzt werden.
 
 Offene Fragen: (i)~Welche Diskretisierungsschemata auf Graphen (Kapitel~\ref{sec:subgraph})
 erlauben exponentielle Konvergenz der spektralen Approximation? (ii)~Existiert ein
-hp-analoges Verfeinerungsprinzip fÃ¼r den Signaturoperator $\mathcal{S}_n$?
+hp-analoges Verfeinerungsprinzip für den Signaturoperator $\mathcal{S}_n$?
 
 \subsection{Stochastische Diskretisierung: Monte-Carlo-Methoden}
 
@@ -1255,44 +1255,44 @@ kontinuierliche Integral $\int_\Omega f\,d\mu$ durch den Stichprobenmittelwert
 \[
 I_N(f) = \frac{1}{N}\sum_{i=1}^N f(X_i), \quad X_i \overset{\text{i.i.d.}}{\sim} \mu.
 \]
-Nach dem Starken Gesetz der GroÃŸen Zahlen (Kolmogorov~\cite{kolmogorov1933}) gilt
-$I_N(f) \to \int f\,d\mu$ fast sicher fÃ¼r $N \to \infty$. Die Konvergenzrate ist durch
+Nach dem Starken Gesetz der Großen Zahlen (Kolmogorov~\cite{kolmogorov1933}) gilt
+$I_N(f) \to \int f\,d\mu$ fast sicher für $N \to \infty$. Die Konvergenzrate ist durch
 den Zentralen Grenzwertsatz bestimmt:
 \[
 \sqrt{N}\bigl(I_N(f) - \int f\,d\mu\bigr) \;\xrightarrow{d}\; \mathcal{N}(0, \sigma_f^2),
 \quad \sigma_f^2 = \mathrm{Var}_\mu(f),
 \]
-d.\,h.\ der RMS-Fehler fÃ¤llt wie $O(N^{-1/2})$ -- \emph{unabhÃ¤ngig von der Dimension $d$}.
+d.\,h.\ der RMS-Fehler fällt wie $O(N^{-1/2})$ -- \emph{unabhängig von der Dimension $d$}.
 Dies unterscheidet Monte-Carlo fundamental von deterministischen Methoden: Die
 Mittelpunktregel (Kapitel~6) erreicht $O(N^{-2/d})$ in $d$ Dimensionen (Curse of
 Dimensionality), Monte-Carlo immer $O(N^{-1/2})$.
 
 \textbf{Quasi-Monte-Carlo (QMC):} Durch deterministisch gleichverteilte Folgen
 (Halton, Sobol) wird die Konvergenzrate auf $O(N^{-1}(\log N)^d)$
-verbessert~\cite{niederreiter1992} -- exponentielle Verbesserung gegenÃ¼ber klassischem MC.
+verbessert~\cite{niederreiter1992} -- exponentielle Verbesserung gegenüber klassischem MC.
 
 Die Verbindung zum Subgraph Algorithmus aus Kapitel~\ref{sec:subgraph}: Der
 Markov-Ketten-Monte-Carlo (MCMC)-Ansatz zur approximativen Berechnung von
 $d_{\mathrm{GED}}$ (Kapitel~\ref{sec:subgraph}, Definition~2) stellt eine stochastische
 Diskretisierung des NP-harten Optimierungsproblems dar. Die Konvergenzrate des
-Markov-Ketten-Mischens hÃ¤ngt dabei direkt von der algebraischen KonnektivitÃ¤t
+Markov-Ketten-Mischens hängt dabei direkt von der algebraischen Konnektivität
 $\lambda_2$ (Fiedler-Wert, Lemma~\ref{lem:gap}) des Zustandsgraphen ab.
 
 \subsection{Neuronale Kodes und Informationstheorie}
 
 Das LIF-Modell aus Kapitel~10 diskretisiert den kontinuierlichen Strom $I(t)$ in eine
 Spikefolge $\{t_k\}$. Die informationstheoretische Frage lautet: Wie viel Information
-trÃ¤gt diese diskrete ReprÃ¤sentation Ã¼ber das originale Eingangssignal?
+trägt diese diskrete Repräsentation über das originale Eingangssignal?
 
-Shannon's KanalkapazitÃ¤tsformel liefert eine obere Schranke:
+Shannon's Kanalkapazitätsformel liefert eine obere Schranke:
 \[
 C \leq B \log_2\!\left(1 + \frac{P_s}{P_n}\right) \;\text{[bit/s]},
 \]
-wobei $B$ die Signalbandbreite und $P_s/P_n$ das Signal-Rausch-VerhÃ¤ltnis ist.
-FÃ¼r kortikale Neuronen mit Bandbreite $B \approx 100\,\text{Hz}$ und
+wobei $B$ die Signalbandbreite und $P_s/P_n$ das Signal-Rausch-Verhältnis ist.
+Für kortikale Neuronen mit Bandbreite $B \approx 100\,\text{Hz}$ und
 $\mathrm{SNR} \approx 10$ ergibt sich $C \leq 332\,\text{bit/s}$.
 Experimentelle Messungen~\cite{mainen1995} legen nahe, dass biologische Neuronen
-$50$--$200\,\text{bit/s}$ tatsÃ¤chlich Ã¼bertragen -- nahe am KapazitÃ¤tslimit.
+$50$--$200\,\text{bit/s}$ tatsächlich übertragen -- nahe am Kapazitätslimit.
 
 Die Verbindung zwischen dem Riemann-Integral (Kapitel~6) und der Rate-Code-Dekodierung
 ist formal: Der Populationsvektor-Decoder
@@ -1300,14 +1300,14 @@ ist formal: Der Populationsvektor-Decoder
 \hat{s}(t) = \frac{1}{N}\sum_{k=1}^N r_k(t)\,\mathbf{e}_k
 \]
 ($r_k$ = Feuerrate von Neuron $k$, $\mathbf{e}_k$ = bevorzugte Richtung)
-ist eine Riemann-Summe Ã¼ber den neuronalen Antwortraum.
+ist eine Riemann-Summe über den neuronalen Antwortraum.
 
 Die Verbindung zur Markov-Kette (Kapitel~11): Die zeitliche Entwicklung des Membranpotentials
 zwischen Spikes folgt -- nach Diskretisierung des Zustandsraums -- exakt dem
 Ornstein-Uhlenbeck-Markov-Modell aus Kapitel~11.
-Offene Fragen: (i)~Optimale DiskretisierungsgranularitÃ¤t des Membranpotentials fÃ¼r
-maximale KanalkapazitÃ¤t; (ii)~Verbindung zwischen Fiedler-Wert neuronaler
-KonnektivitÃ¤tsgraphen (Kapitel~\ref{sec:subgraph}, Lemma~\ref{lem:gap}) und neuronaler
+Offene Fragen: (i)~Optimale Diskretisierungsgranularität des Membranpotentials für
+maximale Kanalkapazität; (ii)~Verbindung zwischen Fiedler-Wert neuronaler
+Konnektivitätsgraphen (Kapitel~\ref{sec:subgraph}, Lemma~\ref{lem:gap}) und neuronaler
 Synchronisation.
 
 %============================================================
@@ -1320,7 +1320,7 @@ Synchronisation.
 M.~Planck, ``Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum,'' \textit{Verhandlungen der Deutschen Physikalischen Gesellschaft}, Bd.~2, S.~237--245, 1900.
 
 \bibitem{einstein1905}
-A.~Einstein, ``Ãœber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt,'' \textit{Annalen der Physik}, Bd.~17, S.~132--148, 1905.
+A.~Einstein, ``Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt,'' \textit{Annalen der Physik}, Bd.~17, S.~132--148, 1905.
 
 \bibitem{shannon1949}
 C.~E.~Shannon und W.~Weaver, \textit{The Mathematical Theory of Communication}. Urbana: University of Illinois Press, 1949.
@@ -1332,7 +1332,7 @@ H.~Nyquist, ``Certain topics in telegraph transmission theory,'' \textit{Transac
 E.~T.~Whittaker, ``On the functions which are represented by the expansions of the interpolation theory,'' \textit{Proc. Roy. Soc. Edinburgh}, Bd.~35, S.~181--194, 1915.
 
 \bibitem{courant1943}
-R.~Courant, K.~Friedrichs, und H.~Lewy, ``Ãœber die partiellen Differenzengleichungen der mathematischen Physik,'' \textit{Mathematische Annalen}, Bd.~100, S.~32--74, 1928. Englische Ãœbersetzung: \textit{IBM Journal}, 1967.
+R.~Courant, K.~Friedrichs, und H.~Lewy, ``Über die partiellen Differenzengleichungen der mathematischen Physik,'' \textit{Mathematische Annalen}, Bd.~100, S.~32--74, 1928. Englische Übersetzung: \textit{IBM Journal}, 1967.
 
 \bibitem{strang1973}
 G.~Strang und G.~J.~Fix, \textit{An Analysis of the Finite Element Method}. Englewood Cliffs: Prentice-Hall, 1973.

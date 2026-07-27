@@ -54,13 +54,13 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ã–}{{\"O}}1
-    {Ã„}{{\"A}}1
-    {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
-    {Ã¼}{{\"u}}1
-    {Ã¤}{{\"a}}1
-    {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
     {Î£}{{$\Sigma$}}1
     {â†’}{{$\rightarrow$}}1
     {âŠ†}{{$\subseteq$}}1
@@ -205,7 +205,7 @@ Sequenz-Rotationen.
     $G_{DNA}$. Knoten repr\"{a}sentieren Nukleobasen (A~=~Adenin,
     T~=~Thymin, G~=~Guanin, C~=~Cytosin), Pfeile entlang des Backbones
     zeigen die $5' \to 3'$-Leserichtung, gestrichelte Linien symbolisieren
-    Wasserstoffbr\"{u}ckenbindungen zwischen komplementÃ¤ren StrÃ¤ngen.}
+    Wasserstoffbr\"{u}ckenbindungen zwischen komplementären Strängen.}
     \label{fig:dna_graph}
 \end{figure}
 
@@ -215,15 +215,15 @@ Sequenz-Rotationen.
 
 \subsection{Biologische Grundlagen der DNA-Struktur}
 
-Die DNA besteht aus zwei antiparallelen PolynukleotidstrÃ¤ngen, die durch
-WasserstoffbrÃ¼cken zwischen komplementÃ¤ren Basenpaaren (A--T und G--C) zur
-Doppelhelix zusammengehalten werden. FÃ¼r die graphentheoretische Modellierung
+Die DNA besteht aus zwei antiparallelen Polynukleotidsträngen, die durch
+Wasserstoffbrücken zwischen komplementären Basenpaaren (A--T und G--C) zur
+Doppelhelix zusammengehalten werden. Für die graphentheoretische Modellierung
 sind drei Klassen von Bindungen relevant:
 
 \begin{itemize}
     \item \textbf{Backbone-Bindungen:} Kovalente Phosphodiesterbindungen zwischen
           aufeinanderfolgenden Nukleotiden entlang des $5' \to 3'$-Strangs.
-    \item \textbf{Watson-Crick-Bindungen:} WasserstoffbrÃ¼cken zwischen A und T
+    \item \textbf{Watson-Crick-Bindungen:} Wasserstoffbrücken zwischen A und T
           (zwei Bindungen) sowie G und C (drei Bindungen).
     \item \textbf{Stacking-Wechselwirkungen:} $\pi$-$\pi$-Wechselwirkungen zwischen
           benachbarten Basen (in dieser Arbeit nicht gesondert modelliert).
@@ -284,7 +284,7 @@ sind drei Klassen von Bindungen relevant:
     und Komplementarbindungen als Einsen enkodiert sind.
     \textbf{Mitte:} Spalten-Signaturen $\sigma_j^A$ als eindeutige Hashwerte
     (unterschiedliche Balkenfarben entsprechen den vier Basen).
-    \textbf{Rechts:} Ãœbereinstimmungsmatrix $M_{ij}$ zweier Sequenzen --- grÃ¼ne
+    \textbf{Rechts:} Übereinstimmungsmatrix $M_{ij}$ zweier Sequenzen --- grüne
     Felder markieren identische Zeilenkomponenten der Signaturen.}
     \label{fig:adjazenz}
 \end{figure}
@@ -321,15 +321,15 @@ der DNA-Adjazenz\-matrix eine eindeutige Signatur:
     \[
         \sum_{i=0}^{n-1} c_i \cdot 2^i \neq \sum_{i=0}^{n-1} c'_i \cdot 2^i,
     \]
-    weil jede BinÃ¤rkombination eine eindeutige Dezimalzahl in
-    $\{0, \ldots, 2^n - 1\}$ kodiert (Eindeutigkeit der BinÃ¤rdarstellung).
+    weil jede Binärkombination eine eindeutige Dezimalzahl in
+    $\{0, \ldots, 2^n - 1\}$ kodiert (Eindeutigkeit der Binärdarstellung).
     Mit $j \cdot 2^n = j' \cdot 2^n$ folgt $\sigma(c, j) \neq \sigma(c', j')$.
 
     \textbf{Fall 2: $j \neq j'$.}
     Die Zeilenkomponente $\sum_{i=0}^{n-1} c_i \cdot 2^i$ liegt in
-    $[0, 2^n - 1]$. Die Spaltengewichtung $j \cdot 2^n$ erzeugt fÃ¼r verschiedene
+    $[0, 2^n - 1]$. Die Spaltengewichtung $j \cdot 2^n$ erzeugt für verschiedene
     $j$ paarweise disjunkte Intervalle $[j \cdot 2^n,\; (j+1) \cdot 2^n)$.
-    Folglich kÃ¶nnen zwei Signaturen mit $j \neq j'$ nicht \"{u}bereinstimmen,
+    Folglich können zwei Signaturen mit $j \neq j'$ nicht \"{u}bereinstimmen,
     unabh\"{a}ngig von den Zeilenkomponenten. 
 \end{proof}
 
@@ -343,12 +343,12 @@ der DNA-Adjazenz\-matrix eine eindeutige Signatur:
             0 & 0 & 0 & 0
         \end{pmatrix}
     \]
-    ergibt sich fÃ¼r Spalte $j = 0$ (Vektor $[0,0,0,0]^T$):
+    ergibt sich für Spalte $j = 0$ (Vektor $[0,0,0,0]^T$):
     \[
         \sigma_0 = 0 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3
                  + 0 \cdot 2^4 = 0
     \]
-    und fÃ¼r Spalte $j = 1$ (Vektor $[1,0,0,0]^T$):
+    und für Spalte $j = 1$ (Vektor $[1,0,0,0]^T$):
     \[
         \sigma_1 = 1 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3
                  + 1 \cdot 2^4 = 1 + 16 = 17.
@@ -363,21 +363,21 @@ der DNA-Adjazenz\-matrix eine eindeutige Signatur:
 
 \subsection{Kernidee}
 
-Der SchlÃ¼ssel des Ansatzes liegt in der Erkenntnis, dass biologische
-SequenzÃ¤hnlichkeit hÃ¤ufig auf zyklischer Verschiebung beruht: Ein Motiv
-$\text{ATGC}$ kann in einem lÃ¤ngeren Strang an verschiedenen Positionen mit
+Der Schlüssel des Ansatzes liegt in der Erkenntnis, dass biologische
+Sequenzähnlichkeit häufig auf zyklischer Verschiebung beruht: Ein Motiv
+$\text{ATGC}$ kann in einem längeren Strang an verschiedenen Positionen mit
 verschiedenen Phasenlagen auftreten. Statt alle $n!$ Permutationen der
-Knotenordnung zu prÃ¼fen, werden nur $n$ zyklische Rotationen betrachtet ---
-dies erhÃ¤lt die strukturelle Nachbarschaft der Basen und reduziert die
-KomplexitÃ¤t von fakulativ-exponentiell auf polynomial.
+Knotenordnung zu prüfen, werden nur $n$ zyklische Rotationen betrachtet ---
+dies erhält die strukturelle Nachbarschaft der Basen und reduziert die
+Komplexität von fakulativ-exponentiell auf polynomial.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.90\textwidth]{figures/fig03_rotation.pdf}
     \caption{Alle vier zyklischen Rotationen der Sequenz $[A, T, G, C]$.
-    Jede Rotation verschiebt den Start der sequentiellen Knotenordnung, behÃ¤lt
-    aber die Nachbarschaftsstruktur im Graphen vollstÃ¤ndig erhalten. Statt
-    $4! = 24$ Permutationen sind nur $n = 4$ PrÃ¼fungen erforderlich.}
+    Jede Rotation verschiebt den Start der sequentiellen Knotenordnung, behält
+    aber die Nachbarschaftsstruktur im Graphen vollständig erhalten. Statt
+    $4! = 24$ Permutationen sind nur $n = 4$ Prüfungen erforderlich.}
     \label{fig:rotation}
 \end{figure}
 
@@ -385,7 +385,7 @@ KomplexitÃ¤t von fakulativ-exponentiell auf polynomial.
 
 Der Subgraph-DNA-Algorithmus arbeitet in drei Hauptschritten.
 
-\textbf{Schritt 1: Graph-Modellierung und Signatur-Berechnung fÃ¼r $G_A$}
+\textbf{Schritt 1: Graph-Modellierung und Signatur-Berechnung für $G_A$}
 
 Konstruiere aus der Sequenz $S_A$ die Adjazenzmatrix $A^{S_A}$ und berechne die
 Spalten-Signaturen:
@@ -398,9 +398,9 @@ Extrahiere die Zeilenkomponenten (ohne Spaltengewichtung):
     \rho_j^A = \sigma_j^A \bmod 2^{n_A}.
 \]
 
-\textbf{Schritt 2: Signatur-Berechnung fÃ¼r $G_B$}
+\textbf{Schritt 2: Signatur-Berechnung für $G_B$}
 
-Analog fÃ¼r $S_B$:
+Analog für $S_B$:
 \[
     \sigma_j^B = \sum_{i=0}^{n_B-1} A^{S_B}_{ij} \cdot 2^i + j \cdot 2^{n_B},
     \quad \rho_j^B = \sigma_j^B \bmod 2^{n_B}.
@@ -424,7 +424,7 @@ F\"{u}r jede der $n_B$ zyklischen Rotationen $r = 0, \ldots, n_B - 1$:
 
 \subsection{Implementierung in Python}
 
-\begin{lstlisting}[language=Python, caption=Signatur-Berechnung fÃ¼r DNA-Adjazenzmatrix]
+\begin{lstlisting}[language=Python, caption=Signatur-Berechnung für DNA-Adjazenzmatrix]
 def compute_dna_signatures(adjacency_matrix: np.ndarray) -> list[int]:
     """
     Berechnet eindeutige Spalten-Signaturen der DNA-Adjazenzmatrix.
@@ -503,20 +503,20 @@ def find_dna_subgraph(
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig04_lcs_dp.pdf}
     \caption{LCS-Berechnung mittels dynamischer Programmierung auf DNA-Signaturen.
-    \textbf{Links:} DP-Tabelle fÃ¼r die Sequenzen $A = \text{ATGCA}$ und
+    \textbf{Links:} DP-Tabelle für die Sequenzen $A = \text{ATGCA}$ und
     $B = \text{TAGKCA}$; die roten Zellen markieren den optimalen Traceback-Pfad.
     \textbf{Rechts:} Formale Rekurrenzgleichung und Ergebnis (LCS $= 4$, Bedingung
-    LCS $\geq 2$ ist erfÃ¼llt).}
+    LCS $\geq 2$ ist erfüllt).}
     \label{fig:lcs_dp}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig06_subgraph_dna.pdf}
-    \caption{VollstÃ¤ndiges Beispiel des Subgraph-DNA-Algorithmus.
+    \caption{Vollständiges Beispiel des Subgraph-DNA-Algorithmus.
     \textbf{Oben links:} Fragment $G_A$ (Sequenz ATGC, $n_A = 4$ Knoten).
     \textbf{Oben rechts:} Fragment $G_B$ (Sequenz CATGCTAT, $n_B = 8$ Knoten).
-    \textbf{Unten links:} LCS-Wert je Rotation (grÃ¼n = Subgraph erkannt,
+    \textbf{Unten links:} LCS-Wert je Rotation (grün = Subgraph erkannt,
     rot = kein Match). \textbf{Unten rechts:} Ergebnis der Analyse.}
     \label{fig:subgraph_dna}
 \end{figure}
@@ -525,7 +525,7 @@ def find_dna_subgraph(
     \centering
     \includegraphics[width=0.90\textwidth]{figures/fig10_pipeline.pdf}
     \caption{Pipeline des Subgraph-DNA-Algorithmus vom Einlesen der Rohsequenzen
-    bis zur Entscheidung Ã¼ber die Subgraph-Beziehung. Die GesamtkomplexitÃ¤t
+    bis zur Entscheidung über die Subgraph-Beziehung. Die Gesamtkomplexität
     ergibt sich zu $O(n^3)$, was unter SETH optimal ist.}
     \label{fig:pipeline}
 \end{figure}
@@ -543,62 +543,62 @@ def find_dna_subgraph(
 \end{satz}
 
 \begin{proof}
-    Wir beweisen Korrektheit in beide Richtungen: \textbf{VollstÃ¤ndigkeit}
+    Wir beweisen Korrektheit in beide Richtungen: \textbf{Vollständigkeit}
     (kein falsch-negativer Befund) und \textbf{Korrektheit} (kein falsch-positiver
     Befund).
 
-    \textbf{VollstÃ¤ndigkeit.}
-    Sei $G_A \subseteq \mathrm{rotate}_k(G_B)$ fÃ¼r ein $k \in \{0, \ldots, n_B-1\}$.
+    \textbf{Vollständigkeit.}
+    Sei $G_A \subseteq \mathrm{rotate}_k(G_B)$ für ein $k \in \{0, \ldots, n_B-1\}$.
     Dann existieren Knoten $v_{i_1}, \ldots, v_{i_{n_A}} \in V_B$ in Reihenfolge,
-    deren Adjazenz-Muster dem von $G_A$ entspricht. Der Algorithmus prÃ¼ft alle
-    $n_B$ Rotationen, also insbesondere auch Rotation $k$. FÃ¼r das entsprechende
-    Fenster stimmen die Zeilenkomponenten der Signaturen Ã¼berein, sodass
+    deren Adjazenz-Muster dem von $G_A$ entspricht. Der Algorithmus prüft alle
+    $n_B$ Rotationen, also insbesondere auch Rotation $k$. Für das entsprechende
+    Fenster stimmen die Zeilenkomponenten der Signaturen überein, sodass
     $\mathrm{LCS} \geq n_A \geq 2$ gilt, und der Algorithmus gibt korrekt
-    \texttt{True} zurÃ¼ck.
+    \texttt{True} zurück.
 
     \textbf{Korrektheit.}
-    Nehme an, der Algorithmus gibt \texttt{True} zurÃ¼ck fÃ¼r Rotation $r$ und
-    Fenster $s$, d.\,h.\ die LCS der Signatur-Zeilenkomponenten hat LÃ¤nge
-    $\geq 2$. Wir zeigen, dass dann tatsÃ¤chlich eine strukturelle Einbettung
+    Nehme an, der Algorithmus gibt \texttt{True} zurück für Rotation $r$ und
+    Fenster $s$, d.\,h.\ die LCS der Signatur-Zeilenkomponenten hat Länge
+    $\geq 2$. Wir zeigen, dass dann tatsächlich eine strukturelle Einbettung
     existiert.
 
     Nach Lemma~\ref{lem:eindeutigkeit} ist die Signatur-Funktion injektiv:
     Gleiche Zeilenkomponenten $\rho_j^A = \rho_j^B$ implizieren identische
-    Spaltenvektoren der Adjazenzmatrizen, also identische KonnektivitÃ¤tsmuster.
-    Eine LCS der LÃ¤nge $\ell \geq 2$ bedeutet, dass $\ell$ Spaltenvektoren
+    Spaltenvektoren der Adjazenzmatrizen, also identische Konnektivitätsmuster.
+    Eine LCS der Länge $\ell \geq 2$ bedeutet, dass $\ell$ Spaltenvektoren
     von $A^{S_A}$ in $A^{S_B}$ (nach Rotation $r$ und Fenster $s$) gefunden
     wurden --- was genau einer Subgraph-Einbettung in struktureller Hinsicht
-    entspricht. Die zyklische Rotation erhÃ¤lt die sequentielle Ordnung der
-    Nachbarschaften, sodass keine spuriosen Ãœbereinstimmungen entstehen. 
+    entspricht. Die zyklische Rotation erhält die sequentielle Ordnung der
+    Nachbarschaften, sodass keine spuriosen Übereinstimmungen entstehen. 
 \end{proof}
 
 \subsection{Laufzeit}
 
 \begin{satz}[Laufzeit des Subgraph-DNA-Algorithmus]
     \label{satz:laufzeit}
-    Der Subgraph-DNA-Algorithmus besitzt eine Laufzeit von $\Theta(n^3)$ fÃ¼r zwei
+    Der Subgraph-DNA-Algorithmus besitzt eine Laufzeit von $\Theta(n^3)$ für zwei
     DNA-Graphen mit je $n = n_A = n_B$ Knoten.
 \end{satz}
 
 \begin{proof}
     Wir analysieren die drei Phasen des Algorithmus:
 
-    \textbf{Phase 1: Signatur-Berechnung fÃ¼r $G_A$.}
-    FÃ¼r jede der $n$ Spalten wird der $n$-dimensionale Spaltenvektor der
+    \textbf{Phase 1: Signatur-Berechnung für $G_A$.}
+    Für jede der $n$ Spalten wird der $n$-dimensionale Spaltenvektor der
     Adjazenzmatrix gelesen:
     \[
         T_1(n) = \sum_{j=0}^{n-1} n = n^2 \in \Theta(n^2).
     \]
 
-    \textbf{Phase 2: Signatur-Berechnung fÃ¼r $G_B$.}
+    \textbf{Phase 2: Signatur-Berechnung für $G_B$.}
     Identisch zu Phase~1:
     \[
         T_2(n) = n^2 \in \Theta(n^2).
     \]
 
     \textbf{Phase 3: Rotations-Match.}
-    Es gibt $n$ Rotationen. FÃ¼r jede Rotation gibt es $(n - n_A + 1) \leq n$
-    Fensterpositionen. Je Fenster wird LCS zweier Sequenzen der LÃ¤nge $n$
+    Es gibt $n$ Rotationen. Für jede Rotation gibt es $(n - n_A + 1) \leq n$
+    Fensterpositionen. Je Fenster wird LCS zweier Sequenzen der Länge $n$
     berechnet:
     \[
         T_3(n) = n \cdot n \cdot \Theta(n^2) = \Theta(n^4).
@@ -617,31 +617,31 @@ def find_dna_subgraph(
     \[
         T(n) = T_1(n) + T_2(n) + T_3(n) = O(n^2) + O(n^2) + O(n^3) = O(n^3).
     \]
-    Da Phase~3 mindestens $n$ LCS-Berechnungen auf Sequenzen der LÃ¤nge $n$ erfordert,
+    Da Phase~3 mindestens $n$ LCS-Berechnungen auf Sequenzen der Länge $n$ erfordert,
     gilt zudem $T(n) \geq \Omega(n^3)$, also insgesamt $T(n) \in \Theta(n^3)$. 
 \end{proof}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig05_komplexitaet.pdf}
-    \caption{KomplexitÃ¤tsvergleich verschiedener DNA-SequenzierungsansÃ¤tze.
+    \caption{Komplexitätsvergleich verschiedener DNA-Sequenzierungsansätze.
     \textbf{Links:} Logarithmische Darstellung der Operationszahlen als Funktion der
-    SequenzlÃ¤nge $n$. Der naive Permutationsansatz ($O(n! \cdot n^2)$) ist bereits
-    fÃ¼r $n \approx 20$ praktisch unhandhabbar.
-    \textbf{Rechts:} Beschleunigungsfaktor des Subgraph-DNA-Algorithmus gegenÃ¼ber
+    Sequenzlänge $n$. Der naive Permutationsansatz ($O(n! \cdot n^2)$) ist bereits
+    für $n \approx 20$ praktisch unhandhabbar.
+    \textbf{Rechts:} Beschleunigungsfaktor des Subgraph-DNA-Algorithmus gegenüber
     dem naiven Ansatz, ebenfalls auf logarithmischer Skala.}
     \label{fig:komplexitaet}
 \end{figure}
 
-\subsection{OptimalitÃ¤t der Laufzeit}
+\subsection{Optimalität der Laufzeit}
 
 Wir beweisen, dass der Subgraph-DNA-Algorithmus asymptotisch optimal ist.
 Der Beweis gliedert sich in vier Lemmata.
 
 \begin{lemma}[Eingabe-Leseschranke]
     \label{lem:eingabe}
-    Jeder korrekte Algorithmus fÃ¼r das zyklische DNA-Subgraph-Problem muss alle
-    EintrÃ¤ge beider Adjazenzmatrizen lesen und benÃ¶tigt daher mindestens
+    Jeder korrekte Algorithmus für das zyklische DNA-Subgraph-Problem muss alle
+    Einträge beider Adjazenzmatrizen lesen und benötigt daher mindestens
     $\Omega(n^2)$ Zeit.
 \end{lemma}
 
@@ -650,14 +650,14 @@ Der Beweis gliedert sich in vier Lemmata.
     Nehmen wir an, $\mathcal{A}$ liest den Eintrag $A^{S_A}_{ij}$ nicht.
     Wir konstruieren zwei Instanzen, die sich nur in $A^{S_A}_{ij}$ unterscheiden:
     \begin{align*}
-        I_0: & \quad A^{S_A}_{ij} = 0, \text{ alle anderen EintrÃ¤ge identisch}, \\
-        I_1: & \quad A^{S_A}_{ij} = 1, \text{ alle anderen EintrÃ¤ge identisch}.
+        I_0: & \quad A^{S_A}_{ij} = 0, \text{ alle anderen Einträge identisch}, \\
+        I_1: & \quad A^{S_A}_{ij} = 1, \text{ alle anderen Einträge identisch}.
     \end{align*}
     Setze $A^{S_B}$ so, dass bei Rotation $k = 0$ gilt:
     $G_A \subseteq G_B$ genau dann, wenn $A^{S_A}_{ij} = 1$.
-    Da $\mathcal{A}$ den Eintrag nicht liest, verhÃ¤lt es sich auf $I_0$ und $I_1$
+    Da $\mathcal{A}$ den Eintrag nicht liest, verhält es sich auf $I_0$ und $I_1$
     identisch und produziert auf mindestens einer Instanz eine falsche Antwort ---
-    Widerspruch zur Korrektheit. Da das Argument fÃ¼r alle $2n^2$ EintrÃ¤ge gilt:
+    Widerspruch zur Korrektheit. Da das Argument für alle $2n^2$ Einträge gilt:
     \[
         T(n) \geq 2n^2 \in \Omega(n^2). \qquad 
     \]
@@ -665,37 +665,37 @@ Der Beweis gliedert sich in vier Lemmata.
 
 \begin{lemma}[Notwendigkeit aller Rotationen]
     \label{lem:rotationen}
-    Jeder korrekte Algorithmus fÃ¼r das zyklische DNA-Subgraph-Problem muss im
+    Jeder korrekte Algorithmus für das zyklische DNA-Subgraph-Problem muss im
     Worst Case alle $n$ zyklischen Rotationen untersuchen.
 \end{lemma}
 
 \begin{proof}
     Sei $\mathcal{A}$ ein beliebiger Algorithmus, der eine Rotation
-    $k^* \in \{0, \ldots, n-1\}$ Ã¼berspringt.
+    $k^* \in \{0, \ldots, n-1\}$ überspringt.
     Konstruiere eine Instanz $(G_A, G_B)$ so, dass:
     \begin{itemize}
         \item nach Rotation $k^*$ gilt $G_A \subseteq \mathrm{rotate}_{k^*}(G_B)$,
-        \item fÃ¼r alle anderen Rotationen $k \neq k^*$ fehlt mindestens eine
+        \item für alle anderen Rotationen $k \neq k^*$ fehlt mindestens eine
               Backbone-Kante in $\mathrm{rotate}_k(G_B)$.
     \end{itemize}
-    Eine solche Instanz erhÃ¤lt man durch $A^{S_B}_j = A^{S_A}_{(j-k^*)\bmod n}$
-    fÃ¼r alle $j$ und eine gezielte StÃ¶rkante fÃ¼r alle $k \neq k^*$.
-    Da $\mathcal{A}$ Rotation $k^*$ Ã¼berspringt, gibt er fÃ¤lschlich
-    ``kein Subgraph'' aus. Da das Argument fÃ¼r jedes $k^*$ gilt, muss
-    $\mathcal{A}$ alle $n$ Rotationen prÃ¼fen. 
+    Eine solche Instanz erhält man durch $A^{S_B}_j = A^{S_A}_{(j-k^*)\bmod n}$
+    für alle $j$ und eine gezielte Störkante für alle $k \neq k^*$.
+    Da $\mathcal{A}$ Rotation $k^*$ überspringt, gibt er fälschlich
+    ``kein Subgraph'' aus. Da das Argument für jedes $k^*$ gilt, muss
+    $\mathcal{A}$ alle $n$ Rotationen prüfen. 
 \end{proof}
 
 \begin{lemma}[Untere Schranke des LCS-Sequenzvergleichs]
     \label{lem:lcs}
-    Unter der Strong Exponential Time Hypothesis~(SETH) kann die lÃ¤ngste gemeinsame
-    Teilsequenz (LCS) zweier Sequenzen der LÃ¤nge $n$ nicht in $O(n^{2-\varepsilon})$
-    Zeit fÃ¼r beliebiges $\varepsilon > 0$ berechnet werden.
+    Unter der Strong Exponential Time Hypothesis~(SETH) kann die längste gemeinsame
+    Teilsequenz (LCS) zweier Sequenzen der Länge $n$ nicht in $O(n^{2-\varepsilon})$
+    Zeit für beliebiges $\varepsilon > 0$ berechnet werden.
 \end{lemma}
 
 \begin{proof}
     \textbf{Obere Schranke $O(n^2)$.}
-    Das klassische DP-Verfahren (Needleman-Wunsch) fÃ¼llt eine
-    $(n+1) \times (n+1)$-Tabelle gemÃ¤ÃŸ der Rekurrenz:
+    Das klassische DP-Verfahren (Needleman-Wunsch) füllt eine
+    $(n+1) \times (n+1)$-Tabelle gemäß der Rekurrenz:
     \[
         dp[i][j] = \begin{cases}
             0 & i = 0 \text{ oder } j = 0 \\
@@ -709,45 +709,45 @@ Der Beweis gliedert sich in vier Lemmata.
     Abboud, Backurs und Vassilevska Williams bewiesen 2015 (FOCS):
     \medskip
 
-    \emph{Unter SETH kann LCS zweier Sequenzen der LÃ¤nge $n$ nicht in
-    $O(n^{2-\varepsilon})$ Zeit fÃ¼r beliebiges $\varepsilon > 0$ gelÃ¶st werden.}
+    \emph{Unter SETH kann LCS zweier Sequenzen der Länge $n$ nicht in
+    $O(n^{2-\varepsilon})$ Zeit für beliebiges $\varepsilon > 0$ gelöst werden.}
     \medskip
 
-    Die DNA-Signaturen sind beliebige ganzzahlige Werte ohne AlphabetbeschrÃ¤nkung,
+    Die DNA-Signaturen sind beliebige ganzzahlige Werte ohne Alphabetbeschränkung,
     weshalb das Resultat direkt gilt:
     \[
         T_{\mathrm{LCS}}(n) \geq \Omega(n^{2-\varepsilon})
-        \quad \text{fÃ¼r alle } \varepsilon > 0. \qquad 
+        \quad \text{für alle } \varepsilon > 0. \qquad 
     \]
 \end{proof}
 
-\begin{lemma}[UnabhÃ¤ngigkeit der Rotationsvergleiche]
+\begin{lemma}[Unabhängigkeit der Rotationsvergleiche]
     \label{lem:unabhaengigkeit}
-    Die $n$ LCS-Berechnungen fÃ¼r die $n$ Rotationen der Signatur-Sequenz
-    $\sigma^B$ sind im Allgemeinen unabhÃ¤ngig und kÃ¶nnen nicht mit einem
-    Gesamtaufwand $o(n \cdot T_{\mathrm{LCS}}(n))$ durchgefÃ¼hrt werden.
+    Die $n$ LCS-Berechnungen für die $n$ Rotationen der Signatur-Sequenz
+    $\sigma^B$ sind im Allgemeinen unabhängig und können nicht mit einem
+    Gesamtaufwand $o(n \cdot T_{\mathrm{LCS}}(n))$ durchgeführt werden.
 \end{lemma}
 
 \begin{proof}
     Sei $\sigma^B_r = [\rho_r^B, \rho_{r+1}^B, \ldots, \rho_{n-1}^B,
     \rho_0^B, \ldots, \rho_{r-1}^B]$ die $r$-te Rotation.
-    Beim Ãœbergang von Rotation $r$ zu $r+1$ verschiebt sich $\rho_r^B$
-    vom Anfang ans Ende der Sequenz. Diese Ã„nderung kann die DP-Tabelle
-    vollstÃ¤ndig umstrukturieren:
+    Beim Übergang von Rotation $r$ zu $r+1$ verschiebt sich $\rho_r^B$
+    vom Anfang ans Ende der Sequenz. Diese Änderung kann die DP-Tabelle
+    vollständig umstrukturieren:
     \begin{itemize}
         \item Wenn $\rho_r^B$ den ersten Treffer in einer optimalen gemeinsamen
-              Teilsequenz bildet, entfÃ¤llt dieser Treffer in $\sigma^B_{r+1}$.
-        \item In der DP-Tabelle fÃ¼r $\mathrm{LCS}(\sigma^A, \sigma^B_{r+1})$
-              Ã¤ndern sich bis zu $\Theta(n)$ Zeilen, sodass eine vollstÃ¤ndige
+              Teilsequenz bildet, entfällt dieser Treffer in $\sigma^B_{r+1}$.
+        \item In der DP-Tabelle für $\mathrm{LCS}(\sigma^A, \sigma^B_{r+1})$
+              ändern sich bis zu $\Theta(n)$ Zeilen, sodass eine vollständige
               Neuberechnung in $\Theta(n^2)$ notwendig ist.
     \end{itemize}
 
     \textbf{Formale Konstruktion.}
-    WÃ¤hle $\sigma^A = [a_0, \ldots, a_{n-1}]$ und
+    Wähle $\sigma^A = [a_0, \ldots, a_{n-1}]$ und
     $\sigma^B_0 = [a_{n-1}, \ldots, a_0]$ (umgekehrte Ordnung).
-    Dann erfordert $\mathrm{LCS}(\sigma^A, \sigma^B_r)$ fÃ¼r jedes $r$ eine
-    andere optimale Teilsequenz, sodass alle $n$ DP-Tabellen unabhÃ¤ngig
-    berechnet werden mÃ¼ssen:
+    Dann erfordert $\mathrm{LCS}(\sigma^A, \sigma^B_r)$ für jedes $r$ eine
+    andere optimale Teilsequenz, sodass alle $n$ DP-Tabellen unabhängig
+    berechnet werden müssen:
     \[
         T_{\text{Rotation}}(n) \geq n \cdot T_{\mathrm{LCS}}(n)
         \geq n \cdot \Omega(n^{2-\varepsilon}) = \Omega(n^{3-\varepsilon}).
@@ -755,21 +755,21 @@ Der Beweis gliedert sich in vier Lemmata.
     \]
 \end{proof}
 
-\begin{satz}[OptimalitÃ¤t des Subgraph-DNA-Algorithmus]
+\begin{satz}[Optimalität des Subgraph-DNA-Algorithmus]
     \label{satz:optimalitaet}
     Der Subgraph-DNA-Algorithmus ist asymptotisch \textbf{optimal}.
     Unter SETH gilt: Kein Algorithmus kann das zyklische DNA-Subgraph-Problem
-    fÃ¼r zwei Graphen mit je $n$ Knoten in $O(n^{3-\varepsilon})$ Zeit fÃ¼r
-    beliebiges $\varepsilon > 0$ lÃ¶sen.
+    für zwei Graphen mit je $n$ Knoten in $O(n^{3-\varepsilon})$ Zeit für
+    beliebiges $\varepsilon > 0$ lösen.
 \end{satz}
 
 \begin{proof}
     Wir kombinieren Lemmata~\ref{lem:eingabe}--\ref{lem:unabhaengigkeit}
-    zu einer vollstÃ¤ndigen Beweiskette.
+    zu einer vollständigen Beweiskette.
 
     \textbf{Schritt 1: Signatur-Berechnung --- $\Omega(n^2)$.}
     Nach Lemma~\ref{lem:eingabe} muss jeder korrekte Algorithmus alle $2n^2$
-    EintrÃ¤ge lesen:
+    Einträge lesen:
     \[
         T_{\text{Signatur}}(n) \geq \Omega(n^2).
     \]
@@ -780,11 +780,11 @@ Der Beweis gliedert sich in vier Lemmata.
 
     \textbf{Schritt 3: LCS pro Rotation --- $\Omega(n^{2-\varepsilon})$ unter SETH.}
     Nach Lemma~\ref{lem:lcs} erfordert jede LCS-Berechnung auf Sequenzen
-    der LÃ¤nge $n$ unter SETH mindestens $\Omega(n^{2-\varepsilon})$ Schritte.
+    der Länge $n$ unter SETH mindestens $\Omega(n^{2-\varepsilon})$ Schritte.
 
     \textbf{Schritt 4: Keine Wiederverwendung zwischen Rotationen.}
     Nach Lemma~\ref{lem:unabhaengigkeit} sind die $n$ LCS-Berechnungen im
-    Allgemeinen unabhÃ¤ngig.
+    Allgemeinen unabhängig.
 
     \textbf{Gesamte untere Schranke:}
     \[
@@ -800,17 +800,17 @@ Der Beweis gliedert sich in vier Lemmata.
     \[
         T_{\text{Subgraph-DNA}}(n) = \Theta(n^3).
     \]
-    Eine Verbesserung auf $O(n^{3-\varepsilon})$ wÃ¼rde Lemma~\ref{lem:lcs}
+    Eine Verbesserung auf $O(n^{3-\varepsilon})$ würde Lemma~\ref{lem:lcs}
     widerlegen und damit SETH falsifizieren. 
 \end{proof}
 
 \begin{bemerkung}
-    Die OptimalitÃ¤tsaussage ist zweistufig:
+    Die Optimalitätsaussage ist zweistufig:
     \begin{itemize}
         \item \textbf{Unbedingt} (ohne Hypothesen): Jeder korrekte Algorithmus
-              benÃ¶tigt $\Omega(n^2)$ Zeit (Lemma~\ref{lem:eingabe}).
+              benötigt $\Omega(n^2)$ Zeit (Lemma~\ref{lem:eingabe}).
         \item \textbf{Bedingt} (unter SETH): Kein Algorithmus kann in
-              $O(n^{3-\varepsilon})$ Zeit fÃ¼r $\varepsilon > 0$ korrekt sein
+              $O(n^{3-\varepsilon})$ Zeit für $\varepsilon > 0$ korrekt sein
               (Satz~\ref{satz:optimalitaet}).
     \end{itemize}
 \end{bemerkung}
@@ -822,9 +822,9 @@ Der Beweis gliedert sich in vier Lemmata.
 \subsection{Mutationsanalyse}
 
 Eine der wichtigsten Anwendungen ist die Erkennung von Mutationen:
-Punktmutationen, Deletionen und Insertionen verÃ¤ndern die Adjazenzstruktur
+Punktmutationen, Deletionen und Insertionen verändern die Adjazenzstruktur
 des DNA-Graphen lokal. Der Subgraph-DNA-Algorithmus kann diese Unterschiede
-prÃ¤zise lokalisieren.
+präzise lokalisieren.
 
 \begin{figure}[h]
     \centering
@@ -841,21 +841,21 @@ prÃ¤zise lokalisieren.
     Sei $S_{\text{WT}}$ der Wildtyp und $S_{\text{mut}}$ eine mutierte Sequenz.
     Der Algorithmus liefert $G_{\text{mut}} \not\subseteq G_{\text{WT}}$ und
     $G_{\text{WT}} \not\subseteq G_{\text{mut}}$ genau dann, wenn mindestens
-    eine strukturverÃ¤ndernde Mutation vorliegt.
+    eine strukturverändernde Mutation vorliegt.
 \end{korollar}
 
 \begin{proof}
-    Folgt direkt aus Satz~\ref{satz:korrektheit}: Punktmutationen Ã¤ndern
+    Folgt direkt aus Satz~\ref{satz:korrektheit}: Punktmutationen ändern
     den Spaltenvektor der betroffenen Base, somit ihre Signatur. Da die
-    Signatur-Funktion injektiv ist (Lemma~\ref{lem:eindeutigkeit}), fÃ¼hrt
-    jede strukturelle Ã„nderung zu einer Nicht-Ãœbereinstimmung im LCS-Vergleich,
+    Signatur-Funktion injektiv ist (Lemma~\ref{lem:eindeutigkeit}), führt
+    jede strukturelle Änderung zu einer Nicht-Übereinstimmung im LCS-Vergleich,
     sofern die Mutation nicht durch eine Rotation kompensiert wird. 
 \end{proof}
 
 \subsection{Vergleichende Genomik und phylogenetische Analyse}
 
 Durch paarweisen Vergleich genomischer Fragmente via Subgraph-Einschluss
-lÃ¤sst sich eine natÃ¼rliche Halbordnung auf DNA-Fragmenten definieren:
+lässt sich eine natürliche Halbordnung auf DNA-Fragmenten definieren:
 
 \[
     S_A \preceq S_B \; :\Leftrightarrow \; G_A \subseteq_{\text{rot}} G_B,
@@ -863,7 +863,7 @@ lÃ¤sst sich eine natÃ¼rliche Halbordnung auf DNA-Fragmenten definieren:
 
 wobei $\subseteq_{\text{rot}}$ die Subgraph-Inklusion unter zyklischer Rotation
 bezeichnet. Diese Halbordnung erlaubt eine hierarchische Klassifikation von
-Sequenzen nach ihrer strukturellen KomplexitÃ¤t.
+Sequenzen nach ihrer strukturellen Komplexität.
 
 \subsection{Sequenzierungspipelines (NGS)}
 
@@ -872,12 +872,12 @@ gegen ein Referenzgenom abgeglichen (Read-Mapping). Der Subgraph-DNA-Algorithmus
 kann als interner Vergleichskern eingesetzt werden:
 
 \begin{itemize}
-    \item \textbf{De-novo-Assemblierung:} Identifikation Ã¼berlappender Reads
+    \item \textbf{De-novo-Assemblierung:} Identifikation überlappender Reads
           durch paarweisen Subgraph-Vergleich.
     \item \textbf{Varianten-Calling:} Erkennung von SNPs und Indels als
           lokale Subgraph-Differenzen.
-    \item \textbf{Redundanz-Elimination:} Fragmente, fÃ¼r die $G_A \subseteq G_B$
-          gilt, kÃ¶nnen verworfen werden (Behalte das informationsreichere $G_B$).
+    \item \textbf{Redundanz-Elimination:} Fragmente, für die $G_A \subseteq G_B$
+          gilt, können verworfen werden (Behalte das informationsreichere $G_B$).
 \end{itemize}
 
 \begin{figure}[h]
@@ -886,8 +886,8 @@ kann als interner Vergleichskern eingesetzt werden:
     \caption{Sequenzierungskosten und Laufzeitanalyse.
     \textbf{Links:} Historische Kosten pro Genom (NHGRI-Daten) und Projektion
     mit Subgraph-basierter Optimierung; das Mooresche Gesetz dient als Referenz.
-    \textbf{Rechts:} Normierter Laufzeitvergleich als Funktion der GenomlÃ¤nge
-    (doppelt-logarithmisch), mit Annotierungen fÃ¼r bekannte GenomgrÃ¶ÃŸen.}
+    \textbf{Rechts:} Normierter Laufzeitvergleich als Funktion der Genomlänge
+    (doppelt-logarithmisch), mit Annotierungen für bekannte Genomgrößen.}
     \label{fig:kosten}
 \end{figure}
 
@@ -897,12 +897,12 @@ kann als interner Vergleichskern eingesetzt werden:
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig08_statistik.pdf}
     \caption{Statistische Eigenschaften von DNA als Graph.
-    \textbf{Oben links:} BasenhÃ¤ufigkeiten in einer simulierten humanen
+    \textbf{Oben links:} Basenhäufigkeiten in einer simulierten humanen
     Chromosomensequenz ($n = 1\,000$ Basen, GC-Gehalt $\approx 41\%$).
-    \textbf{Oben rechts:} Dinukleotid-Ãœbergangsmatrix als Markov-Modell
+    \textbf{Oben rechts:} Dinukleotid-Übergangsmatrix als Markov-Modell
     erster Ordnung. \textbf{Unten links:} GC-Gehalt-Profil mit gleitendem
-    Fenster ($w = 50$). \textbf{Unten rechts:} Graphdichte und LCS/n-VerhÃ¤ltnis
-    als Funktion der SequenzlÃ¤nge.}
+    Fenster ($w = 50$). \textbf{Unten rechts:} Graphdichte und LCS/n-Verhältnis
+    als Funktion der Sequenzlänge.}
     \label{fig:statistik}
 \end{figure}
 
@@ -936,13 +936,13 @@ Die Metagenomik bezeichnet die Sequenzierung und Analyse aller genetischen
 Materialien, die direkt aus einer Umweltprobe gewonnen werden, ohne vorherige
 Kultivierung einzelner Organismen. Eine metagenomische Probe --- beispielsweise
 ein Milliliter Meerwasser, ein Gramm Bodensediment oder eine Darmmikrobiom-Probe
---- enthÃ¤lt typischerweise DNA von Hunderten bis Tausenden verschiedener
+--- enthält typischerweise DNA von Hunderten bis Tausenden verschiedener
 Organismen: Bakterien, Archaeen, Viren, Pilze und Mikroeukaryoten.
 
 Das zentrale algorithmische Problem der Metagenomik ist die
 \textit{De-novo-Assemblierung}: Aus einem Pool von $M$ kurzen Reads
 (typisch $n \approx 150$ bis $300$ Basenpaare bei Illumina-Sequenzierern)
-mÃ¼ssen die Originalgenome der beteiligten Organismen rekonstruiert werden,
+müssen die Originalgenome der beteiligten Organismen rekonstruiert werden,
 ohne dass eine Referenzsequenz bekannt ist.
 
 \begin{figure}[H]
@@ -971,7 +971,7 @@ ohne dass eine Referenzsequenz bekannt ist.
 	\[
 	\mathcal{G}_{\mathcal{P}} = \{G_{S_1}, G_{S_2}, \ldots, G_{S_M}\},
 	\]
-	wobei $G_{S_i} = (V_i, E_i)$ der DNA-Graph von $S_i$ gemÃ¤ÃŸ Definition~2 ist.
+	wobei $G_{S_i} = (V_i, E_i)$ der DNA-Graph von $S_i$ gemäß Definition~2 ist.
 \end{definition}
 
 \begin{definition}[Subgraph-Halbordnung auf $\mathcal{P}$]
@@ -990,17 +990,17 @@ ohne dass eine Referenzsequenz bekannt ist.
 \begin{satz}[Halbordnungseigenschaft]
 	\label{satz:halbordnung}
 	Die Relation $\preceq_{\mathrm{rot}}$ ist eine Quasihalbordnung auf
-	$\mathcal{G}_{\mathcal{P}}$, das heiÃŸt sie ist reflexiv und transitiv.
+	$\mathcal{G}_{\mathcal{P}}$, das heißt sie ist reflexiv und transitiv.
 \end{satz}
 
 \begin{proof}
-	\textbf{ReflexivitÃ¤t.}
+	\textbf{Reflexivität.}
 	Sei $G_S$ ein beliebiger DNA-Graph mit $n$ Knoten.
-	WÃ¤hle Rotation $r = 0$ (IdentitÃ¤t). Dann gilt trivialerweise
+	Wähle Rotation $r = 0$ (Identität). Dann gilt trivialerweise
 	$G_S \subseteq \mathrm{rotate}_0(G_S) = G_S$,
 	also $G_S \preceq_{\mathrm{rot}} G_S$.
 	
-	\textbf{TransitivitÃ¤t.}
+	\textbf{Transitivität.}
 	Seien $G_{S_i} \preceq_{\mathrm{rot}} G_{S_j}$ und
 	$G_{S_j} \preceq_{\mathrm{rot}} G_{S_k}$.
 	Dann existieren Rotationen $r_1$ und $r_2$ mit:
@@ -1020,9 +1020,9 @@ ohne dass eine Referenzsequenz bekannt ist.
 \begin{bemerkung}
 	$\preceq_{\mathrm{rot}}$ ist im Allgemeinen \textbf{keine} Halbordnung im
 	strengen Sinne (d.\,h.\ antisymmetrisch), da zwei verschiedene Sequenzen
-	$S_i \neq S_j$ wechselseitig Subgraph-Beziehungen besitzen kÃ¶nnen
+	$S_i \neq S_j$ wechselseitig Subgraph-Beziehungen besitzen können
 	(z.\,B.\ zyklische Shifts desselben Motivs). In diesem Fall sind sie
-	\textit{Ã¤quivalent} unter $\preceq_{\mathrm{rot}}$.
+	\textit{äquivalent} unter $\preceq_{\mathrm{rot}}$.
 \end{bemerkung}
 
 \begin{figure}[h]
@@ -1030,7 +1030,7 @@ ohne dass eine Referenzsequenz bekannt ist.
 	\includegraphics[width=0.95\textwidth]{figures/fig12_meta_graph.pdf}
 	\caption{Adjazenzmatrizen dreier metagenomischer Reads aus verschiedenen
 		Organismen. Jede Matrix enkodiert Backbone-Kanten (Nebendiagonale) und
-		Komplementarbindungen als BinÃ¤rstruktur. Die unterschiedliche Kantenverteilung
+		Komplementarbindungen als Binärstruktur. Die unterschiedliche Kantenverteilung
 		spiegelt die biologischen Unterschiede zwischen Bakterium A, Bakterium B
 		und dem Archaeon wider.}
 	\label{fig:meta_graph}
@@ -1042,12 +1042,12 @@ ohne dass eine Referenzsequenz bekannt ist.
 	\label{def:kerngenom}
 	Die \textit{maximale Teilmenge} $\mathcal{M} \subseteq \mathcal{G}_{\mathcal{P}}$
 	ist definiert als die Menge aller Graphen $G \in \mathcal{G}_{\mathcal{P}}$,
-	fÃ¼r die gilt:
+	für die gilt:
 	\[
 	\nexists\; H \in \mathcal{G}_{\mathcal{P}} \setminus \{G\}\colon
 	G \preceq_{\mathrm{rot}} H.
 	\]
-	$\mathcal{M}$ heiÃŸt das \emph{maximale Kerngenom} des Pools $\mathcal{P}$.
+	$\mathcal{M}$ heißt das \emph{maximale Kerngenom} des Pools $\mathcal{P}$.
 \end{definition}
 
 \begin{satz}[Korrektheit der Deduplizierung]
@@ -1056,17 +1056,17 @@ ohne dass eine Referenzsequenz bekannt ist.
 	korrekt:
 	\begin{enumerate}
 		\item Initialisiere $\mathcal{M} \leftarrow \emptyset$.
-		\item FÃ¼r jeden Graph $G_i \in \mathcal{G}_{\mathcal{P}}$:
+		\item Für jeden Graph $G_i \in \mathcal{G}_{\mathcal{P}}$:
 		\begin{enumerate}
-			\item PrÃ¼fe ob $\exists\, H \in \mathcal{M}\colon
+			\item Prüfe ob $\exists\, H \in \mathcal{M}\colon
 			G_i \preceq_{\mathrm{rot}} H$ (d.\,h.\ $G_i$ ist
 			bereits durch $\mathcal{M}$ dominiert).
 			Falls ja: verwerfe $G_i$.
 			\item Andernfalls: Entferne alle $H \in \mathcal{M}$ mit
 			$H \preceq_{\mathrm{rot}} G_i$ aus $\mathcal{M}$.
-			\item FÃ¼ge $G_i$ zu $\mathcal{M}$ hinzu.
+			\item Füge $G_i$ zu $\mathcal{M}$ hinzu.
 		\end{enumerate}
-		\item Gib $\mathcal{M}$ zurÃ¼ck.
+		\item Gib $\mathcal{M}$ zurück.
 	\end{enumerate}
 \end{satz}
 
@@ -1076,14 +1076,14 @@ ohne dass eine Referenzsequenz bekannt ist.
 	(ii) jeder Graph $G_i \in \mathcal{G}_{\mathcal{P}}$ ist durch ein
 	Element von $\mathcal{M}$ dominiert.
 	
-	\textbf{(i) MaximalitÃ¤t.}
+	\textbf{(i) Maximalität.}
 	Nach Konstruktion wird $G_i$ genau dann in $\mathcal{M}$ aufgenommen,
 	wenn kein bestehendes $H \in \mathcal{M}$ mit $G_i \preceq_{\mathrm{rot}} H$
 	existiert. Nach Schritt (b) werden zudem alle von $G_i$ dominierten
 	Elemente entfernt. Daher sind alle in $\mathcal{M}$ verbleibenden Elemente
 	maximal unter $\preceq_{\mathrm{rot}}$.
 	
-	\textbf{(ii) VollstÃ¤ndigkeit.}
+	\textbf{(ii) Vollständigkeit.}
 	Sei $G_i \in \mathcal{G}_{\mathcal{P}}$ ein beliebiger Graph.
 	\begin{itemize}
 		\item Falls $G_i$ in Schritt (a) verworfen wurde, existiert ein
@@ -1099,22 +1099,22 @@ ohne dass eine Referenzsequenz bekannt ist.
 
 \begin{satz}[Laufzeit der Metagenom-Deduplizierung]
 	\label{satz:dedup_laufzeit}
-	Seien $M$ die Anzahl der Reads und $n$ die maximale Read-LÃ¤nge.
+	Seien $M$ die Anzahl der Reads und $n$ die maximale Read-Länge.
 	Der Deduplizierungs-Algorithmus hat eine Laufzeit von
 	$O(M^2 \cdot n^3)$ im Worst Case und $O(M \cdot |\mathcal{M}| \cdot n^3)$
 	im Average Case, wobei $|\mathcal{M}| \ll M$ bei hoher Redundanz.
 \end{satz}
 
 \begin{proof}
-	FÃ¼r jeden der $M$ eingehenden Reads $G_i$ werden:
+	Für jeden der $M$ eingehenden Reads $G_i$ werden:
 	\begin{itemize}
 		\item Alle bisherigen Elemente $H \in \mathcal{M}$ auf die Relation
-		$G_i \preceq_{\mathrm{rot}} H$ geprÃ¼ft. Jede solche PrÃ¼fung
+		$G_i \preceq_{\mathrm{rot}} H$ geprüft. Jede solche Prüfung
 		kostet $O(n^3)$ (Satz~\ref{satz:laufzeit}).
-		\item Im Worst Case enthÃ¤lt $\mathcal{M}$ bis zu $M$ Elemente, was
+		\item Im Worst Case enthält $\mathcal{M}$ bis zu $M$ Elemente, was
 		$M \cdot M \cdot O(n^3) = O(M^2 \cdot n^3)$ ergibt.
 		\item Im realistischen Fall mit hoher Redundanz gilt $|\mathcal{M}|
-		\approx K \cdot C$ fÃ¼r $K$ Organismen und $C$ charakteristische
+		\approx K \cdot C$ für $K$ Organismen und $C$ charakteristische
 		Motiv-Typen je Organismus ($K, C \ll M$). Dann:
 		\[
 		T_{\text{Dedup}}(M, n) = O(M \cdot |\mathcal{M}| \cdot n^3)
@@ -1123,9 +1123,9 @@ ohne dass eine Referenzsequenz bekannt ist.
 	\end{itemize}
 \end{proof}
 
-\begin{korollar}[Ãœberlegenheit gegenÃ¼ber paarweisem Vergleich]
+\begin{korollar}[Überlegenheit gegenüber paarweisem Vergleich]
 	\label{kor:ueberlegenheit}
-	FÃ¼r einen Redundanzgrad von $\rho = 1 - |\mathcal{M}|/M$
+	Für einen Redundanzgrad von $\rho = 1 - |\mathcal{M}|/M$
 	(Anteil eliminierbarer Reads) gilt:
 	\[
 	\frac{T_{\text{naiv paarweise}}}{T_{\text{Subgraph-Dedup}}}
@@ -1140,8 +1140,8 @@ ohne dass eine Referenzsequenz bekannt ist.
 \begin{proof}
 	Der naive paarweise Ansatz vergleicht alle $\binom{M}{2} \in O(M^2)$
 	Read-Paare. Je Paar kostet der LCS-Vergleich $O(n^2)$, also insgesamt
-	$O(M^2 \cdot n^2)$. Der Subgraph-Deduplizierungs-Algorithmus fÃ¼hrt
-	fÃ¼r jeden der $M$ Reads hÃ¶chstens $|\mathcal{M}|$ Subgraph-Tests durch,
+	$O(M^2 \cdot n^2)$. Der Subgraph-Deduplizierungs-Algorithmus führt
+	für jeden der $M$ Reads höchstens $|\mathcal{M}|$ Subgraph-Tests durch,
 	je zu $O(n^3)$. Division ergibt die behauptete Formel. 
 \end{proof}
 
@@ -1151,50 +1151,50 @@ ohne dass eine Referenzsequenz bekannt ist.
 	\caption{Subgraph-basierte Read-Deduplizierung auf einem Pool von
 		12 Reads. \textbf{Links:} Balkendiagramm Vorher/Nachher: von 12 Reads
 		verbleiben nach Deduplizierung nur die maximalen Elemente. \textbf{Rechts:}
-		Subgraph-Inklusionsbaum --- grÃ¼ne Knoten sind maximal (Kerngenom), rote
+		Subgraph-Inklusionsbaum --- grüne Knoten sind maximal (Kerngenom), rote
 		Knoten werden als redundant eliminiert.}
 	\label{fig:dedup}
 \end{figure}
 
-\subsection{Untere Schranke fÃ¼r metagenomische Deduplizierung}
+\subsection{Untere Schranke für metagenomische Deduplizierung}
 
 \begin{lemma}[Notwendigkeit paarweiser Vergleiche im Worst Case]
 	\label{lem:meta_lower}
 	Jeder korrekte Algorithmus zur Berechnung des maximalen Kerngenoms
-	$\mathcal{M}$ muss im Worst Case $\Omega(M^2)$ Subgraph-Tests durchfÃ¼hren.
+	$\mathcal{M}$ muss im Worst Case $\Omega(M^2)$ Subgraph-Tests durchführen.
 \end{lemma}
 
 \begin{proof}
 	Konstruiere eine Instanz, in der alle $M$ Reads paarweise inkomparabel
-	sind unter $\preceq_{\mathrm{rot}}$. Dies ist mÃ¶glich, indem man $M$
-	Reads wÃ¤hlt, deren Signaturen paarweise keine gemeinsame Teilsequenz der
-	LÃ¤nge $\geq 2$ besitzen (disjunkte Alphabete je Organismus). In diesem
+	sind unter $\preceq_{\mathrm{rot}}$. Dies ist möglich, indem man $M$
+	Reads wählt, deren Signaturen paarweise keine gemeinsame Teilsequenz der
+	Länge $\geq 2$ besitzen (disjunkte Alphabete je Organismus). In diesem
 	Fall ist $|\mathcal{M}| = M$, und jeder korrekte Algorithmus muss alle
-	$\binom{M}{2}$ Paare auf InkomparabilitÃ¤t prÃ¼fen --- da das Auslassen
-	eines Tests eine potenzielle Subgraph-Beziehung Ã¼bersehen wÃ¼rde.
+	$\binom{M}{2}$ Paare auf Inkomparabilität prüfen --- da das Auslassen
+	eines Tests eine potenzielle Subgraph-Beziehung übersehen würde.
 	Konstruiere analog zu Lemma~\ref{lem:rotationen} eine Gegeninstanz,
-	die genau im Ã¼bersprungenen Paar eine Subgraph-Beziehung aufweist:
+	die genau im übersprungenen Paar eine Subgraph-Beziehung aufweist:
 	\[
 	T_{\text{Dedup}}(M) \geq \Omega(M^2).
 	\]
 \end{proof}
 
-\begin{satz}[OptimalitÃ¤t der metagenomischen Deduplizierung bei maximaler Redundanz]
+\begin{satz}[Optimalität der metagenomischen Deduplizierung bei maximaler Redundanz]
 	\label{satz:meta_optimal}
 	Im optimalen Fall (maximale Redundanz $|\mathcal{M}| = O(1)$) hat der
 	Subgraph-Deduplizierungs-Algorithmus eine Laufzeit von $O(M \cdot n^3)$,
-	was fÃ¼r $M \gg n$ \textbf{linear} in $M$ ist.
+	was für $M \gg n$ \textbf{linear} in $M$ ist.
 \end{satz}
 
 \begin{proof}
-	Wenn $|\mathcal{M}| \leq C$ fÃ¼r eine Konstante $C$ (unabhÃ¤ngig von $M$),
+	Wenn $|\mathcal{M}| \leq C$ für eine Konstante $C$ (unabhängig von $M$),
 	dann gilt nach Satz~\ref{satz:dedup_laufzeit}:
 	\[
 	T_{\text{Dedup}} = O(M \cdot C \cdot n^3) = O(M \cdot n^3).
 	\]
-	Da $n$ fÃ¼r gegebene Sequenziertechnologie (z.\,B.\ Illumina: $n \leq 300$)
+	Da $n$ für gegebene Sequenziertechnologie (z.\,B.\ Illumina: $n \leq 300$)
 	konstant ist, ergibt sich eine Laufzeit von $O(M)$, also linear in der
-	Anzahl der Reads. Dies ist fÃ¼r ein Entscheidungsproblem Ã¼ber $M$ Reads
+	Anzahl der Reads. Dies ist für ein Entscheidungsproblem über $M$ Reads
 	optimal, da jeder Read mindestens einmal betrachtet werden muss:
 	\[
 	T_{\text{opt}} \geq \Omega(M).
@@ -1203,12 +1203,12 @@ ohne dass eine Referenzsequenz bekannt ist.
 
 \subsection{Taxonomische Klassifikation via LCS-Distanzmatrix}
 
-Ãœber die Deduplizierung hinaus erlaubt der Subgraph-DNA-Algorithmus eine
-taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
+Über die Deduplizierung hinaus erlaubt der Subgraph-DNA-Algorithmus eine
+taxonomische Klassifikation der Reads anhand paarweiser LCS-Ähnlichkeiten.
 
-\begin{definition}[LCS-Ã„hnlichkeitsdistanz]
-	Die normierte LCS-Ã„hnlichkeit zweier DNA-Graphen $G_{S_i}$ und
-	$G_{S_j}$ mit Read-LÃ¤ngen $n_i$ bzw.\ $n_j$ ist definiert als:
+\begin{definition}[LCS-Ähnlichkeitsdistanz]
+	Die normierte LCS-Ähnlichkeit zweier DNA-Graphen $G_{S_i}$ und
+	$G_{S_j}$ mit Read-Längen $n_i$ bzw.\ $n_j$ ist definiert als:
 	\[
 	d_{\mathrm{LCS}}(G_{S_i}, G_{S_j}) = 1 -
 	\frac{\max_{r} \mathrm{LCS}(\rho^{S_i},
@@ -1221,7 +1221,7 @@ taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
 \begin{lemma}[Metrikeigenschaften von $d_{\mathrm{LCS}}$]
 	\label{lem:metrik}
 	Die Funktion $d_{\mathrm{LCS}}$ ist eine Pseudometrik, d.\,h.\ sie
-	erfÃ¼llt:
+	erfüllt:
 	\begin{enumerate}
 		\item $d_{\mathrm{LCS}}(G, G) = 0$ (Selbstdistanz Null),
 		\item $d_{\mathrm{LCS}}(G_i, G_j) = d_{\mathrm{LCS}}(G_j, G_i)$
@@ -1234,8 +1234,8 @@ taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
 
 \begin{proof}
 	\textbf{(1) Selbstdistanz.}
-	$\mathrm{LCS}(\rho^S, \rho^S) = n$ (die Sequenz stimmt vollstÃ¤ndig
-	mit sich selbst Ã¼berein), also:
+	$\mathrm{LCS}(\rho^S, \rho^S) = n$ (die Sequenz stimmt vollständig
+	mit sich selbst überein), also:
 	\[
 	d_{\mathrm{LCS}}(G_S, G_S) = 1 - \frac{n}{n} = 0.
 	\]
@@ -1246,15 +1246,15 @@ taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
 	$\mathrm{LCS}(\rho^{S_i}, \mathrm{rotate}_r(\rho^{S_j})) = \ell$
 	impliziert auch das Existenz einer Rotation $r'$ mit
 	$\mathrm{LCS}(\rho^{S_j}, \mathrm{rotate}_{r'}(\rho^{S_i})) = \ell$
-	(wÃ¤hle $r' = n_i - r \bmod n_i$).
+	(wähle $r' = n_i - r \bmod n_i$).
 	
 	\textbf{(3) Dreiecksungleichung.}
 	Seien $\ell_{ij} = \max_r \mathrm{LCS}(\rho^{S_i}, \mathrm{rotate}_r(\rho^{S_j}))$
 	und analog $\ell_{jk}$, $\ell_{ik}$.
 	Nach der LCS-Dreiecksungleichung gilt:
 	$\ell_{ik} \geq \ell_{ij} + \ell_{jk} - n_j$
-	(Concatenation-Argument fÃ¼r gemeinsame Teilsequenzen).
-	Normiert auf $[0,1]$ folgt hieraus die Dreiecksungleichung fÃ¼r
+	(Concatenation-Argument für gemeinsame Teilsequenzen).
+	Normiert auf $[0,1]$ folgt hieraus die Dreiecksungleichung für
 	$d_{\mathrm{LCS}}$. 
 \end{proof}
 
@@ -1264,37 +1264,37 @@ taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
 	Organismen mit charakteristischen genomischen Signaturprofilen. Dann gilt:
 	Wenn die inter-Organismus-LCS-Distanz
 	$d_{\mathrm{inter}} = \min_{i \neq j} d_{\mathrm{LCS}}(G_i^{(O_a)}, G_j^{(O_b)})$
-	fÃ¼r $O_a \neq O_b$ grÃ¶ÃŸer ist als die intra-Organismus-Distanz
+	für $O_a \neq O_b$ größer ist als die intra-Organismus-Distanz
 	$d_{\mathrm{intra}} = \max_{a} \max_{i \neq j} d_{\mathrm{LCS}}(G_i^{(O_a)}, G_j^{(O_a)})$,
-	so kÃ¶nnen alle Reads korrekt ihrem Ursprungsorganismus zugeordnet werden
+	so können alle Reads korrekt ihrem Ursprungsorganismus zugeordnet werden
 	(taxonomische Separation).
 \end{satz}
 
 \begin{proof}
 	Die Bedingung $d_{\mathrm{inter}} > d_{\mathrm{intra}}$ garantiert,
 	dass die Klassen $\{G^{(O_a)}\}_{a=1}^K$ unter $d_{\mathrm{LCS}}$ trennbar sind:
-	FÃ¼r jeden Read $G_i$ gilt, dass sein nÃ¤chster Nachbar (unter $d_{\mathrm{LCS}}$)
+	Für jeden Read $G_i$ gilt, dass sein nächster Nachbar (unter $d_{\mathrm{LCS}}$)
 	aus demselben Organismus $O_{k(i)}$ stammt:
 	\[
 	\arg\min_{j \neq i} d_{\mathrm{LCS}}(G_i, G_j) \in
 	\{G^{(O_{k(i)})}\}.
 	\]
 	Dies folgt direkt aus $d_{\mathrm{inter}} > d_{\mathrm{intra}}$:
-	Jeder Read ist seinem eigenen Organismus Ã¤hnlicher als jedem Read
-	eines anderen Organismus. Damit liefert der nÃ¤chste-Nachbar-Klassifikator
+	Jeder Read ist seinem eigenen Organismus ähnlicher als jedem Read
+	eines anderen Organismus. Damit liefert der nächste-Nachbar-Klassifikator
 	auf Basis von $d_{\mathrm{LCS}}$ eine korrekte taxonomische Zuordnung. 
 \end{proof}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.95\textwidth]{figures/fig14_meta_komplex.pdf}
-	\caption{KomplexitÃ¤tsanalyse der metagenomischen Assemblierung.
+	\caption{Komplexitätsanalyse der metagenomischen Assemblierung.
 		\textbf{Links:} Laufzeit der Metagenom-Assemblierung als Funktion der
 		Read-Anzahl $M$ (doppelt-logarithmisch). Der Subgraph-Ansatz
-		($O(M \cdot n^3)$) Ã¼bertrifft den naiven paarweisen Vergleich
-		($O(M^2 \cdot n^2)$) fÃ¼r groÃŸe $M$ erheblich. \textbf{Rechts:}
+		($O(M \cdot n^3)$) übertrifft den naiven paarweisen Vergleich
+		($O(M^2 \cdot n^2)$) für große $M$ erheblich. \textbf{Rechts:}
 		Speicherbedarf als Funktion der Organismenanzahl $K$ --- Signatur-Arrays
-		benÃ¶tigen um Faktor $n = 150$ weniger Speicher als vollstÃ¤ndige
+		benötigen um Faktor $n = 150$ weniger Speicher als vollständige
 		Adjazenzmatrizen.}
 	\label{fig:meta_komplex}
 \end{figure}
@@ -1302,23 +1302,23 @@ taxonomische Klassifikation der Reads anhand paarweiser LCS-Ã„hnlichkeiten.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.95\textwidth]{figures/fig15_taxonomie.pdf}
-	\caption{Taxonomische Klassifikation via LCS-Ã„hnlichkeiten.
+	\caption{Taxonomische Klassifikation via LCS-Ähnlichkeiten.
 		\textbf{Links:} Taxonomischer Baum mit LCS-basierten Kantengewichten ---
-		hÃ¶here Ã„hnlichkeit entspricht breiteren Kanten. \textbf{Rechts:}
-		Paarweise LCS-Ã„hnlichkeitsmatrix fÃ¼r fÃ¼nf Modellorganismen; die
+		höhere Ähnlichkeit entspricht breiteren Kanten. \textbf{Rechts:}
+		Paarweise LCS-Ähnlichkeitsmatrix für fünf Modellorganismen; die
 		Blockstruktur (Prokaryoten vs.\ Eukaryoten) spiegelt biologische
 		Verwandtschaft wider.}
 	\label{fig:taxonomie}
 \end{figure}
 
-\subsection{VollstÃ¤ndiges Beispiel: Metagenomische Analyse einer Bodenprobe}
+\subsection{Vollständiges Beispiel: Metagenomische Analyse einer Bodenprobe}
 
 \begin{beispiel}[Metagenomische Bodenprobe]
 	Gegeben sei ein Pool $\mathcal{P}$ mit $M = 5$ Reads aus drei Organismen:
 	\begin{align*}
 		S_1 &= \text{ATGC}    & &\text{(Bakterium A, kurzes Motiv)} \\
 		S_2 &= \text{ATGCAT}  & &\text{(Bakterium A, erweitertes Motiv)} \\
-		S_3 &= \text{ATGCATGC}& &\text{(Bakterium A, vollstÃ¤ndiges Gen)} \\
+		S_3 &= \text{ATGCATGC}& &\text{(Bakterium A, vollständiges Gen)} \\
 		S_4 &= \text{GCTAGC}  & &\text{(Archaeon B)} \\
 		S_5 &= \text{TGCATG}  & &\text{(Virus C)}
 	\end{align*}
@@ -1455,7 +1455,7 @@ Dieses Kapitel beantwortet diese Fragen vollst\"{a}ndig formal.
     Dies betrifft h\"{o}chstens $n - 1$ weitere Spalten.
 
     Summiert \"{u}ber $e$ unabh\"{a}ngige Fehler (mit maximal $e^2$ Doppelz\"{a}hlungen
-    bei Fehlern auf komplementÃ¤ren Positionen) ergibt sich:
+    bei Fehlern auf komplementären Positionen) ergibt sich:
     \[
         f_{\max}(e, n) \leq 2e(n-1) \leq 2en.
     \]
@@ -1972,7 +1972,7 @@ Wir desarrollieren ein einheitliches Fehlerbudget-Modell.
               (vereinfachtes Beispiel).
         \item Rotationsschleife: Bei Rotation $r = 1$, Fenster $s = 0$
               lautet die Fensterfolge $\hat{\rho}' = [0, 4, 0, \mathbf{3}, 0, 4, 0, 2]$
-              (verÃ¤nderte Position fett).
+              (veränderte Position fett).
         \item LCS: $\mathrm{LCS}(\rho^A, \hat{\rho}') = 7 \geq \tau = 7$.
     \end{enumerate}
     Ergebnis: $G_A \subseteq_{0{,}15} G_{\hat{S}_B}$ --- korrekte Erkennung
@@ -2107,126 +2107,126 @@ Die zentralen Ergebnisse dieser Arbeit im \"{U}berblick:
 \subsection{Ausblick}
 \label{subsec:ausblick}
 
-Die in dieser Arbeit erzielten Ergebnisse erÃ¶ffnen ein breites Spektrum
-weiterfÃ¼hrender Forschungsrichtungen. Der folgende Ausblick gliedert sich
-nach thematischen Schwerpunkten und diskutiert fÃ¼r jede Richtung sowohl
+Die in dieser Arbeit erzielten Ergebnisse eröffnen ein breites Spektrum
+weiterführender Forschungsrichtungen. Der folgende Ausblick gliedert sich
+nach thematischen Schwerpunkten und diskutiert für jede Richtung sowohl
 die algorithmischen Herausforderungen als auch die erwarteten Verbesserungen.
 
 \subsubsection{Parallelisierung und Hardware-Beschleunigung}
 
 Die $n_B$ zyklischen Rotationsvergleiche in Phase~3 des Algorithmus sind
-\textit{vollstÃ¤ndig unabhÃ¤ngig voneinander} (Lemma~\ref{lem:unabhaengigkeit})
-und damit inhÃ¤rent parallelisierbar. Auf einem System mit $P$ Prozessoren
+\textit{vollständig unabhängig voneinander} (Lemma~\ref{lem:unabhaengigkeit})
+und damit inhärent parallelisierbar. Auf einem System mit $P$ Prozessoren
 oder GPU-Kernen reduziert sich die Laufzeit von $O(n^3)$ auf:
 \[
 T_{\text{parallel}}(n, P) = O\!\left(\frac{n^3}{P} + n^2\right),
 \]
 wobei $O(n^2)$ die unvermeidlichen Kommunikations- und Synchronisationskosten
-fÃ¼r die initiale Signaturberechnung und das finale Ergebnis-Aggregieren darstellen.
+für die initiale Signaturberechnung und das finale Ergebnis-Aggregieren darstellen.
 Bei $P = n$ Prozessoren ergibt sich $T = O(n^2)$, was der unteren Schranke aus
 Lemma~\ref{lem:eingabe} entspricht und damit die parallele Version bedingt optimal
 macht.
 
-FÃ¼r \textbf{FPGA-Implementierungen} (z.\,B.\ Xilinx Artix-7 oder Intel Stratix)
+Für \textbf{FPGA-Implementierungen} (z.\,B.\ Xilinx Artix-7 oder Intel Stratix)
 bietet die Signaturberechnung besonderes Potenzial: Die Berechnung
 $\sigma_j = \sum_{i} A_{ij} \cdot 2^i + j \cdot 2^n$ kann durch Bit-Shifting
-und Addierer-BÃ¤ume in $O(\log n)$ Taktzyklen realisiert werden --- im Vergleich
-zu $O(n)$ sequentiell. Eine vollstÃ¤ndige Hardware-Pipeline fÃ¼r
-Signaturberechnung + LCS kÃ¶nnte Throughputs von mehreren Gigabasenpaaren
-pro Sekunde erreichen, was fÃ¼r Echtzeit-NGS-Analyse relevant wÃ¤re.
+und Addierer-Bäume in $O(\log n)$ Taktzyklen realisiert werden --- im Vergleich
+zu $O(n)$ sequentiell. Eine vollständige Hardware-Pipeline für
+Signaturberechnung + LCS könnte Throughputs von mehreren Gigabasenpaaren
+pro Sekunde erreichen, was für Echtzeit-NGS-Analyse relevant wäre.
 
-FÃ¼r \textbf{GPU-Implementierungen} (CUDA/OpenCL) ist die LCS-Berechnung
+Für \textbf{GPU-Implementierungen} (CUDA/OpenCL) ist die LCS-Berechnung
 der dominante Engpass. Neuere GPU-basierte LCS-Algorithmen (z.\,B.\ Anti-Diagonal
-DP) erreichen auf NVIDIA H100 Beschleunigungen von bis zu $200\times$ gegenÃ¼ber
-CPU-Implementierungen, was die Gesamtlaufzeit auf unter $O(n^2 / 200)$ drÃ¼ckt.
+DP) erreichen auf NVIDIA H100 Beschleunigungen von bis zu $200\times$ gegenüber
+CPU-Implementierungen, was die Gesamtlaufzeit auf unter $O(n^2 / 200)$ drückt.
 
-\subsubsection{Gewichtete DNA-Graphen und BindungsstÃ¤rken}
+\subsubsection{Gewichtete DNA-Graphen und Bindungsstärken}
 
-Das aktuelle Modell behandelt alle Kanten als binÃ¤r (vorhanden/nicht vorhanden).
-Biologisch relevanter wÃ¤re die Einbeziehung von Kantengewichten, die
-physikalische BindungsstÃ¤rken reflektieren:
+Das aktuelle Modell behandelt alle Kanten als binär (vorhanden/nicht vorhanden).
+Biologisch relevanter wäre die Einbeziehung von Kantengewichten, die
+physikalische Bindungsstärken reflektieren:
 
 \begin{itemize}
 	\item Watson-Crick-Bindungen: $w(A \text{--} T) = 2$,
-	$w(G \text{--} C) = 3$ (WasserstoffbrÃ¼ckenanzahl)
-	\item Stacking-Energien: sequenzabhÃ¤ngige $\pi$-$\pi$-Wechselwirkungen
+	$w(G \text{--} C) = 3$ (Wasserstoffbrückenanzahl)
+	\item Stacking-Energien: sequenzabhängige $\pi$-$\pi$-Wechselwirkungen
 	zwischen benachbarten Basenpaaren
-	\item GC-Schmelztemperatur: $T_m \approx 2(n_{AT}) + 4(n_{GC})$ Â°C
+	\item GC-Schmelztemperatur: $T_m \approx 2(n_{AT}) + 4(n_{GC})$  °C
 \end{itemize}
 
-Der gewichtete Subgraph Algorithmus wÃ¼rde eine gewichtete Signatur-Funktion
+Der gewichtete Subgraph Algorithmus würde eine gewichtete Signatur-Funktion
 verwenden:
 \[
 \sigma_j^w = \sum_{i=0}^{n-1} A_{ij}^w \cdot w_{ij} \cdot 2^i + j \cdot 2^n,
 \]
 wobei $A_{ij}^w \in \mathbb{R}_{>0}$ das Kantengewicht bezeichnet.
-Die LCS-Berechnung mÃ¼sste auf eine \textit{gewichtete} LCS (WLCS) erweitert
-werden, was die KomplexitÃ¤t im Allgemeinen nicht erhÃ¶ht.
+Die LCS-Berechnung müsste auf eine \textit{gewichtete} LCS (WLCS) erweitert
+werden, was die Komplexität im Allgemeinen nicht erhöht.
 
-\subsubsection{RNA-Sequenzanalyse und SekundÃ¤rstrukturen}
+\subsubsection{RNA-Sequenzanalyse und Sekundärstrukturen}
 
 Die Erweiterung auf RNA-Sequenzen ($\Sigma_{RNA} = \{A, U, G, C\}$,
 wobei Uracil Thymin ersetzt) ist konzeptuell direkt. Biologisch interessanter
-ist jedoch die Modellierung von RNA-\textit{SekundÃ¤rstrukturen}: RNA-StrÃ¤nge
+ist jedoch die Modellierung von RNA-\textit{Sekundärstrukturen}: RNA-Stränge
 falten sich durch intra-molekulare Basenpaarung ($A$--$U$, $G$--$C$, $G$--$U$
 Wobble-Paare) zu charakteristischen Strukturen wie Haarnadelschleifen,
 Kissing-Loops und Pseudoknoten.
 
-Der RNA-SekundÃ¤rstruktur-Graph $G_{RNA} = (V, E_{\text{back}} \cup E_{\text{fold}})$
-enthÃ¤lt zusÃ¤tzlich zu den Backbone-Kanten die \textit{Faltungskanten}
+Der RNA-Sekundärstruktur-Graph $G_{RNA} = (V, E_{\text{back}} \cup E_{\text{fold}})$
+enthält zusätzlich zu den Backbone-Kanten die \textit{Faltungskanten}
 $E_{\text{fold}}$, die durch Algorithmen wie Nussinov oder RNAfold berechnet werden.
 Subgraph-Vergleiche auf $G_{RNA}$ erlauben die Erkennung konservierter
-Strukturmotive (z.\,B.\ ribosomale RNA-Strukturen) quer durch alle DomÃ¤nen des
+Strukturmotive (z.\,B.\ ribosomale RNA-Strukturen) quer durch alle Domänen des
 Lebens --- ein fundamentales Problem der vergleichenden RNA-Genomik.
 
 \subsubsection{Epigenetische Modellierung}
 
-Die Epigenetik beschreibt erbliche VerÃ¤nderungen der Genexpression, die
-\textit{nicht} auf SequenzverÃ¤nderungen beruhen, sondern auf chemischen
+Die Epigenetik beschreibt erbliche Veränderungen der Genexpression, die
+\textit{nicht} auf Sequenzveränderungen beruhen, sondern auf chemischen
 Modifikationen der DNA oder der Histone:
 \begin{itemize}
 	\item DNA-Methylierung: Addition einer Methylgruppe an Cytosin
 	($C \to {}^m C$), typischerweise in CpG-Kontexten
 	\item Histonmodifikationen: Acetylierung, Phosphorylierung, Ubiquitinylierung
-	\item Chromatin-ZugÃ¤nglichkeit: offenes vs.\ geschlossenes Chromatin (ATAC-Seq)
+	\item Chromatin-Zugänglichkeit: offenes vs.\ geschlossenes Chromatin (ATAC-Seq)
 \end{itemize}
 
 Der epigenetische DNA-Graph $G_{\text{epi}}$ erweitert $G_S$ um eine
 Methylierungsannotation auf den Knoten: $V_{\text{epi}} = V \times \{0, 1\}$,
 wobei $(v_i, 1)$ eine methylierte und $(v_i, 0)$ eine unmethylierte Base
-kodiert. Subgraph-Vergleiche auf $G_{\text{epi}}$ kÃ¶nnten epigenetische Muster
+kodiert. Subgraph-Vergleiche auf $G_{\text{epi}}$ könnten epigenetische Muster
 zwischen Gesunden und Erkrankten (z.\,B.\ Krebspatienten mit aberranter
 Methylierung) identifizieren.
 
-\subsubsection{Proteomik: AminosÃ¤ure-Graphen}
+\subsubsection{Proteomik: Aminosäure-Graphen}
 
-Die AminosÃ¤uresequenz von Proteinen ($|\Sigma_{\text{AA}}| = 20$) lÃ¤sst sich
-direkt analog zur DNA in Graphen Ã¼berfÃ¼hren. Proteine besitzen jedoch eine
+Die Aminosäuresequenz von Proteinen ($|\Sigma_{\text{AA}}| = 20$) lässt sich
+direkt analog zur DNA in Graphen überführen. Proteine besitzen jedoch eine
 dreidimensionale Struktur, die ihre Funktion bestimmt. Der
-\textit{Protein-Kontaktgraph} $G_{\text{protein}}$ verbindet AminosÃ¤uren,
-die im 3D-Raum nÃ¤her als $d_c = 8$ Ã… sind (unabhÃ¤ngig von ihrer sequenziellen
-Position). Subgraph-Vergleiche auf $G_{\text{protein}}$ kÃ¶nnten:
+\textit{Protein-Kontaktgraph} $G_{\text{protein}}$ verbindet Aminosäuren,
+die im 3D-Raum näher als $d_c = 8$ Ã… sind (unabhängig von ihrer sequenziellen
+Position). Subgraph-Vergleiche auf $G_{\text{protein}}$ könnten:
 \begin{itemize}
-	\item Strukturell konservierte ProteindomÃ¤nen erkennen
-	\item Funktionelle Ã„hnlichkeiten zwischen evolutionÃ¤r entfernten Proteinen
+	\item Strukturell konservierte Proteindomänen erkennen
+	\item Funktionelle Ähnlichkeiten zwischen evolutionär entfernten Proteinen
 	aufdecken (strukturelle Genomik)
 	\item Die Klassifikation von Proteinen in Familien und Superfamilien
 	(SCOP/CATH-Datenbanken) algorithmisch formalisieren
 \end{itemize}
 Dabei ist zu beachten, dass $|\Sigma_{\text{AA}}| = 20$ die
 Signatur-Berechnung in ihrer aktuellen Form modifiziert erfordert ---
-ein Basis-$20$-System statt binÃ¤rer Kodierung wÃ¤re effizienter.
+ein Basis-$20$-System statt binärer Kodierung wäre effizienter.
 
 \subsubsection{Approximationsalgorithmen und PTAS}
 
-FÃ¼r sehr groÃŸe Graphen ($n > 10^6$, z.\,B.\ vollstÃ¤ndige Chromosomen) ist
-selbst $O(n^3)$ praktisch nicht handhabbar. Zwei approximative AnsÃ¤tze
+Für sehr große Graphen ($n > 10^6$, z.\,B.\ vollständige Chromosomen) ist
+selbst $O(n^3)$ praktisch nicht handhabbar. Zwei approximative Ansätze
 bieten sich an:
 
 \textbf{$\varepsilon$-LCS-Approximation:} Statt des exakten LCS wird ein
-$(1-\varepsilon)$-Approximationsalgo\-rithmus verwendet. FÃ¼r $\varepsilon > 0$
+$(1-\varepsilon)$-Approximationsalgo\-rithmus verwendet. Für $\varepsilon > 0$
 existieren randomisierte LCS-Approximationen mit $O(n^{1+\varepsilon})$
-Laufzeit (Agarwal et al.\ 2018), was die GesamtkomplexitÃ¤t auf
+Laufzeit (Agarwal et al.\ 2018), was die Gesamtkomplexität auf
 $O(n^{2+\varepsilon})$ reduziert.
 
 \textbf{$k$-Subgraph-Cover:} Statt des exakten Subgraph-Tests wird ein
@@ -2234,25 +2234,25 @@ $O(n^{2+\varepsilon})$ reduziert.
 \[
 d_H(\rho^A, \rho^{B,r}) = |\{j : \rho_j^A \neq \rho_j^{B,r}\}| \leq k.
 \]
-Dies erlaubt die Erkennung Ã¤hnlicher (aber nicht identischer) Sequenzmotive,
-was fÃ¼r die Analyse hochmutagener Viren (HIV, Influenza) besonders relevant ist.
+Dies erlaubt die Erkennung ähnlicher (aber nicht identischer) Sequenzmotive,
+was für die Analyse hochmutagener Viren (HIV, Influenza) besonders relevant ist.
 
-\subsubsection{Quantenalgorithmen fÃ¼r die Rotationssuche}
+\subsubsection{Quantenalgorithmen für die Rotationssuche}
 
-Grover's Suchalgorithmus ermÃ¶glicht es, in einer ungeordneten Datenbank mit
-$N$ EintrÃ¤gen ein gesuchtes Element in $O(\sqrt{N})$ Schritten zu finden,
-im Vergleich zu $O(N)$ klassisch. FÃ¼r die Rotationssuche des Subgraph Algorithmus
+Grover's Suchalgorithmus ermöglicht es, in einer ungeordneten Datenbank mit
+$N$ Einträgen ein gesuchtes Element in $O(\sqrt{N})$ Schritten zu finden,
+im Vergleich zu $O(N)$ klassisch. Für die Rotationssuche des Subgraph Algorithmus
 bedeutet dies:
 
-Anstatt alle $n$ Rotationen sequenziell zu durchsuchen, kÃ¶nnte ein
-Quanten-Orakel fÃ¼r die Bedingung ``LCS $\geq 2$'' konstruiert werden, was die
-Rotationssuche von $O(n)$ auf $O(\sqrt{n})$ reduziert. Die GesamtkomplexitÃ¤t
-wÃ¼rde von $O(n^3)$ auf $O(n^{2.5})$ fallen --- unter der Voraussetzung, dass
+Anstatt alle $n$ Rotationen sequenziell zu durchsuchen, könnte ein
+Quanten-Orakel für die Bedingung ``LCS $\geq 2$'' konstruiert werden, was die
+Rotationssuche von $O(n)$ auf $O(\sqrt{n})$ reduziert. Die Gesamtkomplexität
+würde von $O(n^3)$ auf $O(n^{2.5})$ fallen --- unter der Voraussetzung, dass
 der LCS-Orakel-Aufruf in $O(n^2)$ realisierbar ist (Standard-DP).
 
 Quantencomputer mit ausreichender Qubit-Anzahl (IBM Heron, Google Willow)
-sind noch nicht in der Lage, praktische Genomprobleme zu lÃ¶sen, aber fÃ¼r
-$n \leq 100$ Basen kÃ¶nnte eine Proof-of-Concept-Implementierung bereits heute
+sind noch nicht in der Lage, praktische Genomprobleme zu lösen, aber für
+$n \leq 100$ Basen könnte eine Proof-of-Concept-Implementierung bereits heute
 realisiert werden.
 
 \subsubsection{Fehlertoleranz: Weiterf\"{u}hrende Untersuchungen}
@@ -2291,43 +2291,43 @@ Werkzeuge integriert werden:
 	\item \textbf{KRAKEN2} (Taxonomische Klassifikation): LCS-Distanzmatrix
 	als alternatives $k$-mer-basiertes Klassifikationsverfahren
 	\item \textbf{GATK} (Variant Calling): Subgraph-Differenz zur
-	prÃ¤zisen SNP- und Indel-Lokalisa\-tion
+	präzisen SNP- und Indel-Lokalisa\-tion
 \end{itemize}
 
 \subsubsection{Erweiterung auf nicht-kanonische Nukleobasen}
 
 In der Epigenetik treten modifizierte Nukleobasen auf:
 5-Methylcytosin (${}^m C$), 5-Hydroxy\-methylcytosin (${}^{hm}C$),
-6-Methyladenin (${}^m A$) sowie kÃ¼nstliche XNA-Basen (Hachimoji-DNA, 8 Basen).
-Das DNA-Alphabet mÃ¼sste entsprechend erweitert werden:
+6-Methyladenin (${}^m A$) sowie künstliche XNA-Basen (Hachimoji-DNA, 8 Basen).
+Das DNA-Alphabet müsste entsprechend erweitert werden:
 \[
 \Sigma_{\text{ext}} \supseteq \{A, T, G, C, {}^mC, {}^{hm}C, {}^mA\},
 \]
-was die KomplementaritÃ¤tsrelation und die Signaturberechnung anpasst,
-die algorithmische Struktur des Subgraph Algorithmus jedoch fundamental unverÃ¤ndert lÃ¤sst.
+was die Komplementaritätsrelation und die Signaturberechnung anpasst,
+die algorithmische Struktur des Subgraph Algorithmus jedoch fundamental unverändert lässt.
 
-\subsubsection{Phylogenetische Netzwerke und evolutionÃ¤re Distanzen}
+\subsubsection{Phylogenetische Netzwerke und evolutionäre Distanzen}
 
-Phylogenetische BÃ¤ume modellieren die Evolution als streng dichotomen Baum.
+Phylogenetische Bäume modellieren die Evolution als streng dichotomen Baum.
 Biologisch realistischer sind jedoch \textit{Phylogenetische Netzwerke},
 die auch horizontalen Gentransfer, Hybridisierung und Rekombination modellieren.
 
 Die LCS-Distanzmatrix $D$ mit $D_{ij} = d_{\mathrm{LCS}}(G_{S_i}, G_{S_j})$
-kann direkt als Eingabe fÃ¼r klassische phylogenetische Baumkonstruktionsverfahren
-(UPGMA, Neighbor-Joining) dienen. Die so erzeugten BÃ¤ume wÃ¤ren
+kann direkt als Eingabe für klassische phylogenetische Baumkonstruktionsverfahren
+(UPGMA, Neighbor-Joining) dienen. Die so erzeugten Bäume wären
 \textit{komplett formal aus dem Subgraph Algorithmus ableitbar}, was eine
-durchgehend mathematisch rigoros fundierte Phylogenie ermÃ¶glicht.
+durchgehend mathematisch rigoros fundierte Phylogenie ermöglicht.
 
 \subsubsection{Anwendung auf nicht-DNA-Sequenzen}
 
-Ãœber die Biologie hinaus ist der Subgraph Algorithmus auf jede
+Über die Biologie hinaus ist der Subgraph Algorithmus auf jede
 sequenzielle Datenstruktur anwendbar, die als Graph modellierbar ist:
 \begin{itemize}
 	\item \textbf{Spracherkennung:} Phonem-Sequenzen als Graph,
-	Dialekterkennung durch Subgraph-Ã„hnlichkeit
+	Dialekterkennung durch Subgraph-Ähnlichkeit
 	\item \textbf{Zeitreihenanalyse:} Diskretisierte Zeitreihen
-	(SAX-ReprÃ¤sentation) als Knoten, ÃœbergÃ¤nge als Kanten
-	\item \textbf{Code-Plagiatserkennung:} AST-Graphen (ursprÃ¼ngliche
+	(SAX-Repräsentation) als Knoten, Übergänge als Kanten
+	\item \textbf{Code-Plagiatserkennung:} AST-Graphen (ursprüngliche
 	Motivation in~\cite{epp2026}) mit metagenomisch-analoger
 	Multi-Repository-Deduplizierung
 	\item \textbf{Proteomische Massenspektrometrie:} MS/MS-Fragmentspektren
@@ -2338,22 +2338,22 @@ sequenzielle Datenstruktur anwendbar, die als Graph modellierbar ist:
 	\centering
 	\includegraphics[width=0.95\textwidth]{figures/fig16_roadmap.pdf}
 	\caption{Roadmap der Forschungsrichtungen des Subgraph-DNA-Algorithmus.
-		Im Zentrum steht der Kernalgorithmus; die zwÃ¶lf umgebenden Knoten
-		reprÃ¤sentieren konkrete Erweiterungsrichtungen, farblich nach Themengebiet
-		gruppiert (blau = Algorithmus, grÃ¼n = Biologie, rot = Anwendungen,
-		lila = Hardware, tÃ¼rkis = benachbarte Disziplinen).}
+		Im Zentrum steht der Kernalgorithmus; die zwölf umgebenden Knoten
+		repräsentieren konkrete Erweiterungsrichtungen, farblich nach Themengebiet
+		gruppiert (blau = Algorithmus, grün = Biologie, rot = Anwendungen,
+		lila = Hardware, türkis = benachbarte Disziplinen).}
 	\label{fig:roadmap}
 \end{figure}
 
 \subsection{Implementierungshinweis}
 
-Der Code des Subgraph Algorithmus ist verfÃ¼gbar unter:
+Der Code des Subgraph Algorithmus ist verfügbar unter:
 \url{https://github.com/hjstephan86/science}.
 
 \begin{thebibliography}{9}
     \bibitem{epp2026}
     Stephan Epp.
-    \textit{Der Subgraph Algorithmus}. 2026. VerfÃ¼gbar auf
+    \textit{Der Subgraph Algorithmus}. 2026. Verfügbar auf
     \url{https://github.com/hjstephan86/science}
 
     \bibitem{watson1953}
@@ -2561,7 +2561,7 @@ Der Code des Subgraph Algorithmus ist verfÃ¼gbar unter:
     \textit{Bull. Math. Biol.}, 46(4):473--501, 1984.
 
     \bibitem{krogh1994}
-    A. Krogh, M. Brown, I. S. Mian, K. SjÃ¶lander und D. Haussler.
+    A. Krogh, M. Brown, I. S. Mian, K. Sjölander und D. Haussler.
     Hidden Markov models in computational biology: applications to protein modeling.
     \textit{J. Mol. Biol.}, 235(5):1501--1531, 1994.
 

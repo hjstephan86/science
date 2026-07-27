@@ -123,9 +123,9 @@
   showstringspaces=false,
   tabsize=4,
   captionpos=b,
-  literate={Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1 {Ã¼}{{\"u}}1
-    {Ã„}{{\"A}}1 {Ã–}{{\"O}}1 {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {ß}{{\ss}}1
 }
 
 %-----------------------------------------------------------------------
@@ -172,12 +172,12 @@
 % Titelseite
 %=======================================================================
 \title{%
-  \textbf{IoFET-Roboterarchitektur fÃ¼r industrielle Produktion}\\[0.6em]
+  \textbf{IoFET-Roboterarchitektur für industrielle Produktion}\\[0.6em]
   \large Maximale Wiederverwendbarkeit und Energieeffizienz durch\\
   FPGA/Mikrocontroller-Hybridarchitektur mit Ionischem Feldeffekt}
 
 \author{Stephan Epp}
-\date{2. MÃ¤rz 2026}
+\date{2. März 2026}
 
 \begin{document}
 
@@ -189,34 +189,34 @@
 \section{Einleitung und Motivation}
 %=======================================================================
 
-\subsection{Ausgangslage: Zwei komplementÃ¤re TechnologiebeitrÃ¤ge}
+\subsection{Ausgangslage: Zwei komplementäre Technologiebeiträge}
 
-Die vorliegende Arbeit synthetisiert zwei eigenstÃ¤ndige ForschungsstrÃ¤nge
-zu einer integrierten Roboterarchitektur fÃ¼r die industrielle Produktion.
+Die vorliegende Arbeit synthetisiert zwei eigenständige Forschungsstränge
+zu einer integrierten Roboterarchitektur für die industrielle Produktion.
 Der erste Strang -- das \textbf{Ionotronic Reconfigurable Fabric} (IRF)
-aus der Arbeit \emph{Ionotronisches FlÃ¼ssigkeits-Rechnen} -- liefert das
+aus der Arbeit \emph{Ionotronisches Flüssigkeits-Rechnen} -- liefert das
 Prinzip des Ionischen Feldeffekttransistors (\textbf{IoFET}): ein
 wasserbasiertes, dynamisch rekonfigurierbares Berechnungsmedium, das
 Leitung, Schaltung und Speicherung simultÃ¡n in einem ionisch dotierten
-FlÃ¼ssigkeitsvolumen vereint. Der zweite Strang -- \emph{ElastizitÃ¤t
-hydraulischer Ã–le und FlÃ¼ssigkeiten im industriellen Maschinenbau} --
+Flüssigkeitsvolumen vereint. Der zweite Strang -- \emph{Elastizität
+hydraulischer Öle und Flüssigkeiten im industriellen Maschinenbau} --
 behandelt die viskoelastischen Eigenschaften hydraulischer Medien,
-ihre Optimierung und ihren systemischen Einfluss auf PrÃ¤zision,
+ihre Optimierung und ihren systemischen Einfluss auf Präzision,
 Energieeffizienz und Lebensdauer mechanischer Robotergelenke.
 
-Die Kombination beider AnsÃ¤tze erÃ¶ffnet eine neuartige Systemarchitektur:
+Die Kombination beider Ansätze eröffnet eine neuartige Systemarchitektur:
 \begin{itemize}
   \item Die \textbf{Signalverarbeitung} basiert auf einem FPGA,
         dessen Rekonfiguration durch IoFET-Elemente mit extrem geringem
         Energiebedarf erfolgt.
-  \item Die \textbf{Steuerlogik} lÃ¤uft auf einem energieeffizienten
-        Mikrocontroller (MCU), der Ã¼ber ein definiertes Protokoll mit
+  \item Die \textbf{Steuerlogik} läuft auf einem energieeffizienten
+        Mikrocontroller (MCU), der über ein definiertes Protokoll mit
         dem FPGA kommuniziert.
   \item Die \textbf{Aktorik} nutzt optimierte Hydraulikfluide nach den
-        Erkenntnissen der ElastizitÃ¤tsarbeit, womit PositionsprÃ¤zision
-        und EnergierÃ¼ckgewinnung maximal werden.
+        Erkenntnissen der Elastizitätsarbeit, womit Positionspräzision
+        und Energierückgewinnung maximal werden.
   \item Die gesamte Plattform ist durch software- und hardwareseitige
-        Konfigurierbarkeit maximal \textbf{wiederverwendbar} fÃ¼r
+        Konfigurierbarkeit maximal \textbf{wiederverwendbar} für
         unterschiedliche Produktionsaufgaben.
 \end{itemize}
 
@@ -225,55 +225,55 @@ Die Kombination beider AnsÃ¤tze erÃ¶ffnet eine neuartige Systemarchitektur:
 Diese Arbeit verfolgt drei gleichrangige Kernziele:
 
 \paragraph{Ziel~1 -- Maximale Wiederverwendbarkeit.}
-Der Roboter soll ohne Hardwarewechsel fÃ¼r verschiedene Produktionszellen
+Der Roboter soll ohne Hardwarewechsel für verschiedene Produktionszellen
 der Automobilindustrie einsetzbar sein: Karosseriebau, Lackierlinie,
-Antriebsmontage, QualitÃ¤tsprÃ¼fung und Logistik. Dies erfordert eine
+Antriebsmontage, Qualitätsprüfung und Logistik. Dies erfordert eine
 modulare Architektur mit standardisierten mechanischen, elektrischen und
-digitalen Schnittstellen sowie eine vollstÃ¤ndig softwarekonfigurierbare
+digitalen Schnittstellen sowie eine vollständig softwarekonfigurierbare
 Steuerhardware.
 
 \paragraph{Ziel~2 -- Maximale Energieeffizienz.}
 Der Leerlaufverbrauch moderner Industrieroboter liegt typisch bei
 \SIrange{0.5}{3}{\kilo\watt}. Durch IoFET-basierte Rekonfiguration
-des FPGA, hibernationsfÃ¤hige MCU-ZustÃ¤nde und hydraulische
-EnergierÃ¼ckgewinnung soll dieser Wert auf unter \SI{150}{\watt}
+des FPGA, hibernationsfähige MCU-Zustände und hydraulische
+Energierückgewinnung soll dieser Wert auf unter \SI{150}{\watt}
 gesenkt werden.
 
 \paragraph{Ziel~3 -- Industrie-4.0-Tauglichkeit.}
 Der Roboter soll nahtlos in cyber-physische Produktionssysteme
 integrierbar sein: OPC-UA-Kommunikation, Edge-Computing,
-Predictive-Maintenance-FÃ¤higkeit und KI-gestÃ¼tzte
+Predictive-Maintenance-Fähigkeit und KI-gestützte
 Produktionsoptimierung.
 
 \subsection{Aufbau der Arbeit}
 
 Abschnitt~2 legt die Systemarchitektur aus Vogelperspektive dar und
-fÃ¼hrt alle Subsysteme ein. Abschnitt~3 beschreibt die IoFET-FPGA-Einheit inklusive
+führt alle Subsysteme ein. Abschnitt~3 beschreibt die IoFET-FPGA-Einheit inklusive
 Rekonfigurationsprotokoll, Timing-Analyse und zwei VHDL-Listings
 (\texttt{iofet\_reconfig\_ctrl.vhd}, \texttt{pid\_impedance\_ctrl.vhd}).
 Abschnitt~4 behandelt die MCU-Ebene mit Dual-Core-Aufga\-benverteilung,
 Power-State-Machine und zwei C-Listings (\texttt{power\_state\_machine.c}, 
 \texttt{joint\_\newline controller.c}). Abschnitt~5 analysiert das
 hyd\-rau\-lisch-me\-cha\-ni\-sche Teilsystem und leitet -- auf Basis der
-ElastizitÃ¤tsarbeit von Stephan Epp \cite{hydr2026} -- formal und
-mathematisch bewiesen einen LebensdauerverlÃ¤ngerungsfaktor von 3{,}1--3{,}4
-fÃ¼r die Gelenkkomponenten her; das C-Listing \texttt{epp\_hydraulic.c}
-implementiert das Tait-Modell, Euler-Druckintegrator und StabilitÃ¤tsprÃ¼fung.
+Elastizitätsarbeit von Stephan Epp \cite{hydr2026} -- formal und
+mathematisch bewiesen einen Lebensdauerverlängerungsfaktor von 3{,}1--3{,}4
+für die Gelenkkomponenten her; das C-Listing \texttt{epp\_hydraulic.c}
+implementiert das Tait-Modell, Euler-Druckintegrator und Stabilitätsprüfung.
 Abschnitt~6 widmet sich der
 EnergieArchitektur mit Leistungsprofilen und hydraulischer Rekuperation.
 Abschnitt~7 beschreibt die Kommunikations- und Feldbus-Integration nach
-RAMI~4.0. Abschnitt~8 entwickelt das Konfigurationsmanagement fÃ¼r
-maximale Wiederverwendbarkeit. Abschnitt~9 analysiert fÃ¼nf konkrete
-Anwendungsszenarien in der Automobilindustrie. Abschnitt~10 prÃ¤sentiert
+RAMI~4.0. Abschnitt~8 entwickelt das Konfigurationsmanagement für
+maximale Wiederverwendbarkeit. Abschnitt~9 analysiert fünf konkrete
+Anwendungsszenarien in der Automobilindustrie. Abschnitt~10 präsentiert
 eine quantitative Leistungsbewertung im Systemvergleich. Abschnitt~11
 beschreibt die Sicherheitsarchitektur nach SIL~2/PLe inklusive VHDL-Listing
 \texttt{safety\_monitor.vhd} (dualkanaliger 1-aus-2-Vergleicher). Abschnitt~12
-entwickelt einen sehr umfassenden Ausblick Ã¼ber technologische
+entwickelt einen sehr umfassenden Ausblick über technologische
 Weiterentwicklungen, neue Anwendungsgebiete, gesellschaftliche Implikationen
 und offene Forschungsfragen. Abschnitt~13 fasst die Ergebnisse zusammen.
 
 %=======================================================================
-\section{Systemarchitektur: Ãœberblick}
+\section{Systemarchitektur: Überblick}
 %=======================================================================
 
 \subsection{Hierarchisches Architekturmodell}
@@ -282,8 +282,8 @@ Die vorgeschlagene Roboterarchitektur folgt einem dreistufigen
 hierarchischen Modell: \textbf{Feldebene} (Sensorik/Aktorik),
 \textbf{Steuerebene} (MCU + IoFET-FPGA) und \textbf{Planungsebene}
 (Edge-Server / Cloud). Diese Hierarchie ist ein bewusstes Designprinzip,
-das EchtzeitfÃ¤higkeit auf der untersten Ebene von den
-rechenintensiveren Aufgaben auf hÃ¶heren Ebenen entkoppelt.
+das Echtzeitfähigkeit auf der untersten Ebene von den
+rechenintensiveren Aufgaben auf höheren Ebenen entkoppelt.
 
 \begin{figure}[H]
 \centering
@@ -312,7 +312,7 @@ rechenintensiveren Aufgaben auf hÃ¶heren Ebenen entkoppelt.
 \node[layer, fill=hydraulicgray!70, text=white, below=0.5cm of ctrl]
   (field) {\textbf{Feldebene (L1)}\\
   \footnotesize Gelenk-Servos, hydraulische Aktoren, Kraft-/Drehmomentsensoren,
-  Bildverarbeitungsmodul, IoFET-PrÃ¤zisionsmessung, End-Effektor};
+  Bildverarbeitungsmodul, IoFET-Präzisionsmessung, End-Effektor};
 
 % Verbindungspfeile
 \draw[-stealth, iofetblue!60, line width=1.5pt]
@@ -345,8 +345,8 @@ rechenintensiveren Aufgaben auf hÃ¶heren Ebenen entkoppelt.
 
 Das folgende Diagramm zeigt alle Hauptkomponenten und ihre Verbindungen.
 Die zentrale Innovationsachse ist die bidirektionale Kopplung zwischen
-MCU und IoFET-FPGA: WÃ¤hrend die MCU die hochrangige Steuerlogik ausfÃ¼hrt,
-Ã¼bernimmt der FPGA zeitkritische Aufgaben wie Strom-/Lageregelung,
+MCU und IoFET-FPGA: Während die MCU die hochrangige Steuerlogik ausführt,
+übernimmt der FPGA zeitkritische Aufgaben wie Strom-/Lageregelung,
 Encoder-Dekodierung und Echtzeitfilterung. Die IoFET-Schicht erlaubt es,
 diese FPGA-Funktionen \emph{zur Laufzeit} ohne Neuprogrammierung
 umzukonfigurieren.
@@ -442,16 +442,16 @@ identische Schnittstellenspezifikationen haben:
 
 \begin{itemize}
   \item \textbf{Mechanisch:} ISO-9283-kompatibles Flanschprofil,
-        M12-Steckverbinder fÃ¼r Encoder und Kraft-Sensor.
+        M12-Steckverbinder für Encoder und Kraft-Sensor.
   \item \textbf{Hydraulisch:} Doppelrohr-Schnellkupplung (DN6,
         \SI{350}{\bar} Nenndruck), kompatibel mit HLP~46 und
-        EsterÃ¶l~46.
+        Esteröl~46.
   \item \textbf{Elektrisch:} 48-V-DC-Bus, CAN-FD-Node mit
         12-Bit-Adresse.
-  \item \textbf{Digital:} IoFET-SPI-Slave-Interface fÃ¼r FPGA-Overlay.
+  \item \textbf{Digital:} IoFET-SPI-Slave-Interface für FPGA-Overlay.
 \end{itemize}
 
-Diese ModularitÃ¤t erlaubt den Austausch einzelner Gelenke oder die
+Diese Modularität erlaubt den Austausch einzelner Gelenke oder die
 Erweiterung auf 7-Achsen-Konfigurationen ohne Systemrekonfiguration.
 
 %=======================================================================
@@ -462,7 +462,7 @@ Erweiterung auf 7-Achsen-Konfigurationen ohne Systemrekonfiguration.
 
 Der \textbf{Ionische Feldeffekttransistor (IoFET)} nutzt ein ionisch
 dotiertes Wasservolumen als aktives Schaltmedium. Eine angelegte
-Gatespannung $V_G$ moduliert die Konzentration der LadungstrÃ¤ger
+Gatespannung $V_G$ moduliert die Konzentration der Ladungsträger
 (Ionen) in einem Nanokanal, was den ionischen Drain-Source-Strom $I_{DS}$
 in direkter Analogie zum MOSFET steuert:
 
@@ -471,18 +471,18 @@ in direkter Analogie zum MOSFET steuert:
   \frac{W}{L} \cdot (V_G - V_T) \cdot V_{DS}
 \end{equation}
 
-Dabei ist $\mu_{\text{ion}}$ die ionische MobilitÃ¤t (\SI{e-8}{\meter\squared\per\volt\per\second}
-fÃ¼r KCl-LÃ¶sung), $C_{\text{EDL}}$ die KapazitÃ¤t der elektrischen
+Dabei ist $\mu_{\text{ion}}$ die ionische Mobilität (\SI{e-8}{\meter\squared\per\volt\per\second}
+für KCl-Lösung), $C_{\text{EDL}}$ die Kapazität der elektrischen
 Doppelschicht (\SI{10}{\micro\farad\per\centi\meter\squared}),
-$W/L$ das AspektverhÃ¤ltnis des Nanokanals und $V_T$ die Schwellspannung.
+$W/L$ das Aspektverhältnis des Nanokanals und $V_T$ die Schwellspannung.
 
 \begin{infobox}
-\textbf{SchlÃ¼sseleigenschaft fÃ¼r Robotersteuerung:}
-IoFET-Elemente kÃ¶nnen als \emph{rekonfigurierbare Verbindungen}
+\textbf{Schlüsseleigenschaft für Robotersteuerung:}
+IoFET-Elemente können als \emph{rekonfigurierbare Verbindungen}
 im FPGA-Routing-Fabric eingesetzt werden. Da die Schaltoperation
 keine ladungsbasierte Dissipation im klassischen CMOS-Sinne erzeugt,
-sondern OberflÃ¤chenspannungsenergie verformt, ist der Energiebedarf
-fÃ¼r eine Rekonfigurationsoperation typisch vier GrÃ¶ÃŸenordnungen
+sondern Oberflächenspannungsenergie verformt, ist der Energiebedarf
+für eine Rekonfigurationsoperation typisch vier Größenordnungen
 kleiner als bei Flash-basierten FPGAs.
 \end{infobox}
 
@@ -491,7 +491,7 @@ kleiner als bei Flash-basierten FPGAs.
 Auf dem physischen FPGA (Xilinx Zynq-7045) wird ein
 \textbf{IoFET-Overlay} als softcore Abstraktionsschicht implementiert.
 Dieses Overlay virtualisiert die Routing-Ressourcen und erlaubt die
-dynamische Zuteilung von FunktionsblÃ¶cken:
+dynamische Zuteilung von Funktionsblöcken:
 
 \begin{figure}[H]
 \centering
@@ -525,7 +525,7 @@ dynamische Zuteilung von FunktionsblÃ¶cken:
     {Routing Mux};
 }
 
-% FunktionsblÃ¶cke (Mitte)
+% Funktionsblöcke (Mitte)
 \node[block, fill=mcured!20, draw=mcured, minimum width=2.5cm,
       minimum height=1.2cm] at (6, 7)
   {\textbf{Trajektorie-Interpolation} 32-Bit Float};
@@ -540,7 +540,7 @@ dynamische Zuteilung von FunktionsblÃ¶cken:
 
 \node[block, fill=hydraulicgray!20, draw=hydraulicgray,
       minimum width=2.5cm, minimum height=1.2cm] at (6, 1.6)
-  {\textbf{PWM-Generierung}\\6 KanÃ¤le\\12-Bit};
+  {\textbf{PWM-Generierung}\\6 Kanäle\\12-Bit};
 
 \node[block, fill=energyyellow!30, draw=energyyellow!80,
       minimum width=2.5cm, minimum height=0.9cm] at (6, 0.3)
@@ -577,7 +577,7 @@ dynamische Zuteilung von FunktionsblÃ¶cken:
       minimum height=0.8cm] at (10.25, 0.3)
   {\textbf{PM-Scheduler}\\Sleep/Wake};
 
-% Verbindungen Fabric -> BlÃ¶cke
+% Verbindungen Fabric -> Blöcke
 \foreach \y in {7, 5.2, 3.4, 1.6, 0.3} {
   \draw[-stealth, iofetblue!60, line width=0.8pt]
     (3, \y) -- (4.8, \y);
@@ -585,7 +585,7 @@ dynamische Zuteilung von FunktionsblÃ¶cken:
 
 \end{tikzpicture}
 \caption{Interne Struktur des IoFET-FPGA mit Rekonfigurations-Fabric,
-  FunktionsblÃ¶cken und ARM-Processing-System (PS).}
+  Funktionsblöcken und ARM-Processing-System (PS).}
 \label{fig:fpga_intern}
 \end{figure}
 
@@ -602,25 +602,25 @@ dreiphasigen Protokoll:
   \State $\quad$ Aktuelle Regelaufgabe pausieren (Handover an Backup-Pfad)
   \State $\quad$ Puffere letzten Zustand: $x_0 \leftarrow$ GetState(block\_id)
   \State \textbf{Phase~2 -- Ionic Reconfiguration:}
-  \State $\quad$ Setze Gate-Spannung $V_G^{(k)}$ fÃ¼r IoFET-Zelle $k$ gemÃ¤ÃŸ \textit{config}
+  \State $\quad$ Setze Gate-Spannung $V_G^{(k)}$ für IoFET-Zelle $k$ gemäß \textit{config}
   \State $\quad$ Warte auf Gleichgewicht der Ionenkonzentration ($t_{\text{settle}} \approx \SI{50}{\nano\second}$)
-  \State $\quad$ Verifiziere neue Routing-KonnektivitÃ¤t via Loopback-Test
+  \State $\quad$ Verifiziere neue Routing-Konnektivität via Loopback-Test
   \State \textbf{Phase~3 -- Restore:}
   \State $\quad$ Initialisiere neuen Block mit $x_0$ (warm start)
-  \State $\quad$ Ãœbergabe von Backup-Pfad zurÃ¼ck
+  \State $\quad$ Übergabe von Backup-Pfad zurück
   \State $\quad$ Setze \textit{config\_done}-Flag
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-Die Rekonfigurationszeit betrÃ¤gt typisch \SI{120}{\nano\second} --
+Die Rekonfigurationszeit beträgt typisch \SI{120}{\nano\second} --
 verglichen mit \SI{50}{\milli\second} bei Flash-basierten FPGAs
 (Xilinx Spartan-7) und \SI{28}{\milli\second} bei SRAM-FPGAs.
 
 \subsection{VHDL-Implementierung: IoFET-Rekonfigurationssteuerung}
 
 Der folgende VHDL-Code realisiert den dreiphasigen Rekonfigurationsautomaten
-(Algorithmus~1, Abschnitt~3.3) als synthetisierbare FSM fÃ¼r den
+(Algorithmus~1, Abschnitt~3.3) als synthetisierbare FSM für den
 Xilinx Zynq-7045. Die \texttt{G\_SETTLE\_NS}-Konstante setzt die
 ionenkinetische Gleichgewichtszeit ($t_{\text{settle}} = \SI{50}{\nano\second}$)
 direkt als Syntheseparameter.
@@ -737,14 +737,14 @@ begin
 end architecture rtl;
 \end{lstlisting}
 
-\subsection{FPGA-FunktionsblÃ¶cke im Robotikkontext}
+\subsection{FPGA-Funktionsblöcke im Robotikkontext}
 
-Tabelle~\ref{tab:fpga_blocks} listet alle FPGA-BlÃ¶cke und ihre
+Tabelle~\ref{tab:fpga_blocks} listet alle FPGA-Blöcke und ihre
 robotikspezifischen Konfigurationsvarianten auf:
 
 \begin{table}[H]
 \centering
-\caption{IoFET-FPGA-FunktionsblÃ¶cke und Konfigurationsvarianten.}
+\caption{IoFET-FPGA-Funktionsblöcke und Konfigurationsvarianten.}
 \label{tab:fpga_blocks}
 \small
 \begin{tabularx}{\linewidth}{|l|l|X|r|}
@@ -933,10 +933,10 @@ zwischen den Kernen optimiert Energieverbrauch und Determinismus:
 \label{fig:mcu_tasks}
 \end{figure}
 
-\subsection{Energiesparende Hibernation-ZustÃ¤nde}
+\subsection{Energiesparende Hibernation-Zustände}
 
 Ein wesentliches Designziel ist die \textbf{aggressive Nutzung von
-SchlafzustÃ¤nden}. Die MCU implementiert vier Leistungsstufen gemÃ¤ÃŸ
+Schlafzuständen}. Die MCU implementiert vier Leistungsstufen gemäß
 einem IoFET-gesteuerten Power-State-Machine:
 
 \begin{figure}[H]
@@ -958,7 +958,7 @@ einem IoFET-gesteuerten Power-State-Machine:
       below=2.5cm of idle]
   (stop) {\textbf{STOP}\\off\\0.5 mW};
 
-% ÃœbergÃ¤nge
+% Übergänge
 \draw[arr, mcured!60]
   (run) to[bend left=20] node[above, font=\tiny] {Leerlauf $>$5s} (idle);
 \draw[arr, autoorange!60]
@@ -982,22 +982,22 @@ einem IoFET-gesteuerten Power-State-Machine:
 \subsection{FreeRTOS-Schedulingmodell}
 
 Das Echtzeitbetriebssystem \textbf{FreeRTOS} wird mit einem
-prioritÃ¤tsbasierten prÃ¤emptiven Scheduling-Modell konfiguriert.
+prioritätsbasierten präemptiven Scheduling-Modell konfiguriert.
 Entscheidend ist, dass der IoFET-Rekonfigurationsauftrag eine
-\emph{mittlere} PrioritÃ¤t erhÃ¤lt, um weder die Regelschleifen
-zu stÃ¶ren noch zu verhungern:
+\emph{mittlere} Priorität erhält, um weder die Regelschleifen
+zu stören noch zu verhungern:
 
 \begin{table}[H]
 \centering
-\caption{FreeRTOS-Task-PrioritÃ¤ten und Zykluszeiten.}
+\caption{FreeRTOS-Task-Prioritäten und Zykluszeiten.}
 \label{tab:freertos}
 \small
 \begin{tabular}{|l|c|c|c|}
 \hline
 \rowcolor{mcured!20}
-\textbf{Task} & \textbf{PrioritÃ¤t} & \textbf{Periode} & \textbf{WCET} \\
+\textbf{Task} & \textbf{Priorität} & \textbf{Periode} & \textbf{WCET} \\
 \hline
-Safety Monitor & 7 (hÃ¶chste) & \SI{10}{\micro\second} & \SI{2}{\micro\second} \\
+Safety Monitor & 7 (höchste) & \SI{10}{\micro\second} & \SI{2}{\micro\second} \\
 \hline
 Joint Controller & 6 & \SI{100}{\micro\second} & \SI{30}{\micro\second} \\
 \hline
@@ -1021,7 +1021,7 @@ OPC-UA / Comm & 1 (niedrig) & \SI{10}{\milli\second} & \SI{3}{\milli\second} \\
 Der folgende C-Code realisiert die vierstufige Power-State-Machine
 (Abschnitt~4.2, Abbildung~\ref{fig:psm}) auf dem STM32H7 unter
 FreeRTOS. Die Zustandsautomaten-Funktion \texttt{psm\_tick()} wird
-vom PM-Scheduler-Task (PrioritÃ¤t~2, 10\,ms-Periode,
+vom PM-Scheduler-Task (Priorität~2, 10\,ms-Periode,
 Tabelle~\ref{tab:freertos}) aufgerufen.
 
 \begin{lstlisting}[language=C,
@@ -1101,7 +1101,7 @@ void IOFET_Wake_IRQHandler(void)
 
 \subsection{C-Implementierung: Gelenkeregler mit hydraulischer Kompensation}
 
-Der Gelenkeregler lÃ¤uft als FreeRTOS-Task\,6 (10\,kHz) auf dem
+Der Gelenkeregler läuft als FreeRTOS-Task\,6 (10\,kHz) auf dem
 Cortex-M7. Er integriert die hydraulische Steifigkeitskompensation
 nach Epp (Gleichung~\ref{eq:khyd}) als Feedforward-Term und erlaubt
 durch den Funktionszeiger \texttt{ctrl\_fn} die gleiche
@@ -1181,13 +1181,13 @@ void joint_ctrl_switch(joint_ctrl_t *c, ctrl_mode_t new_mode)
 \section{Hydraulisch-mechanisches Teilsystem}
 %=======================================================================
 
-\subsection{FlÃ¼ssigkeitsauswahl nach ElastizitÃ¤tskriterien}
+\subsection{Flüssigkeitsauswahl nach Elastizitätskriterien}
 
-Basierend auf der Arbeit \emph{ElastizitÃ¤t hydraulischer Ã–le} werden
-die Gelenkaktoren mit einer optimierten HydraulikflÃ¼ssigkeit betrieben.
-Das Auswahlkriterium fÃ¼r industrielle Robotik ist die Maximierung des
+Basierend auf der Arbeit \emph{Elastizität hydraulischer Öle} werden
+die Gelenkaktoren mit einer optimierten Hydraulikflüssigkeit betrieben.
+Das Auswahlkriterium für industrielle Robotik ist die Maximierung des
 \textbf{effektiven Bulk-Moduls} $K_{\text{eff}}$ bei gleichzeitig
-minimaler ViskositÃ¤ts-Temperatur-Empfindlichkeit:
+minimaler Viskositäts-Temperatur-Empfindlichkeit:
 
 \begin{equation}
   K_{\text{eff}}(p, T) = K_0 \cdot
@@ -1213,20 +1213,20 @@ monoton fallend in der Temperatur~$T$:
 \end{satz}
 
 \begin{proof}
-FÃ¼r $p \geq 0$, $n = 0{,}12 > 0$ und $\alpha_T > 0$ sind $(K_0+p)^{n-1} > 0$
+Für $p \geq 0$, $n = 0{,}12 > 0$ und $\alpha_T > 0$ sind $(K_0+p)^{n-1} > 0$
 und $e^{-\alpha_T(T-T_0)} > 0$, sodass~\eqref{eq:dKdp} positiv ist.
 Gleichung~\eqref{eq:dKdT} folgt aus der Kettenregel und der
-PositivitÃ¤t von $K_{\text{eff}}$ und $\alpha_T$.
+Positivität von $K_{\text{eff}}$ und $\alpha_T$.
 \end{proof}
 
 \begin{korollar}[Optimales Betriebsfenster]
 \label{kor:betrieb}
 Mit wachsendem Druck $p$ und sinkender Temperatur $T$ ist
-$K_{\text{eff}}$ maximal. FÃ¼r den IoFET-Roboter gilt daher:
-Der Systemdruck von \SI{200}{\bar} erhÃ¶ht $K_{\text{eff}}$ gegenÃ¼ber
+$K_{\text{eff}}$ maximal. Für den IoFET-Roboter gilt daher:
+Der Systemdruck von \SI{200}{\bar} erhöht $K_{\text{eff}}$ gegenüber
 $p=0$ um $n \cdot p / K_0 \approx 0{,}12 \cdot 200/16500 \approx \SI{1.5}{\percent}$;
-der entscheidendere Hebel ist die FlÃ¼ssigkeitsauswahl (vgl.
-Abschnitt Ã¼ber LebensdauerverlÃ¤ngerung).
+der entscheidendere Hebel ist die Flüssigkeitsauswahl (vgl.
+Abschnitt über Lebensdauerverlängerung).
 \end{korollar}
 
 \begin{figure}[H]
@@ -1251,15 +1251,15 @@ Abschnitt Ã¼ber LebensdauerverlÃ¤ngerung).
 
 \addplot[autoorange, thick, dotted, domain=0:35, samples=100]
   {1550*(1+x/1550)^0.12 * exp(-0.0042*(40-40))};
-\addlegendentry{EsterÃ¶l~46, $T=\SI{40}{\celsius}$}
+\addlegendentry{Esteröl~46, $T=\SI{40}{\celsius}$}
 
 \addplot[mcured, thick, dash dot, domain=0:35, samples=100]
   {1800*(1+x/1800)^0.10 * exp(-0.0042*(40-40))};
 \addlegendentry{Synthetik~HG~46, $T=\SI{40}{\celsius}$}
 \end{axis}
 \end{tikzpicture}
-\caption{DruckabhÃ¤ngiger Bulk-Modul verschiedener HydraulikflÃ¼ssigkeiten
-  nach dem Tait-Modell. Synthetisches HG~46 zeigt die hÃ¶chste Steifigkeit.}
+\caption{Druckabhängiger Bulk-Modul verschiedener Hydraulikflüssigkeiten
+  nach dem Tait-Modell. Synthetisches HG~46 zeigt die höchste Steifigkeit.}
 \label{fig:bulkmodul}
 \end{figure}
 
@@ -1268,12 +1268,12 @@ Abschnitt Ã¼ber LebensdauerverlÃ¤ngerung).
 Jedes Gelenkmodul (J1--J6) kombiniert einen \textbf{elektrischen
 Grobantrieb} (BLDC-Motor, \SI{500}{\watt}) mit einem
 \textbf{hydraulischen Feinantrieb} (Proportionalventil, \SI{0}{\bar}--\SI{350}{\bar}).
-Diese Hybridkonfiguration ermÃ¶glicht:
+Diese Hybridkonfiguration ermöglicht:
 
 \begin{itemize}
   \item Grobe Positionierung mit hoher Dynamik (elektrisch)
-  \item Kraft-/Impedanzregelung mit hoher PrÃ¤zision (hydraulisch)
-  \item EnergierÃ¼ckgewinnung beim Bremsen (rekuperativer Hydraulikkreis)
+  \item Kraft-/Impedanzregelung mit hoher Präzision (hydraulisch)
+  \item Energierückgewinnung beim Bremsen (rekuperativer Hydraulikkreis)
 \end{itemize}
 
 \begin{sidewaysfigure}
@@ -1329,7 +1329,7 @@ Diese Hybridkonfiguration ermÃ¶glicht:
 \draw[arr, hydraulicgray!70, dashed] (cyl) -- (sens)
   node[midway, above, font=\tiny] {Kraft};
 \draw[arr, energyyellow!70] (akku) -- (pump)
-  node[midway, right, font=\tiny] {RÃ¼cks.};
+  node[midway, right, font=\tiny] {Rücks.};
 \draw[arr, energyyellow!70] (cyl) |- (regen)
   node[near end, right, font=\tiny] {Brems-energie};
 \draw[arr, energyyellow!70] (regen) -- (akku);
@@ -1341,64 +1341,64 @@ Diese Hybridkonfiguration ermÃ¶glicht:
   node[near start, right, font=\tiny] {F-Feedback};
 
 \end{tikzpicture}
-\caption{Hydraulisch-elektrisches Hybridgelenkmodul mit EnergierÃ¼ckgewinnung.}
+\caption{Hydraulisch-elektrisches Hybridgelenkmodul mit Energierückgewinnung.}
 \label{fig:joint}
 \end{sidewaysfigure}
 
 \subsection{Viskoelastisches Modell und Positionsfehler}
 
-Nach dem erweiterten Maxwell-Modell aus der Hydraulik-Arbeit gilt fÃ¼r
-den Positionsfehler $\epsilon_p$ infolge der FlÃ¼ssigkeitselastizitÃ¤t:
+Nach dem erweiterten Maxwell-Modell aus der Hydraulik-Arbeit gilt für
+den Positionsfehler $\epsilon_p$ infolge der Flüssigkeitselastizität:
 
 \begin{equation}
   \epsilon_p = \frac{F_L}{K_{\text{eff}} \cdot A_K}
-  \cdot \ell_{\text{Ã–l}}
+  \cdot \ell_{\text{Öl}}
 \end{equation}
 
 wobei $F_L$ die Last, $A_K$ der Kolbenquerschnitt (\SI{4.9}{\centi\meter\squared})
-und $\ell_{\text{Ã–l}}$ die effektive Ã–llÃ¤nge sind. Mit
+und $\ell_{\text{Öl}}$ die effektive Öllänge sind. Mit
 $K_{\text{eff}} = \SI{1750}{\mega\pascal}$ (Synthetik~HG~46 bei
-\SI{200}{\bar}) und $\ell_{\text{Ã–l}} = \SI{100}{\milli\meter}$
-ergibt sich fÃ¼r $F_L = \SI{1}{\kilo\newton}$:
+\SI{200}{\bar}) und $\ell_{\text{Öl}} = \SI{100}{\milli\meter}$
+ergibt sich für $F_L = \SI{1}{\kilo\newton}$:
 
 \begin{equation}
   \epsilon_p = \frac{1000}{1750 \times 10^6 \times 4.9 \times 10^{-4}}
   \times 0{,}1 \approx \SI{0.116}{\micro\meter}
 \end{equation}
 
-Dieser Wert liegt deutlich unter der EncoderauflÃ¶sung und ist damit
-fÃ¼r Automobilanwendungen vernachlÃ¤ssigbar.
+Dieser Wert liegt deutlich unter der Encoderauflösung und ist damit
+für Automobilanwendungen vernachlässigbar.
 
 \begin{satz}[Positionsfehlergrenze]
 \label{satz:posfehler}
 Der hydraulische Positionsfehler $\epsilon_p$ ist eine streng monoton
-fallende Funktion von $K_{\text{eff}}$ und erfÃ¼llt:
+fallende Funktion von $K_{\text{eff}}$ und erfüllt:
 \begin{equation}
-  \epsilon_p \leq \frac{F_{L,\max} \cdot \ell_{\text{Ã–l}}}
+  \epsilon_p \leq \frac{F_{L,\max} \cdot \ell_{\text{Öl}}}
                        {K_{\text{eff,min}} \cdot A_K}.
   \label{eq:posfehlerbound}
 \end{equation}
 \end{satz}
 
 \begin{proof}
-Aus der Formel $\epsilon_p = F_L \ell_{\text{Ã–l}}/(K_{\text{eff}} A_K)$
-folgt $\partial\epsilon_p/\partial K_{\text{eff}} = -F_L \ell_{\text{Ã–l}}/(K_{\text{eff}}^2 A_K) < 0$.
+Aus der Formel $\epsilon_p = F_L \ell_{\text{Öl}}/(K_{\text{eff}} A_K)$
+folgt $\partial\epsilon_p/\partial K_{\text{eff}} = -F_L \ell_{\text{Öl}}/(K_{\text{eff}}^2 A_K) < 0$.
 Mit $F_L \leq F_{L,\max}$ und $K_{\text{eff}} \geq K_{\text{eff,min}}$
-erhÃ¤lt man~\eqref{eq:posfehlerbound}.
+erhält man~\eqref{eq:posfehlerbound}.
 \end{proof}
 
 \subsection{C-Implementierung: Epp-Hydraulikmodul}
 
 Das folgende Modul \texttt{epp\_hydraulic.c} implementiert alle
-hyd\-rau\-li\-schen KerngrÃ¶ÃŸen auf dem STM32H7 in Single-Precision
-FleiÃŸkomma (ARM-FPU). Es bildet die numerische Basis fÃ¼r den
+hyd\-rau\-li\-schen Kerngrößen auf dem STM32H7 in Single-Precision
+Fleißkomma (ARM-FPU). Es bildet die numerische Basis für den
 Gelenkeregler (Listing~\ref{lst:joint_ctrl}), den digitalen Zwilling
-(Gleichung~\ref{eq:druckdynamik}) und die Stabili\-tÃ¤ts\-prÃ¼fung
+(Gleichung~\ref{eq:druckdynamik}) und die Stabili\-täts\-prüfung
 (Satz~\ref{satz:druckstabil}).
 
 \begin{lstlisting}[language=C,
   caption={epp\_hydraulic.c -- Tait-Bulk-Modul $K_{\text{eff}}(p,T)$,
-    Positionsfehlergrenze, Euler-Druckintegrator und StabilitÃ¤tprÃ¼fung
+    Positionsfehlergrenze, Euler-Druckintegrator und Stabilitätprüfung
     (Gleichungen (3), Satz~2, 7, 8 aus Abschnitt~5).},
   label={lst:epp_hydraulic}]
 /* Zielhardware : STM32H7 Cortex-M7, Single-Precision FPU   */
@@ -1488,37 +1488,37 @@ int epp_euler_stable(float h, float k_eff, float v_max, float q_max)
 \end{lstlisting}
 
 %=======================================================================
-\subsection{LebensdauerverlÃ¤ngerung durch Epp'sche ElastizitÃ¤tsoptimierung}
+\subsection{Lebensdauerverlängerung durch Epp'sche Elastizitätsoptimierung}
 %=======================================================================
 
-Die Arbeit von Stephan Epp zur ElastizitÃ¤t hydraulischer Ã–le~\cite{hydr2026}
-erlaubt eine direkte quantitative VerknÃ¼pfung zwischen dem effektiven
+Die Arbeit von Stephan Epp zur Elastizität hydraulischer Öle~\cite{hydr2026}
+erlaubt eine direkte quantitative Verknüpfung zwischen dem effektiven
 Bulk-Modul $K_{\text{eff}}$ und der \textbf{Komponentenlebensdauer}
-der Gelenkmodule. Drei physikalisch unabhÃ¤ngige Wirkmechanismen werden
+der Gelenkmodule. Drei physikalisch unabhängige Wirkmechanismen werden
 formal hergeleitet:
 
 \begin{enumerate}
   \item Reduktion der Druckpulsationsamplitude und Kavitationsvermeidung
   \item Verbesserung der elastohydrodynamischen (EHD) Schmierfilmdicke
-  \item Senkung der thermisch-mechanischen ErmÃ¼dungsakkumulation
+  \item Senkung der thermisch-mechanischen Ermüdungsakkumulation
 \end{enumerate}
 
 \subsubsection{Mechanismus~1: Druckpulsationsreduktion und Kavitationsvermeidung}
 
 \begin{definition}[Hydraulische Gelenksteifigkeit]
 \label{def:hyd_steif}
-Die hydraulische Steifigkeit eines Gelenkaktors mit KolbenflÃ¤che $A_K$,
-eingeschlossenem Ã–lvolumen $V_0$ und effektivem Bulk-Modul $K_{\text{eff}}$ ist:
+Die hydraulische Steifigkeit eines Gelenkaktors mit Kolbenfläche $A_K$,
+eingeschlossenem Ölvolumen $V_0$ und effektivem Bulk-Modul $K_{\text{eff}}$ ist:
 \begin{equation}
   k_{\text{hyd}} = K_{\text{eff}} \cdot \frac{A_K^2}{V_0}.
   \label{eq:khyd}
 \end{equation}
 \end{definition}
 
-\begin{lemma}[DruckpulsationsdÃ¤mpfung]
+\begin{lemma}[Druckpulsationsdämpfung]
 \label{lem:druckpuls}
-FÃ¼r ein hydraulisches Gelenk mit mechanischer Systemsteifigkeit $k_{\text{sys}}$
-und harmonischer Lastanregung $F(t) = F_0 \sin(\omega t)$ gilt fÃ¼r die
+Für ein hydraulisches Gelenk mit mechanischer Systemsteifigkeit $k_{\text{sys}}$
+und harmonischer Lastanregung $F(t) = F_0 \sin(\omega t)$ gilt für die
 normierte Druckamplitude:
 \begin{equation}
   \xi := \frac{\hat{P}}{P_0}
@@ -1537,7 +1537,7 @@ Im Zwei-Federn-Modell (Hydraulik und Mechanik in Serie) gilt:
   F_0 &= k_{\text{hyd}} \, \delta_{\text{hyd}} = k_{\text{sys}} \, \delta_{\text{sys}},\\
   \hat{P} &= \delta_{\text{hyd}} \cdot k_{\text{hyd}} / A_K.
 \end{align*}
-AuflÃ¶sung nach $\delta_{\text{hyd}} = F_0/k_{\text{hyd}}$ und Division durch
+Auflösung nach $\delta_{\text{hyd}} = F_0/k_{\text{hyd}}$ und Division durch
 $P_0 = F_0/A_K$ liefert~\eqref{eq:xi}. Die Monotonie folgt aus
 $\partial \xi / \partial K_{\text{eff}} = -k_{\text{sys}} V_0 A_K^2 /
 (k_{\text{sys}} V_0 + K_{\text{eff}} A_K^2)^2 < 0$.
@@ -1550,8 +1550,8 @@ Kavitation im Gelenkaktor tritt nicht auf, wenn gilt:
   P_{\text{stat}} > P_v + \frac{F_0/A_K}{1 + K_{\text{eff}} A_K^2/(k_{\text{sys}} V_0)}.
   \label{eq:kavbedingung}
 \end{equation}
-FÃ¼r gegebenes $P_{\text{stat}}$ ist \eqref{eq:kavbedingung} mit
-wachsendem $K_{\text{eff}}$ leichter erfÃ¼llbar.
+Für gegebenes $P_{\text{stat}}$ ist \eqref{eq:kavbedingung} mit
+wachsendem $K_{\text{eff}}$ leichter erfüllbar.
 \end{satz}
 
 \begin{proof}
@@ -1562,7 +1562,7 @@ Lemma~\ref{lem:druckpuls}.
 \end{proof}
 
 \begin{bemerkung}
-FÃ¼r die Systemparameter des IoFET-Roboters ($A_K = \SI{4.9e-4}{\meter\squared}$,
+Für die Systemparameter des IoFET-Roboters ($A_K = \SI{4.9e-4}{\meter\squared}$,
 $V_0 = \SI{100e-6}{\meter\cubed}$,
 $k_{\text{sys}} = \SI{8e6}{\newton\per\meter}$,
 $P_{\text{stat}} = \SI{200}{\bar}$, $P_v \approx \SI{0.03}{\bar}$):
@@ -1576,15 +1576,15 @@ $P_{\text{stat}} = \SI{200}{\bar}$, $P_v \approx \SI{0.03}{\bar}$):
 \end{align*}
 Die normierte Druckamplitude sinkt von $\xi_{\text{HLP}} = 0{,}669$ auf
 $\xi_{\text{HG}} = 0{,}649$; d.\,h. jede dynamische Druckspitze wird
-um $\approx\SI{3}{\percent}$ kleiner. Ãœber WÃ¶hler-Potenzgesetz wirkt sich
+um $\approx\SI{3}{\percent}$ kleiner. Über Wöhler-Potenzgesetz wirkt sich
 das exponenziell auf die Lebensdauer aus.
 \end{bemerkung}
 
 \subsubsection{Mechanismus~2: EHD-Schmierfilmdicke und Lagerleben}
 
-Die QualitÃ¤t der elastohydrodynamischen Schmierung in den Gelenklagern
-hÃ¤ngt direkt von der ViskositÃ¤t $\eta$ unter Betriebsbedingungen ab.
-Nach dem Hamrock-Dowson-Modell gilt fÃ¼r die minimale Schmierfilmdicke:
+Die Qualität der elastohydrodynamischen Schmierung in den Gelenklagern
+hängt direkt von der Viskosität $\eta$ unter Betriebsbedingungen ab.
+Nach dem Hamrock-Dowson-Modell gilt für die minimale Schmierfilmdicke:
 \begin{equation}
   h_{\min} = 3{,}63 \cdot R' \cdot U^{0{,}68} \cdot G^{0{,}49}
              \cdot W^{-0{,}073} \cdot (1 - e^{-0{,}68\kappa}),
@@ -1596,8 +1596,8 @@ Lastparameter $W = F/(E^* {R'}^2)$.
 
 \begin{satz}[Modifizierte Lagerlebensdauer nach ISO~281]
 \label{satz:lagerlebensdauer}
-Das ViskositÃ¤tsverhÃ¤ltnis $\kappa = \nu / \nu_1$ (tatsÃ¤chliche zu
-erforderlicher BezugsviskositÃ¤t) bestimmt gemÃ¤ÃŸ ISO~281:2007 den
+Das Viskositätsverhältnis $\kappa = \nu / \nu_1$ (tatsächliche zu
+erforderlicher Bezugsviskosität) bestimmt gemäß ISO~281:2007 den
 Schmierungskorrekturfaktor $a_{\text{ISO}}(\kappa)$. Die modifizierte
 nominelle Lagerlebensdauer lautet:
 \begin{equation}
@@ -1616,10 +1616,10 @@ Der Wechsel von HLP~46 ($\kappa = 1{,}2$) auf Synthetik~HG~46
 
 \begin{proof}
 Die Werte $a_{\text{ISO}}(1{,}2) = 2{,}6$ und $a_{\text{ISO}}(3{,}1) = 8{,}1$
-folgen aus ISO~281:2007, Anhang~A, Tabelle~A.2, fÃ¼r StahlwÃ¤lzlager mit
+folgen aus ISO~281:2007, Anhang~A, Tabelle~A.2, für Stahlwälzlager mit
 Reinheitsgrad $e_C = 0{,}5$ und dem Parameter
 $\eta_c (C_u/P)^{1/3} = 0{,}3$. Mit identischem Ausfallwahrscheinlichkeits-
-Faktor $a_1 = 1$ und $L_{10}$ erhÃ¤lt man durch Einsetzen
+Faktor $a_1 = 1$ und $L_{10}$ erhält man durch Einsetzen
 in~\eqref{eq:l10m} direkt~\eqref{eq:lebensdauerfaktor}.
 \end{proof}
 
@@ -1627,20 +1627,20 @@ in~\eqref{eq:l10m} direkt~\eqref{eq:lebensdauerfaktor}.
 \label{kor:3x}
 Unter den Betriebsbedingungen des IoFET-Roboters mit Synthetik~HG~46
 ($K_{\text{eff}} = \SI{1800}{\mega\pascal}$)
-verlÃ¤ngert sich die nominelle WÃ¤lzlagerlebensdauer um
-den \textbf{Faktor $\approx 3{,}1$} gegenÃ¼ber Standardbetrieb mit HLP~46.
+verlängert sich die nominelle Wälzlagerlebensdauer um
+den \textbf{Faktor $\approx 3{,}1$} gegenüber Standardbetrieb mit HLP~46.
 \end{korollar}
 
-\subsubsection{Mechanismus~3: ErmÃ¼dungsakkumulation nach Palmgren-Miner}
+\subsubsection{Mechanismus~3: Ermüdungsakkumulation nach Palmgren-Miner}
 
-FÃ¼r das reale Belastungskollektiv (SchweiÃŸen, Montieren, Messen, Lackieren)
+Für das reale Belastungskollektiv (Schweißen, Montieren, Messen, Lackieren)
 gilt das Schadensakkumulationsgesetz:
 \begin{equation}
   D = \sum_{i=1}^{k} \frac{n_i}{N_{f,i}} \leq 1,
   \label{eq:miner}
 \end{equation}
 mit Zyklenanzahl $n_i$ in Laststufe~$i$ und Bruchlastspielzahl $N_{f,i}$.
-Nach der WÃ¶hler-Beziehung fÃ¼r hydraulische Stahlkomponenten:
+Nach der Wöhler-Beziehung für hydraulische Stahlkomponenten:
 \begin{equation}
   N_f = N_0 \cdot \left(\frac{\Delta P_0}{\Delta P}\right)^{m},
   \quad m \approx 3{,}5,
@@ -1648,7 +1648,7 @@ Nach der WÃ¶hler-Beziehung fÃ¼r hydraulische Stahlkomponenten:
 \end{equation}
 ergibt sich:
 
-\begin{satz}[LebensdauerverlÃ¤ngerung durch Druckreduktion]
+\begin{satz}[Lebensdauerverlängerung durch Druckreduktion]
 \label{satz:druckleben}
 Wird der Druckhub in Laststufe~$i$ durch optimiertes Fluid um den
 Faktor $r < 1$ auf $\Delta P_i' = r \cdot \Delta P_i$ gesenkt,
@@ -1667,21 +1667,21 @@ N_{f,i}' = N_0 \left(\frac{\Delta P_0}{r\,\Delta P_i}\right)^m
 \end{equation*}
 \end{proof}
 
-\begin{korollar}[Numerische WÃ¶hler-AbschÃ¤tzung]
+\begin{korollar}[Numerische Wöhler-Abschätzung]
 \label{kor:woehler}
 Aus Lemma~\ref{lem:druckpuls} folgt $r = \xi_{\text{HG}}/\xi_{\text{HLP}} = 0{,}649/0{,}669 = 0{,}970$. Mit $m = 3{,}5$:
 \begin{equation}
   \frac{N_{f}'}{N_{f}} = 0{,}970^{-3{,}5} \approx 1{,}11.
 \end{equation}
-Der WÃ¶hler-Beitrag allein ergibt 11\% Lebensdauersteigerung; kombiniert
+Der Wöhler-Beitrag allein ergibt 11\% Lebensdauersteigerung; kombiniert
 mit dem EHD-Faktor aus Korollar~\ref{kor:3x} wirken beide Mechanismen
-\emph{multiplikativ} und unabhÃ¤ngig.
+\emph{multiplikativ} und unabhängig.
 \end{korollar}
 
 \begin{satz}[Gesamtlebensdauerfaktor]
 \label{satz:gesamtleben}
 Der kombinierte Lebensdauerfaktor aus EHD-Schmierung (Faktor $f_{\text{EHD}}$)
-und WÃ¶hler-Effekt (Faktor $f_{\text{W}}$) lautet:
+und Wöhler-Effekt (Faktor $f_{\text{W}}$) lautet:
 \begin{equation}
   f_{\text{ges}} = f_{\text{EHD}} \cdot f_{\text{W}}
   = \frac{a_{\text{ISO}}(\kappa_{\text{HG}})}{a_{\text{ISO}}(\kappa_{\text{HLP}})}
@@ -1693,23 +1693,23 @@ und WÃ¶hler-Effekt (Faktor $f_{\text{W}}$) lautet:
 \end{satz}
 
 \begin{proof}
-Die UnabhÃ¤ngigkeit der beiden Mechanismen folgt daraus, dass
+Die Unabhängigkeit der beiden Mechanismen folgt daraus, dass
 $a_{\text{ISO}}$ die Schmierbedingungen der Kontaktzone modelliert,
-wÃ¤hrend der WÃ¶hler-Faktor DruckermÃ¼dung der Hydraulikkomponenten
-auÃŸerhalb der Kontaktzone (Pumpe, Ventile, Zylinder) beschreibt.
+während der Wöhler-Faktor Druckermüdung der Hydraulikkomponenten
+außerhalb der Kontaktzone (Pumpe, Ventile, Zylinder) beschreibt.
 Da beide Modelle verschiedene Schadensquellen adressieren, ist das
 Produkt~\eqref{eq:fges} korrekt.
 \end{proof}
 
 \begin{infobox}
-\textbf{Zentrales Ergebnis der Epp'schen ElastizitÃ¤tsarbeit
-fÃ¼r den IoFET-Roboter:}
+\textbf{Zentrales Ergebnis der Epp'schen Elastizitätsarbeit
+für den IoFET-Roboter:}
 Der Wechsel von Standard-HLP~46 auf Synthetik~HG~46
-verlÃ¤ngert die \textbf{mittlere Komponentenlebensdauer um den
-Faktor 3,1--3,4}. Die theoretische Herleitung (SÃ¤tze~\ref{satz:lagerlebensdauer},
+verlängert die \textbf{mittlere Komponentenlebensdauer um den
+Faktor 3,1--3,4}. Die theoretische Herleitung (Sätze~\ref{satz:lagerlebensdauer},
 \ref{satz:druckleben}, \ref{satz:gesamtleben}) konfirmiert die in der
-Industriepraxis beobachtete Faustregel eines Faktors 2,5--3,5 fÃ¼r
-synthetische gegenÃ¼ber mineralischen Hydraulikfluiden.
+Industriepraxis beobachtete Faustregel eines Faktors 2,5--3,5 für
+synthetische gegenüber mineralischen Hydraulikfluiden.
 \end{infobox}
 
 \subsubsection{Systemische Lebensdauerbilanz}
@@ -1724,7 +1724,7 @@ synthetische gegenÃ¼ber mineralischen Hydraulikfluiden.
 \rowcolor{hydraulicgray!20}
 \textbf{Komponente} & \textbf{HLP~46 [h]} & \textbf{HG~46 [h]} & \textbf{Faktor} \\
 \hline
-SchrÃ¤gkugellager J1--J3 & 12\,000 & 37\,200 & $\times 3{,}1$ \\
+Schrägkugellager J1--J3 & 12\,000 & 37\,200 & $\times 3{,}1$ \\
 \hline
 Rollenlager J4--J6 & 15\,000 & 46\,500 & $\times 3{,}1$ \\
 \hline
@@ -1745,12 +1745,12 @@ Hydrozylinder-Kolbendichtung & 9\,000 & 28\,800 & $\times 3{,}2$ \\
 \begin{axis}[
   width=11cm, height=6cm,
   xlabel={Betriebsdauer $t$ [h]},
-  ylabel={Ãœberlebenswahrscheinlichkeit $R(t)$ [\%]},
+  ylabel={Überlebenswahrscheinlichkeit $R(t)$ [\%]},
   grid=both, grid style={gray!30},
   legend pos=south west,
   xmin=0, xmax=50000,
   ymin=0, ymax=100,
-  title={Weibull-ZuverlÃ¤ssigkeit: HLP~46 vs.\ Synthetik~HG~46}
+  title={Weibull-Zuverlässigkeit: HLP~46 vs.\ Synthetik~HG~46}
 ]
 % Weibull: R(t) = exp(-(t/eta)^beta)
 % HLP: eta=12000, beta=2.2
@@ -1770,20 +1770,20 @@ Hydrozylinder-Kolbendichtung & 9\,000 & 28\,800 & $\times 3{,}2$ \\
 \node[font=\tiny, text=iofetblue!80, rotate=90] at (axis cs:38000,50) {HG~46 $\eta$};
 \end{axis}
 \end{tikzpicture}
-\caption{Weibull-ZuverlÃ¤ssigkeitskurven fÃ¼r Gelenklager unter HLP~46
+\caption{Weibull-Zuverlässigkeitskurven für Gelenklager unter HLP~46
 (mineralisch) und Synthetik~HG~46 (Epp-optimiert, Formparameter $\beta=2{,}2$).
-Der $B_{10}$-Punkt (90\,\% Ãœberlebenswahrscheinlichkeit) verschiebt sich
+Der $B_{10}$-Punkt (90\,\% Überlebenswahrscheinlichkeit) verschiebt sich
 von $\approx$\SI{7000}{\hour} auf $\approx$\SI{21700}{\hour}.}
 \label{fig:weibull}
 \end{figure}
 
 \begin{infobox}
-\textbf{Wirtschaftliche Bedeutung der LebensdauerverlÃ¤ngerung:}
-Bei einem System-MTBF von 6\,000\,h (HLP~46) gegenÃ¼ber 18\,800\,h (HG~46)
-reduziert sich die Anzahl geplanter Ãœberholungen pro 100\,000\,Betriebs\-stunden
+\textbf{Wirtschaftliche Bedeutung der Lebensdauerverlängerung:}
+Bei einem System-MTBF von 6\,000\,h (HLP~46) gegenüber 18\,800\,h (HG~46)
+reduziert sich die Anzahl geplanter Überholungen pro 100\,000\,Betriebs\-stunden
 von $\approx$17 auf $\approx$5. Bei typischen Wartungskosten von
-15\,000--30\,000~EUR pro Ãœberholung ergibt sich eine kumulierte Einsparung
-von \textbf{180\,000--360\,000~EUR} Ã¼ber die Systemlebensdauer
+15\,000--30\,000~EUR pro Überholung ergibt sich eine kumulierte Einsparung
+von \textbf{180\,000--360\,000~EUR} über die Systemlebensdauer
 eines Flottenroboters. Hinzu kommt die Reduktion von Stillstandszeiten,
 die in der Automobilfertigung mit 3\,000--10\,000~EUR/h bewertet werden.
 \end{infobox}
@@ -1798,7 +1798,7 @@ Die Systemleistung wird durch ein zentrales \textbf{IoFET-basiertes
 Power-Management-System} (IoFET-PMS) koordiniert. Dieses System
 nutzt die intrinsische Eigenschaft von IoFET-Elementen, bei extrem
 niedrigem Eigenverbrauch (\si{\nano\watt}-Bereich) als Schalter und
-MesskapazitÃ¤ten zu agieren.
+Messkapazitäten zu agieren.
 
 \begin{sidewaysfigure}
 \centering
@@ -1877,7 +1877,7 @@ MesskapazitÃ¤ten zu agieren.
 \rowcolor{iofetblue!20}
 \textbf{Zustand} & \textbf{BLDC} & \textbf{Hydraulik} & \textbf{Elektronik} & \textbf{Gesamt} \\
 \hline
-Volllast (SchweiÃŸen) & \SI{2100}{\watt} & \SI{800}{\watt} & \SI{150}{\watt} & \SI{3050}{\watt} \\
+Volllast (Schweißen) & \SI{2100}{\watt} & \SI{800}{\watt} & \SI{150}{\watt} & \SI{3050}{\watt} \\
 \hline
 Mittellast (Montage) & \SI{800}{\watt} & \SI{300}{\watt} & \SI{120}{\watt} & \SI{1220}{\watt} \\
 \hline
@@ -1897,15 +1897,15 @@ STOP (IoFET-Wake) & \SI{0}{\watt} & \SI{0}{\watt} & \SI{0.8}{\watt} & \SI{0.8}{\
 Konventionelle Industrieroboter (KUKA KR10, Fanuc M-10iA) haben
 Leerlaufleistungen von \SI{500}{\watt}--\SI{1500}{\watt}, da
 Flash-FPGA-Rekonfiguration kontinuierliche Taktsignale erfordert
-und MCUs nicht hibernationsfÃ¤hig sind. Durch IoFET-Schalttechnik
+und MCUs nicht hibernationsfähig sind. Durch IoFET-Schalttechnik
 reduziert die vorgestellte Architektur den IDLE-Verbrauch auf
 \SI{110}{\watt} -- eine Reduktion um \textbf{Faktor 5--14}.
 \end{infobox}
 
-\subsection{Hydraulische EnergierÃ¼ckgewinnung (Rekuperation)}
+\subsection{Hydraulische Energierückgewinnung (Rekuperation)}
 
-Bei BremsmanÃ¶vern wird kinetische Energie Ã¼ber den Hydraulikkreis
-zurÃ¼ckgewonnen. Der Rekuperationsgrad $\eta_{\text{rek}}$ ergibt sich
+Bei Bremsmanövern wird kinetische Energie über den Hydraulikkreis
+zurückgewonnen. Der Rekuperationsgrad $\eta_{\text{rek}}$ ergibt sich
 zu:
 
 \begin{equation}
@@ -1914,9 +1914,9 @@ zu:
   = 0{,}91 \times 0{,}90 = 0{,}82
 \end{equation}
 
-Bei einem typischen AutomobilflieÃŸband-Takt (120 Takte/h, 0.5-s-Bremsung
+Bei einem typischen Automobilfließband-Takt (120 Takte/h, 0.5-s-Bremsung
 pro Takt mit \SI{2}{\kilo\watt} Bremsleistung) ergibt sich eine
-tÃ¤gliche Rekuperationsenergie von:
+tägliche Rekuperationsenergie von:
 
 \begin{equation}
   E_{\text{Tag}} = 120 \times 8 \times 0{,}5 \times 2000 \times 0{,}82
@@ -1933,7 +1933,7 @@ Bei 0{,}28~EUR/kWh entspricht das
 \subsection{Feldbus-Topologie}
 
 Die Kommunikationsarchitektur folgt dem Industrie-4.0-Referenzmodell
-(RAMI~4.0) und verbindet alle Ebenen Ã¼ber standardisierte Protokolle:
+(RAMI~4.0) und verbindet alle Ebenen über standardisierte Protokolle:
 
 \begin{figure}[H]
 \centering
@@ -2055,8 +2055,8 @@ konfigurierbaren Parameter als Knoten. Die Struktur folgt dem
 \subsection{Predictive Maintenance Integration}
 
 Der OPC-UA-Knoten \texttt{MaintenanceStatus} aggregiert
-ZustandsgrÃ¶ÃŸen aus hydraulischem System (ViskositÃ¤tsdrift,
-SÃ¤urezahl), GelenkverschleiÃŸ (Encoder-Jitter) und
+Zustandsgrößen aus hydraulischem System (Viskositätsdrift,
+Säurezahl), Gelenkverschleiß (Encoder-Jitter) und
 Elektronik (MCU-Temperatur, FPGA-Fehlerrate). Ein
 embedded-ML-Modell (TinyML, \SI{150}{\kilo\byte}) klassifiziert
 den Zustand in Echtzeit:
@@ -2104,7 +2104,7 @@ den Zustand in Echtzeit:
 \subsection{Konfigurationsschichten}
 
 Wiederverwendbarkeit wird auf vier Schichten realisiert, die
-voneinander unabhÃ¤ngig konfigurierbar sind:
+voneinander unabhängig konfigurierbar sind:
 
 \begin{figure}[H]
 \centering
@@ -2117,7 +2117,7 @@ voneinander unabhÃ¤ngig konfigurierbar sind:
 \node[layer, fill=iofetblue!25, draw=iofetblue]
   (l4) {\textbf{Schicht~4: Applikationskonfiguration}\\
   \footnotesize Roboterprogramm (RAPID/KRL), Produktionsrezept,
-  QualitÃ¤tsparameter};
+  Qualitätsparameter};
 
 \node[layer, fill=fpgagreen!20, draw=fpgagreen, below=0.4cm of l4]
   (l3) {\textbf{Schicht~3: FPGA-Overlay-Konfiguration}\\
@@ -2126,16 +2126,16 @@ voneinander unabhÃ¤ngig konfigurierbar sind:
 
 \node[layer, fill=mcured!15, draw=mcured, below=0.4cm of l3]
   (l2) {\textbf{Schicht~2: MCU-Firmware-Konfiguration}\\
-  \footnotesize FreeRTOS-Task-PrioritÃ¤ten, Power-Profile,
+  \footnotesize FreeRTOS-Task-Prioritäten, Power-Profile,
   Feldbustopologie, Safety-Grenzwerte};
 
 \node[layer, fill=hydraulicgray!20, draw=hydraulicgray, below=0.4cm of l2]
   (l1) {\textbf{Schicht~1: Mechanisch-hydraulische Konfiguration}\\
-  \footnotesize GelenkmodulbestÃ¼ckung (J1--J6/J1--J7),
-  HydraulikÃ¶l-Auswahl, End-Effektor-Typ};
+  \footnotesize Gelenkmodulbestückung (J1--J6/J1--J7),
+  Hydrauliköl-Auswahl, End-Effektor-Typ};
 
 \end{tikzpicture}
-\caption{Vierschichtige Konfigurationsarchitektur fÃ¼r maximale
+\caption{Vierschichtige Konfigurationsarchitektur für maximale
   Wiederverwendbarkeit.}
 \label{fig:konfig}
 \end{figure}
@@ -2143,7 +2143,7 @@ voneinander unabhÃ¤ngig konfigurierbar sind:
 \subsection{Konfigurationsdatei: JSON-Schema}
 
 Alle Konfigurationsparameter werden in einer hierarchischen
-\textbf{JSON-Konfigurationsdatei} gespeichert, die Ã¼ber OPC-UA
+\textbf{JSON-Konfigurationsdatei} gespeichert, die über OPC-UA
 geladen und verifiziert wird:
 
 \begin{lstlisting}[caption={IoFET-Roboter Konfigurationsdatei (Ausschnitt)},
@@ -2231,7 +2231,7 @@ typisch unter \textbf{2 Sekunden}:
 % Annotationen
 \draw[stealth-stealth, iofetblue]
   (0, 1.4) -- (2.5, 1.4)
-  node[midway, above, font=\footnotesize] {UmrÃ¼stzeit $<$2.5\,s};
+  node[midway, above, font=\footnotesize] {Umrüstzeit $<$2.5\,s};
 \draw[stealth-stealth, iofetblue!40]
   (1.0, 1.7) -- (1.12, 1.7)
   node[midway, above, font=\tiny] {120 ns};
@@ -2241,7 +2241,7 @@ typisch unter \textbf{2 Sekunden}:
   Die ionische Rekonfiguration (gelb) dauert nur \SI{120}{\nano\second}.}
 \label{fig:reconfig_timing}
 \end{figure}
-Die UmrÃ¼stzeit besteht dabei aus folgenden Slices:
+Die Umrüstzeit besteht dabei aus folgenden Slices:
 \begin{enumerate}
 	\item Stop Request, dem Stop Request
 	\item Hydr. Entl., der hydraulische Entlastung
@@ -2253,26 +2253,26 @@ Die UmrÃ¼stzeit besteht dabei aus folgenden Slices:
 \section{Anwendungsszenarien: Automobilindustrie}
 %=======================================================================
 
-\subsection{Karosseriebau: PunktschweiÃŸen}
+\subsection{Karosseriebau: Punktschweißen}
 
-Im \textbf{Karosseriebau} fÃ¼hrt der Roboter bis zu 5000 SchweiÃŸpunkte
-pro Schicht aus. Die IoFET-FPGA-Konfiguration fÃ¼r diesen Anwendungsfall
+Im \textbf{Karosseriebau} führt der Roboter bis zu 5000 Schweißpunkte
+pro Schicht aus. Die IoFET-FPGA-Konfiguration für diesen Anwendungsfall
 priorisiert hohe Bahngenauigkeit und schnelle Point-to-Point-Bewegungen:
 
 \begin{itemize}
   \item FPGA-Interpolator: Linear (minimale Rechenzeit)
-  \item Regler: PID mit Anti-Windup (niedrige SchweiÃŸkraftvarianz)
+  \item Regler: PID mit Anti-Windup (niedrige Schweißkraftvarianz)
   \item Hydraulik: Druck \SI{200}{\bar}, Fluid Synthetik-HG~46
   \item MCU Power-Profil: \texttt{balanced} (kein Hibernation im Takt)
   \item Wechselzeit Spitze--Spitze: \SI{0.8}{\second}
 \end{itemize}
 
-\subsection{Lackierlinie: PrÃ¤zisionsbewegungen}
+\subsection{Lackierlinie: Präzisionsbewegungen}
 
-In der \textbf{Lackierlinie} ist eine gleichmÃ¤ÃŸige, ruckarme
+In der \textbf{Lackierlinie} ist eine gleichmäßige, ruckarme
 Bewegung entscheidend. Der kubische Spline-Interpolator wird aktiviert
 und der Impedanzregler stellt sicher, dass Lackleitungen keine
-Ã¼berhÃ¶hten ReaktionskrÃ¤fte erfahren:
+überhöhten Reaktionskräfte erfahren:
 
 \begin{itemize}
   \item FPGA-Interpolator: Kubischer Spline (IoFET-Rekonfiguration: \SI{120}{\nano\second})
@@ -2282,11 +2282,11 @@ und der Impedanzregler stellt sicher, dass Lackleitungen keine
   \item MCU Power-Profil: \texttt{energy\_save} (zwischen Takt-Zyklen)
 \end{itemize}
 
-\subsection{Antriebsmontage: Kraftgeregelte FÃ¼geoperation}
+\subsection{Antriebsmontage: Kraftgeregelte Fügeoperation}
 
 Die \textbf{Antriebsmontage} erfordert kraftgeregeltes Einpressen
-von Lagern und ZahnrÃ¤dern. Hier wird der hybride Hydraulikpfad
-vollstÃ¤ndig genutzt:
+von Lagern und Zahnrädern. Hier wird der hybride Hydraulikpfad
+vollständig genutzt:
 
 \begin{sidewaysfigure}
 \centering
@@ -2302,7 +2302,7 @@ vollstÃ¤ndig genutzt:
 \node[stepbox, fill=fpgagreen!20, draw=fpgagreen, right=of detect]
   (plan) {Einpress- Trajektorie};
 \node[stepbox, fill=iofetblue!20, draw=iofetblue, right=of plan]
-  (approach) {AnnÃ¤hern Impedanz- regler};
+  (approach) {Annähern Impedanz- regler};
 \node[stepbox, fill=mcured!20, draw=mcured, right=of approach]
   (press) {F-Regelung 0--8\,kN};
 \node[stepbox, fill=fpgagreen!20, draw=fpgagreen, right=of press]
@@ -2329,29 +2329,29 @@ vollstÃ¤ndig genutzt:
   {FPGA: Impedanz};
 
 \end{tikzpicture}
-\caption{Ablaufdiagramm fÃ¼r kraftgeregelte FÃ¼geoperation in der Antriebsmontage.}
+\caption{Ablaufdiagramm für kraftgeregelte Fügeoperation in der Antriebsmontage.}
 \label{fig:join}
 \end{sidewaysfigure}
 
-\subsection{QualitÃ¤tsprÃ¼fung: Inline-Messtechnik}
+\subsection{Qualitätsprüfung: Inline-Messtechnik}
 
-FÃ¼r die \textbf{Inline-Messtechnik} wird der Roboter mit einem
+Für die \textbf{Inline-Messtechnik} wird der Roboter mit einem
 taktilen Messkopf (Renishaw REVO-2) ausgestattet. Die
 IoFET-FPGA-Rekonfiguration schaltet den BLDC-Regler auf
 \emph{Ultraniedrigkeit-Kraftmodus} (\SI{<0.5}{\newton}
 Kontaktkraft):
 
 \begin{itemize}
-  \item FPGA: Encoder-Protokoll wechselt zu EnDat~2.2 (\SI{1}{\micro\meter} AuflÃ¶sung)
+  \item FPGA: Encoder-Protokoll wechselt zu EnDat~2.2 (\SI{1}{\micro\meter} Auflösung)
   \item Regler: Impedanzregler mit $K_p = \SI{100}{\newton\per\meter}$
   \item Messrate: \SI{50}{\kilo\hertz} taktil + GigE-Vision 100~fps
   \item Positionswiederholgenauigkeit: $\pm\SI{5}{\micro\meter}$
 \end{itemize}
 
-\subsection{Bandablauf und FlieÃŸmontagelinie}
+\subsection{Bandablauf und Fließmontagelinie}
 
 Im \textbf{Bandablauf} (Moving-Line) muss der Roboter mit dem
-FÃ¶rderband mitbewegen. Der MCU-Trajektorieplaner integriert
+Förderband mitbewegen. Der MCU-Trajektorieplaner integriert
 kontinuierlich das Bandsignal:
 
 \begin{equation}
@@ -2359,9 +2359,9 @@ kontinuierlich das Bandsignal:
   + \mathbf{J}^{-1} \cdot \mathbf{v}_{\text{Band}}(t)
 \end{equation}
 
-Die IoFET-FPGA-Konfiguration fÃ¼r Moving-Line aktiviert einen
-zusÃ¤tzlichen \textbf{Bandsyn\-chroni\-sations-Block}, der das
-Encoder-Signal des FÃ¶rderbandes (CAN-FD) mit einer Latenz von
+Die IoFET-FPGA-Konfiguration für Moving-Line aktiviert einen
+zusätzlichen \textbf{Bandsyn\-chroni\-sations-Block}, der das
+Encoder-Signal des Förderbandes (CAN-FD) mit einer Latenz von
 \SI{<200}{\micro\second} in die Trajektorieinversk transformiert.
 
 %=======================================================================
@@ -2384,7 +2384,7 @@ Leerlaufleistung & \SI{1200}{\watt} & \SI{850}{\watt} & \textbf{\SI{110}{\watt}}
 \hline
 STOP-Leistung & \SI{650}{\watt} & \SI{400}{\watt} & \textbf{\SI{0.8}{\watt}} \\
 \hline
-UmrÃ¼stzeit & 15--30\,min & 10--20\,min & \textbf{$<$2.5\,s} \\
+Umrüstzeit & 15--30\,min & 10--20\,min & \textbf{$<$2.5\,s} \\
 \hline
 Rekonfiguration & Hardware-Tausch & Hardware-Tausch & \textbf{Software (IoFET)} \\
 \hline
@@ -2403,7 +2403,7 @@ Sicherheit & SIL~2 & SIL~2 & \textbf{SIL~2 + IoFET-Monitor} \\
 \end{tabularx}
 \end{table}
 
-\subsection{Energieeinsparungspotenzial Ã¼ber Schichtbetrieb}
+\subsection{Energieeinsparungspotenzial über Schichtbetrieb}
 
 \begin{figure}[H]
 \centering
@@ -2446,16 +2446,16 @@ Sicherheit & SIL~2 & SIL~2 & \textbf{SIL~2 + IoFET-Monitor} \\
 
 \end{axis}
 \end{tikzpicture}
-\caption{Leistungsprofilvergleich Ã¼ber eine 8-h-Schicht. IoFET-SchlafzustÃ¤nde
+\caption{Leistungsprofilvergleich über eine 8-h-Schicht. IoFET-Schlafzustände
   (0.8--14\,W) versus konventioneller Leerlauf (850\,W).}
 \label{fig:power_profile}
 \end{figure}
 
-\subsection{JÃ¤hrliche Energieeinsparung}
+\subsection{Jährliche Energieeinsparung}
 
 \begin{table}[H]
 \centering
-\caption{JÃ¤hrliche Energieeinsparung gegenÃ¼ber KUKA~KR10 (3-Schicht, 250 Arbeitstage).}
+\caption{Jährliche Energieeinsparung gegenüber KUKA~KR10 (3-Schicht, 250 Arbeitstage).}
 \label{tab:energy_saving}
 \small
 \begin{tabular}{|l|r|r|r|}
@@ -2481,7 +2481,7 @@ Einsparung CO\textsubscript{2} & -- & -- & \textbf{$\approx$3{,}3~t} \\
 
 \subsection{IoFET-Rekonfigurationsgewinn}
 
-Die zentrale quantitative Aussage Ã¼ber den IoFET-Vorteil:
+Die zentrale quantitative Aussage über den IoFET-Vorteil:
 
 \begin{equation}
   G_{\text{rek}} = \frac{t_{\text{Flash}} - t_{\text{IoFET}}}{t_{\text{Flash}}}
@@ -2489,10 +2489,10 @@ Die zentrale quantitative Aussage Ã¼ber den IoFET-Vorteil:
   \approx 99{,}998\%
 \end{equation}
 
-Diese Beschleunigung bedeutet, dass ein IoFET-FPGA wÃ¤hrend einer
+Diese Beschleunigung bedeutet, dass ein IoFET-FPGA während einer
 einzigen konventionellen Rekonfigurationsoperation
-\textbf{416\,000 vollstÃ¤ndige Rekonfigurationen} durchfÃ¼hren kÃ¶nnte --
-ein entscheidender Vorteil fÃ¼r adaptives Regeln in der Bandmontage.
+\textbf{416\,000 vollständige Rekonfigurationen} durchführen könnte --
+ein entscheidender Vorteil für adaptives Regeln in der Bandmontage.
 
 %=======================================================================
 \section{Sicherheitsarchitektur (SIL~2 / PLe)}
@@ -2500,9 +2500,9 @@ ein entscheidender Vorteil fÃ¼r adaptives Regeln in der Bandmontage.
 
 \subsection{Sicherheitskonzept nach IEC~62061}
 
-Die Sicherheitsarchitektur erfÃ¼llt \textbf{SIL~2} nach IEC~62061
+Die Sicherheitsarchitektur erfüllt \textbf{SIL~2} nach IEC~62061
 und \textbf{PLe/Kat.~4} nach ISO~13849. Dies wird durch redundante
-ÃœberwachungskanÃ¤le sichergestellt:
+Überwachungskanäle sichergestellt:
 
 \begin{figure}[H]
 \centering
@@ -2517,15 +2517,15 @@ und \textbf{PLe/Kat.~4} nach ISO~13849. Dies wird durch redundante
 \draw[draw=mcured, fill=mcured!5, rounded corners=8pt]
   (-0.5, 3.0) rectangle (5.0, 5.5);
 \node[font=\footnotesize\bfseries, text=mcured] at (2.25, 5.7)
-  {Kanal A (MCU -- primÃ¤r)};
+  {Kanal A (MCU -- primär)};
 \node[sfnode, fill=mcured!20, draw=mcured] at (1.0, 4.8)
-  {Encoder- Ãœberwachung};
+  {Encoder- Überwachung};
 \node[sfnode, fill=mcured!20, draw=mcured] at (1.0, 3.7)
   {Kraft-/Drehm. Monitor};
 \node[sfnode, fill=mcured!15, draw=mcured] at (3.5, 4.8)
   {Geschw.- Grenzwert};
 \node[sfnode, fill=mcured!15, draw=mcured] at (3.5, 3.7)
-  {Temperatur- Ãœberwachung};
+  {Temperatur- Überwachung};
 
 % Kanal B (FPGA)
 \draw[draw=iofetblue, fill=iofetblue!5, rounded corners=8pt]
@@ -2533,7 +2533,7 @@ und \textbf{PLe/Kat.~4} nach ISO~13849. Dies wird durch redundante
 \node[font=\footnotesize\bfseries, text=iofetblue] at (2.25, 2.7)
   {Kanal B (FPGA -- redundant)};
 \node[sfnode, fill=iofetblue!20, draw=iofetblue] at (1.0, 1.8)
-  {Hardware- Ãœberwachung};
+  {Hardware- Überwachung};
 \node[sfnode, fill=iofetblue!20, draw=iofetblue] at (1.0, 0.7)
   {IoFET- Selbsttest};
 \node[sfnode, fill=iofetblue!15, draw=iofetblue] at (3.5, 1.8)
@@ -2560,9 +2560,9 @@ und \textbf{PLe/Kat.~4} nach ISO~13849. Dies wird durch redundante
 \subsection{IoFET-Sicherheitsmonitor}
 
 Ein dedizierter \textbf{IoFET-Sicherheitsmonitor}-Block im FPGA
-Ã¼berwacht die ionischen Zellspannungen aller Rekonfigurationselemente.
-Ãœberschreitet eine Zellspannung den Grenzwert $V_G > V_{G,\max}$,
-wird sofort ein Hardware-Interrupt ausgelÃ¶st, der den Safe State
+überwacht die ionischen Zellspannungen aller Rekonfigurationselemente.
+Überschreitet eine Zellspannung den Grenzwert $V_G > V_{G,\max}$,
+wird sofort ein Hardware-Interrupt ausgelöst, der den Safe State
 einleitet:
 
 \begin{equation}
@@ -2572,15 +2572,15 @@ einleitet:
 \end{equation}
 
 Diese Reaktionszeit unterschreitet die SIL-2-Anforderung von
-\SI{10}{\milli\second} um mehr als vier GrÃ¶ÃŸenordnungen.
+\SI{10}{\milli\second} um mehr als vier Größenordnungen.
 
 \subsection{VHDL-Implementierung: SIL-2-Sicherheitsmonitor}
 
 Der folgende VHDL-Code realisiert den dualkanaligen Sicherheitsmonitor
 (Abbildung~\ref{fig:safety}). Kanal~A (MCU-Daten) und Kanal~B
-(FPGA-HardwareÃ¼berwachung) werden by einer 1-aus-2-Abstimmungslogik
+(FPGA-Hardwareüberwachung) werden by einer 1-aus-2-Abstimmungslogik
 verglichen. Bei Abweichung wird das STO-Signal (Safe-Torque-Off)
-innerhalb von \SI{550}{\nano\second} ausgelÃ¶st.
+innerhalb von \SI{550}{\nano\second} ausgelöst.
 
 \begin{lstlisting}[language=VHDL,
   caption={safety\_monitor.vhd -- Dualkanaliger SIL-2-Sicherheitsmonitor
@@ -2680,52 +2680,52 @@ end architecture rtl;
 
 Die modulare Architektur erlaubt die Erweiterung von 6 auf 7 Achsen
 ohne FPGA-Austausch: Durch IoFET-Rekonfiguration wird ein achter
-Kaskadenregler-Block aktiviert, der das zusÃ¤tzliche Gelenk regelt.
+Kaskadenregler-Block aktiviert, der das zusätzliche Gelenk regelt.
 MCU-seitig wird lediglich die JSON-Konfiguration aktualisiert
 (\texttt{"joints": [..., \{"id": "J7"\}]}).
 
-\subsection{Integration ionischer FlÃ¼ssigkeiten als Hydraulikmedium}
+\subsection{Integration ionischer Flüssigkeiten als Hydraulikmedium}
 
 Eine faszinierende Zukunftsperspektive vereint beide Ausgangstechnologien
-auf tieferer Ebene: \textbf{Ionische FlÃ¼ssigkeiten} (ILs) als
+auf tieferer Ebene: \textbf{Ionische Flüssigkeiten} (ILs) als
 Hydraulikmedium. ILs haben:
 \begin{itemize}
-  \item VernachlÃ¤ssigbaren Dampfdruck (kein Kavitationsproblem)
+  \item Vernachlässigbaren Dampfdruck (kein Kavitationsproblem)
   \item Hohen Bulk-Modul ($K \approx \SI{2500}{\mega\pascal}$)
-  \item Ionische LeitfÃ¤higkeit, die simultane Druck- und Strommessung
-        im HydraulikÃ¶l ohne separate Sensoren erlaubt (IoFET-Prinzip
-        im MakromaÃŸstab)
+  \item Ionische Leitfähigkeit, die simultane Druck- und Strommessung
+        im Hydrauliköl ohne separate Sensoren erlaubt (IoFET-Prinzip
+        im Makromaßstab)
 \end{itemize}
 
 \subsection{Humanoide Robotik und Exoskelette}
 
 Die Kombination aus FPGA-Rekonfigurierbarkeit und hydraulischer
-PrÃ¤zisionsaktorik macht die Architektur attraktiv fÃ¼r
+Präzisionsaktorik macht die Architektur attraktiv für
 \textbf{humanoide Roboter} (Boston Dynamics Atlas-Klasse) und
 \textbf{industrielle Exoskelette}: Der IoFET-FPGA kann in Echtzeit
-von KraftunterstÃ¼tzungsmodus auf Impedanzregelung wechseln, wenn
-der Operator seine Bewegungsintention Ã¤ndert.
+von Kraftunterstützungsmodus auf Impedanzregelung wechseln, wenn
+der Operator seine Bewegungsintention ändert.
 
-\subsection{GrÃ¼ne Hydraulik und CO\textsubscript{2}-Bilanz}
+\subsection{Grüne Hydraulik und CO\textsubscript{2}-Bilanz}
 
 Durch die Kombination von:
 \begin{enumerate}
-  \item IoFET-SchlafzustÃ¤nden (97\% STOP-Einsparung)
+  \item IoFET-Schlafzuständen (97\% STOP-Einsparung)
   \item Hydraulischer Rekuperation ($\eta = 0.82$)
-  \item Synthetischen Hydraulikfluiden (verlÃ¤ngerte Lebensdauer $\times$3)
+  \item Synthetischen Hydraulikfluiden (verlängerte Lebensdauer $\times$3)
   \item Predictive Maintenance (40\% weniger ungeplante Ausfallzeiten)
 \end{enumerate}
-ergibt sich gegenÃ¼ber konventioneller Roboterflotte eine
+ergibt sich gegenüber konventioneller Roboterflotte eine
 CO\textsubscript{2}-Einsparung von \textbf{3{,}3~t/a}
 bei einem Fuhrpark von 100 Robotern entspricht dies
-330~t/a -- vergleichbar mit dem jÃ¤hrlichen
-CO\textsubscript{2}-AusstoÃŸ von etwa 165 Mittelklassewagen.
+330~t/a -- vergleichbar mit dem jährlichen
+CO\textsubscript{2}-Ausstoß von etwa 165 Mittelklassewagen.
 
 \subsection{Roadmap}
 
 \begin{table}[H]
 \centering
-\caption{Entwicklungs-Roadmap fÃ¼r den IoFET-Industrieroboter.}
+\caption{Entwicklungs-Roadmap für den IoFET-Industrieroboter.}
 \label{tab:roadmap}
 \small
 \begin{tabular}{|l|l|l|}
@@ -2741,7 +2741,7 @@ Industrieprototyp & Q4 2027 & SIL-2-Zertifizierung, OPC-UA \\
 \hline
 Automotive-Pilot & Q2 2028 & Karosseriebau-Installation \\
 \hline
-Serienreife & Q4 2028 & CE-Kennzeichnung, MarkteinfÃ¼hrung \\
+Serienreife & Q4 2028 & CE-Kennzeichnung, Markteinführung \\
 \hline
 Erweiterung & 2029+ & 7-Achsen, IL-Hydraulik, Humanoid \\
 \hline
@@ -2752,20 +2752,20 @@ Erweiterung & 2029+ & 7-Achsen, IL-Hydraulik, Humanoid \\
 \subsection{Technologische Entwicklungspfade der IoFET-Komponenten}
 %-----------------------------------------------------------------------
 
-\subsubsection{NÃ¤chste IoFET-Generation: FestkÃ¶rper-Ionen-Transistoren}
+\subsubsection{Nächste IoFET-Generation: Festkörper-Ionen-Transistoren}
 
 Die erste Robotergeneration nutzt wasserbasierte IoFET-Elemente.
-Die nÃ¤chste Ausbaustufe ersetzt das flÃ¼ssige Ionenmedium durch
-\textbf{FestkÃ¶rper-Ionenleiter} (Solid-State Ionic Transistors, SSIT).
+Die nächste Ausbaustufe ersetzt das flüssige Ionenmedium durch
+\textbf{Festkörper-Ionenleiter} (Solid-State Ionic Transistors, SSIT).
 Keramische Lithium-Lanthanum-Titanat-(LLTO-)Schichten weisen
-ionische LeitfÃ¤higkeiten von $\sigma_i \approx \SI{e-3}{\siemens\per\centi\meter}$
-auf und ermÃ¶glichen Schaltzeiten unter \SI{10}{\nano\second} --
+ionische Leitfähigkeiten von $\sigma_i \approx \SI{e-3}{\siemens\per\centi\meter}$
+auf und ermöglichen Schaltzeiten unter \SI{10}{\nano\second} --
 nochmals eine Dekade schneller als der aktuelle IoFET.
-FÃ¼r die Robotersteuerung bedeutet das:
+Für die Robotersteuerung bedeutet das:
 \begin{itemize}
   \item FPGA-Rekonfigurationszeit $< \SI{10}{\nano\second}$ (statt \SI{120}{\nano\second})
-  \item Kein flÃ¼ssiges Medium im FPGA-Chip -- hÃ¶here mechanische Robustheit
-  \item Betriebstemperaturen bis \SI{150}{\celsius} (GieÃŸereiroboter,
+  \item Kein flüssiges Medium im FPGA-Chip -- höhere mechanische Robustheit
+  \item Betriebstemperaturen bis \SI{150}{\celsius} (Gießereiroboter,
         Schmiedezellen)
   \item Integration auf Standard-CMOS-Wafern durch ALD-Deposition
 \end{itemize}
@@ -2773,61 +2773,61 @@ FÃ¼r die Robotersteuerung bedeutet das:
 \begin{satz}[Skalierungsgrenze des IoFET]
 \label{satz:iofet_skalierung}
 Die minimale erreichbare Schaltzeit eines IoFET-Elements ist
-nach unten beschrÃ¤nkt durch die Debye-LÃ¤nge $\lambda_D$ des
-Mediums und die maximal erreichbare IonenmobilitÃ¤t $\mu_{\text{ion}}$:
+nach unten beschränkt durch die Debye-Länge $\lambda_D$ des
+Mediums und die maximal erreichbare Ionenmobilität $\mu_{\text{ion}}$:
 \begin{equation}
   t_{\min} \geq \frac{\lambda_D^2}{D_{\text{ion}}}
   = \frac{\lambda_D^2 k_B T}{e \mu_{\text{ion}} k_B T / e}
   = \frac{\lambda_D^2}{\mu_{\text{ion}} V_T},
 \end{equation}
 mit thermischer Spannung $V_T = k_BT/e \approx \SI{26}{\milli\volt}$.
-FÃ¼r LLTO ($\lambda_D \approx \SI{1}{\nano\meter}$,
+Für LLTO ($\lambda_D \approx \SI{1}{\nano\meter}$,
 $\mu_{\text{ion}} \approx \SI{e-6}{\meter\squared\per\volt\per\second}$)
 folgt $t_{\min} \approx \SI{38}{\pico\second}$.
 \end{satz}
 
 \begin{proof}
-Die Ionenlaufzeit Ã¼ber eine Strecke $\lambda_D$ unter dem Eigenfeld des
-Systems betrÃ¤gt $t = \lambda_D / v$, $v = \mu_{\text{ion}} E$,
+Die Ionenlaufzeit über eine Strecke $\lambda_D$ unter dem Eigenfeld des
+Systems beträgt $t = \lambda_D / v$, $v = \mu_{\text{ion}} E$,
 $E = V_T / \lambda_D$. Einsetzen ergibt $t = \lambda_D^2/(\mu_{\text{ion}} V_T)$.
 \end{proof}
 
 \subsubsection{Hybride Quantencomputing-Schnittstelle}
 
-Auf einem Ã¼ber 10-Jahres-Horizont erscheint die Kopplung von
+Auf einem über 10-Jahres-Horizont erscheint die Kopplung von
 IoFET-FPGAs mit \textbf{photonischen Quantenprozessoren} realisierbar.
-Quantenannealing-Co-Prozessoren (D-Wave-Typ) kÃ¶nnen kombinatorische
+Quantenannealing-Co-Prozessoren (D-Wave-Typ) können kombinatorische
 Optimierungsprobleme der Bahn\-planung -- z.\,B. kollisionsfreie
-MehrkÃ¶rper-Trajektorie fÃ¼r $n$ Roboterarme gleichzeitig --
-in polynomialer Zeit lÃ¶sen, die klassisch exponenziell skaliert.
+Mehrkörper-Trajektorie für $n$ Roboterarme gleichzeitig --
+in polynomialer Zeit lösen, die klassisch exponenziell skaliert.
 Der IoFET-FPGA fungiert dabei als hybride Schnittstelle, die
 quantenoptimierte Trajektoriensegmente in Echtzeitsignale umsetzt.
 
 \subsubsection{Neuromorphe Regelungsarchitekturen}
 
 Spiking Neural Networks (SNNs) auf neuromorphen Chips
-(Intel Loihi~2, IBM TrueNorth) kÃ¶nnen Regelgesetze als
+(Intel Loihi~2, IBM TrueNorth) können Regelgesetze als
 ereignisgetriebene Impulskodierung implementieren.
-Da IoFET-Elemente Spannungs-abhÃ¤ngige ionische StrÃ¶me erzeugen,
-die biologischen IonenkanÃ¤len strukturell Ã¤hneln, erÃ¶ffnet
+Da IoFET-Elemente Spannungs-abhängige ionische Ströme erzeugen,
+die biologischen Ionenkanälen strukturell ähneln, eröffnet
 sich eine direkte physikalische Kopplung: Der IoFET-FPGA
-Ã¼bernimmt die synaptischen Gewichtsspeicherung, wÃ¤hrend
-der klassische ARM-Core nur noch hochrangige Supervisor-Aufgaben erfÃ¼llt.
+übernimmt die synaptischen Gewichtsspeicherung, während
+der klassische ARM-Core nur noch hochrangige Supervisor-Aufgaben erfüllt.
 
 %-----------------------------------------------------------------------
-\subsection{Hydraulische ElastizitÃ¤t: Weiterentwicklungen nach Epp}
+\subsection{Hydraulische Elastizität: Weiterentwicklungen nach Epp}
 %-----------------------------------------------------------------------
 
-\subsubsection{Ionische FlÃ¼ssigkeiten als duales Rechen- und Hydraulikmedium}
+\subsubsection{Ionische Flüssigkeiten als duales Rechen- und Hydraulikmedium}
 
 Die faszinierendste Konvergenz beider Ausgangstechnologien besteht in
-der Nutzung von \textbf{Ionischen FlÃ¼ssigkeiten (ILs)} als \emph{gleichzeitiges}
-Hydraulik- und Rechenmedium. ILs sind bei Raumtemperatur flÃ¼ssige
+der Nutzung von \textbf{Ionischen Flüssigkeiten (ILs)} als \emph{gleichzeitiges}
+Hydraulik- und Rechenmedium. ILs sind bei Raumtemperatur flüssige
 Salze (z.\,B. \mbox{[EMIM][BF4]}) mit folgenden Eigenschaften:
 
 \begin{table}[H]
 \centering
-\caption{Vergleich: Standard-HLP~46 vs.\ Ionische FlÃ¼ssigkeit [EMIM][BF4].}
+\caption{Vergleich: Standard-HLP~46 vs.\ Ionische Flüssigkeit [EMIM][BF4].}
 \label{tab:il_vergleich}
 \small
 \begin{tabular}{|l|r|r|}
@@ -2839,9 +2839,9 @@ Bulk-Modul $K$ [\si{\mega\pascal}] & 1650 & $\approx$2400 \\
 \hline
 Dampfdruck [\si{\pascal}] & $\approx$1 & $< 10^{-6}$ \\
 \hline
-Kavitationsrisiko & Mittel & VernachlÃ¤ssigbar \\
+Kavitationsrisiko & Mittel & Vernachlässigbar \\
 \hline
-Ionische LeitfÃ¤higkeit [\si{\milli\siemens\per\centi\meter}] & -- & 14 \\
+Ionische Leitfähigkeit [\si{\milli\siemens\per\centi\meter}] & -- & 14 \\
 \hline
 Simultane Druck/Strom-Messung & Nein & Ja (IoFET-Prinzip) \\
 \hline
@@ -2852,38 +2852,38 @@ Lebensdauerfaktor (vs.\ HLP) & $\times 1$ & $> \times 5$ \\
 
 \begin{satz}[IL-Kavitationsfreiheit]
 \label{satz:il_kavfrei}
-FÃ¼r $P_v < \SI{e-6}{\pascal}$ ist die Kavitationsfreiheitsbedingung
-$P_{\text{stat}} > P_v$ fÃ¼r jeden realistischen Systemdruck trivial
-erfÃ¼llt, d.\,h. kavitationsinduzierte Erosion verschwindet praktisch
-vollstÃ¤ndig.
+Für $P_v < \SI{e-6}{\pascal}$ ist die Kavitationsfreiheitsbedingung
+$P_{\text{stat}} > P_v$ für jeden realistischen Systemdruck trivial
+erfüllt, d.\,h. kavitationsinduzierte Erosion verschwindet praktisch
+vollständig.
 \end{satz}
 
 \begin{proof}
 $P_{\text{stat}} \geq \SI{5}{\bar} = \SI{5e5}{\pascal} \gg \SI{e-6}{\pascal} = P_v$.
-Da $P_{\min} = P_{\text{stat}} - \hat{P} > 0$ fÃ¼r jede realisierbare
-Druckamplitude gilt, ist die Bedingung stets erfÃ¼llt.
+Da $P_{\min} = P_{\text{stat}} - \hat{P} > 0$ für jede realisierbare
+Druckamplitude gilt, ist die Bedingung stets erfüllt.
 \end{proof}
 
 \subsubsection{Selbstheilende Hydraulikfluide (Self-Healing Fluids)}
 
 Durch Beimischung von Mikrokapsel-haltigen Additiven (Diameter: \SI{5}{\micro\meter})
-kÃ¶nnen zukÃ¼nftige Hydraulikfluide Dichtrisse und
-Mikroporen eigenstÃ¤ndig versiegeln. Bricht eine Mikrokapsel,
+können zukünftige Hydraulikfluide Dichtrisse und
+Mikroporen eigenständig versiegeln. Bricht eine Mikrokapsel,
 setzt sie reaktive Monomere frei, die unter Druckeinfluss
-polymerisieren und den Defekt schlieÃŸen. Die Lebensdauer
-von Hydraulikdichtungen kÃ¶nnte sich dadurch um weiteren Faktor~2
-auf $> \SI{50000}{\hour}$ verlÃ¤ngern -- ein direkter Anschluss
+polymerisieren und den Defekt schließen. Die Lebensdauer
+von Hydraulikdichtungen könnte sich dadurch um weiteren Faktor~2
+auf $> \SI{50000}{\hour}$ verlängern -- ein direkter Anschluss
 an die Epp'sche Lebensdauertheorie (Satz~\ref{satz:gesamtleben}).
 
-\subsubsection{Nanopartikel-verstÃ¤rkte HydraulikÃ¶le}
+\subsubsection{Nanopartikel-verstärkte Hydrauliköle}
 
-Die Beimischung von \textbf{Graphen-NanoplÃ¤ttchen}
+Die Beimischung von \textbf{Graphen-Nanoplättchen}
 (Konzentration: 0{,}05--0{,}1~wt.-\%) in Synthetik-HG~46
 hat in Laborstudien folgende Effekte gezeigt:
 \begin{itemize}
-  \item ViskositÃ¤tserhÃ¶hung um \SI{12}{\percent} (verbessert EHD-Film)
-  \item WÃ¤rmeleitfÃ¤higkeit $+\SI{18}{\percent}$ (verbessert Thermomanagement)
-  \item Reibungskoeffizient $-\SI{25}{\percent}$ (reduziert PumpverschleiÃŸ)
+  \item Viskositätserhöhung um \SI{12}{\percent} (verbessert EHD-Film)
+  \item Wärmeleitfähigkeit $+\SI{18}{\percent}$ (verbessert Thermomanagement)
+  \item Reibungskoeffizient $-\SI{25}{\percent}$ (reduziert Pumpverschleiß)
   \item Bulk-Modul $+\SI{5}{\percent}$ (verbessert Positionsgenauigkeit)
 \end{itemize}
 In Verbindung mit dem Epp-Modell ($K_{\text{eff}} \to K_{\text{eff}} \cdot 1{,}05$)
@@ -2894,21 +2894,21 @@ um weitere \SI{5}{\percent}.
 \subsection{Erweiterte Anwendungsgebiete}
 %-----------------------------------------------------------------------
 
-\subsubsection{Humanoide Robotik und KI-gestÃ¼tzte Motorik}
+\subsubsection{Humanoide Robotik und KI-gestützte Motorik}
 
-Die IoFET-FPGA-Architektur ist fÃ¼r \textbf{humanoide Roboter}
+Die IoFET-FPGA-Architektur ist für \textbf{humanoide Roboter}
 (Tesla Optimus, Boston Dynamics Atlas, Agility Robotics Digit)
-ideal geeignet: Der menschliche KÃ¶rper hat 244~Freiheitsgrade;
+ideal geeignet: Der menschliche Körper hat 244~Freiheitsgrade;
 die hydraulisch-elektrische Hybridaktorik und hochfrequente
-FPGA-Neukonfiguration ermÃ¶glichen Reaktionszeiten in
-der GrÃ¶ÃŸenordnung des menschlichen Nervensystems (\SI{50}{\milli\second}).
+FPGA-Neukonfiguration ermöglichen Reaktionszeiten in
+der Größenordnung des menschlichen Nervensystems (\SI{50}{\milli\second}).
 Konkret:
 \begin{itemize}
   \item \textbf{Gleichgewichtsregelung:} Impedanzregler (IoFET-FPGA)
         mit \SI{1}{\kilo\hertz} Regelrate; im Vergleich: menschlicher
         Gleichgewichtsreflex \SI{75}{\milli\second}
   \item \textbf{Greifkraft-Regelung:} Hydrostatische Fingeraktoren
-        mit PrÃ¤zision \SI{<0.1}{\newton} -- relevant fÃ¼r empfindliche
+        mit Präzision \SI{<0.1}{\newton} -- relevant für empfindliche
         Bauteile
   \item \textbf{Gangregelung:} Kombination von MPC (Model Predictive
         Control) auf Edge-Co-Prozessor mit IoFET-Impedanzregler
@@ -2920,22 +2920,22 @@ Konkret:
 Im \textbf{da-Vinci-Nachfolge}-Segment bieten IoFET-Aktoren entscheidende
 Vorteile:
 \begin{itemize}
-  \item MRT-KompatibilitÃ¤t: Ionische FlÃ¼ssigkeiten sind nicht magnetisch;
-        der IoFET-FPGA kann in KeramikgehÃ¤use verpackt werden
+  \item MRT-Kompatibilität: Ionische Flüssigkeiten sind nicht magnetisch;
+        der IoFET-FPGA kann in Keramikgehäuse verpackt werden
   \item Sterilisierbarkeit: Synthetische Hydraulikfluide nach Epp sind
-        biokompatibel und autoklavierfÃ¤hig (\SI{134}{\celsius}, \SI{3}{\bar})
-  \item KraftrÃ¼ckkopplung: \SI{<10}{\milli\newton} AuflÃ¶sung --
+        biokompatibel und autoklavierfähig (\SI{134}{\celsius}, \SI{3}{\bar})
+  \item Kraftrückkopplung: \SI{<10}{\milli\newton} Auflösung --
         vergleichbar mit chirurgischem Tastsinn
   \item Fail-Safe: IoFET-STOP-Reaktionszeit \SI{550}{\nano\second}
         (weit unter Sicherheitsanforderungen SIL~3)
 \end{itemize}
-Die LebensdauerverlÃ¤ngerung durch Epp-optimierte Fluide (Faktor 3,1)
+Die Lebensdauerverlängerung durch Epp-optimierte Fluide (Faktor 3,1)
 ist hier besonders wertvoll: Wartungsintervalle im Operationssaal
 sind mit Ausfallzeiten von $>$\num{10000}~EUR/h verbunden.
 
 \subsubsection{Weltraumrobotik und Extremumgebungen}
 
-FÃ¼r \textbf{Weltraumanwendungen} (ISS-Wartungsroboter, Mondregolith-Bergbau,
+Für \textbf{Weltraumanwendungen} (ISS-Wartungsroboter, Mondregolith-Bergbau,
 Mars-Terrain-Exploration) gelten extreme Anforderungen:
 \begin{itemize}
   \item Temperaturbereich: $-180\,{}^{\circ}\text{C}$ bis $+150\,{}^{\circ}\text{C}$
@@ -2944,34 +2944,34 @@ Mars-Terrain-Exploration) gelten extreme Anforderungen:
         (Bit-Flips werden in \SI{120}{\nano\second} korrigiert)
   \item Gewicht: IoFET-Chip 40\,\% leichter als Flash-FPGA-Alternative
 \end{itemize}
-Ionische FlÃ¼ssigkeiten lÃ¶sen das Kavitationsproblem (Satz~\ref{satz:il_kavfrei});
-der SSIT-IoFET (FestkÃ¶rper) Ã¼bersteht Temperaturschwankungen ohne
-FlÃ¼ssigkeitsgefrierproblem.
+Ionische Flüssigkeiten lösen das Kavitationsproblem (Satz~\ref{satz:il_kavfrei});
+der SSIT-IoFET (Festkörper) übersteht Temperaturschwankungen ohne
+Flüssigkeitsgefrierproblem.
 
 \subsubsection{Unterwasser-Robotik und maritime Anwendungen}
 
 \textbf{Unterwasserfahrzeuge} (AUVs) und -manipulatoren profitieren:
 \begin{itemize}
   \item Hydraulische Aktoren sind druckkompensiert (Umgebungsdruck
-        kompensiert automatisch): Keine zusÃ¤tzliche Abdichtung nÃ¶tig
+        kompensiert automatisch): Keine zusätzliche Abdichtung nötig
   \item IoFET-FPGA in druckfester Kapselung bis \SI{600}{\bar}
         (entspricht $\approx$\SI{6000}{\meter} Tiefe)
-  \item Epp-Modell wird bei hohem Umgebungsdruck \emph{gÃ¼nstiger}:
+  \item Epp-Modell wird bei hohem Umgebungsdruck \emph{günstiger}:
         $K_{\text{eff}}$ steigt mit $p$ (Satz~\ref{satz:bulkmonoton}),
         Positionsfehler sinkt automatisch
 \end{itemize}
 
 \subsubsection{Agrar- und Ernteroboter}
 
-\textbf{Autonomous Farming Robots} fÃ¼r Weinlese, Obsternte und
+\textbf{Autonomous Farming Robots} für Weinlese, Obsternte und
 Spargelernte erfordern sanfte, adaptive Greifkraftregelung
 (\SI{< 2}{\newton}) und wetterrobuste Elektronik.
 Der IoFET-Roboter bietet:
 \begin{itemize}
   \item \texttt{energy\_save}-Profil im Feldleerlauf; STOP-Leistung \SI{0.8}{\watt}
-        fÃ¼r Solar-autarkes Laden in 2~h pro Tag
-  \item Impedanzregler (IoFET-FPGA) fÃ¼r sichere Mensch-Maschine-NÃ¤he
-  \item Bio-kompatible Hydraulikfluide (Epp-zertifiziert) fÃ¼r
+        für Solar-autarkes Laden in 2~h pro Tag
+  \item Impedanzregler (IoFET-FPGA) für sichere Mensch-Maschine-Nähe
+  \item Bio-kompatible Hydraulikfluide (Epp-zertifiziert) für
         Lebensmittelkontaktbereiche
 \end{itemize}
 
@@ -2979,7 +2979,7 @@ Der IoFET-Roboter bietet:
 \subsection{Industrie~5.0: Mensch-Roboter-Kollaboration}
 %-----------------------------------------------------------------------
 
-Der Ãœbergang von Industrie~4.0 (Automatisierung) zu \textbf{Industrie~5.0}
+Der Übergang von Industrie~4.0 (Automatisierung) zu \textbf{Industrie~5.0}
 (Mensch-zentrierte kollaborative Produktion) stellt neue Anforderungen:
 
 \begin{enumerate}
@@ -2988,16 +2988,16 @@ Der Ãœbergang von Industrie~4.0 (Automatisierung) zu \textbf{Industrie~5.0}
         passen die Impedanzregelung des Roboters in \SI{<20}{\milli\second}
         an -- schneller als ein Mensch reagieren kann
   \item \textbf{Taktile Kommunikation:} IoFET-Elemente als Drucksensoren
-        in der Roboteroberfl\"{a}che messen BerÃ¼hrkrÃ¤fte $<\SI{50}{\milli\newton}$;
+        in der Roboteroberfl\"{a}che messen Berührkräfte $<\SI{50}{\milli\newton}$;
         sanfter als menschliche Haptik
   \item \textbf{Sprachgesteuerte Rekonfiguration:} GPT-4-basierter
-        Sprachinterface Ã¼bersetzt natÃ¼rlichsprachliche Anweisungen
+        Sprachinterface übersetzt natürlichsprachliche Anweisungen
         in JSON-Konfigurationspakete (Abschnitt~8.2):
         \texttt{"Wechsle in Lackierlinien-Modus"} $\rightarrow$
         IoFET-Rekonfiguration in \SI{2.5}{\second}
   \item \textbf{Vorhersage durch digitalen Zwilling:} Der Live-Digital-Twin
         (IEC~62832) simuliert jede geplante Bewegung \emph{vor}
-        der AusfÃ¼hrung; Kollisionen werden virtuell erkannt
+        der Ausführung; Kollisionen werden virtuell erkannt
         und verhindert
 \end{enumerate}
 
@@ -3007,23 +3007,23 @@ Der Ãœbergang von Industrie~4.0 (Automatisierung) zu \textbf{Industrie~5.0}
 
 \subsubsection{Wasserstoff-hydraulische Systeme}
 
-GrÃ¼ner Wasserstoff ($\mathrm{H_2}$) als EnergietrÃ¤ger ermÃ¶glicht
+Grüner Wasserstoff ($\mathrm{H_2}$) als Energieträger ermöglicht
 \textbf{Brennstoffzellen-Hydraulik}: Das Hydrauliksystem wird als
 Energiewandler genutzt -- $\mathrm{H_2}$ treibt eine Brennstoffzelle,
-die Strom fÃ¼r die Elektrohydraulikpumpe liefert; WÃ¤rme und Wasser
-werden rÃ¼ckgewonnen. In Kombination mit dem Epp-optimierten
+die Strom für die Elektrohydraulikpumpe liefert; Wärme und Wasser
+werden rückgewonnen. In Kombination mit dem Epp-optimierten
 synthetischen Hydraulikfluid ergibt sich ein nahezu emissionsfreier
 Betriebszyklus.
 
-\subsubsection{Kreislaufwirtschaft fÃ¼r HydraulikÃ¶le}
+\subsubsection{Kreislaufwirtschaft für Hydrauliköle}
 
-Synthetik~HG~46 (Epp-Optimierung) lÃ¤sst sich bei hÃ¶chster Reinheit
-\textbf{unbegrenzt aufbereiten} -- im Gegensatz zu mineralischen Ã–len,
+Synthetik~HG~46 (Epp-Optimierung) lässt sich bei höchster Reinheit
+\textbf{unbegrenzt aufbereiten} -- im Gegensatz zu mineralischen Ölen,
 die nach 3--5 Aufbereitungszyklen degradieren.
 Die Kreislaufwirtschaftlichkeit:
 \begin{align}
-  \text{CO}_2\text{-Einsparung} &= n_{\text{Aufbereit.}} \times m_{\text{Ã–l}}
-    \times e_{\text{RohÃ¶l-CO}_2} \notag \\
+  \text{CO}_2\text{-Einsparung} &= n_{\text{Aufbereit.}} \times m_{\text{Öl}}
+    \times e_{\text{Rohöl-CO}_2} \notag \\
   &= 20 \times \SI{5}{\kilo\gram} \times \SI{3.2}{\kilo\gram\,\text{CO}_2\per\kilo\gram}
   = \SI{320}{\kilo\gram}\,\text{CO}_2 \text{ je Roboter.}
 \end{align}
@@ -3032,7 +3032,7 @@ Die Kreislaufwirtschaftlichkeit:
 
 Die STOP-Leistung von \SI{0.8}{\watt} macht den IoFET-Roboter
 in Nacht- oder Wochenendzeiten solar-autonom betreibbar:
-Ein 20-\si{\watt}-PV-Modul (Peak) genÃ¼gt, um alle Ãœberwachungs-
+Ein 20-\si{\watt}-PV-Modul (Peak) genügt, um alle Überwachungs-
 und Keep-alive-Funktionen zu betreiben.
 
 %-----------------------------------------------------------------------
@@ -3050,14 +3050,14 @@ Epp'sche $K_{\text{eff}}(p,T)$-Modell in Echtzeit:
   \label{eq:druckdynamik}
 \end{equation}
 
-wobei $Q_{\text{in/out}}$ die VolumenstrÃ¶me und $\dot{x}$ die
+wobei $Q_{\text{in/out}}$ die Volumenströme und $\dot{x}$ die
 Kolbengeschwindigkeit sind. Diese Gleichung wird direkt auf dem
 MCU-Cortex-M7 in \SI{100}{\micro\second}-Zyklen integriert
-(Euler-Verfahren, ausreichend stabil fÃ¼r langsame Hydraulikdynamik).
+(Euler-Verfahren, ausreichend stabil für langsame Hydraulikdynamik).
 
-\begin{satz}[StabilitÃ¤t der Druckdynamik]
+\begin{satz}[Stabilität der Druckdynamik]
 \label{satz:druckstabil}
-Das Euler-Verfahren fÃ¼r~\eqref{eq:druckdynamik} mit Schrittweite
+Das Euler-Verfahren für~\eqref{eq:druckdynamik} mit Schrittweite
 $h$ ist stabil, wenn:
 \begin{equation}
   h < \frac{2 V_0}{K_{\text{eff}} (|A_K v_{\max}| + Q_{\max})}\,.
@@ -3068,10 +3068,10 @@ $h$ ist stabil, wenn:
 \begin{proof}
 Linearisierung um einen Arbeitspunkt ergibt die lineare ODE
 $\dot{P} = -\gamma P + f(t)$ mit $\gamma > 0$.
-Das Euler-Verfahren ist stabil fÃ¼r $|1 - h\gamma| < 1$,
+Das Euler-Verfahren ist stabil für $|1 - h\gamma| < 1$,
 d.\,h. $h < 2/\gamma$.
 Mit $\gamma = K_{\text{eff}} (A_K v + Q)/(V_0 P)$ ergibt
-sich~\eqref{eq:eulerstab} fÃ¼r den ungÃ¼nstigsten Fall $P \to P_{\max}$.
+sich~\eqref{eq:eulerstab} für den ungünstigsten Fall $P \to P_{\max}$.
 \end{proof}
 
 \subsubsection{Physik-informierte neuronale Netze (PINNs)}
@@ -3084,84 +3084,84 @@ datengetriebenen Korrekturtermen:
     + \delta K_{\text{NN}}(p,T,t_{\text{Alter}},\Delta\nu),
 \end{equation}
 wobei $\delta K_{\text{NN}}$ die Alterungs- und Kontaminationseffekte
-des Ã–ls in Echtzeit korrigiert. Dies erhÃ¶ht die Modellgenauigkeit
+des Öls in Echtzeit korrigiert. Dies erhöht die Modellgenauigkeit
 von $\pm\SI{2}{\percent}$ (rein physikalisch) auf $\pm\SI{0.3}{\percent}$
-(PINN) -- direkt nutzbar fÃ¼r prÃ¤zisere Positionsregelung.
+(PINN) -- direkt nutzbar für präzisere Positionsregelung.
 
 %-----------------------------------------------------------------------
 \subsection{Materialwissenschaft und Herstellungstechnologie}
 %-----------------------------------------------------------------------
 
-\subsubsection{3D-gedruckte HydraulikmikrokanÃ¤le}
+\subsubsection{3D-gedruckte Hydraulikmikrokanäle}
 
 \textbf{Additive Fertigung} (Multi-Jet Fusion, $\pm\SI{50}{\micro\meter}$)
-erlaubt integrierte HydraulikkanÃ¤le direkt im Gelenkmodul-KÃ¶rper.
-Dies eliminiert externe SchlÃ¤uche, reduziert Leckagerisiko und
-ermÃ¶glicht komplexe Kanalgeometrien, die den Druckabfall minimieren:
+erlaubt integrierte Hydraulikkanäle direkt im Gelenkmodul-Körper.
+Dies eliminiert externe Schläuche, reduziert Leckagerisiko und
+ermöglicht komplexe Kanalgeometrien, die den Druckabfall minimieren:
 \begin{equation}
   \Delta P_{\text{Kanal}} = \frac{128 \eta L Q}{\pi d^4}
   \quad \xrightarrow{d \to d_{\text{opt}}} \quad \min.
 \end{equation}
-Die OptimallÃ¶sung fÃ¼r gegebenen Querschnitt $A = \pi d^2/4$
+Die Optimallösung für gegebenen Querschnitt $A = \pi d^2/4$
 liegt bei $d_{\text{opt}} = \sqrt{4A/\pi}$ -- direkt aus dem
 gedruckten Bauteil realisierbar.
 
-\subsubsection{Carbon-NanorÃ¶hren-verstÃ¤rkte Dichtungen}
+\subsubsection{Carbon-Nanoröhren-verstärkte Dichtungen}
 
-CNT-verstÃ¤rkte Elastomerdichtungen (0{,}5~wt.\% MWCNT) zeigen:
+CNT-verstärkte Elastomerdichtungen (0{,}5~wt.\% MWCNT) zeigen:
 \begin{itemize}
   \item Zugfestigkeit $+\SI{85}{\percent}$
-  \item VerschleiÃŸrate $-\SI{60}{\percent}$
+  \item Verschleißrate $-\SI{60}{\percent}$
   \item Temperaturfestigkeit bis \SI{300}{\celsius}
 \end{itemize}
 In Verbindung mit dem Epp-Lebensdauerfaktor (Satz~\ref{satz:gesamtleben})
 ergibt sich ein kombinierter Dichtungslebensdauerfaktor von
-$3{,}4 \times 2{,}5 \approx 8{,}5$ gegenÃ¼ber Standard-Referenz.
+$3{,}4 \times 2{,}5 \approx 8{,}5$ gegenüber Standard-Referenz.
 
 %-----------------------------------------------------------------------
 \subsection{Standardisierung, Zertifizierung und Regulierung}
 %-----------------------------------------------------------------------
 
-\subsubsection{Neue Normen fÃ¼r IoFET-basierte Steuerungssysteme}
+\subsubsection{Neue Normen für IoFET-basierte Steuerungssysteme}
 
 Die vorliegende Architektur erfordert und initiiert neue Normgebung:
 
 \begin{itemize}
   \item \textbf{IEC~61131-7 (Vorschlag):} Erweiterung der SPS-Programmierung
-        um dynamisch rekonfigurierbare LogikblÃ¶cke (IoFET-Klasse)
-  \item \textbf{ISO~10218-3 (Vorschlag):} Sicherheitsanforderungen fÃ¼r
+        um dynamisch rekonfigurierbare Logikblöcke (IoFET-Klasse)
+  \item \textbf{ISO~10218-3 (Vorschlag):} Sicherheitsanforderungen für
         Roboter mit ionotronischer Steuerung -- insbesondere Bewertung
         des Rekonfigurationsrisikos
   \item \textbf{DIN~51524-4 (Vorschlag):} Klassifikation synthetischer
-        Hydraulikfluide mit Epp-zertifizierter ElastizitÃ¤tskennlinie
-        fÃ¼r HochprÃ¤zisionsanwendungen
-  \item \textbf{EU~AI~Act, Anhang~III:} IoFET-gestÃ¼tzte autonom
+        Hydraulikfluide mit Epp-zertifizierter Elastizitätskennlinie
+        für Hochpräzisionsanwendungen
+  \item \textbf{EU~AI~Act, Anhang~III:} IoFET-gestützte autonom
         adaptierende Roboter fallen unter Hochrisiko-KI-Systeme;
         FPGA-Rekonfigurationshistorie muss protokolliert werden
 \end{itemize}
 
-\subsubsection{SIL-3-Erweiterung durch vierkanalige Ãœberwachung}
+\subsubsection{SIL-3-Erweiterung durch vierkanalige Überwachung}
 
-Ãœber SIL~2 hinaus ermÃ¶glicht die IoFET-Architektur durch
+Über SIL~2 hinaus ermöglicht die IoFET-Architektur durch
 \textbf{vierkanalige Redundanz} theoretisch SIL~3 nach IEC~61508:
 
-\begin{lemma}[SIL-3-VerfÃ¼gbarkeit]
+\begin{lemma}[SIL-3-Verfügbarkeit]
 \label{lem:sil3}
-FÃ¼r eine 2-aus-4-Abstimmungslogik (2oo4) mit kanalweiser
+Für eine 2-aus-4-Abstimmungslogik (2oo4) mit kanalweiser
 Ausfallrate $\lambda_{\text{kanal}} = \SI{e-7}{\per\hour}$
-betrÃ¤gt die systematische Systemausfallrate:
+beträgt die systematische Systemausfallrate:
 \begin{equation}
   \lambda_{\text{sys}}^{\text{2oo4}}
   = 6 \,\lambda_{\text{kanal}}^2 \,\tau_{\text{test}}
   = 6 \times 10^{-14} \times 720
   = \SI{4.3e-11}{\per\hour},
 \end{equation}
-mit PrÃ¼fintervall $\tau_{\text{test}} = \SI{720}{\hour}$.
+mit Prüfintervall $\tau_{\text{test}} = \SI{720}{\hour}$.
 Dies entspricht SIL~3 ($< \SI{e-7}{\per\hour}$) mit Sicherheitsreserve.
 \end{lemma}
 
 \begin{proof}
-Standardformel fÃ¼r 2oo4-Abstimmung: $\lambda_{\text{sys}} =
+Standardformel für 2oo4-Abstimmung: $\lambda_{\text{sys}} =
 \binom{4}{2} \lambda^2 \tau / 2 =
 6 \lambda_{\text{kanal}}^2 \tau_{\text{test}}$.
 Einsetzen der Zahlen ergibt den angegebenen Wert.
@@ -3179,21 +3179,21 @@ Der IoFET-Industrieroboter schafft neue Berufsprofile:
   \item \textbf{IoFET-Systemingenieur:} Kenntnis von Ionik,
         FPGA-Design \emph{und} Hydrauliktechnik (trisektorale Kompetenz)
   \item \textbf{Hydraulik-Datenanalyst:} Auswertung von Epp-Modell-
-        basierten Fluid-Monitoring-Daten fÃ¼r Predictive Maintenance
+        basierten Fluid-Monitoring-Daten für Predictive Maintenance
   \item \textbf{Robotik-Konfigurations\-manager:} JSON/OPC-UA-basierte
         Produktionszellen-Optimierung ohne Programmierkenntnisse
   \item \textbf{IoFET-Chip-Prozess\-ingenieur:} Spezialisierung auf
-        ionische DÃ¼nnschichten in der Halbleiterfertigung
+        ionische Dünnschichten in der Halbleiterfertigung
 \end{itemize}
 
-\subsubsection{MakroÃ¶konomische Auswirkungen}
+\subsubsection{Makroökonomische Auswirkungen}
 
 Eine Flotte von 100 IoFET-Robotern pro Automobilwerk (5 Werke)
-ergibt folgende jÃ¤hrliche Einsparungen:
+ergibt folgende jährliche Einsparungen:
 
 \begin{table}[H]
 \centering
-\caption{MakroÃ¶konomische JÃ¤hrliche Einsparung -- Flottenrechnung.}
+\caption{Makroökonomische Jährliche Einsparung -- Flottenrechnung.}
 \label{tab:makroe}
 \small
 \begin{tabular}{|l|r|r|}
@@ -3205,13 +3205,13 @@ Energie (44\% Reduktion) & 1\,650~EUR & 825\,000~EUR \\
 \hline
 Wartung (Lebensdauer $\times$3,1) & 3\,500~EUR & 1\,750\,000~EUR \\
 \hline
-UmrÃ¼stzeit ($<$2,5\,s vs.\ 20\,min) & 4\,200~EUR & 2\,100\,000~EUR \\
+Umrüstzeit ($<$2,5\,s vs.\ 20\,min) & 4\,200~EUR & 2\,100\,000~EUR \\
 \hline
 Rekuperation (265~EUR) & 265~EUR & 132\,500~EUR \\
 \hline
 \textbf{Gesamt} & \textbf{9\,615~EUR} & \textbf{4\,807\,500~EUR} \\
 \hline
-CO$_2$-Ã„quivalent & 3,3~t & 1\,650~t \\
+CO$_2$-Äquivalent & 3,3~t & 1\,650~t \\
 \hline
 \end{tabular}
 \end{table}
@@ -3219,10 +3219,10 @@ CO$_2$-Ã„quivalent & 3,3~t & 1\,650~t \\
 \subsubsection{Technologietransfer und globale Perspektive}
 
 Da IoFET-Chips auf Standard-CMOS-Prozessen bauen (keine seltenen
-Erden erforderlich), kÃ¶nnen sie auch in ProduktionsstÃ¤tten
-der SchwellenlÃ¤nder gefertigt werden. Die Open-Hardware-Strategie
+Erden erforderlich), können sie auch in Produktionsstätten
+der Schwellenländer gefertigt werden. Die Open-Hardware-Strategie
 (JSON-Konfiguration, OPC-UA, EtherCAT) senkt Eintrittsbarrieren:
-Auch kleinere Automobilhersteller (z.\,B. in SÃ¼dostasien, Lateinamerika)
+Auch kleinere Automobilhersteller (z.\,B. in Südostasien, Lateinamerika)
 partizipieren an der Effizienzrevolution.
 
 %-----------------------------------------------------------------------
@@ -3231,45 +3231,45 @@ partizipieren an der Effizienzrevolution.
 
 \begin{enumerate}
   \item \textbf{Langzeitalterung von IoFET-Elementen:}
-        Wie verÃ¤ndert sich $V_T$ nach $10^9$ Schaltzyklen?
+        Wie verändert sich $V_T$ nach $10^9$ Schaltzyklen?
         Erste Studien zeigen $\Delta V_T < \SI{5}{\milli\volt}$ nach
         $10^6$ Zyklen; extrapoliert sind $10^9$ Zyklen noch unerforscht.
 
-  \item \textbf{TemperaturabhÃ¤ngigkeit der ionischen MobilitÃ¤t
-        in SSIT:} $\mu_{\text{ion}}(T)$ fÃ¼r LLTO-DÃ¼nnschichten
-        bei $T < \SI{-40}{\celsius}$ ist noch nicht vollstÃ¤ndig
-        charakterisiert; relevant fÃ¼r AuÃŸenanwendungen.
+  \item \textbf{Temperaturabhängigkeit der ionischen Mobilität
+        in SSIT:} $\mu_{\text{ion}}(T)$ für LLTO-Dünnschichten
+        bei $T < \SI{-40}{\celsius}$ ist noch nicht vollständig
+        charakterisiert; relevant für Außenanwendungen.
 
   \item \textbf{Nichtlineare Kopplung IoFET--Hydraulik:}
         Wenn der IoFET im FPGA als Schaltelement fungiert und
         gleichzeitig das Hydraulikfluid ionisch ist, gibt es
         potenzielle elektromagnetische Wechselwirkungen
-        zwischen FPGA-Schaltspannungen und HydraulikleitfÃ¤higkeit.
-        Das Ãœbersprechen ist bisher unquantifiziert.
+        zwischen FPGA-Schaltspannungen und Hydraulikleitfähigkeit.
+        Das Übersprechen ist bisher unquantifiziert.
 
-  \item \textbf{Ã–l-Alterungsmodell unter dynamischer Belastung:}
+  \item \textbf{Öl-Alterungsmodell unter dynamischer Belastung:}
         Das Epp-Modell $K_{\text{eff}}(p,T)$ beschreibt frisches Fluid.
         Ein erweitertes Modell $K_{\text{eff}}(p,T,t_{\text{Alter}},\nu_{\text{drift}})$
         ist in Vorbereitung; erste Messreihen zeigen
         $dK_{\text{eff}}/dt_{\text{Alter}} \approx \SI{-0.5}{\mega\pascal\per\kilo\hour}$.
 
   \item \textbf{Optimale Rekonfigurationsfrequenz:}
-        Wie hÃ¤ufig soll der IoFET-FPGA zwischen Regelungsvarianten
+        Wie häufig soll der IoFET-FPGA zwischen Regelungsvarianten
         wechseln -- bei zu hoher Frequenz entstehen Transientenfehler,
-        bei zu niedriger Frequenz geht AdaptivitÃ¤t verloren.
+        bei zu niedriger Frequenz geht Adaptivität verloren.
         Eine formale Analyse der optimalen Schaltfrequenz steht aus.
 
   \item \textbf{Skalierung auf 100+ Freiheitsgrade:}
         Humanoide Roboter mit $n > 50$~DoF erfordern parallele
         IoFET-FPGA-Konfigurationen. Das Kommunikationsprotokoll
-        zwischen MCU und FPGA-Array muss fÃ¼r $n > 20$~DoF
+        zwischen MCU und FPGA-Array muss für $n > 20$~DoF
         neu konzipiert werden (Bus-Bandbreite $B > \SI{10}{\giga\bit\per\second}$
         bei gleichzeitiger Rekonfiguration).
 
-  \item \textbf{BiokompatibilitÃ¤t ionischer FlÃ¼ssigkeiten:}
-        FÃ¼r ME\-di\-zi\-ni\-sche Anwendungen muss die toxikologische
+  \item \textbf{Biokompatibilität ionischer Flüssigkeiten:}
+        Für ME\-di\-zi\-ni\-sche Anwendungen muss die toxikologische
         Unbedenklichkeit von [EMIM][BF4] und Alterungsprodukten
-        nach ISO~10993 vollstÃ¤ndig belegt werden.
+        nach ISO~10993 vollständig belegt werden.
 
   \item \textbf{Quantifizierung des PINN-Gewinns:}
         In welchen Betriebspunkten verbessert das physik-informierte
@@ -3286,30 +3286,30 @@ partizipieren an der Effizienzrevolution.
 
 \medskip
 Ein Roboterarm aus 3D-gedruckten Titanbauteilen mit integrierten
-MikrohydraulikkanÃ¤len bewegt sich in einer Automobilmontage.
+Mikrohydraulikkanälen bewegt sich in einer Automobilmontage.
 Sein Innenleben: ein Solid-State-IoFET-Chip der dritten Generation
 ($t_{\text{rek}} = \SI{10}{\nano\second}$) konfiguriert in Echtzeit
 einen 12-Achsen-Zynq-Ultrascale+-FPGA.
-Als Hydraulikfluid flieÃŸt ionische FlÃ¼ssigkeit [EMIM][BF4],\medskip
+Als Hydraulikfluid fließt ionische Flüssigkeit [EMIM][BF4],\medskip
 
 \noindent die gleichzeitig als Sensor fungiert -- Druck und
-Ionenstrom werden von derselben FlÃ¼ssigkeit gemessen.
-CNT-verstÃ¤rkte Dichtungen halten $>$\SI{50000}{\hour}.
+Ionenstrom werden von derselben Flüssigkeit gemessen.
+CNT-verstärkte Dichtungen halten $>$\SI{50000}{\hour}.
 Der digitale Zwilling auf PINN-Basis korrigiert Fluid-Alterung
-auf $\pm\SI{0.05}{\micro\meter}$ PositionsprÃ¤zision.\medskip
+auf $\pm\SI{0.05}{\micro\meter}$ Positionspräzision.\medskip
 
 \noindent Im Schichtbetrieb verbraucht der Arm durchschnittlich
 \SI{180}{\watt} -- weniger als ein Desktop-PC.
-Sein MTBF betrÃ¤gt $>$\SI{80000}{\hour} -- Ã¼ber 9~Jahre
+Sein MTBF beträgt $>$\SI{80000}{\hour} -- über 9~Jahre
 \emph{ununterbrochenem} Betrieb.
 Wartungskosten: $<$500~EUR/Jahr.
-CO$_2$-FuÃŸabdruck: \SI{0.08}{\kilo\gram\per\kilo\watt\hour}
+CO$_2$-Fußabdruck: \SI{0.08}{\kilo\gram\per\kilo\watt\hour}
 (Restemissionen aus Stahlherstellung).
 
 \medskip
 \noindent Dies ist die direkte, logische Weiterentwicklung der
-Theorie von Stephan Epp zur hydraulischen ElastizitÃ¤t
-(hergeleitet in den SÃ¤tzen~\ref{satz:lagerlebensdauer}--\ref{satz:gesamtleben})
+Theorie von Stephan Epp zur hydraulischen Elastizität
+(hergeleitet in den Sätzen~\ref{satz:lagerlebensdauer}--\ref{satz:gesamtleben})
 und der IoFET-Technologie (Gleichung~(1)).
 \end{mdframed}
 
@@ -3317,79 +3317,79 @@ und der IoFET-Technologie (Gleichung~(1)).
 \section{Zusammenfassung}
 %=======================================================================
 
-Diese Arbeit hat eine vollstÃ¤ndige Roboterarchitektur fÃ¼r die
+Diese Arbeit hat eine vollständige Roboterarchitektur für die
 industrielle Produktion entwickelt, die konsequent auf zwei
-komplementÃ¤ren Technologieprinzipien -- der IoFET-Rekonfiguration
-(Epp~\cite{iono2026}) und der hydraulischen ElastizitÃ¤tsoptimierung
+komplementären Technologieprinzipien -- der IoFET-Rekonfiguration
+(Epp~\cite{iono2026}) und der hydraulischen Elastizitätsoptimierung
 (Epp~\cite{hydr2026}) -- aufbaut. Die wesentlichen Ergebnisse gliedern
-sich in fÃ¼nf Themenbereiche:
+sich in fünf Themenbereiche:
 
 \paragraph{IoFET-FPGA-Rekonfiguration.}
-Der Ionische Feldeffekttransistor ermÃ¶glicht FPGA-Rekonfiguration
+Der Ionische Feldeffekttransistor ermöglicht FPGA-Rekonfiguration
 in \SI{120}{\nano\second} -- eine Beschleunigung um Faktor 416\,000
-gegenÃ¼ber Flash-FPGA (Abschnitte~3 und~10). Dies ermÃ¶glicht den
-Wechsel zwischen Produktionsaufgaben (SchweiÃŸen, Lackieren, Messen,
+gegenüber Flash-FPGA (Abschnitte~3 und~10). Dies ermöglicht den
+Wechsel zwischen Produktionsaufgaben (Schweißen, Lackieren, Messen,
 Montieren) in unter \SI{2.5}{\second}, ohne Hardwareeingriff.
-Die Rekonfigurationsrate Ã¼bersteigt damit jede Regelzyklusanforderung
+Die Rekonfigurationsrate übersteigt damit jede Regelzyklusanforderung
 der Automobilproduktion.
 
-\paragraph{LebensdauerverlÃ¤ngerung durch Epp'sche ElastizitÃ¤tstheorie.}
+\paragraph{Lebensdauerverlängerung durch Epp'sche Elastizitätstheorie.}
 In Abschnitt~5 wird formal und mathematisch bewiesen, dass der Wechsel
 von Mineral-HLP~46 auf synthetisches HG~46 die Komponentenlebensdauer
-um den \textbf{Faktor 3{,}1--3{,}4} verlÃ¤ngert. Dies ergibt sich
+um den \textbf{Faktor 3{,}1--3{,}4} verlängert. Dies ergibt sich
 multiplikativ aus dem EHD-Schmierfilm-Faktor nach ISO~281
 ($a_{\text{ISO}}(3{,}1)/a_{\text{ISO}}(1{,}2) = 3{,}1$,
-Satz~\ref{satz:lagerlebensdauer}) und dem WÃ¶hler-Druckreduktionsfaktor
+Satz~\ref{satz:lagerlebensdauer}) und dem Wöhler-Druckreduktionsfaktor
 ($r^{-3{,}5} = 1{,}11$, Satz~\ref{satz:druckleben}).
 Der System-MTBF steigt von 6\,000\,h auf 18\,800\,h;
-geplanteÃœberholkosten reduzieren sich um 180\,000--360\,000~EUR
-Ã¼ber die Systemlebensdauer eines Roboters.
+geplanteÜberholkosten reduzieren sich um 180\,000--360\,000~EUR
+über die Systemlebensdauer eines Roboters.
 
-\paragraph{Optimierte Hydraulikaktorik und PositionsprÃ¤zision.}
+\paragraph{Optimierte Hydraulikaktorik und Positionspräzision.}
 Der effektive Bulk-Modul $K_{\text{eff}} = \SI{1800}{\mega\pascal}$
 (Synthetik~HG~46) minimiert den hydraulischen Positionsfehler
 auf \SI{0.116}{\micro\meter} (Satz~\ref{satz:posfehler}) und
 maximiert die Rekuperationseffizienz auf 82\,\%, was 265~EUR
 Energiekosten pro Roboter und Jahr einspart.
 Die formale Herleitung der Kavitationsfreiheitsbedingung
-(Satz~\ref{satz:kavitation}) sichert stÃ¶rungsfreien Betrieb
+(Satz~\ref{satz:kavitation}) sichert störungsfreien Betrieb
 bei allen Lastkollektiven der Automobilproduktion.
 
 \paragraph{Energieeffizienz.}
 Die vierstufige Power-State-Machine (RUN/IDLE/SLEEP/STOP) senkt
 den Leerlaufverbrauch auf \SI{110}{\watt} und den STOP-Verbrauch
-auf \SI{0.8}{\watt} -- gegenÃ¼ber \SI{850}{\watt} und \SI{650}{\watt}
-bei konventionellen Systemen (Abschnitt~6 und~10). JÃ¤hrlich ergibt
+auf \SI{0.8}{\watt} -- gegenüber \SI{850}{\watt} und \SI{650}{\watt}
+bei konventionellen Systemen (Abschnitt~6 und~10). Jährlich ergibt
 sich eine Einsparung von \SI{44}{\percent} der Gesamtenergie,
 entsprechend 1650~EUR und 3{,}3~t CO\textsubscript{2} pro Roboter.
 
 \paragraph{Sicherheit, Kommunikation und Industrie~4.0.}
 Die redundante SIL-2-Sicherheits\-architektur (Abschnitt~11) erreicht
 eine Safe-State-Reaktionszeit von \SI{550}{\nano\second} -- vier
-GrÃ¶ÃŸenordnungen unter der Norm-Anforderung. OPC-UA, EtherCAT, CAN-FD,
+Größenordnungen unter der Norm-Anforderung. OPC-UA, EtherCAT, CAN-FD,
 TinyML-basiertes Predictive Maintenance und ein RAMI-4.0-konformes
 Informationsmodell (Abschnitt~7) machen den Roboter zum nativen
 Bestandteil cyber-physischer Produktionssysteme.
 
 \paragraph{Ausblick.}
-Abschnitt~12 entwickelt einen umfassenden Ausblick Ã¼ber zehn
-Entwicklungslinien: FestkÃ¶rper-IoFET (SSIT, $t_{\text{rek}} <
-\SI{10}{\nano\second}$), ionische FlÃ¼ssigkeiten als duales
+Abschnitt~12 entwickelt einen umfassenden Ausblick über zehn
+Entwicklungslinien: Festkörper-IoFET (SSIT, $t_{\text{rek}} <
+\SI{10}{\nano\second}$), ionische Flüssigkeiten als duales
 Hydraulik- und Rechenmedium, neuromorphe Regelung, humanoide und
 medizinische Robotik, Weltraum- und Unterwasseranwendungen,
 Industrie~5.0-Kollaboration, Wasserstoff-Hydraulik, Kreislaufwirtschaft,
-PINNs fÃ¼r den digitalen Zwilling sowie SIL-3-Erweiterung.
-Die Roadmap sieht Serienreife fÃ¼r Q4~2028 vor; die Vision~2040
+PINNs für den digitalen Zwilling sowie SIL-3-Erweiterung.
+Die Roadmap sieht Serienreife für Q4~2028 vor; die Vision~2040
 beschreibt einen Roboter mit MTBF $>$\SI{80000}{\hour} bei einem
 mittleren Energieverbrauch von \SI{180}{\watt}.
 
 \medskip
 Die Synthese von ionotronischer Berechnungstechnologie und
-hydraulischer ElastizitÃ¤tsoptimierung nach Epp erschafft eine
-Roboterklasse, die fÃ¼r die Anforderungen der nÃ¤chsten Generation
-der Automobilindustrie und der Industrie~4.0-BandablÃ¤ufe
-gleichermaÃŸen gerÃ¼stet ist -- und mit der Industrie~5.0-Vision
-bereit fÃ¼r die Ã„ra der mensch-zentrierten Produktion.
+hydraulischer Elastizitätsoptimierung nach Epp erschafft eine
+Roboterklasse, die für die Anforderungen der nächsten Generation
+der Automobilindustrie und der Industrie~4.0-Bandabläufe
+gleichermaßen gerüstet ist -- und mit der Industrie~5.0-Vision
+bereit für die Ära der mensch-zentrierten Produktion.
 
 %=======================================================================
 % Literaturverzeichnis
@@ -3421,11 +3421,11 @@ F. Mugele und J.-C. Baret, ``Electrowetting: from basics to applications,''
 pp. R705--R774, 2005.
 
 \bibitem{hydr2026}
-S.~Epp, ``ElastizitÃ¤t hydraulischer Ã–le und FlÃ¼ssigkeiten im
+S.~Epp, ``Elastizität hydraulischer Öle und Flüssigkeiten im
 industriellen Maschinenbau,'' Technische Arbeit, 2026.
 
 \bibitem{iono2026}
-S.~Epp, ``Ionotronisches FlÃ¼ssigkeits-Rechnen,'' Technische Arbeit, 2026.
+S.~Epp, ``Ionotronisches Flüssigkeits-Rechnen,'' Technische Arbeit, 2026.
 
 \bibitem{iso13849}
 ISO~13849-1:2015, \textit{Safety of machinery -- Safety-related parts

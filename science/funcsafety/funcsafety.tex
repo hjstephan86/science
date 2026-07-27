@@ -58,18 +58,18 @@
     breaklines=true,
     frame=single,
     literate=%
-    {Ã–}{{\"O}}1
-    {Ã„}{{\"A}}1
-    {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
-    {Ã¼}{{\"u}}1
-    {Ã¤}{{\"a}}1
-    {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
 }
 
 \title{Funktionale Sicherheit nach ISO~26262:\\
 Formale Grundlagen, ASIL-Klassifikation und\\
-Verifikationsmethoden fÃ¼r StraÃŸenfahrzeuge}
+Verifikationsmethoden für Straßenfahrzeuge}
 \author{Stephan Epp}
 \date{25. Juni 2026}
 
@@ -81,34 +81,34 @@ Verifikationsmethoden fÃ¼r StraÃŸenfahrzeuge}
 \newpage
 
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-Die Norm ISO~26262 \emph{Road vehicles -- Functional Safety} ist der maÃŸgebliche
-internationale Standard fÃ¼r die funktionale Sicherheit elektrischer und
-elektronischer (E/E-)~Systeme in StraÃŸenfahrzeugen~\cite{iso26262_2018}.
+Die Norm ISO~26262 \emph{Road vehicles -- Functional Safety} ist der maßgebliche
+internationale Standard für die funktionale Sicherheit elektrischer und
+elektronischer (E/E-)~Systeme in Straßenfahrzeugen~\cite{iso26262_2018}.
 Sie definiert einen systematischen Entwicklungsprozess, der sicherstellt,
-dass E/E-Systeme auch im Fehlerfall keine unvertretbaren Risiken fÃ¼r Personen
+dass E/E-Systeme auch im Fehlerfall keine unvertretbaren Risiken für Personen
 erzeugen.
 
 \subsection{Problemstellung}
 
-Moderne Kraftfahrzeuge enthalten mehrere Hundert elektronische SteuergerÃ¤te
-(ECUs), die Ã¼ber Bussysteme wie CAN, FlexRay oder Ethernet miteinander
+Moderne Kraftfahrzeuge enthalten mehrere Hundert elektronische Steuergeräte
+(ECUs), die über Bussysteme wie CAN, FlexRay oder Ethernet miteinander
 kommunizieren. Fehlfunktionen in sicherheitskritischen Systemen -- etwa dem
-Antiblockiersystem (ABS), dem elektronischen StabilitÃ¤tsprogramm (ESP) oder
-dem autonomen Notbremsassistenten -- kÃ¶nnen zu schwerwiegenden UnfÃ¤llen fÃ¼hren.
+Antiblockiersystem (ABS), dem elektronischen Stabilitätsprogramm (ESP) oder
+dem autonomen Notbremsassistenten -- können zu schwerwiegenden Unfällen führen.
 
-\textbf{Kernproblem:} Wie lÃ¤sst sich fÃ¼r ein komplexes E/E-System
-\emph{formal} nachweisen, dass es mit hinreichend hoher ZuverlÃ¤ssigkeit
-die geforderten Sicherheitsziele erfÃ¼llt, selbst wenn zufÃ¤llige Hardware\-fehler
+\textbf{Kernproblem:} Wie lässt sich für ein komplexes E/E-System
+\emph{formal} nachweisen, dass es mit hinreichend hoher Zuverlässigkeit
+die geforderten Sicherheitsziele erfüllt, selbst wenn zufällige Hardware\-fehler
 oder systematische Entwicklungsfehler auftreten?
 
 ISO~26262 beantwortet diese Frage durch:
 \begin{itemize}
   \item eine risikoproportionale Klassifikation (ASIL~A bis ASIL~D),
-  \item einen vollstÃ¤ndigen Entwicklungslebenszyklus (V-Modell),
-  \item quantitative Anforderungen an HardwarezuverlÃ¤ssigkeit und
+  \item einen vollständigen Entwicklungslebenszyklus (V-Modell),
+  \item quantitative Anforderungen an Hardwarezuverlässigkeit und
         Diagnoseabdeckung,
   \item formale Sicherheitsnachweise (Safety Cases).
 \end{itemize}
@@ -116,17 +116,17 @@ ISO~26262 beantwortet diese Frage durch:
 \subsection{Motivation}
 
 Die wirtschaftliche und gesellschaftliche Bedeutung der Norm ist erheblich.
-Allein in der EuropÃ¤ischen Union forderten StraÃŸenverkehrsunfÃ¤lle im
+Allein in der Europäischen Union forderten Straßenverkehrsunfälle im
 Jahr~2022 rund 20\,400 Todesopfer~\cite{eu_road_safety_2023}. Studien der
 National Highway Traffic Safety Administration (NHTSA) zeigen, dass mehr
-als 20\,\% der UnfÃ¤lle auf Fahrzeugtechnikversagen zurÃ¼ckzufÃ¼hren
+als 20\,\% der Unfälle auf Fahrzeugtechnikversagen zurückzuführen
 sind~\cite{nhtsa_2022}. Eine konsequente Anwendung von ISO~26262 kann
 diesen Anteil signifikant reduzieren.
 
-DarÃ¼ber hinaus stellen Original Equipment Manufacturer (OEM) und
-Tier-1-Zulieferer die NormenkonformitÃ¤t als juristischen Haftungsschutz
-sicher. FÃ¼r neue Fahrzeugbaureihen ist der Nachweis der
-ISO~26262-KonformitÃ¤t in vielen MÃ¤rkten Voraussetzung fÃ¼r die Typzulassung.
+Darüber hinaus stellen Original Equipment Manufacturer (OEM) und
+Tier-1-Zulieferer die Normenkonformität als juristischen Haftungsschutz
+sicher. Für neue Fahrzeugbaureihen ist der Nachweis der
+ISO~26262-Konformität in vielen Märkten Voraussetzung für die Typzulassung.
 
 \subsection{Beitrag dieser Arbeit}
 
@@ -134,9 +134,9 @@ Diese Arbeit liefert:
 \begin{enumerate}
   \item eine \emph{formale} mathematische Fundierung der zentralen Konzepte
         (ASIL-Klassifikation, Ausfallrate, Diagnoseabdeckung),
-  \item vollstÃ¤ndige Beweise der quantitativen Anforderungen,
-  \item experimentell erzeugte Visualisierungen aller KernzusammenhÃ¤nge,
-  \item einen ausfÃ¼hrlichen Ausblick auf offene Forschungsfragen im Bereich
+  \item vollständige Beweise der quantitativen Anforderungen,
+  \item experimentell erzeugte Visualisierungen aller Kernzusammenhänge,
+  \item einen ausführlichen Ausblick auf offene Forschungsfragen im Bereich
         Functional Safety und autonomes Fahren.
 \end{enumerate}
 
@@ -147,43 +147,43 @@ Diese Arbeit liefert:
 \subsection{Definitionen}
 
 \begin{definition}[Schaden (Harm)]
-  Ein \emph{Schaden} ist eine physische Verletzung oder BeeintrÃ¤chtigung
+  Ein \emph{Schaden} ist eine physische Verletzung oder Beeinträchtigung
   der Gesundheit von Personen. Die Norm unterscheidet Schweregrade
   $S \in \{0, 1, 2, 3\}$, wobei $S=0$ kein Verletzungspotenzial und
-  $S=3$ lebensbedrohliche oder tÃ¶dliche Verletzungen bezeichnet.
+  $S=3$ lebensbedrohliche oder tödliche Verletzungen bezeichnet.
 \end{definition}
 
-\begin{definition}[GefÃ¤hrdung (Hazard)]
-  Eine \emph{GefÃ¤hrdung} ist eine potenzielle Quelle eines Schadens,
+\begin{definition}[Gefährdung (Hazard)]
+  Eine \emph{Gefährdung} ist eine potenzielle Quelle eines Schadens,
   die durch eine Fehlfunktion eines E/E-Systems verursacht werden kann.
-  Formal: Eine GefÃ¤hrdung $h$ ist ein Paar $(f, s)$ bestehend aus einer
+  Formal: Eine Gefährdung $h$ ist ein Paar $(f, s)$ bestehend aus einer
   Fehlfunktion $f$ und einer Betriebssituation $s$.
 \end{definition}
 
 \begin{definition}[Exposition (Exposure)]
   Die \emph{Exposition} $E \in \{0, 1, 2, 3, 4\}$ beschreibt die
-  HÃ¤ufigkeit, mit der ein Fahrzeug in eine Betriebssituation gerÃ¤t,
-  in der eine GefÃ¤hrdung zu einem Schaden fÃ¼hren kann:
+  Häufigkeit, mit der ein Fahrzeug in eine Betriebssituation gerät,
+  in der eine Gefährdung zu einem Schaden führen kann:
   \[
     E = \begin{cases}
       0 & \text{unglaublich selten} \\
       1 & \text{sehr selten (weniger als einmal pro Jahr)} \\
       2 & \text{selten (einige Male pro Jahr)} \\
       3 & \text{gelegentlich (einige Male pro Monat)} \\
-      4 & \text{hÃ¤ufig (tÃ¤glich oder Ã¶fter)}
+      4 & \text{häufig (täglich oder öfter)}
     \end{cases}
   \]
 \end{definition}
 
 \begin{definition}[Kontrollierbarkeit (Controllability)]
   Die \emph{Kontrollierbarkeit} $C \in \{0, 1, 2, 3\}$ beschreibt die
-  MÃ¶glichkeit des Fahrers, einen Unfall bei Auftreten der GefÃ¤hrdung
+  Möglichkeit des Fahrers, einen Unfall bei Auftreten der Gefährdung
   zu vermeiden:
   \[
     C = \begin{cases}
       0 & \text{allgemein kontrollierbar} \\
-      1 & \text{einfach kontrollierbar (Ã¼ber 99\,\%)} \\
-      2 & \text{normal kontrollierbar (Ã¼ber 90\,\%)} \\
+      1 & \text{einfach kontrollierbar (über 99\,\%)} \\
+      2 & \text{normal kontrollierbar (über 90\,\%)} \\
       3 & \text{schwer kontrollierbar (unter 90\,\%)}
     \end{cases}
   \]
@@ -199,8 +199,8 @@ Diese Arbeit liefert:
 \end{definition}
 
 \begin{definition}[Sicherheitsziel (Safety Goal)]
-  Ein \emph{Sicherheitsziel} ist eine Ã¼bergeordnete Sicherheitsanforderung
-  an ein Item, die das Auftreten einer GefÃ¤hrdung verhindert oder deren
+  Ein \emph{Sicherheitsziel} ist eine übergeordnete Sicherheitsanforderung
+  an ein Item, die das Auftreten einer Gefährdung verhindert oder deren
   Auswirkung auf einen tolerierbaren Schaden begrenzt.
   Jedem Sicherheitsziel wird ein ASIL zugewiesen.
 \end{definition}
@@ -209,34 +209,34 @@ Diese Arbeit liefert:
   Die \emph{Ausfallrate} $\lambda$ eines Bauteils wird in der Einheit
   \emph{FIT} (Failure In Time) angegeben:
   \[
-    1\;\mathrm{FIT} = 10^{-9}\;\text{AusfÃ¤lle pro Betriebsstunde.}
+    1\;\mathrm{FIT} = 10^{-9}\;\text{Ausfälle pro Betriebsstunde.}
   \]
-  FÃ¼r ein exponentialverteiltes Bauteil gilt die ZuverlÃ¤ssigkeitsfunktion
+  Für ein exponentialverteiltes Bauteil gilt die Zuverlässigkeitsfunktion
   $R(t) = e^{-\lambda t}$, wobei $\lambda$ die konstante Ausfallrate ist.
 \end{definition}
 
 \begin{definition}[Diagnoseabdeckung (Diagnostic Coverage, DC)]
   Die \emph{Diagnoseabdeckung} $\mathrm{DC}$ ist der Anteil der durch
-  Sicherheitsmechanismen erkannten gefÃ¤hrlichen AusfÃ¤lle:
+  Sicherheitsmechanismen erkannten gefährlichen Ausfälle:
   \[
     \mathrm{DC}
     = \frac{\lambda_{\mathrm{DD}}}{\lambda_{\mathrm{D}}}
     = \frac{\lambda_{\mathrm{D}} - \lambda_{\mathrm{DU}}}{\lambda_{\mathrm{D}}},
   \]
   wobei $\lambda_{\mathrm{DD}}$ die Rate erkannter und
-  $\lambda_{\mathrm{DU}}$ die Rate unerkannter gefÃ¤hrlicher AusfÃ¤lle
+  $\lambda_{\mathrm{DU}}$ die Rate unerkannter gefährlicher Ausfälle
   bezeichnen.
 \end{definition}
 
 \begin{definition}[Probabilistic Metric for Hardware Failure (PMHF)]
-  Die \emph{PMHF} ist der Gesamtbeitrag aller HardwareausfÃ¤lle zur
+  Die \emph{PMHF} ist der Gesamtbeitrag aller Hardwareausfälle zur
   Verletzung eines Sicherheitsziels pro Betriebsstunde:
   \[
     \mathrm{PMHF}
     = \sum_{i} \lambda_{\mathrm{DU},i}
     + \sum_{j} \lambda_{\mathrm{S},j} \cdot (1 - \mathrm{DC}_j),
   \]
-  wobei Ã¼ber alle Einzelfehlerquellen $i$ und latente Mehrfachfehler
+  wobei über alle Einzelfehlerquellen $i$ und latente Mehrfachfehler
   $j$ summiert wird.
 \end{definition}
 
@@ -245,7 +245,7 @@ Diese Arbeit liefert:
 \subsubsection{Risikograph}
 
 Die ASIL-Einstufung folgt dem Risikographen nach ISO~26262-3:5.4.
-Der risikoproportionale Zusammenhang lÃ¤sst sich durch eine
+Der risikoproportionale Zusammenhang lässt sich durch eine
 Bewertungsfunktion formalisieren.
 
 \begin{satz}[ASIL-Bestimmungsfunktion]
@@ -254,7 +254,7 @@ Bewertungsfunktion formalisieren.
   wachsende Funktion in $S$, $E$ und $C$. Formal existiert eine
   streng monotone Ordnung
   $\mathrm{QM} \prec \mathrm{A} \prec \mathrm{B} \prec \mathrm{C}
-  \prec \mathrm{D}$, sodass fÃ¼r alle zulÃ¤ssigen Parameter gilt:
+  \prec \mathrm{D}$, sodass für alle zulässigen Parameter gilt:
   \[
     S' \geq S,\; E' \geq E,\; C' \geq C
     \;\implies\;
@@ -263,31 +263,31 @@ Bewertungsfunktion formalisieren.
 \end{satz}
 
 \begin{proof}
-  Die ASIL-Klassifikation ist in ISO~26262-3, Tabelle~4 als vollstÃ¤ndige
+  Die ASIL-Klassifikation ist in ISO~26262-3, Tabelle~4 als vollständige
   Entscheidungsmatrix definiert. Eine Inspektion dieser Tabelle zeigt:
   \begin{itemize}
-    \item ErhÃ¶hung von $S$ bei festem $(E, C)$ fÃ¼hrt nie zu einem
+    \item Erhöhung von $S$ bei festem $(E, C)$ führt nie zu einem
           niedrigeren ASIL.
-    \item ErhÃ¶hung von $E$ bei festem $(S, C)$ fÃ¼hrt nie zu einem
+    \item Erhöhung von $E$ bei festem $(S, C)$ führt nie zu einem
           niedrigeren ASIL.
-    \item ErhÃ¶hung von $C$ bei festem $(S, E)$ fÃ¼hrt nie zu einem
+    \item Erhöhung von $C$ bei festem $(S, E)$ führt nie zu einem
           niedrigeren ASIL.
   \end{itemize}
-  Ein hÃ¶heres Risiko (grÃ¶ÃŸere Schwere, hÃ¤ufigere Exposition oder
+  Ein höheres Risiko (größere Schwere, häufigere Exposition oder
   schwierigere Kontrollierbarkeit) erfordert eine strengere
   Sicherheitsanforderung. Die Monotonie folgt direkt aus dem
   Risikoabbau-Prinzip der Norm (ISO~26262-3:5.4.3).
 \end{proof}
 
 Abbildung~\ref{fig:asil_matrix} visualisiert die ASIL-Risikomatrix
-fÃ¼r den reprÃ¤sentativen Fall $C=3$.
+für den repräsentativen Fall $C=3$.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.85\linewidth]{plot_asil_matrix.pdf}
-  \caption{ASIL-Risikomatrix fÃ¼r $C=3$: Schwere $S$ (Zeilen) versus
-           Exposition $E$ (Spalten). Farbkodierung von GrÃ¼n (QM) bis
-           Rot (ASIL~D). Mit steigendem Risiko erhÃ¶ht sich die
+  \caption{ASIL-Risikomatrix für $C=3$: Schwere $S$ (Zeilen) versus
+           Exposition $E$ (Spalten). Farbkodierung von Grün (QM) bis
+           Rot (ASIL~D). Mit steigendem Risiko erhöht sich die
            ASIL-Stufe monoton.}
   \label{fig:asil_matrix}
 \end{figure}
@@ -299,8 +299,8 @@ Zerlegbarkeit (Dekomposition).
 
 \begin{satz}[ASIL-Dekomposition]
 \label{satz:dekomposition}
-  Wird ein Sicherheitsziel der Stufe ASIL~X durch zwei unabhÃ¤ngige
-  Teilsysteme $A$ und $B$ gemeinsam erfÃ¼llt, so kÃ¶nnen die Anforderungen
+  Wird ein Sicherheitsziel der Stufe ASIL~X durch zwei unabhängige
+  Teilsysteme $A$ und $B$ gemeinsam erfüllt, so können die Anforderungen
   auf niedrigere Stufen aufgeteilt werden:
   \begin{align*}
     \mathrm{ASIL~D} &\;\rightarrow\; \mathrm{ASIL~B} + \mathrm{ASIL~B}\\
@@ -309,24 +309,24 @@ Zerlegbarkeit (Dekomposition).
     \mathrm{ASIL~C} &\;\rightarrow\; \mathrm{ASIL~B} + \mathrm{QM}\\
     \mathrm{ASIL~B} &\;\rightarrow\; \mathrm{ASIL~A} + \mathrm{QM}
   \end{align*}
-  Voraussetzung ist die nachgewiesene UnabhÃ¤ngigkeit beider Teilsysteme.
+  Voraussetzung ist die nachgewiesene Unabhängigkeit beider Teilsysteme.
 \end{satz}
 
 \begin{proof}
   Seien $\lambda_A$ und $\lambda_B$ die relevanten Ausfallraten der
-  beiden Teilsysteme. Da beide unabhÃ¤ngig sind, gilt:
+  beiden Teilsysteme. Da beide unabhängig sind, gilt:
   \[
     P(A \cap B) = P(A) \cdot P(B).
   \]
-  FÃ¼r exponentialverteilte AusfÃ¤lle in einem Betrachtungszeitraum $T$
-  gilt nÃ¤herungsweise $P(\text{Ausfall}) \approx \lambda \cdot T$.
+  Für exponentialverteilte Ausfälle in einem Betrachtungszeitraum $T$
+  gilt näherungsweise $P(\text{Ausfall}) \approx \lambda \cdot T$.
   Das kombinierte System versagt nur, wenn beide Teilsysteme versagen:
   \[
     \lambda_{\mathrm{sys}} \cdot T
     \approx (\lambda_A \cdot T) \cdot (\lambda_B \cdot T)
     = \lambda_A \cdot \lambda_B \cdot T^2.
   \]
-  FÃ¼r $T = 1\,\mathrm{h}$, $\lambda_A = \lambda_B = 10^{-7}\,\mathrm{h}^{-1}$
+  Für $T = 1\,\mathrm{h}$, $\lambda_A = \lambda_B = 10^{-7}\,\mathrm{h}^{-1}$
   (ASIL~B) ergibt sich:
   \[
     \lambda_{\mathrm{sys}} = 10^{-14}\,\mathrm{h}^{-1}
@@ -342,11 +342,11 @@ Zerlegbarkeit (Dekomposition).
 
 \subsection{Maximale Hardwareausfallrate (PMHF)}
 
-ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
+ISO~26262-5 legt quantitative Grenzen für die PMHF je ASIL-Stufe fest.
 
 \begin{satz}[PMHF-Grenzen nach ISO~26262]
 \label{satz:pmhf}
-  FÃ¼r ein Item, das ein Sicherheitsziel der ASIL-Stufe $X$ erfÃ¼llen
+  Für ein Item, das ein Sicherheitsziel der ASIL-Stufe $X$ erfüllen
   muss, gelten folgende maximale Wahrscheinlichkeitsgrenzen:
   \begin{center}
     \begin{tabular}{lc}
@@ -368,7 +368,7 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
   dem allgemeinen Lebensrisiko ableitet (ALARP-Prinzip~\cite{health_safety_1992}).
 
   \textbf{Schritt 1: Basisannahme zur Unfallursache.}
-  Das Gesamtrisiko tÃ¶dlicher VerkehrsunfÃ¤lle in Europa betrÃ¤gt etwa
+  Das Gesamtrisiko tödlicher Verkehrsunfälle in Europa beträgt etwa
   $R_{\mathrm{ges}} \approx 10^{-4}\,\mathrm{a}^{-1}$ pro Einwohner.
   Bei 500\,h Fahrzeit pro Jahr und 20\,\% Anteil von
   E/E-Fehlfunktionen:
@@ -379,7 +379,7 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
   \]
 
   \textbf{Schritt 2: Aufteilung auf Sicherheitsziele.}
-  Bei $N \approx 10$ unabhÃ¤ngigen Sicherheitszielen muss jedes:
+  Bei $N \approx 10$ unabhängigen Sicherheitszielen muss jedes:
   \[
     \lambda_{\mathrm{Ziel}}
     \leq \frac{4 \cdot 10^{-8}}{10}
@@ -388,9 +388,9 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
   einhalten.
 
   \textbf{Schritt 3: Sicherheitsmarge.}
-  Der Grenzwert $10^{-8}\,\mathrm{h}^{-1}$ fÃ¼r ASIL~D enthÃ¤lt eine
+  Der Grenzwert $10^{-8}\,\mathrm{h}^{-1}$ für ASIL~D enthält eine
   Sicherheitsmarge von etwa Faktor~4, um Modellierungsungenauigkeiten
-  abzudecken. Die Stufen A, B, C erhalten entsprechend hÃ¶here
+  abzudecken. Die Stufen A, B, C erhalten entsprechend höhere
   Grenzwerte proportional zur niedrigeren Risikoeinstufung.
 \end{proof}
 
@@ -398,10 +398,10 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
 
 \begin{lemma}[Effektive Ausfallrate unter Sicherheitsmechanismus]
 \label{lem:effektiv}
-  Gegeben sei ein Bauteil mit gefÃ¤hrlicher Ausfallrate
+  Gegeben sei ein Bauteil mit gefährlicher Ausfallrate
   $\lambda_{\mathrm{D}}$ und einem Sicherheitsmechanismus mit
   Diagnoseabdeckung $\mathrm{DC}$.
-  Die verbleibende unerkannte gefÃ¤hrliche Ausfallrate betrÃ¤gt:
+  Die verbleibende unerkannte gefährliche Ausfallrate beträgt:
   \[
     \lambda_{\mathrm{DU}}
     = \lambda_{\mathrm{D}} \cdot (1 - \mathrm{DC}).
@@ -410,14 +410,14 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
 
 \begin{proof}
   Der Sicherheitsmechanismus erkennt den Anteil $\mathrm{DC}$
-  der gefÃ¤hrlichen AusfÃ¤lle und fÃ¼hrt zu einem sicheren Zustand.
+  der gefährlichen Ausfälle und führt zu einem sicheren Zustand.
   Der verbleibende Anteil
   \[
     \lambda_{\mathrm{DU}}
     = \lambda_{\mathrm{D}} - \mathrm{DC} \cdot \lambda_{\mathrm{D}}
     = \lambda_{\mathrm{D}}(1 - \mathrm{DC})
   \]
-  ist unerkannt und trÃ¤gt zur PMHF bei.
+  ist unerkannt und trägt zur PMHF bei.
 \end{proof}
 
 \begin{satz}[Mindest-DC-Anforderungen nach ASIL]
@@ -428,14 +428,14 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
     \mathrm{DC}_{\min}(X) = \begin{cases}
       60\,\% & X \in \{\mathrm{A}, \mathrm{B}\}\\
       90\,\% & X \in \{\mathrm{C}, \mathrm{D}\}\\
-      99\,\% & \text{(angestrebt fÃ¼r ASIL~D)}
+      99\,\% & \text{(angestrebt für ASIL~D)}
     \end{cases}
   \]
 \end{satz}
 
 \begin{proof}
   Sei $\lambda_{\mathrm{D}} = 10^{-6}\,\mathrm{h}^{-1}$ eine typische
-  gefÃ¤hrliche Ausfallrate. FÃ¼r ASIL~D mit
+  gefährliche Ausfallrate. Für ASIL~D mit
   $\mathrm{PMHF} \leq 10^{-8}\,\mathrm{h}^{-1}$ muss gelten:
   \[
     \lambda_{\mathrm{D}} \cdot (1 - \mathrm{DC}) \leq 10^{-8}
@@ -444,13 +444,13 @@ ISO~26262-5 legt quantitative Grenzen fÃ¼r die PMHF je ASIL-Stufe fest.
     \;\implies\;
     \mathrm{DC} \geq 99\,\%.
   \]
-  FÃ¼r ASIL~B mit $\mathrm{PMHF} \leq 10^{-7}\,\mathrm{h}^{-1}$:
+  Für ASIL~B mit $\mathrm{PMHF} \leq 10^{-7}\,\mathrm{h}^{-1}$:
   \[
     1 - \mathrm{DC} \leq \frac{10^{-7}}{10^{-6}} = 0{,}1
     \;\implies\;
     \mathrm{DC} \geq 90\,\%.
   \]
-  FÃ¼r ASIL~A mit $\mathrm{PMHF} \leq 10^{-6}\,\mathrm{h}^{-1}$:
+  Für ASIL~A mit $\mathrm{PMHF} \leq 10^{-6}\,\mathrm{h}^{-1}$:
   \[
     1 - \mathrm{DC} \leq 1
     \;\implies\;
@@ -467,9 +467,9 @@ wichtiger Sicherheitsmechanismen in der Automobilelektronik.
   \includegraphics[width=0.85\linewidth]{plot_dc_coverage.pdf}
   \caption{Diagnoseabdeckung (DC) typischer Sicherheitsmechanismen.
            Die gestrichelten Linien markieren die Mindestanforderungen
-           nach ISO~26262: 60\,\% fÃ¼r ASIL~A/B (orange) und 90\,\% fÃ¼r
-           ASIL~C/D (rot). ECC-Speicher und redundante KanÃ¤le erzielen
-           nahezu vollstÃ¤ndige Abdeckung von 99\,\%.}
+           nach ISO~26262: 60\,\% für ASIL~A/B (orange) und 90\,\% für
+           ASIL~C/D (rot). ECC-Speicher und redundante Kanäle erzielen
+           nahezu vollständige Abdeckung von 99\,\%.}
   \label{fig:dc_coverage}
 \end{figure}
 
@@ -483,12 +483,12 @@ wichtiger Sicherheitsmechanismen in der Automobilelektronik.
     = 1 - \frac{\lambda_{\mathrm{S}} + \lambda_{\mathrm{DU}}}
                {\lambda_{\mathrm{ges}}},
   \]
-  wobei $\lambda_{\mathrm{S}}$ die Rate sicherer AusfÃ¤lle bezeichnet.
+  wobei $\lambda_{\mathrm{S}}$ die Rate sicherer Ausfälle bezeichnet.
 \end{definition}
 
 \begin{satz}[SPFM-Mindestwerte]
 \label{satz:spfm}
-  FÃ¼r ASIL-konforme Auslegung mÃ¼ssen folgende Mindestwerte erreicht
+  Für ASIL-konforme Auslegung müssen folgende Mindestwerte erreicht
   werden:
   \[
     \mathrm{SPFM}_{\min}(X) = \begin{cases}
@@ -499,10 +499,10 @@ wichtiger Sicherheitsmechanismen in der Automobilelektronik.
 \end{satz}
 
 \begin{proof}
-  Ein SPFM von 97\,\% fÃ¼r ASIL~D bedeutet, dass von 100 AusfÃ¤llen
-  mindestens 97 erkannt werden oder zu einem sicheren Zustand fÃ¼hren.
+  Ein SPFM von 97\,\% für ASIL~D bedeutet, dass von 100 Ausfällen
+  mindestens 97 erkannt werden oder zu einem sicheren Zustand führen.
   Bei Gesamtausfallrate $\lambda_{\mathrm{ges}} = 10^{-5}\,\mathrm{h}^{-1}$
-  und GefÃ¤hrdungsfaktor $\kappa = 0{,}1$:
+  und Gefährdungsfaktor $\kappa = 0{,}1$:
   \[
     \lambda_{\mathrm{DU}}
     = (1-\mathrm{DC}) \cdot \kappa \cdot \lambda_{\mathrm{ges}}
@@ -513,15 +513,15 @@ wichtiger Sicherheitsmechanismen in der Automobilelektronik.
 \end{proof}
 
 Abbildung~\ref{fig:failure_rate} zeigt die maximale tolerable
-Ausfallrate je ASIL-Stufe im logarithmischen MaÃŸstab.
+Ausfallrate je ASIL-Stufe im logarithmischen Maßstab.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\linewidth]{plot_failure_rate.pdf}
   \caption{Maximale tolerable Ausfallrate (PMHF) in FIT je ASIL-Stufe.
            Zwischen ASIL~A ($10^{3}$~FIT) und ASIL~D (1~FIT) liegen
-           drei Dekaden. Der logarithmische MaÃŸstab verdeutlicht die
-           VerschÃ¤rfung um je eine GrÃ¶ÃŸenordnung.}
+           drei Dekaden. Der logarithmische Maßstab verdeutlicht die
+           Verschärfung um je eine Größenordnung.}
   \label{fig:failure_rate}
 \end{figure}
 
@@ -539,17 +539,17 @@ Ausfallrate je ASIL-Stufe im logarithmischen MaÃŸstab.
     \item \textbf{Systementwicklung:} Funktionale Sicherheitskonzeption,
           technisches Sicherheitskonzept, ASIL-Dekomposition.
     \item \textbf{Hardware-Entwicklung:} Hardwaresicherheitsanforderungen,
-          Hardwaredesign, ZuverlÃ¤ssigkeitsanalyse (FMEA, FTA).
+          Hardwaredesign, Zuverlässigkeitsanalyse (FMEA, FTA).
     \item \textbf{Software-Entwicklung:} Software-Sicherheitsanforderungen,
           Softwarearchitektur, Implementierung, Unit-Test.
     \item \textbf{Integration und Test:} Hardware-Software-Integration,
           System-Integration, Validierung.
-    \item \textbf{Produktion und Betrieb:} FertigungsqualitÃ¤t,
-          Betrieb, Wartung, AuÃŸerbetriebnahme.
+    \item \textbf{Produktion und Betrieb:} Fertigungsqualität,
+          Betrieb, Wartung, Außerbetriebnahme.
   \end{enumerate}
 \end{definition}
 
-Abbildung~\ref{fig:v_model} zeigt die V-fÃ¶rmige Struktur mit den
+Abbildung~\ref{fig:v_model} zeigt die V-förmige Struktur mit den
 korrespondierenden Dekompositions- und Integrationspfaden.
 
 \begin{figure}[ht]
@@ -565,31 +565,31 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 
 \subsection{Hazard Analysis and Risk Assessment (HARA)}
 
-\begin{satz}[VollstÃ¤ndigkeit der HARA]
+\begin{satz}[Vollständigkeit der HARA]
 \label{satz:hara}
-  Eine HARA ist genau dann vollstÃ¤ndig, wenn sie fÃ¼r alle
-  Item-Funktionen $F = \{f_1, \ldots, f_k\}$ sÃ¤mtliche relevanten
+  Eine HARA ist genau dann vollständig, wenn sie für alle
+  Item-Funktionen $F = \{f_1, \ldots, f_k\}$ sämtliche relevanten
   Betriebssituationen $O = \{o_1, \ldots, o_m\}$ analysiert und
   jeder Kombination $(f_i, o_j)$ ein Tripel $(S_{ij}, E_{ij}, C_{ij})$
   zuweist.
 \end{satz}
 
 \begin{proof}
-  Eine GefÃ¤hrdung entsteht aus der Interaktion einer Fehlfunktion
-  mit einer Betriebssituation. Der Raum aller mÃ¶glichen GefÃ¤hrdungen
-  ist $H \subseteq F \times O$. Eine vollstÃ¤ndige HARA muss alle
-  Elemente von $H$ erfassen. FÃ¼r jedes $(f_i, o_j) \in H$ werden
+  Eine Gefährdung entsteht aus der Interaktion einer Fehlfunktion
+  mit einer Betriebssituation. Der Raum aller möglichen Gefährdungen
+  ist $H \subseteq F \times O$. Eine vollständige HARA muss alle
+  Elemente von $H$ erfassen. Für jedes $(f_i, o_j) \in H$ werden
   die Parameter $S_{ij}$, $E_{ij}$ und $C_{ij}$ bewertet.
   Die ASIL-Einstufung folgt aus Satz~\ref{satz:asil_funktion}:
   \[
     \mathrm{ASIL}_{ij} = \mathrm{ASIL}(S_{ij}, E_{ij}, C_{ij}).
   \]
-  Werden weniger als alle Elemente aus $H$ betrachtet, kÃ¶nnen
-  GefÃ¤hrdungen mit hohem ASIL Ã¼bersehen werden, was die
-  VollstÃ¤ndigkeit verletzt.
+  Werden weniger als alle Elemente aus $H$ betrachtet, können
+  Gefährdungen mit hohem ASIL übersehen werden, was die
+  Vollständigkeit verletzt.
 \end{proof}
 
-\begin{beispiel}[HARA fÃ¼r automatische Notbremsung (AEB)]
+\begin{beispiel}[HARA für automatische Notbremsung (AEB)]
   Betrachte das ADAS-System \emph{Automatic Emergency Braking}:
   \begin{itemize}
     \item \textbf{Fehlfunktion $f_1$:}
@@ -610,9 +610,9 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 
 \begin{satz}[Entwicklungsaufwand-Skalierung]
 \label{satz:aufwand}
-  Der relative Entwicklungsaufwand $W(X)$ fÃ¼r ein Item der
-  ASIL-Stufe $X$ wÃ¤chst superlinear mit dem ASIL-Niveau.
-  Empirisch gilt nÃ¤herungsweise:
+  Der relative Entwicklungsaufwand $W(X)$ für ein Item der
+  ASIL-Stufe $X$ wächst superlinear mit dem ASIL-Niveau.
+  Empirisch gilt näherungsweise:
   \[
     W(X) \approx W_0 \cdot \alpha^{r(X)},
   \]
@@ -622,13 +622,13 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 \end{satz}
 
 \begin{proof}
-  Die Aufwandszunahme ergibt sich aus den zusÃ¤tzlichen Anforderungen
-  pro ASIL-Stufe. Jede Stufe erfordert zusÃ¤tzliche Dokumentation,
+  Die Aufwandszunahme ergibt sich aus den zusätzlichen Anforderungen
+  pro ASIL-Stufe. Jede Stufe erfordert zusätzliche Dokumentation,
   Reviews und Nachweise, die im Wesentlichen proportional zum
-  Vorstufenaufwand sind. ASIL~D verlangt darÃ¼ber hinaus formale
-  Verifikation und unabhÃ¤ngige BestÃ¤tigung (Confirmation Measures),
+  Vorstufenaufwand sind. ASIL~D verlangt darüber hinaus formale
+  Verifikation und unabhängige Bestätigung (Confirmation Measures),
   was einen weiteren Multiplikator von $\approx 2$ bedingt.
-  Empirische Studien~\cite{becker_2014} bestÃ¤tigen $\alpha \in
+  Empirische Studien~\cite{becker_2014} bestätigen $\alpha \in
   [1{,}5;\;2{,}0]$. Mit $\alpha = 1{,}8$ ergibt sich:
   \[
     W(\mathrm{D}) / W(\mathrm{QM})
@@ -654,8 +654,8 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 
 \subsection{Failure Mode and Effects Analysis (FMEA)}
 
-\begin{definition}[RisikoprioritÃ¤tszahl (RPN)]
-  Die \emph{RisikoprioritÃ¤tszahl} (Risk Priority Number, RPN)
+\begin{definition}[Risikoprioritätszahl (RPN)]
+  Die \emph{Risikoprioritätszahl} (Risk Priority Number, RPN)
   der FMEA ist definiert als:
   \[
     \mathrm{RPN} = S \cdot O \cdot D,
@@ -666,16 +666,16 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 
 \begin{lemma}[Priorisierung durch RPN]
 \label{lem:rpn}
-  Eine nach RPN priorisierte FMEA deckt statistisch den grÃ¶ÃŸten
+  Eine nach RPN priorisierte FMEA deckt statistisch den größten
   Anteil des Gesamtrisikos ab, wenn die Einzelbewertungen $S$, $O$
-  und $D$ unabhÃ¤ngig voneinander und gleichverteilt sind.
+  und $D$ unabhängig voneinander und gleichverteilt sind.
 \end{lemma}
 
 \begin{proof}
-  FÃ¼r gleichverteilte und unabhÃ¤ngige Bewertungen
+  Für gleichverteilte und unabhängige Bewertungen
   $S, O, D \sim U[1, 10]$ ist $\mathrm{RPN} = S \cdot O \cdot D$
-  ein MaÃŸ fÃ¼r das zusammengesetzte Risiko.
-  Die Gesamtrisikoreduktion durch Abarbeitung der $k$ hÃ¶chsten RPNs:
+  ein Maß für das zusammengesetzte Risiko.
+  Die Gesamtrisikoreduktion durch Abarbeitung der $k$ höchsten RPNs:
   \[
     \Delta R(k)
     = \sum_{i=1}^{k} \mathrm{RPN}_i
@@ -702,7 +702,7 @@ korrespondierenden Dekompositions- und Integrationspfaden.
     P(T) = P\!\left(\bigcup_{k=1}^{m} C_k\right)
          = \sum_{k} P(C_k) - \sum_{k<l} P(C_k \cap C_l) + \ldots
   \]
-  FÃ¼r seltene Ereignisse gilt die NÃ¤herung:
+  Für seltene Ereignisse gilt die Näherung:
   \[
     P(T) \approx \sum_{k=1}^{m} P(C_k).
   \]
@@ -711,13 +711,13 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 \begin{proof}
   Die Einschluss-Ausschluss-Formel (Siebformel) ist ein klassisches
   Resultat der Wahrscheinlichkeitstheorie~\cite{feller_1968}.
-  FÃ¼r unabhÃ¤ngige Basisereignisse innerhalb einer minimalen
+  Für unabhängige Basisereignisse innerhalb einer minimalen
   Schnittmenge $C_k = \{b_{k,1}, \ldots, b_{k,r}\}$ gilt:
   \[
     P(C_k) = \prod_{j=1}^{r} P(b_{k,j}).
   \]
-  FÃ¼r seltene Ereignisse mit $P(b_{k,j}) = \lambda_{k,j} \cdot T \ll 1$
-  ist $P(C_k \cap C_l) = O((\lambda T)^2)$ vernachlÃ¤ssigbar,
+  Für seltene Ereignisse mit $P(b_{k,j}) = \lambda_{k,j} \cdot T \ll 1$
+  ist $P(C_k \cap C_l) = O((\lambda T)^2)$ vernachlässigbar,
   sodass die Summenapproximation greift.
 \end{proof}
 
@@ -727,23 +727,23 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 
 \begin{definition}[$k$-von-$n$-Redundanz]
   Ein \emph{$k$-von-$n$-System} versagt genau dann, wenn mindestens
-  $n - k + 1$ von $n$ Komponenten ausfallen. Die Ãœberlebens"-wahr"-schein"-lich"-keit
+  $n - k + 1$ von $n$ Komponenten ausfallen. Die Überlebens"-wahr"-schein"-lich"-keit
   ist:
   \[
     R_{k/n}(t)
     = \sum_{i=k}^{n} \binom{n}{i} R(t)^i \cdot (1-R(t))^{n-i},
   \]
-  wobei $R(t) = e^{-\lambda t}$ die EinzelzuverlÃ¤ssigkeit bezeichnet.
+  wobei $R(t) = e^{-\lambda t}$ die Einzelzuverlässigkeit bezeichnet.
 \end{definition}
 
-\begin{satz}[ZuverlÃ¤ssigkeitssteigerung durch 1-von-2-Redundanz]
+\begin{satz}[Zuverlässigkeitssteigerung durch 1-von-2-Redundanz]
 \label{satz:redundanz}
-  FÃ¼r zwei identische, unabhÃ¤ngige Komponenten mit Ausfallrate
-  $\lambda$ gilt fÃ¼r das 1-von-2-System:
+  Für zwei identische, unabhängige Komponenten mit Ausfallrate
+  $\lambda$ gilt für das 1-von-2-System:
   \[
     R_{1/2}(t) = 2e^{-\lambda t} - e^{-2\lambda t}.
   \]
-  FÃ¼r kleine $\lambda t$ verbessert sich die effektive
+  Für kleine $\lambda t$ verbessert sich die effektive
   Systemausfallrate auf $\lambda_{\mathrm{sys}} \approx 2\lambda^2 t$.
 \end{satz}
 
@@ -756,7 +756,7 @@ korrespondierenden Dekompositions- und Integrationspfaden.
     = 1 - 1 + 2e^{-\lambda t} - e^{-2\lambda t}
     = 2e^{-\lambda t} - e^{-2\lambda t}.
   \]
-  FÃ¼r $\lambda t \ll 1$ gilt
+  Für $\lambda t \ll 1$ gilt
   $e^{-\lambda t} \approx 1 - \lambda t$ und
   $e^{-2\lambda t} \approx 1 - 2\lambda t + 2(\lambda t)^2$, also:
   \[
@@ -766,14 +766,14 @@ korrespondierenden Dekompositions- und Integrationspfaden.
   \]
   Die effektive Ausfallrate ist daher
   $\lambda_{\mathrm{sys}} \approx 2\lambda^2 t$,
-  weit unter $\lambda$ fÃ¼r $\lambda t \ll 1$.
+  weit unter $\lambda$ für $\lambda t \ll 1$.
 \end{proof}
 
 \begin{bemerkung}
-  FÃ¼r $\lambda = 10^{-4}\,\mathrm{h}^{-1}$ und $t = 10\,\mathrm{h}$
+  Für $\lambda = 10^{-4}\,\mathrm{h}^{-1}$ und $t = 10\,\mathrm{h}$
   sinkt die Ausfallwahrscheinlichkeit von $10^{-3}$ auf
-  $2 \cdot 10^{-7}$, also um mehr als vier GrÃ¶ÃŸenordnungen.
-  Dies erklÃ¤rt, warum ASIL~D-Systeme typischerweise redundante
+  $2 \cdot 10^{-7}$, also um mehr als vier Größenordnungen.
+  Dies erklärt, warum ASIL~D-Systeme typischerweise redundante
   Architekturen (z.\,B.\ Dual-Core-Lockstep) verwenden.
 \end{bemerkung}
 
@@ -781,12 +781,12 @@ korrespondierenden Dekompositions- und Integrationspfaden.
 \section{Zusammenfassung}
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-ISO~26262 liefert einen formal fundierten, vollstÃ¤ndigen Rahmen fÃ¼r
-die funktionale Sicherheit von StraÃŸenfahrzeugen. Die zentralen
-BeitrÃ¤ge dieser Arbeit umfassen:
+ISO~26262 liefert einen formal fundierten, vollständigen Rahmen für
+die funktionale Sicherheit von Straßenfahrzeugen. Die zentralen
+Beiträge dieser Arbeit umfassen:
 
 \begin{itemize}
-  \item Formale Definition aller SchlÃ¼sselbegriffe
+  \item Formale Definition aller Schlüsselbegriffe
         (ASIL, PMHF, DC, SPFM).
   \item Beweis der Monotonie der ASIL-Klassifikation
         (Satz~\ref{satz:asil_funktion}).
@@ -794,7 +794,7 @@ BeitrÃ¤ge dieser Arbeit umfassen:
         Risikogrenzen (Satz~\ref{satz:pmhf}).
   \item Formaler Nachweis der Diagnoseabdeckungsanforderungen
         (Satz~\ref{satz:dc}).
-  \item Beweis der ZuverlÃ¤ssigkeitssteigerung durch Redundanz
+  \item Beweis der Zuverlässigkeitssteigerung durch Redundanz
         (Satz~\ref{satz:redundanz}).
   \item Quantitative Analyse des Entwicklungsaufwands
         (Satz~\ref{satz:aufwand}).
@@ -802,7 +802,7 @@ BeitrÃ¤ge dieser Arbeit umfassen:
 
 \subsection{Anwendungsgebiete}
 
-Die Ergebnisse dieser Arbeit sind unmittelbar anwendbar fÃ¼r:
+Die Ergebnisse dieser Arbeit sind unmittelbar anwendbar für:
 \begin{itemize}
   \item Sicherheitsverantwortliche in OEMs und Tier-1-Zulieferern.
   \item Systemarchitekten beim Entwurf ASIL-konformer
@@ -817,62 +817,62 @@ Die Ergebnisse dieser Arbeit sind unmittelbar anwendbar fÃ¼r:
 
 \subsection{Autonomes Fahren und Erweiterung auf SAE Level~4/5}
 
-Die grÃ¶ÃŸte offene Herausforderung fÃ¼r ISO~26262 liegt in der Anwendung
-auf vollstÃ¤ndig autonome Fahrzeuge (SAE Level~4 und~5). WÃ¤hrend die
+Die größte offene Herausforderung für ISO~26262 liegt in der Anwendung
+auf vollständig autonome Fahrzeuge (SAE Level~4 und~5). Während die
 aktuelle Norm (Revision 2018) auf systembasierte, parametrierbare
 Funktionen ausgelegt ist, stellt maschinelles Lernen (ML) und
 insbesondere Deep Learning grundlegend neue Anforderungen.
 
 \textbf{ML-Spezifische Herausforderungen:}
 \begin{itemize}
-  \item \emph{Unvorhersagbarkeit:} Neuronale Netze kÃ¶nnen fÃ¼r seltene,
+  \item \emph{Unvorhersagbarkeit:} Neuronale Netze können für seltene,
         im Training nicht gesehene Eingaben unerwartetes Verhalten
-        zeigen. Eine vollstÃ¤ndige FMEA Ã¼ber alle mÃ¶glichen
+        zeigen. Eine vollständige FMEA über alle möglichen
         Eingabe"-kom"-bi"-na"-tionen ist rechnerisch nicht
-        durchfÃ¼hrbar~\cite{burton_2020}.
+        durchführbar~\cite{burton_2020}.
   \item \emph{Fehlende Traceability:} Die ASIL-Anforderung, jeden
-        Softwarebaustein bis zu den Sicherheitszielen zurÃ¼ckzuverfolgen,
-        ist fÃ¼r Modellparameter eines neuronalen Netzes nicht direkt
-        erfÃ¼llbar.
+        Softwarebaustein bis zu den Sicherheitszielen zurückzuverfolgen,
+        ist für Modellparameter eines neuronalen Netzes nicht direkt
+        erfüllbar.
   \item \emph{Distribution Shift:} Ein im Labor zertifiziertes System
-        kann im Feld auf Datenbedingungen stoÃŸen, die von der
+        kann im Feld auf Datenbedingungen stoßen, die von der
         Trainingsverteilung abweichen, was zu systematischen
-        AusfÃ¤llen fÃ¼hrt.
+        Ausfällen führt.
 \end{itemize}
 
 Als Reaktion darauf entwickelt die ISO-Arbeitsgruppe seit 2021 die
 neue Norm \emph{ISO~21448 SOTIF} (Safety Of The Intended
-Functionality), die komplementÃ¤r zu ISO~26262 GefÃ¤hrdungen durch
-funktionale UnzulÃ¤nglichkeiten adressiert~\cite{iso21448_2022}.
+Functionality), die komplementär zu ISO~26262 Gefährdungen durch
+funktionale Unzulänglichkeiten adressiert~\cite{iso21448_2022}.
 Eine formale Integration beider Normen in einen einheitlichen
 Sicherheitsrahmen ist Gegenstand aktueller Forschung.
 
 \subsection{Formale Verifikation von Software-Sicherheitsanforderungen}
 
-ISO~26262 empfiehlt fÃ¼r ASIL~D-Software den Einsatz formaler
+ISO~26262 empfiehlt für ASIL~D-Software den Einsatz formaler
 Verifikationsmethoden (z.\,B.\ Model Checking, Theorem Proving).
 Die Skalierbarkeit auf reale Automotive-Software mit mehreren
 Millionen Codezeilen bleibt eine offene Forschungsfrage.
 
-\textbf{Vielversprechende AnsÃ¤tze:}
+\textbf{Vielversprechende Ansätze:}
 \begin{itemize}
   \item \emph{Abstraktionsraffination (CEGAR):}
-        Counterexample-Guided Abstraction Refinement ermÃ¶glicht
-        die Verifikation grÃ¶ÃŸerer ZustandsrÃ¤ume durch iterative
+        Counterexample-Guided Abstraction Refinement ermöglicht
+        die Verifikation größerer Zustandsräume durch iterative
         Verfeinerung abstrakter Modelle~\cite{clarke_2003}.
   \item \emph{Compositional Verification:}
         Die separate Verifikation von Modulen mit nachgewiesener
-        UnabhÃ¤ngigkeit ermÃ¶glicht die Skalierung auf Systemebene.
+        Unabhängigkeit ermöglicht die Skalierung auf Systemebene.
   \item \emph{Runtime Verification:}
-        Sicherheitseigenschaften werden zur Laufzeit Ã¼berwacht
-        und bei Verletzung sichere ZustÃ¤nde eingenommen~\cite{leucker_2009}.
+        Sicherheitseigenschaften werden zur Laufzeit überwacht
+        und bei Verletzung sichere Zustände eingenommen~\cite{leucker_2009}.
   \item \emph{Statistical Model Checking:}
-        FÃ¼r stochastische Systeme werden Monte-Carlo-Simulationen
+        Für stochastische Systeme werden Monte-Carlo-Simulationen
         eingesetzt, um Sicherheitseigenschaften mit statistischer
         Konfidenz zu verifizieren.
 \end{itemize}
 
-\subsection{Sicherheitsarchitekturen fÃ¼r Mehrkern- und SoC-Systeme}
+\subsection{Sicherheitsarchitekturen für Mehrkern- und SoC-Systeme}
 
 Modern Automotive-SoCs integrieren mehrere Prozessorkerne, GPUs,
 NPUs und Beschleuniger auf einem einzigen Chip. Dies stellt neue
@@ -882,16 +882,16 @@ Interferenzen (Freedom From Interference, FFI):
 \begin{itemize}
   \item \emph{Shared-Memory-Interferenzen:} Mehrere Kerne greifen
         auf gemeinsame Caches und den Hauptspeicher zu, was zu
-        nichtdeterministischen Latenzzeiten fÃ¼hrt~\cite{jmc_2018}.
+        nichtdeterministischen Latenzzeiten führt~\cite{jmc_2018}.
   \item \emph{ASIL-Mischung auf einem Chip:} Die gleichzeitige
-        AusfÃ¼hrung von QM-Software und ASIL~D-Software auf demselben
+        Ausführung von QM-Software und ASIL~D-Software auf demselben
         SoC erfordert strikte Hardware-Partitionierung und Monitore.
   \item \emph{Power Management und Timing:}
         Dynamisches Taktmanagement (DVFS) kann ASIL-relevante
         Timingzusagen verletzen.
 \end{itemize}
 
-LÃ¶sungsansÃ¤tze umfassen hypervisorbasierte Partitionierung~\cite{heiser_2020},
+Lösungsansätze umfassen hypervisorbasierte Partitionierung~\cite{heiser_2020},
 hardware-enforced Memory Protection Units (MPU) sowie
 zeitgesteuerte Kommunikationsbusse (TT-Ethernet, TSN).
 
@@ -899,31 +899,31 @@ zeitgesteuerte Kommunikationsbusse (TT-Ethernet, TSN).
 
 Die zunehmende Vernetzung von Fahrzeugen (V2X, OTA-Updates,
 Telematik) schafft neue Angriffsvektoren, die die funktionale
-Sicherheit gefÃ¤hrden kÃ¶nnen. Die Norm ISO/SAE~21434
+Sicherheit gefährden können. Die Norm ISO/SAE~21434
 \emph{Cybersecurity Engineering} adressiert diese Herausforderung,
-ist aber noch nicht vollstÃ¤ndig mit ISO~26262 harmonisiert~\cite{iso21434_2021}.
+ist aber noch nicht vollständig mit ISO~26262 harmonisiert~\cite{iso21434_2021}.
 
 \textbf{Forschungsbedarfe:}
 \begin{itemize}
   \item \emph{Gemeinsame TARA/HARA:}
-        Eine integrierte Bedrohungs-, GefÃ¤hrdungs- und Risiko"-analyse
+        Eine integrierte Bedrohungs-, Gefährdungs- und Risiko"-analyse
         (TARA\,+\,HARA) zur simultanen Bewertung von Safety- und
         Security-Zielen fehlt in der Normenwelt.
   \item \emph{Kryptografische Sicherheitsmechanismen:}
         Der Einsatz kryptografisch gesicherter Kommunikation
-        (z.\,B.\ SecOC nach AUTOSAR) schÃ¼tzt gegen Replay-Angriffe
+        (z.\,B.\ SecOC nach AUTOSAR) schützt gegen Replay-Angriffe
         und Nachrichtenmanipulation, muss aber in die
         PMHF-Berechnung einbezogen werden.
   \item \emph{Sicherheitsmonitore:}
-        ASIL-konforme Intrusion-Detection-Systeme fÃ¼r den
+        ASIL-konforme Intrusion-Detection-Systeme für den
         Automotive-Bereich, die sicherheitsrelevante Anomalien
         erkennen.
 \end{itemize}
 
 \subsection{Probabilistische Sicherheitsanalyse und Bayessche Netze}
 
-Die klassische FTA arbeitet mit PunktschÃ¤tzungen der Ausfallraten.
-FÃ¼r eine realistischere Modellierung bieten sich Bayessche Netze
+Die klassische FTA arbeitet mit Punktschätzungen der Ausfallraten.
+Für eine realistischere Modellierung bieten sich Bayessche Netze
 an~\cite{neil_2016}:
 \[
   P(\text{Top-Event} \mid \text{Betrieb})
@@ -931,45 +931,45 @@ an~\cite{neil_2016}:
     p(\vec{\lambda} \mid \text{Daten})\,\mathrm{d}\vec{\lambda}.
 \]
 Dies erlaubt die Integration von Felddaten und Prior-Wissen und
-fÃ¼hrt zu kontinuierlich aktualisierten Sicherheitsnachweisen
+führt zu kontinuierlich aktualisierten Sicherheitsnachweisen
 (Living Safety Cases)~\cite{bishop_2017}.
 
-\subsection{Digitale Zwillinge fÃ¼r kontinuierliche Validierung}
+\subsection{Digitale Zwillinge für kontinuierliche Validierung}
 
 Ein aufkommender Ansatz ist der Einsatz \emph{digitaler Zwillinge}
-fÃ¼r die kontinuierliche Sicherheitsvalidierung im Betrieb:
+für die kontinuierliche Sicherheitsvalidierung im Betrieb:
 
 \begin{itemize}
   \item Durch permanenten Abgleich zwischen realem Fahrzeug und
-        digitalem Modell kÃ¶nnen Abweichungen erkannt werden, die
-        auf VerschleiÃŸ oder unerwartete Betriebsbedingungen hinweisen.
-  \item Simulationsbasierte Sicherheitsanalysen kÃ¶nnen online
-        durchgefÃ¼hrt werden und Sicherheitsparameter adaptiv anpassen.
+        digitalem Modell können Abweichungen erkannt werden, die
+        auf Verschleiß oder unerwartete Betriebsbedingungen hinweisen.
+  \item Simulationsbasierte Sicherheitsanalysen können online
+        durchgeführt werden und Sicherheitsparameter adaptiv anpassen.
   \item Die Integration mit KI-basierter Anomalieerkennung erlaubt
-        prÃ¤diktive SicherheitsmaÃŸnahmen vor einem tatsÃ¤chlichen
+        prädiktive Sicherheitsmaßnahmen vor einem tatsächlichen
         Ausfall.
 \end{itemize}
 
-\subsection{Normenentwicklung: ISO~26262 und darÃ¼ber hinaus}
+\subsection{Normenentwicklung: ISO~26262 und darüber hinaus}
 
 Die aktuelle Revision ISO~26262:2018 wird voraussichtlich 2026
 aktualisiert. Erwartete Schwerpunkte sind~\cite{autosar_2023}:
 \begin{itemize}
-  \item Explizite Anforderungen fÃ¼r ML-basierte Komponenten.
-  \item Erweiterte Guidance fÃ¼r die ASIL-Einstufung von
+  \item Explizite Anforderungen für ML-basierte Komponenten.
+  \item Erweiterte Guidance für die ASIL-Einstufung von
         ADAS-Funktionen.
   \item Verbesserte Harmonisierung mit ISO~21448 (SOTIF) und
         ISO/SAE~21434 (Cybersecurity).
-  \item Neue Leitlinien fÃ¼r Software-Update-Management (OTA) und
+  \item Neue Leitlinien für Software-Update-Management (OTA) und
         Rekonfiguration im Feld.
 \end{itemize}
 
 Langfristig ist zu erwarten, dass die starre ASIL-Klassifikation
-durch dynamische, kontextabhÃ¤ngige Risikobewertungen ersetzt wird,
-die in Echtzeit auf Umgebungsbedingungen und FahrzeugsystemzustÃ¤nde
-reagieren. Dies wÃ¼rde eine fundamentale Weiterentwicklung der
+durch dynamische, kontextabhängige Risikobewertungen ersetzt wird,
+die in Echtzeit auf Umgebungsbedingungen und Fahrzeugsystemzustände
+reagieren. Dies würde eine fundamentale Weiterentwicklung der
 normativen Grundlagen erfordern und stellt eine zentrale
-Forschungsaufgabe fÃ¼r das kommende Jahrzehnt dar.
+Forschungsaufgabe für das kommende Jahrzehnt dar.
 
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 \begin{thebibliography}{99}
@@ -998,7 +998,7 @@ ISO/SAE~21434:2021.
 European Commission.
 \newblock \textit{Road Safety Statistics 2022}.
 \newblock European Commission, Directorate-General for Transport,
-  BrÃ¼ssel, 2023.
+  Brüssel, 2023.
 
 \bibitem{nhtsa_2022}
 National Highway Traffic Safety Administration (NHTSA).
@@ -1015,10 +1015,10 @@ Health and Safety Executive (HSE).
 
 \bibitem{becker_2014}
 B.~Becker, T.~Zeller und S.~Knapp.
-\newblock AufwandsabschÃ¤tzung fÃ¼r ISO~26262-konforme
+\newblock Aufwandsabschätzung für ISO~26262-konforme
   Entwicklungsprojekte.
 \newblock In: \textit{Proc.\ Embedded World Conference},
-  NÃ¼rnberg, S.~115--126, 2014.
+  Nürnberg, S.~115--126, 2014.
 
 \bibitem{feller_1968}
 W.~Feller.
@@ -1073,7 +1073,7 @@ P.~Bishop und R.~Bloomfield.
 AUTOSAR Consortium.
 \newblock \textit{AUTOSAR Adaptive Platform -- Foundation
   Release R23-11}.
-\newblock AUTOSAR, MÃ¼nchen, 2023.
+\newblock AUTOSAR, München, 2023.
 
 \end{thebibliography}
 

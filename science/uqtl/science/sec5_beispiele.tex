@@ -3,18 +3,18 @@
 \label{sec:beispiele}
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-Dieses Kapitel demonstriert den UQTL-Standard anhand vollstÃ¤ndiger,
-realistischer Datenbankszenarien. FÃ¼r jedes Beispiel wird zunÃ¤chst das
+Dieses Kapitel demonstriert den UQTL-Standard anhand vollständiger,
+realistischer Datenbankszenarien. Für jedes Beispiel wird zunächst das
 Datenbankschema beschrieben, dann die Abfrage in allen drei Quellsprachen
-formuliert, und schlieÃŸlich das vom Standard definierte normalisierte
+formuliert, und schließlich das vom Standard definierte normalisierte
 SQL-Ergebnis angegeben.
 
-\subsection{Datenmodell fÃ¼r die Beispiele}
+\subsection{Datenmodell für die Beispiele}
 \label{subsec:datenmodell}
 
 Alle Beispiele basieren auf folgendem vereinfachten E-Commerce-Schema:
 
-\begin{lstlisting}[style=sqlstyle, caption={Datenbankschema fÃ¼r Beispiele},
+\begin{lstlisting}[style=sqlstyle, caption={Datenbankschema für Beispiele},
   label=lst:schema]
 CREATE TABLE customers (
     id          INTEGER PRIMARY KEY,
@@ -107,7 +107,7 @@ var results = context.Customers
 \end{lstlisting}
 
 \begin{successbox}
-\textbf{UQTL-Normiertes SQL (identisch fÃ¼r alle drei Quellsprachen):}
+\textbf{UQTL-Normiertes SQL (identisch für alle drei Quellsprachen):}
 \begin{lstlisting}[style=sqlstyle, numbers=none]
 SELECT t1.name, t1.email
 FROM customers AS t1
@@ -122,7 +122,7 @@ ORDER BY t1.name ASC
 \label{subsec:bsp2}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\textbf{Aufgabe:} Anzahl bestÃ¤tigter Bestellungen und Gesamtumsatz pro Kunde,
+\textbf{Aufgabe:} Anzahl bestätigter Bestellungen und Gesamtumsatz pro Kunde,
 nur Kunden mit mehr als 3 Bestellungen, absteigend nach Umsatz.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 2 -- Python},
@@ -192,7 +192,7 @@ ORDER BY SUM(t1.total) DESC
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \textbf{Aufgabe:} Name und E-Mail der Kunden, die mindestens eine
-gelieferte Bestellung im Wert Ã¼ber 500~EUR hatten, im Jahr 2024.
+gelieferte Bestellung im Wert über 500~EUR hatten, im Jahr 2024.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 3 -- Python (JOIN)},
   label=lst:bsp3_py]
@@ -319,7 +319,7 @@ ORDER BY t1.name ASC
 \label{subsec:bsp5}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\textbf{Aufgabe:} FÃ¼r jede Bestellung: Rang innerhalb des Kunden nach Bestellwert
+\textbf{Aufgabe:} Für jede Bestellung: Rang innerhalb des Kunden nach Bestellwert
 (teuerste = Rang 1), laufende Summe der Bestellwerte pro Kunde.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 5 -- Python (Window Functions)},
@@ -414,7 +414,7 @@ ORDER BY t1.customer_id ASC, rnk ASC
 \label{subsec:bsp6}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\textbf{Aufgabe:} Kunden, deren letzter Bestellwert Ã¼ber dem Durchschnitt
+\textbf{Aufgabe:} Kunden, deren letzter Bestellwert über dem Durchschnitt
 aller Bestellwerte liegt.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 6 -- Python (Subquery)},
@@ -511,7 +511,7 @@ ORDER BY t1.name ASC
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 \textbf{Aufgabe:} Top-5-Produkte nach Umsatz (Menge $\times$ Einzelpreis),
-nur Produkte der Kategorie ,,Elektronik'', mit Anzahl unterschiedlicher KÃ¤ufer.
+nur Produkte der Kategorie ,,Elektronik'', mit Anzahl unterschiedlicher Käufer.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 7 -- Python (Multi-Join + Aggregation)},
   label=lst:bsp7_py]
@@ -699,8 +699,8 @@ ORDER BY t1.name ASC
 \label{subsec:bsp9}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\textbf{Aufgabe:} Kunden mit Ã¼berdurchschnittlichem Umsatz (Top-Tier-Analyse),
-unter Verwendung von CTEs fÃ¼r Lesbarkeit.
+\textbf{Aufgabe:} Kunden mit überdurchschnittlichem Umsatz (Top-Tier-Analyse),
+unter Verwendung von CTEs für Lesbarkeit.
 
 \begin{lstlisting}[style=pythonstyle, caption={Beispiel 9 -- Python (CTE)},
   label=lst:bsp9_py]
@@ -783,11 +783,11 @@ ORDER BY cr.total_revenue DESC
 \end{successbox}
 
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-\subsection{Beispiel 10: VollstÃ¤ndige GeschÃ¤ftslogik-Abfrage}
+\subsection{Beispiel 10: Vollständige Geschäftslogik-Abfrage}
 \label{subsec:bsp10}
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-\textbf{Aufgabe:} Monatlicher Umsatzbericht fÃ¼r das Jahr 2024: Monat, Gesamtumsatz,
+\textbf{Aufgabe:} Monatlicher Umsatzbericht für das Jahr 2024: Monat, Gesamtumsatz,
 Anzahl Bestellungen, Anzahl eindeutiger Kunden, Vergleich zum Vormonat
 (via LAG-Fensterfunktion).
 

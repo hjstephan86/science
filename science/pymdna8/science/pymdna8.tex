@@ -84,8 +84,8 @@
   commentstyle=\color{green!60!black},
   stringstyle=\color{red},
   showstringspaces=false, tabsize=4, captionpos=b,
-  literate={Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1 {Ã¼}{{\"u}}1
-           {Ã„}{{\"A}}1 {Ã–}{{\"O}}1 {Ãœ}{{\"U}}1 {ÃŸ}{{\ss}}1
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+           {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
 }
 
 %\pretocmd{\section}{\clearpage}{}{}
@@ -149,7 +149,7 @@
     DNA-Subgraph-Speicher-Subsystem}\\[0.5em]
   \large Vereinigung stochastischer Lastverteilung, ionotronischen\\
   Energiemanagements und graphentheoretischer DNA-Datenspeicherung\\
-  zu einer kohÃ¤renten, formal bewiesenen Rechnerarchitektur}
+  zu einer kohärenten, formal bewiesenen Rechnerarchitektur}
 \author{Stephan Epp}
 \date{6. April 2026}
 
@@ -165,8 +165,8 @@
 \section{Einleitung und Motivation}
 %==================================================================
 
-Die vorliegende Arbeit vereinigt drei bislang separat behandelte ForschungsstrÃ¤nge
-zu einer kohÃ¤renten, formell bewiesenen Rechnerarchitektur:
+Die vorliegende Arbeit vereinigt drei bislang separat behandelte Forschungsstränge
+zu einer kohärenten, formell bewiesenen Rechnerarchitektur:
 
 \begin{enumerate}[noitemsep]
   \item Die \textbf{PYMCA-8-Architektur} \cite{epp2026pymca8}: Ein
@@ -174,7 +174,7 @@ zu einer kohÃ¤renten, formell bewiesenen Rechnerarchitektur:
     Lastverteilung nach dem Archiv-Prinzip und IoFET-inspirierter kontinuierlicher
     DVFS-Steuerung.
   \item Das \textbf{DNA-Subgraph-Speichersystem (DSS)} \cite{epp2026dnastor}:
-    Ein vollstÃ¤ndig formal spezifiziertes DNA-Speichersystem, das den Subgraph
+    Ein vollständig formal spezifiziertes DNA-Speichersystem, das den Subgraph
     Algorithmus \cite{epp2026subgraph} zur graphentheoretischen Kodierung,
     Komprimierung und Adressierung von Daten in DNA-Sequenzen verwendet.
   \item Eine \textbf{neuartige Integration} beider Systeme zur
@@ -187,29 +187,29 @@ zu einer kohÃ¤renten, formell bewiesenen Rechnerarchitektur:
 
 \subsection{Das fundamentale Problem: Speichertiefe und Semantik}
 
-Aktuelle Rechnerarchitekturen sind von einem fundamentalen Widerspruch geprÃ¤gt:
+Aktuelle Rechnerarchitekturen sind von einem fundamentalen Widerspruch geprägt:
 Die Speicherhierarchie (Register $\to$ L1 $\to$ L2 $\to$ L3 $\to$ DRAM $\to$ SSD)
-optimiert ausschlieÃŸlich auf \emph{latenzbasierte} Kriterien, ohne die
-\emph{semantische Struktur} der gespeicherten Daten zu berÃ¼cksichtigen.
+optimiert ausschließlich auf \emph{latenzbasierte} Kriterien, ohne die
+\emph{semantische Struktur} der gespeicherten Daten zu berücksichtigen.
 Python-Programme hingegen erzeugen hochstrukturierte, graphentheoretisch
 charakterisierbare Objektgraphen: Python-Objekte sind Knoten, Referenzen sind
 Kanten, der Garbage-Collector traversiert diesen Graphen -- und dieser Graph
 hat typischerweise eine Subgraph-Struktur, die durch den Subgraph Algorithmus
 effizient analysierbar ist.
 
-\begin{satz}[Strukturelle DualitÃ¤t von Python-Objektgraphen und DNA-Datengraphen]
+\begin{satz}[Strukturelle Dualität von Python-Objektgraphen und DNA-Datengraphen]
   \label{satz:dualitaet}
   Sei $G_{\mathrm{Py}} = (V_{\mathrm{obj}}, E_{\mathrm{ref}})$ der
   Python-Objektgraph eines laufenden CPython-Prozesses mit Objektmenge
   $V_{\mathrm{obj}}$ und Referenzkantenmenge $E_{\mathrm{ref}}$.
   Sei $G_D = (V_D, E_{\mathrm{back}} \cup E_{\mathrm{wc}})$ ein DNA-Datengraph
   nach \cite{epp2026dnastor}.
-  Dann existiert eine natÃ¼rliche, surjektive Abbildung
+  Dann existiert eine natürliche, surjektive Abbildung
   \[
     \Phi: G_{\mathrm{Py}} \to G_D,
   \]
-  die jeden Python-Referenzgraph in einen formal Ã¤quivalenten DNA-Datengraph
-  Ã¼berfÃ¼hrt, sodass der GC-Traversierungsalgorithmus auf $G_{\mathrm{Py}}$
+  die jeden Python-Referenzgraph in einen formal äquivalenten DNA-Datengraph
+  überführt, sodass der GC-Traversierungsalgorithmus auf $G_{\mathrm{Py}}$
   und der Retrieval-Algorithmus auf $G_D$ dieselbe formale Subgraph-Inklusionsstruktur
   aufweisen.
 \end{satz}
@@ -217,56 +217,56 @@ effizient analysierbar ist.
 \begin{proof}
   Sei $\phi_{\mathrm{seq}}: V_{\mathrm{obj}} \to \Sigma^*$ eine Serialisierungsfunktion,
   die jedes Python-Objekt in eine DNA-Sequenz codiert (z.B. via \texttt{pickle}
-  gefolgt von dem quaternÃ¤ren Kodierer $\phi$ aus \cite{epp2026dnastor}).
-  Die RÃ¼ckkant-Kanten $E_{\mathrm{back}}$ entstehen aus der sequentiellen
+  gefolgt von dem quaternären Kodierer $\phi$ aus \cite{epp2026dnastor}).
+  Die Rückkant-Kanten $E_{\mathrm{back}}$ entstehen aus der sequentiellen
   Anordnung der serialisierten Bytes; die Watson-Crick-Kanten $E_{\mathrm{wc}}$
-  kodieren komplementÃ¤re Strukturmuster, die in Python-Objekten durch
+  kodieren komplementäre Strukturmuster, die in Python-Objekten durch
   gegenseitige Referenzen ($a \to b$ und $b \to a$) realisiert werden.
-  Die SurjektivitÃ¤t folgt daraus, dass jede DNA-Sequenz durch Deserialisierung
-  ein gÃ¼ltiges Python-Objekt ergibt.
+  Die Surjektivität folgt daraus, dass jede DNA-Sequenz durch Deserialisierung
+  ein gültiges Python-Objekt ergibt.
 \end{proof}
 
-Dieser Satz ist der SchlÃ¼ssel zur PYMDNA-8-Architektur: Die algebraische
-Struktur des Subgraph Algorithmus ist nicht nur fÃ¼r DNA-Speicher, sondern
-auch fÃ¼r die GC-Traversierung direkter Python-Objektgraphen anwendbar.
+Dieser Satz ist der Schlüssel zur PYMDNA-8-Architektur: Die algebraische
+Struktur des Subgraph Algorithmus ist nicht nur für DNA-Speicher, sondern
+auch für die GC-Traversierung direkter Python-Objektgraphen anwendbar.
 
-\subsection{Wissenschaftliche BeitrÃ¤ge dieser Arbeit}
+\subsection{Wissenschaftliche Beiträge dieser Arbeit}
 
-Diese Arbeit leistet folgende originÃ¤re wissenschaftliche BeitrÃ¤ge:
+Diese Arbeit leistet folgende originäre wissenschaftliche Beiträge:
 
 \begin{enumerate}[noitemsep]
-  \item \textbf{PYMDNA-8-Architektur} als 9-Tupel mit vollstÃ¤ndiger formaler
+  \item \textbf{PYMDNA-8-Architektur} als 9-Tupel mit vollständiger formaler
     Spezifikation aller Komponenten, Schnittstellen und Garantien.
   \item \textbf{Vereinigtes stochastisches Modell}: Erweiterung der Archiv-Problem-Theorie
     auf eine zweidimensionale Kostenstruktur, die sowohl volatile (DRAM) als
-    auch persistente (DNA) Speicherziele berÃ¼cksichtigt.
+    auch persistente (DNA) Speicherziele berücksichtigt.
   \item \textbf{DNA-GC-Kooperation}: Formaler Beweis, dass der DNA-L5-Cache
     als passiver Garbage-Collector-Assistent die Gen-2-GC-Pausenzeit auf
     $O(\log M)$ reduziert.
-  \item \textbf{Subgraph-Signatur-Cache-KohÃ¤renz}: Ein neuartiges KohÃ¤renz\-protokoll,
+  \item \textbf{Subgraph-Signatur-Cache-Kohärenz}: Ein neuartiges Kohärenz\-protokoll,
     das Subgraph-Signaturen als Cache-Tags verwendet und dadurch den
-    KohÃ¤renz-Overhead um 60--80\% gegenÃ¼ber MESI reduziert.
-  \item \textbf{Optimale DNA-Tiering-Strategie}: Beweis der OptimalitÃ¤t
-    einer Pareto/NegBin-kompositen Wartestrategie fÃ¼r den Ãœbergang von
+    Kohärenz-Overhead um 60--80\% gegenüber MESI reduziert.
+  \item \textbf{Optimale DNA-Tiering-Strategie}: Beweis der Optimalität
+    einer Pareto/NegBin-kompositen Wartestrategie für den Übergang von
     DRAM nach DNA.
-  \item \textbf{Kombinierter KomplexitÃ¤tssatz}: Gesamtlaufzeit des Systems
+  \item \textbf{Kombinierter Komplexitätssatz}: Gesamtlaufzeit des Systems
     $O(m \cdot k^3 + M \log M \cdot k^2 + n \sqrt{\lambda_n})$ formal
     hergeleitet und als asymptotisch optimal nachgewiesen.
-  \item \textbf{Formale Sicherheitsanalyse}: Nichtinterferenz-Beweis fÃ¼r
+  \item \textbf{Formale Sicherheitsanalyse}: Nichtinterferenz-Beweis für
     den gemeinsamen Signaturindex bei mehreren sicherheitssensitiven
     Python-Prozessen.
 \end{enumerate}
 
 \subsection{Aufbau der Arbeit}
 
-Kapitel~2 rekapituliert und erweitert die Grundlagen beider VorgÃ¤ngerarbeiten.
+Kapitel~2 rekapituliert und erweitert die Grundlagen beider Vorgängerarbeiten.
 Kapitel~3 definiert die PYMDNA-8-Architektur formal.
 Kapitel~4 entwickelt das vereinigte stochastische Modell.
 Kapitel~5 analysiert den DNA-L5-Cache und seine Integration in PYMCA-8.
-Kapitel~6 beweist die Subgraph-Signatur-Cache-KohÃ¤renzprotokolle.
+Kapitel~6 beweist die Subgraph-Signatur-Cache-Kohärenzprotokolle.
 Kapitel~7 behandelt die DNA-GC-Kooperation formal.
-Kapitel~8 entwickelt das vollstÃ¤ndige Energiemodell.
-Kapitel~9 liefert die informationstheoretische KapazitÃ¤tsanalyse des Gesamtsystems.
+Kapitel~8 entwickelt das vollständige Energiemodell.
+Kapitel~9 liefert die informationstheoretische Kapazitätsanalyse des Gesamtsystems.
 Kapitel~10 beschreibt die Algorithmen und Pseudocodes.
 Kapitel~11 stellt Experimente und numerische Validierungen vor.
 Kapitel~12 vergleicht PYMDNA-8 mit dem Stand der Technik.
@@ -283,7 +283,7 @@ Kapitel~13 bietet Ausblick und gibt offene Fragestellungen an.
   Sei $F$ eine kumulative Verteilungsfunktion auf $\mathbb{R}_{>0}$ mit Dichte $f$.
   Die stochastische Wartestrategie $\mathcal{W}(F)$ akkumuliert eintreffende
   Anfragen im Puffer $B$ und setzt bei jeder Ankunft einen Zufallstimer $T \sim F$
-  neu. Erst wenn eine vollstÃ¤ndige Periode der LÃ¤nge $T$ ohne neue Ankunft
+  neu. Erst wenn eine vollständige Periode der Länge $T$ ohne neue Ankunft
   verstreicht, wird $B$ als sortierter Batch verarbeitet und geleert.
 \end{definition}
 
@@ -296,7 +296,7 @@ Die Abschlusswahrscheinlichkeit ist die Laplace-Transformierte der Timer-Dichte:
 
 \begin{theorem}[Optimaler Timerparameter \cite{epp2026pymca8}]
   \label{thm:optmu}
-  FÃ¼r das Kostenfunktional
+  Für das Kostenfunktional
   $J(\mu) = \frac{c_{\mathrm{wait}}}{\mu} + \frac{c_{\mathrm{shift}}\,\mu}{\lambda}$
   ist der optimale Parameter:
   \begin{equation}
@@ -307,10 +307,10 @@ Die Abschlusswahrscheinlichkeit ist die Laplace-Transformierte der Timer-Dichte:
 \end{theorem}
 
 \textbf{Erweiterung auf Zwei-Ziel-Optimierung.}
-FÃ¼r PYMDNA-8 benÃ¶tigen wir eine Erweiterung: Speicheroperationen kÃ¶nnen
+Für PYMDNA-8 benötigen wir eine Erweiterung: Speicheroperationen können
 sowohl in DRAM (Kosten $c_{\mathrm{DRAM}}$) als auch in DNA (Kosten $c_{\mathrm{DNA}}$
-mit $c_{\mathrm{DNA}} \gg c_{\mathrm{DRAM}}$ fÃ¼r Schreiben, aber $c_{\mathrm{DNA}} \ll c_{\mathrm{DRAM}}$
-fÃ¼r Langzeitspeicherung) enden.
+mit $c_{\mathrm{DNA}} \gg c_{\mathrm{DRAM}}$ für Schreiben, aber $c_{\mathrm{DNA}} \ll c_{\mathrm{DRAM}}$
+für Langzeitspeicherung) enden.
 
 \begin{theorem}[Zwei-Ziel-optimaler Timerparameter]
   \label{thm:twotarget}
@@ -332,12 +332,12 @@ fÃ¼r Langzeitspeicherung) enden.
 \end{theorem}
 
 \begin{proof}
-  FÃ¼r festes $\gamma$ ist $J_{\mathrm{combo}}(\mu, \gamma)$ konvex in $\mu$
+  Für festes $\gamma$ ist $J_{\mathrm{combo}}(\mu, \gamma)$ konvex in $\mu$
   (Summe einer monoton fallenden und einer monoton steigenden Funktion),
   und die eindeutige Nullstelle der Ableitung liefert~\eqref{eq:muopt_gamma}.
-  FÃ¼r festes $\mu$ hÃ¤ngt die optimale Eskalationsentscheidung nur vom
+  Für festes $\mu$ hängt die optimale Eskalationsentscheidung nur vom
   Vergleich der effektiven Batch-Kosten ab: Eskalation lohnt sich genau dann,
-  wenn die Anzahl der SchreibvorgÃ¤nge pro Zeiteinheit
+  wenn die Anzahl der Schreibvorgänge pro Zeiteinheit
   $\lambda / \mu > \theta_{\mathrm{DNA}}$, was~\eqref{eq:gamma_star} ergibt.
   Das Nash-Gleichgewicht dieser Zwei-Spieler-Optimierung existiert und ist
   eindeutig, da beide Reaktionsfunktionen streng monoton sind.
@@ -349,7 +349,7 @@ fÃ¼r Langzeitspeicherung) enden.
   \label{def:dss}
   Ein DSS ist ein Tupel
   $\mathrm{DSS} = (\mathcal{B}, \Sigma, \phi, \psi, \mathcal{I}, \mathcal{E}, \mathcal{R}, \mathcal{P})$
-  mit binÃ¤rem Alphabet $\mathcal{B}=\{0,1\}$, DNA-Alphabet $\Sigma=\{A,T,G,C\}$,
+  mit binärem Alphabet $\mathcal{B}=\{0,1\}$, DNA-Alphabet $\Sigma=\{A,T,G,C\}$,
   bijectiver Kodierungsfunktion $\phi: \mathcal{B}^{2k} \to \Sigma^k$,
   Inverse $\psi = \phi^{-1}$, Signatur-Index $\mathcal{I}$,
   Reed-Solomon-Fehlerkorrektur $\mathcal{E}$, Subgraph-Komprimierungsmodul $\mathcal{R}$
@@ -358,7 +358,7 @@ fÃ¼r Langzeitspeicherung) enden.
 
 \begin{definition}[DNA-Subgraph-Signatur]
   \label{def:signatur}
-  FÃ¼r einen Datenblock $D \in \mathcal{B}^{2k}$ mit DNA-Graph
+  Für einen Datenblock $D \in \mathcal{B}^{2k}$ mit DNA-Graph
   $G_D = (V_D, E_D)$ und Adjazenzmatrix $A^D$ ist die Spalten-Signatur:
   \[
     \sigma_j^D = \sum_{i=0}^{k-1} A^D_{ij} \cdot 2^i + j \cdot 2^k,
@@ -367,12 +367,12 @@ fÃ¼r Langzeitspeicherung) enden.
   und das Signatur-Array $\boldsymbol{\sigma}^D = (\sigma_0^D,\ldots,\sigma_{k-1}^D) \in \mathbb{N}^k$.
 \end{definition}
 
-\subsection{Vereinigte KomplexitÃ¤tsgrundlagen}
+\subsection{Vereinigte Komplexitätsgrundlagen}
 
-\begin{lemma}[Subgraph-Test-KomplexitÃ¤t \cite{epp2026subgraph}]
+\begin{lemma}[Subgraph-Test-Komplexität \cite{epp2026subgraph}]
   \label{lem:subgraph_complexity}
-  Der Subgraph-Test $G_A \preceq_{\mathrm{rot}} G_B$ benÃ¶tigt $O(k^3)$ Zeit
-  und ist unter SETH nicht in $O(k^{3-\varepsilon})$ lÃ¶sbar.
+  Der Subgraph-Test $G_A \preceq_{\mathrm{rot}} G_B$ benötigt $O(k^3)$ Zeit
+  und ist unter SETH nicht in $O(k^{3-\varepsilon})$ lösbar.
 \end{lemma}
 
 \begin{lemma}[Komprimierungsrate des DSS \cite{epp2026dnastor}]
@@ -387,14 +387,14 @@ fÃ¼r Langzeitspeicherung) enden.
 \section{Die PYMDNA-8-Architektur: Formale Definition}
 %==================================================================
 
-\subsection{Ãœberblick}
+\subsection{Überblick}
 
 Die PYMDNA-8-Architektur integriert die PYMCA-8-Prozessorarchitektur
 \cite{epp2026pymca8} mit dem DSS-Speichersystem \cite{epp2026dnastor}
-zu einer kohÃ¤renten Gesamtarchitektur, deren zentrales Designprinzip
+zu einer kohärenten Gesamtarchitektur, deren zentrales Designprinzip
 lautet: \emph{Jede Schicht der Speicherhierarchie nutzt dieselbe
 algebraische Struktur -- die Subgraph-Signatur -- als universellen
-Cache-Tag, Adresse und KomprimierungsschlÃ¼ssel.}
+Cache-Tag, Adresse und Komprimierungsschlüssel.}
 
 \begin{definition}[PYMDNA-8-Architektur]
   \label{def:pymdna8}
@@ -423,13 +423,13 @@ Cache-Tag, Adresse und KomprimierungsschlÃ¼ssel.}
       mit je $s_i = (\ell_i, \hat\lambda_i, F_i, \mu_i^*, \gamma_i)$,
       wobei $\gamma_i$ die DNA-Eskalationswahrscheinlichkeit ist.
     \item $\mathcal{T}_{\mathrm{sync}}$: Zentraler Synchronisationsbus
-      fÃ¼r GIL, GC und DNA-I/O-Ereignisse.
-    \item $\mathcal{X}_{\mathrm{DSS}}$: Das vollstÃ¤ndige DSS-Subsystem
+      für GIL, GC und DNA-I/O-Ereignisse.
+    \item $\mathcal{X}_{\mathrm{DSS}}$: Das vollständige DSS-Subsystem
       mit Synthetisier-, Sequenzier- und Signaturindexeinheit.
   \end{itemize}
 \end{definition}
 
-\subsection{ArchitekturÃ¼bersicht}
+\subsection{Architekturübersicht}
 
 \begin{figure}[h!]
   \centering
@@ -485,10 +485,10 @@ Cache-Tag, Adresse und KomprimierungsschlÃ¼ssel.}
       (PMA.south) node[midway, right, font=\tiny, teal]{DNA-GC};
   \end{tikzpicture}
   \caption{Schematischer Aufbau der PYMDNA-8-Architektur. Kerne $C_0$--$C_7$
-    kommunizieren Ã¼ber den universellen Signatur-Bus $\mathcal{B}_{\mathrm{uni}}$
+    kommunizieren über den universellen Signatur-Bus $\mathcal{B}_{\mathrm{uni}}$
     mit PMA, EMU, HBM3, NVMe-SSD und dem DNA-L5-Cache $\mathcal{X}_{\mathrm{DSS}}$.
-    Gestrichelt: DVFS-RÃ¼ckkopplung (rot), GIL-Synchronisation (blau) und
-    DNA-GC-Kooperation (grÃ¼n).}
+    Gestrichelt: DVFS-Rückkopplung (rot), GIL-Synchronisation (blau) und
+    DNA-GC-Kooperation (grün).}
   \label{fig:pymdna8_arch}
 \end{figure}
 
@@ -498,35 +498,35 @@ Cache-Tag, Adresse und KomprimierungsschlÃ¼ssel.}
   \label{def:sigbus}
   Der Signatur-Bus erweitert den klassischen Speicherbus um ein
   \emph{Signatur-Tag-Feld}: Jede Busnachricht $m = (\mathrm{addr}, \mathrm{data},
-  \boldsymbol{\sigma})$ trÃ¤gt den Subgraph-Signaturvektor
+  \boldsymbol{\sigma})$ trägt den Subgraph-Signaturvektor
   $\boldsymbol{\sigma} \in \mathbb{N}^k$ als Metadatenfeld.
-  Cache-KohÃ¤renzprÃ¼fungen kÃ¶nnen daher in $O(k)$ statt $O(|\mathrm{addr}|)$
-  durchgefÃ¼hrt werden.
+  Cache-Kohärenzprüfungen können daher in $O(k)$ statt $O(|\mathrm{addr}|)$
+  durchgeführt werden.
 \end{definition}
 
-\begin{satz}[KohÃ¤renzÃ¼berprÃ¼fung via Signatur]
+\begin{satz}[Kohärenzüberprüfung via Signatur]
   \label{satz:kohaerenz}
   Sei $\boldsymbol{\sigma}^A$ die Signatur einer Cache-Line $A$ und
   $\boldsymbol{\sigma}^B$ die Signatur der modifizierten Version $B$.
   Dann impliziert $\boldsymbol{\sigma}^A = \boldsymbol{\sigma}^B$, dass
   $A \cong B$ (isomorphe Graphen, also inhaltlich identisch im DSS-Sinne).
-  Anderenfalls ist eine vollstÃ¤ndige Cache-Line-Ãœbertragung erforderlich.
+  Anderenfalls ist eine vollständige Cache-Line-Übertragung erforderlich.
 \end{satz}
 
 \begin{proof}
   Nach Lemma~1 aus \cite{epp2026dnastor} ist die Signatur-Funktion injektiv
   auf nicht-isomorphen Graphen. Zwei Cache-Lines mit gleicher Signatur
-  haben also einen isomorphen Datengraph, was semantische Ã„quivalenz
-  im DSS-Modell bedeutet. Eine Ãœbertragung ist unnÃ¶tig. Verschiedene
-  Signaturen garantieren Unterschiede, also ist eine Ãœbertragung notwendig.
+  haben also einen isomorphen Datengraph, was semantische Äquivalenz
+  im DSS-Modell bedeutet. Eine Übertragung ist unnötig. Verschiedene
+  Signaturen garantieren Unterschiede, also ist eine Übertragung notwendig.
 \end{proof}
 
-\begin{korollar}[Reduktion des KohÃ¤renz-Traffics]
+\begin{korollar}[Reduktion des Kohärenz-Traffics]
   \label{kor:kohaerenz_traffic}
-  Sei $\rho_{\mathrm{struct}}$ der Anteil strukturell Ã¤quivalenter
-  (signaturgleicher) Cache-Lines im L3-Cache. Die KohÃ¤renzverkehrsreduktion
-  durch Signatur-Tagging betrÃ¤gt mindestens $\rho_{\mathrm{struct}} \cdot 100\%$.
-  FÃ¼r typische Python-GC-Workloads mit $\rho_{\mathrm{struct}} \approx 0.65$
+  Sei $\rho_{\mathrm{struct}}$ der Anteil strukturell äquivalenter
+  (signaturgleicher) Cache-Lines im L3-Cache. Die Kohärenzverkehrsreduktion
+  durch Signatur-Tagging beträgt mindestens $\rho_{\mathrm{struct}} \cdot 100\%$.
+  Für typische Python-GC-Workloads mit $\rho_{\mathrm{struct}} \approx 0.65$
   ergibt sich eine Reduktion um $65\%$.
 \end{korollar}
 
@@ -557,29 +557,29 @@ vierte Dimension: die DNA-Eskalation.
   \begin{tabular}{lcccp{3.5cm}}
     \toprule
     \textbf{Regime} & \textbf{Last $\ell_i$} & \textbf{Verteilung}
-    & \textbf{$\gamma_i^*$} & \textbf{BegrÃ¼ndung} \\
+    & \textbf{$\gamma_i^*$} & \textbf{Begründung} \\
     \midrule
     Tiefschlaf & $\ell_i < 0.10$ & $\Pareto(\alpha=3)$ & $1.0$
     & Lange Phasen; DNA-Archivierung aller Puffer. \\
     Energiesparmodus & $0.10 \le \ell_i < 0.30$ & $\Pareto(\alpha=3)$ & $0.1$
-    & Seltene Zugriffe; DNA nur fÃ¼r Cold-Data. \\
+    & Seltene Zugriffe; DNA nur für Cold-Data. \\
     Normalbetrieb & $0.30 \le \ell_i < 0.80$ & $\Exp(\mu^*)$ & $0.0$
-    & GedÃ¤chtnisloser Betrieb; kein DNA-I/O. \\
+    & Gedächtnisloser Betrieb; kein DNA-I/O. \\
     Python-GIL-Hochlast & $\ell_i \ge 0.80$ & $\Geo + \NBin$ & $0.0$
     & GIL-gebundener Betrieb; DNA kontraindiziert. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Formale OptimalitÃ¤t des Vier-Regime-Systems}
+\subsection{Formale Optimalität des Vier-Regime-Systems}
 
-\begin{theorem}[Optimale Aufteilung in vier LastzustÃ¤nde]
+\begin{theorem}[Optimale Aufteilung in vier Lastzustände]
   \label{thm:vier_regime_optimal}
   Sei $\mathcal{L} = [0,1]$ der normierte Lastbereich und
   $J_{\mathrm{total}}(\ell)$ das kombinierte Kostenfunktional aus
   Latenz, Energie und DNA-I/O-Kosten. Die Aufteilung in die vier Regime
   mit Schwellen $(0.10, 0.30, 0.80)$ ist optimal im Sinne der Minimierung
-  von $\int_0^1 J_{\mathrm{total}}(\ell)\,p(\ell)\,\mathrm{d}\ell$ Ã¼ber
+  von $\int_0^1 J_{\mathrm{total}}(\ell)\,p(\ell)\,\mathrm{d}\ell$ über
   die empirische Python-Lastverteilung $p(\ell)$.
 \end{theorem}
 
@@ -593,16 +593,16 @@ vierte Dimension: die DNA-Eskalation.
   dominiert $J_{\mathrm{DNA}}$: DNA-Synthese lohnt sich, weil der
   Pareto-Timer sehr lange stille Perioden erzeugt (Erwartungswert
   $\E[T_\Pareto] = x_m \alpha /(\alpha - 1) \gg 1/\hat\lambda_i$),
-  in denen die DNA-Synthese ohne Latenzkompetition ausgefÃ¼hrt wird.
+  in denen die DNA-Synthese ohne Latenzkompetition ausgeführt wird.
   Die optimale Eskalation $\gamma^* = 1.0$ folgt aus Theorem~\ref{thm:twotarget}.
 
   \textbf{Regime III ($0.10 \le \ell < 0.30$):} Hier ist die Last zu hoch
-  fÃ¼r vollstÃ¤ndige DNA-Eskalation (DNA-Synthesizer-Latenz wÃ¼rde die
-  nÃ¤chste Anfrage Ã¼berlagern), aber niedrig genug fÃ¼r teilweise Eskalation
+  für vollständige DNA-Eskalation (DNA-Synthesizer-Latenz würde die
+  nächste Anfrage überlagern), aber niedrig genug für teilweise Eskalation
   ($\gamma^* = 0.10$). Der Pareto-Timer bleibt optimal.
 
-  \textbf{Regime II ($0.30 \le \ell < 0.80$):} Die gedÃ¤chtnislose
-  Exponentialverteilung ist der einzige stetige Typ, der Markov-OptimalitÃ¤t
+  \textbf{Regime II ($0.30 \le \ell < 0.80$):} Die gedächtnislose
+  Exponentialverteilung ist der einzige stetige Typ, der Markov-Optimalität
   garantiert. DNA-I/O ist durch die hohe Ankunftsrate ausgeschlossen
   ($\gamma^* = 0$).
 
@@ -616,9 +616,9 @@ vierte Dimension: die DNA-Eskalation.
   und schneiden sich genau einmal.
 \end{proof}
 
-\subsection{EWMA-SchÃ¤tzung mit DNA-Antizipation}
+\subsection{EWMA-Schätzung mit DNA-Antizipation}
 
-Die EWMA-SchÃ¤tzung der Ankunftsrate wird um eine DNA-Antizipationskomponente
+Die EWMA-Schätzung der Ankunftsrate wird um eine DNA-Antizipationskomponente
 erweitert:
 
 \begin{equation}
@@ -631,7 +631,7 @@ erweitert:
 \end{equation}
 
 wobei $\lambda_{\mathrm{DNA}}^{\mathrm{max}}$ die maximale Rate ist,
-bei der DNA-Synthese noch konkurrenzfÃ¤hig ist, und
+bei der DNA-Synthese noch konkurrenzfähig ist, und
 $\sigma(\cdot) = 1/(1 + e^\cdot)$ die Sigmoid-Funktion.
 
 %==================================================================
@@ -662,13 +662,13 @@ $\sigma(\cdot) = 1/(1 + e^\cdot)$ die Sigmoid-Funktion.
   \renewcommand{\arraystretch}{1.35}
   \begin{tabular}{llllll}
     \toprule
-    \textbf{Ebene} & \textbf{Typ} & \textbf{Latenz} & \textbf{KapazitÃ¤t}
-    & \textbf{Bandbreite} & \textbf{FlÃ¼chtigkeit} \\
+    \textbf{Ebene} & \textbf{Typ} & \textbf{Latenz} & \textbf{Kapazität}
+    & \textbf{Bandbreite} & \textbf{Flüchtigkeit} \\
     \midrule
-    L1  & SRAM  & $4$\,ns    & $64$\,KB    & $2$\,TB/s  & flÃ¼chtig \\
-    L2  & SRAM  & $12$\,ns   & $512$\,KB   & $1$\,TB/s  & flÃ¼chtig \\
-    L3  & SRAM  & $40$\,ns   & $32$\,MB    & $400$\,GB/s & flÃ¼chtig \\
-    HBM3 & DRAM  & $80$\,ns   & $64$\,GB    & $900$\,GB/s & flÃ¼chtig \\
+    L1  & SRAM  & $4$\,ns    & $64$\,KB    & $2$\,TB/s  & flüchtig \\
+    L2  & SRAM  & $12$\,ns   & $512$\,KB   & $1$\,TB/s  & flüchtig \\
+    L3  & SRAM  & $40$\,ns   & $32$\,MB    & $400$\,GB/s & flüchtig \\
+    HBM3 & DRAM  & $80$\,ns   & $64$\,GB    & $900$\,GB/s & flüchtig \\
     L4 SSD & NVMe & $80$\,$\mu$s & $4$\,TB   & $14$\,GB/s & persistent \\
     L5 DNA & Bio  & $17$\,s    & $\ge 10^6$\,EB & $10$\,MB/s & permanent \\
     \bottomrule
@@ -681,14 +681,14 @@ $\sigma(\cdot) = 1/(1 + e^\cdot)$ die Sigmoid-Funktion.
   \label{def:promotion}
   Ein Datum $D$ wird von L4~(SSD) nach L3 (SRAM) promoviert, wenn
   seine DNS-Abruflatenz $\le t_{\mathrm{promo}}$ ist und die
-  Signaturanfragerate die Schwelle $\theta_{\mathrm{hot}}$ Ã¼berschreitet:
+  Signaturanfragerate die Schwelle $\theta_{\mathrm{hot}}$ überschreitet:
   \[
     \mathrm{Promote}(D) \iff
     \frac{\mathrm{Anfragen}(D, \Delta t)}{\Delta t} \ge \theta_{\mathrm{hot}}.
   \]
   Ein Datum $D$ wird von DRAM nach DNA demotiert (archiviert), wenn
   seine letzte Verwendungszeit $t_{\mathrm{last}}$ den Schwellwert
-  $\tau_{\mathrm{cold}}$ Ã¼berschreitet:
+  $\tau_{\mathrm{cold}}$ überschreitet:
   \[
     \mathrm{Demote}(D) \iff t_{\mathrm{now}} - t_{\mathrm{last}}(D) > \tau_{\mathrm{cold}}.
   \]
@@ -696,9 +696,9 @@ $\sigma(\cdot) = 1/(1 + e^\cdot)$ die Sigmoid-Funktion.
 
 \begin{satz}[Gesamt-Zugriffszeit unter Demotion/Promotion]
   \label{satz:zugriffszeit}
-  Sei $f_{\mathrm{hot}} = \Prob(D \text{ ist heiÃŸ})$ die
-  Hot-Daten-Fraktion. Die mittlere Zugriffslatenz Ã¼ber die gesamte
-  Speicherhierarchie betrÃ¤gt:
+  Sei $f_{\mathrm{hot}} = \Prob(D \text{ ist heiß})$ die
+  Hot-Daten-Fraktion. Die mittlere Zugriffslatenz über die gesamte
+  Speicherhierarchie beträgt:
   \begin{equation}
     \bar{t}_{\mathrm{access}} = f_{\mathrm{hot}} \cdot t_{L3}
     + (1 - f_{\mathrm{hot}}) \cdot \bigl[f_{\mathrm{SSD}} \cdot t_{L4}
@@ -714,28 +714,28 @@ $\sigma(\cdot) = 1/(1 + e^\cdot)$ die Sigmoid-Funktion.
   mit Wahrscheinlichkeit $f_{\mathrm{hot}}$ im L3-Cache,
   mit Wahrscheinlichkeit $(1-f_{\mathrm{hot}}) f_{\mathrm{SSD}}$ auf der SSD,
   und mit Wahrscheinlichkeit $(1-f_{\mathrm{hot}})(1-f_{\mathrm{SSD}})$ im DNA-Pool.
-  Gleichung~\eqref{eq:zugriffszeit} ergibt sich durch LinearitÃ¤t des Erwartungswerts.
+  Gleichung~\eqref{eq:zugriffszeit} ergibt sich durch Linearität des Erwartungswerts.
 \end{proof}
 
 %==================================================================
-\section{Subgraph-Signatur-Cache-KohÃ¤renzprotokoll}
+\section{Subgraph-Signatur-Cache-Kohärenzprotokoll}
 %==================================================================
 
-\subsection{Motivation: Insuffizienz klassischer KohÃ¤renzprotokolle}
+\subsection{Motivation: Insuffizienz klassischer Kohärenzprotokolle}
 
-Das MESI-Protokoll (Modified-Exclusive-Shared-Invalid) ist fÃ¼r
+Das MESI-Protokoll (Modified-Exclusive-Shared-Invalid) ist für
 PYMCA-8/PYMDNA-8 suboptimal, weil es Adressen statt Inhalte zur
-KohÃ¤renzentscheidung verwendet. Im DNA-Kontext sind jedoch zwei
+Kohärenzentscheidung verwendet. Im DNA-Kontext sind jedoch zwei
 physikalisch verschiedene Adressen inhaltlich identisch (isomorphe
-DNA-Graphen), was MESI zu unnÃ¶tigen Invalidierungen fÃ¼hrt.
+DNA-Graphen), was MESI zu unnötigen Invalidierungen führt.
 
 \begin{definition}[Subgraph-MESI-Protokoll (SMESI)]
   \label{def:smesi}
-  Das SMESI-Protokoll erweitert MESI um einen fÃ¼nften Zustand:
+  Das SMESI-Protokoll erweitert MESI um einen fünften Zustand:
   \begin{itemize}[noitemsep]
     \item \textbf{S$_\sigma$} (Signatur-Shared): Mehrere Kerne halten
       Kopien mit \emph{gleicher Signatur} $\boldsymbol{\sigma}$ --
-      semantisch identisch, keine Invalidierung nÃ¶tig bei Lese-Zugriff.
+      semantisch identisch, keine Invalidierung nötig bei Lese-Zugriff.
     \item \textbf{M} (Modified), \textbf{E} (Exclusive), \textbf{S} (Shared),
       \textbf{I} (Invalid): wie in MESI.
   \end{itemize}
@@ -748,13 +748,13 @@ DNA-Graphen), was MESI zu unnÃ¶tigen Invalidierungen fÃ¼hrt.
 \end{theorem}
 
 \begin{proof}
-  Wir zeigen die zwei SchlÃ¼sseleigenschaften:
+  Wir zeigen die zwei Schlüsseleigenschaften:
 
   \textbf{(1) Kein veraltetes Lesen.} Im Zustand S$_\sigma$ halten alle
   beteiligten Kerne Kopien mit identischer Signatur $\boldsymbol{\sigma}$.
-  Nach Satz~\ref{satz:kohaerenz} impliziert dies inhaltliche IdentitÃ¤t.
+  Nach Satz~\ref{satz:kohaerenz} impliziert dies inhaltliche Identität.
   Wenn Kern $C_j$ schreibt und die Signatur von $\boldsymbol{\sigma}$ auf
-  $\boldsymbol{\sigma}'$ Ã¤ndert, sendet er eine
+  $\boldsymbol{\sigma}'$ ändert, sendet er eine
   \textsc{SignatureChange}($\boldsymbol{\sigma}' \neq \boldsymbol{\sigma}$)-Nachricht.
   Alle Kerne im Zustand S$_\sigma$ wechseln zu \textbf{I} -- identisch zu MESI.
   Somit liest kein Kern nach der Schreiboperation veraltete Inhalte.
@@ -763,21 +763,21 @@ DNA-Graphen), was MESI zu unnÃ¶tigen Invalidierungen fÃ¼hrt.
   $C_i$ schreiben will, sendet er zuerst eine \textsc{Upgrade}-Nachricht
   und wechselt in den Zustand \textbf{M}. Alle anderen Kerne werden
   invalidiert. Dies entspricht exakt dem MESI-\textsc{BusRdX}-Protokoll.
-  Schreibverluste kÃ¶nnen daher nicht auftreten.
+  Schreibverluste können daher nicht auftreten.
 
-  Da beide SchlÃ¼sseleigenschaften erfÃ¼llt sind, folgt sequentielle Konsistenz.
+  Da beide Schlüsseleigenschaften erfüllt sind, folgt sequentielle Konsistenz.
 \end{proof}
 
 \begin{korollar}[Trafficking-Reduktion durch SMESI]
   \label{kor:smesi_traffic}
   Sei $\rho_{\mathrm{iso}}$ der Anteil isomorpher (signaturgleicher) Datenpakete
   im L3-Cache, und $T_{\mathrm{MESI}}$, $T_{\mathrm{SMESI}}$ der jeweilige
-  KohÃ¤renz-Traffic. Dann gilt:
+  Kohärenz-Traffic. Dann gilt:
   \[
     T_{\mathrm{SMESI}} = T_{\mathrm{MESI}} \cdot (1 - \rho_{\mathrm{iso}}).
   \]
-  FÃ¼r Python-GC-Workloads mit $\rho_{\mathrm{iso}} \approx 0.65$
-  reduziert sich der KohÃ¤renz-Traffic um $65\%$.
+  Für Python-GC-Workloads mit $\rho_{\mathrm{iso}} \approx 0.65$
+  reduziert sich der Kohärenz-Traffic um $65\%$.
 \end{korollar}
 
 %==================================================================
@@ -796,8 +796,8 @@ dies durch \emph{passives Archivieren}: Langlebige Python-Objekte
   Das DNA-GC-Kooperationsprotokoll ($\mathrm{DNA\text{-}GC}$) besteht
   aus drei Phasen:
   \begin{enumerate}[noitemsep]
-    \item \textbf{Vorhersage}: Das PMA schÃ¤tzt $\hat\tau_{\mathrm{GC}_2}$
-      -- wann Gen-2 ausgelÃ¶st wird -- nach der Formel:
+    \item \textbf{Vorhersage}: Das PMA schätzt $\hat\tau_{\mathrm{GC}_2}$
+      -- wann Gen-2 ausgelöst wird -- nach der Formel:
       \[
         \hat\tau_{\mathrm{GC}_2} = \frac{\theta_0 \cdot \theta_1 \cdot \theta_2
         - \text{Akk.}(t)}{\hat\lambda_{\mathrm{net}}},
@@ -807,8 +807,8 @@ dies durch \emph{passives Archivieren}: Langlebige Python-Objekte
       vor dem erwarteten Gen-2-Trigger werden langlebige Gen-2-Kandidaten
       (Objekte mit $\mathrm{age} > \theta_{\mathrm{old}}$) per
       DNA-Synthese in $\mathcal{P}_{\mathrm{pool}}$ archiviert.
-    \item \textbf{GC-UnterstÃ¼tzung}: WÃ¤hrend des eigentlichen Gen-2-Scans
-      stellt der Signatur-Index $\mathcal{I}$ den vollstÃ¤ndigen
+    \item \textbf{GC-Unterstützung}: Während des eigentlichen Gen-2-Scans
+      stellt der Signatur-Index $\mathcal{I}$ den vollständigen
       Auswahlgraphen bereit, sodass der GC ausgelagerte Objekte in
       $O(\log M)$ verifizieren und referenzieren kann.
   \end{enumerate}
@@ -819,7 +819,7 @@ dies durch \emph{passives Archivieren}: Langlebige Python-Objekte
   Unter dem DNA-GC-Kooperationsproto\-koll reduziert sich die Gen-2-GC-Pausenzeit
   von $O(N_{\mathrm{live}})$ auf $O(N_{\mathrm{live}} \cdot (1 - f_{\mathrm{DNA}})
   + \log M)$, wobei $f_{\mathrm{DNA}}$ der Anteil der in den DNA-Pool
-  ausgelagerten Objekte und $M$ die PulgrÃ¶ÃŸe ist.
+  ausgelagerten Objekte und $M$ die Pulgröße ist.
 \end{theorem}
 
 \begin{proof}
@@ -827,19 +827,19 @@ dies durch \emph{passives Archivieren}: Langlebige Python-Objekte
   in $O(N_{\mathrm{live}})$. Mit DNA-Kooperation sind $f_{\mathrm{DNA}} \cdot N_{\mathrm{live}}$
   Objekte im DNA-Pool; sie werden nicht traversiert, sondern per Index in
   $O(\log M)$ nachgeschlagen (Retrieval-Theorem aus \cite{epp2026dnastor},
-  Satz~7.3). Der verbleibende In-Memory-Scan Ã¼ber
+  Satz~7.3). Der verbleibende In-Memory-Scan über
   $(1-f_{\mathrm{DNA}}) \cdot N_{\mathrm{live}}$ Objekte kostet
   $O((1-f_{\mathrm{DNA}}) N_{\mathrm{live}})$. Insgesamt:
   $O((1-f_{\mathrm{DNA}}) N_{\mathrm{live}} + \log M)$.
 \end{proof}
 
 \begin{korollar}[Effektive GC-Pausenzeit-Schranke]
-  FÃ¼r $f_{\mathrm{DNA}} = 0.7$ (70\% der Gen-2-Objekte ausgelagert) und
+  Für $f_{\mathrm{DNA}} = 0.7$ (70\% der Gen-2-Objekte ausgelagert) und
   $M = 10^6$ (1 Millionen Oligomere) ergibt sich:
   $t_{\mathrm{GC}_2}^{\mathrm{PYMDNA}} \le 0.3 \cdot t_{\mathrm{GC}_2}^{\mathrm{base}} + 20\,\mathrm{ms}$.
   Bei einer Baseline-Pausenzeit von $t_{\mathrm{GC}_2}^{\mathrm{base}} = 30\,\mathrm{ms}$
   ergibt sich $t_{\mathrm{GC}_2}^{\mathrm{PYMDNA}} \le 29\,\mathrm{ms}$,
-  mit signifikanter Verbesserung bei hÃ¶herem $f_{\mathrm{DNA}}$.
+  mit signifikanter Verbesserung bei höherem $f_{\mathrm{DNA}}$.
 \end{korollar}
 
 \subsection{Formale Korrektheit der DNA-GC-Kooperation}
@@ -847,24 +847,24 @@ dies durch \emph{passives Archivieren}: Langlebige Python-Objekte
 \begin{theorem}[Korrektheit der DNA-GC-Kooperation]
   \label{thm:dna_gc_korrekt}
   Das DNA-GC-Kooperationsproto\-koll ist speichersicher: Kein lebendes
-  Python-Objekt wird fÃ¤lschlicherweise freigegeben, und kein
+  Python-Objekt wird fälschlicherweise freigegeben, und kein
   ausgelagertes Objekt geht verloren.
 \end{theorem}
 
 \begin{proof}
   \textbf{(1) Keine falsche Freigabe.} Ein Objekt wird nur ausgelagert
-  (nicht freigegeben), wenn sein ReferenzzÃ¤hler $> 0$ ist. Der Signatur-Index
-  $\mathcal{I}$ enthÃ¤lt eine RÃ¼ckwÃ¤rtsreferenz auf die DRAM-Adresse.
-  Wenn der GC das ausgelagerte Objekt referenziert, erhÃ¤lt er Ã¼ber
-  $\mathcal{I}$ die Phase~3-NachrichtenbestÃ¤tigung: Das Objekt ist
+  (nicht freigegeben), wenn sein Referenzzähler $> 0$ ist. Der Signatur-Index
+  $\mathcal{I}$ enthält eine Rückwärtsreferenz auf die DRAM-Adresse.
+  Wenn der GC das ausgelagerte Objekt referenziert, erhält er über
+  $\mathcal{I}$ die Phase~3-Nachrichtenbestätigung: Das Objekt ist
   lebendig und nur ausgelagert, nicht freigegeben. Die Invariante
   \emph{refcnt > 0 $\Rightarrow$ Objekt erreichbar} bleibt erhalten.
 
   \textbf{(2) Kein Informationsverlust.} Die DNA-Archivierung verwendet
-  das vollstÃ¤ndige DSS-Protokoll inklusive Reed-Solomon-Fehlerkorrektur
+  das vollständige DSS-Protokoll inklusive Reed-Solomon-Fehlerkorrektur
   (Satz~\ref{lem:komprimierung} und Lemma~3 aus \cite{epp2026dnastor}).
   Solange die Anzahl der Sequenzierfehler pro Oligomer $\le t$ ist,
-  kann das Objekt vollstÃ¤ndig rekonstruiert werden (Retrieval-Theorem
+  kann das Objekt vollständig rekonstruiert werden (Retrieval-Theorem
   aus \cite{epp2026dnastor}).
 \end{proof}
 
@@ -904,7 +904,7 @@ die DNA-Aktivierungsrate sind.
 \begin{definition}[DNA-Synthesizer-Leistungsfunktion]
   \label{def:dna_power}
   Die DNA-Synthesizer/-Sequenzier-Leistung folgt einem ON/OFF-Modell
-  mit DNA-spezifischen Makrozyklen der LÃ¤nge $\tau_{\mathrm{DNA}}$:
+  mit DNA-spezifischen Makrozyklen der Länge $\tau_{\mathrm{DNA}}$:
   \begin{equation}
     P_{\mathrm{DNA}}(\gamma) = P_{\mathrm{idle}}^{\mathrm{DNA}}
     + \gamma \cdot (P_{\mathrm{active}}^{\mathrm{DNA}} - P_{\mathrm{idle}}^{\mathrm{DNA}}),
@@ -913,7 +913,7 @@ die DNA-Aktivierungsrate sind.
   und $P_{\mathrm{active}}^{\mathrm{DNA}} = 8\,\mathrm{W}$ (Synthese aktiv).
 \end{definition}
 
-\begin{theorem}[EnergieoptimalitÃ¤t von PYMDNA-8 gegenÃ¼ber PYMCA-8 bei Niedriglast]
+\begin{theorem}[Energieoptimalität von PYMDNA-8 gegenüber PYMCA-8 bei Niedriglast]
   \label{thm:energie_optimal}
   Bei Niedriglast ($\ell < 0.10$) erzielt PYMDNA-8 eine niedrigere
   Gesamtenergie als PYMCA-8, wenn die DNA-Archivierungsrate
@@ -923,59 +923,59 @@ die DNA-Aktivierungsrate sind.
     {P_{\mathrm{active}}^{\mathrm{DNA}} - P_{\mathrm{idle}}^{\mathrm{DNA}}},
   \end{equation}
   wobei $P_{\mathrm{DRAM}}(\lambda_{\mathrm{cold}})$ die DRAM-Leerlaufleistung
-  fÃ¼r Cold-Data-Zugriffe ist.
+  für Cold-Data-Zugriffe ist.
 \end{theorem}
 
 \begin{proof}
-  Der DRAM verbraucht fÃ¼r Cold-Data-Zugriffe eine Leistung
+  Der DRAM verbraucht für Cold-Data-Zugriffe eine Leistung
   $P_{\mathrm{DRAM}}(\lambda_{\mathrm{cold}}) \ge P_{\mathrm{idle}}^{\mathrm{DRAM}}$,
-  da jede Cold-Data-Anfrage eine DRAM-Row-Aktivierung auslÃ¶st
+  da jede Cold-Data-Anfrage eine DRAM-Row-Aktivierung auslöst
   (typisch $\sim 0.5 - 1\,\mathrm{W}$ pro aktivem Rank).
   Durch DNA-Demoting werden diese Daten aus DRAM entfernt,
   sodass die DRAM-Leistung um $P_{\mathrm{DRAM}}(\lambda_{\mathrm{cold}})$
   sinkt. Im Gegenzug steigt die DNA-Leistung um
   $\gamma \cdot (P_{\mathrm{active}}^{\mathrm{DNA}} - P_{\mathrm{idle}}^{\mathrm{DNA}})$.
-  Netto-Energievorteil besteht genau dann, wenn ersteres grÃ¶ÃŸer als
+  Netto-Energievorteil besteht genau dann, wenn ersteres größer als
   letzteres ist, was die Bedingung $\gamma > \gamma_{\mathrm{break}}$ ergibt.
 \end{proof}
 
 %==================================================================
-\section{Informationstheoretische KapazitÃ¤tsanalyse}
+\section{Informationstheoretische Kapazitätsanalyse}
 %==================================================================
 
-\subsection{GesamtkapazitÃ¤t des PYMDNA-8-Speichersystems}
+\subsection{Gesamtkapazität des PYMDNA-8-Speichersystems}
 
-\begin{theorem}[Shannon-KapazitÃ¤t des PYMDNA-8-Speichers]
+\begin{theorem}[Shannon-Kapazität des PYMDNA-8-Speichers]
   \label{thm:kapazitaet}
-  Die effektive GesamtkapazitÃ¤t des PYMDNA-8-Speichersystems Ã¼ber alle
+  Die effektive Gesamtkapazität des PYMDNA-8-Speichersystems über alle
   Ebenen, unter dem kombinierten Fehlermodell ($\varepsilon_{\mathrm{DRAM}}$,
-  $\varepsilon_{\mathrm{DNA}}$) und mit Subgraph-Komprimierungsgrad~$\rho$, betrÃ¤gt:
+  $\varepsilon_{\mathrm{DNA}}$) und mit Subgraph-Komprimierungsgrad~$\rho$, beträgt:
   \begin{equation}
     C_{\mathrm{PYMDNA}}(\varepsilon, \rho)
     = C_{\mathrm{DRAM}} + \frac{C_{\mathrm{DNA}}(\varepsilon_{\mathrm{DNA}})}{1 - \rho},
     \label{eq:kapazitaet}
   \end{equation}
-  wobei $C_{\mathrm{DRAM}}$ die konventionelle SpeicherkapazitÃ¤t ist und
+  wobei $C_{\mathrm{DRAM}}$ die konventionelle Speicherkapazität ist und
   $C_{\mathrm{DNA}}(\varepsilon) = (2 - H_4(\varepsilon)) \cdot d_{\mathrm{DNA}}$
-  die Shannon-KapazitÃ¤t des DNA-Kanals (mit $H_4$ dem quaternÃ¤ren Entropiefunktional).
+  die Shannon-Kapazität des DNA-Kanals (mit $H_4$ dem quaternären Entropiefunktional).
 \end{theorem}
 
 \begin{proof}
-  Die volatile Hierarchie (L1 -- HBM3) hat KapazitÃ¤t $C_{\mathrm{DRAM}}$.
-  Die DNA-Ebene hat RohkapazitÃ¤t $C_{\mathrm{DNA}}^{\mathrm{raw}}$.
+  Die volatile Hierarchie (L1 -- HBM3) hat Kapazität $C_{\mathrm{DRAM}}$.
+  Die DNA-Ebene hat Rohkapazität $C_{\mathrm{DNA}}^{\mathrm{raw}}$.
   Durch Subgraph-Komprimierung mit Redundanzgrad $\rho$ wird die effektive
-  KapazitÃ¤t auf $C_{\mathrm{DNA}}^{\mathrm{raw}} / (1-\rho)$ gesteigert
+  Kapazität auf $C_{\mathrm{DNA}}^{\mathrm{raw}} / (1-\rho)$ gesteigert
   (Lemma~\ref{lem:komprimierung}).
-  Da DRAM und DNA als unabhÃ¤ngige KanÃ¤le agieren (kein gemeinsames Rauschen),
-  addiert sich die KapazitÃ¤t gemÃ¤ÃŸ dem AdditivitÃ¤tssatz fÃ¼r unabhÃ¤ngige
-  KanalkapazitÃ¤ten.
-  Die Shannon-KapazitÃ¤t des DNA-Kanals mit Fehlerrate $\varepsilon_{\mathrm{DNA}}$
-  ergibt sich aus dem quaternÃ¤ren symmetrischen Kanalmodell:
+  Da DRAM und DNA als unabhängige Kanäle agieren (kein gemeinsames Rauschen),
+  addiert sich die Kapazität gemäß dem Additivitätssatz für unabhängige
+  Kanalkapazitäten.
+  Die Shannon-Kapazität des DNA-Kanals mit Fehlerrate $\varepsilon_{\mathrm{DNA}}$
+  ergibt sich aus dem quaternären symmetrischen Kanalmodell:
   $C_{\mathrm{DNA}}(\varepsilon) = 2 - H_4(\varepsilon)$ Bit/Symbol
   (nach \cite{epp2026dnastor}, Satz~8.1).
 \end{proof}
 
-\begin{beispiel}[Numerische KapazitÃ¤t]
+\begin{beispiel}[Numerische Kapazität]
   Bei $\varepsilon_{\mathrm{DNA}} = 10^{-3}$, $\rho = 0.8$,
   $d_{\mathrm{DNA}} = 2.15 \times 10^{15}\,\mathrm{B/g}$ und
   $1\,\mathrm{g}$ DNA im Pool:
@@ -985,22 +985,22 @@ die DNA-Aktivierungsrate sind.
     \approx \frac{1.993 \cdot 2.15 \times 10^{15}}{0.2}
     \approx 2.14 \times 10^{16}\,\mathrm{B}.
   \]
-  Das entspricht $\approx 19.5$ Petabyte fÃ¼r 1\,g DNA.
+  Das entspricht $\approx 19.5$ Petabyte für 1\,g DNA.
 \end{beispiel}
 
-\subsection{Rate-Distortion-Analyse fÃ¼r Python-Objekte}
+\subsection{Rate-Distortion-Analyse für Python-Objekte}
 
-\begin{proposition}[Rate-Distortion-Grenze fÃ¼r Python-Objektgraphen]
+\begin{proposition}[Rate-Distortion-Grenze für Python-Objektgraphen]
   \label{prop:rate_distortion}
   Sei $D_{\mathrm{max}}$ die maximal tolerierbare Distortion
   (Hamming-Distanz zwischen Original- und rekonstruiertem Objekt).
-  Die minimal erforderliche Rate fÃ¼r verlustbehaftete DNA-Speicherung
-  eines Python-Objektgraphen mit Entropie $H_G$ betrÃ¤gt:
+  Die minimal erforderliche Rate für verlustbehaftete DNA-Speicherung
+  eines Python-Objektgraphen mit Entropie $H_G$ beträgt:
   \begin{equation}
     R^*(D_{\mathrm{max}}) = H_G - \log_2
     \left(\binom{k \cdot D_{\mathrm{max}}}{k \cdot D_{\mathrm{max}}}\right)^{1/k},
   \end{equation}
-  wobei $k$ die OligomerlÃ¤nge und $D_{\mathrm{max}}$ die
+  wobei $k$ die Oligomerlänge und $D_{\mathrm{max}}$ die
   Fehlertoleranzgrenze des Reed-Solomon-Codes ist.
 \end{proposition}
 
@@ -1021,29 +1021,29 @@ die DNA-Aktivierungsrate sind.
 Der \textbf{PYMDNA-8 Unified Controller} stellt die zentrale Steuerinstanz des gesamten Speicherhierarchiesystems dar. Er koordiniert alle wesentlichen Subsysteme -- den Adaptive Data Controller (ADC), den Physical Memory Allocator (PMA), den Energy Management Unit (EMU) sowie das DNA-Storage-System $\mathcal{X}_{\mathrm{DSS}}$ -- in einer einzigen, ereignisgesteuerten Hauptschleife.
 
 \paragraph{Initialisierung.}
-Zu Beginn werden alle Komponenten in ihren Ausgangszustand versetzt. Insbesondere wird das DNA-Storage-Subsystem $\mathcal{X}_{\mathrm{DSS}}$ initialisiert und fÃ¼r jeden Kern $i$ der KÃ¤lte-ZÃ¤hler $\gamma_i$ auf null gesetzt. Diese ZÃ¤hler verfolgen, wie lange Daten nicht zugegriffen wurden, und bilden die Grundlage fÃ¼r spÃ¤tere Demotion-Entscheidungen.
+Zu Beginn werden alle Komponenten in ihren Ausgangszustand versetzt. Insbesondere wird das DNA-Storage-Subsystem $\mathcal{X}_{\mathrm{DSS}}$ initialisiert und für jeden Kern $i$ der Kälte-Zähler $\gamma_i$ auf null gesetzt. Diese Zähler verfolgen, wie lange Daten nicht zugegriffen wurden, und bilden die Grundlage für spätere Demotion-Entscheidungen.
 
 \paragraph{Ereignisschleife.}
-Die Hauptschleife blockiert, bis eines von vier Ereignistypen eintrifft: ein Speicherzugriff auf eine Cache-Line, ein Garbage-Collection-Trigger, ein Cold-Data-Timer-Ablauf oder eine DNA-Leseanfrage. Dieses reaktive Prinzip minimiert unÃ¶tige AktivitÃ¤t und erlaubt dem System, im Leerlauf in energiesparende ZustÃ¤nde zu wechseln.
+Die Hauptschleife blockiert, bis eines von vier Ereignistypen eintrifft: ein Speicherzugriff auf eine Cache-Line, ein Garbage-Collection-Trigger, ein Cold-Data-Timer-Ablauf oder eine DNA-Leseanfrage. Dieses reaktive Prinzip minimiert unötige Aktivität und erlaubt dem System, im Leerlauf in energiesparende Zustände zu wechseln.
 
 \paragraph{Speicherzugriff.}
-Greift ein Kern auf Cache $C_i$ mit Datum $D$ zu, so delegiert der Controller den Zugriff zunÃ¤chst an den ADC, der -- analog zum VorgÃ¤ngersystem PYMCA-8 -- Zugriffshistorie und LokalitÃ¤tsinformationen pflegt. AnschlieÃŸend wird die \emph{Subgraph-Signatur} $\boldsymbol{\sigma}^D$ des Datums berechnet und zusammen mit der Adresse auf dem Unified Bus $\mathcal{B}_{\mathrm{uni}}$ gesendet. Alle Kerne kÃ¶nnen so prÃ¼fen, ob sie eine inhaltlich identische Kopie besitzen, ohne die Adresse direkt vergleichen zu mÃ¼ssen.
+Greift ein Kern auf Cache $C_i$ mit Datum $D$ zu, so delegiert der Controller den Zugriff zunächst an den ADC, der -- analog zum Vorgängersystem PYMCA-8 -- Zugriffshistorie und Lokalitätsinformationen pflegt. Anschließend wird die \emph{Subgraph-Signatur} $\boldsymbol{\sigma}^D$ des Datums berechnet und zusammen mit der Adresse auf dem Unified Bus $\mathcal{B}_{\mathrm{uni}}$ gesendet. Alle Kerne können so prüfen, ob sie eine inhaltlich identische Kopie besitzen, ohne die Adresse direkt vergleichen zu müssen.
 
 \paragraph{Garbage Collection.}
-LÃ¶st der GC einen Zyklus fÃ¼r Generation $g$ aus, prÃ¼ft der Controller zunÃ¤chst, ob es sich um die zweite, besonders langlebige Generation handelt ($g = 2$). In diesem Fall wird proaktiv die Methode \texttt{Phase2Archive()} aufgerufen, die noch erreichbare, aber selten verwendete Objekte aus dem DRAM in den DNA-Pool verschiebt, bevor der eigentliche GC-Lauf die Speicherbereiche freigibt. Danach delegiert der Controller den Lauf an den PMA zur physischen Speicherverwaltung.
+Löst der GC einen Zyklus für Generation $g$ aus, prüft der Controller zunächst, ob es sich um die zweite, besonders langlebige Generation handelt ($g = 2$). In diesem Fall wird proaktiv die Methode \texttt{Phase2Archive()} aufgerufen, die noch erreichbare, aber selten verwendete Objekte aus dem DRAM in den DNA-Pool verschiebt, bevor der eigentliche GC-Lauf die Speicherbereiche freigibt. Danach delegiert der Controller den Lauf an den PMA zur physischen Speicherverwaltung.
 
 \paragraph{Cold-Data-Demotion.}
-Ãœberschreitet seit dem letzten Zugriff auf ein Datum die verstrichene Zeit den konfigurierbaren Schwellwert $\tau_{\mathrm{cold}}$, gilt es als \emph{kalt}. Der Controller identifiziert die Menge $\mathcal{D}_{\mathrm{cold}}$ aller solchen Daten, schreibt sie in den DNA-Storage $\mathcal{X}_{\mathrm{DSS}}$ und entfernt sie aus dem DRAM. Durch die asynchrone DNA-Synthese werden die Daten dauerhaft im Niedrigenergie-L5-Speicher archiviert, ohne den laufenden Betrieb zu blockieren.
+Überschreitet seit dem letzten Zugriff auf ein Datum die verstrichene Zeit den konfigurierbaren Schwellwert $\tau_{\mathrm{cold}}$, gilt es als \emph{kalt}. Der Controller identifiziert die Menge $\mathcal{D}_{\mathrm{cold}}$ aller solchen Daten, schreibt sie in den DNA-Storage $\mathcal{X}_{\mathrm{DSS}}$ und entfernt sie aus dem DRAM. Durch die asynchrone DNA-Synthese werden die Daten dauerhaft im Niedrigenergie-L5-Speicher archiviert, ohne den laufenden Betrieb zu blockieren.
 
 \paragraph{DNA-Promotion.}
-Wird ein Datum angefordert, das sich nicht mehr im DRAM befindet, aber Ã¼ber seine Signatur $\boldsymbol{\sigma}$ im DNA-Pool identifizierbar ist, wird der DNA-Sequenzier-Prozess $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Retrieve}$ angestoÃŸen. Nach erfolgreicher Sequenzierung wird das Datum in den DRAM hochgestuft (promoted) und steht wieder fÃ¼r schnelle Cache-Zugriffe zur VerfÃ¼gung.
+Wird ein Datum angefordert, das sich nicht mehr im DRAM befindet, aber über seine Signatur $\boldsymbol{\sigma}$ im DNA-Pool identifizierbar ist, wird der DNA-Sequenzier-Prozess $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Retrieve}$ angestoßen. Nach erfolgreicher Sequenzierung wird das Datum in den DRAM hochgestuft (promoted) und steht wieder für schnelle Cache-Zugriffe zur Verfügung.
 
 \begin{algorithm}[H]
   \caption{PYMDNA-8 Unified Controller -- Hauptschleife}
   \label{alg:pymdna8_main}
   \begin{algorithmic}[1]
     \State \textbf{Init:} ADC, PMA, EMU wie in \cite{epp2026pymca8};
-      zusÃ¤tzlich $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Init}()$;
+      zusätzlich $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Init}()$;
       $\forall i: \gamma_i \gets 0$
     \Repeat
       \State Warte auf Ereignis: Speicherzugriff, GC-Trigger, DNA-I/O, Timer
@@ -1053,7 +1053,7 @@ Wird ein Datum angefordert, das sich nicht mehr im DRAM befindet, aber Ã¼ber s
         \State BusMsg($\mathrm{addr}$, $D$, $\boldsymbol{\sigma}^D$)
           \Comment{Signatur-Bus-Nachricht}
       \EndIf
-      \If{GC-Trigger fÃ¼r Gen-$g$}
+      \If{GC-Trigger für Gen-$g$}
         \If{$g = 2$}
           \State $\mathrm{DNA\text{-}GC}.\mathrm{Phase2Archive}()$
             \Comment{Proaktive Auslagerung}
@@ -1065,7 +1065,7 @@ Wird ein Datum angefordert, das sich nicht mehr im DRAM befindet, aber Ã¼ber s
         \State $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Write}(\mathcal{D}_{\mathrm{cold}})$
         \State DRAM.Evict($\mathcal{D}_{\mathrm{cold}}$)
       \EndIf
-      \If{DNA-Leseanfrage fÃ¼r Signatur $\boldsymbol{\sigma}$}
+      \If{DNA-Leseanfrage für Signatur $\boldsymbol{\sigma}$}
         \State $D \gets \mathcal{X}_{\mathrm{DSS}}.\mathrm{Retrieve}(\boldsymbol{\sigma})$
         \State DRAM.Promote($D$) \Comment{L5 $\to$ DRAM Promotion}
       \EndIf
@@ -1075,22 +1075,22 @@ Wird ein Datum angefordert, das sich nicht mehr im DRAM befindet, aber Ã¼ber s
 
 \subsection{DNA-Demotion-Algorithmus}
 
-Der \textbf{DNA-Demotion-Algorithmus} beschreibt, wie eine Menge von als kalt eingestuften Daten $\mathcal{D}_{\mathrm{cold}}$ aus dem schnellen, aber energiehungrigen DRAM in den DNA-basierten Langzeitspeicher (L5) Ã¼berfÃ¼hrt wird. Ziel ist es, den DRAM zu entlasten und gleichzeitig die Wiederauffindbarkeit jedes einzelnen Datums Ã¼ber seinen Inhalts-Fingerabdruck -- die Subgraph-Signatur -- dauerhaft zu garantieren.
+Der \textbf{DNA-Demotion-Algorithmus} beschreibt, wie eine Menge von als kalt eingestuften Daten $\mathcal{D}_{\mathrm{cold}}$ aus dem schnellen, aber energiehungrigen DRAM in den DNA-basierten Langzeitspeicher (L5) überführt wird. Ziel ist es, den DRAM zu entlasten und gleichzeitig die Wiederauffindbarkeit jedes einzelnen Datums über seinen Inhalts-Fingerabdruck -- die Subgraph-Signatur -- dauerhaft zu garantieren.
 
 \paragraph{Eingabe und Ausgabebedingung.}
-Die Eingabe ist die Menge $\mathcal{D}_{\mathrm{cold}}$ aller Daten, deren letzter Zugriff den KÃ¤lte-Schwellwert $\tau_{\mathrm{cold}}$ Ã¼berschritten hat, sowie das DNA-Storage-System $\mathcal{X}$. Nach Abschluss des Algorithmus sollen alle diese Daten im DNA-Pool physisch vorhanden und Ã¼ber den Signatur-Index $\mathcal{I}$ auffindbar sein, wÃ¤hrend der DRAM vollstÃ¤ndig von diesen EintrÃ¤gen befreit wurde.
+Die Eingabe ist die Menge $\mathcal{D}_{\mathrm{cold}}$ aller Daten, deren letzter Zugriff den Kälte-Schwellwert $\tau_{\mathrm{cold}}$ überschritten hat, sowie das DNA-Storage-System $\mathcal{X}$. Nach Abschluss des Algorithmus sollen alle diese Daten im DNA-Pool physisch vorhanden und über den Signatur-Index $\mathcal{I}$ auffindbar sein, während der DRAM vollständig von diesen Einträgen befreit wurde.
 
-\paragraph{QuaternÃ¤re Codierung.}
-FÃ¼r jedes Datum $D$ wird zunÃ¤chst die Funktion $\phi(D)$ aufgerufen, die die binÃ¤ren Daten in eine quaternÃ¤re Nukleotidsequenz $S$ aus den Basen $\{A, C, G, T\}$ umwandelt. Diese Kodierung bildet die Grundlage fÃ¼r die physische DNA-Synthese: Je zwei Bits werden auf eine Base abgebildet (z.\,B. $00 \mapsto A$, $01 \mapsto C$, $10 \mapsto G$, $11 \mapsto T$), wodurch ein binÃ¤res Wort der LÃ¤nge $2n$ in eine Sequenz der LÃ¤nge $n$ Ã¼bersetzt wird. Die Codierung optimiert dabei gleichzeitig auf geringe Homopolymer-LÃ¤ufe, um die SynthesequalitÃ¤t zu erhÃ¶hen.
+\paragraph{Quaternäre Codierung.}
+Für jedes Datum $D$ wird zunächst die Funktion $\phi(D)$ aufgerufen, die die binären Daten in eine quaternäre Nukleotidsequenz $S$ aus den Basen $\{A, C, G, T\}$ umwandelt. Diese Kodierung bildet die Grundlage für die physische DNA-Synthese: Je zwei Bits werden auf eine Base abgebildet (z.\,B. $00 \mapsto A$, $01 \mapsto C$, $10 \mapsto G$, $11 \mapsto T$), wodurch ein binäres Wort der Länge $2n$ in eine Sequenz der Länge $n$ übersetzt wird. Die Codierung optimiert dabei gleichzeitig auf geringe Homopolymer-Läufe, um die Synthesequalität zu erhöhen.
 
-\paragraph{DuplikatprÃ¼fung.}
-Bevor die kostspielige Synthese angestoÃŸen wird, berechnet der Algorithmus die Signatur $\boldsymbol{\sigma}^D$ aus $D$ und $S$ und prÃ¼ft, ob $\boldsymbol{\sigma}^D$ bereits im Signatur-Index $\mathcal{I}$ enthalten ist. Ist dies der Fall, existiert das inhaltlich identische Datum bereits im DNA-Pool -- die Synthese ist Ã¼berflÃ¼ssig. Das Datum wird dann direkt aus dem DRAM entfernt (\texttt{Evict}), ohne neue DNA-MolekÃ¼le zu synthetisieren. Dieser Schritt vermeidet redundante Synthesen und spart damit erheblich Energie und SynthesekapazitÃ¤t.
+\paragraph{Duplikatprüfung.}
+Bevor die kostspielige Synthese angestoßen wird, berechnet der Algorithmus die Signatur $\boldsymbol{\sigma}^D$ aus $D$ und $S$ und prüft, ob $\boldsymbol{\sigma}^D$ bereits im Signatur-Index $\mathcal{I}$ enthalten ist. Ist dies der Fall, existiert das inhaltlich identische Datum bereits im DNA-Pool -- die Synthese ist überflüssig. Das Datum wird dann direkt aus dem DRAM entfernt (\texttt{Evict}), ohne neue DNA-Moleküle zu synthetisieren. Dieser Schritt vermeidet redundante Synthesen und spart damit erheblich Energie und Synthesekapazität.
 
 \paragraph{ECC und Synthese.}
-Ist das Datum noch nicht im Pool vorhanden, wird zunÃ¤chst eine Reed-Solomon-Fehlerkorrektur $\mathcal{E}_{\mathrm{RS}}$ auf die Sequenz $S$ angewendet, was die fehlertolerante Sequenz $S_{\mathrm{ECC}}$ liefert. Reed-Solomon-Codes eignen sich besonders fÃ¼r DNA, da Basensubstitutions- und Deletionsfehler beim Sequenzieren und Lagern auftreten. AnschlieÃŸend wird $S_{\mathrm{ECC}}$ durch den Synthesizer $\mathcal{S}_{\mathrm{synth}}$ in physische DNA-StrÃ¤nge umgewandelt. Nach erfolgreicher Synthese wird die Signatur-Adress-Zuordnung $\mathcal{I}[\boldsymbol{\sigma}^D] \gets D_{\mathrm{addr}}$ im Index hinterlegt, damit das Datum spÃ¤ter Ã¼ber $\boldsymbol{\sigma}^D$ wieder gefunden werden kann. AbschlieÃŸend wird $D$ aus dem DRAM entfernt.
+Ist das Datum noch nicht im Pool vorhanden, wird zunächst eine Reed-Solomon-Fehlerkorrektur $\mathcal{E}_{\mathrm{RS}}$ auf die Sequenz $S$ angewendet, was die fehlertolerante Sequenz $S_{\mathrm{ECC}}$ liefert. Reed-Solomon-Codes eignen sich besonders für DNA, da Basensubstitutions- und Deletionsfehler beim Sequenzieren und Lagern auftreten. Anschließend wird $S_{\mathrm{ECC}}$ durch den Synthesizer $\mathcal{S}_{\mathrm{synth}}$ in physische DNA-Stränge umgewandelt. Nach erfolgreicher Synthese wird die Signatur-Adress-Zuordnung $\mathcal{I}[\boldsymbol{\sigma}^D] \gets D_{\mathrm{addr}}$ im Index hinterlegt, damit das Datum später über $\boldsymbol{\sigma}^D$ wieder gefunden werden kann. Abschließend wird $D$ aus dem DRAM entfernt.
 
-\paragraph{KomplexitÃ¤t.}
-Die Schleife lÃ¤uft Ã¼ber alle $|\mathcal{D}_{\mathrm{cold}}|$ Daten. Die Signaturberechnung kostet $O(k)$ fÃ¼r eine Signatur der LÃ¤nge $k$. Der Index-Lookup ist eine Hashmap-Operation in $O(1)$ erwartet. Die eigentliche Synthese ist der dominierende Schritt und erfolgt asynchron (im Nanosekundenbereich pro Base), sodass der Controller nicht blockiert.
+\paragraph{Komplexität.}
+Die Schleife läuft über alle $|\mathcal{D}_{\mathrm{cold}}|$ Daten. Die Signaturberechnung kostet $O(k)$ für eine Signatur der Länge $k$. Der Index-Lookup ist eine Hashmap-Operation in $O(1)$ erwartet. Die eigentliche Synthese ist der dominierende Schritt und erfolgt asynchron (im Nanosekundenbereich pro Base), sodass der Controller nicht blockiert.
 
 \begin{algorithm}[H]
   \caption{DNA-Demotion-Algorithmus}
@@ -1099,7 +1099,7 @@ Die Schleife lÃ¤uft Ã¼ber alle $|\mathcal{D}_{\mathrm{cold}}|$ Daten. Die Si
     \Require{Menge cold-data $\mathcal{D}_{\mathrm{cold}}$, DSS-System $\mathcal{X}$}
     \Ensure{Alle Daten aus $\mathcal{D}_{\mathrm{cold}}$ in DNA-Pool, DRAM entlastet}
     \For{$D \in \mathcal{D}_{\mathrm{cold}}$}
-      \State $S \gets \phi(D)$ \Comment{QuaternÃ¤re Kodierung}
+      \State $S \gets \phi(D)$ \Comment{Quaternäre Kodierung}
       \State $\boldsymbol{\sigma}^D \gets \mathrm{ComputeSignature}(D, S)$
       \If{$\boldsymbol{\sigma}^D \in \mathcal{I}$} \Comment{Bereits im DNA-Pool}
         \State DRAM.Evict($D$)
@@ -1115,29 +1115,29 @@ Die Schleife lÃ¤uft Ã¼ber alle $|\mathcal{D}_{\mathrm{cold}}|$ Daten. Die Si
 
 \subsection{Subgraph-Signatur-Cache-Lookup}
 
-Der \textbf{SMESI-Protokoll-Lookup} ist der inhaltsbasierte Cache-KohÃ¤renzalgorithmus des PYMDNA-8-Systems. WÃ¤hrend klassische KohÃ¤renzprotokolle wie MESI Cache-Lines ausschlieÃŸlich Ã¼ber ihre physische Adresse identifizieren, nutzt SMESI zusÃ¤tzlich die \emph{Subgraph-Signatur} $\boldsymbol{\sigma}$ als Inhalts-Fingerabdruck. Dadurch kÃ¶nnen inhaltlich identische Daten, die an verschiedenen Adressen gespeichert sind, ohne Duplizierung geteilt werden -- ein entscheidender Vorteil bei datenintensiven Workloads mit hoher Redundanz.
+Der \textbf{SMESI-Protokoll-Lookup} ist der inhaltsbasierte Cache-Kohärenzalgorithmus des PYMDNA-8-Systems. Während klassische Kohärenzprotokolle wie MESI Cache-Lines ausschließlich über ihre physische Adresse identifizieren, nutzt SMESI zusätzlich die \emph{Subgraph-Signatur} $\boldsymbol{\sigma}$ als Inhalts-Fingerabdruck. Dadurch können inhaltlich identische Daten, die an verschiedenen Adressen gespeichert sind, ohne Duplizierung geteilt werden -- ein entscheidender Vorteil bei datenintensiven Workloads mit hoher Redundanz.
 
 \paragraph{Eingabe und Ziel.}
-Der Algorithmus erhÃ¤lt eine Cache-Line-Anfrage fÃ¼r Adresse $a$ zusammen mit der vorberechneten Signatur $\boldsymbol{\sigma}$. Das Ziel ist ein kohÃ¤renter Zugriff auf die Daten gemÃ¤ÃŸ dem SMESI-Zustandsautomaten, wobei mÃ¶glichst wenige Bustransaktionen anfallen sollen.
+Der Algorithmus erhält eine Cache-Line-Anfrage für Adresse $a$ zusammen mit der vorberechneten Signatur $\boldsymbol{\sigma}$. Das Ziel ist ein kohärenter Zugriff auf die Daten gemäß dem SMESI-Zustandsautomaten, wobei möglichst wenige Bustransaktionen anfallen sollen.
 
 \paragraph{Lokaler Signatur-Cache-Treffer.}
-ZunÃ¤chst prÃ¼ft der anfragende Kern seinen lokalen L2-Signatur-Cache. Dieser speichert nicht nur Adressen, sondern auch die Signaturen kÃ¼rzlich verwendeter Cache-Lines. Wird $\boldsymbol{\sigma}$ dort gefunden und befindet sich die Line im Zustand $S_\sigma$ (Shared-via-Signature), kann die lokale Kopie direkt zurÃ¼ckgegeben werden. Der Vergleich kostet $O(k)$ fÃ¼r eine Signatur der BitlÃ¤nge $k$, was bei typischen Signaturen von 256\,Bit vernachlÃ¤ssigbar ist. Eine Busnachricht entfÃ¤llt.
+Zunächst prüft der anfragende Kern seinen lokalen L2-Signatur-Cache. Dieser speichert nicht nur Adressen, sondern auch die Signaturen kürzlich verwendeter Cache-Lines. Wird $\boldsymbol{\sigma}$ dort gefunden und befindet sich die Line im Zustand $S_\sigma$ (Shared-via-Signature), kann die lokale Kopie direkt zurückgegeben werden. Der Vergleich kostet $O(k)$ für eine Signatur der Bitlänge $k$, was bei typischen Signaturen von 256\,Bit vernachlässigbar ist. Eine Busnachricht entfällt.
 
 \paragraph{Busanfrage und Shared-Propagation.}
-Liegt kein lokaler Treffer vor, sendet der Kern eine \texttt{BusRequest}-Nachricht mit Adresse $a$ und Signatur $\boldsymbol{\sigma}$ auf dem Unified Bus $\mathcal{B}_{\mathrm{uni}}$. Alle anderen Kerne $C_j$ prÃ¼fen, ob ihre aktuelle Cache-Line die gleiche Signatur $\boldsymbol{\sigma}^{C_j} = \boldsymbol{\sigma}$ aufweist -- unabhÃ¤ngig davon, an welcher Adresse sie lokal gespeichert ist. Trifft dies auf einen oder mehrere Kerne zu, senden diese die Cache-Line direkt an den anfragenden Kern. Wichtig ist dabei, dass die Linie \emph{nicht} invalidiert wird; stattdessen gehen alle beteiligten Kerne in den $S_\sigma$-Sharing-Zustand Ã¼ber. Dies ermÃ¶glicht echtes inhaltsbasiertes Multi-Core-Sharing ohne Invalidierungskaskaden.
+Liegt kein lokaler Treffer vor, sendet der Kern eine \texttt{BusRequest}-Nachricht mit Adresse $a$ und Signatur $\boldsymbol{\sigma}$ auf dem Unified Bus $\mathcal{B}_{\mathrm{uni}}$. Alle anderen Kerne $C_j$ prüfen, ob ihre aktuelle Cache-Line die gleiche Signatur $\boldsymbol{\sigma}^{C_j} = \boldsymbol{\sigma}$ aufweist -- unabhängig davon, an welcher Adresse sie lokal gespeichert ist. Trifft dies auf einen oder mehrere Kerne zu, senden diese die Cache-Line direkt an den anfragenden Kern. Wichtig ist dabei, dass die Linie \emph{nicht} invalidiert wird; stattdessen gehen alle beteiligten Kerne in den $S_\sigma$-Sharing-Zustand über. Dies ermöglicht echtes inhaltsbasiertes Multi-Core-Sharing ohne Invalidierungskaskaden.
 
 \paragraph{Fallback: DNA-Pool-Abruf.}
-Besitzt kein Kern die gesuchte Signatur im Cache und ist die Adresse $a$ auch nicht im DRAM vorhanden, prÃ¼ft der Algorithmus den Signatur-Index $\mathcal{I}$ des DNA-Storage-Systems. Ist $\boldsymbol{\sigma}$ dort eingetragen, wird der Sequenzier-Prozess $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Retrieve}(\boldsymbol{\sigma})$ gestartet, der die DNA-StrÃ¤nge liest, die Fehlerkorrektur anwendet und das Datum $D$ rekonstruiert. Das Datum wird anschlieÃŸend in den DRAM eingefÃ¼gt und dem anfragenden Kern zurÃ¼ckgegeben. Dieser Pfad hat die hÃ¶chste Latenz (Sequenzierlatenz im Mikrosekundenbereich), wird aber durch die seltene Nutzung kalter Daten statistisch selten beschritten.
+Besitzt kein Kern die gesuchte Signatur im Cache und ist die Adresse $a$ auch nicht im DRAM vorhanden, prüft der Algorithmus den Signatur-Index $\mathcal{I}$ des DNA-Storage-Systems. Ist $\boldsymbol{\sigma}$ dort eingetragen, wird der Sequenzier-Prozess $\mathcal{X}_{\mathrm{DSS}}.\mathrm{Retrieve}(\boldsymbol{\sigma})$ gestartet, der die DNA-Stränge liest, die Fehlerkorrektur anwendet und das Datum $D$ rekonstruiert. Das Datum wird anschließend in den DRAM eingefügt und dem anfragenden Kern zurückgegeben. Dieser Pfad hat die höchste Latenz (Sequenzierlatenz im Mikrosekundenbereich), wird aber durch die seltene Nutzung kalter Daten statistisch selten beschritten.
 
-\paragraph{Korrektheit und KohÃ¤renzeigenschaften.}
-Das SMESI-Protokoll gewÃ¤hrleistet folgende Invarianten: (1) Kein Kern liest veraltete Daten, da der $S_\sigma$-Zustand nur bei inhaltlich identischen Kopien eingenommen wird. (2) Schreibzugriffe erfordern eine Transition in den exklusiven Zustand $E_\sigma$, wobei alle anderen Kopien mit der gleichen Signatur invalidiert werden. (3) Der DNA-Pool dient ausschlieÃŸlich als Read-Only-Archiv; Schreibzugriffe auf cold-demotierte Daten erzwingen zunÃ¤chst eine DRAM-Promotion, bevor die Modifikation stattfindet.
+\paragraph{Korrektheit und Kohärenzeigenschaften.}
+Das SMESI-Protokoll gewährleistet folgende Invarianten: (1) Kein Kern liest veraltete Daten, da der $S_\sigma$-Zustand nur bei inhaltlich identischen Kopien eingenommen wird. (2) Schreibzugriffe erfordern eine Transition in den exklusiven Zustand $E_\sigma$, wobei alle anderen Kopien mit der gleichen Signatur invalidiert werden. (3) Der DNA-Pool dient ausschließlich als Read-Only-Archiv; Schreibzugriffe auf cold-demotierte Daten erzwingen zunächst eine DRAM-Promotion, bevor die Modifikation stattfindet.
 
 \begin{algorithm}[H]
-  \caption{SMESI-Protokoll: KohÃ¤renz-Lookup via Signatur}
+  \caption{SMESI-Protokoll: Kohärenz-Lookup via Signatur}
   \label{alg:smesi_lookup}
   \begin{algorithmic}[1]
-    \Require{Cache-Line-Anfrage fÃ¼r Adresse $a$ mit Signatur $\boldsymbol{\sigma}$}
-    \Ensure{KohÃ¤renter Zugriff gemÃ¤ÃŸ SMESI-Protokoll}
+    \Require{Cache-Line-Anfrage für Adresse $a$ mit Signatur $\boldsymbol{\sigma}$}
+    \Ensure{Kohärenter Zugriff gemäß SMESI-Protokoll}
     \State Suche $\boldsymbol{\sigma}$ in lokalem L2-Signatur-Cache
     \If{Treffer}
       \If{SMESI-Zustand $= \mathrm{S}_\sigma$}
@@ -1165,24 +1165,24 @@ Das SMESI-Protokoll gewÃ¤hrleistet folgende Invarianten: (1) Kein Kern liest v
 \subsection{Experimentelle Konfiguration}
 
 Alle Experimente wurden durch erweiterte Simulationen in Python und C
-durchgefÃ¼hrt. Das Modell realisiert alle drei PYMDNA-8-Schichten:
+durchgeführt. Das Modell realisiert alle drei PYMDNA-8-Schichten:
 
 \begin{itemize}[noitemsep]
-  \item 8 Kerne mit unabhÃ¤ngigen ADC-Einheiten und EWMA-LastschÃ¤tzung.
+  \item 8 Kerne mit unabhängigen ADC-Einheiten und EWMA-Lastschätzung.
   \item DNA-L5-Cache mit DSS-Protokoll (Signatur-Index, Komprimierung, ECC).
-  \item SMESI-KohÃ¤renzprotokoll mit Signatur-Tagging.
+  \item SMESI-Kohärenzprotokoll mit Signatur-Tagging.
   \item DNA-GC-Kooperation mit Gen-2-Auslagerung.
 \end{itemize}
 
 \subsection{Benchmark 1: Speicherhierarchie-Latenz}
 
-Abbildung~\ref{fig:latenz_vergleich} stellt die mittlere Zugriffslatenz der drei relevanten Speicherpfade als doppelt-logarithmisches Diagramm gegenÃ¼ber: das Baseline-System PYMCA-8 (ausschlieÃŸlich DRAM-basiert), das erweiterte PYMDNA-8-System (DRAM mit aktivem DNA-L5-Cache) und den hypothetischen DNA-Direktzugriff ohne Signatur-Index. Auf der $x$-Achse ist die Speicherzugriffsrate $\lambda$ in Zugriffen pro Sekunde logarithmisch aufgetragen; die $y$-Achse zeigt die zugehÃ¶rige mittlere Zugriffslatenz in Millisekunden, ebenfalls logarithmisch skaliert.
+Abbildung~\ref{fig:latenz_vergleich} stellt die mittlere Zugriffslatenz der drei relevanten Speicherpfade als doppelt-logarithmisches Diagramm gegenüber: das Baseline-System PYMCA-8 (ausschließlich DRAM-basiert), das erweiterte PYMDNA-8-System (DRAM mit aktivem DNA-L5-Cache) und den hypothetischen DNA-Direktzugriff ohne Signatur-Index. Auf der $x$-Achse ist die Speicherzugriffsrate $\lambda$ in Zugriffen pro Sekunde logarithmisch aufgetragen; die $y$-Achse zeigt die zugehörige mittlere Zugriffslatenz in Millisekunden, ebenfalls logarithmisch skaliert.
 
-Bei niedrigen bis mittleren Zugriffsraten ($\lambda \leq 10^5$\,Zugriffe/s) sind PYMCA-8 und PYMDNA-8 praktisch ununterscheidbar: Beide erreichen eine konstante Latenz von etwa $0{,}04$\,ms, was dem typischen DRAM-Zugriffspfad Ã¼ber den ADC entspricht. Erst ab $\lambda \approx 10^6$ steigt die Latenz beider Systeme leicht an, da Cache-Misses hÃ¤ufiger werden und der Hauptspeicher stÃ¤rker ausgelastet ist. PYMDNA-8 bleibt dabei geringfÃ¼gig unter der Kurve von PYMCA-8, weil kalte Daten proaktiv in den DNA-L5 demotiert wurden und somit DRAM-Bandbreite fÃ¼r heiÃŸe Objekte frei bleibt.
+Bei niedrigen bis mittleren Zugriffsraten ($\lambda \leq 10^5$\,Zugriffe/s) sind PYMCA-8 und PYMDNA-8 praktisch ununterscheidbar: Beide erreichen eine konstante Latenz von etwa $0{,}04$\,ms, was dem typischen DRAM-Zugriffspfad über den ADC entspricht. Erst ab $\lambda \approx 10^6$ steigt die Latenz beider Systeme leicht an, da Cache-Misses häufiger werden und der Hauptspeicher stärker ausgelastet ist. PYMDNA-8 bleibt dabei geringfügig unter der Kurve von PYMCA-8, weil kalte Daten proaktiv in den DNA-L5 demotiert wurden und somit DRAM-Bandbreite für heiße Objekte frei bleibt.
 
-Die gestrichelte rote Kurve des DNA-Direktzugriffs ohne Index zeigt das grundlegende Dilemma der traditionellen DNA-Speicherung: Bei $\lambda = 10^3$\,Zugriffe/s betrÃ¤gt die Latenz $17\,000$\,ms ($\approx 17$\,s), da jeder Zugriff einen vollstÃ¤ndigen Sequenzierungsauftrag mit manueller Pool-Durchsuchung erfordert. Erst bei sehr hohen Zugriffsraten, wenn die SequenzierkapazitÃ¤t ausgelastet ist und Batching-Effekte die Amortisierung verbessern, sinkt diese Kurve in den einstelligen Millisekundenbereich -- ein Betrieb, der in der Praxis nicht realistisch erzwungen werden kann.
+Die gestrichelte rote Kurve des DNA-Direktzugriffs ohne Index zeigt das grundlegende Dilemma der traditionellen DNA-Speicherung: Bei $\lambda = 10^3$\,Zugriffe/s beträgt die Latenz $17\,000$\,ms ($\approx 17$\,s), da jeder Zugriff einen vollständigen Sequenzierungsauftrag mit manueller Pool-Durchsuchung erfordert. Erst bei sehr hohen Zugriffsraten, wenn die Sequenzierkapazität ausgelastet ist und Batching-Effekte die Amortisierung verbessern, sinkt diese Kurve in den einstelligen Millisekundenbereich -- ein Betrieb, der in der Praxis nicht realistisch erzwungen werden kann.
 
-Das zentrale Ergebnis dieses Benchmarks ist, dass der Subgraph-Signatur-Index die effektive DNA-Zugriffslatenz um bis zu vier GrÃ¶ÃŸenordnungen reduziert: Von mehreren Minuten (ohne Index) auf wenige Millisekunden, die mit der DRAM-Latenz vergleichbar sind. PYMDNA-8 erreicht damit fÃ¼r Hot-Data dieselbe Latenz wie das reine DRAM-System, wÃ¤hrend es gleichzeitig eine um GrÃ¶ÃŸenordnungen hÃ¶here KapazitÃ¤t durch den L5-Pool bereitstellt.
+Das zentrale Ergebnis dieses Benchmarks ist, dass der Subgraph-Signatur-Index die effektive DNA-Zugriffslatenz um bis zu vier Größenordnungen reduziert: Von mehreren Minuten (ohne Index) auf wenige Millisekunden, die mit der DRAM-Latenz vergleichbar sind. PYMDNA-8 erreicht damit für Hot-Data dieselbe Latenz wie das reine DRAM-System, während es gleichzeitig eine um Größenordnungen höhere Kapazität durch den L5-Pool bereitstellt.
 
 \begin{figure}[H]
   \centering
@@ -1211,21 +1211,21 @@ Das zentrale Ergebnis dieses Benchmarks ist, dass der Subgraph-Signatur-Index di
     \addlegendentry{DNA Direktzugriff (ohne Index)}
     \end{axis}
   \end{tikzpicture}
-  \caption{Mittlere Zugriffslatenz fÃ¼r PYMCA-8, PYMDNA-8 und DNA-Direktzugriff.
+  \caption{Mittlere Zugriffslatenz für PYMCA-8, PYMDNA-8 und DNA-Direktzugriff.
     Der Subgraph-Signatur-Index reduziert die DNA-Zugriffslatenz von
-    Minuten auf Sekunden; PYMDNA-8 matching PYMCA-8-Latenz fÃ¼r Hot-Data.}
+    Minuten auf Sekunden; PYMDNA-8 matching PYMCA-8-Latenz für Hot-Data.}
   \label{fig:latenz_vergleich}
 \end{figure}
 
 \subsection{Benchmark 2: Energieeffizienz}
 
-Abbildung~\ref{fig:energie_vergleich} zeigt die Gesamtleistungsaufnahme beider Systeme als Funktion der normierten CPU-Last $\ell \in [0, 1]$. Die blaue Kurve reprÃ¤sentiert PYMCA-8 (CPU und DRAM), die grÃ¼ne Kurve PYMDNA-8 (CPU, DRAM und DNA-Komponenten zusammen), und die gestrichelte rote Linie markiert die Referenz-Volllastleistung von $200$\,W.
+Abbildung~\ref{fig:energie_vergleich} zeigt die Gesamtleistungsaufnahme beider Systeme als Funktion der normierten CPU-Last $\ell \in [0, 1]$. Die blaue Kurve repräsentiert PYMCA-8 (CPU und DRAM), die grüne Kurve PYMDNA-8 (CPU, DRAM und DNA-Komponenten zusammen), und die gestrichelte rote Linie markiert die Referenz-Volllastleistung von $200$\,W.
 
-Die CPU-Leistungsaufnahme folgt in beiden Systemen einem sigmoidal geformten kubischen Modell: Bei niedriger Last dominieren statische LeckstrÃ¶me und Basisverbrauch, bei mittlerer Last steigt der dynamische Verbrauch steil an, und bei Volllast nÃ¤hert sich die Kurve asymptotisch dem Maximum. Dieser charakteristische S-fÃ¶rmige Verlauf entsteht durch die nichtlineare AbhÃ¤ngigkeit der dynamischen CMOS-Verlustleistung von der AktivitÃ¤t ($P \propto \alpha C V^2 f$), kombiniert mit der sigmoiden Zuordnung von Last zu AktivitÃ¤tsgrad.
+Die CPU-Leistungsaufnahme folgt in beiden Systemen einem sigmoidal geformten kubischen Modell: Bei niedriger Last dominieren statische Leckströme und Basisverbrauch, bei mittlerer Last steigt der dynamische Verbrauch steil an, und bei Volllast nähert sich die Kurve asymptotisch dem Maximum. Dieser charakteristische S-förmige Verlauf entsteht durch die nichtlineare Abhängigkeit der dynamischen CMOS-Verlustleistung von der Aktivität ($P \propto \alpha C V^2 f$), kombiniert mit der sigmoiden Zuordnung von Last zu Aktivitätsgrad.
 
-Der entscheidende Unterschied zwischen beiden Systemen zeigt sich im Niedriglastbereich ($\ell < 0{,}2$): Hier liegt die PYMDNA-8-Kurve \emph{unter} der PYMCA-8-Kurve, trotz des zusÃ¤tzlichen DNA-Subsystems. Der Grund ist die Cold-Data-Archivierung: Daten, die seit $\tau_{\mathrm{cold}}$ nicht zugegriffen wurden, werden in den DNA-L5 demotiert, wodurch DRAM-BÃ¤nke in den Self-Refresh- oder Sleep-Modus versetzt werden kÃ¶nnen. DRAM-Leistungsaufnahme im Self-Refresh betrÃ¤gt nur etwa $5$--$10$\,\% des aktiven Verbrauchs, was bei einer typischen Kaltdaten-Quote von $60$--$80$\,\% zu einer signifikanten Einsparung fÃ¼hrt.
+Der entscheidende Unterschied zwischen beiden Systemen zeigt sich im Niedriglastbereich ($\ell < 0{,}2$): Hier liegt die PYMDNA-8-Kurve \emph{unter} der PYMCA-8-Kurve, trotz des zusätzlichen DNA-Subsystems. Der Grund ist die Cold-Data-Archivierung: Daten, die seit $\tau_{\mathrm{cold}}$ nicht zugegriffen wurden, werden in den DNA-L5 demotiert, wodurch DRAM-Bänke in den Self-Refresh- oder Sleep-Modus versetzt werden können. DRAM-Leistungsaufnahme im Self-Refresh beträgt nur etwa $5$--$10$\,\% des aktiven Verbrauchs, was bei einer typischen Kaltdaten-Quote von $60$--$80$\,\% zu einer signifikanten Einsparung führt.
 
-Der kleine positive Offset der grÃ¼nen Kurve gegenÃ¼ber der blauen bei mittlerer bis hoher Last ($\ell > 0{,}4$) reprÃ¤sentiert den DNA-Basisbetrieb: Synthesizer und Sequenzierer im Standby verbrauchen konstant ca. $0{,}5$\,W fÃ¼r Heizung und Pufferchemie. Unter Volllast ist dieser Overhead vernachlÃ¤ssigbar ($< 0{,}3$\,\% der Gesamtleistung). Insgesamt erzielt PYMDNA-8 im zeitgemittelten Betrieb realistischer Workloads eine Leistungsersparnis von bis zu $15$\,\% gegenÃ¼ber PYMCA-8, was bei Rechenzentren mit mehren tausend Knoten erhebliche wirtschaftliche und Ã¶kologische Auswirkungen hat.
+Der kleine positive Offset der grünen Kurve gegenüber der blauen bei mittlerer bis hoher Last ($\ell > 0{,}4$) repräsentiert den DNA-Basisbetrieb: Synthesizer und Sequenzierer im Standby verbrauchen konstant ca. $0{,}5$\,W für Heizung und Pufferchemie. Unter Volllast ist dieser Overhead vernachlässigbar ($< 0{,}3$\,\% der Gesamtleistung). Insgesamt erzielt PYMDNA-8 im zeitgemittelten Betrieb realistischer Workloads eine Leistungsersparnis von bis zu $15$\,\% gegenüber PYMCA-8, was bei Rechenzentren mit mehren tausend Knoten erhebliche wirtschaftliche und ökologische Auswirkungen hat.
 
 \begin{figure}[H]
   \centering
@@ -1254,20 +1254,20 @@ Der kleine positive Offset der grÃ¼nen Kurve gegenÃ¼ber der blauen bei mittl
     \end{axis}
   \end{tikzpicture}
   \caption{Leistungsaufnahme von PYMCA-8 und PYMDNA-8 als Funktion der CPU-Last.
-    Bei Niedriglast ($\ell < 0.2$) ermÃ¶glicht PYMDNA-8 durch DNA-Cold-Archivierung
-    eine DRAM-Entlastung; die gesamte Leistungsersparnis betrÃ¤gt bis zu 15\%.}
+    Bei Niedriglast ($\ell < 0.2$) ermöglicht PYMDNA-8 durch DNA-Cold-Archivierung
+    eine DRAM-Entlastung; die gesamte Leistungsersparnis beträgt bis zu 15\%.}
   \label{fig:energie_vergleich}
 \end{figure}
 
 \subsection{Benchmark 3: GC-Pausenzeiten}
 
-Abbildung~\ref{fig:gc_pausenzeiten} vergleicht die Pausenzeiten des Generational-Garbage-Collectors der zweiten Generation (Gen-2-GC) fÃ¼r drei Systeme: CPython als unverÃ¤nderte Referenzimplementierung, PYMCA-8 mit PMA-Prefetch und PYMDNA-8 mit vollstÃ¤ndiger DNA-GC-Kooperation. Die $x$-Achse trÃ¤gt die Anzahl lebender Python-Objekte $N_{\mathrm{live}}$ logarithmisch auf; die $y$-Achse zeigt die zugehÃ¶rige Gen-2-GC-Pausenzeit in Millisekunden.
+Abbildung~\ref{fig:gc_pausenzeiten} vergleicht die Pausenzeiten des Generational-Garbage-Collectors der zweiten Generation (Gen-2-GC) für drei Systeme: CPython als unveränderte Referenzimplementierung, PYMCA-8 mit PMA-Prefetch und PYMDNA-8 mit vollständiger DNA-GC-Kooperation. Die $x$-Achse trägt die Anzahl lebender Python-Objekte $N_{\mathrm{live}}$ logarithmisch auf; die $y$-Achse zeigt die zugehörige Gen-2-GC-Pausenzeit in Millisekunden.
 
-Die rote CPython-Baseline verhÃ¤lt sich streng linear in der doppelt-logarithmischen Darstellung, mit einer Steigung von nahezu $1$: Die Pausenzeit wÃ¤chst proportional zu $N_{\mathrm{live}}$, was dem klassischen $O(N)$-Mark-and-Sweep-Algorithmus entspricht. Bei $N_{\mathrm{live}} = 10^6$ Objekten Ã¼berschreitet die Pausenzeit bereits $500$\,ms -- ein Wert, der in interaktiven Anwendungen als inakzeptabel gilt.
+Die rote CPython-Baseline verhält sich streng linear in der doppelt-logarithmischen Darstellung, mit einer Steigung von nahezu $1$: Die Pausenzeit wächst proportional zu $N_{\mathrm{live}}$, was dem klassischen $O(N)$-Mark-and-Sweep-Algorithmus entspricht. Bei $N_{\mathrm{live}} = 10^6$ Objekten überschreitet die Pausenzeit bereits $500$\,ms -- ein Wert, der in interaktiven Anwendungen als inakzeptabel gilt.
 
-PYMCA-8 (blaue Kurve) verbessert die Situation durch PMA-gesteuertes Prefetching erheblich: Bei $N_{\mathrm{live}} = 10^6$ betrÃ¤gt die Pausenzeit nur noch $120$\,ms, eine Reduktion um den Faktor $\approx 4$. Dies wird durch inkrementelles VorwÃ¤rtsmarkieren lebender Objekte erreicht, das die eigentliche GC-Analyse beschleunigt. Dennoch folgt die PYMCA-8-Kurve qualitativ immer noch einem annÃ¤hernd linearen Anstieg.
+PYMCA-8 (blaue Kurve) verbessert die Situation durch PMA-gesteuertes Prefetching erheblich: Bei $N_{\mathrm{live}} = 10^6$ beträgt die Pausenzeit nur noch $120$\,ms, eine Reduktion um den Faktor $\approx 4$. Dies wird durch inkrementelles Vorwärtsmarkieren lebender Objekte erreicht, das die eigentliche GC-Analyse beschleunigt. Dennoch folgt die PYMCA-8-Kurve qualitativ immer noch einem annähernd linearen Anstieg.
 
-PYMDNA-8 (grÃ¼ne Kurve) durchbricht dieses Skalierungsregime fundamental. Bei $N_{\mathrm{live}} = 10^6$ liegt die Pausenzeit bei lediglich $18$\,ms -- eine weitere Reduktion um den Faktor $\approx 7$ gegenÃ¼ber PYMCA-8 und den Faktor $\approx 28$ gegenÃ¼ber CPython-Baseline. Bei $N_{\mathrm{live}} = 5 \times 10^6$ betrÃ¤gt die Pausenzeit nur noch $60$\,ms, wÃ¤hrend CPython $2{,}5$\,s benÃ¶tigen wÃ¼rde. Der Grund ist die proaktive \texttt{Phase2Archive()}-Methode des DNA-GC-Kooperations-Algorithmus (vgl. Abschnitt~10.1): Bereits wÃ¤hrend des laufenden Programmbetriebs werden Gen-2-Kandidaten -- Objekte, die eine hohe Wahrscheinlichkeit aufweisen, bei der nÃ¤chsten GC-Runde unerreichbar zu sein -- schrittweise in den DNA-L5-Pool ausgelagert. Wenn der eigentliche GC-Lauf startet, muss er nur noch $\approx 30$\,\% der ursprÃ¼nglichen Kandidatenmenge im DRAM verarbeiten. Der sub-lineare Anstieg der grÃ¼nen Kurve in der log-log-Darstellung belegt, dass die effektive KomplexitÃ¤t auf $O\bigl((1-f_D) N_{\mathrm{live}}\bigr)$ mit $f_D \approx 0{,}7$ sinkt.
+PYMDNA-8 (grüne Kurve) durchbricht dieses Skalierungsregime fundamental. Bei $N_{\mathrm{live}} = 10^6$ liegt die Pausenzeit bei lediglich $18$\,ms -- eine weitere Reduktion um den Faktor $\approx 7$ gegenüber PYMCA-8 und den Faktor $\approx 28$ gegenüber CPython-Baseline. Bei $N_{\mathrm{live}} = 5 \times 10^6$ beträgt die Pausenzeit nur noch $60$\,ms, während CPython $2{,}5$\,s benötigen würde. Der Grund ist die proaktive \texttt{Phase2Archive()}-Methode des DNA-GC-Kooperations-Algorithmus (vgl. Abschnitt~10.1): Bereits während des laufenden Programmbetriebs werden Gen-2-Kandidaten -- Objekte, die eine hohe Wahrscheinlichkeit aufweisen, bei der nächsten GC-Runde unerreichbar zu sein -- schrittweise in den DNA-L5-Pool ausgelagert. Wenn der eigentliche GC-Lauf startet, muss er nur noch $\approx 30$\,\% der ursprünglichen Kandidatenmenge im DRAM verarbeiten. Der sub-lineare Anstieg der grünen Kurve in der log-log-Darstellung belegt, dass die effektive Komplexität auf $O\bigl((1-f_D) N_{\mathrm{live}}\bigr)$ mit $f_D \approx 0{,}7$ sinkt.
 
 \begin{figure}[H]
   \centering
@@ -1296,24 +1296,24 @@ PYMDNA-8 (grÃ¼ne Kurve) durchbricht dieses Skalierungsregime fundamental. Bei 
   \end{tikzpicture}
   \caption{Gen-2-GC-Pausenzeiten als Funktion der lebenden Python-Objekte.
     PYMDNA-8 mit DNA-GC-Kooperation erzielt eine Reduktion um mehr als
-    eine GrÃ¶ÃŸenordnung gegenÃ¼ber PYMCA-8-Baseline,
+    eine Größenordnung gegenüber PYMCA-8-Baseline,
     durch proaktives Auslagern von 70\% der Gen-2-Kandidaten in den DNA-Pool.}
   \label{fig:gc_pausenzeiten}
 \end{figure}
 
 \subsection{Benchmark 4: Komprimierungsrate und Speicherdichte}
 
-Abbildung~\ref{fig:dichte_komprimierung} besteht aus zwei nebeneinander angeordneten Teildiagrammen, die gemeinsam die kapazitÃ¤tssteigernden Eigenschaften des DNA-L5-Pools beleuchten. Beide Diagramme quantifizieren, welche Speicherdichte unter realistischen Betriebsparametern erreichbar ist.
+Abbildung~\ref{fig:dichte_komprimierung} besteht aus zwei nebeneinander angeordneten Teildiagrammen, die gemeinsam die kapazitätssteigernden Eigenschaften des DNA-L5-Pools beleuchten. Beide Diagramme quantifizieren, welche Speicherdichte unter realistischen Betriebsparametern erreichbar ist.
 
-\paragraph{Linkes Teildiagramm: Effektive Speicherdichte in AbhÃ¤ngigkeit vom Redundanzgrad.}
-Die $x$-Achse zeigt den Redundanzgrad $\rho \in [0, 1)$, der den Anteil der DNA-MolekÃ¼le definiert, der ausschlieÃŸlich fÃ¼r Fehlerkorrektur und Redundanzabsicherung (Reed-Solomon-Codes sowie redundante Oligomerkopien) verwendet wird. Die $y$-Achse gibt die resultierende effektive Speicherdichte in Exabyte pro Gramm (EB/g) an. Die Kurve folgt der analytischen Formel $d_{\mathrm{eff}} = d_{\mathrm{DNA}} / (1 - \rho)$, wobei $d_{\mathrm{DNA}} \approx 2{,}15 \times 10^{6}$\,EB/g die theoretische Rohdichte biologischer DNA darstellt.
+\paragraph{Linkes Teildiagramm: Effektive Speicherdichte in Abhängigkeit vom Redundanzgrad.}
+Die $x$-Achse zeigt den Redundanzgrad $\rho \in [0, 1)$, der den Anteil der DNA-Moleküle definiert, der ausschließlich für Fehlerkorrektur und Redundanzabsicherung (Reed-Solomon-Codes sowie redundante Oligomerkopien) verwendet wird. Die $y$-Achse gibt die resultierende effektive Speicherdichte in Exabyte pro Gramm (EB/g) an. Die Kurve folgt der analytischen Formel $d_{\mathrm{eff}} = d_{\mathrm{DNA}} / (1 - \rho)$, wobei $d_{\mathrm{DNA}} \approx 2{,}15 \times 10^{6}$\,EB/g die theoretische Rohdichte biologischer DNA darstellt.
 
-Die gestrichelte rote senkrechte Linie markiert den Betriebspunkt $\rho = 0{,}8$, der im PYMDNA-8-System standardmÃ¤ÃŸig verwendet wird. Bei diesem Wert erreicht die effektive Dichte $d_{\mathrm{eff}} \approx 1{,}075 \times 10^{7}$\,EB/g, also rund das FÃ¼nffache der theoretischen RohkapazitÃ¤t biologischer DNA -- scheinbar ein Widerspruch, der sich durch die Komprimierung auflÃ¶st: Die verbleibenden $20$\,\% der KapazitÃ¤t ($1 - \rho = 0{,}2$) werden durch das LZ4-basierte Datenkomprimierungsschema des DSS-Protokolls bei typischen Workloads um den Faktor $5$--$8$ verdichtet, sodass netto eine effektive Dichte Ã¼ber dem Rohwert erzielt wird. Der Redundanzgrad $\rho = 0{,}8$ stellt dabei den empirisch optimalen Kompromiss zwischen Fehlertoleranz (gegen Synthesefehler, LagerungsschÃ¤den und Sequenzierfehler) und nutzbarer KapazitÃ¤t dar.
+Die gestrichelte rote senkrechte Linie markiert den Betriebspunkt $\rho = 0{,}8$, der im PYMDNA-8-System standardmäßig verwendet wird. Bei diesem Wert erreicht die effektive Dichte $d_{\mathrm{eff}} \approx 1{,}075 \times 10^{7}$\,EB/g, also rund das Fünffache der theoretischen Rohkapazität biologischer DNA -- scheinbar ein Widerspruch, der sich durch die Komprimierung auflöst: Die verbleibenden $20$\,\% der Kapazität ($1 - \rho = 0{,}2$) werden durch das LZ4-basierte Datenkomprimierungsschema des DSS-Protokolls bei typischen Workloads um den Faktor $5$--$8$ verdichtet, sodass netto eine effektive Dichte über dem Rohwert erzielt wird. Der Redundanzgrad $\rho = 0{,}8$ stellt dabei den empirisch optimalen Kompromiss zwischen Fehlertoleranz (gegen Synthesefehler, Lagerungsschäden und Sequenzierfehler) und nutzbarer Kapazität dar.
 
 \paragraph{Rechtes Teildiagramm: Maximale Informationsdichte pro Oligomer.}
-Die $x$-Achse zeigt die OligomerlÃ¤nge $k$ in Anzahl der Basen (50 bis 500\,nt), die $y$-Achse die maximale Informationsdichte in Bit pro Oligomer. Die grÃ¼ne Kurve berÃ¼cksichtigt den kombinierten Einfluss von Reed-Solomon-Rate ($r_{\mathrm{rs}} = 0{,}13$) und Komprimierungsfaktor ($\rho = 0{,}8$) gemÃ¤ÃŸ der Formel $I_{\max}(k) = k \cdot (2 - r_{\mathrm{rs}}) \cdot 5$; die blaue Vergleichskurve zeigt die unkomprimierte RohkapazitÃ¤t $k \cdot (2 - r_{\mathrm{rs}})$.
+Die $x$-Achse zeigt die Oligomerlänge $k$ in Anzahl der Basen (50 bis 500\,nt), die $y$-Achse die maximale Informationsdichte in Bit pro Oligomer. Die grüne Kurve berücksichtigt den kombinierten Einfluss von Reed-Solomon-Rate ($r_{\mathrm{rs}} = 0{,}13$) und Komprimierungsfaktor ($\rho = 0{,}8$) gemäß der Formel $I_{\max}(k) = k \cdot (2 - r_{\mathrm{rs}}) \cdot 5$; die blaue Vergleichskurve zeigt die unkomprimierte Rohkapazität $k \cdot (2 - r_{\mathrm{rs}})$.
 
-Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternÃ¤ren Basenkodierung entspricht: Jede Base trÃ¤gt $\log_2 4 = 2$\,Bit RohkapazitÃ¤t bei, vermindert um den ECC-Overhead $r_{\mathrm{rs}}$. Der Faktor $5$ in der grÃ¼nen Kurve spiegelt den effektiven Komprimierungsgewinn wider. Bei einer typischen OligomerlÃ¤nge von $k = 200$\,nt erreicht PYMDNA-8 damit etwa $1{,}87$\,kBit ($\approx 234$\,Byte) pro Oligomer-MolekÃ¼l. Eine weitere VerlÃ¤ngerung der Oligomere erhÃ¶ht die KapazitÃ¤t linear, ist jedoch durch zunehmende Synthesefehlerquoten bei langen StrÃ¤ngen in der Praxis auf typisch $k \leq 300$\,nt begrenzt.
+Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternären Basenkodierung entspricht: Jede Base trägt $\log_2 4 = 2$\,Bit Rohkapazität bei, vermindert um den ECC-Overhead $r_{\mathrm{rs}}$. Der Faktor $5$ in der grünen Kurve spiegelt den effektiven Komprimierungsgewinn wider. Bei einer typischen Oligomerlänge von $k = 200$\,nt erreicht PYMDNA-8 damit etwa $1{,}87$\,kBit ($\approx 234$\,Byte) pro Oligomer-Molekül. Eine weitere Verlängerung der Oligomere erhöht die Kapazität linear, ist jedoch durch zunehmende Synthesefehlerquoten bei langen Strängen in der Praxis auf typisch $k \leq 300$\,nt begrenzt.
 
 \begin{figure}[H]
   \centering
@@ -1353,34 +1353,34 @@ Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternÃ¤ren 
   \end{tikzpicture}
   \caption{Links: Effektive DNA-Speicherdichte als Funktion des Redundanzgrades.
     Bei $\rho = 0.8$ wird eine Dichte von $\approx 10.75 \times 10^{15}$\,B/g
-    erreicht -- fÃ¼nfmal mehr als native DNA.
-    Rechts: Maximale Informationsdichte pro Oligomer fÃ¼r $\rho=0.8$,
-    linear wachsend mit der OligomerlÃ¤nge $k$.}
+    erreicht -- fünfmal mehr als native DNA.
+    Rechts: Maximale Informationsdichte pro Oligomer für $\rho=0.8$,
+    linear wachsend mit der Oligomerlänge $k$.}
   \label{fig:dichte_komprimierung}
 \end{figure}
 
 %==================================================================
-\section{GesamtkomplexitÃ¤tsanalyse}
+\section{Gesamtkomplexitätsanalyse}
 %==================================================================
 
-\begin{theorem}[GesamtkomplexitÃ¤t von PYMDNA-8]
+\begin{theorem}[Gesamtkomplexität von PYMDNA-8]
   \label{thm:gesamtkomplexitaet}
-  Die Gesamtlaufzeit der zentralen Operationen von PYMDNA-8 betrÃ¤gt:
+  Die Gesamtlaufzeit der zentralen Operationen von PYMDNA-8 beträgt:
   \begin{align}
     T_{\mathrm{Schreiben}}(m, k) &= O(m \cdot k^3), \label{eq:t_write} \\
     T_{\mathrm{Lesen}}(M, k)     &= O(M \cdot \log M \cdot k^2), \label{eq:t_read} \\
     T_{\mathrm{ADC}}(n, \lambda) &= O(n \cdot \sqrt{\lambda}), \label{eq:t_adc} \\
     T_{\mathrm{GC-DNA}}(N, f_D)  &= O\bigl((1-f_D) N + \log M\bigr), \label{eq:t_gc} \\
-    T_{\mathrm{KohÃ¤renz}}(L, k)  &= O(L \cdot k), \label{eq:t_coh}
+    T_{\mathrm{Kohärenz}}(L, k)  &= O(L \cdot k), \label{eq:t_coh}
   \end{align}
-  wobei $m$ die Blockanzahl, $k$ die OligomerlÃ¤nge, $M$ die Pool-GrÃ¶ÃŸe,
+  wobei $m$ die Blockanzahl, $k$ die Oligomerlänge, $M$ die Pool-Größe,
   $n$ die Batchanzahl, $\lambda$ die Paketankunftsrate, $N$ die Objektanzahl,
-  $f_D$ der DNA-Auslagerungsanteil und $L$ die L3-Cache-GrÃ¶ÃŸe in Lines ist.
+  $f_D$ der DNA-Auslagerungsanteil und $L$ die L3-Cache-Größe in Lines ist.
 \end{theorem}
 
 \begin{proof}
   \eqref{eq:t_write}: Folgt aus dem Schreib-Laufzeitsatz des DSS
-  \cite[Satz~5.2]{epp2026dnastor}, angepasst fÃ¼r Batch-Schreiben.
+  \cite[Satz~5.2]{epp2026dnastor}, angepasst für Batch-Schreiben.
 
   \eqref{eq:t_read}: Folgt aus dem Retrieval-Laufzeitsatz \cite[Satz~6.4]{epp2026dnastor}.
 
@@ -1388,29 +1388,29 @@ Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternÃ¤ren 
   $\mu^* = \sqrt{\hat\lambda}$ (O(1) pro Batch via Lookup-Table)
   und das Sortieren von $|B| \sim O(\sqrt{\lambda})$ Elementen im
   Batch (nach Theorem~\ref{thm:optmu} gilt $\E[|B|] \propto \sqrt{\lambda}$).
-  Ãœber $n$ Batches ergibt sich $O(n \sqrt{\lambda})$.
+  Über $n$ Batches ergibt sich $O(n \sqrt{\lambda})$.
 
   \eqref{eq:t_gc}: GC-Traversierung verrechnet sich auf
-  $(1-f_D) N$ In-Memory-Objekte plus $O(\log M)$ fÃ¼r den DNA-Index-Lookup
+  $(1-f_D) N$ In-Memory-Objekte plus $O(\log M)$ für den DNA-Index-Lookup
   (Theorem~\ref{thm:gc_pausenzeit}).
 
-  \eqref{eq:t_coh}: SMESI-Protokoll ersetzt O(addr-LÃ¤nge) durch $O(k)$
-  (Definition~\ref{def:sigbus}); Ã¼ber $L$ Cache-Lines ergibt sich $O(L \cdot k)$.
+  \eqref{eq:t_coh}: SMESI-Protokoll ersetzt O(addr-Länge) durch $O(k)$
+  (Definition~\ref{def:sigbus}); über $L$ Cache-Lines ergibt sich $O(L \cdot k)$.
 \end{proof}
 
-\begin{theorem}[Asymptotische OptimalitÃ¤t]
+\begin{theorem}[Asymptotische Optimalität]
   \label{thm:optimalitaet}
   PYMDNA-8 ist in folgendem Sinne optimal:
   \begin{enumerate}[noitemsep]
-    \item \emph{KodierungsoptimalitÃ¤t}: 2\,Bit/Base ist die theoretische Grenze
-      fÃ¼r $|\Sigma| = 4$ (Shannon-Grenze).
-    \item \emph{KomprimierungsoptimalitÃ¤t}: Der Subgraph Algorithmus ist unter
+    \item \emph{Kodierungsoptimalität}: 2\,Bit/Base ist die theoretische Grenze
+      für $|\Sigma| = 4$ (Shannon-Grenze).
+    \item \emph{Komprimierungsoptimalität}: Der Subgraph Algorithmus ist unter
       SETH optimal in $\Theta(k^3)$.
-    \item \emph{ADC-OptimalitÃ¤t}: $\mu^* = \sqrt{c_w \lambda / c_s}$ minimiert
+    \item \emph{ADC-Optimalität}: $\mu^* = \sqrt{c_w \lambda / c_s}$ minimiert
       das Kostenfunktional $J(\mu)$ eindeutig (Theorem~\ref{thm:optmu}).
-    \item \emph{KohÃ¤renzoptimalitÃ¤t}: SMESI erfordert $\Omega(k)$ pro
-      KohÃ¤renzprÃ¼fung (untere Schranke durch die SignaturlÃ¤nge $k$).
-    \item \emph{KapazitÃ¤tsoptimalitÃ¤t}: Die Shannon-Grenze wird asymptotisch
+    \item \emph{Kohärenzoptimalität}: SMESI erfordert $\Omega(k)$ pro
+      Kohärenzprüfung (untere Schranke durch die Signaturlänge $k$).
+    \item \emph{Kapazitätsoptimalität}: Die Shannon-Grenze wird asymptotisch
       erreicht ($k \to \infty$, Proposition~\ref{prop:rate_distortion}).
   \end{enumerate}
 \end{theorem}
@@ -1418,9 +1418,9 @@ Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternÃ¤ren 
 \begin{proof}
   \textbf{(1)} $\log_2 4 = 2$ ist die informationstheoretische Grenze.
   \textbf{(2)} SETH-untere Schranke nach \cite{epp2026subgraph}.
-  \textbf{(3)} Strenge KonvexitÃ¤t von $J(\mu)$ und eindeutiger Sattelpunkt.
+  \textbf{(3)} Strenge Konvexität von $J(\mu)$ und eindeutiger Sattelpunkt.
   \textbf{(4)} Die Signatur $\boldsymbol{\sigma} \in \mathbb{N}^k$ hat
-  LÃ¤nge $k$; ein Vergleich erfordert mindestens $k$ Operationen.
+  Länge $k$; ein Vergleich erfordert mindestens $k$ Operationen.
   \textbf{(5)} Shannon-Kanalcodierungstheorem.
 \end{proof}
 
@@ -1442,7 +1442,7 @@ Beide Kurven sind streng linear in $k$, was dem Grundprinzip der quaternÃ¤ren 
     Python-GIL-Hardware & Nein & Ja (PMA) & -- & Ja (PMA+) \\
     GC-Prefetch & Nein & Ja & -- & Ja + DNA-GC \\
     Refcnt-Coalescing & Nein & Ja ($r=8$) & -- & Ja ($r=16$) \\
-    Signatur-Cache-KohÃ¤renz & Nein & Nein & -- & SMESI \\
+    Signatur-Cache-Kohärenz & Nein & Nein & -- & SMESI \\
     DNA-Speicher-Integration & Nein & Nein & Ja & Ja (L5-Cache) \\
     Stoch. Lastvert. & Reaktiv & Optimiert & -- & Optimiert+ \\
     DNA-GC-Kooperation & Nein & Nein & Nein & Ja \\
@@ -1459,11 +1459,11 @@ Die DNA-Fountain-Kodierung \cite{erlich2017foundation} verwendet LT-Codes
 (Fountain-Codes) zur fehlerrobusten DNA-Speicherung ohne Reed-Solomon.
 PYMDNA-8 unterscheidet sich in zwei wesentlichen Punkten:
 (1) Der Subgraph-Signatur-Index erlaubt semantischen Random-Access in $O(\log M)$,
-wÃ¤hrend Fountain-Codes nur sequentielles Streaming unterstÃ¼tzen.
+während Fountain-Codes nur sequentielles Streaming unterstützen.
 (2) Die graphentheoretische Subgraph-Komprimierung ist orthogonal zu
 Fountain-Codes und kann kombiniert werden.
 
-\begin{korollar}[KompatibilitÃ¤t mit DNA-Fountain]
+\begin{korollar}[Kompatibilität mit DNA-Fountain]
   Das DSS-Modell und die DNA-Fountain-Kodierung sind kompatibel:
   Jedes Oligo kann sowohl Subgraph-Signatur als auch Fountain-Code-Symbole
   tragen. Der kombinierte Ansatz erzielt:
@@ -1479,14 +1479,14 @@ Fountain-Codes und kann kombiniert werden.
 \begin{definition}[Signatur-Isolation]
   \label{def:isolation}
   Zwei Python-Prozesse $P_A$ und $P_B$ sind \emph{Signatur-isoliert},
-  wenn ihre Subgraph-SignaturrÃ¤ume disjunkt sind:
+  wenn ihre Subgraph-Signaturräume disjunkt sind:
   $\boldsymbol{\sigma}^{P_A} \cap \boldsymbol{\sigma}^{P_B} = \emptyset$.
 \end{definition}
 
 \begin{theorem}[Nichtinterferenz bei Signatur-Isolation]
   \label{thm:nichtinterferenz}
   Unter Signatur-Isolation kann kein Prozess $P_B$ den Speicherinhalt
-  von Prozess $P_A$ Ã¼ber den Signatur-Bus oder den DNA-Pool lesen oder
+  von Prozess $P_A$ über den Signatur-Bus oder den DNA-Pool lesen oder
   modifizieren.
 \end{theorem}
 
@@ -1503,113 +1503,113 @@ Fountain-Codes und kann kombiniert werden.
 
 \subsection{Seitenkanal-Resistenz}
 
-\begin{satz}[Seitenkanal-AbschwÃ¤chung durch Timer-Rauschen]
+\begin{satz}[Seitenkanal-Abschwächung durch Timer-Rauschen]
   \label{satz:seitenkanal}
-  FÃ¼r ein additives Rauschmodell $\tilde{T}_i = T_i + \mathcal{N}(0, \sigma_n^2)$
-  auf dem Timer-Wert gilt fÃ¼r den Mutual Information-Seitenkanal:
+  Für ein additives Rauschmodell $\tilde{T}_i = T_i + \mathcal{N}(0, \sigma_n^2)$
+  auf dem Timer-Wert gilt für den Mutual Information-Seitenkanal:
   \begin{equation}
     I(\hat\lambda_j; \tilde{T}_i) \le \frac{1}{2}
     \log\!\left(1 + \frac{\mathrm{Var}[T_i]}{\sigma_n^2}\right).
   \end{equation}
-  FÃ¼r $\sigma_n^2 \ge 10 \cdot \mathrm{Var}[T_i]$ sinkt der Seitenkanal
-  auf $I \le 0.042$ Bit -- vernachlÃ¤ssigbar fÃ¼r praktische Angreifer.
+  Für $\sigma_n^2 \ge 10 \cdot \mathrm{Var}[T_i]$ sinkt der Seitenkanal
+  auf $I \le 0.042$ Bit -- vernachlässigbar für praktische Angreifer.
 \end{satz}
 
 \begin{proof}
-  Die obere Schranke fÃ¼r Mutual Information Ã¼ber einen GauÃŸkanal mit
-  Signal-Rausch-VerhÃ¤ltnis $\mathrm{SNR} = \mathrm{Var}[T_i] / \sigma_n^2$
-  betrÃ¤gt $I \le \frac{1}{2}\log(1 + \mathrm{SNR})$ (Shannon-KapazitÃ¤tsfor\-mel).
-  FÃ¼r $\mathrm{SNR} = 0.1$ ergibt sich $I \le \frac{1}{2}\log(1.1) \approx 0.069$\,Bit;
-  mit konservativerer SchÃ¤tzung Ã¼ber Jensen-Ungleichung folgt das Ergebnis.
+  Die obere Schranke für Mutual Information über einen Gaußkanal mit
+  Signal-Rausch-Verhältnis $\mathrm{SNR} = \mathrm{Var}[T_i] / \sigma_n^2$
+  beträgt $I \le \frac{1}{2}\log(1 + \mathrm{SNR})$ (Shannon-Kapazitätsfor\-mel).
+  Für $\mathrm{SNR} = 0.1$ ergibt sich $I \le \frac{1}{2}\log(1.1) \approx 0.069$\,Bit;
+  mit konservativerer Schätzung über Jensen-Ungleichung folgt das Ergebnis.
 \end{proof}
 
 %==================================================================
 \section{Ausblick}
 %==================================================================
 
-Das PYMDNA-8-System stellt einen ersten vollstÃ¤ndigen, formell verifizierten Entwurf einer bio-digitalen Speicherhierarchie dar. Die vorliegende Arbeit hat gezeigt, dass die Integration von DNA-Speicher als fÃ¼nfte Cache-Ebene in eine Multi-Core-Python-Laufzeitumgebung prinzipiell mÃ¶glich ist und messbare Vorteile in Bezug auf Speicherdichte, Energieeffizienz und GC-Pausenzeiten erzielt. Dennoch verbleiben zahlreiche offene Fragen sowohl auf kurzer als auch auf langer Sicht, die sich in drei Kategorien gliedern: unmittelbar angehbare Forschungsrichtungen, langfristige visionÃ¤re Perspektiven und grundlegende mathematische Probleme, deren LÃ¶sung das theoretische Fundament des Systems weiter festigen wÃ¼rden.
+Das PYMDNA-8-System stellt einen ersten vollständigen, formell verifizierten Entwurf einer bio-digitalen Speicherhierarchie dar. Die vorliegende Arbeit hat gezeigt, dass die Integration von DNA-Speicher als fünfte Cache-Ebene in eine Multi-Core-Python-Laufzeitumgebung prinzipiell möglich ist und messbare Vorteile in Bezug auf Speicherdichte, Energieeffizienz und GC-Pausenzeiten erzielt. Dennoch verbleiben zahlreiche offene Fragen sowohl auf kurzer als auch auf langer Sicht, die sich in drei Kategorien gliedern: unmittelbar angehbare Forschungsrichtungen, langfristige visionäre Perspektiven und grundlegende mathematische Probleme, deren Lösung das theoretische Fundament des Systems weiter festigen würden.
 
 %------------------------------------------------------------------
 \subsection{Kurzfristige Forschungsrichtungen}
 
-Die in diesem Abschnitt beschriebenen Entwicklungsschritte sind innerhalb eines Zeitrahmens von zwei bis fÃ¼nf Jahren mit bestehender Technologie realisierbar. Sie adressieren die drei wesentlichen EngpÃ¤sse des aktuellen Systems: fehlende Hardwareimplementierung, hohe L5-Zugriffslatenz und das Fehlen geeigneter biologischer L4-Zwischenspeicher.
+Die in diesem Abschnitt beschriebenen Entwicklungsschritte sind innerhalb eines Zeitrahmens von zwei bis fünf Jahren mit bestehender Technologie realisierbar. Sie adressieren die drei wesentlichen Engpässe des aktuellen Systems: fehlende Hardwareimplementierung, hohe L5-Zugriffslatenz und das Fehlen geeigneter biologischer L4-Zwischenspeicher.
 
 \paragraph{FPGA-Prototyp mit DSS-Integration.}
-Der nÃ¤chste konkrete Schritt ist die RTL-Implementie\-rung der PYMDNA-8-Kernkomponenten in SystemVerilog, einschlieÃŸlich des SMESI-Protokolls und der DNA-GC-Kooperationslogik. Die Simulation in Python und C, die dieser Arbeit zugrunde liegt, kann zwar das Zeitverhalten modellieren, ersetzt jedoch nicht die physische Verifikation auf einer echten Speicherhierarchie mit realen Latenzen, TaktdomÃ¤nen und Busarbitration.
+Der nächste konkrete Schritt ist die RTL-Implementie\-rung der PYMDNA-8-Kernkomponenten in SystemVerilog, einschließlich des SMESI-Protokolls und der DNA-GC-Kooperationslogik. Die Simulation in Python und C, die dieser Arbeit zugrunde liegt, kann zwar das Zeitverhalten modellieren, ersetzt jedoch nicht die physische Verifikation auf einer echten Speicherhierarchie mit realen Latenzen, Taktdomänen und Busarbitration.
 
-FÃ¼r die FPGA-Implementierung sind drei Kernmodule zu realisieren: (1) ein parametrisierbarer SMESI-Zustandsautomat pro Cache-Kern, (2) die Signaturberechnungseinheit mit dediziertem Hash-Beschleuniger fÃ¼r $O(k)$-Latenz und (3) das asynchrone DNA-DMA-Interface, das Schreib- und Leseoperationen an den Synthesizer/Sequenzierer delegation. Besonderes Augenmerk gilt dem SMESI-Zustands\-automaten bezÃ¼glich seiner VerifikationskomplexitÃ¤t:
+Für die FPGA-Implementierung sind drei Kernmodule zu realisieren: (1) ein parametrisierbarer SMESI-Zustandsautomat pro Cache-Kern, (2) die Signaturberechnungseinheit mit dediziertem Hash-Beschleuniger für $O(k)$-Latenz und (3) das asynchrone DNA-DMA-Interface, das Schreib- und Leseoperationen an den Synthesizer/Sequenzierer delegation. Besonderes Augenmerk gilt dem SMESI-Zustands\-automaten bezüglich seiner Verifikationskomplexität:
 \[
   |\mathrm{States}| = 5 \cdot |\text{Cache-Lines}|^{|\text{Kerne}|}
   = 5^8 \approx 390\,000,
 \]
-was fÃ¼r eine erschÃ¶pfende Model-Checking-Verifikation mit TLA+ noch gut handhabbar ist. Bei einer Erweiterung auf $p > 8$ Kerne wÃ¤chst der Zustandsraum allerdings exponentiell, sodass frÃ¼hzeitig auf abstrakte Interpretation oder symbolische Model-Checking-Verfahren (z.\,B. SAT-basiertes Model Checking mit Cadence JasperGold) umgestellt werden sollte.
+was für eine erschöpfende Model-Checking-Verifikation mit TLA+ noch gut handhabbar ist. Bei einer Erweiterung auf $p > 8$ Kerne wächst der Zustandsraum allerdings exponentiell, sodass frühzeitig auf abstrakte Interpretation oder symbolische Model-Checking-Verfahren (z.\,B. SAT-basiertes Model Checking mit Cadence JasperGold) umgestellt werden sollte.
 
-Die Entwicklung des FPGA-Prototyps ermÃ¶glicht darÃ¼ber hinaus die Messung des tatsÃ¤chlichen Energieverbrauchs der Signaturberechnungslogik -- ein Parameter, der in der aktuellen analytischen Modellierung noch als ideal angenommen wird. Erste SchÃ¤tzungen auf Basis Ã¤hnlicher Hash-Beschleuniger in UltraScale+-FPGAs legen nahe, dass der Signatur-Pipeline-Overhead unter $2$\,pJ pro Berechnung liegt, was gegenÃ¼ber dem DNA-Syntheseenergiebedarf von $\sim 1$\,nJ/Base vernachlÃ¤ssigbar ist.
+Die Entwicklung des FPGA-Prototyps ermöglicht darüber hinaus die Messung des tatsächlichen Energieverbrauchs der Signaturberechnungslogik -- ein Parameter, der in der aktuellen analytischen Modellierung noch als ideal angenommen wird. Erste Schätzungen auf Basis ähnlicher Hash-Beschleuniger in UltraScale+-FPGAs legen nahe, dass der Signatur-Pipeline-Overhead unter $2$\,pJ pro Berechnung liegt, was gegenüber dem DNA-Syntheseenergiebedarf von $\sim 1$\,nJ/Base vernachlässigbar ist.
 
-\paragraph{Nanoporen-Direktlesen fÃ¼r den L5-Cache.}
-Die L5-Zugriffslatenz von $\sim 17$\,s bei niedrigen Zugriffsraten ist der grÃ¶ÃŸte Engpass des aktuellen Systems. Diese Latenz setzt sich zusammen aus PCR-Amplifikation ($\sim 10$\,s fÃ¼r schnelle Methoden), Nanoporen-Sequenzierung ($\sim 5$\,s fÃ¼r kurze Reads) und Basecalling ($\sim 2$\,s auf GPU). Oxford Nanopore R10.4-Poren erreichen bereits $>99{,}5$\,\% Einzelbasen-Genauigkeit, was prinzipiell ein direktes, PCR-freies Lesen erlaubt. Der entscheidende nÃ¤chste Schritt ist jedoch die Subgraph-Signatur-Extraktion direkt aus dem elektrischen Squiggle-Signal (\emph{Squiggle-to-Signature}, S2S), ohne den rechenintensiven und latenzsteigernden Basecalling-Schritt:
+\paragraph{Nanoporen-Direktlesen für den L5-Cache.}
+Die L5-Zugriffslatenz von $\sim 17$\,s bei niedrigen Zugriffsraten ist der größte Engpass des aktuellen Systems. Diese Latenz setzt sich zusammen aus PCR-Amplifikation ($\sim 10$\,s für schnelle Methoden), Nanoporen-Sequenzierung ($\sim 5$\,s für kurze Reads) und Basecalling ($\sim 2$\,s auf GPU). Oxford Nanopore R10.4-Poren erreichen bereits $>99{,}5$\,\% Einzelbasen-Genauigkeit, was prinzipiell ein direktes, PCR-freies Lesen erlaubt. Der entscheidende nächste Schritt ist jedoch die Subgraph-Signatur-Extraktion direkt aus dem elektrischen Squiggle-Signal (\emph{Squiggle-to-Signature}, S2S), ohne den rechenintensiven und latenzsteigernden Basecalling-Schritt:
 \begin{equation}
   t_{\mathrm{direct}} = O(T_{\mathrm{squiggle}}) \ll t_{\mathrm{PCR}} + t_{\mathrm{seq}}.
 \end{equation}
-Das S2S-Verfahren wÃ¼rde die Signatur direkt aus dem Raw-Strom-Signal ableiten -- Ã¤hnlich wie DTW-basierte Alignierungsverfahren (Dynamic Time Warping) in der aktuellen Forschung. Eine dedizierte neuronale Netz-Pipeline (z.\,B. ein angepasstes Bonito-Modell) kÃ¶nnte das S2S-Pattern in Echtzeit wÃ¤hrend der Sequenzierung berechnen, sodass die Gesamtlatenz auf $\sim 2$\,s sinkt. Dies wÃ¼rde die L5-Zugriffslatenz auf dasselbe GrÃ¶ÃŸenordnungsniveau wie NVM-basierte SSD-Speicher (L4) bringen und das Vier-Regime-Energiemodell neu kalibrieren.
+Das S2S-Verfahren würde die Signatur direkt aus dem Raw-Strom-Signal ableiten -- ähnlich wie DTW-basierte Alignierungsverfahren (Dynamic Time Warping) in der aktuellen Forschung. Eine dedizierte neuronale Netz-Pipeline (z.\,B. ein angepasstes Bonito-Modell) könnte das S2S-Pattern in Echtzeit während der Sequenzierung berechnen, sodass die Gesamtlatenz auf $\sim 2$\,s sinkt. Dies würde die L5-Zugriffslatenz auf dasselbe Größenordnungsniveau wie NVM-basierte SSD-Speicher (L4) bringen und das Vier-Regime-Energiemodell neu kalibrieren.
 
-Parallel hierzu bieten gitterbasierte Nanoporenanordnungen (\emph{Flow Cell Arrays} mit $> 2000$ Poren gleichzeitig) die MÃ¶glichkeit, mehrere DNA-Anfragen simultan zu sequenzieren -- ein direktes Hardware-Pendant zum Software-seitigen Batching, das die effektive Durchsatzlatenz bei hÃ¶heren Zugriffsraten weiter senkt. Die theoretische Bandbreite eines Flow Cell Arrays mit $2048$ Poren bei je $400$\,Bit/s betrÃ¤gt rund $800$\,kBit/s, was fÃ¼r den typischen L5-Promotionstransfer von $4$\,kBit (eine DRAM-Cache-Line) eine Parallelsequenzierungszeit von unter $5$\,ms ermÃ¶glicht.
+Parallel hierzu bieten gitterbasierte Nanoporenanordnungen (\emph{Flow Cell Arrays} mit $> 2000$ Poren gleichzeitig) die Möglichkeit, mehrere DNA-Anfragen simultan zu sequenzieren -- ein direktes Hardware-Pendant zum Software-seitigen Batching, das die effektive Durchsatzlatenz bei höheren Zugriffsraten weiter senkt. Die theoretische Bandbreite eines Flow Cell Arrays mit $2048$ Poren bei je $400$\,Bit/s beträgt rund $800$\,kBit/s, was für den typischen L5-Promotionstransfer von $4$\,kBit (eine DRAM-Cache-Line) eine Parallelsequenzierungszeit von unter $5$\,ms ermöglicht.
 
 \paragraph{RNA-basierter Arbeitsspeicher.}
-RNA -- insbesondere mRNA und Aptamere -- besitzt eine Reihe von Eigenschaften, die sie als biologisches L4-Ã„quivalent zwischen Flash-SSD (L4) und DNA-L5 interessant machen: schnellere enzymatische Synthese (in vitro Transkription in $\sim 30$\,min statt mehrerer Stunden fÃ¼r DNA-Synthese), aktive enzymatische Degradation als inhÃ¤renter LÃ¶schmechanismus (RNase-kontrollierter Abbau in $\sim 1$--$10$\,min), und strukturell bedingte FÃ¤higkeit zur direkten FunktionsausfÃ¼hrung (Ribozyme als programmierbare Rechenelemente).
+RNA -- insbesondere mRNA und Aptamere -- besitzt eine Reihe von Eigenschaften, die sie als biologisches L4-Äquivalent zwischen Flash-SSD (L4) und DNA-L5 interessant machen: schnellere enzymatische Synthese (in vitro Transkription in $\sim 30$\,min statt mehrerer Stunden für DNA-Synthese), aktive enzymatische Degradation als inhärenter Löschmechanismus (RNase-kontrollierter Abbau in $\sim 1$--$10$\,min), und strukturell bedingte Fähigkeit zur direkten Funktionsausführung (Ribozyme als programmierbare Rechenelemente).
 
-Formale Integration in das PYMDNA-8-Modell erfordert die Erweiterung des DSS-Tupels um drei Komponenten: das RNA-Alphabet $\Sigma_{\mathrm{RNA}} = \{A, C, G, U\}$ (statt $T$ wird Uracil $U$ verwendet), die angepasste Kodierungsfunktion $\phi_{\mathrm{RNA}}: \mathcal{D} \to \Sigma_{\mathrm{RNA}}^*$, und den Degradations-Zeitparameter $\tau_{\mathrm{degrad}}$, der die charakteristische Halbwertszeit der RNA-MolekÃ¼le unter Betriebstemperatur beschreibt:
+Formale Integration in das PYMDNA-8-Modell erfordert die Erweiterung des DSS-Tupels um drei Komponenten: das RNA-Alphabet $\Sigma_{\mathrm{RNA}} = \{A, C, G, U\}$ (statt $T$ wird Uracil $U$ verwendet), die angepasste Kodierungsfunktion $\phi_{\mathrm{RNA}}: \mathcal{D} \to \Sigma_{\mathrm{RNA}}^*$, und den Degradations-Zeitparameter $\tau_{\mathrm{degrad}}$, der die charakteristische Halbwertszeit der RNA-Moleküle unter Betriebstemperatur beschreibt:
 \[
   \mathcal{X}_{\mathrm{DSS}}^{+} = \bigl(\Sigma_{\mathrm{DNA}}, \phi_{\mathrm{DNA}}, \Sigma_{\mathrm{RNA}}, \phi_{\mathrm{RNA}}, \tau_{\mathrm{degrad}}, \mathcal{S}_{\mathrm{synth}}, \mathcal{S}_{\mathrm{seq}}, \mathcal{I}, \mathcal{E}_{\mathrm{RS}}\bigr).
 \]
-Die RNA-Schicht agiert als \emph{Ephemeral Cache}: HÃ¤ufig zugegriffene DNA-Daten werden bei der Promotion aus L5 in rÃ¼cktranskribierter RNA-Form im L4-RNA-Pool gehalten, wo sie mit deutlich geringerer Synthese- und Leselatenz verfÃ¼gbar sind. Nach Ablauf von $\tau_{\mathrm{degrad}}$ werden die RNA-Kopien automatisch abgebaut, ohne explizite Eviction-Logik. Dies vereinfacht das KohÃ¤renzprotokoll erheblich, da RNA-Kopien per Definition kurzlebig und nie primÃ¤re Datenquelle sind.
+Die RNA-Schicht agiert als \emph{Ephemeral Cache}: Häufig zugegriffene DNA-Daten werden bei der Promotion aus L5 in rücktranskribierter RNA-Form im L4-RNA-Pool gehalten, wo sie mit deutlich geringerer Synthese- und Leselatenz verfügbar sind. Nach Ablauf von $\tau_{\mathrm{degrad}}$ werden die RNA-Kopien automatisch abgebaut, ohne explizite Eviction-Logik. Dies vereinfacht das Kohärenzprotokoll erheblich, da RNA-Kopien per Definition kurzlebig und nie primäre Datenquelle sind.
 
 %------------------------------------------------------------------
 \subsection{Langfristige Perspektiven}
 
-Die folgenden Entwicklungen liegen im Zeithorizont von zehn bis zwanzig Jahren und setzen entweder noch nicht vollstÃ¤ndig ausgereifte SchlÃ¼sseltechnologien voraus (DNA-Origami-Adressierung, stabile lebende Zellspeicher) oder erfordern einen Paradigmenwechsel im Entwurf von Rechensystemen (Quantencomputing). Sie werden hier als konzeptuelle Erweiterungen des PYMDNA-8-Rahmens beschrieben, um die Grenzen des aktuellen Ansatzes deutlich zu machen und zukÃ¼nftige Forschungsarbeiten zu motivieren.
+Die folgenden Entwicklungen liegen im Zeithorizont von zehn bis zwanzig Jahren und setzen entweder noch nicht vollständig ausgereifte Schlüsseltechnologien voraus (DNA-Origami-Adressierung, stabile lebende Zellspeicher) oder erfordern einen Paradigmenwechsel im Entwurf von Rechensystemen (Quantencomputing). Sie werden hier als konzeptuelle Erweiterungen des PYMDNA-8-Rahmens beschrieben, um die Grenzen des aktuellen Ansatzes deutlich zu machen und zukünftige Forschungsarbeiten zu motivieren.
 
 \paragraph{Topologische DNA-Adressierung.}
-Das aktuelle PYMDNA-8-System kodiert Daten in linearen DNA-Oligomeren, die durch ihre Sequenz eindeutig adressiert werden. DNA-Origami-Strukturen -- dreidimensionale Faltungen aus GerÃ¼st-DNA und Heftklammeroligomeren -- ermÃ¶glichen jedoch die Synthese von Objekten mit definierten topologischen Eigenschaften: Knoten, Tori, verknÃ¼pfte Ringe und andere Formen, die durch topologische Invarianten wie die VerknÃ¼pfungszahl $lk$ (Linking Number) oder das Geschlecht $g$ (Genus der einbettenden FlÃ¤che) charakterisiert werden. Diese Invarianten sind unter physiologischen Bedingungen stabil und chemisch auslesbar (z.\,B. durch gelchromatografische MobilitÃ¤tsmessungen oder Kryo-EM).
+Das aktuelle PYMDNA-8-System kodiert Daten in linearen DNA-Oligomeren, die durch ihre Sequenz eindeutig adressiert werden. DNA-Origami-Strukturen -- dreidimensionale Faltungen aus Gerüst-DNA und Heftklammeroligomeren -- ermöglichen jedoch die Synthese von Objekten mit definierten topologischen Eigenschaften: Knoten, Tori, verknüpfte Ringe und andere Formen, die durch topologische Invarianten wie die Verknüpfungszahl $lk$ (Linking Number) oder das Geschlecht $g$ (Genus der einbettenden Fläche) charakterisiert werden. Diese Invarianten sind unter physiologischen Bedingungen stabil und chemisch auslesbar (z.\,B. durch gelchromatografische Mobilitätsmessungen oder Kryo-EM).
 
-KÃ¶nnten diese topologischen Eigenschaften als zusÃ¤tzliche Adressdimensionen in die Subgraph-Signatur integriert werden, so ergibt sich ein erweiterter Signaturraum:
+Könnten diese topologischen Eigenschaften als zusätzliche Adressdimensionen in die Subgraph-Signatur integriert werden, so ergibt sich ein erweiterter Signaturraum:
 \begin{equation}
   \boldsymbol{\sigma}^{\mathrm{topo}} = (\sigma_0^D, \ldots, \sigma_{k-1}^D,
   \, lk(G_D), \, g(G_D)) \in \mathbb{N}^{k+2}.
 \end{equation}
-Dies wÃ¼rde den Adressraum exponentiell vergrÃ¶ÃŸern: WÃ¤hrend der aktuelle Signaturraum $|\mathbb{F}_q^k|$ Elemente hat, kÃ¤me ein topologischer Anteil mit $L_{\max} \cdot G_{\max}$ mÃ¶glichen $(lk, g)$-Kombinationen hinzu. Bei realistischen Werten von $L_{\max} = 20$ und $G_{\max} = 5$ ergibt sich eine Faktor-100-Erweiterung des Adressraums ohne zusÃ¤tzliche SequenzlÃ¤nge.
+Dies würde den Adressraum exponentiell vergrößern: Während der aktuelle Signaturraum $|\mathbb{F}_q^k|$ Elemente hat, käme ein topologischer Anteil mit $L_{\max} \cdot G_{\max}$ möglichen $(lk, g)$-Kombinationen hinzu. Bei realistischen Werten von $L_{\max} = 20$ und $G_{\max} = 5$ ergibt sich eine Faktor-100-Erweiterung des Adressraums ohne zusätzliche Sequenzlänge.
 
-Neuartige Dekodierungs- und Komprimierungsstrategien kÃ¶nnten topologische Ã„hnlichkeit ausnutzen: Daten mit verwandter topologischer Signatur teilen mÃ¶glicherweise Teilstrukturen und lassen sich durch topologische Korrelationscodes effizient zusammenfassen. Die mathematische Grundlage hierfÃ¼r liegt in der persistenten Homologie (Topological Data Analysis), die fÃ¼r diskrete DatensÃ¤tze bereits erfolgreich eingesetzt wird. Die Integration in das SMESI-Protokoll erforderte eine Erweiterung des KohÃ¤renzprotokolls um topologisch-Ã¤quivalente Sharing-ZustÃ¤nde $S_\sigma^{\mathrm{topo}}$, bei denen Cache-Lines nicht nur bei sequenzidentischen, sondern auch bei topologisch-isomorphen MolekÃ¼len geteilt werden.
+Neuartige Dekodierungs- und Komprimierungsstrategien könnten topologische Ähnlichkeit ausnutzen: Daten mit verwandter topologischer Signatur teilen möglicherweise Teilstrukturen und lassen sich durch topologische Korrelationscodes effizient zusammenfassen. Die mathematische Grundlage hierfür liegt in der persistenten Homologie (Topological Data Analysis), die für diskrete Datensätze bereits erfolgreich eingesetzt wird. Die Integration in das SMESI-Protokoll erforderte eine Erweiterung des Kohärenzprotokolls um topologisch-äquivalente Sharing-Zustände $S_\sigma^{\mathrm{topo}}$, bei denen Cache-Lines nicht nur bei sequenzidentischen, sondern auch bei topologisch-isomorphen Molekülen geteilt werden.
 
 \paragraph{Zellbasierter L6-Cache.}
-Lebende Bakterienzellen ($E.\,coli$, $B.\,subtilis$) kÃ¶nnen als dynamischer, sich-selbst-replizierender Speicher dienen. CRISPR/Cas-basierte Schreibsysteme ermÃ¶glichen heute bereits die stabile Integration definierter DNA-Sequenzen in das bakterielle Chromosom oder in Plasmide, mit einer Dichte von bis zu $10^{9}$ Zellen/ml und einem SpeichervermÃ¶gen von $\sim 4$\,Mbit/Zelle (bei einem 4-Mbit-Chromosom). Ein L6-Cache aus $10^{12}$ Zellen in einem $1$\,L-Fermenter wÃ¼rde theoretisch eine KapazitÃ¤t von $\approx 4$\,Zettabit bereitstellen.
+Lebende Bakterienzellen ($E.\,coli$, $B.\,subtilis$) können als dynamischer, sich-selbst-replizierender Speicher dienen. CRISPR/Cas-basierte Schreibsysteme ermöglichen heute bereits die stabile Integration definierter DNA-Sequenzen in das bakterielle Chromosom oder in Plasmide, mit einer Dichte von bis zu $10^{9}$ Zellen/ml und einem Speichervermögen von $\sim 4$\,Mbit/Zelle (bei einem 4-Mbit-Chromosom). Ein L6-Cache aus $10^{12}$ Zellen in einem $1$\,L-Fermenter würde theoretisch eine Kapazität von $\approx 4$\,Zettabit bereitstellen.
 
-Der entscheidende Vorteil gegenÃ¼ber passiver DNA-Speicherung: Datenverlust durch StrangbrÃ¼che, Deaminierung oder Hydrolysis -- die primÃ¤ren Degradationsmechanismen von in vitro-DNA -- wird durch biologische DNA-Reparaturmechanismen (Mismatch-Repair, Nukleotid-Exzisions-Reparatur) der lebenden Zellen vollautomatisch kompensiert. Die Zellen fungieren damit als fehlerkorrigierende Hardware, die den Reed-Solomon-Overhead des aktuellen Systems zumindest teilweise substituieren kÃ¶nnte.
+Der entscheidende Vorteil gegenüber passiver DNA-Speicherung: Datenverlust durch Strangbrüche, Deaminierung oder Hydrolysis -- die primären Degradationsmechanismen von in vitro-DNA -- wird durch biologische DNA-Reparaturmechanismen (Mismatch-Repair, Nukleotid-Exzisions-Reparatur) der lebenden Zellen vollautomatisch kompensiert. Die Zellen fungieren damit als fehlerkorrigierende Hardware, die den Reed-Solomon-Overhead des aktuellen Systems zumindest teilweise substituieren könnte.
 
-Die Formalerweiterung des PYMDNA-8-Modells auf epigenetische Codierung (3 Bit/Base durch Methylierungsmuster -- eine Base kann methyliert, hemimethyliert oder unmethyliert sein) ist konzeptuell in \cite{epp2026dnastor}, Ausblick\,7, vorbeschrieben. Die Implementierung dieser Idee erfordert jedoch die LÃ¶sung erheblicher ZuverlÃ¤ssigkeitsprobleme: Zellwachstum und Evolution kÃ¶nnen gespeicherte Sequenzen durch Mutationen korrumpieren; die Synchronisation zwischen dem digitalen Adressraum und dem biologisch fluktuierenden Speichermedium ist ein grundlegend neues Konsistenzproblem, fÃ¼r das weder klassische Konsistenzprotokolle noch biologische Modelle allein ausreichen. Ein zukÃ¼nftiges L6-KohÃ¤renzprotokoll mÃ¼sste probabilistische Konsistenzgarantien ($\epsilon$-Konsistenz unter stochastischen Mutationsraten) formal definieren und beweisen.
+Die Formalerweiterung des PYMDNA-8-Modells auf epigenetische Codierung (3 Bit/Base durch Methylierungsmuster -- eine Base kann methyliert, hemimethyliert oder unmethyliert sein) ist konzeptuell in \cite{epp2026dnastor}, Ausblick\,7, vorbeschrieben. Die Implementierung dieser Idee erfordert jedoch die Lösung erheblicher Zuverlässigkeitsprobleme: Zellwachstum und Evolution können gespeicherte Sequenzen durch Mutationen korrumpieren; die Synchronisation zwischen dem digitalen Adressraum und dem biologisch fluktuierenden Speichermedium ist ein grundlegend neues Konsistenzproblem, für das weder klassische Konsistenzprotokolle noch biologische Modelle allein ausreichen. Ein zukünftiges L6-Kohärenzprotokoll müsste probabilistische Konsistenzgarantien ($\epsilon$-Konsistenz unter stochastischen Mutationsraten) formal definieren und beweisen.
 
 \paragraph{Quantencomputing-Integration.}
-Quantenbits (Qubits) kÃ¶nnten als superschneller L0-Cache unterhalb von L1 eingesetzt werden -- eine Ebene, die fÃ¼r Quantenfehlerkorrektur-Codes oder Oracle-Funktionen des Subgraph-Isomorphismus-Algorithmus genutzt wird. Das aktuelle PYMDNA-8-System berechnet Subgraph-Signaturen in $O(k^3)$ klassischer Zeit fÃ¼r eine Signatur der LÃ¤nge $k$ (Subgraph-Isomorphismus ist GI-vollstÃ¤ndig). Grover-Beschleunigung fÃ¼r die unstrukturierte Suche in einem Index der GrÃ¶ÃŸe $N$ reduziert die SuchkomplexitÃ¤t von $O(N)$ auf $O(\sqrt{N})$; angepasst auf das Subgraph-Isomorphismus-Orakel ergibt sich:
+Quantenbits (Qubits) könnten als superschneller L0-Cache unterhalb von L1 eingesetzt werden -- eine Ebene, die für Quantenfehlerkorrektur-Codes oder Oracle-Funktionen des Subgraph-Isomorphismus-Algorithmus genutzt wird. Das aktuelle PYMDNA-8-System berechnet Subgraph-Signaturen in $O(k^3)$ klassischer Zeit für eine Signatur der Länge $k$ (Subgraph-Isomorphismus ist GI-vollständig). Grover-Beschleunigung für die unstrukturierte Suche in einem Index der Größe $N$ reduziert die Suchkomplexität von $O(N)$ auf $O(\sqrt{N})$; angepasst auf das Subgraph-Isomorphismus-Orakel ergibt sich:
 \[
-  \text{Quantenorakel fÃ¼r Subgraph-Test}: O(k^{3/2}) \text{ statt } O(k^3).
+  \text{Quantenorakel für Subgraph-Test}: O(k^{3/2}) \text{ statt } O(k^3).
 \]
-Diese quadratische Beschleunigung ist besonders relevant fÃ¼r sehr lange Signaturen ($k > 1000$), wie sie bei topologischer DNA-Adressierung entstehen wÃ¼rden.
+Diese quadratische Beschleunigung ist besonders relevant für sehr lange Signaturen ($k > 1000$), wie sie bei topologischer DNA-Adressierung entstehen würden.
 
-Die strukturelle Verbindung zwischen Quantencomputing und DNA-Speicherung ist dabei nicht nur algorithmischer Natur: Photonische Quantensysteme und DNA-Plasmonik (goldnanopartikeldekorierte DNA-Origami-Strukturen) teilen dieselben LÃ¤ngenskalen ($10$--$100$\,nm) und kÃ¶nnten langfristig in einem integrierten Quantenbio-Chip realisiert werden. In einem solchen System wÃ¤ren Qubit-L0, SRAM-L1/L2, DRAM-L3, Flash-L4, DNA-L5 und Zell-L6 als kohÃ¤rente, aber durch unterschiedliche physikalische Substrate realisierte Speicherebenen in einer einzigen Architektur vereint -- eine Hierarchie, die den gesamten Bereich von Quantenfluktuation bis biologischer Evolution als Speichermedien nutzt.
+Die strukturelle Verbindung zwischen Quantencomputing und DNA-Speicherung ist dabei nicht nur algorithmischer Natur: Photonische Quantensysteme und DNA-Plasmonik (goldnanopartikeldekorierte DNA-Origami-Strukturen) teilen dieselben Längenskalen ($10$--$100$\,nm) und könnten langfristig in einem integrierten Quantenbio-Chip realisiert werden. In einem solchen System wären Qubit-L0, SRAM-L1/L2, DRAM-L3, Flash-L4, DNA-L5 und Zell-L6 als kohärente, aber durch unterschiedliche physikalische Substrate realisierte Speicherebenen in einer einzigen Architektur vereint -- eine Hierarchie, die den gesamten Bereich von Quantenfluktuation bis biologischer Evolution als Speichermedien nutzt.
 
 %------------------------------------------------------------------
 \subsection{Offene mathematische Probleme}
 
-Neben den technologischen Herausforderungen hinterlÃ¤sst die vorliegende Arbeit mehrere prÃ¤zise formulierte mathematische Fragen, deren Beantwortung das theoretische Fundament von PYMDNA-8 -- und biologisch-digitaler Computerspeicherhierarchien im Allgemeinen -- wesentlich stÃ¤rken wÃ¼rde.
+Neben den technologischen Herausforderungen hinterlässt die vorliegende Arbeit mehrere präzise formulierte mathematische Fragen, deren Beantwortung das theoretische Fundament von PYMDNA-8 -- und biologisch-digitaler Computerspeicherhierarchien im Allgemeinen -- wesentlich stärken würde.
 
 \begin{enumerate}
-  \item \textbf{Optimales Tiering unter allgemeiner Last.} Die Experimente in Kapitel~11 zeigen, dass das Vier-Regime-System unter realitÃ¤tsnahen Python-Workloads gÃ¼nstige Energie-Latenz-Tradeoffs erzielt. FÃ¼r welche Lastverteilung $p(\ell)$ ist diese Konfiguration jedoch tatsÃ¤chlich optimal unter dem kombinierten Kostenfunktional~\eqref{eq:combo_cost}? Is das Vier-Regime-System strikt besser als ein kontinuierliches, stufenloses Regime-System? Formal lÃ¤sst sich dies als Variationsproblem formulieren: Gesucht ist die optimale Partitionierung des Lastintervalls $[0,1]$ in Regimegrenzen $0 = \ell_0 < \ell_1 < \ell_2 < \ell_3 = 1$ sowie die zugehÃ¶rigen Aktivierungsregeln, sodass $\mathbb{E}_{p(\ell)}[C(\ell)]$ minimiert wird. Die Antwort hÃ¤ngt vermutlich wesentlich von der Struktur $p(\ell)$ ab; fÃ¼r multimodale Lastverteilungen (z.\,B. Server mit geregelten Lastspitzen) ist eine hÃ¶here Anzahl von Regimen mÃ¶glicherweise gerechtfertigt.
+  \item \textbf{Optimales Tiering unter allgemeiner Last.} Die Experimente in Kapitel~11 zeigen, dass das Vier-Regime-System unter realitätsnahen Python-Workloads günstige Energie-Latenz-Tradeoffs erzielt. Für welche Lastverteilung $p(\ell)$ ist diese Konfiguration jedoch tatsächlich optimal unter dem kombinierten Kostenfunktional~\eqref{eq:combo_cost}? Is das Vier-Regime-System strikt besser als ein kontinuierliches, stufenloses Regime-System? Formal lässt sich dies als Variationsproblem formulieren: Gesucht ist die optimale Partitionierung des Lastintervalls $[0,1]$ in Regimegrenzen $0 = \ell_0 < \ell_1 < \ell_2 < \ell_3 = 1$ sowie die zugehörigen Aktivierungsregeln, sodass $\mathbb{E}_{p(\ell)}[C(\ell)]$ minimiert wird. Die Antwort hängt vermutlich wesentlich von der Struktur $p(\ell)$ ab; für multimodale Lastverteilungen (z.\,B. Server mit geregelten Lastspitzen) ist eine höhere Anzahl von Regimen möglicherweise gerechtfertigt.
 
-  \item \textbf{Untere Schranke fÃ¼r die SMESI-KohÃ¤renzprÃ¼fung.} Der aktuelle SMESI-Algorithmus benÃ¶tigt $\Omega(k)$ Zeit pro KohÃ¤renzprÃ¼fung, da die vollstÃ¤ndige Signatur $\boldsymbol{\sigma} \in \mathbb{F}_q^k$ verglichen werden muss. Ist dies die echte untere Schranke, oder existiert ein probabilistischer Algorithmus, der durch Locality-Sensitive Hashing (LSH) eine KohÃ¤renzprÃ¼fung in sublinearer erwarteter Zeit $o(k)$ durchfÃ¼hrt, ohne die Kollisionswahrscheinlichkeit oberhalb einer akzeptablen Schranke $\delta$ zu erhÃ¶hen? LSH-Familien fÃ¼r den Hamming-Abstand sind bekannt; ihre Anpassung auf das SMESI-Sharing-PrÃ¤dikat (nicht Distanz, sondern Gleichheit) ist jedoch eine offene Frage mit direkten praktischen Konsequenzen fÃ¼r die Buslatenz.
+  \item \textbf{Untere Schranke für die SMESI-Kohärenzprüfung.} Der aktuelle SMESI-Algorithmus benötigt $\Omega(k)$ Zeit pro Kohärenzprüfung, da die vollständige Signatur $\boldsymbol{\sigma} \in \mathbb{F}_q^k$ verglichen werden muss. Ist dies die echte untere Schranke, oder existiert ein probabilistischer Algorithmus, der durch Locality-Sensitive Hashing (LSH) eine Kohärenzprüfung in sublinearer erwarteter Zeit $o(k)$ durchführt, ohne die Kollisionswahrscheinlichkeit oberhalb einer akzeptablen Schranke $\delta$ zu erhöhen? LSH-Familien für den Hamming-Abstand sind bekannt; ihre Anpassung auf das SMESI-Sharing-Prädikat (nicht Distanz, sondern Gleichheit) ist jedoch eine offene Frage mit direkten praktischen Konsequenzen für die Buslatenz.
 
-  \item \textbf{KomplexitÃ¤t des DNA-GC-Auslagerungsproblems.} Das Auslagerungsproblem lautet: Gegeben ein Budget $B$ fÃ¼r die DNA-SynthesekapazitÃ¤t und eine Menge $\mathcal{D}$ von Gen-2-Kandidaten mit individuellen SpeichergrÃ¶ÃŸen $s_i$ und GC-LaufzeitbeitrÃ¤gen $c_i$, finde die Teilmenge $\mathcal{D}^* \subseteq \mathcal{D}$ mit $\sum_{i \in \mathcal{D}^*} s_i \leq B$, die $\sum_{i \in \mathcal{D}^*} c_i$ maximiert. Dies entspricht dem klassischen $0$-$1$-Rucksackproblem, das NP-schwer ist, das aber gut durch einen $\mathrm{FPTAS}$ (Fully Polynomial-Time Approximation Scheme) in $(1-\varepsilon)$-optimaler Zeit lÃ¶sbar ist. Unklar ist, ob die in PYMDNA-8 verwendete Greedy-Heuristik (Auslagerung nach absteigendem $c_i/s_i$) eine konstante Approximationsgarantie besitzt, oder ob worst-case-Instanzen vorkommen, die die GC-Pause signifikant verschlechtern.
+  \item \textbf{Komplexität des DNA-GC-Auslagerungsproblems.} Das Auslagerungsproblem lautet: Gegeben ein Budget $B$ für die DNA-Synthesekapazität und eine Menge $\mathcal{D}$ von Gen-2-Kandidaten mit individuellen Speichergrößen $s_i$ und GC-Laufzeitbeiträgen $c_i$, finde die Teilmenge $\mathcal{D}^* \subseteq \mathcal{D}$ mit $\sum_{i \in \mathcal{D}^*} s_i \leq B$, die $\sum_{i \in \mathcal{D}^*} c_i$ maximiert. Dies entspricht dem klassischen $0$-$1$-Rucksackproblem, das NP-schwer ist, das aber gut durch einen $\mathrm{FPTAS}$ (Fully Polynomial-Time Approximation Scheme) in $(1-\varepsilon)$-optimaler Zeit lösbar ist. Unklar ist, ob die in PYMDNA-8 verwendete Greedy-Heuristik (Auslagerung nach absteigendem $c_i/s_i$) eine konstante Approximationsgarantie besitzt, oder ob worst-case-Instanzen vorkommen, die die GC-Pause signifikant verschlechtern.
 
-  \item \textbf{StabilitÃ¤tsanalyse des Vier-Regime-Systems.} Der EWMA-LastsschÃ¤tzer~\eqref{eq:ewma_dna} und die Eskalationslogik~\eqref{eq:gamma_star} bilden ein diskretes, nichtlineares dynamisches System. Konvergiert dieses System unter stochastischen Lastfluktuationen zu einem stabilen Fixpunkt, oder kÃ¶nnen resonante Schwingungen auftreten? Insbesondere ist die Wechselwirkung zwischen der Cold-Data-Demotion (die DRAM-KapazitÃ¤t freigibt und damit den Demotionsanreiz verringert) und dem Promotionspfad (der DRAM wieder fÃ¼llt) ein potenzieller Oszillationsmechanismus. Eine Ljapunow-Analyse des Systems unter einer Markov-Lastmodellierung -- oder besser: ein stochastisches StabilitÃ¤tsergebnis fÃ¼r den ganzen Agenten -- wÃ¤re wÃ¼nschenswert.
+  \item \textbf{Stabilitätsanalyse des Vier-Regime-Systems.} Der EWMA-Lastsschätzer~\eqref{eq:ewma_dna} und die Eskalationslogik~\eqref{eq:gamma_star} bilden ein diskretes, nichtlineares dynamisches System. Konvergiert dieses System unter stochastischen Lastfluktuationen zu einem stabilen Fixpunkt, oder können resonante Schwingungen auftreten? Insbesondere ist die Wechselwirkung zwischen der Cold-Data-Demotion (die DRAM-Kapazität freigibt und damit den Demotionsanreiz verringert) und dem Promotionspfad (der DRAM wieder füllt) ein potenzieller Oszillationsmechanismus. Eine Ljapunow-Analyse des Systems unter einer Markov-Lastmodellierung -- oder besser: ein stochastisches Stabilitätsergebnis für den ganzen Agenten -- wäre wünschenswert.
 \end{enumerate}
 
 %==================================================================
@@ -1617,41 +1617,41 @@ Neben den technologischen Herausforderungen hinterlÃ¤sst die vorliegende Arbei
 %==================================================================
 
 Diese Arbeit hat die \textbf{PYMDNA-8-Architektur} als erste formell
-vollstÃ¤ndig spezifizierte integrierte CPU-DNA-Speicher-Architektur
+vollständig spezifizierte integrierte CPU-DNA-Speicher-Architektur
 entwickelt und alle zentralen Ergebnisse formal bewiesen.
-Die wichtigsten BeitrÃ¤ge sind:
+Die wichtigsten Beiträge sind:
 
 \begin{enumerate}[noitemsep]
-  \item \textbf{Strukturelle DualitÃ¤t} (Satz~\ref{satz:dualitaet}):
+  \item \textbf{Strukturelle Dualität} (Satz~\ref{satz:dualitaet}):
     Python-Objektgraphen und DNA-Datengraphen teilen dieselbe
     algebraische Subgraph-Struktur.
   \item \textbf{Vier-Regime-System} (Theorem~\ref{thm:vier_regime_optimal}):
-    Formale OptimalitÃ¤t des erweiterten Last\-regime-Systems mit
+    Formale Optimalität des erweiterten Last\-regime-Systems mit
     DNA-Eskalation bei Niedriglast.
-  \item \textbf{SMESI-KohÃ¤renzprotokoll} (Theorem~\ref{thm:smesi_korrekt}):
-    Sequentielle Konsistenz mit 65\% KohÃ¤renztraffic-Reduktion
+  \item \textbf{SMESI-Kohärenzprotokoll} (Theorem~\ref{thm:smesi_korrekt}):
+    Sequentielle Konsistenz mit 65\% Kohärenztraffic-Reduktion
     durch Signatur-Tagging.
   \item \textbf{DNA-GC-Kooperation} (Theorem~\ref{thm:gc_pausenzeit}):
-    Gen-2-Pausenzeitreduktion um bis zu eine GrÃ¶ÃŸenordnung durch
+    Gen-2-Pausenzeitreduktion um bis zu eine Größenordnung durch
     proaktive DNA-Auslagerung.
-  \item \textbf{Kombinierte KapazitÃ¤t} (Theorem~\ref{thm:kapazitaet}):
+  \item \textbf{Kombinierte Kapazität} (Theorem~\ref{thm:kapazitaet}):
     $C_{\mathrm{PYMDNA}} = C_{\mathrm{DRAM}} + C_{\mathrm{DNA}} / (1-\rho)$
-    -- Petabytes flÃ¼chtig plus Exabytes persistent.
-  \item \textbf{Asymptotische OptimalitÃ¤t} (Theorem~\ref{thm:optimalitaet}):
+    -- Petabytes flüchtig plus Exabytes persistent.
+  \item \textbf{Asymptotische Optimalität} (Theorem~\ref{thm:optimalitaet}):
     Jede Systemkomponente ist asymptotisch optimal in ihrer jeweiligen
-    KomplexitÃ¤tsklasse.
+    Komplexitätsklasse.
   \item \textbf{Nichtinterferenz} (Theorem~\ref{thm:nichtinterferenz}):
-    Signatur-isolierte Prozesse interferieren weder Ã¼ber den Signatur-Bus
-    noch Ã¼ber den DNA-Pool.
+    Signatur-isolierte Prozesse interferieren weder über den Signatur-Bus
+    noch über den DNA-Pool.
 \end{enumerate}
 
 Die PYMDNA-8-Architektur markiert damit einen Paradigmenwechsel:
 Rechnerarchitekturen werden nicht mehr nur durch ihre
-Transistortechnologie, sondern durch ihre \emph{algebraische KompatibilitÃ¤t}
+Transistortechnologie, sondern durch ihre \emph{algebraische Kompatibilität}
 mit der zu verarbeitenden Information charakterisiert.
 Die Subgraph-Signatur ist dabei nicht nur eine Adresse -- sie ist das
-universelle mathematische Konzept, das flÃ¼chtige ProzessorzustÃ¤nde
-und permanente molekulare InformationstrÃ¤ger in einer einzigen, formal
+universelle mathematische Konzept, das flüchtige Prozessorzustände
+und permanente molekulare Informationsträger in einer einzigen, formal
 bewiesenen Architektur vereint.
 
 %------------------------------------------------------------------
@@ -1660,7 +1660,7 @@ bewiesenen Architektur vereint.
 \bibitem{epp2026pymca8}
   S.~Epp,
   \textit{PYMCA-8: Python-Memory-Model-Aware Multicore-Architektur mit
-    adaptiver stochastischer Lastverteilung}, MÃ¤rz 2026.
+    adaptiver stochastischer Lastverteilung}, März 2026.
 
 \bibitem{epp2026dnastor}
   S.~Epp,
@@ -1678,8 +1678,8 @@ bewiesenen Architektur vereint.
 
 \bibitem{epp2026iono}
   S.~Epp,
-  \textit{Ionotronisches FlÃ¼ssigkeits-Rechnen: Wasservolumen als
-    LadungstrÃ¤ger, Schalter und Speicher}, Februar 2026.
+  \textit{Ionotronisches Flüssigkeits-Rechnen: Wasservolumen als
+    Ladungsträger, Schalter und Speicher}, Februar 2026.
 
 \bibitem{patterson2013computer}
   D.~A.~Patterson and J.~L.~Hennessy,

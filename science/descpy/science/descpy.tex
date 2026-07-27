@@ -1,10 +1,10 @@
 ﻿% ============================================================
-%  Wissenschaftliche Arbeit: AusdrucksstÃ¤rke von
+%  Wissenschaftliche Arbeit: Ausdrucksstärke von
 %  matplotlib, NumPy und SciPy in der wissenschaftlichen
 %  Programmierung mit Python
 %
 %  Autor: Stephan
-%  Datum: MÃ¤rz 2026
+%  Datum: März 2026
 % ============================================================
 \documentclass[12pt, a4paper]{article}
 
@@ -85,9 +85,9 @@
   aboveskip=1em,
   belowskip=0.5em,
   literate=
-    {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1 {Ã¼}{{\"u}}1
-    {Ã„}{{\"A}}1 {Ã–}{{\"O}}1 {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1,
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {ß}{{\ss}}1,
 }
 
 % ---- Hyperlinks ----
@@ -97,7 +97,7 @@
   linkcolor=numpyblue,
   citecolor=scipygreen,
   urlcolor=mplred,
-  pdftitle={AusdrucksstÃ¤rke von matplotlib, NumPy und SciPy},
+  pdftitle={Ausdrucksstärke von matplotlib, NumPy und SciPy},
   pdfauthor={Stephan},
   pdfsubject={Wissenschaftliche Python-Bibliotheken},
   pdfkeywords={NumPy, SciPy, matplotlib, Python, Scientific Computing},
@@ -138,7 +138,7 @@
   \centering
   \vspace*{1.5cm}
   {\Huge\bfseries
-    Die AusdrucksstÃ¤rke wissenschaftlicher\\
+    Die Ausdrucksstärke wissenschaftlicher\\
     Python-Bibliotheken\\[0.8em]}
   {\Large\color{gray}\rule{0.6\textwidth}{0.5pt}}\\[0.6em]
   {\LARGE\bfseries
@@ -153,9 +153,9 @@
   \vspace{1.5cm}
   \begin{tabular}{rl}
     \textbf{Autor:}   & Stephan Epp\\[3pt]
-    \textbf{Datum:}   & 18. MÃ¤rz 2026\\[3pt]
+    \textbf{Datum:}   & 18. März 2026\\[3pt]
     \textbf{Sprache:} & Python 3.12\\[3pt]
-    \textbf{SchlagwÃ¶rter:} & Scientific Computing, Data Science,\\
+    \textbf{Schlagwörter:} & Scientific Computing, Data Science,\\
                            & Numerische Mathematik, Datenvisualisierung
   \end{tabular}
 
@@ -173,17 +173,17 @@
 \label{sec:einleitung}
 % ==============================================================
 
-Wissenschaftliches Rechnen erfordert drei wesentliche FÃ¤higkeiten: das
+Wissenschaftliches Rechnen erfordert drei wesentliche Fähigkeiten: das
 effiziente Verarbeiten numerischer Daten, die Anwendung mathematischer
-Algorithmen sowie die Ã¼berzeugende Visualisierung von Ergebnissen.
-Mit dem Aufstieg von Python als \emph{de-facto}-Sprache fÃ¼r Data Science
-und wissenschaftliche Forschung hat sich ein Ã–kosystem um drei zentrale
-Bibliotheken herausgebildet, das diese Anforderungen vollstÃ¤ndig abdeckt:
+Algorithmen sowie die überzeugende Visualisierung von Ergebnissen.
+Mit dem Aufstieg von Python als \emph{de-facto}-Sprache für Data Science
+und wissenschaftliche Forschung hat sich ein Ökosystem um drei zentrale
+Bibliotheken herausgebildet, das diese Anforderungen vollständig abdeckt:
 
 \begin{center}
 \begin{tabular}{lll}
   \toprule
-  \textbf{Bibliothek} & \textbf{Kernaufgabe} & \textbf{VerÃ¶ffentlicht} \\
+  \textbf{Bibliothek} & \textbf{Kernaufgabe} & \textbf{Veröffentlicht} \\
   \midrule
   \textcolor{numpyblue}{\textbf{NumPy}} & Numerische Arrays \& lineare Algebra & 2005 \\
   \textcolor{scipygreen}{\textbf{SciPy}} & Wissenschaftliche Algorithmen & 2001 \\
@@ -195,33 +195,33 @@ Bibliotheken herausgebildet, das diese Anforderungen vollstÃ¤ndig abdeckt:
 \vspace{0.5em}
 Zusammen bilden diese Bibliotheken das sogenannte \emph{Scientific Python
 Stack} \cite{virtanen2020scipy, harris2020array, hunter2007matplotlib}.
-Sie werden in Peer-Reviewed-Publikationen, LehrbÃ¼chern und industriellen
-Anwendungen von Physik Ã¼ber Bioinformatik bis hin zur Finanzwissenschaft
-eingesetzt. Allein NumPy wird tÃ¤glich mehrere Millionen Mal heruntergeladen
+Sie werden in Peer-Reviewed-Publikationen, Lehrbüchern und industriellen
+Anwendungen von Physik über Bioinformatik bis hin zur Finanzwissenschaft
+eingesetzt. Allein NumPy wird täglich mehrere Millionen Mal heruntergeladen
 und ist in Projekten wie LIGO (Gravitationswellendetektion), NASA-Bildgebung
 und der Bildrekonstruktion des Event-Horizon-Teleskops eingesetzt worden
 \cite{harris2020array}.
 
-Diese drei Bibliotheken machen eine Software oder eine Anwendung hinsichtlich der mathematischen Beschreibbarkeit vollstÃ¤ndig. Und dies muss gezeigt werden. Finde dazu einen Ausdruck in der Mathematik oder in der Regelungstechnik, der mit diesen drei Bibliotheken nicht dargestellt oder nicht beschrieben werden kann. Die Natur hat nicht nur ein PhÃ¤nomen, welches mathematisch nicht beschrieben werden kann. In der Natur ist Bewegung und diese Bewegung fÃ¼hrt aufmerksame Beobachter dahin. Die Bewegung hat seinen Ursprung in der ewigen Energie, welche auch diese Erde gemacht hat und sie erhÃ¤lt in allen ihren Gesetzen. Was dem aufmerksamen Beobachter sofort auffÃ¤llt, ist, dass die Beschreibung natÃ¼rlicher PhÃ¤nomene gar nicht so trivial ist, da diese eher zufÃ¤llig erscheinen und auftreten. Dabei zeigt sich die Natur dem Beobachter doch auf eine Weise in der zufÃ¤lligen Art, wie sie dem Beobachter doch intuitiv sehr vertraut ist. Es scheint zu gehen und wieder zu kommen, da zu sein und zu verschwinden. Feuer und Wasser sind dazu die Ã¼berragenden Beispiele in der Natur. Die geometrische Anordnung bei Tieren ist den Menschen besonders vertraut.
+Diese drei Bibliotheken machen eine Software oder eine Anwendung hinsichtlich der mathematischen Beschreibbarkeit vollständig. Und dies muss gezeigt werden. Finde dazu einen Ausdruck in der Mathematik oder in der Regelungstechnik, der mit diesen drei Bibliotheken nicht dargestellt oder nicht beschrieben werden kann. Die Natur hat nicht nur ein Phänomen, welches mathematisch nicht beschrieben werden kann. In der Natur ist Bewegung und diese Bewegung führt aufmerksame Beobachter dahin. Die Bewegung hat seinen Ursprung in der ewigen Energie, welche auch diese Erde gemacht hat und sie erhält in allen ihren Gesetzen. Was dem aufmerksamen Beobachter sofort auffällt, ist, dass die Beschreibung natürlicher Phänomene gar nicht so trivial ist, da diese eher zufällig erscheinen und auftreten. Dabei zeigt sich die Natur dem Beobachter doch auf eine Weise in der zufälligen Art, wie sie dem Beobachter doch intuitiv sehr vertraut ist. Es scheint zu gehen und wieder zu kommen, da zu sein und zu verschwinden. Feuer und Wasser sind dazu die überragenden Beispiele in der Natur. Die geometrische Anordnung bei Tieren ist den Menschen besonders vertraut.
 
 Die Python-Bibliotheken \textbf{NumPy}, \textbf{SciPy} und \textbf{Matplotlib}
 bilden das technische Fundament nahezu aller modernen wissenschaftlichen
 Arbeiten, die auf Python basieren. Diese Arbeit gibt eine umfassende und
-anschauliche Ãœbersicht Ã¼ber die gesamte AusdrucksstÃ¤rke dieser drei
+anschauliche Übersicht über die gesamte Ausdrucksstärke dieser drei
 Bibliotheken: Vom effizienten numerischen Rechnen mit mehrdimensionalen
-Arrays (\emph{NumPy}) Ã¼ber hÃ¶here Algorithmen fÃ¼r GleichungslÃ¶ser,
+Arrays (\emph{NumPy}) über höhere Algorithmen für Gleichungslöser,
 Signalverarbeitung, Statistik und wissenschaftliche Spezialfunktionen
 (\emph{SciPy}) bis hin zur flexiblen, publikationsreifen
 Datenvisualisierung (\emph{Matplotlib}). Anhand zahlreicher kommentierter
 Codebeispiele und Abbildungen wird gezeigt, wie diese drei Werkzeuge im
-Verbund vollstÃ¤ndige wissenschaftliche ArbeitsablÃ¤ufe ermÃ¶glichen â€“
-von der Rohdatenverarbeitung bis zur fertigen Grafik fÃ¼r die Publikation.
+Verbund vollständige wissenschaftliche Arbeitsabläufe ermöglichen â€“
+von der Rohdatenverarbeitung bis zur fertigen Grafik für die Publikation.
 
 In dieser Arbeit werden alle wesentlichen Teilgebiete von NumPy, SciPy und
-Matplotlib systematisch vorgestellt, anhand ausfÃ¼hrlicher und kommentierter
+Matplotlib systematisch vorgestellt, anhand ausführlicher und kommentierter
 Python-Codebeispiele illustriert und mit entsprechenden Abbildungen
 visualisiert. Am Ende jedes Abschnitts wird der unverzichtbare Wert der
-jeweiligen FunktionalitÃ¤t fÃ¼r das wissenschaftliche Arbeiten hervorgehoben.
+jeweiligen Funktionalität für das wissenschaftliche Arbeiten hervorgehoben.
 
 
 % ==============================================================
@@ -233,12 +233,12 @@ jeweiligen FunktionalitÃ¤t fÃ¼r das wissenschaftliche Arbeiten hervorgehoben
 \label{subsec:numpy-history}
 
 Vor NumPy war numerisches Rechnen in Python entweder sehr langsam (via
-reine Python-Listen) oder erforderte aufwÃ¤ndige C-Erweiterungen.
+reine Python-Listen) oder erforderte aufwändige C-Erweiterungen.
 \emph{Travis Oliphant} konsolidierte 2005 die Projekte \texttt{Numeric}
 und \texttt{numarray} zum modernen NumPy \cite{oliphant2006guide}.
 Der Kern von NumPy â€“ das N-dimensionale Array \texttt{ndarray} â€“ ist in
-C implementiert und ermÃ¶glicht vektorisierte Operationen, die um den
-Faktor 100--1000 schneller sind als Ã¤quivalenter reiner Python-Code
+C implementiert und ermöglicht vektorisierte Operationen, die um den
+Faktor 100--1000 schneller sind als äquivalenter reiner Python-Code
 \cite{harris2020array}.
 
 \subsection{Das ndarray: Kernkonzept}
@@ -248,9 +248,9 @@ Das zentrale Objekt von NumPy ist das \texttt{ndarray}. Es ist
 charakterisiert durch:
 
 \begin{itemize}
-  \item \textbf{Form (\texttt{shape})}: Tupel der Dimensionen, z.\,B.\ $(3, 4, 5)$ fÃ¼r ein 3D-Array.
+  \item \textbf{Form (\texttt{shape})}: Tupel der Dimensionen, z.\,B.\ $(3, 4, 5)$ für ein 3D-Array.
   \item \textbf{Datentyp (\texttt{dtype})}: Homogener Typ aller Elemente (\texttt{float64}, \texttt{int32}, \texttt{complex128}, \ldots).
-  \item \textbf{Stride}: Schrittweiten im Speicher, die Ansichten (Views) ohne Kopie ermÃ¶glichen.
+  \item \textbf{Stride}: Schrittweiten im Speicher, die Ansichten (Views) ohne Kopie ermöglichen.
 \end{itemize}
 
 \begin{lstlisting}[caption={Erstellen und Inspizieren von NumPy-Arrays}]
@@ -279,9 +279,9 @@ c = B.astype(np.complex128)
 \subsection{Vektorisierung und Broadcasting}
 \label{subsec:numpy-broadcast}
 
-Broadcasting ist eines der mÃ¤chtigsten Konzepte von NumPy: Operationen
+Broadcasting ist eines der mächtigsten Konzepte von NumPy: Operationen
 auf Arrays unterschiedlicher (aber kompatibler) Formen werden automatisch
-auf alle Elemente ausgedehnt, ohne unnÃ¶tige Datenkopien zu erstellen
+auf alle Elemente ausgedehnt, ohne unnötige Datenkopien zu erstellen
 \cite{vanderplas2016python}.
 
 \begin{lstlisting}[caption={Broadcasting: Elementweise Operationen}]
@@ -292,14 +292,14 @@ result = np.sin(freqs * x)                       # (5, 1000)
 # Keine Schleife noetig!
 \end{lstlisting}
 
-Abbildung~\ref{fig:numpy_overview} (links) zeigt das Ergebnis: FÃ¼nf
+Abbildung~\ref{fig:numpy_overview} (links) zeigt das Ergebnis: Fünf
 Sinusschwingungen unterschiedlicher Frequenz, berechnet durch eine
 einzige Broadcasting-Operation.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{numpy_overview}
-  \caption{NumPy-Ãœbersicht: Broadcasting (links), Zufallsverteilungen (Mitte),
+  \caption{NumPy-Übersicht: Broadcasting (links), Zufallsverteilungen (Mitte),
            Eigenvektoren/-werte (rechts).}
   \label{fig:numpy_overview}
 \end{figure}
@@ -307,9 +307,9 @@ einzige Broadcasting-Operation.
 \subsection{Mathematische Universalfunktionen (ufuncs)}
 \label{subsec:numpy-ufuncs}
 
-NumPy stellt Ã¼ber 60 \emph{Universal Functions} (ufuncs) bereit, die
-elementweise auf Arrays wirken, Broadcasting unterstÃ¼tzen und optionale
-Output-Arrays fÃ¼r speichereffizientes Rechnen akzeptieren:
+NumPy stellt über 60 \emph{Universal Functions} (ufuncs) bereit, die
+elementweise auf Arrays wirken, Broadcasting unterstützen und optionale
+Output-Arrays für speichereffizientes Rechnen akzeptieren:
 
 \begin{lstlisting}[caption={Ausgewaehlte NumPy-ufuncs}]
 x = np.linspace(-3, 3, 1000)
@@ -369,7 +369,7 @@ print("Loesung:", x)
 # Konditionszahl
 kappa = np.linalg.cond(A)
 
-# SingulÃ¤rwertzerlegung (SVD)
+# Singulärwertzerlegung (SVD)
 U, sigma, Vt = np.linalg.svd(A)
 A_reconstruct = U @ np.diag(sigma) @ Vt   # = A
 \end{lstlisting}
@@ -394,7 +394,7 @@ normal_data = rng.normal(loc=0, scale=1, size=(1000, 3))
 uniform_data = rng.uniform(low=0, high=1, size=5000)
 
 # Ganzzahlige Gleichverteilung
-dice = rng.integers(1, 7, size=10000)   # WÃ¼rfelsimulation
+dice = rng.integers(1, 7, size=10000)   # Würfelsimulation
 
 # Poisson-Prozess
 poisson = rng.poisson(lam=5, size=10000)
@@ -410,13 +410,13 @@ sample   = rng.choice(np.arange(50), size=10, replace=False)
 \end{lstlisting}
 
 Abbildung~\ref{fig:numpy_overview} (Mitte) vergleicht Histogramme der Normal-,
-Exponential- und Poisson-Verteilung fÃ¼r je 5\,000 Realisierungen.
+Exponential- und Poisson-Verteilung für je 5\,000 Realisierungen.
 
 \subsection{Fourier-Transformation mit NumPy}
 \label{subsec:numpy-fft}
 
 Fourier-Transformationen sind fundamental in der Signal- und Bildverarbeitung.
-NumPy enthÃ¤lt eine vollstÃ¤ndige FFT-Implementierung:
+NumPy enthält eine vollständige FFT-Implementierung:
 
 \begin{lstlisting}[caption={FFT mit NumPy}]
 fs = 1000.0                              # Abtastrate [Hz]
@@ -436,7 +436,7 @@ sig_reconstructed = np.fft.irfft(np.fft.rfft(sig))
 \end{lstlisting}
 
 Abbildung~\ref{fig:numpy_fft_poly} zeigt den Zeitverlauf (links) und das
-zugehÃ¶rige Frequenzspektrum (Mitte), in dem die Peaks bei 50\,Hz und
+zugehörige Frequenzspektrum (Mitte), in dem die Peaks bei 50\,Hz und
 120\,Hz klar erkennbar sind.
 
 \begin{figure}[H]
@@ -450,7 +450,7 @@ zugehÃ¶rige Frequenzspektrum (Mitte), in dem die Peaks bei 50\,Hz und
 \subsection{Polynome und Kurvenanpassung}
 \label{subsec:numpy-polyfit}
 
-\texttt{numpy.polyfit} und \texttt{numpy.poly1d} ermÃ¶glichen einfache
+\texttt{numpy.polyfit} und \texttt{numpy.poly1d} ermöglichen einfache
 Polynominterpolation und -regression:
 
 \begin{lstlisting}[caption={Polynomfit mit NumPy}]
@@ -468,29 +468,29 @@ for degree in [1, 3, 7]:
     print(f"Grad {degree}: R^2 = {r_squared:.4f}")
 \end{lstlisting}
 
-Abbildung~\ref{fig:numpy_fft_poly} (rechts) illustriert die Ãœberanpassung
+Abbildung~\ref{fig:numpy_fft_poly} (rechts) illustriert die Überanpassung
 (\emph{Overfitting}) bei Grad~7 im Vergleich zum theoretisch korrekten
 Grad-3-Polynom.
 
 \subsection{Einzigartiger Wert von NumPy}
 
 NumPy transformiert Python von einer interpretierten Skriptsprache zu
-einem leistungsfÃ¤higen numerischen Rechenwerkzeug. Durch Vektorisierung,
+einem leistungsfähigen numerischen Rechenwerkzeug. Durch Vektorisierung,
 Broadcasting und die enge Integration mit optimierten BLAS/LAPACK-Routinen
-werden Berechnungen, die in reinem Python Minuten benÃ¶tigen wÃ¼rden, in
-Millisekunden ausgefÃ¼hrt. Kein anderes Python-Konstrukt bietet diese
-Kombination aus \emph{AusdrucksstÃ¤rke}, \emph{Effizienz} und
-\emph{PortabilitÃ¤t}.
+werden Berechnungen, die in reinem Python Minuten benötigen würden, in
+Millisekunden ausgeführt. Kein anderes Python-Konstrukt bietet diese
+Kombination aus \emph{Ausdrucksstärke}, \emph{Effizienz} und
+\emph{Portabilität}.
 
 % ==============================================================
-\section{SciPy â€“ HÃ¶here Algorithmen fÃ¼r die Wissenschaft}
+\section{SciPy â€“ Höhere Algorithmen für die Wissenschaft}
 \label{sec:scipy}
 % ==============================================================
 
-\subsection{Ãœberblick und Architektur}
+\subsection{Überblick und Architektur}
 \label{subsec:scipy-overview}
 
-SciPy baut auf NumPy auf und ergÃ¤nzt es durch Ã¼ber 500 hochspezialisierte
+SciPy baut auf NumPy auf und ergänzt es durch über 500 hochspezialisierte
 Funktionen, die in thematischen Submodulen organisiert sind
 \cite{virtanen2020scipy}:
 
@@ -507,10 +507,10 @@ Funktionen, die in thematischen Submodulen organisiert sind
   \texttt{scipy.stats}      & Statistik         & Verteilungen, Hypothesentests, KDE \\
   \texttt{scipy.interpolate}& Interpolation     & Splines, RBF, Barycenterinterpolation \\
   \texttt{scipy.fft}        & Fourier-Analyse   & FFT, DCT, DST (schneller als NumPy-FFT) \\
-  \texttt{scipy.sparse}     & DÃ¼nnbesetzte Matrizen & CSR, CSC, Eigenwertsolver \\
-  \texttt{scipy.spatial}    & Geometrie         & KD-Tree, Voronoi, Delaunay, KonvexhÃ¼lle \\
+  \texttt{scipy.sparse}     & Dünnbesetzte Matrizen & CSR, CSC, Eigenwertsolver \\
+  \texttt{scipy.spatial}    & Geometrie         & KD-Tree, Voronoi, Delaunay, Konvexhülle \\
   \texttt{scipy.special}    & Spezialfunktionen & Bessel, Gamma, Legendre, elliptische Integrale \\
-  \texttt{scipy.ndimage}    & Bildverarbeitung  & Gauss-GlÃ¤ttung, Morphologie, Messungen \\
+  \texttt{scipy.ndimage}    & Bildverarbeitung  & Gauss-Glättung, Morphologie, Messungen \\
   \texttt{scipy.io}         & Datei-I/O         & MATLAB-, WAV-, ARFF-Dateien lesen/schreiben \\
   \bottomrule
   \caption{SciPy-Submodule und ihre Inhalte \cite{virtanen2020scipy}.}
@@ -521,8 +521,8 @@ Funktionen, die in thematischen Submodulen organisiert sind
 \subsection{Lineare Algebra mit SciPy}
 \label{subsec:scipy-linalg}
 
-\texttt{scipy.linalg} bietet gegenÃ¼ber \texttt{numpy.linalg} erweiterte
-Zerlegungsverfahren und ist fÃ¼r viele Matrixoperationen schneller, da
+\texttt{scipy.linalg} bietet gegenüber \texttt{numpy.linalg} erweiterte
+Zerlegungsverfahren und ist für viele Matrixoperationen schneller, da
 es gezielt auf LAPACK zugreift:
 
 \begin{lstlisting}[caption={Fortgeschrittene lineare Algebra mit SciPy}]
@@ -562,7 +562,7 @@ x_ls   = linalg.lstsq(A_rect, b_rect)[0]
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{scipy_linalg}
-  \caption{SciPy lineare Algebra: SingulÃ¤re Werte (links),
+  \caption{SciPy lineare Algebra: Singuläre Werte (links),
            Originalmatrix $|A|$ (Mitte), Rekonstruktion $|LU|$ (rechts).}
   \label{fig:scipy_linalg}
 \end{figure}
@@ -570,7 +570,7 @@ x_ls   = linalg.lstsq(A_rect, b_rect)[0]
 \subsection{Numerische Optimierung}
 \label{subsec:scipy-optimize}
 
-\texttt{scipy.optimize} ist ein vollstÃ¤ndiges Optimierungspaket fÃ¼r
+\texttt{scipy.optimize} ist ein vollständiges Optimierungspaket für
 ein- und mehrdimensionale Probleme mit und ohne Nebenbedingungen:
 
 \begin{lstlisting}[caption={Optimierung mit SciPy: BFGS, Trust-Region und Global}]
@@ -629,8 +629,8 @@ print(f"a = {popt[0]:.3f} +- {perr[0]:.3f}")
 \subsection{Numerische Integration und Differentialgleichungen}
 \label{subsec:scipy-integrate}
 
-\texttt{scipy.integrate} lÃ¶st sowohl bestimmte Integrale als auch
-gewÃ¶hnliche Differentialgleichungssysteme:
+\texttt{scipy.integrate} löst sowohl bestimmte Integrale als auch
+gewöhnliche Differentialgleichungssysteme:
 
 \begin{lstlisting}[caption={Integration und DGL-Loesung mit SciPy}]
 from scipy import integrate
@@ -687,19 +687,19 @@ sol_stiff = integrate.solve_ivp(
 \end{figure}
 
 Das Lotka-Volterra-Modell \cite{lotka1925elements} beschreibt die
-Wechselwirkung zwischen RÃ¤uber und Beute:
+Wechselwirkung zwischen Räuber und Beute:
 \begin{align}
   \frac{\mathrm{d}x}{\mathrm{d}t} &= \alpha x - \beta x y,\\
   \frac{\mathrm{d}y}{\mathrm{d}t} &= \delta x y - \gamma y,
 \end{align}
-wobei $x$ die Beutepopulation und $y$ die RÃ¤uberpopulation bezeichnet.
-Die periodischen LÃ¶sungsorbits im Phasenraum (Abb.~\ref{fig:scipy_integrate} rechts)
+wobei $x$ die Beutepopulation und $y$ die Räuberpopulation bezeichnet.
+Die periodischen Lösungsorbits im Phasenraum (Abb.~\ref{fig:scipy_integrate} rechts)
 sind ein klassisches Beispiel nichtlinearer Dynamik.
 
 \subsection{Signalverarbeitung}
 \label{subsec:scipy-signal}
 
-\texttt{scipy.signal} bietet eine vollstÃ¤ndige Signalverarbeitungs-Toolbox:
+\texttt{scipy.signal} bietet eine vollständige Signalverarbeitungs-Toolbox:
 
 \begin{lstlisting}[caption={Signalverarbeitung mit SciPy}]
 from scipy import signal
@@ -754,7 +754,7 @@ f_coh, Coh = signal.coherence(chirp_sig, y_lp, fs=fs, nperseg=256)
 \subsection{Wahrscheinlichkeitsstatistik}
 \label{subsec:scipy-stats}
 
-\texttt{scipy.stats} enthÃ¤lt Ã¼ber 100 kontinuierliche und diskrete
+\texttt{scipy.stats} enthält über 100 kontinuierliche und diskrete
 Wahrscheinlichkeitsverteilungen sowie eine Vielzahl statistischer Tests:
 
 \begin{lstlisting}[caption={Statistische Analysen mit SciPy}]
@@ -818,7 +818,7 @@ for dist in list_dists:
 \label{subsec:scipy-interp}
 
 \texttt{scipy.interpolate} bietet eine Vielzahl von Interpolationsverfahren
-fÃ¼r ein- und mehrdimensionale Daten:
+für ein- und mehrdimensionale Daten:
 
 \begin{lstlisting}[caption={Interpolation mit SciPy}]
 from scipy import interpolate
@@ -832,7 +832,7 @@ f_lin   = interpolate.interp1d(x_pts, y_pts, kind='linear')
 f_cubic = interpolate.interp1d(x_pts, y_pts, kind='cubic')
 f_quad  = interpolate.interp1d(x_pts, y_pts, kind='quadratic')
 
-# PCHIP: erhÃ¤lt Monotonie
+# PCHIP: erhält Monotonie
 f_pchip = interpolate.PchipInterpolator(x_pts, y_pts)
 
 # Baryzentrischer Lagrange-Interpolation
@@ -866,7 +866,7 @@ ZG = rbf(np.column_stack([XG.ravel(), YG.ravel()])).reshape(80, 80)
 \subsection{Spezielle Funktionen der mathematischen Physik}
 \label{subsec:scipy-special}
 
-\texttt{scipy.special} enthÃ¤lt Implementierungen der wichtigsten
+\texttt{scipy.special} enthält Implementierungen der wichtigsten
 Funktionen der mathematischen Physik, Ingenieurswissenschaften und
 Statistik \cite{abramowitz1972handbook}:
 
@@ -881,15 +881,15 @@ J0 = special.jv(0, x)   # Bessel 1. Art, Ordnung 0
 J1 = special.jv(1, x)
 Y0 = special.yv(0, x)   # Bessel 2. Art
 
-# SphÃ¤rische Besselfunktionen
+# Sphärische Besselfunktionen
 j0_s = special.spherical_jn(0, x)
 
-# Gamma-Funktion (Verallgemeinerung der FakultÃ¤t)
+# Gamma-Funktion (Verallgemeinerung der Fakultät)
 z  = np.linspace(0.1, 5, 400)
 Gz = special.gamma(z)
-Lz = special.loggamma(z)   # numerisch stabiler fÃ¼r grosse Argumente
+Lz = special.loggamma(z)   # numerisch stabiler für grosse Argumente
 
-# Legendre-Polynome (KugelflÃ¤chenfunktionen, Physik)
+# Legendre-Polynome (Kugelflächenfunktionen, Physik)
 for n in range(5):
     Pn = special.eval_legendre(n, np.linspace(-1, 1, 200))
 
@@ -897,13 +897,13 @@ for n in range(5):
 K = special.ellipk(0.5)    # vollstaendiges elliptisches Integral K(k)
 E = special.ellipe(0.5)    # vollstaendiges elliptisches Integral E(k)
 
-# Fehler-Funktion (WÃ¤rme-/Diffusionsgleichungen)
+# Fehler-Funktion (Wärme-/Diffusionsgleichungen)
 erf_vals = special.erf(np.linspace(-3, 3, 200))
 
 # Hypergeometrische Funktionen
 hyp2f1 = special.hyp2f1(1, 2, 3, 0.5)   # Gauss'sche hypergeom. Fkt.
 
-# SphÃ¤rische Harmonische Y_l^m
+# Sphärische Harmonische Y_l^m
 theta = np.pi/4; phi = np.pi/3
 Y11 = special.sph_harm(1, 1, phi, theta)
 \end{lstlisting}
@@ -926,17 +926,17 @@ SciPy stellt den direkten Zugang bereit.
 \subsection{Architektur und Designphilosophie}
 \label{subsec:mpl-arch}
 
-Matplotlib wurde 2003 von John D. Hunter entwickelt, um MATLAB-Ã¤hnliche
-Plotting-FÃ¤higkeiten in Python bereitzustellen \cite{hunter2007matplotlib}.
+Matplotlib wurde 2003 von John D. Hunter entwickelt, um MATLAB-ähnliche
+Plotting-Fähigkeiten in Python bereitzustellen \cite{hunter2007matplotlib}.
 Die Architektur ist in drei Schichten gegliedert:
 
 \begin{enumerate}
-  \item \textbf{Backend-Schicht}: ZustÃ¤ndig fÃ¼r das eigentliche Rendering
+  \item \textbf{Backend-Schicht}: Zuständig für das eigentliche Rendering
         (Agg, PDF, SVG, Qt5Agg, WebAgg, \ldots).
   \item \textbf{Artist-Schicht}: Alle sichtbaren Objekte (\texttt{Figure},
         \texttt{Axes}, \texttt{Line2D}, \texttt{Patch}, \ldots).
   \item \textbf{Scripting-Schicht} (\texttt{pyplot}): Zustandsbehaftete
-        Komfort-API, Ã¤hnlich MATLAB.
+        Komfort-API, ähnlich MATLAB.
 \end{enumerate}
 
 \begin{lstlisting}[caption={Objektbasierte Matplotlib-API (empfohlen)}]
@@ -1026,7 +1026,7 @@ plt.colorbar(im, ax=ax)
 \subsection{3D-Visualisierung}
 \label{subsec:mpl-3d}
 
-Das Toolkit \texttt{mpl\_toolkits.mplot3d} ermÃ¶glicht reichhaltige
+Das Toolkit \texttt{mpl\_toolkits.mplot3d} ermöglicht reichhaltige
 dreidimensionale Darstellungen:
 
 \begin{lstlisting}[caption={3D-Visualisierung mit Matplotlib}]
@@ -1036,7 +1036,7 @@ import numpy as np
 
 fig = plt.figure(figsize=(15, 5))
 
-# 3D-OberflÃ¤che
+# 3D-Oberfläche
 ax1 = fig.add_subplot(131, projection='3d')
 x = y = np.linspace(-3, 3, 80)
 X, Y = np.meshgrid(x, y)
@@ -1070,7 +1070,7 @@ ax3.scatter(xs, ys, zs, c=zs, cmap='RdYlBu', s=20, alpha=0.7)
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{matplotlib_3d}
-  \caption{Matplotlib 3D: OberflÃ¤che $\sin(\sqrt{x^2+y^2})$ (links),
+  \caption{Matplotlib 3D: Oberfläche $\sin(\sqrt{x^2+y^2})$ (links),
            3D-Helix als parametrische Kurve (Mitte), 3D-Scatter-
            Diagramm mit Farbkodierung (rechts).}
   \label{fig:matplotlib_3d}
@@ -1090,7 +1090,7 @@ Z = X * np.exp(-(X**2 + Y**2))
 
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 
-# GefÃ¼llter Konturplot
+# Gefüllter Konturplot
 cf = axes[0].contourf(X, Y, Z, levels=20, cmap='RdBu_r')
 axes[0].contour(X, Y, Z, levels=20, colors='k', linewidths=0.5)
 plt.colorbar(cf, ax=axes[0])
@@ -1113,14 +1113,14 @@ axes[2].streamplot(xs, ys, -YS, XS, color=speed_s,
   \centering
   \includegraphics[width=\textwidth]{matplotlib_contour_quiver}
   \caption{Matplotlib: Konturplot (links), Quiver-Vektorfeld (Mitte),
-           Stromlinienplot einer RotationsstrÃ¶mung (rechts).}
+           Stromlinienplot einer Rotationsströmung (rechts).}
   \label{fig:matplotlib_contour}
 \end{figure}
 
 \subsection{Annotationen und Unsicherheitsdarstellung}
 \label{subsec:mpl-annotations}
 
-FÃ¼r wissenschaftliche Publikationen unverzichtbar ist die Darstellung von
+Für wissenschaftliche Publikationen unverzichtbar ist die Darstellung von
 Messunsicherheiten und die gezielte Beschriftung relevanter Merkmale:
 
 \begin{lstlisting}[caption={Annotationen und Fehlerbaender in Matplotlib}]
@@ -1160,7 +1160,7 @@ axes[1].text(0.5, -0.8, r'$y = \sin(x)$',
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{matplotlib_annotations}
-  \caption{Matplotlib: $\pm\sigma$- und $\pm 2\sigma$-UnsicherheitsbÃ¤nder
+  \caption{Matplotlib: $\pm\sigma$- und $\pm 2\sigma$-Unsicherheitsbänder
            (links), Annotationen mit Pfeilen (rechts).}
   \label{fig:matplotlib_annot}
 \end{figure}
@@ -1168,9 +1168,9 @@ axes[1].text(0.5, -0.8, r'$y = \sin(x)$',
 \subsection{Farbpaletten (Colormaps)}
 \label{subsec:mpl-colormaps}
 
-Die Wahl der Farbpalette ist entscheidend fÃ¼r die korrekte Wahrnehmung
-wissenschaftlicher Daten. Matplotlib bietet Ã¼ber 80 Paletten, darunter
-perzeptuell gleichfÃ¶rmige Karten wie \texttt{viridis}, \texttt{plasma},
+Die Wahl der Farbpalette ist entscheidend für die korrekte Wahrnehmung
+wissenschaftlicher Daten. Matplotlib bietet über 80 Paletten, darunter
+perzeptuell gleichförmige Karten wie \texttt{viridis}, \texttt{plasma},
 \texttt{inferno} und \texttt{cividis} \cite{hunter2007matplotlib}:
 
 \begin{lstlisting}[caption={Colormaps und barrierefreie Farbgebung}]
@@ -1178,7 +1178,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
 
-# Alle verfÃ¼gbaren Colormaps anzeigen
+# Alle verfügbaren Colormaps anzeigen
 print(plt.colormaps())
 
 x = y = np.linspace(-np.pi, np.pi, 100)
@@ -1212,10 +1212,10 @@ custom_cmap = LinearSegmentedColormap.from_list(
 \subsection{Einzigartiger Wert von Matplotlib}
 
 Matplotlib ist das einzige Python-Visualisierungswerkzeug, das gleichzeitig
-\emph{vollstÃ¤ndige} Kontrolle Ã¼ber jeden Aspekt einer Grafik bietet und
-dabei in allen wissenschaftlichen Backends (PDF, SVG, EPS fÃ¼r Journale,
-PNG/TIFF fÃ¼r Poster) erstklassige Ausgaben erzeugt. Keine andere
-Bibliothek erreicht vergleichbare typografische QualitÃ¤t bei der
+\emph{vollständige} Kontrolle über jeden Aspekt einer Grafik bietet und
+dabei in allen wissenschaftlichen Backends (PDF, SVG, EPS für Journale,
+PNG/TIFF für Poster) erstklassige Ausgaben erzeugt. Keine andere
+Bibliothek erreicht vergleichbare typografische Qualität bei der
 Ausgabe von LaTeX-gerendertem Text und mathematischen Formeln
 (\texttt{usetex=True} oder \texttt{mathtext}).
 
@@ -1245,7 +1245,7 @@ def lorenz(t, state, sigma=10, rho=28, beta=8/3):
     x, y, z = state
     return [sigma*(y-x), x*(rho-z)-y, x*y-beta*z]
 
-# Numerische LÃ¶sung (SciPy solve_ivp)
+# Numerische Lösung (SciPy solve_ivp)
 sol = integrate.solve_ivp(
     lorenz, (0, 50), [1, 1, 1],
     t_eval=np.linspace(0, 50, 20000),
@@ -1269,19 +1269,19 @@ ax2.set_title('Leistungsspektrum (Lorenz $x$)')
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{pendulum_lorenz}
-  \caption{DGL-Anwendungen: GedÃ¤mpftes Pendel (links), Lorenz-Attraktor
+  \caption{DGL-Anwendungen: Gedämpftes Pendel (links), Lorenz-Attraktor
            (Mitte), Leistungsspektrum der $x$-Komponente (rechts).}
   \label{fig:pendulum_lorenz}
 \end{figure}
 
-\subsection{WÃ¤rmeleitungsgleichung: Spektralmethode}
+\subsection{Wärmeleitungsgleichung: Spektralmethode}
 \label{subsec:heat}
 
-Die eindimensionale WÃ¤rmeleitungsgleichung
+Die eindimensionale Wärmeleitungsgleichung
 \begin{equation}
   \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
 \end{equation}
-kann mit NumPys FFT exakt und effizient (spektrale Methode) gelÃ¶st werden:
+kann mit NumPys FFT exakt und effizient (spektrale Methode) gelöst werden:
 
 \begin{lstlisting}[caption={PDE-Loesung via FFT (NumPy)}]
 import numpy as np
@@ -1300,7 +1300,7 @@ for i in range(n_steps):
     if (i+1) % 100 == 0:
         snapshots.append(np.fft.irfft(u_hat))
 
-# Bildverarbeitung: Gauss-GlÃ¤ttung als WÃ¤rmediffusion
+# Bildverarbeitung: Gauss-Glättung als Wärmediffusion
 from scipy.ndimage import gaussian_filter
 image = np.zeros((100, 100))
 image[30:70, 30:70] = 1.0
@@ -1310,8 +1310,8 @@ blurred = gaussian_filter(image, sigma=5)
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{pde_image}
-  \caption{PDE und Bildverarbeitung: Gauss-GlÃ¤ttung mit $\sigma=0, 3, 8$
-           als Analogie zur WÃ¤rmeleitung.}
+  \caption{PDE und Bildverarbeitung: Gauss-Glättung mit $\sigma=0, 3, 8$
+           als Analogie zur Wärmeleitung.}
   \label{fig:pde_image}
 \end{figure}
 
@@ -1328,16 +1328,16 @@ blurred = gaussian_filter(image, sigma=5)
     FFT/Spektralanalyse    & \checkmark\checkmark & \checkmark\checkmark\checkmark & -- \\
     Lineare Algebra        & \checkmark\checkmark & \checkmark\checkmark\checkmark & -- \\
     Optimierung            & -- & \checkmark\checkmark\checkmark & -- \\
-    DGL-LÃ¶sung             & -- & \checkmark\checkmark\checkmark & -- \\
+    DGL-Lösung             & -- & \checkmark\checkmark\checkmark & -- \\
     Statistik              & \checkmark & \checkmark\checkmark\checkmark & -- \\
     Interpolation          & \checkmark & \checkmark\checkmark\checkmark & -- \\
     2D-Plots               & -- & -- & \checkmark\checkmark\checkmark \\
     3D-Plots               & -- & -- & \checkmark\checkmark \\
-    PublikationsqualitÃ¤t   & -- & -- & \checkmark\checkmark\checkmark \\
+    Publikationsqualität   & -- & -- & \checkmark\checkmark\checkmark \\
     \bottomrule
   \end{tabular}
-  \caption{StÃ¤rken (\checkmark\checkmark\checkmark = hauptverantwortlich,
-           \checkmark = unterstÃ¼tzend, -- = nicht primÃ¤r) der drei Bibliotheken
+  \caption{Stärken (\checkmark\checkmark\checkmark = hauptverantwortlich,
+           \checkmark = unterstützend, -- = nicht primär) der drei Bibliotheken
            in den wichtigsten wissenschaftlichen Aufgabenbereichen.}
   \label{tab:comparison}
 \end{table}
@@ -1361,11 +1361,11 @@ zwischen reinem Python und NumPy/SciPy:
     Matmul ($1000\times1000$) & ca. 300\,s & ca. 0.06 s & ${\approx}5\,000\times$ \\
     FFT ($2^{20}$ Punkte) & N/A (manuell) & ca. 120 ms & $\gg$ \\
     Sortierung ($10^6$) & ca. 800 ms & ca. 60 ms & ${\approx}13\times$ \\
-    ODE-LÃ¶sung (RK45) & ca. 60\,s & ca. 0.1 s & ${\approx}600\times$ \\
+    ODE-Lösung (RK45) & ca. 60\,s & ca. 0.1 s & ${\approx}600\times$ \\
     \bottomrule
   \end{tabular}
   \caption{Exemplarische Laufzeitvergleiche auf einem modernen Laptop
-           (Intel i7, 16\,GB RAM). Die Werte sind Richtwerte und kÃ¶nnen
+           (Intel i7, 16\,GB RAM). Die Werte sind Richtwerte und können
            je nach Hardware variieren \cite{vanderplas2016python}.}
   \label{tab:perf}
 \end{table}
@@ -1376,29 +1376,29 @@ zwischen reinem Python und NumPy/SciPy:
 % ==============================================================
 
 Die vorliegende Arbeit hat gezeigt, dass \textbf{NumPy}, \textbf{SciPy}
-und \textbf{Matplotlib} zusammen eine vollstÃ¤ndige, hochleistungsfÃ¤hige
-und ausdrucksstarke Infrastruktur fÃ¼r das wissenschaftliche Rechnen mit
-Python bilden. Ihre Bedeutung lÃ¤sst sich in drei Dimensionen fassen:
+und \textbf{Matplotlib} zusammen eine vollständige, hochleistungsfähige
+und ausdrucksstarke Infrastruktur für das wissenschaftliche Rechnen mit
+Python bilden. Ihre Bedeutung lässt sich in drei Dimensionen fassen:
 
 \begin{enumerate}
-  \item \textbf{AusdrucksstÃ¤rke}: Die Bibliotheken ermÃ¶glichen die
+  \item \textbf{Ausdrucksstärke}: Die Bibliotheken ermöglichen die
   Formulierung komplexer mathematischer Konzepte (Eigenwertzerlegungen,
   DGL-Systeme, Faltungsfilter, spezielle Funktionen) in wenigen, les-
   baren Python-Zeilen.
   
   \item \textbf{Effizienz}: Durch C/Fortran-Backends und Algorithmen
   aus jahrzehntelanger numerischer Forschung sind die Implementierungen
-  oft mit spezialisierter Forschungssoftware vergleichbar oder Ã¼berlegen.
+  oft mit spezialisierter Forschungssoftware vergleichbar oder überlegen.
   
-  \item \textbf{Ã–kosystem}: Als Bausteine von Pandas, scikit-learn,
+  \item \textbf{Ökosystem}: Als Bausteine von Pandas, scikit-learn,
   TensorFlow, Astropy, BioPython u.\,v.\,a. sind diese drei Bibliotheken
   die gemeinsame Sprache der wissenschaftlichen Python-Gemeinschaft.
 \end{enumerate}
 
-Die Anwendungsbeispiele â€“ vom Lorenz-Attraktor Ã¼ber die spektrale PDE-LÃ¶sung
-bis hin zu statistischen Tests und Signalfiltern â€“ belegen eindrÃ¼cklich, dass
+Die Anwendungsbeispiele â€“ vom Lorenz-Attraktor über die spektrale PDE-Lösung
+bis hin zu statistischen Tests und Signalfiltern â€“ belegen eindrücklich, dass
 das wissenschaftliche Arbeiten ohne das Trio NumPy/SciPy/Matplotlib in der
-heutigen Form kaum vorstellbar wÃ¤re. ZukÃ¼nftige Entwicklungen wie
+heutigen Form kaum vorstellbar wäre. Zukünftige Entwicklungen wie
 \texttt{CuPy} (GPU-NumPy), \texttt{JAX} (differenzierbares NumPy) und
 \texttt{SciPy.fft} (FFTW-Backend) werden auf demselben konzeptionellen
 Fundament aufbauen und zeigen, dass die hier dargelegten Prinzipien
@@ -1410,13 +1410,13 @@ zeitlos und zukunftssicher sind \cite{bradbury2018jax}.
 % ==============================================================
 
 Die vorstehende Analyse hat gezeigt, dass \textbf{NumPy}, \textbf{SciPy}
-und \textbf{Matplotlib} in ihrer heutigen Form bereits einen auÃŸerordentlichen
-Reifegrad besitzen. Gleichwohl ist das wissenschaftliche Python-Ã–kosystem
+und \textbf{Matplotlib} in ihrer heutigen Form bereits einen außerordentlichen
+Reifegrad besitzen. Gleichwohl ist das wissenschaftliche Python-Ökosystem
 kein statisches Gebilde, sondern ein dynamisches, sich kontinuierlich
 weiterentwickelndes System, das auf Herausforderungen der Praxis reagiert.
 Im Folgenden werden die bedeutendsten Entwicklungstendenzen und
-Zukunftsperspektiven ausfÃ¼hrlich dargelegt, die das wissenschaftliche
-Rechnen mit Python in den kommenden Jahren grundlegend prÃ¤gen werden.
+Zukunftsperspektiven ausführlich dargelegt, die das wissenschaftliche
+Rechnen mit Python in den kommenden Jahren grundlegend prägen werden.
 
 % ------------------------------------------------------------------
 \subsubsection{GPU-Beschleunigung und heterogenes Rechnen}
@@ -1426,13 +1426,13 @@ Rechnen mit Python in den kommenden Jahren grundlegend prÃ¤gen werden.
 Die rasante Verbreitung von Grafikprozessoren (GPUs) in Forschung und
 Industrie hat eine neue Klasse von NumPy-kompatiblen Bibliotheken
 hervorgebracht, die nahezu identische Schnittstellen bieten, die
-Berechnungen aber auf GPU-Hardware ausfÃ¼hren.
+Berechnungen aber auf GPU-Hardware ausführen.
 
-\textbf{CuPy} \cite{cupy2017} stellt eine direkte Drop-in-Ersetzung fÃ¼r
-NumPy auf NVIDIA-CUDA-Hardware bereit. FÃ¼r Matrizen der GrÃ¶ÃŸe
+\textbf{CuPy} \cite{cupy2017} stellt eine direkte Drop-in-Ersetzung für
+NumPy auf NVIDIA-CUDA-Hardware bereit. Für Matrizen der Größe
 $10\,000 \times 10\,000$ erreicht CuPy bei Matrixmultiplikationen
-Speedups von $100\times$ gegenÃ¼ber NumPy auf der CPU. Die Migration
-eines bestehenden NumPy-Codes erfordert in vielen FÃ¤llen lediglich den
+Speedups von $100\times$ gegenüber NumPy auf der CPU. Die Migration
+eines bestehenden NumPy-Codes erfordert in vielen Fällen lediglich den
 Austausch des Import-Statements:
 
 \begin{lstlisting}[caption={CuPy als Drop-in-Ersatz fuer NumPy}]
@@ -1444,19 +1444,19 @@ B = np.linalg.svd(A)   # laeuft auf GPU
 \end{lstlisting}
 
 \textbf{ROCm/HIP} (AMD) und \textbf{Metal} (Apple Silicon) erweitern
-den Horizont Ã¼ber NVIDIA-Hardware hinaus. Bibliotheken wie
+den Horizont über NVIDIA-Hardware hinaus. Bibliotheken wie
 \texttt{PyOpenCL} und \texttt{ArrayFire} erlauben hardwareagnostisches
 GPU-Computing. Mittelfristig ist zu erwarten, dass SciPy und NumPy selbst
-optionale GPU-Backends Ã¼ber das standardisierte Array-API-Protokoll
-(siehe Abschnitt~\ref{subsubsec:array-api}) unterstÃ¼tzen werden.
+optionale GPU-Backends über das standardisierte Array-API-Protokoll
+(siehe Abschnitt~\ref{subsubsec:array-api}) unterstützen werden.
 
 Neben der GPU-Beschleunigung gewinnt auch das sogenannte \emph{heterogene
 Rechnen} an Bedeutung: Rechenaufgaben werden dabei dynamisch auf die
-optimale Hardwareeinheit verteilt â€“ CPU-Kerne fÃ¼r seriell-sequentielle
-Teilprobleme, GPUs fÃ¼r massiv-parallele Matrix- und Tensoroperationen,
-und spezialisierte Beschleuniger wie FPGAs oder TPUs fÃ¼r besonders
-hÃ¤ufig wiederkehrende Routinen. Die FÃ¤higkeit von NumPy, als gemeinsame
-konzeptuelle Sprache fÃ¼r all diese Plattformen zu dienen, macht das Array
+optimale Hardwareeinheit verteilt â€“ CPU-Kerne für seriell-sequentielle
+Teilprobleme, GPUs für massiv-parallele Matrix- und Tensoroperationen,
+und spezialisierte Beschleuniger wie FPGAs oder TPUs für besonders
+häufig wiederkehrende Routinen. Die Fähigkeit von NumPy, als gemeinsame
+konzeptuelle Sprache für all diese Plattformen zu dienen, macht das Array
 zu einem universellen Abstrakt ionsinstrument.
 
 % ------------------------------------------------------------------
@@ -1466,22 +1466,22 @@ zu einem universellen Abstrakt ionsinstrument.
 
 \textbf{JAX} \cite{bradbury2018jax} von Google DeepMind ist die bislang
 weitreichendste Erweiterung des NumPy-Paradigmas. Es kombiniert vier
-transformative FÃ¤higkeiten in einer einzigen Bibliothek:
+transformative Fähigkeiten in einer einzigen Bibliothek:
 
 \begin{enumerate}
   \item \textbf{Automatische Differentiation (\texttt{jax.grad})}: Jede
     in NumPy-Stil geschriebene Funktion kann automatisch abgeleitet
-    werden â€“ sowohl VorwÃ¤rts- als auch RÃ¼ckwÃ¤rtsmodus. Dies ermÃ¶glicht
+    werden â€“ sowohl Vorwärts- als auch Rückwärtsmodus. Dies ermöglicht
     die Implementierung von Gradientenabstiegsverfahren, adjungierten
-    Methoden fÃ¼r PDE-Optimierung und SensitivitÃ¤tsanalysen, ohne dass
-    analytische Ableitungen manuell hergeleitet werden mÃ¼ssen.
+    Methoden für PDE-Optimierung und Sensitivitätsanalysen, ohne dass
+    analytische Ableitungen manuell hergeleitet werden müssen.
 
   \item \textbf{JIT-Kompilierung (\texttt{jax.jit})}: Funktionen werden
-    bei erstem Aufruf durch die XLA-Compiler-Pipeline Ã¼bersetzt und
-    erreichen dadurch AusfÃ¼hrungsgeschwindigkeiten nahe am theoretischen
+    bei erstem Aufruf durch die XLA-Compiler-Pipeline übersetzt und
+    erreichen dadurch Ausführungsgeschwindigkeiten nahe am theoretischen
     Hardware-Limit.
 
-  \item \textbf{Vektorisierung (\texttt{jax.vmap})}: Eine fÃ¼r ein einzelnes
+  \item \textbf{Vektorisierung (\texttt{jax.vmap})}: Eine für ein einzelnes
     Element geschriebene Funktion wird automatisch auf ganze Batches von
     Eingaben vektorisiert, ohne explizite Schleifen.
 
@@ -1515,11 +1515,11 @@ def simulation_step(q, p, dt=0.01):
 batched_step = jax.vmap(simulation_step)
 \end{lstlisting}
 
-Die Konsequenz dieser FÃ¤higkeiten ist fundamental: Physikalische Modelle,
-die zuvor nur als \emph{Forward}-Simulationen ausgefÃ¼hrt werden konnten,
+Die Konsequenz dieser Fähigkeiten ist fundamental: Physikalische Modelle,
+die zuvor nur als \emph{Forward}-Simulationen ausgeführt werden konnten,
 werden durch JAX zu differenzierbaren Programmen, deren Parameter durch
-gradientenbasierte Optimierungsverfahren kalibriert werden kÃ¶nnen. Dies
-Ã¶ffnet die TÃ¼r zu einem neuen Paradigma des \emph{Scientific Machine
+gradientenbasierte Optimierungsverfahren kalibriert werden können. Dies
+öffnet die Tür zu einem neuen Paradigma des \emph{Scientific Machine
 Learning}, das numerische Simulation und maschinelles Lernen organisch
 verbindet.
 
@@ -1533,27 +1533,27 @@ Lernen und numerischer Mathematik ist das Konzept der
 \emph{Physics-Informed Neural Networks} (PINNs). Dabei werden neuronale
 Netze nicht nur durch Daten, sondern auch durch die Residuen bekannter
 partieller Differentialgleichungen (PDEs) trainiert. Das Netz approximiert
-die LÃ¶sung der PDE direkt als Funktion der Raumzeit-Koordinaten.
+die Lösung der PDE direkt als Funktion der Raumzeit-Koordinaten.
 
 NumPy und SciPy spielen bei PINNs eine doppelte Rolle: Erstens als
-Werkzeuge zur Datengenerierung, Gittererstellung und ReferenzlÃ¶sung;
-zweitens als Backend fÃ¼r Bibliotheken wie \texttt{DeepXDE} oder
+Werkzeuge zur Datengenerierung, Gittererstellung und Referenzlösung;
+zweitens als Backend für Bibliotheken wie \texttt{DeepXDE} oder
 \texttt{NeuralPDE.jl}, die auf NumPy-kompatiblen Array-Operationen aufbauen.
 
-Die Navier-Stokes-Gleichungen, SchrÃ¶dinger-Gleichungen, Diffusionsgleichungen
+Die Navier-Stokes-Gleichungen, Schrödinger-Gleichungen, Diffusionsgleichungen
 und Maxwell-Gleichungen werden derzeit aktiv als PINN-Benchmarks untersucht.
-ZukÃ¼nftig ist zu erwarten, dass SciPy-LÃ¶ser als Kollokationspunktgeneratoren
-und ReferenzlÃ¶ser fÃ¼r den Trainingsprozess von PINNs dienen werden, wÃ¤hrend
-Matplotlib zur Visualisierung der gelernten LÃ¶sungsfelder unverzichtbar bleibt.
+Zukünftig ist zu erwarten, dass SciPy-Löser als Kollokationspunktgeneratoren
+und Referenzlöser für den Trainingsprozess von PINNs dienen werden, während
+Matplotlib zur Visualisierung der gelernten Lösungsfelder unverzichtbar bleibt.
 
 % ------------------------------------------------------------------
-\subsubsection{Numba und Cython: Just-in-Time-Kompilierung fÃ¼r Python}
+\subsubsection{Numba und Cython: Just-in-Time-Kompilierung für Python}
 \label{subsubsec:numba}
 % ------------------------------------------------------------------
 
-FÃ¼r Algorithmen, die sich nicht vollstÃ¤ndig vektorisieren lassen und
+Für Algorithmen, die sich nicht vollständig vektorisieren lassen und
 explizite Schleifen erfordern, bieten \textbf{Numba} und \textbf{Cython}
-komplementÃ¤re AnsÃ¤tze zur Beschleunigung:
+komplementäre Ansätze zur Beschleunigung:
 
 \begin{lstlisting}[caption={Numba: JIT-Kompilierung von Python-Schleifen}]
 from numba import njit, prange
@@ -1573,28 +1573,28 @@ def stencil_diffusion(u, alpha, dt, dx):
 
 Numba kompiliert die mit \texttt{@njit} dekorierten Funktionen bei erstem
 Aufruf durch LLVM zu nativem Maschinencode. Schleifen, die in reinem Python
-um den Faktor $1\,000$ langsamer wÃ¤ren als die entsprechende C-Implementierung,
+um den Faktor $1\,000$ langsamer wären als die entsprechende C-Implementierung,
 erreichen nach Numba-Kompilierung nahezu identische Laufzeiten. Dies ist
-besonders relevant fÃ¼r iterative PDE-LÃ¶ser, Graphalgorithmen und
-Monte-Carlo-Simulationen, bei denen Broadcasting kein vollstÃ¤ndiges
-VektorisierungsÃ¤quivalent ermÃ¶glicht.
+besonders relevant für iterative PDE-Löser, Graphalgorithmen und
+Monte-Carlo-Simulationen, bei denen Broadcasting kein vollständiges
+Vektorisierungsäquivalent ermöglicht.
 
-Mittelfristig werden Numba und NumPy noch stÃ¤rker integriert werden:
-Das \textbf{NumPy Enhancement Proposal 47 (NEP~47)} schlÃ¤gt eine
+Mittelfristig werden Numba und NumPy noch stärker integriert werden:
+Das \textbf{NumPy Enhancement Proposal 47 (NEP~47)} schlägt eine
 standardisierte \texttt{\_\_array\_namespace\_\_}-Schnittstelle vor, die
-Numba-JIT-kompilierte Funktionen transparent Ã¼ber beliebige Array-Backends
-hinweg aufÃ¼hrbar macht.
+Numba-JIT-kompilierte Funktionen transparent über beliebige Array-Backends
+hinweg auführbar macht.
 
 % ------------------------------------------------------------------
 \subsubsection{Paralleles und verteiltes Rechnen: Dask und Ray}
 \label{subsubsec:dask}
 % ------------------------------------------------------------------
 
-Sobald DatensÃ¤tze den verfÃ¼gbaren Arbeitsspeicher Ã¼berschreiten oder
+Sobald Datensätze den verfügbaren Arbeitsspeicher überschreiten oder
 Berechnungen auf Cluster-Infrastrukturen verteilt werden sollen, greifen
-Wissenschaftler zunehmend auf \textbf{Dask} zurÃ¼ck. Dask stellt verteilte
-Ã„quivalente zu NumPy-Arrays und Pandas-DataFrames bereit, wobei die
-Berechnungen als azyklische AbhÃ¤ngigkeitsgraphen (DAGs) modelliert und
+Wissenschaftler zunehmend auf \textbf{Dask} zurück. Dask stellt verteilte
+Äquivalente zu NumPy-Arrays und Pandas-DataFrames bereit, wobei die
+Berechnungen als azyklische Abhängigkeitsgraphen (DAGs) modelliert und
 lazy ausgewertet werden:
 
 \begin{lstlisting}[caption={Dask: Out-of-Core-NumPy fuer gro\ss{}e Datensaetze}]
@@ -1611,28 +1611,28 @@ result = (x * x).mean(axis=0)
 result_computed = result.compute()
 \end{lstlisting}
 
-\textbf{Ray} wiederum ermÃ¶glicht die feingranulare Verteilung beliebiger
+\textbf{Ray} wiederum ermöglicht die feingranulare Verteilung beliebiger
 Python-Funktionen auf Cluster-Knoten und bietet mit \texttt{Ray Tune}
 eine skalierbare Hyperparameter-Optimierungsplattform, die intern auf
-SciPy-Optimierungsroutinen zurÃ¼ckgreift.
+SciPy-Optimierungsroutinen zurückgreift.
 
 \textbf{Xarray} erweitert NumPy-Arrays um benannte Dimensionen und
-Koordinaten (Ã¤hnlich wie NetCDF-Dateien) und ist zur Standardbibliothek
+Koordinaten (ähnlich wie NetCDF-Dateien) und ist zur Standardbibliothek
 der Klima- und Ozeanografiewissenschaften geworden. In Verbindung mit
-Dask ermÃ¶glicht Xarray die Verarbeitung von petabytegroÃŸen Klimasimulationsdaten.
+Dask ermöglicht Xarray die Verarbeitung von petabytegroßen Klimasimulationsdaten.
 
 Zu erwarten ist, dass diese Out-of-Core- und Distributed-Computing-
-LÃ¶sungen zunehmend direkt in SciPy und NumPy integriert werden, sodass
-der Ãœbergang zwischen lokalem und verteiltem Rechnen fÃ¼r den Endanwender
+Lösungen zunehmend direkt in SciPy und NumPy integriert werden, sodass
+der Übergang zwischen lokalem und verteiltem Rechnen für den Endanwender
 transparent und reibungslos gestaltet wird.
 
 % ------------------------------------------------------------------
-\subsubsection{Das Array-API-Protokoll und Bibliotheks-InteroperabilitÃ¤t}
+\subsubsection{Das Array-API-Protokoll und Bibliotheks-Interoperabilität}
 \label{subsubsec:array-api}
 % ------------------------------------------------------------------
 
 Eines der ambitioniertesten aktuellen Vorhaben im Scientific-Python-
-Ã–kosystem ist die Standardisierung einer einheitlichen \emph{Array-API},
+Ökosystem ist die Standardisierung einer einheitlichen \emph{Array-API},
 die von der Python-Datenwissenschafts-Community unter dem Dach der
 \emph{Python Array API Standard}-Initiative (ehemals NEP~47) vorangetrieben
 wird.
@@ -1641,8 +1641,8 @@ Das Ziel ist es, eine minimale, aber ausreichend reichhaltige Menge von
 Array-Operationen zu definieren, die von allen bedeutenden Array-
 Bibliotheken â€“ NumPy, CuPy, JAX, PyTorch, TensorFlow, Dask, cuDF â€“
 implementiert werden. Bibliotheken wie SciPy, die auf dieser Schnittstelle
-aufbauen, kÃ¶nnten dann transparent auf allen unterstÃ¼tzten Backends
-ausgefÃ¼hrt werden, ohne den Quellcode zu Ã¤ndern:
+aufbauen, könnten dann transparent auf allen unterstützten Backends
+ausgeführt werden, ohne den Quellcode zu ändern:
 
 \begin{lstlisting}[caption={Array-API-kompatible SciPy-Funktion (Zukunftsvision)}]
 # Hypothetisches Beispiel fuer Array-API-transparentes SciPy
@@ -1659,10 +1659,10 @@ A_gpu = cp.random.normal(size=(1000, 1000))
 U_gpu, s_gpu, Vt_gpu = la.svd(A_gpu)  # Ausfuehrung auf GPU
 \end{lstlisting}
 
-SciPy hat mit Version~1.11 begonnen, Array-API-KompatibilitÃ¤t in
-ausgewÃ¤hlten Submodulen (\texttt{scipy.special}, \texttt{scipy.fft})
+SciPy hat mit Version~1.11 begonnen, Array-API-Kompatibilität in
+ausgewählten Submodulen (\texttt{scipy.special}, \texttt{scipy.fft})
 zu implementieren, und plant die schrittweise Erweiterung auf alle
-Kernbereiche. Dies hat das Potenzial, SciPy zu einem vollstÃ¤ndig
+Kernbereiche. Dies hat das Potenzial, SciPy zu einem vollständig
 hardwareagnostischen wissenschaftlichen Algorithmen-Stack zu machen.
 
 % ------------------------------------------------------------------
@@ -1673,7 +1673,7 @@ hardwareagnostischen wissenschaftlichen Algorithmen-Stack zu machen.
 Die Integration symbolischer Mathematik (durch \textbf{SymPy}) mit
 numerischer Berechnung (durch NumPy und SciPy) hat sich zu einem eigenen
 Forschungsfeld entwickelt. \textbf{Lambdify} und \textbf{codegen} in SymPy
-Ã¼berfÃ¼hren symbolisch hergeleitete AusdrÃ¼cke in numerisch auswertbaren
+überführen symbolisch hergeleitete Ausdrücke in numerisch auswertbaren
 Python-, NumPy- oder Fortran-Code:
 
 \begin{lstlisting}[caption={SymPy + NumPy: Symbolisch-numerische Pipeline}]
@@ -1697,11 +1697,11 @@ jacobian_num = lambdify([x, t], J, modules='numpy')
 J_values = jacobian_num(np.linspace(0, 1, 100), 0.5)
 \end{lstlisting}
 
-ZukÃ¼nftige Entwicklungen werden die Symbiose von SymPy und SciPy
-vertiefen: Automatisch generierte Jacobimatrizen fÃ¼r SciPy-Optimierer,
-symbolisch hergeleitete Vorkonditionierer fÃ¼r lineare Gleichungssysteme
-und analytisch bekannte Integrationskerne fÃ¼r numerische Quadratur sind
-nur einige der vielversprechenden AnknÃ¼pfungspunkte.
+Zukünftige Entwicklungen werden die Symbiose von SymPy und SciPy
+vertiefen: Automatisch generierte Jacobimatrizen für SciPy-Optimierer,
+symbolisch hergeleitete Vorkonditionierer für lineare Gleichungssysteme
+und analytisch bekannte Integrationskerne für numerische Quadratur sind
+nur einige der vielversprechenden Anknüpfungspunkte.
 
 % ------------------------------------------------------------------
 \subsubsection{Interaktive und webbasierte Visualisierung}
@@ -1717,38 +1717,38 @@ oder mit ihr interagieren:
 
 \begin{description}
   \item[\textbf{Plotly}] bietet deklarative, interaktive Grafiken mit
-    Zoom, Hover-Tooltips und verknÃ¼pften Ansichten. Die Plotly-Express-API
-    folgt eng der Matplotlib-Semantik und ermÃ¶glicht die Migration
+    Zoom, Hover-Tooltips und verknüpften Ansichten. Die Plotly-Express-API
+    folgt eng der Matplotlib-Semantik und ermöglicht die Migration
     bestehender Matplotlib-Workflows.
 
   \item[\textbf{Bokeh}] ist auf datengetriebene Webanwendungen und
-    Streaming-Daten optimiert und ermÃ¶glicht die Einbettung wissenschaft-
+    Streaming-Daten optimiert und ermöglicht die Einbettung wissenschaft-
     licher Visualisierungen in HTML-Seiten ohne serverseitige Infrastruktur.
 
-  \item[\textbf{HoloViews / HvPlot}] abstrahiert Ã¼ber verschiedene
+  \item[\textbf{HoloViews / HvPlot}] abstrahiert über verschiedene
     Visualisierungs-Backends (Matplotlib, Bokeh, Plotly) und erlaubt
     die deklarative Beschreibung von Datensichten, deren konkrete
-    Darstellung vom gewÃ¤hlten Backend abhÃ¤ngt.
+    Darstellung vom gewählten Backend abhängt.
 
-  \item[\textbf{ipywidgets + Matplotlib}] ermÃ¶glichen vollstÃ¤ndig
+  \item[\textbf{ipywidgets + Matplotlib}] ermöglichen vollständig
     interaktive Parameterstudien in Jupyter-Notebooks: Schieberegler,
-    Dropdown-MenÃ¼s und Textfelder steuern direkt die Parameter von
+    Dropdown-Menüs und Textfelder steuern direkt die Parameter von
     NumPy/SciPy-Berechnungen und aktualisieren die Matplotlib-Darstellung
     in Echtzeit.
 
   \item[\textbf{WebAssembly / Pyodide}] transportiert den gesamten
-    Scientific-Python-Stack â€“ einschlieÃŸlich NumPy, SciPy und Matplotlib
+    Scientific-Python-Stack â€“ einschließlich NumPy, SciPy und Matplotlib
     â€“ direkt in den Webbrowser. Bildungsinstitutionen berichten bereits
-    von vollstÃ¤ndig serverlos betriebenen interaktiven Lern-Umgebungen.
+    von vollständig serverlos betriebenen interaktiven Lern-Umgebungen.
 \end{description}
 
 Matplotlib selbst antwortet auf diese Entwicklungen durch erweiterte
-Backend-UnterstÃ¼tzung (\texttt{ipympl}/\texttt{widget}-Backend fÃ¼r
+Backend-Unterstützung (\texttt{ipympl}/\texttt{widget}-Backend für
 Jupyter) und ein zunehmend feingranulares Artist-Modell, das programmatische
 Animationen und interaktive Elemente erleichtert. Zu erwarten ist, dass
-Matplotlib als Rendering-Grundlage fÃ¼r hÃ¶herschichtige interaktive
-Frameworks bestehen bleibt, wÃ¤hrend die direkte Nutzung fÃ¼r statische
-Publikationsgrafiken weiterhin unÃ¼bertroffen ist.
+Matplotlib als Rendering-Grundlage für höherschichtige interaktive
+Frameworks bestehen bleibt, während die direkte Nutzung für statische
+Publikationsgrafiken weiterhin unübertroffen ist.
 
 % ------------------------------------------------------------------
 \subsubsection{Wissenschaftliches maschinelles Lernen und datengetriebene
@@ -1762,7 +1762,7 @@ das unter den Bezeichnungen \emph{Scientific Machine Learning} (SciML)
 oder \emph{AI for Science} bekannt ist. NumPy, SciPy und Matplotlib
 nehmen dabei eine Doppelrolle ein: als Werkzeuge zur Datenerzeugung und
 -vorverarbeitung einerseits, und als Referenzimplementierungen, gegen
-die lernbasierte AnsÃ¤tze validiert werden, andererseits.
+die lernbasierte Ansätze validiert werden, andererseits.
 
 Konkrete Entwicklungsfelder umfassen:
 
@@ -1775,20 +1775,20 @@ Konkrete Entwicklungsfelder umfassen:
     ohne a-priori-Kenntnis des Modells.
 
   \item \textbf{Operatorlernen (DeepONet, Fourier Neural Operator)}:
-    Neuronale Netze, die anstelle von Funktionswerten ganze LÃ¶sungsoperatoren
-    von PDEs lernen. SciPy-LÃ¶ser erzeugen die Trainingsdaten; die gelernten
-    Operatoren kÃ¶nnen anschlieÃŸend Vorhersagen $10^4$-mal schneller als
-    traditionelle LÃ¶ser liefern.
+    Neuronale Netze, die anstelle von Funktionswerten ganze Lösungsoperatoren
+    von PDEs lernen. SciPy-Löser erzeugen die Trainingsdaten; die gelernten
+    Operatoren können anschließend Vorhersagen $10^4$-mal schneller als
+    traditionelle Löser liefern.
 
   \item \textbf{Bayesianische Optimierung mit SciPy als Unterbau}:
     Bibliotheken wie \texttt{scikit-optimize} und \texttt{GPyOpt}
-    verwenden \texttt{scipy.optimize} fÃ¼r interne Akquisitionsfunktions-
-    Optimierungen und \texttt{scipy.stats} fÃ¼r die Beschreibung von
+    verwenden \texttt{scipy.optimize} für interne Akquisitionsfunktions-
+    Optimierungen und \texttt{scipy.stats} für die Beschreibung von
     Prioris.
 
   \item \textbf{Normalizing Flows und differenzierbare Simulationen}:
     NumPy-Daten treiben das Training von Wahrscheinlichkeitsdichte-
-    AbschÃ¤tzungsmodellen in der Astro- und Teilchenphysik.
+    Abschätzungsmodellen in der Astro- und Teilchenphysik.
 \end{itemize}
 
 % ------------------------------------------------------------------
@@ -1796,7 +1796,7 @@ Konkrete Entwicklungsfelder umfassen:
 \label{subsubsec:fair}
 % ------------------------------------------------------------------
 
-Mit der wachsenden VerÃ¶ffentlichungspflicht fÃ¼r Forschungsdaten und
+Mit der wachsenden Veröffentlichungspflicht für Forschungsdaten und
 -code gewinnen Fragen der Reproduzierbarkeit wissenschaftlicher Ergebnisse
 an institutioneller Bedeutung \cite{donoho2010invitation, peng2011reproducible}.
 NumPy, SciPy und Matplotlib reagieren auf diese Herausforderung durch
@@ -1805,69 +1805,69 @@ mehrere strukturelle Eigenschaften:
 \begin{description}
   \item[\textbf{Semantische Versionierung und Deprecation-Policies}]:
     Alle drei Bibliotheken folgen strikten Versionierungsrichtlinien, die
-    mehrjÃ¤hrige RÃ¼ckwÃ¤rtskompatibilitÃ¤t gewÃ¤hrleisten. Wissenschaftliche
-    Paper, deren Berechnungen auf NumPy~1.x basieren, kÃ¶nnen durch
+    mehrjährige Rückwärtskompatibilität gewährleisten. Wissenschaftliche
+    Paper, deren Berechnungen auf NumPy~1.x basieren, können durch
     \texttt{pip install numpy==1.26} reproduziert werden.
 
   \item[\textbf{Zitierbarkeit}]: Mit den DOI-verlinkten Nature-Publikationen
     \cite{harris2020array, virtanen2020scipy, hunter2007matplotlib} sind
-    alle drei Bibliotheken vollstÃ¤ndig zitierfÃ¤hig, ein wichtiger Meilenstein
-    fÃ¼r ihre Anerkennung als Forschungsinfrastruktur.
+    alle drei Bibliotheken vollständig zitierfähig, ein wichtiger Meilenstein
+    für ihre Anerkennung als Forschungsinfrastruktur.
 
   \item[\textbf{Jupyter und nbformat}]: Das standardisierte Notebook-Format
-    ermÃ¶glicht die vollstÃ¤ndige Einbettung von NumPy/SciPy/Matplotlib-
-    basierten Analysen in reproduzierbare, ausfÃ¼hrbare Dokumente. Mit
-    \texttt{nbconvert} und \texttt{papermill} kÃ¶nnen diese automatisiert
-    ausgefÃ¼hrt werden.
+    ermöglicht die vollständige Einbettung von NumPy/SciPy/Matplotlib-
+    basierten Analysen in reproduzierbare, ausführbare Dokumente. Mit
+    \texttt{nbconvert} und \texttt{papermill} können diese automatisiert
+    ausgeführt werden.
 
   \item[\textbf{FAIR-kompatible Datenformate}]: \texttt{scipy.io} liest und
     schreibt HDF5- und NetCDF-Dateien, die den FAIR-Datenprinzipien
-    (Findable, Accessible, Interoperable, Reusable) genÃ¼gen.
-    ErgÃ¤nzende Bibliotheken wie \texttt{zarr} und \texttt{h5py} bauen
+    (Findable, Accessible, Interoperable, Reusable) genügen.
+    Ergänzende Bibliotheken wie \texttt{zarr} und \texttt{h5py} bauen
     direkt auf NumPy-Arrays auf.
 \end{description}
 
-ZukÃ¼nftige Entwicklungen werden die Integration mit dem verbreiteten
+Zukünftige Entwicklungen werden die Integration mit dem verbreiteten
 Daten-Repository-Dienst \textbf{Zenodo} und dem Open-Science-Framework
-\textbf{OSF} stÃ¤rken, sodass NumPy/SciPy-Analysen direkt aus dem Code
-heraus mit persistenten Identifikatoren archiviert werden kÃ¶nnen.
+\textbf{OSF} stärken, sodass NumPy/SciPy-Analysen direkt aus dem Code
+heraus mit persistenten Identifikatoren archiviert werden können.
 
 % ------------------------------------------------------------------
 \subsubsection{Hochleistungsrechnen und Exascale-Computing}
 \label{subsubsec:hpc}
 % ------------------------------------------------------------------
 
-Die Ã„ra des \emph{Exascale-Computing} â€“ mit Systemen, die mehr als
-$10^{18}$ Gleitkommaoperationen pro Sekunde ausfÃ¼hren â€“ stellt das
-wissenschaftliche Python-Ã–kosystem vor neuartige Herausforderungen.
+Die Ära des \emph{Exascale-Computing} â€“ mit Systemen, die mehr als
+$10^{18}$ Gleitkommaoperationen pro Sekunde ausführen â€“ stellt das
+wissenschaftliche Python-Ökosystem vor neuartige Herausforderungen.
 Auf Maschinen mit Hunderttausenden von CPU-Kernen und Tausenden von
-GPU-Knoten sind herkÃ¶mmliche NumPy-Arrays inadequat. Dennoch bilden sie
-die konzeptuelle Grundlage fÃ¼r eine neue Generation von HPC-Abstraktionen:
+GPU-Knoten sind herkömmliche NumPy-Arrays inadequat. Dennoch bilden sie
+die konzeptuelle Grundlage für eine neue Generation von HPC-Abstraktionen:
 
 \begin{itemize}
   \item \textbf{mpi4py + NumPy}: Die Pythonbindung des Message Passing
-    Interface (MPI) Ã¼bertrÃ¤gt NumPy-Array-Segmente direkt zwischen
-    Rechenknoten, ohne Datenkopien. NumPy-basierter Code lÃ¤uft dadurch
+    Interface (MPI) überträgt NumPy-Array-Segmente direkt zwischen
+    Rechenknoten, ohne Datenkopien. NumPy-basierter Code läuft dadurch
     auf Supercomputern mit wenigen hundert Zeilen Boilerplate.
 
-  \item \textbf{PETSc / SLEPc Python-Interfaces}: Ãœber \texttt{petsc4py}
-    sind die weltfÃ¼hrenden Bibliotheken fÃ¼r skalierbare lineare Algebra
+  \item \textbf{PETSc / SLEPc Python-Interfaces}: Über \texttt{petsc4py}
+    sind die weltführenden Bibliotheken für skalierbare lineare Algebra
     und Eigenwertprobleme aus Python nutzbar â€“ mit NumPy-Arrays als
-    Daten-Ãœbergabeschnittstelle.
+    Daten-Übergabeschnittstelle.
 
-  \item \textbf{FEniCSx und Firedrake}: Finite-Elemente-Frameworks fÃ¼r
-    groÃŸskalige PDE-Simulationen integrieren NumPy/SciPy als Postprocessing-
-    und Visualisierungs-Backend Ã¼ber \texttt{pyvista} und Matplotlib.
+  \item \textbf{FEniCSx und Firedrake}: Finite-Elemente-Frameworks für
+    großskalige PDE-Simulationen integrieren NumPy/SciPy als Postprocessing-
+    und Visualisierungs-Backend über \texttt{pyvista} und Matplotlib.
 
-  \item \textbf{PyFR und OpenFOAM Python-Bindings}: StrÃ¶mungsmechanik-
+  \item \textbf{PyFR und OpenFOAM Python-Bindings}: Strömungsmechanik-
     Codes der industriellen und akademischen Spitzenforschung bieten
-    zunehmend Python-Schnittstellen, die NumPy-Arrays als primÃ¤res
+    zunehmend Python-Schnittstellen, die NumPy-Arrays als primäres
     Datenformat verwenden.
 \end{itemize}
 
 Langfristig wird erwartet, dass SciPy dedizierte Parallelversionen
-seiner Kernalgorithmen einfÃ¼hrt â€“ verteilte FFTs (basierend auf
-\texttt{pfft} oder \texttt{mpiFFT4py}), parallele GleichungslÃ¶ser
+seiner Kernalgorithmen einführt â€“ verteilte FFTs (basierend auf
+\texttt{pfft} oder \texttt{mpiFFT4py}), parallele Gleichungslöser
 und skalierbare Optimierungsroutinen.
 
 % ------------------------------------------------------------------
@@ -1876,13 +1876,13 @@ und skalierbare Optimierungsroutinen.
 % ------------------------------------------------------------------
 
 Das Aufkommen von Quantencomputern mit 100--1\,000 physischen Qubits
-erÃ¶ffnet vÃ¶llig neue MÃ¶glichkeiten fÃ¼r die wissenschaftliche Berechnung.
+eröffnet völlig neue Möglichkeiten für die wissenschaftliche Berechnung.
 NumPy und SciPy spielen in diesem Kontext eine doppelte Rolle:
 
-Einerseits sind sie die primÃ¤ren Werkzeuge fÃ¼r die \emph{klassische Simulation
+Einerseits sind sie die primären Werkzeuge für die \emph{klassische Simulation
 von Quantensystemen}. Bibliotheken wie \textbf{QuTiP} (Quantum Toolbox in
-Python) verwenden dichte NumPy-Matrizen und SciPy-EigenwertlÃ¶ser, um
-Hamiltonoperatoren, Dichtematrizen und Lindbladgleichungen fÃ¼r offene
+Python) verwenden dichte NumPy-Matrizen und SciPy-Eigenwertlöser, um
+Hamiltonoperatoren, Dichtematrizen und Lindbladgleichungen für offene
 Quantensysteme zu berechnen:
 
 \begin{lstlisting}[caption={QuTiP: Quantendynamik mit NumPy/SciPy}]
@@ -1904,43 +1904,43 @@ plt.plot(tlist, result.expect[1], label=r'$\langle\sigma_z\rangle$')
 \end{lstlisting}
 
 Andererseits bieten \textbf{Qiskit} (IBM), \textbf{Cirq} (Google) und
-\textbf{PennyLane} Python-Schnittstellen fÃ¼r echte Quanten-Hardware, die
-intern NumPy fÃ¼r die Darstellung von Quantenzustandsvektoren und
+\textbf{PennyLane} Python-Schnittstellen für echte Quanten-Hardware, die
+intern NumPy für die Darstellung von Quantenzustandsvektoren und
 Messstatistiken nutzen. Mit der Konsolidierung der Quantenhardware wird
-NumPy als gemeinsames Datenformat die BrÃ¼cke zwischen klassischer und
+NumPy als gemeinsames Datenformat die Brücke zwischen klassischer und
 Quantenberechnung bilden.
 
 % ------------------------------------------------------------------
-\subsubsection{Nachhaltigkeit und Community-Governance des Ã–kosystems}
+\subsubsection{Nachhaltigkeit und Community-Governance des Ökosystems}
 \label{subsubsec:governance}
 % ------------------------------------------------------------------
 
-Eine oft unterschÃ¤tzte Dimension der Zukunftsperspektiven betrifft nicht
+Eine oft unterschätzte Dimension der Zukunftsperspektiven betrifft nicht
 die technologische, sondern die soziale und institutionelle Nachhaltigkeit
-des Scientific-Python-Ã–kosystems. Die vergangenen Jahre haben gezeigt,
-dass hochwertige Open-Source-Infrastruktur fÃ¼r die Wissenschaft dauerhafter
+des Scientific-Python-Ökosystems. Die vergangenen Jahre haben gezeigt,
+dass hochwertige Open-Source-Infrastruktur für die Wissenschaft dauerhafter
 Finanzierung und stabiler Governance bedarf:
 
 \begin{description}
-  \item[\textbf{NumFOCUS}]: Die gemeinnÃ¼tzige Organisation finanziert und
-    koordiniert die Entwicklung von NumPy, SciPy, Matplotlib und Ã¼ber
-    40 weiteren wissenschaftlichen Python-Projekten durch FÃ¶rderantrÃ¤ge,
+  \item[\textbf{NumFOCUS}]: Die gemeinnützige Organisation finanziert und
+    koordiniert die Entwicklung von NumPy, SciPy, Matplotlib und über
+    40 weiteren wissenschaftlichen Python-Projekten durch Förderanträge,
     Konferenzen (SciPy~Conference, PyData) und Unternehmenssponsoring.
 
   \item[\textbf{SPEC-Prozess (Scientific Python Ecosystem Coordination)}]:
     Die \emph{Scientific Python Ecosystem Coordination}-Dokumente
     standardisieren Versionierungsrichtlinien, Python-Mindestversionen
-    und InteroperabilitÃ¤tsnormen fÃ¼r alle Mitgliedsprojekte, um den
-    enormen Koordinationsaufwand eines verteilten Ã–kosystems zu reduzieren.
+    und Interoperabilitätsnormen für alle Mitgliedsprojekte, um den
+    enormen Koordinationsaufwand eines verteilten Ökosystems zu reduzieren.
 
-  \item[\textbf{FÃ¶rderinstitutionen}]: Der Chan Zuckerberg Initiative
+  \item[\textbf{Förderinstitutionen}]: Der Chan Zuckerberg Initiative
     \emph{Essential Open Source for Science}-Fonds und das Alfred~P.~Sloan
     Foundation \emph{Scientific Software}-Programm finanzieren Vollzeit-
-    Entwicklerstellen fÃ¼r NumPy, SciPy und Matplotlib.
+    Entwicklerstellen für NumPy, SciPy und Matplotlib.
 
-  \item[\textbf{DiversitÃ¤t und Inklusion}]: Gezielte Programme wie
+  \item[\textbf{Diversität und Inklusion}]: Gezielte Programme wie
     \emph{GSoC} (Google Summer of Code) und \emph{Outreachy} erweitern
-    den Entwicklerpool und stellen sicher, dass das Ã–kosystem die
+    den Entwicklerpool und stellen sicher, dass das Ökosystem die
     Anforderungen einer global diverse wissenschaftlichen Gemeinschaft
     widerspiegelt.
 \end{description}
@@ -1958,7 +1958,7 @@ wissenschaftlichen Infrastruktur bleiben werden.
 
 Die vorstehenden Ausblicke auf GPU-Beschleunigung, differenzierbares
 Programmieren, maschinelles Lernen, Quantencomputing und Exascale-HPC
-verdeutlichen eine Ã¼bergeordnete Erkenntnis: Alle diese Entwicklungslinien
+verdeutlichen eine übergeordnete Erkenntnis: Alle diese Entwicklungslinien
 bauen auf denselben konzeptuellen Grundlagen auf, die NumPy, SciPy und
 Matplotlib vor mehr als zwei Jahrzehnten etabliert haben â€“ das
 N-dimensionale Array als universelle Datenstruktur, hochoptimierte
@@ -1968,28 +1968,28 @@ Visualisierung als kommunikatives Endprodukt wissenschaftlicher Arbeit.
 Jede neue Bibliothek â€“ ob JAX, CuPy, Dask oder PyTorch â€“ definiert ihre
 Schnittstellen in exakter Analogie zu NumPy, jeder neue Algorithmen-Stack
 orientiert sich an SciPy, und jede visualisierungsorientierte Anwendung
-erbt Designentscheidungen von Matplotlib. Dies ist keine ZufÃ¤lligkeit,
-sondern Ausdruck tief verwurzelter QualitÃ¤t: Diese drei Bibliotheken haben
+erbt Designentscheidungen von Matplotlib. Dies ist keine Zufälligkeit,
+sondern Ausdruck tief verwurzelter Qualität: Diese drei Bibliotheken haben
 durch jahrzehntelangen Einsatz in allen Gebieten der Wissenschaft bewiesen,
-dass ihre Abstraktionen die richtige GranularitÃ¤t besitzen, um sowohl
+dass ihre Abstraktionen die richtige Granularität besitzen, um sowohl
 universell als auch performant zu sein.
 
-Das Scientific-Python-Ã–kosystem steht nicht am Ende einer Entwicklung,
-sondern am Beginn einer neuen Phase, in der die bewÃ¤hrten Prinzipien von
+Das Scientific-Python-Ökosystem steht nicht am Ende einer Entwicklung,
+sondern am Beginn einer neuen Phase, in der die bewährten Prinzipien von
 NumPy, SciPy und Matplotlib auf heterogene Hardware, differenzierbares
-Rechnen, kÃ¼nstliche Intelligenz und planetare Datenskalen ausgedehnt werden.
-Wer heute NumPy, SciPy und Matplotlib beherrscht, hÃ¤lt den
-GeneralschlÃ¼ssel zu diesem gesamten zukÃ¼nftigen Ã–kosystem in HÃ¤nden.
+Rechnen, künstliche Intelligenz und planetare Datenskalen ausgedehnt werden.
+Wer heute NumPy, SciPy und Matplotlib beherrscht, hält den
+Generalschlüssel zu diesem gesamten zukünftigen Ökosystem in Händen.
 
 % ==============================================================
-%  AUSFÃœHRLICHE QUELLENANGABE
+%  AUSFÜHRLICHE QUELLENANGABE
 % ==============================================================
 
 \addcontentsline{toc}{section}{Literaturverzeichnis}
 \begin{thebibliography}{99}
 
 % ----------------------------------------------------------------
-% NumPy â€“ PrimÃ¤re Quellen
+% NumPy â€“ Primäre Quellen
 % ----------------------------------------------------------------
 
 \bibitem{harris2020array}
@@ -2022,7 +2022,7 @@ W. McKinney.
 O'Reilly Media, 2017.
 
 % ----------------------------------------------------------------
-% SciPy â€“ PrimÃ¤re Quellen
+% SciPy â€“ Primäre Quellen
 % ----------------------------------------------------------------
 
 \bibitem{virtanen2020scipy}
@@ -2037,7 +2037,7 @@ E. Jones, T.~E. Oliphant, P. Peterson \textit{et al.}
 \url{https://www.scipy.org/}
 
 % ----------------------------------------------------------------
-% Matplotlib â€“ PrimÃ¤re Quellen
+% Matplotlib â€“ Primäre Quellen
 % ----------------------------------------------------------------
 
 \bibitem{hunter2007matplotlib}
@@ -2057,7 +2057,7 @@ A. Devert.
 Packt Publishing, 2014.
 
 % ----------------------------------------------------------------
-% BÃ¼cher zum Scientific Python Stack
+% Bücher zum Scientific Python Stack
 % ----------------------------------------------------------------
 
 \bibitem{numerical2020}
@@ -2235,17 +2235,17 @@ R.~A. Horn und C.~R. Johnson.
 Cambridge University Press, 2012.
 
 % ----------------------------------------------------------------
-% Python und Software-Engineering fÃ¼r Wissenschaften
+% Python und Software-Engineering für Wissenschaften
 % ----------------------------------------------------------------
 
 \bibitem{perez2007ipython}
-F. PÃ©rez und B.~E. Granger.
+F. Pérez und B.~E. Granger.
 {IPython}: A System for Interactive Scientific Computing.
 \textit{Computing in Science \& Engineering}, 9(3):21--29, 2007.
 \url{https://doi.org/10.1109/MCSE.2007.53}
 
 \bibitem{kluyver2016jupyter}
-T. Kluyver, B. Ragan-Kelley, F. PÃ©rez \textit{et al.}
+T. Kluyver, B. Ragan-Kelley, F. Pérez \textit{et al.}
 Jupyter Notebooks~-- a publishing format for reproducible computational
 workflows.
 In: F. Loizides und B. Schmidt (Hrsg.), \textit{Positioning and Power in

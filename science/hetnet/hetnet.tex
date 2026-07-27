@@ -68,15 +68,15 @@ auf Basis von Reinforcement Learning}
 
 \begin{abstract}
 Heterogene Mobilfunknetze (HetNets) stehen vor der Herausforderung, dynamische
-BenutzergerÃ¤t-Lebenszyklen, variierende Lastverteilungen und hohe Energieeffizienzanforderungen
+Benutzergerät-Lebenszyklen, variierende Lastverteilungen und hohe Energieeffizienzanforderungen
 gleichzeitig zu beherrschen. In dieser Arbeit analysieren wir das von Illian~\cite{illian2026}
 vorgestellte lernbasierte autonome Netzwerkmanagementsystem \emph{CellPilot} formal und
 exhaustiv. Wir modellieren die Leerlauf-Selektion von Mobilfunkzellen als partiell
 beobachtbares Markov-Entscheidungsprozess (POMDP) und zeigen, dass der REINFORCE-Algorithmus
-mit Reward-Shaping-Baselines zur Policy-Konvergenz fÃ¼hrt. Des Weiteren formulieren wir die
+mit Reward-Shaping-Baselines zur Policy-Konvergenz führt. Des Weiteren formulieren wir die
 Bandwechsel-Energieoptimierung im Verbindungsmodus als gemischt-ganzzahliges konvexes
-Optimierungsproblem (MIQCP) und beweisen die Existenz einer eindeutigen optimalen LÃ¶sung
-unter gegebenen KapazitÃ¤tsnebenbedingungen. Alle Ergebnisse werden analytisch hergeleitet,
+Optimierungsproblem (MIQCP) und beweisen die Existenz einer eindeutigen optimalen Lösung
+unter gegebenen Kapazitätsnebenbedingungen. Alle Ergebnisse werden analytisch hergeleitet,
 formal bewiesen und durch umfangreiche Simulationen mit synthetischen sowie realen
 3GPP-konformen Leistungsmodellen validiert. Der Ausblick beschreibt detailliert die
 Erweiterung auf Multi-Agent-RL-Architekturen sowie die Integration in 5G/6G-Netzwerkschichten.
@@ -93,23 +93,23 @@ Moderne Mobilfunknetze entwickeln sich hin zu heterogenen Architekturen (HetNets
 denen Makrozellen, Kleinzellen (Small Cells) und millimeterwellenbasierte Zugangsknoten
 koexistieren. Gleichzeitig w\"achst die Anzahl der User Equipment (UE) rapide, und die
 Anforderungen an Energieeffizienz -- sowohl seitens des Netzbetreibers als auch im Hinblick
-auf die Akkulaufzeit der EndgerÃ¤te -- steigen stetig. Klassische regelbasierte Steuerungslogik
+auf die Akkulaufzeit der Endgeräte -- steigen stetig. Klassische regelbasierte Steuerungslogik
 ist den komplexen, nichtstation\"aren Bedingungen dieser Netze nicht gewachsen.
 
 Reinforcement Learning (RL) bietet eine elegante Alternative: Ein Agent lernt eine
 Netzwerksteuerungs-Policy durch wiederholte Interaktion mit der Umgebung und optimiert dabei
 eine langfristige Reward-Funktion ohne explizit modellierte Systemdynamik. Die vorliegende
 Arbeit untersucht das von Illian~\cite{illian2026} vorgestellte System \emph{CellPilot}
-wissenschaftlich und ergÃ¤nzt es durch formale mathematische Beweise, ausfÃ¼hrliche
+wissenschaftlich und ergänzt es durch formale mathematische Beweise, ausführliche
 Herleitung der Optimierungsprobleme sowie extensive Simulationsresultate.
 
 \subsection{Beitrag dieser Arbeit}
 
-Diese Arbeit leistet folgende BeitrÃ¤ge:
+Diese Arbeit leistet folgende Beiträge:
 \begin{itemize}
   \item Formale POMDP-Modellierung des Leerlauf-Zellselektionsproblems (Abschnitt~\ref{sec:pomdp})
   \item Beweis der Policy-Konvergenz des REINFORCE-Algorithmus mit Baselines (Abschnitt~\ref{sec:reinforce})
-  \item MIQCP-Formulierung der Bandwechsel-Energieoptimierung und Beweis der OptimalitÃ¤t (Abschnitt~\ref{sec:miqcp})
+  \item MIQCP-Formulierung der Bandwechsel-Energieoptimierung und Beweis der Optimalität (Abschnitt~\ref{sec:miqcp})
   \item Analytische Herleitung und Validierung des 3GPP-konformen UE-Leistungsmodells (Abschnitt~\ref{sec:power})
   \item Simulative Validierung aller Ergebnisse mit matplotlib-Visualisierungen (Abschnitt~\ref{sec:experimente})
   \item Detaillierter Ausblick auf Multi-Agent-RL-Erweiterungen und 5G/6G-Integration (Abschnitt~\ref{sec:ausblick})
@@ -118,12 +118,12 @@ Diese Arbeit leistet folgende BeitrÃ¤ge:
 \subsection{Verwandte Arbeiten}
 
 Lernbasiertes Netzwerkmanagement wurde in den letzten Jahren intensiv untersucht.
-Deep-Q-Network-basierte (DQN) AnsÃ¤tze fÃ¼r Handover-Entscheidungen wurden in~\cite{fehske2011}
-und~\cite{zhang2019} beschrieben. POMDP-Formulierungen fÃ¼r HetNet-Ressourcenzuweisung finden
+Deep-Q-Network-basierte (DQN) Ansätze für Handover-Entscheidungen wurden in~\cite{fehske2011}
+und~\cite{zhang2019} beschrieben. POMDP-Formulierungen für HetNet-Ressourcenzuweisung finden
 sich in~\cite{li2020}. Die Verwendung des REINFORCE-Algorithmus f\"ur Policy-Gradient-Optimierung
 in Telekommunikationsnetzen ist in~\cite{sutton2018} grundlegend beschrieben. Das Subgraph-basierte
 Optimierungsframework von Epp~\cite{epp2026sub} liefert dabei allgemeine Methoden zur strukturellen
-Graphoptimierung, die direkt auf Netztopologien Ã¼bertragbar sind.
+Graphoptimierung, die direkt auf Netztopologien übertragbar sind.
 
 %==========================================================
 \section{Grundlagen}
@@ -136,14 +136,14 @@ Graphoptimierung, die direkt auf Netztopologien Ã¼bertragbar sind.
   $\mathcal{N} = (\mathcal{B}, \mathcal{U}, \mathcal{L})$,
   wobei $\mathcal{B} = \{b_1, \ldots, b_M\}$ die Menge der Basisstationen,
   $\mathcal{U} = \{u_1, \ldots, u_K\}$ die Menge der User Equipment und
-  $\mathcal{L} \subseteq \mathcal{B} \times \mathcal{U}$ die zulÃ¤ssigen
+  $\mathcal{L} \subseteq \mathcal{B} \times \mathcal{U}$ die zulässigen
   Verbindungsrelationen bezeichnet.
 \end{definition}
 
 \begin{definition}[Leerlaufmodus und Verbindungsmodus]
   Ein UE $u_k \in \mathcal{U}$ befindet sich im \emph{Leerlaufmodus} (idle mode),
   wenn keine aktive Datenverbindung besteht. Es befindet sich im \emph{Verbindungsmodus}
-  (connected mode), wenn eine aktive DatenÃ¼bertragung stattfindet. Der Ãœbergang zwischen
+  (connected mode), wenn eine aktive Datenübertragung stattfindet. Der Übergang zwischen
   beiden Modi erfolgt durch ein \emph{Handover}-Ereignis.
 \end{definition}
 
@@ -165,7 +165,7 @@ Graphoptimierung, die direkt auf Netztopologien Ã¼bertragbar sind.
   \begin{itemize}
     \item $\mathcal{S}$ die Zustandsmenge,
     \item $\mathcal{A}$ die Aktionsmenge,
-    \item $P: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \to [0,1]$ die Ãœbergangswahrscheinlichkeit,
+    \item $P: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \to [0,1]$ die Übergangswahrscheinlichkeit,
     \item $R: \mathcal{S} \times \mathcal{A} \to \mathbb{R}$ die Reward-Funktion und
     \item $\gamma \in [0,1)$ den Diskontfaktor bezeichnet.
   \end{itemize}
@@ -186,8 +186,8 @@ Graphoptimierung, die direkt auf Netztopologien Ã¼bertragbar sind.
 
 \begin{definition}[Stochastische Policy]
   Eine stochastische Policy $\pi_\theta: \mathcal{S} \times \mathcal{A} \to [0,1]$
-  mit Parametervektor $\theta \in \mathbb{R}^d$ gibt fÃ¼r jeden Zustand $s$
-  eine Wahrscheinlichkeitsverteilung Ã¼ber Aktionen an:
+  mit Parametervektor $\theta \in \mathbb{R}^d$ gibt für jeden Zustand $s$
+  eine Wahrscheinlichkeitsverteilung über Aktionen an:
   $\pi_\theta(a \mid s) \geq 0$ und $\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s) = 1$.
 \end{definition}
 
@@ -376,7 +376,7 @@ Die multi-objektive Reward-Funktion von CellPilot balanciert Durchsatz und Lastb
     \mathbb{E}[\hat{g}_t \mid \theta_t] = \nabla_\theta J(\theta_t), \quad
     \mathbb{E}[\|\hat{g}_t\|^2] \leq C_1 + C_2 \|\nabla J(\theta_t)\|^2
   \]
-  f\"ur Konstanten $C_1, C_2 > 0$, die von $R_{\max}$ und der TrajektorienlÃ¤nge $T$ abh\"angen.
+  f\"ur Konstanten $C_1, C_2 > 0$, die von $R_{\max}$ und der Trajektorienlänge $T$ abh\"angen.
   
   \textbf{Schritt 2 (Glattheit).} F\"ur eine Softmax-Policy ist $J(\theta)$ stetig differenzierbar.
   Da der Zustandsraum endlich und die Reward-Funktion beschr\"ankt ist, ist $\nabla J(\theta)$
@@ -401,7 +401,7 @@ Die multi-objektive Reward-Funktion von CellPilot balanciert Durchsatz und Lastb
 
 \subsection{Problemformulierung}
 
-Im Verbindungsmodus kann ein UE zwischen verschiedenen FrequenzbÃ¤ndern (5G SA, 5G NSA, LTE)
+Im Verbindungsmodus kann ein UE zwischen verschiedenen Frequenzbändern (5G SA, 5G NSA, LTE)
 wechseln, um Energie zu sparen. Das Optimierungsproblem lautet:
 
 \begin{definition}[Bandwechsel-Optimierungsproblem]
@@ -452,7 +452,7 @@ die Nebenbedingungen bilinear in $(x, p)$ auftreten, handelt es sich um ein MIQC
   \[
     \min \mathbf{c}^T \mathbf{y} + \mathbf{y}^T Q \mathbf{y}, \quad
     A\mathbf{y} \leq \mathbf{b}, \quad
-    y_i \in \{0,1\} \text{ fÃ¼r } i \in \mathcal{I}
+    y_i \in \{0,1\} \text{ für } i \in \mathcal{I}
   \]
   wobei $Q \succeq 0$ (positiv semidefinit) ist.
 \end{satz}
@@ -519,7 +519,7 @@ f\"ur 5G SA (Standalone) und 5G NSA (Non-Standalone).
     \left(1 - e^{-\lambda / \lambda_0}\right) + \delta \cdot f(\lambda)
   \]
   wobei $I_{\mathrm{idle}}$ der Grundstrom im Leerlauf, $I_{\max}$ der Maximalstrom,
-  $\lambda_0$ die charakteristische SÃ¤ttigungsrate und $\delta \cdot f(\lambda)$
+  $\lambda_0$ die charakteristische Sättigungsrate und $\delta \cdot f(\lambda)$
   ein kleiner oszillatorischer Korrekturterm f\"ur Protokoll-Overhead ist.
 \end{definition}
 
@@ -681,7 +681,7 @@ In einem solchen System w\"urde jede Basisstation $b_j \in \mathcal{B}$ einen ei
 betreiben, der seine lokale Policy $\pi_{\theta_j}$ auf Basis lokaler Beobachtungen und
 eines gemeinsamen Reward-Signals optimiert.
 
-Formal lÃ¤sst sich dies als Partially Observable Stochastic Game (POSG) modellieren:
+Formal lässt sich dies als Partially Observable Stochastic Game (POSG) modellieren:
 \begin{definition}[Partially Observable Stochastic Game]
   Ein POSG ist ein Tupel $\Gamma = (\mathcal{N}, \mathcal{S}, \{\mathcal{A}_i\}_{i \in \mathcal{N}},
   \{\mathcal{O}_i\}_{i \in \mathcal{N}}, P, \{R_i\}_{i \in \mathcal{N}}, \Omega, \gamma)$,
@@ -709,12 +709,12 @@ Offene Herausforderungen sind dabei:
     Umgebung aus Sicht jedes einzelnen Agenten, was die Konvergenzanalyse erschwert.
   \item \emph{Skalierbarkeit}: Mit steigender Anzahl von Basisstationen w\"achst
     der gemeinsame Zustandsraum exponentiell (vgl.\ Abbildung~\ref{fig:stateSpace}).
-  \item \emph{KommunikationskomplexitÃ¤t}: Das Aggregieren von Reward-Signalen und
+  \item \emph{Kommunikationskomplexität}: Das Aggregieren von Reward-Signalen und
     Zustandsinformationen erfordert ein effizientes Inter-Basisstations-Kommunikationsprotokoll,
     das mit den X2/Xn-Schnittstellen der 5G-Architektur kompatibel sein muss.
 \end{itemize}
 
-\subsection{Mean-Field-Approximation fÃ¼r groÃŸe Netzwerke}
+\subsection{Mean-Field-Approximation für große Netzwerke}
 
 F\"ur sehr gro\ss{}e HetNets mit $M \gg 10$ Basisstationen und $K \gg 100$ UEs
 ist exaktes MARL rechnerisch nicht mehr handhabbar. Die Mean-Field-Spieltheorie~\cite{yang2018}
@@ -761,7 +761,7 @@ die dann in Echtzeit Handover-Entscheidungen trifft.
 Im Kontext von Green 5G und dem EU-Ziel der Klimaneutralit\"at im Telekommunikationssektor
 bis 2030 gewinnt die Integration von Energy Harvesting (EH) in das RL-Framework an Bedeutung.
 UEs k\"onnten zuk\"unftig \"uber solare oder RF-basierte Energiegewinnung verf\"ugen, was die
-ZustandsraumreprÃ¤sentation um eine Energiereservoir-Dimension $e_k \in [0, E_{\max}]$ erweitert:
+Zustandsraumrepräsentation um eine Energiereservoir-Dimension $e_k \in [0, E_{\max}]$ erweitert:
 \[
   s_k^{\mathrm{EH}} = (b_k^{\mathrm{serv}}, \mathrm{pm}_k, \theta_k^{\mathrm{tp}}, m_k, e_k)
 \]
@@ -776,7 +776,7 @@ wobei $\eta > 0$ die Gewichtung des Energiereservoir-Stands steuert.
 Ein kritisches offenes Problem ist die Robustheit der erlernten Policy gegen\"uber
 Verteilungsverschiebungen (distribution shift): Eine Policy, die auf einem bestimmten
 Stadtgebiet trainiert wurde, muss nicht zwingend auf einem anderen Gebiet mit
-unterschiedlicher Geb\"audedichte, MobilitÃ¤tsmustern oder Interferenzumgebung
+unterschiedlicher Geb\"audedichte, Mobilitätsmustern oder Interferenzumgebung
 \"ubertragbar sein.
 
 Ans\"atze zur Verbesserung der Transferability umfassen:

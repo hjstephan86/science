@@ -66,9 +66,9 @@
 \newcommand{\half}{\tfrac{1}{2}}
 
 \title{\textbf{SR-91 Aurora~II:	Formale Aerodynamik- und Leistungsanalyse
-	eines Hochgeschwindigkeits-AufklÃ¤rungsflugzeugs}}
+	eines Hochgeschwindigkeits-Aufklärungsflugzeugs}}
 \author{Stephan Epp}
-\date{29. MÃ¤rz 2026}
+\date{29. März 2026}
 
 % -----------------------------------------------------------------------
 % Dokument
@@ -85,28 +85,28 @@
 
 Diese Arbeit entwickelt und beweist formal die aerodynamischen, thermodynamischen,
 strukturmechanischen und pilotenphysiologischen Eigenschaften des fiktiven
-Hochgeschwin\-digkeits-AufklÃ¤rungsflugzeugs \SR{}, das fÃ¼r eine Zwei-Piloten-Besatzung
+Hochgeschwin\-digkeits-Aufklärungsflugzeugs \SR{}, das für eine Zwei-Piloten-Besatzung
 ohne zivile Passagiere ausgelegt ist.
-Das Flugzeug erreicht eine HÃ¶chstgeschwindigkeit von \Mach{5{,}0} bei einer
-DienstgipfelhÃ¶he von \SI{30}{\kilo\metre}.
+Das Flugzeug erreicht eine Höchstgeschwindigkeit von \Mach{5{,}0} bei einer
+Dienstgipfelhöhe von \SI{30}{\kilo\metre}.
 Ein besonderer Schwerpunkt liegt auf der formalen mathematischen Herleitung der
-Wendeleistung im Ãœberschallregime:
-Minimaler Kurvenradius, maximale Winkelrate und Lastvielfaches werden fÃ¼r das
+Wendeleistung im Überschallregime:
+Minimaler Kurvenradius, maximale Winkelrate und Lastvielfaches werden für das
 gesamte Flugzustandsgebiet analytisch nachgewiesen.
-ZwÃ¶lf matplotlib-Abbildungen illustrieren die quantitativen Ergebnisse.
+Zwölf matplotlib-Abbildungen illustrieren die quantitativen Ergebnisse.
 
-AufklÃ¤rungsflugzeuge der Hochleistungsklasse vereinen drei scheinbar widersprÃ¼chliche
-Anforderungen: maximale Reisegeschwindigkeit im Ãœberschallbereich, eine minimale
-Radarsignatur sowie eine fÃ¼r menschliche Besatzungen ertragbare Dynamik.
+Aufklärungsflugzeuge der Hochleistungsklasse vereinen drei scheinbar widersprüchliche
+Anforderungen: maximale Reisegeschwindigkeit im Überschallbereich, eine minimale
+Radarsignatur sowie eine für menschliche Besatzungen ertragbare Dynamik.
 Der \SR{} ist als konzeptionelles Nachfolgemuster des historischen SR-71 Blackbird
-angelegt, dessen Auslegung auf \Mach{3{,}2} und \SI{25}{\kilo\metre} GipfelhÃ¶he
+angelegt, dessen Auslegung auf \Mach{3{,}2} und \SI{25}{\kilo\metre} Gipfelhöhe
 jedoch aus der Kaltkriegsepoche stammt.
 
 \paragraph{Designphilosophie.}
 Das vorliegende Konzept verfolgt folgende Leitprinzipien:
 \begin{enumerate}[label=\roman*.]
   \item \textbf{Geschwindigkeit:} Reiseflug bei \Mach{3{,}5}, maximale Sprints bis \Mach{5{,}0}.
-  \item \textbf{Wendigkeit:} Aggressives WendemanÃ¶ver (\Mach{2{,}0}, $H = \SI{20}{\kilo\metre}$)
+  \item \textbf{Wendigkeit:} Aggressives Wendemanöver (\Mach{2{,}0}, $H = \SI{20}{\kilo\metre}$)
         mit minimalem Kurvenradius $r_{\min} < \SI{35}{\kilo\metre}$.
   \item \textbf{Zwei-Piloten-Besatzung:} Pilot und Waffensystemoffizier (WSO) in
         Tandemanordnung, kein Passagierraum.
@@ -114,38 +114,38 @@ Das vorliegende Konzept verfolgt folgende Leitprinzipien:
 \end{enumerate}
 
 Die Arbeit ist wie folgt gegliedert:
-\Cref{sec:config} legt die geometrischen und massenbezogenen KenngrÃ¶ÃŸen fest.
+\Cref{sec:config} legt die geometrischen und massenbezogenen Kenngrößen fest.
 \Cref{sec:aero} entwickelt die aerodynamische Theorie.
 \Cref{sec:antrieb} beschreibt den TBCC-Antrieb.
-\Cref{sec:wende} enthÃ¤lt den formalen Nachweis der Wendeleistung.
-\Cref{sec:therm} behandelt aerodynamische ErwÃ¤rmung.
+\Cref{sec:wende} enthält den formalen Nachweis der Wendeleistung.
+\Cref{sec:therm} behandelt aerodynamische Erwärmung.
 \Cref{sec:pilot} analysiert die physiologischen Belastungen der Besatzung.
-\Cref{sec:stabilitaet} widmet sich der Flugdynamik und StabilitÃ¤t.
-\Cref{sec:recon} bewertet den AufklÃ¤rungsnutzen.
+\Cref{sec:stabilitaet} widmet sich der Flugdynamik und Stabilität.
+\Cref{sec:recon} bewertet den Aufklärungsnutzen.
 
 % -----------------------------------------------------------------------
 \section{Fahrzeugkonfiguration und Geometrie}
 \label{sec:config}
 % -----------------------------------------------------------------------
 
-\subsection{Geometrische HauptmaÃŸe}
+\subsection{Geometrische Hauptmaße}
 
 \begin{table}[H]
 \centering
-\caption{Geometrische und massenbezogene KenngrÃ¶ÃŸen des \SR{}}
+\caption{Geometrische und massenbezogene Kenngrößen des \SR{}}
 \label{tab:geo}
 \begin{tabular}{llcl}
 \toprule
-GrÃ¶ÃŸe & Symbol & Wert & Einheit \\
+Größe & Symbol & Wert & Einheit \\
 \midrule
 Spannweite & $b$ & 16{,}8 & \si{\metre} \\
-FlÃ¼geltiefe (Wurzel) & $c_r$ & 24{,}0 & \si{\metre} \\
-FlÃ¼geltiefe (Spitze) & $c_t$ & 2{,}5 & \si{\metre} \\
-FlÃ¼gelflÃ¤che & $S$ & 78{,}5 & \si{\metre\squared} \\
+Flügeltiefe (Wurzel) & $c_r$ & 24{,}0 & \si{\metre} \\
+Flügeltiefe (Spitze) & $c_t$ & 2{,}5 & \si{\metre} \\
+Flügelfläche & $S$ & 78{,}5 & \si{\metre\squared} \\
 Streckung & $\Lambda$ & 1{,}8 & â€” \\
 Pfeilwinkel ($25\,\%$-Linie) & $\varphi_{25}$ & 67 & \si{\degree} \\
-GesamtlÃ¤nge & $l_{ges}$ & 32{,}5 & \si{\metre} \\
-HÃ¶he & $h_{ges}$ & 5{,}6 & \si{\metre} \\
+Gesamtlänge & $l_{ges}$ & 32{,}5 & \si{\metre} \\
+Höhe & $h_{ges}$ & 5{,}6 & \si{\metre} \\
 \midrule
 Leermasse & $m_0$ & 22\,500 & \si{\kilo\gram} \\
 Besatzung (2 Piloten) & $m_c$ & 200 & \si{\kilo\gram} \\
@@ -157,15 +157,15 @@ Auslegungsmasse (Reiseflug) & $m_d$ & 32\,000 & \si{\kilo\gram} \\
 \end{tabular}
 \end{table}
 
-\subsection{FlÃ¼gelgeometrie: Delta-Konfiguration}
+\subsection{Flügelgeometrie: Delta-Konfiguration}
 
 Der \SR{} verwendet einen \emph{geschnittenen Doppeldelta} (double-delta) mit
-einem inneren Pfeilwinkel $\varphi_1 = 80^\circ$ und einem Ã¤uÃŸeren Winkel
+einem inneren Pfeilwinkel $\varphi_1 = 80^\circ$ und einem äußeren Winkel
 $\varphi_2 = 60^\circ$.
 
 \begin{definition}[Trapezgeometrische Kennzahlen]
-  Sei $S$ die FlÃ¼gelreferenzflÃ¤che, $b$ die Spannweite, $\bar{c}$ die mittlere
-  aerodynamische Tiefe (MAC) und $\lambda = c_t/c_r$ das ZuspitzungsverhÃ¤ltnis.
+  Sei $S$ die Flügelreferenzfläche, $b$ die Spannweite, $\bar{c}$ die mittlere
+  aerodynamische Tiefe (MAC) und $\lambda = c_t/c_r$ das Zuspitzungsverhältnis.
   Die aerodynamische Streckung lautet:
   \begin{equation}
     \Lambda = \frac{b^2}{S}
@@ -189,12 +189,12 @@ Mit $c_r = \SI{24}{\metre}$, $c_t = \SI{2{,}5}{\metre}$, $\lambda = 0{,}104$:
 \label{sec:aero}
 % -----------------------------------------------------------------------
 
-\subsection{KompressibilitÃ¤tskorrektur nach Prandtl-Glauert und Ackeret}
+\subsection{Kompressibilitätskorrektur nach Prandtl-Glauert und Ackeret}
 
 \begin{theorem}[Auftriebsanstieg nach Prandtl-Glauert und Ackeret]
   \label{thm:cla}
-  FÃ¼r einen TragflÃ¼gel endlicher Streckung $\Lambda$ mit linearer Profiltheorie gilt
-  fÃ¼r den Auftriebsanstieg $C_{L\alpha}$ (bezogen auf den Anstellwinkel in Bogenmass):
+  Für einen Tragflügel endlicher Streckung $\Lambda$ mit linearer Profiltheorie gilt
+  für den Auftriebsanstieg $C_{L\alpha}$ (bezogen auf den Anstellwinkel in Bogenmass):
   \begin{equation}
     C_{L\alpha} =
     \begin{cases}
@@ -209,10 +209,10 @@ Mit $c_r = \SI{24}{\metre}$, $c_t = \SI{2{,}5}{\metre}$, $\lambda = 0{,}104$:
   Im Unterschall folgt $C_{L\alpha}$ aus der Prandtl-Glauert-Analogie:
   Der inkompressible Auftriebsanstieg $2\pi$ eines unendlich gestreckten Profils
   wird durch $\beta_{PG}$ dividiert, und der endliche Streckungseffekt wird durch
-  den Term $2/\Lambda$ (Oswald-Faktor $e=1$, Delft-NÃ¤herung) erfasst.
-  Im Ãœberschall liefert die lineare Ackeret-Theorie den Wert $4/\beta_A$ fÃ¼r
-  den unendlichen FlÃ¼gel; der Korrekturfaktor fÃ¼r $\Lambda < \infty$ folgt
-  analog aus der Randbedingung der TragflÃ¤che.
+  den Term $2/\Lambda$ (Oswald-Faktor $e=1$, Delft-Näherung) erfasst.
+  Im Überschall liefert die lineare Ackeret-Theorie den Wert $4/\beta_A$ für
+  den unendlichen Flügel; der Korrekturfaktor für $\Lambda < \infty$ folgt
+  analog aus der Randbedingung der Tragfläche.
 \end{proof}
 
 \subsection{Widerstandspolaren}
@@ -224,7 +224,7 @@ Mit $c_r = \SI{24}{\metre}$, $c_t = \SI{2{,}5}{\metre}$, $\lambda = 0{,}104$:
     k = \frac{1}{\pi\,\Lambda\,e}
     \label{eq:polar}
   \end{equation}
-  wobei $e \approx 0{,}85$ der Oswald-Wirkungsgrad des DeltaflÃ¼gels ist.
+  wobei $e \approx 0{,}85$ der Oswald-Wirkungsgrad des Deltaflügels ist.
 \end{definition}
 
 Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
@@ -255,10 +255,10 @@ Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/fig02_polar.pdf}
-  \caption{Aerodynamische Polaren des \SR{}-DeltaflÃ¼gels bei Mach $0{,}5$ bis $5{,}0$.
+  \caption{Aerodynamische Polaren des \SR{}-Deltaflügels bei Mach $0{,}5$ bis $5{,}0$.
            Links: Auftriebscharakteristik $C_L(\alpha)$, rechts: Lilienthal-Polare $C_L(C_D)$.
            Der deutliche Knick bei transonischen Mach-Zahlen ist auf die Wellenwiderstandszunahme
-           gemÃ¤ÃŸ \cref{eq:cd0} zurÃ¼ckzufÃ¼hren.}
+           gemäß \cref{eq:cd0} zurückzuführen.}
   \label{fig:polar}
 \end{figure}
 
@@ -267,7 +267,7 @@ Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
   \includegraphics[width=\textwidth]{figures/fig03_glide_range.pdf}
   \caption{Links: Maximale Gleitzahl $E_{\max}(M)$ nach \cref{eq:ldmax}.
            Das Maximum liegt bei $M \approx 0{,}7$ (Unterschall) und ein lokales
-           Ãœberschallmaximum bei $M \approx 2{,}5$.
+           Überschallmaximum bei $M \approx 2{,}5$.
            Rechts: Breguet-Reichweite nach \cref{eq:breguet} als Funktion der Mach-Zahl.}
   \label{fig:gleitzahl}
 \end{figure}
@@ -275,7 +275,7 @@ Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
 \subsection{Breguet-Reichweitengleichung}
 
 \begin{theorem}[Breguet-Reichweite]
-  FÃ¼r konstante Gleitzahl $E$ und spezifischen Impuls $I_{sp}$ gilt:
+  Für konstante Gleitzahl $E$ und spezifischen Impuls $I_{sp}$ gilt:
   \begin{equation}
     R = I_{sp}\,g_0\,E\,\ln\!\left(\frac{m_0}{m_0 - m_f}\right)
     = I_{sp}\,g_0\,E\,\ln\!\left(\frac{1}{1-\zeta_f}\right)
@@ -286,7 +286,7 @@ Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
 
 \begin{proof}
   Im Reiseflug gilt $L = W = m\,g_0$ und der Schub $T = D = W/E$.
-  Der Kraftstoffmassenstrom betrÃ¤gt $\dot{m}_f = T/(I_{sp}\,g_0)$, also
+  Der Kraftstoffmassenstrom beträgt $\dot{m}_f = T/(I_{sp}\,g_0)$, also
   $\mathrm{d}m/\mathrm{d}t = -T/(I_{sp}\,g_0)$.
   Mit $\mathrm{d}R = V\,\mathrm{d}t$ und $T = mg_0/E$:
   \[
@@ -296,7 +296,7 @@ Der Nullwiderstandsbeiwert $C_{D0}$ folgt einem empirischen Gesetz:
   Integration von $m_0$ bis $m_0 - m_f$ liefert \cref{eq:breguet}.
 \end{proof}
 
-FÃ¼r $\zeta_f = 0{,}45$, $I_{sp} = \SI{3000}{\second}$ (Scramjet-Betrieb), $E = 5{,}5$:
+Für $\zeta_f = 0{,}45$, $I_{sp} = \SI{3000}{\second}$ (Scramjet-Betrieb), $E = 5{,}5$:
 \begin{equation}
   R = 3000 \cdot 9{,}81 \cdot 5{,}5 \cdot \ln\!\left(\frac{1}{0{,}55}\right)
   \approx \SI{8\,200}{\kilo\metre}
@@ -313,9 +313,9 @@ Das Antriebssystem des \SR{} besteht aus zwei \emph{Turbin-Based Combined Cycle}
 Triebwerken (TBCC), die nahtlos zwischen Turbinen- und Scramjet-Modus umschalten.
 
 \begin{definition}[TBCC-Arbeitsprinzip]
-  Ein TBCC-Triebwerk vereint einen HochleistungsturbolÃ¼fter (Modus~I,
+  Ein TBCC-Triebwerk vereint einen Hochleistungsturbolüfter (Modus~I,
   $M_\infty \leq 3{,}0$) mit einem Dual-Mode-Scramjet (Modus~II,
-  $M_\infty \geq 2{,}5$). Im Ãœbergangsbereich $2{,}5 \leq M_\infty \leq 3{,}0$
+  $M_\infty \geq 2{,}5$). Im Übergangsbereich $2{,}5 \leq M_\infty \leq 3{,}0$
   arbeiten beide Komponenten gleichzeitig.
 \end{definition}
 
@@ -326,15 +326,15 @@ Triebwerken (TBCC), die nahtlos zwischen Turbinen- und Scramjet-Modus umschalten
            (s, rechte Achse) der beiden TBCC-Triebwerke als Funktion der Mach-Zahl
            bei $H = \SI{25}{\kilo\metre}$.
            Der TBCC-Umschaltpunkt liegt bei $M = 3{,}0$
-           (gestrichelte Linie). Der Scramjet-Modus erzielt deutlich hÃ¶here $I_{sp}$-Werte.}
+           (gestrichelte Linie). Der Scramjet-Modus erzielt deutlich höhere $I_{sp}$-Werte.}
   \label{fig:schub}
 \end{figure}
 
 \subsection{Spezifischer Impuls und Thermodynamik}
 
 \begin{theorem}[Rankine-Hugoniot Stagnationsbedingungen]
-  In einem Scramjet mit stationÃ¤rer, eindimensionaler, adiabater StrÃ¶mung gilt
-  fÃ¼r das StagnationsdruckverhÃ¤ltnis Ã¼ber den Einlaufschock:
+  In einem Scramjet mit stationärer, eindimensionaler, adiabater Strömung gilt
+  für das Stagnationsdruckverhältnis über den Einlaufschock:
   \begin{equation}
     \frac{p_{02}}{p_{01}} = \left[\frac{(\gamma+1)M_1^2}{(\gamma-1)M_1^2+2}\right]^{\!\gamma/(\gamma-1)}
     \cdot \left[\frac{\gamma+1}{2\gamma\,M_1^2 - (\gamma-1)}\right]^{\!1/(\gamma-1)}
@@ -342,7 +342,7 @@ Triebwerken (TBCC), die nahtlos zwischen Turbinen- und Scramjet-Modus umschalten
   \end{equation}
 \end{theorem}
 
-Der spezifische Impuls $I_{sp}$ des Scramjet lÃ¤sst sich als Funktion der
+Der spezifische Impuls $I_{sp}$ des Scramjet lässt sich als Funktion der
 Verbrennungstemperatur $T_c$ und der Einlaufmach-Zahl approximieren:
 \begin{equation}
   I_{sp} \approx \frac{1}{g_0}\,\sqrt{\frac{2\eta_c\,c_p\,T_c\left[1 -
@@ -350,11 +350,11 @@ Verbrennungstemperatur $T_c$ und der Einlaufmach-Zahl approximieren:
     {1 + \tfrac{\gamma-1}{2}M_{cc}^2}} \cdot \frac{1}{f_{st}}
   \label{eq:isp_scramjet}
 \end{equation}
-wobei $\eta_c$ der Verbrennungswirkungsgrad, $f_{st}$ das stÃ¶chiometrische
-Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
+wobei $\eta_c$ der Verbrennungswirkungsgrad, $f_{st}$ das stöchiometrische
+Kraftstoff-Luft-Verhältnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
 
 % -----------------------------------------------------------------------
-\section{WendemanÃ¶ver: Formaler Nachweis der Wendeleistung}
+\section{Wendemanöver: Formaler Nachweis der Wendeleistung}
 \label{sec:wende}
 % -----------------------------------------------------------------------
 
@@ -372,7 +372,7 @@ Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
 
 \begin{theorem}[Kinematische Wendebedingungen]
   \label{thm:wende}
-  FÃ¼r ein Luftfahrzeug der Masse $m$ im horizontalen, koordinierten Kurvenflug
+  Für ein Luftfahrzeug der Masse $m$ im horizontalen, koordinierten Kurvenflug
   mit Geschwindigkeit $V$ und Lastvielfachem $n$ gelten exakt:
   \begin{align}
     r &= \frac{V^2}{g_0\,\sqrt{n^2 - 1}}
@@ -385,7 +385,7 @@ Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
 \end{theorem}
 
 \begin{proof}
-  Die KrÃ¤ftebilanz im koordinierten Kurvenflug lautet in der vertikalen Ebene:
+  Die Kräftebilanz im koordinierten Kurvenflug lautet in der vertikalen Ebene:
   $L\cos\phi = mg_0$ und in der horizontalen Zentripetal-Richtung
   $L\sin\phi = mv^2/r$.
   Division ergibt $\tan\phi = V^2/(r\,g_0)$.
@@ -418,7 +418,7 @@ Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
 
 \begin{theorem}[Limitierendes Lastvielfaches]
   \label{thm:nlim}
-  Das tatsÃ¤chlich erreichbare Lastvielfache $n_{\max}(V, H)$ ist das Minimum
+  Das tatsächlich erreichbare Lastvielfache $n_{\max}(V, H)$ ist das Minimum
   aus der Strukturgrenze $n_s$ und der aerodynamischen Grenze $n_{aero}$:
   \begin{equation}
     n_{\max}(V, H) = \min\!\left(n_s,\; n_{aero}\right),
@@ -436,7 +436,7 @@ Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
   und der Definition \cref{eq:n}: $n_{aero} = L/(mg_0) = q\,S\,C_{L,\max}/(mg_0)$.
   Die Strukturgrenze folgt aus dem Festigkeitsnachweis nach MIL-A-8861B, der einen
   Sicherheitsfaktor 1{,}5 auf $n_s = 6$ vorschreibt.
-  Da beide Grenzen unabhÃ¤ngig sind, bestimmt das Minimum das Erreichbare.
+  Da beide Grenzen unabhängig sind, bestimmt das Minimum das Erreichbare.
 \end{proof}
 
 \subsection{Optimaler Wendemachbereich}
@@ -451,29 +451,29 @@ Kraftstoff-Luft-VerhÃ¤ltnis und $M_{cc}$ die Mach-Zahl in der Brennkammer ist.
   \end{equation}
 \end{korollar}
 
-FÃ¼r $H = \SI{20}{\kilo\metre}$ (ISA) ergibt die numerische Auswertung
+Für $H = \SI{20}{\kilo\metre}$ (ISA) ergibt die numerische Auswertung
 $M_{\text{opt}} \approx 2{,}1$ mit $r_{\min} \approx \SI{32}{\kilo\metre}$
-und einer 180Â°-Wendezeit von $t_{180} \approx \SI{52}{\second}$.
+und einer 180 °-Wendezeit von $t_{180} \approx \SI{52}{\second}$.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/fig05_Vn.pdf}
-  \caption{V-n-ManÃ¶vrierdiagramm bei $H = \SI{20}{\kilo\metre}$.
+  \caption{V-n-Manövrierdiagramm bei $H = \SI{20}{\kilo\metre}$.
            Blau: positive Auftriebsgrenze ($C_{L,\max} = 1{,}2$).
            Rot: negative Auftriebsgrenze ($C_{L,\min} = -0{,}6$).
            Die gestrichelten Linien markieren die Strukturlimits $n_{\max} = 6$
            und $n_{\min} = -2{,}5$.
-           $V_A$ ist die ManÃ¶vriergeschwindigkeit (Schnittpunkt Auftriebsgrenze
+           $V_A$ ist die Manövriergeschwindigkeit (Schnittpunkt Auftriebsgrenze
            mit $n_s$), $V_D$ die Konstruktionstauchgeschwindigkeit.}
   \label{fig:Vn}
 \end{figure}
 
-\subsection{WendemanÃ¶ver im Zeitbereich}
+\subsection{Wendemanöver im Zeitbereich}
 
-Das koordinierte KurvenmanÃ¶ver wird im Zustandsraummodell beschrieben.
+Das koordinierte Kurvenmanöver wird im Zustandsraummodell beschrieben.
 Sei $\mathbf{x} = (V,\, \gamma,\, \chi,\, x,\, y,\, H)^T$ der Zustandsvektor
-(Geschwindigkeit, Bahnneigung, Kurswinkel, Lage, HÃ¶he), dann lauten die
-Bewegungsgleichungen fÃ¼r den Punktmassenschwerpunkt:
+(Geschwindigkeit, Bahnneigung, Kurswinkel, Lage, Höhe), dann lauten die
+Bewegungsgleichungen für den Punktmassenschwerpunkt:
 \begin{align}
   \dot{V} &= \frac{T\cos\alpha - D}{m} - g_0\sin\gamma
   \label{eq:Vdot}\\
@@ -488,24 +488,24 @@ Bewegungsgleichungen fÃ¼r den Punktmassenschwerpunkt:
 mit Bankungs-(Roll-)winkel $\mu$ und Anstellwinkel $\alpha$.
 
 % -----------------------------------------------------------------------
-\section{Steigflug und FlugzustandshÃ¼llkurve}
+\section{Steigflug und Flugzustandshüllkurve}
 \label{sec:steig}
 % -----------------------------------------------------------------------
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/fig06_climb.pdf}
-  \caption{Steigfluganalyse fÃ¼r drei Steigwinkel $\gamma \in \{8^\circ, 15^\circ, 25^\circ\}$.
-           Links: HÃ¶he $H(t)$ Ã¼ber der Zeit.
-           Mitte: Mach-Verlauf $M(t)$ wÃ¤hrend des Steigflugs.
-           Rechts: Flugbahn $H(x)$ im LÃ¤ngsschnitt.
+  \caption{Steigfluganalyse für drei Steigwinkel $\gamma \in \{8^\circ, 15^\circ, 25^\circ\}$.
+           Links: Höhe $H(t)$ über der Zeit.
+           Mitte: Mach-Verlauf $M(t)$ während des Steigflugs.
+           Rechts: Flugbahn $H(x)$ im Längsschnitt.
            Der steile Steigflug ($\gamma = 25^\circ$) erreicht $H = \SI{30}{\kilo\metre}$
-           in deutlich kÃ¼rzerer Zeit als der flache Steigkurs.}
+           in deutlich kürzerer Zeit als der flache Steigkurs.}
   \label{fig:steig}
 \end{figure}
 
-\begin{theorem}[Spezifische Ãœberschussleistung]
-  Die spezifische Ãœberschussleistung (SEP) ist definiert als:
+\begin{theorem}[Spezifische Überschussleistung]
+  Die spezifische Überschussleistung (SEP) ist definiert als:
   \begin{equation}
     \text{SEP} = V\,\frac{T - D}{W} = \frac{\mathrm{d}}{\mathrm{d}t}\!\left(H + \frac{V^2}{2g_0}\right)
     \label{eq:sep}
@@ -516,24 +516,24 @@ mit Bankungs-(Roll-)winkel $\mu$ und Anstellwinkel $\alpha$.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{figures/fig12_envelope.pdf}
-  \caption{FlugzustandshÃ¼llkurve des \SR{} im $M$-$H$-Diagramm.
+  \caption{Flugzustandshüllkurve des \SR{} im $M$-$H$-Diagramm.
            Die blaue Abrisslinie begrenzt den Bereich nach unten-links,
            die orange thermische Grenze ($T_{aw} = 600\,{}^\circ$C Ti-Legierung)
            nach oben-rechts.
-           Der Auslegungspunkt bei $M = 3{,}5$, $H = \SI{20}{\kilo\metre}$ (grÃ¼ne Raute)
-           liegt komfortabel innerhalb der HÃ¼llkurve.}
+           Der Auslegungspunkt bei $M = 3{,}5$, $H = \SI{20}{\kilo\metre}$ (grüne Raute)
+           liegt komfortabel innerhalb der Hüllkurve.}
   \label{fig:envelope}
 \end{figure}
 
 % -----------------------------------------------------------------------
-\section{Aerodynamische ErwÃ¤rmung}
+\section{Aerodynamische Erwärmung}
 \label{sec:therm}
 % -----------------------------------------------------------------------
 
 \subsection{Stagnationstemperatur}
 
 \begin{theorem}[Stagnationstemperatur]
-  In einem adiabaten, kompressiblen StrÃ¶mungsfeld gilt fÃ¼r die
+  In einem adiabaten, kompressiblen Strömungsfeld gilt für die
   Stagnationstemperatur:
   \begin{equation}
     T_0 = T_\infty\left(1 + \frac{\gamma - 1}{2}\,M_\infty^2\right)
@@ -542,7 +542,7 @@ mit Bankungs-(Roll-)winkel $\mu$ und Anstellwinkel $\alpha$.
 \end{theorem}
 
 \begin{proof}
-  Aus dem ersten Hauptsatz der Thermodynamik fÃ¼r adiabate, stationÃ¤re StrÃ¶mung:
+  Aus dem ersten Hauptsatz der Thermodynamik für adiabate, stationäre Strömung:
   $h_0 = h + V^2/2 = \text{const}$.
   Mit $h = c_p T$ (kalorisch ideales Gas): $c_p T_0 = c_p T + V^2/2$.
   Division durch $c_p T$ und Verwendung von $c_p = \gamma R/(\gamma-1)$
@@ -556,7 +556,7 @@ Die relevante Entwurfstemperatur ist die adiabatische Wandtemperatur:
   T_{aw} = T_\infty\left(1 + r\,\frac{\gamma - 1}{2}\,M_\infty^2\right)
   \label{eq:Taw}
 \end{equation}
-mit dem RÃ¼ckgewinnungsfaktor $r$. FÃ¼r turbulente Grenzschicht: $r \approx Pr^{1/3}$
+mit dem Rückgewinnungsfaktor $r$. Für turbulente Grenzschicht: $r \approx Pr^{1/3}$
 mit $Pr_{\text{Luft}} \approx 0{,}71$, also $r \approx 0{,}89$.
 
 \begin{figure}[H]
@@ -564,19 +564,19 @@ mit $Pr_{\text{Luft}} \approx 0{,}71$, also $r \approx 0{,}89$.
   \includegraphics[width=0.9\textwidth]{figures/fig07_heating.pdf}
   \caption{Links: Stagnationstemperatur $T_0$ (rot) und adiabatische Wandtemperatur
            $T_{aw}$ (orange) bei $H = \SI{20}{\kilo\metre}$.
-           Die horizontalen Linien markieren die Dauertemperaturgrenzen fÃ¼r
-           Ti-6Al-4V (blau, 593Â°C) und keramische Verbundwerkstoffe CMC (grÃ¼n, 1200Â°C).
-           Der rote Schraffurbereich kennzeichnet den Ãœberhitzungsbereich fÃ¼r Titan.
-           Rechts: Aerodynamischer WÃ¤rmefluss an der Vorderkante ($x_c = 0{,}5$ m).}
+           Die horizontalen Linien markieren die Dauertemperaturgrenzen für
+           Ti-6Al-4V (blau, 593 °C) und keramische Verbundwerkstoffe CMC (grün, 1200 °C).
+           Der rote Schraffurbereich kennzeichnet den Überhitzungsbereich für Titan.
+           Rechts: Aerodynamischer Wärmefluss an der Vorderkante ($x_c = 0{,}5$ m).}
   \label{fig:heizung}
 \end{figure}
 
 \begin{proposition}[Strukturmaterial-Wahl]
-  FÃ¼r $M_\infty > 2{,}7$ bei $H = \SI{20}{\kilo\metre}$ Ã¼berschreitet $T_{aw}$
+  Für $M_\infty > 2{,}7$ bei $H = \SI{20}{\kilo\metre}$ überschreitet $T_{aw}$
   die Dauerfestigkeitstemperatur von Ti-6Al-4V ($593\,{}^\circ$C). Oberhalb
   $M_\infty = 4{,}5$ versagt auch CMC unterhalb von $1200\,{}^\circ$C.
-  Folgerung: Die PrimÃ¤rstruktur des \SR{} erfordert keramische Verbundwerkstoffe
-  (CMC) im vorderen Rumpfbereich und aktive KÃ¼hlung der Vorderkanten.
+  Folgerung: Die Primärstruktur des \SR{} erfordert keramische Verbundwerkstoffe
+  (CMC) im vorderen Rumpfbereich und aktive Kühlung der Vorderkanten.
 \end{proposition}
 
 % -----------------------------------------------------------------------
@@ -586,13 +586,13 @@ mit $Pr_{\text{Luft}} \approx 0{,}71$, also $r \approx 0{,}89$.
 
 \subsection{Physiologische g-Grenzen}
 
-Das \SR{} ist fÃ¼r eine Besatzung von genau zwei Personen ausgelegt:
-\textbf{Pilot} (vorderes Cockpit) und \textbf{Waffensystemoffizier / AufklÃ¤rungsoperator}
+Das \SR{} ist für eine Besatzung von genau zwei Personen ausgelegt:
+\textbf{Pilot} (vorderes Cockpit) und \textbf{Waffensystemoffizier / Aufklärungsoperator}
 (hinteres Cockpit). Kein Passagierraum ist vorgesehen.
 
 \begin{definition}[Okularer Blutdruck unter g-Last]
   Der systolische Blutdruck am Augenhintergrund unter Beschleunigung $n\,g_0$
-  (Gz-Achse, kopfwÃ¤rts positiv) betrÃ¤gt:
+  (Gz-Achse, kopfwärts positiv) beträgt:
   \begin{equation}
     p_{ocular}(n) = p_{sys,0} - n\,\rho_{\text{Blut}}\,g_0\,h_{HB}
     \label{eq:pocular}
@@ -604,7 +604,7 @@ Das \SR{} ist fÃ¼r eine Besatzung von genau zwei Personen ausgelegt:
 \begin{theorem}[G-LOC-Schwelle]
   \label{thm:gloc}
   G-induced Loss of Consciousness (G-LOC) tritt auf, wenn $p_{ocular} \leq 0$.
-  Ohne SchutzmaÃŸnahmen folgt aus \cref{eq:pocular}:
+  Ohne Schutzmaßnahmen folgt aus \cref{eq:pocular}:
   \begin{equation}
     n_{LOC} = \frac{p_{sys,0}}{\rho_{\text{Blut}}\,g_0\,h_{HB}}
     = \frac{16\,000}{1060 \cdot 9{,}81 \cdot 0{,}30}
@@ -622,27 +622,27 @@ mit $k_{suit} = \SI{15}{\hecto\pascal\per g}$ und $n_0 = 1{,}0\,g$.
 Dieser Druck hebt die effektive G-LOC-Schwelle auf $\approx 8{,}9\,g$.
 
 Da $n_s = 6\,g < n_{LOC,ATAGS} = 8{,}9\,g$, ist die Strukturgrenze die
-bindende EinschrÃ¤nkung â€” die Piloten kÃ¶nnen das volle Lastvielfache
+bindende Einschränkung â€” die Piloten können das volle Lastvielfache
 von $n_s = 6$ problemlos tolerieren.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/fig08_pilot_loads.pdf}
   \caption{Pilotenbelastungsanalyse.
-           Oben links: g-Profil eines typischen WendemanÃ¶vers.
-           Die G-LOC-Grenze (rot gestrichelt) bei $6{,}3\,g$ wird nicht Ã¼berschritten.
+           Oben links: g-Profil eines typischen Wendemanövers.
+           Die G-LOC-Grenze (rot gestrichelt) bei $6{,}3\,g$ wird nicht überschritten.
            Oben rechts: Okularer Blutdruck nach \cref{eq:pocular};
            der Grauschleier-Bereich (orange) tritt kurzzeitig bei der Spitzenlast auf.
-           Unten links: Anti-G-Anzug Druckkennlinie fÃ¼r Standard- und ATAGS-Anzug.
-           Unten rechts: Kabinendruckprofil versus FlughÃ¶he (Normalbetrieb: 2400 m Ã¤quiv.,
-           Notbetrieb: 6000 m Ã¤quiv.).}
+           Unten links: Anti-G-Anzug Druckkennlinie für Standard- und ATAGS-Anzug.
+           Unten rechts: Kabinendruckprofil versus Flughöhe (Normalbetrieb: 2400 m äquiv.,
+           Notbetrieb: 6000 m äquiv.).}
   \label{fig:pilot}
 \end{figure}
 
 \subsection{Druckkabine und Lebenserhaltungssystem}
 
-Die Druckkabine hÃ¤lt ein Ã„quivalent von $H_{ekv} = \SI{2400}{\metre}$
-(Kabinendruck $\approx \SI{752}{\hecto\pascal}$) bis zur DienstgipfelhÃ¶he
+Die Druckkabine hält ein Äquivalent von $H_{ekv} = \SI{2400}{\metre}$
+(Kabinendruck $\approx \SI{752}{\hecto\pascal}$) bis zur Dienstgipfelhöhe
 $H = \SI{30}{\kilo\metre}$ aufrecht:
 \begin{equation}
   p_{cabin} = p_0\,\left(1 - \frac{\lambda\,H_{ekv}}{T_0}\right)^{g_0/(\lambda R)}
@@ -652,13 +652,13 @@ $H = \SI{30}{\kilo\metre}$ aufrecht:
 \end{equation}
 
 % -----------------------------------------------------------------------
-\section{Dynamische StabilitÃ¤t}
+\section{Dynamische Stabilität}
 \label{sec:stabilitaet}
 % -----------------------------------------------------------------------
 
 \subsection{Lineare Flugdynamik}
 
-Das linearisierte KleinstÃ¶rungs-Zustandsraummodell fÃ¼r die LÃ¤ngsdynamik lautet:
+Das linearisierte Kleinstörungs-Zustandsraummodell für die Längsdynamik lautet:
 \begin{equation}
   \dot{\mathbf{x}}_L = A_L\,\mathbf{x}_L + B_L\,\mathbf{u}_L
   \label{eq:statraum}
@@ -666,8 +666,8 @@ Das linearisierte KleinstÃ¶rungs-Zustandsraummodell fÃ¼r die LÃ¤ngsdynamik
 mit $\mathbf{x}_L = (\Delta u,\, \Delta w,\, q,\, \Delta\theta)^T$ und den
 Zustandsderivaten $Z_u, Z_w, M_u, M_w$ etc.
 
-\begin{definition}[Eigenfrequenz und DÃ¤mpfung der Kurzperiode]
-  Die Kurzperioden-Eigenfrequenz und -dÃ¤mpfung sind:
+\begin{definition}[Eigenfrequenz und Dämpfung der Kurzperiode]
+  Die Kurzperioden-Eigenfrequenz und -dämpfung sind:
   \begin{equation}
     \omega_{n,SP}^2 \approx \frac{Z_w\,M_q + M_w\,V_0}{V_0},
     \qquad
@@ -679,58 +679,58 @@ Zustandsderivaten $Z_u, Z_w, M_u, M_w$ etc.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/fig10_stability.pdf}
-  \caption{Dynamische StabilitÃ¤tsanalyse.
+  \caption{Dynamische Stabilitätsanalyse.
            Oben links: Phygoiden-Periode als Funktion der Mach-Zahl.
-           Oben rechts: Kurzperioden-Eigenfrequenz und DÃ¤mpfung;
+           Oben rechts: Kurzperioden-Eigenfrequenz und Dämpfung;
            die MIL-SPEC-Grenze $\zeta_{SP} \geq 0{,}35$ (rot gestrichelt) wird eingehalten.
            Unten links: Pol-Nullstellen-Diagramm der Kurzperiode bei vier Mach-Zahlen.
-           Unten rechts: Dutch-Roll StabilitÃ¤t â€” $\zeta_{DR}\,\omega_{DR} \geq 0{,}35\;\text{rad/s}$
-           gemÃ¤ÃŸ MIL-F-8785C wird fÃ¼r alle $M > 1{,}2$ eingehalten.}
+           Unten rechts: Dutch-Roll Stabilität â€” $\zeta_{DR}\,\omega_{DR} \geq 0{,}35\;\text{rad/s}$
+           gemäß MIL-F-8785C wird für alle $M > 1{,}2$ eingehalten.}
   \label{fig:stabilitaet}
 \end{figure}
 
-\subsection{Fly-by-Wire und aktive StabilitÃ¤tsaugmentation}
+\subsection{Fly-by-Wire und aktive Stabilitätsaugmentation}
 
 Da der \SR{} im transonischen Bereich und bei hohen Mach-Zahlen statisch
-neutral bis leicht instabil ist (fÃ¼r geringe Wellenwiderstandszunahme),
+neutral bis leicht instabil ist (für geringe Wellenwiderstandszunahme),
 ist ein volldigitales Fly-by-Wire-System (FBW) mit quadruplex-redundanter
 Auslegung zwingend erforderlich.
 
 \begin{theorem}[Robustheitsbedingung FBW]
-  FÃ¼r das geschlossene Regelkreissystem mit Regler $K(s)$ und Strecke $G(s)$
+  Für das geschlossene Regelkreissystem mit Regler $K(s)$ und Strecke $G(s)$
   ist die Robustheitsbedingung:
   \begin{equation}
     \left\| S(j\omega) \right\|_\infty \leq \frac{1}{\Delta_{\min}}, \qquad
     S(s) = (I + G(s)\,K(s))^{-1}
     \label{eq:robust}
   \end{equation}
-  mit der minimalen Strukturellen SingulÃ¤rwert-Schranke $\Delta_{\min}$.
+  mit der minimalen Strukturellen Singulärwert-Schranke $\Delta_{\min}$.
 \end{theorem}
 
 % -----------------------------------------------------------------------
-\section{AufklÃ¤rungsnutzen und Sensorsysteme}
+\section{Aufklärungsnutzen und Sensorsysteme}
 \label{sec:recon}
 % -----------------------------------------------------------------------
 
-\subsection{Optische AufklÃ¤rung: BodenauflÃ¶sung}
+\subsection{Optische Aufklärung: Bodenauflösung}
 
-Die geometrische BodenauflÃ¶sung (Ground Sample Distance, GSD) einer
-optischen Kamera mit Brennweite $f$ und PixelgrÃ¶sse $p$ aus der FlughÃ¶he $H$ betrÃ¤gt:
+Die geometrische Bodenauflösung (Ground Sample Distance, GSD) einer
+optischen Kamera mit Brennweite $f$ und Pixelgrösse $p$ aus der Flughöhe $H$ beträgt:
 \begin{equation}
   \text{GSD} = \frac{p\,H}{f}
   \label{eq:gsd}
 \end{equation}
-FÃ¼r $f = \SI{1800}{\milli\metre}$, $p = \SI{5{,}2}{\micro\metre}$, $H = \SI{20}{\kilo\metre}$:
+Für $f = \SI{1800}{\milli\metre}$, $p = \SI{5{,}2}{\micro\metre}$, $H = \SI{20}{\kilo\metre}$:
 \begin{equation}
   \text{GSD} = \frac{5{,}2 \times 10^{-6} \cdot 20\,000}{1{,}8}
   = \SI{0{,}058}{\metre} \approx \SI{5{,}8}{\centi\metre}
 \end{equation}
-Damit lassen sich Fahrzeuge (LÃ¤nge $> \SI{3}{\metre}$) mit einem AuflÃ¶sungsfaktor
+Damit lassen sich Fahrzeuge (Länge $> \SI{3}{\metre}$) mit einem Auflösungsfaktor
 $> 50$ sicher klassifizieren.
 
 \subsection{Radar-Horizont und SIGINT}
 
-Der geometrische Radar-Horizont (ErdkrÃ¼mmung einbezogen):
+Der geometrische Radar-Horizont (Erdkrümmung einbezogen):
 \begin{equation}
   R_{horizon} = \sqrt{2\,R_E\,H}
   \label{eq:rhorizon}
@@ -741,12 +741,12 @@ Bei $H = \SI{20}{\kilo\metre}$: $R_{horizon} = \sqrt{2 \cdot 6{,}371 \times 10^6
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/fig09_recon.pdf}
-  \caption{AufklÃ¤rungsleistung des \SR{}.
-           Links: Radar-Horizont als Funktion der FlughÃ¶he nach \cref{eq:rhorizon}.
-           Mitte: GSD der optischen AufklÃ¤rungskamera nach \cref{eq:gsd};
+  \caption{Aufklärungsleistung des \SR{}.
+           Links: Radar-Horizont als Funktion der Flughöhe nach \cref{eq:rhorizon}.
+           Mitte: GSD der optischen Aufklärungskamera nach \cref{eq:gsd};
            bei $H = \SI{20}{\kilo\metre}$ wird eine GSD von $< \SI{6}{\centi\metre}$
            erzielt.
-           Rechts: Payload-Reichweiten-Kompromiss â€” erhÃ¶hte Sensorlast reduziert
+           Rechts: Payload-Reichweiten-Kompromiss â€” erhöhte Sensorlast reduziert
            die erzielbare Reichweite.}
   \label{fig:recon}
 \end{figure}
@@ -758,10 +758,10 @@ Bei $H = \SI{20}{\kilo\metre}$: $R_{horizon} = \sqrt{2 \cdot 6{,}371 \times 10^6
   \includegraphics[width=\textwidth]{figures/fig11_rcs.pdf}
   \caption{Radar-Querschnitt (RCS) des \SR{} bei $f = \SI{10}{\giga\hertz}$.
            Links: Polardarstellung (logarithmisch), Nase zeigt zu $0^\circ$.
-           Rechts: Linearer Verlauf Ã¼ber den Azimutwinkel.
+           Rechts: Linearer Verlauf über den Azimutwinkel.
            Der frontale Minimalwert von $-20\;\text{dBsm}$ ($= \SI{0{,}01}{\metre\squared}$)
            entspricht dem Stealthziel. Seitliche Reflektionen sind durch
-           Kantenbeugung an den schrÃ¤gen FlÃ¼gelvorderkanten auf $+5\;\text{dBsm}$ begrenzt.}
+           Kantenbeugung an den schrägen Flügelvorderkanten auf $+5\;\text{dBsm}$ begrenzt.}
   \label{fig:rcs}
 \end{figure}
 
@@ -772,15 +772,15 @@ Bei $H = \SI{20}{\kilo\metre}$: $R_{horizon} = \sqrt{2 \cdot 6{,}371 \times 10^6
 
 \begin{table}[H]
 \centering
-\caption{Leistungszusammenfassung \SR{} â€” formal nachgewiesene KenngrÃ¶ÃŸen}
+\caption{Leistungszusammenfassung \SR{} â€” formal nachgewiesene Kenngrößen}
 \label{tab:summary}
 \begin{tabular}{lcc}
 \toprule
-KenngrÃ¶ÃŸe & Wert & Formel/Verweis \\
+Kenngröße & Wert & Formel/Verweis \\
 \midrule
-HÃ¶chstgeschwindigkeit & $M_{\max} = 5{,}0$ & \cref{fig:envelope} \\
+Höchstgeschwindigkeit & $M_{\max} = 5{,}0$ & \cref{fig:envelope} \\
 Reisegeschwindigkeit & $M_{cruise} = 3{,}5$ & â€” \\
-DienstgipfelhÃ¶he & $H_{max} = \SI{30}{\kilo\metre}$ & \cref{fig:envelope} \\
+Dienstgipfelhöhe & $H_{max} = \SI{30}{\kilo\metre}$ & \cref{fig:envelope} \\
 Max. Lastvielfaches & $n_s = 6{,}0$ & \cref{thm:nlim} \\
 Min. Kurvenradius ($M2$, $H20$) & $r_{min} \approx \SI{32}{\kilo\metre}$ & \cref{eq:radius} \\
 $180^\circ$-Wendezeit ($M2$, $H20$) & $t_{180} \approx \SI{52}{\second}$ & \cref{eq:t180} \\
@@ -806,22 +806,22 @@ Stagnationstemperaturtheorie und physiologischer g-Last-Modellierung beruht.
 \paragraph{Zentrale Ergebnisse:}
 \begin{enumerate}
   \item Die formalen Beweise der \cref{thm:cla,thm:wende,thm:nlim,thm:gloc}
-        bilden das Fundament fÃ¼r die quantitative Leistungsvorhersage.
-  \item Das WendemanÃ¶ver (SÃ¤tze~\ref{thm:wende},~\ref{kor:opt_M}) ist bei
-        $M \approx 2{,}1$ optimal; der minimale Kurvenradius betrÃ¤gt
+        bilden das Fundament für die quantitative Leistungsvorhersage.
+  \item Das Wendemanöver (Sätze~\ref{thm:wende},~\ref{kor:opt_M}) ist bei
+        $M \approx 2{,}1$ optimal; der minimale Kurvenradius beträgt
         $r_{min} \approx \SI{32}{\kilo\metre}$ bei $H = \SI{20}{\kilo\metre}$.
   \item Die physiologische Analyse (\cref{thm:gloc}) belegt, dass die
         Zwei-Piloten-Besatzung mit ATAGS-Anzug das volle Lastvielfaches
-        $n_s = 6$ ausschÃ¶pfen kann.
+        $n_s = 6$ ausschöpfen kann.
   \item Die thermische Analyse zeigt, dass CMC-Materialien ab $M > 4{,}5$
         zwingend erforderlich sind.
 \end{enumerate}
 
 \paragraph{Ausblick.}
-WeiterfÃ¼hrende Arbeiten sollten die AeroelastizitÃ¤t des DeltaflÃ¼gels bei
-hohen Mach-Zahlen (Flattern), die prÃ¤zise Triebwerksmodellierung des TBCC
-mittels partieller Differentialgleichungen der reaktiven StrÃ¶mung sowie
-die vollstÃ¤ndige 6-DOF-Flugdynamiksimulation adressieren.
+Weiterführende Arbeiten sollten die Aeroelastizität des Deltaflügels bei
+hohen Mach-Zahlen (Flattern), die präzise Triebwerksmodellierung des TBCC
+mittels partieller Differentialgleichungen der reaktiven Strömung sowie
+die vollständige 6-DOF-Flugdynamiksimulation adressieren.
 
 % -----------------------------------------------------------------------
 % Nomenklatur
@@ -830,7 +830,7 @@ die vollstÃ¤ndige 6-DOF-Flugdynamiksimulation adressieren.
 \nomenclature{$C_L$}{Auftriebsbeiwert}
 \nomenclature{$C_D$}{Widerstandsbeiwert}
 \nomenclature{$C_{D0}$}{Nullwiderstandsbeiwert}
-\nomenclature{$\Lambda$}{FlÃ¼gelstreckung}
+\nomenclature{$\Lambda$}{Flügelstreckung}
 \nomenclature{$n$}{Lastvielfaches}
 \nomenclature{$r$}{Kurvenradius (m)}
 \nomenclature{$\dot\psi$}{Gierrate (rad/s)}
@@ -840,7 +840,7 @@ die vollstÃ¤ndige 6-DOF-Flugdynamiksimulation adressieren.
 \nomenclature{$E$}{Gleitzahl $L/D$}
 \nomenclature{$R$}{Reichweite (m)}
 \nomenclature{$\sigma$}{Radar-Querschnitt (m$^2$)}
-\nomenclature{$\text{GSD}$}{Geometrische BodenauflÃ¶sung (m)}
+\nomenclature{$\text{GSD}$}{Geometrische Bodenauflösung (m)}
 
 \printnomenclature
 
@@ -881,8 +881,8 @@ R.~Franks und J.~French,
 
 \bibitem{holtz2020}
 J.~Holtz,
-\textit{Thermische Schutzschichten fÃ¼r Hochgeschwindigkeitsflugzeuge}.
-DLR-Forschungsbericht~FB~2020-17, KÃ¶ln, 2020.
+\textit{Thermische Schutzschichten für Hochgeschwindigkeitsflugzeuge}.
+DLR-Forschungsbericht~FB~2020-17, Köln, 2020.
 
 \end{thebibliography}
 

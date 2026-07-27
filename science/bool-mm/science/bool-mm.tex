@@ -34,13 +34,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -62,8 +62,8 @@
 \tableofcontents
 \newpage
 
-\section{EinfÃ¼hrung}
-Diese Arbeit beschreibt eine Anwendung der Signatur-Technik aus dem Subgraph Algorithmus auf die Boolean Matrixmultiplikation. WÃ¤hrend die allgemeine Matrixmultiplikation eine KomplexitÃ¤t von mindestens $\Omega(n^{2.37})$ hat, wird gezeigt, dass Boolean Matrixmultiplikation mit der Signatur-Methode in $O(n^2)$ Zeit berechnet werden kann. Dies wird durch geschickte Nutzung von Bitoperationen und polynomialer Hash-Kodierung erreicht.
+\section{Einführung}
+Diese Arbeit beschreibt eine Anwendung der Signatur-Technik aus dem Subgraph Algorithmus auf die Boolean Matrixmultiplikation. Während die allgemeine Matrixmultiplikation eine Komplexität von mindestens $\Omega(n^{2.37})$ hat, wird gezeigt, dass Boolean Matrixmultiplikation mit der Signatur-Methode in $O(n^2)$ Zeit berechnet werden kann. Dies wird durch geschickte Nutzung von Bitoperationen und polynomialer Hash-Kodierung erreicht.
 
 Die klassische Matrixmultiplikation zweier $n \times n$ Matrizen $A$ und $B$ berechnet eine Ergebnismatrix $C$ mit:
 \begin{align}
@@ -71,10 +71,10 @@ Die klassische Matrixmultiplikation zweier $n \times n$ Matrizen $A$ und $B$ ber
 \end{align}
 Die naive Implementierung hat eine Laufzeit von $O(n^3)$. Fortgeschrittene Algorithmen wie \textsc{Strassen} (1969) oder \textsc{Coppersmith-Winograd} (1990) erreichen $O(n^{2.807})$ bzw. $O(n^{2.376})$.
 
-FÃ¼r \textbf{Boolean Matrizen}, bei denen alle EintrÃ¤ge $\{0, 1\}$ sind und die Operationen durch logische Operationen ersetzt werden, kann die Signatur-Technik aus dem Subgraph Algorithmus genutzt werden, um eine Laufzeit von $O(n^2)$ zu erreichen.
+Für \textbf{Boolean Matrizen}, bei denen alle Einträge $\{0, 1\}$ sind und die Operationen durch logische Operationen ersetzt werden, kann die Signatur-Technik aus dem Subgraph Algorithmus genutzt werden, um eine Laufzeit von $O(n^2)$ zu erreichen.
 
 \begin{definition}[Boolean Matrixmultiplikation]
-	FÃ¼r zwei Boolean Matrizen $A, B \in \{0,1\}^{n \times n}$ ist die Boolean Matrixmultiplikation definiert als:
+	Für zwei Boolean Matrizen $A, B \in \{0,1\}^{n \times n}$ ist die Boolean Matrixmultiplikation definiert als:
 	\[
 	C_{ij} = \bigvee_{k=1}^{n} (A_{ik} \wedge B_{kj})
 	\]
@@ -83,17 +83,17 @@ FÃ¼r \textbf{Boolean Matrizen}, bei denen alle EintrÃ¤ge $\{0, 1\}$ sind und
 
 Mit anderen Worten: $C_{ij} = 1$ genau dann, wenn es mindestens ein $k$ gibt mit $A_{ik} = 1$ und $B_{kj} = 1$.
 
-Die zentrale Idee aus dem Subgraph Algorithmus ist die Verwendung einer polynomialen Hash-Funktion zur Kodierung von BinÃ¤rvektoren:
+Die zentrale Idee aus dem Subgraph Algorithmus ist die Verwendung einer polynomialen Hash-Funktion zur Kodierung von Binärvektoren:
 
 \begin{definition}[Signatur-Funktion]
-	FÃ¼r einen BinÃ¤rvektor $v = (v_0, v_1, \ldots, v_{n-1}) \in \{0,1\}^n$ ist die Signatur definiert als:
+	Für einen Binärvektor $v = (v_0, v_1, \ldots, v_{n-1}) \in \{0,1\}^n$ ist die Signatur definiert als:
 	\begin{align}
 		\sigma(v) = \sum_{i=0}^{n-1} v_i \cdot 2^i
 	\end{align}
 \end{definition}
 
 \begin{beispiel}
-	FÃ¼r $v = (1, 0, 1, 1)$ ergibt sich:
+	Für $v = (1, 0, 1, 1)$ ergibt sich:
 	\[
 	\sigma(v) = 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3 = 1 + 4 + 8 = 13
 	\]
@@ -104,13 +104,13 @@ Die zentrale Idee aus dem Subgraph Algorithmus ist die Verwendung einer polynomi
 \end{lemma}
 
 \begin{proof}
-	Die Signatur entspricht der Interpretation des BinÃ¤rvektors als Dezimalzahl in BinÃ¤rdarstellung. Verschiedene BinÃ¤rvektoren ergeben verschiedene Dezimalzahlen im Bereich $[0, 2^n-1]$.
+	Die Signatur entspricht der Interpretation des Binärvektors als Dezimalzahl in Binärdarstellung. Verschiedene Binärvektoren ergeben verschiedene Dezimalzahlen im Bereich $[0, 2^n-1]$.
 \end{proof}
 
-Die Signatur hat eine wichtige algebraische Eigenschaft bezÃ¼glich der bitweisen UND-Operation:
+Die Signatur hat eine wichtige algebraische Eigenschaft bezüglich der bitweisen UND-Operation:
 
 \begin{lemma}[Bitweise UND-Operation]
-	Seien $v, w \in \{0,1\}^n$ zwei BinÃ¤rvektoren mit Signaturen $\sigma(v)$ und $\sigma(w)$. Dann gilt:
+	Seien $v, w \in \{0,1\}^n$ zwei Binärvektoren mit Signaturen $\sigma(v)$ und $\sigma(w)$. Dann gilt:
 	\[
 	\sigma(v) \; \& \; \sigma(w) = \sigma(v \wedge w)
 	\]
@@ -118,16 +118,16 @@ Die Signatur hat eine wichtige algebraische Eigenschaft bezÃ¼glich der bitweis
 \end{lemma}
 
 \begin{proof}
-	Die bitweise UND-Operation auf Dezimalzahlen entspricht genau der komponentenweisen UND-Operation auf den BinÃ¤rdarstellungen. Da die Signatur die BinÃ¤rdar\-stellung ist, folgt die Behauptung direkt.
+	Die bitweise UND-Operation auf Dezimalzahlen entspricht genau der komponentenweisen UND-Operation auf den Binärdarstellungen. Da die Signatur die Binärdar\-stellung ist, folgt die Behauptung direkt.
 \end{proof}
 
 \section{Algorithmus}
-Der Kerngedanke fÃ¼r die Arbeitsweise des Algorithmus zur Boolean Matrixmultiplikation mit Signaturen ist:
+Der Kerngedanke für die Arbeitsweise des Algorithmus zur Boolean Matrixmultiplikation mit Signaturen ist:
 
 \begin{enumerate}
 	\item Kodiere jede \textbf{Zeile} von $A$ als Signatur
 	\item Kodiere jede \textbf{Spalte} von $B$ als Signatur
-	\item FÃ¼r jedes Element $C_{ij}$:
+	\item Für jedes Element $C_{ij}$:
 	\begin{itemize}
 		\item[-] Berechne bitweise UND der Signaturen: $\sigma(\text{row}_i(A)) \; \& \; \sigma(\text{col}_j(B))$
 		\item[-] Setze $C_{ij} = 1$ falls Ergebnis $\neq 0$, sonst $C_{ij} = 0$
@@ -143,8 +143,8 @@ Algorithmus \ref{alg:bmm} beschreibt die Arbeitsweise zur Boolean Matrixmultipli
 	\textbf{Ausgabe:} Boolean Matrix $C \in \{0,1\}^{n \times n}$ mit $C_{ij} = \bigvee_{k=1}^{n} (A_{ik} \wedge B_{kj})$
 	\begin{algorithmic}[1]
 		\State $n \gets \text{Dimension von } A$
-		\State $\text{rowSig} \gets \text{leeres Array der LÃ¤nge } n$
-		\State $\text{colSig} \gets \text{leeres Array der LÃ¤nge } n$
+		\State $\text{rowSig} \gets \text{leeres Array der Länge } n$
+		\State $\text{colSig} \gets \text{leeres Array der Länge } n$
 		\For{$i = 0$ \textbf{to} $n-1$}
 		\State $\text{rowSig}[i] \gets \sum_{k=0}^{n-1} A_{ik} \cdot 2^k$ \Comment{$O(n)$}
 		\EndFor
@@ -180,7 +180,7 @@ Algorithmus \ref{alg:bmm} beschreibt die Arbeitsweise zur Boolean Matrixmultipli
 	\begin{align}
 		r \; \& \; c = \sum_{k=0}^{n-1} (A_{ik} \wedge B_{kj}) \cdot 2^k
 	\end{align}
-	Dieses Ergebnis ist genau dann $\neq 0$, wenn mindestens ein Term $(A_{ik} \wedge B_{kj}) \neq 0$ ist, was Ã¤quivalent ist zu: es existiert ein $k$ mit $A_{ik} = 1$ und $B_{kj} = 1$.
+	Dieses Ergebnis ist genau dann $\neq 0$, wenn mindestens ein Term $(A_{ik} \wedge B_{kj}) \neq 0$ ist, was äquivalent ist zu: es existiert ein $k$ mit $A_{ik} = 1$ und $B_{kj} = 1$.
 \end{proof}
 
 \begin{satz}[Laufzeit]
@@ -197,29 +197,29 @@ Algorithmus \ref{alg:bmm} beschreibt die Arbeitsweise zur Boolean Matrixmultipli
 	\end{itemize}
 	\textbf{Phase 2: Multiplikation}
 	\begin{itemize}
-		\item[-] Doppelte Schleife Ã¼ber $i, j$: $O(n^2)$ Iterationen
-		\item[-] Pro Iteration: Bitweise UND-Operation in $O(1)$ (HardwareunterstÃ¼tzung)
+		\item[-] Doppelte Schleife über $i, j$: $O(n^2)$ Iterationen
+		\item[-] Pro Iteration: Bitweise UND-Operation in $O(1)$ (Hardwareunterstützung)
 		\item[-] Gesamt Phase 2: $O(n^2)$
 	\end{itemize}
 	
-	GesamtkomplexitÃ¤t: $O(n^2) + O(n^2) = O(n^2)$
+	Gesamtkomplexität: $O(n^2) + O(n^2) = O(n^2)$
 \end{proof}
 
 \begin{korollar}
-	FÃ¼r dÃ¼nnbesetzte Boolean Matrizen mit $m$ Nicht-Null-EintrÃ¤gen ($m \ll n^2$) kann die Laufzeit auf $O(m \cdot n)$ reduziert werden durch Verwendung von Adjazenzlisten statt vollstÃ¤ndiger Matrizen.
+	Für dünnbesetzte Boolean Matrizen mit $m$ Nicht-Null-Einträgen ($m \ll n^2$) kann die Laufzeit auf $O(m \cdot n)$ reduziert werden durch Verwendung von Adjazenzlisten statt vollständiger Matrizen.
 \end{korollar}
 
 \subsection{Implementierung}
 In diesem Kapitel wird auf die Implementierung des Algorithmus \ref{alg:bmm} eingegangen. Dabei wird Python als Programmiersprache verwendet. Listing 1 zeigt die Kernfunktionen der Implementierung.
-\begin{lstlisting}[language=Python, caption=Signatur-Berechnung fÃ¼r Zeilen und Spalten]
+\begin{lstlisting}[language=Python, caption=Signatur-Berechnung für Zeilen und Spalten]
 def _compute_row_signature(self, row: np.ndarray) -> int:
-	"""Berechnet Signatur fÃ¼r eine Zeile."""
+	"""Berechnet Signatur für eine Zeile."""
 	n = len(row)
 	signature = sum(2**i for i in range(n) if row[i] == 1)
 	return signature
 	
 def _compute_column_signature(self, col: np.ndarray) -> int:
-	"""Berechnet Signatur fÃ¼r eine Spalte."""
+	"""Berechnet Signatur für eine Spalte."""
 	n = len(col)
 	signature = sum(2**i for i in range(n) if col[i] == 1)
 	return signature
@@ -322,15 +322,15 @@ In diesem Kapitel wird ein Beispiel zur Arbeitsweise des Algorithmus \ref{alg:bm
 	\end{pmatrix}
 	\]
 \end{beispiel}
-Zur ÃƒÅ“berprÃ¼fung wird nach herkÃ¶mmlicher Definition $C$ berechnet zu
+Zur ÃƒÅ“berprüfung wird nach herkömmlicher Definition $C$ berechnet zu
 \begin{align*}
 	C_{00} &= (A_{00} \wedge B_{00}) \vee (A_{01} \wedge B_{10}) \vee (A_{02} \wedge B_{20}) \\
 	&= (1 \wedge 0) \vee (0 \wedge 1) \vee (1 \wedge 1) = 0 \vee 0 \vee 1 = 1 \quad \checkmark
 \end{align*}
-Alle weiteren EintrÃ¤ge kÃ¶nnen analog Ã¼berprÃ¼ft werden.
+Alle weiteren Einträge können analog überprüft werden.
 
-\section{Vergleich herkÃ¶mmlicher Methoden}
-Die nachfolgende Tabelle zeigt die verschiedenen Algorithmen und ihre Laufzeiten fÃ¼r die Berechnung der Boolean Matrixmultiplikation.
+\section{Vergleich herkömmlicher Methoden}
+Die nachfolgende Tabelle zeigt die verschiedenen Algorithmen und ihre Laufzeiten für die Berechnung der Boolean Matrixmultiplikation.
 \begin{center}
 	\begin{tabular}{|l|c|c|}
 		\hline
@@ -344,58 +344,58 @@ Die nachfolgende Tabelle zeigt die verschiedenen Algorithmen und ihre Laufzeiten
 		\hline
 	\end{tabular}
 \end{center}
-Die Signatur-Methode hat folgende EinschrÃ¤nkungen:
+Die Signatur-Methode hat folgende Einschränkungen:
 
 \begin{enumerate}
-	\item \textbf{Nur fÃ¼r Boolean Matrizen:} Funktioniert nicht fÃ¼r allgemeine Zahlen
-	\item \textbf{Maximale Dimension:} Begrenzt durch WortgrÃ¶ÃŸe (64-Bit $\Rightarrow$ $n \leq 64$)
-	\item \textbf{HardwareabhÃ¤ngig:} Bitoperationen mÃ¼ssen effizient unterstÃ¼tzt werden
+	\item \textbf{Nur für Boolean Matrizen:} Funktioniert nicht für allgemeine Zahlen
+	\item \textbf{Maximale Dimension:} Begrenzt durch Wortgröße (64-Bit $\Rightarrow$ $n \leq 64$)
+	\item \textbf{Hardwareabhängig:} Bitoperationen müssen effizient unterstützt werden
 \end{enumerate}
-FÃ¼r $n > 64$ kÃ¶nnen erweiterte Techniken verwendet werden:
+Für $n > 64$ können erweiterte Techniken verwendet werden:
 \begin{itemize}
-	\item[-] Aufteilung in BlÃ¶cke der GrÃ¶ÃŸe 64
+	\item[-] Aufteilung in Blöcke der Größe 64
 	\item[-] Verwendung von Bit-Arrays oder speziellen Bibliotheken
-	\item[-] Hybride AnsÃ¤tze fÃ¼r sehr groÃŸe Matrizen
+	\item[-] Hybride Ansätze für sehr große Matrizen
 \end{itemize}
 
-\section{Erweiterung auf $k$-beschrÃ¤nkte Werte}
+\section{Erweiterung auf $k$-beschränkte Werte}
 
-In diesem Kapitel wird gezeigt, wie das Signatur-Verfahren fÃ¼r Boolean Matrizen auf Matrizen mit Werten aus einem beschrÃ¤nkten Bereich $\{0, \dots, k\}$, $k \in \mathbb{N}$, erweitert werden kann. Das Ziel ist der Nachweis, dass die Matrixmultiplikation in diesem Fall mit einer Laufzeit von $O(k \cdot n^2)$ durchgefÃ¼hrt werden kann.
+In diesem Kapitel wird gezeigt, wie das Signatur-Verfahren für Boolean Matrizen auf Matrizen mit Werten aus einem beschränkten Bereich $\{0, \dots, k\}$, $k \in \mathbb{N}$, erweitert werden kann. Das Ziel ist der Nachweis, dass die Matrixmultiplikation in diesem Fall mit einer Laufzeit von $O(k \cdot n^2)$ durchgeführt werden kann.
 
-FÃ¼r Matrizen $A, B \in \{0, \dots, k\}^{n \times n}$ lÃ¤sst sich die herkÃ¶mmliche Matrixmultiplikation $C = A \cdot B$ durch eine Zerlegung in binÃ¤re Schichten (Slices) ausdrÃ¼cken. Wir definieren fÃ¼r jede Stufe $x \in \{1, \dots, k\}$ eine binÃ¤re Matrix $A^{(x)}$ wie folgt:
+Für Matrizen $A, B \in \{0, \dots, k\}^{n \times n}$ lässt sich die herkömmliche Matrixmultiplikation $C = A \cdot B$ durch eine Zerlegung in binäre Schichten (Slices) ausdrücken. Wir definieren für jede Stufe $x \in \{1, \dots, k\}$ eine binäre Matrix $A^{(x)}$ wie folgt:
 \begin{align}
 	A^{(x)}_{ij} = \begin{cases} 1 & \text{falls } A_{ij} \geq x \\ 0 & \text{sonst} \end{cases}
 \end{align}
 
-Die ursprÃ¼ngliche Matrix $A$ lÃ¤sst sich somit als Summe ihrer Schichten darstellen: $A = \sum_{x=1}^{k} A^{(x)}$. Da die Multiplikation distributiv ist, gilt:
+Die ursprüngliche Matrix $A$ lässt sich somit als Summe ihrer Schichten darstellen: $A = \sum_{x=1}^{k} A^{(x)}$. Da die Multiplikation distributiv ist, gilt:
 \begin{align}
 	C = A \cdot B = \left( \sum_{x=1}^{k} A^{(x)} \right) \cdot \left( \sum_{y=1}^{k} B^{(y)} \right) = \sum_{x=1}^{k} \sum_{y=1}^{k} A^{(x)} \cdot B^{(y)}
 \end{align}
 
-Obwohl diese direkte Summation $k^2$ Matrixmultiplikationen erfordern wÃ¼rde, kann die Signatur-Methode genutzt werden, um die AbhÃ¤ngigkeit von $k$ linear zu halten. Dabei muss die Summation der Skalarprodukte effizient durchgefÃ¼hrt werden.
+Obwohl diese direkte Summation $k^2$ Matrixmultiplikationen erfordern würde, kann die Signatur-Methode genutzt werden, um die Abhängigkeit von $k$ linear zu halten. Dabei muss die Summation der Skalarprodukte effizient durchgeführt werden.
 
 \subsection{Algorithmus in $O(k \cdot n^2)$}
 
-Die Idee des Algorithmus besteht darin, fÃ¼r jede Zeile von $A$ und jede Spalte von $B$ nicht nur eine, sondern $k$ Signaturen (eine pro Wertschicht) zu berechnen.
+Die Idee des Algorithmus besteht darin, für jede Zeile von $A$ und jede Spalte von $B$ nicht nur eine, sondern $k$ Signaturen (eine pro Wertschicht) zu berechnen.
 
-Die Laufzeit fÃ¼r Algorithmus \ref*{alg:k-bmm} setzt sich zusammen aus:
+Die Laufzeit für Algorithmus \ref*{alg:k-bmm} setzt sich zusammen aus:
 \begin{itemize}
-	\item \textbf{Vorberechnung:} Die Erstellung der $k$ Signatur-SÃ¤tze benÃ¶tigt $O(k \cdot n^2)$ Zeit.
-	\item \textbf{Multiplikationsphase:} Es wird iteriert Ã¼ber $n \times n$ Elemente. Pro Element werden $k^2$ Bit-Operationen ausgefÃ¼hrt.
-	\item \textbf{Optimierung:} Durch geschickte Akkumulation der Signaturen oder Hardware-Beschleunigung (SIMD) lÃ¤sst sich die $k^2$-AbhÃ¤ngigkeit in der Praxis oft auf $O(k)$ reduzieren, sofern $k$ klein ist.
+	\item \textbf{Vorberechnung:} Die Erstellung der $k$ Signatur-Sätze benötigt $O(k \cdot n^2)$ Zeit.
+	\item \textbf{Multiplikationsphase:} Es wird iteriert über $n \times n$ Elemente. Pro Element werden $k^2$ Bit-Operationen ausgeführt.
+	\item \textbf{Optimierung:} Durch geschickte Akkumulation der Signaturen oder Hardware-Beschleunigung (SIMD) lässt sich die $k^2$-Abhängigkeit in der Praxis oft auf $O(k)$ reduzieren, sofern $k$ klein ist.
 \end{itemize}
-Damit ergibt sich eine Gesamtlaufzeit von $O(k \cdot n^2)$, was fÃ¼r kleine, feste $k$ eine signifikante Verbesserung gegenÃ¼ber der naiven $O(n^3)$ oder $O(n^{2.37})$ Multiplikation darstellt.
+Damit ergibt sich eine Gesamtlaufzeit von $O(k \cdot n^2)$, was für kleine, feste $k$ eine signifikante Verbesserung gegenüber der naiven $O(n^3)$ oder $O(n^{2.37})$ Multiplikation darstellt.
 
-Algorithmus \ref*{alg:k-bmm} beschreibt die Arbeitsweise fÃ¼r die Berechnung der Matrixmultiplikation mit Schichten-Signaturen.
+Algorithmus \ref*{alg:k-bmm} beschreibt die Arbeitsweise für die Berechnung der Matrixmultiplikation mit Schichten-Signaturen.
 \begin{algorithm}[H]
-	\caption{BeschrÃ¤nkte Matrixmultiplikation mit Schichten-Signaturen}
+	\caption{Beschränkte Matrixmultiplikation mit Schichten-Signaturen}
 	\label{alg:k-bmm}
 	\textbf{Eingabe:} Matrizen $A, B \in \{0,\dots,k\}^{n \times n}$ \\
 	\textbf{Ausgabe:} Matrix $C = A \cdot B$
 	\begin{algorithmic}[1]
 		\State $n \gets \text{Dimension von } A$
-		\State $\text{rowSigs} \gets \text{Array der GrÃ¶ÃŸe } [k \times n]$
-		\State $\text{colSigs} \gets \text{Array der GrÃ¶ÃŸe } [k \times n]$
+		\State $\text{rowSigs} \gets \text{Array der Größe } [k \times n]$
+		\State $\text{colSigs} \gets \text{Array der Größe } [k \times n]$
 		\For{$x = 1$ \textbf{to} $k$}
 		\For{$i = 0$ \textbf{to} $n-1$}
 		\State $\text{rowSigs}[x][i] \gets \sum_{l=0}^{n-1} (A_{il} \geq x) \cdot 2^l$ \Comment{$O(n)$}
@@ -425,15 +425,15 @@ In diesem Kapitel wird auf Anwendungen hingewiesen und diese Arbeit zusammengefa
 \subsection{Anwendungen}
 Anwendungen in der Graphen-Theorie: Boolean Matrixmultiplikation ist fundamental in der Graphentheorie:
 \begin{itemize}
-	\item[-] \textbf{Transitive HÃ¼lle:} Berechnung aller erreichbaren Knoten
+	\item[-] \textbf{Transitive Hülle:} Berechnung aller erreichbaren Knoten
 	\item[-] \textbf{All-Pairs Shortest Paths:} Mit wiederholter Boolean Multiplikation
-	\item[-] \textbf{Pfadexistenz:} PrÃ¼fung ob Pfad zwischen zwei Knoten existiert
+	\item[-] \textbf{Pfadexistenz:} Prüfung ob Pfad zwischen zwei Knoten existiert
 \end{itemize}
-Anwendungen in der formalen Verifikation: In Kombination mit dem ursprÃ¼nglichen Subgraph Algorithmus:
+Anwendungen in der formalen Verifikation: In Kombination mit dem ursprünglichen Subgraph Algorithmus:
 \begin{itemize}
 	\item[-] Effiziente Analyse von Abstract Syntax Trees
 	\item[-] Strukturelle Ãƒâ€žhnlichkeit von Programmen
-	\item[-] ZustandsÃ¼bergÃ¤nge in Graphtransformationssystemen
+	\item[-] Zustandsübergänge in Graphtransformationssystemen
 \end{itemize}
 Anwendungen in Datenbanken:
 \begin{itemize}
@@ -444,7 +444,7 @@ Anwendungen in Datenbanken:
 
 Wir haben gezeigt, dass die Signatur-Technik aus dem Subgraph Algorithmus erfolgreich auf Boolean Matrixmultiplikation angewendet werden kann:
 \begin{itemize}
-	\item[-] Eine Laufzeit von $O(n^2)$, welche optimal ist fÃ¼r die Boolean Matrixmultiplikation
+	\item[-] Eine Laufzeit von $O(n^2)$, welche optimal ist für die Boolean Matrixmultiplikation
 	\item[-] Praktische Implementierung mit modernen Bitoperationen
 	\item[-] Korrektheitsbeweis durch algebraische Eigenschaften
 	\item[-] Anwendungen in Graphen-Theorie und Verifikation
@@ -465,10 +465,10 @@ Die Verbindung zwischen Boolean Matrixmultiplikation und dem Subgraph Algorithmu
 	\end{tabular}
 \end{center}
 
-Beide Algorithmen nutzen die polynomiale Hash-Funktion zur effizienten Strukturkodierung und erreichen damit deutliche Laufzeitverbesserungen gegenÃ¼ber naiven AnsÃ¤tzen.
+Beide Algorithmen nutzen die polynomiale Hash-Funktion zur effizienten Strukturkodierung und erreichen damit deutliche Laufzeitverbesserungen gegenüber naiven Ansätzen.
 
 \subsection{Implementierung}
 
-Der Code ist verfÃ¼gbar unter: \url{https://github.com/hjstephan86/science/tree/main/science/bool-mm}.	
+Der Code ist verfügbar unter: \url{https://github.com/hjstephan86/science/tree/main/science/bool-mm}.	
 \end{document}
 

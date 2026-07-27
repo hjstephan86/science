@@ -49,12 +49,12 @@
   breaklines=true,
   frame=single,
   literate=%
-  {Ã–}{{\"O}}1 {Ã„}{{\"A}}1 {Ãœ}{{\"U}}1
-  {ÃŸ}{{\ss}}1 {Ã¼}{{\"u}}1 {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1
+  {Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
+  {ß}{{\ss}}1 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1
 }
 
 \title{Die Knotengleichung als universelles Naturgesetz\\[0.4em]
-  \large Vom elektrischen Strom zum atmosphÃ¤rischen Gleichgewicht der Wolkenmasse Ã¼ber der Erde}
+  \large Vom elektrischen Strom zum atmosphärischen Gleichgewicht der Wolkenmasse über der Erde}
 \author{Stephan Epp\\[0.3em]
   
 \date{7. Mai 2026}
@@ -66,20 +66,20 @@
 \begin{abstract}
 Die Knotengleichung -- auch Knotenpunktsatz oder Kirchhoffsches Stromgesetz
 genannt -- ist eines der fundamentalsten Prinzipien der Physik: An jedem Knoten
-eines Netzes muss die Summe aller zuflieÃŸenden GrÃ¶ÃŸen gleich der Summe aller
-abflieÃŸenden GrÃ¶ÃŸen sein. Dieses Prinzip, formal als $\sum I_\mathrm{zu} =
-\sum I_\mathrm{ab}$ geschrieben, gilt nicht nur fÃ¼r elektrische StrÃ¶me, sondern
-ist ein universelles Erhaltungsgesetz, das Ã¼berall in der Natur wirkt, wo
-MassenflÃ¼sse oder EnergieflÃ¼sse auftreten.
+eines Netzes muss die Summe aller zufließenden Größen gleich der Summe aller
+abfließenden Größen sein. Dieses Prinzip, formal als $\sum I_\mathrm{zu} =
+\sum I_\mathrm{ab}$ geschrieben, gilt nicht nur für elektrische Ströme, sondern
+ist ein universelles Erhaltungsgesetz, das überall in der Natur wirkt, wo
+Massenflüsse oder Energieflüsse auftreten.
 
-In der vorliegenden Arbeit werden zwei fundamentale AusprÃ¤gungen dieses Gesetzes
-formal bewiesen und quantitativ analysiert: zunÃ¤chst das Kirchhoffsche
-Stromgesetz in elektrischen Netzwerken (1845), anschlieÃŸend das
-atmosphÃ¤risch-hydrologische Gleichgewicht der gesamten Wolkenmasse Ã¼ber der Erde,
-beschrieben durch die KontinuitÃ¤tsgleichung fÃ¼r Wasserdampf. Beide PhÃ¤nomene
+In der vorliegenden Arbeit werden zwei fundamentale Ausprägungen dieses Gesetzes
+formal bewiesen und quantitativ analysiert: zunächst das Kirchhoffsche
+Stromgesetz in elektrischen Netzwerken (1845), anschließend das
+atmosphärisch-hydrologische Gleichgewicht der gesamten Wolkenmasse über der Erde,
+beschrieben durch die Kontinuitätsgleichung für Wasserdampf. Beide Phänomene
 werden in ein gemeinsames graphtheoretisches Rahmenwerk eingebettet, in dem der
-Subgraph Algorithmus (Epp~2026) als Analyse\-instrument fÃ¼r Flussnetze eingesetzt
-wird. FÃ¼nf Matplotlib-Visualisierungen illustrieren die theoretischen Ergebnisse
+Subgraph Algorithmus (Epp~2026) als Analyse\-instrument für Flussnetze eingesetzt
+wird. Fünf Matplotlib-Visualisierungen illustrieren die theoretischen Ergebnisse
 quantitativ.
 \end{abstract}
 
@@ -87,7 +87,7 @@ quantitativ.
 \newpage
 
 % ===========================================================================
-\section{EinfÃ¼hrung}
+\section{Einführung}
 % ===========================================================================
 
 \subsection{Problemstellung}
@@ -97,30 +97,30 @@ Die Knotengleichung, in der Elektrotechnik als Kirchhoffsches Stromgesetz
 \[
   \sum_{k=1}^{m} \phi_k = 0,
 \]
-wobei $\phi_k$ die $k$-te FlussgrÃ¶ÃŸe (Strom, Massenstrom, Volumenstrom,
-Feuchtefluss, \ldots) am Knoten bezeichnet, mit dem Vorzeichen\-konvent~$+$ fÃ¼r
-Zufluss und $-$ fÃ¼r Abfluss.
+wobei $\phi_k$ die $k$-te Flussgröße (Strom, Massenstrom, Volumenstrom,
+Feuchtefluss, \ldots) am Knoten bezeichnet, mit dem Vorzeichen\-konvent~$+$ für
+Zufluss und $-$ für Abfluss.
 
 \textbf{Zentrale Frage dieser Arbeit:} Ist die Knotengleichung ein universelles
-Naturgesetz, das sowohl fÃ¼r den elektrischen Strom als auch fÃ¼r das Gleichgewicht
-der gesamten atmosphÃ¤rischen Wolkenmasse Ã¼ber der Erde gilt, und wie lÃ¤sst sich
+Naturgesetz, das sowohl für den elektrischen Strom als auch für das Gleichgewicht
+der gesamten atmosphärischen Wolkenmasse über der Erde gilt, und wie lässt sich
 dieser Zusammenhang formal und quantitativ nachweisen?
 
 \subsection{Motivation}
 
 Das Prinzip \emph{Zufluss gleich Abfluss} tritt in vielen Naturwissen\-schaften
 auf. In der Elektrotechnik ist es eine unmittelbare Folge der
-Ladungserhaltung~\cite{kirchhoff1845}. In der AtmosphÃ¤ren\-wissenschaft
+Ladungserhaltung~\cite{kirchhoff1845}. In der Atmosphären\-wissenschaft
 manifestiert es sich als Gleichgewicht des globalen Wasserkreislaufs: Die
 Gesamtverdunstung der Meere und Landmassen ($E \approx 577\,000\;\text{km}^3/\text{a}$)
 muss global exakt dem Gesamtniederschlag ($P \approx 577\,000\;\text{km}^3/\text{a}$)
-entsprechen~\cite{trenberth2011}, weil sonst die Masse der AtmosphÃ¤re
-unbegrenzt wachsen oder schrumpfen wÃ¼rde -- was den Naturgesetzen widersprÃ¤che.
+entsprechen~\cite{trenberth2011}, weil sonst die Masse der Atmosphäre
+unbegrenzt wachsen oder schrumpfen würde -- was den Naturgesetzen widerspräche.
 
 Der Subgraph Algorithmus (Epp~2026, $\Theta(n^3)$) \cite{epp2026} liefert
 ein graphtheoretisches Modellierungs\-werkzeug, mit dem Flussnetze -- sowohl
 elektrische Schaltkreise als auch das globale Flussnetz des Wasser\-kreislaufs
--- als gerichtete, gewichtete Graphen reprÃ¤sentiert und analysiert werden kÃ¶nnen.
+-- als gerichtete, gewichtete Graphen repräsentiert und analysiert werden können.
 
 % ===========================================================================
 \section{Grundlagen}
@@ -136,14 +136,14 @@ elektrische Schaltkreise als auch das globale Flussnetz des Wasser\-kreislaufs
 
 \begin{definition}[Knotengleichung / Flussbilanz]
   \label{def:knotengleichung}
-  Sei $G = (V, E, f)$ ein Flussnetz. Die Knotengleichung fÃ¼r einen Knoten
+  Sei $G = (V, E, f)$ ein Flussnetz. Die Knotengleichung für einen Knoten
   $v \in V$ lautet:
   \[
     \sum_{u:\,(u,v)\in E} f(u,v) \;=\; \sum_{w:\,(v,w)\in E} f(v,w).
   \]
-  Ã„quivalent in Vorzeichenform: $\displaystyle\sum_{k} \phi_k(v) = 0$, wobei
-  $\phi_k(v)$ die $k$-te FlussgrÃ¶ÃŸe am Knoten~$v$ ist
-  (positiv fÃ¼r Zufluss, negativ fÃ¼r Abfluss).
+  Äquivalent in Vorzeichenform: $\displaystyle\sum_{k} \phi_k(v) = 0$, wobei
+  $\phi_k(v)$ die $k$-te Flussgröße am Knoten~$v$ ist
+  (positiv für Zufluss, negativ für Abfluss).
 \end{definition}
 
 \begin{definition}[Adjazenzmatrix eines Flussnetzes]
@@ -157,17 +157,17 @@ elektrische Schaltkreise als auch das globale Flussnetz des Wasser\-kreislaufs
 \begin{definition}[Laplace-Matrix / Kirchhoff-Matrix]
   Sei $D$ die Diagonalmatrix mit $D_{ii} = \sum_j A_{ij}$ (Ausgangsgrade).
   Die Laplace-Matrix des Flussnetzes ist $L = D - A$. Die Knotengleichung
-  fÃ¼r alle Knoten lautet kompakt:
+  für alle Knoten lautet kompakt:
   \[
     L \,\mathbf{f} = \mathbf{0},
   \]
   wobei $\mathbf{f}$ der Flussvektor ist.
 \end{definition}
 
-\begin{definition}[KontinuitÃ¤tsgleichung fÃ¼r Wasserdampf]
+\begin{definition}[Kontinuitätsgleichung für Wasserdampf]
   Sei $\rho_w(\mathbf{x}, t)$ die spezifische Feuchte [kg/kg] und
   $\mathbf{v}(\mathbf{x}, t)$ das dreidimensionale Windfeld. Die
-  KontinuitÃ¤tsgleichung fÃ¼r atmosphÃ¤rischen Wasserdampf lautet:
+  Kontinuitätsgleichung für atmosphärischen Wasserdampf lautet:
   \[
     \frac{\partial \rho_w}{\partial t} + \nabla \cdot (\rho_w \mathbf{v})
     = \dot{E} - \dot{P},
@@ -178,13 +178,13 @@ elektrische Schaltkreise als auch das globale Flussnetz des Wasser\-kreislaufs
 
 \subsection{Physikalische Grundprinzipien}
 
-Beiden hier betrachteten AusprÃ¤gungen der Knotengleichung liegen
-fundamentale ErhaltungssÃ¤tze der Physik zugrunde:
+Beiden hier betrachteten Ausprägungen der Knotengleichung liegen
+fundamentale Erhaltungssätze der Physik zugrunde:
 
 \begin{itemize}
   \item \textbf{Elektrotechnik:} Erhaltung der elektrischen Ladung
     ($\nabla \cdot \mathbf{J} = -\partial\rho_e/\partial t$)
-  \item \textbf{AtmosphÃ¤re:} Erhaltung der Wassermasse
+  \item \textbf{Atmosphäre:} Erhaltung der Wassermasse
     ($\partial\rho_w/\partial t + \nabla \cdot (\rho_w \mathbf{v}) = \dot{E} - \dot{P}$)
   \item \textbf{Allgemein:} Jedes Erhaltungsgesetz erzeugt an jedem Knoten
     eine Flussbilanz -- die Knotengleichung.
@@ -196,11 +196,11 @@ fundamentale ErhaltungssÃ¤tze der Physik zugrunde:
 
 \subsection{Historischer Hintergrund}
 
-Gustav Robert Kirchhoff formulierte 1845, damals noch Student in KÃ¶nigsberg,
-seine beiden grundlegenden SÃ¤tze fÃ¼r elektrische Netzwerke~\cite{kirchhoff1845}.
+Gustav Robert Kirchhoff formulierte 1845, damals noch Student in Königsberg,
+seine beiden grundlegenden Sätze für elektrische Netzwerke~\cite{kirchhoff1845}.
 Der erste Kirchhoffsche Satz (Knotenpunktsatz, KSG) besagt, dass sich an
-jedem Knoten eines elektrischen Netzwerkes die Summe aller zuflieÃŸenden
-und abflieÃŸenden StrÃ¶me zu null addiert:
+jedem Knoten eines elektrischen Netzwerkes die Summe aller zufließenden
+und abfließenden Ströme zu null addiert:
 \[
   \sum_{k=1}^{m} I_k = 0.
 \]
@@ -209,45 +209,45 @@ und abflieÃŸenden StrÃ¶me zu null addiert:
 
 \begin{satz}[Kirchhoffsches Stromgesetz, KSG]
   \label{satz:ksg}
-  In einem elektrischen Netzwerk im stationÃ¤ren Zustand gilt an jedem
+  In einem elektrischen Netzwerk im stationären Zustand gilt an jedem
   Knoten~$v$:
   \[
     \sum_{k=1}^{m} I_k(v) = 0,
   \]
-  wobei $I_k(v)$ die StromstÃ¤rke im $k$-ten Zweig am Knoten $v$ ist,
-  mit $I_k > 0$ fÃ¼r zuflieÃŸenden und $I_k < 0$ fÃ¼r abflieÃŸenden Strom.
+  wobei $I_k(v)$ die Stromstärke im $k$-ten Zweig am Knoten $v$ ist,
+  mit $I_k > 0$ für zufließenden und $I_k < 0$ für abfließenden Strom.
 \end{satz}
 
 \begin{proof}
   \textbf{Schritt~1: Ladungserhaltung (Maxwell).}\\
-  Aus dem Maxwellschen Gleichungssystem folgt die KontinuitÃ¤tsgleichung
-  fÃ¼r elektrische Ladung:
+  Aus dem Maxwellschen Gleichungssystem folgt die Kontinuitätsgleichung
+  für elektrische Ladung:
   \[
     \nabla \cdot \mathbf{J} = -\frac{\partial \rho_e}{\partial t},
   \]
   wobei $\mathbf{J}$ [A/m$^2$] die elektrische Stromdichte und $\rho_e$
   [C/m$^3$] die Raumladungsdichte ist.
 
-  \textbf{Schritt~2: StationÃ¤rer Zustand.}\\
-  Im stationÃ¤ren Zustand gilt $\partial \rho_e / \partial t = 0$, also:
+  \textbf{Schritt~2: Stationärer Zustand.}\\
+  Im stationären Zustand gilt $\partial \rho_e / \partial t = 0$, also:
   \[
     \nabla \cdot \mathbf{J} = 0.
   \]
 
-  \textbf{Schritt~3: Integration Ã¼ber ein Kontrollvolumen.}\\
-  Sei $V_v$ ein kleines Kontrollvolumen um Knoten $v$ mit OberflÃ¤che
-  $\partial V_v$. Integration der Divergenzgleichung Ã¼ber $V_v$:
+  \textbf{Schritt~3: Integration über ein Kontrollvolumen.}\\
+  Sei $V_v$ ein kleines Kontrollvolumen um Knoten $v$ mit Oberfläche
+  $\partial V_v$. Integration der Divergenzgleichung über $V_v$:
   \[
     \int_{V_v} \nabla \cdot \mathbf{J}\, \mathrm{d}V = 0.
   \]
 
-  \textbf{Schritt~4: GauÃŸscher Integralsatz.}\\
-  Der GauÃŸsche Integralsatz liefert:
+  \textbf{Schritt~4: Gaußscher Integralsatz.}\\
+  Der Gaußsche Integralsatz liefert:
   \[
     \oint_{\partial V_v} \mathbf{J} \cdot \mathrm{d}\mathbf{A} = 0.
   \]
-  Das OberflÃ¤chenintegral Ã¼ber $\partial V_v$ zerfÃ¤llt in die BeitrÃ¤ge
-  der $m$ an Knoten $v$ angeschlossenen Zweige. FÃ¼r Zweig $k$ gilt:
+  Das Oberflächenintegral über $\partial V_v$ zerfällt in die Beiträge
+  der $m$ an Knoten $v$ angeschlossenen Zweige. Für Zweig $k$ gilt:
   \[
     \int_{A_k} \mathbf{J} \cdot \mathrm{d}\mathbf{A} = I_k(v).
   \]
@@ -259,12 +259,12 @@ und abflieÃŸenden StrÃ¶me zu null addiert:
   \]
 \end{proof}
 
-\begin{lemma}[Eindeutigkeit der StationÃ¤ritÃ¤t]
+\begin{lemma}[Eindeutigkeit der Stationärität]
   \label{lem:stationaer}
-  Im stationÃ¤ren Zustand ist die Verletzung der Knotengleichung an einem
-  Knoten~$v$ mit AusmaÃŸ $\varepsilon > 0$ physikalisch unmÃ¶glich, da sonst
-  $\partial \rho_e / \partial t = \varepsilon / V_v \neq 0$ gelten wÃ¼rde, was
-  dem angenommenen stationÃ¤ren Zustand widerspricht.
+  Im stationären Zustand ist die Verletzung der Knotengleichung an einem
+  Knoten~$v$ mit Ausmaß $\varepsilon > 0$ physikalisch unmöglich, da sonst
+  $\partial \rho_e / \partial t = \varepsilon / V_v \neq 0$ gelten würde, was
+  dem angenommenen stationären Zustand widerspricht.
 \end{lemma}
 
 \begin{proof}
@@ -273,10 +273,10 @@ und abflieÃŸenden StrÃ¶me zu null addiert:
   \[
     \int_{V_v} \nabla \cdot \mathbf{J}\, \mathrm{d}V = \varepsilon \neq 0.
   \]
-  Aus der KontinuitÃ¤tsgleichung folgt dann
+  Aus der Kontinuitätsgleichung folgt dann
   $-\int_{V_v} \partial\rho_e/\partial t\, \mathrm{d}V = \varepsilon$,
   also akkumuliert sich Ladung bei Knoten~$v$ mit Rate $\varepsilon/V_v$.
-  Dies widerspricht der StationaritÃ¤tsbedingung. Widerspruch. \qedhere
+  Dies widerspricht der Stationaritätsbedingung. Widerspruch. \qedhere
 \end{proof}
 
 \subsection{Quantitatives Beispiel}
@@ -290,7 +290,7 @@ und abflieÃŸenden StrÃ¶me zu null addiert:
   \[
     I_4 = -3\,\text{A},\quad I_5 = -2\,\text{A},\quad I_6 = -2\,\text{A}.
   \]
-  PrÃ¼fung der Knotengleichung:
+  Prüfung der Knotengleichung:
   \[
     \sum_{k=1}^{6} I_k = 4 + 2 + 1 - 3 - 2 - 2 = 0. \qquad \checkmark
   \]
@@ -301,20 +301,20 @@ und abflieÃŸenden StrÃ¶me zu null addiert:
   \centering
   \includegraphics[width=\textwidth]{plot1_kirchhoff.pdf}
   \caption{Kirchhoffscher Knotendiagramm: Links das Knotendiagramm mit
-    Stromrichtungen (rot: Zustrom, grÃ¼n: Abstrom), rechts die Balkendar\-stellung
-    der StromstÃ¤rken. Die Summe aller StrÃ¶me ergibt exakt null
+    Stromrichtungen (rot: Zustrom, grün: Abstrom), rechts die Balkendar\-stellung
+    der Stromstärken. Die Summe aller Ströme ergibt exakt null
     ($\sum I_k = 0$). Eigene Darstellung.}
   \label{fig:kirchhoff}
 \end{figure}
 
 % ===========================================================================
-\section{Die Knotengleichung in der AtmosphÃ¤re}
+\section{Die Knotengleichung in der Atmosphäre}
 % ===========================================================================
 
-\subsection{Das atmosphÃ¤rische Flussnetz der Erde}
+\subsection{Das atmosphärische Flussnetz der Erde}
 
 Die Erde bildet ein geschlossenes thermodynamisches System (im
-Sinne des Massentransports). Die gesamte atmosphÃ¤rische Wolkenmasse
+Sinne des Massentransports). Die gesamte atmosphärische Wolkenmasse
 und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
 \begin{itemize}
   \item Von den Ozeanen und Landmassen verdunstet pro Jahr eine
@@ -323,25 +323,25 @@ und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
   \item Als Niederschlag (Regen, Schnee, Tau) fallen global pro Jahr
     $P_\mathrm{global} \approx 577\,000\;\text{km}^3$ aus.
   \item Die Differenz $E_\mathrm{global} - P_\mathrm{global} = 0$ ist
-    Ausdruck der atmosphÃ¤rischen Knotengleichung auf der Globalskala.
+    Ausdruck der atmosphärischen Knotengleichung auf der Globalskala.
 \end{itemize}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{plot2_wasserkreislauf.pdf}
   \caption{Schematische Darstellung des globalen Wasserkreislaufs als
-    atmosphÃ¤risches Flussnetz. Rot: VerdunstungsflÃ¼sse (Zustrom in die
-    AtmosphÃ¤re), blau: NiederschlagsflÃ¼sse (Abstrom aus der AtmosphÃ¤re),
-    lila: atmosphÃ¤rischer Transport von Ozean zu Land, dunkelblau:
-    OberflÃ¤chenabfluss. Alle Angaben in km$^3$/a nach \cite{trenberth2011}.}
+    atmosphärisches Flussnetz. Rot: Verdunstungsflüsse (Zustrom in die
+    Atmosphäre), blau: Niederschlagsflüsse (Abstrom aus der Atmosphäre),
+    lila: atmosphärischer Transport von Ozean zu Land, dunkelblau:
+    Oberflächenabfluss. Alle Angaben in km$^3$/a nach \cite{trenberth2011}.}
   \label{fig:wasserkreislauf}
 \end{figure}
 
-\subsection{Formaler Beweis der atmosphÃ¤rischen Knotengleichung}
+\subsection{Formaler Beweis der atmosphärischen Knotengleichung}
 
-\begin{satz}[Globale atmosphÃ¤rische Knotengleichung]
+\begin{satz}[Globale atmosphärische Knotengleichung]
   \label{satz:atm}
-  Im klimatologischen Mittel gilt fÃ¼r das gesamte atmosphÃ¤rische Wasserdampf-
+  Im klimatologischen Mittel gilt für das gesamte atmosphärische Wasserdampf-
   und Wolkensystem der Erde:
   \[
     E_\mathrm{global} = P_\mathrm{global},
@@ -351,10 +351,10 @@ und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
 \end{satz}
 
 \begin{proof}
-  \textbf{Schritt~1: KontinuitÃ¤tsgleichung fÃ¼r Wasserdampf.}\\
-  Die Massenerhaltungsgleichung fÃ¼r atmosphÃ¤rischen Wasserdampf (spezifische
+  \textbf{Schritt~1: Kontinuitätsgleichung für Wasserdampf.}\\
+  Die Massenerhaltungsgleichung für atmosphärischen Wasserdampf (spezifische
   Feuchte $q = \rho_w / \rho_a$ [kg/kg]) lautet in ihrer integralen Form
-  (vertikal Ã¼ber die gesamte AtmosphÃ¤rensÃ¤ule von $p_\mathrm{s}$ bis $p_\mathrm{t}$
+  (vertikal über die gesamte Atmosphärensäule von $p_\mathrm{s}$ bis $p_\mathrm{t}$
   integriert):
   \[
     \frac{\partial W}{\partial t} + \nabla_h \cdot \mathbf{Q}
@@ -363,9 +363,9 @@ und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
   wobei:
   \begin{itemize}
     \item $W = \dfrac{1}{g}\displaystyle\int_{p_t}^{p_s} q\, \mathrm{d}p$
-      [kg/m$^2$] der sÃ¤ulenintegrierte Wasserdampfgehalt (precipitable water),
+      [kg/m$^2$] der säulenintegrierte Wasserdampfgehalt (precipitable water),
     \item $\mathbf{Q} = \dfrac{1}{g}\displaystyle\int_{p_t}^{p_s} q\mathbf{u}\, \mathrm{d}p$
-      [kg/(m\,s)] der sÃ¤ulenintegrierte horizontale Feuchteflusstensor,
+      [kg/(m\,s)] der säulenintegrierte horizontale Feuchteflusstensor,
     \item $\nabla_h$ der horizontale Nabla-Operator,
     \item $E$ [kg/(m$^2$\,s)] die Evaporationsrate und
     \item $P$ [kg/(m$^2$\,s)] die Niederschlagsrate
@@ -373,32 +373,32 @@ und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
   sind.
 
   \textbf{Schritt~2: Globale Integration.}\\
-  Wir integrieren Ã¼ber die gesamte ErdoberflÃ¤che $\mathcal{S}$:
+  Wir integrieren über die gesamte Erdoberfläche $\mathcal{S}$:
   \[
     \int_\mathcal{S} \frac{\partial W}{\partial t}\, \mathrm{d}A
     + \int_\mathcal{S} \nabla_h \cdot \mathbf{Q}\, \mathrm{d}A
     = \int_\mathcal{S} E\, \mathrm{d}A - \int_\mathcal{S} P\, \mathrm{d}A.
   \]
 
-  \textbf{Schritt~3: GauÃŸscher Integralsatz auf der Kugel.}\\
-  Da die Erde eine geschlossene FlÃ¤che ohne Rand ist (topologisch eine
-  SphÃ¤re), verschwindet das Integral der Horizontaldivergenz:
+  \textbf{Schritt~3: Gaußscher Integralsatz auf der Kugel.}\\
+  Da die Erde eine geschlossene Fläche ohne Rand ist (topologisch eine
+  Sphäre), verschwindet das Integral der Horizontaldivergenz:
   \[
     \int_\mathcal{S} \nabla_h \cdot \mathbf{Q}\, \mathrm{d}A = 0.
   \]
-  Dies folgt direkt aus dem GauÃŸschen Integralsatz auf der SphÃ¤re:
+  Dies folgt direkt aus dem Gaußschen Integralsatz auf der Sphäre:
   $\oint_{\partial \mathcal{S}} \mathbf{Q} \cdot \hat{n}\, \mathrm{d}s = 0$,
   da $\partial \mathcal{S} = \emptyset$.
 
   \textbf{Schritt~4: Klimatologisches Gleichgewicht.}\\
-  Im klimatologischen Mittel (langjÃ¤hrige zeitliche Mittelung Ã¼ber einen
-  Zeitraum $T \to \infty$) ist der Gesamtinhalt an atmosphÃ¤rischem Wasser
+  Im klimatologischen Mittel (langjährige zeitliche Mittelung über einen
+  Zeitraum $T \to \infty$) ist der Gesamtinhalt an atmosphärischem Wasser
   konstant:
   \[
     \left\langle \frac{\partial W}{\partial t} \right\rangle_T
     = \frac{1}{T}\left(W(T) - W(0)\right) \longrightarrow 0,
   \]
-  da $W$ nach oben beschrÃ¤nkt ist (physikalische Randbedingung).
+  da $W$ nach oben beschränkt ist (physikalische Randbedingung).
 
   \textbf{Schritt~5: Knotengleichung.}\\
   Aus Schritten~2--4 folgt:
@@ -417,33 +417,33 @@ und der Wasserdampf befinden sich in einem dynamischen Gleichgewicht:
 
 \begin{korollar}[Lokale Knotengleichung und regionale Feuchtebilanz]
   \label{kor:lokal}
-  An jedem Punkt $(\lambda, \varphi)$ der ErdoberflÃ¤che gilt die lokale
-  atmosphÃ¤rische Knotengleichung:
+  An jedem Punkt $(\lambda, \varphi)$ der Erdoberfläche gilt die lokale
+  atmosphärische Knotengleichung:
   \[
     E(\lambda,\varphi) - P(\lambda,\varphi) = \frac{\partial W}{\partial t} + \nabla_h \cdot \mathbf{Q}.
   \]
   Die Abweichung $E - P \neq 0$ wird lokal durch den horizontalen
   Feucht\-flux-Divergenzterm $\nabla_h \cdot \mathbf{Q}$ ausgeglichen.
-  Ãœber Ozeanen Ã¼berwiegt $E > P$ (positive Divergenz -- Quellgebiet),
-  Ã¼ber Landmassen Ã¼berwiegt $P > E$ (negative Divergenz -- Senkengebiet),
+  Über Ozeanen überwiegt $E > P$ (positive Divergenz -- Quellgebiet),
+  über Landmassen überwiegt $P > E$ (negative Divergenz -- Senkengebiet),
   und der Transport $\mathbf{Q}$ stellt das globale Gleichgewicht her.
 \end{korollar}
 
 \begin{proof}
-  Folgt unmittelbar aus der integralen KontinuitÃ¤tsgleichung in Schritt~1
+  Folgt unmittelbar aus der integralen Kontinuitätsgleichung in Schritt~1
   des Beweises von Satz~\ref{satz:atm}, ohne die globale Integration
-  auszufÃ¼hren. \qedhere
+  auszuführen. \qedhere
 \end{proof}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{plot3_kontinuitaet.pdf}
-  \caption{Links: Divergenzfeld des atmosphÃ¤rischen Feuchtflusses
+  \caption{Links: Divergenzfeld des atmosphärischen Feuchtflusses
     $\nabla \cdot (\rho_w \mathbf{v})$. Positive Werte (rot) kennzeichnen
     Quellgebiete (Ozeane, $E > P$), negative Werte (blau) kennzeichnen
     Senkengebiete (Landmassen, $P > E$). Die Pfeile zeigen den zugrunde
     liegenden Feuchte-Transportvektor. Rechts: Lokale Knotenbilanz
-    $E_i - P_i$ fÃ¼r 12 Gitterzellen; die globale Summe nÃ¤hert sich null.
+    $E_i - P_i$ für 12 Gitterzellen; die globale Summe nähert sich null.
     Eigene Darstellung nach ERA5-Daten-Systematik \cite{hersbach2020}.}
   \label{fig:kontinuitaet}
 \end{figure}
@@ -470,8 +470,8 @@ globalen Wasserkreislaufs zusammen, nach \cite{trenberth2011} und
     Niederschlag (P) & Land & 119\,000 & 790 \\
     \textbf{Gesamtniederschlag} & \textbf{Global} & \textbf{577\,000} & \textbf{1\,130} \\
     \midrule
-    AtmosphÃ¤rischer Transport & Ozean $\to$ Land & 44\,800 & -- \\
-    OberflÃ¤chenabfluss & Land $\to$ Ozean & 44\,800 & -- \\
+    Atmosphärischer Transport & Ozean $\to$ Land & 44\,800 & -- \\
+    Oberflächenabfluss & Land $\to$ Ozean & 44\,800 & -- \\
     \midrule
     \textbf{Nettobilanz} $E - P$ & \textbf{Global} & \textbf{0} & \textbf{0} \\
     \bottomrule
@@ -484,11 +484,11 @@ globalen Wasserkreislaufs zusammen, nach \cite{trenberth2011} und
   \caption{Vier Aspekte des globalen Wassermassengleichgewichts.
     (a) Saisonale Variation von Evaporation $E$ und Niederschlag $P$
     (Amplitude $\approx 12\,000\;\text{km}^3/\text{Monat}$).
-    (b) Monatliche Nettobilanz $E - P$; die Jahressumme nÃ¤hert sich null.
-    (c) Langzeittrend 1980--2024: Beide GrÃ¶ÃŸen nehmen mit dem Klimawandel
+    (b) Monatliche Nettobilanz $E - P$; die Jahressumme nähert sich null.
+    (c) Langzeittrend 1980--2024: Beide Größen nehmen mit dem Klimawandel
     zu, aber ihre Differenz bleibt bei null.
     (d) Verteilung von Verdunstung und Niederschlag nach Ozean und Land;
-    die Gesamtsummen sind identisch -- Knotengleichung erfÃ¼llt.
+    die Gesamtsummen sind identisch -- Knotengleichung erfüllt.
     Synthetische Daten nach GPCP/ERA5-Systematik \cite{adler2018, hersbach2020}.}
   \label{fig:globalbilanz}
 \end{figure}
@@ -505,38 +505,38 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
 \begin{beispiel}[Elektrisches Netzwerk als Graph]
   Ein Netzwerk mit Knoten $V = \{K_1, K_2, K_3, K_4\}$ und Leitwerten
   $f(K_i, K_j) = I_{ij}$ [A] wird als Adjazenzmatrix $A$ mit $A_{ij} = I_{ij}$
-  reprÃ¤sentiert. Die Knotengleichung an $K_i$ entspricht:
-  $\sum_j A_{ij} = \sum_j A_{ji}$ (Zeilensumme $=$ Spaltensumme fÃ¼r
+  repräsentiert. Die Knotengleichung an $K_i$ entspricht:
+  $\sum_j A_{ij} = \sum_j A_{ji}$ (Zeilensumme $=$ Spaltensumme für
   jeden Knoten).
 \end{beispiel}
 
 \begin{beispiel}[Globaler Wasserkreislauf als Graph]
   Der Wasserkreislauf wird modelliert als Graph mit Knoten
   $V = \{\mathrm{Ozean}, \mathrm{Atmo}, \mathrm{Land}, \mathrm{Fluss},
-  \mathrm{Gletscher}\}$ und FlÃ¼ssen $f$ [km$^3$/a] als Kantengewichte
+  \mathrm{Gletscher}\}$ und Flüssen $f$ [km$^3$/a] als Kantengewichte
   (vgl. Abbildung~\ref{fig:vergleich}).
 \end{beispiel}
 
 \subsection{Anwendung des Subgraph Algorithmus}
 
-\begin{satz}[Subgraph-KnotenprÃ¼fung]
+\begin{satz}[Subgraph-Knotenprüfung]
   \label{satz:subgraph}
   Der Subgraph Algorithmus (Epp~2026, Laufzeit $\Theta(n^3)$) kann in
   $O(n^3)$ Schritten feststellen, ob zwei Flussnetze $G$ und $G'$ eine
   Subgraph-Beziehung aufweisen, d.\,h., ob die Knotengleichungen eines
-  Netzes als strukturell eingebettet in das andere angesehen werden kÃ¶nnen.
+  Netzes als strukturell eingebettet in das andere angesehen werden können.
 \end{satz}
 
 \begin{proof}
-  Jedes Flussnetz wird durch seine Adjazenzmatrix $A$ reprÃ¤sentiert.
+  Jedes Flussnetz wird durch seine Adjazenzmatrix $A$ repräsentiert.
   Die Knotengleichung stellt eine Struktur\-bedingung an $A$ dar:
-  $\sum_j A_{ij} = \sum_j A_{ji}$ fÃ¼r alle $i$ (fÃ¼r balancierte Knoten).
-  Der Subgraph Algorithmus prÃ¼ft via Signatur-Berechnung und zyklischer
+  $\sum_j A_{ij} = \sum_j A_{ji}$ für alle $i$ (für balancierte Knoten).
+  Der Subgraph Algorithmus prüft via Signatur-Berechnung und zyklischer
   Rotation in $\Theta(n^3)$, ob die Signaturfolge von $A$ als Teilsequenz
   in der Signaturfolge von $A'$ enthalten ist -- womit strukturelle
-  Einbettung erkannt wird. Die Korrektheit folgt aus der InjektivitÃ¤t
-  der Signatur-Funktion (Epp~2026, Lemma~1) und der VollstÃ¤ndigkeit
-  der Rotations-PrÃ¼fung (Epp~2026, Lemma~2). \qedhere
+  Einbettung erkannt wird. Die Korrektheit folgt aus der Injektivität
+  der Signatur-Funktion (Epp~2026, Lemma~1) und der Vollständigkeit
+  der Rotations-Prüfung (Epp~2026, Lemma~2). \qedhere
 \end{proof}
 
 \begin{figure}[h]
@@ -544,8 +544,8 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
   \includegraphics[width=\textwidth]{plot5_vergleich.pdf}
   \caption{Vergleich der drei Ebenen der Knotengleichung.
     (a) Elektrischer Knoten mit sechs Zweigen ($\sum I = 0$).
-    (b) AtmosphÃ¤rischer Knoten (Wolkensystem) mit Evaporations-,
-    Niederschlags- und TransportflÃ¼ssen
+    (b) Atmosphärischer Knoten (Wolkensystem) mit Evaporations-,
+    Niederschlags- und Transportflüssen
     ($E_\mathrm{global} = P_\mathrm{global}$).
     (c) Graphtheoretisches Modell des globalen Wasserkreislaufs
     als gerichteter Graph, analysierbar mit dem Subgraph Algorithmus
@@ -553,11 +553,11 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
   \label{fig:vergleich}
 \end{figure}
 
-\subsection{Beweis: Strukturelle Ã„quivalenz beider Knotengleichungen}
+\subsection{Beweis: Strukturelle Äquivalenz beider Knotengleichungen}
 
 \begin{lemma}[Strukturelle Isomorphie der Knotengleichungen]
   \label{lem:iso}
-  Die elektrische Knotengleichung (KSG) und die atmosphÃ¤rische
+  Die elektrische Knotengleichung (KSG) und die atmosphärische
   Knotengleichung sind strukturell isomorph: Beide sind Instanzen
   des abstrakten Flussbilanz-Gesetzes $\sum_k \phi_k(v) = 0$ auf
   einem Flussnetz $G = (V, E, f)$.
@@ -570,15 +570,15 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
 
   \textbf{Zuordnung der Elemente:}
   \begin{align*}
-    \text{Elektrischer Knoten } K &\mapsto \text{AtmosphÃ¤ren-Knoten (LuftsÃ¤ule) } A_j \\
+    \text{Elektrischer Knoten } K &\mapsto \text{Atmosphären-Knoten (Luftsäule) } A_j \\
     \text{Elektrischer Strom } I_{ij} &\mapsto \text{Feuchtefluss } Q_{ij}\;[\text{kg/(m\,s)}] \\
     \text{Kirchhoff-Bedingung } \sum_k I_k = 0 &\mapsto \text{Feuchtebilanz } E - P = \nabla_h \cdot \mathbf{Q}
   \end{align*}
 
   \textbf{Struktur-Erhaltung:}
   Beide Bedingungen folgen aus einem Erhaltungssatz (Ladung bzw.\ Masse)
-  via dem GauÃŸschen Integralsatz Ã¼ber ein Kontrollvolumen. Die
-  mathematische Ableitung ist in beiden FÃ¤llen identisch (vgl.\ Beweise
+  via dem Gaußschen Integralsatz über ein Kontrollvolumen. Die
+  mathematische Ableitung ist in beiden Fällen identisch (vgl.\ Beweise
   von Satz~\ref{satz:ksg} und Satz~\ref{satz:atm}):
   \[
     \oint_{\partial V} \mathbf{J} \cdot \mathrm{d}\mathbf{A} = 0
@@ -586,7 +586,7 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
     \oint_{\partial \mathcal{S}} \mathbf{Q} \cdot \mathrm{d}\mathbf{l} = 0.
   \]
   Da $\Phi$ die Netzwerkstruktur ($V, E, f$) und die Bilanzgleichung
-  erhÃ¤lt und bijektiv ist, liegt strukturelle Isomorphie vor. \qedhere
+  erhält und bijektiv ist, liegt strukturelle Isomorphie vor. \qedhere
 \end{proof}
 
 % ===========================================================================
@@ -595,18 +595,18 @@ lassen sich als gerichtete, gewichtete Graphen $G = (V, E, f)$ modellieren:
 
 Die vorliegende Arbeit hat gezeigt, dass die Knotengleichung
 $\sum_k \phi_k(v) = 0$ ein universelles Naturgesetz darstellt, das
-an zwei fundamentalen physikalischen PhÃ¤nomenen formal nachgewiesen wurde:
+an zwei fundamentalen physikalischen Phänomenen formal nachgewiesen wurde:
 
 \begin{itemize}
   \item \textbf{Elektrische Knotengleichung (KSG):} Aus der
-    Maxwell'schen Ladungserhaltung und dem GauÃŸschen Integralsatz folgt
-    direkt, dass im stationÃ¤ren Zustand an jedem Knoten die Summe aller
-    StrÃ¶me null ist.
-  \item \textbf{AtmosphÃ¤rische Knotengleichung:} Aus der Massenerhaltung
-    fÃ¼r Wasserdampf, der Topo\-logie der ErdsphÃ¤re (geschlossene FlÃ¤che ohne
-    Rand) und der StationaritÃ¤tsbedingung folgt, dass global
+    Maxwell'schen Ladungserhaltung und dem Gaußschen Integralsatz folgt
+    direkt, dass im stationären Zustand an jedem Knoten die Summe aller
+    Ströme null ist.
+  \item \textbf{Atmosphärische Knotengleichung:} Aus der Massenerhaltung
+    für Wasserdampf, der Topo\-logie der Erdsphäre (geschlossene Fläche ohne
+    Rand) und der Stationaritätsbedingung folgt, dass global
     $E_\mathrm{global} = P_\mathrm{global} \approx 577\,000\;\text{km}^3/\text{a}$.
-  \item \textbf{Strukturelle Isomorphie:} Beide PhÃ¤nomene sind Instanzen
+  \item \textbf{Strukturelle Isomorphie:} Beide Phänomene sind Instanzen
     desselben abstrakten Flussbilanz-Gesetzes auf gerichteten gewichteten
     Graphen (Lemma~\ref{lem:iso}).
   \item \textbf{Graphtheoretische Analyse:} Der Subgraph Algorithmus
@@ -618,79 +618,79 @@ an zwei fundamentalen physikalischen PhÃ¤nomenen formal nachgewiesen wurde:
 \section{Ausblick}
 % ===========================================================================
 
-Die in dieser Arbeit dargelegten theoretischen Grundlagen erÃ¶ffnen eine
+Die in dieser Arbeit dargelegten theoretischen Grundlagen eröffnen eine
 Vielzahl bedeutsamer Forschungsrichtungen. Im Folgenden werden die
-wichtigsten Perspektiven ausfÃ¼hrlich dargestellt.
+wichtigsten Perspektiven ausführlich dargestellt.
 
 \subsection{Erweiterung auf nichtlineare und dynamische Flussnetze}
 
-Die klassische Knotengleichung gilt im stationÃ¤ren und linearen Regime.
-In realen Systemen -- sowohl in der AtmosphÃ¤re als auch in elektrischen
-Netzen -- treten jedoch ausgeprÃ¤gte \emph{nichtlineare} und
-\emph{zeitlich variable} Effekte auf. FÃ¼r die Atmosph\"{a}re manifestiert
-sich dies in der Interannual-VariabilitÃ¤t des Wasserkreislaufs durch
-ENSO-Ereignisse (El Ni\~{n}o/La Ni\~{n}a): WÃ¤hrend eines El-Ni\~{n}o-Jahres
+Die klassische Knotengleichung gilt im stationären und linearen Regime.
+In realen Systemen -- sowohl in der Atmosphäre als auch in elektrischen
+Netzen -- treten jedoch ausgeprägte \emph{nichtlineare} und
+\emph{zeitlich variable} Effekte auf. Für die Atmosph\"{a}re manifestiert
+sich dies in der Interannual-Variabilität des Wasserkreislaufs durch
+ENSO-Ereignisse (El Ni\~{n}o/La Ni\~{n}a): Während eines El-Ni\~{n}o-Jahres
 kann die globale Niederschlagsrate um bis zu $5\,\%$ schwanken, wobei
-jedoch die integrale Knotengleichung auch in diesen FÃ¤llen im Mittel
-erhalten bleibt \cite{adler2018}. ZukÃ¼nftige Arbeiten sollten die
+jedoch die integrale Knotengleichung auch in diesen Fällen im Mittel
+erhalten bleibt \cite{adler2018}. Zukünftige Arbeiten sollten die
 \emph{dynamische Knotengleichung}:
 \[
   \frac{\partial W}{\partial t} = E - P - \nabla_h \cdot \mathbf{Q}
 \]
 in die Graphmodellierung einbeziehen und mit dem Subgraph Algorithmus
-zeitlich verÃ¤nderliche Netzwerktopologien analysieren. Besonders interessant
-ist die Frage, ob zwei historische KlimazustÃ¤nde (z.\,B.\ HolozÃ¤n-Optimum
-vs.\ Gegenwart) als Subgraph-Relationen erkannt werden kÃ¶nnen -- was
-fundamentale klimawissenschaftliche Implikationen hÃ¤tte.
+zeitlich veränderliche Netzwerktopologien analysieren. Besonders interessant
+ist die Frage, ob zwei historische Klimazustände (z.\,B.\ Holozän-Optimum
+vs.\ Gegenwart) als Subgraph-Relationen erkannt werden können -- was
+fundamentale klimawissenschaftliche Implikationen hätte.
 
 \subsection{Klimawandel und Intensivierung des Wasserkreislaufs}
 
-Der Klimawandel fÃ¼hrt gemÃ¤ÃŸ der \emph{Clausius-Clapeyron-Relation}
+Der Klimawandel führt gemäß der \emph{Clausius-Clapeyron-Relation}
 zu einer Intensivierung des globalen Wasserkreislaufs: Pro Grad Celsius
-ErwÃ¤rmung steigt der Wasserdampfgehalt der AtmosphÃ¤re um ca.\ $7\,\%$
+Erwärmung steigt der Wasserdampfgehalt der Atmosphäre um ca.\ $7\,\%$
 (\textit{thermodynamischer Effekt}). Messungen auf Basis von GPCP-Daten
 und ERA5-Reanalysen zeigen, dass sowohl $E_\mathrm{global}$ als auch
 $P_\mathrm{global}$ seit 1980 mit einer Rate von
 $\approx 1\,800\;\text{km}^3/\text{a}^2$ zunehmen -- bei gleichzeitigem
 Erhalt der Knotengleichung $E = P$ (vgl.\ Abb.~\ref{fig:globalbilanz}\,(c)).
-ZukÃ¼nftige Forschung sollte untersuchen, wie dieser Trend die
-Signaturmatrizen des Subgraph Algorithmus verÃ¤ndert, und ob ein
-struktureller PhasenÃ¼bergang -- d.\,h.\ ein abrupter Wechsel in der
-Subgraph-Topologie des Flussnetzes -- als VorlÃ¤ufer von Klima-Kipppunkten
+Zukünftige Forschung sollte untersuchen, wie dieser Trend die
+Signaturmatrizen des Subgraph Algorithmus verändert, und ob ein
+struktureller Phasenübergang -- d.\,h.\ ein abrupter Wechsel in der
+Subgraph-Topologie des Flussnetzes -- als Vorläufer von Klima-Kipppunkten
 detektiert werden kann \cite{lenton2008}.
 
 \subsection{Regionale Wasserbilanzen und Extremereignisse}
 
-WÃ¤hrend die globale Knotengleichung $E_\mathrm{global} = P_\mathrm{global}$
-strikt gilt, kÃ¶nnen auf regionaler Ebene erhebliche Ungleichgewichte
+Während die globale Knotengleichung $E_\mathrm{global} = P_\mathrm{global}$
+strikt gilt, können auf regionaler Ebene erhebliche Ungleichgewichte
 auftreten (Korollar~\ref{kor:lokal}). Die Divergenz $\nabla_h \cdot \mathbf{Q}
-\neq 0$ an einem Ort ist direkt mit DÃ¼rren (positive Divergenz, $E > P$)
-und Ãœberschwemmungen (negative Divergenz, $P > E$) verknÃ¼pft. Eine
+\neq 0$ an einem Ort ist direkt mit Dürren (positive Divergenz, $E > P$)
+und Überschwemmungen (negative Divergenz, $P > E$) verknüpft. Eine
 vielversprechende Forschungsrichtung ist der Einsatz des Subgraph Algorithmus
-zur Erkennung von anomalen Divergenzmustern in hochauflÃ¶senden
+zur Erkennung von anomalen Divergenzmustern in hochauflösenden
 Klimamodell-Ausgaben (z.\,B.\ CMIP6-Ensemble), die auf bevorstehende
-Extremereignisse hinweisen kÃ¶nnten. Die Graphstruktur des regionalen
-Feuchteflusses kÃ¶nnte als \emph{FrÃ¼hwarnsignatur} codiert und mit
+Extremereignisse hinweisen könnten. Die Graphstruktur des regionalen
+Feuchteflusses könnte als \emph{Frühwarnsignatur} codiert und mit
 historischen Extremereignis-Graphen verglichen werden.
 
-\subsection{Quantencomputer und atmosphÃ¤rische Simulation}
+\subsection{Quantencomputer und atmosphärische Simulation}
 
-Mit dem Aufkommen leistungsfÃ¤higer Quantencomputer (z.\,B.\ IBM Quantum
-Eagle/Heron, Google Willow) bieten sich neue MÃ¶glichkeiten zur Simulation
-atmosphÃ¤rischer Flussnetze. Der Subgraph Algorithmus kÃ¶nnte auf einem
+Mit dem Aufkommen leistungsfähiger Quantencomputer (z.\,B.\ IBM Quantum
+Eagle/Heron, Google Willow) bieten sich neue Möglichkeiten zur Simulation
+atmosphärischer Flussnetze. Der Subgraph Algorithmus könnte auf einem
 Quanten\-computer mit der Grover-Suche beschleunigt werden: Anstatt $n$
-Rotationen klassisch in $O(n^3)$ zu prÃ¼fen, kÃ¶nnte eine Quantensuche
-in $O(\sqrt{n} \cdot n^2) = O(n^{2.5})$ eine Beschleunigung gegenÃ¼ber
-dem klassischen Optimum liefern \cite{grover1996}. Die atmosphÃ¤rische
-Knotengleichung, ausgedrÃ¼ckt als Quanten-Hamiltonoperator
-$\hat{H}_\mathrm{KG}$, kÃ¶nnte mit variationellen Quanten-EigenlÃ¶sern
-(VQE) auf die GleichgewichtslÃ¶sung $E = P$ hin optimiert werden.
+Rotationen klassisch in $O(n^3)$ zu prüfen, könnte eine Quantensuche
+in $O(\sqrt{n} \cdot n^2) = O(n^{2.5})$ eine Beschleunigung gegenüber
+dem klassischen Optimum liefern \cite{grover1996}. Die atmosphärische
+Knotengleichung, ausgedrückt als Quanten-Hamiltonoperator
+$\hat{H}_\mathrm{KG}$, könnte mit variationellen Quanten-Eigenlösern
+(VQE) auf die Gleichgewichtslösung $E = P$ hin optimiert werden.
 
 \subsection{Neuronale Netze und datengetriebene Flussbilanzierung}
 
 Tiefe neuronale Netze (DNN), insbesondere Graph Neural Networks (GNN),
 bieten einen alternativen Ansatz zur Modellierung von Flussnetzen unter
-der Knotengleichungs-Nebenbedingung. Eine zukÃ¼nftige Arbeit kÃ¶nnte
+der Knotengleichungs-Nebenbedingung. Eine zukünftige Arbeit könnte
 \emph{Physics-Informed Neural Networks} (PINNs) entwickeln, in denen die
 Knotengleichung als harte Nebenbedingung in den Verlust\-funktion eingebettet
 wird:
@@ -698,69 +698,69 @@ wird:
   \mathcal{L}_\mathrm{PINN} = \mathcal{L}_\mathrm{data}
   + \lambda \sum_v \left(\sum_k \phi_k(v)\right)^2.
 \]
-Damit wÃ¼rde das neuronale Netz physikalisch konsistente Flussnetzwerke
-erzeugen, die die Knotengleichung exakt erfÃ¼llen. Solche Modelle kÃ¶nnten
-fÃ¼r die kurz\-fristige Wettervorhersage (Nowcasting) regionaler
-Niederschlagsfelder eingesetzt werden und wÃ¤ren erheblich physikalisch
-konsistenter als rein daten\-getriebene AnsÃ¤tze \cite{lecun2015}.
+Damit würde das neuronale Netz physikalisch konsistente Flussnetzwerke
+erzeugen, die die Knotengleichung exakt erfüllen. Solche Modelle könnten
+für die kurz\-fristige Wettervorhersage (Nowcasting) regionaler
+Niederschlagsfelder eingesetzt werden und wären erheblich physikalisch
+konsistenter als rein daten\-getriebene Ansätze \cite{lecun2015}.
 
-\subsection{Extraterrestrische AtmosphÃ¤ren}
+\subsection{Extraterrestrische Atmosphären}
 
-Das Prinzip der atmosphÃ¤rischen Knotengleichung ist nicht auf die Erde
-beschrÃ¤nkt. Auf dem Mars besitzt die $\mathrm{CO}_2$-AtmosphÃ¤re einen
+Das Prinzip der atmosphärischen Knotengleichung ist nicht auf die Erde
+beschränkt. Auf dem Mars besitzt die $\mathrm{CO}_2$-Atmosphäre einen
 saisonal stark variierenden Massenfluss: Im polaren Winter kondensiert
-bis zu $25\,\%$ der gesamten Mars-AtmosphÃ¤re zu $\mathrm{CO}_2$-Eis,
-wÃ¤hrend im Sommer die gleiche Masse zurÃ¼ck in die Gasphase sublimiert.
-Auch hier gilt die Knotengleichung -- hier fÃ¼r $\mathrm{CO}_2$ statt
+bis zu $25\,\%$ der gesamten Mars-Atmosphäre zu $\mathrm{CO}_2$-Eis,
+während im Sommer die gleiche Masse zurück in die Gasphase sublimiert.
+Auch hier gilt die Knotengleichung -- hier für $\mathrm{CO}_2$ statt
 Wasser:
 \[
   \dot{E}_{\mathrm{CO}_2,\mathrm{global}} = \dot{P}_{\mathrm{CO}_2,\mathrm{global}}.
 \]
 Auf Venus hingegen verhindert der extreme Treibhauseffekt jeden
-hydrologischen Kreislauf, aber die Knotengleichung gilt fÃ¼r den
-$\mathrm{SO}_2$-Schwefelkreislauf in der venusianischen AtmosphÃ¤re.
-FÃ¼r Exoplaneten im habitablen Bereich (z.\,B.\ TRAPPIST-1e/f) kÃ¶nnte
-die ÃœberprÃ¼fung der Knotengleichung fÃ¼r Wasserdampf im Transmissions\-spektrum
-ein wichtiger Nachweis fÃ¼r stabile Ozeane und damit HabitabilitÃ¤t werden
+hydrologischen Kreislauf, aber die Knotengleichung gilt für den
+$\mathrm{SO}_2$-Schwefelkreislauf in der venusianischen Atmosphäre.
+Für Exoplaneten im habitablen Bereich (z.\,B.\ TRAPPIST-1e/f) könnte
+die Überprüfung der Knotengleichung für Wasserdampf im Transmissions\-spektrum
+ein wichtiger Nachweis für stabile Ozeane und damit Habitabilität werden
 \cite{turbet2020}.
 
 \subsection{Wirtschaftliche und soziale Flussnetze}
 
-Das abstrakte Flussbilanz-Gesetz gilt auch fÃ¼r Ã¶konomische Systeme.
+Das abstrakte Flussbilanz-Gesetz gilt auch für ökonomische Systeme.
 In der Input-Output-Analyse nach Leontief beschreibt die
-\emph{Knotengleichung der Volkswirtschaft}, dass fÃ¼r jede Branche gilt:
+\emph{Knotengleichung der Volkswirtschaft}, dass für jede Branche gilt:
 Gesamtproduktion $=$ Intermediate Inputs $+$ Endnachfrage. Die Laplace-Matrix
 $L$ des Leontief-Modells ist formal identisch mit der Kirchhoff-Matrix eines
-elektrischen Netzwerks \cite{leontief1986}. Der Subgraph Algorithmus kÃ¶nnte
+elektrischen Netzwerks \cite{leontief1986}. Der Subgraph Algorithmus könnte
 zur Erkennung von \emph{strukturellen Gemeinsamkeiten} zwischen verschiedenen
 nationalen Wirtschaftsnetzen eingesetzt werden -- mit Anwendungen in der
 komparativen Wirtschaftsanalyse und der Identifikation systemrelevanter
 Branchen.
 
-\subsection{Biologische Flussnetze: Blutkreislauf und neuronale AktivitÃ¤t}
+\subsection{Biologische Flussnetze: Blutkreislauf und neuronale Aktivität}
 
 In der Biologie tritt die Knotengleichung als \emph{Flussbilanz} in
-GefÃ¤ÃŸ\-netzwerken auf. Im menschlichen Blutkreislauf gilt an jeder
-GefÃ¤ÃŸ\-verzweigung: Die Summe der BlutflÃ¼sse in die Ã„ste ist gleich dem
-Blutfluss im Stamm-GefÃ¤ÃŸ (Poiseuille-Gesetz). Eine Verletzung dieser
-Knotengleichung wÃ¼rde auf GefÃ¤ÃŸstenosen oder arteriovenÃ¶se Fisteln
+Gefäß\-netzwerken auf. Im menschlichen Blutkreislauf gilt an jeder
+Gefäß\-verzweigung: Die Summe der Blutflüsse in die Äste ist gleich dem
+Blutfluss im Stamm-Gefäß (Poiseuille-Gesetz). Eine Verletzung dieser
+Knotengleichung würde auf Gefäßstenosen oder arteriovenöse Fisteln
 hindeuten. Die Anwendung des Subgraph Algorithmus auf angiographische
-Bilddaten (z.\,B.\ aus der CTA-Bildgebung) kÃ¶nnte eine schnelle und
+Bilddaten (z.\,B.\ aus der CTA-Bildgebung) könnte eine schnelle und
 sensitive Methode zur Detektion solcher Anomalien bereitstellen.
-Ã„hnlich lassen sich neuronale Aktivierungsmuster im Gehirn als Flussnetze
-modellieren, wobei die Knotengleichung die Massenerhaltung fÃ¼r
+Ähnlich lassen sich neuronale Aktivierungsmuster im Gehirn als Flussnetze
+modellieren, wobei die Knotengleichung die Massenerhaltung für
 Neurotransmitter beschreibt \cite{sporns2005}.
 
 \subsection{Infrastruktur-Resilienz: Strom- und Gasnetze}
 
 Moderne Energienetze mit einem hohen Anteil erneuerbarer Energien
 (Solar, Wind) unterliegen stochastischen Fluktuationen in der Einspeisung.
-Die Knotengleichung muss zu jedem Zeitpunkt an jedem Netzknoten erfÃ¼llt
+Die Knotengleichung muss zu jedem Zeitpunkt an jedem Netzknoten erfüllt
 sein -- andernfalls kommt es zu Frequenzabweichungen (Stromnetze) oder
-DruckabfÃ¤llen (Gasnetze). Der Subgraph Algorithmus kÃ¶nnte in Echtzeit
-(On-line) die Netzwerktopologie eines gestÃ¶rten Netzes mit der
+Druckabfällen (Gasnetze). Der Subgraph Algorithmus könnte in Echtzeit
+(On-line) die Netzwerktopologie eines gestörten Netzes mit der
 Normal-Topologie vergleichen und die betroffenen Teilnetze identifizieren.
-Dies wÃ¤re besonders relevant fÃ¼r die Netzplanung im Rahmen der
+Dies wäre besonders relevant für die Netzplanung im Rahmen der
 Energiewende und der Integration von Wasserstoff-Netzen.
 
 \subsection{Topologische Aspekte: Homologie und Knotengleichung}
@@ -770,42 +770,42 @@ Aus mathematischer Sicht ist die Knotengleichung eng mit der
 Der Randdifferenzoperator $\partial_1: C_1 \to C_0$ (Kanten $\to$ Knoten)
 der Kettengruppen des Graphen entspricht genau der Inzidenzmatrix, und
 die Knotengleichung entspricht dem Kernelement $\ker(\partial_1^T)$.
-ZukÃ¼nftige theoretische Arbeiten kÃ¶nnten untersuchen, wie topologische
+Zukünftige theoretische Arbeiten könnten untersuchen, wie topologische
 Invarianten (Betti-Zahlen, persistente Homologie) des Flussnetzes mit
-den Signatur-Arrays des Subgraph Algorithmus zusammenhÃ¤ngen. Eine
+den Signatur-Arrays des Subgraph Algorithmus zusammenhängen. Eine
 Vermutung lautet: Der Rang der ersten Homologiegruppe $\beta_1 = |E| - |V| + 1$
-(Anzahl unabhÃ¤ngiger Maschen) ist invariant unter den zyklischen
-Rotationen des Subgraph Algorithmus und kÃ¶nnte als topologische
-Signatur fÃ¼r die Klassifikation von Flussnetzen dienen \cite{edelsbrunner2010}.
+(Anzahl unabhängiger Maschen) ist invariant unter den zyklischen
+Rotationen des Subgraph Algorithmus und könnte als topologische
+Signatur für die Klassifikation von Flussnetzen dienen \cite{edelsbrunner2010}.
 
-\subsection{Verallgemeinerte Knotengleichung fÃ¼r Hypergraphen}
+\subsection{Verallgemeinerte Knotengleichung für Hypergraphen}
 
-In realen atmosphÃ¤rischen Systemen gibt es Kopplungen, die nicht als
-paarweise Kanten dargestellt werden kÃ¶nnen: Ein Wolkencluster kann
+In realen atmosphärischen Systemen gibt es Kopplungen, die nicht als
+paarweise Kanten dargestellt werden können: Ein Wolkencluster kann
 gleichzeitig aus mehreren Ozeanregionen Feuchtigkeit aufnehmen
-und in mehrere Landregionen abgeben -- ein Hyperkanten-PhÃ¤nomen.
-Die Knotengleichung fÃ¼r Hypergraphen $H = (V, \mathcal{E})$ lautet
+und in mehrere Landregionen abgeben -- ein Hyperkanten-Phänomen.
+Die Knotengleichung für Hypergraphen $H = (V, \mathcal{E})$ lautet
 verallgemeinert:
 \[
   \sum_{e \in \mathcal{E}:\, v \in e} w(e,v) \cdot f(e) = 0 \quad \forall v \in V,
 \]
 wobei $w(e,v) \in \{-1, +1\}$ die Orientierung der Hyperkante $e$ an
 Knoten $v$ angibt. Eine Erweiterung des Subgraph Algorithmus auf Hypergraph-
-Strukturen wÃ¤re ein bedeutsamer theoretischer Beitrag und kÃ¶nnte
-$O(n^3)$-OptimalitÃ¤t unter geeigneten Annahmen behalten.
+Strukturen wäre ein bedeutsamer theoretischer Beitrag und könnte
+$O(n^3)$-Optimalität unter geeigneten Annahmen behalten.
 
 \subsection{Integration in die Erdsystemmodellierung (ESM)}
 
 Erdsystemmodelle wie MPI-ESM, CESM oder GFDL-ESM4 simulieren den globalen
-Wasserkreislauf auf Gittern von $0.5^\circ \times 0.5^\circ$ AuflÃ¶sung.
+Wasserkreislauf auf Gittern von $0.5^\circ \times 0.5^\circ$ Auflösung.
 Die Knotengleichung muss in jedem Zeitschritt ($\Delta t \approx 30\;\text{min}$)
-an jedem der $\approx 260\,000$ Gitterpunkte numerisch erfÃ¼llt werden.
+an jedem der $\approx 260\,000$ Gitterpunkte numerisch erfüllt werden.
 Aktuell entstehen durch Diskretisierungsfehler (Massenimbalancen)
 systematische Abweichungen von bis zu $0.1\;\text{mm}/\text{a}$ in der
-globalen Flussbilanz \cite{hersbach2020}. Der Subgraph Algorithmus kÃ¶nnte
+globalen Flussbilanz \cite{hersbach2020}. Der Subgraph Algorithmus könnte
 als \emph{Diagnose-Tool} eingesetzt werden, um solche Imbalancen als
-Graph-Anomalien zu identifizieren und gezielt zu korrigieren. Dies wÃ¼rde
-die QualitÃ¤t von Klimaprojektionen fÃ¼r das 21.\ Jahrhundert signifikant
+Graph-Anomalien zu identifizieren und gezielt zu korrigieren. Dies würde
+die Qualität von Klimaprojektionen für das 21.\ Jahrhundert signifikant
 verbessern.
 
 % ===========================================================================
@@ -813,8 +813,8 @@ verbessern.
 
 \bibitem{kirchhoff1845}
 Kirchhoff, G.~R. (1845).
-\textit{Ãœber den Durchgang eines elektrischen Stromes durch eine Ebene,
-insbesondere durch eine kreisfÃ¶rmige}.
+\textit{Über den Durchgang eines elektrischen Stromes durch eine Ebene,
+insbesondere durch eine kreisförmige}.
 Annalen der Physik und Chemie, 64, 497--514.
 
 \bibitem{maxwell1865}
@@ -879,7 +879,7 @@ Leontief, W. (1986).
 Oxford University Press, New York.
 
 \bibitem{sporns2005}
-Sporns, O., Tononi, G., \& KÃ¶tter, R. (2005).
+Sporns, O., Tononi, G., \& Kötter, R. (2005).
 \textit{The Human Connectome: A Structural Description of the Human Brain}.
 PLOS Computational Biology, 1(4), e42.
 DOI: 10.1371/journal.pcbi.0010042

@@ -74,8 +74,8 @@
     stringstyle=\color{red},
     numbers=left, numberstyle=\tiny,
     breaklines=true, frame=single,
-    literate={Ã–}{{\"O}}1 {Ã„}{{\"A}}1 {Ãœ}{{\"U}}1
-             {ÃŸ}{{\ss}}1 {Ã¼}{{\"u}}1 {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1
+    literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1
+             {ß}{{\ss}}1 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1
 }
 
 \title{DNA-basierte Datenspeicherung\\
@@ -180,7 +180,7 @@ Die zentralen Beitr\"{a}ge sind:
     Datenbl\"{o}cke $D_1, D_2, \ldots, D_{\lceil N/L \rceil}$ zerlegt.
 \end{definition}
 
-\begin{definition}[QuaternÃ¤res DNA-Alphabet]
+\begin{definition}[Quaternäres DNA-Alphabet]
     Das DNA-Alphabet sei $\Sigma = \{A, T, G, C\}$ mit
     $|\Sigma| = 4 = 2^2$. Die Komplementarit\"{a}t ist festgelegt durch
     $\overline{A}=T$, $\overline{T}=A$, $\overline{G}=C$, $\overline{C}=G$.
@@ -191,7 +191,7 @@ Die zentralen Beitr\"{a}ge sind:
     F\"{u}r eine diskrete Zufallsvariable $X$ mit Wahrscheinlichkeiten
     $(p_i)$ ist die Shannon-Entropie
     $H(X) = -\sum_i p_i \log_2 p_i$.
-    Die Kapazit\"{a}t des DNA-Speicherkanals (quaternÃ¤rer symmetrischer
+    Die Kapazit\"{a}t des DNA-Speicherkanals (quaternärer symmetrischer
     Kanal mit Fehlerrate $\varepsilon$) betr\"{a}gt:
     \[
         C_{\text{DNA}}(\varepsilon) = 2 - H_4(\varepsilon),
@@ -207,7 +207,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
 
 \begin{definition}[DNA-Graph eines Datenblockes]
     \label{def:dna_graph_daten}
-    Sei $\phi: \mathcal{B}^{2k} \to \Sigma^k$ die quaternÃ¤re Kodierung
+    Sei $\phi: \mathcal{B}^{2k} \to \Sigma^k$ die quaternäre Kodierung
     (zwei Bits $\to$ eine Base). F\"{u}r einen Datenblock
     $D \in \mathcal{B}^{2k}$ sei $S_D = \phi(D) = (s_1, \ldots, s_k)$
     die zugeh\"{o}rige DNA-Sequenz. Der DNA-Datengraph ist
@@ -323,7 +323,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
     \begin{tikzpicture}[node distance=0.55cm]
       \node[layer=darkgray] (os)  {Betriebssystem / Dateisystem-Interface};
       \node[layer=mainblue,  below=of os]  (cod)
-            {QuaternÃ¤rer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
+            {Quaternärer Kodierer $\phi$ \quad|\quad GC-Balance \quad|\quad Reed-Solomon ECC};
       \node[layer=darkgreen, below=of cod] (idx)
             {Subgraph-Signatur-Index $\mathcal{I}$ \quad|\quad Rotations-Match-Cache \quad|\quad
              Redundanz-Pool $\mathcal{M}$};
@@ -342,7 +342,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
     \end{tikzpicture}}
     \caption{F\"unfschichtige Architektur des DNA-Subgraph-Speichers (DSS).
     Schicht~1: Betriebssystem-Interface;
-    Schicht~2: QuaternÃ¤rer Kodierer $\phi$, GC-Balance und Reed-Solomon-ECC;
+    Schicht~2: Quaternärer Kodierer $\phi$, GC-Balance und Reed-Solomon-ECC;
     Schicht~3: Subgraph-Signatur-Index $\mathcal{I}$ mit Rotations-Matching-Cache
     und Redundanz-Pool $\mathcal{M}$;
     Schicht~4: DNA-Synthese (Schreiben), DNA-Pool (Lagerung) und NGS/Nanopore (Lesen);
@@ -351,9 +351,9 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
     \label{fig:schichten}
 \end{figure}
 
-\subsection{QuaternÃ¤re Kodierungsfunktion}
+\subsection{Quaternäre Kodierungsfunktion}
 
-\begin{definition}[QuaternÃ¤re Kodierung $\phi$]
+\begin{definition}[Quaternäre Kodierung $\phi$]
     \label{def:kodierung}
     Die Kodierungsfunktion $\phi: \mathcal{B}^2 \to \Sigma$ ist festgelegt
     durch die Bijektion:
@@ -398,7 +398,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
             {$\phi: \mathcal{B}^2 \to \Sigma$ ist bijektiv\\
              $\Rightarrow \psi = \phi^{-1}$ existiert eindeutig};
     \end{tikzpicture}
-    \caption{Bijektives quaternÃ¤res Kodierungsschema $\phi: \mathcal{B}^2 \to \Sigma$.
+    \caption{Bijektives quaternäres Kodierungsschema $\phi: \mathcal{B}^2 \to \Sigma$.
     Jedes Bit-Paar $(00,01,10,11)$ wird eindeutig einer DNA-Base $(A,T,G,C)$
     zugeordnet (Pfeile $\phi$).
     Die gestrichelten R\"{u}ckpfeile zeigen die invertierte Dekodierung
@@ -410,11 +410,11 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig02_encoding.pdf}
-    \caption{QuaternÃ¤res Kodierungsschema und Effizienzvergleich.
+    \caption{Quaternäres Kodierungsschema und Effizienzvergleich.
     \textbf{Links:} Bijektion zwischen Bit-Paaren und DNA-Basen.
     \textbf{Rechts:} Informationsdichte verschiedener Kodierungsstrategien ---
     die Subgraph-komprimierte Kodierung erreicht 2{,}47\,Bit/Base, \"{u}ber
-    23\% mehr als die rein quaternÃ¤re Grenze von 2\,Bit/Base.}
+    23\% mehr als die rein quaternäre Grenze von 2\,Bit/Base.}
     \label{fig:encoding}
 \end{figure}
 
@@ -537,7 +537,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
 \begin{enumerate}
     \item \textbf{Blockbildung:} Zerlege $F$ in Bl\"{o}cke
           $D_1, \ldots, D_m$, $m = \lceil N/(2k) \rceil$.
-    \item \textbf{QuaternÃ¤re Kodierung:}
+    \item \textbf{Quaternäre Kodierung:}
           $S_i \leftarrow \phi(D_i)$ f\"{u}r alle $i$.
     \item \textbf{GC-Balance:} Pr\"{u}fe $|GC(S_i)| \in [0{,}4k, 0{,}6k]$;
           bei Verletzung wende Inversionsregel an (ersetze $A \leftrightarrow T$,
@@ -574,7 +574,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
     rekonstruierbar sind, ist $F$ vollst\"{a}ndig im Pool repr\"{a}sentiert.
 
     \textbf{Korrektheit.}
-    Die quaternÃ¤re Kodierung ist bijektiv (Satz~\ref{satz:kodierung}),
+    Die quaternäre Kodierung ist bijektiv (Satz~\ref{satz:kodierung}),
     die Signatur-Funktion ist injektiv (Lemma~\ref{lem:index_eindeutigkeit}),
     und die Subgraph-Pr\"{u}fung ist korrekt nach dem Korrektheitssatz
     des Subgraph Algorithmus~\cite{epp2026}.
@@ -743,7 +743,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
 
 \begin{definition}[DNA-Kanalmodell]
     \label{def:kanal}
-    Der DNA-Speicherkanal ist ein gestÃ¶rter quaternÃ¤rer Kanal mit drei
+    Der DNA-Speicherkanal ist ein gestörter quaternärer Kanal mit drei
     Fehlertypen:
     \begin{itemize}
         \item \textbf{Substitution} mit Rate $\varepsilon_s$:
@@ -774,7 +774,7 @@ Wir \"{u}bernehmen das DNA-Graph-Modell aus~\cite{epp_dna2026}:
 
 \begin{proof}
     \textbf{Untere Schranke f\"{u}r den Basiskanal.}
-    Der quaternÃ¤re symmetrische Kanal mit Fehlerrate $\varepsilon$ hat
+    Der quaternäre symmetrische Kanal mit Fehlerrate $\varepsilon$ hat
     Kapazit\"{a}t $C(\varepsilon) = 2 - H_4(\varepsilon)$ Bit/Symbol
     (Standardresultat der Informationstheorie).
 
@@ -843,7 +843,7 @@ Anfrage-Sequenz $S_Q$.\\
           f\"{u}r alle $S_j \in \mathcal{M}$ pr\"{u}fe
           $G_Q \preceq_{\mathrm{rot}} G_{S_j}$ in $O(k^3)$.
     \item \textbf{Sequenzierung:} Rufe PCR-Amplifikation der
-          Ziel-Oligomere durch komplementÃ¤re Primer auf.
+          Ziel-Oligomere durch komplementäre Primer auf.
     \item \textbf{Basecalling:} Wandle Rohsignal in Sequenz $\hat{S}_i$.
     \item \textbf{Fehlerkorrektur:} Dekodiere $\hat{S}_i$ mit
           RS-Decoder; erhalte $S_i$.
@@ -872,7 +872,7 @@ Anfrage-Sequenz $S_Q$.\\
       \node[sysbox=darkgray, below=0.85cm of ecc, minimum width=3.0cm]
             (verify) {Subgraph-Verifikation $\checkmark$};
       \node[sysbox=darkgreen, below=0.85cm of verify, minimum width=3.0cm]
-            (decode) {QuaternÃ¤re\\Dekodierung $\psi$};
+            (decode) {Quaternäre\\Dekodierung $\psi$};
       \node[sysbox=mainblue, below=0.85cm of decode, minimum width=2.5cm]
             (out) {Datenblock $D_i$};
       \draw[arrow] (query)    -- (index);
@@ -891,7 +891,7 @@ Anfrage-Sequenz $S_Q$.\\
     bei Fehler wird eine Rotations-Match-Suche \"uber das Kerngenom
     $\mathcal{M}$ in $O(k^3)$ gestartet. Anschlie\ss{}end folgen
     Reed-Solomon-Dekodierung, Subgraph-Signatur-Verifikation und
-    quaternÃ¤re Dekodierung zum rekonstruierten Datenblock $D_i$.}
+    quaternäre Dekodierung zum rekonstruierten Datenblock $D_i$.}
     \label{fig:retrieval_tikz}
 \end{figure}
 
@@ -1035,11 +1035,11 @@ Anfrage-Sequenz $S_Q$.\\
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig10_durability.pdf}
     \caption{Datenhaltbarkeit und Langzeitstabilit\"{a}t.
-    \textbf{Links:} DatenintegritÃ¤t als Funktion der Zeit fÃ¼r verschiedene
+    \textbf{Links:} Datenintegrität als Funktion der Zeit für verschiedene
     Medien. DNA (fossil) besitzt eine Halbwertszeit von $\sim$700\,000
     Jahren; mit Subgraph-ECC wird dies auf $> 10^6$ Jahre ausgedehnt.
     \textbf{Rechts:} DNA-Stabilit\"{a}t als Funktion der Lagerungstemperatur
-    --- bei $-196$\,Â°C (fl\"{u}ssiger Stickstoff) sind
+    --- bei $-196$\, °C (fl\"{u}ssiger Stickstoff) sind
     Halbwertszeiten von $> 10^9$ Jahren erreichbar.}
     \label{fig:durability}
 \end{figure}
@@ -1308,7 +1308,7 @@ Dies entspricht einer Steigerung um den Faktor $6{,}67$ gegen\"{u}ber dem
 150-mer-System.
 Zus\"{a}tzlich w\"{a}chst mit der Sequenzl\"{a}nge $k$ die Anzahl der
 Watson-Crick-Kanten im Datengraphen $G_D$ quadratisch anwachsend an
-(jede Base kann mit bis zu $k-1$ Gegenbases eine komplementÃ¤re
+(jede Base kann mit bis zu $k-1$ Gegenbases eine komplementäre
 Kante eingehen), was die erreichbare Komprimierungsrate $\rho$ tendenziell
 erh\"{o}ht und damit den Effekt \"{u}berproportional verst\"{a}rkt.
 Eine formale Analyse dieser R\"{u}ckkopplung zwischen Oligomerl\"{a}nge
@@ -1673,7 +1673,7 @@ Forschung benannt:
 
 \subsection{Implementierungshinweis}
 
-Die Implementierung des Subgraph Algorithmus ist verfÃ¼gbar unter:
+Die Implementierung des Subgraph Algorithmus ist verfügbar unter:
 \url{https://github.com/hjstephan86/science}.
 
 \begin{thebibliography}{12}

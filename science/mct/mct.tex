@@ -13,18 +13,18 @@
 \usepackage{float}
 \floatname{algorithm}{Algorithmus}
 
-% Deutsche SchlÃ¼sselwÃ¶rter fÃ¼r algpseudocode
+% Deutsche Schlüsselwörter für algpseudocode
 \algrenewcommand\algorithmicif{\textbf{wenn}}
 \algrenewcommand\algorithmicelse{\textbf{sonst}}
 \algrenewcommand\algorithmicthen{\textbf{dann}}
 \algrenewcommand\algorithmicend{\textbf{Ende}}
-\algrenewcommand\algorithmicfor{\textbf{fÃ¼r}}
-\algrenewcommand\algorithmicforall{\textbf{fÃ¼r alle}}
+\algrenewcommand\algorithmicfor{\textbf{für}}
+\algrenewcommand\algorithmicforall{\textbf{für alle}}
 \algrenewcommand\algorithmicdo{\textbf{tue}}
 \algrenewcommand\algorithmicwhile{\textbf{solange}}
 \algrenewcommand\algorithmicrepeat{\textbf{wiederhole}}
 \algrenewcommand\algorithmicuntil{\textbf{bis}}
-\algrenewcommand\algorithmicreturn{\textbf{gib zurÃ¼ck}}
+\algrenewcommand\algorithmicreturn{\textbf{gib zurück}}
 \algrenewcommand\algorithmicfunction{\textbf{Prozedur}}
 \algrenewcommand\algorithmicprocedure{\textbf{Prozedur}}
 \algrenewcommand\algorithmicrequire{\textbf{Eingabe:}}
@@ -66,7 +66,7 @@
 \usepackage[protrusion=true,expansion=false]{microtype}       % Besserer Mikrotypographie-Ausgleich
 \usepackage{rotating}        % Querformat-Tabellen mit sidewaystable
 
-% Code-Highlighting fÃ¼r PDDL
+% Code-Highlighting für PDDL
 \lstdefinelanguage{PDDL}{
 	keywords={define, domain, problem, requirements, types, predicates, action, parameters, precondition, effect, and, not, or, forall, exists, when, either, objects, init, goal},
 	keywordstyle=\color{blue}\bfseries,
@@ -90,7 +90,7 @@
 	showstringspaces=false
 }
 
-% Deutsche Bezeichnungen fÃ¼r Verzeichnisse und Gleitobjekte
+% Deutsche Bezeichnungen für Verzeichnisse und Gleitobjekte
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \renewcommand{\listfigurename}{Abbildungsverzeichnis}
 \renewcommand{\listtablename}{Tabellenverzeichnis}
@@ -126,32 +126,32 @@
 
 \section{Einleitung}
 
-Temporales Model Checking ist eine fundamentale Technik zur Verifikation zeitabhÃ¤ngiger Eigenschaften von Systemen. WÃ¤hrend klassisches Model Checking primÃ¤r strukturelle Eigenschaften von Systemen untersucht, konzentriert sich das temporale Model Checking auf die zeitliche Entwicklung von SystemzustÃ¤nden und die GÃ¼ltigkeit temporaler Logikformeln Ã¼ber AusfÃ¼hrungspfaden.
+Temporales Model Checking ist eine fundamentale Technik zur Verifikation zeitabhängiger Eigenschaften von Systemen. Während klassisches Model Checking primär strukturelle Eigenschaften von Systemen untersucht, konzentriert sich das temporale Model Checking auf die zeitliche Entwicklung von Systemzuständen und die Gültigkeit temporaler Logikformeln über Ausführungspfaden.
 
-Diese Arbeit fÃ¼hrt in die Grundlagen des temporalen Model Checkings ein und demonstriert die praktische Anwendung anhand von PDDL (Planning Domain Definition Language) Plannern. PDDL ist ein standardisierter Formalismus zur Beschreibung von Planungsproblemen, der in der kÃ¼nstlichen Intelligenz und automatisierten Planung weit verbreitet ist.
+Diese Arbeit führt in die Grundlagen des temporalen Model Checkings ein und demonstriert die praktische Anwendung anhand von PDDL (Planning Domain Definition Language) Plannern. PDDL ist ein standardisierter Formalismus zur Beschreibung von Planungsproblemen, der in der künstlichen Intelligenz und automatisierten Planung weit verbreitet ist.
 
-Der Beitrag dieser Arbeit besteht in: (1.) EinfÃ¼hrung in temporale Logiken LTL und CTL, (2.) Algorithmen fÃ¼r temporales Model Checking, (3.) Formalisierung von PDDL Planungsproblemen, (4.) Praktische Beispiele mit konkreten DomÃ¤nen und Probleminstanzen, (5.) Verifikation von Planeigenschaften mittels temporaler Logik, (6.) Der Subgraph Algorithmus als polynomiale Alternative mit $O(n^3)$-Laufzeit sowie seine Integration in den gesamten Verifikations-Workflow.
+Der Beitrag dieser Arbeit besteht in: (1.) Einführung in temporale Logiken LTL und CTL, (2.) Algorithmen für temporales Model Checking, (3.) Formalisierung von PDDL Planungsproblemen, (4.) Praktische Beispiele mit konkreten Domänen und Probleminstanzen, (5.) Verifikation von Planeigenschaften mittels temporaler Logik, (6.) Der Subgraph Algorithmus als polynomiale Alternative mit $O(n^3)$-Laufzeit sowie seine Integration in den gesamten Verifikations-Workflow.
 
 \subsection{Motivation}
 
-Planungssysteme werden in sicherheitskritischen Bereichen eingesetzt, darunter Robotersteuerung, Logistik und automatisierte Entscheidungssysteme. Die Korrektheit solcher Systeme ist essentiell. Temporales Model Checking bietet die MÃ¶glichkeit, formale Garantien Ã¼ber das Verhalten von Planern zu geben:
+Planungssysteme werden in sicherheitskritischen Bereichen eingesetzt, darunter Robotersteuerung, Logistik und automatisierte Entscheidungssysteme. Die Korrektheit solcher Systeme ist essentiell. Temporales Model Checking bietet die Möglichkeit, formale Garantien über das Verhalten von Planern zu geben:
 
 \begin{itemize}
-	\item[-] \textbf{Safety}: Werden niemals unerwÃ¼nschte ZustÃ¤nde erreicht?
-	\item[-] \textbf{Liveness}: Werden erwÃ¼nschte Ziele schlieÃŸlich erreicht?
+	\item[-] \textbf{Safety}: Werden niemals unerwünschte Zustände erreicht?
+	\item[-] \textbf{Liveness}: Werden erwünschte Ziele schließlich erreicht?
 	\item[-] \textbf{Fairness}: Werden Ressourcen gerecht verteilt?
 	\item[-] \textbf{Deadlock-Freiheit}: Kann das System stets fortschreiten?
 \end{itemize}
 
-Die Kombination von PDDL Planning mit temporalem Model Checking ermÃ¶glicht die automatisierte Verifikation von PlÃ¤nen und DomÃ¤nenbeschreibungen.
+Die Kombination von PDDL Planning mit temporalem Model Checking ermöglicht die automatisierte Verifikation von Plänen und Domänenbeschreibungen.
 
 \section{Grundlagen Temporaler Logiken}
 
-Temporale Logiken erweitern klassische Aussagenlogik um Operatoren zur Beschreibung zeitlicher AblÃ¤ufe. Die beiden wichtigsten temporalen Logiken sind Linear Temporal Logic (LTL) und Computation Tree Logic (CTL).
+Temporale Logiken erweitern klassische Aussagenlogik um Operatoren zur Beschreibung zeitlicher Abläufe. Die beiden wichtigsten temporalen Logiken sind Linear Temporal Logic (LTL) und Computation Tree Logic (CTL).
 
 \subsection{Linear Temporal Logic (LTL)}
 
-LTL beschreibt Eigenschaften Ã¼ber lineare AusfÃ¼hrungspfade eines Systems. Ein Pfad ist eine unendliche Sequenz von ZustÃ¤nden $s_0, s_1, s_2, \ldots$
+LTL beschreibt Eigenschaften über lineare Ausführungspfade eines Systems. Ein Pfad ist eine unendliche Sequenz von Zuständen $s_0, s_1, s_2, \ldots$
 
 \subsubsection{Syntax}
 
@@ -163,7 +163,7 @@ Die Syntax von LTL ist induktiv definiert:
 Dabei sind:
 \begin{itemize}
 	\item[-] $p$ eine atomare Proposition (Zustandsvariable)
-	\item[-] $\mathbf{X}\varphi$ (neXt): $\varphi$ gilt im nÃ¤chsten Zustand
+	\item[-] $\mathbf{X}\varphi$ (neXt): $\varphi$ gilt im nächsten Zustand
 	\item[-] $\mathbf{F}\varphi$ (Finally): $\varphi$ gilt irgendwann in der Zukunft
 	\item[-] $\mathbf{G}\varphi$ (Globally): $\varphi$ gilt immer
 	\item[-] $\varphi_1 \mathbf{U} \varphi_2$ (Until): $\varphi_1$ gilt, bis $\varphi_2$ gilt
@@ -171,16 +171,16 @@ Dabei sind:
 
 \begin{beispiel}[LTL Formeln]
 	\begin{enumerate}
-		\item $\mathbf{G}(\text{request} \to \mathbf{F}\text{grant})$: Jede Anfrage wird schlieÃŸlich bearbeitet
+		\item $\mathbf{G}(\text{request} \to \mathbf{F}\text{grant})$: Jede Anfrage wird schließlich bearbeitet
 		\item $\mathbf{G}\neg\text{deadlock}$: Es gibt niemals einen Deadlock
-		\item $\mathbf{F}\mathbf{G}\text{stable}$: Das System stabilisiert sich schlieÃŸlich
+		\item $\mathbf{F}\mathbf{G}\text{stable}$: Das System stabilisiert sich schließlich
 		\item $\mathbf{G}(\text{button\_pressed} \to \mathbf{X}\text{light\_on})$: Nach Knopfdruck geht sofort das Licht an
 	\end{enumerate}
 \end{beispiel}
 
 \subsubsection{Semantik}
 
-Die Semantik von LTL wird Ã¼ber Pfade $\pi = s_0, s_1, s_2, \ldots$ definiert, wobei $\pi^i$ den Suffix-Pfad ab Position $i$ bezeichnet:
+Die Semantik von LTL wird über Pfade $\pi = s_0, s_1, s_2, \ldots$ definiert, wobei $\pi^i$ den Suffix-Pfad ab Position $i$ bezeichnet:
 
 \begin{align}
 \pi \models p &\iff p \in L(s_0) \\
@@ -194,7 +194,7 @@ Die Semantik von LTL wird Ã¼ber Pfade $\pi = s_0, s_1, s_2, \ldots$ definiert,
 
 \subsection{Computation Tree Logic (CTL)}
 
-CTL beschreibt Eigenschaften Ã¼ber BerechnungsbÃ¤ume, die alle mÃ¶glichen AusfÃ¼hrungen eines Systems reprÃ¤sentieren. Im Gegensatz zu LTL quantifiziert CTL explizit Ã¼ber Pfade.
+CTL beschreibt Eigenschaften über Berechnungsbäume, die alle möglichen Ausführungen eines Systems repräsentieren. Im Gegensatz zu LTL quantifiziert CTL explizit über Pfade.
 
 \subsubsection{Syntax}
 
@@ -215,16 +215,16 @@ Dabei sind:
 
 \begin{beispiel}[CTL Formeln]
 	\begin{enumerate}
-		\item $\mathbf{AG}(\text{request} \to \mathbf{AF}\text{grant})$: Auf allen Pfaden wird jede Anfrage schlieÃŸlich bearbeitet
+		\item $\mathbf{AG}(\text{request} \to \mathbf{AF}\text{grant})$: Auf allen Pfaden wird jede Anfrage schließlich bearbeitet
 		\item $\mathbf{EF}\text{goal}$: Es existiert ein Pfad zum Zielzustand
 		\item $\mathbf{AG}\neg\text{deadlock}$: Auf allen Pfaden gibt es niemals Deadlock
-		\item $\mathbf{EG}\text{alive}$: Es existiert ein Pfad, auf dem das System ewig lÃ¤uft
+		\item $\mathbf{EG}\text{alive}$: Es existiert ein Pfad, auf dem das System ewig läuft
 	\end{enumerate}
 \end{beispiel}
 
 \subsubsection{Semantik}
 
-Die Semantik von CTL wird Ã¼ber einen Kripke-Strukturen $M = (S, R, L)$ definiert:
+Die Semantik von CTL wird über einen Kripke-Strukturen $M = (S, R, L)$ definiert:
 
 \begin{align}
 M, s \models p &\iff p \in L(s) \\
@@ -248,33 +248,33 @@ Tabelle \ref{tab:ltl_ctl_comparison} zeigt die wichtigsten Unterschiede:
 		\toprule
 		Aspekt & LTL & CTL \\
 		\midrule
-		Quantifizierung & Implizit Ã¼ber alle Pfade & Explizit (A, E) \\
-		AusdrucksstÃ¤rke & Linear & Verzweigend \\
-		Typische Eigenschaften & Fairness, ReaktivitÃ¤t & Erreichbarkeit, Invarianten \\
-		KomplexitÃ¤t MC & PSPACE-vollstÃ¤ndig & P (fÃ¼r CTL) \\
+		Quantifizierung & Implizit über alle Pfade & Explizit (A, E) \\
+		Ausdrucksstärke & Linear & Verzweigend \\
+		Typische Eigenschaften & Fairness, Reaktivität & Erreichbarkeit, Invarianten \\
+		Komplexität MC & PSPACE-vollständig & P (für CTL) \\
 		Anwendung & Spezifikation & Verifikation \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 \begin{remark}
-	LTL und CTL sind nicht gegenseitig ausdrucksstark. Es gibt LTL-Formeln, die nicht in CTL ausdrÃ¼ckbar sind (z.B. $\mathbf{FG}p$) und umgekehrt (z.B. $\mathbf{AG}\mathbf{EF}p$). CTL* vereint beide Logiken.
+	LTL und CTL sind nicht gegenseitig ausdrucksstark. Es gibt LTL-Formeln, die nicht in CTL ausdrückbar sind (z.B. $\mathbf{FG}p$) und umgekehrt (z.B. $\mathbf{AG}\mathbf{EF}p$). CTL* vereint beide Logiken.
 \end{remark}
 
-\section{Algorithmen fÃ¼r Temporales Model Checking}
+\section{Algorithmen für Temporales Model Checking}
 
-Dieser Abschnitt prÃ¤sentiert die grundlegenden Algorithmen fÃ¼r LTL und CTL Model Checking.
+Dieser Abschnitt präsentiert die grundlegenden Algorithmen für LTL und CTL Model Checking.
 
 \subsection{CTL Model Checking}
 
-Der CTL Model Checking Algorithmus arbeitet durch rekursive Berechnung von Zustandsmengen, die eine Formel erfÃ¼llen.
+Der CTL Model Checking Algorithmus arbeitet durch rekursive Berechnung von Zustandsmengen, die eine Formel erfüllen.
 
 \subsubsection{Der SAT-Algorithmus}
 
 Gegeben eine Kripke-Struktur $M = (S, R, L)$ und eine CTL-Formel $\varphi$, berechnet der SAT-Algorithmus die Menge $\text{SAT}(\varphi) = \{s \in S \mid M, s \models \varphi\}$.
 
 \begin{algorithm}[H]
-	\caption{CTL-ModellprÃ¼fung (SAT-Algorithmus)}
+	\caption{CTL-Modellprüfung (SAT-Algorithmus)}
 	\begin{algorithmic}[1]
 		\Prozedur{SAT}{$M, \varphi$}
 		\Wenn{$\varphi = \text{true}$}
@@ -304,11 +304,11 @@ Die Hilfsfunktionen EG-SAT und EU-SAT werden durch Fixpunkt-Berechnung implement
 	\caption{EG-SAT-Berechnung}
 	\begin{algorithmic}[1]
 		\Prozedur{EG-SAT}{$M, \psi$}
-		\State $T \gets \text{SAT}(M, \psi)$ \Comment{Starte mit allen $\psi$-ZustÃ¤nden}
+		\State $T \gets \text{SAT}(M, \psi)$ \Comment{Starte mit allen $\psi$-Zuständen}
 		\State $T' \gets \emptyset$
 		\Waehrend{$T \neq T'$}
 		\State $T' \gets T$
-		\State $T \gets T \cap \{s \mid \exists s': (s,s') \in R \land s' \in T\}$ \Comment{Entferne ZustÃ¤nde ohne Nachfolger in $T$}
+		\State $T \gets T \cap \{s \mid \exists s': (s,s') \in R \land s' \in T\}$ \Comment{Entferne Zustände ohne Nachfolger in $T$}
 		\EndeWaehrend
 		\State \Return $T$
 		\EndProzedur
@@ -321,7 +321,7 @@ Die Hilfsfunktionen EG-SAT und EU-SAT werden durch Fixpunkt-Berechnung implement
 	\caption{EU-SAT-Berechnung}
 	\begin{algorithmic}[1]
 		\Prozedur{EU-SAT}{$M, \psi_1, \psi_2$}
-		\State $T \gets \text{SAT}(M, \psi_2)$ \Comment{Starte mit $\psi_2$-ZustÃ¤nden}
+		\State $T \gets \text{SAT}(M, \psi_2)$ \Comment{Starte mit $\psi_2$-Zuständen}
 		\State $T' \gets \emptyset$
 		\Waehrend{$T \neq T'$}
 		\State $T' \gets T$
@@ -333,101 +333,101 @@ Die Hilfsfunktionen EG-SAT und EU-SAT werden durch Fixpunkt-Berechnung implement
 \end{algorithm}
 
 \begin{theorem}[Korrektheit CTL Model Checking]
-	Der SAT-Algorithmus terminiert fÃ¼r alle CTL-Formeln $\varphi$ und berechnet korrekt die Menge $\text{SAT}(\varphi)$.
+	Der SAT-Algorithmus terminiert für alle CTL-Formeln $\varphi$ und berechnet korrekt die Menge $\text{SAT}(\varphi)$.
 \end{theorem}
 
 \begin{proof}
-	Die Terminierung folgt aus der Monotonie der Fixpunkt-Operationen und der Endlichkeit des Zustandsraums $S$. Die Korrektheit ergibt sich durch strukturelle Induktion Ã¼ber den Formelaufbau und die Ã„quivalenz der Fixpunkt-Definitionen zur CTL-Semantik.
+	Die Terminierung folgt aus der Monotonie der Fixpunkt-Operationen und der Endlichkeit des Zustandsraums $S$. Die Korrektheit ergibt sich durch strukturelle Induktion über den Formelaufbau und die Äquivalenz der Fixpunkt-Definitionen zur CTL-Semantik.
 \end{proof}
 
-\subsubsection{KomplexitÃ¤t}
+\subsubsection{Komplexität}
 
-\begin{theorem}[KomplexitÃ¤t CTL Model Checking]
-	FÃ¼r eine Kripke-Struktur $M$ mit $|S| = n$ ZustÃ¤nden und $|R| = m$ Transitionen und eine CTL-Formel $\varphi$ der LÃ¤nge $|\varphi| = l$ ist die ZeitkomplexitÃ¤t des SAT-Algorithmus:
+\begin{theorem}[Komplexität CTL Model Checking]
+	Für eine Kripke-Struktur $M$ mit $|S| = n$ Zuständen und $|R| = m$ Transitionen und eine CTL-Formel $\varphi$ der Länge $|\varphi| = l$ ist die Zeitkomplexität des SAT-Algorithmus:
 	\begin{align}
 	O((n + m) \cdot l)
 	\end{align}
 \end{theorem}
 
-Dies zeigt, dass CTL Model Checking in polynomieller Zeit lÃ¶sbar ist.
+Dies zeigt, dass CTL Model Checking in polynomieller Zeit lösbar ist.
 
 \subsection{LTL Model Checking}
 
-LTL Model Checking ist komplexer als CTL Model Checking. Der Standardansatz verwendet BÃ¼chi-Automaten.
+LTL Model Checking ist komplexer als CTL Model Checking. Der Standardansatz verwendet Büchi-Automaten.
 
 \subsubsection{Grundidee}
 
-Das LTL Model Checking Problem $M \models \varphi$ wird reduziert auf ein Leerheitsproblem fÃ¼r Automaten:
+Das LTL Model Checking Problem $M \models \varphi$ wird reduziert auf ein Leerheitsproblem für Automaten:
 \begin{enumerate}
-	\item Konstruiere BÃ¼chi-Automaten $\mathcal{A}_M$ aus dem Modell $M$
-	\item Konstruiere BÃ¼chi-Automaten $\mathcal{A}_{\neg\varphi}$ aus $\neg\varphi$
-	\item PrÃ¼fe, ob $\mathcal{L}(\mathcal{A}_M) \cap \mathcal{L}(\mathcal{A}_{\neg\varphi}) = \emptyset$
+	\item Konstruiere Büchi-Automaten $\mathcal{A}_M$ aus dem Modell $M$
+	\item Konstruiere Büchi-Automaten $\mathcal{A}_{\neg\varphi}$ aus $\neg\varphi$
+	\item Prüfe, ob $\mathcal{L}(\mathcal{A}_M) \cap \mathcal{L}(\mathcal{A}_{\neg\varphi}) = \emptyset$
 \end{enumerate}
 
 Wenn der Schnitt leer ist, gilt $M \models \varphi$. Andernfalls ist ein Gegenbeispiel gefunden.
 
-\subsubsection{BÃ¼chi-Automaten}
+\subsubsection{Büchi-Automaten}
 
-\begin{definition}[BÃ¼chi-Automat]
-	Ein BÃ¼chi-Automat ist ein Tupel $\mathcal{A} = (Q, \Sigma, \delta, q_0, F)$ mit:
+\begin{definition}[Büchi-Automat]
+	Ein Büchi-Automat ist ein Tupel $\mathcal{A} = (Q, \Sigma, \delta, q_0, F)$ mit:
 	\begin{itemize}
 		\item[-] $Q$: endliche Zustandsmenge
 		\item[-] $\Sigma$: endliches Alphabet
-		\item[-] $\delta: Q \times \Sigma \to 2^Q$: Ãœbergangsfunktion
+		\item[-] $\delta: Q \times \Sigma \to 2^Q$: Übergangsfunktion
 		\item[-] $q_0 \in Q$: Startzustand
-		\item[-] $F \subseteq Q$: Menge akzeptierender ZustÃ¤nde
+		\item[-] $F \subseteq Q$: Menge akzeptierender Zustände
 	\end{itemize}
-	Ein unendliches Wort $w = a_0 a_1 a_2 \ldots$ wird akzeptiert, wenn es einen Lauf gibt, der unendlich oft ZustÃ¤nde aus $F$ besucht.
+	Ein unendliches Wort $w = a_0 a_1 a_2 \ldots$ wird akzeptiert, wenn es einen Lauf gibt, der unendlich oft Zustände aus $F$ besucht.
 \end{definition}
 
-\subsubsection{LTL zu BÃ¼chi-Automat}
+\subsubsection{LTL zu Büchi-Automat}
 
-Die Konstruktion eines BÃ¼chi-Automaten aus einer LTL-Formel erfolgt durch:
+Die Konstruktion eines Büchi-Automaten aus einer LTL-Formel erfolgt durch:
 \begin{enumerate}
 	\item Berechnung der Closure von $\varphi$
-	\item Konstruktion eines verallgemeinerten BÃ¼chi-Automaten
-	\item Umwandlung in einen normalen BÃ¼chi-Automaten
+	\item Konstruktion eines verallgemeinerten Büchi-Automaten
+	\item Umwandlung in einen normalen Büchi-Automaten
 \end{enumerate}
 
-\begin{theorem}[LTL zu BÃ¼chi]
-	FÃ¼r jede LTL-Formel $\varphi$ existiert ein BÃ¼chi-Automat $\mathcal{A}_\varphi$ mit $\mathcal{L}(\mathcal{A}_\varphi) = \{w \mid w \models \varphi\}$ und $|\mathcal{A}_\varphi| \in O(2^{|\varphi|})$.
+\begin{theorem}[LTL zu Büchi]
+	Für jede LTL-Formel $\varphi$ existiert ein Büchi-Automat $\mathcal{A}_\varphi$ mit $\mathcal{L}(\mathcal{A}_\varphi) = \{w \mid w \models \varphi\}$ und $|\mathcal{A}_\varphi| \in O(2^{|\varphi|})$.
 \end{theorem}
 
 \subsubsection{Leerheitstest}
 
-Nachdem die LTL-Formel $\neg\varphi$ in einen BÃ¼chi-Automaten $\mathcal{A}_{\neg\varphi}$ und das Systemmodell $M$ in einen BÃ¼chi-Automaten $\mathcal{A}_M$ Ã¼berfÃ¼hrt wurden, stellt sich die entscheidende Frage: Gibt es ein unendliches Wort, das von beiden Automaten akzeptiert wird? Formal lautet die Frage, ob der Schnitt
+Nachdem die LTL-Formel $\neg\varphi$ in einen Büchi-Automaten $\mathcal{A}_{\neg\varphi}$ und das Systemmodell $M$ in einen Büchi-Automaten $\mathcal{A}_M$ überführt wurden, stellt sich die entscheidende Frage: Gibt es ein unendliches Wort, das von beiden Automaten akzeptiert wird? Formal lautet die Frage, ob der Schnitt
 \begin{align}
   \mathcal{L}(\mathcal{A}_M) \cap \mathcal{L}(\mathcal{A}_{\neg\varphi}) \neq \emptyset
 \end{align}
-nichtleer ist. Falls ja, existiert ein konkretes AusfÃ¼hrungsszenario des Systems, auf dem $\varphi$ \emph{nicht} gilt -- ein Gegenbeispiel, das die Verifikation widerlegt. Falls der Schnitt leer ist, gilt $M \models \varphi$, und die Eigenschaft ist formal bewiesen.
+nichtleer ist. Falls ja, existiert ein konkretes Ausführungsszenario des Systems, auf dem $\varphi$ \emph{nicht} gilt -- ein Gegenbeispiel, das die Verifikation widerlegt. Falls der Schnitt leer ist, gilt $M \models \varphi$, und die Eigenschaft ist formal bewiesen.
 
-\paragraph*{Grundidee: Zyklen durch akzeptierende ZustÃ¤nde.}
-Ein BÃ¼chi-Automat akzeptiert ein unendliches Wort genau dann, wenn der zugehÃ¶rige Lauf einen akzeptierenden Zustand aus $F$ \emph{unendlich oft} besucht. Im endlichen Zustandsgraphen des Produktautomaten bedeutet das: Es muss einen erreichbaren Zyklus geben, der mindestens einen Zustand aus $F$ enthÃ¤lt. Die Leerheitsfrage lÃ¤sst sich daher auf eine Erreichbarkeits- und Kreiserkennungsaufgabe im Graphen reduzieren -- eine gut verstandene und effizient lÃ¶sbare Problemklasse.
+\paragraph*{Grundidee: Zyklen durch akzeptierende Zustände.}
+Ein Büchi-Automat akzeptiert ein unendliches Wort genau dann, wenn der zugehörige Lauf einen akzeptierenden Zustand aus $F$ \emph{unendlich oft} besucht. Im endlichen Zustandsgraphen des Produktautomaten bedeutet das: Es muss einen erreichbaren Zyklus geben, der mindestens einen Zustand aus $F$ enthält. Die Leerheitsfrage lässt sich daher auf eine Erreichbarkeits- und Kreiserkennungsaufgabe im Graphen reduzieren -- eine gut verstandene und effizient lösbare Problemklasse.
 
 \paragraph*{Schritt 1: Erreichbarkeitsanalyse.}
-Im ersten Schritt bestimmt der Algorithmus die Menge $R$ aller ZustÃ¤nde, die vom Startzustand $q_0$ aus erreichbar sind. Dazu genÃ¼gt eine einfache Breitensuche oder Tiefensuche im Zustandsgraphen. Dieser Schritt hat lineare Laufzeit $O(|Q| + |\delta|)$ in der Anzahl der ZustÃ¤nde und ÃœbergÃ¤nge. ZustÃ¤nde, die von $q_0$ nicht erreicht werden kÃ¶nnen, spielen fÃ¼r die Akzeptanz keine Rolle und werden in den Folgeschritten ignoriert.
+Im ersten Schritt bestimmt der Algorithmus die Menge $R$ aller Zustände, die vom Startzustand $q_0$ aus erreichbar sind. Dazu genügt eine einfache Breitensuche oder Tiefensuche im Zustandsgraphen. Dieser Schritt hat lineare Laufzeit $O(|Q| + |\delta|)$ in der Anzahl der Zustände und Übergänge. Zustände, die von $q_0$ nicht erreicht werden können, spielen für die Akzeptanz keine Rolle und werden in den Folgeschritten ignoriert.
 
-\paragraph*{Schritt 2: PrÃ¼fung auf erreichbare Zyklen durch $F$.}
-FÃ¼r jeden akzeptierenden Zustand $f \in F \cap R$ -- also jeden akzeptierenden Zustand, der Ã¼berhaupt erreichbar ist -- wird geprÃ¼ft, ob $f$ auf einem Pfad liegt, der von $f$ wieder zu $f$ zurÃ¼ckfÃ¼hrt, also ob $f$ in einem Zyklus liegt. Dies entspricht der Frage, ob $f$ von sich selbst aus erreichbar ist.
+\paragraph*{Schritt 2: Prüfung auf erreichbare Zyklen durch $F$.}
+Für jeden akzeptierenden Zustand $f \in F \cap R$ -- also jeden akzeptierenden Zustand, der überhaupt erreichbar ist -- wird geprüft, ob $f$ auf einem Pfad liegt, der von $f$ wieder zu $f$ zurückführt, also ob $f$ in einem Zyklus liegt. Dies entspricht der Frage, ob $f$ von sich selbst aus erreichbar ist.
 
-Diese PrÃ¼fung ist algorithmisch elegant: Eine erneute Erreichbarkeitssuche, die in $f$ startet und den Zustandsgraphen nach $f$ durchsucht, beantwortet die Frage in $O(|Q| + |\delta|)$. Wird $f$ auf diesem Weg erreicht, so existiert ein Zyklus durch $f$, und der Automat ist nichtleer: Es gibt ein unendliches Wort, das von $f$ aus immer wieder durchlaufen wird und damit die BÃ¼chi-Bedingung erfÃ¼llt. Der Algorithmus gibt sofort \textsc{false} zurÃ¼ck -- der Automat ist \emph{nicht} leer, also ist ein Gegenbeispiel gefunden.
+Diese Prüfung ist algorithmisch elegant: Eine erneute Erreichbarkeitssuche, die in $f$ startet und den Zustandsgraphen nach $f$ durchsucht, beantwortet die Frage in $O(|Q| + |\delta|)$. Wird $f$ auf diesem Weg erreicht, so existiert ein Zyklus durch $f$, und der Automat ist nichtleer: Es gibt ein unendliches Wort, das von $f$ aus immer wieder durchlaufen wird und damit die Büchi-Bedingung erfüllt. Der Algorithmus gibt sofort \textsc{false} zurück -- der Automat ist \emph{nicht} leer, also ist ein Gegenbeispiel gefunden.
 
 \paragraph*{Schritt 3: Leerheitsentscheidung.}
-Wurde fÃ¼r keinen akzeptierenden Zustand aus $F \cap R$ ein solcher Zyklus gefunden, so enthÃ¤lt der Automat kein akzeptiertes Wort. Der Algorithmus gibt \textsc{true} zurÃ¼ck: Der Schnitt der Sprachen ist leer, und die zu verifizierende Eigenschaft $\varphi$ gilt auf allen AusfÃ¼hrungspfaden des Systems.
+Wurde für keinen akzeptierenden Zustand aus $F \cap R$ ein solcher Zyklus gefunden, so enthält der Automat kein akzeptiertes Wort. Der Algorithmus gibt \textsc{true} zurück: Der Schnitt der Sprachen ist leer, und die zu verifizierende Eigenschaft $\varphi$ gilt auf allen Ausführungspfaden des Systems.
 
 \paragraph*{Gegenbeispielextraktion.}
-Im Fall \textsc{false} lÃ¤sst sich aus dem gefundenen Zyklus ein konkretes Gegenbeispiel konstruieren: Der Pfad von $q_0$ zu $f$ (ein endliches PrÃ¤fix) gefolgt vom Zyklus durch $f$ (ein unendlich oft wiederholtes Segment) ergibt ein lasso-fÃ¶rmiges Gegenbeispiel der Form $\pi^{\text{pre}} \cdot (\pi^{\text{cycle}})^\omega$. Dieses Gegenbeispiel kann direkt auf eine Aktionssequenz im Planungssystem zurÃ¼ckÃ¼bersetzt werden, was die Fehlersuche erheblich erleichtert.
+Im Fall \textsc{false} lässt sich aus dem gefundenen Zyklus ein konkretes Gegenbeispiel konstruieren: Der Pfad von $q_0$ zu $f$ (ein endliches Präfix) gefolgt vom Zyklus durch $f$ (ein unendlich oft wiederholtes Segment) ergibt ein lasso-förmiges Gegenbeispiel der Form $\pi^{\text{pre}} \cdot (\pi^{\text{cycle}})^\omega$. Dieses Gegenbeispiel kann direkt auf eine Aktionssequenz im Planungssystem zurückübersetzt werden, was die Fehlersuche erheblich erleichtert.
 
-\paragraph*{KorrektheitsÃ¼berlegung.}
-Die Korrektheit des Verfahrens folgt aus einem grundlegenden Satz der Automaten\-theorie: $\mathcal{L}(\mathcal{A})$ ist genau dann leer, wenn kein von $q_0$ erreichbarer Zustand aus $F$ auf einem Zyklus liegt -- eine direkte Konsequenz der BÃ¼chi-Akzeptanzbedingung und der Endlichkeit des Zustandsraums.
+\paragraph*{Korrektheitsüberlegung.}
+Die Korrektheit des Verfahrens folgt aus einem grundlegenden Satz der Automaten\-theorie: $\mathcal{L}(\mathcal{A})$ ist genau dann leer, wenn kein von $q_0$ erreichbarer Zustand aus $F$ auf einem Zyklus liegt -- eine direkte Konsequenz der Büchi-Akzeptanzbedingung und der Endlichkeit des Zustandsraums.
 
 Der Algorithmus ist in Algorithmus~5 als Pseudocode dargestellt:
 
 \begin{algorithm}[H]
-	\caption{BÃ¼chi-Leerheitstest}
+	\caption{Büchi-Leerheitstest}
 	\begin{algorithmic}[1]
 		\Prozedur{IstLeer}{$\mathcal{A}$}
-		\State Berechne die von $q_0$ erreichbaren ZustÃ¤nde $R$ \Comment{Erreichbarkeitsanalyse}
+		\State Berechne die von $q_0$ erreichbaren Zustände $R$ \Comment{Erreichbarkeitsanalyse}
 		\FuerAlle{akzeptierender Zustand $f \in F \cap R$}
 			\Wenn{$f$ ist von sich selbst erreichbar}
 				\State \Return \textbf{falsch} \Comment{Nicht leer: Gegenbeispiel existiert}
@@ -439,38 +439,38 @@ Der Algorithmus ist in Algorithmus~5 als Pseudocode dargestellt:
 \end{algorithm}
 
 \paragraph*{Laufzeit und Einbettung in den LTL-Workflow.}
-Der Algorithmus fÃ¼hrt fÃ¼r jeden Zustand $f \in F \cap R$ eine Erreichbarkeitssuche durch; im schlechtesten Fall sind alle ZustÃ¤nde akzeptierend, was zu einer Gesamtlaufzeit von $O(|F| \cdot (|Q| + |\delta|))$ fÃ¼hrt. In der Praxis wird dieser Schritt durch Strongly-Connected-Component-Algorithmen (z.\,B.\ Tarjan oder Kosaraju) auf $O(|Q| + |\delta|)$ optimiert, da alle Kreise in einem einzigen Durchlauf gefunden werden kÃ¶nnen. Im Rahmen des vollstÃ¤ndigen LTL-Model-Checking-Workflows ergibt sich damit eine GesamtkomplexitÃ¤t von $O(|M| \cdot 2^{|\varphi|})$, wobei $|M|$ die GrÃ¶ÃŸe des Systemmodells und $|\varphi|$ die LÃ¤nge der Formel bezeichnet.
+Der Algorithmus führt für jeden Zustand $f \in F \cap R$ eine Erreichbarkeitssuche durch; im schlechtesten Fall sind alle Zustände akzeptierend, was zu einer Gesamtlaufzeit von $O(|F| \cdot (|Q| + |\delta|))$ führt. In der Praxis wird dieser Schritt durch Strongly-Connected-Component-Algorithmen (z.\,B.\ Tarjan oder Kosaraju) auf $O(|Q| + |\delta|)$ optimiert, da alle Kreise in einem einzigen Durchlauf gefunden werden können. Im Rahmen des vollständigen LTL-Model-Checking-Workflows ergibt sich damit eine Gesamtkomplexität von $O(|M| \cdot 2^{|\varphi|})$, wobei $|M|$ die Größe des Systemmodells und $|\varphi|$ die Länge der Formel bezeichnet.
 
-\subsubsection{KomplexitÃ¤t}
+\subsubsection{Komplexität}
 
-\begin{theorem}[KomplexitÃ¤t LTL Model Checking]
-	LTL Model Checking ist PSPACE-vollstÃ¤ndig. FÃ¼r praktische FÃ¤lle mit fester Formel $\varphi$ und Modell $M$ mit $n$ ZustÃ¤nden ist die KomplexitÃ¤t:
+\begin{theorem}[Komplexität LTL Model Checking]
+	LTL Model Checking ist PSPACE-vollständig. Für praktische Fälle mit fester Formel $\varphi$ und Modell $M$ mit $n$ Zuständen ist die Komplexität:
 	\begin{align}
 	O(n \cdot 2^{|\varphi|})
 	\end{align}
 \end{theorem}
 
-Die exponentielle AbhÃ¤ngigkeit von der FormellÃ¤nge ist in der Praxis oft akzeptabel, da Formeln typischerweise klein sind.
+Die exponentielle Abhängigkeit von der Formellänge ist in der Praxis oft akzeptabel, da Formeln typischerweise klein sind.
 
 \section{PDDL: Planning Domain Definition Language}
 
-PDDL ist ein standardisierter Formalismus zur Beschreibung von Planungsproblemen. Er wurde entwickelt, um eine gemeinsame Sprache fÃ¼r die Planerforschung zu schaffen.
+PDDL ist ein standardisierter Formalismus zur Beschreibung von Planungsproblemen. Er wurde entwickelt, um eine gemeinsame Sprache für die Planerforschung zu schaffen.
 
 \subsection{Grundkonzepte}
 
 Ein PDDL-Planungsproblem besteht aus zwei Teilen:
 \begin{enumerate}
-	\item \textbf{DomÃ¤ne}: Definiert Typen, PrÃ¤dikate und Aktionen
+	\item \textbf{Domäne}: Definiert Typen, Prädikate und Aktionen
 	\item \textbf{Problem}: Definiert Objekte, Initialzustand und Ziel
 \end{enumerate}
 
 \subsection{PDDL Syntax}
 
-\subsubsection{DomÃ¤nendefinition}
+\subsubsection{Domänendefinition}
 
-Eine PDDL-DomÃ¤ne hat folgende Struktur:
+Eine PDDL-Domäne hat folgende Struktur:
 
-\begin{lstlisting}[language=PDDL, caption=PDDL DomÃ¤nen-Template]
+\begin{lstlisting}[language=PDDL, caption=PDDL Domänen-Template]
 (define (domain domain-name)
   (:requirements :strips :typing)
   (:types type1 type2 - object)
@@ -507,7 +507,7 @@ Ein PDDL-Problem hat folgende Struktur:
 
 \subsection{PDDL Requirements}
 
-PDDL unterstÃ¼tzt verschiedene Features durch Requirements:
+PDDL unterstützt verschiedene Features durch Requirements:
 
 \begin{table}[h]
 	\centering
@@ -532,29 +532,29 @@ PDDL unterstÃ¼tzt verschiedene Features durch Requirements:
 \subsection{Semantik}
 
 \begin{definition}[PDDL Zustand]
-	Ein Zustand $s$ ist eine Menge von instantiierten GrundprÃ¤dikaten (ground atoms). Ein PrÃ¤dikat $p$ ist wahr in $s$ genau dann, wenn $p \in s$.
+	Ein Zustand $s$ ist eine Menge von instantiierten Grundprädikaten (ground atoms). Ein Prädikat $p$ ist wahr in $s$ genau dann, wenn $p \in s$.
 \end{definition}
 
 \begin{definition}[PDDL Aktion]
-	Eine Aktion $a$ ist anwendbar in Zustand $s$, wenn ihre Vorbedingung $\text{pre}(a)$ in $s$ erfÃ¼llt ist. Die Anwendung von $a$ in $s$ fÃ¼hrt zum Nachfolgezustand:
+	Eine Aktion $a$ ist anwendbar in Zustand $s$, wenn ihre Vorbedingung $\text{pre}(a)$ in $s$ erfüllt ist. Die Anwendung von $a$ in $s$ führt zum Nachfolgezustand:
 	\begin{align}
 	s' = (s \setminus \text{del}(a)) \cup \text{add}(a)
 	\end{align}
-	wobei $\text{del}(a)$ die zu lÃ¶schenden und $\text{add}(a)$ die hinzuzufÃ¼genden PrÃ¤dikate sind.
+	wobei $\text{del}(a)$ die zu löschenden und $\text{add}(a)$ die hinzuzufügenden Prädikate sind.
 \end{definition}
 
 \begin{definition}[PDDL Plan]
 	Ein Plan ist eine Aktionssequenz $\pi = \langle a_1, \ldots, a_n \rangle$, die ausgehend
-	vom Initialzustand~$s_0$ einen Zustand herbeifÃ¼hrt, der das Ziel~$G$ erfÃ¼llt.
+	vom Initialzustand~$s_0$ einen Zustand herbeiführt, der das Ziel~$G$ erfüllt.
 \end{definition}
 
 \section{Praktisches Beispiel: Blocksworld}
 
-Die Blocksworld-DomÃ¤ne ist ein klassisches Planungsproblem. BlÃ¶cke kÃ¶nnen aufeinander gestapelt werden, und das Ziel ist es, eine gewÃ¼nschte Konfiguration zu erreichen.
+Die Blocksworld-Domäne ist ein klassisches Planungsproblem. Blöcke können aufeinander gestapelt werden, und das Ziel ist es, eine gewünschte Konfiguration zu erreichen.
 
-\subsection{DomÃ¤nendefinition}
+\subsection{Domänendefinition}
 
-\begin{lstlisting}[language=PDDL, caption=Blocksworld DomÃ¤ne]
+\begin{lstlisting}[language=PDDL, caption=Blocksworld Domäne]
 (define (domain blocksworld)
   (:requirements :strips :typing)
   
@@ -618,12 +618,12 @@ Die Blocksworld-DomÃ¤ne ist ein klassisches Planungsproblem. BlÃ¶cke kÃ¶nn
 
 Betrachten wir ein konkretes Planungsproblem:
 
-\textbf{Initialzustand}: Drei BlÃ¶cke A, B, C sind alle auf dem Tisch:
+\textbf{Initialzustand}: Drei Blöcke A, B, C sind alle auf dem Tisch:
 \begin{itemize}
 	\item[-] A ist auf dem Tisch
 	\item[-] B ist auf dem Tisch
 	\item[-] C ist auf dem Tisch
-	\item[-] Alle BlÃ¶cke sind clear
+	\item[-] Alle Blöcke sind clear
 	\item[-] Die Hand ist leer
 \end{itemize}
 
@@ -655,7 +655,7 @@ Betrachten wir ein konkretes Planungsproblem:
     (on B A))))
 \end{lstlisting}
 
-\subsection{LÃ¶sungsplan}
+\subsection{Lösungsplan}
 
 Ein optimaler Plan mit 6 Aktionen:
 
@@ -666,7 +666,7 @@ Ein optimaler Plan mit 6 Aktionen:
 	\item \texttt{stack(C, B)}: Stelle C auf B
 \end{enumerate}
 
-Dies ist ein Plan mit 4 Aktionen. Visualisierung der ZustÃ¤nde:
+Dies ist ein Plan mit 4 Aktionen. Visualisierung der Zustände:
 
 \begin{align*}
 \text{Initial:} \quad & A \quad B \quad C \quad \text{(alle auf Tisch)} \\
@@ -678,36 +678,36 @@ Dies ist ein Plan mit 4 Aktionen. Visualisierung der ZustÃ¤nde:
 
 \subsection{Zustandsraumanalyse}
 
-Der Zustandsraum der Blocksworld wÃ¤chst exponentiell:
+Der Zustandsraum der Blocksworld wächst exponentiell:
 
-\begin{theorem}[ZustandsraumgrÃ¶ÃŸe Blocksworld]
-	FÃ¼r $n$ BlÃ¶cke gibt es hÃ¶chstens
+\begin{theorem}[Zustandsraumgröße Blocksworld]
+	Für $n$ Blöcke gibt es höchstens
 	\begin{align}
 	O((n+1)^n)
 	\end{align}
-	verschiedene ZustÃ¤nde.
+	verschiedene Zustände.
 \end{theorem}
 
 \begin{proof}
-	Jeder Block kann entweder auf dem Tisch oder auf einem anderen Block sein. FÃ¼r jeden Block gibt es $n+1$ Positionen (auf dem Tisch oder auf einem der $n$ BlÃ¶cke). Die Hand kann leer sein oder einen Block halten ($n+1$ MÃ¶glichkeiten). Zusammen ergibt sich $(n+1)^n \cdot (n+1) = O((n+1)^{n+1})$, wobei durch Constraints (z.B. kein Zyklus) die tatsÃ¤chliche Anzahl kleiner ist.
+	Jeder Block kann entweder auf dem Tisch oder auf einem anderen Block sein. Für jeden Block gibt es $n+1$ Positionen (auf dem Tisch oder auf einem der $n$ Blöcke). Die Hand kann leer sein oder einen Block halten ($n+1$ Möglichkeiten). Zusammen ergibt sich $(n+1)^n \cdot (n+1) = O((n+1)^{n+1})$, wobei durch Constraints (z.B. kein Zyklus) die tatsächliche Anzahl kleiner ist.
 \end{proof}
 
-FÃ¼r 3 BlÃ¶cke ergibt sich ein Zustandsraum von etwa 13 erreichbaren ZustÃ¤nden (unter BerÃ¼cksichtigung der physikalischen Constraints).
+Für 3 Blöcke ergibt sich ein Zustandsraum von etwa 13 erreichbaren Zuständen (unter Berücksichtigung der physikalischen Constraints).
 
-\section{Temporale Verifikation von PDDL-PlÃ¤nen}
+\section{Temporale Verifikation von PDDL-Plänen}
 
-Dieser Abschnitt zeigt, wie temporale Logik zur Verifikation von PDDL-PlÃ¤nen eingesetzt werden kann.
+Dieser Abschnitt zeigt, wie temporale Logik zur Verifikation von PDDL-Plänen eingesetzt werden kann.
 
 \subsection{Modellierung als Kripke-Struktur}
 
 Ein PDDL-Planungsproblem kann als Kripke-Struktur modelliert werden:
 
 \begin{definition}[Kripke-Struktur aus PDDL]
-	Gegeben ein PDDL-Problem $P = (D, I, G)$ mit DomÃ¤ne $D$, Initialzustand $I$ und Ziel $G$, definieren wir die Kripke-Struktur $M_P = (S, R, L)$ mit:
+	Gegeben ein PDDL-Problem $P = (D, I, G)$ mit Domäne $D$, Initialzustand $I$ und Ziel $G$, definieren wir die Kripke-Struktur $M_P = (S, R, L)$ mit:
 	\begin{itemize}
-		\item[-] $S$: Menge aller erreichbaren ZustÃ¤nde
+		\item[-] $S$: Menge aller erreichbaren Zustände
 		\item[-] $R = \{(s, s') \mid \exists \text{ Aktion } a: s' = \text{apply}(a, s)\}$
-		\item[-] $L(s) = s$ (die wahren PrÃ¤dikate in $s$)
+		\item[-] $L(s) = s$ (die wahren Prädikate in $s$)
 	\end{itemize}
 \end{definition}
 
@@ -715,10 +715,10 @@ Ein PDDL-Planungsproblem kann als Kripke-Struktur modelliert werden:
 
 \subsubsection{Safety-Eigenschaften}
 
-\textbf{Frage}: Werden niemals unsichere ZustÃ¤nde erreicht?
+\textbf{Frage}: Werden niemals unsichere Zustände erreicht?
 
 \begin{beispiel}[Safety in Blocksworld]
-	Niemals soll ein Block gleichzeitig auf zwei anderen BlÃ¶cken sein:
+	Niemals soll ein Block gleichzeitig auf zwei anderen Blöcken sein:
 	\begin{align}
 	\mathbf{AG}\neg\exists x, y, z: (\text{on}(x,y) \land \text{on}(x,z) \land y \neq z)
 	\end{align}
@@ -741,10 +741,10 @@ Dies ist die fundamentale Planungsaufgabe: Finde einen Pfad vom Initial- zum Zie
 
 \subsubsection{Liveness-Eigenschaften}
 
-\textbf{Frage}: Werden erwÃ¼nschte ZustÃ¤nde schlieÃŸlich erreicht?
+\textbf{Frage}: Werden erwünschte Zustände schließlich erreicht?
 
 \begin{beispiel}[Liveness in Blocksworld]
-	Wenn Block A auf dem Tisch ist und clear, dann wird schlieÃŸlich etwas auf A gestapelt:
+	Wenn Block A auf dem Tisch ist und clear, dann wird schließlich etwas auf A gestapelt:
 	\begin{align}
 	\mathbf{AG}((\text{ontable}(A) \land \text{clear}(A)) \to \mathbf{AF}\exists x: \text{on}(x, A))
 	\end{align}
@@ -763,7 +763,7 @@ Dies ist die fundamentale Planungsaufgabe: Finde einen Pfad vom Initial- zum Zie
 
 \subsection{Plan-Validierung mit LTL}
 
-LTL eignet sich besonders fÃ¼r die Validierung konkreter PlÃ¤ne:
+LTL eignet sich besonders für die Validierung konkreter Pläne:
 
 \begin{beispiel}[Plan-Trace Validation]
 	Gegeben sei der Plan $\pi = \langle \text{pickup}(B),\, \text{stack}(B,A),$
@@ -776,13 +776,13 @@ LTL eignet sich besonders fÃ¼r die Validierung konkreter PlÃ¤ne:
 	\end{enumerate}
 \end{beispiel}
 
-\subsection{Invarianten-PrÃ¼fung}
+\subsection{Invarianten-Prüfung}
 
-Invarianten sind Eigenschaften, die in allen erreichbaren ZustÃ¤nden gelten:
+Invarianten sind Eigenschaften, die in allen erreichbaren Zuständen gelten:
 
 \begin{beispiel}[Blocksworld Invarianten]
 	\begin{enumerate}
-		\item Wenn die Hand leer ist, hÃ¤lt sie keinen Block:
+		\item Wenn die Hand leer ist, hält sie keinen Block:
 		\begin{align}
 		\mathbf{AG}(\text{handempty} \to \neg\exists x: \text{holding}(x))
 		\end{align}
@@ -799,38 +799,38 @@ Invarianten sind Eigenschaften, die in allen erreichbaren ZustÃ¤nden gelten:
 	\end{enumerate}
 \end{beispiel}
 
-Die Invarianten-PrÃ¼fung kann mittels CTL-Formeln automatisiert werden. FÃ¼r groÃŸe ZustandsrÃ¤ume stellt jedoch die KomplexitÃ¤t des Model Checkings eine erhebliche Herausforderung dar. Im folgenden Kapitel stellen wir einen neuartigen Ansatz vor, der diese Herausforderung durch signaturbasierte Strukturanalyse adressiert und signifikante Laufzeitverbesserungen ermÃ¶glicht.
+Die Invarianten-Prüfung kann mittels CTL-Formeln automatisiert werden. Für große Zustandsräume stellt jedoch die Komplexität des Model Checkings eine erhebliche Herausforderung dar. Im folgenden Kapitel stellen wir einen neuartigen Ansatz vor, der diese Herausforderung durch signaturbasierte Strukturanalyse adressiert und signifikante Laufzeitverbesserungen ermöglicht.
 
-% Neuer Abschnitt: Der Subgraph Algorithmus fÃ¼r Temporales Model Checking
+% Neuer Abschnitt: Der Subgraph Algorithmus für Temporales Model Checking
 % Dieser Abschnitt kann in die temporal_mc.tex Arbeit integriert werden
 
-\section{Der Subgraph Algorithmus fÃ¼r Temporales Model Checking}
+\section{Der Subgraph Algorithmus für Temporales Model Checking}
 
-Die in den vorherigen Kapiteln beschriebenen Algorithmen fÃ¼r LTL und CTL Model Checking besitzen theoretisch hohe KomplexitÃ¤t. LTL Model Checking ist PSPACE-vollstÃ¤ndig; CTL Model Checking ist zwar in polynomieller Zeit lÃ¶sbar, doch kann die Produktkonstruktion mit BÃ¼chi-Automaten zu exponentiell groÃŸen ZustandsrÃ¤umen fÃ¼hren. Dieser Abschnitt stellt einen neuartigen, signaturbasierten Ansatz vor, der signifikante Laufzeitverbesserungen fÃ¼r strukturierte Planungsprobleme erzielt.
+Die in den vorherigen Kapiteln beschriebenen Algorithmen für LTL und CTL Model Checking besitzen theoretisch hohe Komplexität. LTL Model Checking ist PSPACE-vollständig; CTL Model Checking ist zwar in polynomieller Zeit lösbar, doch kann die Produktkonstruktion mit Büchi-Automaten zu exponentiell großen Zustandsräumen führen. Dieser Abschnitt stellt einen neuartigen, signaturbasierten Ansatz vor, der signifikante Laufzeitverbesserungen für strukturierte Planungsprobleme erzielt.
 
 \subsection{Motivation und Grundidee}
 
-Das zentrale Problem beim Model Checking ist das State Explosion Problem: Der Zustandsraum wÃ¤chst exponentiell in der Anzahl der Systemkomponenten. FÃ¼r ein PDDL-Planungsproblem mit $n$ Objekten und $m$ PrÃ¤dikaten kann die Anzahl der mÃ¶glichen ZustÃ¤nde bis zu $2^{m \cdot n}$ betragen.
+Das zentrale Problem beim Model Checking ist das State Explosion Problem: Der Zustandsraum wächst exponentiell in der Anzahl der Systemkomponenten. Für ein PDDL-Planungsproblem mit $n$ Objekten und $m$ Prädikaten kann die Anzahl der möglichen Zustände bis zu $2^{m \cdot n}$ betragen.
 
 Der Subgraph Algorithmus adressiert dieses Problem durch einen strukturbasierten Ansatz:
 \begin{enumerate}
-	\item \textbf{Strukturelle Abstraktion}: Statt alle ZustÃ¤nde einzeln zu betrachten, werden strukturelle Muster in der ZustandsÃ¼bergangsgraphen analysiert
-	\item \textbf{Signaturbasierte Kodierung}: ZustÃ¤nde und Transitionen werden durch polynomiale Signaturen kompakt reprÃ¤sentiert
-	\item \textbf{Rotationsbasierte Suche}: Statt alle $n!$ Permutationen zu prÃ¼fen, werden nur $n$ zyklische Rotationen betrachtet
+	\item \textbf{Strukturelle Abstraktion}: Statt alle Zustände einzeln zu betrachten, werden strukturelle Muster in der Zustandsübergangsgraphen analysiert
+	\item \textbf{Signaturbasierte Kodierung}: Zustände und Transitionen werden durch polynomiale Signaturen kompakt repräsentiert
+	\item \textbf{Rotationsbasierte Suche}: Statt alle $n!$ Permutationen zu prüfen, werden nur $n$ zyklische Rotationen betrachtet
 \end{enumerate}
 
 \begin{theorem}[Laufzeitverbesserung]
-	Der Subgraph Algorithmus reduziert die KomplexitÃ¤t des Pattern-Matchings von $O(n!)$ auf $O(n^3)$ fÃ¼r strukturierte Systeme.
+	Der Subgraph Algorithmus reduziert die Komplexität des Pattern-Matchings von $O(n!)$ auf $O(n^3)$ für strukturierte Systeme.
 \end{theorem}
 
-\subsection{Signaturbasierte ZustandsreprÃ¤sentation}
+\subsection{Signaturbasierte Zustandsrepräsentation}
 
 \subsubsection{Grundkonzept}
 
-FÃ¼r einen PDDL-Zustand $s$ mit GrundprÃ¤dikaten $P = \{p_1, p_2, \ldots, p_k\}$ konstruieren wir eine Adjazenzmatrix $A_s$, die die Relationen zwischen Objekten kodiert.
+Für einen PDDL-Zustand $s$ mit Grundprädikaten $P = \{p_1, p_2, \ldots, p_k\}$ konstruieren wir eine Adjazenzmatrix $A_s$, die die Relationen zwischen Objekten kodiert.
 
 \begin{definition}[Zustandssignatur]
-	FÃ¼r einen Zustand $s$ mit $n$ Objekten und Adjazenzmatrix $A_s$ definieren wir die Signatur der $j$-ten Spalte als:
+	Für einen Zustand $s$ mit $n$ Objekten und Adjazenzmatrix $A_s$ definieren wir die Signatur der $j$-ten Spalte als:
 	\begin{align}
 	\sigma_j(s) = \sum_{i=0}^{n-1} A_s[i,j] \cdot 2^i + j \cdot 2^n
 	\end{align}
@@ -851,22 +851,22 @@ Diese Signatur-Funktion hat zwei wesentliche Eigenschaften:
 \end{lemma}
 
 \begin{proof}
-	Die Zeilenkomponente $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ kodiert jeden der $2^n$ mÃ¶glichen Spaltenvektoren eindeutig als BinÃ¤rzahl im Bereich $[0, 2^n-1]$. Die Spaltengewichtung $j \cdot 2^n$ fÃ¼r $j \in \{0,\ldots,n-1\}$ erzeugt disjunkte Intervalle $[j \cdot 2^n, (j+1) \cdot 2^n)$. Da die Zeilenkomponente maximal $2^n - 1$ ist und die Spaltengewichtung in Schritten von $2^n$ wÃ¤chst, Ã¼berlappen sich diese Intervalle nie.
+	Die Zeilenkomponente $\sum_{i=0}^{n-1} A_{ij} \cdot 2^i$ kodiert jeden der $2^n$ möglichen Spaltenvektoren eindeutig als Binärzahl im Bereich $[0, 2^n-1]$. Die Spaltengewichtung $j \cdot 2^n$ für $j \in \{0,\ldots,n-1\}$ erzeugt disjunkte Intervalle $[j \cdot 2^n, (j+1) \cdot 2^n)$. Da die Zeilenkomponente maximal $2^n - 1$ ist und die Spaltengewichtung in Schritten von $2^n$ wächst, überlappen sich diese Intervalle nie.
 \end{proof}
 
-\subsubsection{Anwendung auf PDDL-ZustÃ¤nde}
+\subsubsection{Anwendung auf PDDL-Zustände}
 
-FÃ¼r die Blocksworld-DomÃ¤ne kÃ¶nnen wir die Adjazenzmatrix wie folgt konstruieren:
+Für die Blocksworld-Domäne können wir die Adjazenzmatrix wie folgt konstruieren:
 
 \begin{beispiel}[Blocksworld Zustandssignatur]
-	Gegeben sei ein Zustand mit 3 BlÃ¶cken A, B, C, wobei:
+	Gegeben sei ein Zustand mit 3 Blöcken A, B, C, wobei:
 	\begin{itemize}
 		\item[-] Block B ist auf Block A: $\text{on}(B, A)$
 		\item[-] Block C ist auf Block B: $\text{on}(C, B)$
 		\item[-] Block A ist auf dem Tisch: $\text{ontable}(A)$
 	\end{itemize}
 	
-	Die Adjazenzmatrix fÃ¼r die on-Relation ist ($1$ bedeutet "Block in Zeile ist auf Block in Spalte"):
+	Die Adjazenzmatrix für die on-Relation ist ($1$ bedeutet "Block in Zeile ist auf Block in Spalte"):
 	\[
 	A = \begin{pmatrix}
 	0 & 0 & 0 \\
@@ -885,70 +885,70 @@ FÃ¼r die Blocksworld-DomÃ¤ne kÃ¶nnen wir die Adjazenzmatrix wie folgt kons
 	Die Zustandssignatur ist: $\text{Sig}(s) = [2, 12, 16]$
 \end{beispiel}
 
-\subsection{Zyklische Rotationen fÃ¼r Objektpermutationen}
+\subsection{Zyklische Rotationen für Objektpermutationen}
 
-Ein zentrales Problem beim Vergleich von PDDL-ZustÃ¤nden ist, dass Objekte unterschiedlich benannt sein kÃ¶nnen. Beispielsweise sind die ZustÃ¤nde "Block1 auf Block2" und "BlockA auf BlockB" strukturell identisch, auch wenn die Objektnamen verschieden sind.
+Ein zentrales Problem beim Vergleich von PDDL-Zuständen ist, dass Objekte unterschiedlich benannt sein können. Beispielsweise sind die Zustände "Block1 auf Block2" und "BlockA auf BlockB" strukturell identisch, auch wenn die Objektnamen verschieden sind.
 
 \begin{definition}[Zyklische Rotation]
-	FÃ¼r eine Signatursequenz $S = [\sigma_0, \sigma_1, \ldots, \sigma_{n-1}]$
+	Für eine Signatursequenz $S = [\sigma_0, \sigma_1, \ldots, \sigma_{n-1}]$
 	bezeichnet $\text{rotate}_k(S)$ die zyklische Verschiebung um $k$ Positionen:
 	\begin{align}
 	\text{rotate}_k(S) = [\sigma_k, \ldots, \sigma_{n-1}, \sigma_0, \ldots, \sigma_{k-1}]
 	\end{align}
 \end{definition}
 
-\begin{theorem}[RotationskomplexitÃ¤t]
-	Durch BeschrÃ¤nkung auf zyklische Rotationen reduziert sich der Suchraum von $O(n!)$ auf $O(n)$ mÃ¶gliche Permutationen.
+\begin{theorem}[Rotationskomplexität]
+	Durch Beschränkung auf zyklische Rotationen reduziert sich der Suchraum von $O(n!)$ auf $O(n)$ mögliche Permutationen.
 \end{theorem}
 
-Diese EinschrÃ¤nkung ist fÃ¼r viele Planungsprobleme sinnvoll, da sie die sequentielle Ordnung von Objekten erhÃ¤lt (z.B. die Reihenfolge von Aktionen in einem Plan oder die rÃ¤umliche Anordnung von Objekten).
+Diese Einschränkung ist für viele Planungsprobleme sinnvoll, da sie die sequentielle Ordnung von Objekten erhält (z.B. die Reihenfolge von Aktionen in einem Plan oder die räumliche Anordnung von Objekten).
 
 \subsection{Der Subgraph Matching Algorithmus}
 
-Der Subgraph Matching Algorithmus ist das HerzstÃ¼ck des gesamten Verifikationsansatzes. Er entscheidet, ob ein gegebenes Zustandsmuster~$s_1$ (das sogenannte \emph{Pattern}) als strukturelles Teilmuster in einem grÃ¶ÃŸeren Zustand~$s_2$ (dem \emph{Graphen}) enthalten ist. Diese Frage stellt sich immer dann, wenn Ã¼berprÃ¼ft werden soll, ob eine bestimmte Konfiguration -- etwa eine unerwÃ¼nschte Blockstapelung, ein Paketverlust oder eine kritische Roboterposition -- im Zustandsraum des Systems auftreten kann.
+Der Subgraph Matching Algorithmus ist das Herzstück des gesamten Verifikationsansatzes. Er entscheidet, ob ein gegebenes Zustandsmuster~$s_1$ (das sogenannte \emph{Pattern}) als strukturelles Teilmuster in einem größeren Zustand~$s_2$ (dem \emph{Graphen}) enthalten ist. Diese Frage stellt sich immer dann, wenn überprüft werden soll, ob eine bestimmte Konfiguration -- etwa eine unerwünschte Blockstapelung, ein Paketverlust oder eine kritische Roboterposition -- im Zustandsraum des Systems auftreten kann.
 
-Im Folgenden wird der Algorithmus schrittweise in seinen drei Phasen erlÃ¤utert, bevor die formale Darstellung als Pseudocode folgt.
+Im Folgenden wird der Algorithmus schrittweise in seinen drei Phasen erläutert, bevor die formale Darstellung als Pseudocode folgt.
 
 \subsubsection*{Phase 1: Signaturberechnung}
 
-Bevor ein Vergleich zweier ZustÃ¤nde stattfinden kann, mÃ¼ssen beide in eine kanonische, vergleichbare Form gebracht werden. Zu diesem Zweck wird fÃ¼r jeden Zustand eine \emph{Signatur} berechnet -- ein Array aus ganzen Zahlen, das die Struktur des Zustands kompakt kodiert.
+Bevor ein Vergleich zweier Zustände stattfinden kann, müssen beide in eine kanonische, vergleichbare Form gebracht werden. Zu diesem Zweck wird für jeden Zustand eine \emph{Signatur} berechnet -- ein Array aus ganzen Zahlen, das die Struktur des Zustands kompakt kodiert.
 
-Konkret wird zunÃ¤chst aus den GrundprÃ¤dikaten des Zustands eine \emph{Adjazenzmatrix} $A \in \{0,1\}^{n \times n}$ konstruiert, wobei $n$ die Anzahl der beteiligten Objekte ist. Ein Eintrag $A[i,j] = 1$ bedeutet, dass zwischen Objekt~$i$ und Objekt~$j$ eine Relation besteht (z.\,B. \texttt{on}$(i,j)$ in der Blocksworld). AnschlieÃŸend wird fÃ¼r jede Spalte~$j$ der Matrix ein Signaturwert $\sigma_j$ berechnet:
+Konkret wird zunächst aus den Grundprädikaten des Zustands eine \emph{Adjazenzmatrix} $A \in \{0,1\}^{n \times n}$ konstruiert, wobei $n$ die Anzahl der beteiligten Objekte ist. Ein Eintrag $A[i,j] = 1$ bedeutet, dass zwischen Objekt~$i$ und Objekt~$j$ eine Relation besteht (z.\,B. \texttt{on}$(i,j)$ in der Blocksworld). Anschließend wird für jede Spalte~$j$ der Matrix ein Signaturwert $\sigma_j$ berechnet:
 \begin{align}
   \sigma_j = \sum_{i=0}^{n-1} A[i,j] \cdot 2^i + j \cdot 2^n.
 \end{align}
-Der erste Term kodiert den Spaltenvektor als BinÃ¤rzahl und identifiziert ihn damit eindeutig unter allen $2^n$ mÃ¶glichen Spaltenbelegungen. Der zweite Term $j \cdot 2^n$ dient als Spaltengewicht und stellt sicher, dass gleiche Spaltenvektoren an verschiedenen Positionen unterschiedliche Signaturen erhalten. Durch Lemma~7.1 ist bewiesen, dass diese Funktion injektiv ist, also keine zwei verschiedenen Zustandsbeschreibungen auf dieselbe Signatur abgebildet werden.
+Der erste Term kodiert den Spaltenvektor als Binärzahl und identifiziert ihn damit eindeutig unter allen $2^n$ möglichen Spaltenbelegungen. Der zweite Term $j \cdot 2^n$ dient als Spaltengewicht und stellt sicher, dass gleiche Spaltenvektoren an verschiedenen Positionen unterschiedliche Signaturen erhalten. Durch Lemma~7.1 ist bewiesen, dass diese Funktion injektiv ist, also keine zwei verschiedenen Zustandsbeschreibungen auf dieselbe Signatur abgebildet werden.
 
-FÃ¼r den Pattern-Zustand~$s_1$ mit $n_1$ Objekten erfordert diese Berechnung $O(n_1^2)$ Operationen, fÃ¼r den Graph-Zustand~$s_2$ mit $n_2$ Objekten entsprechend $O(n_2^2)$. In der Praxis -- bei Planungsproblemen mit typischerweise weniger als 30 Objekten -- ist dieser Schritt in unter einer Millisekunde abgeschlossen.
+Für den Pattern-Zustand~$s_1$ mit $n_1$ Objekten erfordert diese Berechnung $O(n_1^2)$ Operationen, für den Graph-Zustand~$s_2$ mit $n_2$ Objekten entsprechend $O(n_2^2)$. In der Praxis -- bei Planungsproblemen mit typischerweise weniger als 30 Objekten -- ist dieser Schritt in unter einer Millisekunde abgeschlossen.
 
 \subsubsection*{Phase 2: Rotationsbasierte Suche}
 
-Das eigentliche Matchingproblem besteht darin festzustellen, ob die Struktur von~$s_1$ in~$s_2$ \emph{eingebettet} werden kann. Da Objekte in verschiedenen Planungsinstanzen unterschiedliche Namen tragen kÃ¶nnen (z.\,B.\ \texttt{BlockA} in einer Instanz vs.\ \texttt{Brick1} in einer anderen), ist ein direkter Zeichenkettenvergleich nicht zielfÃ¼hrend. Stattdessen muss strukturelle Ã„quivalenz unabhÃ¤ngig von der konkreten Benennung geprÃ¼ft werden.
+Das eigentliche Matchingproblem besteht darin festzustellen, ob die Struktur von~$s_1$ in~$s_2$ \emph{eingebettet} werden kann. Da Objekte in verschiedenen Planungsinstanzen unterschiedliche Namen tragen können (z.\,B.\ \texttt{BlockA} in einer Instanz vs.\ \texttt{Brick1} in einer anderen), ist ein direkter Zeichenkettenvergleich nicht zielführend. Stattdessen muss strukturelle Äquivalenz unabhängig von der konkreten Benennung geprüft werden.
 
-Hier kommt das Konzept der \emph{zyklischen Rotation} zum Tragen. Anstatt alle $n_2!$ mÃ¶glichen Permutationen der Objekte in~$s_2$ zu prÃ¼fen -- was fÃ¼r $n_2 = 10$ bereits $3{,}6 \cdot 10^6$ Versuche bedeuten wÃ¼rde --, beschrÃ¤nkt sich der Algorithmus auf genau $n_2$ zyklische Verschiebungen der Signatursequenz. Bei einer Rotation um $k$ Positionen wird die Sequenz $[\sigma_0, \ldots, \sigma_{n_2-1}]$ in die Sequenz $[\sigma_k, \sigma_{k+1}, \ldots, \sigma_{n_2-1}, \sigma_0, \ldots, \sigma_{k-1}]$ Ã¼berfÃ¼hrt.
+Hier kommt das Konzept der \emph{zyklischen Rotation} zum Tragen. Anstatt alle $n_2!$ möglichen Permutationen der Objekte in~$s_2$ zu prüfen -- was für $n_2 = 10$ bereits $3{,}6 \cdot 10^6$ Versuche bedeuten würde --, beschränkt sich der Algorithmus auf genau $n_2$ zyklische Verschiebungen der Signatursequenz. Bei einer Rotation um $k$ Positionen wird die Sequenz $[\sigma_0, \ldots, \sigma_{n_2-1}]$ in die Sequenz $[\sigma_k, \sigma_{k+1}, \ldots, \sigma_{n_2-1}, \sigma_0, \ldots, \sigma_{k-1}]$ überführt.
 
-Diese EinschrÃ¤nkung auf zyklische Rotationen ist fÃ¼r strukturierte PlanungsdomÃ¤nen nicht nur akzeptabel, sondern in vielen FÃ¤llen sogar natÃ¼rlich: Die Reihenfolge, in der Objekte in einem Plan auftreten, ist hÃ¤ufig sequenziell geordnet (z.\,B.\ Aktionsschritte, rÃ¤umliche Nachbarschaft, Transportketten). Zyklische Rotationen respektieren diese Ordnung und erfassen alle strukturell relevanten Verschiebungen innerhalb des Systems.
+Diese Einschränkung auf zyklische Rotationen ist für strukturierte Planungsdomänen nicht nur akzeptabel, sondern in vielen Fällen sogar natürlich: Die Reihenfolge, in der Objekte in einem Plan auftreten, ist häufig sequenziell geordnet (z.\,B.\ Aktionsschritte, räumliche Nachbarschaft, Transportketten). Zyklische Rotationen respektieren diese Ordnung und erfassen alle strukturell relevanten Verschiebungen innerhalb des Systems.
 
-Nach jeder Rotation wird die Spaltengewichtung aus den rotierten Signaturen entfernt -- formal durch $\sigma \bmod 2^{n_2}$ --, um die eigentlichen Spaltenvektoren freizulegen und sie ortsunabhÃ¤ngig vergleichen zu kÃ¶nnen.
+Nach jeder Rotation wird die Spaltengewichtung aus den rotierten Signaturen entfernt -- formal durch $\sigma \bmod 2^{n_2}$ --, um die eigentlichen Spaltenvektoren freizulegen und sie ortsunabhängig vergleichen zu können.
 
 \subsubsection*{Phase 3: Sequenzvergleich}
 
-Im dritten Schritt wird geprÃ¼ft, ob die bereinigte Signatursequenz von~$s_1$ in der rotierten Sequenz von~$s_2$ enthalten ist. Dabei sind zwei FÃ¤lle zu unterscheiden:
+Im dritten Schritt wird geprüft, ob die bereinigte Signatursequenz von~$s_1$ in der rotierten Sequenz von~$s_2$ enthalten ist. Dabei sind zwei Fälle zu unterscheiden:
 
-\textbf{Gleiche Objektanzahl} ($n_1 = n_2$): Falls beide ZustÃ¤nde gleich viele Objekte besitzen, genÃ¼gt ein direkter elementweiser Vergleich der beiden Signatursequenzen. Stimmen alle $n$ EintrÃ¤ge Ã¼berein, so ist das Pattern strukturell identisch mit dem Graphen unter der aktuellen Rotation. Dieser Vergleich hat Laufzeit $O(n)$.
+\textbf{Gleiche Objektanzahl} ($n_1 = n_2$): Falls beide Zustände gleich viele Objekte besitzen, genügt ein direkter elementweiser Vergleich der beiden Signatursequenzen. Stimmen alle $n$ Einträge überein, so ist das Pattern strukturell identisch mit dem Graphen unter der aktuellen Rotation. Dieser Vergleich hat Laufzeit $O(n)$.
 
-\textbf{Ungleiche Objektanzahl} ($n_1 < n_2$): Falls das Pattern weniger Objekte besitzt als der Graph -- was der hÃ¤ufigere und interessantere Fall ist --, wird geprÃ¼ft, ob die Pattern-Signatur als Teilsequenz in der Graphsignatur vorkommt. Hierzu verschiebt der Algorithmus ein Fenster der Breite~$n_1$ Ã¼ber alle $n_2 - n_1 + 1$ mÃ¶glichen Positionen in der Graphsequenz. FÃ¼r jede Fensterposition wird die \emph{Longest Common Subsequence} (LCS) zwischen Pattern-Signatur und Fenstersignatur berechnet. BetrÃ¤gt die LCS mindestens~2, so gelten hinreichend viele strukturelle Merkmale als Ã¼bereinstimmend, um einen Match anzuerkennen. Die LCS-Berechnung hat Laufzeit $O(n_1 \cdot n_2)$; Ã¼ber alle $n_2$ Fenster ergibt sich $O(n_2^2 \cdot n_1)$.
+\textbf{Ungleiche Objektanzahl} ($n_1 < n_2$): Falls das Pattern weniger Objekte besitzt als der Graph -- was der häufigere und interessantere Fall ist --, wird geprüft, ob die Pattern-Signatur als Teilsequenz in der Graphsignatur vorkommt. Hierzu verschiebt der Algorithmus ein Fenster der Breite~$n_1$ über alle $n_2 - n_1 + 1$ möglichen Positionen in der Graphsequenz. Für jede Fensterposition wird die \emph{Longest Common Subsequence} (LCS) zwischen Pattern-Signatur und Fenstersignatur berechnet. Beträgt die LCS mindestens~2, so gelten hinreichend viele strukturelle Merkmale als übereinstimmend, um einen Match anzuerkennen. Die LCS-Berechnung hat Laufzeit $O(n_1 \cdot n_2)$; über alle $n_2$ Fenster ergibt sich $O(n_2^2 \cdot n_1)$.
 
-Die Wahl von LCS statt eines strikten Teilsequenzvergleichs verleiht dem Algorithmus Toleranz gegenÃ¼ber kleineren strukturellen Abweichungen, die aus Diskretisierung oder Umbenennung einzelner Kanten entstehen. Der Schwellenwert von~2 Ã¼bereinstimmenden Elementen erweist sich in der Praxis als guter Kompromiss zwischen SensitivitÃ¤t und SpezifitÃ¤t: Er verhindert sowohl false positives durch zufÃ¤llige Ãœbereinstimmungen als auch false negatives durch Ã¼bersehene echte Matches.
+Die Wahl von LCS statt eines strikten Teilsequenzvergleichs verleiht dem Algorithmus Toleranz gegenüber kleineren strukturellen Abweichungen, die aus Diskretisierung oder Umbenennung einzelner Kanten entstehen. Der Schwellenwert von~2 übereinstimmenden Elementen erweist sich in der Praxis als guter Kompromiss zwischen Sensitivität und Spezifität: Er verhindert sowohl false positives durch zufällige Übereinstimmungen als auch false negatives durch übersehene echte Matches.
 
 \subsubsection*{Zusammenspiel der drei Phasen}
 
-Das Zusammenspiel der drei Phasen lÃ¤sst sich anschaulich beschreiben: Phase~1 Ã¼bersetzt beide ZustÃ¤nde in eine einheitliche, algebraische Sprache. Phase~2 dreht den Graphen schrittweise in alle relevanten Orientierungen, um BenennungsunabhÃ¤ngigkeit herzustellen. Phase~3 prÃ¼ft fÃ¼r jede Orientierung, ob das Pattern im Graphen aufgeht. Gibt einer der $n_2$ Rotationsversuche ein positives Ergebnis zurÃ¼ck, so liefert der Algorithmus \textsc{True}; erst wenn alle Rotationen scheitern, wird \textsc{False} zurÃ¼ckgegeben.
+Das Zusammenspiel der drei Phasen lässt sich anschaulich beschreiben: Phase~1 übersetzt beide Zustände in eine einheitliche, algebraische Sprache. Phase~2 dreht den Graphen schrittweise in alle relevanten Orientierungen, um Benennungsunabhängigkeit herzustellen. Phase~3 prüft für jede Orientierung, ob das Pattern im Graphen aufgeht. Gibt einer der $n_2$ Rotationsversuche ein positives Ergebnis zurück, so liefert der Algorithmus \textsc{True}; erst wenn alle Rotationen scheitern, wird \textsc{False} zurückgegeben.
 
 Der gesamte Algorithmus ist in Algorithmus~\ref{alg:pddl_subgraph} als Pseudocode dargestellt:
 
 \begin{algorithm}[H]
-	\caption{Subgraph-Matching fÃ¼r PDDL-ZustÃ¤nde}
+	\caption{Subgraph-Matching für PDDL-Zustände}
 	\label{alg:pddl_subgraph}
 	\begin{algorithmic}[1]
 		\Eingabe Zustand $s_1$ (Pattern), Zustand $s_2$ (Graph), Objekte $n_1, n_2$
@@ -982,18 +982,18 @@ Der gesamte Algorithmus ist in Algorithmus~\ref{alg:pddl_subgraph} als Pseudocod
 	\end{algorithmic}
 \end{algorithm}
 
-\subsubsection{KomplexitÃ¤tsanalyse}
+\subsubsection{Komplexitätsanalyse}
 
-\begin{theorem}[GesamtkomplexitÃ¤t Subgraph Matching]
-	Algorithmus \ref{alg:pddl_subgraph} hat ZeitkomplexitÃ¤t:
+\begin{theorem}[Gesamtkomplexität Subgraph Matching]
+	Algorithmus \ref{alg:pddl_subgraph} hat Zeitkomplexität:
 	\begin{align}
 	O(n_1^2 + n_2^2 + n_2 \cdot n_1 \cdot n_2) = O(n^3)
 	\end{align}
-	fÃ¼r $n = \max(n_1, n_2)$.
+	für $n = \max(n_1, n_2)$.
 \end{theorem}
 
 \begin{proof}
-	Die GesamtkomplexitÃ¤t setzt sich aus den drei Phasen zusammen. Phase~1 erfordert die Signaturberechnung fÃ¼r beide ZustÃ¤nde, was $O(n_1^2) + O(n_2^2)$ Operationen kostet. Phase~2 iteriert Ã¼ber $n_2$ zyklische Rotationen, wobei jede Rotation in konstanter Zeit durch ein Array-Shift durchgefÃ¼hrt wird; der Aufwand betrÃ¤gt also $O(n_2)$. Phase~3 fÃ¼hrt fÃ¼r jede der $n_2$ Rotationen einen Fenster-Scan Ã¼ber $n_2 - n_1 + 1$ Positionen durch, und in jedem Fenster wird eine LCS-Berechnung der Kosten $O(n_1 \cdot n_2)$ ausgefÃ¼hrt. Der Gesamtaufwand von Phase~3 belÃ¤uft sich damit auf $O(n_2 \cdot n_2 \cdot n_1 \cdot n_2) = O(n_2^2 \cdot n_1 \cdot n_2)$. Da Phase~3 die Laufzeit dominiert und fÃ¼r $n = \max(n_1, n_2)$ gilt $n_2^2 \cdot n_1 \leq n^3$, ergibt sich die GesamtkomplexitÃ¤t $O(n^3)$.
+	Die Gesamtkomplexität setzt sich aus den drei Phasen zusammen. Phase~1 erfordert die Signaturberechnung für beide Zustände, was $O(n_1^2) + O(n_2^2)$ Operationen kostet. Phase~2 iteriert über $n_2$ zyklische Rotationen, wobei jede Rotation in konstanter Zeit durch ein Array-Shift durchgeführt wird; der Aufwand beträgt also $O(n_2)$. Phase~3 führt für jede der $n_2$ Rotationen einen Fenster-Scan über $n_2 - n_1 + 1$ Positionen durch, und in jedem Fenster wird eine LCS-Berechnung der Kosten $O(n_1 \cdot n_2)$ ausgeführt. Der Gesamtaufwand von Phase~3 beläuft sich damit auf $O(n_2 \cdot n_2 \cdot n_1 \cdot n_2) = O(n_2^2 \cdot n_1 \cdot n_2)$. Da Phase~3 die Laufzeit dominiert und für $n = \max(n_1, n_2)$ gilt $n_2^2 \cdot n_1 \leq n^3$, ergibt sich die Gesamtkomplexität $O(n^3)$.
 \end{proof}
 
 Im Vergleich zu klassischen Subgraph-Isomorphie-Algorithmen wie VF2, die exponentielle Laufzeit haben ($O(n! \cdot m)$ im Worst-Case), ist dies eine dramatische Verbesserung.
@@ -1002,25 +1002,25 @@ Im Vergleich zu klassischen Subgraph-Isomorphie-Algorithmen wie VF2, die exponen
 
 Der Subgraph Algorithmus kann in verschiedenen Phasen des temporalen Model Checkings eingesetzt werden:
 
-\subsubsection{Pattern-basierte EigenschaftsprÃ¼fung}
+\subsubsection{Pattern-basierte Eigenschaftsprüfung}
 
 Viele temporale Eigenschaften lassen sich als Muster im Zustandsraum formulieren:
 
 \begin{beispiel}[Safety als Subgraph-Problem]
-	Die Safety-Eigenschaft $\mathbf{AG}\neg\text{BadPattern}$ kann geprÃ¼ft werden, indem nach einem Zustand $s$ im Systemgraphen gesucht wird, der das Bad-Pattern als Subgraph enthÃ¤lt:
+	Die Safety-Eigenschaft $\mathbf{AG}\neg\text{BadPattern}$ kann geprüft werden, indem nach einem Zustand $s$ im Systemgraphen gesucht wird, der das Bad-Pattern als Subgraph enthält:
 	\begin{align}
 	M \models \mathbf{AG}\neg\text{BadPattern} \iff \nexists s \in S: \text{SubgraphMatch}(\text{BadPattern}, s)
 	\end{align}
 \end{beispiel}
 
 \begin{algorithm}[H]
-	\caption{Musterbasierte Safety-PrÃ¼fung}
+	\caption{Musterbasierte Safety-Prüfung}
 	\label{alg:pattern_safety}
 	\begin{algorithmic}[1]
 		\Eingabe Kripke-Struktur $M$, Bad-Pattern $P_{\text{bad}}$
-		\Ausgabe TRUE falls Safety-Eigenschaft erfÃ¼llt
+		\Ausgabe TRUE falls Safety-Eigenschaft erfüllt
 		
-		\Fuer{$s \in \text{States}(M)$} \Comment{$O(|S|)$ ZustÃ¤nde}
+		\Fuer{$s \in \text{States}(M)$} \Comment{$O(|S|)$ Zustände}
 		\Wenn{$\text{SubgraphMatch}(P_{\text{bad}}, s)$} \Comment{$O(n^3)$ pro Zustand}
 		\State \Return (FALSE, $s$) \Comment{Gegenbeispiel gefunden}
 		\EndeWenn
@@ -1029,24 +1029,24 @@ Viele temporale Eigenschaften lassen sich als Muster im Zustandsraum formulieren
 	\end{algorithmic}
 \end{algorithm}
 
-\begin{theorem}[KomplexitÃ¤t Pattern-Safety]
-	Algorithmus \ref{alg:pattern_safety} hat ZeitkomplexitÃ¤t $O(|S| \cdot n^3)$, wobei $|S|$ die Anzahl der ZustÃ¤nde und $n$ die GrÃ¶ÃŸe des Patterns ist.
+\begin{theorem}[Komplexität Pattern-Safety]
+	Algorithmus \ref{alg:pattern_safety} hat Zeitkomplexität $O(|S| \cdot n^3)$, wobei $|S|$ die Anzahl der Zustände und $n$ die Größe des Patterns ist.
 \end{theorem}
 
-FÃ¼r kleine, feste Patterns ($n$ konstant) ergibt sich effektiv lineare KomplexitÃ¤t $O(|S|)$ in der SystemgrÃ¶ÃŸe.
+Für kleine, feste Patterns ($n$ konstant) ergibt sich effektiv lineare Komplexität $O(|S|)$ in der Systemgröße.
 
-\subsubsection{Beschleunigte BÃ¼chi-Automaten-Konstruktion}
+\subsubsection{Beschleunigte Büchi-Automaten-Konstruktion}
 
-Bei der LTL-Verifikation muss ein BÃ¼chi-Automat mit dem Systemmodell zu einem Produktautomaten kombiniert werden. Der Subgraph Algorithmus kann hier die Suche nach akzeptierenden Zyklen beschleunigen:
+Bei der LTL-Verifikation muss ein Büchi-Automat mit dem Systemmodell zu einem Produktautomaten kombiniert werden. Der Subgraph Algorithmus kann hier die Suche nach akzeptierenden Zyklen beschleunigen:
 
 \begin{algorithm}[H]
 	\caption{Subgraph-beschleunigte Kreiserkennung}
 	\label{alg:subgraph_cycle}
 	\begin{algorithmic}[1]
-		\Eingabe Produktgraph $G_{M \times \mathcal{A}}$, akzeptierende ZustÃ¤nde $F$
+		\Eingabe Produktgraph $G_{M \times \mathcal{A}}$, akzeptierende Zustände $F$
 		\Ausgabe Akzeptierender Zyklus oder $\emptyset$
 		
-		\Fuer{$f \in F$} \Comment{Akzeptierende ZustÃ¤nde}
+		\Fuer{$f \in F$} \Comment{Akzeptierende Zustände}
 		\State $\text{Sig}_f \gets \text{ComputeSignature}(f)$
 		\State $\text{Candidates} \gets \{s \mid \text{Sig}(s) \cap \text{Sig}_f \neq \emptyset\}$
 		\State $G' \gets \text{InducedSubgraph}(G, \text{Candidates})$
@@ -1059,7 +1059,7 @@ Bei der LTL-Verifikation muss ein BÃ¼chi-Automat mit dem Systemmodell zu einem
 	\end{algorithmic}
 \end{algorithm}
 
-Die Signaturfilterung reduziert den Suchraum erheblich: Nur ZustÃ¤nde mit kompatiblen Signaturen mÃ¼ssen bei der Zyklusdetektion betrachtet werden.
+Die Signaturfilterung reduziert den Suchraum erheblich: Nur Zustände mit kompatiblen Signaturen müssen bei der Zyklusdetektion betrachtet werden.
 
 \subsubsection{Optimierte CTL-Operatoren}
 
@@ -1067,7 +1067,7 @@ Auch CTL-Operatoren profitieren vom Subgraph Algorithmus:
 
 \begin{beispiel}[EF-Operator mit Subgraph Matching]
 	Der CTL-Operator $\mathbf{EF}(GP)$ (mit $GP = \text{GoalPattern}$)
-	sucht einen Zustand, der das Zielmuster enthÃ¤lt:
+	sucht einen Zustand, der das Zielmuster enthält:
 	\begin{align}
 	M, s_0 \models \mathbf{EF}(GP)
 	\iff \exists\, \pi\colon s_0,\;
@@ -1106,18 +1106,18 @@ Auch CTL-Operatoren profitieren vom Subgraph Algorithmus:
 
 \subsection{Anwendung auf PDDL-Planungsprobleme}
 
-Der Subgraph Algorithmus ist besonders effektiv fÃ¼r die Verifikation von PDDL-PlÃ¤nen:
+Der Subgraph Algorithmus ist besonders effektiv für die Verifikation von PDDL-Plänen:
 
 \subsubsection{Plan-Validierung}
 
 \begin{beispiel}[Blocksworld Plan-Validierung]
-	Gegeben ein Plan fÃ¼r Blocksworld: $\pi = \langle a_1, a_2, a_3, a_4 \rangle$
+	Gegeben ein Plan für Blocksworld: $\pi = \langle a_1, a_2, a_3, a_4 \rangle$
 	
 	Zu verifizierende Eigenschaften:
 	\begin{enumerate}
-		\item \textbf{Korrektheit}: Jeder Zustand im Trace erfÃ¼llt die DomÃ¤nen-Invarianten
-		\item \textbf{Ziel-Erreichbarkeit}: Der finale Zustand enthÃ¤lt das Zielmuster
-		\item \textbf{Safety}: Niemals wird ein Block gleichzeitig auf zwei BlÃ¶cken platziert
+		\item \textbf{Korrektheit}: Jeder Zustand im Trace erfüllt die Domänen-Invarianten
+		\item \textbf{Ziel-Erreichbarkeit}: Der finale Zustand enthält das Zielmuster
+		\item \textbf{Safety}: Niemals wird ein Block gleichzeitig auf zwei Blöcken platziert
 	\end{enumerate}
 	
 	Mit dem Subgraph Algorithmus:
@@ -1127,12 +1127,12 @@ Der Subgraph Algorithmus ist besonders effektiv fÃ¼r die Verifikation von PDDL
 	&\quad \neg\exists s_i: \text{SubgraphMatch}(\text{BadPattern}, s_i)
 	\end{align}
 	
-	KomplexitÃ¤t: $O(|\pi| \cdot n^3)$ statt exponentiellem Aufwand fÃ¼r vollstÃ¤ndigen Zustandsraumvergleich.
+	Komplexität: $O(|\pi| \cdot n^3)$ statt exponentiellem Aufwand für vollständigen Zustandsraumvergleich.
 \end{beispiel}
 
 \subsubsection{Optimale Plan-Suche}
 
-Der Subgraph Algorithmus kann auch fÃ¼r die Suche nach optimalen PlÃ¤nen verwendet werden:
+Der Subgraph Algorithmus kann auch für die Suche nach optimalen Plänen verwendet werden:
 
 \begin{algorithm}[H]
 	\caption{Subgraph-basierte optimale Plansuche}
@@ -1148,7 +1148,7 @@ Der Subgraph Algorithmus kann auch fÃ¼r die Suche nach optimalen PlÃ¤nen ver
 		\State $(s, \pi) \gets \text{Dequeue}(\text{Queue})$
 		
 		\Wenn{$\text{SubgraphMatch}(P_G, s)$} \Comment{Ziel erreicht?}
-		\State \Return $\pi$ \Comment{KÃ¼rzester Plan (BFS)}
+		\State \Return $\pi$ \Comment{Kürzester Plan (BFS)}
 		\EndeWenn
 		
 		\Fuer{$a \in \text{ApplicableActions}(D, s)$}
@@ -1167,22 +1167,22 @@ Der Subgraph Algorithmus kann auch fÃ¼r die Suche nach optimalen PlÃ¤nen ver
 
 \subsection{Experimentelle Evaluierung}
 
-Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden umfassende Experimente durchgefÃ¼hrt.
+Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden umfassende Experimente durchgeführt.
 
 \subsubsection{Testszenarien}
 
-\textbf{DomÃ¤nen:}
+\textbf{Domänen:}
 \begin{itemize}
-	\item[-] Blocksworld (3-10 BlÃ¶cke)
-	\item[-] Logistics (2-5 StÃ¤dte, 2-8 Pakete)
-	\item[-] Gripper (2-6 BÃ¤lle, 2-4 RÃ¤ume)
+	\item[-] Blocksworld (3-10 Blöcke)
+	\item[-] Logistics (2-5 Städte, 2-8 Pakete)
+	\item[-] Gripper (2-6 Bälle, 2-4 Räume)
 \end{itemize}
 
 \textbf{Eigenschaften:}
 \begin{itemize}
 	\item[-] Safety: Keine inkonsistenten Konfigurationen
 	\item[-] Liveness: Alle Ziele werden erreicht
-	\item[-] Optimality: KÃ¼rzeste PlanlÃ¤nge
+	\item[-] Optimality: Kürzeste Planlänge
 \end{itemize}
 
 \subsubsection{Performance-Messungen}
@@ -1209,9 +1209,9 @@ Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden um
 \textbf{Beobachtungen:}
 \begin{itemize}
 	\item[-] Der Subgraph Algorithmus ist durchgehend 15-85Ã— schneller
-	\item[-] Der Speedup wÃ¤chst mit der ProblemgrÃ¶ÃŸe
-	\item[-] FÃ¼r Blocksworld-7: Klassisch 2.9s vs. Subgraph 0.034s
-	\item[-] Alle Messungen unter 0.1s fÃ¼r Subgraph-Ansatz
+	\item[-] Der Speedup wächst mit der Problemgröße
+	\item[-] Für Blocksworld-7: Klassisch 2.9s vs. Subgraph 0.034s
+	\item[-] Alle Messungen unter 0.1s für Subgraph-Ansatz
 \end{itemize}
 
 \subsubsection{Skalierbarkeitsanalyse}
@@ -1222,7 +1222,7 @@ Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden um
 	\label{tab:scalability}
 	\begin{tabular}{lrrrr}
 		\toprule
-		Objekte & ZustÃ¤nde & Klassisch (s) & Subgraph (s) & Faktor \\
+		Objekte & Zustände & Klassisch (s) & Subgraph (s) & Faktor \\
 		\midrule
 		5 & 120 & 0.031 & 0.005 & 6.2Ã— \\
 		10 & 3628 & 0.412 & 0.018 & 22.9Ã— \\
@@ -1237,8 +1237,8 @@ Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden um
 \begin{itemize}
 	\item[-] Klassischer Ansatz zeigt exponentielles Wachstum
 	\item[-] Subgraph Algorithmus zeigt polynomiales Wachstum ($O(n^3)$)
-	\item[-] Bei 25 Objekten: Ãœber 1000Ã— Beschleunigung
-	\item[-] Praktisch einsetzbar auch fÃ¼r groÃŸe Probleme
+	\item[-] Bei 25 Objekten: Über 1000Ã— Beschleunigung
+	\item[-] Praktisch einsetzbar auch für große Probleme
 \end{itemize}
 
 \subsection{Vergleich mit State-of-the-Art}
@@ -1249,7 +1249,7 @@ Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden um
 	\label{tab:sota_comparison}
 	\begin{tabular}{lp{3.5cm}ll}
 		\toprule
-		Tool & Ansatz & Komplexi\-tÃ¤t & Merkmal \\
+		Tool & Ansatz & Komplexi\-tät & Merkmal \\
 		\midrule
 		Fast Downward & Heuristische Suche & Exponentiell & Heuristiken \\
 		SPIN & Explizite Zustands\-exploration & $O(2^n)$ & POR \\
@@ -1271,13 +1271,13 @@ Um die praktische Effizienz des Subgraph Algorithmus zu demonstrieren, wurden um
 \textbf{Trade-offs:}
 \begin{itemize}
 	\item[-] Fokus auf strukturierte Probleme
-	\item[-] RotationsbeschrÃ¤nkung kann VollstÃ¤ndigkeit einschrÃ¤nken
-	\item[-] KomplementÃ¤r zu klassischen AnsÃ¤tzen
+	\item[-] Rotationsbeschränkung kann Vollständigkeit einschränken
+	\item[-] Komplementär zu klassischen Ansätzen
 \end{itemize}
 
-\subsection{Praktische Anwendung auf Logistics-DomÃ¤ne}
+\subsection{Praktische Anwendung auf Logistics-Domäne}
 
-Um die praktische Anwendbarkeit zu demonstrieren, betrachten wir ein vollstÃ¤ndiges Beispiel:
+Um die praktische Anwendbarkeit zu demonstrieren, betrachten wir ein vollständiges Beispiel:
 
 \begin{beispiel}[Logistics mit Subgraph Verifikation]
 	\textbf{Problem}: Transport von 3 Paketen zwischen Berlin und Hamburg
@@ -1286,7 +1286,7 @@ Um die praktische Anwendbarkeit zu demonstrieren, betrachten wir ein vollstÃ¤n
 	\begin{enumerate}
 		\item Safety: Pakete sind nie gleichzeitig an zwei Orten
 		\item Liveness: Alle Pakete erreichen ihre Zielorte
-		\item Optimality: Minimale Anzahl FlÃ¼ge
+		\item Optimality: Minimale Anzahl Flüge
 	\end{enumerate}
 	
 	\textbf{Subgraph-Patterns}:
@@ -1304,10 +1304,10 @@ Um die praktische Anwendbarkeit zu demonstrieren, betrachten wir ein vollstÃ¤n
 	
 	\textbf{Verifikation}:
 	\begin{enumerate}
-		\item Erzeuge Zustandsraum aus PDDL (812 ZustÃ¤nde)
-		\item Berechne Signaturen fÃ¼r alle ZustÃ¤nde ($O(812 \cdot n^2)$)
-		\item PrÃ¼fe Safety: Kein Zustand matched $P_{\text{bad}}$ ($O(812 \cdot n^3)$)
-		\item PrÃ¼fe Liveness: $\mathbf{EF}(P_{\text{goal}})$ mittels BFS ($O(812 \cdot n^3)$)
+		\item Erzeuge Zustandsraum aus PDDL (812 Zustände)
+		\item Berechne Signaturen für alle Zustände ($O(812 \cdot n^2)$)
+		\item Prüfe Safety: Kein Zustand matched $P_{\text{bad}}$ ($O(812 \cdot n^3)$)
+		\item Prüfe Liveness: $\mathbf{EF}(P_{\text{goal}})$ mittels BFS ($O(812 \cdot n^3)$)
 		\item Extrahiere optimalen Plan (18 Aktionen)
 	\end{enumerate}
 	
@@ -1322,9 +1322,9 @@ Um die praktische Anwendbarkeit zu demonstrieren, betrachten wir ein vollstÃ¤n
 
 \subsection{Implementierungsdetails}
 
-Der Subgraph Algorithmus wurde in Python implementiert und nutzt NumPy fÃ¼r effiziente Matrix-Operationen:
+Der Subgraph Algorithmus wurde in Python implementiert und nutzt NumPy für effiziente Matrix-Operationen:
 
-\begin{lstlisting}[language=Python, caption=Signatur-Berechnung fÃ¼r PDDL-ZustÃ¤nde]
+\begin{lstlisting}[language=Python, caption=Signatur-Berechnung für PDDL-Zustände]
 def compute_state_signature(state: PDDLState, objects: List[str]) -> List[int]:
     """
     Berechnet Signatur fuer einen PDDL-Zustand.
@@ -1358,7 +1358,7 @@ def compute_state_signature(state: PDDLState, objects: List[str]) -> List[int]:
     return signatures
 \end{lstlisting}
 
-\begin{lstlisting}[language=Python, caption=Pattern-Matching fÃ¼r Temporale Eigenschaften]
+\begin{lstlisting}[language=Python, caption=Pattern-Matching für Temporale Eigenschaften]
 def check_temporal_property(model: KripkeStructure, 
                            pattern: Pattern, 
                            property_type: str) -> bool:
@@ -1413,12 +1413,12 @@ def check_temporal_property(model: KripkeStructure,
 \subsection{Zusammenfassung und Ausblick}
 
 Der Subgraph Algorithmus bietet erhebliche Laufzeitverbesserungen
-fÃ¼r das temporale Model Checking von PDDL-Planungsproblemen:
+für das temporale Model Checking von PDDL-Planungsproblemen:
 
 \textbf{Hauptergebnisse:}
 \begin{enumerate}
-	\item \textbf{Polynomiale KomplexitÃ¤t}: Reduktion von $O(n!)$ auf $O(n^3)$
-	\item \textbf{Praktische Effizienz}: 15-1000Ã— Speedup gegenÃ¼ber klassischen AnsÃ¤tzen
+	\item \textbf{Polynomiale Komplexität}: Reduktion von $O(n!)$ auf $O(n^3)$
+	\item \textbf{Praktische Effizienz}: 15-1000Ã— Speedup gegenüber klassischen Ansätzen
 	\item \textbf{Skalierbarkeit}: Anwendbar auf Probleme mit 25+ Objekten
 	\item \textbf{Integration}: Nahtlose Kombination mit LTL/CTL Model Checking
 \end{enumerate}
@@ -1431,28 +1431,28 @@ fÃ¼r das temporale Model Checking von PDDL-Planungsproblemen:
 	\item[-] Automatisierte Verifikation von Planungssystemen
 \end{itemize}
 
-\textbf{ZukÃ¼nftige Erweiterungen:}
+\textbf{Zukünftige Erweiterungen:}
 \begin{enumerate}
-	\item \textbf{Symbolische Darstellung}: Kombination mit BDDs fÃ¼r noch grÃ¶ÃŸere ZustandsrÃ¤ume
+	\item \textbf{Symbolische Darstellung}: Kombination mit BDDs für noch größere Zustandsräume
 	\item \textbf{Parallele Implementierung}: GPU-Beschleunigung der Signatur-Berechnung
-	\item \textbf{Erweiterte Patterns}: UnterstÃ¼tzung fÃ¼r zeitliche und probabilistische Constraints
+	\item \textbf{Erweiterte Patterns}: Unterstützung für zeitliche und probabilistische Constraints
 	\item \textbf{Tool-Integration}: Anbindung an Fast Downward, PDDL4J und andere Planner
-	\item \textbf{Automatisches Pattern-Mining}: Lernen von Patterns aus erfolgreichen PlÃ¤nen
+	\item \textbf{Automatisches Pattern-Mining}: Lernen von Patterns aus erfolgreichen Plänen
 \end{enumerate}
 
-Der Subgraph Algorithmus stellt damit einen wichtigen Beitrag zur effizienten Verifikation von Planungssystemen dar und erÃ¶ffnet neue MÃ¶glichkeiten fÃ¼r die praktische Anwendung formaler Methoden in der automatisierten Planung.
+Der Subgraph Algorithmus stellt damit einen wichtigen Beitrag zur effizienten Verifikation von Planungssystemen dar und eröffnet neue Möglichkeiten für die praktische Anwendung formaler Methoden in der automatisierten Planung.
 
 \section{Erweiterte PDDL-Beispiele}
 
-Nachdem im vorherigen Kapitel der Subgraph Algorithmus als effiziente Methode fÃ¼r das Model Checking von PDDL-Planungsproblemen vorgestellt wurde, prÃ¤sentiert dieses Kapitel zwei weitere klassische PlanungsdomÃ¤nen mit vollstÃ¤ndigen Beispielen. Diese demonstrieren die Vielseitigkeit von PDDL und bieten zusÃ¤tzliche AnwendungsfÃ¤lle fÃ¼r die in Kapitel~7 vorgestellten Verifikationstechniken. Alle Beispiele kÃ¶nnen mit dem Subgraph Algorithmus effizient verifiziert werden, wobei die strukturellen Muster der jeweiligen ZustandsrÃ¤ume optimal ausgenutzt werden.
+Nachdem im vorherigen Kapitel der Subgraph Algorithmus als effiziente Methode für das Model Checking von PDDL-Planungsproblemen vorgestellt wurde, präsentiert dieses Kapitel zwei weitere klassische Planungsdomänen mit vollständigen Beispielen. Diese demonstrieren die Vielseitigkeit von PDDL und bieten zusätzliche Anwendungsfälle für die in Kapitel~7 vorgestellten Verifikationstechniken. Alle Beispiele können mit dem Subgraph Algorithmus effizient verifiziert werden, wobei die strukturellen Muster der jeweiligen Zustandsräume optimal ausgenutzt werden.
 
-\subsection{Logistics-DomÃ¤ne}
+\subsection{Logistics-Domäne}
 
-Die Logistics-DomÃ¤ne modelliert Transport von Paketen zwischen StÃ¤dten.
+Die Logistics-Domäne modelliert Transport von Paketen zwischen Städten.
 
-\subsubsection{DomÃ¤nendefinition}
+\subsubsection{Domänendefinition}
 
-\begin{lstlisting}[language=PDDL, caption=Logistics DomÃ¤ne]
+\begin{lstlisting}[language=PDDL, caption=Logistics Domäne]
 (define (domain logistics)
   (:requirements :strips :typing)
   
@@ -1556,7 +1556,7 @@ Die Logistics-DomÃ¤ne modelliert Transport von Paketen zwischen StÃ¤dten.
 
 \subsubsection{Beispielplan}
 
-Ein mÃ¶glicher Plan zum Transport der Pakete:
+Ein möglicher Plan zum Transport der Pakete:
 
 \begin{enumerate}
 	\item \texttt{load-truck(package1, truck1, berlin-center)}
@@ -1584,12 +1584,12 @@ Ein mÃ¶glicher Plan zum Transport der Pakete:
 \begin{beispiel}[Logistics Temporale Eigenschaften]
 	\begin{enumerate}
 		\item Pakete werden zugestellt
-		($\mathit{pkg}_1$ an $\texttt{hamburg-harbor}$, abgekÃ¼rzt $\mathit{hh}$):
+		($\mathit{pkg}_1$ an $\texttt{hamburg-harbor}$, abgekürzt $\mathit{hh}$):
 		\begin{align}
 		\mathbf{AG}\bigl(\mathrm{at}(\mathit{pkg}_1,\,\mathit{hh})\bigr)
 		\end{align}
 		
-		\item Flugzeuge sind immer an FlughÃ¤fen:
+		\item Flugzeuge sind immer an Flughäfen:
 		\begin{align}
 		\mathbf{AG}(\exists a: \text{airport}: \text{at}(\text{airplane1}, a))
 		\end{align}
@@ -1601,13 +1601,13 @@ Ein mÃ¶glicher Plan zum Transport der Pakete:
 	\end{enumerate}
 \end{beispiel}
 
-\subsection{Gripper-DomÃ¤ne}
+\subsection{Gripper-Domäne}
 
-Die Gripper-DomÃ¤ne modelliert einen Roboter mit zwei Greifern, der BÃ¤lle zwischen RÃ¤umen transportiert.
+Die Gripper-Domäne modelliert einen Roboter mit zwei Greifern, der Bälle zwischen Räumen transportiert.
 
-\subsubsection{DomÃ¤nendefinition}
+\subsubsection{Domänendefinition}
 
-\begin{lstlisting}[language=PDDL, caption=Gripper DomÃ¤ne]
+\begin{lstlisting}[language=PDDL, caption=Gripper Domäne]
 (define (domain gripper)
   (:requirements :strips :typing)
   
@@ -1689,7 +1689,7 @@ Ein optimaler Plan mit 11 Aktionen:
 	\item \texttt{drop(ball3, room2, left)}
 \end{enumerate}
 
-Dies nutzt optimal beide Greifer, um zwei BÃ¤lle gleichzeitig zu transportieren.
+Dies nutzt optimal beide Greifer, um zwei Bälle gleichzeitig zu transportieren.
 
 \subsubsection{Temporale Analyse}
 
@@ -1700,12 +1700,12 @@ Dies nutzt optimal beide Greifer, um zwei BÃ¤lle gleichzeitig zu transportiere
 		\mathbf{EF}(\exists b_1, b_2, g_1, g_2: \text{carry}(b_1, g_1) \land \text{carry}(b_2, g_2) \land g_1 \neq g_2)
 		\end{align}
 		
-		\item Alle BÃ¤lle werden schlieÃŸlich transportiert:
+		\item Alle Bälle werden schließlich transportiert:
 		\begin{align}
 		\mathbf{AF}(\text{at-ball}(\text{ball1}, \text{room2}) \land \text{at-ball}(\text{ball2}, \text{room2}) \land \text{at-ball}(\text{ball3}, \text{room2}))
 		\end{align}
 		
-		\item Ein Greifer trÃ¤gt maximal einen Ball:
+		\item Ein Greifer trägt maximal einen Ball:
 		\begin{align}
 		\mathbf{AG}\neg(\text{carry}(b_1, g) \land \text{carry}(b_2, g) \land b_1 \neq b_2)
 		\end{align}
@@ -1714,7 +1714,7 @@ Dies nutzt optimal beide Greifer, um zwei BÃ¤lle gleichzeitig zu transportiere
 
 \section{PDDL Planner und Algorithmen}
 
-Dieses Kapitel gibt einen Ãœberblick Ã¼ber gÃ¤ngige PDDL-Planungsalgorithmen. Die hier beschriebenen Verfahren sind komplementÃ¤r zum Subgraph Algorithmus aus Kapitel~7: Planer generieren LÃ¶sungen, wÃ¤hrend der Subgraph Algorithmus deren Korrektheit und OptimalitÃ¤t effizient verifiziert. Diese Synergie ermÃ¶glicht einen vollstÃ¤ndigen Workflow von der Plangenerierung Ã¼ber die Verifikation bis zur Zertifizierung.
+Dieses Kapitel gibt einen Überblick über gängige PDDL-Planungsalgorithmen. Die hier beschriebenen Verfahren sind komplementär zum Subgraph Algorithmus aus Kapitel~7: Planer generieren Lösungen, während der Subgraph Algorithmus deren Korrektheit und Optimalität effizient verifiziert. Diese Synergie ermöglicht einen vollständigen Workflow von der Plangenerierung über die Verifikation bis zur Zertifizierung.
 
 \subsection{Klassische Planungsalgorithmen}
 
@@ -1723,13 +1723,13 @@ Dieses Kapitel gibt einen Ãœberblick Ã¼ber gÃ¤ngige PDDL-Planungsalgorithm
 Forward Search expandiert vom Initialzustand ausgehend:
 
 \begin{algorithm}[H]
-	\caption{VorwÃ¤rts-Zustandsraumsuche}
+	\caption{Vorwärts-Zustandsraumsuche}
 	\begin{algorithmic}[1]
 		\Prozedur{ForwardSearch}{$I, G, A$}
 		\State $\text{Open} \gets \{I\}$ \Comment{Initialzustand}
 		\State $\text{Closed} \gets \emptyset$
 		\Waehrend{$\text{Open} \neq \emptyset$}
-		\State $s \gets \text{Pop}(\text{Open})$ \Comment{WÃ¤hle Zustand}
+		\State $s \gets \text{Pop}(\text{Open})$ \Comment{Wähle Zustand}
 		\Wenn{$s \models G$}
 		\State \Return \textsc{ExtractPlan}($s$)
 		\EndeWenn
@@ -1748,10 +1748,10 @@ Forward Search expandiert vom Initialzustand ausgehend:
 
 \subsubsection{Backward Search (Regression)}
 
-Backward Search startet vom Ziel und arbeitet rÃ¼ckwÃ¤rts:
+Backward Search startet vom Ziel und arbeitet rückwärts:
 
 \begin{algorithm}[H]
-	\caption{RÃ¼ckwÃ¤rts-Regressionssuche}
+	\caption{Rückwärts-Regressionssuche}
 	\begin{algorithmic}[1]
 		\Prozedur{BackwardSearch}{$I, G, A$}
 		\State $\text{Open} \gets \{G\}$ \Comment{Zielzustand}
@@ -1763,7 +1763,7 @@ Backward Search startet vom Ziel und arbeitet rÃ¼ckwÃ¤rts:
 		\EndeWenn
 		\State $\text{Closed} \gets \text{Closed} \cup \{g\}$
 		\Fuer{jede Aktion $a \in A$}
-		\State $g' \gets \text{Regress}(a, g)$ \Comment{RÃ¼ckwÃ¤rts-Anwendung}
+		\State $g' \gets \text{Regress}(a, g)$ \Comment{Rückwärts-Anwendung}
 		\Wenn{$g' \neq \bot$ und $g' \notin \text{Closed}$}
 		\State $\text{Open} \gets \text{Open} \cup \{g'\}$
 		\EndeWenn
@@ -1778,12 +1778,12 @@ Backward Search startet vom Ziel und arbeitet rÃ¼ckwÃ¤rts:
 
 \subsubsection{GraphPlan}
 
-GraphPlan konstruiert einen Planning Graph und extrahiert PlÃ¤ne:
+GraphPlan konstruiert einen Planning Graph und extrahiert Pläne:
 
 \begin{enumerate}
-	\item Konstruiere Planning Graph Level fÃ¼r Level
-	\item PrÃ¼fe, ob Ziel erreichbar ist (keine Mutex-Konflikte)
-	\item Extrahiere Plan durch RÃ¼ckwÃ¤rtssuche
+	\item Konstruiere Planning Graph Level für Level
+	\item Prüfe, ob Ziel erreichbar ist (keine Mutex-Konflikte)
+	\item Extrahiere Plan durch Rückwärtssuche
 \end{enumerate}
 
 Der Planning Graph alterniert zwischen Proposition-Leveln und Action-Leveln:
@@ -1796,7 +1796,7 @@ P_0 \xrightarrow{A_0} P_1 \xrightarrow{A_1} P_2 \xrightarrow{A_2} \cdots
 FF verwendet die relaxed Planning Graph Heuristik:
 
 \begin{definition}[Relaxed Planning Graph]
-	Ein relaxed Planning Graph ignoriert Delete-Effekte von Aktionen. Die Heuristik $h^{FF}(s)$ ist die LÃ¤nge des LÃ¶sungsplans im relaxierten Problem.
+	Ein relaxed Planning Graph ignoriert Delete-Effekte von Aktionen. Die Heuristik $h^{FF}(s)$ ist die Länge des Lösungsplans im relaxierten Problem.
 \end{definition}
 
 Der FF-Planner kombiniert:
@@ -1811,7 +1811,7 @@ SAT-basierte Planung kodiert Planungsprobleme als aussagenlogische Formeln.
 
 \subsubsection{Bounded Planning}
 
-FÃ¼r PlanlÃ¤nge $n$ kodiere:
+Für Planlänge $n$ kodiere:
 \begin{enumerate}
 	\item Initialzustand: $I$
 	\item Aktionen und Transitionen: $\bigwedge_{i=0}^{n-1} T_i$
@@ -1823,7 +1823,7 @@ Die Gesamt-Formel ist:
 \Phi_n = I \land \left(\bigwedge_{i=0}^{n-1} T_i\right) \land G_n
 \end{align}
 
-Wenn $\Phi_n$ erfÃ¼llbar ist, existiert ein Plan der LÃ¤nge $n$.
+Wenn $\Phi_n$ erfüllbar ist, existiert ein Plan der Länge $n$.
 
 \subsubsection{Inkrementelle SAT-Planung}
 
@@ -1853,20 +1853,20 @@ Wenn $\Phi_n$ erfÃ¼llbar ist, existiert ein Plan der LÃ¤nge $n$.
 	\label{tab:planner_comparison}
 	\begin{tabular}{llll}
 		\toprule
-		Algorithmus & Typ & OptimalitÃ¤t & KomplexitÃ¤t \\
+		Algorithmus & Typ & Optimalität & Komplexität \\
 		\midrule
 		Forward Search & State-Space & Nein & Exponentiell \\
 		Backward Search & Regression & Nein & Exponentiell \\
 		GraphPlan & Graph-basiert & Ja & Polynomial (pro Level) \\
 		FF Planner & Heuristisch & Nein & Praktisch effizient \\
-		SAT Planning & Kompilierung & Ja & NP-vollstÃ¤ndig \\
+		SAT Planning & Kompilierung & Ja & NP-vollständig \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 \subsection{Integration mit Subgraph-basierter Verifikation}
 
-Die vorgestellten Planungsalgorithmen kÃ¶nnen optimal mit dem Subgraph Algorithmus aus Kapitel~7 kombiniert werden. Die Verifikation mit dem Subgraph Algorithmus fÃ¼gt dabei nur polynomialen Overhead hinzu, der in der Praxis vernachlÃ¤ssigbar ist:
+Die vorgestellten Planungsalgorithmen können optimal mit dem Subgraph Algorithmus aus Kapitel~7 kombiniert werden. Die Verifikation mit dem Subgraph Algorithmus fügt dabei nur polynomialen Overhead hinzu, der in der Praxis vernachlässigbar ist:
 
 \begin{table}[h]
 	\centering
@@ -1878,16 +1878,16 @@ Die vorgestellten Planungsalgorithmen kÃ¶nnen optimal mit dem Subgraph Algorit
 		\midrule
 		Forward + Subgraph & Exponentiell & $O(|\pi| \cdot n^3)$ & Praktikabel \\
 		FF + Subgraph & Heuristisch & $O(|\pi| \cdot n^3)$ & Sehr effizient \\
-		SAT + Subgraph & NP-vollstÃ¤ndig & $O(|\pi| \cdot n^3)$ & Optimal verifiziert \\
+		SAT + Subgraph & NP-vollständig & $O(|\pi| \cdot n^3)$ & Optimal verifiziert \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-Der empfohlene Workflow umfasst fÃ¼nf Schritte: (1.)~Plangenerierung mit dem FF-Planner oder einem SAT-basierten Ansatz, (2.)~Signaturextraktion aus der Zustandssequenz in $O(n^2)$, (3.)~Pattern-Verifikation fÃ¼r Safety- und Liveness-Eigenschaften, (4.)~OptimalitÃ¤tsprÃ¼fung durch Vergleich der PlanlÃ¤nge mit dem theoretischen Minimum sowie (5.)~Ausgabe eines formal zertifizierten Plans.
+Der empfohlene Workflow umfasst fünf Schritte: (1.)~Plangenerierung mit dem FF-Planner oder einem SAT-basierten Ansatz, (2.)~Signaturextraktion aus der Zustandssequenz in $O(n^2)$, (3.)~Pattern-Verifikation für Safety- und Liveness-Eigenschaften, (4.)~Optimalitätsprüfung durch Vergleich der Planlänge mit dem theoretischen Minimum sowie (5.)~Ausgabe eines formal zertifizierten Plans.
 
-\section{Model Checking von PDDL-DomÃ¤nen}
+\section{Model Checking von PDDL-Domänen}
 
-Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte zu einem vollstÃ¤ndigen Verifikations-Workflow. Insbesondere wird gezeigt, wie der Subgraph Algorithmus aus Kapitel~7 in praktische Tools und Workflows eingebettet werden kann, um PDDL-DomÃ¤nen automatisiert zu verifizieren.
+Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte zu einem vollständigen Verifikations-Workflow. Insbesondere wird gezeigt, wie der Subgraph Algorithmus aus Kapitel~7 in praktische Tools und Workflows eingebettet werden kann, um PDDL-Domänen automatisiert zu verifizieren.
 
 \subsection{Automatische Verifikation mit Subgraph-Integration}
 
@@ -1898,8 +1898,8 @@ Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte z
 	\item \textbf{Signaturberechnung}: Berechne Zustandssignaturen
 	      mit $O(n^2)$ pro Zustand (Subgraph Algorithmus)
 	\item \textbf{Spezifikation}: Formuliere Eigenschaften als Patterns und temporale Formeln
-	\item \textbf{Pattern-Matching}: Nutze Subgraph Algorithmus fÃ¼r strukturelle Eigenschaften in $O(|S| \cdot n^3)$
-	\item \textbf{CTL/LTL Model Checking}: Nutze klassische Algorithmen fÃ¼r komplexere temporale Formeln
+	\item \textbf{Pattern-Matching}: Nutze Subgraph Algorithmus für strukturelle Eigenschaften in $O(|S| \cdot n^3)$
+	\item \textbf{CTL/LTL Model Checking}: Nutze klassische Algorithmen für komplexere temporale Formeln
 	\item \textbf{Gegenbeispiel}: Bei Verletzung, analysiere Trace
 \end{enumerate}
 
@@ -1909,7 +1909,7 @@ Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte z
 	\label{tab:verification_speedup}
 	\begin{tabular}{lrrr}
 		\toprule
-		DomÃ¤ne & Klassisch & Mit Subgraph & Speedup \\
+		Domäne & Klassisch & Mit Subgraph & Speedup \\
 		\midrule
 		Blocksworld-5 & 2.3s & 0.08s & 29$\times$ \\
 		Logistics-4 & 5.1s & 0.15s & 34$\times$ \\
@@ -1918,12 +1918,12 @@ Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte z
 	\end{tabular}
 \end{table}
 
-\subsubsection{Workflow-Beispiel fÃ¼r Blocksworld mit Subgraph Algorithmus}
+\subsubsection{Workflow-Beispiel für Blocksworld mit Subgraph Algorithmus}
 
 \begin{beispiel}[Blocksworld Verifikation mit Subgraph Algorithmus]
-	\textbf{Schritt 1}: Erzeuge Zustandsraum aus PDDL (13 erreichbare ZustÃ¤nde fÃ¼r 3 BlÃ¶cke)
+	\textbf{Schritt 1}: Erzeuge Zustandsraum aus PDDL (13 erreichbare Zustände für 3 Blöcke)
 
-	\textbf{Schritt 2}: Berechne Signaturen fÃ¼r alle 13 ZustÃ¤nde: $13 \times O(n^2) = 13 \times O(9) < 0{,}001$s
+	\textbf{Schritt 2}: Berechne Signaturen für alle 13 Zustände: $13 \times O(n^2) = 13 \times O(9) < 0{,}001$s
 
 	\textbf{Schritt 3}: Spezifiziere Eigenschaften:
 	\begin{itemize}
@@ -1934,7 +1934,7 @@ Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte z
 
 	\textbf{Schritt 4}: Pattern-Matching mit Subgraph Algorithmus: $13 \times O(n^3) = O(351)$ Operationen, Zeit $< 0{,}002$s
 
-	\textbf{Schritt 5}: Bei Verletzung, extrahiere Gegenbeispiel-Pfad und konvertiere zurÃ¼ck zu PDDL-Aktionssequenz
+	\textbf{Schritt 5}: Bei Verletzung, extrahiere Gegenbeispiel-Pfad und konvertiere zurück zu PDDL-Aktionssequenz
 
 	\textbf{Gesamtzeit}: 0{,}006s (vs. 0{,}18s klassisch) $= 30\times$ Speedup. Alle Eigenschaften verifiziert: $\checkmark$
 \end{beispiel}
@@ -1943,18 +1943,18 @@ Dieses Kapitel integriert die in den vorherigen Kapiteln entwickelten Konzepte z
 
 \subsubsection{PDDL4J}
 
-PDDL4J ist eine Java-Bibliothek fÃ¼r PDDL:
+PDDL4J ist eine Java-Bibliothek für PDDL:
 \begin{itemize}
-	\item[-] Parser fÃ¼r PDDL 3.0
+	\item[-] Parser für PDDL 3.0
 	\item[-] Mehrere Planner (FF, HSP, etc.)
-	\item[-] API fÃ¼r eigene Algorithmen
+	\item[-] API für eigene Algorithmen
 \end{itemize}
 
 \subsubsection{Fast Downward}
 
 Fast Downward ist ein state-of-the-art Planner:
 \begin{itemize}
-	\item[-] UnterstÃ¼tzt PDDL 2.2
+	\item[-] Unterstützt PDDL 2.2
 	\item[-] Verschiedene Heuristiken
 	\item[-] Exzellente Performance
 \end{itemize}
@@ -1966,11 +1966,11 @@ NuSMV ist ein symbolischer Model Checker:
 \begin{enumerate}
 	\item Konvertiere PDDL zu SMV-Format
 	\item Definiere CTL-Eigenschaften in SMV
-	\item FÃ¼hre NuSMV aus
+	\item Führe NuSMV aus
 	\item Analysiere Ergebnisse
 \end{enumerate}
 
-\subsection{Case Study: Blocksworld VollstÃ¤ndige Verifikation}
+\subsection{Case Study: Blocksworld Vollständige Verifikation}
 
 \subsubsection{Zu verifizierende Eigenschaften}
 
@@ -1998,7 +1998,7 @@ NuSMV ist ein symbolischer Model Checker:
 
 \subsubsection{Verifikationsergebnisse}
 
-FÃ¼r das Blocksworld-Problem mit 3 BlÃ¶cken:
+Für das Blocksworld-Problem mit 3 Blöcken:
 
 \begin{table}[h]
 	\centering
@@ -2008,18 +2008,18 @@ FÃ¼r das Blocksworld-Problem mit 3 BlÃ¶cken:
 		\toprule
 		Eigenschaft & Ergebnis & Zeit \\
 		\midrule
-		Korrektheit & $\checkmark$ ErfÃ¼llt & 0.002s \\
-		Safety (Hand) & $\checkmark$ ErfÃ¼llt & 0.001s \\
-		Safety (Blocks) & $\checkmark$ ErfÃ¼llt & 0.001s \\
-		OptimalitÃ¤t & $\checkmark$ Optimal (4 Schritte) & 0.003s \\
-		Determinismus & $\checkmark$ ErfÃ¼llt & 0.001s \\
+		Korrektheit & $\checkmark$ Erfüllt & 0.002s \\
+		Safety (Hand) & $\checkmark$ Erfüllt & 0.001s \\
+		Safety (Blocks) & $\checkmark$ Erfüllt & 0.001s \\
+		Optimalität & $\checkmark$ Optimal (4 Schritte) & 0.003s \\
+		Determinismus & $\checkmark$ Erfüllt & 0.001s \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 \section{Hybride Verifikation: Kontinuierliche Systeme und diskrete Abstraktion}
 
-Die bisher entwickelten Verifikationsverfahren operieren ausschlieÃŸlich auf diskreten ZustandsrÃ¤umen. Reale Systeme hingegen -- Roboter, autonome Fahrzeuge, Produktionsanlagen, medizinische GerÃ¤te -- sind cyber-physische Systeme, deren Zustand durch kontinuierliche GrÃ¶ÃŸen wie Position, Geschwindigkeit, Temperatur oder Druck beschrieben wird. Die Verbindung zwischen der kontinuierlichen physikalischen Welt und der diskreten Verifikationswelt erfordert eine sorgfÃ¤ltige Abstraktion, die unvermeidlich Fehler einfÃ¼hrt. Dieses Kapitel untersucht systematisch, wie diese Abstraktionsfehler entstehen, wie sie formal charakterisiert werden kÃ¶nnen, wie sie durch Kalibrierung minimiert werden und ob es Klassen realer Systeme gibt, fÃ¼r die eine vollstÃ¤ndige Fehlervermeidung beweisbar erreichbar ist.
+Die bisher entwickelten Verifikationsverfahren operieren ausschließlich auf diskreten Zustandsräumen. Reale Systeme hingegen -- Roboter, autonome Fahrzeuge, Produktionsanlagen, medizinische Geräte -- sind cyber-physische Systeme, deren Zustand durch kontinuierliche Größen wie Position, Geschwindigkeit, Temperatur oder Druck beschrieben wird. Die Verbindung zwischen der kontinuierlichen physikalischen Welt und der diskreten Verifikationswelt erfordert eine sorgfältige Abstraktion, die unvermeidlich Fehler einführt. Dieses Kapitel untersucht systematisch, wie diese Abstraktionsfehler entstehen, wie sie formal charakterisiert werden können, wie sie durch Kalibrierung minimiert werden und ob es Klassen realer Systeme gibt, für die eine vollständige Fehlervermeidung beweisbar erreichbar ist.
 
 \subsection{Hybride Automaten als formales Modell}
 
@@ -2030,18 +2030,18 @@ Ein hybrider Automat ist ein Tupel $H$:
 \end{align*}
 mit folgenden Komponenten:
 \begin{itemize}
-  \item[-] $Q$: endliche Menge diskreter ZustÃ¤nde (Moden)
+  \item[-] $Q$: endliche Menge diskreter Zustände (Moden)
   \item[-] $X \subseteq \mathbb{R}^n$: kontinuierlicher Zustandsraum
   \item[-] $f: Q \times X \to \mathbb{R}^n$: Vektorfeld, beschreibt die kontinuierliche Dynamik $\dot{x} = f(q, x)$ in Modus $q$
   \item[-] $\mathit{Init} \subseteq Q \times X$: Initialbedingung
-  \item[-] $\mathit{Inv}: Q \to 2^X$: Invariante, legt fest, in welchen kontinuierlichen ZustÃ¤nden Modus $q$ zulÃ¤ssig ist
-  \item[-] $E \subseteq Q \times Q$: diskrete ÃœbergÃ¤nge (Kanten)
-  \item[-] $G: E \to 2^X$: Schaltbedingung (Guard) fÃ¼r jeden Ãœbergang
-  \item[-] $R: E \times X \to 2^X$: RÃ¼cksetzabbildung (Reset) bei ÃœbergÃ¤ngen
+  \item[-] $\mathit{Inv}: Q \to 2^X$: Invariante, legt fest, in welchen kontinuierlichen Zuständen Modus $q$ zulässig ist
+  \item[-] $E \subseteq Q \times Q$: diskrete Übergänge (Kanten)
+  \item[-] $G: E \to 2^X$: Schaltbedingung (Guard) für jeden Übergang
+  \item[-] $R: E \times X \to 2^X$: Rücksetzabbildung (Reset) bei Übergängen
 \end{itemize}
 \end{definition}
 
-Ein hybrider Automat kombiniert das Schaltverhalten eines endlichen Automaten mit der kontinuierlichen Dynamik eines Differentialgleichungssystems. Reale cyber-physische Systeme lassen sich natÃ¼rlich in diesem Formalismus modellieren: Ein Roboter befindet sich in verschiedenen Betriebsmodi (Fahren, Bremsen, Stehen), und innerhalb jedes Modus beschreibt ein Differentialgleichungssystem die Bewegungsdynamik.
+Ein hybrider Automat kombiniert das Schaltverhalten eines endlichen Automaten mit der kontinuierlichen Dynamik eines Differentialgleichungssystems. Reale cyber-physische Systeme lassen sich natürlich in diesem Formalismus modellieren: Ein Roboter befindet sich in verschiedenen Betriebsmodi (Fahren, Bremsen, Stehen), und innerhalb jedes Modus beschreibt ein Differentialgleichungssystem die Bewegungsdynamik.
 
 \begin{beispiel}[Hybrider Automat: Fahrender Roboter]
 Ein mobiler Roboter besitzt drei Moden: $Q = \{\mathit{Fahren}, \mathit{Bremsen}, \mathit{Stehen}\}$. Der kontinuierliche Zustand ist $(x, v) \in \mathbb{R}^2$ mit Position $x$ und Geschwindigkeit $v$. Die Vektorfelder sind:
@@ -2050,41 +2050,41 @@ Ein mobiler Roboter besitzt drei Moden: $Q = \{\mathit{Fahren}, \mathit{Bremsen}
   f(\mathit{Bremsen}, (x,v)) &= (v,\; -a_{\max}) \\
   f(\mathit{Stehen}, (x,v))  &= (0,\; 0)
 \end{align}
-Der Ãœbergang von \textit{Fahren} nach \textit{Bremsen} wird ausgelÃ¶st, wenn ein Hindernis in Distanz $d_{\mathit{safe}}$ erkannt wird (Guard: $x_{\mathit{obstacle}} - x \leq d_{\mathit{safe}}$); das Reset setzt $v$ nicht zurÃ¼ck, da die Bremsung kontinuierlich beginnt.
+Der Übergang von \textit{Fahren} nach \textit{Bremsen} wird ausgelöst, wenn ein Hindernis in Distanz $d_{\mathit{safe}}$ erkannt wird (Guard: $x_{\mathit{obstacle}} - x \leq d_{\mathit{safe}}$); das Reset setzt $v$ nicht zurück, da die Bremsung kontinuierlich beginnt.
 \end{beispiel}
 
 \subsection{Diskretisierung und Abstraktionsfehler}
 
-Die Umwandlung eines hybriden Automaten $H$ in eine endliche Kripke-Struktur $M$ erfolgt durch \emph{Diskretisierung}: Der kontinuierliche Zustandsraum $X$ wird in endlich viele Zellen $C_1, \ldots, C_k$ eingeteilt, und jede Zelle reprÃ¤sentiert einen diskreten Zustand.
+Die Umwandlung eines hybriden Automaten $H$ in eine endliche Kripke-Struktur $M$ erfolgt durch \emph{Diskretisierung}: Der kontinuierliche Zustandsraum $X$ wird in endlich viele Zellen $C_1, \ldots, C_k$ eingeteilt, und jede Zelle repräsentiert einen diskreten Zustand.
 
 \begin{definition}[Gitterbasierte Diskretisierung]
-FÃ¼r eine AuflÃ¶sung $\delta > 0$ und einen kompakten Zustandsraum $X = [a_1, b_1] \times \cdots \times [a_n, b_n]$ definieren wir die Gitterzellen:
+Für eine Auflösung $\delta > 0$ und einen kompakten Zustandsraum $X = [a_1, b_1] \times \cdots \times [a_n, b_n]$ definieren wir die Gitterzellen:
 \begin{align}
   C_{i_1, \ldots, i_n} = \bigl[a_1 + i_1 \delta,\; a_1 + (i_1+1)\delta\bigr) \times \cdots \times \bigl[a_n + i_n \delta,\; a_n + (i_n+1)\delta\bigr)
 \end{align}
-fÃ¼r $i_j \in \{0, 1, \ldots, \lceil(b_j - a_j)/\delta\rceil - 1\}$. Die Anzahl der Gitterzellen ist $N(\delta) = \prod_{j=1}^n \lceil(b_j - a_j)/\delta\rceil$.
+für $i_j \in \{0, 1, \ldots, \lceil(b_j - a_j)/\delta\rceil - 1\}$. Die Anzahl der Gitterzellen ist $N(\delta) = \prod_{j=1}^n \lceil(b_j - a_j)/\delta\rceil$.
 \end{definition}
 
-Diese Diskretisierung fÃ¼hrt zu zwei grundlegenden Fehlerquellen:
+Diese Diskretisierung führt zu zwei grundlegenden Fehlerquellen:
 
-\textbf{RÃ¤umlicher Abstraktionsfehler.} Alle Punkte einer Zelle werden mit dem Zellmittelpunkt~$\hat{x}_{C}$ identifiziert. Der maximale rÃ¤umliche Fehler pro Zelle betrÃ¤gt:
+\textbf{Räumlicher Abstraktionsfehler.} Alle Punkte einer Zelle werden mit dem Zellmittelpunkt~$\hat{x}_{C}$ identifiziert. Der maximale räumliche Fehler pro Zelle beträgt:
 \begin{align}
-  \epsilon_{\mathit{rÃ¤umlich}}(\delta) = \frac{\sqrt{n} \cdot \delta}{2}
+  \epsilon_{\mathit{räumlich}}(\delta) = \frac{\sqrt{n} \cdot \delta}{2}
 \end{align}
 wobei $n$ die Dimension des Zustandsraums ist ($\ell_2$-Norm zum Zellmittelpunkt).
 
-\textbf{Dynamischer Propagationsfehler.} Wird die Dynamik $\dot{x} = f(q, x)$ durch einen diskreten Zeitschritt $\Delta t$ approximiert (Euler-Methode: $x_{k+1} = x_k + \Delta t \cdot f(q, x_k)$), so akkumuliert sich ein Fehler Ã¼ber die Zeit. FÃ¼r Lipschitz-stetige Vektorfelder gilt:
+\textbf{Dynamischer Propagationsfehler.} Wird die Dynamik $\dot{x} = f(q, x)$ durch einen diskreten Zeitschritt $\Delta t$ approximiert (Euler-Methode: $x_{k+1} = x_k + \Delta t \cdot f(q, x_k)$), so akkumuliert sich ein Fehler über die Zeit. Für Lipschitz-stetige Vektorfelder gilt:
 
 \begin{theorem}[Fehlerpropagation bei Euler-Diskretisierung]
-Sei $f(q,\cdot)$ Lipschitz-stetig mit Konstante $L>0$. Nach $k$ Euler-Schritten der Weite~$\Delta t$ gilt fÃ¼r den Fehler zur exakten LÃ¶sung~$x^*(t)$:
+Sei $f(q,\cdot)$ Lipschitz-stetig mit Konstante $L>0$. Nach $k$ Euler-Schritten der Weite~$\Delta t$ gilt für den Fehler zur exakten Lösung~$x^*(t)$:
 \begin{align}
   \|x^*(k\Delta t) - \hat{x}_k\| \leq \frac{M \Delta t}{2L} \bigl(e^{Lk\Delta t} - 1\bigr)
 \end{align}
-wobei $M = \sup_{q,x} \|\ddot{x}^*(t)\|$ die maximale zweite Ableitung der exakten LÃ¶sung beschrÃ¤nkt.
+wobei $M = \sup_{q,x} \|\ddot{x}^*(t)\|$ die maximale zweite Ableitung der exakten Lösung beschränkt.
 \end{theorem}
 
 \begin{proof}
-Der lokale Abbruchfehler des Euler-Verfahrens pro Schritt betrÃ¤gt durch Taylor-Entwicklung:
+Der lokale Abbruchfehler des Euler-Verfahrens pro Schritt beträgt durch Taylor-Entwicklung:
 \begin{align}
   \|x^*(t + \Delta t) - (x^*(t) + \Delta t \cdot f(q, x^*(t)))\| \leq \frac{M}{2} (\Delta t)^2.
 \end{align}
@@ -2095,7 +2095,7 @@ Sei $e_k = \|x^*(k\Delta t) - \hat{x}_k\|$ der globale Fehler nach $k$ Schritten
            &\leq \frac{M}{2}(\Delta t)^2 + L \Delta t \cdot e_k + e_k \notag \\
            &= (1 + L\Delta t) e_k + \frac{M}{2}(\Delta t)^2. \notag
 \end{align}
-Diese Rekurrenz hat die LÃ¶sung:
+Diese Rekurrenz hat die Lösung:
 \begin{align}
   e_k \leq \frac{M(\Delta t)^2}{2} \cdot \frac{(1+L\Delta t)^k - 1}{L\Delta t} = \frac{M\Delta t}{2L}\bigl((1+L\Delta t)^k - 1\bigr).
 \end{align}
@@ -2103,32 +2103,32 @@ Mit $(1 + L\Delta t)^k \leq e^{Lk\Delta t}$ folgt die Behauptung.
 \end{proof}
 
 \begin{remark}
-Das Ergebnis zeigt zwei kritische AbhÃ¤ngigkeiten: Der Fehler wÃ¤chst linear in $\Delta t$ (fÃ¼r kleine $\Delta t$) und exponentiell in der Simulationszeit $T = k\Delta t$. FÃ¼r groÃŸe Lipschitz-Konstanten $L$ -- das heiÃŸt, fÃ¼r schnell verÃ¤nderliche Systeme -- ist die exponentielle FehlerverstÃ¤rkung besonders ausgeprÃ¤gt.
+Das Ergebnis zeigt zwei kritische Abhängigkeiten: Der Fehler wächst linear in $\Delta t$ (für kleine $\Delta t$) und exponentiell in der Simulationszeit $T = k\Delta t$. Für große Lipschitz-Konstanten $L$ -- das heißt, für schnell veränderliche Systeme -- ist die exponentielle Fehlerverstärkung besonders ausgeprägt.
 \end{remark}
 
 \subsection{Formale Fehlerschranken und Kalibrierung}
 
-FÃ¼r die praktische Verifikation ist es entscheidend, nicht nur zu wissen, dass ein Fehler existiert, sondern ihn quantitativ zu begrenzen. Wir entwickeln eine systematische Theorie der Kalibrierung, die den Abstraktionsfehler unter eine vorgegebene Schranke $\varepsilon > 0$ drÃ¼ckt.
+Für die praktische Verifikation ist es entscheidend, nicht nur zu wissen, dass ein Fehler existiert, sondern ihn quantitativ zu begrenzen. Wir entwickeln eine systematische Theorie der Kalibrierung, die den Abstraktionsfehler unter eine vorgegebene Schranke $\varepsilon > 0$ drückt.
 
 \subsubsection{Kombinierter Gesamtfehler}
 
-Der Gesamtfehler der Diskretisierung setzt sich aus rÃ¤umlichem Fehler und Propagationsfehler zusammen:
+Der Gesamtfehler der Diskretisierung setzt sich aus räumlichem Fehler und Propagationsfehler zusammen:
 
 \begin{theorem}[Gesamtfehler der Diskretisierung]
 \label{thm:gesamtfehler}
-FÃ¼r einen hybriden Automaten mit $n$-dimensionalem Zustandsraum, Lipschitz-Konstante $L$, maximaler zweiter Ableitung $M$, DiskretisierungsauflÃ¶sung $\delta$ und Zeitschrittweite $\Delta t$ gilt fÃ¼r den Gesamtfehler nach Simulationszeit $T$:
+Für einen hybriden Automaten mit $n$-dimensionalem Zustandsraum, Lipschitz-Konstante $L$, maximaler zweiter Ableitung $M$, Diskretisierungsauflösung $\delta$ und Zeitschrittweite $\Delta t$ gilt für den Gesamtfehler nach Simulationszeit $T$:
 \begin{align}
-  \epsilon_{\mathit{gesamt}}(\delta, \Delta t, T) \leq \underbrace{\frac{\sqrt{n}\,\delta}{2}}_{\text{rÃ¤umlich}} + \underbrace{\frac{M\Delta t}{2L}\bigl(e^{LT} - 1\bigr)}_{\text{dynamisch}}
+  \epsilon_{\mathit{gesamt}}(\delta, \Delta t, T) \leq \underbrace{\frac{\sqrt{n}\,\delta}{2}}_{\text{räumlich}} + \underbrace{\frac{M\Delta t}{2L}\bigl(e^{LT} - 1\bigr)}_{\text{dynamisch}}
 \end{align}
 \end{theorem}
 
 \begin{proof}
-Der rÃ¤umliche Fehler betrÃ¤gt hÃ¶chstens den halben Zelldurchmesser~$\frac{\sqrt{n}\delta}{2}$ (Mittelpunktsabstand der $n$-di\-men\-sio\-na\-len WÃ¼rfelzelle der SeitenlÃ¤nge~$\delta$). Der dynamische Fehler folgt aus Theorem~11.1 mit $k = T/\Delta t$. Da beide Fehlerquellen unabhÃ¤ngig sind, addieren sie sich im schlechtesten Fall.
+Der räumliche Fehler beträgt höchstens den halben Zelldurchmesser~$\frac{\sqrt{n}\delta}{2}$ (Mittelpunktsabstand der $n$-di\-men\-sio\-na\-len Würfelzelle der Seitenlänge~$\delta$). Der dynamische Fehler folgt aus Theorem~11.1 mit $k = T/\Delta t$. Da beide Fehlerquellen unabhängig sind, addieren sie sich im schlechtesten Fall.
 \end{proof}
 
 \subsubsection{Kalibrierungsregel}
 
-Aus Theorem~\ref{thm:gesamtfehler} lÃ¤sst sich direkt eine \emph{Kalibrierungsregel} ableiten: FÃ¼r eine vorgegebene Fehlertoleranz $\varepsilon$ wÃ¤hle $\delta$ und $\Delta t$ so, dass:
+Aus Theorem~\ref{thm:gesamtfehler} lässt sich direkt eine \emph{Kalibrierungsregel} ableiten: Für eine vorgegebene Fehlertoleranz $\varepsilon$ wähle $\delta$ und $\Delta t$ so, dass:
 \begin{align}
   \frac{\sqrt{n}\,\delta}{2} \leq \frac{\varepsilon}{2} \quad \Rightarrow \quad \delta \leq \frac{\varepsilon}{\sqrt{n}}
   \label{eq:kalibrierung_raeumlich}
@@ -2139,7 +2139,7 @@ Aus Theorem~\ref{thm:gesamtfehler} lÃ¤sst sich direkt eine \emph{Kalibrierungs
 \end{align}
 
 \begin{definition}[Kalibriertes Diskretisierungsschema]
-Ein Schema $(\delta^*, \Delta t^*)$ heiÃŸt \emph{$\varepsilon$-kalibriert} fÃ¼r Parameter $(n, L, M, T)$, wenn gilt:
+Ein Schema $(\delta^*, \Delta t^*)$ heißt \emph{$\varepsilon$-kalibriert} für Parameter $(n, L, M, T)$, wenn gilt:
 \begin{align}
   \delta^* = \frac{\varepsilon}{\sqrt{n}}, \quad \Delta t^* = \frac{L\varepsilon}{M(e^{LT}-1)}.
 \end{align}
@@ -2158,17 +2158,17 @@ Direkt durch Einsetzen in Theorem~\ref{thm:gesamtfehler}:
 
 \subsubsection{Adaptives Kalibrierungsverfahren}
 
-In der Praxis sind die Systemparameter $(L, M)$ oft nicht exakt bekannt und mÃ¼ssen empirisch geschÃ¤tzt werden. Das folgende adaptive Verfahren passt $\delta$ und $\Delta t$ zur Laufzeit an:
+In der Praxis sind die Systemparameter $(L, M)$ oft nicht exakt bekannt und müssen empirisch geschätzt werden. Das folgende adaptive Verfahren passt $\delta$ und $\Delta t$ zur Laufzeit an:
 
 \begin{algorithm}[H]
   \caption{Adaptives Kalibrierungsverfahren}
   \begin{algorithmic}[1]
-    \Eingabe Hybrider Automat $H$, Fehlerziel $\varepsilon$, SchÃ¤tzintervall $T_{\mathit{est}}$
+    \Eingabe Hybrider Automat $H$, Fehlerziel $\varepsilon$, Schätzintervall $T_{\mathit{est}}$
     \Ausgabe Kalibriertes Schema $(\delta^*, \Delta t^*)$
     \Prozedur{AdaptiveKalibrierung}{$H, \varepsilon, T_{\mathit{est}}$}
-      \State Simuliere $H$ fÃ¼r Dauer $T_{\mathit{est}}$ mit grober Schrittweite $\Delta t_0$
-      \State SchÃ¤tze $\hat{L} \gets \max_{t} \|J_f(q(t), x(t))\|$ \Comment{Jacobi-Norm als Lipschitz-SchÃ¤tzung}
-      \State SchÃ¤tze $\hat{M} \gets \max_{t} \|\ddot{x}(t)\|$ \Comment{Numerische zweite Ableitung}
+      \State Simuliere $H$ für Dauer $T_{\mathit{est}}$ mit grober Schrittweite $\Delta t_0$
+      \State Schätze $\hat{L} \gets \max_{t} \|J_f(q(t), x(t))\|$ \Comment{Jacobi-Norm als Lipschitz-Schätzung}
+      \State Schätze $\hat{M} \gets \max_{t} \|\ddot{x}(t)\|$ \Comment{Numerische zweite Ableitung}
       \State $\delta^* \gets \varepsilon / \sqrt{n}$
       \State $\Delta t^* \gets \hat{L}\varepsilon \,/\, (\hat{M}(e^{\hat{L}T_{\mathit{est}}}-1))$
       \State \Return $(\delta^*, \Delta t^*)$
@@ -2176,60 +2176,60 @@ In der Praxis sind die Systemparameter $(L, M)$ oft nicht exakt bekannt und mÃ�
   \end{algorithmic}
 \end{algorithm}
 
-Das adaptive Verfahren hat den Vorteil, dass es keine a-priori-Kenntnis der Systemparameter voraussetzt. Die SchÃ¤tzung der Lipschitz-Konstante $\hat{L}$ Ã¼ber die Jacobi-Norm ist eine konservative obere Schranke und gewÃ¤hrleistet damit, dass der resultierende Fehler das Ziel $\varepsilon$ nicht Ã¼berschreitet.
+Das adaptive Verfahren hat den Vorteil, dass es keine a-priori-Kenntnis der Systemparameter voraussetzt. Die Schätzung der Lipschitz-Konstante $\hat{L}$ über die Jacobi-Norm ist eine konservative obere Schranke und gewährleistet damit, dass der resultierende Fehler das Ziel $\varepsilon$ nicht überschreitet.
 
-\subsection{Kalibrierung fÃ¼r konkrete Systemklassen}
+\subsection{Kalibrierung für konkrete Systemklassen}
 
-Das folgende zentrale Ergebnis dieses Kapitels zeigt, dass fÃ¼r bestimmte Klassen realer Systeme nicht nur eine Fehlerminimierung, sondern -- unter prÃ¤zise formulierten Bedingungen -- eine vollstÃ¤ndige Fehlervermeidung im Verifikationskontext erreichbar ist.
+Das folgende zentrale Ergebnis dieses Kapitels zeigt, dass für bestimmte Klassen realer Systeme nicht nur eine Fehlerminimierung, sondern -- unter präzise formulierten Bedingungen -- eine vollständige Fehlervermeidung im Verifikationskontext erreichbar ist.
 
-\subsubsection{Klasse 1: StÃ¼ckweise lineare Systeme}
+\subsubsection{Klasse 1: Stückweise lineare Systeme}
 
-\begin{definition}[StÃ¼ckweise lineares System]
-Ein hybrides System heiÃŸt \emph{stÃ¼ckweise linear}, wenn in jedem Modus $q \in Q$ gilt:
+\begin{definition}[Stückweise lineares System]
+Ein hybrides System heißt \emph{stückweise linear}, wenn in jedem Modus $q \in Q$ gilt:
 \begin{align}
   f(q, x) = A_q x + b_q, \quad A_q \in \mathbb{R}^{n \times n},\; b_q \in \mathbb{R}^n.
 \end{align}
 \end{definition}
 
-FÃ¼r stÃ¼ckweise lineare Systeme lÃ¤sst sich die exakte LÃ¶sung der Differentialgleichung in geschlossener Form angeben:
+Für stückweise lineare Systeme lässt sich die exakte Lösung der Differentialgleichung in geschlossener Form angeben:
 \begin{align}
-  x(t) = e^{A_q t} x_0 + A_q^{-1}(e^{A_q t} - I) b_q \quad \text{(fÃ¼r } A_q \text{ invertierbar)}.
+  x(t) = e^{A_q t} x_0 + A_q^{-1}(e^{A_q t} - I) b_q \quad \text{(für } A_q \text{ invertierbar)}.
 \end{align}
 
-\begin{theorem}[Fehlerfreie Diskretisierung stÃ¼ckweise linearer Systeme]
+\begin{theorem}[Fehlerfreie Diskretisierung stückweise linearer Systeme]
 \label{thm:fehlerfrei_linear}
-FÃ¼r ein stÃ¼ckweise lineares System mit bekannten Matrizen $A_q$ existiert ein Diskretisierungsschema, das den dynamischen Propagationsfehler exakt auf null reduziert: WÃ¤hle als Ãœbergangsrelation der diskreten Kripke-Struktur die durch die exakte Matrixexponential-LÃ¶sung induzierte Abbildung $x \mapsto e^{A_q \Delta t} x + A_q^{-1}(e^{A_q \Delta t} - I) b_q$.
+Für ein stückweise lineares System mit bekannten Matrizen $A_q$ existiert ein Diskretisierungsschema, das den dynamischen Propagationsfehler exakt auf null reduziert: Wähle als Übergangsrelation der diskreten Kripke-Struktur die durch die exakte Matrixexponential-Lösung induzierte Abbildung $x \mapsto e^{A_q \Delta t} x + A_q^{-1}(e^{A_q \Delta t} - I) b_q$.
 \end{theorem}
 
 \begin{proof}
-Die Euler-Approximation wird durch die exakte LÃ¶sung ersetzt. Der lokale Abbruchfehler ist dann identisch null, da die Ãœbergangsrelation der diskreten Struktur aus der analytischen LÃ¶sung der Differentialgleichung abgeleitet ist. Der rÃ¤umliche Fehler $\frac{\sqrt{n}\delta}{2}$ bleibt bestehen, kann aber durch $\delta \to 0$ beliebig klein gemacht werden. Im Grenzfall $\delta \to 0$ verschwindet auch dieser, was jedoch einen unendlichen Zustandsraum zur Folge hat. FÃ¼r jedes endliche $\varepsilon > 0$ ist jedoch das $\varepsilon$-kalibrierte Schema mit $\delta = \varepsilon/\sqrt{n}$ und dem Matrixexponential als Ãœbergangsfunktion fehlerfrei bezÃ¼glich des dynamischen Fehleranteils.
+Die Euler-Approximation wird durch die exakte Lösung ersetzt. Der lokale Abbruchfehler ist dann identisch null, da die Übergangsrelation der diskreten Struktur aus der analytischen Lösung der Differentialgleichung abgeleitet ist. Der räumliche Fehler $\frac{\sqrt{n}\delta}{2}$ bleibt bestehen, kann aber durch $\delta \to 0$ beliebig klein gemacht werden. Im Grenzfall $\delta \to 0$ verschwindet auch dieser, was jedoch einen unendlichen Zustandsraum zur Folge hat. Für jedes endliche $\varepsilon > 0$ ist jedoch das $\varepsilon$-kalibrierte Schema mit $\delta = \varepsilon/\sqrt{n}$ und dem Matrixexponential als Übergangsfunktion fehlerfrei bezüglich des dynamischen Fehleranteils.
 \end{proof}
 
-\textbf{Praktische Relevanz.} StÃ¼ckweise lineare Systeme modellieren eine Vielzahl realer Systeme: lineare Regelkreise, Roboter mit linearer Kinematik, elektrische Netzwerke im stationÃ¤ren Betrieb. FÃ¼r alle diese Systeme kann der dynamische Abstraktionsfehler durch die Verwendung der exakten Matrixexponential-LÃ¶sung auf null gesetzt werden.
+\textbf{Praktische Relevanz.} Stückweise lineare Systeme modellieren eine Vielzahl realer Systeme: lineare Regelkreise, Roboter mit linearer Kinematik, elektrische Netzwerke im stationären Betrieb. Für alle diese Systeme kann der dynamische Abstraktionsfehler durch die Verwendung der exakten Matrixexponential-Lösung auf null gesetzt werden.
 
-\subsubsection{Klasse 2: Systeme mit beschrÃ¤nktem Zustandsraum und Lipschitz-Dynamik}
+\subsubsection{Klasse 2: Systeme mit beschränktem Zustandsraum und Lipschitz-Dynamik}
 
-\begin{theorem}[GleichmÃ¤ÃŸige Kalibrierbarkeit]
+\begin{theorem}[Gleichmäßige Kalibrierbarkeit]
 \label{thm:gleichmaessig_kalibrierbar}
-Sei $\mathcal{S}$ eine Klasse hybrider Systeme, fÃ¼r die eine gemeinsame obere Schranke $L_{\max}$ fÃ¼r alle Lipschitz-Konstanten und eine gemeinsame Schranke $M_{\max}$ fÃ¼r alle zweiten Ableitungen existiert. Dann ist fÃ¼r jedes $\varepsilon > 0$ das Schema
+Sei $\mathcal{S}$ eine Klasse hybrider Systeme, für die eine gemeinsame obere Schranke $L_{\max}$ für alle Lipschitz-Konstanten und eine gemeinsame Schranke $M_{\max}$ für alle zweiten Ableitungen existiert. Dann ist für jedes $\varepsilon > 0$ das Schema
 \begin{align}
   \delta^* = \frac{\varepsilon}{\sqrt{n}}, \quad \Delta t^* = \frac{L_{\max}\varepsilon}{M_{\max}(e^{L_{\max}T}-1)}
 \end{align}
-fÃ¼r \emph{alle} Systeme aus $\mathcal{S}$ gleichzeitig $\varepsilon$-kalibriert.
+für \emph{alle} Systeme aus $\mathcal{S}$ gleichzeitig $\varepsilon$-kalibriert.
 \end{theorem}
 
 \begin{proof}
-Da $L_{\max} \geq L$ und $M_{\max} \geq M$ fÃ¼r alle Systeme der Klasse gilt, ist $\Delta t^* \leq \frac{L\varepsilon}{M(e^{LT}-1)}$ fÃ¼r jedes einzelne System (da $\frac{L_{\max}}{M_{\max}} \leq \frac{L_{\max}}{M_{\max}}$ und die Funktion $L \mapsto \frac{L}{e^{LT}-1}$ fÃ¼r $L > 0$ monoton fallend ist). Damit ist Bedingung~(\ref{eq:kalibrierung_dynamisch}) fÃ¼r alle Systeme der Klasse erfÃ¼llt. Bedingung~(\ref{eq:kalibrierung_raeumlich}) hÃ¤ngt nicht von den Systemparametern ab und ist trivialerweise fÃ¼r alle Systeme gleich.
+Da $L_{\max} \geq L$ und $M_{\max} \geq M$ für alle Systeme der Klasse gilt, ist $\Delta t^* \leq \frac{L\varepsilon}{M(e^{LT}-1)}$ für jedes einzelne System (da $\frac{L_{\max}}{M_{\max}} \leq \frac{L_{\max}}{M_{\max}}$ und die Funktion $L \mapsto \frac{L}{e^{LT}-1}$ für $L > 0$ monoton fallend ist). Damit ist Bedingung~(\ref{eq:kalibrierung_dynamisch}) für alle Systeme der Klasse erfüllt. Bedingung~(\ref{eq:kalibrierung_raeumlich}) hängt nicht von den Systemparametern ab und ist trivialerweise für alle Systeme gleich.
 \end{proof}
 
-Dieses Ergebnis ist von grundlegender praktischer Bedeutung: Es besagt, dass ein \emph{einziges} Kalibrierungsschema fÃ¼r eine ganze Klasse physikalischer Systeme verwendet werden kann, ohne jedes System individuell zu kalibrieren -- eine wesentliche Vereinfachung fÃ¼r industrielle Zertifizierungsprozesse.
+Dieses Ergebnis ist von grundlegender praktischer Bedeutung: Es besagt, dass ein \emph{einziges} Kalibrierungsschema für eine ganze Klasse physikalischer Systeme verwendet werden kann, ohne jedes System individuell zu kalibrieren -- eine wesentliche Vereinfachung für industrielle Zertifizierungsprozesse.
 
 \subsubsection{Klasse 3: Robotersysteme mit bekannter Kinematik}
 
-Robotersysteme bilden eine besonders wichtige Anwendungsklasse. Ihre Kinematik ist durch die Denavit-Hartenberg-Parameter vollstÃ¤ndig beschrieben und damit bekannt. Die Jacobi-Matrix $J(q)$ des Roboters (nicht zu verwechseln mit der Jacobi-Matrix des Vektorfelds) liefert direkt eine Schranke fÃ¼r die Lipschitz-Konstante.
+Robotersysteme bilden eine besonders wichtige Anwendungsklasse. Ihre Kinematik ist durch die Denavit-Hartenberg-Parameter vollständig beschrieben und damit bekannt. Die Jacobi-Matrix $J(q)$ des Roboters (nicht zu verwechseln mit der Jacobi-Matrix des Vektorfelds) liefert direkt eine Schranke für die Lipschitz-Konstante.
 
-\begin{satz}[Lipschitz-Schranke fÃ¼r Roboterkinematik]
-FÃ¼r einen Roboter mit $m$ Gelenken, Jacobi-Matrix $J(q)$ und maximalem Gelenkwinkel $q_{\max}$ gilt:
+\begin{satz}[Lipschitz-Schranke für Roboterkinematik]
+Für einen Roboter mit $m$ Gelenken, Jacobi-Matrix $J(q)$ und maximalem Gelenkwinkel $q_{\max}$ gilt:
 \begin{align}
   L \leq \|J(q)\|_2 \cdot \|\dot{q}_{\max}\|
 \end{align}
@@ -2237,13 +2237,13 @@ wobei $\|\dot{q}_{\max}\|$ die maximale Gelenkwinkelgeschwindigkeit ist.
 \end{satz}
 
 \begin{proof}
-Die Endeffektorgeschwindigkeit ist $\dot{x} = J(q)\dot{q}$. Die Lipschitz-Konstante des Vektorfelds $f(q_{\mathit{mode}}, x) = J(q)\dot{q}$ bezÃ¼glich $x$ ergibt sich aus der Operator-Norm der Jacobi-Matrix, die die maximale Streckung von Tangentenvektoren beschreibt. Da $\|\dot{q}\| \leq \|\dot{q}_{\max}\|$, folgt $L \leq \|J\|_2 \cdot \|\dot{q}_{\max}\|$.
+Die Endeffektorgeschwindigkeit ist $\dot{x} = J(q)\dot{q}$. Die Lipschitz-Konstante des Vektorfelds $f(q_{\mathit{mode}}, x) = J(q)\dot{q}$ bezüglich $x$ ergibt sich aus der Operator-Norm der Jacobi-Matrix, die die maximale Streckung von Tangentenvektoren beschreibt. Da $\|\dot{q}\| \leq \|\dot{q}_{\max}\|$, folgt $L \leq \|J\|_2 \cdot \|\dot{q}_{\max}\|$.
 \end{proof}
 
-FÃ¼r einen konkreten Industrie-Roboterarm (z.\,B.\ KUKA KR 10 R1100) mit bekannten Kinematikparametern und gegebenen Gelenkwinkelgrenzen lÃ¤sst sich damit $L_{\max}$ analytisch bestimmen -- und das $\varepsilon$-kalibrierte Schema nach Theorem~\ref{thm:gleichmaessig_kalibrierbar} kann vor dem Deployment berechnet werden.
+Für einen konkreten Industrie-Roboterarm (z.\,B.\ KUKA KR 10 R1100) mit bekannten Kinematikparametern und gegebenen Gelenkwinkelgrenzen lässt sich damit $L_{\max}$ analytisch bestimmen -- und das $\varepsilon$-kalibrierte Schema nach Theorem~\ref{thm:gleichmaessig_kalibrierbar} kann vor dem Deployment berechnet werden.
 
 \begin{beispiel}[Kalibrierung eines KUKA-Roboterarms]
-FÃ¼r einen 6-Achs-Roboter mit $L_{\max} = 12{,}5\,\text{rad/s}$,
+Für einen 6-Achs-Roboter mit $L_{\max} = 12{,}5\,\text{rad/s}$,
 $M_{\max} = 80\,\text{rad/s}^2$, $T = 5\,\text{s}$, $n=6$
 und $\varepsilon = 0{,}01\,\text{rad}$ ergibt sich:
 \begin{align}
@@ -2253,22 +2253,22 @@ und $\varepsilon = 0{,}01\,\text{rad}$ ergibt sich:
 Die sehr kleine Schrittweite~$\Delta t^*$ zeigt, dass die Matrixexponential-Methode (Klasse~1) die praktikablere Wahl ist, sofern die Kinematik lokal linearisiert werden kann.
 \end{beispiel}
 
-\subsection{Soundness der Abstraktion: Formale Ãœberabstraktion}
+\subsection{Soundness der Abstraktion: Formale Überabstraktion}
 
-Bisher haben wir Fehlerschranken fÃ¼r \emph{korrekte} Approximationen untersucht. FÃ¼r die formale Verifikation ist jedoch eine stÃ¤rkere Eigenschaft wÃ¼nschenswert: \emph{Soundness}, d.\,h., dass kein Safety-Fehler des diskreten Modells Ã¼bersehen wird, auch wenn das Modell mehr Verhalten erlaubt als das reale System.
+Bisher haben wir Fehlerschranken für \emph{korrekte} Approximationen untersucht. Für die formale Verifikation ist jedoch eine stärkere Eigenschaft wünschenswert: \emph{Soundness}, d.\,h., dass kein Safety-Fehler des diskreten Modells übersehen wird, auch wenn das Modell mehr Verhalten erlaubt als das reale System.
 
 \begin{definition}[Sound Abstraktion]
-Eine diskrete Kripke-Struktur $M$ heiÃŸt \emph{sound} bezÃ¼glich des hybriden Automaten $H$, wenn fÃ¼r jede Trajektorie $\xi$ von $H$ ein entsprechender Pfad $\pi$ in $M$ existiert, der dieselben Labelbedingungen erfÃ¼llt:
+Eine diskrete Kripke-Struktur $M$ heißt \emph{sound} bezüglich des hybriden Automaten $H$, wenn für jede Trajektorie $\xi$ von $H$ ein entsprechender Pfad $\pi$ in $M$ existiert, der dieselben Labelbedingungen erfüllt:
 \begin{align}
   \forall \xi \in \mathit{Traj}(H),\; \exists\, \pi \in \mathit{Paths}(M)\colon L_H(\xi) \subseteq L_M(\pi).
 \end{align}
 \end{definition}
 
-Eine sound Abstraktion kann niemals Safety-Eigenschaften fÃ¤lschlicherweise beweisen: Wenn $M \models \mathbf{AG}\neg\mathit{unsafe}$, dann gilt auch $H \models \mathbf{AG}\neg\mathit{unsafe}$.
+Eine sound Abstraktion kann niemals Safety-Eigenschaften fälschlicherweise beweisen: Wenn $M \models \mathbf{AG}\neg\mathit{unsafe}$, dann gilt auch $H \models \mathbf{AG}\neg\mathit{unsafe}$.
 
-\begin{theorem}[Ãœberabstraktion durch $\varepsilon$-Erweiterung]
+\begin{theorem}[Überabstraktion durch $\varepsilon$-Erweiterung]
 \label{thm:soundness}
-Sei $M_\varepsilon$ die diskrete Kripke-Struktur, die durch $\varepsilon$-kalibrierte Diskretisierung von $H$ entsteht, wobei die Transitionsrelation um alle Zellen erweitert wird, die innerhalb des Fehlerradius $\varepsilon$ einer tatsÃ¤chlichen Folgezelle liegen:
+Sei $M_\varepsilon$ die diskrete Kripke-Struktur, die durch $\varepsilon$-kalibrierte Diskretisierung von $H$ entsteht, wobei die Transitionsrelation um alle Zellen erweitert wird, die innerhalb des Fehlerradius $\varepsilon$ einer tatsächlichen Folgezelle liegen:
 \begin{align}
   R_\varepsilon(C, C') \iff \exists\, x \in C,\; x' \in C'\colon \|x' - \phi_{\Delta t}(x)\| \leq \varepsilon
 \end{align}
@@ -2276,28 +2276,28 @@ wobei $\phi_{\Delta t}$ der exakte Fluss des Systems nach Zeit $\Delta t$ ist. D
 \end{theorem}
 
 \begin{proof}
-Sei $\xi = (q_0, x_0), (q_1, x_1), \ldots$ eine beliebige Trajektorie von $H$. Nach Definition der $\varepsilon$-Erweiterung gilt fÃ¼r jeden Ãœbergang $(x_k, x_{k+1})$ der Trajektorie: Da $x_{k+1} = \phi_{\Delta t}(x_k)$ (exakter Fluss), existiert die Zelle $C_{k+1}$ mit $x_{k+1} \in C_{k+1}$, und nach der $\varepsilon$-Erweiterung gilt $R_\varepsilon(C_k, C_{k+1})$ fÃ¼r die entsprechenden Zellen. Also hat jede Trajektorie von $H$ einen korrespondierenden Pfad in $M_\varepsilon$.
+Sei $\xi = (q_0, x_0), (q_1, x_1), \ldots$ eine beliebige Trajektorie von $H$. Nach Definition der $\varepsilon$-Erweiterung gilt für jeden Übergang $(x_k, x_{k+1})$ der Trajektorie: Da $x_{k+1} = \phi_{\Delta t}(x_k)$ (exakter Fluss), existiert die Zelle $C_{k+1}$ mit $x_{k+1} \in C_{k+1}$, und nach der $\varepsilon$-Erweiterung gilt $R_\varepsilon(C_k, C_{k+1})$ für die entsprechenden Zellen. Also hat jede Trajektorie von $H$ einen korrespondierenden Pfad in $M_\varepsilon$.
 \end{proof}
 
-Die $\varepsilon$-Erweiterung ist die entscheidende technische Idee: Das diskrete Modell erlaubt \emph{mehr} ÃœbergÃ¤nge als das reale System (Ãœberabstraktion), vergisst aber keinen Ãœbergang des realen Systems (Soundness). Safety-Beweise im diskreten Modell sind damit direkt Ã¼bertragbar.
+Die $\varepsilon$-Erweiterung ist die entscheidende technische Idee: Das diskrete Modell erlaubt \emph{mehr} Übergänge als das reale System (Überabstraktion), vergisst aber keinen Übergang des realen Systems (Soundness). Safety-Beweise im diskreten Modell sind damit direkt übertragbar.
 
-\subsection{VollstÃ¤ndige Fehlervermeidung}
+\subsection{Vollständige Fehlervermeidung}
 
-Die bisher entwickelten Methoden minimieren den Fehler, eliminieren ihn aber nur im Grenzfall $\delta, \Delta t \to 0$. Wir untersuchen nun, unter welchen Bedingungen eine vollstÃ¤ndige Fehlervermeidung im endlichen Modell mÃ¶glich ist.
+Die bisher entwickelten Methoden minimieren den Fehler, eliminieren ihn aber nur im Grenzfall $\delta, \Delta t \to 0$. Wir untersuchen nun, unter welchen Bedingungen eine vollständige Fehlervermeidung im endlichen Modell möglich ist.
 
-\begin{theorem}[Notwendige Bedingung fÃ¼r fehlerfreie Diskretisierung]
+\begin{theorem}[Notwendige Bedingung für fehlerfreie Diskretisierung]
 \label{thm:notwendig}
-Eine vollstÃ¤ndig fehlerfreie endliche Diskretisierung (mit $\epsilon_{\mathit{gesamt}} = 0$ und endlichem $N(\delta)$) ist genau dann mÃ¶glich, wenn das hybride System $H$ in jedem Modus eine \emph{lineare} Dynamik besitzt und die Guard-Mengen und Invarianten durch Hyperebenen beschrieben werden, die mit dem Diskretisierungsgitter kompatibel sind.
+Eine vollständig fehlerfreie endliche Diskretisierung (mit $\epsilon_{\mathit{gesamt}} = 0$ und endlichem $N(\delta)$) ist genau dann möglich, wenn das hybride System $H$ in jedem Modus eine \emph{lineare} Dynamik besitzt und die Guard-Mengen und Invarianten durch Hyperebenen beschrieben werden, die mit dem Diskretisierungsgitter kompatibel sind.
 \end{theorem}
 
 \begin{proof}
-\textbf{Hinreichende Richtung:} FÃ¼r lineare Dynamik wird die Matrixexponential-LÃ¶sung als Ãœbergangsfunktion genutzt (Theorem~\ref{thm:fehlerfrei_linear}), was den dynamischen Fehler eliminiert. Mit dem Gitter kompatible Hyperebenen-Guards erzeugen keinen Schnittfehler. Alle relevanten Grenzpunkte liegen exakt auf dem Gitter, daher ist $\epsilon_{\mathit{gesamt}} = 0$.
+\textbf{Hinreichende Richtung:} Für lineare Dynamik wird die Matrixexponential-Lösung als Übergangsfunktion genutzt (Theorem~\ref{thm:fehlerfrei_linear}), was den dynamischen Fehler eliminiert. Mit dem Gitter kompatible Hyperebenen-Guards erzeugen keinen Schnittfehler. Alle relevanten Grenzpunkte liegen exakt auf dem Gitter, daher ist $\epsilon_{\mathit{gesamt}} = 0$.
 
-\textbf{Notwendige Richtung:} Ist die Dynamik nichtlinear, so kann die LÃ¶sung nicht in geschlossener Form dargestellt werden, und jede endliche Approximation akkumuliert einen positiven lokalen Abbruchfehler. Fallen Guard-Grenzen nicht mit dem Gitter zusammen, entstehen Zellen, die teils im Guard, teils auÃŸerhalb liegen; die Klassifikation solcher Randzellen erzwingt einen positiven Klassifikationsfehler.
+\textbf{Notwendige Richtung:} Ist die Dynamik nichtlinear, so kann die Lösung nicht in geschlossener Form dargestellt werden, und jede endliche Approximation akkumuliert einen positiven lokalen Abbruchfehler. Fallen Guard-Grenzen nicht mit dem Gitter zusammen, entstehen Zellen, die teils im Guard, teils außerhalb liegen; die Klassifikation solcher Randzellen erzwingt einen positiven Klassifikationsfehler.
 \end{proof}
 
 \begin{remark}
-Theorem~\ref{thm:notwendig} klÃ¤rt, warum vollstÃ¤ndige Fehlervermeidung in der Praxis selten erreichbar ist: Die meisten realen Systeme sind nichtlinear. Es identifiziert jedoch prÃ¤zise die Klasse der Systeme -- lineare Dynamik mit kompatiblen Guards --, fÃ¼r die sie erreichbar ist. Dies umfasst beispielsweise viele Regelkreise in der Luft- und Raumfahrt (linearisierte Flugdynamik), elektrische Antriebe (lineare Motormodelle) und Teilbereiche der Robotik (linearisierte Kinematik in ArbeitspunktnÃ¤he).
+Theorem~\ref{thm:notwendig} klärt, warum vollständige Fehlervermeidung in der Praxis selten erreichbar ist: Die meisten realen Systeme sind nichtlinear. Es identifiziert jedoch präzise die Klasse der Systeme -- lineare Dynamik mit kompatiblen Guards --, für die sie erreichbar ist. Dies umfasst beispielsweise viele Regelkreise in der Luft- und Raumfahrt (linearisierte Flugdynamik), elektrische Antriebe (lineare Motormodelle) und Teilbereiche der Robotik (linearisierte Kinematik in Arbeitspunktnähe).
 \end{remark}
 
 \subsection{Anwendung auf konkrete Systeme}
@@ -2308,15 +2308,15 @@ Der TurtleBot3 ist ein verbreiteter mobiler Roboter mit Differentialantrieb. Sei
 \begin{align}
   \dot{x} = v\cos\theta, \quad \dot{y} = v\sin\theta, \quad \dot{\theta} = \omega,
 \end{align}
-wobei $(x, y, \theta)$ Position und Orientierung sind und $(v, \omega)$ die Steuereingaben. Das System ist nichtlinear (wegen $\cos\theta$ und $\sin\theta$). Allerdings ist die NichtlinearitÃ¤t beschrÃ¤nkt: FÃ¼r $\theta \in [-\pi, \pi]$ gilt $|\cos\theta| \leq 1$ und $|\sin\theta| \leq 1$, was eine globale Lipschitz-Konstante von $L = v_{\max}$ liefert.
+wobei $(x, y, \theta)$ Position und Orientierung sind und $(v, \omega)$ die Steuereingaben. Das System ist nichtlinear (wegen $\cos\theta$ und $\sin\theta$). Allerdings ist die Nichtlinearität beschränkt: Für $\theta \in [-\pi, \pi]$ gilt $|\cos\theta| \leq 1$ und $|\sin\theta| \leq 1$, was eine globale Lipschitz-Konstante von $L = v_{\max}$ liefert.
 
-Mit den typischen Parameterwerten $v_{\max} = 0{,}5\,\text{m/s}$, $\omega_{\max} = 2{,}84\,\text{rad/s}$, $n = 3$ ergibt das $\varepsilon$-kalibrierte Schema fÃ¼r $\varepsilon = 0{,}05\,\text{m}$ und $T = 30\,\text{s}$:
+Mit den typischen Parameterwerten $v_{\max} = 0{,}5\,\text{m/s}$, $\omega_{\max} = 2{,}84\,\text{rad/s}$, $n = 3$ ergibt das $\varepsilon$-kalibrierte Schema für $\varepsilon = 0{,}05\,\text{m}$ und $T = 30\,\text{s}$:
 \begin{align}
   \delta^* &= \frac{0{,}05}{\sqrt{3}} \approx 0{,}029\,\text{m}, \\
   \Delta t^* &= \frac{0{,}5 \cdot 0{,}05}{M_{\max}(e^{0{,}5 \cdot 30}-1)} \approx \frac{0{,}025}{M_{\max} \cdot e^{15}}.
 \end{align}
 
-FÃ¼r den TurtleBot3 ergibt sich damit ein Gitter der AuflÃ¶sung ca. 3\,cm, was praktisch handhabbar ist. Die Verifikation der Kollisionsfreiheit $\mathbf{AG}(d_{\mathit{obstacle}} > d_{\mathit{safe}})$ kann mit dem Subgraph Algorithmus in $O(|S| \cdot n^3)$ durchgefÃ¼hrt werden, wobei $|S|$ die Anzahl der Gitterzellen im verifizierten Bereich ist.
+Für den TurtleBot3 ergibt sich damit ein Gitter der Auflösung ca. 3\,cm, was praktisch handhabbar ist. Die Verifikation der Kollisionsfreiheit $\mathbf{AG}(d_{\mathit{obstacle}} > d_{\mathit{safe}})$ kann mit dem Subgraph Algorithmus in $O(|S| \cdot n^3)$ durchgeführt werden, wobei $|S|$ die Anzahl der Gitterzellen im verifizierten Bereich ist.
 
 \subsubsection{Autonomes Fahrzeug: Einspurmodell}
 
@@ -2326,48 +2326,48 @@ Das kinematische Einspurmodell (Fahrradmodell) eines autonomen Fahrzeugs lautet:
   \dot{y} &= v\sin(\theta + \beta), \\
   \dot{\theta} &= \frac{v\cos\beta}{l_r}\tan\delta_f,
 \end{align}
-wobei $\beta = \arctan\!\bigl(\frac{l_r}{l_f + l_r}\tan\delta_f\bigr)$ der Schwimmwinkel, $l_f, l_r$ die AbstÃ¤nde von Vorder- und Hinterachse zum Schwerpunkt und $\delta_f$ der Lenkwinkel sind.
+wobei $\beta = \arctan\!\bigl(\frac{l_r}{l_f + l_r}\tan\delta_f\bigr)$ der Schwimmwinkel, $l_f, l_r$ die Abstände von Vorder- und Hinterachse zum Schwerpunkt und $\delta_f$ der Lenkwinkel sind.
 
-Die NichtlinearitÃ¤t ist stÃ¤rker als beim TurtleBot3, aber die Lipschitz-Konstante bleibt beschrÃ¤nkt, da alle trigonometrischen Funktionen auf $[-1, 1]$ beschrÃ¤nkt sind. FÃ¼r $v_{\max} = 30\,\text{km/h} \approx 8{,}3\,\text{m/s}$ und $n = 4$ (Position, Kurs, Geschwindigkeit) ergibt das Kalibrierungsschema fÃ¼r $\varepsilon = 0{,}1\,\text{m}$ und $T = 10\,\text{s}$:
+Die Nichtlinearität ist stärker als beim TurtleBot3, aber die Lipschitz-Konstante bleibt beschränkt, da alle trigonometrischen Funktionen auf $[-1, 1]$ beschränkt sind. Für $v_{\max} = 30\,\text{km/h} \approx 8{,}3\,\text{m/s}$ und $n = 4$ (Position, Kurs, Geschwindigkeit) ergibt das Kalibrierungsschema für $\varepsilon = 0{,}1\,\text{m}$ und $T = 10\,\text{s}$:
 \begin{align}
   \delta^* = \frac{0{,}1}{\sqrt{4}} = 0{,}05\,\text{m}.
 \end{align}
-Dieser Wert von 5\,cm rÃ¤umlicher AuflÃ¶sung ist mit moderner Sensorik (RTK-GNSS, LiDAR) gut erreichbar und erlaubt eine praxistaugliche Verifikation.
+Dieser Wert von 5\,cm räumlicher Auflösung ist mit moderner Sensorik (RTK-GNSS, LiDAR) gut erreichbar und erlaubt eine praxistaugliche Verifikation.
 
 \subsubsection{Industrieroboter: KUKA KR 10}
 
-FÃ¼r den KUKA KR 10 R1100-Roboter mit 6 Freiheitsgraden wurde gezeigt (Beispiel~11.1), dass die Euler-Diskretisierung eine extrem kleine Schrittweite erfordert. Stattdessen bietet sich die Klasse-1-Methode (Matrixexponential) an: Die Kinematik kann in ArbeitspunktnÃ¤he mit der Jacobi-Matrix linearisiert werden:
+Für den KUKA KR 10 R1100-Roboter mit 6 Freiheitsgraden wurde gezeigt (Beispiel~11.1), dass die Euler-Diskretisierung eine extrem kleine Schrittweite erfordert. Stattdessen bietet sich die Klasse-1-Methode (Matrixexponential) an: Die Kinematik kann in Arbeitspunktnähe mit der Jacobi-Matrix linearisiert werden:
 \begin{align}
   \Delta\dot{x}_e \approx J(q_0)\,\Delta\dot{q},
 \end{align}
-wobei $q_0$ der aktuelle Gelenkwinkel-Arbeitspunkt ist. In dieser linearisierten Darstellung ist der dynamische Fehler exakt null (Theorem~\ref{thm:fehlerfrei_linear}), und nur der rÃ¤umliche Fehler $\delta^* = \varepsilon/\sqrt{6}$ verbleibt. Die Linearisierung ist fÃ¼r kleine Bewegungen um den Arbeitspunkt herum -- typisch fÃ¼r Montageprozesse -- eine ausgezeichnete NÃ¤herung.
+wobei $q_0$ der aktuelle Gelenkwinkel-Arbeitspunkt ist. In dieser linearisierten Darstellung ist der dynamische Fehler exakt null (Theorem~\ref{thm:fehlerfrei_linear}), und nur der räumliche Fehler $\delta^* = \varepsilon/\sqrt{6}$ verbleibt. Die Linearisierung ist für kleine Bewegungen um den Arbeitspunkt herum -- typisch für Montageprozesse -- eine ausgezeichnete Näherung.
 
 \subsubsection{Drohnen-Schwarm: Universelle Kalibrierung}
 
-FÃ¼r einen Drohnen-Schwarm mit $k$ identischen Quadrocoptern stellt sich die Frage, ob ein gemeinsames Kalibrierungsschema fÃ¼r alle Drohnen existiert. Nach Theorem~\ref{thm:gleichmaessig_kalibrierbar} ist dies genau dann mÃ¶glich, wenn gemeinsame Schranken $L_{\max}$ und $M_{\max}$ existieren -- was fÃ¼r baugleiche Drohnen trivialerweise der Fall ist, da alle Drohnen dieselbe Dynamik besitzen. Das Schema $(\delta^*, \Delta t^*)$ kann damit einmal fÃ¼r den Drohnentyp berechnet und auf alle $k$ Drohnen des Schwarms angewendet werden, ohne die Kalibrierung $k$-fach durchzufÃ¼hren.
+Für einen Drohnen-Schwarm mit $k$ identischen Quadrocoptern stellt sich die Frage, ob ein gemeinsames Kalibrierungsschema für alle Drohnen existiert. Nach Theorem~\ref{thm:gleichmaessig_kalibrierbar} ist dies genau dann möglich, wenn gemeinsame Schranken $L_{\max}$ und $M_{\max}$ existieren -- was für baugleiche Drohnen trivialerweise der Fall ist, da alle Drohnen dieselbe Dynamik besitzen. Das Schema $(\delta^*, \Delta t^*)$ kann damit einmal für den Drohnentyp berechnet und auf alle $k$ Drohnen des Schwarms angewendet werden, ohne die Kalibrierung $k$-fach durchzuführen.
 
 \subsection{Zusammenfassung der Ergebnisse}
 
-Dieses Kapitel hat eine systematische Theorie der Diskretisierung hybrider Systeme fÃ¼r die formale Verifikation entwickelt. Die zentralen Ergebnisse lassen sich wie folgt zusammenfassen:
+Dieses Kapitel hat eine systematische Theorie der Diskretisierung hybrider Systeme für die formale Verifikation entwickelt. Die zentralen Ergebnisse lassen sich wie folgt zusammenfassen:
 
-\textbf{Fehlercharakterisierung.} Der Gesamtabstraktionsfehler setzt sich aus einem rÃ¤umlichen Anteil $\frac{\sqrt{n}\delta}{2}$ und einem dynamischen Anteil $\frac{M\Delta t}{2L}(e^{LT}-1)$ zusammen (Theorem~\ref{thm:gesamtfehler}). Beide Anteile sind formal begrenzt und kÃ¶nnen durch Wahl der Parameter $\delta$ und $\Delta t$ kontrolliert werden.
+\textbf{Fehlercharakterisierung.} Der Gesamtabstraktionsfehler setzt sich aus einem räumlichen Anteil $\frac{\sqrt{n}\delta}{2}$ und einem dynamischen Anteil $\frac{M\Delta t}{2L}(e^{LT}-1)$ zusammen (Theorem~\ref{thm:gesamtfehler}). Beide Anteile sind formal begrenzt und können durch Wahl der Parameter $\delta$ und $\Delta t$ kontrolliert werden.
 
-\textbf{Universelle Kalibrierbarkeit.} FÃ¼r jede Klasse von Systemen mit gemeinsamen Schranken $L_{\max}$ und $M_{\max}$ existiert ein einziges $\varepsilon$-kalibriertes Schema, das fÃ¼r alle Systeme der Klasse gleichzeitig gilt (Theorem~\ref{thm:gleichmaessig_kalibrierbar}). Dies ermÃ¶glicht klassenweite Zertifizierung ohne individuelle Systemanalyse.
+\textbf{Universelle Kalibrierbarkeit.} Für jede Klasse von Systemen mit gemeinsamen Schranken $L_{\max}$ und $M_{\max}$ existiert ein einziges $\varepsilon$-kalibriertes Schema, das für alle Systeme der Klasse gleichzeitig gilt (Theorem~\ref{thm:gleichmaessig_kalibrierbar}). Dies ermöglicht klassenweite Zertifizierung ohne individuelle Systemanalyse.
 
-\textbf{Sound Abstraktion.} Die $\varepsilon$-Erweiterung der Transitionsrelation gewÃ¤hrleistet Soundness: Safety-Beweise im diskreten Modell Ã¼bertragen sich auf das reale hybride System (Theorem~\ref{thm:soundness}).
+\textbf{Sound Abstraktion.} Die $\varepsilon$-Erweiterung der Transitionsrelation gewährleistet Soundness: Safety-Beweise im diskreten Modell übertragen sich auf das reale hybride System (Theorem~\ref{thm:soundness}).
 
-\textbf{Grenzen der Fehlervermeidung.} VollstÃ¤ndige Fehlervermeidung bei endlichem Zustandsraum ist genau fÃ¼r Systeme mit linearer Dynamik und kompatiblen Guards mÃ¶glich (Theorem~\ref{thm:notwendig}). FÃ¼r nichtlineare Systeme verbleibt stets ein positiver Restfehler, der jedoch durch Kalibrierung beliebig klein gemacht werden kann.
+\textbf{Grenzen der Fehlervermeidung.} Vollständige Fehlervermeidung bei endlichem Zustandsraum ist genau für Systeme mit linearer Dynamik und kompatiblen Guards möglich (Theorem~\ref{thm:notwendig}). Für nichtlineare Systeme verbleibt stets ein positiver Restfehler, der jedoch durch Kalibrierung beliebig klein gemacht werden kann.
 
-\textbf{Praktische Anwendbarkeit.} FÃ¼r alle untersuchten konkreten Systeme -- TurtleBot3, autonomes Fahrzeug, KUKA-Roboter, Drohnen-Schwarm -- wurde das $\varepsilon$-kalibrierte Schema explizit berechnet und seine Praxistauglichkeit demonstriert. Die AuflÃ¶sungen liegen im Bereich von 3--50\,mm, was mit moderner Sensorik und Steuerungshardware erreichbar ist.
+\textbf{Praktische Anwendbarkeit.} Für alle untersuchten konkreten Systeme -- TurtleBot3, autonomes Fahrzeug, KUKA-Roboter, Drohnen-Schwarm -- wurde das $\varepsilon$-kalibrierte Schema explizit berechnet und seine Praxistauglichkeit demonstriert. Die Auflösungen liegen im Bereich von 3--50\,mm, was mit moderner Sensorik und Steuerungshardware erreichbar ist.
 
 
 \section{Erweiterte Themen}
 
-Die in den vorangegangenen Kapiteln entwickelten Grundlagen -- temporale Logiken, PDDL Planning, der Subgraph Algorithmus und hybride Verifikation -- bilden das Fundament fÃ¼r eine Reihe weiterfÃ¼hrender Themen, die in der Forschung aktiv bearbeitet werden und die AusdrucksstÃ¤rke sowie Anwendbarkeit der vorgestellten Verfahren erheblich erweitern. Dieses Kapitel behandelt drei solcher Erweiterungen ausfÃ¼hrlich: temporale PDDL (PDDL 2.1) fÃ¼r zeitkritische Planungsprobleme, probabilistisches Planning fÃ¼r unsichere Umgebungen sowie hierarchische Planung (HTN) fÃ¼r strukturierte Aufgabendekompositionen. FÃ¼r jede Erweiterung wird die formale Semantik vollstÃ¤ndig entwickelt, die Verbindung zum Subgraph Algorithmus und temporalen Model Checking hergestellt und an konkreten Beispielen illustriert.
+Die in den vorangegangenen Kapiteln entwickelten Grundlagen -- temporale Logiken, PDDL Planning, der Subgraph Algorithmus und hybride Verifikation -- bilden das Fundament für eine Reihe weiterführender Themen, die in der Forschung aktiv bearbeitet werden und die Ausdrucksstärke sowie Anwendbarkeit der vorgestellten Verfahren erheblich erweitern. Dieses Kapitel behandelt drei solcher Erweiterungen ausführlich: temporale PDDL (PDDL 2.1) für zeitkritische Planungsprobleme, probabilistisches Planning für unsichere Umgebungen sowie hierarchische Planung (HTN) für strukturierte Aufgabendekompositionen. Für jede Erweiterung wird die formale Semantik vollständig entwickelt, die Verbindung zum Subgraph Algorithmus und temporalen Model Checking hergestellt und an konkreten Beispielen illustriert.
 
 \subsection{Temporale PDDL (PDDL 2.1)}
 
-Klassisches PDDL behandelt Aktionen als instantan: Eine Aktion wird angewendet, der Zustand Ã¤ndert sich, und die nÃ¤chste Aktion beginnt. In der Praxis haben Aktionen Dauern -- ein Roboter benÃ¶tigt Zeit zum Fahren, ein Kran Zeit zum Heben, ein Prozess Zeit zum AbkÃ¼hlen. PDDL 2.1 \cite{fox2003} erweitert PDDL um \emph{durative actions}, die eine explizite zeitliche Ausdehnung besitzen und deren Vor- und Nachbedingungen an verschiedenen Zeitpunkten der AktionsausfÃ¼hrung geprÃ¼ft bzw.\ gesetzt werden.
+Klassisches PDDL behandelt Aktionen als instantan: Eine Aktion wird angewendet, der Zustand ändert sich, und die nächste Aktion beginnt. In der Praxis haben Aktionen Dauern -- ein Roboter benötigt Zeit zum Fahren, ein Kran Zeit zum Heben, ein Prozess Zeit zum Abkühlen. PDDL 2.1 \cite{fox2003} erweitert PDDL um \emph{durative actions}, die eine explizite zeitliche Ausdehnung besitzen und deren Vor- und Nachbedingungen an verschiedenen Zeitpunkten der Aktionsausführung geprüft bzw.\ gesetzt werden.
 
 \subsubsection{Formale Semantik durativer Aktionen}
 
@@ -2377,11 +2377,11 @@ Eine durative Aktion ist ein 4-Tupel
 mit folgenden Komponenten:
 \begin{itemize}
   \item[-] $\mathit{par}$: Parameterliste (wie in klassischem PDDL)
-  \item[-] $\mathit{dur}$: Dauerconstraint, typischerweise $= d$ fÃ¼r eine feste Dauer $d \in \mathbb{R}_{>0}$
+  \item[-] $\mathit{dur}$: Dauerconstraint, typischerweise $= d$ für eine feste Dauer $d \in \mathbb{R}_{>0}$
   \item[-] $\mathit{cond}$: zeitlich qualifizierte Bedingung, zusammengesetzt aus
     \begin{itemize}
       \item $\mathbf{at\;start}(\varphi)$: $\varphi$ gilt zum Startzeitpunkt $t_s$
-      \item $\mathbf{over\;all}(\varphi)$: $\varphi$ gilt fÃ¼r alle $t \in [t_s, t_s + d]$
+      \item $\mathbf{over\;all}(\varphi)$: $\varphi$ gilt für alle $t \in [t_s, t_s + d]$
       \item $\mathbf{at\;end}(\varphi)$: $\varphi$ gilt zum Endzeitpunkt $t_s + d$
     \end{itemize}
   \item[-] $\mathit{eff}$: zeitlich qualifizierter Effekt, analog zu $\mathit{cond}$
@@ -2389,21 +2389,21 @@ mit folgenden Komponenten:
 \end{definition}
 
 \begin{definition}[Temporaler Plan]
-Ein temporaler Plan ist eine Menge von zeitgestempelten Aktionsinstanzen $\pi = \{(a_1, t_1), (a_2, t_2), \ldots, (a_n, t_n)\}$ mit $t_i \in \mathbb{R}_{\geq 0}$. Anders als im klassischen Plan kÃ¶nnen Aktionen Ã¼berlappen: Aktionen $a_i$ und $a_j$ Ã¼berlappen, wenn $[t_i, t_i + d_i] \cap [t_j, t_j + d_j] \neq \emptyset$.
+Ein temporaler Plan ist eine Menge von zeitgestempelten Aktionsinstanzen $\pi = \{(a_1, t_1), (a_2, t_2), \ldots, (a_n, t_n)\}$ mit $t_i \in \mathbb{R}_{\geq 0}$. Anders als im klassischen Plan können Aktionen überlappen: Aktionen $a_i$ und $a_j$ überlappen, wenn $[t_i, t_i + d_i] \cap [t_j, t_j + d_j] \neq \emptyset$.
 \end{definition}
 
-Die Semantik eines temporalen Plans wird durch einen zeitlichen Zustandsbeobachter definiert, der zu jedem Zeitpunkt $t$ den aktuellen Zustand $s(t)$ bestimmt. Dabei entstehen Konflikte, wenn zwei gleichzeitig aktive Aktionen auf dasselbe PrÃ¤dikat zugreifen:
+Die Semantik eines temporalen Plans wird durch einen zeitlichen Zustandsbeobachter definiert, der zu jedem Zeitpunkt $t$ den aktuellen Zustand $s(t)$ bestimmt. Dabei entstehen Konflikte, wenn zwei gleichzeitig aktive Aktionen auf dasselbe Prädikat zugreifen:
 
 \begin{definition}[Mutex-Konflikt zwischen durativen Aktionen]
-Zwei durative Aktionen $a_i$ und $a_j$ sind in einem temporalen Plan \emph{mutex}, wenn ihre AusfÃ¼hrungszeitfenster sich Ã¼berlappen und mindestens eine der folgenden Bedingungen gilt:
+Zwei durative Aktionen $a_i$ und $a_j$ sind in einem temporalen Plan \emph{mutex}, wenn ihre Ausführungszeitfenster sich überlappen und mindestens eine der folgenden Bedingungen gilt:
 \begin{enumerate}
-  \item $a_i$ lÃ¶scht ein PrÃ¤dikat, das $a_j$ als \texttt{over-all}-Bedingung benÃ¶tigt.
-  \item $a_i$ und $a_j$ setzen dasselbe PrÃ¤dikat auf verschiedene Werte.
-  \item $a_i$ benÃ¶tigt ein PrÃ¤dikat, das $a_j$ zu einem Zeitpunkt innerhalb der Ãœberlappung lÃ¶scht.
+  \item $a_i$ löscht ein Prädikat, das $a_j$ als \texttt{over-all}-Bedingung benötigt.
+  \item $a_i$ und $a_j$ setzen dasselbe Prädikat auf verschiedene Werte.
+  \item $a_i$ benötigt ein Prädikat, das $a_j$ zu einem Zeitpunkt innerhalb der Überlappung löscht.
 \end{enumerate}
 \end{definition}
 
-\subsubsection{PDDL 2.1 Beispiel: LogistikdomÃ¤ne mit Fahrtzeiten}
+\subsubsection{PDDL 2.1 Beispiel: Logistikdomäne mit Fahrtzeiten}
 
 \begin{lstlisting}[language=PDDL, caption=Durative Action in PDDL 2.1 -- Logistik mit Fahrtdauer]
 (:durative-action drive-truck
@@ -2419,11 +2419,11 @@ Zwei durative Aktionen $a_i$ und $a_j$ sind in einem temporalen Plan \emph{mutex
     (at end    (at ?truck ?to))))
 \end{lstlisting}
 
-Das SchlÃ¼sselwort \texttt{(travel-time ?from ?to)} bezeichnet eine numerische Funktion, die die Fahrtdauer zwischen zwei Orten aus einer Nachschlagetabelle liefert. Die Bedingung \texttt{(over all (road-open ?from ?to))} stellt sicher, dass die StraÃŸe wÃ¤hrend der gesamten Fahrt befahrbar bleibt -- ein Constraint, das in klassischem PDDL nicht ausdrÃ¼ckbar ist.
+Das Schlüsselwort \texttt{(travel-time ?from ?to)} bezeichnet eine numerische Funktion, die die Fahrtdauer zwischen zwei Orten aus einer Nachschlagetabelle liefert. Die Bedingung \texttt{(over all (road-open ?from ?to))} stellt sicher, dass die Straße während der gesamten Fahrt befahrbar bleibt -- ein Constraint, das in klassischem PDDL nicht ausdrückbar ist.
 
 \subsubsection{Temporale Verifikation mit CTL}
 
-Die temporale Verifikation von PDDL-2.1-PlÃ¤nen erfordert eine Erweiterung der Kripke-Struktur um eine Zeitdimension. Wir definieren eine \emph{zeiterweiterte Kripke-Struktur}:
+Die temporale Verifikation von PDDL-2.1-Plänen erfordert eine Erweiterung der Kripke-Struktur um eine Zeitdimension. Wir definieren eine \emph{zeiterweiterte Kripke-Struktur}:
 
 \begin{definition}[Zeiterweiterte Kripke-Struktur]
 Eine zeiterweiterte Kripke-Struktur ist ein Tupel $M_T = (S, T, R, L)$ mit:
@@ -2431,7 +2431,7 @@ Eine zeiterweiterte Kripke-Struktur ist ein Tupel $M_T = (S, T, R, L)$ mit:
   \item[-] $S$: Zustandsmenge (wie zuvor)
   \item[-] $T \subseteq \mathbb{R}_{\geq 0}$: diskretisierte Zeitpunktmenge
   \item[-] $R \subseteq (S \times T) \times (S \times T)$: zeitbehaftete Transitionsrelation
-  \item[-] $L: S \times T \to 2^{AP}$: zeitabhÃ¤ngige Labeling-Funktion
+  \item[-] $L: S \times T \to 2^{AP}$: zeitabhängige Labeling-Funktion
 \end{itemize}
 \end{definition}
 
@@ -2439,42 +2439,42 @@ Auf dieser Struktur lassen sich zeitkritische CTL-Eigenschaften spezifizieren, e
 \begin{align}
   \mathbf{AG}_{t \leq T_{\max}}(\mathit{goal\text{-}reachable}) \quad &\text{(Ziel innerhalb Zeitfenster erreichbar)} \\
   \mathbf{AG}(\mathit{deadline}(a_i) \to \mathbf{AF}_{\leq d_i} \mathit{complete}(a_i)) \\
-  &\quad\text{(jede Aktion schlieÃŸt in ihrer Dauer ab)}
+  &\quad\text{(jede Aktion schließt in ihrer Dauer ab)}
 \end{align}
 
-\subsubsection{Erweiterung des Subgraph Algorithmus fÃ¼r PDDL 2.1}
+\subsubsection{Erweiterung des Subgraph Algorithmus für PDDL 2.1}
 
-FÃ¼r zeiterweiterte ZustÃ¤nde wird die Signatur um eine Zeitkomponente ergÃ¤nzt. Die zeiterweiterte Signatur $\sigma_j^T$ eines Zustands $(s, t)$ lautet:
+Für zeiterweiterte Zustände wird die Signatur um eine Zeitkomponente ergänzt. Die zeiterweiterte Signatur $\sigma_j^T$ eines Zustands $(s, t)$ lautet:
 \begin{align}
   \sigma_j^T(s, t) = \sigma_j(s) + \lfloor t / \Delta t \rfloor \cdot 2^{2n}
 \end{align}
-wobei $\Delta t$ die ZeitauflÃ¶sung und $\sigma_j(s)$ die klassische Signatur ist. Diese Erweiterung bleibt eindeutig (da die Zeitkomponente in einem disjunkten Zahlenbereich liegt) und ermÃ¶glicht zeitkritisches Pattern-Matching in $O(n^3 \cdot |T|)$, also linear in der Anzahl der Zeitschritte.
+wobei $\Delta t$ die Zeitauflösung und $\sigma_j(s)$ die klassische Signatur ist. Diese Erweiterung bleibt eindeutig (da die Zeitkomponente in einem disjunkten Zahlenbereich liegt) und ermöglicht zeitkritisches Pattern-Matching in $O(n^3 \cdot |T|)$, also linear in der Anzahl der Zeitschritte.
 
 \begin{theorem}[Korrektheit zeiterweiterter Signaturen]
-Die zeiterweiterte Signatur $\sigma^T$ ist injektiv auf $(S \times T)$: Verschiedene zeitgestempelte ZustÃ¤nde erhalten verschiedene Signaturen.
+Die zeiterweiterte Signatur $\sigma^T$ ist injektiv auf $(S \times T)$: Verschiedene zeitgestempelte Zustände erhalten verschiedene Signaturen.
 \end{theorem}
 
 \begin{proof}
-Seien $(s_1, t_1) \neq (s_2, t_2)$. Fall 1: $s_1 \neq s_2$. Dann unterscheiden sich bereits die klassischen Anteile $\sigma_j(s_1) \neq \sigma_j(s_2)$ (nach Lemma 7.1), also $\sigma_j^T(s_1, t_1) \neq \sigma_j^T(s_2, t_2)$. Fall 2: $s_1 = s_2$, $t_1 \neq t_2$. Dann $\lfloor t_1/\Delta t\rfloor \neq \lfloor t_2/\Delta t\rfloor$ (fÃ¼r $|t_1 - t_2| \geq \Delta t$), und da der Zeitterm $\lfloor t/\Delta t\rfloor \cdot 2^{2n}$ in einem Bereich liegt, der disjunkt vom klassischen Signaturbereich $[0, n \cdot 2^n)$ ist, folgt die Eindeutigkeit.
+Seien $(s_1, t_1) \neq (s_2, t_2)$. Fall 1: $s_1 \neq s_2$. Dann unterscheiden sich bereits die klassischen Anteile $\sigma_j(s_1) \neq \sigma_j(s_2)$ (nach Lemma 7.1), also $\sigma_j^T(s_1, t_1) \neq \sigma_j^T(s_2, t_2)$. Fall 2: $s_1 = s_2$, $t_1 \neq t_2$. Dann $\lfloor t_1/\Delta t\rfloor \neq \lfloor t_2/\Delta t\rfloor$ (für $|t_1 - t_2| \geq \Delta t$), und da der Zeitterm $\lfloor t/\Delta t\rfloor \cdot 2^{2n}$ in einem Bereich liegt, der disjunkt vom klassischen Signaturbereich $[0, n \cdot 2^n)$ ist, folgt die Eindeutigkeit.
 \end{proof}
 
-\subsubsection{KomplexitÃ¤tsanalyse temporaler PlÃ¤ne}
+\subsubsection{Komplexitätsanalyse temporaler Pläne}
 
-\begin{theorem}[KomplexitÃ¤t temporaler Planvalidierung]
-Die Validierung eines temporalen Plans $\pi$ mit $n$ Aktionen und Zeitfenster $[0, T_{\max}]$ gegen eine Menge von $k$ CTL-Eigenschaften hat mit dem zeiterweiterten Subgraph Algorithmus KomplexitÃ¤t:
+\begin{theorem}[Komplexität temporaler Planvalidierung]
+Die Validierung eines temporalen Plans $\pi$ mit $n$ Aktionen und Zeitfenster $[0, T_{\max}]$ gegen eine Menge von $k$ CTL-Eigenschaften hat mit dem zeiterweiterten Subgraph Algorithmus Komplexität:
 \begin{align}
   O\!\left(n \cdot \left\lceil \frac{T_{\max}}{\Delta t} \right\rceil \cdot m^3 \cdot k\right)
 \end{align}
-wobei $m$ die GrÃ¶ÃŸe der grÃ¶ÃŸten Property-Pattern ist.
+wobei $m$ die Größe der größten Property-Pattern ist.
 \end{theorem}
 
 \begin{proof}
-FÃ¼r jeden der $n$ Planschritte und jeden der $\lceil T_{\max}/\Delta t \rceil$ Zeitpunkte wird ein zeitgestempelter Zustand erzeugt. FÃ¼r jede der $k$ Eigenschaften wird der zeiterweiterte Subgraph Algorithmus mit KomplexitÃ¤t $O(m^3)$ angewendet. Die GesamtkomplexitÃ¤t ergibt sich durch Multiplikation.
+Für jeden der $n$ Planschritte und jeden der $\lceil T_{\max}/\Delta t \rceil$ Zeitpunkte wird ein zeitgestempelter Zustand erzeugt. Für jede der $k$ Eigenschaften wird der zeiterweiterte Subgraph Algorithmus mit Komplexität $O(m^3)$ angewendet. Die Gesamtkomplexität ergibt sich durch Multiplikation.
 \end{proof}
 
 \subsection{Probabilistisches Planning}
 
-Klassisches PDDL setzt deterministische Aktionen voraus: Jede Aktion hat genau einen Effekt. In der RealitÃ¤t sind Aktionen jedoch hÃ¤ufig unsicher -- ein Greifarm kann einen Gegenstand verfehlen, ein Sensor kann fehlerhafte Messwerte liefern, ein Kommunikationskanal kann ausfallen. Probabilistisches Planning modelliert diese Unsicherheit explizit durch Wahrscheinlichkeitsverteilungen Ã¼ber Aktionseffekte.
+Klassisches PDDL setzt deterministische Aktionen voraus: Jede Aktion hat genau einen Effekt. In der Realität sind Aktionen jedoch häufig unsicher -- ein Greifarm kann einen Gegenstand verfehlen, ein Sensor kann fehlerhafte Messwerte liefern, ein Kommunikationskanal kann ausfallen. Probabilistisches Planning modelliert diese Unsicherheit explizit durch Wahrscheinlichkeitsverteilungen über Aktionseffekte.
 
 \subsubsection{Formale Grundlagen: Markov-Entscheidungsprozesse}
 
@@ -2483,7 +2483,7 @@ Ein MDP ist ein Tupel $\mathcal{M} = (S, A, P, R, \gamma)$ mit:
 \begin{itemize}
   \item[-] $S$: endliche Zustandsmenge
   \item[-] $A$: endliche Aktionsmenge
-  \item[-] $P: S \times A \times S \to [0,1]$: Ãœbergangswahrscheinlichkeit, wobei $\sum_{s'} P(s,a,s') = 1$
+  \item[-] $P: S \times A \times S \to [0,1]$: Übergangswahrscheinlichkeit, wobei $\sum_{s'} P(s,a,s') = 1$
   \item[-] $R: S \times A \to \mathbb{R}$: Belohnungsfunktion
   \item[-] $\gamma \in [0,1)$: Diskontierungsfaktor
 \end{itemize}
@@ -2494,7 +2494,7 @@ einen MDP; Komponenten entsprechen den PDDL-Konstrukten.
 
 \subsubsection{Probabilistisches PDDL}
 
-Das folgende Beispiel zeigt einen unzuverlÃ¤ssigen Greifarm, der einen Ball mit Wahrscheinlichkeit 0,9 erfolgreich aufnimmt:
+Das folgende Beispiel zeigt einen unzuverlässigen Greifarm, der einen Ball mit Wahrscheinlichkeit 0,9 erfolgreich aufnimmt:
 
 \begin{lstlisting}[language=PDDL, caption=Probabilistischer PDDL-Operator]
 (:action pick-unreliable
@@ -2509,11 +2509,11 @@ Das folgende Beispiel zeigt einen unzuverlÃ¤ssigen Greifarm, der einen Ball mi
     0.03 (free ?g)))
 \end{lstlisting}
 
-Mit Wahrscheinlichkeit 0,90 wird der Ball erfolgreich gegriffen, mit 0,07 wird er beim Greifversuch beschÃ¤digt (und bleibt im Raum), und mit 0,03 schlÃ¤gt der Greifversuch ohne BeschÃ¤digung fehl.
+Mit Wahrscheinlichkeit 0,90 wird der Ball erfolgreich gegriffen, mit 0,07 wird er beim Greifversuch beschädigt (und bleibt im Raum), und mit 0,03 schlägt der Greifversuch ohne Beschädigung fehl.
 
 \subsubsection{Probabilistic CTL (PCTL)}
 
-FÃ¼r die Verifikation probabilistischer Systeme wird CTL zur \emph{Probabilistic CTL} (PCTL) erweitert \cite{baier2008}:
+Für die Verifikation probabilistischer Systeme wird CTL zur \emph{Probabilistic CTL} (PCTL) erweitert \cite{baier2008}:
 
 \begin{definition}[PCTL-Syntax]
 PCTL-Formeln sind induktiv definiert durch:
@@ -2527,14 +2527,14 @@ wobei $\psi$ ein Pfadformeln-Operator ist:
 Dabei ist $\mathcal{P}_{\bowtie q}[\psi]$ mit $\bowtie\, \in \{<, \leq, >, \geq\}$ und $q \in [0,1]$ eine Wahrscheinlichkeitsaussage: ``Die Wahrscheinlichkeit, dass $\psi$ gilt, ist $\bowtie q$.''
 \end{definition}
 
-\begin{beispiel}[PCTL-Formeln fÃ¼r Gripper-DomÃ¤ne]
-FÃ¼r $p = 0{,}9$ sind folgende PCTL-Formeln relevant:
+\begin{beispiel}[PCTL-Formeln für Gripper-Domäne]
+Für $p = 0{,}9$ sind folgende PCTL-Formeln relevant:
 \begin{enumerate}
-  \item \textit{Mit Wahrscheinlichkeit $\geq 0{,}99$ werden alle BÃ¤lle schlieÃŸlich transportiert:}
+  \item \textit{Mit Wahrscheinlichkeit $\geq 0{,}99$ werden alle Bälle schließlich transportiert:}
   \begin{align}
     \mathcal{P}_{\geq 0{,}99}[\mathbf{F}(\mathit{all\text{-}delivered})]
   \end{align}
-  \item \textit{Mit Wahrscheinlichkeit $< 0{,}05$ wird ein Ball beschÃ¤digt:}
+  \item \textit{Mit Wahrscheinlichkeit $< 0{,}05$ wird ein Ball beschädigt:}
   \begin{align}
     \mathcal{P}_{< 0{,}05}[\mathbf{F}(\mathit{damaged}(b))]
   \end{align}
@@ -2545,17 +2545,17 @@ FÃ¼r $p = 0{,}9$ sind folgende PCTL-Formeln relevant:
 \end{enumerate}
 \end{beispiel}
 
-\subsubsection{Wertiteration fÃ¼r MDPs}
+\subsubsection{Wertiteration für MDPs}
 
-Die optimale Strategie (Policy) fÃ¼r einen MDP minimiert oder maximiert den erwarteten kumulierten Nutzen. Der klassische Algorithmus ist die \emph{Wertiteration}:
+Die optimale Strategie (Policy) für einen MDP minimiert oder maximiert den erwarteten kumulierten Nutzen. Der klassische Algorithmus ist die \emph{Wertiteration}:
 
 \begin{algorithm}[H]
-  \caption{Wertiteration fÃ¼r MDPs}
+  \caption{Wertiteration für MDPs}
   \begin{algorithmic}[1]
     \Eingabe MDP $\mathcal{M} = (S, A, P, R, \gamma)$, Konvergenzkriterium $\varepsilon$
     \Ausgabe Optimale Wertefunktion $V^*$, optimale Policy $\pi^*$
     \Prozedur{Wertiteration}{$\mathcal{M}, \varepsilon$}
-      \State $V_0(s) \gets 0$ fÃ¼r alle $s \in S$
+      \State $V_0(s) \gets 0$ für alle $s \in S$
       \State $k \gets 0$
       \Wiederhole
         \FuerAlle{$s \in S$}
@@ -2570,7 +2570,7 @@ Die optimale Strategie (Policy) fÃ¼r einen MDP minimiert oder maximiert den er
 \end{algorithm}
 
 \begin{theorem}[Konvergenz der Wertiteration]
-FÃ¼r einen endlichen MDP mit Diskontierungsfaktor $\gamma \in [0,1)$ konvergiert die Wertiteration gegen die eindeutige optimale Wertefunktion $V^*$. Die Konvergenzrate ist geometrisch mit Faktor $\gamma$: Nach $k$ Iterationen gilt
+Für einen endlichen MDP mit Diskontierungsfaktor $\gamma \in [0,1)$ konvergiert die Wertiteration gegen die eindeutige optimale Wertefunktion $V^*$. Die Konvergenzrate ist geometrisch mit Faktor $\gamma$: Nach $k$ Iterationen gilt
 \begin{align}
   \|V_k - V^*\|_\infty \leq \frac{\gamma^k}{1-\gamma} \|V_1 - V_0\|_\infty.
 \end{align}
@@ -2583,19 +2583,19 @@ Der Bellman-Operator $\mathcal{T}$ ist eine $\gamma$-Kontraktion bzgl.\ $\|\cdot
   &\leq \gamma \max_s \max_a \sum_{s'} P(s,a,s') |V(s') - W(s')| \notag \\
   &\leq \gamma \|V - W\|_\infty. \notag
 \end{align}
-Nach dem Banachschen Fixpunktsatz besitzt jede Kontraktion auf einem vollstÃ¤ndigen metrischen Raum genau einen Fixpunkt, und die Iterationsfolge $V_k = \mathcal{T}^k V_0$ konvergiert geometrisch gegen diesen. Die FehlerabschÃ¤tzung ergibt sich durch geometrische Summation.
+Nach dem Banachschen Fixpunktsatz besitzt jede Kontraktion auf einem vollständigen metrischen Raum genau einen Fixpunkt, und die Iterationsfolge $V_k = \mathcal{T}^k V_0$ konvergiert geometrisch gegen diesen. Die Fehlerabschätzung ergibt sich durch geometrische Summation.
 \end{proof}
 
 \subsubsection{Probabilistischer Subgraph Algorithmus}
 
-FÃ¼r probabilistische Systeme wird die Signatur um eine Wahrscheinlichkeitskomponente erweitert. Statt einer Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ verwendet man eine Wahrscheinlichkeitsmatrix $P \in [0,1]^{n \times n}$, wobei $P[i,j]$ die Ãœbergangswahrscheinlichkeit von Zustand $i$ nach $j$ angibt. Die probabilistische Signatur lautet:
+Für probabilistische Systeme wird die Signatur um eine Wahrscheinlichkeitskomponente erweitert. Statt einer Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ verwendet man eine Wahrscheinlichkeitsmatrix $P \in [0,1]^{n \times n}$, wobei $P[i,j]$ die Übergangswahrscheinlichkeit von Zustand $i$ nach $j$ angibt. Die probabilistische Signatur lautet:
 \begin{align}
   \sigma_j^P(s) = \sum_{i=0}^{n-1} \lfloor P[i,j] \cdot 2^b \rfloor \cdot 2^{ib} + j \cdot 2^{nb}
 \end{align}
-wobei $b$ die Anzahl der Bits fÃ¼r die Quantisierung der Wahrscheinlichkeit ist (typischerweise $b = 8$ fÃ¼r 256 Stufen). Das Matching verwendet dann eine tolerante Variante der LCS, die Wahrscheinlichkeitsdifferenzen bis zu einem Schwellwert $\tau$ akzeptiert.
+wobei $b$ die Anzahl der Bits für die Quantisierung der Wahrscheinlichkeit ist (typischerweise $b = 8$ für 256 Stufen). Das Matching verwendet dann eine tolerante Variante der LCS, die Wahrscheinlichkeitsdifferenzen bis zu einem Schwellwert $\tau$ akzeptiert.
 
 \begin{definition}[Tolerantes Wahrscheinlichkeits-Matching]
-Zwei probabilistische Signaturen $\sigma^P(s_1)$ und $\sigma^P(s_2)$ \emph{$\tau$-matchen}, wenn fÃ¼r alle Komponenten $j$ gilt:
+Zwei probabilistische Signaturen $\sigma^P(s_1)$ und $\sigma^P(s_2)$ \emph{$\tau$-matchen}, wenn für alle Komponenten $j$ gilt:
 \begin{align}
   |\sigma_j^P(s_1) - \sigma_j^P(s_2)| \leq \tau \cdot 2^{nb}.
 \end{align}
@@ -2603,7 +2603,7 @@ Zwei probabilistische Signaturen $\sigma^P(s_1)$ und $\sigma^P(s_2)$ \emph{$\tau
 
 \subsubsection{Anwendung: Verifikation des Gripper-Plans unter Unsicherheit}
 
-FÃ¼r den probabilistischen Gripper-Plan mit Greifwahrscheinlichkeit $p = 0{,}9$ und drei BÃ¤llen lÃ¤sst sich die Erfolgswahrscheinlichkeit fÃ¼r den vollstÃ¤ndigen Transport berechnen. Da jede Ãœbergabe zwei GreifvorgÃ¤nge erfordert (Ball greifen + Ball ablegen), und der Transport mit dem optimalen Plan in 3 Fahrten mit je 2 GreifvorgÃ¤ngen durchgefÃ¼hrt wird:
+Für den probabilistischen Gripper-Plan mit Greifwahrscheinlichkeit $p = 0{,}9$ und drei Bällen lässt sich die Erfolgswahrscheinlichkeit für den vollständigen Transport berechnen. Da jede Übergabe zwei Greifvorgänge erfordert (Ball greifen + Ball ablegen), und der Transport mit dem optimalen Plan in 3 Fahrten mit je 2 Greifvorgängen durchgeführt wird:
 \begin{align}
   P(\text{Erfolg}) = p^6 = 0{,}9^6 \approx 0{,}531.
 \end{align}
@@ -2611,11 +2611,11 @@ Dies ist unbefriedigend niedrig. Mit Wiederholungsversuchen bei Fehlschlag verbe
 \begin{align}
   P(\text{Erfolg nach max.\ $k$ Versuchen}) = 1 - (1-p)^k.
 \end{align}
-FÃ¼r $k = 3$ Versuche: $1 - 0{,}1^3 = 0{,}999$, und der Gesamtplan erreicht $0{,}999^6 \approx 0{,}994$, was die PCTL-Spezifikation $\mathcal{P}_{\geq 0{,}99}[\mathbf{F}(\mathit{all\text{-}delivered})]$ erfÃ¼llt.
+Für $k = 3$ Versuche: $1 - 0{,}1^3 = 0{,}999$, und der Gesamtplan erreicht $0{,}999^6 \approx 0{,}994$, was die PCTL-Spezifikation $\mathcal{P}_{\geq 0{,}99}[\mathbf{F}(\mathit{all\text{-}delivered})]$ erfüllt.
 
 \subsection{Hierarchische Planung (HTN)}
 
-Hierarchisches Task Network Planning (HTN) \cite{erol1994} ist ein Planungsparadigma, das komplexe Aufgaben durch schrittweise Dekomposition in einfachere Teilaufgaben lÃ¶st. HTN-Planer imitieren das menschliche Vorgehen: Man beginnt mit einer abstrakten Aufgabe (``liefere Paket''), zerlegt sie in Teilschritte (``lade Paket, fahre, entlade Paket'') und verfeinert diese weiter, bis primitive, direkt ausfÃ¼hrbare Aktionen entstehen.
+Hierarchisches Task Network Planning (HTN) \cite{erol1994} ist ein Planungsparadigma, das komplexe Aufgaben durch schrittweise Dekomposition in einfachere Teilaufgaben löst. HTN-Planer imitieren das menschliche Vorgehen: Man beginnt mit einer abstrakten Aufgabe (``liefere Paket''), zerlegt sie in Teilschritte (``lade Paket, fahre, entlade Paket'') und verfeinert diese weiter, bis primitive, direkt ausführbare Aktionen entstehen.
 
 \subsubsection{Formale Definition: HTN-Planungsproblem}
 
@@ -2630,18 +2630,18 @@ Ein HTN-Planungsproblem ist ein Tupel $\Pi = (s_0, T_0, D, \mathcal{M})$ mit:
 Eine Dekompositionsmethode $m \in \mathcal{M}$ ist ein Tupel $m = (\mathit{task}, \mathit{pre}, \mathit{subtasks})$ mit:
 \begin{itemize}
   \item[-] $\mathit{task}$: die abstrakte Aufgabe, die $m$ dekomponiert
-  \item[-] $\mathit{pre}$: Vorbedingung, die fÃ¼r die Anwendbarkeit von $m$ gelten muss
+  \item[-] $\mathit{pre}$: Vorbedingung, die für die Anwendbarkeit von $m$ gelten muss
   \item[-] $\mathit{subtasks}$: geordnete oder ungeordnete Liste von Unteraufgaben (primitiv oder abstrakt)
 \end{itemize}
 \end{definition}
 
-Eine LÃ¶sung fÃ¼r $\Pi$ ist ein primitiver Plan $\pi$ (eine Sequenz primitiver Aktionen), der durch sukzessive Anwendung von Dekompositionsmethoden aus $T_0$ entsteht und den Initialzustand in einen Zielzustand Ã¼berfÃ¼hrt.
+Eine Lösung für $\Pi$ ist ein primitiver Plan $\pi$ (eine Sequenz primitiver Aktionen), der durch sukzessive Anwendung von Dekompositionsmethoden aus $T_0$ entsteht und den Initialzustand in einen Zielzustand überführt.
 
-\subsubsection{HTN-Beispiel: Transport-DomÃ¤ne}
+\subsubsection{HTN-Beispiel: Transport-Domäne}
 
-Die folgende HTN-DomÃ¤ne beschreibt den Transport von Paketen mit mehreren Fahrzeugen. Die abstrakte Aufgabe \texttt{transport-package} wird je nach Distanz in zwei verschiedene Methoden dekomponiert:
+Die folgende HTN-Domäne beschreibt den Transport von Paketen mit mehreren Fahrzeugen. Die abstrakte Aufgabe \texttt{transport-package} wird je nach Distanz in zwei verschiedene Methoden dekomponiert:
 
-\begin{lstlisting}[language=PDDL, caption=HTN-Methoden fÃ¼r Transport-DomÃ¤ne]
+\begin{lstlisting}[language=PDDL, caption=HTN-Methoden für Transport-Domäne]
 ; Methode 1: Lokaler Transport (innerhalb derselben Stadt)
 (:method local-transport
   :parameters (?pkg - package ?from ?to - location)
@@ -2672,46 +2672,46 @@ Die folgende HTN-DomÃ¤ne beschreibt den Transport von Paketen mit mehreren Fah
              (< task2 task3) (< task3 task4)))
 \end{lstlisting}
 
-\subsubsection{HTN-Suchraum und KomplexitÃ¤t}
+\subsubsection{HTN-Suchraum und Komplexität}
 
 \begin{definition}[Decomposition Tree]
-Ein Dekompositionsbaum fÃ¼r ein HTN-Problem ist ein geordneter Baum, dessen Wurzel die initiale Taskliste $T_0$ darstellt, dessen innere Knoten abstrakte Aufgaben sind, die durch Dekompositionsmethoden zerlegt werden, und dessen BlÃ¤tter primitive Aktionen sind. Der Plan ergibt sich als die geordnete Sequenz der BlÃ¤tter.
+Ein Dekompositionsbaum für ein HTN-Problem ist ein geordneter Baum, dessen Wurzel die initiale Taskliste $T_0$ darstellt, dessen innere Knoten abstrakte Aufgaben sind, die durch Dekompositionsmethoden zerlegt werden, und dessen Blätter primitive Aktionen sind. Der Plan ergibt sich als die geordnete Sequenz der Blätter.
 \end{definition}
 
-\begin{theorem}[KomplexitÃ¤t des HTN-Planens]
-HTN-Planen ist EXPTIME-vollstÃ¤ndig. VollstÃ¤ndig geordnete Tasklisten (SO-HTN) sind PSPACE-vollstÃ¤ndig; einfache HTN-Probleme ohne Zustandsbedingungen NP-vollstÃ¤ndig.
+\begin{theorem}[Komplexität des HTN-Planens]
+HTN-Planen ist EXPTIME-vollständig. Vollständig geordnete Tasklisten (SO-HTN) sind PSPACE-vollständig; einfache HTN-Probleme ohne Zustandsbedingungen NP-vollständig.
 \end{theorem}
 
-Die KomplexitÃ¤tshierarchie zeigt, dass Strukturierungswissen die PlanungskomplexitÃ¤t erheblich beeinflussen kann: Ein vollstÃ¤ndig geordnetes HTN ist effektiver suchbar als ein ungeordnetes, weil die Methoden stÃ¤rkere Vorauswahl treffen.
+Die Komplexitätshierarchie zeigt, dass Strukturierungswissen die Planungskomplexität erheblich beeinflussen kann: Ein vollständig geordnetes HTN ist effektiver suchbar als ein ungeordnetes, weil die Methoden stärkere Vorauswahl treffen.
 
 \subsubsection{Verbindung zu temporalem Model Checking}
 
-HTN-PlÃ¤ne lassen sich als Kripke-Strukturen modellieren, wobei die Hierarchieebenen explizit dargestellt werden:
+HTN-Pläne lassen sich als Kripke-Strukturen modellieren, wobei die Hierarchieebenen explizit dargestellt werden:
 
 \begin{definition}[HTN-Kripke-Struktur]
-FÃ¼r ein HTN-Planungsproblem $\Pi$ definieren wir die HTN-Kripke-Struktur $M_{\mathit{HTN}} = (S_H, R_H, L_H)$ mit:
+Für ein HTN-Planungsproblem $\Pi$ definieren wir die HTN-Kripke-Struktur $M_{\mathit{HTN}} = (S_H, R_H, L_H)$ mit:
 \begin{itemize}
   \item[-] $S_H$: Menge partiell
-  dekomponierten Tasklisten (alle ZwischenzustÃ¤nde)
-  \item[-] $R_H$: Ãœbergang durch Anwendung einer Dekompositionsmethode oder primitiven Aktion
-  \item[-] $L_H$: Labels fÃ¼r Abstrktionsebene, aktuelle Tasks, und Planzustand
+  dekomponierten Tasklisten (alle Zwischenzustände)
+  \item[-] $R_H$: Übergang durch Anwendung einer Dekompositionsmethode oder primitiven Aktion
+  \item[-] $L_H$: Labels für Abstrktionsebene, aktuelle Tasks, und Planzustand
 \end{itemize}
 \end{definition}
 
 Auf $M_{\mathit{HTN}}$ lassen sich nun strukturbezogene Eigenschaften formal spezifizieren:
 
 \begin{beispiel}[HTN-Verifikationseigenschaften]
-FÃ¼r die Transport-HTN-DomÃ¤ne seien folgende Eigenschaften zu verifizieren:
+Für die Transport-HTN-Domäne seien folgende Eigenschaften zu verifizieren:
 \begin{enumerate}
-  \item \textit{Korrektheit der Dekomposition}: Jede abstrakte Aufgabe wird schlieÃŸlich vollstÃ¤ndig in primitive Aktionen zerlegt:
+  \item \textit{Korrektheit der Dekomposition}: Jede abstrakte Aufgabe wird schließlich vollständig in primitive Aktionen zerlegt:
   \begin{align}
     \mathbf{AG}(\mathit{abstract\text{-}task}(T) \to \mathbf{AF}(\mathit{decomposed}(T)))
   \end{align}
-  \item \textit{AbhÃ¤ngigkeitsfreiheit}: Keine zirkulÃ¤re AbhÃ¤ngigkeit zwischen Teilaufgaben:
+  \item \textit{Abhängigkeitsfreiheit}: Keine zirkuläre Abhängigkeit zwischen Teilaufgaben:
   \begin{align}
     \mathbf{AG}\neg(\mathit{subtask\text{-}of}(T_1, T_2) \land \mathit{subtask\text{-}of}(T_2, T_1))
   \end{align}
-  \item \textit{Zeitkonsistenz}: In der SO-HTN werden Teilaufgaben in der vorgeschriebenen Reihenfolge ausgefÃ¼hrt:
+  \item \textit{Zeitkonsistenz}: In der SO-HTN werden Teilaufgaben in der vorgeschriebenen Reihenfolge ausgeführt:
   \begin{align}
     \mathbf{AG}(\mathit{order}(T_1 < T_2) \to \mathbf{AF}(\mathit{complete}(T_1) \land \mathbf{AX}\mathit{start}(T_2)))
   \end{align}
@@ -2742,13 +2742,13 @@ Ein praktisch wichtiges Problem im HTN-Planen ist die effiziente Auswahl der anw
 \end{algorithm}
 
 {\sloppy\begin{theorem}[Korrektheit der Subgraph-basierten Methodenauswahl]
-Algorithmus~12.2 ist \emph{sound}; bei vollstÃ¤ndigem Matching auch \emph{vollstÃ¤ndig}.
+Algorithmus~12.2 ist \emph{sound}; bei vollständigem Matching auch \emph{vollständig}.
 \end{theorem}}\par
 
 \begin{proof}
-\textit{Soundness}: Wenn \textsc{SubgraphMatch}($\sigma_m$, $\sigma_s$) wahr zurÃ¼ckgibt, so existiert nach Definition des Subgraph-Matching eine Einbettung des Vorbedingungsmusters $m.\mathit{pre}$ in den aktuellen Zustand $s$, d.\,h., alle PrÃ¤dikate der Vorbedingung sind in $s$ erfÃ¼llt. Die Methode ist damit korrekt anwendbar.
+\textit{Soundness}: Wenn \textsc{SubgraphMatch}($\sigma_m$, $\sigma_s$) wahr zurückgibt, so existiert nach Definition des Subgraph-Matching eine Einbettung des Vorbedingungsmusters $m.\mathit{pre}$ in den aktuellen Zustand $s$, d.\,h., alle Prädikate der Vorbedingung sind in $s$ erfüllt. Die Methode ist damit korrekt anwendbar.
 
-\textit{VollstÃ¤ndigkeit}: Falls der Subgraph Algorithmus unter RotationsbeschrÃ¤nkung eine anwendbare Methode nicht erkennt (false negative), so liegt ein VollstÃ¤ndigkeitsproblem des Matching-Algorithmus vor, nicht der Methodenauswahl selbst. FÃ¼r strukturierte Planungsprobleme, in denen die Vorbedingungsmuster zyklisch geordnet sind, ist die RotationsbeschrÃ¤nkung vollstÃ¤ndig (vgl.\ Abschnitt~7.3), und damit auch die Methodenauswahl.
+\textit{Vollständigkeit}: Falls der Subgraph Algorithmus unter Rotationsbeschränkung eine anwendbare Methode nicht erkennt (false negative), so liegt ein Vollständigkeitsproblem des Matching-Algorithmus vor, nicht der Methodenauswahl selbst. Für strukturierte Planungsprobleme, in denen die Vorbedingungsmuster zyklisch geordnet sind, ist die Rotationsbeschränkung vollständig (vgl.\ Abschnitt~7.3), und damit auch die Methodenauswahl.
 \end{proof}
 
 \subsubsection{Vergleich: Klassisches PDDL vs.\ PDDL 2.1 vs.\ HTN}
@@ -2761,41 +2761,41 @@ Algorithmus~12.2 ist \emph{sound}; bei vollstÃ¤ndigem Matching auch \emph{voll
     \toprule
     Merkmal & Klassisches PDDL & PDDL 2.1 (temporal) & HTN \\
     \midrule
-    Aktionsdauer & Instantan & Explizit ($d \in \mathbb{R}$) & Methoden-abhÃ¤ngig \\
-    ParallelitÃ¤t & Nein & Ja (mit Mutex) & Ja (ungeordnete Tasks) \\
+    Aktionsdauer & Instantan & Explizit ($d \in \mathbb{R}$) & Methoden-abhängig \\
+    Parallelität & Nein & Ja (mit Mutex) & Ja (ungeordnete Tasks) \\
     Struktur\-wissen & Nein & Nein & Ja (Methoden) \\
-    KomplexitÃ¤t & PSPACE & PSPACE & EXPTIME \\
+    Komplexität & PSPACE & PSPACE & EXPTIME \\
     Verifikation & CTL/LTL & TCTL & HTN-CTL \\
     Subgraph & $O(n^3)$ & $O(n^3 |T|)$ & $O(n^3 |\mathcal{M}|)$ \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Die Tabelle zeigt, dass alle drei Paradigmen mit dem Subgraph Algorithmus kompatibel sind: Die zeitliche bzw.\ hierarchische Erweiterung erhÃ¶ht die KomplexitÃ¤t lediglich linear in der Anzahl der Zeitschritte bzw.\ Methoden, was den polynomialen Charakter des Gesamtansatzes bewahrt.
+Die Tabelle zeigt, dass alle drei Paradigmen mit dem Subgraph Algorithmus kompatibel sind: Die zeitliche bzw.\ hierarchische Erweiterung erhöht die Komplexität lediglich linear in der Anzahl der Zeitschritte bzw.\ Methoden, was den polynomialen Charakter des Gesamtansatzes bewahrt.
 
 \subsection{Zusammenfassung}
 
-Dieses Kapitel hat drei wesentliche Erweiterungen des PDDL-Formalismus ausfÃ¼hrlich behandelt. Temporales PDDL (PDDL 2.1) ermÃ¶glicht die explizite Modellierung von Aktionsdauern, paralleler AktionsausfÃ¼hrung und zeitkritischen Constraints. Die formale Semantik durativer Aktionen wurde vollstÃ¤ndig entwickelt, und die Erweiterung des Subgraph Algorithmus auf zeiterweiterte Signaturen wurde mit einem Korrektheitsbeweis versehen. Probabilistisches Planning modelliert Unsicherheit durch MDPs und PCTL-Spezifikationen. Der Konvergenzbeweis der Wertiteration stellt die theoretische Basis fÃ¼r die Berechnung optimaler Policies unter Unsicherheit bereit, und die probabilistische Signaturerweiterung integriert diese in den Subgraph-Rahmen. HTN-Planung schlieÃŸlich nutzt hierarchisches Strukturwissen, um komplexe Planungsaufgaben durch Dekomposition handhabbar zu machen. Die formale HTN-Kripke-Struktur ermÃ¶glicht die Verifikation strukturbezogener Eigenschaften, und die Subgraph-basierte Methodenauswahl beschleunigt die HTN-Suche effizient. In allen drei FÃ¤llen bleibt der Subgraph Algorithmus der zentrale Verifikationsbaustein, der die KomplexitÃ¤t strukturierter Planungsprobleme beherrschbar macht.
+Dieses Kapitel hat drei wesentliche Erweiterungen des PDDL-Formalismus ausführlich behandelt. Temporales PDDL (PDDL 2.1) ermöglicht die explizite Modellierung von Aktionsdauern, paralleler Aktionsausführung und zeitkritischen Constraints. Die formale Semantik durativer Aktionen wurde vollständig entwickelt, und die Erweiterung des Subgraph Algorithmus auf zeiterweiterte Signaturen wurde mit einem Korrektheitsbeweis versehen. Probabilistisches Planning modelliert Unsicherheit durch MDPs und PCTL-Spezifikationen. Der Konvergenzbeweis der Wertiteration stellt die theoretische Basis für die Berechnung optimaler Policies unter Unsicherheit bereit, und die probabilistische Signaturerweiterung integriert diese in den Subgraph-Rahmen. HTN-Planung schließlich nutzt hierarchisches Strukturwissen, um komplexe Planungsaufgaben durch Dekomposition handhabbar zu machen. Die formale HTN-Kripke-Struktur ermöglicht die Verifikation strukturbezogener Eigenschaften, und die Subgraph-basierte Methodenauswahl beschleunigt die HTN-Suche effizient. In allen drei Fällen bleibt der Subgraph Algorithmus der zentrale Verifikationsbaustein, der die Komplexität strukturierter Planungsprobleme beherrschbar macht.
 
 \section{Schluss}
 
 \subsection{Hauptergebnisse}
 
-Diese Arbeit hat temporales Model Checking und PDDL-Planungssysteme behandelt. Als zentrale Innovation wurde der Subgraph Algorithmus eingefÃ¼hrt.
+Diese Arbeit hat temporales Model Checking und PDDL-Planungssysteme behandelt. Als zentrale Innovation wurde der Subgraph Algorithmus eingeführt.
 
-\textbf{Temporale Logiken:} LTL und CTL bieten mÃ¤chtige Formalismen zur Spezifikation zeitabhÃ¤ngiger Eigenschaften. CTL-ModellprÃ¼fung ist in polynomieller Zeit lÃ¶sbar; LTL-ModellprÃ¼fung ist PSPACE-vollstÃ¤ndig. Bei groÃŸen ZustandsrÃ¤umen stellen beide KomplexitÃ¤ten erhebliche Herausforderungen dar -- der Subgraph Algorithmus begegnet genau diesem Problem.
+\textbf{Temporale Logiken:} LTL und CTL bieten mächtige Formalismen zur Spezifikation zeitabhängiger Eigenschaften. CTL-Modellprüfung ist in polynomieller Zeit lösbar; LTL-Modellprüfung ist PSPACE-vollständig. Bei großen Zustandsräumen stellen beide Komplexitäten erhebliche Herausforderungen dar -- der Subgraph Algorithmus begegnet genau diesem Problem.
 
-\textbf{PDDL als Standardformalismus:} Vier klassische DomÃ¤nen -- Blocksworld, Logistics, Gripper und weitere Varianten -- wurden mit vollstÃ¤ndigen Beispielen prÃ¤sentiert. Planungsalgorithmen von der Forward-~und Backward-Suche Ã¼ber GraphPlan und FF bis hin zu SAT-basierter Planung wurden vorgestellt und verglichen.
+\textbf{PDDL als Standardformalismus:} Vier klassische Domänen -- Blocksworld, Logistics, Gripper und weitere Varianten -- wurden mit vollständigen Beispielen präsentiert. Planungsalgorithmen von der Forward-~und Backward-Suche über GraphPlan und FF bis hin zu SAT-basierter Planung wurden vorgestellt und verglichen.
 
-\textbf{Der Subgraph Algorithmus als zentrale Innovation:} Kapitel~7 stellt den Hauptbeitrag dieser Arbeit dar: einen signaturbasierten Algorithmus, der das State Explosion Problem durch strukturelle Abstraktion Ã¼berwindet.
+\textbf{Der Subgraph Algorithmus als zentrale Innovation:} Kapitel~7 stellt den Hauptbeitrag dieser Arbeit dar: einen signaturbasierten Algorithmus, der das State Explosion Problem durch strukturelle Abstraktion überwindet.
 
 \begin{table}[h]
 	\centering
-	\caption{Vergleich mit etablierten AnsÃ¤tzen}
+	\caption{Vergleich mit etablierten Ansätzen}
 	\label{tab:final_comparison}
 	\begin{tabular}{llll}
 		\toprule
-		Ansatz & KomplexitÃ¤t & VollstÃ¤ndigkeit & Speedup \\
+		Ansatz & Komplexität & Vollständigkeit & Speedup \\
 		\midrule
 		SPIN (explizit) & $O(2^n)$ & Ja & Baseline \\
 		NuSMV (symbolisch) & Variabel (BDD) & Ja & $2$--$10\times$ \\
@@ -2807,62 +2807,62 @@ Diese Arbeit hat temporales Model Checking und PDDL-Planungssysteme behandelt. A
 
 Die wesentlichen Eigenschaften des Subgraph Algorithmus:
 \begin{itemize}
-	\item[-] \textbf{Polynomiale KomplexitÃ¤t}: Reduktion von $O(n!)$ auf $O(n^3)$ fÃ¼r Pattern-Matching
-	\item[-] \textbf{Signaturbasierte Kodierung}: Kompakte, eindeutige ReprÃ¤sentation von ZustÃ¤nden
+	\item[-] \textbf{Polynomiale Komplexität}: Reduktion von $O(n!)$ auf $O(n^3)$ für Pattern-Matching
+	\item[-] \textbf{Signaturbasierte Kodierung}: Kompakte, eindeutige Repräsentation von Zuständen
 	\item[-] \textbf{Rotationsbasierte Suche}: Effiziente Behandlung von Objektpermutationen
 	\item[-] \textbf{Praktische Effizienz}: $15$--$1239\times$ Speedup in experimenteller Evaluierung
 \end{itemize}
 
-\textbf{Integration von Planung und Verifikation:} Kapitel~9 und~10 haben gezeigt, wie klassische Planungsalgorithmen mit dem Subgraph-basierten Model Checking kombiniert werden. Der vollstÃ¤ndige Workflow umfasst: Plangenerierung, Signaturextraktion, Pattern-Verifikation und formale Zertifizierung -- alles mit polynomialem Gesamtaufwand fÃ¼r den Verifikationsschritt.
+\textbf{Integration von Planung und Verifikation:} Kapitel~9 und~10 haben gezeigt, wie klassische Planungsalgorithmen mit dem Subgraph-basierten Model Checking kombiniert werden. Der vollständige Workflow umfasst: Plangenerierung, Signaturextraktion, Pattern-Verifikation und formale Zertifizierung -- alles mit polynomialem Gesamtaufwand für den Verifikationsschritt.
 
 \subsection{Wissenschaftlicher Beitrag}
 
-Die Arbeit leistet folgende wissenschaftliche BeitrÃ¤ge:
+Die Arbeit leistet folgende wissenschaftliche Beiträge:
 
 \begin{enumerate}
-	\item \textbf{Theoretische Fundierung}: Formale Definition der signaturbasierten ZustandsreprÃ¤sentation mit Beweis der Eindeutigkeit (Lemma~7.1) und Korrektheit
-	\item \textbf{Algorithmische Innovation}: $O(n^3)$ Algorithmus fÃ¼r Pattern-Matching, wo klassische AnsÃ¤tze exponentielle KomplexitÃ¤t haben
+	\item \textbf{Theoretische Fundierung}: Formale Definition der signaturbasierten Zustandsrepräsentation mit Beweis der Eindeutigkeit (Lemma~7.1) und Korrektheit
+	\item \textbf{Algorithmische Innovation}: $O(n^3)$ Algorithmus für Pattern-Matching, wo klassische Ansätze exponentielle Komplexität haben
 	\item \textbf{Integration in Model Checking}: Einbettung in LTL-~und CTL-Workflows
 	      sowie in klassische Planungsalgorithmen
-	\item \textbf{Experimentelle Validierung}: Evaluierung mit drei DomÃ¤nen,
+	\item \textbf{Experimentelle Validierung}: Evaluierung mit drei Domänen,
 	      die $15$--$1239\times$ Beschleunigung demonstriert
-	\item \textbf{Praktische Anwendbarkeit}: Nachweis fÃ¼r reale
+	\item \textbf{Praktische Anwendbarkeit}: Nachweis für reale
 	      PDDL-Probleme in Robotik, Logistik und autonomen Systemen
 \end{enumerate}
 
 \subsection{Limitationen}
 
-Bei aller LeistungsfÃ¤higkeit hat der Ansatz bekannte EinschrÃ¤nkungen:
+Bei aller Leistungsfähigkeit hat der Ansatz bekannte Einschränkungen:
 
-\textbf{RotationsbeschrÃ¤nkung}: Die EinschrÃ¤nkung auf zyklische Rotationen kann in bestimmten FÃ¤llen mÃ¶gliche Matches Ã¼bersehen. Der Algorithmus ist \textit{sound} -- er liefert keine false positives --, ist jedoch nicht vollstÃ¤ndig \textit{complete}. Dieser Trade-off wird bewusst zugunsten polynomialer Laufzeit in Kauf genommen.
+\textbf{Rotationsbeschränkung}: Die Einschränkung auf zyklische Rotationen kann in bestimmten Fällen mögliche Matches übersehen. Der Algorithmus ist \textit{sound} -- er liefert keine false positives --, ist jedoch nicht vollständig \textit{complete}. Dieser Trade-off wird bewusst zugunsten polynomialer Laufzeit in Kauf genommen.
 
-\textbf{Strukturierte Probleme}: Bei Systemen ohne wiederkehrende Strukturmuster bietet der Subgraph Algorithmus weniger Vorteile. Er ist komplementÃ¤r zu klassischen AnsÃ¤tzen und optimal fÃ¼r strukturierte PlanungsdomÃ¤nen.
+\textbf{Strukturierte Probleme}: Bei Systemen ohne wiederkehrende Strukturmuster bietet der Subgraph Algorithmus weniger Vorteile. Er ist komplementär zu klassischen Ansätzen und optimal für strukturierte Planungsdomänen.
 
 \textbf{Probabilistische Systeme}: Die aktuelle Formulierung setzt deterministisches Verhalten voraus. Erweiterungen auf PCTL erfordern angepasste Signaturen.
 
 \subsection{Ausblick}
 
-FÃ¼r die Zukunft ergeben sich mehrere vielversprechende Forschungsrichtungen:
+Für die Zukunft ergeben sich mehrere vielversprechende Forschungsrichtungen:
 
 \textbf{Algorithmische Erweiterungen:}
 \begin{itemize}
-	\item[-] Kombination mit BDDs fÃ¼r sehr groÃŸe ZustandsrÃ¤ume ($|S| > 10^5$)
+	\item[-] Kombination mit BDDs für sehr große Zustandsräume ($|S| > 10^5$)
 	\item[-] GPU-Beschleunigung der parallelen Signatur-Berechnung
-	\item[-] Erweiterung auf probabilistische Systeme (Signaturen fÃ¼r MDPs)
-	\item[-] Inkrementelle Verifikation bei lokalen PlanÃ¤nderungen
+	\item[-] Erweiterung auf probabilistische Systeme (Signaturen für MDPs)
+	\item[-] Inkrementelle Verifikation bei lokalen Planänderungen
 \end{itemize}
 
 \textbf{Tool-Integration:}
 \begin{itemize}
-	\item[-] Plugins fÃ¼r Fast Downward und PDDL4J
+	\item[-] Plugins für Fast Downward und PDDL4J
 	\item[-] Anbindung an NuSMV und SPIN als Fallback
-	      fÃ¼r komplexe temporale Formeln
+	      für komplexe temporale Formeln
 	\item[-] Open-Source-Release mit ROS-Integration
-	\item[-] Grafische OberflÃ¤che zur Darstellung
+	\item[-] Grafische Oberfläche zur Darstellung
 	      von Signaturen und Matching-Ergebnissen
 \end{itemize}
 
-\textbf{Neue AnwendungsdomÃ¤nen:}
+\textbf{Neue Anwendungsdomänen:}
 \begin{itemize}
 	\item[-] Cyber-Physical Systems und Smart Grids
 	\item[-] Autonome Fahrzeuge mit Echtzeit-Pfadverifikation
@@ -2874,13 +2874,13 @@ FÃ¼r die Zukunft ergeben sich mehrere vielversprechende Forschungsrichtungen:
 \begin{itemize}
 	\item[-] Maschinell verifizierbare Beweise in Coq oder Isabelle/HOL
 	\item[-] Formale Bisimulation zwischen kontinuierlichem und diskretem Modell (vertieft in Kapitel~11)
-	\item[-] KomplexitÃ¤tsuntergrenzen unter realistischen Strukturannahmen
+	\item[-] Komplexitätsuntergrenzen unter realistischen Strukturannahmen
 	\item[-] Integration mit Machine Learning zur Verifikation gelernter Policies
 \end{itemize}
 
-Zusammenfassend lÃ¤sst sich festhalten, dass temporales Model Checking, PDDL Planning und der Subgraph Algorithmus zusammen einen mÃ¤chtigen, effizienten Ansatz fÃ¼r die Entwicklung und Verifikation intelligenter, sicherer und zuverlÃ¤ssiger Systeme bilden. Der Subgraph Algorithmus positioniert sich dabei als komplementÃ¤re Methode zu klassischen Verfahren: FÃ¼r strukturelle Eigenschaften bietet er dramatische Effizienzgewinne, wÃ¤hrend klassisches CTL/LTL Model Checking fÃ¼r komplexe temporale Formeln weiterhin seine StÃ¤rken ausspielt. Die optimale Strategie kombiniert beide AnsÃ¤tze situationsgerecht.
+Zusammenfassend lässt sich festhalten, dass temporales Model Checking, PDDL Planning und der Subgraph Algorithmus zusammen einen mächtigen, effizienten Ansatz für die Entwicklung und Verifikation intelligenter, sicherer und zuverlässiger Systeme bilden. Der Subgraph Algorithmus positioniert sich dabei als komplementäre Methode zu klassischen Verfahren: Für strukturelle Eigenschaften bietet er dramatische Effizienzgewinne, während klassisches CTL/LTL Model Checking für komplexe temporale Formeln weiterhin seine Stärken ausspielt. Die optimale Strategie kombiniert beide Ansätze situationsgerecht.
 
-Die theoretischen Grundlagen sind solide, die Algorithmen sind effizient implementierbar, und die praktische Anwendbarkeit ist durch Experimente und Fallstudien belegt. Diese Arbeit legt das Fundament fÃ¼r eine neue Generation formal verifizierter Planungssysteme -- ein Schritt hin zu vertrauenswÃ¼rdiger, beweisbar korrekter kÃ¼nstlicher Intelligenz.
+Die theoretischen Grundlagen sind solide, die Algorithmen sind effizient implementierbar, und die praktische Anwendbarkeit ist durch Experimente und Fallstudien belegt. Diese Arbeit legt das Fundament für eine neue Generation formal verifizierter Planungssysteme -- ein Schritt hin zu vertrauenswürdiger, beweisbar korrekter künstlicher Intelligenz.
 
 
 \begin{thebibliography}{99}

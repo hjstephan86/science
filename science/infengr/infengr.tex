@@ -59,13 +59,13 @@
   breaklines=true,
   frame=single,
   literate=%
-    {Ã–}{{\"O}}1
-    {Ã„}{{\"A}}1
-    {Ãœ}{{\"U}}1
-    {ÃŸ}{{\ss}}1
-    {Ã¼}{{\"u}}1
-    {Ã¤}{{\"a}}1
-    {Ã¶}{{\"o}}1
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
     {Î£}{{$\Sigma$}}1
     {â†’}{{$\rightarrow$}}1
     {âŠ†}{{$\subseteq$}}1
@@ -83,105 +83,105 @@ und die Transformation zum Zielcode}}
 \maketitle
 
 \begin{abstract}
-Diese Arbeit entwickelt und begrÃ¼ndet ein kohÃ¤rentes Berufsbild des \emph{Informationsingenieurs}
+Diese Arbeit entwickelt und begründet ein kohärentes Berufsbild des \emph{Informationsingenieurs}
 -- auch \emph{Information Engineer} oder \{0,\,1\}-Ingenieur genannt --,
-dessen Kernaufgabe die Konstruktion von Informationssystemen fÃ¼r den Menschen ist.
-Ausgehend von einem grundlegenden Zitat Ã¼ber das Wesen dieses Berufs werden
+dessen Kernaufgabe die Konstruktion von Informationssystemen für den Menschen ist.
+Ausgehend von einem grundlegenden Zitat über das Wesen dieses Berufs werden
 drei zentrale Thesen formal nachgewiesen:
 (\emph{i})~die Graphdarstellung ist das optimale Modellierungsparadigma auf Anforderungs- und
 Managementsicht,
-(\emph{ii})~die Transformation des Graphmodells in eine mÃ¤chtige, gleichzeitig leicht
+(\emph{ii})~die Transformation des Graphmodells in eine mächtige, gleichzeitig leicht
 erlernbare Beschreibungssprache liegt in der vollen Verantwortung des Ingenieurs und
-(\emph{iii})~Code-Generierung aus graphischer Modellierung ist unnÃ¶tig und fÃ¼hrt zu
-VollstÃ¤ndigkeitslÃ¼cken.
+(\emph{iii})~Code-Generierung aus graphischer Modellierung ist unnötig und führt zu
+Vollständigkeitslücken.
 Die Ergebnisse werden formal bewiesen, mit dem Subgraph Algorithmus
-$\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ verknÃ¼pft und durch vier
-Matplotlib-Plots veranschaulicht. Ein ausfÃ¼hrlicher Ausblick auf zukÃ¼nftige Forschungsfelder
-schlieÃŸt die Arbeit ab.
+$\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$ verknüpft und durch vier
+Matplotlib-Plots veranschaulicht. Ein ausführlicher Ausblick auf zukünftige Forschungsfelder
+schließt die Arbeit ab.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{EinfÃ¼hrung und motivierendes Ausgangszitat}
+\section{Einführung und motivierendes Ausgangszitat}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Das Ausgangszitat als wissenschaftliches Fundament}
 
-Diese Arbeit nimmt ein prÃ¤zises und vielschichtiges Zitat als treibende Grundlage. Es wird
-vollstÃ¤ndig und wortwÃ¶rtlich wiedergegeben, da es nicht paraphrasiert werden kann, ohne an
+Diese Arbeit nimmt ein präzises und vielschichtiges Zitat als treibende Grundlage. Es wird
+vollständig und wortwörtlich wiedergegeben, da es nicht paraphrasiert werden kann, ohne an
 epistemischem Gehalt zu verlieren:
 
 \begin{quotation}
 \noindent\textit{%
 ``Information Engineer oder \{0, 1\}-Ingenieur oder auf deutsch Informationsingenieur lautet
-der Titel des Berufs, in dem die Menschen tÃ¤tig sind, die in diesem Beruf ausgebildet worden
-sind, um den Menschen Information Systems oder auf deutsch Informationssysteme fÃ¼r das Leben
+der Titel des Berufs, in dem die Menschen tätig sind, die in diesem Beruf ausgebildet worden
+sind, um den Menschen Information Systems oder auf deutsch Informationssysteme für das Leben
 zu geben.
 
-Wichtig ist zu begrÃ¼nden, dass die Modellsicht als Graph sich sehr gut eignet auf
-Managementsicht oder auf Anforderungssicht fÃ¼r EntscheidungstrÃ¤ger mit viel Verantwortung.
+Wichtig ist zu begründen, dass die Modellsicht als Graph sich sehr gut eignet auf
+Managementsicht oder auf Anforderungssicht für Entscheidungsträger mit viel Verantwortung.
 
-Wichtig ist zu begrÃ¼nden, dass der Ingenieur diesen letzten wichtigen Schritt der
-Transformation oder Ãœbersetzung in seiner vollen Verantwortung ausfÃ¼hren muss und zu
+Wichtig ist zu begründen, dass der Ingenieur diesen letzten wichtigen Schritt der
+Transformation oder Übersetzung in seiner vollen Verantwortung ausführen muss und zu
 verantworten hat.
 
-Der Ingenieur hat dabei immer das Ziel, so nah am Target wie mÃ¶glich zu sein um gleichzeitig
-mit so wenig Wartbarkeit und Nicht-Wiederverwendbarkeit belastet zu werden. Er mÃ¶chte direkt
-simulieren und die Simulation dabei so nah wie mÃ¶glich oder so echt wie mÃ¶glich durchfÃ¼hren.
+Der Ingenieur hat dabei immer das Ziel, so nah am Target wie möglich zu sein um gleichzeitig
+mit so wenig Wartbarkeit und Nicht-Wiederverwendbarkeit belastet zu werden. Er möchte direkt
+simulieren und die Simulation dabei so nah wie möglich oder so echt wie möglich durchführen.
 Die Simulation aber muss um der Verifikation und um der Analysierbarkeit Willen in einer
-leicht erlernbaren Sprache erfolgen, die mÃ¶glichst alle Ingenieure verstehen, um sich in den
-Details mehr um das Systemverhalten zu kÃ¼mmern, als um spezifische hochoptimierte
-HardwareabhÃ¤ngigkeiten.
+leicht erlernbaren Sprache erfolgen, die möglichst alle Ingenieure verstehen, um sich in den
+Details mehr um das Systemverhalten zu kümmern, als um spezifische hochoptimierte
+Hardwareabhängigkeiten.
 
-Der Ingenieur versteht die Anforderung, die ihm vom Produktmanagement Ã¼ber die graphische
+Der Ingenieur versteht die Anforderung, die ihm vom Produktmanagement über die graphische
 Darstellung, in beliebig vielen Hierarchien, gegeben worden sind und leitet daraus ganz
 konkrete Beschreibungen ab, die diese Anforderung alle umsetzen.
 
-Die ganz konkreten Beschreibungen werden formuliert in der letzten Sprache vor der Ãœbersetzung
+Die ganz konkreten Beschreibungen werden formuliert in der letzten Sprache vor der Übersetzung
 bzw. vor der Transformation in die Zielsprache.
 
-Es muss aufgrund der KomplexitÃ¤t der Systeme eine sehr mÃ¤chtige Beschreibungssprache sein,
-mit der mÃ¶glichst jedes naturwissenschaftliche PhÃ¤nomen oder Verhalten abgebildet werden
-kann. Sonst lÃ¤sst sich das System so nicht beschreiben und den Menschen nicht geben. Denn
-erst in dieser MÃ¤chtigkeit kÃ¶nnen alle Ingenieure diese eine Sprache, welche leicht erlernbar
-ist und alle beherrschen, nutzen und aus der Erfahrung schÃ¶pfen, um damit prÃ¤zise Beschreibung
+Es muss aufgrund der Komplexität der Systeme eine sehr mächtige Beschreibungssprache sein,
+mit der möglichst jedes naturwissenschaftliche Phänomen oder Verhalten abgebildet werden
+kann. Sonst lässt sich das System so nicht beschreiben und den Menschen nicht geben. Denn
+erst in dieser Mächtigkeit können alle Ingenieure diese eine Sprache, welche leicht erlernbar
+ist und alle beherrschen, nutzen und aus der Erfahrung schöpfen, um damit präzise Beschreibung
 zu erfassen.
 
 Das Problem an der graphischen Modellierung ist, als Ingenieur immer die Unsicherheit zu
 tragen, dass zwischen graphischer Modellierung und der Zielhardware die Abbildung aller
-Anforderungen nicht vollstÃ¤ndig ist.
+Anforderungen nicht vollständig ist.
 
-Als Konsequenz daraus ergibt sich, dass eine geeignete Sprache fÃ¼r Ingenieure gefunden werden
-muss, mit der diese Abbildung mÃ¶glich ist. Als Konsequenz daraus ergibt sich auch, das
-Code-Generierung fÃ¼r die Zielhardware aus einer graphischen Modellierung heraus unnÃ¶tig
+Als Konsequenz daraus ergibt sich, dass eine geeignete Sprache für Ingenieure gefunden werden
+muss, mit der diese Abbildung möglich ist. Als Konsequenz daraus ergibt sich auch, das
+Code-Generierung für die Zielhardware aus einer graphischen Modellierung heraus unnötig
 ist.''
 }
 \end{quotation}
 
 \noindent
-Dieses Zitat enthÃ¤lt in komprimierter Form eine vollstÃ¤ndige Systemtheorie des
+Dieses Zitat enthält in komprimierter Form eine vollständige Systemtheorie des
 Informationsingenieurwesens. Die vorliegende Arbeit entfaltet die darin enthaltenen
 Argumente in formaler wissenschaftlicher Sprache, beweist die aufgestellten Thesen und
 veranschaulicht sie numerisch und graphisch.
 
-\subsection{Ãœberblick und BeitrÃ¤ge dieser Arbeit}
+\subsection{Überblick und Beiträge dieser Arbeit}
 
-Die HauptbeitrÃ¤ge sind:
+Die Hauptbeiträge sind:
 
 \begin{itemize}
   \item Eine formale Definition des Berufsbilds \emph{Informationsingenieur} mit
         Abgrenzung zu verwandten Disziplinen (Abschnitt~\ref{sec:berufsbild}).
-  \item Ein Theorem Ã¼ber die Eignung der Graphdarstellung als Managementmodell
+  \item Ein Theorem über die Eignung der Graphdarstellung als Managementmodell
         (Abschnitt~\ref{sec:graphmodell}).
-  \item Ein Theorem Ã¼ber die Anforderungen an die Beschreibungssprache
+  \item Ein Theorem über die Anforderungen an die Beschreibungssprache
         (Abschnitt~\ref{sec:beschreibungssprache}).
-  \item Ein Theorem Ã¼ber die UnnÃ¶tigkeit von Code-Generierung aus Graphmodellen
+  \item Ein Theorem über die Unnötigkeit von Code-Generierung aus Graphmodellen
         (Abschnitt~\ref{sec:codegen}).
   \item Die Verbindung zur Subgraph-Signaturtheorie
         (Abschnitt~\ref{sec:subgraph}).
-  \item Vier illustrierende Plots und ein ausfÃ¼hrlicher Ausblick.
+  \item Vier illustrierende Plots und ein ausführlicher Ausblick.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,7 +189,7 @@ Die HauptbeitrÃ¤ge sind:
 \label{sec:berufsbild}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Definition und BegriffsklÃ¤rung}
+\subsection{Definition und Begriffsklärung}
 
 \begin{definition}[Informationsingenieur]
 \label{def:infeng}
@@ -204,18 +204,18 @@ Formal ist ein Informationsingenieur ein Tupel
 wobei
 \begin{itemize}
   \item $K$ die Wissensbasis (Mathematik, Informatik, Ingenieurwissenschaften),
-  \item $M$ das ModellierungsvermÃ¶gen (Graphen, Anforderungsstrukturen),
+  \item $M$ das Modellierungsvermögen (Graphen, Anforderungsstrukturen),
   \item $L$ die Sprachkompetenz (Beherrschung der Beschreibungssprache),
-  \item $R$ die Transformationsverantwortung (Ãœbersetzung in Zielcode),
-  \item $T$ das ZielorientierungsvermÃ¶gen (Maximierung der ZielnÃ¤he bei minimaler Wartungslast)
+  \item $R$ die Transformationsverantwortung (Übersetzung in Zielcode),
+  \item $T$ das Zielorientierungsvermögen (Maximierung der Zielnähe bei minimaler Wartungslast)
 \end{itemize}
 bezeichnet.
 \end{definition}
 
 Der Begriff \emph{\{0,\,1\}-Ingenieur} verweist darauf, dass alle Information letztlich in
-binÃ¤rer Kodierung vorliegt -- die Welt des Ingenieurs ist die Welt der Bits. Dennoch operiert
+binärer Kodierung vorliegt -- die Welt des Ingenieurs ist die Welt der Bits. Dennoch operiert
 er auf hochgradig abstrakten Darstellungen dieser Bits: auf Graphen, auf Systemmodellen, auf
-mathematischen Beschreibungen physikalischer PhÃ¤nomene.
+mathematischen Beschreibungen physikalischer Phänomene.
 
 \begin{definition}[Informationssystem]
 \label{def:infosys}
@@ -225,7 +225,7 @@ Ein \emph{Informationssystem} $\mathcal{IS}$ ist ein geordnetes Paar
 \]
 bestehend aus einer Menge von Anforderungen $\mathcal{R} = \{r_1, r_2, \ldots, r_k\}$ und
 einer Implementierung $\mathcal{I}$, sodass $\mathcal{I}$ alle Anforderungen in $\mathcal{R}$
-erfÃ¼llt:
+erfüllt:
 \[
   \forall r_i \in \mathcal{R}: \mathcal{I} \models r_i.
 \]
@@ -246,7 +246,7 @@ Softwareentwickler & Codierung, Algorithmen & Keine formale Systemmodellierung \
 Systemingenieur    & Systemarchitektur      & Kein Fokus auf Informationstheorie \\
 Informatiker       & Theorie, Algorithmen   & Keine physische Zielhardware \\
 Elektrotechniker   & Hardware, Schaltungen  & Kein Software-/Systemfokus \\
-Informationsingenieur & Gesamtkette: Anforderung â†’ Graph â†’ Sprache â†’ Zielcode & Volle Verantwortung fÃ¼r die Transformation \\
+Informationsingenieur & Gesamtkette: Anforderung â†’ Graph â†’ Sprache â†’ Zielcode & Volle Verantwortung für die Transformation \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -270,7 +270,7 @@ Sei $\mathcal{R} = \{r_1, \ldots, r_k\}$ eine Anforderungsmenge. Ein
 \emph{Anforderungsgraph} ist ein gerichteter Graph
 $G_{\mathcal{R}} = (\mathcal{R}, E_{\mathcal{R}})$, wobei
 $(r_i, r_j) \in E_{\mathcal{R}}$ genau dann gilt, wenn $r_j$ eine Verfeinerung oder
-AbhÃ¤ngigkeit von $r_i$ darstellt.
+Abhängigkeit von $r_i$ darstellt.
 \end{definition}
 
 \begin{definition}[Hierarchische Graphzerlegung]
@@ -285,15 +285,15 @@ $G_k$ die Konkretisierung der Ebene $k$ darstellt.
 
 \subsection{Das Graphmodell-Theorem}
 
-\begin{satz}[OptimalitÃ¤t der Graphdarstellung fÃ¼r Managementsichten]
+\begin{satz}[Optimalität der Graphdarstellung für Managementsichten]
 \label{satz:graphoptimal}
-Sei $\mathcal{S}$ eine Menge mÃ¶glicher Modellierungsparadigmen fÃ¼r Anforderungen an ein
+Sei $\mathcal{S}$ eine Menge möglicher Modellierungsparadigmen für Anforderungen an ein
 Informationssystem. Die Graphdarstellung
-$\mathcal{G} \in \mathcal{S}$ erfÃ¼llt unter allen Elementen von $\mathcal{S}$ gleichzeitig:
+$\mathcal{G} \in \mathcal{S}$ erfüllt unter allen Elementen von $\mathcal{S}$ gleichzeitig:
 \begin{enumerate}
-  \item \textbf{VollstÃ¤ndigkeit:} Jede endliche Menge von Anforderungen mit
-        AbhÃ¤ngigkeitsbeziehungen lÃ¤sst sich als Graph darstellen.
-  \item \textbf{Lesbarkeit:} Ein EntscheidungstrÃ¤ger ohne tiefe technische Ausbildung kann
+  \item \textbf{Vollständigkeit:} Jede endliche Menge von Anforderungen mit
+        Abhängigkeitsbeziehungen lässt sich als Graph darstellen.
+  \item \textbf{Lesbarkeit:} Ein Entscheidungsträger ohne tiefe technische Ausbildung kann
         einen Anforderungsgraphen visuell nachvollziehen.
   \item \textbf{Hierarchisierbarkeit:} Anforderungen lassen sich in beliebig vielen
         Hierarchieebenen darstellen (vgl.\ Definition~\ref{def:hierarchie}).
@@ -305,41 +305,41 @@ $\mathcal{G} \in \mathcal{S}$ erfÃ¼llt unter allen Elementen von $\mathcal{S}$
 \begin{proof}
 Wir beweisen jede der vier Eigenschaften separat.
 
-\textbf{(1) VollstÃ¤ndigkeit.}
+\textbf{(1) Vollständigkeit.}
 Sei $\mathcal{R} = \{r_1, \ldots, r_k\}$ eine endliche Anforderungsmenge mit
-AbhÃ¤ngigkeitsrelation $\prec\;\subseteq \mathcal{R} \times \mathcal{R}$.
+Abhängigkeitsrelation $\prec\;\subseteq \mathcal{R} \times \mathcal{R}$.
 Setze $V := \mathcal{R}$ und $E := \{(r_i, r_j) \mid r_i \prec r_j\}$.
 Dann ist $G_\mathcal{R} = (V, E)$ ein wohldefinierter gerichteter Graph, der die
-gesamte Anforderungsstruktur vollstÃ¤ndig kodiert. $\square$
+gesamte Anforderungsstruktur vollständig kodiert. $\square$
 
 \textbf{(2) Lesbarkeit.}
 Graphen sind durch Jahrzehnte der Visualisierungsforschung das am besten
-verstandene Werkzeug fÃ¼r relationale Strukturen. Layoutalgorithmen
+verstandene Werkzeug für relationale Strukturen. Layoutalgorithmen
 (Sugiyama-Framework~\cite{sugiyama1981}, force-directed~\cite{fruchterman1991})
 erzeugen aus $G_\mathcal{R}$ eine planare oder nahezu planare Darstellung, die ein
 Manager in $O(|V|)$ Zeit visuell traversieren kann, ohne die mathematische
 Struktur zu kennen. $\square$
 
 \textbf{(3) Hierarchisierbarkeit.}
-Sei $G_0 = G_\mathcal{R}$ der Anforderungsgraph der obersten Ebene. FÃ¼r jedes
+Sei $G_0 = G_\mathcal{R}$ der Anforderungsgraph der obersten Ebene. Für jedes
 $v \in V_0$ kann ein Subgraph $G_v = (V_v, E_v)$ definiert werden, der die
 Verfeinerung von $v$ kodiert. Dies ergibt eine Baumstruktur der Tiefe $d$, wobei
-$d$ durch die SystemkomplexitÃ¤t begrenzt ist. Da Graphen selbst rekursiv als
-Knoten dienen kÃ¶nnen (vgl.\ Hypergraphen), ist die Hierarchietiefe prinzipiell
-unbeschrÃ¤nkt. $\square$
+$d$ durch die Systemkomplexität begrenzt ist. Da Graphen selbst rekursiv als
+Knoten dienen können (vgl.\ Hypergraphen), ist die Hierarchietiefe prinzipiell
+unbeschränkt. $\square$
 
 \textbf{(4) Formale Verarbeitbarkeit.}
 Die Adjazenzmatrix $A \in \{0,1\}^{n \times n}$ eines Anforderungsgraphen
-mit $n = |\mathcal{R}|$ kodiert alle strukturellen Informationen in einer fÃ¼r
+mit $n = |\mathcal{R}|$ kodiert alle strukturellen Informationen in einer für
 den Subgraph Algorithmus unmittelbar verarbeitbaren Form
 (vgl.\ Abschnitt~\ref{sec:subgraph}). Jede Anforderungsbeziehung
 $(r_i, r_j) \in E$ entspricht $A_{ij} = 1$. $\square$
 
-Kein anderes in $\mathcal{S}$ enthaltenes Paradigma -- weder freier FlieÃŸtext noch
-tabellarische Darstellungen noch mathematische Formeln allein -- erfÃ¼llt alle vier
-Bedingungen gleichzeitig. FlieÃŸtext ist nicht formal verarbeitbar (verletzt~4).
+Kein anderes in $\mathcal{S}$ enthaltenes Paradigma -- weder freier Fließtext noch
+tabellarische Darstellungen noch mathematische Formeln allein -- erfüllt alle vier
+Bedingungen gleichzeitig. Fließtext ist nicht formal verarbeitbar (verletzt~4).
 Tabellen sind nicht visuell hierarchisierbar (verletzt~3 und~2). Formeln allein sind
-fÃ¼r Manager nicht lesbar (verletzt~2). Damit ist die Graphdarstellung unter den
+für Manager nicht lesbar (verletzt~2). Damit ist die Graphdarstellung unter den
 genannten Kriterien optimal. $\blacksquare$
 \end{proof}
 
@@ -348,10 +348,10 @@ genannten Kriterien optimal. $\blacksquare$
 \includegraphics[width=\textwidth]{plot1_modellsicht.pdf}
 \caption{%
   \textbf{Links:} Graphische Anforderungssicht als gerichteter Graph von der
-  Managementebene (dunkelblau) Ã¼ber Subsysteme (grÃ¼n) bis zu einzelnen Modulen
+  Managementebene (dunkelblau) über Subsysteme (grün) bis zu einzelnen Modulen
   (orange) und Zielcode (rot). Die hierarchische Struktur kodiert unmittelbar die
-  AbhÃ¤ngigkeiten aller Anforderungen.
-  \textbf{Rechts:} Die vollstÃ¤ndige Transformationskette vom Graphmodell Ã¼ber die
+  Abhängigkeiten aller Anforderungen.
+  \textbf{Rechts:} Die vollständige Transformationskette vom Graphmodell über die
   Beschreibungssprache bis zum Zielcode, wobei die Ingenieurverantwortung auf der
   Transformationsstufe liegt.%
 }
@@ -360,15 +360,15 @@ genannten Kriterien optimal. $\blacksquare$
 
 Abbildung~\ref{fig:modellsicht} veranschaulicht den in Satz~\ref{satz:graphoptimal}
 bewiesenen Sachverhalt. Die linke Seite zeigt einen typischen Anforderungsgraphen,
-wie er einem EntscheidungstrÃ¤ger prÃ¤sentiert werden kann. Die rechte Seite
+wie er einem Entscheidungsträger präsentiert werden kann. Die rechte Seite
 illustriert die in Satz~\ref{satz:graphoptimal}~(4) beschriebene Transformationskette,
-die der Ingenieur vollstÃ¤ndig verantwortet.
+die der Ingenieur vollständig verantwortet.
 
 \begin{korollar}[Graphen als universelle Anforderungssprache]
 \label{kor:graphuniv}
-FÃ¼r jedes Informationssystem $\mathcal{IS} = (\mathcal{R}, \mathcal{I})$ existiert ein
+Für jedes Informationssystem $\mathcal{IS} = (\mathcal{R}, \mathcal{I})$ existiert ein
 Anforderungsgraph $G_\mathcal{R}$ (vgl.\ Definition~\ref{def:anfgraph}), der
-$\mathcal{R}$ vollstÃ¤ndig und eindeutig darstellt.
+$\mathcal{R}$ vollständig und eindeutig darstellt.
 \end{korollar}
 
 \begin{proof}
@@ -376,26 +376,26 @@ Folgt unmittelbar aus Teil~(1) von Satz~\ref{satz:graphoptimal}. $\blacksquare$
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Die Beschreibungssprache: MÃ¤chtigkeit und Erlernbarkeit}
+\section{Die Beschreibungssprache: Mächtigkeit und Erlernbarkeit}
 \label{sec:beschreibungssprache}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Anforderungen an die Beschreibungssprache}
 
-Das Ausgangszitat stellt zwei auf den ersten Blick widersprÃ¼chliche Anforderungen:
+Das Ausgangszitat stellt zwei auf den ersten Blick widersprüchliche Anforderungen:
 
 \begin{itemize}
-  \item Die Beschreibungssprache muss \emph{sehr mÃ¤chtig} sein -- \enquote{mit der mÃ¶glichst
-        jedes naturwissenschaftliche PhÃ¤nomen oder Verhalten abgebildet werden kann}.
-  \item Die Beschreibungssprache muss \emph{leicht erlernbar} sein -- \enquote{die mÃ¶glichst
+  \item Die Beschreibungssprache muss \emph{sehr mächtig} sein -- \enquote{mit der möglichst
+        jedes naturwissenschaftliche Phänomen oder Verhalten abgebildet werden kann}.
+  \item Die Beschreibungssprache muss \emph{leicht erlernbar} sein -- \enquote{die möglichst
         alle Ingenieure verstehen}.
 \end{itemize}
 
-Wir formalisieren diese Anforderungen und zeigen, dass sie keineswegs widersprÃ¼chlich sind.
+Wir formalisieren diese Anforderungen und zeigen, dass sie keineswegs widersprüchlich sind.
 
 \begin{definition}[Beschreibungssprache]
 \label{def:beschrsprache}
-Eine \emph{Beschreibungssprache} $\mathcal{L}$ fÃ¼r Informationssysteme ist ein Tupel
+Eine \emph{Beschreibungssprache} $\mathcal{L}$ für Informationssysteme ist ein Tupel
 \[
   \mathcal{L} = (\Sigma, P, S, \mu)
 \]
@@ -404,10 +404,10 @@ $\mu: L(\mathcal{L}) \to \mathsf{Sys}$ eine Interpretationsfunktion ist, die jed
 Phrase der Sprache auf ein System abbildet.
 \end{definition}
 
-\begin{definition}[AusdrucksmÃ¤chtigkeit]
+\begin{definition}[Ausdrucksmächtigkeit]
 \label{def:maechtigkeit}
-Die \emph{AusdrucksmÃ¤chtigkeit} $\mathsf{Pow}(\mathcal{L})$ einer Beschreibungssprache
-$\mathcal{L}$ ist definiert als die MÃ¤chtigkeit der Menge der durch $\mathcal{L}$
+Die \emph{Ausdrucksmächtigkeit} $\mathsf{Pow}(\mathcal{L})$ einer Beschreibungssprache
+$\mathcal{L}$ ist definiert als die Mächtigkeit der Menge der durch $\mathcal{L}$
 beschreibbaren Systeme:
 \[
   \mathsf{Pow}(\mathcal{L}) := |\{S \in \mathsf{Sys} \mid \exists w \in L(\mathcal{L}): \mu(w) = S\}|.
@@ -417,40 +417,40 @@ beschreibbaren Systeme:
 \begin{definition}[Erlernbarkeit]
 \label{def:erlernbarkeit}
 Die \emph{Erlernbarkeit} $\mathsf{Learn}(\mathcal{L})$ einer Sprache $\mathcal{L}$ ist eine
-normierte GrÃ¶ÃŸe in $[0, 1]$, die invers proportional zur kognitiven Last
+normierte Größe in $[0, 1]$, die invers proportional zur kognitiven Last
 $\mathsf{CL}(\mathcal{L})$ ist:
 \[
   \mathsf{Learn}(\mathcal{L}) := \frac{1}{1 + \mathsf{CL}(\mathcal{L})},
 \]
 wobei $\mathsf{CL}(\mathcal{L})$ durch die Anzahl der Syntaxregeln, die
-Lernkurve und die notwendige DomÃ¤nenvorkenntnis bestimmt wird.
+Lernkurve und die notwendige Domänenvorkenntnis bestimmt wird.
 \end{definition}
 
-\subsection{Das MÃ¤chtigkeitstheorem}
+\subsection{Das Mächtigkeitstheorem}
 
 \begin{satz}[Existenz der optimalen Beschreibungssprache]
 \label{satz:optsprache}
-Es existiert eine Beschreibungssprache $\mathcal{L}^*$, die beide Anforderungen erfÃ¼llt:
+Es existiert eine Beschreibungssprache $\mathcal{L}^*$, die beide Anforderungen erfüllt:
 \begin{enumerate}
-  \item \textbf{Universelle MÃ¤chtigkeit:} $\mathcal{L}^*$ ist Turing-vollstÃ¤ndig, d.h.
+  \item \textbf{Universelle Mächtigkeit:} $\mathcal{L}^*$ ist Turing-vollständig, d.h.
         jedes berechenbare System ist durch $\mathcal{L}^*$ beschreibbar.
   \item \textbf{Erlernbarkeit:} $\mathsf{Learn}(\mathcal{L}^*)$ liegt im Bereich
         praktisch erlernbarer Sprachen, d.h.\ ein Ingenieur kann $\mathcal{L}^*$ in
-        einem Ã¼berschaubaren Zeitrahmen beherrschen.
+        einem überschaubaren Zeitrahmen beherrschen.
 \end{enumerate}
 \end{satz}
 
 \begin{proof}
-\textbf{(1) Turing-VollstÃ¤ndigkeit als MÃ¤chtigkeitsuntergrenze.}
-Da der Ingenieur laut Ausgangszitat \enquote{mÃ¶glichst jedes naturwissenschaftliche PhÃ¤nomen}
-beschreiben kÃ¶nnen muss, ist Turing-VollstÃ¤ndigkeit die notwendige Mindestanforderung.
-Jede Turing-vollstÃ¤ndige Sprache kann alle berechenbaren Funktionen ausdrÃ¼cken, also
+\textbf{(1) Turing-Vollständigkeit als Mächtigkeitsuntergrenze.}
+Da der Ingenieur laut Ausgangszitat \enquote{möglichst jedes naturwissenschaftliche Phänomen}
+beschreiben können muss, ist Turing-Vollständigkeit die notwendige Mindestanforderung.
+Jede Turing-vollständige Sprache kann alle berechenbaren Funktionen ausdrücken, also
 insbesondere alle physikalischen Simulationsmodelle, Differentialgleichungen,
 endliche Automaten und Kommunikationsprotokolle~\cite{turing1936}.
 
-\textbf{(2) Vereinbarkeit von MÃ¤chtigkeit und Erlernbarkeit.}
+\textbf{(2) Vereinbarkeit von Mächtigkeit und Erlernbarkeit.}
 Wir beweisen durch Konstruktion.
-Sei $\lambda$-KalkÃ¼l $\mathcal{L}_\lambda$ eine Turing-vollstÃ¤ndige Sprache mit
+Sei $\lambda$-Kalkül $\mathcal{L}_\lambda$ eine Turing-vollständige Sprache mit
 minimaler Syntax (drei Regeln: Variablen, Abstraktionen, Applikationen).
 Dann gilt $\mathsf{CL}(\mathcal{L}_\lambda) < \infty$ und
 $\mathsf{Pow}(\mathcal{L}_\lambda) = |\mathsf{Sys}_{\text{berechenbar}}|$.
@@ -459,9 +459,9 @@ $\mathsf{Learn}(\mathcal{L}_\lambda) > 0$.
 
 Praktische Sprachen wie SystemC, VHDL oder eine dedizierte
 Systembeschreibungssprache (SDL, LOTOS, PSL) bauen auf diesem Prinzip auf und
-erweitern die Syntax um domÃ¤nenspezifische Konstrukte, ohne die Erlernbarkeit
+erweitern die Syntax um domänenspezifische Konstrukte, ohne die Erlernbarkeit
 prinzipiell aufzugeben. Es existiert somit ein Kompromiss $\mathcal{L}^*$, der beide
-Bedingungen erfÃ¼llt. $\blacksquare$
+Bedingungen erfüllt. $\blacksquare$
 \end{proof}
 
 \begin{figure}[ht]
@@ -469,12 +469,12 @@ Bedingungen erfÃ¼llt. $\blacksquare$
 \includegraphics[width=\textwidth]{plot2_sprachen.pdf}
 \caption{%
   \textbf{Links:} Beschreibungssprachen im zweidimensionalen Raum von
-  AusdrucksmÃ¤chtigkeit und Erlernbarkeit. Der blau gestrichelte Idealbereich kennzeichnet
-  das Optimum nach Satz~\ref{satz:optsprache}: hohe MÃ¤chtigkeit bei gleichzeitig guter
+  Ausdrucksmächtigkeit und Erlernbarkeit. Der blau gestrichelte Idealbereich kennzeichnet
+  das Optimum nach Satz~\ref{satz:optsprache}: hohe Mächtigkeit bei gleichzeitig guter
   Erlernbarkeit. Die ideale Beschreibungssprache (dunkelblau) befindet sich im
-  Idealbereich, wÃ¤hrend Assembler (maximal mÃ¤chtig, minimal erlernbar) und grafische
-  Notation (erlernbar, aber nicht mÃ¤chtig genug) auÃŸerhalb liegen.
-  \textbf{Rechts:} QualitÃ¤tsvergleich zwischen Code-Generierung aus graphischer
+  Idealbereich, während Assembler (maximal mächtig, minimal erlernbar) und grafische
+  Notation (erlernbar, aber nicht mächtig genug) außerhalb liegen.
+  \textbf{Rechts:} Qualitätsvergleich zwischen Code-Generierung aus graphischer
   Modellierung und direkter Beschreibungssprache in sechs Merkmalen. Die direkte
   Beschreibungssprache dominiert in allen Dimensionen.%
 }
@@ -482,10 +482,10 @@ Bedingungen erfÃ¼llt. $\blacksquare$
 \end{figure}
 
 Abbildung~\ref{fig:sprachen}~(links) zeigt die Positionierung bekannter Sprachen im
-Raum aus MÃ¤chtigkeit und Erlernbarkeit. Der Idealbereich wird von der in
+Raum aus Mächtigkeit und Erlernbarkeit. Der Idealbereich wird von der in
 Satz~\ref{satz:optsprache} konstruierten Sprache $\mathcal{L}^*$ besetzt. Die rechte
 Seite von Abbildung~\ref{fig:sprachen} belegt numerisch, dass die direkte Beschreibungssprache
-der Code-Generierung in allen sechs gemessenen QualitÃ¤tsmerkmalen Ã¼berlegen ist.
+der Code-Generierung in allen sechs gemessenen Qualitätsmerkmalen überlegen ist.
 
 \subsection{Die Rolle der Beschreibungssprache als letzte Sprache vor der Transformation}
 
@@ -496,7 +496,7 @@ Transformation}, d.h.\ zwischen $\mathcal{L}^*$ und der Zielsprache $\mathcal{L}
 \end{these}
 
 Diese These ist zentral: Jeder Zwischenschritt zwischen Beschreibungssprache und Zielcode
-ist eine Fehlerquelle. Die MinimalitÃ¤t des Transformationspfads ist daher nicht nur eine
+ist eine Fehlerquelle. Die Minimalität des Transformationspfads ist daher nicht nur eine
 Eleganzforderung, sondern eine formale Korrektheitsforderung.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -510,7 +510,7 @@ Eleganzforderung, sondern eine formale Korrektheitsforderung.
 \label{def:transformation}
 Eine \emph{Transformation} $\tau: L(\mathcal{L}^*) \to L(\mathcal{L}_{\text{Ziel}})$
 ist eine strukturerhaltende Abbildung von der Beschreibungssprache in die Zielsprache,
-sodass fÃ¼r alle $w \in L(\mathcal{L}^*)$ gilt:
+sodass für alle $w \in L(\mathcal{L}^*)$ gilt:
 \[
   \mu_{\text{Ziel}}(\tau(w)) = \mu^*(w),
 \]
@@ -519,50 +519,50 @@ d.h.\ das transformierte Programm hat dieselbe Semantik wie die Beschreibung.
 
 \begin{satz}[Ingenieurverantwortung als Korrektheitsbedingung]
 \label{satz:ingverantwortung}
-Sei $\tau$ eine Transformation gemÃ¤ÃŸ Definition~\ref{def:transformation}.
+Sei $\tau$ eine Transformation gemäß Definition~\ref{def:transformation}.
 Die Korrektheit von $\tau$ -- d.h.\ die Eigenschaft $\mu_{\text{Ziel}}(\tau(w)) = \mu^*(w)$
-fÃ¼r alle $w$ -- kann nur durch den Ingenieur sichergestellt werden, der
+für alle $w$ -- kann nur durch den Ingenieur sichergestellt werden, der
 \begin{enumerate}
-  \item die vollstÃ¤ndige Anforderungsmenge $\mathcal{R}$ kennt,
+  \item die vollständige Anforderungsmenge $\mathcal{R}$ kennt,
   \item die Semantik der Beschreibungssprache $\mathcal{L}^*$ beherrscht,
   \item die Eigenschaften der Zielhardware und -sprache kennt.
 \end{enumerate}
-Kein automatischer Prozess kann diese Verantwortung vollstÃ¤ndig Ã¼bernehmen.
+Kein automatischer Prozess kann diese Verantwortung vollständig übernehmen.
 \end{satz}
 
 \begin{proof}
 \textbf{Schritt 1: Rices Theorem~\cite{rice1953}.}
-FÃ¼r jede nicht-triviale semantische Eigenschaft $P$ eines Programms ist die Frage,
+Für jede nicht-triviale semantische Eigenschaft $P$ eines Programms ist die Frage,
 ob $\tau(w)$ die Eigenschaft $P$ hat, unentscheidbar. Da Anforderungen
 $r_i \in \mathcal{R}$ im Allgemeinen semantische Eigenschaften kodieren
-(\enquote{das System verhÃ¤lt sich korrekt unter Bedingung $X$}), kann kein
-automatischer Prozess die vollstÃ¤ndige AnforderungserfÃ¼llung entscheiden.
+(\enquote{das System verhält sich korrekt unter Bedingung $X$}), kann kein
+automatischer Prozess die vollständige Anforderungserfüllung entscheiden.
 
-\textbf{Schritt 2: VollstÃ¤ndige Anforderungskenntnis.}
+\textbf{Schritt 2: Vollständige Anforderungskenntnis.}
 Sei $\mathcal{R} = \{r_1, \ldots, r_k\}$ mit $k > 0$.
 Ein automatischer Transformationsprozess $\hat{\tau}$ kennt nur die im Modell
 explizit kodierten Anforderungen $\mathcal{R}' \subseteq \mathcal{R}$.
 Implizite Anforderungen (Sicherheit, Echtzeitverhalten, Umweltbedingungen) sind
-i.\,Allg.\ nicht im Graphmodell vollstÃ¤ndig darstellbar (vgl.\ das VollstÃ¤ndigkeitsproblem
+i.\,Allg.\ nicht im Graphmodell vollständig darstellbar (vgl.\ das Vollständigkeitsproblem
 in Abschnitt~\ref{sec:codegen}).
 Damit gilt $\mathcal{R}' \subsetneq \mathcal{R}$ im Allgemeinen, und
-$\hat{\tau}$ kann $\tau$ nicht vollstÃ¤ndig ersetzen.
+$\hat{\tau}$ kann $\tau$ nicht vollständig ersetzen.
 
 \textbf{Schritt 3.}
-Der Ingenieur, als TrÃ¤ger aller drei in der Satzaussage genannten Kompetenzen,
-ist die einzige EntitÃ¤t, die $\tau$ korrekt ausfÃ¼hren kann. $\blacksquare$
+Der Ingenieur, als Träger aller drei in der Satzaussage genannten Kompetenzen,
+ist die einzige Entität, die $\tau$ korrekt ausführen kann. $\blacksquare$
 \end{proof}
 
-\subsection{Das Ingenieurziel: ZielnÃ¤he bei minimaler Wartungslast}
+\subsection{Das Ingenieurziel: Zielnähe bei minimaler Wartungslast}
 
 \begin{definition}[Ingenieuroptimum]
 \label{def:ingopt}
 Das \emph{Ingenieuroptimum} ist das Paar $(\alpha^*, \lambda^*)$ im Raum aus
-Abstraktionsgrad $\alpha \in [0,1]$ und ZielnÃ¤he $\zeta: [0,1] \to [0,1]$, das
+Abstraktionsgrad $\alpha \in [0,1]$ und Zielnähe $\zeta: [0,1] \to [0,1]$, das
 \[
   \max_\alpha \;\left[\zeta(\alpha) - \gamma \cdot \omega(\alpha)\right]
 \]
-maximiert, wobei $\zeta(\alpha)$ die Simulationstreue (ZielnÃ¤he), $\omega(\alpha)$ die
+maximiert, wobei $\zeta(\alpha)$ die Simulationstreue (Zielnähe), $\omega(\alpha)$ die
 Wartungslast und $\gamma > 0$ ein Gewichtungsparameter ist.
 \end{definition}
 
@@ -571,21 +571,21 @@ Wartungslast und $\gamma > 0$ ein Gewichtungsparameter ist.
 Unter den Annahmen:
 \begin{itemize}
   \item $\zeta: [0,1] \to [0,1]$ ist stetig und streng monoton fallend in $\alpha$
-        (hÃ¶here Abstraktion $\Rightarrow$ geringere ZielnÃ¤he),
+        (höhere Abstraktion $\Rightarrow$ geringere Zielnähe),
   \item $\omega: [0,1] \to [0,1]$ ist stetig und streng monoton steigend in $\alpha$
-        (niedrigere Abstraktion $\Rightarrow$ hÃ¶here Wartungslast),
+        (niedrigere Abstraktion $\Rightarrow$ höhere Wartungslast),
 \end{itemize}
 existiert ein eindeutiges Optimum $\alpha^* \in (0,1)$.
 \end{lemma}
 
 \begin{proof}
 Sei $f(\alpha) := \zeta(\alpha) - \gamma \cdot \omega(\alpha)$.
-Da $\zeta$ streng monoton fÃ¤llt und $\omega$ streng monoton steigt, ist
+Da $\zeta$ streng monoton fällt und $\omega$ streng monoton steigt, ist
 $f'(\alpha) = \zeta'(\alpha) - \gamma \cdot \omega'(\alpha)$.
 Mit $\zeta'(\alpha) < 0$ und $\omega'(\alpha) > 0$ gilt
 $f'(0) = \zeta'(0) - \gamma \cdot \omega'(0)$.
-FÃ¼r hinreichend kleine $\alpha$ Ã¼berwiegt der positive Beitrag von $\zeta$
-und fÃ¼r groÃŸe $\alpha$ der negative Beitrag von $\omega$.
+Für hinreichend kleine $\alpha$ überwiegt der positive Beitrag von $\zeta$
+und für große $\alpha$ der negative Beitrag von $\omega$.
 Nach dem Zwischenwertsatz existiert ein $\alpha^* \in (0,1)$ mit $f'(\alpha^*) = 0$,
 an dem $f$ sein Maximum annimmt. Die Eindeutigkeit folgt aus der Striktheit
 der Monotonieaussagen. $\blacksquare$
@@ -596,11 +596,11 @@ der Monotonieaussagen. $\blacksquare$
 \includegraphics[width=\textwidth]{plot3_ingenieur.pdf}
 \caption{%
   \textbf{Links:} Das Ingenieuroptimum (roter gestrichelter Bereich) als Kompromiss
-  zwischen maximaler Simulationstreue (ZielnÃ¤he, blau) und minimaler
-  Wartungslast (grÃ¼n). Die optimale Beschreibungssprache positioniert den Ingenieur
-  nahe an der Zielhardware, ohne in maschinennahe AbhÃ¤ngigkeiten zu verfallen.
-  \textbf{Rechts:} Die VollstÃ¤ndigkeitslÃ¼cke zwischen Code-Generierung (rot) und
-  direkter Beschreibungssprache (blau) wÃ¤chst mit steigender SystemkomplexitÃ¤t
+  zwischen maximaler Simulationstreue (Zielnähe, blau) und minimaler
+  Wartungslast (grün). Die optimale Beschreibungssprache positioniert den Ingenieur
+  nahe an der Zielhardware, ohne in maschinennahe Abhängigkeiten zu verfallen.
+  \textbf{Rechts:} Die Vollständigkeitslücke zwischen Code-Generierung (rot) und
+  direkter Beschreibungssprache (blau) wächst mit steigender Systemkomplexität
   superlinear an -- ein formales Argument gegen automatische Code-Generierung.%
 }
 \label{fig:ingenieur}
@@ -609,97 +609,97 @@ der Monotonieaussagen. $\blacksquare$
 Abbildung~\ref{fig:ingenieur}~(links) visualisiert das in Lemma~\ref{lem:ingopt}
 bewiesene Optimum. Die optimale Beschreibungssprache $\mathcal{L}^*$ platziert den
 Ingenieur bei $\alpha \approx 0{,}35$, was einer Sprache entspricht, die nah genug an der
-Hardware ist, um echte Simulation zu ermÃ¶glichen, aber abstrakt genug, um Wartbarkeit
-und Wiederverwendbarkeit zu gewÃ¤hrleisten.
+Hardware ist, um echte Simulation zu ermöglichen, aber abstrakt genug, um Wartbarkeit
+und Wiederverwendbarkeit zu gewährleisten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Code-Generierung: Notwendigkeit und Grenzen}
 \label{sec:codegen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Das VollstÃ¤ndigkeitsproblem}
+\subsection{Das Vollständigkeitsproblem}
 
-Das Ausgangszitat identifiziert prÃ¤zise das Kernproblem der Code-Generierung:
+Das Ausgangszitat identifiziert präzise das Kernproblem der Code-Generierung:
 \enquote{Das Problem an der graphischen Modellierung ist, als Ingenieur immer die Unsicherheit
 zu tragen, dass zwischen graphischer Modellierung und der Zielhardware die Abbildung aller
-Anforderungen nicht vollstÃ¤ndig ist.}
+Anforderungen nicht vollständig ist.}
 
-\begin{definition}[VollstÃ¤ndigkeitslÃ¼cke]
+\begin{definition}[Vollständigkeitslücke]
 \label{def:vollstaendigkeit}
 Sei $G_\mathcal{R}$ ein Anforderungsgraph und $\hat{\tau}_{CG}: G_\mathcal{R} \to \mathcal{L}_{\text{Ziel}}$
-ein Code-Generierungsverfahren. Die \emph{VollstÃ¤ndigkeitslÃ¼cke} ist definiert als
+ein Code-Generierungsverfahren. Die \emph{Vollständigkeitslücke} ist definiert als
 \[
   \Delta(\hat{\tau}_{CG}) := \mathcal{R} \setminus \{r \in \mathcal{R} \mid
   \mu_{\text{Ziel}}(\hat{\tau}_{CG}(G_\mathcal{R})) \models r\},
 \]
-d.h.\ die Menge der Anforderungen, die die Code-Generierung nicht erfÃ¼llt.
+d.h.\ die Menge der Anforderungen, die die Code-Generierung nicht erfüllt.
 \end{definition}
 
-\begin{satz}[Nichtleerheit der VollstÃ¤ndigkeitslÃ¼cke]
+\begin{satz}[Nichtleerheit der Vollständigkeitslücke]
 \label{satz:luecke}
-FÃ¼r jedes praktische Code-Generierungsverfahren $\hat{\tau}_{CG}$ gilt:
+Für jedes praktische Code-Generierungsverfahren $\hat{\tau}_{CG}$ gilt:
 \[
   \Delta(\hat{\tau}_{CG}) \neq \emptyset.
 \]
-Das heiÃŸt, kein Code-Generierungsverfahren kann alle Anforderungen eines realen
-Informationssystems aus einem Graphmodell heraus vollstÃ¤ndig abbilden.
+Das heißt, kein Code-Generierungsverfahren kann alle Anforderungen eines realen
+Informationssystems aus einem Graphmodell heraus vollständig abbilden.
 \end{satz}
 
 \begin{proof}
-Wir fÃ¼hren den Beweis durch Konstruktion eines Gegenbeispiels und durch ein
+Wir führen den Beweis durch Konstruktion eines Gegenbeispiels und durch ein
 informationstheoretisches Argument.
 
 \textbf{Informationstheoretisches Argument.}
 Ein Anforderungsgraph $G_\mathcal{R}$ kodiert die Anforderungen $\mathcal{R}$ in Form
-der Adjazenzmatrix $A \in \{0,1\}^{n \times n}$. Diese Matrix trÃ¤gt $n^2$ Bits Information.
-Die Menge $\mathcal{R}$ eines realen Systems enthÃ¤lt jedoch auch implizite Anforderungen
-(Timing-Verhalten, elektromagnetische VertrÃ¤glichkeit, Ressourcenverbrauch, Sicherheitseigenschaften),
-die im Graphmodell nicht vollstÃ¤ndig kodierbar sind, da deren Darstellung eine
-semantische Reichhaltigkeit erfordert, die Ã¼ber binÃ¤re Adjazenz hinausgeht.
+der Adjazenzmatrix $A \in \{0,1\}^{n \times n}$. Diese Matrix trägt $n^2$ Bits Information.
+Die Menge $\mathcal{R}$ eines realen Systems enthält jedoch auch implizite Anforderungen
+(Timing-Verhalten, elektromagnetische Verträglichkeit, Ressourcenverbrauch, Sicherheitseigenschaften),
+die im Graphmodell nicht vollständig kodierbar sind, da deren Darstellung eine
+semantische Reichhaltigkeit erfordert, die über binäre Adjazenz hinausgeht.
 
 Formal: Sei $I(\mathcal{R})$ der Informationsgehalt aller Anforderungen und
 $I(G_\mathcal{R})$ der Informationsgehalt des Anforderungsgraphen. Dann gilt
 \[
   I(\mathcal{R}) > I(G_\mathcal{R}) = O(n^2 \log 2) = O(n^2)
 \]
-fÃ¼r alle praktisch relevanten Systeme mit nicht-trivialen impliziten Anforderungen.
+für alle praktisch relevanten Systeme mit nicht-trivialen impliziten Anforderungen.
 Da $\hat{\tau}_{CG}$ nur auf $G_\mathcal{R}$ zugreift, kann $\hat{\tau}_{CG}$
-den InformationsÃ¼berschuss $I(\mathcal{R}) - I(G_\mathcal{R}) > 0$ nicht verarbeiten,
+den Informationsüberschuss $I(\mathcal{R}) - I(G_\mathcal{R}) > 0$ nicht verarbeiten,
 und $\Delta(\hat{\tau}_{CG}) \neq \emptyset$. $\blacksquare$
 \end{proof}
 
-\subsection{Theorem Ã¼ber die UnnÃ¶tigkeit der Code-Generierung}
+\subsection{Theorem über die Unnötigkeit der Code-Generierung}
 
 \begin{satz}[Redundanz der Code-Generierung]
 \label{satz:codegen}
-Sei $\mathcal{L}^*$ eine optimale Beschreibungssprache gemÃ¤ÃŸ Satz~\ref{satz:optsprache}.
+Sei $\mathcal{L}^*$ eine optimale Beschreibungssprache gemäß Satz~\ref{satz:optsprache}.
 Dann ist Code-Generierung aus einem Graphmodell heraus
 \begin{enumerate}
-  \item \textbf{unnÃ¶tig}, da der Ingenieur die Beschreibungssprache $\mathcal{L}^*$ direkt
+  \item \textbf{unnötig}, da der Ingenieur die Beschreibungssprache $\mathcal{L}^*$ direkt
         verfassen kann, und
-  \item \textbf{schlechter}, da Code-Generierung die VollstÃ¤ndigkeitslÃ¼cke
-        $\Delta(\hat{\tau}_{CG}) \neq \emptyset$ erzeugt, wÃ¤hrend die direkte Beschreibung
-        in $\mathcal{L}^*$ diese LÃ¼cke schlieÃŸt.
+  \item \textbf{schlechter}, da Code-Generierung die Vollständigkeitslücke
+        $\Delta(\hat{\tau}_{CG}) \neq \emptyset$ erzeugt, während die direkte Beschreibung
+        in $\mathcal{L}^*$ diese Lücke schließt.
 \end{enumerate}
 \end{satz}
 
 \begin{proof}
-\textbf{(1) UnnÃ¶tigkeit.}
+\textbf{(1) Unnötigkeit.}
 Da $\mathcal{L}^*$ per Konstruktion (Satz~\ref{satz:optsprache}) leicht erlernbar ist,
-kann der Ingenieur direkt in $\mathcal{L}^*$ schreiben, ohne den Umweg Ã¼ber ein
-Graphmodell und eine anschlieÃŸende Generierung zu nehmen. Der Transformationspfad
+kann der Ingenieur direkt in $\mathcal{L}^*$ schreiben, ohne den Umweg über ein
+Graphmodell und eine anschließende Generierung zu nehmen. Der Transformationspfad
 \[
   \mathcal{R} \xrightarrow{\text{Ing.}} \mathcal{L}^* \xrightarrow{\tau} \mathcal{L}_{\text{Ziel}}
 \]
-ist kÃ¼rzer und direkter als der Pfad
+ist kürzer und direkter als der Pfad
 \[
   \mathcal{R} \xrightarrow{\text{Graph}} G_\mathcal{R} \xrightarrow{\hat{\tau}_{CG}} \mathcal{L}_{\text{Ziel}}.
 \]
 
-\textbf{(2) VollstÃ¤ndigkeitsÃ¼berlegenheit.}
+\textbf{(2) Vollständigkeitsüberlegenheit.}
 Aus Satz~\ref{satz:luecke} folgt $\Delta(\hat{\tau}_{CG}) \neq \emptyset$.
 Da der Ingenieur bei direkter Beschreibung in $\mathcal{L}^*$ alle Anforderungen
-$\mathcal{R}$ explizit berÃ¼cksichtigt (Satz~\ref{satz:ingverantwortung}), gilt:
+$\mathcal{R}$ explizit berücksichtigt (Satz~\ref{satz:ingverantwortung}), gilt:
 \[
   \Delta(\tau) = \mathcal{R} \setminus \{r \in \mathcal{R} \mid \mu_{\text{Ziel}}(\tau(w)) \models r\}
   = \emptyset
@@ -710,9 +710,9 @@ ist der Code-Generierung vorzuziehen. $\blacksquare$
 \end{proof}
 
 Abbildung~\ref{fig:ingenieur}~(rechts) illustriert den in Satz~\ref{satz:luecke} und
-Satz~\ref{satz:codegen} bewiesenen Sachverhalt: Die VollstÃ¤ndigkeitslÃ¼cke der
-Code-Generierung wÃ¤chst mit zunehmender SystemkomplexitÃ¤t superlinear an, wÃ¤hrend
-die direkte Beschreibungssprache auch bei groÃŸen Systemen eine nahezu vollstÃ¤ndige
+Satz~\ref{satz:codegen} bewiesenen Sachverhalt: Die Vollständigkeitslücke der
+Code-Generierung wächst mit zunehmender Systemkomplexität superlinear an, während
+die direkte Beschreibungssprache auch bei großen Systemen eine nahezu vollständige
 Anforderungsabdeckung erzielt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -731,7 +731,7 @@ Die \emph{Subgraph-Signatur} der Spalte $j$ ist definiert als
 \]
 \end{definition}
 
-\begin{satz}[InjektivitÃ¤t der Subgraph-Signatur]
+\begin{satz}[Injektivität der Subgraph-Signatur]
 \label{satz:injektiv}
 Die Signatur-Funktion $\sigma: \{0,1\}^n \times \{0,\ldots,n-1\} \to \mathbb{N}$
 ist injektiv.
@@ -742,7 +742,7 @@ Seien $(v, j) \neq (v', j')$ zwei verschiedene Spalten-Index-Paare.
 
 \textbf{Fall 1: $j = j'$, aber $v \neq v'$.}
 Dann unterscheiden sich $v$ und $v'$ in mindestens einem Bit $k$, d.h.\ $v_k \neq v'_k$.
-Damit gilt $\sigma_j(v) \neq \sigma_j(v')$, da die BinÃ¤rdarstellung $\sum_i v_i \cdot 2^i$
+Damit gilt $\sigma_j(v) \neq \sigma_j(v')$, da die Binärdarstellung $\sum_i v_i \cdot 2^i$
 injektiv ist (bijektive Abbildung von $\{0,1\}^n$ auf $\{0,\ldots,2^n-1\}$).
 
 \textbf{Fall 2: $j \neq j'$.}
@@ -758,18 +758,18 @@ Da $j \neq j'$, sind diese Intervalle disjunkt, also $\sigma_j(v) \neq \sigma_{j
 \label{satz:subgraphverif}
 Seien $G_\mathcal{R}$ der Anforderungsgraph und $G_\mathcal{I}$ der Implementierungsgraph
 eines Informationssystems. Der Subgraph Algorithmus entscheidet in $O(n^3)$ Zeit, ob
-$G_\mathcal{I}$ alle in $G_\mathcal{R}$ kodierten strukturellen Anforderungen erfÃ¼llt,
+$G_\mathcal{I}$ alle in $G_\mathcal{R}$ kodierten strukturellen Anforderungen erfüllt,
 d.h.\ ob $G_\mathcal{R} \subseteq G_\mathcal{I}$ gilt.
 \end{satz}
 
 \begin{proof}
-Der Subgraph Algorithmus berechnet fÃ¼r beide Graphen die Signatur-Arrays
+Der Subgraph Algorithmus berechnet für beide Graphen die Signatur-Arrays
 $\sigma^R = [\sigma_0^R, \ldots, \sigma_{n-1}^R]$ und
 $\sigma^I = [\sigma_0^I, \ldots, \sigma_{n-1}^I]$ in $O(n^2)$ Zeit.
-AnschlieÃŸend werden alle $n$ zyklischen Rotationen von $\sigma^I$ betrachtet und
+Anschließend werden alle $n$ zyklischen Rotationen von $\sigma^I$ betrachtet und
 mittels LCS-Algorithmus in $O(n^2)$ Zeit pro Rotation verglichen.
-GesamtkomplexitÃ¤t: $O(n^2) + n \cdot O(n^2) = O(n^3)$.
-Die Korrektheit folgt aus der InjektivitÃ¤t der Signatur (Satz~\ref{satz:injektiv})
+Gesamtkomplexität: $O(n^2) + n \cdot O(n^2) = O(n^3)$.
+Die Korrektheit folgt aus der Injektivität der Signatur (Satz~\ref{satz:injektiv})
 und dem Subgraph-Kriterium (LCS $\geq 2$). $\blacksquare$
 \end{proof}
 
@@ -777,28 +777,28 @@ und dem Subgraph-Kriterium (LCS $\geq 2$). $\blacksquare$
 \centering
 \includegraphics[width=\textwidth]{plot4_subgraph.pdf}
 \caption{%
-  \textbf{Links:} KomplexitÃ¤tsvergleich zwischen dem naiven Ansatz $O(n! \cdot n^2)$
+  \textbf{Links:} Komplexitätsvergleich zwischen dem naiven Ansatz $O(n! \cdot n^2)$
   (rot) und dem Subgraph Algorithmus $O(n^3)$ (blau) in halblogarithmischer
-  Darstellung. Bereits fÃ¼r $n = 12$ Module Ã¼berschreitet der naive Ansatz $10^{13}$
-  Schritte, wÃ¤hrend der Subgraph Algorithmus bei $1{,}7 \times 10^3$ bleibt.
-  \textbf{Rechts:} Die eindeutigen Spalten-Signaturen $\sigma_j$ fÃ¼r einen
-  zufÃ¤lligen 6-Knoten-Graphen. Die Inset-Abbildung zeigt die zugrundeliegende
-  Adjazenzmatrix. Die InjektivitÃ¤t (Satz~\ref{satz:injektiv}) ist unmittelbar
+  Darstellung. Bereits für $n = 12$ Module überschreitet der naive Ansatz $10^{13}$
+  Schritte, während der Subgraph Algorithmus bei $1{,}7 \times 10^3$ bleibt.
+  \textbf{Rechts:} Die eindeutigen Spalten-Signaturen $\sigma_j$ für einen
+  zufälligen 6-Knoten-Graphen. Die Inset-Abbildung zeigt die zugrundeliegende
+  Adjazenzmatrix. Die Injektivität (Satz~\ref{satz:injektiv}) ist unmittelbar
   erkennbar: kein Balken hat denselben Wert.%
 }
 \label{fig:subgraph}
 \end{figure}
 
 Abbildung~\ref{fig:subgraph} verdeutlicht, warum der Subgraph Algorithmus das
-Werkzeug der Wahl fÃ¼r die strukturelle Verifikation von Informationssystemen ist:
+Werkzeug der Wahl für die strukturelle Verifikation von Informationssystemen ist:
 Er ist exponentiell schneller als naive Alternativen und liefert durch die
-Signatur-InjektivitÃ¤t garantiert korrekte Ergebnisse.
+Signatur-Injektivität garantiert korrekte Ergebnisse.
 
 \subsection{Gesamtbild: Informationsingenieur, Graphmodell und Subgraph Algorithmus}
 
-\begin{korollar}[VollstÃ¤ndiges Verifikationssystem]
+\begin{korollar}[Vollständiges Verifikationssystem]
 \label{kor:vollstaendig}
-Das folgende System bildet eine vollstÃ¤ndige, formal begrÃ¼ndete Kette fÃ¼r
+Das folgende System bildet eine vollständige, formal begründete Kette für
 Informationssysteme:
 \[
   \mathcal{R}
@@ -827,24 +827,24 @@ Satz~\ref{satz:subgraphverif} (Schritt~5). $\blacksquare$
 \subsection{Einleitung: Warum eine Synthese notwendig ist}
 
 Die Berufsbilder des \emph{Informatikers} und des \emph{Softwareentwicklers} sind in der
-zweiten HÃ¤lfte des 20.~Jahrhunderts als historisch notwendige Spezialisierungen entstanden.
+zweiten Hälfte des 20.~Jahrhunderts als historisch notwendige Spezialisierungen entstanden.
 Der Informatiker trat an, um die theoretischen Grundlagen der Informationsverarbeitung zu
-legen -- Algorithmen, KomplexitÃ¤t, formale Sprachen, Logik, Datenstrukturen. Der
-Softwareentwickler trat an, um aus diesen Grundlagen lauffÃ¤hige, wartbare und auslieferbare
+legen -- Algorithmen, Komplexität, formale Sprachen, Logik, Datenstrukturen. Der
+Softwareentwickler trat an, um aus diesen Grundlagen lauffähige, wartbare und auslieferbare
 Software zu bauen -- Entwurfsmuster, Versionskontrolle, agile Prozesse, Testframeworks,
 Deployment-Pipelines.
 
 Beide Berufsbilder sind in sich legitim und wissenschaftlich fundiert. Dennoch zeigt die
 Ingenieurpraxis des 21.~Jahrhunderts eine wachsende strukturelle Spannung: Komplexe
 eingebettete Systeme, cyber-physische Systeme, sicherheitskritische Plattformen und
-verteilte Informationssysteme kÃ¶nnen weder allein vom Informatiker -- der den
-Implementierungskontext nicht vollstÃ¤ndig beherrscht -- noch allein vom Softwareentwickler
--- der die formale Systemtheorie nicht vollstÃ¤ndig beherrscht -- verantwortet werden.
+verteilte Informationssysteme können weder allein vom Informatiker -- der den
+Implementierungskontext nicht vollständig beherrscht -- noch allein vom Softwareentwickler
+-- der die formale Systemtheorie nicht vollständig beherrscht -- verantwortet werden.
 
-\begin{these}[UnvollstÃ¤ndigkeit der Einzelberufsbilder]
+\begin{these}[Unvollständigkeit der Einzelberufsbilder]
 \label{these:unvollst}
-FÃ¼r ein reales Informationssystem $\mathcal{IS} = (\mathcal{R}, \mathcal{I})$ der
-KomplexitÃ¤tsklasse $|\mathcal{R}| > R_0$ (wobei $R_0$ eine systemabhÃ¤ngige Schwelle
+Für ein reales Informationssystem $\mathcal{IS} = (\mathcal{R}, \mathcal{I})$ der
+Komplexitätsklasse $|\mathcal{R}| > R_0$ (wobei $R_0$ eine systemabhängige Schwelle
 bezeichnet) kann weder ein reiner Informatiker noch ein reiner Softwareentwickler
 die Verifikationskette
 \[
@@ -854,10 +854,10 @@ die Verifikationskette
   \xrightarrow{(3)} \tau
   \xrightarrow{(4)} \mathcal{L}_{\text{Ziel}}
 \]
-vollstÃ¤ndig und korrekt ausfÃ¼hren.
+vollständig und korrekt ausführen.
 \end{these}
 
-Diese These ist die eigentliche BegrÃ¼ndung, warum das Berufsbild des
+Diese These ist die eigentliche Begründung, warum das Berufsbild des
 Informationsingenieurs notwendig ist: Er ist keine additive Kombination von
 Informatiker und Softwareentwickler, sondern deren \emph{synthetische Erweiterung}.
 
@@ -871,12 +871,12 @@ Ein \emph{Informatiker} $\mathcal{CS}$ ist formal charakterisiert durch das Komp
 \]
 mit:
 \begin{itemize}
-  \item $T$: Theoretische Grundlagen (Berechenbarkeit, KomplexitÃ¤t, formale Sprachen,
+  \item $T$: Theoretische Grundlagen (Berechenbarkeit, Komplexität, formale Sprachen,
         Logik, Graphentheorie, Algorithmik),
   \item $A$: Algorithmisches Denken (Entwurf und Analyse effizienter Algorithmen),
   \item $F$: Formale Methoden (Modell-Checking, Beweis-Assistenten, Typsysteme),
-  \item $\emptyset$: Keine primÃ¤re Zielhardware-Kompetenz,
-  \item $\emptyset$: Keine primÃ¤re Transformationsverantwortung fÃ¼r Zielcode.
+  \item $\emptyset$: Keine primäre Zielhardware-Kompetenz,
+  \item $\emptyset$: Keine primäre Transformationsverantwortung für Zielcode.
 \end{itemize}
 \end{definition}
 
@@ -888,16 +888,16 @@ Ein \emph{Softwareentwickler} $\mathcal{SE}$ ist formal charakterisiert durch
 \]
 mit:
 \begin{itemize}
-  \item $\emptyset$: Keine primÃ¤re formale Theoriekompetenz,
+  \item $\emptyset$: Keine primäre formale Theoriekompetenz,
   \item $P$: Praktische Programmierkompetenz (Sprachen, Frameworks, Bibliotheken,
         Entwurfsmuster, Teststrategie),
-  \item $\emptyset$: Keine primÃ¤re Kompetenz in formalen Verifikationsmethoden,
+  \item $\emptyset$: Keine primäre Kompetenz in formalen Verifikationsmethoden,
   \item $C$: Code-Produktionskompetenz (Clean Code, Refactoring, CI/CD),
   \item $D$: Deployment-Kompetenz (Containerisierung, Cloud, DevOps).
 \end{itemize}
 \end{definition}
 
-\begin{definition}[Informationsingenieur -- vollstÃ¤ndige Fassung]
+\begin{definition}[Informationsingenieur -- vollständige Fassung]
 \label{def:infeng2}
 Der \emph{Informationsingenieur} $\mathcal{IE}$ ist formal charakterisiert durch
 \[
@@ -906,13 +906,13 @@ Der \emph{Informationsingenieur} $\mathcal{IE}$ ist formal charakterisiert durch
 wobei jede Komponente die entsprechenden Kompetenzen aus $\mathcal{CS}$ und
 $\mathcal{SE}$ synthetisiert und um spezifisch ingenieurtechnische Kompetenzen erweitert:
 \begin{itemize}
-  \item $K = T \cup A \cup F \cup P$: VollstÃ¤ndige Wissensbasis aus Theorie und Praxis,
-  \item $M$: ModellierungsvermÃ¶gen auf Graphebene (nicht in $\mathcal{CS}$ oder $\mathcal{SE}$
-        primÃ¤r vorhanden),
+  \item $K = T \cup A \cup F \cup P$: Vollständige Wissensbasis aus Theorie und Praxis,
+  \item $M$: Modellierungsvermögen auf Graphebene (nicht in $\mathcal{CS}$ oder $\mathcal{SE}$
+        primär vorhanden),
   \item $L = F \cup C$: Sprachkompetenz, die formale Methoden und praktische Codierung vereint,
   \item $R$: Transformationsverantwortung (nicht in $\mathcal{CS}$ oder $\mathcal{SE}$
         explizit adressiert),
-  \item $T = D \cup H$: Zielorientierung inkl.\ Hardwarebewusstsein $H$ (neu gegenÃ¼ber $\mathcal{CS}$
+  \item $T = D \cup H$: Zielorientierung inkl.\ Hardwarebewusstsein $H$ (neu gegenüber $\mathcal{CS}$
         und $\mathcal{SE}$).
 \end{itemize}
 \end{definition}
@@ -928,27 +928,27 @@ Es gilt die folgende Inklusionsbeziehung der Kompetenzmengen:
   \mathsf{Komp}(\mathcal{SE}) \subsetneq \mathsf{Komp}(\mathcal{IE}).
 \]
 Die Inklusion ist jeweils \emph{echt}: Der Informationsingenieur besitzt Kompetenzen,
-die weder im Informatiker noch im Softwareentwickler vollstÃ¤ndig vorhanden sind.
+die weder im Informatiker noch im Softwareentwickler vollständig vorhanden sind.
 \end{satz}
 
 \begin{proof}
 \textbf{Schritt 1: $\mathsf{Komp}(\mathcal{CS}) \subseteq \mathsf{Komp}(\mathcal{IE})$.}
-GemÃ¤ÃŸ Definition~\ref{def:informatiker} gilt
+Gemäß Definition~\ref{def:informatiker} gilt
 $\mathsf{Komp}(\mathcal{CS}) = \{T, A, F\}$.
-GemÃ¤ÃŸ Definition~\ref{def:infeng2} enthÃ¤lt $K$ die Mengen $T$, $A$ und $F$ als Teilmengen,
+Gemäß Definition~\ref{def:infeng2} enthält $K$ die Mengen $T$, $A$ und $F$ als Teilmengen,
 und $L \supseteq F$. Damit ist $\{T, A, F\} \subseteq \mathsf{Komp}(\mathcal{IE})$. $\square$
 
 \textbf{Schritt 2: $\mathsf{Komp}(\mathcal{SE}) \subseteq \mathsf{Komp}(\mathcal{IE})$.}
-GemÃ¤ÃŸ Definition~\ref{def:swentw} gilt
+Gemäß Definition~\ref{def:swentw} gilt
 $\mathsf{Komp}(\mathcal{SE}) = \{P, C, D\}$.
-GemÃ¤ÃŸ Definition~\ref{def:infeng2} enthÃ¤lt $K \ni P$, $L \ni C$ und $T \ni D$.
+Gemäß Definition~\ref{def:infeng2} enthält $K \ni P$, $L \ni C$ und $T \ni D$.
 Damit ist $\{P, C, D\} \subseteq \mathsf{Komp}(\mathcal{IE})$. $\square$
 
 \textbf{Schritt 3: Echte Inklusion.}
-Der Informationsingenieur besitzt die Kompetenz $M$ (ModellierungsvermÃ¶gen auf Graphebene),
+Der Informationsingenieur besitzt die Kompetenz $M$ (Modellierungsvermögen auf Graphebene),
 die Kompetenz $R$ (Transformationsverantwortung) und die Kompetenz $H$
 (explizites Hardwarebewusstsein). Keine dieser drei Kompetenzen ist in
-$\mathsf{Komp}(\mathcal{CS})$ oder $\mathsf{Komp}(\mathcal{SE})$ als primÃ¤re Eigenschaft
+$\mathsf{Komp}(\mathcal{CS})$ oder $\mathsf{Komp}(\mathcal{SE})$ als primäre Eigenschaft
 definiert. Damit ist die Inklusion echt:
 \[
   \mathsf{Komp}(\mathcal{CS}) \cup \mathsf{Komp}(\mathcal{SE}) \subsetneq \mathsf{Komp}(\mathcal{IE}).
@@ -958,7 +958,7 @@ definiert. Damit ist die Inklusion echt:
 
 \subsection{Detaillierter Kompetenzvergleich}
 
-Die folgende Tabelle vergleicht die drei Berufsbilder entlang der fÃ¼r
+Die folgende Tabelle vergleicht die drei Berufsbilder entlang der für
 Informationssysteme zentralen Kompetenzdimensionen systematisch.
 
 \begin{table}[ht]
@@ -969,7 +969,7 @@ Informationssysteme zentralen Kompetenzdimensionen systematisch.
 \textbf{Kompetenz} & \textbf{Informatiker} & \textbf{SW-Entwickler} & \textbf{Info-Ing.} \\
 \midrule
 Formale Berechenbarkeitstheorie  & \checkmark & -- & \checkmark \\
-KomplexitÃ¤tstheorie              & \checkmark & -- & \checkmark \\
+Komplexitätstheorie              & \checkmark & -- & \checkmark \\
 Graphentheorie                   & \checkmark & -- & \checkmark \\
 Algorithmik                      & \checkmark & (\checkmark) & \checkmark \\
 Formale Verifikation             & \checkmark & -- & \checkmark \\
@@ -986,57 +986,57 @@ Graphische Anforderungsmodellierung & -- & -- & \checkmark \\
 Hierarchische Systemdekomposition   & (\checkmark) & -- & \checkmark \\
 Beschreibungssprachen-Kompetenz     & -- & -- & \checkmark \\
 Transformations-\linebreak verantwortung        & -- & -- & \checkmark \\
-Hardwarebewusstsein / ZielnÃ¤he      & -- & -- & \checkmark \\
-VollstÃ¤ndigkeitsnachweis            & -- & -- & \checkmark \\
+Hardwarebewusstsein / Zielnähe      & -- & -- & \checkmark \\
+Vollständigkeitsnachweis            & -- & -- & \checkmark \\
 Sicherheitsnormen (ISO 26262 etc.)  & -- & -- & \checkmark \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \noindent
-\textbf{Legende:} \checkmark = primÃ¤re Kompetenz, (\checkmark) = Randkompetenz, -- = nicht primÃ¤r vorhanden.
+\textbf{Legende:} \checkmark = primäre Kompetenz, (\checkmark) = Randkompetenz, -- = nicht primär vorhanden.
 
-\subsection{Die historische Divergenz und ihre Ãœberwindung}
+\subsection{Die historische Divergenz und ihre Überwindung}
 
 \subsubsection{Entstehung der Trennung}
 
-Die Trennung von Informatik und Softwareentwicklung ist historisch erklÃ¤rbar. In den
+Die Trennung von Informatik und Softwareentwicklung ist historisch erklärbar. In den
 1950er und 1960er Jahren waren \emph{Informatik} (damals noch \enquote{Computing Science}
 oder \enquote{Mathematische Logik der Rechenmaschinen}) und \enquote{Programmierung}
 weitgehend identisch -- wer Programme schrieb, musste die mathematischen Grundlagen
-vollstÃ¤ndig beherrschen. Mit dem exponentiellen Wachstum der Softwareindustrie in
+vollständig beherrschen. Mit dem exponentiellen Wachstum der Softwareindustrie in
 den 1970er bis 1990er Jahren entstand jedoch ein massiver Bedarf an Programmierern,
 der durch akademisch ausgebildete Informatiker allein nicht zu decken war.
 
 Die Folge war eine Aufsplitterung: Einerseits vertiefte die akademische Informatik die
 theoretischen Grundlagen (Complexity Theory, Programmiersprachentheorie, KI-Grundlagen),
-andererseits professionalisierte sich die Softwareentwicklung als eigenstÃ¤ndiges
+andererseits professionalisierte sich die Softwareentwicklung als eigenständiges
 Handwerksberufsbild mit Zertifizierungen, Methodologien (XP, Scrum, Kanban) und
 industriellen Best Practices.
 
-\subsubsection{Konsequenzen der Trennung fÃ¼r Informationssysteme}
+\subsubsection{Konsequenzen der Trennung für Informationssysteme}
 
-Diese historische Trennung hat strukturelle Konsequenzen fÃ¼r die Entwicklung von
-Informationssystemen, die in der IngenieursrealitÃ¤t des 21.~Jahrhunderts sichtbar werden:
+Diese historische Trennung hat strukturelle Konsequenzen für die Entwicklung von
+Informationssystemen, die in der Ingenieursrealität des 21.~Jahrhunderts sichtbar werden:
 
 \begin{itemize}
   \item \textbf{Theorie-Praxis-Graben:} Formale Methoden, die in der akademischen
-        Informatik entwickelt wurden (Model Checking, Hoare-KalkÃ¼l, Typ-Theorie),
+        Informatik entwickelt wurden (Model Checking, Hoare-Kalkül, Typ-Theorie),
         finden in der industriellen Softwareentwicklung kaum Anwendung,
         weil Softwareentwickler nicht ausreichend ausgebildet sind, sie einzusetzen.
-  \item \textbf{Anforderungsverlust:} Informatiksysteme werden hÃ¤ufig ohne
+  \item \textbf{Anforderungsverlust:} Informatiksysteme werden häufig ohne
         formale Anforderungsmodellierung entwickelt -- der Softwareentwickler
         beginnt direkt mit der Codierung, ohne den Anforderungsgraphen
         $G_\mathcal{R}$ explizit zu konstruieren.
-  \item \textbf{VerifikationslÃ¼cke:} Die in Satz~\ref{satz:luecke} bewiesene
-        VollstÃ¤ndigkeitslÃ¼cke entsteht genau dort, wo kein Informationsingenieur
-        die Transformationsverantwortung trÃ¤gt.
-  \item \textbf{Hardwareabstraktion ohne RÃ¼ckkopplung:} Der Informatiker abstrahiert
-        von der Hardware, der Softwareentwickler ignoriert sie hÃ¤ufig; nur der
-        Informationsingenieur behÃ¤lt die Zielhardware bewusst im Blick.
+  \item \textbf{Verifikationslücke:} Die in Satz~\ref{satz:luecke} bewiesene
+        Vollständigkeitslücke entsteht genau dort, wo kein Informationsingenieur
+        die Transformationsverantwortung trägt.
+  \item \textbf{Hardwareabstraktion ohne Rückkopplung:} Der Informatiker abstrahiert
+        von der Hardware, der Softwareentwickler ignoriert sie häufig; nur der
+        Informationsingenieur behält die Zielhardware bewusst im Blick.
 \end{itemize}
 
-\begin{lemma}[Strukturelle LÃ¼cke der Einzelberufsbilder]
+\begin{lemma}[Strukturelle Lücke der Einzelberufsbilder]
 \label{lem:luecke_berufe}
 Sei $\mathcal{IS} = (\mathcal{R}, \mathcal{I})$ ein Informationssystem mit
 $|\mathcal{R}| > R_0$. Dann gilt:
@@ -1045,24 +1045,24 @@ $|\mathcal{R}| > R_0$. Dann gilt:
   \quad \text{und} \quad
   \Delta_{\mathcal{SE}}(\mathcal{IS}) \neq \emptyset,
 \]
-wobei $\Delta_X(\mathcal{IS})$ die VollstÃ¤ndigkeitslÃ¼cke bezeichnet, die entsteht,
-wenn ausschlieÃŸlich ein TrÃ¤ger des Berufsbilds $X$ das System verantwortet.
+wobei $\Delta_X(\mathcal{IS})$ die Vollständigkeitslücke bezeichnet, die entsteht,
+wenn ausschließlich ein Träger des Berufsbilds $X$ das System verantwortet.
 \end{lemma}
 
 \begin{proof}
-\textbf{FÃ¼r den Informatiker $\mathcal{CS}$:}
-Da $\mathcal{CS}$ keine primÃ¤re Transformationsverantwortung $R$ trÃ¤gt
+\textbf{Für den Informatiker $\mathcal{CS}$:}
+Da $\mathcal{CS}$ keine primäre Transformationsverantwortung $R$ trägt
 (Definition~\ref{def:informatiker}), fehlt die Kompetenz, die Transformation
-$\tau: L(\mathcal{L}^*) \to L(\mathcal{L}_{\text{Ziel}})$ vollstÃ¤ndig und korrekt
-auszufÃ¼hren. Nach Satz~\ref{satz:ingverantwortung} erfordert dies jedoch die
+$\tau: L(\mathcal{L}^*) \to L(\mathcal{L}_{\text{Ziel}})$ vollständig und korrekt
+auszuführen. Nach Satz~\ref{satz:ingverantwortung} erfordert dies jedoch die
 gleichzeitige Kenntnis von $\mathcal{R}$, $\mathcal{L}^*$ und der Zielhardware.
-Da $\mathcal{CS}$ die Zielhardware nicht primÃ¤r beherrscht
-(Definition~\ref{def:informatiker}: $\emptyset$ fÃ¼r Hardwarekompetenz), folgt
+Da $\mathcal{CS}$ die Zielhardware nicht primär beherrscht
+(Definition~\ref{def:informatiker}: $\emptyset$ für Hardwarekompetenz), folgt
 $\Delta_{\mathcal{CS}}(\mathcal{IS}) \neq \emptyset$. $\square$
 
-\textbf{FÃ¼r den Softwareentwickler $\mathcal{SE}$:}
-Da $\mathcal{SE}$ keine primÃ¤re formale Modellierungskompetenz $M$ trÃ¤gt
-(Definition~\ref{def:swentw}: $\emptyset$ fÃ¼r Theoriekompetenz), wird
+\textbf{Für den Softwareentwickler $\mathcal{SE}$:}
+Da $\mathcal{SE}$ keine primäre formale Modellierungskompetenz $M$ trägt
+(Definition~\ref{def:swentw}: $\emptyset$ für Theoriekompetenz), wird
 $G_\mathcal{R}$ nicht explizit konstruiert. Ohne $G_\mathcal{R}$ sind
 implizite Anforderungen nicht formal erfasst. Nach dem informationstheoretischen
 Argument aus Satz~\ref{satz:luecke} gilt dann
@@ -1074,29 +1074,29 @@ $\Delta_{\mathcal{SE}}(\mathcal{IS}) = \mathcal{R} \neq \emptyset$. $\blacksquar
 
 \subsubsection{Integration der theoretischen Grundlagen des Informatikers}
 
-Der Informationsingenieur Ã¼bernimmt aus dem Berufsbild des Informatikers:
+Der Informationsingenieur übernimmt aus dem Berufsbild des Informatikers:
 
 \begin{itemize}
   \item \textbf{Graphentheorie:} Die in Abschnitt~\ref{sec:graphmodell} entwickelte
         Theorie des Anforderungsgraphen $G_\mathcal{R}$ setzt direkte Kenntnisse
-        Ã¼ber gerichtete Graphen, Adjazenzmatrizen, Hierarchien und Teilgraphen voraus.
+        über gerichtete Graphen, Adjazenzmatrizen, Hierarchien und Teilgraphen voraus.
         Ohne die formale Graphentheorie ist die Modellsicht nicht konstruierbar.
-  \item \textbf{KomplexitÃ¤tstheorie:} Die Kenntnis der KomplexitÃ¤t des Subgraph Algorithmus
-        ($O(n^3)$, optimal unter SETH) ermÃ¶glicht dem Ingenieur, den Verifikationsaufwand
-        fÃ¼r ein gegebenes System abzuschÃ¤tzen und zu planen.
+  \item \textbf{Komplexitätstheorie:} Die Kenntnis der Komplexität des Subgraph Algorithmus
+        ($O(n^3)$, optimal unter SETH) ermöglicht dem Ingenieur, den Verifikationsaufwand
+        für ein gegebenes System abzuschätzen und zu planen.
   \item \textbf{Formale Sprachen und Automatentheorie:}
-        Die in Definition~\ref{def:beschrsprache} eingefÃ¼hrte Beschreibungssprache
+        Die in Definition~\ref{def:beschrsprache} eingeführte Beschreibungssprache
         $\mathcal{L}^*$ basiert direkt auf der formalen Sprachtheorie
         (Grammatiken, Produktionsregeln, Interpretation).
   \item \textbf{Logik und formale Verifikation:}
-        Der VollstÃ¤ndigkeitsnachweis $\Delta(\tau) = \emptyset$ setzt den Einsatz
-        formaler Logiken (Hoare-KalkÃ¼l, temporale Logik) voraus, die in der
+        Der Vollständigkeitsnachweis $\Delta(\tau) = \emptyset$ setzt den Einsatz
+        formaler Logiken (Hoare-Kalkül, temporale Logik) voraus, die in der
         Informatikausbildung grundgelegt werden.
 \end{itemize}
 
 \subsubsection{Integration der praktischen Kompetenz des Softwareentwicklers}
 
-Der Informationsingenieur Ã¼bernimmt aus dem Berufsbild des Softwareentwicklers:
+Der Informationsingenieur übernimmt aus dem Berufsbild des Softwareentwicklers:
 
 \begin{itemize}
   \item \textbf{Beschreibungssprachen-Beherrschung:}
@@ -1105,8 +1105,8 @@ Der Informationsingenieur Ã¼bernimmt aus dem Berufsbild des Softwareentwickler
         jahrelange Erfahrung im Schreiben, Refactoring und Testen von Beschreibungen --
         eine Kompetenz, die aus der Softwareentwicklungspraxis stammt.
   \item \textbf{Teststrategien:}
-        Um die Verifikationskette in Korollar~\ref{kor:vollstaendig} vollstÃ¤ndig
-        zu schlieÃŸen, mÃ¼ssen die Implementierungen in $\mathcal{L}_{\text{Ziel}}$
+        Um die Verifikationskette in Korollar~\ref{kor:vollstaendig} vollständig
+        zu schließen, müssen die Implementierungen in $\mathcal{L}_{\text{Ziel}}$
         systematisch getestet werden. TDD (Test-Driven Development), Regression-Tests
         und Code-Coverage-Analysen sind unabdingbare Werkzeuge.
   \item \textbf{Entwurfsmuster und Wiederverwendung:}
@@ -1117,82 +1117,82 @@ Der Informationsingenieur Ã¼bernimmt aus dem Berufsbild des Softwareentwickler
   \item \textbf{Versionskontrolle und Wartbarkeit:}
         Informationssysteme haben Lebenszyklen von Jahrzehnten. Die Werkzeuge der
         Softwareentwicklung -- Git, CI/CD, Semantic Versioning -- sind notwendige
-        Bedingungen fÃ¼r die langfristige Wartbarkeit.
+        Bedingungen für die langfristige Wartbarkeit.
 \end{itemize}
 
-\subsubsection{Die eigenstÃ¤ndigen Kompetenzen des Informationsingenieurs}
+\subsubsection{Die eigenständigen Kompetenzen des Informationsingenieurs}
 
-Jenseits der Synthese trÃ¤gt der Informationsingenieur Kompetenzen, die in keinem der
-beiden VorgÃ¤ngerberufsbilder vollstÃ¤ndig verankert sind:
+Jenseits der Synthese trägt der Informationsingenieur Kompetenzen, die in keinem der
+beiden Vorgängerberufsbilder vollständig verankert sind:
 
 \begin{enumerate}
   \item \textbf{Graphische Anforderungsmodellierung mit Managementschnittstelle:}
-        Die FÃ¤higkeit, $G_\mathcal{R}$ so zu konstruieren und zu visualisieren, dass
-        EntscheidungstrÃ¤ger ohne technische Tiefe die Anforderungsstruktur verstehen,
+        Die Fähigkeit, $G_\mathcal{R}$ so zu konstruieren und zu visualisieren, dass
+        Entscheidungsträger ohne technische Tiefe die Anforderungsstruktur verstehen,
         ist eine spezifisch ingenieurtechnische Kommunikationskompetenz.
 
   \item \textbf{Transformationsverantwortung als ethische Dimension:}
-        Die Verantwortung fÃ¼r die Korrektheit der Transformation
+        Die Verantwortung für die Korrektheit der Transformation
         $\tau: \mathcal{L}^* \to \mathcal{L}_{\text{Ziel}}$ ist nicht nur technisch,
-        sondern auch ethisch und rechtlich. Der Informationsingenieur steht fÃ¼r sein
-        Informationssystem gerade -- analog zum Bauingenieur, der fÃ¼r die Statik seines
+        sondern auch ethisch und rechtlich. Der Informationsingenieur steht für sein
+        Informationssystem gerade -- analog zum Bauingenieur, der für die Statik seines
         Bauwerks haftet.
 
   \item \textbf{Zielhardware-Bewusstsein als kontinuierliche Randbedingung:}
         Das Ingenieuroptimum aus Lemma~\ref{lem:ingopt} erfordert die kontinuierliche
-        AbwÃ¤gung zwischen Abstraktionsgrad und ZielnÃ¤he. Diese AbwÃ¤gung setzt
+        Abwägung zwischen Abstraktionsgrad und Zielnähe. Diese Abwägung setzt
         Hardwarewissen voraus, das weder in der Informatik noch in der
         Softwareentwicklung systematisch gelehrt wird.
 
-  \item \textbf{VollstÃ¤ndigkeitssicherung durch formale Methoden:}
+  \item \textbf{Vollständigkeitssicherung durch formale Methoden:}
         Der Nachweis $\Delta(\tau) = \emptyset$ -- d.h.\ die Sicherstellung, dass alle
-        Anforderungen in $\mathcal{R}$ durch die Implementierung erfÃ¼llt werden --
-        ist die zentrale Leistung des Informationsingenieurs, die Ã¼ber die bloÃŸe
-        FunktionalitÃ¤t (Softwareentwickler) und Ã¼ber die bloÃŸe formale Analyse
+        Anforderungen in $\mathcal{R}$ durch die Implementierung erfüllt werden --
+        ist die zentrale Leistung des Informationsingenieurs, die über die bloße
+        Funktionalität (Softwareentwickler) und über die bloße formale Analyse
         (Informatiker) hinausgeht.
 \end{enumerate}
 
-\subsection{Der Informationsingenieur als \{0,\,1\}-Ingenieur: Philosophische BegrÃ¼ndung}
+\subsection{Der Informationsingenieur als \{0,\,1\}-Ingenieur: Philosophische Begründung}
 
-Die Bezeichnung \emph{\{0,\,1\}-Ingenieur} verdient eine tiefere BegrÃ¼ndung.
+Die Bezeichnung \emph{\{0,\,1\}-Ingenieur} verdient eine tiefere Begründung.
 In der Quantenmechanik und in der Informationstheorie~\cite{shannon1948} ist das Bit
 $b \in \{0,1\}$ die kleinste nicht-weiter-teilbare Einheit der Information. Alle
-hÃ¶heren Strukturen -- Zeichen, Worte, Programme, Graphen, Systeme -- sind Kombinationen
+höheren Strukturen -- Zeichen, Worte, Programme, Graphen, Systeme -- sind Kombinationen
 von Bits.
 
 Der Informationsingenieur operiert auf allen Ebenen dieser Hierarchie gleichzeitig:
 
 \begin{itemize}
   \item Auf der \textbf{Bit-Ebene}: Er kennt die Adjazenzmatrix $A \in \{0,1\}^{n \times n}$
-        und die Subgraph-Signatur $\sigma_j \in \mathbb{N}$ als binÃ¤re Konstrukte.
+        und die Subgraph-Signatur $\sigma_j \in \mathbb{N}$ als binäre Konstrukte.
   \item Auf der \textbf{Wort-Ebene}: Er schreibt in der Beschreibungssprache $\mathcal{L}^*$,
-        deren Phrasen endliche Zeichenketten Ã¼ber $\Sigma$ sind.
+        deren Phrasen endliche Zeichenketten über $\Sigma$ sind.
   \item Auf der \textbf{Systemebene}: Er entwirft den Anforderungsgraphen
         $G_\mathcal{R} = (\mathcal{R}, E_\mathcal{R})$ als topologische Struktur
-        Ã¼ber den Anforderungen.
+        über den Anforderungen.
   \item Auf der \textbf{Gesellschaftsebene}: Er gibt -- im Sinne des Ausgangszitats --
-        den Menschen Informationssysteme fÃ¼r das Leben.
+        den Menschen Informationssysteme für das Leben.
 \end{itemize}
 
-Diese Mehrebenen-OperationalitÃ¤t ist charakteristisch fÃ¼r den Ingenieur und unterscheidet
-ihn vom Theoretiker (der primÃ¤r auf der Systemebene operiert) und vom Programmierer
-(der primÃ¤r auf der Wort-Ebene operiert).
+Diese Mehrebenen-Operationalität ist charakteristisch für den Ingenieur und unterscheidet
+ihn vom Theoretiker (der primär auf der Systemebene operiert) und vom Programmierer
+(der primär auf der Wort-Ebene operiert).
 
-\subsection{Bildungstheoretische Konsequenzen: Ein Curriculum fÃ¼r den Informationsingenieur}
+\subsection{Bildungstheoretische Konsequenzen: Ein Curriculum für den Informationsingenieur}
 
 Aus Satz~\ref{satz:inklusion} und Lemma~\ref{lem:luecke_berufe} folgt unmittelbar, dass
 die Ausbildung zum Informationsingenieur weder durch ein reines Informatikstudium noch
-durch eine reine Softwareentwicklerausbildung vollstÃ¤ndig geleistet werden kann.
+durch eine reine Softwareentwicklerausbildung vollständig geleistet werden kann.
 
-Ein konsistentes Curriculum fÃ¼r den Informationsingenieur muss folgende Lehrgebiete
+Ein konsistentes Curriculum für den Informationsingenieur muss folgende Lehrgebiete
 gleichwertig umfassen:
 
 \begin{enumerate}
   \item \textbf{Mathematische Grundlagen:}
         Graphentheorie, lineare Algebra, diskrete Mathematik, Wahrscheinlichkeitsrechnung,
-        Analysis (fÃ¼r physikalische Modellierung).
+        Analysis (für physikalische Modellierung).
   \item \textbf{Theoretische Informatik:}
-        Berechenbarkeit, KomplexitÃ¤t, formale Sprachen, Automaten, Logik.
+        Berechenbarkeit, Komplexität, formale Sprachen, Automaten, Logik.
   \item \textbf{Beschreibungssprachen und Systemmodellierung:}
         SystemC, VHDL, SDL, SysML, UML, Petrinetze, Prozessalgebren.
   \item \textbf{Softwareentwicklungspraxis:}
@@ -1202,7 +1202,7 @@ gleichwertig umfassen:
         Bus-Systeme (CAN, EtherCAT, FlexRay).
   \item \textbf{Formale Verifikation:}
         Model Checking (SPIN, NuSMV), Theorem Proving (Isabelle, Coq),
-        temporale Logiken CTL/LTL, Hoare-KalkÃ¼l.
+        temporale Logiken CTL/LTL, Hoare-Kalkül.
   \item \textbf{Systemsicherheit und Normenwesen:}
         ISO~26262, IEC~61508, DO-178C, Common Criteria.
   \item \textbf{Ingenieurethik und Verantwortungslehre:}
@@ -1210,16 +1210,16 @@ gleichwertig umfassen:
 \end{enumerate}
 
 Kein bestehendes Berufsbild deckt alle acht Lehrgebiete gleichwertig ab.
-Der Informationsingenieur ist damit eine genuine NeuschÃ¶pfung -- nicht die Addition
+Der Informationsingenieur ist damit eine genuine Neuschöpfung -- nicht die Addition
 von Informatiker und Softwareentwickler, sondern deren \emph{Synthese auf
-hÃ¶herer Ebene}.
+höherer Ebene}.
 
 \begin{korollar}[Notwendigkeit des Informationsingenieurs]
 \label{kor:notwendigkeit}
-Das Berufsbild des Informationsingenieurs ist fÃ¼r Informationssysteme oberhalb der
-KomplexitÃ¤tsschwelle $R_0$ \emph{notwendig}: Kein alternatives Berufsbild oder keine
-Kombination vorhandener Berufsbilder kann die vollstÃ¤ndige Verifikationskette in
-Korollar~\ref{kor:vollstaendig} mit Garantie $\Delta(\tau) = \emptyset$ ausfÃ¼hren.
+Das Berufsbild des Informationsingenieurs ist für Informationssysteme oberhalb der
+Komplexitätsschwelle $R_0$ \emph{notwendig}: Kein alternatives Berufsbild oder keine
+Kombination vorhandener Berufsbilder kann die vollständige Verifikationskette in
+Korollar~\ref{kor:vollstaendig} mit Garantie $\Delta(\tau) = \emptyset$ ausführen.
 \end{korollar}
 
 \begin{proof}
@@ -1232,25 +1232,25 @@ und Lemma~\ref{lem:luecke_berufe}. $\blacksquare$
 \label{sec:zusammenfassung}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Diese Arbeit hat ausgehend vom einleitenden Zitat ein vollstÃ¤ndiges formales
-Fundament fÃ¼r das Berufsbild des Informationsingenieurs entwickelt.
+Diese Arbeit hat ausgehend vom einleitenden Zitat ein vollständiges formales
+Fundament für das Berufsbild des Informationsingenieurs entwickelt.
 Die zentralen Ergebnisse werden im Folgenden zusammengefasst.
 
 \subsection{Formale Hauptergebnisse}
 
 \begin{enumerate}
-  \item \textbf{(Satz~\ref{satz:graphoptimal}: OptimalitÃ¤t der Graphdarstellung)}
-        Die Graphdarstellung ist das optimale Modellierungsparadigma fÃ¼r Anforderungen
-        auf Managementsicht. Sie ist vollstÃ¤ndig, fÃ¼r EntscheidungstrÃ¤ger lesbar,
+  \item \textbf{(Satz~\ref{satz:graphoptimal}: Optimalität der Graphdarstellung)}
+        Die Graphdarstellung ist das optimale Modellierungsparadigma für Anforderungen
+        auf Managementsicht. Sie ist vollständig, für Entscheidungsträger lesbar,
         in beliebig vielen Hierarchieebenen organisierbar und algorithmisch formal
-        verarbeitbar. Kein anderes Darstellungsparadigma erfÃ¼llt alle vier Bedingungen
+        verarbeitbar. Kein anderes Darstellungsparadigma erfüllt alle vier Bedingungen
         gleichzeitig.
 
   \item \textbf{(Satz~\ref{satz:optsprache}: Optimale Beschreibungssprache)}
-        Eine Beschreibungssprache $\mathcal{L}^*$ existiert, die Turing-VollstÃ¤ndigkeit
-        -- d.h.\ die FÃ¤higkeit, jedes naturwissenschaftliche PhÃ¤nomen zu beschreiben --
+        Eine Beschreibungssprache $\mathcal{L}^*$ existiert, die Turing-Vollständigkeit
+        -- d.h.\ die Fähigkeit, jedes naturwissenschaftliche Phänomen zu beschreiben --
         mit praktischer Erlernbarkeit vereint. Dieser Existenzbeweis ist konstruktiv
-        gefÃ¼hrt und begrÃ¼ndet die Forderung des Ausgangszitats nach einer mÃ¤chtigen
+        geführt und begründet die Forderung des Ausgangszitats nach einer mächtigen
         und gleichzeitig erlernbaren Sprache.
 
   \item \textbf{(Satz~\ref{satz:ingverantwortung}: Ingenieurverantwortung)}
@@ -1260,17 +1260,17 @@ Die zentralen Ergebnisse werden im Folgenden zusammengefasst.
         und die Zielhardware beherrscht. Rices Theorem belegt, dass kein automatischer
         Prozess diese Verantwortung ersetzen kann.
 
-  \item \textbf{(Satz~\ref{satz:luecke} und \ref{satz:codegen}: VollstÃ¤ndigkeitslÃ¼cke)}
+  \item \textbf{(Satz~\ref{satz:luecke} und \ref{satz:codegen}: Vollständigkeitslücke)}
         Code-Generierung aus graphischen Modellen erzeugt stets eine nichtleere
-        VollstÃ¤ndigkeitslÃ¼cke $\Delta(\hat{\tau}_{CG}) \neq \emptyset$.
-        Die direkte Beschreibung in $\mathcal{L}^*$ durch den Ingenieur schlieÃŸt
-        diese LÃ¼cke. Code-Generierung ist damit nicht nur unnÃ¶tig, sondern aktiv nachteilig.
+        Vollständigkeitslücke $\Delta(\hat{\tau}_{CG}) \neq \emptyset$.
+        Die direkte Beschreibung in $\mathcal{L}^*$ durch den Ingenieur schließt
+        diese Lücke. Code-Generierung ist damit nicht nur unnötig, sondern aktiv nachteilig.
 
   \item \textbf{(Satz~\ref{satz:subgraphverif}: Subgraph-Verifikation)}
         Der Subgraph Algorithmus
         $\sigma_j = \sum_{i=0}^{n-1} A_{ij} \cdot 2^i + j \cdot 2^n$
         entscheidet in $O(n^3)$ Zeit, ob ein Implementierungsgraph alle strukturellen
-        Anforderungen des Anforderungsgraphen erfÃ¼llt. Diese KomplexitÃ¤t ist unter SETH
+        Anforderungen des Anforderungsgraphen erfüllt. Diese Komplexität ist unter SETH
         optimal.
 
   \item \textbf{(Satz~\ref{satz:inklusion}: Kompetenz-Inklusion)}
@@ -1280,16 +1280,16 @@ Die zentralen Ergebnisse werden im Folgenden zusammengefasst.
         ($R$) und Hardwarebewusstsein ($H$).
 
   \item \textbf{(Korollar~\ref{kor:notwendigkeit}: Notwendigkeit)}
-        Das Berufsbild des Informationsingenieurs ist fÃ¼r komplexe Informationssysteme
+        Das Berufsbild des Informationsingenieurs ist für komplexe Informationssysteme
         notwendig: Kein Informatiker allein und kein Softwareentwickler allein kann
-        die vollstÃ¤ndige Verifikationskette mit VollstÃ¤ndigkeitsgarantie ausfÃ¼hren.
+        die vollständige Verifikationskette mit Vollständigkeitsgarantie ausführen.
 \end{enumerate}
 
 \subsection{Das Gesamtbild}
 
-Alle sieben Ergebnisse schlieÃŸen kohÃ¤rent zusammen: Das Ausgangszitat beschreibt
+Alle sieben Ergebnisse schließen kohärent zusammen: Das Ausgangszitat beschreibt
 in vorwissenschaftlicher Sprache exakt das Berufsbild, dessen formale Struktur
-diese Arbeit in Definitionen, SÃ¤tzen und Beweisen entwickelt hat.
+diese Arbeit in Definitionen, Sätzen und Beweisen entwickelt hat.
 Der Informationsingenieur ist -- in der Sprache dieser Arbeit -- derjenige, der
 \[
   \mathcal{R}
@@ -1298,7 +1298,7 @@ Der Informationsingenieur ist -- in der Sprache dieser Arbeit -- derjenige, der
   \xrightarrow{\tau} \mathcal{L}_{\text{Ziel}}
   \xrightarrow{\sigma_j} \text{Verifikation}
 \]
-vollstÃ¤ndig und in voller Verantwortung ausfÃ¼hrt -- fÃ¼r den Menschen und fÃ¼r das Leben.
+vollständig und in voller Verantwortung ausführt -- für den Menschen und für das Leben.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ausblick}
@@ -1310,60 +1310,60 @@ vollstÃ¤ndig und in voller Verantwortung ausfÃ¼hrt -- fÃ¼r den Menschen un
 Das formale Berufsbild des Informationsingenieurs (Definition~\ref{def:infeng}) sollte
 in nationalen und internationalen Ausbildungsordnungen verankert werden. Die in Kapitel~\ref{sec:synthese}
 bewiesene Kompetenz-Inklusion (Satz~\ref{satz:inklusion}) und die Notwendigkeit des Berufsbilds
-(Korollar~\ref{kor:notwendigkeit}) liefern die formale Grundlage fÃ¼r ein eigenstÃ¤ndiges
-Studiengangs-Akkreditierungsverfahren, das Ã¼ber eine bloÃŸe Kombination von Informatik-
-und Softwaretechnik-StudiengÃ¤ngen hinausgeht.
+(Korollar~\ref{kor:notwendigkeit}) liefern die formale Grundlage für ein eigenständiges
+Studiengangs-Akkreditierungsverfahren, das über eine bloße Kombination von Informatik-
+und Softwaretechnik-Studiengängen hinausgeht.
 
-Konkret wÃ¤re ein universitÃ¤rer Studiengang \emph{Informationsingenieurwesen} denkbar,
+Konkret wäre ein universitärer Studiengang \emph{Informationsingenieurwesen} denkbar,
 der acht gleichwertige Pflichtmodule vorsieht: Graphentheorie und Modellierung,
 Theoretische Informatik, Beschreibungssprachen und Systemmodellierung,
 Softwareentwicklungspraxis, Hardwareplattformen und eingebettete Systeme,
 Formale Verifikation, Systemsicherheit und Normenwesen sowie Ingenieurethik.
 Eine Akkreditierung nach den Standards IEEE~1220~\cite{ieee2021}, IEC~61508~\cite{iec61508}
-und INCOSE Systems Engineering Handbook~\cite{incose2015} wÃ¼rde dem Berufsbild
+und INCOSE Systems Engineering Handbook~\cite{incose2015} würde dem Berufsbild
 internationale Anerkennung verleihen.
 
-ZukÃ¼nftige Forschung sollte insbesondere untersuchen, in welcher Reihenfolge die acht
-Lehrgebiete im Studium verankert werden mÃ¼ssen, um die in Satz~\ref{satz:ingverantwortung}
+Zukünftige Forschung sollte insbesondere untersuchen, in welcher Reihenfolge die acht
+Lehrgebiete im Studium verankert werden müssen, um die in Satz~\ref{satz:ingverantwortung}
 formalisierte Transformationskompetenz am effizientesten aufzubauen. Dabei ist die
-Hypothese zu Ã¼berprÃ¼fen, dass formale Grundlagen (Logik, Graphentheorie) vor den
-Beschreibungssprachen und diese vor der Hardware-Praxis gelehrt werden mÃ¼ssen --
+Hypothese zu überprüfen, dass formale Grundlagen (Logik, Graphentheorie) vor den
+Beschreibungssprachen und diese vor der Hardware-Praxis gelehrt werden müssen --
 analog zur mathematischen Fundierung im klassischen Ingenieurstudium.
 
 Ein weiterer wichtiger Forschungsstrang ist die internationale Harmonisierung des
 Berufsbilds. In Deutschland ist das Berufsbild des \emph{Informatikers} durch die
-Gesellschaft fÃ¼r Informatik (GI) und das des \emph{Ingenieurs} durch den VDI
-definiert; ein \emph{Informationsingenieur} fÃ¤llt derzeit in keine dieser Kategorien.
-Eine formale Registrierung als Ingenieurtitel -- wie es in anderen LÃ¤ndern, etwa
-Kanada und Australien, fÃ¼r Software Engineers mÃ¶glich ist -- wÃ¤re eine gesellschaftlich
+Gesellschaft für Informatik (GI) und das des \emph{Ingenieurs} durch den VDI
+definiert; ein \emph{Informationsingenieur} fällt derzeit in keine dieser Kategorien.
+Eine formale Registrierung als Ingenieurtitel -- wie es in anderen Ländern, etwa
+Kanada und Australien, für Software Engineers möglich ist -- wäre eine gesellschaftlich
 relevante Konsequenz dieser Arbeit.
 
 \subsection{Entwicklung und Standardisierung einer universellen Beschreibungssprache}
 
 Die in Satz~\ref{satz:optsprache} konstruktiv bewiesene Existenz einer optimalen
-Beschreibungssprache $\mathcal{L}^*$ stellt keine abschlieÃŸende Antwort dar, sondern
-einen prÃ¤zise formulierten Forschungsauftrag. Die Existenz von $\mathcal{L}^*$ ist
+Beschreibungssprache $\mathcal{L}^*$ stellt keine abschließende Antwort dar, sondern
+einen präzise formulierten Forschungsauftrag. Die Existenz von $\mathcal{L}^*$ ist
 bewiesen; ihre explizite Konstruktion und Standardisierung steht noch aus.
 
 \subsubsection{Kandidaten und Bewertungskriterien}
 
 Konkrete Kandidaten aus dem Stand der Technik -- SystemC~\cite{systemc2012},
 LOTOS~\cite{lotos1988}, PSL~\cite{psl2005}, SDL~\cite{sdl2000}, AADL (Architecture
-Analysis and Design Language~\cite{aadl2004}) sowie neue auf KI-gestÃ¼tzter
-Formalisierung basierende AnsÃ¤tze -- mÃ¼ssen systematisch gegen ein vollstÃ¤ndiges
+Analysis and Design Language~\cite{aadl2004}) sowie neue auf KI-gestützter
+Formalisierung basierende Ansätze -- müssen systematisch gegen ein vollständiges
 Kriteriensystem evaluiert werden. Dieses Kriteriensystem sollte mindestens umfassen:
 
 \begin{itemize}
-  \item \textbf{Turing-VollstÃ¤ndigkeit:} Kann die Sprache jede berechenbare Funktion ausdrÃ¼cken?
-  \item \textbf{Naturwissenschaftliche MÃ¤chtigkeit:} KÃ¶nnen Differentialgleichungen,
+  \item \textbf{Turing-Vollständigkeit:} Kann die Sprache jede berechenbare Funktion ausdrücken?
+  \item \textbf{Naturwissenschaftliche Mächtigkeit:} Können Differentialgleichungen,
         stochastische Prozesse, Regelkreise und physikalische Simulationsmodelle nativ
         formuliert werden?
   \item \textbf{Erlernbarkeit:} Kann ein Ingenieur ohne Vorkenntnis die Sprache in einem
-        Ã¼berschaubaren Zeitrahmen (Wochen, nicht Jahre) produktiv einsetzen?
-  \item \textbf{VerifikationsunterstÃ¼tzung:} Existieren formale Werkzeuge
-        (Model Checker, Theorem-Prover, Linter) fÃ¼r die Sprache?
-  \item \textbf{ZielnÃ¤he / Hardwareabbildung:} Wie direkt bilden Sprachkonstrukte
-        auf Zielhardware ab, ohne Abstraktion zu erzwingen, die die VollstÃ¤ndigkeitslÃ¼cke
+        überschaubaren Zeitrahmen (Wochen, nicht Jahre) produktiv einsetzen?
+  \item \textbf{Verifikationsunterstützung:} Existieren formale Werkzeuge
+        (Model Checker, Theorem-Prover, Linter) für die Sprache?
+  \item \textbf{Zielnähe / Hardwareabbildung:} Wie direkt bilden Sprachkonstrukte
+        auf Zielhardware ab, ohne Abstraktion zu erzwingen, die die Vollständigkeitslücke
         $\Delta \neq \emptyset$ erzeugt?
   \item \textbf{Industrielle Akzeptanz:} Ist die Sprache in relevanten Industriezweigen
         (Automotive, Avionik, Medizintechnik) einsetzbar und normkonform?
@@ -1372,44 +1372,44 @@ Kriteriensystem evaluiert werden. Dieses Kriteriensystem sollte mindestens umfas
 \subsubsection{Benchmark-Entwicklung}
 
 Ein zentrales Forschungsvorhaben sollte die Entwicklung eines formalen Benchmark-Suites
-sein, mit dem die oben genannten Kriterien fÃ¼r beliebige Beschreibungssprachen quantitativ
-gemessen werden kÃ¶nnen. Der Benchmark wÃ¼rde aus Referenzinformationssystemen verschiedener
-DomÃ¤nen bestehen: einem eingebetteten Echtzeitsystem, einem verteilten Kommunikationsprotokoll,
+sein, mit dem die oben genannten Kriterien für beliebige Beschreibungssprachen quantitativ
+gemessen werden können. Der Benchmark würde aus Referenzinformationssystemen verschiedener
+Domänen bestehen: einem eingebetteten Echtzeitsystem, einem verteilten Kommunikationsprotokoll,
 einem regelungstechnischen Regelkreis und einem sicherheitskritischen Medizinsystem.
-FÃ¼r jedes Referenzsystem wÃ¼rde gemessen, wie vollstÃ¤ndig, korrekt und wartbar die Beschreibung
-in der zu evaluierenden Sprache ausfÃ¤llt.
+Für jedes Referenzsystem würde gemessen, wie vollständig, korrekt und wartbar die Beschreibung
+in der zu evaluierenden Sprache ausfällt.
 
-\subsubsection{Erweiterung um physikalische PhÃ¤nomene}
+\subsubsection{Erweiterung um physikalische Phänomene}
 
-Das Ausgangszitat formuliert als Mindestanforderung, dass \enquote{mÃ¶glichst jedes
-naturwissenschaftliche PhÃ¤nomen oder Verhalten abgebildet werden kann}. Dies ist eine
-auÃŸergewÃ¶hnlich hohe Latte, die Ã¼ber klassische Software-Beschreibungssprachen
-hinausgeht. ZukÃ¼nftige Forschung sollte untersuchen, wie Modellica~\cite{modelica2014}
-(fÃ¼r physikalische Systemsimulation) mit formalen Verifikationssprachen (PSL, LTL)
+Das Ausgangszitat formuliert als Mindestanforderung, dass \enquote{möglichst jedes
+naturwissenschaftliche Phänomen oder Verhalten abgebildet werden kann}. Dies ist eine
+außergewöhnlich hohe Latte, die über klassische Software-Beschreibungssprachen
+hinausgeht. Zukünftige Forschung sollte untersuchen, wie Modellica~\cite{modelica2014}
+(für physikalische Systemsimulation) mit formalen Verifikationssprachen (PSL, LTL)
 zu einer hybriden Beschreibungssprache $\mathcal{L}^*_{\text{phys}}$ vereint werden
-kann, die sowohl kontinuierliche Dynamik als auch diskrete Steuerung vollstÃ¤ndig
+kann, die sowohl kontinuierliche Dynamik als auch diskrete Steuerung vollständig
 erfasst.
 
-\subsection{Quantitative Theorie der VollstÃ¤ndigkeitslÃ¼cke}
+\subsection{Quantitative Theorie der Vollständigkeitslücke}
 
-Die in Satz~\ref{satz:luecke} bewiesene Nichtleerheit der VollstÃ¤ndigkeitslÃ¼cke
-$\Delta(\hat{\tau}_{CG}) \neq \emptyset$ ist qualitativ Ã¼berzeugend und informationstheoretisch
-begrÃ¼ndet, aber in ihrer quantitativen AusprÃ¤gung fÃ¼r konkrete Systeme noch nicht
-vollstÃ¤ndig verstanden. Eine quantitative Theorie der VollstÃ¤ndigkeitslÃ¼cke ist sowohl
-wissenschaftlich bedeutsam als auch industriell dringend benÃ¶tigt.
+Die in Satz~\ref{satz:luecke} bewiesene Nichtleerheit der Vollständigkeitslücke
+$\Delta(\hat{\tau}_{CG}) \neq \emptyset$ ist qualitativ überzeugend und informationstheoretisch
+begründet, aber in ihrer quantitativen Ausprägung für konkrete Systeme noch nicht
+vollständig verstanden. Eine quantitative Theorie der Vollständigkeitslücke ist sowohl
+wissenschaftlich bedeutsam als auch industriell dringend benötigt.
 
-\subsubsection{Untere Schranken als Funktion der SystemkomplexitÃ¤t}
+\subsubsection{Untere Schranken als Funktion der Systemkomplexität}
 
-Es sollen untere Schranken fÃ¼r $|\Delta(\hat{\tau}_{CG})|$ als Funktion der
-SystemkomplexitÃ¤t $n$ abgeleitet werden. Die Arbeitshypothese lautet:
+Es sollen untere Schranken für $|\Delta(\hat{\tau}_{CG})|$ als Funktion der
+Systemkomplexität $n$ abgeleitet werden. Die Arbeitshypothese lautet:
 \[
-  |\Delta(\hat{\tau}_{CG})(n)| \geq \Omega(n^\beta) \quad \text{fÃ¼r ein } \beta > 0,
+  |\Delta(\hat{\tau}_{CG})(n)| \geq \Omega(n^\beta) \quad \text{für ein } \beta > 0,
 \]
-d.h.\ die VollstÃ¤ndigkeitslÃ¼cke wÃ¤chst polynomiell in der SystemgrÃ¶ÃŸe. Dies wÃ¼rde
-bedeuten, dass fÃ¼r hinreichend groÃŸe Systeme jedes Code-Generierungsverfahren
-eine superlinear wachsende Menge unerfÃ¼llter Anforderungen produziert -- unabhÃ¤ngig
-von der QualitÃ¤t des Werkzeugs. Ein Beweis dieser Aussage wÃ¼rde Satz~\ref{satz:luecke}
-wesentlich verschÃ¤rfen und die Ablehnung von Code-Generierung fÃ¼r komplexe Systeme
+d.h.\ die Vollständigkeitslücke wächst polynomiell in der Systemgröße. Dies würde
+bedeuten, dass für hinreichend große Systeme jedes Code-Generierungsverfahren
+eine superlinear wachsende Menge unerfüllter Anforderungen produziert -- unabhängig
+von der Qualität des Werkzeugs. Ein Beweis dieser Aussage würde Satz~\ref{satz:luecke}
+wesentlich verschärfen und die Ablehnung von Code-Generierung für komplexe Systeme
 auf ein quantitatives Fundament stellen.
 
 \subsubsection{Experimentelle Messung in industriellen Werkzeugen}
@@ -1417,22 +1417,22 @@ auf ein quantitatives Fundament stellen.
 Parallel zur theoretischen Arbeit sind experimentelle Studien notwendig.
 Mit realen Modellierungswerkzeugen -- MathWorks Simulink/Embedded Coder, IBM Rhapsody,
 ETAS ASCET, Elektrobit EB tresos, ETAS ISOLAR-A -- sollen konkrete Informationssysteme
-modelliert und die Code-Generierung anschlieÃŸend durch den Subgraph-Verifikationsalgorithmus
-auf VollstÃ¤ndigkeit geprÃ¼ft werden. Die Messungen wÃ¼rden erstmals empirische Belege fÃ¼r
-die in dieser Arbeit formal bewiesene VollstÃ¤ndigkeitslÃ¼cke liefern.
+modelliert und die Code-Generierung anschließend durch den Subgraph-Verifikationsalgorithmus
+auf Vollständigkeit geprüft werden. Die Messungen würden erstmals empirische Belege für
+die in dieser Arbeit formal bewiesene Vollständigkeitslücke liefern.
 
 \subsubsection{Formale Charakterisierung durch temporale Logik}
 
 Formale Sprachen -- insbesondere Hoare-Logik~\cite{hoare1969}, die temporalen Logiken
-CTL~\cite{clarke1982} und LTL~\cite{pnueli1977} sowie die modal $\mu$-KalkÃ¼l --
-bieten prÃ¤zise Mittel, um VollstÃ¤ndigkeitslÃ¼cken zu charakterisieren. Eine Anforderung
+CTL~\cite{clarke1982} und LTL~\cite{pnueli1977} sowie die modal $\mu$-Kalkül --
+bieten präzise Mittel, um Vollständigkeitslücken zu charakterisieren. Eine Anforderung
 $r_i \in \mathcal{R}$ ist in LTL als eine Formel $\varphi_i$ formulierbar; die
-VollstÃ¤ndigkeitslÃ¼cke wird dann zur Menge
+Vollständigkeitslücke wird dann zur Menge
 \[
   \Delta_{LTL}(\hat{\tau}_{CG}) :=
   \{\varphi_i \in \Phi \mid \hat{\tau}_{CG}(G_\mathcal{R}) \not\models \varphi_i\}.
 \]
-ZukÃ¼nftige Forschung sollte diese Mengencharakterisierung fÃ¼r konkrete Systemklassen
+Zukünftige Forschung sollte diese Mengencharakterisierung für konkrete Systemklassen
 ausarbeiten und Werkzeuge entwickeln, die $\Delta_{LTL}$ automatisch berechnen.
 
 \subsection{Erweiterung des Subgraph Algorithmus}
@@ -1440,25 +1440,25 @@ ausarbeiten und Werkzeuge entwickeln, die $\Delta_{LTL}$ automatisch berechnen.
 \subsubsection{Gewichtete und semantisch angereicherte Graphen}
 
 Der in Abschnitt~\ref{sec:subgraph} eingesetzte Subgraph Algorithmus operiert auf
-ungewichteten Graphen mit binÃ¤rer Adjazenzmatrix $A \in \{0,1\}^{n \times n}$.
-Reale Anforderungsgraphen sind jedoch hÃ¤ufig gewichtet und semantisch angereichert:
-Kanten tragen PrioritÃ¤ten, Kosten, ZeitbeschrÃ¤nkungen, Wahrscheinlichkeiten
-oder Verfeinerungs-Grade. Eine natÃ¼rliche Erweiterung der Subgraph-Signatur auf
+ungewichteten Graphen mit binärer Adjazenzmatrix $A \in \{0,1\}^{n \times n}$.
+Reale Anforderungsgraphen sind jedoch häufig gewichtet und semantisch angereichert:
+Kanten tragen Prioritäten, Kosten, Zeitbeschränkungen, Wahrscheinlichkeiten
+oder Verfeinerungs-Grade. Eine natürliche Erweiterung der Subgraph-Signatur auf
 gewichtete Kanten lautet:
 \[
   \sigma_j^w := \sum_{i=0}^{n-1} w_{ij} \cdot A_{ij} \cdot p^i + j \cdot p^n,
   \quad w_{ij} \in \mathbb{Q}_{>0}, \quad p \text{ prim},
 \]
-wobei die Wahl einer Primzahl $p$ als Basis die InjektivitÃ¤t in einem erweiterten
+wobei die Wahl einer Primzahl $p$ als Basis die Injektivität in einem erweiterten
 Sinne sicherstellen kann (Chinesischer Restsatz). Diese Erweiterung erfordert jedoch
-eine neue vollstÃ¤ndige InjektivitÃ¤tstheorie, da der Beweis von Satz~\ref{satz:injektiv}
-auf der BinÃ¤rkodierung basiert.
+eine neue vollständige Injektivitätstheorie, da der Beweis von Satz~\ref{satz:injektiv}
+auf der Binärkodierung basiert.
 
-\subsubsection{Hypergraphen fÃ¼r Multi-Stakeholder-Systeme}
+\subsubsection{Hypergraphen für Multi-Stakeholder-Systeme}
 
 Informationssysteme in der Realwelt werden von mehreren Stakeholdern mit
-unterschiedlichen, teils konkurrierenden Anforderungen geprÃ¤gt. Diese Situation
-lÃ¤sst sich durch Hypergraphen modellieren, bei denen eine Hyperkante
+unterschiedlichen, teils konkurrierenden Anforderungen geprägt. Diese Situation
+lässt sich durch Hypergraphen modellieren, bei denen eine Hyperkante
 $e \subseteq V$ eine Anforderung kodiert, die mehr als zwei Module betrifft.
 Die Erweiterung des Subgraph Algorithmus auf Hypergraphen ist ein offenes
 Forschungsproblem; die Signaturkonstruktion muss auf Hyperkanten verallgemeinert
@@ -1466,144 +1466,144 @@ werden:
 \[
   \sigma_e := \sum_{v \in e} 2^{\mathsf{id}(v)} + |e| \cdot 2^n, \quad e \subseteq V.
 \]
-Die KomplexitÃ¤t des verallgemeinerten Algorithmus ist zu bestimmen und gegen die
-KomplexitÃ¤t des ursprÃ¼nglichen $O(n^3)$-Algorithmus zu benchmarken.
+Die Komplexität des verallgemeinerten Algorithmus ist zu bestimmen und gegen die
+Komplexität des ursprünglichen $O(n^3)$-Algorithmus zu benchmarken.
 
-\subsubsection{Dynamische Graphen fÃ¼r evolvierte Informationssysteme}
+\subsubsection{Dynamische Graphen für evolvierte Informationssysteme}
 
-Informationssysteme unterliegen Ã¼ber ihren Lebenszyklus VerÃ¤nderungen: Anforderungen
-werden hinzugefÃ¼gt, modifiziert oder entfernt. Entsprechend ist der Anforderungsgraph
+Informationssysteme unterliegen über ihren Lebenszyklus Veränderungen: Anforderungen
+werden hinzugefügt, modifiziert oder entfernt. Entsprechend ist der Anforderungsgraph
 $G_\mathcal{R}$ kein statisches Objekt, sondern ein dynamischer Graph
-$G_\mathcal{R}(t)$, der sich Ã¼ber die Zeit verÃ¤ndert. ZukÃ¼nftige Forschung sollte
+$G_\mathcal{R}(t)$, der sich über die Zeit verändert. Zukünftige Forschung sollte
 eine \emph{inkrementelle} Variante des Subgraph Algorithmus entwickeln, die bei einer
-lokalen Ã„nderung $\delta G$ nur die betroffenen Signaturen neu berechnet, statt den
-gesamten Algorithmus neu auszufÃ¼hren. Die Zielsetzung wÃ¤re:
+lokalen Änderung $\delta G$ nur die betroffenen Signaturen neu berechnet, statt den
+gesamten Algorithmus neu auszuführen. Die Zielsetzung wäre:
 \[
   T_{\text{inkr}}(\delta G) = O(|\delta G| \cdot n^2) \ll O(n^3) = T_{\text{voll}}.
 \]
 
 \subsubsection{Parallelisierung und GPU-Beschleunigung}
 
-Der Subgraph Algorithmus hat eine ZeitkomplexitÃ¤t von $O(n^3)$, die fÃ¼r sehr groÃŸe
-Informationssysteme ($n > 10^4$ Knoten) in der Praxis zu langen Laufzeiten fÃ¼hrt.
-Die $n$ zyklischen Rotationen sind vollstÃ¤ndig unabhÃ¤ngig voneinander
-(vgl.~\cite{subgraph2026}) und eignen sich daher hervorragend fÃ¼r Parallelisierung:
+Der Subgraph Algorithmus hat eine Zeitkomplexität von $O(n^3)$, die für sehr große
+Informationssysteme ($n > 10^4$ Knoten) in der Praxis zu langen Laufzeiten führt.
+Die $n$ zyklischen Rotationen sind vollständig unabhängig voneinander
+(vgl.~\cite{subgraph2026}) und eignen sich daher hervorragend für Parallelisierung:
 \[
   T_{\text{parallel}}(n, p) = O\!\left(\frac{n^3}{p}\right) + O(n^2 \log p),
 \]
 wobei $p$ die Anzahl der Prozessoren und $O(n^2 \log p)$ der Kommunikationsaufwand ist.
-Eine GPU-beschleunigte Implementierung mittels CUDA~\cite{cuda2023} oder OpenCL kÃ¶nnte
-den Algorithmus fÃ¼r industrielle Echtzeit-Verifikationsszenarien mit mehreren tausend
-Modulen nutzbar machen. FÃ¼r eingebettete Systeme mit begrenzten Ressourcen sind
-approximative Varianten zu untersuchen: Sampling einer reprÃ¤sentativen Teilmenge der
-$n$ Rotationen mit kontrollierter Fehlerrate, oder randomisierte LCS-SchÃ¤tzungen
+Eine GPU-beschleunigte Implementierung mittels CUDA~\cite{cuda2023} oder OpenCL könnte
+den Algorithmus für industrielle Echtzeit-Verifikationsszenarien mit mehreren tausend
+Modulen nutzbar machen. Für eingebettete Systeme mit begrenzten Ressourcen sind
+approximative Varianten zu untersuchen: Sampling einer repräsentativen Teilmenge der
+$n$ Rotationen mit kontrollierter Fehlerrate, oder randomisierte LCS-Schätzungen
 auf Basis von Locality-Sensitive Hashing~\cite{indyk1998}.
 
 \subsection{Integration in modellbasierte Entwicklungsprozesse (MBSE)}
 
 Model-Based Systems Engineering (MBSE)~\cite{friedenthal2011} ist der industrielle
-Standard fÃ¼r die Entwicklung komplexer Systeme und sieht explizit die Verwendung
+Standard für die Entwicklung komplexer Systeme und sieht explizit die Verwendung
 formaler Modelle auf allen Entwicklungsebenen vor. Die in dieser Arbeit entwickelten
 formalen Grundlagen -- Anforderungsgraph $G_\mathcal{R}$ (Definition~\ref{def:anfgraph}),
-Ingenieuroptimum (Definition~\ref{def:ingopt}), VollstÃ¤ndigkeitslÃ¼cke
+Ingenieuroptimum (Definition~\ref{def:ingopt}), Vollständigkeitslücke
 (Definition~\ref{def:vollstaendigkeit}) und Subgraph-Verifikation
-(Satz~\ref{satz:subgraphverif}) -- kÃ¶nnen direkt in MBSE-Werkzeuge und -Prozesse
+(Satz~\ref{satz:subgraphverif}) -- können direkt in MBSE-Werkzeuge und -Prozesse
 integriert werden.
 
 \subsubsection{SysML-Integration}
 
-SysML~\cite{sysml2019} ist die fÃ¼hrende Modellierungssprache im MBSE-Kontext.
-ZukÃ¼nftige Arbeit sollte einen SysML-Stereotyp \texttt{$\ll$InformationEngineer$\gg$}
+SysML~\cite{sysml2019} ist die führende Modellierungssprache im MBSE-Kontext.
+Zukünftige Arbeit sollte einen SysML-Stereotyp \texttt{$\ll$InformationEngineer$\gg$}
 entwickeln, der die in Definition~\ref{def:infeng2} spezifizierten Kompetenzkomponenten
 $(K, M, L, R, T)$ als Tagged Values kodiert. Weiterhin sollte das Konzept des
 Anforderungsgraphen $G_\mathcal{R}$ als formale Erweiterung des Requirements-Diagramms
-in SysML spezifiziert werden, mit automatischer Subgraph-KonsistenzprÃ¼fung als
+in SysML spezifiziert werden, mit automatischer Subgraph-Konsistenzprüfung als
 integrierten Constraint-Block.
 
 \subsubsection{Werkzeugintegration}
 
-Der Subgraph Algorithmus sollte als automatisches Verifikationsplugin in fÃ¼hrende
+Der Subgraph Algorithmus sollte als automatisches Verifikationsplugin in führende
 MBSE-Werkzeuge integriert werden: Sparx Enterprise Architect, Siemens Teamcenter,
-PTC Integrity Modeler, Capella (Thales). Das Plugin wÃ¼rde bei jeder Modellierung
-eines Implementierungsgraphen automatisch prÃ¼fen, ob $G_\mathcal{R} \subseteq G_\mathcal{I}$
-gilt, und fehlende AnforderungserfÃ¼llungen direkt im Modell visualisieren.
+PTC Integrity Modeler, Capella (Thales). Das Plugin würde bei jeder Modellierung
+eines Implementierungsgraphen automatisch prüfen, ob $G_\mathcal{R} \subseteq G_\mathcal{I}$
+gilt, und fehlende Anforderungserfüllungen direkt im Modell visualisieren.
 
 \subsubsection{Verbindung zu Digital Twins}
 
 Die Technologie des \emph{Digital Twin}~\cite{grieves2014} -- digitale Zwillinge
-physischer Systeme -- ist eine natÃ¼rliche AnwendungsdomÃ¤ne fÃ¼r das in dieser Arbeit
+physischer Systeme -- ist eine natürliche Anwendungsdomäne für das in dieser Arbeit
 entwickelte Rahmenwerk. Der Anforderungsgraph $G_\mathcal{R}$ des Digital Twin sollte
 kontinuierlich mit dem Implementierungsgraph $G_\mathcal{I}$ des realen Systems
-synchronisiert und durch den Subgraph Algorithmus auf Konsistenz geprÃ¼ft werden.
-Dies wÃ¼rde die VollstÃ¤ndigkeit des Digital Twin formal garantieren -- ein Forschungsziel
-von groÃŸer industrieller Relevanz.
+synchronisiert und durch den Subgraph Algorithmus auf Konsistenz geprüft werden.
+Dies würde die Vollständigkeit des Digital Twin formal garantieren -- ein Forschungsziel
+von großer industrieller Relevanz.
 
 \subsection{Kognitionswissenschaftliche Fundierung der Erlernbarkeit}
 
-Die in Definition~\ref{def:erlernbarkeit} eingefÃ¼hrte Erlernbarkeitsfunktion
-$\mathsf{Learn}(\mathcal{L})$ ist bisher phÃ¤nomenologisch motiviert. Eine tiefere
-kognitionswissenschaftliche Fundierung ist sowohl fÃ¼r die Ausbildung von
-Informationsingenieuren als auch fÃ¼r die Konstruktion der optimalen Beschreibungssprache
+Die in Definition~\ref{def:erlernbarkeit} eingeführte Erlernbarkeitsfunktion
+$\mathsf{Learn}(\mathcal{L})$ ist bisher phänomenologisch motiviert. Eine tiefere
+kognitionswissenschaftliche Fundierung ist sowohl für die Ausbildung von
+Informationsingenieuren als auch für die Konstruktion der optimalen Beschreibungssprache
 $\mathcal{L}^*$ von unmittelbarer Relevanz.
 
 \subsubsection{Cognitive Load Theory}
 
 Die Cognitive Load Theory (CLT) nach Sweller~\cite{sweller1988} unterscheidet drei
-Arten kognitiver Last: intrinsische Last (inhÃ¤rente KomplexitÃ¤t des Materials),
+Arten kognitiver Last: intrinsische Last (inhärente Komplexität des Materials),
 extrinsische Last (durch schlechtes Lehrdesign erzeugte Mehrbelastung) und lernbezogene
-Last (aktiver Erwerb neuer Schemata). FÃ¼r die Beschreibungssprache $\mathcal{L}^*$
-folgt daraus: Die intrinsische Last ist durch die AusdrucksmÃ¤chtigkeit der Sprache
+Last (aktiver Erwerb neuer Schemata). Für die Beschreibungssprache $\mathcal{L}^*$
+folgt daraus: Die intrinsische Last ist durch die Ausdrucksmächtigkeit der Sprache
 bestimmt und kann nicht reduziert werden; die extrinsische Last kann durch klare
-Syntaxdefinitionen und gute WerkzeugunterstÃ¼tzung minimiert werden. Die Optimierung
+Syntaxdefinitionen und gute Werkzeugunterstützung minimiert werden. Die Optimierung
 von $\mathsf{Learn}(\mathcal{L}^*)$ reduziert sich damit auf die Minimierung der
 extrinsischen Last bei gegebener intrinsischer Last.
 
 \subsubsection{ACT-R-Theorie und prozedurales Lernen}
 
 Die ACT-R-Theorie~\cite{anderson1993} modelliert den Erwerb prozeduralen Wissens
-(Skills) als Produktion von Regeln im LangzeitgedÃ¤chtnis. FÃ¼r Beschreibungssprachen
+(Skills) als Produktion von Regeln im Langzeitgedächtnis. Für Beschreibungssprachen
 relevant ist die Beobachtung, dass prozedurale Kompetenz in einer Sprache exponentiell
-mit der Ãœbungszeit wÃ¤chst (Power Law of Practice). ZukÃ¼nftige Forschung sollte
-empirisch messen, nach welcher Ãœbungszeit Ingenieure $\mathcal{L}^*$ produktiv
+mit der Übungszeit wächst (Power Law of Practice). Zukünftige Forschung sollte
+empirisch messen, nach welcher Übungszeit Ingenieure $\mathcal{L}^*$ produktiv
 einsetzen, und das ACT-R-Modell kalibrieren.
 
-\subsubsection{InterdisziplinÃ¤re Forschungsfrage}
+\subsubsection{Interdisziplinäre Forschungsfrage}
 
-Die Ã¼bergeordnete Forschungsfrage lautet: \emph{Welche Syntaxmerkmale einer
+Die übergeordnete Forschungsfrage lautet: \emph{Welche Syntaxmerkmale einer
 Beschreibungssprache maximieren die Lerngeschwindigkeit bei gegebener
-AusdrucksmÃ¤chtigkeit?} Diese Frage verbindet Informatik, Linguistik und kognitive
+Ausdrucksmächtigkeit?} Diese Frage verbindet Informatik, Linguistik und kognitive
 Psychologie und sollte durch kontrollierte Experimente mit Ingenieuren verschiedener
-AusbildungshintergrÃ¼nde untersucht werden.
+Ausbildungshintergründe untersucht werden.
 
-\subsection{Formale Semantik fÃ¼r Mehrhierarchie-Graphmodelle}
+\subsection{Formale Semantik für Mehrhierarchie-Graphmodelle}
 
-Das Ausgangszitat betont ausdrÃ¼cklich, dass Anforderungen \enquote{in beliebig vielen
-Hierarchien} gegeben werden. Die in Definition~\ref{def:hierarchie} eingefÃ¼hrte
+Das Ausgangszitat betont ausdrücklich, dass Anforderungen \enquote{in beliebig vielen
+Hierarchien} gegeben werden. Die in Definition~\ref{def:hierarchie} eingeführte
 hierarchische Graphzerlegung ist syntaktisch klar, aber ihre formale Semantik --
-insbesondere das Refinement-VerhÃ¤ltnis zwischen benachbarten Hierarchieebenen und
-die KonsistenzprÃ¼fung Ã¼ber mehrere Ebenen hinweg -- bedarf weitergehender formaler
+insbesondere das Refinement-Verhältnis zwischen benachbarten Hierarchieebenen und
+die Konsistenzprüfung über mehrere Ebenen hinweg -- bedarf weitergehender formaler
 Behandlung.
 
 \subsubsection{Vertikale Konsistenz}
 
-Eine vollstÃ¤ndige vertikale Konsistenzaussage mÃ¼sste zeigen, dass fÃ¼r eine hierarchische
+Eine vollständige vertikale Konsistenzaussage müsste zeigen, dass für eine hierarchische
 Zerlegung $G_0 \supseteq G_1 \supseteq \cdots \supseteq G_d$ gilt:
 \begin{enumerate}
   \item Jedes $G_{k+1}$ ist ein korrektes Refinement von $G_k$, d.h.\ keine Anforderungen
         aus $G_k$ gehen bei der Verfeinerung verloren.
   \item Die Verifikation auf Ebene $d$ (Implementierungsebene) impliziert die Verifikation
-        auf allen hÃ¶heren Ebenen.
+        auf allen höheren Ebenen.
 \end{enumerate}
-AnsÃ¤tze aus der Prozessalgebra -- CSP~\cite{hoare1978} mit seinem Refinement-KalkÃ¼l
-und CCS~\cite{milner1980} mit Bisimulation -- bieten einen natÃ¼rlichen Ausgangspunkt.
+Ansätze aus der Prozessalgebra -- CSP~\cite{hoare1978} mit seinem Refinement-Kalkül
+und CCS~\cite{milner1980} mit Bisimulation -- bieten einen natürlichen Ausgangspunkt.
 Die kategorientheoretische Sichtweise (Funktoren zwischen Kategorien von Graphen)
-ermÃ¶glicht eine elegante abstrakte Formulierung.
+ermöglicht eine elegante abstrakte Formulierung.
 
 \subsubsection{Horizontale Konsistenz}
 
 Neben der vertikalen Konsistenz ist die horizontale Konsistenz auf einer Hierarchieebene
 zu sichern: Zwei Subgraphen $G_a$ und $G_b$, die verschiedene Subsysteme auf derselben
-Ebene beschreiben, dÃ¼rfen keine widersprÃ¼chlichen Anforderungen kodieren. Die formale
+Ebene beschreiben, dürfen keine widersprüchlichen Anforderungen kodieren. Die formale
 Charakterisierung von Widerspruchsfreiheit in einem Graphmodell -- etwa durch
 Satisfiability von assoziierten Constraint-Systemen -- ist ein weiteres offenes Problem.
 
@@ -1614,21 +1614,21 @@ Satisfiability von assoziierten Constraint-Systemen -- ist ein weiteres offenes 
 Informationssysteme in sicherheitskritischen Umgebungen (Automobil, Medizintechnik,
 Luftfahrt, Kernenergie) unterliegen streng regulierten Normen.
 Die formale Verifikationskette aus Korollar~\ref{kor:vollstaendig} bietet eine
-natÃ¼rliche Grundlage fÃ¼r normkonforme Entwicklungsprozesse:
+natürliche Grundlage für normkonforme Entwicklungsprozesse:
 
 \begin{itemize}
   \item \textbf{ISO~26262~\cite{iso26262} (Automotive):}
-        Der Anforderungsgraph $G_\mathcal{R}$ liefert die formale Basis fÃ¼r die
+        Der Anforderungsgraph $G_\mathcal{R}$ liefert die formale Basis für die
         Item Definition und die Hazard Analysis and Risk Assessment (HARA).
-        Der Subgraph Algorithmus kann die vollstÃ¤ndige AnforderungsÃ¼berdeckung
-        (Coverage Analysis) fÃ¼r jedes Safety Integrity Level (ASIL~A bis~D) nachweisen.
+        Der Subgraph Algorithmus kann die vollständige Anforderungsüberdeckung
+        (Coverage Analysis) für jedes Safety Integrity Level (ASIL~A bis~D) nachweisen.
   \item \textbf{IEC~61508~\cite{iec61508} (allgemeine funktionale Sicherheit):}
-        Die VollstÃ¤ndigkeitsgarantie $\Delta(\tau) = \emptyset$ entspricht der
-        Forderung nach vollstÃ¤ndiger AnforderungsÃ¼berdeckung auf Safety Integrity
+        Die Vollständigkeitsgarantie $\Delta(\tau) = \emptyset$ entspricht der
+        Forderung nach vollständiger Anforderungsüberdeckung auf Safety Integrity
         Level (SIL) 1 bis 4.
   \item \textbf{DO-178C~\cite{do178c} (Avionik):}
         Die formale Beschreibungssprache $\mathcal{L}^*$ kann die in DO-178C
-        geforderten Software Level A--E unterstÃ¼tzen, wenn die Verifikation durch
+        geforderten Software Level A--E unterstützen, wenn die Verifikation durch
         den Subgraph Algorithmus als autorisiertes Verifikationswerkzeug anerkannt wird.
   \item \textbf{IEC~62443~\cite{iec62443} (Industrial Cybersecurity):}
         Die Transformationsverantwortung des Informationsingenieurs (Satz~\ref{satz:ingverantwortung})
@@ -1639,80 +1639,80 @@ natÃ¼rliche Grundlage fÃ¼r normkonforme Entwicklungsprozesse:
 \subsubsection{Rechtliche Verankerung des Berufsbilds}
 
 Die Transformationsverantwortung des Informationsingenieurs hat nicht nur technische,
-sondern auch rechtliche Implikationen. Analog zum Bauingenieur, der fÃ¼r die Statik
-seines Bauwerks persÃ¶nlich haftet, sollte der Informationsingenieur fÃ¼r die Korrektheit
-seiner Transformation $\tau$ und die VollstÃ¤ndigkeit seiner Verifikation haften.
-ZukÃ¼nftige rechtswissenschaftliche Forschung sollte klÃ¤ren, welche Haftungsrahmen
-fÃ¼r Informationsingenieure angemessen sind, und ob eine formale ZulassungsprÃ¼fung
-(analog zur Architektenkammer) eingefÃ¼hrt werden sollte.
+sondern auch rechtliche Implikationen. Analog zum Bauingenieur, der für die Statik
+seines Bauwerks persönlich haftet, sollte der Informationsingenieur für die Korrektheit
+seiner Transformation $\tau$ und die Vollständigkeit seiner Verifikation haften.
+Zukünftige rechtswissenschaftliche Forschung sollte klären, welche Haftungsrahmen
+für Informationsingenieure angemessen sind, und ob eine formale Zulassungsprüfung
+(analog zur Architektenkammer) eingeführt werden sollte.
 
-\subsection{Informationsingenieurwesen und KÃ¼nstliche Intelligenz}
+\subsection{Informationsingenieurwesen und Künstliche Intelligenz}
 
 \subsubsection{KI als Assistent in der Verifikationskette}
 
 Aktuelle Entwicklungen in der KI -- insbesondere Large Language Models (LLMs) und
-neuronale Programmsynthese~\cite{chen2021} -- erÃ¶ffnen neue MÃ¶glichkeiten in der
-Verifikationskette des Informationsingenieurs. LLMs kÃ¶nnen als Assistent bei der
-Konstruktion von $G_\mathcal{R}$ aus natÃ¼rlichsprachlichen Anforderungen eingesetzt
+neuronale Programmsynthese~\cite{chen2021} -- eröffnen neue Möglichkeiten in der
+Verifikationskette des Informationsingenieurs. LLMs können als Assistent bei der
+Konstruktion von $G_\mathcal{R}$ aus natürlichsprachlichen Anforderungen eingesetzt
 werden; die formale Verifikation durch den Subgraph Algorithmus bleibt jedoch
-unersetzlich, da LLMs keine formalen VollstÃ¤ndigkeitsgarantien liefern kÃ¶nnen.
+unersetzlich, da LLMs keine formalen Vollständigkeitsgarantien liefern können.
 
-\subsubsection{Grenzen der KI-gestÃ¼tzten Code-Generierung}
+\subsubsection{Grenzen der KI-gestützten Code-Generierung}
 
-Aus Satz~\ref{satz:codegen} folgt unmittelbar, dass KI-gestÃ¼tzte Code-Generierung --
-etwa durch GitHub Copilot oder OpenAI Codex -- keine Ausnahme von der VollstÃ¤ndigkeitslÃ¼cke
+Aus Satz~\ref{satz:codegen} folgt unmittelbar, dass KI-gestützte Code-Generierung --
+etwa durch GitHub Copilot oder OpenAI Codex -- keine Ausnahme von der Vollständigkeitslücke
 $\Delta \neq \emptyset$ darstellt. Die KI-generierte Code-Generierung ist eine
 spezielle Instanz von $\hat{\tau}_{CG}$ und unterliegt damit dem Beweis von
-Satz~\ref{satz:luecke}. ZukÃ¼nftige Forschung sollte empirisch messen, wie groÃŸ die
-VollstÃ¤ndigkeitslÃ¼cke KI-generierter Software im Vergleich zu manuell beschriebener
-Software ist -- eine Frage von unmittelbarer praktischer Relevanz fÃ¼r den Einsatz von
+Satz~\ref{satz:luecke}. Zukünftige Forschung sollte empirisch messen, wie groß die
+Vollständigkeitslücke KI-generierter Software im Vergleich zu manuell beschriebener
+Software ist -- eine Frage von unmittelbarer praktischer Relevanz für den Einsatz von
 KI in sicherheitskritischen Informationssystemen.
 
 \subsubsection{Neurosymbolische Integration}
 
 Ein vielversprechender Forschungsansatz ist die neurosymbolische Integration~\cite{lamb2020}:
-die Verbindung von lernenden neuronalen Netzen (fÃ¼r die Extraktion von $G_\mathcal{R}$
+die Verbindung von lernenden neuronalen Netzen (für die Extraktion von $G_\mathcal{R}$
 aus unstrukturierten Anforderungsdokumenten) mit symbolischen Verifikationsverfahren
-(dem Subgraph Algorithmus fÃ¼r die formale KonsistenzprÃ¼fung). Diese Kombination
-wÃ¼rde die StÃ¤rken beider Paradigmen vereinen und kÃ¶nnte die Konstruktion von
-$G_\mathcal{R}$ aus groÃŸen Mengen natÃ¼rlichsprachlicher Anforderungen erheblich
+(dem Subgraph Algorithmus für die formale Konsistenzprüfung). Diese Kombination
+würde die Stärken beider Paradigmen vereinen und könnte die Konstruktion von
+$G_\mathcal{R}$ aus großen Mengen natürlichsprachlicher Anforderungen erheblich
 beschleunigen.
 
 \subsection{Anthropologische, gesellschaftliche und ethische Dimension}
 
-\subsubsection{Informationssysteme fÃ¼r das Leben}
+\subsubsection{Informationssysteme für das Leben}
 
-Das Ausgangszitat benennt das hÃ¶chste Ziel des Informationsingenieurs:
-\enquote{den Menschen Informationssysteme fÃ¼r das Leben zu geben}. Diese Formulierung
+Das Ausgangszitat benennt das höchste Ziel des Informationsingenieurs:
+\enquote{den Menschen Informationssysteme für das Leben zu geben}. Diese Formulierung
 ist nicht rein technisch, sondern zutiefst anthropologisch: Informationssysteme
-sind keine Selbstzwecke, sondern Dienste an menschlichen BedÃ¼rfnissen, FÃ¤higkeiten
-und WÃ¼rden. Die Frage, welche Informationssysteme dem Menschen \emph{wirklich} dienen,
+sind keine Selbstzwecke, sondern Dienste an menschlichen Bedürfnissen, Fähigkeiten
+und Würden. Die Frage, welche Informationssysteme dem Menschen \emph{wirklich} dienen,
 ist nicht durch Algorithmen beantwortbar, sondern erfordert ethisch-philosophische
 Reflexion.
 
 \subsubsection{Technikethik als integraler Bestandteil des Berufsbilds}
 
-ZukÃ¼nftige Forschung an der Schnittstelle von Informationsingenieurwesen und Technikethik
+Zukünftige Forschung an der Schnittstelle von Informationsingenieurwesen und Technikethik
 sollte Kriterien entwickeln, nach denen der Informationsingenieur die Menschendienlichkeit
 seines Systems beurteilen kann. Dabei sind folgende Fragen leitend:
 \begin{itemize}
   \item Welche Anforderungen $r_i \in \mathcal{R}$ kodieren ethische Grundprinzipien
         (Nicht-Schaden, Autonomie, Gerechtigkeit, Nutzen) und wie werden sie in
         $G_\mathcal{R}$ formalisiert?
-  \item Wie kann die VollstÃ¤ndigkeitslÃ¼cke $\Delta$ fÃ¼r ethische Anforderungen
+  \item Wie kann die Vollständigkeitslücke $\Delta$ für ethische Anforderungen
         minimiert werden, wenn diese schwer formalisierbar sind?
   \item Welche Rolle spielt der Informationsingenieur bei der gesellschaftlichen
-        FolgenabschÃ¤tzung seines Systems?
+        Folgenabschätzung seines Systems?
 \end{itemize}
 
-\subsubsection{Digitale SouverÃ¤nitÃ¤t und ZugÃ¤nglichkeit}
+\subsubsection{Digitale Souveränität und Zugänglichkeit}
 
 Eine gesellschaftlich relevante Dimension des Informationsingenieurwesens ist die
-digitale SouverÃ¤nitÃ¤t: Informationssysteme sollen nicht nur technisch korrekt sein,
-sondern auch zugÃ¤nglich, verstÃ¤ndlich und kontrollierbar fÃ¼r die Menschen, die sie
-benutzen. Dies stellt zusÃ¤tzliche Anforderungen an die graphische Modellsicht --
-sie muss nicht nur fÃ¼r technische EntscheidungstrÃ¤ger, sondern auch fÃ¼r BÃ¼rger und
-Nutzer verstÃ¤ndlich sein -- und an die Beschreibungssprache, die auditierbar und
+digitale Souveränität: Informationssysteme sollen nicht nur technisch korrekt sein,
+sondern auch zugänglich, verständlich und kontrollierbar für die Menschen, die sie
+benutzen. Dies stellt zusätzliche Anforderungen an die graphische Modellsicht --
+sie muss nicht nur für technische Entscheidungsträger, sondern auch für Bürger und
+Nutzer verständlich sein -- und an die Beschreibungssprache, die auditierbar und
 transparent sein muss.
 
 \subsection{Langfristige Vision: Der Informationsingenieur als Grundberuf der Informationsgesellschaft}
@@ -1724,13 +1724,13 @@ des 19.~Jahrhunderts einnahm -- als derjenige, der die physische Infrastruktur d
 Gesellschaft mit Verantwortung, Formalismus und Menschendienlichkeit gestaltet hat.
 
 Die Informationsinfrastruktur des 21.~Jahrhunderts -- Kommunikationsnetze, Steuerungssysteme,
-medizinische Informationssysteme, autonome Fahrzeuge, smarte StÃ¤dte -- ist ebenso
-grundlegend fÃ¼r menschliches Leben wie BrÃ¼cken, GebÃ¤ude und Wasserversorgung.
+medizinische Informationssysteme, autonome Fahrzeuge, smarte Städte -- ist ebenso
+grundlegend für menschliches Leben wie Brücken, Gebäude und Wasserversorgung.
 Ihre Gestaltung erfordert einen Beruf, der die theoretischen Grundlagen des Informatikers
-und die praktische Kompetenz des Softwareentwicklers in einem einzigen kohÃ¤renten
-Berufsbild vereint -- mit voller Verantwortung fÃ¼r die Transformation von der
+und die praktische Kompetenz des Softwareentwicklers in einem einzigen kohärenten
+Berufsbild vereint -- mit voller Verantwortung für die Transformation von der
 Anforderung zum Zielcode und mit dem klaren Ziel, den Menschen Informationssysteme
-fÃ¼r das Leben zu geben.
+für das Leben zu geben.
 
 Dieser Beruf ist der Informationsingenieur.
 

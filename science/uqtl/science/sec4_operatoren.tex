@@ -1,9 +1,9 @@
 ﻿% â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-\section{Ãœbersetzungsregeln und Operatoren}
+\section{Übersetzungsregeln und Operatoren}
 \label{sec:operatoren}
 % â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-Dieses Kapitel definiert die vollstÃ¤ndigen Ãœbersetzungsregeln von den
+Dieses Kapitel definiert die vollständigen Übersetzungsregeln von den
 Quellsprachen Python, Java und C\# in den IQT sowie vom IQT nach ANSI SQL.
 Die Regeln werden als Transformationstabellen und formale Schreibweisen
 dargestellt.
@@ -15,12 +15,12 @@ dargestellt.
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Filteroperatoren}
+\caption{Übersetzungstabelle: Filteroperatoren}
 \label{tab:filter_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
 \toprule
-\textbf{IQT-PrÃ¤dikat} & \textbf{Python} & \textbf{Java} & \textbf{C\#} \\
+\textbf{IQT-Prädikat} & \textbf{Python} & \textbf{Java} & \textbf{C\#} \\
 \midrule
 $\mathtt{EQ}(a, v)$
   & \texttt{Model.col == v}
@@ -66,7 +66,7 @@ $\mathtt{OR}$
 \end{tabularx}
 \end{sidewaystable}
 
-\textbf{SQL-Generierungsregel fÃ¼r FILTER:}
+\textbf{SQL-Generierungsregel für FILTER:}
 \begin{align*}
 \mathrm{SQL}(\mathtt{FILTER}(S, p, \mathtt{WHERE}))
   &= \mathrm{SQL}(S) + \texttt{ WHERE } + \mathrm{SQL}(p) \\
@@ -81,7 +81,7 @@ $\mathtt{OR}$
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Projektionsoperatoren}
+\caption{Übersetzungstabelle: Projektionsoperatoren}
 \label{tab:project_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -115,7 +115,7 @@ Distinct
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Sortieroperatoren}
+\caption{Übersetzungstabelle: Sortieroperatoren}
 \label{tab:sort_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -160,7 +160,7 @@ NULLS FIRST
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: LIMIT / OFFSET je Datenbankdialekt}
+\caption{Übersetzungstabelle: LIMIT / OFFSET je Datenbankdialekt}
 \label{tab:limit_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXX}
@@ -195,7 +195,7 @@ Oracle $<$12c
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Aggregationsfunktionen}
+\caption{Übersetzungstabelle: Aggregationsfunktionen}
 \label{tab:agg_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -245,7 +245,7 @@ HAVING
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Join-Typen}
+\caption{Übersetzungstabelle: Join-Typen}
 \label{tab:join_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -272,10 +272,10 @@ CROSS JOIN
 \end{tabularx}
 \end{sidewaystable}
 
-\begin{regel}[JOIN-Ãœbersetzung]
+\begin{regel}[JOIN-Übersetzung]
 \label{regel:join}
-FÃ¼r einen \texttt{INNER JOIN} zwischen Relation $L$ (Alias $t_1$) und $R$ (Alias $t_2$)
-mit PrÃ¤dikat $p$ ergibt sich:
+Für einen \texttt{INNER JOIN} zwischen Relation $L$ (Alias $t_1$) und $R$ (Alias $t_2$)
+mit Prädikat $p$ ergibt sich:
 \[
 \mathrm{SQL}(\mathtt{JOIN}(L, R, \mathtt{INNER}, p)) =
   \mathrm{SQL}(L) + \texttt{ INNER JOIN } + \mathrm{SQL}(R) +
@@ -289,11 +289,11 @@ mit PrÃ¤dikat $p$ ergibt sich:
 % â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 Fensterfunktionen (Window Functions, ANSI SQL:2003+) werden in UQTL ab
-KonformitÃ¤tsstufe CL-3 unterstÃ¼tzt.
+Konformitätsstufe CL-3 unterstützt.
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Fensterfunktionen}
+\caption{Übersetzungstabelle: Fensterfunktionen}
 \label{tab:window_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -335,7 +335,7 @@ KonformitÃ¤tsstufe CL-3 unterstÃ¼tzt.
 
 \begin{sidewaystable}
 \centering
-\caption{Ãœbersetzungstabelle: Unterabfragen}
+\caption{Übersetzungstabelle: Unterabfragen}
 \label{tab:subquery_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}
@@ -369,7 +369,7 @@ CTE (WITH)
 
 \begin{table}[H]
 \centering
-\caption{Ãœbersetzungstabelle: Mengenoperationen}
+\caption{Übersetzungstabelle: Mengenoperationen}
 \label{tab:set_ops}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{lXXX}

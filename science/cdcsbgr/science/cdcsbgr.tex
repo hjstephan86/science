@@ -55,13 +55,13 @@
 	breaklines=true,
 	frame=single,
 	literate=%
-	{Ã–}{{\"O}}1
-	{Ã„}{{\"A}}1
-	{Ãœ}{{\"U}}1
-	{ÃŸ}{{\ss}}1
-	{Ã¼}{{\"u}}1
-	{Ã¤}{{\"a}}1
-	{Ã¶}{{\"o}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
 	{Î£}{{$\Sigma$}}1
 	{â†’}{{$\rightarrow$}}1
 	{âŠ†}{{$\subseteq$}}1
@@ -106,10 +106,10 @@
 	
 	Das CDC-Verifikationsproblem umfasst zwei Teilaufgaben:
 	\begin{enumerate}
-		\item \textbf{CDC-Erkennung:} Identifiziere alle Signalpfade, die TaktdomÃ¤nengrenzen
-		Ã¼ber\-queren.
+		\item \textbf{CDC-Erkennung:} Identifiziere alle Signalpfade, die Taktdomänengrenzen
+		über\-queren.
 		\item \textbf{CDC-Korrektheit:} Stelle fest, ob jeder solche Pfad durch ein
-		zulÃ¤ssiges Synchronisationsmuster (z.\,B.\ 2-FF-Synchronizer,
+		zulässiges Synchronisationsmuster (z.\,B.\ 2-FF-Synchronizer,
 		Handshake, FIFO) abgesichert ist.
 	\end{enumerate}
 	
@@ -294,7 +294,7 @@
 		Sei $G_{\mathcal{C}}$ der Schaltkreisgraph und $G_P$ ein Mustergraph.
 		Eine \emph{strukturelle Einbettung} von $G_P$ in $G_{\mathcal{C}}$ ist ein
 		injektiver Graph-Homomorphismus $\varphi: V_P \to V_{\mathcal{C}}$, der
-		Kantenstruktur und Knotenmarkierungen (Elementtyp, Taktdom\"ane) erhÃ¤lt:
+		Kantenstruktur und Knotenmarkierungen (Elementtyp, Taktdom\"ane) erhält:
 		\begin{align}
 			(u,v) \in E_P &\Rightarrow (\varphi(u), \varphi(v)) \in E_{\mathcal{C}}, \\
 			\lambda_P(u)   &= \lambda_{\mathcal{C}}(\varphi(u)) \quad \forall u \in V_P.
@@ -323,7 +323,7 @@
 		\mathrm{CDC\text{-}VERIFY}(\mathcal{C}, \mathcal{P}) \;\leq_p\;
 		\mathrm{SUBGRAPH}(G_{\mathcal{C}},\, G_P)
 		\end{align*}
-		Die Reduktion kann in Zeit $O(|V|^2)$ durchgefÃ¼hrt werden, wobei
+		Die Reduktion kann in Zeit $O(|V|^2)$ durchgeführt werden, wobei
 		$|V| = |V_{\mathcal{C}}|$ die Anzahl der Schaltkreisknoten ist.
 	\end{satz}
 	
@@ -1229,7 +1229,7 @@
 		+ \lfloor \log_2(\mathrm{MTBF}_j) \rfloor \cdot 2^{2n}
 		\]
 		Der dritte Term kodiert die diskretisierte MTBF des Pfades, der
-		Spalte $j$ verlÃ¤sst. Die Injektivit\"at der erweiterten Signatur-Funktion
+		Spalte $j$ verlässt. Die Injektivit\"at der erweiterten Signatur-Funktion
 		bleibt erhalten, da die drei Terme disjunkte Bit-Bereiche belegen
 		($[0, 2^n)$, $[2^n, 2^{2n})$, $[2^{2n}, 2^{3n})$).
 		
@@ -1257,7 +1257,7 @@
 		\;\Rightarrow\;
 		\mathbf{AF}\bigl(\mathrm{in}(f_{\mathrm{dst}}) \in \{0, 1\}\bigr)\bigr)
 		\]
-		d.\,h.\ \emph{fÃ¼r alle zuk\"unftigen Zust\"ande gilt: wenn der Ausgang des
+		d.\,h.\ \emph{für alle zuk\"unftigen Zust\"ande gilt: wenn der Ausgang des
 			Quell-FF definiert ist, wird der Eingang des Ziel-FF irgendwann
 			einen definierten Wert annehmen.}
 	\end{definition}
@@ -1456,7 +1456,7 @@
 		
 		\item \textbf{Quantenschaltkreise und CDC.}
 		Mit dem Aufkommen von Quantenprozessoren stellt sich die Frage,
-		ob CDC-analoge Konzepte (Dekoh\"arenz an DomÃ¤nengrenzen) als
+		ob CDC-analoge Konzepte (Dekoh\"arenz an Domänengrenzen) als
 		Subgraph-Problem modellierbar sind. Dies w\"urde den Anwendungsbereich
 		des Subgraph Algorithmus auf Quanten-Hardware-Verifikation erweitern.
 		
