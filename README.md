@@ -1,6 +1,6 @@
 # Wissenschaften
 
-> **248 Wissenschaften** von Stephan Epp
+> **250 Wissenschaften** von Stephan Epp
 
 ---
 
@@ -59,6 +59,8 @@
 | dirac *(Drive)* | Der Dirac-Impuls δ(t) — formale Theorie im Rahmen der Distributionentheorie (Schwartz): Siebungseigenschaft, Faltungsidentität, Fourier-/Laplace-Transformierte, Dirac-Kamm, LTI-Systeme, Quantenmechanik |
 | elevator | The Einstein-Elevator: Advanced Microgravity Research Infrastructure — Design, Analysis, and Optimization |
 | lightd | Lichtgeschwindigkeit in verschiedenen Medien - Formale Analyse der Abweichungen und Verteilungen |
+| mcfstoch | Stochastischer Mittlerer Krümmungsfluss: Theorie, Analyse und Evolutionsdynamik |
+
 
 ---
 
@@ -387,6 +389,7 @@
 | hiv&ebo *(Drive)* | HIV & Ebola: kombinierte graphentheoretische Analyse — Synergieeffekte bei Koinfektion, epidemiologische Wechselwirkungen und gemeinsame Subgraph-Modellierung |
 | r0-classes *(Drive)* | Basisreproduktionszahl R₀ — formale Klassifikation epidemiologischer Ausbreitungsklassen; SIR/SEIR-Modelle, Schwellenwertanalyse und Interventionsschwellen |
 | wiederherstellung *(Drive)* | Resilienz der Erde — Lyapunov-Stabilität, Subgraph Algorithmus; trophische Kaskaden, Ozonschicht, Mangroven; 8 Plots |
+| dgraph | Depression als Graph-Modellierung des Gehirns: Eine formale Analyse der Negierung von Lebensmöglichkeiten |
 
 ---
 
