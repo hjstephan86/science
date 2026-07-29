@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -10,10 +11,11 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage[protrusion=true,expansion=true]{microtype}
-\emergencystretch=1em
+\usepackage[protrusion=true,expansion=false,tracking=true,kerning=true]{microtype}
+\emergencystretch=2.5em
 
-\geometry{margin=2.5cm}
+\usepackage{geometry}
+\geometry{margin=2.5cm, top=2.8cm, bottom=2.8cm, left=2.5cm, right=2.5cm, headsep=0.5cm}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -23,6 +25,8 @@
 \newtheorem{bemerkung}{Bemerkung}
 \newtheorem{folgerung}{Folgerung}
 \newtheorem{proposition}{Proposition}
+
+\renewcommand{\proofname}{Beweis}
 
 \setlist[itemize,1]{label=--}
 
@@ -39,6 +43,11 @@
 	citecolor=accentred,
 	urlcolor=mainblue
 }
+
+% German captions
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\proofname}{Beweis}
+\renewcommand{\refname}{Literaturverzeichnis}
 
 % Code-Highlighting
 \lstset{
@@ -116,18 +125,6 @@ Diese Arbeit präsentiert:
 	\item \textbf{Numerische Verifikation}: Detaillierte Computerstudien mit Matplotlib-Visualisierungen.
 	\item \textbf{Physikalische Interpretation}: Diskussion von Implikationen für Singularitätsbildung und Rauscheffekte.
 \end{enumerate}
-
-\subsection{Struktur der Arbeit}
-
-Die Arbeit ist wie folgt aufgebaut:
-\begin{itemize}
-	\item Abschnitt~\ref{sec:fundamentals} führt fundamentale Konzepte und Definitionen ein.
-	\item Abschnitt~\ref{sec:deterministic} analysiert den deterministischen Fall im Detail, mit expliziter Lösung für Kugeln.
-	\item Abschnitt~\ref{sec:stochastic} entwickelt die stochastische Theorie und Existenzergebnisse.
-	\item Abschnitt~\ref{sec:energy} präsentiert Energieabschätzungen und Dissipationseigenschaften.
-	\item Abschnitt~\ref{sec:numerics} bietet numerische Simulationen und Visualisierungen.
-	\item Abschnitt~\ref{sec:outlook} diskutiert zukünftige Richtungen und offene Probleme.
-\end{itemize}
 
 \section{Fundamentale Konzepte}
 \label{sec:fundamentals}
@@ -504,7 +501,14 @@ Abbildung~\ref{fig:energy_estimates} zeigt Energiedissipation und Krümmungswach
 
 Dieses Kapitel präsentiert eine umfassende Analyse aller sechs numerischen Visualisierungen, die die mathematischen Theorien und numerischen Simulationen des stochastischen Mittleren Krümmungsflusses illustrieren. Jede Abbildung wurde mit höchster Auflösung (300 DPI) generiert und mit matplotlib in Python erstellt, um Publikationsqualität zu gewährleisten.
 
-\subsection{Abbildung 1: Deterministischer Mittlerer Krümmungsfluss für Kugeln}
+\subsection{Deterministischer Mittlerer Krümmungsfluss für Kugeln}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_1_mcf_deterministic.pdf}
+	\caption{Deterministisches Schrumpfen von Kugeln mit verschiedenen initialen Radii.}
+	\label{fig:mcf_deterministic}
+\end{figure}
 
 \textbf{Beschreibung:} Diese Abbildung zeigt die deterministischen Lösungen des Mittleren Krümmungsflusses für Kugeln mit fünf verschiedenen initialen Radii: $r_0 \in \{1.0, 0.8, 0.6, 0.4, 0.2\}$. Jede Kurve folgt der expliziten analytischen Lösung:
 \[
@@ -546,7 +550,14 @@ T_*(r_0) = \frac{r_0^2}{2n} = \frac{r_0^2}{2}.
 
 \textbf{Numerische Verifikation}: Die Kurven wurden mit 1000 Zeitpunkten pro Trajektorie berechnet, wobei $t$ von $0.001$ bis $0.25$ reichte. Dies ergibt eine zeitliche Auflösung von $\Delta t \approx 0.00025$. Die numerischen Werte stimmen mit der analytischen Formel auf Maschinengenauigkeit überein (Fehler $< 10^{-10}$).
 
-\subsection{Abbildung 2: Stochastische Trajektorien mit Rauschstörung}
+\subsection{Stochastische Trajektorien mit Rauschstörung}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_2_mcf_stochastic.pdf}
+	\caption{Stochastische Trajektorien des Mittleren Krümmungsflusses mit Rauschstörung.}
+	\label{fig:mcf_stochastic}
+\end{figure}
 
 \textbf{Beschreibung:} Diese Abbildung zeigt 30 Monte-Carlo-Realisierungen des stochastischen Mittleren Krümmungsflusses mit deterministischem Overlay. Die Anfangsbedingung ist einheitlich $r_0 = 0.8$, aber jede Realisierung erhält unterschiedliche Zufallspfade durch das Wiener-Prozess-Inkrement.
 
@@ -588,7 +599,14 @@ wobei:
 
 \textbf{Physikalische Bedeutung}: In biologischen Systemen könnte dies das Schrumpfen einer Zellmembran oder eines Vesikels unter Einfluss thermischer Fluktuationen darstellen. Die große Streubreite ($\sigma = 0.15$) entspricht einer hohen Temperatur oder starken Rauschquelle.
 
-\subsection{Abbildung 3: Level-Set-Formulierung und Radiusevolution}
+\subsection{Level-Set-Formulierung und Radiusevolution}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_3_level_sets.pdf}
+	\caption{Level-Set-Formulierung und Radiusevolution des Mittleren Krümmungsflusses.}
+	\label{fig:mcf_levelset}
+\end{figure}
 
 \textbf{Beschreibung:} Diese zweiteilige Abbildung zeigt (links) die Level-Sets der Höhenfunktion in den $(x_1, x_2)$-Koordinaten zu vier verschiedenen Zeitpunkten, und (rechts) die entsprechende zeitliche Evolution des Radius $r(t)$.
 
@@ -637,7 +655,14 @@ Die Level-Sets sind die Kurven $\phi = \text{const}$, also konzentrische Kreise.
 
 \textbf{Verallgemeinerung}: Für höherdimensionale Kugeln ($n \geq 1$) gilt die gleiche Theorie, aber mit $T_* = r_0^2 / (2n)$. Die Singularitätszeit ist umgekehrt proportional zur Dimension.
 
-\subsection{Abbildung 4: Ensemble-Statistik aus 500 Trajektorien}
+\subsection{Ensemble-Statistik aus 500 Trajektorien}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_4_ensemble_statistics.pdf}
+	\caption{Ensemble-Statistik aus 500 Trajektorien des Mittleren Krümmungsflusses.}
+	\label{fig:mcf_ensemble_stats}
+\end{figure}
 
 \textbf{Beschreibung:} Dies ist die umfassendste Abbildung mit vier Unterfiguren, die statistische Analysen über 500 unabhängige stochastische Simulationen darstellen. Die Anfangsbedingung ist $r_0 = 1.0$ und die Rauschstärke $\sigma = 0.20$ (etwas höher als in Abbildung 2).
 
@@ -722,7 +747,14 @@ e(t) = |E[r(t)] - r_{\text{det}}(t)| = |\bar{r}(t) - \sqrt{1 - 2t}|.
 
 Dieser Plot ist wichtig zur Beurteilung der Validität der deterministischen Approximation: Für $t$ signifikant kleiner als $T_*$ ist der Fehler klein.
 
-\subsection{Abbildung 5: Phasendiagramm (Rauschstärke vs. Auslöschungszeit)}
+\subsection{Phasendiagramm (Rauschstärke vs. Auslöschungszeit)}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_5_phase_diagram.pdf}
+	\caption{Phasendiagramm (Rauschstärke vs. Auslöschungszeit).}
+	\label{fig:mcf_phase_diagram}
+\end{figure}
 
 \textbf{Beschreibung:} Diese Abbildung untersucht die Abhängigkeit der mittleren Auslöschungszeit $T(\sigma)$ von der Rauschstärke $\sigma$. Dies ist eine Meta-Analyse: Für jeden $\sigma$-Wert wurden 50 unabhängige Monte-Carlo-Simulationen durchgeführt.
 
@@ -767,7 +799,14 @@ Dieser Plot ist wichtig zur Beurteilung der Validität der deterministischen App
 
 \textbf{Weitere Analyse}: Man könnte die Verteilung der Auslöschungszeiten als Histogramm darstellen, um zu prüfen, ob sie Gaußsch oder andersfalls verteilt sind. Bei höheren Rauschstärken würden man wahrscheinlich längere Schwänze (schwere Tails) beobachten.
 
-\subsection{Abbildung 6: Energiedissipation und Krümmungsdivergenz}
+\subsection{Energiedissipation und Krümmungsdivergenz}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure_6_energy_estimates.pdf}
+	\caption{Energiedissipation und Krümmungsdivergenz.}
+	\label{fig:mcf_energy_estimates}
+\end{figure}
 
 \textbf{Beschreibung:} Diese Abbildung zeigt zwei komplementäre Aspekte der deterministischen MCF-Dynamik: die Abnahme der Gesamtenergie (Oberfläche) und das Wachstum der lokalen Krümmung bis zur Singularität.
 
@@ -826,24 +865,6 @@ Bei Annäherung an die Singularitätszeit $t \to T_* = r_0^2 / (2n)$ divergiert 
 \textbf{Physikalische Bedeutung}: Die Divergenz der Krümmung signalisiert eine geometrische Singularität, bei der die Oberfläche „unendlich gekrümmt" wird. In realen Materialien würde dies zu einem Phasenübergang oder Zusammenbruch führen.
 
 \textbf{Verallgemeinerung}: Für allgemeinere anfängliche Kugeln oder gekrümmte Oberflächen können die Singularitätszeiten und Blowup-Raten variieren, aber die qualitative Struktur (monotone Energieabnahme, Krümmungsdivergenz) bleibt erhalten.
-
-\subsection{Zusammenfassung der Figurenanalyse}
-
-Die sechs Abbildungen zusammen erzählen eine kohärente Geschichte der deterministischen und stochastischen Evolution von Kugeln unter Mittleren Krümmungsfluss:
-
-\begin{enumerate}
-	\item \textbf{Abbildung 1} zeigt die fundamentale deterministische Dynamik: Alle Kugeln schrumpfen zu Singularitäten.
-	
-	\item \textbf{Abbildung 2} demonstriert, dass Rauschen diese Dynamik modifiziert, indem es Pfad-zu-Pfad-Variabilität erzeugt.
-	
-	\item \textbf{Abbildung 3} visualisiert die Level-Set-Struktur und bestätigt die Erhaltung der Symmetrie.
-	
-	\item \textbf{Abbildung 4} quantifiziert die stochastische Variabilität durch Ensemble-Statistik und zeigt, dass der Erwartungswert der deterministischen Lösung nahe bleibt, aber mit wachsendem Fehler über Zeit.
-	
-	\item \textbf{Abbildung 5} offenbart einen kontraintuitiven Effekt: Rauschen beschleunigt die durchschnittliche Singularitätsbildung.
-	
-	\item \textbf{Abbildung 6} illustriert die Energiedissipation und Krümmungsdivergenz, die die mathematischen Kerneigenschaften des MCF unterstreichen.
-\end{enumerate}
 
 Diese Visualisierungen validieren nicht nur die numerischen Methoden und theoretischen Resultate, sondern provide physikalische Intuition für das komplexe Zusammenspiel zwischen geometrischen Effekten, Rausch und Singularitätsbildung.
 
@@ -1020,20 +1041,17 @@ Allerdings erfordert dies sorgfältige Behandlung des dimensionalitäts-Fluch un
 
 \section{Fazit}
 
-Diese Arbeit hat eine umfassende Behandlung des stochastischen Mittleren Krümmungsflusses von fundamentalen Definitionen über strenge Existenztheorie, detaillierte Energieanalyse bis zu umfangreichen numerischen Simulationen präsentiert. Das Zusammenspiel zwischen geometrischen Drift und zufälliger Kraft erzeugt reiche Dynamik, die in rein deterministischen oder rein stochastischen Einstellungen nicht präsent ist. Satz~\ref{thm:existence} etabliert die Existenz von Martingal-Lösungen für $n \geq 2$, liefert ein solides mathematisches Fundament. Energieabschätzungen (Sätze~\ref{thm:energy_dissipation} und~\ref{thm:martingale_energy}) offenbaren, wie die dissipative Struktur des MKF durch Rauschen modifiziert wird. Numerische Experimente (Abbildungen 1--6) quantifizieren Effekte der Rauschstärke auf Singularitätsbildung und liefern visuelle Intuition für das Fluss-Verhalten.
+Diese Arbeit hat eine umfassende Behandlung des stochastischen Mittleren Krümmungs\-flusses von fundamentalen Definitionen über strenge Existenztheorie, detaillierte Energieanalyse bis zu umfangreichen numerischen Simulationen präsentiert. Das Zusammenspiel zwischen geometrischen Drift und zufälliger Kraft erzeugt reiche Dynamik, die in rein deterministischen oder rein stochastischen Einstellungen nicht präsent ist. Satz~\ref{thm:existence} etabliert die Existenz von Martingal-Lösungen für $n \geq 2$, liefert ein solides mathematisches Fundament. Energieabschätzungen (Sätze~\ref{thm:energy_dissipation} und~\ref{thm:martingale_energy}) offenbaren, wie die dissipative Struktur des MKF durch Rauschen modifiziert wird. Numerische Experimente (Abbildungen 1--6) quantifizieren Effekte der Rauschstärke auf Singularitätsbildung und liefern visuelle Intuition für das Fluss-Verhalten.
 
 Die Breite offener Probleme deutet an, dass stochastischer MKF ein fruchtbares Feld für beide theoretische Mathematik und angewandte Forschung bleibt. Zukünftige Arbeiten sollten die theoretischen Entwicklungen in Abschnitt~\ref{sec:outlook} verfolgen, fortgeschrittene numerische Schemen implementieren und Anwendungen in Materialwissenschaft, Bildanalyse und biologischer Modellierung erkunden. Die Vereinigung stochastischer Analyse mit geometrischen Variationsproblemen öffnet neue Grenzen beim Verständnis von Evolutionsgleichungen unterworfen zufälligen Störungen.
-
-\bibliography{references}
-\bibliographystyle{plain}
 
 \begin{thebibliography}{99}
 
 \bibitem{Huisken1984} Huisken, G. (1984). Flow by mean curvature of convex surfaces into spheres. J. Differential Geom., 20(1), 237--266.
 
-\bibitem{Evans1993} Evans, L. C., & Spruck, J. (1991). Motion of level sets by mean curvature. I. J. Differential Geom., 33(3), 635--681.
+\bibitem{Evans1993} Evans, L. C., Spruck, J. (1991). Motion of level sets by mean curvature. I. J. Differential Geom., 33(3), 635--681.
 
-\bibitem{Gage1986} Gage, M., & Hamilton, R. S. (1986). The heat equation shrinking convex plane curves. J. Differential Geom., 23(1), 69--96.
+\bibitem{Gage1986} Gage, M., Hamilton, R. S. (1986). The heat equation shrinking convex plane curves. J. Differential Geom., 23(1), 69--96.
 
 \bibitem{Mantegazza2011} Mantegazza, C. (2011). Lecture notes on mean curvature flow. Birkhäuser.
 
@@ -1041,19 +1059,17 @@ Die Breite offener Probleme deutet an, dass stochastischer MKF ein fruchtbares F
 
 \bibitem{Pardoux1997} Pardoux, É. (1997). Stochastic partial differential equations and filtering of diffusion processes. Stochastics, 3(2), 127--167.
 
-\bibitem{RogersWilliams2000} Rogers, L. C. G., & Williams, D. (2000). Diffusions, Markov processes, and martingales. Vol. 2: Itô calculus. Cambridge University Press.
+\bibitem{RogersWilliams2000} Rogers, L. C. G., Williams, D. (2000). Diffusions, Markov processes, and martingales. Vol. 2: Itô calculus. Cambridge University Press.
 
-\bibitem{DaPrestoGrabowski2022} Da Prato, G., & Zabczyk, J. (2014). Stochastic equations in infinite dimensions. Cambridge University Press.
+\bibitem{DaPrestoGrabowski2022} Da Prato, G., Zabczyk, J. (2014). Stochastic equations in infinite dimensions. Cambridge University Press.
 
-\bibitem{Es-SeyyedSaiedDarbon2017} Es-Seyed-Saied, H., & Darbon, J. (2017). Stochastic geometric evolution equations. arXiv:1703.05042.
+\bibitem{Es-SeyyedSaiedDarbon2017} Es-Seyed-Saied, H., Darbon, J. (2017). Stochastic geometric evolution equations. arXiv:1703.05042.
 
 \bibitem{Glowinski1992} Glowinski, R. (1992). Finite element methods for incompressible viscous flow. Handbook of Numerical Analysis, 9, 3--1176. Elsevier.
 
-\bibitem{Epp2026} Epp, S. (2026). Der Subgraph-Algorithmus. \url{https://github.com/hjstephan86/subgraph}.
+\bibitem{AbboudBackurs2015} Abboud, A., Backurs, A., Vassilevska Williams, V. (2015). Tight hardness results for LCS and other sequence similarity measures. 2015 IEEE 56th Annual Symposium on Foundations of Computer Science (FOCS), 59--78.
 
-\bibitem{AbboudBackurs2015} Abboud, A., Backurs, A., & Vassilevska Williams, V. (2015). Tight hardness results for LCS and other sequence similarity measures. 2015 IEEE 56th Annual Symposium on Foundations of Computer Science (FOCS), 59--78.
-
-\bibitem{FlandoliMahalov2012} Flandoli, F., & Mahalov, A. (2012). Stochastic Euler equations and Wiener processes. Stochastic Anal. Appl., 30(6), 379--412.
+\bibitem{FlandoliMahalov2012} Flandoli, F., Mahalov, A. (2012). Stochastic Euler equations and Wiener processes. Stochastic Anal. Appl., 30(6), 379--412.
 
 \end{thebibliography}
 
