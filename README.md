@@ -1,6 +1,6 @@
 # Wissenschaften
 
-> **250 Wissenschaften** von Stephan Epp
+> **251 Wissenschaften** von Stephan Epp
 
 ---
 
@@ -89,6 +89,7 @@
 | llm | Transformer-Architekturen als Subgraph-Isomorphismus-Problem — formaler Beweis und polynomielle Analyse in $O(n^3)$ |
 | regex | Effizienz regulärer Ausdrücke — Thompson, Potenzmenge, NFA-Simulation O(n·m); Sprachinklusion via Subgraph Algorithmus O(n³); 6 Plots |
 | spieltheorie *(Drive)* | Nash-Gleichgewichte als Graphstrukturen — Nash-Subgraph-Satz: Gleichgewichte als Senkenknoten in O(n²); strategische Isomorphie in O(n³); Shapley-Werte |
+| archimed | Die integrierte Zustandsdichte von Archimedean-Gittergraphen: Spektraltheorie, Floquet-Analysis und numerische Berechnung |
 
 ---
 
