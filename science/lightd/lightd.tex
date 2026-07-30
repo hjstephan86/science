@@ -1,20 +1,17 @@
-\documentclass[12pt,a4paper,oneside]{article}
-\usepackage[T1]{fontenc}
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
-\usepackage[
-    protrusion=true,
-    expansion=false,
-    tracking=true,
-    spacing=true,
-    final
-]{microtype}
+\usepackage{microtype}
 \usepackage{amsmath}
-\emergencystretch=1em
+\emergencystretch=2.0em
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
 \usepackage{subcaption}
 \usepackage{color}
 \usepackage{hyperref}
@@ -24,20 +21,25 @@
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,positioning}
+\usepackage{enumitem}
 
-% Hyperref configuration with blue links
+\setlist[itemize,1]{label=--}
+
+% ---------- Farben ----------
+\definecolor{mainblue}{RGB}{25, 70, 140}
+\definecolor{accentred}{RGB}{180, 50, 30}
+\definecolor{lightgray}{RGB}{245, 245, 248}
+\definecolor{darkgray}{RGB}{60, 60, 70}
+\definecolor{darkgreen}{RGB}{30, 100, 50}
+
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=blue,
-    urlcolor=blue,
-    citecolor=blue,
-    bookmarksopen=true,
-    pdftitle={Lichtgeschwindigkeit in verschiedenen Medien},
-    pdfauthor={Stephan Epp},
-    pdfsubject={Formale Analyse der Abweichungen und Verteilungen}
+	colorlinks=true,
+	linkcolor=mainblue,
+	citecolor=accentred,
+	urlcolor=mainblue
 }
+
+\usetikzlibrary{shapes,arrows,positioning}
 
 % Microtype settings removed due to font issues - using direct formatting instead
 % Using careful margins and geometry for text overflow prevention
@@ -99,7 +101,7 @@
 \title{\Large \textbf{Lichtgeschwindigkeit in verschiedenen Medien}\\
 \textit{Formale Analyse der Abweichungen und Verteilungen}}
 \author{Stephan Epp}
-\date{\today}
+\date{28. Juli 2026}
 
 \begin{document}
 
@@ -109,25 +111,12 @@
 
 \begin{abstract}
 Diese Arbeit untersucht die fundamentale Frage der Variation von Lichtgeschwindigkeit in verschiedenen optischen Medien. Während die Lichtgeschwindigkeit im Vakuum eine universelle Konstante ist, zeigt sich in materiellen Medien eine komplexe Abhängigkeit von verschiedenen Parametern. Wir entwickeln ein formales mathematisches Modell zur Beschreibung dieser Abweichungen, analysieren die zugrunde liegenden Wahrscheinlichkeitsverteilungen und bestimmen sowohl die maximale als auch die zu erwartende Abweichung.
-
-Die Arbeit präsentiert:
-\begin{enumerate}
-\item Formale Herleitungen der Geschwindigkeitsvariationen in verschiedenen Medien
-\item Probabilistische Modelle für Lichtwellen-Propagation
-\item Analytische Bestimmung der Extremalabweichungen
-\item Experimentelle Verifikation durch numerische Simulation
-\item Umfassende Literaturanalyse und zukünftige Forschungsperspektiven
-\end{enumerate}
-
-Die Ergebnisse zeigen, dass die Lichtgeschwindigkeitsabweichung durch mehrere Verteilungstypen beschreibbar ist, je nach Medium und Lichtwellenlänge. Wir bestimmen exakte Formeln für Maximal- und Erwartungswerte und validieren diese durch experimentelle Daten.
 \end{abstract}
 
-\newpage
 \tableofcontents
 \newpage
 
 \section{Einleitung}
-
 Die Ausbreitungsgeschwindigkeit von Licht ist eine der fundamentalsten Konstanten der Physik. Im Vakuum besitzt sie den absoluten Wert:
 \begin{equation}
     \cLight_0 = 299.792.458 \text{ m/s} \approx 3 \times 10^8 \text{ m/s}
@@ -154,6 +143,17 @@ Die Bearbeitung dieser Fragen ist nicht nur theoretisch von Interesse, sondern h
     \item \textbf{Materialeigenschaften}: Die Lichtgeschwindigkeit in einem Medium ist ein Indikator für dessen optische Eigenschaften
     \item \textbf{Quantenoptik}: Lichtwellen-Materie-Wechselwirkungen beeinflussen die effektive Propagationsgeschwindigkeit
 \end{enumerate}
+
+Die Arbeit präsentiert:
+\begin{enumerate}
+\item Formale Herleitungen der Geschwindigkeitsvariationen in verschiedenen Medien
+\item Probabilistische Modelle für Lichtwellen-Propagation
+\item Analytische Bestimmung der Extremalabweichungen
+\item Experimentelle Verifikation durch numerische Simulation
+\item Umfassende Literaturanalyse und zukünftige Forschungsperspektiven
+\end{enumerate}
+
+Die Ergebnisse zeigen, dass die Lichtgeschwindigkeitsabweichung durch mehrere Verteilungstypen beschreibbar ist, je nach Medium und Lichtwellenlänge. Wir bestimmen exakte Formeln für Maximal- und Erwartungswerte und validieren diese durch experimentelle Daten.
 
 \section{Theoretische Grundlagen}
 
@@ -478,9 +478,9 @@ Erwartete Abweichung & $1.75 \times 10^8$ & m/s \\
 
 Abbildung \ref{fig:plot1} zeigt die Wellenlängenabhängigkeit des Brechungsindex in verschiedenen Medien. Die Sellmeier-Gleichung wird verwendet, um die physikalisch realistische Dispersion zu modellieren.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot1_refractive_index.pdf}
+\includegraphics[width=0.9\textwidth]{plot1_refractive_index.pdf}
 \caption{Brechungsindex als Funktion der Wellenlänge in verschiedenen Medien (Luft, Wasser, Glas, Diamant). Die Kurven folgen Sellmeier-artigen Funktionen und zeigen charakteristische Dispersions-Eigenschaften.}
 \label{fig:plot1}
 \end{figure}
@@ -489,9 +489,9 @@ Abbildung \ref{fig:plot1} zeigt die Wellenlängenabhängigkeit des Brechungsinde
 
 Abbildung \ref{fig:plot2} präsentiert die Wahrscheinlichkeitsverteilungen der Geschwindigkeitsabweichungen in verschiedenen Medien.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot2_speed_deviation.pdf}
+\includegraphics[width=0.9\textwidth]{plot2_speed_deviation.pdf}
 \caption{Verteilungen der Lichtgeschwindigkeitsabweichungen in verschiedenen Medien. Die oberen Reihen zeigen Gaußsche Normalverteilungen für Glas und Wasser, die linke untere zeigt eine Log-Normalverteilung für Diamant, und die rechte unten zeigt einen Vergleich der maximalen Abweichungen.}
 \label{fig:plot2}
 \end{figure}
@@ -500,9 +500,9 @@ Abbildung \ref{fig:plot2} präsentiert die Wahrscheinlichkeitsverteilungen der G
 
 Abbildung \ref{fig:plot3} vergleicht die maximalen und erwarteten Abweichungen für verschiedene Medien.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot3_deviation_analysis.pdf}
+\includegraphics[width=0.9\textwidth]{plot3_deviation_analysis.pdf}
 \caption{Vergleich zwischen maximaler und erwarteter Geschwindigkeitsabweichung über verschiedene optische Medien. Die roten Balken zeigen die maximalen Abweichungen, die blauen die erwarteten Werte.}
 \label{fig:plot3}
 \end{figure}
@@ -511,9 +511,9 @@ Abbildung \ref{fig:plot3} vergleicht die maximalen und erwarteten Abweichungen f
 
 Abbildung \ref{fig:plot4} zeigt die kumulativen Verteilungsfunktionen (CDF).
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot4_cdf.pdf}
+\includegraphics[width=0.9\textwidth]{plot4_cdf.pdf}
 \caption{Kumulative Verteilungsfunktionen für verschiedene Medien. Diese Kurven ermöglichen die Bestimmung von Wahrscheinlichkeiten für Geschwindigkeitsbereiche.}
 \label{fig:plot4}
 \end{figure}
@@ -522,9 +522,9 @@ Abbildung \ref{fig:plot4} zeigt die kumulativen Verteilungsfunktionen (CDF).
 
 Abbildung \ref{fig:plot5} analysiert die wellenlängenabhängigen Dispersions-Effekte.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot5_dispersion.pdf}
+\includegraphics[width=0.9\textwidth]{plot5_dispersion.pdf}
 \caption{Dispersionseffekte: Lichtwellenlängenabhängige Geschwindigkeitsvariation in Glas und Wasser sowie die Abweichung vom Mittelwert.}
 \label{fig:plot5}
 \end{figure}
@@ -533,9 +533,9 @@ Abbildung \ref{fig:plot5} analysiert die wellenlängenabhängigen Dispersions-Ef
 
 Abbildung \ref{fig:plot6} präsentiert eine umfassende statistische Zusammenfassung.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{./plots/plot6_statistics.pdf}
+\includegraphics[width=0.9\textwidth]{plot6_statistics.pdf}
 \caption{Statistische Analyse der Lichtgeschwindigkeitsvariationen: Boxplots, Mittelwert und Standardabweichung, Variabilität sowie Variationskoeffizient.}
 \label{fig:plot6}
 \end{figure}
