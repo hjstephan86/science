@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -11,6 +12,8 @@
 \usepackage{enumitem}
 \usepackage[expansion=false,protrusion=true,kerning=true]{microtype}
 \usepackage{parskip}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 % ROBUSTE Überfluss-Vermeidung
 \emergencystretch=4em
@@ -27,9 +30,6 @@
 \clubpenalty=500
 \widowpenalty=500
 \brokenpenalty=100
-
-% Zeilenabstand
-\linespread{1.05}
 
 % Deutsche Begriffe
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
@@ -87,7 +87,7 @@
 \title{Die integrierte Zustandsdichte von Archimedean-Gittergraphen:\\
 Spektraltheorie, Floquet-Analysis und numerische Berechnung}
 \author{Stephan Epp}
-\date{30. Juli 2026}
+\date{31. Juli 2026}
 
 \begin{document}
 
@@ -513,6 +513,80 @@ Die Floquet-Theorie ist das zentrale analytische Werkzeug für die Behandlung pe
 	
 	Dies vermeidet numerische Instabilität bei der Auswertung der Heaviside-Funktion an Bandkanten-Punkten, wo die echte Heaviside-Funktion nicht differenzierbar ist.
 \end{bemerkung}
+
+\subsection{Pseudocode}
+
+\textbf{Zentrale Idee des Algorithmus}
+ 
+Der Algorithmus zur Berechnung der IDS folgt einer dreischrittigen Strategie:
+ 
+\begin{enumerate}
+	\item \textbf{Diskretisierung der Brillouin-Zone}: Die kontinuierliche erste Brillouin-Zone wird in ein gleichmäßiges Gitter diskretisiert
+	\item \textbf{Eigenvalue-Berechnung}: Für jeden Bloch-Vektor $\mathbf{k}$ werden die Eigenwerte des lokalen Floquet-Operators berechnet
+	\item \textbf{Integration}: Die Eigenwerte werden integriert, um die Zustandsdichte zu erhalten
+\end{enumerate}
+ 
+\textbf{Pseudocode für den O(N³)-Algorithmus}
+ 
+\begin{algorithm}[h]
+	\caption{Berechnung der integrierten Zustandsdichte (IDS)}
+	\label{algo:ids_computation}
+	
+	\begin{algorithmic}[1]
+		\Require{
+		Gitter (Gittertyp, Symmetrie, Einheitszelle), $N_k$, $E_{\text{Werte}}$, $\sigma$}
+		\Ensure{$N(E)$: Array mit IDS-Werten für alle Energien in $E_{\text{Werte}}$}
+		\State $\mathcal{B} \gets \text{KonstruiereBrillouinZone}(\text{Gitter})$
+		\State $\mathbf{k}_{\text{Gitter}} \gets \text{ErzeugKGitter}(\mathcal{B}, N_k, N_k)$ \Comment{$N_k \times N_k$ Punkte in 2D}
+		\State $N_{\text{Punkte}} \gets |\mathbf{k}_{\text{Gitter}}| = N_k^2$
+		\State $N_{\text{Bänder}} \gets \text{Gitter}.\text{Atome pro Einheitszelle}$
+		\State $\text{Eigenwerte} \gets \text{Wörterbuch}$
+		\For{$i = 1$ \textbf{bis} $N_k$}
+			\For{$j = 1$ \textbf{bis} $N_k$}
+				\State $\mathbf{k} \gets \mathbf{k}_{\text{Gitter}}[i, j]$ \Comment{Aktueller Bloch-Vektor}
+				\State $H_{\mathbf{k}} \gets \text{KonstruiereFloquetOperator}(\text{Gitter}, \mathbf{k})$ \Comment{Größe: $N_{\text{Bänder}} \times N_{\text{Bänder}}$}
+				\State $\text{Eigenwerte}[\mathbf{k}] \gets \text{Eigenwerte}(H_{\mathbf{k}})$ \Comment{$O(N_{\text{Bänder}}^3)$ Zeit}
+			\EndFor
+		\EndFor
+		\State $N(E) \gets \text{Nullvektor}(m)$ \Comment{$m = |\text{E\_Werte}|$ Energien}
+		\For{$i = 1$ \textbf{bis} $m$}
+			\State $E \gets E_{\text{Werte}}[i]$
+			\State $\text{Zähler} \gets 0$
+			\For{\textbf{jeden} $\mathbf{k}$ \textbf{in} $\mathbf{k}_{\text{Gitter}}$}
+				\For{$n = 1$ \textbf{bis} $N_{\text{Bänder}}$}
+					\State $E_{n\mathbf{k}} \gets \text{Eigenwerte}[\mathbf{k}][n]$
+					\State $\Theta_{\text{approx}} \gets \frac{1}{2} \left(1 + \tanh\left(\frac{E - E_{n\mathbf{k}}}{\sigma}\right)\right)$
+					\State $\text{Zähler} \gets \text{Zähler} + \Theta_{\text{approx}}$
+				\EndFor
+			\EndFor
+			\State $N(E) \gets \frac{\text{Zähler}}{N_{\text{Punkte}} \cdot N_{\text{Bänder}}}$
+		\EndFor
+		\State \Return $N(E)$ \Comment{Array mit IDS-Werten}
+	\end{algorithmic}
+\end{algorithm}
+ 
+\begin{algorithm}[h]
+	\caption{Konstruktion des Floquet-Operators H(k)}
+	\label{algo:floquet_construction}
+	\begin{algorithmic}[1]
+		\Require{Gitter, Bloch-Vektor $\mathbf{k}$}
+		\Ensure{$H_{\mathbf{k}}$: Floquet-Operator-Matrix der Größe $N_{\text{Bänder}} \times N_{\text{Bänder}}$}
+		\State $n \gets \text{Gitter}.\text{Anzahl Atome pro Einheitszelle}$
+		\State $H_{\mathbf{k}} \gets \text{Nullmatrix}(n \times n)$ vom Typ komplex
+		\Comment{Iteriere über alle Atome in der Einheitszelle}
+		\For{$i = 1$ \textbf{bis} $n$}
+			\For{$j = 1$ \textbf{bis} $n$}
+				\If{$i \neq j \textbf{und} \text{Gitter}.\text{HatVerbindung}(i, j)$}
+					\State $\mathbf{r}_{ij} \gets \text{Gitter}.\text{Positionen}[j] - \text{Gitter}.\text{Positionen}[i]$
+					\State $\text{Phase} \gets e^{i \langle \mathbf{k}, \mathbf{r}_{ij} \rangle}$
+					\State $t_{ij} \gets \text{Gitter}.\text{Hopping}[i, j]$
+					\State $H_{\mathbf{k}}[i, j] \gets \text{Phase} \times t_{ij}$
+				\EndIf
+			\EndFor
+		\EndFor
+		\State \Return $H_{\mathbf{k}}$ \Comment{Fertig konstruierte Floquet-Operator-Matrix}
+	\end{algorithmic}
+\end{algorithm}
 
 \section{Endlich getragene Eigenfunktionen}
 
