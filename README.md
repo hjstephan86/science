@@ -1,6 +1,6 @@
 # Wissenschaften
 
-> **251 Wissenschaften** von Stephan Epp
+> **252 Wissenschaften** von Stephan Epp
 
 ---
 
@@ -319,7 +319,7 @@
 | se *(Drive)* | Intentions- und Ideen-getriebene Softwareentwicklung: universelles Paradigma für Websites, mobile Apps und allgemeine Softwaresysteme |
 | ux *(Drive)* | pyble als Musterbeispiel psychologisch optimierter HCI — Sieben-Seiten-Theorem, Farbberuhigungs-Lemma und Informationsraum-Optimalitäts-Theorem formal bewiesen |
 | dbms *(Drive)* | Datenbankmanagementsysteme als eigenständige Infrastrukturkomponente — Die Serverauslagerung als außergewöhnlicher, architektonisch korrekter Weg |
-
+| functions | Functions as Contracts in Software Development - Quality, Maintainability, and Extensibility through Functional Decomposition |
 ---
 
 ### IV.2 Computergrafik
