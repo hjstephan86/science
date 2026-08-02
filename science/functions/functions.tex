@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -27,7 +27,7 @@
 
 % ========== EMERGENCY STRETCH ==========
 % Permet plus de flexibilité pour éviter les débordements
-\emergencystretch=1.5em
+\emergencystretch=3.0em
 \setlength{\parfillskip}{0pt plus 1fil}
 
 % ========== LINE BREAKING PARAMETERS ==========
@@ -83,8 +83,8 @@
 	{ö}{{\"o}}1
 }
 
-\title{Functions as Contracts in Software Development}
-\subtitle{Quality, Maintainability, and Extensibility through Functional Decomposition}
+\title{Functions as Contracts in Software Development \\{\Large Quality, Maintainability, and Extensibility through Decomposition}}
+
 \author{Stephan Epp}
 \date{July 31, 2026}
 
@@ -103,12 +103,7 @@ This work presents a formal analysis of functions as contracts in software devel
 
 Software functions represent a fundamental abstraction in programming. A function is defined by its signature—input parameters and output values—forming a contract. We quote here the fundamental principle guiding this work:
 
-\vspace{0.5cm}
-\noindent
-\fbox{\parbox{0.95\textwidth}{
-\textit{``Functions are genius, they are like a contract. Your signature consists of input or require and output or ensure. They are called and return the result. Because that is what the function guarantees. More functions means more contracts. Pay attention: A: A software with one main function and everything works as expected. That is impressive and important and speaks for quality. B: A software with many files, each containing many functions, and everything works as expected. That is impressive and important and speaks for quality. But maintainability and extensibility is incomparably higher than in case A.''}
-}}
-\vspace{0.5cm}
+\textit{Functions are genius, they are like a contract. Your signature consists of input or require and output or ensure. They are called and return the result. Because that is what the function guarantees. More functions means more contracts. Pay attention: A: A software with one main function and everything works as expected. That is impressive and important and speaks for quality. B: A software with many files, each containing many functions, and everything works as expected. That is impressive and important and speaks for quality. But maintainability and extensibility is incomparably higher than in case A.}
 
 This quotation encapsulates the central thesis: the architectural choice to decompose software into many specialized functions fundamentally differs in its properties from monolithic design. Both may achieve correctness, yet they differ drastically in their structural properties—maintainability and extensibility.
 
