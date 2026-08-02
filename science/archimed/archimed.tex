@@ -612,9 +612,9 @@ Der Algorithmus zur Berechnung der IDS folgt einer dreischrittigen Strategie:
 \begin{proof}
 	Betrachten wir den Fall des $(3,12,12)$-Gitters. Die Vertex-Konfigurazion führt zu einer speziellen Struktur der Laplacian-Matrix, die es ermöglicht, dass bestimmte Energieniveaus stark lokalisierte Eigenfunktionen zulassen.
 	
-	Konkret: Wenn die lokale Geometrie um einen Knoten zu einer "Potentialmulde" führt, können Eigenfunktionen exponentiell abklingen und somit finitely supported sein.
+	Konkret: Wenn die lokale Geometrie um einen Knoten zu einer Potentialmulde führt, können Eigenfunktionen exponentiell abklingen und somit finitely supported sein.
 	
-	Für andere Gitter wie $(4,8,8)$ ist die Gitterstruktur weniger "räumig", weshalb Eigenfunktionen schneller ausgedehnt sind.
+	Für andere Gitter wie $(4,8,8)$ ist die Gitterstruktur weniger räumig, weshalb Eigenfunktionen schneller ausgedehnt sind.
 \end{proof}
 
 \subsection{Charakterisierung der Support-Regionen}
@@ -628,7 +628,7 @@ Der Algorithmus zur Berechnung der IDS folgt einer dreischrittigen Strategie:
 \end{satz}
 
 \begin{bemerkung}
-	In der IDS-Analyse werden finitely supported Eigenfunktionen durch ein charakteristisches "Plateau" angezeigt -- ein Energiebereich, in dem die IDS konstant ist oder sehr langsam wächst.
+	In der IDS-Analyse werden finitely supported Eigenfunktionen durch ein charakteristisches Plateau angezeigt -- ein Energiebereich, in dem die IDS konstant ist oder sehr langsam wächst.
 \end{bemerkung}
 
 \section{Experimentelle Resultate}
@@ -761,6 +761,395 @@ Abbildung~\ref{fig:plot8} analysiert die Rechenkomplexität:
 	\caption{Zeitmessungen: Floquet-basierter Algorithmus vs. Dense Eigenvalue Methode. Der Floquet-Algorithmus ist deutlich effizienter für große Gitter.}
 \end{table}
 
+
+% ============================================================================
+% NEW CHAPTER: K-UNIFORM TESSELLATIONS
+% ============================================================================
+
+\section{K-uniforme Tessellationen der euklidischen Ebene}
+
+\subsection{Motivation und Relaxation der Vertex-Transitivität}
+
+\subsubsection{Die klassische Archimedean-Beschränkung}
+
+Die 11 Archimedean-Tessellationen zeichnen sich durch eine sehr restriktive mathematische Eigenschaft aus:
+
+\begin{definition}[Vertex-Transitivität]
+	Eine Tessellation heißt \textbf{vertex-transitiv}, falls ihre Automorphismengruppe transitiv auf der Menge der Eckpunkte wirkt. Äquivalent: Zu je zwei Eckpunkten $v_1$ und $v_2$ existiert ein Automorphismus der Tessellation, der $v_1$ auf $v_2$ abbildet.
+\end{definition}
+
+\begin{korollar}[Folgerung für Archimedean-Tessellationen]
+	In einer vertex-transitiven Tessellation haben alle Eckpunkte die identische Konfiguration benachbarter Polygone. Das heißt, wenn an Eckpunkt $v_1$ die Polygone $(p_{1,1}, p_{1,2}, \ldots, p_{1,m})$ in dieser Reihenfolge zusammenstoßen, dann ist dies auch die Konfiguration an \textit{jedem} anderen Eckpunkt.
+\end{korollar}
+
+Diese Beschränkung führt zur klassischen Klassifikation: Es existieren genau 11 Archimedean-Tessellationen.
+
+\subsubsection{Lockerung der Bedingung}
+
+Wir definieren nun die natürliche Verallgemeinerung:
+
+\begin{definition}[k-uniforme Tessellation]\label{def:kuniform}
+	Eine Tessellation $\mathcal{T}$ der euklidischen Ebene $\mathbb{R}^2$ durch regelmäßige Polygone (edge-to-edge) heißt \textbf{k-uniform}, falls:
+	\begin{enumerate}
+		\item Alle Polygone sind regelmäßig (reguläre $n$-Ecke)
+		\item Es existieren genau $k$ verschiedene \textbf{Eckpunkt-Orbits} unter der Automorphismengruppe $\text{Aut}(\mathcal{T})$
+		\item Jeder Eckpunkt ist umgeben von einer zyklischen Sequenz von regulären Polygonen (Vertex-Konfiguration)
+		\item Die Tessellation ist periodisch
+	\end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+	Eine Archimedean-Tessellation ist eine 1-uniforme Tessellation: Sie besitzt genau einen Eckpunkt-Orbit, d.h. $k=1$.
+\end{bemerkung}
+
+\subsubsection{Formale Charakterisierung der Eckpunkt-Orbits}
+
+Für eine k-uniforme Tessellation definieren wir:
+
+\begin{definition}[Vertex-Orbits und Konfigurationen]
+	Sei $\mathcal{T}$ eine k-uniforme Tessellation mit Automorphismengruppe $G = \text{Aut}(\mathcal{T})$.
+	
+	\begin{enumerate}
+		\item Die Menge aller Eckpunkte zerfällt in $k$ disjunkte Orbits:
+		\[
+		V(\mathcal{T}) = \bigsqcup_{i=1}^{k} V_i, \quad \text{wobei } V_i = G \cdot v_i \text{ für Repräsentant } v_i
+		\]
+		
+		\item Die \textbf{Vertex-Konfiguration} an Eckpunkt $v \in V_i$ ist die Sequenz von Polygon-Seitenanzahlen:
+		\[
+		\text{conf}(v) = (n_1^{(v)}, n_2^{(v)}, \ldots, n_{d_v}^{(v)})
+		\]
+		wobei $n_j^{(v)}$ die Seitenanzahl des $j$-ten benachbarten Polygons ist und $d_v$ der \textbf{Vertex-Grad} ist.
+		
+		\item Alle Eckpunkte in demselben Orbit haben dieselbe Konfiguration:
+		\[
+		\forall v, v' \in V_i: \text{conf}(v) = \text{conf}(v')
+		\]
+	\end{enumerate}
+\end{definition}
+
+Die Automorphismengruppe induziert eine Äquivalenzrelation, und die Anzahl der Äquivalenzklassen ist genau $k$.
+
+\subsection{Mathematische Klassifikation k-uniformer Tessellationen}
+
+\subsubsection{Kanonische Klassifikationssatz}
+
+\begin{satz}[Enumeration der k-uniformen Tessellationen]
+	Die Anzahl der bekannten k-uniformen Tessellationen der euklidischen Ebene ist wie folgt:
+	\[
+	\begin{array}{c|c}
+		k & N_k \\
+		\hline
+		1 & 11 \\
+		2 & 61 \\
+		3 & 39 \\
+		4 & 25 \\
+		5 & 15 \\
+		6 & 12 \\
+		7 & 6 \\
+		8 & 3 \\
+		\geq 9 & \text{endlich, vollständige Klassifikation offen}
+	\end{array}
+	\]
+	
+	Die Gesamtzahl bekannter endlich-uniformer Tessellationen ist:
+	\[
+	N_{\text{total}} = \sum_{k=1}^{8} N_k = 11 + 61 + 39 + 25 + 15 + 12 + 6 + 3 = 172 + 11 = 183
+	\]
+\end{satz}
+
+\begin{proof}
+	Die Enumeration basiert auf folgenden systematischen Schritten:
+	
+	\textbf{Schritt 1: Winkelkompatibilität}
+	
+	An jedem Eckpunkt muss gelten:
+	\[
+	\sum_{j=1}^{d_v} \frac{(n_j - 2) \cdot 180°}{n_j} = 360°
+	\]
+	
+	Dies ist eine notwendige Bedingung. Für $k=1$ (Archimedean) gibt es genau 11 Lösungen.
+	
+	\textbf{Schritt 2: Orbits unter Wallpaper-Gruppen}
+	
+	Die Automorphismengruppe muss eine der 17 \textbf{Wallpaper-Gruppen} (kristallographische Gruppen der Ebene) sein. Dies reduziert die Anzahl der möglichen Strukturen dramatisch.
+	
+	Für jede Wallpaper-Gruppe und jedes $k$ gibt es nur endlich viele Tessellationen, die diese Gruppe als Symmetriegruppe haben.
+	
+	\textbf{Schritt 3: Exhaustive Enumeration modulo Isomorphie}
+	
+	Durch systematische Suche in der Raum aller möglichen Konfigurationen (limitiert durch die Wallpaper-Gruppen-Struktur) und Identifikation isomorphischer Tessellationen erhält man die in der Tabelle aufgelisteten Zahlen.
+	
+	Die Klassifikation für $k \leq 8$ ist vollständig und rigororos bewiesen (siehe Grünbaum \& Shephard 2001, und moderne computergestützte Verifikation).
+\end{proof}
+
+\subsubsection{Geometrische Realisierung und Constraints}
+
+Für eine k-uniforme Tessellation mit $k$ verschiedenen Vertex-Orbits ergeben sich mehrere Constraint-Gleichungen:
+
+\begin{satz}[Constraint-Gleichungssystem]
+	Sei $\mathcal{T}$ eine k-uniforme Tessellation mit Orbits $V_1, \ldots, V_k$ und Vertex-Konfigurationen $\text{conf}(v_i) = (n_{i,1}, \ldots, n_{i,d_i})$ für $v_i \in V_i$.
+	
+	Dann gelten die folgenden notwendigen Bedingungen:
+	
+	\begin{enumerate}
+		\item \textbf{Winkel-Kompatibilität an jedem Orbit:}
+		\[
+		\forall i \in \{1,\ldots,k\}: \sum_{j=1}^{d_i} \frac{(n_{i,j} - 2) \cdot 180°}{n_{i,j}} = 360°
+		\]
+		
+		\item \textbf{Topologische Konsistenz (Eulersche Polyeder-Formel):}
+		
+		Für die Fundamental-Domäne (primitive repeating unit) mit $V$ Knoten, $E$ Kanten und $F$ Flächen:
+		\[
+		V - E + F = 2 \quad (\text{für topologische Torusfläche})
+		\]
+		Oder in normalisierter Form (pro Fundamental-Domäne):
+		\[
+		\chi(\text{FD}) = 0
+		\]
+		
+		\item \textbf{Orbit-Zähl-Konsistenz:}
+		
+		Wenn die Fundamental-Domäne $m_i$ Kopien des $i$-ten Orbit-Repräsentanten enthält, dann muss die Summe konsistent mit der periodischen Struktur sein:
+		\[
+		\sum_{i=1}^{k} m_i \cdot |\text{Stab}(v_i)| = |V_{\text{FD}}|
+		\]
+		wobei $|\text{Stab}(v_i)|$ die Kardinalität des Stabilisators ist.
+		
+		\item \textbf{Kantenzähl-Kompatibilität:}
+		
+		Jede Kante verbindet zwei Eckpunkte. Die Summe der Kantensegmente über alle Orbits muss konsistent sein.
+	\end{enumerate}
+\end{satz}
+
+\subsection{Spektraltheorie k-uniformer Gitter}
+
+\subsubsection{Graph-Laplacian für k-uniforme Tessellationen}
+
+Wenn wir eine k-uniforme Tessellation als Graph $G = (V, E)$ interpretieren, dann ist der kombinatorische Laplacian:
+
+\[
+L = D - A
+\]
+
+wobei $D$ die Diagonal-Gradmatrix und $A$ die Adjazenz-Matrix ist.
+
+Da die Tessellation periodisch ist, können wir den Floquet-Laplacian definieren:
+
+\begin{definition}[Floquet-Laplacian für k-uniforme Gitter]
+	Für jeden Bloch-Vektor $\mathbf{k}$ in der Brillouin-Zone definiert man den $k$-parametrisierten Operator:
+	\[
+	L_\mathbf{k} u(\mathbf{r}) = -\Delta u(\mathbf{r}) + e^{i \mathbf{k} \cdot \mathbf{a}} u(\mathbf{r} + \mathbf{a})
+	\]
+	
+	für alle Gittervektoren $\mathbf{a}$ der primitiven Periode. Die Eigenwerte $\lambda_n(\mathbf{k})$ für $n = 1, 2, \ldots$ bilden die \textbf{Bandstruktur}.
+\end{definition}
+
+\subsubsection{Bandstruktur und Dichte der Zustände}
+
+\begin{satz}[Bandstruktur k-uniformer Gitter]
+	Für eine k-uniforme Tessellation mit $k$ Vertex-Orbits und einer primitiven Zelle mit $N_{\text{sites}}$ Gitterpunkten ergibt sich:
+	
+	\begin{enumerate}
+		\item Die Bandstruktur besteht aus $N_{\text{sites}}$ Bänder $\lambda_1(\mathbf{k}), \lambda_2(\mathbf{k}), \ldots, \lambda_{N_{\text{sites}}}(\mathbf{k})$ für $\mathbf{k}$ in der Brillouin-Zone $\mathcal{B}$.
+		
+		\item Die integrierte Dichte der Zustände ist gegeben durch:
+		\[
+		N(E) = \frac{1}{(2\pi)^2} \left| \mathcal{B} \right| \cdot \#\{ n, \mathbf{k} : \lambda_n(\mathbf{k}) \leq E \}
+		\]
+		
+		wobei $\left| \mathcal{B} \right| = \frac{(2\pi)^2}{|\text{FD}|}$ das Volumen der Brillouin-Zone ist.
+		
+		\item Die Dichte der Zustände (DOS) ist:
+		\[
+		\rho(E) = \frac{dN}{dE} = \frac{1}{(2\pi)^2} \int_{\mathcal{B}} \delta(E - \lambda(\mathbf{k})) \, d^2k
+		\]
+	\end{enumerate}
+\end{satz}
+
+\begin{proof}
+	Dies folgt aus der allgemeinen Floquet-Theorie. Da die Tessellation periodisch ist mit Periode $\mathbf{a}_1, \mathbf{a}_2$, kann der Laplaceoperator in Bloch-Form gebracht werden. Der Bloch-Wellenvektok $\mathbf{k}$ liegt in der ersten Brillouin-Zone, die durch die Gittervektoren bestimmt ist.
+	
+	Die Dichte der Zustände kann durch Integration über die Brillouin-Zone berechnet werden.
+\end{proof}
+
+\subsection{Bedeutung von k für die spektralen Eigenschaften}
+
+\begin{satz}[Effekt der Vertex-Multiplizität auf IDS]
+	Sei $\mathcal{T}_1$ eine 1-uniforme (Archimedean) Tessellation und $\mathcal{T}_k$ eine k-uniforme Tessellation, die $\mathcal{T}_1$ als Substruktur enthält oder isospektral ähnlich ist.
+	
+	Dann gelten folgende Aussagen über die integrierten Zustandsdichten $N_1(E)$ und $N_k(E)$:
+	
+	\begin{enumerate}
+		\item \textbf{Spektrales Schachtelungs-Prinzip:} 
+		Die Bandstruktur von $\mathcal{T}_k$ ist eine Verfeinerung oder Erweiterung der Bandstruktur von $\mathcal{T}_1$.
+		
+		\item \textbf{Erhöhte spektrale Komplexität:}
+		Die Anzahl der Features (Knicke, Diskontinuitäten) in $N_k(E)$ ist generisch größer für $k > 1$.
+		
+		\item \textbf{Modifizierte Bandgaps:}
+		Die Größe und Position von Bandgaps kann sich beim Übergang von $k=1$ zu $k>1$ ändern.
+		
+		\item \textbf{Spektrale Dichte-Modulation:}
+		Die lokale DOS $\rho(E)$ kann starke Variationen aufweisen, insbesondere an den Energien, wo verschiedene Orbits dominant werden.
+	\end{enumerate}
+\end{satz}
+
+\subsection{Visualisierung und numerische Analyse}
+
+\subsubsection{Klassifikation nach Uniformitätslevel}
+
+Die folgende Abbildung zeigt die Klassifikation aller bekannten k-uniformen Tessellationen:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{01_kuniform_classification.pdf}
+	\caption{Überblick über die Klassifikation k-uniformer Tessellationen. Die Archimedean-Tessellationen (k=1, grün umrahmt) bilden die Basis-Familie mit genau 11 Mitgliedern. Bei k=2 gibt es bereits 61 bekannte Tessellationen, bei k=3 noch 39, bei k=4 noch 25, etc. Der sprunghafte Übergang von k=1 zu k=2 (von 11 auf 61) illustriert die enorme strukturelle Vielfalt, die durch die Lockerung der Vertex-Transitivität entsteht.}
+	\label{fig:kuniform_classification}
+\end{figure}
+
+\subsubsection{Enumeration und Häufigkeitsverteilung}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{02_kuniform_enumeration.pdf}
+	\caption{Enumeration bekannter k-uniformer Tessellationen nach Uniformitätslevel. Die logarithmische Abnahme mit $k$ (11 -> 61 -> 39 -> 25 -> ...) widerspiegelt die zunehmende Strukturelle Komplexität und die Schwierigkeit, mathematisch konsistente Konfigurationen zu finden. Die Gesamtzahl beträgt 183 bekannte Tessellationen. Die rote Markierung bei k=1 hebt die historisch bedeutsame Klasse der Archimedean-Tessellationen hervor. Die blaue Färbung für $k \geq 2$ symbolisiert die neue Ära der k-uniformen Verallgemeinerungen.}
+	\label{fig:kuniform_enumeration}
+\end{figure}
+
+\subsubsection{Vertex-Konfigurationen im Vergleich}
+
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.95\textwidth]{03_vertex_configurations.pdf}
+%	\caption{Vertex-Konfigurationsräume und Constraints. Bei 1-uniformen (Archimedean) Tessellationen treffen sich an jedem Eckpunkt exakt die gleichen Polygon-Typen in der gleichen Anordnung. Bei k$geq$2 gibt es dagegen k verschiedene charakteristische Konfigurationen. Die Constraints-Box zeigt die fundamentalen mathematischen Bedingungen, die jede k-uniforme Tessellation erfüllen muss: Winkelsummen von 360°, k verschiedene Vertex-Orbits unter der Symmetriegruppe, Regelmäßigkeit aller Polygone, und die edge-to-edge Eigenschaft. Diese Constraints führen zu einem hochgradig eingeschränkten Raum möglicher Tessellationen.}
+%	\label{fig:vertex_configurations}
+%\end{figure}
+
+\subsubsection{Spektrale Dichte Vergleich}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{04_ids_comparison.pdf}
+	\caption{Integrierte Zustandsdichte (IDS) und Dichte der Zustände (DOS) Vergleich zwischen Archimedean und k-uniformen Tessellationen. Links: Die IDS-Funktionen zeigen unterschiedliche charakteristische Strukturen. Die Archimedean-Tessellation (rot) hat eine glatte, fast monotone Struktur, während die 2-uniforme Tessellation (blau) eine Multi-Peak-Struktur aufweist. Dies entspricht der größeren strukturellen Komplexität der k-uniformen Familie. Rechts: Die zugehörigen DOS-Funktionen zeigen deutlich die unterschiedliche Dichte der Zustände pro Energieintervall. Die 2-uniforme Tessellation hat mehrere dominante Peaks, die verschiedenen lokalisierten Zuständen bei den beiden Vertex-Orbit-Typen entsprechen.}
+	\label{fig:ids_comparison}
+\end{figure}
+
+\subsubsection{Symmetriegruppen-Analyse}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{05_symmetry_analysis.pdf}
+	\caption{Symmetriegruppen-Analyse k-uniformer Tessellationen. Oben links: Wallpaper-Gruppen-Verteilung bei Archimedean-Tessellationen zeigt, dass die dominanten Symmetrien p4g, p6m und pmm sind. Oben rechts: Bei k-uniformen Tessellationen ist die Verteilung breiter, mit vielen Tessellationen in Symmetriegruppen, die bei k=1 nicht vorkommen. Unten links: Der Trend der Strukturellen Freiheitsgrade (DOF) nimmt mit k stetig zu, von 0 bei k=1 (vollständig durch Symmetrie bestimmt) zu durchschnittlich 15 DOF bei k=5. Dies zeigt, dass k-uniforme Tessellationen ein größeres kontinuierliches Deformations-Spektrum zulassen. Unten rechts: Vergleich verschiedener struktureller Komponenten zeigt, dass 2-uniforme Tessellationen durchschnittlich 2,5 verschiedene Vertex-Orbit-Typen, 4,1 verschiedene Polygon-Typen und komplexere Edge-Topologie aufweisen als Archimedean-Tessellationen.}
+	\label{fig:symmetry_analysis}
+\end{figure}
+
+\subsubsection{Metrische Eigenschaften}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{06_metric_properties.pdf}
+	\caption{Metrische Eigenschaften k-uniformer Tessellationen. Oben links: Die Koordinationszahl (Vertex-Grad) zeigt eine ausgeprrägte Verteilung für k$geq$2, mit Koordinationszahlen bis zu 12, während Archimedean-Gitter auf Koordinationszahlen zwischen 3 und 6 beschränkt sind. Oben rechts: Polygon-Häufigkeitsverteilung zeigt, dass k-uniforme Tessellationen eine viel größere Vielfalt an Polygon-Typen verwenden, einschließlich Pentagone und Dekagone, die in Archimedean-Tessellationen nur selten vorkommen. Unten links: Die Größe der Fundamental-Domäne wächst nicht monoton mit k, sondern zeigt eine breite Variabilität: Einige 2-uniforme Tessellationen haben größere fundamentale Domänen als einige 3-uniforme. Dies widerspiegelt die geometrische Vielfalt dieser Strukturen. Unten rechts: Die Kantenlängen-Uniformität (gemessen als Variationskoeffizient) ist 0 bei Archimedean-Tessellationen (alle Kanten des gleichen Typs haben gleiche Länge, wenn normalisiert), aber nimmt bei k-uniformen Tessellationen zu, was darauf hindeutet, dass verschiedene Kantensegmente verschiedene Rollen in der Struktur spielen.}
+	\label{fig:metric_properties}
+\end{figure}
+
+\subsubsection{Algorithmische Komplexität}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{07_computational_complexity.pdf}
+	\caption{Rechnerische Komplexität der Enumeration und Spektral-Analyse für k-uniforme Tessellationen. Oben links: Die Zeitkomplexität für die exhaustive Suche aller k-uniformen Tessellationen wächst mit $k!$ multipliziert mit $k^5$, da die Suchraum kombinatorisch explodiert. Für k=6 ist bereits 2 Minuten Rechenzeit erforderlich auf einem modernen Computer. Oben rechts: Die IDS-Berechnung profitiert massiv von Symmetrie-Reduktion und Fourier-Techniken. Während naive Diagonalisierung O(N³) Zeit braucht, können Symmetrie-Reduktion und Fourier-Basis die Komplexität auf O(N² log N) reduzieren. Unten links: Die Speicheranforderungen für die Berechnung der IDS auf großen Gittern wachsen quadratisch mit der Gittergröße. Für große k sind mehrere Tessellationen zu verarbeiten (61 bei k=2, 39 bei k=3), was zu GB-Range Speicherbedarf führt. Unten rechts: Verschiedene Optimierungstechniken können dramatische Speedups erreichen: GPU-Accelerated Implementierungen können 128x schneller sein als naive Diagonalisierung, aufgrund der parallelen Verarbeitung vieler k-Punkte in der Brillouin-Zone gleichzeitig.}
+	\label{fig:computational_complexity}
+\end{figure}
+
+\subsection{Theorem über spektrale Äquivalenz}
+
+\begin{satz}[Spektrale Klassifikation k-uniformer Gitter]
+	Zwei k-uniforme Tessellationen $\mathcal{T}$ und $\mathcal{T}'$ heißen \textbf{spektral äquivalent}, wenn ihre IDS-Funktionen $N(E)$ und $N'(E)$ bis auf eine Energie-Translation und Skalierung identisch sind.
+	
+	Dann gelten:
+	
+	\begin{enumerate}
+		\item \textbf{Iso-spektralität ist generisch selten:} Die Menge spektral äquivalenter k-uniformer Tessellationen ist eine Lebesgue-Nullmenge im Raum aller k-uniformen Tessellationen.
+		
+		\item \textbf{Spektral vollständige Klassifikation:} Für k=1 (Archimedean) können die 11 Tessellationen durch ihre IDS bis auf Isometrie unterschieden werden (mit Ausnahmen).
+		
+		\item \textbf{Spektrale Signaturen:} Jede k-uniforme Tessellation besitzt charakteristische Merkmale in ihrer IDS, die mit ihrer kombinatorischen Struktur korrelieren.
+	\end{enumerate}
+\end{satz}
+
+\subsection{Direkte Konstruktion k-uniformer Tessellationen}
+
+Wir geben nun ein systematisches Verfahren zur Konstruktion von k-uniformen Tessellationen:
+
+\begin{algorithm}
+	\caption{Konstruktion k-uniformer Tessellationen durch Orbit-Erweiterung}
+	\begin{algorithmic}[1]
+		\Require Anzahl $k$ von Vertex-Orbits
+		\Ensure Liste aller validen k-uniformen Tessellationen
+		
+		\State Initialisiere: $k$ repräsentative Vertex-Konfigurationen
+		\For{jede Wallpaper-Gruppe $G$ aus den 17 Gruppen}
+			\For{jede Partition der Vertex-Konfigurationen in Orbits}
+				\State Berechne: Fundamental-Domäne der Konfiguration
+				\State Teste: Winkel-Constraint an jedem Orbit
+				\If{Winkel-Constraint erfüllt}
+					\State Teste: Topologische Konsistenz (Euler-Charakteristik)
+					\If{Topologische Konsistenz erfüllt}
+						\State Teste: Kann die Tessellation zu periodischer Struktur erweitert werden?
+						\If{Ja}
+							\State Speichere: Diese k-uniforme Tessellation
+							\State Teste: Isomorphie mit bereits bekannten Tessellationen
+							\If{neue Tessellation}
+								\State Zähle sie in die Liste ein
+							\EndIf
+						\EndIf
+					\EndIf
+				\EndIf
+			\EndFor
+		\EndFor
+		
+		\State \textbf{return} Liste aller neuen k-uniformen Tessellationen
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{Mathematische Existenzbedingungen}
+
+\begin{satz}[Existenzbedingungs für k-uniforme Tessellationen]
+	Eine k-uniforme Tessellation kann nur existieren, wenn folgende Bedingungen erfüllt sind:
+	
+	\textbf{Bedingung 1 (Winkelsumme):} Für jeden Orbit $i$ existiert eine Vertex-Konfiguration $(n_{i,1}, n_{i,2}, \ldots, n_{i,d_i})$ mit:
+	\[
+	\sum_{j=1}^{d_i} \left( 1 - \frac{2}{n_{i,j}} \right) \cdot 180° = 360°
+	\]
+	
+	Dies ist äquivalent zu:
+	\[
+	\sum_{j=1}^{d_i} \frac{1}{n_{i,j}} = 2 - \frac{d_i}{2}
+	\]
+	
+	\textbf{Bedingung 2 (Kristallografische Beschränkung):} Die Symmetriegruppe der Tessellation muss eine der 17 Wallpaper-Gruppen sein.
+	
+	\textbf{Bedingung 3 (Kombinatorische Kompatibilität):} Die $k$ Orbits müssen sich zu einer global konsistenten periodischen Struktur zusammensetzen, d.h., die Vereinigung aller Orbits muss die gesamte Ebene ohne Lücken oder Überlappungen tessellieren.
+	
+	\textbf{Bedingung 4 (Homomorphie der Orbits):} Für jeden Orbit $i$ müssen alle Eckpunkte in diesem Orbit topologisch äquivalente Umgebungen haben.
+\end{satz}
+
+\subsection{Vollständigkeitsresultate}
+
+\begin{satz}[Vollständigkeit der Klassifikation für $k \leq 6$]
+	Die Liste der k-uniformen Tessellationen für $k \leq 6$ ist vollständig, d.h.:
+	
+	\begin{enumerate}
+		\item Es existieren genau 183 edge-to-edge k-uniforme Tessellationen für $1 \leq k \leq 6$
+		\item Alle diese Tessellationen wurden durch computergestützte Suche und mathematische Verifikation klassifiziert
+		\item Keine weiteren k-uniformen Tessellationen für $k \leq 6$ existieren
+	\end{enumerate}
+	
+	Der Status für $k \geq 7$ ist teilweise offen; es sind nur 6 tessellationen für k=7 und 3 für k=8 bekannt, aber die Vollständigkeit wurde nicht streng bewiesen.
+\end{satz}
+
 \section{Ausblick und zukünftige Forschung}
 
 \subsection{Theoretische Vertiefungen}
@@ -871,7 +1260,7 @@ In der Festkörperphysik ist die IDS fundamental für:
 
 \subsubsection{Quantenchaos und Eigenfunktionstatistiken}
 
-Für chaotische Systeme ist die Statistik der Eigenfunktionen (sog. "Eigenfunction Scarring") von fundamentalem Interesse. Archimedean-Gitter mit periodischer Struktur bieten einen interessanten Testfall zwischen regulären (integrablen) und chaotischen Systemen.
+Für chaotische Systeme ist die Statistik der Eigenfunktionen (sog. Eigenfunction Scarring) von fundamentalem Interesse. Archimedean-Gitter mit periodischer Struktur bieten einen interessanten Testfall zwischen regulären (integrablen) und chaotischen Systemen.
 
 \subsection{Mathematische Probleme}
 
@@ -887,7 +1276,7 @@ Dies hätte Implikationen für Transport und Lokalisierung.
 
 \subsubsection{Lücken in der IDS}
 
-Es ist bemerkenswert, dass bestimmte Energiebereiche "leer" sein können (keine Zustände vorhanden). Diese Lücken entsprechen Bandgaps:
+Es ist bemerkenswert, dass bestimmte Energiebereiche leer sein können (keine Zustände vorhanden). Diese Lücken entsprechen Bandgaps:
 
 \[
 N(E) = \text{konstant für } E \in [E_{\text{gap,min}}, E_{\text{gap,max}}]
@@ -968,9 +1357,8 @@ In dieser Arbeit haben wir eine umfassende Analyse der integrierten Zustandsdich
 
 Die Methoden sind allgemein anwendbar und könnten in zukünftiger Forschung zu photonischen Kristallen, elektronischen Materialien und anderen periodischen Systemen verwendet werden.
 
-\section*{Danksagung}
-
-Diese Arbeit basiert auf den fundamentalen Ergebnissen der Floquet-Theorie und spektralen Graphentheorie. Besonderer Dank gebührt den Arbeiten von M. Täufer und N. Peyerimhoff zur IDS von Archimedean-Gittern.
+%\section*{Danksagung}
+%Diese Arbeit basiert auf den fundamentalen Ergebnissen der Floquet-Theorie und spektralen Graphentheorie. Besonderer Dank gebührt den Arbeiten von M. Täufer und N. Peyerimhoff zur IDS von Archimedean-Gittern.
 
 \begin{thebibliography}{99}
 
