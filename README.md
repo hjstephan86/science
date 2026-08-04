@@ -1,6 +1,6 @@
 # Wissenschaften
 
-> **252 Wissenschaften** von Stephan Epp
+> **253 Wissenschaften** von Stephan Epp
 
 ---
 
@@ -313,13 +313,15 @@
 | netwfltr/src | Network Filter — Docker-basierter Netzwerkmonitor mit FastAPI-Backend, SQLite-Datenbank und Live-Weboberfläche mit OSI-Schichten-Farbkodierung |
 | flex *(Drive)* | FLEX-Standard: formaler Standard für lose Kopplung von Suchdiensten und Web-Service-Ketten in mobilen Applikationen — Schnittstellenkompatibilitätsprüfung via Subgraph Algorithmus O(n³) |
 | lldocss *(Drive)* | Low Latency DOCSIS — formale Analyse des DOCSIS-3.1/4.0-Standards; L4S/DualPI2-AQM, ML-gestützte Bandbreitenzuweisung, 5G/DOCSIS-Konvergenz; Latenzziel < 5 ms (99. Perzentil) |
-| software *(Drive)* | Zur Belastbarkeit von Softwareverträgen: formale Analyse der Unsicherheit, des Risikos und der Qualifikationsanforderungen in der Softwareentwicklung |
+| software *(Drive)* | Zur Belastbarkeit von Softwareverträgen: Formale Analyse der Unsicherheit, des Risikos und der Qualifikationsanforderungen in der Softwareentwicklung |
 | mct *(Drive)* | Temporales Model Checking und PDDL Planning — CTL/LTL-Verifikation für Kripke-Strukturen; O(n²)-Erreichbarkeitsanalyse via Bool-MM; PDDL-Vorwärts-/Rückwärtssuche |
 | screst *(Drive)* | Sequenzgebundene REST-Schnittstellen (SC-REST): formales Erweiterungsmuster für die Abbildung von Geschäftsprozessen auf REST-APIs |
 | se *(Drive)* | Intentions- und Ideen-getriebene Softwareentwicklung: universelles Paradigma für Websites, mobile Apps und allgemeine Softwaresysteme |
 | ux *(Drive)* | pyble als Musterbeispiel psychologisch optimierter HCI — Sieben-Seiten-Theorem, Farbberuhigungs-Lemma und Informationsraum-Optimalitäts-Theorem formal bewiesen |
 | dbms *(Drive)* | Datenbankmanagementsysteme als eigenständige Infrastrukturkomponente — Die Serverauslagerung als außergewöhnlicher, architektonisch korrekter Weg |
 | functions | Functions as Contracts in Software Development - Quality, Maintainability, and Extensibility through Functional Decomposition |
+| softwareq | Quantitative Analyse von Softwaresystemen: Markov-Ketten, Warteschlangentheorie und UML-Profile zur optimalen Auslegung und Ausfallsicherheit |
+
 ---
 
 ### IV.2 Computergrafik
