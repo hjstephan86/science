@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -15,6 +16,9 @@
 \usepackage{caption}
 \usepackage[protrusion=true,expansion=false,final]{microtype}
 \usepackage{float}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric, arrows, fit, backgrounds}
 
 \geometry{margin=2.5cm}
 
@@ -38,6 +42,7 @@
 \setlist[itemize,1]{label=--}
 
 \definecolor{mainblue}{RGB}{25, 70, 140}
+\definecolor{darkblue}{RGB}{25, 70, 150}
 \definecolor{accentred}{RGB}{180, 50, 30}
 \definecolor{lightgray}{RGB}{245, 245, 248}
 \definecolor{darkgray}{RGB}{60, 60, 70}
@@ -75,7 +80,6 @@ diskutiert zukünftige Forschungsrichtungen in den Bereichen künstliche Intelli
 und adaptive Softwarearchitekturen.
 \end{abstract}
 
-\newpage
 \tableofcontents
 \newpage
 
@@ -1265,14 +1269,14 @@ wobei $\lambda$ die konstante Ausfallrate ist. Aus Herstellerangaben:
     \centering
     \begin{tabular}{|l|cc|c|}
         \hline
-        Komponente & Ausfallrate [pro Jahr] & MTTF [Jahre] & Bemerkung \\
+        Komponente & Ausfallrate [p. a.] & MTTF [a] & Bemerkung \\
         \hline
         HDD Disk & 0.02 & 50 & Bathtub-Kurve: Early + Late failures \\
         SSD Disk & 0.005 & 200 & Viel zuverlässiger als HDD \\
         CPU & 0.001 & 1000 & Sehr robust wenn gekühlt \\
-        RAM Module & 0.0005 & 2000 & Extreme Zuverlässigkeit (Bit-Fehler selten) \\
+        RAM Module & 0.0005 & 2000 & Extr. Zuverlässigkeit (Bit-Fehler selten) \\
         Network Card & 0.001 & 1000 & Ähnlich CPU \\
-        Power Supply & 0.01 & 100 & Thermisches Altern schwächt Kondensatoren \\
+        Power Supply & 0.01 & 100 & Therm. Altern schwächt Kondensatoren \\
         \hline
     \end{tabular}
 \end{table}
@@ -1498,7 +1502,7 @@ Die Anforderungen sind:
 
 Wir definieren fünf Systemzustände:
 
-\begin{definition}[Zustandsmodell des Bestellservice]
+\begin{definition}[Zustandsmodell des Bestellservice] Das Zustandsmodell des Bestellservice wird durch die Menge $Z = \{z_1, z_2, z_3, z_4, z_5\}$ beschrieben:
     \label{def:order_service_states}
     
     \begin{itemize}
@@ -1533,55 +1537,55 @@ Die Übergänge zwischen Zuständen werden durch empirische Messdaten kalibriert
     \end{tabular}
 \end{table}
 
-\subsection{Markov-Kettenvisualisierung}
+% \subsection{Markov-Kettenvisualisierung}
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[
-        node distance=3cm,
-        state/.style={circle, draw=mainblue, fill=lightgray, thick, minimum size=1.2cm},
-        fault/.style={circle, draw=accentred, fill=lightgray, thick, minimum size=1.2cm},
-        arrow/.style={->, thick, draw=darkgray},
-        arrow_fast/.style={->, very thick, draw=darkgreen},
-        arrow_slow/.style={->, thin, draw=accentred, dashed},
-    ]
+% \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}[
+%         node distance=3cm,
+%         state/.style={circle, draw=mainblue, fill=lightgray, thick, minimum size=1.2cm},
+%         fault/.style={circle, draw=accentred, fill=lightgray, thick, minimum size=1.2cm},
+%         arrow/.style={->, thick, draw=darkgray},
+%         arrow_fast/.style={->, very thick, draw=darkgreen},
+%         arrow_slow/.style={->, thin, draw=accentred, dashed},
+%     ]
     
-    % Knoten
-    \node[state] (z1) at (0, 0) {$z_1$ \\ Normal};
-    \node[state] (z2) at (-3, 2) {$z_2$ \\ DB-Latenz};
-    \node[state] (z3) at (0, 3) {$z_3$ \\ Cache-Fehler};
-    \node[state] (z4) at (3, 2) {$z_4$ \\ Degraded};
-    \node[fault] (z5) at (0, -3) {$z_5$ \\ Offline};
+%     % Knoten
+%     \node[state] (z1) at (0, 0) {$z_1$ \scriptsize Normal};
+%     \node[state] (z2) at (-3, 2) {$z_2$ \scriptsize Latenz};
+%     \node[state] (z3) at (0, 3) {$z_3$ \scriptsize Fehler};
+%     \node[state] (z4) at (3, 2) {$z_4$ \scriptsize Degrdd};
+%     \node[fault] (z5) at (0, -3) {$z_5$ \scriptsize Offline};
     
-    % Pfeile
-    \draw[arrow] (z1) -- (z2) node[midway, above left] {0.2};
-    \draw[arrow] (z1) -- (z3) node[midway, above] {0.1};
-    \draw[arrow] (z1) -- (z4) node[midway, above right] {0.15};
-    \draw[arrow] (z1) -- (z5) node[midway, right] {0.01};
+%     % Pfeile
+%     \draw[arrow] (z1) -- (z2) node[midway, above left] {0.2};
+%     \draw[arrow] (z1) -- (z3) node[midway, above] {0.1};
+%     \draw[arrow] (z1) -- (z4) node[midway, above right] {0.15};
+%     \draw[arrow] (z1) -- (z5) node[midway, right] {0.01};
     
-    \draw[arrow_fast] (z2) -- (z1) node[midway, below left] {10.0};
-    \draw[arrow] (z2) -- (z5) node[midway, left] {0.05};
+%     \draw[arrow_fast] (z2) -- (z1) node[midway, below left] {}; % {10.0};
+%     \draw[arrow] (z2) -- (z5) node[midway, left] {0.05};
     
-    \draw[arrow_fast] (z3) -- (z1) node[midway, above right] {20.0};
-    \draw[arrow] (z3) -- (z5) node[midway, left] {0.08};
+%     \draw[arrow_fast] (z3) -- (z1) node[midway, above right] {}; % {20.0};
+%     \draw[arrow] (z3) -- (z5) node[midway, left] {0.08};
     
-    \draw[arrow_fast] (z4) -- (z1) node[midway, below right] {5.0};
-    \draw[arrow] (z4) -- (z5) node[midway, right] {0.1};
+%     \draw[arrow_fast] (z4) -- (z1) node[midway, below right] {}; % {5.0};
+%     \draw[arrow] (z4) -- (z5) node[midway, right] {0.1};
     
-    \draw[arrow_slow] (z5) to[bend right=60] (z1) node[midway, below] {2.0 (Alarm+Repair)};
+%     \draw[arrow_slow] (z5) to[bend right=60] (z1) node[midway, below] {}; % {2.0};
     
-    % Background
-    \begin{scope}[on background layer]
-        \node[rounded rectangle, draw=darkgreen, dashed, fit=(z1) (z2) (z3) (z4), inner sep=0.3cm] {};
-        \node at (-3.5, -1.5) [anchor=west, font=\small, text=darkgreen] {Operationale Zustände};
-    \end{scope}
+%     % Background
+%     \begin{scope}[on background layer]
+%         \node[rectangle, rounded corners, draw=darkgreen, dashed, fit=(z1) (z2) (z3) (z4), inner sep=0.3cm] {};
+%         \node at (-3.5, -1.5) [anchor=west, font=\small, text=darkgreen] {Operationale Zustände};
+%     \end{scope}
     
-    \end{tikzpicture}
-    \caption{Markov-Kettenmodell des Bestellservice: 5 Zustände mit Übergangsraten 
-             (Einheit: pro Jahr). Grüne Pfeile zeigen schnelle Übergänge (Auto-Skalierung, 
-             Cache-Restart). Rote gestrichelte Linien zeigen manuelle Reparatur.}
-    \label{fig:markov_order_service}
-\end{figure}
+%     \end{tikzpicture}
+%     \caption{Markov-Kettenmodell des Bestellservice: 5 Zustände mit Übergangsraten 
+%              (Einheit: pro Jahr). Grüne Pfeile zeigen schnelle Übergänge (Auto-Skalierung, 
+%              Cache-Restart). Rote gestrichelte Linien zeigen manuelle Reparatur.}
+%     \label{fig:markov_order_service}
+% \end{figure}
 
 \subsection{Generatormatrix}
 
@@ -1611,7 +1615,7 @@ Durch Lösen dieses linearen Gleichungssystems (numerisch) erhalten wir:
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|l|c|l|}
         \hline
         Zustand & Wahrscheinlichkeit & Interpretation \\
         \hline
@@ -1676,53 +1680,53 @@ Die Systemauslastung ist dann:
 \rho^* = \frac{\lambda_{\text{peak}}}{c^* \cdot \mu} = \frac{1000}{143 \times 10} = 0.699
 \]
 
-\subsection{M/M/c Warteschlange Visualisierung}
+% \subsection{M/M/c Warteschlange Visualisierung}
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[
-        node distance=2cm,
-        queue/.style={rectangle, draw=mainblue, fill=lightgray, thick},
-        server/.style={circle, draw=darkgreen, fill=lightgray, thick, minimum size=0.8cm},
-        arrow/.style={->, thick, draw=darkgray},
-    ]
+% \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}[
+%         node distance=2cm,
+%         queue/.style={rectangle, draw=mainblue, fill=lightgray, thick},
+%         server/.style={circle, draw=darkgreen, fill=lightgray, thick, minimum size=0.8cm},
+%         arrow/.style={->, thick, draw=darkgray},
+%     ]
     
-    % Ankunftsprozess
-    \node (arrival) at (0, 0) {$\lambda = 1000$/s};
+%     % Ankunftsprozess
+%     \node (arrival) at (0, 0) {$\lambda = 1000$/s};
     
-    % Warteschlange
-    \node[queue] (queue) at (2, 0) {Queue};
+%     % Warteschlange
+%     \node[queue] (queue) at (2, 0) {Queue};
     
-    % Server-Pool (vereinfacht als 5 Knoten dargestellt, aber c=143)
-    \node[server] (s1) at (4.5, 1) {$S_1$};
-    \node[server] (s2) at (4.5, 0.3) {$S_2$};
-    \node (dots) at (4.5, -0.4) {$\vdots$};
-    \node[server] (s143) at (4.5, -1) {$S_{143}$};
+%     % Server-Pool (vereinfacht als 5 Knoten dargestellt, aber c=143)
+%     \node[server] (s1) at (4.5, 1) {$S_1$};
+%     \node[server] (s2) at (4.5, 0.0) {$S_2$};
+%     \node (dots) at (4.5, -0.55) {$\vdots$};
+%     \node[server] (s143) at (4.5, -1.35) {$S_{c}$};
     
-    % Abgang
-    \node (depart) at (7, 0) {$\mu = 10$/s pro Server};
+%     % Abgang
+%     \node (depart) at (7, 0) {$\mu = 10$/s pro Server};
     
-    % Pfeile
-    \draw[arrow] (arrival) -- (queue);
-    \draw[arrow] (queue) -- (s1);
-    \draw[arrow] (queue) -- (s2);
-    \draw[arrow] (queue) -- (s143);
-    \draw[arrow] (s1) -- (depart);
-    \draw[arrow] (s2) -- (depart);
-    \draw[arrow] (s143) -- (depart);
+%     % Pfeile
+%     \draw[arrow] (arrival) -- (queue);
+%     \draw[arrow] (queue) -- (s1);
+%     \draw[arrow] (queue) -- (s2);
+%     \draw[arrow] (queue) -- (s143);
+%     \draw[arrow] (s1) -- (depart);
+%     \draw[arrow] (s2) -- (depart);
+%     \draw[arrow] (s143) -- (depart);
     
-    % Labels
-    \node at (2, -0.6) [anchor=north, font=\small] {Buffered Queue};
-    \node at (4.5, -1.8) [anchor=north, font=\small] {$c = 143$ parallele Instanzen};
-    \node at (0, -0.6) [anchor=north, font=\small] {Poisson-Ankunft};
-    \node at (7, -0.6) [anchor=north, font=\small] {Exponential-Service};
+%     % Labels
+%     % \node at (2, -0.6) [anchor=north, font=\small] {Buffered Queue};
+%     \node at (4.5, -1.8) [anchor=north, font=\small] {$c = 143$ parallele Instanzen};
+%     \node at (0, -0.15) [anchor=north, font=\small] {Poisson-Ankunft};
+%     % \node at (7, -0.6) [anchor=north, font=\small] {Exponential-Service};
     
-    \end{tikzpicture}
-    \caption{M/M/c Warteschlangen-Architektur des Bestellservice: 1000 Anfragen/s werden 
-             von 143 parallelen Service-Instanzen verarbeitet. Jede Instanz verarbeitet 
-             durchschnittlich 10 Req/s.}
-    \label{fig:queue_order_service}
-\end{figure}
+%     \end{tikzpicture}
+%     \caption{M/M/c Warteschlangen-Architektur des Bestellservice: 1000 Anfragen/s werden 
+%              von 143 parallelen Service-Instanzen verarbeitet. Jede Instanz verarbeitet 
+%              durchschnittlich 10 Req/s.}
+%     \label{fig:queue_order_service}
+% \end{figure}
 
 \subsection{Latenz-Berechnung mit Littles Gesetz}
 
@@ -1758,7 +1762,7 @@ Dies ist gut unter der P95-Anforderung von 200 ms!
 
 Das Bestellservice-System hat folgende Komponenten:
 
-\begin{definition}[UML-Komponentenmodell]
+\begin{definition}[UML-Komponentenmodell] Das UML-Komponentenmodell beschreibt die Architektur des Bestellservice-Systems.
     \label{def:order_service_components}
     
     \begin{itemize}
@@ -1790,72 +1794,72 @@ Das Bestellservice-System hat folgende Komponenten:
     \end{itemize}
 \end{definition}
 
-\subsection{UML-Profil-Visualisierung}
+% \subsection{UML-Profil-Visualisierung}
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[
-        component/.style={rectangle, draw=mainblue, fill=lightgray, thick, minimum width=2cm, minimum height=0.8cm},
-        cluster/.style={rectangle, draw=darkblue, thick, dashed, minimum width=4cm},
-        tag/.style={font=\small, color=accentred},
-        arrow/.style={->, thick, draw=darkgray},
-    ]
+% \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}[
+%         component/.style={rectangle, draw=mainblue, fill=lightgray, thick, minimum width=2cm, minimum height=0.8cm},
+%         cluster/.style={rectangle, draw=darkblue, thick, dashed, minimum width=4cm},
+%         tag/.style={font=\small, color=accentred},
+%         arrow/.style={->, thick, draw=darkgray},
+%     ]
     
-    % Load Balancer
-    \node[component] (lb) at (0, 5) {Load Balancer};
-    \node[tag] at (0, 4.5) {$\langle\langle$QualityOfService$\rangle\rangle$};
-    \node[tag] at (0, 4.1) {availability: 0.9999};
+%     % Load Balancer
+%     \node[component] (lb) at (0, 5) {Balancer};
+%     % \node[tag] at (0, 4.5) {$\langle\langle$QualityOfService$\rangle\rangle$};
+%     % \node[tag] at (0, 4.1) {availability: 0.9999};
     
-    % WebServer Cluster
-    \node[cluster] (web_cluster) at (3, 5) {};
-    \node at (3, 5.8) [anchor=south, font=\small] {WebServer-Cluster (143 Instanzen)};
+%     % WebServer Cluster
+%     \node[cluster] (web_cluster) at (3, 5) {};
+%     \node at (3, 5.5) [anchor=south, font=\small] {WebServer-Cluster (143 Instanzen)};
     
-    \node[component] (ws1) at (1.5, 5) {WS-1};
-    \node[component] (ws2) at (3, 5) {WS-2};
-    \node (ws_dots) at (4.5, 5) {$\cdots$};
-    \node[component] (ws143) at (6, 5) {WS-143};
+%     \node[component] (ws1) at (1.5, 5) {WS-1};
+%     \node[component] (ws2) at (3, 5) {WS-2};
+%     \node (ws_dots) at (4.5, 5) {$\cdots$};
+%     \node[component] (ws143) at (6, 5) {WS-143};
     
-    \node[tag] at (3, 4.2) {availability: 0.99};
-    \node[tag] at (3, 3.8) {throughput: 1000 Req/s};
-    \node[tag] at (3, 3.4) {latency: 100 ms};
+%     % \node[tag] at (3, 4.2) {availability: 0.99};
+%     % \node[tag] at (3, 3.8) {throughput: 1000 Req/s};
+%     % \node[tag] at (3, 3.4) {latency: 100 ms};
     
-    % Cache
-    \node[cluster] (cache) at (0.5, 2) {};
-    \node at (0.5, 2.8) [anchor=south, font=\small] {Cache-Cluster (Redis, 3 Knoten)};
+%     % Cache
+%     \node[cluster] (cache) at (0.5, 2) {};
+%     \node at (0.5, 2.8) [anchor=south, font=\small] {Cache-Cluster (Redis, 3 Knoten)};
     
-    \node[component] (c1) at (-1, 2) {C-1};
-    \node[component] (c2) at (0.5, 2) {C-2};
-    \node[component] (c3) at (2, 2) {C-3};
+%     \node[component] (c1) at (-1, 2) {C-1};
+%     \node[component] (c2) at (0.5, 2) {C-2};
+%     \node[component] (c3) at (2, 2) {C-3};
     
-    \node[tag] at (0.5, 1.2) {availability: 0.999};
-    \node[tag] at (0.5, 0.8) {hitRate: 0.85};
+%     % \node[tag] at (0.5, 1.2) {availability: 0.999};
+%     % \node[tag] at (0.5, 0.8) {hitRate: 0.85};
     
-    % Database
-    \node[cluster] (db) at (5, 2) {};
-    \node at (5, 2.8) [anchor=south, font=\small] {Database-Cluster (PostgreSQL)};
+%     % Database
+%     \node[cluster] (db) at (5, 2) {};
+%     \node at (5, 2.8) [anchor=south, font=\small] {Cluster (PostgreSQL)};
     
-    \node[component] (db_p) at (4, 2) {Primary};
-    \node[component] (db_s1) at (5, 2) {Standby-1};
-    \node[component] (db_s2) at (6, 2) {Standby-2};
+%     \node[component] (db_p) at (4, 2) {Primary};
+%     \node[component] (db_s1) at (5, 2) {Standby-1};
+%     \node[component] (db_s2) at (6, 2) {Standby-2};
     
-    \node[tag] at (5, 1.2) {availability: 0.9999};
-    \node[tag] at (5, 0.8) {rpo: 1 min};
+%     % \node[tag] at (5, 1.2) {availability: 0.9999};
+%     % \node[tag] at (5, 0.8) {rpo: 1 min};
     
-    % Verbindungen
-    \draw[arrow] (lb) -- (ws1);
-    \draw[arrow] (ws1) -- (c1);
-    \draw[arrow] (ws1) -- (db_p);
-    \draw[arrow] (ws2) -- (c2);
-    \draw[arrow] (ws2) -- (db_p);
-    \draw[arrow] (ws143) -- (c3);
-    \draw[arrow] (ws143) -- (db_p);
+%     % Verbindungen
+%     % \draw[arrow] (lb) -- (ws1);
+%     \draw[arrow] (ws1) -- (c1);
+%     \draw[arrow] (ws1) -- (db_p);
+%     \draw[arrow] (ws2) -- (c2);
+%     \draw[arrow] (ws2) -- (db_p);
+%     \draw[arrow] (ws143) -- (c3);
+%     \draw[arrow] (ws143) -- (db_p);
     
-    \end{tikzpicture}
-    \caption{UML-Komponentendiagramm des Bestellservice mit QualityOfService-Profil. 
-             Jede Komponente ist mit Verfügbarkeits-, Durchsatz- und Latenz-Anforderungen 
-             annotiert.}
-    \label{fig:uml_order_service}
-\end{figure}
+%     \end{tikzpicture}
+%     \caption{UML-Komponentendiagramm des Bestellservice mit QualityOfService-Profil. 
+%              Jede Komponente ist mit Verfügbarkeits-, Durchsatz- und Latenz-Anforderungen 
+%              annotiert.}
+%     \label{fig:uml_order_service}
+% \end{figure}
 
 \section{Schritt 4: Systemdesign und Zielerreichung}
 
@@ -1915,12 +1919,12 @@ Wir weisen formal nach, dass die Designentscheidungen alle Anforderungen erfüll
         
         Mit diesen Verbesserungen sinkt die Fehlerwahrscheinlichkeit:
         \[
-            \pi_5^*_{\text{new}} = 0.0005 \quad \text{(statt 0.0012)}
+            \pi_{5,\text{new}}^* = 0.0005 \quad \text{(statt 0.0012)}
         \]
         
         Die neue Verfügbarkeit ist:
         \[
-            A_{\text{achieved}}^{\text{new}} = 1 - \pi_5^*_{\text{new}} = 0.9995 \quad \checkmark
+            A_{\text{achieved}}^{\text{new}} = 1 - \pi_{5,\text{new}}^* = 0.9995 \quad \checkmark
         \]
         
         \textbf{Anforderung 2: Durchsatz}
@@ -2009,10 +2013,10 @@ Wir weisen formal nach, dass die Designentscheidungen alle Anforderungen erfüll
         \hline
         \textbf{Anforderung} & \textbf{Anforderung} & \textbf{Erreicht} & \textbf{Status} \\
         \hline
-        Verfügbarkeit & 99.95\% & 99.95\% & ✓ Erfüllt \\
-        Durchsatz Peak & 1000 Req/s & 1430 Req/s & ✓ Erfüllt \\
-        P95 Latenz & 200 ms & 87.5 ms & ✓ Erfüllt \\
-        Zuverlässigkeit (1 Jahr) & 0.9999 & 0.9999 & ✓ Erfüllt \\
+        Verfügbarkeit & 99.95\% & 99.95\% & Erfüllt \\
+        Durchsatz Peak & 1000 Req/s & 1430 Req/s & Erfüllt \\
+        P95 Latenz & 200 ms & 87.5 ms & Erfüllt \\
+        Zuverlässigkeit (1 Jahr) & 0.9999 & 0.9999 & Erfüllt \\
         \hline
     \end{tabular}
 \end{table}
@@ -2071,7 +2075,7 @@ Das formale Design-Verfahren garantiert, dass:
 Dies ist die Essenz des quantitativen Softwareengineerings: \emph{Präzision durch Mathematik.}
 
 
-\section{Sehr ausführlicher Ausblick und zukünftige Forschungsrichtungen}
+\section{Ausblick}
 % ===========================================================================
 
 Diese Arbeit hat einen rigoros mathematischen Rahmen zur quantitativen Analyse von 
@@ -2232,7 +2236,7 @@ heterogene Hardware (CPUs, GPUs, TPUs, FPGAs) mit unterschiedlichen Performance-
 wobei $w$ Gewichtungsfaktoren sind, die vom Workload und der Daten-Transfer-Zeit abhängen.
 
 % ===========================================================================
-\section{Zusammenfassung und abschließende Beobachtungen}
+\section{Zusammenfassung}
 % ===========================================================================
 
 Diese Arbeit hat einen umfassenden, rigoros mathematischen Rahmen zur quantitativen Analyse 
@@ -2265,9 +2269,7 @@ und Optimierung von Softwaresystemen etabliert. Die zentralen Ergebnisse sind:
           zeigen, daß die formalen Ergebnisse in realen Domänen anwendbar sind.
 \end{enumerate}
 
-\textbf{Die zentrale Erkenntnis ist:}
-
-\emph{Es existieren Optimal-Punkte für Systemgröße, Zuverlässigkeit und Verfügbarkeit, 
+Die zentrale Erkenntnis ist: \emph{Es existieren Optimal-Punkte für Systemgröße, Zuverlässigkeit und Verfügbarkeit, 
 die mathematisch berechenbar sind und nicht durch Trial-and-Error gefunden werden müssen. 
 Eine systematische, quantitative Analyse ermöglicht bessere Entwurfsentscheidungen.}
 
